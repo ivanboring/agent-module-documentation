@@ -180,7 +180,8 @@ def write_results(eval_dir: Path, spec: dict, a, rows) -> None:
         by_case.setdefault(r[0], []).append(r)
     for cid, rs in by_case.items():
         case = next(c for c in spec["evals"] if c["id"] == cid)
-        lines += [f"## {cid}  (`{case.get('mode')}`)", "",
+        persona = f" · persona: {case['persona']}" if case.get("persona") else ""
+        lines += [f"## {cid}  (`{case.get('mode')}`{persona})", "",
                   f"> {case['prompt']}", "",
                   "| Provider | Arm | Correct | In tok | Out tok | Time (s) | Cost $ |",
                   "|---|---|---|--:|--:|--:|--:|"]

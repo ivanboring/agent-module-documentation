@@ -78,6 +78,25 @@ Results are written to `modules/<name>/<version>/eval/results.md`.
 less time** than vanilla — because reading `agent/start.md` + one solution doc is cheaper
 than the agent grepping `web/modules/contrib/<name>/src`.
 
+### Persona variants (`-layman` / `-expert`)
+
+Execution cases can carry a `persona` and come in pairs that share one `verify`: the same
+task phrased **once how a non-technical site owner would ask** (no Drupal jargon — "make my
+blog post URLs read /blog/the-title") and **once how a Drupal developer would ask** ("add a
+Pathauto pattern `blog/[node:title]` for the Article type"). A robust skill should solve
+both and land on the same verified end state. Compare the `-layman` vs `-expert` rows to see
+whether plain-English requests cost the agent more exploration.
+
+### What the first runs show (token + pathauto, well-known modules)
+
+Correctness was 3/3 for **both** arms on every case — these two modules are small and
+familiar, so the skill is not needed for *correctness* here. The differentiator is
+cost/time, and it is **task-dependent**: on obvious tasks the skill adds overhead (it reads
+a doc vanilla didn't need), but on the more obscure API surface (e.g. token's entity-type →
+token-type mapper) the skill roughly halved tokens and time. Expect the skill's advantage to
+grow on **larger or less familiar modules** the model doesn't already know — the next
+documented modules are the real test.
+
 ## Caveats / honesty
 
 - **Isolation:** both arms run with `--setting-sources ''` so the project's skills do **not**

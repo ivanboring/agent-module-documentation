@@ -3,14 +3,34 @@
   "skill_file": ".agents/skills/drupal-module-docs/SKILL.md",
   "module": "pathauto",
   "version": "1.15.x",
+  "note": "Execution cases carry persona variants (-layman / -expert): the SAME task and the SAME live-state verify, phrased once how a non-technical site owner would ask (no Drupal jargon) and once how a Drupal developer would ask. A good skill should solve both.",
   "evals": [
     {
-      "id": "pathauto-blog-pattern",
+      "id": "pathauto-blog-pattern-layman",
       "mode": "execution",
-      "prompt": "On this Drupal site (DDEV, drush is available), configure Pathauto so that Article nodes automatically get URL aliases of the form `blog/[node:title]`. Apply the change to the running site itself using drush/config — do not just describe the steps. When finished, state in one line what you changed.",
+      "persona": "layman",
+      "prompt": "On my website, blog posts currently have ugly web addresses like `example.com/node/42`. I want every blog article's address to read like `example.com/blog/the-post-title` instead — built automatically from the post's title — for all articles from now on. Please set this up on the site so it just works, and tell me in one line what you did.",
       "reset": "agent-module-documentation/evaluation/verify/pathauto-reset.sh",
       "verify": "agent-module-documentation/evaluation/verify/pathauto-blog-pattern.sh",
-      "expected_output": "A pathauto_pattern config entity of type canonical_entities:node with pattern blog/[node:title] exists AND a newly created Article node receives a /blog/<title> URL alias. Verified against live site state, not the response text."
+      "expected_output": "Same end state as the expert variant: a node pathauto pattern blog/[node:title] applied, and a new Article gets a /blog/<title> alias. The agent must map the plain-English request onto Pathauto without being told the module name."
+    },
+    {
+      "id": "pathauto-blog-pattern-expert",
+      "mode": "execution",
+      "persona": "drupal-expert",
+      "prompt": "On this Drupal site (DDEV, drush available), add a Pathauto pattern for the Article content type with the token pattern `blog/[node:title]`, and apply it via drush/config so new article nodes get that URL alias. Give a one-line summary of what you changed.",
+      "reset": "agent-module-documentation/evaluation/verify/pathauto-reset.sh",
+      "verify": "agent-module-documentation/evaluation/verify/pathauto-blog-pattern.sh",
+      "expected_output": "A pathauto_pattern (type canonical_entities:node, pattern blog/[node:title]) exists AND a new Article node gets a /blog/<title> alias. Verified against live site state."
+    },
+    {
+      "id": "pathauto-user-pattern",
+      "mode": "execution",
+      "persona": "drupal-expert",
+      "prompt": "On this Drupal site (drush available), configure Pathauto so User accounts automatically get URL aliases of the form `users/[user:account-name]`. Apply it to the running site with drush/config — do not just describe it. State in one line what you changed.",
+      "reset": "agent-module-documentation/evaluation/verify/pathauto-reset.sh",
+      "verify": "agent-module-documentation/evaluation/verify/pathauto-user-pattern.sh",
+      "expected_output": "A pathauto_pattern (type canonical_entities:user, pattern users/[user:account-name]) exists AND a new user gets a /users/<name> alias. Verified against live site state."
     },
     {
       "id": "pathauto-separator-underscore",
@@ -19,6 +39,30 @@
       "must_contain_any": ["config:set pathauto.settings separator", "config-set pathauto.settings separator"],
       "must_not_contain": [],
       "expected_output": "drush config:set pathauto.settings separator _ -y"
+    },
+    {
+      "id": "pathauto-max-length",
+      "mode": "recipe",
+      "prompt": "On this Drupal site, give the exact drush command to set Pathauto's maximum generated alias length to 100. Answer with the command only.",
+      "must_contain_any": ["config:set pathauto.settings max_length", "config-set pathauto.settings max_length"],
+      "must_not_contain": [],
+      "expected_output": "drush config:set pathauto.settings max_length 100 -y"
+    },
+    {
+      "id": "pathauto-transliterate",
+      "mode": "recipe",
+      "prompt": "In Pathauto, which setting makes it convert accented characters (like `é` to `e`) into plain ASCII when building an alias? Name the exact setting key.",
+      "must_contain_any": ["transliterate"],
+      "must_not_contain": [],
+      "expected_output": "The `transliterate` setting in pathauto.settings (on by default)."
+    },
+    {
+      "id": "pathauto-alias-alter-hook",
+      "mode": "recipe",
+      "prompt": "Which Drupal hook do I implement to modify a generated URL alias string just before Pathauto saves it? Give the exact hook function name.",
+      "must_contain_any": ["hook_pathauto_alias_alter", "pathauto_alias_alter"],
+      "must_not_contain": [],
+      "expected_output": "hook_pathauto_alias_alter(&$alias, array &$context)."
     }
   ]
 }
