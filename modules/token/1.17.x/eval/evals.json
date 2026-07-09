@@ -1,0 +1,24 @@
+{
+  "skill_name": "drupal-module-docs",
+  "skill_file": ".agents/skills/drupal-module-docs/SKILL.md",
+  "module": "token",
+  "version": "1.17.x",
+  "evals": [
+    {
+      "id": "token-browser-in-form",
+      "mode": "recipe",
+      "prompt": "In a Drupal 11 module I have a settings form. Add a widget that lets the user browse the available tokens for the `node` and `user` token types. Show the exact form render-array element(s) to add, plus one line of explanation.",
+      "must_contain_any": ["token_tree_link", "token_tree_table"],
+      "must_not_contain": [],
+      "expected_output": "Adds token's UI element: #theme => 'token_tree_link' (or #type => 'token_tree_table') with #token_types => ['node', 'user']."
+    },
+    {
+      "id": "token-refresh-cache",
+      "mode": "recipe",
+      "prompt": "I added a new custom token via hook_token_info() on this Drupal site but it does not appear in the token browser yet. Give the single drush command to refresh it.",
+      "must_contain_any": ["cache:clear token", "cc token", "drush cr"],
+      "must_not_contain": [],
+      "expected_output": "drush cache:clear token (or drush cr)."
+    }
+  ]
+}

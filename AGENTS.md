@@ -44,6 +44,9 @@ modules/{machine_name}/{major.minor.x}/
 └── agent/
     ├── start.md       # token-cheap index linking to the solution docs below
     └── {solution_type}/{name}.md   # configure, plugins, extend, drush, api, hooks, ...
+
+screenshots/{machine_name}/{major.minor.x}/*.png   # admin-UI captures (top-level tree,
+                                                   # referenced from the solution docs)
 ```
 
 - The version directory is `major.minor.x` (patch dropped), derived from the installed
@@ -68,6 +71,11 @@ grow organically as modules are processed. Add new names there, never duplicate.
 - Install: `composer require drupal/{name} -W`, then `drush en {name} -y`.
 - Setup: read exported/default config, resolve the `configure` route from `*.info.yml`,
   note permissions and any Drush commands.
+- **Use the simplest tool for each step** (`drush`/config over the UI). When a module has
+  admin forms/UI, drive them with `agent-browser` and save screenshots to the repo-root
+  `screenshots/{name}/{version}/` tree — see
+  [`documentation/browser-screenshots.md`](documentation/browser-screenshots.md).
+- **Test every code snippet** you put in a doc against the live site before committing it.
 - Installs are **cumulative** (modules are left enabled). If the site breaks, reinstall it
   with `drush site:install -y` and continue — nothing here depends on site content.
 - Never commit secrets. Never `git push` (the human handles pushing/merging).

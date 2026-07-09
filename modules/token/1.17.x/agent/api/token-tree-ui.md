@@ -21,6 +21,10 @@ $form['tokens'] = [
 ];
 ```
 
+The `token_tree_link` renders as a "Browse available tokens." link that opens this dialog
+(captured on Pathauto's pattern form — Token has no page of its own):
+![Token browser dialog](../../../../../screenshots/token/1.17.x/token-browser.png)
+
 Notes:
 - `#token_types` restricts which token groups are shown; use `['all']` for everything.
 - The link element loads `token/token` library automatically.

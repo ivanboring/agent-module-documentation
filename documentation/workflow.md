@@ -39,8 +39,11 @@ For each page of the [data source](data-source.md), starting at the offset in
    - Any submodule `modules/*/{sub}.info.yml`.
 
 5. **Enable & set up.** `drush en {name} -y`. Read the resulting config, resolve the
-   `configure` route, note permissions. For this pass, setup is `drush` + config reading
-   (no browser walkthrough).
+   `configure` route, note permissions. Prefer the simplest tool for each step
+   (`drush`/config over UI). When a module has admin **forms/UI**, drive them with
+   `agent-browser` and save screenshots to the top-level
+   `screenshots/{name}/{version}/`, referenced from the relevant solution doc — see
+   [browser-screenshots.md](browser-screenshots.md).
 
 6. **Write the docs** into `modules/{name}/{version}/`:
    - `data.json` — see [file-formats.md](file-formats.md).

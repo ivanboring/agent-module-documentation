@@ -24,3 +24,6 @@ Example:
 drush config:set pathauto.settings max_length 100 -y
 drush config:set pathauto.settings separator _ -y
 ```
+
+Settings form (`/admin/config/search/path/settings`):
+![Pathauto settings form](../../../../../screenshots/pathauto/1.15.x/settings-form.png)

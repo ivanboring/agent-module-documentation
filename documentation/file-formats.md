@@ -62,3 +62,12 @@ warrants:
 
 **Golden rule:** each doc must cost fewer tokens to read than the source it summarizes.
 If a module needs no configuration or has no plugins, don't create that doc.
+
+### `screenshots/{name}/{version}/` (optional, top-level)
+
+For modules with admin forms/UI, capture screenshots into the repo-root `screenshots/`
+tree — mirroring the module path, e.g. `screenshots/pathauto/1.15.x/settings-form.png` —
+and reference them from the relevant solution doc. From a doc at
+`modules/{name}/{version}/agent/{type}/` that is five levels up, e.g.
+`![alt](../../../../../screenshots/{name}/{version}/name.png)`. How-to (and the container
+gotchas): [browser-screenshots.md](browser-screenshots.md). Skip for modules with no UI.

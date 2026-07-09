@@ -12,6 +12,12 @@ Pathauto ships **no Drush commands**; bulk actions are batch forms in the admin 
   Deletes all automatically-created aliases (e.g. before a re-import), with options per
   entity type and "all aliases including manual".
 
+Bulk generate form:
+![Bulk generate aliases](../../../../../screenshots/pathauto/1.15.x/bulk-generate.png)
+
+Bulk delete form:
+![Delete aliases](../../../../../screenshots/pathauto/1.15.x/bulk-delete.png)
+
 Programmatic alternative (loop + generator service) for scripted regeneration: see
 [../api/generate-alias.md](../api/generate-alias.md). Actions
 `pathauto_update_alias_node` / `_user` are also registered (usable via Views Bulk

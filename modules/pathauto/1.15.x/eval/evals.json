@@ -1,0 +1,24 @@
+{
+  "skill_name": "drupal-module-docs",
+  "skill_file": ".agents/skills/drupal-module-docs/SKILL.md",
+  "module": "pathauto",
+  "version": "1.15.x",
+  "evals": [
+    {
+      "id": "pathauto-blog-pattern",
+      "mode": "execution",
+      "prompt": "On this Drupal site (DDEV, drush is available), configure Pathauto so that Article nodes automatically get URL aliases of the form `blog/[node:title]`. Apply the change to the running site itself using drush/config — do not just describe the steps. When finished, state in one line what you changed.",
+      "reset": "agent-module-documentation/evaluation/verify/pathauto-reset.sh",
+      "verify": "agent-module-documentation/evaluation/verify/pathauto-blog-pattern.sh",
+      "expected_output": "A pathauto_pattern config entity of type canonical_entities:node with pattern blog/[node:title] exists AND a newly created Article node receives a /blog/<title> URL alias. Verified against live site state, not the response text."
+    },
+    {
+      "id": "pathauto-separator-underscore",
+      "mode": "recipe",
+      "prompt": "On this Drupal site, what is the exact drush command to change the Pathauto word separator from a hyphen to an underscore? Answer with the command only.",
+      "must_contain_any": ["config:set pathauto.settings separator", "config-set pathauto.settings separator"],
+      "must_not_contain": [],
+      "expected_output": "drush config:set pathauto.settings separator _ -y"
+    }
+  ]
+}
