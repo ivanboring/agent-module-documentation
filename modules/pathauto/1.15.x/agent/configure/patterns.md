@@ -10,11 +10,11 @@ Taxonomy term, User, or any custom type) → set the token **pattern** → optio
 **selection criteria** (conditions, e.g. limit to a content type or language).
 
 Patterns list (`/admin/config/search/path/patterns`):
-![Pathauto patterns collection](../../../../../screenshots/pathauto/1.15.x/patterns-collection.png)
+![Pathauto patterns collection](../../../../../../screenshots/pathauto/1.15.x/patterns-collection.png)
 
 Add-pattern form — the "Browse available tokens." link is Token's browser (see the token
 module docs):
-![Add pathauto pattern](../../../../../screenshots/pathauto/1.15.x/pattern-add-form.png)
+![Add pathauto pattern](../../../../../../screenshots/pathauto/1.15.x/pattern-add-form.png)
 
 ## As config (exportable/deployable)
 `config/sync/pathauto.pattern.article.yml`:

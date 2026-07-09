@@ -41,9 +41,9 @@ For each page of the [data source](data-source.md), starting at the offset in
 5. **Enable & set up.** `drush en {name} -y`. Read the resulting config, resolve the
    `configure` route, note permissions. Prefer the simplest tool for each step
    (`drush`/config over UI). When a module has admin **forms/UI**, drive them with
-   `agent-browser` and save screenshots to the top-level
-   `screenshots/{name}/{version}/`, referenced from the relevant solution doc — see
-   [browser-screenshots.md](browser-screenshots.md).
+   `agent-browser` and save screenshots to `<project-root>/screenshots/{name}/{version}/`
+   — **outside** this repo (they are binary artifacts, not committed) — referenced from the
+   relevant solution doc. See [browser-screenshots.md](browser-screenshots.md).
 
 6. **Write the docs** into `modules/{name}/{version}/`:
    - `data.json` — see [file-formats.md](file-formats.md).

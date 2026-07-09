@@ -26,4 +26,4 @@ drush config:set pathauto.settings separator _ -y
 ```
 
 Settings form (`/admin/config/search/path/settings`):
-![Pathauto settings form](../../../../../screenshots/pathauto/1.15.x/settings-form.png)
+![Pathauto settings form](../../../../../../screenshots/pathauto/1.15.x/settings-form.png)

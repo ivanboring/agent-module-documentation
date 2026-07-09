@@ -13,10 +13,10 @@ Pathauto ships **no Drush commands**; bulk actions are batch forms in the admin 
   entity type and "all aliases including manual".
 
 Bulk generate form:
-![Bulk generate aliases](../../../../../screenshots/pathauto/1.15.x/bulk-generate.png)
+![Bulk generate aliases](../../../../../../screenshots/pathauto/1.15.x/bulk-generate.png)
 
 Bulk delete form:
-![Delete aliases](../../../../../screenshots/pathauto/1.15.x/bulk-delete.png)
+![Delete aliases](../../../../../../screenshots/pathauto/1.15.x/bulk-delete.png)
 
 Programmatic alternative (loop + generator service) for scripted regeneration: see
 [../api/generate-alias.md](../api/generate-alias.md). Actions

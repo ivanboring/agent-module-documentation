@@ -1,6 +1,6 @@
 # Eval results — pathauto 1.15.x
 
-Skill under test: `drupal-module-docs` · runs per cell: 1 · model: CLI default
+Skill under test: `drupal-module-docs` · runs per cell: 3 · model: CLI default
 
 `Correct` = live-state verify (execution cases) or text assertions (recipe cases). `n/a` = provider CLI not installed.
 
@@ -10,5 +10,14 @@ Skill under test: `drupal-module-docs` · runs per cell: 1 · model: CLI default
 
 | Provider | Arm | Correct | In tok | Out tok | Time (s) | Cost $ |
 |---|---|---|--:|--:|--:|--:|
-| claude | vanilla | 1/1 | 3232 | 5013 | 100.7 | 0.4018 |
-| claude | skill | 1/1 | 3093 | 2044 | 51.6 | 0.236 |
+| claude | vanilla | 3/3 | 2960 | 1615 | 44.7 | 0.161 |
+| claude | skill | 3/3 | 3237 | 1818 | 50.3 | 0.2037 |
+
+## pathauto-separator-underscore  (`recipe`)
+
+> On this Drupal site, what is the exact drush command to change the Pathauto word separator from a hyphen to an underscore? Answer with the command only.
+
+| Provider | Arm | Correct | In tok | Out tok | Time (s) | Cost $ |
+|---|---|---|--:|--:|--:|--:|
+| claude | vanilla | 3/3 | 2952 | 279 | 9.5 | 0.0317 |
+| claude | skill | 3/3 | 2958 | 438 | 23.6 | 0.1188 |

@@ -44,10 +44,11 @@ modules/{machine_name}/{major.minor.x}/
 └── agent/
     ├── start.md       # token-cheap index linking to the solution docs below
     └── {solution_type}/{name}.md   # configure, plugins, extend, drush, api, hooks, ...
-
-screenshots/{machine_name}/{major.minor.x}/*.png   # admin-UI captures (top-level tree,
-                                                   # referenced from the solution docs)
 ```
+
+Admin-UI screenshots are stored **outside this repo**, one level up at the project root
+(`<project-root>/screenshots/{machine_name}/{major.minor.x}/*.png`), and referenced from the
+solution docs. They are binary artifacts we intentionally do not commit.
 
 - The version directory is `major.minor.x` (patch dropped), derived from the installed
   release, e.g. `token/1.17.x`, `pathauto/1.15.x`.
@@ -72,8 +73,9 @@ grow organically as modules are processed. Add new names there, never duplicate.
 - Setup: read exported/default config, resolve the `configure` route from `*.info.yml`,
   note permissions and any Drush commands.
 - **Use the simplest tool for each step** (`drush`/config over the UI). When a module has
-  admin forms/UI, drive them with `agent-browser` and save screenshots to the repo-root
-  `screenshots/{name}/{version}/` tree — see
+  admin forms/UI, drive them with `agent-browser` and save screenshots to
+  `<project-root>/screenshots/{name}/{version}/` — **outside this repo** (screenshots are
+  binaries we do not commit) — see
   [`documentation/browser-screenshots.md`](documentation/browser-screenshots.md).
 - **Test every code snippet** you put in a doc against the live site before committing it.
 - Installs are **cumulative** (modules are left enabled). If the site breaks, reinstall it

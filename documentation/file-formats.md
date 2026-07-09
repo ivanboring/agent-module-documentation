@@ -63,11 +63,16 @@ warrants:
 **Golden rule:** each doc must cost fewer tokens to read than the source it summarizes.
 If a module needs no configuration or has no plugins, don't create that doc.
 
-### `screenshots/{name}/{version}/` (optional, top-level)
+### `screenshots/{name}/{version}/` (optional, OUTSIDE the repo)
 
-For modules with admin forms/UI, capture screenshots into the repo-root `screenshots/`
-tree — mirroring the module path, e.g. `screenshots/pathauto/1.15.x/settings-form.png` —
-and reference them from the relevant solution doc. From a doc at
-`modules/{name}/{version}/agent/{type}/` that is five levels up, e.g.
-`![alt](../../../../../screenshots/{name}/{version}/name.png)`. How-to (and the container
-gotchas): [browser-screenshots.md](browser-screenshots.md). Skip for modules with no UI.
+Screenshots are binary build artifacts and are deliberately **not** committed to this repo.
+They live one directory up from the repo, at the **project root**:
+`<project-root>/screenshots/{name}/{version}/…png` (i.e. a sibling of
+`agent-module-documentation/`, e.g. `/var/www/html/screenshots/pathauto/1.15.x/settings-form.png`),
+mirroring the module path. Reference them from a solution doc with a relative link that
+climbs out of the repo — a doc at `modules/{name}/{version}/agent/{type}/` is six levels
+below the project root, so:
+`![alt](../../../../../../screenshots/{name}/{version}/name.png)`. These links resolve when
+viewing locally (where the site is running); they are intentionally absent from the pushed
+repo. How-to (and the container gotchas): [browser-screenshots.md](browser-screenshots.md).
+Skip for modules with no UI.

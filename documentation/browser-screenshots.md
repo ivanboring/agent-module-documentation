@@ -38,18 +38,20 @@ agent-browser wait --load networkidle
 ## Capture a form
 
 ```bash
-S=/var/www/html/agent-module-documentation/screenshots/<name>/<version>
+# NOTE: <project-root>/screenshots is OUTSIDE the repo — one level above
+# agent-module-documentation/ — because screenshots are binaries we do not commit.
+S=/var/www/html/screenshots/<name>/<version>
 mkdir -p "$S"
 agent-browser open "http://localhost/<admin/path>"
 agent-browser wait --load networkidle
-agent-browser screenshot --full "$S/<shot>.png"
+agent-browser screenshot --full "$S/<shot>.png"   # path MUST be absolute
 ```
 
 Some fields appear only after interaction (e.g. Pathauto's token browser shows after
 picking a Pattern type — `agent-browser select @eN "Content"` then re-snapshot). Screenshots
-live in the repo-root `screenshots/{name}/{version}/` tree (mirroring the module path).
-Reference them from a solution doc — which sits five levels deep at
-`modules/{name}/{version}/agent/{type}/` — with
-`![alt](../../../../../screenshots/<name>/<version>/<shot>.png)`.
+live at `<project-root>/screenshots/{name}/{version}/` (a sibling of the repo, not tracked
+by git). Reference them from a solution doc — which sits six levels below the project root
+at `modules/{name}/{version}/agent/{type}/` — with
+`![alt](../../../../../../screenshots/<name>/<version>/<shot>.png)`.
 
 Close when done: `agent-browser close --all`.
