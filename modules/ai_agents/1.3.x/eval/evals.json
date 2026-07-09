@@ -1,0 +1,49 @@
+{
+  "skill_name": "drupal-module-docs",
+  "skill_file": ".agents/skills/drupal-module-docs/SKILL.md",
+  "module": "ai_agents",
+  "version": "1.3.x",
+  "note": "All recipe (response-graded) — no AI provider/API key needed. Probes ai_agents-specific architecture facts an unfamiliar agent would have to read source to answer.",
+  "evals": [
+    {
+      "id": "aiagents-agent-plugin-type",
+      "mode": "recipe",
+      "prompt": "In the Drupal ai_agents module, what is the plugin type (and its Plugin/ namespace) for writing a code-based agent? Name it.",
+      "must_contain_any": ["AiAgent"],
+      "must_not_contain": [],
+      "expected_output": "The AiAgent plugin type (namespace Plugin/AiAgent, attribute-based)."
+    },
+    {
+      "id": "aiagents-tool-plugin-type",
+      "mode": "recipe",
+      "prompt": "In ai_agents, agents act through 'tools'. What plugin type are those tools, and which module actually DEFINES that plugin type?",
+      "must_contain_any": ["AiFunctionCall"],
+      "must_not_contain": [],
+      "expected_output": "Tools are AiFunctionCall plugins; that plugin type is defined by the ai (AI Core) module, not ai_agents."
+    },
+    {
+      "id": "aiagents-override-entity",
+      "mode": "recipe",
+      "prompt": "In ai_agents, which config entity type lets you modify an existing agent's prompt and tools WITHOUT forking or editing the original? Give the entity type id.",
+      "must_contain_any": ["ai_agent_override"],
+      "must_not_contain": [],
+      "expected_output": "The ai_agent_override config entity."
+    },
+    {
+      "id": "aiagents-admin-permission",
+      "mode": "recipe",
+      "prompt": "In ai_agents, which permission machine name gates administering AI agents? Give the exact permission.",
+      "must_contain_any": ["administer ai_agent"],
+      "must_not_contain": [],
+      "expected_output": "administer ai_agent"
+    },
+    {
+      "id": "aiagents-explorer",
+      "mode": "recipe",
+      "prompt": "In the ai_agents ecosystem, how do I interactively RUN and DEBUG an agent from the UI — which submodule provides it and at what admin path?",
+      "must_contain_any": ["ai_agents_explorer", "/admin/config/ai/agents/explore"],
+      "must_not_contain": [],
+      "expected_output": "The ai_agents_explorer submodule, at /admin/config/ai/agents/explore."
+    }
+  ]
+}

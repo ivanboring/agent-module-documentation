@@ -1,0 +1,37 @@
+{
+  "name": "AI Agents",
+  "data_name": "ai_agents",
+  "description": "The Agents module makes Drupal taskable by AI agents.",
+  "version": "1.3.x",
+  "release_stability": "stable",
+  "package": "AI Tools",
+  "composer_namespace": "drupal/ai_agents",
+  "composer_requirements": {
+    "drupal/core": "^10.2 || ^11",
+    "drupal/ai": "^1.4.0",
+    "drupal/modeler_api": "^1.0.3"
+  },
+  "dependent_modules": ["ai:ai", "modeler_api:modeler_api"],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 11541,
+  "project_url": "https://www.drupal.org/project/ai_agents",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/unstructured": "More file contexts for the AI Form integrations.",
+    "drupal/simple_crawler": "Lets the AI Form integrations crawl websites.",
+    "drupal/bpmn_io": "Edit AI agents with BPMN diagrams."
+  },
+  "submodules": ["ai_agents_explorer", "ai_agents_extra", "ai_agents_extra_tools", "ai_agents_form_integration"],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": ["AiAgent (Plugin/AiAgent)", "AiAgentValidation (Plugin/AiAgentValidation)"],
+  "provides_config_entities": ["ai_agent", "ai_agent_override"],
+  "consumes_plugin_types": ["AiFunctionCall (tool/function-call plugin type defined by the ai core module)"],
+  "categories": ["Administration tools", "Automation", "Content editing experience"],
+  "subcategories": ["AI agents / taskable AI"],
+  "keywords": ["ai", "agent", "agents", "tools", "function calling", "automation", "llm", "taskable", "orchestration"]
+}

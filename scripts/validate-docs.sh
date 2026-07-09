@@ -18,7 +18,12 @@ if [ ! -f "$DIR/usage.md" ]; then err "$DIR/usage.md missing"; else
   seps=$(grep -cxE '\s*---\s*' "$DIR/usage.md")
   [ "$seps" -eq 2 ] || err "$DIR/usage.md has $seps '---' separators (want 2 → 3 blocks)"
   bullets=$(awk 'c==2 && /^[[:space:]]*[-*] /{n++} /^[[:space:]]*---[[:space:]]*$/{c++} END{print n+0}' "$DIR/usage.md")
-  { [ "$bullets" -ge 15 ] && [ "$bullets" -le 30 ]; } || err "$DIR/usage.md has $bullets use-case bullets (want 15–30)"
+  # Deprecated stubs (data.json "deprecated": true) are exempt from the 15–30 bullet rule.
+  if grep -q '"deprecated"[[:space:]]*:[[:space:]]*true' "$DIR/data.json" 2>/dev/null; then
+    [ "$bullets" -ge 1 ] || err "$DIR/usage.md (deprecated) needs at least 1 use-case bullet"
+  else
+    { [ "$bullets" -ge 15 ] && [ "$bullets" -le 30 ]; } || err "$DIR/usage.md has $bullets use-case bullets (want 15–30)"
+  fi
 fi
 
 # agent/start.md — must exist and its relative links must resolve

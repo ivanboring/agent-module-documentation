@@ -45,8 +45,8 @@ except Exception:                                                          # pra
 def run_claude_exec(prompt: str, model: str | None, cwd: str) -> dict:
     """claude -p that may use tools unattended (bypasses permission prompts)."""
     start = time.monotonic()
-    r = {"response": "", "elapsed": 0.0, "exit_code": -1,
-         "input_tokens": 0, "output_tokens": 0, "cache_read_tokens": 0, "cost_usd": 0.0}
+    r = {"response": "", "elapsed": 0.0, "exit_code": -1, "input_tokens": 0,
+         "output_tokens": 0, "cache_read_tokens": 0, "cache_creation_tokens": 0, "cost_usd": 0.0}
     cmd = ["claude", "-p", "-"]
     if model:
         cmd += ["--model", model]
@@ -65,6 +65,7 @@ def run_claude_exec(prompt: str, model: str | None, cwd: str) -> dict:
         r["input_tokens"] = u.get("input_tokens", 0) or 0
         r["output_tokens"] = u.get("output_tokens", 0) or 0
         r["cache_read_tokens"] = u.get("cache_read_input_tokens", 0) or 0
+        r["cache_creation_tokens"] = u.get("cache_creation_input_tokens", 0) or 0
     except FileNotFoundError:
         pass
     except subprocess.TimeoutExpired:
@@ -74,10 +75,32 @@ def run_claude_exec(prompt: str, model: str | None, cwd: str) -> dict:
     return r
 
 
-def build_prompt(case: dict, arm: str) -> str:
+def load_module_docs(module: str, version: str) -> str:
+    """Concatenate a module's distilled docs — the 'knowledge in memory' payload."""
+    base = DOCS_ROOT / "modules" / module / version
+    parts = []
+    for name in ("data.json", "usage.md"):
+        f = base / name
+        if f.exists():
+            parts.append(f"## {name}\n{f.read_text()}")
+    agent = base / "agent"
+    if agent.is_dir():
+        for md in sorted(agent.rglob("*.md")):
+            parts.append(f"## agent/{md.relative_to(agent)}\n{md.read_text()}")
+    return "\n\n".join(parts)
+
+
+def build_prompt(case: dict, arm: str, module: str, version: str) -> str:
     task = case["prompt"]
     if arm == "vanilla":
         return task
+    if arm == "memory":
+        # 'agent/memory' arm: the module's distilled docs are already in context — no
+        # file-read round-trips needed. Models putting the docs in a custom agent's
+        # system prompt or CLAUDE.md.
+        docs = load_module_docs(module, version)
+        return ("# Reference knowledge already in your memory (distilled docs for this "
+                f"module — you do not need to read the module source):\n\n{docs}\n\n---\n\n{task}")
     # skill arm: prepend the skill text (+ any references), like compare.py does.
     skill = SKILL_FILE.read_text()
     refs = SKILL_FILE.parent / "references"
@@ -122,6 +145,7 @@ def main() -> int:
     ap.add_argument("--model", default=None, help="model override (default: CLI default per provider)")
     ap.add_argument("--runs", type=int, default=1)
     ap.add_argument("--only", nargs="+", default=None, help="run only these case ids")
+    ap.add_argument("--out", default="results.md", help="results filename in the eval dir")
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
 
@@ -134,12 +158,12 @@ def main() -> int:
         execution = case.get("mode") == "execution"
         for provider in a.providers:
             for arm in a.arms:
-                prompt = build_prompt(case, arm)
+                prompt = build_prompt(case, arm, a.module, a.version)
                 if a.dry_run:
                     print(f"\n### {case['id']} | {provider} | {arm} | mode={case.get('mode')}")
                     print(prompt[:600] + ("..." if len(prompt) > 600 else ""))
                     continue
-                cors, itoks, otoks, secs, costs = [], [], [], [], []
+                cors, itoks, creads, otoks, secs, costs = [], [], [], [], [], []
                 for _ in range(a.runs):
                     if execution and case.get("reset"):
                         sh(case["reset"])
@@ -152,14 +176,15 @@ def main() -> int:
                         correct = grade_recipe(res["response"], case)
                     cors.append(correct)
                     itoks.append(res["input_tokens"]); otoks.append(res["output_tokens"])
+                    creads.append(res.get("cache_read_tokens", 0))
                     secs.append(res["elapsed"]); costs.append(res["cost_usd"])
                 if cors and cors[0] is None:
-                    rows.append((case["id"], provider, arm, "n/a", 0, 0, 0.0, 0.0))
+                    rows.append((case["id"], provider, arm, "n/a", 0, 0, 0, 0.0, 0.0))
                 else:
                     n = len(cors)
                     rows.append((case["id"], provider, arm,
                                  f"{sum(1 for c in cors if c)}/{n}",
-                                 sum(itoks)//n, sum(otoks)//n,
+                                 sum(itoks)//n, sum(creads)//n, sum(otoks)//n,
                                  round(sum(secs)/n, 1), round(sum(costs)/n, 4)))
                 print(f"  done: {case['id']} | {provider} | {arm} -> {rows[-1][3]}")
 
@@ -183,13 +208,13 @@ def write_results(eval_dir: Path, spec: dict, a, rows) -> None:
         persona = f" · persona: {case['persona']}" if case.get("persona") else ""
         lines += [f"## {cid}  (`{case.get('mode')}`{persona})", "",
                   f"> {case['prompt']}", "",
-                  "| Provider | Arm | Correct | In tok | Out tok | Time (s) | Cost $ |",
-                  "|---|---|---|--:|--:|--:|--:|"]
-        for _, prov, arm, cor, it, ot, sec, cost in rs:
-            lines.append(f"| {prov} | {arm} | {cor} | {it} | {ot} | {sec} | {cost} |")
+                  "| Provider | Arm | Correct | In tok | Cache-rd | Out tok | Time (s) | Cost $ |",
+                  "|---|---|---|--:|--:|--:|--:|--:|"]
+        for _, prov, arm, cor, it, crd, ot, sec, cost in rs:
+            lines.append(f"| {prov} | {arm} | {cor} | {it} | {crd} | {ot} | {sec} | {cost} |")
         lines.append("")
-    (eval_dir / "results.md").write_text("\n".join(lines))
-    print(f"\nwrote {eval_dir / 'results.md'}")
+    (eval_dir / a.out).write_text("\n".join(lines))
+    print(f"\nwrote {eval_dir / a.out}")
 
 
 if __name__ == "__main__":

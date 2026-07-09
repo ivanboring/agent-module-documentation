@@ -70,9 +70,17 @@ Results are written to `modules/<name>/<version>/eval/results.md`.
 |---|---|
 | Arm | `vanilla` = bare prompt; `skill` = prompt with `drupal-module-docs` SKILL.md prepended |
 | Correct | execution: live-state verify pass/total; recipe: text-assertion pass/total |
-| In/Out tok | model input/output tokens (averaged over `--runs`) |
+| In tok | **fresh** (uncached) input tokens, averaged over `--runs` |
+| Cache-rd | cached input tokens **re-used** (priced at ~0.1×) — a big stable prefix (skill/memory) becomes mostly cache-reads after the first turn of a multi-turn run |
+| Out tok | output tokens — **never cached**, always full price; this is where the real arm-to-arm differences live |
 | Time (s) | wall-clock per case |
-| Cost $ | provider-reported (claude) or estimated (codex/gemini) |
+| Cost $ | provider-reported (claude `total_cost_usd`) — **already cache-aware** (reads ~0.1×, writes ~1.25×); the honest bottom line |
+
+Caching note: a skill/memory prefix is identical across the runs of an arm, so within a
+multi-turn run it is cached after turn 1 (cheap re-reads), and Claude's `total_cost_usd`
+prices that in. But the differences that decided our results were in **output** tokens
+(e.g. vanilla flailing to 8344 out-tokens on a task the skill did in 2092) — and output is
+never cacheable, so caching does not change those conclusions.
 
 **The hypothesis the skill should prove:** same-or-better *Correct* at **fewer tokens and
 less time** than vanilla — because reading `agent/start.md` + one solution doc is cheaper
