@@ -1,0 +1,29 @@
+{
+  "name": "Klaro Cookie & Consent Manager",
+  "data_name": "klaro",
+  "description": "Implements the Klaro! Consent Manager into Drupal.",
+  "version": "3.1.x",
+  "package": "User interface",
+  "composer_namespace": "drupal/klaro",
+  "composer_requirements": {
+    "drupal/core": "^10.2 || ^11",
+    "drupal/klaro_js": "~3.1.0"
+  },
+  "dependent_modules": [],
+  "configure": "klaro.admin",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 23177,
+  "project_url": "https://www.drupal.org/project/klaro",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": ["Security", "Integrations"],
+  "subcategories": ["Cookie consent / GDPR", "Analytics / tag management"],
+  "keywords": ["klaro", "cookie", "consent", "gdpr", "privacy", "consent manager", "cookie banner", "tracking", "opt-in", "contextual consent"]
+}

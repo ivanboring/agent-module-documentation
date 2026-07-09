@@ -1,0 +1,31 @@
+{
+  "name": "State Machine",
+  "data_name": "state_machine",
+  "description": "Provides code-driven workflow functionality.",
+  "version": "1.14.x",
+  "package": "Other",
+  "composer_namespace": "drupal/state_machine",
+  "composer_requirements": {
+    "php": ">=7.4",
+    "drupal/core": "^9.2 || ^10.1 || ^11"
+  },
+  "dependent_modules": ["drupal:options"],
+  "configure": null,
+  "core_version_requirement": "^9.2 || ^10.1 || ^11",
+  "active_installs": 28200,
+  "project_url": "https://www.drupal.org/project/state_machine",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=7.4",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/diff": "Dev dependency; enables a diff field builder for state fields when the Diff module is present."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": ["workflow (Plugin/Workflow)", "workflow_group (Plugin/WorkflowGroup)"],
+  "categories": ["Automation", "Developer tools"],
+  "subcategories": ["Workflow / state management"],
+  "keywords": ["state machine", "workflow", "transition", "state field", "guard", "commerce", "order", "code-driven workflow", "finite state machine"]
+}

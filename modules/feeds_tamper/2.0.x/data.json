@@ -1,0 +1,30 @@
+{
+  "name": "Feeds Tamper",
+  "data_name": "feeds_tamper",
+  "description": "Modify feeds data before it gets saved.",
+  "version": "2.0.x",
+  "package": "Feeds",
+  "composer_namespace": "drupal/feeds_tamper",
+  "composer_requirements": {
+    "drupal/feeds": "^3.0",
+    "drupal/tamper": "^1.0-alpha3",
+    "drupal/core": "^8 || ^9 || ^10 || ^11"
+  },
+  "dependent_modules": ["drupal:system", "feeds:feeds", "tamper:tamper"],
+  "configure": null,
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": 27087,
+  "project_url": "https://www.drupal.org/project/feeds_tamper",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": ["Import and export"],
+  "subcategories": ["Data transformation", "Feed aggregation"],
+  "keywords": ["feeds", "tamper", "import", "data transformation", "etl", "feeds tamper", "cleanup", "mapping", "sanitize"]
+}

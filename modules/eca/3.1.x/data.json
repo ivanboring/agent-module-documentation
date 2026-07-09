@@ -1,0 +1,41 @@
+{
+  "name": "ECA Core",
+  "data_name": "eca",
+  "description": "Core module for ECA framework.",
+  "version": "3.1.x",
+  "package": "ECA",
+  "composer_namespace": "drupal/eca",
+  "composer_requirements": {
+    "php": ">=8.3",
+    "ext-json": "*",
+    "dragonmantank/cron-expression": "^3.1",
+    "drupal/core": "^11.3 || ^12.0",
+    "drupal/modeler_api": "^1.1"
+  },
+  "dependent_modules": ["drupal:system", "drupal:user", "modeler_api:modeler_api"],
+  "configure": null,
+  "core_version_requirement": "^11.3 || ^12.0",
+  "active_installs": 20056,
+  "project_url": "https://www.drupal.org/project/eca",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.3",
+  "library_dependencies": ["dragonmantank/cron-expression"],
+  "suggests": {},
+  "submodules": [
+    "eca_access", "eca_base", "eca_cache", "eca_config", "eca_content",
+    "eca_development", "eca_endpoint", "eca_file", "eca_form", "eca_htmx",
+    "eca_language", "eca_log", "eca_menu", "eca_migrate", "eca_misc",
+    "eca_node_access", "eca_queue", "eca_render", "eca_ui", "eca_user",
+    "eca_views", "eca_workflow"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "EcaEvent (Plugin/ECA/Event)",
+    "EcaCondition (Plugin/ECA/Condition)"
+  ],
+  "categories": ["Automation", "Developer tools"],
+  "subcategories": ["Workflow / business rules"],
+  "keywords": ["eca", "rules", "workflow", "automation", "events", "conditions", "actions", "bpmn", "no-code", "orchestration", "business rules", "modeler"]
+}

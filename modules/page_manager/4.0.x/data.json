@@ -1,0 +1,30 @@
+{
+  "name": "Page Manager",
+  "data_name": "page_manager",
+  "description": "Provides a way to place blocks on a custom page.",
+  "version": "4.0.x",
+  "package": "Layout",
+  "composer_namespace": "drupal/page_manager",
+  "composer_requirements": {
+    "drupal/ctools": "^3.15 || ^4.1"
+  },
+  "dependent_modules": ["drupal:block", "ctools:ctools"],
+  "configure": null,
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": 28855,
+  "project_url": "https://www.drupal.org/project/page_manager",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/panels": "Adds a Panels display variant with selectable layouts and drag-and-drop block placement."
+  },
+  "submodules": ["page_manager_ui"],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": ["Site structure", "Content editing experience"],
+  "subcategories": ["Structured content / page building", "Layout Builder"],
+  "keywords": ["page manager", "pages", "display variant", "ctools", "custom pages", "blocks", "layout", "page variant", "selection criteria", "route override"]
+}

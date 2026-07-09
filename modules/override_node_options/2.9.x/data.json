@@ -1,0 +1,28 @@
+{
+  "name": "Override Node Options",
+  "data_name": "override_node_options",
+  "description": "Allow non-admins to override the default publishing options for nodes they can edit.",
+  "version": "2.9.x",
+  "package": "Permissions",
+  "composer_namespace": "drupal/override_node_options",
+  "composer_requirements": {
+    "drupal/core": "^9 || ^10 || ^11"
+  },
+  "dependent_modules": ["drupal:node"],
+  "configure": "override_node_options.settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 27650,
+  "project_url": "https://www.drupal.org/project/override_node_options",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": ["Access control", "Content editing experience"],
+  "subcategories": ["User roles & permissions"],
+  "keywords": ["override node options", "node", "permissions", "publishing options", "authoring information", "promote", "sticky", "revision", "published", "authored by"]
+}

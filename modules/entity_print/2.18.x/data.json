@@ -1,0 +1,31 @@
+{
+  "name": "Entity Print",
+  "data_name": "entity_print",
+  "description": "Allows any Drupal entity to be converted to a PDF.",
+  "version": "2.18.x",
+  "package": "Entity Print",
+  "composer_namespace": "drupal/entity_print",
+  "composer_requirements": {
+    "dompdf/dompdf": ">=2.0.7"
+  },
+  "dependent_modules": ["drupal:file", "drupal:image"],
+  "configure": "entity_print.settings",
+  "core_version_requirement": "^9.4 || ^10.0 || ^11",
+  "active_installs": 27784,
+  "project_url": "https://www.drupal.org/project/entity_print",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": ["dompdf/dompdf"],
+  "suggests": {
+    "mikehaertl/phpwkhtmltopdf": "PHP library required to use the Wkhtmltopdf print engine.",
+    "tecnickcom/tcpdf": "PHP library required to use the TCPDF print engine."
+  },
+  "submodules": ["entity_print_views"],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": ["print_engine (Plugin/EntityPrint/PrintEngine)", "export_type (Plugin/EntityPrint/ExportType)"],
+  "categories": ["Import and export", "Content display"],
+  "subcategories": ["Data export"],
+  "keywords": ["entity print", "pdf", "print", "dompdf", "wkhtmltopdf", "tcpdf", "export", "docx", "epub", "download", "printable"]
+}

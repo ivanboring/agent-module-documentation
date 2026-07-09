@@ -1,0 +1,28 @@
+{
+  "name": "Client-side Hierarchical Select",
+  "data_name": "cshs",
+  "description": "A simple client-side hierarchical select widget for taxonomy terms.",
+  "version": "4.0.x",
+  "package": "Widgets",
+  "composer_namespace": "drupal/cshs",
+  "composer_requirements": {
+    "php": ">=8.0"
+  },
+  "dependent_modules": ["drupal:field", "drupal:taxonomy"],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 22937,
+  "project_url": "https://www.drupal.org/project/cshs",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.0",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": ["cshs_menu_link"],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": ["Content editing experience", "Content display"],
+  "subcategories": ["Form widgets / select UI", "Field formatters"],
+  "keywords": ["cshs", "hierarchical select", "taxonomy", "term reference", "widget", "client-side", "select", "form element", "drilldown"]
+}

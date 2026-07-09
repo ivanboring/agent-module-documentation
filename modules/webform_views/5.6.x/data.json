@@ -1,0 +1,28 @@
+{
+  "name": "Webform Views Integration",
+  "data_name": "webform_views",
+  "description": "Webform integration with views.",
+  "version": "5.6.x",
+  "package": "Webform",
+  "composer_namespace": "drupal/webform_views",
+  "composer_requirements": {
+    "drupal/webform": "^6.2"
+  },
+  "dependent_modules": ["drupal:views", "webform:webform"],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 22845,
+  "project_url": "https://www.drupal.org/project/webform_views",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": ["webform_views_example"],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": ["Forms and surveys", "Content display"],
+  "subcategories": ["Submission handling", "View embedding"],
+  "keywords": ["webform", "views", "submissions", "webform submission", "reporting", "views field", "views filter", "views integration"]
+}

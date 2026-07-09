@@ -1,0 +1,28 @@
+{
+  "name": "Layout Builder Modal",
+  "data_name": "layout_builder_modal",
+  "description": "Open blocks in a modal in the Layout Builder UI.",
+  "version": "2.0.x",
+  "package": "Layout Builder",
+  "composer_namespace": "drupal/layout_builder_modal",
+  "composer_requirements": {
+    "drupal/core": "^9.5 || ^10.2 || ^11"
+  },
+  "dependent_modules": ["drupal:system (>=8.7.0)", "drupal:layout_builder"],
+  "configure": "layout_builder_modal.config",
+  "core_version_requirement": "^9.1 || ^10 || ^11",
+  "active_installs": 20767,
+  "project_url": "https://www.drupal.org/project/layout_builder_modal",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": ["Content display", "Content editing experience"],
+  "subcategories": ["Layout Builder", "Lightbox / modal display"],
+  "keywords": ["layout builder", "modal", "dialog", "blocks", "off-canvas", "ui", "editing experience"]
+}

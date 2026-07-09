@@ -1,0 +1,29 @@
+{
+  "name": "Leaflet",
+  "data_name": "leaflet",
+  "description": "Featured Integration with the Leaflet map scripting library.",
+  "version": "10.4.x",
+  "package": "Geofield",
+  "composer_namespace": "drupal/leaflet",
+  "composer_requirements": {
+    "drupal/core": "^10.3 || ^11",
+    "drupal/geofield": "^1.31 || ^10.3"
+  },
+  "dependent_modules": ["geofield:geofield"],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 26320,
+  "project_url": "https://www.drupal.org/project/leaflet",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": ["leaflet_markercluster", "leaflet_views"],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": ["Content display"],
+  "subcategories": ["Geospatial / location"],
+  "keywords": ["leaflet", "map", "maps", "geofield", "geospatial", "marker", "openstreetmap", "gis", "location", "geojson"]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "Real AES",
+  "data_name": "real_aes",
+  "description": "Provides an Authenticated AES encryption method for Encrypt through the Defuse PHP Encryption library.",
+  "version": "2.6.x",
+  "package": "Security",
+  "composer_namespace": "drupal/real_aes",
+  "composer_requirements": {
+    "drupal/encrypt": "^3.0",
+    "defuse/php-encryption": "^2.0"
+  },
+  "dependent_modules": ["encrypt:encrypt"],
+  "configure": null,
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": 27752,
+  "project_url": "https://www.drupal.org/project/real_aes",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": ["defuse/php-encryption"],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": ["Security"],
+  "subcategories": ["Secrets & key management"],
+  "keywords": ["real aes", "aes", "encryption", "encrypt", "defuse", "authenticated encryption", "aes-256", "cbc", "hmac", "encryption method"]
+}

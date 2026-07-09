@@ -1,0 +1,28 @@
+{
+  "name": "Editoria11y Community-Supported Addons",
+  "data_name": "editoria11y_csa",
+  "description": "Editoria11y CSA adds developer and contrast-checker test suites as well as dashboard update and maintenance tools.",
+  "version": "3.0.x",
+  "package": "Editoria11y",
+  "composer_namespace": "drupal/editoria11y",
+  "composer_requirements": {},
+  "dependent_modules": ["drupal:editoria11y"],
+  "configure": "editoria11y_csa.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 25326,
+  "project_url": "https://www.drupal.org/project/editoria11y",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/key": "Secure storage of the CSA license key."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": ["Accessibility", "Content editing experience"],
+  "subcategories": ["Debugging & inspection"],
+  "keywords": ["editoria11y", "csa", "contrast checker", "custom tests", "accessibility", "crawler", "developer tests", "license"]
+}

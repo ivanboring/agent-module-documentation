@@ -1,0 +1,28 @@
+{
+  "name": "Flood control",
+  "data_name": "flood_control",
+  "description": "Allows configuring hidden flood control options and unblocking IP addresses and user ID's that are blocked after multiple failed login attempts.",
+  "version": "3.0.x",
+  "package": "Administration",
+  "composer_namespace": "drupal/flood_control",
+  "composer_requirements": {
+    "drupal/core": "^10.2 || ^11"
+  },
+  "dependent_modules": [],
+  "configure": "flood_control.settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 25693,
+  "project_url": "https://www.drupal.org/project/flood_control",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": ["Security", "Administration tools"],
+  "subcategories": ["Session management", "User roles & permissions"],
+  "keywords": ["flood", "flood control", "login attempts", "brute force", "unblock ip", "rate limit", "user.flood", "failed login", "ip whitelist", "lockout"]
+}

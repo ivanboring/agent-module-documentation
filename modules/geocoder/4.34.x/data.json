@@ -1,0 +1,41 @@
+{
+  "name": "Geocoder",
+  "data_name": "geocoder",
+  "description": "An API to geocode and reverse geocode data into other GIS data types.",
+  "version": "4.34.x",
+  "package": "Geocoding",
+  "composer_namespace": "drupal/geocoder",
+  "composer_requirements": {
+    "php": ">=7.3.0",
+    "php-http/guzzle7-adapter": "^1.0",
+    "php-http/message": "^1.6",
+    "willdurand/geocoder": "^4.0|^5.0",
+    "davedevelopment/stiphle": "^0.9.2"
+  },
+  "dependent_modules": [],
+  "configure": "geocoder.settings",
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": 28338,
+  "project_url": "https://www.drupal.org/project/geocoder",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=7.3.0",
+  "library_dependencies": [
+    "php-http/guzzle7-adapter",
+    "php-http/message",
+    "willdurand/geocoder",
+    "davedevelopment/stiphle"
+  ],
+  "suggests": {
+    "drupal/geofield": "Store geocoded coordinates in a Geofield (via the geocoder_geofield submodule).",
+    "drupal/address": "Geocode from / reverse-geocode into Address fields (via the geocoder_address submodule).",
+    "geocoder-php/google-maps-provider": "Add the Google Maps geocoding provider (one of many optional willdurand/Geocoder provider packages)."
+  },
+  "submodules": ["geocoder_field", "geocoder_geofield", "geocoder_address"],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": ["Provider (Plugin/Geocoder/Provider)", "Dumper (Plugin/Geocoder/Dumper)", "Formatter (Plugin/Geocoder/Formatter)"],
+  "categories": ["Site structure", "Developer tools", "Integrations"],
+  "subcategories": ["Geospatial / location", "Data transformation"],
+  "keywords": ["geocoder", "geocode", "reverse geocode", "geocoding", "gis", "coordinates", "latitude", "longitude", "google maps", "nominatim", "address", "provider", "willdurand"]
+}

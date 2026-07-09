@@ -1,0 +1,30 @@
+{
+  "name": "Office Hours",
+  "data_name": "office_hours",
+  "description": "Defines a 'weekly office hours' field type, allowing you to specify when an Entity is open or closed.",
+  "version": "1.29.x",
+  "package": "Field types",
+  "composer_namespace": "drupal/office_hours",
+  "composer_requirements": {},
+  "dependent_modules": ["drupal:field", "drupal:datetime"],
+  "configure": null,
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": 19754,
+  "project_url": "https://www.drupal.org/project/office_hours",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/diff": "Field-level diff support for office_hours values.",
+    "drupal/feeds": "Import office hours via Feeds.",
+    "drupal/webform": "Use office hours as a Webform element."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": ["Content editing experience", "Content display"],
+  "subcategories": ["Date/time fields", "Fields", "Field formatters"],
+  "keywords": ["office hours", "opening hours", "field", "open closed", "business hours", "schedule", "week", "exceptions", "seasons", "status"]
+}

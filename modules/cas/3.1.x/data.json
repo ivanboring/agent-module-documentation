@@ -1,0 +1,30 @@
+{
+  "name": "CAS",
+  "data_name": "cas",
+  "description": "Provides CAS (Central Authentication Service) single sign-on authentication for Drupal.",
+  "version": "3.1.x",
+  "package": null,
+  "composer_namespace": "drupal/cas",
+  "composer_requirements": {
+    "ext-dom": "*",
+    "drupal/externalauth": "~2.0.6",
+    "drupal/js_cookie": "^1.0 || ^2.0"
+  },
+  "dependent_modules": ["externalauth:externalauth"],
+  "configure": "cas.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 19691,
+  "project_url": "https://www.drupal.org/project/cas",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": ["ext-dom"],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": ["Access control", "Security"],
+  "subcategories": ["External authentication", "Session management"],
+  "keywords": ["cas", "sso", "single sign-on", "authentication", "externalauth", "login", "apereo", "phpcas", "identity provider", "proxy"]
+}
