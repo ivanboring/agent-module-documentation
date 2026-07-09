@@ -1,0 +1,29 @@
+{
+  "name": "Diff",
+  "data_name": "diff",
+  "description": "Shows changes between content revisions.",
+  "version": "2.1.x",
+  "package": null,
+  "composer_namespace": "drupal/diff",
+  "composer_requirements": {
+    "php": "^8.1",
+    "mkalkbrenner/php-htmldiff-advanced": "~0.0.8"
+  },
+  "dependent_modules": [],
+  "configure": "diff.general_settings",
+  "core_version_requirement": "^10.5 || ^11",
+  "active_installs": 56751,
+  "project_url": "https://www.drupal.org/project/diff",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "^8.1",
+  "library_dependencies": ["mkalkbrenner/php-htmldiff-advanced"],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": ["FieldDiffBuilder (Plugin/diff/Field)", "DiffLayoutBuilder (Plugin/diff/Layout)"],
+  "categories": ["Content editing experience", "Developer tools"],
+  "subcategories": ["Revision comparison"],
+  "keywords": ["diff", "revisions", "compare", "changes", "content moderation", "audit", "version history", "field diff", "layout"]
+}

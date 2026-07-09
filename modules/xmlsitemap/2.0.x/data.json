@@ -1,0 +1,30 @@
+{
+  "name": "XML Sitemap",
+  "data_name": "xmlsitemap",
+  "description": "Creates an XML Sitemap conforming to the sitemaps.org protocol.",
+  "version": "2.0.x",
+  "package": "XML Sitemap",
+  "composer_namespace": "drupal/xmlsitemap",
+  "composer_requirements": {
+    "ext-xmlwriter": "*"
+  },
+  "dependent_modules": [],
+  "configure": "xmlsitemap.admin_search",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 66979,
+  "project_url": "https://www.drupal.org/project/xmlsitemap",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drush/drush": "Command-line regenerating and rebuilding sitemaps."
+  },
+  "submodules": ["xmlsitemap_custom", "xmlsitemap_engines"],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": ["Search engine optimization (SEO)"],
+  "subcategories": ["XML sitemaps"],
+  "keywords": ["xmlsitemap", "sitemap", "seo", "sitemaps.org", "search engines", "indexing", "crawl", "robots", "google", "bing"]
+}

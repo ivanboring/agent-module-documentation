@@ -1,0 +1,37 @@
+{
+  "name": "Entity Browser",
+  "data_name": "entity_browser",
+  "description": "Provide a generic entity browser/picker/selector.",
+  "version": "2.15.x",
+  "package": "Media",
+  "composer_namespace": "drupal/entity_browser",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "entity.entity_browser.collection",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 93951,
+  "project_url": "https://www.drupal.org/project/entity_browser",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/inline_entity_form": "Enables the Entity Browser IEF submodule (entity_browser_entity_form) for creating referenced entities inline.",
+    "drupal/token": "Adds token support in view/display configuration.",
+    "drupal/entity_embed": "Embed browsed entities into rich-text fields via a CKEditor button."
+  },
+  "submodules": ["entity_browser_example", "entity_form"],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "EntityBrowserDisplay (Plugin/EntityBrowser/Display)",
+    "EntityBrowserWidget (Plugin/EntityBrowser/Widget)",
+    "EntityBrowserWidgetSelector (Plugin/EntityBrowser/WidgetSelector)",
+    "EntityBrowserSelectionDisplay (Plugin/EntityBrowser/SelectionDisplay)",
+    "EntityBrowserFieldWidgetDisplay (Plugin/EntityBrowser/FieldWidgetDisplay)",
+    "EntityBrowserWidgetValidation (Plugin/EntityBrowser/WidgetValidation)"
+  ],
+  "categories": ["Media", "Content editing experience"],
+  "subcategories": ["Entity selection"],
+  "keywords": ["entity browser", "media", "entity reference", "picker", "selector", "widget", "modal", "iframe", "file browser", "media library", "views selection", "reference field"]
+}

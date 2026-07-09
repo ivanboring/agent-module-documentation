@@ -1,0 +1,28 @@
+{
+  "name": "Google Analytics",
+  "data_name": "google_analytics",
+  "description": "Allows your site to be tracked by Google Analytics by adding a Javascript tracking code to every page.",
+  "version": "4.0.x",
+  "package": "Statistics",
+  "composer_namespace": "drupal/google_analytics",
+  "composer_requirements": {},
+  "dependent_modules": ["drupal:path_alias"],
+  "configure": "google_analytics.admin_settings_form",
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": 75107,
+  "project_url": "https://www.drupal.org/project/google_analytics",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/token": "Enables extra token replacements (e.g. user role names/ids) usable in custom dimensions and code snippets."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": ["Integrations"],
+  "subcategories": ["Analytics & tracking"],
+  "keywords": ["google analytics", "ga4", "gtag", "tracking", "analytics", "statistics", "web property", "event tracking", "measurement id", "javascript snippet"]
+}

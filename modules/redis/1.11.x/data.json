@@ -1,0 +1,30 @@
+{
+  "name": "Redis",
+  "data_name": "redis",
+  "description": "Provide a module placeholder, for using as dependency for module that needs Redis.",
+  "version": "1.11.x",
+  "package": "Performance",
+  "composer_namespace": "drupal/redis",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "redis.report",
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": 52466,
+  "project_url": "https://www.drupal.org/project/redis",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "7.1.0",
+  "library_dependencies": [],
+  "suggests": {
+    "ext-redis": "Required to use the PhpRedis as redis driver (^4.0|^5.0).",
+    "ext-relay": "Required to use the Relay as Redis driver (^0.5|^1.0).",
+    "predis/predis": "Required to use the Predis as redis driver (^1.1|^2.0)."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": ["Performance", "Integrations"],
+  "subcategories": ["Caching backend"],
+  "keywords": ["redis", "cache", "cache backend", "performance", "lock", "flood", "queue", "phpredis", "predis", "relay", "key-value store", "settings.php"]
+}

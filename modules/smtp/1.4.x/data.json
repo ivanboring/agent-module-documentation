@@ -1,0 +1,30 @@
+{
+  "name": "SMTP Authentication Support",
+  "data_name": "smtp",
+  "description": "Allow for site emails to be sent through an SMTP server of your choice.",
+  "version": "1.4.x",
+  "package": "Mail",
+  "composer_namespace": "drupal/smtp",
+  "composer_requirements": {
+    "phpmailer/phpmailer": "^6.1.7"
+  },
+  "dependent_modules": [],
+  "configure": "smtp.config",
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": 98103,
+  "project_url": "https://www.drupal.org/project/smtp",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": ["phpmailer/phpmailer"],
+  "suggests": {
+    "drupal/mailsystem": "Allows using SMTP alongside other mail modules."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": ["Integrations"],
+  "subcategories": ["Email / SMTP"],
+  "keywords": ["smtp", "email", "mail", "phpmailer", "authentication", "tls", "ssl", "mail delivery", "transactional email"]
+}

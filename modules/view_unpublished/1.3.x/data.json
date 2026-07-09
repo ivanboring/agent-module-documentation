@@ -1,0 +1,28 @@
+{
+  "name": "View Unpublished",
+  "data_name": "view_unpublished",
+  "description": "Select which roles should be able to see unpublished nodes.",
+  "version": "1.3.x",
+  "package": "Permissions",
+  "composer_namespace": "drupal/view_unpublished",
+  "composer_requirements": {},
+  "dependent_modules": ["drupal:node"],
+  "configure": null,
+  "core_version_requirement": "^9.4 || ^10 || ^11",
+  "active_installs": 47922,
+  "project_url": "https://www.drupal.org/project/view_unpublished",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/override_node_options": "Let specific roles publish/unpublish certain node types without full node administration access."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": ["Access control"],
+  "subcategories": ["Unpublished content access"],
+  "keywords": ["view unpublished", "unpublished content", "node access", "permissions", "node grants", "moderation", "editorial", "preview"]
+}

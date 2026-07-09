@@ -1,0 +1,28 @@
+{
+  "name": "Backup and Migrate",
+  "data_name": "backup_migrate",
+  "description": "Backup the Drupal database and files or migrate them to another environment.",
+  "version": "5.1.x",
+  "package": "Other",
+  "composer_namespace": "drupal/backup_migrate",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "backup_migrate.quick_backup",
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": 58883,
+  "project_url": "https://www.drupal.org/project/backup_migrate",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "defuse/php-encryption": "Optional encryption of saved backups."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": ["BackupMigrateSourcePlugin (Plugin/BackupMigrateSource)", "BackupMigrateDestinationPlugin (Plugin/BackupMigrateDestination)"],
+  "categories": ["Administration tools", "Import and export"],
+  "subcategories": ["Backup & restore"],
+  "keywords": ["backup", "migrate", "restore", "database dump", "database backup", "files backup", "schedule", "snapshot", "disaster recovery", "sql dump", "export", "cron backup"]
+}

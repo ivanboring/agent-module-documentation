@@ -1,0 +1,28 @@
+{
+  "name": "Field Group",
+  "data_name": "field_group",
+  "description": "Provides the ability to group your fields on both form and display.",
+  "version": "4.0.x",
+  "package": "Fields",
+  "composer_namespace": "drupal/field_group",
+  "composer_requirements": {
+    "drupal/core": "^10.3 || ^11"
+  },
+  "dependent_modules": ["drupal:field"],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 230337,
+  "project_url": "https://www.drupal.org/project/field_group",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": ["field_group_accordion"],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": ["FieldGroupFormatter (Plugin/field_group/FieldGroupFormatter)"],
+  "categories": ["Content display", "Content editing experience"],
+  "subcategories": [],
+  "keywords": ["field group", "fieldgroup", "fields", "tabs", "accordion", "fieldset", "details", "form display", "view display", "field ui", "layout"]
+}

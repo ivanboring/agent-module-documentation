@@ -1,0 +1,30 @@
+{
+  "name": "Ultimate Cron",
+  "data_name": "ultimate_cron",
+  "description": "Runs cron jobs individually in parallel using configurable rules, pool management and load balancing.",
+  "version": "2.0.x",
+  "package": null,
+  "composer_namespace": "drupal/ultimate_cron",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "entity.ultimate_cron_job.collection",
+  "core_version_requirement": "^9.3 || ^10.1 || ^11",
+  "active_installs": 53786,
+  "project_url": "https://www.drupal.org/project/ultimate_cron",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "LauncherPlugin (Plugin/ultimate_cron/Launcher)",
+    "LoggerPlugin (Plugin/ultimate_cron/Logger)",
+    "SchedulerPlugin (Plugin/ultimate_cron/Scheduler)"
+  ],
+  "categories": ["Administration tools", "Automation"],
+  "subcategories": ["Cron / task scheduling"],
+  "keywords": ["ultimate cron", "cron", "cron jobs", "scheduler", "crontab", "task scheduling", "queue worker", "parallel", "load balancing", "drush cron", "job logging"]
+}

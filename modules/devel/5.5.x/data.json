@@ -1,0 +1,32 @@
+{
+  "name": "Devel",
+  "data_name": "devel",
+  "description": "Various blocks, pages, and functions for developers.",
+  "version": "5.5.x",
+  "package": "Development",
+  "composer_namespace": "drupal/devel",
+  "composer_requirements": {
+    "php": ">=8.3",
+    "symfony/var-dumper": "^4 || ^5 || ^6 || ^7",
+    "doctrine/common": "^2.7 || ^3.4"
+  },
+  "dependent_modules": [],
+  "configure": "devel.admin_settings",
+  "core_version_requirement": "^10.3 || ^11 || ^12",
+  "active_installs": 96997,
+  "project_url": "https://www.drupal.org/project/devel",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.3",
+  "library_dependencies": ["symfony/var-dumper", "doctrine/common"],
+  "suggests": {
+    "drush/drush": "Provides the devel:* command-line tools (token, hook, event, services, uuid, reinstall)."
+  },
+  "submodules": ["devel_generate"],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": ["DevelDumper (Plugin/Devel/Dumper)"],
+  "categories": ["Developer tools"],
+  "subcategories": ["Debugging & inspection"],
+  "keywords": ["devel", "debug", "developer", "dpm", "kint", "var-dumper", "switch user", "masquerade", "introspection", "query log", "generate"]
+}

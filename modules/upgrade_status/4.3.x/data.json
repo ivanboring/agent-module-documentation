@@ -1,0 +1,40 @@
+{
+  "name": "Upgrade Status",
+  "data_name": "upgrade_status",
+  "description": "Review Drupal major upgrade readiness of the environment and components of the site.",
+  "version": "4.3.x",
+  "package": "Administration",
+  "composer_namespace": "drupal/upgrade_status",
+  "composer_requirements": {
+    "mglaman/phpstan-drupal": "^1.2.11|^2.0",
+    "phpstan/phpstan-deprecation-rules": "^1.0.0|^2.0",
+    "dekor/php-array-table": "^2.0",
+    "nikic/php-parser": "^4.0.0|^5.0.0",
+    "webflo/drupal-finder": "^1.2",
+    "symfony/process": "^3.4|^4.0|^5.0|^6.0|^7.0"
+  },
+  "dependent_modules": ["drupal:update"],
+  "configure": "upgrade_status.report",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 63421,
+  "project_url": "https://www.drupal.org/project/upgrade_status",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "mglaman/phpstan-drupal",
+    "phpstan/phpstan-deprecation-rules",
+    "dekor/php-array-table",
+    "nikic/php-parser",
+    "webflo/drupal-finder",
+    "symfony/process"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": ["Developer tools", "Administration tools"],
+  "subcategories": ["Upgrade / deprecation analysis"],
+  "keywords": ["upgrade status", "deprecation", "phpstan", "drupal-rector", "readiness", "major upgrade", "drupal 11", "compatibility", "scan", "environment check"]
+}

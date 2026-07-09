@@ -1,65 +1,203 @@
 # Canonical category taxonomy for documented modules.
-# Top-level categories are seeded from Drupal.org's official module-category vocabulary
-# (https://www.drupal.org/jsonapi/taxonomy_term/module_categories). Add subcategories
-# organically as modules are processed. Consult this file before inventing a name so we
-# never create duplicate categories/subcategories.
-#
-# Shape:
-#   <Category>:
-#     tid: <drupal.org internal term id, if known>
-#     subcategories: [ ... ]   # our own finer-grained groupings
+# Top-level categories are Drupal.org's official module-category vocabulary plus a few
+# observed extras; subcategories are the finer groupings actually used across the
+# documented modules (auto-reconciled from each module's data.json). Consult this file
+# before inventing a category/subcategory name so we never create duplicates.
 
 categories:
   Access control:
-    subcategories: []
+    subcategories:
+      - CAPTCHA / bot protection
+      - Entity page behavior & redirects
+      - External authentication
+      - Spam prevention
+      - Spam prevention / CAPTCHA
+      - Submission handling
+      - Unpublished content access
   Accessibility:
     subcategories: []
   Administration tools:
     subcategories:
       - AI agents / taskable AI
+      - Admin toolbar / navigation
+      - Backup & restore
+      - Color schemes
+      - Configuration management
+      - Cron / task scheduling
+      - Entity reference tracking
+      - Feeds logging
+      - Upgrade / deprecation analysis
   Artificial Intelligence (AI):
     subcategories:
       - AI agents / taskable AI
-      - AI usage metering & cost
       - AI tooling / function calling
+      - AI usage metering & cost
   Automation:
     tid: 198
     subcategories:
+      - AI agents / taskable AI
+      - Content scheduling / publishing
+      - Cron / task scheduling
       - Token / placeholder replacement
       - URL alias generation
-      - AI agents / taskable AI
   Content display:
-    subcategories: []
+    subcategories:
+      - Block enhancements
+      - Entity page behavior & redirects
+      - Faceted search UI
+      - Field formatters
+      - Fields
+      - Geospatial / location
+      - HTML sitemap / navigation
+      - Icon management
+      - Layout Builder
+      - Lazy loading
+      - Lightbox / modal display
+      - Media embedding
+      - Pagers & lazy loading
+      - Responsive images
+      - Rich text embedding
+      - Video embedding
+      - View embedding
+      - Views exposed filters
   Content editing experience:
     subcategories:
       - AI agents / taskable AI
+      - Content cloning
+      - Content scheduling / publishing
+      - Entity reference tracking
+      - Entity selection
+      - Field validation
+      - File uploads
+      - Form builder
+      - Icon management
+      - Link fields
+      - Media embedding
+      - Revision comparison
+      - Rich text embedding
+      - Video embedding
   Decoupled:
     subcategories: []
   Developer tools:
     tid: 189
     subcategories:
+      - Configuration management
+      - Content indexing
+      - Debugging & inspection
+      - Email / mail delivery
+      - Entity API
+      - External library management
+      - File & media metadata
+      - JavaScript libraries
+      - JavaScript library
+      - Revision comparison
+      - Search backend
+      - Search framework
+      - Test content generation
       - Token / placeholder replacement
+      - Upgrade / deprecation analysis
+      - XML sitemaps
+      - jQuery UI libraries
   E-commerce:
-    subcategories: []
+    subcategories:
+      - Entity page behavior & redirects
+  Forms and surveys:
+    subcategories:
+      - Form builder
+      - Submission handling
+      - Survey / data collection
   Import and export:
-    subcategories: []
+    subcategories:
+      - Backup & restore
+      - Configuration management
+      - Content migration / import
+      - Data export
+      - Feed aggregation
+      - Feeds logging
+      - Migration tooling
+      - Video embedding
   Integrations:
-    subcategories: []
+    subcategories:
+      - Analytics & tracking
+      - Analytics / tag management
+      - Caching backend
+      - Content migration / import
+      - Content scheduling / publishing
+      - Email / SMTP
+      - Email / mail delivery
+      - Entity page behavior & redirects
+      - Feed aggregation
+      - File uploads
+      - Form builder
+      - Semantic metadata
+      - Submission handling
+      - Survey / data collection
+      - XML sitemaps
   Media:
-    subcategories: []
+    subcategories:
+      - Entity page behavior & redirects
+      - Entity selection
+      - File & media metadata
+      - File uploads
+      - Icon management
+      - Image cropping
+      - Lazy loading
+      - Lightbox / modal display
+      - Responsive images
+      - SVG / vector images
+      - Video embedding
   Multilingual:
     subcategories: []
   Performance:
-    subcategories: []
+    subcategories:
+      - Caching backend
+      - Lazy loading
+      - Responsive images
   Search engine optimization (SEO):
     tid: 201
     subcategories:
+      - Breadcrumbs
+      - HTML sitemap / navigation
+      - Meta tags / structured metadata
+      - Semantic metadata
+      - Structured data / Schema.org
       - URL alias generation
+      - XML sitemaps
   Security:
-    subcategories: []
+    subcategories:
+      - CAPTCHA / bot protection
+      - HTTP security headers
+      - Password policy
+      - Secrets & key management
+      - Spam control
+      - Spam prevention
+      - Spam prevention / CAPTCHA
+      - Spam protection
   Site search:
-    subcategories: []
+    subcategories:
+      - Content indexing
+      - Faceted search
+      - Faceted search UI
+      - Search backend
+      - Search framework
+      - Views exposed filters
   Site structure:
-    subcategories: []
+    subcategories:
+      - Block enhancements
+      - Breadcrumbs
+      - Entity page behavior & redirects
+      - Fields
+      - Geospatial / location
+      - HTML sitemap / navigation
+      - Layout Builder
+      - Navigation menus
+      - XML sitemaps
+  Theming:
+    subcategories:
+      - Color schemes
   User engagement:
-    subcategories: []
+    subcategories:
+      - Analytics / tag management
+      - Form builder
+      - Submission handling
+      - Survey / data collection

@@ -1,0 +1,30 @@
+{
+  "name": "Facets",
+  "data_name": "facets",
+  "description": "Faceted search interfaces that can be used on Search API searchers.",
+  "version": "3.0.x",
+  "package": "Search",
+  "composer_namespace": "drupal/facets",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "entity.facets_facet.collection",
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": 53140,
+  "project_url": "https://www.drupal.org/project/facets",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/better_exposed_filters": "Required for AJAX support for facets rendered as views exposed filters",
+    "drupal/jquery_ui_slider": "Required for the 'Facets Range Widget' module to work",
+    "drupal/jquery_ui_touch_punch": "Required for the 'Facets Range Widget' module to work"
+  },
+  "submodules": ["facets_exposed_filters", "facets_range_widget", "facets_rest", "facets_searchbox_widget", "facets_summary", "facets_demo"],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": ["facets_widget (Plugin/facets/widget)", "facets_processor (Plugin/facets/processor)", "facets_query_type (Plugin/facets/query_type)", "facets_url_processor (Plugin/facets/url_processor)", "facets_facet_source (Plugin/facets/facet_source)", "facets_hierarchy (Plugin/facets/hierarchy)"],
+  "categories": ["Site search"],
+  "subcategories": ["Faceted search"],
+  "keywords": ["facets", "faceted search", "search api", "filters", "facet", "search filter", "drill-down", "refine search", "widget", "solr"]
+}

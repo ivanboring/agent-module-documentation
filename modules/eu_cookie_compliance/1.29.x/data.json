@@ -1,0 +1,28 @@
+{
+  "name": "EU Cookie Compliance",
+  "data_name": "eu_cookie_compliance",
+  "description": "This module aims at making the website compliant with the new EU cookie regulation.",
+  "version": "1.29.x",
+  "package": "User interface",
+  "composer_namespace": "drupal/eu_cookie_compliance",
+  "composer_requirements": {
+    "drupal/core": "^8.9 || ^9 || ^10 || ^11"
+  },
+  "dependent_modules": ["drupal:filter"],
+  "configure": "eu_cookie_compliance.settings",
+  "core_version_requirement": "^8.9 || ^9 || ^10 || ^11",
+  "active_installs": 51009,
+  "project_url": "https://www.drupal.org/project/eu_cookie_compliance",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": ["klaro_migrator"],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": ["ConsentStorage (Plugin/ConsentStorage)"],
+  "categories": ["Security", "User engagement"],
+  "subcategories": [],
+  "keywords": ["cookie", "gdpr", "consent", "eu", "privacy", "cookie compliance", "banner", "popup", "cookie categories", "consent storage"]
+}

@@ -1,0 +1,40 @@
+{
+  "name": "Search API",
+  "data_name": "search_api",
+  "description": "Provides a generic framework for modules offering search capabilities.",
+  "version": "1.41.x",
+  "package": "Search",
+  "composer_namespace": "drupal/search_api",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "search_api.overview",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 149266,
+  "project_url": "https://www.drupal.org/project/search_api",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/facets": "Adds the ability to create faceted searches.",
+    "drupal/search_api_autocomplete": "Allows adding autocomplete suggestions to search fields.",
+    "drupal/search_api_solr": "Adds support for using Apache Solr as a backend."
+  },
+  "submodules": ["search_api_db"],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "search_api_backend",
+    "search_api_datasource",
+    "search_api_processor",
+    "search_api_tracker",
+    "search_api_data_type",
+    "search_api_display",
+    "search_api_parse_mode",
+    "search_api_index (config entity)",
+    "search_api_server (config entity)"
+  ],
+  "categories": ["Site search", "Developer tools"],
+  "subcategories": ["Search framework", "Content indexing"],
+  "keywords": ["search api", "search", "index", "indexing", "full text search", "facets", "backend", "solr", "database search", "query", "processor", "datasource", "tracker"]
+}

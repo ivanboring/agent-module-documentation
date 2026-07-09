@@ -1,0 +1,32 @@
+{
+  "name": "Migrate Plus",
+  "data_name": "migrate_plus",
+  "description": "Enhancements to core migration support.",
+  "version": "6.0.x",
+  "package": "Migration",
+  "composer_namespace": "drupal/migrate_plus",
+  "composer_requirements": {
+    "php": ">=8.2",
+    "drupal/core": "^10.5 || ^11"
+  },
+  "dependent_modules": ["drupal:migrate"],
+  "configure": null,
+  "core_version_requirement": "^10.5 || ^11",
+  "active_installs": 60263,
+  "project_url": "https://www.drupal.org/project/migrate_plus",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.2",
+  "library_dependencies": [],
+  "suggests": {
+    "sainsburys/guzzle-oauth2-plugin": "3.0 required for the OAuth2 authentication plugin",
+    "ext-soap": "Required for the SOAP data parser"
+  },
+  "submodules": ["migrate_example", "migrate_example_setup", "migrate_example_advanced", "migrate_example_advanced_setup", "migrate_json_example"],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": ["data_parser (Plugin/migrate_plus/data_parser)", "data_fetcher (Plugin/migrate_plus/data_fetcher)", "authentication (Plugin/migrate_plus/authentication)"],
+  "categories": ["Import and export"],
+  "subcategories": ["Migration tooling"],
+  "keywords": ["migrate", "migration", "etl", "import", "json", "xml", "csv", "soap", "url source", "data parser", "data fetcher", "oauth2", "migration group", "process plugin", "config entity"]
+}

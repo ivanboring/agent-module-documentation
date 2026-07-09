@@ -1,0 +1,32 @@
+{
+  "name": "Google Tag",
+  "data_name": "google_tag",
+  "description": "Sets up Google Tag",
+  "version": "2.0.x",
+  "package": null,
+  "composer_namespace": "drupal/google_tag",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "google_tag.settings_form",
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": 99020,
+  "project_url": "https://www.drupal.org/project/google_tag",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/csp": "Content-Security-Policy integration (nonce support for injected tags).",
+    "drupal/commerce": "Emit Commerce ecommerce events (add_to_cart, purchase, etc.).",
+    "drupal/webform": "Emit conversion/purchase events from Webform submissions.",
+    "drupal/search_api": "Emit search events from Search API queries.",
+    "drupal/token": "Token replacement in custom dimensions/metrics and event data."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": ["GoogleTagEvent (Plugin/GoogleTag/Event)"],
+  "categories": ["Integrations", "User engagement"],
+  "subcategories": ["Analytics / tag management"],
+  "keywords": ["google_tag", "gtag", "gtm", "google tag manager", "analytics", "ga4", "tracking", "datalayer", "events", "conversion", "container"]
+}

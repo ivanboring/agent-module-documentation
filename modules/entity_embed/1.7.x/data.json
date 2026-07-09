@@ -1,0 +1,30 @@
+{
+  "name": "Entity Embed",
+  "data_name": "entity_embed",
+  "description": "Allows entities to be embedded using a text editor.",
+  "version": "1.7.x",
+  "package": "Filters",
+  "composer_namespace": "drupal/entity_embed",
+  "composer_requirements": {
+    "drupal/embed": "^1.10"
+  },
+  "dependent_modules": ["drupal:editor", "embed:embed", "drupal:filter", "drupal:system"],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 66883,
+  "project_url": "https://www.drupal.org/project/entity_embed",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/entity_browser": "Adds an entity browser step to the embed dialog for selecting existing entities."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": ["EntityEmbedDisplay (Plugin/entity_embed/EntityEmbedDisplay)"],
+  "categories": ["Content editing experience", "Content display"],
+  "subcategories": ["Rich text embedding", "Media embedding"],
+  "keywords": ["entity embed", "ckeditor", "ckeditor5", "wysiwyg", "embed", "media", "filter", "text editor", "embed button", "display plugin"]
+}

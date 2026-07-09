@@ -1,0 +1,28 @@
+{
+  "name": "Linkit",
+  "data_name": "linkit",
+  "description": "Provides an easy interface for internal and external linking with wysiwyg editors.",
+  "version": "7.0.x",
+  "package": "User interface",
+  "composer_namespace": "drupal/linkit",
+  "composer_requirements": {
+    "drupal/core": "^10.2 || ^11"
+  },
+  "dependent_modules": [],
+  "configure": "entity.linkit_profile.collection",
+  "core_version_requirement": "^10.2 || ^11 || ^12",
+  "active_installs": 135764,
+  "project_url": "https://www.drupal.org/project/linkit",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": ["Matcher (Plugin/Linkit/Matcher)", "Substitution (Plugin/Linkit/Substitution)"],
+  "categories": ["Content editing experience"],
+  "subcategories": [],
+  "keywords": ["linkit", "autocomplete", "wysiwyg", "ckeditor", "internal link", "link", "matcher", "substitution", "profile", "editor", "entity link"]
+}

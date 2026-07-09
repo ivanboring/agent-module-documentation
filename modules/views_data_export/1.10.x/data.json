@@ -1,0 +1,32 @@
+{
+  "name": "Views Data Export",
+  "data_name": "views_data_export",
+  "description": "Plugin to export views data into various file formats.",
+  "version": "1.10.x",
+  "package": "Views",
+  "composer_namespace": "drupal/views_data_export",
+  "composer_requirements": {
+    "drupal/csv_serialization": "~1.4 || ~2.0 || ~3 || ~4",
+    "php": ">=8.1"
+  },
+  "dependent_modules": ["drupal:rest", "drupal:views", "csv_serialization:csv_serialization"],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 78534,
+  "project_url": "https://www.drupal.org/project/views_data_export",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/xls_serialization": "Adds XLS/XLSX export format support.",
+    "drupal/search_api": "Export Search API-backed views."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": ["Import and export"],
+  "subcategories": ["Data export"],
+  "keywords": ["views", "export", "csv", "xml", "json", "xls", "excel", "download", "data export", "serialization", "batch export"]
+}

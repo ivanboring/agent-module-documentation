@@ -1,0 +1,34 @@
+{
+  "name": "Geofield",
+  "data_name": "geofield",
+  "description": "Stores geographic and location data (points, lines, and polygons).",
+  "version": "10.3.x",
+  "package": "Geofield",
+  "composer_namespace": "drupal/geofield",
+  "composer_requirements": {
+    "itamair/geophp": "^1.6",
+    "drupal/core": "^10.3 || ^11 || ^12"
+  },
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11 || ^12",
+  "active_installs": 55573,
+  "project_url": "https://www.drupal.org/project/geofield",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": ["itamair/geophp (GeoPHP geometry library)"],
+  "suggests": {
+    "drupal/geofield_map": "Interactive back-end/front-end map widget and formatter for Geofield.",
+    "drupal/leaflet": "Leaflet JS mapping integration for points and geometries.",
+    "drupal/geocoder": "Geocode and reverse-geocode entity values into Geofield.",
+    "drupal/search_api_location": "Adds geospatial searching to Search API."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": ["GeofieldBackend (Plugin/GeofieldBackend)", "GeofieldProximitySource (Plugin/GeofieldProximitySource)"],
+  "categories": ["Site structure", "Content display"],
+  "subcategories": ["Fields", "Geospatial / location"],
+  "keywords": ["geofield", "geospatial", "location", "gis", "wkt", "geometry", "point", "polygon", "linestring", "latitude", "longitude", "proximity", "geophp", "geohash", "maps"]
+}

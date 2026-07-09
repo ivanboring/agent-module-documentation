@@ -1,0 +1,28 @@
+{
+  "name": "Link attributes",
+  "data_name": "link_attributes",
+  "description": "Provides a widget to allow settings of link attributes for link fields.",
+  "version": "2.1.x",
+  "package": null,
+  "composer_namespace": "drupal/link_attributes",
+  "composer_requirements": {
+    "php": ">=8.0"
+  },
+  "dependent_modules": ["drupal:link"],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11 || ^12",
+  "active_installs": 66199,
+  "project_url": "https://www.drupal.org/project/link_attributes",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.0",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": ["link_attributes_menu_link_content", "linkit_attributes"],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": ["link_attributes (YAML plugin, *.link_attributes.yml)"],
+  "categories": ["Content editing experience"],
+  "subcategories": ["Link fields"],
+  "keywords": ["link", "attributes", "rel", "target", "class", "widget", "field widget", "nofollow", "aria-label", "menu link"]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Key",
+  "data_name": "key",
+  "description": "Provides the ability to manage site-wide keys.",
+  "version": "1.22.x",
+  "package": "Security",
+  "composer_namespace": "drupal/key",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "entity.key.collection",
+  "core_version_requirement": "^9.1 || ^10 || ^11",
+  "active_installs": 78009,
+  "project_url": "https://www.drupal.org/project/key",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drush/drush": ">=11"
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": ["KeyType (Plugin/KeyType, @KeyType)", "KeyProvider (Plugin/KeyProvider, @KeyProvider)", "KeyInput (Plugin/KeyInput, @KeyInput)"],
+  "categories": ["Security"],
+  "subcategories": ["Secrets & key management"],
+  "keywords": ["key", "keys", "secret", "secrets management", "api key", "encryption key", "credentials", "password", "environment variable", "vault", "security"]
+}

@@ -1,0 +1,30 @@
+{
+  "name": "Colorbox",
+  "data_name": "colorbox",
+  "description": "A light-weight, customizable lightbox plugin for jQuery.",
+  "version": "2.2.x",
+  "package": "Media",
+  "composer_namespace": "drupal/colorbox",
+  "composer_requirements": {
+    "drupal/core": "^10 || ^11"
+  },
+  "dependent_modules": ["drupal:image"],
+  "configure": "colorbox.admin_settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 75368,
+  "project_url": "https://www.drupal.org/project/colorbox",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "turbojettechnologies/colorbox": "The Colorbox library is required to use the drupal/colorbox module."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": ["Media", "Content display"],
+  "subcategories": ["Lightbox / modal display"],
+  "keywords": ["colorbox", "lightbox", "modal", "jquery", "image", "gallery", "popup", "overlay", "field formatter", "media"]
+}

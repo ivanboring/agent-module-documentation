@@ -1,0 +1,30 @@
+{
+  "name": "File metadata manager",
+  "data_name": "file_mdm",
+  "description": "Provides a service to manage file metadata.",
+  "version": "3.2.x",
+  "package": "File metadata",
+  "composer_namespace": "drupal/file_mdm",
+  "composer_requirements": {
+    "drupal/core": "^11.2",
+    "dompdf/php-font-lib": "^1.0.1",
+    "fileeye/pel": "^0.12"
+  },
+  "dependent_modules": [],
+  "configure": "file_mdm.settings",
+  "core_version_requirement": "^11.2",
+  "active_installs": 58095,
+  "project_url": "https://www.drupal.org/project/file_mdm",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": ["dompdf/php-font-lib", "fileeye/pel"],
+  "suggests": {},
+  "submodules": ["file_mdm_exif", "file_mdm_font"],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": ["FileMetadata (Plugin/FileMetadata)"],
+  "categories": ["Media", "Developer tools"],
+  "subcategories": ["File & media metadata"],
+  "keywords": ["file metadata", "exif", "image size", "getimagesize", "font metadata", "file", "image", "cache", "metadata", "pel"]
+}

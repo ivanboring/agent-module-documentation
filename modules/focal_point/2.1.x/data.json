@@ -1,0 +1,28 @@
+{
+  "name": "Focal Point",
+  "data_name": "focal_point",
+  "description": "Allows users to specify the focal point of an image for use during cropping.",
+  "version": "2.1.x",
+  "package": "Media",
+  "composer_namespace": "drupal/focal_point",
+  "composer_requirements": {
+    "drupal/crop": "^2.3"
+  },
+  "dependent_modules": ["drupal:image", "crop:crop"],
+  "configure": null,
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": 98862,
+  "project_url": "https://www.drupal.org/project/focal_point",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": ["Media"],
+  "subcategories": ["Image cropping"],
+  "keywords": ["focal point", "image", "crop", "responsive images", "image style", "field widget", "image effect", "media", "thumbnail"]
+}

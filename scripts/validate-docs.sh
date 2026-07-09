@@ -28,13 +28,11 @@ fi
 
 # agent/start.md — must exist and its relative links must resolve
 if [ ! -f "$DIR/agent/start.md" ]; then err "$DIR/agent/start.md missing"; else
-  grep -oE '\]\(([^)]+\.md)\)' "$DIR/agent/start.md" | sed -E 's/\]\((.*)\)/\1/' | while read -r link; do
-    [ -f "$DIR/agent/$link" ] || echo "FAIL: broken link in start.md -> $link"
-  done
-  grep -qE '\]\(([^)]+\.md)\)' "$DIR/agent/start.md" && \
-    grep -oE '\]\(([^)]+\.md)\)' "$DIR/agent/start.md" | sed -E 's/\]\((.*)\)/\1/' | while read -r link; do
-      [ -f "$DIR/agent/$link" ] || exit 1
-    done || err "$DIR/agent/start.md has a broken link (see above)"
+  # Check any relative .md links resolve. Zero links is fine (trivial modules).
+  while read -r link; do
+    [ -z "$link" ] && continue
+    [ -f "$DIR/agent/$link" ] || err "$DIR/agent/start.md broken link -> $link"
+  done < <(grep -oE '\]\(([^)]+\.md)\)' "$DIR/agent/start.md" | sed -E 's/\]\((.*)\)/\1/')
 fi
 
 [ "$fail" -eq 0 ] && echo "OK: $DIR" || exit 1

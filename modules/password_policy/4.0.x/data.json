@@ -1,0 +1,38 @@
+{
+  "name": "Password Policy",
+  "data_name": "password_policy",
+  "description": "Sets up constraints and expiration of passwords.",
+  "version": "4.0.x",
+  "package": "Security",
+  "composer_namespace": "drupal/password_policy",
+  "composer_requirements": {},
+  "dependent_modules": ["drupal:datetime"],
+  "configure": "entity.password_policy.collection",
+  "core_version_requirement": "^9.1 || ^10 || ^11",
+  "active_installs": 47643,
+  "project_url": "https://www.drupal.org/project/password_policy",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/masquerade": "Optional; the event subscriber skips forced password reset while masquerading.",
+    "drupal/externalauth": "Externally authenticated users are excluded from validation and time-based expiration."
+  },
+  "submodules": [
+    "password_policy_blacklist",
+    "password_policy_character_types",
+    "password_policy_characters",
+    "password_policy_consecutive",
+    "password_policy_delay",
+    "password_policy_history",
+    "password_policy_length",
+    "password_policy_username"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": ["PasswordConstraint (Plugin/PasswordConstraint)"],
+  "categories": ["Security"],
+  "subcategories": ["Password policy"],
+  "keywords": ["password policy", "password constraints", "password expiration", "password reset", "security", "authentication", "password strength", "cron"]
+}

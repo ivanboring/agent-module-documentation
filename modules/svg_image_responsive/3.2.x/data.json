@@ -1,0 +1,28 @@
+{
+  "name": "SVG Image Responsive",
+  "data_name": "svg_image_responsive",
+  "description": "Overrides the responsive image formatter to support SVG files.",
+  "version": "3.2.x",
+  "package": "Media",
+  "composer_namespace": "drupal/svg_image",
+  "composer_requirements": {
+    "enshrined/svg-sanitize": ">=0.22 <1.0"
+  },
+  "dependent_modules": ["svg_image:svg_image", "drupal:responsive_image"],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 93696,
+  "project_url": "https://www.drupal.org/project/svg_image",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": ["enshrined/svg-sanitize"],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": ["Media"],
+  "subcategories": ["SVG / vector images"],
+  "keywords": ["svg", "responsive image", "formatter", "vector", "image field", "media", "picture", "srcset", "svg sanitize"]
+}
