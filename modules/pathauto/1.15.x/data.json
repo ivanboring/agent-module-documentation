@@ -1,0 +1,31 @@
+{
+  "name": "Pathauto",
+  "data_name": "pathauto",
+  "description": "Provides a mechanism for modules to automatically generate aliases for the content they manage.",
+  "version": "1.15.x",
+  "package": null,
+  "composer_namespace": "drupal/pathauto",
+  "composer_requirements": {
+    "drupal/token": "*",
+    "drupal/ctools": "*"
+  },
+  "dependent_modules": ["drupal:path", "token:token"],
+  "configure": "entity.pathauto_pattern.collection",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 334146,
+  "project_url": "https://www.drupal.org/project/pathauto",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/redirect": "When installed Pathauto provides an 'Update Action' that creates a redirect when URLs change (recommended for SEO and usability)."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": ["AliasType (Plugin/pathauto/AliasType)"],
+  "categories": ["Automation", "Search engine optimization (SEO)"],
+  "subcategories": ["URL alias generation"],
+  "keywords": ["pathauto", "url alias", "path", "seo", "clean urls", "pattern", "token", "alias", "transliteration"]
+}

@@ -1,0 +1,59 @@
+# Canonical category taxonomy for documented modules.
+# Top-level categories are seeded from Drupal.org's official module-category vocabulary
+# (https://www.drupal.org/jsonapi/taxonomy_term/module_categories). Add subcategories
+# organically as modules are processed. Consult this file before inventing a name so we
+# never create duplicate categories/subcategories.
+#
+# Shape:
+#   <Category>:
+#     tid: <drupal.org internal term id, if known>
+#     subcategories: [ ... ]   # our own finer-grained groupings
+
+categories:
+  Access control:
+    subcategories: []
+  Accessibility:
+    subcategories: []
+  Administration tools:
+    subcategories: []
+  Artificial Intelligence (AI):
+    subcategories: []
+  Automation:
+    tid: 198
+    subcategories:
+      - Token / placeholder replacement
+      - URL alias generation
+  Content display:
+    subcategories: []
+  Content editing experience:
+    subcategories: []
+  Decoupled:
+    subcategories: []
+  Developer tools:
+    tid: 189
+    subcategories:
+      - Token / placeholder replacement
+  E-commerce:
+    subcategories: []
+  Import and export:
+    subcategories: []
+  Integrations:
+    subcategories: []
+  Media:
+    subcategories: []
+  Multilingual:
+    subcategories: []
+  Performance:
+    subcategories: []
+  Search engine optimization (SEO):
+    tid: 201
+    subcategories:
+      - URL alias generation
+  Security:
+    subcategories: []
+  Site search:
+    subcategories: []
+  Site structure:
+    subcategories: []
+  User engagement:
+    subcategories: []
