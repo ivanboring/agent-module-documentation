@@ -1,0 +1,39 @@
+{
+  "name": "AI Chatbot",
+  "data_name": "ai_chatbot",
+  "description": "Provides a chatbot frontend for the AI Assistant API.",
+  "version": "1.4.x",
+  "release_stability": "stable",
+  "package": "AI Tools",
+  "composer_namespace": "drupal/ai",
+  "composer_requirements": {},
+  "dependent_modules": ["ai:ai_assistant_api"],
+  "configure": null,
+  "core_version_requirement": "^10.4 || ^11",
+  "active_installs": null,
+  "project_url": "https://www.drupal.org/project/ai",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "league/commonmark": "Required to render chatbot responses as formatted HTML (composer require league/commonmark)."
+  },
+  "part_of": "ai",
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "provides_config_entities": [],
+  "provides_content_entities": [],
+  "consumes_plugin_types": ["Block (core), AiAssistant (ai_assistant_api)"],
+  "routes": {
+    "ai_chatbot.api": "/api/deepchat",
+    "ai_chatbot.session": "/api/deepchat/session",
+    "ai_chatbot.reset_conversation": "/ajax/chatbot/reset-session/{assistant_id}/{thread_id}",
+    "ai_chatbot.message_skeleton": "/ajax/chatbot/message-skeleton/{assistant_id}/{thread_id}/{user}"
+  },
+  "categories": ["Artificial Intelligence (AI)", "User engagement"],
+  "subcategories": ["Block enhancements"],
+  "keywords": ["ai", "chatbot", "chat", "assistant", "deepchat", "block", "llm", "conversational ui", "streaming", "ai_assistant_api", "frontend"]
+}
