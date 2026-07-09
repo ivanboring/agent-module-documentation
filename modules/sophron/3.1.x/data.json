@@ -1,0 +1,29 @@
+{
+  "name": "Sophron",
+  "data_name": "sophron",
+  "description": "Provides an extensive MIME types management API.",
+  "version": "3.1.x",
+  "package": null,
+  "composer_namespace": "drupal/sophron",
+  "composer_requirements": {
+    "drupal/core": "^11.2 | ^12",
+    "fileeye/mimemap": "^2.2.5"
+  },
+  "dependent_modules": [],
+  "configure": "sophron.settings",
+  "core_version_requirement": "^11.2 | ^12",
+  "active_installs": 33865,
+  "project_url": "https://www.drupal.org/project/sophron",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": ["fileeye/mimemap"],
+  "suggests": {},
+  "submodules": ["sophron_guesser"],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": ["Developer tools"],
+  "subcategories": ["File & media metadata"],
+  "keywords": ["sophron", "mime type", "mimemap", "file extension", "media type", "mime map", "content type", "fileeye"]
+}

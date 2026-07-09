@@ -1,0 +1,31 @@
+{
+  "name": "Smart Date",
+  "data_name": "smart_date",
+  "description": "Provides the ability to store start and end times, with duration. Also provides an intelligent admin UI, and a variety of formatting options.",
+  "version": "4.2.x",
+  "package": "Field types",
+  "composer_namespace": "drupal/smart_date",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "simshaun/recurr": "^5"
+  },
+  "dependent_modules": ["drupal:datetime", "drupal:options"],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 37098,
+  "project_url": "https://www.drupal.org/project/smart_date",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": ["simshaun/recurr"],
+  "suggests": {
+    "drupal/multiple_fields_remove_button": "Provides a button for editors to remove unwanted rows."
+  },
+  "submodules": ["smart_date_recur"],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": ["Content display", "Content editing experience"],
+  "subcategories": ["Date/time fields"],
+  "keywords": ["smart date", "date", "time", "duration", "start end", "events", "recurring", "date range", "field type", "all day"]
+}

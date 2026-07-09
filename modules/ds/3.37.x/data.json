@@ -1,0 +1,30 @@
+{
+  "name": "Display Suite",
+  "data_name": "ds",
+  "description": "Extend the display options for every entity type.",
+  "version": "3.37.x",
+  "package": "Display Suite",
+  "composer_namespace": "drupal/ds",
+  "composer_requirements": {
+    "drupal/core": "^10.2 || ^11"
+  },
+  "dependent_modules": ["drupal:layout_discovery"],
+  "configure": "ds.structure",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 43695,
+  "project_url": "https://www.drupal.org/project/ds",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/field_group": "Group fields into containers (tabs, accordions, fieldsets) within Display Suite layouts."
+  },
+  "submodules": ["ds_devel", "ds_extras", "ds_switch_view_mode"],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": ["DsField (Plugin/DsField)", "DsFieldTemplate (Plugin/DsFieldTemplate)"],
+  "categories": ["Content display", "Site structure"],
+  "subcategories": ["Field formatters", "Layout Builder"],
+  "keywords": ["display suite", "ds", "layout", "entity display", "view mode", "fields", "regions", "field template", "theming", "custom fields"]
+}

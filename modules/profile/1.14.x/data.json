@@ -1,0 +1,32 @@
+{
+  "name": "Profile",
+  "data_name": "profile",
+  "description": "Provides configurable user profiles.",
+  "version": "1.14.x",
+  "package": null,
+  "composer_namespace": "drupal/profile",
+  "composer_requirements": {
+    "php": "^7.4 || ^8.0",
+    "drupal/entity": "^1.0"
+  },
+  "dependent_modules": ["drupal:field", "drupal:user", "drupal:views", "entity:entity"],
+  "configure": "entity.profile_type.collection",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 34044,
+  "project_url": "https://www.drupal.org/project/profile",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "^7.4 || ^8.0",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/token": "Token support for profile fields.",
+    "drupal/search_api": "Index user profiles in Search API."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": ["User engagement", "Site structure"],
+  "subcategories": ["Fields"],
+  "keywords": ["profile", "user profile", "profile type", "fields", "user data", "entity", "membership", "registration", "multiple profiles"]
+}

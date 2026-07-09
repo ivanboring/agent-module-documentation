@@ -1,0 +1,30 @@
+{
+  "name": "Pantheon Advanced Page Cache",
+  "data_name": "pantheon_advanced_page_cache",
+  "description": "Advanced page cache capabilities for Pantheon.",
+  "version": "2.4.x",
+  "package": "Performance and scalability",
+  "composer_namespace": "pantheon-systems/pantheon_advanced_page_cache",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "symfony/http-foundation": "^6 || ^7",
+    "guzzlehttp/psr7": "^2.4.5"
+  },
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 33234,
+  "project_url": "https://www.drupal.org/project/pantheon_advanced_page_cache",
+  "license": "MIT",
+  "php_requirement": ">=8.1",
+  "library_dependencies": ["symfony/http-foundation", "guzzlehttp/psr7"],
+  "suggests": {},
+  "submodules": ["pantheon_advanced_page_cache_test"],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": ["Performance", "Integrations"],
+  "subcategories": ["Caching backend"],
+  "keywords": ["pantheon", "cache", "surrogate key", "cache tags", "edge cache", "cdn", "varnish", "page cache", "invalidation"]
+}

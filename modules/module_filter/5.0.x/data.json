@@ -1,0 +1,28 @@
+{
+  "name": "Module Filter",
+  "data_name": "module_filter",
+  "description": "Filter the modules list.",
+  "version": "5.0.x",
+  "package": "Administration",
+  "composer_namespace": "drupal/module_filter",
+  "composer_requirements": {
+    "drupal/jquery_ui_autocomplete": "^2.1"
+  },
+  "dependent_modules": ["drupal:system", "jquery_ui_autocomplete:jquery_ui_autocomplete"],
+  "configure": "module_filter.settings",
+  "core_version_requirement": "^10 || ^11 || ^12",
+  "active_installs": 43531,
+  "project_url": "https://www.drupal.org/project/module_filter",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": ["Administration tools"],
+  "subcategories": ["Admin toolbar / navigation"],
+  "keywords": ["module filter", "modules page", "extend page", "admin", "filter", "tabs", "update status", "permissions page", "usability"]
+}

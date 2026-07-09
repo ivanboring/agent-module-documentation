@@ -1,0 +1,29 @@
+{
+  "name": "CKEditor Anchor Link",
+  "data_name": "anchor_link",
+  "description": "This plugin module adds the better link dialog and anchor related features to CKEditor in Drupal 9",
+  "version": "3.0.x",
+  "package": "CKEditor",
+  "composer_namespace": "drupal/anchor_link",
+  "composer_requirements": {
+    "drupal/core": "^9 || ^10 || ^11",
+    "vardot/ckeditor5-anchor-drupal": "^1.0.3 || ^2.0.4"
+  },
+  "dependent_modules": ["drupal:ckeditor5", "drupal:editor"],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 31683,
+  "project_url": "https://www.drupal.org/project/anchor_link",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": ["vardot/ckeditor5-anchor-drupal"],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": ["Content editing experience"],
+  "subcategories": ["Rich text embedding"],
+  "keywords": ["anchor", "link", "ckeditor5", "ckeditor", "wysiwyg", "editor", "named anchor", "jump link", "in-page navigation", "linkit"]
+}

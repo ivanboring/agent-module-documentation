@@ -1,0 +1,28 @@
+{
+  "name": "Encrypt",
+  "data_name": "encrypt",
+  "description": "Provides an API for two-way encryption.",
+  "version": "3.2.x",
+  "package": "Encryption",
+  "composer_namespace": "drupal/encrypt",
+  "composer_requirements": {
+    "drupal/key": "^1"
+  },
+  "dependent_modules": ["key:key"],
+  "configure": "entity.encryption_profile.collection",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": 31436,
+  "project_url": "https://www.drupal.org/project/encrypt",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": ["EncryptionMethod (Plugin/EncryptionMethod)"],
+  "categories": ["Security"],
+  "subcategories": ["Secrets & key management"],
+  "keywords": ["encrypt", "encryption", "decrypt", "two-way encryption", "cipher", "key", "encryption profile", "encryption method", "security", "api"]
+}

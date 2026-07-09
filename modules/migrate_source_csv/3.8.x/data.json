@@ -1,0 +1,30 @@
+{
+  "name": "Migrate Source CSV",
+  "data_name": "migrate_source_csv",
+  "description": "CSV source migration.",
+  "version": "3.8.x",
+  "package": "Migration",
+  "composer_namespace": "drupal/migrate_source_csv",
+  "composer_requirements": {
+    "php": ">=7.1",
+    "drupal/core": ">=9.1",
+    "league/csv": "^9.1"
+  },
+  "dependent_modules": ["drupal:migrate"],
+  "configure": null,
+  "core_version_requirement": ">=9.1",
+  "active_installs": 34917,
+  "project_url": "https://www.drupal.org/project/migrate_source_csv",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=7.1",
+  "library_dependencies": ["league/csv"],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": ["Import and export", "Developer tools"],
+  "subcategories": ["Content migration / import", "Migration tooling"],
+  "keywords": ["migrate", "csv", "source plugin", "migration", "import", "etl", "league/csv", "data import"]
+}

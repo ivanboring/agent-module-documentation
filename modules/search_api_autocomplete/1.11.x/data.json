@@ -1,0 +1,28 @@
+{
+  "name": "Search API Autocomplete",
+  "data_name": "search_api_autocomplete",
+  "description": "Adds autocomplete functionality to searches.",
+  "version": "1.11.x",
+  "package": "Search",
+  "composer_namespace": "drupal/search_api_autocomplete",
+  "composer_requirements": {
+    "drupal/search_api": "^1.0"
+  },
+  "dependent_modules": ["search_api:search_api"],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 37153,
+  "project_url": "https://www.drupal.org/project/search_api_autocomplete",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": ["SearchApiAutocompleteSuggester (Plugin/search_api_autocomplete/suggester)", "SearchApiAutocompleteSearch (Plugin/search_api_autocomplete/search)"],
+  "categories": ["Site search"],
+  "subcategories": ["Autocomplete / typeahead"],
+  "keywords": ["search api", "autocomplete", "typeahead", "suggestions", "search", "live results", "suggester", "solr"]
+}

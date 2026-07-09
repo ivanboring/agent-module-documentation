@@ -1,0 +1,28 @@
+{
+  "name": "Automated Logout",
+  "data_name": "autologout",
+  "description": "Adds automated timed logout.",
+  "version": "2.0.x",
+  "package": "Security",
+  "composer_namespace": "drupal/autologout",
+  "composer_requirements": {
+    "drupal/js_cookie": "*"
+  },
+  "dependent_modules": [],
+  "configure": "autologout.set_admin",
+  "core_version_requirement": "^9.2 || ^10 || ^11",
+  "active_installs": 35262,
+  "project_url": "https://www.drupal.org/project/autologout",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": ["Security", "Access control"],
+  "subcategories": ["Session management"],
+  "keywords": ["autologout", "auto logout", "session timeout", "inactivity", "idle", "logout", "security", "session", "timeout"]
+}

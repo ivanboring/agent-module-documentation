@@ -1,0 +1,29 @@
+{
+  "name": "Scheduler Content Moderation Integration",
+  "data_name": "scheduler_content_moderation_integration",
+  "description": "Scheduler sub-module providing content moderation functionality for publishing/unpublishing.",
+  "version": "3.0.x",
+  "package": null,
+  "composer_namespace": "drupal/scheduler_content_moderation_integration",
+  "composer_requirements": {
+    "drupal/core": "^10.3 || ^11",
+    "drupal/scheduler": "^2.1"
+  },
+  "dependent_modules": ["drupal:options", "drupal:content_moderation", "scheduler:scheduler"],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 32431,
+  "project_url": "https://www.drupal.org/project/scheduler_content_moderation_integration",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": ["Content editing experience", "Automation"],
+  "subcategories": ["Content scheduling / publishing"],
+  "keywords": ["scheduler", "content moderation", "workflow", "publish", "unpublish", "moderation state", "scheduled transition", "editorial workflow", "draft"]
+}

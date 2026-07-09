@@ -1,0 +1,31 @@
+{
+  "name": "Color Field",
+  "data_name": "color_field",
+  "description": "Provides a color field type to store the color value and opacity.",
+  "version": "3.0.x",
+  "package": "Field types",
+  "composer_namespace": "drupal/color_field",
+  "composer_requirements": {
+    "drupal/core": "^9 || ^10 || ^11"
+  },
+  "dependent_modules": ["drupal:field"],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 41760,
+  "project_url": "https://www.drupal.org/project/color_field",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/token": "Token integration exposes color_field HEX/RGB tokens (test dependency).",
+    "drupal/feeds": "A Feeds target maps imported values into a color field."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": ["Content display", "Site structure"],
+  "subcategories": ["Fields", "Field formatters"],
+  "keywords": ["color", "field", "color picker", "hex", "rgb", "opacity", "swatch", "spectrum", "field type", "widget", "formatter"]
+}

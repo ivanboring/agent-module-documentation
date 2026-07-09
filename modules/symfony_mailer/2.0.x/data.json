@@ -1,0 +1,30 @@
+{
+  "name": "Mailer Plus",
+  "data_name": "symfony_mailer",
+  "description": "Enhanced integration of Symfony Mailer into Drupal.",
+  "version": "2.0.x",
+  "package": "Mail",
+  "composer_namespace": "drupal/symfony_mailer",
+  "composer_requirements": {
+    "html2text/html2text": "^4.0.1",
+    "symfony/mailer": "^6.0 || ^7.0",
+    "tijsverkoyen/css-to-inline-styles": "^2.2"
+  },
+  "dependent_modules": ["symfony_mailer:mailer_transport", "drupal:filter"],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 43955,
+  "project_url": "https://www.drupal.org/project/symfony_mailer",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": ["html2text/html2text", "symfony/mailer", "tijsverkoyen/css-to-inline-styles"],
+  "suggests": {},
+  "submodules": ["mailer_transport", "mailer_policy", "mailer_override"],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": ["MailerInfo / component mailer (Attribute/MailerInfo, MailerLookup)"],
+  "categories": ["Integrations", "Developer tools"],
+  "subcategories": ["Email / mail delivery", "Email / SMTP"],
+  "keywords": ["symfony_mailer", "mailer plus", "email", "symfony mailer", "smtp", "html email", "mail", "transport", "mailer policy", "css inlining", "dsn"]
+}
