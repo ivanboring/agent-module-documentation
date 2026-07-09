@@ -52,7 +52,9 @@ For each page of the [data source](data-source.md), starting at the offset in
      module actually warrants (`configure`, `plugins`, `extend`, `api`, `hooks`, `drush`,
      `permissions`, `theming`). Each doc must be cheaper to read than the source.
 
-7. **Recurse** into every submodule (step 4–6) under `modules/{submodule_name}/{version}/`.
+7. **Recurse** into every submodule (step 4–6), writing it nested under its parent at
+   `modules/{parent}/modules/{submodule_name}/{version}/` (deeper if the submodule itself
+   has submodules).
 
 8. **Update taxonomy.** Add any new category/subcategory to
    [`../categories.yml`](../categories.yml) — never duplicate an existing name.
