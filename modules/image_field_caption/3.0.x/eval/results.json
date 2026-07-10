@@ -1,0 +1,343 @@
+{
+  "module": "image_field_caption",
+  "version": "3.0.x",
+  "skill_name": "drupal-module-docs",
+  "cases": {
+    "ifc-enable-caption": {
+      "type": "recipe",
+      "question": "On Drupal 11 I want editors to add a caption under each image on an existing image field. Using the Image Field Caption module, what do I turn on in field settings and which display formatter do I choose?",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 892,
+            "time": 16.0,
+            "cost": 0.0481
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2958,
+            "cache_reads": 81564,
+            "out_tokens": 974,
+            "time": 19.5,
+            "cost": 0.1614
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 430,
+            "time": 9.3,
+            "cost": 0.0925
+          }
+        }
+      }
+    },
+    "ifc-no-settings-page": {
+      "type": "recipe",
+      "question": "Where is the global admin settings page for the Image Field Caption module, and does it add any permissions or Drush commands?",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2,
+            "cache_reads": 21192,
+            "out_tokens": 503,
+            "time": 41.7,
+            "cost": 0.2786
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2956,
+            "cache_reads": 55081,
+            "out_tokens": 604,
+            "time": 12.3,
+            "cost": 0.1082
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 167,
+            "time": 6.3,
+            "cost": 0.0856
+          }
+        }
+      }
+    },
+    "ifc-storage-tables": {
+      "type": "recipe",
+      "question": "In Image Field Caption, where is the caption text stored \u2014 in the image field's own columns or elsewhere? Name the storage.",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2956,
+            "cache_reads": 54337,
+            "out_tokens": 742,
+            "time": 18.1,
+            "cost": 0.1274
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2958,
+            "cache_reads": 76262,
+            "out_tokens": 739,
+            "time": 15.4,
+            "cost": 0.1335
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 101,
+            "time": 4.1,
+            "cost": 0.084
+          }
+        }
+      }
+    },
+    "ifc-formatter-class": {
+      "type": "recipe",
+      "question": "How does Image Field Caption implement its display \u2014 does it define a new field type? Name the formatter plugin id and what it extends.",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2958,
+            "cache_reads": 75011,
+            "out_tokens": 858,
+            "time": 15.7,
+            "cost": 0.119
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2962,
+            "cache_reads": 120082,
+            "out_tokens": 1362,
+            "time": 27.0,
+            "cost": 0.167
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 438,
+            "time": 9.4,
+            "cost": 0.0924
+          }
+        }
+      }
+    },
+    "ifc-theme-markup": {
+      "type": "recipe",
+      "question": "I want to change the HTML wrapper and CSS around an Image Field Caption caption. Which Twig template do I override and what element/class wraps the caption by default?",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2958,
+            "cache_reads": 77715,
+            "out_tokens": 1169,
+            "time": 21.2,
+            "cost": 0.152
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2960,
+            "cache_reads": 97283,
+            "out_tokens": 933,
+            "time": 22.0,
+            "cost": 0.1442
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 251,
+            "time": 22.7,
+            "cost": 0.0879
+          }
+        }
+      }
+    },
+    "ifc-read-caption-api": {
+      "type": "recipe",
+      "question": "From custom code, how do I read a stored caption for a given entity/field/delta in Image Field Caption? Name the service and method.",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2960,
+            "cache_reads": 96466,
+            "out_tokens": 1071,
+            "time": 23.5,
+            "cost": 0.1474
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2958,
+            "cache_reads": 76221,
+            "out_tokens": 860,
+            "time": 16.2,
+            "cost": 0.1361
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 246,
+            "time": 7.3,
+            "cost": 0.0877
+          }
+        }
+      }
+    },
+    "ifc-revisions-limitation": {
+      "type": "recipe",
+      "question": "Does Image Field Caption keep a separate caption per entity revision?",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2960,
+            "cache_reads": 103877,
+            "out_tokens": 1412,
+            "time": 29.1,
+            "cost": 0.2305
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2962,
+            "cache_reads": 122087,
+            "out_tokens": 1267,
+            "time": 25.5,
+            "cost": 0.1859
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 372,
+            "time": 8.3,
+            "cost": 0.0906
+          }
+        }
+      }
+    }
+  }
+}
