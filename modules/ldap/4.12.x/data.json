@@ -1,0 +1,60 @@
+{
+  "name": "LDAP",
+  "data_name": "ldap",
+  "description": "Lightweight Directory Access Protocol (LDAP) integration suite: server configuration, authentication, user provisioning, query and authorization.",
+  "version": "4.12.x",
+  "package": "Lightweight Directory Access Protocol",
+  "composer_namespace": "drupal/ldap",
+  "composer_requirements": {
+    "symfony/ldap": "^5.4 || ^6.0",
+    "drupal/authorization": "^1.0",
+    "drupal/externalauth": "^2.0"
+  },
+  "dependent_modules": [
+    "ldap:ldap_servers"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 355,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/ldap",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "symfony/ldap"
+  ],
+  "suggests": {},
+  "submodules": [
+    "ldap_servers",
+    "ldap_authentication",
+    "ldap_user",
+    "ldap_query",
+    "ldap_authorization"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Access control"
+  ],
+  "subcategories": [
+    "External authentication",
+    "User roles & permissions"
+  ],
+  "keywords": [
+    "ldap",
+    "active directory",
+    "directory",
+    "authentication",
+    "sso",
+    "single sign-on",
+    "user provisioning",
+    "authorization",
+    "group sync",
+    "externalauth",
+    "symfony/ldap"
+  ]
+}

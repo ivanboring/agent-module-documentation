@@ -1,0 +1,66 @@
+{
+  "name": "Translation Management Core",
+  "data_name": "tmgmt",
+  "description": "Core functionality for the Translation Management Suite.",
+  "version": "1.18.x",
+  "package": "Translation Management",
+  "composer_namespace": "drupal/tmgmt",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:language",
+    "drupal:views",
+    "drupal:block",
+    "drupal:options"
+  ],
+  "configure": "tmgmt.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 361,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/tmgmt",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "tmgmt_content",
+    "tmgmt_locale",
+    "tmgmt_config",
+    "tmgmt_file",
+    "tmgmt_local",
+    "tmgmt_language_combination"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "tmgmt.translator (Plugin/tmgmt/Translator)",
+    "tmgmt.source (Plugin/tmgmt/Source)"
+  ],
+  "provides_config_entities": [
+    "tmgmt_translator"
+  ],
+  "provides_content_entities": [
+    "tmgmt_job",
+    "tmgmt_job_item",
+    "tmgmt_message"
+  ],
+  "categories": [
+    "Multilingual"
+  ],
+  "subcategories": [],
+  "keywords": [
+    "translation",
+    "tmgmt",
+    "translation job",
+    "translation provider",
+    "translator",
+    "source",
+    "localization",
+    "l10n",
+    "multilingual",
+    "review",
+    "xliff",
+    "human translation"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "Drupal user",
+  "data_name": "tmgmt_local",
+  "description": "Allows local users to provide translation services.",
+  "version": "1.18.x",
+  "package": "Translation Management",
+  "composer_namespace": "drupal/tmgmt",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "tmgmt:tmgmt",
+    "tmgmt:tmgmt_language_combination"
+  ],
+  "configure": "entity.tmgmt_translator.collection",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": 361,
+  "part_of": "tmgmt",
+  "project_url": "https://www.drupal.org/project/tmgmt",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "provides_translator_plugins": [
+    "local (Plugin/tmgmt/Translator)"
+  ],
+  "provides_content_entities": [
+    "tmgmt_local_task",
+    "tmgmt_local_task_item"
+  ],
+  "categories": [
+    "Multilingual"
+  ],
+  "subcategories": [],
+  "keywords": [
+    "tmgmt",
+    "local translation",
+    "human translation",
+    "in-house translator",
+    "translation task",
+    "provider",
+    "assignment"
+  ]
+}

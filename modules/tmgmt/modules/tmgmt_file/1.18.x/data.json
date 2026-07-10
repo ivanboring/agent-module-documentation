@@ -1,0 +1,47 @@
+{
+  "name": "Export / Import File",
+  "data_name": "tmgmt_file",
+  "description": "A translator which allows you to export source data into a file and import the translated in return.",
+  "version": "1.18.x",
+  "package": "Translation Management",
+  "composer_namespace": "drupal/tmgmt",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "tmgmt:tmgmt",
+    "drupal:file"
+  ],
+  "configure": "entity.tmgmt_translator.collection",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": 361,
+  "part_of": "tmgmt",
+  "project_url": "https://www.drupal.org/project/tmgmt",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "tmgmt_file.format (Plugin/tmgmt_file/Format)"
+  ],
+  "provides_translator_plugins": [
+    "file (Plugin/tmgmt/Translator)"
+  ],
+  "categories": [
+    "Multilingual"
+  ],
+  "subcategories": [],
+  "keywords": [
+    "tmgmt",
+    "xliff",
+    "html translation",
+    "file translator",
+    "export",
+    "import",
+    "offline translation",
+    "agency"
+  ]
+}

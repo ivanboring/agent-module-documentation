@@ -1,0 +1,65 @@
+{
+  "name": "Commerce Shipping",
+  "data_name": "commerce_shipping",
+  "description": "Provides core shipping functionality.",
+  "version": "3.0.x",
+  "package": "Commerce (contrib)",
+  "composer_namespace": "drupal/commerce_shipping",
+  "composer_requirements": {
+    "drupal/commerce": "^3.3.0",
+    "drupal/physical": "^1.0"
+  },
+  "dependent_modules": [
+    "commerce:commerce",
+    "commerce:commerce_order",
+    "commerce:commerce_price",
+    "physical:physical"
+  ],
+  "configure": "commerce_shipping.configuration",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 360,
+  "project_url": "https://www.drupal.org/project/commerce_shipping",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "part_of": null,
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "commerce_shipping_method (plugin.manager.commerce_shipping_method; namespace Plugin/Commerce/ShippingMethod)",
+    "commerce_package_type (plugin.manager.commerce_package_type; namespace Plugin/Commerce/PackageType)"
+  ],
+  "provides_config_entities": [
+    "commerce_shipment_type",
+    "commerce_package_type"
+  ],
+  "provides_content_entities": [
+    "commerce_shipment",
+    "commerce_shipping_method"
+  ],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Storefront platform"
+  ],
+  "keywords": [
+    "commerce",
+    "shipping",
+    "shipment",
+    "shipping method",
+    "flat rate",
+    "shipping rate",
+    "carrier",
+    "packer",
+    "package type",
+    "checkout",
+    "weight",
+    "physical",
+    "delivery"
+  ]
+}

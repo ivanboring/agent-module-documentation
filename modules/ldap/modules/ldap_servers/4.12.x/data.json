@@ -1,0 +1,47 @@
+{
+  "name": "LDAP Servers",
+  "data_name": "ldap_servers",
+  "description": "Implements LDAP Server Configuration.",
+  "version": "4.12.x",
+  "package": "Lightweight Directory Access Protocol",
+  "composer_namespace": "drupal/ldap",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "externalauth:externalauth"
+  ],
+  "configure": "entity.ldap_server.collection",
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 355,
+  "part_of": "ldap",
+  "project_url": "https://www.drupal.org/project/ldap",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "symfony/ldap"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Access control"
+  ],
+  "subcategories": [
+    "External authentication"
+  ],
+  "keywords": [
+    "ldap",
+    "ldap server",
+    "active directory",
+    "config entity",
+    "bind",
+    "base dn",
+    "symfony/ldap",
+    "connection",
+    "group manager"
+  ]
+}

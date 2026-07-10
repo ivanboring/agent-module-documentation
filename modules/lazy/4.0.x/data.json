@@ -1,0 +1,53 @@
+{
+  "name": "Lazy-load",
+  "data_name": "lazy",
+  "description": "This module enables lazy-loading images and iframes via text-filters and image-fields. Requires lazysizes library.",
+  "version": "4.0.x",
+  "package": "Input filters",
+  "composer_namespace": "drupal/lazy",
+  "composer_requirements": {
+    "ext-json": "*"
+  },
+  "dependent_modules": [
+    "drupal:filter",
+    "drupal:system"
+  ],
+  "configure": "lazy.config_form",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": 366,
+  "project_url": "https://www.drupal.org/project/lazy",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "bower-asset/lazysizes": "Lazysizes is a required library for the Lazy module. Must be installed to '/libraries/lazysizes' folder."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "part_of": null,
+  "categories": [
+    "Performance",
+    "Content display",
+    "Media"
+  ],
+  "subcategories": [
+    "Lazy loading"
+  ],
+  "keywords": [
+    "lazy",
+    "lazyload",
+    "lazysizes",
+    "images",
+    "iframes",
+    "performance",
+    "native loading",
+    "loading=lazy",
+    "text filter",
+    "image field formatter",
+    "responsive image"
+  ]
+}

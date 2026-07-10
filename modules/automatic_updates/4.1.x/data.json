@@ -1,0 +1,57 @@
+{
+  "name": "Automatic Updates",
+  "data_name": "automatic_updates",
+  "description": "Automatically updates Drupal core.",
+  "version": "4.1.x",
+  "package": null,
+  "composer_namespace": "drupal/automatic_updates",
+  "composer_requirements": {
+    "ext-json": "*",
+    "composer-runtime-api": "^2.1",
+    "symfony/console": "^6.2 || ^7"
+  },
+  "dependent_modules": [
+    "drupal:package_manager",
+    "drupal:update"
+  ],
+  "configure": "update.settings",
+  "core_version_requirement": "^11.2",
+  "active_installs": null,
+  "list_position": 362,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/automatic_updates",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "ext-json",
+    "composer-runtime-api",
+    "symfony/console"
+  ],
+  "suggests": {},
+  "submodules": [
+    "automatic_updates_extensions"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Security"
+  ],
+  "subcategories": [
+    "Cron / task scheduling"
+  ],
+  "keywords": [
+    "automatic updates",
+    "core update",
+    "package manager",
+    "unattended updates",
+    "push-button update",
+    "update readiness",
+    "status checks",
+    "security updates",
+    "composer stager",
+    "cron"
+  ]
+}

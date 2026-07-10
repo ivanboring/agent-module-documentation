@@ -1,0 +1,48 @@
+{
+  "name": "Access Unpublished",
+  "data_name": "access_unpublished",
+  "description": "Grants access to view unpublished content to anyone who has a unique URL and appropriate permissions.",
+  "version": "1.9.x",
+  "package": "Content",
+  "composer_namespace": "drupal/access_unpublished",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:options"
+  ],
+  "configure": "access_unpublished.settings_form",
+  "core_version_requirement": "^9.2 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 363,
+  "project_url": "https://www.drupal.org/project/access_unpublished",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "part_of": null,
+  "submodules": [],
+  "provides_content_entities": [
+    "access_token"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Unpublished content access"
+  ],
+  "keywords": [
+    "access unpublished",
+    "unpublished content",
+    "preview",
+    "share draft",
+    "access token",
+    "auHash",
+    "time-limited url",
+    "proofreading",
+    "content review",
+    "temporary access"
+  ]
+}

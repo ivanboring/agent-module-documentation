@@ -1,0 +1,45 @@
+{
+  "name": "Content Entity Source",
+  "data_name": "tmgmt_content",
+  "description": "Content entity source plugin for the Translation Management system.",
+  "version": "1.18.x",
+  "package": "Translation Management",
+  "composer_namespace": "drupal/tmgmt",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "tmgmt:tmgmt",
+    "drupal:content_translation",
+    "drupal:block"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": 361,
+  "part_of": "tmgmt",
+  "project_url": "https://www.drupal.org/project/tmgmt",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "provides_source_plugins": [
+    "content (Plugin/tmgmt/Source)"
+  ],
+  "categories": [
+    "Multilingual"
+  ],
+  "subcategories": [],
+  "keywords": [
+    "tmgmt",
+    "content translation",
+    "content entity",
+    "source",
+    "node translation",
+    "translate tab",
+    "field translation"
+  ]
+}

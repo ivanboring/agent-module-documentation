@@ -1,0 +1,60 @@
+{
+  "name": "Hook Event Dispatcher",
+  "data_name": "hook_event_dispatcher",
+  "description": "Dispatches events for several drupal hooks",
+  "version": "4.2.x",
+  "package": "Hook events",
+  "composer_namespace": "drupal/hook_event_dispatcher",
+  "composer_requirements": {
+    "php": ">=8.1.0",
+    "drupal/core": "^10.2 || ^11.0"
+  },
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": 364,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/hook_event_dispatcher",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1.0",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/token": "Provides additional tokens not supported by core (most notably fields), as well as a UI for browsing tokens.",
+    "drupal/paragraphs": "Enables the creation of paragraphs entities."
+  },
+  "submodules": [
+    "core_event_dispatcher",
+    "field_event_dispatcher",
+    "jsonapi_event_dispatcher",
+    "media_event_dispatcher",
+    "path_event_dispatcher",
+    "preprocess_event_dispatcher",
+    "toolbar_event_dispatcher",
+    "user_event_dispatcher",
+    "views_event_dispatcher",
+    "webform_event_dispatcher"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "hook_event"
+  ],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [],
+  "keywords": [
+    "hooks",
+    "events",
+    "event subscriber",
+    "symfony events",
+    "event dispatcher",
+    "EventSubscriberInterface",
+    "hook_event_dispatcher",
+    "decorator",
+    "module handler",
+    "typed events"
+  ]
+}

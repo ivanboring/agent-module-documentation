@@ -1,0 +1,49 @@
+{
+  "name": "LDAP Authorization Provider",
+  "data_name": "ldap_authorization",
+  "description": "Provider to the Authorization API.",
+  "version": "4.12.x",
+  "package": "Lightweight Directory Access Protocol",
+  "composer_namespace": "drupal/ldap",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "ldap:ldap_servers",
+    "ldap:ldap_user",
+    "authorization:authorization"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 355,
+  "part_of": "ldap",
+  "project_url": "https://www.drupal.org/project/ldap",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "symfony/ldap"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Security"
+  ],
+  "subcategories": [
+    "User roles & permissions",
+    "External authentication"
+  ],
+  "keywords": [
+    "ldap",
+    "authorization",
+    "roles",
+    "group mapping",
+    "authorization api",
+    "provider plugin",
+    "group sync",
+    "rbac"
+  ]
+}

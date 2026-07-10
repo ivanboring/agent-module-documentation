@@ -1,0 +1,46 @@
+{
+  "name": "Rename Admin Paths",
+  "data_name": "rename_admin_paths",
+  "description": "Rename admin path /admin/.. and /user/.. to /something/..",
+  "version": "3.1.x",
+  "package": "Administration",
+  "composer_namespace": "drupal/rename_admin_paths",
+  "composer_requirements": {
+    "php": ">=8.3"
+  },
+  "dependent_modules": [],
+  "configure": "rename_admin_paths.admin",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": 356,
+  "project_url": "https://www.drupal.org/project/rename_admin_paths",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.3",
+  "library_dependencies": [],
+  "suggests": {},
+  "part_of": null,
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Security"
+  ],
+  "subcategories": [
+    "Spam prevention"
+  ],
+  "keywords": [
+    "rename admin paths",
+    "admin path",
+    "user path",
+    "security by obscurity",
+    "backend",
+    "route alter",
+    "obscurity",
+    "bot spam",
+    "hardening",
+    "branding"
+  ]
+}
