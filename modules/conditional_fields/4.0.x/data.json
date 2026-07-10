@@ -6,10 +6,13 @@
   "package": "Fields",
   "composer_namespace": "drupal/conditional_fields",
   "composer_requirements": {},
-  "dependent_modules": ["drupal:field"],
+  "dependent_modules": [
+    "drupal:field"
+  ],
   "configure": "conditional_fields",
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": 50465,
+  "list_position": 91,
   "project_url": "https://www.drupal.org/project/conditional_fields",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
@@ -19,8 +22,23 @@
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": ["ConditionalFieldsHandler (Plugin/conditional_fields/handler)"],
-  "categories": ["Content editing experience", "Site structure"],
+  "provides_plugin_types": [
+    "ConditionalFieldsHandler (Plugin/conditional_fields/handler)"
+  ],
+  "categories": [
+    "Content editing experience",
+    "Site structure"
+  ],
   "subcategories": [],
-  "keywords": ["conditional fields", "field dependencies", "states api", "form", "show hide fields", "dynamic forms", "field visibility", "widget", "dependent fields"]
+  "keywords": [
+    "conditional fields",
+    "field dependencies",
+    "states api",
+    "form",
+    "show hide fields",
+    "dynamic forms",
+    "field visibility",
+    "widget",
+    "dependent fields"
+  ]
 }

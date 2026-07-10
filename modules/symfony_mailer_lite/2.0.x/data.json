@@ -11,10 +11,13 @@
     "symfony/mailer": "^6.4 || ^7.1",
     "tijsverkoyen/css-to-inline-styles": "^2.2"
   },
-  "dependent_modules": ["mailsystem:mailsystem"],
+  "dependent_modules": [
+    "mailsystem:mailsystem"
+  ],
   "configure": null,
   "core_version_requirement": "^10.1 || ^11",
   "active_installs": 20062,
+  "list_position": 209,
   "project_url": "https://www.drupal.org/project/symfony_mailer_lite",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
@@ -28,8 +31,28 @@
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": ["SymfonyMailerLiteTransport (Plugin/SymfonyMailerLite/Transport)"],
-  "categories": ["Integrations", "Developer tools"],
-  "subcategories": ["Email / mail delivery", "Email / SMTP"],
-  "keywords": ["mail", "email", "symfony mailer", "smtp", "sendmail", "html email", "swiftmailer", "mailsystem", "transport", "attachments", "mailer"]
+  "provides_plugin_types": [
+    "SymfonyMailerLiteTransport (Plugin/SymfonyMailerLite/Transport)"
+  ],
+  "categories": [
+    "Integrations",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Email / mail delivery",
+    "Email / SMTP"
+  ],
+  "keywords": [
+    "mail",
+    "email",
+    "symfony mailer",
+    "smtp",
+    "sendmail",
+    "html email",
+    "swiftmailer",
+    "mailsystem",
+    "transport",
+    "attachments",
+    "mailer"
+  ]
 }

@@ -6,10 +6,16 @@
   "package": "Editoria11y",
   "composer_namespace": "drupal/editoria11y",
   "composer_requirements": {},
-  "dependent_modules": ["drupal:node", "drupal:taxonomy", "drupal:user", "drupal:views"],
+  "dependent_modules": [
+    "drupal:node",
+    "drupal:taxonomy",
+    "drupal:user",
+    "drupal:views"
+  ],
   "configure": "editoria11y.settings",
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": 25326,
+  "list_position": 177,
   "project_url": "https://www.drupal.org/project/editoria11y",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
@@ -17,12 +23,32 @@
   "suggests": {
     "drupal/key": "Required by the editoria11y_csa submodule for secure license key storage."
   },
-  "submodules": ["editoria11y_csa", "editoria11y_export"],
+  "submodules": [
+    "editoria11y_csa",
+    "editoria11y_export"
+  ],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
-  "categories": ["Accessibility", "Content editing experience"],
-  "subcategories": ["Debugging & inspection"],
-  "keywords": ["editoria11y", "accessibility", "a11y", "wcag", "checker", "editorial", "dashboard", "content quality", "alt text", "contrast", "sa11y"]
+  "categories": [
+    "Accessibility",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Debugging & inspection"
+  ],
+  "keywords": [
+    "editoria11y",
+    "accessibility",
+    "a11y",
+    "wcag",
+    "checker",
+    "editorial",
+    "dashboard",
+    "content quality",
+    "alt text",
+    "contrast",
+    "sa11y"
+  ]
 }

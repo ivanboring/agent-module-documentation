@@ -9,11 +9,17 @@
   "composer_namespace": "drupal/ai_agents",
   "part_of": "ai_agents",
   "composer_requirements": {},
-  "dependent_modules": ["ai_agents:ai_agents"],
-  "optional_dependencies": ["simple_crawler", "unstructured"],
+  "dependent_modules": [
+    "ai_agents:ai_agents"
+  ],
+  "optional_dependencies": [
+    "simple_crawler",
+    "unstructured"
+  ],
   "configure": null,
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
+  "list_position": 339,
   "project_url": "https://www.drupal.org/project/ai_agents",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
@@ -24,8 +30,24 @@
   "provides_drush_commands": false,
   "provides_config_schema": false,
   "provides_plugin_types": [],
-  "routes": {"ai_agents_form_integration.ai_assisted_generation": "/admin/structure/types/add-ai-assisted"},
-  "categories": ["Content editing experience", "Artificial Intelligence (AI)"],
-  "subcategories": ["AI agents / taskable AI"],
-  "keywords": ["ai", "agent", "form", "content type", "field", "webform", "generate", "experimental"]
+  "routes": {
+    "ai_agents_form_integration.ai_assisted_generation": "/admin/structure/types/add-ai-assisted"
+  },
+  "categories": [
+    "Content editing experience",
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "AI agents / taskable AI"
+  ],
+  "keywords": [
+    "ai",
+    "agent",
+    "form",
+    "content type",
+    "field",
+    "webform",
+    "generate",
+    "experimental"
+  ]
 }

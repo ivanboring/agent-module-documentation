@@ -12,12 +12,18 @@
   "configure": "entity.simple_sitemap.collection",
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": 136448,
+  "list_position": 17,
   "project_url": "https://www.drupal.org/project/simple_sitemap",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": ["ext-xmlwriter"],
+  "library_dependencies": [
+    "ext-xmlwriter"
+  ],
   "suggests": {},
-  "submodules": ["simple_sitemap_engines", "simple_sitemap_views"],
+  "submodules": [
+    "simple_sitemap_engines",
+    "simple_sitemap_views"
+  ],
   "provides_permissions": true,
   "provides_drush_commands": true,
   "provides_config_schema": true,
@@ -25,7 +31,23 @@
     "UrlGenerator (Plugin/simple_sitemap/UrlGenerator)",
     "SitemapGenerator (Plugin/simple_sitemap/SitemapGenerator)"
   ],
-  "categories": ["Search engine optimization (SEO)", "Developer tools"],
-  "subcategories": ["XML sitemaps"],
-  "keywords": ["simple sitemap", "xml sitemap", "sitemap", "seo", "hreflang", "sitemap index", "search engines", "indexnow", "sitemap ping", "sitemaps.org"]
+  "categories": [
+    "Search engine optimization (SEO)",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "XML sitemaps"
+  ],
+  "keywords": [
+    "simple sitemap",
+    "xml sitemap",
+    "sitemap",
+    "seo",
+    "hreflang",
+    "sitemap index",
+    "search engines",
+    "indexnow",
+    "sitemap ping",
+    "sitemaps.org"
+  ]
 }

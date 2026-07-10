@@ -12,10 +12,13 @@
   "configure": "smtp.config",
   "core_version_requirement": "^9.5 || ^10 || ^11",
   "active_installs": 98103,
+  "list_position": 29,
   "project_url": "https://www.drupal.org/project/smtp",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": ["phpmailer/phpmailer"],
+  "library_dependencies": [
+    "phpmailer/phpmailer"
+  ],
   "suggests": {
     "drupal/mailsystem": "Allows using SMTP alongside other mail modules."
   },
@@ -24,7 +27,21 @@
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
-  "categories": ["Integrations"],
-  "subcategories": ["Email / SMTP"],
-  "keywords": ["smtp", "email", "mail", "phpmailer", "authentication", "tls", "ssl", "mail delivery", "transactional email"]
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Email / SMTP"
+  ],
+  "keywords": [
+    "smtp",
+    "email",
+    "mail",
+    "phpmailer",
+    "authentication",
+    "tls",
+    "ssl",
+    "mail delivery",
+    "transactional email"
+  ]
 }

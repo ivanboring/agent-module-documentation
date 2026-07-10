@@ -12,6 +12,7 @@
   "configure": "sitemap.settings",
   "core_version_requirement": "^10.2 || ^11",
   "active_installs": 47981,
+  "list_position": 97,
   "project_url": "https://www.drupal.org/project/sitemap",
   "license": "GPL-2.0-or-later",
   "php_requirement": ">=8.1",
@@ -20,12 +21,33 @@
     "drupal/book": "Enables the Sitemap book submodule to list book outlines.",
     "drupal/metatag": "Enables the Sitemap metatag submodule to add meta tags to the sitemap page."
   },
-  "submodules": ["sitemap_metatag", "sitemap_book"],
+  "submodules": [
+    "sitemap_metatag",
+    "sitemap_book"
+  ],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": ["Sitemap (Plugin/Sitemap)"],
-  "categories": ["Site structure", "Content display"],
-  "subcategories": ["HTML sitemap / navigation"],
-  "keywords": ["sitemap", "site map", "navigation", "overview", "menu", "taxonomy", "rss", "front page", "human-readable sitemap", "site structure"]
+  "provides_plugin_types": [
+    "Sitemap (Plugin/Sitemap)"
+  ],
+  "categories": [
+    "Site structure",
+    "Content display"
+  ],
+  "subcategories": [
+    "HTML sitemap / navigation"
+  ],
+  "keywords": [
+    "sitemap",
+    "site map",
+    "navigation",
+    "overview",
+    "menu",
+    "taxonomy",
+    "rss",
+    "front page",
+    "human-readable sitemap",
+    "site structure"
+  ]
 }

@@ -7,10 +7,14 @@
   "package": "AI",
   "composer_namespace": "drupal/ai",
   "composer_requirements": {},
-  "dependent_modules": ["ai:ai", "token:token"],
+  "dependent_modules": [
+    "ai:ai",
+    "token:token"
+  ],
   "configure": null,
   "core_version_requirement": "^10.4 || ^11",
   "active_installs": null,
+  "list_position": 225,
   "project_url": "https://www.drupal.org/project/ai",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
@@ -21,17 +25,53 @@
   "provides_permissions": true,
   "provides_drush_commands": true,
   "provides_config_schema": true,
-  "provides_plugin_types": ["AiAutomatorType (Plugin/AiAutomatorType)", "AiAutomatorProcessRule (Plugin/AiAutomatorProcess)"],
-  "provides_config_entities": ["ai_automator", "automator_chain_type", "automators_tool"],
-  "provides_content_entities": ["automator_chain"],
-  "consumes_plugin_types": ["FunctionGroup (drupal/ai)", "OperationType (drupal/ai)"],
-  "invokes_hooks": ["hook_ai_automator_type_alter", "hook_ai_automator_process_alter"],
+  "provides_plugin_types": [
+    "AiAutomatorType (Plugin/AiAutomatorType)",
+    "AiAutomatorProcessRule (Plugin/AiAutomatorProcess)"
+  ],
+  "provides_config_entities": [
+    "ai_automator",
+    "automator_chain_type",
+    "automators_tool"
+  ],
+  "provides_content_entities": [
+    "automator_chain"
+  ],
+  "consumes_plugin_types": [
+    "FunctionGroup (drupal/ai)",
+    "OperationType (drupal/ai)"
+  ],
+  "invokes_hooks": [
+    "hook_ai_automator_type_alter",
+    "hook_ai_automator_process_alter"
+  ],
   "routes": {
     "ai_automators.list": "/admin/config/ai/ai-automators",
     "entity.ai_automator.collection": "/admin/config/ai/ai-automators/ai-automator",
     "entity.automators_tool.collection": "/admin/config/ai/ai-automators/automators-tool"
   },
-  "categories": ["Artificial Intelligence (AI)", "Automation"],
-  "subcategories": ["AI tooling / function calling", "Workflow / business rules"],
-  "keywords": ["ai", "automator", "field", "generate", "content generation", "llm", "prompt", "token", "field rule", "worker type", "automator chain", "batch", "queue", "field ui"]
+  "categories": [
+    "Artificial Intelligence (AI)",
+    "Automation"
+  ],
+  "subcategories": [
+    "AI tooling / function calling",
+    "Workflow / business rules"
+  ],
+  "keywords": [
+    "ai",
+    "automator",
+    "field",
+    "generate",
+    "content generation",
+    "llm",
+    "prompt",
+    "token",
+    "field rule",
+    "worker type",
+    "automator chain",
+    "batch",
+    "queue",
+    "field ui"
+  ]
 }

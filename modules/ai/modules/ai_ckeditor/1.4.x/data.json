@@ -8,10 +8,14 @@
   "part_of": "ai",
   "composer_namespace": "drupal/ai",
   "composer_requirements": {},
-  "dependent_modules": ["drupal:ckeditor5", "ai:ai"],
+  "dependent_modules": [
+    "drupal:ckeditor5",
+    "ai:ai"
+  ],
   "configure": null,
   "core_version_requirement": "^10.4 || ^11",
   "active_installs": null,
+  "list_position": 225,
   "project_url": "https://www.drupal.org/project/ai",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
@@ -21,15 +25,41 @@
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": ["AiCKEditor (Plugin/AiCKEditor)"],
+  "provides_plugin_types": [
+    "AiCKEditor (Plugin/AiCKEditor)"
+  ],
   "provides_config_entities": [],
   "provides_content_entities": [],
-  "consumes_plugin_types": ["AiProvider (Plugin/AiProvider)", "OperationType chat (Plugin/OperationType)"],
+  "consumes_plugin_types": [
+    "AiProvider (Plugin/AiProvider)",
+    "OperationType chat (Plugin/OperationType)"
+  ],
   "routes": {
     "ai_ckeditor.dialog": "/api/ai-ckeditor/dialog",
     "ai_ckeditor.do_request": "/api/ai-ckeditor/request/{editor}/{ai_ckeditor_plugin}"
   },
-  "categories": ["Artificial Intelligence (AI)", "Content editing experience"],
-  "subcategories": ["Rich text embedding"],
-  "keywords": ["ai", "ckeditor", "ckeditor5", "wysiwyg", "rich text", "editor", "text generation", "completion", "summarize", "translate", "tone", "spellfix", "reformat", "balloon menu", "llm"]
+  "categories": [
+    "Artificial Intelligence (AI)",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Rich text embedding"
+  ],
+  "keywords": [
+    "ai",
+    "ckeditor",
+    "ckeditor5",
+    "wysiwyg",
+    "rich text",
+    "editor",
+    "text generation",
+    "completion",
+    "summarize",
+    "translate",
+    "tone",
+    "spellfix",
+    "reformat",
+    "balloon menu",
+    "llm"
+  ]
 }

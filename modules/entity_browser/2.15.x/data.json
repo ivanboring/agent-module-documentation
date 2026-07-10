@@ -10,6 +10,7 @@
   "configure": "entity.entity_browser.collection",
   "core_version_requirement": "^10.2 || ^11",
   "active_installs": 93951,
+  "list_position": 34,
   "project_url": "https://www.drupal.org/project/entity_browser",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
@@ -19,7 +20,10 @@
     "drupal/token": "Adds token support in view/display configuration.",
     "drupal/entity_embed": "Embed browsed entities into rich-text fields via a CKEditor button."
   },
-  "submodules": ["entity_browser_example", "entity_form"],
+  "submodules": [
+    "entity_browser_example",
+    "entity_form"
+  ],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
@@ -31,7 +35,25 @@
     "EntityBrowserFieldWidgetDisplay (Plugin/EntityBrowser/FieldWidgetDisplay)",
     "EntityBrowserWidgetValidation (Plugin/EntityBrowser/WidgetValidation)"
   ],
-  "categories": ["Media", "Content editing experience"],
-  "subcategories": ["Entity selection"],
-  "keywords": ["entity browser", "media", "entity reference", "picker", "selector", "widget", "modal", "iframe", "file browser", "media library", "views selection", "reference field"]
+  "categories": [
+    "Media",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Entity selection"
+  ],
+  "keywords": [
+    "entity browser",
+    "media",
+    "entity reference",
+    "picker",
+    "selector",
+    "widget",
+    "modal",
+    "iframe",
+    "file browser",
+    "media library",
+    "views selection",
+    "reference field"
+  ]
 }

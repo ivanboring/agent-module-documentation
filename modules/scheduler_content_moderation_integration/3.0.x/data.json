@@ -9,10 +9,15 @@
     "drupal/core": "^10.3 || ^11",
     "drupal/scheduler": "^2.1"
   },
-  "dependent_modules": ["drupal:options", "drupal:content_moderation", "scheduler:scheduler"],
+  "dependent_modules": [
+    "drupal:options",
+    "drupal:content_moderation",
+    "scheduler:scheduler"
+  ],
   "configure": null,
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": 32431,
+  "list_position": 144,
   "project_url": "https://www.drupal.org/project/scheduler_content_moderation_integration",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
@@ -23,7 +28,22 @@
   "provides_drush_commands": false,
   "provides_config_schema": false,
   "provides_plugin_types": [],
-  "categories": ["Content editing experience", "Automation"],
-  "subcategories": ["Content scheduling / publishing"],
-  "keywords": ["scheduler", "content moderation", "workflow", "publish", "unpublish", "moderation state", "scheduled transition", "editorial workflow", "draft"]
+  "categories": [
+    "Content editing experience",
+    "Automation"
+  ],
+  "subcategories": [
+    "Content scheduling / publishing"
+  ],
+  "keywords": [
+    "scheduler",
+    "content moderation",
+    "workflow",
+    "publish",
+    "unpublish",
+    "moderation state",
+    "scheduled transition",
+    "editorial workflow",
+    "draft"
+  ]
 }

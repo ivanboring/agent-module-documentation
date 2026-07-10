@@ -10,6 +10,7 @@
   "configure": "search_api.overview",
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": 149266,
+  "list_position": 16,
   "project_url": "https://www.drupal.org/project/search_api",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
@@ -19,7 +20,9 @@
     "drupal/search_api_autocomplete": "Allows adding autocomplete suggestions to search fields.",
     "drupal/search_api_solr": "Adds support for using Apache Solr as a backend."
   },
-  "submodules": ["search_api_db"],
+  "submodules": [
+    "search_api_db"
+  ],
   "provides_permissions": true,
   "provides_drush_commands": true,
   "provides_config_schema": true,
@@ -34,7 +37,27 @@
     "search_api_index (config entity)",
     "search_api_server (config entity)"
   ],
-  "categories": ["Site search", "Developer tools"],
-  "subcategories": ["Search framework", "Content indexing"],
-  "keywords": ["search api", "search", "index", "indexing", "full text search", "facets", "backend", "solr", "database search", "query", "processor", "datasource", "tracker"]
+  "categories": [
+    "Site search",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Search framework",
+    "Content indexing"
+  ],
+  "keywords": [
+    "search api",
+    "search",
+    "index",
+    "indexing",
+    "full text search",
+    "facets",
+    "backend",
+    "solr",
+    "database search",
+    "query",
+    "processor",
+    "datasource",
+    "tracker"
+  ]
 }

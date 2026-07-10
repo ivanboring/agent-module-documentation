@@ -8,10 +8,14 @@
   "composer_namespace": "drupal/ai_agents",
   "part_of": "ai_agents",
   "composer_requirements": {},
-  "dependent_modules": ["ai_agents:ai_agents", "drupal:options"],
+  "dependent_modules": [
+    "ai_agents:ai_agents",
+    "drupal:options"
+  ],
   "configure": null,
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
+  "list_position": 339,
   "project_url": "https://www.drupal.org/project/ai_agents",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
@@ -22,9 +26,25 @@
   "provides_drush_commands": false,
   "provides_config_schema": false,
   "provides_plugin_types": [],
-  "provides_content_entities": ["ai_agent_decision"],
-  "routes": {"ai_agents_explorer.explorer": "/admin/config/ai/agents/explore"},
-  "categories": ["Administration tools", "Artificial Intelligence (AI)"],
-  "subcategories": ["AI agents / taskable AI"],
-  "keywords": ["ai", "agent", "explorer", "debug", "run agent", "decisions"]
+  "provides_content_entities": [
+    "ai_agent_decision"
+  ],
+  "routes": {
+    "ai_agents_explorer.explorer": "/admin/config/ai/agents/explore"
+  },
+  "categories": [
+    "Administration tools",
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "AI agents / taskable AI"
+  ],
+  "keywords": [
+    "ai",
+    "agent",
+    "explorer",
+    "debug",
+    "run agent",
+    "decisions"
+  ]
 }

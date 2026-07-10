@@ -6,10 +6,15 @@
   "package": "Mailchimp",
   "composer_namespace": "drupal/mailchimp",
   "composer_requirements": {},
-  "dependent_modules": ["drupal:field", "mailchimp:mailchimp", "drupal:options"],
+  "dependent_modules": [
+    "drupal:field",
+    "mailchimp:mailchimp",
+    "drupal:options"
+  ],
   "configure": "mailchimp_lists.overview",
   "core_version_requirement": "^10 || ^11",
   "active_installs": 20923,
+  "list_position": 204,
   "project_url": "https://www.drupal.org/project/mailchimp",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
@@ -20,7 +25,21 @@
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
-  "categories": ["Integrations", "User engagement"],
-  "subcategories": ["Email / mail delivery"],
-  "keywords": ["mailchimp", "audiences", "lists", "subscription", "merge vars", "field type", "subscribe", "interest groups"]
+  "categories": [
+    "Integrations",
+    "User engagement"
+  ],
+  "subcategories": [
+    "Email / mail delivery"
+  ],
+  "keywords": [
+    "mailchimp",
+    "audiences",
+    "lists",
+    "subscription",
+    "merge vars",
+    "field type",
+    "subscribe",
+    "interest groups"
+  ]
 }

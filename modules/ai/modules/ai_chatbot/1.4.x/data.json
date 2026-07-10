@@ -7,10 +7,13 @@
   "package": "AI Tools",
   "composer_namespace": "drupal/ai",
   "composer_requirements": {},
-  "dependent_modules": ["ai:ai_assistant_api"],
+  "dependent_modules": [
+    "ai:ai_assistant_api"
+  ],
   "configure": null,
   "core_version_requirement": "^10.4 || ^11",
   "active_installs": null,
+  "list_position": 225,
   "project_url": "https://www.drupal.org/project/ai",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
@@ -26,14 +29,33 @@
   "provides_plugin_types": [],
   "provides_config_entities": [],
   "provides_content_entities": [],
-  "consumes_plugin_types": ["Block (core), AiAssistant (ai_assistant_api)"],
+  "consumes_plugin_types": [
+    "Block (core), AiAssistant (ai_assistant_api)"
+  ],
   "routes": {
     "ai_chatbot.api": "/api/deepchat",
     "ai_chatbot.session": "/api/deepchat/session",
     "ai_chatbot.reset_conversation": "/ajax/chatbot/reset-session/{assistant_id}/{thread_id}",
     "ai_chatbot.message_skeleton": "/ajax/chatbot/message-skeleton/{assistant_id}/{thread_id}/{user}"
   },
-  "categories": ["Artificial Intelligence (AI)", "User engagement"],
-  "subcategories": ["Block enhancements"],
-  "keywords": ["ai", "chatbot", "chat", "assistant", "deepchat", "block", "llm", "conversational ui", "streaming", "ai_assistant_api", "frontend"]
+  "categories": [
+    "Artificial Intelligence (AI)",
+    "User engagement"
+  ],
+  "subcategories": [
+    "Block enhancements"
+  ],
+  "keywords": [
+    "ai",
+    "chatbot",
+    "chat",
+    "assistant",
+    "deepchat",
+    "block",
+    "llm",
+    "conversational ui",
+    "streaming",
+    "ai_assistant_api",
+    "frontend"
+  ]
 }

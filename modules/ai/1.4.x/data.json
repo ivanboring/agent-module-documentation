@@ -12,27 +12,90 @@
     "yethee/tiktoken": "^0.5.1",
     "openai-php/client": ">=v0.10.1"
   },
-  "dependent_modules": ["key:key", "drupal:file"],
+  "dependent_modules": [
+    "key:key",
+    "drupal:file"
+  ],
   "configure": "ai.settings_form",
   "core_version_requirement": "^10.5 || ^11.2",
   "active_installs": 18346,
+  "list_position": 225,
   "project_url": "https://www.drupal.org/project/ai",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": ["league/html-to-markdown", "yethee/tiktoken", "openai-php/client"],
+  "library_dependencies": [
+    "league/html-to-markdown",
+    "yethee/tiktoken",
+    "openai-php/client"
+  ],
   "suggests": {
     "league/commonmark": "Preview chunked content when configuring AI Search fields, and format messages in the AI Chatbot module."
   },
-  "submodules": ["ai_api_explorer", "ai_assistant_api", "ai_automators", "ai_chatbot", "ai_ckeditor", "ai_content_suggestions", "ai_eca", "ai_external_moderation", "ai_logging", "ai_observability", "ai_search", "ai_translate", "ai_validations", "field_widget_actions"],
+  "submodules": [
+    "ai_api_explorer",
+    "ai_assistant_api",
+    "ai_automators",
+    "ai_chatbot",
+    "ai_ckeditor",
+    "ai_content_suggestions",
+    "ai_eca",
+    "ai_external_moderation",
+    "ai_logging",
+    "ai_observability",
+    "ai_search",
+    "ai_translate",
+    "ai_validations",
+    "field_widget_actions"
+  ],
   "provides_permissions": true,
   "provides_drush_commands": true,
   "provides_config_schema": true,
-  "provides_plugin_types": ["AiProvider (Plugin/AiProvider)", "OperationType (Plugin/OperationType)", "FunctionCall (Plugin/AiFunctionCall)", "FunctionGroup (Plugin/AiFunctionGroup)", "AiVdbProvider (Plugin/AiVdbProvider)", "AiGuardrail (Plugin/AiGuardrail)", "AiShortTermMemory (Plugin/AiShortTermMemory)", "AiDataTypeConverter (Plugin/AiDataTypeConverter)", "ChatProcessor (Plugin/AiChatProcessor)"],
-  "provides_config_entities": ["ai_prompt", "ai_prompt_type", "ai_guardrail", "ai_guardrail_set"],
-  "provides_content_entities": ["ai_file"],
+  "provides_plugin_types": [
+    "AiProvider (Plugin/AiProvider)",
+    "OperationType (Plugin/OperationType)",
+    "FunctionCall (Plugin/AiFunctionCall)",
+    "FunctionGroup (Plugin/AiFunctionGroup)",
+    "AiVdbProvider (Plugin/AiVdbProvider)",
+    "AiGuardrail (Plugin/AiGuardrail)",
+    "AiShortTermMemory (Plugin/AiShortTermMemory)",
+    "AiDataTypeConverter (Plugin/AiDataTypeConverter)",
+    "ChatProcessor (Plugin/AiChatProcessor)"
+  ],
+  "provides_config_entities": [
+    "ai_prompt",
+    "ai_prompt_type",
+    "ai_guardrail",
+    "ai_guardrail_set"
+  ],
+  "provides_content_entities": [
+    "ai_file"
+  ],
   "consumes_plugin_types": [],
-  "routes": {"ai.settings_form": "/admin/config/ai/settings"},
-  "categories": ["Artificial Intelligence (AI)", "Developer tools"],
-  "subcategories": ["AI provider abstraction / LLM gateway"],
-  "keywords": ["ai", "llm", "provider", "abstraction", "chat", "embeddings", "operation type", "function calling", "tools", "openai", "guardrails", "vector database", "vdb", "moderation", "tokenizer"]
+  "routes": {
+    "ai.settings_form": "/admin/config/ai/settings"
+  },
+  "categories": [
+    "Artificial Intelligence (AI)",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "AI provider abstraction / LLM gateway"
+  ],
+  "keywords": [
+    "ai",
+    "llm",
+    "provider",
+    "abstraction",
+    "chat",
+    "embeddings",
+    "operation type",
+    "function calling",
+    "tools",
+    "openai",
+    "guardrails",
+    "vector database",
+    "vdb",
+    "moderation",
+    "tokenizer"
+  ]
 }

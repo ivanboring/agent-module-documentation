@@ -8,21 +8,42 @@
   "composer_requirements": {
     "drupal/core": "^8.9 || ^9 || ^10 || ^11"
   },
-  "dependent_modules": ["drupal:filter"],
+  "dependent_modules": [
+    "drupal:filter"
+  ],
   "configure": "eu_cookie_compliance.settings",
   "core_version_requirement": "^8.9 || ^9 || ^10 || ^11",
   "active_installs": 51009,
+  "list_position": 89,
   "project_url": "https://www.drupal.org/project/eu_cookie_compliance",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
-  "submodules": ["klaro_migrator"],
+  "submodules": [
+    "klaro_migrator"
+  ],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": ["ConsentStorage (Plugin/ConsentStorage)"],
-  "categories": ["Security", "User engagement"],
+  "provides_plugin_types": [
+    "ConsentStorage (Plugin/ConsentStorage)"
+  ],
+  "categories": [
+    "Security",
+    "User engagement"
+  ],
   "subcategories": [],
-  "keywords": ["cookie", "gdpr", "consent", "eu", "privacy", "cookie compliance", "banner", "popup", "cookie categories", "consent storage"]
+  "keywords": [
+    "cookie",
+    "gdpr",
+    "consent",
+    "eu",
+    "privacy",
+    "cookie compliance",
+    "banner",
+    "popup",
+    "cookie categories",
+    "consent storage"
+  ]
 }

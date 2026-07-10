@@ -6,10 +6,13 @@
   "package": "Mail",
   "composer_namespace": "drupal/symfony_mailer",
   "composer_requirements": {},
-  "dependent_modules": ["symfony_mailer:symfony_mailer"],
+  "dependent_modules": [
+    "symfony_mailer:symfony_mailer"
+  ],
   "configure": "entity.mailer_policy.collection",
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": 43955,
+  "list_position": 105,
   "project_url": "https://www.drupal.org/project/symfony_mailer",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
@@ -19,8 +22,26 @@
   "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": ["EmailAdjuster (Attribute/EmailAdjuster, EmailAdjusterManager)"],
-  "categories": ["Integrations", "Developer tools"],
-  "subcategories": ["Email / mail delivery"],
-  "keywords": ["mailer_policy", "email policy", "mailer plus", "email adjuster", "from", "subject", "inline css", "theme", "email config", "symfony_mailer"]
+  "provides_plugin_types": [
+    "EmailAdjuster (Attribute/EmailAdjuster, EmailAdjusterManager)"
+  ],
+  "categories": [
+    "Integrations",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Email / mail delivery"
+  ],
+  "keywords": [
+    "mailer_policy",
+    "email policy",
+    "mailer plus",
+    "email adjuster",
+    "from",
+    "subject",
+    "inline css",
+    "theme",
+    "email config",
+    "symfony_mailer"
+  ]
 }

@@ -14,17 +14,42 @@
   "configure": "file_mdm.settings",
   "core_version_requirement": "^11.2",
   "active_installs": 58095,
+  "list_position": 75,
   "project_url": "https://www.drupal.org/project/file_mdm",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": ["dompdf/php-font-lib", "fileeye/pel"],
+  "library_dependencies": [
+    "dompdf/php-font-lib",
+    "fileeye/pel"
+  ],
   "suggests": {},
-  "submodules": ["file_mdm_exif", "file_mdm_font"],
+  "submodules": [
+    "file_mdm_exif",
+    "file_mdm_font"
+  ],
   "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": ["FileMetadata (Plugin/FileMetadata)"],
-  "categories": ["Media", "Developer tools"],
-  "subcategories": ["File & media metadata"],
-  "keywords": ["file metadata", "exif", "image size", "getimagesize", "font metadata", "file", "image", "cache", "metadata", "pel"]
+  "provides_plugin_types": [
+    "FileMetadata (Plugin/FileMetadata)"
+  ],
+  "categories": [
+    "Media",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "File & media metadata"
+  ],
+  "keywords": [
+    "file metadata",
+    "exif",
+    "image size",
+    "getimagesize",
+    "font metadata",
+    "file",
+    "image",
+    "cache",
+    "metadata",
+    "pel"
+  ]
 }

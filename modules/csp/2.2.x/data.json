@@ -12,17 +12,37 @@
   "configure": "csp.settings",
   "core_version_requirement": "^10.2 || ^11",
   "active_installs": 22785,
+  "list_position": 191,
   "project_url": "https://www.drupal.org/project/csp",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
-  "submodules": ["csp_extras"],
+  "submodules": [
+    "csp_extras"
+  ],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": ["CspReportingHandler (Plugin/CspReportingHandler)"],
-  "categories": ["Security"],
-  "subcategories": ["HTTP security headers"],
-  "keywords": ["csp", "content security policy", "security header", "nonce", "hash", "xss", "report-uri", "trusted types", "script-src", "policy"]
+  "provides_plugin_types": [
+    "CspReportingHandler (Plugin/CspReportingHandler)"
+  ],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "HTTP security headers"
+  ],
+  "keywords": [
+    "csp",
+    "content security policy",
+    "security header",
+    "nonce",
+    "hash",
+    "xss",
+    "report-uri",
+    "trusted types",
+    "script-src",
+    "policy"
+  ]
 }

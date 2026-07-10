@@ -8,23 +8,53 @@
   "composer_requirements": {
     "thinkshout/mailchimp-api-php": "^3.1.2"
   },
-  "dependent_modules": ["drupal:path_alias"],
+  "dependent_modules": [
+    "drupal:path_alias"
+  ],
   "configure": "mailchimp.admin",
   "core_version_requirement": "^10 || ^11",
   "active_installs": 20923,
+  "list_position": 204,
   "project_url": "https://www.drupal.org/project/mailchimp",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": ["thinkshout/mailchimp-api-php"],
+  "library_dependencies": [
+    "thinkshout/mailchimp-api-php"
+  ],
   "suggests": {
     "drupal/webform": "Provide mailchimp events for webform submissions"
   },
-  "submodules": ["mailchimp_campaign", "mailchimp_eca", "mailchimp_events", "mailchimp_lists", "mailchimp_signup"],
+  "submodules": [
+    "mailchimp_campaign",
+    "mailchimp_eca",
+    "mailchimp_events",
+    "mailchimp_lists",
+    "mailchimp_signup"
+  ],
   "provides_permissions": true,
   "provides_drush_commands": true,
   "provides_config_schema": true,
   "provides_plugin_types": [],
-  "categories": ["Integrations", "User engagement"],
-  "subcategories": ["Email / mail delivery", "Analytics & tracking"],
-  "keywords": ["mailchimp", "email", "newsletter", "marketing", "audiences", "lists", "campaigns", "signup", "subscribe", "api", "webhook", "oauth"]
+  "categories": [
+    "Integrations",
+    "User engagement"
+  ],
+  "subcategories": [
+    "Email / mail delivery",
+    "Analytics & tracking"
+  ],
+  "keywords": [
+    "mailchimp",
+    "email",
+    "newsletter",
+    "marketing",
+    "audiences",
+    "lists",
+    "campaigns",
+    "signup",
+    "subscribe",
+    "api",
+    "webhook",
+    "oauth"
+  ]
 }

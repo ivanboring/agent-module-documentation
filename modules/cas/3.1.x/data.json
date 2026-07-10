@@ -10,21 +10,43 @@
     "drupal/externalauth": "~2.0.6",
     "drupal/js_cookie": "^1.0 || ^2.0"
   },
-  "dependent_modules": ["externalauth:externalauth"],
+  "dependent_modules": [
+    "externalauth:externalauth"
+  ],
   "configure": "cas.settings",
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": 19691,
+  "list_position": 215,
   "project_url": "https://www.drupal.org/project/cas",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": ["ext-dom"],
+  "library_dependencies": [
+    "ext-dom"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": true,
   "provides_config_schema": true,
   "provides_plugin_types": [],
-  "categories": ["Access control", "Security"],
-  "subcategories": ["External authentication", "Session management"],
-  "keywords": ["cas", "sso", "single sign-on", "authentication", "externalauth", "login", "apereo", "phpcas", "identity provider", "proxy"]
+  "categories": [
+    "Access control",
+    "Security"
+  ],
+  "subcategories": [
+    "External authentication",
+    "Session management"
+  ],
+  "keywords": [
+    "cas",
+    "sso",
+    "single sign-on",
+    "authentication",
+    "externalauth",
+    "login",
+    "apereo",
+    "phpcas",
+    "identity provider",
+    "proxy"
+  ]
 }

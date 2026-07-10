@@ -18,21 +18,68 @@
     "drupal/token": "^1.7",
     "commerceguys/intl": "^2.0.6"
   },
-  "dependent_modules": ["address:address", "entity:entity", "inline_entity_form:inline_entity_form", "token:token", "drupal:datetime", "drupal:views"],
+  "dependent_modules": [
+    "address:address",
+    "entity:entity",
+    "inline_entity_form:inline_entity_form",
+    "token:token",
+    "drupal:datetime",
+    "drupal:views"
+  ],
   "configure": "commerce.configuration",
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": 24480,
+  "list_position": 180,
   "project_url": "https://www.drupal.org/project/commerce",
   "license": "GPL-2.0-or-later",
   "php_requirement": "^8.1",
-  "library_dependencies": ["commerceguys/intl", "ext-bcmath"],
+  "library_dependencies": [
+    "commerceguys/intl",
+    "ext-bcmath"
+  ],
   "suggests": {},
-  "submodules": ["commerce_cart", "commerce_checkout", "commerce_log", "commerce_number_pattern", "commerce_order", "commerce_payment", "commerce_payment_example", "commerce_price", "commerce_product", "commerce_promotion", "commerce_store", "commerce_tax"],
+  "submodules": [
+    "commerce_cart",
+    "commerce_checkout",
+    "commerce_log",
+    "commerce_number_pattern",
+    "commerce_order",
+    "commerce_payment",
+    "commerce_payment_example",
+    "commerce_price",
+    "commerce_product",
+    "commerce_promotion",
+    "commerce_store",
+    "commerce_tax"
+  ],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": ["commerce.condition (plugin.manager.commerce_condition)", "commerce.entity_trait (plugin.manager.commerce_entity_trait)", "commerce.inline_form (plugin.manager.commerce_inline_form)"],
-  "categories": ["E-commerce"],
-  "subcategories": ["Storefront platform"],
-  "keywords": ["commerce", "ecommerce", "e-commerce", "store", "shop", "cart", "checkout", "payment", "order", "product", "price", "tax", "promotion", "drupal commerce"]
+  "provides_plugin_types": [
+    "commerce.condition (plugin.manager.commerce_condition)",
+    "commerce.entity_trait (plugin.manager.commerce_entity_trait)",
+    "commerce.inline_form (plugin.manager.commerce_inline_form)"
+  ],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Storefront platform"
+  ],
+  "keywords": [
+    "commerce",
+    "ecommerce",
+    "e-commerce",
+    "store",
+    "shop",
+    "cart",
+    "checkout",
+    "payment",
+    "order",
+    "product",
+    "price",
+    "tax",
+    "promotion",
+    "drupal commerce"
+  ]
 }

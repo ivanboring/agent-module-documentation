@@ -6,10 +6,15 @@
   "package": "Commerce",
   "composer_namespace": "drupal/commerce",
   "composer_requirements": {},
-  "dependent_modules": ["commerce:commerce", "commerce:commerce_order", "commerce:commerce_cart"],
+  "dependent_modules": [
+    "commerce:commerce",
+    "commerce:commerce_order",
+    "commerce:commerce_cart"
+  ],
   "configure": "entity.commerce_checkout_flow.collection",
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": 24480,
+  "list_position": 180,
   "project_url": "https://www.drupal.org/project/commerce",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
@@ -19,8 +24,23 @@
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": ["commerce_checkout.checkout_flow (plugin.manager.commerce_checkout_flow)", "commerce_checkout.checkout_pane (plugin.manager.commerce_checkout_pane)"],
-  "categories": ["E-commerce"],
-  "subcategories": ["Storefront platform"],
-  "keywords": ["commerce", "checkout", "checkout flow", "checkout pane", "multistep", "guest checkout", "order completion"]
+  "provides_plugin_types": [
+    "commerce_checkout.checkout_flow (plugin.manager.commerce_checkout_flow)",
+    "commerce_checkout.checkout_pane (plugin.manager.commerce_checkout_pane)"
+  ],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Storefront platform"
+  ],
+  "keywords": [
+    "commerce",
+    "checkout",
+    "checkout flow",
+    "checkout pane",
+    "multistep",
+    "guest checkout",
+    "order completion"
+  ]
 }

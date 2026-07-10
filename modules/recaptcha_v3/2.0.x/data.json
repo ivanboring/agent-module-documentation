@@ -9,21 +9,41 @@
     "google/recaptcha": "^1.3",
     "drupal/captcha": "^2.0"
   },
-  "dependent_modules": ["captcha:captcha"],
+  "dependent_modules": [
+    "captcha:captcha"
+  ],
   "configure": "recaptcha_v3.settings",
   "core_version_requirement": "^10 || ^11",
   "active_installs": 40116,
+  "list_position": 119,
   "project_url": "https://www.drupal.org/project/recaptcha_v3",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": ["google/recaptcha"],
+  "library_dependencies": [
+    "google/recaptcha"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
-  "categories": ["Security", "Access control"],
-  "subcategories": ["CAPTCHA / bot protection", "Spam prevention / CAPTCHA"],
-  "keywords": ["recaptcha", "recaptcha v3", "captcha", "google", "spam", "bot protection", "score", "challenge"]
+  "categories": [
+    "Security",
+    "Access control"
+  ],
+  "subcategories": [
+    "CAPTCHA / bot protection",
+    "Spam prevention / CAPTCHA"
+  ],
+  "keywords": [
+    "recaptcha",
+    "recaptcha v3",
+    "captcha",
+    "google",
+    "spam",
+    "bot protection",
+    "score",
+    "challenge"
+  ]
 }

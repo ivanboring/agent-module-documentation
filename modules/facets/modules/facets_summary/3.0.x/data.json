@@ -6,10 +6,13 @@
   "package": "Search",
   "composer_namespace": "drupal/facets",
   "composer_requirements": {},
-  "dependent_modules": ["facets:facets"],
+  "dependent_modules": [
+    "facets:facets"
+  ],
   "configure": "entity.facets_facet.collection",
   "core_version_requirement": "^10.1 || ^11",
   "active_installs": 53140,
+  "list_position": 85,
   "project_url": "https://www.drupal.org/project/facets",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
@@ -19,8 +22,22 @@
   "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": ["facets_summary_processor (Plugin/facets_summary/processor)"],
-  "categories": ["Site search"],
-  "subcategories": ["Faceted search"],
-  "keywords": ["facets", "summary", "current search", "active filters", "reset", "breadcrumb", "facet block"]
+  "provides_plugin_types": [
+    "facets_summary_processor (Plugin/facets_summary/processor)"
+  ],
+  "categories": [
+    "Site search"
+  ],
+  "subcategories": [
+    "Faceted search"
+  ],
+  "keywords": [
+    "facets",
+    "summary",
+    "current search",
+    "active filters",
+    "reset",
+    "breadcrumb",
+    "facet block"
+  ]
 }

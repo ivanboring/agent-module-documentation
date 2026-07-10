@@ -19,6 +19,7 @@ Structured metadata, distilled from `*.info.yml`, `composer.json`, and the feed.
 | `configure` | info.yml `configure` | route name of the config UI, or `null` |
 | `core_version_requirement` | info.yml | e.g. `^10.3 \|\| ^11` |
 | `active_installs` | feed `field_active_installs_total` | popularity |
+| `list_position` | feed rank by active installs | 1-based popularity rank of the module's **project** in the Drupal.org D11 feed (`token`=1); submodules inherit their parent project's rank; `null` if the project isn't in the feed. Enables tiered analysis (top-100 vs top-1000). |
 | `project_url` | derived | `https://www.drupal.org/project/{name}` |
 | `license` | composer.json `license` | |
 | `php_requirement` | composer.json `require.php` | if declared |

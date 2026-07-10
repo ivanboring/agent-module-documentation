@@ -8,10 +8,13 @@
   "composer_requirements": {
     "drupal/core": "^10.3 || ^11"
   },
-  "dependent_modules": ["drupal:views"],
+  "dependent_modules": [
+    "drupal:views"
+  ],
   "configure": null,
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": 89741,
+  "list_position": 40,
   "project_url": "https://www.drupal.org/project/views_bulk_operations",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
@@ -19,12 +22,31 @@
   "suggests": {
     "drush/drush": "^12 || ^13"
   },
-  "submodules": ["actions_permissions", "views_bulk_operations_example"],
+  "submodules": [
+    "actions_permissions",
+    "views_bulk_operations_example"
+  ],
   "provides_permissions": false,
   "provides_drush_commands": true,
   "provides_config_schema": true,
-  "provides_plugin_types": ["VBO Action (Plugin/Action, plugin.manager.views_bulk_operations_action; extends core Action)"],
-  "categories": ["Automation", "Administration tools"],
+  "provides_plugin_types": [
+    "VBO Action (Plugin/Action, plugin.manager.views_bulk_operations_action; extends core Action)"
+  ],
+  "categories": [
+    "Automation",
+    "Administration tools"
+  ],
   "subcategories": [],
-  "keywords": ["vbo", "bulk operations", "views", "bulk action", "batch", "mass update", "mass delete", "action plugin", "select all", "bulk form"]
+  "keywords": [
+    "vbo",
+    "bulk operations",
+    "views",
+    "bulk action",
+    "batch",
+    "mass update",
+    "mass delete",
+    "action plugin",
+    "select all",
+    "bulk form"
+  ]
 }

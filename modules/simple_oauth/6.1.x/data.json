@@ -11,21 +11,58 @@
     "drupal/consumers": "^1.17",
     "php": ">=8.1"
   },
-  "dependent_modules": ["drupal:serialization", "consumers:consumers", "drupal:options", "drupal:path_alias"],
+  "dependent_modules": [
+    "drupal:serialization",
+    "consumers:consumers",
+    "drupal:options",
+    "drupal:path_alias"
+  ],
   "configure": "oauth2_token.settings",
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": 21273,
+  "list_position": 201,
   "project_url": "https://www.drupal.org/project/simple_oauth",
   "license": "GPL-2.0-or-later",
   "php_requirement": ">=8.1",
-  "library_dependencies": ["league/oauth2-server", "steverhoades/oauth2-openid-connect-server"],
+  "library_dependencies": [
+    "league/oauth2-server",
+    "steverhoades/oauth2-openid-connect-server"
+  ],
   "suggests": {},
-  "submodules": ["simple_oauth_static_scope"],
+  "submodules": [
+    "simple_oauth_static_scope"
+  ],
   "provides_permissions": true,
   "provides_drush_commands": true,
   "provides_config_schema": true,
-  "provides_plugin_types": ["Oauth2Grant (Plugin/Oauth2Grant)", "ScopeProvider (Plugin/ScopeProvider)", "ScopeGranularity (Plugin/ScopeGranularity)"],
-  "categories": ["Access control", "Security", "Decoupled"],
-  "subcategories": ["External authentication", "REST / web services"],
-  "keywords": ["oauth", "oauth2", "openid connect", "oidc", "bearer token", "authentication", "api", "jwt", "access token", "refresh token", "scopes", "consumers", "jsonapi", "decoupled"]
+  "provides_plugin_types": [
+    "Oauth2Grant (Plugin/Oauth2Grant)",
+    "ScopeProvider (Plugin/ScopeProvider)",
+    "ScopeGranularity (Plugin/ScopeGranularity)"
+  ],
+  "categories": [
+    "Access control",
+    "Security",
+    "Decoupled"
+  ],
+  "subcategories": [
+    "External authentication",
+    "REST / web services"
+  ],
+  "keywords": [
+    "oauth",
+    "oauth2",
+    "openid connect",
+    "oidc",
+    "bearer token",
+    "authentication",
+    "api",
+    "jwt",
+    "access token",
+    "refresh token",
+    "scopes",
+    "consumers",
+    "jsonapi",
+    "decoupled"
+  ]
 }

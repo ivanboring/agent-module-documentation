@@ -16,6 +16,7 @@
   "configure": "geocoder.settings",
   "core_version_requirement": "^9.5 || ^10 || ^11",
   "active_installs": 28338,
+  "list_position": 159,
   "project_url": "https://www.drupal.org/project/geocoder",
   "license": "GPL-2.0-or-later",
   "php_requirement": ">=7.3.0",
@@ -30,12 +31,41 @@
     "drupal/address": "Geocode from / reverse-geocode into Address fields (via the geocoder_address submodule).",
     "geocoder-php/google-maps-provider": "Add the Google Maps geocoding provider (one of many optional willdurand/Geocoder provider packages)."
   },
-  "submodules": ["geocoder_field", "geocoder_geofield", "geocoder_address"],
+  "submodules": [
+    "geocoder_field",
+    "geocoder_geofield",
+    "geocoder_address"
+  ],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": ["Provider (Plugin/Geocoder/Provider)", "Dumper (Plugin/Geocoder/Dumper)", "Formatter (Plugin/Geocoder/Formatter)"],
-  "categories": ["Site structure", "Developer tools", "Integrations"],
-  "subcategories": ["Geospatial / location", "Data transformation"],
-  "keywords": ["geocoder", "geocode", "reverse geocode", "geocoding", "gis", "coordinates", "latitude", "longitude", "google maps", "nominatim", "address", "provider", "willdurand"]
+  "provides_plugin_types": [
+    "Provider (Plugin/Geocoder/Provider)",
+    "Dumper (Plugin/Geocoder/Dumper)",
+    "Formatter (Plugin/Geocoder/Formatter)"
+  ],
+  "categories": [
+    "Site structure",
+    "Developer tools",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Geospatial / location",
+    "Data transformation"
+  ],
+  "keywords": [
+    "geocoder",
+    "geocode",
+    "reverse geocode",
+    "geocoding",
+    "gis",
+    "coordinates",
+    "latitude",
+    "longitude",
+    "google maps",
+    "nominatim",
+    "address",
+    "provider",
+    "willdurand"
+  ]
 }

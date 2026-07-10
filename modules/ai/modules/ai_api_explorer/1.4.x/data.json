@@ -7,10 +7,13 @@
   "package": "AI",
   "composer_namespace": "drupal/ai",
   "composer_requirements": {},
-  "dependent_modules": ["ai:ai"],
+  "dependent_modules": [
+    "ai:ai"
+  ],
   "configure": null,
   "core_version_requirement": "^10.4 || ^11",
   "active_installs": null,
+  "list_position": 225,
   "project_url": "https://www.drupal.org/project/ai",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
@@ -21,12 +24,35 @@
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": false,
-  "provides_plugin_types": ["AiApiExplorer (Plugin/AiApiExplorer)"],
+  "provides_plugin_types": [
+    "AiApiExplorer (Plugin/AiApiExplorer)"
+  ],
   "provides_config_entities": [],
   "provides_content_entities": [],
   "consumes_plugin_types": [],
-  "routes": {"ai_api_explorer.list_page": "/admin/config/ai/explorers"},
-  "categories": ["Artificial Intelligence (AI)", "Developer tools"],
-  "subcategories": ["Debugging & inspection"],
-  "keywords": ["ai", "explorer", "sandbox", "test", "prompt", "chat", "embeddings", "moderation", "text to image", "developer tool", "boilerplate", "code example", "playground"]
+  "routes": {
+    "ai_api_explorer.list_page": "/admin/config/ai/explorers"
+  },
+  "categories": [
+    "Artificial Intelligence (AI)",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Debugging & inspection"
+  ],
+  "keywords": [
+    "ai",
+    "explorer",
+    "sandbox",
+    "test",
+    "prompt",
+    "chat",
+    "embeddings",
+    "moderation",
+    "text to image",
+    "developer tool",
+    "boilerplate",
+    "code example",
+    "playground"
+  ]
 }

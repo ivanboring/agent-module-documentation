@@ -8,21 +8,43 @@
   "composer_requirements": {
     "drupal/core": "^10 || ^11"
   },
-  "dependent_modules": ["drupal:layout_builder"],
+  "dependent_modules": [
+    "drupal:layout_builder"
+  ],
   "configure": "layout_builder_restrictions.restriction_plugin_config_form",
   "core_version_requirement": "^10 || ^11",
   "active_installs": 31947,
+  "list_position": 146,
   "project_url": "https://www.drupal.org/project/layout_builder_restrictions",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
-  "submodules": ["layout_builder_restrictions_by_region"],
+  "submodules": [
+    "layout_builder_restrictions_by_region"
+  ],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": ["LayoutBuilderRestriction (Plugin/LayoutBuilderRestriction)"],
-  "categories": ["Site structure", "Content display"],
-  "subcategories": ["Layout Builder"],
-  "keywords": ["layout builder", "restrictions", "blocks", "layouts", "view mode", "governance", "editorial control", "allowed blocks", "whitelist"]
+  "provides_plugin_types": [
+    "LayoutBuilderRestriction (Plugin/LayoutBuilderRestriction)"
+  ],
+  "categories": [
+    "Site structure",
+    "Content display"
+  ],
+  "subcategories": [
+    "Layout Builder"
+  ],
+  "keywords": [
+    "layout builder",
+    "restrictions",
+    "blocks",
+    "layouts",
+    "view mode",
+    "governance",
+    "editorial control",
+    "allowed blocks",
+    "whitelist"
+  ]
 }

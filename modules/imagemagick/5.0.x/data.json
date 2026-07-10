@@ -10,10 +10,14 @@
     "drupal/file_mdm": "^3.2",
     "drupal/sophron": "^3"
   },
-  "dependent_modules": ["file_mdm:file_mdm", "sophron:sophron"],
+  "dependent_modules": [
+    "file_mdm:file_mdm",
+    "sophron:sophron"
+  ],
   "configure": "system.image_toolkit_settings",
   "core_version_requirement": "^11.3",
   "active_installs": 31280,
+  "list_position": 150,
   "project_url": "https://www.drupal.org/project/imagemagick",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
@@ -24,7 +28,23 @@
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
-  "categories": ["Media"],
-  "subcategories": ["Image toolkit / processing"],
-  "keywords": ["imagemagick", "graphicsmagick", "image toolkit", "convert", "identify", "image processing", "gd alternative", "image styles", "webp", "avif", "media"]
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Image toolkit / processing"
+  ],
+  "keywords": [
+    "imagemagick",
+    "graphicsmagick",
+    "image toolkit",
+    "convert",
+    "identify",
+    "image processing",
+    "gd alternative",
+    "image styles",
+    "webp",
+    "avif",
+    "media"
+  ]
 }

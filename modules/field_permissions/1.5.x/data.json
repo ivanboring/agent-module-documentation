@@ -6,10 +6,13 @@
   "package": "Fields",
   "composer_namespace": "drupal/field_permissions",
   "composer_requirements": {},
-  "dependent_modules": ["drupal:field"],
+  "dependent_modules": [
+    "drupal:field"
+  ],
   "configure": "field_permissions.reports",
   "core_version_requirement": "^9.5 || ^10 || ^11",
   "active_installs": 44523,
+  "list_position": 103,
   "project_url": "https://www.drupal.org/project/field_permissions",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
@@ -19,8 +22,26 @@
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": ["FieldPermissionType (Plugin/FieldPermissionType)"],
-  "categories": ["Access control", "Security"],
-  "subcategories": ["Field-level access control"],
-  "keywords": ["field_permissions", "field permissions", "access control", "field access", "private fields", "custom permissions", "view", "edit", "create", "field-level security"]
+  "provides_plugin_types": [
+    "FieldPermissionType (Plugin/FieldPermissionType)"
+  ],
+  "categories": [
+    "Access control",
+    "Security"
+  ],
+  "subcategories": [
+    "Field-level access control"
+  ],
+  "keywords": [
+    "field_permissions",
+    "field permissions",
+    "access control",
+    "field access",
+    "private fields",
+    "custom permissions",
+    "view",
+    "edit",
+    "create",
+    "field-level security"
+  ]
 }

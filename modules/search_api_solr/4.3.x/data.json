@@ -17,10 +17,14 @@
     "ext-simplexml": "*",
     "composer-runtime-api": ">=2.0"
   },
-  "dependent_modules": ["drupal:language", "search_api:search_api"],
+  "dependent_modules": [
+    "drupal:language",
+    "search_api:search_api"
+  ],
   "configure": null,
   "core_version_requirement": "^10.2 || ^11.0",
   "active_installs": 50427,
+  "list_position": 92,
   "project_url": "https://www.drupal.org/project/search_api_solr",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
@@ -48,8 +52,24 @@
   "provides_permissions": false,
   "provides_drush_commands": true,
   "provides_config_schema": true,
-  "provides_plugin_types": ["SolrConnector (search_api_solr_connector, Plugin/SolrConnector)"],
-  "categories": ["Site search", "Integrations"],
+  "provides_plugin_types": [
+    "SolrConnector (search_api_solr_connector, Plugin/SolrConnector)"
+  ],
+  "categories": [
+    "Site search",
+    "Integrations"
+  ],
   "subcategories": [],
-  "keywords": ["search api", "solr", "apache solr", "solarium", "full text search", "faceted search", "indexing", "search backend", "solr cloud", "streaming expressions"]
+  "keywords": [
+    "search api",
+    "solr",
+    "apache solr",
+    "solarium",
+    "full text search",
+    "faceted search",
+    "indexing",
+    "search backend",
+    "solr cloud",
+    "streaming expressions"
+  ]
 }

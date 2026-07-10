@@ -9,10 +9,15 @@
     "drupal/csv_serialization": "~1.4 || ~2.0 || ~3 || ~4",
     "php": ">=8.1"
   },
-  "dependent_modules": ["drupal:rest", "drupal:views", "csv_serialization:csv_serialization"],
+  "dependent_modules": [
+    "drupal:rest",
+    "drupal:views",
+    "csv_serialization:csv_serialization"
+  ],
   "configure": null,
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": 78534,
+  "list_position": 46,
   "project_url": "https://www.drupal.org/project/views_data_export",
   "license": "GPL-2.0-or-later",
   "php_requirement": ">=8.1",
@@ -26,7 +31,23 @@
   "provides_drush_commands": true,
   "provides_config_schema": true,
   "provides_plugin_types": [],
-  "categories": ["Import and export"],
-  "subcategories": ["Data export"],
-  "keywords": ["views", "export", "csv", "xml", "json", "xls", "excel", "download", "data export", "serialization", "batch export"]
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Data export"
+  ],
+  "keywords": [
+    "views",
+    "export",
+    "csv",
+    "xml",
+    "json",
+    "xls",
+    "excel",
+    "download",
+    "data export",
+    "serialization",
+    "batch export"
+  ]
 }

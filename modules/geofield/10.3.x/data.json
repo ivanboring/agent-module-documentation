@@ -13,10 +13,13 @@
   "configure": null,
   "core_version_requirement": "^10.3 || ^11 || ^12",
   "active_installs": 55573,
+  "list_position": 81,
   "project_url": "https://www.drupal.org/project/geofield",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": ["itamair/geophp (GeoPHP geometry library)"],
+  "library_dependencies": [
+    "itamair/geophp (GeoPHP geometry library)"
+  ],
   "suggests": {
     "drupal/geofield_map": "Interactive back-end/front-end map widget and formatter for Geofield.",
     "drupal/leaflet": "Leaflet JS mapping integration for points and geometries.",
@@ -27,8 +30,33 @@
   "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": ["GeofieldBackend (Plugin/GeofieldBackend)", "GeofieldProximitySource (Plugin/GeofieldProximitySource)"],
-  "categories": ["Site structure", "Content display"],
-  "subcategories": ["Fields", "Geospatial / location"],
-  "keywords": ["geofield", "geospatial", "location", "gis", "wkt", "geometry", "point", "polygon", "linestring", "latitude", "longitude", "proximity", "geophp", "geohash", "maps"]
+  "provides_plugin_types": [
+    "GeofieldBackend (Plugin/GeofieldBackend)",
+    "GeofieldProximitySource (Plugin/GeofieldProximitySource)"
+  ],
+  "categories": [
+    "Site structure",
+    "Content display"
+  ],
+  "subcategories": [
+    "Fields",
+    "Geospatial / location"
+  ],
+  "keywords": [
+    "geofield",
+    "geospatial",
+    "location",
+    "gis",
+    "wkt",
+    "geometry",
+    "point",
+    "polygon",
+    "linestring",
+    "latitude",
+    "longitude",
+    "proximity",
+    "geophp",
+    "geohash",
+    "maps"
+  ]
 }

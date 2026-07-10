@@ -6,10 +6,15 @@
   "package": "search_api",
   "composer_namespace": "drupal/search_api_solr",
   "composer_requirements": {},
-  "dependent_modules": ["facets:facets_exposed_filters", "search_api_solr:search_api_solr", "views:views"],
+  "dependent_modules": [
+    "facets:facets_exposed_filters",
+    "search_api_solr:search_api_solr",
+    "views:views"
+  ],
   "configure": "search_api_solr_log.settings",
   "core_version_requirement": "^10.2 || ^11.0",
   "active_installs": 50427,
+  "list_position": 92,
   "project_url": "https://www.drupal.org/project/search_api_solr",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
@@ -20,7 +25,20 @@
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
-  "categories": ["Site search", "Developer tools"],
+  "categories": [
+    "Site search",
+    "Developer tools"
+  ],
   "subcategories": [],
-  "keywords": ["solr", "log", "logging", "dblog", "watchdog", "search api", "events", "facets", "views"]
+  "keywords": [
+    "solr",
+    "log",
+    "logging",
+    "dblog",
+    "watchdog",
+    "search api",
+    "events",
+    "facets",
+    "views"
+  ]
 }

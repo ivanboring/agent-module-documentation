@@ -10,10 +10,14 @@
     "drupal/core": "^10.3 || ^11",
     "drupal/token": "^1.0"
   },
-  "dependent_modules": ["drupal:field", "token:token"],
+  "dependent_modules": [
+    "drupal:field",
+    "token:token"
+  ],
   "configure": "entity.metatag_defaults.collection",
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": 262006,
+  "list_position": 5,
   "project_url": "https://www.drupal.org/project/metatag",
   "license": "GPL-2.0-or-later",
   "php_requirement": ">=8.0",
@@ -43,8 +47,27 @@
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": ["MetatagTag (Plugin/metatag/Tag)", "MetatagGroup (Plugin/metatag/Group)"],
-  "categories": ["Search engine optimization (SEO)"],
-  "subcategories": ["Meta tags / structured metadata"],
-  "keywords": ["metatag", "meta tags", "seo", "open graph", "twitter cards", "canonical", "description", "robots", "schema", "token", "social sharing"]
+  "provides_plugin_types": [
+    "MetatagTag (Plugin/metatag/Tag)",
+    "MetatagGroup (Plugin/metatag/Group)"
+  ],
+  "categories": [
+    "Search engine optimization (SEO)"
+  ],
+  "subcategories": [
+    "Meta tags / structured metadata"
+  ],
+  "keywords": [
+    "metatag",
+    "meta tags",
+    "seo",
+    "open graph",
+    "twitter cards",
+    "canonical",
+    "description",
+    "robots",
+    "schema",
+    "token",
+    "social sharing"
+  ]
 }

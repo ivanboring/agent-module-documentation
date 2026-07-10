@@ -8,21 +8,42 @@
   "composer_requirements": {
     "drupal/crop": "^2"
   },
-  "dependent_modules": ["crop:crop", "drupal:image"],
+  "dependent_modules": [
+    "crop:crop",
+    "drupal:image"
+  ],
   "configure": "image_widget_crop.crop_widget_settings",
   "core_version_requirement": "^9.5 || ^10 || ^11",
   "active_installs": 66263,
+  "list_position": 58,
   "project_url": "https://www.drupal.org/project/image_widget_crop",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
-  "submodules": ["image_widget_crop_examples"],
+  "submodules": [
+    "image_widget_crop_examples"
+  ],
   "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
-  "categories": ["Media"],
-  "subcategories": ["Image cropping"],
-  "keywords": ["image", "crop", "cropper", "crop api", "media", "image style", "field widget", "responsive image", "thumbnail", "focal point"]
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Image cropping"
+  ],
+  "keywords": [
+    "image",
+    "crop",
+    "cropper",
+    "crop api",
+    "media",
+    "image style",
+    "field widget",
+    "responsive image",
+    "thumbnail",
+    "focal point"
+  ]
 }

@@ -9,10 +9,14 @@
     "drupal/token": "*",
     "drupal/ctools": "*"
   },
-  "dependent_modules": ["drupal:path", "token:token"],
+  "dependent_modules": [
+    "drupal:path",
+    "token:token"
+  ],
   "configure": "entity.pathauto_pattern.collection",
   "core_version_requirement": "^10.2 || ^11",
   "active_installs": 334146,
+  "list_position": 2,
   "project_url": "https://www.drupal.org/project/pathauto",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
@@ -24,8 +28,25 @@
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": ["AliasType (Plugin/pathauto/AliasType)"],
-  "categories": ["Automation", "Search engine optimization (SEO)"],
-  "subcategories": ["URL alias generation"],
-  "keywords": ["pathauto", "url alias", "path", "seo", "clean urls", "pattern", "token", "alias", "transliteration"]
+  "provides_plugin_types": [
+    "AliasType (Plugin/pathauto/AliasType)"
+  ],
+  "categories": [
+    "Automation",
+    "Search engine optimization (SEO)"
+  ],
+  "subcategories": [
+    "URL alias generation"
+  ],
+  "keywords": [
+    "pathauto",
+    "url alias",
+    "path",
+    "seo",
+    "clean urls",
+    "pattern",
+    "token",
+    "alias",
+    "transliteration"
+  ]
 }

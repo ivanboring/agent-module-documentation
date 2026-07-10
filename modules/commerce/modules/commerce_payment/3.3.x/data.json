@@ -6,10 +6,16 @@
   "package": "Commerce",
   "composer_namespace": "drupal/commerce",
   "composer_requirements": {},
-  "dependent_modules": ["commerce:commerce", "commerce:commerce_order", "entity_reference_revisions:entity_reference_revisions", "drupal:filter"],
+  "dependent_modules": [
+    "commerce:commerce",
+    "commerce:commerce_order",
+    "entity_reference_revisions:entity_reference_revisions",
+    "drupal:filter"
+  ],
   "configure": "commerce_payment.configuration",
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": 24480,
+  "list_position": 180,
   "project_url": "https://www.drupal.org/project/commerce",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
@@ -19,8 +25,26 @@
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": ["commerce_payment.payment_gateway (plugin.manager.commerce_payment_gateway)", "commerce_payment.payment_method_type (plugin.manager.commerce_payment_method_type)", "commerce_payment.payment_type (plugin.manager.commerce_payment_type)"],
-  "categories": ["E-commerce"],
-  "subcategories": ["Storefront platform"],
-  "keywords": ["commerce", "payment", "payment gateway", "payment method", "credit card", "on-site payment", "off-site payment", "stored payment", "checkout"]
+  "provides_plugin_types": [
+    "commerce_payment.payment_gateway (plugin.manager.commerce_payment_gateway)",
+    "commerce_payment.payment_method_type (plugin.manager.commerce_payment_method_type)",
+    "commerce_payment.payment_type (plugin.manager.commerce_payment_type)"
+  ],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Storefront platform"
+  ],
+  "keywords": [
+    "commerce",
+    "payment",
+    "payment gateway",
+    "payment method",
+    "credit card",
+    "on-site payment",
+    "off-site payment",
+    "stored payment",
+    "checkout"
+  ]
 }

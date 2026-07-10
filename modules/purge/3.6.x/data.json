@@ -10,17 +10,47 @@
   "configure": null,
   "core_version_requirement": "^9.5 || ^10 || ^11",
   "active_installs": 36716,
+  "list_position": 128,
   "project_url": "https://www.drupal.org/project/purge",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
-  "submodules": ["purge_drush", "purge_processor_cron", "purge_processor_lateruntime", "purge_queuer_coretags", "purge_tokens", "purge_ui"],
+  "submodules": [
+    "purge_drush",
+    "purge_processor_cron",
+    "purge_processor_lateruntime",
+    "purge_queuer_coretags",
+    "purge_tokens",
+    "purge_ui"
+  ],
   "provides_permissions": false,
   "provides_drush_commands": true,
   "provides_config_schema": true,
-  "provides_plugin_types": ["Purger (Plugin/Purge/Purger)", "Processor (Plugin/Purge/Processor)", "Queuer (Plugin/Purge/Queuer)", "Queue (Plugin/Purge/Queue)", "Invalidation (Plugin/Purge/Invalidation)", "DiagnosticCheck (Plugin/Purge/DiagnosticCheck)", "TagsHeader (Plugin/Purge/TagsHeader)"],
-  "categories": ["Performance"],
-  "subcategories": ["Cache invalidation"],
-  "keywords": ["purge", "cache invalidation", "reverse proxy", "cdn", "varnish", "cache tags", "queue", "external cache", "invalidation"]
+  "provides_plugin_types": [
+    "Purger (Plugin/Purge/Purger)",
+    "Processor (Plugin/Purge/Processor)",
+    "Queuer (Plugin/Purge/Queuer)",
+    "Queue (Plugin/Purge/Queue)",
+    "Invalidation (Plugin/Purge/Invalidation)",
+    "DiagnosticCheck (Plugin/Purge/DiagnosticCheck)",
+    "TagsHeader (Plugin/Purge/TagsHeader)"
+  ],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "Cache invalidation"
+  ],
+  "keywords": [
+    "purge",
+    "cache invalidation",
+    "reverse proxy",
+    "cdn",
+    "varnish",
+    "cache tags",
+    "queue",
+    "external cache",
+    "invalidation"
+  ]
 }

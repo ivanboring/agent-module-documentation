@@ -8,10 +8,13 @@
   "composer_requirements": {
     "drupal/core": "^10.3 || ^11"
   },
-  "dependent_modules": ["drupal:node"],
+  "dependent_modules": [
+    "drupal:node"
+  ],
   "configure": "node_revision_delete.admin_settings",
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": 24795,
+  "list_position": 178,
   "project_url": "https://www.drupal.org/project/node_revision_delete",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
@@ -21,8 +24,27 @@
   "provides_permissions": true,
   "provides_drush_commands": true,
   "provides_config_schema": true,
-  "provides_plugin_types": ["NodeRevisionDelete (Plugin/NodeRevisionDelete, Attribute/Annotation NodeRevisionDelete)"],
-  "categories": ["Administration tools", "Content editing experience"],
-  "subcategories": ["Cron / task scheduling", "Backup & restore"],
-  "keywords": ["node revision delete", "revisions", "prune", "cleanup", "node", "database size", "drafts", "queue", "cron", "retention"]
+  "provides_plugin_types": [
+    "NodeRevisionDelete (Plugin/NodeRevisionDelete, Attribute/Annotation NodeRevisionDelete)"
+  ],
+  "categories": [
+    "Administration tools",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Cron / task scheduling",
+    "Backup & restore"
+  ],
+  "keywords": [
+    "node revision delete",
+    "revisions",
+    "prune",
+    "cleanup",
+    "node",
+    "database size",
+    "drafts",
+    "queue",
+    "cron",
+    "retention"
+  ]
 }

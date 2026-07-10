@@ -6,10 +6,13 @@
   "package": "Security",
   "composer_namespace": "drupal/password_policy",
   "composer_requirements": {},
-  "dependent_modules": ["drupal:datetime"],
+  "dependent_modules": [
+    "drupal:datetime"
+  ],
   "configure": "entity.password_policy.collection",
   "core_version_requirement": "^9.1 || ^10 || ^11",
   "active_installs": 47643,
+  "list_position": 99,
   "project_url": "https://www.drupal.org/project/password_policy",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
@@ -31,8 +34,23 @@
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": ["PasswordConstraint (Plugin/PasswordConstraint)"],
-  "categories": ["Security"],
-  "subcategories": ["Password policy"],
-  "keywords": ["password policy", "password constraints", "password expiration", "password reset", "security", "authentication", "password strength", "cron"]
+  "provides_plugin_types": [
+    "PasswordConstraint (Plugin/PasswordConstraint)"
+  ],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Password policy"
+  ],
+  "keywords": [
+    "password policy",
+    "password constraints",
+    "password expiration",
+    "password reset",
+    "security",
+    "authentication",
+    "password strength",
+    "cron"
+  ]
 }

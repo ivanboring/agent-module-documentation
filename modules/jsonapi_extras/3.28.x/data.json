@@ -9,21 +9,47 @@
     "php": ">=8.1",
     "e0ipso/shaper": "^1"
   },
-  "dependent_modules": ["drupal:jsonapi"],
+  "dependent_modules": [
+    "drupal:jsonapi"
+  ],
   "configure": "jsonapi_extras.settings",
   "core_version_requirement": "^9.5 || ^10 || ^11",
   "active_installs": 27453,
+  "list_position": 164,
   "project_url": "https://www.drupal.org/project/jsonapi_extras",
   "license": "GPL-2.0-or-later",
   "php_requirement": ">=8.1",
-  "library_dependencies": ["e0ipso/shaper"],
+  "library_dependencies": [
+    "e0ipso/shaper"
+  ],
   "suggests": {},
-  "submodules": ["jsonapi_defaults"],
+  "submodules": [
+    "jsonapi_defaults"
+  ],
   "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": ["resource_field_enhancer (Plugin/jsonapi/FieldEnhancer)"],
-  "categories": ["Decoupled", "Developer tools"],
-  "subcategories": ["REST / web services"],
-  "keywords": ["jsonapi", "json:api", "jsonapi extras", "rest", "api", "decoupled", "headless", "resource override", "field enhancer", "aliases", "web services"]
+  "provides_plugin_types": [
+    "resource_field_enhancer (Plugin/jsonapi/FieldEnhancer)"
+  ],
+  "categories": [
+    "Decoupled",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "REST / web services"
+  ],
+  "keywords": [
+    "jsonapi",
+    "json:api",
+    "jsonapi extras",
+    "rest",
+    "api",
+    "decoupled",
+    "headless",
+    "resource override",
+    "field enhancer",
+    "aliases",
+    "web services"
+  ]
 }

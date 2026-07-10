@@ -9,10 +9,16 @@
     "php": "^7.4 || ^8.0",
     "drupal/entity": "^1.0"
   },
-  "dependent_modules": ["drupal:field", "drupal:user", "drupal:views", "entity:entity"],
+  "dependent_modules": [
+    "drupal:field",
+    "drupal:user",
+    "drupal:views",
+    "entity:entity"
+  ],
   "configure": "entity.profile_type.collection",
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": 34044,
+  "list_position": 136,
   "project_url": "https://www.drupal.org/project/profile",
   "license": "GPL-2.0-or-later",
   "php_requirement": "^7.4 || ^8.0",
@@ -26,7 +32,22 @@
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
-  "categories": ["User engagement", "Site structure"],
-  "subcategories": ["Fields"],
-  "keywords": ["profile", "user profile", "profile type", "fields", "user data", "entity", "membership", "registration", "multiple profiles"]
+  "categories": [
+    "User engagement",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Fields"
+  ],
+  "keywords": [
+    "profile",
+    "user profile",
+    "profile type",
+    "fields",
+    "user data",
+    "entity",
+    "membership",
+    "registration",
+    "multiple profiles"
+  ]
 }

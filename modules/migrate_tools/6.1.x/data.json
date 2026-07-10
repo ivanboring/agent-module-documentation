@@ -9,10 +9,13 @@
     "php": ">=8.0",
     "drupal/core": "^9.1 || ^10 || ^11"
   },
-  "dependent_modules": ["drupal:migrate"],
+  "dependent_modules": [
+    "drupal:migrate"
+  ],
   "configure": "entity.migration_group.list",
   "core_version_requirement": "^9.1 || ^10 || ^11",
   "active_installs": 63328,
+  "list_position": 65,
   "project_url": "https://www.drupal.org/project/migrate_tools",
   "license": "GPL-2.0-or-later",
   "php_requirement": ">=8.0",
@@ -25,8 +28,25 @@
   "provides_permissions": true,
   "provides_drush_commands": true,
   "provides_config_schema": false,
-  "provides_plugin_types": ["migrate_shared_configuration (MigrateSharedConfigPluginManager)"],
-  "categories": ["Import and export"],
-  "subcategories": ["Migration tooling"],
-  "keywords": ["migrate", "migration", "drush", "import", "rollback", "migrate_tools", "migration group", "etl", "data migration", "migrate:import"]
+  "provides_plugin_types": [
+    "migrate_shared_configuration (MigrateSharedConfigPluginManager)"
+  ],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Migration tooling"
+  ],
+  "keywords": [
+    "migrate",
+    "migration",
+    "drush",
+    "import",
+    "rollback",
+    "migrate_tools",
+    "migration group",
+    "etl",
+    "data migration",
+    "migrate:import"
+  ]
 }

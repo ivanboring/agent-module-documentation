@@ -7,10 +7,13 @@
   "package": "AI",
   "composer_namespace": "drupal/ai",
   "composer_requirements": {},
-  "dependent_modules": ["ai:ai"],
+  "dependent_modules": [
+    "ai:ai"
+  ],
   "configure": "ai_observability.settings",
   "core_version_requirement": "^10.2 || ^11",
   "active_installs": null,
+  "list_position": 225,
   "project_url": "https://www.drupal.org/project/ai",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
@@ -25,8 +28,31 @@
   "provides_config_entities": [],
   "provides_content_entities": [],
   "consumes_plugin_types": [],
-  "routes": {"ai_observability.settings": "/admin/config/ai/observability"},
-  "categories": ["Artificial Intelligence (AI)", "Developer tools"],
-  "subcategories": ["AI usage metering & cost", "Debugging & inspection"],
-  "keywords": ["ai", "observability", "logging", "logger", "opentelemetry", "otel", "spans", "traces", "metrics", "token usage", "monitoring", "telemetry", "cost tracking", "audit"]
+  "routes": {
+    "ai_observability.settings": "/admin/config/ai/observability"
+  },
+  "categories": [
+    "Artificial Intelligence (AI)",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "AI usage metering & cost",
+    "Debugging & inspection"
+  ],
+  "keywords": [
+    "ai",
+    "observability",
+    "logging",
+    "logger",
+    "opentelemetry",
+    "otel",
+    "spans",
+    "traces",
+    "metrics",
+    "token usage",
+    "monitoring",
+    "telemetry",
+    "cost tracking",
+    "audit"
+  ]
 }

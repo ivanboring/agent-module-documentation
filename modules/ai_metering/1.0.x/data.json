@@ -1,7 +1,7 @@
 {
   "name": "AI Metering",
   "data_name": "ai_metering",
-  "description": "Tracks token usage and cost for every AI operation dispatched through the ai module — any provider, any operation. Adds per-user quotas, multi-currency display with live exchange rates, and a usage dashboard.",
+  "description": "Tracks token usage and cost for every AI operation dispatched through the ai module \u2014 any provider, any operation. Adds per-user quotas, multi-currency display with live exchange rates, and a usage dashboard.",
   "version": "1.0.x",
   "release_stability": "beta",
   "package": "AI",
@@ -10,15 +10,22 @@
     "drupal/ai": "^1.0",
     "drupal/views_data_export": "^1.10"
   },
-  "dependent_modules": ["ai:ai", "views_data_export:views_data_export"],
+  "dependent_modules": [
+    "ai:ai",
+    "views_data_export:views_data_export"
+  ],
   "configure": "ai_metering.settings",
   "core_version_requirement": "^10.5 || ^11.2",
   "active_installs": 24,
+  "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_metering",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "external_services": ["Frankfurter (currency rates)", "LiteLLM / models.dev (model pricing)"],
+  "external_services": [
+    "Frankfurter (currency rates)",
+    "LiteLLM / models.dev (model pricing)"
+  ],
   "suggests": {
     "drupal/ai_usage_limits": "Shows a provider-level system ceiling as a read-only banner on the dashboard.",
     "drupal/ai_translate": "Primary use case for the HTMX pre-call cost estimation badge."
@@ -27,9 +34,26 @@
   "provides_permissions": true,
   "provides_drush_commands": true,
   "provides_config_schema": true,
-  "provides_plugin_types": ["PricingSource (Plugin/PricingSource)"],
+  "provides_plugin_types": [
+    "PricingSource (Plugin/PricingSource)"
+  ],
   "storage": "Custom DB tables ai_metering_usage (per-call log) and ai_metering_quota (per-user monthly budget); no content/config entities.",
-  "categories": ["Artificial Intelligence (AI)"],
-  "subcategories": ["AI usage metering & cost"],
-  "keywords": ["ai", "token usage", "cost", "quota", "budget", "metering", "llm", "pricing", "dashboard", "currency"]
+  "categories": [
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "AI usage metering & cost"
+  ],
+  "keywords": [
+    "ai",
+    "token usage",
+    "cost",
+    "quota",
+    "budget",
+    "metering",
+    "llm",
+    "pricing",
+    "dashboard",
+    "currency"
+  ]
 }

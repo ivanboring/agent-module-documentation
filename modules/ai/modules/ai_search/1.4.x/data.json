@@ -8,10 +8,14 @@
   "part_of": "ai",
   "composer_namespace": "drupal/ai",
   "composer_requirements": {},
-  "dependent_modules": ["ai:ai", "search_api:search_api"],
+  "dependent_modules": [
+    "ai:ai",
+    "search_api:search_api"
+  ],
   "configure": null,
   "core_version_requirement": "^10.4 || ^11",
   "active_installs": null,
+  "list_position": 225,
   "project_url": "https://www.drupal.org/project/ai",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
@@ -21,14 +25,49 @@
   "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": ["EmbeddingStrategy (Plugin/EmbeddingStrategy)"],
+  "provides_plugin_types": [
+    "EmbeddingStrategy (Plugin/EmbeddingStrategy)"
+  ],
   "provides_config_entities": [],
   "provides_content_entities": [],
   "provides_search_api_backend": "search_api_ai_search",
-  "provides_search_api_processors": ["database_boost_by_ai_search", "solr_boost_by_ai_search", "ai_search_score_threshold"],
-  "consumes_plugin_types": ["AiVdbProvider (Plugin/AiVdbProvider)", "AiProvider (Plugin/AiProvider)", "OperationType embeddings (Plugin/OperationType)", "FunctionCall (Plugin/AiFunctionCall)", "AiAssistantAction (Plugin/AiAssistantAction)"],
+  "provides_search_api_processors": [
+    "database_boost_by_ai_search",
+    "solr_boost_by_ai_search",
+    "ai_search_score_threshold"
+  ],
+  "consumes_plugin_types": [
+    "AiVdbProvider (Plugin/AiVdbProvider)",
+    "AiProvider (Plugin/AiProvider)",
+    "OperationType embeddings (Plugin/OperationType)",
+    "FunctionCall (Plugin/AiFunctionCall)",
+    "AiAssistantAction (Plugin/AiAssistantAction)"
+  ],
   "routes": {},
-  "categories": ["Artificial Intelligence (AI)", "Site search"],
-  "subcategories": ["AI provider abstraction / LLM gateway", "Search backend", "Content indexing"],
-  "keywords": ["ai", "search", "search api", "vector database", "vdb", "embeddings", "semantic search", "rag", "retrieval augmented generation", "chunking", "similarity search", "backend", "embedding strategy", "milvus", "pinecone"]
+  "categories": [
+    "Artificial Intelligence (AI)",
+    "Site search"
+  ],
+  "subcategories": [
+    "AI provider abstraction / LLM gateway",
+    "Search backend",
+    "Content indexing"
+  ],
+  "keywords": [
+    "ai",
+    "search",
+    "search api",
+    "vector database",
+    "vdb",
+    "embeddings",
+    "semantic search",
+    "rag",
+    "retrieval augmented generation",
+    "chunking",
+    "similarity search",
+    "backend",
+    "embedding strategy",
+    "milvus",
+    "pinecone"
+  ]
 }
