@@ -7,7 +7,7 @@ const esc = (s) => String(s).replace(/[&<>"]/g, (c) => (
 
 // Metrics to graph. `get` pulls the value from a results leaf (null = gap).
 const METRICS = [
-  { key: 'passrate', title: 'Pass rate', yLabel: '%', get: (l) => l.runs ? (l.correct / l.runs) * 100 : null, fmt: (v) => `${v.toFixed(0)}%` },
+  { key: 'failrate', title: 'Failure rate', yLabel: '%', get: (l) => l.runs ? (1 - l.correct / l.runs) * 100 : null, fmt: (v) => `${v.toFixed(0)}%` },
   { key: 'time', title: 'Time', yLabel: 'seconds', get: (l) => l.time, fmt: (v) => `${v}s` },
   { key: 'cost', title: 'Cost', yLabel: 'USD', get: (l) => l.cost, fmt: (v) => `$${v.toFixed(4)}` },
 ];
@@ -71,7 +71,7 @@ function renderCharts(moduleKey, model) {
     const card = document.createElement('div');
     card.className = 'chart-card';
     card.innerHTML = `<h3>${esc(metric.title)}</h3>
-      <div class="sub">per question · ${metric.key === 'passrate' ? 'higher is better' : 'lower is better'}</div>
+      <div class="sub">per question · lower is better</div>
       <div class="chart-wrap"><canvas></canvas></div>`;
     container.appendChild(card);
     charts.push(groupedBar(card.querySelector('canvas'), {
