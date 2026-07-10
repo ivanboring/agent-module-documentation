@@ -1,0 +1,82 @@
+{
+  "name": "Book",
+  "data_name": "book",
+  "description": "Allows users to create and organize related content in an outline.",
+  "version": "3.0.x",
+  "package": "Book",
+  "composer_namespace": "drupal/book",
+  "composer_requirements": {
+    "ext-pdo": "*"
+  },
+  "dependent_modules": [
+    "drupal:node"
+  ],
+  "configure": "book.settings",
+  "core_version_requirement": "^11.2 || ^12",
+  "active_installs": null,
+  "list_position": 404,
+  "project_url": "https://www.drupal.org/project/book",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "book_olivero",
+    "book_content_type"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "book_outline": {
+    "description": "A book is a tree of nodes stored in the {book} outline table (bid, nid, pid, weight, depth, p1..p9 materialized path). Any node bundle listed in book.settings.allowed_types can join a book; the top node's nid becomes the book id (bid). Managed by the book.manager service; hierarchy limited to 9 levels (p1..p9).",
+    "hierarchy": {
+      "storage": "book.outline_storage (BookOutlineStorage, table 'book')",
+      "max_depth": 9,
+      "materialized_path": "p1..p9",
+      "sort": "weight or title (book.settings.book_sort)"
+    }
+  },
+  "permissions": [
+    "administer book outlines",
+    "create new books",
+    "add content to books",
+    "access printer-friendly version",
+    "reorder book pages",
+    "access book list",
+    "delete book",
+    "administer book settings"
+  ],
+  "block_plugins": [
+    "book_navigation"
+  ],
+  "condition_plugins": [
+    "book"
+  ],
+  "entity_reference_selection_plugins": [
+    "default:book_node_selection"
+  ],
+  "categories": [
+    "Site structure",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Navigation menus",
+    "Manual content ordering",
+    "Structured content / page building"
+  ],
+  "keywords": [
+    "book",
+    "outline",
+    "hierarchy",
+    "manual",
+    "documentation",
+    "table of contents",
+    "book navigation",
+    "printer-friendly",
+    "breadcrumb",
+    "tree",
+    "chapters",
+    "wiki"
+  ]
+}

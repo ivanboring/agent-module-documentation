@@ -1,0 +1,49 @@
+{
+  "name": "Fast 404",
+  "data_name": "fast404",
+  "description": "Speed up the generation of 404 pages with this module. Route 404 display to a static page.",
+  "version": "3.7.x",
+  "package": "Performance and scalability",
+  "composer_namespace": "drupal/fast_404",
+  "composer_requirements": {
+    "drupal/core": "^10 || ^11"
+  },
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": 407,
+  "project_url": "https://www.drupal.org/project/fast_404",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/redirect": "Dev dependency; when installed, set $settings['fast404_respect_redirect'] = TRUE so path-checking honours redirects."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "part_of": null,
+  "configuration_model": "settings.php only. All behaviour is controlled by $settings['fast404_*'] keys read via Settings::get() (see example.settings.fast404.php). There is no admin UI, no config entity, no *.routing.yml, no config schema, and no permissions. Enabling the module gives static-file extension checking with defaults; everything else is opt-in through settings.php.",
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [],
+  "keywords": [
+    "fast 404",
+    "404",
+    "410 gone",
+    "not found",
+    "missing files",
+    "performance",
+    "scalability",
+    "static file",
+    "extension check",
+    "path check",
+    "settings.php",
+    "event subscriber",
+    "bootstrap"
+  ]
+}

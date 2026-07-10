@@ -1,0 +1,73 @@
+{
+  "name": "UI Icons",
+  "data_name": "ui_icons",
+  "description": "Generic icon manager for Drupal that integrates third-party icon packs and exposes them across Drupal's display tools; ships the icon_autocomplete form element.",
+  "version": "1.1.x",
+  "package": "User interface",
+  "composer_namespace": "drupal/ui_icons",
+  "composer_requirements": {
+    "drupal/core": "^11"
+  },
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^11.1",
+  "active_installs": null,
+  "list_position": 398,
+  "project_url": "https://www.drupal.org/project/ui_icons",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "ui_icons_patterns: Icons integration with UI Patterns 1.x and 2.x.",
+    "ui_icons_backport: Deprecated empty placeholder; API backport for Drupal before 11.1.",
+    "ui_icons_field: Provides an Icon field type and Link field integration.",
+    "ui_icons_media: Media integration allowing icons as a media type.",
+    "ui_icons_picker: Fancy visual icon picker widget for the UI Icons selector.",
+    "ui_icons_library: Admin overview page listing all icons available on the site.",
+    "ui_icons_font: FontExtractor plugin to define icon packs from web fonts.",
+    "ui_icons_text: Text-filter integration to embed icons in filtered content.",
+    "ui_icons_menu: Menu UI integration to attach icons to menu links.",
+    "ui_icons_ckeditor5: CKEditor 5 plugin to embed icons in rich text.",
+    "ui_icons_iconify_api: Deprecated empty placeholder; replaced by the Iconify Icons module.",
+    "ui_icons_field_link_attributes: Link-with-attributes (link_attributes) integration for icon fields.",
+    "ui_icons_field_linkit: Linkit integration for icon fields.",
+    "ui_icons_field_linkit_attributes: Linkit-with-attributes integration for icon fields."
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "consumes_core_plugin_types": [
+    "icon_pack (\\Drupal\\Core\\Theme\\Icon\\Plugin\\IconPackManager, discovers EXTENSION.icons.yml)",
+    "icon_pack.extractor (\\Drupal\\Core\\Theme\\Icon\\IconExtractorPluginManager, #[IconExtractor] plugins: path, svg, svg_sprite)"
+  ],
+  "part_of": null,
+  "categories": [
+    "Content display",
+    "Content editing experience",
+    "Theming"
+  ],
+  "subcategories": [
+    "Icon management",
+    "Rich text embedding",
+    "Twig / component libraries"
+  ],
+  "keywords": [
+    "ui_icons",
+    "icons",
+    "icon pack",
+    "icons.yml",
+    "IconExtractor",
+    "IconPack",
+    "icon_autocomplete",
+    "svg",
+    "svg sprite",
+    "iconify",
+    "font icons",
+    "icon field",
+    "icon media",
+    "ckeditor icons",
+    "menu icons"
+  ]
+}

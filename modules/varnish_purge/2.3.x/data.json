@@ -1,0 +1,58 @@
+{
+  "name": "Varnish Purger",
+  "data_name": "varnish_purger",
+  "description": "Purger for varnish. Purges page caches from varnish. Works together with the purge module.",
+  "version": "2.3.x",
+  "package": "Purge - reverse proxies & CDNs",
+  "composer_namespace": "drupal/varnish_purge",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "purge:purge",
+    "purge:purge_tokens"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.1 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 403,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/varnish_purge",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "8.0",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "varnish_purge_tags",
+    "varnish_image_purge",
+    "varnish_focal_point_purge"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "consumes_plugin_types": [
+    "Purge Purger (@PurgePurger) — provides 'varnish' (HTTP purger, one request per invalidation), 'varnishbundled' (one request per batch) and 'varnish_zeroconfig_purger' (settings.php-driven load-balancer purger) purger plugins",
+    "Purge DiagnosticCheck (@PurgeDiagnosticCheck) — 'varnishconfiguration' self-test that only lets fully configured Varnish purgers load"
+  ],
+  "categories": [
+    "Performance",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Cache invalidation",
+    "Caching backend"
+  ],
+  "keywords": [
+    "varnish",
+    "purge",
+    "cache invalidation",
+    "reverse proxy",
+    "cache tags",
+    "BAN",
+    "PURGE",
+    "http purger",
+    "zeroconfig",
+    "vcl",
+    "load balancer"
+  ],
+  "id_note": "The Drupal.org project is 'varnish_purge' (used as this docs directory name to match the project URL), but the MAIN module's machine name — and thus data_name — is 'varnish_purger'. The submodules live under the project 'varnish_purge'."
+}

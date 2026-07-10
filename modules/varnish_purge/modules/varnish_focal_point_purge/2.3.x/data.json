@@ -1,0 +1,46 @@
+{
+  "name": "Varnish Focal Point Purger",
+  "data_name": "varnish_focal_point_purge",
+  "description": "Purge image styles after a focal point entity needs to be updated",
+  "version": "2.3.x",
+  "package": "Purge - reverse proxies & CDNs",
+  "composer_namespace": "drupal/varnish_purge",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "varnish_purger:varnish_purger",
+    "purge:purge"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 403,
+  "part_of": "varnish_purger",
+  "project_url": "https://www.drupal.org/project/varnish_purge",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "consumes_plugin_types": [],
+  "categories": [
+    "Performance",
+    "Media"
+  ],
+  "subcategories": [
+    "Cache invalidation",
+    "Image cropping"
+  ],
+  "keywords": [
+    "varnish",
+    "focal point",
+    "image styles",
+    "URIBAN",
+    "purge",
+    "crop",
+    "cache invalidation"
+  ]
+}
