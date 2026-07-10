@@ -1,0 +1,391 @@
+{
+  "module": "views_jump_menu",
+  "version": "1.0.x",
+  "skill_name": "drupal-module-docs",
+  "cases": {
+    "vjm-style-plugin-id": {
+      "type": "recipe",
+      "question": "On a Drupal 11 site with Views Jump Menu, how do I make a view render its results as a jump-menu dropdown? Name the Views plugin type and the plugin id.",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 101,
+            "time": 4.6,
+            "cost": 0.0289
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2956,
+            "cache_reads": 57781,
+            "out_tokens": 750,
+            "time": 16.0,
+            "cost": 0.1349
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 322,
+            "time": 7.2,
+            "cost": 0.0826
+          }
+        }
+      }
+    },
+    "vjm-label-url-fields": {
+      "type": "recipe",
+      "question": "Which two style options must I set so the Views Jump Menu shows text and links somewhere when an option is chosen?",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2958,
+            "cache_reads": 76000,
+            "out_tokens": 1049,
+            "time": 22.4,
+            "cost": 0.1421
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2958,
+            "cache_reads": 81449,
+            "out_tokens": 516,
+            "time": 17.8,
+            "cost": 0.1516
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 87,
+            "time": 4.7,
+            "cost": 0.0765
+          }
+        }
+      }
+    },
+    "vjm-no-config-form": {
+      "type": "recipe",
+      "question": "Where is the admin settings page for Views Jump Menu and what permission controls it?",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2960,
+            "cache_reads": 95600,
+            "out_tokens": 1432,
+            "time": 31.5,
+            "cost": 0.1639
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2956,
+            "cache_reads": 55031,
+            "out_tokens": 590,
+            "time": 13.2,
+            "cost": 0.1016
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 178,
+            "time": 5.8,
+            "cost": 0.0787
+          }
+        }
+      }
+    },
+    "vjm-new-window": {
+      "type": "recipe",
+      "question": "How do I make the Views Jump Menu open the selected destination in a new browser tab?",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2958,
+            "cache_reads": 77143,
+            "out_tokens": 1730,
+            "time": 30.1,
+            "cost": 0.1548
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2958,
+            "cache_reads": 76267,
+            "out_tokens": 807,
+            "time": 18.3,
+            "cost": 0.1308
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 362,
+            "time": 8.0,
+            "cost": 0.0833
+          }
+        }
+      }
+    },
+    "vjm-canonical-url": {
+      "type": "recipe",
+      "question": "In Views Jump Menu, when does each option link to the entity's canonical aliased URL versus the field's rendered value?",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2958,
+            "cache_reads": 79160,
+            "out_tokens": 2361,
+            "time": 37.0,
+            "cost": 0.208
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2960,
+            "cache_reads": 106464,
+            "out_tokens": 1247,
+            "time": 25.3,
+            "cost": 0.1939
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 621,
+            "time": 12.1,
+            "cost": 0.0899
+          }
+        }
+      }
+    },
+    "vjm-theme-hook": {
+      "type": "recipe",
+      "question": "I want to override the HTML markup of the Views Jump Menu select. Which theme hook / template do I copy?",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2958,
+            "cache_reads": 76553,
+            "out_tokens": 1913,
+            "time": 30.5,
+            "cost": 0.157
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2958,
+            "cache_reads": 77364,
+            "out_tokens": 1315,
+            "time": 22.0,
+            "cost": 0.1522
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 527,
+            "time": 12.6,
+            "cost": 0.0875
+          }
+        }
+      }
+    },
+    "vjm-select-text-aria": {
+      "type": "recipe",
+      "question": "Which Views Jump Menu options set the placeholder prompt text and the screen-reader label of the dropdown?",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2,
+            "cache_reads": 24172,
+            "out_tokens": 339,
+            "time": 42.7,
+            "cost": 0.3652
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2960,
+            "cache_reads": 105372,
+            "out_tokens": 787,
+            "time": 18.2,
+            "cost": 0.173
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 77,
+            "time": 3.5,
+            "cost": 0.0763
+          }
+        }
+      }
+    },
+    "vjm-dependencies": {
+      "type": "recipe",
+      "question": "What does the Views Jump Menu module depend on, and does it require any contrib modules or libraries?",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2960,
+            "cache_reads": 96048,
+            "out_tokens": 1082,
+            "time": 20.2,
+            "cost": 0.1365
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2956,
+            "cache_reads": 55375,
+            "out_tokens": 728,
+            "time": 16.9,
+            "cost": 0.1095
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 203,
+            "time": 6.3,
+            "cost": 0.0794
+          }
+        }
+      }
+    }
+  }
+}

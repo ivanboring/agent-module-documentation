@@ -1,0 +1,391 @@
+{
+  "module": "cacheexclude",
+  "version": "3.0.x",
+  "skill_name": "drupal-module-docs",
+  "cases": {
+    "cacheexclude-config-route": {
+      "type": "recipe",
+      "question": "On a Drupal 11 site, where do I configure which pages this module keeps out of the cache? Give the admin path and the route name.",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2958,
+            "cache_reads": 77780,
+            "out_tokens": 1048,
+            "time": 22.6,
+            "cost": 0.1514
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2962,
+            "cache_reads": 128963,
+            "out_tokens": 858,
+            "time": 21.4,
+            "cost": 0.1882
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 82,
+            "time": 4.1,
+            "cost": 0.0643
+          }
+        }
+      }
+    },
+    "cacheexclude-config-keys": {
+      "type": "recipe",
+      "question": "Which config object and keys store the cache exclusion rules for this module?",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2954,
+            "cache_reads": 33793,
+            "out_tokens": 985,
+            "time": 59.1,
+            "cost": 0.2769
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2960,
+            "cache_reads": 105607,
+            "out_tokens": 952,
+            "time": 18.7,
+            "cost": 0.1791
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 112,
+            "time": 4.3,
+            "cost": 0.0648
+          }
+        }
+      }
+    },
+    "cacheexclude-mechanism": {
+      "type": "recipe",
+      "question": "How does this module actually prevent a matching page from being cached for anonymous users?",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2964,
+            "cache_reads": 150837,
+            "out_tokens": 2209,
+            "time": 48.6,
+            "cost": 0.2732
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2958,
+            "cache_reads": 81979,
+            "out_tokens": 1488,
+            "time": 39.0,
+            "cost": 0.1807
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 785,
+            "time": 14.8,
+            "cost": 0.0817
+          }
+        }
+      }
+    },
+    "cacheexclude-path-syntax": {
+      "type": "recipe",
+      "question": "How do I exclude every page under blog/ and the front page? What syntax does the paths field accept?",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2954,
+            "cache_reads": 33802,
+            "out_tokens": 1389,
+            "time": 113.6,
+            "cost": 0.5405
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2962,
+            "cache_reads": 133306,
+            "out_tokens": 2731,
+            "time": 46.8,
+            "cost": 0.257
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 513,
+            "time": 12.2,
+            "cost": 0.075
+          }
+        }
+      }
+    },
+    "cacheexclude-node-type": {
+      "type": "recipe",
+      "question": "Can I exclude an entire content type from caching with this module, and how?",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 3095,
+            "cache_reads": 167623,
+            "out_tokens": 1902,
+            "time": 38.6,
+            "cost": 0.234
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2958,
+            "cache_reads": 78359,
+            "out_tokens": 1185,
+            "time": 27.0,
+            "cost": 0.1574
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 619,
+            "time": 12.1,
+            "cost": 0.0775
+          }
+        }
+      }
+    },
+    "cacheexclude-permission": {
+      "type": "recipe",
+      "question": "What permission is needed to change this module's settings? Does it define its own permission?",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 0,
+            "in_tokens": 3105,
+            "cache_reads": 286499,
+            "out_tokens": 3129,
+            "time": 61.1,
+            "cost": 0.3307
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 0,
+            "in_tokens": 2954,
+            "cache_reads": 34337,
+            "out_tokens": 535,
+            "time": 15.1,
+            "cost": 0.114
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 0,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 96,
+            "time": 4.4,
+            "cost": 0.0613
+          }
+        }
+      }
+    },
+    "cacheexclude-dependency": {
+      "type": "recipe",
+      "question": "What are this module's dependencies and Drupal core compatibility?",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 0,
+            "in_tokens": 2960,
+            "cache_reads": 98356,
+            "out_tokens": 1504,
+            "time": 27.7,
+            "cost": 0.186
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 0,
+            "in_tokens": 2962,
+            "cache_reads": 139501,
+            "out_tokens": 1255,
+            "time": 24.8,
+            "cost": 0.2272
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 361,
+            "time": 8.7,
+            "cost": 0.071
+          }
+        }
+      }
+    },
+    "cacheexclude-d7-migration": {
+      "type": "recipe",
+      "question": "I'm upgrading from Drupal 7 where I used cacheexclude. Does the module carry my old settings over?",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2962,
+            "cache_reads": 122575,
+            "out_tokens": 2320,
+            "time": 45.7,
+            "cost": 0.2063
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2968,
+            "cache_reads": 203770,
+            "out_tokens": 2004,
+            "time": 39.8,
+            "cost": 0.2651
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 593,
+            "time": 11.9,
+            "cost": 0.0771
+          }
+        }
+      }
+    }
+  }
+}
