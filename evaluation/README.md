@@ -27,11 +27,38 @@ does a new node get the right URL?"* — which is exactly what you asked for.
 2. **Live-state verification** for `mode: execution` cases: run the case's `reset` script,
    let the agent work, then run its `verify` script against the real site (exit 0 = correct).
 
-So each `evals.json` case is one of two modes:
-- **`recipe`** — graded on response text (reuses ai_best_practices grading). Cheap, CI-safe,
-  no site mutation. Good for "what's the command?" questions.
-- **`execution`** — the agent must actually perform the change; correctness = live-site
-  verification. This is the pathauto "set it up, then check it was set up" case.
+So each `evals.json` case carries a **`difficulty`** tier, and each tier maps to a `mode`.
+Every benchmarked module should have **2-3 cases of each tier**:
+
+- **easy → `mode: "recipe"`** — answer a question out of the box, graded on response text
+  (reuses ai_best_practices grading). Cheap, CI-safe, no site mutation. "What's the command
+  / the config key / the plugin type?"
+- **medium → `mode: "introspection"`** — answer a question about the *current setup*. A
+  `setup` script first saves a known configuration to the live site; the agent must inspect
+  the running site (drush) to answer; graded on response text; a `cleanup` script then
+  restores baseline. "This site already has X configured — what is its value / which pattern
+  applies here?" Tests whether the agent knows *where to look* on a live site.
+- **hard → `mode: "execution"`** — the agent must actually perform the change. A `reset`
+  script clears state, the agent builds the config or codes the plugin, and a `verify` script
+  checks live state (exit 0 = correct). This is the pathauto "set it up, then check it was set
+  up" case.
+
+Case fields by tier:
+
+| Field | easy (recipe) | medium (introspection) | hard (execution) |
+|---|---|---|---|
+| `mode` | `recipe` | `introspection` | `execution` |
+| `difficulty` | `easy` | `medium` | `hard` |
+| `prompt` | ✓ | ✓ | ✓ |
+| `must_contain_any` / `must_not_contain` | ✓ (grading) | ✓ (grading) | — |
+| `setup` | — | ✓ (installs the config to read back) | — |
+| `cleanup` | — | ✓ (restores baseline after) | optional |
+| `reset` | — | — | ✓ (clears state before) |
+| `verify` | — | — | ✓ (live-state check, exit 0 = pass) |
+| `persona` | optional | optional | optional |
+
+Script paths (`setup`/`cleanup`/`reset`/`verify`) are relative to the project root
+(`/var/www/html`) and live in `evaluation/verify/`.
 
 ## Layout
 
@@ -56,9 +83,10 @@ leaves, so different arms, models, and efforts coexist for later graphing:
 { module, version, skill_name,
   cases: {
     "<case_id>": {
-      type,                         # "recipe" | "execution"
+      type,                         # "recipe" | "introspection" | "execution"
+      difficulty?,                  # "easy" | "medium" | "hard"
       question,                     # the prompt
-      persona?,                     # execution cases only
+      persona?,                     # optional
       results: {
         "<arm>": {                  # vanilla | skill | memory
           "<model>:<effort>": {     # e.g. "claude-opus-4-8:medium", "claude-haiku-4-5-20251001:medium"

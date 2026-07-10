@@ -162,7 +162,15 @@ def main() -> int:
     rows = []  # (case_id, provider, arm, correct, in_tok, out_tok, secs, cost)
 
     for case in cases:
+        # Difficulty tiers (see documentation/eval-difficulty-tiers.md):
+        #   easy   -> mode "recipe": answer out of the box, graded on response text.
+        #   medium -> mode "introspection": a `setup` script first saves a known config
+        #             to the live site, the agent must inspect the running site to answer,
+        #             graded on response text; a `cleanup` script then restores baseline.
+        #   hard   -> mode "execution": a `reset` script clears state, the agent builds the
+        #             config/code, and a `verify` script checks live state (exit 0 = pass).
         execution = case.get("mode") == "execution"
+        introspection = case.get("mode") == "introspection"
         for provider in a.providers:
             for arm in a.arms:
                 prompt = build_prompt(case, arm, a.module, a.version)
@@ -172,15 +180,24 @@ def main() -> int:
                     continue
                 cors, itoks, creads, otoks, secs, costs = [], [], [], [], [], []
                 for _ in range(a.runs):
+                    # Pre-model site preparation: execution clears to a clean baseline;
+                    # introspection installs a known config for the agent to read back.
                     if execution and case.get("reset"):
                         sh(case["reset"])
-                    res = run_model(provider, prompt, a.model, execution, effort=a.effort)
+                    if introspection and case.get("setup"):
+                        sh(case["setup"])
+                    res = run_model(provider, prompt, a.model, execution or introspection,
+                                    effort=a.effort)
                     if res["exit_code"] == -1:
                         cors.append(None); break            # provider CLI not available
                     if execution and case.get("verify"):
                         correct = sh(case["verify"]) == 0
                     else:
                         correct = grade_recipe(res["response"], case)
+                    # Post-model cleanup: introspection restores the site to baseline so the
+                    # next run/case starts clean (execution cases reset at the top instead).
+                    if case.get("cleanup"):
+                        sh(case["cleanup"])
                     cors.append(correct)
                     itoks.append(res["input_tokens"]); otoks.append(res["output_tokens"])
                     creads.append(res.get("cache_read_tokens", 0))
@@ -236,6 +253,8 @@ def write_results(eval_dir: Path, spec: dict, a, rows) -> None:
         entry = cases.setdefault(cid, {})
         entry["type"] = cspec.get("mode")
         entry["question"] = cspec["prompt"]
+        if cspec.get("difficulty"):
+            entry["difficulty"] = cspec["difficulty"]
         if cspec.get("persona"):
             entry["persona"] = cspec["persona"]
         correct = None if cor == "n/a" else int(cor.split("/")[0])
