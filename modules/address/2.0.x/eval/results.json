@@ -386,6 +386,106 @@
           }
         }
       }
+    },
+    "address-article-field": {
+      "type": "execution",
+      "question": "On this Drupal site, add a new field to the Article content type that stores a full postal address, using the field type provided by the address module. Name the field field_eval_address and apply it to the live site so the field and its storage exist on Article nodes.",
+      "difficulty": "hard",
+      "persona": "drupal-expert",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 3093,
+            "cache_reads": 157793,
+            "out_tokens": 2610,
+            "time": 58.2,
+            "cost": 0.2614
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 3099,
+            "cache_reads": 220881,
+            "out_tokens": 2350,
+            "time": 55.7,
+            "cost": 0.2913
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 3093,
+            "cache_reads": 178316,
+            "out_tokens": 2334,
+            "time": 47.5,
+            "cost": 0.3068
+          }
+        }
+      }
+    },
+    "address-page-field": {
+      "type": "execution",
+      "question": "On this Drupal site, add a field that stores a full postal address to the Basic page content type, using the field type provided by the address module. Name the field field_eval_address_page and apply it live so the address field and its storage exist on Basic page nodes.",
+      "difficulty": "hard",
+      "persona": "drupal-expert",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 3093,
+            "cache_reads": 157199,
+            "out_tokens": 2762,
+            "time": 57.4,
+            "cost": 0.2666
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 3091,
+            "cache_reads": 136647,
+            "out_tokens": 2263,
+            "time": 44.3,
+            "cost": 0.2499
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2960,
+            "cache_reads": 123028,
+            "out_tokens": 1982,
+            "time": 40.7,
+            "cost": 0.271
+          }
+        }
+      }
     }
   }
 }
