@@ -1,0 +1,391 @@
+{
+  "module": "csp_log",
+  "version": "1.0.x",
+  "skill_name": "drupal-module-docs",
+  "cases": {
+    "csp_log-report-endpoint-path": {
+      "type": "recipe",
+      "question": "On a Drupal 11 site with csp_log, what path do I set as my CSP report-uri so violations are logged, and how do I separate enforced from report-only reports?",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2962,
+            "cache_reads": 122382,
+            "out_tokens": 2666,
+            "time": 48.4,
+            "cost": 0.2235
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2958,
+            "cache_reads": 76548,
+            "out_tokens": 1226,
+            "time": 23.8,
+            "cost": 0.1474
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 804,
+            "time": 14.3,
+            "cost": 0.1084
+          }
+        }
+      }
+    },
+    "csp_log-no-settings-form": {
+      "type": "recipe",
+      "question": "The csp_log info.yml lists configure: csp_log.settings. Where is that settings form and what does it configure?",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 0,
+            "in_tokens": 2962,
+            "cache_reads": 119194,
+            "out_tokens": 1930,
+            "time": 41.4,
+            "cost": 0.1806
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2956,
+            "cache_reads": 55108,
+            "out_tokens": 865,
+            "time": 24.1,
+            "cost": 0.1114
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 606,
+            "time": 12.8,
+            "cost": 0.1033
+          }
+        }
+      }
+    },
+    "csp_log-csp-plugin": {
+      "type": "recipe",
+      "question": "How do I make the csp module send its violation reports to csp_log without editing headers by hand? Name the reporting handler.",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2960,
+            "cache_reads": 98474,
+            "out_tokens": 1369,
+            "time": 23.7,
+            "cost": 0.1642
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 3093,
+            "cache_reads": 147905,
+            "out_tokens": 1761,
+            "time": 35.4,
+            "cost": 0.2368
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 246,
+            "time": 6.5,
+            "cost": 0.0943
+          }
+        }
+      }
+    },
+    "csp_log-view-reports-permission": {
+      "type": "recipe",
+      "question": "Where do administrators view the logged CSP violations and what permission is required?",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2954,
+            "cache_reads": 33794,
+            "out_tokens": 744,
+            "time": 39.1,
+            "cost": 0.2649
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2958,
+            "cache_reads": 81283,
+            "out_tokens": 801,
+            "time": 16.7,
+            "cost": 0.1511
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 146,
+            "time": 5.5,
+            "cost": 0.0916
+          }
+        }
+      }
+    },
+    "csp_log-cron-cleanup": {
+      "type": "recipe",
+      "question": "How are old CSP logs pruned in csp_log, and where is the retention period set?",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2954,
+            "cache_reads": 33798,
+            "out_tokens": 1110,
+            "time": 77.4,
+            "cost": 0.3343
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2958,
+            "cache_reads": 76490,
+            "out_tokens": 1159,
+            "time": 26.5,
+            "cost": 0.1581
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 542,
+            "time": 11.5,
+            "cost": 0.1016
+          }
+        }
+      }
+    },
+    "csp_log-service-methods": {
+      "type": "recipe",
+      "question": "What service does csp_log expose to work with logs programmatically, and which methods insert, read, aggregate and delete reports?",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2956,
+            "cache_reads": 54167,
+            "out_tokens": 746,
+            "time": 14.7,
+            "cost": 0.107
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2958,
+            "cache_reads": 76450,
+            "out_tokens": 1350,
+            "time": 23.4,
+            "cost": 0.1461
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 733,
+            "time": 11.7,
+            "cost": 0.1065
+          }
+        }
+      }
+    },
+    "csp_log-endpoint-status-codes": {
+      "type": "recipe",
+      "question": "What HTTP status does the csp_log report endpoint return for a successful report versus a malformed or incomplete one, and which report keys are required?",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2966,
+            "cache_reads": 169990,
+            "out_tokens": 1253,
+            "time": 29.8,
+            "cost": 0.2036
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2960,
+            "cache_reads": 99207,
+            "out_tokens": 1100,
+            "time": 20.2,
+            "cost": 0.1561
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 108,
+            "time": 4.2,
+            "cost": 0.0909
+          }
+        }
+      }
+    },
+    "csp_log-dedicated-table": {
+      "type": "recipe",
+      "question": "The whole point of csp_log is not crowding the site logs. Where are CSP reports actually stored?",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2958,
+            "cache_reads": 84450,
+            "out_tokens": 1429,
+            "time": 25.8,
+            "cost": 0.2319
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2956,
+            "cache_reads": 55082,
+            "out_tokens": 796,
+            "time": 18.2,
+            "cost": 0.1095
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 213,
+            "time": 5.8,
+            "cost": 0.0934
+          }
+        }
+      }
+    }
+  }
+}
