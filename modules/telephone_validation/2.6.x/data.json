@@ -1,0 +1,51 @@
+{
+  "name": "Telephone Validation",
+  "data_name": "telephone_validation",
+  "description": "Validates telephone fields and tel form element.",
+  "version": "2.6.x",
+  "package": null,
+  "composer_namespace": "drupal/telephone_validation",
+  "composer_requirements": {
+    "giggsey/libphonenumber-for-php": "~8.0",
+    "drupal/core": "^10 || ^11"
+  },
+  "dependent_modules": [
+    "drupal:telephone"
+  ],
+  "configure": "telephone_validation.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": 261,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/telephone_validation",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "giggsey/libphonenumber-for-php"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Field validation",
+    "Fields"
+  ],
+  "keywords": [
+    "telephone",
+    "phone number",
+    "validation",
+    "libphonenumber",
+    "E164",
+    "national format",
+    "country",
+    "tel field",
+    "field constraint",
+    "giggsey"
+  ]
+}

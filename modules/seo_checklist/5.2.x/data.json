@@ -1,0 +1,50 @@
+{
+  "name": "SEO Checklist",
+  "data_name": "seo_checklist",
+  "description": "Uses best practices to check for proper search engine optimization.",
+  "version": "5.2.x",
+  "package": "SEO",
+  "composer_namespace": "drupal/seo_checklist",
+  "composer_requirements": {
+    "drupal/checklistapi": "^2.0"
+  },
+  "dependent_modules": [
+    "checklistapi:checklistapi"
+  ],
+  "configure": "checklistapi.checklists.seo_checklist",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 255,
+  "project_url": "https://www.drupal.org/project/seo_checklist",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "part_of": null,
+  "submodules": [
+    "seo_checklist_optional_modules"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Search engine optimization (SEO)",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Workflow / business rules"
+  ],
+  "keywords": [
+    "seo",
+    "seo checklist",
+    "checklist",
+    "checklistapi",
+    "search engine optimization",
+    "on-page seo",
+    "technical seo",
+    "task tracking",
+    "progress tracking",
+    "site launch"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "name": "PhotoSwipe",
+  "data_name": "photoswipe",
+  "description": "Javascript-based photo gallery display for your Drupal website (very sleek with mobile browsers).",
+  "version": "5.0.x",
+  "package": "Media",
+  "composer_namespace": "drupal/photoswipe",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "photoswipe.settings",
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 259,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/photoswipe",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "npm-asset/photoswipe": "Required to make the 'photoswipe' module functional. Expected version: ^5",
+    "npm-asset/photoswipe-dynamic-caption-plugin": "Required to make the 'photoswipe_dynamic_caption' submodule functional. Expected version: ^1.2"
+  },
+  "submodules": [
+    "photoswipe_dynamic_caption"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "provides_field_formatters": [
+    "photoswipe_field_formatter",
+    "photoswipe_responsive_field_formatter"
+  ],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Lightbox / modal display",
+    "Field formatters"
+  ],
+  "keywords": [
+    "photoswipe",
+    "gallery",
+    "lightbox",
+    "mobile",
+    "image",
+    "field formatter",
+    "media",
+    "swipe",
+    "modal",
+    "photo gallery"
+  ]
+}

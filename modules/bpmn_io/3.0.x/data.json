@@ -1,0 +1,61 @@
+{
+  "name": "BPMN.iO Modeler",
+  "data_name": "bpmn_io",
+  "description": "BPMN modeler, integrated into Drupal's admin UI.",
+  "version": "3.0.x",
+  "package": "Modeler API",
+  "composer_namespace": "drupal/bpmn_io",
+  "composer_requirements": {
+    "php": ">=8.3",
+    "ext-dom": "*",
+    "drupal/core": "^11.2 || ^12",
+    "drupal/modeler_api": "^1.0",
+    "mtownsend/xml-to-array": "^2.0"
+  },
+  "dependent_modules": [
+    "modeler_api:modeler_api"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11.2 || ^12",
+  "active_installs": null,
+  "list_position": 249,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/bpmn_io",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.3",
+  "library_dependencies": [
+    "mtownsend/xml-to-array"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "consumes_plugin_types": [
+    "Modeler (ModelerApiModeler plugin type defined by modeler_api; bpmn_io registers the `bpmn_io` Modeler plugin)"
+  ],
+  "provides_hooks": [
+    "hook_bpmn_io_supported_themes_alter"
+  ],
+  "categories": [
+    "Automation",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Workflow / business rules"
+  ],
+  "keywords": [
+    "bpmn",
+    "bpmn.io",
+    "bpmn-js",
+    "modeler",
+    "graphical editor",
+    "diagram",
+    "eca",
+    "ai agents",
+    "modeler_api",
+    "workflow",
+    "visual editor"
+  ]
+}

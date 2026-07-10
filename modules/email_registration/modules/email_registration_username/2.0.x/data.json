@@ -1,0 +1,44 @@
+{
+  "name": "Email Registration Username",
+  "data_name": "email_registration_username",
+  "description": "Use your email address as your username on registration and sync both fields on updating the user. WARNING: See the README.md for details about the possible security implications.",
+  "version": "2.0.x",
+  "package": "Administration",
+  "composer_namespace": "drupal/email_registration",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "email_registration:email_registration",
+    "token:token"
+  ],
+  "configure": "entity.user.admin_form",
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 247,
+  "part_of": "email_registration",
+  "project_url": "https://www.drupal.org/project/email_registration",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "release_stability": "rc",
+  "categories": [
+    "Access control",
+    "Security"
+  ],
+  "subcategories": [],
+  "keywords": [
+    "email as username",
+    "username sync",
+    "display name override",
+    "token",
+    "email registration",
+    "user display name",
+    "obfuscate username",
+    "account settings"
+  ]
+}
