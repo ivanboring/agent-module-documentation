@@ -1,0 +1,48 @@
+{
+  "name": "Reroute Email",
+  "data_name": "reroute_email",
+  "description": "Reroutes emails send from the site to a predefined email. Useful for test sites.",
+  "version": "2.3.x",
+  "release_stability": "rc",
+  "package": "Development",
+  "composer_namespace": "drupal/reroute_email",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "reroute_email.settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": 233,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/reroute_email",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "reroute_email_symfony_mailer"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "reroute_email_handler"
+  ],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Email / mail delivery"
+  ],
+  "keywords": [
+    "reroute email",
+    "mail",
+    "email interception",
+    "hook_mail_alter",
+    "test site",
+    "staging",
+    "development",
+    "allowlist",
+    "email testing",
+    "outgoing mail"
+  ]
+}

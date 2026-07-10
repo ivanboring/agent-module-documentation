@@ -1,0 +1,72 @@
+{
+  "name": "Group",
+  "data_name": "group",
+  "description": "Allows you to group users, content and other entities.",
+  "version": "3.3.x",
+  "package": "Group",
+  "composer_namespace": "drupal/group",
+  "composer_requirements": {
+    "drupal/core": "^10.3 || ^11",
+    "drupal/entity": "^1.2",
+    "drupal/flexible_permissions": "^2.0"
+  },
+  "dependent_modules": [
+    "drupal:options",
+    "entity:entity",
+    "flexible_permissions:flexible_permissions"
+  ],
+  "configure": "group.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 243,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/group",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/variationcache": "Cache backend used by flexible_permissions to cache calculated group permissions (a dev/runtime companion of flexible_permissions v2)."
+  },
+  "submodules": [
+    "gnode",
+    "group_support_revisions"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "group_relation_type (GroupRelationType attribute/annotation; discovery namespace Plugin\\Group\\Relation; manager service group_relation_type.manager)"
+  ],
+  "provides_config_entities": [
+    "group_type",
+    "group_role",
+    "group_relationship_type"
+  ],
+  "provides_content_entities": [
+    "group",
+    "group_relationship"
+  ],
+  "categories": [
+    "Access control",
+    "Site structure"
+  ],
+  "subcategories": [
+    "User roles & permissions"
+  ],
+  "keywords": [
+    "group",
+    "groups",
+    "membership",
+    "group content",
+    "group relationship",
+    "group_relationship",
+    "group_relation_type",
+    "flexible permissions",
+    "access control",
+    "roles",
+    "permissions",
+    "gnode",
+    "community",
+    "organic groups"
+  ]
+}

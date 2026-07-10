@@ -1,0 +1,44 @@
+{
+  "name": "Reroute Email (Symfony Mailer support)",
+  "data_name": "reroute_email_symfony_mailer",
+  "description": "Reroute emails to predefined addresses using Symfony Mailer.",
+  "version": "2.3.x",
+  "release_stability": "rc",
+  "package": "Development",
+  "composer_namespace": "drupal/reroute_email",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:reroute_email",
+    "drupal:symfony_mailer"
+  ],
+  "configure": "reroute_email.settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": 233,
+  "part_of": "reroute_email",
+  "project_url": "https://www.drupal.org/project/reroute_email",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Email / mail delivery"
+  ],
+  "keywords": [
+    "reroute email",
+    "symfony mailer",
+    "mail",
+    "email adjuster",
+    "email builder",
+    "test site",
+    "development"
+  ]
+}

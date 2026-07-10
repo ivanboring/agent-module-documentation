@@ -1,0 +1,53 @@
+{
+  "name": "Layout Paragraphs",
+  "data_name": "layout_paragraphs",
+  "description": "Field widget and formatter for using layouts with paragraph fields.",
+  "version": "2.1.x",
+  "package": "Paragraphs",
+  "composer_namespace": "drupal/layout_paragraphs",
+  "composer_requirements": {
+    "drupal/paragraphs": "^1.6"
+  },
+  "dependent_modules": [
+    "paragraphs:paragraphs",
+    "drupal:layout_discovery"
+  ],
+  "configure": "layout_paragraphs.label_settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": 246,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/layout_paragraphs",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "layout_paragraphs_library",
+    "layout_paragraphs_permissions"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Layout Builder",
+    "Structured content / page building"
+  ],
+  "keywords": [
+    "layout paragraphs",
+    "paragraphs",
+    "layout discovery",
+    "drag and drop",
+    "layout builder",
+    "field widget",
+    "field formatter",
+    "page building",
+    "sections",
+    "components"
+  ]
+}

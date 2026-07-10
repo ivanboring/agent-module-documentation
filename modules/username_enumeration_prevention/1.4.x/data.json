@@ -1,0 +1,43 @@
+{
+  "name": "Username Enumeration Prevention",
+  "data_name": "username_enumeration_prevention",
+  "description": "Removes the forgot-password error message for invalid users and turns 403s on user routes into 404s to stop username enumeration.",
+  "version": "1.4.x",
+  "package": null,
+  "composer_namespace": "drupal/username_enumeration_prevention",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 238,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/username_enumeration_prevention",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [],
+  "keywords": [
+    "security",
+    "username enumeration",
+    "user enumeration",
+    "password reset",
+    "forgot password",
+    "information disclosure",
+    "403 to 404",
+    "user profile",
+    "hardening",
+    "privacy"
+  ]
+}

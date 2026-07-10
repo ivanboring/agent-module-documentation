@@ -1,0 +1,43 @@
+{
+  "name": "SAML Auth User Fields Mapping",
+  "data_name": "samlauth_user_fields",
+  "description": "Maps custom SAML SSO attributes to user fields.",
+  "version": "3.14.x",
+  "package": "User authentication",
+  "composer_namespace": "drupal/samlauth",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "samlauth:samlauth"
+  ],
+  "configure": "samlauth_user_fields.list",
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 242,
+  "project_url": "https://www.drupal.org/project/samlauth",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "part_of": "samlauth",
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "External authentication"
+  ],
+  "keywords": [
+    "saml",
+    "sso",
+    "attribute mapping",
+    "user fields",
+    "samlauth",
+    "profile fields",
+    "user sync",
+    "account linking"
+  ]
+}

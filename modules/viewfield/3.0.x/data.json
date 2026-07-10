@@ -1,0 +1,51 @@
+{
+  "name": "Viewfield",
+  "data_name": "viewfield",
+  "description": "Defines an entity reference field type to display a view.",
+  "version": "3.0.x",
+  "release_stability": "beta",
+  "package": "Field types",
+  "composer_namespace": "drupal/viewfield",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:views",
+    "drupal:field"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": 236,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/viewfield",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "provides_field_types": ["viewfield"],
+  "provides_field_widgets": ["viewfield_select"],
+  "provides_field_formatters": ["viewfield_default", "viewfield_rendered", "viewfield_title"],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "View embedding",
+    "Fields"
+  ],
+  "keywords": [
+    "viewfield",
+    "view",
+    "views",
+    "field type",
+    "entity reference",
+    "display",
+    "contextual filter",
+    "arguments",
+    "token",
+    "embed view"
+  ]
+}

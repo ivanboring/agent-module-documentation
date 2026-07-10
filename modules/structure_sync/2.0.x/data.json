@@ -1,0 +1,51 @@
+{
+  "name": "Structure Sync",
+  "data_name": "structure_sync",
+  "description": "Tool for syncing structural data that is stored as content.",
+  "version": "2.0.x",
+  "package": "Structure",
+  "composer_namespace": "drupal/structure_sync",
+  "composer_requirements": {
+    "php": ">=7.1"
+  },
+  "dependent_modules": [
+    "drupal:taxonomy",
+    "drupal:menu_link_content",
+    "drupal:block"
+  ],
+  "configure": "structure_sync.general.form",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 239,
+  "project_url": "https://www.drupal.org/project/structure_sync",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=7.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "part_of": null,
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Configuration management",
+    "Content migration / import"
+  ],
+  "keywords": [
+    "structure sync",
+    "taxonomy terms",
+    "custom blocks",
+    "menu links",
+    "content as config",
+    "deployment",
+    "export",
+    "import",
+    "drush",
+    "configuration management"
+  ]
+}
