@@ -1,0 +1,56 @@
+{
+  "module": "search_api",
+  "version": "1.41.x",
+  "skill_name": "drupal-module-docs",
+  "cases": {
+    "search_api-build-db-index": {
+      "type": "execution",
+      "question": "On this Drupal site (drush available), stand up a working Search API setup backed by the database. Create a Search API server named `eval_db_server` using the Database backend, and an index named `eval_index` that indexes Article nodes (the node datasource for the article bundle) with at least the node title added as an indexed field. Apply it live and index the content; don't just describe it. One-line summary.",
+      "persona": "drupal-expert",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2962,
+            "cache_reads": 129010,
+            "out_tokens": 2016,
+            "time": 52.6,
+            "cost": 0.2291
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 3099,
+            "cache_reads": 240447,
+            "out_tokens": 2914,
+            "time": 67.0,
+            "cost": 0.3466
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 3101,
+            "cache_reads": 333561,
+            "out_tokens": 4922,
+            "time": 122.6,
+            "cost": 0.5215
+          }
+        }
+      }
+    }
+  }
+}

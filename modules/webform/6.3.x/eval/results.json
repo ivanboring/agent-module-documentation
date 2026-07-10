@@ -1,0 +1,56 @@
+{
+  "module": "webform",
+  "version": "6.3.x",
+  "skill_name": "drupal-module-docs",
+  "cases": {
+    "webform-build-contact": {
+      "type": "execution",
+      "question": "On this Drupal site (drush available), build a working contact webform with machine name `eval_contact`. It must have three required elements \u2014 a full name (textfield), an email address (email element), and a message (textarea) \u2014 and it must email each submission to team@example.com via a webform email handler. Apply it to the live site so the form actually exists and works; do not just describe it. Give a one-line summary.",
+      "persona": "drupal-expert",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 3097,
+            "cache_reads": 207310,
+            "out_tokens": 3423,
+            "time": 80.4,
+            "cost": 0.3199
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 3238,
+            "cache_reads": 376828,
+            "out_tokens": 5872,
+            "time": 112.1,
+            "cost": 0.4965
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 3093,
+            "cache_reads": 195747,
+            "out_tokens": 3000,
+            "time": 78.9,
+            "cost": 0.3523
+          }
+        }
+      }
+    }
+  }
+}

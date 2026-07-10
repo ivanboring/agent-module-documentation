@@ -1,0 +1,56 @@
+{
+  "module": "paragraphs",
+  "version": "1.21.x",
+  "skill_name": "drupal-module-docs",
+  "cases": {
+    "paragraphs-build-sections": {
+      "type": "execution",
+      "question": "On this Drupal site (drush available), set up Paragraphs so editors can add rich body sections to Articles. Create a paragraph type with machine name `eval_quote` that has a formatted-text field `field_quote_text`, then add a paragraphs reference field `field_eval_sections` to the Article content type that references paragraphs (unlimited cardinality). Apply everything to the live site so it really exists; don't just describe it. One-line summary.",
+      "persona": "drupal-expert",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 3234,
+            "cache_reads": 356210,
+            "out_tokens": 7248,
+            "time": 155.4,
+            "cost": 0.5892
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 3099,
+            "cache_reads": 253180,
+            "out_tokens": 5509,
+            "time": 88.4,
+            "cost": 0.4266
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 3093,
+            "cache_reads": 216236,
+            "out_tokens": 3832,
+            "time": 80.3,
+            "cost": 0.4559
+          }
+        }
+      }
+    }
+  }
+}

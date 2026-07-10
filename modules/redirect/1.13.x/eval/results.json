@@ -1,0 +1,56 @@
+{
+  "module": "redirect",
+  "version": "1.13.x",
+  "skill_name": "drupal-module-docs",
+  "cases": {
+    "redirect-build-301": {
+      "type": "execution",
+      "question": "On this Drupal site (drush available), create a permanent (301) URL redirect so that visits to the path `eval-old-page` are forwarded to the site's front page. Create the redirect as a real redirect entity on the live site; don't just describe it. One-line summary.",
+      "persona": "drupal-expert",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2956,
+            "cache_reads": 55130,
+            "out_tokens": 585,
+            "time": 18.3,
+            "cost": 0.1056
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2958,
+            "cache_reads": 78133,
+            "out_tokens": 789,
+            "time": 20.5,
+            "cost": 0.1304
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2954,
+            "cache_reads": 38066,
+            "out_tokens": 407,
+            "time": 11.1,
+            "cost": 0.1357
+          }
+        }
+      }
+    }
+  }
+}

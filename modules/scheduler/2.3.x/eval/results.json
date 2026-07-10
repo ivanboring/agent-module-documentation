@@ -1,0 +1,56 @@
+{
+  "module": "scheduler",
+  "version": "2.3.x",
+  "skill_name": "drupal-module-docs",
+  "cases": {
+    "scheduler-schedule-article": {
+      "type": "execution",
+      "question": "On this Drupal site (drush available), enable content scheduling for Articles and schedule a post. Turn on Scheduler's publish-on and unpublish-on dates for the Article content type, then create an unpublished Article titled `Eval Scheduled Post` that is set to automatically publish 2 days from now. Apply it to the live site; don't just describe it. One-line summary.",
+      "persona": "drupal-expert",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2960,
+            "cache_reads": 99695,
+            "out_tokens": 1313,
+            "time": 36.2,
+            "cost": 0.1574
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 3103,
+            "cache_reads": 304731,
+            "out_tokens": 2395,
+            "time": 60.9,
+            "cost": 0.357
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2960,
+            "cache_reads": 135203,
+            "out_tokens": 1181,
+            "time": 33.4,
+            "cost": 0.2812
+          }
+        }
+      }
+    }
+  }
+}
