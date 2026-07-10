@@ -1,0 +1,52 @@
+{
+  "name": "Project Browser",
+  "data_name": "project_browser",
+  "description": "Provides a user interface for browsing available Drupal projects.",
+  "version": "2.1.x",
+  "package": null,
+  "composer_namespace": "drupal/project_browser",
+  "composer_requirements": {
+    "ext-simplexml": "*",
+    "composer-runtime-api": "^2"
+  },
+  "dependent_modules": [],
+  "configure": "project_browser.settings",
+  "core_version_requirement": "^11.2 || ^12",
+  "active_installs": null,
+  "list_position": 296,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/project_browser",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "ext-simplexml",
+    "composer-runtime-api"
+  ],
+  "suggests": {},
+  "submodules": [
+    "project_browser_source_example"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "ProjectBrowserSource"
+  ],
+  "categories": [
+    "Administration tools",
+    "Developer tools"
+  ],
+  "subcategories": [],
+  "keywords": [
+    "project browser",
+    "module browser",
+    "install modules",
+    "drupal.org",
+    "contrib discovery",
+    "package manager",
+    "recipes",
+    "source plugin",
+    "extend",
+    "no composer"
+  ]
+}

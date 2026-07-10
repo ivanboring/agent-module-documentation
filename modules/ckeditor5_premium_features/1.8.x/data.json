@@ -1,0 +1,83 @@
+{
+  "name": "CKEditor 5 Premium Features",
+  "data_name": "ckeditor5_premium_features",
+  "description": "Provides general configuration and authentication used by all CKEditor 5 Premium Features.",
+  "version": "1.8.x",
+  "package": "CKEditor 5 Premium Features",
+  "composer_namespace": "drupal/ckeditor5_premium_features",
+  "composer_requirements": {
+    "php": "^8.0",
+    "ext-dom": "*",
+    "ext-libxml": "*",
+    "drupal/core": "^10.3 || ^11.0"
+  },
+  "dependent_modules": [
+    "drupal:editor",
+    "drupal:ckeditor5"
+  ],
+  "configure": "ckeditor5_premium_features.form.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 298,
+  "project_url": "https://www.drupal.org/project/ckeditor5_premium_features",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "^8.0",
+  "library_dependencies": [],
+  "suggests": {
+    "firebase/php-jwt": "Required for Real-time collaboration and document converters.",
+    "caxy/php-htmldiff": "Required for asynchronous collaboration and notifications.",
+    "openai-php/client": "Required for OpenAI an AzureAI providers for the AI Assistant.",
+    "aws/aws-sdk-php": "Required for AWS Bedrock provider for the AI Assistant."
+  },
+  "submodules": [
+    "ckeditor5_premium_features_ai",
+    "ckeditor5_premium_features_ai_assistant",
+    "ckeditor5_premium_features_cloud_services",
+    "ckeditor5_premium_features_collaboration",
+    "ckeditor5_premium_features_email_editing",
+    "ckeditor5_premium_features_export_pdf",
+    "ckeditor5_premium_features_export_word",
+    "ckeditor5_premium_features_footnotes",
+    "ckeditor5_premium_features_fullscreen",
+    "ckeditor5_premium_features_import_word",
+    "ckeditor5_premium_features_line_height",
+    "ckeditor5_premium_features_mentions",
+    "ckeditor5_premium_features_merge_fields",
+    "ckeditor5_premium_features_multi_level_lists",
+    "ckeditor5_premium_features_notifications",
+    "ckeditor5_premium_features_productivity_pack",
+    "ckeditor5_premium_features_realtime_collaboration",
+    "ckeditor5_premium_features_source_editing_enhanced",
+    "ckeditor5_premium_features_version_override",
+    "ckeditor5_premium_features_wproofreader"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "part_of": null,
+  "categories": [
+    "Content editing experience",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Rich text embedding"
+  ],
+  "keywords": [
+    "ckeditor",
+    "ckeditor5",
+    "premium features",
+    "wysiwyg",
+    "real-time collaboration",
+    "track changes",
+    "comments",
+    "revision history",
+    "export to pdf",
+    "export to word",
+    "import from word",
+    "ai assistant",
+    "mentions",
+    "cloud services",
+    "commercial license"
+  ]
+}

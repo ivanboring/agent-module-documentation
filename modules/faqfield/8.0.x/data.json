@@ -1,0 +1,58 @@
+{
+  "name": "FAQ Field",
+  "data_name": "faqfield",
+  "description": "Provides a field for frequently asked questions.",
+  "version": "8.0.x",
+  "package": "Field types",
+  "composer_namespace": "drupal/faqfield",
+  "composer_requirements": {
+    "drupal/jquery_ui_accordion": "^2.0"
+  },
+  "dependent_modules": [
+    "drupal:field",
+    "jquery_ui_accordion:jquery_ui_accordion"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 297,
+  "project_url": "https://www.drupal.org/project/faqfield",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "part_of": null,
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "provides_field_types": ["faqfield"],
+  "provides_field_widgets": ["faqfield_default"],
+  "provides_field_formatters": [
+    "faqfield_accordion",
+    "faqfield_definition_list",
+    "faqfield_anchor_list",
+    "faqfield_details",
+    "faqfield_simple_text"
+  ],
+  "categories": [
+    "Content display",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Fields",
+    "Field formatters"
+  ],
+  "keywords": [
+    "faq",
+    "frequently asked questions",
+    "field type",
+    "question and answer",
+    "accordion",
+    "definition list",
+    "text format",
+    "field formatter",
+    "field widget"
+  ]
+}

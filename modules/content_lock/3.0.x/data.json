@@ -1,0 +1,49 @@
+{
+  "name": "Content Lock",
+  "data_name": "content_lock",
+  "description": "Prevents multiple users from trying to edit a content entity simultaneously to prevent edit conflicts.",
+  "version": "3.0.x",
+  "package": "Content",
+  "composer_namespace": "drupal/content_lock",
+  "composer_requirements": {
+    "drupal/core": "^10.2 || ^11"
+  },
+  "dependent_modules": [],
+  "configure": "content_lock.settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": 293,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/content_lock",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/conflict": "For entity translation level locking"
+  },
+  "submodules": [
+    "content_lock_timeout"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Workflow / business rules"
+  ],
+  "keywords": [
+    "content lock",
+    "pessimistic locking",
+    "edit conflict",
+    "concurrent editing",
+    "lock entity",
+    "break lock",
+    "checkout",
+    "editorial workflow",
+    "collaboration",
+    "translation lock"
+  ]
+}

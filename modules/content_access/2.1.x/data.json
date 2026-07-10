@@ -1,0 +1,47 @@
+{
+  "name": "Content Access",
+  "data_name": "content_access",
+  "description": "Provides flexible content access control.",
+  "version": "2.1.x",
+  "package": "Access control",
+  "composer_namespace": "drupal/content_access",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.4 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 295,
+  "project_url": "https://www.drupal.org/project/content_access",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/acl": "Adds per-user (access control list) grants on the per-node Access control tab."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "part_of": null,
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "User roles & permissions"
+  ],
+  "keywords": [
+    "content access",
+    "node access",
+    "node grants",
+    "access control",
+    "per-content-type",
+    "per-node",
+    "roles",
+    "view own",
+    "acl",
+    "permissions"
+  ]
+}

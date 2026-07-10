@@ -1,0 +1,45 @@
+{
+  "name": "Remove HTTP Headers",
+  "data_name": "remove_http_headers",
+  "description": "Removes configured HTTP Response headers.",
+  "version": "2.1.x",
+  "package": "Security",
+  "composer_namespace": "drupal/remove_http_headers",
+  "composer_requirements": {
+    "drupal/core": "^10.3 || ^11"
+  },
+  "dependent_modules": [],
+  "configure": "remove_http_headers.remove_http_headers_settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 294,
+  "project_url": "https://www.drupal.org/project/remove_http_headers",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "part_of": null,
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "HTTP security headers"
+  ],
+  "keywords": [
+    "http headers",
+    "response headers",
+    "X-Generator",
+    "X-Drupal-Dynamic-Cache",
+    "X-Drupal-Cache",
+    "security",
+    "privacy",
+    "information disclosure",
+    "middleware",
+    "fingerprinting"
+  ]
+}

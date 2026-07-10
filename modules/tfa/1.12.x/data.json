@@ -1,0 +1,62 @@
+{
+  "name": "Two-factor Authentication (TFA)",
+  "data_name": "tfa",
+  "description": "Pluggable provider of second factor authentication for Drupal",
+  "version": "1.12.x",
+  "package": "Security",
+  "composer_namespace": "drupal/tfa",
+  "composer_requirements": {
+    "php": ">=7.0",
+    "chillerlan/php-qrcode": "^1.0.9 || ^2.0 || ^3.2 || ^4.0",
+    "christian-riesen/otp": "^2.1",
+    "drupal/encrypt": "~3.0",
+    "paragonie/constant_time_encoding": "^1.0 || ^2.0"
+  },
+  "dependent_modules": [
+    "encrypt:encrypt",
+    "key:key"
+  ],
+  "configure": "tfa.settings",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 301,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/tfa",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=7.0",
+  "library_dependencies": [
+    "chillerlan/php-qrcode",
+    "christian-riesen/otp",
+    "paragonie/constant_time_encoding"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "TfaValidation (Drupal\\tfa\\Plugin\\TfaValidation)",
+    "TfaSetup (Drupal\\tfa\\Plugin\\TfaSetup)",
+    "TfaLogin (Drupal\\tfa\\Plugin\\TfaLogin)",
+    "TfaSend (Drupal\\tfa\\Plugin\\TfaSend)"
+  ],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [],
+  "keywords": [
+    "tfa",
+    "2fa",
+    "two-factor",
+    "second factor",
+    "totp",
+    "hotp",
+    "authenticator",
+    "recovery codes",
+    "one-time password",
+    "otp",
+    "login security",
+    "encrypt",
+    "key"
+  ]
+}
