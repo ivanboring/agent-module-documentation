@@ -1,0 +1,49 @@
+{
+  "name": "Friendly Captcha",
+  "data_name": "friendlycaptcha",
+  "description": "Protect your website from spam and abuse while letting real people pass through with ease.",
+  "version": "1.1.x",
+  "package": "Spam control",
+  "composer_namespace": "drupal/friendlycaptcha",
+  "composer_requirements": {
+    "drupal/captcha": ">=1 || <=2"
+  },
+  "dependent_modules": [
+    "captcha:captcha"
+  ],
+  "configure": "friendlycaptcha.admin_settings_form",
+  "core_version_requirement": "^8.9 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 310,
+  "project_url": "https://www.drupal.org/project/friendlycaptcha",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "part_of": null,
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Access control"
+  ],
+  "subcategories": [
+    "Spam prevention / CAPTCHA",
+    "CAPTCHA / bot protection"
+  ],
+  "keywords": [
+    "friendly captcha",
+    "captcha",
+    "proof of work",
+    "spam",
+    "bot protection",
+    "no puzzle",
+    "gdpr",
+    "privacy",
+    "friendly-challenge",
+    "siteverify"
+  ]
+}

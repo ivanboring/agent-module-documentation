@@ -1,0 +1,53 @@
+{
+  "name": "Tour",
+  "data_name": "tour",
+  "description": "Displays guided tours of the site interface.",
+  "version": "3.0.x",
+  "package": "User interface",
+  "composer_namespace": "drupal/tour",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "entity.tour.collection",
+  "core_version_requirement": "^11.3 || ^12",
+  "active_installs": null,
+  "list_position": 315,
+  "project_url": "https://www.drupal.org/project/tour",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/tour_core": "*",
+    "drupal/tour_core_language": "*"
+  },
+  "submodules": [
+    "tourauto"
+  ],
+  "part_of": null,
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_config_entities": [
+    "tour"
+  ],
+  "provides_plugin_types": [
+    "tour_tip"
+  ],
+  "categories": [
+    "Content editing experience",
+    "Administration tools"
+  ],
+  "subcategories": [],
+  "keywords": [
+    "tour",
+    "guided tour",
+    "onboarding",
+    "help",
+    "tooltip",
+    "tip",
+    "shepherd",
+    "walkthrough",
+    "tour config entity",
+    "tour_tip",
+    "contrib successor to core Tour"
+  ]
+}

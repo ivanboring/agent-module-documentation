@@ -1,0 +1,57 @@
+{
+  "name": "Serialization (Excel)",
+  "data_name": "xls_serialization",
+  "description": "Provides Excel (xls) as a serialization format.",
+  "version": "2.1.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/xls_serialization",
+  "composer_requirements": {
+    "phpoffice/phpspreadsheet": "^2.4.0 || ^3.10.0"
+  },
+  "dependent_modules": [
+    "drupal:rest",
+    "drupal:serialization"
+  ],
+  "configure": "xls_serialization.configuration",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 311,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/xls_serialization",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "phpoffice/phpspreadsheet (^2.4.0 || ^3.10.0)"
+  ],
+  "suggests": {
+    "openspout/openspout": "Alternative library to use for serialization, offers a better performance but does not support all features"
+  },
+  "submodules": [
+    "xls_serialization_open_spout"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export",
+    "Decoupled"
+  ],
+  "subcategories": [
+    "Data export",
+    "REST / web services"
+  ],
+  "keywords": [
+    "xls",
+    "xlsx",
+    "excel",
+    "spreadsheet",
+    "serialization",
+    "encoder",
+    "rest",
+    "views data export",
+    "phpspreadsheet",
+    "export",
+    "web services"
+  ]
+}

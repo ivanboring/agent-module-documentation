@@ -1,0 +1,49 @@
+{
+  "name": "Link checker",
+  "data_name": "linkchecker",
+  "description": "Periodically checks for broken links in content.",
+  "version": "2.1.x",
+  "package": null,
+  "composer_namespace": "drupal/linkchecker",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "linkchecker.admin_settings_form",
+  "core_version_requirement": "^10.2 || ^11.0",
+  "active_installs": null,
+  "list_position": 313,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/linkchecker",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_content_entities": [
+    "linkcheckerlink"
+  ],
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "link_extractor",
+    "link_status_handler"
+  ],
+  "categories": [
+    "Search engine optimization (SEO)",
+    "Site structure"
+  ],
+  "subcategories": [],
+  "keywords": [
+    "linkchecker",
+    "broken links",
+    "link checker",
+    "404",
+    "301",
+    "dead links",
+    "link validation",
+    "content maintenance",
+    "http status",
+    "crawler",
+    "seo"
+  ]
+}

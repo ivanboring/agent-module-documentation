@@ -1,0 +1,50 @@
+{
+  "name": "Login Destination",
+  "data_name": "login_destination",
+  "description": "Customizes the destination the user is redirected to after login/logout/registration/one-time login.",
+  "version": "2.0.x",
+  "release_stability": "beta",
+  "package": "User",
+  "composer_namespace": "drupal/login_destination",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:path_alias"
+  ],
+  "configure": "login_destination.list",
+  "core_version_requirement": "^8.7.10 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 309,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/login_destination",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_config_entities": [
+    "login_destination"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Entity page behavior & redirects",
+    "Session management"
+  ],
+  "keywords": [
+    "login",
+    "logout",
+    "redirect",
+    "destination",
+    "registration",
+    "one-time login",
+    "password reset",
+    "role",
+    "landing page",
+    "post-login redirect"
+  ]
+}

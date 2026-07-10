@@ -1,0 +1,67 @@
+{
+  "name": "Modeler API",
+  "data_name": "modeler_api",
+  "description": "Provides an API for modules to use modelers like BPMN.iO",
+  "version": "1.1.x",
+  "package": "Modeler API",
+  "composer_namespace": "drupal/modeler_api",
+  "composer_requirements": {
+    "php": ">=8.3",
+    "drupal/core": "^11.3 || ^12.0"
+  },
+  "dependent_modules": [],
+  "configure": "modeler_api.settings",
+  "core_version_requirement": "^11.3 || ^12.0",
+  "active_installs": null,
+  "list_position": 306,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/modeler_api",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.3",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/token": "Optional; enables enhanced template-token support."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "Modeler (attribute Drupal\\modeler_api\\Attribute\\Modeler; namespace Plugin/ModelerApiModeler; interface ModelerInterface; base ModelerBase)",
+    "ModelOwner (attribute Drupal\\modeler_api\\Attribute\\ModelOwner; namespace Plugin/ModelerApiModelOwner; interface ModelOwnerInterface; base ModelOwnerBase)",
+    "Context (YAML MODULE.modeler_api.contexts.yml)",
+    "Dependency (YAML MODULE.modeler_api.dependencies.yml)",
+    "TemplateToken (YAML MODULE.modeler_api.template_tokens.yml)"
+  ],
+  "provides_hooks": [
+    "modeler_api_modeler_info_alter",
+    "modeler_api_model_owner_info_alter",
+    "modeler_api_context_info_alter",
+    "modeler_api_dependency_info_alter",
+    "modeler_api_template_token_info_alter"
+  ],
+  "categories": [
+    "Automation",
+    "Administration tools",
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "Workflow / business rules",
+    "AI agents / taskable AI"
+  ],
+  "keywords": [
+    "modeler",
+    "modeler api",
+    "bpmn",
+    "bpmn.io",
+    "visual editor",
+    "graphical modeler",
+    "eca",
+    "ai agents",
+    "config entity",
+    "plugin type",
+    "model owner",
+    "workflow",
+    "recipe export"
+  ]
+}

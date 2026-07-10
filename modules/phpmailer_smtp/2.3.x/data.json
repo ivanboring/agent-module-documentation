@@ -1,0 +1,50 @@
+{
+  "name": "PHPMailer SMTP",
+  "data_name": "phpmailer_smtp",
+  "description": "Uses the PHPMailer library to send emails via SMTP.",
+  "version": "2.3.x",
+  "package": "Mail",
+  "composer_namespace": "drupal/phpmailer_smtp",
+  "composer_requirements": {
+    "phpmailer/phpmailer": "^6.11.0"
+  },
+  "dependent_modules": [],
+  "configure": "phpmailer_smtp.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 314,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/phpmailer_smtp",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "phpmailer/phpmailer"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "phpmailer_oauth2"
+  ],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Email / SMTP"
+  ],
+  "keywords": [
+    "phpmailer",
+    "smtp",
+    "email",
+    "mail",
+    "mail system",
+    "mailsystem",
+    "transactional email",
+    "oauth2",
+    "ssl",
+    "tls",
+    "authentication"
+  ]
+}

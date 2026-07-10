@@ -1,0 +1,49 @@
+{
+  "name": "Serialization (Excel using OpenSpout library)",
+  "data_name": "xls_serialization_open_spout",
+  "description": "Replace the Excel (xls) as a serialization format with a serializer using the OpenSpout library. This does not support all the features of the serializer provided by Excel Serialization.",
+  "version": "2.1.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/xls_serialization",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "xls_serialization:xls_serialization"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": 311,
+  "part_of": "xls_serialization",
+  "project_url": "https://www.drupal.org/project/xls_serialization",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "openspout/openspout (^4)"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export",
+    "Decoupled"
+  ],
+  "subcategories": [
+    "Data export",
+    "REST / web services"
+  ],
+  "keywords": [
+    "xlsx",
+    "excel",
+    "openspout",
+    "spreadsheet",
+    "serialization",
+    "encoder",
+    "performance",
+    "memory",
+    "export",
+    "web services"
+  ]
+}

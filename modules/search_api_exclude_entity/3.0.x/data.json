@@ -1,0 +1,52 @@
+{
+  "name": "Search API Exclude Entity",
+  "data_name": "search_api_exclude_entity",
+  "description": "Exclude one or more entities from being indexed in Search API.",
+  "version": "3.0.x",
+  "package": "Search",
+  "composer_namespace": "drupal/search_api_exclude_entity",
+  "composer_requirements": {
+    "drupal/core": "^10 || ^11 || ^12",
+    "drupal/search_api": "^1.41"
+  },
+  "dependent_modules": [
+    "drupal:field",
+    "search_api:search_api"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": 303,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/search_api_exclude_entity",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "search_api_exclude_entity_by_field",
+    "search_api_exclude_entity_metatag"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site search"
+  ],
+  "subcategories": [
+    "Content indexing"
+  ],
+  "keywords": [
+    "search api",
+    "exclude",
+    "index",
+    "indexing",
+    "processor",
+    "exclude entity",
+    "noindex",
+    "boolean field",
+    "field type",
+    "search"
+  ]
+}
