@@ -1,0 +1,57 @@
+{
+  "name": "ACSF Connector",
+  "data_name": "acsf",
+  "description": "Connects a site with Acquia Cloud Site Factory.",
+  "version": "2.83.x",
+  "package": "Acquia Cloud Site Factory",
+  "composer_namespace": "drupal/acsf",
+  "composer_requirements": {
+    "ext-json": "*",
+    "symfony/process": "^4|^5|^6|^7.1"
+  },
+  "dependent_modules": [
+    "drupal:system (>=8.5.0)"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 336,
+  "project_url": "https://www.drupal.org/project/acsf",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "symfony/process"
+  ],
+  "suggests": {},
+  "submodules": [
+    "acsf_theme",
+    "acsf_sso",
+    "acsf_duplication",
+    "acsf_meta",
+    "acsf_variables",
+    "acsf_sj"
+  ],
+  "part_of": null,
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "Administration tools"
+  ],
+  "subcategories": [],
+  "keywords": [
+    "acsf",
+    "acquia",
+    "cloud site factory",
+    "multisite",
+    "site factory",
+    "hosting",
+    "site duplication",
+    "scrub",
+    "staging",
+    "acsf-init",
+    "platform integration"
+  ]
+}

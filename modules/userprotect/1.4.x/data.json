@@ -1,0 +1,52 @@
+{
+  "name": "User Protect",
+  "data_name": "userprotect",
+  "description": "Allows admins to protect users from being edited or cancelled, on a per-user basis.",
+  "version": "1.4.x",
+  "package": null,
+  "composer_namespace": "drupal/userprotect",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user"
+  ],
+  "configure": "userprotect.rule_list",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 341,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/userprotect",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_config_entities": [
+    "userprotect_rule"
+  ],
+  "provides_plugin_types": [
+    "user_protection"
+  ],
+  "categories": [
+    "Access control",
+    "Security"
+  ],
+  "subcategories": [
+    "User roles & permissions",
+    "Field-level access control"
+  ],
+  "keywords": [
+    "user protect",
+    "protection rule",
+    "admin protection",
+    "user access",
+    "field access",
+    "role protection",
+    "account protection",
+    "prevent edit",
+    "prevent cancel",
+    "bypass"
+  ]
+}

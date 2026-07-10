@@ -1,0 +1,52 @@
+{
+  "name": "oEmbed Providers",
+  "data_name": "oembed_providers",
+  "description": "Allows site builders and developers to manage oEmbed providers",
+  "version": "2.2.x",
+  "package": "Media",
+  "composer_namespace": "drupal/oembed_providers",
+  "composer_requirements": {
+    "drupal/core": "^10|^11"
+  },
+  "dependent_modules": [
+    "drupal:media"
+  ],
+  "configure": "oembed_providers.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": 344,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/oembed_providers",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_config_entities": [
+    "oembed_provider",
+    "oembed_provider_bucket"
+  ],
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Media embedding",
+    "Video embedding"
+  ],
+  "keywords": [
+    "oembed",
+    "media",
+    "provider",
+    "provider bucket",
+    "remote video",
+    "embed",
+    "media source",
+    "providers.json",
+    "custom provider",
+    "video embedding"
+  ]
+}

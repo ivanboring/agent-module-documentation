@@ -1,0 +1,67 @@
+{
+  "name": "COOKiES",
+  "data_name": "cookies",
+  "description": "User consent management tool using library cookiesJSR.",
+  "version": "1.2.x",
+  "package": "COOKiES",
+  "composer_namespace": "drupal/cookies",
+  "composer_requirements": {
+    "jfeltkamp/cookiesjsr": "^1.0.12"
+  },
+  "dependent_modules": [
+    "drupal:config_translation",
+    "drupal:block"
+  ],
+  "configure": "cookies.config",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 340,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/cookies",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "jfeltkamp/cookiesjsr"
+  ],
+  "suggests": {},
+  "submodules": [
+    "cookies_asset_injector",
+    "cookies_facebook_pixel",
+    "cookies_filter",
+    "cookies_ga",
+    "cookies_gtag",
+    "cookies_instagram",
+    "cookies_ivw",
+    "cookies_matomo",
+    "cookies_recaptcha",
+    "cookies_twitter_media",
+    "cookies_video"
+  ],
+  "provides_config_entities": [
+    "cookies_service",
+    "cookies_service_group"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Cookie consent / GDPR"
+  ],
+  "keywords": [
+    "cookies",
+    "consent",
+    "gdpr",
+    "cookie banner",
+    "cookiesjsr",
+    "privacy",
+    "opt-in",
+    "tracking consent",
+    "knock out",
+    "consent management"
+  ]
+}

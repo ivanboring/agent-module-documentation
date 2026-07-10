@@ -1,0 +1,47 @@
+{
+  "name": "Media entity download",
+  "data_name": "media_entity_download",
+  "description": "This module provides a route for linking to media assets by URI for users to download without worrying about the actual file path. The result is a permanent URL that doesn't change, unlike file field URLs that do.",
+  "version": "2.4.x",
+  "package": "Media",
+  "composer_namespace": "drupal/media_entity_download",
+  "composer_requirements": {
+    "drupal/core": "^9 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "drupal:media"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 350,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/media_entity_download",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Field formatters"
+  ],
+  "keywords": [
+    "media",
+    "download",
+    "file",
+    "attachment",
+    "content-disposition",
+    "permanent url",
+    "download link",
+    "save as",
+    "field formatter",
+    "media asset"
+  ]
+}
