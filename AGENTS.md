@@ -41,9 +41,11 @@ https://www.drupal.org/jsonapi/node/project_module
 modules/{machine_name}/{major.minor.x}/
 ├── data.json          # structured metadata (see documentation/file-formats.md)
 ├── usage.md           # short summary / long summary / 15–30 use cases, split by ---
-└── agent/
-    ├── start.md       # token-cheap index linking to the solution docs below
-    └── {solution_type}/{name}.md   # configure, plugins, extend, drush, api, hooks, ...
+├── agent/
+│   ├── start.md       # token-cheap index linking to the solution docs below
+│   └── {solution_type}/{name}.md   # configure, plugins, extend, drush, api, hooks, ...
+└── eval/
+    └── evals.json     # easy + medium + hard eval cases (see the Evals section below)
 ```
 
 **Submodules nest under their parent**, mirroring how they ship inside the project.
@@ -93,11 +95,38 @@ grow organically as modules are processed. Add new names there, never duplicate.
 - Installs are **cumulative** (modules are left enabled). If the site breaks, reinstall it
   with `drush site:install -y` and continue — nothing here depends on site content.
 
+## Evals
+
+Every module gets an `eval/evals.json`, and it must **always contain all three difficulty
+tiers** — do not stop at asking questions. See [`evaluation/README.md`](evaluation/README.md)
+for the exact case shape, grading, and harness mechanics. Aim for **2-3 cases of each tier**:
+
+- **easy** (`mode: "recipe"`) — answer a question out of the box, graded on the response
+  text (`must_contain_any` / `must_not_contain`). No site changes.
+- **medium** (`mode: "introspection"`) — answer a question about the module's *current
+  setup on the live site*. A per-case `setup` script first saves a **known config** (an
+  entity, a settings value, a field, a plugin instance); the agent must inspect the running
+  site to answer; a `cleanup` script restores the baseline. This proves the agent can find
+  and read real configuration, not just recite docs.
+- **hard** (`mode: "execution"`) — the agent must **build** something and it is verified
+  against live state. A `reset` script clears state, the agent writes the config / creates
+  the entities / codes the plugin, and a `verify` script checks the result (exit 0 = pass).
+
+So the suite must exercise the full range: **read about it (easy) → look up how it's
+configured here (medium) → configure it / write configs, entities, and plugins (hard)**.
+Reset/setup/cleanup/verify scripts live in `evaluation/verify/` and are referenced from the
+case (paths relative to the project root). Every script must be smoke-tested: a medium
+`setup` makes the answer discoverable then `cleanup` restores baseline; a hard case must
+FAIL on empty state, PASS after a correct build, and leave the site clean. Tag every case
+with `difficulty` (`easy` | `medium` | `hard`). Do **not** run the eval harness as part of
+documenting a module — authoring the cases is enough; runs are a separate step.
+
 ## Pipeline (summary)
 
 1. Read `pagination.md`; fetch that page of the feed.
 2. For each module: `composer require` → determine version → read code/config →
-   `drush en` → set up → write `data.json`, `usage.md`, `agent/*`.
+   `drush en` → set up → write `data.json`, `usage.md`, `agent/*`, and
+   `eval/evals.json` (easy + medium + hard — see the Evals section).
 3. Recurse into submodules.
 4. Update `categories.yml`; advance `pagination.md`.
 
