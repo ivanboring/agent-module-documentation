@@ -1,0 +1,59 @@
+{
+  "module": "unique_entity_title",
+  "version": "1.8.x",
+  "cases": [
+    {
+      "id": "purpose",
+      "prompt": "What does the Unique Entity Title module do?",
+      "expected_points": [
+        "Enforces uniqueness of node titles and taxonomy term names within a bundle",
+        "Opt-in per content type / vocabulary",
+        "Uses a UniqueEntityTitle validation constraint"
+      ]
+    },
+    {
+      "id": "no-config-route",
+      "prompt": "Where is the central settings form for Unique Entity Title?",
+      "expected_points": [
+        "There is no central settings form and no configure route",
+        "Configuration is a per-bundle checkbox on the content type / vocabulary edit form",
+        "Stored as a third_party_settings flag (enabled) under the unique_entity_title namespace"
+      ]
+    },
+    {
+      "id": "enable-content-type",
+      "prompt": "How do I require unique titles for the Article content type without using the UI?",
+      "expected_points": [
+        "Load the node_type entity for 'article'",
+        "Call setThirdPartySetting('unique_entity_title', 'enabled', TRUE) and save()",
+        "Config key node.type.article.third_party.unique_entity_title.enabled"
+      ]
+    },
+    {
+      "id": "supported-entities",
+      "prompt": "Which entity types does Unique Entity Title support?",
+      "expected_points": [
+        "Only node (title field) and taxonomy_term (name field)",
+        "No support for other entity types"
+      ]
+    },
+    {
+      "id": "edit-behavior",
+      "prompt": "When editing and re-saving an existing node with unique titles enabled, will it flag itself as a duplicate?",
+      "expected_points": [
+        "No",
+        "The uniqueness query excludes the current entity by id",
+        "Values are trimmed and empty values are skipped"
+      ]
+    },
+    {
+      "id": "no-drush-no-perms",
+      "prompt": "Does Unique Entity Title add any Drush commands or permissions?",
+      "expected_points": [
+        "No Drush commands",
+        "No permissions",
+        "Configuration is only the per-bundle third-party setting"
+      ]
+    }
+  ]
+}

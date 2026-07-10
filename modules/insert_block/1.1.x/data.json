@@ -1,0 +1,49 @@
+{
+  "name": "Insert Block",
+  "data_name": "insert_block",
+  "description": "Inserts the contents of a block into into the text using [block:block_entity_id] placeholder.",
+  "version": "1.1.x",
+  "package": "Insert",
+  "composer_namespace": "drupal/insert_block",
+  "composer_requirements": {
+    "drupal/core": "^8.9 || ^9.0 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "drupal:block",
+    "drupal:filter"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 1009,
+  "project_url": "https://www.drupal.org/project/insert_block",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "part_of": null,
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Block enhancements",
+    "Rich text embedding"
+  ],
+  "keywords": [
+    "insert block",
+    "embed block",
+    "block in body",
+    "text filter",
+    "input filter",
+    "block placeholder",
+    "block token",
+    "block_content",
+    "rich text",
+    "[block:id]"
+  ]
+}

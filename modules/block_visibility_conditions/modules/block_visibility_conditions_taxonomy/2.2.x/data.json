@@ -1,0 +1,44 @@
+{
+  "name": "Block Visibility Conditions Taxonomy",
+  "data_name": "block_visibility_conditions_taxonomy",
+  "description": "Provides some extra block visibility conditions for Taxonomy.",
+  "version": "2.2.x",
+  "package": "Block",
+  "composer_namespace": "drupal/block_visibility_conditions",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:taxonomy"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 1008,
+  "project_url": "https://www.drupal.org/project/block_visibility_conditions",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "condition_plugins": ["not_taxonomy_vocabulary"],
+  "part_of": "block_visibility_conditions",
+  "categories": [
+    "Content display",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Block enhancements"
+  ],
+  "keywords": [
+    "not taxonomy vocabulary",
+    "block visibility",
+    "taxonomy",
+    "vocabulary",
+    "term page",
+    "condition plugin",
+    "hide block"
+  ]
+}

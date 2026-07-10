@@ -1,0 +1,36 @@
+{
+  "module": "block_visibility_conditions",
+  "version": "2.2.x",
+  "cases": [
+    {
+      "id": "purpose",
+      "prompt": "What does the block_visibility_conditions module add to Drupal?",
+      "expect_contains": ["visibility condition", "block", "Not"]
+    },
+    {
+      "id": "not-vs-negate",
+      "prompt": "Why use a 'Not Node Type' condition instead of negating core's Content type condition?",
+      "expect_contains": ["still shown", "other pages", "views"]
+    },
+    {
+      "id": "no-config-page",
+      "prompt": "Where do I configure block_visibility_conditions? Is there a settings page?",
+      "expect_contains": ["no", "block", "Block layout"]
+    },
+    {
+      "id": "submodules",
+      "prompt": "Which condition plugins ship, and in which submodules?",
+      "expect_contains": ["not_node_type", "not_taxonomy_vocabulary", "not_product_type"]
+    },
+    {
+      "id": "extend",
+      "prompt": "How do I create a 'Not Media Type' visibility condition?",
+      "expect_contains": ["NotConditionPluginBase", "CONTENT_ENTITY_TYPE", "media_type"]
+    },
+    {
+      "id": "empty-selection",
+      "prompt": "What happens if no bundles are checked in a 'Not' condition?",
+      "expect_contains": ["TRUE", "shown"]
+    }
+  ]
+}

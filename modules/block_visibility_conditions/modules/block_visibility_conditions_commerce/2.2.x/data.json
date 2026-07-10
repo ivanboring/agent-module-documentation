@@ -1,0 +1,45 @@
+{
+  "name": "Block Visibility Conditions Commerce",
+  "data_name": "block_visibility_conditions_commerce",
+  "description": "Provides some extra block visibility conditions for Commerce.",
+  "version": "2.2.x",
+  "package": "Block",
+  "composer_namespace": "drupal/block_visibility_conditions",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "block_visibility_conditions:block_visibility_conditions",
+    "commerce:commerce_product"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 1008,
+  "project_url": "https://www.drupal.org/project/block_visibility_conditions",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "condition_plugins": ["not_product_type"],
+  "part_of": "block_visibility_conditions",
+  "categories": [
+    "Content display",
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Block enhancements"
+  ],
+  "keywords": [
+    "not product type",
+    "block visibility",
+    "commerce",
+    "product type",
+    "product page",
+    "condition plugin",
+    "hide block"
+  ]
+}
