@@ -3,8 +3,17 @@
   "skill_file": ".agents/skills/drupal-module-docs/SKILL.md",
   "module": "search_api",
   "version": "1.41.x",
-  "note": "Search API is a framework module; the load-bearing facts are its two config entities (server/index), its plugin type ids + namespaces, the search_api_db backend id, drush command names, and the admin permission. All cases are `recipe` (response-graded) since they probe knowledge an agent would otherwise recover by reading source.",
+  "note": "Search API is a framework module; the load-bearing facts are its two config entities (server/index), its plugin type ids + namespaces, the search_api_db backend id, drush command names, and the admin permission. Most cases are `recipe` (response-graded); one `execution` case builds a live database-backed index and is graded against site state.",
   "evals": [
+    {
+      "id": "search_api-build-db-index",
+      "mode": "execution",
+      "persona": "drupal-expert",
+      "prompt": "On this Drupal site (drush available), stand up a working Search API setup backed by the database. Create a Search API server named `eval_db_server` using the Database backend, and an index named `eval_index` that indexes Article nodes (the node datasource for the article bundle) with at least the node title added as an indexed field. Apply it live and index the content; don't just describe it. One-line summary.",
+      "reset": "agent-module-documentation/evaluation/verify/search_api-reset.sh",
+      "verify": "agent-module-documentation/evaluation/verify/search_api-db-index.sh",
+      "expected_output": "A search_api_server `eval_db_server` (backend search_api_db) and an enabled search_api_index `eval_index` exist, the index writes to that server, uses the entity:node datasource, and has the node title added as an indexed field (property path title, type text/string). Verified against live site state."
+    },
     {
       "id": "searchapi-config-entities",
       "mode": "recipe",

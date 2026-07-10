@@ -3,8 +3,17 @@
   "skill_file": ".agents/skills/drupal-module-docs/SKILL.md",
   "module": "views_bulk_operations",
   "version": "4.4.x",
-  "note": "VBO is configured per View (no global admin UI) and extended via Action plugins; all cases are `recipe` (response-graded), not `execution` (live-state).",
+  "note": "VBO is configured per View (no global admin UI) and extended via Action plugins; most cases are `recipe` (response-graded), plus one `execution` (live-state) build case.",
   "evals": [
+    {
+      "id": "vbo-build-bulk-view",
+      "mode": "execution",
+      "persona": "drupal-expert",
+      "prompt": "On this Drupal site (drush available), build an admin content-management screen with bulk actions using Views Bulk Operations. Create a View with machine name `eval_vbo` on Content (nodes) with a page display, and add the Views Bulk Operations bulk-operations field to it, enabling at least one bulk action (for example delete or (un)publish content). Apply the View to the live site config so it really exists; don't just describe it. One-line summary.",
+      "reset": "agent-module-documentation/evaluation/verify/views_bulk_operations-reset.sh",
+      "verify": "agent-module-documentation/evaluation/verify/views_bulk_operations-build-view.sh",
+      "expected_output": "A View `eval_vbo` on nodes with a page display exists in live config, and one of its displays has a `views_bulk_operations_bulk_form` field with at least one action enabled (non-empty selected_actions, e.g. node_delete_action/node_(un)publish_action, or the select-all-actions flag). Verified against live site state."
+    },
     {
       "id": "vbo-views-field",
       "mode": "recipe",

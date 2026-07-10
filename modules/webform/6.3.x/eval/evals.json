@@ -68,6 +68,15 @@
       "must_contain_any": ["EmailWebformHandler", "RemotePostWebformHandler", "remote_post"],
       "must_not_contain": [],
       "expected_output": "EmailWebformHandler (id `email`) sends notification/confirmation email; RemotePostWebformHandler (id `remote_post`) POSTs submission data to an external URL."
+    },
+    {
+      "id": "webform-build-contact",
+      "mode": "execution",
+      "persona": "drupal-expert",
+      "prompt": "On this Drupal site (drush available), build a working contact webform with machine name `eval_contact`. It must have three required elements — a full name (textfield), an email address (email element), and a message (textarea) — and it must email each submission to team@example.com via a webform email handler. Apply it to the live site so the form actually exists and works; do not just describe it. Give a one-line summary.",
+      "reset": "agent-module-documentation/evaluation/verify/webform-reset.sh",
+      "verify": "agent-module-documentation/evaluation/verify/webform-contact-form.sh",
+      "expected_output": "An eval_contact webform with name/email/message required elements + an email handler exists on the live site."
     }
   ]
 }

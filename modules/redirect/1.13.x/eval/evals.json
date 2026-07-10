@@ -3,8 +3,17 @@
   "skill_file": ".agents/skills/drupal-module-docs/SKILL.md",
   "module": "redirect",
   "version": "1.13.x",
-  "note": "Redirect exposes a content entity, a config settings object, two submodules, and a small service API. Cases are `recipe` (response-graded) since they probe documented facts an agent would otherwise read source to answer; no site mutation.",
+  "note": "Redirect exposes a content entity, a config settings object, two submodules, and a small service API. Most cases are `recipe` (response-graded) since they probe documented facts an agent would otherwise read source to answer; the `execution` case mutates live state and is graded by reset -> model -> verify against real redirect entities.",
   "evals": [
+    {
+      "id": "redirect-build-301",
+      "mode": "execution",
+      "persona": "drupal-expert",
+      "prompt": "On this Drupal site (drush available), create a permanent (301) URL redirect so that visits to the path `eval-old-page` are forwarded to the site's front page. Create the redirect as a real redirect entity on the live site; don't just describe it. One-line summary.",
+      "reset": "agent-module-documentation/evaluation/verify/redirect-reset.sh",
+      "verify": "agent-module-documentation/evaluation/verify/redirect-old-page.sh",
+      "expected_output": "A redirect entity with source path `eval-old-page`, status_code 301, and a non-empty target pointing to the front page (internal:/ , <front>, or route:<front>) exists on the live site. Verified against live site state."
+    },
     {
       "id": "redirect-create-in-code",
       "mode": "recipe",

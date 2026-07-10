@@ -68,6 +68,15 @@
       "must_contain_any": ["remember_last_clicked_tab", "remember last clicked"],
       "must_not_contain": [],
       "expected_output": "Enable `remember_last_clicked_tab`; it uses a JS cookie (the required js_cookie module / js-cookie library) to reopen the last-clicked tab."
+    },
+    {
+      "id": "quicktabs-build-instance",
+      "mode": "execution",
+      "persona": "drupal-expert",
+      "prompt": "On this Drupal site (drush available), build a tabbed content widget using Quick Tabs. Create a Quick Tabs instance with machine name `eval_tabs` and label `Eval Tabs`, using the default tabs renderer, containing at least TWO tabs titled `Tab One` and `Tab Two`, each showing some content. Apply it to the live site so the quicktabs instance really exists; don't just describe it. One-line summary.",
+      "reset": "agent-module-documentation/evaluation/verify/quicktabs-reset.sh",
+      "verify": "agent-module-documentation/evaluation/verify/quicktabs-build-instance.sh",
+      "expected_output": "A quicktabs_instance config entity `eval_tabs` (label Eval Tabs, renderer quick_tabs) exists with at least two tabs in its configuration_data. Verified against live site state."
     }
   ]
 }

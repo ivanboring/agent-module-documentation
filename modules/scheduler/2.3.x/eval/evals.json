@@ -3,8 +3,17 @@
   "skill_file": ".agents/skills/drupal-module-docs/SKILL.md",
   "module": "scheduler",
   "version": "2.3.x",
-  "note": "Scheduler adds config, base fields, a service, plugins, hooks and permissions. These cases are all `recipe` (response-graded) and probe Scheduler-specific facts documented under 2.3.x/agent/; no site mutation and no live-state checks.",
+  "note": "Scheduler adds config, base fields, a service, plugins, hooks and permissions. Most cases are `recipe` (response-graded) and probe Scheduler-specific facts documented under 2.3.x/agent/. One `execution` case mutates the live site and is graded by a verify script against real state (reset -> model -> verify).",
   "evals": [
+    {
+      "id": "scheduler-schedule-article",
+      "mode": "execution",
+      "persona": "drupal-expert",
+      "prompt": "On this Drupal site (drush available), enable content scheduling for Articles and schedule a post. Turn on Scheduler's publish-on and unpublish-on dates for the Article content type, then create an unpublished Article titled `Eval Scheduled Post` that is set to automatically publish 2 days from now. Apply it to the live site; don't just describe it. One-line summary.",
+      "reset": "agent-module-documentation/evaluation/verify/scheduler-reset.sh",
+      "verify": "agent-module-documentation/evaluation/verify/scheduler-article-schedule.sh",
+      "expected_output": "Scheduler's publish_enable and unpublish_enable third-party settings are TRUE on node.type.article, AND an unpublished Article titled `Eval Scheduled Post` exists with a publish_on timestamp ~2 days in the future. Verified against live site state."
+    },
     {
       "id": "scheduler-date-fields",
       "mode": "recipe",

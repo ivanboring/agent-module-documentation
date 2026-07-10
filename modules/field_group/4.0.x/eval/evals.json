@@ -6,6 +6,15 @@
   "note": "Field Group has no standalone settings route and mutates only display config via core Field UI, so all cases are `recipe` (response-graded): they probe field_group-specific facts (the FieldGroupFormatter plugin type, third-party-settings storage, built-in format types, and the render/alter hooks) an agent would otherwise read source to answer.",
   "evals": [
     {
+      "id": "field_group-build-group",
+      "mode": "execution",
+      "persona": "drupal-expert",
+      "prompt": "On this Drupal site (drush available), improve the Article node edit form by grouping fields. Using Field Group, add a collapsible `details` group with machine name `group_eval_meta` and label `Metadata` to the Article default form display, and place the Body field inside that group. Apply it to the live site so the group really shows on the form; don't just describe it. One-line summary.",
+      "reset": "agent-module-documentation/evaluation/verify/field_group-reset.sh",
+      "verify": "agent-module-documentation/evaluation/verify/field_group-article-group.sh",
+      "expected_output": "The node.article.default entity_form_display gains a field_group third-party setting `group_eval_meta` (format_type details, label Metadata) whose children include `body`, applied to the live site so the collapsible Metadata group renders on the Article edit form. Verified against live site state."
+    },
+    {
       "id": "fieldgroup-plugin-type",
       "mode": "recipe",
       "prompt": "In a Drupal 11 module I want to define a brand-new field_group format (a custom way to render a group of fields). What plugin type do I create, which base class do I extend, and in what namespace/directory does the plugin class live? Name them.",

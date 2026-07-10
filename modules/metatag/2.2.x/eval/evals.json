@@ -68,6 +68,15 @@
       "must_contain_any": ["administer meta tags"],
       "must_not_contain": [],
       "expected_output": "The `administer meta tags` permission (restrict access: TRUE) gates the Metatag settings/defaults admin pages at /admin/config/search/metatag. It does NOT control access to the Metatag field on content forms — use the Field Permissions module (or hook_form_alter), or enable metatag_extended_perms for per-tag field permissions."
+    },
+    {
+      "id": "metatag-global-defaults",
+      "mode": "execution",
+      "persona": "drupal-expert",
+      "prompt": "On this Drupal site (drush available), configure the global default meta tags so every page has good SEO defaults. Set the global Metatag defaults so the page title tag is `[node:title] | [site:name]` and the meta description is `Powered by Drupal — eval defaults`. Apply it to the live site config; don't just describe it. One-line summary.",
+      "reset": "agent-module-documentation/evaluation/verify/metatag-reset.sh",
+      "verify": "agent-module-documentation/evaluation/verify/metatag-global-defaults.sh",
+      "expected_output": "The metatag_defaults `global` config entity has tags.title set to [node:title] | [site:name] and tags.description set to `Powered by Drupal — eval defaults`, applied to live site config. Verified against live site state."
     }
   ]
 }

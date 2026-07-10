@@ -3,8 +3,17 @@
   "skill_file": ".agents/skills/drupal-module-docs/SKILL.md",
   "module": "votingapi",
   "version": "4.0.x",
-  "note": "Voting API is a developer voting/rating framework. Cases are `recipe` (response-graded) and probe votingapi-specific facts: the vote content entity vs vote_result vs vote_type config entity, the VoteResultFunction plugin type and its built-ins, how to cast a vote and read results, the calculation schedule setting, and the drush commands. No site mutation.",
+  "note": "Voting API is a developer voting/rating framework. Cases are mostly `recipe` (response-graded) and probe votingapi-specific facts: the vote content entity vs vote_result vs vote_type config entity, the VoteResultFunction plugin type and its built-ins, how to cast a vote and read results, the calculation schedule setting, and the drush commands. One `execution` case mutates the live site (writes votes) and is graded by verify scripts. Voting API has no UI for casting votes, so that case is a code-writing task.",
   "evals": [
+    {
+      "id": "votingapi-cast-and-aggregate",
+      "mode": "execution",
+      "persona": "drupal-expert",
+      "prompt": "On this Drupal site (drush available), use the Voting API programmatically. Make sure a vote type with machine name `eval_rating` exists (a percent/points value type), then cast a rating vote of value 80 on the node with id 1 as an anonymous user, and recalculate the results so an aggregated result is stored. Do this by running real code against the live site (e.g. via drush php), not by describing it. One-line summary of what you did.",
+      "reset": "agent-module-documentation/evaluation/verify/votingapi-reset.sh",
+      "verify": "agent-module-documentation/evaluation/verify/votingapi-cast-vote.sh",
+      "expected_output": "Created the eval_rating vote type, cast a vote of value 80 on node 1 (anonymous, uid 0) and saved it, then recalculated results so a vote_result aggregate for node 1 is stored. Verified against live site: a vote entity on (node,1) has value ~80 and a vote_result row for node 1 exists."
+    },
     {
       "id": "votingapi-three-entity-types",
       "mode": "recipe",

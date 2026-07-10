@@ -68,6 +68,15 @@
       "must_contain_any": ["target_bundles"],
       "must_not_contain": [],
       "expected_output": "target_bundles limits the allowed paragraph types (ordered via target_bundles_drag_drop); default_paragraph_type sets the type auto-added on new host entities."
+    },
+    {
+      "id": "paragraphs-build-sections",
+      "mode": "execution",
+      "persona": "drupal-expert",
+      "prompt": "On this Drupal site (drush available), set up Paragraphs so editors can add rich body sections to Articles. Create a paragraph type with machine name `eval_quote` that has a formatted-text field `field_quote_text`, then add a paragraphs reference field `field_eval_sections` to the Article content type that references paragraphs (unlimited cardinality). Apply everything to the live site so it really exists; don't just describe it. One-line summary.",
+      "reset": "agent-module-documentation/evaluation/verify/paragraphs-reset.sh",
+      "verify": "agent-module-documentation/evaluation/verify/paragraphs-quote-sections.sh",
+      "expected_output": "A paragraphs_type eval_quote (with a formatted-text field_quote_text) exists AND node.article has an unlimited-cardinality field_eval_sections of type entity_reference_revisions targeting paragraph. Verified against live site state."
     }
   ]
 }
