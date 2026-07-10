@@ -1,0 +1,67 @@
+{
+  "name": "Physical Fields",
+  "data_name": "physical",
+  "description": "Provides fields for storing measurements and their units.",
+  "version": "1.5.x",
+  "package": "Field types",
+  "composer_namespace": "drupal/physical",
+  "composer_requirements": {
+    "php": "^8.0"
+  },
+  "dependent_modules": [
+    "drupal:field"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 328,
+  "project_url": "https://www.drupal.org/project/physical",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "^8.0",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "part_of": null,
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "provides_field_types": [
+    "physical_measurement",
+    "physical_dimensions"
+  ],
+  "provides_php_api": [
+    "Drupal\\physical\\Weight",
+    "Drupal\\physical\\Length",
+    "Drupal\\physical\\Area",
+    "Drupal\\physical\\Volume",
+    "Drupal\\physical\\Temperature",
+    "Drupal\\physical\\Pressure",
+    "Drupal\\physical\\Measurement",
+    "Drupal\\physical\\Calculator"
+  ],
+  "categories": [
+    "Content editing experience",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Fields"
+  ],
+  "keywords": [
+    "physical",
+    "measurement",
+    "weight",
+    "length",
+    "dimensions",
+    "area",
+    "volume",
+    "unit",
+    "conversion",
+    "kg",
+    "lb",
+    "field type",
+    "value object",
+    "commerce",
+    "shipping"
+  ]
+}

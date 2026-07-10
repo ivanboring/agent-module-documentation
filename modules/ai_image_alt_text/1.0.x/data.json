@@ -1,0 +1,61 @@
+{
+  "name": "AI Image Alt Text",
+  "data_name": "ai_image_alt_text",
+  "description": "Provided the possibility to fill out the alt text of an image field using AI.",
+  "version": "1.0.x",
+  "package": "AI Tools",
+  "composer_namespace": "drupal/ai_image_alt_text",
+  "composer_requirements": {
+    "drupal/core": "^10.2 || ^11",
+    "drupal/ai": "^1.0.0"
+  },
+  "dependent_modules": [
+    "drupal:image",
+    "ai:ai"
+  ],
+  "configure": "ai_image_alt_text.settings_form",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": 330,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/ai_image_alt_text",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "ai_image_bulk_alt_text"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "consumes_plugin_types": [
+    "ai:OperationType chat (via ai.provider) — resolves the default provider for the 'chat_with_image_vision' operation and sends a ChatInput carrying the image (ImageFile) to a vision-capable chat model; the model select uses the AiModelCapability::ChatWithImageVision capability filter"
+  ],
+  "provides_config_entities": [],
+  "provides_content_entities": [],
+  "routes": {
+    "ai_image_alt_text.settings_form": "/admin/config/ai/ai_image_alt_text",
+    "ai_image_alt_text.generate": "/admin/config/ai/ai_image_alt_text/generate/{file}/{lang_code}"
+  },
+  "categories": [
+    "Artificial Intelligence (AI)",
+    "Media"
+  ],
+  "subcategories": [
+    "File & media metadata"
+  ],
+  "keywords": [
+    "ai",
+    "alt text",
+    "accessibility",
+    "a11y",
+    "image",
+    "vision",
+    "llm",
+    "seo",
+    "image field",
+    "chat_with_image_vision"
+  ]
+}

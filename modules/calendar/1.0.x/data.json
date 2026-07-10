@@ -1,0 +1,60 @@
+{
+  "name": "Calendar",
+  "data_name": "calendar",
+  "description": "Provides a Views plugin to display views containing dates as Calendars.",
+  "version": "1.0.x",
+  "package": "Date/Time",
+  "composer_namespace": "drupal/calendar",
+  "composer_requirements": {
+    "drupal/views_templates": "^1.2"
+  },
+  "dependent_modules": [
+    "calendar:calendar_datetime",
+    "drupal:datetime",
+    "drupal:views",
+    "views_templates:views_templates"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "release_stability": "beta",
+  "part_of": null,
+  "active_installs": null,
+  "list_position": 333,
+  "project_url": "https://www.drupal.org/project/calendar",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/date_recur": "To enable recurring date functionality (^3.0)"
+  },
+  "submodules": [
+    "calendar_datetime"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Date/time fields",
+    "Views styles"
+  ],
+  "keywords": [
+    "calendar",
+    "views",
+    "date",
+    "datetime",
+    "month view",
+    "week view",
+    "day view",
+    "year view",
+    "events",
+    "views style plugin",
+    "views row plugin",
+    "calendar pager",
+    "contextual filter",
+    "views_templates"
+  ]
+}

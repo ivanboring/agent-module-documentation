@@ -1,0 +1,54 @@
+{
+  "name": "Dashboard",
+  "data_name": "dashboard",
+  "description": "Provides customizable dashboards.",
+  "version": "2.2.x",
+  "package": "Core",
+  "composer_namespace": "drupal/dashboard",
+  "composer_requirements": {
+    "drupal/core": "^11.2"
+  },
+  "dependent_modules": [
+    "drupal:layout_builder",
+    "drupal:node",
+    "drupal:views"
+  ],
+  "configure": "entity.dashboard.collection",
+  "core_version_requirement": "^11.2",
+  "active_installs": null,
+  "list_position": 320,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/dashboard",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_config_entities": [
+    "dashboard"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Content display"
+  ],
+  "subcategories": [
+    "Admin toolbar / navigation",
+    "Layout Builder",
+    "Block enhancements"
+  ],
+  "keywords": [
+    "dashboard",
+    "admin dashboard",
+    "layout builder",
+    "config entity",
+    "landing page",
+    "per-role dashboard",
+    "blocks",
+    "login redirect",
+    "core dashboard successor"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "name": "Easy Email",
+  "data_name": "easy_email",
+  "description": "A simple system for sending HTML-formatted emails",
+  "version": "3.0.x",
+  "package": "Mail",
+  "composer_namespace": "drupal/easy_email",
+  "composer_requirements": {
+    "drupal/core": "^10.3 || ^11",
+    "drupal/jquery_ui_resizable": "^2",
+    "drupal/token": "^1.0"
+  },
+  "dependent_modules": [
+    "drupal:text",
+    "jquery_ui_resizable:jquery_ui_resizable",
+    "token:token"
+  ],
+  "configure": "entity.easy_email_type.collection",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 331,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/easy_email",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "easy_email_commerce",
+    "easy_email_override"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "provides_config_entities": [
+    "easy_email_type"
+  ],
+  "provides_content_entities": [
+    "easy_email"
+  ],
+  "categories": [
+    "User engagement"
+  ],
+  "subcategories": [
+    "Email / mail delivery"
+  ],
+  "keywords": [
+    "email",
+    "html email",
+    "mail",
+    "email template",
+    "tokens",
+    "attachments",
+    "cc bcc",
+    "email log",
+    "preview",
+    "symfony mailer",
+    "transactional email"
+  ]
+}

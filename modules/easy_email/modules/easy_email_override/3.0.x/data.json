@@ -1,0 +1,49 @@
+{
+  "name": "Easy Email Overrides",
+  "data_name": "easy_email_override",
+  "description": "Provides a system for overriding emails from core and contrib modules with emails generated from Easy Email templates.",
+  "version": "3.0.x",
+  "package": "Mail",
+  "composer_namespace": "drupal/easy_email",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "easy_email:easy_email"
+  ],
+  "configure": "entity.easy_email_override.collection",
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": null,
+  "list_position": 331,
+  "part_of": "easy_email",
+  "project_url": "https://www.drupal.org/project/easy_email",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "easy_email_override"
+  ],
+  "provides_config_entities": [
+    "easy_email_override"
+  ],
+  "provides_content_entities": [],
+  "categories": [
+    "Developer tools",
+    "User engagement"
+  ],
+  "subcategories": [
+    "Email / mail delivery"
+  ],
+  "keywords": [
+    "email override",
+    "override core emails",
+    "mail manager",
+    "password reset email",
+    "user emails",
+    "declared email",
+    "easy_email"
+  ]
+}
