@@ -1,0 +1,57 @@
+{
+  "name": "@font-your-face",
+  "data_name": "fontyourface",
+  "description": "Web font management tools.",
+  "version": "4.2.x",
+  "package": "@font-your-face",
+  "composer_namespace": "drupal/fontyourface",
+  "composer_requirements": {
+    "drupal/core": "^10.2 || ^11.0"
+  },
+  "dependent_modules": [
+    "drupal:taxonomy",
+    "drupal:views"
+  ],
+  "configure": "font.settings",
+  "core_version_requirement": "^10.2 || ^11.0",
+  "active_installs": null,
+  "list_position": 395,
+  "project_url": "https://www.drupal.org/project/fontyourface",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "local_fonts",
+    "google_fonts_api",
+    "typekit_api",
+    "adobe_edge_fonts",
+    "fontscom_api",
+    "fontsquirrel_api"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Theming",
+    "Content display"
+  ],
+  "subcategories": [
+    "CSS / JS injection"
+  ],
+  "keywords": [
+    "font",
+    "web font",
+    "typography",
+    "@font-face",
+    "font-family",
+    "google fonts",
+    "typekit",
+    "adobe fonts",
+    "font provider",
+    "font entity",
+    "font display",
+    "css"
+  ]
+}

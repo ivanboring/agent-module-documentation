@@ -1,0 +1,57 @@
+{
+  "skill_name": "drupal-module-docs",
+  "skill_file": ".agents/skills/drupal-module-docs/SKILL.md",
+  "module": "votingapi",
+  "version": "4.0.x",
+  "note": "Voting API is a developer voting/rating framework. Cases are `recipe` (response-graded) and probe votingapi-specific facts: the vote content entity vs vote_result vs vote_type config entity, the VoteResultFunction plugin type and its built-ins, how to cast a vote and read results, the calculation schedule setting, and the drush commands. No site mutation.",
+  "evals": [
+    {
+      "id": "votingapi-three-entity-types",
+      "mode": "recipe",
+      "prompt": "In Drupal 11 with Voting API 4.x, name the objects used to store (a) a single cast vote, (b) an aggregate result, and (c) a vote type/bundle. Say which are content entities and which is config. Answer briefly.",
+      "must_contain_any": ["vote_result", "vote_type"],
+      "must_not_contain": [],
+      "expected_output": "A single vote is a `vote` content entity (table votingapi_vote); an aggregate result is a `vote_result` content entity (table votingapi_result); a vote type is a `vote_type` config entity that acts as the bundle of `vote`. Vote and vote_result are content entities, vote_type is a config entity."
+    },
+    {
+      "id": "votingapi-cast-vote",
+      "mode": "recipe",
+      "prompt": "Show the code to cast a vote of value 1 (points) on node 42 for the default 'vote' type using Voting API 4.x, and explain how the aggregate result is then updated.",
+      "must_contain_any": ["Vote::create", "setValue", "setVotedEntityId"],
+      "must_not_contain": [],
+      "expected_output": "Create a Vote entity: Vote::create(['type' => 'vote']), then setVotedEntityType('node'), setVotedEntityId(42), setValueType('points'), setValue(1), and save(). On save, if votingapi.settings calculation_schedule is 'immediate' (default) the results for that entity and vote type are recalculated automatically."
+    },
+    {
+      "id": "votingapi-result-plugin",
+      "mode": "recipe",
+      "prompt": "In Voting API 4.x, what plugin type do I implement to add a custom aggregate calculation (like a weighted score), what method must it implement, and where does discovery happen? Name the built-in ones too.",
+      "must_contain_any": ["VoteResultFunction", "calculateResult"],
+      "must_not_contain": [],
+      "expected_output": "Implement a VoteResultFunction plugin (attribute \\Drupal\\votingapi\\Attribute\\VoteResultFunction, base class VoteResultFunctionBase) in src/Plugin/VoteResultFunction/. It must implement calculateResult(array $votes): float. Built-ins: Count (vote_count), Average (vote_average), Sum (vote_sum), Maximum (vote_maximum), Minimum (vote_minimum), Median (vote_median)."
+    },
+    {
+      "id": "votingapi-read-results",
+      "mode": "recipe",
+      "prompt": "With Voting API 4.x, how do I read the cached aggregate voting results for node 42 in code? Name the service and method and describe the return shape.",
+      "must_contain_any": ["plugin.manager.votingapi.resultfunction", "getResults"],
+      "must_not_contain": [],
+      "expected_output": "Use the plugin.manager.votingapi.resultfunction service (VoteResultFunctionManagerInterface) and call getResults('node', 42). It returns a nested array keyed by vote type then function id, e.g. $results['vote']['vote_count'] and $results['vote']['vote_average']."
+    },
+    {
+      "id": "votingapi-calculation-schedule",
+      "mode": "recipe",
+      "prompt": "On a high-traffic Drupal 11 site using Voting API 4.x, I want vote results tallied at cron instead of on every vote. Which config setting do I change, to what value, and what config object holds it?",
+      "must_contain_any": ["calculation_schedule", "votingapi.settings"],
+      "must_not_contain": [],
+      "expected_output": "Set calculation_schedule to 'cron' in the votingapi.settings config object (default is 'immediate'; 'manual' disables auto-tally). e.g. drush config:set votingapi.settings calculation_schedule cron. The settings form is at /admin/config/search/votingapi (route votingapi.admin_settings)."
+    },
+    {
+      "id": "votingapi-drush",
+      "mode": "recipe",
+      "prompt": "Which Drush commands does Voting API 4.x provide to (a) generate test votes, (b) rebuild results from raw votes, and (c) delete all voting data?",
+      "must_contain_any": ["voting:generate", "voting:recalculate", "voting:flush"],
+      "must_not_contain": [],
+      "expected_output": "voting:generate (genv) creates dummy votes, voting:recalculate (vcalc) rebuilds aggregate results from raw votes, and voting:flush (vflush) deletes all voting data (both votingapi_vote and votingapi_result)."
+    }
+  ]
+}

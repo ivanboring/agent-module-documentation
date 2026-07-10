@@ -1,0 +1,49 @@
+{
+  "name": "OpenAPI",
+  "data_name": "openapi",
+  "description": "Connects Drupal to the OpenAPI Javascript Library",
+  "version": "2.3.x",
+  "package": "OpenAPI",
+  "composer_namespace": "drupal/openapi",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "serialization"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 9654,
+  "list_position": 390,
+  "project_url": "https://www.drupal.org/project/openapi",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/openapi_ui": "Provides a web UI (e.g. ReDoc, Swagger UI) for exploring the generated OpenAPI specification; required only for the openapi.documentation route."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "openapi_generator"
+  ],
+  "categories": [
+    "Decoupled",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "REST / web services"
+  ],
+  "keywords": [
+    "openapi",
+    "swagger",
+    "api documentation",
+    "rest",
+    "jsonapi",
+    "api schema",
+    "specification",
+    "swagger 2.0",
+    "openapi_generator",
+    "web services"
+  ]
+}

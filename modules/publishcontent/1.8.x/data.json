@@ -1,0 +1,45 @@
+{
+  "name": "Publish Content",
+  "data_name": "publishcontent",
+  "description": "Adds a 'Publish' or 'Unpublish' link on the node edit/view pages, and a 'Publish Link' field if the Views module is enabled.",
+  "version": "1.8.x",
+  "package": "Permissions",
+  "composer_namespace": "drupal/publishcontent",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "node"
+  ],
+  "configure": "publishcontent.settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 9915,
+  "list_position": 383,
+  "project_url": "https://www.drupal.org/project/publishcontent",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "part_of": null,
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "User roles & permissions",
+    "Content scheduling / publishing"
+  ],
+  "keywords": [
+    "publish",
+    "unpublish",
+    "publish content",
+    "node status",
+    "publishing permissions",
+    "content workflow",
+    "toggle status",
+    "editorial"
+  ]
+}

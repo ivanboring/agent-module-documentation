@@ -1,0 +1,60 @@
+{
+  "name": "Quick Tabs",
+  "data_name": "quicktabs",
+  "description": "Render content with tabs and other display styles",
+  "version": "4.3.x",
+  "package": null,
+  "composer_namespace": "drupal/quicktabs",
+  "composer_requirements": {
+    "drupal/core": "^10.3 || ^11 || ^12",
+    "drupal/jquery_ui_accordion": "^2.1",
+    "drupal/jquery_ui_tabs": "^2.1",
+    "drupal/js_cookie": "^1.0 || ^2.0"
+  },
+  "dependent_modules": [
+    "drupal:block",
+    "js_cookie:js_cookie"
+  ],
+  "configure": "quicktabs.admin",
+  "core_version_requirement": "^10.3 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": 392,
+  "project_url": "https://www.drupal.org/project/quicktabs",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "quicktabs_accordion",
+    "quicktabs_jqueryui"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "TabType (Plugin/TabType, plugin.manager.tab_type)",
+    "TabRenderer (Plugin/TabRenderer, plugin.manager.tab_renderer)"
+  ],
+  "categories": [
+    "Content display",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Block enhancements",
+    "Structured content / page building"
+  ],
+  "keywords": [
+    "tabs",
+    "tabbed content",
+    "accordion",
+    "quicktabs",
+    "quicktabs_instance",
+    "block",
+    "views",
+    "node",
+    "ajax tabs",
+    "jquery ui",
+    "tab renderer",
+    "tab type"
+  ]
+}
