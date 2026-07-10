@@ -128,3 +128,34 @@ main { max-width: 1200px; margin: 0 auto; padding: 1.25rem; }
 .chart-wrap { position: relative; height: 300px; }
 .legend-note { color: var(--muted); font-size: .8rem; margin: .25rem 0 1rem; }
 @media (max-width: 520px) { .charts { grid-template-columns: 1fr; } }
+
+/* --- catalog card source links (helper text / evals / results) --- */
+.card .links { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .15rem; }
+.card .lnk {
+  font-size: .78rem; color: var(--accent); text-decoration: none;
+  border: 1px solid var(--border); border-radius: 6px; padding: .1rem .4rem; background: var(--surface-2);
+}
+.card .lnk:hover { border-color: var(--accent); background: var(--accent-weak); }
+.card .lnk.results { color: var(--purple); }
+.card .lnk.results:hover { border-color: var(--purple); background: var(--purple-weak); }
+
+/* --- dashboard question list under the charts --- */
+.qhead { font-size: 1rem; margin: 1.5rem 0 .5rem; }
+.qlist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .3rem; }
+.qlist li {
+  display: flex; align-items: baseline; flex-wrap: wrap; gap: .5rem;
+  padding: .4rem .6rem; border: 1px solid var(--border); border-radius: 8px; background: var(--surface);
+  font-size: .85rem; transition: background .1s, border-color .1s;
+}
+.qlist li.active { border-color: var(--accent); background: var(--accent-weak); }
+.qlist .qnum { font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; min-width: 2.2rem; }
+.qlist .qtext { flex: 1 1 60%; color: var(--text); }
+.qlist .qid { color: var(--muted); font-size: .72rem; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.qtier {
+  font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .02em;
+  border-radius: 5px; padding: .05rem .35rem;
+}
+.qtier.easy { background: var(--ok-weak); color: var(--ok); }
+.qtier.medium { background: var(--accent-weak); color: var(--accent); }
+.qtier.hard { background: var(--purple-weak); color: var(--purple); }
+.qpersona { font-size: .72rem; color: var(--muted); font-style: italic; }

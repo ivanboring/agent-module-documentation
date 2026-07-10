@@ -15,8 +15,9 @@ function themeColors() {
   };
 }
 
-// datasets: [{label, data:[...], color}], labels: caseIds, questions: {caseId: text}
-export function groupedBar(canvas, { labels, datasets, yLabel, questions, valueFmt }) {
+// datasets: [{label, data:[...], color}], labels: short x labels (Q1..Qn),
+// questions: {label: text} for the tooltip title, onActiveIndex(idx|null) fires on hover.
+export function groupedBar(canvas, { labels, datasets, yLabel, questions, valueFmt, onActiveIndex }) {
   const t = themeColors();
   return new Chart(canvas, {
     type: 'bar',
@@ -36,6 +37,9 @@ export function groupedBar(canvas, { labels, datasets, yLabel, questions, valueF
       responsive: true,
       maintainAspectRatio: false,
       interaction: { mode: 'index', intersect: false },
+      onHover: (_evt, elements) => {
+        if (onActiveIndex) onActiveIndex(elements.length ? elements[0].index : null);
+      },
       plugins: {
         legend: { labels: { color: t.text, boxWidth: 12, font: { size: 11 } } },
         tooltip: {

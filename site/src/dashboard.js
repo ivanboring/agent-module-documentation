@@ -6,10 +6,13 @@ const esc = (s) => String(s).replace(/[&<>"]/g, (c) => (
   { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
 // Metrics to graph. `get` pulls the value from a results leaf (null = gap).
+// A fully-failed run (no passing runs) is shown as 0 cost / 0 time, so a failure never
+// looks like a cheap, fast success — only successful work counts toward those bars.
+const failed = (l) => l.runs && l.correct === 0;
 const METRICS = [
   { key: 'failrate', title: 'Failure rate', yLabel: '%', get: (l) => l.runs ? (1 - l.correct / l.runs) * 100 : null, fmt: (v) => `${v.toFixed(0)}%` },
-  { key: 'time', title: 'Time', yLabel: 'seconds', get: (l) => l.time, fmt: (v) => `${v}s` },
-  { key: 'cost', title: 'Cost', yLabel: 'USD', get: (l) => l.cost, fmt: (v) => `$${v.toFixed(4)}` },
+  { key: 'time', title: 'Time', yLabel: 'seconds', get: (l) => failed(l) ? 0 : l.time, fmt: (v) => `${v}s` },
+  { key: 'cost', title: 'Cost', yLabel: 'USD', get: (l) => failed(l) ? 0 : l.cost, fmt: (v) => `$${v.toFixed(4)}` },
 ];
 
 // Display label: mention the coding agent (Claude Code) that ran the eval,
@@ -49,12 +52,20 @@ function renderCharts(moduleKey, model) {
 
   const cases = mod.cases;
   const caseIds = Object.keys(cases);
-  const questions = Object.fromEntries(caseIds.map((id) => [id, cases[id].question || id]));
+  // Short x-axis labels (Q1..Qn) so nothing gets truncated; the full question text
+  // is shown in the numbered list below the charts and in each bar's tooltip.
+  const xlabels = caseIds.map((_, i) => `Q${i + 1}`);
+  const questions = Object.fromEntries(xlabels.map((lbl, i) => [lbl, cases[caseIds[i]].question || caseIds[i]]));
   const arms = armsForModel(cases, model);
 
   $('meta').textContent = `${caseIds.length} questions · ${arms.length} arms · ${shortModel(model)} · skill: ${mod.skill_name}`;
   $('legendNote').innerHTML = `Model <strong>${esc(shortModel(model))}</strong>. Series = <strong>arm</strong>: `
     + arms.map((a) => `<span style="color:${armColor(a)}">■</span> ${esc(a)}`).join(' &nbsp; ');
+
+  // Highlight the hovered question across the list below the charts.
+  const setActive = (idx) => {
+    document.querySelectorAll('#qlist li').forEach((li, i) => li.classList.toggle('active', i === idx));
+  };
 
   for (const metric of METRICS) {
     const datasets = arms.map((arm) => ({
@@ -75,13 +86,24 @@ function renderCharts(moduleKey, model) {
       <div class="chart-wrap"><canvas></canvas></div>`;
     container.appendChild(card);
     charts.push(groupedBar(card.querySelector('canvas'), {
-      labels: caseIds,
+      labels: xlabels,
       datasets,
       yLabel: metric.yLabel,
       questions,
       valueFmt: metric.fmt,
+      onActiveIndex: setActive,
     }));
   }
+
+  // Numbered question list under the charts (Q1..Qn), with difficulty + persona tags.
+  $('qlist').innerHTML = caseIds.map((id, i) => {
+    const c = cases[id];
+    const tier = c.difficulty ? `<span class="qtier ${esc(c.difficulty)}">${esc(c.difficulty)}</span>` : '';
+    const persona = c.persona ? `<span class="qpersona">${esc(c.persona)}</span>` : '';
+    return `<li data-idx="${i}"><span class="qnum">Q${i + 1}</span>${tier}${persona}`
+      + `<span class="qtext">${esc(c.question || id)}</span>`
+      + `<span class="qid">${esc(id)}</span></li>`;
+  }).join('');
 }
 
 // Populate the model dropdown for a module; keep the current pick if still available.

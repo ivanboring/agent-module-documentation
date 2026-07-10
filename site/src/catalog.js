@@ -3,6 +3,9 @@ import './style.css';
 const $ = (id) => document.getElementById(id);
 const state = { all: [], q: '', category: '', tier: 0, evalsOnly: false, resultsOnly: false };
 
+// Source links point at the GitHub repo the site is built from.
+const REPO_BLOB = 'https://github.com/ivanboring/agent-module-documentation/blob/main/modules';
+
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => (
   { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
@@ -34,10 +37,14 @@ function cardHTML(m) {
   const installs = m.active_installs != null ? `${m.active_installs.toLocaleString()} installs` : '';
   const cats = m.categories.slice(0, 2).map((c) => `<span class="tag cat">${esc(c)}</span>`).join('');
   const part = m.part_of ? `<span class="tag">part of ${esc(m.part_of)}</span>` : '';
-  const evalsBadge = m.hasEvals ? `<span class="badge evals">✓ ${m.evalCount} evals</span>` : '';
-  const resultsBadge = m.hasResults
-    ? `<span class="badge results">📊 <a href="./dashboard.html?module=${encodeURIComponent(m.key)}">results</a></span>`
-    : '';
+  // Helper text = the agent-consumable docs; link straight to where they start (start.md).
+  const docBase = m.docPath ? `${REPO_BLOB}/${m.docPath}` : null;
+  const helperLink = docBase
+    ? `<a class="lnk" href="${docBase}/agent/start.md" target="_blank" rel="noopener">helper text ↗</a>` : '';
+  const evalsLink = (m.hasEvals && docBase)
+    ? `<a class="lnk" href="${docBase}/eval/evals.json" target="_blank" rel="noopener">${m.evalCount} evals ↗</a>` : '';
+  const resultsLink = m.hasResults
+    ? `<a class="lnk results" href="./dashboard.html?module=${encodeURIComponent(m.key)}">📊 results</a>` : '';
   return `<div class="card">
     <div class="top">
       <span class="name">${esc(m.name)}</span>
@@ -46,8 +53,8 @@ function cardHTML(m) {
     </div>
     <div class="desc">${esc(m.description)}</div>
     <div class="tags">${cats}${part}${providesChips(m.provides)}</div>
+    <div class="links">${helperLink}${evalsLink}${resultsLink}</div>
     <div class="foot">
-      ${evalsBadge}${resultsBadge}
       ${installs ? `<span class="installs">${installs} · ${esc(m.version)}</span>` : `<span class="installs">${esc(m.version)}</span>`}
     </div>
   </div>`;
