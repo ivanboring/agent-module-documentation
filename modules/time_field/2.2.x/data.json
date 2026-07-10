@@ -1,0 +1,63 @@
+{
+  "name": "Time Field",
+  "data_name": "time_field",
+  "description": "Provides \"Time Field\" and \"Time Range Field\".",
+  "version": "2.2.x",
+  "package": "Field types",
+  "composer_namespace": "drupal/time_field",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:datetime"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 10196,
+  "list_position": 375,
+  "project_url": "https://www.drupal.org/project/time_field",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "field_types": [
+    "time",
+    "time_range"
+  ],
+  "field_widgets": [
+    "time_widget",
+    "time_range_widget"
+  ],
+  "field_formatters": [
+    "time_formatter",
+    "time_range_formatter"
+  ],
+  "form_elements": [
+    "time"
+  ],
+  "categories": [
+    "Content display",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Date/time fields",
+    "Fields"
+  ],
+  "keywords": [
+    "time",
+    "time field",
+    "time range",
+    "time of day",
+    "opening hours",
+    "clock",
+    "HTML5 time input",
+    "field type",
+    "widget",
+    "formatter",
+    "feeds target",
+    "token"
+  ]
+}

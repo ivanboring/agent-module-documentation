@@ -1,0 +1,61 @@
+{
+  "name": "Aggregator",
+  "data_name": "aggregator",
+  "description": "Gathers and displays syndicated content (RSS, RDF, and Atom feeds) from external sources.",
+  "version": "2.2.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/aggregator",
+  "composer_requirements": {
+    "laminas/laminas-feed": "^2.17"
+  },
+  "dependent_modules": [
+    "drupal:file",
+    "drupal:filter",
+    "drupal:options"
+  ],
+  "configure": "aggregator.admin_settings",
+  "core_version_requirement": "^10.2 || ^11 || ^12",
+  "active_installs": 9946,
+  "list_position": 382,
+  "project_url": "https://www.drupal.org/project/aggregator",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "laminas/laminas-feed"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "fetcher",
+    "parser",
+    "processor"
+  ],
+  "content_entities": [
+    "aggregator_feed",
+    "aggregator_item"
+  ],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Feed aggregation"
+  ],
+  "keywords": [
+    "aggregator",
+    "rss",
+    "atom",
+    "rdf",
+    "feed",
+    "syndication",
+    "news feed",
+    "opml",
+    "laminas-feed",
+    "planet",
+    "fetcher",
+    "parser",
+    "processor"
+  ]
+}

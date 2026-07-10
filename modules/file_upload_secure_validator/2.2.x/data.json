@@ -1,0 +1,41 @@
+{
+  "name": "File Upload Secure Validator",
+  "data_name": "file_upload_secure_validator",
+  "description": "Secure Mime Detect",
+  "version": "2.2.x",
+  "package": "Security",
+  "composer_namespace": "drupal/file_upload_secure_validator",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "drupal/core": "^11",
+    "ext-fileinfo": "*"
+  },
+  "dependent_modules": [],
+  "configure": "file_upload_secure_validator.file-upload-secure-validator-settings",
+  "core_version_requirement": "^11",
+  "active_installs": 10004,
+  "list_position": 378,
+  "project_url": "https://www.drupal.org/project/file_upload_secure_validator",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": {
+    "ext-fileinfo": "*"
+  },
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": ["Media", "Security"],
+  "subcategories": ["File uploads"],
+  "keywords": [
+    "file upload",
+    "mime type",
+    "fileinfo",
+    "security",
+    "content validation",
+    "falsified extension",
+    "file validation"
+  ]
+}

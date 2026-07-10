@@ -1,0 +1,46 @@
+{
+  "name": "Schemata",
+  "data_name": "schemata",
+  "description": "Provide schema definitions of Drupal entities for type validation, code generation, and documentation.",
+  "version": "1.0.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/schemata",
+  "composer_requirements": {
+    "php": ">=8.1"
+  },
+  "dependent_modules": [
+    "serialization"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": 10365,
+  "list_position": 371,
+  "project_url": "https://www.drupal.org/project/schemata",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "schemata_json_schema"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "REST / web services"
+  ],
+  "keywords": [
+    "schema",
+    "json schema",
+    "entity schema",
+    "typed data",
+    "rest",
+    "api documentation",
+    "data model",
+    "serialization"
+  ]
+}

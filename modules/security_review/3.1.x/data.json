@@ -1,0 +1,51 @@
+{
+  "name": "Security Review",
+  "data_name": "security_review",
+  "description": "Site security and configuration review module.",
+  "version": "3.1.x",
+  "package": "Security",
+  "composer_namespace": "drupal/security_review",
+  "composer_requirements": {
+    "php": ">=8.1.0",
+    "symfony/filesystem": "*",
+    "drupal/core": "^10.3 || ^11"
+  },
+  "dependent_modules": [],
+  "configure": "security_review.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 368,
+  "project_url": "https://www.drupal.org/project/security_review",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1.0",
+  "library_dependencies": [
+    "symfony/filesystem"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "security_review.security_check"
+  ],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "User roles & permissions"
+  ],
+  "keywords": [
+    "security_review",
+    "security",
+    "audit",
+    "checklist",
+    "hardening",
+    "configuration review",
+    "vulnerability",
+    "secrev",
+    "file permissions",
+    "untrusted roles",
+    "compliance"
+  ]
+}

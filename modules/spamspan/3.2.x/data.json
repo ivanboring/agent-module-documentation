@@ -1,0 +1,44 @@
+{
+  "name": "SpamSpan",
+  "data_name": "spamspan",
+  "description": "The SpamSpan module obfuscates email addresses to help prevent spambots from collecting them. It implements the technique at https://www.spamspan.com.",
+  "version": "3.2.x",
+  "package": "Input filters",
+  "composer_namespace": "drupal/spamspan",
+  "composer_requirements": {
+    "drupal/core": "^9.5 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "drupal:filter"
+  ],
+  "configure": "filter.admin_overview",
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": 10385,
+  "list_position": 369,
+  "project_url": "https://www.drupal.org/project/spamspan",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": [],
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Spam prevention"
+  ],
+  "keywords": [
+    "spamspan",
+    "email obfuscation",
+    "spambot",
+    "input filter",
+    "text format",
+    "mailto",
+    "email formatter",
+    "anti-spam"
+  ]
+}
