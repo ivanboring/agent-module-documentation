@@ -362,6 +362,156 @@
           }
         }
       }
+    },
+    "aiagents-known-tools-medium": {
+      "type": "introspection",
+      "question": "This Drupal site (drush available) already has an AI agent configured with the machine name `eval_known_agent`. Inspect the live configuration and tell me which tool(s) \u2014 AiFunctionCall / function-call plugins \u2014 that agent grants. Give the exact tool plugin id(s).",
+      "difficulty": "medium",
+      "persona": "drupal-expert",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2954,
+            "cache_reads": 33863,
+            "out_tokens": 596,
+            "time": 17.4,
+            "cost": 0.0944
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2954,
+            "cache_reads": 34405,
+            "out_tokens": 755,
+            "time": 16.7,
+            "cost": 0.1051
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2954,
+            "cache_reads": 40224,
+            "out_tokens": 244,
+            "time": 11.0,
+            "cost": 0.1567
+          }
+        }
+      }
+    },
+    "aiagents-known-prompt-medium": {
+      "type": "introspection",
+      "question": "On this Drupal site the AI agent with machine name `eval_known_agent` is already configured. Inspect its live configuration with drush and quote the distinctive protocol that its system prompt instructs it to always cite before answering.",
+      "difficulty": "medium",
+      "persona": "drupal-expert",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2954,
+            "cache_reads": 33843,
+            "out_tokens": 246,
+            "time": 9.7,
+            "cost": 0.0852
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2954,
+            "cache_reads": 34385,
+            "out_tokens": 260,
+            "time": 10.4,
+            "cost": 0.0918
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2954,
+            "cache_reads": 40204,
+            "out_tokens": 223,
+            "time": 12.2,
+            "cost": 0.156
+          }
+        }
+      }
+    },
+    "aiagents-known-maxloops-medium": {
+      "type": "introspection",
+      "question": "The AI agent `eval_known_agent` on this site is configured with a maximum loop count (max_loops) to prevent infinite loops. Inspect the live configuration with drush and tell me the exact max_loops value it is set to.",
+      "difficulty": "medium",
+      "persona": "drupal-expert",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2958,
+            "cache_reads": 77087,
+            "out_tokens": 624,
+            "time": 35.0,
+            "cost": 0.129
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2956,
+            "cache_reads": 56658,
+            "out_tokens": 561,
+            "time": 22.3,
+            "cost": 0.1159
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2954,
+            "cache_reads": 40206,
+            "out_tokens": 226,
+            "time": 10.7,
+            "cost": 0.1533
+          }
+        }
+      }
     }
   }
 }
