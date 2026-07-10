@@ -1,0 +1,63 @@
+{
+  "name": "Video Transcode",
+  "data_name": "video_transcode",
+  "description": "Convert uploaded video files in to web compatible video formats.",
+  "version": "3.1.x",
+  "package": "Media",
+  "composer_namespace": "drupal/video",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "video"
+  ],
+  "configure": null,
+  "core_version_requirement": ">=10.2",
+  "active_installs": null,
+  "list_position": 273,
+  "part_of": "video",
+  "project_url": "https://www.drupal.org/project/video",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_config_entities": [
+    "video_transcode_preset"
+  ],
+  "provides_content_entities": [
+    "video_transcode_job"
+  ],
+  "provides_plugin_types": [
+    {
+      "id": "transcoder",
+      "annotation": "Drupal\\video_transcode\\Annotation\\Transcoder",
+      "interface": "Drupal\\video_transcode\\TranscoderInterface",
+      "base_class": "Drupal\\video_transcode\\TranscoderBase",
+      "manager_service": "video_transcode.provider_manager",
+      "directory": "Plugin/video/Transcoder",
+      "alter_hook": "video_transcode_transcoder_info"
+    }
+  ],
+  "provides_field_widgets": [
+    "video_upload_transcode"
+  ],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Video embedding"
+  ],
+  "keywords": [
+    "video",
+    "transcode",
+    "ffmpeg",
+    "convert",
+    "preset",
+    "codec",
+    "bitrate",
+    "web video",
+    "media"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "name": "SendGrid Integration Reports",
+  "data_name": "sendgrid_integration_reports",
+  "description": "SendGrid Integration Reports Module",
+  "version": "2.3.x",
+  "package": "Mail",
+  "composer_namespace": "drupal/sendgrid_integration",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "sendgrid_integration:sendgrid_integration"
+  ],
+  "configure": "sendgrid_integration_reports.settings_form",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": 264,
+  "part_of": "sendgrid_integration",
+  "project_url": "https://www.drupal.org/project/sendgrid_integration",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Email / mail delivery"
+  ],
+  "keywords": [
+    "sendgrid",
+    "reports",
+    "statistics",
+    "email stats",
+    "deliverability",
+    "bounces",
+    "opens",
+    "clicks",
+    "dashboard",
+    "subusers"
+  ]
+}

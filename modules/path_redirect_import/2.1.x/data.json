@@ -1,0 +1,55 @@
+{
+  "name": "Path Redirect Import",
+  "data_name": "path_redirect_import",
+  "description": "Bulk handling of redirects",
+  "version": "2.1.x",
+  "package": "Migration",
+  "composer_namespace": "drupal/path_redirect_import",
+  "composer_requirements": {
+    "php": ">=7.1",
+    "drupal/core": ">=10.3",
+    "drupal/migrate_source_csv": "^3.5",
+    "drupal/migrate_tools": "^6.1.0",
+    "drupal/redirect": ">=1.7"
+  },
+  "dependent_modules": [
+    "migrate_source_csv:migrate_source_csv",
+    "migrate_tools:migrate_tools",
+    "redirect:redirect"
+  ],
+  "configure": "entity.redirect.migrate",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 266,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/path_redirect_import",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=7.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Content migration / import",
+    "Entity page behavior & redirects"
+  ],
+  "keywords": [
+    "redirect",
+    "csv",
+    "bulk import",
+    "migrate",
+    "301",
+    "302",
+    "url redirect",
+    "import",
+    "export",
+    "path redirect"
+  ]
+}

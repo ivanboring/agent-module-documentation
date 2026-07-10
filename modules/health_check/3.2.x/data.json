@@ -1,0 +1,44 @@
+{
+  "name": "Health Check for Load Balancers",
+  "data_name": "health_check",
+  "description": "Simple endpoint for Load Balancers to check Drupal site health",
+  "version": "3.2.x",
+  "package": "Performance and Scalability",
+  "composer_namespace": "drupal/health_check",
+  "composer_requirements": {
+    "php": "^8.0",
+    "drupal/core": "^9.4 || ^10 || ^11 || ^12"
+  },
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^9.4 || ^10 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": 275,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/health_check",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "^8.0",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [],
+  "keywords": [
+    "health check",
+    "load balancer",
+    "uptime",
+    "monitoring",
+    "readiness probe",
+    "liveness probe",
+    "/health",
+    "status endpoint",
+    "kubernetes",
+    "high availability"
+  ]
+}

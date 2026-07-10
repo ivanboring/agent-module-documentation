@@ -1,0 +1,54 @@
+{
+  "name": "SendGrid Integration",
+  "data_name": "sendgrid_integration",
+  "description": "Provides Sendgrid Integration for the Drupal Mail System",
+  "version": "2.3.x",
+  "package": "Mail",
+  "composer_namespace": "drupal/sendgrid_integration",
+  "composer_requirements": {
+    "fastglass/sendgrid": "~2.0.0",
+    "html2text/html2text": "^4.3.1",
+    "ext-json": "*"
+  },
+  "dependent_modules": [
+    "mailsystem:mailsystem (>=4.x)"
+  ],
+  "configure": "sendgrid_integration.settings_form",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": 264,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/sendgrid_integration",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "fastglass/sendgrid",
+    "html2text/html2text"
+  ],
+  "suggests": {},
+  "submodules": [
+    "sendgrid_integration_reports"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Email / mail delivery"
+  ],
+  "keywords": [
+    "sendgrid",
+    "email",
+    "mail",
+    "transactional email",
+    "MailInterface",
+    "mailsystem",
+    "smtp alternative",
+    "api",
+    "delivery",
+    "key module"
+  ]
+}

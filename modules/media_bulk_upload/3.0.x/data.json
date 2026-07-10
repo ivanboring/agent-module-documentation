@@ -1,0 +1,53 @@
+{
+  "name": "Media Bulk Upload",
+  "data_name": "media_bulk_upload",
+  "description": "Allows uploading files in bulk and converting them to media entities.",
+  "version": "3.0.x",
+  "package": "Media",
+  "composer_namespace": "drupal/media_bulk_upload",
+  "composer_requirements": {
+    "drupal/dropzonejs": "^2.0"
+  },
+  "dependent_modules": [
+    "drupal:media"
+  ],
+  "configure": "entity.media_bulk_config.collection",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 262,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/media_bulk_upload",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "media_bulk_upload_dropzonejs"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_config_entities": [
+    "media_bulk_config"
+  ],
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "File uploads",
+    "File & media metadata"
+  ],
+  "keywords": [
+    "media bulk upload",
+    "bulk upload",
+    "media",
+    "file upload",
+    "multiple upload",
+    "dropzonejs",
+    "media type",
+    "file extension",
+    "managed_file",
+    "batch"
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "name": "Video",
+  "data_name": "video",
+  "description": "A field type for storing uploaded or embedded videos.",
+  "version": "3.1.x",
+  "package": "Field types",
+  "composer_namespace": "drupal/video",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:file"
+  ],
+  "configure": null,
+  "core_version_requirement": ">=10.2",
+  "active_installs": null,
+  "list_position": 273,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/video",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/flysystem": "Recommended for storing video files on remote/cloud file systems."
+  },
+  "submodules": [
+    "video_transcode"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_config_entities": [],
+  "provides_plugin_types": [
+    {
+      "id": "video_embed_provider",
+      "annotation": "Drupal\\video\\Annotation\\VideoEmbeddableProvider",
+      "interface": "Drupal\\video\\ProviderPluginInterface",
+      "base_class": "Drupal\\video\\ProviderPluginBase",
+      "manager_service": "video.provider_manager",
+      "directory": "Plugin/video/Provider"
+    }
+  ],
+  "provides_field_types": [
+    "video"
+  ],
+  "provides_field_widgets": [
+    "video_embed",
+    "video_upload"
+  ],
+  "provides_field_formatters": [
+    "video_embed_player",
+    "video_embed_thumbnail",
+    "video_player",
+    "video_player_list",
+    "video_url"
+  ],
+  "provides_stream_wrappers": [
+    "youtube",
+    "vimeo",
+    "dailymotion",
+    "vine",
+    "instagram",
+    "facebook"
+  ],
+  "provides_embed_providers": [
+    "youtube",
+    "vimeo",
+    "dailymotion",
+    "facebook",
+    "instagram",
+    "vine"
+  ],
+  "categories": [
+    "Media",
+    "Content display"
+  ],
+  "subcategories": [
+    "Video embedding",
+    "Fields",
+    "Field formatters",
+    "File uploads"
+  ],
+  "keywords": [
+    "video",
+    "field type",
+    "youtube",
+    "vimeo",
+    "embed",
+    "html5 video",
+    "upload",
+    "media",
+    "stream wrapper",
+    "thumbnail",
+    "transcode"
+  ]
+}

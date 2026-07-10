@@ -1,0 +1,52 @@
+{
+  "name": "FlexSlider",
+  "data_name": "flexslider",
+  "description": "Integrate the FlexSlider 2 library with Drupal",
+  "version": "3.0.x",
+  "package": "FlexSlider",
+  "composer_namespace": "drupal/flexslider",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:image"
+  ],
+  "configure": "entity.flexslider.collection",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 276,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/flexslider",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "woothemes/flexslider": "~2.0"
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "provides_config_entities": [
+    "flexslider_optionset"
+  ],
+  "categories": [
+    "Content display",
+    "Media"
+  ],
+  "subcategories": [
+    "Field formatters",
+    "Views styles"
+  ],
+  "keywords": [
+    "flexslider",
+    "slider",
+    "carousel",
+    "slideshow",
+    "image gallery",
+    "jquery",
+    "optionset",
+    "field formatter",
+    "views style",
+    "responsive images"
+  ]
+}

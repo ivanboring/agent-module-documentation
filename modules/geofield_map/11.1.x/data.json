@@ -1,0 +1,75 @@
+{
+  "name": "Geofield Map",
+  "data_name": "geofield_map",
+  "description": "Map Widget, Formatter and Views integration for Geofields.",
+  "version": "11.1.x",
+  "package": "Geofield",
+  "composer_namespace": "drupal/geofield_map",
+  "composer_requirements": {
+    "drupal/core": "^10.3 || ^11",
+    "drupal/geofield": "^1.31 || ^10.3"
+  },
+  "dependent_modules": [
+    "geofield:geofield"
+  ],
+  "configure": "geofield_map.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 271,
+  "project_url": "https://www.drupal.org/project/geofield_map",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/key": "Store the Google Maps API key as a Key entity instead of plain config (the settings form auto-switches to a key_select when Key is enabled)."
+  },
+  "part_of": null,
+  "submodules": [
+    "geofield_map_extras"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "MapThemer (Plugin/GeofieldMapThemer)",
+    "LeafletTileLayerPlugin (Plugin/LeafletTileLayerPlugin)"
+  ],
+  "provides_field_widgets": [
+    "geofield_map"
+  ],
+  "provides_field_formatters": [
+    "geofield_google_map"
+  ],
+  "provides_views_styles": [
+    "geofield_google_map"
+  ],
+  "provides_blocks": [
+    "geofield_map_legend"
+  ],
+  "categories": [
+    "Content display",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Geospatial / location",
+    "Field formatters",
+    "Views styles",
+    "Form widgets / select UI"
+  ],
+  "keywords": [
+    "geofield",
+    "map",
+    "google maps",
+    "leaflet",
+    "geocoding",
+    "geocoder",
+    "marker",
+    "infowindow",
+    "marker cluster",
+    "views map",
+    "location",
+    "point",
+    "widget",
+    "formatter"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "name": "Bootstrap Layout Builder",
+  "data_name": "bootstrap_layout_builder",
+  "description": "Add Bootstrap Grid support to Layout Builder module.",
+  "version": "2.2.x",
+  "package": "Layout Builder",
+  "composer_namespace": "drupal/bootstrap_layout_builder",
+  "composer_requirements": {
+    "drupal/bootstrap_styles": "^1.2.0",
+    "drupal/core": "^10.3 || ^11"
+  },
+  "dependent_modules": [
+    "drupal:layout_builder",
+    "bootstrap_styles:bootstrap_styles"
+  ],
+  "configure": "bootstrap_layout_builder.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 277,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/bootstrap_layout_builder",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "provides_config_entities": [
+    "blb_breakpoint",
+    "blb_layout",
+    "blb_layout_option"
+  ],
+  "categories": [
+    "Site structure",
+    "Content display"
+  ],
+  "subcategories": [
+    "Layout Builder"
+  ],
+  "keywords": [
+    "bootstrap",
+    "grid",
+    "layout builder",
+    "row",
+    "column",
+    "breakpoint",
+    "container",
+    "responsive",
+    "section",
+    "gutters"
+  ]
+}
