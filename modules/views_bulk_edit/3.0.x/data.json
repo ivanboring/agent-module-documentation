@@ -1,0 +1,52 @@
+{
+  "name": "Views Bulk Edit",
+  "data_name": "views_bulk_edit",
+  "description": "Allows bulk edition of entity field values.",
+  "version": "3.0.x",
+  "package": "Views Bulk Operations",
+  "composer_namespace": "drupal/views_bulk_edit",
+  "composer_requirements": {
+    "drupal/core": "^9.4 || ^10 || ^11"
+  },
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 158,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/views_bulk_edit",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/views_bulk_operations": "Get VBO for all the views benefits like batching, ability to select all view results or persistent selection across pages"
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "consumes_plugin_types": [
+    "VBO Action (Plugin/Action, extends views_bulk_operations ViewsBulkOperationsActionBase) — the 'views_bulk_edit' Modify field values action",
+    "core Action (Plugin/Action, extends EntityActionBase, derived per fieldable entity type as 'entity:edit_action')"
+  ],
+  "categories": [
+    "Content editing experience",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Fields"
+  ],
+  "keywords": [
+    "vbe",
+    "bulk edit",
+    "mass edit",
+    "field values",
+    "modify field values",
+    "vbo",
+    "views",
+    "bulk update",
+    "bulk_edit form mode",
+    "append value"
+  ]
+}

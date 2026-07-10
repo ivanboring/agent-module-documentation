@@ -1,0 +1,57 @@
+{
+  "name": "OpenID Connect",
+  "data_name": "openid_connect",
+  "description": "A pluggable client implementation for the OpenID Connect protocol.",
+  "version": "3.0.x",
+  "package": "User authentication",
+  "composer_namespace": "drupal/openid_connect",
+  "composer_requirements": {
+    "php": ">=8.1.0",
+    "ext-json": "*",
+    "drupal/externalauth": "^2.0"
+  },
+  "dependent_modules": [
+    "drupal:file",
+    "externalauth:externalauth"
+  ],
+  "configure": "entity.openid_connect_client.list",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": 155,
+  "project_url": "https://www.drupal.org/project/openid_connect",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1.0",
+  "release_stability": "alpha",
+  "library_dependencies": [],
+  "suggests": {},
+  "part_of": null,
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "openid_connect_client (Plugin/OpenIDConnectClient; interface Drupal\\openid_connect\\Plugin\\OpenIDConnectClientInterface, base Drupal\\openid_connect\\Plugin\\OpenIDConnectClientBase, annotation Drupal\\openid_connect\\Annotation\\OpenIDConnectClient)"
+  ],
+  "categories": [
+    "Access control",
+    "Security"
+  ],
+  "subcategories": [
+    "External authentication"
+  ],
+  "keywords": [
+    "openid connect",
+    "oidc",
+    "oauth2",
+    "sso",
+    "single sign-on",
+    "external authentication",
+    "identity provider",
+    "google login",
+    "okta",
+    "azure",
+    "keycloak",
+    "social login",
+    "claims"
+  ]
+}

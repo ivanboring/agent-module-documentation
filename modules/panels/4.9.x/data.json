@@ -1,0 +1,59 @@
+{
+  "name": "Panels",
+  "data_name": "panels",
+  "description": "Core Panels display functions; provides no external UI, at least one other Panels module should be enabled.",
+  "version": "4.9.x",
+  "package": "Panels",
+  "composer_namespace": "drupal/panels",
+  "composer_requirements": {
+    "drupal/ctools": "^3.15 || ^4.1",
+    "drupal/jquery_ui_droppable": "^1.0 || ^2.0"
+  },
+  "dependent_modules": [
+    "ctools:ctools",
+    "drupal:layout_discovery"
+  ],
+  "configure": "panels.admin",
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 197,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/panels",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "panels_ipe"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "PanelsStorage (Plugin/PanelsStorage, panels.storage_manager)",
+    "PanelsPattern (Plugin/PanelsPattern, plugin.manager.panels.pattern)",
+    "DisplayBuilder (Plugin/DisplayBuilder, plugin.manager.panels.display_builder)"
+  ],
+  "categories": [
+    "Site structure",
+    "Content display"
+  ],
+  "subcategories": [
+    "Structured content / page building",
+    "Layout Builder"
+  ],
+  "keywords": [
+    "panels",
+    "display variant",
+    "panels_variant",
+    "layout",
+    "regions",
+    "blocks",
+    "ctools",
+    "page manager",
+    "in-place editor",
+    "ipe",
+    "page building",
+    "layout discovery"
+  ]
+}

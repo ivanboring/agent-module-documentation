@@ -1,0 +1,53 @@
+{
+  "name": "Checklist API",
+  "data_name": "checklistapi",
+  "description": "Provides an API for creating fillable, persistent checklists.",
+  "version": "2.1.x",
+  "package": "Other",
+  "composer_namespace": "drupal/checklistapi",
+  "composer_requirements": {
+    "php": ">=7.3.0"
+  },
+  "dependent_modules": [],
+  "configure": "checklistapi.report",
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 203,
+  "project_url": "https://www.drupal.org/project/checklistapi",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=7.3.0",
+  "library_dependencies": [],
+  "suggests": {},
+  "part_of": null,
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "provides_info_hooks": [
+    "hook_checklistapi_checklist_info",
+    "hook_checklistapi_checklist_info_alter"
+  ],
+  "provides_dynamic_routes": true,
+  "provides_dynamic_permissions": true,
+  "categories": [
+    "Administration tools",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Workflow / business rules",
+    "Configuration management"
+  ],
+  "keywords": [
+    "checklist",
+    "checklistapi",
+    "fillable checklist",
+    "persistent checklist",
+    "site setup",
+    "compliance",
+    "progress tracking",
+    "vertical tabs",
+    "state",
+    "config"
+  ]
+}

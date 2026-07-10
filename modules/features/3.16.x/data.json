@@ -1,0 +1,57 @@
+{
+  "name": "Features",
+  "data_name": "features",
+  "description": "Enables administrators to package configuration into modules.",
+  "version": "3.16.x",
+  "package": "Development",
+  "composer_namespace": "drupal/features",
+  "composer_requirements": {
+    "drupal/config_update": "^2"
+  },
+  "dependent_modules": [
+    "drupal:config",
+    "config_update:config_update"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": 171,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/features",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "features_ui"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "features_assignment_method (Drupal\\features\\Plugin\\FeaturesAssignment, manager plugin.manager.features_assignment_method)",
+    "features_generation_method (Drupal\\features\\Plugin\\FeaturesGeneration, manager plugin.manager.features_generation_method)"
+  ],
+  "provides_config_entities": [
+    "features_bundle"
+  ],
+  "categories": [
+    "Developer tools",
+    "Import and export"
+  ],
+  "subcategories": [
+    "Configuration management"
+  ],
+  "keywords": [
+    "features",
+    "configuration management",
+    "config packaging",
+    "feature module",
+    "config export",
+    "config import",
+    "bundle",
+    "assignment method",
+    "generation method",
+    "config_update"
+  ]
+}
