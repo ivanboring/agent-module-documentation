@@ -1,0 +1,57 @@
+{
+  "name": "Simplenews",
+  "data_name": "simplenews",
+  "description": "Send newsletters to subscribed email addresses. For uninstall go to Configuration > Web services > Simplenews > Settings and hit \"Prepare uninstall\".",
+  "version": "4.1.x",
+  "package": "Mail",
+  "composer_namespace": "drupal/simplenews",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node",
+    "drupal:field",
+    "drupal:options",
+    "drupal:views"
+  ],
+  "configure": "simplenews.newsletter_list",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": 231,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/simplenews",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "simplenews_recipient_handler"
+  ],
+  "provides_config_entities": [
+    "simplenews_newsletter"
+  ],
+  "provides_content_entities": [
+    "simplenews_subscriber",
+    "simplenews_subscriber_history"
+  ],
+  "categories": [
+    "User engagement"
+  ],
+  "subcategories": [
+    "Email / mail delivery"
+  ],
+  "keywords": [
+    "newsletter",
+    "email",
+    "subscription",
+    "subscribe",
+    "mailing list",
+    "double opt-in",
+    "spool",
+    "mailer",
+    "cron",
+    "issue"
+  ]
+}

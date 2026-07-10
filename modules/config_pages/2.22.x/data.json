@@ -1,0 +1,58 @@
+{
+  "name": "Config Pages",
+  "data_name": "config_pages",
+  "description": "Allows the creation of custom configuration entities.",
+  "version": "2.22.x",
+  "package": "Entity",
+  "composer_namespace": "drupal/config_pages",
+  "composer_requirements": {
+    "drupal/core": "^8.5 | ^9 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "drupal:text"
+  ],
+  "provides_content_entities": [
+    "config_pages"
+  ],
+  "provides_config_entities": [
+    "config_pages_type"
+  ],
+  "configure": "entity.config_pages.collection",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 222,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/config_pages",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "config_pages_context"
+  ],
+  "categories": [
+    "Administration tools",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Configuration management",
+    "Structured content / page building"
+  ],
+  "keywords": [
+    "config pages",
+    "settings",
+    "singleton",
+    "fieldable entity",
+    "site settings",
+    "global configuration",
+    "configuration entity",
+    "context",
+    "per-language settings",
+    "config form",
+    "nodequeue replacement"
+  ]
+}

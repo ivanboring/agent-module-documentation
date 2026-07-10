@@ -1,0 +1,54 @@
+{
+  "name": "Block Visibility Groups",
+  "data_name": "block_visibility_groups",
+  "description": "Allows the site administrator to easily manage complex visibility settings that apply to any block placed in a visibility group.",
+  "version": "2.0.x",
+  "package": "Other",
+  "composer_namespace": "drupal/block_visibility_groups",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:block"
+  ],
+  "provides_config_entities": [
+    "block_visibility_group"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 220,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/block_visibility_groups",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/ctools": "Provides various additional condition plugins including entity bundle conditions.",
+    "drupal/menu_condition": "Adds a condition based on menu position.",
+    "drupal/term_condition": "Adds a condition checking whether the current node has a specific taxonomy term.",
+    "drupal/token_conditions": "Adds a simple token-matching condition plugin."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site structure",
+    "Content display"
+  ],
+  "subcategories": [
+    "Block enhancements"
+  ],
+  "keywords": [
+    "block",
+    "visibility",
+    "condition",
+    "block visibility group",
+    "condition group",
+    "block layout",
+    "shared conditions",
+    "and or logic",
+    "ctools condition",
+    "block placement"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "name": "Context",
+  "data_name": "context",
+  "description": "Set conditions and configure reactions that should be implemented when conditions pass.",
+  "version": "5.0.x",
+  "release_stability": "rc",
+  "package": "Context",
+  "composer_namespace": "drupal/context",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 230,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/context",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "context_ui"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_config_entities": [
+    "context"
+  ],
+  "provides_plugin_types": [
+    "context_reaction (ContextReaction; plugin namespace Plugin/ContextReaction; annotation Drupal\\context\\Reaction\\Annotation\\ContextReaction; manager plugin.manager.context_reaction) — conditions are NOT a new plugin type; Context reuses core Condition plugins (plugin.manager.condition)"
+  ],
+  "categories": [
+    "Site structure"
+  ],
+  "subcategories": [
+    "Block enhancements",
+    "Structured content / page building"
+  ],
+  "keywords": [
+    "context",
+    "condition",
+    "reaction",
+    "block placement",
+    "block visibility",
+    "theme switch",
+    "breadcrumb",
+    "body class",
+    "page template",
+    "site structure",
+    "config entity"
+  ]
+}

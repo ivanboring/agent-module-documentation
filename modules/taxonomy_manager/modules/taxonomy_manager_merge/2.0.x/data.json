@@ -1,0 +1,48 @@
+{
+  "name": "Taxonomy Manager Merge",
+  "data_name": "taxonomy_manager_merge",
+  "description": "Integrate Merge Terms with Taxonomy Manager.",
+  "version": "2.0.x",
+  "package": "Taxonomy",
+  "composer_namespace": "drupal/taxonomy_manager_merge",
+  "composer_requirements": {
+    "drupal/term_merge": "^2.0",
+    "drupal/term_reference_change": "^2.0"
+  },
+  "dependent_modules": [
+    "taxonomy_manager:taxonomy_manager",
+    "term_merge:term_merge"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": 224,
+  "part_of": "taxonomy_manager",
+  "project_url": "https://www.drupal.org/project/taxonomy_manager",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Content editing experience",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Manual content ordering"
+  ],
+  "keywords": [
+    "taxonomy",
+    "terms",
+    "merge",
+    "duplicate terms",
+    "term merge",
+    "synonyms",
+    "reassign references"
+  ]
+}

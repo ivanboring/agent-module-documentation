@@ -1,0 +1,55 @@
+{
+  "name": "Taxonomy Manager",
+  "data_name": "taxonomy_manager",
+  "description": "Tool for administrating taxonomy terms.",
+  "version": "2.0.x",
+  "package": "Taxonomy",
+  "composer_namespace": "drupal/taxonomy_manager",
+  "composer_requirements": {
+    "drupal/jquery_ui": "^1.7"
+  },
+  "dependent_modules": [
+    "drupal:taxonomy",
+    "jquery_ui:jquery_ui"
+  ],
+  "configure": "taxonomy_manager.settings",
+  "core_version_requirement": "^10.3 || ^11.0",
+  "active_installs": null,
+  "list_position": 224,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/taxonomy_manager",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "fancytree/fancytree": "The fancytree library is required to use the drupal/taxonomy_manager module."
+  },
+  "submodules": [
+    "taxonomy_manager_merge"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Content editing experience",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Manual content ordering"
+  ],
+  "keywords": [
+    "taxonomy",
+    "terms",
+    "vocabulary",
+    "tree",
+    "fancytree",
+    "mass add",
+    "bulk delete",
+    "move terms",
+    "reparent",
+    "term editing",
+    "hierarchy"
+  ]
+}

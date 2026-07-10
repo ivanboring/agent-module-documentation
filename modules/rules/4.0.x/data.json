@@ -1,0 +1,64 @@
+{
+  "name": "Rules",
+  "data_name": "rules",
+  "description": "React on events and conditionally evaluate actions.",
+  "version": "4.0.x",
+  "package": "Rules",
+  "release_stability": "stable",
+  "composer_namespace": "drupal/rules",
+  "composer_requirements": {
+    "drupal/core": "^10.3 || ^11",
+    "drupal/typed_data": "^2.1"
+  },
+  "dependent_modules": [
+    "drupal:config",
+    "typed_data:typed_data"
+  ],
+  "configure": "entity.rules_reaction_rule.collection",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 221,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/rules",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_config_entities": [
+    "rules_reaction_rule",
+    "rules_component"
+  ],
+  "provides_plugin_types": [
+    "RulesAction (Plugin/RulesAction)",
+    "Condition (Plugin/Condition)",
+    "RulesExpression (Plugin/RulesExpression)",
+    "RulesEvent (Plugin/RulesEvent + *.rules.events.yml)",
+    "RulesDataProcessor (Plugin/RulesDataProcessor)",
+    "RulesUi (*.rules_ui.yml)"
+  ],
+  "categories": [
+    "Automation",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Workflow / business rules"
+  ],
+  "keywords": [
+    "rules",
+    "reaction rule",
+    "event",
+    "condition",
+    "action",
+    "automation",
+    "workflow",
+    "business rules",
+    "ECA",
+    "expression",
+    "typed data",
+    "no-code"
+  ]
+}

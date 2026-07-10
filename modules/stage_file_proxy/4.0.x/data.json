@@ -1,0 +1,44 @@
+{
+  "name": "Stage File Proxy",
+  "data_name": "stage_file_proxy",
+  "description": "Proxies files from production server so you do not have to transfer them manually",
+  "version": "4.0.x",
+  "package": "Development",
+  "composer_namespace": "drupal/stage_file_proxy",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:image"
+  ],
+  "configure": "stage_file_proxy.admin_form",
+  "core_version_requirement": "^11.3 || ^12.0",
+  "active_installs": null,
+  "list_position": 219,
+  "project_url": "https://www.drupal.org/project/stage_file_proxy",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "part_of": null,
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools",
+    "Media"
+  ],
+  "subcategories": [],
+  "keywords": [
+    "stage file proxy",
+    "files",
+    "on-demand",
+    "production files",
+    "dev environment",
+    "hotlink",
+    "image styles",
+    "origin server",
+    "404 fetch",
+    "disk space"
+  ]
+}
