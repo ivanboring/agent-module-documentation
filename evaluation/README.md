@@ -44,8 +44,38 @@ evaluation/
     └── pathauto-reset.sh
 modules/<name>/<version>/eval/
 ├── evals.json           # suggested tasks for this module (recipe + execution)
-└── results.md           # the {vanilla,skill}×{provider} table (written by run-matrix.py)
+└── results.json         # accumulated results, all runs (written by run-matrix.py)
 ```
+
+### `results.json` shape
+
+One file per eval dir, **accumulated across runs** — each run upserts only its own
+leaves, so different arms, models, and efforts coexist for later graphing:
+
+```
+{ module, version, skill_name,
+  cases: {
+    "<case_id>": {
+      type,                         # "recipe" | "execution"
+      question,                     # the prompt
+      persona?,                     # execution cases only
+      results: {
+        "<arm>": {                  # vanilla | skill | memory
+          "<model>:<effort>": {     # e.g. "claude-opus-4-8:medium", "claude-haiku-4-5-20251001:medium"
+            provider, model, effort, runs,
+            correct,                # integer count of passing runs (denominator = runs)
+            in_tokens, cache_reads, out_tokens, time, cost
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+`correct` is an integer (the pass count); reconstruct `x/y` as `correct/runs`.
+`cache_reads` may be `null` for older runs that predate that column. The leaf key is
+`model:effort` so opus and haiku never overwrite each other.
 
 ## Running
 
@@ -62,19 +92,21 @@ python3 agent-module-documentation/evaluation/run-matrix.py \
 python3 .../run-matrix.py --module pathauto --version 1.15.x --dry-run
 ```
 
-Results are written to `modules/<name>/<version>/eval/results.md`.
+Results are written (and accumulated) into `modules/<name>/<version>/eval/results.json`.
 
-## Reading the table
+## Reading the results
 
-| Column | Meaning |
+Each leaf in `results.json` carries these fields (a visualizer reads them directly):
+
+| Field | Meaning |
 |---|---|
-| Arm | `vanilla` = bare prompt; `skill` = prompt with `drupal-module-docs` SKILL.md prepended |
-| Correct | execution: live-state verify pass/total; recipe: text-assertion pass/total |
-| In tok | **fresh** (uncached) input tokens, averaged over `--runs` |
-| Cache-rd | cached input tokens **re-used** (priced at ~0.1×) — a big stable prefix (skill/memory) becomes mostly cache-reads after the first turn of a multi-turn run |
-| Out tok | output tokens — **never cached**, always full price; this is where the real arm-to-arm differences live |
-| Time (s) | wall-clock per case |
-| Cost $ | provider-reported (claude `total_cost_usd`) — **already cache-aware** (reads ~0.1×, writes ~1.25×); the honest bottom line |
+| arm (key) | `vanilla` = bare prompt; `skill` = prompt with `drupal-module-docs` SKILL.md prepended; `memory` = distilled docs already in context |
+| `correct` | integer pass count over `runs` (execution: live-state verify; recipe: text assertions) — reconstruct `x/y` as `correct/runs` |
+| `in_tokens` | **fresh** (uncached) input tokens, averaged over `runs` |
+| `cache_reads` | cached input tokens **re-used** (priced at ~0.1×) — a big stable prefix (skill/memory) becomes mostly cache-reads after turn 1; `null` for older runs |
+| `out_tokens` | output tokens — **never cached**, always full price; this is where the real arm-to-arm differences live |
+| `time` | wall-clock seconds per case |
+| `cost` | provider-reported (claude `total_cost_usd`) — **already cache-aware** (reads ~0.1×, writes ~1.25×); the honest bottom line |
 
 Caching note: a skill/memory prefix is identical across the runs of an arm, so within a
 multi-turn run it is cached after turn 1 (cheap re-reads), and Claude's `total_cost_usd`
@@ -109,7 +141,14 @@ documented modules are the real test.
 
 - **Isolation:** both arms run with `--setting-sources ''` so the project's skills do **not**
   auto-load; the skill reaches the model only via prompt injection in the `skill` arm. This
-  keeps the A/B clean (the sole variable is the skill text).
+  keeps the A/B clean (the sole variable is the skill text). Note that `--setting-sources ''`
+  also means a default model set in `settings.json` does **not** apply — the model comes from
+  the `--model` flag (below), not your settings.
+- **Model & effort:** the claude provider defaults to `--model claude-opus-4-8` at
+  `--effort medium`. Override with `--model`/`--effort`; both are recorded per leaf (the
+  `model:effort` run key and its `provider`/`model`/`effort` fields) in results.json.
+  `--effort` applies to the claude provider only (codex/gemini keep their own default
+  models and ignore it).
 - **Non-determinism:** agents vary run-to-run. Use `--runs 3+` for stable cells.
 - **codex/gemini:** rows show `n/a` until those CLIs are installed; the harness already
   supports them (via the reused `providers.py`).

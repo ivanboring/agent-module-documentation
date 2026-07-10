@@ -42,7 +42,7 @@ except Exception:                                                          # pra
     def estimate_cost(*_a, **_k): return 0.0
 
 
-def run_claude_exec(prompt: str, model: str | None, cwd: str) -> dict:
+def run_claude_exec(prompt: str, model: str | None, cwd: str, effort: str | None = None) -> dict:
     """claude -p that may use tools unattended (bypasses permission prompts)."""
     start = time.monotonic()
     r = {"response": "", "elapsed": 0.0, "exit_code": -1, "input_tokens": 0,
@@ -50,6 +50,8 @@ def run_claude_exec(prompt: str, model: str | None, cwd: str) -> dict:
     cmd = ["claude", "-p", "-"]
     if model:
         cmd += ["--model", model]
+    if effort:
+        cmd += ["--effort", effort]
     cmd += ["--output-format", "json", "--dangerously-skip-permissions",
             "--setting-sources", "", "--strict-mcp-config"]
     try:
@@ -110,9 +112,11 @@ def build_prompt(case: dict, arm: str, module: str, version: str) -> str:
     return f"{skill}\n\n---\n\n{task}"
 
 
-def run_model(provider: str, prompt: str, model: str | None, execution: bool) -> dict:
+def run_model(provider: str, prompt: str, model: str | None, execution: bool,
+              effort: str | None = None) -> dict:
     if provider == "claude":
-        return run_claude_exec(prompt, model, cwd=str(PROJECT_ROOT))
+        return run_claude_exec(prompt, model or "claude-opus-4-8",
+                               cwd=str(PROJECT_ROOT), effort=effort)
     if provider == "codex" and run_codex:
         return run_codex(prompt, model or "gpt-5.4", cwd=str(PROJECT_ROOT))
     if provider == "gemini" and run_gemini:
@@ -142,10 +146,13 @@ def main() -> int:
     ap.add_argument("--version", required=True)
     ap.add_argument("--providers", nargs="+", default=["claude"])
     ap.add_argument("--arms", nargs="+", default=["vanilla", "skill"])
-    ap.add_argument("--model", default=None, help="model override (default: CLI default per provider)")
+    ap.add_argument("--model", default=None,
+                    help="model override (default: claude-opus-4-8 for claude; CLI default for others)")
+    ap.add_argument("--effort", default="medium",
+                    help="reasoning effort for the claude provider (default: medium)")
     ap.add_argument("--runs", type=int, default=1)
     ap.add_argument("--only", nargs="+", default=None, help="run only these case ids")
-    ap.add_argument("--out", default="results.md", help="results filename in the eval dir")
+    ap.add_argument("--out", default="results.json", help="results filename in the eval dir")
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
 
@@ -167,7 +174,7 @@ def main() -> int:
                 for _ in range(a.runs):
                     if execution and case.get("reset"):
                         sh(case["reset"])
-                    res = run_model(provider, prompt, a.model, execution)
+                    res = run_model(provider, prompt, a.model, execution, effort=a.effort)
                     if res["exit_code"] == -1:
                         cors.append(None); break            # provider CLI not available
                     if execution and case.get("verify"):
@@ -194,27 +201,51 @@ def main() -> int:
     return 0
 
 
+def run_key(provider: str, a) -> tuple[str, dict]:
+    """Stable identity for a run configuration → (leaf key, meta fields).
+
+    Keyed by model+effort so different models (opus vs haiku) never collide.
+    Effort applies to the claude provider only.
+    """
+    if provider == "claude":
+        model = a.model or "claude-opus-4-8"
+        return f"{model}:{a.effort}", {"provider": "claude", "model": model, "effort": a.effort}
+    model = a.model or {"codex": "gpt-5.4", "gemini": "gemini-2.5-pro"}.get(provider, provider)
+    return model, {"provider": provider, "model": model, "effort": None}
+
+
 def write_results(eval_dir: Path, spec: dict, a, rows) -> None:
-    lines = [f"# Eval results — {spec['module']} {spec['version']}", "",
-             f"Skill under test: `{spec['skill_name']}` · runs per cell: {a.runs} · "
-             f"model: {a.model or 'CLI default'}", "",
-             "`Correct` = live-state verify (execution cases) or text assertions (recipe cases). "
-             "`n/a` = provider CLI not installed.", ""]
-    by_case: dict[str, list] = {}
-    for r in rows:
-        by_case.setdefault(r[0], []).append(r)
-    for cid, rs in by_case.items():
-        case = next(c for c in spec["evals"] if c["id"] == cid)
-        persona = f" · persona: {case['persona']}" if case.get("persona") else ""
-        lines += [f"## {cid}  (`{case.get('mode')}`{persona})", "",
-                  f"> {case['prompt']}", "",
-                  "| Provider | Arm | Correct | In tok | Cache-rd | Out tok | Time (s) | Cost $ |",
-                  "|---|---|---|--:|--:|--:|--:|--:|"]
-        for _, prov, arm, cor, it, crd, ot, sec, cost in rs:
-            lines.append(f"| {prov} | {arm} | {cor} | {it} | {crd} | {ot} | {sec} | {cost} |")
-        lines.append("")
-    (eval_dir / a.out).write_text("\n".join(lines))
-    print(f"\nwrote {eval_dir / a.out}")
+    """Upsert this run's cells into a single results.json (accumulates across runs).
+
+    Shape:
+      { module, version, skill_name,
+        cases: { <case_id>: { type, question, persona?,
+          results: { <arm>: { "<model>:<effort>": {provider, model, effort,
+                                                    runs, correct, in_tokens,
+                                                    cache_reads, out_tokens,
+                                                    time, cost} } } } } }
+    """
+    path = eval_dir / a.out
+    doc = json.loads(path.read_text()) if path.exists() else {}
+    doc.setdefault("module", spec["module"])
+    doc.setdefault("version", spec["version"])
+    doc.setdefault("skill_name", spec["skill_name"])
+    cases = doc.setdefault("cases", {})
+    for cid, prov, arm, cor, it, crd, ot, sec, cost in rows:
+        cspec = next(c for c in spec["evals"] if c["id"] == cid)
+        entry = cases.setdefault(cid, {})
+        entry["type"] = cspec.get("mode")
+        entry["question"] = cspec["prompt"]
+        if cspec.get("persona"):
+            entry["persona"] = cspec["persona"]
+        correct = None if cor == "n/a" else int(cor.split("/")[0])
+        key, meta = run_key(prov, a)
+        entry.setdefault("results", {}).setdefault(arm, {})[key] = {
+            **meta, "runs": a.runs, "correct": correct, "in_tokens": it,
+            "cache_reads": crd, "out_tokens": ot, "time": sec, "cost": cost,
+        }
+    path.write_text(json.dumps(doc, indent=2) + "\n")
+    print(f"\nwrote {path}")
 
 
 if __name__ == "__main__":

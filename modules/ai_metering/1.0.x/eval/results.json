@@ -1,0 +1,247 @@
+{
+  "module": "ai_metering",
+  "version": "1.0.x",
+  "skill_name": "drupal-module-docs",
+  "cases": {
+    "aim-set-budget": {
+      "type": "recipe",
+      "question": "On this Drupal site using the ai_metering module, what is the exact Drush command (or its alias) to set a specific user's monthly AI token budget? Answer with the command.",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 2958,
+            "cache_reads": 78245,
+            "out_tokens": 984,
+            "time": 21.2,
+            "cost": 0.1677
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 2958,
+            "cache_reads": 77197,
+            "out_tokens": 531,
+            "time": 18.7,
+            "cost": 0.1145
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 2952,
+            "cache_reads": 20625,
+            "out_tokens": 74,
+            "time": 3.8,
+            "cost": 0.0508
+          }
+        }
+      }
+    },
+    "aim-dashboard-permission": {
+      "type": "recipe",
+      "question": "In the ai_metering module, which permission machine name lets a user view the AI cost/usage dashboard? Give the exact permission.",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 2956,
+            "cache_reads": 54324,
+            "out_tokens": 431,
+            "time": 15.1,
+            "cost": 0.0901
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 2960,
+            "cache_reads": 97594,
+            "out_tokens": 605,
+            "time": 17.6,
+            "cost": 0.1209
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 2952,
+            "cache_reads": 20617,
+            "out_tokens": 54,
+            "time": 3.6,
+            "cost": 0.0502
+          }
+        }
+      }
+    },
+    "aim-pricing-plugin": {
+      "type": "recipe",
+      "question": "In ai_metering, what is the plugin type I implement to add a custom source of per-model pricing? Name the plugin type.",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 1970,
+            "cache_reads": 36874,
+            "out_tokens": 746,
+            "time": 40.0,
+            "cost": 0.2593
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 2958,
+            "cache_reads": 77069,
+            "out_tokens": 656,
+            "time": 21.4,
+            "cost": 0.1188
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 2952,
+            "cache_reads": 20615,
+            "out_tokens": 49,
+            "time": 4.9,
+            "cost": 0.0501
+          }
+        }
+      }
+    },
+    "aim-record-hook": {
+      "type": "recipe",
+      "question": "In ai_metering, which Drupal hook lets me alter a usage record before it is written to the database? Give the exact hook function name.",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 3472,
+            "cache_reads": 68380,
+            "out_tokens": 954,
+            "time": 29.8,
+            "cost": 0.169
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 2958,
+            "cache_reads": 77098,
+            "out_tokens": 658,
+            "time": 21.1,
+            "cost": 0.1167
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 2952,
+            "cache_reads": 20617,
+            "out_tokens": 167,
+            "time": 6.3,
+            "cost": 0.0515
+          }
+        }
+      }
+    },
+    "aim-usage-table": {
+      "type": "recipe",
+      "question": "Where does the ai_metering module store its per-AI-call usage log \u2014 name the database table.",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 2956,
+            "cache_reads": 56177,
+            "out_tokens": 862,
+            "time": 36.5,
+            "cost": 0.1955
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 2956,
+            "cache_reads": 55640,
+            "out_tokens": 417,
+            "time": 11.5,
+            "cost": 0.0945
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 2952,
+            "cache_reads": 20607,
+            "out_tokens": 73,
+            "time": 6.0,
+            "cost": 0.0507
+          }
+        }
+      }
+    }
+  }
+}

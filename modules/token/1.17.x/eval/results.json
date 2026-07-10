@@ -1,0 +1,177 @@
+{
+  "module": "token",
+  "version": "1.17.x",
+  "skill_name": "drupal-module-docs",
+  "cases": {
+    "token-browser-in-form": {
+      "type": "recipe",
+      "question": "In a Drupal 11 module I have a settings form. Add a widget that lets the user browse the available tokens for the `node` and `user` token types. Show the exact form render-array element(s) to add, plus one line of explanation.",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 2952,
+            "cache_reads": null,
+            "out_tokens": 550,
+            "time": 14.1,
+            "cost": 0.0386
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 2960,
+            "cache_reads": null,
+            "out_tokens": 1000,
+            "time": 28.4,
+            "cost": 0.1471
+          }
+        }
+      }
+    },
+    "token-refresh-cache": {
+      "type": "recipe",
+      "question": "I added a new custom token via hook_token_info() on this Drupal site but it does not appear in the token browser yet. Give the single drush command to refresh it.",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 2952,
+            "cache_reads": null,
+            "out_tokens": 228,
+            "time": 7.7,
+            "cost": 0.0304
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 2954,
+            "cache_reads": null,
+            "out_tokens": 357,
+            "time": 12.8,
+            "cost": 0.0639
+          }
+        }
+      }
+    },
+    "token-replace-in-code": {
+      "type": "recipe",
+      "question": "In PHP on a Drupal 11 site, replace the tokens in the string `[node:title]` for a given `$node` object and return the resulting text. Show the code.",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 2952,
+            "cache_reads": null,
+            "out_tokens": 572,
+            "time": 12.1,
+            "cost": 0.039
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 2954,
+            "cache_reads": null,
+            "out_tokens": 1006,
+            "time": 22.0,
+            "cost": 0.0827
+          }
+        }
+      }
+    },
+    "token-provide-custom": {
+      "type": "recipe",
+      "question": "I want to define a brand-new custom token for my module (its metadata and its value). Which two Drupal hooks do I implement? Name them.",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 2952,
+            "cache_reads": null,
+            "out_tokens": 178,
+            "time": 6.5,
+            "cost": 0.0291
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 2952,
+            "cache_reads": null,
+            "out_tokens": 151,
+            "time": 8.2,
+            "cost": 0.0351
+          }
+        }
+      }
+    },
+    "token-entity-mapping": {
+      "type": "recipe",
+      "question": "In code on this Drupal site, how do I get the token *type* name for the `taxonomy_term` entity type (it should resolve to `term`)? Name the service or method to use.",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 2957,
+            "cache_reads": null,
+            "out_tokens": 1961,
+            "time": 34.1,
+            "cost": 0.1528
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 2958,
+            "cache_reads": null,
+            "out_tokens": 771,
+            "time": 20.4,
+            "cost": 0.1286
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,276 @@
+{
+  "module": "pathauto",
+  "version": "1.15.x",
+  "skill_name": "drupal-module-docs",
+  "cases": {
+    "pathauto-blog-pattern-expert": {
+      "type": "execution",
+      "question": "On this Drupal site (DDEV, drush available), add a Pathauto pattern for the Article content type with the token pattern `blog/[node:title]`, and apply it via drush/config so new article nodes get that URL alias. Give a one-line summary of what you changed.",
+      "persona": "drupal-expert",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 3145,
+            "cache_reads": null,
+            "out_tokens": 5847,
+            "time": 131.7,
+            "cost": 0.422
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 3140,
+            "cache_reads": null,
+            "out_tokens": 2612,
+            "time": 72.2,
+            "cost": 0.2673
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 3099,
+            "cache_reads": null,
+            "out_tokens": 3355,
+            "time": 79.3,
+            "cost": 0.3911
+          }
+        }
+      }
+    },
+    "pathauto-max-length": {
+      "type": "recipe",
+      "question": "On this Drupal site, give the exact drush command to set Pathauto's maximum generated alias length to 100. Answer with the command only.",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 2952,
+            "cache_reads": null,
+            "out_tokens": 158,
+            "time": 7.1,
+            "cost": 0.0279
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 2957,
+            "cache_reads": null,
+            "out_tokens": 413,
+            "time": 16.4,
+            "cost": 0.1074
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": null,
+            "out_tokens": 26,
+            "time": 3.9,
+            "cost": 0.0936
+          }
+        }
+      }
+    },
+    "pathauto-blog-pattern-layman": {
+      "type": "execution",
+      "question": "On my website, blog posts currently have ugly web addresses like `example.com/node/42`. I want every blog article's address to read like `example.com/blog/the-post-title` instead \u2014 built automatically from the post's title \u2014 for all articles from now on. Please set this up on the site so it just works, and tell me in one line what you did.",
+      "persona": "layman",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 3142,
+            "cache_reads": null,
+            "out_tokens": 4585,
+            "time": 101.1,
+            "cost": 0.357
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 3188,
+            "cache_reads": null,
+            "out_tokens": 4618,
+            "time": 111.3,
+            "cost": 0.3817
+          }
+        }
+      }
+    },
+    "pathauto-user-pattern": {
+      "type": "execution",
+      "question": "On this Drupal site (drush available), configure Pathauto so User accounts automatically get URL aliases of the form `users/[user:account-name]`. Apply it to the running site with drush/config \u2014 do not just describe it. State in one line what you changed.",
+      "persona": "drupal-expert",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 3095,
+            "cache_reads": null,
+            "out_tokens": 2044,
+            "time": 65.1,
+            "cost": 0.2078
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 3049,
+            "cache_reads": null,
+            "out_tokens": 1590,
+            "time": 45.1,
+            "cost": 0.1924
+          }
+        }
+      }
+    },
+    "pathauto-separator-underscore": {
+      "type": "recipe",
+      "question": "On this Drupal site, what is the exact drush command to change the Pathauto word separator from a hyphen to an underscore? Answer with the command only.",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 2952,
+            "cache_reads": null,
+            "out_tokens": 320,
+            "time": 14.5,
+            "cost": 0.0458
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 2958,
+            "cache_reads": null,
+            "out_tokens": 465,
+            "time": 19.9,
+            "cost": 0.1163
+          }
+        }
+      }
+    },
+    "pathauto-transliterate": {
+      "type": "recipe",
+      "question": "In Pathauto, which setting makes it convert accented characters (like `\u00e9` to `e`) into plain ASCII when building an alias? Name the exact setting key.",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 2952,
+            "cache_reads": null,
+            "out_tokens": 686,
+            "time": 14.2,
+            "cost": 0.059
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 2958,
+            "cache_reads": null,
+            "out_tokens": 667,
+            "time": 20.1,
+            "cost": 0.1178
+          }
+        }
+      }
+    },
+    "pathauto-alias-alter-hook": {
+      "type": "recipe",
+      "question": "Which Drupal hook do I implement to modify a generated URL alias string just before Pathauto saves it? Give the exact hook function name.",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 2952,
+            "cache_reads": null,
+            "out_tokens": 427,
+            "time": 11.4,
+            "cost": 0.0346
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 3,
+            "correct": 3,
+            "in_tokens": 2958,
+            "cache_reads": null,
+            "out_tokens": 741,
+            "time": 20.6,
+            "cost": 0.1196
+          }
+        }
+      }
+    }
+  }
+}
