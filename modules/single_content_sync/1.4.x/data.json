@@ -1,0 +1,53 @@
+{
+  "name": "Single Content Sync",
+  "data_name": "single_content_sync",
+  "description": "Export/import a single content between different environments.",
+  "version": "1.4.x",
+  "package": "Content",
+  "composer_namespace": "drupal/single_content_sync",
+  "composer_requirements": {
+    "php": ">=7.4",
+    "ext-dom": "*",
+    "ext-zip": "*"
+  },
+  "dependent_modules": [
+    "drupal:file"
+  ],
+  "configure": "single_content_sync.config_settings",
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 282,
+  "project_url": "https://www.drupal.org/project/single_content_sync",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=7.4",
+  "library_dependencies": [],
+  "suggests": {},
+  "part_of": null,
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "single_content_sync_field_processor (Drupal\\single_content_sync\\Plugin\\SingleContentSyncFieldProcessor)",
+    "single_content_sync_base_fields_processor (Drupal\\single_content_sync\\Plugin\\SingleContentSyncBaseFieldsProcessor)"
+  ],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Content migration / import",
+    "Data export"
+  ],
+  "keywords": [
+    "content export",
+    "content import",
+    "single content",
+    "yaml export",
+    "zip export",
+    "entity references",
+    "content sync",
+    "content staging",
+    "content deploy",
+    "drush content export"
+  ]
+}

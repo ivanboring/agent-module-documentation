@@ -1,0 +1,59 @@
+{
+  "name": "TableField",
+  "data_name": "tablefield",
+  "description": "Defines a generic tabular data field.",
+  "version": "3.0.x",
+  "package": "Field types",
+  "composer_namespace": "drupal/tablefield",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:field"
+  ],
+  "configure": "tablefield.admin",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 285,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/tablefield",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "tablefield_cellspan",
+    "tablefield_required"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "provides_field_types": [
+    "tablefield"
+  ],
+  "provides_field_widgets": [
+    "tablefield"
+  ],
+  "provides_field_formatters": [
+    "tablefield"
+  ],
+  "categories": [
+    "Content editing experience",
+    "Content display"
+  ],
+  "subcategories": [
+    "Fields",
+    "Field formatters"
+  ],
+  "keywords": [
+    "tablefield",
+    "table",
+    "grid",
+    "tabular data",
+    "spreadsheet",
+    "field type",
+    "csv import",
+    "csv export",
+    "rows and columns",
+    "caption"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "name": "Search API Attachments",
+  "data_name": "search_api_attachments",
+  "description": "Extract and index file fields content.",
+  "version": "10.0.x",
+  "package": "Search",
+  "composer_namespace": "drupal/search_api_attachments",
+  "composer_requirements": {
+    "drupal/core": "^10.3 || ^11",
+    "drupal/search_api": "^1"
+  },
+  "dependent_modules": [
+    "search_api:search_api"
+  ],
+  "configure": "search_api_attachments.admin_form",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 292,
+  "project_url": "https://www.drupal.org/project/search_api_attachments",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "part_of": null,
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "search_api_attachments (TextExtractor; namespace Plugin/search_api_attachments)"
+  ],
+  "categories": [
+    "Site search",
+    "Media"
+  ],
+  "subcategories": [
+    "Content indexing",
+    "File & media metadata"
+  ],
+  "keywords": [
+    "search api",
+    "attachments",
+    "file",
+    "media",
+    "text extraction",
+    "tika",
+    "solr",
+    "pdftotext",
+    "docconv",
+    "index files",
+    "processor",
+    "full text search"
+  ]
+}

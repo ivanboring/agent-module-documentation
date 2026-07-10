@@ -1,0 +1,52 @@
+{
+  "name": "Chart.js Charts",
+  "data_name": "charts_chartjs",
+  "description": "Charts module integration with Chart.js.",
+  "version": "5.2.x",
+  "package": "Charts",
+  "composer_namespace": "drupal/charts_chartjs",
+  "composer_requirements": {
+    "oomphinc/composer-installers-extender": "^2",
+    "npm-asset/chart.js": "^4.4",
+    "npm-asset/chartjs-adapter-date-fns": "^3.0",
+    "npm-asset/chartjs-plugin-datalabels": "^2.0"
+  },
+  "dependent_modules": [
+    "charts:charts"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": 289,
+  "part_of": "charts",
+  "project_url": "https://www.drupal.org/project/charts",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "npm-asset/chart.js: ^4.4",
+    "npm-asset/chartjs-adapter-date-fns: ^3.0",
+    "npm-asset/chartjs-plugin-datalabels: ^2.0"
+  ],
+  "suggests": {},
+  "submodules": [
+    "charts_chartjs_api_example"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "JavaScript libraries"
+  ],
+  "keywords": [
+    "charts",
+    "chart.js",
+    "chartjs",
+    "charting library",
+    "polar area",
+    "data visualization"
+  ]
+}

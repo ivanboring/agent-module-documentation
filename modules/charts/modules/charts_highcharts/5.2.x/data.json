@@ -1,0 +1,62 @@
+{
+  "name": "Highcharts",
+  "data_name": "charts_highcharts",
+  "description": "Charts module integration with Highcharts library.",
+  "version": "5.2.x",
+  "package": "Charts",
+  "composer_namespace": "drupal/charts_highcharts",
+  "composer_requirements": {
+    "highcharts/highcharts": "12.5.0",
+    "highcharts/more": "12.5.0",
+    "highcharts/3d": "12.5.0",
+    "highcharts/accessibility": "12.5.0",
+    "highcharts/annotations": "12.5.0",
+    "highcharts/boost": "12.5.0",
+    "highcharts/coloraxis": "12.5.0",
+    "highcharts/data": "12.5.0",
+    "highcharts/dumbbell": "12.5.0",
+    "highcharts/export-data": "12.5.0",
+    "highcharts/exporting": "12.5.0",
+    "highcharts/high-contrast-light": "12.5.0",
+    "highcharts/no-data-to-display": "12.5.0",
+    "highcharts/pareto": "12.5.0",
+    "highcharts/pattern-fill": "12.5.0"
+  },
+  "dependent_modules": [
+    "charts:charts"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": 289,
+  "part_of": "charts",
+  "project_url": "https://www.drupal.org/project/charts",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "highcharts/highcharts: 12.5.0 (+ more, 3d, accessibility, annotations, boost, coloraxis, data, dumbbell, export-data, exporting, high-contrast-light, no-data-to-display, pareto, pattern-fill)"
+  ],
+  "suggests": {},
+  "submodules": [
+    "charts_highcharts_api_example"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "JavaScript libraries"
+  ],
+  "keywords": [
+    "charts",
+    "highcharts",
+    "charting library",
+    "solidgauge",
+    "dumbbell",
+    "color changer",
+    "data visualization"
+  ]
+}

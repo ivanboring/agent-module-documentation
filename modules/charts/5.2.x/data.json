@@ -1,0 +1,61 @@
+{
+  "name": "Charts",
+  "data_name": "charts",
+  "description": "A charting API for Drupal that provides chart elements and integration with Views.",
+  "version": "5.2.x",
+  "package": "Charts",
+  "composer_namespace": "drupal/charts",
+  "composer_requirements": {
+    "drupal/core": "^10.3 || ^11 || ^12"
+  },
+  "dependent_modules": [],
+  "configure": "charts.settings",
+  "core_version_requirement": "^10.3 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": 289,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/charts",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "charts_blocks",
+    "charts_billboard",
+    "charts_c3",
+    "charts_chartjs",
+    "charts_google",
+    "charts_highcharts",
+    "charts_api_example"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "chart (Plugin/chart/Library — charting-library backends, ChartManager)",
+    "charts_type (Plugin/chart/Type — chart type definitions, TypeManager)"
+  ],
+  "categories": [
+    "Content display",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Views styles",
+    "Field formatters",
+    "JavaScript libraries"
+  ],
+  "keywords": [
+    "charts",
+    "graph",
+    "chart",
+    "data visualization",
+    "views style",
+    "highcharts",
+    "chart.js",
+    "google charts",
+    "billboard",
+    "c3",
+    "dashboard",
+    "render element"
+  ]
+}

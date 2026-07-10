@@ -1,0 +1,47 @@
+{
+  "name": "Google Charts",
+  "data_name": "charts_google",
+  "description": "Charts module integration with Google Charts.",
+  "version": "5.2.x",
+  "package": "Charts",
+  "composer_namespace": "drupal/charts_google",
+  "composer_requirements": {
+    "google/charts": "45"
+  },
+  "dependent_modules": [
+    "charts:charts"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": 289,
+  "part_of": "charts",
+  "project_url": "https://www.drupal.org/project/charts",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "google/charts: 45"
+  ],
+  "suggests": {},
+  "submodules": [
+    "charts_google_api_example"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "JavaScript libraries"
+  ],
+  "keywords": [
+    "charts",
+    "google charts",
+    "google",
+    "charting library",
+    "svg",
+    "data visualization"
+  ]
+}
