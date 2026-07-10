@@ -1,0 +1,295 @@
+{
+  "module": "layout_builder_save_and_edit",
+  "version": "1.1.x",
+  "skill_name": "drupal-module-docs",
+  "cases": {
+    "lbsae-what-it-does": {
+      "type": "recipe",
+      "question": "On a Drupal 11 site with core Layout Builder, what does the layout_builder_save_and_edit module add and how does it differ from the stock save button?",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 938,
+            "time": 16.8,
+            "cost": 0.0498
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2956,
+            "cache_reads": 55420,
+            "out_tokens": 1315,
+            "time": 23.9,
+            "cost": 0.1428
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 869,
+            "time": 17.8,
+            "cost": 0.083
+          }
+        }
+      }
+    },
+    "lbsae-config": {
+      "type": "recipe",
+      "question": "How do I configure layout_builder_save_and_edit and what settings does it expose?",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2958,
+            "cache_reads": 74722,
+            "out_tokens": 1227,
+            "time": 26.0,
+            "cost": 0.1418
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2956,
+            "cache_reads": 55049,
+            "out_tokens": 1074,
+            "time": 17.3,
+            "cost": 0.133
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 0,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 579,
+            "time": 15.2,
+            "cost": 0.0724
+          }
+        }
+      }
+    },
+    "lbsae-forms": {
+      "type": "recipe",
+      "question": "Which forms does layout_builder_save_and_edit add its button to?",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2958,
+            "cache_reads": 74321,
+            "out_tokens": 650,
+            "time": 17.4,
+            "cost": 0.1237
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2958,
+            "cache_reads": 76213,
+            "out_tokens": 826,
+            "time": 19.1,
+            "cost": 0.1325
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 389,
+            "time": 7.5,
+            "cost": 0.0707
+          }
+        }
+      }
+    },
+    "lbsae-permission": {
+      "type": "recipe",
+      "question": "What permission controls whether the Save and edit layout button appears on a content entity edit form, and does this module define it?",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2958,
+            "cache_reads": 76414,
+            "out_tokens": 1199,
+            "time": 24.0,
+            "cost": 0.1527
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2960,
+            "cache_reads": 105792,
+            "out_tokens": 1202,
+            "time": 23.1,
+            "cost": 0.1886
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 195,
+            "time": 6.0,
+            "cost": 0.0659
+          }
+        }
+      }
+    },
+    "lbsae-redirect": {
+      "type": "recipe",
+      "question": "After clicking Save and edit layout on a node edit form, where does layout_builder_save_and_edit send the user, and how does it stop a destination parameter from overriding that?",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2956,
+            "cache_reads": 54186,
+            "out_tokens": 1278,
+            "time": 21.2,
+            "cost": 0.128
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2958,
+            "cache_reads": 77019,
+            "out_tokens": 824,
+            "time": 23.1,
+            "cost": 0.1373
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 626,
+            "time": 11.9,
+            "cost": 0.0769
+          }
+        }
+      }
+    },
+    "lbsae-dependency": {
+      "type": "recipe",
+      "question": "What does layout_builder_save_and_edit depend on to work?",
+      "results": {
+        "vanilla": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2958,
+            "cache_reads": 74783,
+            "out_tokens": 1397,
+            "time": 28.4,
+            "cost": 0.1485
+          }
+        },
+        "skill": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2956,
+            "cache_reads": 55044,
+            "out_tokens": 472,
+            "time": 18.0,
+            "cost": 0.1013
+          }
+        },
+        "memory": {
+          "claude-opus-4-8:medium": {
+            "provider": "claude",
+            "model": "claude-opus-4-8",
+            "effort": "medium",
+            "runs": 1,
+            "correct": 1,
+            "in_tokens": 2952,
+            "cache_reads": 16786,
+            "out_tokens": 475,
+            "time": 10.4,
+            "cost": 0.0728
+          }
+        }
+      }
+    }
+  }
+}
