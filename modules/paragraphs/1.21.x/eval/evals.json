@@ -1,0 +1,73 @@
+{
+  "skill_name": "drupal-module-docs",
+  "skill_file": ".agents/skills/drupal-module-docs/SKILL.md",
+  "module": "paragraphs",
+  "version": "1.21.x",
+  "note": "Recipe-only suite. Each case probes a paragraphs-specific, load-bearing fact (entity type + bundle model, the ERR field/widget that hosts paragraphs, the bundled submodules, config keys, and permission machine names) that an agent would otherwise have to read module source to answer. Graded on response content; no site mutation.",
+  "evals": [
+    {
+      "id": "paragraphs-field-to-add",
+      "mode": "recipe",
+      "prompt": "On a Drupal 11 site with the Paragraphs module, I want to let editors add paragraph components to a content type. Which field type do I add to the node, what target entity type does it reference, and which widget do I pick on the form display?",
+      "must_contain_any": ["Entity reference revisions", "entity_reference_revisions"],
+      "must_not_contain": [],
+      "expected_output": "Add an Entity Reference Revisions field whose target type is Paragraph, then choose the Paragraphs (stable) widget on the host's form display."
+    },
+    {
+      "id": "paragraphs-type-is-bundle",
+      "mode": "recipe",
+      "prompt": "In Paragraphs, what is the relationship between a 'Paragraphs type' and a 'paragraph'? Name the entity type of each and the class of the type entity.",
+      "must_contain_any": ["ParagraphsType", "paragraphs_type"],
+      "must_not_contain": [],
+      "expected_output": "A Paragraphs type (config entity paragraphs_type, class Drupal\\paragraphs\\Entity\\ParagraphsType) is the bundle for paragraph content entities (Drupal\\paragraphs\\Entity\\Paragraph)."
+    },
+    {
+      "id": "paragraphs-create-in-code",
+      "mode": "recipe",
+      "prompt": "In PHP on a Drupal 11 site, create a paragraph of type 'text' with a field value and attach it to a node's paragraphs field, then persist it. Show the code.",
+      "must_contain_any": ["Paragraph::create", "appendItem"],
+      "must_not_contain": [],
+      "expected_output": "Paragraph::create(['type' => 'text', ...])->save(), then $node->field_content->appendItem($paragraph) and $node->save() so the paragraph revision is pinned to the host revision."
+    },
+    {
+      "id": "paragraphs-two-widgets",
+      "mode": "recipe",
+      "prompt": "Paragraphs ships two field widgets. Give the machine name of the modern default/recommended widget and the machine name of the legacy/classic one.",
+      "must_contain_any": ["entity_reference_paragraphs"],
+      "must_not_contain": [],
+      "expected_output": "The default is the stable 'paragraphs' widget (ParagraphsWidget); the legacy/classic widget is 'entity_reference_paragraphs' (InlineParagraphsWidget)."
+    },
+    {
+      "id": "paragraphs-per-type-permissions",
+      "mode": "recipe",
+      "prompt": "The main Paragraphs module has no per-paragraph-type create/edit/delete permissions. Which bundled submodule do I enable to get per-type CRUD access control?",
+      "must_contain_any": ["paragraphs_type_permissions"],
+      "must_not_contain": [],
+      "expected_output": "Enable the paragraphs_type_permissions submodule for per-type create/edit/delete permissions."
+    },
+    {
+      "id": "paragraphs-library-reuse",
+      "mode": "recipe",
+      "prompt": "I want editors to author one paragraph once and reuse the same paragraph across many pages in Paragraphs. Which bundled submodule provides that?",
+      "must_contain_any": ["paragraphs_library"],
+      "must_not_contain": [],
+      "expected_output": "The paragraphs_library submodule provides the reusable Paragraphs Library."
+    },
+    {
+      "id": "paragraphs-unpublished-permission",
+      "mode": "recipe",
+      "prompt": "In Paragraphs, which permission lets a role see unpublished paragraphs, and which config flag in paragraphs.settings must be enabled for it to take effect?",
+      "must_contain_any": ["view unpublished paragraphs"],
+      "must_not_contain": [],
+      "expected_output": "The 'view unpublished paragraphs' permission, effective only when the paragraphs.settings 'show_unpublished' boolean is TRUE."
+    },
+    {
+      "id": "paragraphs-restrict-allowed-types",
+      "mode": "recipe",
+      "prompt": "On an Entity Reference Revisions field for paragraphs, which reference-setting key restricts which paragraph types an editor may add, and which key sets the paragraph type pre-added when the form opens?",
+      "must_contain_any": ["target_bundles"],
+      "must_not_contain": [],
+      "expected_output": "target_bundles limits the allowed paragraph types (ordered via target_bundles_drag_drop); default_paragraph_type sets the type auto-added on new host entities."
+    }
+  ]
+}

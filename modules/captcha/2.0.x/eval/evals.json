@@ -1,0 +1,73 @@
+{
+  "skill_name": "drupal-module-docs",
+  "skill_file": ".agents/skills/drupal-module-docs/SKILL.md",
+  "module": "captcha",
+  "version": "2.0.x",
+  "note": "CAPTCHA is configuration-heavy (a settings object plus per-form CAPTCHA point config entities) but has no drush commands and no plugin type, so cases are `recipe` (response-graded) probing config-entity shape, settings keys, challenge-type strings, routes, and permission machine names rather than live site state.",
+  "evals": [
+    {
+      "id": "captcha-point-config-entity",
+      "mode": "recipe",
+      "prompt": "On a Drupal 11 site with the captcha module, I want to attach a challenge to my form with form ID `comment_comment_form` as exportable config. What config entity / YAML file do I create and which keys does it need?",
+      "must_contain_any": ["captcha_point", "captcha.captcha_point.comment_comment_form", "formId", "captchaType"],
+      "must_not_contain": [],
+      "expected_output": "Create a `captcha_point` config entity, exported as `captcha.captcha_point.comment_comment_form.yml`, with `formId: comment_comment_form` and a `captchaType` (e.g. `default`, `captcha/Math`, or `image_captcha/Image`)."
+    },
+    {
+      "id": "captcha-default-challenge-setting",
+      "mode": "recipe",
+      "prompt": "In the captcha module on Drupal 11, which config object and key set the default challenge type used when a CAPTCHA point is set to \"default\", and what is its default value? Give the drush command to read it.",
+      "must_contain_any": ["captcha.settings", "default_challenge", "captcha/Math"],
+      "must_not_contain": [],
+      "expected_output": "The `captcha.settings` config object, key `default_challenge`, defaulting to `captcha/Math`. Read with `drush config:get captcha.settings`."
+    },
+    {
+      "id": "captcha-image-submodule",
+      "mode": "recipe",
+      "prompt": "I want a distorted-text image challenge instead of the math question in the captcha module. Which submodule provides it and what challenge type string do I use in a CAPTCHA point's captchaType?",
+      "must_contain_any": ["image_captcha", "image_captcha/Image"],
+      "must_not_contain": [],
+      "expected_output": "Enable the bundled `image_captcha` submodule; use the challenge type string `image_captcha/Image` as the `captchaType`."
+    },
+    {
+      "id": "captcha-admin-route",
+      "mode": "recipe",
+      "prompt": "Where is the CAPTCHA global settings form in the Drupal admin, and what is its route machine name?",
+      "must_contain_any": ["/admin/config/people/captcha", "captcha_settings"],
+      "must_not_contain": [],
+      "expected_output": "Admin -> Config -> People -> CAPTCHA at `/admin/config/people/captcha`, route `captcha_settings`."
+    },
+    {
+      "id": "captcha-permissions",
+      "mode": "recipe",
+      "prompt": "In the captcha module, what are the machine names of the two permissions - one to administer the module and one that exempts a user from being challenged?",
+      "must_contain_any": ["administer CAPTCHA settings", "skip CAPTCHA"],
+      "must_not_contain": [],
+      "expected_output": "`administer CAPTCHA settings` (full admin access) and `skip CAPTCHA` (never shown a challenge)."
+    },
+    {
+      "id": "captcha-render-element",
+      "mode": "recipe",
+      "prompt": "In PHP on a Drupal 11 site, add a CAPTCHA challenge directly to my own form's render array without creating a CAPTCHA point. Show the element.",
+      "must_contain_any": ["'#type' => 'captcha'", "#type => captcha", "#captcha_type"],
+      "must_not_contain": [],
+      "expected_output": "Add `$form['captcha'] = ['#type' => 'captcha', '#captcha_type' => 'default'];` (or e.g. `image_captcha/Image`)."
+    },
+    {
+      "id": "captcha-hook-challenge-type",
+      "mode": "recipe",
+      "prompt": "I want to add a custom challenge type to the captcha module (it has no plugin type). Which hook do I implement, and what are the two main `$op` values it must handle?",
+      "must_contain_any": ["hook_captcha", "'list'", "'generate'"],
+      "must_not_contain": [],
+      "expected_output": "Implement `hook_captcha($op, $captcha_type, $captcha_sid)`, handling `$op` = `'list'` (return your type names) and `'generate'` (return `solution` and `form` with a `captcha_response` element)."
+    },
+    {
+      "id": "captcha-persistence-setting",
+      "mode": "recipe",
+      "prompt": "In the captcha module settings, which key controls how often a user must re-solve a CAPTCHA, and what does a value of 0 versus the default mean?",
+      "must_contain_any": ["persistence", "captcha.settings"],
+      "must_not_contain": [],
+      "expected_output": "The `persistence` key in `captcha.settings`; 0 = always show, default 1 = skip once solved per form instance (2 = per form type, 3 = once solved anywhere)."
+    }
+  ]
+}

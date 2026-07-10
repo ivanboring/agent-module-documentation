@@ -1,0 +1,65 @@
+{
+  "skill_name": "drupal-module-docs",
+  "skill_file": ".agents/skills/drupal-module-docs/SKILL.md",
+  "module": "search_api",
+  "version": "1.41.x",
+  "note": "Search API is a framework module; the load-bearing facts are its two config entities (server/index), its plugin type ids + namespaces, the search_api_db backend id, drush command names, and the admin permission. All cases are `recipe` (response-graded) since they probe knowledge an agent would otherwise recover by reading source.",
+  "evals": [
+    {
+      "id": "searchapi-config-entities",
+      "mode": "recipe",
+      "prompt": "In Search API on Drupal 11, which two config entity types tie a search setup together, and what does each one hold? Name the entity type machine ids.",
+      "must_contain_any": ["search_api_server", "search_api_index"],
+      "must_not_contain": [],
+      "expected_output": "The Server config entity (search_api_server) chooses a backend plugin + connection settings; the Index config entity (search_api_index) chooses datasource(s), the server to write to, a tracker, fields, and the processor pipeline."
+    },
+    {
+      "id": "searchapi-backend-plugin",
+      "mode": "recipe",
+      "prompt": "I want to write a custom Search API backend for a new search engine. What is the plugin type id, the base class I extend, and which directory / namespace does the plugin class live in?",
+      "must_contain_any": ["search_api_backend", "BackendPluginBase", "Plugin/search_api/backend"],
+      "must_not_contain": [],
+      "expected_output": "Plugin type id search_api_backend, extend BackendPluginBase (attribute #[SearchApiBackend]), placed in Plugin/search_api/backend/ of the module (namespace Drupal\\<module>\\Plugin\\search_api\\backend)."
+    },
+    {
+      "id": "searchapi-plugin-types",
+      "mode": "recipe",
+      "prompt": "Besides backends, name the Search API plugin types used to (a) provide the source of indexable items, (b) transform data at index/search time, and (c) queue which items still need indexing. Give the plugin type ids.",
+      "must_contain_any": ["search_api_datasource", "search_api_processor", "search_api_tracker"],
+      "must_not_contain": [],
+      "expected_output": "Datasources (search_api_datasource), processors (search_api_processor), and trackers (search_api_tracker)."
+    },
+    {
+      "id": "searchapi-db-backend-id",
+      "mode": "recipe",
+      "prompt": "I want a search server that stores its index in the site's database using the submodule that ships with Search API, without installing Solr. Which submodule do I enable and what is its backend plugin id that I select on the server?",
+      "must_contain_any": ["search_api_db"],
+      "must_not_contain": [],
+      "expected_output": "Enable the search_api_db submodule and choose the search_api_db backend on the Server."
+    },
+    {
+      "id": "searchapi-drush-index-clear",
+      "mode": "recipe",
+      "prompt": "On this Drupal site, give the drush commands to (1) index all tracked items for an index and (2) delete/wipe all indexed data for an index.",
+      "must_contain_any": ["search-api:index", "search-api:clear"],
+      "must_not_contain": [],
+      "expected_output": "drush search-api:index [INDEX] to index tracked items, and drush search-api:clear [INDEX] to delete all indexed data for the index."
+    },
+    {
+      "id": "searchapi-permission",
+      "mode": "recipe",
+      "prompt": "Which single permission gates the entire Search API admin UI (creating/configuring servers, indexes, fields, processors, trackers)? Give its machine name.",
+      "must_contain_any": ["administer search_api"],
+      "must_not_contain": [],
+      "expected_output": "The 'administer search_api' permission (defined in search_api.permissions.yml) gates the whole admin UI at /admin/config/search/search-api."
+    },
+    {
+      "id": "searchapi-run-query",
+      "mode": "recipe",
+      "prompt": "In PHP on a Drupal 11 site, how do I build and run a Search API keyword search against an index config entity named 'default_index' and get the result items? Show the key calls.",
+      "must_contain_any": ["->query()", "->execute()", "getResultItems"],
+      "must_not_contain": [],
+      "expected_output": "Load the search_api_index entity, call $index->query() to get a QueryInterface, chain keys()/addCondition()/sort()/range(), then $query->execute() returns a ResultSetInterface whose getResultItems() you iterate."
+    }
+  ]
+}

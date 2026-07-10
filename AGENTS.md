@@ -92,7 +92,6 @@ grow organically as modules are processed. Add new names there, never duplicate.
 - **Test every code snippet** you put in a doc against the live site before committing it.
 - Installs are **cumulative** (modules are left enabled). If the site breaks, reinstall it
   with `drush site:install -y` and continue — nothing here depends on site content.
-- Never commit secrets. Never `git push` (the human handles pushing/merging).
 
 ## Pipeline (summary)
 

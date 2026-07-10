@@ -3,13 +3,15 @@
   "skill_file": ".agents/skills/drupal-module-docs/SKILL.md",
   "module": "ai_agents",
   "version": "1.3.x",
-  "note": "All recipe (response-graded) — no AI provider/API key needed. Probes ai_agents-specific architecture facts an unfamiliar agent would have to read source to answer.",
+  "note": "All recipe (response-graded) \u2014 no AI provider/API key needed. Probes ai_agents-specific architecture facts an unfamiliar agent would have to read source to answer. Also includes two execution cases (aiagents-build-agent-*) that require the model to actually BUILD a working, tool-enabled AI agent on the live site (verified against site state), not just answer questions.",
   "evals": [
     {
       "id": "aiagents-agent-plugin-type",
       "mode": "recipe",
       "prompt": "In the Drupal ai_agents module, what is the plugin type (and its Plugin/ namespace) for writing a code-based agent? Name it.",
-      "must_contain_any": ["AiAgent"],
+      "must_contain_any": [
+        "AiAgent"
+      ],
       "must_not_contain": [],
       "expected_output": "The AiAgent plugin type (namespace Plugin/AiAgent, attribute-based)."
     },
@@ -17,7 +19,9 @@
       "id": "aiagents-tool-plugin-type",
       "mode": "recipe",
       "prompt": "In ai_agents, agents act through 'tools'. What plugin type are those tools, and which module actually DEFINES that plugin type?",
-      "must_contain_any": ["AiFunctionCall"],
+      "must_contain_any": [
+        "AiFunctionCall"
+      ],
       "must_not_contain": [],
       "expected_output": "Tools are AiFunctionCall plugins; that plugin type is defined by the ai (AI Core) module, not ai_agents."
     },
@@ -25,7 +29,9 @@
       "id": "aiagents-override-entity",
       "mode": "recipe",
       "prompt": "In ai_agents, which config entity type lets you modify an existing agent's prompt and tools WITHOUT forking or editing the original? Give the entity type id.",
-      "must_contain_any": ["ai_agent_override"],
+      "must_contain_any": [
+        "ai_agent_override"
+      ],
       "must_not_contain": [],
       "expected_output": "The ai_agent_override config entity."
     },
@@ -33,17 +39,40 @@
       "id": "aiagents-admin-permission",
       "mode": "recipe",
       "prompt": "In ai_agents, which permission machine name gates administering AI agents? Give the exact permission.",
-      "must_contain_any": ["administer ai_agent"],
+      "must_contain_any": [
+        "administer ai_agent"
+      ],
       "must_not_contain": [],
       "expected_output": "administer ai_agent"
     },
     {
       "id": "aiagents-explorer",
       "mode": "recipe",
-      "prompt": "In the ai_agents ecosystem, how do I interactively RUN and DEBUG an agent from the UI — which submodule provides it and at what admin path?",
-      "must_contain_any": ["ai_agents_explorer", "/admin/config/ai/agents/explore"],
+      "prompt": "In the ai_agents ecosystem, how do I interactively RUN and DEBUG an agent from the UI \u2014 which submodule provides it and at what admin path?",
+      "must_contain_any": [
+        "ai_agents_explorer",
+        "/admin/config/ai/agents/explore"
+      ],
       "must_not_contain": [],
       "expected_output": "The ai_agents_explorer submodule, at /admin/config/ai/agents/explore."
+    },
+    {
+      "id": "aiagents-build-agent-expert",
+      "mode": "execution",
+      "persona": "drupal-expert",
+      "prompt": "On this Drupal site (drush available), the ai_agents module is installed. Build and SAVE a new AI agent config entity that helps editors create and improve content. Give it a label, a description, and a system prompt, and grant it at least one tool (an AiFunctionCall / function-call plugin) so it can actually act on the site \u2014 an agent with no tools can only chat. Apply it to the running site via drush/config; do not just describe it. Reply with one line naming the agent you created and its tool(s).",
+      "reset": "agent-module-documentation/evaluation/verify/ai_agents-reset.sh",
+      "verify": "agent-module-documentation/evaluation/verify/ai_agents-build-agent.sh",
+      "expected_output": "A new, enabled ai_agent config entity exists on the live site with a non-empty system_prompt and at least one tool in its `tools` list. Verified against live site state, not the response text."
+    },
+    {
+      "id": "aiagents-build-agent-layman",
+      "mode": "execution",
+      "persona": "layman",
+      "prompt": "On my Drupal website I want an AI helper that can actually DO things for me \u2014 an assistant that can create and edit content on my behalf, not just answer questions. Please set one up on the site so it appears in my list of AI agents, give it sensible instructions, and make sure it's allowed to use the tools it needs to actually make changes. Tell me in one line what you set up.",
+      "reset": "agent-module-documentation/evaluation/verify/ai_agents-reset.sh",
+      "verify": "agent-module-documentation/evaluation/verify/ai_agents-build-agent.sh",
+      "expected_output": "Same verified end state as the expert variant: an enabled ai_agent config entity with a system prompt and at least one tool. The agent must map the plain-English request onto the ai_agents module and build a real, tool-enabled agent."
     }
   ]
 }

@@ -1,0 +1,73 @@
+{
+  "skill_name": "drupal-module-docs",
+  "skill_file": ".agents/skills/drupal-module-docs/SKILL.md",
+  "module": "webform",
+  "version": "6.3.x",
+  "note": "Webform has a large surface (config entity + submissions, 5 plugin types, drush commands, submodules, permissions). These recipe cases probe load-bearing, webform-specific facts an agent would otherwise dig through source to answer. All cases are `recipe` (response-graded); none mutate site state.",
+  "evals": [
+    {
+      "id": "webform-entities",
+      "mode": "recipe",
+      "prompt": "In Drupal Webform, what kind of entity is a form itself versus a single response/submission? Name each entity type and whether it is config or content.",
+      "must_contain_any": ["webform_submission"],
+      "must_not_contain": [],
+      "expected_output": "The form is a `webform` config entity (WebformInterface); each response is a `webform_submission` content entity (WebformSubmissionInterface)."
+    },
+    {
+      "id": "webform-handler-plugin",
+      "mode": "recipe",
+      "prompt": "I want to write a custom handler that runs when a Webform submission is saved (to POST it to Slack). What plugin type, annotation, base class, and source directory do I use in my module?",
+      "must_contain_any": ["WebformHandler", "WebformHandlerBase"],
+      "must_not_contain": [],
+      "expected_output": "A WebformHandler plugin: `@WebformHandler` annotation, extend `Drupal\\webform\\Plugin\\WebformHandlerBase`, placed in `src/Plugin/WebformHandler/`, e.g. override postSave()."
+    },
+    {
+      "id": "webform-plugin-types",
+      "mode": "recipe",
+      "prompt": "List the plugin types that the Webform module defines for developers to extend.",
+      "must_contain_any": ["WebformElement", "WebformExporter", "WebformVariant", "WebformSourceEntity"],
+      "must_not_contain": [],
+      "expected_output": "Five plugin types: WebformElement, WebformHandler, WebformExporter, WebformVariant, WebformSourceEntity."
+    },
+    {
+      "id": "webform-drush-export",
+      "mode": "recipe",
+      "prompt": "Give the Drush command to export a Webform's results to a file from the command line, and the command to create test submissions for a form.",
+      "must_contain_any": ["webform:export", "webform:generate"],
+      "must_not_contain": [],
+      "expected_output": "`drush webform:export <webform_id>` to export results; `drush webform:generate <webform_id> [num]` to create test submissions."
+    },
+    {
+      "id": "webform-ui-submodule",
+      "mode": "recipe",
+      "prompt": "On a Webform site I can only edit forms via the raw YAML source. Which submodule provides the drag-and-drop element builder UI so editors can add elements through forms instead of YAML?",
+      "must_contain_any": ["webform_ui"],
+      "must_not_contain": [],
+      "expected_output": "The `webform_ui` submodule provides the drag-and-drop element builder UI."
+    },
+    {
+      "id": "webform-source-permission",
+      "mode": "recipe",
+      "prompt": "Which Webform permission machine name controls access to the raw YAML Source editor for editing a form's elements tree?",
+      "must_contain_any": ["edit webform source"],
+      "must_not_contain": [],
+      "expected_output": "The `edit webform source` permission gates the raw YAML Source editor."
+    },
+    {
+      "id": "webform-conditional-logic",
+      "mode": "recipe",
+      "prompt": "In a Webform YAML element definition, how do I show a `phone` field only when a `wants_call` checkbox is checked, without writing code? Show the element property to use.",
+      "must_contain_any": ["#states", "':input"],
+      "must_not_contain": [],
+      "expected_output": "Use the `#states` property for conditional logic, e.g. `'#states': { visible: { ':input[name=\"wants_call\"]': { checked: true } } }`."
+    },
+    {
+      "id": "webform-email-handler",
+      "mode": "recipe",
+      "prompt": "Which built-in Webform handler sends a notification/confirmation email on submission, and which one POSTs the submission data to an external URL (CRM/webhook)?",
+      "must_contain_any": ["EmailWebformHandler", "RemotePostWebformHandler", "remote_post"],
+      "must_not_contain": [],
+      "expected_output": "EmailWebformHandler (id `email`) sends notification/confirmation email; RemotePostWebformHandler (id `remote_post`) POSTs submission data to an external URL."
+    }
+  ]
+}

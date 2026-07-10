@@ -1,0 +1,73 @@
+{
+  "skill_name": "drupal-module-docs",
+  "skill_file": ".agents/skills/drupal-module-docs/SKILL.md",
+  "module": "views_bulk_operations",
+  "version": "4.4.x",
+  "note": "VBO is configured per View (no global admin UI) and extended via Action plugins; all cases are `recipe` (response-graded), not `execution` (live-state).",
+  "evals": [
+    {
+      "id": "vbo-views-field",
+      "mode": "recipe",
+      "prompt": "On a Drupal 11 View I want per-row checkboxes plus an action dropdown so editors can run a bulk operation on selected rows. Which field do I add to the View display? Name it exactly.",
+      "must_contain_any": ["Views bulk operations"],
+      "must_not_contain": [],
+      "expected_output": "Add the 'Views bulk operations' field (Global) to the View display; it renders the checkbox column, a select-all control, and the actions dropdown. Only one per display, and place it first."
+    },
+    {
+      "id": "vbo-action-plugin-base",
+      "mode": "recipe",
+      "prompt": "I'm writing a custom bulk action for VBO on Drupal 11. Which base class must my Action plugin extend and which namespace is it in? Show the class declaration.",
+      "must_contain_any": ["ViewsBulkOperationsActionBase", "Drupal\\views_bulk_operations\\Action\\ViewsBulkOperationsActionBase"],
+      "must_not_contain": [],
+      "expected_output": "Extend Drupal\\views_bulk_operations\\Action\\ViewsBulkOperationsActionBase, placed in src/Plugin/Action/."
+    },
+    {
+      "id": "vbo-action-annotation",
+      "mode": "recipe",
+      "prompt": "For a VBO custom action class, what discovery attribute/annotation do I use, and how do I limit the action to only the `node` entity type? Show the attribute.",
+      "must_contain_any": ["#[Action", "Action(", "type: 'node'", "'type' => 'node'"],
+      "must_not_contain": [],
+      "expected_output": "Use the core #[Action(...)] attribute with id and label, and set the `type` key to 'node' (empty string '' means all entity types). VBO's plugin.manager.views_bulk_operations_action discovers it."
+    },
+    {
+      "id": "vbo-manager-service",
+      "mode": "recipe",
+      "prompt": "Which service (plugin manager) does VBO use to discover its action plugins on a Drupal 11 site? Give the service id.",
+      "must_contain_any": ["plugin.manager.views_bulk_operations_action"],
+      "must_not_contain": [],
+      "expected_output": "plugin.manager.views_bulk_operations_action (ViewsBulkOperationsActionManager), which extends the core Action manager."
+    },
+    {
+      "id": "vbo-batch-all-results",
+      "mode": "recipe",
+      "prompt": "I have a View with thousands of results across many pages and want a VBO bulk action to run over the ENTIRE result set (all pages) without PHP timeouts. How does VBO handle this and what setting controls it?",
+      "must_contain_any": ["Batch API", "batch size", "select all results", "Batch"],
+      "must_not_contain": [],
+      "expected_output": "Enable Batch on the VBO field and set a Batch size (default 10); selecting 'select all results' processes every row across all pages through the Batch API in chunks. Selection is held in tempstore across multi-page AJAX."
+    },
+    {
+      "id": "vbo-actions-permissions",
+      "mode": "recipe",
+      "prompt": "I need per-role, per-action access control over which VBO actions each role can run on this Drupal site. Which submodule provides that?",
+      "must_contain_any": ["actions_permissions", "Actions Permissions"],
+      "must_not_contain": [],
+      "expected_output": "Enable the actions_permissions submodule that ships with VBO for per-role, per-action permissions."
+    },
+    {
+      "id": "vbo-restrict-actions",
+      "mode": "recipe",
+      "prompt": "On a specific View display I only want certain VBO actions to appear in the dropdown, not every registered action. Where/how do I configure which actions are offered?",
+      "must_contain_any": ["Selected actions", "field settings", "field", "leave empty"],
+      "must_not_contain": [],
+      "expected_output": "In the 'Views bulk operations' field settings, use 'Selected actions' to tick which Action plugins are offered; leaving it empty offers all actions. Per action you can also set a label, preconfiguration, and configure/confirm steps."
+    },
+    {
+      "id": "vbo-drush-execute",
+      "mode": "recipe",
+      "prompt": "How do I run a View's VBO action from the command line (e.g. from cron) on Drupal 11? Give the drush command.",
+      "must_contain_any": ["vbo-execute", "views:bulk-operations:execute", "vbo-exec"],
+      "must_not_contain": [],
+      "expected_output": "drush vbo-execute <view_id> <action_id> (aliases vbo-exec / views:bulk-operations:execute), with options like --display-id, --batch-size, --exposed, --configuration; empty selection means all results."
+    }
+  ]
+}

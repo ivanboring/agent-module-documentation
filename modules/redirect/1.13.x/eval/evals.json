@@ -1,0 +1,73 @@
+{
+  "skill_name": "drupal-module-docs",
+  "skill_file": ".agents/skills/drupal-module-docs/SKILL.md",
+  "module": "redirect",
+  "version": "1.13.x",
+  "note": "Redirect exposes a content entity, a config settings object, two submodules, and a small service API. Cases are `recipe` (response-graded) since they probe documented facts an agent would otherwise read source to answer; no site mutation.",
+  "evals": [
+    {
+      "id": "redirect-create-in-code",
+      "mode": "recipe",
+      "prompt": "In PHP on a Drupal 11 site, programmatically create a redirect from `old/path` to `node/1` with a 301 status code. Show the code.",
+      "must_contain_any": ["Redirect::create(", "Drupal\\redirect\\Entity\\Redirect"],
+      "must_not_contain": [],
+      "expected_output": "Uses the Redirect entity: Redirect::create() then setSource('old/path'), setRedirect('node/1'), setStatusCode(301), save()."
+    },
+    {
+      "id": "redirect-lookup-service",
+      "mode": "recipe",
+      "prompt": "On a Drupal 11 site I want to look up whether a given source path already has a redirect before creating a new one. Which service do I use and which method performs the main lookup?",
+      "must_contain_any": ["redirect.repository", "findMatchingRedirect", "findBySourcePath", "RedirectRepository"],
+      "must_not_contain": [],
+      "expected_output": "The redirect.repository service (RedirectRepository); findMatchingRedirect() is the main lookup, findBySourcePath() also returns matches."
+    },
+    {
+      "id": "redirect-auto-on-alias-change",
+      "mode": "recipe",
+      "prompt": "I want Redirect to automatically create a redirect when a node's URL alias changes so SEO ranking survives. Which config setting controls this, and what config object holds it?",
+      "must_contain_any": ["auto_redirect", "redirect.settings"],
+      "must_not_contain": [],
+      "expected_output": "The auto_redirect key (default true) in the redirect.settings config object controls auto-creating a redirect when an alias changes."
+    },
+    {
+      "id": "redirect-default-status-code",
+      "mode": "recipe",
+      "prompt": "How do I change the site-wide default HTTP status code used for new redirects on a Drupal site? Give the config key and a drush command.",
+      "must_contain_any": ["default_status_code", "redirect.settings"],
+      "must_not_contain": [],
+      "expected_output": "Set the default_status_code key (default 301) on redirect.settings, e.g. drush cset redirect.settings default_status_code 302."
+    },
+    {
+      "id": "redirect-permissions",
+      "mode": "recipe",
+      "prompt": "What are the two permission machine names Redirect provides, and which one gates the global settings form versus managing individual redirects?",
+      "must_contain_any": ["administer redirects", "administer redirect settings"],
+      "must_not_contain": [],
+      "expected_output": "'administer redirects' gates creating/editing/deleting individual redirects; 'administer redirect settings' gates the global settings form."
+    },
+    {
+      "id": "redirect-submodules",
+      "mode": "recipe",
+      "prompt": "Which Redirect submodule logs 404s so I can turn frequent missing-page requests into redirects, and which submodule redirects between whole domains?",
+      "must_contain_any": ["redirect_404", "redirect_domain"],
+      "must_not_contain": [],
+      "expected_output": "redirect_404 logs 404s and turns frequent misses into redirects; redirect_domain redirects between whole domains."
+    },
+    {
+      "id": "redirect-response-hook",
+      "mode": "recipe",
+      "prompt": "In a custom Drupal module I want to alter the redirect response just before it is sent (e.g. add a message or change the target). Which hook do I implement?",
+      "must_contain_any": ["hook_redirect_response_alter", "redirect_response_alter"],
+      "must_not_contain": [],
+      "expected_output": "Implement hook_redirect_response_alter(TrustedRedirectResponse $response, Redirect $redirect)."
+    },
+    {
+      "id": "redirect-query-passthrough",
+      "mode": "recipe",
+      "prompt": "Which Redirect setting controls whether the incoming query string is kept (passed through) when a request is redirected, and what is its default?",
+      "must_contain_any": ["passthrough_querystring"],
+      "must_not_contain": [],
+      "expected_output": "The passthrough_querystring key on redirect.settings (default true) keeps the incoming query string on redirect."
+    }
+  ]
+}

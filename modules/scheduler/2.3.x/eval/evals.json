@@ -1,0 +1,65 @@
+{
+  "skill_name": "drupal-module-docs",
+  "skill_file": ".agents/skills/drupal-module-docs/SKILL.md",
+  "module": "scheduler",
+  "version": "2.3.x",
+  "note": "Scheduler adds config, base fields, a service, plugins, hooks and permissions. These cases are all `recipe` (response-graded) and probe Scheduler-specific facts documented under 2.3.x/agent/; no site mutation and no live-state checks.",
+  "evals": [
+    {
+      "id": "scheduler-date-fields",
+      "mode": "recipe",
+      "prompt": "On a Drupal 11 site using the Scheduler module, which two date/time fields does Scheduler add to the add/edit form of an enabled entity bundle so content can be published and later unpublished automatically? Name the machine names of the fields.",
+      "must_contain_any": ["publish_on", "unpublish_on"],
+      "must_not_contain": [],
+      "expected_output": "Scheduler adds the publish_on and unpublish_on base fields to each enabled entity type/bundle."
+    },
+    {
+      "id": "scheduler-enable-per-content-type",
+      "mode": "recipe",
+      "prompt": "I want to turn on Scheduler for the Article content type only. How is that setting stored in Drupal config, and which key enables the publish date field for that bundle?",
+      "must_contain_any": ["third_party", "third-party", "publish_enable", "scheduler"],
+      "must_not_contain": [],
+      "expected_output": "It is stored as a third-party setting under the `scheduler` namespace on the bundle config entity (e.g. node.type.article.third_party.scheduler), with publish_enable / unpublish_enable turning each field on for that bundle."
+    },
+    {
+      "id": "scheduler-cron-publishing",
+      "mode": "recipe",
+      "prompt": "How does Scheduler actually publish content once the scheduled time has passed, and how can I run only Scheduler's processing more frequently than full site cron on a Drupal 11 site? Give the Drush command and/or the URL.",
+      "must_contain_any": ["scheduler:cron", "/scheduler/cron/", "lightweight cron", "scheduler.lightweight_cron"],
+      "must_not_contain": [],
+      "expected_output": "Scheduler processes due entities on every Drupal cron run; to run only its work more often use the lightweight cron: `drush scheduler:cron` or the guarded URL /scheduler/cron/{cron_key}."
+    },
+    {
+      "id": "scheduler-manager-service",
+      "mode": "recipe",
+      "prompt": "In custom PHP on a Drupal 11 Scheduler site, which service should I load to call Scheduler's publish/unpublish engine and read its settings? Give the service id.",
+      "must_contain_any": ["scheduler.manager", "SchedulerManager"],
+      "must_not_contain": [],
+      "expected_output": "The scheduler.manager service (\\Drupal\\scheduler\\SchedulerManager), e.g. \\Drupal::service('scheduler.manager')."
+    },
+    {
+      "id": "scheduler-new-entity-type-plugin",
+      "mode": "recipe",
+      "prompt": "I have a custom entity type and want Scheduler to be able to publish/unpublish it. What kind of plugin do I write, and which annotation and base class does it use?",
+      "must_contain_any": ["SchedulerPlugin", "Plugin/Scheduler", "SchedulerPluginBase"],
+      "must_not_contain": [],
+      "expected_output": "Write a SchedulerPlugin (@SchedulerPlugin annotation) in the Plugin/Scheduler namespace, extending \\Drupal\\scheduler\\SchedulerPluginBase, declaring entityType and dependency; then run drush scheduler:entity-update."
+    },
+    {
+      "id": "scheduler-block-publishing-hook",
+      "mode": "recipe",
+      "prompt": "On a Drupal 11 Scheduler site, I want to prevent a scheduled node from being published by cron until an approval field is set. Which Scheduler hook do I implement, and what should it return to block publication?",
+      "must_contain_any": ["hook_scheduler_publishing_allowed", "scheduler_publishing_allowed"],
+      "must_not_contain": [],
+      "expected_output": "Implement hook_scheduler_publishing_allowed() (or the node-specific hook_scheduler_node_publishing_allowed) and return FALSE to block publication; Scheduler retries each cron run until it is allowed."
+    },
+    {
+      "id": "scheduler-node-permission",
+      "mode": "recipe",
+      "prompt": "Which permission lets an editor set the publish and unpublish dates on the node add/edit form in Scheduler? Give the exact permission name for nodes.",
+      "must_contain_any": ["schedule publishing of nodes"],
+      "must_not_contain": [],
+      "expected_output": "The dynamic permission `schedule publishing of nodes` (nodes use the legacy keys; other entity types use their entity type id, e.g. `schedule publishing of media`)."
+    }
+  ]
+}
