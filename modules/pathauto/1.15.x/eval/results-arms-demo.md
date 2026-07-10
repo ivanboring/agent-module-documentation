@@ -1,6 +1,6 @@
 # Eval results — pathauto 1.15.x
 
-Skill under test: `drupal-module-docs` · runs per cell: 1 · model: CLI default
+Skill under test: `drupal-module-docs` · runs per cell: 1 · model: claude-opus-4-8 · effort: medium
 
 `Correct` = live-state verify (execution cases) or text assertions (recipe cases). `n/a` = provider CLI not installed.
 
