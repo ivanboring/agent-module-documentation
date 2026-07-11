@@ -1,0 +1,52 @@
+{
+  "name": "Actions UI",
+  "data_name": "action",
+  "description": "Allows configuration of tasks to be executed in response to events.",
+  "version": "0.2.x",
+  "release": "0.2.2",
+  "pre_1_0": true,
+  "package": "Core",
+  "composer_namespace": "drupal/action",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "entity.action.collection",
+  "core_version_requirement": ">10.2",
+  "active_installs": 7061,
+  "list_position": 484,
+  "project_url": "https://www.drupal.org/project/action",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": [],
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "provides_action_plugins": [
+    "node_assign_owner_action",
+    "node_unpublish_by_keyword_action",
+    "comment_unpublish_by_keyword_action"
+  ],
+  "categories": [
+    "Administration tools",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Workflow / business rules"
+  ],
+  "keywords": [
+    "action",
+    "actions",
+    "advanced action",
+    "configurable action",
+    "action config entity",
+    "administer actions",
+    "unpublish by keyword",
+    "assign owner",
+    "bulk operations",
+    "VBO",
+    "entity.action.collection"
+  ],
+  "notes": "Contrib continuation of Drupal core's former 'Actions UI' (action) module, which was removed from core. The `action` config entity type itself is still defined by core's System module (Drupal\\system\\Entity\\Action); this module supplies the admin UI (list builder, add/edit/delete forms via hook_entity_type_build) at /admin/config/system/actions plus three configurable 'advanced' action plugins and D6/D7 migration support. Pre-1.0 release (0.2.2)."
+}

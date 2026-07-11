@@ -1,0 +1,43 @@
+{
+  "name": "Entity Warmer",
+  "data_name": "warmer_entity",
+  "description": "Warms the entity cache for the configured entity types.",
+  "version": "2.0.x",
+  "package": null,
+  "composer_namespace": "drupal/warmer_entity",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "warmer:warmer"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": 7131,
+  "list_position": 482,
+  "part_of": "warmer",
+  "project_url": "https://www.drupal.org/project/warmer",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "consumes_plugin_types": [
+    "warmer (@Warmer) — provides the `entity` warmer that loads selected entity types/bundles to warm the entity cache"
+  ],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "Caching backend"
+  ],
+  "keywords": [
+    "warmer",
+    "entity cache",
+    "cache warming",
+    "entity warmer",
+    "prefetch"
+  ]
+}

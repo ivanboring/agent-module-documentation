@@ -1,0 +1,48 @@
+{
+  "name": "CDN Warmer",
+  "data_name": "warmer_cdn",
+  "description": "Executes HTTP requests to warm the edge caches. It is useful without a CDN as well, as it will also warm Varnish and Page Cache.",
+  "version": "2.0.x",
+  "package": null,
+  "composer_namespace": "drupal/warmer_cdn",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "warmer:warmer"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": 7131,
+  "list_position": 482,
+  "part_of": "warmer",
+  "project_url": "https://www.drupal.org/project/warmer",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "vipnytt/sitemapparser"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "consumes_plugin_types": [
+    "warmer (@Warmer) — provides the `cdn` warmer (HTTP GET a URL list) and the `sitemap` warmer (collect URLs from an XML sitemap, then warm via CDN)"
+  ],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "Caching backend"
+  ],
+  "keywords": [
+    "warmer",
+    "cdn",
+    "varnish",
+    "page cache",
+    "edge cache",
+    "http",
+    "sitemap",
+    "cache warming"
+  ]
+}

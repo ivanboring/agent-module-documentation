@@ -1,0 +1,66 @@
+{
+  "name": "UI Patterns",
+  "data_name": "ui_patterns",
+  "description": "Define and expose self-contained UI Components as Drupal plugins and use them seamlessly in Drupal development and site-building.",
+  "version": "2.0.x",
+  "package": "User interface",
+  "composer_namespace": "drupal/ui_patterns",
+  "composer_requirements": {
+    "justinrainbow/json-schema": "^5.2 || ^6.3"
+  },
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10.3.4 || ^11",
+  "active_installs": 7278,
+  "list_position": 474,
+  "project_url": "https://www.drupal.org/project/ui_patterns",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "justinrainbow/json-schema"
+  ],
+  "suggests": {},
+  "submodules": [
+    "ui_patterns_field_formatters",
+    "ui_patterns_views",
+    "ui_patterns_blocks",
+    "ui_patterns_field",
+    "ui_patterns_library",
+    "ui_patterns_ui",
+    "ui_patterns_layouts",
+    "ui_patterns_legacy"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "ui_patterns_source (Plugin/UiPatterns/Source)",
+    "ui_patterns_prop_type (Plugin/UiPatterns/PropType)",
+    "ui_patterns_prop_type_adapter (Plugin/UiPatterns/PropTypeAdapter)",
+    "ui_patterns_derivable_context (Plugin/UiPatterns/DerivableContext)"
+  ],
+  "categories": [
+    "Theming",
+    "Content display"
+  ],
+  "subcategories": [
+    "Twig / component libraries",
+    "Field formatters"
+  ],
+  "keywords": [
+    "ui patterns",
+    "sdc",
+    "single directory components",
+    "components",
+    "design system",
+    "field formatter",
+    "block",
+    "layout",
+    "views",
+    "source plugin",
+    "prop type",
+    "slots",
+    "props",
+    "site building"
+  ]
+}

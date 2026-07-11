@@ -1,0 +1,44 @@
+{
+  "name": "Custom Permissions",
+  "data_name": "config_perms",
+  "description": "Allows additional permissions to be created and managed through an administration form.",
+  "version": "2.3.x",
+  "package": "Permissions",
+  "composer_namespace": "drupal/config_perms",
+  "composer_requirements": {
+    "drupal/core": "^8 || ^9 || ^10 || ^11"
+  },
+  "dependent_modules": [],
+  "configure": "custom_perms_select_list_form",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": 7006,
+  "list_position": 483,
+  "project_url": "https://www.drupal.org/project/config_perms",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "User roles & permissions"
+  ],
+  "keywords": [
+    "custom permissions",
+    "config permissions",
+    "route permission",
+    "per-route access",
+    "custom_perms_entity",
+    "administer config permissions",
+    "restrict admin page",
+    "granular admin access",
+    "delegate site configuration",
+    "config entity permission"
+  ]
+}

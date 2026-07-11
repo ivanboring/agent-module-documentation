@@ -1,0 +1,45 @@
+{
+  "name": "Simple Menu Permissions",
+  "data_name": "simple_menu_permissions",
+  "description": "Defines granular per-menu permissions (view/edit/delete the menu, and add/edit/delete its links) plus a global 'create new menu' permission, so non-admins can manage specific menus without core's all-or-nothing 'administer menu'.",
+  "version": "3.0.x",
+  "package": "Administration",
+  "composer_namespace": "drupal/simple_menu_permissions",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:menu_link_content",
+    "drupal:menu_ui"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 480,
+  "project_url": "https://www.drupal.org/project/simple_menu_permissions",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Navigation menus"
+  ],
+  "keywords": [
+    "menu",
+    "permissions",
+    "access control",
+    "roles",
+    "per menu",
+    "menu_ui",
+    "menu_link_content",
+    "delegation",
+    "dynamic permissions"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "name": "Section Library",
+  "data_name": "section_library",
+  "description": "Create reusable templates for single or multiple sections at the layout builder.",
+  "version": "2.0.x",
+  "package": "Layout Builder",
+  "composer_namespace": "drupal/section_library",
+  "composer_requirements": {
+    "drupal/core": "^10.3 || ^11"
+  },
+  "dependent_modules": [
+    "image",
+    "layout_builder",
+    "options",
+    "views"
+  ],
+  "configure": "section_library.admin_index",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 7223,
+  "list_position": 479,
+  "project_url": "https://www.drupal.org/project/section_library",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "layout_builder_iframe_modal": "Replace the default off-canvas dialog with a modal so the templates library renders in a larger, more modern picker."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Layout Builder"
+  ],
+  "keywords": [
+    "layout builder",
+    "section",
+    "library",
+    "template",
+    "reusable sections",
+    "section_library_template",
+    "content entity",
+    "save section",
+    "import section",
+    "page template",
+    "layout reuse"
+  ]
+}
