@@ -1,0 +1,54 @@
+{
+  "name": "Classy Paragraphs",
+  "data_name": "classy_paragraphs",
+  "description": "Allows an editor to apply a class to paragraphs.",
+  "version": "2.0.x",
+  "package": "Paragraphs",
+  "composer_namespace": "drupal/classy_paragraphs",
+  "composer_requirements": {
+    "drupal/paragraphs": "~1.0",
+    "drupal/core": "^8 || ^9 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "paragraphs:paragraphs"
+  ],
+  "configure": "entity.classy_paragraphs_style.collection",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": 7984,
+  "list_position": 450,
+  "project_url": "https://www.drupal.org/project/classy_paragraphs",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": [],
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "provides_plugins": [
+    "EntityReferenceSelection (id: classy_paragraphs)"
+  ],
+  "config_entity_types": [
+    "classy_paragraphs_style"
+  ],
+  "categories": [
+    "Content display",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Fields",
+    "Form widgets / select UI",
+    "Structured content / page building"
+  ],
+  "keywords": [
+    "paragraphs",
+    "css class",
+    "styling",
+    "class list",
+    "config entity",
+    "entity reference",
+    "attributes.class",
+    "editor styling"
+  ]
+}

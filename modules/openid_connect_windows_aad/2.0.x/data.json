@@ -1,0 +1,65 @@
+{
+  "name": "OpenID Connect Microsoft Azure Active Directory client",
+  "data_name": "openid_connect_windows_aad",
+  "description": "This module adds a Windows Azure AD client to OpenID Connect.",
+  "version": "2.0.x",
+  "package": "Other",
+  "composer_namespace": "drupal/openid_connect_windows_aad",
+  "composer_requirements": {
+    "php": ">=8.0",
+    "drupal/key": "^1.0",
+    "drupal/openid_connect": "^3.0.0-alpha7",
+    "lcobucci/jwt": "^4.3.0 || ^5.3.0"
+  },
+  "dependent_modules": [
+    "openid_connect",
+    "key"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 8181,
+  "list_position": 449,
+  "beta": true,
+  "release": "2.0.0-beta10",
+  "project_url": "https://www.drupal.org/project/openid_connect_windows_aad",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.0",
+  "library_dependencies": [
+    "lcobucci/jwt"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "provides_plugins": {
+    "openid_connect_client": [
+      "windows_aad"
+    ]
+  },
+  "categories": [
+    "Access control",
+    "Security"
+  ],
+  "subcategories": [
+    "External authentication"
+  ],
+  "keywords": [
+    "openid connect",
+    "oauth2",
+    "azure ad",
+    "entra id",
+    "microsoft entra",
+    "windows azure ad",
+    "sso",
+    "single sign-on",
+    "b2c",
+    "microsoft graph",
+    "group mapping",
+    "role mapping",
+    "external authentication",
+    "identity provider",
+    "windows_aad"
+  ]
+}

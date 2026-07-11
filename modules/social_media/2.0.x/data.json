@@ -1,0 +1,51 @@
+{
+  "name": "Social media share",
+  "data_name": "social_media",
+  "description": "Share current page to social media",
+  "version": "2.0.x",
+  "package": "Others",
+  "composer_namespace": "drupal/social_media",
+  "composer_requirements": {
+    "drupal/token": "^1.0"
+  },
+  "dependent_modules": [
+    "token",
+    "field"
+  ],
+  "configure": "social_media.admin_form",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 442,
+  "project_url": "https://www.drupal.org/project/social_media",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "User engagement"
+  ],
+  "subcategories": [
+    "Social sharing buttons"
+  ],
+  "keywords": [
+    "social media",
+    "share",
+    "social share",
+    "share buttons",
+    "follow links",
+    "facebook",
+    "twitter",
+    "linkedin",
+    "pinterest",
+    "whatsapp",
+    "email forward",
+    "block",
+    "field type",
+    "token"
+  ]
+}

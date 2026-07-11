@@ -1,0 +1,46 @@
+{
+  "name": "Message",
+  "data_name": "message",
+  "description": "A general message logging utility.",
+  "version": "1.8.x",
+  "package": "Message",
+  "composer_namespace": "drupal/message",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:text"
+  ],
+  "configure": "message.main_settings",
+  "core_version_requirement": "^9.2 || ^10 || ^11",
+  "active_installs": 12107,
+  "list_position": 444,
+  "project_url": "https://www.drupal.org/project/message",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "message_example"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "message_purge"
+  ],
+  "categories": [
+    "User engagement"
+  ],
+  "subcategories": [
+    "Activity / notification messages"
+  ],
+  "keywords": [
+    "message",
+    "message template",
+    "activity",
+    "notification",
+    "log",
+    "tokens",
+    "partials",
+    "purge"
+  ]
+}
