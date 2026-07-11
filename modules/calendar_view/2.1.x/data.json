@@ -1,0 +1,63 @@
+{
+  "name": "Calendar View",
+  "data_name": "calendar_view",
+  "description": "Display entities in a filterable calendar View",
+  "version": "2.1.x",
+  "release": "2.1.10",
+  "package": "Views",
+  "composer_namespace": "drupal/calendar_view",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "views"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": 6682,
+  "list_position": 503,
+  "project_url": "https://www.drupal.org/project/calendar_view",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": [],
+  "submodules": [
+    "calendar_view_multiday",
+    "calendar_view_demo"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "provides_views_plugins": {
+    "style": [
+      "calendar_month",
+      "calendar_week"
+    ],
+    "pager": [
+      "calendar_month",
+      "calendar_week"
+    ],
+    "filter": [
+      "calendar_view_timestamp"
+    ]
+  },
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Views styles"
+  ],
+  "keywords": [
+    "calendar",
+    "calendar view",
+    "views style",
+    "calendar_month",
+    "calendar_week",
+    "monthly calendar",
+    "date field",
+    "events calendar",
+    "views calendar",
+    "calendar_fields",
+    "calendar_view_timestamp"
+  ],
+  "notes": "Provides two Views style plugins, `calendar_month` (Calendar by month) and `calendar_week` (Calendar by week), that render a View's results as an HTML table calendar. The style needs at least one supported Date field placed in the View's fields, selected via the style option `calendar_fields`. Supported date field types (CalendarViewBase::DATE_FIELD_TYPES): date, created, changed, datetime, daterange, smartdate, timestamp. Also ships matching pager plugins (`calendar_month`/`calendar_week`, previous/next month or week navigation) and a `calendar_view_timestamp` Views filter (a 'Jump to' date exposed filter). No admin settings form of its own (configure is null) -- everything is configured per-View in the Views UI. Submodule calendar_view_multiday improves rendering of multi-day events; calendar_view_demo ships example Views (not documented here)."
+}

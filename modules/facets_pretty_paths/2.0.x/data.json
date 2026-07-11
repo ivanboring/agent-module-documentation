@@ -1,0 +1,54 @@
+{
+  "name": "Facets Pretty Paths",
+  "data_name": "facets_pretty_paths",
+  "description": "Pretty paths for Facets",
+  "version": "2.0.x",
+  "package": "Search",
+  "composer_namespace": "drupal/facets_pretty_paths",
+  "composer_requirements": {
+    "drupal/facets": "^2 || ^3",
+    "drupal/pathauto": "^1"
+  },
+  "dependent_modules": [
+    "facets:facets",
+    "pathauto:pathauto"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 6545,
+  "list_position": 512,
+  "project_url": "https://www.drupal.org/project/facets_pretty_paths",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/better_exposed_filters": "AJAX support for facets rendered as views exposed filters (dev requirement)",
+    "drupal/search_api": "The search backend facets are built on (dev requirement)"
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "facets_pretty_paths_coder (Plugin/facets_pretty_paths/coder)"
+  ],
+  "categories": [
+    "Site search"
+  ],
+  "subcategories": [
+    "Faceted search UI",
+    "URL alias generation"
+  ],
+  "keywords": [
+    "facets",
+    "pretty paths",
+    "clean urls",
+    "faceted search",
+    "url processor",
+    "search api",
+    "seo",
+    "path aliases",
+    "coder",
+    "breadcrumb"
+  ]
+}

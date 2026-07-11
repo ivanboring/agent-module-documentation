@@ -1,0 +1,57 @@
+{
+  "name": "Telephone Formatter",
+  "data_name": "telephone_formatter",
+  "description": "Formats telephone fields using google's libphonenumber library",
+  "version": "1.3.x",
+  "package": null,
+  "composer_namespace": "drupal/telephone_formatter",
+  "composer_requirements": {
+    "giggsey/libphonenumber-for-php": "^8.0"
+  },
+  "dependent_modules": [
+    "drupal:telephone"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": null,
+  "list_position": 505,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/telephone_formatter",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "giggsey/libphonenumber-for-php"
+  ],
+  "suggests": {
+    "drupal/telephone_validation": "Unsure data quality"
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "provides_field_formatters": [
+    "telephone_formatter"
+  ],
+  "provides_services": [
+    "telephone_formatter.formatter"
+  ],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Field formatters"
+  ],
+  "keywords": [
+    "telephone",
+    "phone number",
+    "field formatter",
+    "libphonenumber",
+    "tel link",
+    "international format",
+    "E164",
+    "RFC3966",
+    "national format",
+    "click to call"
+  ]
+}

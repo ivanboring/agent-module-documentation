@@ -1,0 +1,32 @@
+{
+  "name": "Juicebox",
+  "data_name": "juicebox",
+  "description": "Provides an integration between the Juicebox HTML5 responsive gallery library and Drupal.",
+  "version": "4.0.x",
+  "release": "4.0.0-alpha2",
+  "stability_note": "The installed release is 4.0.0-alpha2 — an ALPHA. The plugin ids, config schema, and formatter/style settings documented here are stable across the 4.0.x branch, but treat the branch as pre-release and pin explicitly if you depend on it.",
+  "package": "Media",
+  "composer_namespace": "drupal/juicebox",
+  "composer_requirements": {},
+  "dependent_modules": ["file", "image"],
+  "configure": "juicebox.admin_settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 10462,
+  "list_position": 517,
+  "project_url": "https://www.drupal.org/project/juicebox",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": {
+    "juicebox_js": "External JavaScript library (Juicebox Lite/Pro) from https://juicebox.net/download/ — NOT a Composer dependency. Download it and place juicebox.js under /libraries/juicebox/. Config-level formatter/style setup works without it, but a rendered gallery needs the JS present."
+  },
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": ["Media"],
+  "subcategories": ["Field formatters", "Lightbox / modal display"],
+  "keywords": ["juicebox", "gallery", "image gallery", "responsive", "lightbox", "field formatter", "views style", "html5", "slideshow"],
+  "notes": "Ships test-only modules under tests/modules/ (juicebox_mimic_article, juicebox_test_views, juicebox_test_media, juicebox_test_layout_builder). juicebox_mimic_article is a demo/example and is intentionally NOT documented here. Also installs four image styles: juicebox_small, juicebox_medium, juicebox_large, juicebox_square_thumb."
+}
