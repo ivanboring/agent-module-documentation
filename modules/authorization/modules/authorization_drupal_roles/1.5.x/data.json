@@ -1,0 +1,46 @@
+{
+  "name": "Drupal Roles Authorization consumer",
+  "data_name": "authorization_drupal_roles",
+  "description": "Add users to roles as part of an Authorization workflow.",
+  "version": "1.5.x",
+  "package": "Authorization",
+  "composer_namespace": "drupal/authorization",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "authorization:authorization"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 470,
+  "part_of": "authorization",
+  "project_url": "https://www.drupal.org/project/authorization",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "consumes_plugin_types": [
+    "authorization Consumer (@AuthorizationConsumer) — provides the 'authorization_drupal_roles' consumer plugin"
+  ],
+  "categories": [
+    "Access control",
+    "Security"
+  ],
+  "subcategories": [
+    "User roles & permissions",
+    "External authentication"
+  ],
+  "keywords": [
+    "authorization",
+    "roles",
+    "consumer",
+    "ldap",
+    "role mapping",
+    "provisioning"
+  ]
+}

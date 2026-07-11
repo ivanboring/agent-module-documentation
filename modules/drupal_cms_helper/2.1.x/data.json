@@ -1,0 +1,52 @@
+{
+  "name": "Drupal CMS Helper",
+  "data_name": "drupal_cms_helper",
+  "description": "Provides functionality for Drupal CMS that is not yet in Drupal core or dependencies. Should not be uninstalled.",
+  "version": "2.1.x",
+  "package": "Drupal CMS",
+  "composer_namespace": "drupal/drupal_cms_helper",
+  "composer_requirements": {
+    "drupal/core": "^11.3.10"
+  },
+  "dependent_modules": [
+    "drupal:path_alias"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11.3",
+  "active_installs": null,
+  "list_position": 463,
+  "project_url": "https://www.drupal.org/project/drupal_cms_helper",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "part_of": "drupal_cms",
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Configuration management",
+    "Data export",
+    "Content migration / import"
+  ],
+  "keywords": [
+    "drupal cms",
+    "recipe",
+    "site export",
+    "site:export",
+    "config action",
+    "setDefaultImage",
+    "themeDevelopmentMode",
+    "generic config export",
+    "recipe developer tools",
+    "site template",
+    "content export",
+    "content import"
+  ]
+}

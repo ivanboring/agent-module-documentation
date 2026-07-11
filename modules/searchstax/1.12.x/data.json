@@ -1,0 +1,57 @@
+{
+  "name": "SearchStax",
+  "data_name": "searchstax",
+  "description": "Integrates with SearchStax and SearchStudio.",
+  "version": "1.12.x",
+  "package": "Search",
+  "composer_namespace": "drupal/searchstax",
+  "composer_requirements": {
+    "ext-libxml": "*",
+    "drupal/search_api": "^1"
+  },
+  "dependent_modules": [
+    "search_api:search_api"
+  ],
+  "configure": "searchstax.admin_settings",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 467,
+  "project_url": "https://www.drupal.org/project/searchstax",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "ext-libxml"
+  ],
+  "suggests": {
+    "drupal/search_api_solr": "Required to use a SearchStax Solr server as a Search API backend; without it only search tracking/analytics is provided.",
+    "drupal/search_api_autocomplete": "Enables the SearchStax Studio auto-suggest / typeahead feature.",
+    "drupal/search_api_attachments": "Enables the SearchStax Tika-based extractor for indexing PDF/office file text.",
+    "drupal/eu_cookie_compliance": "Gates SearchStudio analytics tracking behind cookie consent.",
+    "drupal/key": "Stores SearchStax credentials (Solr connector + analytics) as Key entities instead of plain config."
+  },
+  "submodules": [
+    "solr_to_searchstax_ss_migration"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site search",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Search backend",
+    "Hosted search (SaaS)"
+  ],
+  "keywords": [
+    "searchstax",
+    "searchstudio",
+    "solr",
+    "search_api",
+    "hosted solr",
+    "search analytics",
+    "auto-suggest",
+    "site search"
+  ]
+}

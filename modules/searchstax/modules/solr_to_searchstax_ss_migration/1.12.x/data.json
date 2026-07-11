@@ -1,0 +1,44 @@
+{
+  "name": "Solr to SearchStax Site Search Migration",
+  "data_name": "solr_to_searchstax_ss_migration",
+  "description": "Provides a simple user interface for migrating search configuration from non-SearchStax Solr servers to SearchStax Site Search. (The module should be uninstalled again after the migration is complete.)",
+  "version": "1.12.x",
+  "package": "Search",
+  "part_of": "searchstax",
+  "composer_namespace": "drupal/searchstax",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "search_api_solr:search_api_solr",
+    "searchstax:searchstax"
+  ],
+  "configure": "solr_to_searchstax_ss_migration.overview",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 467,
+  "project_url": "https://www.drupal.org/project/searchstax",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site search",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Search backend",
+    "Hosted search (SaaS)"
+  ],
+  "keywords": [
+    "searchstax",
+    "migration",
+    "solr",
+    "search_api_solr",
+    "migrate server",
+    "submodule"
+  ]
+}

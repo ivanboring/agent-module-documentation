@@ -1,0 +1,50 @@
+{
+  "name": "Sitewide Alert",
+  "data_name": "sitewide_alert",
+  "description": "Provides ability to display an alert message at the top of all pages.",
+  "version": "3.1.x",
+  "package": "Other",
+  "composer_namespace": "drupal/sitewide_alert",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:datetime_range",
+    "drupal:options",
+    "drupal:text"
+  ],
+  "configure": "entity.sitewide_alert.config_form",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 7639,
+  "list_position": 459,
+  "project_url": "https://www.drupal.org/project/sitewide_alert",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "sitewide_alert_block",
+    "sitewide_alert_domain"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "User engagement",
+    "Content display"
+  ],
+  "subcategories": [
+    "Activity / notification messages",
+    "Block enhancements"
+  ],
+  "keywords": [
+    "sitewide alert",
+    "alert banner",
+    "notification bar",
+    "announcement",
+    "dismissible alert",
+    "emergency message",
+    "scheduled alert",
+    "top of page banner",
+    "content entity"
+  ]
+}

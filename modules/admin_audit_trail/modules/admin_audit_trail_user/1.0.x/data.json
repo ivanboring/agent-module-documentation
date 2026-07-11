@@ -1,0 +1,40 @@
+{
+  "name": "Admin Audit Trail User",
+  "data_name": "admin_audit_trail_user",
+  "description": "Logs user CUD events performed by the user.",
+  "version": "1.0.x",
+  "package": "Administration",
+  "composer_namespace": "drupal/admin_audit_trail",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "admin_audit_trail:admin_audit_trail"
+  ],
+  "part_of": "admin_audit_trail",
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 7523,
+  "list_position": 464,
+  "project_url": "https://www.drupal.org/project/admin_audit_trail",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Audit trail / activity logging"
+  ],
+  "keywords": [
+    "audit trail",
+    "user",
+    "account log",
+    "CUD",
+    "user insert update delete"
+  ]
+}
