@@ -1,0 +1,51 @@
+{
+  "name": "Responsive menu",
+  "data_name": "responsive_menu",
+  "description": "Provides a javascript based off-canvas responsive menu with depth. At wider browser widths it provides a horizontal menu capable of drop downs and flyouts.",
+  "version": "4.4.x",
+  "package": "Other",
+  "composer_namespace": "drupal/responsive_menu",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:breakpoint",
+    "drupal:system (>=8.8)"
+  ],
+  "configure": "responsive_menu.settings",
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": 8692,
+  "list_position": 420,
+  "project_url": "https://www.drupal.org/project/responsive_menu",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "mmenu": "Required JS library (8.x); download to /libraries/mmenu — the off-canvas menu will not render without it.",
+    "superfish": "Optional JS library for hover/flyout enhancement of the horizontal menu; download to /libraries/superfish."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site structure"
+  ],
+  "subcategories": [
+    "Navigation menus"
+  ],
+  "keywords": [
+    "responsive_menu",
+    "mmenu",
+    "off-canvas",
+    "mobile menu",
+    "hamburger",
+    "burger menu",
+    "horizontal menu",
+    "dropdown",
+    "flyout",
+    "superfish",
+    "breakpoint",
+    "navigation",
+    "menu"
+  ]
+}

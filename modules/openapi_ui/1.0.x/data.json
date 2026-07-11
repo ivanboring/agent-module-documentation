@@ -1,0 +1,59 @@
+{
+  "name": "OpenAPI UI",
+  "data_name": "openapi_ui",
+  "description": "Provides plugin system for OpenAPI/Swagger Interface libraries.",
+  "version": "1.0.x",
+  "installed_release": "8.x-1.0-rc5",
+  "release_stability": "rc",
+  "package": "OpenAPI",
+  "composer_namespace": "drupal/openapi_ui",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10.1.3 || ^11",
+  "active_installs": 8785,
+  "list_position": 417,
+  "project_url": "https://www.drupal.org/project/openapi_ui",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_config_entities": [],
+  "provides_plugin_types": [
+    "openapi_ui (Plugin/openapi_ui/OpenApiUi, annotation-based @OpenApiUi)"
+  ],
+  "provides_render_elements": [
+    "openapi_ui"
+  ],
+  "provides_param_converters": [
+    "openapi_ui (route param type)"
+  ],
+  "provides_hooks": [
+    "hook_openapi_ui_alter"
+  ],
+  "consumes_plugin_types": [],
+  "ecosystem_note": "Framework only. Ships NO openapi_ui plugins of its own; the actual renderer UIs live in separate projects: openapi_ui_swagger (Swagger UI) and openapi_ui_redoc (ReDoc). Commonly paired with the openapi project, which generates the OpenAPI/Swagger spec for Drupal core and contrib APIs.",
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "REST / web services",
+    "External library management"
+  ],
+  "keywords": [
+    "openapi",
+    "swagger",
+    "api documentation",
+    "api explorer",
+    "redoc",
+    "swagger ui",
+    "render element",
+    "plugin type",
+    "web services",
+    "spec"
+  ]
+}

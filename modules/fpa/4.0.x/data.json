@@ -1,0 +1,43 @@
+{
+  "name": "Fast Permissions Administration",
+  "data_name": "fpa",
+  "description": "Fast filtering on permissions administration form.",
+  "version": "4.0.x",
+  "package": "Administration",
+  "composer_namespace": "drupal/fpa",
+  "composer_requirements": {
+    "drupal/core": "^9.4 | ^10.3 | ^11",
+    "drupal/js_cookie": "^1.0 | ^2.0"
+  },
+  "dependent_modules": [
+    "js_cookie:js_cookie"
+  ],
+  "configure": "fpa.settings",
+  "core_version_requirement": "^9.4 || ^10.0 || ^11",
+  "active_installs": null,
+  "list_position": 413,
+  "project_url": "https://www.drupal.org/project/fpa",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": [],
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "User roles & permissions"
+  ],
+  "keywords": [
+    "permissions",
+    "roles",
+    "filter",
+    "admin",
+    "user.admin_permissions",
+    "access control"
+  ]
+}

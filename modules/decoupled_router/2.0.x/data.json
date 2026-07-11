@@ -1,0 +1,50 @@
+{
+  "name": "Decoupled Router",
+  "data_name": "decoupled_router",
+  "description": "Handles the awkwardness of routing in decoupled architectures.",
+  "version": "2.0.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/decoupled_router",
+  "composer_requirements": {
+    "php": ">=8.1"
+  },
+  "dependent_modules": [
+    "path_alias"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": 8618,
+  "list_position": 421,
+  "project_url": "https://www.drupal.org/project/decoupled_router",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/redirect": "Follows configured redirects and reports them in the resolved response."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Decoupled"
+  ],
+  "subcategories": [
+    "REST / web services"
+  ],
+  "keywords": [
+    "decoupled",
+    "headless",
+    "jsonapi",
+    "json:api",
+    "router",
+    "translate-path",
+    "path resolution",
+    "path alias",
+    "redirect",
+    "canonical url",
+    "entity resolution",
+    "web services"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "Raven: Sentry Integration",
+  "data_name": "raven",
+  "description": "Integrates with Sentry application monitoring and error tracking platform (sentry.io).",
+  "version": "7.4.x",
+  "package": null,
+  "composer_namespace": "drupal/raven",
+  "composer_requirements": {
+    "sentry/sentry": "^4.20"
+  },
+  "dependent_modules": [],
+  "configure": "system.logging_settings",
+  "core_version_requirement": "^11.1",
+  "active_installs": 9660,
+  "list_position": 409,
+  "project_url": "https://www.drupal.org/project/raven",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "sentry/sentry"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Debugging & inspection",
+    "Error tracking & monitoring"
+  ],
+  "keywords": [
+    "raven",
+    "sentry",
+    "error tracking",
+    "application monitoring",
+    "logging",
+    "performance tracing",
+    "distributed tracing",
+    "exceptions",
+    "breadcrumbs",
+    "structured logs",
+    "profiling",
+    "csp reporting",
+    "dsn"
+  ]
+}

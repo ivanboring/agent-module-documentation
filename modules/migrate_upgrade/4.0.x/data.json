@@ -1,0 +1,52 @@
+{
+  "name": "Migrate Upgrade",
+  "data_name": "migrate_upgrade",
+  "description": "Drush support for direct upgrades from older Drupal versions.",
+  "version": "4.0.x",
+  "package": "Migration",
+  "composer_namespace": "drupal/migrate_upgrade",
+  "composer_requirements": {
+    "php": ">7.3",
+    "drupal/migrate_plus": ">=5",
+    "drush/drush": ">=9"
+  },
+  "dependent_modules": [
+    "drupal:migrate",
+    "drupal:migrate_drupal",
+    "migrate_plus:migrate_plus"
+  ],
+  "configure": null,
+  "core_version_requirement": ">=9",
+  "active_installs": 8954,
+  "list_position": 410,
+  "project_url": "https://www.drupal.org/project/migrate_upgrade",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">7.3",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Content migration / import"
+  ],
+  "keywords": [
+    "migrate",
+    "migration",
+    "drush",
+    "upgrade",
+    "drupal-to-drupal",
+    "d2d",
+    "migrate-upgrade",
+    "configure-only",
+    "migrate_plus",
+    "legacy",
+    "d6",
+    "d7"
+  ]
+}
