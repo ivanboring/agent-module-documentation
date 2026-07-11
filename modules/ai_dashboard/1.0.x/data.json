@@ -1,0 +1,59 @@
+{
+  "name": "AI Dashboard",
+  "data_name": "ai_dashboard",
+  "description": "Provides a dashboard for AI modules and features.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/ai_dashboard",
+  "composer_requirements": {
+    "drupal/ai": "^1.2",
+    "drupal/dashboard": "^2.0",
+    "drupal/project_browser": "^2.0"
+  },
+  "dependent_modules": [
+    "ai:ai",
+    "dashboard:dashboard",
+    "project_browser:project_browser"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.4 || ^11.1",
+  "active_installs": null,
+  "list_position": 497,
+  "part_of": "ai",
+  "project_url": "https://www.drupal.org/project/ai_dashboard",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "ai_documentation"
+  ],
+  "consumes_plugin_types": [
+    "dashboard Dashboard config entity — ships core.dashboard entity 'ai_dashboard' laid out with Layout Builder that renders at /admin/config/ai",
+    "Core Block (@Block) — defines 5 blocks (ai_setup_ai_provider, admin_menu_links, module_list_packages, ai_operations_status, ai_documentation) placed on the dashboard",
+    "project_browser ProjectBrowserSource (#[ProjectBrowserSource]) — provides the 'ai_dashboard_recommended' source (curated remote list of recommended AI recipes)",
+    "ai AiProvider (@AiProvider) — the Setup block and AiSetupStatus service read AI Core's provider plugins and config",
+    "config_action (setupAiProvider / simpleConfigUpdate) — the Setup form applies these to store a provider API key"
+  ],
+  "categories": [
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "AI provider abstraction / LLM gateway"
+  ],
+  "keywords": [
+    "ai",
+    "ai dashboard",
+    "dashboard",
+    "project browser",
+    "ai provider setup",
+    "admin/config/ai",
+    "recommended recipes",
+    "ai documentation",
+    "layout builder dashboard"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "name": "Lightning Core",
+  "data_name": "lightning_core",
+  "description": "Shared functionality for the Lightning distribution.",
+  "version": "6.1.x",
+  "package": "Lightning",
+  "composer_namespace": "drupal/lightning_core",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node",
+    "drupal:path",
+    "drupal:text",
+    "drupal:user"
+  ],
+  "configure": "lightning_core.settings",
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": 6682,
+  "list_position": 502,
+  "project_url": "https://www.drupal.org/project/lightning_core",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/contact_storage": "Required for Lightning Contact Form, which provides a simple site-wide contact form.",
+    "drupal/metatag": "Adds support for meta tags to basic pages.",
+    "drupal/pathauto": "Automatically generates pretty URLs for content.",
+    "drupal/redirect": "Allows site administrators to set up redirects.",
+    "drupal/search_api": "Required for Lightning Search, which provides a simple database-backed search page."
+  },
+  "submodules": [
+    "lightning_contact_form",
+    "lightning_roles",
+    "lightning_search",
+    "lightning_page"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "User roles & permissions",
+    "Configuration management"
+  ],
+  "keywords": [
+    "lightning",
+    "lightning core",
+    "distribution base",
+    "content roles",
+    "role description",
+    "entity description",
+    "view mode description",
+    "form mode revision ui",
+    "administrator access check",
+    "_is_administrator",
+    "base profile",
+    "shared functionality"
+  ]
+}

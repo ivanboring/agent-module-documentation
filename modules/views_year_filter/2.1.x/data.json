@@ -1,0 +1,50 @@
+{
+  "name": "Views Year Filter",
+  "data_name": "views_year_filter",
+  "description": "Add Year filter to views.",
+  "version": "2.1.x",
+  "package": "Date",
+  "composer_namespace": "drupal/views_year_filter",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:views"
+  ],
+  "configure": "views_year_filter.settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": 500,
+  "project_url": "https://www.drupal.org/project/views_year_filter",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal:date_popup": "Swaps the exposed date textfields for HTML5 date pickers (non-year filters only).",
+    "drupal:search_api": "Enables the year filter on Search API date fields.",
+    "drupal:smart_date": "Smart Date fields are left to smart_date's own year granularity and are not overridden."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "part_of": null,
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Views exposed filters",
+    "Date/time fields"
+  ],
+  "keywords": [
+    "views",
+    "year filter",
+    "date filter",
+    "datetime filter",
+    "CCYY",
+    "YEAR()",
+    "date_year",
+    "search_api_date",
+    "views filter handler",
+    "date field"
+  ]
+}

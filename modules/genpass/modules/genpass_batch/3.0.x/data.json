@@ -1,0 +1,40 @@
+{
+  "name": "Generate Password batch test",
+  "data_name": "genpass_batch",
+  "description": "Support module for testing batch jobs on user creation.",
+  "version": "3.0.x",
+  "package": "Testing",
+  "composer_namespace": "drupal/genpass",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "genpass:genpass"
+  ],
+  "part_of": "genpass",
+  "configure": null,
+  "core_version_requirement": "^11.3 || ^12",
+  "active_installs": 6996,
+  "list_position": 488,
+  "project_url": "https://www.drupal.org/project/genpass",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Password policy"
+  ],
+  "keywords": [
+    "genpass",
+    "batch",
+    "user insert",
+    "test support",
+    "hook_user_insert"
+  ]
+}

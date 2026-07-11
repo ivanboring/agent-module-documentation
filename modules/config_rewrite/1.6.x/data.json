@@ -1,0 +1,47 @@
+{
+  "name": "Configuration Rewrite",
+  "data_name": "config_rewrite",
+  "description": "Lets a module rewrite (deep-merge or replace) configuration that another extension already installed, using YAML files in its own config/rewrite/ directory, applied on module install.",
+  "version": "1.6.x",
+  "package": "Configuration",
+  "composer_namespace": "drupal/config_rewrite",
+  "composer_requirements": {
+    "drupal/core": "^8.6 || ^9 || ^10 || ^11"
+  },
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^8.7.7 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 495,
+  "project_url": "https://www.drupal.org/project/config_rewrite",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "7.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "services": [
+    "config_rewrite.config_rewriter (Drupal\\config_rewrite\\ConfigRewriterInterface)"
+  ],
+  "categories": [
+    "Developer tools",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Configuration management"
+  ],
+  "keywords": [
+    "config",
+    "configuration",
+    "rewrite",
+    "override",
+    "merge",
+    "default config",
+    "config/rewrite",
+    "install hook alternative",
+    "config_rewriter"
+  ]
+}

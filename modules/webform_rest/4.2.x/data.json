@@ -1,0 +1,57 @@
+{
+  "name": "Webform REST",
+  "data_name": "webform_rest",
+  "description": "Allows retrieving webform elements and submitting webforms via REST",
+  "version": "4.2.x",
+  "package": "Webform",
+  "composer_namespace": "drupal/webform_rest",
+  "composer_requirements": {
+    "drupal/webform": "^6.3@alpha"
+  },
+  "dependent_modules": [
+    "webform:webform",
+    "drupal:rest"
+  ],
+  "configure": "webform_rest.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 491,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/webform_rest",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/restui": "Optional UI to enable/configure REST resources without editing config"
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "consumes_plugin_types": [
+    "rest RestResource (@RestResource) — ships 5 REST resource plugins: webform_rest_elements, webform_rest_fields, webform_rest_submit, webform_rest_submission, webform_rest_complete_submission (each enabled by creating a rest_resource_config entity)"
+  ],
+  "categories": [
+    "Decoupled",
+    "Forms and surveys"
+  ],
+  "subcategories": [
+    "REST / web services",
+    "Submission handling"
+  ],
+  "keywords": [
+    "webform",
+    "rest",
+    "rest resource",
+    "decoupled",
+    "headless",
+    "webform submit",
+    "webform elements",
+    "webform fields",
+    "rest_resource_config",
+    "restui",
+    "api",
+    "json"
+  ]
+}
