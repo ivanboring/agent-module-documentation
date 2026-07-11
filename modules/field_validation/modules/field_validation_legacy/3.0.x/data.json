@@ -1,0 +1,52 @@
+{
+  "name": "Field Validation legacy",
+  "data_name": "field_validation_legacy",
+  "description": "Provides original field validation rules.",
+  "version": "3.0.x",
+  "installed_release": "3.0.0-beta7",
+  "release_stage": "beta",
+  "part_of": "field_validation",
+  "package": "Fields",
+  "composer_namespace": "drupal/field_validation",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "field_validation:field_validation"
+  ],
+  "configure": "entity.field_validation_rule_set.collection",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 434,
+  "project_url": "https://www.drupal.org/project/field_validation",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "provides_plugins": [
+    "FieldValidationRule (~20 legacy hand-written rules for the parent's plugin type)"
+  ],
+  "categories": [
+    "Content editing experience",
+    "Forms and surveys"
+  ],
+  "subcategories": [
+    "Field validation",
+    "Fields"
+  ],
+  "keywords": [
+    "field validation",
+    "legacy",
+    "pattern",
+    "phone",
+    "words blocklist",
+    "plain text",
+    "unique",
+    "specific value",
+    "item count",
+    "upgrade"
+  ]
+}

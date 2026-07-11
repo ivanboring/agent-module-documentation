@@ -1,0 +1,48 @@
+{
+  "name": "Data Layer",
+  "data_name": "datalayer",
+  "description": "Output page meta data for client-side availability.",
+  "version": "2.1.x",
+  "package": "Other",
+  "composer_namespace": "drupal/datalayer",
+  "composer_requirements": {
+    "drupal/core": "^10.2 || ^11"
+  },
+  "dependent_modules": [],
+  "configure": "datalayer.settings_form",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": 435,
+  "project_url": "https://www.drupal.org/project/datalayer",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "google/data-layer-helper": "Optional JS helper (placed in /libraries/data-layer-helper/dist/data-layer-helper.js) that, when present and enabled, is loaded on every dataLayer page. See https://github.com/google/data-layer-helper"
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "Search engine optimization (SEO)"
+  ],
+  "subcategories": [
+    "Analytics / tag management",
+    "Semantic metadata"
+  ],
+  "keywords": [
+    "datalayer",
+    "data layer",
+    "gtm",
+    "google tag manager",
+    "tag management",
+    "analytics",
+    "tracking",
+    "drupalSettings",
+    "page meta",
+    "client-side"
+  ]
+}

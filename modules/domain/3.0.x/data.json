@@ -1,0 +1,53 @@
+{
+  "name": "Domain",
+  "data_name": "domain",
+  "description": "Creates domain records within a Drupal installation.",
+  "version": "3.0.x",
+  "package": "Domain",
+  "composer_namespace": "drupal/domain",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "options"
+  ],
+  "configure": "domain.admin",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 8379,
+  "list_position": 432,
+  "project_url": "https://www.drupal.org/project/domain",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    { "name": "domain_access", "purpose": "Per-domain node/user access control: adds domain fields to content and gates who can see and edit it by domain." },
+    { "name": "domain_alias", "purpose": "Maps multiple host request patterns (aliases, wildcards, www/env variants) onto a single domain record." },
+    { "name": "domain_config", "purpose": "Domain- (and language-) specific configuration overrides, e.g. a different site name or theme per domain." },
+    { "name": "domain_config_ui", "purpose": "Admin UI for saving the domain-specific config overrides that domain_config stores." },
+    { "name": "domain_content", "purpose": "Per-domain content administration views so editors can review and manage content by assigned domain." },
+    { "name": "domain_source", "purpose": "Assigns each content item a canonical source domain and rewrites its outbound URLs to that domain." }
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site structure"
+  ],
+  "subcategories": [
+    "Multi-domain / affiliate sites"
+  ],
+  "keywords": [
+    "domain",
+    "domain access",
+    "multi-domain",
+    "multisite from one install",
+    "affiliate sites",
+    "hostname matching",
+    "domain negotiation",
+    "domain record",
+    "config entity",
+    "active domain",
+    "default domain",
+    "path prefix"
+  ]
+}

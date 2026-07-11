@@ -1,0 +1,62 @@
+{
+  "name": "Migrate Files (extended)",
+  "data_name": "migrate_file",
+  "description": "Additional support for migrating files including importing files, downloading remote files, and using remote uris (without download).",
+  "version": "3.0.x",
+  "release": "3.0.0-alpha1",
+  "stability": "alpha",
+  "package": "Migration",
+  "composer_namespace": "drupal/migrate_file",
+  "composer_requirements": {
+    "drupal/core": "^10.3 || ^11"
+  },
+  "dependent_modules": [
+    "drupal:migrate"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 | ^11",
+  "active_installs": 8491,
+  "list_position": 428,
+  "project_url": "https://www.drupal.org/project/migrate_file",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/migrate_plus": "Provides the Migration config entity + extra source plugins (embedded_data, url, csv) most useful with these process plugins.",
+    "drupal/migrate_tools": "Drush commands to run/roll-back the migrations that use these plugins.",
+    "drupal/remote_stream_wrapper": "Required to actually serve files referenced by file_remote_url / file_remote_image (they store a remote URI without downloading)."
+  },
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "provides_process_plugins": [
+    "file_import (Plugin/migrate/process/FileImport)",
+    "image_import (Plugin/migrate/process/ImageImport)",
+    "file_remote_url (Plugin/migrate/process/FileRemoteUrl)",
+    "file_remote_image (Plugin/migrate/process/FileRemoteImage)"
+  ],
+  "categories": [
+    "Import and export",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Content migration / import",
+    "Migration tooling"
+  ],
+  "keywords": [
+    "migrate",
+    "migration",
+    "file",
+    "image",
+    "file_import",
+    "image_import",
+    "file_remote_url",
+    "file_remote_image",
+    "process plugin",
+    "managed file",
+    "remote file",
+    "download",
+    "csv import"
+  ]
+}

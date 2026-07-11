@@ -1,0 +1,45 @@
+{
+  "name": "Domain Source",
+  "data_name": "domain_source",
+  "description": "Domain-based path rewrites for content.",
+  "version": "3.0.x",
+  "package": "Domain",
+  "composer_namespace": "drupal/domain",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "node",
+    "path_alias",
+    "domain:domain"
+  ],
+  "configure": "domain_source.settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 8379,
+  "list_position": 432,
+  "part_of": "domain",
+  "project_url": "https://www.drupal.org/project/domain",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site structure"
+  ],
+  "subcategories": [
+    "Multi-domain / affiliate sites"
+  ],
+  "keywords": [
+    "domain source",
+    "canonical url",
+    "field_domain_source",
+    "outbound url rewrite",
+    "source domain",
+    "path rewrite",
+    "affiliate content urls",
+    "exclude routes"
+  ]
+}

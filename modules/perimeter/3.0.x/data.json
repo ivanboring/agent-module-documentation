@@ -1,0 +1,46 @@
+{
+  "name": "Drupal Perimeter Defence",
+  "data_name": "perimeter",
+  "description": "This module bans IPs who send suspicious requests to the site.",
+  "version": "3.0.x",
+  "package": null,
+  "composer_namespace": "drupal/perimeter",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "ban"
+  ],
+  "configure": "perimeter.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 8227,
+  "list_position": 440,
+  "project_url": "https://www.drupal.org/project/perimeter",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Intrusion prevention"
+  ],
+  "keywords": [
+    "perimeter",
+    "ban",
+    "ip ban",
+    "firewall",
+    "intrusion prevention",
+    "404 not found",
+    "suspicious requests",
+    "wp-admin",
+    "bot defence",
+    "flood",
+    "honeypot",
+    "whitelist"
+  ]
+}

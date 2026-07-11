@@ -1,0 +1,66 @@
+{
+  "name": "Field Validation",
+  "data_name": "field_validation",
+  "description": "Provides customizable field validation rules.",
+  "version": "3.0.x",
+  "installed_release": "3.0.0-beta7",
+  "release_stage": "beta",
+  "version_note": "The installed 3.0.x release is a beta (3.0.0-beta7). This branch is a rewrite that maps Drupal/Symfony validation Constraints onto fields via *_constraint_rule plugins; the older hand-written rules from the 8.x/1.x era ship separately in the field_validation_legacy submodule.",
+  "package": "Fields",
+  "composer_namespace": "drupal/field_validation",
+  "composer_requirements": {
+    "php": "^8.0",
+    "drupal/core": "^10.2 || ^11",
+    "symfony/expression-language": "^6.3",
+    "symfony/intl": "^6.3"
+  },
+  "dependent_modules": [
+    "drupal:field"
+  ],
+  "configure": "entity.field_validation_rule_set.collection",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": 434,
+  "project_url": "https://www.drupal.org/project/field_validation",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "^8.0",
+  "library_dependencies": [
+    "symfony/expression-language",
+    "symfony/intl"
+  ],
+  "suggests": {},
+  "submodules": [
+    "field_validation_legacy"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "FieldValidationRule (Plugin/FieldValidationRule, @FieldValidationRule annotation)"
+  ],
+  "config_entity_types": [
+    "field_validation_rule_set"
+  ],
+  "categories": [
+    "Content editing experience",
+    "Forms and surveys"
+  ],
+  "subcategories": [
+    "Field validation",
+    "Fields"
+  ],
+  "keywords": [
+    "field validation",
+    "validation rules",
+    "constraint",
+    "regex",
+    "length",
+    "range",
+    "email",
+    "unique",
+    "field_validation_rule_set",
+    "field ui",
+    "form validation",
+    "symfony constraint"
+  ]
+}

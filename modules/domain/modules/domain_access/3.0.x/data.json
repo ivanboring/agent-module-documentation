@@ -1,0 +1,44 @@
+{
+  "name": "Domain Access",
+  "data_name": "domain_access",
+  "description": "Domain-based access control for content.",
+  "version": "3.0.x",
+  "package": "Domain",
+  "composer_namespace": "drupal/domain",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "node",
+    "domain:domain"
+  ],
+  "configure": "domain_access.settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 8379,
+  "list_position": 432,
+  "part_of": "domain",
+  "project_url": "https://www.drupal.org/project/domain",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Multi-domain / affiliate sites"
+  ],
+  "keywords": [
+    "domain access",
+    "node access by domain",
+    "field_domain_access",
+    "field_domain_all_affiliates",
+    "affiliate content",
+    "per-domain access",
+    "editor access",
+    "content access control"
+  ]
+}
