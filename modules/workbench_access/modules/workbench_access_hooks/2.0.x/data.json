@@ -1,0 +1,42 @@
+{
+  "name": "Workbench access hooks test",
+  "data_name": "workbench_access_hooks",
+  "description": "Test code for workbench access hooks and events",
+  "version": "2.0.x",
+  "package": "Workbench",
+  "composer_namespace": "drupal/workbench_access",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "workbench_access:workbench_access"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 521,
+  "part_of": "workbench_access",
+  "project_url": "https://www.drupal.org/project/workbench_access",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": [],
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "hidden": true,
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "User roles & permissions"
+  ],
+  "keywords": [
+    "workbench access",
+    "hook example",
+    "hook_workbench_access_scheme_update_alter",
+    "test module",
+    "scheme settings alter"
+  ],
+  "notes": "Hidden, test-only submodule shipped under workbench_access/tests/modules. Not for production; it exists as a worked example of hook_workbench_access_scheme_update_alter(), which rewrites a scheme's stored scheme_settings. Documented lightly (recipe evals only)."
+}

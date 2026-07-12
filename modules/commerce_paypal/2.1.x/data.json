@@ -1,0 +1,43 @@
+{
+  "name": "Commerce PayPal",
+  "data_name": "commerce_paypal",
+  "description": "Provides Commerce integration for PayPal Payments.",
+  "version": "2.1.x",
+  "package": "Commerce (contrib)",
+  "composer_namespace": "drupal/commerce_paypal",
+  "composer_requirements": {
+    "php": "^8.0",
+    "drupal/commerce": "^2.40 || ^3"
+  },
+  "dependent_modules": [
+    "commerce:commerce_payment"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": 1313,
+  "list_position": 520,
+  "project_url": "https://www.drupal.org/project/commerce_paypal",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "^8.0",
+  "library_dependencies": {},
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": ["E-commerce"],
+  "subcategories": ["Storefront platform"],
+  "keywords": [
+    "paypal",
+    "commerce",
+    "payment gateway",
+    "checkout",
+    "smart payment buttons",
+    "fastlane",
+    "payflow",
+    "express checkout",
+    "credit card",
+    "off-site payment"
+  ]
+}

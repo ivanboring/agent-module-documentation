@@ -1,0 +1,36 @@
+{
+  "name": "Poll",
+  "data_name": "poll",
+  "description": "Allows your site to capture votes on different topics in the form of multiple choice questions.",
+  "version": "2.0.x",
+  "release": "2.0.0-alpha5",
+  "release_stability": "alpha",
+  "package": "Other",
+  "composer_namespace": "drupal/poll",
+  "composer_requirements": {
+    "drupal/core": "^9 || ^10 || ^11"
+  },
+  "dependent_modules": ["field", "node", "options", "views", "user"],
+  "configure": "poll.settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 6337,
+  "list_position": 529,
+  "project_url": "https://www.drupal.org/project/poll",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/devel": "^5.3 (dev; powers the poll_devel generator submodule)"
+  },
+  "submodules": ["poll_devel"],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "provides_blocks": ["poll_recent_block"],
+  "entity_types": ["poll", "poll_choice"],
+  "categories": ["Forms and surveys"],
+  "subcategories": ["Survey / data collection"],
+  "keywords": ["poll", "vote", "voting", "survey", "multiple choice", "poll_choice", "ballot", "opinion"],
+  "notes": "Formerly Drupal core's Poll module, now maintained as contrib. The documented release 2.0.0-alpha5 is an ALPHA (pre-stable) — API/schema may still change. Defines two content entity types: `poll` (a question with settings) and `poll_choice` (an answer option, referenced by the poll's unlimited-cardinality `choice` field). Votes are NOT entities; they are stored in the `poll_vote` table via the `poll_vote.storage` service. Ships one block plugin, `poll_recent_block` (\"Most recent poll\"). No config schema and no Drush commands of its own."
+}

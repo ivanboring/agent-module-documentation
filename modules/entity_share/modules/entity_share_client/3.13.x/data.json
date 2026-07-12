@@ -1,0 +1,51 @@
+{
+  "name": "Entity Share Client",
+  "data_name": "entity_share_client",
+  "description": "Provides an UI to share entities.",
+  "version": "3.13.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/entity_share",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:jsonapi",
+    "entity_share:entity_share"
+  ],
+  "configure": "entity.remote.collection",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 526,
+  "project_url": "https://www.drupal.org/project/entity_share",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "part_of": "entity_share",
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "import_processor",
+    "client_authorization",
+    "import_policy"
+  ],
+  "categories": [
+    "Import and export",
+    "Decoupled"
+  ],
+  "subcategories": [
+    "Content staging / syndication",
+    "REST / web services"
+  ],
+  "keywords": [
+    "entity share",
+    "remote",
+    "import config",
+    "pull content",
+    "content staging",
+    "jsonapi",
+    "client",
+    "import processor",
+    "syndication"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "name": "Google Programmable Search",
+  "data_name": "google_cse",
+  "description": "Use Google Programmable Search to search your site and/or any other sites.",
+  "version": "5.0.x",
+  "package": null,
+  "composer_namespace": "drupal/google_cse",
+  "composer_requirements": {
+    "drupal/core": "^10|| ^11"
+  },
+  "dependent_modules": [
+    "drupal:search"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": 519,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/google_cse",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "consumes_plugin_types": [
+    "search SearchPlugin (@SearchPlugin) — provides the 'google_cse_search' configurable search page plugin (ConfigurableSearchPluginBase)",
+    "Core Block (@Block) — provides the 'google_cse' block: a combined Google PSE search box + results widget"
+  ],
+  "categories": [
+    "Site search",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Hosted search (SaaS)"
+  ],
+  "keywords": [
+    "google",
+    "programmable search",
+    "custom search engine",
+    "cse",
+    "pse",
+    "hosted search",
+    "site search",
+    "search page",
+    "cx",
+    "search plugin"
+  ]
+}

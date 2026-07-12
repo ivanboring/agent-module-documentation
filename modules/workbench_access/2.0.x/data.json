@@ -1,0 +1,58 @@
+{
+  "name": "Workbench Access",
+  "data_name": "workbench_access",
+  "description": "Hierarchical access control module.",
+  "version": "2.0.x",
+  "release": "2.0.4",
+  "package": "Workbench",
+  "composer_namespace": "drupal/workbench_access",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "menu_ui",
+    "menu_link_content",
+    "node",
+    "options",
+    "taxonomy"
+  ],
+  "configure": "workbench_access.admin",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 521,
+  "project_url": "https://www.drupal.org/project/workbench_access",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": [],
+  "submodules": [
+    "workbench_access_hooks"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "AccessControlHierarchy"
+  ],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "User roles & permissions",
+    "Workflow / business rules"
+  ],
+  "keywords": [
+    "workbench access",
+    "editorial access",
+    "access scheme",
+    "access_scheme",
+    "AccessControlHierarchy",
+    "hierarchical access control",
+    "sections",
+    "taxonomy scheme",
+    "menu scheme",
+    "section association",
+    "administer workbench access",
+    "content access control",
+    "editorial workflow"
+  ],
+  "notes": "Editorial access control by content section. The core config entity type is `access_scheme` (config prefix `workbench_access.access_scheme.<id>`; config_export keys id, label, plural_label, scheme, scheme_settings). The `scheme` key names an AccessControlHierarchy plugin (Plugin/AccessControlHierarchy) — two ship in-module: `taxonomy` (sections from a vocabulary) and `menu` (sections from a menu tree). `scheme_settings` is validated per-plugin (taxonomy: vocabularies + fields; menu: menus + bundles). admin_permission for the entity is `administer workbench access`. Submodule workbench_access_hooks is a hidden test-only module demonstrating hook_workbench_access_scheme_update_alter()."
+}
