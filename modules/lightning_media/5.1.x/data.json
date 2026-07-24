@@ -1,0 +1,79 @@
+{
+  "name": "Lightning Media",
+  "data_name": "lightning_media",
+  "description": "Slick media handling for Lightning. So cool you'll make the A/C jealous.",
+  "version": "5.1.x",
+  "package": "Lightning",
+  "composer_namespace": "drupal/lightning_media",
+  "composer_requirements": {
+    "drupal/lightning_core": "^6"
+  },
+  "dependent_modules": [
+    "image",
+    "media_library",
+    "user"
+  ],
+  "configure": "lightning_media.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 6051,
+  "list_position": 567,
+  "project_url": "https://www.drupal.org/project/lightning_media",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/dropzonejs": "Required for Lightning Media Bulk Upload, which provides an easy way to upload multiple media files at once.",
+    "drupal/entity_browser": "Used by Lightning Media Image to improve image fields.",
+    "drupal/image_widget_crop": "Adds cropping functionality to Lightning Media Image.",
+    "drupal/inline_entity_form": "Allows entity browsers to create media items from file uploads and embed codes.",
+    "drupal/media_entity_instagram": "Required for Lightning Media Instagram, which provides an Instagram media type.",
+    "drupal/media_entity_twitter": "Required for Lightning Media Twitter, which provides a tweet media type.",
+    "drupal/slick_entityreference": "Required for Lightning Media Slideshow, which provides a simple carousel media type.",
+    "enyo/dropzone": "Provides a JavaScript library required by the DropzoneJS module.",
+    "vardot/blazy": "Provides a JavaScript library required by the Slick module."
+  },
+  "submodules": [
+    "lightning_media_audio",
+    "lightning_media_bulk_upload",
+    "lightning_media_document",
+    "lightning_media_image",
+    "lightning_media_instagram",
+    "lightning_media_slideshow",
+    "lightning_media_twitter",
+    "lightning_media_video"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media",
+    "Content editing experience",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Media embedding",
+    "File uploads",
+    "Rich text embedding",
+    "Entity selection"
+  ],
+  "keywords": [
+    "media",
+    "media library",
+    "entity browser",
+    "media type",
+    "InputMatchInterface",
+    "media source",
+    "dynamic preview",
+    "field_media_in_library",
+    "embed_code",
+    "entity_embed",
+    "lightning",
+    "media_image",
+    "file_upload widget",
+    "embed_code widget",
+    "media_creator",
+    "media_manager",
+    "revision UI"
+  ]
+}

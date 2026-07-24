@@ -1,0 +1,56 @@
+{
+  "name": "Advanced Queue",
+  "data_name": "advancedqueue",
+  "description": "Provides a better Queue API.",
+  "version": "1.6.x",
+  "package": "Other",
+  "composer_namespace": "drupal/advancedqueue",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "entity.advancedqueue_queue.collection",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 6066,
+  "list_position": 565,
+  "project_url": "https://www.drupal.org/project/advancedqueue",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "advancedqueue_backend",
+    "advancedqueue_job_type"
+  ],
+  "categories": [
+    "Developer tools",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Queue / background processing",
+    "Cron / task scheduling",
+    "Workflow / state management"
+  ],
+  "keywords": [
+    "queue",
+    "job",
+    "job type",
+    "background processing",
+    "cron",
+    "advancedqueue_queue",
+    "advancedqueue:queue:process",
+    "advancedqueue:queue:list",
+    "JobType plugin",
+    "Backend plugin",
+    "retry",
+    "delayed job",
+    "job state",
+    "fingerprint",
+    "duplicate jobs",
+    "lease time",
+    "daemon",
+    "Commerce"
+  ]
+}

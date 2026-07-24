@@ -1,0 +1,53 @@
+{
+  "name": "Facebook Pixel",
+  "data_name": "facebook_pixel",
+  "description": "Allows your site to be tracked by Facebook Pixel.",
+  "version": "2.0.x",
+  "package": "Statistics",
+  "composer_namespace": "drupal/facebook_pixel",
+  "composer_requirements": {
+    "drupal/core": "^10 || ^11"
+  },
+  "dependent_modules": [],
+  "configure": "facebook_pixel.facebook_pixel_config_form",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 5937,
+  "list_position": 574,
+  "project_url": "https://www.drupal.org/project/facebook_pixel",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "facebook_pixel_commerce"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Analytics & tracking",
+    "Cookie consent / GDPR"
+  ],
+  "keywords": [
+    "facebook pixel",
+    "meta pixel",
+    "tracking",
+    "analytics",
+    "PageView",
+    "ViewContent",
+    "CompleteRegistration",
+    "conversion tracking",
+    "fbq",
+    "do not track",
+    "eu_cookie_compliance",
+    "fb-disable",
+    "noscript",
+    "ajax command",
+    "hook_facebook_pixel_event_data_alter"
+  ]
+}

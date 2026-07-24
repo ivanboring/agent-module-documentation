@@ -1,0 +1,59 @@
+{
+  "name": "Permissions by Term",
+  "data_name": "permissions_by_term",
+  "description": "Restricts access to nodes and taxonomy terms via user to term relations.",
+  "version": "3.1.x",
+  "package": "Permissions by Term",
+  "composer_namespace": "drupal/permissions_by_term",
+  "composer_requirements": {
+    "php": ">=8.1.0",
+    "drupal/core": ">= 10.0"
+  },
+  "dependent_modules": [
+    "system",
+    "field",
+    "taxonomy",
+    "path_alias"
+  ],
+  "configure": "permissions_by_term.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 6182,
+  "list_position": 552,
+  "project_url": "https://www.drupal.org/project/permissions_by_term",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1.0",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "permissions_by_entity"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Taxonomy-based access control",
+    "User roles & permissions"
+  ],
+  "keywords": [
+    "taxonomy access",
+    "node access records",
+    "permissions_by_term_user",
+    "permissions_by_term_role",
+    "term permissions",
+    "permission mode",
+    "require all terms granted",
+    "disable node access records",
+    "node grants",
+    "AccessStorage",
+    "AccessCheck",
+    "permissions-by-term:rebuild",
+    "pbtr",
+    "target_bundles",
+    "intranet access control"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "Permissions by Entity",
+  "data_name": "permissions_by_entity",
+  "description": "Extends the functionality of Permissions By Term to be able to limit the selection of specific taxonomy terms by users or roles for an entity. This involves also the access to the related entity type content.",
+  "version": "3.1.x",
+  "package": "Permissions by Term (Experimental)",
+  "composer_namespace": "drupal/permissions_by_term",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "permissions_by_term"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 6182,
+  "list_position": 552,
+  "project_url": "https://www.drupal.org/project/permissions_by_term",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Taxonomy-based access control",
+    "User roles & permissions"
+  ],
+  "keywords": [
+    "permissions by entity",
+    "entity access",
+    "hook_entity_access",
+    "taxonomy term reference",
+    "non-node entities",
+    "media access",
+    "paragraphs access",
+    "AccessChecker",
+    "isAccessControlled",
+    "target_bundles",
+    "checked entity cache",
+    "recursive entity check",
+    "access denied event",
+    "kernel request subscriber",
+    "permissions_by_term submodule"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "name": "Bootstrap Library",
+  "data_name": "bootstrap_library",
+  "description": "Register Boostrap as a library by installing files in /libraries/bootstrap.",
+  "version": "2.0.x",
+  "package": "Bootstrap",
+  "composer_namespace": "drupal/bootstrap_library",
+  "composer_requirements": {
+    "twbs/bootstrap": "*"
+  },
+  "dependent_modules": [],
+  "configure": "bootstrap_library.admin",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 5974,
+  "list_position": 572,
+  "project_url": "https://www.drupal.org/project/bootstrap_library",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [
+    "twbs/bootstrap"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display",
+    "Developer tools",
+    "Integrations"
+  ],
+  "subcategories": [
+    "External library management",
+    "JavaScript libraries"
+  ],
+  "keywords": [
+    "bootstrap",
+    "twbs",
+    "library",
+    "CDN",
+    "jsdelivr",
+    "asset library",
+    "hook_page_attachments",
+    "hook_library_info_build",
+    "theme visibility",
+    "path visibility",
+    "minified",
+    "front-end framework",
+    "css",
+    "javascript"
+  ]
+}

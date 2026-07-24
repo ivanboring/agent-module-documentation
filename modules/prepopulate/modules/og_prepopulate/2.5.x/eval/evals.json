@@ -1,0 +1,100 @@
+{
+  "skill_name": "drupal-module-docs",
+  "skill_file": ".agents/skills/drupal-module-docs/SKILL.md",
+  "module": "og_prepopulate",
+  "version": "2.5.x",
+  "part_of": "prepopulate",
+  "note": "og_prepopulate is a glue submodule of the prepopulate project: one .module file (hook_field_widget_og_complex_form_alter + an #after_build), one service (og_prepopulate.populator) and one subclass (Drupal\\og_prepopulate\\Populate extends Drupal\\prepopulate\\Populate, overriding formatEntityAutocomplete() to use Og::isMember() and to hide the widget). It declares a hard dependency on og:og, and drupal/og is NOT installed in this project's codebase, so the module cannot be enabled here. The medium/hard cases are written so they run honestly on this site: one introspection case is about exactly that unmet dependency, the other three exercise the audience-reference-field shape and the short ?<field_name>=<id> URL syntax that og_prepopulate defines, verified against live site state.",
+  "evals": [
+    {
+      "id": "og_prepopulate-url-syntax",
+      "mode": "recipe",
+      "difficulty": "easy",
+      "prompt": "The Drupal module og_prepopulate (a submodule of prepopulate) lets you preselect an Organic Groups audience field from a link. What does that URL look like for an audience field called og_audience and group entity 12, and how does it differ from the parent prepopulate module's syntax?",
+      "must_contain_any": [
+        "og_audience=12",
+        "?og_audience="
+      ],
+      "must_not_contain": [],
+      "expected_output": "/node/add/article?og_audience=12 — og_prepopulate uses the short form ?<field machine name>=<entity id>, whereas the parent module needs the nested render-array form ?edit[og_audience][widget][0][target_id]=12."
+    },
+    {
+      "id": "og_prepopulate-membership-rule",
+      "mode": "recipe",
+      "difficulty": "easy",
+      "prompt": "How does Drupal\\og_prepopulate\\Populate differ from the parent Drupal\\prepopulate\\Populate class it extends? Name the method it overrides and what it does differently.",
+      "must_contain_any": [
+        "formatEntityAutocomplete",
+        "isMember",
+        "Og::isMember"
+      ],
+      "must_not_contain": [],
+      "expected_output": "It overrides formatEntityAutocomplete(): instead of the parent's $entity->access('view label') check it calls Og::isMember($entity, $this->currentUser->getAccount()), and when the user is a member it sets the widget's #value to 'Label (id)' AND sets #access = FALSE so the audience field is hidden. It also takes an extra @current_user constructor argument."
+    },
+    {
+      "id": "og_prepopulate-widget-and-deps",
+      "mode": "recipe",
+      "difficulty": "easy",
+      "prompt": "Which field widget does the Drupal og_prepopulate module alter, and what must be installed before it can be enabled?",
+      "must_contain_any": [
+        "og_complex",
+        "og:og",
+        "drupal/og",
+        "Organic Groups"
+      ],
+      "must_not_contain": [],
+      "expected_output": "It implements hook_field_widget_WIDGET_TYPE_form_alter() for the Organic Groups og_complex widget (og_prepopulate_field_widget_og_complex_form_alter). Its info.yml declares dependencies prepopulate:prepopulate and og:og, so drupal/og (Organic Groups) must be installed first."
+    },
+    {
+      "id": "og_prepopulate-unmet-dependency",
+      "mode": "introspection",
+      "difficulty": "medium",
+      "prompt": "Can the og_prepopulate submodule be enabled on this Drupal site right now? Inspect the running site and say which of its declared dependencies is satisfied and which is not.",
+      "must_contain_any": [
+        "Organic Groups",
+        "drupal/og",
+        "og:og"
+      ],
+      "must_not_contain": [],
+      "expected_output": "No. og_prepopulate.info.yml declares dependencies prepopulate:prepopulate and og:og. prepopulate is installed and enabled, but Organic Groups (drupal/og) is not present in web/modules/contrib at all — it is only a require-dev of the prepopulate project — so og_prepopulate cannot be installed until drupal/og is required with Composer.",
+      "setup": "agent-module-documentation/evaluation/verify/og_prepopulate-dependency-setup.sh",
+      "cleanup": "agent-module-documentation/evaluation/verify/og_prepopulate-dependency-cleanup.sh"
+    },
+    {
+      "id": "og_prepopulate-audience-field-url",
+      "mode": "introspection",
+      "difficulty": "medium",
+      "prompt": "This Drupal site has prepopulate enabled (og_prepopulate itself cannot be installed here because Organic Groups is missing). The Article content type has a group-style entity reference field with an autocomplete widget. Inspect the live site and give (a) the query string the parent prepopulate module needs to prefill that field with node 1, and (b) the shorter query string og_prepopulate would accept for the same field if OG were installed.",
+      "must_contain_any": [
+        "edit[field_ogp_audience][widget][0][target_id]",
+        "edit%5Bfield_ogp_audience%5D%5Bwidget%5D%5B0%5D%5Btarget_id%5D"
+      ],
+      "must_not_contain": [],
+      "expected_output": "The field is field_ogp_audience (entity_reference -> node, widget entity_reference_autocomplete on core.entity_form_display.node.article.default). (a) /node/add/article?edit[field_ogp_audience][widget][0][target_id]=1 ; (b) og_prepopulate's short form would be /node/add/article?field_ogp_audience=1 (parameter name = the field machine name), which only applies to the OG og_complex widget.",
+      "setup": "agent-module-documentation/evaluation/verify/og_prepopulate-audience-field-setup.sh",
+      "cleanup": "agent-module-documentation/evaluation/verify/og_prepopulate-audience-field-cleanup.sh"
+    },
+    {
+      "id": "og_prepopulate-group-field",
+      "mode": "execution",
+      "difficulty": "hard",
+      "persona": "drupal-expert",
+      "prompt": "Prepare the Article content type on this Drupal site for og_prepopulate-style group prefilling: add an entity reference field with machine name field_ogp_group that references nodes, and make sure its widget on the default form display is an autocomplete widget (the widget shape whose target_id element prepopulate is able to fill from the URL). Apply the change to the live site.",
+      "reset": "agent-module-documentation/evaluation/verify/og_prepopulate-group-field-reset.sh",
+      "verify": "agent-module-documentation/evaluation/verify/og_prepopulate-group-field-verify.sh",
+      "cleanup": "agent-module-documentation/evaluation/verify/og_prepopulate-group-field-reset.sh",
+      "expected_output": "field.storage.node.field_ogp_group (entity_reference, target_type node) + field.field.node.article.field_ogp_group, with core.entity_form_display.node.article.default carrying the component field_ogp_group with type entity_reference_autocomplete."
+    },
+    {
+      "id": "og_prepopulate-menu-link",
+      "mode": "execution",
+      "difficulty": "hard",
+      "persona": "site-builder",
+      "prompt": "Add a link to the Main navigation menu of this Drupal site titled exactly 'OG Prepopulate Eval Link'. It must open the Article creation form (/node/add/article) and use the og_prepopulate module's own short audience syntax to preselect the audience field og_audience for the group whose entity id is 12. Do not use the parent prepopulate module's nested edit[...] syntax.",
+      "reset": "agent-module-documentation/evaluation/verify/og_prepopulate-menu-link-reset.sh",
+      "verify": "agent-module-documentation/evaluation/verify/og_prepopulate-menu-link-verify.sh",
+      "cleanup": "agent-module-documentation/evaluation/verify/og_prepopulate-menu-link-reset.sh",
+      "expected_output": "A menu_link_content in the 'main' menu titled 'OG Prepopulate Eval Link' whose uri is internal:/node/add/article?og_audience=12 — the parameter name is the audience field's machine name and the value is the group entity id."
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "name": "Extra Field",
+  "data_name": "extra_field",
+  "description": "Provides a plugin type for extra fields that look like real fields, but do not store data.",
+  "version": "3.0.x",
+  "package": null,
+  "composer_namespace": "drupal/extra_field",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:field"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 5988,
+  "list_position": 571,
+  "project_url": "https://www.drupal.org/project/extra_field",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "extra_field_example"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "extra_field_display",
+    "extra_field_form"
+  ],
+  "categories": [
+    "Site structure"
+  ],
+  "subcategories": [
+    "Fields",
+    "Structured content / page building"
+  ],
+  "keywords": [
+    "extra field",
+    "pseudo field",
+    "computed field",
+    "hook_entity_extra_field_info",
+    "ExtraFieldDisplay",
+    "ExtraFieldForm",
+    "manage display",
+    "manage form display",
+    "plugin type",
+    "entity view",
+    "form alter",
+    "render array",
+    "bundles wildcard"
+  ]
+}

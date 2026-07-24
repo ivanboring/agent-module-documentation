@@ -1,0 +1,64 @@
+{
+  "name": "JSON Field",
+  "data_name": "json_field",
+  "description": "Provides a JSON field, formatter and views integration.",
+  "version": "1.7.x",
+  "package": "Field types",
+  "composer_namespace": "drupal/json_field",
+  "composer_requirements": {
+    "ext-json": "*",
+    "drupal/core": "^10.3 || ^11"
+  },
+  "dependent_modules": [
+    "drupal:field",
+    "drupal:text",
+    "drupal:serialization"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 5992,
+  "list_position": 570,
+  "project_url": "https://www.drupal.org/project/json_field",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "ext-json"
+  ],
+  "suggests": {
+    "drupal/diff": "^0",
+    "swaggest/json-schema": "^0"
+  },
+  "submodules": [
+    "json_field_widget"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Fields",
+    "Field formatters"
+  ],
+  "keywords": [
+    "json",
+    "jsonb",
+    "json field",
+    "field type",
+    "json_native",
+    "json_native_binary",
+    "json_textarea",
+    "pretty formatter",
+    "valid_json",
+    "constraint",
+    "views",
+    "rest export",
+    "jsonapi",
+    "normalizer",
+    "jquery-jsonview",
+    "structured data"
+  ]
+}
