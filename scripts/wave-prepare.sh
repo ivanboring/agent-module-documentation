@@ -80,6 +80,15 @@ done
 [ "${#to_enable[@]}" -gt 0 ] && do_en "${to_enable[@]}"
 drush cr >/dev/null 2>&1
 
+# A bulk/bisected enable can leave a module in core.extension while its config/install
+# defaults were never imported — it looks Enabled but behaves as unconfigured, which
+# silently invalidates any doc or eval written against it. Repair before handing the
+# wave to the doc agents.
+if [ -x scripts/check-default-config.sh ]; then
+  CDC_FIX=1 bash scripts/check-default-config.sh 2>/dev/null \
+    | grep -E '^(FIXED|FIX-FAILED)' | sed 's/^/default-config /' >&2
+fi
+
 enabled_list=$(drush pm:list --status=enabled --field=name 2>/dev/null)
 
 for p in "${projects[@]}"; do
