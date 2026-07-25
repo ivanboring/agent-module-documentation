@@ -1,0 +1,54 @@
+{
+  "name": "Media Directories Editor",
+  "data_name": "media_directories_editor",
+  "description": "Integrate media browser UI with CKEditor. DEPRECATED in 3.0.x — superseded by the CKEditor 5 integration in media_directories_browser.",
+  "version": "3.0.x",
+  "package": "Media Directories",
+  "composer_namespace": "drupal/media_directories",
+  "composer_requirements": {
+    "drupal/core": "^10.2 || ^11 || ^12"
+  },
+  "dependent_modules": [
+    "media_directories_ui",
+    "embed",
+    "entity_embed"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 5564,
+  "list_position": 600,
+  "project_url": "https://www.drupal.org/project/media_directories",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "lifecycle": "deprecated",
+  "lifecycle_link": "https://www.drupal.org/project/media_directories",
+  "categories": [
+    "Media",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Rich text embedding",
+    "Media embedding",
+    "Field formatters"
+  ],
+  "keywords": [
+    "media_directories_editor.settings",
+    "deprecated",
+    "entity_embed",
+    "embed.button.media_directories",
+    "embed_dialog.image_styles",
+    "media_directories_image_dimensions",
+    "MediaDirectoriesImageDimensionsFormatter",
+    "media_directories_editor_browser",
+    "entity browser iframe",
+    "image-resize library",
+    "CKEditor 4"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "name": "Media Thumbnails",
+  "data_name": "media_thumbnails",
+  "description": "Plugin manager for media entity thumbnail generation",
+  "version": "2.0.x",
+  "package": "Media",
+  "composer_namespace": "drupal/media_thumbnails",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:media"
+  ],
+  "configure": "media_thumbnails.admin",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": 5776,
+  "list_position": 579,
+  "project_url": "https://www.drupal.org/project/media_thumbnails",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "media_thumbnail"
+  ],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "File & media metadata",
+    "Image toolkit / processing"
+  ],
+  "keywords": [
+    "media",
+    "thumbnail",
+    "media thumbnail",
+    "plugin manager",
+    "MediaThumbnail",
+    "createThumbnail",
+    "mime type",
+    "pdf thumbnail",
+    "svg thumbnail",
+    "epub",
+    "thumbnails:refresh",
+    "batch",
+    "imagemagick",
+    "media_thumbnails.settings",
+    "bgcolor"
+  ]
+}

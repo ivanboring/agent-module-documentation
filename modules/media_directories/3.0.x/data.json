@@ -1,0 +1,71 @@
+{
+  "name": "Media Directories",
+  "data_name": "media_directories",
+  "description": "Add directory structure to Media entities.",
+  "version": "3.0.x",
+  "package": "Media Directories",
+  "composer_namespace": "drupal/media_directories",
+  "composer_requirements": {
+    "drupal/core": "^10.2 || ^11 || ^12"
+  },
+  "dependent_modules": [
+    "media",
+    "media_library",
+    "taxonomy",
+    "views"
+  ],
+  "configure": "media_directories.config_form",
+  "core_version_requirement": "^10.2 || ^11 || ^12",
+  "active_installs": 5564,
+  "list_position": 600,
+  "project_url": "https://www.drupal.org/project/media_directories",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/ai": "Required by the media_directories_ai submodule for AI-powered alt text and translations.",
+    "drupal/focal_point": "Enables focal point support in the media browser.",
+    "drupal/svg_image": "Enables SVG support in image fields used by media types."
+  },
+  "submodules": [
+    "media_directories_ai",
+    "media_directories_browser",
+    "media_directories_compat",
+    "media_directories_editor",
+    "media_directories_file_link",
+    "media_directories_image_resize",
+    "media_directories_ui"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media",
+    "Content editing experience",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Media embedding",
+    "Entity selection",
+    "File & media metadata"
+  ],
+  "keywords": [
+    "media directories",
+    "media folders",
+    "directory field",
+    "taxonomy vocabulary",
+    "media library",
+    "media_directories.settings",
+    "directory_taxonomy",
+    "all_files_in_root",
+    "media_directory views filter",
+    "media_directory views argument",
+    "media_directory:default",
+    "DirectorySelection",
+    "MediaDirectoryRoot",
+    "base field",
+    "asset management",
+    "media browser"
+  ]
+}

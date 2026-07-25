@@ -1,0 +1,51 @@
+{
+  "name": "Media Directories Compatibility",
+  "data_name": "media_directories_compat",
+  "description": "Converts legacy <drupal-entity> media embeds to <drupal-media> format at render time. Enable this on sites migrating from entity_embed-based media embedding.",
+  "version": "3.0.x",
+  "package": "Media Directories",
+  "composer_namespace": "drupal/media_directories",
+  "composer_requirements": {
+    "drupal/core": "^10.2 || ^11 || ^12"
+  },
+  "dependent_modules": [
+    "media_directories",
+    "media"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11 || ^12",
+  "active_installs": 5564,
+  "list_position": 600,
+  "project_url": "https://www.drupal.org/project/media_directories",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media",
+    "Import and export"
+  ],
+  "subcategories": [
+    "Rich text embedding",
+    "Content migration / import",
+    "Media embedding"
+  ],
+  "keywords": [
+    "media_directories_legacy_embed",
+    "drupal-entity",
+    "drupal-media",
+    "entity_embed migration",
+    "LegacyEntityEmbed",
+    "inline_display_modes",
+    "data-entity-embed-display",
+    "data-entity-embed-display-settings",
+    "view_mode:media.",
+    "legacy embeds",
+    "text filter"
+  ]
+}

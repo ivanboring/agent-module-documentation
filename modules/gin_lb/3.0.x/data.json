@@ -1,0 +1,59 @@
+{
+  "name": "Gin Layout Builder",
+  "data_name": "gin_lb",
+  "description": "Layout Builder in Gin style.",
+  "version": "3.0.x",
+  "package": "User interface",
+  "composer_namespace": "drupal/gin_lb",
+  "composer_requirements": {
+    "drupal/gin": "^5.0",
+    "drupal/gin_toolbar": "^3.0"
+  },
+  "dependent_modules": [
+    "drupal:layout_builder",
+    "gin_toolbar:gin_toolbar"
+  ],
+  "configure": "gin_lb.gin_lb_settings_form",
+  "core_version_requirement": "^11.2",
+  "active_installs": 5652,
+  "list_position": 590,
+  "project_url": "https://www.drupal.org/project/gin_lb",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "gin_lb_plus"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Content editing experience",
+    "Theming"
+  ],
+  "subcategories": [
+    "Layout Builder",
+    "Admin toolbar / navigation",
+    "Twig / component libraries"
+  ],
+  "keywords": [
+    "gin",
+    "gin_lb",
+    "layout builder",
+    "admin theme",
+    "glb-",
+    "theme suggestions",
+    "off-canvas",
+    "toastify",
+    "gin_toolbar",
+    "front-end theme",
+    "canvas-form",
+    "context validator",
+    "hook_gin_lb_show_toolbar_alter",
+    "hook_gin_lb_is_layout_builder_route_alter",
+    "glb_classes"
+  ]
+}

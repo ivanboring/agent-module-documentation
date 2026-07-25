@@ -1,0 +1,55 @@
+{
+  "name": "Pantheon Secrets",
+  "data_name": "pantheon_secrets",
+  "description": "Integration for Key module with Pantheon secrets",
+  "version": "1.1.x",
+  "package": "Security",
+  "composer_namespace": "drupal/pantheon_secrets",
+  "composer_requirements": {
+    "php": ">=8.2",
+    "drupal/key": "^1.16",
+    "pantheon-systems/customer-secrets-php-sdk": "^1.0"
+  },
+  "dependent_modules": [
+    "key:key"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 5921,
+  "list_position": 575,
+  "project_url": "https://www.drupal.org/project/pantheon_secrets",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.2",
+  "library_dependencies": [
+    "pantheon-systems/customer-secrets-php-sdk"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Secrets & key management"
+  ],
+  "keywords": [
+    "pantheon",
+    "secrets",
+    "key",
+    "key provider",
+    "KeyProvider",
+    "terminus",
+    "customer secrets",
+    "api key",
+    "credentials",
+    "secret_name",
+    "pantheon-secrets:sync",
+    "sync keys",
+    "base64",
+    "hosting",
+    "runtime secrets"
+  ]
+}

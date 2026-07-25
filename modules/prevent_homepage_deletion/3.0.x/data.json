@@ -1,0 +1,52 @@
+{
+  "name": "Prevent Homepage Deletion",
+  "data_name": "prevent_homepage_deletion",
+  "description": "With this module you can revoke the permission to delete specific nodes.",
+  "version": "3.0.x",
+  "package": "Access control",
+  "composer_namespace": "drupal/prevent_homepage_deletion",
+  "composer_requirements": {
+    "php": "^8.1",
+    "drupal/core": "^9 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "drupal:node"
+  ],
+  "configure": "prevent_homepage_deletion.settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 5437,
+  "list_position": 616,
+  "project_url": "https://www.drupal.org/project/prevent_homepage_deletion",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "^8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "User roles & permissions",
+    "Workflow / business rules"
+  ],
+  "keywords": [
+    "homepage",
+    "front page",
+    "protected pages",
+    "delete_homepage_node",
+    "prevent_homepage_deletion.settings",
+    "protected_urls",
+    "hook_node_access",
+    "hook_entity_field_access",
+    "unpublish protection",
+    "404 page",
+    "403 page",
+    "system.site",
+    "bypass node access"
+  ]
+}

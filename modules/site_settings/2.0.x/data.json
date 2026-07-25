@@ -1,0 +1,60 @@
+{
+  "name": "Site Settings and Labels",
+  "data_name": "site_settings",
+  "description": "Provides a site settings entity for non-admin controlled settings and labels",
+  "version": "2.0.x",
+  "package": "Site Settings",
+  "composer_namespace": "drupal/site_settings",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:views",
+    "drupal:user"
+  ],
+  "configure": "site_settings.site_settings_config_form",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 5492,
+  "list_position": 611,
+  "project_url": "https://www.drupal.org/project/site_settings",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/token": "Exposes every site setting as a token (test dependency, recommended in practice)."
+  },
+  "submodules": [
+    "site_settings_type_permissions"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "site_settings_loader"
+  ],
+  "categories": [
+    "Content editing experience",
+    "Site structure",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Structured content / page building",
+    "Configuration management",
+    "Token / placeholder replacement"
+  ],
+  "keywords": [
+    "site settings",
+    "labels",
+    "site_setting_entity",
+    "site_setting_entity_type",
+    "site_setting_group_entity_type",
+    "twig function",
+    "site_setting()",
+    "site_settings_by_name",
+    "all_site_settings",
+    "site_settings_by_group",
+    "SiteSettingsLoader plugin",
+    "flattened loader",
+    "full loader",
+    "tokens",
+    "replicate"
+  ]
+}

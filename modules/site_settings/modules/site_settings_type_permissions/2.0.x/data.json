@@ -1,0 +1,46 @@
+{
+  "name": "Site Settings and Labels Type Permissions",
+  "data_name": "site_settings_type_permissions",
+  "description": "Allows users to configure permissions for individual Site Settings types.",
+  "version": "2.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/site_settings",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "site_settings:site_settings"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 5492,
+  "list_position": 611,
+  "project_url": "https://www.drupal.org/project/site_settings",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "User roles & permissions",
+    "Field-level access control"
+  ],
+  "keywords": [
+    "site settings permissions",
+    "per-bundle permissions",
+    "permission_callbacks",
+    "SiteSettingTypePermissions",
+    "site_setting_entity access",
+    "hook_ENTITY_TYPE_access",
+    "hook_ENTITY_TYPE_create_access",
+    "views_pre_render",
+    "revisions",
+    "granular access"
+  ]
+}

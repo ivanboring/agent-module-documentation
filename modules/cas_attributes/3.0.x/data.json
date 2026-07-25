@@ -1,0 +1,55 @@
+{
+  "name": "CAS Attributes",
+  "data_name": "cas_attributes",
+  "description": "Provides tokens for CAS attributes and an interface for token replacement in user account fields as well as advanced role mapping capability.",
+  "version": "3.0.x",
+  "package": null,
+  "composer_namespace": "drupal/cas_attributes",
+  "composer_requirements": {
+    "drupal/cas": "^3.0",
+    "drupal/token": "*"
+  },
+  "dependent_modules": [
+    "cas:cas (^3.0)",
+    "token:token"
+  ],
+  "configure": "cas_attributes.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 5612,
+  "list_position": 595,
+  "project_url": "https://www.drupal.org/project/cas_attributes",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Security"
+  ],
+  "subcategories": [
+    "External authentication",
+    "User roles & permissions"
+  ],
+  "keywords": [
+    "CAS",
+    "single sign-on",
+    "SSO",
+    "attributes",
+    "token",
+    "cas:attribute",
+    "role mapping",
+    "field mapping",
+    "provisioning",
+    "eduPerson",
+    "CasPreLoginEvent",
+    "CasPreRegisterEvent",
+    "CasPostLoginEvent",
+    "sync_frequency",
+    "deny login"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "name": "Media Directories AI",
+  "data_name": "media_directories_ai",
+  "description": "AI-powered alt text generation and translation for Media Directories Browser",
+  "version": "3.0.x",
+  "package": "Media Directories",
+  "composer_namespace": "drupal/media_directories",
+  "composer_requirements": {
+    "drupal/core": "^10.2 || ^11 || ^12"
+  },
+  "dependent_modules": [
+    "media_directories_browser",
+    "ai"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11 || ^12",
+  "active_installs": 5564,
+  "list_position": 600,
+  "project_url": "https://www.drupal.org/project/media_directories",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/ai": "Hard dependency — supplies the provider plugin manager used for alt text and translation."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)",
+    "Media",
+    "Multilingual"
+  ],
+  "subcategories": [
+    "AI tooling / function calling",
+    "File & media metadata",
+    "Translation / multilingual"
+  ],
+  "keywords": [
+    "media_directories_ai.settings",
+    "enable_ai_alt_text",
+    "alt_text_prompt",
+    "ai_translation_types",
+    "translation_prompt",
+    "ai_fillable_fields",
+    "ai_translatable_fields",
+    "AiAltTextService",
+    "AiTranslationService",
+    "chat_with_image_vision",
+    "ai/alt-text",
+    "ai/translate",
+    "AiApiController",
+    "drupal/ai provider"
+  ]
+}
