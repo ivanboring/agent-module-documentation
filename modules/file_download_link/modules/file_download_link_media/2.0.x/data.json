@@ -1,0 +1,49 @@
+{
+  "name": "File Download Link Media",
+  "data_name": "file_download_link_media",
+  "description": "Adds field formatter to render Media reference fields as download link very directly.",
+  "version": "2.0.x",
+  "package": "Field",
+  "composer_namespace": "drupal/file_download_link",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "media",
+    "file_download_link"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": 5191,
+  "list_position": 634,
+  "project_url": "https://www.drupal.org/project/file_download_link",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/token": "Enables token replacement in the link text, title, ARIA label, download filename and CSS classes."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media",
+    "Content display"
+  ],
+  "subcategories": [
+    "Field formatters",
+    "Media embedding"
+  ],
+  "keywords": [
+    "media",
+    "download link",
+    "field formatter",
+    "entity reference",
+    "media reference",
+    "source file",
+    "file_download_link_media",
+    "force download",
+    "download",
+    "media source field"
+  ]
+}

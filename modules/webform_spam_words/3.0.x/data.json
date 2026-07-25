@@ -1,0 +1,50 @@
+{
+  "name": "Webform Spam Words",
+  "data_name": "webform_spam_words",
+  "description": "Provides the ability to block spam words for webform fields.",
+  "version": "3.0.x",
+  "package": "Webform",
+  "composer_namespace": "drupal/webform_spam_words",
+  "composer_requirements": {
+    "drupal/webform": ">=6.3"
+  },
+  "dependent_modules": [
+    "webform"
+  ],
+  "configure": "webform_spam_words.config",
+  "core_version_requirement": "^10.3 || ^11.0",
+  "active_installs": 5007,
+  "list_position": 645,
+  "project_url": "https://www.drupal.org/project/webform_spam_words",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Forms and surveys"
+  ],
+  "subcategories": [
+    "Spam prevention",
+    "Submission handling"
+  ],
+  "keywords": [
+    "webform",
+    "spam",
+    "spam words",
+    "blocklist",
+    "keyword filter",
+    "form validation",
+    "webform handler",
+    "spam prevention",
+    "block words",
+    "honeypot alternative",
+    "content filter",
+    "form spam"
+  ]
+}

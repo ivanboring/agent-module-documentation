@@ -1,0 +1,69 @@
+{
+  "name": "Gutenberg Editor",
+  "data_name": "gutenberg",
+  "description": "Advanced, yet easy to use content editor. Activate it on the content type edit page.",
+  "version": "3.0.x",
+  "package": "Gutenberg",
+  "composer_namespace": "drupal/gutenberg",
+  "composer_requirements": {
+    "php": ">=7.4",
+    "ext-json": "*",
+    "drupal/core": "^9.5 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "editor",
+    "node",
+    "views",
+    "user",
+    "block_content",
+    "image",
+    "file",
+    "filter",
+    "options",
+    "taxonomy"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": 5198,
+  "list_position": 632,
+  "project_url": "https://www.drupal.org/project/gutenberg",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=7.4",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "example_blocks"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "gutenberg_plugin"
+  ],
+  "categories": [
+    "Content editing experience",
+    "Content display"
+  ],
+  "subcategories": [
+    "Rich text embedding",
+    "Structured content / page building",
+    "Media embedding"
+  ],
+  "keywords": [
+    "gutenberg",
+    "wordpress gutenberg",
+    "block editor",
+    "content editor",
+    "text format",
+    "text editor",
+    "blocks",
+    "page building",
+    "reusable blocks",
+    "patterns",
+    "enable_full",
+    "gutenberg.settings",
+    "gutenberg_text",
+    "dynamic blocks",
+    "media library"
+  ]
+}

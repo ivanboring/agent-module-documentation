@@ -1,0 +1,48 @@
+{
+  "name": "Nodeaccess",
+  "data_name": "nodeaccess",
+  "description": "Provides per node access control.",
+  "version": "2.0.x",
+  "package": "Access control",
+  "composer_namespace": "drupal/nodeaccess",
+  "composer_requirements": {
+    "drupal/core": "^8.8 || ^9 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "node"
+  ],
+  "configure": "nodeaccess.administration",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": 5024,
+  "list_position": 643,
+  "project_url": "https://www.drupal.org/project/nodeaccess",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "User roles & permissions"
+  ],
+  "keywords": [
+    "node access",
+    "grants",
+    "per-node access control",
+    "view edit delete",
+    "hook_node_access_records",
+    "hook_node_grants",
+    "realm",
+    "nodeaccess_role",
+    "nodeaccess_user",
+    "nodeaccess_author",
+    "Grants tab",
+    "node_access table"
+  ]
+}

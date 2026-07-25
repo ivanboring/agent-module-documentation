@@ -1,0 +1,53 @@
+{
+  "name": "Core Context",
+  "data_name": "core_context",
+  "description": "Allows context values to be attached to entities in a field.",
+  "version": "1.2.x",
+  "package": null,
+  "composer_namespace": "drupal/core_context",
+  "composer_requirements": {
+    "drupal/ctools": "^3.15 || ^4.1"
+  },
+  "dependent_modules": [
+    "ctools"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": 5225,
+  "list_position": 631,
+  "project_url": "https://www.drupal.org/project/core_context",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/layout_library": "Pair per-layout contexts with reusable layouts.",
+    "drupal/page_manager": "Expose entity contexts to Page Manager variants (>= 4.0-beta6)."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Entity API",
+    "Layout Builder"
+  ],
+  "keywords": [
+    "context",
+    "context provider",
+    "ctools",
+    "layout builder",
+    "entity context",
+    "third party settings",
+    "context field",
+    "context handler",
+    "canonical entity",
+    "page manager",
+    "runtime contexts",
+    "ContextInterface"
+  ]
+}

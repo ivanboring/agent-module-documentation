@@ -1,0 +1,52 @@
+{
+  "name": "Audit Files",
+  "data_name": "auditfiles",
+  "description": "Allows for comparing and correcting files and file references in the \"files\" directory, in the database, and in content.",
+  "version": "4.2.x",
+  "package": "File",
+  "composer_namespace": "drupal/auditfiles",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "drupal/core": "^10.3 || ^11.1"
+  },
+  "dependent_modules": [
+    "file"
+  ],
+  "configure": "auditfiles.configuration",
+  "core_version_requirement": "^10.3 || ^11.1",
+  "active_installs": 5048,
+  "list_position": 641,
+  "project_url": "https://www.drupal.org/project/auditfiles",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Media"
+  ],
+  "subcategories": [
+    "File cleanup / deletion",
+    "Dashboard / reporting"
+  ],
+  "keywords": [
+    "audit",
+    "files",
+    "file_managed",
+    "file_usage",
+    "orphan files",
+    "reports",
+    "file references",
+    "not in database",
+    "not on server",
+    "merge file references",
+    "batch",
+    "reconcile",
+    "cleanup"
+  ]
+}

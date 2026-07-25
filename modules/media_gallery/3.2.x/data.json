@@ -1,0 +1,61 @@
+{
+  "name": "Media Gallery",
+  "data_name": "media_gallery",
+  "description": "The Media Gallery module allows you to create and manage galleries of media items on your Drupal site.",
+  "version": "3.2.x",
+  "package": "Media",
+  "composer_namespace": "drupal/media_gallery",
+  "composer_requirements": {
+    "drupal/photoswipe": "^5.0"
+  },
+  "dependent_modules": [
+    "text",
+    "media_library",
+    "photoswipe"
+  ],
+  "configure": "entity.media_gallery.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 8329,
+  "list_position": 623,
+  "project_url": "https://www.drupal.org/project/media_gallery",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "media_gallery_migration",
+    "media_gallery_migration2"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "media_gallery_layout"
+  ],
+  "categories": [
+    "Media",
+    "Content display"
+  ],
+  "subcategories": [
+    "Lightbox / modal display",
+    "Media embedding",
+    "View embedding"
+  ],
+  "keywords": [
+    "media gallery",
+    "gallery",
+    "media",
+    "photoswipe",
+    "lightbox",
+    "media_library",
+    "image gallery",
+    "media_gallery entity",
+    "gallery block",
+    "layout plugin",
+    "swiper",
+    "grid layout",
+    "pager",
+    "galleries view",
+    "pathauto alias type"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "name": "Webform Encrypt",
+  "data_name": "webform_encrypt",
+  "description": "Provides encryption for webform components.",
+  "version": "2.0.x",
+  "package": "Webform",
+  "composer_namespace": "drupal/webform_encrypt",
+  "composer_requirements": {
+    "drupal/webform": "^6.2",
+    "drupal/encrypt": "3.*"
+  },
+  "dependent_modules": [
+    "webform",
+    "encrypt"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": 5118,
+  "list_position": 639,
+  "project_url": "https://www.drupal.org/project/webform_encrypt",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Forms and surveys"
+  ],
+  "subcategories": [
+    "Secrets & key management",
+    "Submission handling"
+  ],
+  "keywords": [
+    "webform",
+    "encrypt",
+    "encryption",
+    "submission",
+    "third party settings",
+    "encryption profile",
+    "view encrypted values",
+    "GDPR",
+    "PII",
+    "at-rest encryption",
+    "webform_submission_data",
+    "element encryption",
+    "storage handler",
+    "access control handler"
+  ]
+}
