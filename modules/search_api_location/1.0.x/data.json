@@ -1,0 +1,61 @@
+{
+  "name": "Search API location",
+  "data_name": "search_api_location",
+  "description": "Provides location based search for the Search API module",
+  "version": "1.0.x",
+  "package": "Search",
+  "composer_namespace": "drupal/search_api_location",
+  "composer_requirements": {
+    "drupal/search_api": "^1.28",
+    "itamair/geophp": "^1.2"
+  },
+  "dependent_modules": [
+    "search_api"
+  ],
+  "configure": "search_api.overview",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": 3807,
+  "list_position": 749,
+  "project_url": "https://www.drupal.org/project/search_api_location",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [
+    "itamair/geophp"
+  ],
+  "suggests": {},
+  "submodules": [
+    "facets_map_widget",
+    "search_api_location_geocoder",
+    "search_api_location_views"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "location_input"
+  ],
+  "categories": [
+    "Site structure",
+    "Site search"
+  ],
+  "subcategories": [
+    "Geospatial / location",
+    "Search framework"
+  ],
+  "keywords": [
+    "search api",
+    "location",
+    "geofield",
+    "geospatial",
+    "proximity search",
+    "distance",
+    "latitude longitude",
+    "rpt",
+    "recursive prefix tree",
+    "heatmap",
+    "facets",
+    "solr",
+    "geophp",
+    "location input"
+  ]
+}

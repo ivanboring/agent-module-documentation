@@ -1,0 +1,53 @@
+{
+  "name": "Lightning Scheduler",
+  "data_name": "lightning_scheduler",
+  "description": "Allows you to schedule changes in moderation state.",
+  "version": "1.6.x",
+  "package": null,
+  "composer_namespace": "drupal/lightning_scheduler",
+  "composer_requirements": {
+    "php": ">=5.6.0"
+  },
+  "dependent_modules": [
+    "content_moderation",
+    "datetime"
+  ],
+  "configure": "lightning_scheduler.settings",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": 3681,
+  "list_position": 768,
+  "project_url": "https://www.drupal.org/project/lightning_scheduler",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=5.6.0",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Automation",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Content scheduling / publishing",
+    "Workflow / state management"
+  ],
+  "keywords": [
+    "scheduler",
+    "schedule",
+    "moderation",
+    "content moderation",
+    "workflow",
+    "transition",
+    "scheduled_transition_date",
+    "scheduled_transition_state",
+    "publish",
+    "unpublish",
+    "cron",
+    "lightning",
+    "moderation state",
+    "time_step"
+  ]
+}

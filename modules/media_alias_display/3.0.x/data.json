@@ -1,0 +1,53 @@
+{
+  "name": "Media Alias Display",
+  "data_name": "media_alias_display",
+  "description": "Allows files to be displayed via media alias",
+  "version": "3.0.x",
+  "package": "Media",
+  "composer_namespace": "drupal/media_alias_display",
+  "composer_requirements": {
+    "drupal/core": "^11.3 || ^12"
+  },
+  "dependent_modules": [
+    "media_library"
+  ],
+  "configure": "media_alias_display.settings_form",
+  "core_version_requirement": "^11.3 || ^12",
+  "active_installs": null,
+  "list_position": 739,
+  "project_url": "https://www.drupal.org/project/media_alias_display",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "media_alias_display_field_override"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media",
+    "Content display"
+  ],
+  "subcategories": [
+    "Entity page behavior & redirects"
+  ],
+  "keywords": [
+    "media",
+    "file",
+    "alias",
+    "url alias",
+    "standalone url",
+    "display file",
+    "pdf",
+    "download",
+    "stream file",
+    "canonical route",
+    "kill switch",
+    "media bundle",
+    "BinaryFileResponse",
+    "edit-media"
+  ]
+}

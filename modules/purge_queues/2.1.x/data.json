@@ -1,0 +1,53 @@
+{
+  "name": "Purge queue with unique items",
+  "data_name": "purge_queues",
+  "description": "Provides extra purge queue plugins.",
+  "version": "2.1.x",
+  "package": "Purge",
+  "composer_namespace": "drupal/purge_queues",
+  "composer_requirements": {
+    "php": ">=7.2",
+    "drupal/purge": "^3",
+    "drupal/core": "^8 || ^9 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "purge"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": 3728,
+  "list_position": 762,
+  "project_url": "https://www.drupal.org/project/purge_queues",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=7.2",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Cache invalidation",
+    "Queue / background processing"
+  ],
+  "keywords": [
+    "purge",
+    "queue",
+    "cache invalidation",
+    "duplicate items",
+    "unique queue",
+    "database queue",
+    "upsert",
+    "PurgeQueue",
+    "database_unique",
+    "database_alt",
+    "database_unique_upsert",
+    "reverse proxy",
+    "CDN"
+  ]
+}

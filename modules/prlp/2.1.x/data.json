@@ -1,0 +1,47 @@
+{
+  "name": "Password Reset Landing Page (PRLP)",
+  "data_name": "prlp",
+  "description": "Enhances the password reset landing page by letting user change their password on arrival via the password reset link",
+  "version": "2.1.x",
+  "package": "Administration",
+  "composer_namespace": "drupal/prlp",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "prlp.prlp_admin_settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 740,
+  "project_url": "https://www.drupal.org/project/prlp",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "prlp_password_policy"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Password policy"
+  ],
+  "keywords": [
+    "password",
+    "password reset",
+    "landing page",
+    "one-time login",
+    "user.reset.login",
+    "user_pass_reset",
+    "set new password",
+    "login destination",
+    "password_required",
+    "login_destination",
+    "prlp",
+    "event",
+    "password policy"
+  ]
+}

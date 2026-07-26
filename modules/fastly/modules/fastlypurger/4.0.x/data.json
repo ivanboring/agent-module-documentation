@@ -1,0 +1,47 @@
+{
+  "name": "Fastly Purger",
+  "data_name": "fastlypurger",
+  "description": "Integration with the Fastly service and the Purge module.",
+  "version": "4.0.x",
+  "package": "Purge - reverse proxies & CDNs",
+  "composer_namespace": "drupal/fastly",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "fastly",
+    "purge"
+  ],
+  "configure": "fastly.admin_settings_form",
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 757,
+  "project_url": "https://www.drupal.org/project/fastly",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "Cache invalidation"
+  ],
+  "keywords": [
+    "fastly",
+    "purge",
+    "purger",
+    "cache invalidation",
+    "surrogate key",
+    "cdn",
+    "diagnostic check",
+    "fastly_creds",
+    "purge module",
+    "tag purge",
+    "url purge",
+    "everything"
+  ]
+}

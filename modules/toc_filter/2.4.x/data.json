@@ -1,0 +1,49 @@
+{
+  "name": "TOC Filter",
+  "data_name": "toc_filter",
+  "description": "Converts header tags into a hierarchical table of contents.",
+  "version": "2.4.x",
+  "package": "Input filters",
+  "composer_namespace": "drupal/toc_filter",
+  "composer_requirements": {
+    "drupal/toc_api": "*"
+  },
+  "dependent_modules": [
+    "filter",
+    "toc_api"
+  ],
+  "configure": "entity.toc_type.list",
+  "core_version_requirement": "^9.2 || ^10 || ^11",
+  "active_installs": 3854,
+  "list_position": 772,
+  "project_url": "https://www.drupal.org/project/toc_filter",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Table of contents"
+  ],
+  "keywords": [
+    "toc",
+    "table of contents",
+    "filter",
+    "text format",
+    "input filter",
+    "[toc]",
+    "header",
+    "heading",
+    "anchor",
+    "toc_api",
+    "block",
+    "navigation"
+  ]
+}

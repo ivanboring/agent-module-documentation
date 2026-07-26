@@ -1,0 +1,53 @@
+{
+  "name": "JSON:API Image Styles",
+  "data_name": "jsonapi_image_styles",
+  "description": "Expose image styles to JSON:API",
+  "version": "3.0.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/jsonapi_image_styles",
+  "composer_requirements": {
+    "drupal/core": "^9 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "jsonapi",
+    "image"
+  ],
+  "configure": "jsonapi_image_styles.settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 3671,
+  "list_position": 769,
+  "project_url": "https://www.drupal.org/project/jsonapi_image_styles",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Decoupled",
+    "Media"
+  ],
+  "subcategories": [
+    "REST / web services",
+    "Image toolkit / processing"
+  ],
+  "keywords": [
+    "jsonapi",
+    "json:api",
+    "image style",
+    "image styles",
+    "decoupled",
+    "headless",
+    "derivative",
+    "image_style_uri",
+    "file entity",
+    "computed field",
+    "web services",
+    "frontend",
+    "crop",
+    "responsive images"
+  ]
+}

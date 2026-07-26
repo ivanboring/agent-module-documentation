@@ -1,0 +1,45 @@
+{
+  "name": "Password Reset Landing Page (PRLP) Password Policy",
+  "data_name": "prlp_password_policy",
+  "description": "Provides integration between Password Reset Landing Page (PRLP) and Password Policy modules.",
+  "version": "2.1.x",
+  "package": "Administration",
+  "composer_namespace": "drupal/prlp",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "prlp",
+    "password_policy"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 740,
+  "project_url": "https://www.drupal.org/project/prlp",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Password policy"
+  ],
+  "keywords": [
+    "prlp",
+    "password policy",
+    "integration",
+    "password reset",
+    "constraints table",
+    "show_policy_table",
+    "event subscriber",
+    "validation manager",
+    "password expiration",
+    "field_last_password_reset"
+  ]
+}

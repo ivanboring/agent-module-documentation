@@ -1,0 +1,58 @@
+{
+  "name": "Mailchimp Transactional",
+  "data_name": "mailchimp_transactional",
+  "description": "Allow for site emails to be sent through Mailchimp Transactional.",
+  "version": "1.2.x",
+  "package": "Mailchimp Transactional",
+  "composer_namespace": "drupal/mailchimp_transactional",
+  "composer_requirements": {
+    "mailchimp/transactional": "^1.0.47",
+    "drupal/mailsystem": "^4"
+  },
+  "dependent_modules": [
+    "mailsystem"
+  ],
+  "configure": "mailchimp_transactional.admin",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 3727,
+  "list_position": 763,
+  "project_url": "https://www.drupal.org/project/mailchimp_transactional",
+  "license": null,
+  "php_requirement": "7.4",
+  "library_dependencies": {
+    "mailchimp/transactional": "^1.0.47"
+  },
+  "suggests": {},
+  "submodules": [
+    "mailchimp_transactional_activity",
+    "mailchimp_transactional_reports",
+    "mailchimp_transactional_template"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Email / mail delivery",
+    "Email / SMTP"
+  ],
+  "keywords": [
+    "mailchimp",
+    "transactional",
+    "mandrill",
+    "email",
+    "mail",
+    "mailsystem",
+    "smtp alternative",
+    "transactional email",
+    "mail plugin",
+    "queue mail",
+    "attachments",
+    "subaccount",
+    "api",
+    "email delivery"
+  ]
+}
