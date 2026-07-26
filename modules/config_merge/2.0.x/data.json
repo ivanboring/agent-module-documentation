@@ -1,0 +1,50 @@
+{
+  "name": "Config Merge",
+  "data_name": "config_merge",
+  "description": "Enables three-way merges of configuration items. This is useful for safely merging configuration updates while retaining any customizations.",
+  "version": "2.0.x",
+  "package": "Configuration",
+  "composer_namespace": "drupal/config_merge",
+  "composer_requirements": {
+    "php": ">=8.0"
+  },
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": 3186,
+  "list_position": 833,
+  "project_url": "https://www.drupal.org/project/config_merge",
+  "license": "GPL-2.0+",
+  "php_requirement": ">=8.0",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "config_merge_filter"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Configuration management",
+    "Deployment / release management"
+  ],
+  "keywords": [
+    "config merge",
+    "three-way merge",
+    "3-way merge",
+    "ConfigMerger",
+    "mergeConfigItemStates",
+    "configuration updates",
+    "retain customizations",
+    "snapshot",
+    "config_filter",
+    "POST_MERGE event",
+    "update ignore substitute",
+    "configuration management"
+  ]
+}

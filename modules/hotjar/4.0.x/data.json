@@ -1,0 +1,50 @@
+{
+  "name": "Hotjar",
+  "data_name": "hotjar",
+  "description": "Allows your site to be tracked by Hotjar by adding a Javascript tracking code to every page.",
+  "version": "4.0.x",
+  "package": "Statistics",
+  "composer_namespace": "drupal/hotjar",
+  "composer_requirements": {
+    "ext-json": "*",
+    "drupal/core": "^10.2 || ^11"
+  },
+  "dependent_modules": [
+    "path_alias"
+  ],
+  "configure": "hotjar.admin_settings_form",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 3710,
+  "list_position": 823,
+  "project_url": "https://www.drupal.org/project/hotjar",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Analytics & tracking",
+    "Analytics / tag management"
+  ],
+  "keywords": [
+    "hotjar",
+    "analytics",
+    "tracking",
+    "heatmap",
+    "session recording",
+    "user behaviour",
+    "javascript snippet",
+    "page attachments",
+    "visibility by page",
+    "visibility by role",
+    "hjid",
+    "conversion"
+  ]
+}

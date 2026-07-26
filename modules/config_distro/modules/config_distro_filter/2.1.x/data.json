@@ -1,0 +1,47 @@
+{
+  "name": "Config Distro Filter",
+  "data_name": "config_distro_filter",
+  "description": "Bridge between Config Filter and Config Distro's use of Transform API to keep backwards compatibility.",
+  "version": "2.1.x",
+  "package": "Configuration",
+  "composer_namespace": "drupal/config_distro",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "config_distro",
+    "config_filter"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 3177,
+  "list_position": 836,
+  "project_url": "https://www.drupal.org/project/config_distro",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "lifecycle": "deprecated",
+  "categories": [
+    "Administration tools",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Configuration management",
+    "Deployment / release management"
+  ],
+  "keywords": [
+    "config distro filter",
+    "deprecated",
+    "config_filter bridge",
+    "transform event",
+    "config_distro.transform",
+    "backwards compatibility",
+    "event subscriber",
+    "ConfigFilterStorageFactory",
+    "distro storage"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "name": "Config Distro",
+  "data_name": "config_distro",
+  "description": "Framework for managing configuration updates from distributions.",
+  "version": "2.1.x",
+  "package": "Configuration",
+  "composer_namespace": "drupal/config_distro",
+  "composer_requirements": {
+    "drupal/config_filter": "*"
+  },
+  "dependent_modules": [
+    "config"
+  ],
+  "configure": "config_distro.import",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 3177,
+  "list_position": 836,
+  "project_url": "https://www.drupal.org/project/config_distro",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drush/drush": ">=11"
+  },
+  "submodules": [
+    "config_distro_filter",
+    "config_distro_ignore"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Configuration management",
+    "Deployment / release management"
+  ],
+  "keywords": [
+    "config distro",
+    "distribution",
+    "configuration updates",
+    "config_distro.storage.distro",
+    "transform event",
+    "import event",
+    "config-distro-update",
+    "cd-update",
+    "StorageComparer",
+    "config_filter",
+    "config_sync",
+    "distro storage",
+    "synchronize distro configuration"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "name": "Media PDF Thumbnail",
+  "data_name": "media_pdf_thumbnail",
+  "description": "Generate a thumbnail image from a pdf file in media entity",
+  "version": "7.0.x",
+  "package": "Media",
+  "composer_namespace": "drupal/media_pdf_thumbnail",
+  "composer_requirements": {
+    "ext-imagick": "*",
+    "spatie/pdf-to-image": "^3.0",
+    "php": ">=8.2"
+  },
+  "dependent_modules": [
+    "media"
+  ],
+  "configure": "view.pdf_image_entity.list",
+  "core_version_requirement": "^10.4 || ^11.1",
+  "active_installs": 3285,
+  "list_position": 818,
+  "project_url": "https://www.drupal.org/project/media_pdf_thumbnail",
+  "license": "GPL-2.0+",
+  "php_requirement": ">=8.2",
+  "library_dependencies": [
+    "spatie/pdf-to-image"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "File & media metadata",
+    "Field formatters",
+    "Image toolkit / processing"
+  ],
+  "keywords": [
+    "media",
+    "pdf",
+    "thumbnail",
+    "imagick",
+    "spatie/pdf-to-image",
+    "field formatter",
+    "pdf_image_entity",
+    "media_pdf_thumbnail_image_field_formatter",
+    "queue",
+    "tokens",
+    "first page image"
+  ]
+}

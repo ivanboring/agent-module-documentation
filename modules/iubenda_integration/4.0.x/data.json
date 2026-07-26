@@ -1,0 +1,51 @@
+{
+  "name": "Iubenda Integration",
+  "data_name": "iubenda_integration",
+  "description": "This module provides Iubenda privacy and cookies solutions.",
+  "version": "4.0.x",
+  "package": "Other",
+  "composer_namespace": "drupal/iubenda_integration",
+  "composer_requirements": {
+    "iubenda/iubenda-cookie-class": "4.1.15"
+  },
+  "dependent_modules": [
+    "block"
+  ],
+  "configure": "iubenda_integration.settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 3105,
+  "list_position": 848,
+  "project_url": "https://www.drupal.org/project/iubenda_integration",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "iubenda/iubenda-cookie-class"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "Security"
+  ],
+  "subcategories": [
+    "Cookie consent / GDPR"
+  ],
+  "keywords": [
+    "iubenda",
+    "cookie consent",
+    "GDPR",
+    "privacy policy",
+    "cookie solution",
+    "consent solution",
+    "cookie banner",
+    "LGPD",
+    "privacy",
+    "compliance",
+    "block",
+    "token"
+  ]
+}

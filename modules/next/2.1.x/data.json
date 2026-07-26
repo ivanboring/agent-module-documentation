@@ -1,0 +1,72 @@
+{
+  "name": "Next.js",
+  "data_name": "next",
+  "description": "Next.js + Drupal for Incremental Static Regeneration and Draft mode.",
+  "version": "2.1.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/next",
+  "composer_requirements": {
+    "drupal/decoupled_router": "^2.0",
+    "drupal/pathauto": "^1.11",
+    "drupal/simple_oauth": "^5.0 || ^6.0",
+    "drupal/subrequests": "^3.0"
+  },
+  "dependent_modules": [
+    "decoupled_router",
+    "simple_oauth",
+    "subrequests",
+    "pathauto"
+  ],
+  "configure": "entity.next_site.collection",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 3238,
+  "list_position": 828,
+  "project_url": "https://www.drupal.org/project/next",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "next_extras",
+    "next_graphql",
+    "next_jsonapi",
+    "next_jwt"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "site_resolver",
+    "site_previewer",
+    "preview_url_generator",
+    "revalidator"
+  ],
+  "categories": [
+    "Decoupled"
+  ],
+  "subcategories": [
+    "Static site generation",
+    "Preview & draft mode",
+    "On-demand revalidation",
+    "REST / web services"
+  ],
+  "keywords": [
+    "next.js",
+    "nextjs",
+    "decoupled",
+    "headless",
+    "incremental static regeneration",
+    "ISR",
+    "draft mode",
+    "preview",
+    "on-demand revalidation",
+    "next_site",
+    "next_entity_type_config",
+    "site resolver",
+    "site previewer",
+    "preview url generator",
+    "revalidator",
+    "simple_oauth",
+    "JSON:API"
+  ]
+}

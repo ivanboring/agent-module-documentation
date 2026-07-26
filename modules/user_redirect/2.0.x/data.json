@@ -1,0 +1,48 @@
+{
+  "name": "User Redirect",
+  "data_name": "user_redirect",
+  "description": "This module helps user to redirect after login/logout.",
+  "version": "2.0.x",
+  "package": "users",
+  "composer_namespace": "drupal/user_redirect",
+  "composer_requirements": {
+    "drupal/core": "^9.5 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "user",
+    "path_alias"
+  ],
+  "configure": "user_redirect.settings",
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": 3290,
+  "list_position": 816,
+  "project_url": "https://www.drupal.org/project/user_redirect",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Session management",
+    "Entity page behavior & redirects"
+  ],
+  "keywords": [
+    "user_redirect",
+    "login redirect",
+    "logout redirect",
+    "redirect per role",
+    "destination",
+    "role priority",
+    "ignore paths",
+    "hook_user_login",
+    "hook_user_logout",
+    "TrustedRedirectResponse"
+  ]
+}

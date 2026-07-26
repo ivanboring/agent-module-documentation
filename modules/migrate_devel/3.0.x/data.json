@@ -1,0 +1,55 @@
+{
+  "name": "Migrate Devel",
+  "data_name": "migrate_devel",
+  "description": "Migrate Development Tools",
+  "version": "3.0.x",
+  "package": "Migration",
+  "composer_namespace": "drupal/migrate_devel",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "migrate"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": 3097,
+  "list_position": 850,
+  "project_url": "https://www.drupal.org/project/migrate_devel",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/migrate_plus": "Config-entity migrations (revert on --migrate-debug)",
+    "drupal/migrate_tools": "drush migrate:import / migrate:status commands",
+    "drupal/config_update": "Required to revert migrate_plus config on --migrate-debug"
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools",
+    "Import and export"
+  ],
+  "subcategories": [
+    "Migration tooling",
+    "Debugging & inspection"
+  ],
+  "keywords": [
+    "migrate",
+    "migration",
+    "debug",
+    "migrate-debug",
+    "migrate-debug-pre",
+    "debug process plugin",
+    "dump",
+    "VarDumper",
+    "event subscriber",
+    "MigratePreRowSaveEvent",
+    "MigratePostRowSaveEvent",
+    "drush",
+    "migrate:import",
+    "developer tools",
+    "row source destination"
+  ]
+}
