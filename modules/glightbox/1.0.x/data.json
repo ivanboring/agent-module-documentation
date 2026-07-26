@@ -1,0 +1,59 @@
+{
+  "name": "GLightbox",
+  "data_name": "glightbox",
+  "description": "GLightbox is a pure javascript lightbox.",
+  "version": "1.0.x",
+  "package": "Media",
+  "composer_namespace": "drupal/glightbox",
+  "composer_requirements": {
+    "drupal/core": "^8.8 || ^9 || ^10 || ^11",
+    "levmyshkin/dom_purify": "^3.2",
+    "levmyshkin/glightbox": "^3.2",
+    "levmyshkin/plyr": "^3.7"
+  },
+  "dependent_modules": [
+    "image"
+  ],
+  "configure": "glightbox.admin_settings",
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": 3344,
+  "list_position": 807,
+  "project_url": "https://www.drupal.org/project/glightbox",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "levmyshkin/dom_purify",
+    "levmyshkin/glightbox",
+    "levmyshkin/plyr"
+  ],
+  "suggests": {},
+  "submodules": [
+    "glightbox_inline"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media",
+    "Content display"
+  ],
+  "subcategories": [
+    "Lightbox / modal display"
+  ],
+  "keywords": [
+    "glightbox",
+    "lightbox",
+    "modal",
+    "popup",
+    "gallery",
+    "image",
+    "video",
+    "plyr",
+    "responsive image",
+    "field formatter",
+    "pure javascript",
+    "media",
+    "zoom"
+  ]
+}

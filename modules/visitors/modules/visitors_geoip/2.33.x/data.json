@@ -1,0 +1,46 @@
+{
+  "name": "Visitors GeoIP",
+  "data_name": "visitors_geoip",
+  "description": "Add country reports to stats",
+  "version": "2.33.x",
+  "package": "Analytics",
+  "composer_namespace": "drupal/visitors",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "visitors"
+  ],
+  "configure": "visitors_geoip.settings",
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": 3415,
+  "list_position": 800,
+  "project_url": "https://www.drupal.org/project/visitors",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "geoip2/geoip2"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Analytics & tracking"
+  ],
+  "keywords": [
+    "visitors",
+    "geoip",
+    "geolocation",
+    "maxmind",
+    "geolite2",
+    "country report",
+    "region",
+    "city",
+    "web analytics",
+    "geoip2"
+  ]
+}

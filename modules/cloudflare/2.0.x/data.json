@@ -1,0 +1,58 @@
+{
+  "name": "Cloudflare",
+  "data_name": "cloudflare",
+  "description": "Cloudflare CDN integration.",
+  "version": "2.0.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/cloudflare",
+  "composer_requirements": {
+    "ext-json": "*",
+    "drupal/ctools": "^3.0 || ^4.0"
+  },
+  "dependent_modules": [
+    "ctools"
+  ],
+  "configure": "cloudflare.admin_settings_form",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 3970,
+  "list_position": 776,
+  "project_url": "https://www.drupal.org/project/cloudflare",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/purge": "Required by the cloudflarepurger submodule for cache clearing",
+    "drupal/purge_queuer_url": "For purging by URL"
+  },
+  "submodules": [
+    "cloudflarepurger"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Cache invalidation",
+    "HTTP cache headers"
+  ],
+  "keywords": [
+    "cloudflare",
+    "cdn",
+    "cache",
+    "purge",
+    "client ip",
+    "restore ip",
+    "api token",
+    "api key",
+    "zones",
+    "reverse proxy",
+    "middleware",
+    "CF-Connecting-IP",
+    "bypass host",
+    "auth_using"
+  ]
+}

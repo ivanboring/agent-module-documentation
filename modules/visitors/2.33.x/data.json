@@ -1,0 +1,59 @@
+{
+  "name": "Visitors",
+  "data_name": "visitors",
+  "description": "Logs visitor's actions.",
+  "version": "2.33.x",
+  "package": "Analytics",
+  "composer_namespace": "drupal/visitors",
+  "composer_requirements": {
+    "drupal/core": "^10 || ^11",
+    "geoip2/geoip2": "~2.0",
+    "matomo/device-detector": "^6.1",
+    "drupal/charts": "^5"
+  },
+  "dependent_modules": [
+    "views",
+    "path",
+    "charts_chartjs"
+  ],
+  "configure": "visitors.settings",
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": 3415,
+  "list_position": 800,
+  "project_url": "https://www.drupal.org/project/visitors",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "geoip2/geoip2",
+    "matomo/device-detector"
+  ],
+  "suggests": {},
+  "submodules": [
+    "visitors_geoip"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Analytics & tracking"
+  ],
+  "keywords": [
+    "visitors",
+    "web analytics",
+    "statistics",
+    "page views",
+    "hit counter",
+    "tracking",
+    "device detection",
+    "referrers",
+    "reports",
+    "charts",
+    "cookieless analytics",
+    "self-hosted analytics",
+    "matomo device-detector"
+  ]
+}

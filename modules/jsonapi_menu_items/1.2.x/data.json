@@ -1,0 +1,59 @@
+{
+  "name": "JSON:API Menu items",
+  "data_name": "jsonapi_menu_items",
+  "description": "Adds a JSON API resource for menu items.",
+  "version": "1.2.x",
+  "package": null,
+  "composer_namespace": "drupal/jsonapi_menu_items",
+  "composer_requirements": {
+    "drupal/jsonapi_resources": "^1.0",
+    "drupal/core": "^9.5 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "menu_link_content",
+    "jsonapi_resources"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": 3299,
+  "list_position": 815,
+  "project_url": "https://www.drupal.org/project/jsonapi_menu_items",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/jsonapi_hypermedia": "Adds menu_items links to the /jsonapi root document (via the jsonapi_menu_items_hypermedia submodule).",
+    "drupal/menu_link_config": "Exposes config-defined menu links in the resource.",
+    "drupal/menu_item_extras": "Exposes extra fields added to menu links."
+  },
+  "submodules": [
+    "jsonapi_menu_items_hypermedia"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Decoupled"
+  ],
+  "subcategories": [
+    "REST / web services"
+  ],
+  "keywords": [
+    "jsonapi",
+    "json:api",
+    "menu",
+    "menu items",
+    "menu links",
+    "decoupled",
+    "headless",
+    "rest",
+    "web services",
+    "menu_link_content",
+    "menu_link_config",
+    "jsonapi_resources",
+    "navigation",
+    "filter",
+    "depth"
+  ]
+}

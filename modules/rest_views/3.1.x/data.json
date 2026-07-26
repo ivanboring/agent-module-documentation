@@ -1,0 +1,62 @@
+{
+  "name": "REST Views",
+  "data_name": "rest_views",
+  "description": "Expose fields and entity references in REST view displays.",
+  "version": "3.1.x",
+  "package": "REST Views",
+  "composer_namespace": "drupal/rest_views",
+  "composer_requirements": {
+    "php": "^8",
+    "drupal/core": "^10.1 || ^11"
+  },
+  "dependent_modules": [
+    "views",
+    "rest"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": 3595,
+  "list_position": 777,
+  "project_url": "https://www.drupal.org/project/rest_views",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "^8",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/entity_reference_revisions": "Export entity reference revisions (paragraphs) via rest_views_revisions",
+    "drupal/search_api": "Export Search API fields via rest_views_search_api"
+  },
+  "submodules": [
+    "rest_views_geo",
+    "rest_views_revisions",
+    "rest_views_search_api"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Decoupled",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "REST / web services",
+    "Data export"
+  ],
+  "keywords": [
+    "rest",
+    "rest export",
+    "views",
+    "serializer",
+    "json",
+    "decoupled",
+    "field serializable",
+    "field_export",
+    "entity reference export",
+    "nested data",
+    "export formatter",
+    "SerializedData",
+    "boolean_export",
+    "number_export",
+    "headless"
+  ]
+}

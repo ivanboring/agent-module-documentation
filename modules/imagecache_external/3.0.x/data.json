@@ -1,0 +1,54 @@
+{
+  "name": "Imagecache External",
+  "data_name": "imagecache_external",
+  "description": "Allows you to fetch external images and use image styles on them.",
+  "version": "3.0.x",
+  "package": null,
+  "composer_namespace": "drupal/imagecache_external",
+  "composer_requirements": {
+    "enshrined/svg-sanitize": "~0.22"
+  },
+  "dependent_modules": [
+    "image"
+  ],
+  "configure": "imagecache_external.admin_settings",
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": 4247,
+  "list_position": 813,
+  "project_url": "https://www.drupal.org/project/imagecache_external",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [
+    "enshrined/svg-sanitize"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Field formatters",
+    "Image toolkit / processing"
+  ],
+  "keywords": [
+    "external images",
+    "image style",
+    "remote image",
+    "imagecache",
+    "cache",
+    "fetch",
+    "twig filter",
+    "field formatter",
+    "responsive image",
+    "svg sanitize",
+    "whitelist",
+    "hotlink",
+    "flush",
+    "cron",
+    "fallback image"
+  ]
+}

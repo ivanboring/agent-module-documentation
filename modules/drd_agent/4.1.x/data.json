@@ -1,0 +1,55 @@
+{
+  "name": "DRD Agent",
+  "data_name": "drd_agent",
+  "description": "Agent on remote Drupal sites for the main DRD module.",
+  "version": "4.1.x",
+  "package": "Administration",
+  "composer_namespace": "drupal/drd_agent",
+  "composer_requirements": {
+    "php": ">=8.1"
+  },
+  "dependent_modules": [],
+  "configure": "drd_agent.settings.form",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 3445,
+  "list_position": 798,
+  "project_url": "https://www.drupal.org/project/drd_agent",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/hacked": "Validate each project if it got changed compared to the original code from drupal.org.",
+    "drupal/monitoring": "Site monitoring module with sensors.",
+    "drupal/security_review": "Site security and configuration review module."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "drd_pi_auth"
+  ],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Deployment / release management",
+    "Dashboard / reporting"
+  ],
+  "keywords": [
+    "drd",
+    "drupal remote dashboard",
+    "remote management",
+    "agent",
+    "site monitoring",
+    "remote actions",
+    "cron",
+    "flush cache",
+    "maintenance mode",
+    "encrypted",
+    "acquia",
+    "pantheon",
+    "platform.sh",
+    "drd:agent:setup"
+  ]
+}

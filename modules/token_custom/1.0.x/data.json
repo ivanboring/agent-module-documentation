@@ -1,0 +1,52 @@
+{
+  "name": "Custom Tokens",
+  "data_name": "token_custom",
+  "description": "Allow users to define custom tokens to use throughout the site",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/token_custom",
+  "composer_requirements": {
+    "drupal/token": "^1.1"
+  },
+  "dependent_modules": [
+    "filter",
+    "text",
+    "token"
+  ],
+  "configure": "entity.token_custom.collection",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 5984,
+  "list_position": 783,
+  "project_url": "https://www.drupal.org/project/token_custom",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience",
+    "Automation"
+  ],
+  "subcategories": [
+    "Token / placeholder replacement"
+  ],
+  "keywords": [
+    "token",
+    "custom token",
+    "token_custom",
+    "placeholder",
+    "replacement",
+    "hook_tokens",
+    "hook_token_info",
+    "token type",
+    "text format",
+    "reusable snippet",
+    "site-wide variable",
+    "custom placeholder",
+    "content entity"
+  ]
+}

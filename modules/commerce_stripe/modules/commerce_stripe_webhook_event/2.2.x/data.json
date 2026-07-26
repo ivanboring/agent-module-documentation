@@ -1,0 +1,44 @@
+{
+  "name": "Commerce Stripe Webhook Events",
+  "data_name": "commerce_stripe_webhook_event",
+  "description": "Logs Stripe webhook events to the database.",
+  "version": "2.2.x",
+  "package": "Commerce (contrib)",
+  "composer_namespace": "drupal/commerce_stripe",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "commerce_stripe"
+  ],
+  "configure": "commerce_stripe.settings",
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": 3467,
+  "list_position": 792,
+  "project_url": "https://www.drupal.org/project/commerce_stripe",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/advancedqueue": "Process logged webhook events asynchronously via a queue."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Payment gateway"
+  ],
+  "keywords": [
+    "stripe",
+    "webhook",
+    "webhook event log",
+    "commerce",
+    "advancedqueue",
+    "retention",
+    "audit",
+    "payment webhook"
+  ]
+}

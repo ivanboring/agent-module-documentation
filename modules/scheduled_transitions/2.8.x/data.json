@@ -1,0 +1,58 @@
+{
+  "name": "Scheduled Transitions",
+  "data_name": "scheduled_transitions",
+  "description": "Allows users to schedule a revision to change state.",
+  "version": "2.8.x",
+  "package": "Workflow",
+  "composer_namespace": "drupal/scheduled_transitions",
+  "composer_requirements": {
+    "php": ">=8.3",
+    "drupal/core": "^11.1",
+    "drupal/dynamic_entity_reference": "^3.0 || ^4.0"
+  },
+  "dependent_modules": [
+    "system",
+    "content_moderation",
+    "dynamic_entity_reference"
+  ],
+  "configure": "scheduled_transitions.settings",
+  "core_version_requirement": "^11.1",
+  "active_installs": 3468,
+  "list_position": 791,
+  "project_url": "https://www.drupal.org/project/scheduled_transitions",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.3",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/token": "Shows Token UI on Add Scheduled Transitions form."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Automation",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Content scheduling / publishing",
+    "Workflow / state management"
+  ],
+  "keywords": [
+    "scheduled transitions",
+    "content moderation",
+    "workflow",
+    "publish later",
+    "unpublish later",
+    "archive later",
+    "moderation state",
+    "revision",
+    "schedule publishing",
+    "editorial workflow",
+    "dynamic entity reference",
+    "queue",
+    "cron",
+    "scheduled_transition entity"
+  ]
+}
