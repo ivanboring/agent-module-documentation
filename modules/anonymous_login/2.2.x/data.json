@@ -1,0 +1,51 @@
+{
+  "name": "Anonymous Login",
+  "data_name": "anonymous_login",
+  "description": "Specify pages that when visited by anonymous users will be forced to login.",
+  "version": "2.2.x",
+  "package": null,
+  "composer_namespace": "drupal/anonymous_login",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "path_alias"
+  ],
+  "configure": "anonymous_login.settings",
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": 4260,
+  "list_position": 692,
+  "project_url": "https://www.drupal.org/project/anonymous_login",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Security"
+  ],
+  "subcategories": [
+    "Entity page behavior & redirects",
+    "Session management"
+  ],
+  "keywords": [
+    "anonymous",
+    "login",
+    "force login",
+    "private site",
+    "require login",
+    "path",
+    "wildcard path",
+    "exclude path",
+    "redirect",
+    "destination",
+    "event subscriber",
+    "KernelEvents::REQUEST",
+    "login_path",
+    "paths",
+    "path matcher"
+  ]
+}

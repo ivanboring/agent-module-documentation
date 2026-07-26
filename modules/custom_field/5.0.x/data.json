@@ -1,0 +1,77 @@
+{
+  "name": "Custom Field",
+  "data_name": "custom_field",
+  "description": "Create simple, but flexible, multi-value fields without the hassle of entity references.",
+  "version": "5.0.x",
+  "package": "Field",
+  "composer_namespace": "drupal/custom_field",
+  "composer_requirements": {
+    "drupal/core": "^11.4 || ^12"
+  },
+  "dependent_modules": [
+    "field",
+    "file",
+    "filter",
+    "image",
+    "link"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11.4 || ^12",
+  "active_installs": null,
+  "list_position": 693,
+  "project_url": "https://www.drupal.org/project/custom_field",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "custom_field_ai",
+    "custom_field_entity_browser",
+    "custom_field_graphql",
+    "custom_field_jsonapi",
+    "custom_field_linkit",
+    "custom_field_media",
+    "custom_field_sdc",
+    "custom_field_search_api",
+    "custom_field_viewfield"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "custom_field_type",
+    "custom_field_widget",
+    "custom_field_formatter",
+    "custom_field_feeds",
+    "custom_field_component_prop_widget",
+    "custom_field_link_attributes"
+  ],
+  "categories": [
+    "Content editing experience",
+    "Content display"
+  ],
+  "subcategories": [
+    "Fields",
+    "Computed / derived fields"
+  ],
+  "keywords": [
+    "custom field",
+    "custom",
+    "multi-value field",
+    "compound field",
+    "subfield",
+    "columns",
+    "single table",
+    "paragraphs alternative",
+    "entity reference alternative",
+    "custom_flex",
+    "custom_stacked",
+    "field type plugin",
+    "field widget plugin",
+    "field formatter plugin",
+    "flexbox widget",
+    "custom_field_type",
+    "custom:add-column",
+    "performance"
+  ]
+}

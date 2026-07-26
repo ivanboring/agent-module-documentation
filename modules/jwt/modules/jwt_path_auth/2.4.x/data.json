@@ -1,0 +1,48 @@
+{
+  "name": "JWT Path Authentication",
+  "data_name": "jwt_path_auth",
+  "description": "Authenticate using JWT in the query string applicable to a path.",
+  "version": "2.4.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/jwt",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "jwt:jwt"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.0 || ^10.0 || ^11.0",
+  "active_installs": null,
+  "list_position": 691,
+  "project_url": "https://www.drupal.org/project/jwt",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Security",
+    "Decoupled"
+  ],
+  "subcategories": [
+    "External authentication",
+    "Private file access",
+    "REST / web services"
+  ],
+  "keywords": [
+    "jwt",
+    "query string authentication",
+    "allowed_path_prefixes",
+    "jwt_path_auth.config",
+    "private files",
+    "system/files",
+    "path_auth claim",
+    "authentication provider",
+    "direct link auth",
+    "download link"
+  ]
+}

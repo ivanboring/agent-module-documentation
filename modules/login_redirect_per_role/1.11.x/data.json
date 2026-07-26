@@ -1,0 +1,56 @@
+{
+  "name": "Login And Logout Redirect Per Role",
+  "data_name": "login_redirect_per_role",
+  "description": "Provides ability to redirect user on Log in and Log out depending on user role.",
+  "version": "1.11.x",
+  "package": null,
+  "composer_namespace": "drupal/login_redirect_per_role",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "user",
+    "path_alias"
+  ],
+  "configure": "login_redirect_per_role.redirect_url_admin_settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 4352,
+  "list_position": 695,
+  "project_url": "https://www.drupal.org/project/login_redirect_per_role",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/token": "Use tokens (e.g. [current-user:uid]) inside a role's Redirect URL.",
+    "drupal/commerce": "Redirect skips the commerce_checkout.form route so checkout is not interrupted.",
+    "drupal/cas": "CAS integration: works alongside CAS login."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Entity page behavior & redirects",
+    "User roles & permissions",
+    "Session management"
+  ],
+  "keywords": [
+    "login redirect",
+    "logout redirect",
+    "redirect per role",
+    "role based redirect",
+    "user login",
+    "user logout",
+    "destination",
+    "hook_user_login",
+    "hook_user_logout",
+    "role priority",
+    "weight",
+    "allow destination",
+    "token redirect",
+    "front page redirect",
+    "landing page per role"
+  ]
+}

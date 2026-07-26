@@ -1,0 +1,52 @@
+{
+  "name": "Views Custom Table",
+  "data_name": "view_custom_table",
+  "description": "Extends views to use custom table data.",
+  "version": "2.0.x",
+  "package": "Views",
+  "composer_namespace": "drupal/view_custom_table",
+  "composer_requirements": {
+    "drupal/core": "^10.1 || ^11"
+  },
+  "dependent_modules": [
+    "views"
+  ],
+  "configure": "view_custom_table.customtable",
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": 4664,
+  "list_position": 668,
+  "project_url": "https://www.drupal.org/project/view_custom_table",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Views query enhancements",
+    "External database tables"
+  ],
+  "keywords": [
+    "views",
+    "custom table",
+    "non-entity data",
+    "hook_views_data",
+    "views base table",
+    "external database",
+    "legacy table",
+    "views integration",
+    "view_custom_table.tables",
+    "column relations",
+    "mysql_date",
+    "reports",
+    "raw table",
+    "relationship"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "name": "CKEditor Media Embed plugin",
+  "data_name": "ckeditor_media_embed",
+  "description": "Adds the Media Embed CKEditor plugins to Drupal.",
+  "version": "2.0.x",
+  "package": "CKEditor 5",
+  "composer_namespace": "drupal/ckeditor_media_embed",
+  "composer_requirements": {
+    "drupal/core": "^10.3 || ^11"
+  },
+  "dependent_modules": [
+    "ckeditor5"
+  ],
+  "configure": "ckeditor_media_embed.ckeditor_media_embed_settings_form",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 4518,
+  "list_position": 679,
+  "project_url": "https://www.drupal.org/project/ckeditor_media_embed",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience",
+    "Media"
+  ],
+  "subcategories": [
+    "Rich text embedding",
+    "Media embedding"
+  ],
+  "keywords": [
+    "ckeditor",
+    "ckeditor5",
+    "media embed",
+    "oembed",
+    "iframely",
+    "noembed",
+    "embed.ly",
+    "video embed",
+    "tweet embed",
+    "provider url",
+    "text filter",
+    "link formatter",
+    "rich text",
+    "wysiwyg"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "name": "JWT OAuth Client Credentials",
+  "data_name": "jwt_oauth_ccf",
+  "description": "Issues short-lived JWTs via the OAuth 2.0 client credentials grant (machine-to-machine), with per-user client credential management for service accounts.",
+  "version": "2.4.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/jwt",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "jwt:jwt",
+    "drupal:user"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.0 || ^10.0 || ^11.0",
+  "active_installs": null,
+  "list_position": 691,
+  "project_url": "https://www.drupal.org/project/jwt",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Security",
+    "Decoupled"
+  ],
+  "subcategories": [
+    "External authentication",
+    "REST / web services",
+    "Secrets & key management"
+  ],
+  "keywords": [
+    "jwt",
+    "jwt_oauth_ccf",
+    "oauth2",
+    "client credentials grant",
+    "machine-to-machine",
+    "service account",
+    "client_id",
+    "client_secret",
+    "oauth2/token",
+    "ClientCredential",
+    "ClientCredentialRepository",
+    "jwt_oauth_ccf.client_repository",
+    "user.data",
+    "jwt.transcoder",
+    "flood control",
+    "manage own oauth client credentials",
+    "administer oauth client credentials",
+    "bearer token",
+    "RFC 6749"
+  ]
+}
