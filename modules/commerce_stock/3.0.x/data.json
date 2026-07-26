@@ -1,0 +1,54 @@
+{
+  "name": "Commerce Stock API",
+  "data_name": "commerce_stock",
+  "description": "Provides a stock management framework based on rules to manage stock levels of commerce products.",
+  "version": "3.0.x",
+  "package": "Commerce Stock",
+  "composer_namespace": "drupal/commerce_stock",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "commerce_product",
+    "commerce_order"
+  ],
+  "configure": "commerce_stock.stock_config",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 4128,
+  "list_position": 716,
+  "project_url": "https://www.drupal.org/project/commerce_stock",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "commerce_stock_enforcement",
+    "commerce_stock_field",
+    "commerce_stock_local",
+    "commerce_stock_ui"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "stock_events (plugin.manager.stock_events, @StockEvents)",
+    "commerce_stock_event_type (plugin.manager.commerce_stock_event_type, @StockEventType)"
+  ],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Inventory / stock management"
+  ],
+  "keywords": [
+    "commerce",
+    "stock",
+    "inventory",
+    "stock level",
+    "availability",
+    "stock service",
+    "stock transaction",
+    "product variation",
+    "always in stock",
+    "local stock",
+    "commerce_order availability checker"
+  ]
+}

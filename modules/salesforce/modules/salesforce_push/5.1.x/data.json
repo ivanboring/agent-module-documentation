@@ -1,0 +1,48 @@
+{
+  "name": "Salesforce Push",
+  "data_name": "salesforce_push",
+  "description": "Push data to Salesforce when updates are made to Drupal entities.",
+  "version": "5.1.x",
+  "package": "Salesforce",
+  "composer_namespace": "drupal/salesforce",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "salesforce_mapping"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 4090,
+  "list_position": 721,
+  "part_of": "salesforce",
+  "project_url": "https://www.drupal.org/project/salesforce",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "salesforce_push_queue_processor (plugin.manager.salesforce_push_queue_processor)"
+  ],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "CRM integration"
+  ],
+  "keywords": [
+    "salesforce",
+    "push",
+    "sync",
+    "queue",
+    "entity update",
+    "push_create",
+    "push_update",
+    "push_delete",
+    "push queue processor",
+    "async",
+    "cron"
+  ]
+}

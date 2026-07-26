@@ -1,0 +1,63 @@
+{
+  "name": "Mailgun",
+  "data_name": "mailgun",
+  "description": "Allows site to send emails using Mailgun email service.",
+  "version": "2.1.x",
+  "package": "Mail",
+  "composer_namespace": "drupal/mailgun",
+  "composer_requirements": {
+    "mailgun/mailgun-php": "~3.0",
+    "nyholm/psr7": "~1.2",
+    "drupal/mailsystem": "*",
+    "html2text/html2text": "^4.0.1"
+  },
+  "dependent_modules": [
+    "mailsystem"
+  ],
+  "configure": "mailgun.admin_settings_form",
+  "core_version_requirement": "^10.3 || ^11 || ^12",
+  "active_installs": 4030,
+  "list_position": 732,
+  "project_url": "https://www.drupal.org/project/mailgun",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "mailgun/mailgun-php",
+    "nyholm/psr7",
+    "html2text/html2text"
+  ],
+  "suggests": {
+    "php-http/guzzle6-adapter": "Required for working with Guzzle 6 e.g. Drupal 9.3.x or earlier"
+  },
+  "submodules": [
+    "mailgun_email_templates_examples",
+    "mailgun_mailing_lists"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Email / SMTP",
+    "Email / mail delivery",
+    "Queue / background processing"
+  ],
+  "keywords": [
+    "mailgun",
+    "email",
+    "mail",
+    "smtp",
+    "transactional email",
+    "mailsystem",
+    "mail plugin",
+    "api key",
+    "queue",
+    "tracking",
+    "html email",
+    "email delivery",
+    "mailgun-php"
+  ]
+}

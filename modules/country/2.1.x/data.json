@@ -1,0 +1,55 @@
+{
+  "name": "Country",
+  "data_name": "country",
+  "description": "Defines a simple country field type.",
+  "version": "2.1.x",
+  "package": "Field types",
+  "composer_namespace": "drupal/country",
+  "composer_requirements": {
+    "drupal/core": "^10 || ^11"
+  },
+  "dependent_modules": [
+    "field"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 4174,
+  "list_position": 710,
+  "project_url": "https://www.drupal.org/project/country",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "ext-intl": "Needed to extend capability with the sorting of non-English languages."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience",
+    "Content display"
+  ],
+  "subcategories": [
+    "Fields",
+    "Field formatters",
+    "Form widgets / select UI"
+  ],
+  "keywords": [
+    "country",
+    "country field",
+    "ISO 3166",
+    "country code",
+    "field type",
+    "select widget",
+    "autocomplete",
+    "country name",
+    "views filter",
+    "views sort",
+    "facets",
+    "feeds target",
+    "token",
+    "selectable countries"
+  ]
+}

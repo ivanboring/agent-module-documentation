@@ -1,0 +1,44 @@
+{
+  "name": "Salesforce OAuth user-agent Provider",
+  "data_name": "salesforce_oauth",
+  "description": "Provides user-agent-based Salesforce OAuth authentication.",
+  "version": "5.1.x",
+  "package": "Salesforce",
+  "composer_namespace": "drupal/salesforce",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "salesforce"
+  ],
+  "configure": "salesforce.auth_config",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 4090,
+  "list_position": 721,
+  "part_of": "salesforce",
+  "project_url": "https://www.drupal.org/project/salesforce",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "CRM integration"
+  ],
+  "keywords": [
+    "salesforce",
+    "oauth",
+    "authentication",
+    "user-agent",
+    "consumer key",
+    "consumer secret",
+    "login_url",
+    "auth provider",
+    "callback"
+  ]
+}

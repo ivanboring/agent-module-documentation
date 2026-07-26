@@ -1,0 +1,53 @@
+{
+  "name": "Message Notify",
+  "data_name": "message_notify",
+  "description": "Notification framework for the Message module: renders a Message entity and delivers it via pluggable notifiers (email, SMS, ...).",
+  "version": "1.5.x",
+  "package": "Message",
+  "composer_namespace": "drupal/message_notify",
+  "composer_requirements": {
+    "drupal/message": "^1.0"
+  },
+  "dependent_modules": [
+    "message"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 4094,
+  "list_position": 720,
+  "project_url": "https://www.drupal.org/project/message_notify",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "message_notify_example"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "Notifier (Plugin/Notifier, @Notifier)"
+  ],
+  "categories": [
+    "User engagement"
+  ],
+  "subcategories": [
+    "Activity / notification messages",
+    "Email / mail delivery"
+  ],
+  "keywords": [
+    "message",
+    "notify",
+    "notification",
+    "email",
+    "sms",
+    "notifier",
+    "message_notify.sender",
+    "mail_subject",
+    "mail_body",
+    "view mode",
+    "plugin",
+    "message template"
+  ]
+}

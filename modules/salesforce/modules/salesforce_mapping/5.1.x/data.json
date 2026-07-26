@@ -1,0 +1,50 @@
+{
+  "name": "Salesforce Mapping",
+  "data_name": "salesforce_mapping",
+  "description": "Map Drupal entities to Salesforce objects.",
+  "version": "5.1.x",
+  "package": "Salesforce",
+  "composer_namespace": "drupal/salesforce",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "salesforce",
+    "dynamic_entity_reference",
+    "typed_data"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 4090,
+  "list_position": 721,
+  "part_of": "salesforce",
+  "project_url": "https://www.drupal.org/project/salesforce",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "salesforce_mapping_field (plugin.manager.salesforce_mapping_field, @SalesforceMappingField)"
+  ],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "CRM integration"
+  ],
+  "keywords": [
+    "salesforce",
+    "mapping",
+    "salesforce_mapping",
+    "mapped object",
+    "field mapping",
+    "sync triggers",
+    "push",
+    "pull",
+    "sObject",
+    "drupal entity",
+    "field plugin"
+  ]
+}

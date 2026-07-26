@@ -1,0 +1,52 @@
+{
+  "name": "Keycloak OpenID Connect",
+  "data_name": "keycloak",
+  "description": "Enables OpenID Connect Keycloak sign on and user data synchronization.",
+  "version": "2.2.x",
+  "package": "Other",
+  "composer_namespace": "drupal/keycloak",
+  "composer_requirements": {
+    "drupal/openid_connect": "^3.0@alpha"
+  },
+  "dependent_modules": [
+    "openid_connect"
+  ],
+  "configure": "openid_connect.admin_settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 4075,
+  "list_position": 724,
+  "project_url": "https://www.drupal.org/project/keycloak",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Access control"
+  ],
+  "subcategories": [
+    "External authentication",
+    "Session management"
+  ],
+  "keywords": [
+    "keycloak",
+    "openid connect",
+    "oidc",
+    "sso",
+    "single sign-on",
+    "single sign-out",
+    "identity provider",
+    "realm",
+    "external authentication",
+    "role mapping",
+    "group claim",
+    "openid_connect client",
+    "kc_idp_hint",
+    "session check"
+  ]
+}

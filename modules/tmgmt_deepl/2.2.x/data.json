@@ -1,0 +1,51 @@
+{
+  "name": "DeepL Translator",
+  "data_name": "tmgmt_deepl",
+  "description": "TMGMT implementation of DeepL Translate Service.",
+  "version": "2.2.x",
+  "package": "Translation Management",
+  "composer_namespace": "drupal/tmgmt_deepl",
+  "composer_requirements": {
+    "drupal/tmgmt": "^1.0"
+  },
+  "dependent_modules": [
+    "tmgmt"
+  ],
+  "configure": "entity.tmgmt_translator.collection",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 3968,
+  "list_position": 734,
+  "project_url": "https://www.drupal.org/project/tmgmt_deepl",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "tmgmt_deepl_glossary"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "Multilingual"
+  ],
+  "subcategories": [
+    "Translation / multilingual",
+    "Machine translation"
+  ],
+  "keywords": [
+    "deepl",
+    "tmgmt",
+    "translation",
+    "machine translation",
+    "translator plugin",
+    "deepl_free",
+    "deepl_pro",
+    "translation management",
+    "formality",
+    "multilingual",
+    "auto translate"
+  ]
+}

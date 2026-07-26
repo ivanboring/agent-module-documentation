@@ -1,0 +1,46 @@
+{
+  "name": "Commerce Stock Local Storage",
+  "data_name": "commerce_stock_local",
+  "description": "Provides a local database storage service for Commerce Stock.",
+  "version": "3.0.x",
+  "package": "Commerce Stock",
+  "composer_namespace": "drupal/commerce_stock",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "commerce_stock"
+  ],
+  "configure": "commerce_stock_local.ls_config_form",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 4128,
+  "list_position": 716,
+  "part_of": "commerce_stock",
+  "project_url": "https://www.drupal.org/project/commerce_stock",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Inventory / stock management"
+  ],
+  "keywords": [
+    "commerce",
+    "stock",
+    "local stock",
+    "inventory",
+    "stock location",
+    "stock transaction",
+    "warehouse",
+    "commerce_stock_location",
+    "aggregation",
+    "cron",
+    "database storage"
+  ]
+}

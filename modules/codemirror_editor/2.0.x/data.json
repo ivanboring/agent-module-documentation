@@ -1,0 +1,57 @@
+{
+  "name": "The CodeMirror Editor",
+  "data_name": "codemirror_editor",
+  "description": "This module integrates the CodeMirror editor library into Drupal.",
+  "version": "2.0.x",
+  "package": null,
+  "composer_namespace": "drupal/codemirror_editor",
+  "composer_requirements": {
+    "php": ">=7.1",
+    "ext-json": "*",
+    "drupal/core": "^10.3 || ^11",
+    "drupal/js_cookie": "^1.0 || ^2"
+  },
+  "dependent_modules": [
+    "editor",
+    "js_cookie"
+  ],
+  "configure": "codemirror_editor.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 4111,
+  "list_position": 718,
+  "project_url": "https://www.drupal.org/project/codemirror_editor",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=7.1",
+  "library_dependencies": {
+    "drupal/js_cookie": "^1.0 || ^2"
+  },
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "codemirror_mode (plugin.manager.codemirror_mode, MODULE.codemirror_modes.yml)"
+  ],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Code editor / syntax highlighting"
+  ],
+  "keywords": [
+    "codemirror",
+    "code editor",
+    "syntax highlighting",
+    "text editor",
+    "editor",
+    "text format",
+    "filter",
+    "field widget",
+    "field formatter",
+    "render element",
+    "language mode",
+    "cdn",
+    "drush download"
+  ]
+}

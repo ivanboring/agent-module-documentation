@@ -1,0 +1,52 @@
+{
+  "name": "Imagick",
+  "data_name": "imagick",
+  "description": "Imagick toolkit for image manipulation within Drupal",
+  "version": "1.12.x",
+  "package": "Imagick",
+  "composer_namespace": "drupal/imagick",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "image"
+  ],
+  "configure": "system.image_toolkit_settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 4082,
+  "list_position": 723,
+  "project_url": "https://www.drupal.org/project/imagick",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/smartcrop": "Custom effects that need to access image data such as Smart Crop."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media",
+    "Performance"
+  ],
+  "subcategories": [
+    "Image toolkit / processing"
+  ],
+  "keywords": [
+    "imagick",
+    "imagemagick",
+    "image toolkit",
+    "image effect",
+    "image style",
+    "image manipulation",
+    "php imagick extension",
+    "jpeg quality",
+    "strip metadata",
+    "optimize",
+    "blur",
+    "watermark",
+    "composite",
+    "polaroid",
+    "convert format"
+  ]
+}

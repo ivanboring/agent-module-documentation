@@ -1,0 +1,52 @@
+{
+  "name": "Configuration Log",
+  "data_name": "config_log",
+  "description": "Logs changes to configuration.",
+  "version": "4.0.x",
+  "package": "Configuration",
+  "composer_namespace": "drupal/config_log",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "config_log.admin",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 4303,
+  "list_position": 701,
+  "project_url": "https://www.drupal.org/project/config_log",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "config_log_views"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Audit trail / activity logging",
+    "Configuration management"
+  ],
+  "keywords": [
+    "config",
+    "configuration",
+    "config change",
+    "audit",
+    "audit trail",
+    "logging",
+    "config diff",
+    "ConfigCrudEvent",
+    "config_log table",
+    "config import",
+    "redact secrets",
+    "watchdog",
+    "mail notification",
+    "config save",
+    "config rename",
+    "config delete"
+  ]
+}

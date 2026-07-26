@@ -1,0 +1,45 @@
+{
+  "name": "Message notify example",
+  "data_name": "message_notify_example",
+  "description": "Demonstration module: sends an email notification to a node's author when a new comment is posted, using Message Notify.",
+  "version": "1.5.x",
+  "package": "Message",
+  "composer_namespace": "drupal/message_notify",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "message",
+    "message_notify",
+    "message_example"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 4094,
+  "list_position": 720,
+  "part_of": "message_notify",
+  "project_url": "https://www.drupal.org/project/message_notify",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "User engagement"
+  ],
+  "subcategories": [
+    "Activity / notification messages"
+  ],
+  "keywords": [
+    "message notify",
+    "example",
+    "demo",
+    "comment",
+    "hook_comment_insert",
+    "notification",
+    "example_create_comment",
+    "node author"
+  ]
+}

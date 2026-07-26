@@ -1,0 +1,79 @@
+{
+  "name": "Salesforce Integration",
+  "data_name": "salesforce",
+  "description": "Modules to integrate Drupal and Salesforce.",
+  "version": "5.1.x",
+  "package": "Salesforce",
+  "composer_namespace": "drupal/salesforce",
+  "composer_requirements": {
+    "consolidation/output-formatters": "^3.2.0 || ^4.5",
+    "lusitanian/oauth": "^0.8.11",
+    "firebase/php-jwt": "^5.0 || ^6.0 || ^7.0",
+    "drupal/address": "^2.0",
+    "drupal/key": "^1",
+    "drupal/dynamic_entity_reference": "^3 || ^4",
+    "drupal/typed_data": "^2",
+    "messageagency/force.com-toolkit-for-php": "^1.0.2",
+    "ext-soap": "*",
+    "ext-json": "*"
+  },
+  "dependent_modules": [],
+  "configure": "salesforce.admin_config_salesforce",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 4090,
+  "list_position": 721,
+  "project_url": "https://www.drupal.org/project/salesforce",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": {
+    "lusitanian/oauth": "^0.8.11",
+    "firebase/php-jwt": "^5.0 || ^6.0 || ^7.0",
+    "messageagency/force.com-toolkit-for-php": "^1.0.2",
+    "ext-soap": "*"
+  },
+  "suggests": {
+    "drupal/address": "Required for salesforce_address",
+    "drupal/dynamic_entity_reference": "Required for salesforce_mapping.",
+    "drupal/typed_data": "Required for salesforce_mapping."
+  },
+  "submodules": [
+    "salesforce_address",
+    "salesforce_example",
+    "salesforce_jwt",
+    "salesforce_logger",
+    "salesforce_mapping",
+    "salesforce_mapping_ui",
+    "salesforce_oauth",
+    "salesforce_pull",
+    "salesforce_push",
+    "salesforce_soap",
+    "salesforce_webform"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "salesforce.auth_providers (plugin.manager.salesforce.auth_providers, @SalesforceAuthProvider)"
+  ],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "CRM integration"
+  ],
+  "keywords": [
+    "salesforce",
+    "crm",
+    "integration",
+    "rest api",
+    "soql",
+    "oauth",
+    "jwt",
+    "sync",
+    "rest client",
+    "auth provider",
+    "sobject",
+    "sfid",
+    "drush"
+  ]
+}

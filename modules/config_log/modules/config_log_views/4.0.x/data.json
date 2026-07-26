@@ -1,0 +1,45 @@
+{
+  "name": "Configuration Log Views",
+  "data_name": "config_log_views",
+  "description": "Views integration for the Configuration log module.",
+  "version": "4.0.x",
+  "package": "Configuration",
+  "composer_namespace": "drupal/config_log",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "config_log",
+    "views"
+  ],
+  "configure": "config_log.admin",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 701,
+  "project_url": "https://www.drupal.org/project/config_log",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Audit trail / activity logging",
+    "Dashboard / reporting"
+  ],
+  "keywords": [
+    "config log",
+    "views",
+    "views integration",
+    "config diff",
+    "report",
+    "admin/reports/config-log",
+    "config_log_diff",
+    "views field",
+    "audit report"
+  ]
+}
