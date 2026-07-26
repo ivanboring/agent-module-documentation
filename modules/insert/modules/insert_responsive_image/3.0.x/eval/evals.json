@@ -71,6 +71,31 @@
       "verify": "agent-module-documentation/evaluation/verify/insert_responsive_image-enable-verify.sh",
       "cleanup": "agent-module-documentation/evaluation/verify/insert_responsive_image-enable-cleanup.sh",
       "expected_output": "Add responsive_image__insert_ri_demo to the field_insert_ritask image_image component's third_party_settings.insert.styles in core.entity_form_display.node.article.default (the component already exists, so a single setComponent with the added style and save is enough; or tick 'Responsive: insert_ri_demo' under Insert on the widget in Manage form display)."
+    },
+    {
+      "id": "insert_responsive_image-known-default",
+      "mode": "introspection",
+      "prompt": "On this Drupal site, the Article content type has a second image field whose Insert settings enable a responsive-image insert style built from the Responsive Image style 'insert_ri_demo2'. Inspect the live default form display for Article and give that field's machine name and the exact responsive insert style key that is enabled.",
+      "must_contain_any": [
+        "responsive_image__insert_ri_demo2",
+        "field_insert_ri2"
+      ],
+      "must_not_contain": [],
+      "expected_output": "The field is field_insert_ri2 (image_image widget); its component's third_party_settings.insert.styles contains responsive_image__insert_ri_demo2 (also set as the default insert style), the responsive insert style for the Responsive Image style 'insert_ri_demo2'.",
+      "setup": "agent-module-documentation/evaluation/verify/insert_responsive_image-known-default-setup.sh",
+      "cleanup": "agent-module-documentation/evaluation/verify/insert_responsive_image-known-default-cleanup.sh",
+      "difficulty": "medium"
+    },
+    {
+      "id": "insert_responsive_image-enable2",
+      "mode": "execution",
+      "difficulty": "hard",
+      "persona": "drupal-expert",
+      "prompt": "On this Drupal site there is a Responsive Image style with id insert_ri_demo2, and the Article content type has an image field field_insert_ritask2 using the standard Image (image_image) widget with Insert already enabled. Using insert_responsive_image, make the responsive insert style for insert_ri_demo2 (responsive_image__insert_ri_demo2) available on that field's Insert settings. Keep the image_image widget and apply the change to the live site.",
+      "reset": "agent-module-documentation/evaluation/verify/insert_responsive_image-enable2-reset.sh",
+      "verify": "agent-module-documentation/evaluation/verify/insert_responsive_image-enable2-verify.sh",
+      "cleanup": "agent-module-documentation/evaluation/verify/insert_responsive_image-enable2-cleanup.sh",
+      "expected_output": "Add responsive_image__insert_ri_demo2 to the field_insert_ritask2 image_image component's third_party_settings.insert.styles in core.entity_form_display.node.article.default (the component already exists, so a single setComponent adding the style and save is enough; or tick 'Responsive: insert_ri_demo2' under Insert on the widget in Manage form display)."
     }
   ]
 }

@@ -3,7 +3,7 @@
   "skill_file": ".agents/skills/drupal-module-docs/SKILL.md",
   "module": "autoban_ban",
   "version": "1.13.x",
-  "note": "autoban_ban is a glue submodule of autoban: one tagged service autoban_ban.ban_provider (Drupal\\autoban_ban\\BanProvider) implementing AutobanProviderInterface, exposing ban-provider id 'ban' ('Core Ban', single-IP), which wraps core Ban's BanIpManager. It has no config/settings/permissions/Drush of its own. Its observable state on a live site is: the 'ban' provider appears in \\Drupal::service('autoban')->getBanProvidersList(), and Autoban rules can set provider='ban'. Medium introspects a rule's provider resolved to its human name via the live provider registry; hard builds a rule wired to the core Ban provider, verified against the live config entity. Tiers: 3 easy + 1 medium + 1 hard (thin glue submodule; all three tiers present and smoke-tested).",
+  "note": "autoban_ban is a glue submodule of autoban: one tagged service autoban_ban.ban_provider (Drupal\\autoban_ban\\BanProvider) implementing AutobanProviderInterface, exposing ban-provider id 'ban' ('Core Ban', single-IP), which wraps core Ban's BanIpManager. It has no config/settings/permissions/Drush of its own. Its observable state on a live site is: the 'ban' provider appears in \\Drupal::service('autoban')->getBanProvidersList(), and Autoban rules can set provider='ban'. Medium introspects a rule's provider resolved to its human name via the live provider registry; hard builds a rule wired to the core Ban provider, verified against the live config entity. Tiers: 3 easy + 2 medium + 2 hard (all three tiers present and smoke-tested). The second medium/hard pair grounds in a core-Ban rule scanning the 'access denied' log type.",
   "evals": [
     {
       "id": "autoban_ban-provider-id",
@@ -69,6 +69,31 @@
       "verify": "agent-module-documentation/evaluation/verify/autoban_ban-use-provider-verify.sh",
       "cleanup": "agent-module-documentation/evaluation/verify/autoban_ban-use-provider-cleanup.sh",
       "expected_output": "An autoban rule autoban_test_bansub exists with provider='ban' (core Ban), type='page not found', threshold=5. Because provider is the core Ban integration, matched IPs go to core Ban's list."
+    },
+    {
+      "id": "autoban_ban-known-threshold",
+      "mode": "introspection",
+      "prompt": "This Drupal site has an Autoban rule `ab_test_ban2` that uses Drupal core's Ban module. Inspect the live configuration and report which log type it scans and the threshold number of log entries before it bans an IP.",
+      "must_contain_any": [
+        "access denied",
+        "15"
+      ],
+      "must_not_contain": [],
+      "expected_output": "Rule ab_test_ban2 (provider 'ban', core Ban) scans the 'access denied' log type with threshold 15. Read it with `drush cget autoban.autoban.ab_test_ban2` (the `type` and `threshold` keys).",
+      "setup": "agent-module-documentation/evaluation/verify/autoban_ban-known-threshold-setup.sh",
+      "cleanup": "agent-module-documentation/evaluation/verify/autoban_ban-known-threshold-cleanup.sh",
+      "difficulty": "medium"
+    },
+    {
+      "id": "autoban_ban-access-rule",
+      "mode": "execution",
+      "difficulty": "hard",
+      "persona": "drupal-expert",
+      "prompt": "On this Drupal site, create an Autoban rule with machine id `autoban_test_ban2` that scans the `access denied` log type and bans offending IPs through Drupal core's Ban module after a threshold of 9. Apply it to the live site.",
+      "reset": "agent-module-documentation/evaluation/verify/autoban_ban-access-rule-reset.sh",
+      "verify": "agent-module-documentation/evaluation/verify/autoban_ban-access-rule-verify.sh",
+      "cleanup": "agent-module-documentation/evaluation/verify/autoban_ban-access-rule-cleanup.sh",
+      "expected_output": "An autoban rule autoban_test_ban2 exists with provider='ban' (core Ban), type='access denied', threshold=9. Matched IPs go to core Ban's blocked-IP list."
     }
   ]
 }

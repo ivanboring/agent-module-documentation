@@ -72,6 +72,31 @@
       "verify": "agent-module-documentation/evaluation/verify/insert_colorbox-set-gallery-verify.sh",
       "cleanup": "agent-module-documentation/evaluation/verify/insert_colorbox-set-gallery-cleanup.sh",
       "expected_output": "Set insert_colorbox.config gallery = post (e.g. drush cset insert_colorbox.config gallery post -y, or choose 'Per post gallery' in the Insert Colorbox fieldset on the Insert settings form)."
+    },
+    {
+      "id": "insert_colorbox-known-style",
+      "mode": "introspection",
+      "prompt": "On this Drupal site, insert_colorbox has a non-default gallery grouping and colorbox image style. Inspect the live configuration and report the current gallery mode and the image style shown inside the colorbox.",
+      "must_contain_any": [
+        "field_page",
+        "medium"
+      ],
+      "must_not_contain": [],
+      "expected_output": "insert_colorbox.config currently has gallery = field_page (one gallery per field on the whole page) and style = medium (the medium image style is shown inside the colorbox). Read with drush cget insert_colorbox.config.",
+      "setup": "agent-module-documentation/evaluation/verify/insert_colorbox-known-style-setup.sh",
+      "cleanup": "agent-module-documentation/evaluation/verify/insert_colorbox-known-style-cleanup.sh",
+      "difficulty": "medium"
+    },
+    {
+      "id": "insert_colorbox-set-style",
+      "mode": "execution",
+      "difficulty": "hard",
+      "persona": "drupal-expert",
+      "prompt": "On this Drupal site, configure insert_colorbox so that the image shown inside the Colorbox lightbox is rendered with the 'large' image style. Apply the change to the live site.",
+      "reset": "agent-module-documentation/evaluation/verify/insert_colorbox-set-style-reset.sh",
+      "verify": "agent-module-documentation/evaluation/verify/insert_colorbox-set-style-verify.sh",
+      "cleanup": "agent-module-documentation/evaluation/verify/insert_colorbox-set-style-cleanup.sh",
+      "expected_output": "Set insert_colorbox.config style = large (e.g. drush cset insert_colorbox.config style large -y, or choose the 'large' image style in the Insert Colorbox fieldset on the Insert settings form)."
     }
   ]
 }

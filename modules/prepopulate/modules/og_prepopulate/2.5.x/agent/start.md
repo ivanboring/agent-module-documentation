@@ -18,5 +18,13 @@ Key facts:
 - Service `og_prepopulate.populator` = `Drupal\og_prepopulate\Populate` extends
   `Drupal\prepopulate\Populate` with `@current_user` added.
 - Membership rule: `Og::isMember($entity, $current_user)` replaces the parent's
-  `view label` access check; on a match the widget is filled **and hidden** (`#access = FALSE`).
+  `view label` access check; on a match the element is filled **and hidden** (`#access = FALSE`).
 - If the field already has a value and no query parameter is present, the widget is hidden too.
+
+> ⚠️ **Verified on Drupal 11.4 + OG 2.0.2: the automatic part does not run.**
+> The module's only hook implements `hook_field_widget_WIDGET_TYPE_form_alter()`, which was
+> **removed in Drupal 10** (core now invokes `field_widget_single_element_form_alter` /
+> `field_widget_single_element_<WIDGET>_form_alter`), and OG 2.x ships **no `og_complex`
+> widget** at all. So `?og_audience=<id>` does nothing on this stack. The service and its
+> membership rule are still fully functional when called directly. Details and the workaround:
+> [api/og-populate.md](api/og-populate.md#status-on-drupal-11--og-2x).

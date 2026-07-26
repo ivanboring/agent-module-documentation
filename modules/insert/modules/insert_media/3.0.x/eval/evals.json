@@ -71,6 +71,30 @@
       "verify": "agent-module-documentation/evaluation/verify/insert_media-enable-verify.sh",
       "cleanup": "agent-module-documentation/evaluation/verify/insert_media-enable-cleanup.sh",
       "expected_output": "In core.entity_form_display.node.article.default the field_insert_mtask media_library_widget component gets third_party_settings.insert_media.view_modes containing 'full' (e.g. set the component's third_party_settings.insert_media.view_modes = ['full' => 'full'] and save, or tick the 'full' view mode under Insert Media on the widget in Manage form display)."
+    },
+    {
+      "id": "insert_media-known-default",
+      "mode": "introspection",
+      "prompt": "On this Drupal site, the Article content type has a media reference field field_insert_media2 whose Media library widget has insert_media enabled. Inspect the live default form display for Article and report the default media view mode that insert_media will use when inserting from that field.",
+      "must_contain_any": [
+        "thumbnail"
+      ],
+      "must_not_contain": [],
+      "expected_output": "For field_insert_media2 the media_library_widget component's third_party_settings.insert_media has default = thumbnail (and view_modes = {thumbnail}). Read core.entity_form_display.node.article.default content.field_insert_media2.",
+      "setup": "agent-module-documentation/evaluation/verify/insert_media-known-default-setup.sh",
+      "cleanup": "agent-module-documentation/evaluation/verify/insert_media-known-default-cleanup.sh",
+      "difficulty": "medium"
+    },
+    {
+      "id": "insert_media-enable-thumbnail",
+      "mode": "execution",
+      "difficulty": "hard",
+      "persona": "drupal-expert",
+      "prompt": "On this Drupal site, the Article content type has a media reference field field_insert_mtask2 using the Media library (media_library_widget) widget. Using the insert_media submodule, configure the default form display so this field lets editors insert the referenced media in the 'thumbnail' view mode. Apply the change to the live site.",
+      "reset": "agent-module-documentation/evaluation/verify/insert_media-enable-thumb-reset.sh",
+      "verify": "agent-module-documentation/evaluation/verify/insert_media-enable-thumb-verify.sh",
+      "cleanup": "agent-module-documentation/evaluation/verify/insert_media-enable-thumb-cleanup.sh",
+      "expected_output": "In core.entity_form_display.node.article.default the field_insert_mtask2 media_library_widget component gets third_party_settings.insert_media.view_modes containing 'thumbnail' (set view_modes = ['thumbnail' => 'thumbnail'] and save, or tick the 'thumbnail' view mode under Insert Media on the widget in Manage form display)."
     }
   ]
 }
