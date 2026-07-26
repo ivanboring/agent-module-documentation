@@ -77,8 +77,24 @@ for p in "${projects[@]}"; do
   fi
 done
 
-[ "${#to_enable[@]}" -gt 0 ] && do_en "${to_enable[@]}"
+# Enable in small chunks, never one giant call. A single `drush en` over a whole wave can
+# be interrupted or partially fail partway through, leaving modules in core.extension with
+# no system.schema entry — hook_install() never ran, so default config is missing and
+# entity types go unregistered while the module still reports as Enabled. That is exactly
+# what happened to 41 modules in wave 2.
+EN_CHUNK=5
+i=0
+while [ "$i" -lt "${#to_enable[@]}" ]; do
+  chunk=("${to_enable[@]:i:EN_CHUNK}")
+  [ "${#chunk[@]}" -gt 0 ] && do_en "${chunk[@]}"
+  i=$(( i + EN_CHUNK ))
+done
 drush cr >/dev/null 2>&1
+
+# Verify each module actually completed installation, and repair any that did not.
+if [ -x scripts/repair-half-installed.sh ]; then
+  bash scripts/repair-half-installed.sh --repair 5 2>/dev/null | sed 's/^/half-install /' >&2
+fi
 
 # A bulk/bisected enable can leave a module in core.extension while its config/install
 # defaults were never imported — it looks Enabled but behaves as unconfigured, which

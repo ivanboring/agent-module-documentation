@@ -1,0 +1,69 @@
+{
+  "name": "JSON Web Token Authentication (JWT)",
+  "data_name": "jwt",
+  "description": "Provides functionality for issuing, validating, and authenticating with JSON Web Tokens.",
+  "version": "2.4.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/jwt",
+  "composer_requirements": {
+    "php": ">=7.4",
+    "firebase/php-jwt": "^5.5 | ^6.0 | ^7.0",
+    "drupal/key": "^1.3"
+  },
+  "dependent_modules": [
+    "key:key"
+  ],
+  "configure": "jwt.jwt_config_form",
+  "core_version_requirement": "^9.0 || ^10.0 || ^11.0",
+  "active_installs": 4393,
+  "list_position": 691,
+  "project_url": "https://www.drupal.org/project/jwt",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=7.4",
+  "library_dependencies": [
+    "firebase/php-jwt"
+  ],
+  "suggests": {
+    "ext-openssl": "Enabling the openssl extension is required to use RSA keys"
+  },
+  "submodules": [
+    "jwt_auth_consumer",
+    "jwt_auth_issuer",
+    "jwt_oauth_ccf",
+    "jwt_path_auth",
+    "users_jwt"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Security",
+    "Decoupled"
+  ],
+  "subcategories": [
+    "External authentication",
+    "REST / web services"
+  ],
+  "keywords": [
+    "jwt",
+    "json web token",
+    "authentication",
+    "bearer token",
+    "HS256",
+    "RS256",
+    "HMAC",
+    "RSA",
+    "key",
+    "transcoder",
+    "claims",
+    "jwt.config",
+    "key_id",
+    "algorithm",
+    "event subscriber",
+    "REST authentication",
+    "api authentication",
+    "firebase/php-jwt"
+  ]
+}

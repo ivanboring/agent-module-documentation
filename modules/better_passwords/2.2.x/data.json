@@ -1,0 +1,51 @@
+{
+  "name": "Better Passwords",
+  "data_name": "better_passwords",
+  "description": "Attempts to ensure better passwords according to recommendations from NIST.",
+  "version": "2.2.x",
+  "package": "Security",
+  "composer_namespace": "drupal/better_passwords",
+  "composer_requirements": {
+    "bjeavons/zxcvbn-php": "*"
+  },
+  "dependent_modules": [],
+  "configure": "better_passwords.admin_settings",
+  "core_version_requirement": "^9.1 || ^10 || ^11",
+  "active_installs": 4471,
+  "list_position": 681,
+  "project_url": "https://www.drupal.org/project/better_passwords",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "bjeavons/zxcvbn-php"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Password policy"
+  ],
+  "keywords": [
+    "password",
+    "passwords",
+    "password policy",
+    "password strength",
+    "NIST",
+    "zxcvbn",
+    "password length",
+    "minimum length",
+    "strength meter",
+    "password_confirm",
+    "auto-generate password",
+    "user register",
+    "brute force",
+    "dictionary password",
+    "common password"
+  ]
+}

@@ -11,10 +11,30 @@ agent-browser install            # downloads Chrome for Testing
 agent-browser install --with-deps  # installs the shared libs Chrome needs (libnspr4, gtk, ...)
 ```
 
+## Always shoot at 1920×1080
+
+Set the viewport to full HD **before** capturing, and take **viewport** screenshots
+(no `--full`) so every image is exactly 1920×1080:
+
+```bash
+agent-browser set viewport 1920 1080
+agent-browser screenshot /abs/path.png        # NOT --full → exact 1920×1080 frame
+```
+
+If a form is taller than 1080px, don't switch to `--full` (that breaks the fixed
+size) — instead scroll the relevant section into view and take a second 1920×1080
+shot:
+
+```bash
+agent-browser eval "document.querySelector('SELECTOR').scrollIntoView({block:'start'}); window.scrollBy(0,-90); 'ok'"
+agent-browser screenshot /abs/path-part2.png
+```
+
 ## Gotchas (all learned the hard way)
 
 - **Run Chrome with no sandbox** in the container, or it exits with a namespace error:
   `export AGENT_BROWSER_CHROME_ARGS="--no-sandbox --disable-dev-shm-usage"`.
+- **The viewport command is `set viewport <w> <h>`** (not `viewport <w> <h>`).
 - **Browse `http://localhost`**, not the `https://…ddev.site` host URL — it returns 200
   from inside the container with no TLS/cert hassle.
 - **Screenshot paths must be absolute.** The browser daemon has its own working directory,

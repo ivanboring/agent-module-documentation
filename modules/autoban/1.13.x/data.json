@@ -1,0 +1,53 @@
+{
+  "name": "Autoban",
+  "data_name": "autoban",
+  "description": "Automatic IP ban using dblog table.",
+  "version": "1.13.x",
+  "package": "Autoban",
+  "composer_namespace": "drupal/autoban",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "dblog"
+  ],
+  "configure": "autoban.settings",
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": 4432,
+  "list_position": 686,
+  "project_url": "https://www.drupal.org/project/autoban",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "autoban_advban",
+    "autoban_ban",
+    "autoban_dblog"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Intrusion prevention"
+  ],
+  "keywords": [
+    "autoban",
+    "ip ban",
+    "automatic ban",
+    "dblog",
+    "watchdog",
+    "brute force",
+    "flood",
+    "page not found",
+    "404 ban",
+    "ban rule",
+    "ban provider",
+    "threshold",
+    "cron ban",
+    "log analysis",
+    "config entity"
+  ]
+}

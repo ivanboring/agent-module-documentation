@@ -44,6 +44,10 @@ modules/{machine_name}/{major.minor.x}/
 ├── agent/
 │   ├── start.md       # token-cheap index linking to the solution docs below
 │   └── {solution_type}/{name}.md   # configure, plugins, extend, drush, api, hooks, ...
+├── human-docs/        # human-facing mkdocs site: manual setup with screenshots (see below)
+│   ├── index.md
+│   ├── {section}/index.md          # installation, configuration, ... one dir per topic
+│   └── images/*.png                # committed screenshots referenced from the pages
 └── eval/
     └── evals.json     # easy + medium + hard eval cases (see the Evals section below)
 ```
@@ -70,6 +74,52 @@ solution docs. They are binary artifacts we intentionally do not commit.
   `modules/{parent}/modules/{submodule_machine_name}/{version}/` (see the layout above).
 - Every `agent/**/*.md` must be **shorter than reading the equivalent source** — that is
   the whole point. If it isn't, cut it.
+
+## Human documentation (mkdocs)
+
+Alongside the token-cheap `agent/` docs, every module gets a **`human-docs/`** folder: a
+human-facing manual that reads like real product documentation and follows
+[mkdocs](https://www.mkdocs.org/) conventions (Markdown pages that a `mkdocs` build could
+render as-is). Where `agent/` tells an agent *what to call*, `human-docs/` shows a **person**
+how to click through the module's forms and set it up by hand.
+
+Layout — `index.md` at the root plus **one directory per topic**, each with its own
+`index.md` (mkdocs nested-page style):
+
+```
+modules/{machine_name}/{version}/human-docs/
+├── index.md              # landing page: what the module is + a linked table of contents
+├── installation/
+│   └── index.md          # requirements, composer require, enabling, submodules
+├── configuration/
+│   └── index.md          # global/admin settings, dependencies (e.g. AI provider + key)
+├── {task}/
+│   └── index.md          # one dir per major user task the module supports
+└── images/
+    └── *.png             # screenshots referenced by the pages
+```
+
+Rules:
+
+- **Write for a human, not an agent.** Numbered click-by-click steps ("Go to *Configuration
+  → …*, click **Add**, fill in …"), what each important field does, and what a correct
+  result looks like. Prose and headings, not terse bullet indexes.
+- **Every form and setup step gets a screenshot.** Capture the real admin UI with
+  `agent-browser` (see [`documentation/browser-screenshots.md`](documentation/browser-screenshots.md)
+  for login/capture mechanics) and embed it under the relevant step. **Always shoot
+  at 1920×1080** — `agent-browser set viewport 1920 1080` then a viewport screenshot
+  (no `--full`). For content taller than 1080px, scroll the relevant section into
+  view and take a second 1920×1080 shot rather than one full-page image.
+- **human-docs screenshots ARE committed** — they live *inside* the repo at
+  `human-docs/images/` and are referenced with a **relative** path
+  (`![alt](../images/<shot>.png)` from a `{topic}/index.md`). This is a deliberate exception
+  to the agent-doc rule that keeps screenshots outside the repo: here the screenshots are the
+  deliverable. Keep them reasonably sized (full-page PNGs of the relevant form only).
+- **index.md is the nav hub** — a short intro then a table of contents linking each section
+  (`- [Installation](installation/index.md)`), mirroring an mkdocs `nav`.
+- Start with `installation` and `configuration`; add one directory per significant manual
+  task (creating an entity, wiring an integration, running the feature). Skip tasks that have
+  no UI (pure code/API usage belongs in `agent/`, not here).
 
 ## Categories
 
