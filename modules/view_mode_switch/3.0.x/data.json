@@ -1,0 +1,51 @@
+{
+  "name": "View Mode Switch Field",
+  "data_name": "view_mode_switch",
+  "description": "Provides a field type that allows editors to switch view modes.",
+  "version": "3.0.x",
+  "package": "Field types",
+  "composer_namespace": "drupal/view_mode_switch",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "field"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11.3",
+  "active_installs": 2798,
+  "list_position": 900,
+  "project_url": "https://www.drupal.org/project/view_mode_switch",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/diff": "Integrates with the Diff module to show view-mode-switch field changes in revision comparisons.",
+    "drupal/paragraphs": "Works inside Paragraphs so a paragraph can switch its own view mode."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "View mode switching",
+    "Fields"
+  ],
+  "keywords": [
+    "view mode switch",
+    "view mode",
+    "display mode",
+    "field type",
+    "switch view mode",
+    "origin_view_modes",
+    "allowed_view_modes",
+    "entity_view_mode_alter",
+    "per-entity display",
+    "editor display control",
+    "paragraphs view mode",
+    "diff"
+  ]
+}

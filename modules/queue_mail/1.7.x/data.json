@@ -1,0 +1,51 @@
+{
+  "name": "Queue Mail",
+  "data_name": "queue_mail",
+  "description": "Queues all mail sent by your Drupal site so that it is sent via cron using the Drupal Queue API. This is helpful for large traffic sites where sending a lot of emails per page request can slow things down considerably.",
+  "version": "1.7.x",
+  "package": "Mail",
+  "composer_namespace": "drupal/queue_mail",
+  "composer_requirements": {
+    "drupal/core": "^9.4 || ^10.0 || ^11.0"
+  },
+  "dependent_modules": [],
+  "configure": "queue_mail.admin_settings",
+  "core_version_requirement": "^9.4 || ^10 || ^11",
+  "active_installs": 2675,
+  "list_position": 922,
+  "project_url": "https://www.drupal.org/project/queue_mail",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "queue_mail_language"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Email / mail delivery",
+    "Queue / background processing"
+  ],
+  "keywords": [
+    "queue mail",
+    "email",
+    "mail",
+    "queue",
+    "cron",
+    "hook_mail_alter",
+    "queue worker",
+    "deferred email",
+    "queue_mail_keys",
+    "wildcard",
+    "retry threshold",
+    "performance",
+    "queue:run"
+  ]
+}

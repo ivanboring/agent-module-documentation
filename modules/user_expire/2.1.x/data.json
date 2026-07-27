@@ -1,0 +1,50 @@
+{
+  "name": "User Expire",
+  "data_name": "user_expire",
+  "description": "Allows an administrator to define a date on which to expire a user account.",
+  "version": "2.1.x",
+  "package": "User management",
+  "composer_namespace": "drupal/user_expire",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "user"
+  ],
+  "configure": "user_expire.admin",
+  "core_version_requirement": "^10.3 || ^11 || ^12",
+  "active_installs": 2638,
+  "list_position": 931,
+  "project_url": "https://www.drupal.org/project/user_expire",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Account expiration",
+    "Cron / task scheduling"
+  ],
+  "keywords": [
+    "user expire",
+    "account expiration",
+    "expire user",
+    "block inactive users",
+    "inactivity",
+    "expiration date",
+    "user lifecycle",
+    "account blocking",
+    "role inactivity",
+    "expiration warning email",
+    "cron",
+    "user_expire table",
+    "expiring users report",
+    "rules action"
+  ]
+}

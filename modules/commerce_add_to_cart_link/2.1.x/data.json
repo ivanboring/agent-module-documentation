@@ -1,0 +1,57 @@
+{
+  "name": "Commerce Add To Cart Link",
+  "data_name": "commerce_add_to_cart_link",
+  "description": "Provides a field formatter for Commerce product variations having an add to cart link instead of a form.",
+  "version": "2.1.x",
+  "package": "Commerce (contrib)",
+  "composer_namespace": "drupal/commerce_add_to_cart_link",
+  "composer_requirements": {
+    "drupal/commerce": "^2.29 || ^3.0",
+    "drupal/core": "^10.3 || ^11.0"
+  },
+  "dependent_modules": [
+    "commerce_cart",
+    "commerce_product"
+  ],
+  "configure": "commerce_add_to_cart_link.settings",
+  "core_version_requirement": "^10.3 || ^11.0",
+  "active_installs": 2726,
+  "list_position": 912,
+  "project_url": "https://www.drupal.org/project/commerce_add_to_cart_link",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "commerce_add_to_wishlist_link"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce",
+    "Content display"
+  ],
+  "subcategories": [
+    "Add to cart forms",
+    "Field formatters"
+  ],
+  "keywords": [
+    "commerce",
+    "add to cart",
+    "cart link",
+    "product variation",
+    "pseudo field",
+    "extra field",
+    "views field",
+    "GET add to cart",
+    "csrf token",
+    "ajax cart",
+    "listing",
+    "catalog",
+    "twig template",
+    "redirect back",
+    "commerce_cart"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "name": "Activities",
+  "data_name": "activities",
+  "description": "The Drupal Activities module is designed to track and log user transactions.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "sprintive/activities",
+  "composer_requirements": {
+    "drupal/views_data_export": "^1.8",
+    "drupal/xls_serialization": "^2.0"
+  },
+  "dependent_modules": [
+    "views"
+  ],
+  "configure": "activities.config_form",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 2625,
+  "list_position": 935,
+  "project_url": "https://www.drupal.org/project/activities",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "activities_data_export"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Security"
+  ],
+  "subcategories": [
+    "Audit trail / activity logging"
+  ],
+  "keywords": [
+    "activity log",
+    "audit trail",
+    "user activity",
+    "transaction log",
+    "entity logging",
+    "CRUD logging",
+    "create update delete",
+    "view tracking",
+    "user_activities",
+    "purge",
+    "cron purge",
+    "activities.settings",
+    "who did what",
+    "audit"
+  ]
+}

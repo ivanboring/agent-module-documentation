@@ -1,0 +1,51 @@
+{
+  "name": "Permanent Cache Bin",
+  "data_name": "pcb",
+  "description": "Permanent Cache Bin module adds support for cache bins which are not cleared during drush cr.",
+  "version": "4.0.x",
+  "package": "Cache",
+  "composer_namespace": "drupal/pcb",
+  "composer_requirements": {
+    "php": ">=8.1.0",
+    "drupal/core": "^10.3 || ^11 || ^12"
+  },
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11 || ^12",
+  "active_installs": 2806,
+  "list_position": 899,
+  "project_url": "https://www.drupal.org/project/pcb",
+  "license": "GPL-2.0+",
+  "php_requirement": ">=8.1.0",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "pcb_memcache",
+    "pcb_redis"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "Caching backend"
+  ],
+  "keywords": [
+    "pcb",
+    "permanent cache bin",
+    "cache",
+    "cache backend",
+    "persistent cache",
+    "drush cr",
+    "deleteAllPermanent",
+    "cache.backend.permanent_database",
+    "external data cache",
+    "stock cache",
+    "cache bin",
+    "pcbf",
+    "pcb-list"
+  ]
+}

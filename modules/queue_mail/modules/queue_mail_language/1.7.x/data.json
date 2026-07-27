@@ -1,0 +1,46 @@
+{
+  "name": "Queue Mail Language",
+  "data_name": "queue_mail_language",
+  "description": "Adds language support for queued mails.",
+  "version": "1.7.x",
+  "package": "Mail",
+  "composer_namespace": "drupal/queue_mail",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "language",
+    "queue_mail"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.4 || ^10 || ^11",
+  "active_installs": 2675,
+  "list_position": 922,
+  "project_url": "https://www.drupal.org/project/queue_mail",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "Multilingual"
+  ],
+  "subcategories": [
+    "Email / mail delivery",
+    "Translation / multilingual"
+  ],
+  "keywords": [
+    "queue mail",
+    "language",
+    "multilingual",
+    "mail language",
+    "queued mail",
+    "language negotiation",
+    "LanguageAwareSendMailQueueWorker",
+    "hook_queue_info_alter",
+    "translation"
+  ]
+}
