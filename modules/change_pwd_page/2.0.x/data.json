@@ -1,0 +1,49 @@
+{
+  "name": "Password Separate Form",
+  "data_name": "change_pwd_page",
+  "description": "Provides a separate page containing a form for the current user to change their password.",
+  "version": "2.0.x",
+  "package": "User Management",
+  "composer_namespace": "drupal/change_pwd_page",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "user"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 3003,
+  "list_position": 975,
+  "project_url": "https://www.drupal.org/project/change_pwd_page",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/password_policy": "Integrates so its password-change route points at this module's separate change-password form."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Security"
+  ],
+  "subcategories": [
+    "Password reset",
+    "Password policy"
+  ],
+  "keywords": [
+    "change password",
+    "password page",
+    "separate password form",
+    "user account form",
+    "current password",
+    "one-time login",
+    "password reset",
+    "user/change-password",
+    "password_policy",
+    "change_password_route",
+    "RouteSubscriber"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "Shared Email",
+  "data_name": "sharedemail",
+  "description": "Allow an email address to be used by more than one user account",
+  "version": "3.2.x",
+  "package": null,
+  "composer_namespace": "drupal/sharedemail",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "user"
+  ],
+  "configure": "sharedemail.settings_form",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 3230,
+  "list_position": 970,
+  "project_url": "https://www.drupal.org/project/sharedemail",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "User registration",
+    "Field validation"
+  ],
+  "keywords": [
+    "shared email",
+    "duplicate email",
+    "email uniqueness",
+    "UserMailUnique",
+    "SharedEmailUnique",
+    "validation constraint",
+    "multiple accounts same email",
+    "user registration",
+    "allowlist",
+    "mail field",
+    "sharedemail_msg",
+    "sharedemail_allowed"
+  ]
+}

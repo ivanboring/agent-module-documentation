@@ -1,0 +1,45 @@
+{
+  "name": "Migrate Magician Forced Rollbackable Destination Plugins",
+  "data_name": "migmag_rollbackable_replace",
+  "description": "Replaces non-rollbackable destination plugins with rollbackable ones.",
+  "version": "1.8.x",
+  "package": "Migration",
+  "composer_namespace": "drupal/migmag_rollbackable_replace",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "migmag:migmag_rollbackable"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8.9 || ^9 || ^10 || ^11",
+  "active_installs": 2542,
+  "list_position": 937,
+  "project_url": "https://www.drupal.org/project/migmag",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools",
+    "Import and export"
+  ],
+  "subcategories": [
+    "Migration tooling",
+    "Backup & restore"
+  ],
+  "keywords": [
+    "migrate",
+    "rollback",
+    "destination plugin",
+    "hook_migrate_destination_info_alter",
+    "override",
+    "config",
+    "color",
+    "default_langcode",
+    "force rollbackable"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "name": "Field Encrypt",
+  "data_name": "field_encrypt",
+  "description": "Extends the Field API to allow encryption of fields.",
+  "version": "4.1.x",
+  "package": "Encryption",
+  "composer_namespace": "drupal/field_encrypt",
+  "composer_requirements": {
+    "drupal/core": "^11.3",
+    "drupal/encrypt": "^3.0@dev"
+  },
+  "dependent_modules": [
+    "encrypt",
+    "field"
+  ],
+  "configure": "field_encrypt.settings",
+  "core_version_requirement": "^11.3",
+  "active_installs": 2575,
+  "list_position": 948,
+  "project_url": "https://www.drupal.org/project/field_encrypt",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Field encryption",
+    "Field-level access control",
+    "Secrets & key management"
+  ],
+  "keywords": [
+    "field encrypt",
+    "encryption",
+    "encrypt",
+    "field api",
+    "encryption at rest",
+    "encryption profile",
+    "third party settings",
+    "field storage",
+    "data protection",
+    "GDPR",
+    "PII",
+    "decrypt",
+    "batch re-encrypt",
+    "make_entities_uncacheable"
+  ]
+}

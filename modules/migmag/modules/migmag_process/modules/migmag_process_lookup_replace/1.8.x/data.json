@@ -1,0 +1,44 @@
+{
+  "name": "Migrate Magician Forced Lookup Process Plugin",
+  "data_name": "migmag_process_lookup_replace",
+  "description": "Replaces core's migration_lookup process plugin with migmag_lookup.",
+  "version": "1.8.x",
+  "package": "Migration",
+  "composer_namespace": "drupal/migmag_process_lookup_replace",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "migmag:migmag_process"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8.9 || ^9 || ^10 || ^11",
+  "active_installs": 2542,
+  "list_position": 937,
+  "project_url": "https://www.drupal.org/project/migmag",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools",
+    "Import and export"
+  ],
+  "subcategories": [
+    "Migration tooling",
+    "Content migration / import"
+  ],
+  "keywords": [
+    "migrate",
+    "migration_lookup",
+    "migmag_lookup",
+    "process plugin",
+    "hook_migrate_process_info_alter",
+    "override",
+    "stub",
+    "force lookup"
+  ]
+}

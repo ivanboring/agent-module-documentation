@@ -1,0 +1,42 @@
+{
+  "name": "Migrate Magician Callback Process Plugin Upgrade",
+  "data_name": "migmag_callback_upgrade",
+  "description": "Replaces the callback process plugin with the version from Drupal core 9.2+.",
+  "version": "1.8.x",
+  "package": "Migration",
+  "composer_namespace": "drupal/migmag_callback_upgrade",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^8.9 || ^9 || ^10 || ^11",
+  "active_installs": 2542,
+  "list_position": 937,
+  "project_url": "https://www.drupal.org/project/migmag",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools",
+    "Import and export"
+  ],
+  "subcategories": [
+    "Migration tooling",
+    "Data transformation"
+  ],
+  "keywords": [
+    "migrate",
+    "callback",
+    "process plugin",
+    "unpack_source",
+    "backport",
+    "hook_migrate_process_info_alter",
+    "drupal 8",
+    "no-op on 9.2+"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "name": "Media Duplicates",
+  "data_name": "media_duplicates",
+  "description": "This module provides a framework to identify duplicate media entries.",
+  "version": "2.0.x",
+  "package": "Media",
+  "composer_namespace": "drupal/media_duplicates",
+  "composer_requirements": {
+    "php": ">=7.3"
+  },
+  "dependent_modules": [
+    "media"
+  ],
+  "configure": "media_duplicates.settings",
+  "core_version_requirement": "^9.2 || ^10 || ^11",
+  "active_installs": 2024,
+  "list_position": 945,
+  "project_url": "https://www.drupal.org/project/media_duplicates",
+  "license": "GPL-2.0+",
+  "php_requirement": ">=7.3",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/entity_usage": "Find where duplicate media are used so they can be consolidated."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "media_duplicates_checksum"
+  ],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Duplicate detection",
+    "File & media metadata"
+  ],
+  "keywords": [
+    "media",
+    "duplicates",
+    "duplicate detection",
+    "checksum",
+    "sha256",
+    "duplicates_checksum",
+    "MediaUniqueChecksum",
+    "restrict duplicates",
+    "media report",
+    "rebuild checksums",
+    "checksum plugin",
+    "media_duplicates_checksum",
+    "oembed",
+    "file hash"
+  ]
+}

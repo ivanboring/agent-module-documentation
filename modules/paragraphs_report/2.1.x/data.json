@@ -1,0 +1,51 @@
+{
+  "name": "Paragraphs Report",
+  "data_name": "paragraphs_report",
+  "description": "Get an inventory of paragraphs in use.",
+  "version": "2.1.x",
+  "package": "Paragraphs",
+  "composer_namespace": "drupal/paragraphs_report",
+  "composer_requirements": {
+    "drupal/core": "^10.2.0 || ^11",
+    "drupal/paragraphs": "^1.10"
+  },
+  "dependent_modules": [
+    "path_alias",
+    "paragraphs"
+  ],
+  "configure": "paragraphs_report.report",
+  "core_version_requirement": "^10.2.0 || ^11",
+  "active_installs": 2449,
+  "list_position": 973,
+  "project_url": "https://www.drupal.org/project/paragraphs_report",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Dashboard / reporting",
+    "Entity reference tracking"
+  ],
+  "keywords": [
+    "paragraphs",
+    "paragraphs report",
+    "inventory",
+    "paragraph usage",
+    "content audit",
+    "report",
+    "CSV export",
+    "which pages use paragraph",
+    "watch content",
+    "pru",
+    "paragraphs_report:update",
+    "keyvalue"
+  ]
+}
