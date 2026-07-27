@@ -1,0 +1,44 @@
+{
+  "name": "Workflow Clean Up",
+  "data_name": "workflow_cleanup",
+  "description": "Cleans up Workflow cruft. (Do not enable in production sites.)",
+  "version": "2.2.x",
+  "package": "Workflow",
+  "composer_namespace": "drupal/workflow",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "workflow"
+  ],
+  "configure": "workflow.cleanup.settings",
+  "core_version_requirement": ">=8",
+  "active_installs": 2988,
+  "list_position": 871,
+  "project_url": "https://www.drupal.org/project/workflow",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Workflow / state management",
+    "Debugging & inspection"
+  ],
+  "keywords": [
+    "workflow cleanup",
+    "orphaned states",
+    "inactive states",
+    "delete states",
+    "workflow maintenance",
+    "cruft",
+    "non-production",
+    "workflow.cleanup.settings"
+  ]
+}

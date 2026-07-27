@@ -1,0 +1,55 @@
+{
+  "name": "Akamai",
+  "data_name": "akamai",
+  "description": "Cache Control integration with Akamai CDN. Akamai is a registered trademark of Akamai Technologies, Inc.",
+  "version": "5.1.x",
+  "package": "Other",
+  "composer_namespace": "drupal/akamai",
+  "composer_requirements": {
+    "akamai-open/edgegrid-client": "^2.1"
+  },
+  "dependent_modules": [],
+  "configure": "akamai.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": 856,
+  "project_url": "https://www.drupal.org/project/akamai",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [
+    "akamai-open/edgegrid-client"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "akamai_client"
+  ],
+  "categories": [
+    "Performance",
+    "Integrations"
+  ],
+  "subcategories": [
+    "CDN integration",
+    "Cache invalidation"
+  ],
+  "keywords": [
+    "akamai",
+    "cdn",
+    "purge",
+    "cache",
+    "cache invalidation",
+    "edgegrid",
+    "ccu",
+    "fast purge",
+    "edge-cache-tag",
+    "surrogate keys",
+    "cache tags",
+    "edgescape",
+    "geolocation token",
+    "key module",
+    "edgerc"
+  ]
+}

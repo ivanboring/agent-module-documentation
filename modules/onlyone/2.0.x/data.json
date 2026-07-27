@@ -1,0 +1,54 @@
+{
+  "name": "Allow a content type only once (Only One)",
+  "data_name": "onlyone",
+  "description": "Allows Only One node per content type and language.",
+  "version": "2.0.x",
+  "package": "Content",
+  "composer_namespace": "drupal/onlyone",
+  "composer_requirements": {
+    "drupal/core": "^10 || ^11",
+    "drupal/admin_toolbar": "^3"
+  },
+  "dependent_modules": [],
+  "configure": "onlyone.admin_settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 2846,
+  "list_position": 893,
+  "project_url": "https://www.drupal.org/project/onlyone",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "onlyone_admin_toolbar": "Bundled submodule; keeps the Admin Toolbar Tools 'Add content' menu in sync with configured content types."
+  },
+  "submodules": [
+    "onlyone_admin_toolbar"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Workflow / business rules",
+    "Content creation limits"
+  ],
+  "keywords": [
+    "only one",
+    "singleton content",
+    "one node per content type",
+    "per language",
+    "content limit",
+    "onlyone.settings",
+    "onlyone_node_types",
+    "OnlyOne constraint",
+    "node validation",
+    "redirect to edit",
+    "add content",
+    "unique content type",
+    "homepage node",
+    "settings node"
+  ]
+}

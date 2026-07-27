@@ -1,0 +1,81 @@
+{
+  "name": "Views Migration",
+  "data_name": "views_migration",
+  "description": "Migrate views from drupal 7",
+  "version": "1.2.x",
+  "package": "Views",
+  "composer_namespace": "drupal/views_migration",
+  "composer_requirements": {
+    "drupal/migrate_tools": "^6.0",
+    "drupal/migrate_plus": "^6.0"
+  },
+  "dependent_modules": [
+    "views",
+    "migrate",
+    "migrate_drupal",
+    "migrate_tools",
+    "migrate_plus"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 3002,
+  "list_position": 869,
+  "project_url": "https://www.drupal.org/project/views_migration",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "migrate.views.access",
+    "migrate.views.area",
+    "migrate.views.argument",
+    "migrate.views.argument_default",
+    "migrate.views.argument_validator",
+    "migrate.views.base_table",
+    "migrate.views.cache",
+    "migrate.views.display",
+    "migrate.views.exposed_form",
+    "migrate.views.field",
+    "migrate.views.field_formatter",
+    "migrate.views.handler_table",
+    "migrate.views.filter",
+    "migrate.views.pager",
+    "migrate.views.relationship",
+    "migrate.views.query",
+    "migrate.views.row",
+    "migrate.views.sort",
+    "migrate.views.style",
+    "migrate.views.style_summary",
+    "migrate.views.text_format"
+  ],
+  "categories": [
+    "Import and export",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Migration tooling",
+    "Content migration / import",
+    "Views query enhancements"
+  ],
+  "keywords": [
+    "views migration",
+    "migrate",
+    "views",
+    "drupal 7",
+    "drupal 6",
+    "d7",
+    "d6",
+    "upgrade",
+    "migrate_plus",
+    "migrate_tools",
+    "entity:view",
+    "views handlers",
+    "d7_views_migration",
+    "d6_views_migration",
+    "site upgrade"
+  ]
+}

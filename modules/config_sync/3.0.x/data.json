@@ -1,0 +1,64 @@
+{
+  "name": "Configuration Synchronizer",
+  "data_name": "config_sync",
+  "description": "Synchronize your site with updated configuration provided by modules and themes.",
+  "version": "3.0.x",
+  "package": "Configuration",
+  "composer_namespace": "drupal/config_sync",
+  "composer_requirements": {
+    "drupal/config_distro": "^2.0.0-alpha2",
+    "drupal/config_filter": "^2.7",
+    "drupal/config_merge": "^2.0.0-alpha2",
+    "drupal/config_normalizer": "^1.0-beta2",
+    "drupal/config_provider": "^3.0.0-alpha3",
+    "drupal/config_snapshot": "^2.0",
+    "drupal/config_update": "^2.0.0-alpha4"
+  },
+  "dependent_modules": [
+    "config_distro_filter",
+    "config_merge",
+    "config_normalizer",
+    "config_provider",
+    "config_snapshot",
+    "config_update"
+  ],
+  "configure": "config_distro.import",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 3013,
+  "list_position": 866,
+  "project_url": "https://www.drupal.org/project/config_sync",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Configuration management",
+    "Deployment / release management"
+  ],
+  "keywords": [
+    "config sync",
+    "configuration synchronizer",
+    "config distro",
+    "config snapshot",
+    "config update",
+    "distribution updates",
+    "update mode",
+    "merge",
+    "partial reset",
+    "full reset",
+    "extension config",
+    "module updates",
+    "theme updates",
+    "config merge",
+    "changelist"
+  ]
+}

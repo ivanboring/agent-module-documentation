@@ -1,0 +1,54 @@
+{
+  "name": "Group Content Menu",
+  "data_name": "group_content_menu",
+  "description": "Provides features for a menu per group.",
+  "version": "3.0.x",
+  "package": "Group",
+  "composer_namespace": "drupal/group_content_menu",
+  "composer_requirements": {
+    "drupal/core": "^10.3 || >=11.1.7 <11.2 || ^11.2",
+    "drupal/group": "^3.0@beta"
+  },
+  "dependent_modules": [
+    "block",
+    "menu_link_content",
+    "menu_ui",
+    "group"
+  ],
+  "configure": "entity.group_content_menu_type.collection",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 2872,
+  "list_position": 886,
+  "project_url": "https://www.drupal.org/project/group_content_menu",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site structure",
+    "Access control"
+  ],
+  "subcategories": [
+    "Navigation menus",
+    "Groups & memberships"
+  ],
+  "keywords": [
+    "group",
+    "group menu",
+    "per-group menu",
+    "menu",
+    "group_content_menu",
+    "group_content_menu_type",
+    "group relation",
+    "menu_link_content",
+    "group menu block",
+    "content entity menu",
+    "GroupMenuBlock",
+    "navigation"
+  ]
+}

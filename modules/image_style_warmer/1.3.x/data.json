@@ -1,0 +1,50 @@
+{
+  "name": "Image Style Warmer",
+  "data_name": "image_style_warmer",
+  "description": "Create image styles of an image on upload or via queue worker.",
+  "version": "1.3.x",
+  "package": "Performance",
+  "composer_namespace": "drupal/image_style_warmer",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "image"
+  ],
+  "configure": "image_style_warmer.settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 2995,
+  "list_position": 870,
+  "project_url": "https://www.drupal.org/project/image_style_warmer",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance",
+    "Media"
+  ],
+  "subcategories": [
+    "Image toolkit / processing",
+    "Queue / background processing"
+  ],
+  "keywords": [
+    "image style",
+    "image derivative",
+    "pregenerate",
+    "warmup",
+    "warmer",
+    "queue worker",
+    "cron",
+    "performance",
+    "file insert",
+    "createDerivative",
+    "initial image styles",
+    "queue image styles",
+    "VBO action",
+    "drush isw:wu"
+  ]
+}

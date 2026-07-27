@@ -1,0 +1,43 @@
+{
+  "name": "CDN UI",
+  "data_name": "cdn_ui",
+  "description": "Administrative interface for CDN.",
+  "version": "5.0.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/cdn",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "cdn"
+  ],
+  "configure": "cdn_ui.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 858,
+  "project_url": "https://www.drupal.org/project/cdn",
+  "license": "GPL-2.0+",
+  "php_requirement": ">=8.3",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "CDN integration"
+  ],
+  "keywords": [
+    "cdn",
+    "cdn ui",
+    "admin form",
+    "settings form",
+    "cdn.settings",
+    "administer CDN configuration",
+    "vertical tabs",
+    "mapping",
+    "configuration"
+  ]
+}

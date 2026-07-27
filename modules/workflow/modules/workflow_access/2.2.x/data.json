@@ -1,0 +1,48 @@
+{
+  "name": "Workflow Access",
+  "data_name": "workflow_access",
+  "description": "Content access control based on workflows and roles. Depends on the node_access system, so only works for entities of type 'node'.",
+  "version": "2.2.x",
+  "package": "Workflow",
+  "composer_namespace": "drupal/workflow",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "workflow"
+  ],
+  "configure": "entity.workflow_type.collection",
+  "core_version_requirement": ">=8",
+  "active_installs": 2988,
+  "list_position": 871,
+  "project_url": "https://www.drupal.org/project/workflow",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Security"
+  ],
+  "subcategories": [
+    "Workflow / business rules",
+    "Unpublished content access"
+  ],
+  "keywords": [
+    "workflow access",
+    "node access",
+    "node_access_records",
+    "node_grants",
+    "state-based access",
+    "grant_view",
+    "grant_update",
+    "grant_delete",
+    "workflow_access.role",
+    "workflow_access_priority",
+    "per-role access",
+    "node only"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "name": "/llms.txt",
+  "data_name": "llms_txt",
+  "description": "Dynamically generates and allows editing of the /llms.txt file for your Drupal site.",
+  "version": "1.0.x",
+  "package": "AI",
+  "composer_namespace": "drupal/llms_txt",
+  "composer_requirements": {
+    "php": "~8.1.6 || ~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
+    "drupal/core": "^10.5 || ^11.2"
+  },
+  "dependent_modules": [
+    "text"
+  ],
+  "configure": "llms_txt.llms_txt_config",
+  "core_version_requirement": "^10.3 || ^11.1",
+  "active_installs": 2837,
+  "list_position": 894,
+  "project_url": "https://www.drupal.org/project/llms_txt",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "~8.1.6 || ~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
+  "library_dependencies": [],
+  "suggests": {
+    "markdownify_views": "Enables the llms_txt_views tokens that render Views output (tagged 'llms_txt_section') as Markdown inside llms.txt."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)",
+    "Search engine optimization (SEO)"
+  ],
+  "subcategories": [
+    "LLM content discovery",
+    "Semantic metadata"
+  ],
+  "keywords": [
+    "llms.txt",
+    "llmstxt",
+    "LLM",
+    "AI agents",
+    "AI discovery",
+    "markdown",
+    "llms_txt.settings",
+    "llms_txt_section",
+    "content entity",
+    "menu markdown token",
+    "llms_txt_markdown_menu",
+    "path processor",
+    "text/markdown",
+    "site content for AI"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "name": "Workflow Devel",
+  "data_name": "workflow_devel",
+  "description": "Tools for developing Workflow add-ons. Calls every hook in workflow.api.php and generates a user message on each call. (Do not enable in production sites.)",
+  "version": "2.2.x",
+  "package": "Workflow",
+  "composer_namespace": "drupal/workflow",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "workflow"
+  ],
+  "configure": null,
+  "core_version_requirement": ">=8",
+  "active_installs": 2988,
+  "list_position": 871,
+  "project_url": "https://www.drupal.org/project/workflow",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Debugging & inspection"
+  ],
+  "keywords": [
+    "workflow devel",
+    "workflow hooks",
+    "hook_workflow",
+    "debugging",
+    "add-on development",
+    "event subscriber",
+    "pre_transition",
+    "post_transition",
+    "example implementation",
+    "non-production"
+  ]
+}

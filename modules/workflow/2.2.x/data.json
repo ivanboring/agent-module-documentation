@@ -1,0 +1,63 @@
+{
+  "name": "Workflow",
+  "data_name": "workflow",
+  "description": "Defines a field type with Workflows, containing customizable state transitions.",
+  "version": "2.2.x",
+  "package": "Workflow",
+  "composer_namespace": "drupal/workflow",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "field",
+    "options",
+    "user"
+  ],
+  "configure": "entity.workflow_type.collection",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": 2988,
+  "list_position": 871,
+  "project_url": "https://www.drupal.org/project/workflow",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/diff": "Adds a field diff builder so workflow state changes appear in entity revision diffs.",
+    "drupal/feeds": "Provides a Feeds target for importing workflow state values."
+  },
+  "submodules": [
+    "workflow_access",
+    "workflow_cleanup",
+    "workflow_devel",
+    "workflowfield",
+    "workflow_operations",
+    "workflow_ui"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Workflow / state management",
+    "Workflow / business rules"
+  ],
+  "keywords": [
+    "workflow",
+    "workflow state",
+    "state transition",
+    "workflow_type",
+    "workflow_state",
+    "workflow_config_transition",
+    "workflow field",
+    "editorial workflow",
+    "content moderation",
+    "transition history",
+    "scheduled transition",
+    "per-role transitions",
+    "workflow_transition_history",
+    "state machine",
+    "approval process"
+  ]
+}

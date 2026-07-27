@@ -1,0 +1,57 @@
+{
+  "name": "Tokens in Views Filter Criteria",
+  "data_name": "token_views_filter",
+  "description": "Allow to use tokens in views filter criteria values.",
+  "version": "2.2.x",
+  "package": "Other",
+  "composer_namespace": "drupal/token_views_filter",
+  "composer_requirements": {
+    "drupal/token": "^1.15"
+  },
+  "dependent_modules": [
+    "token"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.2 || ^10.1 || ^11",
+  "active_installs": 2906,
+  "list_position": 882,
+  "project_url": "https://www.drupal.org/project/token_views_filter",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/geofield": "Enables token support for the geofield_proximity views filter (#3394994)."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "token_views_filter"
+  ],
+  "categories": [
+    "Content display",
+    "Automation"
+  ],
+  "subcategories": [
+    "Views exposed filters",
+    "Token / placeholder replacement"
+  ],
+  "keywords": [
+    "views",
+    "views filter",
+    "token",
+    "tokens",
+    "use_tokens",
+    "filter criteria",
+    "contextual filter alternative",
+    "current-user",
+    "global tokens",
+    "string filter",
+    "numeric filter",
+    "date filter",
+    "geofield_proximity",
+    "combine filter",
+    "list_field filter"
+  ]
+}
