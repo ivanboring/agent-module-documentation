@@ -45,7 +45,8 @@ For each page of the [data source](data-source.md), starting at the offset in
    — **outside** this repo (they are binary artifacts, not committed) — referenced from the
    relevant solution doc. See [browser-screenshots.md](browser-screenshots.md).
 
-6. **Write the docs** into `modules/{name}/{version}/`:
+6. **Write the docs** into `modules/{ab}/{name}/{version}/` (`{ab}` = machine name's first
+   two letters — the bucket that keeps `modules/` browsable, e.g. `modules/to/token/1.17.x/`):
    - `data.json` — see [file-formats.md](file-formats.md).
    - `usage.md` — short summary `---` long summary `---` 15–30 use cases.
    - `agent/start.md` + `agent/{solution_type}/{name}.md` — only the solution types the
@@ -53,8 +54,8 @@ For each page of the [data source](data-source.md), starting at the offset in
      `permissions`, `theming`). Each doc must be cheaper to read than the source.
 
 7. **Recurse** into every submodule (step 4–6), writing it nested under its parent at
-   `modules/{parent}/modules/{submodule_name}/{version}/` (deeper if the submodule itself
-   has submodules).
+   `modules/{ab}/{parent}/modules/{submodule_name}/{version}/` (deeper if the submodule
+   itself has submodules; the two-letter bucket applies only to the top-level parent).
 
 8. **Update taxonomy.** Add any new category/subcategory to
    [`../categories.yml`](../categories.yml) — never duplicate an existing name.
@@ -66,4 +67,4 @@ For each page of the [data source](data-source.md), starting at the offset in
 - `drush pm:list --status=enabled` includes the module.
 - `data.json` is valid JSON; `usage.md` has three `---` blocks and 15–30 bullets.
 - Links in `agent/start.md` resolve; the `configure` value matches a real route.
-- Helper: [`../scripts/validate-docs.sh`](../scripts/validate-docs.sh) `modules/{name}/{version}`.
+- Helper: [`../scripts/validate-docs.sh`](../scripts/validate-docs.sh) `modules/{ab}/{name}/{version}`.

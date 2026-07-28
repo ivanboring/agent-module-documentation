@@ -2,8 +2,9 @@
 # Print the next N undocumented projects from the campaign list, in popularity order.
 #
 # "Undocumented" is recomputed from disk every call: a project is skipped if a directory
-# modules/<project>/ exists. This is self-correcting — as each wave lands new dirs, they
-# drop out of the next pick automatically, so there is no cursor to keep in sync.
+# modules/<first-2-letters>/<project>/ exists (two-letter bucket layout). This is
+# self-correcting — as each wave lands new dirs, they drop out of the next pick
+# automatically, so there is no cursor to keep in sync.
 #
 # It cannot see project→module renames (project private_files_download_permission ships
 # module pfdp), so a handful of already-done projects may reappear; the installer and
@@ -28,8 +29,9 @@ awk -F'\t' -v n="$N" -v modns="modules" -v skipf="$SKIP" '
   {
     proj=$2
     if (proj in skip) next
-    # skip if already documented on disk
-    cmd="test -d " modns "/" proj " && echo yes"
+    # skip if already documented on disk (two-letter bucket: modules/<pre>/<proj>/)
+    pre=substr(proj, 1, 2)
+    cmd="test -d " modns "/" pre "/" proj " && echo yes"
     have=""
     cmd | getline have
     close(cmd)

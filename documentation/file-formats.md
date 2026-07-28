@@ -1,6 +1,7 @@
 # File formats
 
-Every `modules/{name}/{version}/` directory holds exactly these three deliverables.
+Every `modules/{ab}/{name}/{version}/` directory holds exactly these three deliverables
+(`{ab}` = the machine name's first two letters — a bucket so `modules/` stays browsable).
 
 ## `data.json`
 
@@ -71,9 +72,9 @@ They live one directory up from the repo, at the **project root**:
 `<project-root>/screenshots/{name}/{version}/…png` (i.e. a sibling of
 `agent-module-documentation/`, e.g. `/var/www/html/screenshots/pathauto/1.15.x/settings-form.png`),
 mirroring the module path. Reference them from a solution doc with a relative link that
-climbs out of the repo — a doc at `modules/{name}/{version}/agent/{type}/` is six levels
-below the project root, so:
-`![alt](../../../../../../screenshots/{name}/{version}/name.png)`. These links resolve when
+climbs out of the repo — a doc at `modules/{ab}/{name}/{version}/agent/{type}/` is seven
+levels below the project root, so:
+`![alt](../../../../../../../screenshots/{name}/{version}/name.png)`. These links resolve when
 viewing locally (where the site is running); they are intentionally absent from the pushed
 repo. How-to (and the container gotchas): [browser-screenshots.md](browser-screenshots.md).
 Skip for modules with no UI.

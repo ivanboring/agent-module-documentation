@@ -37,8 +37,11 @@ https://www.drupal.org/jsonapi/node/project_module
 
 ## What we produce, per module
 
+Modules are bucketed by the **first two letters of the machine name** so no single
+directory grows unwieldy (`modules/{ab}/…` where `{ab}` is `machine_name[0:2]`):
+
 ```
-modules/{machine_name}/{major.minor.x}/
+modules/{ab}/{machine_name}/{major.minor.x}/
 ├── data.json          # structured metadata (see documentation/file-formats.md)
 ├── usage.md           # short summary / long summary / 15–30 use cases, split by ---
 ├── agent/
@@ -52,15 +55,20 @@ modules/{machine_name}/{major.minor.x}/
     └── evals.json     # easy + medium + hard eval cases (see the Evals section below)
 ```
 
+e.g. `modules/ac/access_unpublished/1.9.x/`, `modules/to/token/1.17.x/`. The two-letter
+bucket is derived from the machine name's first two characters (lowercase); a module whose
+name is itself two letters buckets under itself, e.g. `modules/og/og/2.0.x/`.
+
 **Submodules nest under their parent**, mirroring how they ship inside the project.
-A submodule lives in a `modules/` directory *beside* the parent's version directory,
-so its docs sit at `modules/{parent}/modules/{submodule}/{version}/…`. Nesting can be
-more than one level deep when a submodule itself has submodules, e.g.:
+A submodule lives in a `modules/` directory *beside* the parent's version directory (the
+two-letter bucket applies only to the top-level project, not to nested submodules), so its
+docs sit at `modules/{ab}/{parent}/modules/{submodule}/{version}/…`. Nesting can be more
+than one level deep when a submodule itself has submodules, e.g.:
 
 ```
-modules/video_embed_field/3.1.x/…
-modules/video_embed_field/modules/video_embed_media/3.1.x/…
-modules/video_embed_field/modules/video_embed_media/modules/vem_migrate_oembed/3.1.x/…
+modules/vi/video_embed_field/3.1.x/…
+modules/vi/video_embed_field/modules/video_embed_media/3.1.x/…
+modules/vi/video_embed_field/modules/video_embed_media/modules/vem_migrate_oembed/3.1.x/…
 ```
 
 Admin-UI screenshots are stored **outside this repo**, one level up at the project root
@@ -68,10 +76,10 @@ Admin-UI screenshots are stored **outside this repo**, one level up at the proje
 solution docs. They are binary artifacts we intentionally do not commit.
 
 - The version directory is `major.minor.x` (patch dropped), derived from the installed
-  release, e.g. `token/1.17.x`, `pathauto/1.15.x`.
+  release, e.g. `to/token/1.17.x`, `pa/pathauto/1.15.x`.
 - **Submodules** shipped inside a module each get their own tree with the same three
   files, nested under the parent at
-  `modules/{parent}/modules/{submodule_machine_name}/{version}/` (see the layout above).
+  `modules/{ab}/{parent}/modules/{submodule_machine_name}/{version}/` (see the layout above).
 - Every `agent/**/*.md` must be **shorter than reading the equivalent source** — that is
   the whole point. If it isn't, cut it.
 
@@ -87,7 +95,7 @@ Layout — `index.md` at the root plus **one directory per topic**, each with it
 `index.md` (mkdocs nested-page style):
 
 ```
-modules/{machine_name}/{version}/human-docs/
+modules/{ab}/{machine_name}/{version}/human-docs/
 ├── index.md              # landing page: what the module is + a linked table of contents
 ├── installation/
 │   └── index.md          # requirements, composer require, enabling, submodules
