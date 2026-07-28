@@ -1,0 +1,58 @@
+{
+  "name": "Content Synchronizer",
+  "data_name": "content_synchronizer",
+  "description": "Export content entities to a tar.gz archive and import them into another Drupal environment.",
+  "version": "4.1.x",
+  "package": "Development",
+  "composer_namespace": "drupal/content_synchronizer",
+  "composer_requirements": {
+    "cocur/slugify": ">=2",
+    "php": ">=7.0"
+  },
+  "dependent_modules": [
+    "file"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 2022,
+  "list_position": 1093,
+  "project_url": "https://www.drupal.org/project/content_synchronizer",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=7.0",
+  "library_dependencies": [
+    "cocur/slugify"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "entity_processor",
+    "type_processor"
+  ],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Content migration / import",
+    "Data export"
+  ],
+  "keywords": [
+    "content synchronizer",
+    "export",
+    "import",
+    "tar.gz",
+    "content staging",
+    "content deployment",
+    "content migration",
+    "entity export",
+    "environments",
+    "export entity",
+    "import entity",
+    "processor plugin",
+    "drush",
+    "global reference",
+    "uuid"
+  ]
+}

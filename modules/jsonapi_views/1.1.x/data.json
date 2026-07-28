@@ -1,0 +1,53 @@
+{
+  "name": "JSON:API Views",
+  "data_name": "jsonapi_views",
+  "description": "Provides a JSON:API resource for each view display.",
+  "version": "1.1.x",
+  "package": null,
+  "composer_namespace": "drupal/jsonapi_views",
+  "composer_requirements": {
+    "drupal/core": ">=8.8",
+    "drupal/jsonapi_resources": "^1.0"
+  },
+  "dependent_modules": [
+    "drupal:views",
+    "jsonapi_resources:jsonapi_resources"
+  ],
+  "configure": null,
+  "core_version_requirement": ">=8.8",
+  "active_installs": 2004,
+  "list_position": 1101,
+  "project_url": "https://www.drupal.org/project/jsonapi_views",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Decoupled",
+    "Content display"
+  ],
+  "subcategories": [
+    "REST / web services",
+    "View embedding"
+  ],
+  "keywords": [
+    "jsonapi",
+    "json:api",
+    "views",
+    "rest",
+    "web services",
+    "decoupled",
+    "headless",
+    "jsonapi_resources",
+    "display extender",
+    "views-filter",
+    "views-sort",
+    "views-argument",
+    "pagination"
+  ]
+}

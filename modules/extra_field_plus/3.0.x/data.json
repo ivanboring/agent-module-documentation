@@ -1,0 +1,56 @@
+{
+  "name": "Extra Field Plus: Extra Field Settings Provider",
+  "data_name": "extra_field_plus",
+  "description": "Provides ability to add display settings form for extra field, like field formatter settings.",
+  "version": "3.0.x",
+  "package": null,
+  "composer_namespace": "drupal/extra_field_plus",
+  "composer_requirements": {
+    "drupal/extra_field": "^1.0 || ^2.0 || ^3.0"
+  },
+  "dependent_modules": [
+    "drupal:field",
+    "extra_field:extra_field"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 2001,
+  "list_position": 1102,
+  "project_url": "https://www.drupal.org/project/extra_field_plus",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "extra_field_plus_example"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "extra_field_plus_display"
+  ],
+  "categories": [
+    "Content display",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Fields",
+    "Field formatters",
+    "Computed / derived fields"
+  ],
+  "keywords": [
+    "extra field",
+    "pseudo field",
+    "extra field settings",
+    "display settings",
+    "formatter settings",
+    "ExtraFieldPlusDisplayBase",
+    "ExtraFieldPlusDisplayFormattedBase",
+    "plugin.manager.extra_field_plus_display",
+    "manage display",
+    "entity_view_display",
+    "layout builder",
+    "extra_field"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "name": "Commerce Square",
+  "data_name": "commerce_square",
+  "description": "Provides Commerce integration for Square Connect.",
+  "version": "1.8.x",
+  "package": "Commerce (contrib)",
+  "composer_namespace": "drupal/commerce_square",
+  "composer_requirements": {
+    "php": "^7.3 || ^8.0",
+    "drupal/commerce": "~2.39 || ^3",
+    "square/square": "^34.0"
+  },
+  "dependent_modules": [
+    "commerce:commerce",
+    "commerce:commerce_payment"
+  ],
+  "configure": "commerce_square.settings",
+  "core_version_requirement": "^9.2 || ^10 || ^11",
+  "active_installs": 2012,
+  "list_position": 1098,
+  "project_url": "https://www.drupal.org/project/commerce_square",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "^7.3 || ^8.0",
+  "library_dependencies": [
+    "square/square"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Payment gateway"
+  ],
+  "keywords": [
+    "commerce",
+    "square",
+    "square connect",
+    "payment gateway",
+    "credit card",
+    "onsite payment",
+    "oauth",
+    "sandbox",
+    "square/square",
+    "commerce_square.settings",
+    "commerce_square.connect",
+    "location id"
+  ]
+}

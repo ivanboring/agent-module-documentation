@@ -1,0 +1,62 @@
+{
+  "name": "Monitoring",
+  "data_name": "monitoring",
+  "description": "Monitoring base.",
+  "version": "1.22.x",
+  "package": "Monitoring",
+  "composer_namespace": "drupal/monitoring",
+  "composer_requirements": {
+    "drupal/core": "^10.2 || ^11"
+  },
+  "dependent_modules": [
+    "views"
+  ],
+  "configure": "monitoring.settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": 1084,
+  "project_url": "https://www.drupal.org/project/monitoring",
+  "license": "GPL-2.0",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "monitoring_demo",
+    "monitoring_mail",
+    "monitoring_multigraph",
+    "monitoring_prometheus",
+    "monitoring_test"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "monitoring.sensor"
+  ],
+  "categories": [
+    "Administration tools",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Dashboard / reporting",
+    "Application performance monitoring",
+    "Error tracking & monitoring"
+  ],
+  "keywords": [
+    "monitoring",
+    "sensor",
+    "health check",
+    "nagios",
+    "icinga",
+    "prometheus",
+    "watchdog",
+    "requirements",
+    "threshold",
+    "SensorPlugin",
+    "monitoring_sensor_config",
+    "cron",
+    "metrics",
+    "alerting",
+    "sensor runner"
+  ]
+}

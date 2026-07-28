@@ -1,0 +1,55 @@
+{
+  "name": "Kint",
+  "data_name": "kint",
+  "description": "Kint dump tool, drupal configs, and devel integration.",
+  "version": "2.3.x",
+  "package": "Development",
+  "composer_namespace": "drupal/kint",
+  "composer_requirements": {
+    "php": ">= 8",
+    "drupal/core": ">= 9",
+    "kint-php/kint": "^6.0.1",
+    "kint-php/kint-twig": "^6"
+  },
+  "dependent_modules": [],
+  "configure": "kint.form",
+  "core_version_requirement": "^9 || ^10 || ^11 || ^12",
+  "active_installs": 2099,
+  "list_position": 1071,
+  "project_url": "https://www.drupal.org/project/kint",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">= 8",
+  "library_dependencies": [
+    "kint-php/kint",
+    "kint-php/kint-twig"
+  ],
+  "suggests": {
+    "drupal/devel": "Various blocks, pages, and functions for developers."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Debugging & inspection"
+  ],
+  "keywords": [
+    "kint",
+    "dump",
+    "debug",
+    "var_dump",
+    "d()",
+    "s()",
+    "twig dump",
+    "devel dumper",
+    "rich renderer",
+    "helper functions",
+    "development",
+    "inspection",
+    "trace"
+  ]
+}

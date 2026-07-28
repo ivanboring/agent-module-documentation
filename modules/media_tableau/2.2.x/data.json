@@ -1,0 +1,51 @@
+{
+  "name": "Media Tableau",
+  "data_name": "media_tableau",
+  "description": "Provides a custom media type for embedding Tableau.",
+  "version": "2.2.x",
+  "package": "Media",
+  "composer_namespace": "drupal/media_tableau",
+  "composer_requirements": {
+    "drupal/core": "^9 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "media_remote"
+  ],
+  "configure": "media_tableau.allowed_hosts_settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 2120,
+  "list_position": 1066,
+  "project_url": "https://www.drupal.org/project/media_tableau",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Media embedding",
+    "Field formatters"
+  ],
+  "keywords": [
+    "tableau",
+    "media",
+    "media remote",
+    "embed",
+    "visualization",
+    "viz",
+    "iframe",
+    "field formatter",
+    "allowed hosts",
+    "embedding api",
+    "tableau-viz",
+    "CSP frame-src",
+    "public.tableau.com",
+    "dashboard"
+  ]
+}

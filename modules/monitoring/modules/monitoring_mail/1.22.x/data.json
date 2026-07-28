@@ -1,0 +1,45 @@
+{
+  "name": "Monitoring Mail (Experimental)",
+  "data_name": "monitoring_mail",
+  "description": "Escalation mail for sensor result transition",
+  "version": "1.22.x",
+  "package": "Monitoring",
+  "composer_namespace": "drupal/monitoring",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "monitoring"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": 1084,
+  "project_url": "https://www.drupal.org/project/monitoring",
+  "license": "GPL-2.0",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "User engagement"
+  ],
+  "subcategories": [
+    "Email / mail delivery",
+    "Error tracking & monitoring"
+  ],
+  "keywords": [
+    "monitoring",
+    "escalation",
+    "email",
+    "alert",
+    "notification",
+    "sensor transition",
+    "severities",
+    "hook_monitoring_run_sensors",
+    "monitoring_mail.settings"
+  ]
+}

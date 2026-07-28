@@ -1,0 +1,54 @@
+{
+  "name": "Colorbox Media Video",
+  "data_name": "colorbox_media_video",
+  "description": "Adds Colorbox support to Media Video and Remote Video types.",
+  "version": "2.1.x",
+  "package": "Media",
+  "composer_namespace": "drupal/colorbox_media_video",
+  "composer_requirements": {
+    "drupal/colorbox": "*"
+  },
+  "dependent_modules": [
+    "media",
+    "colorbox"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11.2 || ^12",
+  "active_installs": 2016,
+  "list_position": 1095,
+  "project_url": "https://www.drupal.org/project/colorbox_media_video",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/token": "Enables token replacement patterns in the custom gallery id and custom caption settings."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media",
+    "Content display"
+  ],
+  "subcategories": [
+    "Lightbox / modal display",
+    "Video embedding"
+  ],
+  "keywords": [
+    "colorbox",
+    "media",
+    "remote video",
+    "oembed",
+    "video",
+    "lightbox",
+    "modal",
+    "field formatter",
+    "colorbox_media_remote_video",
+    "gallery",
+    "thumbnail",
+    "youtube",
+    "vimeo"
+  ]
+}
