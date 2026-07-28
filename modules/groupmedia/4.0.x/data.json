@@ -1,0 +1,59 @@
+{
+  "name": "Group Media",
+  "data_name": "groupmedia",
+  "description": "Enables Group functionality for the Media module.",
+  "version": "4.0.x",
+  "package": "Group",
+  "composer_namespace": "drupal/groupmedia",
+  "composer_requirements": {
+    "drupal/group": "^3.0"
+  },
+  "dependent_modules": [
+    "media",
+    "group"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 2641,
+  "list_position": 1001,
+  "project_url": "https://www.drupal.org/project/groupmedia",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "groupmedia_paragraphs",
+    "groupmedia_vbo"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "media_finder"
+  ],
+  "categories": [
+    "Access control",
+    "Media"
+  ],
+  "subcategories": [
+    "Groups & memberships",
+    "Media embedding"
+  ],
+  "keywords": [
+    "group",
+    "media",
+    "group media",
+    "group content",
+    "group relationship",
+    "group_media",
+    "media finder",
+    "media tracking",
+    "auto attach media",
+    "media library",
+    "entity embed",
+    "views bulk operations",
+    "paragraphs",
+    "group_relationship_type",
+    "GroupRelationType"
+  ]
+}

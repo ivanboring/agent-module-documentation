@@ -1,0 +1,58 @@
+{
+  "name": "H5P",
+  "data_name": "h5p",
+  "description": "Upload and view interactive HTML5 Packages to your site.",
+  "version": "2.0.x",
+  "package": "H5P",
+  "composer_namespace": "drupal/h5p",
+  "composer_requirements": {
+    "h5p/h5p-core": "^1.27",
+    "h5p/h5p-editor": "^1.24.4"
+  },
+  "dependent_modules": [
+    "field",
+    "file"
+  ],
+  "configure": "h5p.admin.config.system.h5p",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 2408,
+  "list_position": 996,
+  "project_url": "https://www.drupal.org/project/h5p",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [
+    "h5p/h5p-core",
+    "h5p/h5p-editor"
+  ],
+  "suggests": {},
+  "submodules": [
+    "h5peditor"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display",
+    "Media"
+  ],
+  "subcategories": [
+    "Interactive content (H5P)",
+    "Media embedding"
+  ],
+  "keywords": [
+    "h5p",
+    "interactive content",
+    "html5 package",
+    "e-learning",
+    "quiz",
+    "interactive video",
+    "h5p field",
+    "h5p_content",
+    "h5p.settings",
+    "content type hub",
+    "xAPI",
+    "LRS",
+    "embed"
+  ]
+}

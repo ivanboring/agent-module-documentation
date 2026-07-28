@@ -1,0 +1,51 @@
+{
+  "name": "Lagoon Logs Module",
+  "data_name": "lagoon_logs",
+  "description": "Simple monolog wrapper for Lagoon.",
+  "version": "3.0.x",
+  "package": "Logging",
+  "composer_namespace": "drupal/lagoon_logs",
+  "composer_requirements": {
+    "monolog/monolog": "^3.0"
+  },
+  "dependent_modules": [],
+  "configure": "lagoon_logs.settings",
+  "core_version_requirement": ">=10",
+  "active_installs": 2529,
+  "list_position": 991,
+  "project_url": "https://www.drupal.org/project/lagoon_logs",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "monolog/monolog"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Error tracking & monitoring",
+    "Log aggregation"
+  ],
+  "keywords": [
+    "lagoon",
+    "logs",
+    "logging",
+    "monolog",
+    "logstash",
+    "udp",
+    "syslog",
+    "SocketHandler",
+    "watchdog",
+    "logger",
+    "amazee",
+    "kubernetes",
+    "log aggregation",
+    "structured logging"
+  ]
+}

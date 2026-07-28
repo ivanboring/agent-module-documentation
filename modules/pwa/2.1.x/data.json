@@ -1,0 +1,53 @@
+{
+  "name": "Progressive Web App (PWA)",
+  "data_name": "pwa",
+  "description": "Provides progressive web app integration for your Drupal site.",
+  "version": "2.1.x",
+  "package": "PWA",
+  "composer_namespace": "drupal/pwa",
+  "composer_requirements": {
+    "php": "^8"
+  },
+  "dependent_modules": [
+    "file"
+  ],
+  "configure": "pwa.config_manifest",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 2397,
+  "list_position": 1000,
+  "project_url": "https://www.drupal.org/project/pwa",
+  "license": "GPL-2.0+",
+  "php_requirement": "^8",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "pwa_a2hs",
+    "pwa_extras",
+    "pwa_service_worker"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance",
+    "Content display"
+  ],
+  "subcategories": [
+    "Progressive Web App"
+  ],
+  "keywords": [
+    "pwa",
+    "progressive web app",
+    "manifest.json",
+    "web app manifest",
+    "installable",
+    "add to home screen",
+    "service worker",
+    "offline",
+    "mobile",
+    "theme-color",
+    "pwa.config",
+    "standalone"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "name": "Google Analytics Reports",
+  "data_name": "google_analytics_reports",
+  "description": "Display statistics from Google Analytics using Views.",
+  "version": "4.0.x",
+  "package": "Statistics",
+  "composer_namespace": "drupal/google_analytics_reports",
+  "composer_requirements": {
+    "drupal/core": "^10 || ^11",
+    "google/analytics-data": "*"
+  },
+  "dependent_modules": [
+    "file",
+    "google_analytics_reports_api"
+  ],
+  "configure": "google_analytics_reports_api.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 3789,
+  "list_position": 1002,
+  "project_url": "https://www.drupal.org/project/google_analytics_reports",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "google/analytics-data"
+  ],
+  "suggests": {},
+  "submodules": [
+    "google_analytics_reports_api"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Analytics & tracking",
+    "Dashboard / reporting"
+  ],
+  "keywords": [
+    "google analytics",
+    "GA4",
+    "analytics",
+    "reports",
+    "statistics",
+    "views",
+    "views query",
+    "analytics data api",
+    "metadata",
+    "dimensions",
+    "metrics",
+    "google_analytics_reports_fields",
+    "summary block",
+    "reporting"
+  ]
+}

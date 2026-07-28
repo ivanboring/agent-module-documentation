@@ -1,0 +1,52 @@
+{
+  "name": "Node Keep",
+  "data_name": "node_keep",
+  "description": "Adds a base field to all nodes to prevent accidental deletion by unauthorized users.",
+  "version": "2.2.x",
+  "package": "Node Keep",
+  "composer_namespace": "drupal/node_keep",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "node"
+  ],
+  "configure": "node_keep.settings",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": 2403,
+  "list_position": 998,
+  "project_url": "https://www.drupal.org/project/node_keep",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/pathauto": "When installed, node_keep adds a second 'alias_keeper' base field that locks a node's URL alias from being changed by unauthorized users."
+  },
+  "submodules": [
+    "node_keep_token"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Content deletion protection",
+    "Field-level access control"
+  ],
+  "keywords": [
+    "node keep",
+    "node_keeper",
+    "alias_keeper",
+    "prevent deletion",
+    "delete protection",
+    "accidental deletion",
+    "base field",
+    "hook_node_access",
+    "path alias lock",
+    "pathauto",
+    "content protection",
+    "third party settings"
+  ]
+}

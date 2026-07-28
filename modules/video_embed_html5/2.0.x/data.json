@@ -1,0 +1,53 @@
+{
+  "name": "Video Embed HTML5",
+  "data_name": "video_embed_html5",
+  "description": "Embed HTML5 videos into your website using Video Embed Field.",
+  "version": "2.0.x",
+  "package": "Video Embed Field",
+  "composer_namespace": "drupal/video_embed_html5",
+  "composer_requirements": {
+    "php": ">=8.0",
+    "drupal/video_embed_field": "^2.5 || ^3.0",
+    "drupal/core": "^9.2 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "video_embed_field:video_embed_field"
+  ],
+  "configure": "video_embed_html5.config.form",
+  "core_version_requirement": "^9.2 || ^10 || ^11",
+  "active_installs": 2455,
+  "list_position": 981,
+  "project_url": "https://www.drupal.org/project/video_embed_html5",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.0",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/php_ffmpeg": "For server side generation of video thumbnails"
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media",
+    "Content display"
+  ],
+  "subcategories": [
+    "Video embedding",
+    "Media embedding"
+  ],
+  "keywords": [
+    "video embed field",
+    "html5",
+    "video",
+    "mp4",
+    "webm",
+    "ogg",
+    "provider",
+    "thumbnail",
+    "ffmpeg",
+    "placeholder",
+    "local video"
+  ]
+}

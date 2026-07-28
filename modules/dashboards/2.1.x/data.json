@@ -1,0 +1,70 @@
+{
+  "name": "Dashboards",
+  "data_name": "dashboards",
+  "description": "Dashboards based on layout builder.",
+  "version": "2.1.x",
+  "package": "Dashboards",
+  "composer_namespace": "drupal/dashboards",
+  "composer_requirements": {
+    "drupal/core": "^9.4 || ^10 || ^11",
+    "laminas/laminas-feed": "^2.17"
+  },
+  "dependent_modules": [
+    "layout_builder",
+    "views"
+  ],
+  "configure": "entity.dashboard.collection",
+  "core_version_requirement": "^9.4 || ^10 || ^11",
+  "active_installs": 2597,
+  "list_position": 995,
+  "project_url": "https://www.drupal.org/project/dashboards",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "laminas/laminas-feed"
+  ],
+  "suggests": {
+    "drupal/layout_builder_restrictions": "Manage which fields & layouts are available in Layout Builder.",
+    "drupal/matomo": "Reports site visitor analytics to a Matomo instance.",
+    "drupal/matomo_reporting_api": "Allows to retrieve reports from the Matomo API.",
+    "drupal/webform": "Enables the creation of webforms and questionnaires.",
+    "drupal/statistics": "Logs how many times content is viewed."
+  },
+  "submodules": [
+    "dashboards_comments",
+    "dashboards_matomo",
+    "dashboards_statistic",
+    "dashboards_views",
+    "dashboards_webform"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "dashboard"
+  ],
+  "categories": [
+    "Administration tools",
+    "Content display"
+  ],
+  "subcategories": [
+    "Dashboard / reporting",
+    "Layout Builder"
+  ],
+  "keywords": [
+    "dashboard",
+    "dashboards",
+    "layout builder",
+    "widgets",
+    "reporting",
+    "admin dashboard",
+    "charts",
+    "statistics",
+    "blocks",
+    "toolbar",
+    "personalize",
+    "dashboard plugin",
+    "section storage",
+    "colormap"
+  ]
+}

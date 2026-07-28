@@ -1,0 +1,59 @@
+{
+  "name": "Address Map Link",
+  "data_name": "address_map_link",
+  "description": "Provides a link to an external mapping site for an address field.",
+  "version": "2.0.x",
+  "package": "Field types",
+  "composer_namespace": "drupal/address_map_link",
+  "composer_requirements": {
+    "php": "^7.3 || ^8.0",
+    "drupal/address": "^1.0 || ^2.0",
+    "drupal/core": "^10.1 || ^11"
+  },
+  "dependent_modules": [
+    "address"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": 2591,
+  "list_position": 990,
+  "project_url": "https://www.drupal.org/project/address_map_link",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "7.3",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/token": "When enabled, the map link text can use tokens."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "map_link"
+  ],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Field formatters",
+    "Geospatial / location"
+  ],
+  "keywords": [
+    "address",
+    "map",
+    "map link",
+    "google maps",
+    "apple maps",
+    "bing maps",
+    "waze",
+    "openstreetmap",
+    "yandex",
+    "mapquest",
+    "here wego",
+    "directions",
+    "field formatter",
+    "third party settings",
+    "MapLink plugin",
+    "geospatial"
+  ]
+}

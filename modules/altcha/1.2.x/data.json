@@ -1,0 +1,58 @@
+{
+  "name": "ALTCHA",
+  "data_name": "altcha",
+  "description": "Provides a free, open-source Captcha alternative utilizing a proof-of-work mechanism to safeguard your website against spam and unwanted content.",
+  "version": "1.2.x",
+  "package": "Spam control",
+  "composer_namespace": "drupal/altcha",
+  "composer_requirements": {
+    "drupal/captcha": "^1.15 || ^2.0",
+    "altcha-org/altcha": "^1.3.1",
+    "ext-openssl": "*"
+  },
+  "dependent_modules": [
+    "captcha"
+  ],
+  "configure": "altcha.settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": 1007,
+  "project_url": "https://www.drupal.org/project/altcha",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "altcha-org/altcha",
+    "ext-openssl"
+  ],
+  "suggests": {},
+  "submodules": [
+    "altcha_obfuscate"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "CAPTCHA / bot protection",
+    "Spam prevention"
+  ],
+  "keywords": [
+    "captcha",
+    "altcha",
+    "proof-of-work",
+    "spam protection",
+    "bot protection",
+    "self-hosted",
+    "sentinel",
+    "saas",
+    "hmac secret",
+    "challenge",
+    "privacy-friendly",
+    "accessible captcha",
+    "invisible captcha",
+    "floating"
+  ]
+}
