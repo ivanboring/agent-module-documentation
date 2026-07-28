@@ -1,0 +1,57 @@
+{
+  "name": "Content API",
+  "data_name": "lightning_api",
+  "description": "Progressive decoupling? No problem.",
+  "version": "5.1.x",
+  "package": "Lightning",
+  "composer_namespace": "drupal/lightning_api",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "jsonapi",
+    "path_alias"
+  ],
+  "configure": "lightning_api.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 1026,
+  "project_url": "https://www.drupal.org/project/lightning_api",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/openapi_jsonapi": "Integrates with the Open API module to generate definitions for JSON:API.",
+    "drupal/openapi_ui_redoc": "Provides the ReDoc library for displaying the OpenAPI specifications of a Drupal site.",
+    "drupal/openapi_ui_swagger": "Provides the Swagger UI library for displaying the OpenAPI specifications of a Drupal site.",
+    "drupal/simple_oauth": "Implements the OAuth 2.0 authorization framework."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Decoupled",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "REST / web services",
+    "API documentation / OpenAPI"
+  ],
+  "keywords": [
+    "lightning api",
+    "content api",
+    "json:api",
+    "jsonapi",
+    "oauth",
+    "oauth2",
+    "simple_oauth",
+    "decoupled",
+    "headless",
+    "openapi",
+    "view json",
+    "entity_json",
+    "bundle_docs",
+    "api documentation",
+    "progressive decoupling"
+  ]
+}

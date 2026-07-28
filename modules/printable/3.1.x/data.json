@@ -1,0 +1,60 @@
+{
+  "name": "Printable",
+  "data_name": "printable",
+  "description": "Generates a printer-friendly version of Drupal content entities.",
+  "version": "3.1.x",
+  "package": "printable",
+  "composer_namespace": "drupal/printable",
+  "composer_requirements": {
+    "drupal/pdf_api": "^2.4.0",
+    "wa72/htmlpagedom": "^1.3 || ^2.0 || ^3.0"
+  },
+  "dependent_modules": [
+    "path_alias"
+  ],
+  "configure": "printable.configure",
+  "core_version_requirement": "^9.4 || ^10 || ^11",
+  "active_installs": 2205,
+  "list_position": 1049,
+  "project_url": "https://www.drupal.org/project/printable",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "wa72/htmlpagedom"
+  ],
+  "suggests": {},
+  "submodules": [
+    "printable_pdf"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "printable_format",
+    "printable_link_extractor"
+  ],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "PDF generation",
+    "Data export"
+  ],
+  "keywords": [
+    "printable",
+    "print",
+    "printer-friendly",
+    "pdf",
+    "pdf_api",
+    "printable format",
+    "link extractor",
+    "printable.settings",
+    "printable/print",
+    "printable/pdf",
+    "print link block",
+    "entity view mode printable",
+    "wkhtmltopdf",
+    "tcpdf",
+    "dompdf"
+  ]
+}

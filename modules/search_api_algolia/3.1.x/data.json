@@ -1,0 +1,55 @@
+{
+  "name": "Algolia Search",
+  "data_name": "search_api_algolia",
+  "description": "Provides integration with the Algolia search engine",
+  "version": "3.1.x",
+  "package": "Search",
+  "composer_namespace": "drupal/search_api_algolia",
+  "composer_requirements": {
+    "algolia/algoliasearch-client-php": "^4.0"
+  },
+  "dependent_modules": [
+    "search_api"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": 2315,
+  "list_position": 1055,
+  "project_url": "https://www.drupal.org/project/search_api_algolia",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [
+    "algolia/algoliasearch-client-php"
+  ],
+  "suggests": {
+    "drupal/search_api_autocomplete": "^1.9"
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site search"
+  ],
+  "subcategories": [
+    "Hosted search (SaaS)",
+    "Search backend"
+  ],
+  "keywords": [
+    "algolia",
+    "search api",
+    "search backend",
+    "hosted search",
+    "SaaS search",
+    "indexing",
+    "application id",
+    "write api key",
+    "algolia index",
+    "item splitter",
+    "replicas",
+    "query suggestions",
+    "object id",
+    "language suffix"
+  ]
+}

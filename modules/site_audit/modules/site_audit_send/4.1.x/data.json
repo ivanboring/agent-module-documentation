@@ -1,0 +1,48 @@
+{
+  "name": "Site Audit Send",
+  "data_name": "site_audit_send",
+  "description": "Send site audit reports to various locations.",
+  "version": "4.1.x",
+  "package": "Site Audit",
+  "composer_namespace": "drupal/site_audit",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "site_audit",
+    "site_audit_report_entity"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 2273,
+  "list_position": 1032,
+  "project_url": "https://www.drupal.org/project/site_audit",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Dashboard / reporting",
+    "Cron / task scheduling"
+  ],
+  "keywords": [
+    "site audit",
+    "send report",
+    "remote server",
+    "REST client",
+    "cron",
+    "report_api",
+    "remote_url",
+    "site audit server",
+    "guzzle",
+    "recurring audit",
+    "SiteAuditSentEvent"
+  ]
+}

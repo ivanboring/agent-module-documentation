@@ -1,0 +1,57 @@
+{
+  "name": "Rate",
+  "data_name": "rate",
+  "description": "Flexible voting options for content entity types.",
+  "version": "3.3.x",
+  "package": "Voting",
+  "composer_namespace": "drupal/rate",
+  "composer_requirements": {
+    "drupal/core": "^10.2 || ^11",
+    "drupal/votingapi": "^3.0 || ^4.0"
+  },
+  "dependent_modules": [
+    "node",
+    "views",
+    "datetime",
+    "votingapi"
+  ],
+  "configure": "rate.admin_settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 2244,
+  "list_position": 1039,
+  "project_url": "https://www.drupal.org/project/rate",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/charts": "To render charts on the vote results tab."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "User engagement"
+  ],
+  "subcategories": [
+    "Rating / voting"
+  ],
+  "keywords": [
+    "rate",
+    "vote",
+    "voting",
+    "votingapi",
+    "rating",
+    "fivestar",
+    "thumbs up",
+    "thumbs down",
+    "like",
+    "widget",
+    "rate_widget",
+    "poll",
+    "emotion",
+    "bot detection",
+    "vote deadline"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "name": "Site Audit Report Entity",
+  "data_name": "site_audit_report_entity",
+  "description": "Provides a Site Audit Report entity.",
+  "version": "4.1.x",
+  "package": "Site Audit",
+  "composer_namespace": "drupal/site_audit",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "site_audit",
+    "serialization"
+  ],
+  "configure": "site_audit_report_entity.settings_form",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 2273,
+  "list_position": 1032,
+  "project_url": "https://www.drupal.org/project/site_audit",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Dashboard / reporting",
+    "Entity API"
+  ],
+  "keywords": [
+    "site audit",
+    "report entity",
+    "content entity",
+    "saved report",
+    "revisionable",
+    "site_audit_report",
+    "audit history",
+    "field formatter",
+    "views data",
+    "serialization"
+  ]
+}

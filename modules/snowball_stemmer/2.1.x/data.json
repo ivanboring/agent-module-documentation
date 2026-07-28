@@ -1,0 +1,52 @@
+{
+  "name": "Snowball stemmer",
+  "data_name": "snowball_stemmer",
+  "description": "Snowball stemmer service, and Search API processor.",
+  "version": "2.1.x",
+  "package": "Search",
+  "composer_namespace": "drupal/snowball_stemmer",
+  "composer_requirements": {
+    "wamania/php-stemmer": "^2.0 || ^3.0"
+  },
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": 2269,
+  "list_position": 1033,
+  "project_url": "https://www.drupal.org/project/snowball_stemmer",
+  "license": "GPL-2.0",
+  "php_requirement": null,
+  "library_dependencies": [
+    "wamania/php-stemmer"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site search"
+  ],
+  "subcategories": [
+    "Search framework",
+    "Stemming / linguistics"
+  ],
+  "keywords": [
+    "stemmer",
+    "stemming",
+    "snowball",
+    "search api",
+    "search api processor",
+    "core search",
+    "multilingual stemming",
+    "php-stemmer",
+    "wamania",
+    "language",
+    "exceptions",
+    "SetLanguageEvent",
+    "porter stemmer",
+    "index processor",
+    "tokenizer"
+  ]
+}
