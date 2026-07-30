@@ -1,0 +1,47 @@
+{
+  "name": "Advanced Varnish cache",
+  "data_name": "adv_varnish",
+  "description": "Provides integration with Varnish service for Drupal",
+  "version": "4.0.x",
+  "package": "Performance",
+  "composer_namespace": "drupal/adv_varnish",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "adv_varnish.config_form",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 1707,
+  "list_position": 1182,
+  "project_url": "https://www.drupal.org/project/adv_varnish",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "user_blocks"
+  ],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "Caching backend",
+    "Cache invalidation"
+  ],
+  "keywords": [
+    "varnish",
+    "reverse proxy",
+    "http cache",
+    "cache tags",
+    "BAN",
+    "purge",
+    "ESI",
+    "edge side includes",
+    "page cache",
+    "cache invalidation",
+    "grace",
+    "user blocks"
+  ]
+}

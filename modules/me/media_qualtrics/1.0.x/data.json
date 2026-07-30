@@ -1,0 +1,51 @@
+{
+  "name": "Media Qualtrics",
+  "data_name": "media_qualtrics",
+  "description": "Custom field formatter for supporting Qualtrics media embed.",
+  "version": "1.0.x",
+  "package": "Media",
+  "composer_namespace": "drupal/media_qualtrics",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "media_remote"
+  ],
+  "configure": "media_qualtrics.allowed_hosts_settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 2660,
+  "list_position": 1172,
+  "project_url": "https://www.drupal.org/project/media_qualtrics",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Media embedding",
+    "Survey / data collection"
+  ],
+  "keywords": [
+    "qualtrics",
+    "survey",
+    "media remote",
+    "field formatter",
+    "embed",
+    "iframe",
+    "allowed hosts",
+    "frame-src",
+    "CSP",
+    "content security policy",
+    "media_remote",
+    "remote media",
+    "form embed",
+    "string field",
+    "vanity domain"
+  ]
+}

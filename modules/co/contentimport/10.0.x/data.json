@@ -1,0 +1,52 @@
+{
+  "name": "Content Import",
+  "data_name": "contentimport",
+  "description": "To Import content from CSV file.",
+  "version": "10.0.x",
+  "package": "Other",
+  "composer_namespace": "drupal/contentimport",
+  "composer_requirements": {
+    "drupal/core": "^8 || ^9 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "node"
+  ],
+  "configure": "contentimport.admin_settings",
+  "core_version_requirement": "^8.7.7 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 1149,
+  "project_url": "https://www.drupal.org/project/contentimport",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Content migration / import",
+    "Data transformation"
+  ],
+  "keywords": [
+    "content import",
+    "csv",
+    "import",
+    "nodes",
+    "bulk import",
+    "csv to node",
+    "create content",
+    "update content",
+    "title",
+    "langcode",
+    "field mapping",
+    "taxonomy import",
+    "batch",
+    "contentimportlog"
+  ]
+}

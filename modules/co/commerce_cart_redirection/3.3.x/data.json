@@ -1,0 +1,48 @@
+{
+  "name": "Commerce Cart Redirection",
+  "data_name": "commerce_cart_redirection",
+  "description": "Redirect to the checkout after adding a product to the cart",
+  "version": "3.3.x",
+  "package": "Commerce",
+  "composer_namespace": "drupal/commerce_cart_redirection",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "commerce",
+    "commerce_product"
+  ],
+  "configure": "commerce_cart_redirection.commerce_cart_redirection_config_form",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 1860,
+  "list_position": 1158,
+  "project_url": "https://www.drupal.org/project/commerce_cart_redirection",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Checkout customization",
+    "Add to cart forms"
+  ],
+  "keywords": [
+    "commerce",
+    "cart",
+    "redirect",
+    "add to cart",
+    "checkout",
+    "skip cart",
+    "product variation",
+    "bundle",
+    "clear cart",
+    "add to cart button text",
+    "CartEntityAddEvent",
+    "event subscriber"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "name": "User CSV Import",
+  "data_name": "user_csv_import",
+  "description": "Import users into Drupal from a CSV file.",
+  "version": "2.0.x",
+  "package": "User",
+  "composer_namespace": "drupal/user_csv_import",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "user"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 1796,
+  "list_position": 1175,
+  "project_url": "https://www.drupal.org/project/user_csv_import",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/advanced_help": "Shows the project README at /help/ah/user_csv_import/README.md when enabled.",
+    "drupal/roleassign": "With the bundled roleassign_with_user_csv_import submodule, limits which roles the import form offers."
+  },
+  "submodules": [
+    "roleassign_with_user_csv_import"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Content migration / import",
+    "User roles & permissions"
+  ],
+  "keywords": [
+    "user import",
+    "csv",
+    "bulk users",
+    "import users",
+    "user accounts",
+    "people",
+    "roles",
+    "default password",
+    "registration email",
+    "sample csv",
+    "user.data",
+    "importconfig",
+    "separator"
+  ]
+}

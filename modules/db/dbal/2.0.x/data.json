@@ -1,0 +1,51 @@
+{
+  "name": "DBAL Connection",
+  "data_name": "dbal",
+  "description": "Provides a Doctrine/DBAL connection from your Database connection settings.",
+  "version": "2.0.x",
+  "package": "Developer",
+  "composer_namespace": "drupal/dbal",
+  "composer_requirements": {
+    "doctrine/dbal": "^2.5 || ^3.0",
+    "drupal/core": "^8.8 || ^9.0 || ^10 || ^11"
+  },
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^8.8 || ^9.0 || ^10 || ^11",
+  "active_installs": 1895,
+  "list_position": 1163,
+  "project_url": "https://www.drupal.org/project/dbal",
+  "license": "GPL2+",
+  "php_requirement": null,
+  "library_dependencies": [
+    "doctrine/dbal"
+  ],
+  "suggests": {
+    "doctrine/persistence": "Enables a Doctrine ConnectionRegistry service (needed by some Doctrine ORM/DBAL tooling)."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "External database tables",
+    "External library management"
+  ],
+  "keywords": [
+    "doctrine",
+    "dbal",
+    "database",
+    "connection",
+    "Doctrine\\DBAL\\Connection",
+    "ConnectionFactory",
+    "ConnectionRegistry",
+    "query builder",
+    "database abstraction",
+    "developer",
+    "service"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "name": "Shortcut per Role",
+  "data_name": "shortcutperrole",
+  "description": "Allows creating default shortcut per role.",
+  "version": "2.1.x",
+  "package": "Administration",
+  "composer_namespace": "drupal/shortcutperrole",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:shortcut"
+  ],
+  "configure": "shortcutperrole.admin_config",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 1256,
+  "list_position": 1152,
+  "project_url": "https://www.drupal.org/project/shortcutperrole",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Admin toolbar / navigation",
+    "User roles & permissions"
+  ],
+  "keywords": [
+    "shortcut",
+    "shortcut set",
+    "role",
+    "toolbar",
+    "default shortcut set",
+    "hook_shortcut_default_set",
+    "per role",
+    "role weight",
+    "admin shortcuts",
+    "shortcutperrole.settings"
+  ]
+}

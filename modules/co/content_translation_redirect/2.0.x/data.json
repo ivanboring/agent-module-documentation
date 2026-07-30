@@ -1,0 +1,50 @@
+{
+  "name": "Content Translation Redirect",
+  "data_name": "content_translation_redirect",
+  "description": "Allows users to redirect from a non-existent content translation.",
+  "version": "2.0.x",
+  "package": "Multilingual",
+  "composer_namespace": "drupal/content_translation_redirect",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "content_translation"
+  ],
+  "configure": "entity.content_translation_redirect.collection",
+  "core_version_requirement": "^9.1 || ^10 || ^11 || ^12",
+  "active_installs": 1913,
+  "list_position": 1176,
+  "project_url": "https://www.drupal.org/project/content_translation_redirect",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Multilingual",
+    "Access control"
+  ],
+  "subcategories": [
+    "Translation / multilingual",
+    "Entity page behavior & redirects"
+  ],
+  "keywords": [
+    "translation",
+    "multilingual",
+    "redirect",
+    "content_translation",
+    "missing translation",
+    "language",
+    "config entity",
+    "status code",
+    "301",
+    "302",
+    "TrustedRedirectResponse",
+    "request subscriber",
+    "canonical",
+    "translatable"
+  ]
+}

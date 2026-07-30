@@ -1,0 +1,56 @@
+{
+  "name": "SDC Display",
+  "data_name": "sdc_display",
+  "description": "Integrates fields and view modes with single directory components.",
+  "version": "2.0.x",
+  "package": "Components",
+  "composer_namespace": "drupal/sdc_display",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "e0ipso/schema-forms": "^v2.5.1",
+    "drupal/cl_editorial": "^2.0@rc || ^3.0@rc"
+  },
+  "dependent_modules": [
+    "cl_editorial:cl_editorial",
+    "cl_editorial:sdc_tags"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 1912,
+  "list_position": 1155,
+  "project_url": "https://www.drupal.org/project/sdc_display",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [
+    "e0ipso/schema-forms"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display",
+    "Theming"
+  ],
+  "subcategories": [
+    "Field formatters",
+    "Twig / component libraries"
+  ],
+  "keywords": [
+    "SDC",
+    "single directory component",
+    "component",
+    "field formatter",
+    "field group",
+    "view mode",
+    "cl_editorial",
+    "sdc_tags",
+    "component tags",
+    "third_party_settings",
+    "props",
+    "slots",
+    "schema-forms"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "Matomo Reports",
+  "data_name": "matomo_reports",
+  "description": "Display analytics reports from Matomo server.",
+  "version": "1.6.x",
+  "package": "Statistics",
+  "composer_namespace": "drupal/matomo_reports",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "matomo_reports.matomo_reports_settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 1776,
+  "list_position": 1173,
+  "project_url": "https://www.drupal.org/project/matomo_reports",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/matomo": "Provides the Matomo tracking snippet and shared server settings (url_http/url_https, site_id) reused by the reports block."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Analytics & tracking",
+    "Dashboard / reporting"
+  ],
+  "keywords": [
+    "matomo",
+    "piwik",
+    "analytics",
+    "reports",
+    "web analytics",
+    "token_auth",
+    "visitors",
+    "referrers",
+    "goals",
+    "statistics",
+    "iframe widget",
+    "Widgetize",
+    "block",
+    "per-user token",
+    "allowed sites"
+  ]
+}

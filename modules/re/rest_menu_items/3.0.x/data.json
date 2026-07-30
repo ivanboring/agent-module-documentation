@@ -1,0 +1,51 @@
+{
+  "name": "REST menu items",
+  "data_name": "rest_menu_items",
+  "description": "This module provides a REST endpoint to retrieve menu items based on the menu name.",
+  "version": "3.0.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/rest_menu_items",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "rest"
+  ],
+  "configure": "rest_menu_items.config_form",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": 1148,
+  "project_url": "https://www.drupal.org/project/rest_menu_items",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Decoupled",
+    "Content display"
+  ],
+  "subcategories": [
+    "REST / web services",
+    "Navigation menus"
+  ],
+  "keywords": [
+    "rest",
+    "menu",
+    "menu items",
+    "web service",
+    "api",
+    "headless",
+    "decoupled",
+    "rest_menu_item",
+    "/api/menu_items",
+    "max_depth",
+    "min_depth",
+    "allowed_menus",
+    "base_url",
+    "add_fragment",
+    "output_values"
+  ]
+}

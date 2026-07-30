@@ -1,0 +1,56 @@
+{
+  "name": "View mode page",
+  "data_name": "view_mode_page",
+  "description": "Makes it possible to create (additional) paths where entities will be shown in a given view_mode",
+  "version": "4.0.x",
+  "package": "Other",
+  "composer_namespace": "drupal/view_mode_page",
+  "composer_requirements": {
+    "drupal/core": "^10.3||^11.0",
+    "drupal/ctools": "*",
+    "drupal/token": "*"
+  },
+  "dependent_modules": [
+    "path",
+    "ctools",
+    "token"
+  ],
+  "configure": "entity.view_mode_page_pattern.collection",
+  "core_version_requirement": "^10.3 || ^11.0",
+  "active_installs": 1848,
+  "list_position": 1166,
+  "project_url": "https://www.drupal.org/project/view_mode_page",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "view_mode_page.manager.alias_type"
+  ],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "View mode switching",
+    "Entity page behavior & redirects"
+  ],
+  "keywords": [
+    "view mode",
+    "display mode",
+    "path pattern",
+    "alias",
+    "teaser",
+    "additional path",
+    "view_mode_page_pattern",
+    "path processor",
+    "ctools condition",
+    "selection criteria",
+    "canonical_entities",
+    "alias type plugin",
+    "token"
+  ]
+}

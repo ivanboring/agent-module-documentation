@@ -1,0 +1,46 @@
+{
+  "name": "RoleAssign with User CSV Import",
+  "data_name": "roleassign_with_user_csv_import",
+  "description": "Makes the User CSV Import form show only the roles a delegated admin may assign, per the RoleAssign module.",
+  "version": "2.0.x",
+  "package": "User",
+  "composer_namespace": "drupal/user_csv_import",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "user_csv_import",
+    "roleassign"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 1175,
+  "project_url": "https://www.drupal.org/project/user_csv_import",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Import and export"
+  ],
+  "subcategories": [
+    "User roles & permissions",
+    "Content migration / import"
+  ],
+  "keywords": [
+    "roleassign",
+    "user_csv_import",
+    "glue module",
+    "role delegation",
+    "assignable roles",
+    "form alter",
+    "roleassign_roles",
+    "user import",
+    "submodule"
+  ]
+}

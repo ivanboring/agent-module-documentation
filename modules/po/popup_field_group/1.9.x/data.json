@@ -1,0 +1,51 @@
+{
+  "name": "Popup Field Group",
+  "data_name": "popup_field_group",
+  "description": "Adds a new field group option \"popup\" which puts its children in a simple popup.",
+  "version": "1.9.x",
+  "package": "Fields",
+  "composer_namespace": "drupal/popup_field_group",
+  "composer_requirements": {
+    "drupal/core": "^8 || ^9 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "field_group:field_group"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": 1835,
+  "list_position": 1154,
+  "project_url": "https://www.drupal.org/project/popup_field_group",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/system_stream_wrapper": "Include custom CSS files in the popup via stream-wrapper paths."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Lightbox / modal display",
+    "Form theming"
+  ],
+  "keywords": [
+    "field group",
+    "field_group",
+    "popup",
+    "modal",
+    "dialog",
+    "jquery ui dialog",
+    "FieldGroupFormatter",
+    "format_type",
+    "manage display",
+    "manage form display",
+    "core/drupal.dialog"
+  ]
+}
