@@ -1,0 +1,53 @@
+{
+  "name": "Search API HTML Element Filter",
+  "data_name": "search_api_html_element_filter",
+  "description": "Includes a Search API preprocess plugin that can be used to remove certain elements from markup before it is indexed",
+  "version": "1.0.x",
+  "package": "Search",
+  "composer_namespace": "drupal/search_api_html_element_filter",
+  "composer_requirements": {
+    "symfony/dom-crawler": "^3.4|^4.0|^5.0|^6.0|^7.0|^8.0",
+    "symfony/css-selector": "^2.0|^3.4|^4.0|^5.0|^6.0|^7.0|^8.0",
+    "drupal/search_api": "~1.26"
+  },
+  "dependent_modules": [
+    "search_api"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 1106,
+  "project_url": "https://www.drupal.org/project/search_api_html_element_filter",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "symfony/dom-crawler",
+    "symfony/css-selector"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site search"
+  ],
+  "subcategories": [
+    "Content indexing"
+  ],
+  "keywords": [
+    "search api",
+    "processor",
+    "preprocess",
+    "html",
+    "css selector",
+    "strip elements",
+    "dom crawler",
+    "remove markup",
+    "indexing",
+    "html_element_filter",
+    "postprocess query",
+    "exclude content"
+  ]
+}

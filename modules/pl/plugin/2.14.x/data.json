@@ -1,0 +1,52 @@
+{
+  "name": "Plugin",
+  "data_name": "plugin",
+  "description": "Provides tools that extend Drupal's plugin system.",
+  "version": "2.14.x",
+  "package": null,
+  "composer_namespace": "drupal/plugin",
+  "composer_requirements": {
+    "drupal/core": "^9.1 || ^10 || ^11"
+  },
+  "dependent_modules": [],
+  "configure": "plugin.plugin_type.list",
+  "core_version_requirement": "^9.1 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 1133,
+  "project_url": "https://www.drupal.org/project/plugin",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "plugin_selector"
+  ],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Plugin system",
+    "Fields"
+  ],
+  "keywords": [
+    "plugin",
+    "plugin type",
+    "plugin.plugin_type.yml",
+    "plugin type manager",
+    "plugin selector",
+    "plugin collection",
+    "plugin field",
+    "plugin reference",
+    "plugin discovery",
+    "plugin definition decorator",
+    "typed plugin definition",
+    "plugin overview",
+    "admin/structure/plugin",
+    "ParamConverter",
+    "developer"
+  ]
+}

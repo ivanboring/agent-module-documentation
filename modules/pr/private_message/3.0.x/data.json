@@ -1,0 +1,58 @@
+{
+  "name": "Private Message",
+  "data_name": "private_message",
+  "description": "A private message system for users to send messages to each other",
+  "version": "3.0.x",
+  "package": "Private Message",
+  "composer_namespace": "drupal/private_message",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "drupal/message": "^1.0",
+    "drupal/message_notify": "^1.0"
+  },
+  "dependent_modules": [
+    "text"
+  ],
+  "configure": "private_message.admin_config.config",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 1984,
+  "list_position": 1144,
+  "project_url": "https://www.drupal.org/project/private_message",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "private_message_notify"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "private_message_config_form"
+  ],
+  "categories": [
+    "User engagement"
+  ],
+  "subcategories": [
+    "Private messaging",
+    "Activity / notification messages"
+  ],
+  "keywords": [
+    "private message",
+    "direct message",
+    "messaging",
+    "inbox",
+    "thread",
+    "conversation",
+    "chat",
+    "user to user",
+    "pm",
+    "private_message_thread",
+    "ban user",
+    "block user",
+    "notification",
+    "message_notify",
+    "one page private message"
+  ]
+}

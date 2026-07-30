@@ -1,0 +1,56 @@
+{
+  "name": "Filebrowser",
+  "data_name": "filebrowser",
+  "description": "Provides FTP-like browsing capabilities.",
+  "version": "3.1.x",
+  "package": "Filebrowser",
+  "composer_namespace": "drupal/filebrowser",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "node",
+    "system"
+  ],
+  "configure": "filebrowser.settings",
+  "core_version_requirement": ">=10",
+  "active_installs": null,
+  "list_position": 1138,
+  "project_url": "https://www.drupal.org/project/filebrowser",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "flysystem": "Use a remote file system (AWS S3, Dropbox, ...) as the browsed location."
+  },
+  "submodules": [
+    "filebrowser_extra"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "File browser / management",
+    "File downloads",
+    "File uploads"
+  ],
+  "keywords": [
+    "filebrowser",
+    "file browser",
+    "directory listing",
+    "dir_listing",
+    "ftp",
+    "folder",
+    "file listing",
+    "download",
+    "upload",
+    "zip archive",
+    "private files",
+    "flysystem",
+    "metadata entity",
+    "node type",
+    "file manager"
+  ]
+}

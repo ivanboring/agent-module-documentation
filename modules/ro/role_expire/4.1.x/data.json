@@ -1,0 +1,49 @@
+{
+  "name": "Role Expire",
+  "data_name": "role_expire",
+  "description": "Enables user roles to expire on given time and day.",
+  "version": "4.1.x",
+  "package": null,
+  "composer_namespace": "drupal/role_expire",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "role_expire.config",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": 1108,
+  "project_url": "https://www.drupal.org/project/role_expire",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "role_expire_rules"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Access control"
+  ],
+  "subcategories": [
+    "Account expiration",
+    "User roles & permissions"
+  ],
+  "keywords": [
+    "role",
+    "role expiration",
+    "expire",
+    "temporary role",
+    "default duration",
+    "strtotime",
+    "cron",
+    "membership expiry",
+    "time-limited access",
+    "role_expire.api",
+    "user role",
+    "downgrade role",
+    "trial access"
+  ]
+}

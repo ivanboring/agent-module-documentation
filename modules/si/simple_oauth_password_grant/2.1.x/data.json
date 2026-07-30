@@ -1,0 +1,52 @@
+{
+  "name": "Simple Auth Password Grant",
+  "data_name": "simple_oauth_password_grant",
+  "description": "Implements the password grant for the simple_oauth module.",
+  "version": "2.1.x",
+  "package": "Authentication",
+  "composer_namespace": "drupal/simple_oauth_password_grant",
+  "composer_requirements": {
+    "drupal/simple_oauth": "^6",
+    "php": ">=8.1"
+  },
+  "dependent_modules": [
+    "simple_oauth"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 1134,
+  "project_url": "https://www.drupal.org/project/simple_oauth_password_grant",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Decoupled"
+  ],
+  "subcategories": [
+    "External authentication",
+    "REST / web services"
+  ],
+  "keywords": [
+    "oauth2",
+    "password grant",
+    "resource owner password credentials",
+    "simple_oauth",
+    "Oauth2Grant",
+    "access token",
+    "decoupled login",
+    "consumer",
+    "grant_types",
+    "refresh token",
+    "flood protection",
+    "first-party",
+    "API authentication"
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "name": "Update Helper",
+  "data_name": "update_helper",
+  "description": "Helper tool for generation and applying of configuration updates.",
+  "version": "4.1.x",
+  "package": "Configuration",
+  "composer_namespace": "drupal/update_helper",
+  "composer_requirements": {
+    "drupal/core": "^10 || ^11",
+    "drupal/config_update": "^1.5 || ^2.0@alpha",
+    "symfony/console": "^6.2||^7.0",
+    "chi-teck/drupal-code-generator": "^3.0||^4.0"
+  },
+  "dependent_modules": [
+    "config_update"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": 1113,
+  "project_url": "https://www.drupal.org/project/update_helper",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "symfony/console",
+    "chi-teck/drupal-code-generator"
+  ],
+  "suggests": {
+    "drupal/checklistapi": "Provides an API for creating fillable, persistent checklists. Required by the Update Helper Checklist module."
+  },
+  "submodules": [
+    "update_helper_checklist"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Configuration management",
+    "Deployment / release management"
+  ],
+  "keywords": [
+    "update helper",
+    "configuration update",
+    "CUD",
+    "update hook",
+    "hook_update_N",
+    "config diff",
+    "config patch",
+    "generate configuration-update",
+    "drush generate",
+    "config_update",
+    "Updater",
+    "executeUpdate",
+    "ConfigHandler",
+    "reversible config diff",
+    "distribution updates"
+  ]
+}

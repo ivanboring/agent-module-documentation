@@ -1,0 +1,47 @@
+{
+  "name": "Smart IP MaxMind GeoIP2 binary database",
+  "data_name": "smart_ip_maxmind_geoip2_bin_db",
+  "description": "Uses MaxMind GeoIP2 binary database as Smart IP data source.",
+  "version": "5.0.x",
+  "package": "Smart IP data source",
+  "composer_namespace": "drupal/smart_ip",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "smart_ip"
+  ],
+  "configure": "smart_ip.settings",
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": null,
+  "list_position": 1112,
+  "project_url": "https://www.drupal.org/project/smart_ip",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [
+    "geoip2/geoip2"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Geospatial / location"
+  ],
+  "keywords": [
+    "smart ip",
+    "maxmind",
+    "geoip2",
+    "binary database",
+    "mmdb",
+    "geolocation",
+    "data source",
+    "maxmind_geoip2_bin_db",
+    "GeoLite2",
+    "license key",
+    "offline geolocation"
+  ]
+}

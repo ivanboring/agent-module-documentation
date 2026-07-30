@@ -1,0 +1,62 @@
+{
+  "name": "FullCalendar",
+  "data_name": "fullcalendar",
+  "description": "Provides a views style plugin for FullCalendar",
+  "version": "3.0.x",
+  "package": "FullCalendar",
+  "composer_namespace": "drupal/fullcalendar",
+  "composer_requirements": {
+    "php": ">=8.2",
+    "drupal/fullcalendar_io": "^6.1"
+  },
+  "dependent_modules": [
+    "views",
+    "datetime"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 1858,
+  "list_position": 1116,
+  "project_url": "https://www.drupal.org/project/fullcalendar",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.2",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/date_recur": "Recurring dates support (dev-tested)",
+    "drupal/smart_date": "Smart Date field support (dev-tested)"
+  },
+  "submodules": [
+    "fullcalendar_legend"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "fullcalendar (FullcalendarOption; discovery dir Plugin/fullcalendar/type, alter hook fullcalendar_type_info)"
+  ],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Views styles",
+    "Calendar / iCal export",
+    "Date/time fields"
+  ],
+  "keywords": [
+    "fullcalendar",
+    "calendar",
+    "views style",
+    "views",
+    "events",
+    "datetime",
+    "date range",
+    "month week day view",
+    "fullcalendar.io",
+    "drag and drop",
+    "ajax",
+    "google calendar",
+    "icalendar",
+    "eventColor",
+    "fullcalendar_io library"
+  ]
+}
