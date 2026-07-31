@@ -1,0 +1,78 @@
+{
+  "name": "Bibliography & Citation",
+  "data_name": "bibcite",
+  "description": "Basic API for working with bibliographic data (citation rendering via CSL styles).",
+  "version": "3.1.x",
+  "package": "Bibliography & Citation",
+  "composer_namespace": "drupal/bibcite",
+  "composer_requirements": {
+    "adci/full-name-parser": "^0.2.4",
+    "researchgate/libris": "~2.0",
+    "renanbr/bibtex-parser": "^2.2.0",
+    "caseyamcl/php-marc21": "^2.0",
+    "drupal/entity": "^1.0",
+    "drupal/token": "^1.0",
+    "seboettg/citeproc-php": "^2.6"
+  },
+  "dependent_modules": [
+    "serialization"
+  ],
+  "configure": "bibcite.settings",
+  "core_version_requirement": "^10.1 || ^11 || ^12",
+  "active_installs": 1306,
+  "list_position": 1216,
+  "project_url": "https://www.drupal.org/project/bibcite",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "seboettg/citeproc-php",
+    "adci/full-name-parser",
+    "researchgate/libris",
+    "renanbr/bibtex-parser",
+    "caseyamcl/php-marc21"
+  ],
+  "suggests": {
+    "drupal/bibcite_migrate": "Migrate bibliographic data from the Biblio module",
+    "drupal/bibcite_crossref": "DOI lookup functionality",
+    "drupal/bibcite_pubmed": "PubMed import and lookup",
+    "drupal/bibcite_altmetric": "Altmetric badges on reference entities",
+    "drupal/metatag_google_scholar": "Google Scholar meta tags"
+  },
+  "submodules": [
+    "bibcite_entity",
+    "bibcite_export",
+    "bibcite_import",
+    "bibcite_bibtex",
+    "bibcite_endnote",
+    "bibcite_marc",
+    "bibcite_ris"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "bibcite_processor",
+    "bibcite_format"
+  ],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Bibliography / citations"
+  ],
+  "keywords": [
+    "bibliography",
+    "citation",
+    "CSL",
+    "citeproc",
+    "citation style language",
+    "bibcite",
+    "reference",
+    "citation_styler",
+    "bibcite_processor",
+    "bibcite_format",
+    "bibcite_csl_style",
+    "APA",
+    "scholarly"
+  ]
+}

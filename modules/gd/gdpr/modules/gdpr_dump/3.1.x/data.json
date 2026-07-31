@@ -1,0 +1,47 @@
+{
+  "name": "General Data Protection Regulation (GDPR) - Obfuscated SQL Dump",
+  "data_name": "gdpr_dump",
+  "description": "Provides a drush command for obfuscating database dumps.",
+  "version": "3.1.x",
+  "package": "General Data Protection Regulation",
+  "composer_namespace": "drupal/gdpr",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "system",
+    "gdpr",
+    "anonymizer"
+  ],
+  "configure": "gdpr_dump.settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 1221,
+  "project_url": "https://www.drupal.org/project/gdpr",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Backup & restore",
+    "Cookie consent / GDPR"
+  ],
+  "keywords": [
+    "gdpr",
+    "sql dump",
+    "database dump",
+    "anonymize",
+    "obfuscate",
+    "drush",
+    "gdpr:sql:dump",
+    "sanitize",
+    "table map",
+    "anonymizer"
+  ]
+}

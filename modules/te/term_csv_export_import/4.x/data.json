@@ -1,0 +1,50 @@
+{
+  "name": "Term CSV Export/Import",
+  "data_name": "term_csv_export_import",
+  "description": "Import and Export Taxonomy terms as csv.",
+  "version": "4.x",
+  "package": "Taxonomy",
+  "composer_namespace": "drupal/term_csv_export_import",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "taxonomy",
+    "system"
+  ],
+  "configure": "term_csv_export_import.import",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": 1634,
+  "list_position": 1205,
+  "project_url": "https://www.drupal.org/project/term_csv_export_import",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Content migration / import",
+    "Data export"
+  ],
+  "keywords": [
+    "taxonomy",
+    "terms",
+    "csv",
+    "import",
+    "export",
+    "vocabulary",
+    "term hierarchy",
+    "parent_name",
+    "bulk terms",
+    "ImportController",
+    "ExportController",
+    "d7 migration",
+    "term ids",
+    "additional fields"
+  ]
+}

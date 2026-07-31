@@ -1,0 +1,53 @@
+{
+  "name": "General Data Protection Regulation (GDPR) - Tasks",
+  "data_name": "gdpr_tasks",
+  "description": "Allow tracking of SARs and Removal requests.",
+  "version": "3.1.x",
+  "package": "General Data Protection Regulation",
+  "composer_namespace": "drupal/gdpr",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "system",
+    "gdpr",
+    "anonymizer",
+    "gdpr_fields",
+    "entity",
+    "file",
+    "views",
+    "options"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 1221,
+  "project_url": "https://www.drupal.org/project/gdpr",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Legal compliance / terms acceptance",
+    "Cookie consent / GDPR"
+  ],
+  "keywords": [
+    "gdpr",
+    "tasks",
+    "sar",
+    "subject access request",
+    "right to be forgotten",
+    "removal",
+    "gdpr_task",
+    "gdpr_task_type",
+    "anonymize",
+    "queue worker",
+    "data request"
+  ]
+}

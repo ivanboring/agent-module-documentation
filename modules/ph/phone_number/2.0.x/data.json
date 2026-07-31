@@ -1,0 +1,59 @@
+{
+  "name": "Phone Number",
+  "data_name": "phone_number",
+  "description": "An international phone number field type with flexible validation.",
+  "version": "2.0.x",
+  "package": "Field types",
+  "composer_namespace": "drupal/phone_number",
+  "composer_requirements": {
+    "drupal/core": "^10.3 || ^11",
+    "giggsey/libphonenumber-for-php": "^8.0"
+  },
+  "dependent_modules": [
+    "field"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 1695,
+  "list_position": 1223,
+  "project_url": "https://www.drupal.org/project/phone_number",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "giggsey/libphonenumber-for-php"
+  ],
+  "suggests": {},
+  "submodules": [
+    "sms_phone_number"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience",
+    "Content display"
+  ],
+  "subcategories": [
+    "Fields",
+    "Field validation",
+    "Field formatters"
+  ],
+  "keywords": [
+    "phone",
+    "phone number",
+    "telephone",
+    "field type",
+    "libphonenumber",
+    "E.164",
+    "international",
+    "validation",
+    "country",
+    "extension",
+    "phone_number_default",
+    "phone_number_international",
+    "phone_number.util",
+    "PhoneNumber constraint",
+    "webform element"
+  ]
+}

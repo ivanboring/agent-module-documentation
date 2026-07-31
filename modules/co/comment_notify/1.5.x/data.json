@@ -1,0 +1,56 @@
+{
+  "name": "Comment Notify",
+  "data_name": "comment_notify",
+  "description": "Allows visitors and users to be emailed when new comments are published.",
+  "version": "1.5.x",
+  "package": null,
+  "composer_namespace": "drupal/comment_notify",
+  "composer_requirements": {
+    "drupal/token": "^1.6"
+  },
+  "dependent_modules": [
+    "comment",
+    "token"
+  ],
+  "configure": "comment_notify.settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 1598,
+  "list_position": 1217,
+  "project_url": "https://www.drupal.org/project/comment_notify",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "User engagement",
+    "Content display"
+  ],
+  "subcategories": [
+    "Activity / notification messages",
+    "Threaded comments",
+    "Email / mail delivery"
+  ],
+  "keywords": [
+    "comment",
+    "notify",
+    "notification",
+    "email",
+    "follow-up",
+    "subscribe",
+    "comment_notify.settings",
+    "bundle_types",
+    "available_alerts",
+    "enable_default",
+    "mail_templates",
+    "unsubscribe",
+    "anonymous",
+    "watcher",
+    "entity author",
+    "token"
+  ]
+}

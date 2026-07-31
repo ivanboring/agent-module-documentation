@@ -1,0 +1,50 @@
+{
+  "name": "View access per node",
+  "data_name": "vapn",
+  "description": "Adds view permission for each node.",
+  "version": "3.0.x",
+  "package": null,
+  "composer_namespace": "drupal/vapn",
+  "composer_requirements": {
+    "php": ">=8.0",
+    "drupal/core": "^9.5 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "node"
+  ],
+  "configure": "vapn.settings",
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": 1772,
+  "list_position": 1204,
+  "project_url": "https://www.drupal.org/project/vapn",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "8.0",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Per-node view access",
+    "User roles & permissions"
+  ],
+  "keywords": [
+    "vapn",
+    "view access per node",
+    "node access",
+    "per-node access",
+    "view permission",
+    "role based access",
+    "hook_node_access",
+    "content types",
+    "bundles",
+    "bypass vapn",
+    "advanced tab",
+    "user_role reference"
+  ]
+}

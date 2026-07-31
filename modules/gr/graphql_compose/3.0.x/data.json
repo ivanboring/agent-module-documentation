@@ -1,0 +1,73 @@
+{
+  "name": "GraphQL Compose",
+  "data_name": "graphql_compose",
+  "description": "Toolkit for composing GraphQL schemas in Drupal.",
+  "version": "3.0.x",
+  "package": "GraphQL Compose",
+  "composer_namespace": "drupal/graphql_compose",
+  "composer_requirements": {
+    "php": "^8.1",
+    "drupal/graphql": "^5",
+    "doctrine/inflector": "^2"
+  },
+  "dependent_modules": [
+    "graphql",
+    "node"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 1198,
+  "project_url": "https://www.drupal.org/project/graphql_compose",
+  "license": "GPL-2.0+",
+  "php_requirement": "^8.1",
+  "library_dependencies": [
+    "doctrine/inflector"
+  ],
+  "suggests": {},
+  "submodules": [
+    "graphql_compose_blocks",
+    "graphql_compose_comments",
+    "graphql_compose_eck",
+    "graphql_compose_edges",
+    "graphql_compose_image_style",
+    "graphql_compose_layout_builder",
+    "graphql_compose_layout_paragraphs",
+    "graphql_compose_layouts",
+    "graphql_compose_menus",
+    "graphql_compose_metatags",
+    "graphql_compose_routes",
+    "graphql_compose_users",
+    "graphql_compose_views"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "graphql_compose_entity_type",
+    "graphql_compose_field_type",
+    "graphql_compose_schema_type"
+  ],
+  "categories": [
+    "Decoupled"
+  ],
+  "subcategories": [
+    "GraphQL schema",
+    "REST / web services"
+  ],
+  "keywords": [
+    "graphql",
+    "schema",
+    "decoupled",
+    "headless",
+    "api",
+    "graphql_compose",
+    "no-code schema",
+    "entity type",
+    "field type",
+    "schema type",
+    "graphql server",
+    "sdl",
+    "producers"
+  ]
+}

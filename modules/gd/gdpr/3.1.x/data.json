@@ -1,0 +1,67 @@
+{
+  "name": "General Data Protection Regulation (GDPR)",
+  "data_name": "gdpr",
+  "description": "Provides help for making your drupal site GDPR-compliant.",
+  "version": "3.1.x",
+  "package": "General Data Protection Regulation",
+  "composer_namespace": "drupal/gdpr",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "drupal/checklistapi": "^2.1",
+    "drupal/entity": "^1.4",
+    "drupal/entity_reference_revisions": "^1.11",
+    "drupal/message": "^1.5",
+    "drupal/token": "^1.14",
+    "fakerphp/faker": "^1 || ^2"
+  },
+  "dependent_modules": [
+    "checklistapi"
+  ],
+  "configure": "checklistapi.checklists.gdpr_checklist",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 1221,
+  "project_url": "https://www.drupal.org/project/gdpr",
+  "license": "GPL-2.0+",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [
+    "fakerphp/faker"
+  ],
+  "suggests": {
+    "drush/drush": "GDPR Dump requires Drush ^9 || ^10",
+    "ext-zip": "GDPR Tasks requires the PHP zip extension"
+  },
+  "submodules": [
+    "anonymizer",
+    "gdpr_consent",
+    "gdpr_dump",
+    "gdpr_fields",
+    "gdpr_tasks"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Cookie consent / GDPR",
+    "Legal compliance / terms acceptance"
+  ],
+  "keywords": [
+    "gdpr",
+    "privacy",
+    "compliance",
+    "data protection",
+    "checklist",
+    "checklistapi",
+    "right to be forgotten",
+    "subject access request",
+    "consent",
+    "anonymize",
+    "personal data",
+    "content links",
+    "privacy policy"
+  ]
+}

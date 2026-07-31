@@ -1,0 +1,52 @@
+{
+  "name": "General Data Protection Regulation (GDPR) - Consent Tracking",
+  "data_name": "gdpr_consent",
+  "description": "Allow tracking of GDPR Consent",
+  "version": "3.1.x",
+  "package": "General Data Protection Regulation",
+  "composer_namespace": "drupal/gdpr",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "system",
+    "gdpr",
+    "token",
+    "message",
+    "entity_reference_revisions",
+    "views"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 1221,
+  "project_url": "https://www.drupal.org/project/gdpr",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "gdpr_consent_resolver"
+  ],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Legal compliance / terms acceptance",
+    "Cookie consent / GDPR"
+  ],
+  "keywords": [
+    "gdpr",
+    "consent",
+    "agreement",
+    "consent tracking",
+    "gdpr_consent_agreement",
+    "gdpr_user_consent",
+    "consent resolver",
+    "revisionable",
+    "message",
+    "explicit consent"
+  ]
+}

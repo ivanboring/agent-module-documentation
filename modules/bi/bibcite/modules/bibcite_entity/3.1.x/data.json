@@ -1,0 +1,53 @@
+{
+  "name": "Bibliography & Citation - Entity",
+  "data_name": "bibcite_entity",
+  "description": "Storage for your bibliographic data as Drupal entities (Reference, Contributor, Keyword).",
+  "version": "3.1.x",
+  "package": "Bibliography & Citation",
+  "composer_namespace": "drupal/bibcite",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "bibcite",
+    "entity",
+    "token"
+  ],
+  "configure": "bibcite_entity.reference.settings",
+  "core_version_requirement": "^10.1 || ^11 || ^12",
+  "active_installs": 1306,
+  "list_position": 1216,
+  "project_url": "https://www.drupal.org/project/bibcite",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "bibcite_link"
+  ],
+  "categories": [
+    "Content editing experience",
+    "Content display"
+  ],
+  "subcategories": [
+    "Bibliography / citations",
+    "Entity API"
+  ],
+  "keywords": [
+    "bibcite_reference",
+    "bibcite_contributor",
+    "bibcite_keyword",
+    "reference type",
+    "contributor role",
+    "citekey",
+    "CSL mapping",
+    "bibcite link",
+    "DOI",
+    "PubMed",
+    "Google Scholar",
+    "bibliography entity",
+    "reference entity"
+  ]
+}
