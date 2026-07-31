@@ -1,0 +1,52 @@
+{
+  "name": "Asymmetric (public/private) keys",
+  "data_name": "key_asymmetric",
+  "description": "Provides key types for public/private keys",
+  "version": "1.2.x",
+  "package": "Security",
+  "composer_namespace": "drupal/key_asymmetric",
+  "composer_requirements": {
+    "drupal/key": "^1.14",
+    "phpseclib/phpseclib": "^3.0"
+  },
+  "dependent_modules": [
+    "key"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 1491,
+  "list_position": 1278,
+  "project_url": "https://www.drupal.org/project/key_asymmetric",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "phpseclib/phpseclib"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Secrets & key management"
+  ],
+  "keywords": [
+    "key",
+    "asymmetric",
+    "private key",
+    "public key",
+    "X.509",
+    "certificate",
+    "RSA",
+    "phpseclib",
+    "key type",
+    "encryption",
+    "signing",
+    "PKCS8",
+    "key pair"
+  ]
+}

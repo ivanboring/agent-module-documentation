@@ -1,0 +1,48 @@
+{
+  "name": "Admin Menu Swap",
+  "data_name": "amswap",
+  "description": "Allows the administration menu to be customized per user role.",
+  "version": "3.3.x",
+  "package": "User interface",
+  "composer_namespace": "drupal/amswap",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "toolbar",
+    "user"
+  ],
+  "configure": "amswap.amswap_config_form",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 1289,
+  "project_url": "https://www.drupal.org/project/amswap",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Admin toolbar / navigation",
+    "User roles & permissions"
+  ],
+  "keywords": [
+    "admin menu",
+    "toolbar",
+    "administration menu",
+    "per role menu",
+    "role menu",
+    "menu swap",
+    "gin_toolbar",
+    "admin_toolbar",
+    "role_menu_pairs",
+    "toolbar_alter",
+    "pre_render",
+    "custom admin menu"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "name": "Menu migration",
+  "data_name": "menu_migration",
+  "description": "Import, export, and clone menu hierarchies via a plugin-based system supporting Drupal and custom sources.",
+  "version": "4.1.x",
+  "package": "Development",
+  "composer_namespace": "drupal/menu_migration",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "file",
+    "menu_link_content"
+  ],
+  "configure": "menu_migration.menu_migration",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 1501,
+  "list_position": 1270,
+  "project_url": "https://www.drupal.org/project/menu_migration",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "menu_migration_source",
+    "menu_migration_destination",
+    "menu_migration_format"
+  ],
+  "categories": [
+    "Import and export",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Content migration / import",
+    "Navigation menus"
+  ],
+  "keywords": [
+    "menu",
+    "menu link",
+    "menu_link_content",
+    "import",
+    "export",
+    "clone",
+    "menu hierarchy",
+    "migration",
+    "JSON",
+    "YAML",
+    "drush",
+    "config entity",
+    "plugin",
+    "navigation"
+  ]
+}

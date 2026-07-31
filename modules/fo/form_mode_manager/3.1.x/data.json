@@ -1,0 +1,54 @@
+{
+  "name": "Form Mode Manager",
+  "data_name": "form_mode_manager",
+  "description": "Provide an API to use Form modes.",
+  "version": "3.1.x",
+  "package": "Fields",
+  "composer_namespace": "drupal/form_mode_manager",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "field"
+  ],
+  "configure": "form_mode_manager.admin_settings",
+  "core_version_requirement": "^10.2 || ^11.0",
+  "active_installs": null,
+  "list_position": 1265,
+  "project_url": "https://www.drupal.org/project/form_mode_manager",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "form_mode_manager_examples",
+    "form_mode_manager_theme_switcher",
+    "form_mode_user_roles_assign"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "entity_routing_map"
+  ],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Form mode switching",
+    "User roles & permissions"
+  ],
+  "keywords": [
+    "form mode",
+    "form modes",
+    "form display",
+    "entity form",
+    "form_mode_manager",
+    "EntityRoutingMap",
+    "node/add form mode",
+    "custom form",
+    "per-role forms",
+    "local tasks",
+    "form mode routes",
+    "display modes",
+    "manage form display"
+  ]
+}

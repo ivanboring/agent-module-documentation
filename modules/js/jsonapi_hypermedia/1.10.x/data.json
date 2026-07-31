@@ -1,0 +1,57 @@
+{
+  "name": "JSON API Hypermedia",
+  "data_name": "jsonapi_hypermedia",
+  "description": "Complements the JSON API module with Hypermedia as the Engine of Application State",
+  "version": "1.10.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/jsonapi_hypermedia",
+  "composer_requirements": {
+    "php": "^8",
+    "drupal/core": "^8.8 || ^9.0 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "jsonapi"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 1293,
+  "project_url": "https://www.drupal.org/project/jsonapi_hypermedia",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "^8",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/consumer_image_styles": "^4.0 (dev dependency, used by examples)"
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "jsonapi_hypermedia_link_provider"
+  ],
+  "categories": [
+    "Decoupled",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "REST / web services",
+    "Plugin system"
+  ],
+  "keywords": [
+    "jsonapi",
+    "json:api",
+    "hypermedia",
+    "hateoas",
+    "links",
+    "link provider",
+    "link relation type",
+    "LinkProvider",
+    "JsonapiHypermediaLinkProvider",
+    "normalizer decorator",
+    "AccessRestrictedLink",
+    "decoupled",
+    "web services",
+    "affordances"
+  ]
+}

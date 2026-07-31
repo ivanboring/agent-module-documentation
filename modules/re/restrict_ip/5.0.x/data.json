@@ -1,0 +1,55 @@
+{
+  "name": "Restrict IP",
+  "data_name": "restrict_ip",
+  "description": "Restricts access to the site to a list of user defined IP addresses",
+  "version": "5.0.x",
+  "package": null,
+  "composer_namespace": "drupal/restrict_ip",
+  "composer_requirements": {
+    "drupal/core": "^10.3 || ^11"
+  },
+  "dependent_modules": [
+    "block",
+    "user"
+  ],
+  "configure": "restrict_ip.admin_page",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 1936,
+  "list_position": 1281,
+  "project_url": "https://www.drupal.org/project/restrict_ip",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/ip2country": "Restrict/allow access by country using the visitor's IP address"
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Security"
+  ],
+  "subcategories": [
+    "IP address restriction",
+    "Intrusion prevention"
+  ],
+  "keywords": [
+    "restrict ip",
+    "ip whitelist",
+    "allowlist",
+    "ip address",
+    "access denied",
+    "country restriction",
+    "ip2country",
+    "role bypass",
+    "page whitelist",
+    "page blacklist",
+    "settings.php override",
+    "ripd",
+    "event subscriber",
+    "geoblocking"
+  ]
+}

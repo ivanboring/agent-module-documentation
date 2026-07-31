@@ -1,0 +1,54 @@
+{
+  "name": "Google API PHP Client",
+  "data_name": "google_api_client",
+  "description": "Integrate Drupal modules with Google API by using Google API PHP Client.",
+  "version": "4.8.x",
+  "package": "Google",
+  "composer_namespace": "drupal/google_api_client",
+  "composer_requirements": {
+    "php": ">=5.4.0",
+    "google/apiclient-services": "~0.200",
+    "google/apiclient": "~2"
+  },
+  "dependent_modules": [
+    "options"
+  ],
+  "configure": "google_api_client.google_api_client_settings",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": 1742,
+  "list_position": 1272,
+  "project_url": "https://www.drupal.org/project/google_api_client",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=5.4.0",
+  "library_dependencies": [
+    "google/apiclient",
+    "google/apiclient-services"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Google APIs / OAuth"
+  ],
+  "keywords": [
+    "google",
+    "google api",
+    "oauth",
+    "oauth2",
+    "service account",
+    "apiclient",
+    "access token",
+    "google drive",
+    "google calendar",
+    "gmail",
+    "scopes",
+    "authentication",
+    "integration"
+  ]
+}

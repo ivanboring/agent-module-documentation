@@ -1,0 +1,53 @@
+{
+  "name": "Cached moderation state",
+  "data_name": "cached_moderation_state",
+  "description": "Caches the moderation state of an entity in a field instance on the entity.",
+  "version": "1.1.x",
+  "package": null,
+  "composer_namespace": "drupal/cached_moderation_state",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "drupal/core": "^10.3 || ^11"
+  },
+  "dependent_modules": [
+    "content_moderation",
+    "field"
+  ],
+  "configure": "cached_moderation_state.batch_update_form",
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": 2669,
+  "list_position": 1286,
+  "project_url": "https://www.drupal.org/project/cached_moderation_state",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {
+    "drush/drush": ">=10"
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Automation",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Workflow / state management",
+    "Computed / derived fields"
+  ],
+  "keywords": [
+    "content moderation",
+    "moderation state",
+    "cached moderation state",
+    "field type",
+    "workflow",
+    "moderated entity",
+    "queryable moderation state",
+    "batch update",
+    "no_ui field",
+    "moderation_state",
+    "views filter"
+  ]
+}
