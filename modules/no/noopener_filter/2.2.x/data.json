@@ -1,0 +1,49 @@
+{
+  "name": "Noopener Filter",
+  "data_name": "noopener_filter",
+  "description": "Provides a filter to add rel=\"noopener\" to external links and links in the ckeditor.",
+  "version": "2.2.x",
+  "package": null,
+  "composer_namespace": "drupal/noopener_filter",
+  "composer_requirements": {
+    "drupal/core": "^8 || ^9 || ^10 || ^11"
+  },
+  "dependent_modules": [],
+  "configure": "noopener_filter.settings",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": 1335,
+  "list_position": 1374,
+  "project_url": "https://www.drupal.org/project/noopener_filter",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Outbound link privacy",
+    "Text format filters"
+  ],
+  "keywords": [
+    "noopener",
+    "rel noopener",
+    "target _blank",
+    "external links",
+    "reverse tabnabbing",
+    "window.opener",
+    "text format",
+    "filter",
+    "ckeditor",
+    "link security",
+    "TYPE_HTML_RESTRICTOR",
+    "hook_link_alter",
+    "filter_noopener"
+  ]
+}

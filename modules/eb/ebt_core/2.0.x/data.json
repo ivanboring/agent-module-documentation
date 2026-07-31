@@ -1,0 +1,69 @@
+{
+  "name": "Extra Block Types (EBT): Core",
+  "data_name": "ebt_core",
+  "description": "Base module for EBT blocks.",
+  "version": "2.0.x",
+  "package": "Extra Block Types",
+  "composer_namespace": "drupal/ebt_core",
+  "composer_requirements": {
+    "drupal/field_group": "^3.0 || ^4.0",
+    "drupal/media_library_form_element": "^2.0",
+    "levmyshkin/jquery-colorpicker": "^1.0",
+    "levmyshkin/jquery-mb-ytplayer": "^3.3.10",
+    "levmyshkin/parallaxjs": "^1.5",
+    "levmyshkin/vidbg": "^2.1.0"
+  },
+  "dependent_modules": [
+    "drupal:block_content",
+    "drupal:media",
+    "field_group:field_group",
+    "media_library_form_element:media_library_form_element"
+  ],
+  "configure": "ebt_core.settings",
+  "core_version_requirement": "^10.1 || ^11 || ^12",
+  "active_installs": 1413,
+  "list_position": 1373,
+  "project_url": "https://www.drupal.org/project/ebt_core",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "levmyshkin/jquery-colorpicker",
+    "levmyshkin/jquery-mb-ytplayer",
+    "levmyshkin/parallaxjs",
+    "levmyshkin/vidbg"
+  ],
+  "suggests": {},
+  "submodules": [
+    "ebt_core_remove_helper",
+    "ebt_core_starterkit"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site structure",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Block enhancements",
+    "Layout Builder",
+    "Structured content / page building"
+  ],
+  "keywords": [
+    "EBT",
+    "extra block types",
+    "block types",
+    "layout builder",
+    "block_content",
+    "ebt_settings",
+    "design options",
+    "background",
+    "spacing",
+    "breakpoints",
+    "colorpicker",
+    "field_ebt_settings",
+    "ebt_core.settings",
+    "inline block"
+  ]
+}

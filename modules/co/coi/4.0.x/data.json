@@ -1,0 +1,56 @@
+{
+  "name": "Config Override Inspector",
+  "data_name": "coi",
+  "description": "Indicates and manages configuration form fields whose value is overridden (e.g. in settings.php).",
+  "version": "4.0.x",
+  "package": "Administration",
+  "composer_namespace": "drupal/coi",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "drupal/core": "^10 || ^11",
+    "drupal/config_override_core_fields": "^4"
+  },
+  "dependent_modules": [
+    "config_override_core_fields"
+  ],
+  "configure": "coi.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 1306,
+  "list_position": 1350,
+  "project_url": "https://www.drupal.org/project/coi",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/token": "Shows Token UI on COI settings form."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Configuration management"
+  ],
+  "keywords": [
+    "config override",
+    "override indicator",
+    "coi",
+    "settings.php",
+    "hasOverrides",
+    "config form",
+    "disable field",
+    "override behavior",
+    "override message",
+    "token",
+    "active value",
+    "overridden value",
+    "config_override_core_fields",
+    "configuration management",
+    "environment config"
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "name": "Acquia DAM",
+  "data_name": "acquia_dam",
+  "description": "Provides a media source plugin to integrate various Acquia DAM asset types with Drupal as media types.",
+  "version": "1.1.x",
+  "package": "Acquia DAM",
+  "composer_namespace": "drupal/acquia_dam",
+  "composer_requirements": {
+    "drupal/token": "^1.10",
+    "drupal/views_remote_data": "^1.0.1",
+    "guzzlehttp/psr7": "^1.0 || ^2.0"
+  },
+  "dependent_modules": [
+    "file",
+    "image",
+    "media",
+    "media_library",
+    "views",
+    "token",
+    "views_remote_data"
+  ],
+  "configure": "acquia_dam.config",
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": 1395,
+  "list_position": 1355,
+  "project_url": "https://www.drupal.org/project/acquia_dam",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "guzzlehttp/psr7"
+  ],
+  "suggests": {},
+  "submodules": [
+    "acquia_dam_integration_links",
+    "acquiadam_asset_import"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "acquia_dam:asset_media_source"
+  ],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Media sources",
+    "Digital asset management (DAM)",
+    "Remote file storage"
+  ],
+  "keywords": [
+    "acquia dam",
+    "widen",
+    "digital asset management",
+    "DAM",
+    "media source",
+    "remote assets",
+    "asset media type",
+    "media library",
+    "embed code",
+    "integration links",
+    "image styles",
+    "asset metadata",
+    "asset sync",
+    "media revisions",
+    "oauth"
+  ]
+}

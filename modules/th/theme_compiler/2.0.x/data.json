@@ -1,0 +1,56 @@
+{
+  "name": "Theme Compiler",
+  "data_name": "theme_compiler",
+  "description": "A helper module to facilitate theme-provided, compiled assets.",
+  "version": "2.0.x",
+  "package": "Compiler",
+  "composer_namespace": "drupal/theme_compiler",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "drupal/compiler": "^1.0@alpha",
+    "drupal/core": "^10.3 || ^11",
+    "sabre/uri": "^2.2"
+  },
+  "dependent_modules": [
+    "compiler:compiler"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 2499,
+  "list_position": 1366,
+  "project_url": "https://www.drupal.org/project/theme_compiler",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [
+    "sabre/uri"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Theming"
+  ],
+  "subcategories": [
+    "CSS preprocessing (Sass/Less)",
+    "Theme development tools"
+  ],
+  "keywords": [
+    "theme_compiler.yml",
+    "compiled assets",
+    "on-demand compile",
+    "compiler",
+    "scss",
+    "sass",
+    "theme assets",
+    "asset pipeline",
+    "dynamic routes",
+    "route callback",
+    "public://theme-compiler-assets",
+    "OnDemandCompileEvent",
+    "themes_installed",
+    "theme settings"
+  ]
+}

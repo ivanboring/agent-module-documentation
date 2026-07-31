@@ -1,0 +1,55 @@
+{
+  "name": "Core Views Facets",
+  "data_name": "core_views_facets",
+  "description": "Facet support for generic views",
+  "version": "2.1.x",
+  "package": "Search",
+  "composer_namespace": "drupal/core_views_facets",
+  "composer_requirements": {
+    "drupal/facets": "^2.0 || ^3.0"
+  },
+  "dependent_modules": [
+    "facets",
+    "views",
+    "system"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": 1310,
+  "list_position": 1384,
+  "project_url": "https://www.drupal.org/project/core_views_facets",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "core_views_facets_exposed_filter_types",
+    "core_views_facets_contextual_filter_types"
+  ],
+  "categories": [
+    "Site search",
+    "Content display"
+  ],
+  "subcategories": [
+    "Faceted search",
+    "Views exposed filters"
+  ],
+  "keywords": [
+    "facets",
+    "views",
+    "core views",
+    "exposed filter",
+    "contextual filter",
+    "facet source",
+    "url processor",
+    "core_views_url_processor",
+    "faceted search",
+    "views page",
+    "filter type plugin",
+    "search"
+  ]
+}

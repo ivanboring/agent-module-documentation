@@ -1,0 +1,59 @@
+{
+  "name": "HTTP Client Manager",
+  "data_name": "http_client_manager",
+  "description": "Manage Guzzle based HTTP Clients instances and configurations.",
+  "version": "11.0.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/http_client_manager",
+  "composer_requirements": {
+    "drupal/core": "^10.3 || ^11",
+    "drush/drush": ">=12.0.0",
+    "guzzlehttp/guzzle-services": "^1",
+    "fatal-error/guzzle-description-loader": "^3.1.1"
+  },
+  "dependent_modules": [],
+  "configure": "http_client_manager.preview",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 1363,
+  "project_url": "https://www.drupal.org/project/http_client_manager",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [
+    "guzzlehttp/guzzle-services",
+    "fatal-error/guzzle-description-loader"
+  ],
+  "suggests": {},
+  "submodules": [
+    "http_client_manager_example"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "http_client_manager_request_location"
+  ],
+  "categories": [
+    "Integrations",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "REST / web services",
+    "Plugin system"
+  ],
+  "keywords": [
+    "guzzle",
+    "http client",
+    "rest",
+    "web services",
+    "api",
+    "guzzle-services",
+    "service description",
+    "http_services_api",
+    "http_config_request",
+    "command",
+    "base_uri",
+    "request location",
+    "consume api"
+  ]
+}

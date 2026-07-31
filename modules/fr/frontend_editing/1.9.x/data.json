@@ -1,0 +1,54 @@
+{
+  "name": "Frontend Editing",
+  "data_name": "frontend_editing",
+  "description": "This module adds frontend editing functionality.",
+  "version": "1.9.x",
+  "package": "Content",
+  "composer_namespace": "drupal/frontend_editing",
+  "composer_requirements": {
+    "drupal/paragraphs_edit": "^3.0"
+  },
+  "dependent_modules": [
+    "paragraphs_edit"
+  ],
+  "configure": "frontend_editing.settings_form",
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": 1572,
+  "list_position": 1354,
+  "project_url": "https://www.drupal.org/project/frontend_editing",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/all_entity_preview": "Allows previewing entities in frontend editing."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "In-place editing",
+    "Structured content / page building"
+  ],
+  "keywords": [
+    "frontend editing",
+    "front-end editing",
+    "in-place editing",
+    "inline editing",
+    "paragraphs",
+    "paragraphs_edit",
+    "sidebar editor",
+    "edit on page",
+    "add paragraph",
+    "move paragraph",
+    "delete paragraph",
+    "live preview",
+    "entity_types",
+    "bundles",
+    "content authoring"
+  ]
+}
