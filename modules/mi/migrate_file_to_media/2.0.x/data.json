@@ -1,0 +1,61 @@
+{
+  "name": "Migrate File To Media",
+  "data_name": "migrate_file_to_media",
+  "description": "Migrate file fields to media fields.",
+  "version": "2.0.x",
+  "package": "Migration",
+  "composer_namespace": "drupal/migrate_file_to_media",
+  "composer_requirements": {
+    "php": ">=8.1.0",
+    "drupal/migrate_tools": "^6",
+    "drupal/migrate_plus": "^6",
+    "drupal/core": "^10.2 || ^11"
+  },
+  "dependent_modules": [
+    "media",
+    "file",
+    "migrate",
+    "migrate_tools",
+    "migrate_plus",
+    "migrate_drupal"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 1686,
+  "list_position": 1244,
+  "project_url": "https://www.drupal.org/project/migrate_file_to_media",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1.0",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "migrate_file_to_media_example"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export",
+    "Media"
+  ],
+  "subcategories": [
+    "Content migration / import",
+    "Migration tooling",
+    "Duplicate detection"
+  ],
+  "keywords": [
+    "migrate",
+    "media",
+    "file to media",
+    "migration",
+    "media entity",
+    "duplicate detection",
+    "binary hash",
+    "image field",
+    "media reference",
+    "migrate_plus",
+    "media_entity_generator",
+    "mf2m"
+  ]
+}

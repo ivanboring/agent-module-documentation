@@ -1,0 +1,47 @@
+{
+  "name": "Search API OpenSearch AWS Signature Connector",
+  "data_name": "search_api_aws_signature_connector",
+  "description": "Provides an OpenSearch connector using AWS Signature.",
+  "version": "2.5.x",
+  "package": "Search",
+  "composer_namespace": "drupal/search_api_opensearch",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "search_api_opensearch"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 1763,
+  "list_position": 1236,
+  "project_url": "https://www.drupal.org/project/search_api_opensearch",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "aws/aws-sdk-php"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site search",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Search backend",
+    "Secrets & key management"
+  ],
+  "keywords": [
+    "opensearch",
+    "aws",
+    "aws signature",
+    "amazon opensearch",
+    "signature v4",
+    "connector",
+    "search api",
+    "iam",
+    "aws region"
+  ]
+}

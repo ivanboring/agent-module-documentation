@@ -1,0 +1,50 @@
+{
+  "name": "Log Stdout",
+  "data_name": "log_stdout",
+  "description": "Log watchdog messages to stdout",
+  "version": "3.0.x",
+  "package": "Logging",
+  "composer_namespace": "drupal/log_stdout",
+  "composer_requirements": {
+    "drupal/core": "^8.8 || ^9 || ^10 || ^11"
+  },
+  "dependent_modules": [],
+  "configure": "log_stdout.settings",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": 1571,
+  "list_position": 1252,
+  "project_url": "https://www.drupal.org/project/log_stdout",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Log aggregation",
+    "Audit trail / activity logging"
+  ],
+  "keywords": [
+    "logging",
+    "watchdog",
+    "stdout",
+    "stderr",
+    "docker",
+    "container logs",
+    "12-factor",
+    "logger",
+    "RfcLogLevel",
+    "severity",
+    "log format",
+    "php://stdout",
+    "php://stderr",
+    "syslog alternative"
+  ]
+}

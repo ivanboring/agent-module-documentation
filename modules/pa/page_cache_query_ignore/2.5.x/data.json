@@ -1,0 +1,51 @@
+{
+  "name": "Page Cache Query Ignore",
+  "data_name": "page_cache_query_ignore",
+  "description": "Alter page cache middleware class to ignore query params.",
+  "version": "2.5.x",
+  "package": "Other",
+  "composer_namespace": "drupal/page_cache_query_ignore",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "page_cache"
+  ],
+  "configure": "page_cache_query_ignore.admin",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 1450,
+  "list_position": 1225,
+  "project_url": "https://www.drupal.org/project/page_cache_query_ignore",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "Caching backend",
+    "HTTP cache headers"
+  ],
+  "keywords": [
+    "page cache",
+    "query parameters",
+    "query string",
+    "cache key",
+    "utm",
+    "gclid",
+    "fbclid",
+    "tracking parameters",
+    "cache variants",
+    "anonymous cache",
+    "internal page cache",
+    "middleware",
+    "http_middleware.page_cache",
+    "exclude",
+    "include",
+    "ignore redirects"
+  ]
+}

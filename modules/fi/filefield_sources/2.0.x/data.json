@@ -1,0 +1,58 @@
+{
+  "name": "File Field Sources",
+  "data_name": "filefield_sources",
+  "description": "Extends File fields to allow referencing of existing files, remote files, and server files.",
+  "version": "2.0.x",
+  "package": "Fields",
+  "composer_namespace": "drupal/filefield_sources",
+  "composer_requirements": {
+    "drupal/core": "^10.2.0 | ^11"
+  },
+  "dependent_modules": [
+    "file",
+    "system"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 1525,
+  "list_position": 1258,
+  "project_url": "https://www.drupal.org/project/filefield_sources",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/imce": "Enables the IMCE file browser source (test/optional dependency)"
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "filefield_source"
+  ],
+  "categories": [
+    "Media",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "File uploads",
+    "File browser / management"
+  ],
+  "keywords": [
+    "file field",
+    "image field",
+    "file sources",
+    "remote url",
+    "reference existing file",
+    "file attach",
+    "server directory",
+    "imce",
+    "clipboard",
+    "file browser",
+    "widget",
+    "third party settings",
+    "file_generic",
+    "image_image",
+    "FilefieldSource plugin"
+  ]
+}

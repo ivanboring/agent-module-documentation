@@ -1,0 +1,47 @@
+{
+  "name": "Disable Login Page",
+  "data_name": "disable_login",
+  "description": "Disables anonymous access to the public login page without a secret key.",
+  "version": "1.1.x",
+  "package": null,
+  "composer_namespace": "drupal/disable_login",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "disable_login.settings_form",
+  "core_version_requirement": ">=8",
+  "active_installs": null,
+  "list_position": 1248,
+  "project_url": "https://www.drupal.org/project/disable_login",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Access control"
+  ],
+  "subcategories": [
+    "Login page protection",
+    "Session management"
+  ],
+  "keywords": [
+    "login",
+    "disable login",
+    "login protection",
+    "secret key",
+    "querystring",
+    "user.login",
+    "access check",
+    "hide login page",
+    "spam",
+    "security",
+    "disable_login",
+    "brute force",
+    "hook_disable_login_key_alter"
+  ]
+}
