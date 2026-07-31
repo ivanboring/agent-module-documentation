@@ -1,0 +1,55 @@
+{
+  "name": "Domain Path",
+  "data_name": "domain_path",
+  "description": "Allows separate path aliases per domain.",
+  "version": "3.0.x",
+  "package": "Domain",
+  "composer_namespace": "drupal/domain_path",
+  "composer_requirements": {
+    "drupal/domain": "^3.0.0-beta8"
+  },
+  "dependent_modules": [
+    "path",
+    "domain"
+  ],
+  "configure": "entity.domain_path_settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 1326,
+  "project_url": "https://www.drupal.org/project/domain_path",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/pathauto": "Automatic path aliases with Domain Path Pathauto submodule."
+  },
+  "submodules": [
+    "domain_path_pathauto"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site structure",
+    "Search engine optimization (SEO)"
+  ],
+  "subcategories": [
+    "Multi-domain / affiliate sites",
+    "URL alias generation"
+  ],
+  "keywords": [
+    "domain",
+    "domain access",
+    "path alias",
+    "per-domain alias",
+    "multi-domain",
+    "url alias",
+    "domain_id",
+    "path_alias",
+    "domain source",
+    "multisite",
+    "canonical url",
+    "domain path"
+  ]
+}

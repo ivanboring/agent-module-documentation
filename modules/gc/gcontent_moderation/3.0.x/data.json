@@ -1,0 +1,50 @@
+{
+  "name": "Group Content Moderation",
+  "data_name": "gcontent_moderation",
+  "description": "Enable Content Moderation workflow transitions to be used by group members",
+  "version": "3.0.x",
+  "package": "Group",
+  "composer_namespace": "drupal/gcontent_moderation",
+  "composer_requirements": {
+    "drupal/group": "^3.3"
+  },
+  "dependent_modules": [
+    "content_moderation",
+    "group"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 1380,
+  "list_position": 1334,
+  "project_url": "https://www.drupal.org/project/gcontent_moderation",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Groups & memberships",
+    "Workflow / state management"
+  ],
+  "keywords": [
+    "group",
+    "content moderation",
+    "workflow",
+    "transition",
+    "group permissions",
+    "state transition validation",
+    "latest revision",
+    "pending revision",
+    "moderated_group_content",
+    "view latest version",
+    "service decoration"
+  ]
+}

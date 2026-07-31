@@ -1,0 +1,50 @@
+{
+  "name": "Entity Bundle Permissions",
+  "data_name": "entity_bundle_permissions",
+  "description": "Provides bundle-specific permissions for content entities.",
+  "version": "1.1.x",
+  "package": null,
+  "composer_namespace": "drupal/entity_bundle_permissions",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "drupal/core": "^10.3 || ^11"
+  },
+  "dependent_modules": [
+    "user"
+  ],
+  "configure": "entity_bundle_permissions.settings",
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": null,
+  "list_position": 1336,
+  "project_url": "https://www.drupal.org/project/entity_bundle_permissions",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Per-node view access",
+    "User roles & permissions"
+  ],
+  "keywords": [
+    "permissions",
+    "bundle",
+    "entity access",
+    "content type access",
+    "per-bundle permission",
+    "hook_entity_access",
+    "dynamic permissions",
+    "access restriction",
+    "ignored entity types",
+    "node access",
+    "vocabulary access",
+    "media bundle access"
+  ]
+}

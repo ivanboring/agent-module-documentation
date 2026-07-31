@@ -1,0 +1,55 @@
+{
+  "name": "Share Everywhere",
+  "data_name": "share_everywhere",
+  "description": "Drupal social share module.",
+  "version": "3.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/share_everywhere",
+  "composer_requirements": {
+    "drupal/core": "^9.0 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "path_alias"
+  ],
+  "configure": "share_everywhere.config_form",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 1426,
+  "list_position": 1335,
+  "project_url": "https://www.drupal.org/project/share_everywhere",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/commerce": "Display social buttons on Commerce product pages.",
+    "drupal/markdown": "Render the module README on its help page."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "User engagement",
+    "Content display"
+  ],
+  "subcategories": [
+    "Social sharing buttons"
+  ],
+  "keywords": [
+    "social share",
+    "share buttons",
+    "facebook",
+    "twitter",
+    "x",
+    "linkedin",
+    "messenger",
+    "whatsapp",
+    "viber",
+    "copy url",
+    "block",
+    "views field",
+    "extra field",
+    "share_everywhere.settings",
+    "commerce"
+  ]
+}

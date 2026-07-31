@@ -1,0 +1,54 @@
+{
+  "name": "Scheduled Publish",
+  "data_name": "scheduled_publish",
+  "description": "This module allows the user to create a scheduler for content moderation",
+  "version": "4.1.x",
+  "package": "Content",
+  "composer_namespace": "drupal/scheduled_publish",
+  "composer_requirements": {
+    "php": ">=7.4"
+  },
+  "dependent_modules": [
+    "content_moderation",
+    "workflows",
+    "datetime"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.5 || ^10.2 || ^11",
+  "active_installs": 1443,
+  "list_position": 1313,
+  "project_url": "https://www.drupal.org/project/scheduled_publish",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=7.4",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience",
+    "Automation"
+  ],
+  "subcategories": [
+    "Content scheduling / publishing",
+    "Workflow / state management"
+  ],
+  "keywords": [
+    "scheduled publish",
+    "content moderation",
+    "workflow",
+    "moderation state",
+    "schedule",
+    "scheduled_publish field",
+    "field type",
+    "cron",
+    "publish later",
+    "unpublish",
+    "transition",
+    "datetime",
+    "schp",
+    "scheduled_publish:doUpdate"
+  ]
+}

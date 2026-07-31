@@ -1,0 +1,57 @@
+{
+  "name": "Mercury Editor",
+  "data_name": "mercury_editor",
+  "description": "Effortless, drag-and-drop editing for Drupal.",
+  "version": "2.2.x",
+  "package": "Mercury Editor",
+  "composer_namespace": "drupal/mercury_editor",
+  "composer_requirements": {
+    "drupal/layout_paragraphs": ">=2.1 <2.2",
+    "drupal/style_options": "^1 || ^2",
+    "php": ">=8.1"
+  },
+  "dependent_modules": [
+    "layout_paragraphs",
+    "style_options"
+  ],
+  "configure": "mercury_editor.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 1474,
+  "list_position": 1331,
+  "project_url": "https://www.drupal.org/project/mercury_editor",
+  "license": "GPL-2.0+",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "mercury_editor_inline_editor",
+    "mercury_editor_templates"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Structured content / page building",
+    "Layout Builder"
+  ],
+  "keywords": [
+    "mercury editor",
+    "drag and drop",
+    "page builder",
+    "layout paragraphs",
+    "style_options",
+    "edit tray",
+    "preview",
+    "node form",
+    "paragraphs",
+    "bundles",
+    "mercury_editor.settings",
+    "iframe",
+    "dialog"
+  ]
+}

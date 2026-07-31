@@ -1,0 +1,55 @@
+{
+  "name": "Microsoft Azure AI",
+  "data_name": "ai_provider_azure",
+  "description": "This enables the use of Azure AI Studio for the AI module.",
+  "version": "1.1.x",
+  "package": "AI Providers",
+  "composer_namespace": "drupal/ai_provider_azure",
+  "composer_requirements": {
+    "drupal/ai": "^1.1.0",
+    "drupal/key": "^1.18",
+    "openai-php/client": ">=v0.10.1"
+  },
+  "dependent_modules": [
+    "ai",
+    "key"
+  ],
+  "configure": "ai_provider_azure.settings_form",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 1338,
+  "project_url": "https://www.drupal.org/project/ai_provider_azure",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "openai-php/client"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "AI provider abstraction / LLM gateway"
+  ],
+  "keywords": [
+    "ai",
+    "azure",
+    "azure openai",
+    "ai provider",
+    "llm",
+    "chat",
+    "embeddings",
+    "text to image",
+    "text to speech",
+    "speech to text",
+    "openai-php",
+    "key module",
+    "endpoint",
+    "wingify"
+  ]
+}

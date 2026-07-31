@@ -1,0 +1,54 @@
+{
+  "name": "International Phone",
+  "data_name": "phone_international",
+  "description": "The phone_international module allows administrators to define a field type for international phone numbers.",
+  "version": "3.3.x",
+  "package": "Field types",
+  "composer_namespace": "drupal/phone_international",
+  "composer_requirements": {
+    "giggsey/libphonenumber-for-php": "^8.13"
+  },
+  "dependent_modules": [
+    "field"
+  ],
+  "configure": "phone_international.settings",
+  "core_version_requirement": ">=9.4",
+  "active_installs": null,
+  "list_position": 1324,
+  "project_url": "https://www.drupal.org/project/phone_international",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "giggsey/libphonenumber-for-php"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience",
+    "Content display"
+  ],
+  "subcategories": [
+    "Fields",
+    "Form widgets / select UI"
+  ],
+  "keywords": [
+    "phone",
+    "telephone",
+    "international phone",
+    "intl-tel-input",
+    "libphonenumber",
+    "E164",
+    "country code",
+    "flag",
+    "geolocation",
+    "field type",
+    "phone_international_widget",
+    "phone_international_formatter",
+    "tel link",
+    "validation"
+  ]
+}
