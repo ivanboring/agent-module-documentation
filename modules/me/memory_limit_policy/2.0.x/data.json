@@ -1,0 +1,60 @@
+{
+  "name": "Memory Limit Policy",
+  "data_name": "memory_limit_policy",
+  "description": "Sets up constraints to override the default memory limit.",
+  "version": "2.0.x",
+  "package": "Performance",
+  "composer_namespace": "drupal/memory_limit_policy",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "entity.memory_limit_policy.collection",
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": 1298,
+  "list_position": 1385,
+  "project_url": "https://www.drupal.org/project/memory_limit_policy",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "memory_limit_policy_ai_agents",
+    "memory_limit_policy_domain",
+    "memory_limit_policy_drush",
+    "memory_limit_policy_env_variable",
+    "memory_limit_policy_http_header",
+    "memory_limit_policy_http_method",
+    "memory_limit_policy_path",
+    "memory_limit_policy_query_param",
+    "memory_limit_policy_role",
+    "memory_limit_policy_route"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "memory_limit_constraint"
+  ],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "Memory limit / PHP runtime tuning"
+  ],
+  "keywords": [
+    "memory_limit",
+    "memory limit",
+    "php memory",
+    "ini_set",
+    "performance",
+    "policy",
+    "constraint",
+    "MemoryLimitConstraint",
+    "config entity",
+    "event subscriber",
+    "override memory",
+    "out of memory",
+    "OOM",
+    "weight",
+    "negate"
+  ]
+}

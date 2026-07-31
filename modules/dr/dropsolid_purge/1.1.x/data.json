@@ -1,0 +1,48 @@
+{
+  "name": "Dropsolid Purge",
+  "data_name": "dropsolid_purge",
+  "description": "Cache invalidation for sites running varnish",
+  "version": "1.1.x",
+  "package": "Purge - reverse proxies & CDNs",
+  "composer_namespace": "drupal/dropsolid_purge",
+  "composer_requirements": {
+    "drupal/purge": "^3.0"
+  },
+  "dependent_modules": [
+    "purge:purge"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": 1185,
+  "list_position": 1392,
+  "project_url": "https://www.drupal.org/project/dropsolid_purge",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "Cache invalidation"
+  ],
+  "keywords": [
+    "purge",
+    "varnish",
+    "cache invalidation",
+    "loadbalancer",
+    "reverse proxy",
+    "cache tags",
+    "BAN",
+    "X-Dropsolid-Site",
+    "X-Dropsolid-Purge-Tags",
+    "dropsolid",
+    "acquia purge",
+    "purger plugin"
+  ]
+}

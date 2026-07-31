@@ -1,0 +1,57 @@
+{
+  "name": "Disqus",
+  "data_name": "disqus",
+  "description": "Integrated the Disqus web service to enhance comments in Drupal.",
+  "version": "2.0.x",
+  "package": null,
+  "composer_namespace": "drupal/disqus",
+  "composer_requirements": {
+    "disqus/disqus-php": "^1.0"
+  },
+  "dependent_modules": [
+    "file",
+    "field"
+  ],
+  "configure": "disqus.settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 1304,
+  "list_position": 1407,
+  "project_url": "https://www.drupal.org/project/disqus",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "disqus/disqus-php"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "User engagement",
+    "Content display",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Discussion forums",
+    "Threaded comments",
+    "Social network integration"
+  ],
+  "keywords": [
+    "disqus",
+    "comments",
+    "commenting",
+    "shortname",
+    "disqus_domain",
+    "disqus_comment",
+    "SSO",
+    "single sign-on",
+    "third-party service",
+    "disqus.settings",
+    "recent comments block",
+    "popular threads",
+    "top commenters",
+    "disqus_api"
+  ]
+}

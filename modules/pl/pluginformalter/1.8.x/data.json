@@ -1,0 +1,54 @@
+{
+  "name": "Plugin Form Alter",
+  "data_name": "pluginformalter",
+  "description": "Provides an annotation Plugin to be used as replacement of hook_form_alter().",
+  "version": "1.8.x",
+  "package": "Development",
+  "composer_namespace": "drupal/pluginformalter",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 1301,
+  "list_position": 1399,
+  "project_url": "https://www.drupal.org/project/pluginformalter",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/paragraphs": "Enables the ParagraphsFormAlter plugin type for altering paragraph subforms.",
+    "drupal/inline_entity_form": "Enables the InlineEntityFormAlter plugin type for altering IEF subforms.",
+    "drupal/webprofiler": "Its Forms data collector is decorated to list the plugins that altered each form."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "form_alter",
+    "form_alter.paragraphs",
+    "form_alter.ief"
+  ],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Plugin system",
+    "Form builder"
+  ],
+  "keywords": [
+    "form alter",
+    "hook_form_alter",
+    "plugin",
+    "annotation plugin",
+    "FormAlter",
+    "form_id",
+    "base_form_id",
+    "paragraphs",
+    "inline entity form",
+    "OOP",
+    "deprecated",
+    "webprofiler",
+    "form weight"
+  ]
+}
