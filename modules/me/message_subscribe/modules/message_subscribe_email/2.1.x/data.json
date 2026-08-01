@@ -1,0 +1,48 @@
+{
+  "name": "Message subscribe email",
+  "data_name": "message_subscribe_email",
+  "description": "Provides email functionality for message subscribe.",
+  "version": "2.1.x",
+  "package": "Message",
+  "composer_namespace": "drupal/message_subscribe",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "message_subscribe:message_subscribe_ui",
+    "flag:flag",
+    "drupal:user",
+    "drupal:views"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11 || ^12",
+  "active_installs": 1520,
+  "list_position": 1566,
+  "project_url": "https://www.drupal.org/project/message_subscribe",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "User engagement"
+  ],
+  "subcategories": [
+    "Activity / notification messages",
+    "Email / mail delivery"
+  ],
+  "keywords": [
+    "message subscribe",
+    "email subscription",
+    "email flag",
+    "email_ prefix",
+    "per-subscription email",
+    "flag events",
+    "message_subscribe_email.manager",
+    "notifier filter",
+    "get_subscribers_alter",
+    "message_subscribe_email field"
+  ]
+}

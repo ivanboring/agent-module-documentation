@@ -1,0 +1,59 @@
+{
+  "name": "Message Subscribe",
+  "data_name": "message_subscribe",
+  "description": "Subscribe API for the Message and Message notify modules.",
+  "version": "2.1.x",
+  "package": "Message",
+  "composer_namespace": "drupal/message_subscribe",
+  "composer_requirements": {
+    "drupal/flag": "^4.0 || ^5.0",
+    "drupal/message": "^1.0",
+    "drupal/message_notify": "^1.0"
+  },
+  "dependent_modules": [
+    "flag:flag",
+    "message:message",
+    "message_notify:message_notify"
+  ],
+  "configure": "message_subscribe.admin_settings",
+  "core_version_requirement": "^10.2 || ^11 || ^12",
+  "active_installs": 1520,
+  "list_position": 1566,
+  "project_url": "https://www.drupal.org/project/message_subscribe",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "message_subscribe_email",
+    "message_subscribe_ui",
+    "message_subscribe_example"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "User engagement"
+  ],
+  "subcategories": [
+    "Activity / notification messages",
+    "Flagging / bookmarking"
+  ],
+  "keywords": [
+    "subscribe",
+    "subscription",
+    "notification",
+    "message",
+    "message_notify",
+    "flag",
+    "subscribe_ flag",
+    "delivery candidate",
+    "queue",
+    "notifier",
+    "email notification",
+    "message_subscribe.subscribers",
+    "sendMessage",
+    "getSubscribers"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "name": "IP Anonymize",
+  "data_name": "ip_anon",
+  "description": "Implements an IP address retention policy.",
+  "version": "2.0.x",
+  "package": null,
+  "composer_namespace": "drupal/ip_anon",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "ip_anon.settings",
+  "core_version_requirement": "^11.1 || ^12",
+  "active_installs": 1239,
+  "list_position": 1558,
+  "project_url": "https://www.drupal.org/project/ip_anon",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "IP anonymization / privacy",
+    "Cron / task scheduling"
+  ],
+  "keywords": [
+    "ip",
+    "ip address",
+    "anonymize",
+    "privacy",
+    "retention",
+    "gdpr",
+    "scrub",
+    "cron",
+    "hostname",
+    "sessions",
+    "watchdog",
+    "ip_anon:scrub",
+    "ip_anon:policy",
+    "hook_ip_anon_alter"
+  ]
+}

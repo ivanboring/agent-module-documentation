@@ -1,0 +1,52 @@
+{
+  "name": "gText",
+  "data_name": "gtext",
+  "description": "Utility to simplify the translation of strings on the site.",
+  "version": "9.0.x",
+  "package": "Multilingual",
+  "composer_namespace": "drupal/gtext",
+  "composer_requirements": {
+    "google/cloud-translate": "^1.10"
+  },
+  "dependent_modules": [
+    "locale"
+  ],
+  "configure": "gtext.translate",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": 1009,
+  "list_position": 1576,
+  "project_url": "https://www.drupal.org/project/gtext",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "google/cloud-translate"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Multilingual"
+  ],
+  "subcategories": [
+    "String override / text replacement",
+    "Machine translation",
+    "Translation / multilingual"
+  ],
+  "keywords": [
+    "gtext",
+    "string translation",
+    "locale",
+    "translate strings",
+    "machine translation",
+    "google translate",
+    "google api key",
+    "twig translate",
+    "interface translation",
+    "config translation",
+    "multilingual",
+    "locales_source"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "name": "Reporting",
+  "data_name": "reporting",
+  "description": "Provide Reporting API endpoints",
+  "version": "2.1.x",
+  "package": null,
+  "composer_namespace": "drupal/reporting",
+  "composer_requirements": {
+    "drupal/core": "^10.1 || ^11",
+    "gapple/structured-fields": "^2.0"
+  },
+  "dependent_modules": [],
+  "configure": "entity.reporting_endpoint.collection",
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": null,
+  "list_position": 1549,
+  "project_url": "https://www.drupal.org/project/reporting",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "gapple/structured-fields"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "HTTP security headers",
+    "Error tracking & monitoring"
+  ],
+  "keywords": [
+    "reporting api",
+    "reporting endpoints",
+    "Reporting-Endpoints header",
+    "report-to",
+    "report-uri",
+    "csp",
+    "content security policy",
+    "violation reports",
+    "reporting_endpoint",
+    "config entity",
+    "watchdog",
+    "dblog",
+    "crash reporting",
+    "network error logging",
+    "deprecation reports"
+  ]
+}

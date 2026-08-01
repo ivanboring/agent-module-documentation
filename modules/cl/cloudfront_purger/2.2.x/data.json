@@ -1,0 +1,60 @@
+{
+  "name": "CloudFront Purge",
+  "data_name": "cloudfront_purger",
+  "description": "Provides a Purge plugin for AWS CloudFront.",
+  "version": "2.2.x",
+  "package": "Purge",
+  "composer_namespace": "drupal/cloudfront_purger",
+  "composer_requirements": {
+    "aws/aws-sdk-php": "^3.0",
+    "drupal/purge": "^3.2"
+  },
+  "dependent_modules": [
+    "purge"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": null,
+  "list_position": 1545,
+  "project_url": "https://www.drupal.org/project/cloudfront_purger",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "aws/aws-sdk-php"
+  ],
+  "suggests": {
+    "drupal/purge_queuer_url": "To automatically collect URLs to purge."
+  },
+  "submodules": [
+    "cloudfront_purger_tags"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance",
+    "Integrations"
+  ],
+  "subcategories": [
+    "CDN integration",
+    "Cache invalidation",
+    "Cloud services (AWS)"
+  ],
+  "keywords": [
+    "cloudfront",
+    "aws",
+    "cdn",
+    "purge",
+    "invalidation",
+    "reverse proxy",
+    "cache invalidation",
+    "distribution",
+    "path invalidation",
+    "wildcard",
+    "purger plugin",
+    "createInvalidation",
+    "aws-sdk-php",
+    "IAM"
+  ]
+}

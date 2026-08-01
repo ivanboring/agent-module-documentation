@@ -1,0 +1,52 @@
+{
+  "name": "CloudFront Purger Tags",
+  "data_name": "cloudfront_purger_tags",
+  "description": "Adds cache tag invalidation support to CloudFront Purger.",
+  "version": "2.2.x",
+  "package": "Purge",
+  "composer_namespace": "drupal/cloudfront_purger",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "cloudfront_purger",
+    "purge_queuer_coretags"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.6 || ^11.2",
+  "active_installs": null,
+  "list_position": 1545,
+  "project_url": "https://www.drupal.org/project/cloudfront_purger",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance",
+    "Integrations"
+  ],
+  "subcategories": [
+    "CDN integration",
+    "Cache invalidation",
+    "Cloud services (AWS)"
+  ],
+  "keywords": [
+    "cloudfront",
+    "cache tags",
+    "tag invalidation",
+    "cloudfront_tags",
+    "Cache-Tags header",
+    "xxHash3",
+    "hashed tags",
+    "purge",
+    "cdn",
+    "aws",
+    "experimental",
+    "tags header",
+    "prioritizer",
+    "blocklist"
+  ]
+}
