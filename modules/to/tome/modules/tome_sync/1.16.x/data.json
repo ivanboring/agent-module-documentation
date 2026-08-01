@@ -1,0 +1,54 @@
+{
+  "name": "Tome Sync",
+  "data_name": "tome_sync",
+  "description": "Allows Drupal to installed from flat files and keeps content in sync.",
+  "version": "1.16.x",
+  "package": "Tome",
+  "composer_namespace": "drupal/tome",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "file",
+    "serialization",
+    "user",
+    "tome_base"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": 1400,
+  "project_url": "https://www.drupal.org/project/tome",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export",
+    "Decoupled",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Data export",
+    "Static site generation",
+    "Content migration / import"
+  ],
+  "keywords": [
+    "tome sync",
+    "content sync",
+    "flat file",
+    "JSON content",
+    "tome:export",
+    "tome:import",
+    "tome:import-partial",
+    "content directory",
+    "normalizers",
+    "file sync",
+    "NullFileSync",
+    "git content",
+    "use tome sync"
+  ]
+}

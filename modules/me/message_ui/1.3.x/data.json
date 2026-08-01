@@ -1,0 +1,55 @@
+{
+  "name": "Message UI",
+  "data_name": "message_ui",
+  "description": "UI for the Message module.",
+  "version": "1.3.x",
+  "package": "Message",
+  "composer_namespace": "drupal/message_ui",
+  "composer_requirements": {
+    "drupal/core": "^9 || ^10 || ^11",
+    "drupal/message": "^1"
+  },
+  "dependent_modules": [
+    "message",
+    "views"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.2 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 1412,
+  "project_url": "https://www.drupal.org/project/message_ui",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "message_notify_ui"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "message_ui_views_contextual_links"
+  ],
+  "categories": [
+    "User engagement",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Activity / notification messages",
+    "Entity API"
+  ],
+  "keywords": [
+    "message",
+    "message_ui",
+    "message entity",
+    "create message",
+    "message template",
+    "CRUD UI",
+    "per-template permissions",
+    "contextual links",
+    "views",
+    "bypass message access control",
+    "multiple delete"
+  ]
+}

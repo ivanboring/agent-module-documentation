@@ -1,0 +1,62 @@
+{
+  "name": "Commerce Invoice",
+  "data_name": "commerce_invoice",
+  "description": "Defines the Invoice entity and associated features.",
+  "version": "2.2.x",
+  "package": "Commerce (contrib)",
+  "composer_namespace": "drupal/commerce_invoice",
+  "composer_requirements": {
+    "php": "^8.1",
+    "drupal/commerce": "^2.37 || ^3",
+    "drupal/entity_print": "^2.0"
+  },
+  "dependent_modules": [
+    "commerce",
+    "commerce_number_pattern",
+    "commerce_order",
+    "commerce_price",
+    "commerce_store",
+    "file",
+    "entity_print",
+    "profile",
+    "state_machine",
+    "token"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": null,
+  "list_position": 1402,
+  "project_url": "https://www.drupal.org/project/commerce_invoice",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "^8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Order management",
+    "Invoicing / billing"
+  ],
+  "keywords": [
+    "commerce",
+    "invoice",
+    "credit memo",
+    "billing",
+    "invoice type",
+    "number pattern",
+    "PDF invoice",
+    "entity_print",
+    "invoice workflow",
+    "commerce_invoice_type",
+    "InvoiceGenerator",
+    "order invoice",
+    "confirmation email",
+    "Drupal Commerce"
+  ]
+}

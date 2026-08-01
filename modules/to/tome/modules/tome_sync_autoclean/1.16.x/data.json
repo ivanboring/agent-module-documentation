@@ -1,0 +1,44 @@
+{
+  "name": "Tome Sync Autoclean (Experimental)",
+  "data_name": "tome_sync_autoclean",
+  "description": "Automatically deletes files that are unused. This module could definitely lead to data loss, use with caution!",
+  "version": "1.16.x",
+  "package": "Tome",
+  "composer_namespace": "drupal/tome",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "tome_sync"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": 1400,
+  "project_url": "https://www.drupal.org/project/tome",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export",
+    "Decoupled"
+  ],
+  "subcategories": [
+    "Data export",
+    "Static site generation"
+  ],
+  "keywords": [
+    "tome sync autoclean",
+    "experimental",
+    "clean files",
+    "unused files",
+    "auto delete",
+    "event subscriber",
+    "data loss",
+    "file cleanup"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "name": "Consumer Image Styles",
+  "data_name": "consumer_image_styles",
+  "description": "Attach image styles to a given consumer.",
+  "version": "4.0.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/consumer_image_styles",
+  "composer_requirements": {
+    "drupal/consumers": "^1.19",
+    "php": ">=8.0"
+  },
+  "dependent_modules": [
+    "image",
+    "consumers",
+    "jsonapi"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 1415,
+  "project_url": "https://www.drupal.org/project/consumer_image_styles",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.0",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/jsonapi_extras": "Configure the image_styles field enhancer per image field."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Decoupled",
+    "Media"
+  ],
+  "subcategories": [
+    "REST / web services",
+    "Responsive images"
+  ],
+  "keywords": [
+    "consumer image styles",
+    "consumers",
+    "jsonapi",
+    "decoupled",
+    "image styles",
+    "derivative links",
+    "image_styles field",
+    "ResourceFieldEnhancer",
+    "LinkCollectionNormalizer",
+    "responsive images",
+    "jsonapi_extras"
+  ]
+}

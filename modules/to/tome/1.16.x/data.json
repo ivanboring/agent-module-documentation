@@ -1,0 +1,63 @@
+{
+  "name": "Tome",
+  "data_name": "tome",
+  "description": "Everything you need to do everything statically.",
+  "version": "1.16.x",
+  "package": "Tome",
+  "composer_namespace": "drupal/tome",
+  "composer_requirements": {
+    "drupal/core": "^9 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "tome_sync",
+    "tome_static"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": 1400,
+  "project_url": "https://www.drupal.org/project/tome",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "tome_base",
+    "tome_static",
+    "tome_static_cron",
+    "tome_static_super_cache",
+    "tome_sync",
+    "tome_sync_autoclean"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Decoupled",
+    "Import and export",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Static site generation",
+    "Deployment / release management",
+    "Data export"
+  ],
+  "keywords": [
+    "tome",
+    "static site generator",
+    "static site",
+    "SSG",
+    "static HTML",
+    "content sync",
+    "flat file",
+    "JSON content",
+    "jamstack",
+    "decoupled",
+    "drush tome:static",
+    "drush tome:export",
+    "drush tome:import",
+    "git content",
+    "static export"
+  ]
+}

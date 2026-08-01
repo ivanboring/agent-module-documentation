@@ -1,0 +1,44 @@
+{
+  "name": "Tome Static Cron",
+  "data_name": "tome_static_cron",
+  "description": "Processes static paths in a cron queue worker.",
+  "version": "1.16.x",
+  "package": "Tome",
+  "composer_namespace": "drupal/tome",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "tome_static"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": 1400,
+  "project_url": "https://www.drupal.org/project/tome",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Decoupled",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Static site generation",
+    "Queue / background processing"
+  ],
+  "keywords": [
+    "tome static cron",
+    "cron",
+    "queue worker",
+    "static generation",
+    "base_url",
+    "tome_static_cron.settings",
+    "background static build",
+    "persistent drupal"
+  ]
+}
