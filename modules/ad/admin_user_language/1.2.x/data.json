@@ -1,0 +1,46 @@
+{
+  "name": "Admin User Language",
+  "data_name": "admin_user_language",
+  "description": "Forces a preferred administration pages language on user creation/update.",
+  "version": "1.2.x",
+  "package": "Translation",
+  "composer_namespace": "drupal/admin_user_language",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "user"
+  ],
+  "configure": "admin_user_language.basic_form",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": 1344,
+  "list_position": 1427,
+  "project_url": "https://www.drupal.org/project/admin_user_language",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Multilingual",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Admin interface language",
+    "User roles & permissions"
+  ],
+  "keywords": [
+    "admin language",
+    "administration pages language",
+    "preferred_admin_langcode",
+    "multilingual",
+    "user language",
+    "force language",
+    "backend language",
+    "entity presave",
+    "language negotiation",
+    "user registration"
+  ]
+}

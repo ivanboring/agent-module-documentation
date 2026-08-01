@@ -1,0 +1,54 @@
+{
+  "name": "Glossify",
+  "data_name": "glossify",
+  "description": "API module to automatically create links or tooltips based on existing entity labels.",
+  "version": "3.1.x",
+  "package": "Input filters",
+  "composer_namespace": "drupal/glossify",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "filter"
+  ],
+  "configure": "filter.admin_overview",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 1301,
+  "list_position": 1436,
+  "project_url": "https://www.drupal.org/project/glossify",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/commerce": "Needed for glossify_commerce."
+  },
+  "submodules": [
+    "glossify_node",
+    "glossify_taxonomy",
+    "glossify_commerce"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience",
+    "Content display"
+  ],
+  "subcategories": [
+    "Text format filters",
+    "Related content"
+  ],
+  "keywords": [
+    "glossify",
+    "glossary",
+    "tooltip",
+    "text filter",
+    "auto link",
+    "abbr",
+    "term linking",
+    "synonyms",
+    "input filter",
+    "GlossifyBase",
+    "glossify-exclude",
+    "hover definition"
+  ]
+}

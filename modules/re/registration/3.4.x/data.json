@@ -1,0 +1,72 @@
+{
+  "name": "Registration",
+  "data_name": "registration",
+  "description": "Provides user registration for events.",
+  "version": "3.4.x",
+  "package": "Registration",
+  "composer_namespace": "drupal/registration",
+  "composer_requirements": {
+    "drupal/core": "^10.3 || ^11"
+  },
+  "dependent_modules": [
+    "datetime",
+    "field",
+    "text",
+    "user",
+    "workflows"
+  ],
+  "configure": "registration.admin_settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 1433,
+  "project_url": "https://www.drupal.org/project/registration",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/commerce_registration": "Integrate with Drupal Commerce to sell fee-based registrations",
+    "drupal/entity": "Enables the reverse User -> registrations relationship in Views"
+  },
+  "submodules": [
+    "registration_admin_overrides",
+    "registration_cancel_by",
+    "registration_change_host",
+    "registration_confirmation",
+    "registration_inline_entity_form",
+    "registration_purger",
+    "registration_scheduled_action",
+    "registration_waitlist",
+    "registration_workflow"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "RegistrationConstraint"
+  ],
+  "categories": [
+    "User engagement",
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Event registration",
+    "Sign-ups / RSVP"
+  ],
+  "keywords": [
+    "registration",
+    "register",
+    "event",
+    "sign up",
+    "rsvp",
+    "attendee",
+    "capacity",
+    "waitlist",
+    "registration_type",
+    "registration_settings",
+    "host entity",
+    "workflow",
+    "reminder",
+    "spaces",
+    "tickets"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "name": "Nagios Monitoring",
+  "data_name": "nagios",
+  "description": "Exposes a page that Nagios or Icinga can monitor.",
+  "version": "1.27.x",
+  "package": "Monitoring",
+  "composer_namespace": "drupal/nagios",
+  "composer_requirements": {
+    "php": ">=7.1.0"
+  },
+  "dependent_modules": [],
+  "configure": "nagios.settings",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": 1165,
+  "list_position": 1461,
+  "project_url": "https://www.drupal.org/project/nagios",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=7.1.0",
+  "library_dependencies": [],
+  "suggests": {
+    "ext-posix": "*",
+    "drupal/qd_screenshottests": "Automated browser-based tests for development"
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Application performance monitoring",
+    "Health check endpoint"
+  ],
+  "keywords": [
+    "nagios",
+    "icinga",
+    "monitoring",
+    "health check",
+    "status page",
+    "uptime",
+    "check_drupal",
+    "hook_nagios",
+    "watchdog",
+    "cron monitoring",
+    "requirements",
+    "unique_id",
+    "user agent",
+    "NRPE"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "name": "Commerce Exchanger",
+  "data_name": "commerce_exchanger",
+  "description": "Commerce Core Exchange Rates",
+  "version": "2.0.x",
+  "package": "Commerce (Contrib)",
+  "composer_namespace": "drupal/commerce_exchanger",
+  "composer_requirements": {
+    "drupal/commerce": "^2.4 || ^3"
+  },
+  "dependent_modules": [
+    "commerce:commerce_price"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 1310,
+  "list_position": 1456,
+  "project_url": "https://www.drupal.org/project/commerce_exchanger",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "commerce_exchanger_provider"
+  ],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Currency conversion / exchange rates",
+    "Pricing / price lists"
+  ],
+  "keywords": [
+    "commerce",
+    "exchange rates",
+    "currency conversion",
+    "currency resolver",
+    "price conversion",
+    "manual rates",
+    "European Central Bank",
+    "ECB",
+    "Fixer",
+    "Currencylayer",
+    "TransferWise",
+    "Open Exchange Rates",
+    "commerce_exchange_rates",
+    "ExchangerProvider plugin",
+    "cron rates import"
+  ]
+}

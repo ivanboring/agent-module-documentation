@@ -1,0 +1,59 @@
+{
+  "name": "CrowdSec",
+  "data_name": "crowdsec",
+  "description": "CrowdSec integration.",
+  "version": "1.2.x",
+  "package": "Security",
+  "composer_namespace": "drupal/crowdsec",
+  "composer_requirements": {
+    "php": ">=8.3",
+    "crowdsec/remediation-engine": "^4.3",
+    "drupal/core": "^11.2 || ^12.0"
+  },
+  "dependent_modules": [],
+  "configure": "crowdsec.settings",
+  "core_version_requirement": "^11.2 || ^12.0",
+  "active_installs": 1095,
+  "list_position": 1434,
+  "project_url": "https://www.drupal.org/project/crowdsec",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.3",
+  "library_dependencies": [
+    "crowdsec/remediation-engine"
+  ],
+  "suggests": {},
+  "submodules": [
+    "eca_crowdsec"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "crowdsec_scenario"
+  ],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Intrusion prevention",
+    "Rate limiting / throttling",
+    "Spam prevention"
+  ],
+  "keywords": [
+    "crowdsec",
+    "security",
+    "bouncer",
+    "ip ban",
+    "blocklist",
+    "intrusion prevention",
+    "remediation",
+    "brute force",
+    "flood control",
+    "4xx scan",
+    "scenario",
+    "signal",
+    "CAPI",
+    "middleware",
+    "crowdsec_scenario"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "name": "Webp fallback image",
+  "data_name": "wpf",
+  "description": "Prepare fallback image for webp using responsive image.",
+  "version": "1.2.x",
+  "package": "Image",
+  "composer_namespace": "drupal/wpf",
+  "composer_requirements": {
+    "ext-gd": "*"
+  },
+  "dependent_modules": [
+    "file",
+    "responsive_image"
+  ],
+  "configure": "wpf.settings_form",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 1311,
+  "list_position": 1437,
+  "project_url": "https://www.drupal.org/project/wpf",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media",
+    "Performance"
+  ],
+  "subcategories": [
+    "Responsive images",
+    "Image toolkit / processing",
+    "Lazy loading"
+  ],
+  "keywords": [
+    "webp",
+    "jpg fallback",
+    "responsive image",
+    "image style",
+    "fallback image",
+    "GD",
+    "imagemagick",
+    "image derivative",
+    "wpf.settings",
+    "quality",
+    "srcset",
+    "browser compatibility",
+    "preprocess responsive_image"
+  ]
+}

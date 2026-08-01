@@ -1,0 +1,55 @@
+{
+  "name": "Simple Less",
+  "data_name": "ipless",
+  "description": "Simple Less css compilation.",
+  "version": "4.2.x",
+  "package": "Other",
+  "composer_namespace": "drupal/ipless",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "wikimedia/less.php": "^3.1 || ^4 || ^5",
+    "drupal/core": "^10 || ^11 || ^12"
+  },
+  "dependent_modules": [],
+  "configure": "system.performance_settings",
+  "core_version_requirement": "^10 || ^11 || ^12",
+  "active_installs": 1293,
+  "list_position": 1432,
+  "project_url": "https://www.drupal.org/project/ipless",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [
+    "wikimedia/less.php"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Theming",
+    "Performance"
+  ],
+  "subcategories": [
+    "CSS preprocessing (Sass/Less)",
+    "Critical CSS / CSS optimization"
+  ],
+  "keywords": [
+    "less",
+    "css",
+    "less.php",
+    "css compilation",
+    "preprocess",
+    "stylesheet",
+    "libraries.yml",
+    "system.performance",
+    "watch mode",
+    "sourcemap",
+    "dev mode",
+    "ipless:generate",
+    "hook_less_alter",
+    "asset library",
+    "wikimedia/less.php"
+  ]
+}

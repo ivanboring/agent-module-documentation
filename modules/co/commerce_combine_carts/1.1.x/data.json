@@ -1,0 +1,50 @@
+{
+  "name": "Commerce Combine Carts",
+  "data_name": "commerce_combine_carts",
+  "description": "Combines multiple carts so that users only ever have one.",
+  "version": "1.1.x",
+  "package": "Commerce",
+  "composer_namespace": "drupal/commerce_combine_carts",
+  "composer_requirements": {
+    "drupal/commerce": "*"
+  },
+  "dependent_modules": [
+    "commerce_cart"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": 1257,
+  "list_position": 1438,
+  "project_url": "https://www.drupal.org/project/commerce_combine_carts",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Cart management",
+    "Checkout customization"
+  ],
+  "keywords": [
+    "commerce",
+    "cart",
+    "combine carts",
+    "merge carts",
+    "single cart",
+    "one cart",
+    "cart provider",
+    "cart manager",
+    "OrderAssignEvent",
+    "hook_user_login",
+    "anonymous cart",
+    "order type",
+    "commerce_cart"
+  ]
+}
