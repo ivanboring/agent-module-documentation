@@ -1,0 +1,64 @@
+{
+  "name": "Markdown",
+  "data_name": "markdown",
+  "description": "Provides APIs and services to parse Markdown, a simple plain-text syntax, into valid HTML.",
+  "version": "3.1.x",
+  "package": "Markdown",
+  "composer_namespace": "drupal/markdown",
+  "composer_requirements": {
+    "composer/semver": "^1.0 || ^2.0 || ^3.0",
+    "ext-libxml": "*",
+    "ext-dom": "*"
+  },
+  "dependent_modules": [
+    "filter"
+  ],
+  "configure": "markdown.overview",
+  "core_version_requirement": "^10.4 || ^11",
+  "active_installs": null,
+  "list_position": 1487,
+  "project_url": "https://www.drupal.org/project/markdown",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "composer/semver",
+    "ext-libxml",
+    "ext-dom"
+  ],
+  "suggests": {
+    "league/commonmark": "The PHP CommonMark parser is a robust, highly-extensible Markdown parser for PHP based on the CommonMark and Github-Flavored Markdown specifications."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "markdown.parser",
+    "markdown.extension",
+    "markdown.allowed_html"
+  ],
+  "categories": [
+    "Content editing experience",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Text format filters",
+    "Twig / component libraries"
+  ],
+  "keywords": [
+    "markdown",
+    "commonmark",
+    "parsedown",
+    "php-markdown",
+    "text format",
+    "filter",
+    "twig markdown",
+    "parser",
+    "extension",
+    "allowed html",
+    "GFM",
+    "github flavored markdown",
+    "parse",
+    "render html"
+  ]
+}

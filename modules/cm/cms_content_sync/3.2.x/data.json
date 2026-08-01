@@ -1,0 +1,76 @@
+{
+  "name": "Content Sync (content-sync.io)",
+  "data_name": "cms_content_sync",
+  "description": "Provides the Drupal integration for using content-sync.io.",
+  "version": "3.2.x",
+  "package": "content-sync.io",
+  "composer_namespace": "drupal/cms_content_sync",
+  "composer_requirements": {
+    "php": ">=8.0.0",
+    "drupal/encrypt": "^3.0",
+    "drupal/real_aes": "^2.0",
+    "drupal/core": "^9 || ^10 || ^11",
+    "edge-box/sync-core": "^4.2.1"
+  },
+  "dependent_modules": [
+    "user",
+    "rest",
+    "serialization",
+    "encrypt",
+    "real_aes",
+    "menu_link_content"
+  ],
+  "configure": "cms_content_sync.site",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 948,
+  "list_position": 1466,
+  "project_url": "https://www.drupal.org/project/cms_content_sync",
+  "license": "GPL-2.0+",
+  "php_requirement": ">=8.0.0",
+  "library_dependencies": [
+    "edge-box/sync-core"
+  ],
+  "suggests": {},
+  "submodules": [
+    "cms_content_sync_custom_field_example",
+    "cms_content_sync_developer",
+    "cms_content_sync_draggableviews",
+    "cms_content_sync_health",
+    "cms_content_sync_migrate_acquia_content_hub",
+    "cms_content_sync_private_environment",
+    "cms_content_sync_simple_sitemap",
+    "cms_content_sync_views"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "cms_content_sync_entity_handler",
+    "cms_content_sync_field_handler"
+  ],
+  "categories": [
+    "Import and export",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Content migration / import",
+    "Deployment / release management"
+  ],
+  "keywords": [
+    "content sync",
+    "content-sync.io",
+    "content syndication",
+    "content staging",
+    "content deployment",
+    "sync core",
+    "flow",
+    "pool",
+    "push",
+    "pull",
+    "entity handler",
+    "field handler",
+    "multi-site",
+    "syndication",
+    "edge-box"
+  ]
+}

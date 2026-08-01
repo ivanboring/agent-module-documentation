@@ -1,0 +1,57 @@
+{
+  "name": "Entity Share Websub",
+  "data_name": "entity_share_websub",
+  "description": "Entity Share Websub implementation",
+  "version": "1.1.x",
+  "package": "Entity Share",
+  "composer_namespace": "drupal/entity_share_websub",
+  "composer_requirements": {
+    "drupal/entity_share": "^3.0@RC",
+    "drupal/views_custom_cache_tag": "^1.3"
+  },
+  "dependent_modules": [
+    "entity_share",
+    "views_custom_cache_tag"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": 856,
+  "list_position": 1476,
+  "project_url": "https://www.drupal.org/project/entity_share_websub",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "entity_share_websub_hub",
+    "entity_share_websub_subscriber"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Content syndication",
+    "REST / web services"
+  ],
+  "keywords": [
+    "entity share",
+    "websub",
+    "pubsubhubbub",
+    "content syndication",
+    "content replication",
+    "push updates",
+    "subscription",
+    "hub",
+    "publisher",
+    "subscriber",
+    "signature",
+    "X-Hub-Signature",
+    "jsonapi",
+    "content staging"
+  ]
+}

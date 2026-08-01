@@ -1,0 +1,50 @@
+{
+  "name": "Group Membership Request",
+  "data_name": "grequest",
+  "description": "Allows users to request access to Groups",
+  "version": "3.2.x",
+  "package": "Group",
+  "composer_namespace": "drupal/grequest",
+  "composer_requirements": {
+    "drupal/group": "^3.0",
+    "drupal/state_machine": "^1.0",
+    "drupal/core": "^10.3 || ^11"
+  },
+  "dependent_modules": [
+    "group",
+    "state_machine"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 1491,
+  "project_url": "https://www.drupal.org/project/grequest",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Groups & memberships",
+    "Workflow / state management"
+  ],
+  "keywords": [
+    "group",
+    "membership",
+    "request",
+    "join group",
+    "group relation",
+    "state_machine",
+    "approve",
+    "reject",
+    "pending members",
+    "group_membership_request"
+  ]
+}

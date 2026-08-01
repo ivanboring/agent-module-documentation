@@ -78,3 +78,15 @@ levels below the project root, so:
 viewing locally (where the site is running); they are intentionally absent from the pushed
 repo. How-to (and the container gotchas): [browser-screenshots.md](browser-screenshots.md).
 Skip for modules with no UI.
+
+## `security.md` (CVE-worthy only, incidental, LOCAL-ONLY)
+
+`modules/{ab}/{name}/{version}/security.md` is **git-ignored and never pushed** (`.gitignore`
+excludes `**/security.md` but keeps `agent/**/security.md` solution docs). It is written **rarely**
+and only **incidentally** — never audit. Create one ONLY if while reading the source you spot
+something that would plausibly warrant a real Drupal Security Advisory / CVE: a vuln actually
+exploitable by an actor who should not be able to (unauthenticated/low-priv RCE, SQLi, XSS, CSRF,
+access bypass, privilege escalation, arbitrary file read/write, or eval/unserialize/include of
+attacker-controlled input reachable without high privilege). Do NOT write about anything gated
+behind a trusted admin permission, dev-only tools (devel/webprofiler), secrets/keys at rest,
+SSRF/hardening/permission cautions, DoS, or info-disclosure NITs. If unsure it's CVE-worthy, omit.

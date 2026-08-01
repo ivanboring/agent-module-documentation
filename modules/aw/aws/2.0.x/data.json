@@ -1,0 +1,50 @@
+{
+  "name": "Amazon Web Services",
+  "data_name": "aws",
+  "description": "Provides a unified AWS profile management system.",
+  "version": "2.0.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/aws",
+  "composer_requirements": {
+    "aws/aws-sdk-php": "^3.54"
+  },
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^9.2 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 1496,
+  "project_url": "https://www.drupal.org/project/aws",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "aws/aws-sdk-php"
+  ],
+  "suggests": {
+    "drupal/encrypt": "Encrypt secret access keys stored in profile configuration."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Cloud services (AWS)",
+    "Secrets & key management"
+  ],
+  "keywords": [
+    "aws",
+    "amazon web services",
+    "aws-sdk-php",
+    "credentials",
+    "profile",
+    "iam role",
+    "sts assume role",
+    "region",
+    "s3",
+    "client factory",
+    "access key"
+  ]
+}

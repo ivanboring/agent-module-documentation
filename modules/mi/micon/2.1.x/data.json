@@ -1,0 +1,65 @@
+{
+  "name": "Micon",
+  "data_name": "micon",
+  "description": "An IcoMoon-based icon manager for Drupal.",
+  "version": "2.1.x",
+  "package": "Micon",
+  "composer_namespace": "drupal/micon",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "entity.micon.collection",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 1497,
+  "project_url": "https://www.drupal.org/project/micon",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/paragraphs": "Needed for micon_paragraphs.",
+    "drupal/linkit": "Needed for micon_linkit and micon_linkit_attributes.",
+    "drupal/link_attributes": "Needed for micon_linkit_attributes."
+  },
+  "submodules": [
+    "micon_ckeditor",
+    "micon_content_type",
+    "micon_link",
+    "micon_linkit",
+    "micon_linkit_attributes",
+    "micon_local_task",
+    "micon_menu",
+    "micon_paragraphs",
+    "micon_vocabulary"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "micon_icons"
+  ],
+  "categories": [
+    "Content display",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Icon management",
+    "SVG / vector images"
+  ],
+  "keywords": [
+    "micon",
+    "icon",
+    "icons",
+    "IcoMoon",
+    "Font Awesome",
+    "fa",
+    "icon manager",
+    "icon package",
+    "icon field",
+    "string_micon",
+    "svg",
+    "icon font",
+    "glyph",
+    "micon() twig",
+    "iconize"
+  ]
+}

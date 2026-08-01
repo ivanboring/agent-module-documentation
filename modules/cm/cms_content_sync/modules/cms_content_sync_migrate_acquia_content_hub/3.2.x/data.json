@@ -1,0 +1,43 @@
+{
+  "name": "CMS Content Sync - Migrate Acquia Content Hub",
+  "data_name": "cms_content_sync_migrate_acquia_content_hub",
+  "description": "Setup CMS Content Sync based on existing configurations of the Acquia Content Hub.",
+  "version": "3.2.x",
+  "package": "CMS Content Sync",
+  "composer_namespace": "drupal/cms_content_sync",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "cms_content_sync",
+    "acquia_contenthub"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 948,
+  "list_position": 1466,
+  "project_url": "https://www.drupal.org/project/cms_content_sync",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Content migration / import"
+  ],
+  "keywords": [
+    "content sync",
+    "acquia content hub",
+    "migration",
+    "migrate",
+    "pool",
+    "flow",
+    "content hub filter",
+    "drush"
+  ]
+}

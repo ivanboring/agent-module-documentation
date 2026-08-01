@@ -1,0 +1,54 @@
+{
+  "name": "Image Field Tokens",
+  "data_name": "imagefield_tokens",
+  "description": "Provides new widget type for Image field to allow to use tokens for filling Alt and Title image attributes.",
+  "version": "3.2.x",
+  "package": "Image",
+  "composer_namespace": "drupal/imagefield_tokens",
+  "composer_requirements": {
+    "drupal/token": "^1.5"
+  },
+  "dependent_modules": [
+    "token",
+    "image",
+    "media_library"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 1499,
+  "project_url": "https://www.drupal.org/project/imagefield_tokens",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/image_widget_crop": "Adds the imagefield_tokens_widget_crop widget (crop + tokens).",
+    "drupal/colorbox": "Adds the imagefield_tokens_colorbox formatter.",
+    "drupal/imce": "IMCE file browser support for the token widgets."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "File & media metadata",
+    "Token / placeholder replacement"
+  ],
+  "keywords": [
+    "image",
+    "alt text",
+    "title attribute",
+    "token",
+    "field widget",
+    "field formatter",
+    "image field",
+    "default value",
+    "media library",
+    "image_widget_crop",
+    "colorbox"
+  ]
+}

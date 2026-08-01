@@ -1,0 +1,57 @@
+{
+  "name": "Commerce Reporting",
+  "data_name": "commerce_reports",
+  "description": "Provides reporting capabilities for sales, products, customers and payment gateways.",
+  "version": "1.0.x",
+  "package": "Commerce (contrib)",
+  "composer_namespace": "drupal/commerce_reports",
+  "composer_requirements": {
+    "drupal/commerce": "^2.7 || ^3",
+    "drupal/core": "^9 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "commerce",
+    "commerce_price",
+    "commerce_order",
+    "views"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 1244,
+  "list_position": 1474,
+  "project_url": "https://www.drupal.org/project/commerce_reports",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "commerce_report_type"
+  ],
+  "categories": [
+    "E-commerce",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Order management",
+    "Dashboard / reporting"
+  ],
+  "keywords": [
+    "commerce",
+    "reports",
+    "reporting",
+    "sales report",
+    "order report",
+    "commerce_order_report",
+    "report type plugin",
+    "analytics",
+    "tax report",
+    "promotion report",
+    "purchased items",
+    "revenue",
+    "views"
+  ]
+}

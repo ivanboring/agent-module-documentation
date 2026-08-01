@@ -1,0 +1,54 @@
+{
+  "name": "Domain Access Entity",
+  "data_name": "domain_entity",
+  "description": "Defines Domain access for entities",
+  "version": "2.0.x",
+  "package": "Domain",
+  "composer_namespace": "drupal/domain_entity",
+  "composer_requirements": {
+    "drupal/domain": "^2.0@beta || ^3"
+  },
+  "dependent_modules": [
+    "domain",
+    "domain_access"
+  ],
+  "configure": "domain_entity.ui",
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": 1308,
+  "list_position": 1467,
+  "project_url": "https://www.drupal.org/project/domain_entity",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "domain_menu_access"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Multi-domain / affiliate sites",
+    "Field-level access control"
+  ],
+  "keywords": [
+    "domain",
+    "domain access",
+    "domain entity",
+    "affiliate",
+    "multi-domain",
+    "entity access",
+    "domain_access field",
+    "query alter",
+    "entity reference",
+    "domain source",
+    "per-domain content",
+    "access control",
+    "tableselect"
+  ]
+}
