@@ -1,0 +1,43 @@
+{
+  "name": "Allow site to be iframed",
+  "data_name": "allow_iframed_site",
+  "description": "Allows certain paths to be embedded in iframes. Watch out for clickjacking!",
+  "version": "3.0.x",
+  "package": "Security",
+  "composer_namespace": "drupal/allow_iframed_site",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "allow_iframed_site.settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 1088,
+  "list_position": 1523,
+  "project_url": "https://www.drupal.org/project/allow_iframed_site",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "HTTP security headers"
+  ],
+  "keywords": [
+    "iframe",
+    "iframed",
+    "embed",
+    "X-Frame-Options",
+    "clickjacking",
+    "framing",
+    "request path condition",
+    "response header",
+    "event subscriber",
+    "security header",
+    "same origin"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "Config Role Split",
+  "data_name": "config_role_split",
+  "description": "Config Role Split",
+  "version": "1.0.x",
+  "package": "Config",
+  "composer_namespace": "drupal/config_role_split",
+  "composer_requirements": {
+    "drupal/config_filter": "*"
+  },
+  "dependent_modules": [
+    "config_filter:config_filter"
+  ],
+  "configure": "entity.role_split.collection",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": 1262,
+  "list_position": 1507,
+  "project_url": "https://www.drupal.org/project/config_role_split",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Configuration management",
+    "Deployment / release management"
+  ],
+  "keywords": [
+    "config",
+    "configuration management",
+    "config filter",
+    "role",
+    "permissions",
+    "config split",
+    "role_split",
+    "split permissions",
+    "config import",
+    "config export",
+    "deployment",
+    "environment",
+    "user role"
+  ]
+}

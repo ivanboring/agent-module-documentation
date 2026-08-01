@@ -1,0 +1,48 @@
+{
+  "name": "Search API Stats",
+  "data_name": "search_api_stats",
+  "description": "Enabling the recording and presentation of statistics for the Search API module.",
+  "version": "1.0.x",
+  "package": "Search",
+  "composer_namespace": "drupal/search_api_stats",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "search_api"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": 1085,
+  "list_position": 1511,
+  "project_url": "https://www.drupal.org/project/search_api_stats",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "search_api_stats_block"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site search"
+  ],
+  "subcategories": [
+    "Search analytics / reporting"
+  ],
+  "keywords": [
+    "search api",
+    "search statistics",
+    "search analytics",
+    "search reports",
+    "query log",
+    "top search terms",
+    "popular searches",
+    "keywords",
+    "search_api_stats table",
+    "hook_search_api_results_alter",
+    "views base table",
+    "search logging"
+  ]
+}

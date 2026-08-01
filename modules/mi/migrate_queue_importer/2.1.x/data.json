@@ -1,0 +1,55 @@
+{
+  "name": "Migration queue importer",
+  "data_name": "migrate_queue_importer",
+  "description": "Provides Queue API base functionality to import migrations.",
+  "version": "2.1.x",
+  "package": "Migration",
+  "composer_namespace": "drupal/migrate_queue_importer",
+  "composer_requirements": {
+    "drupal/migrate_plus": ">=5.0",
+    "drupal/migrate_tools": ">=5.0"
+  },
+  "dependent_modules": [
+    "migrate_plus:migrate_plus (>=8.x-5.x)",
+    "migrate_tools:migrate_tools (>=8.x-5.x)"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 1068,
+  "list_position": 1510,
+  "project_url": "https://www.drupal.org/project/migrate_queue_importer",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Content migration / import",
+    "Migration tooling",
+    "Cron / task scheduling"
+  ],
+  "keywords": [
+    "migrate",
+    "migration",
+    "cron",
+    "queue",
+    "queue api",
+    "import",
+    "migrate_plus",
+    "migrate_tools",
+    "cron_migration",
+    "scheduled import",
+    "migrations_importer",
+    "interval",
+    "sync",
+    "update"
+  ]
+}

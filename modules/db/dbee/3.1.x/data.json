@@ -1,0 +1,54 @@
+{
+  "name": "DataBase Email Encryption",
+  "data_name": "dbee",
+  "description": "Encrypt user email addresses stored into the database for security reasons. This module does not alter user experience",
+  "version": "3.1.x",
+  "package": "Security",
+  "composer_namespace": "drupal/dbee",
+  "composer_requirements": {
+    "drupal/encrypt": "^3.1",
+    "drupal/real_aes": "^2.5"
+  },
+  "dependent_modules": [
+    "user",
+    "encrypt",
+    "real_aes"
+  ],
+  "configure": "entity.encryption_profile.collection",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 1196,
+  "list_position": 1516,
+  "project_url": "https://www.drupal.org/project/dbee",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Field encryption"
+  ],
+  "keywords": [
+    "email encryption",
+    "database encryption",
+    "user mail",
+    "encryption at rest",
+    "encrypt",
+    "real_aes",
+    "encryption profile",
+    "key",
+    "AES",
+    "GDPR",
+    "PII protection",
+    "users_field_data",
+    "mail column",
+    "init column",
+    "transparent encryption"
+  ]
+}

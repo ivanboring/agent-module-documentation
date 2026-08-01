@@ -1,0 +1,56 @@
+{
+  "name": "Geoblock",
+  "data_name": "geoblock",
+  "description": "A module to facilitate blocking resource access by IP address origin country.",
+  "version": "1.1.x",
+  "package": "Geoblock",
+  "composer_namespace": "drupal/geoblock",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "drupal/core": "^10.3 || ^11",
+    "league/iso3166": "^4.0"
+  },
+  "dependent_modules": [],
+  "configure": "geoblock.settings",
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": 1699,
+  "list_position": 1532,
+  "project_url": "https://www.drupal.org/project/geoblock",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [
+    "league/iso3166"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "geoblock_data_source"
+  ],
+  "categories": [
+    "Access control",
+    "Security"
+  ],
+  "subcategories": [
+    "IP address restriction",
+    "Intrusion prevention"
+  ],
+  "keywords": [
+    "geoblock",
+    "geoblocking",
+    "country block",
+    "geo restriction",
+    "IP address",
+    "country code",
+    "ISO 3166",
+    "allow list",
+    "block list",
+    "GeoIP",
+    "data source plugin",
+    "domestic use",
+    "HTTP method restriction",
+    "access by origin country"
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "name": "Commerce Recurring",
+  "data_name": "commerce_recurring",
+  "description": "Provides recurring billing for Drupal Commerce",
+  "version": "1.0.x",
+  "package": "Commerce (contrib)",
+  "composer_namespace": "drupal/commerce_recurring",
+  "composer_requirements": {
+    "drupal/advancedqueue": "^1.1",
+    "drupal/commerce": "^2.36 || ^3",
+    "drupal/state_machine": "^1.5"
+  },
+  "dependent_modules": [
+    "commerce:commerce",
+    "commerce:commerce_price",
+    "commerce:commerce_order",
+    "commerce:commerce_payment",
+    "state_machine:state_machine",
+    "advancedqueue:advancedqueue"
+  ],
+  "configure": "commerce_recurring.configuration",
+  "core_version_requirement": "^9.2 || ^10 || ^11",
+  "active_installs": 1483,
+  "list_position": 1540,
+  "project_url": "https://www.drupal.org/project/commerce_recurring",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "commerce_billing_schedule",
+    "commerce_subscription_type",
+    "commerce_prorater"
+  ],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Subscriptions / recurring billing",
+    "Invoicing / billing"
+  ],
+  "keywords": [
+    "commerce",
+    "recurring",
+    "subscription",
+    "subscriptions",
+    "billing",
+    "billing schedule",
+    "recurring billing",
+    "prepaid",
+    "postpaid",
+    "prorate",
+    "prorater",
+    "trial",
+    "dunning",
+    "renewal",
+    "advancedqueue",
+    "state_machine",
+    "recurring order"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "name": "Gemini Provider",
+  "data_name": "gemini_provider",
+  "description": "This enables the use of Gemini for AI module.",
+  "version": "1.0.x",
+  "package": "AI Providers",
+  "composer_namespace": "drupal/gemini_provider",
+  "composer_requirements": {
+    "drupal/ai": "^1.2",
+    "google-gemini-php/client": "^2.7"
+  },
+  "dependent_modules": [
+    "ai",
+    "key"
+  ],
+  "configure": "gemini_provider.settings_form",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 1264,
+  "list_position": 1517,
+  "project_url": "https://www.drupal.org/project/gemini_provider",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "google-gemini-php/client"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "AI provider abstraction / LLM gateway"
+  ],
+  "keywords": [
+    "gemini",
+    "google gemini",
+    "ai provider",
+    "llm",
+    "chat",
+    "embeddings",
+    "text to image",
+    "text to speech",
+    "speech to text",
+    "safety settings",
+    "api key",
+    "key module",
+    "drupal ai",
+    "gemini-2.5-flash",
+    "gemini-embedding-001"
+  ]
+}

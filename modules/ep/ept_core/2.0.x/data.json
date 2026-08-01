@@ -1,0 +1,66 @@
+{
+  "name": "Extra Paragraph Types (EPT): Core",
+  "data_name": "ept_core",
+  "description": "Base module for EPT paragraphs.",
+  "version": "2.0.x",
+  "package": "Extra Paragraph Types",
+  "composer_namespace": "drupal/ept_core",
+  "composer_requirements": {
+    "drupal/field_group": "^3.0 || ^4.0",
+    "drupal/media_library_form_element": "^2.0",
+    "drupal/paragraphs": "^1.0",
+    "levmyshkin/jquery-colorpicker": "^1.0",
+    "levmyshkin/jquery-mb-ytplayer": "^3.3.10",
+    "levmyshkin/parallaxjs": "^1.5",
+    "levmyshkin/vidbg": "^2.1.0"
+  },
+  "dependent_modules": [
+    "drupal:media",
+    "paragraphs:paragraphs",
+    "field_group:field_group",
+    "media_library_form_element:media_library_form_element"
+  ],
+  "configure": "ept_core.settings",
+  "core_version_requirement": "^10.1 || ^11 || ^12",
+  "active_installs": 1133,
+  "list_position": 1528,
+  "project_url": "https://www.drupal.org/project/ept_core",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "levmyshkin/jquery-colorpicker",
+    "levmyshkin/jquery-mb-ytplayer",
+    "levmyshkin/parallaxjs",
+    "levmyshkin/vidbg"
+  ],
+  "suggests": {},
+  "submodules": [
+    "ept_core_starterkit"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Structured content / page building"
+  ],
+  "keywords": [
+    "paragraphs",
+    "EPT",
+    "extra paragraph types",
+    "page building",
+    "ept_settings field",
+    "field_ept_settings",
+    "design options",
+    "background media",
+    "breakpoints",
+    "GenerateCSS",
+    "GenerateJS",
+    "paragraph settings",
+    "field_group",
+    "media library"
+  ]
+}

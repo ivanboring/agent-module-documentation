@@ -1,0 +1,63 @@
+{
+  "name": "Currency",
+  "data_name": "currency",
+  "description": "Provides currency metadata and exchange rates, and amount formatting.",
+  "version": "3.6.x",
+  "package": null,
+  "composer_namespace": "drupal/currency",
+  "composer_requirements": {
+    "ext-bcmath": "*",
+    "drupal/plugin": "^2.6",
+    "commercie/currency": "~1.3",
+    "commercie/currency-exchange": "~1.0"
+  },
+  "dependent_modules": [
+    "plugin:plugin"
+  ],
+  "configure": "entity.currency.collection",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 1154,
+  "list_position": 1525,
+  "project_url": "https://www.drupal.org/project/currency",
+  "license": "GPL-2.0",
+  "php_requirement": null,
+  "library_dependencies": [
+    "ext-bcmath",
+    "commercie/currency",
+    "commercie/currency-exchange"
+  ],
+  "suggests": {},
+  "submodules": [
+    "currency_intl"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "currency.amount_formatter",
+    "currency.exchange_rate_provider"
+  ],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Currency conversion / exchange rates"
+  ],
+  "keywords": [
+    "currency",
+    "money",
+    "exchange rate",
+    "currency conversion",
+    "amount formatting",
+    "ISO 4217",
+    "currency sign",
+    "fixed rates",
+    "currency_amount",
+    "currency_exchange filter",
+    "currency_localize filter",
+    "currency locale",
+    "commercie/currency",
+    "bcmath",
+    "config entity"
+  ]
+}
