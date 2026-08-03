@@ -1,0 +1,48 @@
+{
+  "name": "Copy Prevention",
+  "data_name": "copyprevention",
+  "description": "Makes copying from your site harder.",
+  "version": "2.0.x",
+  "package": "User interface",
+  "composer_namespace": "drupal/copyprevention",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "copyprevention.settings_form",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": 972,
+  "list_position": 1617,
+  "project_url": "https://www.drupal.org/project/copyprevention",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/robotstxt": "Required to write the image Disallow rules into robots.txt."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display",
+    "Search engine optimization (SEO)"
+  ],
+  "subcategories": [
+    "Content copy protection",
+    "Robots / crawler control"
+  ],
+  "keywords": [
+    "copy prevention",
+    "disable right click",
+    "disable text selection",
+    "disable copy",
+    "context menu",
+    "image protection",
+    "noimageindex",
+    "transparent gif overlay",
+    "anti-scraping",
+    "robots.txt images",
+    "X-Robots-Tag",
+    "copyprevention"
+  ]
+}

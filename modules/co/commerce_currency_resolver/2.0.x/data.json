@@ -1,0 +1,61 @@
+{
+  "name": "Commerce Currency Resolver",
+  "data_name": "commerce_currency_resolver",
+  "description": "Commerce 3 currency enhancements",
+  "version": "2.0.x",
+  "package": "Commerce (contrib)",
+  "composer_namespace": "drupal/commerce_currency_resolver",
+  "composer_requirements": {
+    "drupal/commerce": "^3.2",
+    "drupal/commerce_exchanger": "^2"
+  },
+  "dependent_modules": [
+    "commerce:commerce_price",
+    "commerce:commerce_order"
+  ],
+  "configure": "commerce_currency_resolver.configuration",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 1597,
+  "project_url": "https://www.drupal.org/project/commerce_currency_resolver",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "commerce_currency_resolver_cookie",
+    "commerce_currency_resolver_exchanger",
+    "commerce_currency_resolver_geoip",
+    "commerce_currency_resolver_language",
+    "commerce_currency_resolver_shipping",
+    "commerce_currency_resolver_smart_ip"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Currency conversion / exchange rates",
+    "Pricing / price lists"
+  ],
+  "keywords": [
+    "commerce",
+    "currency",
+    "multi-currency",
+    "currency resolver",
+    "price resolver",
+    "exchange rates",
+    "commerce_exchanger",
+    "price per currency",
+    "currency_source",
+    "field_price_",
+    "combo",
+    "auto conversion",
+    "order processor",
+    "current currency",
+    "commerce_price"
+  ]
+}

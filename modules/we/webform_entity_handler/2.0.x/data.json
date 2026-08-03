@@ -1,0 +1,52 @@
+{
+  "name": "Webform Entity Handler",
+  "data_name": "webform_entity_handler",
+  "description": "Create or update an entity with the webform submission values.",
+  "version": "2.0.x",
+  "package": "Webform",
+  "composer_namespace": "drupal/webform_entity_handler",
+  "composer_requirements": {
+    "drupal/webform": "^5.6||^6.0"
+  },
+  "dependent_modules": [
+    "webform"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": 964,
+  "list_position": 1614,
+  "project_url": "https://www.drupal.org/project/webform_entity_handler",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/token": "Provides a user interface for the Token API and some missing core tokens."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Forms and surveys",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Submission handling",
+    "Entity API"
+  ],
+  "keywords": [
+    "webform",
+    "webform handler",
+    "entity handler",
+    "create entity",
+    "update entity",
+    "submission to entity",
+    "map submission",
+    "node from webform",
+    "user from webform",
+    "token",
+    "loadByProperties",
+    "webform_entity_handler"
+  ]
+}

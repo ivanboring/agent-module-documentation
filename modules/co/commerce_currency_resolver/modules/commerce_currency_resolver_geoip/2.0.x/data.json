@@ -1,0 +1,45 @@
+{
+  "name": "Commerce Currency Resolver GeoIP",
+  "data_name": "commerce_currency_resolver_geoip",
+  "description": "Resolve currency in Commerce 3 via geolocation and geoip module",
+  "version": "2.0.x",
+  "package": "Commerce (contrib)",
+  "composer_namespace": "drupal/commerce_currency_resolver",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "commerce_currency_resolver:commerce_currency_resolver",
+    "geoip:geoip"
+  ],
+  "configure": "commerce_currency_resolver_geoip.currency_mapping",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 1597,
+  "project_url": "https://www.drupal.org/project/commerce_currency_resolver",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Currency conversion / exchange rates"
+  ],
+  "keywords": [
+    "commerce",
+    "currency",
+    "geoip",
+    "geolocation",
+    "country",
+    "currency resolver",
+    "country mapping",
+    "currency_mapping",
+    "matrix",
+    "logic"
+  ]
+}

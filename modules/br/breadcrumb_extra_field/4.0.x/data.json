@@ -1,0 +1,47 @@
+{
+  "name": "Breadcrumb Extra Field",
+  "data_name": "breadcrumb_extra_field",
+  "description": "Place breadcrumb between fields.",
+  "version": "4.0.x",
+  "package": "Field",
+  "composer_namespace": "drupal/breadcrumb_extra_field",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "drupal/core": "^10.2 || ^11"
+  },
+  "dependent_modules": [
+    "drupal:system",
+    "drupal:field"
+  ],
+  "configure": "breadcrumb_extra_field.settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": 1595,
+  "project_url": "https://www.drupal.org/project/breadcrumb_extra_field",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site structure"
+  ],
+  "subcategories": [
+    "Breadcrumbs"
+  ],
+  "keywords": [
+    "breadcrumb",
+    "extra field",
+    "pseudo field",
+    "manage display",
+    "entity display",
+    "hook_entity_extra_field_info",
+    "breadcrumb between fields",
+    "field position",
+    "navigation"
+  ]
+}

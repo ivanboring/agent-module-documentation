@@ -1,0 +1,65 @@
+{
+  "name": "Acquia Personalization (Perz)",
+  "data_name": "acquia_perz",
+  "description": "Provides integration with Content Index Engine for personalization and visitor data collection.",
+  "version": "4.1.x",
+  "package": "Acquia Perz",
+  "composer_namespace": "drupal/acquia_perz",
+  "composer_requirements": {
+    "php": "^7.4 || ^8",
+    "acquia/perz-api-php": "^0.1.5",
+    "drupal/acquia_connector": "^4.0",
+    "laminas/laminas-diactoros": "^1.8 || ^2.2 || ^3",
+    "symfony/psr-http-message-bridge": "^1.1.2 || ^2.0 || ^6.4 || ^7.0"
+  },
+  "dependent_modules": [
+    "acquia_connector",
+    "node",
+    "taxonomy",
+    "image"
+  ],
+  "configure": "acquia_perz.admin_settings",
+  "core_version_requirement": ">=9.2 <12",
+  "active_installs": 1011,
+  "list_position": 1599,
+  "project_url": "https://www.drupal.org/project/acquia_perz",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "^7.4 || ^8",
+  "library_dependencies": [
+    "acquia/perz-api-php",
+    "laminas/laminas-diactoros",
+    "symfony/psr-http-message-bridge"
+  ],
+  "suggests": {
+    "dms/phpunit-arraysubset-asserts": "Used for PHPUnit 8.0+ tests (Drupal 9)"
+  },
+  "submodules": [
+    "acquia_perz_push"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "A/B testing",
+    "Analytics & tracking"
+  ],
+  "keywords": [
+    "acquia",
+    "personalization",
+    "perz",
+    "lift",
+    "content index engine",
+    "cis",
+    "visitor data",
+    "decision api",
+    "view mode",
+    "udf",
+    "segments",
+    "acquia connector",
+    "content replacement"
+  ]
+}

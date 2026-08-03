@@ -1,0 +1,60 @@
+{
+  "name": "Flysystem Amazon S3",
+  "data_name": "flysystem_s3",
+  "description": "Provides an Amazon S3 plugin for Flysystem.",
+  "version": "3.0.x",
+  "package": "Flysystem",
+  "composer_namespace": "drupal/flysystem_s3",
+  "composer_requirements": {
+    "aws/aws-sdk-php": "^3.288.1",
+    "drupal/flysystem": "^2.3",
+    "league/flysystem": "^1.0.20",
+    "league/flysystem-aws-s3-v3": "^1.0, !=1.0.12, !=1.0.13",
+    "drupal/core": "^11"
+  },
+  "dependent_modules": [
+    "flysystem"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11",
+  "active_installs": 989,
+  "list_position": 1591,
+  "project_url": "https://www.drupal.org/project/flysystem_s3",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "aws/aws-sdk-php",
+    "league/flysystem",
+    "league/flysystem-aws-s3-v3"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Remote file storage",
+    "Cloud services (AWS)"
+  ],
+  "keywords": [
+    "flysystem",
+    "s3",
+    "amazon s3",
+    "aws",
+    "remote file storage",
+    "stream wrapper",
+    "cloud storage",
+    "cors upload",
+    "direct upload",
+    "bucket",
+    "IAM",
+    "settings.php flysystem",
+    "s3 adapter",
+    "offload files"
+  ]
+}
