@@ -1,0 +1,62 @@
+{
+  "name": "Courier",
+  "data_name": "courier",
+  "description": "Provides storage for various types of messages.",
+  "version": "2.1.x",
+  "package": null,
+  "composer_namespace": "drupal/courier",
+  "composer_requirements": {
+    "php": ">=7.4",
+    "drupal/dynamic_entity_reference": "^1 || ^2 || ^3 || ^4"
+  },
+  "dependent_modules": [
+    "text",
+    "dynamic_entity_reference"
+  ],
+  "configure": "courier.admin.settings",
+  "core_version_requirement": ">=9.5",
+  "active_installs": 672,
+  "list_position": 1979,
+  "project_url": "https://www.drupal.org/project/courier",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=7.4",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/token": "Adds an improved token-selection UI to message edit forms."
+  },
+  "submodules": [
+    "courier_system",
+    "courier_message_composer"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "identity_channel"
+  ],
+  "categories": [
+    "User engagement",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Messaging framework",
+    "Activity / notification messages",
+    "Email / mail delivery"
+  ],
+  "keywords": [
+    "courier",
+    "messaging",
+    "notifications",
+    "message framework",
+    "channel",
+    "template collection",
+    "identity",
+    "email",
+    "queue",
+    "tokens",
+    "rng",
+    "dynamic_entity_reference",
+    "identity_channel",
+    "multi-channel"
+  ]
+}

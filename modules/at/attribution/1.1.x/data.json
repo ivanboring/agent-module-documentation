@@ -1,0 +1,53 @@
+{
+  "name": "Attribution",
+  "data_name": "attribution",
+  "description": "Provides content attribution and license configuration.",
+  "version": "1.1.x",
+  "package": "Legal",
+  "composer_namespace": "drupal/attribution",
+  "composer_requirements": {
+    "composer/spdx-licenses": "^1.5",
+    "drupal/core": "^10.5 || ^11.2 || ^12"
+  },
+  "dependent_modules": [],
+  "configure": "entity.attribution_license.collection",
+  "core_version_requirement": "^10.5 || ^11.2 || ^12",
+  "active_installs": 595,
+  "list_position": 1981,
+  "project_url": "https://www.drupal.org/project/attribution",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "composer/spdx-licenses"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Fields",
+    "Field formatters"
+  ],
+  "keywords": [
+    "attribution",
+    "license",
+    "licensing",
+    "copyright",
+    "creative commons",
+    "spdx",
+    "author",
+    "source",
+    "field type",
+    "field formatter",
+    "field widget",
+    "block",
+    "legal",
+    "credit"
+  ]
+}

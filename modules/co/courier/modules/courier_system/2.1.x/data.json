@@ -1,0 +1,45 @@
+{
+  "name": "Courier system",
+  "data_name": "courier_system",
+  "description": "Replaces Drupal core module mails with Courier.",
+  "version": "2.1.x",
+  "package": null,
+  "composer_namespace": "drupal/courier",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "courier"
+  ],
+  "configure": "courier_system.config",
+  "core_version_requirement": ">=9.5",
+  "active_installs": 672,
+  "list_position": 1979,
+  "project_url": "https://www.drupal.org/project/courier",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "User engagement",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Email / mail delivery",
+    "Activity / notification messages"
+  ],
+  "keywords": [
+    "courier_system",
+    "courier",
+    "user mail",
+    "system mail",
+    "mail override",
+    "hook_mail_alter",
+    "password reset",
+    "account notification",
+    "template collection"
+  ]
+}

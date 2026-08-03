@@ -1,0 +1,48 @@
+{
+  "name": "Layout Builder Usage Reports",
+  "data_name": "layout_builder_usage_reports",
+  "description": "Lists all nodes using layout builder, blocks & block types being used in the layout and more.",
+  "version": "1.0.x",
+  "package": "Layout Builder",
+  "composer_namespace": "drupal/layout_builder_usage_reports",
+  "composer_requirements": {
+    "drupal/core": "^8.8 || ^9.0 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "layout_builder"
+  ],
+  "configure": "layout_builder_usage_reports.report_form",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": 611,
+  "list_position": 1959,
+  "project_url": "https://www.drupal.org/project/layout_builder_usage_reports",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Content display"
+  ],
+  "subcategories": [
+    "Dashboard / reporting",
+    "Layout Builder"
+  ],
+  "keywords": [
+    "layout builder",
+    "usage report",
+    "inline blocks",
+    "block types",
+    "paragraphs",
+    "components",
+    "audit",
+    "reports",
+    "node layout",
+    "content inventory"
+  ]
+}

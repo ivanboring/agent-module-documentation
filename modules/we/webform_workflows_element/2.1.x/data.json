@@ -1,0 +1,57 @@
+{
+  "name": "Webform Workflows Element",
+  "data_name": "webform_workflows_element",
+  "description": "Provides a webform element that hooks into the core Workflows module to allow transitioning submissions through workflow states.",
+  "version": "2.1.x",
+  "package": "Webform",
+  "composer_namespace": "drupal/webform_workflows_element",
+  "composer_requirements": {
+    "drupal/webform": "^6.3"
+  },
+  "dependent_modules": [
+    "workflows",
+    "webform"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 627,
+  "list_position": 1945,
+  "project_url": "https://www.drupal.org/project/webform_workflows_element",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "webform_workflows_element_maestro",
+    "webform_workflows_element_views"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Forms and surveys",
+    "Automation"
+  ],
+  "subcategories": [
+    "Submission handling",
+    "Workflow / state management"
+  ],
+  "keywords": [
+    "webform",
+    "workflow",
+    "workflows",
+    "submission state",
+    "transition",
+    "webform element",
+    "moderation",
+    "approval",
+    "state change email",
+    "webform handler",
+    "webform action",
+    "workflow type",
+    "submission lifecycle",
+    "review queue",
+    "secure token transition"
+  ]
+}
