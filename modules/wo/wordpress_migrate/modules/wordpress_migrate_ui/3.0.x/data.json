@@ -1,0 +1,47 @@
+{
+  "name": "WordPress Migrate UI",
+  "data_name": "wordpress_migrate_ui",
+  "description": "Wizard UI for configuring WordPress imports into Drupal",
+  "version": "3.0.x",
+  "package": "Migration",
+  "composer_namespace": "drupal/wordpress_migrate",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "ctools",
+    "wordpress_migrate",
+    "migrate_tools",
+    "file",
+    "taxonomy"
+  ],
+  "configure": "wordpress_migrate_ui.wizard.import",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 1326,
+  "list_position": 1751,
+  "project_url": "https://www.drupal.org/project/wordpress_migrate",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Content migration / import",
+    "Migration tooling"
+  ],
+  "keywords": [
+    "wordpress",
+    "migrate",
+    "wizard",
+    "ctools wizard",
+    "wxr upload",
+    "import ui",
+    "migrate_tools"
+  ]
+}

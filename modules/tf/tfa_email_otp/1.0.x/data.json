@@ -1,0 +1,52 @@
+{
+  "name": "TFA Email OTP Plugin",
+  "data_name": "tfa_email_otp",
+  "description": "A TFA Email OTP plugin working with TFA module.",
+  "version": "1.0.x",
+  "package": "Security",
+  "composer_namespace": "drupal/tfa_email_otp",
+  "composer_requirements": {
+    "php": "^8.1",
+    "drupal/tfa": "^1.4",
+    "drupal/encrypt": "^3.1",
+    "drupal/core": "^10.1 || ^11"
+  },
+  "dependent_modules": [
+    "tfa",
+    "encrypt"
+  ],
+  "configure": "tfa.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 728,
+  "list_position": 1778,
+  "project_url": "https://www.drupal.org/project/tfa_email_otp",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "^8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Two-factor authentication"
+  ],
+  "keywords": [
+    "tfa",
+    "two-factor authentication",
+    "2fa",
+    "otp",
+    "one-time password",
+    "email otp",
+    "tfa_email_otp",
+    "email code",
+    "encrypt",
+    "flood control",
+    "validation plugin",
+    "setup plugin"
+  ]
+}

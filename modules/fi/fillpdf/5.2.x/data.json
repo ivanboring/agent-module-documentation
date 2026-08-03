@@ -1,0 +1,63 @@
+{
+  "name": "FillPDF",
+  "data_name": "fillpdf",
+  "description": "Allows users to populate PDF forms from website data.",
+  "version": "5.2.x",
+  "package": "Other",
+  "composer_namespace": "drupal/fillpdf",
+  "composer_requirements": {
+    "drupal/core": "^10.3 || ^11.0",
+    "drupal/token": "^1.0"
+  },
+  "dependent_modules": [
+    "file",
+    "options",
+    "serialization",
+    "views",
+    "token"
+  ],
+  "configure": "fillpdf.settings",
+  "core_version_requirement": "^10.3 || ^11.0",
+  "active_installs": 837,
+  "list_position": 1767,
+  "project_url": "https://www.drupal.org/project/fillpdf",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "pdf_backend",
+    "fillpdf_action"
+  ],
+  "categories": [
+    "Content display",
+    "Import and export"
+  ],
+  "subcategories": [
+    "PDF generation",
+    "Data export"
+  ],
+  "keywords": [
+    "pdf",
+    "fillpdf",
+    "pdf form",
+    "acroform",
+    "fill pdf",
+    "pdftk",
+    "fillpdf service",
+    "localserver",
+    "template",
+    "xfdf",
+    "token",
+    "webform",
+    "entity to pdf",
+    "merge",
+    "flatten",
+    "pdf encryption",
+    "field mapping"
+  ]
+}

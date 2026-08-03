@@ -1,0 +1,50 @@
+{
+  "name": "Xray Audit Insights",
+  "data_name": "xray_audit_insight",
+  "description": "Generates insights from Xray Audit reports and displays warnings in the Drupal Status Report.",
+  "version": "3.0.x",
+  "package": "Audit",
+  "composer_namespace": "drupal/xray_audit",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "node",
+    "xray_audit"
+  ],
+  "configure": "xray_audit_insight.settings_form",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 800,
+  "list_position": 1784,
+  "project_url": "https://www.drupal.org/project/xray_audit",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "xray_audit_insight"
+  ],
+  "categories": [
+    "Administration tools",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Dashboard / reporting",
+    "Debugging & inspection"
+  ],
+  "keywords": [
+    "xray audit",
+    "insights",
+    "status report",
+    "hook_requirements",
+    "warnings",
+    "excessive revisions",
+    "table size",
+    "internal page cache",
+    "views not cached",
+    "unused bundles",
+    "insight plugin"
+  ]
+}

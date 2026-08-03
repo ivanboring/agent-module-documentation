@@ -1,0 +1,44 @@
+{
+  "name": "Registration Confirm Email Address",
+  "data_name": "reg_confirm_email",
+  "description": "Adds a confirm email address field under email address field on registration form.",
+  "version": "2.3.x",
+  "package": null,
+  "composer_namespace": "drupal/reg_confirm_email",
+  "composer_requirements": {
+    "php": ">=5.6.0"
+  },
+  "dependent_modules": [],
+  "configure": "entity.user.admin_form",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 780,
+  "list_position": 1783,
+  "project_url": "https://www.drupal.org/project/reg_confirm_email",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=5.6.0",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "User registration"
+  ],
+  "keywords": [
+    "registration",
+    "confirm email",
+    "double opt-in field",
+    "email confirmation",
+    "user register form",
+    "conf_mail",
+    "logintoboggan",
+    "typo prevention",
+    "account settings",
+    "two email fields"
+  ]
+}

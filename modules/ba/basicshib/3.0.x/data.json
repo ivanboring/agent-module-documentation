@@ -1,0 +1,61 @@
+{
+  "name": "BasicShib",
+  "data_name": "basicshib",
+  "description": "BasicShib Shibboleth authentication",
+  "version": "3.0.x",
+  "package": "Authentication",
+  "composer_namespace": "drupal/basicshib",
+  "composer_requirements": {
+    "drupal/core": "^10.0 || ^11.0"
+  },
+  "dependent_modules": [],
+  "configure": "basicshib.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 874,
+  "list_position": 1772,
+  "project_url": "https://www.drupal.org/project/basicshib",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "user_provider",
+    "auth_filter",
+    "grouper"
+  ],
+  "categories": [
+    "Access control",
+    "Security"
+  ],
+  "subcategories": [
+    "External authentication",
+    "User registration",
+    "Groups & memberships"
+  ],
+  "keywords": [
+    "shibboleth",
+    "SAML",
+    "SSO",
+    "single sign-on",
+    "InCommon",
+    "Grouper",
+    "external authentication",
+    "eppn",
+    "Shib-Session-ID",
+    "isMemberOf",
+    "attribute mapping",
+    "auto-provisioning",
+    "role mapping",
+    "authorization",
+    "user_provider plugin",
+    "auth_filter plugin",
+    "grouper plugin",
+    "REMOTE_USER",
+    "SP",
+    "service provider"
+  ]
+}

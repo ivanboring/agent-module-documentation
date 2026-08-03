@@ -1,0 +1,50 @@
+{
+  "name": "Exif",
+  "data_name": "exif",
+  "description": "Display image metadata (exif and iptc).",
+  "version": "2.7.x",
+  "package": "Media",
+  "composer_namespace": "drupal/exif",
+  "composer_requirements": {
+    "drupal/core": "^9 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "file",
+    "image",
+    "taxonomy"
+  ],
+  "configure": "exif.config",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 1032,
+  "list_position": 1745,
+  "project_url": "https://www.drupal.org/project/exif",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "File & media metadata"
+  ],
+  "keywords": [
+    "exif",
+    "iptc",
+    "xmp",
+    "image metadata",
+    "photography",
+    "field widget",
+    "exiftool",
+    "gps",
+    "camera",
+    "jpeg",
+    "taxonomy",
+    "metadata extraction"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "name": "WordPress Migrate Support",
+  "data_name": "wordpress_migrate",
+  "description": "Support for importing WordPress sites into Drupal",
+  "version": "3.0.x",
+  "package": "Migration",
+  "composer_namespace": "drupal/wordpress_migrate",
+  "composer_requirements": {
+    "php": ">=8.2",
+    "drupal/migrate_plus": "^6.0.9",
+    "drupal/ctools": "^3 || ^4",
+    "drupal/pathauto": "^1.13",
+    "drupal/migrate_tools": "~6.0"
+  },
+  "dependent_modules": [
+    "migrate_plus",
+    "pathauto"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.5 || ^11",
+  "active_installs": 1326,
+  "list_position": 1751,
+  "project_url": "https://www.drupal.org/project/wordpress_migrate",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.2",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "wordpress_migrate_ui"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Content migration / import",
+    "Migration tooling"
+  ],
+  "keywords": [
+    "wordpress",
+    "migrate",
+    "migration",
+    "wxr",
+    "import",
+    "blog",
+    "migrate_plus",
+    "migrate_tools",
+    "posts",
+    "pages",
+    "comments",
+    "attachments",
+    "authors"
+  ]
+}
