@@ -1,0 +1,50 @@
+{
+  "name": "Rollbar",
+  "data_name": "rollbar",
+  "description": "Integration with Rollbar",
+  "version": "2.1.x",
+  "package": "Services",
+  "composer_namespace": "drupal/rollbar",
+  "composer_requirements": {
+    "rollbar/rollbar": "^4.0",
+    "drupal/core": "^10 || ^11"
+  },
+  "dependent_modules": [],
+  "configure": "rollbar.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 732,
+  "list_position": 1708,
+  "project_url": "https://www.drupal.org/project/rollbar",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "rollbar/rollbar"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Error tracking & monitoring",
+    "Application performance monitoring"
+  ],
+  "keywords": [
+    "rollbar",
+    "error tracking",
+    "monitoring",
+    "logging",
+    "psr logger",
+    "exception",
+    "javascript errors",
+    "watchdog",
+    "scrub fields",
+    "person tracking",
+    "observability"
+  ]
+}

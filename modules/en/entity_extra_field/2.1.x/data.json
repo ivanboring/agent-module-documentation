@@ -1,0 +1,55 @@
+{
+  "name": "Entity Extra Field",
+  "data_name": "entity_extra_field",
+  "description": "Expose various extra fields on any entity display.",
+  "version": "2.1.x",
+  "package": "Field",
+  "composer_namespace": "drupal/entity_extra_field",
+  "composer_requirements": {
+    "ext-json": "*"
+  },
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 787,
+  "list_position": 1716,
+  "project_url": "https://www.drupal.org/project/entity_extra_field",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "entity_extra_field_ui"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "extra_field_type"
+  ],
+  "categories": [
+    "Content display",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Fields",
+    "Field formatters",
+    "Structured content / page building"
+  ],
+  "keywords": [
+    "extra field",
+    "pseudo field",
+    "entity display",
+    "manage display",
+    "form display",
+    "block field",
+    "views field",
+    "token field",
+    "twig field",
+    "entity link",
+    "sdc component",
+    "condition plugin",
+    "extra_field_type",
+    "hook_entity_extra_field_info"
+  ]
+}

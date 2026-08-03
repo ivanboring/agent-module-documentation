@@ -1,0 +1,53 @@
+{
+  "name": "S3 File System CORS Upload",
+  "data_name": "s3fs_cors",
+  "description": "Provides a widget that allows users to upload files directly to S3 from their browser.",
+  "version": "1.2.x",
+  "package": null,
+  "composer_namespace": "drupal/s3fs_cors",
+  "composer_requirements": {
+    "drupal/s3fs": "^3.0",
+    "drupal/token": "^1.0"
+  },
+  "dependent_modules": [
+    "file",
+    "s3fs",
+    "token"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 954,
+  "list_position": 1710,
+  "project_url": "https://www.drupal.org/project/s3fs_cors",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media",
+    "Integrations"
+  ],
+  "subcategories": [
+    "File uploads",
+    "Remote file storage",
+    "Cloud services (AWS)"
+  ],
+  "keywords": [
+    "s3fs",
+    "s3",
+    "cors",
+    "direct upload",
+    "browser upload",
+    "aws",
+    "presigned",
+    "file widget",
+    "managed file",
+    "sts",
+    "signature v4"
+  ]
+}

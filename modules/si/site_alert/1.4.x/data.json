@@ -1,0 +1,48 @@
+{
+  "name": "Site Alert",
+  "data_name": "site_alert",
+  "description": "Allows site admins to display a site-wide alert to all users.",
+  "version": "1.4.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/site_alert",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "datetime_range",
+    "options"
+  ],
+  "configure": "entity.site_alert.collection",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": 1252,
+  "list_position": 1744,
+  "project_url": "https://www.drupal.org/project/site_alert",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "User engagement"
+  ],
+  "subcategories": [
+    "Activity / notification messages"
+  ],
+  "keywords": [
+    "site alert",
+    "banner",
+    "notification",
+    "maintenance message",
+    "site-wide alert",
+    "severity",
+    "scheduled alert",
+    "site_alert block",
+    "ajax refresh",
+    "dismissible",
+    "downtime notice",
+    "content entity"
+  ]
+}

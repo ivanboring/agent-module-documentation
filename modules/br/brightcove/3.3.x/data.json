@@ -1,0 +1,74 @@
+{
+  "name": "Brightcove",
+  "data_name": "brightcove",
+  "description": "Brightcove Video Connect",
+  "version": "3.3.x",
+  "package": "Brightcove",
+  "composer_namespace": "drupal/brightcove",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "ext-curl": "*",
+    "ext-json": "*",
+    "ext-pdo": "*",
+    "brightcove/api": "~2.2",
+    "drupal/inline_entity_form": "^3.0@RC",
+    "drupal/time_formatter": "^2.0",
+    "drupal/token": "^1.15"
+  },
+  "dependent_modules": [
+    "datetime",
+    "image",
+    "inline_entity_form",
+    "link",
+    "options",
+    "path",
+    "time_formatter",
+    "taxonomy",
+    "token",
+    "views"
+  ],
+  "configure": "entity.brightcove_api_client.collection",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 833,
+  "list_position": 1706,
+  "project_url": "https://www.drupal.org/project/brightcove",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [
+    "brightcove/api"
+  ],
+  "suggests": {},
+  "submodules": [
+    "brightcove_proxy",
+    "brightcove_gallery",
+    "media_brightcove"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Video embedding",
+    "Media sources"
+  ],
+  "keywords": [
+    "brightcove",
+    "video",
+    "video cloud",
+    "video connect",
+    "oauth",
+    "cms api",
+    "dynamic ingest",
+    "playlist",
+    "text track",
+    "player",
+    "subscription",
+    "ingestion callback",
+    "notification callback",
+    "video cms"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "name": "Social Feed",
+  "data_name": "socialfeed",
+  "description": "Provides users an option to easily fetch feeds from Facebook, X (formerly Twitter), or Instagram and then display them accordingly using block.",
+  "version": "4.0.x",
+  "package": null,
+  "composer_namespace": "drupal/socialfeed",
+  "composer_requirements": {
+    "php": ">=8.2",
+    "noweh/twitter-api-v2-php": "^3.7",
+    "facebook/php-business-sdk": "^24.0",
+    "nesbot/carbon": "^2.59 || ^3.0"
+  },
+  "dependent_modules": [],
+  "configure": "socialfeed.configuration",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 890,
+  "list_position": 1740,
+  "project_url": "https://www.drupal.org/project/socialfeed",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.2",
+  "library_dependencies": [
+    "noweh/twitter-api-v2-php",
+    "facebook/php-business-sdk",
+    "nesbot/carbon"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "Content display"
+  ],
+  "subcategories": [
+    "Social network integration",
+    "Block enhancements"
+  ],
+  "keywords": [
+    "facebook",
+    "twitter",
+    "x",
+    "instagram",
+    "social feed",
+    "social media block",
+    "graph api",
+    "oauth",
+    "bearer token",
+    "page access token",
+    "post block",
+    "social network integration"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "name": "Social Auth LinkedIn",
+  "data_name": "social_auth_linkedin",
+  "description": "Social Auth integration for LinkedIn.",
+  "version": "4.0.x",
+  "package": "Social",
+  "composer_namespace": "drupal/social_auth_linkedin",
+  "composer_requirements": {
+    "league/oauth2-linkedin": "^5.0",
+    "drupal/social_auth": "^4.1",
+    "drupal/core": "^9.5 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "social_auth"
+  ],
+  "configure": "social_auth_linkedin.settings_form",
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": 878,
+  "list_position": 1733,
+  "project_url": "https://www.drupal.org/project/social_auth_linkedin",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "league/oauth2-linkedin"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Integrations"
+  ],
+  "subcategories": [
+    "External authentication",
+    "Social network integration"
+  ],
+  "keywords": [
+    "social auth",
+    "linkedin",
+    "oauth2",
+    "oauth",
+    "social login",
+    "social api",
+    "sso",
+    "external authentication",
+    "league/oauth2-linkedin",
+    "network plugin"
+  ]
+}
