@@ -1,0 +1,47 @@
+{
+  "name": "SMS User",
+  "data_name": "sms_user",
+  "description": "Provides integration between the SMS Framework and Drupal users.",
+  "version": "2.4.x",
+  "package": "SMS Framework",
+  "composer_namespace": "drupal/sms_user",
+  "composer_requirements": {
+    "drupal/user": "^8.5",
+    "drupal/smsframework": "^1.0"
+  },
+  "dependent_modules": [
+    "sms",
+    "user"
+  ],
+  "configure": "sms_user.options",
+  "core_version_requirement": "^11",
+  "active_installs": null,
+  "list_position": 1798,
+  "project_url": "https://www.drupal.org/project/smsframework",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "User engagement",
+    "Access control"
+  ],
+  "subcategories": [
+    "SMS / text messaging",
+    "User registration"
+  ],
+  "keywords": [
+    "sms",
+    "user",
+    "account registration",
+    "active hours",
+    "incoming message",
+    "phone number",
+    "smsframework"
+  ]
+}

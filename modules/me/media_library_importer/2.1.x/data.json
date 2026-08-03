@@ -1,0 +1,52 @@
+{
+  "name": "Media Library Importer",
+  "data_name": "media_library_importer",
+  "description": "A module to import media files in a directory into media library.",
+  "version": "2.1.x",
+  "package": "media",
+  "composer_namespace": "drupal/media_library_importer",
+  "composer_requirements": {
+    "drupal/queue_ui": "^3.1"
+  },
+  "dependent_modules": [
+    "media",
+    "media_library",
+    "queue_ui"
+  ],
+  "configure": "media_library_importer.configuration",
+  "core_version_requirement": "^9.2 || ^10 | ^11",
+  "active_installs": 795,
+  "list_position": 1788,
+  "project_url": "https://www.drupal.org/project/media_library_importer",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "media_image_exif_importer"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media",
+    "Import and export"
+  ],
+  "subcategories": [
+    "Content migration / import",
+    "File uploads",
+    "File browser / management"
+  ],
+  "keywords": [
+    "media",
+    "media library",
+    "import",
+    "bulk import",
+    "files",
+    "queue",
+    "drush",
+    "media entities",
+    "exif"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "name": "HubSpot Webform integration",
+  "data_name": "hubspot",
+  "description": "Provides HubSpot leads API integration with Webform and Drupal. Works with Hubspots OAuth 2 implementation",
+  "version": "3.0.x",
+  "package": null,
+  "composer_namespace": "drupal/hubspot",
+  "composer_requirements": {
+    "hubspot/hubspot-php": "^5.3",
+    "psr/http-message": "^1.1 || ^2.0"
+  },
+  "dependent_modules": [
+    "webform"
+  ],
+  "configure": "hubspot.admin_settings",
+  "core_version_requirement": "^10.1 || ^11 || ^12",
+  "active_installs": 806,
+  "list_position": 1808,
+  "project_url": "https://www.drupal.org/project/hubspot",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "hubspot/hubspot-php",
+    "psr/http-message"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "Forms and surveys"
+  ],
+  "subcategories": [
+    "CRM integration",
+    "Analytics & tracking",
+    "Submission handling"
+  ],
+  "keywords": [
+    "hubspot",
+    "crm",
+    "leads",
+    "webform",
+    "oauth2",
+    "forms api",
+    "tracking code",
+    "marketing",
+    "webform handler",
+    "contacts",
+    "legal consent",
+    "subscriptions"
+  ]
+}

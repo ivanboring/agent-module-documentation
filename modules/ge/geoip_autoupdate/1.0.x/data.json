@@ -1,0 +1,48 @@
+{
+  "name": "GeoIP Auto-Update",
+  "data_name": "geoip_autoupdate",
+  "description": "Automatically updates the MaxMind GeoIP database on cron using direct download.",
+  "version": "1.0.x",
+  "package": "GeoIP",
+  "composer_namespace": "drupal/geoip_autoupdate",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "geoip"
+  ],
+  "configure": "geoip_autoupdate.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 603,
+  "list_position": 1805,
+  "project_url": "https://www.drupal.org/project/geoip_autoupdate",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Geospatial / location",
+    "Cron / task scheduling"
+  ],
+  "keywords": [
+    "geoip",
+    "maxmind",
+    "geolite2",
+    "geolocation",
+    "ip geolocation",
+    "database update",
+    "cron",
+    "mmdb",
+    "private filesystem",
+    "GeoLocator",
+    "local_private",
+    "country lookup"
+  ]
+}

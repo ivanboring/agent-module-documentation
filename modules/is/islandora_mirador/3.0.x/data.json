@@ -1,0 +1,53 @@
+{
+  "name": "Islandora Mirador",
+  "data_name": "islandora_mirador",
+  "description": "Configuration for a Mirador Block",
+  "version": "3.0.x",
+  "package": "Islandora",
+  "composer_namespace": "drupal/islandora_mirador",
+  "composer_requirements": {
+    "drupal/islandora": "^2"
+  },
+  "dependent_modules": [
+    "block",
+    "islandora_iiif",
+    "token"
+  ],
+  "configure": "islandora_mirador.miradorconfig",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 637,
+  "list_position": 1785,
+  "project_url": "https://www.drupal.org/project/islandora_mirador",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "islandora_mirador"
+  ],
+  "categories": [
+    "Media",
+    "Content display"
+  ],
+  "subcategories": [
+    "Media embedding",
+    "PDF viewer",
+    "Field formatters"
+  ],
+  "keywords": [
+    "islandora",
+    "mirador",
+    "IIIF",
+    "manifest",
+    "image viewer",
+    "text overlay",
+    "hOCR",
+    "block",
+    "field formatter",
+    "digital repository"
+  ]
+}

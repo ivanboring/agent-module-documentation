@@ -1,0 +1,42 @@
+{
+  "name": "Entity Reference Integrity Enforce",
+  "data_name": "entity_reference_integrity_enforce",
+  "description": "Enforce reference integrity on entities.",
+  "version": "2.0.x",
+  "package": "Entity Reference Integrity",
+  "composer_namespace": "drupal/entity_reference_integrity",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "entity_reference_integrity"
+  ],
+  "configure": "entity_reference_integrity_enforce.settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": 1803,
+  "project_url": "https://www.drupal.org/project/entity_reference_integrity",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Content deletion protection",
+    "Entity reference tracking"
+  ],
+  "keywords": [
+    "entity reference",
+    "referential integrity",
+    "delete protection",
+    "enforce",
+    "predelete",
+    "delete action",
+    "jsonapi"
+  ]
+}

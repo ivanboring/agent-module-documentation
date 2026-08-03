@@ -1,0 +1,53 @@
+{
+  "name": "JSON-RPC 2.0",
+  "data_name": "jsonrpc",
+  "description": "Infrastructure for JSON-RPC 2.0 compliant web services.",
+  "version": "3.0.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/jsonrpc",
+  "composer_requirements": {
+    "php": "^8.3",
+    "e0ipso/shaper": "^1.2.1"
+  },
+  "dependent_modules": [],
+  "configure": "jsonrpc.settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 747,
+  "list_position": 1789,
+  "project_url": "https://www.drupal.org/project/jsonrpc",
+  "license": "GPL-2.0+",
+  "php_requirement": "^8.3",
+  "library_dependencies": [
+    "e0ipso/shaper"
+  ],
+  "suggests": {},
+  "submodules": [
+    "jsonrpc_core",
+    "jsonrpc_discovery"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "jsonrpc_method"
+  ],
+  "categories": [
+    "Decoupled",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "REST / web services",
+    "Plugin system"
+  ],
+  "keywords": [
+    "jsonrpc",
+    "json-rpc",
+    "rpc",
+    "web services",
+    "api",
+    "method plugin",
+    "shaper",
+    "batch requests",
+    "decoupled"
+  ]
+}

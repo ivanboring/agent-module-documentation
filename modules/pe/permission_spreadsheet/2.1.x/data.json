@@ -1,0 +1,54 @@
+{
+  "name": "Permission Spreadsheet",
+  "data_name": "permission_spreadsheet",
+  "description": "Provides features to import/export permission via spreadsheet.",
+  "version": "2.1.x",
+  "package": "Utility",
+  "composer_namespace": "drupal/permission_spreadsheet",
+  "composer_requirements": {
+    "phpoffice/phpspreadsheet": "^1 || ^2 || ^3"
+  },
+  "dependent_modules": [
+    "file",
+    "user"
+  ],
+  "configure": "permission_spreadsheet.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 760,
+  "list_position": 1806,
+  "project_url": "https://www.drupal.org/project/permission_spreadsheet",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "phpoffice/phpspreadsheet"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export",
+    "Access control",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "User roles & permissions",
+    "Data export"
+  ],
+  "keywords": [
+    "permissions",
+    "roles",
+    "spreadsheet",
+    "xlsx",
+    "csv",
+    "ods",
+    "tsv",
+    "import",
+    "export",
+    "phpspreadsheet",
+    "bulk permissions",
+    "copy permissions"
+  ]
+}
