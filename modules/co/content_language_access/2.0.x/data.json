@@ -1,0 +1,44 @@
+{
+  "name": "Content Language Access",
+  "data_name": "content_language_access",
+  "description": "Provides access checking of the current language of the site against the language of the content.",
+  "version": "2.0.x",
+  "package": "Access control",
+  "composer_namespace": "drupal/content_language_access",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "language",
+    "node"
+  ],
+  "configure": "content_language_access.admin_form",
+  "core_version_requirement": "^9.1 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 1646,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/content_language_access",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Language-based access control"
+  ],
+  "keywords": [
+    "language",
+    "access control",
+    "multilingual",
+    "node access",
+    "content language",
+    "language negotiation",
+    "domain language",
+    "403"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "name": "Piwik PRO",
+  "data_name": "piwik_pro",
+  "description": "Allows your site to be tracked by Piwik PRO.",
+  "version": "1.4.x",
+  "package": "Statistics",
+  "composer_namespace": "drupal/piwik_pro",
+  "composer_requirements": {
+    "php": "^8.1",
+    "drupal/core": "^9 || ^10 || ^11",
+    "drupal/csp": "^2.2",
+    "drupal/key": "^1.19"
+  },
+  "dependent_modules": [
+    "path_alias"
+  ],
+  "configure": "piwik_pro.admin_settings_form",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 928,
+  "list_position": 1633,
+  "project_url": "https://www.drupal.org/project/piwik_pro",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "^8.1",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/csp": "Provides a nonce for the tracking snippet under a Content-Security-Policy."
+  },
+  "submodules": [
+    "piwik_pro_dashboard"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Analytics & tracking",
+    "Analytics / tag management"
+  ],
+  "keywords": [
+    "piwik pro",
+    "analytics",
+    "tag manager",
+    "tracking snippet",
+    "container",
+    "privacy analytics",
+    "dataLayer",
+    "csp nonce",
+    "visitor tracking",
+    "not matomo"
+  ]
+}

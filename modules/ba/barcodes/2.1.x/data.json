@@ -1,0 +1,81 @@
+{
+  "name": "Barcodes",
+  "data_name": "barcodes",
+  "description": "Tools for using Barcodes",
+  "version": "2.1.x",
+  "installed_release": "2.1.1",
+  "release_stability": "stable",
+  "package": "Content display",
+  "composer_namespace": "drupal/barcodes",
+  "composer_requirements": {
+    "tecnickcom/tc-lib-barcode": "^2.0"
+  },
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 955,
+  "list_position": 1627,
+  "project_url": "https://www.drupal.org/project/barcodes",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "tecnickcom/tc-lib-barcode"
+  ],
+  "suggests": {
+    "drupal/token": "Token replacement inside barcode data/values"
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_config_entities": [],
+  "provides_plugin_types": [],
+  "provides_render_elements": [],
+  "provides_param_converters": [],
+  "provides_hooks": [],
+  "consumes_plugin_types": [
+    "field.formatter (barcode)",
+    "block (barcode)"
+  ],
+  "provides_field_formatters": [
+    "barcode (email, integer, link, string, telephone, text, text_long, text_with_summary, bigint, uuid)"
+  ],
+  "provides_blocks": [
+    "barcode (admin_label: Barcode)"
+  ],
+  "provides_twig_filters": [
+    "barcode (Drupal\\barcodes\\Template\\Barcode; is_safe: html)"
+  ],
+  "provides_theme_hooks": [
+    "barcode",
+    "barcode__{type} (one per barcode type, e.g. barcode__qrcode, barcode__c128)"
+  ],
+  "provides_drush_command_list": [
+    "barcodes:generate (alias generate-barcode)",
+    "barcodes:formats (alias barcodes-formats)"
+  ],
+  "ecosystem_note": "A display/output module wrapping the tecnickcom/tc-lib-barcode PHP library. It exposes barcode rendering four ways over the SAME generator: (1) a 'barcode' FIELD FORMATTER for text-ish field types, (2) a 'barcode' BLOCK plugin with a free-text (token-aware) value, (3) a 'barcode' TWIG FILTER for arbitrary strings in templates, and (4) two DRUSH commands (barcodes:generate, barcodes:formats). All four accept the same knobs: type (40+ symbologies incl. QRCODE, C128, EAN13, DATAMATRIX, PDF417, AZTEC), format (SVG default in code / config, plus PNG data-URI, HTMLDIV, UNICODE, BINARY grid), color, width, height, and four paddings, plus a show_value toggle. Output is produced by Com\\Tecnick\\Barcode\\Barcode::getBarcodeObj() and emitted as getSvgCode(), a base64 PNG <img>, getHtmlDiv(), or an ASCII/unicode grid. Values are run through the Token service before encoding (field/block use entity-context tokens). Ships NO permissions and NO config entities; formatter/block settings are stored on the view-display / block config. Defines ~40 theme hooks (barcode + barcode__{type}) and a matching per-type CSS library, but the templates are near-identical thin wrappers that print the pre-rendered barcode markup.",
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Field formatters"
+  ],
+  "keywords": [
+    "barcode",
+    "barcodes",
+    "qrcode",
+    "qr code",
+    "field formatter",
+    "block",
+    "twig filter",
+    "svg",
+    "ean13",
+    "code128",
+    "datamatrix",
+    "pdf417",
+    "aztec",
+    "tc-lib-barcode",
+    "content display"
+  ]
+}

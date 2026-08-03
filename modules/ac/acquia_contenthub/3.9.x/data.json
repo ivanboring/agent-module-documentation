@@ -1,0 +1,69 @@
+{
+  "name": "Acquia ContentHub",
+  "data_name": "acquia_contenthub",
+  "description": "Module allowing Drupal sites to connect to Acquia Content Hub.",
+  "version": "3.9.x",
+  "package": "Acquia ContentHub",
+  "composer_namespace": "drupal/acquia_contenthub",
+  "composer_requirements": {
+    "acquia/content-hub-php": "^3.9.0",
+    "drupal/depcalc": "^1.23",
+    "spatie/ssl-certificate": "1.21 || 1.22.1 || 2.6.9"
+  },
+  "dependent_modules": [
+    "depcalc",
+    "system"
+  ],
+  "configure": "acquia_contenthub.admin_settings",
+  "core_version_requirement": "^9.4.15 || ^10 || ^11",
+  "active_installs": 855,
+  "list_position": 1628,
+  "project_url": "https://www.drupal.org/project/acquia_contenthub",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "acquia/content-hub-php",
+    "spatie/ssl-certificate"
+  ],
+  "suggests": {},
+  "submodules": [
+    "acquia_contenthub_curation",
+    "acquia_contenthub_dashboard",
+    "acquia_contenthub_metatag",
+    "acquia_contenthub_moderation",
+    "acquia_contenthub_publisher",
+    "acquia_contenthub_s3",
+    "acquia_contenthub_site_health",
+    "acquia_contenthub_subscriber",
+    "acquia_contenthub_translations",
+    "acquia_contenthub_unsubscribe"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "file_scheme_handler"
+  ],
+  "categories": [
+    "Content editing experience",
+    "Developer tools",
+    "Import and export"
+  ],
+  "subcategories": [
+    "Content syndication"
+  ],
+  "keywords": [
+    "content hub",
+    "acquia",
+    "content syndication",
+    "publish",
+    "subscribe",
+    "cdf",
+    "webhook",
+    "hmac",
+    "entity export",
+    "entity import",
+    "depcalc",
+    "multi-site content"
+  ]
+}

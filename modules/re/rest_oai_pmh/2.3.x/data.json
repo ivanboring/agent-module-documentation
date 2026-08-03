@@ -1,0 +1,75 @@
+{
+  "name": "REST OAI-PMH",
+  "data_name": "rest_oai_pmh",
+  "description": "Exposes entities as Dublin Core in an OAI-PMH endpoint using Views, REST, and a metadata mapping module of your choice.",
+  "version": "2.3.x",
+  "installed_release": "2.3.3",
+  "release_stability": "stable",
+  "package": "Web services",
+  "composer_namespace": "drupal/rest_oai_pmh",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "views",
+    "rest"
+  ],
+  "configure": "rest_oai_pmh.rest_oai_pmh_settings_form",
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": 782,
+  "list_position": 1630,
+  "project_url": "https://www.drupal.org/project/rest_oai_pmh",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "discoverygarden/dgi_image_discovery": "Provides image discovery support for RDF thumbnail URL callbacks."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_config_entities": [],
+  "provides_plugin_types": [
+    "oai_metadata_map",
+    "oai_cache"
+  ],
+  "provides_render_elements": [],
+  "provides_param_converters": [],
+  "provides_hooks": [
+    "hook_rest_oai_pmh_metadata_template_alter"
+  ],
+  "consumes_plugin_types": [
+    "rest_resource",
+    "views_display",
+    "queue_worker"
+  ],
+  "provides_route_defaults": [],
+  "provides_base_classes": [
+    "Drupal\\rest_oai_pmh\\Plugin\\OaiMetadataMapBase (abstract; build() renders a Twig template into an OAI metadata record)",
+    "Drupal\\rest_oai_pmh\\Plugin\\OaiCacheBase (abstract; clearCache() reacts to entity CUD to keep the index fresh)"
+  ],
+  "ecosystem_note": "Publishes Drupal content as a standards-compliant OAI-PMH 2.0 repository at /oai/request (path configurable). It does NOT expose entities directly: you select one or more Views (each an 'Entity Reference' display) on the settings form; a cron/queue/batch job walks those Views and materializes an index in three DB tables (rest_oai_pmh_record, rest_oai_pmh_set, rest_oai_pmh_member). Each selected View becomes an OAI 'set' (or, if the display has an entity-reference contextual filter, each referenced entity becomes a set). At harvest time the OaiPmh REST resource plugin (id oai_pmh) answers the six OAI verbs (Identify, ListMetadataFormats, ListSets, ListIdentifiers, ListRecords, GetRecord) by querying the index, loading each entity, and running it through a configured OaiMetadataMap plugin (Dublin Core via RDF or Metatag, MODS, or raw). Access is re-checked live per entity (entity->access('view')) and per field (fieldItemList->access()) as the requesting user, so unpublished/unprivileged content in an indexed View is filtered out at request time. The endpoint is a normal REST resource: enabling the module installs it but a bare install returns 403 until the 'restful get oai_pmh' permission is granted (typically to anonymous, since OAI harvesters are anonymous). Two pluggable subsystems: OaiMetadataMap (how a Drupal entity becomes an XML metadata record) and OaiCache (liberal vs conservative index-invalidation strategy). Resumption tokens (paging) are stored in the rest_oai_pmh.resumption_token keyvalue store and expire after a configurable number of seconds.",
+  "categories": [
+    "Web services",
+    "Content"
+  ],
+  "subcategories": [
+    "REST / web services",
+    "Metadata / syndication"
+  ],
+  "keywords": [
+    "oai-pmh",
+    "oai",
+    "dublin core",
+    "oai_dc",
+    "mods",
+    "metadata harvesting",
+    "repository",
+    "digital library",
+    "views",
+    "rest",
+    "sets",
+    "resumptionToken",
+    "interoperability",
+    "web services"
+  ]
+}

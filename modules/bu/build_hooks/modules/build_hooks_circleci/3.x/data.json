@@ -1,0 +1,58 @@
+{
+  "name": "Build Hooks for Circle CI",
+  "data_name": "build_hooks_circleci",
+  "description": "Supports creating frontend environments connected to circle ci environments.",
+  "version": "3.x",
+  "installed_release": "3.3.3",
+  "release_stability": "stable",
+  "package": "Build hooks",
+  "composer_namespace": null,
+  "composer_requirements": {},
+  "dependent_modules": [
+    "build_hooks"
+  ],
+  "configure": "build_hooks_circleci.build_hooks_circle_ci_config_form",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": 914,
+  "list_position": 1645,
+  "project_url": "https://www.drupal.org/project/build_hooks",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_config_entities": [],
+  "provides_plugin_types": [],
+  "provides_render_elements": [],
+  "provides_param_converters": [],
+  "provides_hooks": [],
+  "consumes_plugin_types": [
+    "frontend_environment"
+  ],
+  "provides_plugins": [
+    "circleci (FrontendEnvironment: Circle CI (V1) — uses site-wide API key via CircleCiManager)",
+    "circleciv2 (FrontendEnvironment: Circle CI (V2) — per-environment token, custom pipeline parameters)"
+  ],
+  "ecosystem_note": "Submodule of build_hooks. Adds two FrontendEnvironment plugins for CircleCI. 'circleci' (V1) triggers a build via CircleCI API v1.1 (POST project/github/{project}/build) using a site-wide API key from build_hooks_circleci.settings.circleci_api_key, passed as the ?circle-token= URL query parameter (CircleCiManager service). 'circleciv2' (V2) triggers a pipeline via API v2 (POST project/gh/{project}/pipeline) with a PER-ENVIRONMENT token stored on the environment entity, HTTP Basic auth, branch/tag reference, and arbitrary typed (string/boolean/integer) pipeline parameters; it also lists recent workflows on the deploy form. Secrets: V1 key and V2 token are stored plaintext in config and the V1 key is placed in the request URL — see security.md.",
+  "categories": [
+    "Decoupled",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Static site generation",
+    "Deployment / release management"
+  ],
+  "keywords": [
+    "circleci",
+    "circle ci",
+    "pipeline",
+    "build hook",
+    "deploy",
+    "ci",
+    "frontend environment",
+    "api token"
+  ]
+}

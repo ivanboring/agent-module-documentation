@@ -1,0 +1,56 @@
+{
+  "name": "Build Hooks for Netlify",
+  "data_name": "build_hooks_netlify",
+  "description": "Supports creating frontend environments connected to Netlify.",
+  "version": "3.x",
+  "installed_release": "3.3.3",
+  "release_stability": "stable",
+  "package": "Build hooks",
+  "composer_namespace": null,
+  "composer_requirements": {},
+  "dependent_modules": [
+    "build_hooks"
+  ],
+  "configure": "build_hooks_netlify.build_hooks_netlify_ci_config_form",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": 914,
+  "list_position": 1645,
+  "project_url": "https://www.drupal.org/project/build_hooks",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_config_entities": [],
+  "provides_render_elements": [],
+  "provides_param_converters": [],
+  "provides_hooks": [],
+  "consumes_plugin_types": [
+    "frontend_environment"
+  ],
+  "provides_plugin_types": [],
+  "provides_plugins": [
+    "netlify (FrontendEnvironment: Netlify)"
+  ],
+  "ecosystem_note": "Submodule of build_hooks. Adds one FrontendEnvironment plugin ('netlify'). Triggering a deploy simply POSTs (no auth) to the per-environment Netlify build-hook URL — the build-hook URL is itself the secret. Separately, a site-wide Netlify personal access token (build_hooks_netlify.settings.netlify_api_key) + the environment's api_id are used ONLY to fetch and display the recent-deploys table on the deploy form, via Netlify API (GET /sites/{api_id}/deploys?access_token=...); the token is placed in the URL query string. NetlifyManager service. Secrets: token plaintext in config, rendered into the settings form textfield, and passed in the list-deploys URL — see security.md.",
+  "categories": [
+    "Decoupled",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Static site generation",
+    "Deployment / release management"
+  ],
+  "keywords": [
+    "netlify",
+    "build hook",
+    "deploy",
+    "static site",
+    "jamstack",
+    "frontend environment",
+    "access token"
+  ]
+}

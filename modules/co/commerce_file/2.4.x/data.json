@@ -1,0 +1,49 @@
+{
+  "name": "Commerce File",
+  "data_name": "commerce_file",
+  "description": "Provides the ability to sell access to files.",
+  "version": "2.4.x",
+  "package": "Commerce (contrib)",
+  "composer_namespace": "drupal/commerce_file",
+  "composer_requirements": {
+    "drupal/core": "^10.3 || ^11",
+    "drupal/commerce_license": "^2.0-alpha20 || ^3"
+  },
+  "dependent_modules": [
+    "commerce_license",
+    "file"
+  ],
+  "configure": "commerce_file.settings_form",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 1641,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/commerce_file",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Licensing / paid access",
+    "File downloads"
+  ],
+  "keywords": [
+    "commerce",
+    "digital products",
+    "file download",
+    "licensed files",
+    "sell files",
+    "download limit",
+    "commerce license",
+    "private files",
+    "paid downloads"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "name": "Build Hooks for Github",
+  "data_name": "build_hooks_github",
+  "description": "Supports triggering workflows in Github.",
+  "version": "3.x",
+  "installed_release": "3.3.3",
+  "release_stability": "stable",
+  "package": "Build hooks",
+  "composer_namespace": null,
+  "composer_requirements": {},
+  "dependent_modules": [
+    "build_hooks"
+  ],
+  "configure": "build_hooks_github.build_hooks_github_ci_config_form",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": 914,
+  "list_position": 1645,
+  "project_url": "https://www.drupal.org/project/build_hooks",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_config_entities": [],
+  "provides_plugin_types": [],
+  "provides_render_elements": [],
+  "provides_param_converters": [],
+  "provides_hooks": [],
+  "consumes_plugin_types": [
+    "frontend_environment"
+  ],
+  "provides_plugins": [
+    "github (FrontendEnvironment: Github)"
+  ],
+  "ecosystem_note": "Submodule of build_hooks. Adds one FrontendEnvironment plugin ('github') that triggers a GitHub workflow/dispatch by POSTing to a per-environment build-hook URL (typically a GitHub API dispatches endpoint) with body {\"ref\":\"<branch>\"} and an Authorization: token <PAT> header. The personal access token is a single site-wide value in build_hooks_github.settings.github_access_token. No manager/service and no recent-builds table (unlike bitbucket/circleci/netlify). Secret: the PAT is stored plaintext in config and rendered into the settings form textfield — see security.md.",
+  "categories": [
+    "Decoupled",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Static site generation",
+    "Deployment / release management"
+  ],
+  "keywords": [
+    "github",
+    "github actions",
+    "workflow",
+    "repository dispatch",
+    "build hook",
+    "deploy",
+    "personal access token"
+  ]
+}

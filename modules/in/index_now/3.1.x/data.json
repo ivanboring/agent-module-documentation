@@ -1,0 +1,56 @@
+{
+  "name": "Index Now",
+  "data_name": "index_now",
+  "description": "Submit requests to search engines when content has been created, updated or deleted on your website.",
+  "version": "3.1.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/index_now",
+  "composer_requirements": {
+    "php": "^8.0",
+    "drupal/core": "^10.3 || ^11.0",
+    "league/commonmark": "^2.0"
+  },
+  "dependent_modules": [
+    "config_split",
+    "path_alias"
+  ],
+  "configure": "index_now.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 1662,
+  "part_of": null,
+  "project_url": "https://www.drupal.org/project/index_now",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "^8.0",
+  "library_dependencies": [
+    "league/commonmark"
+  ],
+  "suggests": {},
+  "submodules": [
+    "index_now_commerce"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "index_now_entity_indexer"
+  ],
+  "categories": [
+    "Search engine optimization (SEO)"
+  ],
+  "subcategories": [
+    "Search engine indexing"
+  ],
+  "keywords": [
+    "indexnow",
+    "seo",
+    "search engine",
+    "bing",
+    "yandex",
+    "crawling",
+    "reindex",
+    "content notification",
+    "web services",
+    "entity indexer"
+  ]
+}

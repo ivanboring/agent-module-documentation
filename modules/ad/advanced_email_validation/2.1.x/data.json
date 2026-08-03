@@ -1,0 +1,53 @@
+{
+  "name": "Advanced Email Validation",
+  "data_name": "advanced_email_validation",
+  "description": "User account email validation using MX records and lists of free or disposable emails (configurable).",
+  "version": "2.1.x",
+  "package": "User",
+  "composer_namespace": "drupal/advanced_email_validation",
+  "composer_requirements": {
+    "stymiee/email-validator": "^1.1.4"
+  },
+  "dependent_modules": [
+    "user"
+  ],
+  "configure": "advanced_email_validation.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 923,
+  "list_position": 1636,
+  "project_url": "https://www.drupal.org/project/advanced_email_validation",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [
+    "stymiee/email-validator"
+  ],
+  "suggests": {
+    "drupal/webform": "Adds a Webform handler to apply the same validation rules to webform email fields."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Access control"
+  ],
+  "subcategories": [
+    "Spam control",
+    "User registration",
+    "Submission handling"
+  ],
+  "keywords": [
+    "email validation",
+    "mx record",
+    "disposable email",
+    "free email",
+    "banned domain",
+    "user registration",
+    "webform validation",
+    "email blocklist",
+    "spam signup prevention",
+    "stymiee email-validator"
+  ]
+}

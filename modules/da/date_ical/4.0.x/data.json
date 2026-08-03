@@ -1,0 +1,51 @@
+{
+  "name": "Date iCal",
+  "data_name": "date_ical",
+  "description": "It provides a plugin for Views to enable exporting your sites calendar as an iCal feed",
+  "version": "4.0.x",
+  "package": "Views",
+  "composer_namespace": "drupal/date_ical",
+  "composer_requirements": {
+    "drupal/core": "^9 || ^10 || ^11 || ^12",
+    "kigkonsult/icalcreator": ">=2.40"
+  },
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11 || ^12",
+  "active_installs": 959,
+  "list_position": 1657,
+  "project_url": "https://www.drupal.org/project/date_ical",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "kigkonsult/icalcreator"
+  ],
+  "suggests": {
+    "drupal/feeds": "Enables importing external .ics feeds via the bundled iCal Feeds parser",
+    "drupal/ckeditor5": "Core CKEditor 5; required for the 'Add to calendar' editor button (bundled)"
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Calendar / iCal export"
+  ],
+  "keywords": [
+    "date",
+    "ical",
+    "ics",
+    "calendar",
+    "vcalendar",
+    "views feed",
+    "webcal",
+    "add to calendar",
+    "recurrence",
+    "rrule",
+    "feeds import"
+  ]
+}

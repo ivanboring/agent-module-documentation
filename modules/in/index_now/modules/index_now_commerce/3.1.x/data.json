@@ -1,0 +1,47 @@
+{
+  "name": "Index Now Commerce",
+  "data_name": "index_now_commerce",
+  "description": "Submit requests to search engines when commerce products have been created, updated or deleted on your website.",
+  "version": "3.1.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/index_now_commerce",
+  "composer_requirements": {
+    "drupal/commerce": "^3.3"
+  },
+  "dependent_modules": [
+    "commerce_product",
+    "path_alias",
+    "index_now"
+  ],
+  "configure": "index_now.settings",
+  "core_version_requirement": "^10.3 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": 1662,
+  "part_of": "index_now",
+  "project_url": "https://www.drupal.org/project/index_now",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Search engine optimization (SEO)"
+  ],
+  "subcategories": [
+    "Search engine indexing"
+  ],
+  "keywords": [
+    "indexnow",
+    "commerce",
+    "product",
+    "store",
+    "seo",
+    "search engine",
+    "entity indexer",
+    "reindex"
+  ]
+}

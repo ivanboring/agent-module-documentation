@@ -1,0 +1,56 @@
+{
+  "name": "build_hooks_bitbucket",
+  "data_name": "build_hooks_bitbucket",
+  "description": "Trigger bitbucket pipelines builds that deploy a frontend environment.",
+  "version": "3.x",
+  "installed_release": "3.3.3",
+  "release_stability": "stable",
+  "package": "Build hooks",
+  "composer_namespace": null,
+  "composer_requirements": {},
+  "dependent_modules": [
+    "build_hooks"
+  ],
+  "configure": "build_hooks_bitbucket.settings_form",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": 914,
+  "list_position": 1645,
+  "project_url": "https://www.drupal.org/project/build_hooks",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_config_entities": [],
+  "provides_plugin_types": [],
+  "provides_render_elements": [],
+  "provides_param_converters": [],
+  "provides_hooks": [],
+  "consumes_plugin_types": [
+    "frontend_environment"
+  ],
+  "provides_plugins": [
+    "bitbucket (FrontendEnvironment: Bitbucket Pipelines Build)"
+  ],
+  "ecosystem_note": "Submodule of build_hooks. Adds one FrontendEnvironment plugin ('bitbucket') that triggers a Bitbucket Pipelines run for a workspace/repo, branch-or-tag ref, and custom/pull-request pipeline selector, by POSTing to the Bitbucket 2.0 REST API (api.bitbucket.org/2.0/repositories/{workspace}/{slug}/pipelines/). Auth is HTTP Basic (Bitbucket username + app password) stored site-wide in build_hooks_bitbucket.settings and passed via Guzzle 'auth'. The deploy form also renders a table of recent pipeline runs fetched from the API. Service: build_hooks_bitbucket.bitbucket_manager (BitbucketManager). deploymentWasTriggered() treats only HTTP 201 as success.",
+  "categories": [
+    "Decoupled",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Static site generation",
+    "Deployment / release management"
+  ],
+  "keywords": [
+    "bitbucket",
+    "bitbucket pipelines",
+    "build hook",
+    "deploy",
+    "ci",
+    "frontend environment",
+    "app password"
+  ]
+}
