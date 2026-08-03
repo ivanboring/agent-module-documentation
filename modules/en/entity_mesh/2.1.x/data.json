@@ -1,0 +1,64 @@
+{
+  "name": "Entity Mesh",
+  "data_name": "entity_mesh",
+  "description": "Provides a visual way to analyze content connections and links on your site.",
+  "version": "2.1.x",
+  "package": "Entity",
+  "composer_namespace": "drupal/entity_mesh",
+  "composer_requirements": {
+    "drupal/core": "^11",
+    "drupal/entity_registry": "^1",
+    "drupal/entity_render_context": "^1.0",
+    "drupal/views_data_export": "^1.5"
+  },
+  "dependent_modules": [
+    "node",
+    "views",
+    "views_data_export",
+    "language",
+    "media",
+    "entity_render_context",
+    "entity_registry"
+  ],
+  "configure": "entity_mesh.settings_form",
+  "core_version_requirement": "^11",
+  "active_installs": null,
+  "list_position": 1943,
+  "project_url": "https://www.drupal.org/project/entity_mesh",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Developer tools",
+    "Content display"
+  ],
+  "subcategories": [
+    "Entity reference tracking",
+    "Dashboard / reporting",
+    "Charts / data visualization"
+  ],
+  "keywords": [
+    "entity_mesh",
+    "links",
+    "link analysis",
+    "broken links",
+    "content connections",
+    "entity relationships",
+    "d3",
+    "visualization",
+    "graph",
+    "menu",
+    "report",
+    "views",
+    "entity_registry",
+    "orphan pages",
+    "internal links"
+  ]
+}

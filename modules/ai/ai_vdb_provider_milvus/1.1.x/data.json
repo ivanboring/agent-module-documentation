@@ -1,0 +1,52 @@
+{
+  "name": "Milvus/Zilliz VDB Provider",
+  "data_name": "ai_vdb_provider_milvus",
+  "description": "This enables the use of Milvus (local) or Zilliz (cloud) Vector Database in the AI module.",
+  "version": "1.1.x",
+  "package": "AI Vector Database Providers (Experimental)",
+  "composer_namespace": "drupal/ai_vdb_provider_milvus",
+  "composer_requirements": {
+    "drupal/ai": "^1.2",
+    "drupal/key": "^1.18"
+  },
+  "dependent_modules": [
+    "ai:ai",
+    "ai:ai_search",
+    "key:key"
+  ],
+  "configure": "ai_vdb_provider_milvus.settings_form",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 702,
+  "list_position": 1930,
+  "project_url": "https://www.drupal.org/project/ai_vdb_provider_milvus",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "Vector database / embeddings storage",
+    "AI provider abstraction / LLM gateway"
+  ],
+  "keywords": [
+    "milvus",
+    "zilliz",
+    "vector database",
+    "vdb",
+    "vdb provider",
+    "ai search",
+    "embeddings",
+    "rag",
+    "similarity search",
+    "collection",
+    "ai",
+    "key"
+  ]
+}

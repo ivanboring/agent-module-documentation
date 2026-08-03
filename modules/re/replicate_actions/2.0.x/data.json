@@ -1,0 +1,49 @@
+{
+  "name": "Replicate Actions",
+  "data_name": "replicate_actions",
+  "description": "Provides some additional actions for Replicate.",
+  "version": "2.0.x",
+  "package": "Entity",
+  "composer_namespace": "drupal/replicate_actions",
+  "composer_requirements": {
+    "drupal/replicate": "^1.0",
+    "drupal/replicate_ui": "^1.0",
+    "drupal/core": "^10.1 || ^11 || ^12"
+  },
+  "dependent_modules": [
+    "replicate",
+    "replicate_ui"
+  ],
+  "configure": "replicate_actions.settings",
+  "core_version_requirement": "^10.1 || ^11 || ^12",
+  "active_installs": 653,
+  "list_position": 1919,
+  "project_url": "https://www.drupal.org/project/replicate_actions",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Content cloning"
+  ],
+  "keywords": [
+    "replicate",
+    "clone",
+    "duplicate",
+    "content cloning",
+    "unpublish clone",
+    "content moderation",
+    "draft state",
+    "group",
+    "edit redirect",
+    "event subscriber"
+  ]
+}

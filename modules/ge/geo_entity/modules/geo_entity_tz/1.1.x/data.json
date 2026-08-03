@@ -1,0 +1,47 @@
+{
+  "name": "Geo Entity: Time zone",
+  "data_name": "geo_entity_tz",
+  "description": "Populate Timezone field from Geofield location using Geonames.",
+  "version": "1.1.x",
+  "package": "Geo",
+  "composer_namespace": "drupal/geo_entity",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "geofield",
+    "tzfield",
+    "geo_entity"
+  ],
+  "configure": "geo_entity_tz.settings_form",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 1941,
+  "project_url": "https://www.drupal.org/project/geo_entity",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Geospatial / location",
+    "Date/time fields"
+  ],
+  "keywords": [
+    "geo_entity_tz",
+    "timezone",
+    "geonames",
+    "tzfield",
+    "geofield",
+    "coordinates",
+    "lookup",
+    "experimental",
+    "web service"
+  ]
+}

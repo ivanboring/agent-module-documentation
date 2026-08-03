@@ -1,0 +1,53 @@
+{
+  "name": "Choices.js",
+  "data_name": "choices",
+  "description": "Improves select elements using Choices.",
+  "version": "2.2.x",
+  "package": "User interface",
+  "composer_namespace": "drupal/choices",
+  "composer_requirements": {
+    "justinrainbow/json-schema": "^5.2 || ^6.6"
+  },
+  "dependent_modules": [],
+  "configure": "choices.admin",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 662,
+  "list_position": 1923,
+  "project_url": "https://www.drupal.org/project/choices",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": {
+    "justinrainbow/json-schema": "^5.2 || ^6.6"
+  },
+  "suggests": {
+    "drupal/facets": "Needed for submodule",
+    "bower-asset/choices.js": "Required to use drupal/choices."
+  },
+  "submodules": [
+    "choices_facets"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience",
+    "Content display"
+  ],
+  "subcategories": [
+    "Form widgets / select UI"
+  ],
+  "keywords": [
+    "choices",
+    "choices.js",
+    "select",
+    "dropdown",
+    "multiselect",
+    "field widget",
+    "autocomplete",
+    "tags",
+    "searchable select",
+    "select2 alternative",
+    "cdn"
+  ]
+}

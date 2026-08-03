@@ -1,0 +1,49 @@
+{
+  "name": "Purge Users",
+  "data_name": "purge_users",
+  "description": "Purge inactive users after a set interval.",
+  "version": "5.0.x",
+  "package": null,
+  "composer_namespace": "drupal/purge_users",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user"
+  ],
+  "configure": "purge_users.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 722,
+  "list_position": 1928,
+  "project_url": "https://www.drupal.org/project/purge_users",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": {},
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Account expiration",
+    "Cron / task scheduling"
+  ],
+  "keywords": [
+    "purge users",
+    "delete users",
+    "cancel account",
+    "inactive users",
+    "blocked users",
+    "never logged in",
+    "user cleanup",
+    "account expiration",
+    "cron",
+    "queue",
+    "policy",
+    "condition plugin",
+    "notification email"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "name": "miniOrange Two-Factor Authentication (2FA / MFA)",
+  "data_name": "miniorange_2fa",
+  "description": "Adds an extra layer of security by enabling Two-Factor Authentication (2FA) for Drupal user accounts.",
+  "version": "5.5.x",
+  "package": "miniOrange",
+  "composer_namespace": "drupal/miniorange_2fa",
+  "composer_requirements": {
+    "web-auth/webauthn-lib": "^5.2"
+  },
+  "dependent_modules": [],
+  "configure": "miniorange_2fa.customer_setup",
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": 657,
+  "list_position": 1926,
+  "project_url": "https://www.drupal.org/project/miniorange_2fa",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": {
+    "web-auth/webauthn-lib": "^5.2"
+  },
+  "suggests": {},
+  "submodules": [
+    "miniorange_webauthn",
+    "registration_verification"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "authentication_type"
+  ],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Two-factor authentication"
+  ],
+  "keywords": [
+    "2fa",
+    "mfa",
+    "two-factor authentication",
+    "otp",
+    "totp",
+    "google authenticator",
+    "authenticator app",
+    "sms otp",
+    "email otp",
+    "kba",
+    "push notification",
+    "qr code",
+    "webauthn",
+    "hardware token",
+    "yubikey",
+    "recovery codes",
+    "miniorange",
+    "xecurify",
+    "role based 2fa",
+    "passwordless"
+  ]
+}

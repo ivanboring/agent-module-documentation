@@ -1,0 +1,53 @@
+{
+  "name": "Postmark",
+  "data_name": "postmark",
+  "description": "Send email using the third party Postmark service.",
+  "version": "1.5.x",
+  "package": "Mail",
+  "composer_namespace": "drupal/postmark",
+  "composer_requirements": {
+    "html2text/html2text": "^4.3",
+    "wildbit/postmark-php": "^4.0"
+  },
+  "dependent_modules": [
+    "mailsystem"
+  ],
+  "configure": "postmark.settings",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": 627,
+  "list_position": 1937,
+  "project_url": "https://www.drupal.org/project/postmark",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "html2text/html2text",
+    "wildbit/postmark-php"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Email / mail delivery",
+    "Email / SMTP"
+  ],
+  "keywords": [
+    "postmark",
+    "email",
+    "mail",
+    "transactional email",
+    "mailsystem",
+    "mail plugin",
+    "smtp alternative",
+    "REST API mail",
+    "sender signature",
+    "postmark api token",
+    "html2text",
+    "wildbit"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "Stripe's Webform Integration",
+  "data_name": "stripe_webform",
+  "description": "Provides a stripe webform element and default handlers.",
+  "version": "2.0.x",
+  "package": "Stripe",
+  "composer_namespace": "drupal/stripe_webform",
+  "composer_requirements": {
+    "drupal/stripe": "^2.0",
+    "drupal/webform": "^6.3@alpha"
+  },
+  "dependent_modules": [
+    "stripe:stripe (>=2.0.0)",
+    "webform:webform"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 615,
+  "list_position": 1929,
+  "project_url": "https://www.drupal.org/project/stripe_webform",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": {},
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce",
+    "Forms and surveys"
+  ],
+  "subcategories": [
+    "Payment gateway",
+    "Submission handling"
+  ],
+  "keywords": [
+    "stripe",
+    "webform",
+    "payment",
+    "credit card",
+    "payment intent",
+    "payment request button",
+    "subscription",
+    "webhook",
+    "customer",
+    "checkout"
+  ]
+}
