@@ -1,0 +1,50 @@
+{
+  "name": "Config Filter - Ignore Disabled Languages",
+  "data_name": "idlc",
+  "description": "Prevents Drush from exporting/importing config files of languages that are not installed. This is particularly useful in Drupal multisite setup where you have multiple sites with in the same codebase, but each site has different enabled languages.",
+  "version": "1.0.x",
+  "package": "Config",
+  "composer_namespace": "drupal/idlc",
+  "composer_requirements": {
+    "drupal/config_filter": "^2.0",
+    "drupal/core": "^8 || ^9 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "config_filter"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": 969,
+  "list_position": 1691,
+  "project_url": "https://www.drupal.org/project/idlc",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Multilingual"
+  ],
+  "subcategories": [
+    "Configuration management",
+    "Orphaned config cleanup"
+  ],
+  "keywords": [
+    "config_filter",
+    "config ignore",
+    "disabled languages",
+    "language config",
+    "multisite",
+    "config export",
+    "config import",
+    "drush cex",
+    "drush cim",
+    "config collection",
+    "language.*"
+  ]
+}

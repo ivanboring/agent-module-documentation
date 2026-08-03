@@ -1,0 +1,49 @@
+{
+  "name": "Language Cookie",
+  "data_name": "language_cookie",
+  "description": "Allows usage of cookies to remember the user's last language.",
+  "version": "2.0.x",
+  "package": "Multilingual",
+  "composer_namespace": "drupal/language_cookie",
+  "composer_requirements": {
+    "drupal/core": "^9 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "language",
+    "path_alias"
+  ],
+  "configure": "language.negotiation",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 1076,
+  "list_position": 1670,
+  "project_url": "https://www.drupal.org/project/language_cookie",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "language_cookie_condition"
+  ],
+  "categories": [
+    "Multilingual"
+  ],
+  "subcategories": [
+    "Language negotiation"
+  ],
+  "keywords": [
+    "language",
+    "cookie",
+    "language negotiation",
+    "multilingual",
+    "language detection",
+    "remember language",
+    "interface language",
+    "language switcher",
+    "varnish",
+    "condition plugin"
+  ]
+}

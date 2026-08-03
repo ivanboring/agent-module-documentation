@@ -1,0 +1,57 @@
+{
+  "name": "Cloudflare Purge",
+  "data_name": "cloudflare_purge",
+  "description": "Comprehensive Cloudflare CDN cache purging with support for URL, Tag, Prefix, Hostname purging, automatic Drupal cache tag integration, and queue-based batch operations.",
+  "version": "3.1.x",
+  "package": "Performance",
+  "composer_namespace": "drupal/cloudflare_purge",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "drupal/core": "^10 || ^11"
+  },
+  "dependent_modules": [
+    "drupal:system"
+  ],
+  "configure": "cloudflare_purge.form",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 1121,
+  "list_position": 1681,
+  "project_url": "https://www.drupal.org/project/cloudflare_purge",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/key": "Secure credential storage (recommended for production)."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Cache invalidation",
+    "CDN integration"
+  ],
+  "keywords": [
+    "cloudflare",
+    "cdn",
+    "cache purge",
+    "purge everything",
+    "purge by url",
+    "purge by tag",
+    "purge by prefix",
+    "purge by hostname",
+    "cache tag invalidation",
+    "Cache-Tag header",
+    "queue",
+    "bearer token",
+    "api key",
+    "key module",
+    "drush",
+    "auto-purge"
+  ]
+}

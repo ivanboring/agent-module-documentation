@@ -1,0 +1,51 @@
+{
+  "name": "HTML Purifier",
+  "data_name": "htmlpurifier",
+  "description": "Filter that removes malicious HTML and ensures standards compliant output.",
+  "version": "1.2.x",
+  "package": "Filter",
+  "composer_namespace": "drupal/htmlpurifier",
+  "composer_requirements": {
+    "php": ">=7.1",
+    "ezyang/htmlpurifier": "^4.10"
+  },
+  "dependent_modules": [
+    "drupal:filter"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 2762,
+  "list_position": 1680,
+  "project_url": "https://www.drupal.org/project/htmlpurifier",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=7.1",
+  "library_dependencies": [
+    "ezyang/htmlpurifier"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "HTML sanitization / XSS filtering",
+    "Text format filters"
+  ],
+  "keywords": [
+    "html purifier",
+    "xss",
+    "sanitize html",
+    "text filter",
+    "text format",
+    "standards compliant",
+    "whitelist",
+    "ezyang/htmlpurifier",
+    "wysiwyg security",
+    "filter"
+  ]
+}

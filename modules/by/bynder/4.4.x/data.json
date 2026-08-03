@@ -1,0 +1,64 @@
+{
+  "name": "Bynder",
+  "data_name": "bynder",
+  "description": "Bynder digital asset management system integration.",
+  "version": "4.4.x",
+  "package": "Media",
+  "composer_namespace": "drupal/bynder",
+  "composer_requirements": {
+    "bynder/bynder-php-sdk": "~2.1",
+    "drupal/entity_browser": "~2.8"
+  },
+  "dependent_modules": [
+    "drupal:media",
+    "entity_browser:entity_browser (>= 8.x-2.x)"
+  ],
+  "configure": "bynder.configuration_form",
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": 992,
+  "list_position": 1686,
+  "project_url": "https://www.drupal.org/project/bynder",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "bynder/bynder-php-sdk"
+  ],
+  "suggests": {
+    "drupal/entity_usage": "Required for the optional submodule bynder_usage to track bynder media usage (entity_usage 8.x-2.x)",
+    "drupal/dropzonejs": "Will help provide an 'Upload to Bynder' entity browser plugin."
+  },
+  "submodules": [
+    "bynder_select2",
+    "bynder_sns",
+    "bynder_usage",
+    "bynder_demo",
+    "bynder_lightning"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Digital asset management (DAM)",
+    "Media sources"
+  ],
+  "keywords": [
+    "bynder",
+    "DAM",
+    "digital asset management",
+    "media",
+    "media source",
+    "entity browser",
+    "oauth",
+    "asset",
+    "metaproperty",
+    "derivatives",
+    "usage tracking",
+    "permanent token",
+    "compactview"
+  ]
+}
