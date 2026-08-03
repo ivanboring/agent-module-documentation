@@ -1,0 +1,43 @@
+{
+  "name": "OpenTelemetry Logs",
+  "data_name": "opentelemetry_logs",
+  "description": "Provides a Drupal Logger which pushes logs to an OpenTelemetry receiver.",
+  "version": "1.0.x",
+  "package": "Logging",
+  "composer_namespace": "drupal/opentelemetry",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "opentelemetry"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 860,
+  "list_position": 1896,
+  "project_url": "https://www.drupal.org/project/opentelemetry",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Log aggregation",
+    "Error tracking & monitoring"
+  ],
+  "keywords": [
+    "opentelemetry",
+    "logs",
+    "otlp logs",
+    "psr logger",
+    "log export",
+    "log record",
+    "logger provider"
+  ]
+}

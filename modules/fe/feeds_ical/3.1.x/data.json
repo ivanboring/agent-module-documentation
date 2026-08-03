@@ -1,0 +1,51 @@
+{
+  "name": "Feeds Ical",
+  "data_name": "feeds_ical",
+  "description": "Defines a feeds ical parser.",
+  "version": "3.1.x",
+  "package": "Feeds",
+  "composer_namespace": "drupal/feeds_ical",
+  "composer_requirements": {
+    "drupal/feeds": "^3.0",
+    "johngrogg/ics-parser": "^3.4"
+  },
+  "dependent_modules": [
+    "feeds:feeds"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 665,
+  "list_position": 1876,
+  "project_url": "https://www.drupal.org/project/feeds_ical",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "johngrogg/ics-parser"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Feed aggregation",
+    "Calendar / iCal import"
+  ],
+  "keywords": [
+    "feeds",
+    "ical",
+    "ics",
+    "icalendar",
+    "calendar import",
+    "events",
+    "feeds parser",
+    "rrule",
+    "dtstart",
+    "ics-parser",
+    "feeds_ical"
+  ]
+}

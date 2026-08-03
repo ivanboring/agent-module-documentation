@@ -1,0 +1,51 @@
+{
+  "name": "Token Content Access",
+  "data_name": "tca",
+  "description": "Provides access control for entities based on a URL token.",
+  "version": "3.1.x",
+  "package": "Other",
+  "composer_namespace": "drupal/tca",
+  "composer_requirements": {
+    "drupal/core": "^9 || ^10 || ^11"
+  },
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 798,
+  "list_position": 1883,
+  "project_url": "https://www.drupal.org/project/tca",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "tca_node",
+    "tca_commerce_product"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "tca_plugin"
+  ],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Token-based access control",
+    "Per-node view access",
+    "Unpublished content access"
+  ],
+  "keywords": [
+    "tca",
+    "token content access",
+    "access control",
+    "url token",
+    "share link",
+    "unpublished access",
+    "entity access",
+    "hash_equals",
+    "tca_plugin",
+    "private_key"
+  ]
+}

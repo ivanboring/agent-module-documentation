@@ -1,0 +1,60 @@
+{
+  "name": "Alt-Text Validation",
+  "data_name": "alt_text_validation",
+  "description": "Provides tools to validate and audit alt text attached to images for accessibility purposes.",
+  "version": "1.0.x",
+  "package": "Accessibility",
+  "composer_namespace": "drupal/alt_text_validation",
+  "composer_requirements": {
+    "drupal/views_data_export": "^1.5",
+    "league/commonmark": "*"
+  },
+  "dependent_modules": [
+    "field",
+    "views",
+    "views_data_export"
+  ],
+  "configure": "alt_text_validation.setting",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 570,
+  "list_position": 1901,
+  "project_url": "https://www.drupal.org/project/alt_text_validation",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "league/commonmark"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Accessibility",
+    "Administration tools",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Asset inventory / audit",
+    "Dashboard / reporting",
+    "Field validation"
+  ],
+  "keywords": [
+    "alt text",
+    "accessibility",
+    "a11y",
+    "image alt",
+    "alt text validation",
+    "alt text audit",
+    "alt text rules",
+    "image accessibility",
+    "content validation",
+    "constraint",
+    "audit report",
+    "csv export",
+    "queue",
+    "cron",
+    "alt_text_validation"
+  ]
+}

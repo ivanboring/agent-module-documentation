@@ -1,0 +1,29 @@
+{
+  "name": "OpenAI Error Log Analyzer",
+  "data_name": "openai_dblog",
+  "description": "Attempts to provide a possible explanation for logs captured in Drupal.",
+  "version": "1.0.x",
+  "package": "OpenAI",
+  "composer_namespace": "drupal/openai",
+  "composer_requirements": {},
+  "dependent_modules": ["dblog","openai"],
+  "configure": "openai_dblog.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 672,
+  "list_position": 1880,
+  "project_url": "https://www.drupal.org/project/openai",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": ["AI tooling / function calling"],
+  "keywords": ["openai","dblog","log analysis","watchdog","explain error"]
+}

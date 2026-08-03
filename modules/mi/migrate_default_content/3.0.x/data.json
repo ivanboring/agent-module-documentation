@@ -1,0 +1,58 @@
+{
+  "name": "Migrate Default Content",
+  "data_name": "migrate_default_content",
+  "description": "Provides dummy content.",
+  "version": "3.0.x",
+  "package": "Migration",
+  "composer_namespace": "drupal/migrate_default_content",
+  "composer_requirements": {
+    "drupal/core": "^10.2 || ^11",
+    "drupal/migrate_source_yaml": "^1.4",
+    "drush/drush": "^12 || ^13"
+  },
+  "dependent_modules": [
+    "migrate",
+    "migrate_source_yaml"
+  ],
+  "configure": "migrate_default_content.settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 811,
+  "list_position": 1865,
+  "project_url": "https://www.drupal.org/project/migrate_default_content",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "migrate_default_content_export"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "migrate_default_content_source"
+  ],
+  "categories": [
+    "Import and export",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Content migration / import",
+    "Migration tooling",
+    "Test content generation"
+  ],
+  "keywords": [
+    "migrate",
+    "default content",
+    "dummy content",
+    "yaml",
+    "content import",
+    "fixtures",
+    "seed content",
+    "migrate_source_yaml",
+    "entity reference",
+    "translations",
+    "menu links",
+    "files migration"
+  ]
+}

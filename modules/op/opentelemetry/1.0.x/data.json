@@ -1,0 +1,72 @@
+{
+  "name": "OpenTelemetry",
+  "data_name": "opentelemetry",
+  "description": "Provides collecting and exporting telemetry data for Drupal using OpenTelemetry PHP library.",
+  "version": "1.0.x",
+  "package": "Development",
+  "composer_namespace": "drupal/opentelemetry",
+  "composer_requirements": {
+    "php": ">=8.0",
+    "google/protobuf": "^4.33.6",
+    "open-telemetry/sdk": "^1.1",
+    "open-telemetry/exporter-otlp": "^1.1",
+    "open-telemetry/opentelemetry-propagation-traceresponse": "^0.0.5",
+    "open-telemetry/sem-conv": "^1.24",
+    "psr/http-client-implementation": "*"
+  },
+  "dependent_modules": [],
+  "configure": "opentelemetry.settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 860,
+  "list_position": 1896,
+  "project_url": "https://www.drupal.org/project/opentelemetry",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.0",
+  "library_dependencies": [
+    "google/protobuf",
+    "open-telemetry/sdk",
+    "open-telemetry/exporter-otlp",
+    "open-telemetry/opentelemetry-propagation-traceresponse",
+    "open-telemetry/sem-conv",
+    "psr/http-client-implementation"
+  ],
+  "suggests": {},
+  "submodules": [
+    "opentelemetry_syslog",
+    "opentelemetry_logs",
+    "opentelemetry_metrics"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "opentelemetry_trace"
+  ],
+  "categories": [
+    "Integrations",
+    "Performance",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Application performance monitoring",
+    "Error tracking & monitoring",
+    "Log aggregation"
+  ],
+  "keywords": [
+    "opentelemetry",
+    "otel",
+    "otlp",
+    "tracing",
+    "spans",
+    "telemetry",
+    "apm",
+    "observability",
+    "traceparent",
+    "collector",
+    "grpc",
+    "http/protobuf",
+    "distributed tracing",
+    "jaeger",
+    "tempo"
+  ]
+}

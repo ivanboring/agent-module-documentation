@@ -1,0 +1,51 @@
+{
+  "name": "Media Library Extend",
+  "data_name": "media_library_extend",
+  "description": "Allow extending the media library with alternate sources.",
+  "version": "2.2.x",
+  "package": "Media",
+  "composer_namespace": "drupal/media_library_extend",
+  "composer_requirements": {
+    "drupal/core": "^10.1 || ^11"
+  },
+  "dependent_modules": [
+    "media_library"
+  ],
+  "configure": "entity.media_library_pane.collection",
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": 665,
+  "list_position": 1899,
+  "project_url": "https://www.drupal.org/project/media_library_extend",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "media_library_source"
+  ],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Media sources",
+    "File browser / management"
+  ],
+  "keywords": [
+    "media library",
+    "media source",
+    "MediaLibrarySource",
+    "media library pane",
+    "media_library_pane",
+    "alternate media source",
+    "external media",
+    "media browser tab",
+    "plugin",
+    "lorem picsum",
+    "media_library_extend",
+    "media_library"
+  ]
+}

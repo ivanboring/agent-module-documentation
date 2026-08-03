@@ -1,0 +1,47 @@
+{
+  "name": "Migrate Default Content Export",
+  "data_name": "migrate_default_content_export",
+  "description": "Allows the exporting of dummy content.",
+  "version": "3.0.x",
+  "package": "Migration",
+  "composer_namespace": "drupal/migrate_default_content",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "migrate_default_content"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 811,
+  "list_position": 1865,
+  "project_url": "https://www.drupal.org/project/migrate_default_content",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "field_processor",
+    "export_entity_filter"
+  ],
+  "categories": [
+    "Import and export",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Data export",
+    "Migration tooling"
+  ],
+  "keywords": [
+    "migrate",
+    "export",
+    "content export",
+    "yaml",
+    "fixtures",
+    "field processor",
+    "entity filter",
+    "drush"
+  ]
+}
