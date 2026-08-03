@@ -1,0 +1,51 @@
+{
+  "name": "Search API Synonym",
+  "data_name": "search_api_synonym",
+  "description": "Managing of search synonyms in Drupal.",
+  "version": "3.0.x",
+  "package": "Search",
+  "composer_namespace": "drupal/search_api_synonym",
+  "composer_requirements": {
+    "drupal/core": "^10 || ^11"
+  },
+  "dependent_modules": [
+    "options",
+    "views"
+  ],
+  "configure": "entity.search_api_synonym.collection",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": 1844,
+  "project_url": "https://www.drupal.org/project/search_api_synonym",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "search_api_synonym_import",
+    "search_api_synonym_export"
+  ],
+  "categories": [
+    "Site search"
+  ],
+  "subcategories": [
+    "Spellcheck / query suggestions",
+    "Stemming / linguistics"
+  ],
+  "keywords": [
+    "search",
+    "synonym",
+    "spelling error",
+    "solr",
+    "search api",
+    "import",
+    "export",
+    "csv",
+    "json",
+    "synonyms file"
+  ]
+}

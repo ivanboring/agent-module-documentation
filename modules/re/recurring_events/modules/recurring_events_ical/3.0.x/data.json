@@ -1,0 +1,43 @@
+{
+  "name": "Recurring Events iCalendar",
+  "data_name": "recurring_events_ical",
+  "description": "Provides the ability to export recurring events as iCalendar files",
+  "version": "3.0.x",
+  "package": "Recurring Events",
+  "composer_namespace": "drupal/recurring_events",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "recurring_events",
+    "token"
+  ],
+  "configure": "entity.event_ical_mapping.collection",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 1845,
+  "project_url": "https://www.drupal.org/project/recurring_events",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Calendar / iCal export"
+  ],
+  "keywords": [
+    "ical",
+    "icalendar",
+    "ics",
+    "calendar export",
+    "recurring events",
+    "event_ical_mapping",
+    "vevent",
+    "token"
+  ]
+}

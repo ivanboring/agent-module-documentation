@@ -1,0 +1,62 @@
+{
+  "name": "Maestro Engine Module",
+  "data_name": "maestro",
+  "description": "Provides the engine and API for Maestro.",
+  "version": "4.5.x",
+  "package": "Maestro",
+  "composer_namespace": "drupal/maestro",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "views"
+  ],
+  "configure": "maestro.maestro_admin_settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 686,
+  "list_position": 1828,
+  "project_url": "https://www.drupal.org/project/maestro",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "maestro_ai_task",
+    "maestro_eca_task",
+    "maestro_taskconsole",
+    "maestro_template_builder",
+    "maestro_tool_task",
+    "maestro_utilities",
+    "maestro_variable_entity_identifier",
+    "maestro_webform"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "maestro_engine_task",
+    "maestro_set_process_variable_plugin"
+  ],
+  "categories": [
+    "Automation"
+  ],
+  "subcategories": [
+    "Workflow / business rules",
+    "Workflow / state management"
+  ],
+  "keywords": [
+    "maestro",
+    "workflow",
+    "workflow engine",
+    "business process",
+    "BPM",
+    "orchestrator",
+    "template",
+    "task",
+    "queue",
+    "process variable",
+    "interactive task",
+    "content type task",
+    "if task",
+    "assignment",
+    "task console"
+  ]
+}

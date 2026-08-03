@@ -1,0 +1,53 @@
+{
+  "name": "Auto Translation",
+  "data_name": "auto_translation",
+  "description": "The Auto Translation module provides automatic translation capabilities for Drupal 10 websites. It integrates with Google translation services free or paid to automatically translate content on your site.",
+  "version": "1.4.x",
+  "package": "Multilingual",
+  "composer_namespace": "drupal/auto_translation",
+  "composer_requirements": {
+    "google/cloud-translate": "^1.17"
+  },
+  "dependent_modules": [
+    "content_translation"
+  ],
+  "configure": "auto_translation.settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 685,
+  "list_position": 1862,
+  "project_url": "https://www.drupal.org/project/auto_translation",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "google/cloud-translate"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Multilingual"
+  ],
+  "subcategories": [
+    "Machine translation",
+    "Translation / multilingual"
+  ],
+  "keywords": [
+    "auto translation",
+    "machine translation",
+    "google translate",
+    "deepl",
+    "libretranslate",
+    "amazon translate",
+    "drupal ai translate",
+    "content translation",
+    "bulk translation",
+    "paragraphs translation",
+    "node translation",
+    "media translation",
+    "taxonomy translation",
+    "translation provider"
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "name": "Citation Select",
+  "data_name": "citation_select",
+  "description": "Allows users to generate a citation based on a node.",
+  "version": "2.1.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/citation_select",
+  "composer_requirements": {
+    "professional-wiki/edtf": "^3.1",
+    "drupal/token": "^1.9",
+    "seboettg/citeproc-php": "^2.6",
+    "adci/full-name-parser": "^0.2.4"
+  },
+  "dependent_modules": [
+    "token"
+  ],
+  "configure": "citation_select.settings",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": 580,
+  "list_position": 1834,
+  "project_url": "https://www.drupal.org/project/citation_select",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "professional-wiki/edtf",
+    "seboettg/citeproc-php",
+    "adci/full-name-parser"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "citation_field_formatter"
+  ],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Bibliography / citations"
+  ],
+  "keywords": [
+    "citation",
+    "citations",
+    "bibliography",
+    "CSL",
+    "citation style language",
+    "citeproc",
+    "reference",
+    "node citation",
+    "APA",
+    "MLA",
+    "Chicago",
+    "field mapping",
+    "typed relation",
+    "edtf",
+    "citation_select"
+  ]
+}

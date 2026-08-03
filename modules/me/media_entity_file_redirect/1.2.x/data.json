@@ -1,0 +1,46 @@
+{
+  "name": "Media Entity File Redirect",
+  "data_name": "media_entity_file_redirect",
+  "description": "Provides a new /document/[id] path for accessing files associated with media entities that have file sources.",
+  "version": "1.2.x",
+  "package": "Media",
+  "composer_namespace": "drupal/media_entity_file_redirect",
+  "composer_requirements": {
+    "drupal/core": "^10 || ^11"
+  },
+  "dependent_modules": [
+    "media"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 1842,
+  "project_url": "https://www.drupal.org/project/media_entity_file_redirect",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Entity page behavior & redirects",
+    "File downloads"
+  ],
+  "keywords": [
+    "media",
+    "file",
+    "redirect",
+    "document",
+    "download",
+    "file source",
+    "linkit",
+    "/document/",
+    "clean file url"
+  ]
+}

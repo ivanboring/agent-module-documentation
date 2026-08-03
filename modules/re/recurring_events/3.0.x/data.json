@@ -1,0 +1,63 @@
+{
+  "name": "Recurring Events",
+  "data_name": "recurring_events",
+  "description": "Provides the ability to create recurring events",
+  "version": "3.0.x",
+  "package": "Recurring Events",
+  "composer_namespace": "drupal/recurring_events",
+  "composer_requirements": {
+    "php": "^8.3",
+    "drupal/field_inheritance": "^3"
+  },
+  "dependent_modules": [
+    "datetime_range",
+    "options",
+    "field_inheritance"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 1845,
+  "project_url": "https://www.drupal.org/project/recurring_events",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "^8.3",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/daterange_compact": "Compact date range formatting",
+    "drupal/group": "Group integration",
+    "drupal/fullcalendar_view": "Calendar display of events",
+    "drupal/token": "Token support"
+  },
+  "submodules": [
+    "recurring_events_ical",
+    "recurring_events_registration",
+    "recurring_events_views"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "event_instance_creator"
+  ],
+  "categories": [
+    "Content display",
+    "User engagement"
+  ],
+  "subcategories": [
+    "Event management",
+    "Calendar / iCal export",
+    "Event registration"
+  ],
+  "keywords": [
+    "events",
+    "recurring events",
+    "event series",
+    "event instance",
+    "calendar",
+    "scheduling",
+    "eventseries",
+    "eventinstance",
+    "field inheritance",
+    "date recur"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "name": "Email confirmer user",
+  "data_name": "email_confirmer_user",
+  "description": "User email confirmation on related events like user email change.",
+  "version": "1.0.x",
+  "package": "Mail",
+  "composer_namespace": "drupal/email_confirmer",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "email_confirmer"
+  ],
+  "configure": "email_confirmer_user.settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 1841,
+  "project_url": "https://www.drupal.org/project/email_confirmer",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "User engagement",
+    "Access control"
+  ],
+  "subcategories": [
+    "Email / mail delivery",
+    "User registration"
+  ],
+  "keywords": [
+    "email confirmation",
+    "user email change",
+    "verify email",
+    "email_confirmer_user",
+    "account email",
+    "one-time login",
+    "sync confirmation"
+  ]
+}

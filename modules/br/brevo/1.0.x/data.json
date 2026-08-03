@@ -1,0 +1,66 @@
+{
+  "name": "Brevo",
+  "data_name": "brevo",
+  "description": "Integration with the Brevo CRM.",
+  "version": "1.0.x",
+  "package": "Integration",
+  "composer_namespace": "drupal/brevo",
+  "composer_requirements": {
+    "getbrevo/brevo-php": "~2.0",
+    "nyholm/psr7": "~1.2",
+    "html2text/html2text": "^4.0.1"
+  },
+  "dependent_modules": [],
+  "configure": "brevo.admin_settings_form",
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": 746,
+  "list_position": 1833,
+  "project_url": "https://www.drupal.org/project/brevo",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "getbrevo/brevo-php",
+    "nyholm/psr7",
+    "html2text/html2text"
+  ],
+  "suggests": {
+    "drupal/mailsystem": "*",
+    "drupal/symfony_mailer": "*",
+    "symfony/http-client": "*",
+    "symfony/brevo-mailer": "*",
+    "php-http/guzzle6-adapter": "Required for working with Guzzle 6 e.g. Drupal 9.3.x or earlier",
+    "drupal/token": "Use the contrib token module to display a token browser on the brevo_commerce 'BrevoListsSubscriber' pane configuration form.",
+    "drupal/webform": "Required to use the Brevo Transactional Email webform handler."
+  },
+  "submodules": [
+    "brevo_commerce",
+    "brevo_mailer"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "CRM integration",
+    "Email / mail delivery",
+    "SMS / text messaging"
+  ],
+  "keywords": [
+    "brevo",
+    "sendinblue",
+    "crm",
+    "transactional email",
+    "marketing automation",
+    "contacts",
+    "email api",
+    "sms",
+    "newsletter",
+    "brevo-php",
+    "webform handler",
+    "mail system",
+    "symfony mailer"
+  ]
+}

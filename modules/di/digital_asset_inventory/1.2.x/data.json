@@ -1,0 +1,65 @@
+{
+  "name": "Digital Asset Inventory",
+  "data_name": "digital_asset_inventory",
+  "description": "Site-wide digital asset scanning, usage tracking, exportable reports, and ADA Title II–compliant archiving tools.",
+  "version": "1.2.x",
+  "package": "Accessibility",
+  "composer_namespace": "drupal/digital_asset_inventory",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "drupal/better_exposed_filters": "^6 || ^7",
+    "drupal/views_data_export": "^1.9",
+    "drupal/csv_serialization": "^4"
+  },
+  "dependent_modules": [
+    "file",
+    "media",
+    "views",
+    "better_exposed_filters",
+    "views_data_export",
+    "csv_serialization"
+  ],
+  "configure": "digital_asset_inventory.settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": 1856,
+  "project_url": "https://www.drupal.org/project/digital_asset_inventory",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Accessibility",
+    "Media"
+  ],
+  "subcategories": [
+    "Digital asset management (DAM)",
+    "Data export",
+    "File cleanup / deletion",
+    "Asset inventory / audit"
+  ],
+  "keywords": [
+    "digital asset",
+    "inventory",
+    "asset scanning",
+    "usage tracking",
+    "ADA Title II",
+    "accessibility",
+    "WCAG",
+    "archive",
+    "orphaned files",
+    "alt text",
+    "title resolution",
+    "oembed",
+    "csv export",
+    "dashboard",
+    "media",
+    "dai:scan",
+    "dai:status"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "name": "Email confirmer",
+  "data_name": "email_confirmer",
+  "description": "Email confirmation service. Provides a common API for email address confirmation.",
+  "version": "1.0.x",
+  "package": "Mail",
+  "composer_namespace": "drupal/email_confirmer",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "email_confirmer.settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 1841,
+  "project_url": "https://www.drupal.org/project/email_confirmer",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/queue_unique": "Provides queues that only accepts unique items."
+  },
+  "submodules": [
+    "email_confirmer_user"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools",
+    "User engagement"
+  ],
+  "subcategories": [
+    "Email / mail delivery"
+  ],
+  "keywords": [
+    "email",
+    "confirmation",
+    "verify email",
+    "double opt-in",
+    "confirm address",
+    "email_confirmer",
+    "confirmation entity",
+    "hmac hash",
+    "resend",
+    "api"
+  ]
+}

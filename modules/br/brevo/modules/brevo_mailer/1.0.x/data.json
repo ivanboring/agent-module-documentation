@@ -1,0 +1,44 @@
+{
+  "name": "Brevo Mailer",
+  "data_name": "brevo_mailer",
+  "description": "Allows site to send emails using Brevo email service.",
+  "version": "1.0.x",
+  "package": "Mail",
+  "composer_namespace": "drupal/brevo",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "brevo",
+    "filter"
+  ],
+  "configure": "brevo_mailer.admin_settings_form",
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": 746,
+  "list_position": 1833,
+  "project_url": "https://www.drupal.org/project/brevo",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Email / mail delivery"
+  ],
+  "keywords": [
+    "brevo",
+    "mailer",
+    "transactional email",
+    "mail plugin",
+    "mail system",
+    "symfony mailer",
+    "smtp",
+    "queue mail",
+    "brevo_mailer"
+  ]
+}
