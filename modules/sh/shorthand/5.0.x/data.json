@@ -1,0 +1,52 @@
+{
+  "name": "Shorthand",
+  "data_name": "shorthand",
+  "description": "A module that allows the publishing of Shorthand stories directly to Drupal.",
+  "version": "5.0.x",
+  "package": "Shorthand",
+  "composer_namespace": "drupal/shorthand",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:text"
+  ],
+  "configure": "shorthand.settings_form",
+  "core_version_requirement": "^10.3 || ^11.0",
+  "active_installs": 389,
+  "list_position": 2444,
+  "project_url": "https://www.drupal.org/project/shorthand",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/metatag": "Populate an entity's meta tags from the downloaded Shorthand story's head.html (hook_metatags_alter integration)."
+  },
+  "submodules": [
+    "shorthand_example"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "Content display"
+  ],
+  "subcategories": [
+    "Content migration / import",
+    "Field formatters"
+  ],
+  "keywords": [
+    "shorthand",
+    "shorthand.com",
+    "immersive stories",
+    "storytelling",
+    "publishing",
+    "remote content",
+    "field type",
+    "field formatter",
+    "api integration",
+    "zip download",
+    "metatag",
+    "longform"
+  ]
+}

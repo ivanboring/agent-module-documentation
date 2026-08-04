@@ -1,0 +1,50 @@
+{
+  "name": "highlight.js Input Filter",
+  "data_name": "highlightjs_input_filter",
+  "description": "Provides an input filter to highlight code using highlight.js.",
+  "version": "2.0.x",
+  "package": "Filters",
+  "composer_namespace": "drupal/highlightjs_input_filter",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "highlightjs_input_filter.settings.form",
+  "core_version_requirement": "^10.3 || ^11 || ^12",
+  "active_installs": 370,
+  "list_position": 2456,
+  "project_url": "https://www.drupal.org/project/highlightjs_input_filter",
+  "license": "GPL-2.0+",
+  "php_requirement": ">=8.3",
+  "library_dependencies": [],
+  "suggests": {
+    "highlightjs/cdn-assets": "To manage highlight.js pre-built assets locally.",
+    "npm-asset/highlightjs-copy": "To manage the copy-to-clipboard plugin locally via Composer and Asset Packagist.",
+    "oomphinc/composer-installers-extender": "Required to use installer-paths with npm-asset packages for local assets."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Code editor / syntax highlighting",
+    "Text format filters"
+  ],
+  "keywords": [
+    "highlight.js",
+    "highlightjs",
+    "syntax highlighting",
+    "code highlighting",
+    "input filter",
+    "text format",
+    "pre code",
+    "language-*",
+    "CKEditor",
+    "copy button",
+    "CDN",
+    "atom-one-dark",
+    "code block"
+  ]
+}

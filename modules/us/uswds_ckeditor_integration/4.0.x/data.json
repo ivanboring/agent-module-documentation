@@ -1,0 +1,61 @@
+{
+  "name": "USWDS Ckeditor Integration",
+  "data_name": "uswds_ckeditor_integration",
+  "description": "Helps integrate some USWDS components into ckeditor5.",
+  "version": "4.0.x",
+  "package": "USWDS",
+  "composer_namespace": "drupal/uswds_ckeditor_integration",
+  "composer_requirements": {
+    "drupal/embedded_content": "*",
+    "ext-dom": "*"
+  },
+  "dependent_modules": [
+    "ckeditor5",
+    "media_library",
+    "embedded_content"
+  ],
+  "configure": "uswds_ckeditor_integration.settings",
+  "core_version_requirement": "^11.3 || ^12",
+  "active_installs": 306,
+  "list_position": 2457,
+  "project_url": "https://www.drupal.org/project/uswds_ckeditor_integration",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "uswds_ckeditor_integration_embed"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience",
+    "Content display"
+  ],
+  "subcategories": [
+    "CKEditor plugins",
+    "Rich text embedding",
+    "Grid layout",
+    "Tabbed content / accordion",
+    "Responsive tables"
+  ],
+  "keywords": [
+    "USWDS",
+    "US Web Design System",
+    "CKEditor 5",
+    "ckeditor5",
+    "grid",
+    "accordion",
+    "alert",
+    "process list",
+    "summary box",
+    "embedded content",
+    "responsive table",
+    "sortable table",
+    "stacked table",
+    "government",
+    "text format filter"
+  ]
+}

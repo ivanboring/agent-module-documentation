@@ -1,0 +1,53 @@
+{
+  "name": "Social Auth Apple",
+  "data_name": "social_auth_apple",
+  "description": "Social Auth integration for Apple.",
+  "version": "2.0.x",
+  "package": "Social",
+  "composer_namespace": "drupal/social_auth_apple",
+  "composer_requirements": {
+    "php": ">=8",
+    "drupal/social_auth": "^4",
+    "patrickbussmann/oauth2-apple": "^0.4"
+  },
+  "dependent_modules": [
+    "social_auth"
+  ],
+  "configure": "social_auth_apple.settings_form",
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": 473,
+  "list_position": 2428,
+  "project_url": "https://www.drupal.org/project/social_auth_apple",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8",
+  "library_dependencies": [
+    "patrickbussmann/oauth2-apple"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Integrations"
+  ],
+  "subcategories": [
+    "OAuth / OpenID Connect client",
+    "External authentication",
+    "Social network integration"
+  ],
+  "keywords": [
+    "social auth",
+    "apple",
+    "sign in with apple",
+    "oauth2",
+    "oauth",
+    "social login",
+    "appleid",
+    "external authentication",
+    "sso",
+    "league oauth2"
+  ]
+}

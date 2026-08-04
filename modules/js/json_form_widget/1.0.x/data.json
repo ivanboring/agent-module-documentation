@@ -1,0 +1,58 @@
+{
+  "name": "JSON Form Widget",
+  "data_name": "json_form_widget",
+  "description": "Provides a widget for generating a form based on JSON Schema.",
+  "version": "1.0.x",
+  "package": "User interface",
+  "composer_namespace": "drupal/json_form_widget",
+  "composer_requirements": {
+    "drupal/select2": "^2.0",
+    "drupal/select_or_other": "^4.2.0"
+  },
+  "dependent_modules": [
+    "file",
+    "select_or_other",
+    "select2"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.4 || ^11",
+  "active_installs": 196,
+  "list_position": 2429,
+  "project_url": "https://www.drupal.org/project/json_form_widget",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "json_form_widget_basic"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "json_form_option_source"
+  ],
+  "categories": [
+    "Content editing experience",
+    "Forms and surveys"
+  ],
+  "subcategories": [
+    "Form builder",
+    "Fields",
+    "Form widgets / select UI"
+  ],
+  "keywords": [
+    "json schema",
+    "json form",
+    "form builder",
+    "field widget",
+    "nested form",
+    "dkan",
+    "metastore",
+    "upload_or_link",
+    "schema ui",
+    "rjsf",
+    "select2",
+    "select_or_other"
+  ]
+}

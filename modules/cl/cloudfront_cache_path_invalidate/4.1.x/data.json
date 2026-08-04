@@ -1,0 +1,49 @@
+{
+  "name": "Cloudfront Cache Path Invalidate",
+  "data_name": "cloudfront_cache_path_invalidate",
+  "description": "Cloudfront Cache Path Invalidate",
+  "version": "4.1.x",
+  "package": "Cloudfront Cache Path Invalidate",
+  "composer_namespace": "drupal/cloudfront_cache_path_invalidate",
+  "composer_requirements": {
+    "aws/aws-sdk-php": "3.*"
+  },
+  "dependent_modules": [],
+  "configure": "cloudfront_cache_path_invalidate.admin_cloudfront_invalidate_url",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 382,
+  "list_position": 2447,
+  "project_url": "https://www.drupal.org/project/cloudfront_cache_path_invalidate",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "aws/aws-sdk-php"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance",
+    "Integrations"
+  ],
+  "subcategories": [
+    "CDN integration",
+    "Cache invalidation",
+    "Cloud services (AWS)"
+  ],
+  "keywords": [
+    "cloudfront",
+    "aws",
+    "cdn",
+    "cache invalidation",
+    "createInvalidation",
+    "path invalidation",
+    "edge cache",
+    "purge",
+    "aws-sdk-php",
+    "entity update invalidate"
+  ]
+}

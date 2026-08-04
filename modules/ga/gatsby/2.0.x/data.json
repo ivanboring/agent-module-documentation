@@ -1,0 +1,60 @@
+{
+  "name": "Gatsby",
+  "data_name": "gatsby",
+  "description": "Improves integration with GatsbyJS including adding Live Preview and Incremental Builds",
+  "version": "2.0.x",
+  "package": "Gatsby",
+  "composer_namespace": "drupal/gatsby",
+  "composer_requirements": {
+    "drupal/core": "^9 || ^10 || ^11",
+    "drupal/jsonapi_extras": "^3"
+  },
+  "dependent_modules": [
+    "path_alias",
+    "content_moderation",
+    "jsonapi_extras:jsonapi_extras"
+  ],
+  "configure": "gatsby.gatsby_admin_form",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 340,
+  "list_position": 2446,
+  "project_url": "https://www.drupal.org/project/gatsby",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "gatsby_extras",
+    "gatsby_fastbuilds",
+    "gatsby_instantpreview"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Decoupled"
+  ],
+  "subcategories": [
+    "Static site generation",
+    "Preview & draft mode",
+    "On-demand revalidation"
+  ],
+  "keywords": [
+    "gatsby",
+    "gatsbyjs",
+    "decoupled",
+    "headless",
+    "live preview",
+    "incremental builds",
+    "fastbuilds",
+    "jsonapi",
+    "gatsby-source-drupal",
+    "content sync",
+    "webhook",
+    "iframe preview",
+    "static site",
+    "build trigger",
+    "preview server"
+  ]
+}
