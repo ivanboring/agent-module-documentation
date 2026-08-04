@@ -1,0 +1,55 @@
+{
+  "name": "Metatag AI Generator",
+  "data_name": "metatag_ai",
+  "description": "Provides an API endpoint to generate meta tags using AI module providers and integrate with metatag module.",
+  "version": "2.0.x",
+  "package": "SEO",
+  "composer_namespace": "drupal/metatag_ai",
+  "composer_requirements": {
+    "drupal/metatag": "^2 || ^1.2",
+    "drupal/core": "^9 || ^10 || ^11",
+    "drupal/ai": "^1.3@beta"
+  },
+  "dependent_modules": [
+    "metatag",
+    "ai"
+  ],
+  "configure": "metatag_ai.content_settings",
+  "core_version_requirement": "^11",
+  "active_installs": 517,
+  "list_position": 2101,
+  "project_url": "https://www.drupal.org/project/metatag_ai",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Search engine optimization (SEO)",
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "Meta tags / structured metadata"
+  ],
+  "keywords": [
+    "metatag",
+    "meta tags",
+    "meta description",
+    "AI",
+    "SEO",
+    "generate",
+    "LLM",
+    "chat",
+    "provider",
+    "system prompt",
+    "abstract",
+    "keywords",
+    "node form",
+    "ai module",
+    "multilingual"
+  ]
+}

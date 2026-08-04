@@ -1,0 +1,43 @@
+{
+  "name": "Disable user deletion",
+  "data_name": "disable_user_deletion",
+  "description": "Disable the user deletion option.",
+  "version": "1.0.x",
+  "package": "User",
+  "composer_namespace": "drupal/disable_user_deletion",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "user"
+  ],
+  "configure": "disable_user_deletion.settings_form",
+  "core_version_requirement": "^9.4 || ^10 || ^11",
+  "active_installs": 509,
+  "list_position": 2103,
+  "project_url": "https://www.drupal.org/project/disable_user_deletion",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Account deletion protection"
+  ],
+  "keywords": [
+    "user",
+    "delete",
+    "deletion",
+    "cancel",
+    "account",
+    "user cancel",
+    "disable",
+    "protection",
+    "account cancellation"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "Cloudflare Stream",
+  "data_name": "cloudflare_stream",
+  "description": "Provides field widget for streaming videos using Cloudflare Stream",
+  "version": "3.0.x",
+  "package": "Fields",
+  "composer_namespace": "drupal/cloudflare_stream",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "media"
+  ],
+  "configure": "cloudflare_stream.admin_config",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 545,
+  "list_position": 2078,
+  "project_url": "https://www.drupal.org/project/cloudflare_stream",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "cloudflare_stream_sync"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media",
+    "Content display"
+  ],
+  "subcategories": [
+    "Video embedding",
+    "Media sources",
+    "Field formatters"
+  ],
+  "keywords": [
+    "cloudflare_stream",
+    "cloudflare",
+    "stream",
+    "video",
+    "video streaming",
+    "tus",
+    "resumable upload",
+    "media source",
+    "field type",
+    "stream wrapper",
+    "cfstream",
+    "api token"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "name": "Commerce Braintree",
+  "data_name": "commerce_braintree",
+  "description": "Provides Commerce integration for Braintree Payments.",
+  "version": "1.8.x",
+  "package": "Commerce (contrib)",
+  "composer_namespace": "drupal/commerce_braintree",
+  "composer_requirements": {
+    "drupal/commerce": "~2.25 || ^3",
+    "braintree/braintree_php": "^6.12"
+  },
+  "dependent_modules": [
+    "commerce:commerce_payment"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 534,
+  "list_position": 2084,
+  "project_url": "https://www.drupal.org/project/commerce_braintree",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "braintree/braintree_php"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Payment gateway",
+    "Checkout customization"
+  ],
+  "keywords": [
+    "braintree",
+    "commerce",
+    "payment",
+    "payment gateway",
+    "hosted fields",
+    "paypal",
+    "paypal credit",
+    "3d secure",
+    "3ds",
+    "credit card",
+    "nonce",
+    "vault",
+    "drupal commerce"
+  ]
+}

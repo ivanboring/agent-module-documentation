@@ -1,0 +1,55 @@
+{
+  "name": "Loqate",
+  "data_name": "loqate",
+  "description": "Provides an integration with Loqate address lookup API.",
+  "version": "3.0.x",
+  "package": "Address",
+  "composer_namespace": "drupal/loqate",
+  "composer_requirements": {
+    "drupal/key": "^1.13"
+  },
+  "dependent_modules": [
+    "key"
+  ],
+  "configure": "loqate.loqate_api_key_config_form",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 423,
+  "list_position": 2102,
+  "project_url": "https://www.drupal.org/project/loqate",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "pca_address",
+    "pca_webform"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Address autocomplete / verification",
+    "Geospatial / location",
+    "Form widgets / select UI"
+  ],
+  "keywords": [
+    "loqate",
+    "pca",
+    "addressy",
+    "address lookup",
+    "address autocomplete",
+    "address verification",
+    "postcode",
+    "geocoding",
+    "key",
+    "form element",
+    "pca_address",
+    "webform",
+    "field widget"
+  ]
+}

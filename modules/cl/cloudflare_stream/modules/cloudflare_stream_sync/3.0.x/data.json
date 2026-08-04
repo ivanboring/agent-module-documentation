@@ -1,0 +1,44 @@
+{
+  "name": "Cloudflare Stream - Sync",
+  "data_name": "cloudflare_stream_sync",
+  "description": "Provides the functionality to sync the online Cloudflare Stream Videos with local media.",
+  "version": "3.0.x",
+  "package": "Media",
+  "composer_namespace": "drupal/cloudflare_stream",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "cloudflare_stream"
+  ],
+  "configure": "cloudflare_stream_sync.config",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 545,
+  "list_position": 2078,
+  "project_url": "https://www.drupal.org/project/cloudflare_stream",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Media sources",
+    "Content migration / import"
+  ],
+  "keywords": [
+    "cloudflare_stream_sync",
+    "cloudflare",
+    "stream",
+    "sync",
+    "import",
+    "media",
+    "batch",
+    "drush",
+    "video"
+  ]
+}
