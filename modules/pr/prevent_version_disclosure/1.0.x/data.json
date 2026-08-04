@@ -1,0 +1,47 @@
+{
+  "name": "Prevent Version Disclosure",
+  "data_name": "prevent_version_disclosure",
+  "description": "Prevents leaking of javascript asset versions within the html source.",
+  "version": "1.0.x",
+  "package": "Security",
+  "composer_namespace": "drupal/prevent_version_disclosure",
+  "composer_requirements": {
+    "league/commonmark": "*"
+  },
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 424,
+  "list_position": 2342,
+  "project_url": "https://www.drupal.org/project/prevent_version_disclosure",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [
+    "league/commonmark"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Version disclosure / fingerprinting"
+  ],
+  "keywords": [
+    "version disclosure",
+    "fingerprinting",
+    "hardening",
+    "security by obscurity",
+    "javascript version",
+    "asset version",
+    "query string version",
+    "hook_js_alter",
+    "hmac",
+    "defense in depth",
+    "prevent_version_disclosure"
+  ]
+}

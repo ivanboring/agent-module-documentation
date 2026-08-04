@@ -1,0 +1,46 @@
+{
+  "name": "Update Manager Advanced",
+  "data_name": "advupdate",
+  "description": "The module modifies the Drupal \"Updates available\" email to include the information normally shown at /admin/reports/updates/update, with links to the module updates and their release notes.",
+  "version": "2.2.x",
+  "package": "Development",
+  "composer_namespace": "drupal/advupdate",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "update",
+    "block"
+  ],
+  "configure": "update.settings",
+  "core_version_requirement": "^11.3",
+  "active_installs": 370,
+  "list_position": 2343,
+  "project_url": "https://www.drupal.org/project/advupdate",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Status report management",
+    "Deployment / release management"
+  ],
+  "keywords": [
+    "update manager",
+    "available updates",
+    "security updates",
+    "update email",
+    "update notification",
+    "release notes",
+    "hook_mail_alter",
+    "update report",
+    "security updates block",
+    "advupdate"
+  ]
+}

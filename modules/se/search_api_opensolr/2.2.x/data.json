@@ -1,0 +1,61 @@
+{
+  "name": "Search API opensolr",
+  "data_name": "search_api_opensolr",
+  "description": "Offers an implementation of the Search API that uses opensolr 3rd party service.",
+  "version": "2.2.x",
+  "package": "Search",
+  "composer_namespace": "drupal/search_api_opensolr",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "drupal/search_api_solr": ">=4.3.2",
+    "ext-zip": "*"
+  },
+  "dependent_modules": [
+    "search_api_solr"
+  ],
+  "configure": "search_api_opensolr.opensolr_config_form",
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": 409,
+  "list_position": 2314,
+  "project_url": "https://www.drupal.org/project/search_api_opensolr",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": {
+    "drupal/search_api_solr": ">=4.3.2",
+    "ext-zip": "*"
+  },
+  "suggests": {
+    "drupal/key": "Manages sensitive keys."
+  },
+  "submodules": [
+    "search_api_opensolr_security"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site search",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Search backend",
+    "Hosted search (SaaS)"
+  ],
+  "keywords": [
+    "search api",
+    "solr",
+    "opensolr",
+    "search_api_solr",
+    "solr connector",
+    "hosted solr",
+    "saas search",
+    "basic auth",
+    "autoconfigure",
+    "config zip",
+    "core",
+    "index",
+    "key module",
+    "opensolr.com"
+  ]
+}

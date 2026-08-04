@@ -1,0 +1,50 @@
+{
+  "name": "Email Validator Customizer",
+  "data_name": "evac",
+  "description": "Adds additional email validator services and allows to replace the one from Core.",
+  "version": "1.0.x",
+  "package": "Mail",
+  "composer_namespace": "drupal/evac",
+  "composer_requirements": {
+    "egulias/email-validator": "^3|^4",
+    "drupal/core": "^10.2 || ^11"
+  },
+  "dependent_modules": [],
+  "configure": "evac.settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": 2318,
+  "project_url": "https://www.drupal.org/project/evac",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "egulias/email-validator"
+  ],
+  "suggests": {
+    "ext-intl": "PHP Internationalization Libraries are required to use the SpoofChecking validation"
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Email / mail delivery"
+  ],
+  "keywords": [
+    "email",
+    "email validation",
+    "validator",
+    "egulias",
+    "dns check",
+    "mx record",
+    "spoof check",
+    "rfc validation",
+    "email.validator",
+    "service override",
+    "mail"
+  ]
+}
