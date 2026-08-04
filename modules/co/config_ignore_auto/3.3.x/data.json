@@ -1,0 +1,44 @@
+{
+  "name": "Config Ignore Auto",
+  "data_name": "config_ignore_auto",
+  "description": "Automatically ignore configs that were modified.",
+  "version": "3.3.x",
+  "package": "Config",
+  "composer_namespace": "drupal/config_ignore_auto",
+  "composer_requirements": {
+    "drupal/config_ignore": "^3.0"
+  },
+  "dependent_modules": [
+    "config_ignore"
+  ],
+  "configure": "config_ignore_auto.settings",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": 388,
+  "list_position": 2377,
+  "project_url": "https://www.drupal.org/project/config_ignore_auto",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Configuration management"
+  ],
+  "keywords": [
+    "config ignore",
+    "config auto ignore",
+    "configuration management",
+    "config sync",
+    "config import",
+    "config export",
+    "ignore config",
+    "config_ignore"
+  ]
+}

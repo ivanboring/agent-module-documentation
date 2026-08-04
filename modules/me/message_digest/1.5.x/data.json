@@ -1,0 +1,51 @@
+{
+  "name": "Message Digest",
+  "data_name": "message_digest",
+  "description": "Daily or weekly digest emails for the Message module",
+  "version": "1.5.x",
+  "package": "Message",
+  "composer_namespace": "drupal/message_digest",
+  "composer_requirements": {
+    "drupal/message_subscribe": "^1.0 || ^2.0"
+  },
+  "dependent_modules": [
+    "message_notify"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 642,
+  "list_position": 2359,
+  "project_url": "https://www.drupal.org/project/message_digest",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "message_digest_ui"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "User engagement"
+  ],
+  "subcategories": [
+    "Activity / notification messages",
+    "Messaging framework",
+    "Email / mail delivery"
+  ],
+  "keywords": [
+    "message",
+    "message digest",
+    "message_notify",
+    "digest email",
+    "daily digest",
+    "weekly digest",
+    "notifier",
+    "notification",
+    "aggregate",
+    "cron email",
+    "message_subscribe"
+  ]
+}

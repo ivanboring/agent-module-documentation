@@ -1,0 +1,47 @@
+{
+  "name": "Access by Reference",
+  "data_name": "access_by_ref",
+  "description": "Provide CRUD access to nodes based on user or access in a referenced field",
+  "version": "5.0.x",
+  "package": "Permissons",
+  "composer_namespace": "drupal/access_by_ref",
+  "composer_requirements": {
+    "drupal/core": "^11.3 || ^12"
+  },
+  "dependent_modules": [],
+  "configure": "entity.abrconfig.collection",
+  "core_version_requirement": "^11.3 || ^12",
+  "active_installs": 358,
+  "list_position": 2381,
+  "project_url": "https://www.drupal.org/project/access_by_ref",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Per-node view access",
+    "Node access grants API"
+  ],
+  "keywords": [
+    "access_by_ref",
+    "node access",
+    "entity reference access",
+    "hook_node_access",
+    "abrconfig",
+    "reference-based permissions",
+    "inherit access",
+    "user reference",
+    "shared value access",
+    "CRUD access",
+    "view update delete",
+    "chainable access"
+  ]
+}

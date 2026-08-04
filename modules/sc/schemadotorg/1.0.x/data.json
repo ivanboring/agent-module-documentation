@@ -1,0 +1,56 @@
+{
+  "name": "Schema.org Blueprints",
+  "data_name": "schemadotorg",
+  "description": "Uses Schema.org as the blueprint for the content architecture and structured data in a Drupal website.",
+  "version": "1.0.x",
+  "package": "Schema.org Blueprints Core",
+  "composer_namespace": "drupal/schemadotorg",
+  "composer_requirements": {
+    "drupal/core": "^10.3 || ^11"
+  },
+  "dependent_modules": [
+    "node",
+    "user",
+    "field",
+    "datetime",
+    "image",
+    "link",
+    "options",
+    "telephone",
+    "text"
+  ],
+  "configure": "schemadotorg",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 329,
+  "list_position": 2379,
+  "project_url": "https://www.drupal.org/project/schemadotorg",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": ["schemadotorg_additional_mappings", "schemadotorg_additional_type", "schemadotorg_address", "schemadotorg_allowed_formats", "schemadotorg_auto_entitylabel", "schemadotorg_block_content", "schemadotorg_cer", "schemadotorg_content_model_documentation", "schemadotorg_content_moderation", "schemadotorg_custom_field", "schemadotorg_descriptions", "schemadotorg_diagram", "schemadotorg_entity_reference_override", "schemadotorg_epp", "schemadotorg_existing_values_autocomplete_widget", "schemadotorg_export", "schemadotorg_field_group", "schemadotorg_field_prefix", "schemadotorg_field_validation", "schemadotorg_geolocation", "schemadotorg_help", "schemadotorg_inline_entity_form", "schemadotorg_jsonapi", "schemadotorg_jsonapi_preview", "schemadotorg_jsonld", "schemadotorg_jsonld_breadcrumb", "schemadotorg_jsonld_custom", "schemadotorg_jsonld_embed", "schemadotorg_jsonld_endpoint", "schemadotorg_jsonld_preview", "schemadotorg_layout_paragraphs", "schemadotorg_mapping_set", "schemadotorg_media", "schemadotorg_mercury_editor", "schemadotorg_metatag", "schemadotorg_node", "schemadotorg_office_hours", "schemadotorg_options", "schemadotorg_paragraphs", "schemadotorg_pathauto", "schemadotorg_physical", "schemadotorg_recipe", "schemadotorg_report", "schemadotorg_role", "schemadotorg_scheduler", "schemadotorg_simple_sitemap", "schemadotorg_smart_date", "schemadotorg_starterkit", "schemadotorg_taxonomy", "schemadotorg_translation", "schemadotorg_type_tray", "schemadotorg_ui"],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Search engine optimization (SEO)",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Structured data / Schema.org",
+    "Semantic metadata"
+  ],
+  "keywords": [
+    "schema.org",
+    "structured data",
+    "content architecture",
+    "content model",
+    "blueprint",
+    "entity mapping",
+    "schema type",
+    "schema property",
+    "json-ld",
+    "jrockowitz"
+  ]
+}

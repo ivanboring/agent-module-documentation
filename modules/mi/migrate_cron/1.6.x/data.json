@@ -1,0 +1,46 @@
+{
+  "name": "Migrate Cron",
+  "data_name": "migrate_cron",
+  "description": "Run migrations at cron.",
+  "version": "1.6.x",
+  "package": "Migration",
+  "composer_namespace": "drupal/migrate_cron",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "migrate",
+    "migrate_plus"
+  ],
+  "configure": "migrate_cron.admin_settings_form",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": 358,
+  "list_position": 2383,
+  "project_url": "https://www.drupal.org/project/migrate_cron",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Import and export"
+  ],
+  "subcategories": [
+    "Cron / task scheduling",
+    "Migration tooling"
+  ],
+  "keywords": [
+    "migrate_cron",
+    "migration",
+    "cron",
+    "scheduled migration",
+    "migrate_plus",
+    "hook_cron",
+    "interval",
+    "automatic import",
+    "migrate executable"
+  ]
+}

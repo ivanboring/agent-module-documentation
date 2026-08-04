@@ -1,0 +1,42 @@
+{
+  "name": "Search Exclusion by Node id",
+  "data_name": "search_exclude_nid",
+  "description": "Excludes single nodes from the standard Drupal search result.",
+  "version": "2.0.x",
+  "package": "Search",
+  "composer_namespace": "drupal/search_exclude_nid",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "search"
+  ],
+  "configure": "search_exclude_nid.form",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 571,
+  "list_position": 2356,
+  "project_url": "https://www.drupal.org/project/search_exclude_nid",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site search"
+  ],
+  "subcategories": [
+    "Search result sorting",
+    "Search backend"
+  ],
+  "keywords": [
+    "search",
+    "exclude",
+    "node id",
+    "nid",
+    "hide from search",
+    "core search",
+    "search results"
+  ]
+}

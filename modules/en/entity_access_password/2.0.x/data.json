@@ -1,0 +1,53 @@
+{
+  "name": "Entity Access Password",
+  "data_name": "entity_access_password",
+  "description": "Allows protection of fieldable entities with a password.",
+  "version": "2.0.x",
+  "package": "Access",
+  "composer_namespace": "drupal/entity_access_password",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "file",
+    "user"
+  ],
+  "configure": "entity_access_password.settings_form",
+  "core_version_requirement": "^11.3 || ^12",
+  "active_installs": 355,
+  "list_position": 2376,
+  "project_url": "https://www.drupal.org/project/entity_access_password",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "entity_access_password_session_backend",
+    "entity_access_password_user_data_backend"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Security"
+  ],
+  "subcategories": [
+    "Password-protected entities",
+    "Field-level access control"
+  ],
+  "keywords": [
+    "entity access password",
+    "password protect",
+    "protected content",
+    "password field",
+    "global password",
+    "bundle password",
+    "per-entity password",
+    "view mode protection",
+    "password form",
+    "flood control",
+    "private file access",
+    "hint",
+    "protected label"
+  ]
+}

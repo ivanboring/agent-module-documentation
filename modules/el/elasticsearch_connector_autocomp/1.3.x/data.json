@@ -1,0 +1,50 @@
+{
+  "name": "Elasticsearch Connector Autocomplete",
+  "data_name": "elasticsearch_connector_autocomp",
+  "description": "This module ads the ability to configure the index and fields to index ngrams, which improves autocompletion results.",
+  "version": "1.3.x",
+  "package": "Search",
+  "composer_namespace": "drupal/elasticsearch_connector_autocomp",
+  "composer_requirements": {
+    "drupal/elasticsearch_connector": "^8.0@alpha"
+  },
+  "dependent_modules": [
+    "system",
+    "elasticsearch_connector",
+    "search_api"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": 483,
+  "list_position": 2349,
+  "project_url": "https://www.drupal.org/project/elasticsearch_connector_autocomp",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site search"
+  ],
+  "subcategories": [
+    "Autocomplete / typeahead",
+    "Search backend"
+  ],
+  "keywords": [
+    "elasticsearch",
+    "elasticsearch_connector",
+    "search_api",
+    "autocomplete",
+    "ngram",
+    "edge_ngram",
+    "analyzer",
+    "text_ngram",
+    "partial word search",
+    "typeahead",
+    "index mapping"
+  ]
+}

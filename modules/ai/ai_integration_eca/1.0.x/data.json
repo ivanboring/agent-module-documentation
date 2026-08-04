@@ -1,0 +1,61 @@
+{
+  "name": "AI Integration - ECA",
+  "data_name": "ai_integration_eca",
+  "description": "The bridge between AI and ECA.",
+  "version": "1.0.x",
+  "package": "AI",
+  "composer_namespace": "drupal/ai_integration_eca",
+  "composer_requirements": {
+    "drupal/ai": "^1.2",
+    "drupal/ai_agents": "^1.2",
+    "drupal/core": "^10.3 || ^11",
+    "drupal/eca": "^2 || ^3",
+    "drupal/token": "^1.15"
+  },
+  "dependent_modules": [
+    "ai",
+    "file",
+    "eca"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 423,
+  "list_position": 2351,
+  "project_url": "https://www.drupal.org/project/ai_integration_eca",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "ai_integration_eca_agents",
+    "ai_integration_eca_automators"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)",
+    "Automation"
+  ],
+  "subcategories": [
+    "AI agents / taskable AI",
+    "Workflow / business rules"
+  ],
+  "keywords": [
+    "ai",
+    "eca",
+    "event condition action",
+    "ai action",
+    "chat",
+    "embedding",
+    "moderation",
+    "speech to text",
+    "text to speech",
+    "llm",
+    "ai provider",
+    "token",
+    "workflow",
+    "automation"
+  ]
+}

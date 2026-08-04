@@ -1,0 +1,50 @@
+{
+  "name": "Search API Solr Overrides",
+  "data_name": "search_overrides",
+  "description": "Provides an interface to manually elevate or exclude nodes in results from Solr.",
+  "version": "2.1.x",
+  "package": "Search",
+  "composer_namespace": "drupal/search_overrides",
+  "composer_requirements": {
+    "drupal/search_api_solr": ">=4.2.4"
+  },
+  "dependent_modules": [
+    "search_api",
+    "search_api_solr"
+  ],
+  "configure": "search_override.settings",
+  "core_version_requirement": "^9.2 || ^10 || ^11",
+  "active_installs": 421,
+  "list_position": 2361,
+  "project_url": "https://www.drupal.org/project/search_overrides",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site search"
+  ],
+  "subcategories": [
+    "Search result sorting",
+    "Search backend"
+  ],
+  "keywords": [
+    "search overrides",
+    "solr",
+    "search_api_solr",
+    "elevate",
+    "exclude",
+    "promote",
+    "elevateIds",
+    "excludeIds",
+    "query elevation",
+    "search override entity",
+    "PreQueryEvent",
+    "manual ranking"
+  ]
+}

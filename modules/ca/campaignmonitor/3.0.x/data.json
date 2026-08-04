@@ -1,0 +1,56 @@
+{
+  "name": "Campaign Monitor",
+  "data_name": "campaignmonitor",
+  "description": "Drupal integration into the Campaign Monitor API.",
+  "version": "3.0.x",
+  "package": "Campaign Monitor",
+  "composer_namespace": "drupal/campaignmonitor",
+  "composer_requirements": {
+    "campaignmonitor/createsend-php": "^7.0"
+  },
+  "dependent_modules": [
+    "link"
+  ],
+  "configure": "campaignmonitor.admin",
+  "core_version_requirement": "^10.2 || ^11.0",
+  "active_installs": 726,
+  "list_position": 2353,
+  "project_url": "https://www.drupal.org/project/campaignmonitor",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "campaignmonitor/createsend-php"
+  ],
+  "suggests": {},
+  "submodules": [
+    "campaignmonitor_registration",
+    "campaignmonitor_user"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "User engagement"
+  ],
+  "subcategories": [
+    "Email / mail delivery",
+    "CRM integration",
+    "Activity / notification messages"
+  ],
+  "keywords": [
+    "campaign monitor",
+    "createsend",
+    "newsletter",
+    "email marketing",
+    "mailing list",
+    "subscribe",
+    "subscription",
+    "createsend-php",
+    "subscribe block",
+    "segments",
+    "list",
+    "opt-in"
+  ]
+}

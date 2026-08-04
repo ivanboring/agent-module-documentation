@@ -1,0 +1,41 @@
+{
+  "name": "Entity Access Password User Data Backend",
+  "data_name": "entity_access_password_user_data_backend",
+  "description": "Allows to store access information in the user data. Does nothing for anonymous users.",
+  "version": "2.0.x",
+  "package": "Access",
+  "composer_namespace": "drupal/entity_access_password",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "user",
+    "entity_access_password"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11.3 || ^12",
+  "active_installs": 355,
+  "list_position": 2376,
+  "project_url": "https://www.drupal.org/project/entity_access_password",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Password-protected entities",
+    "User roles & permissions"
+  ],
+  "keywords": [
+    "user data",
+    "access storage",
+    "persistent access",
+    "manual grant",
+    "entity access password backend"
+  ]
+}

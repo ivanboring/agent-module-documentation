@@ -1,0 +1,58 @@
+{
+  "name": "Auth0",
+  "data_name": "auth0",
+  "description": "Integrate Auth0 with Drupal.",
+  "version": "5.0.x",
+  "package": null,
+  "composer_namespace": "drupal/auth0",
+  "composer_requirements": {
+    "auth0/auth0-php": "^8.3",
+    "drupal/key": "^1.20",
+    "php-http/guzzle7-adapter": "^1.0",
+    "drupal/externalauth": "^2.0"
+  },
+  "dependent_modules": [
+    "key",
+    "externalauth"
+  ],
+  "configure": "auth0.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 404,
+  "list_position": 2365,
+  "project_url": "https://www.drupal.org/project/auth0",
+  "license": "MIT",
+  "php_requirement": "8.3",
+  "library_dependencies": [
+    "auth0/auth0-php",
+    "php-http/guzzle7-adapter"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Security"
+  ],
+  "subcategories": [
+    "External authentication",
+    "OAuth / OpenID Connect client"
+  ],
+  "keywords": [
+    "auth0",
+    "sso",
+    "single sign-on",
+    "oauth",
+    "openid connect",
+    "oidc",
+    "externalauth",
+    "social login",
+    "identity provider",
+    "id token",
+    "role mapping",
+    "claim mapping",
+    "key module"
+  ]
+}

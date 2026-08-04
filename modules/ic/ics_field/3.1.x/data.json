@@ -1,0 +1,56 @@
+{
+  "name": "iCalendar Field",
+  "data_name": "ics_field",
+  "description": "A module providing a calendar download as an .ics file",
+  "version": "3.1.x",
+  "package": "Fields",
+  "composer_namespace": "drupal/ics_field",
+  "composer_requirements": {
+    "php": ">=7.4",
+    "eluceo/ical": "^0.17.0",
+    "html2text/html2text": "~4.0"
+  },
+  "dependent_modules": [
+    "datetime",
+    "token"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.5 || ^11",
+  "active_installs": 389,
+  "list_position": 2358,
+  "project_url": "https://www.drupal.org/project/ics_field",
+  "license": "GPL-2.0+",
+  "php_requirement": ">=7.4",
+  "library_dependencies": [
+    "eluceo/ical",
+    "html2text/html2text"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Calendar / iCal export",
+    "Event management",
+    "Fields"
+  ],
+  "keywords": [
+    "ics",
+    "icalendar",
+    "ical",
+    "calendar download",
+    "vevent",
+    "field type",
+    "event",
+    "eluceo/ical",
+    "datetime",
+    "add to calendar",
+    "rfc5545"
+  ]
+}
