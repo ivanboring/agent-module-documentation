@@ -1,0 +1,52 @@
+{
+  "name": "Subgroup",
+  "data_name": "ggroup",
+  "description": "Allows a group to belong to another group",
+  "version": "3.0.x",
+  "package": "Group",
+  "composer_namespace": "drupal/ggroup",
+  "composer_requirements": {
+    "drupal/group": "^3.0"
+  },
+  "dependent_modules": [
+    "group"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 574,
+  "list_position": 1993,
+  "project_url": "https://www.drupal.org/project/ggroup",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Groups & memberships"
+  ],
+  "keywords": [
+    "group",
+    "subgroup",
+    "ggroup",
+    "hierarchy",
+    "graph",
+    "group_graph",
+    "nested groups",
+    "supergroup",
+    "descendants",
+    "ancestors",
+    "group relation",
+    "GroupRelationType",
+    "creator_wizard",
+    "views argument",
+    "group_id_depth"
+  ]
+}

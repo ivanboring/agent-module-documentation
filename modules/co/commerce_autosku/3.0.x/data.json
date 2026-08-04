@@ -1,0 +1,54 @@
+{
+  "name": "Commerce Automatic Product Variation SKU",
+  "data_name": "commerce_autosku",
+  "description": "Automatically Creates the SKU of a product using tokens.",
+  "version": "3.0.x",
+  "package": "Commerce (contrib)",
+  "composer_namespace": "drupal/commerce_autosku",
+  "composer_requirements": {
+    "drupal/core": "^10.3 || ^11",
+    "drupal/commerce": "^2 || ^3",
+    "drupal/token": "^1",
+    "ext-mbstring": "*"
+  },
+  "dependent_modules": [
+    "commerce_product",
+    "token"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 550,
+  "list_position": 2013,
+  "project_url": "https://www.drupal.org/project/commerce_autosku",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "commerce_autosku_generator"
+  ],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "SKU generation",
+    "Token / placeholder replacement"
+  ],
+  "keywords": [
+    "commerce",
+    "sku",
+    "product variation",
+    "autosku",
+    "token",
+    "generator",
+    "commerce_autosku_generator",
+    "pattern",
+    "unique sku",
+    "third party settings",
+    "drupal commerce"
+  ]
+}

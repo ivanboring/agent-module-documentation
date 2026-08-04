@@ -1,0 +1,54 @@
+{
+  "name": "AI Translate",
+  "data_name": "ai_translate",
+  "description": "This module provides simple one-click AI-powered translations.",
+  "version": "1.3.x",
+  "package": "AI",
+  "composer_namespace": "drupal/ai_translate",
+  "composer_requirements": {
+    "drupal/ai": ">1.2.1"
+  },
+  "dependent_modules": [
+    "ai:ai",
+    "drupal:content_translation"
+  ],
+  "configure": "ai_translate.settings_form",
+  "core_version_requirement": "^10.4 || ^11",
+  "active_installs": 572,
+  "list_position": 2020,
+  "project_url": "https://www.drupal.org/project/ai_translate",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "text_extractor"
+  ],
+  "categories": [
+    "Multilingual",
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "Machine translation",
+    "Translation / multilingual"
+  ],
+  "keywords": [
+    "ai",
+    "translate",
+    "translation",
+    "content_translation",
+    "llm",
+    "machine translation",
+    "ai_translate",
+    "interface translation",
+    "locale",
+    "field text extractor",
+    "prompt",
+    "batch translation",
+    "one-click translation"
+  ]
+}

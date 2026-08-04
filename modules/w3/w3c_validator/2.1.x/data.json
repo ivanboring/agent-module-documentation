@@ -1,0 +1,48 @@
+{
+  "name": "W3C Validator",
+  "data_name": "w3c_validator",
+  "description": "Validate pages using the W3C Markup Validator.",
+  "version": "2.1.x",
+  "package": "W3C Validator",
+  "composer_namespace": "drupal/w3c_validator",
+  "composer_requirements": {
+    "drupal/core": "^9.2.0 || ^10 || ^11",
+    "rexxars/html-validator": "^2.3.0"
+  },
+  "dependent_modules": [],
+  "configure": "w3c_validator.overview",
+  "core_version_requirement": "^9.2 || ^10 || ^11",
+  "active_installs": 607,
+  "list_position": 1989,
+  "project_url": "https://www.drupal.org/project/w3c_validator",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "rexxars/html-validator"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Markup validation"
+  ],
+  "keywords": [
+    "w3c",
+    "html validation",
+    "markup validator",
+    "validator.nu",
+    "accessibility",
+    "standards compliance",
+    "validate pages",
+    "batch validation",
+    "site report",
+    "html validator library",
+    "token auth"
+  ]
+}

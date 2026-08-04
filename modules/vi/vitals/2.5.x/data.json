@@ -1,0 +1,55 @@
+{
+  "name": "Vitals",
+  "data_name": "vitals",
+  "description": "Exposes the update status and other vital site health information via an api.",
+  "version": "2.5.x",
+  "package": null,
+  "composer_namespace": "drupal/vitals",
+  "composer_requirements": {
+    "drupal/core": "^8.9||^9.0||^10.0 || ^11"
+  },
+  "dependent_modules": [
+    "update"
+  ],
+  "configure": "vitals_settings",
+  "core_version_requirement": "^8.9 || ^9 || ^10 || ^11",
+  "active_installs": 645,
+  "list_position": 2009,
+  "project_url": "https://www.drupal.org/project/vitals",
+  "license": "GPL-2.0+",
+  "php_requirement": "7.0",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "vitals_check"
+  ],
+  "categories": [
+    "Administration tools",
+    "Developer tools",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Dashboard / reporting",
+    "Health check endpoint",
+    "Version disclosure / fingerprinting"
+  ],
+  "keywords": [
+    "vitals",
+    "site health",
+    "monitoring",
+    "update status",
+    "security updates",
+    "health endpoint",
+    "json endpoint",
+    "token",
+    "flood control",
+    "uptime",
+    "php version",
+    "drupal version",
+    "vitals_check"
+  ]
+}

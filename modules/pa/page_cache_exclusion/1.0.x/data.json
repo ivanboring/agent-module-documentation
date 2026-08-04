@@ -1,0 +1,45 @@
+{
+  "name": "Page Cache Exclusion",
+  "data_name": "page_cache_exclusion",
+  "description": "Disable caching of specific pages and 4xx responses.",
+  "version": "1.0.x",
+  "package": "Other",
+  "composer_namespace": "drupal/page_cache_exclusion",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:page_cache"
+  ],
+  "configure": "page_cache_exclusion.admin",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 567,
+  "list_position": 2021,
+  "project_url": "https://www.drupal.org/project/page_cache_exclusion",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "Page cache control"
+  ],
+  "keywords": [
+    "page cache",
+    "cache exclusion",
+    "no cache",
+    "anonymous cache",
+    "internal page cache",
+    "query parameters",
+    "4xx",
+    "client error",
+    "middleware",
+    "page_cache_exclusion",
+    "performance"
+  ]
+}
