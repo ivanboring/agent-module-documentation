@@ -1,0 +1,58 @@
+{
+  "name": "Backup and Migrate: AWS S3",
+  "data_name": "backup_migrate_aws_s3",
+  "description": "Provides AWS S3 destination for Backup & Migrate module.",
+  "version": "6.0.x",
+  "package": "AWS S3",
+  "composer_namespace": "drupal/backup_migrate_aws_s3",
+  "composer_requirements": {
+    "drupal/backup_migrate": "^5.0",
+    "drupal/key": "^1.15",
+    "aws/aws-sdk-php": "^3.2",
+    "drupal/core": "^10.1 || ^11"
+  },
+  "dependent_modules": [
+    "backup_migrate",
+    "key"
+  ],
+  "configure": "backup_migrate.quick_backup",
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": 371,
+  "list_position": 2420,
+  "project_url": "https://www.drupal.org/project/backup_migrate_aws_s3",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [
+    "aws/aws-sdk-php"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Backup & restore",
+    "Cloud services (AWS)"
+  ],
+  "keywords": [
+    "backup migrate",
+    "aws s3",
+    "s3",
+    "backup destination",
+    "remote backup",
+    "offsite backup",
+    "aws-sdk-php",
+    "key module",
+    "key_aws",
+    "s3 bucket",
+    "object lock",
+    "s3 compatible",
+    "minio",
+    "cloud storage"
+  ]
+}

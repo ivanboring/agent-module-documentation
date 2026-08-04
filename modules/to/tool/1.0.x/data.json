@@ -1,0 +1,58 @@
+{
+  "name": "Tool",
+  "data_name": "tool",
+  "description": "Provides a tool plugin for creating well defined actions.",
+  "version": "1.0.x",
+  "package": "Tools",
+  "composer_namespace": "drupal/tool",
+  "composer_requirements": {
+    "php": ">=8.2"
+  },
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10.5 || ^11",
+  "active_installs": 528,
+  "list_position": 2396,
+  "project_url": "https://www.drupal.org/project/tool",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.2",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "tool_ai_connector",
+    "tool_explorer"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "tool",
+    "tool.typed_data_adapter"
+  ],
+  "categories": [
+    "Developer tools",
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "Plugin system",
+    "AI tooling / function calling",
+    "Data transformation"
+  ],
+  "keywords": [
+    "tool",
+    "action",
+    "well defined action",
+    "typed data",
+    "function calling",
+    "AI tool",
+    "MCP",
+    "input definition",
+    "output definition",
+    "operation",
+    "ExecutableResult",
+    "plugin",
+    "invoker",
+    "entity handle",
+    "drush tool:run"
+  ]
+}

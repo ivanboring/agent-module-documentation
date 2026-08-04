@@ -1,0 +1,54 @@
+{
+  "name": "Obfuscate",
+  "data_name": "obfuscate",
+  "description": "Obfuscates email addresses with a Field Formatter of Email field, a text Filter and a Twig extension.",
+  "version": "2.0.x",
+  "package": "Input filters",
+  "composer_namespace": "drupal/obfuscate",
+  "composer_requirements": {
+    "ext-mbstring": "*"
+  },
+  "dependent_modules": [
+    "field",
+    "filter"
+  ],
+  "configure": "obfuscate.obfuscate_config_form",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 391,
+  "list_position": 2408,
+  "project_url": "https://www.drupal.org/project/obfuscate",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Content editing experience",
+    "Content display"
+  ],
+  "subcategories": [
+    "Spam prevention",
+    "Text format filters",
+    "Field formatters",
+    "Outbound link privacy"
+  ],
+  "keywords": [
+    "obfuscate",
+    "email",
+    "email obfuscation",
+    "spam",
+    "spambot",
+    "anti-spam",
+    "rot13",
+    "html entity",
+    "text filter",
+    "field formatter",
+    "twig",
+    "mailto"
+  ]
+}

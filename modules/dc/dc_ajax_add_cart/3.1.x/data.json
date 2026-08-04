@@ -1,0 +1,50 @@
+{
+  "name": "Commerce AJAX Add to Cart",
+  "data_name": "dc_ajax_add_cart",
+  "description": "Ajaxifies addition of products to cart",
+  "version": "3.1.x",
+  "package": "Commerce (contrib)",
+  "composer_namespace": "drupal/dc_ajax_add_cart",
+  "composer_requirements": {
+    "drupal/commerce": "^2.4 || ^3"
+  },
+  "dependent_modules": [
+    "commerce_product",
+    "commerce_cart"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": 1065,
+  "list_position": 2409,
+  "project_url": "https://www.drupal.org/project/dc_ajax_add_cart",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "dc_ajax_add_cart_popup",
+    "dc_ajax_add_cart_views"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Add to cart forms",
+    "Cart management"
+  ],
+  "keywords": [
+    "commerce",
+    "ajax",
+    "add to cart",
+    "cart",
+    "drupal commerce",
+    "product variation",
+    "no page refresh",
+    "order item",
+    "cart block"
+  ]
+}
