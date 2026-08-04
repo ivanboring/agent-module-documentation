@@ -1,0 +1,44 @@
+{
+  "name": "Restrict By IP",
+  "data_name": "restrict_by_ip",
+  "description": "Enables limiting user login and role access to specific IP Addresses.",
+  "version": "9.0.x",
+  "package": "Access control",
+  "composer_namespace": "drupal/restrict_by_ip",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "restrict_by_ip.general_settings",
+  "core_version_requirement": "^11.3 || ^12",
+  "active_installs": 1342,
+  "list_position": 2028,
+  "project_url": "https://www.drupal.org/project/restrict_by_ip",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Security"
+  ],
+  "subcategories": [
+    "IP address restriction",
+    "Login page protection"
+  ],
+  "keywords": [
+    "restrict by ip",
+    "ip restriction",
+    "login restriction",
+    "role restriction",
+    "cidr",
+    "access control",
+    "firewall",
+    "allow list",
+    "reverse proxy",
+    "trusted proxy"
+  ]
+}

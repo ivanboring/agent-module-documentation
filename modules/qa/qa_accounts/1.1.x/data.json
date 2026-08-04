@@ -1,0 +1,47 @@
+{
+  "name": "QA Accounts",
+  "data_name": "qa_accounts",
+  "description": "Creates dummy accounts to aid in testing. Never enable in production environments.",
+  "version": "1.1.x",
+  "package": "Development",
+  "composer_namespace": "drupal/qa_accounts",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "user"
+  ],
+  "configure": "qa_accounts.settings",
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": 630,
+  "list_position": 2026,
+  "project_url": "https://www.drupal.org/project/qa_accounts",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Administration tools",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "User roles & permissions",
+    "Test user accounts"
+  ],
+  "keywords": [
+    "qa",
+    "qa accounts",
+    "test users",
+    "dummy accounts",
+    "testing",
+    "roles",
+    "user per role",
+    "development",
+    "drush",
+    "fixtures"
+  ]
+}

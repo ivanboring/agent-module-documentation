@@ -1,0 +1,48 @@
+{
+  "name": "Upgrade Rector",
+  "data_name": "upgrade_rector",
+  "description": "Get automated code fix suggestions for deprecations.",
+  "version": "2.0.x",
+  "package": "Administration",
+  "composer_namespace": "drupal/upgrade_rector",
+  "composer_requirements": {
+    "palantirnet/drupal-rector": "~0.11"
+  },
+  "dependent_modules": [],
+  "configure": "upgrade_rector.run",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 536,
+  "list_position": 2061,
+  "project_url": "https://www.drupal.org/project/upgrade_rector",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "palantirnet/drupal-rector"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Upgrade / deprecation analysis",
+    "Code generation / scaffolding"
+  ],
+  "keywords": [
+    "rector",
+    "deprecations",
+    "upgrade",
+    "drupal-rector",
+    "automated patch",
+    "code fix",
+    "upgrade status",
+    "deprecation removal",
+    "readiness",
+    "patch suggestions"
+  ]
+}

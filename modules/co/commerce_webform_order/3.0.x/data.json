@@ -1,0 +1,68 @@
+{
+  "name": "Commerce Webform Order",
+  "data_name": "commerce_webform_order",
+  "description": "This module integrates webform with commerce modules.",
+  "version": "3.0.x",
+  "package": "Commerce (contrib)",
+  "composer_namespace": "drupal/commerce_webform_order",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "drupal/core": "^9 || ^10 || ^11",
+    "drupal/commerce": "^2.19 || ^3.0",
+    "drupal/commerce_purchasable_entity": "^1.0",
+    "drupal/webform": "^6.1"
+  },
+  "dependent_modules": [
+    "commerce",
+    "commerce_cart",
+    "commerce_checkout",
+    "commerce_order",
+    "commerce_price",
+    "commerce_store",
+    "webform"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 545,
+  "list_position": 2037,
+  "project_url": "https://www.drupal.org/project/commerce_webform_order",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/token": "Provides a user interface for the Token API and some missing core tokens.",
+    "drupal/token_or": "Provides an 'or-able' token."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce",
+    "Forms and surveys"
+  ],
+  "subcategories": [
+    "Order management",
+    "Add to cart forms",
+    "Checkout customization",
+    "Webform elements"
+  ],
+  "keywords": [
+    "commerce",
+    "webform",
+    "order",
+    "webform handler",
+    "purchasable entity",
+    "add to cart",
+    "checkout",
+    "payment method",
+    "order item",
+    "cart",
+    "order state",
+    "payment status",
+    "commerce_webform_order",
+    "donation form",
+    "membership"
+  ]
+}

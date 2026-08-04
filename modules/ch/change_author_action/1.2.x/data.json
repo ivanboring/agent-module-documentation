@@ -1,0 +1,48 @@
+{
+  "name": "Change author action",
+  "data_name": "change_author_action",
+  "description": "Adds an extra action to nodes to allow changing the author in bulk.",
+  "version": "1.2.x",
+  "package": "User interface",
+  "composer_namespace": "drupal/change_author_action",
+  "composer_requirements": {
+    "drupal/action": "^0.2"
+  },
+  "dependent_modules": [
+    "action"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 586,
+  "list_position": 2043,
+  "project_url": "https://www.drupal.org/project/change_author_action",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Content ownership / reassignment",
+    "Bulk operations"
+  ],
+  "keywords": [
+    "change author",
+    "bulk action",
+    "reassign author",
+    "authorship",
+    "node owner",
+    "media owner",
+    "setOwnerId",
+    "action plugin",
+    "batch",
+    "administer users",
+    "bulk update"
+  ]
+}

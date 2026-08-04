@@ -1,0 +1,56 @@
+{
+  "name": "Commerce AvaTax",
+  "data_name": "commerce_avatax",
+  "description": "Avalara AvaTax integration for Drupal Commerce.",
+  "version": "1.5.x",
+  "package": "Commerce (contrib)",
+  "composer_namespace": "drupal/commerce_avatax",
+  "composer_requirements": {
+    "php": ">=8",
+    "drupal/commerce": "^2.16 || ^3"
+  },
+  "dependent_modules": [
+    "commerce:commerce",
+    "commerce:commerce_order",
+    "commerce:commerce_store",
+    "commerce:commerce_tax"
+  ],
+  "configure": "commerce_avatax.config_settings",
+  "core_version_requirement": "^9.3 || ^10.1 || ^11",
+  "active_installs": 544,
+  "list_position": 2063,
+  "project_url": "https://www.drupal.org/project/commerce_avatax",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/commerce_shipping": "^2.0@rc || ^3 (tax shipping lines & admin shipment address validation)"
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Tax / VAT",
+    "CRM integration"
+  ],
+  "keywords": [
+    "avatax",
+    "avalara",
+    "sales tax",
+    "commerce tax",
+    "remote tax type",
+    "address validation",
+    "tax exemption",
+    "tax code",
+    "customerCode",
+    "transactions",
+    "commerce",
+    "VAT"
+  ]
+}

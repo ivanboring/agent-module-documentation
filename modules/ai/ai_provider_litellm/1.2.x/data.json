@@ -1,0 +1,49 @@
+{
+  "name": "LiteLLM AI Provider",
+  "data_name": "ai_provider_litellm",
+  "description": "This enables the use of a LiteLLM proxy as a provider for the AI module.",
+  "version": "1.2.x",
+  "package": "AI Providers",
+  "composer_namespace": "drupal/ai_provider_litellm",
+  "composer_requirements": {
+    "drupal/ai_provider_openai": "^1.2",
+    "drupal/ai": "^1.2.0"
+  },
+  "dependent_modules": [
+    "ai"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 | ^11",
+  "active_installs": 620,
+  "list_position": 2033,
+  "project_url": "https://www.drupal.org/project/ai_provider_litellm",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "AI provider abstraction / LLM gateway"
+  ],
+  "keywords": [
+    "litellm",
+    "ai provider",
+    "llm gateway",
+    "proxy",
+    "openai compatible",
+    "ai module",
+    "chat",
+    "embeddings",
+    "moderation",
+    "text to image",
+    "key module",
+    "model routing"
+  ]
+}

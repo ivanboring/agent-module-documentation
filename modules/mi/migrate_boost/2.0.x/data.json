@@ -1,0 +1,49 @@
+{
+  "name": "Migrate booster",
+  "data_name": "migrate_boost",
+  "description": "Hooks disabler",
+  "version": "2.0.x",
+  "package": "Migration",
+  "composer_namespace": "drupal/migrate_boost",
+  "composer_requirements": {
+    "drush/drush": "^13"
+  },
+  "dependent_modules": [
+    "migrate"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11.1",
+  "active_installs": 585,
+  "list_position": 2056,
+  "project_url": "https://www.drupal.org/project/migrate_boost",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Migration tooling"
+  ],
+  "keywords": [
+    "migrate",
+    "migration",
+    "performance",
+    "disable hooks",
+    "bypass hooks",
+    "module_handler decorator",
+    "drush",
+    "migrate:import",
+    "migrate:rollback",
+    "entity_insert",
+    "pathauto",
+    "xmlsitemap"
+  ]
+}
