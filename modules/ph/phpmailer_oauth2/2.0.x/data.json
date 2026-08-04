@@ -1,0 +1,55 @@
+{
+  "name": "PHPMailer OAuth2",
+  "data_name": "phpmailer_oauth2",
+  "description": "OAuth2 client for PHPMailer SMTP",
+  "version": "2.0.x",
+  "package": "Mail",
+  "composer_namespace": "drupal/phpmailer_oauth2",
+  "composer_requirements": {
+    "drupal/phpmailer_smtp": "^2.1.0",
+    "thenetworg/oauth2-azure": "^2.0.1"
+  },
+  "dependent_modules": [
+    "phpmailer_smtp"
+  ],
+  "configure": "phpmailer_oauth2.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 325,
+  "list_position": 2470,
+  "project_url": "https://www.drupal.org/project/phpmailer_oauth2",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [
+    "thenetworg/oauth2-azure"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Email / SMTP",
+    "Cloud services (Azure)",
+    "OAuth / OpenID Connect client"
+  ],
+  "keywords": [
+    "phpmailer",
+    "oauth2",
+    "smtp",
+    "azure",
+    "microsoft 365",
+    "office 365",
+    "outlook",
+    "aad",
+    "xoauth2",
+    "mail",
+    "refresh token",
+    "SMTP.Send",
+    "thenetworg/oauth2-azure"
+  ]
+}

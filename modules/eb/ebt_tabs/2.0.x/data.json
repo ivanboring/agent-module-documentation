@@ -1,0 +1,58 @@
+{
+  "name": "Extra Block Types (EBT): Tabs",
+  "data_name": "ebt_tabs",
+  "description": "Adds Tabs block type with jQuery UI Tab plugin.",
+  "version": "2.0.x",
+  "package": "Extra Block Types",
+  "composer_namespace": "drupal/ebt_tabs",
+  "composer_requirements": {
+    "drupal/block_field": "^1.0",
+    "drupal/ebt_core": "^2.0",
+    "drupal/jquery_ui_tabs": "^2.0",
+    "drupal/paragraphs": "^1.0",
+    "drupal/viewsreference": "^2.0"
+  },
+  "dependent_modules": [
+    "views",
+    "block_field",
+    "ebt_core",
+    "jquery_ui_tabs",
+    "paragraphs",
+    "viewsreference"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.1 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": 2503,
+  "project_url": "https://www.drupal.org/project/ebt_tabs",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Tabbed content / accordion",
+    "Block enhancements",
+    "Layout Builder"
+  ],
+  "keywords": [
+    "ebt",
+    "extra block types",
+    "tabs",
+    "jquery ui tabs",
+    "block type",
+    "paragraphs",
+    "block field",
+    "views reference",
+    "layout builder",
+    "tabbed content"
+  ]
+}

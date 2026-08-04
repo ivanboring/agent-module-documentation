@@ -1,0 +1,53 @@
+{
+  "name": "Password Policy Extras",
+  "data_name": "password_policy_extras",
+  "description": "Various additions and enhancements to the Password Policy module.",
+  "version": "4.0.x",
+  "package": "Security",
+  "composer_namespace": "drupal/password_policy_extras",
+  "composer_requirements": {
+    "drupal/core": "^10 || ^11",
+    "drupal/password_policy": "^4.0"
+  },
+  "dependent_modules": [
+    "password_policy"
+  ],
+  "configure": "password_policy_extras.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 331,
+  "list_position": 2494,
+  "project_url": "https://www.drupal.org/project/password_policy_extras",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "password_policy_change_pwd_page",
+    "password_policy_prlp",
+    "password_policy_user_registrationpassword"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Password policy"
+  ],
+  "keywords": [
+    "password policy",
+    "password strength",
+    "password validation",
+    "ajax",
+    "status table",
+    "failed messages",
+    "accessibility",
+    "user registration",
+    "password reset",
+    "prlp",
+    "change password",
+    "event subscriber"
+  ]
+}

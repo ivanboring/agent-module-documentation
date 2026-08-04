@@ -1,0 +1,59 @@
+{
+  "name": "Synonyms",
+  "data_name": "synonyms",
+  "description": "Provides synonyms feature for all entities.",
+  "version": "2.1.x",
+  "package": "Synonyms",
+  "composer_namespace": "drupal/synonyms",
+  "composer_requirements": {
+    "drupal/core": "^9 || ^10 || ^11"
+  },
+  "dependent_modules": [],
+  "configure": "synonyms.overview",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 323,
+  "list_position": 2488,
+  "project_url": "https://www.drupal.org/project/synonyms",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "synonyms_autocomplete",
+    "synonyms_list_field",
+    "synonyms_search",
+    "synonyms_select",
+    "synonyms_views_argument_validator",
+    "synonyms_views_field",
+    "synonyms_views_filter"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "synonyms_provider"
+  ],
+  "categories": [
+    "Site search",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Synonyms / alternate labels",
+    "Autocomplete / typeahead",
+    "Entity selection"
+  ],
+  "keywords": [
+    "synonyms",
+    "aliases",
+    "alternate labels",
+    "entity synonyms",
+    "taxonomy synonyms",
+    "provider plugin",
+    "behavior",
+    "autocomplete",
+    "select widget",
+    "search",
+    "views",
+    "entity reference"
+  ]
+}
