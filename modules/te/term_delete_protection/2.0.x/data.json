@@ -1,0 +1,55 @@
+{
+  "name": "Taxonomy Term Delete Protection",
+  "data_name": "term_delete_protection",
+  "description": "Protects taxonomy terms from being deleted if they are referenced by content.",
+  "version": "2.0.x",
+  "package": "Taxonomy",
+  "composer_namespace": "drupal/term_delete_protection",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "taxonomy",
+    "node",
+    "field"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 477,
+  "list_position": 2239,
+  "project_url": "https://www.drupal.org/project/term_delete_protection",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/commerce": "Adds Commerce Product as a protectable entity type.",
+    "drupal/paragraphs": "Adds Paragraph references (resolved to their parent entities) as protection triggers.",
+    "drupal/markdown": "Renders the module's README on the help page as formatted markdown."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Content deletion protection",
+    "Taxonomy-based access control",
+    "Taxonomy hierarchy"
+  ],
+  "keywords": [
+    "taxonomy",
+    "term",
+    "delete protection",
+    "referential integrity",
+    "prevent deletion",
+    "referenced terms",
+    "data integrity",
+    "vocabulary",
+    "entity reference",
+    "descendant terms",
+    "paragraphs",
+    "commerce product"
+  ]
+}

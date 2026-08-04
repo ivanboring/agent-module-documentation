@@ -1,0 +1,48 @@
+{
+  "name": "Auto Unban",
+  "data_name": "auto_unban",
+  "description": "Implements an auto unban strategy based on time and attempts",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/auto_unban",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "ban"
+  ],
+  "configure": "auto_unban.settings",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": 616,
+  "list_position": 2248,
+  "project_url": "https://www.drupal.org/project/auto_unban",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Access control"
+  ],
+  "subcategories": [
+    "Intrusion prevention",
+    "IP address restriction"
+  ],
+  "keywords": [
+    "ban",
+    "unban",
+    "auto unban",
+    "ip ban",
+    "temporary ban",
+    "exponential backoff",
+    "ban expiration",
+    "ban.ip_manager",
+    "BanIpManager",
+    "brute force",
+    "flood",
+    "drush ban"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "Config Patch",
+  "data_name": "config_patch",
+  "description": "Create patches from configuration diffs",
+  "version": "3.0.x",
+  "package": "Config",
+  "composer_namespace": "drupal/config_patch",
+  "composer_requirements": {
+    "sebastian/diff": "^3 || ^4 || ^5 || ^6"
+  },
+  "dependent_modules": [],
+  "configure": "config_patch.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 330,
+  "list_position": 2259,
+  "project_url": "https://www.drupal.org/project/config_patch",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "sebastian/diff"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "output"
+  ],
+  "categories": [
+    "Administration tools",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Configuration management",
+    "Deployment / release management"
+  ],
+  "keywords": [
+    "config",
+    "configuration management",
+    "config diff",
+    "config patch",
+    "unified diff",
+    "config sync",
+    "active vs sync",
+    "output plugin",
+    "drush config:patch",
+    "config revert",
+    "config_ignore"
+  ]
+}

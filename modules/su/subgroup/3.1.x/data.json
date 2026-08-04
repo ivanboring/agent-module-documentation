@@ -1,0 +1,51 @@
+{
+  "name": "Subgroup",
+  "data_name": "subgroup",
+  "description": "Allows you to structure groups into a hierarchical tree with permissions inheriting up or down",
+  "version": "3.1.x",
+  "package": "Group",
+  "composer_namespace": "drupal/subgroup",
+  "composer_requirements": {
+    "drupal/core": "^10.3 || ^11",
+    "drupal/group": "^3.0"
+  },
+  "dependent_modules": [
+    "group"
+  ],
+  "configure": "subgroup.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 461,
+  "list_position": 2241,
+  "project_url": "https://www.drupal.org/project/subgroup",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Groups & memberships"
+  ],
+  "keywords": [
+    "group",
+    "subgroup",
+    "hierarchy",
+    "tree",
+    "nested groups",
+    "role inheritance",
+    "permissions inheritance",
+    "ancestor",
+    "descendant",
+    "leaf",
+    "nested set",
+    "flexible_permissions",
+    "group relation"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "Wordfilter",
+  "data_name": "wordfilter",
+  "description": "Apply word filtering on content via Wordfilter configurations.",
+  "version": "3.0.x",
+  "package": "Content",
+  "composer_namespace": "drupal/wordfilter",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "filter"
+  ],
+  "configure": "entity.wordfilter_configuration.collection",
+  "core_version_requirement": "^10.3 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": 2232,
+  "project_url": "https://www.drupal.org/project/wordfilter",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "wordfilter_process"
+  ],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Text format filters"
+  ],
+  "keywords": [
+    "wordfilter",
+    "profanity filter",
+    "bad words",
+    "censor",
+    "word replacement",
+    "text filter",
+    "keyword replacement",
+    "token substitution",
+    "wordfilter_configuration",
+    "wordfilter_process",
+    "substitution",
+    "comment filtering"
+  ]
+}

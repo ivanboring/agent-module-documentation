@@ -1,0 +1,49 @@
+{
+  "name": "Redirect After Logout",
+  "data_name": "redirect_after_logout",
+  "description": "User redirect, after logout.",
+  "version": "2.0.x",
+  "package": null,
+  "composer_namespace": "drupal/redirect_after_logout",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "filter"
+  ],
+  "configure": "redirect_after_logout.settings",
+  "core_version_requirement": "^10.4 || ^11.1",
+  "active_installs": 429,
+  "list_position": 2258,
+  "project_url": "https://www.drupal.org/project/redirect_after_logout",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/masquerade": "^2.0@beta",
+    "drupal/token": "^1.10"
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Session management",
+    "Entity page behavior & redirects"
+  ],
+  "keywords": [
+    "redirect",
+    "logout",
+    "user logout",
+    "logout destination",
+    "logout message",
+    "token",
+    "external redirect",
+    "hook_user_logout",
+    "event subscriber",
+    "masquerade"
+  ]
+}

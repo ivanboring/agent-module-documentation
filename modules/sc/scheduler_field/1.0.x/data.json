@@ -1,0 +1,55 @@
+{
+  "name": "Scheduler field",
+  "data_name": "scheduler_field",
+  "description": "Provides schedule functionalities thanks to scheduler field.",
+  "version": "1.0.x",
+  "package": "Field",
+  "composer_namespace": "drupal/scheduler_field",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "datetime_range"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": 433,
+  "list_position": 2234,
+  "project_url": "https://www.drupal.org/project/scheduler_field",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/plugin": "Provides the ArrayPluginDefinitionDecorator referenced by scheduler_field.plugin_type.yml for the Plugin API UI."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "scheduler_field_type"
+  ],
+  "categories": [
+    "Content editing experience",
+    "Automation"
+  ],
+  "subcategories": [
+    "Content scheduling / publishing",
+    "Cron / task scheduling",
+    "Fields",
+    "Queue / background processing"
+  ],
+  "keywords": [
+    "scheduler",
+    "schedule",
+    "publish",
+    "unpublish",
+    "scheduled publishing",
+    "field",
+    "daterange",
+    "datetime_range",
+    "cron",
+    "queue",
+    "SchedulerFieldType",
+    "plugin",
+    "scheduled actions"
+  ]
+}

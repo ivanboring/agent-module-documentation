@@ -1,0 +1,49 @@
+{
+  "name": "Shorten URLs",
+  "data_name": "shorten",
+  "description": "Allows easy URL shortening via external services.",
+  "version": "2.0.x",
+  "package": "Shorten URLs",
+  "composer_namespace": "drupal/shorten",
+  "composer_requirements": {
+    "drupal/core": "^9.0 || ^10.0 || ^11 || ^12"
+  },
+  "dependent_modules": [],
+  "configure": "shorten.admin_form",
+  "core_version_requirement": "^9 || ^10 || ^11 || ^12",
+  "active_installs": 418,
+  "list_position": 2252,
+  "project_url": "https://www.drupal.org/project/shorten",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "record_shorten",
+    "shortener",
+    "shorten_cs"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "URL shortening"
+  ],
+  "keywords": [
+    "url shortener",
+    "shorten",
+    "tinyurl",
+    "is.gd",
+    "bit.ly",
+    "short url",
+    "shorten_url",
+    "shorten_service",
+    "token",
+    "block",
+    "external service"
+  ]
+}

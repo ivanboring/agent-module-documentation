@@ -1,0 +1,45 @@
+{
+  "name": "Requirements Manager",
+  "data_name": "requirements_manager",
+  "description": "Admin UI to selectively hide or modify status report requirements.",
+  "version": "1.0.x",
+  "package": "Administration",
+  "composer_namespace": "drupal/requirements_manager",
+  "composer_requirements": {
+    "php": ">=8.3",
+    "drupal/core": "^11.2"
+  },
+  "dependent_modules": [
+    "system"
+  ],
+  "configure": "requirements_manager.settings_form",
+  "core_version_requirement": "^11.2",
+  "active_installs": 398,
+  "list_position": 2246,
+  "project_url": "https://www.drupal.org/project/requirements_manager",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.3",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Status report management"
+  ],
+  "keywords": [
+    "requirements",
+    "status report",
+    "hook_runtime_requirements_alter",
+    "severity",
+    "hide warning",
+    "admin",
+    "system report",
+    "override"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "name": "Entity Type Behaviors",
+  "data_name": "entity_type_behaviors",
+  "description": "Expose Behavior plugins to entity types.",
+  "version": "2.1.x",
+  "package": null,
+  "composer_namespace": "drupal/entity_type_behaviors",
+  "composer_requirements": {
+    "php": ">=7.1"
+  },
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": 467,
+  "list_position": 2236,
+  "project_url": "https://www.drupal.org/project/entity_type_behaviors",
+  "license": "GPL-2.0+",
+  "php_requirement": ">=7.1",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/graphql_compose": "Optional GraphQL Compose integration (dev dependency) exposing behaviors in the GraphQL schema."
+  },
+  "submodules": [
+    "entity_type_behaviors_example"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "entity_type_behavior"
+  ],
+  "categories": [
+    "Developer tools",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Plugin system",
+    "Entity API",
+    "Fields",
+    "Hook / event system"
+  ],
+  "keywords": [
+    "behavior",
+    "behaviors",
+    "entity type",
+    "plugin",
+    "EntityTypeBehavior",
+    "base field",
+    "serialized",
+    "display options",
+    "preprocess",
+    "render alter",
+    "paragraphs behaviors",
+    "graphql compose"
+  ]
+}

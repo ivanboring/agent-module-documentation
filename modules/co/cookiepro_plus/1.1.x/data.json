@@ -1,0 +1,53 @@
+{
+  "name": "CookiePro Plus",
+  "data_name": "cookiepro_plus",
+  "description": "Integrate CookiePro (by OneTrust).",
+  "version": "1.1.x",
+  "package": "CookiePro",
+  "composer_namespace": "drupal/cookiepro_plus",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "path_alias"
+  ],
+  "configure": "cookiepro_plus.configuration",
+  "core_version_requirement": "^11",
+  "active_installs": 460,
+  "list_position": 2240,
+  "project_url": "https://www.drupal.org/project/cookiepro_plus",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/consent_support": "Block content in render time for unblocking by CookiePro on consent.",
+    "drupal/google_tag": "Integrate with Google Tag Manager (GTM).",
+    "drupal/token_filter": "Required to expose tokens in CKEditor."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Cookie consent / GDPR"
+  ],
+  "keywords": [
+    "cookie",
+    "consent",
+    "cookiepro",
+    "onetrust",
+    "gdpr",
+    "privacy",
+    "google consent mode",
+    "auto-blocking",
+    "banner",
+    "preference center",
+    "domain script",
+    "ip whitelist",
+    "pause mode",
+    "cdn"
+  ]
+}

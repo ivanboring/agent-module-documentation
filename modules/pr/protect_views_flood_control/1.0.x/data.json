@@ -1,0 +1,53 @@
+{
+  "name": "Protect Views Flood Control",
+  "data_name": "protect_views_flood_control",
+  "description": "Protect Views Exposed Forms with Flood Control.",
+  "version": "1.0.x",
+  "package": "Views",
+  "composer_namespace": "drupal/protect_views_flood_control",
+  "composer_requirements": {
+    "drupal/protect_form_flood_control": "^1.1"
+  },
+  "dependent_modules": [
+    "views",
+    "protect_form_flood_control"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 297,
+  "list_position": 2235,
+  "project_url": "https://www.drupal.org/project/protect_views_flood_control",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Access control"
+  ],
+  "subcategories": [
+    "Rate limiting / throttling",
+    "Spam control",
+    "Views exposed filters",
+    "IP address restriction"
+  ],
+  "keywords": [
+    "flood control",
+    "rate limiting",
+    "throttle",
+    "views exposed form",
+    "scraping",
+    "bot protection",
+    "429",
+    "Too Many Requests",
+    "Retry-After",
+    "display extender",
+    "max filters",
+    "flood API"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "name": "Blue Billywig",
+  "data_name": "blue_billywig",
+  "description": "Integrates the Media module with the Blue Billywig video platform.",
+  "version": "1.2.x",
+  "package": "Media",
+  "composer_namespace": "drupal/blue_billywig",
+  "composer_requirements": {
+    "bluebillywig/bb-sapi-php-sdk": "^1.0"
+  },
+  "dependent_modules": [
+    "media"
+  ],
+  "configure": "blue_billywig.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 459,
+  "list_position": 2253,
+  "project_url": "https://www.drupal.org/project/blue_billywig",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "bluebillywig/bb-sapi-php-sdk"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Media sources",
+    "Video embedding"
+  ],
+  "keywords": [
+    "blue billywig",
+    "blue_billywig",
+    "video",
+    "media source",
+    "video platform",
+    "ovp",
+    "sapi",
+    "uppy",
+    "s3 upload",
+    "presigned url",
+    "playout",
+    "embed",
+    "media library",
+    "content protection",
+    "accessibility",
+    "scribit.pro"
+  ]
+}

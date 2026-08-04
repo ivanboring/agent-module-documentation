@@ -1,0 +1,49 @@
+{
+  "name": "Purge Invalidation Form",
+  "data_name": "purge_invalidation_form",
+  "description": "Directly invalidate items without going through the Purge queue.",
+  "version": "3.0.x",
+  "package": "Purge",
+  "composer_namespace": "drupal/purge_invalidation_form",
+  "composer_requirements": {
+    "php": "^8.3",
+    "drupal/core": "^10.4 || ^11",
+    "drupal/purge": "^3.6"
+  },
+  "dependent_modules": [
+    "purge"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.4 || ^11",
+  "active_installs": 476,
+  "list_position": 2245,
+  "project_url": "https://www.drupal.org/project/purge_invalidation_form",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "^8.3",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "Cache invalidation"
+  ],
+  "keywords": [
+    "purge",
+    "invalidation",
+    "cache",
+    "cdn",
+    "varnish",
+    "cache tag",
+    "url",
+    "wildcard",
+    "everything",
+    "purger",
+    "processor"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "Config Modify",
+  "data_name": "config_modify",
+  "description": "Allows automatic modification of existing config during config installation.",
+  "version": "1.2.x",
+  "package": null,
+  "composer_namespace": "drupal/config_modify",
+  "composer_requirements": {
+    "php": "^8.1",
+    "drupal/update_helper": "^2 || ^3 || ^4"
+  },
+  "dependent_modules": [
+    "config",
+    "update_helper"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 386,
+  "list_position": 2265,
+  "project_url": "https://www.drupal.org/project/config_modify",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "^8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Configuration management",
+    "Deployment / release management"
+  ],
+  "keywords": [
+    "config",
+    "configuration management",
+    "config/modify",
+    "config alter",
+    "update_helper",
+    "CUD",
+    "config update definition",
+    "install-time config",
+    "optional config",
+    "drush config-modify"
+  ]
+}

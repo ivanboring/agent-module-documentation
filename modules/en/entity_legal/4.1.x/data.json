@@ -1,0 +1,54 @@
+{
+  "name": "Entity Legal",
+  "data_name": "entity_legal",
+  "description": "Create versionable, trackable legal forms for site users.",
+  "version": "4.1.x",
+  "package": null,
+  "composer_namespace": "drupal/entity_legal",
+  "composer_requirements": {
+    "drupal/token": "^1.1"
+  },
+  "dependent_modules": [
+    "text",
+    "token"
+  ],
+  "configure": "entity.entity_legal_document.collection",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 525,
+  "list_position": 2247,
+  "project_url": "https://www.drupal.org/project/entity_legal",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "entity_legal"
+  ],
+  "categories": [
+    "Access control",
+    "User engagement"
+  ],
+  "subcategories": [
+    "Legal compliance / terms acceptance"
+  ],
+  "keywords": [
+    "legal",
+    "terms and conditions",
+    "T&C",
+    "privacy policy",
+    "acceptance",
+    "consent",
+    "versioned",
+    "gdpr",
+    "eula",
+    "agreement",
+    "re-accept",
+    "popup",
+    "signup",
+    "entity_legal_document"
+  ]
+}
