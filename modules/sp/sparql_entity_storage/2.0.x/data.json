@@ -1,0 +1,56 @@
+{
+  "name": "SPARQL Entity Storage",
+  "data_name": "sparql_entity_storage",
+  "description": "Provides SPARQL entity storage and query for Drupal entities.",
+  "version": "2.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/sparql_entity_storage",
+  "composer_requirements": {
+    "sweetrdf/easyrdf": "^1.9",
+    "ml/json-ld": "^1.0"
+  },
+  "dependent_modules": [
+    "options"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 282,
+  "list_position": 2579,
+  "project_url": "https://www.drupal.org/project/sparql_entity_storage",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "sweetrdf/easyrdf",
+    "ml/json-ld"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "sparql_entity_id"
+  ],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Database driver",
+    "Entity API"
+  ],
+  "keywords": [
+    "sparql",
+    "rdf",
+    "triple store",
+    "virtuoso",
+    "entity storage",
+    "graph",
+    "easyrdf",
+    "json-ld",
+    "linked data",
+    "semantic web",
+    "entity query",
+    "database driver",
+    "rdf_entity"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "name": "Advanced Access Nodes",
+  "data_name": "adva_na",
+  "description": "Implements node_access hooks for Advanced Access Plugins.",
+  "version": "1.2.x",
+  "package": "Access",
+  "composer_namespace": "drupal/adva",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "adva",
+    "node"
+  ],
+  "configure": "adva.settings",
+  "core_version_requirement": "^9 || ^10 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": 2572,
+  "project_url": "https://www.drupal.org/project/adva",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Node access grants API",
+    "Per-node view access"
+  ],
+  "keywords": [
+    "adva",
+    "node access",
+    "hook_node_grants",
+    "hook_node_access_records",
+    "node access consumer",
+    "advanced access nodes"
+  ]
+}

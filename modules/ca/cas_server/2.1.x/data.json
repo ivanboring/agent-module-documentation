@@ -1,0 +1,49 @@
+{
+  "name": "Central Authentication System (CAS) Server",
+  "data_name": "cas_server",
+  "description": "Provides a CAS Server implementation that runs on Drupal.",
+  "version": "2.1.x",
+  "package": null,
+  "composer_namespace": "drupal/cas_server",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "user"
+  ],
+  "configure": "cas_server.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": 2554,
+  "project_url": "https://www.drupal.org/project/cas_server",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "cass_attributes"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Security"
+  ],
+  "subcategories": [
+    "Single sign-on (SSO) provider",
+    "External authentication",
+    "Session management"
+  ],
+  "keywords": [
+    "CAS",
+    "central authentication system",
+    "single sign-on",
+    "SSO",
+    "identity provider",
+    "service ticket",
+    "ticket granting ticket",
+    "proxy ticket",
+    "serviceValidate",
+    "authentication server"
+  ]
+}

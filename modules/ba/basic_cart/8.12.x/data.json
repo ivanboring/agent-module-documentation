@@ -1,0 +1,49 @@
+{
+  "name": "Basic Cart",
+  "data_name": "basic_cart",
+  "description": "Provides basic cart functionalities.",
+  "version": "8.12.x",
+  "package": "Basic Cart",
+  "composer_namespace": "drupal/basic_cart",
+  "composer_requirements": {
+    "drupal/entity_reference_quantity": "*",
+    "drupal/jquery_ui": "*"
+  },
+  "dependent_modules": [
+    "telephone",
+    "entity_reference_quantity"
+  ],
+  "configure": "basic_cart.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": 2559,
+  "project_url": "https://www.drupal.org/project/basic_cart",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Cart management",
+    "Checkout customization",
+    "Order management"
+  ],
+  "keywords": [
+    "cart",
+    "shopping cart",
+    "checkout",
+    "basic cart",
+    "order",
+    "add to cart",
+    "quantity",
+    "small shop",
+    "email order"
+  ]
+}

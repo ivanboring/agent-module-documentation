@@ -1,0 +1,57 @@
+{
+  "name": "Site Studio Configuration Management",
+  "data_name": "sitestudio_config_management",
+  "description": "Provides Site Studio recommended configuration management using config filter, config ignore & config split module.",
+  "version": "1.2.x",
+  "package": "Acquia CMS",
+  "composer_namespace": "drupal/sitestudio_config_management",
+  "composer_requirements": {
+    "php": ">=7.4",
+    "acquia/cohesion": "^7.4.0 || ^8.0.0",
+    "drupal/config_ignore": "^3.0",
+    "drupal/config_split": "^2.0"
+  },
+  "dependent_modules": [
+    "config_ignore",
+    "config_split",
+    "cohesion_sync"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 2571,
+  "project_url": "https://www.drupal.org/project/sitestudio_config_management",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=7.4",
+  "library_dependencies": [
+    "acquia/cohesion"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools",
+    "Import and export"
+  ],
+  "subcategories": [
+    "Configuration management",
+    "Deployment / release management"
+  ],
+  "keywords": [
+    "site studio",
+    "cohesion",
+    "acquia cms",
+    "config split",
+    "config ignore",
+    "config export",
+    "config import",
+    "sitestudio:package:import",
+    "cohesion:import",
+    "cohesion:rebuild",
+    "drush post-command hook",
+    "config management"
+  ]
+}

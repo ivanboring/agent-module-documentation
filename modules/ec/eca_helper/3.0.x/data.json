@@ -1,0 +1,56 @@
+{
+  "name": "ECA Helper",
+  "data_name": "eca_helper",
+  "description": "Add helper functions for ECA module.",
+  "version": "3.0.x",
+  "package": "ECA",
+  "composer_namespace": "drupal/eca_helper",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "drupal/eca": "^2.1.11 || ^3.0"
+  },
+  "dependent_modules": [
+    "eca:eca",
+    "eca:eca_form"
+  ],
+  "configure": null,
+  "core_version_requirement": ">=10.3",
+  "active_installs": 377,
+  "list_position": 2560,
+  "project_url": "https://www.drupal.org/project/eca_helper",
+  "license": "GPL-2.0+",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "eca_helper_workflow"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Automation",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Workflow / business rules",
+    "Hook / event system"
+  ],
+  "keywords": [
+    "eca",
+    "event condition action",
+    "eca action",
+    "eca event",
+    "http request",
+    "quick action",
+    "preprocess",
+    "form alter",
+    "http headers",
+    "cookie",
+    "private file download",
+    "workflow",
+    "content moderation",
+    "no-code automation"
+  ]
+}

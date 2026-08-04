@@ -1,0 +1,45 @@
+{
+  "name": "Media Name",
+  "data_name": "media_name",
+  "description": "If the Media name is displayed on the create/edit form, make it not mandatory. If the name has been set previously or updated, preserve it on file change.",
+  "version": "1.0.x",
+  "package": "Media",
+  "composer_namespace": "drupal/media_name",
+  "composer_requirements": {
+    "drupal/core": "^8.8.0 || ^9.0 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "media"
+  ],
+  "configure": "media_name.settings_form",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": 301,
+  "list_position": 2566,
+  "project_url": "https://www.drupal.org/project/media_name",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "File & media metadata"
+  ],
+  "keywords": [
+    "media",
+    "media name",
+    "optional name",
+    "file name",
+    "preserve name",
+    "file replace",
+    "document",
+    "base field",
+    "form alter"
+  ]
+}

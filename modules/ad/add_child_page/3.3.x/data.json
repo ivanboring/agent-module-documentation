@@ -1,0 +1,55 @@
+{
+  "name": "Add Child Page",
+  "data_name": "add_child_page",
+  "description": "Adds a tab to add a child page to selected node.",
+  "version": "3.3.x",
+  "package": "Other",
+  "composer_namespace": "drupal/add_child_page",
+  "composer_requirements": {
+    "drupal/token": "^1.0"
+  },
+  "dependent_modules": [
+    "drupal:menu_link_content",
+    "drupal:node",
+    "drupal:system",
+    "drupal:user",
+    "token:token"
+  ],
+  "configure": "add_child_page.configuration_form",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": 330,
+  "list_position": 2550,
+  "project_url": "https://www.drupal.org/project/add_child_page",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site structure",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Navigation menus",
+    "Entity creation links"
+  ],
+  "keywords": [
+    "add child page",
+    "child page",
+    "menu parent",
+    "menu link",
+    "node hierarchy",
+    "book-like",
+    "child pages tab",
+    "menu_link_content",
+    "content type selector",
+    "node add form",
+    "plid",
+    "local task tab",
+    "entity operation"
+  ]
+}

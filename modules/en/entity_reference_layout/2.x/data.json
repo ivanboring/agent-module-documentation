@@ -1,0 +1,56 @@
+{
+  "name": "Entity reference layout",
+  "data_name": "entity_reference_layout",
+  "description": "Entity reference field with layouts",
+  "version": "2.x",
+  "package": "Field types",
+  "composer_namespace": "drupal/entity_reference_layout",
+  "composer_requirements": {
+    "drupal/paragraphs": "^1.6",
+    "drupal/jquery_ui_dialog": "^2.0"
+  },
+  "dependent_modules": [
+    "paragraphs",
+    "layout_discovery",
+    "jquery_ui_dialog:jquery_ui_dialog"
+  ],
+  "configure": "entity_reference_layout.settings",
+  "core_version_requirement": "^9.1 || ^10 || ^11",
+  "active_installs": 236,
+  "list_position": 2565,
+  "project_url": "https://www.drupal.org/project/entity_reference_layout",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "erl_layouts",
+    "erl_paragraphs"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Structured content / page building",
+    "Layout Builder"
+  ],
+  "keywords": [
+    "paragraphs",
+    "layout",
+    "layout discovery",
+    "entity reference",
+    "field type",
+    "field widget",
+    "page building",
+    "sections",
+    "regions",
+    "dragula",
+    "bricks",
+    "experimental"
+  ]
+}
