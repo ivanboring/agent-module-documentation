@@ -1,0 +1,63 @@
+{
+  "name": "Migration Tools",
+  "data_name": "migration_tools",
+  "description": "Tools to help process difficult migrations.",
+  "version": "2.10.x",
+  "package": "Migration",
+  "composer_namespace": "drupal/migration_tools",
+  "composer_requirements": {
+    "drupal/migrate_plus": "^6.0",
+    "drupal/redirect": "^1.11"
+  },
+  "dependent_modules": [
+    "migrate_plus",
+    "migrate",
+    "redirect"
+  ],
+  "configure": "migration_tools.migration_tools_admin_form",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 498,
+  "list_position": 2167,
+  "project_url": "https://www.drupal.org/project/migration_tools",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "migration_tools_example"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Migration tooling",
+    "Content migration / import",
+    "Data transformation"
+  ],
+  "keywords": [
+    "migration",
+    "migrate",
+    "migrate_plus",
+    "obtainer",
+    "source parser",
+    "querypath",
+    "html scraping",
+    "prepare row",
+    "redirect",
+    "process plugin",
+    "url_list",
+    "dom parser",
+    "convert_boolean",
+    "skip_on_substr",
+    "skip_on_not_empty",
+    "gate_comparator",
+    "create_default_paragraph_revision",
+    "content migration",
+    "difficult migration"
+  ]
+}

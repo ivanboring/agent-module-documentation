@@ -1,0 +1,44 @@
+{
+  "name": "Anonymous Token",
+  "data_name": "anonymous_token",
+  "description": "Add token validation to all forms (anti-CSRF token) for anonymous users",
+  "version": "3.0.x",
+  "package": "Security",
+  "composer_namespace": "drupal/anonymous_token",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "anonymous_token.settings_form",
+  "core_version_requirement": "^9.2 || ^10 || ^11",
+  "active_installs": 501,
+  "list_position": 2158,
+  "project_url": "https://www.drupal.org/project/anonymous_token",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "CSRF protection",
+    "Session management"
+  ],
+  "keywords": [
+    "csrf",
+    "anti-csrf",
+    "token",
+    "anonymous",
+    "csrf token",
+    "single use token",
+    "_anonymous_csrf_token",
+    "CsrfTokenGenerator",
+    "access check",
+    "form security",
+    "session"
+  ]
+}

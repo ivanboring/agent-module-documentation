@@ -1,0 +1,56 @@
+{
+  "name": "Layout Builder Advanced Permissions",
+  "data_name": "layout_builder_perms",
+  "description": "Advanced permissions for Drupal core Layout Builder.",
+  "version": "2.2.x",
+  "package": "Layout",
+  "composer_namespace": "drupal/layout_builder_perms",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "layout_builder"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": 465,
+  "list_position": 2147,
+  "project_url": "https://www.drupal.org/project/layout_builder_perms",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "layout_builder_perms_global",
+    "layout_builder_perms_node",
+    "layout_builder_perms_layout_type",
+    "layout_builder_perms_layout_per_bundle",
+    "layout_builder_perms_block_operations_per_layout",
+    "layout_builder_perms_block_types_per_layout"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "layout_builder_permission"
+  ],
+  "categories": [
+    "Access control",
+    "Content display"
+  ],
+  "subcategories": [
+    "User roles & permissions",
+    "Layout Builder",
+    "Structured content / page building"
+  ],
+  "keywords": [
+    "layout builder",
+    "permissions",
+    "access control",
+    "sections",
+    "blocks",
+    "inline blocks",
+    "granular permissions",
+    "access layout builder page",
+    "overrides",
+    "layout_builder_permission"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "name": "Webform Google Sheets",
+  "data_name": "webform_googlesheets",
+  "description": "Allows to add Webform submissions to Google Sheets.",
+  "version": "2.2.x",
+  "package": "Webform",
+  "composer_namespace": "drupal/webform_googlesheets",
+  "composer_requirements": {
+    "drupal/core": "^10.3 || ^11.0",
+    "drupal/google_api_client": "^4.5",
+    "drupal/webform": "^6.2"
+  },
+  "dependent_modules": [
+    "webform",
+    "google_api_client"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11.0",
+  "active_installs": 524,
+  "list_position": 2173,
+  "project_url": "https://www.drupal.org/project/webform_googlesheets",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "Forms and surveys"
+  ],
+  "subcategories": [
+    "Google APIs / OAuth",
+    "Submission handling"
+  ],
+  "keywords": [
+    "webform",
+    "google sheets",
+    "spreadsheet",
+    "webform handler",
+    "google api client",
+    "service account",
+    "oauth",
+    "submission export",
+    "queue",
+    "batchUpdate",
+    "appendCells",
+    "form submissions",
+    "google_api_client"
+  ]
+}
