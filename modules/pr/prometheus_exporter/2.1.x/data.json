@@ -1,0 +1,56 @@
+{
+  "name": "Prometheus Exporter",
+  "data_name": "prometheus_exporter",
+  "description": "Exports metrics for consumption by Prometheus scrapers.",
+  "version": "2.1.x",
+  "package": "Prometheus",
+  "composer_namespace": "drupal/prometheus_exporter",
+  "composer_requirements": {
+    "previousnext/php-prometheus": "^1.4.0"
+  },
+  "dependent_modules": [],
+  "configure": "prometheus_exporter.settings",
+  "core_version_requirement": "^11.1 || ^12",
+  "active_installs": 398,
+  "list_position": 2298,
+  "project_url": "https://www.drupal.org/project/prometheus_exporter",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "previousnext/php-prometheus"
+  ],
+  "suggests": {},
+  "submodules": [
+    "prometheus_exporter_comment",
+    "prometheus_exporter_token_access",
+    "prometheus_exporter_update"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "metrics_collector"
+  ],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Application performance monitoring",
+    "Dashboard / reporting"
+  ],
+  "keywords": [
+    "prometheus",
+    "metrics",
+    "exporter",
+    "monitoring",
+    "observability",
+    "scraper",
+    "/metrics",
+    "grafana",
+    "node count",
+    "user count",
+    "queue size",
+    "metrics collector",
+    "prometheus:export"
+  ]
+}

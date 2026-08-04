@@ -1,0 +1,59 @@
+{
+  "name": "System Tags",
+  "data_name": "system_tags",
+  "description": "Allows a coder to use specific content without knowing the ID.",
+  "version": "3.0.x",
+  "package": null,
+  "composer_namespace": "drupal/system_tags",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "drupal/core": "^10.2 || ^11"
+  },
+  "dependent_modules": [
+    "field",
+    "path_alias"
+  ],
+  "configure": "entity.system_tag.collection",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 441,
+  "list_position": 2281,
+  "project_url": "https://www.drupal.org/project/system_tags",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "system_tags_theme"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "system_tag_finder"
+  ],
+  "categories": [
+    "Site structure",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Entity page behavior & redirects",
+    "Token / placeholder replacement",
+    "Template suggestions"
+  ],
+  "keywords": [
+    "system tag",
+    "system_tag",
+    "homepage",
+    "404",
+    "403",
+    "page not found",
+    "access denied",
+    "config override",
+    "token",
+    "twig",
+    "system_tag_url",
+    "theme suggestion",
+    "condition plugin",
+    "content by tag"
+  ]
+}

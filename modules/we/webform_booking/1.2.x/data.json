@@ -1,0 +1,55 @@
+{
+  "name": "Webform Booking",
+  "data_name": "webform_booking",
+  "description": "Provides a booking element for Webform.",
+  "version": "1.2.x",
+  "package": "Webform",
+  "composer_namespace": "drupal/webform_booking",
+  "composer_requirements": {
+    "drupal/webform": "^6.0",
+    "drupal/core": "^10 || ^11"
+  },
+  "dependent_modules": [
+    "webform"
+  ],
+  "configure": "webform_booking.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 414,
+  "list_position": 2301,
+  "project_url": "https://www.drupal.org/project/webform_booking",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "webform_booking_calendar",
+    "webform_booking_price_element"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Forms and surveys",
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Webform elements",
+    "Booking / scheduling",
+    "Payment gateway"
+  ],
+  "keywords": [
+    "webform",
+    "booking",
+    "appointment",
+    "reservation",
+    "slot",
+    "availability",
+    "calendar",
+    "paypal",
+    "payment",
+    "scheduling",
+    "webform element",
+    "cancel booking"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "name": "Auto Login URL",
+  "data_name": "auto_login_url",
+  "description": "Secure auto login functionality using cryptographic tokens for user authentication.",
+  "version": "3.1.x",
+  "package": "Authentication",
+  "composer_namespace": "drupal/auto_login_url",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "system",
+    "user"
+  ],
+  "configure": "auto_login_url.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 433,
+  "list_position": 2272,
+  "project_url": "https://www.drupal.org/project/auto_login_url",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/token": "For [user:auto-login-url-token] token integration"
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Security"
+  ],
+  "subcategories": [
+    "Token-based access control",
+    "Session management"
+  ],
+  "keywords": [
+    "auto login",
+    "passwordless login",
+    "one-time login",
+    "login link",
+    "magic link",
+    "token authentication",
+    "HMAC",
+    "hash_salt",
+    "user authentication",
+    "email login",
+    "invitation",
+    "password reset",
+    "single-use url",
+    "rate limiting",
+    "flood control"
+  ]
+}

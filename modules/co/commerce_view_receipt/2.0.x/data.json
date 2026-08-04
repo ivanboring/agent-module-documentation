@@ -1,0 +1,46 @@
+{
+  "name": "Commerce View Receipt",
+  "data_name": "commerce_view_receipt",
+  "description": "View commerce order receipts in browser",
+  "version": "2.0.x",
+  "package": "Commerce (contrib)",
+  "composer_namespace": "drupal/commerce_view_receipt",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "commerce_order"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 401,
+  "list_position": 2290,
+  "project_url": "https://www.drupal.org/project/commerce_view_receipt",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/entity_print": "Adds a 'Download PDF' action to the receipt pages."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Order management",
+    "Invoicing / billing"
+  ],
+  "keywords": [
+    "commerce",
+    "receipt",
+    "order receipt",
+    "invoice",
+    "commerce_order",
+    "entity_print",
+    "pdf",
+    "order total summary",
+    "views field"
+  ]
+}

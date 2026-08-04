@@ -1,0 +1,51 @@
+{
+  "name": "Commerce UPS",
+  "data_name": "commerce_ups",
+  "description": "UPS Shipping Module for Drupal",
+  "version": "4.0.x",
+  "package": "Commerce (shipping)",
+  "composer_namespace": "drupal/commerce_ups",
+  "composer_requirements": {
+    "php": "^8.0",
+    "drupal/commerce_shipping": "^2.0 || ^3.0.0",
+    "sainsburys/guzzle-oauth2-plugin": "^3.0"
+  },
+  "dependent_modules": [
+    "commerce_shipping"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 439,
+  "list_position": 2271,
+  "project_url": "https://www.drupal.org/project/commerce_ups",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "^8.0",
+  "library_dependencies": [
+    "sainsburys/guzzle-oauth2-plugin"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Shipping rate calculation"
+  ],
+  "keywords": [
+    "commerce",
+    "ups",
+    "shipping",
+    "shipping rates",
+    "commerce_shipping",
+    "shipping method",
+    "rate request",
+    "oauth2",
+    "tracking",
+    "package types",
+    "negotiated rates"
+  ]
+}

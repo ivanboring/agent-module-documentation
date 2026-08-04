@@ -1,0 +1,71 @@
+{
+  "name": "Graphql Core Schema",
+  "data_name": "graphql_core_schema",
+  "description": "GraphQL Core schema for GraphQL 4.x or 5.x.",
+  "version": "1.0.x",
+  "package": "GraphQL",
+  "composer_namespace": "drupal/graphql_core_schema",
+  "composer_requirements": {
+    "php": "^8.1",
+    "drupal/graphql": "^4 || ^5@rc",
+    "symfony/string": "^5.4 || ^6 || ^7"
+  },
+  "dependent_modules": [
+    "graphql:graphql (^4 || ^5)"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": 473,
+  "list_position": 2285,
+  "project_url": "https://www.drupal.org/project/graphql_core_schema",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "^8.1",
+  "library_dependencies": [
+    "symfony/string"
+  ],
+  "suggests": {},
+  "submodules": [
+    "graphql_debugging",
+    "graphql_environment_indicator",
+    "graphql_file_url",
+    "graphql_form_schema",
+    "graphql_masquerade_schema",
+    "graphql_media_oembed_schema",
+    "graphql_messenger",
+    "graphql_metatag_schema",
+    "graphql_metatag_schema_org_schema",
+    "graphql_rokka_schema",
+    "graphql_security",
+    "graphql_tablefield_schema",
+    "graphql_telephone",
+    "graphql_translatable_config_pages"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Decoupled",
+    "Integrations"
+  ],
+  "subcategories": [
+    "GraphQL schema",
+    "REST / web services"
+  ],
+  "keywords": [
+    "graphql",
+    "core_composable",
+    "schema",
+    "decoupled",
+    "headless",
+    "entity query",
+    "schema extension",
+    "data producer",
+    "entity schema",
+    "views graphql",
+    "jsonapi alternative",
+    "field access",
+    "graphql 4",
+    "graphql 5"
+  ]
+}

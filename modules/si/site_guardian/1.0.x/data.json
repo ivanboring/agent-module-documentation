@@ -1,0 +1,47 @@
+{
+  "name": "Site Guardian",
+  "data_name": "site_guardian",
+  "description": "Checks versions of modules as well as Drupal installation, PHP and database in order to expose them for monitoring in the Site Guardian Client (or elsewhere).",
+  "version": "1.0.x",
+  "package": "Administration",
+  "composer_namespace": "drupal/site_guardian",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "update"
+  ],
+  "configure": "site_guardian.form",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 499,
+  "list_position": 2278,
+  "project_url": "https://www.drupal.org/project/site_guardian",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Security"
+  ],
+  "subcategories": [
+    "Status report management",
+    "Dashboard / reporting"
+  ],
+  "keywords": [
+    "monitoring",
+    "site monitoring",
+    "update status",
+    "security updates",
+    "status report",
+    "json endpoint",
+    "module versions",
+    "uptime",
+    "site guardian client",
+    "multisite monitoring",
+    "hook_site_guardian_status"
+  ]
+}

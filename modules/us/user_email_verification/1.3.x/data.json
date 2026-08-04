@@ -1,0 +1,50 @@
+{
+  "name": "User Email Verification",
+  "data_name": "user_email_verification",
+  "description": "Verify the user Email. If the Email of the user is not verified the system will block the user.",
+  "version": "1.3.x",
+  "package": "User",
+  "composer_namespace": "drupal/user_email_verification",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "user"
+  ],
+  "configure": "user_email_verification.settings_form",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": 425,
+  "list_position": 2295,
+  "project_url": "https://www.drupal.org/project/user_email_verification",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/token": "Provides the [user:verify-email] token for the verification link.",
+    "drupal/rules": "Enables the module's Rules events, conditions and actions."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Security"
+  ],
+  "subcategories": [
+    "User registration",
+    "Email verification"
+  ],
+  "keywords": [
+    "email verification",
+    "verify email",
+    "user registration",
+    "block unverified",
+    "account activation",
+    "reminder mail",
+    "verification link",
+    "hmac token",
+    "cron",
+    "queue worker",
+    "rules"
+  ]
+}
