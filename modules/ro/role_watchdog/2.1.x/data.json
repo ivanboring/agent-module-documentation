@@ -1,0 +1,52 @@
+{
+  "name": "Role Watchdog",
+  "data_name": "role_watchdog",
+  "description": "Role watchdog automatically logs all role changes made through the user profile or the user list.",
+  "version": "2.1.x",
+  "package": null,
+  "composer_namespace": "drupal/role_watchdog",
+  "composer_requirements": {
+    "drupal/core": "^8.8.0 || ^9.0 || ^10.0 || ^11"
+  },
+  "dependent_modules": [
+    "user",
+    "views"
+  ],
+  "configure": "role_watchdog.role_watchdog_settings_form",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 2110,
+  "project_url": "https://www.drupal.org/project/role_watchdog",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Security"
+  ],
+  "subcategories": [
+    "Audit trail / activity logging",
+    "User roles & permissions"
+  ],
+  "keywords": [
+    "role",
+    "watchdog",
+    "audit",
+    "audit trail",
+    "role change",
+    "logging",
+    "history",
+    "notification",
+    "email alert",
+    "user roles",
+    "permissions audit",
+    "monitor roles",
+    "role history"
+  ]
+}

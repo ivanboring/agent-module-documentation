@@ -1,0 +1,59 @@
+{
+  "name": "Cookie Content Blocker",
+  "data_name": "cookie_content_blocker",
+  "description": "Prevent loading of content with a privacy impact until consent is given. This module needs a separate cookie consent manager.",
+  "version": "2.6.x",
+  "package": "Cookie Content Blocker",
+  "composer_namespace": "drupal/cookie_content_blocker",
+  "composer_requirements": {
+    "drupal/core": "^9.4 || ^10 || ^11",
+    "drupal/js_cookie": "^1.0 || ^2.0",
+    "ext-json": "*",
+    "php": "^8.0"
+  },
+  "dependent_modules": [
+    "js_cookie",
+    "system"
+  ],
+  "configure": "cookie_content_blocker.settings",
+  "core_version_requirement": "^9.4 || ^10 || ^11",
+  "active_installs": 481,
+  "list_position": 2139,
+  "project_url": "https://www.drupal.org/project/cookie_content_blocker",
+  "license": "GPL-2.0+",
+  "php_requirement": "^8.0",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "cookie_content_blocker_media"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Integrations",
+    "Content display"
+  ],
+  "subcategories": [
+    "Cookie consent / GDPR",
+    "Media embedding"
+  ],
+  "keywords": [
+    "cookie",
+    "consent",
+    "GDPR",
+    "privacy",
+    "content blocker",
+    "cookiecontentblocker",
+    "text filter",
+    "ckeditor5",
+    "oembed",
+    "third-party embed",
+    "js_cookie",
+    "placeholder",
+    "cookie category",
+    "block content"
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "name": "Search API Decoupled",
+  "data_name": "search_api_decoupled",
+  "description": "Provides a decoupled search results display for Search API.",
+  "version": "1.0.x",
+  "package": "Search API",
+  "composer_namespace": "drupal/search_api_decoupled",
+  "composer_requirements": {
+    "drupal/search_api": "^1.28"
+  },
+  "dependent_modules": [
+    "search_api"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 490,
+  "list_position": 2113,
+  "project_url": "https://www.drupal.org/project/search_api_decoupled",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/facets": "^2.0",
+    "drupal/search_api_autocomplete": "^1.7",
+    "drupal/search_api_exclude": "^2.0"
+  },
+  "submodules": [
+    "search_api_decoupled_ui",
+    "search_api_decoupled_facets",
+    "search_api_decoupled_autocomplete",
+    "search_api_decoupled_demo"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "search_api_decoupled_filter"
+  ],
+  "categories": [
+    "Site search",
+    "Decoupled"
+  ],
+  "subcategories": [
+    "Search framework",
+    "REST / web services",
+    "Faceted search"
+  ],
+  "keywords": [
+    "search_api_decoupled",
+    "search api",
+    "decoupled search",
+    "headless search",
+    "search endpoint",
+    "json search api",
+    "search results",
+    "facets",
+    "autocomplete",
+    "exposed filters",
+    "search_api_endpoint",
+    "REST search",
+    "1xINTERNET"
+  ]
+}

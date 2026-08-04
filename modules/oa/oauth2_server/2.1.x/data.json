@@ -1,0 +1,64 @@
+{
+  "name": "OAuth2 Server",
+  "data_name": "oauth2_server",
+  "description": "Provides OAuth2 server functionality.",
+  "version": "2.1.x",
+  "package": "OAuth2",
+  "composer_namespace": "drupal/oauth2_server",
+  "composer_requirements": {
+    "ext-curl": "*",
+    "ext-json": "*",
+    "ext-openssl": "*",
+    "bshaffer/oauth2-server-php": "~1.14",
+    "bshaffer/oauth2-server-httpfoundation-bridge": "~1.1"
+  },
+  "dependent_modules": [],
+  "configure": "oauth2_server.overview",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": 498,
+  "list_position": 2127,
+  "project_url": "https://www.drupal.org/project/oauth2_server",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [
+    "bshaffer/oauth2-server-php",
+    "bshaffer/oauth2-server-httpfoundation-bridge"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "External authentication",
+    "OAuth / OpenID Connect provider",
+    "REST / web services"
+  ],
+  "keywords": [
+    "oauth2",
+    "oauth",
+    "openid connect",
+    "oidc",
+    "authorization server",
+    "access token",
+    "refresh token",
+    "authorization code",
+    "client credentials",
+    "jwt",
+    "jwt bearer",
+    "implicit",
+    "scopes",
+    "bshaffer",
+    "bearer token",
+    "id_token",
+    "userinfo",
+    "jwk",
+    "sso",
+    "api authentication"
+  ]
+}

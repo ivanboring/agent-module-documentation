@@ -1,0 +1,48 @@
+{
+  "name": "Cookie Content Blocker - Media",
+  "data_name": "cookie_content_blocker_media",
+  "description": "Prevent loading of external media sources until consent is given.",
+  "version": "2.6.x",
+  "package": "Cookie Content Blocker",
+  "composer_namespace": "drupal/cookie_content_blocker",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "cookie_content_blocker",
+    "image",
+    "media",
+    "system"
+  ],
+  "configure": "cookie_content_blocker_media.settings",
+  "core_version_requirement": "^9.4 || ^10 || ^11",
+  "active_installs": 481,
+  "list_position": 2139,
+  "project_url": "https://www.drupal.org/project/cookie_content_blocker",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Media"
+  ],
+  "subcategories": [
+    "Cookie consent / GDPR",
+    "Media embedding"
+  ],
+  "keywords": [
+    "cookie",
+    "consent",
+    "media",
+    "oembed",
+    "remote video",
+    "youtube",
+    "field formatter",
+    "provider",
+    "cookie_content_blocker"
+  ]
+}

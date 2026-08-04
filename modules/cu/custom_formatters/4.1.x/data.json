@@ -1,0 +1,62 @@
+{
+  "name": "Custom Formatters",
+  "data_name": "custom_formatters",
+  "description": "Allows users to easily define custom Field Formatters.",
+  "version": "4.1.x",
+  "package": "Fields",
+  "composer_namespace": "drupal/custom_formatters",
+  "composer_requirements": {
+    "php": ">=8.2"
+  },
+  "dependent_modules": [
+    "field",
+    "field_ui"
+  ],
+  "configure": "entity.formatter.collection",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 2111,
+  "project_url": "https://www.drupal.org/project/custom_formatters",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.2",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/codemirror_editor": "Syntax-highlighted code editing for the PHP, HTML+Token, and Twig engines.",
+    "drupal/devel": "Debug output for the preview feature and Devel Generate sample content.",
+    "drupal/field_tokens": "Field-level token support, useful for HTML+Token formatters.",
+    "drupal/insert": "Lets image/file/entity_reference formatters appear as Insert styles.",
+    "drupal/token": "Token replacement for the HTML+Token formatter type."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "custom_formatters_formatter_type",
+    "custom_formatters_formatter_extras"
+  ],
+  "categories": [
+    "Content display",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Field formatters"
+  ],
+  "keywords": [
+    "field formatter",
+    "custom formatter",
+    "PHP",
+    "Twig",
+    "HTML token",
+    "tokens",
+    "config entity",
+    "field display",
+    "code editor",
+    "codemirror",
+    "eval",
+    "SSTI",
+    "insert",
+    "devel generate",
+    "preset"
+  ]
+}

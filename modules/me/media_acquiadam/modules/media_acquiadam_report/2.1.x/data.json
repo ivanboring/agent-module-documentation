@@ -1,0 +1,48 @@
+{
+  "name": "Media: Acquia DAM - Reporting",
+  "data_name": "media_acquiadam_report",
+  "description": "Provides DAM asset usage information.",
+  "version": "2.1.x",
+  "package": "Media",
+  "composer_namespace": "drupal/media_acquiadam_report",
+  "composer_requirements": {
+    "drupal/entity_usage": "*"
+  },
+  "dependent_modules": [
+    "media_acquiadam",
+    "file",
+    "image",
+    "entity_usage",
+    "views"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": 398,
+  "list_position": 2130,
+  "project_url": "https://www.drupal.org/project/media_acquiadam",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Digital asset management (DAM)",
+    "Dashboard / reporting"
+  ],
+  "keywords": [
+    "acquia dam",
+    "reporting",
+    "asset usage",
+    "entity usage",
+    "views report",
+    "dam audit",
+    "integration link"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "name": "Media: Acquia DAM",
+  "data_name": "media_acquiadam",
+  "description": "Integrates the Media module ecosystem with Acquia DAM",
+  "version": "2.1.x",
+  "package": "Media",
+  "composer_namespace": "drupal/media_acquiadam",
+  "composer_requirements": {
+    "drupal/fallback_formatter": "^1.0",
+    "drupal/acquia_dam": "^1.1.2"
+  },
+  "dependent_modules": [
+    "media",
+    "file",
+    "image",
+    "fallback_formatter",
+    "acquia_dam"
+  ],
+  "configure": "media_acquiadam.config",
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": 398,
+  "list_position": 2130,
+  "project_url": "https://www.drupal.org/project/media_acquiadam",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "media_acquiadam_example",
+    "media_acquiadam_report"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Digital asset management (DAM)",
+    "Media sources"
+  ],
+  "keywords": [
+    "acquia dam",
+    "widen",
+    "dam",
+    "digital asset management",
+    "media source",
+    "asset",
+    "media library",
+    "entity browser",
+    "asset sync",
+    "migration",
+    "acquia_dam",
+    "widencollective"
+  ]
+}
