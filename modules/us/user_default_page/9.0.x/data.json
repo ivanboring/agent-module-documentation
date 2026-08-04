@@ -1,0 +1,42 @@
+{
+  "name": "User Default Page",
+  "data_name": "user_default_page",
+  "description": "Customize the destination that a user is redirected to after logging in or logged out.",
+  "version": "9.0.x",
+  "package": "User",
+  "composer_namespace": "drupal/user_default_page",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "user"
+  ],
+  "configure": "user_default_page.action",
+  "core_version_requirement": "^9.2 || ^10 || ^11",
+  "active_installs": 468,
+  "list_position": 2215,
+  "project_url": "https://www.drupal.org/project/user_default_page",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Entity page behavior & redirects"
+  ],
+  "keywords": [
+    "login redirect",
+    "logout redirect",
+    "landing page",
+    "role based redirect",
+    "user redirect",
+    "default page",
+    "post-login destination",
+    "config entity"
+  ]
+}

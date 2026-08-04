@@ -1,0 +1,52 @@
+{
+  "name": "Webhooks",
+  "data_name": "webhooks",
+  "description": "User-defined HTTP callbacks",
+  "version": "3.0.x",
+  "package": "Webhooks",
+  "composer_namespace": "drupal/webhooks",
+  "composer_requirements": {
+    "ext-json": "*"
+  },
+  "dependent_modules": [
+    "serialization"
+  ],
+  "configure": "entity.webhook_config.collection",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 454,
+  "list_position": 2205,
+  "project_url": "https://www.drupal.org/project/webhooks",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "webhook"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Hook / event system",
+    "REST / web services"
+  ],
+  "keywords": [
+    "webhook",
+    "webhooks",
+    "http callback",
+    "incoming",
+    "outgoing",
+    "payload",
+    "signature",
+    "hmac",
+    "event",
+    "queue",
+    "entity events",
+    "integration"
+  ]
+}

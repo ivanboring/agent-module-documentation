@@ -1,0 +1,60 @@
+{
+  "name": "Smartling Translator",
+  "data_name": "tmgmt_smartling",
+  "description": "A Smartling Translator which use Smartling Translator service.",
+  "version": "9.26.x",
+  "package": "Translation Management",
+  "composer_namespace": "drupal/tmgmt_smartling",
+  "composer_requirements": {
+    "drupal/tmgmt": "~1.14",
+    "drupal/tmgmt_extension_suit": "~9.4",
+    "smartling/api-sdk-php": "~5"
+  },
+  "dependent_modules": [
+    "tmgmt",
+    "tmgmt_file",
+    "tmgmt_extension_suit",
+    "serialization"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.3 || ^10.1 || ^11",
+  "active_installs": 469,
+  "list_position": 2210,
+  "project_url": "https://www.drupal.org/project/tmgmt_smartling",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [
+    "smartling/api-sdk-php"
+  ],
+  "suggests": {},
+  "submodules": [
+    "tmgmt_smartling_acquia_cohesion",
+    "tmgmt_smartling_context_debug",
+    "tmgmt_smartling_log_settings",
+    "tmgmt_smartling_test"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Multilingual",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Machine translation",
+    "Translation / multilingual"
+  ],
+  "keywords": [
+    "smartling",
+    "tmgmt",
+    "translation management",
+    "translator plugin",
+    "machine translation",
+    "context upload",
+    "xliff",
+    "translation memory",
+    "callback",
+    "translation provider"
+  ]
+}

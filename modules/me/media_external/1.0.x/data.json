@@ -1,0 +1,51 @@
+{
+  "name": "Media External",
+  "data_name": "media_external",
+  "description": "Allows external media to be imported as local media items.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/media_external",
+  "composer_requirements": {
+    "drupal/imagecache_external": "^3.0"
+  },
+  "dependent_modules": [
+    "media",
+    "media_library",
+    "imagecache_external"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 2192,
+  "project_url": "https://www.drupal.org/project/media_external",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "media_external_provider"
+  ],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Media sources",
+    "Media embedding"
+  ],
+  "keywords": [
+    "media",
+    "media library",
+    "external media",
+    "stock photos",
+    "pexels",
+    "unsplash",
+    "media source",
+    "image import",
+    "provider plugin",
+    "imagecache_external"
+  ]
+}

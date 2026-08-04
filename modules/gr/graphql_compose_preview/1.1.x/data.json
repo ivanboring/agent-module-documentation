@@ -1,0 +1,51 @@
+{
+  "name": "GraphQL Compose: Preview",
+  "data_name": "graphql_compose_preview",
+  "description": "Extend preview capabilities for use with GraphQL.",
+  "version": "1.1.x",
+  "package": "GraphQL Compose (Contrib)",
+  "composer_namespace": "drupal/graphql_compose_preview",
+  "composer_requirements": {
+    "php": "^8.1",
+    "drupal/graphql_compose": "^2 || ^3"
+  },
+  "dependent_modules": [
+    "drupal:node",
+    "token:token",
+    "graphql_compose:graphql_compose",
+    "graphql_compose:graphql_compose_routes"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 449,
+  "list_position": 2199,
+  "project_url": "https://www.drupal.org/project/graphql_compose_preview",
+  "license": "GPL-2.0+",
+  "php_requirement": "^8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Decoupled"
+  ],
+  "subcategories": [
+    "Preview & draft mode",
+    "GraphQL schema"
+  ],
+  "keywords": [
+    "graphql",
+    "graphql compose",
+    "preview",
+    "draft",
+    "decoupled",
+    "headless",
+    "preview token",
+    "node preview",
+    "unpublished",
+    "next.js draft mode"
+  ]
+}

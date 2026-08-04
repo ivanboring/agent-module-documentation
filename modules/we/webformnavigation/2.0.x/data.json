@@ -1,0 +1,51 @@
+{
+  "name": "Webform Navigation",
+  "data_name": "webformnavigation",
+  "description": "Creates a navigation setting for webform that allows users to navigate forwards and backwards through wizard pages when the wizard navigation progress bar is enabled.",
+  "version": "2.0.x",
+  "package": "Webform",
+  "composer_namespace": "drupal/webformnavigation",
+  "composer_requirements": {
+    "drupal/webform": "^5.16 || ^6.0",
+    "drupal/core": "^9.0 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "webform:webform",
+    "webform:webform_submission_log"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": 436,
+  "list_position": 2203,
+  "project_url": "https://www.drupal.org/project/webformnavigation",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Forms and surveys",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Webform elements",
+    "Multistep forms"
+  ],
+  "keywords": [
+    "webform",
+    "wizard",
+    "multistep",
+    "progress bar",
+    "progress tracker",
+    "navigation",
+    "forward navigation",
+    "webform handler",
+    "validation",
+    "draft",
+    "submission log"
+  ]
+}

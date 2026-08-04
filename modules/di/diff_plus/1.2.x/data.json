@@ -1,0 +1,55 @@
+{
+  "name": "Diff Plus",
+  "data_name": "diff_plus",
+  "description": "Provides fairly opinionated expanded functionality for the diff module",
+  "version": "1.2.x",
+  "package": null,
+  "composer_namespace": "drupal/diff_plus",
+  "composer_requirements": {
+    "caxy/php-htmldiff": "^0.1.14",
+    "drupal/core": "^10.1 || ^11",
+    "drupal/diff": "^2.0",
+    "ext-dom": "*",
+    "php": ">=8.1"
+  },
+  "dependent_modules": [
+    "diff:diff"
+  ],
+  "configure": "diff_plus.default_settings",
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": 457,
+  "list_position": 2223,
+  "project_url": "https://www.drupal.org/project/diff_plus",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [
+    "caxy/php-htmldiff"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Revision comparison"
+  ],
+  "keywords": [
+    "diff",
+    "diff plus",
+    "revision comparison",
+    "revisions",
+    "raw html diff",
+    "visual inline diff",
+    "html5 diff",
+    "diff2html",
+    "highlight.js",
+    "js-beautify",
+    "per-user settings",
+    "content moderation",
+    "layout builder"
+  ]
+}

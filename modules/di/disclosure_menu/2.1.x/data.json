@@ -1,0 +1,52 @@
+{
+  "name": "Disclosure Menu",
+  "data_name": "disclosure_menu",
+  "description": "Allows Drupal menus to be displayed as a dropdown menu with disclosure buttons",
+  "version": "2.1.x",
+  "package": "Menu",
+  "composer_namespace": "drupal/disclosure_menu",
+  "composer_requirements": {
+    "drupal/token": "^1.1",
+    "drupal/twig_tweak": "^3.2"
+  },
+  "dependent_modules": [
+    "token",
+    "twig_tweak"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 2186,
+  "project_url": "https://www.drupal.org/project/disclosure_menu",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site structure",
+    "Accessibility"
+  ],
+  "subcategories": [
+    "Navigation menus",
+    "ARIA / semantic markup"
+  ],
+  "keywords": [
+    "menu",
+    "dropdown menu",
+    "disclosure",
+    "accessibility",
+    "aria",
+    "keyboard navigation",
+    "submenu toggle",
+    "menu block",
+    "hover menu",
+    "horizontal menu",
+    "vertical menu",
+    "chevron"
+  ]
+}

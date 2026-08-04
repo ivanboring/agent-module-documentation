@@ -1,0 +1,47 @@
+{
+  "name": "Login & Access Security",
+  "data_name": "session_management",
+  "description": "A miniOrange module that allows administrators to control user sessions while enabling users to inspect and manage their own sessions. Features include simultaneous session limitation and detailed login/logout reports and many more.",
+  "version": "1.2.x",
+  "package": "miniOrange",
+  "composer_namespace": "drupal/session_management",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "views"
+  ],
+  "configure": "session_management.config_form",
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 2187,
+  "project_url": "https://www.drupal.org/project/session_management",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Session management"
+  ],
+  "keywords": [
+    "session",
+    "session limit",
+    "simultaneous sessions",
+    "auto logout",
+    "autologout",
+    "inactivity timeout",
+    "login report",
+    "ip restriction",
+    "login security",
+    "miniorange",
+    "force logout",
+    "session monitor"
+  ]
+}

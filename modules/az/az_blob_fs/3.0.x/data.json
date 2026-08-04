@@ -1,0 +1,59 @@
+{
+  "name": "Azure Blob Storage File System",
+  "data_name": "az_blob_fs",
+  "description": "This module creates a stream wrapper scheme in order to store files on the Azure Blob Storage service.",
+  "version": "3.0.x",
+  "package": "Microsoft Azure",
+  "composer_namespace": "drupal/az_blob_fs",
+  "composer_requirements": {
+    "drupal/core": "^10 || ^11",
+    "drupal/key": ">=1.15",
+    "microsoft/azure-storage-blob": ">=1.5"
+  },
+  "dependent_modules": [
+    "key",
+    "image"
+  ],
+  "configure": "az_blob_fs.settings_form",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 419,
+  "list_position": 2222,
+  "project_url": "https://www.drupal.org/project/az_blob_fs",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "microsoft/azure-storage-blob"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Remote file storage",
+    "Filesystem abstraction",
+    "Cloud services (Azure)"
+  ],
+  "keywords": [
+    "azure",
+    "azure blob storage",
+    "blob",
+    "stream wrapper",
+    "azblob",
+    "remote file storage",
+    "cloud storage",
+    "file system",
+    "microsoft azure",
+    "cdn",
+    "image styles",
+    "key module",
+    "flysystem alternative",
+    "s3fs alternative",
+    "media storage"
+  ]
+}

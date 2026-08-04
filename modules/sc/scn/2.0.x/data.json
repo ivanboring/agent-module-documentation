@@ -1,0 +1,45 @@
+{
+  "name": "Simple Comment Notify",
+  "data_name": "scn",
+  "description": "Notifies the site administrator by e-mail or telegram about new comments on the site.",
+  "version": "2.0.x",
+  "package": "Comments",
+  "composer_namespace": "drupal/scn",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "comment"
+  ],
+  "configure": "scn.settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": 2189,
+  "project_url": "https://www.drupal.org/project/scn",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "User engagement"
+  ],
+  "subcategories": [
+    "Activity / notification messages",
+    "Email / mail delivery"
+  ],
+  "keywords": [
+    "comment",
+    "notification",
+    "email",
+    "telegram",
+    "moderation",
+    "new comment",
+    "admin alert",
+    "comment notify",
+    "proxy",
+    "socks5"
+  ]
+}

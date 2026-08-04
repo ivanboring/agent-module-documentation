@@ -1,0 +1,49 @@
+{
+  "name": "Configuration Translation Access",
+  "data_name": "config_translation_access",
+  "description": "Adds a permission to allow access to configuration translation routes based on access to the original route.",
+  "version": "1.2.x",
+  "package": "Multilingual",
+  "composer_namespace": "drupal/config_translation_access",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "drupal/core": "^9.1 || ^10.0 || ^11.0"
+  },
+  "dependent_modules": [
+    "config_translation"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.1 || ^10 || ^11",
+  "active_installs": 418,
+  "list_position": 2212,
+  "project_url": "https://www.drupal.org/project/config_translation_access",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Multilingual"
+  ],
+  "subcategories": [
+    "Language-based access control",
+    "Translation / multilingual",
+    "User roles & permissions"
+  ],
+  "keywords": [
+    "config translation",
+    "access control",
+    "permission",
+    "service decorator",
+    "translate editable configuration",
+    "config_translation",
+    "language",
+    "multilingual",
+    "access handler"
+  ]
+}

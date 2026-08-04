@@ -1,0 +1,52 @@
+{
+  "name": "Commerce Mollie",
+  "data_name": "commerce_mollie",
+  "description": "Provides Commerce integration for Mollie Payments.",
+  "version": "1.12.x",
+  "package": "Commerce (contrib)",
+  "composer_namespace": "drupal/commerce_mollie",
+  "composer_requirements": {
+    "php": "^8.0",
+    "drupal/commerce": "^2.40 || ^3.0",
+    "mollie/mollie-api-php": "~2.0"
+  },
+  "dependent_modules": [
+    "commerce",
+    "commerce_payment"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": 448,
+  "list_position": 2218,
+  "project_url": "https://www.drupal.org/project/commerce_mollie",
+  "license": "GPL-2.0+",
+  "php_requirement": "^8.0",
+  "library_dependencies": [
+    "mollie/mollie-api-php"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Payment gateway",
+    "Checkout customization"
+  ],
+  "keywords": [
+    "mollie",
+    "commerce",
+    "payment gateway",
+    "offsite payment",
+    "ideal",
+    "credit card",
+    "webhook",
+    "onNotify",
+    "commerce_payment",
+    "checkout"
+  ]
+}
