@@ -1,0 +1,52 @@
+{
+  "name": "Static Setting Contexts",
+  "data_name": "static_setting_contexts",
+  "description": "Leverage the StaticSettings API to create Drupal contexts.",
+  "version": "1.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/static_setting_contexts",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "drupal/core": "^10 || ^11",
+    "owenbush/static-settings": "^2.1"
+  },
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 194,
+  "list_position": 2542,
+  "project_url": "https://www.drupal.org/project/static_setting_contexts",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [
+    "owenbush/static-settings"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "static_setting_contexts"
+  ],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Plugin context providers",
+    "Plugin system",
+    "Visibility conditions"
+  ],
+  "keywords": [
+    "static settings",
+    "context",
+    "condition",
+    "visibility",
+    "block visibility",
+    "plugin",
+    "enum",
+    "static-settings",
+    "owenbush",
+    "environment context"
+  ]
+}

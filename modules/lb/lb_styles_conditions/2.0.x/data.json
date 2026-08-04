@@ -1,0 +1,50 @@
+{
+  "name": "Layout Builder Styles Conditions",
+  "data_name": "lb_styles_conditions",
+  "description": "Provides condition plugins for Layout Builder Styles.",
+  "version": "2.0.x",
+  "package": "Layout",
+  "composer_namespace": "drupal/lb_styles_conditions",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "drupal/core": "^10 || ^11",
+    "drupal/conditions_helper": "^1.0",
+    "drupal/layout_builder_styles": "^2.1"
+  },
+  "dependent_modules": [
+    "layout_builder_styles:layout_builder_styles",
+    "conditions_helper:conditions_helper"
+  ],
+  "configure": "lb_styles_conditions.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 199,
+  "list_position": 2512,
+  "project_url": "https://www.drupal.org/project/lb_styles_conditions",
+  "license": "GPL-2.0+",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Layout Builder",
+    "Visibility conditions"
+  ],
+  "keywords": [
+    "lb_styles_conditions",
+    "layout builder",
+    "layout builder styles",
+    "conditions",
+    "visibility",
+    "style availability",
+    "conditions_helper",
+    "block styles",
+    "section styles"
+  ]
+}

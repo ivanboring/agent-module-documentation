@@ -1,0 +1,60 @@
+{
+  "name": "Bookable Calendar",
+  "data_name": "bookable_calendar",
+  "description": "Create an easy to use bookable calendar for people to book time.",
+  "version": "2.2.x",
+  "package": "Other",
+  "composer_namespace": "drupal/bookable_calendar",
+  "composer_requirements": {
+    "drupal/smart_date": "^4.0|^4.1"
+  },
+  "dependent_modules": [
+    "text",
+    "views",
+    "smart_date:smart_date",
+    "smart_date:smart_date_recur"
+  ],
+  "configure": "bookable_calendar.settings_form",
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": 329,
+  "list_position": 2544,
+  "project_url": "https://www.drupal.org/project/bookable_calendar",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "bookable_calendar_vbo_booking"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Forms and surveys",
+    "Content display",
+    "User engagement"
+  ],
+  "subcategories": [
+    "Booking / scheduling",
+    "Event management",
+    "Event registration",
+    "Sign-ups / RSVP"
+  ],
+  "keywords": [
+    "booking",
+    "bookable calendar",
+    "reservation",
+    "scheduling",
+    "appointments",
+    "time slots",
+    "smart_date",
+    "opening",
+    "opening instance",
+    "booking contact",
+    "check in",
+    "party size",
+    "event registration",
+    "notifications"
+  ]
+}

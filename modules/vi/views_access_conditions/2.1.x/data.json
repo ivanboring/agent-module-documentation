@@ -1,0 +1,52 @@
+{
+  "name": "Views Access Conditions",
+  "data_name": "views_access_conditions",
+  "description": "Control access to views based upon configurable conditions.",
+  "version": "2.1.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/views_access_conditions",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "drupal/core": "^10 || ^11",
+    "drupal/conditions_helper": "^1.0"
+  },
+  "dependent_modules": [
+    "drupal:views",
+    "conditions_helper:conditions_helper"
+  ],
+  "configure": "views_access_conditions.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 203,
+  "list_position": 2511,
+  "project_url": "https://www.drupal.org/project/views_access_conditions",
+  "license": "GPL-2.0+",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Views access control"
+  ],
+  "keywords": [
+    "views_access_conditions",
+    "views",
+    "access",
+    "access plugin",
+    "conditions",
+    "condition plugin",
+    "conditions api",
+    "context",
+    "views access",
+    "field visibility",
+    "filter visibility",
+    "argument access",
+    "conditions_helper"
+  ]
+}

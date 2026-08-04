@@ -1,0 +1,52 @@
+{
+  "name": "Entity Type Access Conditions",
+  "data_name": "entity_type_access_conditions",
+  "description": "Control access to entity types and bundles based on configurable conditions.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/entity_type_access_conditions",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "drupal/core": "^10 || ^11",
+    "drupal/conditions_helper": "^1.0"
+  },
+  "dependent_modules": [
+    "conditions_helper:conditions_helper"
+  ],
+  "configure": "entity_type_access_conditions.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 194,
+  "list_position": 2539,
+  "project_url": "https://www.drupal.org/project/entity_type_access_conditions",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "entity_type_access_conditions"
+  ],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Condition-based access",
+    "Workflow / business rules"
+  ],
+  "keywords": [
+    "access control",
+    "entity access",
+    "conditions",
+    "condition plugins",
+    "context",
+    "node type access",
+    "media type access",
+    "vocabulary access",
+    "conditions_helper",
+    "third party settings",
+    "bundle access"
+  ]
+}

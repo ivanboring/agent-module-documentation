@@ -1,0 +1,64 @@
+{
+  "name": "BAT: Booking and Availability Tools",
+  "data_name": "bat",
+  "description": "A generalized Booking and Availability Management Framework.",
+  "version": "11.0.x",
+  "package": "bat",
+  "composer_namespace": "drupal/bat",
+  "composer_requirements": {
+    "rlanvin/php-rrule": "^2.2",
+    "roomify/bat": "~1.3"
+  },
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^9.4 || ^10.2 || ^11",
+  "active_installs": null,
+  "list_position": 2542,
+  "project_url": "https://www.drupal.org/project/bat",
+  "license": "GPL-2.0+",
+  "php_requirement": null,
+  "library_dependencies": [
+    "rlanvin/php-rrule",
+    "roomify/bat"
+  ],
+  "suggests": {},
+  "submodules": [
+    "bat_booking",
+    "bat_calendar_reference",
+    "bat_event",
+    "bat_event_series",
+    "bat_event_ui",
+    "bat_facets",
+    "bat_fullcalendar",
+    "bat_group",
+    "bat_options",
+    "bat_unit"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Booking / scheduling",
+    "Availability management"
+  ],
+  "keywords": [
+    "bat",
+    "booking",
+    "availability",
+    "reservation",
+    "calendar",
+    "rooms",
+    "units",
+    "events",
+    "roomify",
+    "framework",
+    "scheduling",
+    "type group",
+    "entity access"
+  ]
+}

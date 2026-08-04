@@ -1,0 +1,57 @@
+{
+  "name": "File Extractor",
+  "data_name": "file_extractor",
+  "description": "Extract file entity content.",
+  "version": "5.0.x",
+  "package": "File",
+  "composer_namespace": "drupal/file_extractor",
+  "composer_requirements": {
+    "ext-mbstring": "*",
+    "composer-runtime-api": "^2.0"
+  },
+  "dependent_modules": [
+    "file"
+  ],
+  "configure": "file_extractor.settings_form",
+  "core_version_requirement": "^11.4 || ^12",
+  "active_installs": 339,
+  "list_position": 2517,
+  "project_url": "https://www.drupal.org/project/file_extractor",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {
+    "symfony/process": "To be able to use some provided extraction plugins."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "file_extractor_extractor"
+  ],
+  "categories": [
+    "Content editing experience",
+    "Media",
+    "Site search"
+  ],
+  "subcategories": [
+    "File & media metadata",
+    "Content indexing"
+  ],
+  "keywords": [
+    "file extractor",
+    "text extraction",
+    "pdftotext",
+    "tika",
+    "docconv",
+    "pdf2txt",
+    "solr",
+    "extract",
+    "index files",
+    "attachment text",
+    "search api",
+    "extracted text",
+    "file_extractor"
+  ]
+}
