@@ -1,0 +1,44 @@
+{
+  "name": "Fast Error Pages",
+  "data_name": "fast_error_pages",
+  "description": "Module improves performance by serving cached error pages such as 404 Not Found and 403 Access Denied before Drupal fully bootstraps.",
+  "version": "1.0.x",
+  "package": "Performance and scalability",
+  "composer_namespace": "drupal/fast_error_pages",
+  "composer_requirements": {
+    "drupal/core": "^10.3 || ^11"
+  },
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/fast_error_pages",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "FastErrorPage"
+  ],
+  "categories": [
+    "Performance",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Custom error pages",
+    "Cache invalidation"
+  ],
+  "keywords": [
+    "404",
+    "403",
+    "performance",
+    "error pages",
+    "cache",
+    "fast 404"
+  ]
+}

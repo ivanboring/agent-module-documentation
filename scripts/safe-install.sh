@@ -64,6 +64,13 @@ for m in "${names[@]}"; do
   err=$(composer require "drupal/$m" -W --no-interaction --no-progress 2>&1)
   if [ $? -eq 0 ] && [ -d "web/modules/contrib/$m" ]; then
     v=$(version_of "$m")
+    # A missing `version:` in the info.yml means drupal.org's packaging script never ran, i.e.
+    # composer resolved to a dev branch and cloned from git rather than taking a release. Say so:
+    # the module is documentable but is not a released artefact, and it leaves a .git directory
+    # on disk (smart_read_more_link, wave 66).
+    if [ -z "$v" ] && [ -d "web/modules/contrib/$m/.git" ]; then
+      v="DEV-CHECKOUT"
+    fi
     printf '%s\t%s\n' "$m" "${v:-?}"
     cp composer.json "$SNAP"   # commit: this module stuck, make it the new baseline
   else

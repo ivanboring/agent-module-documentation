@@ -1,0 +1,45 @@
+{
+  "name": "Google Index API",
+  "data_name": "google_index_api",
+  "description": "Update URLs via the Google Indexing API",
+  "version": "2.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/google_index_api",
+  "composer_requirements": {
+    "php": ">=5.4.0",
+    "google/apiclient": "^2.0"
+  },
+  "dependent_modules": [],
+  "configure": "google_index_api.settings_form",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/google_index_api",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "google/apiclient ^2.0"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Search engine optimization (SEO)",
+    "Integrations"
+  ],
+  "subcategories": [
+    "XML sitemaps",
+    "Content indexing"
+  ],
+  "keywords": [
+    "google",
+    "indexing api",
+    "seo",
+    "crawl",
+    "sitemap",
+    "publish"
+  ]
+}
