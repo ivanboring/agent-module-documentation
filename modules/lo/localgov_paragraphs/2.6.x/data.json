@@ -1,0 +1,54 @@
+{
+  "name": "LocalGov Paragraphs",
+  "data_name": "localgov_paragraphs",
+  "description": "Provides core paragraph components for the LocalGov Drupal distribution.",
+  "version": "2.6.x",
+  "version_note": "Installed but could not be enabled on a bare Drupal 11.4 site in this wave (wave-prepare reported FAILED, its submodules pull further LocalGov dependencies); documented from source.",
+  "package": "LocalGov Drupal",
+  "composer_namespace": "drupal/localgov_paragraphs",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:field",
+    "drupal:link",
+    "drupal:options",
+    "drupal:taxonomy",
+    "drupal:telephone",
+    "drupal:text"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/localgov_paragraphs",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "localgov_homepage_paragraphs",
+    "localgov_paragraphs_layout",
+    "localgov_paragraphs_views",
+    "localgov_subsites_paragraphs"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Structured content / page building",
+    "Layout Builder"
+  ],
+  "keywords": [
+    "localgov",
+    "paragraphs",
+    "components",
+    "layout paragraphs",
+    "subsites",
+    "homepage paragraphs",
+    "paragraphs views"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "Drupal AlternativeCommerce (Basket)",
+  "data_name": "basket",
+  "description": "Online store core",
+  "version": "2.1.x",
+  "version_note": "Installed but could not be enabled on a bare Drupal 11.4 site in this wave (wave-prepare reported FAILED); documented from source plus install metadata.",
+  "package": "Online store",
+  "composer_namespace": "drupal/basket",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node",
+    "drupal:token",
+    "drupal:scss_compiler",
+    "drupal:views"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/basket",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Storefront platform",
+    "Order management",
+    "Cart management"
+  ],
+  "keywords": [
+    "basket",
+    "alternative commerce",
+    "online store",
+    "orders",
+    "cart",
+    "scss_compiler",
+    "delivery",
+    "payment"
+  ]
+}

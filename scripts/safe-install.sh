@@ -65,11 +65,22 @@ for m in "${names[@]}"; do
       *"affected by security advisories"*)                 reason=blocked-by-advisory ;;
       *"requires drupal/core"*)                            reason=no-d11-release ;;
       *"curl error"*|*"Connection timed out"*|*"could not be downloaded"*) reason=network ;;
+      # A dependency ships a composer plugin that allow-plugins does not permit.
+      # Fix by adding it to config.allow-plugins, not by skip-listing the module.
+      # Match on the bare term: composer hard-wraps its error box mid-word, so
+      # "blocked by your allow-plugins" can arrive as "blocked by yo\nur allow-plugins".
+      *allow-plugins*)                                     reason=blocked-plugin ;;
     esac
     printf '%s\tFAILED\t%s\n' "$m" "$reason"
     {
       echo "===== $m ($reason)"
-      printf '%s\n' "$err" | grep -E "^\s+- |Problem|Could not find|curl error" | head -8
+      # Keep the resolver's own explanation. Drop the "Locking …"/"Downloading …"
+      # progress lines, which otherwise crowd out the actual error (they did on the
+      # first wave-55 run and hid a blocked-plugin failure entirely).
+      printf '%s\n' "$err" \
+        | grep -E "^\s+- |Problem|Could not find|curl error|blocked by|allow-plugins|Fatal|Exception" \
+        | grep -vE "^\s+- (Locking|Downloading|Installing|Removing|Upgrading|Downgrading) " \
+        | head -10
       echo
     } >> "$FAIL_LOG"
     cp "$SNAP" composer.json    # roll back the poisoned composer.json

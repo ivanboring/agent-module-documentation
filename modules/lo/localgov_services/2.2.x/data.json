@@ -1,0 +1,52 @@
+{
+  "name": "LocalGov Services: Core",
+  "data_name": "localgov_services",
+  "description": "Base module shared for LocalGov Services. It won't do anything on its own. Enable LocalGov Services Landing page module.",
+  "version": "2.2.x",
+  "package": "LocalGov Drupal",
+  "composer_namespace": "drupal/localgov_services",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:field",
+    "drupal:link",
+    "drupal:node",
+    "pathauto:pathauto",
+    "localgov_core:localgov_core"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/localgov_services",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "localgov_services_landing",
+    "localgov_services_navigation",
+    "localgov_services_page",
+    "localgov_services_status",
+    "localgov_services_sublanding"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site structure"
+  ],
+  "subcategories": [
+    "Structured content / page building",
+    "HTML sitemap / navigation"
+  ],
+  "keywords": [
+    "localgov",
+    "services",
+    "service landing page",
+    "service navigation",
+    "sublanding",
+    "service status",
+    "pathauto"
+  ]
+}

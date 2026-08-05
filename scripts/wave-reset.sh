@@ -63,6 +63,23 @@ print("  requires now:", len(d['require']))
 PY
 fi
 
+echo "== 1b/3 ensuring installer plugins stay allowed"
+# Several module families ship their own composer plugin and refuse to install when it is
+# not in config.allow-plugins (varbase/localgov -> vardot/varbase-patches, drupalauth4ssp ->
+# simplesamlphp/composer-module-installer, plus the common patching and installer-path
+# plugins). Composer reverts composer.json wholesale when a require fails, so an allowance
+# added mid-wave gets rolled back - keep them here, where every reset re-establishes them.
+if [ -z "$DRY" ]; then
+  for plugin in \
+    cweagans/composer-patches \
+    oomphinc/composer-installers-extender \
+    vardot/varbase-patches \
+    simplesamlphp/composer-module-installer; do
+    ddev exec "cd /var/www/html && composer config allow-plugins.$plugin true" >/dev/null 2>&1
+  done
+  echo "  allowed: patches, installers-extender, varbase-patches, simplesamlphp"
+fi
+
 echo "== 2/3 composer update (removes contrib from web/modules/contrib)"
 if [ -n "$DRY" ]; then
   echo "  (dry run) ddev exec composer update"

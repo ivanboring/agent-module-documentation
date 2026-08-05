@@ -1,0 +1,45 @@
+{
+  "name": "Google Analytics Counter",
+  "data_name": "google_analytics_counter",
+  "description": "Lightweight page view counter drawing on data collected by Google Analytics.",
+  "version": "4.0.x",
+  "package": "Statistics",
+  "composer_namespace": "drupal/google_analytics_counter",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node"
+  ],
+  "configure": "google_analytics_counter.admin_settings_form",
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/google_analytics_counter",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "Content display"
+  ],
+  "subcategories": [
+    "Analytics & tracking",
+    "Popularity / hotness tracking"
+  ],
+  "keywords": [
+    "google analytics",
+    "pageview counter",
+    "GA4",
+    "views integration",
+    "cron sync",
+    "counter field",
+    "administer google analytics counter",
+    "dashboard",
+    "statistics replacement"
+  ]
+}
