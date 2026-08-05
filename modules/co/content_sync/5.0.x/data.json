@@ -1,0 +1,54 @@
+{
+  "name": "Content Sync",
+  "data_name": "content_sync",
+  "description": "Allows users to import/export content using YAML files.",
+  "version": "5.0.x",
+  "version_note": "Installed release resolved by Composer is the dev branch dev-5.0.x. VERIFIED BROKEN on Drupal 11.4.4: Drupal\\content_sync\\Normalizer\\ContentEntityNormalizer::normalize() declares a wider return type than core serialization's ContentEntityNormalizer::normalize(): array, so every container build fatals once the module is enabled (drush cr, drush en and web requests all die; the module cannot be uninstalled via Drush because bootstrap fails). Documented from source only. Usable on Drupal <= 11.3.",
+  "package": "Custom",
+  "composer_namespace": "drupal/content_sync",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:serialization"
+  ],
+  "configure": "content.sync",
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": 860,
+  "list_position": 1692,
+  "project_url": "https://www.drupal.org/project/content_sync",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "sync_normalizer_decorator"
+  ],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Content migration / import",
+    "Data export",
+    "Deployment / release management"
+  ],
+  "keywords": [
+    "content sync",
+    "content staging",
+    "content deployment",
+    "yaml export",
+    "content_directories",
+    "content-sync:export",
+    "content-sync:import",
+    "csi",
+    "cse",
+    "sync_normalizer_decorator",
+    "normalizer",
+    "uuid",
+    "content snapshot",
+    "cs_db_snapshot",
+    "site uuid override"
+  ]
+}

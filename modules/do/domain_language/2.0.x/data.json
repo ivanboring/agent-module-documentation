@@ -1,0 +1,49 @@
+{
+  "name": "Domain Language",
+  "data_name": "domain_language",
+  "description": "Allows language restriction across domains.",
+  "version": "2.0.x",
+  "version_note": "Installed release 2.0.0-alpha2. VERIFIED FATAL on Drupal 11.4.4 as shipped: domain_language.services.yml passes ['@config.storage'] to DomainLanguageOverrider::__construct(), which expects (AccountProxyInterface, DomainNegotiatorInterface, ConfigFactoryInterface, OverriderInterface). Because it is a config.factory.override service it is built during container compilation, so enabling the module makes every request and drush command fatal with a TypeError. Documented from source; needs the argument list corrected before use.",
+  "package": "Domain",
+  "composer_namespace": "drupal/domain_language",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "domain:domain",
+    "domain:domain_config",
+    "drupal:language"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": 558,
+  "list_position": 2040,
+  "project_url": "https://www.drupal.org/project/domain_language",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Multilingual"
+  ],
+  "subcategories": [
+    "Language negotiation",
+    "Language switcher",
+    "Multi-domain / affiliate sites"
+  ],
+  "keywords": [
+    "domain language",
+    "domain access",
+    "per-domain default language",
+    "allowed languages",
+    "language negotiation override",
+    "config override",
+    "domain.language.*.language.negotiation",
+    "domain.config.*.system.site",
+    "language switcher filtering",
+    "bypass language restrictions"
+  ]
+}

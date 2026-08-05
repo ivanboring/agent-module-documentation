@@ -1,0 +1,49 @@
+{
+  "name": "Ollama Provider",
+  "data_name": "ai_provider_ollama",
+  "description": "This enables the use of Ollama for the AI module.",
+  "version": "1.2.x",
+  "installed_release": "1.2.0-rc3",
+  "package": "AI Providers",
+  "composer_namespace": "drupal/ai_provider_ollama",
+  "composer_requirements": {
+    "drupal/ai": "^1.2.0"
+  },
+  "dependent_modules": [
+    "ai:ai"
+  ],
+  "configure": "ai_provider_ollama.settings_form",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 404,
+  "list_position": 2345,
+  "project_url": "https://www.drupal.org/project/ai_provider_ollama",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "AI provider abstraction / LLM gateway"
+  ],
+  "keywords": [
+    "ollama",
+    "ai provider",
+    "local llm",
+    "self-hosted",
+    "chat",
+    "embeddings",
+    "moderation",
+    "llama-guard3",
+    "shieldgemma",
+    "host.docker.internal",
+    "port 11434",
+    "OpenAI-compatible API"
+  ]
+}
