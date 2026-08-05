@@ -1,0 +1,51 @@
+{
+  "name": "LocalGov Search",
+  "data_name": "localgov_search",
+  "description": "Sitewide search for LocalGov Drupal",
+  "version": "1.4.x",
+  "package": "LocalGov Drupal",
+  "composer_namespace": "drupal/localgov_search",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node",
+    "drupal:views",
+    "search_api:search_api",
+    "localgov_core:localgov_core"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 309,
+  "list_position": 2597,
+  "project_url": "https://www.drupal.org/project/localgov_search",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "localgov_search_db"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site search"
+  ],
+  "subcategories": [
+    "Search framework",
+    "Content indexing",
+    "Search form block"
+  ],
+  "keywords": [
+    "localgov",
+    "sitewide search",
+    "search_api",
+    "localgov_sitewide_search",
+    "search index",
+    "search_result view mode",
+    "search_index view mode",
+    "auto add bundles",
+    "search block",
+    "aria role search"
+  ]
+}

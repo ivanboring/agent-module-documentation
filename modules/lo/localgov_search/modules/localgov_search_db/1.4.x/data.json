@@ -1,0 +1,42 @@
+{
+  "name": "LocalGov Search Database",
+  "data_name": "localgov_search_db",
+  "description": "Installs initial SQL database index and configuration Sitewide Search",
+  "version": "1.4.x",
+  "package": "LocalGov Drupal",
+  "composer_namespace": "drupal/localgov_search",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "localgov_search:localgov_search",
+    "search_api:search_api_db"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 309,
+  "list_position": 2597,
+  "project_url": "https://www.drupal.org/project/localgov_search",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site search"
+  ],
+  "subcategories": [
+    "Search backend",
+    "Content indexing"
+  ],
+  "keywords": [
+    "localgov",
+    "search_api_db",
+    "database backend",
+    "localgov_sitewide_search server",
+    "index attach guard",
+    "solr swap"
+  ]
+}

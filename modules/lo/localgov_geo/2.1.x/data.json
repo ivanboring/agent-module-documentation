@@ -1,0 +1,50 @@
+{
+  "name": "LocalGov Geo",
+  "data_name": "localgov_geo",
+  "description": "Entity for storing geodata, with location and geocoding.",
+  "version": "2.1.x",
+  "package": "LocalGov Drupal",
+  "composer_namespace": "drupal/localgov_geo",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "geo_entity:geo_entity"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 363,
+  "list_position": 2442,
+  "project_url": "https://www.drupal.org/project/localgov_geo",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "localgov_geo_address",
+    "localgov_geo_area",
+    "localgov_geo_update"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site structure",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Geospatial / location",
+    "Address autocomplete / verification"
+  ],
+  "keywords": [
+    "localgov",
+    "geo",
+    "geo_entity",
+    "geocoder",
+    "ordnance survey places",
+    "os places api",
+    "openstreetmap",
+    "address lookup",
+    "location entity",
+    "view geo permission"
+  ]
+}
