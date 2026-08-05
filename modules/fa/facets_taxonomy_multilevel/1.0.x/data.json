@@ -1,0 +1,43 @@
+{
+  "name": "Facets Taxonomy Multilevel",
+  "data_name": "facets_taxonomy_multilevel",
+  "description": "Adding new processors Term Depth and Term Dependent for multilevel taxonomy facet.",
+  "version": "1.0.x",
+  "package": "Search",
+  "composer_namespace": "drupal/facets_taxonomy_multilevel",
+  "composer_requirements": {
+    "drupal/facets": "^2.0 || ^3.0"
+  },
+  "dependent_modules": [
+    "facets:facets"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/facets_taxonomy_multilevel",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site search"
+  ],
+  "subcategories": [
+    "Faceted search UI",
+    "Taxonomy hierarchy"
+  ],
+  "keywords": [
+    "facets",
+    "taxonomy",
+    "hierarchy",
+    "processor",
+    "depth",
+    "search api"
+  ]
+}

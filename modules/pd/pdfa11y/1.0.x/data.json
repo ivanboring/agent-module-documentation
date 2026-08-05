@@ -1,0 +1,46 @@
+{
+  "name": "PDFa11y",
+  "data_name": "pdfa11y",
+  "description": "Checks uploaded PDF files for accessibility compliance.",
+  "version": "1.0.x",
+  "package": "Media",
+  "composer_namespace": "drupal/pdfa11y",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "smalot/pdfparser": "^2.0"
+  },
+  "dependent_modules": [
+    "drupal:media",
+    "drupal:file"
+  ],
+  "configure": "pdfa11y.settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/pdfa11y",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Accessibility",
+    "Media"
+  ],
+  "subcategories": [
+    "Markup validation",
+    "File & media metadata"
+  ],
+  "keywords": [
+    "pdf",
+    "accessibility",
+    "wcag",
+    "a11y",
+    "compliance",
+    "pdfparser"
+  ]
+}

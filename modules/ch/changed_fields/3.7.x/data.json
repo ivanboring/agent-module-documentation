@@ -1,0 +1,45 @@
+{
+  "name": "Changed Fields API",
+  "data_name": "changed_fields",
+  "description": "Allows developers to react on changed entity fields.",
+  "version": "3.7.x",
+  "package": "Changed Fields API",
+  "composer_namespace": "drupal/changed_fields",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/changed_fields",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "changed_fields_basic_usage",
+    "changed_fields_extended_field_comparator"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "FieldComparator"
+  ],
+  "categories": [
+    "Developer tools",
+    "Automation"
+  ],
+  "subcategories": [
+    "Hook / event system",
+    "Entity API"
+  ],
+  "keywords": [
+    "entity",
+    "field changes",
+    "observer",
+    "presave",
+    "comparator",
+    "developer"
+  ]
+}

@@ -62,9 +62,18 @@ submodules() {
       done | sort -u | paste -sd, -
 }
 
+# Read the version from the module's own info.yml. `composer show --format=json` prefixes its
+# output with a notice when run without a TTY, so json_decode() returns null and every version
+# comes back empty (wave 59). The drupal.org packaging script always writes `version:` into a
+# released info.yml.
 version_of() {
-  composer show "drupal/$1" --format=json 2>/dev/null \
-    | php -r '$j=json_decode(stream_get_contents(STDIN),true); echo $j["versions"][0] ?? "";'
+  local d="$CONTRIB/$1" f v
+  for f in "$d/$1.info.yml" "$d"/*.info.yml "$d"/*/*.info.yml; do
+    [ -f "$f" ] || continue
+    v=$(sed -n "s/^version: *['\"]\{0,1\}\([^'\"]*\)['\"]\{0,1\} *$/\1/p" "$f" | head -1)
+    [ -n "$v" ] && { echo "$v"; return 0; }
+  done
+  return 1
 }
 
 FAILED_EN=()

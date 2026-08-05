@@ -19,6 +19,21 @@ else
   names=("$@")
 fi
 
+# Read the release version from the module's own info.yml rather than asking composer.
+# `composer show drupal/X --format=json` is not reliable here: run from a script (no TTY) it
+# prefixes its JSON with a notice, so json_decode() returns null and every module reported "?"
+# for its version in wave 59. The drupal.org packaging script always writes `version:` into the
+# released info.yml, so read that - authoritative, and no subprocess.
+version_of() {
+  local d="web/modules/contrib/$1" f
+  for f in "$d/$1.info.yml" "$d"/*.info.yml "$d"/*/*.info.yml; do
+    [ -f "$f" ] || continue
+    v=$(sed -n "s/^version: *['\"]\{0,1\}\([^'\"]*\)['\"]\{0,1\} *$/\1/p" "$f" | head -1)
+    [ -n "$v" ] && { echo "$v"; return 0; }
+  done
+  return 1
+}
+
 SNAP=$(mktemp)
 cp composer.json "$SNAP"
 
@@ -48,8 +63,7 @@ for m in "${names[@]}"; do
   fi
   err=$(composer require "drupal/$m" -W --no-interaction --no-progress 2>&1)
   if [ $? -eq 0 ] && [ -d "web/modules/contrib/$m" ]; then
-    v=$(composer show "drupal/$m" --format=json 2>/dev/null \
-          | php -r '$j=json_decode(stream_get_contents(STDIN),true); echo $j["versions"][0] ?? "?";')
+    v=$(version_of "$m")
     printf '%s\t%s\n' "$m" "${v:-?}"
     cp composer.json "$SNAP"   # commit: this module stuck, make it the new baseline
   else

@@ -1,0 +1,51 @@
+{
+  "name": "Media Contextual Crop Reference",
+  "data_name": "media_contextual_crop_field_formatter",
+  "description": "Provides an solution to contextualize crop in media referenced fields",
+  "version": "2.0.x",
+  "package": "Media Contextual Cropping",
+  "composer_namespace": "drupal/media_contextual_crop_field_formatter",
+  "composer_requirements": {
+    "composer/installers": "^1.9 || ^2.0",
+    "cweagans/composer-patches": "^1.7",
+    "drupal/media_library_media_modify": "^1.0.0 || ^2.0.0@beta",
+    "drupal/media_contextual_crop": "~2.0",
+    "drupal/core": "^10 || ^11"
+  },
+  "dependent_modules": [
+    "drupal:field",
+    "drupal:media",
+    "media_contextual_crop:media_contextual_crop",
+    "media_library_media_modify:media_library_media_modify"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/media_contextual_crop_field_formatter",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media",
+    "Content display"
+  ],
+  "subcategories": [
+    "Field formatters",
+    "Responsive images"
+  ],
+  "keywords": [
+    "crop",
+    "media",
+    "image",
+    "formatter",
+    "contextual",
+    "reuse"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "name": "Views CSV Source",
+  "data_name": "views_csv_source",
+  "description": "Adds a Views backend to query comma-separated values (CSV) files.",
+  "version": "1.0.x",
+  "package": "Views",
+  "composer_namespace": "drupal/views_csv_source",
+  "composer_requirements": {
+    "league/csv": "^9.27"
+  },
+  "dependent_modules": [
+    "drupal:views"
+  ],
+  "configure": "views_csv_source.settings",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/views_csv_source",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export",
+    "Content display"
+  ],
+  "subcategories": [
+    "External database tables",
+    "Data export"
+  ],
+  "keywords": [
+    "views",
+    "csv",
+    "query backend",
+    "rest",
+    "league/csv",
+    "external data"
+  ]
+}
