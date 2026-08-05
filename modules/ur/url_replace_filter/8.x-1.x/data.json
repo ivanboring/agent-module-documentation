@@ -1,0 +1,42 @@
+{
+  "name": "URL Replace Filter",
+  "data_name": "url_replace_filter",
+  "description": "Replaces base URLs in img and a elements.",
+  "version": "8.x-1.x",
+  "package": "Content display",
+  "composer_namespace": "drupal/url_replace_filter",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:filter"
+  ],
+  "configure": "filter.admin_overview",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/url_replace_filter",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "8.2",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience",
+    "Import and export"
+  ],
+  "subcategories": [
+    "Text formats and filters",
+    "Content migration cleanup"
+  ],
+  "keywords": [
+    "url",
+    "filter",
+    "base url",
+    "migration",
+    "images",
+    "links"
+  ]
+}

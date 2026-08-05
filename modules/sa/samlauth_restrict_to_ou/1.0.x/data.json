@@ -1,0 +1,42 @@
+{
+  "name": "SAML Authentication Restrict to OU",
+  "data_name": "samlauth_restrict_to_ou",
+  "description": "Restricts site access based on SAML OU attributes.",
+  "version": "1.0.x",
+  "package": "SAML",
+  "composer_namespace": "drupal/samlauth_restrict_to_ou",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "samlauth:samlauth"
+  ],
+  "configure": "samlauth_restrict_to_ou.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/samlauth_restrict_to_ou",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "User management"
+  ],
+  "subcategories": [
+    "Single sign-on",
+    "Authorisation"
+  ],
+  "keywords": [
+    "saml",
+    "ou",
+    "organizational unit",
+    "sso",
+    "restriction",
+    "ldap"
+  ]
+}

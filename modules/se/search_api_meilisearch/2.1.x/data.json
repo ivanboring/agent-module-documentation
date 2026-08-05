@@ -1,0 +1,45 @@
+{
+  "name": "Search API Meilisearch",
+  "data_name": "search_api_meilisearch",
+  "description": "Meilisearch backend for Search API.",
+  "version": "2.1.x",
+  "package": "Search",
+  "composer_namespace": "drupal/search_api_meilisearch",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "search_api:search_api"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/search_api_meilisearch",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "search_api_meilisearch_autocomplete",
+    "search_api_meilisearch_facets"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Search",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Search backends",
+    "Faceted search"
+  ],
+  "keywords": [
+    "meilisearch",
+    "search api",
+    "search",
+    "typo tolerance",
+    "facets",
+    "autocomplete"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "name": "Admin Theme Change",
+  "data_name": "theme_change",
+  "description": "Changes the admin theme for selected pages.",
+  "version": "4.0.x",
+  "package": null,
+  "composer_namespace": "drupal/theme_change",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:path_alias"
+  ],
+  "configure": "entity.theme_change.collection",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/theme_change",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Theming",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Admin theme",
+    "Routing"
+  ],
+  "keywords": [
+    "theme",
+    "admin theme",
+    "path",
+    "route",
+    "negotiation",
+    "switch"
+  ]
+}
