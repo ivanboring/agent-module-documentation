@@ -1,0 +1,53 @@
+{
+  "name": "Commerce API",
+  "data_name": "commerce_api",
+  "description": "Provides an HTTP interface to interact with Drupal Commerce.",
+  "version": "1.0.x",
+  "installed_release": "1.0.0-rc5",
+  "package": "Commerce (web services)",
+  "composer_namespace": "drupal/commerce_api",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "commerce:commerce",
+    "commerce:commerce_cart",
+    "drupal:jsonapi",
+    "drupal:serialization",
+    "jsonapi_resources:jsonapi_resources",
+    "jsonapi_hypermedia:jsonapi_hypermedia"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.4 || ^10 || ^11",
+  "active_installs": 332,
+  "list_position": 2532,
+  "project_url": "https://www.drupal.org/project/commerce_api",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Decoupled",
+    "E-commerce"
+  ],
+  "subcategories": [
+    "REST / web services",
+    "Cart management",
+    "Checkout customization"
+  ],
+  "keywords": [
+    "commerce",
+    "jsonapi",
+    "decoupled commerce",
+    "cart token",
+    "Commerce-Cart-Token",
+    "cartToken",
+    "jsonapi_resources",
+    "checkout api",
+    "webhook order transition",
+    "current store"
+  ]
+}
