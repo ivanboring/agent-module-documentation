@@ -1,0 +1,46 @@
+{
+  "name": "RDF SKOS",
+  "data_name": "rdf_skos",
+  "description": "Entity type for SKOS modeling",
+  "version": "1.4.x",
+  "package": "RDF Entity",
+  "composer_namespace": "drupal/rdf_skos",
+  "composer_requirements": {
+    "drupal/sparql_entity_storage": "^2.0.0-beta1"
+  },
+  "dependent_modules": [
+    "sparql_entity_storage:sparql_entity_storage"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/rdf_skos",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "rdf_skos_language_mapping"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site structure",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Taxonomy hierarchy",
+    "REST / web services"
+  ],
+  "keywords": [
+    "skos",
+    "rdf",
+    "sparql",
+    "linked data",
+    "vocabulary",
+    "semantic web"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "name": "AI Translator",
+  "data_name": "ai_tmgmt",
+  "description": "TMGMT implementation of AI Module to allow use of many AI Providers like OpenAI, Ollama, etc.",
+  "version": "1.0.x",
+  "package": "Translation Management",
+  "composer_namespace": "drupal/ai_tmgmt",
+  "composer_requirements": {
+    "drupal/ai": "^1.0.4",
+    "drupal/tmgmt": "^1.16"
+  },
+  "dependent_modules": [
+    "ai",
+    "tmgmt"
+  ],
+  "configure": "entity.tmgmt_translator.collection",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ai_tmgmt",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Multilingual",
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "Language switcher",
+    "AI agents / taskable AI"
+  ],
+  "keywords": [
+    "tmgmt",
+    "translation",
+    "ai",
+    "openai",
+    "ollama",
+    "machine translation"
+  ]
+}

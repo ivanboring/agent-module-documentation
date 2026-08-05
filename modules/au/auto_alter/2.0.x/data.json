@@ -1,0 +1,46 @@
+{
+  "name": "Automatic Alternative Text",
+  "data_name": "auto_alter",
+  "description": "Automatically generate alt text for images using AI. Currently supports Microsoft's Cognitive Services Computer Vision API and Alttext.ai.",
+  "version": "2.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/auto_alter",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:image"
+  ],
+  "configure": "auto_alter.settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/auto_alter",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "auto_alter_translate"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "DescribeImage"
+  ],
+  "categories": [
+    "Accessibility",
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "ARIA / semantic markup",
+    "AI agents / taskable AI"
+  ],
+  "keywords": [
+    "alt text",
+    "accessibility",
+    "ai",
+    "computer vision",
+    "alttext.ai",
+    "images"
+  ]
+}

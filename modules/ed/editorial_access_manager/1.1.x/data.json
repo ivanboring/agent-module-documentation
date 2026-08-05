@@ -1,0 +1,43 @@
+{
+  "name": "Editorial access manager",
+  "data_name": "editorial_access_manager",
+  "description": "Allows assign users to be able to edit or translate content entities",
+  "version": "1.1.x",
+  "package": "Access control",
+  "composer_namespace": "drupal/editorial_access_manager",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node",
+    "drupal:content_translation"
+  ],
+  "configure": "editorial_access_manager.settings",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/editorial_access_manager",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Multilingual"
+  ],
+  "subcategories": [
+    "Per-node view access",
+    "Language-based access control"
+  ],
+  "keywords": [
+    "editorial",
+    "assignment",
+    "access",
+    "translation",
+    "per-entity",
+    "workflow"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "Log",
+  "data_name": "log",
+  "description": "Provides a log entity type for real world record keeping.",
+  "version": "4.0.x",
+  "package": "Log",
+  "composer_namespace": "drupal/log",
+  "composer_requirements": {
+    "drupal/entity": "^1.0",
+    "drupal/state_machine": "^1.0",
+    "drupal/token": "^1.0"
+  },
+  "dependent_modules": [
+    "drupal:system",
+    "drupal:user",
+    "drupal:views",
+    "entity:entity",
+    "state_machine:state_machine",
+    "token:token"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11.3",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/log",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site structure",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Entity API",
+    "Workflow / business rules"
+  ],
+  "keywords": [
+    "log entity",
+    "record keeping",
+    "state machine",
+    "farmos",
+    "events",
+    "audit"
+  ]
+}

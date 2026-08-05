@@ -1,0 +1,44 @@
+{
+  "name": "Orejime Register",
+  "data_name": "orejime_register",
+  "description": "Register to database every cookies acceptances and declines according to gdpr rules.",
+  "version": "2.0.x",
+  "package": "orejime",
+  "composer_namespace": "drupal/orejime_register",
+  "composer_requirements": {
+    "drupal/orejime": "^3"
+  },
+  "dependent_modules": [
+    "orejime:orejime"
+  ],
+  "configure": "orejime_register.list",
+  "core_version_requirement": "^10.1 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/orejime_register",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Cookie consent / GDPR",
+    "Audit trail / activity logging"
+  ],
+  "keywords": [
+    "orejime",
+    "consent",
+    "gdpr",
+    "register",
+    "cookies",
+    "audit"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "name": "Purge control",
+  "data_name": "purge_control",
+  "description": "Provides the mechanism to pause and restart purging.",
+  "version": "2.1.x",
+  "package": "Purge",
+  "composer_namespace": "drupal/purge_control",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "drupal/purge": "^3.0.0"
+  },
+  "dependent_modules": [
+    "purge:purge"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/purge_control",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Cache invalidation",
+    "Deployment / release management"
+  ],
+  "keywords": [
+    "purge",
+    "cache",
+    "cdn",
+    "pause",
+    "deployment",
+    "migration"
+  ]
+}
