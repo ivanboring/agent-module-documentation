@@ -1,0 +1,42 @@
+{
+  "name": "Social Auth Roles",
+  "data_name": "social_auth_roles",
+  "description": "Assign roles to users created via Social Auth.",
+  "version": "2.0.x",
+  "package": "Social",
+  "composer_namespace": "drupal/social_auth_roles",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "social_auth:social_auth"
+  ],
+  "configure": "social_auth_roles.settings",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/social_auth_roles",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "User management",
+    "Security"
+  ],
+  "subcategories": [
+    "Registration",
+    "Roles and permissions"
+  ],
+  "keywords": [
+    "social auth",
+    "roles",
+    "registration",
+    "oauth",
+    "assignment",
+    "users"
+  ]
+}

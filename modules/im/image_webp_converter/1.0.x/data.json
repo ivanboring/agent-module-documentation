@@ -1,0 +1,43 @@
+{
+  "name": "Image WebP Converter",
+  "data_name": "image_webp_converter",
+  "description": "Converts uploaded images to WebP and updates references.",
+  "version": "1.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/image_webp_converter",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:file",
+    "drupal:image"
+  ],
+  "configure": "image_webp_converter.settings",
+  "core_version_requirement": "^10 | ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/image_webp_converter",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance",
+    "Media management"
+  ],
+  "subcategories": [
+    "Image optimisation",
+    "Bulk operations"
+  ],
+  "keywords": [
+    "webp",
+    "images",
+    "conversion",
+    "performance",
+    "optimisation",
+    "bulk"
+  ]
+}
