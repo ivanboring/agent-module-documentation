@@ -153,3 +153,19 @@ Some modules install but cannot be enabled, or take the site down when they are.
 A module that fatals the container blocks **every** subsequent `drush en` in the same wave, which
 looks like the whole batch failing. If a wave's modules all report FAILED, check for one of these
 first.
+
+### Before committing a wave: check nothing was missed
+
+`wave-prepare.sh` prints a manifest of everything it enabled. It is easy to write docs for most
+of that list and lose one or two at the bottom — this happened in wave 66, where `social_wall`,
+`group_by_field_widget` and `commerce_fedex` were enabled, inspected and then left undocumented
+until a follow-up commit.
+
+Run the on-disk check as the last step before `git add`:
+
+```bash
+bash scripts/undocumented-on-disk.sh    # prints any contrib module on disk with no doc directory
+```
+
+Empty output means the wave is complete. It resolves project→module renames, so a project whose
+module name differs (e.g. `notificationswidget` → `notifications_widget`) is not reported falsely.
