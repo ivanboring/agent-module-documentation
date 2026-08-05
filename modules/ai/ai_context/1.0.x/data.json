@@ -1,0 +1,48 @@
+{
+  "name": "Context Control Center",
+  "data_name": "ai_context",
+  "description": "Manage AI context used in agent prompts for better AI outcomes.",
+  "version": "1.0.x",
+  "installed_release": "1.0.0-beta3",
+  "package": "AI",
+  "composer_namespace": "drupal/ai_context",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "ai:ai",
+    "ai_agents:ai_agents",
+    "drupal:content_moderation",
+    "drupal:options",
+    "drupal:taxonomy"
+  ],
+  "configure": "ai_context.overview",
+  "core_version_requirement": "^10.5 || ^11.2",
+  "active_installs": 359,
+  "list_position": 2450,
+  "project_url": "https://www.drupal.org/project/ai_context",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "AI agents / taskable AI",
+    "AI provider abstraction / LLM gateway"
+  ],
+  "keywords": [
+    "ai context",
+    "context control center",
+    "agent prompts",
+    "AiContextUsage entity",
+    "ai_agents",
+    "prompt context",
+    "content moderation",
+    "context usage tracking"
+  ]
+}
