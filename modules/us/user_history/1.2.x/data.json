@@ -1,0 +1,42 @@
+{
+  "name": "User history",
+  "data_name": "user_history",
+  "description": "Track changes to user records by recording details in a custom user_history entity.",
+  "version": "1.2.x",
+  "package": "User",
+  "composer_namespace": "drupal/user_history",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user"
+  ],
+  "configure": "user_history.settings",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/user_history",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Access control"
+  ],
+  "subcategories": [
+    "Audit trail / activity logging",
+    "User roles & permissions"
+  ],
+  "keywords": [
+    "user",
+    "audit",
+    "history",
+    "roles",
+    "compliance",
+    "tracking"
+  ]
+}

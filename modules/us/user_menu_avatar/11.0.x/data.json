@@ -1,0 +1,42 @@
+{
+  "name": "User Menu Avatar",
+  "data_name": "user_menu_avatar",
+  "description": "Replaces user.login and user.page menu items with the current user picture and/or the username.",
+  "version": "11.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/user_menu_avatar",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user"
+  ],
+  "configure": "user_menu_avatar.config",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/user_menu_avatar",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display",
+    "Theming"
+  ],
+  "subcategories": [
+    "Navigation menus",
+    "Admin toolbar / navigation"
+  ],
+  "keywords": [
+    "user menu",
+    "avatar",
+    "profile picture",
+    "username",
+    "menu",
+    "account"
+  ]
+}

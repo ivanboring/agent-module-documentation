@@ -1,0 +1,49 @@
+{
+  "name": "Webform Protected Downloads",
+  "data_name": "webform_protected_downloads",
+  "description": "Provides webform protected downloads",
+  "version": "1.0.x",
+  "package": "Webform",
+  "composer_namespace": "drupal/webform_protected_downloads",
+  "composer_requirements": {
+    "drupal/core": "^9.4 || ^10 || ^11",
+    "drupal/token": "^1.0",
+    "drupal/webform": "^6.2",
+    "php": ">=7.4"
+  },
+  "dependent_modules": [
+    "webform:webform",
+    "drupal:file",
+    "token:token"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.4 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/webform_protected_downloads",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=7.4",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Forms and surveys",
+    "Access control"
+  ],
+  "subcategories": [
+    "Private file access",
+    "Token-based access control"
+  ],
+  "keywords": [
+    "webform",
+    "download",
+    "gated content",
+    "protected file",
+    "hash",
+    "expiry"
+  ]
+}

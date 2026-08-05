@@ -1,0 +1,44 @@
+{
+  "name": "Search API Fast",
+  "data_name": "search_api_fast",
+  "description": "Indexes content faster with simultaneous workers",
+  "version": "2.3.x",
+  "package": "Search",
+  "composer_namespace": "drupal/search_api_fast",
+  "composer_requirements": {
+    "drupal/search_api": "^1.0"
+  },
+  "dependent_modules": [
+    "search_api:search_api"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/search_api_fast",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site search",
+    "Performance"
+  ],
+  "subcategories": [
+    "Content indexing",
+    "Queue / background processing"
+  ],
+  "keywords": [
+    "search api",
+    "indexing",
+    "parallel",
+    "workers",
+    "performance",
+    "queue"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "name": "Symfony Mailer Graph API Transport",
+  "data_name": "symfony_mailer_graphapi",
+  "description": "Use the Microsoft Graph API to send mails.",
+  "version": "1.0.x",
+  "package": "Mail",
+  "composer_namespace": "drupal/symfony_mailer_graphapi",
+  "composer_requirements": {
+    "drupal/symfony_mailer": "^1.5",
+    "vitrus/symfony-office-graph-mailer": "~0.0.7"
+  },
+  "dependent_modules": [
+    "symfony_mailer:symfony_mailer (^1.5)"
+  ],
+  "configure": "entity.mailer_transport.collection",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/symfony_mailer_graphapi",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Email / mail delivery",
+    "OAuth / OpenID Connect client"
+  ],
+  "keywords": [
+    "symfony mailer",
+    "microsoft graph",
+    "office 365",
+    "smtp",
+    "oauth",
+    "transport"
+  ]
+}

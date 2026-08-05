@@ -1,0 +1,54 @@
+{
+  "name": "Mollie for Drupal",
+  "data_name": "mollie",
+  "description": "Enables online payments in Drupal through Mollie.",
+  "version": "2.3.x",
+  "package": "Mollie for Drupal",
+  "composer_namespace": "drupal/mollie",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "mollie/mollie-api-php": "^2.52"
+  },
+  "dependent_modules": [
+    "drupal:datetime",
+    "drupal:options"
+  ],
+  "configure": "mollie.configuration",
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/mollie",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "8.3",
+  "library_dependencies": [
+    "mollie/mollie-api-php ^2.52"
+  ],
+  "suggests": {
+    "webform/webform": "Required for the mollie_webform submodule"
+  },
+  "submodules": [
+    "mollie_commerce",
+    "mollie_customers",
+    "mollie_webform"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Payment gateway",
+    "Submission handling"
+  ],
+  "keywords": [
+    "mollie",
+    "payments",
+    "ideal",
+    "commerce",
+    "webform",
+    "psp"
+  ]
+}
