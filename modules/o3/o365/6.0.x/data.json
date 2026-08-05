@@ -1,0 +1,49 @@
+{
+  "name": "Microsoft 365 Connector",
+  "data_name": "o365",
+  "description": "Microsoft 365 Connector module",
+  "version": "6.0.x",
+  "installed_release": "6.0.0-beta6",
+  "package": "Microsoft 365",
+  "composer_namespace": "drupal/o365",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "oauth2_client:oauth2_client",
+    "externalauth:externalauth"
+  ],
+  "configure": "o365.settings_form",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 305,
+  "list_position": 2608,
+  "project_url": "https://www.drupal.org/project/o365",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "Access control"
+  ],
+  "subcategories": [
+    "Single sign-on (SSO) provider",
+    "OAuth / OpenID Connect client",
+    "External authentication"
+  ],
+  "keywords": [
+    "microsoft 365",
+    "office 365",
+    "azure ad",
+    "entra id",
+    "oauth2_client",
+    "externalauth",
+    "graph api",
+    "sso",
+    "o365 connector",
+    "auth scopes"
+  ]
+}

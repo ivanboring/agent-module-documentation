@@ -1,0 +1,43 @@
+{
+  "name": "Zoom API",
+  "data_name": "zoomapi",
+  "description": "Provides functionality interacting with the Zoom.us API. This is mainly meant to be a developer module. See the README.",
+  "version": "3.0.x",
+  "package": "Web Services",
+  "composer_namespace": "drupal/zoomapi",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "apitools:apitools"
+  ],
+  "configure": "apitools.client_config_form.zoomapi",
+  "core_version_requirement": "^9.1 || ^10 || ^11",
+  "active_installs": 305,
+  "list_position": 2609,
+  "project_url": "https://www.drupal.org/project/zoomapi",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Chat / messaging",
+    "REST / web services"
+  ],
+  "keywords": [
+    "zoom",
+    "zoom.us api",
+    "apitools",
+    "webhook",
+    "ZoomApiWebhookEvent",
+    "developer module",
+    "meetings api",
+    "oauth client"
+  ]
+}
