@@ -1,0 +1,43 @@
+{
+  "name": "URLs queuer",
+  "data_name": "purge_queuer_url",
+  "description": "Queues URLs or paths to your Purge queue utilizing a traffic database.",
+  "version": "1.2.x",
+  "package": "Purge - queuers",
+  "composer_namespace": "drupal/purge_queuer_url",
+  "composer_requirements": {
+    "drupal/purge": "^3.4"
+  },
+  "dependent_modules": [
+    "purge"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/purge_queuer_url",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "Cache invalidation",
+    "Queue / background processing"
+  ],
+  "keywords": [
+    "purge",
+    "cache",
+    "cdn",
+    "varnish",
+    "invalidation",
+    "traffic registry"
+  ]
+}

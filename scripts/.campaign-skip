@@ -512,3 +512,7 @@ stories
 string_translation_ui
 webform_resend_submissions
 webp_extras
+# state_log 2.3.0: StateLog does not implement StateInterface::getValuesSetDuringRequest,
+# and state_logger forms a circular service reference. Its mere presence on disk fatals the
+# container on Drupal 11.4, taking down every later drush call in the wave (wave 58).
+state_log

@@ -1,0 +1,44 @@
+{
+  "name": "Simple Klaro",
+  "data_name": "simple_klaro",
+  "description": "Simple implementation for the Klaro Consent Manager.",
+  "version": "1.12.x",
+  "package": "User interface",
+  "composer_namespace": "drupal/simple_klaro",
+  "composer_requirements": {
+    "kiprotect/klaro": "*"
+  },
+  "dependent_modules": [],
+  "configure": "simple_klaro.settings",
+  "core_version_requirement": "^9.2 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/simple_klaro",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "kiprotect/klaro v0.7.22"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Cookie consent / GDPR",
+    "Analytics / tag management"
+  ],
+  "keywords": [
+    "klaro",
+    "consent",
+    "gdpr",
+    "cookies",
+    "privacy",
+    "tracking"
+  ]
+}

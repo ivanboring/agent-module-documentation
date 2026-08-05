@@ -1,0 +1,50 @@
+{
+  "name": "Vault",
+  "data_name": "vault",
+  "description": "Provides core dependencies of vault module suite.",
+  "version": "3.0.x",
+  "package": "Security",
+  "composer_namespace": "drupal/vault",
+  "composer_requirements": {
+    "php": "^8.1",
+    "csharpru/vault-php": "^4.2",
+    "drupal/core": "^10 || ^11",
+    "symfony/cache": "^6"
+  },
+  "dependent_modules": [],
+  "configure": "vault.admin",
+  "core_version_requirement": "^10.0 || ^11.0",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/vault",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "^8.1",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/encrypt": "Encryption integration"
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "VaultAuth",
+    "VaultLeaseStorage"
+  ],
+  "categories": [
+    "Security",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Secrets & key management",
+    "External library management"
+  ],
+  "keywords": [
+    "hashicorp vault",
+    "secrets",
+    "leases",
+    "key management",
+    "credentials",
+    "kv"
+  ]
+}

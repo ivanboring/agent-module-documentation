@@ -36,6 +36,17 @@ main_module() {
     best=$(basename "$f" .info.yml)
     break
   done
+  # Some projects ship NO module at the project root - logging_alerts is only
+  # LICENSE.txt plus emaillog/ and errorlog/, each a complete module. Without this
+  # fallback the project reports NOT_INSTALLED even though its code is on disk.
+  if [ -z "$best" ]; then
+    for f in "$dir"/*/*.info.yml; do
+      [ -e "$f" ] || continue
+      case "$f" in */tests/*) continue ;; esac
+      best=$(basename "$f" .info.yml)
+      break
+    done
+  fi
   [ -n "$best" ] && { echo "$best"; return 0; }
   return 1
 }
@@ -106,6 +117,18 @@ if [ -x scripts/check-default-config.sh ]; then
 fi
 
 enabled_list=$(drush pm:list --status=enabled --field=name 2>/dev/null)
+
+# A module whose code fatals during container build takes down EVERY later drush call, so
+# bisection cannot isolate it and the whole wave reports FAILED. state_log did exactly this in
+# wave 58 (its StateLog class does not implement StateInterface::getValuesSetDuringRequest,
+# added in a newer core, and its service also forms a circular reference). Detect the shape and
+# say so, rather than leaving 20 identical FAILED lines to be misread as 20 bad modules.
+if [ -z "$enabled_list" ]; then
+  echo "wave-prepare: drush returned no enabled modules at all - the site is almost certainly" >&2
+  echo "  broken by one module's code being on disk, not by 'drush en' failing per module." >&2
+  echo "  Run 'drush status' to see the fatal, remove that module from core.extension by direct" >&2
+  echo "  DB edit plus 'composer remove', then re-run this script." >&2
+fi
 
 for p in "${projects[@]}"; do
   m="${MAIN[$p]:-}"

@@ -1,0 +1,47 @@
+{
+  "name": "Webform media",
+  "data_name": "webform_media",
+  "description": "Provides media source for webforms to allow embedding in pages",
+  "version": "1.1.x",
+  "package": null,
+  "composer_namespace": "drupal/webform_media",
+  "composer_requirements": {
+    "php": ">=8.3",
+    "drupal/core": "^10.5 || ^11.2",
+    "drupal/webform": "^6.2@beta"
+  },
+  "dependent_modules": [
+    "drupal:media",
+    "webform:webform"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.5 || ^11.2",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/webform_media",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.3",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Forms and surveys",
+    "Media"
+  ],
+  "subcategories": [
+    "Form builder",
+    "Media embedding"
+  ],
+  "keywords": [
+    "webform",
+    "media",
+    "media source",
+    "embed",
+    "form",
+    "ckeditor"
+  ]
+}

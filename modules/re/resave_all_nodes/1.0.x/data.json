@@ -1,0 +1,42 @@
+{
+  "name": "Resave All Nodes",
+  "data_name": "resave_all_nodes",
+  "description": "This module provides a form and a Drush command both implementing Batch API to resave all nodes or all nodes of a selected type.",
+  "version": "1.0.x",
+  "package": "Development",
+  "composer_namespace": "drupal/resave_all_nodes",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node"
+  ],
+  "configure": "resave_all_nodes.form",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/resave_all_nodes",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Database maintenance / optimization",
+    "Content indexing"
+  ],
+  "keywords": [
+    "resave",
+    "batch",
+    "nodes",
+    "drush",
+    "reindex",
+    "pathauto"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "name": "Content Model Documentation",
+  "data_name": "content_model_documentation",
+  "description": "Adds admin displays for the site architecture and history.",
+  "version": "1.0.x",
+  "package": "Architecture",
+  "composer_namespace": "drupal/content_model_documentation",
+  "composer_requirements": {
+    "drupal/better_exposed_filters": "^7.0",
+    "drupal/config_views": "~2.1",
+    "drupal/mermaid_diagram_field": "~1.0",
+    "drupal/views_data_export": "^1.5"
+  },
+  "dependent_modules": [
+    "drupal:better_exposed_filters",
+    "drupal:config_views",
+    "drupal:mermaid_diagram_field",
+    "drupal:path_alias",
+    "drupal:views",
+    "drupal:views_data_export"
+  ],
+  "configure": "entity.cm_document.config_form",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/content_model_documentation",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Dashboard / reporting",
+    "API documentation / OpenAPI"
+  ],
+  "keywords": [
+    "documentation",
+    "content model",
+    "architecture",
+    "mermaid",
+    "diagram",
+    "handover"
+  ]
+}

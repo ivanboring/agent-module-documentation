@@ -1,0 +1,46 @@
+{
+  "name": "Logging and alerts",
+  "data_name": "logging_alerts",
+  "description": "Project shipping the Email Logging and Alerts (emaillog) and Web Server Logging and Alerts (errorlog) modules.",
+  "version": "2.1.x",
+  "package": "Logging and alerts",
+  "composer_namespace": "drupal/logging_alerts",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/logging_alerts",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "emaillog",
+    "errorlog"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Log aggregation",
+    "Error tracking & monitoring"
+  ],
+  "keywords": [
+    "logging",
+    "alerts",
+    "watchdog",
+    "email",
+    "error log",
+    "syslog",
+    "severity"
+  ]
+}
