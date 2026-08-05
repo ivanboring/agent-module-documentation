@@ -1,0 +1,48 @@
+{
+  "name": "Mailjet",
+  "data_name": "mailjet",
+  "description": "Send your emails by your Mailjet API.",
+  "version": "4.0.x",
+  "package": null,
+  "composer_namespace": "drupal/mailjet",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "mailjet.settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/mailjet",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "mailjet_campaign",
+    "mailjet_commerce",
+    "mailjet_event",
+    "mailjet_list",
+    "mailjet_stats",
+    "mailjet_subscription",
+    "mailjet_trigger_examples"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "User engagement"
+  ],
+  "subcategories": [
+    "Email / mail delivery",
+    "Analytics & tracking"
+  ],
+  "keywords": [
+    "mailjet",
+    "email",
+    "transactional",
+    "campaigns",
+    "lists",
+    "api"
+  ]
+}
