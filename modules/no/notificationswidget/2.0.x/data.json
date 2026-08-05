@@ -1,0 +1,45 @@
+{
+  "name": "Notifications Widget",
+  "data_name": "notifications_widget",
+  "description": "Logs and Display the latest updates as notifications on bell.",
+  "version": "2.0.x",
+  "package": null,
+  "composer_namespace": "drupal/notificationswidget",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user",
+    "drupal:block",
+    "drupal:rest",
+    "drupal:system (>=8.1.0)"
+  ],
+  "configure": "notifications_widget.notifications_widget_settings",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/notificationswidget",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "User engagement",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Announcement / notification banner",
+    "REST / web services"
+  ],
+  "keywords": [
+    "notifications",
+    "bell",
+    "widget",
+    "rest",
+    "activity",
+    "updates"
+  ]
+}

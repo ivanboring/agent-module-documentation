@@ -1,0 +1,40 @@
+{
+  "name": "Custom Frontpage for Authenticated users",
+  "data_name": "authenticated_frontpage",
+  "description": "Front page settings",
+  "version": "1.1.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/authenticated_frontpage",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "authenticated_frontpage.settings_form",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/authenticated_frontpage",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site structure",
+    "Access control"
+  ],
+  "subcategories": [
+    "Entity page behavior & redirects",
+    "Navigation menus"
+  ],
+  "keywords": [
+    "front page",
+    "authenticated",
+    "anonymous",
+    "redirect",
+    "homepage",
+    "dashboard"
+  ]
+}

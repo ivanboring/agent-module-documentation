@@ -1,0 +1,44 @@
+{
+  "name": "Counter",
+  "data_name": "counter",
+  "description": "This module is used for displaying details like Site Counter, Node Count, Unique Visitor and Client IP in a block.",
+  "version": "1.6.x",
+  "package": "Statistics",
+  "composer_namespace": "drupal/counter",
+  "composer_requirements": {
+    "matomo/device-detector": "^5.0.3"
+  },
+  "dependent_modules": [],
+  "configure": "counter.counter_settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/counter",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "matomo/device-detector ^5.0.3"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Content display"
+  ],
+  "subcategories": [
+    "Analytics & tracking",
+    "Dashboard / reporting"
+  ],
+  "keywords": [
+    "visitor counter",
+    "statistics",
+    "hit counter",
+    "block",
+    "ip",
+    "device detector"
+  ]
+}

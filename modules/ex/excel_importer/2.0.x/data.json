@@ -1,0 +1,45 @@
+{
+  "name": "Excel Importer",
+  "data_name": "excel_importer",
+  "description": "Module to import Excel data into Nodes.",
+  "version": "2.0.x",
+  "package": "Import",
+  "composer_namespace": "drupal/excel_importer",
+  "composer_requirements": {
+    "php": "^8.1",
+    "phpoffice/phpspreadsheet": "^3"
+  },
+  "dependent_modules": [],
+  "configure": "excel_importer.admin_settings",
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/excel_importer",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "^8.1",
+  "library_dependencies": [
+    "phpoffice/phpspreadsheet ^3"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Content migration / import",
+    "Data transformation"
+  ],
+  "keywords": [
+    "excel",
+    "xlsx",
+    "import",
+    "phpspreadsheet",
+    "nodes",
+    "spreadsheet"
+  ]
+}

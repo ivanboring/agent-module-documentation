@@ -1,0 +1,42 @@
+{
+  "name": "LocalGov Login Redirect",
+  "data_name": "localgov_login_redirect",
+  "description": "Simple module to redirect users at login.",
+  "version": "1.1.x",
+  "package": "LocalGov Drupal",
+  "composer_namespace": "drupal/localgov_login_redirect",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user"
+  ],
+  "configure": "localgov_login_redirect.settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/localgov_login_redirect",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Entity page behavior & redirects",
+    "User registration"
+  ],
+  "keywords": [
+    "login",
+    "redirect",
+    "localgov",
+    "destination",
+    "user",
+    "role"
+  ]
+}

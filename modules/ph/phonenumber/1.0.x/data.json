@@ -1,0 +1,50 @@
+{
+  "name": "PhoneNumber",
+  "data_name": "phonenumber",
+  "description": "Defines a field type for international phone numbers.",
+  "version": "1.0.x",
+  "package": "Field types",
+  "composer_namespace": "drupal/phonenumber",
+  "composer_requirements": {
+    "drupal/core": "^8.8 || ^9 || ^10 || ^11",
+    "giggsey/libphonenumber-for-php": "~8.0"
+  },
+  "dependent_modules": [
+    "drupal:field"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/phonenumber",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "giggsey/libphonenumber-for-php ~8.0"
+  ],
+  "suggests": {},
+  "submodules": [
+    "phonenumber_validation",
+    "phonenumber_verification"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience",
+    "Access control"
+  ],
+  "subcategories": [
+    "Fields",
+    "Email verification"
+  ],
+  "keywords": [
+    "phone number",
+    "libphonenumber",
+    "sms",
+    "verification",
+    "validation",
+    "field type"
+  ]
+}

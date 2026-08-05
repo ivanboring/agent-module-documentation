@@ -1,0 +1,48 @@
+{
+  "name": "Commerce Sermepa/Reds\u00fds Payment Method",
+  "data_name": "commerce_sermepa",
+  "description": "Provides a payment method using Sermepa/Reds\u00fds platform.",
+  "version": "2.4.x",
+  "package": "Commerce",
+  "composer_namespace": "drupal/commerce_sermepa",
+  "composer_requirements": {
+    "drupal/commerce": "^2.0 || ^3.0",
+    "commerceredsys/sermepa": "^1.0.9",
+    "drupal/core": "^10 || ^11"
+  },
+  "dependent_modules": [
+    "commerce:commerce_payment"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/commerce_sermepa",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "commerceredsys/sermepa ^1.0.9"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Payment gateway",
+    "Checkout customization"
+  ],
+  "keywords": [
+    "redsys",
+    "sermepa",
+    "payment",
+    "commerce",
+    "spain",
+    "gateway"
+  ]
+}

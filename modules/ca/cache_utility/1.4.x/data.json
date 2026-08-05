@@ -1,0 +1,42 @@
+{
+  "name": "Cache Utility",
+  "data_name": "cache_utility",
+  "description": "Cache Utility module for managing Drupal's cache, PHP OPCache, and APCu",
+  "version": "1.4.x",
+  "package": "San Diego Supercomputer Center (SDSC)",
+  "composer_namespace": "drupal/cache_utility",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "cache_utility.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/cache_utility",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "cache_utility_admin_toolbar"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Cache invalidation",
+    "Deployment / release management"
+  ],
+  "keywords": [
+    "cache",
+    "opcache",
+    "apcu",
+    "flush",
+    "deployment",
+    "access key"
+  ]
+}

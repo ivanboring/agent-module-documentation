@@ -1,0 +1,42 @@
+{
+  "name": "Microsoft Entra ID SSO Login",
+  "data_name": "social_auth_entra_id",
+  "description": "Social authentication with Microsoft Entra ID.",
+  "version": "2.0.x",
+  "package": "Social",
+  "composer_namespace": "drupal/social_auth_entra_id",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user"
+  ],
+  "configure": "social_auth_entra_id.settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/social_auth_entra_id",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Integrations"
+  ],
+  "subcategories": [
+    "OAuth / OpenID Connect client",
+    "External authentication"
+  ],
+  "keywords": [
+    "entra id",
+    "azure ad",
+    "sso",
+    "microsoft",
+    "oauth",
+    "single sign-on"
+  ]
+}
