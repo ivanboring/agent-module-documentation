@@ -1,0 +1,42 @@
+{
+  "name": "User List Permission",
+  "data_name": "user_list_permission",
+  "description": "A permission for viewing the user list without administer permissions.",
+  "version": "2.2.x",
+  "package": "User",
+  "composer_namespace": "drupal/user_list_permission",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user"
+  ],
+  "configure": null,
+  "core_version_requirement": ">=11.1",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/user_list_permission",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "8.3",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "User management",
+    "Security"
+  ],
+  "subcategories": [
+    "Permissions",
+    "Admin UI"
+  ],
+  "keywords": [
+    "permission",
+    "user list",
+    "people",
+    "admin",
+    "access",
+    "least privilege"
+  ]
+}

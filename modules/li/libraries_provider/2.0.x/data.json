@@ -1,0 +1,45 @@
+{
+  "name": "Libraries Provider",
+  "data_name": "libraries_provider",
+  "description": "Lets modules define how their external libraries are served.",
+  "version": "2.0.x",
+  "package": null,
+  "composer_namespace": "drupal/libraries_provider",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "hook_event_dispatcher:core_event_dispatcher (^4)",
+    "autoservices:autoservices (^1)"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/libraries_provider",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "libraries_provider_ui"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools",
+    "Performance"
+  ],
+  "subcategories": [
+    "Asset libraries",
+    "External library management"
+  ],
+  "keywords": [
+    "libraries",
+    "cdn",
+    "local",
+    "external",
+    "assets",
+    "provider"
+  ]
+}

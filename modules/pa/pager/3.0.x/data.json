@@ -1,0 +1,48 @@
+{
+  "name": "Pager",
+  "data_name": "pager",
+  "description": "Pager block.",
+  "version": "3.0.x",
+  "package": "Other",
+  "composer_namespace": "drupal/pager",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:block",
+    "drupal:filter",
+    "drupal:node",
+    "drupal:system",
+    "drupal:taxonomy",
+    "drupal:text",
+    "drupal:user"
+  ],
+  "configure": "pager.admin",
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/pager",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Blocks",
+    "Navigation"
+  ],
+  "keywords": [
+    "pager",
+    "previous",
+    "next",
+    "navigation",
+    "block",
+    "sequence"
+  ]
+}
