@@ -1,0 +1,57 @@
+{
+  "name": "Apigee API Catalog",
+  "data_name": "apigee_api_catalog",
+  "description": "Display OpenAPI documentation of your APIs to your developers.",
+  "version": "3.1.x",
+  "package": "Apigee",
+  "composer_namespace": "drupal/apigee_api_catalog",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:text",
+    "drupal:entity",
+    "drupal:file",
+    "drupal:user",
+    "drupal:node",
+    "drupal:path",
+    "drupal:options",
+    "drupal:file_link"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/apigee_api_catalog",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "apigee_asyncapi_doc",
+    "apigee_freeform_doc",
+    "apigee_graphql_doc"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "API documentation / OpenAPI",
+    "REST / web services"
+  ],
+  "keywords": [
+    "apigee",
+    "openapi",
+    "swagger",
+    "api catalog",
+    "apidoc node type",
+    "spec fetcher",
+    "field_apidoc_spec",
+    "reimport spec",
+    "developer portal",
+    "md5 spec check"
+  ]
+}

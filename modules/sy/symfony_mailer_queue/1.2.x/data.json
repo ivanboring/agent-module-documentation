@@ -1,0 +1,47 @@
+{
+  "name": "Symfony Mailer Queue",
+  "data_name": "symfony_mailer_queue",
+  "description": "Implements a queue for Symfony mailer, handling both sending emails and configurable retries for failures.",
+  "version": "1.2.x",
+  "package": "Mail",
+  "composer_namespace": "drupal/symfony_mailer_queue",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "symfony_mailer:symfony_mailer"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/symfony_mailer_queue",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "Automation"
+  ],
+  "subcategories": [
+    "Email / mail delivery",
+    "Queue / background processing"
+  ],
+  "keywords": [
+    "symfony mailer",
+    "email queue",
+    "queue worker",
+    "retry",
+    "requeue delay",
+    "maximum attempts",
+    "queue_sending adjuster",
+    "mailer policy",
+    "QueueableEmail",
+    "EmailSendFailureEvent",
+    "suspend queue"
+  ]
+}

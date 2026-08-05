@@ -1,0 +1,48 @@
+{
+  "name": "Domain Menu Access",
+  "data_name": "domain_menu_access",
+  "description": "Domain-based access control for menu link.",
+  "version": "2.0.x",
+  "package": "Domain",
+  "composer_namespace": "drupal/domain_menu_access",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "domain:domain",
+    "domain:domain_access",
+    "drupal:menu_link_content"
+  ],
+  "configure": "domain_menu_access.settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/domain_menu_access",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "domain_menu_access_menu_block"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Navigation menus",
+    "Multi-domain / affiliate sites"
+  ],
+  "keywords": [
+    "domain menu",
+    "menu link access",
+    "field_domain_access",
+    "menu tree manipulator",
+    "domain_access",
+    "menu_enabled",
+    "administer menu items across domains",
+    "menu overview column"
+  ]
+}

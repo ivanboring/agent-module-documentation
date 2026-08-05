@@ -1,0 +1,49 @@
+{
+  "name": "SCSS Compiler",
+  "data_name": "scss",
+  "description": "Compiles theme SCSS/SASS files.",
+  "version": "2.1.x",
+  "package": null,
+  "composer_namespace": "drupal/scss",
+  "composer_requirements": {
+    "scssphp/scssphp": "^2"
+  },
+  "dependent_modules": [],
+  "configure": "scss.admin",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/scss",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "scssphp/scssphp"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Theming",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "CSS preprocessing (Sass/Less)",
+    "Theme development tools"
+  ],
+  "keywords": [
+    "scss",
+    "sass",
+    "scssphp",
+    "compile on request",
+    "source maps",
+    "output formatting",
+    "scss.compiler",
+    "scss.monitor",
+    "drush scss",
+    "theme css build",
+    "additional import paths"
+  ]
+}
