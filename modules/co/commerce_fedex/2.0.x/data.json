@@ -1,0 +1,53 @@
+{
+  "name": "Commerce FedEx",
+  "data_name": "commerce_fedex",
+  "description": "Provides FedEx integration with Commerce Shipping.",
+  "version": "2.0.x",
+  "package": "Commerce (shipping)",
+  "composer_namespace": "drupal/commerce_fedex",
+  "composer_requirements": {
+    "php": ">=7.4",
+    "ext-soap": "*",
+    "drupal/commerce": "^2.32 || ^3",
+    "drupal/commerce_shipping": "~2 || ^3",
+    "whatarmy/fedex-rest": "*"
+  },
+  "dependent_modules": [
+    "commerce_shipping:commerce_shipping"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/commerce_fedex",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "whatarmy/fedex-rest"
+  ],
+  "suggests": {},
+  "submodules": [
+    "commerce_fedex_dangerous",
+    "commerce_fedex_dry_ice"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Shipping rate calculation",
+    "Order management"
+  ],
+  "keywords": [
+    "fedex",
+    "shipping",
+    "commerce",
+    "rates",
+    "dangerous goods",
+    "dry ice"
+  ]
+}

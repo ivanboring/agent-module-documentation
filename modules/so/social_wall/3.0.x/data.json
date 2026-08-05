@@ -1,0 +1,46 @@
+{
+  "name": "Social Wall",
+  "data_name": "social_wall",
+  "description": "Display a social networks wall.",
+  "version": "3.0.x",
+  "package": "Social",
+  "composer_namespace": "drupal/social_wall",
+  "composer_requirements": {
+    "abraham/twitteroauth": "^2",
+    "pgrimaud/instagram-user-feed": "^6||^7"
+  },
+  "dependent_modules": [],
+  "configure": "entity.social_network_config.collection",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/social_wall",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "abraham/twitteroauth ^2",
+    "pgrimaud/instagram-user-feed ^6||^7"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Social sharing buttons",
+    "Media embedding"
+  ],
+  "keywords": [
+    "social wall",
+    "twitter",
+    "instagram",
+    "feed",
+    "aggregation",
+    "social"
+  ]
+}
