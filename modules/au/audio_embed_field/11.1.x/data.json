@@ -1,0 +1,45 @@
+{
+  "name": "Audio Embed Field",
+  "data_name": "audio_embed_field",
+  "description": "Field type for third-party audio such as SoundCloud.",
+  "version": "11.1.x",
+  "package": "Audio",
+  "composer_namespace": "drupal/audio_embed_field",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:field",
+    "drupal:image"
+  ],
+  "configure": "audio_embed_field.admin_settings_form",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/audio_embed_field",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "audio_embed_media_core"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media management",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Audio",
+    "Media sources"
+  ],
+  "keywords": [
+    "audio",
+    "soundcloud",
+    "embed",
+    "field",
+    "podcast",
+    "media"
+  ]
+}

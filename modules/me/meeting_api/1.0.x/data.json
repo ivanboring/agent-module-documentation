@@ -1,0 +1,45 @@
+{
+  "name": "Meeting API",
+  "data_name": "meeting_api",
+  "description": "Runs meetings through pluggable backends.",
+  "version": "1.0.x",
+  "package": "Meeting API",
+  "composer_namespace": "drupal/meeting_api",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "datetime_range_timezone:datetime_range_timezone"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/meeting_api",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "meeting_api_manual",
+    "meeting_api_scheduler"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "Workflow"
+  ],
+  "subcategories": [
+    "Video conferencing",
+    "Scheduling"
+  ],
+  "keywords": [
+    "meeting",
+    "video",
+    "zoom",
+    "conference",
+    "scheduling",
+    "backend"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "name": "Disable login by domain",
+  "data_name": "disable_login_by_domain",
+  "description": "Disables user logins based on domain or hostname.",
+  "version": "1.2.x",
+  "package": null,
+  "composer_namespace": "drupal/disable_login_by_domain",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user"
+  ],
+  "configure": "disable_login_by_domain.settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/disable_login_by_domain",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "User management"
+  ],
+  "subcategories": [
+    "Login",
+    "Multi-site / domains"
+  ],
+  "keywords": [
+    "login",
+    "domain",
+    "hostname",
+    "disable",
+    "multi-site",
+    "restriction"
+  ]
+}
