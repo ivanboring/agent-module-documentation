@@ -1,0 +1,44 @@
+{
+  "name": "Group permissions",
+  "data_name": "group_permissions",
+  "description": "Group permissions module allows to override permissions per group",
+  "version": "2.0.x",
+  "package": "Group",
+  "composer_namespace": "drupal/group_permissions",
+  "composer_requirements": {
+    "drupal/core": "^10 || ^11",
+    "drupal/group": "^2.0 || ^3.0"
+  },
+  "dependent_modules": [
+    "group:group"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/group_permissions",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Groups & memberships",
+    "User roles & permissions"
+  ],
+  "keywords": [
+    "group",
+    "permissions",
+    "override",
+    "per-group",
+    "access",
+    "group type"
+  ]
+}

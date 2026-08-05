@@ -1,0 +1,51 @@
+{
+  "name": "Forum Access",
+  "data_name": "forum_access",
+  "description": "Allows forums to be set private and to be given moderators.",
+  "version": "2.0.x",
+  "package": "Access control",
+  "composer_namespace": "drupal/forum_access",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "drupal/core": "^10.3 || ^11 || ^12",
+    "drupal/acl": "^2.0"
+  },
+  "dependent_modules": [
+    "acl:acl (>=2.0)",
+    "forum"
+  ],
+  "configure": "forum.overview",
+  "core_version_requirement": "^10.3 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/forum_access",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/forum": "Required in Drupal 11+. Included in Drupal 10 core."
+  },
+  "submodules": [
+    "forum_access_migrate"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "User engagement"
+  ],
+  "subcategories": [
+    "Per-node view access",
+    "Node access grants API"
+  ],
+  "keywords": [
+    "forum",
+    "acl",
+    "private forum",
+    "moderator",
+    "node access",
+    "community"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "Social Post",
+  "data_name": "social_post",
+  "description": "Allows posting content to different social networks automatically",
+  "version": "3.0.x",
+  "package": "Social",
+  "composer_namespace": "drupal/social_post",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "drupal/social_api": "^4",
+    "drupal/core": "^9.4 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "drupal:link",
+    "social_api:social_api"
+  ],
+  "configure": "social_post.integrations",
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/social_post",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "SocialPost network"
+  ],
+  "categories": [
+    "Integrations",
+    "User engagement"
+  ],
+  "subcategories": [
+    "Social sharing buttons",
+    "OAuth / OpenID Connect client"
+  ],
+  "keywords": [
+    "social",
+    "autopost",
+    "social api",
+    "oauth",
+    "twitter",
+    "facebook",
+    "tokens"
+  ]
+}

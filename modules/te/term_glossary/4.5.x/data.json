@@ -1,0 +1,52 @@
+{
+  "name": "Taxonomy Term Glossary",
+  "data_name": "term_glossary",
+  "description": "Add automatic highlight of terms with description in content.",
+  "version": "4.5.x",
+  "package": "Fields",
+  "composer_namespace": "drupal/term_glossary",
+  "composer_requirements": {
+    "drupal/jquery_ui_dialog": "^2"
+  },
+  "dependent_modules": [
+    "drupal:taxonomy",
+    "drupal:text",
+    "jquery_ui_dialog:jquery_ui_dialog"
+  ],
+  "configure": "term_glossary.glossary_config_form",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/term_glossary",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "term_glossary_abbr",
+    "term_glossary_per_node",
+    "term_glossary_tippy"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "TermGlossaryHandler"
+  ],
+  "categories": [
+    "Content display",
+    "Site search"
+  ],
+  "subcategories": [
+    "Glossary / tooltips",
+    "Rich text embedding"
+  ],
+  "keywords": [
+    "glossary",
+    "taxonomy",
+    "tooltip",
+    "highlight",
+    "definitions",
+    "tippy"
+  ]
+}

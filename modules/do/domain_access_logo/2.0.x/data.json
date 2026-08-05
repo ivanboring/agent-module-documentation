@@ -1,0 +1,45 @@
+{
+  "name": "Domain Access Logo",
+  "data_name": "domain_access_logo",
+  "description": "Module to create separate logos for each domain",
+  "version": "2.0.x",
+  "package": "Domain",
+  "composer_namespace": "drupal/domain_access_logo",
+  "composer_requirements": {
+    "drupal/domain": "^2.0 || ^3.0"
+  },
+  "dependent_modules": [
+    "drupal:file",
+    "domain:domain"
+  ],
+  "configure": "domain_access_logo.settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/domain_access_logo",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site structure",
+    "Theming"
+  ],
+  "subcategories": [
+    "Multi-domain / affiliate sites",
+    "Block enhancements"
+  ],
+  "keywords": [
+    "domain",
+    "domain access",
+    "logo",
+    "branding",
+    "multisite",
+    "per-domain"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "name": "Resend registration / welcome email",
+  "data_name": "resend_register_mail",
+  "description": "Resend the registration / welcome email for selected user(s).",
+  "version": "1.0.x",
+  "package": "Mail",
+  "composer_namespace": "drupal/resend_register_mail",
+  "composer_requirements": {
+    "drupal/core": "^10.2 || ^11"
+  },
+  "dependent_modules": [
+    "drupal:user"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/resend_register_mail",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Access control"
+  ],
+  "subcategories": [
+    "Email / mail delivery",
+    "User registration"
+  ],
+  "keywords": [
+    "user",
+    "welcome email",
+    "registration",
+    "resend",
+    "vbo action",
+    "onboarding"
+  ]
+}

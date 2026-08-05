@@ -93,4 +93,6 @@ done
 
 trap - INT TERM
 rm -f "$SNAP"
-[ -s "$FAIL_LOG" ] && echo "failure details: $FAIL_LOG" >&2
+# `[ -s ... ] && echo` as the last statement makes a wholly successful run exit 1.
+if [ -s "$FAIL_LOG" ]; then echo "failure details: $FAIL_LOG" >&2; fi
+exit 0
