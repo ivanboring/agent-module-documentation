@@ -1,0 +1,47 @@
+{
+  "name": "View Usernames",
+  "data_name": "view_usernames",
+  "description": "Adds an extra permission for handling username access.",
+  "version": "1.2.x",
+  "package": "Security",
+  "composer_namespace": "drupal/view_usernames",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.5.8 || ^11.2.8",
+  "active_installs": 299,
+  "list_position": 2624,
+  "project_url": "https://www.drupal.org/project/view_usernames",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "8.1.6",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Access control"
+  ],
+  "subcategories": [
+    "Field-level access control",
+    "IP anonymization / privacy"
+  ],
+  "keywords": [
+    "view usernames",
+    "username enumeration",
+    "privacy",
+    "getDisplayName",
+    "theme username",
+    "access decider",
+    "view_username_access_decider",
+    "jsonapi username leak",
+    "user label access",
+    "GDPR"
+  ],
+  "installed_release": "1.2.1"
+}
