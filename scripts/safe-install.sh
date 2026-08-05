@@ -70,6 +70,10 @@ for m in "${names[@]}"; do
       # Match on the bare term: composer hard-wraps its error box mid-word, so
       # "blocked by your allow-plugins" can arrive as "blocked by yo\nur allow-plugins".
       *allow-plugins*)                                     reason=blocked-plugin ;;
+      # An upstream patch (usually vardot/varbase-patches) no longer applies to the
+      # current release of the package it targets. Nothing about the module is wrong and
+      # nothing local can fix it - the patch set has to catch up with the dependency.
+      *"was able to apply patch"*)                         reason=patch-failed ;;
     esac
     printf '%s\tFAILED\t%s\n' "$m" "$reason"
     {
@@ -78,7 +82,7 @@ for m in "${names[@]}"; do
       # progress lines, which otherwise crowd out the actual error (they did on the
       # first wave-55 run and hid a blocked-plugin failure entirely).
       printf '%s\n' "$err" \
-        | grep -E "^\s+- |Problem|Could not find|curl error|blocked by|allow-plugins|Fatal|Exception" \
+        | grep -E "^\s+- |Problem|Could not find|curl error|blocked by|allow-plugins|apply patch|Fatal|Exception" \
         | grep -vE "^\s+- (Locking|Downloading|Installing|Removing|Upgrading|Downgrading) " \
         | head -10
       echo

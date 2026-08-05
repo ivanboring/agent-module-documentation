@@ -1,0 +1,44 @@
+{
+  "name": "Simplenews Stats",
+  "data_name": "simplenews_stats",
+  "description": "Simplenews stats allows you to collect statistics from newsletter sent with simplenews.",
+  "version": "4.0.x",
+  "package": "Mail",
+  "composer_namespace": "drupal/simplenews_stats",
+  "composer_requirements": {
+    "drupal/simplenews": "^4.0"
+  },
+  "dependent_modules": [
+    "simplenews:simplenews"
+  ],
+  "configure": "entity.simplenews_stats.collection",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/simplenews_stats",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "User engagement",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Email / mail delivery",
+    "Analytics & tracking"
+  ],
+  "keywords": [
+    "simplenews",
+    "newsletter",
+    "statistics",
+    "open tracking",
+    "click tracking",
+    "tracking pixel"
+  ]
+}

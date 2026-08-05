@@ -1,0 +1,45 @@
+{
+  "name": "External Media",
+  "data_name": "external_media",
+  "description": "Field widget to upload files and images from third-party services.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/external_media",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:file"
+  ],
+  "configure": "external_media.settings",
+  "core_version_requirement": "^10.6 || ^11.3 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/external_media",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "ExternalMedia"
+  ],
+  "categories": [
+    "Media",
+    "Integrations"
+  ],
+  "subcategories": [
+    "File uploads",
+    "Media embedding"
+  ],
+  "keywords": [
+    "dropbox",
+    "google drive",
+    "onedrive",
+    "box",
+    "file upload",
+    "cloud storage",
+    "field widget"
+  ]
+}

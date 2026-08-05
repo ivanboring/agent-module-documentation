@@ -1,0 +1,82 @@
+{
+  "name": "Varbase Core",
+  "data_name": "varbase_core",
+  "description": "Provides core components required by other features.",
+  "version": "10.1.x",
+  "package": "Varbase",
+  "composer_namespace": "drupal/varbase_core",
+  "composer_requirements": {
+    "drupal/core": "~11.4.0",
+    "vardot/varbase-patches": "~10.1.0"
+  },
+  "dependent_modules": [
+    "drupal:user",
+    "drupal:node",
+    "drupal:taxonomy",
+    "drupal:text",
+    "drupal:views",
+    "drupal:field",
+    "drupal:block",
+    "drupal:block_content",
+    "drupal:config",
+    "config_update:config_update",
+    "config_ignore:config_ignore",
+    "drupal:datetime",
+    "drupal:file",
+    "drupal:image",
+    "drupal:options",
+    "drupal:path",
+    "drupal:layout_discovery",
+    "entity:entity",
+    "ctools:ctools",
+    "ctools:ctools_block",
+    "ctools:ctools_views",
+    "token:token",
+    "better_exposed_filters:better_exposed_filters",
+    "date_filter:date_filter",
+    "field_group:field_group",
+    "smart_trim:smart_trim",
+    "advanced_text_formatter:advanced_text_formatter",
+    "block_class:block_class"
+  ],
+  "configure": "varbase_core.settings_index",
+  "core_version_requirement": "~11.4.0",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/varbase_core",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "varbase_admin",
+    "varbase_default_content",
+    "varbase_development",
+    "varbase_internationalization",
+    "varbase_page",
+    "varbase_security",
+    "varbase_tour",
+    "varbase_webform"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Configuration management",
+    "Structured content / page building"
+  ],
+  "keywords": [
+    "varbase",
+    "distribution",
+    "eca",
+    "gin",
+    "starter",
+    "config_ignore",
+    "bundle"
+  ]
+}

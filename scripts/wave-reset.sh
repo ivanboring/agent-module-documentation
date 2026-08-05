@@ -74,7 +74,8 @@ if [ -z "$DRY" ]; then
     cweagans/composer-patches \
     oomphinc/composer-installers-extender \
     vardot/varbase-patches \
-    simplesamlphp/composer-module-installer; do
+    simplesamlphp/composer-module-installer \
+    simplesamlphp/composer-xmlprovider-installer; do
     ddev exec "cd /var/www/html && composer config allow-plugins.$plugin true" >/dev/null 2>&1
   done
   echo "  allowed: patches, installers-extender, varbase-patches, simplesamlphp"
