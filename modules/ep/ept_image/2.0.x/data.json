@@ -1,0 +1,48 @@
+{
+  "name": "Extra Paragraph Types (EPT): Image",
+  "data_name": "ept_image",
+  "description": "Adds Image paragraph type.",
+  "version": "2.0.x",
+  "package": "Extra Paragraph Types",
+  "composer_namespace": "drupal/ept_image",
+  "composer_requirements": {
+    "drupal/ept_core": "^2.0",
+    "drupal/paragraphs": "^1.0"
+  },
+  "dependent_modules": [
+    "ept_core:ept_core",
+    "paragraphs:paragraphs",
+    "drupal:image",
+    "drupal:media"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.1 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ept_image",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience",
+    "Media"
+  ],
+  "subcategories": [
+    "Structured content / page building",
+    "Media embedding"
+  ],
+  "keywords": [
+    "paragraphs",
+    "ept",
+    "image",
+    "page building",
+    "media",
+    "lightbox"
+  ]
+}

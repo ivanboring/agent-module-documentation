@@ -1,0 +1,49 @@
+{
+  "name": "CKEditor Mentions",
+  "data_name": "ckeditor_mentions",
+  "description": "CKEditor plugin for user mentioning and inserting.",
+  "version": "3.0.x",
+  "package": "CKEditor",
+  "composer_namespace": "drupal/ckeditor_mentions",
+  "composer_requirements": {
+    "php": ">=8.1.0",
+    "masterminds/html5": "^2.1"
+  },
+  "dependent_modules": [
+    "drupal:ckeditor5",
+    "drupal:image"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ckeditor_mentions",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "ckeditor_mentions_entity",
+    "ckeditor_mentions_realname"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience",
+    "User engagement"
+  ],
+  "subcategories": [
+    "CKEditor plugins",
+    "Threaded comments"
+  ],
+  "keywords": [
+    "mentions",
+    "ckeditor5",
+    "@",
+    "users",
+    "autocomplete",
+    "notifications"
+  ]
+}

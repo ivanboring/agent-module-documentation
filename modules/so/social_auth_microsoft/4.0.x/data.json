@@ -1,0 +1,46 @@
+{
+  "name": "Social Auth Microsoft",
+  "data_name": "social_auth_microsoft",
+  "description": "Social Auth integration for Microsoft.",
+  "version": "4.0.x",
+  "package": "Social",
+  "composer_namespace": "drupal/social_auth_microsoft",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "stevenmaguire/oauth2-microsoft": "^2.0",
+    "drupal/social_auth": "^4.1"
+  },
+  "dependent_modules": [
+    "social_auth:social_auth"
+  ],
+  "configure": "social_auth_microsoft.settings_form",
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/social_auth_microsoft",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Integrations"
+  ],
+  "subcategories": [
+    "OAuth / OpenID Connect client",
+    "External authentication"
+  ],
+  "keywords": [
+    "microsoft",
+    "oauth",
+    "social auth",
+    "login",
+    "sso",
+    "azure"
+  ]
+}

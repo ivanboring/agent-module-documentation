@@ -1,0 +1,48 @@
+{
+  "name": "Commerce Purchase Order",
+  "data_name": "commerce_purchase_order",
+  "description": "Adds purchase order payment method",
+  "version": "2.1.x",
+  "package": "Commerce (contrib)",
+  "composer_namespace": "drupal/commerce_purchase_order",
+  "composer_requirements": {
+    "drupal/core": "^10.4 || ^11",
+    "drupal/commerce": "^2.4 || ^3.0"
+  },
+  "dependent_modules": [
+    "commerce:commerce",
+    "commerce:commerce_payment",
+    "profile:profile",
+    "drupal:file"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/commerce_purchase_order",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce",
+    "Access control"
+  ],
+  "subcategories": [
+    "Payment gateway",
+    "Checkout customization"
+  ],
+  "keywords": [
+    "purchase order",
+    "b2b",
+    "commerce",
+    "invoice",
+    "net terms",
+    "payment"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "OhDear Integration",
+  "data_name": "ohdear_integration",
+  "description": "Provides endpoint for OhDear monitoring app to check drupal's health.",
+  "version": "3.0.x",
+  "package": "Monitor",
+  "composer_namespace": "drupal/ohdear_integration",
+  "composer_requirements": {
+    "drupal/core": "^10 || ^11",
+    "ohdearapp/health-check-results": "^1.0",
+    "ohdearapp/ohdear-php-sdk": "^4.4.0",
+    "drupal/monitoring": "^1.11"
+  },
+  "dependent_modules": [
+    "monitoring:monitoring"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ohdear_integration",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "ohdearapp/ohdear-php-sdk ^4.4.0"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Security"
+  ],
+  "subcategories": [
+    "Error tracking & monitoring",
+    "Dashboard / reporting"
+  ],
+  "keywords": [
+    "oh dear",
+    "monitoring",
+    "health check",
+    "uptime",
+    "broken links",
+    "sensors"
+  ]
+}
