@@ -1,0 +1,52 @@
+{
+  "name": "Private Messages",
+  "data_name": "privatemsg",
+  "description": "Private messages between users.",
+  "version": "2.0.x",
+  "package": "Private Messages",
+  "composer_namespace": "drupal/privatemsg",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:block",
+    "drupal:datetime",
+    "drupal:taxonomy",
+    "drupal:user",
+    "drupal:views",
+    "drupal:image",
+    "views_bulk_operations:views_bulk_operations"
+  ],
+  "configure": "privatemsg.settings",
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/privatemsg",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "privatemsg_migration_d6",
+    "privatemsg_migration_d6_2",
+    "privatemsg_migration_d7"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "User management",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Messaging",
+    "Community"
+  ],
+  "keywords": [
+    "private messages",
+    "messaging",
+    "inbox",
+    "threads",
+    "community",
+    "users"
+  ]
+}

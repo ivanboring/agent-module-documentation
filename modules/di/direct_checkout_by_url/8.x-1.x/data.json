@@ -1,0 +1,45 @@
+{
+  "name": "Direct checkout by URL",
+  "data_name": "direct_checkout_by_url",
+  "description": "Send a user straight into checkout via a URL pattern.",
+  "version": "8.x-1.x",
+  "package": null,
+  "composer_namespace": "drupal/direct_checkout_by_url",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "commerce:commerce_product",
+    "commerce:commerce_order",
+    "commerce:commerce_cart",
+    "commerce:commerce_checkout"
+  ],
+  "configure": "direct_checkout_by_url.settings",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/direct_checkout_by_url",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Cart and checkout",
+    "Marketing campaigns"
+  ],
+  "keywords": [
+    "commerce",
+    "checkout",
+    "url",
+    "direct",
+    "campaign",
+    "cart"
+  ]
+}
