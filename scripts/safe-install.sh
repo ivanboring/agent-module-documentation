@@ -22,22 +22,60 @@ fi
 SNAP=$(mktemp)
 cp composer.json "$SNAP"
 
+# Per-run failure log. "FAILED" on its own is undiagnosable — the three real causes
+# (no D11 release, dependency clash with an already-installed module, transient network
+# error) need composer's own output to tell apart, and swallowing it cost a whole wave's
+# worth of misdiagnosis. Overridable with FAIL_LOG=/path.
+FAIL_LOG="${FAIL_LOG:-/tmp/safe-install-failures.log}"
+: > "$FAIL_LOG"
+
+# Restore composer.json if we are interrupted mid-require. Without this an interrupted run
+# leaves a stray requirement in composer.json that makes EVERY later require fail with an
+# unrelated-looking error.
+cleanup() {
+  [ -f "$SNAP" ] && cp "$SNAP" composer.json
+  rm -f "$SNAP"
+  echo "interrupted: composer.json restored from snapshot" >&2
+  exit 130
+}
+trap cleanup INT TERM
+
 for m in "${names[@]}"; do
   if [ -d "web/modules/contrib/$m" ]; then
     printf '%s\tpresent\n' "$m"
     cp composer.json "$SNAP"   # refresh snapshot to the last-good state
     continue
   fi
-  if composer require "drupal/$m" -W --no-interaction --no-progress >/dev/null 2>&1 \
-       && [ -d "web/modules/contrib/$m" ]; then
+  err=$(composer require "drupal/$m" -W --no-interaction --no-progress 2>&1)
+  if [ $? -eq 0 ] && [ -d "web/modules/contrib/$m" ]; then
     v=$(composer show "drupal/$m" --format=json 2>/dev/null \
           | php -r '$j=json_decode(stream_get_contents(STDIN),true); echo $j["versions"][0] ?? "?";')
     printf '%s\t%s\n' "$m" "${v:-?}"
     cp composer.json "$SNAP"   # commit: this module stuck, make it the new baseline
   else
-    printf '%s\tFAILED\n' "$m"
+    # Classify from composer's output so the report is actionable.
+    # Order matters: the most specific/actionable cause wins. A single composer error can
+    # mention several of these (e.g. a transient curl timeout alongside a real conflict).
+    reason=other
+    case "$err" in
+      *"Could not find package"*)                          reason=not-on-packages-server ;;
+      *"conflicts with your root composer.json require"*)  reason=dependency-clash ;;
+      # phpspreadsheet/guzzle/etc. with an unpatched advisory are refused by
+      # policy.advisories.block - the module is fine, its dependency is not.
+      *"affected by security advisories"*)                 reason=blocked-by-advisory ;;
+      *"requires drupal/core"*)                            reason=no-d11-release ;;
+      *"curl error"*|*"Connection timed out"*|*"could not be downloaded"*) reason=network ;;
+    esac
+    printf '%s\tFAILED\t%s\n' "$m" "$reason"
+    {
+      echo "===== $m ($reason)"
+      printf '%s\n' "$err" | grep -E "^\s+- |Problem|Could not find|curl error" | head -8
+      echo
+    } >> "$FAIL_LOG"
     cp "$SNAP" composer.json    # roll back the poisoned composer.json
   fi
 done
 
+trap - INT TERM
 rm -f "$SNAP"
+[ -s "$FAIL_LOG" ] && echo "failure details: $FAIL_LOG" >&2
