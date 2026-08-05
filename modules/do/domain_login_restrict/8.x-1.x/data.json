@@ -1,0 +1,43 @@
+{
+  "name": "Domain Login Restrict",
+  "data_name": "domain_login_restrict",
+  "description": "Restricts user login to affiliated domains only.",
+  "version": "8.x-1.x",
+  "package": "Domain",
+  "composer_namespace": "drupal/domain_login_restrict",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "domain:domain",
+    "domain:domain_access"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/domain_login_restrict",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "User management"
+  ],
+  "subcategories": [
+    "Multi-site / domains",
+    "Login"
+  ],
+  "keywords": [
+    "domain",
+    "login",
+    "restrict",
+    "multi-site",
+    "affiliate",
+    "access"
+  ]
+}

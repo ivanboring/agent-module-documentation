@@ -1,0 +1,42 @@
+{
+  "name": "Select Registration Roles",
+  "data_name": "select_registration_roles",
+  "description": "Lets admins expose roles for selection on the registration form.",
+  "version": "2.0.x",
+  "package": "User",
+  "composer_namespace": "drupal/select_registration_roles",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user"
+  ],
+  "configure": "select_registration_roles.roles_set_by_admin",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/select_registration_roles",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "User management",
+    "Security"
+  ],
+  "subcategories": [
+    "Registration",
+    "Roles and permissions"
+  ],
+  "keywords": [
+    "registration",
+    "roles",
+    "self-selection",
+    "approval",
+    "user",
+    "signup"
+  ]
+}

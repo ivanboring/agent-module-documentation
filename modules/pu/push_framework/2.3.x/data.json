@@ -1,0 +1,47 @@
+{
+  "name": "Push Framework",
+  "data_name": "push_framework",
+  "description": "Receives messages via API and delivers them to channels.",
+  "version": "2.3.x",
+  "package": "Push",
+  "composer_namespace": "drupal/push_framework",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "advancedqueue:advancedqueue",
+    "drupal:node",
+    "drupal:text",
+    "drupal:user"
+  ],
+  "configure": "push_framework.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/push_framework",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "eca_push_framework"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "Workflow"
+  ],
+  "subcategories": [
+    "Notifications",
+    "Queues"
+  ],
+  "keywords": [
+    "push",
+    "notifications",
+    "channels",
+    "queue",
+    "messaging",
+    "api"
+  ]
+}

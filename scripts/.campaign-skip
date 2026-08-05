@@ -524,3 +524,8 @@ bat_api
 # incompatible with the parent EntityReferenceFieldItemNormalizer::normalize(), which fatals PHP on
 # every request once the module is on disk (wave 67).
 rest_entity_recursive
+# bee (Bee) requires bat, which is already skip-listed: BatEventHandlerBlockingFilter
+# declares $value_value protected where core's BooleanOperator declares it public, so the
+# mere presence of bat on disk fatals plugin discovery and takes down every drush call.
+# bee installs and enables, then breaks the site the moment views plugins are rebuilt (wave 73).
+bee

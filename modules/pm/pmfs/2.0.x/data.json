@@ -1,0 +1,40 @@
+{
+  "name": "Prevent Multiple Form Submissions",
+  "data_name": "pmfs",
+  "description": "Server-side multiple submit request validation.",
+  "version": "2.0.x",
+  "package": "Forms",
+  "composer_namespace": "drupal/pmfs",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "pmfs.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/pmfs",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Forms",
+    "Rate limiting"
+  ],
+  "keywords": [
+    "double submit",
+    "forms",
+    "duplicate",
+    "server-side",
+    "validation",
+    "idempotency"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "name": "Media Remote Image",
+  "data_name": "media_entity_remote_image",
+  "description": "Media source for remotely hosted images.",
+  "version": "8.x-1.x",
+  "package": "Media",
+  "composer_namespace": "drupal/media_entity_remote_image",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:link",
+    "drupal:media (>= 8.4)"
+  ],
+  "configure": "media_entity_remote_image.settings",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/media_entity_remote_image",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media management",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Media sources",
+    "External assets"
+  ],
+  "keywords": [
+    "media",
+    "remote image",
+    "url",
+    "dam",
+    "external",
+    "source"
+  ]
+}
