@@ -1,0 +1,48 @@
+{
+  "name": "Search API Saved Searches",
+  "data_name": "search_api_saved_searches",
+  "description": "Allows visitors to bookmark searches and get notifications for new results.",
+  "version": "1.2.x",
+  "package": "Search",
+  "composer_namespace": "drupal/search_api_saved_searches",
+  "composer_requirements": {
+    "drupal/search_api": "^1.20"
+  },
+  "dependent_modules": [
+    "search_api:search_api (>= 8.x-1.20)",
+    "drupal:options",
+    "drupal:user"
+  ],
+  "configure": "entity.search_api_saved_search_type.collection",
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/search_api_saved_searches",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "Notification"
+  ],
+  "categories": [
+    "Site search",
+    "User engagement"
+  ],
+  "subcategories": [
+    "Faceted search UI",
+    "Email / mail delivery"
+  ],
+  "keywords": [
+    "search api",
+    "saved search",
+    "alerts",
+    "notifications",
+    "bookmark",
+    "digest"
+  ]
+}

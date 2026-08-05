@@ -1,0 +1,43 @@
+{
+  "name": "Module Builder",
+  "data_name": "module_builder",
+  "description": "Builds scaffolding for custom modules.",
+  "version": "4.2.x",
+  "package": "Development",
+  "composer_namespace": "drupal/module_builder",
+  "composer_requirements": {
+    "drupal-code-builder/drupal-code-builder": "^4.6"
+  },
+  "dependent_modules": [],
+  "configure": "module_builder.settings",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/module_builder",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "module_builder_devel"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Code generation / scaffolding",
+    "Example / reference code"
+  ],
+  "keywords": [
+    "scaffolding",
+    "code generation",
+    "hooks",
+    "plugins",
+    "developer",
+    "boilerplate"
+  ]
+}

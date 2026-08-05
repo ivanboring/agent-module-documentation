@@ -1,0 +1,47 @@
+{
+  "name": "Admin Toolbar Content",
+  "data_name": "admin_toolbar_content",
+  "description": "Provides extra content admin enhancements in the admin toolbar.",
+  "version": "2.2.x",
+  "package": "Administration",
+  "composer_namespace": "drupal/admin_toolbar_content",
+  "composer_requirements": {
+    "drupal/core": "^10.2 || ^11"
+  },
+  "dependent_modules": [
+    "admin_toolbar:admin_toolbar",
+    "admin_toolbar:admin_toolbar_tools"
+  ],
+  "configure": "admin_toolbar_content.settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/admin_toolbar_content",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "AdminToolbarContent"
+  ],
+  "categories": [
+    "Administration tools",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Admin toolbar / navigation",
+    "Content search / find"
+  ],
+  "keywords": [
+    "admin toolbar",
+    "content",
+    "menu",
+    "editorial",
+    "shortcuts",
+    "navigation"
+  ]
+}

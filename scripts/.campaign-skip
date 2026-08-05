@@ -516,3 +516,7 @@ webp_extras
 # and state_logger forms a circular service reference. Its mere presence on disk fatals the
 # container on Drupal 11.4, taking down every later drush call in the wave (wave 58).
 state_log
+# bat_api 11.1.0-rc3 pulls in drupal/bat, whose BatEventHandlerBlockingFilter declares
+# $value_value protected where the parent Views BooleanOperator declares it public. PHP fatals
+# on Views plugin discovery, breaking the whole site (wave 60).
+bat_api

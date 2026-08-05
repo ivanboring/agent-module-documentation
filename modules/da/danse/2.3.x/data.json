@@ -1,0 +1,56 @@
+{
+  "name": "Drupal Audit Notification Subscription Event",
+  "data_name": "danse",
+  "description": "Event driven framework to audit system activity, create notifications from them and allow users to subscribe to them.",
+  "version": "2.3.x",
+  "package": "DANSE",
+  "composer_namespace": "drupal/danse",
+  "composer_requirements": {
+    "php": ">=8.1"
+  },
+  "dependent_modules": [],
+  "configure": "danse.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/danse",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/eca": "ECA integration",
+    "drupal/push_framework": "Push delivery"
+  },
+  "submodules": [
+    "danse_config",
+    "danse_content",
+    "danse_form",
+    "danse_generic",
+    "danse_log",
+    "danse_user",
+    "danse_webhook",
+    "eca_danse"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "DanseEvent"
+  ],
+  "categories": [
+    "Automation",
+    "User engagement"
+  ],
+  "subcategories": [
+    "Audit trail / activity logging",
+    "Workflow / business rules"
+  ],
+  "keywords": [
+    "notifications",
+    "subscriptions",
+    "audit",
+    "events",
+    "eca",
+    "webhook"
+  ]
+}

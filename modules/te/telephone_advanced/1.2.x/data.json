@@ -1,0 +1,45 @@
+{
+  "name": "Telephone Advanced",
+  "data_name": "telephone_advanced",
+  "description": "Adds validation and formatting to Drupal core's telephone field.",
+  "version": "1.2.x",
+  "package": "Field types",
+  "composer_namespace": "drupal/telephone_advanced",
+  "composer_requirements": {
+    "giggsey/libphonenumber-for-php": "^8.12 || ^9.0"
+  },
+  "dependent_modules": [
+    "drupal:telephone"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/telephone_advanced",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "giggsey/libphonenumber-for-php"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Field validation",
+    "Fields"
+  ],
+  "keywords": [
+    "telephone",
+    "phone number",
+    "libphonenumber",
+    "validation",
+    "formatting",
+    "e164"
+  ]
+}
