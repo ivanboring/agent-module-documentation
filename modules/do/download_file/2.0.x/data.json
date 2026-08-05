@@ -1,0 +1,44 @@
+{
+  "name": "Download File",
+  "data_name": "download_file",
+  "description": "Provides the option to enforce direct download of file field contents",
+  "version": "2.0.x",
+  "package": "Fields",
+  "composer_namespace": "drupal/download_file",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:file"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.0 || ^11",
+  "active_installs": 301,
+  "list_position": 2617,
+  "project_url": "https://www.drupal.org/project/download_file",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media",
+    "Content display"
+  ],
+  "subcategories": [
+    "File downloads",
+    "Field formatters"
+  ],
+  "keywords": [
+    "direct download",
+    "force download",
+    "content-disposition attachment",
+    "file formatter",
+    "direct_download",
+    "BinaryFileResponse",
+    "hook_download_file_headers_alter",
+    "download access"
+  ]
+}
