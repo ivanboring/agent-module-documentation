@@ -1,0 +1,51 @@
+{
+  "name": "Icons",
+  "data_name": "icons",
+  "description": "Icons API Module",
+  "version": "2.3.x",
+  "package": "Icons",
+  "composer_namespace": "drupal/icons",
+  "composer_requirements": {
+    "drupal/core": "^10.5 || ^11"
+  },
+  "dependent_modules": [
+    "drupal:options"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.5 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/icons",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "icons_fontawesome",
+    "icons_fontello",
+    "icons_icomoon",
+    "icons_iconpicker"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "IconProvider"
+  ],
+  "categories": [
+    "Content editing experience",
+    "Theming"
+  ],
+  "subcategories": [
+    "Icon management",
+    "Form widgets / select UI"
+  ],
+  "keywords": [
+    "icons",
+    "api",
+    "fontawesome",
+    "icomoon",
+    "fontello",
+    "icon picker"
+  ]
+}

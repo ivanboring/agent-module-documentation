@@ -1,0 +1,40 @@
+{
+  "name": "Let's Encrypt Challenge",
+  "data_name": "letsencrypt_challenge",
+  "description": "Allows for a configuration of the challenge required to (re)generate the certificate from a remote location in manual mode.",
+  "version": "1.2.x",
+  "package": "Security",
+  "composer_namespace": "drupal/letsencrypt_challenge",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "letsencrypt_challenge.challenge_form",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/letsencrypt_challenge",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Path / URL access restriction",
+    "Deployment / release management"
+  ],
+  "keywords": [
+    "lets encrypt",
+    "acme",
+    "certificate",
+    "well-known",
+    "tls",
+    "https"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "name": "Access Policy",
+  "data_name": "access_policy",
+  "description": "Dynamic entity access based on roles and access rules.",
+  "version": "2.0.x",
+  "package": "Access Policy",
+  "composer_namespace": "drupal/access_policy",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/access_policy",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "access_policy_ui"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "AccessPolicyHandler",
+    "AccessRule"
+  ],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Entity access control API",
+    "Condition-based access"
+  ],
+  "keywords": [
+    "access",
+    "policy",
+    "entity access",
+    "rules",
+    "permissions",
+    "authors"
+  ]
+}

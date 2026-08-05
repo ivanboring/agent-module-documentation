@@ -1,0 +1,45 @@
+{
+  "name": "Translatable config pages",
+  "data_name": "translatable_config_pages",
+  "description": "Adds an entity to create translatable config pages.",
+  "version": "1.0.x",
+  "package": "Config",
+  "composer_namespace": "drupal/translatable_config_pages",
+  "composer_requirements": {
+    "drupal/core": "^8.5 | ^9 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "drupal:content_translation",
+    "drupal:language"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/translatable_config_pages",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Multilingual",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Configuration management",
+    "Structured content / page building"
+  ],
+  "keywords": [
+    "config pages",
+    "translation",
+    "multilingual",
+    "settings",
+    "fields",
+    "entity"
+  ]
+}

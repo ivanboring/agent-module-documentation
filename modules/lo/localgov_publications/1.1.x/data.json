@@ -1,0 +1,54 @@
+{
+  "name": "LocalGov Publications",
+  "data_name": "localgov_publications",
+  "description": "HTML publications for the LocalGovDrupal distribution.",
+  "version": "1.1.x",
+  "package": "LocalGov Drupal",
+  "composer_namespace": "drupal/localgov_publications",
+  "composer_requirements": {
+    "drupal/book": "^1.0.0",
+    "drupal/localgov_core": "^2.11 || ^3.0",
+    "drupal/localgov_paragraphs": "^2.4",
+    "drupal/pathauto": "^1.0.0"
+  },
+  "dependent_modules": [
+    "book:book",
+    "drupal:block",
+    "drupal:menu_ui",
+    "drupal:text",
+    "drupal:views",
+    "pathauto:pathauto",
+    "localgov_core:localgov_media",
+    "localgov_paragraphs:localgov_paragraphs"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/localgov_publications",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site structure",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Structured content / page building",
+    "HTML sitemap / navigation"
+  ],
+  "keywords": [
+    "localgov",
+    "publications",
+    "book",
+    "html publication",
+    "documents",
+    "council"
+  ]
+}
