@@ -1,0 +1,48 @@
+{
+  "name": "Extended Logger",
+  "data_name": "extended_logger",
+  "description": "A Drupal logger with ability to store any custom additional metadata with the log entry. Supports writing to a database, file, syslog, stdout/stderr (for containers).",
+  "version": "1.3.x",
+  "package": "Logging",
+  "composer_namespace": "drupal/extended_logger",
+  "composer_requirements": {
+    "adhocore/json-fixer": "^1.0",
+    "drupal/core": "^9.4 || ^10 || ^11",
+    "php": ">=8.0",
+    "softcreatr/jsonpath": "^0.10.0"
+  },
+  "dependent_modules": [],
+  "configure": "extended_logger.settings",
+  "core_version_requirement": "^9.4 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/extended_logger",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.0",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "extended_logger_db",
+    "extended_logger_fallback"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Log aggregation",
+    "Error tracking & monitoring"
+  ],
+  "keywords": [
+    "logging",
+    "json",
+    "structured logs",
+    "containers",
+    "stdout",
+    "syslog"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "name": "Commerce Registration",
+  "data_name": "commerce_registration",
+  "description": "Provides registration integration for Drupal Commerce.",
+  "version": "3.4.x",
+  "package": "Commerce (contrib)",
+  "composer_namespace": "drupal/commerce_registration",
+  "composer_requirements": {
+    "drupal/commerce": "^3.0",
+    "drupal/registration": "^3.4.2"
+  },
+  "dependent_modules": [
+    "commerce:commerce",
+    "commerce:commerce_cart",
+    "commerce:commerce_checkout",
+    "commerce:commerce_order",
+    "commerce:commerce_price",
+    "commerce:commerce_product",
+    "registration:registration"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/commerce_registration",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "commerce_registration_change_host",
+    "commerce_registration_waitlist"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce",
+    "User engagement"
+  ],
+  "subcategories": [
+    "Booking / scheduling",
+    "Order management"
+  ],
+  "keywords": [
+    "commerce",
+    "registration",
+    "events",
+    "tickets",
+    "waitlist",
+    "checkout"
+  ]
+}

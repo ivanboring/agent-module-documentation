@@ -1,0 +1,45 @@
+{
+  "name": "Redirect Extensions",
+  "data_name": "redirect_extensions",
+  "description": "Custom extensions to the Redirect module.",
+  "version": "3.1.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/redirect_extensions",
+  "composer_requirements": {
+    "drupal/core": "^8.8 || ^9 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "drupal:redirect",
+    "drupal:views_data_export"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.4 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/redirect_extensions",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site structure",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Entity page behavior & redirects",
+    "Data export"
+  ],
+  "keywords": [
+    "redirect",
+    "bulk edit",
+    "status code",
+    "301",
+    "export",
+    "seo"
+  ]
+}

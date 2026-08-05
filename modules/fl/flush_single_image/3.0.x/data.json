@@ -1,0 +1,45 @@
+{
+  "name": "Flush Single Image Styles",
+  "data_name": "flush_single_image",
+  "description": "Flush a single image from all styles that may have a version of it cached.",
+  "version": "3.0.x",
+  "package": "Media",
+  "composer_namespace": "drupal/flush_single_image",
+  "composer_requirements": {
+    "drupal/core": "^8.8 || ^9 || ^10 || ^11"
+  },
+  "dependent_modules": [
+    "drupal:image",
+    "drupal:action"
+  ],
+  "configure": "flush_single_image.settings.form",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/flush_single_image",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media",
+    "Performance"
+  ],
+  "subcategories": [
+    "Cache invalidation",
+    "File & media metadata"
+  ],
+  "keywords": [
+    "image style",
+    "derivative",
+    "flush",
+    "cache",
+    "media",
+    "regenerate"
+  ]
+}

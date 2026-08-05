@@ -1,0 +1,50 @@
+{
+  "name": "FormAssembly",
+  "data_name": "formassembly",
+  "description": "Integrates a Drupal site with the FormAssembly service.",
+  "version": "2.0.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/formassembly",
+  "composer_requirements": {
+    "drupal/map_widget": "^2.0",
+    "fathershawn/oauth2-formassembly": "^1.2",
+    "symfony/dom-crawler": "^6.1 || ^7.3",
+    "symfony/css-selector": "^6.0 || ^7.3",
+    "ext-libxml": "*",
+    "ext-json": "*",
+    "drupal/core": "^10 || ^11"
+  },
+  "dependent_modules": [
+    "drupal:map_widget"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/formassembly",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Forms and surveys",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Form builder",
+    "OAuth / OpenID Connect client"
+  ],
+  "keywords": [
+    "formassembly",
+    "forms",
+    "oauth",
+    "salesforce",
+    "integration",
+    "external forms"
+  ]
+}
