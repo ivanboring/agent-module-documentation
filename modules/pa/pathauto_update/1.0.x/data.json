@@ -1,0 +1,46 @@
+{
+  "name": "Pathauto Update",
+  "data_name": "pathauto_update",
+  "description": "Automatically regenerate path aliases when values behind the tokens change.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/pathauto_update",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "pathauto:pathauto",
+    "token:token",
+    "url_entity:url_entity"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.4 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/pathauto_update",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "8.0",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "PatternTokenDependencyProvider"
+  ],
+  "categories": [
+    "Search engine optimization (SEO)",
+    "Site structure"
+  ],
+  "subcategories": [
+    "URL alias generation",
+    "Entity reference tracking"
+  ],
+  "keywords": [
+    "pathauto",
+    "aliases",
+    "tokens",
+    "dependencies",
+    "seo",
+    "urls"
+  ]
+}

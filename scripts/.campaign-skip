@@ -520,3 +520,7 @@ state_log
 # $value_value protected where the parent Views BooleanOperator declares it public. PHP fatals
 # on Views plugin discovery, breaking the whole site (wave 60).
 bat_api
+# rest_entity_recursive 2.0.6-rc8: ReferenceItemNormalizer::normalize() declares a return type
+# incompatible with the parent EntityReferenceFieldItemNormalizer::normalize(), which fatals PHP on
+# every request once the module is on disk (wave 67).
+rest_entity_recursive

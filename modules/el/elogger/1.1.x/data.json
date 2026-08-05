@@ -1,0 +1,51 @@
+{
+  "name": "Events Logger",
+  "data_name": "elogger",
+  "description": "A service used for tracking drupal system events.",
+  "version": "1.1.x",
+  "package": "Events Logger",
+  "composer_namespace": "drupal/elogger",
+  "composer_requirements": {
+    "drupal/views_data_export": ">=1.1",
+    "drupal/views_bulk_operations": ">=4.1",
+    "drupal/diff": ">=1.0",
+    "drupal/token": ">=1.11"
+  },
+  "dependent_modules": [
+    "drupal:token",
+    "drupal:views",
+    "drupal:views_data_export",
+    "drupal:views_bulk_operations",
+    "drupal:diff"
+  ],
+  "configure": "elogger.system",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/elogger",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Audit trail / activity logging",
+    "Data export"
+  ],
+  "keywords": [
+    "audit",
+    "events",
+    "logging",
+    "diff",
+    "entity",
+    "compliance"
+  ]
+}

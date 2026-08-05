@@ -1,0 +1,50 @@
+{
+  "name": "AWS Bedrock Provider",
+  "data_name": "ai_provider_aws_bedrock",
+  "description": "This enables the use of AWS Bedrock for the AI module.",
+  "version": "1.1.x",
+  "package": "AI Providers",
+  "composer_namespace": "drupal/ai_provider_aws_bedrock",
+  "composer_requirements": {
+    "aws/aws-sdk-php": "^3.316",
+    "drupal/ai": "^1.1.0-beta1",
+    "drupal/key": "^1.18"
+  },
+  "dependent_modules": [
+    "ai:ai",
+    "key:key",
+    "aws:aws"
+  ],
+  "configure": "ai_provider_aws_bedrock.settings_form",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ai_provider_aws_bedrock",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "aws/aws-sdk-php ^3.316"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)",
+    "Integrations"
+  ],
+  "subcategories": [
+    "AI agents / taskable AI",
+    "Secrets & key management"
+  ],
+  "keywords": [
+    "aws",
+    "bedrock",
+    "ai",
+    "llm",
+    "claude",
+    "provider"
+  ]
+}

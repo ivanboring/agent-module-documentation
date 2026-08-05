@@ -1,0 +1,45 @@
+{
+  "name": "LDAP SSO",
+  "data_name": "ldap_sso",
+  "description": "Implements single sign-on (SSO) LDAP authentication",
+  "version": "4.2.x",
+  "package": "Lightweight Directory Access Protocol",
+  "composer_namespace": "drupal/ldap_sso",
+  "composer_requirements": {
+    "drupal/ldap": "^4.4"
+  },
+  "dependent_modules": [
+    "ldap:ldap_servers",
+    "ldap:ldap_authentication"
+  ],
+  "configure": "ldap_sso.admin_form",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ldap_sso",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Single sign-on (SSO) provider",
+    "External authentication"
+  ],
+  "keywords": [
+    "ldap",
+    "sso",
+    "kerberos",
+    "active directory",
+    "authentication",
+    "intranet"
+  ]
+}
