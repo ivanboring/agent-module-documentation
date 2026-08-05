@@ -1,0 +1,81 @@
+{
+  "name": "LocalGov Directories",
+  "data_name": "localgov_directories",
+  "description": "Provides a directory facets entity.",
+  "version": "3.5.x",
+  "package": "LocalGov Drupal",
+  "composer_namespace": "drupal/localgov_directories",
+  "composer_requirements": {
+    "drupal/core": "^10.2 || ^11.0",
+    "drupal/facets": "^2.0.7 || ^3.0",
+    "drupal/leaflet": "^10.3",
+    "drupal/pathauto": "^1.6",
+    "drupal/search_api": "^1.29",
+    "drupal/search_api_autocomplete": "^1.3",
+    "drupal/search_api_location": "1.0.0-alpha4",
+    "drupal/localgov_core": "^2.12 || ^3.0",
+    "drupal/localgov_geo": "^2.0"
+  },
+  "dependent_modules": [
+    "drupal:address",
+    "drupal:block",
+    "drupal:image",
+    "drupal:link",
+    "drupal:media",
+    "drupal:node",
+    "drupal:path",
+    "drupal:telephone",
+    "drupal:views",
+    "pathauto:pathauto",
+    "search_api:search_api",
+    "facets:facets",
+    "localgov_core:localgov_core",
+    "localgov_core:localgov_media"
+  ],
+  "configure": "entity.localgov_directories_facets_type.collection",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 399,
+  "list_position": 2354,
+  "project_url": "https://www.drupal.org/project/localgov_directories",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "localgov_directories_db",
+    "localgov_directories_location",
+    "localgov_directories_or",
+    "localgov_directories_org",
+    "localgov_directories_page",
+    "localgov_directories_promo_page",
+    "localgov_directories_venue",
+    "localgov_directories_venue_or"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site structure",
+    "Site search"
+  ],
+  "subcategories": [
+    "Faceted search UI",
+    "Structured content / page building",
+    "Entity selection"
+  ],
+  "keywords": [
+    "localgov",
+    "directory",
+    "directory channel",
+    "directory entry",
+    "facets",
+    "search_api index",
+    "localgov_directories_facets",
+    "localgov_directory node type",
+    "proximity search",
+    "leaflet map",
+    "channel search block",
+    "open referral"
+  ]
+}

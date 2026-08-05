@@ -1,0 +1,52 @@
+{
+  "name": "Sodium",
+  "data_name": "sodium",
+  "description": "Allows data to be encrypted and decrypted using the Sodium PHP extension.",
+  "version": "3.0.x",
+  "package": "Security",
+  "composer_namespace": "drupal/sodium",
+  "composer_requirements": {
+    "php": ">=8.3",
+    "drupal/key": "^1.0",
+    "drupal/encrypt": "^3.2",
+    "paragonie/halite": "^5.1"
+  },
+  "dependent_modules": [
+    "encrypt:encrypt"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": 1256,
+  "list_position": 1428,
+  "project_url": "https://www.drupal.org/project/sodium",
+  "license": "GPL-2.0+",
+  "php_requirement": ">=8.3",
+  "library_dependencies": [
+    "paragonie/halite"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Field encryption",
+    "Secrets & key management"
+  ],
+  "keywords": [
+    "sodium",
+    "libsodium",
+    "halite",
+    "encryption method",
+    "encrypt module",
+    "key module",
+    "symmetric encryption",
+    "EncryptionMethod attribute",
+    "256-bit key",
+    "SODIUM_CRYPTO_STREAM_KEYBYTES"
+  ]
+}

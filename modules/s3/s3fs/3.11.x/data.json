@@ -1,0 +1,57 @@
+{
+  "name": "S3 File System",
+  "data_name": "s3fs",
+  "description": "Adds an Amazon Simple Storage Service-based remote file system to Drupal.",
+  "version": "3.11.x",
+  "installed_release": "8.x-3.11",
+  "package": null,
+  "composer_namespace": "drupal/s3fs",
+  "composer_requirements": {
+    "aws/aws-sdk-php": "^3.18",
+    "php": "^7.1 || ^8.0"
+  },
+  "dependent_modules": [],
+  "configure": "s3fs.admin_settings",
+  "core_version_requirement": ">=8.8 < 10.7 || >=11.0 < 11.2 || >=11.2.3 < 11.4.0 || >=11.4.3 < 11.5",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/s3fs",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "^7.1 || ^8.0",
+  "library_dependencies": [
+    "aws/aws-sdk-php"
+  ],
+  "suggests": {
+    "drupal/key": "Store the AWS access/secret keys as Key entities instead of settings.php"
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media",
+    "Performance"
+  ],
+  "subcategories": [
+    "Remote file storage",
+    "CDN integration",
+    "File downloads"
+  ],
+  "keywords": [
+    "s3",
+    "amazon s3",
+    "aws sdk",
+    "stream wrapper",
+    "s3:// scheme",
+    "public takeover",
+    "private takeover",
+    "s3fs.use_s3_for_public",
+    "presigned urls",
+    "cname",
+    "image style redirect",
+    "s3fs:refresh-cache",
+    "s3fs:copy-local",
+    "file metadata cache"
+  ]
+}

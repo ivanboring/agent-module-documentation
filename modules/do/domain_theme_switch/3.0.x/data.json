@@ -1,0 +1,45 @@
+{
+  "name": "Domain Theme switch",
+  "data_name": "domain_theme_switch",
+  "description": "Theme switch for different domains",
+  "version": "3.0.x",
+  "package": "Domain",
+  "composer_namespace": "drupal/domain_theme_switch",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "domain:domain",
+    "domain:domain_config"
+  ],
+  "configure": "domain_theme_switch.settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": 2459,
+  "list_position": 978,
+  "project_url": "https://www.drupal.org/project/domain_theme_switch",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Theming"
+  ],
+  "subcategories": [
+    "Theme negotiation",
+    "Multi-domain / affiliate sites"
+  ],
+  "keywords": [
+    "domain theme",
+    "per-domain theme",
+    "domain access",
+    "domain_config override",
+    "system.theme override",
+    "admin theme per domain",
+    "theme switch",
+    "domain.config_factory_override",
+    "getOverrideEditable"
+  ]
+}
