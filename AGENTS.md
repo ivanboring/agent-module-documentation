@@ -148,6 +148,13 @@ grow organically as modules are processed. Add new names there, never duplicate.
 - This is a Drupal 11 site in DDEV (`module-documentor`). From the **host** prefix commands
   with `ddev` (`ddev composer`, `ddev drush`); **inside the container** run `composer` /
   `drush` directly.
+- **Installs are per wave, not cumulative.** Install only the modules the current wave needs,
+  document them, then remove them and reset the database before the next wave —
+  `scripts/wave-reset.sh`. The cumulative model saturated at 2,311 root requirements and
+  wave 54 could not install a single one of ten verified-D11 projects; every failure was a
+  version clash with something an earlier wave had pinned. See
+  [`documentation/workflow.md`](documentation/workflow.md) for the cycle and the recovery
+  path (`.campaign-backups/`).
 - Install: `composer require drupal/{name} -W`, then `drush en {name} -y`.
 - Setup: read exported/default config, resolve the `configure` route from `*.info.yml`,
   note permissions and any Drush commands.

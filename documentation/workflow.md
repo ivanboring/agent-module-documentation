@@ -10,6 +10,40 @@ Drupal 11 site in DDEV (`module-documentor`). Inside the container run `drush` /
 `web/modules/contrib/{name}`. If the site breaks at any point, reinstall with
 `drush site:install -y` and continue — no generated data depends on site content.
 
+## Installs are per wave, not cumulative
+
+**Install only the modules the current wave needs, then remove them and reset the database
+before the next wave.** `scripts/wave-reset.sh` does the whole cycle.
+
+Waves 1–51 installed cumulatively and it stopped working. By wave 52 the root had **2,311
+requirements**, and new modules could no longer resolve against it: wave 54 attempted ten
+projects that each had a verified Drupal 11 release and installed **none** of them — every
+failure a version clash with something an earlier wave had pinned (`symfony_mailer_queue`
+needs `symfony_mailer ^1.4/^1.5` against a pinned `^2.0`; `aos` needs `animate_on_scroll
+^1|^2` against a pinned `^3.0`). Saturation is inherent to the cumulative model: each module
+installed makes the next one likelier to conflict.
+
+The per-wave cycle:
+
+```bash
+scripts/wave-reset.sh                                   # baseline: core only, fresh DB
+scripts/next-wave.sh 40 | scripts/check-d11.sh --stdin --only-ok > wave.txt
+ddev exec 'cd /var/www/html && bash agent-module-documentation/scripts/safe-install.sh --file agent-module-documentation/wave.txt'
+ddev exec 'cd /var/www/html && bash agent-module-documentation/scripts/wave-prepare.sh --file agent-module-documentation/wave.txt'
+# … read source, write docs, commit …
+scripts/wave-reset.sh                                   # tear down before the next wave
+```
+
+Consequences worth knowing:
+
+- A wave's modules are only installed **while that wave is being documented**. Live
+  verification (`drush cget`, route checks, `drush en`) has to happen before the reset.
+- Cross-wave dependencies disappear: a module documented in wave 30 is no longer on disk, so
+  do not write docs that assume it is installed.
+- The original cumulative site's `composer.json`/`composer.lock` are archived in
+  `.campaign-backups/`; `cp .campaign-backups/composer.lock.pre-reset composer.lock &&
+  composer install` restores all ~2,300 modules if a past wave ever needs re-verifying.
+
 ## Picking what to document
 
 Two sources, cheapest first.
