@@ -37,6 +37,13 @@ https://www.drupal.org/jsonapi/node/project_module
 
 ## What we produce, per module
 
+> **Current practice (waves ~44 onward).** The full layout below is the specification, but
+> recent waves ship **only** `data.json`, `usage.md`, `agent/**` and — where a finding
+> warrants it — a local-only `security.md`. `eval/`, `human-docs/` and screenshots have not
+> been produced since wave ~44; the commit messages say so explicitly ("no evals/human-docs/
+> screenshots"). Keep writing the agent docs; treat the eval and human-docs sections as the
+> spec for work that is currently paused, not as a checklist you are failing.
+
 Modules are bucketed by the **first two letters of the machine name** so no single
 directory grows unwieldy (`modules/{ab}/…` where `{ab}` is `machine_name[0:2]`):
 
@@ -181,12 +188,23 @@ documenting a module — authoring the cases is enough; runs are a separate step
 
 ## Pipeline (summary)
 
-1. Read `pagination.md`; fetch that page of the feed.
-2. For each module: `composer require` → determine version → read code/config →
-   `drush en` → set up → write `data.json`, `usage.md`, `agent/*`, and
-   `eval/evals.json` (easy + medium + hard — see the Evals section).
-3. Recurse into submodules.
-4. Update `categories.yml`; advance `pagination.md`.
+1. **Pick targets.** Cheapest first: `scripts/undocumented-on-disk.sh` (modules composer
+   already pulled as dependencies — no resolution needed, cannot fail to install), then
+   `scripts/next-wave.sh N | scripts/check-d11.sh --stdin --only-ok` (the campaign list,
+   pre-filtered against drupal.org release history so projects with no Drupal 11 release
+   never reach composer).
+2. **Install.** `scripts/safe-install.sh --file wave.txt`, then
+   `scripts/wave-prepare.sh --file wave.txt` to enable and get the manifest.
+3. For each module: determine version → read code/config → set up → write `data.json`,
+   `usage.md`, `agent/*` (+ `security.md` if a finding turns up). See the *Current practice*
+   note above about `eval/` and `human-docs/`.
+4. Recurse into submodules.
+5. Update `categories.yml`; record anything unusable in `scripts/.campaign-skip` **with a
+   reason**; commit as one wave.
+
+Note `pagination.md` is **stale** — it still holds the old feed offset (`61`). Since wave ~2
+the campaign has been driven by `.campaign-5000.txt` + `scripts/.campaign-skip`, recomputed
+from disk on every call, so there is no cursor to advance.
 
 Full detail: [`documentation/workflow.md`](documentation/workflow.md).
 Reusable helpers live in [`scripts/`](scripts/).
