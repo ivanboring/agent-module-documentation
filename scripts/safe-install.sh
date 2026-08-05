@@ -81,10 +81,21 @@ for m in "${names[@]}"; do
     case "$err" in
       *"Could not find package"*)                          reason=not-on-packages-server ;;
       *"conflicts with your root composer.json require"*)  reason=dependency-clash ;;
+      # A PHP extension the module's dependency chain needs is not built into the container
+      # (oidc -> sop/crypto-types -> ext-gmp, wave 71). Fixable locally by adding the
+      # extension to the web image, so it must not be confused with a dead module.
+      *"is missing from your system"*)                     reason=missing-php-extension ;;
+      # MUST come before the advisory case. When a module has no release for the running
+      # core, composer says "require drupal/core ^8 || ^9 -> found drupal/core[...] but these
+      # were not loaded, because they are affected by security advisories" — the advisories
+      # are on the OLD CORE it wants, not on the module. Matching the advisory text first
+      # misreported seven dead modules as advisory-blocked in wave 71. Note the verb in that
+      # sentence is "require" (plural subject), not "requires": the original pattern only had
+      # the singular form, so it never matched and every such case fell through.
+      *"require drupal/core"*|*"requires drupal/core"*)    reason=no-d11-release ;;
       # phpspreadsheet/guzzle/etc. with an unpatched advisory are refused by
       # policy.advisories.block - the module is fine, its dependency is not.
       *"affected by security advisories"*)                 reason=blocked-by-advisory ;;
-      *"requires drupal/core"*)                            reason=no-d11-release ;;
       *"curl error"*|*"Connection timed out"*|*"could not be downloaded"*) reason=network ;;
       # A dependency ships a composer plugin that allow-plugins does not permit.
       # Fix by adding it to config.allow-plugins, not by skip-listing the module.

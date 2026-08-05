@@ -1,0 +1,46 @@
+{
+  "name": "Image Style Generate",
+  "data_name": "image_style_generate",
+  "description": "Migrate source plugin that generates image styles.",
+  "version": "1.2.x",
+  "package": "Migration",
+  "composer_namespace": "drupal/image_style_generate",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:image",
+    "drupal:migrate"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/image_style_generate",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "image_style_generate_example",
+    "image_style_generate_example_advanced"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export",
+    "Media management"
+  ],
+  "subcategories": [
+    "Migrate API",
+    "Image styles"
+  ],
+  "keywords": [
+    "migrate",
+    "image style",
+    "generate",
+    "configuration",
+    "source plugin",
+    "derivatives"
+  ]
+}

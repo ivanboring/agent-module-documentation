@@ -1,0 +1,43 @@
+{
+  "name": "Scheduled Updates",
+  "data_name": "scheduled_updates",
+  "description": "Schedule updates to field values on entities.",
+  "version": "3.0.x",
+  "package": null,
+  "composer_namespace": "drupal/scheduled_updates",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:options",
+    "inline_entity_form:inline_entity_form"
+  ],
+  "configure": "scheduled_update.config.overview",
+  "core_version_requirement": "^10.4 || ^11.3 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/scheduled_updates",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Workflow",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Publishing workflow",
+    "Scheduling"
+  ],
+  "keywords": [
+    "scheduling",
+    "publish",
+    "unpublish",
+    "field values",
+    "cron",
+    "embargo"
+  ]
+}

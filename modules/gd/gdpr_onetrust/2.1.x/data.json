@@ -1,0 +1,44 @@
+{
+  "name": "GDPR One Trust Implementation",
+  "data_name": "gdpr_onetrust",
+  "description": "OneTrust cookie consent integration.",
+  "version": "2.1.x",
+  "package": "GDPR Onetrust",
+  "composer_namespace": "drupal/gdpr_onetrust",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:menu_link_content"
+  ],
+  "configure": "gdpr_onetrust.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/gdpr_onetrust",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "onetrust_cookie_blocking"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Cookie consent / GDPR",
+    "Analytics / tag management"
+  ],
+  "keywords": [
+    "gdpr",
+    "onetrust",
+    "cookie consent",
+    "privacy",
+    "banner",
+    "compliance"
+  ]
+}

@@ -10,6 +10,22 @@ Drupal 11 site in DDEV (`module-documentor`). Inside the container run `drush` /
 `web/modules/contrib/{name}`. If the site breaks at any point, reinstall with
 `drush site:install -y` and continue — no generated data depends on site content.
 
+### PHP extensions the stock image lacks
+
+Some modules fail at `composer require` because a *dependency* needs a PHP extension that is not
+built into the DDEV web image — `oidc` → `sop/jwx` → `sop/crypto-types` → **`ext-gmp`** (wave 71).
+The error reads "it is missing from your system", classified by `safe-install.sh` as
+`missing-php-extension`. This is an environment problem, not a dead module: add the extension and
+retry rather than skip-listing.
+
+```bash
+ddev config --webimage-extra-packages='php${DDEV_PHP_VERSION}-gmp'
+ddev restart
+ddev exec 'php -m | grep gmp'
+```
+
+Extensions added so far: **gmp**.
+
 ## Installs are per wave, not cumulative
 
 **Install only the modules the current wave needs, then remove them and reset the database

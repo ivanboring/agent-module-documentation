@@ -1,0 +1,42 @@
+{
+  "name": "One Time Password",
+  "data_name": "one_time_password",
+  "description": "HOTP/TOTP one-time passwords (RFC 4226, RFC 6238).",
+  "version": "2.0.x",
+  "package": null,
+  "composer_namespace": "drupal/one_time_password",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user"
+  ],
+  "configure": "one_time_password.settings",
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/one_time_password",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "User management"
+  ],
+  "subcategories": [
+    "Two-factor authentication",
+    "Login"
+  ],
+  "keywords": [
+    "totp",
+    "hotp",
+    "2fa",
+    "two-factor",
+    "authenticator",
+    "rfc 6238"
+  ]
+}
