@@ -1,0 +1,45 @@
+{
+  "name": "Content Access by Path",
+  "data_name": "content_access_by_path",
+  "description": "Restricts editing to site sections by path.",
+  "version": "1.1.x",
+  "package": "Content",
+  "composer_namespace": "drupal/content_access_by_path",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:field",
+    "drupal:taxonomy"
+  ],
+  "configure": "content_access_by_path.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/content_access_by_path",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "content_access_by_path_admin_content"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "User management"
+  ],
+  "subcategories": [
+    "Node access",
+    "Editorial permissions"
+  ],
+  "keywords": [
+    "access",
+    "path",
+    "sections",
+    "editors",
+    "taxonomy",
+    "restriction"
+  ]
+}

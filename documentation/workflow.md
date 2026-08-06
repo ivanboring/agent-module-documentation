@@ -24,7 +24,7 @@ ddev restart
 ddev exec 'php -m | grep gmp'
 ```
 
-Extensions added so far: **gmp**.
+Extensions added so far: **gmp** (`oidc`, wave 71), **oauth** (`lti_tool_provider`, wave 81).
 
 ## Installs are per wave, not cumulative
 

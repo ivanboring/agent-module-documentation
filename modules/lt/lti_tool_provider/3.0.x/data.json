@@ -1,0 +1,48 @@
+{
+  "name": "LTI Tool Provider",
+  "data_name": "lti_tool_provider",
+  "description": "LTI tool provider for LMS integration.",
+  "version": "3.0.x",
+  "package": "LTI Tool Provider",
+  "composer_namespace": "drupal/lti_tool_provider",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:options",
+    "key:key"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/lti_tool_provider",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "lti_tool_provider_attributes",
+    "lti_tool_provider_content",
+    "lti_tool_provider_provision",
+    "lti_tool_provider_roles"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Single sign-on",
+    "Education"
+  ],
+  "keywords": [
+    "lti",
+    "lms",
+    "moodle",
+    "canvas",
+    "education",
+    "launch"
+  ]
+}

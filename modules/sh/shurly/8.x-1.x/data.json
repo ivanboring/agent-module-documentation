@@ -1,0 +1,45 @@
+{
+  "name": "ShURLy",
+  "data_name": "shurly",
+  "description": "A short URL service for Drupal.",
+  "version": "8.x-1.x",
+  "package": "ShURLy",
+  "composer_namespace": "drupal/shurly",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:views"
+  ],
+  "configure": "shurly.admin",
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/shurly",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "shurly_analytics",
+    "shurly_service"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site structure",
+    "Security"
+  ],
+  "subcategories": [
+    "Redirects",
+    "Link management"
+  ],
+  "keywords": [
+    "short url",
+    "redirect",
+    "link",
+    "shortener",
+    "analytics",
+    "campaign"
+  ]
+}
