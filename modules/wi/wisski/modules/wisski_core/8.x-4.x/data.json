@@ -1,0 +1,45 @@
+{
+  "name": "WissKI Core",
+  "data_name": "wisski_core",
+  "description": "The core of the WissKI module set \u2014 entity type, routing and UI. Required.",
+  "version": "8.x-4.x",
+  "package": "WissKI",
+  "composer_namespace": "drupal/wisski",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "inline_entity_form:inline_entity_form",
+    "wisski:wisski_autocomplete",
+    "wisski:wisski_pathbuilder",
+    "wisski:wisski_salz"
+  ],
+  "configure": null,
+  "core_version_requirement": ">=10.4 <12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/wisski",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site structure",
+    "Import and export"
+  ],
+  "subcategories": [
+    "Structured content / page building",
+    "Entity API"
+  ],
+  "keywords": [
+    "wisski",
+    "core",
+    "entity",
+    "routing",
+    "required"
+  ],
+  "part_of": "wisski"
+}
