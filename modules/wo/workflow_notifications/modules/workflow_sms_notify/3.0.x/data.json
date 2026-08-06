@@ -1,0 +1,44 @@
+{
+  "name": "Workflow SMS Notification",
+  "data_name": "workflow_sms_notify",
+  "description": "Sends SMS on Workflow state transitions, via the SMS Framework.",
+  "version": "3.0.x",
+  "package": "Workflow",
+  "composer_namespace": "drupal/workflow_notifications",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "workflow:workflow",
+    "sms:sms",
+    "workflow_notifications:workflow_notifications"
+  ],
+  "configure": "entity.workflow_type.collection",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11.2",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/workflow_notifications",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Automation",
+    "User engagement"
+  ],
+  "subcategories": [
+    "SMS / text messaging",
+    "Workflow / state management"
+  ],
+  "keywords": [
+    "workflow",
+    "sms",
+    "notification",
+    "state transition",
+    "sms framework"
+  ],
+  "part_of": "workflow_notifications"
+}

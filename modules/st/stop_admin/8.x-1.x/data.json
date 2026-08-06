@@ -1,0 +1,38 @@
+{
+  "name": "Stop administrator login",
+  "data_name": "stop_admin",
+  "description": "Blocks user 1 (and optionally any user with the admin role) from logging in through the login form.",
+  "version": "8.x-1.x",
+  "package": "Security",
+  "composer_namespace": "drupal/stop_admin",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "stop_admin.settings",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/stop_admin",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Superuser (user 1) protection",
+    "Login page protection"
+  ],
+  "keywords": [
+    "user 1",
+    "superuser",
+    "admin login",
+    "hardening",
+    "login form"
+  ]
+}

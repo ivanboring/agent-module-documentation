@@ -1,0 +1,43 @@
+{
+  "name": "Auto Taxonomy Term Translation",
+  "data_name": "auto_term_translate",
+  "description": "Extends Auto Node Translate to taxonomy terms, with a per-term translate form and a per-vocabulary bulk form.",
+  "version": "2.0.x",
+  "package": "Multilingual",
+  "composer_namespace": "drupal/auto_term_translate",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:content_translation",
+    "auto_node_translate"
+  ],
+  "configure": "auto_node_translate.settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/auto_term_translate",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Multilingual",
+    "Automation"
+  ],
+  "subcategories": [
+    "Machine translation",
+    "Bulk taxonomy operations"
+  ],
+  "keywords": [
+    "taxonomy",
+    "translation",
+    "machine translation",
+    "bulk",
+    "auto node translate",
+    "vocabulary"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "name": "Workflow Notifications",
+  "data_name": "workflow_notifications",
+  "description": "Configurable notifications on Workflow module state transitions, with queued mail and an SMS submodule.",
+  "version": "3.0.x",
+  "package": "Workflow",
+  "composer_namespace": "drupal/workflow_notifications",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "workflow:workflow"
+  ],
+  "configure": "entity.workflow_type.collection",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11.2",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/workflow_notifications",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "workflow_sms_notify"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Automation",
+    "User engagement"
+  ],
+  "subcategories": [
+    "Workflow / state management",
+    "Email / mail delivery"
+  ],
+  "keywords": [
+    "workflow",
+    "notifications",
+    "state transition",
+    "email",
+    "queue",
+    "sms"
+  ]
+}

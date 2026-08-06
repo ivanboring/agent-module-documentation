@@ -1,0 +1,49 @@
+{
+  "name": "Layout Builder +",
+  "data_name": "lb_plus",
+  "description": "Drop-in replacement for the Layout Builder UI with nested sections, in-place editing and a block sidebar.",
+  "version": "3.6.x",
+  "package": "Page Building",
+  "composer_namespace": "drupal/lb_plus",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:layout_builder",
+    "tempstore_plus:tempstore_plus",
+    "navigation_plus:navigation_plus",
+    "drupal:block"
+  ],
+  "configure": "navigation_plus.settings",
+  "core_version_requirement": "^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/lb_plus",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "lb_plus_edit_plus",
+    "lb_plus_lb_block_decorator",
+    "lb_plus_section_library"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Layout Builder",
+    "Structured content / page building"
+  ],
+  "keywords": [
+    "layout builder",
+    "nested sections",
+    "page building",
+    "in-place editing",
+    "drag and drop",
+    "navigation plus"
+  ]
+}

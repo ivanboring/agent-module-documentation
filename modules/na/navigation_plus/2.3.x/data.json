@@ -1,0 +1,47 @@
+{
+  "name": "Navigation +",
+  "data_name": "navigation_plus",
+  "description": "Standardised editing UI for a suite of tool-based modules: a tool plugin type, mode plugins, sidebars and hotkeys built on core Navigation.",
+  "version": "2.3.x",
+  "package": "Page Building",
+  "composer_namespace": "drupal/navigation_plus",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:navigation",
+    "twig_events:twig_events",
+    "tempstore_plus:tempstore_plus"
+  ],
+  "configure": "navigation_plus.settings",
+  "core_version_requirement": "^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/navigation_plus",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "navigation_plus_entity_workflow"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience",
+    "Site structure"
+  ],
+  "subcategories": [
+    "In-place editing",
+    "Admin toolbar / navigation"
+  ],
+  "keywords": [
+    "navigation",
+    "toolbar",
+    "edit mode",
+    "tool plugin",
+    "sidebar",
+    "hotkeys",
+    "lb_plus"
+  ]
+}

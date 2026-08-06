@@ -1,0 +1,48 @@
+{
+  "name": "Simple Decoupled Preview",
+  "data_name": "simple_decoupled_preview",
+  "description": "Sends editors to a decoupled front end's preview route with a JSON:API payload, and logs each preview as an entity.",
+  "version": "2.0.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/simple_decoupled_preview",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node",
+    "drupal:jsonapi",
+    "drupal:rest",
+    "restui:restui",
+    "simple_decoupled_preview:simple_decoupled_preview_jsonapi"
+  ],
+  "configure": "simple_decoupled_preview.settings_form",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/simple_decoupled_preview",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "simple_decoupled_preview_jsonapi"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Decoupled"
+  ],
+  "subcategories": [
+    "Preview & draft mode",
+    "REST / web services"
+  ],
+  "keywords": [
+    "decoupled",
+    "preview",
+    "jsonapi",
+    "headless",
+    "draft",
+    "next.js",
+    "preview log"
+  ]
+}

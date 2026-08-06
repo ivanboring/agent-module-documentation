@@ -1,0 +1,44 @@
+{
+  "name": "Library Manager",
+  "data_name": "library_manager",
+  "description": "Admin UI for defining and overriding Drupal asset libraries, including JS/CSS authored in the browser.",
+  "version": "3.0.x",
+  "package": null,
+  "composer_namespace": "drupal/library_manager",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:system",
+    "codemirror_editor:codemirror_editor"
+  ],
+  "configure": "library_manager.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/library_manager",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools",
+    "Theming"
+  ],
+  "subcategories": [
+    "External library management",
+    "CSS / JS injection"
+  ],
+  "keywords": [
+    "libraries",
+    "asset library",
+    "javascript",
+    "css",
+    "codemirror",
+    "library override",
+    "assets"
+  ]
+}

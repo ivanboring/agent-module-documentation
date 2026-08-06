@@ -1,0 +1,42 @@
+{
+  "name": "Taxonomy Custom Controller",
+  "data_name": "taxonomy_custom_controller",
+  "description": "Replaces the taxonomy term page controller with one that dispatches an event so modules can alter the build.",
+  "version": "8.x-1.x",
+  "package": null,
+  "composer_namespace": "drupal/taxonomy_custom_controller",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:taxonomy",
+    "drupal:views"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/taxonomy_custom_controller",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site structure",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Entity page behavior & redirects",
+    "Hook / event system"
+  ],
+  "keywords": [
+    "taxonomy",
+    "term page",
+    "route subscriber",
+    "event subscriber",
+    "controller override"
+  ]
+}

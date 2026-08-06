@@ -1,0 +1,40 @@
+{
+  "name": "Consent Mode",
+  "data_name": "consent_mode",
+  "description": "Emits a configurable Google Consent Mode v2 default script before other tags load.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/consent_mode",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "consent_mode.consent_mode_config_form",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/consent_mode",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "Security"
+  ],
+  "subcategories": [
+    "Cookie consent / GDPR",
+    "Analytics / tag management"
+  ],
+  "keywords": [
+    "google consent mode",
+    "gtag",
+    "consent",
+    "gdpr",
+    "ad_storage",
+    "analytics_storage"
+  ]
+}

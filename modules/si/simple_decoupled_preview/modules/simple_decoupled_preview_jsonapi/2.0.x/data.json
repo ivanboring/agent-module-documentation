@@ -1,0 +1,42 @@
+{
+  "name": "Simple Decoupled Preview JSON:API Node Preview",
+  "data_name": "simple_decoupled_preview_jsonapi",
+  "description": "Exposes node previews through JSON:API so a decoupled front end can fetch unsaved content.",
+  "version": "2.0.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/simple_decoupled_preview",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node",
+    "drupal:jsonapi"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/simple_decoupled_preview",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Decoupled"
+  ],
+  "subcategories": [
+    "Preview & draft mode",
+    "REST / web services"
+  ],
+  "keywords": [
+    "jsonapi",
+    "preview",
+    "decoupled",
+    "draft",
+    "node preview"
+  ],
+  "part_of": "simple_decoupled_preview"
+}

@@ -1,0 +1,43 @@
+{
+  "name": "GraphQL Export",
+  "data_name": "graphql_export",
+  "description": "Exports a GraphQL server's schema as SDL or JSON introspection, from the UI, a Drush command, or automatically on config export.",
+  "version": "2.0.x",
+  "package": "GraphQL",
+  "composer_namespace": "drupal/graphql_export",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "graphql:graphql"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/graphql_export",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Decoupled",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "GraphQL schema",
+    "API documentation / OpenAPI"
+  ],
+  "keywords": [
+    "graphql",
+    "schema",
+    "sdl",
+    "introspection",
+    "export",
+    "drush",
+    "codegen"
+  ]
+}

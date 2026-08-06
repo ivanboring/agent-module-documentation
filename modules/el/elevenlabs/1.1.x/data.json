@@ -1,0 +1,43 @@
+{
+  "name": "ElevenLabs",
+  "data_name": "elevenlabs",
+  "description": "ElevenLabs provider plugin for the AI module, supplying text-to-speech through the AI provider abstraction.",
+  "version": "1.1.x",
+  "package": "AI Provider",
+  "composer_namespace": "drupal/elevenlabs",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "ai:ai",
+    "key:key"
+  ],
+  "configure": "elevenlabs.settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/elevenlabs",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)",
+    "Media"
+  ],
+  "subcategories": [
+    "AI provider abstraction / LLM gateway",
+    "Audio embedding"
+  ],
+  "keywords": [
+    "elevenlabs",
+    "text to speech",
+    "tts",
+    "ai provider",
+    "voice",
+    "key module"
+  ]
+}
