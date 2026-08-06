@@ -1,0 +1,45 @@
+{
+  "name": "RedHen CRM",
+  "data_name": "redhen",
+  "description": "Constituent relationship management in Drupal.",
+  "version": "3.0.x",
+  "package": "RedHen",
+  "composer_namespace": "drupal/redhen",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "redhen.config",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/redhen",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "redhen_connection",
+    "redhen_contact",
+    "redhen_dedupe",
+    "redhen_org"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "User management",
+    "Integrations"
+  ],
+  "subcategories": [
+    "CRM",
+    "Content modelling"
+  ],
+  "keywords": [
+    "crm",
+    "contacts",
+    "organisations",
+    "nonprofit",
+    "relationships",
+    "constituents"
+  ]
+}

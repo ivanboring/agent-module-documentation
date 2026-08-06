@@ -1,0 +1,45 @@
+{
+  "name": "Analyze",
+  "data_name": "analyze",
+  "description": "API for adding information to an entity's Analyze tab.",
+  "version": "1.2.x",
+  "package": "Analyze",
+  "composer_namespace": "drupal/analyze",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "analyze.analyze_settings",
+  "core_version_requirement": "^10.3 | ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/analyze",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "analyze_basic_content_info",
+    "analyze_google_analytics",
+    "analyze_page_views",
+    "analyze_plugin_example"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Reports",
+    "Extension points"
+  ],
+  "keywords": [
+    "analyze",
+    "tab",
+    "entity",
+    "reports",
+    "plugins",
+    "insights"
+  ]
+}

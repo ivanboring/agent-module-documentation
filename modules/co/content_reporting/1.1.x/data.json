@@ -1,0 +1,45 @@
+{
+  "name": "Content Reporting",
+  "data_name": "content_reporting",
+  "description": "Reporting and analytics on site content.",
+  "version": "1.1.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/content_reporting",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node",
+    "drupal:views"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/content_reporting",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "content_reporting_charts"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "SEO"
+  ],
+  "subcategories": [
+    "Reports",
+    "Content auditing"
+  ],
+  "keywords": [
+    "reporting",
+    "analytics",
+    "content",
+    "audit",
+    "charts",
+    "statistics"
+  ]
+}
