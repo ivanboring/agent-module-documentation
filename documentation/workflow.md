@@ -170,6 +170,65 @@ A module that fatals the container blocks **every** subsequent `drush en` in the
 looks like the whole batch failing. If a wave's modules all report FAILED, check for one of these
 first.
 
+### The five shapes of "contrib does not match this core"
+
+By wave 86 this had become the single most common reason a module cannot be documented live, and it
+is worth recognising by shape rather than rediscovering each time. All five produce a fatal; where
+the fatal happens decides how much damage it does.
+
+1. **Core narrowed a signature, contrib did not follow.** `views_better_rest`,
+   `same_page_preview`, `push_notifications` (waves 80–82) — a `validate(mixed, Constraint): void`
+   in core against contrib's older signature. Fatal on **class load**.
+2. **Contrib widened a return type.** `rest_entity_recursive` 2.0.6-rc8 (wave 86) declares
+   `: array|string|int|float|bool|ArrayObject|NULL` where core declares `: array`. PHP return types
+   are covariant — a child may narrow, never widen — so the class cannot load at all.
+3. **A concrete type hint against a service something decorates.** `complete_webform_exporter`
+   (wave 85) type-hints `FileUrlGenerator` and breaks when `lupus_decoupled_ce_api` replaces it;
+   `jsnlog` (wave 86) type-hints `PathMatcher` and breaks because **core's own `path_alias`
+   declares `decorates: path.matcher`** — which makes that one universal rather than conditional.
+   Fatal at **container compile**, so site and Drush both die.
+4. **A container parameter core removed.** `apigee_edge` 4.1.0 (wave 86) injects
+   `%main_content_renderers%`; Drupal 11.4 no longer defines it →
+   `DefinitionErrorExceptionPass: You have requested a non-existent parameter`.
+5. **Contrib-vs-contrib arity inside one family.** The EPT modules (waves 83, 85, 86):
+   `ept_core`'s widget base gained two constructor arguments and the components that **override**
+   the constructor were left calling it with five. Components that do **not** override inherit
+   correctly. None of them constrains `ept_core`'s version, so composer resolves a mismatched pair.
+   The rule is greppable: `parent::__construct(` with five arguments in an EPT component is
+   suspect.
+
+### A mid-install fatal leaves the rest of the batch half-installed
+
+This happened three times in four waves (`wisski` wave 84, `component` wave 85, `apigee_edge`
+wave 86) and the symptom is confusing enough to be worth stating: module installation **ends with a
+cache clear**, so a module that fatals there is written into `core.extension` and never gets its
+`system.schema` entry — and neither does anything enabled after it in the same batch. Wave 86 lost
+**80 of 120 modules** that way.
+
+Those modules report as **Enabled** while `hook_install()` never ran, so their default config is
+missing and they misbehave in ways that do not point at the cause.
+
+Recovery, in order of preference:
+
+```bash
+ddev exec bash -c 'cd /var/www/html && bash agent-module-documentation/scripts/repair-half-installed.sh --list'
+ddev snapshot restore base-minimal      # cleanest when many modules are affected
+```
+
+If Drush itself is down, `core.extension` has to be edited directly — connect with PDO, `unset()`
+the offending module, `TRUNCATE` the cache tables. Restoring the snapshot and re-running
+`wave-prepare.sh` with the culprit removed from `wave.txt` is faster than repairing a long list.
+
+### A healthy website is not evidence of a healthy site
+
+`bs_lib` (wave 85) registers a Drush command whose **constructor** calls
+`$theme_handler->getTheme('bs_base')`, which throws when the theme is absent. Drush instantiates
+every `drush.command`-tagged service at bootstrap, so the entire CLI died — while `curl` returned
+**200** on the front page and the login page, and `drush pm:uninstall bs_lib` could not run either.
+
+Check both surfaces after enabling a wave: a request to the site **and** `drush status`. A
+deployment check that only curls the site will not see this class of failure.
+
 ### Before committing a wave: check nothing was missed
 
 `wave-prepare.sh` prints a manifest of everything it enabled. It is easy to write docs for most
