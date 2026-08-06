@@ -564,3 +564,25 @@ imce_search_2
 # pm:uninstall bs_lib cannot run either; recovery needs a direct core.extension DB edit.
 # bs_lib.info.yml declares no dependencies and a module cannot enforce a theme dependency.
 bs_lib
+
+# wave 85: composer could not resolve these.
+# varbase_blog - vardot/varbase-patches no longer applies to a current dependency release.
+# instagram_feeds, mysql56 - no Drupal 11 release despite check-d11.sh passing.
+varbase_blog
+instagram_feeds
+mysql56
+# wave 85: lb_branch_hours_blocks constrains ycloudyusa/y_lb ^4 || ^5, but Packagist only
+# publishes y_lb 0.1 (2022). The current y_lb lives in the YMCA's own composer repository,
+# which this campaign does not add. Documented from source alongside its siblings.
+lb_branch_hours_blocks
+# wave 85: project entity_meta_relation ships module `emr`, documented under modules/em/emr.
+# next-wave.sh cannot see the rename.
+entity_meta_relation
+
+# wave 86: apigee_m10n pulls apigee_edge 4.1.0, whose services inject the container parameter
+# %main_content_renderers% into EdgeExceptionSubscriber and TeamInactiveStatusSubscriber.
+# Drupal 11.4 core NO LONGER DEFINES that parameter, so the container fails to compile:
+# "DefinitionErrorExceptionPass: You have requested a non-existent parameter
+# main_content_renderers". Site and drush both down; it fataled mid-wave and left 80 of 120
+# modules half-installed. Documented from source.
+apigee_m10n

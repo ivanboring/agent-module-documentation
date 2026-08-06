@@ -1,0 +1,41 @@
+{
+  "name": "Registration codes",
+  "data_name": "regcode",
+  "description": "Requires or accepts a registration code during user registration.",
+  "version": "2.0.x",
+  "package": "Registration",
+  "composer_namespace": "drupal/regcode",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:views"
+  ],
+  "configure": "regcode.admin_settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/regcode",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Forms and surveys"
+  ],
+  "subcategories": [
+    "User registration",
+    "Spam prevention"
+  ],
+  "keywords": [
+    "registration code",
+    "invite",
+    "signup",
+    "access",
+    "codes"
+  ]
+}

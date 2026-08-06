@@ -1,0 +1,42 @@
+{
+  "name": "Elasticsearch Helper",
+  "data_name": "elasticsearch_helper",
+  "description": "Tools for integrating Elasticsearch with Drupal, independent of Search API.",
+  "version": "8.2.x",
+  "package": "Elasticsearch Helper",
+  "composer_namespace": "drupal/elasticsearch_helper",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:serialization"
+  ],
+  "configure": "elasticsearch_helper.elasticsearch_helper_settings_form",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/elasticsearch_helper",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site search",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Search backend",
+    "Content indexing"
+  ],
+  "keywords": [
+    "elasticsearch",
+    "indexing",
+    "search",
+    "helper",
+    "documents",
+    "plugins"
+  ]
+}
