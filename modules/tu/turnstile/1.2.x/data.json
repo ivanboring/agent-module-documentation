@@ -1,0 +1,42 @@
+{
+  "name": "Cloudflare Turnstile",
+  "data_name": "turnstile",
+  "description": "Adds Cloudflare Turnstile as a CAPTCHA option.",
+  "version": "1.2.x",
+  "package": "Spam control",
+  "composer_namespace": "drupal/turnstile",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "captcha:captcha",
+    "key:key"
+  ],
+  "configure": "turnstile.admin_settings_form",
+  "core_version_requirement": "^10.6 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/turnstile",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Spam prevention",
+    "CAPTCHA"
+  ],
+  "keywords": [
+    "turnstile",
+    "cloudflare",
+    "captcha",
+    "spam",
+    "privacy",
+    "forms"
+  ]
+}

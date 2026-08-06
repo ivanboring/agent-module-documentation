@@ -1,0 +1,48 @@
+{
+  "name": "Marketo MA",
+  "data_name": "marketo_ma",
+  "description": "Integration with Marketo marketing automation.",
+  "version": "3.0.x",
+  "package": "Marketo",
+  "composer_namespace": "drupal/marketo_ma",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user"
+  ],
+  "configure": "marketo_ma.settings",
+  "core_version_requirement": ">=9.2",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/marketo_ma",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "marketo_ma_contact",
+    "marketo_ma_contact_block",
+    "marketo_ma_legacy_client",
+    "marketo_ma_user",
+    "marketo_ma_webform"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "Security"
+  ],
+  "subcategories": [
+    "Marketing automation",
+    "CRM"
+  ],
+  "keywords": [
+    "marketo",
+    "munchkin",
+    "marketing automation",
+    "leads",
+    "tracking",
+    "forms"
+  ]
+}
