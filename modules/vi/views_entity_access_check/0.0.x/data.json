@@ -1,0 +1,42 @@
+{
+  "name": "Views entity_access check",
+  "data_name": "views_entity_access_check",
+  "description": "Applies entity access checks to each Views row.",
+  "version": "0.0.x",
+  "package": "Views",
+  "composer_namespace": "drupal/views_entity_access_check",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:views"
+  ],
+  "configure": "views_entity_access_check.settings_form",
+  "core_version_requirement": "^8.9 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/views_entity_access_check",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Content display"
+  ],
+  "subcategories": [
+    "Views query enhancements",
+    "Node access"
+  ],
+  "keywords": [
+    "views",
+    "entity access",
+    "security",
+    "rows",
+    "access check",
+    "filter"
+  ]
+}

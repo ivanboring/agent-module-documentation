@@ -1,0 +1,43 @@
+{
+  "name": "DeepL Provider",
+  "data_name": "ai_provider_deepl",
+  "description": "DeepL provider for the AI translations module.",
+  "version": "1.0.x",
+  "package": "AI Providers",
+  "composer_namespace": "drupal/ai_provider_deepl",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "ai:ai",
+    "key:key"
+  ],
+  "configure": "ai_provider_deepl.settings_form",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ai_provider_deepl",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Multilingual",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Machine translation",
+    "AI"
+  ],
+  "keywords": [
+    "deepl",
+    "translation",
+    "ai",
+    "provider",
+    "multilingual",
+    "key"
+  ]
+}
