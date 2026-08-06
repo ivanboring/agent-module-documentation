@@ -1,0 +1,48 @@
+{
+  "name": "VLSuite Block",
+  "data_name": "vlsuite_block",
+  "description": "The block-type layer: content block types placed in Layout Builder, with ten component submodules under it.",
+  "version": "2.3.x",
+  "package": "Visual Layout Suite (VLSuite)",
+  "composer_namespace": "drupal/vlsuite",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:block_content",
+    "drupal:views",
+    "layout_builder_restrictions:layout_builder_restrictions",
+    "vlsuite:vlsuite_utility_classes",
+    "vlsuite:vlsuite_media",
+    "vlsuite:vlsuite_slider",
+    "vlsuite:vlsuite_animations"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/vlsuite",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Layout Builder",
+    "Block enhancements"
+  ],
+  "keywords": [
+    "vlsuite",
+    "block types",
+    "layout builder",
+    "components",
+    "block content"
+  ],
+  "part_of": "vlsuite"
+}

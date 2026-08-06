@@ -1,0 +1,49 @@
+{
+  "name": "VLSuite Shuttle",
+  "data_name": "vlsuite_shuttle",
+  "description": "Setup helper that installs and configures the VLSuite base for a custom build.",
+  "version": "2.3.x",
+  "package": "Visual Layout Suite (VLSuite)",
+  "composer_namespace": "drupal/vlsuite",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "vlsuite:vlsuite_media",
+    "vlsuite:vlsuite_block",
+    "vlsuite:vlsuite_layout",
+    "vlsuite:vlsuite_layout_builder",
+    "vlsuite:vlsuite_utility_classes",
+    "vlsuite:vlsuite_icon_font",
+    "vlsuite:vlsuite_layout_tabs",
+    "vlsuite:vlsuite_block_headings_menu"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/vlsuite",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Configuration management",
+    "Layout Builder"
+  ],
+  "keywords": [
+    "vlsuite",
+    "setup",
+    "shuttle",
+    "installation",
+    "scaffolding"
+  ],
+  "part_of": "vlsuite"
+}
