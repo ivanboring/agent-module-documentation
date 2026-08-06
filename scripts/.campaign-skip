@@ -598,6 +598,7 @@ lb_accordion
 lb_webform
 lb_hero
 ws_event
+lb_table
 
 # wave 87: aws_cloudwatchlogs 8.x-1.2 carries a LATENT circular service dependency. Its
 # aws_cloudwatchlogs.log is tagged { name: logger } — so it is collected into logger.factory —
@@ -609,3 +610,14 @@ ws_event
 # flowdrop_runtime.logger_channel_filter" — container down, site and drush both. Documented from
 # source; the module to fix is aws_cloudwatchlogs, not the decorator.
 aws_cloudwatchlogs
+
+# wave 87: the canvas family cannot be enabled on this install.
+# canvas_override 1.0.0-beta1 extends Drupal\canvas\Storage\ComponentTreeLoader, which canvas
+# 1.8.0 declares FINAL — "cannot extend final class", fatal on class load. And canvas itself
+# still trips assert($property !== NULL) in JsonSchemaPropsComponentSourceBase over third-party
+# SDC components (characterised in wave 85), which with zend.assertions on is a container-build
+# fatal. Both documented from source; the canvas assertion recurs whenever canvas meets SDC
+# components from other modules, so it is not specific to one wave's module set.
+canvas_override
+canvas_extjs
+canvas_multilingual
