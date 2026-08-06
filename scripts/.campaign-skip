@@ -589,3 +589,23 @@ apigee_m10n
 
 # wave 86: no Drupal 11 release despite check-d11.sh passing.
 localgov_demo
+
+# wave 87: the YMCA Layout Builder family again — these require ycloudyusa/y_lb ^3/^4/^5,
+# and Packagist publishes only y_lb 0.1 (2022, core ^8 || ^9). The current y_lb lives in the
+# YMCA's own composer repository, which this campaign does not add. Same root cause as
+# lb_branch_hours_blocks (wave 85); see modules/y_/y_lb for the characterisation.
+lb_accordion
+lb_webform
+lb_hero
+ws_event
+
+# wave 87: aws_cloudwatchlogs 8.x-1.2 carries a LATENT circular service dependency. Its
+# aws_cloudwatchlogs.log is tagged { name: logger } — so it is collected into logger.factory —
+# while depending on aws_cloudwatchlogs.put_log_events, which takes @logger.channel.aws_cloudwatchlogs,
+# a channel obtained FROM logger.factory. Core's factory resolves channels lazily so the cycle
+# never materialises alone; any module that DECORATES logger.factory surfaces it. flowdrop_runtime
+# does exactly that, and the two together produce
+# "ServiceCircularReferenceException: Circular reference detected for service
+# flowdrop_runtime.logger_channel_filter" — container down, site and drush both. Documented from
+# source; the module to fix is aws_cloudwatchlogs, not the decorator.
+aws_cloudwatchlogs

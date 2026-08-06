@@ -26,6 +26,30 @@ ddev exec 'php -m | grep gmp'
 
 Extensions added so far: **gmp** (`oidc`, wave 71), **oauth** (`lti_tool_provider`, wave 81).
 
+### npm-asset / bower-asset packages need asset-packagist
+
+A module whose front-end library is distributed through npm requires it as `npm-asset/<name>`, and
+those packages do not exist on packages.drupal.org. The failure reads as if the module were broken:
+
+```
+drupal/charts_apexcharts requires npm-asset/apexcharts ^4 -> could not be found in any version,
+there may be a typo in the package name.
+```
+
+It is not a typo and not a dead module — the repository is simply not configured. Add it once and
+it persists, because `wave-reset.sh` only trims `require` and leaves `repositories` alone:
+
+```json
+"repositories": [
+    { "type": "composer", "url": "https://packages.drupal.org/8" },
+    { "type": "composer", "url": "https://asset-packagist.org" }
+]
+```
+
+Added in wave 87 for `charts_apexcharts`, which then installed. `oomphinc/composer-installers-extender`
+was already in `config.allow-plugins`, which is what places these packages into `web/libraries`.
+Classify this failure as an environment gap rather than skip-listing the module.
+
 ## Installs are per wave, not cumulative
 
 **Install only the modules the current wave needs, then remove them and reset the database
@@ -170,10 +194,10 @@ A module that fatals the container blocks **every** subsequent `drush en` in the
 looks like the whole batch failing. If a wave's modules all report FAILED, check for one of these
 first.
 
-### The five shapes of "contrib does not match this core"
+### The six shapes of "contrib does not match this core"
 
 By wave 86 this had become the single most common reason a module cannot be documented live, and it
-is worth recognising by shape rather than rediscovering each time. All five produce a fatal; where
+is worth recognising by shape rather than rediscovering each time. All six produce a fatal; where
 the fatal happens decides how much damage it does.
 
 1. **Core narrowed a signature, contrib did not follow.** `views_better_rest`,
@@ -190,7 +214,15 @@ the fatal happens decides how much damage it does.
 4. **A container parameter core removed.** `apigee_edge` 4.1.0 (wave 86) injects
    `%main_content_renderers%`; Drupal 11.4 no longer defines it →
    `DefinitionErrorExceptionPass: You have requested a non-existent parameter`.
-5. **Contrib-vs-contrib arity inside one family.** The EPT modules (waves 83, 85, 86):
+5. **A latent circular service reference that a second module surfaces.** `aws_cloudwatchlogs`
+   (wave 87) tags `aws_cloudwatchlogs.log` as `{ name: logger }` — so it is collected into
+   `logger.factory` — while depending on a service that takes `@logger.channel.aws_cloudwatchlogs`,
+   a channel obtained **from** `logger.factory`. Core resolves channels lazily, so it works alone.
+   `flowdrop_runtime` declares `decorates: logger.factory`, and the two together give
+   `ServiceCircularReferenceException`. **Neither module fails on its own**, which makes this the
+   hardest shape to attribute — the fix belongs to the module with the latent cycle, not the one
+   that exposed it.
+6. **Contrib-vs-contrib arity inside one family.** The EPT modules (waves 83, 85, 86):
    `ept_core`'s widget base gained two constructor arguments and the components that **override**
    the constructor were left calling it with five. Components that do **not** override inherit
    correctly. None of them constrains `ept_core`'s version, so composer resolves a mismatched pair.
