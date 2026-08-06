@@ -1,0 +1,44 @@
+{
+  "name": "Geomap Field",
+  "data_name": "geomap_field",
+  "description": "Field type storing an address with geolocation, plus a map formatter.",
+  "version": "1.1.x",
+  "package": "Field types",
+  "composer_namespace": "drupal/geomap_field",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:field",
+    "geolocation_provider",
+    "map_provider"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/geomap_field",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site structure",
+    "Content display"
+  ],
+  "subcategories": [
+    "Geospatial / location",
+    "Fields"
+  ],
+  "keywords": [
+    "geomap",
+    "address",
+    "geolocation",
+    "map",
+    "coordinates",
+    "field"
+  ]
+}

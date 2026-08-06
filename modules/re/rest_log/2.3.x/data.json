@@ -1,0 +1,44 @@
+{
+  "name": "REST Log",
+  "data_name": "rest_log",
+  "description": "Logs REST API requests and responses as entities, with header masking and automatic cleanup.",
+  "version": "2.3.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/rest_log",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:rest",
+    "drupal:views"
+  ],
+  "configure": "rest_log.settings",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/rest_log",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Decoupled",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Debugging & inspection",
+    "REST / web services"
+  ],
+  "keywords": [
+    "rest",
+    "logging",
+    "api",
+    "debugging",
+    "requests",
+    "responses",
+    "audit"
+  ]
+}

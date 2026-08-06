@@ -1,0 +1,45 @@
+{
+  "name": "VBO Workflow Transition",
+  "data_name": "vbo_workflow_transition",
+  "description": "Views Bulk Operations action that transitions entities through a workflow.",
+  "version": "1.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/vbo_workflow_transition",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:content_moderation",
+    "drupal:views",
+    "drupal:views_bulk_operations",
+    "drupal:workflows"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/vbo_workflow_transition",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Automation",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Bulk operations",
+    "Workflow / state management"
+  ],
+  "keywords": [
+    "vbo",
+    "bulk operations",
+    "workflow",
+    "moderation",
+    "transition",
+    "batch"
+  ]
+}
