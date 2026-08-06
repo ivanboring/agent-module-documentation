@@ -1,0 +1,63 @@
+{
+  "name": "FlowDrop",
+  "data_name": "flowdrop",
+  "description": "Visual workflow editor with AI, data-processing and HTTP nodes; workflows are entities that can be signed, published and imported.",
+  "version": "2.0.x",
+  "package": "FlowDrop",
+  "composer_namespace": "drupal/flowdrop",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "flowdrop:flowdrop_ui_components"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11.3",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/flowdrop",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "flowdrop_chat",
+    "flowdrop_interrupt",
+    "flowdrop_job",
+    "flowdrop_memory",
+    "flowdrop_node_category",
+    "flowdrop_node_processor",
+    "flowdrop_node_type",
+    "flowdrop_orchestration",
+    "flowdrop_orchestration_connector",
+    "flowdrop_pipeline",
+    "flowdrop_playground",
+    "flowdrop_runtime",
+    "flowdrop_session",
+    "flowdrop_stategraph",
+    "flowdrop_trigger",
+    "flowdrop_ui_components",
+    "flowdrop_workflow",
+    "flowdrop_workflow_executor"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Automation",
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "Workflow / business rules",
+    "AI agents / taskable AI"
+  ],
+  "keywords": [
+    "flowdrop",
+    "workflow",
+    "visual editor",
+    "ai",
+    "automation",
+    "nodes",
+    "pipeline",
+    "signed bundles"
+  ]
+}

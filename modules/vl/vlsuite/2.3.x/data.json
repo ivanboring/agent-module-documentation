@@ -1,0 +1,60 @@
+{
+  "name": "VLSuite (Visual Layout Suite)",
+  "data_name": "vlsuite",
+  "description": "Layout Builder-based page building suite: blocks, collections, media types, layouts, animations, icons and a generator.",
+  "version": "2.3.x",
+  "package": "Visual Layout Suite (VLSuite)",
+  "composer_namespace": "drupal/vlsuite",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:layout_builder"
+  ],
+  "configure": "vlsuite.admin_index",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/vlsuite",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "vlsuite_animations",
+    "vlsuite_block",
+    "vlsuite_bundle_field",
+    "vlsuite_collection",
+    "vlsuite_demo",
+    "vlsuite_format",
+    "vlsuite_generator",
+    "vlsuite_icon_font",
+    "vlsuite_landing",
+    "vlsuite_layout",
+    "vlsuite_layout_builder",
+    "vlsuite_media",
+    "vlsuite_modal",
+    "vlsuite_shuttle",
+    "vlsuite_slider",
+    "vlsuite_utility_classes"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Layout Builder",
+    "Structured content / page building"
+  ],
+  "keywords": [
+    "vlsuite",
+    "layout builder",
+    "page building",
+    "blocks",
+    "collections",
+    "landing pages",
+    "components"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "name": "Config Patch GitLab API",
+  "data_name": "config_patch_gitlab_api",
+  "description": "Output plugin for Config Patch that creates a branch and pushes configuration changes to GitLab over its API.",
+  "version": "3.0.x",
+  "package": "Config",
+  "composer_namespace": "drupal/config_patch_gitlab_api",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "config_patch:config_patch"
+  ],
+  "configure": "config_patch_gitlab_api.credentials",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/config_patch_gitlab_api",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Configuration management",
+    "Deployment / release management"
+  ],
+  "keywords": [
+    "config patch",
+    "gitlab",
+    "configuration",
+    "branch",
+    "merge request",
+    "deployment"
+  ]
+}

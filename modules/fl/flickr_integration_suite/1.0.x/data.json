@@ -1,0 +1,49 @@
+{
+  "name": "Flickr Integration Suite",
+  "data_name": "flickr_integration_suite",
+  "description": "Flickr integration: API settings with Key-based credentials, plus block, field and text-filter submodules.",
+  "version": "1.0.x",
+  "package": "Flickr Integration Suite",
+  "composer_namespace": "drupal/flickr_integration_suite",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "key:key"
+  ],
+  "configure": "flickr_integration_suite.settings_form",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/flickr_integration_suite",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "flickr_integration_suite_block",
+    "flickr_integration_suite_field",
+    "flickr_integration_suite_filter",
+    "flickr_integration_suite_filter_colorbox"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Media embedding",
+    "Social network integration"
+  ],
+  "keywords": [
+    "flickr",
+    "photos",
+    "gallery",
+    "api",
+    "key module",
+    "block",
+    "field",
+    "filter"
+  ]
+}

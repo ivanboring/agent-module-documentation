@@ -62,7 +62,23 @@ for m in "${names[@]}"; do
     continue
   fi
   err=$(composer require "drupal/$m" -W --no-interaction --no-progress 2>&1)
-  if [ $? -eq 0 ] && [ -d "web/modules/contrib/$m" ]; then
+  rc=$?
+  # A drupal.org project can be a **metapackage** that only pulls in the project actually
+  # shipping the module, because the module is a submodule of something else:
+  # drupal/webform_bootstrap resolves to nothing of its own and lands at
+  # web/modules/contrib/webform/modules/webform_bootstrap (wave 84). composer exits 0, the
+  # top-level directory never appears, and the old code fell through to the classifier - which
+  # matched none of its patterns and reported a bare "other" with an empty log excerpt.
+  # Report it as what it is, and say where it landed, so the doc goes under the right parent.
+  if [ $rc -eq 0 ] && [ ! -d "web/modules/contrib/$m" ]; then
+    sub=$(find web/modules/contrib -mindepth 3 -maxdepth 4 -type d -name "$m" 2>/dev/null | head -1)
+    if [ -n "$sub" ]; then
+      printf '%s\tsubmodule-of\t%s\n' "$m" "${sub#web/modules/contrib/}"
+      cp composer.json "$SNAP"
+      continue
+    fi
+  fi
+  if [ $rc -eq 0 ] && [ -d "web/modules/contrib/$m" ]; then
     v=$(version_of "$m")
     # A missing `version:` in the info.yml means drupal.org's packaging script never ran, i.e.
     # composer resolved to a dev branch and cloned from git rather than taking a release. Say so:

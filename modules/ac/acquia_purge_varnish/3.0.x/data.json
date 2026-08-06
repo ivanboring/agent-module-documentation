@@ -1,0 +1,43 @@
+{
+  "name": "Acquia Purge Varnish",
+  "data_name": "acquia_purge_varnish",
+  "description": "Varnish cache purging for Acquia Cloud environments, with per-environment controls, a form and Drush commands.",
+  "version": "3.0.x",
+  "package": "Performance",
+  "composer_namespace": "drupal/acquia_purge_varnish",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "acquia_purge_varnish.form",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/acquia_purge_varnish",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "^8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "acquia_purge_varnish_test"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Cache invalidation",
+    "CDN integration"
+  ],
+  "keywords": [
+    "acquia",
+    "varnish",
+    "purge",
+    "cache",
+    "cdn",
+    "invalidation",
+    "drush"
+  ]
+}

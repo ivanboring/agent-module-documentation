@@ -1,0 +1,44 @@
+{
+  "name": "CKEditor AI Agent",
+  "data_name": "ckeditor_ai_agent",
+  "description": "AI-powered content generation inside CKEditor 5, proxied through the site's configured AI provider.",
+  "version": "2.0.x",
+  "package": "CKEditor",
+  "composer_namespace": "drupal/ckeditor_ai_agent",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "ai:ai",
+    "drupal:ckeditor5"
+  ],
+  "configure": "ckeditor_ai_agent.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ckeditor_ai_agent",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)",
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "AI agents / taskable AI",
+    "CKEditor plugins"
+  ],
+  "keywords": [
+    "ckeditor5",
+    "ai",
+    "content generation",
+    "llm",
+    "proxy",
+    "streaming",
+    "editor"
+  ]
+}

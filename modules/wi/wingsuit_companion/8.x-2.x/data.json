@@ -1,0 +1,46 @@
+{
+  "name": "Wingsuit companion module",
+  "data_name": "wingsuit_companion",
+  "description": "Drupal side of the Wingsuit front-end toolkit: a ws-assets stream wrapper plus UI Patterns, Layout Builder, link and Page Manager bridges.",
+  "version": "8.x-2.x",
+  "package": "Wingsuit",
+  "composer_namespace": "drupal/wingsuit_companion",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "wingsuit_companion.config",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/wingsuit_companion",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "wingsuit_lb",
+    "wingsuit_link",
+    "wingsuit_page_manager",
+    "wingsuit_ui_patterns"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Theming",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Twig / component libraries",
+    "External library management"
+  ],
+  "keywords": [
+    "wingsuit",
+    "components",
+    "storybook",
+    "twig",
+    "ui patterns",
+    "stream wrapper",
+    "front-end tooling"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "LMS",
+  "data_name": "lms",
+  "description": "Learning management system core: courses, lessons, activities and answers as entities, built on Group.",
+  "version": "1.1.x",
+  "package": "LMS",
+  "composer_namespace": "drupal/lms",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user",
+    "drupal:views",
+    "group:group"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/lms",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "lms_answer_comments",
+    "lms_answer_plugins",
+    "lms_classes"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "User engagement",
+    "Site structure"
+  ],
+  "subcategories": [
+    "Quiz / assessment",
+    "Groups & memberships"
+  ],
+  "keywords": [
+    "lms",
+    "e-learning",
+    "courses",
+    "lessons",
+    "activities",
+    "group",
+    "training",
+    "students"
+  ]
+}

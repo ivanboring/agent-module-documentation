@@ -529,3 +529,9 @@ rest_entity_recursive
 # mere presence of bat on disk fatals plugin discovery and takes down every drush call.
 # bee installs and enables, then breaks the site the moment views plugins are rebuilt (wave 73).
 bee
+
+# wave 84: wisski 8.x-4.3 - wisski.route_subscriber requires search.search_page_repository
+# but wisski/wisski_core do not declare core search as a dependency, so enabling it
+# breaks container compilation and takes drush down with it (verified). Also leaves
+# wisski_title_n_grams unqueryable after a partial install. Document from source.
+wisski
