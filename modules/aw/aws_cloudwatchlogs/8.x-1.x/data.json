@@ -1,0 +1,42 @@
+{
+  "name": "AWS CloudWatch Logs",
+  "data_name": "aws_cloudwatchlogs",
+  "description": "Ships Drupal's log messages to AWS CloudWatch Logs, with log group and stream management.",
+  "version": "8.x-1.x",
+  "package": null,
+  "composer_namespace": "drupal/aws_cloudwatchlogs",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:key"
+  ],
+  "configure": "aws_cloudwatchlogs.settings",
+  "core_version_requirement": "^9.1 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/aws_cloudwatchlogs",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Log aggregation",
+    "Cloud services (AWS)"
+  ],
+  "keywords": [
+    "aws",
+    "cloudwatch",
+    "logging",
+    "logs",
+    "watchdog",
+    "key"
+  ]
+}

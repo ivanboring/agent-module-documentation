@@ -1,0 +1,42 @@
+{
+  "name": "JSON:API Links",
+  "data_name": "jsonapi_links",
+  "description": "Removes the links attributes from JSON:API responses.",
+  "version": "1.1.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/jsonapi_links",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:jsonapi",
+    "drupal:user"
+  ],
+  "configure": "jsonapi_links.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/jsonapi_links",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Decoupled"
+  ],
+  "subcategories": [
+    "REST / web services",
+    "Progressive decoupling"
+  ],
+  "keywords": [
+    "jsonapi",
+    "links",
+    "payload",
+    "hateoas",
+    "decoupled",
+    "response size"
+  ]
+}

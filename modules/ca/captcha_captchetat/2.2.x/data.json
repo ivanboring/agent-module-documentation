@@ -1,0 +1,42 @@
+{
+  "name": "CaptchEtat (with CAPTCHA)",
+  "data_name": "captcha_captchetat",
+  "description": "Integrates the French government's CaptchEtat service with the CAPTCHA module.",
+  "version": "2.2.x",
+  "package": "Spam control",
+  "composer_namespace": "drupal/captcha_captchetat",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "captcha:captcha"
+  ],
+  "configure": "captcha_captchetat.settings_form",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/captcha_captchetat",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Forms and surveys"
+  ],
+  "subcategories": [
+    "CAPTCHA / bot protection",
+    "Spam prevention"
+  ],
+  "keywords": [
+    "captcha",
+    "captchetat",
+    "france",
+    "government",
+    "accessibility",
+    "spam"
+  ]
+}
