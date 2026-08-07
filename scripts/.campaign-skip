@@ -621,3 +621,24 @@ aws_cloudwatchlogs
 canvas_override
 canvas_extjs
 canvas_multilingual
+
+# wave 88: the whole YMCA Layout Builder family is gated on ycloudyusa/y_lb ^4.0 || ^5.0, which
+# Packagist cannot satisfy — it publishes only y_lb 0.1 (2022, core ^8 || ^9). Checked each of
+# these against packages.drupal.org before installing: all ten require ^4.0 || ^5.0, so all ten
+# would fail at composer time. Skip-listed up front rather than burning resolution on each.
+#
+# DECISION POINT, deliberately not taken here: adding the YMCA's own composer repository would
+# unlock the entire family in one change, the same way asset-packagist unlocked npm-asset in
+# wave 87. That is a supply-chain decision — a new third-party repository in the campaign
+# environment — and it is the site owner's to make, not one to take unilaterally mid-campaign.
+# If it is taken, remove these entries and the wave 85/87 y_lb entries together.
+lb_ping_pong
+lb_simple_menu
+lb_grid_cta
+lb_cards
+ws_lb_tabs
+y_lb_article
+lb_partners_blocks
+lb_carousel
+lb_testimonial_blocks
+lb_statistics
