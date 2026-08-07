@@ -107,8 +107,31 @@ The check costs ~1s per project. It is a heuristic — a project can pass and st
 dependency conflicts — so composer remains the arbiter, but it removes the hopeless cases.
 
 Record everything unusable in `scripts/.campaign-skip` **with a reason comment** so it is
-never re-served. Entries must be bare project names on their own line (an inline `#`
-comment on the same line will not match).
+never re-served. Prefer a bare project name on its own line with the reason in a `#` comment
+above it; `next-wave.sh` takes the first whitespace-delimited field, so the older
+`project<TAB>reason` format also works.
+
+**The reason is not bookkeeping — it is what makes the entry reviewable.** Checked on 2026-08-07,
+every entry in the file against packages.drupal.org:
+
+- **129 skip-listed projects now have a Drupal 11 release**, and *all 129* are early-wave entries
+  with **no recorded reason**. Every entry that carries a reason is either still NO-D11 or was
+  skipped for a permanent cause — a dependency conflict, a project→module rename, a metapackage,
+  code that breaks the site.
+- So the reasonless entries were almost certainly skipped for "no D11 release yet", a condition
+  that expired. They are permanently excluded from a campaign whose purpose is documenting D11
+  modules.
+
+Those 129 are listed in `scripts/.campaign-recheck`, which is **not** consulted by `next-wave.sh` —
+re-serving them is a deliberate act:
+
+```bash
+head -40 scripts/.campaign-recheck | grep -v '^#' > wave.txt
+# then the normal safe-install / wave-prepare cycle
+```
+
+Anything that fails again goes back into `.campaign-skip` **with a reason this time**, and comes
+out of the recheck file. Composer stays the arbiter.
 
 ## Loop
 

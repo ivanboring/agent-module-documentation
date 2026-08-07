@@ -24,7 +24,16 @@ SKIP="scripts/.campaign-skip"
 
 awk -F'\t' -v n="$N" -v modns="modules" -v skipf="$SKIP" '
   BEGIN {
-    while ((getline line < skipf) > 0) { if (line !~ /^#/ && line != "") skip[line]=1 }
+    # Take the FIRST whitespace-delimited field, not the whole line. Entries added in early
+    # waves carry a tab-separated reason ("somemodule\tno-D11 (core ^8||^9)"), and matching
+    # the whole line would silently never match those. Checked 2026-08-07: no such entry is
+    # currently leaking through, because each is also caught by the on-disk check below — but
+    # the next one added would, so parse defensively.
+    while ((getline line < skipf) > 0) {
+      if (line ~ /^#/ || line == "") continue
+      split(line, f, /[ \t]+/)
+      if (f[1] != "") skip[f[1]]=1
+    }
   }
   {
     proj=$2
