@@ -1,0 +1,8 @@
+<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
+# acquia_cms_common — agent index
+
+Part of the **Acquia CMS** distribution (Acquia's Drupal distro). Handles shared functionality for Acquia CMS. Version — see
+`acquia_cms_common`'s release. Core `^10.3 || ^11`. Depends on: `acquia_purge:acquia_purge`, `config_ignore:config_ignore`, `config_rewrite:config_rewrite`, `diff:diff`, `drupal:block`, `drupal:ckeditor5`, `drupal:config`, `drupal:config_translation`, `drupal:content_moderation`, `drupal:content_translation`, `drupal:language`, `drupal:media`, `drupal:menu_ui`, `drupal:node`, `drupal:taxonomy`, `metatag:metatag_open_graph`, `metatag:metatag_twitter_cards`, `moderation_dashboard:moderation_dashboard`, `password_policy:password_policy_character_types`, `password_policy:password_policy_length`, `password_policy:password_policy_username`, `pathauto:pathauto`, `redirect:redirect`, `scheduler_content_moderation_integration:scheduler_content_moderation_integration`, `schema_metatag:schema_article`, `schema_metatag:schema_person`, `schema_metatag:schema_place`, `simple_sitemap:simple_sitemap`, `seckit:seckit`, `smart_trim:smart_trim`, `username_enumeration_prevention:username_enumeration_prevention`, `workbench_email:workbench_email`. Submodules: acquia_cms_development, acquia_cms_support.
+
+**Distribution configuration/glue, not a standalone feature.** Right on an Acquia CMS site; a strong
+set of assumptions elsewhere. Designed to work with `acquia_cms_common` and the rest of the family.

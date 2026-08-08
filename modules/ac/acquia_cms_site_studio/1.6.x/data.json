@@ -1,0 +1,47 @@
+{
+  "name": "Acquia CMS Module for Site Studio Install",
+  "data_name": "acquia_cms_site_studio",
+  "description": "Module for Site Studio Installation Code.",
+  "version": "1.6.x",
+  "package": "Acquia CMS",
+  "composer_namespace": "drupal/acquia_cms_site_studio",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "acquia_cms_common:acquia_cms_common",
+    "cohesion_base_styles # phpcs:ignore",
+    "cohesion_custom_styles # phpcs:ignore",
+    "cohesion_elements # phpcs:ignore",
+    "cohesion_style_helpers # phpcs:ignore",
+    "cohesion_sync # phpcs:ignore",
+    "cohesion_website_settings # phpcs:ignore",
+    "collapsiblock:collapsiblock",
+    "drupal:media_library",
+    "sitestudio_page_builder # phpcs:ignore"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/acquia_cms_site_studio",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Distribution"
+  ],
+  "subcategories": [
+    "Acquia CMS"
+  ],
+  "keywords": [
+    "acquia",
+    "acquia cms",
+    "distribution",
+    "site_studio"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "BEE: Bookable Entities Everywhere",
+  "data_name": "bee",
+  "description": "Makes content types bookable using the BAT toolkit, with optional Commerce integration.",
+  "version": "11.1.x",
+  "package": "Commerce",
+  "composer_namespace": "drupal/bee",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "bat_booking:bat_booking",
+    "bat_event_series:bat_event_series",
+    "bat_event_ui:bat_event_ui",
+    "office_hours:office_hours",
+    "commerce_order:commerce_order",
+    "commerce_product:commerce_product",
+    "commerce_store:commerce_store"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/bee",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "bee_webform"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Commerce"
+  ],
+  "subcategories": [
+    "Booking / availability"
+  ],
+  "keywords": [
+    "bee",
+    "booking",
+    "bat",
+    "reservations",
+    "commerce",
+    "bookable"
+  ]
+}

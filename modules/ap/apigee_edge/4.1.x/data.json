@@ -1,0 +1,49 @@
+{
+  "name": "Apigee Edge",
+  "data_name": "apigee_edge",
+  "description": "Integrates Drupal with Apigee Edge/X to build an API developer portal: apps, API products, keys and teams.",
+  "version": "4.1.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/apigee_edge",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:file",
+    "drupal:user",
+    "drupal:filter",
+    "drupal:options",
+    "key:key"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/apigee_edge",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "apigee_edge_actions",
+    "apigee_edge_apiproduct_rbac",
+    "apigee_edge_debug",
+    "apigee_edge_teams"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Web services"
+  ],
+  "subcategories": [
+    "API management"
+  ],
+  "keywords": [
+    "apigee",
+    "api management",
+    "developer portal",
+    "api products",
+    "apps",
+    "edge"
+  ]
+}
