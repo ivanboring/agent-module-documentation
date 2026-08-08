@@ -1,0 +1,41 @@
+{
+  "name": "Web Push",
+  "data_name": "web_push",
+  "description": "Sends web push notifications to users' browsers (VAPID-based).",
+  "version": "2.1.x",
+  "package": "Notification",
+  "composer_namespace": "drupal/web_push",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:rest",
+    "drupal:serialization",
+    "drupal:user"
+  ],
+  "configure": "web_push.settings",
+  "core_version_requirement": "^10.3||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/web_push",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "8.0",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "User engagement"
+  ],
+  "subcategories": [
+    "Activity / notification messages"
+  ],
+  "keywords": [
+    "web push",
+    "notifications",
+    "vapid",
+    "push",
+    "browser"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "name": "Page Geofence",
+  "data_name": "pagegeofence",
+  "description": "Restricts page access by visitor geographic location (country-based allow/deny rules).",
+  "version": "1.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/pagegeofence",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:field",
+    "drupal:system",
+    "drupal:user"
+  ],
+  "configure": "entity.pagegeofence_rule.collection",
+  "core_version_requirement": "^8||^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/pagegeofence",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Geographic / country restriction"
+  ],
+  "keywords": [
+    "geofence",
+    "geoip",
+    "country",
+    "restriction",
+    "access",
+    "geoblock"
+  ]
+}

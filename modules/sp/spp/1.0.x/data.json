@@ -1,0 +1,40 @@
+{
+  "name": "Single Page Protection",
+  "data_name": "single_page_protection",
+  "description": "Password-protects specific pages via a request-level password gate.",
+  "version": "1.0.x",
+  "package": "Other",
+  "composer_namespace": "drupal/spp",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:system",
+    "drupal:filter"
+  ],
+  "configure": "single_page_protection.admin_settings",
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/spp",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Password-protected entities"
+  ],
+  "keywords": [
+    "password protection",
+    "page",
+    "access",
+    "spp",
+    "hash_equals"
+  ]
+}
