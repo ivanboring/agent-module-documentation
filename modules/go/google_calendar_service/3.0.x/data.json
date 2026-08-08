@@ -1,0 +1,42 @@
+{
+  "name": "Google Calendar Service",
+  "data_name": "google_calendar_service",
+  "description": "Integrates Google Calendar into Drupal (importing events), using a Google service account.",
+  "version": "3.0.x",
+  "package": "Calendars",
+  "composer_namespace": "drupal/google_calendar_service",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:inline_entity_form",
+    "drupal:text",
+    "drupal:user",
+    "drupal:views"
+  ],
+  "configure": "google_calendar_service.settings",
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/google_calendar_service",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Calendar / iCal export"
+  ],
+  "keywords": [
+    "google calendar",
+    "calendar",
+    "integration",
+    "events",
+    "service account"
+  ]
+}
