@@ -1,0 +1,45 @@
+{
+  "name": "CRM",
+  "data_name": "crm",
+  "description": "A contact-relationship-management system storing contacts and related data in Drupal.",
+  "version": "1.0.x",
+  "package": "CRM",
+  "composer_namespace": "drupal/crm",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "address:address",
+    "drupal:datetime",
+    "drupal:image",
+    "drupal:telephone",
+    "inline_entity_form:inline_entity_form",
+    "name:name",
+    "primary_entity_reference:primary_entity_reference"
+  ],
+  "configure": "entity.crm_contact_type.collection",
+  "core_version_requirement": ">=11.1",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/crm",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "CRM integration"
+  ],
+  "keywords": [
+    "crm",
+    "contacts",
+    "relationships",
+    "pii",
+    "contact management"
+  ]
+}

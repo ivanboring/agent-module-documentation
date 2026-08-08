@@ -1,0 +1,41 @@
+{
+  "name": "Address Autocomplete (with Photon API)",
+  "data_name": "address_autocomplete_photon",
+  "description": "Adds address autocomplete to the Address module using the open-source Photon geocoding API.",
+  "version": "1.4.x",
+  "package": "Field types",
+  "composer_namespace": "drupal/address_autocomplete_photon",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "address:address"
+  ],
+  "configure": "address_autocomplete_photon.configure",
+  "core_version_requirement": "^10.3||^11||^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/address_autocomplete_photon",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "address_autocomplete_photon_geofield"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Address autocomplete / verification"
+  ],
+  "keywords": [
+    "address",
+    "autocomplete",
+    "photon",
+    "geocoding",
+    "openstreetmap"
+  ]
+}

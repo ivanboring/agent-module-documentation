@@ -1,0 +1,39 @@
+{
+  "name": "Configure Contextual Links",
+  "data_name": "configure_contextual_links",
+  "description": "Lets you enable, disable and modify Drupal's contextual (pencil) links.",
+  "version": "1.0.x",
+  "package": "Contextual",
+  "composer_namespace": "drupal/configure_contextual_links",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:contextual"
+  ],
+  "configure": "configure_contextual_links.settings",
+  "core_version_requirement": "^9.4||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/configure_contextual_links",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Local tasks / tabs"
+  ],
+  "keywords": [
+    "contextual links",
+    "admin",
+    "ui",
+    "quick edit",
+    "editor"
+  ]
+}

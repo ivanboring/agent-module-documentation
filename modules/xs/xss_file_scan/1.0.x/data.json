@@ -1,0 +1,37 @@
+{
+  "name": "XSS File Scan",
+  "data_name": "xss_file_scan",
+  "description": "Scans uploaded files for potential XSS content and blocks flagged uploads.",
+  "version": "1.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/xss_file_scan",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "xss_file_scan.xss_file_scan_config_form",
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/xss_file_scan",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "HTML sanitization / XSS filtering"
+  ],
+  "keywords": [
+    "xss",
+    "file upload",
+    "scanning",
+    "security",
+    "svg"
+  ]
+}

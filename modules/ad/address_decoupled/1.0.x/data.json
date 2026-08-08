@@ -1,0 +1,42 @@
+{
+  "name": "Address Decoupled",
+  "data_name": "address_decoupled",
+  "description": "Provides decoupled (REST) functionality for the Address module.",
+  "version": "1.0.x",
+  "package": "Decoupled",
+  "composer_namespace": "drupal/address_decoupled",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:address",
+    "drupal:rest"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/address_decoupled",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "address_decoupled_commerce"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Decoupled"
+  ],
+  "subcategories": [
+    "REST / web services"
+  ],
+  "keywords": [
+    "address",
+    "decoupled",
+    "rest",
+    "headless",
+    "api"
+  ]
+}
