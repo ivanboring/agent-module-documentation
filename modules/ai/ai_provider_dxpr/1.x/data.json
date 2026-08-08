@@ -1,0 +1,40 @@
+{
+  "name": "AI Provider: DXPR",
+  "data_name": "ai_provider_dxpr",
+  "description": "This enables the use of DXPR AI for the AI module.",
+  "version": "1.x",
+  "package": "AI",
+  "composer_namespace": "drupal/ai_provider_dxpr",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "ai:ai",
+    "key:key",
+    "dxpr_builder:dxpr_builder (>=2.7.5)"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ai_provider_dxpr",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence"
+  ],
+  "subcategories": [
+    "AI providers"
+  ],
+  "keywords": [
+    "ai",
+    "dxpr",
+    "provider",
+    "llm"
+  ]
+}

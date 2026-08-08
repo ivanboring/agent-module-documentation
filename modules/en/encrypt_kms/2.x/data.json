@@ -1,0 +1,40 @@
+{
+  "name": "Encrypt: AWS KMS",
+  "data_name": "encrypt_kms",
+  "description": "Provides an AWS KMS encryption method for Encrypt though the AWS SDK.",
+  "version": "2.x",
+  "package": "Security",
+  "composer_namespace": "drupal/encrypt_kms",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "encrypt:encrypt",
+    "key:key"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/encrypt_kms",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Encryption"
+  ],
+  "keywords": [
+    "encrypt",
+    "aws kms",
+    "encryption",
+    "keys",
+    "kms"
+  ]
+}
