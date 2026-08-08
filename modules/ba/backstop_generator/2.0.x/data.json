@@ -1,0 +1,39 @@
+{
+  "name": "Backstop Generator",
+  "data_name": "backstop_generator",
+  "description": "Generates backstop.json configuration files for BackstopJS visual-regression testing.",
+  "version": "2.0.x",
+  "package": "Development",
+  "composer_namespace": "drupal/backstop_generator",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:breakpoint"
+  ],
+  "configure": "backstop_generator.settings_form",
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/backstop_generator",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Testing / QA tooling"
+  ],
+  "keywords": [
+    "backstop",
+    "visual regression",
+    "testing",
+    "screenshots",
+    "development"
+  ]
+}

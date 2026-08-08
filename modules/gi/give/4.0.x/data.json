@@ -1,0 +1,41 @@
+{
+  "name": "Give",
+  "data_name": "give",
+  "description": "Accept donations via Stripe, cheque or bank transfer.",
+  "version": "4.0.x",
+  "package": "Give",
+  "composer_namespace": "drupal/give",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:field"
+  ],
+  "configure": "give.settings",
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/give",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "give_civicrm"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Donations / fundraising"
+  ],
+  "keywords": [
+    "donations",
+    "stripe",
+    "fundraising",
+    "give",
+    "payment"
+  ]
+}
