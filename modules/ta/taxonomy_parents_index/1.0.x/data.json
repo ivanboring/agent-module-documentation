@@ -1,0 +1,37 @@
+{
+  "name": "Taxonomy Parents Index",
+  "data_name": "taxonomy_parents_index",
+  "description": "Builds an index table storing every parent Term ID for each taxonomy term.",
+  "version": "1.0.x",
+  "package": "Taxonomy",
+  "composer_namespace": "drupal/taxonomy_parents_index",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "taxonomy_parents_index.reindex_form",
+  "core_version_requirement": "^8||^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/taxonomy_parents_index",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site structure"
+  ],
+  "subcategories": [
+    "Taxonomy hierarchy"
+  ],
+  "keywords": [
+    "taxonomy",
+    "parents",
+    "index",
+    "ancestors",
+    "hierarchy"
+  ]
+}
