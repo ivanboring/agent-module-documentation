@@ -1,0 +1,41 @@
+{
+  "name": "Download Statistics",
+  "data_name": "download_statistics",
+  "description": "Logs file-download statistics for the site.",
+  "version": "1.2.x",
+  "package": "Administration",
+  "composer_namespace": "drupal/download_statistics",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node",
+    "drupal:field",
+    "drupal:file"
+  ],
+  "configure": "download_statistics.settings",
+  "core_version_requirement": "^10.3||^11||^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/download_statistics",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Dashboard / reporting"
+  ],
+  "keywords": [
+    "downloads",
+    "statistics",
+    "files",
+    "analytics",
+    "reporting"
+  ]
+}

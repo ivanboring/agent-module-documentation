@@ -1,0 +1,44 @@
+{
+  "name": "Blizz Table Field",
+  "data_name": "blizz_table_field",
+  "description": "Provides a table field type with a spreadsheet-like editing widget (Handsontable).",
+  "version": "2.0.x",
+  "package": "Blizz",
+  "composer_namespace": "drupal/blizz_table_field",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:field",
+    "drupal:file",
+    "drupal:filter",
+    "drupal:image"
+  ],
+  "configure": "blizz_table_field.settings_form",
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/blizz_table_field",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "blizz_table_field/handsontable"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Fields"
+  ],
+  "keywords": [
+    "table",
+    "field",
+    "handsontable",
+    "spreadsheet",
+    "tabular"
+  ]
+}
