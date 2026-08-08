@@ -1,0 +1,50 @@
+{
+  "name": "Posthog Analytics Integration",
+  "data_name": "posthog",
+  "description": "Integrates PostHog product analytics (JS + PHP) with Drupal.",
+  "version": "2.1.x",
+  "package": "Analytics",
+  "composer_namespace": "drupal/posthog",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "posthog.settings",
+  "core_version_requirement": "^10.3||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/posthog",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "posthog_commerce",
+    "posthog_cookies",
+    "posthog_dashboards",
+    "posthog_eca",
+    "posthog_feature_flags",
+    "posthog_js",
+    "posthog_js_conditional_profiles",
+    "posthog_klaro",
+    "posthog_php",
+    "posthog_php_error_tracking",
+    "posthog_php_events",
+    "posthog_webform"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Analytics"
+  ],
+  "subcategories": [
+    "Analytics / tracking"
+  ],
+  "keywords": [
+    "posthog",
+    "analytics",
+    "feature flags",
+    "tracking",
+    "events"
+  ]
+}

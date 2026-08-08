@@ -1,0 +1,39 @@
+{
+  "name": "DDoS Security",
+  "data_name": "ddos_security",
+  "description": "Application-layer IP rate-limiting/blocking to mitigate abusive request floods (not true network DDoS protection).",
+  "version": "2.0.x",
+  "package": "Security",
+  "composer_namespace": "drupal/ddos_security",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8||^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ddos_security",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Rate limiting / flood control"
+  ],
+  "keywords": [
+    "ddos",
+    "rate limiting",
+    "ip blocking",
+    "flood",
+    "security"
+  ]
+}

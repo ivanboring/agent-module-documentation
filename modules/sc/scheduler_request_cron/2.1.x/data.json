@@ -1,0 +1,37 @@
+{
+  "name": "Scheduler Request Cron",
+  "data_name": "scheduler_request_cron",
+  "description": "Runs Scheduler's lightweight cron as part of page requests instead of on the main cron run.",
+  "version": "2.1.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/scheduler_request_cron",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "scheduler_request_cron.settings",
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/scheduler_request_cron",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Automation"
+  ],
+  "subcategories": [
+    "Cron / scheduled tasks"
+  ],
+  "keywords": [
+    "scheduler",
+    "cron",
+    "request",
+    "publish",
+    "automation"
+  ]
+}
