@@ -1,0 +1,48 @@
+{
+  "name": "Seeds Security",
+  "data_name": "seeds_security",
+  "description": "Starter Module to enable all security modules",
+  "version": "2.x",
+  "package": "Security",
+  "composer_namespace": "drupal/seeds_security",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "username_enumeration_prevention:username_enumeration_prevention",
+    "captcha:captcha",
+    "recaptcha:recaptcha",
+    "activities:activities",
+    "password_policy:password_policy",
+    "remove_http_headers:remove_http_headers",
+    "seckit:seckit",
+    "session_limit:session_limit",
+    "restrict_ip:restrict_ip",
+    "email_tfa:email_tfa"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/seeds_security",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Hardening"
+  ],
+  "keywords": [
+    "security",
+    "seeds",
+    "hardening",
+    "bundle",
+    "starter"
+  ]
+}

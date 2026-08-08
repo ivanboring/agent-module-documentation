@@ -1,0 +1,47 @@
+{
+  "name": "DKAN Dataset Archiver",
+  "data_name": "dkan_dataset_archiver",
+  "description": "Provides dataset archiving functionality for DKAN.",
+  "version": "1.x",
+  "package": null,
+  "composer_namespace": "drupal/dkan_dataset_archiver",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:datetime",
+    "drupal:dkan",
+    "drupal:dkan_common",
+    "drupal:dkan_metastore",
+    "drupal:dkan_metastore_search",
+    "drupal:options",
+    "drupal:views"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/dkan_dataset_archiver",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "dkan_dataset_archiver_remote_storage"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content"
+  ],
+  "subcategories": [
+    "Open data / datasets"
+  ],
+  "keywords": [
+    "dkan",
+    "archive",
+    "dataset",
+    "open data",
+    "storage"
+  ]
+}
