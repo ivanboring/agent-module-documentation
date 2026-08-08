@@ -1,0 +1,41 @@
+{
+  "name": "simpleSAMLphp Authentication",
+  "data_name": "simplesamlphp_auth",
+  "description": "Allows users to authenticate to a remote SAML identity provider (IdP) via a locally configured SimpleSAMLphp service point (SP).",
+  "version": "3.x",
+  "package": "Access control",
+  "composer_namespace": "drupal/simplesamlphp_auth",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user",
+    "externalauth:externalauth"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11.3",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/simplesamlphp_auth",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "External authentication"
+  ],
+  "keywords": [
+    "saml",
+    "sso",
+    "simplesamlphp",
+    "authentication",
+    "idp",
+    "federation"
+  ]
+}

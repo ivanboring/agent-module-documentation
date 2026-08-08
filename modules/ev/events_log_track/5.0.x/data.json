@@ -1,0 +1,58 @@
+{
+  "name": "Events Log Track",
+  "data_name": "events_log_track",
+  "description": "Logs general CUD events performed by the user (using the forms) on the website.",
+  "version": "5.0.x",
+  "package": null,
+  "composer_namespace": "drupal/events_log_track",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^11.3 || ^12.0",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/events_log_track",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "event_log_track_node",
+    "event_log_track_auth",
+    "event_log_track_tfa",
+    "event_log_track_block_content",
+    "event_log_track_webform",
+    "event_log_track_taxonomy",
+    "event_log_track_media",
+    "event_log_track_group_membership",
+    "event_log_track_comment",
+    "event_log_track_user",
+    "event_log_track_file",
+    "event_log_track_menu",
+    "event_log_track_syslog",
+    "event_log_track_workflows",
+    "event_log_track_stdout",
+    "event_log_track_config",
+    "event_log_track_group",
+    "event_log_track_masquerade",
+    "event_log_track_clear_cache"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration"
+  ],
+  "subcategories": [
+    "Logging / audit"
+  ],
+  "keywords": [
+    "audit",
+    "log",
+    "events",
+    "tracking",
+    "cud",
+    "compliance"
+  ]
+}

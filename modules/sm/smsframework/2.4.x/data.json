@@ -1,0 +1,47 @@
+{
+  "name": "SMS Framework",
+  "data_name": "smsframework",
+  "description": "Provides an extensible API that facilitates communication between Drupal and various SMS gateways.",
+  "version": "2.4.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/smsframework",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:system",
+    "drupal:telephone",
+    "dynamic_entity_reference:dynamic_entity_reference"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/smsframework",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "sms_blast",
+    "sms_user",
+    "sms_devel",
+    "sms_sendtophone"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Web services"
+  ],
+  "subcategories": [
+    "SMS / messaging"
+  ],
+  "keywords": [
+    "sms",
+    "messaging",
+    "twilio",
+    "gateway",
+    "2fa",
+    "phone"
+  ]
+}

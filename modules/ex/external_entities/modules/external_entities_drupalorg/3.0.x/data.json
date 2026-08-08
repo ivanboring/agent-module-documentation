@@ -1,0 +1,58 @@
+{
+  "name": "External Entities Drupalorg",
+  "data_name": "external_entities_drupalorg",
+  "description": "External Entities config for drupal.org.",
+  "version": "3.0.x",
+  "package": null,
+  "composer_namespace": "drupal/external_entities",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "external_entities:external_entities",
+    "external_entities.external_entity_type.drupalorg_jsonapi_module:external_entities.external_entity_type.drupalorg_jsonapi_module",
+    "external_entities.external_entity_type.drupalorg_rest_issue:external_entities.external_entity_type.drupalorg_rest_issue",
+    "core.entity_form_display.drupalorg_jsonapi_module.drupalorg_jsonapi_module.default:core.entity_form_display.drupalorg_jsonapi_module.drupalorg_jsonapi_module.default",
+    "core.entity_form_display.drupalorg_rest_issue.drupalorg_rest_issue.default:core.entity_form_display.drupalorg_rest_issue.drupalorg_rest_issue.default",
+    "core.entity_view_display.drupalorg_jsonapi_module.drupalorg_jsonapi_module.default:core.entity_view_display.drupalorg_jsonapi_module.drupalorg_jsonapi_module.default",
+    "core.entity_view_display.drupalorg_rest_issue.drupalorg_rest_issue.default:core.entity_view_display.drupalorg_rest_issue.drupalorg_rest_issue.default",
+    "external_entities.external_entity_type.drupalorg_jsonapi_module:external_entities.external_entity_type.drupalorg_jsonapi_module",
+    "external_entities.external_entity_type.drupalorg_rest_issue:external_entities.external_entity_type.drupalorg_rest_issue",
+    "field.field.drupalorg_jsonapi_module.drupalorg_jsonapi_module.field_body:field.field.drupalorg_jsonapi_module.drupalorg_jsonapi_module.field_body",
+    "field.field.drupalorg_rest_issue.drupalorg_rest_issue.field_body:field.field.drupalorg_rest_issue.drupalorg_rest_issue.field_body",
+    "field.field.drupalorg_rest_issue.drupalorg_rest_issue.field_issue_category:field.field.drupalorg_rest_issue.drupalorg_rest_issue.field_issue_category",
+    "field.field.drupalorg_rest_issue.drupalorg_rest_issue.field_issue_priority:field.field.drupalorg_rest_issue.drupalorg_rest_issue.field_issue_priority",
+    "field.field.drupalorg_rest_issue.drupalorg_rest_issue.field_issue_status:field.field.drupalorg_rest_issue.drupalorg_rest_issue.field_issue_status",
+    "field.storage.drupalorg_jsonapi_module.field_body:field.storage.drupalorg_jsonapi_module.field_body",
+    "field.storage.drupalorg_rest_issue.field_body:field.storage.drupalorg_rest_issue.field_body",
+    "field.storage.drupalorg_rest_issue.field_issue_category:field.storage.drupalorg_rest_issue.field_issue_category",
+    "field.storage.drupalorg_rest_issue.field_issue_priority:field.storage.drupalorg_rest_issue.field_issue_priority",
+    "field.storage.drupalorg_rest_issue.field_issue_status:field.storage.drupalorg_rest_issue.field_issue_status",
+    "views.view.drupalorg_jsonapi_module:views.view.drupalorg_jsonapi_module",
+    "views.view.drupalorg_rest_issue:views.view.drupalorg_rest_issue"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/external_entities",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Web services"
+  ],
+  "subcategories": [
+    "Remote / external data"
+  ],
+  "keywords": [
+    "external",
+    "drupalorg",
+    "submodule"
+  ],
+  "part_of": "external_entities"
+}

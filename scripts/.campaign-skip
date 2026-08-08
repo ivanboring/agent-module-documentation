@@ -690,3 +690,33 @@ colordialog
 # Wave 90: needs drupal/basket (cart) — not in wave.
 basket_imex
 basket_novaposhta
+
+# Wave 91 (2026-08-08): YMCA Layout Builder family — require ycloudyusa/y_lb, not on Packagist (see wave 88 notes).
+lb_cards
+lb_carousel
+lb_grid_cta
+lb_partners_blocks
+lb_ping_pong
+lb_simple_menu
+lb_statistics
+lb_testimonial_blocks
+
+# Wave 91 (2026-08-08): no D11 release.
+email_login_otp
+entity_reference_views
+instagram_feeds
+mysql56
+tooltip
+
+# Wave 91 (2026-08-08): breaks the build on D11, removed from disk.
+# minifyjs: Drush command service type-hints concrete MimeTypeGuesser vs core's ProxyClass wrapper -> TypeError kills Drush bootstrap (site still 200). Shape #3.
+minifyjs
+# state_log: decorates the 'state' service but StateLog omits StateInterface::getValuesSetDuringRequest() (core added it) -> fatal, poisons the whole container. Shape #1.
+state_log
+# Wave 91: sendgrid_api is core ^8.8 || ^9 only — no D11 (slipped past composer).
+sendgrid_api
+# Wave 91: needs drupal/basket (cart) + basket_novaposhta.
+novaposhta_tracking
+# Wave 91: need the full localgov distribution config (unmet field/view-display config deps); localgov_workflows enables standalone but these do not.
+localgov_demo
+localgov_subsites
