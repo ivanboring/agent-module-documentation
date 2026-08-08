@@ -1,0 +1,42 @@
+{
+  "name": "Podcast Publisher",
+  "data_name": "podcast_publisher",
+  "description": "Provides a podcast entity for publishing podcast episodes (with an analytics submodule).",
+  "version": "1.0.x",
+  "package": "Podcast Publisher",
+  "composer_namespace": "drupal/podcast_publisher",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:file",
+    "drupal:link"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/podcast_publisher",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "podcast_publisher_analytics"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Audio embedding"
+  ],
+  "keywords": [
+    "podcast",
+    "audio",
+    "episodes",
+    "publishing",
+    "media"
+  ]
+}

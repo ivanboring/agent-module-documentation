@@ -1,0 +1,42 @@
+{
+  "name": "Commerce: Admin Checkout",
+  "data_name": "commerce_admin_checkout",
+  "description": "Lets Commerce administrators use the checkout form to create orders on behalf of customers (permission-gated).",
+  "version": "3.1.x",
+  "package": "Commerce",
+  "composer_namespace": "drupal/commerce_admin_checkout",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "commerce:commerce_checkout",
+    "commerce:commerce_order"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.1||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/commerce_admin_checkout",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "commerce_admin_payment"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Checkout customization"
+  ],
+  "keywords": [
+    "commerce",
+    "admin checkout",
+    "orders",
+    "checkout",
+    "customers"
+  ]
+}
