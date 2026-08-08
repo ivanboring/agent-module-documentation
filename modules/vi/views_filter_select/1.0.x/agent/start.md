@@ -1,17 +1,10 @@
-# Views filter select — agent index
+<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
+# Views Filter Select (views_filter_select) — agent index
 
-One Views filter handler, `dropdownlist`, that renders a field filter as a select and populates
-its options from the distinct values in that column's DB table. Depends on core `views`. No
-config schema, no permissions, no Drush, no plugin managers, no settings form.
+Exposes Views fields as a **select-list** exposed filter instead of a text input.
+Version **dev-1.0.x**. Core `^9 || ^10 || ^11`. Depends on core `views`.
+No routes/permissions — a filter option inside Views config.
 
-- **How to attach the `dropdownlist` filter to a view and how options are built** →
-  [configure/filter.md](configure/filter.md)
-
-Key facts:
-- `DropdownList extends InOperator` (`@ViewsFilter("dropdownlist")`) → exposed as a multi-value
-  select with IN matching.
-- `getValueOptions()`: `db->select($this->table)->fields($this->table, [$this->realField])
-  ->execute()->fetchAllKeyed(0,0)`, then each value is `t()->render()`ed. `$table`/`$realField`
-  come from the Views handler definition (admin/views config), not from request input.
-- No `hook_views_data` alter is provided; you opt a field's filter into it by setting the
-  handler `plugin_id: dropdownlist` in the view config (or via your own views_data).
+Right control when the value set is small and known (status, category, orientation) — a dropdown of
+valid values instead of a typo-prone text box. Dependency behind `media_orientation`'s filter.
+Confirm the offered value set is the expected one.

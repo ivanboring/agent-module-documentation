@@ -1,0 +1,42 @@
+{
+  "name": "Transaction",
+  "data_name": "transaction",
+  "description": "A framework for defining and executing transactional operations over entities, with types, operations and logs.",
+  "version": "1.x",
+  "package": "Workflow",
+  "composer_namespace": "drupal/transaction",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "dynamic_entity_reference:dynamic_entity_reference"
+  ],
+  "configure": "transaction.settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/transaction",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "transaction_ief"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Workflow"
+  ],
+  "subcategories": [
+    "Business rules"
+  ],
+  "keywords": [
+    "transaction",
+    "entity operations",
+    "workflow",
+    "transactor",
+    "ledger",
+    "business rules"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "name": "External Links Filter",
+  "data_name": "elf",
+  "description": "A text-format filter that adds a CSS class to external and mailto links, with an optional HMAC-signed redirect.",
+  "version": "1.x",
+  "package": "Filters",
+  "composer_namespace": "drupal/elf",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:editor"
+  ],
+  "configure": "elf.settings",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/elf",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content authoring"
+  ],
+  "subcategories": [
+    "Text filters"
+  ],
+  "keywords": [
+    "external links",
+    "filter",
+    "mailto",
+    "css class",
+    "redirect",
+    "hmac"
+  ]
+}

@@ -1,19 +1,19 @@
 {
-  "name": "Views Filter Select",
-  "data_name": "views_filter_select",
-  "description": "Exposes custom fields as a select-list filter in Views.",
-  "version": "1.0.x",
-  "package": "Views",
-  "composer_namespace": "drupal/views_filter_select",
+  "name": "Feeds Dependency",
+  "data_name": "feeds_dependency",
+  "description": "Lets one Feeds importer be set as a dependency of another so imports run in the right order.",
+  "version": "2.0.x",
+  "package": "Feeds",
+  "composer_namespace": "drupal/feeds_dependency",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:views"
+    "feeds:feeds"
   ],
   "configure": null,
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
-  "project_url": "https://www.drupal.org/project/views_filter_select",
+  "project_url": "https://www.drupal.org/project/feeds_dependency",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
@@ -24,16 +24,17 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Views"
+    "Content"
   ],
   "subcategories": [
-    "Filters"
+    "Feeds / import"
   ],
   "keywords": [
-    "views",
-    "filter",
-    "select",
-    "exposed filter",
-    "dropdown"
+    "feeds",
+    "import",
+    "dependency",
+    "ordering",
+    "reference",
+    "migration"
   ]
 }
