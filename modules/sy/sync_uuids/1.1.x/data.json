@@ -1,0 +1,39 @@
+{
+  "name": "Sync UUIDs",
+  "data_name": "sync_uuids",
+  "description": "Provides a Drush command to synchronize entity UUIDs (for aligning config across environments).",
+  "version": "1.1.x",
+  "package": "Development",
+  "composer_namespace": "drupal/sync_uuids",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:config"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8||^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/sync_uuids",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Configuration management"
+  ],
+  "keywords": [
+    "uuid",
+    "sync",
+    "config",
+    "drush",
+    "deployment"
+  ]
+}
