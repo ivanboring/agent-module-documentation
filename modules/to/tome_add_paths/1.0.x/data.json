@@ -1,0 +1,39 @@
+{
+  "name": "Tome Add Paths",
+  "data_name": "tome_add_paths",
+  "description": "Adds custom paths to be exported when generating a Tome static site.",
+  "version": "1.0.x",
+  "package": "Tome",
+  "composer_namespace": "drupal/tome_add_paths",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "tome:tome_static"
+  ],
+  "configure": "tome_add_paths.config",
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/tome_add_paths",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Decoupled"
+  ],
+  "subcategories": [
+    "Static site generation"
+  ],
+  "keywords": [
+    "tome",
+    "static site",
+    "paths",
+    "export",
+    "ssg"
+  ]
+}

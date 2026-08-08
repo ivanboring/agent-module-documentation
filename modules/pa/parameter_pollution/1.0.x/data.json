@@ -1,0 +1,37 @@
+{
+  "name": "HTTP Parameter Pollution",
+  "data_name": "parameter_pollution",
+  "description": "Mitigates HTTP Parameter Pollution by de-duplicating query parameters (keeps the last occurrence).",
+  "version": "1.0.x",
+  "package": "Security",
+  "composer_namespace": "drupal/parameter_pollution",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/parameter_pollution",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Intrusion prevention"
+  ],
+  "keywords": [
+    "hpp",
+    "http parameter pollution",
+    "security",
+    "query parameters",
+    "hardening"
+  ]
+}

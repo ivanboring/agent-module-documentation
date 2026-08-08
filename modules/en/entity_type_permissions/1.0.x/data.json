@@ -1,0 +1,39 @@
+{
+  "name": "Entity Type Permissions",
+  "data_name": "entity_type_permissions",
+  "description": "Provides type-specific (per-bundle) permissions for content entities.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/entity_type_permissions",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user"
+  ],
+  "configure": "entity_type_permissions.settings_form",
+  "core_version_requirement": "^8||^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/entity_type_permissions",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "User roles & permissions"
+  ],
+  "keywords": [
+    "entity permissions",
+    "per-type",
+    "bundle",
+    "access control",
+    "permissions"
+  ]
+}
