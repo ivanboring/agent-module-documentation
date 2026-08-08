@@ -1,0 +1,43 @@
+{
+  "name": "Audit Trail",
+  "data_name": "audit_trail",
+  "description": "A tamper-evident (HMAC-chained) audit trail with an event write API, indexed storage, viewer and chain verifier.",
+  "version": "1.0.x",
+  "package": "Logging",
+  "composer_namespace": "drupal/audit_trail",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "audit_trail.settings_form",
+  "core_version_requirement": "^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/audit_trail",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "audit_trail_entity",
+    "audit_trail_entity_paragraphs",
+    "audit_trail_file",
+    "audit_trail_tsa",
+    "audit_trail_user_auth"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Audit logging / activity"
+  ],
+  "keywords": [
+    "audit trail",
+    "hmac",
+    "tamper-evident",
+    "logging",
+    "compliance"
+  ]
+}
