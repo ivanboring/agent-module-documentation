@@ -1,0 +1,40 @@
+{
+  "name": "Search API Tracking",
+  "data_name": "search_api_tracking",
+  "description": "Tracks searches from search api in the DB.",
+  "version": "1.x",
+  "package": "Search",
+  "composer_namespace": "drupal/search_api_tracking",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "search_api:search_api",
+    "views_filter_select:views_filter_select"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/search_api_tracking",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Search"
+  ],
+  "subcategories": [
+    "Analytics"
+  ],
+  "keywords": [
+    "search api",
+    "tracking",
+    "analytics",
+    "queries",
+    "search log"
+  ]
+}
