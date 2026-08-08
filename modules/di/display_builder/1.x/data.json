@@ -1,0 +1,45 @@
+{
+  "name": "Display Builder",
+  "data_name": "display_builder",
+  "description": "An advanced Display Builder for Drupal, require to have a sub module enable to build Entity view, Page or Views.",
+  "version": "1.x",
+  "package": null,
+  "composer_namespace": "drupal/display_builder",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "ui_patterns:ui_patterns_field",
+    "ui_patterns:ui_patterns_library"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11.4",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/display_builder",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "display_builder_page_layout",
+    "display_builder_ui",
+    "display_builder_views",
+    "display_builder_entity_view"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Display building"
+  ],
+  "keywords": [
+    "display builder",
+    "layout",
+    "view modes",
+    "views",
+    "visual"
+  ]
+}
