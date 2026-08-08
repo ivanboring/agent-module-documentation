@@ -1,0 +1,41 @@
+{
+  "name": "AbuseIPDB",
+  "data_name": "abuseipdb",
+  "description": "Integrates Drupal site with AbuseIPDB to report malicious activity",
+  "version": "3.x",
+  "package": "Access control",
+  "composer_namespace": "drupal/abuseipdb",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/abuseipdb",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "abuseipdb_advban",
+    "abuseipdb_core_ban"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "IP address restriction"
+  ],
+  "keywords": [
+    "abuseipdb",
+    "ip",
+    "ban",
+    "reputation",
+    "security",
+    "abuse"
+  ]
+}
