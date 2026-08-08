@@ -1,0 +1,40 @@
+{
+  "name": "Content Moderation Bypass",
+  "data_name": "content_moderation_bypass",
+  "description": "Adds a per-workflow permission to bypass all moderation transition restrictions and set any state.",
+  "version": "8.x-1.x",
+  "package": "Content moderation",
+  "composer_namespace": "drupal/content_moderation_bypass",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:content_moderation"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/content_moderation_bypass",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Workflow"
+  ],
+  "subcategories": [
+    "Content moderation"
+  ],
+  "keywords": [
+    "content moderation",
+    "workflow",
+    "transitions",
+    "bypass",
+    "permission",
+    "states"
+  ]
+}

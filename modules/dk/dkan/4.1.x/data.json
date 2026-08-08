@@ -1,0 +1,61 @@
+{
+  "name": "DKAN",
+  "data_name": "dkan",
+  "description": "An open-data portal for Drupal: publish, store, harvest and serve datasets with a datastore and a metadata API.",
+  "version": "4.1.x",
+  "package": "DKAN",
+  "composer_namespace": "drupal/dkan",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "dkan:dkan_metastore",
+    "dkan:dkan_metastore_admin",
+    "dkan:dkan_metastore_search",
+    "dkan:dkan_common",
+    "dkan:dkan_data_dictionary_widget",
+    "drupal:config",
+    "drupal:field",
+    "drupal:file",
+    "drupal:link",
+    "drupal:options",
+    "drupal:path",
+    "json_form_widget:json_form_widget"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/dkan",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "dkan_common",
+    "dkan_datastore",
+    "dkan_harvest",
+    "dkan_js_frontend",
+    "dkan_metastore",
+    "dkan_sample_content"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content"
+  ],
+  "subcategories": [
+    "Open data / datasets"
+  ],
+  "keywords": [
+    "dkan",
+    "open data",
+    "data portal",
+    "datastore",
+    "metadata",
+    "harvest",
+    "dcat",
+    "csv",
+    "api"
+  ]
+}

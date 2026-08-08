@@ -298,6 +298,33 @@ constraint, whitespace or pipes, the problem is a malformed manifest upstream, a
 named in the message is the *dependency*, not the culprit. Document the version you could
 actually install, and note the broken release.
 
+### An eighth shape: a class shipped under the wrong namespace
+
+The "seven shapes" above are all *version* mismatches — contrib against a core it wasn't built for.
+Wave 88 added a different way a module can be installed and still break the build: a class file
+whose **declared namespace does not match its PSR-4 path**.
+
+`scorm_field` ships `src/Plugin/Validation/Constraint/ScormPackageConstraint.php` — a path that
+PSR-4-maps to `Drupal\scorm_field\…` — but the file's first line declares
+`namespace Drupal\social_field\…` (a copy-paste from another project). The site runs fine. Then
+`drush en <anything>` triggers a validation-constraint plugin discovery and dies:
+
+```
+Fatal error: Cannot redeclare class Drupal\social_field\…\ScormPackageConstraint
+```
+
+Why it matters for the campaign:
+
+- **It is invisible until a plugin cache rebuild.** A healthy 200-serving site hides it, so it fails
+  at install/uninstall time — exactly when you are enabling the next wave's modules.
+- **It looks like the new module's fault.** The fatal fired during `drush en mcp_tools_remote`, but
+  the broken file is in `scorm_field`, a module already enabled from earlier in the same wave. When
+  a `drush en` fatals on a class name that has nothing to do with the module you are enabling, grep
+  the whole contrib tree for that class rather than the module named in the command.
+- **The fix is upstream's and one line**, so the practical move mid-wave is to note it, uninstall
+  the offending module if it blocks progress, and record it — the doc build does not need the module
+  enabled.
+
 ### A mid-install fatal leaves the rest of the batch half-installed
 
 This happened three times in four waves (`wisski` wave 84, `component` wave 85, `apigee_edge`

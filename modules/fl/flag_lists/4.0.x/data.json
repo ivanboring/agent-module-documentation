@@ -1,0 +1,43 @@
+{
+  "name": "Flag Lists",
+  "data_name": "flag_lists",
+  "description": "Lets users create their own named collections (lists) of flagged content on top of the Flag module.",
+  "version": "4.0.x",
+  "package": "Flags",
+  "composer_namespace": "drupal/flag_lists",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "flag:flag",
+    "drupal:views"
+  ],
+  "configure": "flag_lists.settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/flag_lists",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "flag_lists_actions"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content"
+  ],
+  "subcategories": [
+    "Flagging / bookmarking"
+  ],
+  "keywords": [
+    "flag",
+    "lists",
+    "collections",
+    "bookmarks",
+    "wishlist",
+    "favorites"
+  ]
+}

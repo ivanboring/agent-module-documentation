@@ -1,0 +1,43 @@
+{
+  "name": "Mcp Tools Ai",
+  "data_name": "mcp_tools_ai",
+  "description": "Exposes MCP Tools to Drupal's AI module as function calls the LLM can invoke.",
+  "version": "1.0.x",
+  "package": "AI",
+  "composer_namespace": "drupal/mcp_tools",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "mcp_tools:mcp_tools",
+    "ai:ai",
+    "tool:tool"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/mcp_tools",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence"
+  ],
+  "subcategories": [
+    "AI agents / MCP"
+  ],
+  "keywords": [
+    "mcp",
+    "ai",
+    "function calling",
+    "llm",
+    "tools",
+    "drupal ai"
+  ],
+  "part_of": "mcp_tools"
+}
