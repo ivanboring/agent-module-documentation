@@ -1,0 +1,42 @@
+{
+  "name": "Webform Remote Fields",
+  "data_name": "webform_remote_fields",
+  "description": "Custom webform elements whose options/values are populated from a REST endpoint.",
+  "version": "2.0.x",
+  "package": "Webform",
+  "composer_namespace": "drupal/webform_remote_fields",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:webform"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/webform_remote_fields",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "webform_remote_fields_api_tests_helper",
+    "webform_remote_fields_examples"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Forms and surveys"
+  ],
+  "subcategories": [
+    "Dynamic form options"
+  ],
+  "keywords": [
+    "webform",
+    "remote",
+    "rest",
+    "options",
+    "fields"
+  ]
+}

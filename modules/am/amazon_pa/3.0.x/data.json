@@ -1,0 +1,40 @@
+{
+  "name": "Amazon PAAPI5",
+  "data_name": "amazon_pa",
+  "description": "Integrates with the Amazon Product Advertising API V5 (product data / affiliate).",
+  "version": "3.0.x",
+  "package": "Amazon",
+  "composer_namespace": "drupal/amazon_pa",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "amazon_pa.admin_settings",
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/amazon_pa",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "amazon_pa_filter",
+    "asin"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Third-party API"
+  ],
+  "keywords": [
+    "amazon",
+    "product advertising",
+    "paapi",
+    "affiliate",
+    "products"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "name": "Azure Key Vault",
+  "data_name": "azure_key_vault",
+  "description": "Integrates Azure Key Vault with Drupal, including a Key module provider for fetching secrets.",
+  "version": "1.0.x",
+  "package": "Security",
+  "composer_namespace": "drupal/azure_key_vault",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "azvault.admin",
+  "core_version_requirement": "^10.3||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/azure_key_vault",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "azure_key_vault_key_provider"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Secrets / key management"
+  ],
+  "keywords": [
+    "azure",
+    "key vault",
+    "secrets",
+    "key management",
+    "security"
+  ]
+}
