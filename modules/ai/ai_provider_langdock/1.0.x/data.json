@@ -1,0 +1,39 @@
+{
+  "name": "Langdock Provider for Drupal AI",
+  "data_name": "ai_provider_langdock",
+  "description": "A Drupal AI provider plugin for the Langdock LLM platform.",
+  "version": "1.0.x",
+  "package": "AI",
+  "composer_namespace": "drupal/ai_provider_langdock",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "ai:ai"
+  ],
+  "configure": "ai_provider_langdock.settings_form",
+  "core_version_requirement": "^10.5||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ai_provider_langdock",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "LLM / AI provider"
+  ],
+  "keywords": [
+    "ai",
+    "langdock",
+    "llm",
+    "provider",
+    "integration"
+  ]
+}
