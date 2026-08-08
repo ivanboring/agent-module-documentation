@@ -1,0 +1,43 @@
+{
+  "name": "Commerce Buy Now",
+  "data_name": "commerce_buy_now",
+  "description": "Allow for customer add product to the cart and redirect the customer to the checkout page by clicking on the \"Buy Now\" button",
+  "version": "1.0.x",
+  "package": "Commerce",
+  "composer_namespace": "drupal/commerce_buy_now",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "commerce:commerce",
+    "commerce:commerce_cart",
+    "commerce:commerce_store",
+    "commerce:commerce_checkout",
+    "commerce:commerce_product"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/commerce_buy_now",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Commerce"
+  ],
+  "subcategories": [
+    "Checkout"
+  ],
+  "keywords": [
+    "commerce",
+    "buy now",
+    "checkout",
+    "cart",
+    "conversion"
+  ]
+}

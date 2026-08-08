@@ -1,0 +1,42 @@
+{
+  "name": "Content Moderation Edit Notify",
+  "data_name": "content_moderation_edit_notify",
+  "description": "Notify users if a new revision is saved when editing a moderated content.",
+  "version": "1.x",
+  "package": null,
+  "composer_namespace": "drupal/content_moderation_edit_notify",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node",
+    "drupal:filter",
+    "drupal:content_moderation",
+    "drupal:workflows"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/content_moderation_edit_notify",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Workflow"
+  ],
+  "subcategories": [
+    "Content moderation"
+  ],
+  "keywords": [
+    "content moderation",
+    "notify",
+    "concurrent edit",
+    "revision",
+    "editorial"
+  ]
+}
