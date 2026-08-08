@@ -1,0 +1,40 @@
+{
+  "name": "Entity Logger",
+  "data_name": "entity_logger",
+  "description": "Attaches log messages to specific entities for per-entity activity logging.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/entity_logger",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "dynamic_entity_reference:dynamic_entity_reference",
+    "drupal:views"
+  ],
+  "configure": "entity_logger.settings",
+  "core_version_requirement": "^10.1||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/entity_logger",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Audit trail / activity logging"
+  ],
+  "keywords": [
+    "logging",
+    "entity",
+    "audit",
+    "activity log",
+    "messages"
+  ]
+}

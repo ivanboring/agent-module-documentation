@@ -1,0 +1,43 @@
+{
+  "name": "Canvas Translate",
+  "data_name": "canvas_translate",
+  "description": "In-house translation of Drupal Canvas content, delivered as a Canvas page extension (optional AI).",
+  "version": "1.0.x",
+  "package": "Canvas",
+  "composer_namespace": "drupal/canvas_translate",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "canvas:canvas",
+    "drupal:content_translation",
+    "drupal:language"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11.3",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/canvas_translate",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "canvas_translate_ai"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Multilingual"
+  ],
+  "subcategories": [
+    "Translation / multilingual"
+  ],
+  "keywords": [
+    "canvas",
+    "translation",
+    "multilingual",
+    "ai",
+    "content translation"
+  ]
+}

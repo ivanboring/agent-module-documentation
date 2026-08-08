@@ -1,0 +1,39 @@
+{
+  "name": "Views Custom Permissions",
+  "data_name": "views_custom_permissions",
+  "description": "A Views access plugin that grants access via an admin-defined custom callback function.",
+  "version": "2.0.x",
+  "package": "Views",
+  "composer_namespace": "drupal/views_custom_permissions",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "views"
+  ],
+  "configure": "views_custom_permissions.settings",
+  "core_version_requirement": ">=8",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/views_custom_permissions",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Views access control"
+  ],
+  "keywords": [
+    "views",
+    "access",
+    "permissions",
+    "callback",
+    "custom access"
+  ]
+}

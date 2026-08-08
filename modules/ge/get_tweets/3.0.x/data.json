@@ -1,0 +1,43 @@
+{
+  "name": "Get Tweets",
+  "data_name": "get_tweets",
+  "description": "Imports tweets (posts) from X/Twitter into Drupal nodes.",
+  "version": "3.0.x",
+  "package": "Social",
+  "composer_namespace": "drupal/get_tweets",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:image",
+    "drupal:link",
+    "drupal:node",
+    "drupal:path"
+  ],
+  "configure": "get_tweets.config_form",
+  "core_version_requirement": "^9.3||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/get_tweets",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Content syndication"
+  ],
+  "keywords": [
+    "twitter",
+    "x",
+    "tweets",
+    "import",
+    "social",
+    "nodes"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "name": "Commerce Klarna Payments",
+  "data_name": "commerce_klarna_payments",
+  "description": "Klarna Payments gateway for Drupal Commerce, verifying push notifications by re-fetching the order from Klarna's API.",
+  "version": "3.0.x",
+  "package": "Commerce (contrib)",
+  "composer_namespace": "drupal/commerce_klarna_payments",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "commerce:commerce_payment",
+    "commerce:commerce_price",
+    "drupal:system"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.4||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/commerce_klarna_payments",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Payment gateway"
+  ],
+  "keywords": [
+    "commerce",
+    "klarna",
+    "payment",
+    "gateway",
+    "checkout"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "name": "Azure CDN Purger",
+  "data_name": "azure_cdn_purge",
+  "description": "A Purge module purger that invalidates cached content on Azure CDN.",
+  "version": "1.0.x",
+  "package": "Purge - reverse proxies & CDNs",
+  "composer_namespace": "drupal/azure_cdn_purge",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "purge:purge"
+  ],
+  "configure": "azure_cdn_purge.admin_config_form",
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/azure_cdn_purge",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "CDN integration"
+  ],
+  "keywords": [
+    "azure",
+    "cdn",
+    "purge",
+    "cache",
+    "invalidation"
+  ]
+}

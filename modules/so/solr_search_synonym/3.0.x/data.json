@@ -1,0 +1,43 @@
+{
+  "name": "SOLR Search Synonym",
+  "data_name": "solr_search_synonym",
+  "description": "Manages search synonyms in Drupal and exports them to Solr.",
+  "version": "3.0.x",
+  "package": "Search",
+  "composer_namespace": "drupal/solr_search_synonym",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:system",
+    "drupal:options",
+    "drupal:views",
+    "search_api:search_api",
+    "search_api_solr:search_api_solr"
+  ],
+  "configure": "entity.solr_search_synonym.collection",
+  "core_version_requirement": "^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/solr_search_synonym",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site search"
+  ],
+  "subcategories": [
+    "Synonyms / alternate labels"
+  ],
+  "keywords": [
+    "solr",
+    "synonyms",
+    "search api",
+    "search",
+    "recall"
+  ]
+}
