@@ -1,0 +1,59 @@
+{
+  "name": "Seeds Editor",
+  "data_name": "seeds_editor",
+  "description": "Opinionated CKEditor 5 and text-format bundle from the Seeds distribution, including RTL handling.",
+  "version": "1.1.x",
+  "package": "Seeds",
+  "composer_namespace": "drupal/seeds_editor",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:ckeditor5",
+    "drupal:editor",
+    "drupal:filter",
+    "drupal:image",
+    "drupal:media",
+    "drupal:media_library",
+    "ace_editor:ace_editor",
+    "allowed_formats:allowed_formats",
+    "smart_trim:smart_trim",
+    "blazy:blazy",
+    "editor_advanced_link:editor_advanced_link",
+    "entity_embed:entity_embed",
+    "linkit:linkit",
+    "ckeditor_bidi:ckeditor_bidi",
+    "ckeditor5_plugin_pack:ckeditor5_plugin_pack",
+    "media_embeddable:media_embeddable",
+    "ckeditor_responsive_table:ckeditor_responsive_table",
+    "ckeditor_media_resize:ckeditor_media_resize"
+  ],
+  "configure": "seeds_editor.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/seeds_editor",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content authoring"
+  ],
+  "subcategories": [
+    "WYSIWYG editors"
+  ],
+  "keywords": [
+    "ckeditor5",
+    "seeds",
+    "text format",
+    "rtl",
+    "editor",
+    "distribution",
+    "linkit",
+    "entity embed"
+  ]
+}

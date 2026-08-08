@@ -7,6 +7,14 @@ DIR="${1:?usage: validate-docs.sh modules/<name>/<version>}"
 fail=0
 err() { echo "FAIL: $1"; fail=1; }
 
+# The JSON check needs php. Without this guard a missing interpreter makes `php -r` fail and the
+# script reports "is not valid JSON" for every doc it is given — which is how it read on the host
+# in wave 88, where php only exists inside the DDEV container. Fail on the real cause instead.
+command -v php >/dev/null 2>&1 || {
+  echo "FAIL: php not found — run this inside the container (ddev exec) or the JSON check cannot run" >&2
+  exit 2
+}
+
 # data.json — must exist and be valid JSON
 if [ ! -f "$DIR/data.json" ]; then err "$DIR/data.json missing"; else
   php -r 'json_decode(file_get_contents($argv[1])); exit(json_last_error() ? 1 : 0);' "$DIR/data.json" \

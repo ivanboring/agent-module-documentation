@@ -257,6 +257,47 @@ the fatal happens decides how much damage it does.
    The rule is greppable: `parent::__construct(` with five arguments in an EPT component is
    suspect.
 
+### A "curl error" can be a permanent packaging bug, not a network blip
+
+`flag_lists` 4.0.4 failed with:
+
+```
+curl error 3 while downloading
+https://packages.drupal.org/files/packages/8/p2/drupal/flag ^4.0@beta || ^5.0.json:
+URL rejected: Malformed input to a URL function
+```
+
+Look at what is in that URL. The release's `composer.json` has a require **key** that
+concatenates the package name with its constraint:
+
+```json
+"require": {
+  "drupal/flag ^4.0@beta || ^5.0": "*"
+}
+```
+
+The name and the constraint belong on opposite sides of the colon. Composer takes the key as a
+package name, builds a metadata URL from it, and curl refuses the spaces and pipes.
+
+Three things make this worth its own entry:
+
+- **It reads as transient and is not.** `safe-install.sh` classified it `network` because the
+  message contains "curl error". Retrying it will fail identically forever. There is now a
+  `broken-manifest` case, matched *before* the network case, for `Malformed input to a URL`.
+- **The error names the wrong project.** It says `drupal/flag`. Nothing is wrong with `flag` —
+  the bad manifest is in `flag_lists`. Chasing the named package is a dead end.
+- **Only the one release is affected**, and it is the newest one. `4.0.3` installs cleanly. So
+  the fix is to pin to the previous release, not to skip-list the module:
+
+  ```bash
+  ddev composer require drupal/flag_lists:4.0.3 -W
+  ```
+
+Generally: when composer reports a URL/parse failure, read the URL. If it contains a version
+constraint, whitespace or pipes, the problem is a malformed manifest upstream, and the project
+named in the message is the *dependency*, not the culprit. Document the version you could
+actually install, and note the broken release.
+
 ### A mid-install fatal leaves the rest of the batch half-installed
 
 This happened three times in four waves (`wisski` wave 84, `component` wave 85, `apigee_edge`

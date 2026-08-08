@@ -1,0 +1,44 @@
+{
+  "name": "Enhanced Taxonomy Manager",
+  "data_name": "etm",
+  "description": "An enhanced UI for large hierarchical taxonomies: drag-and-drop tree, revisions, undo, snapshots, bulk operations.",
+  "version": "2.2.x",
+  "package": "Taxonomy",
+  "composer_namespace": "drupal/etm",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:taxonomy"
+  ],
+  "configure": "enhanced_taxonomy_manager.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/etm",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "etm_ai"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content authoring"
+  ],
+  "subcategories": [
+    "Taxonomy management"
+  ],
+  "keywords": [
+    "taxonomy",
+    "vocabulary",
+    "hierarchy",
+    "drag and drop",
+    "bulk operations",
+    "snapshots",
+    "undo",
+    "csv import"
+  ]
+}

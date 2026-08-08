@@ -1,0 +1,49 @@
+{
+  "name": "Seeds Media",
+  "data_name": "seeds_media",
+  "description": "Pre-configured media types and media-library enhancements from the Seeds distribution.",
+  "version": "1.0.x",
+  "package": "Seeds",
+  "composer_namespace": "drupal/seeds_media",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:field",
+    "drupal:file",
+    "drupal:image",
+    "drupal:media",
+    "drupal:path",
+    "drupal:text",
+    "drupal:user",
+    "drupal:views",
+    "drupal:media_library",
+    "media_library_edit:media_library_edit"
+  ],
+  "configure": "seeds_media.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/seeds_media",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Media management"
+  ],
+  "keywords": [
+    "media",
+    "media library",
+    "seeds",
+    "media types",
+    "distribution",
+    "media access"
+  ]
+}

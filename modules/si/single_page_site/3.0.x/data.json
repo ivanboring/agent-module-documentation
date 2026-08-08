@@ -1,0 +1,42 @@
+{
+  "name": "Single Page Site",
+  "data_name": "single_page_site",
+  "description": "Builds a one-page website by rendering every item of a chosen menu onto a single page with anchor links.",
+  "version": "3.0.x",
+  "package": "Design",
+  "composer_namespace": "drupal/single_page_site",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:menu_link_content"
+  ],
+  "configure": "single_page_site.settings",
+  "core_version_requirement": "^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/single_page_site",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "single_page_site_next_page"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site structure"
+  ],
+  "subcategories": [
+    "Navigation menus"
+  ],
+  "keywords": [
+    "one pager",
+    "single page",
+    "landing page",
+    "anchors",
+    "menu",
+    "scroll"
+  ]
+}

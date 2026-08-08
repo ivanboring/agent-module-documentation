@@ -112,6 +112,15 @@ for m in "${names[@]}"; do
       # phpspreadsheet/guzzle/etc. with an unpatched advisory are refused by
       # policy.advisories.block - the module is fine, its dependency is not.
       *"affected by security advisories"*)                 reason=blocked-by-advisory ;;
+      # MUST come before the network case. A require KEY that concatenates the package name
+      # with its constraint ("drupal/flag ^4.0@beta || ^5.0": "*", flag_lists 4.0.4) makes
+      # composer build a metadata URL containing spaces and pipes, and curl rejects it with
+      # error 3 "Malformed input to a URL function". That reads as a network blip and is not
+      # one: it is deterministic, permanent until upstream fixes the typo, and it names the
+      # DEPENDENCY (drupal/flag) rather than the module that has the bad manifest — so
+      # retrying, or blaming the named package, both waste time. Retry pinned to the previous
+      # release instead; only the one bad release is affected.
+      *"Malformed input to a URL"*|*"URL rejected"*)       reason=broken-manifest ;;
       *"curl error"*|*"Connection timed out"*|*"could not be downloaded"*) reason=network ;;
       # A dependency ships a composer plugin that allow-plugins does not permit.
       # Fix by adding it to config.allow-plugins, not by skip-listing the module.

@@ -1,0 +1,41 @@
+{
+  "name": "Group Sites",
+  "data_name": "group_sites",
+  "description": "Turns one Drupal install into multiple microsites by scoping access to a Group derived from context.",
+  "version": "1.1.x",
+  "package": "Group",
+  "composer_namespace": "drupal/group_sites",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "group:group"
+  ],
+  "configure": "group_sites.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/group_sites",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Multi-domain / affiliate sites"
+  ],
+  "keywords": [
+    "group",
+    "microsites",
+    "multisite",
+    "domain",
+    "access policy",
+    "context",
+    "flexible permissions"
+  ]
+}
