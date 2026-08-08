@@ -1,0 +1,40 @@
+{
+  "name": "Image Media Migrate",
+  "data_name": "image_media_migrate",
+  "description": "Migrates plain image fields into Media (image) references / the media library.",
+  "version": "2.0.x",
+  "package": "Media",
+  "composer_namespace": "drupal/image_media_migrate",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:media",
+    "drupal:image"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8||^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/image_media_migrate",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Media migration"
+  ],
+  "keywords": [
+    "media",
+    "image",
+    "migration",
+    "media library",
+    "convert"
+  ]
+}

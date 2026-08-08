@@ -1,0 +1,39 @@
+{
+  "name": "Feeds Log",
+  "data_name": "feeds_log",
+  "description": "Logs the records a Feeds import did not import, for review/debugging.",
+  "version": "2.0.x",
+  "package": "Feeds",
+  "composer_namespace": "drupal/feeds_log",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "feeds:feeds"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.3||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/feeds_log",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Feeds import logging"
+  ],
+  "keywords": [
+    "feeds",
+    "import",
+    "log",
+    "unimported",
+    "debug"
+  ]
+}

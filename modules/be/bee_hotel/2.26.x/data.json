@@ -1,0 +1,54 @@
+{
+  "name": "BEE Hotel",
+  "data_name": "bee_hotel",
+  "description": "A hotel/B&B booking suite built on BAT and Drupal Commerce (rooms, availability, pricing, orders).",
+  "version": "2.26.x",
+  "package": "BEE Hotel",
+  "composer_namespace": "drupal/bee_hotel",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:bat",
+    "drupal:bee",
+    "drupal:commerce_product",
+    "drupal:commerce_store"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.4||^10.2||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/bee_hotel",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "beehotel_addtocart",
+    "beehotel_event",
+    "beehotel_happening_today",
+    "beehotel_ical",
+    "beehotel_pricealterator",
+    "beehotel_pricealterators",
+    "beehotel_samplehotel",
+    "beehotel_sps",
+    "beehotel_upgrade",
+    "beehotel_utils",
+    "beehotel_vertical"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Booking / reservations"
+  ],
+  "keywords": [
+    "hotel",
+    "booking",
+    "bat",
+    "commerce",
+    "reservations"
+  ]
+}
