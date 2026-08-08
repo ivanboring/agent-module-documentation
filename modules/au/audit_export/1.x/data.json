@@ -1,0 +1,43 @@
+{
+  "name": "Audit Export",
+  "data_name": "audit_export",
+  "description": "Provides comprehensive auditing and reporting tools for analyzing Drupal site structure and usage, with automated reports, CSV exports, and extensible plugin architecture.",
+  "version": "1.x",
+  "package": null,
+  "composer_namespace": "drupal/audit_export",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "audit_export_core:audit_export_core"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/audit_export",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "audit_export_tool",
+    "audit_export_core",
+    "audit_export_post"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration"
+  ],
+  "subcategories": [
+    "Reports"
+  ],
+  "keywords": [
+    "audit",
+    "export",
+    "reporting",
+    "inventory",
+    "compliance"
+  ]
+}

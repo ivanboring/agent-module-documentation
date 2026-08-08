@@ -1,0 +1,48 @@
+{
+  "name": "LocalGov Forms",
+  "data_name": "localgov_forms",
+  "description": "Provides additional configuration, styling and components for the Drupal Webform module.",
+  "version": "1.x",
+  "package": null,
+  "composer_namespace": "drupal/localgov_forms",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:inline_form_errors",
+    "drupal:geocoder",
+    "webform:webform",
+    "webform:webform_ui"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/localgov_forms",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "localgov_forms_example_liberty_create_integration",
+    "localgov_forms_feedback_form",
+    "localgov_forms_decision_tree",
+    "localgov_forms_lts",
+    "localgov_forms_date"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Forms and surveys"
+  ],
+  "subcategories": [
+    "LocalGov"
+  ],
+  "keywords": [
+    "localgov",
+    "forms",
+    "government",
+    "gov.uk",
+    "decision tree"
+  ]
+}
