@@ -1,0 +1,39 @@
+{
+  "name": "Group Privacy",
+  "data_name": "group_privacy",
+  "description": "Lets individual groups be made private, denying all operations to non-member outsiders (query-level enforcement).",
+  "version": "1.0.x",
+  "package": "Group",
+  "composer_namespace": "drupal/group_privacy",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "group:group"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.5||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/group_privacy",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Group / membership access"
+  ],
+  "keywords": [
+    "group",
+    "privacy",
+    "private",
+    "access control",
+    "query alter"
+  ]
+}

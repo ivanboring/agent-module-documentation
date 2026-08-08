@@ -1,0 +1,39 @@
+{
+  "name": "Page Deletion Guard",
+  "data_name": "page_deletion_guard",
+  "description": "Locks selected pages (nodes) to prevent them from being deleted.",
+  "version": "1.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/page_deletion_guard",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/page_deletion_guard",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Content protection"
+  ],
+  "keywords": [
+    "page",
+    "deletion",
+    "lock",
+    "protection",
+    "node"
+  ]
+}
