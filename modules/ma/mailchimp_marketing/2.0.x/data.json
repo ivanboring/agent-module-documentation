@@ -1,0 +1,39 @@
+{
+  "name": "Mailchimp marketing",
+  "data_name": "mailchimp_marketing",
+  "description": "Integrates the Mailchimp email marketing service (audiences, subscribers, campaigns).",
+  "version": "2.0.x",
+  "package": "Mailchimp",
+  "composer_namespace": "drupal/mailchimp_marketing",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "mailchimp_marketing.admin",
+  "core_version_requirement": "^10.3||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/mailchimp_marketing",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "mailchimp_marketing_subscribe_ct"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Email / mail delivery"
+  ],
+  "keywords": [
+    "mailchimp",
+    "email marketing",
+    "subscribers",
+    "audiences",
+    "integration"
+  ]
+}
