@@ -1,0 +1,42 @@
+{
+  "name": "Feeds LDAP",
+  "data_name": "feeds_ldap",
+  "description": "A Feeds fetcher and parser for LDAP, to automate content creation from LDAP queries.",
+  "version": "4.0.x",
+  "package": "Lightweight Directory Access Protocol",
+  "composer_namespace": "drupal/feeds_ldap",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "feeds",
+    "ldap_servers",
+    "ldap_query"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.4||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/feeds_ldap",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Content migration / import"
+  ],
+  "keywords": [
+    "ldap",
+    "feeds",
+    "import",
+    "directory",
+    "active directory",
+    "sync"
+  ]
+}

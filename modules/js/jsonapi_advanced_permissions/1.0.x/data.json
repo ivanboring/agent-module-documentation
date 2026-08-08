@@ -1,0 +1,39 @@
+{
+  "name": "JSON:API Advanced Permissions",
+  "data_name": "jsonapi_advanced_permissions",
+  "description": "Adds dynamic per-collection, per-HTTP-method permissions to JSON:API endpoints.",
+  "version": "1.0.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/jsonapi_advanced_permissions",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:jsonapi"
+  ],
+  "configure": "jsonapi_advanced_permissions.settings",
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/jsonapi_advanced_permissions",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "REST / web services"
+  ],
+  "keywords": [
+    "jsonapi",
+    "permissions",
+    "api",
+    "access control",
+    "web services"
+  ]
+}

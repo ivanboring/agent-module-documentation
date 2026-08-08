@@ -1,0 +1,39 @@
+{
+  "name": "Extended Path Aliases",
+  "data_name": "path_alias_xt",
+  "description": "Extends path aliases to cover entity tabs (e.g. about-us/edit) and allows alias wildcards.",
+  "version": "2.x",
+  "package": null,
+  "composer_namespace": "drupal/path_alias_xt",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:path"
+  ],
+  "configure": "path_alias_xt.settings_form",
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/path_alias_xt",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "URL alias generation"
+  ],
+  "keywords": [
+    "path alias",
+    "url",
+    "tabs",
+    "wildcard",
+    "routing"
+  ]
+}

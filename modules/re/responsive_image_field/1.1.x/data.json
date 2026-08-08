@@ -1,0 +1,41 @@
+{
+  "name": "Responsive Image Field",
+  "data_name": "responsive_image_field",
+  "description": "A field type for responsive images, allowing different images per breakpoint.",
+  "version": "1.1.x",
+  "package": "Field types",
+  "composer_namespace": "drupal/responsive_image_field",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:responsive_image",
+    "drupal:media_library",
+    "drupal:media_library_form_element"
+  ],
+  "configure": "entity.responsive_image_style.collection",
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/responsive_image_field",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Responsive images"
+  ],
+  "keywords": [
+    "responsive images",
+    "field",
+    "breakpoint",
+    "art direction",
+    "media"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "name": "Session Inspector",
+  "data_name": "session_inspector",
+  "description": "Lets users view and manage (terminate) their own active sessions.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/session_inspector",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user"
+  ],
+  "configure": "session_inspector.config",
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/session_inspector",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Session management"
+  ],
+  "keywords": [
+    "session",
+    "sessions",
+    "security",
+    "logout",
+    "account"
+  ]
+}
