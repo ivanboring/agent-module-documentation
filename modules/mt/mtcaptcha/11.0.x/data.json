@@ -1,0 +1,41 @@
+{
+  "name": "MTCaptcha Module",
+  "data_name": "mtcaptcha",
+  "description": "Integrates MTCaptcha (a privacy-focused CAPTCHA) into Drupal forms for spam/bot protection.",
+  "version": "11.0.x",
+  "package": "Spam control",
+  "composer_namespace": "drupal/mtcaptcha",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "mtcaptcha.settings",
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/mtcaptcha",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "8.3",
+  "library_dependencies": [
+    "mtcaptcha/mtcaptcha-lib-scripts",
+    "mtcaptcha/mtcaptcha-admin-scripts"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "CAPTCHA / bot protection"
+  ],
+  "keywords": [
+    "captcha",
+    "mtcaptcha",
+    "spam",
+    "bot protection",
+    "forms",
+    "gdpr"
+  ]
+}

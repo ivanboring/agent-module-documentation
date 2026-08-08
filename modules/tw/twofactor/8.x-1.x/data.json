@@ -1,0 +1,40 @@
+{
+  "name": "2factor.app",
+  "data_name": "twofactor",
+  "description": "Adds a second authentication factor by delegating verification to the external 2factor.app SaaS.",
+  "version": "8.x-1.x",
+  "package": "Security",
+  "composer_namespace": "drupal/twofactor",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3||^11||^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/twofactor",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Two-factor authentication"
+  ],
+  "keywords": [
+    "2fa",
+    "two-factor",
+    "authentication",
+    "2factor.app",
+    "login security",
+    "mfa"
+  ]
+}

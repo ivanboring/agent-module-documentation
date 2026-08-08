@@ -1,0 +1,40 @@
+{
+  "name": "Social Auth GitHub",
+  "data_name": "social_auth_github",
+  "description": "Log in to Drupal with a GitHub account via the Social Auth / Social API framework.",
+  "version": "4.0.x",
+  "package": "Social",
+  "composer_namespace": "drupal/social_auth_github",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "social_auth:social_auth"
+  ],
+  "configure": "social_auth_github.settings_form",
+  "core_version_requirement": "^9.5||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/social_auth_github",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "OAuth / OpenID Connect client"
+  ],
+  "keywords": [
+    "github",
+    "oauth",
+    "social login",
+    "social auth",
+    "sso",
+    "login"
+  ]
+}

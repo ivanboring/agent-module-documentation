@@ -1,0 +1,38 @@
+{
+  "name": "miniOrange SAML Identity Provider",
+  "data_name": "miniorange_saml_idp",
+  "description": "Turns the Drupal site into a SAML 2.0 Identity Provider (IdP) for single sign-on into external service providers.",
+  "version": "4.0.x",
+  "package": "miniOrange",
+  "composer_namespace": "drupal/miniorange_saml_idp",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "miniorange_saml_idp.idp_setup",
+  "core_version_requirement": "^9.3||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/miniorange_saml_idp",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Single sign-on (SSO) provider"
+  ],
+  "keywords": [
+    "saml",
+    "sso",
+    "identity provider",
+    "idp",
+    "miniorange",
+    "single sign-on"
+  ]
+}
