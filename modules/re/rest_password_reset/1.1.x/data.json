@@ -1,0 +1,42 @@
+{
+  "name": "REST Password Reset",
+  "data_name": "rest_password_reset",
+  "description": "REST endpoints for password reset and username retrieval.",
+  "version": "1.1.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/rest_password_reset",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:rest",
+    "drupal:user",
+    "restui:restui"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/rest_password_reset",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Web services"
+  ],
+  "subcategories": [
+    "Authentication"
+  ],
+  "keywords": [
+    "rest",
+    "password reset",
+    "headless",
+    "authentication",
+    "username",
+    "decoupled"
+  ]
+}

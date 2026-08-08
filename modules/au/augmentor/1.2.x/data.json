@@ -1,0 +1,46 @@
+{
+  "name": "Augmentor",
+  "data_name": "augmentor",
+  "description": "Integration module which allows content to be augmented in Drupal via connections with external services.",
+  "version": "1.2.x",
+  "package": "AI",
+  "composer_namespace": "drupal/augmentor",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "key:key"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/augmentor",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "augmentor_eca",
+    "augmentor_demo",
+    "augmentor_ckeditor5",
+    "augmentor_ckeditor4",
+    "augmentor_search_api_processors"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence"
+  ],
+  "subcategories": [
+    "AI content generation"
+  ],
+  "keywords": [
+    "ai",
+    "augmentor",
+    "llm",
+    "summarise",
+    "translate",
+    "ckeditor"
+  ]
+}
