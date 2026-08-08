@@ -1,0 +1,45 @@
+{
+  "name": "AI Search Block",
+  "data_name": "ai_search_block",
+  "description": "Provides a block for AI search functionality.",
+  "version": "1.x",
+  "package": "AI",
+  "composer_namespace": "drupal/ai_search_block",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "ai:ai_search (^1.2)",
+    "search_api:search_api"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ai_search_block",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "ai_search_block_log_tag",
+    "ai_search_block_log",
+    "ai_search_block_header",
+    "ai_search_block_extras"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence"
+  ],
+  "subcategories": [
+    "AI search"
+  ],
+  "keywords": [
+    "ai",
+    "search",
+    "block",
+    "llm",
+    "semantic"
+  ]
+}

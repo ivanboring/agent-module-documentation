@@ -1,0 +1,41 @@
+{
+  "name": "Access by Taxonomy",
+  "data_name": "access_by_taxonomy",
+  "description": "Manages access to content depending on the taxonomy terms applied to it.",
+  "version": "1.x",
+  "package": "Access control",
+  "composer_namespace": "drupal/access_by_taxonomy",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:taxonomy",
+    "drupal:field_ui",
+    "drupal:user"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/access_by_taxonomy",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Taxonomy-based access control"
+  ],
+  "keywords": [
+    "access",
+    "taxonomy",
+    "node grants",
+    "access control",
+    "roles"
+  ]
+}

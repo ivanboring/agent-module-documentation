@@ -1,0 +1,60 @@
+{
+  "name": "Drupal Remote Dashboard",
+  "data_name": "drd",
+  "description": "Dashboard to monitor and manage any number of remote Drupal 6, 7 or 8 sites",
+  "version": "4.x",
+  "package": null,
+  "composer_namespace": "drupal/drd",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "advancedqueue:advancedqueue",
+    "drd_agent:drd_agent",
+    "drupal:taxonomy",
+    "drupal:update",
+    "drupal:views",
+    "encrypt:encrypt",
+    "eva:eva",
+    "key_value_field:key_value_field",
+    "extlink:extlink",
+    "hacked:hacked",
+    "monitoring:monitoring",
+    "real_aes:real_aes",
+    "security_review:security_review"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/drd",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "drd_pi",
+    "drd_pi_platformsh",
+    "drd_migrate",
+    "drd_pi_acquia",
+    "drd_pi_pantheon",
+    "drd_install_core",
+    "drd_eca"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration"
+  ],
+  "subcategories": [
+    "Remote management"
+  ],
+  "keywords": [
+    "drd",
+    "remote",
+    "dashboard",
+    "management",
+    "fleet",
+    "monitoring"
+  ]
+}
