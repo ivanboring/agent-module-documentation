@@ -1,0 +1,39 @@
+{
+  "name": "Prometheus Metrics",
+  "data_name": "prometheus_metrics",
+  "description": "Exposes site metrics to Prometheus (metrics endpoint requires a permission by default).",
+  "version": "1.1.x",
+  "package": "Statistics",
+  "composer_namespace": "drupal/prometheus_metrics",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "prometheus_metrics.configuration_form",
+  "core_version_requirement": "^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/prometheus_metrics",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "prometheus_metrics_commerce"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "Application performance monitoring"
+  ],
+  "keywords": [
+    "prometheus",
+    "metrics",
+    "monitoring",
+    "observability",
+    "scrape"
+  ]
+}
