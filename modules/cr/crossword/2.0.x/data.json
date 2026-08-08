@@ -1,0 +1,48 @@
+{
+  "name": "Crossword",
+  "data_name": "crossword",
+  "description": "Adds a Crossword field that turns uploaded files into playable crossword puzzles.",
+  "version": "2.0.x",
+  "package": "Crossword",
+  "composer_namespace": "drupal/crossword",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:file"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/crossword",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "crossword_colors",
+    "crossword_contest",
+    "crossword_download",
+    "crossword_image",
+    "crossword_media",
+    "crossword_pseudofields",
+    "crossword_status",
+    "crossword_token"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Fields"
+  ],
+  "keywords": [
+    "crossword",
+    "puzzle",
+    "field",
+    "interactive",
+    "game"
+  ]
+}

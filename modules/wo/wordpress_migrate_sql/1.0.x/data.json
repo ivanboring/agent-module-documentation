@@ -1,0 +1,41 @@
+{
+  "name": "WordPress Migrate SQL",
+  "data_name": "wordpress_migrate_sql",
+  "description": "Migrates WordPress content into Drupal directly from a WordPress SQL database.",
+  "version": "1.0.x",
+  "package": "Migrate",
+  "composer_namespace": "drupal/wordpress_migrate_sql",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:migrate"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/wordpress_migrate_sql",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "wordpress_migrate_sql_basic"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Migration"
+  ],
+  "subcategories": [
+    "Content import"
+  ],
+  "keywords": [
+    "wordpress",
+    "migrate",
+    "sql",
+    "import",
+    "migration"
+  ]
+}
