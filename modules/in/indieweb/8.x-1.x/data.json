@@ -1,0 +1,48 @@
+{
+  "name": "IndieWeb",
+  "data_name": "indieweb",
+  "description": "Brings IndieWeb building blocks to Drupal: IndieAuth, Micropub, Webmention, Microsub, WebSub, microformats.",
+  "version": "8.x-1.x",
+  "package": "IndieWeb",
+  "composer_namespace": "drupal/indieweb",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "indieweb.admin.dashboard",
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/indieweb",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "indieweb_cache",
+    "indieweb_contact",
+    "indieweb_context",
+    "indieweb_feed",
+    "indieweb_indieauth",
+    "indieweb_microformat",
+    "indieweb_micropub",
+    "indieweb_microsub",
+    "indieweb_webmention",
+    "indieweb_websub"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "IndieWeb / social web"
+  ],
+  "keywords": [
+    "indieweb",
+    "indieauth",
+    "micropub",
+    "webmention",
+    "fediverse"
+  ]
+}
