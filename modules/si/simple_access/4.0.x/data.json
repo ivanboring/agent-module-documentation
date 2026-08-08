@@ -1,0 +1,39 @@
+{
+  "name": "Simple Access",
+  "data_name": "simple_access",
+  "description": "Provides simple hide/view access control for nodes via the node-grants system.",
+  "version": "4.0.x",
+  "package": "Access control",
+  "composer_namespace": "drupal/simple_access",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node"
+  ],
+  "configure": "simple_access.admin",
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/simple_access",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Node access"
+  ],
+  "keywords": [
+    "node access",
+    "access groups",
+    "hide",
+    "view",
+    "grants"
+  ]
+}
