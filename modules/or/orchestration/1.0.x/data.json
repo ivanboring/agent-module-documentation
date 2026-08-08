@@ -1,0 +1,42 @@
+{
+  "name": "Orchestration",
+  "data_name": "orchestration",
+  "description": "Connects the Drupal site with external platforms (with AI agents, ECA and tooling submodules).",
+  "version": "1.0.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/orchestration",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/orchestration",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "orchestration_ai_agents",
+    "orchestration_ai_function",
+    "orchestration_eca",
+    "orchestration_tool"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Automation / orchestration"
+  ],
+  "keywords": [
+    "orchestration",
+    "integration",
+    "ai",
+    "eca",
+    "external platforms"
+  ]
+}

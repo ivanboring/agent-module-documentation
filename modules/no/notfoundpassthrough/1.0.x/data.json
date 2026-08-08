@@ -1,0 +1,39 @@
+{
+  "name": "Page Not Found Passthrough",
+  "data_name": "notfoundpassthrough",
+  "description": "On a 404, attempts configured fallback domains to find the content (redirect-on-404).",
+  "version": "1.0.x",
+  "package": "Redirect",
+  "composer_namespace": "drupal/notfoundpassthrough",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:redirect"
+  ],
+  "configure": "notfoundpassthrough.settings",
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/notfoundpassthrough",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site structure"
+  ],
+  "subcategories": [
+    "Redirects / URL handling"
+  ],
+  "keywords": [
+    "404",
+    "passthrough",
+    "fallback",
+    "redirect",
+    "migration"
+  ]
+}
