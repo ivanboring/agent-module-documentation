@@ -1,0 +1,46 @@
+{
+  "name": "Burndown",
+  "data_name": "burndown",
+  "description": "A project-management module providing burndown charts and task tracking in Drupal.",
+  "version": "1.0.x",
+  "package": "Burndown",
+  "composer_namespace": "drupal/burndown",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:datetime",
+    "drupal:field",
+    "drupal:image",
+    "drupal:link",
+    "drupal:options",
+    "drupal:taxonomy"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/burndown",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "burndown_time_tracker"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Dashboard / reporting"
+  ],
+  "keywords": [
+    "project management",
+    "burndown",
+    "tasks",
+    "agile",
+    "time tracking"
+  ]
+}

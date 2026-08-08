@@ -1,0 +1,42 @@
+{
+  "name": "Image Alt Fallback",
+  "data_name": "image_alt_fallback",
+  "description": "Fills empty image alt attributes using the entity label as a fallback (accessibility).",
+  "version": "1.1.x",
+  "package": "Accessibility",
+  "composer_namespace": "drupal/image_alt_fallback",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:system",
+    "drupal:views",
+    "drupal:image",
+    "drupal:media"
+  ],
+  "configure": "image_alt_fallback.settings",
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/image_alt_fallback",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Accessibility"
+  ],
+  "subcategories": [
+    "ARIA / semantic markup"
+  ],
+  "keywords": [
+    "accessibility",
+    "alt text",
+    "images",
+    "a11y",
+    "fallback"
+  ]
+}

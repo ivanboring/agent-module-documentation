@@ -1,0 +1,39 @@
+{
+  "name": "Migrate retry",
+  "data_name": "migrate_retry",
+  "description": "Retries migration rows that failed due to unexpected (transient) errors.",
+  "version": "2.1.x",
+  "package": "Migrate",
+  "composer_namespace": "drupal/migrate_retry",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "migrate"
+  ],
+  "configure": "migrate_retry.settings",
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/migrate_retry",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Migration tooling"
+  ],
+  "keywords": [
+    "migrate",
+    "retry",
+    "migration",
+    "resilience",
+    "import"
+  ]
+}
