@@ -1,0 +1,39 @@
+{
+  "name": "Deactivate Inactive Users",
+  "data_name": "deactivate_users",
+  "description": "Blocks user accounts that have been inactive for a configured number of days (via cron).",
+  "version": "1.1.x",
+  "package": null,
+  "composer_namespace": "drupal/deactivate_users",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "token:token"
+  ],
+  "configure": "deactivate_users.admin_settings",
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/deactivate_users",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Account expiration"
+  ],
+  "keywords": [
+    "inactive users",
+    "block",
+    "account",
+    "security",
+    "cron"
+  ]
+}

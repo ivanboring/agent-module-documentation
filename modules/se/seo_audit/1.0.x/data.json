@@ -1,0 +1,39 @@
+{
+  "name": "SEO Audit",
+  "data_name": "seo_audit",
+  "description": "Performs SEO audits by crawling the site and reporting issues.",
+  "version": "1.0.x",
+  "package": "SEO",
+  "composer_namespace": "drupal/seo_audit",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:queue_ui"
+  ],
+  "configure": "seo_audit.settings",
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/seo_audit",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Search engine optimization (SEO)"
+  ],
+  "subcategories": [
+    "SEO analysis / audit"
+  ],
+  "keywords": [
+    "seo",
+    "audit",
+    "crawl",
+    "analysis",
+    "report"
+  ]
+}

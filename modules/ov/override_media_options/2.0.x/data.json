@@ -1,0 +1,39 @@
+{
+  "name": "Override Media Options",
+  "data_name": "override_media_options",
+  "description": "Lets non-admins override the default publishing options for media they can edit.",
+  "version": "2.0.x",
+  "package": "Permissions",
+  "composer_namespace": "drupal/override_media_options",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:media"
+  ],
+  "configure": "override_media_options.settings",
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/override_media_options",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Media access control"
+  ],
+  "keywords": [
+    "media",
+    "publishing",
+    "override",
+    "permissions",
+    "access"
+  ]
+}

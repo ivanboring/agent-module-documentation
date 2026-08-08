@@ -1,0 +1,43 @@
+{
+  "name": "Entity Workflow",
+  "data_name": "entity_workflow",
+  "description": "Provides configurable workflows for entities, integrating Workflows and Workspaces.",
+  "version": "2.0.x",
+  "package": null,
+  "composer_namespace": "drupal/entity_workflow",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:workflows",
+    "drupal:workspaces"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11.3||^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/entity_workflow",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "entity_workflow_content",
+    "entity_workflow_workspace"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Automation"
+  ],
+  "subcategories": [
+    "Workflow / state management"
+  ],
+  "keywords": [
+    "workflow",
+    "entities",
+    "workspaces",
+    "states",
+    "editorial"
+  ]
+}

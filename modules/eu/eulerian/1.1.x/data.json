@@ -1,0 +1,43 @@
+{
+  "name": "Eulerian",
+  "data_name": "eulerian",
+  "description": "Integrates Eulerian analytics/tracking, including Commerce e-commerce tracking.",
+  "version": "1.1.x",
+  "package": "Statistics",
+  "composer_namespace": "drupal/eulerian",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:path_alias"
+  ],
+  "configure": "eulerian.settings_form",
+  "core_version_requirement": "^10.3||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/eulerian",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "eulerian_commerce_cart",
+    "eulerian_commerce_checkout",
+    "eulerian_commerce_product"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Analytics & tracking"
+  ],
+  "keywords": [
+    "eulerian",
+    "analytics",
+    "tracking",
+    "commerce",
+    "attribution"
+  ]
+}
