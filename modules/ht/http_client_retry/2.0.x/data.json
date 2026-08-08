@@ -1,0 +1,37 @@
+{
+  "name": "HTTP Client Retry",
+  "data_name": "http_client_retry",
+  "description": "Adds a retry middleware to Drupal's HTTP client for transient failures.",
+  "version": "2.0.x",
+  "package": "Other",
+  "composer_namespace": "drupal/http_client_retry",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "http_client_retry.settings",
+  "core_version_requirement": "^10.1||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/http_client_retry",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "HTTP client / API consumption"
+  ],
+  "keywords": [
+    "http client",
+    "retry",
+    "middleware",
+    "guzzle",
+    "resilience"
+  ]
+}

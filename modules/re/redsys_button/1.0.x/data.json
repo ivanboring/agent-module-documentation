@@ -1,0 +1,39 @@
+{
+  "name": "Redsys Button to Drupal",
+  "data_name": "redsys_button",
+  "description": "Provides a Redsys payment button form for Drupal (HMAC-SHA256 signed).",
+  "version": "1.0.x",
+  "package": "Moon",
+  "composer_namespace": "drupal/redsys_button",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "redsys_button.redsys_config_form",
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/redsys_button",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "commerce_redsys_button"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Payment gateways"
+  ],
+  "keywords": [
+    "redsys",
+    "payment",
+    "gateway",
+    "button",
+    "commerce"
+  ]
+}

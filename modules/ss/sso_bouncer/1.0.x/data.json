@@ -1,0 +1,39 @@
+{
+  "name": "SSO Bouncer",
+  "data_name": "sso_bouncer",
+  "description": "Validates OpenID Connect SSO login by Keycloak group, denying users whose group isn't authorized.",
+  "version": "1.0.x",
+  "package": "User authentication",
+  "composer_namespace": "drupal/sso_bouncer",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:openid_connect"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/sso_bouncer",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "External authentication"
+  ],
+  "keywords": [
+    "sso",
+    "openid connect",
+    "keycloak",
+    "authorization",
+    "groups"
+  ]
+}

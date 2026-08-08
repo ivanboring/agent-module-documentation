@@ -1,0 +1,39 @@
+{
+  "name": "Filehash Report",
+  "data_name": "filehash_report",
+  "description": "Reports duplicate files using File Hash hashes.",
+  "version": "1.0.x",
+  "package": "Utility",
+  "composer_namespace": "drupal/filehash_report",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "filehash"
+  ],
+  "configure": "filehash.reportduplicates",
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/filehash_report",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Content auditing / cleanup"
+  ],
+  "keywords": [
+    "filehash",
+    "duplicate",
+    "files",
+    "report",
+    "storage"
+  ]
+}

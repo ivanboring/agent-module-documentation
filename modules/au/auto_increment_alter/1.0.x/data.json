@@ -1,0 +1,39 @@
+{
+  "name": "AUTO_INCREMENT Alter",
+  "data_name": "auto_increment_alter",
+  "description": "Lets administrators alter the AUTO_INCREMENT value of database tables (MySQL).",
+  "version": "1.0.x",
+  "package": "Other",
+  "composer_namespace": "drupal/auto_increment_alter",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:mysql"
+  ],
+  "configure": "auto_increment_alter.list_tables",
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/auto_increment_alter",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "External database tables"
+  ],
+  "keywords": [
+    "auto_increment",
+    "database",
+    "mysql",
+    "alter",
+    "id"
+  ]
+}
