@@ -1,0 +1,39 @@
+{
+  "name": "Monitoring Endpoint",
+  "data_name": "monitoring_endpoint",
+  "description": "A JSON status endpoint for external monitoring tools to read Monitoring sensor results (token-protected \u2014 see security notes).",
+  "version": "1.0.x",
+  "package": "Monitoring",
+  "composer_namespace": "drupal/monitoring_endpoint",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "monitoring:monitoring"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/monitoring_endpoint",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Health check endpoint"
+  ],
+  "keywords": [
+    "monitoring",
+    "endpoint",
+    "status",
+    "health check",
+    "sensors"
+  ]
+}

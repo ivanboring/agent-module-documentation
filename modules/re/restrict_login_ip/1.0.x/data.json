@@ -1,0 +1,39 @@
+{
+  "name": "Restrict Login Page by IP",
+  "data_name": "restrict_login_ip",
+  "description": "Restricts access to the user login page to a configured allow-list of IP addresses/ranges.",
+  "version": "1.0.x",
+  "package": "Access control",
+  "composer_namespace": "drupal/restrict_login_ip",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user"
+  ],
+  "configure": "restrict_login_ip.settings",
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/restrict_login_ip",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "IP address restriction"
+  ],
+  "keywords": [
+    "login",
+    "ip restriction",
+    "access control",
+    "brute force",
+    "allow-list"
+  ]
+}

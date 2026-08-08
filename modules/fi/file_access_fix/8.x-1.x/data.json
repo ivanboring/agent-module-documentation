@@ -1,0 +1,39 @@
+{
+  "name": "File Access Fix",
+  "data_name": "file_access_fix",
+  "description": "Moves files between public/private storage based on their parent entities' anonymous access.",
+  "version": "8.x-1.x",
+  "package": null,
+  "composer_namespace": "drupal/file_access_fix",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:file"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.3||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/file_access_fix",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Private file access"
+  ],
+  "keywords": [
+    "file access",
+    "private files",
+    "anonymous",
+    "security",
+    "leak"
+  ]
+}

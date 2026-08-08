@@ -1,0 +1,40 @@
+{
+  "name": "Invite",
+  "data_name": "invite",
+  "description": "Lets users invite others to the site (by email or invite link).",
+  "version": "3.0.x",
+  "package": "Invite",
+  "composer_namespace": "drupal/invite",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "invite.invite",
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/invite",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "invite_by_email",
+    "invite_link"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "User engagement"
+  ],
+  "subcategories": [
+    "Sign-ups / RSVP"
+  ],
+  "keywords": [
+    "invite",
+    "invitation",
+    "registration",
+    "referral",
+    "invite link"
+  ]
+}

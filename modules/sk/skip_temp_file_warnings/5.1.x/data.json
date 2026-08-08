@@ -1,0 +1,37 @@
+{
+  "name": "Skip Temp File Warnings",
+  "data_name": "skip_temp_file_warnings",
+  "description": "Suppresses temporary-file warnings by cleaning up stale temporary file entries on cron.",
+  "version": "5.1.x",
+  "package": "System",
+  "composer_namespace": "drupal/skip_temp_file_warnings",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "system.logging_settings",
+  "core_version_requirement": "^9.5||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/skip_temp_file_warnings",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Database maintenance / optimization"
+  ],
+  "keywords": [
+    "temporary files",
+    "cron",
+    "cleanup",
+    "warnings",
+    "maintenance"
+  ]
+}
