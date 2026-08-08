@@ -1,0 +1,43 @@
+{
+  "name": "Frontify Integration",
+  "data_name": "frontify",
+  "description": "Integrates the Frontify digital-asset-management (DAM) platform with Drupal media.",
+  "version": "3.0.x",
+  "package": "Frontify",
+  "composer_namespace": "drupal/frontify",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:media",
+    "drupal:media_library",
+    "drupal:block_content"
+  ],
+  "configure": "frontify.admin_config_frontify",
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/frontify",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "frontify_colorbox"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Digital asset management (DAM)"
+  ],
+  "keywords": [
+    "frontify",
+    "dam",
+    "media",
+    "assets",
+    "brand"
+  ]
+}

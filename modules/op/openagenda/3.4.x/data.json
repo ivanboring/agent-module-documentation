@@ -1,0 +1,41 @@
+{
+  "name": "OpenAgenda",
+  "data_name": "openagenda",
+  "description": "Integrates the OpenAgenda event platform, importing and displaying events in Drupal.",
+  "version": "3.4.x",
+  "package": "OpenAgenda",
+  "composer_namespace": "drupal/openagenda",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node",
+    "drupal:field",
+    "drupal:serialization"
+  ],
+  "configure": "openagenda.form",
+  "core_version_requirement": "^8.8||^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/openagenda",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Event management"
+  ],
+  "keywords": [
+    "openagenda",
+    "events",
+    "agenda",
+    "integration",
+    "calendar"
+  ]
+}

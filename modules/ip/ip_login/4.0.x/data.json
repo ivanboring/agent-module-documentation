@@ -1,0 +1,41 @@
+{
+  "name": "IP Login",
+  "data_name": "ip_login",
+  "description": "Automatically logs a user in when their client IP matches a configured address, range or wildcard.",
+  "version": "4.0.x",
+  "package": null,
+  "composer_namespace": "drupal/ip_login",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user",
+    "field_ipaddress:field_ipaddress"
+  ],
+  "configure": "ip_login.settings",
+  "core_version_requirement": "^8.9||^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ip_login",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "External authentication"
+  ],
+  "keywords": [
+    "ip login",
+    "authentication",
+    "auto-login",
+    "kiosk",
+    "trusted network",
+    "access"
+  ]
+}
