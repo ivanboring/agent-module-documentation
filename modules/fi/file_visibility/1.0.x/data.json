@@ -1,0 +1,41 @@
+{
+  "name": "File Visibility",
+  "data_name": "file_visibility",
+  "description": "Keeps a public file of a not-yet-public entity in the private filesystem until the entity becomes publicly accessible.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/file_visibility",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:file"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.4||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/file_visibility",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "file_visibility_track_usage"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Private file access"
+  ],
+  "keywords": [
+    "file access",
+    "private files",
+    "visibility",
+    "unpublished",
+    "security"
+  ]
+}

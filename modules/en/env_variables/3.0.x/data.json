@@ -1,0 +1,37 @@
+{
+  "name": "Environment Variables",
+  "data_name": "env_variables",
+  "description": "Provides an admin UI to view environment variables (currently dumps the entire $_ENV \u2014 see security notes).",
+  "version": "3.0.x",
+  "package": null,
+  "composer_namespace": "drupal/env_variables",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "env_variables.config.form",
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/env_variables",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Configuration management"
+  ],
+  "keywords": [
+    "environment variables",
+    "env",
+    "secrets",
+    "configuration",
+    "disclosure"
+  ]
+}

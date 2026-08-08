@@ -1,0 +1,40 @@
+{
+  "name": "GovCMS Akamai Purge",
+  "data_name": "govcms_akamai_purge",
+  "description": "An Akamai CDN purge helper integrating with the Purge module (for GovCMS).",
+  "version": "2.2.x",
+  "package": "GovCMS",
+  "composer_namespace": "drupal/govcms_akamai_purge",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "purge:purge_queuer_coretags",
+    "purge:purge_processor_lateruntime"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/govcms_akamai_purge",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "CDN integration"
+  ],
+  "keywords": [
+    "akamai",
+    "cdn",
+    "purge",
+    "cache",
+    "govcms"
+  ]
+}
