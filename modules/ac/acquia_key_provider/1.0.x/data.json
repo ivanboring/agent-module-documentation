@@ -1,0 +1,39 @@
+{
+  "name": "Acquia Key Provider",
+  "data_name": "acquia_key_provider",
+  "description": "A Key module provider that reads secrets from Acquia hosting's secret storage.",
+  "version": "1.0.x",
+  "package": "Security",
+  "composer_namespace": "drupal/acquia_key_provider",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "key:key"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.4||^11.1",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/acquia_key_provider",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Secrets / key management"
+  ],
+  "keywords": [
+    "key",
+    "acquia",
+    "secrets",
+    "provider",
+    "hosting"
+  ]
+}

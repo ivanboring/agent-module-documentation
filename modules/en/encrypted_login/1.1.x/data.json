@@ -1,0 +1,39 @@
+{
+  "name": "Encrypted Login",
+  "data_name": "encrypted_login",
+  "description": "Encrypts login credentials client-side (RSA/AES) before submission. NOTE: not a substitute for HTTPS.",
+  "version": "1.1.x",
+  "package": "Security",
+  "composer_namespace": "drupal/encrypted_login",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/encrypted_login",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Login / authentication"
+  ],
+  "keywords": [
+    "login",
+    "encryption",
+    "rsa",
+    "credentials",
+    "tls"
+  ]
+}

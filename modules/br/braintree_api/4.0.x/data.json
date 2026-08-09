@@ -1,0 +1,41 @@
+{
+  "name": "Braintree API",
+  "data_name": "braintree_api",
+  "description": "Bootstraps the Braintree API SDK and dispatches signature-verified Braintree webhooks.",
+  "version": "4.0.x",
+  "package": "Braintree",
+  "composer_namespace": "drupal/braintree_api",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "key:key"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/braintree_api",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "braintree_api_test"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Payment gateway"
+  ],
+  "keywords": [
+    "braintree",
+    "payment",
+    "api",
+    "webhook",
+    "sdk"
+  ]
+}

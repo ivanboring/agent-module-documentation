@@ -1,0 +1,39 @@
+{
+  "name": "Config Backup",
+  "data_name": "config_backup",
+  "description": "Creates and manages backups of the site's configuration.",
+  "version": "1.0.x",
+  "package": "Config",
+  "composer_namespace": "drupal/config_backup",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:config"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8||^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/config_backup",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Configuration backup"
+  ],
+  "keywords": [
+    "config",
+    "backup",
+    "configuration",
+    "snapshot",
+    "restore"
+  ]
+}
