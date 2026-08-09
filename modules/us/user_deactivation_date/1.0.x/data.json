@@ -1,0 +1,40 @@
+{
+  "name": "User Deactivation Date",
+  "data_name": "user_deactivation_date",
+  "description": "Blocks user accounts automatically on a configured deactivation date via cron.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/user_deactivation_date",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:datetime",
+    "drupal:user"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.1||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/user_deactivation_date",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "User accounts / identity"
+  ],
+  "keywords": [
+    "user",
+    "deactivation",
+    "expiry",
+    "cron",
+    "account lifecycle"
+  ]
+}

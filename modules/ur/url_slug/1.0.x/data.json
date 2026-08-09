@@ -1,0 +1,41 @@
+{
+  "name": "URL Slug",
+  "data_name": "url_slug",
+  "description": "Adds a URL-slug field to content types, derived from the node title.",
+  "version": "1.0.x",
+  "package": "Field",
+  "composer_namespace": "drupal/url_slug",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node",
+    "token:token",
+    "pathauto:pathauto"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/url_slug",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site structure"
+  ],
+  "subcategories": [
+    "URL aliases"
+  ],
+  "keywords": [
+    "url",
+    "slug",
+    "pathauto",
+    "alias",
+    "field"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "name": "Preview Site",
+  "data_name": "preview_site",
+  "description": "Generates a shareable static preview of the site (e.g. deployed to S3) for stakeholder review.",
+  "version": "1.2.x",
+  "package": null,
+  "composer_namespace": "drupal/preview_site",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "tome:tome_static",
+    "entity_usage:entity_usage",
+    "dynamic_entity_reference:dynamic_entity_reference",
+    "drupal:file"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/preview_site",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "preview_site_s3"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Preview"
+  ],
+  "keywords": [
+    "preview",
+    "static",
+    "tome",
+    "s3",
+    "draft"
+  ]
+}
