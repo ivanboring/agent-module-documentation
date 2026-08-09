@@ -1,0 +1,41 @@
+{
+  "name": "WordPress Drupal Migrate",
+  "data_name": "wp_drupal_migrate",
+  "description": "Migrates WordPress content into Drupal via a direct database connection.",
+  "version": "1.1.x",
+  "package": "Migration",
+  "composer_namespace": "drupal/wp_drupal_migrate",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:migrate",
+    "migrate_plus:migrate_plus",
+    "migrate_tools:migrate_tools"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/wp_drupal_migrate",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Migrate sources"
+  ],
+  "keywords": [
+    "wordpress",
+    "migrate",
+    "migration",
+    "import",
+    "database"
+  ]
+}

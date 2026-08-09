@@ -1,0 +1,42 @@
+{
+  "name": "Commerce Ifthenpay",
+  "data_name": "commerce_ifthenpay",
+  "description": "Drupal Commerce payment gateways for ifthenpay (Multibanco, MBWay, credit card). Payment verification is correct.",
+  "version": "3.0.x",
+  "package": "Commerce (contrib)",
+  "composer_namespace": "drupal/commerce_ifthenpay",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "commerce:commerce_payment"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/commerce_ifthenpay",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "commerce_ifthenpay_cc",
+    "commerce_ifthenpay_mbway"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Payment gateway"
+  ],
+  "keywords": [
+    "commerce",
+    "ifthenpay",
+    "payment",
+    "multibanco",
+    "mbway"
+  ]
+}

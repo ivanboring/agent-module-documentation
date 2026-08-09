@@ -1,0 +1,41 @@
+{
+  "name": "Salesforce Status",
+  "data_name": "salesforce_status",
+  "description": "Manages Salesforce (sync) status and dispatches events for other modules to react to.",
+  "version": "1.0.x",
+  "package": "Salesforce",
+  "composer_namespace": "drupal/salesforce_status",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "salesforce:salesforce"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/salesforce_status",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "salesforce_status_mail"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "CRM"
+  ],
+  "keywords": [
+    "salesforce",
+    "status",
+    "events",
+    "sync",
+    "crm"
+  ]
+}
