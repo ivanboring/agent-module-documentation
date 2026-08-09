@@ -1,0 +1,41 @@
+{
+  "name": "Migrate Source Queue",
+  "data_name": "migrate_source_queue",
+  "description": "Lets queue items be used as a source for Migrate.",
+  "version": "1.0.x",
+  "package": "Migration",
+  "composer_namespace": "drupal/migrate_source_queue",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:migrate"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8||^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/migrate_source_queue",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "migrate_source_queue_cron_example"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Migrate sources"
+  ],
+  "keywords": [
+    "migrate",
+    "queue",
+    "source",
+    "migration",
+    "incremental"
+  ]
+}
