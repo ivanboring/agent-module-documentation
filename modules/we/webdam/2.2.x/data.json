@@ -1,0 +1,42 @@
+{
+  "name": "Webdam",
+  "data_name": "webdam",
+  "description": "Integrates the Webdam (Acquia DAM) digital-asset-management system with Drupal media.",
+  "version": "2.2.x",
+  "package": "Media",
+  "composer_namespace": "drupal/webdam",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:media",
+    "entity_browser:entity_browser"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.1||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/webdam",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "webdam_sns"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Digital asset management"
+  ],
+  "keywords": [
+    "webdam",
+    "dam",
+    "acquia",
+    "media",
+    "assets"
+  ]
+}

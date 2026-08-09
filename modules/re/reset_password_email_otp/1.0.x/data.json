@@ -1,0 +1,40 @@
+{
+  "name": "Reset Password Email OTP",
+  "data_name": "reset_password_email_otp",
+  "description": "Password reset via an email OTP. NOTE: the OTP never expires and is not single-use.",
+  "version": "1.0.x",
+  "package": "Security",
+  "composer_namespace": "drupal/reset_password_email_otp",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:block",
+    "drupal:user"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8.8||^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/reset_password_email_otp",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Password reset"
+  ],
+  "keywords": [
+    "password reset",
+    "otp",
+    "email",
+    "authentication",
+    "security"
+  ]
+}

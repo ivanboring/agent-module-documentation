@@ -1,0 +1,41 @@
+{
+  "name": "LocalGov Waste Collection",
+  "data_name": "localgov_waste_collection",
+  "description": "Provides waste-collection schedule lookup (by address) for LocalGov Drupal sites.",
+  "version": "1.0.x",
+  "package": "LocalGov Drupal",
+  "composer_namespace": "drupal/localgov_waste_collection",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/localgov_waste_collection",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "localgov_waste_collection_csv_provider",
+    "localgov_waste_collection_example_provider",
+    "localgov_waste_collection_whitespace_provider"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "LocalGov / public services"
+  ],
+  "keywords": [
+    "localgov",
+    "waste collection",
+    "lookup",
+    "council",
+    "schedule"
+  ]
+}

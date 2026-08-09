@@ -1,0 +1,40 @@
+{
+  "name": "Configurable Anonymizer OIDC",
+  "data_name": "configurable_anonymizer_oidc",
+  "description": "Skips anonymizing users based on their OIDC realm (Configurable Anonymizer add-on).",
+  "version": "1.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/configurable_anonymizer_oidc",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "configurable_anonymizer:configurable_anonymizer",
+    "oidc:oidc"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/configurable_anonymizer_oidc",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Data anonymization"
+  ],
+  "keywords": [
+    "anonymizer",
+    "oidc",
+    "privacy",
+    "gdpr",
+    "realm"
+  ]
+}
