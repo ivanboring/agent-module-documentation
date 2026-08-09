@@ -1,0 +1,42 @@
+{
+  "name": "Metadata Sanitizer",
+  "data_name": "metadata_sanitizer",
+  "description": "Strips metadata (EXIF, etc.) from uploaded files using exiftool \u2014 a privacy/security feature.",
+  "version": "1.2.x",
+  "package": "Privacy & Security",
+  "composer_namespace": "drupal/metadata_sanitizer",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:file"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/metadata_sanitizer",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "metadata_sanitizer_ai_agents",
+    "metadata_sanitizer_tool_api"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "File / metadata sanitization"
+  ],
+  "keywords": [
+    "metadata",
+    "exif",
+    "sanitize",
+    "privacy",
+    "exiftool"
+  ]
+}

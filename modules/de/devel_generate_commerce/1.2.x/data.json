@@ -1,0 +1,42 @@
+{
+  "name": "Devel Generate Commerce",
+  "data_name": "devel_generate_commerce",
+  "description": "Generates dummy Commerce products, variations, stores and orders for development/testing.",
+  "version": "1.2.x",
+  "package": "Development",
+  "composer_namespace": "drupal/devel_generate_commerce",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:commerce",
+    "drupal:devel_generate",
+    "drupal:commerce_order",
+    "drupal:commerce_product"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/devel_generate_commerce",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Test data generation"
+  ],
+  "keywords": [
+    "devel",
+    "commerce",
+    "generate",
+    "test data",
+    "development"
+  ]
+}
