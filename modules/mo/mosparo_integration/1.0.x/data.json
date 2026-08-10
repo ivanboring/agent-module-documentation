@@ -1,0 +1,41 @@
+{
+  "name": "mosparo Integration",
+  "data_name": "mosparo_integration",
+  "description": "Integrates mosparo (privacy-friendly spam protection) with server-side verification. Anti-abuse-positive.",
+  "version": "1.0.x",
+  "package": "Spam control",
+  "composer_namespace": "drupal/mosparo_integration",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^9.4||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/mosparo_integration",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "mosparo_captcha",
+    "mosparo_contact",
+    "mosparo_webform"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "CAPTCHA / bot protection"
+  ],
+  "keywords": [
+    "mosparo",
+    "spam",
+    "captcha",
+    "forms",
+    "anti-abuse"
+  ]
+}
