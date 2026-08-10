@@ -1,0 +1,40 @@
+{
+  "name": "File Access via Webform",
+  "data_name": "file_access_via_webform",
+  "description": "A token-gated file download tied to a webform, requiring BOTH a file-bound token AND core file access (defense-in-depth).",
+  "version": "1.0.x",
+  "package": "Webform",
+  "composer_namespace": "drupal/file_access_via_webform",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "webform:webform",
+    "drupal:file"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/file_access_via_webform",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Private file access"
+  ],
+  "keywords": [
+    "file access",
+    "webform",
+    "token",
+    "download",
+    "private files"
+  ]
+}

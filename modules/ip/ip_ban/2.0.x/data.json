@@ -1,0 +1,40 @@
+{
+  "name": "IP Ban",
+  "data_name": "ip_ban",
+  "description": "Bans access by IP address or by country (GeoIP via ip2country). Coarse gate \u2014 IP is spoofable / GeoIP approximate.",
+  "version": "2.0.x",
+  "package": "Security",
+  "composer_namespace": "drupal/ip_ban",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "country:ip2country",
+    "drupal:path_alias"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ip_ban",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Access hardening"
+  ],
+  "keywords": [
+    "ip ban",
+    "country",
+    "geoip",
+    "block",
+    "access"
+  ]
+}

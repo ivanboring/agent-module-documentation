@@ -1,0 +1,39 @@
+{
+  "name": "Media Private Access",
+  "data_name": "media_private_access",
+  "description": "Adds a media entity access handler restricting media view to owners/permission-holders. NOTE: protects the media ENTITY, not public-scheme file bytes (use private:// for real file protection).",
+  "version": "2.0.x",
+  "package": "Media",
+  "composer_namespace": "drupal/media_private_access",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:media"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/media_private_access",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Content protection"
+  ],
+  "keywords": [
+    "media",
+    "private",
+    "access",
+    "file",
+    "permissions"
+  ]
+}
