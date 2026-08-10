@@ -1,0 +1,44 @@
+{
+  "name": "Search API Japanese Tokenizer",
+  "data_name": "search_api_japanese_tokenizer",
+  "description": "A Search API processor that tokenizes Japanese text using NLP engines.",
+  "version": "2.0.x",
+  "package": "Search",
+  "composer_namespace": "drupal/search_api_japanese_tokenizer",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:search_api"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/search_api_japanese_tokenizer",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "search_api_igo_php",
+    "search_api_mecab",
+    "search_api_sudachi",
+    "search_api_tinysegmenter"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site search"
+  ],
+  "subcategories": [
+    "Search API processors"
+  ],
+  "keywords": [
+    "search api",
+    "japanese",
+    "tokenizer",
+    "nlp",
+    "mecab"
+  ]
+}
