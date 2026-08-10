@@ -1,0 +1,37 @@
+{
+  "name": "Control Admin Access",
+  "data_name": "control_admin_access",
+  "description": "A form to allow/deny access to admin pages by IP address. Hardening layer; IP is spoofable and misconfig can lock you out.",
+  "version": "8.x-1.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/control_admin_access",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/control_admin_access",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Access hardening"
+  ],
+  "keywords": [
+    "admin",
+    "ip",
+    "access",
+    "hardening",
+    "restrict"
+  ]
+}
