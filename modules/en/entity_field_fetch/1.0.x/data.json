@@ -1,0 +1,37 @@
+{
+  "name": "Entity Field Fetch",
+  "data_name": "entity_field_fetch",
+  "description": "A field that mirrors (fetches) field values from OTHER entities. SECURITY CAVEAT: it does not check the source entity's view/field access \u2014 don't mirror restricted fields onto more-public hosts.",
+  "version": "1.0.x",
+  "package": "Field types",
+  "composer_namespace": "drupal/entity_field_fetch",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^8||^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/entity_field_fetch",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Field types"
+  ],
+  "keywords": [
+    "entity field",
+    "fetch",
+    "mirror",
+    "reference",
+    "cross-entity"
+  ]
+}

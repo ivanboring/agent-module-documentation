@@ -1,0 +1,42 @@
+{
+  "name": "HubSpot Client",
+  "data_name": "hubspot_client",
+  "description": "A HubSpot integration client (sync contacts/data to HubSpot), with commerce and sync submodules.",
+  "version": "1.0.x",
+  "package": "Hubspot",
+  "composer_namespace": "drupal/hubspot_client",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "hubspot_api:hubspot_api"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/hubspot_client",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "commerce",
+    "sync"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "CRM"
+  ],
+  "keywords": [
+    "hubspot",
+    "crm",
+    "sync",
+    "contacts",
+    "integration"
+  ]
+}
