@@ -1,0 +1,42 @@
+{
+  "name": "Site Config",
+  "data_name": "site_config",
+  "description": "Manages global site configuration, with optional JSON:API/REST exposure.",
+  "version": "1.0.x",
+  "package": "Site Config",
+  "composer_namespace": "drupal/site_config",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:language"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/site_config",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "site_config_jsonapi",
+    "site_config_rest"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Configuration management"
+  ],
+  "keywords": [
+    "site config",
+    "global",
+    "settings",
+    "jsonapi",
+    "rest"
+  ]
+}

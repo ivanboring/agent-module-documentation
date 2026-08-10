@@ -1,0 +1,39 @@
+{
+  "name": "Session Reminder",
+  "data_name": "session_reminder",
+  "description": "Shows a modal warning before the user's Drupal session cookie expires.",
+  "version": "1.0.x",
+  "package": "User",
+  "composer_namespace": "drupal/session_reminder",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/session_reminder",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Session management"
+  ],
+  "keywords": [
+    "session",
+    "reminder",
+    "timeout",
+    "modal",
+    "expiry"
+  ]
+}
