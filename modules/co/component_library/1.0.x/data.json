@@ -1,0 +1,44 @@
+{
+  "name": "Component Library",
+  "data_name": "component_library",
+  "description": "Build a library of reusable UI components (with CodeMirror editing, Layout Builder and Workspaces integration).",
+  "version": "1.0.x",
+  "package": "User interface",
+  "composer_namespace": "drupal/component_library",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "entity:entity",
+    "codemirror_editor:codemirror_editor",
+    "drupal:layout_builder"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/component_library",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "component_library_engine",
+    "component_library_workspaces"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Theming"
+  ],
+  "subcategories": [
+    "Components"
+  ],
+  "keywords": [
+    "component library",
+    "components",
+    "codemirror",
+    "layout builder",
+    "ui"
+  ]
+}

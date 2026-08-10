@@ -1,0 +1,41 @@
+{
+  "name": "Advanced Queue Mail",
+  "data_name": "advancedqueue_mail",
+  "description": "Sends email notifications for Advanced Queue jobs (e.g. on job completion/failure).",
+  "version": "1.0.x",
+  "package": "Mail",
+  "composer_namespace": "drupal/advancedqueue_mail",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "advancedqueue:advancedqueue"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/advancedqueue_mail",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "advancedqueue_mail_symfony_mailer"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Email"
+  ],
+  "keywords": [
+    "advanced queue",
+    "mail",
+    "notification",
+    "queue",
+    "email"
+  ]
+}

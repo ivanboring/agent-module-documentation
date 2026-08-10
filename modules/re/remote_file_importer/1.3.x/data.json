@@ -1,0 +1,39 @@
+{
+  "name": "Remote File Importer",
+  "data_name": "remote_file_importer",
+  "description": "Imports files from remote data storages (FTP/SFTP/etc.) into Drupal, via pluggable data sources.",
+  "version": "1.3.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/remote_file_importer",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/remote_file_importer",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "remote_file_importer_ftp"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Remote sources"
+  ],
+  "keywords": [
+    "remote file",
+    "import",
+    "ftp",
+    "sftp",
+    "ingestion"
+  ]
+}
