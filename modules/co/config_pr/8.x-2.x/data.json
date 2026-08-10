@@ -1,0 +1,44 @@
+{
+  "name": "Config PR",
+  "data_name": "config_pr",
+  "description": "Lets admins open pull requests of configuration changes to a Git host (GitHub/GitLab/Bitbucket).",
+  "version": "8.x-2.x",
+  "package": "Administration",
+  "composer_namespace": "drupal/config_pr",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:config",
+    "drupal:field"
+  ],
+  "configure": null,
+  "core_version_requirement": ">=8",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/config_pr",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "config_pr_bitbucket",
+    "config_pr_github",
+    "config_pr_gitlab"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Configuration management"
+  ],
+  "keywords": [
+    "config",
+    "pull request",
+    "git",
+    "github",
+    "deployment"
+  ]
+}

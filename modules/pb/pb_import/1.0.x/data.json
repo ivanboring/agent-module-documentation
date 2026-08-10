@@ -1,0 +1,43 @@
+{
+  "name": "PB Import",
+  "data_name": "pb_import",
+  "description": "Imports content and creates nodes/paragraphs from a source file.",
+  "version": "1.0.x",
+  "package": "Paragraphs",
+  "composer_namespace": "drupal/pb_import",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "paragraphs:paragraphs",
+    "entity_reference_revisions:entity_reference_revisions"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/pb_import",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "pb_import_node",
+    "pb_import_para"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Content import"
+  ],
+  "keywords": [
+    "import",
+    "paragraphs",
+    "nodes",
+    "content",
+    "bulk"
+  ]
+}
