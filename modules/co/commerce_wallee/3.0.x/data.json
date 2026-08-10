@@ -1,0 +1,42 @@
+{
+  "name": "Commerce Wallee",
+  "data_name": "commerce_wallee",
+  "description": "A Wallee payment gateway for Drupal Commerce. Webhook re-fetches authoritative state via the Wallee SDK.",
+  "version": "3.0.x",
+  "package": "Commerce (contrib)",
+  "composer_namespace": "drupal/commerce_wallee",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "commerce:commerce",
+    "commerce:commerce_payment"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.5||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/commerce_wallee",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "wstack"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Payment gateway"
+  ],
+  "keywords": [
+    "commerce",
+    "wallee",
+    "payment",
+    "gateway",
+    "webhook"
+  ]
+}
