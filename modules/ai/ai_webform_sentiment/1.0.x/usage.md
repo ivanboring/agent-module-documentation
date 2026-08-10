@@ -1,0 +1,33 @@
+<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
+AI Webform Sentiment analyzes webform submissions for sentiment using AI (with Chart.js visualization).
+
+---
+
+AI Webform Sentiment analyzes webform submissions for sentiment using AI (with Chart.js visualization). It builds on Drupal's AI module and depends on `ai`, `webform`, `chartjs_api`, in the AI package.
+
+Use it for AI-assisted ai analysis. It is an AI/integration feature. Security/data handling: it **sends
+submission text to the configured AI provider** (external egress — confirm acceptable for the content), the provider **API key** is stored via the AI module's Key config (secret),
+over HTTPS. It has no access-control role beyond its permission. Configure the AI
+provider.
+
+---
+
+- Analyzes webform submissions for sentiment using ai (with chart.js visualization).
+- Use Drupal's AI module.
+- Assist ai analysis.
+- Send submission text to the AI provider (egress).
+- Confirm the egress is acceptable.
+- Store the API key as a secret.
+- Use HTTPS. Serve the workflow.
+- Have no access-control role beyond permission.
+- Configure the AI provider.
+- Handle the AI feature.
+- Run the AI task.
+- Configure it.
+- Process content.
+- Handle the integration.
+- Assist users.
+- Automate with AI.
+- Generate output.
+- Secure the key.
+- Provide AI ai analysis.
