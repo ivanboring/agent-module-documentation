@@ -1,0 +1,37 @@
+{
+  "name": "ORCID",
+  "data_name": "orcid",
+  "description": "ORCID OAuth login/account-linking. SECURITY: the OAuth callback validates NO state \u2192 login-CSRF / forced account-linking \u2192 takeover, plus token/PII disclosure (danger 3). Do not deploy unpatched.",
+  "version": "8.x-1.x",
+  "package": "ORCID",
+  "composer_namespace": "drupal/orcid",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^8||^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/orcid",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Authentication"
+  ],
+  "keywords": [
+    "orcid",
+    "oauth",
+    "login",
+    "account takeover",
+    "csrf"
+  ]
+}

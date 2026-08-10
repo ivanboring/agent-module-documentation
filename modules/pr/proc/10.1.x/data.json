@@ -1,0 +1,45 @@
+{
+  "name": "Proc (Client-side PGP)",
+  "data_name": "proc",
+  "description": "Provides client-side (browser) OpenPGP encryption via OpenPGP.js, with janitor/metadata/reporting submodules.",
+  "version": "10.1.x",
+  "package": null,
+  "composer_namespace": "drupal/proc",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:file",
+    "drupal:user",
+    "drupal:views"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/proc",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "proc_janitor",
+    "proc_metadata_transitioner",
+    "proc_reporting"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Encryption"
+  ],
+  "keywords": [
+    "pgp",
+    "openpgp",
+    "encryption",
+    "client-side",
+    "privacy"
+  ]
+}

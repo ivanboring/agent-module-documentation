@@ -1,0 +1,41 @@
+{
+  "name": "JSON:API Security",
+  "data_name": "jsonapi_security",
+  "description": "Enhances JSON:API security with defense-in-depth controls: privacy enforcement, access controls, and security logging (with a TFA submodule).",
+  "version": "1.0.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/jsonapi_security",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:jsonapi"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.6||^11.2",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/jsonapi_security",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "jsonapi_security_tfa"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "JSON:API / web services"
+  ],
+  "keywords": [
+    "jsonapi",
+    "security",
+    "privacy",
+    "access control",
+    "logging"
+  ]
+}
