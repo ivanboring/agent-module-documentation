@@ -1,0 +1,43 @@
+{
+  "name": "Webtrees",
+  "data_name": "webtrees",
+  "description": "Provides single sign-on (SSO) support between Drupal and Webtrees (genealogy software).",
+  "version": "8.x-2.x",
+  "package": "Webtrees",
+  "composer_namespace": "drupal/webtrees",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:system",
+    "drupal:user"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8||^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/webtrees",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "webtrees_admin_views",
+    "webtrees_views"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Single sign-on"
+  ],
+  "keywords": [
+    "webtrees",
+    "sso",
+    "single sign-on",
+    "genealogy",
+    "authentication"
+  ]
+}

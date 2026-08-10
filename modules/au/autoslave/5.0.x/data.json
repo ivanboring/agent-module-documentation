@@ -1,0 +1,39 @@
+{
+  "name": "AutoSlave",
+  "data_name": "autoslave",
+  "description": "Automatically routes read database queries to replica (slave) servers for scaling.",
+  "version": "5.0.x",
+  "package": "Database",
+  "composer_namespace": "drupal/autoslave",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:system"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.5||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/autoslave",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "Database"
+  ],
+  "keywords": [
+    "autoslave",
+    "database",
+    "replica",
+    "read queries",
+    "scaling"
+  ]
+}

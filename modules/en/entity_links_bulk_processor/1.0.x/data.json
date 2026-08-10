@@ -1,0 +1,42 @@
+{
+  "name": "Entity Links Bulk Processor",
+  "data_name": "entity_links_bulk_processor",
+  "description": "Bulk-converts internal entity links in content (e.g. path aliases to canonical entity links).",
+  "version": "1.0.x",
+  "package": "Content",
+  "composer_namespace": "drupal/entity_links_bulk_processor",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:filter",
+    "drupal:path_alias"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/entity_links_bulk_processor",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "entity_links_autosave"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Link management"
+  ],
+  "keywords": [
+    "entity links",
+    "bulk",
+    "convert",
+    "path alias",
+    "content"
+  ]
+}
