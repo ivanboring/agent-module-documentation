@@ -1,0 +1,39 @@
+{
+  "name": "Book PDF",
+  "data_name": "book_pdf",
+  "description": "Prints an entire Book to a PDF. SECURITY: the PDF route renders any node's book content with NO entity view-access check \u2192 anonymous read of unpublished/restricted content (danger 4).",
+  "version": "1.0.x",
+  "package": "Book",
+  "composer_namespace": "drupal/book_pdf",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:book"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8||^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/book_pdf",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "PDF generation"
+  ],
+  "keywords": [
+    "book",
+    "pdf",
+    "export",
+    "access bypass",
+    "print"
+  ]
+}

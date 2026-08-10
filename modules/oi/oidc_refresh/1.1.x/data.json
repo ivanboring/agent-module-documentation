@@ -1,0 +1,39 @@
+{
+  "name": "OIDC Refresh",
+  "data_name": "oidc_refresh",
+  "description": "Keeps the OpenID Connect session alive by refreshing it via AJAX at an interval.",
+  "version": "1.1.x",
+  "package": "OIDC",
+  "composer_namespace": "drupal/oidc_refresh",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "oidc:oidc"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9||^10||^11||^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/oidc_refresh",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Authentication"
+  ],
+  "keywords": [
+    "oidc",
+    "openid connect",
+    "session",
+    "refresh",
+    "sso"
+  ]
+}
