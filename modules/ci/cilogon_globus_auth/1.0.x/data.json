@@ -1,0 +1,39 @@
+{
+  "name": "OpenID Connect OSP Client (CILogon/Globus)",
+  "data_name": "cilogon_globus_auth",
+  "description": "A pluggable OpenID Connect client for CILogon / Globus (One Science Place), built on the openid_connect module. Inherits openid_connect's state/CSRF handling.",
+  "version": "1.0.x",
+  "package": "User authentication",
+  "composer_namespace": "drupal/cilogon_globus_auth",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "openid_connect:openid_connect"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/cilogon_globus_auth",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "OAuth / OpenID Connect client"
+  ],
+  "keywords": [
+    "openid connect",
+    "cilogon",
+    "globus",
+    "oauth",
+    "authentication"
+  ]
+}

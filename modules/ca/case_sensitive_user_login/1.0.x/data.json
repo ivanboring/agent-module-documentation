@@ -1,0 +1,39 @@
+{
+  "name": "Case Sensitive User Login",
+  "data_name": "case_sensitive_user_login",
+  "description": "Adds a login validator requiring the entered username to match the stored username's case exactly. Purely restrictive; effectiveness depends on the DB collation being case-sensitive.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/case_sensitive_user_login",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/case_sensitive_user_login",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Login page protection"
+  ],
+  "keywords": [
+    "login",
+    "case-sensitive",
+    "username",
+    "user",
+    "authentication"
+  ]
+}
