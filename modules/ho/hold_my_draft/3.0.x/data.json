@@ -1,0 +1,40 @@
+{
+  "name": "Hold My Draft",
+  "data_name": "hold_my_draft",
+  "description": "Lets editors \"hold\" the latest revision (draft) and block further editing until released.",
+  "version": "3.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/hold_my_draft",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node",
+    "drupal:content_moderation"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/hold_my_draft",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Editorial workflow / moderation"
+  ],
+  "keywords": [
+    "draft",
+    "hold",
+    "revision",
+    "content moderation",
+    "lock"
+  ]
+}
