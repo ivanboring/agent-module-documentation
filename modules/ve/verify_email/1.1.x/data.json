@@ -1,0 +1,37 @@
+{
+  "name": "Verify Email",
+  "data_name": "verify_email",
+  "description": "Gates parts of the site behind email verification: emails a magic link that logs the user in (creating an account if needed). Validates with hash_equals + expiry.",
+  "version": "1.1.x",
+  "package": "Authentication",
+  "composer_namespace": "drupal/verify_email",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/verify_email",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Authentication"
+  ],
+  "keywords": [
+    "email verification",
+    "magic link",
+    "passwordless",
+    "login",
+    "authentication"
+  ]
+}

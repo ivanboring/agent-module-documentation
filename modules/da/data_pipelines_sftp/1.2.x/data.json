@@ -1,0 +1,40 @@
+{
+  "name": "Data Pipelines SFTP",
+  "data_name": "data_pipelines_sftp",
+  "description": "Adds SFTP as a source for the Data Pipelines module. Credentials are stored via the Key module (correct secret handling).",
+  "version": "1.2.x",
+  "package": "Data Pipelines",
+  "composer_namespace": "drupal/data_pipelines_sftp",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:data_pipelines",
+    "drupal:key"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.1||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/data_pipelines_sftp",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Remote sources"
+  ],
+  "keywords": [
+    "data pipelines",
+    "sftp",
+    "source",
+    "import",
+    "key"
+  ]
+}
