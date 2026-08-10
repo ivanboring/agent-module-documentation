@@ -1,0 +1,40 @@
+{
+  "name": "Group Permissions Template",
+  "data_name": "group_permissions_template",
+  "description": "Defines reusable permission templates and applies them to Groups (via group_permissions).",
+  "version": "2.0.x",
+  "package": "Group",
+  "composer_namespace": "drupal/group_permissions_template",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "group:group",
+    "group_permissions:group_permissions"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/group_permissions_template",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Group / group permissions"
+  ],
+  "keywords": [
+    "group",
+    "permissions",
+    "template",
+    "access",
+    "roles"
+  ]
+}

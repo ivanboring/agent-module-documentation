@@ -1,0 +1,44 @@
+{
+  "name": "Affiliated",
+  "data_name": "affiliated",
+  "description": "Provides common affiliate-marketing functionality (referrals/commissions), with Commerce/Webform/registration submodules.",
+  "version": "1.0.x",
+  "package": "Affiliated",
+  "composer_namespace": "drupal/affiliated",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:views",
+    "drupal:user"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.1||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/affiliated",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "affiliate_commerce",
+    "affiliate_registrations",
+    "affiliate_webform"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "User engagement"
+  ],
+  "subcategories": [
+    "Affiliate / referrals"
+  ],
+  "keywords": [
+    "affiliate",
+    "referral",
+    "commission",
+    "marketing",
+    "tracking"
+  ]
+}
