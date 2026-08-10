@@ -1,0 +1,40 @@
+{
+  "name": "Node Migration to CRM",
+  "data_name": "crm_migrate_node",
+  "description": "migrates Drupal nodes into Drupal CRM (contacts/records).",
+  "version": "1.0.x",
+  "package": "CRM",
+  "composer_namespace": "drupal/crm_migrate_node",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:crm",
+    "migrate_plus:migrate_plus"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/crm_migrate_node",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Content migration / import"
+  ],
+  "keywords": [
+    "crm",
+    "migration",
+    "node",
+    "migrate plus",
+    "contacts"
+  ]
+}

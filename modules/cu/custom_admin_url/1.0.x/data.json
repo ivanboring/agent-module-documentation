@@ -1,0 +1,37 @@
+{
+  "name": "Custom Admin URL",
+  "data_name": "custom_admin_url",
+  "description": "Restricts admin/user routes to a designated back-office URL/host, returning 403 when they are reached via a front-office host. A defense-in-depth layer atop core permissions; relies on trusted host resolution.",
+  "version": "1.0.x",
+  "package": "Custom admin URL",
+  "composer_namespace": "drupal/custom_admin_url",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/custom_admin_url",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Path / URL access restriction"
+  ],
+  "keywords": [
+    "admin url",
+    "access",
+    "back-office",
+    "host",
+    "restriction"
+  ]
+}

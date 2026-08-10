@@ -1,0 +1,39 @@
+{
+  "name": "Consumer Client IP",
+  "data_name": "consumer_client_ip",
+  "description": "Maps a configurable HTTP header's value into the X-Forwarded-For header on each request. Only safe when the source header is set by a trusted proxy (and Drupal's reverse_proxy trust is configured) \u2014 a client-settable header enables client-IP spoofing.",
+  "version": "1.0.x",
+  "package": "Authentication",
+  "composer_namespace": "drupal/consumer_client_ip",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "consumers:consumers"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/consumer_client_ip",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Reverse proxy / client IP"
+  ],
+  "keywords": [
+    "client ip",
+    "x-forwarded-for",
+    "reverse proxy",
+    "header",
+    "spoofing"
+  ]
+}
