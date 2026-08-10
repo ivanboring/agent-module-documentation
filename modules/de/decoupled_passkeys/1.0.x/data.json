@@ -1,0 +1,41 @@
+{
+  "name": "Decoupled Passkeys",
+  "data_name": "decoupled_passkeys",
+  "description": "Adds passkey (WebAuthn) authentication support for decoupled front-ends, via JSON-RPC and the WebAuthn framework.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/decoupled_passkeys",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "jsonrpc:jsonrpc",
+    "public_key_credential_source:public_key_credential_source",
+    "webauthn_framework:webauthn_framework"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/decoupled_passkeys",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Authentication"
+  ],
+  "keywords": [
+    "passkeys",
+    "webauthn",
+    "decoupled",
+    "authentication",
+    "jsonrpc"
+  ]
+}
