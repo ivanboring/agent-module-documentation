@@ -1,0 +1,40 @@
+{
+  "name": "JSON:API Frontend",
+  "data_name": "jsonapi_frontend",
+  "description": "Makes Drupal JSON:API frontend-ready: a path-resolver endpoint (entity-access-checked) and a secret-gated routes feed.",
+  "version": "1.0.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/jsonapi_frontend",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:jsonapi",
+    "drupal:path_alias"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10||^11||^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/jsonapi_frontend",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Decoupled"
+  ],
+  "subcategories": [
+    "JSON:API"
+  ],
+  "keywords": [
+    "jsonapi",
+    "decoupled",
+    "frontend",
+    "path resolver",
+    "routes"
+  ]
+}

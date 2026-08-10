@@ -1,0 +1,43 @@
+{
+  "name": "Magic Code",
+  "data_name": "magic_code",
+  "description": "A passwordless \"magic code\" authentication/verification system \u2014 CSPRNG codes, flood-protected, expiring, single-use.",
+  "version": "2.1.x",
+  "package": "Authentication",
+  "composer_namespace": "drupal/magic_code",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "consumers:consumers",
+    "verification:verification"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/magic_code",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "magic_code_email_login",
+    "magic_code_verify_form"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Authentication"
+  ],
+  "keywords": [
+    "magic code",
+    "passwordless",
+    "authentication",
+    "otp",
+    "flood control"
+  ]
+}

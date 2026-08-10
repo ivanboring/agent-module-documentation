@@ -1,0 +1,46 @@
+{
+  "name": "Diba Integration",
+  "data_name": "diba_integration",
+  "description": "An integration/setup meta-module for the Diputaci\u00f3 de Barcelona (Diba) platform, bundling standard modules and config.",
+  "version": "1.3.x",
+  "package": "diba",
+  "composer_namespace": "drupal/diba_integration",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "masquerade:masquerade",
+    "simple_sitemap:simple_sitemap",
+    "pathauto:pathauto"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3||^11||^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/diba_integration",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "diba_integration_cogo",
+    "diba_integration_extra",
+    "diba_integration_saml",
+    "diba_integration_vus"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Platform / distribution"
+  ],
+  "keywords": [
+    "diba",
+    "diputacio barcelona",
+    "integration",
+    "distribution",
+    "saml"
+  ]
+}

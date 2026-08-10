@@ -1,0 +1,40 @@
+{
+  "name": "Filter Format Audit",
+  "data_name": "filter_format_audit",
+  "description": "Audits text (filter) formats to identify content that could be affected by format changes \u2014 a security/QA tool.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/filter_format_audit",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:filter",
+    "dynamic_entity_reference:dynamic_entity_reference"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8.8||~9.0||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/filter_format_audit",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Auditing"
+  ],
+  "keywords": [
+    "filter format",
+    "audit",
+    "text format",
+    "security",
+    "content"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "name": "HTML Script Formatter",
+  "data_name": "html_script_formatter",
+  "description": "A field formatter that outputs the raw field value UNESCAPED (renders HTML/JS). SECURITY: stored-XSS-by-design \u2014 only for fully-trusted fields.",
+  "version": "1.0.x",
+  "package": "Field Formatter",
+  "composer_namespace": "drupal/html_script_formatter",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:field"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8||^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/html_script_formatter",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Field formatters"
+  ],
+  "keywords": [
+    "html",
+    "script",
+    "formatter",
+    "raw",
+    "xss"
+  ]
+}
