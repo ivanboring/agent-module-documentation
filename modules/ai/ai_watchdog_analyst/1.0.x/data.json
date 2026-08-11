@@ -1,0 +1,41 @@
+{
+  "name": "AI Watchdog Analyst",
+  "data_name": "ai_watchdog_analyst",
+  "description": "Analyzes Drupal logs (Watchdog/dblog) using AI to suggest solutions.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/ai_watchdog_analyst",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:dblog",
+    "ai:ai"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ai_watchdog_analyst",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "AI tooling / function calling"
+  ],
+  "keywords": [
+    "ai",
+    "watchdog",
+    "logs",
+    "dblog",
+    "debugging"
+  ]
+}

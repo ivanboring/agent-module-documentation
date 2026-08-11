@@ -1,0 +1,46 @@
+{
+  "name": "AI Assistant (AIA)",
+  "data_name": "aia",
+  "description": "An AI-powered Drupal configuration generator (content types, fields, views, etc.).",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/aia",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node",
+    "drupal:field",
+    "drupal:taxonomy",
+    "drupal:block_content",
+    "drupal:views",
+    "ai:ai",
+    "drupal:menu_link_content"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/aia",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "AI agents / taskable AI"
+  ],
+  "keywords": [
+    "ai",
+    "configuration",
+    "generator",
+    "site building",
+    "scaffold"
+  ]
+}
