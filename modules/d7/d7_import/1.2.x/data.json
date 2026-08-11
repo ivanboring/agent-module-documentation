@@ -1,0 +1,42 @@
+{
+  "name": "D7 Content Import",
+  "data_name": "d7_import",
+  "description": "Import content exported from Drupal 7 sites.",
+  "version": "1.2.x",
+  "package": "Migration",
+  "composer_namespace": "drupal/d7_import",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node",
+    "drupal:taxonomy",
+    "drupal:file",
+    "drupal:path_alias"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/d7_import",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Content migration / import"
+  ],
+  "keywords": [
+    "drupal 7",
+    "import",
+    "migration",
+    "content",
+    "d7"
+  ]
+}
