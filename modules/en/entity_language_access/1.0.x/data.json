@@ -1,0 +1,39 @@
+{
+  "name": "Entity Language Access",
+  "data_name": "entity_language_access",
+  "description": "Denies access to the canonical view of a translatable content entity when the current language is neither its original nor a translated language. An entity-level access handler (respected by the canonical route and per-entity access checks).",
+  "version": "1.0.x",
+  "package": "Multilingual",
+  "composer_namespace": "drupal/entity_language_access",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:language"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/entity_language_access",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Language-based access control"
+  ],
+  "keywords": [
+    "language access",
+    "translation",
+    "entity access",
+    "multilingual",
+    "canonical"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "Entity Webhook",
+  "data_name": "entity_webhook",
+  "description": "Inbound webhook ingestion that upserts content entities from posted JSON. SECURITY: the receiver route is public (_access: TRUE) and verification is OPTIONAL and FAIL-OPEN \u2014 a source type with no verification plugin (the default / '- None -') accepts unauthenticated POSTs that create/update entities. Always configure an HMAC/API-key/domain verifier.",
+  "version": "1.0.x",
+  "package": "Services",
+  "composer_namespace": "drupal/entity_webhook",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10.3||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/entity_webhook",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "REST / web services"
+  ],
+  "keywords": [
+    "webhook",
+    "ingestion",
+    "entity upsert",
+    "verification",
+    "fail-open"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "name": "Dripyard Simple Login",
+  "data_name": "dripyard_simple_login",
+  "description": "Replaces the login form with magic-link (passwordless) authentication by repurposing core's password-reset flow. Uses core's secure reset token (user_pass_rehash + hash_equals + expiry) and core's password-reset flood control.",
+  "version": "1.0.x",
+  "package": "Dripyard",
+  "composer_namespace": "drupal/dripyard_simple_login",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/dripyard_simple_login",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Authentication"
+  ],
+  "keywords": [
+    "magic link",
+    "passwordless",
+    "login",
+    "authentication",
+    "password reset"
+  ]
+}
