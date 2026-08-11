@@ -1,0 +1,39 @@
+{
+  "name": "Views Access by User",
+  "data_name": "views_access_user",
+  "description": "Adds a Views access plugin that restricts access to a view by specific user(s). A real Views-level access control \u2014 it gates the view's route/display; verify the configured user list is correct and remember it protects the VIEW, not the underlying entities (entity access still applies separately).",
+  "version": "1.0.x",
+  "package": "Views",
+  "composer_namespace": "drupal/views_access_user",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "views:views"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/views_access_user",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Views access control"
+  ],
+  "keywords": [
+    "views",
+    "access",
+    "user",
+    "restrict",
+    "access plugin"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "name": "User API",
+  "data_name": "user_api",
+  "description": "Adds REST resources for user registration and management (register, set-password, cancel account, resend email). Securely built: set-password only changes the CURRENT authenticated user's password and requires either the current password or a token from the verification module; registration respects core registration settings (approval/activation) via the core resource. Gate the REST permissions + rate-limit the public endpoints.",
+  "version": "2.1.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/user_api",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:rest",
+    "drupal:user",
+    "simple_oauth:simple_oauth",
+    "verification:verification"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/user_api",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "REST / web services"
+  ],
+  "keywords": [
+    "user api",
+    "rest",
+    "registration",
+    "password",
+    "decoupled"
+  ]
+}

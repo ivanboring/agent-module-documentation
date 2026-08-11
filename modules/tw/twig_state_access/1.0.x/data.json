@@ -1,0 +1,37 @@
+{
+  "name": "Twig State Access",
+  "data_name": "twig_state_access",
+  "description": "Adds Twig extensions to read Drupal State and private tempstore APIs (read-only) from templates. CAVEAT: State/tempstore can hold SENSITIVE data (some modules store tokens/keys in State) \u2014 exposing them to Twig means a template author (or template output) could leak them; restrict to trusted template authors and never render sensitive state values into public output.",
+  "version": "1.0.x",
+  "package": "Twig extensions",
+  "composer_namespace": "drupal/twig_state_access",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/twig_state_access",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Twig / component libraries"
+  ],
+  "keywords": [
+    "twig",
+    "state",
+    "tempstore",
+    "readonly",
+    "theming"
+  ]
+}
