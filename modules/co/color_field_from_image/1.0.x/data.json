@@ -1,0 +1,41 @@
+{
+  "name": "Color Field from image",
+  "data_name": "color_field_from_image",
+  "description": "Automatically fills a color_field with the dominant color of an image field on the same entity.",
+  "version": "1.0.x",
+  "package": "Fields",
+  "composer_namespace": "drupal/color_field_from_image",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:image",
+    "color_field:color_field"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.1 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/color_field_from_image",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience",
+    "Media"
+  ],
+  "subcategories": [
+    "Computed / derived fields"
+  ],
+  "keywords": [
+    "color field",
+    "dominant color",
+    "image",
+    "field",
+    "automation"
+  ]
+}
