@@ -1,0 +1,37 @@
+{
+  "name": "Node Edit Access by Term",
+  "data_name": "node_edit_access_by_term",
+  "description": "Restricts node EDIT access by taxonomy term (terms carry allowed user/role fields). SECURITY: the restriction is enforced only in hook_form_alter (throws AccessDeniedHttpException on the edit form) with NO hook_node_access \u2014 so it is bypassed by JSON:API/REST PATCH, Quick Edit, Views Bulk Operations, and programmatic edits. Treat it as a UI hint, not an access control, until it implements hook_node_access.",
+  "version": "2.0.x",
+  "package": null,
+  "composer_namespace": "drupal/node_edit_access_by_term",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/node_edit_access_by_term",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Per-node view access"
+  ],
+  "keywords": [
+    "node edit",
+    "taxonomy term",
+    "access",
+    "form_alter",
+    "bypass"
+  ]
+}

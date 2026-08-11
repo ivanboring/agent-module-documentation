@@ -1,0 +1,37 @@
+{
+  "name": "Page Proxy",
+  "data_name": "page_proxy",
+  "description": "Lets Drupal act as a reverse proxy for an ADMIN-configured external page (proxy routes configured by an admin at admin/config/services/page-proxy; the target host is fixed by config). It forwards requests (and filtered cookies) to that host server-side \u2014 confirm the target is trusted, and note it is an SSRF-adjacent surface constrained to the configured host.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/page_proxy",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/page_proxy",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Reverse proxy / client IP"
+  ],
+  "keywords": [
+    "page proxy",
+    "reverse proxy",
+    "external",
+    "ssrf",
+    "fetch"
+  ]
+}
