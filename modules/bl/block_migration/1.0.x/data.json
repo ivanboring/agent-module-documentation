@@ -1,0 +1,40 @@
+{
+  "name": "Block Migration",
+  "data_name": "block_migration",
+  "description": "Exports and imports Drupal block content with translations, across any bundle and field type.",
+  "version": "1.0.x",
+  "package": "Migration",
+  "composer_namespace": "drupal/block_migration",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:block_content",
+    "single_content_sync"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/block_migration",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Migration tooling"
+  ],
+  "keywords": [
+    "block",
+    "migration",
+    "export",
+    "import",
+    "single_content_sync"
+  ]
+}
