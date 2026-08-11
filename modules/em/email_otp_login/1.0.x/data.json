@@ -1,0 +1,39 @@
+{
+  "name": "Email OTP Login",
+  "data_name": "email_otp_login",
+  "description": "Passwordless login via a 6-digit code emailed to the user. SECURITY: the login/verify endpoints are public (access content) and verification has NO rate-limiting, NO attempt limit, NO invalidation on failed guesses, and NO OTP expiry (the code is stored raw in State) \u2014 so an anonymous attacker can brute-force any account's 6-digit OTP and take it over. Do NOT use until it enforces attempt-limiting + expiry.",
+  "version": "1.0.x",
+  "package": "User",
+  "composer_namespace": "drupal/email_otp_login",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/email_otp_login",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Authentication"
+  ],
+  "keywords": [
+    "otp",
+    "email login",
+    "passwordless",
+    "brute force",
+    "account takeover"
+  ]
+}

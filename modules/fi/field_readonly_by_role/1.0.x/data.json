@@ -1,0 +1,37 @@
+{
+  "name": "Field Read-Only by Role",
+  "data_name": "field_readonly_by_role",
+  "description": "Marks fields editable for some roles and read-only for others, WITHOUT hiding them. SECURITY: enforcement is ONLY hook_form_alter setting #disabled \u2014 there is NO hook_entity_field_access \u2014 so the read-only restriction holds on the entity form UI but is BYPASSED by JSON:API/REST/Quick Edit/VBO/programmatic writes. It is a UI convenience, not a field-access control; don't rely on it to protect a field.",
+  "version": "1.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/field_readonly_by_role",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/field_readonly_by_role",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Field-level access control"
+  ],
+  "keywords": [
+    "field",
+    "read-only",
+    "role",
+    "form",
+    "field access"
+  ]
+}

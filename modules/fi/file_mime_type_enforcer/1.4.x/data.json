@@ -1,0 +1,40 @@
+{
+  "name": "File MIME Type Enforcer",
+  "data_name": "file_mime_type_enforcer",
+  "description": "Hardens file uploads by enforcing that the extension-based MIME type (Drupal's ExtensionMimeTypeGuesser) matches the content-detected MIME type (Symfony fileinfo), with configurable allowed mappings \u2014 blocking MIME-spoofed uploads (e.g. a .png that is really HTML/PHP). A security-positive upload-validation module.",
+  "version": "1.4.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/file_mime_type_enforcer",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:file",
+    "drupal:system"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/file_mime_type_enforcer",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "HTML sanitization / XSS filtering"
+  ],
+  "keywords": [
+    "file upload",
+    "mime type",
+    "fileinfo",
+    "validation",
+    "hardening"
+  ]
+}

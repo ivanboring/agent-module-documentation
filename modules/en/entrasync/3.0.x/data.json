@@ -1,0 +1,40 @@
+{
+  "name": "Microsoft Entra User Sync",
+  "data_name": "entrasync",
+  "description": "syncs users between Microsoft Entra ID and Drupal.",
+  "version": "3.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/entrasync",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "key:key",
+    "ms_graph_api:ms_graph_api"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/entrasync",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "External authentication"
+  ],
+  "keywords": [
+    "entra",
+    "azure ad",
+    "user sync",
+    "ms graph",
+    "key"
+  ]
+}
