@@ -1,0 +1,37 @@
+{
+  "name": "Microsoft Graph Mailer",
+  "data_name": "microsoft_graph_mailer",
+  "description": "Sends (and receives) email via the Microsoft Graph Mail API using OAuth app credentials. CAVEAT: it stores the OAuth client_secret in module CONFIG (exported/config-sync), not the Key module or env \u2014 keep that config out of version control and prefer a Key/env-based secret.",
+  "version": "1.0.x",
+  "package": "Mail",
+  "composer_namespace": "drupal/microsoft_graph_mailer",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/microsoft_graph_mailer",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Email / mail delivery"
+  ],
+  "keywords": [
+    "microsoft graph",
+    "mailer",
+    "office 365",
+    "oauth",
+    "email"
+  ]
+}

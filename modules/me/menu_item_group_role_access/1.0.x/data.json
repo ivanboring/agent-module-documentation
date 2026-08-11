@@ -1,0 +1,41 @@
+{
+  "name": "Menu Item Group Role Access",
+  "data_name": "menu_item_group_role_access",
+  "description": "Controls MENU ITEM visibility by group and role, with an option to ignore (overwrite) the menu target's access check. This governs whether the LINK shows, not access to the target \u2014 target access is unchanged, so hiding/showing a menu item is not a security boundary; the 'overwrite target access' option can disclose links/titles of content the user still can't open.",
+  "version": "1.0.x",
+  "package": "Menu",
+  "composer_namespace": "drupal/menu_item_group_role_access",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:menu_link_content",
+    "drupal:menu_ui",
+    "group:group"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.5||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/menu_item_group_role_access",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Navigation menus"
+  ],
+  "keywords": [
+    "menu",
+    "role access",
+    "group",
+    "visibility",
+    "menu item"
+  ]
+}

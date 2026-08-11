@@ -1,0 +1,39 @@
+{
+  "name": "Masked Output",
+  "data_name": "masked_output",
+  "description": "Displays field values as masked strings (e.g. ******9845). This is DISPLAY-only masking \u2014 the real value is unchanged in the database, entity API, JSON:API and exports, so it is a UI convenience, NOT a data-access control. Don't rely on it to protect sensitive data.",
+  "version": "2.1.x",
+  "package": null,
+  "composer_namespace": "drupal/masked_output",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/masked_output",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Field formatters"
+  ],
+  "keywords": [
+    "mask",
+    "masked output",
+    "privacy",
+    "field",
+    "display"
+  ]
+}

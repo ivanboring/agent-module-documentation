@@ -1,0 +1,37 @@
+{
+  "name": "Module Manager",
+  "data_name": "module_manager",
+  "description": "Downloads and installs Drupal.org modules from the web UI (download release ZIP \u2192 composer validate \u2192 enable). Gated by core's 'administer modules' permission, but it is a code-execution-capable capability that bypasses controlled deployment \u2014 keep 'administer modules' to trusted admins and prefer Composer-based deployment (the opposite of disable_web_install).",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/module_manager",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/module_manager",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Deployment / release management"
+  ],
+  "keywords": [
+    "module manager",
+    "install modules",
+    "deployment",
+    "code execution",
+    "admin"
+  ]
+}
