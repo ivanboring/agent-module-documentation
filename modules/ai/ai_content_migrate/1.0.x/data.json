@@ -1,0 +1,43 @@
+{
+  "name": "AI Content Migrate",
+  "data_name": "ai_content_migrate",
+  "description": "Automates content modeling and migration of legacy HTML into Drupal using AI agents.",
+  "version": "1.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/ai_content_migrate",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node",
+    "drupal:media",
+    "drupal:ai_agents"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ai_content_migrate",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)",
+    "Import and export"
+  ],
+  "subcategories": [
+    "AI agents / taskable AI",
+    "Migration tooling"
+  ],
+  "keywords": [
+    "ai",
+    "migration",
+    "html",
+    "import",
+    "agents"
+  ]
+}

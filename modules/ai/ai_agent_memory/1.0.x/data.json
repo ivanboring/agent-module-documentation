@@ -1,0 +1,40 @@
+{
+  "name": "AI Agent Memory",
+  "data_name": "ai_agent_memory",
+  "description": "Persists AI agent state across conversation turns so agents retain tool-call history and context.",
+  "version": "1.0.x",
+  "package": "AI",
+  "composer_namespace": "drupal/ai_agent_memory",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "ai_agents:ai_agents",
+    "ai:ai_assistant_api"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ai_agent_memory",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "AI agents / taskable AI"
+  ],
+  "keywords": [
+    "ai",
+    "agents",
+    "memory",
+    "state",
+    "conversation"
+  ]
+}

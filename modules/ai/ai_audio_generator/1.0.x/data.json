@@ -1,0 +1,45 @@
+{
+  "name": "AI Audio Generator",
+  "data_name": "ai_audio_generator",
+  "description": "Generates MP3 audio from node content using AI text-to-speech, with chunking and the Batch API for long content.",
+  "version": "1.0.x",
+  "package": "AI",
+  "composer_namespace": "drupal/ai_audio_generator",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node",
+    "drupal:media",
+    "drupal:file",
+    "ai:ai",
+    "key:key"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.0 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ai_audio_generator",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)",
+    "Accessibility"
+  ],
+  "subcategories": [
+    "AI tooling / function calling",
+    "Text-to-speech"
+  ],
+  "keywords": [
+    "ai",
+    "text-to-speech",
+    "audio",
+    "tts",
+    "accessibility"
+  ]
+}

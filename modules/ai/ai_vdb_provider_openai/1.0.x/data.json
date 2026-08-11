@@ -1,0 +1,41 @@
+{
+  "name": "OpenAI VDB Provider",
+  "data_name": "ai_vdb_provider_openai",
+  "description": "Enables OpenAI as a vector-database provider for the AI module's search/embeddings.",
+  "version": "1.0.x",
+  "package": "AI Vector Database Providers (Experimental)",
+  "composer_namespace": "drupal/ai_vdb_provider_openai",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "ai:ai",
+    "key:key",
+    "ai_provider_openai:ai_provider_openai"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.4 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ai_vdb_provider_openai",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "Vector database / embeddings storage"
+  ],
+  "keywords": [
+    "ai",
+    "openai",
+    "vector database",
+    "embeddings",
+    "search"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "name": "AI Search - Semantic Chunking",
+  "data_name": "ai_search_sc",
+  "description": "Adds a semantic (embedding-similarity) chunking strategy to AI Search as a drop-in alternative to token-based chunking.",
+  "version": "1.0.x",
+  "package": "AI",
+  "composer_namespace": "drupal/ai_search_sc",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "ai:ai",
+    "ai_search:ai_search"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11.1",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ai_search_sc",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)",
+    "Site search"
+  ],
+  "subcategories": [
+    "Vector database / embeddings storage"
+  ],
+  "keywords": [
+    "ai",
+    "search",
+    "chunking",
+    "embeddings",
+    "rag"
+  ]
+}
