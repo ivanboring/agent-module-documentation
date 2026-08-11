@@ -1,0 +1,39 @@
+{
+  "name": "Trash Manager",
+  "data_name": "trash_manager",
+  "description": "Soft-delete/recycle bin: records entities on delete (hook_entity_predelete) so they can be restored, with a permanent-delete form. Gate restore and permanent-delete to trusted users and ensure both check access \u2014 restoring re-creates an entity and permanent delete is irreversible, so those operations should require appropriate delete/create access.",
+  "version": "1.0.x",
+  "package": "Administration",
+  "composer_namespace": "drupal/trash_manager",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:system"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/trash_manager",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Soft delete / recycle bin"
+  ],
+  "keywords": [
+    "trash",
+    "recycle bin",
+    "restore",
+    "deleted",
+    "undelete"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "name": "Stripe Sync",
+  "data_name": "stripe_sync",
+  "description": "Syncs Drupal user roles from Stripe subscription status via Stripe Checkout + webhooks. Role changes are driven by the stripe module's WEBHOOK event, which the stripe module only dispatches AFTER verifying the Stripe signature (Webhook::constructEvent) \u2014 so a forged webhook cannot grant roles (safe). Requires the stripe module's webhook secret (whsec_) configured; store the Stripe secret key via env/Key.",
+  "version": "1.0.x",
+  "package": "Stripe",
+  "composer_namespace": "drupal/stripe_sync",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "stripe:stripe"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/stripe_sync",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Subscriptions / recurring billing"
+  ],
+  "keywords": [
+    "stripe",
+    "subscription",
+    "roles",
+    "webhook",
+    "membership"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "name": "SSO Connector",
+  "data_name": "sso_connector",
+  "description": "Enterprise cross-Drupal-site SSO (IdP/SP model) using short-lived JWTs. The IdP validates the target SP against an allowlist (isAllowedServiceProvider) before minting a token and redirects via TrustedRedirectResponse with a short token expiry \u2014 defensively built. Secure the JWT signing key and keep the SP allowlist tight.",
+  "version": "1.0.x",
+  "package": "Authentication",
+  "composer_namespace": "drupal/sso_connector",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user",
+    "drupal:block"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11.2",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/sso_connector",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Single sign-on (SSO) provider"
+  ],
+  "keywords": [
+    "sso",
+    "single sign-on",
+    "jwt",
+    "idp",
+    "authentication"
+  ]
+}
