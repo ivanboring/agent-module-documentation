@@ -1,0 +1,39 @@
+{
+  "name": "Simple OAuth Account Picker",
+  "data_name": "simple_oauth_account_picker",
+  "description": "Adds an account picker to the Simple OAuth authorize endpoint (like a 'choose an account' chooser). It affects the OAuth authorization UX \u2014 verify it only lets the already-authenticated user authorize as themselves (never authorize/grant on behalf of another account).",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/simple_oauth_account_picker",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "simple_oauth:simple_oauth"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/simple_oauth_account_picker",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "OAuth / OpenID Connect provider"
+  ],
+  "keywords": [
+    "simple oauth",
+    "account picker",
+    "authorize",
+    "oauth",
+    "authentication"
+  ]
+}

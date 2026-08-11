@@ -1,0 +1,37 @@
+{
+  "name": "Secure Admin Path",
+  "data_name": "secure_admin_path",
+  "description": "Renames the /admin and /user path prefixes to a custom string (e.g. /manage/..) to reduce automated scanning of the admin/login area. This is security-through-OBSCURITY \u2014 it lowers bot noise but is NOT an access control; real protection stays with permissions/authentication.",
+  "version": "1.0.x",
+  "package": "Administration",
+  "composer_namespace": "drupal/secure_admin_path",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/secure_admin_path",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Login page protection"
+  ],
+  "keywords": [
+    "admin path",
+    "obscurity",
+    "login",
+    "hardening",
+    "paths"
+  ]
+}

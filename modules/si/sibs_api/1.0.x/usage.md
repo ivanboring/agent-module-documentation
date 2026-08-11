@@ -1,37 +1,36 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-SIBS API provides integration with the SIBS API (a Portuguese/European payment services provider).
+SIBS API provides base integration with the SIBS payment API.
 
 ---
 
-SIBS API integrates the SIBS API — SIBS is a major Portuguese/European payment and transaction
-services provider — into Drupal, providing the connection and functionality to interact with SIBS
-services (payments and related operations). It is in the SIBS package and provides its own permissions.
+SIBS API **provides base integration with the SIBS API** — the client/service layer for talking to SIBS (a
+Portuguese/Iberian payment provider) API, used by higher-level modules (e.g. SIBS API Commerce) to create and query
+payments. It provides its own permissions, in the SIBS package.
 
-Use it where SIBS payment/services integration is required. The security-relevant points are standard for
-a payment/financial API: store the SIBS API credentials as secrets, ensure requests use TLS (checked —
-this module does not disable certificate verification), and — for any payment flow — verify transaction
-outcomes against SIBS's authoritative API rather than trusting client-supplied callbacks. Configure the
-SIBS credentials and the operations used.
+Use it as the SIBS API foundation. It is a payment/integration base library. Security/data handling: it **calls the
+SIBS payment API** (egress) with **merchant credentials/API keys** — store those as **secrets** (env/Key) and serve
+over HTTPS, since they authorize payment operations. Payment status should always be taken from SIBS's authoritative
+API (which this layer provides). It has its own permissions. Configure the SIBS credentials.
 
 ---
 
-- Integrate the SIBS payment API.
-- Connect Drupal to SIBS services.
-- Interact with SIBS payments.
-- Store SIBS credentials as secrets.
-- Use TLS for requests (checked).
-- Verify outcomes via SIBS's API.
+- Provide base SIBS API integration.
+- Talk to the SIBS payment API.
+- Underpin SIBS Commerce.
 - Provide its own permissions.
-- Handle financial API securely.
-- Configure SIBS credentials.
-- Not trust client callbacks for payments.
-- Support Portuguese/European payments.
-- Connect to SIBS.
-- Handle transactions.
-- Configure operations.
-- Integrate payment services.
-- Secure API credentials.
-- Process SIBS operations.
-- Verify transactions server-side.
-- Use the SIBS integration.
-- Handle payment flows.
+- Serve payment/integration.
+- Create/query payments.
+- Call the SIBS payment API (egress) with merchant credentials.
+- Store the credentials/API keys as secrets (env/Key, HTTPS).
+- Take payment status from SIBS's authoritative API.
+- Have its own permissions.
+- Configure the SIBS credentials.
+- Handle SIBS API.
+- Call SIBS.
+- Configure the client.
+- Query payments.
+- Handle the integration.
+- Authenticate to SIBS.
+- Fetch status.
+- Secure the credentials.
+- Provide SIBS API integration.

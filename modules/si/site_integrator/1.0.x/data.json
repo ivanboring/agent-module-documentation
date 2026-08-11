@@ -1,17 +1,17 @@
 {
-  "name": "SIBS API",
-  "data_name": "sibs_api",
-  "description": "provides base integration with the SIBS payment API.",
+  "name": "Site Integrator",
+  "data_name": "site_integrator",
+  "description": "integrates an external site into Drupal.",
   "version": "1.0.x",
-  "package": "SIBS",
-  "composer_namespace": "drupal/sibs_api",
+  "package": "Services",
+  "composer_namespace": "drupal/site_integrator",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
   "core_version_requirement": "^9||^10||^11",
   "active_installs": null,
   "list_position": null,
-  "project_url": "https://www.drupal.org/project/sibs_api",
+  "project_url": "https://www.drupal.org/project/site_integrator",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
@@ -22,16 +22,16 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "E-commerce"
+    "Integrations"
   ],
   "subcategories": [
-    "Payment gateway"
+    "Reverse proxy / client IP"
   ],
   "keywords": [
-    "sibs",
-    "payment",
-    "api",
-    "integration",
-    "iberia"
+    "site integrator",
+    "external site",
+    "embed",
+    "proxy",
+    "integration"
   ]
 }
