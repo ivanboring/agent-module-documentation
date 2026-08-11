@@ -1,0 +1,44 @@
+{
+  "name": "Varbase Reports",
+  "data_name": "varbase_reports",
+  "description": "Provides a set of statistical reports (users, content) for Varbase/Drupal sites.",
+  "version": "10.1.x",
+  "package": null,
+  "composer_namespace": "drupal/varbase_reports",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user",
+    "drupal:node",
+    "drupal:views",
+    "better_exposed_filters:better_exposed_filters",
+    "views_data_export:views_data_export",
+    "csv_serialization:csv_serialization"
+  ],
+  "configure": null,
+  "core_version_requirement": "~11.4.0",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/varbase_reports",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Dashboard / reporting"
+  ],
+  "keywords": [
+    "reports",
+    "statistics",
+    "varbase",
+    "views",
+    "export"
+  ]
+}
