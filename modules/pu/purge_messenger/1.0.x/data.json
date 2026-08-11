@@ -1,0 +1,41 @@
+{
+  "name": "Purge integration with Symfony Messenger",
+  "data_name": "purge_messenger",
+  "description": "Modifies Purge to dispatch/execute invalidations via Symfony Messenger.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/purge_messenger",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "purge:purge",
+    "sm:sm",
+    "drupal:serialization"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.5 || ^11.3",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/purge_messenger",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "Cache invalidation"
+  ],
+  "keywords": [
+    "purge",
+    "symfony messenger",
+    "cache",
+    "async",
+    "invalidation"
+  ]
+}
