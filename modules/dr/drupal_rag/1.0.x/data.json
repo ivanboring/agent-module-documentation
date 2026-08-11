@@ -1,0 +1,41 @@
+{
+  "name": "Drupal RAG",
+  "data_name": "drupal_rag",
+  "description": "Turns Drupal content/media into a RAG system using pgvector and Ollama.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/drupal_rag",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:system",
+    "drupal:node",
+    "drupal:media"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/drupal_rag",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "Vector database / embeddings storage"
+  ],
+  "keywords": [
+    "rag",
+    "pgvector",
+    "ollama",
+    "ai",
+    "embeddings"
+  ]
+}
