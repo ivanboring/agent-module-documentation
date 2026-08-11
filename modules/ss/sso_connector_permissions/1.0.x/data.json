@@ -1,0 +1,43 @@
+{
+  "name": "SSO Connector \u2013 Permissions",
+  "data_name": "sso_connector_permissions",
+  "description": "Maps this IdP's roles to service-provider roles and manages SSO site registrations.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/sso_connector_permissions",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user",
+    "drupal:serialization",
+    "sso_connector:sso_connector",
+    "drupal:help"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11.2 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/sso_connector_permissions",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Security"
+  ],
+  "subcategories": [
+    "User roles & permissions"
+  ],
+  "keywords": [
+    "sso",
+    "permissions",
+    "role mapping",
+    "idp",
+    "registrations"
+  ]
+}

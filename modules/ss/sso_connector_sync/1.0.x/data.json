@@ -1,0 +1,43 @@
+{
+  "name": "SSO Connector \u2013 Cross-site Sync",
+  "data_name": "sso_connector_sync",
+  "description": "Cross-site entity and configuration replication over HMAC-signed webhooks.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/sso_connector_sync",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "sso_connector:sso_connector",
+    "drupal:serialization",
+    "drupal:rest",
+    "drupal:system",
+    "drupal:help"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11.2 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/sso_connector_sync",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "REST / web services"
+  ],
+  "keywords": [
+    "sso",
+    "sync",
+    "replication",
+    "webhooks",
+    "hmac"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "name": "SSO Connector \u2013 Social Login",
+  "data_name": "sso_connector_social",
+  "description": "OAuth2 social login (Google, Microsoft, GitHub, LinkedIn, Facebook, generic) with CSRF-state validation.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/sso_connector_social",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "sso_connector:sso_connector",
+    "drupal:user",
+    "drupal:block",
+    "drupal:help",
+    "drupal:file",
+    "drupal:image"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11.2 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/sso_connector_social",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "External authentication"
+  ],
+  "keywords": [
+    "sso",
+    "social login",
+    "oauth2",
+    "google",
+    "github"
+  ]
+}
