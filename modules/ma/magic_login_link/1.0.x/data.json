@@ -1,0 +1,39 @@
+{
+  "name": "Magic Login Link",
+  "data_name": "magic_login_link",
+  "description": "Secure passwordless login via time-sensitive magic links. Well-built: the token is core's user_pass_rehash() HMAC (unguessable, tied to the user \u2014 not a brute-forceable code), single-use (deleted on login), 15-minute expiry, hash_equals comparison, AND flood control (50/hr per IP, 5/hr per user). The right way to do magic-link login.",
+  "version": "1.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/magic_login_link",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/magic_login_link",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Authentication"
+  ],
+  "keywords": [
+    "magic link",
+    "passwordless",
+    "login",
+    "user_pass_rehash",
+    "authentication"
+  ]
+}

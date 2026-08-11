@@ -1,0 +1,39 @@
+{
+  "name": "Link Content Parser (Postlight Parser)",
+  "data_name": "postlight_parser",
+  "description": "Extracts article content/metadata from a URL (Postlight/Mercury/Readability). SECURITY: the parser endpoint /parser/{parser}?url= is gated only by 'access content' (anonymous) and, for the readability parser, fetches the CLIENT-supplied URL server-side with file_get_contents/curl (FOLLOWLOCATION), returning the content \u2014 an unauthenticated read-SSRF (internal services / cloud-metadata credential theft) and file:// local file read. Do NOT expose it publicly until the URL is validated/allowlisted and the route is properly permissioned.",
+  "version": "1.0.x",
+  "package": "Field types",
+  "composer_namespace": "drupal/postlight_parser",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:link"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/postlight_parser",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Rich text embedding"
+  ],
+  "keywords": [
+    "postlight",
+    "mercury",
+    "parser",
+    "ssrf",
+    "url"
+  ]
+}

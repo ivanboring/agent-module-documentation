@@ -1,0 +1,41 @@
+{
+  "name": "TFA Headless",
+  "data_name": "tfa_headless",
+  "description": "provides a headless (API) implementation of two-factor authentication.",
+  "version": "2.2.x",
+  "package": "TFA",
+  "composer_namespace": "drupal/tfa_headless",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "tfa:tfa",
+    "drupal:rest",
+    "simple_oauth:simple_oauth"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/tfa_headless",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Two-factor authentication"
+  ],
+  "keywords": [
+    "tfa",
+    "2fa",
+    "headless",
+    "simple oauth",
+    "authentication"
+  ]
+}
