@@ -1,0 +1,41 @@
+{
+  "name": "Layout Content Lock Release",
+  "data_name": "layout_content_lock_release",
+  "description": "automatically releases content locks when saving content in Layout Builder.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/layout_content_lock_release",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node",
+    "content_lock:content_lock",
+    "drupal:layout_builder"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/layout_content_lock_release",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Concurrent editing / merge"
+  ],
+  "keywords": [
+    "content lock",
+    "layout builder",
+    "release",
+    "concurrent editing",
+    "workflow"
+  ]
+}

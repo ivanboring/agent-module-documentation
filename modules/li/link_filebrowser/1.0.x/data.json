@@ -1,0 +1,37 @@
+{
+  "name": "Link File Browser",
+  "data_name": "link_filebrowser",
+  "description": "Adds a file-explorer button to the link field widget for picking files from a configured folder. SECURITY: its ajax/list-files endpoint (permission 'view link file browser') builds a scandir path from CLIENT-controlled 'directory'/'root' params with no ../ sanitization, so a permitted user can traverse and enumerate arbitrary server directories (info disclosure). Confine to public:// with realpath()+str_starts_with.",
+  "version": "1.0.x",
+  "package": "Field types",
+  "composer_namespace": "drupal/link_filebrowser",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/link_filebrowser",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "File uploads"
+  ],
+  "keywords": [
+    "link file browser",
+    "file explorer",
+    "path traversal",
+    "directory listing",
+    "field widget"
+  ]
+}

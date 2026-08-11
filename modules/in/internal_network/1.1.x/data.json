@@ -1,0 +1,39 @@
+{
+  "name": "Internal Network Condition",
+  "data_name": "internal_network",
+  "description": "Provides a block-visibility / Twig condition based on whether the client IP is in configured internal CIDR ranges. A visibility CONDITION (not a hard access control) \u2014 IP accuracy depends on reverse-proxy trust, so don't rely on it alone to protect sensitive content.",
+  "version": "1.1.x",
+  "package": "Access Control",
+  "composer_namespace": "drupal/internal_network",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:block"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/internal_network",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "IP address restriction"
+  ],
+  "keywords": [
+    "internal network",
+    "ip range",
+    "cidr",
+    "block visibility",
+    "condition"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "name": "GraphQL Compose: Mutations",
+  "data_name": "graphql_compose_mutations",
+  "description": "Exposes GraphQL create/update/delete mutations for entities. It DOES enforce entity-level access before mutating, but sets exposed input fields via $entity->set() WITHOUT per-field access checks and skips entity validation \u2014 so only expose fields/bundles safe for the mutating role and lock down the GraphQL endpoint.",
+  "version": "1.0.x",
+  "package": "GraphQL Compose",
+  "composer_namespace": "drupal/graphql_compose_mutations",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "graphql:graphql",
+    "graphql_compose:graphql_compose"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.1||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/graphql_compose_mutations",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Decoupled"
+  ],
+  "subcategories": [
+    "APIs / frameworks"
+  ],
+  "keywords": [
+    "graphql",
+    "mutations",
+    "entity write",
+    "decoupled",
+    "field access"
+  ]
+}

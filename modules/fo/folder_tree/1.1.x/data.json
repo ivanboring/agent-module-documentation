@@ -1,0 +1,39 @@
+{
+  "name": "Folder Tree",
+  "data_name": "folder_tree",
+  "description": "An AJAX server-directory browser gated by permission and confined to an admin-configured root via realpath()+str_starts_with (proper traversal protection). Still exposes the filesystem tree to permitted users, so gate the permission to trusted admins.",
+  "version": "1.1.x",
+  "package": "Administration",
+  "composer_namespace": "drupal/folder_tree",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:system"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/folder_tree",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Debugging & inspection"
+  ],
+  "keywords": [
+    "folder tree",
+    "file browser",
+    "directory",
+    "server",
+    "admin"
+  ]
+}

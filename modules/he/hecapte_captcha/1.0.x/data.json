@@ -1,0 +1,39 @@
+{
+  "name": "HeCAPTe CAPTCHA",
+  "data_name": "hecapte_captcha",
+  "description": "A CAPTCHA challenge type using an external HeCAPTe proof-of-work server. It verifies the solution SERVER-SIDE (Drupal calls the HeCAPTe /verify endpoint and only passes on status 'ok'). Ensure it fails closed on verify errors; store any server config appropriately.",
+  "version": "1.0.x",
+  "package": "Spam control",
+  "composer_namespace": "drupal/hecapte_captcha",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "captcha:captcha"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/hecapte_captcha",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "CAPTCHA / bot protection"
+  ],
+  "keywords": [
+    "captcha",
+    "proof of work",
+    "hecapte",
+    "spam",
+    "bot"
+  ]
+}
