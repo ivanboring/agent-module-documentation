@@ -1,0 +1,37 @@
+{
+  "name": "Expose UUID",
+  "data_name": "expose_uuid",
+  "description": "Adds a UUID field to entity edit forms, gated by the 'edit uuid' permission (which also allows CHANGING the UUID). Changing an entity's UUID can break references/integrations \u2014 restrict the permission to trusted admins.",
+  "version": "8.x-1.x",
+  "package": "Admin",
+  "composer_namespace": "drupal/expose_uuid",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/expose_uuid",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Entity API"
+  ],
+  "keywords": [
+    "uuid",
+    "edit",
+    "entity",
+    "admin",
+    "identifier"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "Feeds Crawler Fetcher",
+  "data_name": "feeds_crawler_fetcher",
+  "description": "Adds a Feeds fetcher that crawls a set of URLs (server-side HTTP). Feed sources are admin-configured, but because it fetches URLs from the server, treat the URL list as trusted and be aware of SSRF if any URL is user-influenced.",
+  "version": "1.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/feeds_crawler_fetcher",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/feeds_crawler_fetcher",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Feed aggregation"
+  ],
+  "keywords": [
+    "feeds",
+    "crawler",
+    "fetcher",
+    "ssrf",
+    "import"
+  ]
+}

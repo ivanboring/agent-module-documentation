@@ -1,0 +1,37 @@
+{
+  "name": "FFmpeg Image Toolkit",
+  "data_name": "ffmpeg_image_toolkit",
+  "description": "An image toolkit that applies image styles to animated GIFs/PNGs by shelling out to the ffmpeg binary. SECURITY: Ffmpeg::execute() runs exec() on a shell string that embeds the source file's realpath double-quoted, with a blocklist that misses backtick/$()/quote \u2014 a crafted source FILENAME can inject commands (RCE) when the FFmpeg toolkit is selected. Prefer argv/escapeshellarg.",
+  "version": "1.0.x",
+  "package": "Media",
+  "composer_namespace": "drupal/ffmpeg_image_toolkit",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ffmpeg_image_toolkit",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Image toolkit / processing"
+  ],
+  "keywords": [
+    "ffmpeg",
+    "image toolkit",
+    "animated gif",
+    "command injection",
+    "rce"
+  ]
+}

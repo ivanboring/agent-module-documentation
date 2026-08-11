@@ -1,0 +1,40 @@
+{
+  "name": "ES Attachment",
+  "data_name": "es_attachment",
+  "description": "uses the Elasticsearch ingest pipeline to index document contents (PDF etc.).",
+  "version": "1.0.x",
+  "package": "Search",
+  "composer_namespace": "drupal/es_attachment",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "search_api:search_api",
+    "elasticsearch_connector:elasticsearch_connector"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/es_attachment",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site search"
+  ],
+  "subcategories": [
+    "Content indexing"
+  ],
+  "keywords": [
+    "elasticsearch",
+    "attachments",
+    "pdf",
+    "indexing",
+    "search"
+  ]
+}

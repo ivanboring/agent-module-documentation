@@ -1,0 +1,39 @@
+{
+  "name": "File Gate",
+  "data_name": "file_gate",
+  "description": "Gates access to PRIVATE files with pluggable methods (short-lived HMAC-signed URLs, authenticated access) and delivers them to decoupled front ends. Secure-by-default: hook_file_download denies (returns -1) unless a valid grant. Store the signing secret securely.",
+  "version": "1.6.x",
+  "package": "Security",
+  "composer_namespace": "drupal/file_gate",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:file"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11.4",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/file_gate",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Private file access"
+  ],
+  "keywords": [
+    "file gate",
+    "private files",
+    "signed url",
+    "hmac",
+    "decoupled"
+  ]
+}
