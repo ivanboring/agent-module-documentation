@@ -1,0 +1,42 @@
+{
+  "name": "Domain Availability",
+  "data_name": "domain_availability",
+  "description": "Checks a domain across many TLDs in one parallel RDAP/WHOIS sweep, reporting unknown rather than guessing.",
+  "version": "1.1.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/domain_availability",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:file",
+    "drupal:options",
+    "drupal:user",
+    "saudi_id_validator:saudi_id_validator"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/domain_availability",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "REST / web services"
+  ],
+  "keywords": [
+    "domain",
+    "availability",
+    "rdap",
+    "whois",
+    "tld"
+  ]
+}

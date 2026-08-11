@@ -1,0 +1,40 @@
+{
+  "name": "Document Loader: HTML Processor",
+  "data_name": "document_loader_html_processor",
+  "description": "Bridge plugin exposing the html_processor module's services through the document_loader plugin manager.",
+  "version": "2.0.x",
+  "package": "Document Loader Plugins",
+  "composer_namespace": "drupal/document_loader_html_processor",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "document_loader:document_loader",
+    "html_processor:html_processor"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.4 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/document_loader_html_processor",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Data transformation"
+  ],
+  "keywords": [
+    "document loader",
+    "html processor",
+    "bridge",
+    "plugin",
+    "pipeline"
+  ]
+}
