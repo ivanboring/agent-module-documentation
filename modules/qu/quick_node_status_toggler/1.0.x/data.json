@@ -1,0 +1,40 @@
+{
+  "name": "Quick Node Status Toggler",
+  "data_name": "quick_node_status_toggler",
+  "description": "Adds a publish/unpublish toggle to the content listing. Correctly checks node 'update' access before toggling ($node->access('update')) and the route requires 'administer nodes' \u2014 a properly-gated convenience (positive).",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/quick_node_status_toggler",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node",
+    "drupal:views"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/quick_node_status_toggler",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Content scheduling / publishing"
+  ],
+  "keywords": [
+    "publish",
+    "unpublish",
+    "toggle",
+    "node",
+    "status"
+  ]
+}

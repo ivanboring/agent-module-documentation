@@ -1,0 +1,39 @@
+{
+  "name": "PHP Profiler",
+  "data_name": "php_profiler",
+  "description": "Profiles Drupal with XHProf and uploads results to XHGui (via perftools/php-profiler). DEVELOPMENT/DIAGNOSTIC tool that captures detailed runtime data (call graphs, args, timings) and sends it to XHGui \u2014 never enable in production, and keep the XHGui destination trusted/private.",
+  "version": "1.0.x",
+  "package": "Development",
+  "composer_namespace": "drupal/php_profiler",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "xhprof:xhprof"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9||^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/php_profiler",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Debugging & inspection"
+  ],
+  "keywords": [
+    "php profiler",
+    "xhprof",
+    "xhgui",
+    "profiling",
+    "development"
+  ]
+}

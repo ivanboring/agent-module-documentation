@@ -1,0 +1,37 @@
+{
+  "name": "Password Stats",
+  "data_name": "password_stats",
+  "description": "Reports statistics about the ALGORITHMS used in stored password HASHES (e.g. how many accounts still use legacy hashes) \u2014 a security-positive audit tool. It reads password hashes (never plaintext); gate the stats/Drush commands to trusted admins since hash data is sensitive.",
+  "version": "2.1.x",
+  "package": "Security",
+  "composer_namespace": "drupal/password_stats",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10.1||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/password_stats",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Password policy"
+  ],
+  "keywords": [
+    "password",
+    "hash",
+    "stats",
+    "audit",
+    "security"
+  ]
+}

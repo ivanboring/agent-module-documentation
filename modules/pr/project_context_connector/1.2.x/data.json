@@ -1,0 +1,40 @@
+{
+  "name": "Project Context Connector",
+  "data_name": "project_context_connector",
+  "description": "exposes sanitized read-only project-context JSON endpoints (and a Drush command) for Slack/Teams prompt building.",
+  "version": "1.2.x",
+  "package": "Development",
+  "composer_namespace": "drupal/project_context_connector",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "tool:tool",
+    "mcp_server:mcp_server"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/project_context_connector",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "APIs / frameworks"
+  ],
+  "keywords": [
+    "project context",
+    "mcp",
+    "slack",
+    "json",
+    "development"
+  ]
+}

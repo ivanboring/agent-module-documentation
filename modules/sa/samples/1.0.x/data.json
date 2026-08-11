@@ -1,0 +1,39 @@
+{
+  "name": "Sample Content",
+  "data_name": "samples",
+  "description": "Creates access-RESTRICTED demonstration/development content in production. It restricts that content correctly via hook_node_access_records()/grants (the robust node-access-grants system, respected by canonical, Views, JSON:API and search) \u2014 a positive pattern. Gate the permission that can view samples appropriately.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/samples",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/samples",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Node access grants API"
+  ],
+  "keywords": [
+    "samples",
+    "demo content",
+    "node access",
+    "grants",
+    "restricted"
+  ]
+}
