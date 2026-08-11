@@ -2231,3 +2231,18 @@ datadog_metrics	wave217: dep-blocked (needs migrate_plus, absent)
 date_facet_drilldown	wave217: dep-blocked (needs facets + search_api)
 customer_identity_and_access_management	wave217: dep-blocked - LoginRadius CIAM requires external loginradius/php-sdk V2 library (absent); ships lr_* submodules
 country_trace	wave217: documented under module machine name ip_country_logger (project name differs)
+dbb	wave218: no D11 release / install failed
+deactivate_account	wave218: no D11 release / install failed
+decoupled_blocks	wave218: no D11 release / install failed
+decoupled_config	wave218: no D11 release / install failed
+decoupled_kit_pantheon_search	wave218: no D11 release / install failed
+decoupled_lb_api	wave218: no D11 release / install failed
+desk_net	wave218: no D11 release / install failed
+did	wave218: no D11 release / install failed
+differential_serve	wave218: no D11 release / install failed
+digitalmeasures_migrate	wave218: no D11 release / install failed
+document_to_pdf	wave218: no D11 release / install failed
+disable_libraries	wave218: poison - overrides theme.initialization with 4-arg ctor (core needs 5) → ArgumentCountError on container build; removed
+dkan_reference_fix	wave218: pulls full dkan suite whose services have a circular reference (dkan.metastore.lifecycle) → cr fails; removed dkan tree
+dcat	wave218: dep-blocked - ships entity_browser.browser config requiring entity_browser (absent, not a declared dep)
+dit	wave218: documented under module machine name drupal_idle_timer (project name differs)
