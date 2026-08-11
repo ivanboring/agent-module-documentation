@@ -1,0 +1,39 @@
+{
+  "name": "CaptchaFox",
+  "data_name": "captchafox",
+  "description": "A privacy-focused CAPTCHA provider for the CAPTCHA module. Verifies the challenge SERVER-SIDE (Drupal POSTs the response + secret to https://api.captchafox.com/siteverify and only passes on success) \u2014 the client can't self-assert. Store the secret key securely.",
+  "version": "1.0.x",
+  "package": "Spam control",
+  "composer_namespace": "drupal/captchafox",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "captcha:captcha"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/captchafox",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "CAPTCHA / bot protection"
+  ],
+  "keywords": [
+    "captchafox",
+    "captcha",
+    "spam",
+    "bot",
+    "privacy"
+  ]
+}

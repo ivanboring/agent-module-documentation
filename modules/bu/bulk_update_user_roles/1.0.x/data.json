@@ -1,0 +1,39 @@
+{
+  "name": "Bulk Update User Roles",
+  "data_name": "bulk_update_user_roles",
+  "description": "Bulk-adds/removes roles across ALL users in one click. SECURITY: the form route requires only 'administer users', but it offers EVERY role (including administrator) and applies them directly (addRole) \u2014 bypassing core's rule that role assignment needs 'administer permissions'. So an 'administer users'-only account can grant itself/everyone the admin role (privilege escalation). Restrict to 'administer permissions' and filter to assignable roles.",
+  "version": "1.0.x",
+  "package": "Other",
+  "composer_namespace": "drupal/bulk_update_user_roles",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3||^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/bulk_update_user_roles",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "User roles & permissions"
+  ],
+  "keywords": [
+    "bulk roles",
+    "user roles",
+    "privilege escalation",
+    "administer users",
+    "administrator"
+  ]
+}
