@@ -1,0 +1,45 @@
+{
+  "name": "LocalGov Bus Data",
+  "data_name": "localgov_bus_data",
+  "description": "UK bus timetable data as Drupal entities and Views for council websites.",
+  "version": "1.3.x",
+  "package": null,
+  "composer_namespace": "drupal/localgov_bus_data",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:migrate",
+    "drupal:views",
+    "geofield:geofield",
+    "leaflet:leaflet",
+    "migrate_plus:migrate_plus",
+    "migrate_source_csv:migrate_source_csv"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/localgov_bus_data",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "Media"
+  ],
+  "subcategories": [
+    "Content migration / import"
+  ],
+  "keywords": [
+    "localgov",
+    "bus",
+    "timetable",
+    "transit",
+    "migrate"
+  ]
+}
