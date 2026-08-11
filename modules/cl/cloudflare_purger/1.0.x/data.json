@@ -1,0 +1,41 @@
+{
+  "name": "Cloudflare Purger",
+  "data_name": "cloudflare_purger",
+  "description": "Purge support for Cloudflare (a Purge module purger plugin).",
+  "version": "1.0.x",
+  "package": "Purge",
+  "composer_namespace": "drupal/cloudflare_purger",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "key:key",
+    "purge:purge"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/cloudflare_purger",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Cache invalidation"
+  ],
+  "keywords": [
+    "cloudflare",
+    "purge",
+    "cdn",
+    "cache",
+    "invalidation"
+  ]
+}

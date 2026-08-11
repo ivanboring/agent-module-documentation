@@ -1,0 +1,42 @@
+{
+  "name": "Commerce Enzona",
+  "data_name": "commerce_enzona",
+  "description": "A Drupal Commerce payment gateway integrating Enzona (Cuba). WARNING: ships an unauthenticated payment-completion webhook.",
+  "version": "2.0.x",
+  "package": "Commerce (Payment)",
+  "composer_namespace": "drupal/commerce_enzona",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "commerce:commerce",
+    "commerce:commerce_payment",
+    "commerce:commerce_order",
+    "commerce:commerce_checkout"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/commerce_enzona",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Payment gateway"
+  ],
+  "keywords": [
+    "enzona",
+    "payment",
+    "commerce",
+    "cuba",
+    "webhook"
+  ]
+}

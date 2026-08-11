@@ -1,0 +1,44 @@
+{
+  "name": "Comment Moderation AI",
+  "data_name": "comment_moderation_ai",
+  "description": "AI-powered comment moderation using custom policies to validate comments and flag inappropriate content.",
+  "version": "1.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/comment_moderation_ai",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:comment",
+    "drupal:user",
+    "drupal:system",
+    "drupal:field",
+    "key:key"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/comment_moderation_ai",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "Spam control"
+  ],
+  "keywords": [
+    "comment",
+    "moderation",
+    "ai",
+    "spam",
+    "llm"
+  ]
+}
