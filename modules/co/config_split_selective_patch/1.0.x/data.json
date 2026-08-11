@@ -1,0 +1,39 @@
+{
+  "name": "Config Split Selective Patch",
+  "data_name": "config_split_selective_patch",
+  "description": "Adds selective config patching to Configuration Split when 'Do not patch dependents' is enabled.",
+  "version": "1.0.x",
+  "package": "Config",
+  "composer_namespace": "drupal/config_split_selective_patch",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "config_split:config_split"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/config_split_selective_patch",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Configuration management"
+  ],
+  "keywords": [
+    "config split",
+    "selective",
+    "patch",
+    "configuration",
+    "split"
+  ]
+}

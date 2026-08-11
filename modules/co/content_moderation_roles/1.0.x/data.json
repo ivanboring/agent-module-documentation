@@ -1,0 +1,43 @@
+{
+  "name": "Content Moderation Roles",
+  "data_name": "content_moderation_roles",
+  "description": "Controls which content-moderation states are visible per user role and content type.",
+  "version": "1.0.x",
+  "package": "Content Moderation",
+  "composer_namespace": "drupal/content_moderation_roles",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:content_moderation",
+    "drupal:node",
+    "drupal:views",
+    "drupal:workflows"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/content_moderation_roles",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience",
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Workflow / business rules"
+  ],
+  "keywords": [
+    "content moderation",
+    "roles",
+    "states",
+    "workflow",
+    "node"
+  ]
+}
