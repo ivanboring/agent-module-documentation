@@ -1,0 +1,40 @@
+{
+  "name": "File URLs Queuer",
+  "data_name": "purge_queuer_file_urls",
+  "description": "Queue file URLs from file fields for purging.",
+  "version": "1.1.x",
+  "package": null,
+  "composer_namespace": "drupal/purge_queuer_file_urls",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:file",
+    "purge:purge"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/purge_queuer_file_urls",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "Cache invalidation"
+  ],
+  "keywords": [
+    "purge",
+    "file urls",
+    "queuer",
+    "cdn",
+    "invalidation"
+  ]
+}
