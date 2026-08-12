@@ -1,0 +1,41 @@
+{
+  "name": "Inactive User Management",
+  "data_name": "inactive_user_management",
+  "description": "Manage inactive users with configurable notifications.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/inactive_user_management",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user",
+    "drupal:ultimate_cron",
+    "symfony_mailer:symfony_mailer"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/inactive_user_management",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Account expiration"
+  ],
+  "keywords": [
+    "inactive users",
+    "dormant",
+    "notifications",
+    "account",
+    "cleanup"
+  ]
+}
