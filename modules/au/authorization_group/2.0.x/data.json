@@ -1,0 +1,42 @@
+{
+  "name": "Authorization - Group",
+  "data_name": "authorization_group",
+  "description": "Authorization-module consumer that maps external identity provider data onto Group memberships and Group roles.",
+  "version": "2.0.x",
+  "package": "Other",
+  "composer_namespace": "drupal/authorization_group",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "group:group",
+    "authorization:authorization"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/authorization_group",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Groups & memberships"
+  ],
+  "keywords": [
+    "authorization",
+    "group",
+    "ldap",
+    "sso",
+    "membership",
+    "group role",
+    "provisioning"
+  ]
+}

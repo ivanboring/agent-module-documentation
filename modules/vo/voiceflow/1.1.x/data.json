@@ -1,0 +1,44 @@
+{
+  "name": "Voiceflow",
+  "data_name": "voiceflow",
+  "description": "Embeds a Voiceflow chatbot widget site-wide by project ID, with per-path exclusions; submodule publishes a public content index feed.",
+  "version": "1.1.x",
+  "package": "AI",
+  "composer_namespace": "drupal/voiceflow",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:system"
+  ],
+  "configure": "voiceflow.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/voiceflow",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "voiceflow_index"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Chat / messaging"
+  ],
+  "keywords": [
+    "voiceflow",
+    "chatbot",
+    "chat widget",
+    "ai",
+    "conversational",
+    "sitemap",
+    "index",
+    "project id"
+  ]
+}

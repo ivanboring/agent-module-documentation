@@ -1,0 +1,46 @@
+{
+  "name": "Webform JSON Schema",
+  "data_name": "webform_headless",
+  "description": "Headless Webform API: JSON endpoints to fetch a form as FormKit/JsonForms schema and to create, read and update submissions.",
+  "version": "1.0.x",
+  "package": "Webform",
+  "composer_namespace": "drupal/webform_headless",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:file",
+    "webform:webform",
+    "url_entity:url_entity"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/webform_headless",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "webform_headless_ui"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Decoupled"
+  ],
+  "subcategories": [
+    "REST / web services"
+  ],
+  "keywords": [
+    "webform",
+    "headless",
+    "decoupled",
+    "json schema",
+    "formkit",
+    "jsonforms",
+    "api",
+    "submissions"
+  ]
+}

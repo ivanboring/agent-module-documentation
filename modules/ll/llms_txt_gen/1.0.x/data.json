@@ -1,0 +1,42 @@
+{
+  "name": "LLMs.txt Gen",
+  "data_name": "llms_txt_gen",
+  "description": "Auto-generates llms.txt sections listing published nodes grouped by content type, with per-entity anonymous access checks.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/llms_txt_gen",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "llms_txt:llms_txt",
+    "markdownify:markdownify_path"
+  ],
+  "configure": "llms_txt_gen.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/llms_txt_gen",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "LLM content discovery"
+  ],
+  "keywords": [
+    "llms.txt",
+    "llm",
+    "ai discovery",
+    "markdown",
+    "content type",
+    "nodes",
+    "cron"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "name": "Countries",
+  "data_name": "countries_import",
+  "description": "Admin tool that imports the world's countries (ISO-2, ISO-3, flag SVG) and geographic regions as taxonomy terms.",
+  "version": "2.0.x",
+  "package": "Other",
+  "composer_namespace": "drupal/countries_import",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:file",
+    "drupal:migrate",
+    "drupal:svg_image",
+    "drupal:content_translation",
+    "drupal:token"
+  ],
+  "configure": "countries_import.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/countries_import",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Content migration / import"
+  ],
+  "keywords": [
+    "countries",
+    "iso",
+    "import",
+    "taxonomy",
+    "flags",
+    "regions",
+    "migrate"
+  ]
+}

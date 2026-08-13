@@ -1,0 +1,53 @@
+{
+  "name": "Drutopia Core",
+  "data_name": "drutopia_core",
+  "description": "Base feature bundling the core components (media, crop, DS, metatag, pathauto, search) other Drutopia features rely on.",
+  "version": "2.0.x",
+  "package": "Drutopia",
+  "composer_namespace": "drupal/drutopia_core",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "automated_crop:automated_crop",
+    "config_perms:config_perms",
+    "crop:crop",
+    "ds:ds",
+    "exclude_node_title:exclude_node_title",
+    "faqfield:faqfield",
+    "focal_point:focal_point",
+    "image_widget_crop:image_widget_crop",
+    "metatag:metatag",
+    "paragraphs:paragraphs",
+    "pathauto:pathauto",
+    "search_api:search_api",
+    "video_embed_field:video_embed_field"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/drutopia_core",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Configuration management"
+  ],
+  "keywords": [
+    "drutopia",
+    "base",
+    "core",
+    "distribution",
+    "media",
+    "config",
+    "feature"
+  ]
+}

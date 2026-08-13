@@ -1,0 +1,42 @@
+{
+  "name": "Access Unpublished Group",
+  "data_name": "access_unpublished_group",
+  "description": "Extends Access Unpublished so time-limited unpublished-content tokens work for entities that belong to a Group.",
+  "version": "3.0.x",
+  "package": "Content",
+  "composer_namespace": "drupal/access_unpublished_group",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "access_unpublished:access_unpublished",
+    "group:group"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/access_unpublished_group",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Unpublished content access"
+  ],
+  "keywords": [
+    "access unpublished",
+    "group",
+    "unpublished content",
+    "token",
+    "preview",
+    "node access",
+    "group relationship"
+  ]
+}

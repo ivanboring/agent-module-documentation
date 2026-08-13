@@ -1,0 +1,44 @@
+{
+  "name": "USAJobs",
+  "data_name": "usajobs",
+  "description": "Displays current job openings for a US federal/state agency in a block by querying the USAJOBS.gov Search API.",
+  "version": "3.0.x",
+  "package": null,
+  "composer_namespace": "drupal/usajobs",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:block"
+  ],
+  "configure": "usajobs.usajobs_config_form",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/usajobs",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "usajobs_paragraphs"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Feed aggregation"
+  ],
+  "keywords": [
+    "usajobs",
+    "jobs",
+    "federal",
+    "government",
+    "api",
+    "block",
+    "listings",
+    "paragraphs"
+  ]
+}

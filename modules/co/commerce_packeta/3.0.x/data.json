@@ -1,0 +1,46 @@
+{
+  "name": "Commerce Packeta",
+  "data_name": "commerce_packeta",
+  "description": "Drupal Commerce shipping method integrating the Packeta (Z\u00e1silkovna) pickup-point widget and packet-submission API.",
+  "version": "3.0.x",
+  "package": "Commerce",
+  "composer_namespace": "drupal/commerce_packeta",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "commerce:commerce",
+    "commerce:commerce_checkout",
+    "commerce_shipping:commerce_shipping",
+    "profile:profile"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/commerce_packeta",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "commerce_packeta_views"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Shipping rate calculation"
+  ],
+  "keywords": [
+    "commerce",
+    "shipping",
+    "packeta",
+    "zasilkovna",
+    "pickup point",
+    "soap",
+    "checkout"
+  ]
+}

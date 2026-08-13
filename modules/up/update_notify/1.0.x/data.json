@@ -1,0 +1,41 @@
+{
+  "name": "Update Notify",
+  "data_name": "update_notify",
+  "description": "Sends scheduled email and Slack notifications summarising available module/core updates, flagging security and unsupported releases.",
+  "version": "1.0.x",
+  "package": "Update",
+  "composer_namespace": "drupal/update_notify",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:update"
+  ],
+  "configure": "update_notify.settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/update_notify",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Status report management"
+  ],
+  "keywords": [
+    "update",
+    "notifications",
+    "email",
+    "slack",
+    "security updates",
+    "cron",
+    "available updates"
+  ]
+}
