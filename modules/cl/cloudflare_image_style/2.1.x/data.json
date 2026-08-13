@@ -1,0 +1,42 @@
+{
+  "name": "Cloudflare Image Style",
+  "data_name": "cloudflare_image_style",
+  "description": "Serves styled images from Cloudflare's image-resizing CDN in production, falling back to Drupal image styles locally.",
+  "version": "2.1.x",
+  "package": "CDN",
+  "composer_namespace": "drupal/cloudflare_image_style",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:image"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/cloudflare_image_style",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "CDN integration"
+  ],
+  "keywords": [
+    "cloudflare",
+    "cdn",
+    "image style",
+    "image resizing",
+    "performance",
+    "fallback",
+    "cdn-cgi",
+    "responsive"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "name": "Smart IP Redirect to Locale (with Cookie)",
+  "data_name": "smart_ip_locale_redirect",
+  "description": "Overrides language negotiation to redirect visitors to a language based on the IP-derived country, remembering the choice in a cookie.",
+  "version": "2.0.x",
+  "package": "Location",
+  "composer_namespace": "drupal/smart_ip_locale_redirect",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "path_alias:path_alias",
+    "locale:locale",
+    "smart_ip:smart_ip",
+    "redirect:redirect"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/smart_ip_locale_redirect",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Multilingual"
+  ],
+  "subcategories": [
+    "Language negotiation"
+  ],
+  "keywords": [
+    "geolocation",
+    "language",
+    "redirect",
+    "locale",
+    "smart ip",
+    "cookie",
+    "country"
+  ]
+}

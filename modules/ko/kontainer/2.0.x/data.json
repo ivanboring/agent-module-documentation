@@ -1,0 +1,49 @@
+{
+  "name": "Kontainer",
+  "data_name": "kontainer",
+  "description": "Integrates the Kontainer digital asset management (DAM) system with Drupal media, supporting asset import, CDN media, image conversions and file-usage reporting.",
+  "version": "2.0.x",
+  "package": "Media",
+  "composer_namespace": "drupal/kontainer",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:field",
+    "drupal:file",
+    "drupal:image",
+    "drupal:link",
+    "drupal:media",
+    "drupal:media_library",
+    "drupal:path",
+    "drupal:responsive_image",
+    "entity_usage:entity_usage"
+  ],
+  "configure": "kontainer.admin.config",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/kontainer",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Digital asset management (DAM)"
+  ],
+  "keywords": [
+    "kontainer",
+    "dam",
+    "media",
+    "cdn",
+    "asset import",
+    "image conversion",
+    "entity usage"
+  ]
+}

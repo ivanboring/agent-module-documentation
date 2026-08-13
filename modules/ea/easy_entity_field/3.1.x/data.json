@@ -1,0 +1,41 @@
+{
+  "name": "Easy Entity Base Field",
+  "data_name": "easy_entity_field",
+  "description": "Adds bundle/base fields directly to a content entity type's base table through a Field UI-style interface, without writing code.",
+  "version": "3.1.x",
+  "package": "Fields",
+  "composer_namespace": "drupal/easy_entity_field",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:field_ui"
+  ],
+  "configure": "easy_entity_field.settings_form",
+  "core_version_requirement": "^11.2",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/easy_entity_field",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Fields"
+  ],
+  "keywords": [
+    "base field",
+    "entity",
+    "field ui",
+    "schema",
+    "bundle field",
+    "entity reference",
+    "field storage"
+  ]
+}

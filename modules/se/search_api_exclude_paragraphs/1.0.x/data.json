@@ -1,0 +1,41 @@
+{
+  "name": "Search API Exclude Paragraphs",
+  "data_name": "search_api_exclude_paragraphs",
+  "description": "A Search API processor that removes selected Paragraph types from rendered-content indexing so they are not searchable.",
+  "version": "1.0.x",
+  "package": "Search API",
+  "composer_namespace": "drupal/search_api_exclude_paragraphs",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "paragraphs:paragraphs",
+    "search_api:search_api"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/search_api_exclude_paragraphs",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site search"
+  ],
+  "subcategories": [
+    "Content indexing"
+  ],
+  "keywords": [
+    "search api",
+    "paragraphs",
+    "exclude",
+    "index",
+    "processor",
+    "rendered content"
+  ]
+}

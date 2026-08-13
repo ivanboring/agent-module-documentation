@@ -1,0 +1,48 @@
+{
+  "name": "THRON",
+  "data_name": "thron",
+  "description": "Integrates the THRON digital asset management (DAM) system so editors can search, embed, and upload THRON media from Drupal.",
+  "version": "3.0.x",
+  "package": "Media",
+  "composer_namespace": "drupal/thron",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "media:media",
+    "ckeditor5:ckeditor5",
+    "entity_embed:entity_embed",
+    "entity_browser:entity_browser",
+    "media_entity_browser:media_entity_browser",
+    "media_entity_browser:media_entity_browser_media_library",
+    "jquery_ui_autocomplete:jquery_ui_autocomplete",
+    "inline_entity_form:inline_entity_form"
+  ],
+  "configure": "thron.configuration_form",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/thron",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Digital asset management (DAM)"
+  ],
+  "keywords": [
+    "thron",
+    "dam",
+    "media",
+    "digital asset management",
+    "entity browser",
+    "embed",
+    "upload"
+  ]
+}

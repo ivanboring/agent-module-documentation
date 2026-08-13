@@ -1,0 +1,42 @@
+{
+  "name": "Translation Management cart storage",
+  "data_name": "tmgmt_cart_storage",
+  "description": "Extends TMGMT's job-item cart with persistent per-user or shared-global storage via pluggable storage methods.",
+  "version": "1.0.x",
+  "package": "Translation Management",
+  "composer_namespace": "drupal/tmgmt_cart_storage",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "user:user",
+    "tmgmt:tmgmt"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.5 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/tmgmt_cart_storage",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Multilingual"
+  ],
+  "subcategories": [
+    "Translation / multilingual"
+  ],
+  "keywords": [
+    "tmgmt",
+    "translation",
+    "cart",
+    "job item",
+    "storage",
+    "user data",
+    "persistence"
+  ]
+}

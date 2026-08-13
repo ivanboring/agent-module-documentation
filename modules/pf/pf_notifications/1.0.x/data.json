@@ -1,0 +1,45 @@
+{
+  "name": "Push framework notifications",
+  "data_name": "pf_notifications",
+  "description": "Delivers browser web-push notifications via the WebPush protocol, integrating the Push Framework and DANSE subscription systems.",
+  "version": "1.0.x",
+  "package": "Push",
+  "composer_namespace": "drupal/pf_notifications",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:rest",
+    "drupal:user",
+    "drupal:views",
+    "push_framework:push_framework",
+    "danse:danse_content"
+  ],
+  "configure": "pf_notifications.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/pf_notifications",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "User engagement"
+  ],
+  "subcategories": [
+    "Activity / notification messages"
+  ],
+  "keywords": [
+    "web push",
+    "notifications",
+    "vapid",
+    "webpush",
+    "danse",
+    "push framework",
+    "service worker"
+  ]
+}

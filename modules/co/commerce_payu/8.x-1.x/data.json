@@ -1,0 +1,41 @@
+{
+  "name": "Commerce PayU",
+  "data_name": "commerce_payu",
+  "description": "Off-site redirect payment gateway integrating the PayU gateway with Drupal Commerce, with signature-verified IPN notifications.",
+  "version": "8.x-1.x",
+  "package": "Commerce (Contrib)",
+  "composer_namespace": "drupal/commerce_payu",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "commerce:commerce_payment"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/commerce_payu",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Payment gateway"
+  ],
+  "keywords": [
+    "commerce",
+    "payu",
+    "payment gateway",
+    "off-site",
+    "ipn",
+    "openpayu",
+    "checkout"
+  ]
+}
