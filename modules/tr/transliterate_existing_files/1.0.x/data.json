@@ -1,0 +1,41 @@
+{
+  "name": "Transliterate Existing Files",
+  "data_name": "transliterate_existing_files",
+  "description": "Drush command that applies the site's configured filename transliteration/sanitization to already-uploaded files, optionally creating 301 redirects.",
+  "version": "1.0.x",
+  "package": "File",
+  "composer_namespace": "drupal/transliterate_existing_files",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "file:file"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/transliterate_existing_files",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "File & media metadata"
+  ],
+  "keywords": [
+    "transliterate",
+    "drush",
+    "filename",
+    "sanitize",
+    "files",
+    "redirect",
+    "rename"
+  ]
+}

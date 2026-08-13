@@ -1,0 +1,44 @@
+{
+  "name": "SVG Pan Zoom",
+  "data_name": "svg_pan_zoom",
+  "description": "Image-field formatter that renders SVG files with the svg-pan-zoom JS library for interactive pan and zoom.",
+  "version": "2.1.x",
+  "package": "Media",
+  "composer_namespace": "drupal/svg_pan_zoom",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "image:image",
+    "svg_image:svg_image"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/svg_pan_zoom",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "svg-pan-zoom (ariutta/svg-pan-zoom) >= 3.6.1"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "SVG / vector images"
+  ],
+  "keywords": [
+    "svg",
+    "pan",
+    "zoom",
+    "image",
+    "field formatter",
+    "vector",
+    "media"
+  ]
+}

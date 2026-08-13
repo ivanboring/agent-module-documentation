@@ -1,0 +1,42 @@
+{
+  "name": "Views User Term Filter",
+  "data_name": "views_user_term_filter",
+  "description": "A Views filter that limits results to content whose taxonomy-term reference field matches a term referenced on the current user's profile.",
+  "version": "1.0.x",
+  "package": "Views",
+  "composer_namespace": "drupal/views_user_term_filter",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "views:views",
+    "user_ref_field_cache_context:user_ref_field_cache_context"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/views_user_term_filter",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Views query enhancements"
+  ],
+  "keywords": [
+    "views",
+    "filter",
+    "taxonomy",
+    "current user",
+    "term reference",
+    "personalization",
+    "query"
+  ]
+}

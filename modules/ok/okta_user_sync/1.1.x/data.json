@@ -1,0 +1,42 @@
+{
+  "name": "miniOrange Okta User Sync",
+  "data_name": "okta_user_sync",
+  "description": "Bi-directional user provisioning and de-provisioning between Drupal and Okta with attribute mapping.",
+  "version": "1.1.x",
+  "package": "miniOrange",
+  "composer_namespace": "drupal/okta_user_sync",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "user_provisioning:user_provisioning"
+  ],
+  "configure": "okta_user_sync.overview",
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/okta_user_sync",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "External authentication"
+  ],
+  "keywords": [
+    "okta",
+    "user provisioning",
+    "miniorange",
+    "scim",
+    "user sync",
+    "attribute mapping",
+    "deprovisioning",
+    "identity"
+  ]
+}

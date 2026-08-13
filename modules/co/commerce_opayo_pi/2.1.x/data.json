@@ -1,0 +1,43 @@
+{
+  "name": "Commerce Opayo Pi",
+  "data_name": "commerce_opayo_pi",
+  "description": "Drupal Commerce payment gateway for Opayo (Elavon) using the Pi REST API with 3D Secure.",
+  "version": "2.1.x",
+  "package": "Commerce (contrib)",
+  "composer_namespace": "drupal/commerce_opayo_pi",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "commerce:commerce_payment",
+    "phone_international:phone_international",
+    "queue_unique:queue_unique"
+  ],
+  "configure": "commerce_opayo_pi.settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/commerce_opayo_pi",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Payment gateway"
+  ],
+  "keywords": [
+    "commerce",
+    "payment",
+    "opayo",
+    "sagepay",
+    "pi",
+    "3d secure",
+    "elavon"
+  ]
+}

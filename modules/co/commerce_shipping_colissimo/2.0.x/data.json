@@ -1,0 +1,44 @@
+{
+  "name": "Commerce Shipping Colissimo",
+  "data_name": "commerce_shipping_colissimo",
+  "description": "Colissimo (La Poste) shipping method for Drupal Commerce with home delivery, relay pickup points and label generation.",
+  "version": "2.0.x",
+  "package": "Commerce (shipping)",
+  "composer_namespace": "drupal/commerce_shipping_colissimo",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "commerce_shipping:commerce_shipping",
+    "commerce_shipping_label:commerce_shipping_label",
+    "drupal:file"
+  ],
+  "configure": "commerce_shipping_colissimo.settings",
+  "core_version_requirement": "^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/commerce_shipping_colissimo",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Shipping rate calculation"
+  ],
+  "keywords": [
+    "commerce",
+    "shipping",
+    "colissimo",
+    "la poste",
+    "france",
+    "relay pickup",
+    "label",
+    "carrier"
+  ]
+}

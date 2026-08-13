@@ -1,0 +1,46 @@
+{
+  "name": "UNEP Maps",
+  "data_name": "unep_maps",
+  "description": "Views style plugin that renders view results on a Mapbox map as pins, country highlights or area polygons, with UN-tile support and a boundary disclaimer.",
+  "version": "3.0.x",
+  "package": "Eau de Web",
+  "composer_namespace": "drupal/unep_maps",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "views:views",
+    "geofield:geofield"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/unep_maps",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "Mapbox GL JS (loaded via library)",
+    "geoPHP"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Geospatial / location"
+  ],
+  "keywords": [
+    "mapbox",
+    "map",
+    "views",
+    "geofield",
+    "gis",
+    "polygon",
+    "un tiles",
+    "geospatial"
+  ]
+}

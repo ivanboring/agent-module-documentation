@@ -1,0 +1,44 @@
+{
+  "name": "Wayback Filter",
+  "data_name": "wayback_filter",
+  "description": "Text-format filter (and link-field preprocessor) that appends or substitutes Internet Archive Wayback Machine links on links in nodes older than a configurable age.",
+  "version": "1.3.x",
+  "package": "Vertikal filters",
+  "composer_namespace": "drupal/wayback_filter",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "system:system",
+    "link:link"
+  ],
+  "configure": "wayback_filter.settings",
+  "core_version_requirement": "^8.8 || ^9  || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/wayback_filter",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "wayback_filter/wayback_filter (module CSS/JS)"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Text format filters"
+  ],
+  "keywords": [
+    "wayback",
+    "internet archive",
+    "linkrot",
+    "text filter",
+    "links",
+    "archive",
+    "node age"
+  ]
+}

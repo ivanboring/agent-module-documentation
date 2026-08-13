@@ -1,0 +1,43 @@
+{
+  "name": "Advanced Internal Page Cache",
+  "data_name": "advanced_page_cache",
+  "description": "extends core page_cache by letting modules add contextual parts to the anonymous page cache id.",
+  "version": "2.0.x",
+  "package": "Performance and scalability",
+  "composer_namespace": "drupal/advanced_page_cache",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:page_cache"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/advanced_page_cache",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "cookie_page_cache",
+    "ip_page_cache"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "Page cache control"
+  ],
+  "keywords": [
+    "cache",
+    "page cache",
+    "anonymous",
+    "performance",
+    "cache id",
+    "service tag"
+  ]
+}

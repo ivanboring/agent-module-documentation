@@ -1,0 +1,43 @@
+{
+  "name": "Patreon",
+  "data_name": "patreon",
+  "description": "Connects a Drupal site to the Patreon API for creator data, campaigns, and (via submodules) patron login and role assignment.",
+  "version": "4.2.x",
+  "package": "Patreon",
+  "composer_namespace": "drupal/patreon",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "patreon.settings_form",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/patreon",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "patreon_user",
+    "patreon_extras"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "OAuth / OpenID Connect client"
+  ],
+  "keywords": [
+    "patreon",
+    "oauth",
+    "membership",
+    "patron",
+    "api client",
+    "campaigns",
+    "social login",
+    "roles"
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "name": "Contacts",
+  "data_name": "contacts",
+  "description": "CRM dashboard built on decoupled users and profiles: a tabbed contact management UI with individuals, organisations and role-based dashboards.",
+  "version": "3.4.x",
+  "package": "Contacts",
+  "composer_namespace": "drupal/contacts",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "contacts:crm_tools",
+    "drupal:block",
+    "decoupled_auth:decoupled_auth",
+    "decoupled_auth:decoupled_auth_crm",
+    "profile:profile",
+    "name:name",
+    "ctools:ctools",
+    "ctools:ctools_views",
+    "search_api:search_api_db",
+    "facets:facets",
+    "drupal:datetime",
+    "drupal:options",
+    "address:address",
+    "drupal:layout_discovery",
+    "drupal:toolbar"
+  ],
+  "configure": "contacts.basic_config",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/contacts",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "crm_tools",
+    "contacts_dbs",
+    "contacts_group",
+    "contacts_log",
+    "contacts_user_dashboard",
+    "contacts_mapping"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "CRM integration"
+  ],
+  "keywords": [
+    "crm",
+    "contacts",
+    "dashboard",
+    "profile",
+    "decoupled user",
+    "individual",
+    "organisation",
+    "search api"
+  ]
+}
