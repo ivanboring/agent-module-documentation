@@ -1,0 +1,41 @@
+{
+  "name": "Delegate Permissions",
+  "data_name": "delegate_permissions",
+  "description": "Lets non-admin roles manage permissions for lower-weight roles, restricted to the delegating user's own permissions.",
+  "version": "1.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/delegate_permissions",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "config_filter:config_filter"
+  ],
+  "configure": "delegate_permissions.admin_permissions",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/delegate_permissions",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "User roles & permissions"
+  ],
+  "keywords": [
+    "permissions",
+    "roles",
+    "delegate",
+    "access control",
+    "rbac",
+    "config_filter",
+    "hierarchy"
+  ]
+}

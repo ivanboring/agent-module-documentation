@@ -1,0 +1,43 @@
+{
+  "name": "PayTR Virtual Pos iFrame API",
+  "data_name": "paytr_payment",
+  "description": "A Drupal Commerce off-site (iFrame) payment gateway for PayTR, with an HMAC-SHA256-verified payment callback.",
+  "version": "11.0.x",
+  "package": "Commerce (contrib)",
+  "composer_namespace": "drupal/paytr_payment",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "commerce:commerce_payment",
+    "telephone"
+  ],
+  "configure": "paytr_payment.settings",
+  "core_version_requirement": "^8.9 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/paytr_payment",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Payment gateway"
+  ],
+  "keywords": [
+    "paytr",
+    "commerce",
+    "payment gateway",
+    "iframe",
+    "checkout",
+    "hmac",
+    "callback",
+    "turkey"
+  ]
+}

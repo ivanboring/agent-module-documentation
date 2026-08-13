@@ -1,0 +1,42 @@
+{
+  "name": "Views RSS Feed Authentication",
+  "data_name": "vrssfa",
+  "description": "Requires OAuth2 or basic authentication on selected Views-generated RSS feed paths.",
+  "version": "3.0.x",
+  "package": "Authentication",
+  "composer_namespace": "drupal/vrssfa",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "simple_oauth:simple_oauth",
+    "drupal:basic_auth"
+  ],
+  "configure": "views_rss_authentication.settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/vrssfa",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Path / URL access restriction"
+  ],
+  "keywords": [
+    "rss",
+    "views",
+    "authentication",
+    "oauth2",
+    "basic auth",
+    "feed",
+    "access"
+  ]
+}

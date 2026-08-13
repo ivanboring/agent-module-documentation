@@ -1,0 +1,43 @@
+{
+  "name": "Simple Currency Converter",
+  "data_name": "simple_currency_converter",
+  "description": "Converts prices shown on the page into a visitor-selected currency using pluggable exchange-rate feeds.",
+  "version": "3.0.x",
+  "package": "Simple Currency Converter",
+  "composer_namespace": "drupal/simple_currency_converter",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "simple_currency_converter.admin_form",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/simple_currency_converter",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "ecb_scc",
+    "floatrates_scc",
+    "notifier_scc"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Currency conversion / exchange rates"
+  ],
+  "keywords": [
+    "currency",
+    "exchange rate",
+    "conversion",
+    "ecb",
+    "floatrates",
+    "ecommerce",
+    "pricing"
+  ]
+}

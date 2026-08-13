@@ -1,0 +1,41 @@
+{
+  "name": "Social Auth Vipps",
+  "data_name": "social_auth_vipps",
+  "description": "Lets users log in or register with their Vipps account via Social Auth's OAuth2 flow.",
+  "version": "4.x",
+  "package": "Social",
+  "composer_namespace": "drupal/social_auth_vipps",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "social_auth:social_auth"
+  ],
+  "configure": "social_auth_vipps.settings_form",
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/social_auth_vipps",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "OAuth / OpenID Connect client"
+  ],
+  "keywords": [
+    "vipps",
+    "oauth2",
+    "social auth",
+    "login",
+    "sso",
+    "openid connect",
+    "authentication"
+  ]
+}

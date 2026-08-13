@@ -1,0 +1,45 @@
+{
+  "name": "Migrate generator",
+  "data_name": "migrate_generator",
+  "description": "Generates Drupal migration configs from source CSV files (Drush-driven), with a companion submodule that exports content back to CSV.",
+  "version": "8.x-2.x",
+  "package": "Migration",
+  "composer_namespace": "drupal/migrate_generator",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:migrate",
+    "migrate_plus:migrate_plus",
+    "migrate_source_csv:migrate_source_csv",
+    "migrate_skip_on_404:migrate_skip_on_404"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/migrate_generator",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Migration tooling"
+  ],
+  "keywords": [
+    "migrate",
+    "migration",
+    "csv",
+    "generator",
+    "drush",
+    "import",
+    "export",
+    "content"
+  ]
+}

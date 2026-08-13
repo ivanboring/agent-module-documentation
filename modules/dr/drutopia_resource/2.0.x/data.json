@@ -1,0 +1,49 @@
+{
+  "name": "Drutopia Resource",
+  "data_name": "drutopia_resource",
+  "description": "Installs a 'Resource' content type (file, link or embedded video) with fields, facets, views and display config.",
+  "version": "2.0.x",
+  "package": "Drutopia",
+  "composer_namespace": "drupal/drutopia_resource",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node",
+    "drupal:media",
+    "drupal:taxonomy",
+    "facets:facets",
+    "paragraphs:paragraphs",
+    "pathauto:pathauto",
+    "search_api:search_api",
+    "video_embed_field:video_embed_field",
+    "drutopia_core:drutopia_core"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/drutopia_resource",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site structure"
+  ],
+  "subcategories": [
+    "Structured content / page building"
+  ],
+  "keywords": [
+    "drutopia",
+    "resource",
+    "content type",
+    "facets",
+    "search",
+    "file",
+    "video"
+  ]
+}

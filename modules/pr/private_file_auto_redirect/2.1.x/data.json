@@ -1,0 +1,40 @@
+{
+  "name": "Private file auto redirect",
+  "data_name": "private_file_auto_redirect",
+  "description": "Redirects requests for superseded private files to the latest file on the referencing media entity.",
+  "version": "2.1.x",
+  "package": "Media",
+  "composer_namespace": "drupal/private_file_auto_redirect",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:media"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/private_file_auto_redirect",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "File downloads"
+  ],
+  "keywords": [
+    "private files",
+    "media",
+    "file download",
+    "redirect",
+    "revisions",
+    "file access"
+  ]
+}
