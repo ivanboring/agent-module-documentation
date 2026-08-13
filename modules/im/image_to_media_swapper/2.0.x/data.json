@@ -1,0 +1,44 @@
+{
+  "name": "CKEditor file to media swapper",
+  "data_name": "image_to_media_swapper",
+  "description": "Converts file-based images and file links in CKEditor content into reusable Drupal media entities, in-editor or via a batch tool.",
+  "version": "2.0.x",
+  "package": "Media",
+  "composer_namespace": "drupal/image_to_media_swapper",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:ckeditor5",
+    "drupal:media_library",
+    "drupal:serialization"
+  ],
+  "configure": "image_to_media_swapper.security_settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/image_to_media_swapper",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Media embedding"
+  ],
+  "keywords": [
+    "media",
+    "ckeditor5",
+    "image",
+    "file",
+    "media entity",
+    "batch",
+    "migration",
+    "drupal-media"
+  ]
+}

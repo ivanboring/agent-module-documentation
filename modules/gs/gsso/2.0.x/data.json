@@ -1,0 +1,42 @@
+{
+  "name": "Group SSO",
+  "data_name": "gsso",
+  "description": "Maps SSO/SAML identity-provider attributes (claims) to Drupal roles, Group memberships and group roles on login.",
+  "version": "2.0.x",
+  "package": "Group",
+  "composer_namespace": "drupal/gsso",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "group:group"
+  ],
+  "configure": "gsso.settings",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/gsso",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "External authentication"
+  ],
+  "keywords": [
+    "sso",
+    "saml",
+    "group",
+    "claims",
+    "roles",
+    "group roles",
+    "simplesamlphp",
+    "attribute mapping"
+  ]
+}

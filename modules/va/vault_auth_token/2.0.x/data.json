@@ -1,0 +1,42 @@
+{
+  "name": "Vault Auth - Token",
+  "data_name": "vault_auth_token",
+  "description": "Adds a static-token authentication strategy to the Vault module, sourcing the token from a Key entity to authenticate Drupal to HashiCorp Vault.",
+  "version": "2.0.x",
+  "package": "Security",
+  "composer_namespace": "drupal/vault_auth_token",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "key:key",
+    "vault:vault"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.3 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/vault_auth_token",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Secrets & key management"
+  ],
+  "keywords": [
+    "vault",
+    "hashicorp",
+    "token",
+    "authentication",
+    "key",
+    "secrets",
+    "credentials"
+  ]
+}

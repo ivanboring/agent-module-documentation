@@ -1,0 +1,58 @@
+{
+  "name": "PM",
+  "data_name": "pm",
+  "description": "Base module of the Drupal PM suite providing a project-management dashboard and shared entity framework for work-tracking submodules.",
+  "version": "4.1.x",
+  "package": "Project Management",
+  "composer_namespace": "drupal/pm",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "block:block",
+    "ckeditor5:ckeditor5",
+    "comment:comment",
+    "datetime:datetime",
+    "datetime_range:datetime_range",
+    "link:link",
+    "options:options",
+    "path:path",
+    "rest:rest",
+    "serialization:serialization",
+    "text:text",
+    "views:views",
+    "user:user",
+    "verf:verf",
+    "address:address",
+    "dynamic_entity_reference:dynamic_entity_reference",
+    "pm:pm_ui"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/pm",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Dashboard / reporting"
+  ],
+  "keywords": [
+    "project management",
+    "dashboard",
+    "work tracking",
+    "tasks",
+    "kanban",
+    "entities",
+    "agile",
+    "pm"
+  ]
+}

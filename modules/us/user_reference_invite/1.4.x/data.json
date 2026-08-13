@@ -1,0 +1,42 @@
+{
+  "name": "User Reference with Invite",
+  "data_name": "user_reference_invite",
+  "description": "Enhances user-reference fields with an email invitation workflow: invite new users, register them via a secure token link, and auto-attach them to the referencing entity.",
+  "version": "1.4.x",
+  "package": "User",
+  "composer_namespace": "drupal/user_reference_invite",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "user:user",
+    "field:field"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/user_reference_invite",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "User registration"
+  ],
+  "keywords": [
+    "invitation",
+    "user reference",
+    "registration",
+    "token",
+    "onboarding",
+    "email",
+    "membership"
+  ]
+}

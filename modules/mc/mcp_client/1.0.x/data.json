@@ -1,0 +1,45 @@
+{
+  "name": "MCP Client",
+  "data_name": "mcp_client",
+  "description": "Connects Drupal to external Model Context Protocol (MCP) servers over HTTP or STDIO and exposes their tools to the AI module as function-call plugins.",
+  "version": "1.0.x",
+  "package": "AI Tools",
+  "composer_namespace": "drupal/mcp_client",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "ai:ai",
+    "ai_agents:ai_agents",
+    "key:key",
+    "tool:tool"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/mcp_client",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "AI tooling / function calling"
+  ],
+  "keywords": [
+    "mcp",
+    "ai",
+    "tools",
+    "function calling",
+    "http",
+    "stdio",
+    "key",
+    "ai agents"
+  ]
+}
