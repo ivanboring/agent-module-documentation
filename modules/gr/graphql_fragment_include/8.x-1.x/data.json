@@ -1,0 +1,43 @@
+{
+  "name": "GraphQL Fragment Include",
+  "data_name": "graphql_fragment_include",
+  "description": "Lets GraphQL queries include reusable fragment files from a configured directory via a `# include path.gql` comment syntax.",
+  "version": "8.x-1.x",
+  "package": "GraphQL",
+  "composer_namespace": "drupal/graphql_fragment_include",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:graphql",
+    "drupal:graphql_core"
+  ],
+  "configure": "graphql_fragment_include.config",
+  "core_version_requirement": ">=9",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/graphql_fragment_include",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Decoupled"
+  ],
+  "subcategories": [
+    "GraphQL schema"
+  ],
+  "keywords": [
+    "graphql",
+    "fragments",
+    "include",
+    "query",
+    "decoupled",
+    "static suite",
+    "reuse",
+    "query processor"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "name": "Static Generator",
+  "data_name": "static_generator",
+  "description": "Generates a static HTML copy of a Drupal site, with ESI fragment support and rsync-based asset deployment.",
+  "version": "2.0.x",
+  "package": "Static Generator",
+  "composer_namespace": "drupal/static_generator",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "node:node",
+    "content_moderation:content_moderation",
+    "workflows:workflows",
+    "field_ui:field_ui"
+  ],
+  "configure": "static_generator.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/static_generator",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Decoupled"
+  ],
+  "subcategories": [
+    "Static site generation"
+  ],
+  "keywords": [
+    "static site",
+    "static html",
+    "esi",
+    "rsync",
+    "deploy",
+    "drush",
+    "decoupled",
+    "generator"
+  ]
+}

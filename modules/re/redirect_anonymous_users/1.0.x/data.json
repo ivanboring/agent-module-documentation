@@ -1,0 +1,39 @@
+{
+  "name": "Redirect anonymous users",
+  "data_name": "redirect_anonymous_users",
+  "description": "Redirects every anonymous request to the login page except an admin-defined allow-list of route names.",
+  "version": "1.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/redirect_anonymous_users",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "redirect_anonymous_users.settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/redirect_anonymous_users",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Path / URL access restriction"
+  ],
+  "keywords": [
+    "anonymous",
+    "redirect",
+    "login",
+    "access",
+    "route",
+    "gate",
+    "private site"
+  ]
+}

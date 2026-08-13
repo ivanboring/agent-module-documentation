@@ -1,0 +1,41 @@
+{
+  "name": "Menu Level Permission",
+  "data_name": "menu_level_permission",
+  "description": "Restricts editing/deleting menu links at or above a configured depth in selected menus, enforced via route and entity access.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/menu_level_permission",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "menu_link_content:menu_link_content"
+  ],
+  "configure": "menu_level_permission.settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/menu_level_permission",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Navigation menus"
+  ],
+  "keywords": [
+    "menu",
+    "permission",
+    "access control",
+    "menu level",
+    "menu link",
+    "depth",
+    "restrict"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "name": "DROWL Paragraphs",
+  "data_name": "drowl_paragraphs",
+  "description": "Paragraphs UX/UI enhancements: a per-paragraph settings field, layout/slideshow defaults, and a suite of ready-made paragraph type submodules.",
+  "version": "4.2.x",
+  "package": "Paragraphs",
+  "composer_namespace": "drupal/drowl_paragraphs",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "field:field",
+    "paragraphs:paragraphs",
+    "field_group:field_group",
+    "breakpoint:breakpoint",
+    "layout_paragraphs:layout_paragraphs",
+    "twig_tweak:twig_tweak",
+    "responsive_background_image:responsive_background_image",
+    "foundation_sites:foundation_sites",
+    "drowl_layouts:drowl_layouts"
+  ],
+  "configure": "drowl_paragraphs_settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/drowl_paragraphs",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "drowl_paragraphs_styles_ui",
+    "drowl_paragraphs_type_block_content",
+    "drowl_paragraphs_type_countdown",
+    "drowl_paragraphs_type_layout_restricted_access",
+    "drowl_paragraphs_type_layout_slideshow",
+    "drowl_paragraphs_type_markup",
+    "drowl_paragraphs_type_score",
+    "drowl_paragraphs_types"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Structured content / page building"
+  ],
+  "keywords": [
+    "paragraphs",
+    "layout",
+    "slideshow",
+    "settings",
+    "field",
+    "page building",
+    "drowl",
+    "foundation"
+  ]
+}
