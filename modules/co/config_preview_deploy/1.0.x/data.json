@@ -1,0 +1,44 @@
+{
+  "name": "Config Preview Deploy",
+  "data_name": "config_preview_deploy",
+  "description": "Safely deploys configuration from a preview environment to production using checkpoints and unified diff files.",
+  "version": "1.0.x",
+  "package": "Configuration",
+  "composer_namespace": "drupal/config_preview_deploy",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:system",
+    "simple_oauth:simple_oauth",
+    "key:key"
+  ],
+  "configure": "config_preview_deploy.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/config_preview_deploy",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Deployment / release management"
+  ],
+  "keywords": [
+    "configuration",
+    "deploy",
+    "preview",
+    "production",
+    "oauth2",
+    "diff",
+    "checkpoint",
+    "release"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "name": "Liveblog",
+  "data_name": "liveblog",
+  "description": "Live-blogging platform: a 'liveblog' node type with streamed 'liveblog_post' entities pushed to readers in real time.",
+  "version": "2.0.x",
+  "package": null,
+  "composer_namespace": "drupal/liveblog",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "field:field",
+    "node:node",
+    "rest:rest",
+    "taxonomy:taxonomy",
+    "views:views",
+    "simple_gmap:simple_gmap"
+  ],
+  "configure": "liveblog.admin.settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/liveblog",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Views auto-refresh"
+  ],
+  "keywords": [
+    "liveblog",
+    "live blog",
+    "real-time",
+    "pusher",
+    "stream",
+    "posts",
+    "notification channel",
+    "events"
+  ]
+}

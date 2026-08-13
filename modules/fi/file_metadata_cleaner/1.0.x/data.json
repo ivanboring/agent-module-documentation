@@ -1,0 +1,44 @@
+{
+  "name": "File Metadata Cleaner",
+  "data_name": "file_metadata_cleaner",
+  "description": "Strips embedded metadata (EXIF/GPS/author) from uploaded files via ExifTool, on upload or on demand.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/file_metadata_cleaner",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "file:file",
+    "user:user",
+    "views:views"
+  ],
+  "configure": "file_metadata_cleaner.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/file_metadata_cleaner",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "File & media metadata"
+  ],
+  "keywords": [
+    "metadata",
+    "exif",
+    "exiftool",
+    "privacy",
+    "file cleanup",
+    "gps",
+    "images",
+    "pdf"
+  ]
+}

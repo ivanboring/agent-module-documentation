@@ -1,0 +1,42 @@
+{
+  "name": "Academic Applications",
+  "data_name": "academic_applications",
+  "description": "Webform-based academic position application system that bundles application answers and reference PDFs into a single PDF.",
+  "version": "3.0.x",
+  "package": "Webform",
+  "composer_namespace": "drupal/academic_applications",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "webform:webform"
+  ],
+  "configure": "entity.academic_applications_workflow.collection",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/academic_applications",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Forms and surveys"
+  ],
+  "subcategories": [
+    "Submission handling"
+  ],
+  "keywords": [
+    "webform",
+    "application",
+    "pdf",
+    "recommendation",
+    "bundle",
+    "ghostscript",
+    "academic",
+    "workflow"
+  ]
+}

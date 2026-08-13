@@ -1,0 +1,43 @@
+{
+  "name": "ECA Twilio Action",
+  "data_name": "eca_twilio_action",
+  "description": "Provides an ECA action plugin that sends an SMS via Twilio, with token support in the number and message.",
+  "version": "2.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/eca_twilio_action",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "eca:eca",
+    "twilio:twilio",
+    "token:token"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/eca_twilio_action",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "SMS / text messaging"
+  ],
+  "keywords": [
+    "eca",
+    "twilio",
+    "sms",
+    "action",
+    "token",
+    "messaging",
+    "automation"
+  ]
+}
