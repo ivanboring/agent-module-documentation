@@ -1,0 +1,41 @@
+{
+  "name": "Media Entity Download Count",
+  "data_name": "media_entity_download_count",
+  "description": "Counts downloads of media files into a per-bundle text/integer field and logs each download.",
+  "version": "1.0.x",
+  "package": "Media",
+  "composer_namespace": "drupal/media_entity_download_count",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:media_entity_download"
+  ],
+  "configure": "media_entity_download_count.settings",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/media_entity_download_count",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "File downloads"
+  ],
+  "keywords": [
+    "media",
+    "download count",
+    "downloads",
+    "statistics",
+    "file",
+    "tracking",
+    "media_entity_download"
+  ]
+}

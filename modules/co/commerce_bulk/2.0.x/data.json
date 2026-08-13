@@ -1,0 +1,46 @@
+{
+  "name": "Commerce Bulk",
+  "data_name": "commerce_bulk",
+  "description": "Provides a service for bulk creation of Drupal Commerce entities.",
+  "version": "2.0.x",
+  "package": "Commerce (contrib)",
+  "composer_namespace": "drupal/commerce_bulk",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "commerce:commerce_order",
+    "drupal:action",
+    "drupal:taxonomy"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/commerce_bulk",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "commerce_generate"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Automation"
+  ],
+  "subcategories": [
+    "Bulk operations"
+  ],
+  "keywords": [
+    "bulk",
+    "commerce",
+    "product variations",
+    "sku",
+    "attributes",
+    "actions",
+    "taxonomy",
+    "anonymize"
+  ]
+}

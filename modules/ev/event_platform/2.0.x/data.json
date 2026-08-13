@@ -1,0 +1,47 @@
+{
+  "name": "Event Platform Bundle",
+  "data_name": "event_platform",
+  "description": "A bundle of modules that build an event/conference site: sessions, speakers, sponsors and scheduling.",
+  "version": "2.0.x",
+  "package": "Event Platform",
+  "composer_namespace": "drupal/event_platform",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "event_platform:event_platform_details",
+    "event_platform:event_platform_job_listings",
+    "event_platform:event_platform_sessions",
+    "event_platform:event_platform_speakers",
+    "event_platform:event_platform_sponsors",
+    "event_platform:event_platform_scheduler",
+    "event_platform:event_platform_ratings"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/event_platform",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Event management"
+  ],
+  "keywords": [
+    "event",
+    "conference",
+    "drupalcamp",
+    "sessions",
+    "speakers",
+    "sponsors",
+    "scheduler"
+  ]
+}

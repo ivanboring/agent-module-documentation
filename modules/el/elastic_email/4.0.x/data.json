@@ -1,0 +1,41 @@
+{
+  "name": "Elastic Email",
+  "data_name": "elastic_email",
+  "description": "Sends Drupal email through the Elastic Email transactional email service.",
+  "version": "4.0.x",
+  "package": "Mail",
+  "composer_namespace": "drupal/elastic_email",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "mailsystem:mailsystem"
+  ],
+  "configure": "elastic_email.admin_settings",
+  "core_version_requirement": "^10 | ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/elastic_email",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Email / SMTP"
+  ],
+  "keywords": [
+    "email",
+    "mail",
+    "elastic email",
+    "transactional",
+    "smtp",
+    "mailsystem",
+    "api"
+  ]
+}

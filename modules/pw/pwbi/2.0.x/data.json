@@ -1,0 +1,43 @@
+{
+  "name": "PowerBi Integration",
+  "data_name": "pwbi",
+  "description": "Embeds Microsoft Power BI reports and queries its REST API using Azure AD service-principal auth.",
+  "version": "2.0.x",
+  "package": "PowerBi",
+  "composer_namespace": "drupal/pwbi",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "oauth2_client:oauth2_client",
+    "drupal:media",
+    "drupal:breakpoint"
+  ],
+  "configure": "pwbi.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/pwbi",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "8.3",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Cloud services (Azure)"
+  ],
+  "keywords": [
+    "power bi",
+    "powerbi",
+    "azure",
+    "service principal",
+    "oauth2",
+    "embed",
+    "rest api"
+  ]
+}
