@@ -35,10 +35,19 @@ DRY=
 for a in "$@"; do
   case "$a" in
     --site-install) MODE=site-install ;;
+    --no-db)        MODE=no-db ;;
     --dry-run)      DRY=1 ;;
     *) echo "unknown option: $a" >&2; exit 1 ;;
   esac
 done
+
+# --no-db (or env SKIP_DB_RESET=1): composer-only reset. On this host `ddev snapshot restore`
+# — like any DDEV op that RECREATES containers — reliably races into a container-name
+# conflict (rebuild → recreate → "name already in use"), leaving DDEV wedged. Documentation
+# and static security scanning only need the module CODE on disk (composer require) — modules
+# are never enabled — so the DB reset is unnecessary. Skipping it sidesteps the DDEV bug
+# entirely: composer runs via `ddev exec` INSIDE the existing web container, no recreate.
+[ "${SKIP_DB_RESET:-0}" = "1" ] && MODE=no-db
 
 [ -f composer.json ] || { echo "no composer.json here ($PWD)" >&2; exit 1; }
 
@@ -91,6 +100,9 @@ fi
 echo "== 3/3 resetting the database"
 if [ -n "$DRY" ]; then
   echo "  (dry run) mode=$MODE snapshot=$SNAPSHOT"
+elif [ "$MODE" = no-db ]; then
+  echo "  skipped (--no-db): modules are never enabled for doc/scan, so the DB is irrelevant;"
+  echo "  avoids the ddev container-recreate conflict that snapshot restore triggers on this host."
 elif [ "$MODE" = snapshot ]; then
   # A snapshot restore is ~30s vs several minutes for site:install, and gives an identical
   # starting point every wave. Note: restoring straight after a crashed DB container can

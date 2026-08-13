@@ -18,7 +18,7 @@ set -uo pipefail
 cd "$(dirname "$0")/.."
 
 N="${1:-40}"
-LIST=".campaign-5000.txt"
+LIST="${CAMPAIGN_LIST:-.campaign-5000.txt}"
 SKIP="scripts/.campaign-skip"
 [ -f "$LIST" ] || { echo "missing $LIST" >&2; exit 1; }
 
