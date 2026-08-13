@@ -1,0 +1,48 @@
+{
+  "name": "Alerts Kit",
+  "data_name": "alerts",
+  "description": "Configuration kit that installs an Alert content type, severity taxonomy, and a view/banner for displaying dismissible site alerts.",
+  "version": "1.1.x",
+  "package": "Configuration Kits",
+  "composer_namespace": "drupal/alerts",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:link",
+    "drupal:taxonomy",
+    "drupal:views",
+    "add_content_by_bundle:add_content_by_bundle",
+    "color_field:color_field"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/alerts",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "alerts_olivero"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Announcement / notification banner"
+  ],
+  "keywords": [
+    "alerts",
+    "banner",
+    "notification",
+    "announcement",
+    "taxonomy",
+    "views",
+    "severity",
+    "dismissible"
+  ]
+}

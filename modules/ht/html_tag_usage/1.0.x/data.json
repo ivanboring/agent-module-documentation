@@ -1,0 +1,42 @@
+{
+  "name": "HTML Tag Usage",
+  "data_name": "html_tag_usage",
+  "description": "Analyzes formatted-text field content site-wide and reports which HTML tags and attributes are in use per text format, with per-entity inspection.",
+  "version": "1.0.x",
+  "package": "Development",
+  "composer_namespace": "drupal/html_tag_usage",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:text"
+  ],
+  "configure": "html_tag_usage.configure",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/html_tag_usage",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Debugging & inspection"
+  ],
+  "keywords": [
+    "html",
+    "tags",
+    "attributes",
+    "text format",
+    "audit",
+    "report",
+    "filter",
+    "wysiwyg"
+  ]
+}

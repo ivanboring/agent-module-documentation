@@ -1,0 +1,42 @@
+{
+  "name": "AI Budget Control",
+  "data_name": "ai_budget_control",
+  "description": "Governance layer that meters and caps Drupal AI usage (tokens, spend, request count) per provider, role or user, with a usage dashboard and CSV export.",
+  "version": "1.0.x",
+  "package": "AI",
+  "composer_namespace": "drupal/ai_budget_control",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "ai:ai"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ai_budget_control",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "AI usage metering & cost"
+  ],
+  "keywords": [
+    "ai",
+    "budget",
+    "cost",
+    "usage",
+    "limit",
+    "quota",
+    "governance",
+    "metering"
+  ]
+}

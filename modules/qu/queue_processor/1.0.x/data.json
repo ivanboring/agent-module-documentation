@@ -1,0 +1,42 @@
+{
+  "name": "Queue Processor",
+  "data_name": "queue_processor",
+  "description": "Processes configured queues after each page response (on kernel terminate), with per-queue priority, item and time limits, and an alter hook.",
+  "version": "1.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/queue_processor",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "system:system"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/queue_processor",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "8.3+",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Queue / background processing"
+  ],
+  "keywords": [
+    "queue",
+    "queue worker",
+    "background processing",
+    "kernel terminate",
+    "cron alternative",
+    "priority",
+    "time limit",
+    "hook"
+  ]
+}

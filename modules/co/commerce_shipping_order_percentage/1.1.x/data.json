@@ -1,0 +1,42 @@
+{
+  "name": "Commerce Shipping Order Percentage",
+  "data_name": "commerce_shipping_order_percentage",
+  "description": "Commerce shipping method plugin that charges shipping as a percentage of the order subtotal, with optional minimum and maximum caps.",
+  "version": "1.1.x",
+  "package": "Commerce (contrib)",
+  "composer_namespace": "drupal/commerce_shipping_order_percentage",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "commerce:commerce",
+    "commerce:commerce_order",
+    "commerce:commerce_price"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/commerce_shipping_order_percentage",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Shipping rate calculation"
+  ],
+  "keywords": [
+    "commerce",
+    "shipping",
+    "shipping method",
+    "percentage",
+    "order value",
+    "rate"
+  ]
+}

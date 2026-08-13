@@ -1,0 +1,44 @@
+{
+  "name": "Bundle Access (Content View Access)",
+  "data_name": "content_view_access",
+  "description": "Blocks or redirects the canonical page of nodes/taxonomy terms per bundle and role via a kernel request subscriber.",
+  "version": "1.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/content_view_access",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node",
+    "drupal:taxonomy",
+    "drupal:user"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.4 || ^11.1",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/content_view_access",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Per-node view access"
+  ],
+  "keywords": [
+    "access",
+    "bundle",
+    "content type",
+    "vocabulary",
+    "role",
+    "redirect",
+    "403",
+    "404"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "name": "Purge Uncacheable Tags Headers",
+  "data_name": "purge_uncacheable_tagsheaders",
+  "description": "Emits Purge's cache-tags response headers on uncacheable (no-cache) responses so an upstream shared cache can still invalidate them.",
+  "version": "1.0.x",
+  "package": "Purge",
+  "composer_namespace": "drupal/purge_uncacheable_tagsheaders",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "purge:purge (>= 8.x-3.3)"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/purge_uncacheable_tagsheaders",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "HTTP cache headers"
+  ],
+  "keywords": [
+    "purge",
+    "cache tags",
+    "headers",
+    "uncacheable",
+    "no-cache",
+    "graphql",
+    "reverse proxy",
+    "invalidation"
+  ]
+}

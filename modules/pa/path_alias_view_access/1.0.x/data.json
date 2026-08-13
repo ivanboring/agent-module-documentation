@@ -1,0 +1,42 @@
+{
+  "name": "Path Alias View Access",
+  "data_name": "path_alias_view_access",
+  "description": "Adds an 'access path_aliases' permission that grants view access to published path_alias entities (e.g. over JSON:API) without the admin permission.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/path_alias_view_access",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "path_alias:path_alias"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/path_alias_view_access",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Entity access control API"
+  ],
+  "keywords": [
+    "path alias",
+    "access",
+    "permission",
+    "jsonapi",
+    "entity access",
+    "view",
+    "published",
+    "hook"
+  ]
+}

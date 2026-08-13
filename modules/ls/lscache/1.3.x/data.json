@@ -1,0 +1,42 @@
+{
+  "name": "LSCache",
+  "data_name": "lscache",
+  "description": "Drupal-native LiteSpeed Cache integration: emits X-LiteSpeed-Tag/Cache-Control headers so LSWS caches pages by Drupal cache tag, with Purge-based tag invalidation.",
+  "version": "1.3.x",
+  "package": "Performance and scalability",
+  "composer_namespace": "drupal/lscache",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "lscache.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/lscache",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "lscache_purger"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "Caching backend"
+  ],
+  "keywords": [
+    "litespeed",
+    "lscache",
+    "cache",
+    "cache tags",
+    "purge",
+    "esi",
+    "reverse proxy",
+    "full page cache"
+  ]
+}

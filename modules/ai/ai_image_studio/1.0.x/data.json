@@ -1,0 +1,45 @@
+{
+  "name": "AI Image Studio",
+  "data_name": "ai_image_studio",
+  "description": "Conversational workspace for generating and iteratively refining AI images and videos with Drupal AI providers, and publishing results to Media.",
+  "version": "1.0.x",
+  "package": "AI",
+  "composer_namespace": "drupal/ai_image_studio",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "ai:ai",
+    "drupal:file",
+    "drupal:media",
+    "drupal:user"
+  ],
+  "configure": "ai_image_studio.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ai_image_studio",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "AI image & video generation"
+  ],
+  "keywords": [
+    "ai",
+    "image generation",
+    "video generation",
+    "media",
+    "text-to-image",
+    "image-to-image",
+    "studio",
+    "conversational"
+  ]
+}
