@@ -1,0 +1,41 @@
+{
+  "name": "Private Message Invites",
+  "data_name": "private_message_invite",
+  "description": "Lets private-message thread authors invite users (by email) into a thread, with accept/decline links.",
+  "version": "1.0.x",
+  "package": "Private Message",
+  "composer_namespace": "drupal/private_message_invite",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "private_message:private_message"
+  ],
+  "configure": "private_message_invite.admin_config.config",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/private_message_invite",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "User engagement"
+  ],
+  "subcategories": [
+    "Messaging framework"
+  ],
+  "keywords": [
+    "private message",
+    "invite",
+    "messaging",
+    "thread",
+    "invitation",
+    "accept",
+    "decline"
+  ]
+}

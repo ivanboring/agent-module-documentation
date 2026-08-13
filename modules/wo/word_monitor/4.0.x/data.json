@@ -1,0 +1,42 @@
+{
+  "name": "Word Monitor",
+  "data_name": "word_monitor",
+  "description": "Lets you define banned words/expressions and warns you when any appear in your site's content, via core-search integration and a status-report warning.",
+  "version": "4.0.x",
+  "package": null,
+  "composer_namespace": "drupal/word_monitor",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "word_monitor.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/word_monitor",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "8.x",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "word_monitor_search",
+    "word_monitor_status_warning"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Content search / find"
+  ],
+  "keywords": [
+    "word monitor",
+    "banned words",
+    "content audit",
+    "search",
+    "status report",
+    "governance",
+    "plugins"
+  ]
+}

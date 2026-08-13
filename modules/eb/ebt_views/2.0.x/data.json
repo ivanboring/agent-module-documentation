@@ -1,0 +1,42 @@
+{
+  "name": "Extra Block Types (EBT): Views",
+  "data_name": "ebt_views",
+  "description": "Adds an Extra Block Type that embeds an existing View (via Views Reference) as a styled EBT block.",
+  "version": "2.0.x",
+  "package": "Extra Block Types",
+  "composer_namespace": "drupal/ebt_views",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "ebt_core:ebt_core",
+    "viewsreference:viewsreference"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.1 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ebt_views",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "View embedding"
+  ],
+  "keywords": [
+    "ebt",
+    "views",
+    "view embedding",
+    "block",
+    "layout builder",
+    "viewsreference",
+    "block content"
+  ]
+}

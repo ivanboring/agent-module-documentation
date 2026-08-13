@@ -1,0 +1,44 @@
+{
+  "name": "Analyze AI Content Security Audit",
+  "data_name": "analyze_ai_content_security_audit",
+  "description": "Analyze submodule that uses an AI provider to score content entities for PII and credential-disclosure risk.",
+  "version": "1.3.x",
+  "package": "Analyze",
+  "composer_namespace": "drupal/analyze_ai_content_security_audit",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "analyze:analyze",
+    "views_color_scales:views_color_scales",
+    "ai:ai"
+  ],
+  "configure": "analyze_ai_content_security_audit.settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/analyze_ai_content_security_audit",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "AI content risk analysis"
+  ],
+  "keywords": [
+    "ai",
+    "security",
+    "pii",
+    "credentials",
+    "audit",
+    "analyze",
+    "content",
+    "risk"
+  ]
+}

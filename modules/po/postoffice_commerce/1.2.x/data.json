@@ -1,0 +1,44 @@
+{
+  "name": "Postoffice Commerce",
+  "data_name": "postoffice_commerce",
+  "description": "Provides a Postoffice/Symfony Mailer mail plugin so Drupal Commerce emails are sent as themed Symfony messages.",
+  "version": "1.2.x",
+  "package": "Mail",
+  "composer_namespace": "drupal/postoffice_commerce",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "postoffice:postoffice",
+    "postoffice:postoffice_compat",
+    "postoffice:postoffice_compat_theme",
+    "commerce:commerce"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/postoffice_commerce",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Email / mail delivery"
+  ],
+  "keywords": [
+    "commerce",
+    "email",
+    "postoffice",
+    "symfony mailer",
+    "mail plugin",
+    "order receipt",
+    "themed email"
+  ]
+}

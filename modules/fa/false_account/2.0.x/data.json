@@ -1,0 +1,41 @@
+{
+  "name": "False Account",
+  "data_name": "false_account",
+  "description": "Detects multiple/false user accounts sharing one browser via a tracking cookie and can auto-block repeat offenders.",
+  "version": "2.0.x",
+  "package": null,
+  "composer_namespace": "drupal/false_account",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "views_aggregator:views_aggregator"
+  ],
+  "configure": "false_account.settings",
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/false_account",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Spam prevention"
+  ],
+  "keywords": [
+    "false account",
+    "fake accounts",
+    "sockpuppet",
+    "multi-account",
+    "fraud detection",
+    "user blocking",
+    "tracking cookie"
+  ]
+}

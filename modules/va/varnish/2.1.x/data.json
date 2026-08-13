@@ -1,0 +1,39 @@
+{
+  "name": "Varnish",
+  "data_name": "varnish",
+  "description": "Integrates Drupal with the Varnish HTTP accelerator over its socket-based admin (CLI) interface for cache invalidation (bans) and status checks.",
+  "version": "2.1.x",
+  "package": "Caching",
+  "composer_namespace": "drupal/varnish",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "varnish.admin_settings",
+  "core_version_requirement": "^11 || ^10 || ^9",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/varnish",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "Cache invalidation"
+  ],
+  "keywords": [
+    "varnish",
+    "reverse proxy",
+    "cache",
+    "invalidation",
+    "ban",
+    "purge",
+    "accelerator"
+  ]
+}
