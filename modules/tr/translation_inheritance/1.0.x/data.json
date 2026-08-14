@@ -1,0 +1,41 @@
+{
+  "name": "Translation Inheritance",
+  "data_name": "translation_inheritance",
+  "description": "Lets an entity translation inherit (link to) content from another language instead of maintaining its own copy.",
+  "version": "1.0.x",
+  "package": "Multilingual",
+  "composer_namespace": "drupal/translation_inheritance",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:language",
+    "drupal:content_translation"
+  ],
+  "configure": "translation_inheritance.settings",
+  "core_version_requirement": "^9.4 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/translation_inheritance",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Multilingual"
+  ],
+  "subcategories": [
+    "Language fallback / inheritance"
+  ],
+  "keywords": [
+    "multilingual",
+    "translation",
+    "inheritance",
+    "language fallback",
+    "field type",
+    "content translation"
+  ]
+}

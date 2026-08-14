@@ -1,0 +1,39 @@
+{
+  "name": "Exports Drupal databases to AWS S3",
+  "data_name": "s3_db_export",
+  "description": "Dumps the Drupal database with mysqldump-php and uploads the SQL file to an Amazon S3 bucket, on demand or via cron.",
+  "version": "1.0.x",
+  "package": "AWS S3",
+  "composer_namespace": "drupal/s3_db_export",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "s3_db_export.admin_config_form",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/s3_db_export",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Backup & restore"
+  ],
+  "keywords": [
+    "backup",
+    "database dump",
+    "aws",
+    "s3",
+    "mysqldump",
+    "export",
+    "cron"
+  ]
+}

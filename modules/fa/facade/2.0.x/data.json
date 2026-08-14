@@ -1,0 +1,43 @@
+{
+  "name": "Fa\u00e7ade",
+  "data_name": "facade",
+  "description": "Framework for managing multi-tenant Drupal deployments: a Tenant entity plus plugins that react to tenant create/edit/delete to launch remote cloud orchestrators.",
+  "version": "2.0.x",
+  "package": "Fa\u00e7ade",
+  "composer_namespace": "drupal/facade",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "cloud:cloud"
+  ],
+  "configure": "facade.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/facade",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "facade_remote_worker"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Deployment / release management"
+  ],
+  "keywords": [
+    "multi-tenant",
+    "tenant",
+    "deployment",
+    "cloud",
+    "orchestrator",
+    "openstack",
+    "bearer token"
+  ]
+}

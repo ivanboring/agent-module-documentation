@@ -1,0 +1,44 @@
+{
+  "name": "Greeting Cards",
+  "data_name": "greeting_cards",
+  "description": "Lets visitors upload images/PDFs that are turned into a greeting-card node with a PDF thumbnail, then e-mailed to a recipient.",
+  "version": "1.0.x",
+  "package": "Other",
+  "composer_namespace": "drupal/greeting_cards",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "entity_reference_revisions:entity_reference_revisions"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.5 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/greeting_cards",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "greeting_cards/manager_assets",
+    "greeting_cards/manager_card"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "PDF generation"
+  ],
+  "keywords": [
+    "greeting card",
+    "pdf",
+    "thumbnail",
+    "ecard",
+    "email",
+    "mpdf",
+    "imagemagick"
+  ]
+}

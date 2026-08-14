@@ -1,0 +1,42 @@
+{
+  "name": "Web Extract Data",
+  "data_name": "web_extract_data",
+  "description": "Scrapes images, links or meta tags from a list of URLs (from an uploaded CSV) and exports the results as XLSX reports.",
+  "version": "1.0.x",
+  "package": "custom",
+  "composer_namespace": "drupal/web_extract_data",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:phpspreadsheet"
+  ],
+  "configure": "web_extract_data.import_form",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/web_extract_data",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Data export"
+  ],
+  "keywords": [
+    "scraper",
+    "extract",
+    "csv",
+    "xlsx",
+    "phpspreadsheet",
+    "images",
+    "meta",
+    "report"
+  ]
+}

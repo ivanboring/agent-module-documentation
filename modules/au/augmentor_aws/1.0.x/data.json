@@ -1,0 +1,44 @@
+{
+  "name": "AWS AI Augmentor",
+  "data_name": "augmentor_aws",
+  "description": "Augmentor submodule providing AWS AI Service plugins (AWS Rekognition Detect Faces) so content can be augmented via Amazon AI APIs.",
+  "version": "1.0.x",
+  "package": "Augmentor",
+  "composer_namespace": "drupal/augmentor_aws",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "augmentor:augmentor"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.1 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/augmentor_aws",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "aws/aws-sdk-php ^3.255"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Cloud services (AWS)"
+  ],
+  "keywords": [
+    "aws",
+    "rekognition",
+    "augmentor",
+    "ai",
+    "face detection",
+    "amazon",
+    "image",
+    "plugin"
+  ]
+}

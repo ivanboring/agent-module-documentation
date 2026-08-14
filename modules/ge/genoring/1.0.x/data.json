@@ -1,0 +1,44 @@
+{
+  "name": "GenoRing",
+  "data_name": "genoring",
+  "description": "Framework for managing biological data in Drupal: Dataset entities, data-model management and a locator/processor pipeline that discovers and ingests data files.",
+  "version": "1.0.x",
+  "package": "GenoRing",
+  "composer_namespace": "drupal/genoring",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "file:file",
+    "xnttdm:xnttdm"
+  ],
+  "configure": "genoring.dashboard",
+  "core_version_requirement": "^10.3 || ^11.0",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/genoring",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "genoring_jbrowse"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Entity API"
+  ],
+  "keywords": [
+    "genomics",
+    "biological data",
+    "dataset",
+    "taxonomy",
+    "data locator",
+    "gff3",
+    "bioinformatics"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "name": "Billwerk Subscriptions",
+  "data_name": "billwerk_subscriptions",
+  "description": "Integrates Drupal user accounts with Billwerk (reepay) subscription management: syncs contracts, maps subscription plans to roles, and handles Billwerk webhooks.",
+  "version": "1.0.x",
+  "package": "Subscription Management",
+  "composer_namespace": "drupal/billwerk_subscriptions",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:locale"
+  ],
+  "configure": "billwerk_subscriptions_manage.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/billwerk_subscriptions",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Subscriptions / recurring billing"
+  ],
+  "keywords": [
+    "billwerk",
+    "reepay",
+    "subscription",
+    "recurring",
+    "webhook",
+    "roles",
+    "billing",
+    "contract"
+  ]
+}

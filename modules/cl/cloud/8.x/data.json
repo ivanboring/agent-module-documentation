@@ -1,0 +1,69 @@
+{
+  "name": "Cloud",
+  "data_name": "cloud",
+  "description": "Core framework for a Drupal multi-cloud orchestration dashboard (AWS, Kubernetes, OpenStack, VMware, Docker, Terraform).",
+  "version": "8.x",
+  "package": "Cloud",
+  "composer_namespace": "drupal/cloud",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "field:field",
+    "file:file",
+    "filter:filter",
+    "image:image",
+    "link:link",
+    "options:options",
+    "user:user",
+    "taxonomy:taxonomy",
+    "text:text",
+    "views:views"
+  ],
+  "configure": "cloud.settings",
+  "core_version_requirement": "^10.6 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/cloud",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "aws/aws-sdk-php",
+    "maclof/kubernetes-client",
+    "google/apiclient",
+    "drupal/geocoder"
+  ],
+  "suggests": {},
+  "submodules": [
+    "cloud_budget",
+    "cloud_cluster_worker",
+    "cloud_dashboard",
+    "gapps",
+    "tools",
+    "aws_cloud",
+    "cloud_cluster",
+    "docker",
+    "k8s",
+    "openstack",
+    "terraform",
+    "vmware"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Cloud services (AWS)"
+  ],
+  "keywords": [
+    "cloud",
+    "aws",
+    "kubernetes",
+    "openstack",
+    "vmware",
+    "orchestration",
+    "dashboard",
+    "ec2"
+  ]
+}

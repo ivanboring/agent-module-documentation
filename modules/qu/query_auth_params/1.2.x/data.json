@@ -1,0 +1,38 @@
+{
+  "name": "Query Auth Params",
+  "data_name": "query_auth_params",
+  "description": "Gates access to specific pages behind a required URL query parameter, redirecting visitors who lack the correct name/value.",
+  "version": "1.2.x",
+  "package": "Administration",
+  "composer_namespace": "drupal/query_auth_params",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "query_auth_params.settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/query_auth_params",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Token-based access control"
+  ],
+  "keywords": [
+    "access control",
+    "query parameter",
+    "url token",
+    "page protection",
+    "redirect",
+    "soft gate"
+  ]
+}
