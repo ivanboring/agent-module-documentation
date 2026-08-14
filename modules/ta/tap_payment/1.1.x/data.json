@@ -1,0 +1,39 @@
+{
+  "name": "Tap Payment",
+  "data_name": "tap_payment",
+  "description": "A payment-gateway plugin API driving Tap Payments' hosted checkout, with webhook-authoritative confirmation and no card data on the site.",
+  "version": "1.1.x",
+  "package": "Payment",
+  "composer_namespace": "drupal/tap_payment",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "tap_payment.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/tap_payment",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "8.3",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Payment gateway"
+  ],
+  "keywords": [
+    "payment",
+    "tap",
+    "hosted checkout",
+    "webhook",
+    "gateway",
+    "hmac",
+    "idempotency"
+  ]
+}

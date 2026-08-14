@@ -1,0 +1,40 @@
+{
+  "name": "Voice Search Feature",
+  "data_name": "vsf",
+  "description": "Adds a browser-based voice-input microphone to site search using the Web Speech API.",
+  "version": "1.0.x",
+  "package": "Search",
+  "composer_namespace": "drupal/vsf",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "vsf.config_form",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/vsf",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "vsf/vsf_styles"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site search"
+  ],
+  "subcategories": [
+    "Search form block"
+  ],
+  "keywords": [
+    "voice search",
+    "speech recognition",
+    "web speech api",
+    "microphone",
+    "accessibility",
+    "search"
+  ]
+}

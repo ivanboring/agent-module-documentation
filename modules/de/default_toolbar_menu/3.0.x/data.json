@@ -1,0 +1,41 @@
+{
+  "name": "Default Toolbar Menu",
+  "data_name": "default_toolbar_menu",
+  "description": "Assigns a default Toolbar Menu (from the Toolbar Menu module) to each user role and switches to it on login.",
+  "version": "3.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/default_toolbar_menu",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "toolbar_menu:toolbar_menu"
+  ],
+  "configure": "default_toolbar_menu.default_admin_menu_setting_form",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/default_toolbar_menu",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Admin toolbar / navigation"
+  ],
+  "keywords": [
+    "toolbar",
+    "menu",
+    "role",
+    "default",
+    "admin toolbar",
+    "navigation",
+    "user role"
+  ]
+}

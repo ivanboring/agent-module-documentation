@@ -1,0 +1,43 @@
+{
+  "name": "thebigword Connector for Drupal",
+  "data_name": "tmgmt_thebigword",
+  "description": "A TMGMT translator plugin that sends translation jobs to thebigword's professional translation service and pulls results back.",
+  "version": "8.x-1.x",
+  "package": "Translation Management",
+  "composer_namespace": "drupal/tmgmt_thebigword",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "tmgmt:tmgmt",
+    "tmgmt:tmgmt_file",
+    "tmgmt:tmgmt_language_combination"
+  ],
+  "configure": "entity.tmgmt_translator.collection",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/tmgmt_thebigword",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Multilingual"
+  ],
+  "subcategories": [
+    "Translation / multilingual"
+  ],
+  "keywords": [
+    "tmgmt",
+    "translation",
+    "thebigword",
+    "localization",
+    "translator",
+    "review",
+    "multilingual"
+  ]
+}

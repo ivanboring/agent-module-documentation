@@ -1,0 +1,42 @@
+{
+  "name": "Internal Page Cache Vary",
+  "data_name": "page_cache_vary",
+  "description": "Replaces core Internal Page Cache with a variant that emits Vary headers derived from cache contexts.",
+  "version": "1.0.x",
+  "package": "Cache",
+  "composer_namespace": "drupal/page_cache_vary",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:page_cache"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/page_cache_vary",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "Page cache control"
+  ],
+  "keywords": [
+    "page cache",
+    "vary header",
+    "cache context",
+    "cdn",
+    "reverse proxy",
+    "http headers",
+    "performance",
+    "middleware"
+  ]
+}

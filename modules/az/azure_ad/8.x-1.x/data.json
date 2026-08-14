@@ -1,0 +1,42 @@
+{
+  "name": "miniOrange Azure AD / B2C Synchronization",
+  "data_name": "azure_ad",
+  "description": "Provisions and de-provisions Drupal users to and from Azure AD / Azure AD B2C.",
+  "version": "8.x-1.x",
+  "package": "miniOrange",
+  "composer_namespace": "drupal/azure_ad",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "user_provisioning:user_provisioning"
+  ],
+  "configure": "azure_ad.overview",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/azure_ad",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Cloud services (Azure)"
+  ],
+  "keywords": [
+    "azure ad",
+    "azure b2c",
+    "provisioning",
+    "user sync",
+    "miniorange",
+    "microsoft graph",
+    "scim",
+    "directory"
+  ]
+}

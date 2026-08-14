@@ -1,0 +1,41 @@
+{
+  "name": "Steam Login",
+  "data_name": "steam_login",
+  "description": "Lets users authenticate with their Steam account via Steam's OpenID, creating/linking a Drupal user keyed by Steam64 ID.",
+  "version": "2.0.x",
+  "package": "steam",
+  "composer_namespace": "drupal/steam_login",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "steam_api:steam_api"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/steam_login",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "External authentication"
+  ],
+  "keywords": [
+    "steam",
+    "openid",
+    "login",
+    "authentication",
+    "sso",
+    "gaming",
+    "external authentication"
+  ]
+}

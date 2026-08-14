@@ -1,0 +1,59 @@
+{
+  "name": "Drutopia Event",
+  "data_name": "drutopia_event",
+  "description": "Drutopia base feature that installs an Event content type with date/date-range, event type taxonomy, media image, views listing, facets and SEO config.",
+  "version": "2.0.x",
+  "package": "Drutopia",
+  "composer_namespace": "drupal/drutopia_event",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "block_visibility_groups:block_visibility_groups",
+    "drupal:datetime",
+    "drupal:datetime_range",
+    "drupal:media",
+    "drupal:node",
+    "drupal:taxonomy",
+    "drupal:views",
+    "drutopia_core:drutopia_core",
+    "drutopia_seo:drutopia_seo",
+    "ds:ds",
+    "entity_reference_revisions:entity_reference_revisions",
+    "facets:facets",
+    "field_group:field_group",
+    "focal_point:focal_point",
+    "metatag:metatag",
+    "paragraphs:paragraphs",
+    "pathauto:pathauto",
+    "search_api:search_api"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/drutopia_event",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Event management"
+  ],
+  "keywords": [
+    "event",
+    "content type",
+    "date",
+    "calendar",
+    "drutopia",
+    "facets",
+    "taxonomy",
+    "feature"
+  ]
+}

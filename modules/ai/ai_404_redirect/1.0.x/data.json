@@ -1,0 +1,46 @@
+{
+  "name": "AI 404 Redirect",
+  "data_name": "ai_404_redirect",
+  "description": "Analyzes 404s with an LLM and suggests/auto-creates redirects, with bot and rate-limit protection.",
+  "version": "1.0.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/ai_404_redirect",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:redirect",
+    "drupal:system",
+    "drupal:views",
+    "drupal:views_bulk_operations",
+    "ai:ai"
+  ],
+  "configure": "ai_404_redirect.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ai_404_redirect",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Search engine optimization (SEO)"
+  ],
+  "subcategories": [
+    "Canonical URL redirects"
+  ],
+  "keywords": [
+    "404",
+    "redirect",
+    "ai",
+    "llm",
+    "bot detection",
+    "rate limiting",
+    "queue",
+    "confidence"
+  ]
+}

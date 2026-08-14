@@ -1,0 +1,46 @@
+{
+  "name": "Commerce Multiple Payments",
+  "data_name": "commerce_multi_payment",
+  "description": "Lets customers apply multiple/staged payments (e.g. gift card + store credit) to one order at checkout.",
+  "version": "3.0.x",
+  "package": "Commerce",
+  "composer_namespace": "drupal/commerce_multi_payment",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "commerce:commerce_payment",
+    "commerce:commerce_checkout",
+    "commerce:commerce_order"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/commerce_multi_payment",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "commerce_multi_payment_example"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Checkout customization"
+  ],
+  "keywords": [
+    "commerce",
+    "payment",
+    "checkout",
+    "staged payment",
+    "gift card",
+    "store credit",
+    "adjustment",
+    "order"
+  ]
+}

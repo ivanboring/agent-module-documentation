@@ -1,0 +1,43 @@
+{
+  "name": "Image Field Permissions",
+  "data_name": "image_field_permissions",
+  "description": "Extends Field Permissions with pseudo-field-level permissions for image fields, controlling create/edit/view of the image file plus its alt and title attributes per role.",
+  "version": "2.1.x",
+  "package": null,
+  "composer_namespace": "drupal/image_field_permissions",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:image",
+    "drupal:field_permissions"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/image_field_permissions",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Field-level access control"
+  ],
+  "keywords": [
+    "image",
+    "field",
+    "permissions",
+    "access control",
+    "alt",
+    "title",
+    "field_permissions",
+    "role"
+  ]
+}

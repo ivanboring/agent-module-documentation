@@ -1,0 +1,45 @@
+{
+  "name": "DKAN chart visualization",
+  "data_name": "dkan_chart",
+  "description": "Adds Chart.js chart and spreadsheet-style table visualizations for DKAN v2 datastore distributions, with a per-distribution Visualize tab and embeddable views.",
+  "version": "4.0.x",
+  "package": "Visualization",
+  "composer_namespace": "drupal/dkan_chart",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:clipboardjs",
+    "drupal:dkan_datastore"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/dkan_chart",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "dkan_tables"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Charts / data visualization"
+  ],
+  "keywords": [
+    "dkan",
+    "chart",
+    "chartjs",
+    "datastore",
+    "visualization",
+    "open data",
+    "tables",
+    "embed"
+  ]
+}
