@@ -20,7 +20,7 @@ cd "$(dirname "$0")/.."
 VERBOSE=
 [ "${1:-}" = "--verbose" ] && VERBOSE=1
 
-CONTRIB="../web/modules/contrib"
+CONTRIB="${CONTRIB_DIR:-../web/modules/contrib}"
 [ -d "$CONTRIB" ] || CONTRIB="/var/www/html/web/modules/contrib"
 [ -d "$CONTRIB" ] || { echo "cannot find web/modules/contrib" >&2; exit 1; }
 

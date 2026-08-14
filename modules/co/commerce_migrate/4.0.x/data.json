@@ -1,0 +1,51 @@
+{
+  "name": "Commerce Migrate",
+  "data_name": "commerce_migrate",
+  "description": "Migrate handlers and migrations to import stores, products, orders and customers from other commerce platforms into Drupal Commerce 2.",
+  "version": "4.0.x",
+  "package": "Commerce (contrib)",
+  "composer_namespace": "drupal/commerce_migrate",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "migrate:migrate",
+    "telephone:telephone",
+    "migrate_plus:migrate_plus"
+  ],
+  "configure": null,
+  "core_version_requirement": ">=9.3 || 10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/commerce_migrate",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "commerce_migrate_commerce",
+    "commerce_migrate_magento",
+    "commerce_migrate_shopify",
+    "commerce_migrate_ubercart",
+    "commerce_migrate_woocommerce",
+    "commerce_migrate_csv_example"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Content migration / import"
+  ],
+  "keywords": [
+    "commerce",
+    "migrate",
+    "import",
+    "ubercart",
+    "shopify",
+    "magento",
+    "woocommerce",
+    "orders"
+  ]
+}

@@ -19,7 +19,7 @@ cd "$(dirname "$0")/.."
 
 N="${1:-40}"
 LIST="${CAMPAIGN_LIST:-.campaign-5000.txt}"
-SKIP="scripts/.campaign-skip"
+SKIP="${SKIP_LIST:-scripts/.campaign-skip}"
 [ -f "$LIST" ] || { echo "missing $LIST" >&2; exit 1; }
 
 awk -F'\t' -v n="$N" -v modns="modules" -v skipf="$SKIP" '

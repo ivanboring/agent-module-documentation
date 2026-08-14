@@ -1,0 +1,42 @@
+{
+  "name": "Conditional Message",
+  "data_name": "conditional_message",
+  "description": "Displays a custom site message (banner) shown or hidden by role, path, content type, session and close-button conditions.",
+  "version": "2.0.x",
+  "package": "User interface",
+  "composer_namespace": "drupal/conditional_message",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "node:node"
+  ],
+  "configure": "entity.conditional_message.collection",
+  "core_version_requirement": "^8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/conditional_message",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Announcement / notification banner"
+  ],
+  "keywords": [
+    "message",
+    "banner",
+    "notification",
+    "announcement",
+    "conditions",
+    "role",
+    "path",
+    "dismiss"
+  ]
+}

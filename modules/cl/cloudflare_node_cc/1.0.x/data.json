@@ -1,0 +1,45 @@
+{
+  "name": "Cloudflare Node Cache Clear",
+  "data_name": "cloudflare_node_cc",
+  "description": "Purges Cloudflare CDN cache per node or site-wide, with optional per-language zones and client-IP restoration.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/cloudflare_node_cc",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "node:node",
+    "media:media",
+    "admin_toolbar:admin_toolbar_tools",
+    "key:key"
+  ],
+  "configure": "cloudflare_node_cc.config_form",
+  "core_version_requirement": "^8.8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/cloudflare_node_cc",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "Cache invalidation"
+  ],
+  "keywords": [
+    "cloudflare",
+    "cache",
+    "cdn",
+    "purge",
+    "node",
+    "key",
+    "zones",
+    "client ip"
+  ]
+}
