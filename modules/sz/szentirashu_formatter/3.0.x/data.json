@@ -1,0 +1,42 @@
+{
+  "name": "szentiras.eu Reference Formatter",
+  "data_name": "szentirashu_formatter",
+  "description": "Field formatter that turns Bible reference strings into scripture text fetched from the szentiras.eu API, with a lightweight proxy endpoint for lazy loading.",
+  "version": "3.0.x",
+  "package": "szentirashu",
+  "composer_namespace": "drupal/szentirashu_formatter",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "field:field"
+  ],
+  "configure": "szentirashu_formatter.settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/szentirashu_formatter",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Field formatters"
+  ],
+  "keywords": [
+    "bible",
+    "scripture",
+    "szentiras",
+    "field-formatter",
+    "api",
+    "proxy",
+    "hungarian",
+    "reference"
+  ]
+}

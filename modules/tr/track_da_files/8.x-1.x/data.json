@@ -1,0 +1,44 @@
+{
+  "name": "Track displayed files",
+  "data_name": "track_da_files",
+  "description": "Proxies file delivery through tracking routes to count file displays/downloads and record per-file and per-user report data (IP, browser, timestamps).",
+  "version": "8.x-1.x",
+  "package": null,
+  "composer_namespace": "drupal/track_da_files",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "field:field",
+    "file:file",
+    "browscap:browscap"
+  ],
+  "configure": "track_da_files.settings",
+  "core_version_requirement": "^9.4 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/track_da_files",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "File downloads"
+  ],
+  "keywords": [
+    "file-tracking",
+    "downloads",
+    "statistics",
+    "reports",
+    "browscap",
+    "file-proxy",
+    "analytics",
+    "counter"
+  ]
+}

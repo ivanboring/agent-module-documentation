@@ -1,0 +1,41 @@
+{
+  "name": "Entity Reference Field Translation Synchronize",
+  "data_name": "ereftras",
+  "description": "Populates translated entity-reference field values from the original translation for fields whose translation was enabled after content already existed.",
+  "version": "2.0.x",
+  "package": "Devel",
+  "composer_namespace": "drupal/ereftras",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:content_translation"
+  ],
+  "configure": "ereftras.synchronize_form",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ereftras",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Multilingual"
+  ],
+  "subcategories": [
+    "Translation / multilingual"
+  ],
+  "keywords": [
+    "translation",
+    "entity reference",
+    "synchronize",
+    "content translation",
+    "multilingual",
+    "batch",
+    "field translation"
+  ]
+}

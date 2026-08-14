@@ -1,0 +1,43 @@
+{
+  "name": "DOC to HTML",
+  "data_name": "doc_to_html",
+  "description": "Converts DOC/DOCX uploads to HTML via LibreOffice and injects the result into CKEditor 5 text fields.",
+  "version": "2.0.x",
+  "package": "Fields",
+  "composer_namespace": "drupal/doc_to_html",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:file",
+    "drupal:text"
+  ],
+  "configure": "doc_to_html.basic_settings",
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/doc_to_html",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "WYSIWYG / rich text editor"
+  ],
+  "keywords": [
+    "doc",
+    "docx",
+    "html",
+    "libreoffice",
+    "ckeditor",
+    "convert",
+    "field widget",
+    "import"
+  ]
+}

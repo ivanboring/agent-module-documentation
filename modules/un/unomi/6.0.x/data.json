@@ -1,0 +1,42 @@
+{
+  "name": "Unomi Integration for Personalization",
+  "data_name": "unomi",
+  "description": "Connects Drupal to an Apache Unomi customer-data platform through a pluggable authentication connector, exposing segments as visibility conditions.",
+  "version": "6.0.x",
+  "package": "Personalization",
+  "composer_namespace": "drupal/unomi",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "options:options"
+  ],
+  "configure": "unomi.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/unomi",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Analytics & tracking"
+  ],
+  "keywords": [
+    "unomi",
+    "cdp",
+    "personalization",
+    "segments",
+    "apache-unomi",
+    "tracking",
+    "conditions",
+    "integration"
+  ]
+}

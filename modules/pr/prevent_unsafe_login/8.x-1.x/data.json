@@ -1,0 +1,40 @@
+{
+  "name": "Prevent Unsafe Login",
+  "data_name": "prevent_unsafe_login",
+  "description": "Disables the user login form when the request is not over HTTPS, so credentials cannot be submitted over plaintext connections.",
+  "version": "8.x-1.x",
+  "package": null,
+  "composer_namespace": "drupal/prevent_unsafe_login",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^8.7.7 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/prevent_unsafe_login",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Login page protection"
+  ],
+  "keywords": [
+    "login",
+    "https",
+    "tls",
+    "security",
+    "credentials",
+    "plaintext",
+    "form disable",
+    "cache context"
+  ]
+}
