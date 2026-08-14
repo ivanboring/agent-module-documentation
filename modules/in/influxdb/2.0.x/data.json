@@ -1,0 +1,45 @@
+{
+  "name": "InfluxDB",
+  "data_name": "influxdb",
+  "description": "Integrates the InfluxDB time-series database via a configurable client service, buckets and ECA actions.",
+  "version": "2.0.x",
+  "package": "InfluxDB",
+  "composer_namespace": "drupal/influxdb",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "key:key"
+  ],
+  "configure": "influxdb.settings_form",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/influxdb",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "influxdb_bucket",
+    "influxdb_bucket_eca"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Application performance monitoring"
+  ],
+  "keywords": [
+    "influxdb",
+    "time series",
+    "metrics",
+    "monitoring",
+    "flux",
+    "eca",
+    "bucket",
+    "key"
+  ]
+}
