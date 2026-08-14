@@ -1,0 +1,42 @@
+{
+  "name": "Ai Decision Log",
+  "data_name": "ai_decision_log",
+  "description": "Stores persistent ADR-style editorial and technical decisions (what, why, alternatives, relations) for human and AI-assisted changes as a content entity.",
+  "version": "1.0.x",
+  "package": "AI",
+  "composer_namespace": "drupal/ai_decision_log",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:system",
+    "drupal:user"
+  ],
+  "configure": "ai_decision_log.settings",
+  "core_version_requirement": "^10.3 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ai_decision_log",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "^8.3",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Audit trail / activity logging"
+  ],
+  "keywords": [
+    "decision log",
+    "adr",
+    "audit",
+    "governance",
+    "ai",
+    "provenance",
+    "reporting"
+  ]
+}

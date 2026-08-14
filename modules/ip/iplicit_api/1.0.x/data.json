@@ -1,0 +1,42 @@
+{
+  "name": "Iplicit API",
+  "data_name": "iplicit_api",
+  "description": "Authenticated HTTP client service for the Iplicit accounting API: session-token handling, mandatory Domain header, and Key-based secret storage.",
+  "version": "1.0.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/iplicit_api",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "key:key"
+  ],
+  "configure": "iplicit_api.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/iplicit_api",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "REST / web services"
+  ],
+  "keywords": [
+    "iplicit",
+    "accounting",
+    "erp",
+    "api client",
+    "key",
+    "session token",
+    "http client",
+    "integration"
+  ]
+}

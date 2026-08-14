@@ -1,0 +1,43 @@
+{
+  "name": "AI Site Manager",
+  "data_name": "ai_site_manager",
+  "description": "Interprets a plain-English site-administration request into one previewed command (module enable/uninstall, cache clear, maintenance mode) that only an admin can confirm and execute, with a full audit log.",
+  "version": "1.0.x",
+  "package": "AI",
+  "composer_namespace": "drupal/ai_site_manager",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:ai",
+    "drupal:system"
+  ],
+  "configure": "ai_site_manager.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ai_site_manager",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "AI agents / taskable AI"
+  ],
+  "keywords": [
+    "site management",
+    "natural language",
+    "ai",
+    "modules",
+    "cache",
+    "maintenance mode",
+    "audit",
+    "confirmation"
+  ]
+}

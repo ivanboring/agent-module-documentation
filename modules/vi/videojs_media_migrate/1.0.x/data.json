@@ -1,0 +1,43 @@
+{
+  "name": "VideoJS Media Migration",
+  "data_name": "videojs_media_migrate",
+  "description": "Migrates legacy videojs_mediablock Block Content entities to videojs_media content entities.",
+  "version": "1.0.x",
+  "package": "VideoJS",
+  "composer_namespace": "drupal/videojs_media_migrate",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:migrate",
+    "migrate_plus:migrate_plus",
+    "migrate_tools:migrate_tools",
+    "videojs_media:videojs_media"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 | ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/videojs_media_migrate",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Migration tooling"
+  ],
+  "keywords": [
+    "videojs",
+    "migration",
+    "migrate",
+    "media",
+    "block content",
+    "upgrade"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "name": "Sites Robots.txt",
+  "data_name": "sites_robotstxt",
+  "description": "Provides per-site robots.txt content for the Sites module via the RobotsTxt module.",
+  "version": "1.0.x",
+  "package": "Sites",
+  "composer_namespace": "drupal/sites_robotstxt",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "sites:sites",
+    "robotstxt:robotstxt"
+  ],
+  "configure": "sites_robotstxt.settings",
+  "core_version_requirement": "^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/sites_robotstxt",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Search engine optimization (SEO)"
+  ],
+  "subcategories": [
+    "Robots / crawler control"
+  ],
+  "keywords": [
+    "robots.txt",
+    "sites",
+    "multisite",
+    "crawler",
+    "seo",
+    "robotstxt",
+    "per-site"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "name": "DKAN MCP Server",
+  "data_name": "dkan_mcp_server",
+  "description": "Exposes DKAN catalog, datastore, harvest and write operations as Model Context Protocol (MCP) tools with per-tool Drupal-permission access control.",
+  "version": "1.0.x",
+  "package": "DKAN",
+  "composer_namespace": "drupal/dkan_mcp_server",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "mcp_server:mcp_server",
+    "dkan:dkan_metastore",
+    "dkan:dkan_datastore",
+    "dkan:dkan_harvest",
+    "dkan_mcp_server:dkan_query_tools"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.4 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/dkan_mcp_server",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "Model Context Protocol (MCP) server"
+  ],
+  "keywords": [
+    "dkan",
+    "mcp",
+    "model context protocol",
+    "open data",
+    "datastore",
+    "harvest",
+    "ai tools",
+    "llm"
+  ]
+}

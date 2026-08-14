@@ -1,0 +1,53 @@
+{
+  "name": "DCAT-BE",
+  "data_name": "dcat_be",
+  "description": "Belgian Federal DCAT-AP (DCAT-BE) profile: BE-specific fields, three content entities, vocabulary import, JSON-LD export and validation.",
+  "version": "1.0.x",
+  "package": "DCAT",
+  "composer_namespace": "drupal/dcat_be",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "dcat:dcat",
+    "dcat:dcat_export",
+    "dcat_ap:dcat_ap",
+    "drupal:taxonomy",
+    "drupal:language",
+    "drupal:views",
+    "drupal:content_translation",
+    "inline_entity_form:inline_entity_form",
+    "entity_browser:entity_browser",
+    "entity_browser:entity_browser_entity_form",
+    "address:address",
+    "field_group:field_group"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/dcat_be",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Semantic metadata"
+  ],
+  "keywords": [
+    "dcat",
+    "dcat-be",
+    "belgium",
+    "open data",
+    "jsonld",
+    "vocabulary",
+    "metadata",
+    "inspire"
+  ]
+}

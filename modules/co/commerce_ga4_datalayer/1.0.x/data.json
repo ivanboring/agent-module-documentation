@@ -1,0 +1,46 @@
+{
+  "name": "Commerce GA4 DataLayer",
+  "data_name": "commerce_ga4_datalayer",
+  "description": "Pushes GA4 ecommerce events to window.dataLayer for Google Tag Manager, gtag.js or any tag manager.",
+  "version": "1.0.x",
+  "package": "Commerce (contrib)",
+  "composer_namespace": "drupal/commerce_ga4_datalayer",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "commerce:commerce_order",
+    "commerce:commerce_cart",
+    "commerce:commerce_product",
+    "commerce:commerce_checkout",
+    "token:token"
+  ],
+  "configure": "commerce_ga4_datalayer.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/commerce_ga4_datalayer",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Analytics / tag management"
+  ],
+  "keywords": [
+    "ga4",
+    "datalayer",
+    "gtm",
+    "google tag manager",
+    "commerce",
+    "analytics",
+    "ecommerce",
+    "gtag"
+  ]
+}

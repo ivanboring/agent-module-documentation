@@ -1,0 +1,43 @@
+{
+  "name": "AI Provenance",
+  "data_name": "ai_provenance",
+  "description": "Records and displays editorial AI-disclosure and content provenance (how much AI contributed, by which model) per entity, revision, and field, with a transparency badge.",
+  "version": "1.0.x",
+  "package": "AI",
+  "composer_namespace": "drupal/ai_provenance",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:system",
+    "drupal:user",
+    "drupal:options"
+  ],
+  "configure": "ai_provenance.settings",
+  "core_version_requirement": "^10.3 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ai_provenance",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "AI content risk analysis"
+  ],
+  "keywords": [
+    "provenance",
+    "ai disclosure",
+    "transparency",
+    "eu ai act",
+    "compliance",
+    "badge",
+    "content labelling"
+  ]
+}

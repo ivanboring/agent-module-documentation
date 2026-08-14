@@ -1,0 +1,40 @@
+{
+  "name": "Real-time Performance Monitor",
+  "data_name": "real_time_performance_monitor",
+  "description": "Monitors SQL time, duplicate queries, bad PHP functions and page-load metrics with watchdog/email/Slack alerts.",
+  "version": "1.0.x",
+  "package": "Development",
+  "composer_namespace": "drupal/real_time_performance_monitor",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "realtime_performance_monitor.config_form",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/real_time_performance_monitor",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "Application performance monitoring"
+  ],
+  "keywords": [
+    "performance",
+    "monitoring",
+    "slow query",
+    "duplicate query",
+    "telemetry",
+    "slack",
+    "email alert",
+    "page load"
+  ]
+}

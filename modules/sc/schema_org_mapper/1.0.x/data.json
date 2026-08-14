@@ -1,0 +1,47 @@
+{
+  "name": "Schema.org Mapper",
+  "data_name": "schema_org_mapper",
+  "description": "Maps entity fields to Schema.org properties and emits JSON-LD in the page head, per bundle, via submodules.",
+  "version": "1.0.x",
+  "package": "SEO",
+  "composer_namespace": "drupal/schema_org_mapper",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "field:field"
+  ],
+  "configure": "schema_org_mapper.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/schema_org_mapper",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "schema_org_mapper_node",
+    "schema_org_mapper_taxonomy",
+    "schema_org_mapper_block",
+    "schema_org_mapper_views"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Search engine optimization (SEO)"
+  ],
+  "subcategories": [
+    "Structured data / Schema.org"
+  ],
+  "keywords": [
+    "schema.org",
+    "json-ld",
+    "structured data",
+    "seo",
+    "rich results",
+    "mapping",
+    "jsonld",
+    "field mapping"
+  ]
+}

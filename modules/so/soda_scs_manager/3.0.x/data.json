@@ -1,0 +1,47 @@
+{
+  "name": "SODa SCS manager",
+  "data_name": "soda_scs_manager",
+  "description": "Manages Software-as-a-Container-Service stacks, components, snapshots and service keys across Portainer/Docker, Keycloak, Nextcloud and triplestores.",
+  "version": "3.0.x",
+  "package": "SODa SCS",
+  "composer_namespace": "drupal/soda_scs_manager",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:language",
+    "drupal:openid_connect",
+    "drupal:smtp",
+    "drupal:field_group",
+    "soda_scs_manager_theme:soda_scs_manager_theme"
+  ],
+  "configure": "soda_scs_manager.settings",
+  "core_version_requirement": "^10 | ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/soda_scs_manager",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Deployment / release management"
+  ],
+  "keywords": [
+    "container",
+    "docker",
+    "portainer",
+    "keycloak",
+    "nextcloud",
+    "provisioning",
+    "wisski",
+    "triplestore",
+    "scs"
+  ]
+}

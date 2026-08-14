@@ -1,0 +1,42 @@
+{
+  "name": "AI Index Health",
+  "data_name": "ai_index_health",
+  "description": "Health and freshness monitoring for AI vector indexes on Search API: detects stale embeddings, coverage gaps, and embedding dimension/model mismatches, and can queue targeted re-embedding.",
+  "version": "1.0.x",
+  "package": "AI",
+  "composer_namespace": "drupal/ai_index_health",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "search_api:search_api"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ai_index_health",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "Vector database / embeddings storage"
+  ],
+  "keywords": [
+    "vector",
+    "embeddings",
+    "search api",
+    "index health",
+    "stale",
+    "reindex",
+    "coverage",
+    "drush"
+  ]
+}

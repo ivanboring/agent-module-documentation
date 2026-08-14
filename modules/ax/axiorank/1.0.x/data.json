@@ -1,0 +1,39 @@
+{
+  "name": "AxioRank Agent Verification",
+  "data_name": "axiorank",
+  "description": "Verifies inbound AI-agent requests against the AxioRank verify endpoint, with monitor/enforce modes; fails open.",
+  "version": "1.0.x",
+  "package": "Security",
+  "composer_namespace": "drupal/axiorank",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "axiorank.settings",
+  "core_version_requirement": "^10.1 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/axiorank",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Intrusion prevention"
+  ],
+  "keywords": [
+    "ai agent",
+    "verification",
+    "bot",
+    "axiorank",
+    "gateway",
+    "enforce",
+    "monitor"
+  ]
+}

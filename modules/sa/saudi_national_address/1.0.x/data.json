@@ -1,0 +1,46 @@
+{
+  "name": "Saudi National Address",
+  "data_name": "saudi_national_address",
+  "description": "Provides Saudi region/city/district reference taxonomies (ar/en), dependent address fields and an address-resolution service.",
+  "version": "1.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/saudi_national_address",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "taxonomy:taxonomy",
+    "options:options",
+    "field:field",
+    "language:language",
+    "content_translation:content_translation"
+  ],
+  "configure": "saudi_national_address.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/saudi_national_address",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Address autocomplete / verification"
+  ],
+  "keywords": [
+    "saudi arabia",
+    "address",
+    "taxonomy",
+    "region city district",
+    "reverse geocode",
+    "dependent select",
+    "arabic",
+    "reference data"
+  ]
+}

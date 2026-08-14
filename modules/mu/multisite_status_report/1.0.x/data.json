@@ -1,0 +1,42 @@
+{
+  "name": "Multisite Status Report",
+  "data_name": "multisite_status_report",
+  "description": "Exposes site status, update and security info as HMAC-signed JSON endpoints for central monitoring.",
+  "version": "1.0.x",
+  "package": "Administration",
+  "composer_namespace": "drupal/multisite_status_report",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "update:update"
+  ],
+  "configure": "multisite_status_report.settings",
+  "core_version_requirement": "^10.3 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/multisite_status_report",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Status report management"
+  ],
+  "keywords": [
+    "status report",
+    "hmac",
+    "multisite",
+    "monitoring",
+    "json api",
+    "update status",
+    "security",
+    "signing"
+  ]
+}

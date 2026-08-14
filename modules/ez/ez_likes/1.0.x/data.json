@@ -1,0 +1,44 @@
+{
+  "name": "EZ Likes",
+  "data_name": "ez_likes",
+  "description": "Accessible Like button with live count on node full-page views, per-user/anonymous tracking, and an admin report with CSV export.",
+  "version": "1.0.x",
+  "package": "Social",
+  "composer_namespace": "drupal/ez_likes",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "node:node",
+    "user:user",
+    "system:system"
+  ],
+  "configure": "ez_likes.settings",
+  "core_version_requirement": "^10 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ez_likes",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "User engagement"
+  ],
+  "subcategories": [
+    "Rating / voting"
+  ],
+  "keywords": [
+    "likes",
+    "voting",
+    "rating",
+    "node",
+    "csv report",
+    "anonymous",
+    "layout builder",
+    "social"
+  ]
+}

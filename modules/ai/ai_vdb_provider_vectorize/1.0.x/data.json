@@ -1,0 +1,46 @@
+{
+  "name": "Cloudflare Vectorize VDB Provider",
+  "data_name": "ai_vdb_provider_vectorize",
+  "description": "Plugs Cloudflare Vectorize into the AI module's Search API backend as a Vector Database provider.",
+  "version": "1.0.x",
+  "package": "AI Providers",
+  "composer_namespace": "drupal/ai_vdb_provider_vectorize",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "ai:ai",
+    "ai:ai_search",
+    "search_api:search_api",
+    "cloudflare_ai:cloudflare_ai",
+    "cloudflare_sdk:cloudflare_sdk",
+    "cloudflare_api:cloudflare_api"
+  ],
+  "configure": "ai_vdb_provider_vectorize.settings_form",
+  "core_version_requirement": "^10.5 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ai_vdb_provider_vectorize",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "Vector database / embeddings storage"
+  ],
+  "keywords": [
+    "vector database",
+    "cloudflare",
+    "vectorize",
+    "embeddings",
+    "semantic search",
+    "ai search",
+    "vdb"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "name": "Media Node Search Exclusion",
+  "data_name": "media_node_search_exclusion",
+  "description": "Propagates Search API 'exclude from search' flags from media entities to the nodes that reference them, via entity hooks and a queue.",
+  "version": "1.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/media_node_search_exclusion",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "node:node",
+    "media:media",
+    "system:system",
+    "tour:tour",
+    "search_api_exclude_entity:search_api_exclude_entity"
+  ],
+  "configure": "media_node_search_exclusion.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/media_node_search_exclusion",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site search"
+  ],
+  "subcategories": [
+    "Content indexing"
+  ],
+  "keywords": [
+    "search api",
+    "exclusion",
+    "media",
+    "node",
+    "queue",
+    "indexing",
+    "propagation",
+    "tour"
+  ]
+}

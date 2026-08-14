@@ -1,0 +1,42 @@
+{
+  "name": "Webform Monday.com",
+  "data_name": "webform_monday",
+  "description": "Sends Webform submissions to Monday.com boards via a Webform handler using the Monday GraphQL API.",
+  "version": "1.0.x",
+  "package": "Webform",
+  "composer_namespace": "drupal/webform_monday",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "webform:webform",
+    "key:key"
+  ],
+  "configure": "entity.webform_monday_instance.collection",
+  "core_version_requirement": "^10.6 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/webform_monday",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "CRM integration"
+  ],
+  "keywords": [
+    "webform",
+    "monday.com",
+    "graphql",
+    "handler",
+    "crm",
+    "integration",
+    "board"
+  ]
+}

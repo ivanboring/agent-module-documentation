@@ -1,0 +1,45 @@
+{
+  "name": "Commerce Product CSV Import/Export",
+  "data_name": "commerce_product_csv",
+  "description": "Bulk create/update Commerce products (with paragraph and taxonomy fields) from a CSV file, and export products back to CSV.",
+  "version": "1.1.x",
+  "package": "Commerce",
+  "composer_namespace": "drupal/commerce_product_csv",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "commerce:commerce_product",
+    "paragraphs:paragraphs",
+    "drupal:taxonomy",
+    "drupal:text",
+    "drupal:media"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/commerce_product_csv",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Content migration / import"
+  ],
+  "keywords": [
+    "commerce",
+    "product",
+    "csv",
+    "import",
+    "export",
+    "bulk",
+    "paragraphs"
+  ]
+}

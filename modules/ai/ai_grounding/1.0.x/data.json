@@ -1,0 +1,42 @@
+{
+  "name": "AI Grounding",
+  "data_name": "ai_grounding",
+  "description": "Runtime output-side faithfulness verifier for RAG/AI answers: scores per-sentence support against retrieved sources and can force abstain or hold-for-review when grounding is weak.",
+  "version": "1.0.x",
+  "package": "AI",
+  "composer_namespace": "drupal/ai_grounding",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "ai:ai"
+  ],
+  "configure": "ai_grounding.settings",
+  "core_version_requirement": "^10.3 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ai_grounding",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "AI content risk analysis"
+  ],
+  "keywords": [
+    "grounding",
+    "hallucination",
+    "rag",
+    "faithfulness",
+    "verifier",
+    "citations",
+    "abstain",
+    "guardrail"
+  ]
+}

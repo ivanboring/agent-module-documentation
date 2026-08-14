@@ -1,0 +1,55 @@
+{
+  "name": "DCAT",
+  "data_name": "dcat",
+  "description": "Provides the DCAT vocabulary classes (Dataset, Distribution, Agent, vCard) as Drupal content entities for publishing data-catalog metadata.",
+  "version": "2.0.x",
+  "package": "DCAT",
+  "composer_namespace": "drupal/dcat",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "taxonomy:taxonomy",
+    "field:field",
+    "filter:filter",
+    "user:user",
+    "system:system",
+    "datetime:datetime",
+    "datetime_range:datetime_range",
+    "telephone:telephone",
+    "text:text",
+    "link:link",
+    "options:options",
+    "inline_entity_form:inline_entity_form"
+  ],
+  "configure": "dcat.admin_structure.dcat",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/dcat",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "dcat_export"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Semantic metadata"
+  ],
+  "keywords": [
+    "dcat",
+    "dataset",
+    "metadata",
+    "open data",
+    "rdf",
+    "data catalog",
+    "semantic",
+    "distribution"
+  ]
+}

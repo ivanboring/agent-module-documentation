@@ -1,0 +1,43 @@
+{
+  "name": "Nonce Piwik Plugin",
+  "data_name": "nonce_piwik_plugin",
+  "description": "Adds Piwik PRO tracking rendered with a fresh per-request CSP nonce via the Nonce Generator plugin system.",
+  "version": "1.0.x",
+  "package": "Security",
+  "composer_namespace": "drupal/nonce_piwik_plugin",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "path_alias:path_alias",
+    "nonce_generator:nonce_generator"
+  ],
+  "configure": "nonce_piwik_plugin.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/nonce_piwik_plugin",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Analytics & tracking"
+  ],
+  "keywords": [
+    "piwik",
+    "piwik pro",
+    "analytics",
+    "csp",
+    "nonce",
+    "tracking",
+    "content security policy",
+    "data layer"
+  ]
+}
