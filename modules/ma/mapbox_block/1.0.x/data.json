@@ -1,0 +1,41 @@
+{
+  "name": "Mapbox Block",
+  "data_name": "mapbox_block",
+  "description": "Configurable block that renders a Mapbox GL map with styles, center/zoom, and draggable static markers; token via Key module.",
+  "version": "1.0.x",
+  "package": "Mapbox",
+  "composer_namespace": "drupal/mapbox_block",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:key"
+  ],
+  "configure": "mapbox_block.config_form",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/mapbox_block",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Geospatial / location"
+  ],
+  "keywords": [
+    "mapbox",
+    "map",
+    "block",
+    "gl",
+    "marker",
+    "geospatial",
+    "key"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "name": "Digital Signage Framework",
+  "data_name": "digital_signage_framework",
+  "description": "Generic framework to publish Drupal content entities to any digital signage platform.",
+  "version": "2.5.x",
+  "package": "Digital Signage",
+  "composer_namespace": "drupal/digital_signage_framework",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "dimension:dimension",
+    "drupal:options",
+    "drupal:taxonomy",
+    "drupal:text",
+    "dynamic_entity_reference:dynamic_entity_reference",
+    "inline_entity_form:inline_entity_form"
+  ],
+  "configure": "digital_signage_framework.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/digital_signage_framework",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Digital signage"
+  ],
+  "keywords": [
+    "digital signage",
+    "signage",
+    "display",
+    "screens",
+    "playlist",
+    "schedule",
+    "device",
+    "platform"
+  ]
+}

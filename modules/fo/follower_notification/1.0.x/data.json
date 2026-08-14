@@ -1,0 +1,42 @@
+{
+  "name": "Follower Notification Module",
+  "data_name": "follower_notification",
+  "description": "Sends bell/email notifications to a member's followers (via Flag Follower) when they publish content or receive comments.",
+  "version": "1.0.x",
+  "package": "PanKM",
+  "composer_namespace": "drupal/follower_notification",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "flag:flag",
+    "flag_follower:flag_follower"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/follower_notification",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "User engagement"
+  ],
+  "subcategories": [
+    "Activity / notification messages"
+  ],
+  "keywords": [
+    "follower",
+    "notification",
+    "flag",
+    "community",
+    "bell",
+    "comment",
+    "email"
+  ]
+}

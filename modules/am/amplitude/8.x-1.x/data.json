@@ -1,0 +1,41 @@
+{
+  "name": "Amplitude",
+  "data_name": "amplitude",
+  "description": "Injects the Amplitude analytics SDK and fires configurable client-side tracking events.",
+  "version": "8.x-1.x",
+  "package": "Statistics",
+  "composer_namespace": "drupal/amplitude",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "token:token"
+  ],
+  "configure": "amplitude.amplitude_config_form",
+  "core_version_requirement": "^9.2 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/amplitude",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Analytics & tracking"
+  ],
+  "keywords": [
+    "amplitude",
+    "analytics",
+    "tracking",
+    "events",
+    "javascript",
+    "token",
+    "statistics"
+  ]
+}

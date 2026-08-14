@@ -1,0 +1,41 @@
+{
+  "name": "Edition Guard",
+  "data_name": "editionguard",
+  "description": "Manages EditionGuard DRM ebooks and download transactions as Drupal entities.",
+  "version": "2.0.x",
+  "package": "EditionGuard",
+  "composer_namespace": "drupal/editionguard",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "editionguard_api:editionguard_api"
+  ],
+  "configure": "entity.editionguard_book.collection",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/editionguard",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Licensing / paid access"
+  ],
+  "keywords": [
+    "editionguard",
+    "drm",
+    "ebook",
+    "transaction",
+    "download",
+    "watermark",
+    "license"
+  ]
+}

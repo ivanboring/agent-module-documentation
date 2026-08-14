@@ -1,0 +1,48 @@
+{
+  "name": "Site",
+  "data_name": "site",
+  "description": "Provides a revisionable, fieldable Site entity that records and shares a Drupal site's health/state.",
+  "version": "2.2.x",
+  "package": "Operations",
+  "composer_namespace": "drupal/site",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "admin_toolbar_tools",
+    "eva",
+    "field_ui",
+    "key_auth",
+    "options",
+    "serialization",
+    "rest",
+    "drupal:jsonapi"
+  ],
+  "configure": null,
+  "core_version_requirement": ">=8",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/site",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Status report management"
+  ],
+  "keywords": [
+    "site entity",
+    "monitoring",
+    "status report",
+    "site state",
+    "jsonapi",
+    "operations",
+    "site manager"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "name": "SafeDelete",
+  "data_name": "safedelete",
+  "description": "Blocks deleting nodes that are linked from other entities' body fields to prevent broken links.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/safedelete",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:linkit",
+    "drupal:node"
+  ],
+  "configure": "safedelete.settings",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/safedelete",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Content deletion protection"
+  ],
+  "keywords": [
+    "safe delete",
+    "broken links",
+    "linkit",
+    "node delete",
+    "orphaned nodes",
+    "validation",
+    "archive"
+  ]
+}

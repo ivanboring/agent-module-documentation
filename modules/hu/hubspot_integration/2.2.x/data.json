@@ -1,0 +1,43 @@
+{
+  "name": "Hubspot Integration",
+  "data_name": "hubspot_integration",
+  "description": "Integrates HubSpot: embeds HubSpot forms/behaviour via fields & blocks, maps CRM contact data to taxonomy, and sets a persona cookie.",
+  "version": "2.2.x",
+  "package": "Hubspot",
+  "composer_namespace": "drupal/hubspot_integration",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "entity_reference_revisions:entity_reference_revisions",
+    "paragraphs:paragraphs"
+  ],
+  "configure": "hubspot_integration.admin",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/hubspot_integration",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "CRM integration"
+  ],
+  "keywords": [
+    "hubspot",
+    "crm",
+    "forms",
+    "persona",
+    "contact",
+    "taxonomy",
+    "cookie",
+    "marketing"
+  ]
+}
