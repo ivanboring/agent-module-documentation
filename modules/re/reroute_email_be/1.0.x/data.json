@@ -1,0 +1,42 @@
+{
+  "name": "Better Experience for Reroute emails module",
+  "data_name": "reroute_email_be",
+  "description": "Adds a friendlier settings UI, granular permissions, governance roles and a status block on top of the Reroute Email module.",
+  "version": "1.0.x",
+  "package": "Development",
+  "composer_namespace": "drupal/reroute_email_be",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "reroute_email:reroute_email"
+  ],
+  "configure": "reroute_email_be.settings",
+  "core_version_requirement": "^9 || ^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/reroute_email_be",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Email / mail delivery"
+  ],
+  "keywords": [
+    "reroute",
+    "email",
+    "development",
+    "testing",
+    "mail",
+    "governance",
+    "permissions",
+    "block"
+  ]
+}

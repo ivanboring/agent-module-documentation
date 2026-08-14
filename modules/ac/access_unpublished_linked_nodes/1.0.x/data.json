@@ -1,0 +1,42 @@
+{
+  "name": "Access Unpublished Linked Nodes",
+  "data_name": "access_unpublished_linked_nodes",
+  "description": "Rewrites in-body links to unpublished nodes so they carry an access_unpublished token, enabling end-to-end draft preview.",
+  "version": "1.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/access_unpublished_linked_nodes",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "access_unpublished:access_unpublished",
+    "linkit:linkit"
+  ],
+  "configure": "access_unpublished_linked_nodes.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/access_unpublished_linked_nodes",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Unpublished content access"
+  ],
+  "keywords": [
+    "unpublished",
+    "draft preview",
+    "access unpublished",
+    "linkit",
+    "token",
+    "auhash",
+    "filter"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "name": "Group Mandatory",
+  "data_name": "group_mandatory",
+  "description": "Requires that content of configured bundles be created inside a Group by overriding the entity create-form route with a group-picker that enforces group create access.",
+  "version": "2.0.x",
+  "package": null,
+  "composer_namespace": "drupal/group_mandatory",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "group:group",
+    "route_override:route_override"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/group_mandatory",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Groups & memberships"
+  ],
+  "keywords": [
+    "group",
+    "membership",
+    "mandatory",
+    "content",
+    "route override",
+    "access",
+    "relationship",
+    "create"
+  ]
+}

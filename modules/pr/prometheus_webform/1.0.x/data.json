@@ -1,0 +1,42 @@
+{
+  "name": "Prometheus Exporter - Webform",
+  "data_name": "prometheus_webform",
+  "description": "Adds a Prometheus metrics collector exposing per-webform submission totals to the Prometheus Exporter endpoint.",
+  "version": "1.0.x",
+  "package": "Prometheus",
+  "composer_namespace": "drupal/prometheus_webform",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "prometheus_exporter:prometheus_exporter",
+    "webform:webform"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/prometheus_webform",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Application performance monitoring"
+  ],
+  "keywords": [
+    "prometheus",
+    "metrics",
+    "webform",
+    "exporter",
+    "monitoring",
+    "gauge",
+    "submissions"
+  ]
+}

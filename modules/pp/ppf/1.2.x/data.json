@@ -1,0 +1,41 @@
+{
+  "name": "Preprocessor Files",
+  "data_name": "ppf",
+  "description": "Lets a theme (or module) define per-template *.preprocess.php files that run like hook_preprocess_HOOK().",
+  "version": "1.2.x",
+  "package": "Development",
+  "composer_namespace": "drupal/ppf",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "ppf.settings",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ppf",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.0",
+  "library_dependencies": [
+    "symfony/filesystem"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Theming"
+  ],
+  "subcategories": [
+    "Theme development tools"
+  ],
+  "keywords": [
+    "preprocess",
+    "theme",
+    "template",
+    "php",
+    "development",
+    "hook",
+    "theming"
+  ]
+}

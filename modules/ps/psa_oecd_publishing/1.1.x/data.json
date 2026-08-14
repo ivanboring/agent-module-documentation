@@ -1,0 +1,43 @@
+{
+  "name": "OECD GlobalRecalls API",
+  "data_name": "psa_oecd_publishing",
+  "description": "Publishes product recall nodes to the OECD GlobalRecalls portal via its import API, with search and delete.",
+  "version": "1.1.x",
+  "package": "PSA",
+  "composer_namespace": "drupal/psa_oecd_publishing",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node",
+    "drupal:user",
+    "drupal:views"
+  ],
+  "configure": "psa_oecd_publishing.settings",
+  "core_version_requirement": "^10.5 || ^11.2",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/psa_oecd_publishing",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Content syndication"
+  ],
+  "keywords": [
+    "oecd",
+    "globalrecalls",
+    "product recall",
+    "api",
+    "publishing",
+    "queue",
+    "psa"
+  ]
+}

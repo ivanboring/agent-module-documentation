@@ -1,0 +1,40 @@
+{
+  "name": "Field extra",
+  "data_name": "field_extra",
+  "description": "Lets content authors mark selected field values as private, hiding them from other users; access is enforced server-side via hook_entity_field_access.",
+  "version": "2.0.x",
+  "package": "Field",
+  "composer_namespace": "drupal/field_extra",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "field_extra.private_settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/field_extra",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Field-level access control"
+  ],
+  "keywords": [
+    "field",
+    "private",
+    "field access",
+    "author",
+    "permissions",
+    "hide",
+    "owner",
+    "third party settings"
+  ]
+}

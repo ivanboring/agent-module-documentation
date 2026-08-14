@@ -1,0 +1,40 @@
+{
+  "name": "Container Dumper",
+  "data_name": "container_dumper",
+  "description": "Dumps the compiled Symfony service container to an XML file after each cache rebuild for use with static analysers.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/container_dumper",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:system (>= 8.5)"
+  ],
+  "configure": "container_dumper.settings",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/container_dumper",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "7.2",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Debugging & inspection"
+  ],
+  "keywords": [
+    "container",
+    "symfony",
+    "static analysis",
+    "developer",
+    "xml dump",
+    "service container"
+  ]
+}

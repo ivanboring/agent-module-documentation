@@ -1,0 +1,43 @@
+{
+  "name": "Orejime Compliant Videos",
+  "data_name": "orejime_videos",
+  "description": "Replaces embedded videos with a consent placeholder (template) that is restored once the user grants Orejime consent.",
+  "version": "1.1.x",
+  "package": "Media",
+  "composer_namespace": "drupal/orejime_videos",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:media"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/orejime_videos",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "orejime_videos_vef"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Video embedding"
+  ],
+  "keywords": [
+    "orejime",
+    "consent",
+    "gdpr",
+    "video",
+    "embed",
+    "oembed",
+    "privacy"
+  ]
+}

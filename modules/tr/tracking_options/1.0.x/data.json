@@ -1,0 +1,40 @@
+{
+  "name": "Tracking Options",
+  "data_name": "tracking_options",
+  "description": "Privacy opt-in/opt-out for analytics providers (Matomo, Google Analytics): blocks their scripts by default, respects Do-Not-Track, and exposes a consent checkbox via block or token.",
+  "version": "1.0.x",
+  "package": "Statistics",
+  "composer_namespace": "drupal/tracking_options",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "tracking_options.settings_form",
+  "core_version_requirement": "^9 || ^10 | ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/tracking_options",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Cookie consent / GDPR"
+  ],
+  "keywords": [
+    "analytics",
+    "consent",
+    "privacy",
+    "gdpr",
+    "matomo",
+    "google-analytics",
+    "opt-out",
+    "do-not-track"
+  ]
+}

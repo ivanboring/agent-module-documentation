@@ -1,0 +1,42 @@
+{
+  "name": "Web Service Manager",
+  "data_name": "wsm",
+  "description": "Configure third-party web-service endpoints (URL, headers, params, response mapping) and import their JSON/XML responses into Drupal entities via cron or a field formatter that calls the API on render.",
+  "version": "3.0.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/wsm",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "jsonapi:jsonapi"
+  ],
+  "configure": "entity.endpoint.collection",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/wsm",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Content migration / import"
+  ],
+  "keywords": [
+    "web-service",
+    "api",
+    "endpoint",
+    "import",
+    "json",
+    "xml",
+    "mapping",
+    "cron"
+  ]
+}
