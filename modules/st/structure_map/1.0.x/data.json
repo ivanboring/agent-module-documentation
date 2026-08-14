@@ -1,0 +1,47 @@
+{
+  "name": "Structure Map",
+  "data_name": "structure_map",
+  "description": "Visualizes and exports a site's entity/bundle architecture: fields, display modes, widgets and editorial permissions.",
+  "version": "1.0.x",
+  "package": "Administration",
+  "composer_namespace": "drupal/structure_map",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:config",
+    "drupal:field",
+    "drupal:system",
+    "drupal:field_ui",
+    "drupal:menu_ui",
+    "drupal:user"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/structure_map",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Dashboard / reporting"
+  ],
+  "keywords": [
+    "site architecture",
+    "entity",
+    "bundle",
+    "fields",
+    "documentation",
+    "export",
+    "xlsx",
+    "audit"
+  ]
+}
