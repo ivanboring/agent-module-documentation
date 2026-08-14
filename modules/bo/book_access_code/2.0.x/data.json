@@ -1,0 +1,41 @@
+{
+  "name": "Book Access Code",
+  "data_name": "book_access_code",
+  "description": "Gates viewing of core Book node pages behind admin-defined access codes; visitors enter a valid code to unlock a book, with the grant stored in their session.",
+  "version": "2.0.x",
+  "package": "Access",
+  "composer_namespace": "drupal/book_access_code",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "book",
+    "node"
+  ],
+  "configure": "book_access_code.book_access_code_settings_form",
+  "core_version_requirement": "^9.2 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/book_access_code",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Token-based access control",
+    "Password-protected entities"
+  ],
+  "keywords": [
+    "book",
+    "access code",
+    "restriction",
+    "token",
+    "session"
+  ]
+}

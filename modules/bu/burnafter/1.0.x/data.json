@@ -1,0 +1,40 @@
+{
+  "name": "BurnAfter",
+  "data_name": "burnafter",
+  "description": "Provides entities that auto-delete after a set number of views or a time, with optional encryption of content at rest.",
+  "version": "1.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/burnafter",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "encrypt:encrypt"
+  ],
+  "configure": "burnafter.settings",
+  "core_version_requirement": "^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/burnafter",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Secrets & key management"
+  ],
+  "keywords": [
+    "self-destruct",
+    "secret-sharing",
+    "burn-after-reading",
+    "encryption",
+    "ephemeral",
+    "one-time"
+  ]
+}

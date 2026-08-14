@@ -1,0 +1,43 @@
+{
+  "name": "Commerce MultiSafepay Payments",
+  "data_name": "commerce_multisafepay_payments",
+  "description": "Drupal Commerce 2.x integration with the MultiSafepay payment service provider, exposing 70+ MultiSafepay payment methods and gift cards as Commerce payment gateways.",
+  "version": "4.1.x",
+  "package": "Commerce (contrib)",
+  "composer_namespace": "drupal/commerce_multisafepay_payments",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "commerce:commerce_payment",
+    "commerce:commerce_log"
+  ],
+  "configure": "commerce_multisafepay_payments.settings",
+  "core_version_requirement": "^8.8 || ^9.4 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/commerce_multisafepay_payments",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Payment gateway"
+  ],
+  "keywords": [
+    "multisafepay",
+    "payment",
+    "commerce",
+    "ideal",
+    "klarna",
+    "giftcard",
+    "psp"
+  ]
+}

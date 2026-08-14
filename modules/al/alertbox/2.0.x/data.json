@@ -1,0 +1,43 @@
+{
+  "name": "Alertbox",
+  "data_name": "alertbox",
+  "description": "Creates alert boxes (via block_content) to display information banners across the site.",
+  "version": "2.0.x",
+  "package": null,
+  "composer_namespace": "drupal/alertbox",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:block_content",
+    "drupal:text",
+    "drupal:options"
+  ],
+  "configure": "alertbox.settings",
+  "core_version_requirement": "^8.8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/alertbox",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "alertbox_modal"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Announcement / notification banner"
+  ],
+  "keywords": [
+    "alert",
+    "banner",
+    "notification",
+    "block content",
+    "announcement"
+  ]
+}

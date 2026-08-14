@@ -1,0 +1,39 @@
+{
+  "name": "Domain Route Access",
+  "data_name": "domain_route_access",
+  "description": "Provides a config entity to restrict access to specific routes by domain, adding a per-domain requirement to selected routes via a route subscriber.",
+  "version": "1.0.x",
+  "package": "Domain",
+  "composer_namespace": "drupal/domain_route_access",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "domain"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/domain_route_access",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Multi-domain / affiliate sites"
+  ],
+  "keywords": [
+    "domain",
+    "route access",
+    "restriction",
+    "multi-site",
+    "access control"
+  ]
+}

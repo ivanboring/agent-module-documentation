@@ -1,0 +1,39 @@
+{
+  "name": "AI Log Analysis",
+  "data_name": "ai_log_analysis",
+  "description": "Captures Drupal logs and uses an AI provider to analyze entries and suggest fixes.",
+  "version": "1.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/ai_log_analysis",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:ai"
+  ],
+  "configure": "ai_log_analysis.settings",
+  "core_version_requirement": "^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ai_log_analysis",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Log aggregation"
+  ],
+  "keywords": [
+    "ai",
+    "logs",
+    "watchdog",
+    "analysis",
+    "diagnostics"
+  ]
+}

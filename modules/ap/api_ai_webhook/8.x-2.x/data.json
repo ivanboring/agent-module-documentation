@@ -1,0 +1,43 @@
+{
+  "name": "Dialogflow Webhook",
+  "data_name": "api_ai_webhook",
+  "description": "Exposes a POST webhook endpoint that receives Dialogflow (formerly Api.AI) fulfilment requests and dispatches a Symfony event so other modules can build responses.",
+  "version": "8.x-2.x",
+  "package": "Chatbot",
+  "composer_namespace": "drupal/api_ai_webhook",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "api_ai_webhook.api_ai_webhook_config",
+  "core_version_requirement": "^8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/api_ai_webhook",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "gambry/dialogflow-webhook (^2.2.0)"
+  ],
+  "suggests": {},
+  "submodules": [
+    "chatbot_api_apiai"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "Chat / messaging",
+    "AI agents / taskable AI"
+  ],
+  "keywords": [
+    "dialogflow",
+    "api.ai",
+    "webhook",
+    "chatbot",
+    "fulfilment"
+  ]
+}

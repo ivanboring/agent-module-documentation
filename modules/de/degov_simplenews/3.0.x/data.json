@@ -1,0 +1,39 @@
+{
+  "name": "deGov Simplenews",
+  "data_name": "degov_simplenews",
+  "description": "Extends the Simplenews newsletter module with GDPR-oriented features: privacy-policy consent checkbox, forename/surname capture, and consent-timestamp display.",
+  "version": "3.0.x",
+  "package": "deGov",
+  "composer_namespace": "drupal/degov_simplenews",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "simplenews:simplenews"
+  ],
+  "configure": "degov_simplenews.settings",
+  "core_version_requirement": "^9.3 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/degov_simplenews",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Cookie consent / GDPR"
+  ],
+  "keywords": [
+    "simplenews",
+    "gdpr",
+    "newsletter",
+    "consent",
+    "privacy policy"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "name": "Content Moderation Revision Delete",
+  "data_name": "cm_revision_delete",
+  "description": "Prunes old node revisions while respecting Content Moderation states, keeping revision tables from growing unbounded.",
+  "version": "1.1.x",
+  "package": "Content",
+  "composer_namespace": "drupal/cm_revision_delete",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "node",
+    "content_moderation"
+  ],
+  "configure": "cm_revision_delete.admin_settings",
+  "core_version_requirement": "^8.7.7 || ^9.0 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/cm_revision_delete",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Database maintenance / optimization"
+  ],
+  "keywords": [
+    "revisions",
+    "content moderation",
+    "cleanup",
+    "prune",
+    "node"
+  ]
+}

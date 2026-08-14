@@ -1,0 +1,41 @@
+{
+  "name": "Anonymous Timezone",
+  "data_name": "anonymous_timezone",
+  "description": "Sets a GeoIP-derived timezone for anonymous visitors by overriding the current_user service so date output matches the visitor's location.",
+  "version": "1.1.x",
+  "package": null,
+  "composer_namespace": "drupal/anonymous_timezone",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "anonymous_timezone.settings",
+  "core_version_requirement": "^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/anonymous_timezone",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.0",
+  "library_dependencies": [
+    "geoip2/geoip2 (~2.0)"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations",
+    "Content display"
+  ],
+  "subcategories": [
+    "Geospatial / location",
+    "Date/time fields"
+  ],
+  "keywords": [
+    "timezone",
+    "geoip",
+    "anonymous",
+    "maxmind",
+    "localization"
+  ]
+}

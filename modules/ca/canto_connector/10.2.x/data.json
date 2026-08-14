@@ -1,0 +1,40 @@
+{
+  "name": "Canto Connector",
+  "data_name": "canto_connector",
+  "description": "Integrates the Canto digital-asset-management (DAM) platform so editors can insert Canto assets into CKEditor content.",
+  "version": "10.2.x",
+  "package": "Images",
+  "composer_namespace": "drupal/canto_connector",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "editor"
+  ],
+  "configure": "connector_canto.admin_settings_form",
+  "core_version_requirement": "^9.3 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/canto_connector",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Digital asset management (DAM)"
+  ],
+  "keywords": [
+    "canto",
+    "dam",
+    "asset",
+    "ckeditor",
+    "oauth",
+    "media"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "name": "Address Autocomplete Suggestion",
+  "data_name": "address_autocomplete_suggestion",
+  "description": "Adds an autocomplete widget to Address fields that proxies typed input to a configured geocoding provider (Google Maps, Mapbox, Post.ch) via a pluggable provider API.",
+  "version": "1.0.x",
+  "package": "Field types",
+  "composer_namespace": "drupal/address_autocomplete_suggestion",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "address:address"
+  ],
+  "configure": "address_autocomplete_suggestion.settings",
+  "core_version_requirement": "^9.2 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/address_autocomplete_suggestion",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Address autocomplete / verification"
+  ],
+  "keywords": [
+    "address",
+    "autocomplete",
+    "geocoding",
+    "google maps",
+    "mapbox",
+    "post.ch"
+  ]
+}

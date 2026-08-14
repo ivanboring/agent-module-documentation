@@ -1,0 +1,42 @@
+{
+  "name": "Commerce PayUMoney",
+  "data_name": "commerce_payumoney",
+  "description": "Provides Commerce integration for PayU (PayUMoney) redirect payments, with webhook/return controllers that reconcile orders after payment.",
+  "version": "4.0.x",
+  "package": "Commerce",
+  "composer_namespace": "drupal/commerce_payumoney",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "commerce:commerce",
+    "commerce:commerce_payment"
+  ],
+  "configure": "entity.commerce_payment_gateway.collection",
+  "core_version_requirement": "^10.1 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/commerce_payumoney",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Payment gateway"
+  ],
+  "keywords": [
+    "payumoney",
+    "payu",
+    "payment",
+    "commerce",
+    "india",
+    "redirect"
+  ]
+}

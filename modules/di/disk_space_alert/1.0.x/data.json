@@ -1,0 +1,40 @@
+{
+  "name": "Disk Space Alert",
+  "data_name": "disk_space_alert",
+  "description": "Monitors free disk space and notifies site administrators (email/log) when available space crosses a configured threshold, via cron and an admin report.",
+  "version": "1.0.x",
+  "package": "Development",
+  "composer_namespace": "drupal/disk_space_alert",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "system",
+    "user"
+  ],
+  "configure": "disk_space_alert.settings",
+  "core_version_requirement": "^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/disk_space_alert",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Status report management"
+  ],
+  "keywords": [
+    "disk space",
+    "monitoring",
+    "alert",
+    "cron",
+    "threshold"
+  ]
+}

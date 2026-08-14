@@ -1,0 +1,41 @@
+{
+  "name": "Confirm Logout",
+  "data_name": "confirm_logout",
+  "description": "Shows a confirmation step before logging a user out, with a configurable message.",
+  "version": "1.0.x",
+  "package": "Authentication",
+  "composer_namespace": "drupal/confirm_logout",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "token"
+  ],
+  "configure": "confirm_logout.settings",
+  "core_version_requirement": "^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/confirm_logout",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Session management"
+  ],
+  "keywords": [
+    "logout",
+    "confirm",
+    "confirmation",
+    "session",
+    "user",
+    "authentication",
+    "token"
+  ]
+}

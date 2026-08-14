@@ -1,0 +1,43 @@
+{
+  "name": "Buckaroo for Drupal",
+  "data_name": "buckaroo",
+  "description": "Integrates the Buckaroo payment provider (via the buckaroo/sdk) to take online payments; ships a Webform payment handler submodule.",
+  "version": "8.x-1.x",
+  "package": "Buckaroo for Drupal",
+  "composer_namespace": "drupal/buckaroo",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:datetime"
+  ],
+  "configure": "buckaroo.configuration",
+  "core_version_requirement": "^9.5 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/buckaroo",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=7.4",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "buckaroo_webforms"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Payment gateway"
+  ],
+  "keywords": [
+    "payment",
+    "buckaroo",
+    "ideal",
+    "gateway",
+    "webform",
+    "ecommerce",
+    "sdk"
+  ]
+}

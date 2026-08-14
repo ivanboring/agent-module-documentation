@@ -1,0 +1,39 @@
+{
+  "name": "Drush Clear Plugins Cache",
+  "data_name": "drush_clear_plugins_cache",
+  "description": "Adds a Drush command to clear cached plugin-manager definitions without a full cache rebuild, aiding plugin development.",
+  "version": "1.0.x",
+  "package": "Development",
+  "composer_namespace": "drupal/drush_clear_plugins_cache",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "devel"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8.7.7 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/drush_clear_plugins_cache",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Cache invalidation"
+  ],
+  "keywords": [
+    "drush",
+    "plugin",
+    "cache",
+    "development",
+    "devel"
+  ]
+}

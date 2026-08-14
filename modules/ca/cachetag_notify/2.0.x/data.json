@@ -1,0 +1,38 @@
+{
+  "name": "CacheTag Notify",
+  "data_name": "cachetag_notify",
+  "description": "Sends a JSON POST of invalidated cache tags to a configured URL, e.g. to notify an external CDN or reverse proxy.",
+  "version": "2.0.x",
+  "package": null,
+  "composer_namespace": "drupal/cachetag_notify",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "cachetag_notify.settings",
+  "core_version_requirement": "^8.8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/cachetag_notify",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "Cache invalidation"
+  ],
+  "keywords": [
+    "cache-tags",
+    "cdn",
+    "invalidation",
+    "webhook",
+    "reverse-proxy",
+    "notify"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "name": "Query carry",
+  "data_name": "carryquery",
+  "description": "Carries/forwards URL query-string parameters across links using a token filter and configurable rules.",
+  "version": "8.x-1.x",
+  "package": null,
+  "composer_namespace": "drupal/carryquery",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "filter",
+    "token",
+    "token_filter"
+  ],
+  "configure": "carryquery.config",
+  "core_version_requirement": "^8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/carryquery",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Automation"
+  ],
+  "subcategories": [
+    "Token / placeholder replacement"
+  ],
+  "keywords": [
+    "query",
+    "url parameters",
+    "token",
+    "filter",
+    "redirect"
+  ]
+}

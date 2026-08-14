@@ -1,0 +1,41 @@
+{
+  "name": "BaoKey",
+  "data_name": "baokey",
+  "description": "A Key module key provider that retrieves secrets from an OpenBAO (or Vault) KV v2 secrets engine over HTTP using a Vault token from settings.php.",
+  "version": "1.0.x",
+  "package": "Security",
+  "composer_namespace": "drupal/baokey",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "key"
+  ],
+  "configure": "baokey.settings",
+  "core_version_requirement": "^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/baokey",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Secrets & key management"
+  ],
+  "keywords": [
+    "openbao",
+    "vault",
+    "key",
+    "secrets",
+    "secrets management",
+    "kv"
+  ]
+}

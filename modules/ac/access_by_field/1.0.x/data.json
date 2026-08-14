@@ -1,0 +1,38 @@
+{
+  "name": "Access Entity by Field Value",
+  "data_name": "access_by_field",
+  "description": "Adds entity-access restrictions to nodes and taxonomy terms by matching a common entity-reference/boolean field value between the user and the entity, with role bypass.",
+  "version": "1.0.x",
+  "package": "Others",
+  "composer_namespace": "drupal/access_by_field",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "access_by_field.admin_config_abf",
+  "core_version_requirement": "^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/access_by_field",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Field-level access control"
+  ],
+  "keywords": [
+    "entity access",
+    "field value",
+    "hook_entity_access",
+    "node access",
+    "taxonomy access",
+    "role bypass"
+  ]
+}

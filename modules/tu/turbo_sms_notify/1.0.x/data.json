@@ -1,0 +1,39 @@
+{
+  "name": "Turbo SMS Notify",
+  "data_name": "turbo_sms_notify",
+  "description": "Sends SMS/Viber messages via the TurboSMS API on Webform submission (through a Webform handler) and exposes a signature-verified webhook to receive TurboSMS status callbacks.",
+  "version": "1.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/turbo_sms_notify",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "webform:webform"
+  ],
+  "configure": "turbo_sms_notify.settings",
+  "core_version_requirement": "^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/turbo_sms_notify",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "SMS / text messaging"
+  ],
+  "keywords": [
+    "sms",
+    "viber",
+    "turbosms",
+    "webform",
+    "notification"
+  ]
+}

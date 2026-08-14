@@ -1,0 +1,41 @@
+{
+  "name": "Commerce Novaposhta",
+  "data_name": "commerce_novaposhta",
+  "description": "Provides Nova Poshta (Ukrainian carrier) integration with Commerce Shipping, including a warehouse/city selection field and API-based shipping rate calculation.",
+  "version": "2.1.x",
+  "package": "Commerce (shipping)",
+  "composer_namespace": "drupal/commerce_novaposhta",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "commerce_shipping:commerce_shipping"
+  ],
+  "configure": "commerce_novaposhta.novaposhta_config_form",
+  "core_version_requirement": "^8.8.3 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/commerce_novaposhta",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=7.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Shipping rate calculation"
+  ],
+  "keywords": [
+    "novaposhta",
+    "nova poshta",
+    "shipping",
+    "commerce",
+    "ukraine",
+    "carrier"
+  ]
+}

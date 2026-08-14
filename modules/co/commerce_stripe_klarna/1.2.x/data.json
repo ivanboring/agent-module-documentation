@@ -1,0 +1,43 @@
+{
+  "name": "Commerce Stripe Klarna",
+  "data_name": "commerce_stripe_klarna",
+  "description": "Provides Commerce integration for Stripe Klarna payments via Stripe PaymentIntents, as an offsite gateway.",
+  "version": "1.2.x",
+  "package": "Commerce (contrib)",
+  "composer_namespace": "drupal/commerce_stripe_klarna",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "commerce:commerce_payment"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/commerce_stripe_klarna",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=7.4",
+  "library_dependencies": [
+    "stripe/stripe-php"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Payment gateway"
+  ],
+  "keywords": [
+    "stripe",
+    "klarna",
+    "payment",
+    "commerce",
+    "paymentintent",
+    "bnpl"
+  ]
+}

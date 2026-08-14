@@ -1,0 +1,42 @@
+{
+  "name": "Text Transform",
+  "data_name": "ckeditor_texttransform",
+  "description": "Integrates the third-party CKEditor 4 'Text Transform' plugin (switch case / uppercase / lowercase / capitalize). The plugin JS must be downloaded into the libraries directory.",
+  "version": "8.x-2.x",
+  "package": "CKEditor",
+  "composer_namespace": "drupal/ckeditor_texttransform",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "ckeditor"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ckeditor_texttransform",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "texttransform (CKEditor 4 add-on placed under /libraries/texttransform)"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "CKEditor plugins"
+  ],
+  "keywords": [
+    "ckeditor",
+    "ckeditor4",
+    "text transform",
+    "uppercase",
+    "lowercase",
+    "capitalize"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "name": "Senthor",
+  "data_name": "senthor_io",
+  "description": "HTTP middleware that forwards non-admin GET requests to the Senthor WAF API to detect and control AI crawlers, optionally returning 402/403 responses and monetization headers.",
+  "version": "1.2.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/senthor_io",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:system"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/senthor_io",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "CAPTCHA / bot protection"
+  ],
+  "keywords": [
+    "ai crawler",
+    "bot protection",
+    "waf",
+    "middleware",
+    "monetize"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "Access Conditions",
+  "data_name": "access_conditions",
+  "description": "Provides reusable Access Model config entities built from core Condition plugins, plus an AccessChecker service other modules use to gate visibility of elements.",
+  "version": "2.0.x",
+  "package": "Permissions",
+  "composer_namespace": "drupal/access_conditions",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "entity.access_model.collection",
+  "core_version_requirement": "^8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/access_conditions",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Condition-based access"
+  ],
+  "keywords": [
+    "access model",
+    "condition plugin",
+    "visibility",
+    "access checker",
+    "reusable conditions"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "Drupal Reset",
+  "data_name": "drupal_reset",
+  "description": "A destructive development tool that resets a site by dropping all database tables and/or deleting the files directory, then redirecting to install.php for a fresh install.",
+  "version": "8.x-1.x",
+  "package": "Development",
+  "composer_namespace": "drupal/drupal_reset",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "drupal_reset.drupal_reset_form",
+  "core_version_requirement": "^8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/drupal_reset",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Deployment / release management"
+  ],
+  "keywords": [
+    "reset",
+    "reinstall",
+    "database",
+    "drop tables",
+    "development"
+  ]
+}

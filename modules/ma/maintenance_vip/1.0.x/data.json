@@ -1,0 +1,37 @@
+{
+  "name": "Maintenance VIP Bypass",
+  "data_name": "maintenance_vip",
+  "description": "Lets whitelisted VIP users bypass maintenance mode by visiting a secret URL token, which sets a cookie recognised by a decorated maintenance-mode service.",
+  "version": "1.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/maintenance_vip",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "maintenance_vip.settings",
+  "core_version_requirement": "^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/maintenance_vip",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Token-based access control"
+  ],
+  "keywords": [
+    "maintenance mode",
+    "bypass",
+    "vip",
+    "token",
+    "cookie"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "name": "DataTables CDN",
+  "data_name": "datatables_cdn",
+  "description": "Registers Drupal asset libraries that load the DataTables jQuery plugin (and its responsive extension) from the datatables.net CDN.",
+  "version": "1.0.x",
+  "package": "custom",
+  "composer_namespace": "drupal/datatables_cdn",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "ckeditor"
+  ],
+  "configure": null,
+  "core_version_requirement": ">=8.9 <11.0.0-stable",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/datatables_cdn",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "datatables.net (external CDN)"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Responsive tables"
+  ],
+  "keywords": [
+    "datatables",
+    "cdn",
+    "jquery",
+    "tables",
+    "javascript library"
+  ]
+}

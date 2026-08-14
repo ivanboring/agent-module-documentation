@@ -1,0 +1,37 @@
+{
+  "name": "Disable Back Button",
+  "data_name": "disable_browser_back_button",
+  "description": "Disables the browser back button on configured pages by injecting JavaScript, preventing users from navigating back to cached (e.g. post-logout) pages.",
+  "version": "2.0.x",
+  "package": null,
+  "composer_namespace": "drupal/disable_browser_back_button",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "disable_back_button.config_form",
+  "core_version_requirement": "^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/disable_browser_back_button",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Session management"
+  ],
+  "keywords": [
+    "back button",
+    "browser history",
+    "session",
+    "javascript",
+    "cache"
+  ]
+}

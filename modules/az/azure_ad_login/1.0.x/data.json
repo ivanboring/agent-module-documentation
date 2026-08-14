@@ -1,0 +1,43 @@
+{
+  "name": "Azure AD Login",
+  "data_name": "azure_ad_login",
+  "description": "Lets users sign in to Drupal with a Microsoft Entra ID (Azure AD) account via OAuth 2.0 authorization-code flow, auto-provisioning accounts and mapping Azure groups to Drupal roles.",
+  "version": "1.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/azure_ad_login",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "user"
+  ],
+  "configure": "azure_ad_login.settings_form",
+  "core_version_requirement": "^9.1 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/azure_ad_login",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control",
+    "Integrations"
+  ],
+  "subcategories": [
+    "OAuth / OpenID Connect client",
+    "Cloud services (Azure)"
+  ],
+  "keywords": [
+    "azure",
+    "entra id",
+    "oauth",
+    "sso",
+    "single sign-on",
+    "active directory",
+    "login"
+  ]
+}

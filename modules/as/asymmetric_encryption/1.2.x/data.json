@@ -1,0 +1,39 @@
+{
+  "name": "Asymmetric Encryption",
+  "data_name": "asymmetric_encryption",
+  "description": "Provides a service that seals (encrypts) and unseals (decrypts) data using ParagonIE Halite asymmetric (libsodium) keypairs stored on the filesystem.",
+  "version": "1.2.x",
+  "package": "Asymmetric Encryption",
+  "composer_namespace": "drupal/asymmetric_encryption",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/asymmetric_encryption",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "paragonie/halite"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Field encryption"
+  ],
+  "keywords": [
+    "encryption",
+    "asymmetric",
+    "halite",
+    "libsodium",
+    "crypto"
+  ]
+}

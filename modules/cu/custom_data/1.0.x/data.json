@@ -1,0 +1,43 @@
+{
+  "name": "Custom Data",
+  "data_name": "custom_data",
+  "description": "Provides a configurable 'custom_data' content entity type with bundles (custom data types), fields, revisions, and optional canonical URLs.",
+  "version": "1.0.x",
+  "package": "Other",
+  "composer_namespace": "drupal/custom_data",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "field",
+    "options",
+    "text",
+    "user",
+    "entity:entity"
+  ],
+  "configure": "entity.custom_data_type.collection",
+  "core_version_requirement": "^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/custom_data",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Entity API"
+  ],
+  "keywords": [
+    "entity",
+    "content entity",
+    "custom data",
+    "bundle",
+    "fieldable"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "Check Username",
+  "data_name": "check_username",
+  "description": "AJAX endpoint and behavior that checks username availability/originality on registration and user-create forms.",
+  "version": "1.1.x",
+  "package": "Registration",
+  "composer_namespace": "drupal/check_username",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "check_username.config_form",
+  "core_version_requirement": "^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/check_username",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "User registration"
+  ],
+  "keywords": [
+    "username",
+    "availability",
+    "ajax",
+    "registration",
+    "uniqueness"
+  ]
+}

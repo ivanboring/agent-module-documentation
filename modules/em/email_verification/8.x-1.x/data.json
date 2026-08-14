@@ -1,0 +1,37 @@
+{
+  "name": "Email Verification",
+  "data_name": "email_verification",
+  "description": "Requires a visitor to prove ownership of an email address (via a link containing a hash of the address) before the user registration form can be completed.",
+  "version": "8.x-1.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/email_verification",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "email_verification.settings",
+  "core_version_requirement": "^8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/email_verification",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Email verification"
+  ],
+  "keywords": [
+    "email verification",
+    "registration",
+    "user register",
+    "token",
+    "confirm email"
+  ]
+}

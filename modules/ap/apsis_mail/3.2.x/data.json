@@ -1,0 +1,41 @@
+{
+  "name": "Apsis mail",
+  "data_name": "apsis_mail",
+  "description": "Integrates Drupal with the APSIS email-marketing REST API, providing a newsletter subscribe block, form, and queued subscriber synchronisation.",
+  "version": "3.2.x",
+  "package": "Apsis",
+  "composer_namespace": "drupal/apsis_mail",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "block",
+    "user"
+  ],
+  "configure": "apsis_mail.admin",
+  "core_version_requirement": "^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/apsis_mail",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Email / mail delivery",
+    "CRM integration"
+  ],
+  "keywords": [
+    "apsis",
+    "newsletter",
+    "email-marketing",
+    "subscribe",
+    "rest"
+  ]
+}

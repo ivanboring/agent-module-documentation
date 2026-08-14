@@ -1,0 +1,37 @@
+{
+  "name": "API Response Check",
+  "data_name": "api_response_check",
+  "description": "Pings a list of admin-configured API URLs and logs each URL's HTTP response status for review in an admin results table.",
+  "version": "2.0.x",
+  "package": "Other",
+  "composer_namespace": "drupal/api_response_check",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "api_response_check.admin_settings_form",
+  "core_version_requirement": "^8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/api_response_check",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Error tracking & monitoring"
+  ],
+  "keywords": [
+    "api",
+    "monitoring",
+    "http-status",
+    "uptime",
+    "healthcheck"
+  ]
+}
