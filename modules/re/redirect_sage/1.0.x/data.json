@@ -1,0 +1,42 @@
+{
+  "name": "Redirect Sage",
+  "data_name": "redirect_sage",
+  "description": "Bulk import and export of Redirect module entries via CSV with language and status-code handling.",
+  "version": "1.0.x",
+  "package": "Migration",
+  "composer_namespace": "drupal/redirect_sage",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "redirect:redirect"
+  ],
+  "configure": "redirect_sage.import_form",
+  "core_version_requirement": "^9.3||^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/redirect_sage",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Content migration / import"
+  ],
+  "keywords": [
+    "redirect",
+    "csv",
+    "import",
+    "export",
+    "bulk",
+    "migration",
+    "batch",
+    "301"
+  ]
+}

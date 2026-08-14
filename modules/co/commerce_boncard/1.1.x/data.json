@@ -1,0 +1,41 @@
+{
+  "name": "Commerce Boncard",
+  "data_name": "commerce_boncard",
+  "description": "Boncard gift-card gateway for Commerce: check balance, authorize, capture, refund and cancel.",
+  "version": "1.1.x",
+  "package": "commerce",
+  "composer_namespace": "drupal/commerce_boncard",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "commerce:commerce_checkout"
+  ],
+  "configure": "commerce_boncard.settings",
+  "core_version_requirement": "^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/commerce_boncard",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Gift cards / store credit"
+  ],
+  "keywords": [
+    "boncard",
+    "commerce",
+    "gift card",
+    "payment",
+    "hmac",
+    "checkout",
+    "refund"
+  ]
+}

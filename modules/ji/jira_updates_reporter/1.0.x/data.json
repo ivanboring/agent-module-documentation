@@ -1,0 +1,41 @@
+{
+  "name": "Jira Drupal Updates Reporter",
+  "data_name": "jira_updates_reporter",
+  "description": "Checks Drupal core/module update status and opens Jira issues for available security and release updates.",
+  "version": "1.0.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/jira_updates_reporter",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:update"
+  ],
+  "configure": "jira_updates_reporter.settings",
+  "core_version_requirement": "^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/jira_updates_reporter",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Deployment / release management"
+  ],
+  "keywords": [
+    "jira",
+    "updates",
+    "update status",
+    "issue tracker",
+    "reporting",
+    "cron",
+    "atlassian"
+  ]
+}

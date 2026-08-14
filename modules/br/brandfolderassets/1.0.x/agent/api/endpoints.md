@@ -1,0 +1,15 @@
+<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
+# Brandfolder Assets endpoints
+
+All routes require only `_user_is_logged_in: TRUE`.
+
+| Route | Path | Controller | Notes |
+|---|---|---|---|
+| library | `/brandfolderassets/library` | `AssetsLibrary` | Reads `$_GET['field_name']`, `field_name_delta`; builds modal HTML |
+| save | `/brandfolderassets/save` | `AssetsSave` | Downloads `data_attributes_cdnurl` via `system_retrieve_file()` |
+| pagination | `/brandfolderassets/pagination/{totalpage}/{viewpage}` | `AssetsPagination` | |
+| search | `/brandfolderassets/search/{searchtype}/{searchvalue}` | `AssetsSearch` | |
+
+Behaviour: the modal calls the `brandfolder` module's `brandfolder_api($api_key)` client (`getBrandfolders`, `listAssets`) to render a thumbnail grid; `AssetsSave` writes the selected CDN asset into `public://brandfolderassets` as a managed file and returns its fid/URL as JSON.
+
+Observations (file:line): `src/Controller/BrandFolderAssetsController.php:28-31,76` — unescaped `$_GET['field_name']`/`field_name_delta` concatenated into output; `:140,152` — `system_retrieve_file($remoteFilePath)` where `$remoteFilePath = $request->request->get('data_attributes_cdnurl')` (server fetches a user-supplied URL).

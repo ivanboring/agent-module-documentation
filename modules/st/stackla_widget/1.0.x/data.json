@@ -1,0 +1,42 @@
+{
+  "name": "Stackla Widget",
+  "data_name": "stackla_widget",
+  "description": "Connects a Drupal site to the Stackla (Nosto UGC) service and embeds Stackla user-generated-content widgets via a field.",
+  "version": "1.0.x",
+  "package": "Stackla",
+  "composer_namespace": "drupal/stackla_widget",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "stackla_widget.stackla_settings_form",
+  "core_version_requirement": "^8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/stackla_widget",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "guzzlehttp/guzzle"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Media embedding"
+  ],
+  "keywords": [
+    "stackla",
+    "ugc",
+    "widget",
+    "oauth",
+    "social",
+    "embed",
+    "field",
+    "nosto"
+  ]
+}

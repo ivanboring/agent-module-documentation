@@ -1,0 +1,40 @@
+{
+  "name": "External Link Update",
+  "data_name": "elink_update",
+  "description": "Bulk-adds target and rel attributes to external links in node body fields via a form or Drush command.",
+  "version": "1.1.x",
+  "package": "custom",
+  "composer_namespace": "drupal/elink_update",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "elink_update.external_link_update_form",
+  "core_version_requirement": "^8.8.3 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/elink_update",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Automation"
+  ],
+  "subcategories": [
+    "Bulk operations"
+  ],
+  "keywords": [
+    "links",
+    "external",
+    "batch",
+    "drush",
+    "rel",
+    "target",
+    "nofollow",
+    "nodes"
+  ]
+}

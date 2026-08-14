@@ -1,0 +1,45 @@
+{
+  "name": "Email Manager",
+  "data_name": "email_manager",
+  "description": "Overrides Drupal outbound emails with admin-managed, token-enabled HTML templates keyed by module:mail-key.",
+  "version": "1.0.x",
+  "package": "Mail",
+  "composer_namespace": "drupal/email_manager",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node",
+    "drupal:token",
+    "drupal:editor",
+    "drupal:ckeditor"
+  ],
+  "configure": "email_manager.template_list",
+  "core_version_requirement": "^10.3 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/email_manager",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Email / mail delivery"
+  ],
+  "keywords": [
+    "email",
+    "mail",
+    "template",
+    "token",
+    "ckeditor",
+    "mail-plugin",
+    "html",
+    "notifications"
+  ]
+}

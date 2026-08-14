@@ -1,0 +1,39 @@
+{
+  "name": "Dynamic Queues",
+  "data_name": "dynamic_queues",
+  "description": "Splits Drupal queue items into auto-named sub-queues with a capacity limit and a dashboard.",
+  "version": "1.0.x",
+  "package": "contrib",
+  "composer_namespace": "drupal/dynamic_queues",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "dynamic_queues.settings_form",
+  "core_version_requirement": "^8 || ^9 ||  ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/dynamic_queues",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Queue / background processing"
+  ],
+  "keywords": [
+    "queue",
+    "queueworker",
+    "background",
+    "batch",
+    "sub-queue",
+    "dashboard",
+    "cron"
+  ]
+}

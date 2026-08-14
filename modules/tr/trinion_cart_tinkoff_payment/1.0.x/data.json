@@ -1,0 +1,42 @@
+{
+  "name": "Trinion Cart Tinkoff Payment",
+  "data_name": "trinion_cart_tinkoff_payment",
+  "description": "Adds the Tinkoff (T-Bank) payment gateway to Trinion Cart, with a token-verified server callback that confirms orders.",
+  "version": "1.0.x",
+  "package": "Trinion",
+  "composer_namespace": "drupal/trinion_cart_tinkoff_payment",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "trinion_cart:trinion_cart"
+  ],
+  "configure": "trinion_cart_tinkoff_payment.settings_form",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/trinion_cart_tinkoff_payment",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Payment gateway"
+  ],
+  "keywords": [
+    "tinkoff",
+    "payment",
+    "gateway",
+    "trinion",
+    "cart",
+    "callback",
+    "token",
+    "checkout"
+  ]
+}

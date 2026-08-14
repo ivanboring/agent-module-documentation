@@ -1,0 +1,41 @@
+{
+  "name": "Coffre Fort",
+  "data_name": "coffre_fort",
+  "description": "Stores encrypted per-'safe' secrets that are unlocked with a user password or external provider.",
+  "version": "8.x-1.x",
+  "package": "Security",
+  "composer_namespace": "drupal/coffre_fort",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "token:token"
+  ],
+  "configure": "coffre_fort.settings",
+  "core_version_requirement": "^8.9 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/coffre_fort",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Secrets & key management"
+  ],
+  "keywords": [
+    "coffre fort",
+    "safe",
+    "secret",
+    "encryption",
+    "password",
+    "vault",
+    "openssl"
+  ]
+}

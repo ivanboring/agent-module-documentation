@@ -1,0 +1,51 @@
+{
+  "name": "Dominican Catalogus",
+  "data_name": "catalogus",
+  "description": "Content solution that builds a Dominican community catalogue with PDF export via Entity Print.",
+  "version": "1.0.x",
+  "package": "Content",
+  "composer_namespace": "drupal/catalogus",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "address:address",
+    "menu_ui:menu_ui",
+    "node:node",
+    "user:user",
+    "text:text",
+    "datetime:datetime",
+    "taxonomy:taxonomy",
+    "entity_print_views:entity_print_views",
+    "computed_field:computed_field",
+    "field_group:field_group",
+    "auto_entitylabel:auto_entitylabel"
+  ],
+  "configure": "catalogus.form",
+  "core_version_requirement": "^8.8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/catalogus",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "7.3",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "PDF generation"
+  ],
+  "keywords": [
+    "catalogus",
+    "catalogue",
+    "dominican",
+    "community",
+    "pdf",
+    "entity print",
+    "directory"
+  ]
+}
