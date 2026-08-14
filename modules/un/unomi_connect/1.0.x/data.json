@@ -1,0 +1,46 @@
+{
+  "name": "Unomi Connect",
+  "data_name": "unomi_connect",
+  "description": "Client for the Apache Unomi customer-data platform: stores connection settings and provides admin UIs to view profiles, segments, rules, conditions and actions.",
+  "version": "1.0.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/unomi_connect",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/unomi_connect",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "guzzlehttp/guzzle"
+  ],
+  "suggests": {},
+  "submodules": [
+    "unomi_actions",
+    "unomi_conditions",
+    "unomi_profiles",
+    "unomi_rules",
+    "unomi_segments"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "CRM integration",
+    "Analytics & tracking"
+  ],
+  "keywords": [
+    "unomi",
+    "cdp",
+    "profiles",
+    "segments",
+    "customer data"
+  ]
+}

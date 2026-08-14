@@ -1,0 +1,44 @@
+{
+  "name": "Webform Authorize.Net",
+  "data_name": "webform_authorizenet",
+  "description": "Webform handler that takes payments via Authorize.Net Accept Hosted: redirects the submitter to an Authorize.Net-hosted checkout and marks the submission paid on return/webhook.",
+  "version": "1.0.x",
+  "package": "Webform",
+  "composer_namespace": "drupal/webform_authorizenet",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "webform"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.4 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/webform_authorizenet",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "authorizenet/authorizenet"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce",
+    "Forms and surveys"
+  ],
+  "subcategories": [
+    "Payment gateway",
+    "Submission handling"
+  ],
+  "keywords": [
+    "webform",
+    "authorize.net",
+    "payment",
+    "checkout",
+    "accept hosted",
+    "handler"
+  ]
+}

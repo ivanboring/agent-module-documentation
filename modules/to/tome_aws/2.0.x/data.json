@@ -1,0 +1,42 @@
+{
+  "name": "Tome AWS",
+  "data_name": "tome_aws",
+  "description": "Deploys a Tome-generated static site to an Amazon S3 bucket (upload, redirect and metadata handling).",
+  "version": "2.0.x",
+  "package": "Tome",
+  "composer_namespace": "drupal/tome_aws",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "tome_static"
+  ],
+  "configure": "tome_aws.settings",
+  "core_version_requirement": "^8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/tome_aws",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "aws/aws-sdk-php"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Cloud services (AWS)",
+    "Static site generation"
+  ],
+  "keywords": [
+    "tome",
+    "aws",
+    "s3",
+    "static site",
+    "deploy"
+  ]
+}

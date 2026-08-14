@@ -1,0 +1,42 @@
+{
+  "name": "Webform Submission Files Download",
+  "data_name": "webform_submission_files_download",
+  "description": "Adds a per-submission operation that zips all managed files attached to a single webform submission and streams the archive as a download; gated by a dedicated admin permission.",
+  "version": "2.0.x",
+  "package": "Webform",
+  "composer_namespace": "drupal/webform_submission_files_download",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "webform"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.3 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/webform_submission_files_download",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "pclzip/pclzip"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Forms and surveys"
+  ],
+  "subcategories": [
+    "Submission handling"
+  ],
+  "keywords": [
+    "webform",
+    "submission",
+    "files",
+    "download",
+    "zip",
+    "managed files"
+  ]
+}

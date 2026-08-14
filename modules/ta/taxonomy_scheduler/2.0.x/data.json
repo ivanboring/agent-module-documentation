@@ -1,0 +1,42 @@
+{
+  "name": "Taxonomy Scheduler",
+  "data_name": "taxonomy_scheduler",
+  "description": "Schedules publishing of taxonomy terms on a future date via a datetime field and cron.",
+  "version": "2.0.x",
+  "package": null,
+  "composer_namespace": "drupal/taxonomy_scheduler",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "hook_event_dispatcher",
+    "taxonomy",
+    "datetime"
+  ],
+  "configure": "taxonomy_scheduler.admin_form",
+  "core_version_requirement": "^9.3 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/taxonomy_scheduler",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Automation"
+  ],
+  "subcategories": [
+    "Content scheduling / publishing"
+  ],
+  "keywords": [
+    "taxonomy",
+    "term",
+    "schedule",
+    "publish",
+    "cron",
+    "datetime"
+  ]
+}

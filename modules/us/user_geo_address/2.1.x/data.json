@@ -1,0 +1,40 @@
+{
+  "name": "User Geo Address",
+  "data_name": "user_geo_address",
+  "description": "Displays the current visitor's geographic address in a block via a Google Maps reverse-geocode endpoint.",
+  "version": "2.1.x",
+  "package": "GeoAddress",
+  "composer_namespace": "drupal/user_geo_address",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "user_geo_address.settings",
+  "core_version_requirement": "^8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/user_geo_address",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "Google Maps Geocoding API"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Geospatial / location",
+    "Google APIs / OAuth"
+  ],
+  "keywords": [
+    "geolocation",
+    "address",
+    "google maps",
+    "block",
+    "reverse geocode"
+  ]
+}

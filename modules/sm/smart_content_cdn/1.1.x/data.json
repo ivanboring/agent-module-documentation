@@ -1,0 +1,43 @@
+{
+  "name": "Smart Content CDN",
+  "data_name": "smart_content_cdn",
+  "description": "Adds edge/CDN personalization for Smart Content on Pantheon: sets Vary headers (Audience/Interest) based on decisions present on the page and reads Pantheon EI geo/interest request headers.",
+  "version": "1.1.x",
+  "package": "Smart Content",
+  "composer_namespace": "drupal/smart_content_cdn",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "smart_content",
+    "smart_content_block",
+    "js_cookie"
+  ],
+  "configure": "smart_content_cdn.config",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/smart_content_cdn",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "CDN integration"
+  ],
+  "keywords": [
+    "cdn",
+    "pantheon",
+    "edge personalization",
+    "vary header",
+    "geo",
+    "interest",
+    "smart content"
+  ]
+}

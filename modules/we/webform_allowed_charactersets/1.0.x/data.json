@@ -1,0 +1,40 @@
+{
+  "name": "Webform Allowed Charactersets",
+  "data_name": "webform_allowed_charactersets",
+  "description": "Restricts webform text/textarea input to selected Unicode character sets (Latin, Cyrillic, Chinese, Arabic, etc.), via a webform handler or globally across all forms.",
+  "version": "1.0.x",
+  "package": "Webform",
+  "composer_namespace": "drupal/webform_allowed_charactersets",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "webform"
+  ],
+  "configure": "/admin/structure/webform/config/charactersets",
+  "core_version_requirement": "^8.8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/webform_allowed_charactersets",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Forms and surveys"
+  ],
+  "subcategories": [
+    "Submission handling"
+  ],
+  "keywords": [
+    "webform",
+    "validation",
+    "characterset",
+    "unicode",
+    "spam",
+    "input"
+  ]
+}

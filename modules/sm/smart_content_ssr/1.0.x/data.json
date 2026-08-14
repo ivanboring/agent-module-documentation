@@ -1,0 +1,40 @@
+{
+  "name": "Smart Content SSR",
+  "data_name": "smart_content_ssr",
+  "description": "Adds server-side rendering of Smart Content decisions: evaluates decision blocks on the server (via a decision evaluator service and an SSR decision block) instead of the default client-side AJAX swap.",
+  "version": "1.0.x",
+  "package": "Smart Content",
+  "composer_namespace": "drupal/smart_content_ssr",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "smart_content"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/smart_content_ssr",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Visibility conditions"
+  ],
+  "keywords": [
+    "smart content",
+    "ssr",
+    "server side rendering",
+    "decision",
+    "personalization",
+    "block"
+  ]
+}
