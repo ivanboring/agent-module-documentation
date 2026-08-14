@@ -1,0 +1,42 @@
+{
+  "name": "Time Ticker",
+  "data_name": "time_ticker",
+  "description": "Provides a block that displays the current date and time for a configured timezone, refreshed live via AJAX.",
+  "version": "9.1.x",
+  "package": "Time",
+  "composer_namespace": "drupal/time_ticker",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:block"
+  ],
+  "configure": "time_ticker.admin_settings",
+  "core_version_requirement": "^8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/time_ticker",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Date/time fields"
+  ],
+  "keywords": [
+    "time",
+    "clock",
+    "timezone",
+    "date",
+    "ticker",
+    "block",
+    "ajax",
+    "regional"
+  ]
+}

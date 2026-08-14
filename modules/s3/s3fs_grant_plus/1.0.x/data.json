@@ -1,0 +1,42 @@
+{
+  "name": "S3 File System Grant Plus",
+  "data_name": "s3fs_grant_plus",
+  "description": "Adds an S3 GrantRead ACL for a second AWS account to files uploaded/copied via s3fs.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/s3fs_grant_plus",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "s3fs:s3fs"
+  ],
+  "configure": "s3fs.admin_settings",
+  "core_version_requirement": "^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/s3fs_grant_plus",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Cloud services (AWS)"
+  ],
+  "keywords": [
+    "s3",
+    "s3fs",
+    "aws",
+    "grant",
+    "acl",
+    "read access",
+    "remote file",
+    "bucket"
+  ]
+}

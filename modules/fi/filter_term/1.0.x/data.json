@@ -1,0 +1,42 @@
+{
+  "name": "Filter Term",
+  "data_name": "filter_term",
+  "description": "Admin page to find and list nodes filtered by vocabulary, term, content type, title and author.",
+  "version": "1.0.x",
+  "package": "Filter Term",
+  "composer_namespace": "drupal/filter_term",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node",
+    "drupal:taxonomy"
+  ],
+  "configure": "filter_term.allcontent",
+  "core_version_requirement": "^9.4 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/filter_term",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Content search / find"
+  ],
+  "keywords": [
+    "filter",
+    "taxonomy",
+    "term",
+    "node",
+    "content type",
+    "listing",
+    "author"
+  ]
+}

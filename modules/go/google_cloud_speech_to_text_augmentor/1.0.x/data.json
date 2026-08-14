@@ -1,0 +1,43 @@
+{
+  "name": "Google Cloud Speech-to-Text Augmentor",
+  "data_name": "augmentor_google_cloud_speech_to_text",
+  "description": "Augmentor plugin that transcribes audio to text via the Google Cloud Speech-to-Text API.",
+  "version": "1.0.x",
+  "package": "Augmentor",
+  "composer_namespace": "drupal/google_cloud_speech_to_text_augmentor",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "augmentor:augmentor"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.3 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/google_cloud_speech_to_text_augmentor",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "google/cloud-speech:^1.6"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "AI provider abstraction / LLM gateway"
+  ],
+  "keywords": [
+    "augmentor",
+    "speech to text",
+    "transcription",
+    "google cloud",
+    "audio",
+    "ai",
+    "stt"
+  ]
+}

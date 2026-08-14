@@ -1,0 +1,41 @@
+{
+  "name": "Prevent entity unpublish",
+  "data_name": "prevent_entity_unpublished",
+  "description": "Blocks unpublishing a node, term or user while other entities still reference it.",
+  "version": "1.0.x",
+  "package": "Prevent entity unpublish",
+  "composer_namespace": "drupal/prevent_entity_unpublished",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "entity_reference_integrity:entity_reference_integrity",
+    "entity_reference_integrity_enforce:entity_reference_integrity_enforce"
+  ],
+  "configure": "prevent_entity_unpublish.settings",
+  "core_version_requirement": "^8.8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/prevent_entity_unpublished",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Workflow / business rules"
+  ],
+  "keywords": [
+    "unpublish",
+    "referential integrity",
+    "entity reference",
+    "publish state",
+    "protection",
+    "workflow"
+  ]
+}

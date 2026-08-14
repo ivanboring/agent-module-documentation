@@ -1,0 +1,41 @@
+{
+  "name": "Content Publishing Job",
+  "data_name": "content_publishing_job",
+  "description": "Cron-driven jobs that unpublish nodes of a content type once a configured date field has passed.",
+  "version": "1.1.x",
+  "package": "Content Publishing",
+  "composer_namespace": "drupal/content_publishing_job",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "block:block"
+  ],
+  "configure": "entity.publishing_config.collection",
+  "core_version_requirement": "^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/content_publishing_job",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Automation"
+  ],
+  "subcategories": [
+    "Content scheduling / publishing"
+  ],
+  "keywords": [
+    "scheduling",
+    "unpublish",
+    "cron",
+    "queue",
+    "expire",
+    "date field",
+    "content publishing"
+  ]
+}
