@@ -1,0 +1,44 @@
+{
+  "name": "LocHub TMGMT (via Xillio)",
+  "data_name": "tmgmt_xillio",
+  "description": "TMGMT translator plugin that sends jobs to the Xillio LocHub (Tapicc) translation platform.",
+  "version": "1.1.x",
+  "package": "Translation Management",
+  "composer_namespace": "drupal/tmgmt_xillio",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "tmgmt:tmgmt",
+    "tmgmt:tmgmt_file",
+    "tmgmt:tmgmt_language_combination"
+  ],
+  "configure": "entity.tmgmt_translator.collection",
+  "core_version_requirement": "^9.3 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/tmgmt_xillio",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Multilingual"
+  ],
+  "subcategories": [
+    "Machine translation"
+  ],
+  "keywords": [
+    "tmgmt",
+    "translation",
+    "xillio",
+    "lochub",
+    "tapicc",
+    "xliff",
+    "webhook",
+    "oauth"
+  ]
+}

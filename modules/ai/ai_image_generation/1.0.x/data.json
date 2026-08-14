@@ -1,0 +1,41 @@
+{
+  "name": "AI Image generation module",
+  "data_name": "ai_image_generation",
+  "description": "Admin form that generates images from text prompts via the OpenAI DALL\u00b7E API and saves them as Media entities.",
+  "version": "1.0.x",
+  "package": "AI Image generation",
+  "composer_namespace": "drupal/ai_image_generation",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "media:media"
+  ],
+  "configure": "ai_image_generation.settings",
+  "core_version_requirement": "^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ai_image_generation",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "AI image & video generation"
+  ],
+  "keywords": [
+    "ai",
+    "openai",
+    "dall-e",
+    "image generation",
+    "media",
+    "text-to-image",
+    "gpt"
+  ]
+}

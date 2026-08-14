@@ -1,0 +1,41 @@
+{
+  "name": "Migrate content via cron jobs",
+  "data_name": "simple_content_migration_via_cron",
+  "description": "Runs configured Migrate API migrations automatically on cron at per-migration intervals.",
+  "version": "1.1.x",
+  "package": "Migration",
+  "composer_namespace": "drupal/simple_content_migration_via_cron",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "migrate_plus:migrate_plus"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/simple_content_migration_via_cron",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Content migration / import"
+  ],
+  "keywords": [
+    "migrate",
+    "cron",
+    "migrate_plus",
+    "sql source",
+    "scheduled import",
+    "sync",
+    "update"
+  ]
+}

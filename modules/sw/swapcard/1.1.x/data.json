@@ -1,0 +1,43 @@
+{
+  "name": "Swapcard",
+  "data_name": "swapcard",
+  "description": "GraphQL API client and plugin manager for the Swapcard event platform, with content-sync submodules.",
+  "version": "1.1.x",
+  "package": "Swapcard",
+  "composer_namespace": "drupal/swapcard",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "swapcard.config",
+  "core_version_requirement": "^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/swapcard",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "swapcard_content",
+    "swapcard_content_media"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Content migration / import"
+  ],
+  "keywords": [
+    "swapcard",
+    "graphql",
+    "events",
+    "api client",
+    "guzzle",
+    "plugin manager",
+    "sync",
+    "queue"
+  ]
+}

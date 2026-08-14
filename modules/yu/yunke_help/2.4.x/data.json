@@ -1,0 +1,42 @@
+{
+  "name": "Yunke help",
+  "data_name": "yunke_help",
+  "description": "Developer helper exposing Drupal introspection and maintenance tools behind a single 'yunke help' permission.",
+  "version": "2.4.x",
+  "package": "yunke",
+  "composer_namespace": "drupal/yunke_help",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "toolbar:toolbar"
+  ],
+  "configure": "yunke_help.index",
+  "core_version_requirement": "^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/yunke_help",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Debugging & inspection"
+  ],
+  "keywords": [
+    "debug",
+    "introspection",
+    "phpinfo",
+    "container",
+    "cache",
+    "developer",
+    "entity",
+    "plugin"
+  ]
+}
