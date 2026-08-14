@@ -1,0 +1,41 @@
+{
+  "name": "Mapkit",
+  "data_name": "mapkit",
+  "description": "Map rendering and proximity-search framework with a pluggable provider/marker/geo-parser API.",
+  "version": "1.0.x",
+  "package": "Maps",
+  "composer_namespace": "drupal/mapkit",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "toolshed:toolshed"
+  ],
+  "configure": "mapkit.map_provider.collection",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/mapkit",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Geospatial / location"
+  ],
+  "keywords": [
+    "maps",
+    "geolocation",
+    "proximity",
+    "markers",
+    "views",
+    "search_api",
+    "address"
+  ]
+}

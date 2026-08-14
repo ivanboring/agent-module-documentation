@@ -1,0 +1,43 @@
+{
+  "name": "Vipps MobilePay Login",
+  "data_name": "vipps_mobilepay_login",
+  "description": "Social Auth network plugin that lets users log in with Vipps MobilePay via OpenID Connect / OAuth2.",
+  "version": "1.0.x",
+  "package": "Contrib",
+  "composer_namespace": "drupal/vipps_mobilepay_login",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "vipps_mobilepay:vipps_mobilepay",
+    "social_auth:social_auth"
+  ],
+  "configure": "vipps_mobilepay_login.settings_form",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/vipps_mobilepay_login",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "OAuth / OpenID Connect client"
+  ],
+  "keywords": [
+    "vipps",
+    "mobilepay",
+    "social auth",
+    "oauth2",
+    "openid connect",
+    "login",
+    "sso",
+    "authentication"
+  ]
+}

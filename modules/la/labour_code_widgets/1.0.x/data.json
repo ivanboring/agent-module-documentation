@@ -1,0 +1,43 @@
+{
+  "name": "Labour code widgets",
+  "data_name": "labour_code_widgets",
+  "description": "Field type + formatter that embeds the French government 'code du travail' (code.travail.gouv.fr) widgets on your site, with an admin toggle for which widgets are enabled.",
+  "version": "1.0.x",
+  "package": "Gouv FR | Labour code",
+  "composer_namespace": "drupal/labour_code_widgets",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "field:field"
+  ],
+  "configure": "labour_code_widgets.status",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/labour_code_widgets",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "7.4",
+  "library_dependencies": [
+    "https://code.travail.gouv.fr/widget.js"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Fields"
+  ],
+  "keywords": [
+    "labour code",
+    "france",
+    "widget",
+    "field",
+    "formatter",
+    "gouv.fr",
+    "embed"
+  ]
+}

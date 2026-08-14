@@ -1,0 +1,42 @@
+{
+  "name": "Entity Holder",
+  "data_name": "entity_holder",
+  "description": "Config-entity 'holders' that reserve a stable admin route/path for a content entity that may not exist yet in every environment.",
+  "version": "1.0.x",
+  "package": "Other",
+  "composer_namespace": "drupal/entity_holder",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:filter"
+  ],
+  "configure": "entity.entity_holder.collection",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/entity_holder",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site structure"
+  ],
+  "subcategories": [
+    "Entity page behavior & redirects"
+  ],
+  "keywords": [
+    "entity",
+    "route",
+    "path",
+    "placeholder",
+    "deployment",
+    "uuid",
+    "fallback",
+    "holder"
+  ]
+}

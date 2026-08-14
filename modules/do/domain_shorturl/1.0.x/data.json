@@ -1,0 +1,42 @@
+{
+  "name": "Domain Short URL",
+  "data_name": "domain_shorturl",
+  "description": "Adds multi-domain awareness to the Short URL module: per-domain slug scoping, a domain field and domain-aware redirects.",
+  "version": "1.0.x",
+  "package": "Domain",
+  "composer_namespace": "drupal/domain_shorturl",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "shorturl:shorturl",
+    "domain:domain",
+    "domain_redirect:domain_redirect"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11.2",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/domain_shorturl",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "URL shortening"
+  ],
+  "keywords": [
+    "shorturl",
+    "domain",
+    "slug",
+    "redirect",
+    "multi-domain",
+    "url-shortening"
+  ]
+}

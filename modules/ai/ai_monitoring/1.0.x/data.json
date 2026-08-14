@@ -1,0 +1,43 @@
+{
+  "name": "AI Monitoring",
+  "data_name": "ai_monitoring",
+  "description": "AI-powered log analysis with multi-channel alerting (email, Slack, webhook, notifications).",
+  "version": "1.0.x",
+  "package": "AI",
+  "composer_namespace": "drupal/ai_monitoring",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "ai:ai",
+    "key:key"
+  ],
+  "configure": "ai_monitoring.settings",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ai_monitoring",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Error tracking & monitoring"
+  ],
+  "keywords": [
+    "ai",
+    "monitoring",
+    "log analysis",
+    "alerting",
+    "slack",
+    "webhook",
+    "dedup",
+    "circuit breaker"
+  ]
+}

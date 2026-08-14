@@ -1,0 +1,43 @@
+{
+  "name": "Candidate Manager",
+  "data_name": "candidate_manager",
+  "description": "Custom applicant-tracking system: Candidate and Company content entities with admin lists, profile pages and a REST API.",
+  "version": "3.1.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/candidate_manager",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:rest",
+    "drupal:serialization",
+    "drupal:field_ui"
+  ],
+  "configure": "candidate_manager.admin",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/candidate_manager",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=7.4",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Entity API"
+  ],
+  "keywords": [
+    "candidate",
+    "recruitment",
+    "applicant",
+    "company",
+    "rest",
+    "entity",
+    "hr"
+  ]
+}

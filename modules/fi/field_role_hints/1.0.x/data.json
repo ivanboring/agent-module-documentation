@@ -1,0 +1,43 @@
+{
+  "name": "Field Role Hints",
+  "data_name": "field_role_hints",
+  "description": "Shows role-specific help text on field widgets in entity forms, resolved by the editor's roles with a configurable priority and append/replace mode.",
+  "version": "1.0.x",
+  "package": "Content editing experience",
+  "composer_namespace": "drupal/field_role_hints",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node",
+    "drupal:user"
+  ],
+  "configure": "field_role_hints.settings",
+  "core_version_requirement": "^10.3 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/field_role_hints",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Field label customization"
+  ],
+  "keywords": [
+    "field",
+    "help text",
+    "role",
+    "hint",
+    "description",
+    "form",
+    "node",
+    "editor"
+  ]
+}

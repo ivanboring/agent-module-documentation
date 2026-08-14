@@ -1,0 +1,43 @@
+{
+  "name": "Sites devel",
+  "data_name": "sites_devel",
+  "description": "Development helper for the Sites ecosystem: a debug block plus Devel dumper access while in development mode.",
+  "version": "1.0.x",
+  "package": "Sites",
+  "composer_namespace": "drupal/sites_devel",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "sites:sites",
+    "devel:devel",
+    "block_plugin_view_builder:block_plugin_view_builder"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/sites_devel",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Debugging & inspection"
+  ],
+  "keywords": [
+    "sites",
+    "devel",
+    "debug",
+    "development",
+    "dumper",
+    "block",
+    "multisite"
+  ]
+}

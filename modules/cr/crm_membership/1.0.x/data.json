@@ -1,0 +1,43 @@
+{
+  "name": "CRM Membership",
+  "data_name": "crm_membership",
+  "description": "Membership management for the CRM project: links Contact entities to membership types, dated periods, and pluggable term rules for activation, renewal and expiration.",
+  "version": "1.0.x",
+  "package": "CRM",
+  "composer_namespace": "drupal/crm_membership",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "crm:crm",
+    "duration_field:duration_field",
+    "drupal:datetime_range"
+  ],
+  "configure": null,
+  "core_version_requirement": ">=11.1",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/crm_membership",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "8.3",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "User engagement"
+  ],
+  "subcategories": [
+    "Groups & memberships"
+  ],
+  "keywords": [
+    "crm",
+    "membership",
+    "contact",
+    "renewal",
+    "expiration",
+    "subscription",
+    "periods"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "name": "IA Creation Kit",
+  "data_name": "iack",
+  "description": "Uploads a spreadsheet describing site information architecture and drives an AI agent to build content types, fields, and taxonomy.",
+  "version": "1.0.x",
+  "package": "AI Tools",
+  "composer_namespace": "drupal/iack",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "ai_agents:ai_agents",
+    "ai_assistant_api:ai_assistant_api"
+  ],
+  "configure": "iack.upload_information_architecture",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/iack",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "AI agents / taskable AI"
+  ],
+  "keywords": [
+    "ai",
+    "information-architecture",
+    "spreadsheet",
+    "content-type",
+    "taxonomy",
+    "agent",
+    "xlsx",
+    "scaffolding"
+  ]
+}

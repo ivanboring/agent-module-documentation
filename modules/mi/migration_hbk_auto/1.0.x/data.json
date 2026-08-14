@@ -1,0 +1,41 @@
+{
+  "name": "Migration Hbk Auto",
+  "data_name": "migration_hbk_auto",
+  "description": "Vue.js-driven UI to import Drupal 7 data (fields, terms, files, config) via controller endpoints.",
+  "version": "1.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/migration_hbk_auto",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:migrate"
+  ],
+  "configure": "migration_hbk_auto.migration_settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/migration_hbk_auto",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Migration tooling"
+  ],
+  "keywords": [
+    "migrate",
+    "drupal 7",
+    "vuejs",
+    "import",
+    "fields",
+    "taxonomy",
+    "config"
+  ]
+}

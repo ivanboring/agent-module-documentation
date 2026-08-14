@@ -1,0 +1,43 @@
+{
+  "name": "Content Dependency Graph",
+  "data_name": "content_dependency_graph",
+  "description": "Visualizes reference relationships between nodes, media, taxonomy, and paragraphs.",
+  "version": "1.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/content_dependency_graph",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node",
+    "drupal:taxonomy",
+    "drupal:media"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/content_dependency_graph",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Entity reference tracking"
+  ],
+  "keywords": [
+    "dependency",
+    "graph",
+    "references",
+    "visualization",
+    "node",
+    "media",
+    "taxonomy"
+  ]
+}

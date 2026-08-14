@@ -1,0 +1,41 @@
+{
+  "name": "Webform Email Cleanup",
+  "data_name": "webform_email_cleanup",
+  "description": "Deletes uploaded webform attachment files from the private directory after the last triggered email handler sends.",
+  "version": "1.0.x",
+  "package": "Webform",
+  "composer_namespace": "drupal/webform_email_cleanup",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "webform:webform"
+  ],
+  "configure": "webform_email_cleanup.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/webform_email_cleanup",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Forms and surveys"
+  ],
+  "subcategories": [
+    "Submission handling"
+  ],
+  "keywords": [
+    "webform",
+    "email",
+    "attachments",
+    "file cleanup",
+    "private files",
+    "handler",
+    "gdpr"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "name": "Basic Firewall",
+  "data_name": "basic_firewall",
+  "description": "Blocks or challenges malicious traffic early in the request lifecycle using the Kanopi Lite Firewall library, driven by an admin UI.",
+  "version": "2.0.x",
+  "package": "Security",
+  "composer_namespace": "drupal/basic_firewall",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user"
+  ],
+  "configure": "basic_firewall.dashboard",
+  "core_version_requirement": "^11.2 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/basic_firewall",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Intrusion prevention"
+  ],
+  "keywords": [
+    "firewall",
+    "ip block",
+    "rate limit",
+    "waf",
+    "middleware",
+    "challenge",
+    "abuseipdb",
+    "geoip"
+  ]
+}

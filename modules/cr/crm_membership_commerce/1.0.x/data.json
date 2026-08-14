@@ -1,0 +1,43 @@
+{
+  "name": "CRM Membership Commerce",
+  "data_name": "crm_membership_commerce",
+  "description": "Creates or renews CRM memberships when membership products are purchased in Commerce.",
+  "version": "1.0.x",
+  "package": "CRM",
+  "composer_namespace": "drupal/crm_membership_commerce",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "crm_membership:crm_membership",
+    "commerce:commerce_product",
+    "commerce:commerce_order"
+  ],
+  "configure": null,
+  "core_version_requirement": ">=11.1",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/crm_membership_commerce",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "CRM integration"
+  ],
+  "keywords": [
+    "crm",
+    "membership",
+    "commerce",
+    "order",
+    "subscription",
+    "renewal",
+    "contact"
+  ]
+}

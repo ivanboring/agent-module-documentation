@@ -1,0 +1,42 @@
+{
+  "name": "Update Status KV Flush",
+  "data_name": "uskvf",
+  "description": "Detects and fixes desync between the update_fetch_task key-value store and the update_fetch_tasks queue that breaks update status.",
+  "version": "1.0.x",
+  "package": "Administration",
+  "composer_namespace": "drupal/uskvf",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "update:update"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/uskvf",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Status report management"
+  ],
+  "keywords": [
+    "update",
+    "status report",
+    "key-value",
+    "queue",
+    "redis",
+    "requirements",
+    "cron",
+    "release data"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "name": "MySQL Query Logger",
+  "data_name": "mysql_query_logger",
+  "description": "Custom MySQL database driver that appends every query, insert, update, delete and transaction to a plaintext log file.",
+  "version": "1.0.x",
+  "package": "Development",
+  "composer_namespace": "drupal/mysql_query_logger",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:mysql"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/mysql_query_logger",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Debugging & inspection"
+  ],
+  "keywords": [
+    "mysql",
+    "query log",
+    "database",
+    "debugging",
+    "profiling",
+    "development",
+    "driver"
+  ]
+}

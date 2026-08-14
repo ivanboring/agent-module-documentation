@@ -1,0 +1,45 @@
+{
+  "name": "Log Alert Rules",
+  "data_name": "log_alert_rules",
+  "description": "Threshold-based alerting on watchdog (dblog) log entries with cooldown suppression, pluggable notification channels (email, Slack/webhook), and import/export.",
+  "version": "2.1.x",
+  "package": "System",
+  "composer_namespace": "drupal/log_alert_rules",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "dblog:dblog"
+  ],
+  "configure": "entity.log_alert_rule.collection",
+  "core_version_requirement": "^10.6 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/log_alert_rules",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "log_alert_rules_monolog",
+    "log_alert_rules_webhook"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Error tracking & monitoring"
+  ],
+  "keywords": [
+    "logging",
+    "watchdog",
+    "alert",
+    "threshold",
+    "notification",
+    "slack",
+    "webhook",
+    "monitoring"
+  ]
+}

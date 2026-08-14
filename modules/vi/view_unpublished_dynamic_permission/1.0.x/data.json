@@ -1,0 +1,41 @@
+{
+  "name": "View Unpublished Dynamic Permission",
+  "data_name": "view_unpublished_dynamic_permission",
+  "description": "Provides dynamic 'view any unpublished <entity/bundle>' permissions for every publishable entity type and enforces them via entity access.",
+  "version": "1.0.x",
+  "package": "User",
+  "composer_namespace": "drupal/view_unpublished_dynamic_permission",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "user:user"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/view_unpublished_dynamic_permission",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Unpublished content access"
+  ],
+  "keywords": [
+    "unpublished",
+    "permission",
+    "entity access",
+    "view",
+    "dynamic permission",
+    "bundle",
+    "moderation"
+  ]
+}

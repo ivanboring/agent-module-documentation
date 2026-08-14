@@ -1,0 +1,43 @@
+{
+  "name": "DKAN Datastore Import Tweak",
+  "data_name": "dkan_datastore_import_tweak",
+  "description": "Lets you configure the CSV delimiter and quote character used by DKAN datastore imports.",
+  "version": "4.0.x",
+  "package": "DKAN",
+  "composer_namespace": "drupal/dkan_datastore_import_tweak",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "dkan:dkan_datastore"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/dkan_datastore_import_tweak",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "dkan_datastore_mysql_import_tweak"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Content migration / import"
+  ],
+  "keywords": [
+    "dkan",
+    "datastore",
+    "import",
+    "csv",
+    "delimiter",
+    "parser",
+    "open-data"
+  ]
+}

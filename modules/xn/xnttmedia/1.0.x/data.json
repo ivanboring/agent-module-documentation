@@ -1,0 +1,44 @@
+{
+  "name": "External Entities Storage Client for media files",
+  "data_name": "xnttmedia",
+  "description": "External Entities storage client that exposes media files as external entities, enriched with getID3 metadata.",
+  "version": "1.0.x",
+  "package": "External Entities",
+  "composer_namespace": "drupal/xnttmedia",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "external_entities:external_entities"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/xnttmedia",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "james-heinrich/getid3"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "File & media metadata"
+  ],
+  "keywords": [
+    "external entities",
+    "media",
+    "getid3",
+    "id3",
+    "storage client",
+    "metadata",
+    "audio",
+    "video"
+  ]
+}

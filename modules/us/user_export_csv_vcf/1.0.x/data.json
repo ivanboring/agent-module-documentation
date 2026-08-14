@@ -1,0 +1,43 @@
+{
+  "name": "User Export CSV & VCF",
+  "data_name": "user_export_csv_vcf",
+  "description": "Exports selected user accounts as CSV or VCF (vCard) files from the People admin page via bulk actions.",
+  "version": "1.0.x",
+  "package": "Other",
+  "composer_namespace": "drupal/user_export_csv_vcf",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "phone_number:phone_number",
+    "action:action",
+    "address:address"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/user_export_csv_vcf",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Data export"
+  ],
+  "keywords": [
+    "user export",
+    "csv",
+    "vcf",
+    "vcard",
+    "bulk action",
+    "contacts",
+    "people"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "name": "Field Group Complete",
+  "data_name": "field_group_complete",
+  "description": "Adds a live 'complete/incomplete' badge to Field Group leaves on entity forms once all required fields inside are satisfied.",
+  "version": "1.x",
+  "package": "Fields",
+  "composer_namespace": "drupal/field_group_complete",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "field_group:field_group"
+  ],
+  "configure": "field_group_complete.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/field_group_complete",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Form builder"
+  ],
+  "keywords": [
+    "field_group",
+    "required",
+    "badge",
+    "form",
+    "completion",
+    "tabs",
+    "indicator",
+    "javascript"
+  ]
+}

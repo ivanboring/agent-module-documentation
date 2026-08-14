@@ -1,0 +1,46 @@
+{
+  "name": "API Plugins",
+  "data_name": "api_plugins",
+  "description": "Plugin framework for external API integrations with Key-based auth and HTTP handling.",
+  "version": "1.0.x",
+  "package": "API Plugins",
+  "composer_namespace": "drupal/api_plugins",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "key:key"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 | ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/api_plugins",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "api_plugins_anthropic",
+    "api_plugins_mcp",
+    "api_plugins_openai"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Plugin system"
+  ],
+  "keywords": [
+    "api",
+    "plugin",
+    "http client",
+    "key module",
+    "authentication",
+    "integration",
+    "openai",
+    "anthropic"
+  ]
+}

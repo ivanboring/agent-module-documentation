@@ -1,0 +1,40 @@
+{
+  "name": "Domain Base Css",
+  "data_name": "dbc",
+  "description": "Attaches a separate, per-domain CSS stylesheet on every page for Domain-module sites.",
+  "version": "1.0.x",
+  "package": "Domain",
+  "composer_namespace": "drupal/dbc",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "domain:domain"
+  ],
+  "configure": "dbc.settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/dbc",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Theming"
+  ],
+  "subcategories": [
+    "Multi-domain / affiliate sites"
+  ],
+  "keywords": [
+    "domain",
+    "css",
+    "stylesheet",
+    "multi-domain",
+    "theming",
+    "per-domain"
+  ]
+}

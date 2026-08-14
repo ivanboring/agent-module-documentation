@@ -1,0 +1,42 @@
+{
+  "name": "Author Content Ownership Transfer Workflow",
+  "data_name": "author_content_transfer",
+  "description": "Automatically transfers node ownership away from inactive users, with bulk tools and analytics.",
+  "version": "1.0.x",
+  "package": "Content authoring",
+  "composer_namespace": "drupal/author_content_transfer",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "node",
+    "user"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/author_content_transfer",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Content ownership / reassignment"
+  ],
+  "keywords": [
+    "ownership",
+    "author",
+    "transfer",
+    "inactive users",
+    "bulk",
+    "cron",
+    "content authoring"
+  ]
+}

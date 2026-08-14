@@ -1,0 +1,53 @@
+{
+  "name": "AI Entity Intake",
+  "data_name": "ai_entity_intake",
+  "description": "Turns unstructured text into reviewed, draft Drupal entities using the AI module.",
+  "version": "1.0.x",
+  "package": "AI",
+  "composer_namespace": "drupal/ai_entity_intake",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "ai:ai",
+    "drupal:user",
+    "drupal:system",
+    "drupal:options",
+    "json_field:json_field",
+    "dynamic_entity_reference:dynamic_entity_reference"
+  ],
+  "configure": "ai_entity_intake.settings",
+  "core_version_requirement": "^10.5 || ^11.2",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ai_entity_intake",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "ai_entity_intake_commerce",
+    "ai_entity_intake_group",
+    "ai_entity_intake_media",
+    "ai_entity_intake_paragraphs",
+    "ai_entity_intake_profile",
+    "ai_entity_intake_taxonomy"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "AI tooling / function calling"
+  ],
+  "keywords": [
+    "ai",
+    "entity extraction",
+    "structured output",
+    "intake",
+    "draft entities",
+    "review",
+    "llm"
+  ]
+}

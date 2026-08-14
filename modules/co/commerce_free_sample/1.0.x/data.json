@@ -1,0 +1,44 @@
+{
+  "name": "Commerce Free Sample",
+  "data_name": "commerce_free_sample",
+  "description": "Adds a free-sample product selector to Commerce checkout, adding the chosen sample as an order item during checkout.",
+  "version": "1.0.x",
+  "package": "Commerce",
+  "composer_namespace": "drupal/commerce_free_sample",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "commerce:commerce",
+    "commerce:commerce_order",
+    "commerce:commerce_product",
+    "drupal:commerce_checkout_order_fields"
+  ],
+  "configure": "commerce_free_sample.admin_settings_form",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/commerce_free_sample",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Promotions / discounts"
+  ],
+  "keywords": [
+    "commerce",
+    "free sample",
+    "checkout",
+    "order item",
+    "promotion",
+    "product",
+    "widget"
+  ]
+}

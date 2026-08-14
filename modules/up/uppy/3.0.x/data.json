@@ -1,0 +1,43 @@
+{
+  "name": "Uppy",
+  "data_name": "uppy",
+  "description": "Field widget that swaps the core file/image upload control for the Uppy JavaScript uploader with resumable TUS chunked transfers.",
+  "version": "3.0.x",
+  "package": "Media",
+  "composer_namespace": "drupal/uppy",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "9.3 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/uppy",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "Uppy JavaScript uploader (bundled js/uppy.min.js)",
+    "TUS resumable upload protocol (client-side)"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "File uploads"
+  ],
+  "keywords": [
+    "uppy",
+    "file upload",
+    "field widget",
+    "tus",
+    "resumable",
+    "chunked upload",
+    "media",
+    "image"
+  ]
+}

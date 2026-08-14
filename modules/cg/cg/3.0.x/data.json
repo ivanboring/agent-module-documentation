@@ -1,0 +1,46 @@
+{
+  "name": "Content Guide",
+  "data_name": "cg",
+  "description": "Shows configurable editorial guidance (rendered from Markdown files) next to form widgets for content editors.",
+  "version": "3.0.x",
+  "package": "Content Authoring",
+  "composer_namespace": "drupal/cg",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:filter"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/cg",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "erusev/parsedown"
+  ],
+  "suggests": {},
+  "submodules": [
+    "cg_field_group"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Editorial notes / annotations"
+  ],
+  "keywords": [
+    "content guide",
+    "help",
+    "editor",
+    "markdown",
+    "guidance",
+    "documentation",
+    "field",
+    "widget"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "name": "AI Content Summarizer",
+  "data_name": "ai_content_summarizer",
+  "description": "Generates node summaries and title suggestions via a built-in multi-provider LLM layer.",
+  "version": "1.0.x",
+  "package": "AI",
+  "composer_namespace": "drupal/ai_content_summarizer",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node"
+  ],
+  "configure": "ai_content_summarizer.settings",
+  "core_version_requirement": "^10.3 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ai_content_summarizer",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "AI provider abstraction / LLM gateway"
+  ],
+  "keywords": [
+    "ai",
+    "summarizer",
+    "llm",
+    "openai",
+    "anthropic",
+    "gemini",
+    "ollama",
+    "title suggestions"
+  ]
+}

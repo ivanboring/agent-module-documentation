@@ -1,0 +1,43 @@
+{
+  "name": "View mode by owner role",
+  "data_name": "view_mode_by_owner_role",
+  "description": "Switches a node's display view mode based on the role of the node's owner, using a role-to-view-mode mapping.",
+  "version": "1.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/view_mode_by_owner_role",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "node:node",
+    "user:user",
+    "hux:hux"
+  ],
+  "configure": "view_mode_by_owner_role.settings_choose_role",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/view_mode_by_owner_role",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "View mode switching"
+  ],
+  "keywords": [
+    "view mode",
+    "owner",
+    "role",
+    "node",
+    "display",
+    "hux",
+    "entity view"
+  ]
+}

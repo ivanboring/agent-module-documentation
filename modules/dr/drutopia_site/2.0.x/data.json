@@ -1,0 +1,56 @@
+{
+  "name": "Drutopia Site",
+  "data_name": "drutopia_site",
+  "description": "Base feature bundling site-wide configuration: text formats/CKEditor 5, basic and slide block content types, and editorial roles for the Drutopia distribution.",
+  "version": "2.0.x",
+  "package": "Drutopia",
+  "composer_namespace": "drupal/drutopia_site",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "admin_toolbar:admin_toolbar_tools",
+    "admin_toolbar:admin_toolbar_search",
+    "autosave_form:autosave_form",
+    "drupal:block_content",
+    "drupal:ckeditor5",
+    "drupal:editor",
+    "drupal:field",
+    "drupal:filter",
+    "drupal:menu_ui",
+    "drupal:text",
+    "drutopia_core:drutopia_core",
+    "ds:ds",
+    "entity_reference_revisions:entity_reference_revisions",
+    "menu_admin_per_menu:menu_admin_per_menu",
+    "paragraphs:paragraphs",
+    "role_delegation:role_delegation"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/drutopia_site",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "User roles & permissions"
+  ],
+  "keywords": [
+    "drutopia",
+    "base feature",
+    "roles",
+    "ckeditor5",
+    "block content",
+    "text formats",
+    "configuration"
+  ]
+}

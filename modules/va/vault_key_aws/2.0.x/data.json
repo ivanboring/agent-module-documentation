@@ -1,0 +1,43 @@
+{
+  "name": "Vault Secret Engine - AWS",
+  "data_name": "vault_key_aws",
+  "description": "Key provider that fetches short-lived AWS credentials from the HashiCorp Vault AWS secret engine for the Key module.",
+  "version": "2.0.x",
+  "package": "Security",
+  "composer_namespace": "drupal/vault_key_aws",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "key:key",
+    "vault:vault"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/vault_key_aws",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Secrets & key management"
+  ],
+  "keywords": [
+    "vault",
+    "aws",
+    "key",
+    "secret engine",
+    "credentials",
+    "lease",
+    "hashicorp",
+    "dynamic secrets"
+  ]
+}

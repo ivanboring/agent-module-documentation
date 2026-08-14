@@ -1,0 +1,45 @@
+{
+  "name": "LocalGov Publications Importer",
+  "data_name": "localgov_publications_importer",
+  "description": "Imports uploaded PDF files into LocalGov Drupal HTML publications through a configurable Extract/Transform/Save plugin pipeline.",
+  "version": "1.1.x",
+  "package": "LocalGov Drupal",
+  "composer_namespace": "drupal/localgov_publications_importer",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "paragraphs:paragraphs",
+    "localgov_publications:localgov_publications"
+  ],
+  "configure": "localgov_publications_importer.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/localgov_publications_importer",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "localgov_publications_importer_ai"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Content migration / import"
+  ],
+  "keywords": [
+    "localgov",
+    "pdf",
+    "import",
+    "publications",
+    "pipeline",
+    "cron",
+    "smalot pdfparser",
+    "drush"
+  ]
+}

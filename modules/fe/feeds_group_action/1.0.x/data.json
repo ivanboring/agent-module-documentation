@@ -1,0 +1,44 @@
+{
+  "name": "Feeds Group Action",
+  "data_name": "feeds_group_action",
+  "description": "A Feeds target that stages Group relationships (memberships) to be created for imported entities via the Group / Group Action APIs.",
+  "version": "1.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/feeds_group_action",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:feeds",
+    "drupal:feeds_tamper",
+    "drupal:group",
+    "group_action:group_action"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/feeds_group_action",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Content migration / import"
+  ],
+  "keywords": [
+    "feeds",
+    "group",
+    "membership",
+    "relationship",
+    "import",
+    "target",
+    "group_action"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "name": "Fix Anonymous Nodes",
+  "data_name": "fix_anonymous_nodes",
+  "description": "Reassigns nodes owned by deleted (orphaned/anonymous) users to a chosen user.",
+  "version": "1.0.x",
+  "package": "Other",
+  "composer_namespace": "drupal/fix_anonymous_nodes",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "node:node"
+  ],
+  "configure": "fix_anonymous_nodes.form",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/fix_anonymous_nodes",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Content ownership / reassignment"
+  ],
+  "keywords": [
+    "node",
+    "authorship",
+    "orphaned",
+    "reassign",
+    "owner",
+    "anonymous",
+    "cleanup",
+    "content"
+  ]
+}

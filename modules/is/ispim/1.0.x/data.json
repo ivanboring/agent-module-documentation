@@ -1,0 +1,42 @@
+{
+  "name": "Image Style Preview Image Manager",
+  "data_name": "ispim",
+  "description": "Manages a curated list of preview images (a custom config-translatable content entity) used to preview image styles on the image-style admin pages.",
+  "version": "1.0.x",
+  "package": "Media",
+  "composer_namespace": "drupal/ispim",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "file:file",
+    "image:image"
+  ],
+  "configure": "entity.ispim_preview_image.collection",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ispim",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Image toolkit / processing"
+  ],
+  "keywords": [
+    "image style",
+    "preview",
+    "media",
+    "entity",
+    "admin",
+    "drush",
+    "file"
+  ]
+}

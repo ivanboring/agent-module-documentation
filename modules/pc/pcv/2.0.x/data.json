@@ -1,0 +1,39 @@
+{
+  "name": "Password Core Validator",
+  "data_name": "pcv",
+  "description": "Enforces configurable password-strength rules (length, case, numbers, punctuation) on core password fields for selected roles.",
+  "version": "2.0.x",
+  "package": "Password",
+  "composer_namespace": "drupal/pcv",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "pcv.settings.form",
+  "core_version_requirement": "^10.1 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/pcv",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Password policy"
+  ],
+  "keywords": [
+    "password",
+    "validation",
+    "strength",
+    "policy",
+    "complexity",
+    "roles",
+    "security"
+  ]
+}
