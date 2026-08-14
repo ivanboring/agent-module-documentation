@@ -1,0 +1,41 @@
+{
+  "name": "Simple Analytics",
+  "data_name": "simple_analytics",
+  "description": "Injects third-party analytics snippets (Google/Matomo/custom) and/or runs an internal cookieless visitor tracker with admin reports (today/live/history) and archiving.",
+  "version": "3.0.x",
+  "package": null,
+  "composer_namespace": "drupal/simple_analytics",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "simple_analytics.settings",
+  "core_version_requirement": "^8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/simple_analytics",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "simple_analytics_event"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Analytics & tracking"
+  ],
+  "keywords": [
+    "analytics",
+    "tracking",
+    "statistics",
+    "matomo",
+    "piwik",
+    "visitors",
+    "google analytics"
+  ]
+}

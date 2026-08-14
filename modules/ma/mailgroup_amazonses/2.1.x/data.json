@@ -1,0 +1,42 @@
+{
+  "name": "Mail Group Amazon SES",
+  "data_name": "mailgroup_amazonses",
+  "description": "Amazon SES/SNS connection plugin for Mail Group: receives inbound email via an SNS-notified S3 bucket and files it into the matching mail group.",
+  "version": "2.1.x",
+  "package": null,
+  "composer_namespace": "drupal/mailgroup_amazonses",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "aws",
+    "mailgroup"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/mailgroup_amazonses",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Email / mail delivery",
+    "Cloud services (AWS)"
+  ],
+  "keywords": [
+    "amazon ses",
+    "sns",
+    "s3",
+    "mailgroup",
+    "inbound email",
+    "aws"
+  ]
+}

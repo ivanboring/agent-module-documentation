@@ -1,0 +1,42 @@
+{
+  "name": "Essential Node Protection",
+  "data_name": "essential_node_protection",
+  "description": "Overrides the node access control handler to forbid deletion of nodes configured as the site's front page, 403 or 404 page, protecting essential content from accidental removal.",
+  "version": "1.0.x",
+  "package": "Access control",
+  "composer_namespace": "drupal/essential_node_protection",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node"
+  ],
+  "configure": "essential_node_protection.settings_form",
+  "core_version_requirement": "^8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/essential_node_protection",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Content deletion protection"
+  ],
+  "keywords": [
+    "node",
+    "delete",
+    "protection",
+    "front page",
+    "404",
+    "403",
+    "access control",
+    "essential"
+  ]
+}

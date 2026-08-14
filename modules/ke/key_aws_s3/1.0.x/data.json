@@ -1,0 +1,39 @@
+{
+  "name": "Key AWS S3",
+  "data_name": "key_aws_s3",
+  "description": "Provides a Key type and key input for storing Amazon S3 credentials (access key and secret).",
+  "version": "1.0.x",
+  "package": "Security",
+  "composer_namespace": "drupal/key_aws_s3",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "key"
+  ],
+  "configure": "entity.key.collection",
+  "core_version_requirement": ">=8.9 <11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/key_aws_s3",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Secrets & key management"
+  ],
+  "keywords": [
+    "aws",
+    "s3",
+    "key",
+    "credentials",
+    "secrets"
+  ]
+}

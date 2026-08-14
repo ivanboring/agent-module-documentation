@@ -1,0 +1,44 @@
+{
+  "name": "Entity Word",
+  "data_name": "entity_word",
+  "description": "Adds a route to download a node's title and body as a Word (.docx) document via phpoffice/phpword, with a configurable filename (token), page size, margins and fonts. NOTE: the download controller does not check node view access.",
+  "version": "3.1.x",
+  "package": "Other",
+  "composer_namespace": "drupal/entity_word",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "token:token"
+  ],
+  "configure": "entity_word.settings",
+  "core_version_requirement": "^8.8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/entity_word",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "phpoffice/phpword"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Data export"
+  ],
+  "keywords": [
+    "word",
+    "docx",
+    "download",
+    "export",
+    "node",
+    "phpword",
+    "document",
+    "print"
+  ]
+}

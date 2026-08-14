@@ -1,0 +1,39 @@
+{
+  "name": "Field Prefix",
+  "data_name": "field_prefix",
+  "description": "Customize or remove the default 'field_' machine-name prefix when creating new fields in Field UI.",
+  "version": "8.x-1.x",
+  "package": "Fields",
+  "composer_namespace": "drupal/field_prefix",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "field_ui"
+  ],
+  "configure": "field_prefix.setting_form",
+  "core_version_requirement": "^8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/field_prefix",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Fields"
+  ],
+  "keywords": [
+    "field",
+    "prefix",
+    "machine name",
+    "field_ui",
+    "naming"
+  ]
+}

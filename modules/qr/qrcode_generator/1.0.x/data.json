@@ -1,0 +1,39 @@
+{
+  "name": "QR Code Generator",
+  "data_name": "qrcode_generator",
+  "description": "Generates a QR code for the current page (rendered as a floating block) and provides admin tools to create page-specific QR overrides and ad-hoc QR codes from arbitrary text/URLs, using the chillerlan/php-qrcode library.",
+  "version": "1.0.x",
+  "package": "Administration",
+  "composer_namespace": "drupal/qrcode_generator",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "qrcode_generator.settings",
+  "core_version_requirement": "^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/qrcode_generator",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "chillerlan/php-qrcode:^4.3"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "QR codes / barcodes"
+  ],
+  "keywords": [
+    "qr code",
+    "barcode",
+    "block",
+    "chillerlan",
+    "page qr"
+  ]
+}

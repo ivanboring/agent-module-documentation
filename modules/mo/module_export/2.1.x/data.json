@@ -1,0 +1,40 @@
+{
+  "name": "Module Export",
+  "data_name": "module_export",
+  "description": "Generates a downloadable 'glue' module (or CSV) whose dependencies list every module currently enabled/installed, so the same module set can be replicated on another Drupal site.",
+  "version": "2.1.x",
+  "package": "Development",
+  "composer_namespace": "drupal/module_export",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "module_export.settings",
+  "core_version_requirement": "^9.3 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/module_export",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Configuration management"
+  ],
+  "keywords": [
+    "module",
+    "export",
+    "dependencies",
+    "sync",
+    "migration",
+    "csv",
+    "deployment",
+    "site copy"
+  ]
+}

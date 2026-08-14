@@ -1,0 +1,41 @@
+{
+  "name": "SEO AI",
+  "data_name": "seo_ai",
+  "description": "Adds a 'Generate Metatags' button to node edit forms that calls an OpenAI-compatible chat API to suggest title/description/keywords/OG metatags.",
+  "version": "1.0.x",
+  "package": "SEO",
+  "composer_namespace": "drupal/seo_ai",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "node",
+    "metatag"
+  ],
+  "configure": "seo_ai.admin_settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/seo_ai",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Search engine optimization (SEO)"
+  ],
+  "subcategories": [
+    "Metatag"
+  ],
+  "keywords": [
+    "seo",
+    "ai",
+    "openai",
+    "metatag",
+    "generate",
+    "content"
+  ]
+}

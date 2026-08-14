@@ -1,0 +1,41 @@
+{
+  "name": "Block Layout (rest_block_layout)",
+  "data_name": "rest_block_layout",
+  "description": "A REST resource that returns, for a given site path, the visible blocks per region (the block layout that would render on that path) plus the matched route and \u2014 when the current user may view it \u2014 the target entity, for decoupled/headless front ends.",
+  "version": "3.0.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/rest_block_layout",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "block",
+    "rest"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/rest_block_layout",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Decoupled"
+  ],
+  "subcategories": [
+    "REST / web services"
+  ],
+  "keywords": [
+    "rest",
+    "block layout",
+    "headless",
+    "decoupled",
+    "regions",
+    "blocks"
+  ]
+}

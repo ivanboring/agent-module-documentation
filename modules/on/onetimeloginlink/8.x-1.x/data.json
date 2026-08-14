@@ -1,0 +1,38 @@
+{
+  "name": "OneTime LoginLink",
+  "data_name": "onetime_loginlink",
+  "description": "Admin form to generate a Drupal one-time login (password reset) URL for a user identified by username or email, using core's secure user_pass_reset_url().",
+  "version": "8.x-1.x",
+  "package": "Security",
+  "composer_namespace": "drupal/onetimeloginlink",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "onetime_loginlink.onetime_loginlink_form",
+  "core_version_requirement": "^8.8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/onetimeloginlink",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Password reset"
+  ],
+  "keywords": [
+    "login link",
+    "one-time login",
+    "password reset",
+    "user",
+    "admin",
+    "account access"
+  ]
+}

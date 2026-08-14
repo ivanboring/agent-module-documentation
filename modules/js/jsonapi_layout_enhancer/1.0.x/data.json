@@ -1,0 +1,41 @@
+{
+  "name": "JSON:API layout enhancer",
+  "data_name": "jsonapi_layout_enhancer",
+  "description": "Adds a JSON:API field enhancer that inlines Layout Builder block_content, plus an alias-to-node JSON:API redirect route.",
+  "version": "1.0.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/jsonapi_layout_enhancer",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "layout_builder",
+    "jsonapi",
+    "jsonapi_extras"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.2 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/jsonapi_layout_enhancer",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Decoupled"
+  ],
+  "subcategories": [
+    "REST / web services"
+  ],
+  "keywords": [
+    "jsonapi",
+    "layout builder",
+    "decoupled",
+    "block content",
+    "enhancer"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "name": "Purge Akamai Optimizer",
+  "data_name": "purge_akamai_optimizer",
+  "description": "Optimises Akamai cache-tag based purging under the Purge framework: hashes and reduces the set of cache tags queued for invalidation, tracks priority tags, and provides an 'Akamai purge everything' purger.",
+  "version": "2.0.x",
+  "package": "Akamai",
+  "composer_namespace": "drupal/purge_akamai_optimizer",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "akamai:akamai",
+    "purge:purge",
+    "purge:purge_queuer_coretags"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.3 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/purge_akamai_optimizer",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "Cache invalidation"
+  ],
+  "keywords": [
+    "purge",
+    "akamai",
+    "cache tags",
+    "cdn",
+    "invalidation"
+  ]
+}

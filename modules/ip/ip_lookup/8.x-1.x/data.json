@@ -1,0 +1,37 @@
+{
+  "name": "User IP Lookup",
+  "data_name": "ip_lookup",
+  "description": "Logs each user login with browser info and IP geolocation (via ipdata.co), viewable in an admin report.",
+  "version": "8.x-1.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/ip_lookup",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "ip_lookup.api_settings_form",
+  "core_version_requirement": "^8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ip_lookup",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Audit trail / activity logging"
+  ],
+  "keywords": [
+    "ip",
+    "geolocation",
+    "login tracking",
+    "ipdata",
+    "audit"
+  ]
+}

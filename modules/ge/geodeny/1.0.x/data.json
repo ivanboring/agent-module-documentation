@@ -1,0 +1,42 @@
+{
+  "name": "GeoDeny",
+  "data_name": "geodeny",
+  "description": "Denies HTTP responses for visitors whose IP geolocates to a configured list of blocked countries/regions.",
+  "version": "1.0.x",
+  "package": "Other",
+  "composer_namespace": "drupal/geodeny",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "ip2country:ip2country"
+  ],
+  "configure": "geodeny.config_form",
+  "core_version_requirement": "^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/geodeny",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Geographic / country restriction"
+  ],
+  "keywords": [
+    "geo",
+    "country",
+    "block",
+    "deny",
+    "ip2country",
+    "access",
+    "region",
+    "geoblock"
+  ]
+}

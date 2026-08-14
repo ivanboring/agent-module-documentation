@@ -1,0 +1,38 @@
+{
+  "name": "Node Protector",
+  "data_name": "node_protector",
+  "description": "Prevents deletion of one configured node (by NID), or automatically the site's front-page node, by aborting the delete in hook_node_predelete and redirecting back to the node.",
+  "version": "1.0.x",
+  "package": "Administration",
+  "composer_namespace": "drupal/node_protector",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/node_protector",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Content deletion protection"
+  ],
+  "keywords": [
+    "node",
+    "delete",
+    "protect",
+    "front page",
+    "deletion protection",
+    "predelete"
+  ]
+}

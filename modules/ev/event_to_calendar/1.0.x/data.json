@@ -1,0 +1,45 @@
+{
+  "name": "Event to Calendar",
+  "data_name": "event_to_calendar",
+  "description": "Generates iCal/vCal/CSV downloads, RSS feeds and Add-to-Calendar links (Google/Outlook/Yahoo) for event nodes based on configured date/location field mappings. NOTE: the per-node endpoints are gated only by 'access content' and skip node view-access checks.",
+  "version": "1.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/event_to_calendar",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node",
+    "drupal:views",
+    "drupal:field"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/event_to_calendar",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Calendar / iCal export"
+  ],
+  "keywords": [
+    "events",
+    "calendar",
+    "ical",
+    "vcs",
+    "rss",
+    "csv",
+    "google calendar",
+    "outlook",
+    "add to calendar"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "Files and Folders",
+  "data_name": "files_and_folders",
+  "description": "A custom hierarchical file/folder management system (node-based) with folder tree, uploads, thumbnails, and role-based folder access.",
+  "version": "2.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/filesandfolders",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "node",
+    "views",
+    "file",
+    "datetime",
+    "image",
+    "field",
+    "field_ui",
+    "user",
+    "system",
+    "options"
+  ],
+  "configure": "files_and_folders.settings",
+  "core_version_requirement": "^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/filesandfolders",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "File browser / management"
+  ],
+  "keywords": [
+    "files",
+    "folders",
+    "file manager",
+    "hierarchy",
+    "upload",
+    "thumbnail"
+  ]
+}

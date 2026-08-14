@@ -1,0 +1,39 @@
+{
+  "name": "Questions and Answers",
+  "data_name": "questions_answers",
+  "description": "Adds a question-and-answer system attachable to entities via a field: users ask questions and post answers (with optional moderation), can report, subscribe to, and mark answers helpful, with email notifications and a moderation queue.",
+  "version": "8.x-1.x",
+  "package": "Questions and Answers",
+  "composer_namespace": "drupal/questions_answers",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "user"
+  ],
+  "configure": "questions_answers.admin_settings",
+  "core_version_requirement": "^8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/questions_answers",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "User engagement"
+  ],
+  "subcategories": [
+    "Discussion forums"
+  ],
+  "keywords": [
+    "questions",
+    "answers",
+    "q&a",
+    "community",
+    "moderation"
+  ]
+}

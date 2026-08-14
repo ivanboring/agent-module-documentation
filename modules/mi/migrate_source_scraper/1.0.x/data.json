@@ -1,0 +1,42 @@
+{
+  "name": "Migrate Source Scraper (web)",
+  "data_name": "migrate_source_scraper",
+  "description": "A Migrate API source plugin that scrapes remote HTML pages (via Symfony BrowserKit/DomCrawler) and maps XPath/CSS-selector extractions into migration rows.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/migrate_source_scraper",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:migrate"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/migrate_source_scraper",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Content migration / import"
+  ],
+  "keywords": [
+    "migrate",
+    "scraper",
+    "source plugin",
+    "html",
+    "xpath",
+    "css selector",
+    "crawler",
+    "import"
+  ]
+}

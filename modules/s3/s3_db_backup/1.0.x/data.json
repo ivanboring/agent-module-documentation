@@ -1,0 +1,41 @@
+{
+  "name": "AWS S3 Database Backup",
+  "data_name": "s3_db_backup",
+  "description": "Creates mysqldump database backups and stores them locally or uploads them to AWS S3, with an admin UI, cron and Drush support.",
+  "version": "1.0.x",
+  "package": "Development",
+  "composer_namespace": "drupal/s3_db_backup",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "key_aws:key_aws"
+  ],
+  "configure": "s3_db_backup.settings",
+  "core_version_requirement": "^8.8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/s3_db_backup",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Administration tools"
+  ],
+  "subcategories": [
+    "Backup & restore"
+  ],
+  "keywords": [
+    "backup",
+    "database",
+    "s3",
+    "aws",
+    "mysqldump",
+    "cron",
+    "export"
+  ]
+}

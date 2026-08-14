@@ -1,0 +1,44 @@
+{
+  "name": "Google Analytics dashboard",
+  "data_name": "ga_dashboard",
+  "description": "Renders a Google Analytics reporting dashboard page by embedding Charts-based Views supplied by the Google Analytics Reports module.",
+  "version": "1.0.x",
+  "package": "Custom Module",
+  "composer_namespace": "drupal/ga_dashboard",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "charts",
+    "charts_google",
+    "google_analytics_reports"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ga_dashboard",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Analytics & tracking"
+  ],
+  "keywords": [
+    "google analytics",
+    "dashboard",
+    "charts",
+    "reports",
+    "views",
+    "sessions",
+    "pageviews",
+    "ga"
+  ]
+}

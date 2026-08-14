@@ -1,0 +1,43 @@
+{
+  "name": "Media Pixabay",
+  "data_name": "media_pixabay",
+  "description": "Adds a Pixabay search widget to Entity Browser: editors search Pixabay by keyword and the selected images are downloaded server-side and saved as image media entities.",
+  "version": "3.0.x",
+  "package": "Media",
+  "composer_namespace": "drupal/media_pixabay",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "media",
+    "entity_browser"
+  ],
+  "configure": "media_pixabay.admin.config",
+  "core_version_requirement": "^9.1 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/media_pixabay",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Media sources"
+  ],
+  "keywords": [
+    "pixabay",
+    "entity browser",
+    "stock images",
+    "media",
+    "image",
+    "widget",
+    "api key",
+    "remote images"
+  ]
+}

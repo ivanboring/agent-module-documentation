@@ -1,0 +1,42 @@
+{
+  "name": "Media Title Length",
+  "data_name": "media_title_length",
+  "description": "Lets a site set the maximum length of the media entity name/title field, altering the base field setting and the underlying database column length.",
+  "version": "1.0.x",
+  "package": "Media",
+  "composer_namespace": "drupal/media_title_length",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "media"
+  ],
+  "configure": "media_title_length.config",
+  "core_version_requirement": "^8.8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/media_title_length",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Entity title length"
+  ],
+  "keywords": [
+    "media",
+    "title length",
+    "name field",
+    "max_length",
+    "varchar",
+    "schema change",
+    "changeField",
+    "base field"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "name": "Search Tracking",
+  "data_name": "search_tracking",
+  "description": "Records site search keywords (with client IP) submitted by visitors, via a JS handler that POSTs to an open API endpoint.",
+  "version": "1.0.x",
+  "package": "Search",
+  "composer_namespace": "drupal/search_tracking",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/search_tracking",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "search_tracking/form-api-data"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site search"
+  ],
+  "subcategories": [
+    "Search analytics / reporting"
+  ],
+  "keywords": [
+    "search",
+    "tracking",
+    "keywords",
+    "analytics",
+    "history",
+    "ip"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "name": "Simple OAuth Claims",
+  "data_name": "simple_oauth_claims",
+  "description": "Adds admin-configured Claim entities that map user fields to OIDC and/or private JWT claims, injected into Simple OAuth tokens via claim-alter hooks.",
+  "version": "1.0.x",
+  "package": "Authentication",
+  "composer_namespace": "drupal/simple_oauth_claims",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "simple_oauth"
+  ],
+  "configure": "entity.claim.collection",
+  "core_version_requirement": "^9.3 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/simple_oauth_claims",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "OAuth / OpenID Connect provider"
+  ],
+  "keywords": [
+    "oauth",
+    "oidc",
+    "openid connect",
+    "claims",
+    "jwt",
+    "simple_oauth",
+    "token"
+  ]
+}

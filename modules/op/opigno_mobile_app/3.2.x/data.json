@@ -1,0 +1,51 @@
+{
+  "name": "Opigno Mobile App",
+  "data_name": "opigno_mobile_app",
+  "description": "JWT-authenticated REST API backend that lets the Opigno LMS native mobile app read trainings, statistics, users and private messages.",
+  "version": "3.2.x",
+  "package": "Opigno",
+  "composer_namespace": "drupal/opigno_mobile_app",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "jwt",
+    "jwt_auth_consumer",
+    "jwt_auth_issuer",
+    "key",
+    "restui",
+    "rest",
+    "hal",
+    "serialization"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/opigno_mobile_app",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "opigno_onesignal"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Decoupled"
+  ],
+  "subcategories": [
+    "REST / web services"
+  ],
+  "keywords": [
+    "opigno",
+    "lms",
+    "mobile app",
+    "jwt",
+    "rest api",
+    "e-learning",
+    "onesignal",
+    "push notifications"
+  ]
+}

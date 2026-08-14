@@ -1,0 +1,38 @@
+{
+  "name": "Logout Redirect",
+  "data_name": "logout_redirect",
+  "description": "redirects a user to the login page (or a configured path) if they press the browser Back button after logging out, to avoid showing cached authenticated pages.",
+  "version": "2.0.x",
+  "package": "Logout Redirect",
+  "composer_namespace": "drupal/logout_redirect",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "logout_redirect.config_form",
+  "core_version_requirement": "^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/logout_redirect",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Session management"
+  ],
+  "keywords": [
+    "logout",
+    "back button",
+    "redirect",
+    "session",
+    "browser cache",
+    "login"
+  ]
+}

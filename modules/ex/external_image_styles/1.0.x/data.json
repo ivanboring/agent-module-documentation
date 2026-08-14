@@ -1,0 +1,40 @@
+{
+  "name": "External Image Styles",
+  "data_name": "external_image_styles",
+  "description": "Offload image style derivative generation to external/third-party services by overriding the core image_style config entity with a provider-plugin-driven implementation.",
+  "version": "1.0.x",
+  "package": "Web services",
+  "composer_namespace": "drupal/external_image_styles",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "image"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/external_image_styles",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Image toolkit / processing"
+  ],
+  "keywords": [
+    "image style",
+    "external",
+    "derivative",
+    "provider",
+    "cdn",
+    "offload"
+  ]
+}

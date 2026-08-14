@@ -1,0 +1,40 @@
+{
+  "name": "Search API Boolean Field Boost",
+  "data_name": "search_api_boolean_field_boost",
+  "description": "A Search API processor that boosts an indexed item's score when a selected boolean field is TRUE.",
+  "version": "1.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/search_api_boolean_field_boost",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:search_api"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/search_api_boolean_field_boost",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Site search"
+  ],
+  "subcategories": [
+    "Search result sorting"
+  ],
+  "keywords": [
+    "search api",
+    "boost",
+    "boolean",
+    "relevance",
+    "processor",
+    "ranking"
+  ]
+}

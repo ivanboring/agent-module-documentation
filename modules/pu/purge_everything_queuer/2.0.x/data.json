@@ -1,0 +1,39 @@
+{
+  "name": "Purge Everything Queuer",
+  "data_name": "purge_everything_queuer",
+  "description": "Provides a Purge 'everything' queuer plugin and a service that clears the purge queue and enqueues a single everything-invalidation, plus a cron safeguard that does this automatically when the queue grows too large.",
+  "version": "2.0.x",
+  "package": "Purge - queuers",
+  "composer_namespace": "drupal/purge_everything_queuer",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "purge:purge"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.3 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/purge_everything_queuer",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "Cache invalidation"
+  ],
+  "keywords": [
+    "purge",
+    "cache invalidation",
+    "queue",
+    "everything",
+    "cron"
+  ]
+}

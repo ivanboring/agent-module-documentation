@@ -1,0 +1,42 @@
+{
+  "name": "Recite Me Connector",
+  "data_name": "reciteme_connector",
+  "description": "Integrates the third-party Recite Me client-side accessibility/assistive-toolbar widget: an admin form configures the service URL and site key, and a block (or site-wide autoload) injects the widget JavaScript.",
+  "version": "1.0.x",
+  "package": "Accessibility",
+  "composer_namespace": "drupal/reciteme_connector",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "reciteme_connector.reciteme_config",
+  "core_version_requirement": "^8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/reciteme_connector",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "core/jquery",
+    "core/drupalSettings"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Accessibility",
+    "Integrations"
+  ],
+  "subcategories": [
+    "Accessibility widget / toolbar",
+    "Analytics & tracking"
+  ],
+  "keywords": [
+    "recite me",
+    "accessibility",
+    "assistive toolbar",
+    "widget",
+    "wcag"
+  ]
+}

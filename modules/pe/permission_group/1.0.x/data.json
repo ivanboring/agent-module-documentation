@@ -1,0 +1,38 @@
+{
+  "name": "Permission Group",
+  "data_name": "permission_group",
+  "description": "Bundles multiple Drupal permissions into a single named group so a role can be granted them all via one checkbox on the permissions form.",
+  "version": "1.0.x",
+  "package": "Custom",
+  "composer_namespace": "drupal/permission_group",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "entity.permission_group.collection",
+  "core_version_requirement": "^9.3 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/permission_group",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": "7.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "User roles & permissions"
+  ],
+  "keywords": [
+    "permissions",
+    "roles",
+    "permission group",
+    "access control",
+    "config entity",
+    "grouping"
+  ]
+}

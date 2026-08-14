@@ -1,0 +1,44 @@
+{
+  "name": "Membership",
+  "data_name": "membership",
+  "description": "A framework for site memberships: a Membership content entity plus MembershipType bundles driven by pluggable membership-provider plugins, integrating with Commerce and State Machine.",
+  "version": "2.0.x",
+  "package": "Membership",
+  "composer_namespace": "drupal/membership",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "state_machine",
+    "entity",
+    "commerce"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/membership",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Groups & memberships"
+  ],
+  "keywords": [
+    "membership",
+    "commerce",
+    "state_machine",
+    "provider plugin",
+    "entity",
+    "subscription",
+    "revisions",
+    "site membership"
+  ]
+}

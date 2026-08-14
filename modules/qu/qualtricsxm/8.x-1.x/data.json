@@ -1,0 +1,40 @@
+{
+  "name": "QualtricsXM",
+  "data_name": "qualtricsxm",
+  "description": "Integrates Qualtrics Experience Management surveys: connects to the Qualtrics API with a token to list/fetch surveys, exposes a survey page that iframe-embeds a survey, and includes submodules for a survey field/formatter (embed) and insight tracking.",
+  "version": "8.x-1.x",
+  "package": "Qualtricsxm",
+  "composer_namespace": "drupal/qualtricsxm",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "qualtricsxm.config_settings",
+  "core_version_requirement": "^8.8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/qualtricsxm",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "qualtricsxm_embed",
+    "qualtricsxm_insights"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Survey / data collection"
+  ],
+  "keywords": [
+    "qualtrics",
+    "survey",
+    "iframe",
+    "experience management",
+    "xm"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "name": "Media Upload",
+  "data_name": "media_upload",
+  "description": "Provides a bulk drag-and-drop upload form (DropzoneJS) that converts many uploaded files into media entities at once, routing each file to a configured media bundle by extension.",
+  "version": "3.0.x",
+  "package": "Media",
+  "composer_namespace": "drupal/media_upload",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "dropzonejs",
+    "media"
+  ],
+  "configure": "media_upload.mediaupload_settings",
+  "core_version_requirement": "^8.8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/media_upload",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "File uploads"
+  ],
+  "keywords": [
+    "media",
+    "bulk upload",
+    "dropzonejs",
+    "file upload",
+    "media entities",
+    "extensions",
+    "batch import",
+    "file size"
+  ]
+}

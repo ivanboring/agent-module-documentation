@@ -1,0 +1,57 @@
+{
+  "name": "GatherContent",
+  "data_name": "gathercontent",
+  "description": "Imports content items from the GatherContent (Content Workflow) SaaS into Drupal entities using the Migrate framework.",
+  "version": "6.1.x",
+  "package": "GatherContent",
+  "composer_namespace": "drupal/gathercontent",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:node",
+    "drupal:taxonomy",
+    "drupal:menu_link_content",
+    "drupal:image",
+    "drupal:file",
+    "drupal:field",
+    "drupal:menu_ui",
+    "drupal:migrate",
+    "migrate_plus:migrate_plus",
+    "migrate_tools:migrate_tools"
+  ],
+  "configure": "gathercontent.admin_gathercontent",
+  "core_version_requirement": "^9.2 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/gathercontent",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "gathercontent/client:^1.2"
+  ],
+  "suggests": {},
+  "submodules": [
+    "gathercontent_ui",
+    "gathercontent_upload",
+    "gathercontent_upload_ui"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Content migration / import"
+  ],
+  "keywords": [
+    "gathercontent",
+    "content workflow",
+    "import",
+    "migrate",
+    "cms",
+    "editorial",
+    "mapping",
+    "api"
+  ]
+}

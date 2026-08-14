@@ -1,0 +1,44 @@
+{
+  "name": "Flysystem Aliyun OSS",
+  "data_name": "flysystem_aliyun_oss",
+  "description": "Flysystem adapter that stores Drupal files on Alibaba Cloud (Aliyun) Object Storage Service (OSS).",
+  "version": "2.0.x",
+  "package": "Flysystem",
+  "composer_namespace": "drupal/flysystem_aliyun_oss",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "flysystem:flysystem"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/flysystem_aliyun_oss",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "aliyuncs/oss-sdk-php:^2.4.0"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Media"
+  ],
+  "subcategories": [
+    "Remote file storage"
+  ],
+  "keywords": [
+    "flysystem",
+    "aliyun",
+    "oss",
+    "alibaba cloud",
+    "file storage",
+    "object storage",
+    "remote",
+    "cdn"
+  ]
+}

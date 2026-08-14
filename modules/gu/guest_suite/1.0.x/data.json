@@ -1,0 +1,43 @@
+{
+  "name": "Guest suite",
+  "data_name": "guest_suite",
+  "description": "Imports and displays Guest Suite customer reviews via the Guest Suite REST API, with a review entity and rating tokens.",
+  "version": "1.0.x",
+  "package": "Guest Suite",
+  "composer_namespace": "drupal/guest_suite",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "entity",
+    "datetime",
+    "views",
+    "link",
+    "block"
+  ],
+  "configure": "guest_suite.configuration",
+  "core_version_requirement": "^8.7.7 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/guest_suite",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Feed aggregation"
+  ],
+  "keywords": [
+    "guest suite",
+    "reviews",
+    "ratings",
+    "api consumer",
+    "import"
+  ]
+}

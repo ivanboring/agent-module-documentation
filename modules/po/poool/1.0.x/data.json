@@ -1,0 +1,37 @@
+{
+  "name": "Poool",
+  "data_name": "poool",
+  "description": "Integrates the Poool Access third-party paywall/subscription service: injects Poool's tracker JS with a configured application id, marks pages/fields as free/premium/subscription, and exposes an event to flag premium users so the JS widget restricts content client-side.",
+  "version": "1.0.x",
+  "package": "Statistics",
+  "composer_namespace": "drupal/poool",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "entity.poool.collection",
+  "core_version_requirement": "^8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/poool",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Analytics & tracking"
+  ],
+  "keywords": [
+    "poool",
+    "paywall",
+    "subscription",
+    "premium content",
+    "access"
+  ]
+}
