@@ -1,0 +1,41 @@
+{
+  "name": "Json Users Import",
+  "data_name": "json_users_import",
+  "description": "Admin form that batch-creates Drupal user accounts from pasted JSON, with configurable field mapping and welcome email.",
+  "version": "1.0.x",
+  "package": "User",
+  "composer_namespace": "drupal/json_users_import",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:smtp"
+  ],
+  "configure": "json_users_import.import_configuration",
+  "core_version_requirement": "^8.8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/json_users_import",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Import and export"
+  ],
+  "subcategories": [
+    "Content migration / import"
+  ],
+  "keywords": [
+    "user import",
+    "json",
+    "batch",
+    "accounts",
+    "field mapping",
+    "welcome email",
+    "migration"
+  ]
+}

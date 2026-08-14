@@ -1,0 +1,41 @@
+{
+  "name": "Elasticsearch Helper Preview",
+  "data_name": "elasticsearch_helper_preview",
+  "description": "Lets editors preview content in a decoupled front-end by staging the entity into a temporary Elasticsearch index and redirecting to the app's preview path.",
+  "version": "8.0.x",
+  "package": "ElasticSearch Helper",
+  "composer_namespace": "drupal/elasticsearch_helper_preview",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "elasticsearch_helper:elasticsearch_helper"
+  ],
+  "configure": "elasticsearch_helper_preview.settings",
+  "core_version_requirement": "^9.4 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/elasticsearch_helper_preview",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Decoupled"
+  ],
+  "subcategories": [
+    "Preview & draft mode"
+  ],
+  "keywords": [
+    "elasticsearch",
+    "preview",
+    "decoupled",
+    "draft",
+    "editor",
+    "redirect",
+    "tempstore"
+  ]
+}

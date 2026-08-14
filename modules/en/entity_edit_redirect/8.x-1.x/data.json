@@ -1,0 +1,38 @@
+{
+  "name": "Entity Edit Redirect",
+  "data_name": "entity_edit_redirect",
+  "description": "Redirects content-entity edit routes to a configured external editing server via a TrustedRedirectResponse.",
+  "version": "8.x-1.x",
+  "package": "Trusted redirect",
+  "composer_namespace": "drupal/entity_edit_redirect",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "entity_edit_redirect.admin_form",
+  "core_version_requirement": "^8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/entity_edit_redirect",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Entity page behavior & redirects"
+  ],
+  "keywords": [
+    "redirect",
+    "entity edit",
+    "external",
+    "trusted redirect",
+    "event subscriber",
+    "destination"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "CAPTCHA Pack",
+  "data_name": "captcha_pack",
+  "description": "A bundle of lightweight text/math/CSS/ASCII-art CAPTCHA challenge types that plug into the CAPTCHA module.",
+  "version": "8.x-1.x",
+  "package": "Spam control",
+  "composer_namespace": "drupal/captcha_pack",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "captcha:captcha"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.5 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/captcha_pack",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "math_captcha",
+    "text_captcha",
+    "css_captcha",
+    "ascii_art_captcha",
+    "foo_captcha",
+    "random_captcha_type",
+    "lost_character_captcha",
+    "phrase_captcha",
+    "word_list_captcha"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "CAPTCHA / bot protection"
+  ],
+  "keywords": [
+    "captcha",
+    "spam",
+    "bot",
+    "math",
+    "text",
+    "challenge",
+    "hook_captcha"
+  ]
+}

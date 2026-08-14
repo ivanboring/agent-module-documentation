@@ -1,0 +1,42 @@
+{
+  "name": "Preserve page cache",
+  "data_name": "preserve_page_cache",
+  "description": "Replaces the core page-cache middleware so anonymous page cache entries expire by max-age instead of being invalidated by most cache tags.",
+  "version": "8.x-1.x",
+  "package": "Cache",
+  "composer_namespace": "drupal/preserve_page_cache",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "page_cache:page_cache",
+    "path_alias:path_alias"
+  ],
+  "configure": null,
+  "core_version_requirement": "^8 || ^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/preserve_page_cache",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Performance"
+  ],
+  "subcategories": [
+    "Page cache control"
+  ],
+  "keywords": [
+    "page cache",
+    "cache tags",
+    "performance",
+    "middleware",
+    "max-age",
+    "anonymous",
+    "expiry"
+  ]
+}

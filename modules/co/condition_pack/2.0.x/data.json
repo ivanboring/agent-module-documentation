@@ -1,0 +1,45 @@
+{
+  "name": "Condition Pack",
+  "data_name": "condition_pack",
+  "description": "A pack of block visibility Condition plugins for A/B testing, dates/days of week, and times/timezones.",
+  "version": "2.0.x",
+  "package": "Condition pack",
+  "composer_namespace": "drupal/condition_pack",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "options:options"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/condition_pack",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "condition_pack_ab",
+    "condition_pack_date",
+    "condition_pack_time"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Visibility conditions"
+  ],
+  "keywords": [
+    "condition",
+    "block",
+    "visibility",
+    "a/b testing",
+    "date",
+    "time",
+    "timezone"
+  ]
+}
