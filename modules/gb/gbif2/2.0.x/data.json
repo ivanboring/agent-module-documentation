@@ -1,0 +1,44 @@
+{
+  "name": "GBIF",
+  "data_name": "gbif2",
+  "description": "Integrates the GBIF (Global Biodiversity Information Facility) REST API, exposing occurrence records as external entities plus a species-name autocomplete and Views support.",
+  "version": "2.0.x",
+  "package": "GBIF",
+  "composer_namespace": "drupal/gbif2",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "external_entities:external_entities"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/gbif2",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "gbif2_entity",
+    "gbif2_views"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Integrations"
+  ],
+  "subcategories": [
+    "Geospatial / location"
+  ],
+  "keywords": [
+    "gbif",
+    "biodiversity",
+    "occurrence",
+    "external entities",
+    "species",
+    "views",
+    "rest api"
+  ]
+}

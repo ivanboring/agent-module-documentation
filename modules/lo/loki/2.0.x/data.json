@@ -1,0 +1,40 @@
+{
+  "name": "Loki",
+  "data_name": "loki",
+  "description": "A development module that randomly returns configurable 5xx server errors to selected roles, for testing CDN/proxy stale-if-error and edge behaviour.",
+  "version": "2.0.x",
+  "package": "Development",
+  "composer_namespace": "drupal/loki",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": "loki.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/loki",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Debugging & inspection"
+  ],
+  "keywords": [
+    "error",
+    "testing",
+    "5xx",
+    "chaos",
+    "cdn",
+    "proxy",
+    "stale-if-error",
+    "development"
+  ]
+}

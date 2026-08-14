@@ -1,0 +1,41 @@
+{
+  "name": "Configurable Help",
+  "data_name": "config_help",
+  "description": "Lets site admins create, edit, translate, import and export help-topic pages as configuration.",
+  "version": "3.1.x",
+  "package": null,
+  "composer_namespace": "drupal/config_help",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:help",
+    "drupal:filter"
+  ],
+  "configure": "entity.config_help.collection",
+  "core_version_requirement": "^11.1 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/config_help",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Editorial notes / annotations"
+  ],
+  "keywords": [
+    "help",
+    "topics",
+    "documentation",
+    "config entity",
+    "admin",
+    "translate"
+  ]
+}

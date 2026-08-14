@@ -1,0 +1,43 @@
+{
+  "name": "WWW Authenticate",
+  "data_name": "www_authenticate",
+  "description": "Site-wide HTTP Basic Authentication shield with IP, path, role, and time rules layered over Drupal auth.",
+  "version": "2.0.x",
+  "package": "Security",
+  "composer_namespace": "drupal/www_authenticate",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "user:user",
+    "block:block",
+    "path_alias:path_alias"
+  ],
+  "configure": "www_authenticate.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/www_authenticate",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Access control"
+  ],
+  "subcategories": [
+    "Path / URL access restriction"
+  ],
+  "keywords": [
+    "http",
+    "basic-auth",
+    "shield",
+    "ip",
+    "allowlist",
+    "staging",
+    "401"
+  ]
+}

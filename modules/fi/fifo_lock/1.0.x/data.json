@@ -1,0 +1,38 @@
+{
+  "name": "FIFO Lock",
+  "data_name": "fifo_lock",
+  "description": "A database-backed lock backend that grants locks in first-in-first-out order instead of Drupal core's non-ordered locking.",
+  "version": "1.0.x",
+  "package": "Development",
+  "composer_namespace": "drupal/fifo_lock",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^8.7.7 || ^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/fifo_lock",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Queue / background processing"
+  ],
+  "keywords": [
+    "lock",
+    "fifo",
+    "concurrency",
+    "database",
+    "semaphore",
+    "lock backend"
+  ]
+}

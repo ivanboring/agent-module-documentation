@@ -1,0 +1,44 @@
+{
+  "name": "Commerce Signifyd",
+  "data_name": "commerce_signifyd",
+  "description": "Integrates Drupal Commerce orders with the Signifyd fraud-protection platform via cases and signed webhooks.",
+  "version": "1.0.x",
+  "package": null,
+  "composer_namespace": "drupal/commerce_signifyd",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "commerce:commerce",
+    "commerce:commerce_order",
+    "commerce:commerce_log",
+    "commerce:commerce_payment"
+  ],
+  "configure": "commerce_signifyd.configuration",
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/commerce_signifyd",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Order management"
+  ],
+  "keywords": [
+    "commerce",
+    "signifyd",
+    "fraud",
+    "webhook",
+    "order",
+    "risk",
+    "guarantee"
+  ]
+}
