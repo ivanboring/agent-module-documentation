@@ -1,0 +1,51 @@
+{
+  "name": "Panther",
+  "data_name": "panther",
+  "description": "Integration of Panther, a browser testing and web scraping library for PHP.",
+  "version": "2.0.x",
+  "package": "Testing",
+  "composer_namespace": "drupal/panther",
+  "composer_requirements": {
+    "dealerdirect/phpcodesniffer-composer-installer": "^1",
+    "drupal/drupal-driver": "^3.0",
+    "symfony/options-resolver": "^6 | ^7",
+    "symfony/panther": "^2.2"
+  },
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/panther",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "symfony/panther",
+    "symfony/options-resolver",
+    "drupal/drupal-driver"
+  ],
+  "suggests": {},
+  "submodules": [
+    "panther_examples"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Testing"
+  ],
+  "keywords": [
+    "panther",
+    "testing",
+    "browser",
+    "webdriver",
+    "selenium",
+    "symfony",
+    "accessibility",
+    "axe"
+  ]
+}

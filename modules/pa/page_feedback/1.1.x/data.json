@@ -1,0 +1,42 @@
+{
+  "name": "Page Feedback",
+  "data_name": "page_feedback",
+  "description": "Collects anonymous 'was this page helpful?' feedback via a block with configurable wording, stored as an entity with admin listing and CSV export.",
+  "version": "1.1.x",
+  "package": "Content",
+  "composer_namespace": "drupal/page_feedback",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^10.3 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/page_feedback",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/honeypot": "Adds a hidden field and a timing check to the feedback form, on top of the built-in flood control."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Forms and surveys"
+  ],
+  "subcategories": [
+    "Survey / data collection"
+  ],
+  "keywords": [
+    "feedback",
+    "page helpful",
+    "survey",
+    "block",
+    "csv export",
+    "honeypot",
+    "flood",
+    "content entity"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "name": "Node By Email",
+  "data_name": "node_by_email",
+  "description": "Creates nodes from emails fetched over IMAP (subject->title, body->body). NOTE: authorizes senders by a spoofable From header.",
+  "version": "4.0.x",
+  "package": null,
+  "composer_namespace": "drupal/node_by_email",
+  "composer_requirements": {
+    "drush/drush": "^11.0"
+  },
+  "dependent_modules": [],
+  "configure": "node_by_email.node_by_email_config_form",
+  "core_version_requirement": "^9 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/node_by_email",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Email to content"
+  ],
+  "keywords": [
+    "email",
+    "node",
+    "imap",
+    "content",
+    "posting",
+    "ext-imap",
+    "drush",
+    "cron"
+  ]
+}
