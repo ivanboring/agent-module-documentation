@@ -1,0 +1,75 @@
+{
+  "name": "Model Context Protocol",
+  "data_name": "mcp",
+  "description": "The MCP Drupal module implements the Model Context Protocol (MCP)",
+  "version": "1.2.x",
+  "package": "MCP",
+  "composer_namespace": "drupal/mcp",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "drupal/jsonrpc": "^2.1",
+    "drupal/key": "^1.19"
+  },
+  "dependent_modules": [
+    "serialization",
+    "jsonrpc",
+    "key"
+  ],
+  "configure": "mcp.settings",
+  "core_version_requirement": "^10 || ^11",
+  "active_installs": 340,
+  "list_position": 2530,
+  "project_url": "https://www.drupal.org/project/mcp",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/node": "Enables the built-in 'content' plugin (nodes as MCP resources + search-content tool).",
+    "drupal/jsonapi": "Enables the built-in 'jsonapi' plugin (read content via JSON:API).",
+    "drupal/jsonapi_schema": "Adds the jsonapi_schema tool to the JSON:API plugin.",
+    "drupal/ai": "Enables the 'aif' plugin (AI function calls as MCP tools).",
+    "drupal/ai_agents": "Enables the 'aia' plugin (AI agents as MCP tools).",
+    "drupal/tool": "Enables the 'tools' plugin (Tool API tools as MCP tools).",
+    "drush/drush": "Enables the 'drush' plugin (run allow-listed Drush commands as tools; dev only)."
+  },
+  "submodules": [
+    "mcp_studio"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "mcp",
+    "mcp_jsonrpc_method"
+  ],
+  "categories": [
+    "Artificial Intelligence (AI)",
+    "Automation"
+  ],
+  "subcategories": [
+    "Model Context Protocol (MCP) server",
+    "AI tooling / function calling",
+    "REST / web services"
+  ],
+  "keywords": [
+    "mcp",
+    "model context protocol",
+    "json-rpc",
+    "jsonrpc",
+    "llm",
+    "ai tools",
+    "ai resources",
+    "claude",
+    "cursor",
+    "tools/call",
+    "resources/read",
+    "jsonapi",
+    "drush tool",
+    "basic auth",
+    "token auth",
+    "oauth",
+    "mcp server",
+    "mcp plugin",
+    "mcp studio"
+  ]
+}
