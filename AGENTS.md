@@ -35,6 +35,32 @@ https://www.drupal.org/jsonapi/node/project_module
   Composer after `composer require`.
 - See [`documentation/data-source.md`](documentation/data-source.md) for the field map.
 
+## Keeping docs current (new stable minors)
+
+The JSON:API feed above ranks modules but carries no per-release data, so to catch a module
+that has shipped a **newer minor branch** than the one we documented, use the Drupal.org
+**release-history feed** — the same endpoint core's Update Status uses:
+
+```
+https://updates.drupal.org/release-history/{project}/current
+```
+
+- Returns XML listing every release on the project's **currently supported** branches,
+  newest first. Use `/current`, not `/all`, so abandoned branches don't come back.
+- Each `<release>` has `<version>` (`3.6.3`), `<date>`, `<core_compatibility>`, `<security>`;
+  `<supported_branches>` lists the live minor branches.
+- An unknown project returns a `<error>…</error>` body at **HTTP 200**, so detect failure by
+  matching the `<error>` tag, never the status code.
+
+`scripts/scan-new-minors.sh` automates the check. Per module it walks releases newest-first,
+derives each minor branch (`3.6.3` → `3.6.x`; legacy `8.x-1.23` → `1.23.x`), and applies the
+**stop rule**: emit every minor we lack a `modules/{ab}/{project}/{minor}/` directory for, and
+**stop at the first minor already documented** — everything older is covered. It counts a
+minor only once it has a **stable** release; `-alpha`/`-beta`/`-rc`/`-dev` releases are
+ignored. Run it with an explicit list, `--list FILE`, or `--all` over every documented module;
+output is a tab-separated worklist (`project ⇥ minor ⇥ version ⇥ dir-path`) to feed the doc
+generator. A missing minor is documented exactly like a new module (same per-module pipeline).
+
 ## What we produce, per module
 
 > **Current practice (waves ~44 onward).** The full layout below is the specification, but
