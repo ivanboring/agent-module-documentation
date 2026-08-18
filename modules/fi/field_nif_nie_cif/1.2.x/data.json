@@ -1,0 +1,47 @@
+{
+  "name": "Spain NIF, NIE and CIF Field",
+  "data_name": "field_nif_nie_cif",
+  "description": "Provides a field for validated Spanish NIF, NIE, and CIF identification numbers.",
+  "version": "1.2.x",
+  "package": "Moon",
+  "composer_namespace": "drupal/field_nif_nie_cif",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:field"
+  ],
+  "configure": null,
+  "core_version_requirement": "^9.4 || ^10 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/field_nif_nie_cif",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/webform": "Required only when using the field_nif_nie_cif_webform submodule."
+  },
+  "submodules": [
+    "field_nif_nie_cif_webform"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience"
+  ],
+  "subcategories": [
+    "Field validation"
+  ],
+  "keywords": [
+    "nif",
+    "nie",
+    "cif",
+    "spain",
+    "validation",
+    "field",
+    "webform",
+    "auto-detect",
+    "normalization"
+  ]
+}

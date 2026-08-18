@@ -1,0 +1,49 @@
+{
+  "name": "Expression Field",
+  "data_name": "field_expression",
+  "description": "Field whose value is calculated from an expression containing tokens.",
+  "version": "2.1.x",
+  "package": "Fields",
+  "composer_namespace": "drupal/field_expression",
+  "composer_requirements": {
+    "webit/eval-math": "^1.0",
+    "drupal/token": "^1"
+  },
+  "dependent_modules": [
+    "drupal:token"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.2 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/field_expression",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "webit/eval-math"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content editing experience",
+    "Content display"
+  ],
+  "subcategories": [
+    "Computed / derived fields",
+    "Token / placeholder replacement"
+  ],
+  "keywords": [
+    "expression",
+    "computed field",
+    "token",
+    "calculation",
+    "derived",
+    "math",
+    "integer",
+    "decimal"
+  ]
+}

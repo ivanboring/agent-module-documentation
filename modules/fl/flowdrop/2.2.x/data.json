@@ -1,0 +1,87 @@
+{
+  "name": "FlowDrop",
+  "data_name": "flowdrop",
+  "description": "Visual workflow editor with AI, data-processing and HTTP nodes; workflows are entities that can be signed, published and imported, with a governed human-in-the-loop confirmation gate on side-effecting nodes.",
+  "version": "2.2.x",
+  "package": "FlowDrop",
+  "composer_namespace": "drupal/flowdrop",
+  "composer_requirements": {
+    "php": ">=8.3",
+    "drupal/core": "^11.3",
+    "symfony/expression-language": "^7.0 || ^8.0",
+    "symfony/property-access": "^7.0 || ^8.0",
+    "d34dman/vanilla-icon-picker": "^1.4",
+    "loilo/jsonpath": "^0.3.1",
+    "dragonmantank/cron-expression": "^3.3",
+    "league/html-to-markdown": "^5.1"
+  },
+  "dependent_modules": [
+    "flowdrop:flowdrop_ui_components"
+  ],
+  "configure": null,
+  "core_version_requirement": "^11.3",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/flowdrop",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.3",
+  "library_dependencies": [
+    "symfony/expression-language",
+    "symfony/property-access",
+    "d34dman/vanilla-icon-picker",
+    "loilo/jsonpath",
+    "dragonmantank/cron-expression",
+    "league/html-to-markdown"
+  ],
+  "suggests": {
+    "league/commonmark": "Spec-compliant markdown-to-HTML in the Markdown to HTML node; without it a regex fallback is used.",
+    "drupal/key": "Enables ${{ secrets.NAME }} references in node config so credentials never land in workflow config or job records."
+  },
+  "submodules": [
+    "flowdrop_chat",
+    "flowdrop_interrupt",
+    "flowdrop_job",
+    "flowdrop_memory",
+    "flowdrop_node_category",
+    "flowdrop_node_processor",
+    "flowdrop_node_type",
+    "flowdrop_orchestration",
+    "flowdrop_orchestration_connector",
+    "flowdrop_pipeline",
+    "flowdrop_playground",
+    "flowdrop_runtime",
+    "flowdrop_session",
+    "flowdrop_stategraph",
+    "flowdrop_trigger",
+    "flowdrop_ui_components",
+    "flowdrop_workflow",
+    "flowdrop_workflow_executor"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [
+    "flowdrop_node_processor",
+    "expression_evaluator"
+  ],
+  "categories": [
+    "Automation",
+    "Artificial Intelligence (AI)"
+  ],
+  "subcategories": [
+    "Workflow / business rules",
+    "AI agents / taskable AI"
+  ],
+  "keywords": [
+    "flowdrop",
+    "workflow",
+    "visual editor",
+    "ai",
+    "automation",
+    "nodes",
+    "pipeline",
+    "signed bundles",
+    "human-in-the-loop",
+    "confirmation gate"
+  ]
+}
