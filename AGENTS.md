@@ -37,29 +37,55 @@ https://www.drupal.org/jsonapi/node/project_module
 
 ## Keeping docs current (new stable minors)
 
-The JSON:API feed above ranks modules but carries no per-release data, so to catch a module
-that has shipped a **newer minor branch** than the one we documented, use the Drupal.org
-**release-history feed** — the same endpoint core's Update Status uses:
+The JSON:API feed above ranks modules but carries no per-release data. Two Drupal.org
+endpoints fill that gap; **prefer the incremental one** so a routine check costs a handful
+of requests, not thousands.
+
+**Per-project truth — the release-history feed** (what core's Update Status uses):
 
 ```
 https://updates.drupal.org/release-history/{project}/current
 ```
 
-- Returns XML listing every release on the project's **currently supported** branches,
-  newest first. Use `/current`, not `/all`, so abandoned branches don't come back.
+- XML listing every release on the project's **currently supported** branches, newest first.
+  Use `/current`, not `/all`, so abandoned branches don't come back.
 - Each `<release>` has `<version>` (`3.6.3`), `<date>`, `<core_compatibility>`, `<security>`;
   `<supported_branches>` lists the live minor branches.
-- An unknown project returns a `<error>…</error>` body at **HTTP 200**, so detect failure by
-  matching the `<error>` tag, never the status code.
+- Unknown project → `<error>…</error>` body at **HTTP 200**; detect failure by the `<error>`
+  tag, never the status code.
 
-`scripts/scan-new-minors.sh` automates the check. Per module it walks releases newest-first,
-derives each minor branch (`3.6.3` → `3.6.x`; legacy `8.x-1.23` → `1.23.x`), and applies the
-**stop rule**: emit every minor we lack a `modules/{ab}/{project}/{minor}/` directory for, and
-**stop at the first minor already documented** — everything older is covered. It counts a
-minor only once it has a **stable** release; `-alpha`/`-beta`/`-rc`/`-dev` releases are
-ignored. Run it with an explicit list, `--list FILE`, or `--all` over every documented module;
-output is a tab-separated worklist (`project ⇥ minor ⇥ version ⇥ dir-path`) to feed the doc
-generator. A missing minor is documented exactly like a new module (same per-module pipeline).
+**Global stream — the legacy api-d7 release feed** (JSON:API does *not* expose releases):
+
+```
+https://www.drupal.org/api-d7/node.json?type=project_release&sort=created&direction=DESC&page=N
+```
+
+- 50 releases/page, newest first. `title` is `"machine_name version"`;
+  `field_release_version_major`/`_minor`; `field_release_version_extra` is empty for stable
+  (`alpha2`/`rc1`/`dev` otherwise); `field_release_build_type` is `static` (tagged) vs
+  `dynamic` (dev); `created` is the unix timestamp used as a watermark.
+- It carries **no core-compatibility** (`taxonomy_vocabulary_7` is *Release type*, not core),
+  so D11 is confirmed per-candidate with one release-history lookup.
+
+### The two scanners
+
+- **`scripts/scan-recent-releases.py`** — the routine tool. Walks the global stream backwards
+  from the newest release to a stored watermark (`scripts/.release-watermark`), keeps stable
+  releases of modules we already document, collapses to the newest minor per `(project,
+  major)`, then confirms D11 with one release-history call per candidate. First run without a
+  watermark scans `--days N` back (default 30); `--no-update` for a dry run;
+  `--set-watermark-now` to prime it. Typical cost: a few pages + a few confirm calls.
+- **`scripts/scan-new-minors.py`** — the full backfill. `--all` polls release-history for
+  every documented module (~8,900 requests); also takes explicit names or `--list FILE`. Use
+  it for a one-off complete sweep, not routine checks.
+
+Both apply the same rules and emit the same TSV worklist:
+`project ⇥ branch ⇥ version ⇥ dir-path ⇥ reason`. **D11-only** (a release counts only if its
+`<core_compatibility>` admits `^11`) and **stable-only** (`-alpha`/`-beta`/`-rc`/`-dev`
+ignored). Coverage is modelled, not string-matched, because the tree mixes `3.x` (major-only),
+`3.0.x` (minor) and `8.x-1.x` (legacy) dir names — a major-only dir covers every minor of that
+major, so it never produces a false gap. A missing minor is documented in a **new**
+`{minor}.x/` dir beside the existing one (nothing deleted), via the same per-module pipeline.
 
 ## What we produce, per module
 
