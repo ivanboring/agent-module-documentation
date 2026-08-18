@@ -1,0 +1,60 @@
+{
+  "name": "SCSS Compiler",
+  "data_name": "compiler_scss",
+  "description": "Provides an SCSS compiler plugin backed by scssphp.",
+  "version": "2.0.x",
+  "package": "Compiler",
+  "composer_namespace": "drupal/compiler_scss",
+  "composer_requirements": {
+    "php": ">=8.3",
+    "drupal/compiler": "^2.0",
+    "drupal/core": "^10.6 || ^11.3",
+    "scssphp/scssphp": "^2.0"
+  },
+  "dependent_modules": [
+    "compiler:compiler"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.6 || ^11.3",
+  "active_installs": null,
+  "list_position": 1364,
+  "project_url": "https://www.drupal.org/project/compiler_scss",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.3",
+  "library_dependencies": [
+    "scssphp/scssphp"
+  ],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Theming",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "CSS preprocessing (Sass/Less)",
+    "Plugin system"
+  ],
+  "keywords": [
+    "scss",
+    "sass",
+    "css",
+    "compiler",
+    "scssphp",
+    "preprocess",
+    "compile",
+    "Compiler plugin",
+    "setVariable",
+    "setFunction",
+    "import path",
+    "output style",
+    "CompilerInputSource",
+    "CompilerInputFile",
+    "form element",
+    "config schema",
+    "Unit enum"
+  ]
+}

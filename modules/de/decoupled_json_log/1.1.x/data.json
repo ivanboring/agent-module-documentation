@@ -1,0 +1,46 @@
+{
+  "name": "Decoupled JSON Log",
+  "data_name": "decoupled_json_log",
+  "description": "Provides a log_json entity so decoupled/front-end apps can POST JSON error logs into Drupal, with per-log-type rate limiting and payload size caps.",
+  "version": "1.1.x",
+  "package": null,
+  "composer_namespace": "drupal/decoupled_json_log",
+  "composer_requirements": {
+    "php": ">=8.5",
+    "ext-json": "*",
+    "drupal/json_field": "^1.7"
+  },
+  "dependent_modules": [
+    "json_field:json_field"
+  ],
+  "configure": "decoupled_json_log.settings_form",
+  "core_version_requirement": "^11.3 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/decoupled_json_log",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.5",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Decoupled"
+  ],
+  "subcategories": [
+    "REST / web services"
+  ],
+  "keywords": [
+    "log",
+    "json",
+    "decoupled",
+    "rest",
+    "jsonapi",
+    "rate-limit",
+    "payload-size",
+    "frontend-error"
+  ]
+}
