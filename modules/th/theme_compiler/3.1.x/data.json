@@ -1,0 +1,54 @@
+{
+  "name": "Theme Compiler",
+  "data_name": "theme_compiler",
+  "description": "A helper module to facilitate the compilation of theme assets.",
+  "version": "3.1.x",
+  "package": "Compiler",
+  "composer_namespace": "drupal/theme_compiler",
+  "composer_requirements": {
+    "php": ">=8.3",
+    "drupal/compiler": "^2.0",
+    "drupal/core": "^10.6 || ^11.3"
+  },
+  "dependent_modules": [
+    "compiler:compiler"
+  ],
+  "configure": null,
+  "core_version_requirement": "^10.6 || ^11.3",
+  "active_installs": 2499,
+  "list_position": 1366,
+  "project_url": "https://www.drupal.org/project/theme_compiler",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.3",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Theming"
+  ],
+  "subcategories": [
+    "CSS preprocessing (Sass/Less)",
+    "Theme development tools"
+  ],
+  "keywords": [
+    "theme_compiler.yml",
+    "compiled assets",
+    "compiler",
+    "scss",
+    "sass",
+    "theme assets",
+    "asset pipeline",
+    "public://compiled-assets",
+    "theme_compiler.asset_storage_path",
+    "AssetCompiler",
+    "AssetDiscovery",
+    "hook_theme_compiler_TYPE_alter",
+    "hook_theme_compiler_asset_updated",
+    "themes_installed",
+    "theme settings"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "name": "Simple password policy",
+  "data_name": "simple_password_policy",
+  "description": "Provides and applies basic password policy rules.",
+  "version": "1.1.x",
+  "package": "Security",
+  "composer_namespace": "drupal/simple_password_policy",
+  "composer_requirements": {},
+  "dependent_modules": [
+    "drupal:user"
+  ],
+  "configure": "simple_password_policy.simple_password_policy_settings",
+  "core_version_requirement": "^10.1 || ^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/simple_password_policy",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security",
+    "User management"
+  ],
+  "subcategories": [
+    "Passwords",
+    "Validation"
+  ],
+  "keywords": [
+    "password",
+    "policy",
+    "complexity",
+    "length",
+    "rules",
+    "security",
+    "expiration",
+    "history"
+  ]
+}
