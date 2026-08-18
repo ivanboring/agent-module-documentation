@@ -1,0 +1,55 @@
+{
+  "name": "Emulsify Tools",
+  "data_name": "emulsify_tools",
+  "description": "Provides Twig extensions, theme Twig namespaces, child-theme generation, and favicon deployment commands for Emulsify.",
+  "version": "2.2.x",
+  "package": "Emulsify",
+  "composer_namespace": "drupal/emulsify_tools",
+  "composer_requirements": {
+    "php": "^8.3",
+    "drupal/core": "^11.3 || ^12"
+  },
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^11.3 || ^12",
+  "active_installs": 2952,
+  "list_position": 974,
+  "project_url": "https://www.drupal.org/project/emulsify_tools",
+  "license": "GPL-2.0-only",
+  "php_requirement": "^8.3",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/emulsify": "Install Emulsify Drupal for child-theme generation; version 7.x is required for favicon deployment and repair workflows.",
+    "drush/drush": "Install Drush 13+ to use child-theme generation and favicon deployment and repair commands."
+  },
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Theming",
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Twig / component libraries",
+    "Template suggestions"
+  ],
+  "keywords": [
+    "emulsify",
+    "twig",
+    "bem",
+    "add_attributes",
+    "switch case twig",
+    "twig namespaces",
+    "components namespaces",
+    "child theme generation",
+    "emulsify_tools:bake",
+    "emulsify_tools:generate-theme",
+    "favicon",
+    "favicon-generate",
+    "theme generator",
+    "starterkit",
+    "twig extension"
+  ]
+}
