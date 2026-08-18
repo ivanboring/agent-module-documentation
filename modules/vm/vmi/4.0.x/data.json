@@ -1,0 +1,57 @@
+{
+  "name": "View Modes Inventory",
+  "data_name": "vmi",
+  "description": "Ships a standard inventory of node view modes — impressed, featured, text, overlay and hero cards at several sizes — auto-wired to Display Suite / UI Patterns card layouts.",
+  "version": "4.0.x",
+  "package": "Layout",
+  "composer_namespace": "drupal/vmi",
+  "composer_requirements": {
+    "drupal/core": "~11.4.0",
+    "drupal/ds": "~3",
+    "drupal/field_group": "~4",
+    "drupal/smart_trim": "~2",
+    "drupal/varbase_components": "3.0.x-dev"
+  },
+  "dependent_modules": [
+    "drupal:user",
+    "drupal:node",
+    "ds:ds",
+    "ds:ds_extras",
+    "field_group:field_group",
+    "smart_trim:smart_trim",
+    "varbase_components:varbase_components"
+  ],
+  "configure": null,
+  "core_version_requirement": "~11.4.0",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/vmi",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display",
+    "Site structure"
+  ],
+  "subcategories": [
+    "View mode switching",
+    "Layout Builder"
+  ],
+  "keywords": [
+    "view modes",
+    "cards",
+    "hero",
+    "teaser",
+    "display suite",
+    "ui patterns",
+    "inventory",
+    "varbase",
+    "layout"
+  ]
+}

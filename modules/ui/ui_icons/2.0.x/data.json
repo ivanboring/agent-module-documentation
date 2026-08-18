@@ -1,0 +1,71 @@
+{
+  "name": "UI Icons Form element",
+  "data_name": "ui_icons",
+  "description": "Core Icons main form element for Icon autocomplete; generic icon manager that integrates third-party icon packs across Drupal's display tools on top of core's Icon API.",
+  "version": "2.0.x",
+  "package": "User interface",
+  "composer_namespace": "drupal/ui_icons",
+  "composer_requirements": {},
+  "dependent_modules": [],
+  "configure": null,
+  "core_version_requirement": "^11.3 || ^12.0",
+  "active_installs": null,
+  "list_position": 398,
+  "project_url": "https://www.drupal.org/project/ui_icons",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [
+    "ui_icons_field: Provides an Icon field type (ui_icon, main property target_id) and Link field integration.",
+    "ui_icons_field_link_attributes: Link-with-attributes (link_attributes) integration for icon fields (nested under ui_icons_field).",
+    "ui_icons_field_linkit: Linkit integration for icon fields (nested under ui_icons_field).",
+    "ui_icons_field_linkit_attributes: Linkit-with-attributes integration for icon fields (nested under ui_icons_field).",
+    "ui_icons_canvas: NEW in 2.0 — makes the ui_icon field/icon_widget editable as a Drupal Canvas component input.",
+    "ui_icons_media: Media integration allowing icons as a media type.",
+    "ui_icons_picker: Fancy modal grid icon picker widget (icon_picker element) for the UI Icons selector.",
+    "ui_icons_library: Admin overview page listing all icons available on the site (ships a permission).",
+    "ui_icons_font: FontExtractor plugin to define icon packs from web fonts.",
+    "ui_icons_text: Text-filter (icon_embed) integration to embed icons in filtered content via <drupal-icon>.",
+    "ui_icons_menu: Menu UI integration to attach icons to menu links.",
+    "ui_icons_ckeditor5: CKEditor 5 plugin/button to embed icons in rich text (produces <drupal-icon>).",
+    "ui_icons_patterns: Icons integration with UI Patterns 2.x only (1.x SettingType support dropped)."
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": false,
+  "provides_plugin_types": [],
+  "consumes_core_plugin_types": [
+    "icon_pack (\\Drupal\\Core\\Theme\\Icon\\Plugin\\IconPackManager, discovers EXTENSION.icons.yml)",
+    "icon_pack.extractor (\\Drupal\\Core\\Theme\\Icon\\IconExtractorPluginManager, #[IconExtractor] plugins: path, svg, svg_sprite)"
+  ],
+  "part_of": null,
+  "categories": [
+    "Content display",
+    "Content editing experience",
+    "Theming"
+  ],
+  "subcategories": [
+    "Icon management",
+    "Rich text embedding",
+    "Twig / component libraries"
+  ],
+  "keywords": [
+    "ui_icons",
+    "icons",
+    "icon pack",
+    "icons.yml",
+    "IconExtractor",
+    "IconPack",
+    "icon_autocomplete",
+    "svg",
+    "svg sprite",
+    "iconify",
+    "font icons",
+    "icon field",
+    "icon media",
+    "ckeditor icons",
+    "menu icons",
+    "canvas"
+  ]
+}

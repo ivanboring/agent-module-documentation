@@ -1,0 +1,45 @@
+{
+  "name": "Ultimate Cron Summary",
+  "data_name": "ultimate_cron_summary",
+  "description": "Extends Ultimate Cron with a compact overview dashboard that lets administrators assess cron job health at a glance, quickly identify jobs requiring attention, and jump directly to their detailed information.",
+  "version": "2.0.x",
+  "package": null,
+  "composer_namespace": "drupal/ultimate_cron_summary",
+  "composer_requirements": {
+    "drupal/core": ">=11.2",
+    "drupal/service": ">=2.1",
+    "drupal/ultimate_cron": "*",
+    "php": ">=8.5"
+  },
+  "dependent_modules": [
+    "service:service",
+    "ultimate_cron:ultimate_cron"
+  ],
+  "configure": "ultimate_cron.settings",
+  "core_version_requirement": ">=11.2",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/ultimate_cron_summary",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.5",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Developer tools"
+  ],
+  "subcategories": [
+    "Cron / task scheduling"
+  ],
+  "keywords": [
+    "ultimate cron",
+    "cron",
+    "dashboard",
+    "monitoring",
+    "summary"
+  ]
+}
