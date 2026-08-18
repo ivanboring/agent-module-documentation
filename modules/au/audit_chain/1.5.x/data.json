@@ -1,0 +1,48 @@
+{
+  "name": "Audit Chain",
+  "data_name": "audit_chain",
+  "description": "Tamper-evident, hash-chained audit logging for any Drupal module — optional HMAC signing, at-rest encryption, prefix seal for historical segments, scheduled keyed verification, and data-minimized off-system evidence export. A security-positive audit primitive built on Key + Encrypt.",
+  "version": "1.5.x",
+  "package": "Security",
+  "composer_namespace": "drupal/audit_chain",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "drupal/core": "^10.6 || ^11.3",
+    "drupal/key": "^1.20",
+    "drupal/encrypt": "^3.2"
+  },
+  "dependent_modules": [
+    "drupal:user",
+    "key:key",
+    "encrypt:encrypt"
+  ],
+  "configure": "audit_chain.settings",
+  "core_version_requirement": "^10.6 || ^11.3",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/audit_chain",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {},
+  "submodules": [],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "Backup & restore"
+  ],
+  "keywords": [
+    "audit log",
+    "tamper-evident",
+    "hash chain",
+    "hmac",
+    "integrity",
+    "evidence export",
+    "scheduled verification"
+  ]
+}
