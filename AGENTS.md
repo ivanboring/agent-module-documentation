@@ -87,6 +87,30 @@ ignored). Coverage is modelled, not string-matched, because the tree mixes `3.x`
 major, so it never produces a false gap. A missing minor is documented in a **new**
 `{minor}.x/` dir beside the existing one (nothing deleted), via the same per-module pipeline.
 
+### Re-documenting a wave from the worklist
+
+`scripts/wave-context.py <start> <count>` prints, for that slice of the worklist, each
+module's `project ⇥ new-branch ⇥ version ⇥ reason ⇥ src-path ⇥ newest-template-dir ⇥
+installed-version` — the template dir seeds the new docs and the last two columns catch the
+install trap below.
+
+**Always diff installed-vs-target before documenting.** `composer require drupal/<name> -W`
+does **not** reliably land the target release: it frequently resolves a **dev checkout**
+(`8.x-<n>.x-dev`, no `version:` in the info.yml), an **older** tag (a newer minor caps below
+this site's core, e.g. `>=11 <11.3`, or a dependency clash blocks it), or a **beta/rc** when
+the target is the stable. Roughly 40% of modules in the last full run needed the fallback.
+Where the installed `version:` ≠ the worklist target, document from the **release tarball**
+instead of the working copy:
+
+```
+curl -sfL https://ftp.drupal.org/files/projects/<project>-<version>.tar.gz | tar xz -C <scratchpad>
+```
+
+point the doc subagent at the extracted dir, and never enable/build a module that can't
+install on the current core. When re-documenting, the subagent MUST NOT emit tool-call/markup
+tags (`</content>`, `</invoke>`) into file bodies — validate each wave with a grep for those
+plus a `json.load` on every `data.json` before committing.
+
 ## What we produce, per module
 
 > **Current practice (waves ~44 onward).** The full layout below is the specification, but
