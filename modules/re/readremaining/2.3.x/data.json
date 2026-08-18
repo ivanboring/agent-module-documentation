@@ -1,0 +1,44 @@
+{
+  "name": "ReadRemaining",
+  "data_name": "readremaining",
+  "description": "Show readers the estimated remaining reading time.",
+  "version": "2.3.x",
+  "package": "Content",
+  "composer_namespace": "drupal/readremaining",
+  "composer_requirements": {
+    "drupal/core": "^11 || ^12",
+    "aerolab/readremaining": "^1.0"
+  },
+  "dependent_modules": [],
+  "configure": "readremaining.read_remaining_settings_form",
+  "core_version_requirement": "^11 || ^12",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/readremaining",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": null,
+  "library_dependencies": [
+    "aerolab/readremaining"
+  ],
+  "suggests": {
+    "composer/installers": "Required to install the aerolab/readremaining library into the libraries directory."
+  },
+  "submodules": [],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "Content display"
+  ],
+  "subcategories": [
+    "Scroll-driven animation"
+  ],
+  "keywords": [
+    "reading time",
+    "readremaining",
+    "indicator",
+    "gauge",
+    "progress"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "name": "Redsys payment",
+  "data_name": "redsys_button",
+  "description": "Provides secure off-site Redsys payments without requiring Drupal Commerce.",
+  "version": "2.1.x",
+  "package": "Payment",
+  "composer_namespace": "drupal/redsys_button",
+  "composer_requirements": {
+    "php": ">=8.1",
+    "drupal/core": "^10.3 || ^11",
+    "drupal/key": "^1.22"
+  },
+  "dependent_modules": [
+    "key:key"
+  ],
+  "configure": "redsys_button.redsys_config_form",
+  "core_version_requirement": "^10.3 || ^11",
+  "active_installs": null,
+  "list_position": null,
+  "project_url": "https://www.drupal.org/project/redsys_button",
+  "license": "GPL-2.0-or-later",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [],
+  "suggests": {
+    "drupal/commerce": "Required by the optional commerce_redsys_button submodule.",
+    "drupal/webform": "Required by the optional redsys_button_webform submodule."
+  },
+  "submodules": [
+    "commerce_redsys_button",
+    "redsys_button_webform"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": false,
+  "provides_config_schema": true,
+  "provides_plugin_types": [],
+  "categories": [
+    "E-commerce"
+  ],
+  "subcategories": [
+    "Payment gateways"
+  ],
+  "keywords": [
+    "redsys",
+    "payment",
+    "gateway",
+    "bizum",
+    "paypal",
+    "xpay",
+    "commerce",
+    "webform",
+    "spain",
+    "hmac"
+  ]
+}
