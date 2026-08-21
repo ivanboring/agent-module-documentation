@@ -33,5 +33,13 @@
     "domain",
     "path prefix",
     "multilingual"
-  ]
+  ],
+  "project_description": "Advanced Language Negotiation \n Introduction \n Advanced Language Negotiation enhances Drupal’s multilingual capabilities by allowing both domain-based and path-prefix-based language detection simultaneously. It provides a hybrid approach for sites needing flexible multilingual setups. This module is ideal for websites that serve different language versions based on both domain structure and URL path prefixes.\n\n Example Setup \n This module is ideal for websites using different domains and paths to represent various language versions. Example configurations:\n\n \n www.example.com - US English site \n www.example.co.uk - UK English site \n www.example.de - Germany German site \n www.example.de/en - Germany English site \n \n Features \n \n Enables both domain-based and path-prefix-based language negotiation at the same time. \n Provides an easy-to-use configuration page for defining language mappings. \n Fully integrates with Drupal’s core language negotiation system. \n Automatically determines the correct language from the domain and/or path. \n Fallback mechanism to the site's default language when no match is found. \n Useful for multilingual websites using country-specific domains or subdirectories for different languages. \n \n Post-Installation \n \n Install and enable the module via Extend or run: \n drush en advanced_language_negotiation -y Navigate to Configuration > Regional and language > Language negotiation . \n Select Advanced Language Negotiation as an active negotiation method. \n Configure domain-language mappings under the Advanced Language Negotiation settings:\n \n Save the configuration and test language negotiation by accessing different domains or paths. \n \n Similar Projects \n \n Drupal Core Language Negotiation – Provides either domain-based or path-prefix-based negotiation, but not both at the same time. \n Internationalization (i18n) – Offers additional translation tools but does not focus on language negotiation. \n \n This module provides a powerful and flexible multilingual solution for Drupal, perfect for websites needing advanced language detection across multiple domains and URL structures.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-03-06",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

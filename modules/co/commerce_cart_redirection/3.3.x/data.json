@@ -44,5 +44,13 @@
     "add to cart button text",
     "CartEntityAddEvent",
     "event subscriber"
-  ]
+  ],
+  "project_description": "Redirect users to checkout, cart, or an arbitrary location immediately after they add a product to their cart. This action is filterable by product variation type.\n\n You can select to remove all items currently in the cart when a new product is added. This option does not limit the quantity of the new item in the cart - it removes all items from the cart and then adds the product variation and quantity of the item in the current add to cart request.\n\nIf you need to limit the quantity of an item please see Commerce Product Limits .\n\n Notes \n \n The module MUST be configured to have any effect. After install navigate to /admin/commerce/config/commerce_cart_redirection ( Commerce > Configuration > Orders > Commerce Cart Redirection ) and select the product variation bundles you want to redirect and any other options.\n\n \n There is a Commerce Core issue, with patches, relevant to the use case of this module https://www.drupal.org/node/2810723",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-04-12",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

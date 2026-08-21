@@ -36,5 +36,13 @@
     "memory",
     "state",
     "conversation"
-  ]
+  ],
+  "project_description": "Makes the drupal/ai harness more like Claude Code for the + Suite page builder .\n\n \n Back to top \n\n Overview \n The default AI module's AgentRunner deletes agent state when an agent finishes a turn. This means every new user message starts a completely fresh agent run — the LLM has no memory of previous tool calls, tool results, or reasoning from earlier in the conversation.\n\n AI Agent Memory fixes this by decorating the AgentRunner to persist agent state across conversation turns in a separate temp store bin. Agents retain full awareness of their previous actions within a chat session, enabling coherent multi-turn workflows where each step builds on the last.\n\n Back to top \n\n Features \n \n Cross-turn agent continuity — Agent state persists after completion so the next user message resumes with full context, not a blank slate. \n Turn-aware history trimming — Keeps the context window bounded by dropping middle turns while preserving the first turn (initial context) and recent turns. Never splits tool call/result pairs. \n Configurable per-agent opt-in — Only agents listed in the module's settings get persistent state. All others pass through to the default AgentRunner unchanged. \n Stale data detection — Automatically discards persisted state when the agent has finished and no new messages have arrived, preventing replay of outdated context. \n File binary stripping — Removes binary file data from chat messages before persistence, working around a serialization issue in the upstream ChatMessage class. \n \n Back to top \n\n Requirements \n \n AI module (ai_agents and ai_assistant_api sub-modules) \n \n Back to top \n\n Configuration \n \n Install the module. \n Navigate to /admin/config/ai/agent-memory . \n Select which agents should have persistent state. \n Optionally adjust history trimming settings (max messages, recent turns to keep). \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2026-05-22",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10003000,
+  "core_semver_maximum": 12000000
 }

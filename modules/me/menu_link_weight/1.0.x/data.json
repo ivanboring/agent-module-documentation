@@ -46,5 +46,13 @@
     "menu_parent_form_selector",
     "cshs",
     "parent selector"
-  ]
+  ],
+  "project_description": "This module replaces the standard numeric weight dropdown widget for menu links in the node form with a tabledrag widget that lists all children for the selected parent.\n\n Functionality: \n\nUpon selection of a parent, a tabledrag widget is loaded via AJAX. This lets us reorder the weight of the menu link for the node we are editing relative to its sibling links, as well as reorder the sibling links themselves. This means we can now ignore any numerical weight values and instead see the position of a menu link relative to other links in the tabledrag widget itself.\n\n Note: Upon node submission, the weights of all the siblings of the currently selected parent will be internally reordered from -50 to -49, to -48 etc.!\n\n Testimonials: \n\n limehouse : \"Small but beautifully formed, this module is a really useful improvement to the UI and will help my non-technical users loads!\"\n\n Recommended modules: \n\nThis module integrates with the Hierarchical Select Menu module (D7) and Client-side Hierarchical Select (D8), which allows for selection of a parent link using an hierarchical select widget. This can be useful when managing large menu trees.\n\n In D8, the Client-side Hierarchical Select widget can be enabled at admin/config/user-interface/menu-link-weight .\n\n Branches: \n\n \n 8.x-1.x : Uses the core menu_ui panel for placing nodes in a menu \n 8.x-2.x : Changes the menu placement operation to be a standard node field that can be placed in the node form. Requires menu_link field and for the Menu link field to be called field_menulink",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2015-03-16",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

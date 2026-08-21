@@ -53,5 +53,13 @@
     "views display",
     "views row plugin",
     "date export"
-  ]
+  ],
+  "project_description": "This module allows to create iCal feeds with Views using Fields row style. It comes with two view display options. The \"Wizard\", which utilizes the eluceo/ical library, provides a very easy to use form in the View's settings interface to set up your iCal feed. The \"Legacy\" display is no longer actively supported, but might provide some more flexibility in defining iCal field values. \n\n Back to top \n\n Installation \n The recommended installation option is to add the module via composer, this will automatically download and install the necessary eluceo/ical library.\n\nIf you are unable to use composer, you can use the legacy display option, however, this option is much more difficult to set up. \n\n composer require drupal/views_ical \n\n Once downloaded, enable the module as you normally would.\n\n Back to top \n\n Usage \n \n Make sure you have Views module v7.x-3.4 or higher installed. \n Install this module as per usual Drupal module installation procedures. \n Create a View and add a \"Feed\" display to it. \n For \"Format\", choose \"Views iCal Feed\". \n For \"Show\", choose \"Views iCal Fields\". \n Provide a path, such as \"events.ics\". \n Add fields as per usual, providing labels (uppercase) and selecting \"Place a colon after the label\". \n Use iCal date formatter instead of \"Short\", \"Medium\" or \"Long\" for your event date (DSTART). Rewrite output for this field and use its token (replacement pattern) in order to avoid HTML tags from being attached to it. \n Save the view and visit the URL ( http://yourdomain.com/events.ics ). You will receive a file download that contains an iCal feed. If you wish to prompt the browser to open the feed in the default calendar application, you can format your links to use the \"webcal://\" protocol, e.g. webcal://yourdomain.com/events.ics \n \n Starting in Alpha 3, a new View style is available that utilizes the eluceo/ical library. It also provides a Wizard for a guided set up experience. The style is listed as experimental as it is still very new, but it is in a usable state.\n\n Dev branch \n Note, the below release information shows the dev branch as \" 8.x-1.x-dev\", however, this is not correct. The current official dev branch is \"8.x-1.x\". We will fix this when we update to a 2.0 version, however, this isn't planned to happen until a major refactor. \n\n Back to top",
+  "maintenance_status": "Seeking co-maintainer(s)",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2012-05-30",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

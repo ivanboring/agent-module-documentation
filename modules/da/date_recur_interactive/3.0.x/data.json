@@ -35,5 +35,13 @@
     "widget",
     "rrule",
     "interactive"
-  ]
+  ],
+  "project_description": "Provides an interactive field widget for Recurring Dates Field .\n\n This project was originally forked from the widget that shipped with Recurring Dates Field . It provides a visual editor for building RRULE values, including recurring dates, end conditions, and include/exclude dates.\n\n Back to top \n\n Status \n This project has been revived for Drupal 10 and Drupal 11 compatibility. Several long-standing date, timezone, and RRULE generation bugs have been fixed, and regression test coverage has been added for the main issues found during revival.\n\n The 2.x branch is recommended for new testing and evaluation. A beta release is planned once the current regression fixes have landed.\n\n Sites with complex recurrence requirements should test carefully before using this widget in production. Recurrence data can be difficult to correct after it has been saved incorrectly.\n\n Back to top \n\n Requirements \n \n Recurring Dates Field 3.x \n Drupal 10.3 or later, or Drupal 11 \n PHP versions supported by your installed Drupal core version \n \n Back to top \n\n Alternatives \n Recurring Date Field Modular Widgets remains a viable alternative, especially for sites that prefer smaller, purpose-specific widgets instead of a single interactive RRULE editor.\n\n Back to top \n\n Development \n The project now includes local development tooling and GitLab CI coverage. Bug reports with clear steps to reproduce are welcome, especially for timezone handling, include/exclude dates, browser-specific behavior, and existing saved recurrence rules.\n\n Back to top",
+  "maintenance_status": "Seeking co-maintainer(s)",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-10-19",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 13000000
 }

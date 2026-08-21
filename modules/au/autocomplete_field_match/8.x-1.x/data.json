@@ -36,5 +36,13 @@
     "match",
     "reference",
     "widget"
-  ]
+  ],
+  "project_description": "Synopsis\n\nA module for those who need to allow free text in autocomplete fields that matches to a field on either the same entity or a field within a referenced entity. Module falls back to standard autocomplete functionality.\n\nField types available are Entity Reference, Field collection, or Paragraphs, though it may work on other referenced entities. File an issue in the queue if needed. Note that this module currently only matches to a referenced entity one level deep. (i.e. it will not match a field on a referenced entity of a referenced entity.)\n\n Similar Projects\n\nNone known\n\n Requirements\n\nLatest release of Drupal 8.x.\n\n Configuration\n\nIn the manage form display select Autocomplete Field Match on the field.\n\nOpen the gear on the right to select the fields to match and how to match them.\n\nUpdate the widget using the update button when you have made your selections.\n\nSave the form display.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2018-02-23",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

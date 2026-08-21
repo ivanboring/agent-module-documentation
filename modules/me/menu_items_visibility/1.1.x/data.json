@@ -41,5 +41,13 @@
     "hide menu item",
     "node access",
     "menu_ui"
-  ]
+  ],
+  "project_description": "This module exposes configurable and extendable visibility settings for menu links. For example, if you want to create a 'My account' link that points to /user, both anonymous and registered users have access to the /user path, so both will see the link, even if anonymous users do not technically have an account. Using this module will allow you to only have your 'My account' link visible to registered users, and hide it from anonymous users.\n\n The module uses the exact same UI used for block visibility settings for familiarity.\n\n This module is D8/D9 port and stable release of Menu Item Visibility .\n\n Similar modules \n Menu per role - Only cares about user roles for visibility, not extendable, and not a re-usable UI.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-09-16",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12999999
 }

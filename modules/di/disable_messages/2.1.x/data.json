@@ -23,8 +23,12 @@
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
-  "categories": ["User engagement"],
-  "subcategories": ["Activity / notification messages"],
+  "categories": [
+    "User engagement"
+  ],
+  "subcategories": [
+    "Activity / notification messages"
+  ],
   "keywords": [
     "messages",
     "status messages",
@@ -37,5 +41,13 @@
     "regex",
     "notifications",
     "display"
-  ]
+  ],
+  "project_description": "Gives a site owner options to disable specific messages shown to end users. The core drupal message system as offered by drupal_set_message is an excellent way for modules to send out messages to the end users. However not all drupal site owners are keen to show all the messages sent out by drupal core and all modules to their users. This module gives site administrators a reasonably powerful way to filter out messages shown to the end users.\n\n Features \n\n \n Filter out messages that match a full text string exactly. \n Filter out messages that match a regular expression. \n Permissions to specifically hide all messages of a given type from any role. \n Disable all filtering for specific users. \n Disable all filtering for specific paths. \n Apply filtering only for specific paths. \n Debug system to get messages in the HTML without showing it to the end users.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2011-04-23",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12999999
 }

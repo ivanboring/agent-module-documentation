@@ -38,5 +38,13 @@
     "oop",
     "developer",
     "realms"
-  ]
+  ],
+  "project_description": "Back to top \n\n Why \n The Drupal node access grants system has been more or less unchanged since the beginning. However, with Drupal 8, we can and should start leveraging the OOP and service oriented architecture for things like this.\n\n This module defines a simple interface which needs to be implemented by a tagged service in order to play with access grant system, namely the hook_node_grants() and hook_node_access_records() implementations.\n\n Back to top \n\n How to use it \n If you want your module to have its own grants, make this module a dependency and instead of implementing the two hooks, create a service tagged node_access_grants and which implements the NodeAccessGrantsInterface .\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-01-16",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

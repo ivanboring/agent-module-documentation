@@ -36,5 +36,13 @@
     "verification",
     "messaging",
     "notifications"
-  ]
+  ],
+  "project_description": "The Twilio module provides integration with the Twilio cloud communication platform allowing for your Drupal site to integration Voice and SMS functionality. \n\n The module currently provides the following functionality: \n \n Ability to store and access TwiML \n Rules event to act on incoming SMS message \n Rules action to send an SMS message \n Rules event to execute TwiML scripts \n Hook for incoming SMS messages \n Hook for incoming voice calls \n User object phone number storage and validation \n Uses libraries api to manage the Twilio php library \n Support for international texting \n Support for MMS \n \n Dependencies \n \n Libraries API (Drupal 7 only) \n \n Installation \n \n Install the Twilio module as per usual ( http://drupal.org/node/895232/ ) \n Drupal 7: Download the 4.x Twilio php library from ( https://github.com/twilio/twilio-php/archive/4.11.0.tar.gz ) and extract the file into your sites/all/libraries folder. \n Rename the extracted folder from 'twilio-php-latest' to 'twilio'. \n Drupal 8,9 & 10: Add the library via the composer composer require twilio/sdk \n Visit 'admin/config/system/twilio' and enter your Twilio account SID, Auth Token, and Phone number found on the Twilio dashboard \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2011-02-25",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

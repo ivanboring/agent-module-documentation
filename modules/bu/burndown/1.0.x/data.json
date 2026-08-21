@@ -42,5 +42,13 @@
     "tasks",
     "agile",
     "time tracking"
-  ]
+  ],
+  "project_description": "Burndown is a Drupal native, agile project management tool. It provides support for both kanban and sprint-based projects and several forms of task-size estimation. It is designed for flexibility and extensibility, but it has sensible defaults in place: just turn it on, navigate to the Burndown dashboard from your menu, and start adding projects!\n\n Back to top \n\n Core Features\n \n \n Drag and drop interface. \n Kanban and Sprint-base projects. \n Estimate based on T-shirt, geometric, or dot sizing. \n Customizable board columns per project. \n Backlog and completed boards per project. \n Projects and Tasks support fieldable entity bundles, so you can easily extend them. \n Relationships between Tasks (blocked by, child of, etc). \n Task work log and commenting. \n Attach links and images to tasks. \n \"Cloud\" project sidebar block, to easily find projects. \n Simple sidebar navigation block to navigate within a project. \n Email notifications on changes (optionally, you may want to use SMTP if the volume of emails will be large). \n Robust permission options with per Project granularity. \n Large library of Drush commands. \n \n Back to top \n\n Submodule: Time Tracker\n \n The optional submodule allows timer tracking and reporting at the Task level.\n\n \n Easy start and stop task timer. \n Report showing hours summary for the current user. \n Time managers can see hours logged for any user. \n Time managers can manage running timers. \n \n Back to top \n\n Requirements\n \n Burndown is designed to leverage the new built-in functionality of modern Drupal. It has no additional external dependencies.\n\n Back to top \n\n Installation Steps\n \n \n composer require drupal/burndown \n Enable the Burndown module \n Depending on your theme, you may want to add the \"Projects\" and \"Burndown Sidebar\" blocks to a sidebar region. These are added by default in the Bartik theme. They are both optional, but make navigation a bit easier. \n Go to the Burndown dashboard (in your top menu) and start adding projects and tasks. \n \n Back to top \n\n Documentation\n \n Extensive documentation on Drupal.org.\n\n Back to top \n\n MAINTAINERS\n \n Sponsored and maintained by Lichtman Consulting . We are looking for additional sponsors to add new functionality to this module.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-05-22",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

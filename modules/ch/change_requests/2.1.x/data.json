@@ -33,5 +33,13 @@
     "review",
     "editorial",
     "nodes"
-  ]
+  ],
+  "project_description": "Change Requests is a community tool that allows to work together on Drupal content (nodes) without edit-wars (see Wikipedia - Edit-Warring ) similar to open source code developers working together on a code. All (authorized) users can use the form to edit content, but their changes wouldn’t be stored in the node but in a separate entity: a so-called „patch entity“. This patch can be evaluated in a variety of ways (i.e. by the user-community) and taken over to the node at a later date.\n\n The approach is inspired by the Git workflow called „pull request“. The most important difference is that the basis of change requests are Drupal nodes instead of code files.\n\n The changes are stored field-by-field completely independent of the contents revision history. The changes are not saved as full content, but as programmatically change statements. I.e. \"In field_tag remove item with target_id 23 and add target_id 45; In the field_body find the words \"Peter and Mary\" and replace it with \"Peter or Mary\". The patch results are always visible in a diff view, with the changes proposed by the patch author highlighted (similar representation diff modules).\n\n When accepting change requests, so-called \"merge conflicts\" can occur because the contents may have changed in the meantime between creation and acceptance of the change request. Therefore, the user who performs the merge is offered an interface in which the diff view is displayed on the left and the result of the automated merge process as an editable form element on the right. If there were any conflicts in taking over the changes, they can be fixed in this view before saving.\n\n If a change request has been accepted, a new revision of the node is created in each case and the name of the patch author, creation date, link and title of the patch are entered as the log message. Thus, any changes to the node (using the Diff module) remain transparent at all times.\n\n Almost all field types from the Drupal core are supported. For custom field types, a documented plugin interface is available to retrofit support for change requests for these fields.\n\n Dependencies \n The module uses the Changed Field API \n\nText changes will use Google's 3rd-party-lib „diff match patch“ , ported to PHP by\n\n yetanotherape .",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-05-10",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

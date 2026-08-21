@@ -35,5 +35,13 @@
     "layout",
     "flexbox",
     "wysiwyg"
-  ]
+  ],
+  "project_description": "The CKEditor 5 Column Layout module provides a modern, flexbox-based grid system directly inside the Drupal editor. It solves the common problem of creating mobile-ready, multi-column content without requiring users to write HTML or CSS. By providing a WYSIWYG interface for responsive design, it empowers content creators to build professional layouts that look great on smartphones, tablets, and desktops.\n\n Features \n \n Responsive Breakpoint Control: Use a dedicated modal to define column stacking behavior for Mobile, Tablet, Laptop, and Desktop views. \n Dynamic Column Management: Add or remove columns with a single click using intuitive editor-side buttons. \n Live Preview: See your layout structure immediately within the CKEditor 5 workspace. \n Automatic Cleanup: A specialized filter ensures that editor-only UI components (like configuration buttons) never appear on the public-facing site. \n Security Hardened: Built-in XSS protection validates data attributes to ensure your layouts remain safe and performant. \n \n Installation \n \n Install as you would any contributed Drupal module. See Installing Drupal Modules .\n\n composer require drupal/ck5_column_layout Enable the module using Drush:\n\n drush en ck5_column_layout Post-Installation \n \n After installation, you must configure your Text Formats to make the column tools available:\n\n \n Go to Configuration » Content authoring » Text formats and editors . \n Edit your preferred format (e.g., Full HTML ). \n Drag the Columns icon into the active toolbar. \n Enable the CKEditor 5 Column Layout Asset Loader & Cleaner filter.\n\n Note: This filter should be ordered after \"Limit allowed HTML tags\". \n In the Permissions page, grant the \"ck5 column layout settings\" permission to the appropriate roles. \n \n Additional Requirements \n \n This module requires the CKEditor 5 module (included in Drupal Core 10 and 11). No external JavaScript libraries are required as the widget is built natively for the CKEditor 5 framework.\n\n Similar projects \n \n CKEditor Layouts \n Ckeditor Layout Manager \n CKEditor Templates \n Ckeditor templates user interface \n CKEditor5 Template \n \n Supporting this Module \n \n If you find this module useful, please consider reporting bugs or submitting feature requests in the issue queue. Your feedback helps make this tool better for the entire community!\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-01-23",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

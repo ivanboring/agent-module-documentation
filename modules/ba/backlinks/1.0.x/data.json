@@ -37,5 +37,13 @@
     "reference",
     "internal-links",
     "views"
-  ]
+  ],
+  "project_description": "Develop Backlinks using DDEV ⚙ \n If you haven't already, install DDEV .\n\n \ngit clone git@git.drupal.org:project/backlinks.git\ncd backlinks\nddev config --project-type=drupal --docroot=web --php-version=8.4 --corepack-enable --project-name=backlinks\nddev add-on get ddev/ddev-drupal-contrib\nddev add-on get s-ayers/ddev-drupal-contrib-mkdocs\nddev start\nddev poser\nddev symlink-project\nddev drush site:install -y\nddev drush pm:install backlinks -y\nddev drush config:export -y\nddev drush user:login\n Consider sponsoring DDEV development.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2007-06-25",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 13000000
 }

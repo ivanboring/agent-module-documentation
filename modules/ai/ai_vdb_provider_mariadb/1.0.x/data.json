@@ -35,5 +35,13 @@
     "mariadb",
     "embeddings",
     "vdb"
-  ]
+  ],
+  "project_description": "Native vector search for Drupal using MariaDB — no external services required.\n\n This module enables MariaDB’s native VECTOR data type and indexing capabilities (available in MariaDB 11.7+) as a Vector Database (VDB) provider for the Drupal AI module. Since MariaDB is a drop-in replacement for MySQL and is widely used as Drupal’s primary database, vector embeddings can be stored and queried directly within the same database with full transactional support.\n\n If your Drupal site already uses MariaDB, you can store your AI vectors in it by upgrading MariaDB to version 11.7 or later. If your site uses MySQL, you can replace it with MariaDB to enjoy the benefits of this module.\n\n Features \n \n Native MariaDB Vector Support : Utilizes MariaDB's built-in VECTOR data type and specialized VECTOR indexes \n Multiple Distance Metrics : Support for Euclidean distance and Cosine similarity \n Optimized Performance : Leverages MariaDB's modified HNSW (Hierarchical Navigable Small Worlds) algorithm \n Seamless Integration : Works with the Drupal AI module and Search API \n No External Dependencies : No need for separate vector database services \n Operational Simplicity : No additional services, containers, or infrastructure layers \n \n Post-Installation \n \n Create a Search API server using the AI Search backend \n Select \"MariaDB vector DB\" as the VDB provider \n Configure your embedding strategy and vector dimensions \n Create an index and add fields to the index \n Index your content \n \n Your vector index is then ready for use with Drupal AI-powered features such as semantic search and RAG-based systems.\n\n Additional Requirements \n \n Drupal 10.2+ or Drupal 11+ \n MariaDB 11.7 or later (11.8 LTS recommended for GA support) \n PHP 8.1+ \n PHP mysqli extension \n Drupal AI module \n \n Similar projects \n Other AI Search VDB providers:\n\n \n Pinecone VDB Provider \n Milvus VDB Provider \n Postgres VDB Provider \n \n Commercial Support \n This module is developed and maintained by Juan Martinez .\n\n The module maintainer is available for professional consulting and architectural guidance related to production AI systems and enterprise Drupal implementations.\n\n \n https://goingdrupal.com \n drupal.org/u/jcmartinez \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2026-02-22",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10002000,
+  "core_semver_maximum": 13000000
 }

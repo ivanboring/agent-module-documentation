@@ -60,5 +60,13 @@
     "web services",
     "rest",
     "api"
-  ]
+  ],
+  "project_description": "The JSON:API Resources module makes it possible to define custom JSON:API routes. It does not define any custom routes of its own.\n\n This can be incredibly valuable for providing custom collections (like a /jsonapi/featured-posts route) and contextual data (like a /jsonapi/me route).\n\n In addition to GET , this module also makes it easy to accept POST requests. For example, one could define a /jsonapi/user/{id}/reminders route where a new reminder entities could be created and automatically associated with a user.\n\n You can see examples of how to define routes here .\n\n You can find examples of the classes that respond with your custom data here .\n\n \n Pair with JSON:API Hypermedia \n Add typed links and actions to your custom resources with JSON:API Hypermedia . Together they enable HATEOAS-style decoupled behaviors — attach flag , unflag , or subscribe link relations to a node resource without inventing ad-hoc URL conventions.\n\n \n \n Looking for a Views-based alternative? \n If your custom endpoint is \"a filtered list of entities with sorting and pagination,\" use JSON:API Views instead. It exposes any Views display as a JSON:API collection — no PHP required.\n\n Reach for JSON:API Resources when:\n\n \n The response shape doesn't map to a single entity collection (aggregates, computed fields, mixed resource types). \n You need request-scoped logic — auth checks, contextual filters from the session, side effects on POST . \n The route is non-entity, like /jsonapi/me or /jsonapi/user/{id}/reminders . \n \n Reach for JSON:API Views when the query is already expressible in Views.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-10-16",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

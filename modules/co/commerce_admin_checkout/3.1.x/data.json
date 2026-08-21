@@ -38,5 +38,13 @@
     "orders",
     "checkout",
     "customers"
-  ]
+  ],
+  "project_description": "This module allows a site administrators to use Drupal Commerce checkout to create orders for customers. This is useful if you have customizations to your checkout workflow (custom panes, etc) that you don't want to recreate on the admin side of Commerce.\n\n This module includes 2 checkout panes:\n\n \n Assign Order to Customer: This allows administrators to assign an order to a specific customer during the checkout process. \n Order Items: This allows administrators to add order items to an order during checkout. \n \n This module requires the following patch to Commerce core. Apply the most recent patch from this issue:\n\n \n [#3204694] \n \n This module includes a sub-module: Commerce Admin Payment. This sub-module requires Commerce Multiple Payments module, it allows you to define \"admin payments\" which site administrators can add to an order to reduce the price paid. (possibly up to the total of the order) This is useful if you want to allow administrators to use payments in a way similar to discounts. The client using this originally uses this to account for employee discounts as payments, among other things. This module adds 1 checkout pane:\n\n \n Apply Manual Payments",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-04-23",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

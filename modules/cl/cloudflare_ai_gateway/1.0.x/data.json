@@ -37,5 +37,13 @@
     "llm",
     "caching",
     "fallback"
-  ]
+  ],
+  "project_description": "Update: this project has moved to Cloudflare AI \n The Cloudflare AI Gateway module has been consolidated into the broader Cloudflare AI module and is no longer maintained separately. Cloudflare AI contains this module's AI Gateway code, moved in unchanged, and adds the other Cloudflare AI-group resources: Vectorize (a vector database for semantic search) and AI Search (a managed retrieval-and-generation pipeline). Please install Cloudflare AI instead:\n\n composer require drupal/cloudflare_ai The gateway configuration entity and the AI provider it powers are unchanged in Cloudflare AI, so the Cloudflare AI Gateway Provider keeps working once its dependency points at Cloudflare AI.\n\n About this module \n Cloudflare AI Gateway was a Drupal client for the Cloudflare AI Gateway: it stored each gateway as configuration, built the gateway's request URLs and cf-aig-* control headers, and exposed its live model catalogue. All of that functionality now lives in Cloudflare AI ; see that project for documentation and releases.\n\n Back to top",
+  "maintenance_status": "Unsupported",
+  "development_status": "Obsolete",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-06-20",
+  "project_changed": "2026-07-14",
+  "core_semver_minimum": 10005000,
+  "core_semver_maximum": 12000000
 }

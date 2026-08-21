@@ -36,5 +36,13 @@
     "block visibility",
     "plugin",
     "logic"
-  ]
+  ],
+  "project_description": "Provides a \"User Not Role\" condition that acts in the opposite behavior of the Drupal core \"User Role\" condition. A site builder may add this to their block visibility settings to only display a block for users that do not have a role.\n\n Common scenario : A user has two roles: \"shouldshow\" and \"shouldhide\". There is a block that should only display to \"shouldshow\", but not \"shouldhide\".\n\n Solution : Configure the block with the \"User Role\" visibility setting to \"shouldshow\" and the \"User Not Role\" visibility setting to \"shouldhide\".\n\n Result : The block will not be displayed because the user has the \"shouldhide\" role even though they also have the \"shouldshow\" role.\n\n Configuration \n \n Enable the module on the Adminsitration > Extend page. \n Go to the Administration > Structure > Block layout page. \n Press the Configure button for a block. \n Click the \"User Not Role\" vertical tab. \n Select roles that a user must not have to display the block. \n Press the \"Save block\" button. \n \n Technical documentation \n This takes the intersection of the configured roles and a user account's roles. If there is no intersection between the two, then the user must not have the role and the condition passes.\n\n When negated, the opposite occurs. If there is no intersection, the condition fails.\n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2022-10-21",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 13000000
 }

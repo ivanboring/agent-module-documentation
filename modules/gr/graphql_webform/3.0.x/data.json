@@ -41,5 +41,13 @@
     "forms",
     "submission",
     "headless"
-  ]
+  ],
+  "project_description": "GraphQL Webform exposes forms built with the Webform module to a decoupled (headless) frontend through GraphQL . Forms are designed in Drupal with Webform as usual; a frontend (React, Vue, a mobile app, …) can then display them, collect input and send submissions back.\n\n Back to top \n\n What it does \n \n The most commonly used form elements are supported (see the list below). \n Supports conditional fields: depending on a visitor's answers, other fields can appear, hide or become required. \n Submissions are validated, and validation errors are returned for each field. \n A confirmation message, title and redirect are returned after a submission. \n File uploads are supported. \n Closed forms, scheduled open and close dates, and submission limits are handled, including the message to display when a form is unavailable. \n \n Back to top \n\n Requirements \n \n Webform module \n GraphQL module \n \n Two optional modules add more elements when installed: Address (for the address element) and Telephone Validation (for validating phone numbers).\n\n Back to top \n\n Branches \n \n 1.x: Supports GraphQL 3.x \n 2.x: Supports GraphQL 4.x \n 3.x: Supports GraphQL 5.x \n \n Back to top \n\n Supported elements \n Text & input \n\n \n Text field \n Text area \n Email \n Telephone \n URL \n Hidden \n Autocomplete \n Number, Range, Rating, Scale \n Color \n Signature \n Name \n \n Date & time \n\n \n Date \n Date and time \n Time \n \n Choices \n\n \n Select / dropdown \n Radios \n Checkboxes \n Select, radios and checkboxes with an “other” option \n Table select \n Likert \n Term and entity select \n \n Files \n\n \n File upload \n Audio file \n \n Layout & groups \n\n \n Fieldset \n Details \n Section \n Flexbox \n Composite (a group of the elements above) \n Address \n \n Display & actions \n\n \n Markup and formatted text \n Message \n Horizontal rule \n Computed value \n Terms of service \n Submit and reset buttons \n \n Back to top \n\n Contributing \n Bug reports, feature requests and MRs are welcome! Please use the issue queue .\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-04-20",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

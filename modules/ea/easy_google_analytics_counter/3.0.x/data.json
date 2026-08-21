@@ -33,5 +33,13 @@
     "views",
     "popularity",
     "statistics"
-  ]
+  ],
+  "project_description": "This module gets aggregated pageview data from Google analytics. Branch 3.x is GA4 compatible.\n\n Typical use case and rationale\n\n If you need to display the most visited pages for the last week or day you will need pageview stats. Gathering and aggregating statistics can be costly, but Google Analytics does it for free for most websites and it has an API.\n\n Similar modules\n\n https://www.drupal.org/project/google_analytics_counter which may be useful for more use cases, but if you need just the aggregated data our module will be more effective.\n\n Getting Started\n\n After install and configure module new column is been created on node_field_data\n\nwith name pageview. This column ready to using from views as field, filter and sort data. \n\n Prerequisites\n\n Module needs the google/apiclient v2 library. If you install module with composer\n\nthe library will download also. \n\n If you use other technology to install the module you need to install this library manualy.\n\nIn the project (not module!) root folder run this command:\n\ncomposer require \"google/apiclient\":\"^2.0\"\n\n Installing\n\n Install module with composer:\n\ncomposer require drupal/easy_google_analytics_counter\n\n Configure module\n\n - Go to https://developers.google.com/analytics/devguides/reporting/core/v4/qui… \n\nand follow point 1.\n\n- Go to YOURSITE/admin/config/easy_google_analytics_counter/admin and enter data and save.\n\n- Set cron to periodicaly running on hosting server.\n\n- Prepare or update views to using pageviews.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-11-29",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

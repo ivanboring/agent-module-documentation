@@ -38,5 +38,13 @@
     "catalog",
     "semantic",
     "eu"
-  ]
+  ],
+  "project_description": "DCAT-AP extends the dcat module with support for the DCAT-AP 2.1.0 application profile.\n\n It reuses the core DCAT entities and adds the fields, constraints, and field adjustments needed for DCAT-AP compliant metadata management in Drupal.\n\n The module does not introduce new entity types. Instead, it extends datasets, distributions, and agents through field provider plugins that build on top of the base dcat definitions.\n\n Features \n \n Adds DCAT-AP 2.1.0 support on top of dcat . \n Adds extra dataset fields such as version information, source, provenance, and sample distribution. \n Marks key DCAT-AP fields as required, including dataset description and publisher. \n Adjusts distribution and agent fields to align with DCAT-AP vocabularies and requirements. \n \n Use case \n Use this module when the base DCAT model is not enough and the catalog must follow the DCAT-AP profile.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-05-22",
+  "project_changed": "2026-08-13",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

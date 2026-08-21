@@ -35,5 +35,13 @@
     "monitoring",
     "versions",
     "reporting"
-  ]
+  ],
+  "project_description": "This module allows you to connect with the Evercurrent infrastructure, to more easily manage the updates that are needed for your site.\n\n From time to time, there will be security updates needed for your Drupal sites, and it can be cumbersome to track these updates using the regular Drupal update emails, especially if you manage multiple sites.\n\n By connecting to Evercurrent using this module, you will get:\n\n \n An informative email every time there is a new security update, with useful information like existing and recommended versions, previously reported updates, and so on. \n Your own dashboard lining up all the updates that are necessary for all your sites right now. From there you can easily plan to do all the updates in one go (never miss a site), and the updates will drop off from your dashboard once they are reported by the helper module to be successfully upgraded on your site. \n \n Installation: \n\n \n Install this module on your production site. \n Log in or create a new account at Evercurrent , and create a new site. \n When creating a new site at the server, you will get an API key. Configure this module with your new key, and you are all set to go. \n \n For more information, refer to the readme file for the 7.x or 8.x version respectively.\n\n Development environments: \n\nOne API key should only be used on one environment. Please refer to the README to learn how you can prevent your development environments from reporting updates by adding the API key in the settings.php for only the production site.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-06-09",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

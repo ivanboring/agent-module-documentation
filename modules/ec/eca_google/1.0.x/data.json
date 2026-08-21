@@ -36,5 +36,13 @@
     "api",
     "automation",
     "workflow"
-  ]
+  ],
+  "project_description": "This module allows you to integrate Google services with your Drupal site using ECA's visual workflow builder. Create workflows that respond to events on your site by interacting with Google services, or trigger Drupal actions based on changes in your Google data.\n\n Features \n Current Google Services Supported: \n \n Google Sheets - Read, write, query, and manage spreadsheet data \n Google Meet - Video conferencing automation \n Google Calendar - Event and scheduling automation \n Google Docs - Document automation \n Google Drive - File management automation \n Gmail - Email automation \n YouTube - Video automation \n \n Installation \n Install API modules \n For all services connected with this suite of modules, you will need to install the\n\n Google API PHP Client module and the included ECA: Google module.\n\n Configure Google Authentication \n After installing the API modules, you must configure your Google authentication. This module supports API key and Service Account methods for authentication. Note that service accounts often don't work as expected for all services. An API key can operate under a specific user account, which is required for many services, such as Meet and Calendar, but a service account operates as its own user account and does not have permissions to other accounts by default.\n\n \n Create a project in Google Cloud Console , and enabled the APIs that you want to use with your Drupal site. (e.g. Sheets, Meet, etc.) \n Decide if you will use API key or service account authentication, and create the required credentials in your Google Cloud project. If you are using an API key, specify a redirect URI of https://YOUR_DOMAIN/google_api_client/callback . \n Enter your credentials on your Drupal site. To set up API key authentication, go to /admin/config/services/google_api_client . To set up Service Account authentication, go to /admin/config/services/google_api_service_client . \n If you are using an API key, authenticate it to a specific user account by going to /admin/config/services/google_api_client and choosing the Authenticate option from the dropdown button next to the API key. \n \n Install the service submodules \n Once you've completed setup of the credentials, install the service submodules from this suite that match the APIs you enabled in your project. (e.g. ECA: Google Sheets, ECA: Google Meet)\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-08-31",
+  "project_changed": "2026-05-19",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

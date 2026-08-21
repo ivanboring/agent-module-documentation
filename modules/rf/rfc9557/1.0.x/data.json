@@ -33,5 +33,13 @@
     "ixdtf",
     "validation",
     "data type"
-  ]
+  ],
+  "project_description": "Code for other modules to provide, or consume, RFC9557 Date and Time . \n\n Provides:\n\n \n TypedData type, \n Validator, \n Twig filter for outputting IntlDateFormatter internationalized dates, \n Date Model classes for separating and manipulating the date parts, \n An enum of ICU CLDR Calendars, \n A helper class for manipulating the Locale string used by PHP. \n \n This module can possibly be simplified if native PHP support is implemented.\n\n Back to top \n\n Requirements & Installation \n This module requires no modules outside of Drupal core. Installation as any normal module.\n\n Use of Twig filter requires that the Intl PHP extension is installed.\n\n Back to top \n\n Example usage \n The tests provide examples of the model and utility classes , the Validator and the DataType . The Twig filter including using best pattern automation .\n\n Validation \n Validation provides two modes:\n\n - RFC9557::MODE_STRICT will reject any mismatched offset with time zone\n\n flagged as critical.\n\n - RFC9557::MODE_NORMAL requires that the mismatch is resolved by the\n\n implementing code.\n\n Back to top \n\n Modules \n Modules implementing RFC9557 Date data types or validation:\n\n \n Xdate an extensible date field, supporting all RFC9557 date parts \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2024-09-21",
+  "project_changed": "2026-08-14",
+  "core_semver_minimum": 11000000,
+  "core_semver_maximum": 12000000
 }

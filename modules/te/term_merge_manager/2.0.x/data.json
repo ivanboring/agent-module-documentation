@@ -43,5 +43,13 @@
     "redirect",
     "vocabulary cleanup",
     "duplicate terms"
-  ]
+  ],
+  "project_description": "This module extends the Term Merge Module.\n\n It saves all Term Merge Actions and automatically re-apply them on new terms.\n\n For example:\n\nYou merge \"foo\" and \"bar\" into \"foobar\".\n\nThe next time the term \"foo\" or \"bar\" is tried to be created on the same vocabulary, it's automatically changed into \"foobar\".\n\n This should help if you have to merge often the same terms.\n\n Requirements \n \n Term Merge \n \n Integrations \n \n Redirect \nOn \"Auto redirect\" setting from redirect module, redirects will be created on term merge. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2015-10-05",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

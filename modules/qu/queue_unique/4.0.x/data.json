@@ -42,5 +42,13 @@
     "cron",
     "queue_service",
     "background processing"
-  ]
+  ],
+  "project_description": "Did you ever want a queue that only accepts unique items? This module provides a way of doing that. If you try to insert a duplicated item in the queue, the item is ignored.\n\n <?php\n\n// $data can be anything.\n\n$data = ['Lorem', 'ipsum'];\n\n $queue_name = 'your_queue_name';\n\n$queue = \\Drupal::service('queue')->get($queue_name);\n\n$queue->createItem($data);\n\n// This will insert a duplicate, and will return FALSE.\n\nif ($queue->createItem($data) === FALSE) {\n\n // The item was a duplicate, respond appropriately.\n\n}\n\n?>\n\n Usage \n In order for your queue to use the Queue Unique you need to update your settings.php file:\n\n <?php\n\n$settings['queue_service_your_queue_name'] = 'queue_unique.database';\n\n?>",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2015-09-15",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

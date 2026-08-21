@@ -36,5 +36,13 @@
     "mfa",
     "google2fa",
     "login"
-  ]
+  ],
+  "project_description": "Leaks and hacks we’ve read about in recent years make it clear that passwords alone don't provide enough security to protect your online accounts. Two-factor authentication (2FA or MFA, for multifactor authentication) adds another layer of protection. Authenticator apps, such as Twilio's Authy, Google Authenticator, or Microsoft Authenticator, enable one of the more-secure forms of 2FA. Using one of these apps can even help protect you against stealthy attacks like stalkerware.\n\n This module when enabled provides the security option to users to setup 2FA via Authenticator apps. The module relies on Google2FA QRCode library. Use composer to install the module and the library will automatically install as required dependency.\n\n Tested and works great with popular and trusted authenticator apps like Google Authenticator , Microsoft Authenticator & Twilio Authy .\n\n 2.0.8 \n\nAdds admin configurations;\n\n - Allow admins to control whether users can enable/disable 2FA?\n\n- Force setup 2FA on next login.\n\n- Provide a message on redirect to 2FA setup after login\n\n- Permissions for admin configurations and bypass enforced redirect.\n\n- Drush command to reset 2FA for a user. e.g. drush mfa-reset 1",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-09-24",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

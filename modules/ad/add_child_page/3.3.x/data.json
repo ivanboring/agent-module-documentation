@@ -51,5 +51,13 @@
     "plid",
     "local task tab",
     "entity operation"
-  ]
+  ],
+  "project_description": "The Add Child Page module adds a tab on selected content types in order to add a child page to the current page. The user will be redirected to the node add form to add a node with the parent menu already selected.\n\n Requirements \n This modules depends on the token module.\n\n Configuration \n Configure which content types will have that functionality on /admin/config/content/add-child-page .\n\n Set up user permissions on /admin/people/permissions#module-add_child_page .\n\n Exceptions \n \n If a node is on more than one menu, there's currently no way to know which menu it should default to, so it will return an error instead. \n An error message will also return if your current node does not belong to any menu. \n Make sure that the menu that your content is and that you want to add a child page to is enabled for the content type under Menu Settings. These options will not be overridden. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-04-24",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

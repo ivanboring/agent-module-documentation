@@ -50,5 +50,13 @@
     "iOS",
     "Android",
     "body class"
-  ]
+  ],
+  "project_description": "This is a lightweight mobile detection module based on the Mobile_Detect.php library, which can be obtained from the GitHub repository .\n\n This module is designed to assist developers using mobile-first and responsive design techniques who also need to apply slight variations for mobile and tablet users.\n\n An example use case would be showing or hiding a block based on the type of device.\n\n \n Installation \n Use composer to install the module and its dependencies.\n\n composer require 'drupal/mobile_detect:^4.0' \n\n What does it do? \n This module allows you to configure block visibility conditions based on device type or platform via the Drupal user interface.\n\n The Mobile Detect Status block is included for testing purposes.\n\n You can also use it programmatically in your PHP code or within Twig templates.\n\n PHP \n \n\n$md = \\Drupal::service('mobile_detect');\n\n$is_mobile = $md->isMobile();\n\n$is_tablet = $md->isTablet();\n\n \n\n Twig Extensions \n {% if is_mobile() %}\n\n{% if is_tablet() %}\n\n{% if is_device('iPhone') %}\n\n{% if is_ios() %}\n\n{% if is_android_os() %} \n\n There are not major upgrades so moving from 3.0.0 to 4.0.0 is safe.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2012-09-10",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

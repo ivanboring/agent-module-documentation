@@ -39,5 +39,13 @@
     "checkout",
     "progress",
     "store"
-  ]
+  ],
+  "project_description": "This module prevents checkout until the minimum order amount is met. It is possible to optionally define a minimum order amount for the store(s) on the site. A progress bar indicator can be added to display the order status.\n\n \n\n Installation \n \n Create a field with \"field_store_min_order\" machine name for the store entity type (field type: Number). \n Add a value to this field for each store as required. \n \n This module does not provide styling for the progress bar but is compatible with Bootstrap. To customize the appearance, create a Twig template in your custom theme.\n\n Similar projects \n Commerce MOA - Drupal 7 module\n\n Minimum Maximum Order - Provides general settings for a single store with ID 1.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2024-12-24",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

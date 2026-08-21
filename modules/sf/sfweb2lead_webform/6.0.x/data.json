@@ -43,5 +43,13 @@
     "crm",
     "remote post",
     "oid"
-  ]
+  ],
+  "project_description": "This module extends the Webform module to easily allow the creation of a webform that feeds to your Salesforce.com Account. This module only built for and utilizes the Salesforce's Web-to-Lead .\n\n The idea is to map the webform field key's to your salesforce field key provided by the web-to-lead form.\n\n The module will provide a configuration settings page \"Salesforce Web-to-Lead Configuration Settings\".\n\n Module support is sponsored by Message Agency .\n\n @Links are:\n\n Each webform has its own settings, under the \"Handlers\" tab. \n\n It accepts the Salesforce OID and more importantly a table so you can map webform-key to salesforce field key.\n\n The leads are still stored in your webform and at the same time dispatched (via CURL ) to salesforce. The advantage versus just inserting the web-to-lead on the page body is that with this module you can take advantage of webform's validation filter and other perks.\n\n Back to top \n\n Documentation available @ README.txt \n Back to top \n\n Dependencies \n Webform \n\n Server Dependency: CURL must be installed.\n\n This module was initially sponsored by STRAIGHT NORTH . Interactive Marketing Agency \n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2011-03-14",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

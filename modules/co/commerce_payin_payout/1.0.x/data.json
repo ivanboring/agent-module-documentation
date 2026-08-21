@@ -39,5 +39,13 @@
     "redirect",
     "sign",
     "notify"
-  ]
+  ],
+  "project_description": "This module integrates Payin-Payout with Drupal Commerce providing payment gateway.\n\n Back to top \n\n Installation \n \n Install module composer require drupal/commerce_payin_payout \n Enable module as usual. \n Navigate to Store > Configuration > Payments > Payment Gateways. \n Add new payment gateway and select Payin-Payout plugin. \n Select payment mode, add API token and other necessary information. \n Save payment gateway. \n \n Back to top \n\n Features \n Since Payin-Payout requires customer phone number to process payment, you will need to create field to store phone numbers (/admin/config/people/profile-types/manage/customer) and set this field on plugin configuration form.\n\n Back to top \n\n Documentation \n \n Payin-Payout API \n \n Note on payment validation signs \n This module use md5() for hashing payment signs due to payment gateway requirement .\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-06-24",
+  "project_changed": "2021-08-04",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

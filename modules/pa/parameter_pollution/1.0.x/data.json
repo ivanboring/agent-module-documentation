@@ -33,5 +33,13 @@
     "security",
     "query parameters",
     "hardening"
-  ]
+  ],
+  "project_description": "The HTTP Parameter Pollution module is designed to mitigate HTTP Parameter Pollution issues.\n\nIt inspects incoming GET requests for duplicate query parameters and sanitizes the URL by removing earlier duplicates—keeping only the last occurrence of each parameter. When duplicates are found, the module rebuilds the query string and automatically redirects the user to the cleaned URL.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-02-06",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

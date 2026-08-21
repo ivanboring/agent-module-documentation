@@ -44,5 +44,13 @@
     "htpasswd",
     "middleware",
     "key"
-  ]
+  ],
+  "project_description": "Back to top \n\n Summary \n PHP Authentication shield. It creates a simple shield for the site with Apache authentication. It hides the sites, if the user does not know a simple username/password. It handles Drupal as a \"walled garden\" .\n\nThis module helps you to protect your (dev) site with HTTP authentication.\n\n Back to top \n\n Configuration \n If you don't need the authentication just leave the user field blank.\n\n \n enable the module \n go to the admin interface (admin/config/system/shield) and fill the form \n nothing else :) \n \n On plain old CGI \n Since Drupal 7.23 you don't need any .htaccess modification for CGI ([#670454]) but if you use plain old CGI you still need a modification:\n\nModify .htaccess , inside . Add the following line at the beginning of the section:\n\n \n\n RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization}]\n\n \n\n Back to top \n\n Other \n The original idea of the project came from chx . He also added tips for improvements. I'd like to thank the help and ideas of boombatower .\n\n Note: If you want to use it only on a dev site, and not in the production site, I suggest you to consider using the Environment modules and reading issue #1394326 . \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2011-11-08",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

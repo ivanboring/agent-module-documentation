@@ -54,5 +54,13 @@
     "transport",
     "attachments",
     "mailer"
-  ]
+  ],
+  "project_description": "Drupal Symfony Mailer Lite integrates Drupal with the Symfony Mailer library , allowing for the sending of HTML-formatted emails and emails with attachments. This module is a direct successor to the Swiftmailer module , which has been deprecated because the Swiftmailer library is no longer maintained. \n\n Requirements and Installation \n This module requires the Mail System module . After installation, you should go to Configuration > Mail System on your site and assign Symfony Mailer Lite as either the default formatter and sender for emails, or assign it to specific modules and/or keys to only send specific emails with it.\n\n Similar projects \n Drupal Symfony Mailer : This project also allows the sending of HTML-formatted emails from Drupal using the Symfony Mailer library. However, it does much more than that, providing an alternative templating system and API for sending emails from Drupal. \n\n Drupal Symfony Mailer Lite sends emails using the same approach as the Swiftmailer module. It’s designed to be a direct drop-in replacement for Swiftmailer.\n\n Upgrading from Swiftmailer Module \n To upgrade from the Swiftmailer module to Drupal Symfony Mailer Lite, you should:\n\n \n Install this module using Composer. \n Enable this module. \n Go to Configuration > System > Mail System, and switch your default or module-level configurations for the formatters and senders from Swiftmailer to Drupal Symfony Mailer Lite and save your configuration. \n If you have customized the swiftmailer.html.twig template, you should rename or copy that template to symfony-mailer-lite-email.html.twig . \n If you have a custom swiftmailer library in your theme, you should rename or copy that library to one named symfony_mailer_lite . \n \n Acknowledgements \n The code in this module is largely based on code from the Swiftmailer and Drupal Symfony Mailer modules. Thank you to AdamPS and other contributors to those modules, which have made this module possible.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-06-22",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

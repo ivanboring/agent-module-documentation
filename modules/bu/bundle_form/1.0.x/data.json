@@ -37,5 +37,13 @@
     "node",
     "taxonomy",
     "entity form"
-  ]
+  ],
+  "project_description": "Actually, to override an entity form, you have to define a form_alter to trigger the right form id (which change if you create or edit an entity).\n\n The idea behind this module is simple : implements a way to override an entity form simplier than hook_form_alter.\n\n To do that, it's quite simple : \n\n \n Install the module \n Create a bundle form that matching your entity type / bundle \n Override your form \n \n Entity types supported are :\n\n- node\n\n- taxonomy_term\n\n- paragraph\n\n Add support for others entity types is quite simple (check bundle_form.module and BundleFormTrait).\n\nYou can do it yourself or create a ticket.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-05-20",
+  "project_changed": "2026-07-13",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 13000000
 }

@@ -33,5 +33,13 @@
     "aria",
     "forms",
     "a11y"
-  ]
+  ],
+  "project_description": "Shows an accessible announcement when a form is auto-submitted and keep focus.\n\n When an element value changes in an auto-submitted form like Views exposed filters, automatically refreshes the results on the page (whether is AJAX or reloading the page). This experience is confusing for a screen reader user and they are not aware any changes have taken place.\n\n Also the element which triggered the auto-submit loose focus (in both AJAX and page reloading cases).\n\n This module solves this accessibility issue by checking the URL of the page being the same, and that the form parameters have changed.\n\nThen alerts the user that the page results have reloaded and changed, announcing what has change (a visually hidden div for screen readers only), and restoring focus.\n\n For the moment it just works with Views exposed filters forms. I wish we could extend it for more use cases in the future.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2022-10-18",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

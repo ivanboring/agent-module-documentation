@@ -38,5 +38,13 @@
     "seo",
     "robotstxt",
     "per-site"
-  ]
+  ],
+  "project_description": "Sites Robots.txt lets every site managed by the Sites module serve its own robots.txt . It bridges Sites with the RobotsTxt module so that the file served at /robots.txt is built from the currently active site — different domains on one Drupal install get different robots.txt content.\n\n Back to top \n\n Features \n \n Per-site robots.txt content, edited directly on the site. \n Child sites inherit their parent site's robots.txt (child returns 404). \n Optional: return 404 for /robots.txt when no site context is active. \n \n Back to top \n\n Requirements \n Drupal 11+, the Sites module and the RobotsTxt module.\n\n Back to top \n\n Getting started \n Edit a site and fill in the \"Site specific robots.txt additions\" field. Global behaviour is configured at /admin/config/search/sites-robotstxt .\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-06-23",
+  "project_changed": "2026-08-14",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 13000000
 }

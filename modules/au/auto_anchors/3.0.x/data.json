@@ -36,5 +36,13 @@
     "permalink",
     "deep link",
     "fragment"
-  ]
+  ],
+  "project_description": "This module automatically generates HTML id attributes for a configurable list of matched elements. The most common (and default) use is to automatically generate HTML ids on headings, for the purpose of creating anchor links. For example:\n\n \n\n \n\n Back to top \n\n About Dunder Mifflin \n \n\n becomes:\n\n \n\n \n\n Back to top \n\n About Dunder Mifflin \n \n\n This module also can insert permalinks inline to aid editors or site users in copying the appropriate URL to link directly to an anchor (such as \"/about#kevins-famous-chili\"). This mimics the behavior that is available on pages within the Drupal Developer Documentation on drupal.org.\n\n This module was discussed as the Module of the Week on the Talking Drupal podcast, episode #477 . (From 3:05 to 11:45)\n\n Back to top \n\n Features \n \n Can be applied to a fully-configurable list of elements anywhere on the page (not just within a node body or field, and not just on headings) \n Does not interfere with or change manually-added or already-existing HTML ids \n Converts text to i18n-friendly, hyphenated, short, and clean HTML ids \n Generates unique ids, even when multiple elements have the same text content \n \n Back to top \n\n Usage \n By default, this module automatically generates ids on \n\n \n\n Back to top \n\n , \n, \n, \n, and \n elements within the HTML and inserts inline permalinks that can be viewed by administrator users. Simply download and install the module.\nFor more advanced configuration, visit the module settings page (located at /admin/config/auto_anchors/settings). The visibility of inserted inline permalinks can also be controlled via permissions (at /admin/people/permissions#module-auto_anchors).\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2020-06-23",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

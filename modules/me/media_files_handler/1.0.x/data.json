@@ -36,5 +36,13 @@
     "cleanup",
     "orphaned",
     "lifecycle"
-  ]
+  ],
+  "project_description": "This module tries to find ways around [#3027324] and [#2821423]. On each update of a media item this module checks if all files of this media entity are still used in any translation or revision:\n\n \n Files still used by an older revision are moved into private storage, because the file should not be public accessible any more. \n If the file field of the media entity is translatable, the files of translations of the current revision should not be touched, if the translation is published.\n If the file is not used in any revision or translation, set the file to temporary or delete it. \n If an published media entity get unpublished, move all files to private storage. \n If a media entity gets published, move the files of the current revision to public storage, if this is the original field definition. \n \n In active development and not feature complete.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-12-04",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

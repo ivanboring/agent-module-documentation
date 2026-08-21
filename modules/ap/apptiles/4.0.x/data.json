@@ -35,5 +35,13 @@
     "favicon",
     "pwa",
     "icons"
-  ]
+  ],
+  "project_description": "The module allows putting the icons to predefined folders of an active theme to have them added as meta tags.\n\n Usage \n Every theme can have its own set of tiles. Place icons, names of which match the pattern ^\\d+x\\d+\\.png$ (i.e. 32x32.png , 48x48.png , 128x128.png etc.), in the following directories:\n\n \n themes/stark/tiles/android \n themes/stark/tiles/windows \n themes/stark/tiles/ios \n \n It's up to you to decide what sizes are needed. Add the files and the job is done.\n\n Additional configuration (only for Windows)  \n The additional configuration happens in *.info.yml of a theme. The following parameters are available:\n\n \n \n Drupal 8 and 9 \n \n\napptiles:\n\n msapplication:\n\n tile:\n\n TileColor: \"#444\"\n\n notification:\n\n cycle: 1\n\n frequency: 30\n\n polling-uri:\n\n src: /rss.xml\n\n polling-uri1:\n\n src: /path/to/rss.xml\n\n \n\n \n \n Drupal 7 \n \n\nsettings[msapplication][tile][TileColor] = #444\n\nsettings[msapplication][notification][cycle] = 1\n\nsettings[msapplication][notification][frequency] = 30\n\nsettings[msapplication][notification][polling-uri][src] = /rss.xml\n\nsettings[msapplication][notification][polling-uri1][src] = /path/to/rss.xml\n\n \n\n \n \n All these settings are not mandatory and can be omitted.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-03-27",
+  "project_changed": "2024-02-13",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 11000000
 }

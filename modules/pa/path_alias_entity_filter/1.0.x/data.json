@@ -35,5 +35,13 @@
     "entity type",
     "admin",
     "urls"
-  ]
+  ],
+  "project_description": "Adds an Entity type dropdown to the URL aliases admin filter at /admin/config/search/path so site builders can narrow the list by the entity type the alias points at — nodes, users, terms, etc.\n\n Features \n \n Entity type dropdown on the URL aliases filter form. \n Query narrows to the selected type (e.g. /node/* , /taxonomy/term/* ). \n Options auto-populate from core's path-fielded types (Content, Taxonomy term, Media) plus any entity types enabled in Pathauto. \n No configuration required. \n \n Post-Installation \n \n Enable the module. \n Visit /admin/config/search/path — the Entity type dropdown appears next to the alias search field. \n Select an entity type and click Filter. \n \n Additional Requirements \n \n Path (Drupal core) \n \n Recommended modules/libraries \n \n Pathauto — when enabled with additional entity types opted in under Enabled entity types , those types appear in the filter dropdown automatically. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2026-04-22",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 11000000,
+  "core_semver_maximum": 12000000
 }

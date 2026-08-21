@@ -46,5 +46,13 @@
     "field validation",
     "recursion",
     "deep check"
-  ]
+  ],
+  "project_description": "This module adds additional validators for Entity Reference fields.\n\n So far it includes two validators:\n\n \n Circular reference validator: This validator prevents an entity reference form linking to the entity that has the entity reference field. For example, this prevents a node entity reference field on node 1 from linking to node 1. \n Duplicate reference validator: This validator prevents an entity reference form linking to the same entity twice from the same field.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-04-14",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

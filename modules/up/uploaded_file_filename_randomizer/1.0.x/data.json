@@ -35,5 +35,13 @@
     "security",
     "event subscriber",
     "hardening"
-  ]
+  ],
+  "project_description": "The Open Worldwide Application Security Project, aka OWASP recommends in its File Upload Cheat Sheet that files uploaded to web applications are renamed by the application.\n\n This module does that.\n\n Features \n This module renames all uploaded files to a random string comprised of characters a-z and 0-9.\n\nThe original extension will be kept.\n\n Post-Installation \n No post-installation configuration is necessary. Any files uploaded after the module is installed will be renamed.\n\n Additional Requirements \n None.\n\n Recommended modules/libraries \n None.\n\n Similar projects \n File (Field) Paths can be used with Token to randomize the names of files uploaded to file fields. However, it does not provide a mechanism for files uploaded via other mechanisms, for example via CKEditor into a rich text field.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-03-13",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

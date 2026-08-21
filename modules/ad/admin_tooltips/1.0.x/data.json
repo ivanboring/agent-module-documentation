@@ -33,5 +33,13 @@
     "help",
     "editors",
     "guidance"
-  ]
+  ],
+  "project_description": "Admin Tooltips \n The module provides a way to add a tooltip to fields in drupal forms from the form display settings which can be found at /admin/structure/types/manage/article/form-display for the article content type.\n\n Installation \n If your site is managed through composer, you can install this module with composer require drupal/admin_tooltips . Make sure to enable the module at /admin/modules or with drush drush pm:enable admin_tooltips .\n\n To add a tooltip to a field : \n \n Go to the form display where we need add tooltips, e.g. admin/structure/types/manage/article/form-display. \n Click on the field setting configuration icon. Usually on the far right. \n Use TOOL INFO SETTINGS to configure the text that will be displayed as tooltips. \n Click on update button. \n Click on save button. \n \n To customize the styling : \n The tooltip uses a template that could be overridden from the site theme.\n\nThe CSS can also be overwritten the same way.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-12-06",
+  "project_changed": "2026-08-20",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

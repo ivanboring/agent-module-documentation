@@ -33,5 +33,13 @@
     "identifier",
     "targeting",
     "markup"
-  ]
+  ],
+  "project_description": "Features \n This module automatically injects data-view-id and data-display-id HTML attributes into Views-generated\n\n elements using View and Display names as values. These identifiers simplify table customization for third-party modules and scripts through predictable targeting. \n Before:\n\n \n\n \n\n \n \n\n After implementation:\n\n \n\n \n\n \n \n\n Post-Installation \n No additional configuration is required. Attributes are automatically added to all Views-generated tables immediately after module installation. \n\n Similar Projects \n The Views Attributes module offers similar functionality but differs in two key ways:\n\n1. Applies attributes to \n \n\n wrappers rather than \n\n elements\n\n2. Requires manual attribute configuration per View \n Example of Views Attributes output\n\nInstead of\n\n \n\n \n\n \n\nyou'll get something like:\n\n \n\n \n This approach doesn't guarantee consistent identifiers across all table elements. Views ID module provides systematic, zero-configuration attribute injection directly into target tables.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-05-16",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": null,
+  "core_semver_maximum": null
 }

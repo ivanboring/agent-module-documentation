@@ -35,5 +35,13 @@
     "subpath",
     "multi-domain",
     "path"
-  ]
+  ],
+  "project_description": "Domain Microsite allows creating \"microsites\" at sub-paths using the Domain module/ecosystem.\n\n Every domain microsite is just a domain entity with extra configuration for a microsite base path and parent domain. \n\n Management of a domain microsite is the same as a regular domain.\n\n Domain Microsite essentially does this:\n\n \n Determines if a domain microsite is requested based on the incoming path and sets it as the active domain. \n Uses path processing to remove microsite base path for the incoming path (the page requested) and prepend microsite base path for outgoing paths (generated urls on a page).\n \n For other modules and forms with path settings, use a path value \"relative\" to the domain microsite regardless of the label.\n\nSome form fields have labels that display a site url before the field.\n\nTo prevent this module from being bloated, it does not make form alterations to change any labels to match the actual domain microsite url.\n\n(The only exception is the Domain records page.)\n\n Back to top \n\n Installation \n \n Enable module as usual. \n Then go to [admin/config/domain] to add a domain record. \n At least one regular domain record must already exist. If it doesn't, create one first then return to add another new domain. \n Ignore hostname and machine_name because they will be overridden with auto-generated identifiers by this module. \n Check \"Make domain microsite\" and enter values for \"Parent domain\" and \"Base path\". \n Save to add a domain microsite by path. \n \n Back to top \n\n Caching issue \n Domain currently caches routes a certain way that doesn't work well with Domain Microsite.\n\nSee https://www.drupal.org/project/domain/issues/3359253 and use patch #2 to make route caches work.\n\n Back to top",
+  "maintenance_status": "Seeking new maintainer",
+  "development_status": "No further development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-08-11",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8004000,
+  "core_semver_maximum": 12000000
 }

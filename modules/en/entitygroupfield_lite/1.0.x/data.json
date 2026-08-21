@@ -36,5 +36,13 @@
     "field",
     "membership",
     "link"
-  ]
+  ],
+  "project_description": "Entity Group Field (lite) \n Introduction \n This module does the same thing as Entity Group Field, of which it is heavily inspired, but follows a slightly different approach.\n\n Features \n This module provides a field for each defined \"group - content\" relationship.\n\nFor example if a user can be a member of two group types A and B you can have two fields in the user edit form, one for each group type.\n\n \n You can separately enable any of those two fields in the entity edit form. \n This module ships with a widget \"Group select list\" which is a simple select list. \n You can customize the displayed label of the widget for better usability and understanding. \n The select widget will automatically transform into a single checkbox if only one group is selectable. \n The widget supports multiple relationships. \n etc... \n \n When to use this module \n \n You want to have a simple select widget (with no ajax) to select the group to attach your content to. \n You have too many defined group types and/or you want to have a different field for each group type. \n You want to use a simple on/off checkbox to attach your content to a group that is unique on your project (say a private section) \n \n When NOT to use this module \n \n Your group relationships has fields that have to be set when adding your content to a group. \n \n Configuration \n \n On your entity form display enable the computed group field you want to expose. \n Choose the included widget \"Group select list\". \n \n Requirements \n The only requirements are :\n\n \n Group (v3) \n Form Options Attributes used to disable non selectable options.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-06-01",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

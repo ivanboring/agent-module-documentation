@@ -40,5 +40,13 @@
     "drush",
     "cron queue",
     "database size"
-  ]
+  ],
+  "project_description": "This module provides efficient Drush commands for bulk deletion of entity revisions while optimizing performance through a queue system. It supports different entity types and provides revision cleanup without excessive memory usage.\n\n Features \n By default, the commands retain the latest three revisions unless a custom --keep value is specified. You can target specific entities, process all revisions across a given entity bundle or type.\n\n Available Commands \n Queue revisions for all revisionable entities: \n\n drush rdt:remove-revisions \n\n Queue revisions for all entities of the specified type: \n\n drush rdt:remove-revisions node \n\n Queue revision deletion for all \"page\" nodes, keeping the last 5 revisions: \n\n drush rdt:remove-revisions node page --keep=5 \n\n Queue revision deletion for a specific node (ID 123) under \"page\": \n\n drush rdt:remove-revisions node page 123 \n\n Queue revision deletion for a specific media entity (ID 123) under \"image\": \n\n drush rdt:remove-revisions media image 123 \n\n Why? \n In scenarios where a single entity accumulates tens of thousands of revisions, traditional cleanup methods can cause memory exhaustion when attempting to load all revision IDs at once. This module addresses that issue by processing deletions one entity at a time via a queue and chunks revisions, significantly reducing memory consumption.\n\n Additionally, it supports both node and media entity revisions, providing a more flexible and scalable solution for managing revision bloat.\n\n Related Modules \n \n Revision Manager - Full-featured revision management with UI, retention policies, and automated cleanup scheduling \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-02-06",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10003000,
+  "core_semver_maximum": 12000000
 }

@@ -33,5 +33,13 @@
     "slider",
     "customizer",
     "front-end"
-  ]
+  ],
+  "project_description": "Slick Pro Customizer is a Drupal 10 module that allows developers to configure Slick carousels directly via a block. Each block can manage multiple carousel elements with granular options for desktop and mobile.\n\n Key Features:\n\n Block-Based Configuration: Add a “Slick Pro Customizer” block and configure multiple carousel elements in a single interface.\n\n Primary Options:\n\n CSS selector for targeting the carousel.\n\n Number of slides to show on desktop and mobile.\n\n Autoplay toggle and speed.\n\n Transition speed.\n\n Secondary Options:\n\n Enable/disable dots and arrows.\n\n Infinite looping.\n\n Custom previous/next arrow HTML.\n\n Center mode with configurable padding for desktop and mobile.\n\n Dynamic Form Handling: Add or remove carousel elements directly in the block configuration form.\n\n Automatic Preprocessing: The block automatically attaches a JavaScript library and passes configuration via drupalSettings to apply the settings to the targeted carousels.\n\n Developer-Friendly: Eliminates the need to manually edit templates, making carousel theming and integration straightforward.\n\n Technical Details:\n\n Uses a #table form to manage multiple carousel elements.\n\n Saves block configuration, rebuilds form dynamically when adding new elements.\n\n Outputs drupalSettings.slickProCustomizer for front-end JS consumption.\n\n Fully compatible with the core Slick module and Drupal 10.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-08-16",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

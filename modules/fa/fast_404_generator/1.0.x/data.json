@@ -36,5 +36,13 @@
     "static html",
     "performance",
     "bootstrap avoidance"
-  ]
+  ],
+  "project_description": "Description \n This module provides a way to generate a 404 html page based on the current site's theme and menu. The Fast 404 module provides a great way to expedite 404 page responses as well as avoid the terrible issue with the cache table filling up with duplicate response data. But the Fast 404 module expects a single static HTML file to be provided. Upon clearing caches, this module will server up the first 404 response from standard Drupal core, whether that be a node page, or some other response. It will then take that response and create the HTML page. This will allow the main menu, header, footer, etc to all match the rest of the site. This is very helpful for multisite installations when each site has some different theme/menu/response text/etc. It also avoids the need to update the HTML file via git or some manual process.\n\n Back to top \n\n Installation \n Install the Fast 404 module as describe in their documentation.\n\nInstall and enable this module using normal procedures.\n\nMake the below adjustments to the Fast 404 settings file.\n\n $site_404 = DRUPAL_ROOT . '/' . $site_path . '/files/404.html';\n\n$settings['fast404_HTML_error_page'] = file_exists($site_404) ? $site_404 : FALSE;\n\n$settings['fast404_path_check'] = file_exists($site_404); \n\nClear the site caches.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2022-10-09",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

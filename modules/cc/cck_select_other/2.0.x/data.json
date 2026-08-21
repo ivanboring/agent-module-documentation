@@ -37,5 +37,13 @@
     "widget",
     "free text",
     "options"
-  ]
+  ],
+  "project_description": "CCK Select Other introduces an alternative select list widget that provides a user with either a select list or text input.\n\n Features \n \n Uses native core List fields, which allows to swap out the select widget at any time. \n Provide a field formatter. \n Supports views filter. \n Support custom Other label. \n Drupal 8 and greater\n \n Uses allowed value. \n \n \n Drupal 6-7\n \n Supports allowed values and stores options in separate configuration. \n 7.x-2.x: Support field collection and other element altering modules. \n \n \n \n Known issues \n \n Drupal 7: i18n is not supported because i18n does not support form element children correctly . \n Drupal 8 or greater: Using checkboxes / radio buttons \n \n Release status \n \n 2.0.x : 2.0.0-alpha2 released. Drupal 11. \n 8.x-1.x : 1.6 stable released. Drupal 10 only. \n 7.x-2.x : Better support for field collection, list_integer. Not ready for production-use \n 7.x-1.x : 1.2 stable released. \n 6.x-1.x version is stable and works fine for normal use cases. There are a number of tasks related to advanced use cases such as with conditional field or flexifield. \n \n Drupal 8+: How it works \n The decoupling of fields and widgets caused much issue with this module as a field no longer understands what widget a value came from. Despite the benefit of decoupling this means that CCK Select Other MUST re-couple the dependency and blow away reliance on AllowedValuesConstraint and AllowedValuesConstraintValidator classes and redoing everything from scratch. Now any field that uses the select other widget in any form display will pass through allowed values. Don't like it? Fix core.\n\n Drupal 6: How it works \n CCK renders the form element as fieldset with multiple elements. When processed the form element is deconstructed into a simple element so that CCK will save the field properly. If validation fails the form element needs to be reconstructed as the fieldset.\n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2010-02-28",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 13000000
 }

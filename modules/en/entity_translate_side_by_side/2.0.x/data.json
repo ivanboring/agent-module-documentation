@@ -33,5 +33,13 @@
     "entity",
     "multilingual",
     "interface"
-  ]
+  ],
+  "project_description": "Edit multiple translations of the same entity side-by-side \n The Entity Translate Side by Side module streamlines Drupal entity translations, allowing users to edit content in multiple languages side by side. Supporting various entity types, it offers a flexible translation workflow with features like multi-language selection, drag-and-drop navigation, and integration with Drupal's core translation system.\n\n Features \n \n Should work for any translatable entity type . \n Provides an intuitive user interface to display and edit content in different languages side by side. \n Only updates translations that really changed. \n Supports drag-and-drop functionality for easy navigation in the translation interface. \n Enables flexible configuration of the languages to be translated by the user. \n Integrates into existing entity drop-down menus through hook implementation. \n Adds a new permission 'Access Entity Translate Side by Side' to control access to the module. \n \n Installation and configuration \n \n 1. First install the module in your Drupal environment and activate it \n 2. Go to: /admin/config/system/entity-translate-side-by-side \n 3. Select the languages to be loaded by default \n \n Usage \n The module integrates into Drupal via a hook into entity operations.\n\n \n On the edit page of any entity (like a node or a custom entity), look for the operations dropdown menu. \n In the dropdown, you'll see an added option titled \"Translate side by side.\" \n Selecting this option will route you to the page where the entity can be translated. \n \n Permissions \n To use the module, users must have the 'Access Entity Translate Side by Side' permission assigned to their role.\n\n Similar projects \n \n \n Entity Translation Unified Form (D7/8/9/10)\n \n \n Multilanguage Form Display (D8)\n \n \n translate_side_by_side (D8)\n \n \n entity_translation_sbs (D7)\n \n \n Entity Translation: Separated shared elements form (ETSSEF) (D7)\n \n \n Why another project? \n We first tested all similar projects that exist. But all of them had disadvantages:\n\n \n limited to some entity types \n saving all translations, regardless if they really changed or not (this has an impact on translation histories, search indexing, ...) \n ... \n \n After trying to solve these with patches and hook implementations, we decided that it is much cleaner, less code and better maintainable to start a new project.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-01-25",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

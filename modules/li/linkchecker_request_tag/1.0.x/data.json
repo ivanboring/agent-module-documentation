@@ -33,5 +33,13 @@
     "request",
     "tag",
     "http"
-  ]
+  ],
+  "project_description": "Automatically tags Linkchecker module's HTTP requests with the custom header X-origin: DrupalLinkChecker , for easier identification when managing network traffic e.g. filtering traffic logs, creating firewall rules.\n\n Install the module with composer, enable it and rebuild the cache ( $ drush cr ), and all future Linkchecker requests should include the additional header when the Linkchecker cron task runs.\n\n This module builds on the functionality introduced from Linkchecker Issue 3375253 .\n\n Additional Requirements \n Requires the Linkchecker module .",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-12-05",
+  "project_changed": "2026-08-04",
+  "core_semver_minimum": 11000000,
+  "core_semver_maximum": 12000000
 }

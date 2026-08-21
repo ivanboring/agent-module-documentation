@@ -37,5 +37,13 @@
     "notifications",
     "webform",
     "api"
-  ]
+  ],
+  "project_description": "The module is for developers. Add some telegram integration for your site.\n\n New features of 2.0.x branch: \n\n \n Value object instead of a lot of parameters in service function \n Webform handler to send webform data to telegram \n Send to custom endpoint \n Queue as option (delay send) \n \n 2.0.x Send to telegram bot example \n\n \n\nuse Drupal\\telegram_api\\ValueObject\\TelegramMessage; \n\n $message = new TelegramMessage(\n\n text: 'Hello from Drupal!',\n\n token: '618218965:AAG...',\n\n chatId: '12345678',\n\n);\n\n \\Drupal::service('telegram_api.service')?->sendToTelegramBot($message);\n\n 2.0.x Send to queue example \n\n \n\nuse Drupal\\telegram_api\\ValueObject\\TelegramMessage; \n\n $message = new TelegramMessage(\n\n text: 'Hello from Drupal!',\n\n token: '618218965:AAG...',\n\n chatId: '12345678',\n\n);\n\n \\Drupal::service('telegram_api.service')?->queue($message);\n\n And then drush queue:run telegram_api_queue \n\n 1.0.x Send to telegram bot example \n\n $result = \\Drupal::service('telegram_api.service')->sendToTelegramBot($text, $token, $chat_id);\n\nif ($result !== TRUE) {\n\n \\Drupal::logger('My module')->error($result);\n\n}",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-05-03",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

@@ -55,5 +55,13 @@
     "theme suggestion",
     "condition plugin",
     "content by tag"
-  ]
+  ],
+  "project_description": "This modules provides the bridge between content and code. It allows developers to use specific entities (like the news-overview page) in their module without knowing the ID of that piece of content.\n\n Use cases:\n\n \n I don't want to save the node id of the homepage in config, instead I tag a node with \"Homepage\" and System Tags will take care of the rest. \n I want to show a list of popular news items in the sidebar on the news overview page, so I tag a node with \"News overview\" and configure the \"System Tags\"-condition of that list block to use the \"News overview\"-System Tag. \n The url of an article should start with the alias of the overview page (/articles/my-news-article). This can be done by using the correct token in the Pathauto pattern for articles. \n \n Setup \n The setup is rather easy:\n\n \n Add a reference field to the 'System Tag'-entity (eg. field_page_system_tag on Node type 'Page'); \n Mark a certain entity with a tag via the field you just created; \n Take a look in Drupal\\system_tags\\Config\\SystemPageConfigOverrider::loadOverrides for how to use this module in your code. \n \n Twig support \n A Twig function is included: system_tag_url . It allows 3 parameters: the System Tag ID (required), the entity type (default: node ) and an array of options that will be passed to the \\Drupal\\Core\\Entity\\EntityInterface::toUrl() -function. Eg. .\n\n Token support \n For every entity type which has a reference field to System Tag, a token will be available. The structure will be the following: system_tags:ENTITY_TYPE--TAG_ID . Eg. [system_tags:node--homepage] .\n\n Theming support \n When you enable the submodule system_tags_theme , all the configured System Tags, set for the current node, will be available as suggestions. This allows a themer to override the node.html.twig -template, based on the System Tag. Eg. node--system-tag--homepage.html.twig .\n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-06-28",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

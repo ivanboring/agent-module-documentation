@@ -50,5 +50,13 @@
     "path aliases",
     "coder",
     "breadcrumb"
-  ]
+  ],
+  "project_description": "Adds pretty paths to the Facets module.\n\nE.g. Turn /myview?color[]=1 into /myview/color/blue \n\n Back to top \n\n Usage \n Facets 3: Facets Exposed Filters \n Recommended way for new projects \n\nConfigure your pretty path coder by clicking on the Facet filter in views.\n\n Facets 2 / Facets 3: Block facets \n \n Go to admin/config/search/facets . \n Click on Configure next to the Facetsource you want to use Pretty Paths for. \n Change your url processor to use Pretty Paths. \n Optionally you can now switch \"Pretty paths coder\" per facet in the facet configuration \n \n Back to top \n\n Options: \n [#3308521] introduces a new url processor 'Pretty paths: Query string', which 100% supports facet sources rendered on a dynamic url (e.g. views blocks, layout builder, paragraphs, ...). It encodes the url using query strings, with pretty values.\n\n For hardcoded routes (e.g. views page, search api page), the original 'Pretty paths: Slashes' url processor can also be used.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2015-11-29",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

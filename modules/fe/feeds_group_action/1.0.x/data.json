@@ -40,5 +40,13 @@
     "import",
     "target",
     "group_action"
-  ]
+  ],
+  "project_description": "This small module links the group action module to the Feeds Tamper module, and allows group relationships to be created during feeds content import. \n\n Post-Installation \n Create a feed and add a \"Group Membership\" target. Set your relationship type for the content you are importing (based on it's relationship to the group). The create an Entity Finder tamper for this source field. Search by whatever field your source file will match to (e.g. name) and return a group ID. This ID will returned to the group action function which will then create a group relationship for this new imported content. \n\n Additional Requirements \n Requires feeds, feeds_tamper, group and group_action.\n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-05-12",
+  "project_changed": "2026-05-13",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

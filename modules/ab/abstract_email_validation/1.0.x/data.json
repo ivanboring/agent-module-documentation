@@ -34,5 +34,13 @@
     "abstract api",
     "deliverability",
     "spam"
-  ]
+  ],
+  "project_description": "Introduction \n Abstract API Email Validator module provides a robust\n\n solution for email validation in Drupal. By integrating with the Abstract API,\n\n this module ensures that email addresses entered in your forms are valid and\n\n active. This module helps in maintaining clean and valid email lists,\n\n improving email deliverability and reducing bounce rates.\n\n Features \n Basic Functionality :\n\n \n Validates email addresses using the Abstract API during form submission.\n \n \n Unique Features :\n\n \n Provides an option in field setting form of email type of fields. \n Ensuring valid email addresses in user registrations. \n Adds validation options to custom forms and webforms. \n Includes a blacklist configuration to bypass specific email addresses and\n\n domain emails. \n We are providing end users to choose validation based on different parameters i.e SMTP, MX_FOUND, QUALITY_SCORE, Deliverability \n \n Use Cases :\n\n \n Preventing spam by blocking known invalid or unwanted email addresses and\n\n domains. \n \n Post-Installation \n Configuration :\n\n \n Navigate to the module configuration page at\n\n /admin/config/system/abstract-email-validation . \n Enter your Abstract API key and configure other settings such as custom\n\n error messages and blacklist email addresses or domains. \n Choose your email validation option on your desired email fields. \n And you can add it to your webforms and custom forms. \n \n NOTE: You can add the following line to settings.php: \n\n $config['abstract_email_validation.settings']['api_key'] = 'YOUR API KEY'; \n\nThis will also make sure that your API key is secure.\n\n Additional Requirements \n Dependencies :\n\n \n Abstract API key (sign up at Abstract API ). \n \n Recommended modules/libraries\n\n \n Enhancements :\n\n \n Webform : Integrate email validation with webforms.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2024-07-18",
+  "project_changed": "2026-03-03",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

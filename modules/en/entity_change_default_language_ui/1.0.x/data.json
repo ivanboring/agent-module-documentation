@@ -37,5 +37,13 @@
     "node",
     "batch",
     "langcode"
-  ]
+  ],
+  "project_description": "This module provides a service for changing the default language of an entity from the content list and a service to mass update contents with a batch from back-office UI.\n\n Features \n \n Node entity operation \n Batch for mass update \n \n Installation \n \ncomposer require 'drupal/entity_change_default_language_ui:^1.0'\n Usage \n Change a Node default language : \n\n \n Go to admin \"Content\" page \n Search the node to update in the list \n In \"Operations\" column select \"Change default language\" \n \n Change all nodes default languages : \n\n \n Go to Configuration → Region and language → Change entities default language \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-07-03",
+  "project_changed": "2026-08-04",
+  "core_semver_minimum": 9001000,
+  "core_semver_maximum": 12000000
 }

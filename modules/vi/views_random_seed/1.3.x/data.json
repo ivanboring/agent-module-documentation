@@ -42,5 +42,13 @@
     "seed calculator",
     "search_api",
     "reshuffle"
-  ]
+  ],
+  "project_description": "Adds a random order handler with seed. If a constant integer argument N is specified in the sql RAND() function, it is used as the seed value, which produces a repeatable sequence of column values. This makes it possible to have paging and not having items show up twice.\n\nIt's also possible to compute a custom seed using PHP, allowing you to create pseudo randoms numbers based on variables such as the date of the day.\n\n More info: \n\n- MySQL: http://dev.mysql.com/doc/refman/5.0/en/mathematical-functions.html#func… about RAND() and the optional integer argument.\n\n- PostgreSQL: http://www.postgresql.org/docs/current/interactive/functions-math.html about RANDOM() and the 'select setseed' function.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2009-03-07",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

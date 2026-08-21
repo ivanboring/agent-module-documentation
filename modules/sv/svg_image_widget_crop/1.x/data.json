@@ -37,5 +37,13 @@
     "image-widget-crop",
     "vector",
     "widget"
-  ]
+  ],
+  "project_description": "Module essentially skips or excludes SVG images when using the Image Widget Crop module, as they can't be cropped.\n\n Inspired by: https://www.drupal.org/project/image_widget_crop/issues/3034165 \n\n Requirements \n Requires the Image Widget Crop module and also assumes you have the SVG Image module to enable SVG support.\n\n Usage \n Install module via Composer and enable module like any other contributed module.\n\n \n\ncomposer require drupal/svg_image_widget_crop\n\ndrush en svg_image_widget_crop\n\n \n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2022-11-02",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

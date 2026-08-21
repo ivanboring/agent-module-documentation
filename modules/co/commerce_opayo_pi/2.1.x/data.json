@@ -39,5 +39,13 @@
     "pi",
     "3d secure",
     "elavon"
-  ]
+  ],
+  "project_description": "Opayo (formerly Sage Pay) payment gateway for Drupal Commerce 2.x. It uses the Opayo Pi API with 3D secure authentication happening inside an iframe. \n\n Features \n \n 3D Secure authentication step is done inside an iframe during the checkout process, allowing consistent presentation to the customer. \n Supports Payment and Refund transaction types \n Add Opayo Transaction entity lists to the admin pages \n Supports collecting customer phone number during checkout - a requirement for 3D Secure Authentication \n Periodically delete expired payment methods and Opayo transactions \n Cardholder PAN details are only submitted to Opayo and never to the Commerce back-end, limiting PCI compliance to SAQ-A/SAQ-A-EP \n Can work (subject to some custom development) with 'Commerce Webform Order' and take payments from a webform rather than a cart. \n \n Post-Installation \n see README \n\n Additional Requirements \n Dependent modules (other than commerce): phone_international and queue_unique \n\n Similar projects \n Commerce SagePay integration uses the Opayo Pi API. The main differences is that it doesn't (at time of writing) support collecting the required customer telephone number, it collects the customer credit card details server-side for tokenisation (rather than from the customer's browser) and 3D Secure Authentication doesn't happen inside an iframe. However, it supports Repeat transactions.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2023-12-11",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

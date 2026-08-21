@@ -36,5 +36,13 @@
     "normalise",
     "field",
     "format"
-  ]
+  ],
+  "project_description": "This module is useful if you want to sort multiple content types in a unified list that have different date fields. For example:\n\n1. Publications: Publication Date (added field)\n\n2. Articles: Created Date (base field)\n\n3. Events: End Date (added field)\n\n4. Job vacancies: Application Deadline (added field)\n\n You select which fields are the fields for the 'Unified Date' and this module syncs those fields into the new 'unified_date' base field that it creates. You can then for instance sort Views, Search, Recent Related Content, etc by that date.\n\n Features \n Configure per node bundle which field should be stored in the Unified Date. If not set, it defaults to the Created date base field. The following field types are supported:\n\n \n Base fields (core) \n Base field overrides (your own custom code) \n Datetime (core) \n Datetime range (core) \n Datetime range timezone (contrib module) \n Smart date (contrib module) \n Something else? Raise an issue, happy to support more options \n \n Use the batch form to run a batch script to auto-update content when you change the configuration\n\n Post-Installation \n Go to the configuration page and decide on fields to use\n\nUse the batch form to update existing content\n\n \n Automated testing \n You can view the automated testing results via Gitlab Pipelines for the project\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-08-02",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

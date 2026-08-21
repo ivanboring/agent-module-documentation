@@ -35,5 +35,13 @@
     "hierarchy",
     "views",
     "content"
-  ]
+  ],
+  "project_description": "Book Organizer delivers a clean, Views-powered administration experience for Drupal book module .\n\n \n\n It surfaces every top-level book alongside its nested pages in a single hierarchy-aware table with filters and search, and lets you manage whole books without leaving the content overview.\n\n Back to top \n\n Features \n \n Hierarchical table : Books render as headings with their child pages indented beneath them, mirroring the native book structure. \n Views filters : Title, status, and language filters work out of the box. Extend the book_organized view through the UI for additional criteria. \n Page operations : Edit, view, and order links are exposed for both books and pages according to user permissions. \n Book-level operations : From a book's operations menu you can delete the book and all its children, publish or unpublish the whole book (a state-aware toggle that shows Publish or Unpublish based on the current status), and add a child page directly under a book. \n Batch processing : Delete, publish, and unpublish run through the Batch API, so they stay reliable on large books. \n Standalone support : Book nodes that are not part of a hierarchy remain visible, clearly marked as standalone entries. \n \n Back to top \n\n Permissions \n The module adds one permission, Use the Book Organizer overview ( administer book organizer ), which grants access to the overview and its book-level operations. Individual page operations still respect the relevant node access (edit, delete, and so on).\n\n Back to top \n\n Usage \n \n Navigate to Content → Books (Organized) ( /admin/content/book-organized ) to browse the hierarchy. \n Use the exposed filters to narrow results by title, publication status, or language, or the per-book filter to search within a single book. \n Expand a book and use its operations menu to edit, order pages, add a child page, publish or unpublish the whole book, or delete the book and its children. \n Click the book title for the standard node display or “ Order pages ” to launch the core Book outline UI. \n The contextual tab remains available alongside Content for quick access. \n \n \n\n  \n\n \n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-10-13",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

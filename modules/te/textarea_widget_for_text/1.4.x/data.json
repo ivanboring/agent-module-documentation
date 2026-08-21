@@ -41,5 +41,13 @@
     "hook_field_widget_info_alter",
     "multiline",
     "multiple rows"
-  ]
+  ],
+  "project_description": "Allow text fields to use the multiline text area widget on content entry forms. \n\n Nothing about a regular, \"short\" text field with a limit of 255 or 500 or even 2,000 characters logically requires that it be entered in an input field of only one line.\n\n Drupal by default will only give you a widget allowing text entry to be done on one line though. This module removes that restriction. With this module enabled, you can use the textarea widget on a regular text field.\n\n Why? \n Any time you want to keep a low, hard limit on the size of what is saved but want to give the person entering content more than a single line with which to do it (or to easily switch from single line to multiline entry, without a migration). Examples:\n\n If you're letting people enter a list free-form rather than using a multivalue textfield, you are unlikely to need the long text size.\n\n Or if you are creating a special teaser field, that too is best entered in a textarea widget but does not need to be saved as long text.\n\n Twitter is a 140 280 character limit (and Mastodon 500), but people use line breaks there to great effect.\n\n You can have ordinary text fields (which map to varchar and similar) with a couple thousand characters perfectly safely even with multibyte Unicode characters; just be sure if you are using this that you very intentionally have a limit because otherwise you should use \"Text (long)\" for your field.\n\n Doing without this module \n If you don't want to rely on this module, you can stick this code in your own custom module or profile, changing 'example' to your module's name:\n\n <?php\n\nfunction example_field_widget_info_alter(&$info) {\n\n $info['text_textarea']['field_types'][] = 'text';\n\n $info['string_textarea']['field_types'][] = 'string'\n\n}\n\n?>\n\n (The first line is for Text (formatted) fields provided by the Drupal core Text module; the latter is for Text (plain) fields provided by Drupal core.)\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-04-17",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

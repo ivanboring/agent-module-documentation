@@ -37,5 +37,13 @@
     "first data",
     "payment",
     "gateway"
-  ]
+  ],
+  "project_description": "This module integrates Payeezy with Drupal Commerce to accept credit card payments on-site.\n\n Installation \n \n Install via Composer: `composer require drupal/commerce_payeezy . Then, configure your API keys in Commerce payment settings. \n Configure your Payeezy credentials in /admin/commerce/config/payment-methods. For Drupal 7 setups, manually place the Payeezy PHP library in sites/all/libraries/payeezy-php and enable through UI or Drush commands. \n \n Drupal 10 Documentation \n The integration methods offered by this module are:\n\n \n Hosted gateway (offsite) \n Onsite payment gateway \n \n See installation instructions in README.txt at http://cgit.drupalcode.org/commerce_payeezy/tree/README.txt?h=8.x-1.x \n\n Drupal 7 Installation \n \n Install and activate Commerce Payeezy and Libraries modules. \n Download Payeezy library from GitHub and extract it to sites/all/libraries/payeezy-php so that you see the file sites/all/libraries/payeezy-php/vendor/autoload.php. \n Create an account at https://developer.payeezy.com/ and insert your API keys to Commerce Payeezy payment gateway settings at /admin/commerce/config/payment-methods. \n \n Installation Using Drush \n \n\ndrush en commerce_payeezy -y\n\ndrush payeezy-download\n\n \n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2016-07-27",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -37,5 +37,13 @@
     "swatch",
     "render element",
     "color_picker"
-  ]
+  ],
+  "project_description": "This module extends the Forms API by adding a \"color_picker\" type field for use in custom forms. The element allows you to specify a list of hex colors that the user can choose from and the selection is stored as the field value.\n\n It's usage is as follows:\n\n \n\n $form['bg_colour'] = [\n\n '#type' => 'color_picker',\n\n '#title' => t('Background Color'),\n\n '#description' => t('Select the background color.'),\n\n '#default_value' => '#000000',\n\n '#color_values' => '#000000,#ff0000,#00ff00,#0000ff,#ffffff',\n\n ];",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-05-10",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

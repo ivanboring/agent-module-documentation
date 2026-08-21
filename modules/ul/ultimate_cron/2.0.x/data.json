@@ -44,5 +44,13 @@
     "load balancing",
     "drush cron",
     "job logging"
-  ]
+  ],
+  "project_description": "The Ultimate Cron handling for Drupal.\n\nRuns cron jobs individually in parallel using configurable rules, pool management and load balancing.\n\n Back to top \n\n 8.x-2.x \n This is a port of the 7.x-2.x branch to Drupal 8, using config entities and the Drupal 8+ plugin system.\n\n See https://befused.com/drupal/ultimate-cron/ and the README for an overview on how the module works and how to discover jobs.\n\n Back to top \n\n Features \n \n Works out-of-the box in most cases (or aims to) \n Parallel execution of cron jobs \n Configuration per job (enable/disable, rules, etc.) \n Multiple rules per cron job \n Pool management and load balancing using Background process \n Support for Drupal Queues \n Overview of cron jobs \n Log history of cron jobs \n Status/error messages per cron job, providing easy debugging of troublesome cron jobs \n hook_cron_alter() for easy adding/manipulating cron jobs \n Poormans cron with keepalive a granularity of 1 minute \n Drush support (list, start, enable/disable jobs from the command line) \n \n The feature list is from the 7.x version and might not be 100% compatible with 8.x\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2011-08-12",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

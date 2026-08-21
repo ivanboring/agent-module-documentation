@@ -35,5 +35,13 @@
     "queue",
     "everything",
     "cron"
-  ]
+  ],
+  "project_description": "INTRODUCTION \n Provides a purge queuer and a service which can be used to queue everything invalidation.\n\n REQUIREMENTS \n Purge module. See: https://www.drupal.org/project/purge .\n\n INSTALLATION \n Refer the Purge documentation to get more details on how to setup the various\n\npurge modules and queuers.\n\n https://git.drupalcode.org/project/purge/-/blob/8.x-3.x/README.md \n\n MODULE FEATURES \n \n Provides a purge queuer named Everything queuer which allows queuing of everything invalidation. \n Provides a Drupal service named `purge_everything_queuer.everything` which can be used to queue everything invalidation. When used by default it clears all existing items in the queue. \n \nUsage example:\n\n \\Drupal::service('purge_everything_queuer.everything')->queueEverything(); \n Provides a cron job for cleaning out the purge queue if it is having more than 100,000 items, so that purge process is not halted. \n \n CONFIGURATION \n Refer https://git.drupalcode.org/project/purge/-/blob/8.x-3.x/README.md for setting up purge queuers.\n\n Known Compatibility issues \n * Purge Queues : To work correctly with this module this patch needs to be applied.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-08-23",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008006,
+  "core_semver_maximum": 11000000
 }

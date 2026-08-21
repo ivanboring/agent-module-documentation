@@ -50,5 +50,13 @@
     "hook_auto_username_name",
     "bulk rename users",
     "user action"
-  ]
+  ],
+  "project_description": "This module disables the \"Username\" field on user registration and user edit forms and generates a username automatically using a token or module provided pattern. The pattern could therefore be based on other profile fields (like first/last name), a regex version of their email address or a random string.\n\n This module is complimented by logintobogan , which allows users to login with their email address (and therefore makes usernames redundant for the user, but of course still necessary for Drupal's backend - where auto_username fits in). The realname module also compliments this module, because it ensures any username displays are displayed as \"Firstname Surname\", which may be easier to read.\n\n Required Modules \n \n token (any version) \n \n This module was originally developed by Palantir.net for the Chicago Public Schools Virtual-Kindergarten program.\n\n Note: there is currently some cross over with the realname_registration module which provides the same end result, with a less technical administration interface. If you're looking for more control (think tokens or hook override) of your username generation, then auto_username may be better suited to you.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2008-04-07",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -49,5 +49,13 @@
     "html_element_filter",
     "postprocess query",
     "exclude content"
-  ]
+  ],
+  "project_description": "Includes a Search API preprocess plugin that can be used to remove certain elements from markup before it is indexed. Useful when indexing \"Rendered HTML\" entity fields that contain sidebars or other unwanted content.\n\n How to use \n 1. Install the module\n\n2. Go to your Search API index\n\n3. Enable the HTML Element Filter plugin\n\n4. Configure the plugin - select the fields you want to process and the elements that need to be removed, using CSS selectors (e.g. To remove sidebars with the \"my-sidebar\" class, add .my-sidebar)\n\n5. If the HTML filter plugin is enabled, make sure the HTML Element Filter plugin runs before it in the Preprocess index order",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2023-03-03",
+  "project_changed": "2026-08-19",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

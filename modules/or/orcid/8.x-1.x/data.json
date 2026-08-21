@@ -1,7 +1,7 @@
 {
   "name": "ORCID",
   "data_name": "orcid",
-  "description": "ORCID OAuth login/account-linking. SECURITY: the OAuth callback validates NO state \u2192 login-CSRF / forced account-linking \u2192 takeover, plus token/PII disclosure (danger 3). Do not deploy unpatched.",
+  "description": "ORCID OAuth login/account-linking. SECURITY: the OAuth callback validates NO state → login-CSRF / forced account-linking → takeover, plus token/PII disclosure (danger 3). Do not deploy unpatched.",
   "version": "8.x-1.x",
   "package": "ORCID",
   "composer_namespace": "drupal/orcid",
@@ -33,5 +33,13 @@
     "login",
     "account takeover",
     "csrf"
-  ]
+  ],
+  "project_description": "“ORCID is an open, non-profit, community-driven effort to create and maintain a registry of unique researcher identifiers and a transparent method of linking research activities and outputs to these identifiers.” - ORCID.org \n\n This module allows users to create account and login with ORCID OAuth2 .",
+  "maintenance_status": "Seeking co-maintainer(s)",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-06-03",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

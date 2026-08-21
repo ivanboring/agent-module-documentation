@@ -41,5 +41,13 @@
     "formatter settings",
     "layout builder",
     "per-mode label"
-  ]
+  ],
+  "project_description": "Adds an ability to change a displayed label for an entity field.\n\n Can be used for Display Modes \n (>= 8.x-1.4 version).\n\n Can be used in layout builder \n (>= 8.x-1.6 version).\n\n For instance: \n\nYou have an entity with a few Form/Display Modes and this entity has a field which is called \"Attachments\" . But you want this field to have different labels on each Form/Display mode. Like: \"Documents\", \"Files\", \"Attach file\" , etc. You can do it using this module.\n\n How to use: \n \n Go to the Form (or Display) Mode settings page \n Set the \"Rewrite label\" checkbox. An additional form element (\"New label\") will appear. \n Write down the new label to the \"New label\" input OR leave it empty for removing field label. \n \n\n Attention! \n\nSome specific fields may not be supported. But it shouldn't be hard to correct this. The module is really simple.\n\nIf the field is composed then use \"||\" as a separator. Example for the Date Range field: \"Event Start Date||Event End Date\"\n\n Similar Modules: \n \n Field Label extends field formatters for most field types to allow customization of field label text, CSS classes and/or label wrapper tag at the display field formatter level (i.e. per content type, view mode, layout override, etc.). \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2019-09-12",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -35,5 +35,13 @@
     "api",
     "developer",
     "plugin"
-  ]
+  ],
+  "project_description": "This module provides a developer API for defining and using third-party entity options through the Plugin API. With this module installed developers define their third-party options as plugins, and the API takes care of providing a form interface, placing the options on the entity or entity type edit pages, storing and retrieving option values.\n\n The API allows for defining options as simple as flag options (on/off values), or complex multi-field options. The values are attached to entities automatically, and are available in $entity->entity_options property. \n\n NOTE: Currently only Node entity is supported.\n\n Dependencies :\n\n- latest FormAlter as Plugin - provides form alter functionalities.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2022-10-14",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

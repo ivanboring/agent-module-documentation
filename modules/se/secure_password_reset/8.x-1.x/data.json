@@ -33,5 +33,13 @@
     "security",
     "username",
     "hardening"
-  ]
+  ],
+  "project_description": "Another similar module you may want to try before trying this module (it has more installs, more popular):\n\n username enumeration protection \n\n The Forgot Password feature of core can be used to gather information such as valid usernames. Then these information may be used to perform brute force attack or account lockout attack(DoS).\n\nThis module addresses this by giving the same message for both Valid/invalid username/email Id.\n\n Overview: \n\nMakes password reset form more secured by not disclosing valid usernames\n\n Installation (D9): \n\n composer require 'drupal/secure_password_reset:^1.0@beta' \n\n2. Go to \"Administer\" -> \"Modules\" and enable the module.\n\nThats all there is to it, the password reset form should now give the user the same message in both cases of valid or invalid username\n\n Installation (D7): \n\n1. Copy the secure_password_reset directory to the Drupal sites/<...>/modules/ directory.\n\n2. Go to \"Administer\" -> \"Modules\" and enable the module.\n\nThats all there is to it, the password reset form should now give the user the same message in both cases of valid or invalid username",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-02-25",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -35,5 +35,13 @@
     "dashboard",
     "health",
     "success failure"
-  ]
+  ],
+  "project_description": "Track the success and failure of API calls with timestamps. Works for internal or external APIs and any system-to-system integration. Uses State API — no custom tables needed.\n\n Features \n - Log API calls as 'success' or 'failed' with timestamps\n\n- Store endpoint URLs for each API\n\n- Dashboard at /admin/reports/api-status\n\n- Uses State API - no database tables needed\n\n- Works with any external API (Stripe, SendGrid, etc.)\n\n Post-Installation \n 1. Enable module: drush en api_status\n\n2. Set permissions at /admin/people/permissions\n\n3. View dashboard at /admin/reports/api-status\n\n4. Track APIs in your code:\n\n \n\n$tracker = \\Drupal::service('api_status.tracker');\n\n$tracker->log('my_api', 'success', 'https://api.example.com');\n\n \n\n Community Documentation \n See README.md in the module for complete usage examples.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-12-04",
+  "project_changed": "2025-12-16",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

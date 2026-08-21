@@ -33,5 +33,13 @@
     "signing",
     "authenticity",
     "media"
-  ]
+  ],
+  "project_description": "Signing module to work in conjunction with the c2patool command line utility to sign media files. \n\n Content Credentials is a concept created by the Coalition for Content Provenance and Authenticity (C2PA) to help authenticate media assets. \n\n Features \n \n Signing of media files upon upload (integrated with the file widget). \n Signing of media files upon content publication. \n Signing of image derivatives (image styles) upon creation. \n \n Currently c2patool doesn't support using outside signers (KMS or HSM services) the tool will only sign/embed manifest data if the cert/key are available to the tool. When the tool gains the ability to package a manifest and output the data for a third party tool to sign, then incorporate that manifest that feature will be added.\n\n Post-Installation \n Go to /admin/config/media/c2pa_sign and enter in the location of cert/key pair compatible with the tool and the location of the c2patool command line utility .\n\n Additional Requirements \n Certificate/Key pair for signing and the tool - see \"PostInstallation\" \n\n Recommended modules/libraries \n \n The Content Authenticity Initiative has created a reference Drupal module which provides an image formatter to show provenance of images, if available. \n C2PA Sign AWS KMS allows you to use Amazon's AWS Key Management Service (KMS) to sign manifests. \n \n Similar projects \n None of which I am aware.\n\n Supporting this Module \n Contribute ideas, bugs, patches.\n\n Community Documentation \n Not yet.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-01-30",
+  "project_changed": "2026-08-19",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

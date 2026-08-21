@@ -48,5 +48,13 @@
     "ban:flush",
     "spam",
     "migration"
-  ]
+  ],
+  "project_description": "Ban was a core module from Drupal 8 to 11 and has moved to contrib for Drupal 12.\n\n [#1570102]\n\n \n Ban allows administrators to ban visitors or requests to their site from individual IP addresses.\n\nThe Ban module is made to be extremely fast and lightweight , so that in cases of DDoS the Ban middleware intercepts fast and with little memory footprint.\n\n Post-Installation \n To ban an IP address \n \n Navigate to  /admin/config/people/ban . \n Enter an IP address (for example, 10.0.0.1). \n Click  Add . \n \n Drupal will prevent you from banning your own IP address.\n\n To remove the ban from an IP address in the UI \n \n Navigate to the ban page (see above). \n Beside an IP address, click  Delete . \n \n Ban Drush (drush) & Drupal CLI (dr) Commands \n \n\nAvailable commands for the \"ban\" namespace:\n\n ban:ban Ban an IP address.\n\n ban:flush Unban all IP addresses.\n\n ban:list List all banned IP addresses.\n\n ban:unban Unban a specific IP address.\n\n ban:unban-all Unban all IP addresses.\n\n \n\n(Drupal CLI support from >= 1.1.0 [#3606943])\n\n Additional modules & libraries \n \n Perimeter module uses ban to block IPs that accessed configured URLs \n Crowdsec module uses ban to ban IPs by attack signals \n Autoban module allows automatizing IP ban using watchdog table by the module rules. \n For more advanced features and sophisticated levels of IP based protection, it is also worth considering system installed alternatives such as fail2ban \n \n Alternative modules \n \n Advanced Ban is not built upon Ban and provides advanced features like banning IP-ranges, configuring the ban message etc. - please note that this comes at a cost of performance, especially in cases of DDoS - for details see [#2972332] \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-07-22",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 11002000,
+  "core_semver_maximum": 13000000
 }

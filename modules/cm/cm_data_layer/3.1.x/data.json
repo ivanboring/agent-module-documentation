@@ -36,5 +36,13 @@
     "dataLayer",
     "events",
     "drupalsettings"
-  ]
+  ],
+  "project_description": "This module provides a messenger-like service for pushing events/data into the client side data layer.\n\n Usage \n The intended use of this module is through the cm_data_layer.data_layer service eg.\n\n <?php\n\n\\Drupal::service('cm_data_layer.data_layer')->push([\n\n 'event' => 'myEvent',\n\n 'data' => [\n\n 'some_key' => 'some_value',\n\n ],\n\n]);\n\n?>\n\n Or more realistically, you'll oftentimes be in an event subscriber where the service can be an injected dependecy:\n\n <?php\n\n$this->dataLayer->push([\n\n 'event' => 'myEvent',\n\n 'data' => [\n\n 'some_key' => 'some_value',\n\n ],\n\n]);\n\n?>",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-04-24",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 10000000
 }

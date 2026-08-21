@@ -35,5 +35,13 @@
     "api",
     "research",
     "health"
-  ]
+  ],
+  "project_description": "Overview \n The Clinical Trial Drupal Module is designed to facilitate the integration and management of clinical trial data within a Drupal website. Leveraging the ClinicalTrials.gov API, this module will allow users to query and import clinical trial data, creating structured node content automatically. This solution aims to streamline the process of importing and managing, providing an efficient tool for researchers, clinicians, and healthcare professionals.\n\n Key Features \n Clinical Trial Content Type: \n A custom content type called \"Clinical Trial\".\n\n API Integration: \n \n Integrated with the ClinicalTrials.gov API to fetch trial data. \n Configure API settings within the Drupal admin interface, including query parameters. \n Schedule regular data fetching and updates to ensure information remains current. \n \n Import and Node Creation: \n \n Functionality to import clinical trial data and create corresponding Drupal nodes. \n \n Command Line Integration: \n \n Drush command drush ct-import-studies to automate the import process. \n Allow site administrators to run the import command manually or schedule it via cron jobs. \n Provide detailed logging and error handling for import processes.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-09-11",
+  "project_changed": "2026-03-31",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

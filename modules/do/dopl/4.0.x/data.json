@@ -35,5 +35,13 @@
     "filter",
     "projects",
     "text format"
-  ]
+  ],
+  "project_description": "This is a tiny, yet useful module, which adds a filter, to facilitate linking to Drupal.org projects.\n\n Lots of us blog about Drupal projects, or mention them in our forum discussions. Linking to a Drupal project, each time it is mentioned is a bit of a pain. This filter lets you write something like \"views.module\", and it generates a link to views module page ( http://drupal.org/project/views ).\n\n The following formats are all the same, and are provided for ease of read/write: name.module, name.theme, name.translation, name.installprofile and name.project\n\n Demo \n Video : http://www.youtube.com/watch?v=xx1-sPE8d1s \n\n New in the 6.x-2.x branch: \n This version now uses update.module, if it is activated, to fetch real project names, so instead of having a link like this:\n\n dopl.module \n\nyou will now have a link like this:\n\n Drupal.org project link filter \n\n If a such a project does not exist, it simply ignores it.\n\n If update.module is disabled, the filter will turn all the usable patterns it finds, and turns them into links, regardless of whether a project of that name really exists.\n\n Back to top",
+  "maintenance_status": "Seeking co-maintainer(s)",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2008-12-10",
+  "project_changed": "2025-10-20",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

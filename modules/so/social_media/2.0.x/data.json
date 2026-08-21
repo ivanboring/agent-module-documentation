@@ -47,5 +47,13 @@
     "block",
     "field type",
     "token"
-  ]
+  ],
+  "project_description": "The social media share module allows the user to share the current page to different social media platforms. It is rendered as a block, you can place it anywhere of your site. \n\n The module provides social media field type so that you can add it as a field in entity and take all benefits from field API.\n\n It is flexible to share any page of the site whether it is a node, term, panels, view pages so on. \n\n Currently, the module provides many services by default\n\n- Facebook share\n\n- Facebook messenger\n\n- Linkedin\n\n- Twitter\n\n- Pinterest\n\n- Email (Client email service(:mailto) , Forward email as model dialogue, forward email as a separate page)\n\n- Whatsapp ( Optional, needs to be enabled in the configuration )\n\n You have full flexibility to add more services, modify the elements before render, change orders or so on. You can also completely disabled any services from the configuration page(admin/config/services/social-media). \n\n Event subscribe \n The module provides an event so that others can develop an event subscriber to modify.\n\nEvent Subscriber name:-\n\n social_media.add_more_social_media \n\n -----------------------------------\n\n Used for adding your own social media or extend more.\n\n social_media.pre_execute \n\n -----------------------------------\n\n Used for modify the configuration array before executing.\n\n social_media.pre_render \n\n -----------------------------------\n\n Used for modify element just before rendered.\n\n Check the social_media.api file to see the implementation of an event subscriber. Also, check the readme file to get more details. \n\n You can get more details of the project from\n\n http://www.drupalsharing.com/project/social-media-share",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-08-19",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

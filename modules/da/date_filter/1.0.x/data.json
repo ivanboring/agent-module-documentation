@@ -54,5 +54,13 @@
     "date range filter",
     "offset",
     "timezone"
-  ]
+  ],
+  "project_description": "This is a plug-and-play module that replaces core date and datetime filters with a filter that handles both storage types and is actually end-user friendly when exposed.\n\n The improvements versus core date filters:\n\n \n Adds datepickers for exposed filter value selection. \n Replaces the \"min\" and \"max\" field labels for between option with \"from\" and \"to\". \n Removes the obsolete input type selection (offset or date). \n In case of offset default values - maps them to dates in exposed filters datepickers. \n \n The general goal for this module is to be ready to replace core date filters one day so site builders will not have to install an additional module to have proper date filters.\n\n Core issue: https://www.drupal.org/project/drupal/issues/2648950 (please don't comment there, the infra barely keeps up due to the size of it and saving a comment takes more than a minute).",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-02-02",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

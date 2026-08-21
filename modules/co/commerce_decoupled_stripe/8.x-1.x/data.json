@@ -35,5 +35,13 @@
     "decoupled",
     "payment",
     "headless"
-  ]
+  ],
+  "project_description": "Decoupled Stripe payments for Commerce Decoupled Checkout .\n\n Usage: \n\n 1. Configure Stripe payment gateway in Drupal. Pick \"Decoupled Stripe\" type for one-off payments and \"Decoupled Stripe Recurring\" for monthly payments.\n\n2. On the client, create an order using Commerce Decoupled Checkout endpoint.\n\n3. On the client, create a payment using Commerce Decoupled Checkout endpoint.\n\n4. On the client, grab Stripe intent's clientSecret from the response (it's saved in payment remote id field).\n\n5. On the client, complete payment on client side using Stripe.js API (i.e. handleCardPayment, handleCardSetup, etc).\n\n6. On the client, complete the order by executing payment capture endpoint from Commerce Decoupled Checkout.\n\n See Commerce Decoupled Checkout examples for information about API endpoints.\n\nSee Stripe.js v3 documentation for client-side implementation details.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-10-21",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

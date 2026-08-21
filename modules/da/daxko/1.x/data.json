@@ -36,5 +36,13 @@
     "membership",
     "integration",
     "api"
-  ]
+  ],
+  "project_description": "🇺🇦 \n \n This module is maintained by Ukrainian developers.\n\nPlease consider supporting Ukraine in a fight for their freedom and safety of Europe. \n \n \n Initial Daxko CRM integration, created for Open Y distribution\n\n ### How to cache membership data\n\n ```\n\ndrush ev '\\Drupal::service(\"daxko.data_wrapper\")->populateDaxkoMembershipTypes();'\n\n```\n\n ### How to remove all membership data.\n\n ```\n\ndrush ev '\\Drupal::service(\"daxko.data_wrapper\")->deleteMembershipTypeMappings();'\n\n```",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2021-09-20",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

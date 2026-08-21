@@ -37,5 +37,13 @@
     "hungary",
     "postapont",
     "google maps"
-  ]
+  ],
+  "project_description": "Provides pickup shipping service for Magyar Posta (Hungarian Post), implementing the commerce_shipping_pickup_api framework module.\n\n Back to top \n\n Providers and services \n \n Magyar Posta (Hungarian Post) - PostaPont (Pickup points) \n Magyar Posta (Hungarian Post) - PostaPont térképes (Pickup points map) \n Magyar Posta (Hungarian Post) - Csomagautomaták (Parcel machines) \n \n A Google Maps JavaScript API key is required for the map to function.\n\nSee https://developers.google.com/maps/documentation/javascript/get-api-key .\n\n The module has full localization to Hungarian, automatically installed on setup.\n\n I'm also available for sponsored development of similar submodules of other pickup service providers for interested parties. \n\n Back to top \n\n Installation \n Install and enable the module through Composer:\n\n composer require drupal/commerce_shipping_pickup_hupost\n\ndrush en commerce_shipping_pickup_hupost \n\n Add the new pickup_capable_shipping_information pane with the label Shipping information (look for the one that says Supports pickup in the summary) to your checkout flow or use the pre-built pickup checkout flow.\n\n Add and set up a new shipping method in your store configuration.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-10-29",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8007007,
+  "core_semver_maximum": 12000000
 }

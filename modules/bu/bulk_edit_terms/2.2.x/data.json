@@ -40,5 +40,13 @@
     "append terms",
     "replace terms",
     "clear terms"
-  ]
+  ],
+  "project_description": "Description \n This module allows users to bulk update any taxonomy term entity reference field that is found on any of the selected nodes. It does it using Drupal native actions .\n\n NOTE: This module is not designed to work with contrib VBO , only Core Actions in /admin/content/* using Core Bulk Update fields\n\n You just need to select the nodes that you want to edit terms from, select 'Update taxonomy terms' from the dropdown and click on 'Apply'. You'll then be presented with a form that contains the term reference fields that appear in at least one of the selected nodes. Select an update action for each field as desired (or leave blank if you don't want to change a field) and submit.\n\n It will apply those values to all applicable nodes (ie: only if they have the field). \n\n Requires users have the \"administer nodes\" permission as well as permission to edit the selected nodes and term reference fields.\n\n Supports creating a revision and specifying a revision log message for the updates.\n\n Supports 5 different actions for each term reference field:\n\n \n Do nothing\n Replace all existing term(s) with selected term(s)\n Clear all existing term(s)\n Add selected term(s)\n Remove selected term(s)\n \n Similar modules \n \n Bulk Update Fields : Allows updating more than term reference fields.\n Views Bulk Edit : Much more advanced, allows editing any fields on any entity types.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-11-16",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

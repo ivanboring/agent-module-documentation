@@ -38,5 +38,13 @@
     "views",
     "region",
     "editor"
-  ]
+  ],
+  "project_description": "The CKEditor5 Block Embed module allows administrators to easily embed blocks within the CKEditor5 interface:\n\n \n \n Content Blocks : These include both basic predefined blocks (such as basic blocks) and manually created custom blocks. Administrators can add these blocks directly from the CKEditor5 toolbar, making it easy to display dynamic or reusable content blocks across pages.\n \n \n View Blocks : These can either be default or manually created, with a block display mode that determines how the content is rendered. View blocks are ideal for displaying dynamic or templated content, such as user-generated data, and can be quickly inserted through the CKEditor5 interface.\n \n \n Region Blocks : Predefined layout regions (like headers, footers, or sidebars) from the active theme. The benefit of Region Blocks is the ability to place core, contrib, or custom-module blocks within these regions. Administrators can configure settings via a configuration form, allowing specific blocks to be placed in the region and available within the CKEditor5 interface. Additionally, \"readonly\" regions can be created, ensuring blocks are not shown on the front end, providing greater control over content placement and visibility.\n \n \n \n This module makes it simple to manage and insert complex content and layout elements, providing flexibility and control over how content is displayed on the site.\n\n \n Note : Avoid including any block within itself or creating a self-contained scenario. Embedding a block inside itself will create an infinite loop, which can break the editor and disrupt the page rendering.\n\n \n Video Demo \n\n View video \n\n \n Support \n\nPlease post bug reports, feature requests and support requests to the CKEditor5 block embed module issue queue . If you met any problems with this module - feel free to create an issue.\n\n Configuration and Demo \n\n \n Go to https://simplytest.me/project/ck5_block_embed . \n Click \"Launch Sandbox\". \n Install Drupal as normal. \n Enable \"CKEditor5 block embed\" module, and any optional modules you wish to try out. \n Go to /admin/config/content/formats/manage/full_html or any other editor where you wish to implement the functionality and drag the Embed Block icon on the active toolbar and checking the box next to the Embed blocks filter. \n Add/edit the content with editor, click on the \"Embed blocks\" icon where the Embed blocks feature lets you embed any content blocks, view blocks, and region blocks from the active theme.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-01-22",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

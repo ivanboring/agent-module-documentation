@@ -35,5 +35,13 @@
     "analyzer",
     "search",
     "substring"
-  ]
+  ],
+  "project_description": "This module enhances the Elasticsearch connector by adding support for NGram tokenization in text fields. It enables efficient partial text matching, making it ideal for applications requiring flexible search capabilities.\n\n Installation \n Install as you would normally install a contributed Drupal module.\n\nSee: https://www.drupal.org/node/895232 for further information.\n\n Additional Requirements \n \n Search Api \n Elasticsearch Connector \n \n Configuration \n Apply the Analyzer to Text Fields In your Drupal site, configure the Search API index to use the NGram analyzer for specific fields:\n\n \n Go to Configuration > Search and Metadata > Search API. \n Edit the desired Search API index. \n Navigate to the Fields tab. \n For the text fields where you want to enable NGram tokenization, select the NGram type from the field settings. \n Save field data. \n \n Reindex Your Data After applying the NGram analyzer, reindex your data to ensure the new tokenization settings are applied:\n\n \n Go to Configuration > Search and Metadata > Search API. \n Click on the Index now button for the relevant index. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-03-10",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

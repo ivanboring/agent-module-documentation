@@ -37,5 +37,13 @@
     "service",
     "developer",
     "pattern"
-  ]
+  ],
+  "project_description": "Provides a basic API for queries. This module won't do much by itself.\n\nExtend the base classes and create your own repository classes.\n\n Usage \n e.g. when creating a repository for the news content type.\n\n Create a service \n \n\nnews.repository.news:\n\n class: Drupal\\news\\Repository\\NewsRepository\n\n parent: entity_repository.repository.node\n\n \n\n Create a repository class \n The property $bundles limits the results to the given bundles. The base\n\nNodeRepository class contains a lot of queries by default like findAll().\n\n<?php\n\n namespace Drupal\\news\\Repository;\n\n use Drupal\\entity_repository\\Repository\\NodeRepository;\n\n /**\n\n * Class NewsRepository.\n\n *\n\n * @package Drupal\\news\\Repository\n\n */\n\nclass NewsRepository extends NodeRepository {\n\n protected $bundles = ['news'];\n\n /**\n\n * {@inheritdoc}\n\n */\n\n public function findByTags(array $tags = [], int $pager = NULL, $sort = NULL) : array {\n\n $query = $this->getBaseQuery();\n\n if (!empty($tags)) {\n\n $query->condition('field_news_tags', $tags, 'IN');\n\n }\n\n if ($pager) {\n\n $query->pager($pager);\n\n }\n\n if ($sort) {\n\n $query->sort($sort['field'], $sort['dir'], $this->getLangCode());\n\n }\n\n return $this->getResults($query);\n\n }\n\n }\n\n Use the repository class \n <?php\n\n$nodes = \\Drupal::service('news.repository.news')->findAll();\n\n?>\n\n Create a repository without a custom class \n When you don't need custom queries, you can create a repository without without creating an empty repository class.\n\nYou can add a new service and call the setBundles or setVocabularies for taxonomy terms on the base class.\n\n \n\nnews.repository.news:\n\n class: Drupal\\entity_repository\\Repository\\NodeRepository\n\n arguments:\n\n - '@database'\n\n - '@entity_type.manager'\n\n - '@language_manager'\n\n calls:\n\n - [setBundles, [['news']]]\n\n \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-09-25",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

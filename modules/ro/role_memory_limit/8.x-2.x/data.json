@@ -35,5 +35,13 @@
     "performance",
     "ini_set",
     "runtime"
-  ]
+  ],
+  "project_description": "Summary \n Role memory limit is a small module that allow you to set php_memory_limit per role and command line usage (drush).\n\n Example of usage \n Lets say your php memory limit is set to 128mb and your site has a lot of blocks and you try to get into block listing page and Drupal crashes.\n\n With this module you can set so the admin has more memory, that way you can render pages that needs a-lot of memory, but still keep the original php memory limit for other users.\n\n Requirements \n Permission to change php memory limit on your web server.\n\n Configuration \n Drupal 8+ \n Goto /admin/config/system/role-memory-limit to configure memory limits per role.\n\n Drupal 7 \n Goto admin/people/permissions#module-role_memory_limit to set the permissions.\n\n Goto admin/config/development/role_memory_limit to set the limit for a role.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2012-10-12",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 11000000
 }

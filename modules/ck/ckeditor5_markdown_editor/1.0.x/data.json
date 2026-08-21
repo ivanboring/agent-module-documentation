@@ -37,5 +37,13 @@
     "editor",
     "text format",
     "drush"
-  ]
+  ],
+  "project_description": "This module will install and activates the Markdown output plugin to a CKEditor 5 instance. This plugin lets you switch the default output from HTML to Markdown. This way you can produce lightweight texts with a simple formatting syntax that is popular among developers.\n\n \n\n Back to top \n\n Installation \n With Drush:\n\n1. Install Drush \n\n2. Run drush en ckeditor5_markdown_editor to enable the module\n\n3. Run drush ckeditor5_markdown_editor:install \n\n4. A new plugin setting 'Markdown output' is available for each CKEditor5 text editor at admin/config/content/formats . Enable the checkbox to let the CKEditor5 instance output Markdown formatted text instead of HTML (see screenshot below).\n\n \n\n Back to top \n\n Render Markdown to HTML \n Use https://www.drupal.org/project/markdown_easy to enable a text filter to convert Markdown into HTML when it's rendered on your site.\n\nYou could also use a Markdown to HTML field formatter ( https://www.drupal.org/project/markdown_field_formatter ) on the field in the display mode.\n\n Back to top \n\n Contact \n Current maintainers \n\n* Sebastian Hagens ( Sebastix ) \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2023-11-17",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

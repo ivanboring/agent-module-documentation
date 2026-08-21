@@ -35,5 +35,13 @@
     "text area",
     "content type",
     "html"
-  ]
+  ],
+  "project_description": "I want to add several static pages to drupal. To be specific, for example,\n\n \n\n ....\n\n \n\n Hi there\n\n Link \n\n \n\n \n\n No sidebars. No Drupal anything. Just a nice page with some words. \n\n Front module provides an option \"Allows for static content to be displayed to the screen as is. This method does not pass through Drupal's theming system.\", but it only works on the front page.\n\n I could not find a module, So I decide write this small module to do it.\n\n Installation \n \n Install static_page module. \n You should add a dedicated content type, for example “Static page”, to use for static content. Make sure that your content type has a text area field. This module can use any (single) text area field to store the whole source code of the HTML page. \n Navigate to “/admin/config/content/static_page” to configure which content types will be used as static pages. For each content type, you select which text area holds the static page content. \n Navigate to the “/node/add” page, choose any content type(s) that are configured to be static pages, for example “node/add/static_page”. Here you enter a title (only used for the administrative interface), then put the whole source code of a HTML page into the text area. Save it. \n \n You will get a page exactly the same with your source code. This module lets you bypass Drupal’s theme layer.\n\n If you want to add CSS or JS to the pages, you'll have to put that directly into the section of the static page content.\n\n Security warning \n Any content type configured as a static page will bypass Drupal's regular text filtering system. Users with permission to create static_page-enabled content types can effectively bypass any XSS protections. You should only grant permission to create static pages to trusted users. \n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2013-07-11",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

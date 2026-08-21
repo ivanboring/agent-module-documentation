@@ -33,5 +33,13 @@
     "license",
     "free software",
     "gnu"
-  ]
+  ],
+  "project_description": "LibreJS module maintains a list of the license and source code URL of each JavaScript file used by the site. This list can be viewed at /librejs/jslicense by all roles granted the \"access JavaScript license information\" permission. LibreJS module will only discover JavaScript files as they are loaded when users visit various pages, so you will have to visit this page repeatedly to see additional JavaScript files which have been detected.\n\n LibreJS module provides compatibility with the LibreJS browser extension . To ensure that aggregated JavaScript is accepted by LibreJS browser extension, libraries which are not flagged as GPL-compatible will no longer be aggregated when LibreJS module is enabled.\n\n On Drupal 10.1 and later, LibreJS module does not require any configuration, as each library can specify its license identifier, license URL, source URL (\"remote\"), and GPL compatibility.\n\n The Drupal 7 version of LibreJS module allows site administrators to configure the license and source code URL of each JavaScript file used by the site, and adds metadata to pages indicating that all inline JavaScript in the page is GPL v3+.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2012-11-08",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

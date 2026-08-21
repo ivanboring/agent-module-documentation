@@ -46,5 +46,13 @@
     "content deployment",
     "action",
     "bulk_node_export"
-  ]
+  ],
+  "project_description": "This module allows users to export nodes and then import it into another Drupal installation, or on the same site.\n\n Using this module you can save yourself a lot of time setting up new websites that have similar nodes to websites you've already made, migrating nodes to new Drupal versions, or between development/staging/production sites.\n\n You will need the same content types for the imports to work (unless using Feeds to import), and ideally relevant compatibility with fields, and modules.\n\n How to use Node export \n There are several ways to use Node export:\n\n \n Through a tab that appears on the node page. \n Using update options on the Content page. \n In a command line using Drush . \n Using the Features module. \n Using the Views Bulk Operations module.\n \n Nodes exported with Node export can be imported:\n\n \n Simple imports\n \n Using the form at Node export: import under Create content ( Add content in D7). \n In a command line using Drush . \n Using the Features module. \n \n \n Advanced imports\n \n \nFor advanced importing enable Node export feeds and import via the Feeds interface. \n \n \n \n Node export formats \n Nodes can be transmitted using JSON, Drupal var exports, CSV, PHP serialization, or XML.\n\n Migrating nodes between Drupal versions \n Far too much changes between Drupal versions to reliably handle using this module to migrate across versions. You may have some success with the Node Export Feeds submodule. However if possible, I recommend getting both versions of the site running the same version of Drupal and Node Export.\n\n Dependencies, references, relationships, structures, hierarchies, etc... \n Supports: node/entity references, taxonomy, and organic groups.\n\n Node export dependency \n\nSupports: authors, translated content, books, organic groups, taxonomy term reference, file, image, node reference, user reference, entity reference, and field collection.\n\n More from community \n Similar module Content Synchronization. \n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2008-05-14",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -39,5 +39,13 @@
     "element",
     "component",
     "acquia"
-  ]
+  ],
+  "project_description": "The Acquia Site Studio Views Element module creates a new Element for Site Studio that lets admins and authors embed a View into a component without having to add blocks to the hidden region of the theme first. If you build dynamic components in Site Studio that drop Views into pages, this module might be for you. If you have ever looked at your components or templates and saw a Block element say 'Undefined' block that used to point at a block instance of a View, this is definitely for you.\n\n This avoids the need for:\n\n \n Remembering to add a block instance for every block display of a View to output in a Site Studio component \n Remembering to 'add' those blocks in the Block Layout in Drupal when deploying to different environments (if you ignore block configuration) \n \n This makes it easier for authors who may have some Views knowledge to not have to deal with the added tasks of block management. In addition, this avoids performance penalties of having too many blocks in the hidden region that may be rendered on page load regardless if you forget to set adequate visibility settings. Since components can go nearly anywhere on a site, this bypasses that entirely.\n\n The list of options for the element are all View displays that are the block plugin only . This avoids rendering other displays like feeds, pages or other types of View displays.\n\n How to use:\n\n \n Build a new component \n Add the 'Views Element' to the canvas \n Select the View display you wish to display \n Save \n \n Now you can use this component and the View will be injected. Contextual filters and other settings are respected automatically and nothing additional is needed for that to work.\n\n This module pairs well with Views Minimum Condition .",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-03-30",
+  "project_changed": "2026-08-20",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

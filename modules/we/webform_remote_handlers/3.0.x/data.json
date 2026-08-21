@@ -51,5 +51,13 @@
     "base64",
     "integration",
     "wsdl"
-  ]
+  ],
+  "project_description": "This module allows to send Webform submission results to third party through Web Services (REST/SOAP), implementing two Webform Handler plugins (REST and SOAP). These plugins allow to define endpoint configurations (including endpoint URL and HTTP method), JSON payload (with tokens), optional base64 configurations and type of authentication (basic or oauth ).\n\n Furthermore, an additional token is provided allowing to send file contents decoded in base64.\n\nUsing this module, the webform submission results can be sent to another server in a configurable and transparent way. \n\n In order to use this module, you should follow these steps:\n\n 1. Enable Webform Remote Handlers module;\n\n2. Go to Webforms page (/admin/structure/webform);\n\n3. On the right side of a Webform, click on \"Definitions\";\n\n4. Click on \"Emails/Handlers\";\n\n5. Click on \"Add handler\";\n\n6. Depending on the type of Web Service that you pretend, click on \"REST\" or \"SOAP\";\n\n7. Fill in the configuration fields (including Web Service configurations and message payload) and then press \"Save\";\n\n8. From now on, the webform submission results (of this Webform) will be sent to another server through Web Services.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-08-14",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

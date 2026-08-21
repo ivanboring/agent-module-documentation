@@ -37,5 +37,13 @@
     "syndication",
     "open-data",
     "xml"
-  ]
+  ],
+  "project_description": "Provide an RSS feed of datasets from DKANv2\n\n Back to top \n\n Features\n \n The module provides an RSS Feed of the datasets from DKANv2 metastore at \"/datasets.rss\".\n\n Back to top \n\n Post-Installation\n \n the module will provide an RSS feed at datasets.rss after installation. The RSS feed can be customized by copying the file dataset.rss.feed.json to the schema location of DKAN and editing the file there. The dataset.rss.feed.json is related to DKANs dataset.json. You can link properties from dataset.json to RSS feeds items.\n\n So for example if the property \"issued\" exists in the dataset.json you can assign this property to RSS items \"pubDate\". There are also more sophisticated assignments possibly, look for example to the \"dc:creator\" property in the dataset.rss.feed.json. Additionally there are some advanced modifications possible via the \"_attributes\" and \"_formatters\" properties in the dataset.rss.feed.json\n\n The module should produce an valid RSS feed with the default DKAN installation (for example with demo content).\n\n Back to top \n\n Additional Requirements\n \n \n DKAN \n Facets \n symfony/property-access \n \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-04-03",
+  "project_changed": "2026-08-17",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

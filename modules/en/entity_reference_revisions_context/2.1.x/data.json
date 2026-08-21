@@ -35,5 +35,13 @@
     "paragraphs",
     "formatter",
     "attributes"
-  ]
+  ],
+  "project_description": "This field formatter adds contextual data attributes to entity reference revisions, useful specifically for determining how an element is positioned within a page and when theming a set of entities in the context of a list.\n\n It offers the following:\n\n data-entity-context-first - The first entity in the field\n\n data-entity-context-last - The last entity in the field\n\n data-entity-context-prev=\"{entity-bundle}\" - The bundle of the previous entity\n\n data-entity-context-next=\"{entity-bundle}\" - The bundle of the next entity\n\n data-entity-context-group=\"{entity-bundle-group-number}\" - An increment of groups (where a group is a set of entities with the same bundle\n\n data-entity-context-odd - An odd delta entity in the field list\n\n data-entity-context-even - An even delta entity in the field list",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-06-15",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -33,5 +33,13 @@
     "config export",
     "masking",
     "config-sync"
-  ]
+  ],
+  "project_description": "Security lead \n\n Whatever you do, don't let this API key get committed!\n\n \n Developer \n\n \n\n drush config:export\n\n \n\n Developer \n\n Uh-oh…\n\n \n Back to top \n\n Description \n Best practice is to export your configuration and commit it to your source-code repository.\n\nBest practice is also to avoid committing API keys, secrets, etc.\n\n The credential mask module integrates with the configuration management API and ensures that the configuration keys marked as \"sensitive\" are not exported, and when configuration is imported, the unmasked configuration is not overridden.\n\n Back to top \n\n Operation \n Sensitive items can be managed either:\n\n \n via Drush \n via /admin/config/development/configuration/credential_mask (for users with the \"import configuration\" permission \n \n Drush Commands \n \n credential_mask:add\n\nMark a config key as sensitive. \n credential_mask:del\n\nRemove a config key from the list of masked credentials. \n credential_mask:list\n\nList all active configuration properties identified as sensitive. \n credential_mask:show-configuration\n\nShow the configuration names and properties currently marked as sensitive.\n \n \n Back to top \n\n Version requirements \n \n Drupal core 8.8 or greater \n Drush 10 or greater. \n \n Back to top \n\n Similar modules \n Other modules in the configuration-management ecosystem, such as Config split and Config filter may provide similar behaviour, or tools to achieve a similar outcome.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-12-27",
+  "project_changed": "2026-08-11",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

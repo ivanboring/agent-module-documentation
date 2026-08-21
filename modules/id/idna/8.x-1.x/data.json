@@ -33,5 +33,13 @@
     "domain",
     "internationalization",
     "idn"
-  ]
+  ],
+  "project_description": "IDNA Convert / Punycode lib\n\n Motivation / Мотивация: \n EN:\n\n1) It is more convenient to resolve dependencies\n\n2) IdnaConvert as Drupal::service \n\n RU:\n\n1) Удобнее рулить зависимостями\n\n2) Использование библиотеки как друпал-сервиса\n\n Usage / Использование: \n DEMO: /idna\n\n CODE:\n\n<?php\n\n \\Drupal::service('idna')->encode($input);\n\n \\Drupal::service('idna')->decode($input);\n\n?>\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-10-09",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -35,5 +35,13 @@
     "helper text",
     "fields",
     "editor"
-  ]
+  ],
+  "project_description": "Entity Reference Field Hints helps editors understand what they can select in entity reference fields by showing allowed bundles and create access hints below the field.\n\n Features \n \n Shows editor-facing helper text below supported entity reference widgets. \n Displays allowed target bundles, such as Article, Event, Landing Page, Image, or Tags. \n Can show which referenced bundles the current user is allowed to create. \n Supports references to content, media, taxonomy terms, users, and paragraphs. \n Provides per-field settings on the form display configuration page. \n Works with standard Drupal entity reference widgets without replacing the widget. \n \n This module is useful when editors see fields such as “Related content”, “Category”, or “Featured media” but do not know what kind of item can be selected. Site builders already configure allowed bundles in field settings; this module makes that information visible to editors on the content editing form.\n\n Post-Installation \n After installing the module, configure it from the form display settings for the entity bundle that contains your reference field.\n\n \n Go to the entity bundle’s Manage form display page. \n Find a supported entity reference field. \n Open the widget settings. \n Enable Show entity reference field hint . \n Optionally enable allowed bundle hints and create permission hints. \n Save the form display. \n \n The hint will appear below the field on the entity edit form using Drupal’s standard field help text styling.\n\n Additional Requirements \n This module only requires Drupal core’s Field system. Paragraph reference support requires the Paragraphs module if your site uses paragraph reference fields.\n\n Recommended modules/libraries \n No additional modules or libraries are required.\n\n Similar projects \n There are modules that enhance entity reference widgets, autocomplete behavior, or bundle management. This module focuses specifically on showing editor-facing help text based on existing entity reference field configuration. It does not replace the widget or change selection behavior.\n\n Supporting this Module \n Use the Drupal.org issue queue to report bugs, request features, or submit patches.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-06-27",
+  "project_changed": "2026-06-30",
+  "core_semver_minimum": 10003000,
+  "core_semver_maximum": 13000000
 }

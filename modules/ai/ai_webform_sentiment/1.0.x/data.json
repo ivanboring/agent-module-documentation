@@ -37,5 +37,13 @@
     "sentiment",
     "analysis",
     "chart"
-  ]
+  ],
+  "project_description": "AI sentiment analysis on webform submissions \n This module gives you the possibility to \n\n \n Use AI to score webform submissions on positive/negative. \n Use AI to visualise the clusters of themes in the webform submissions \n \n We leverage the AI module LLM capability to calculate a sentiment score for each submission.\n\nThis allows you to track the average submission emotion and the sentiment trend in Drupal. \n\n Configuration \n \n Add a handler to the webform \n Configure the sentiment handler (choose a PROMPT and a Large Language Model). \n (optional) Change the prompt to use more granular or less granular scoring. you can make it score from 0-5 or from 5-10 or ... (currently only supporting numeric). \n Make sure cron runs \n \n Usage \n Go to the webform results page, click on Sentiment. See the scores.\n\nThey will be updated per cron run.\n\n Requirements \n \n Cron configured and running \n chartjs_api \n \n Warning 1 \n The dashboard uses some heavy queries (avg/sum/) with grouping.\n\nIt might be that the module needs some more production testing and load testing. happy to accept suggestions. Be careful installing this on production.\n\n Warning 2 \n If you have many webform submissions. For every LLM evaluation we will do a call which may cost you money. You should be aware.\n\n Similar modules \n Similar but not the same: analyze_ai_sentiment \n\n Back to top",
+  "maintenance_status": "Seeking co-maintainer(s)",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-05-26",
+  "project_changed": "2026-08-11",
+  "core_semver_minimum": 10002000,
+  "core_semver_maximum": 12000000
 }

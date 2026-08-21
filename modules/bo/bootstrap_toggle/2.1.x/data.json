@@ -36,5 +36,13 @@
     "boolean",
     "bootstrap",
     "widget"
-  ]
+  ],
+  "project_description": "Synopsis \n\nIt provides a toggle widget for Boolean field type using bootstrap toggle library (For more information about the library visit this page: http://www.bootstraptoggle.com ).\n\n The widget comes with a lot of options to make your toggle button look more attractive.\n\n Requirements \n\nA Bootstrap based theme, such as Bootstrap 3 Theme (Content add/edit page must use bootstrap for this widget to work properly)\n\n Similar projects and how they are different \n\n Toggle \n\n \n Toggle module differ in terms of implementation, it will not work with latest drupal 8 version because it is based on some deprecated hooks whereas Bootstrap Toggle module uses Field widget APIs \n Toggle module also does not provide as much options as Bootstrap Toggle does to customize the look and feel of widget. \n \n Installation \n\n1. Download bootstrap toggle library from here: https://github.com/minhur/bootstrap-toggle/archive/master.zip \n\n2. Place this library under libraries folder in docroot and rename this library folder to 'bootstrap_toggle'\n\n Usage Steps \n\n1. Create a content type and add a Boolean field in it.\n\n2. Click on 'Manage form display' tab and under widget column select 'Bootstrap Toggle' as the element display widget for your field.\n\n3. Configure the settings for that toggle button and update those settings.\n\n4. Go to manage fields of the content type you wish to have a toggle button and add a Boolean field.\n\n5. Now go to manage form display tab and under widget column select 'Bootstrap Toggle' for your field.\n\n6. Now configure the settings for that toggle button and update those settings.\n\n7. Now save the manage form display and you are done.\n\n Try out different combination of settings to get a different look of toggle button.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-06-18",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

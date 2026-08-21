@@ -38,5 +38,13 @@
     "migration",
     "batch",
     "301"
-  ]
+  ],
+  "project_description": "Import redirects list from CSV based format taking in account the language prefixes of source URLs. It doesn't require 'migration' modules, only 'redirect'.\n\n Similar projects \n path_redirect_import - it provides similar functionality but it enables the bundle of migration modules for work. Also it doesn't care much about language prefixes. When you migrate URL like /us/contacts, you need manually setup line like:\n\n /contacts,/new-page-url,us,301 \n\nWhich is really inconvenient for SEO guys. For me the best input format is\n\n /old-page-url,/new-page-url \n\nBut my module also accepts language and status codes to override defaults.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2023-12-25",
+  "project_changed": "2024-02-13",
+  "core_semver_minimum": 9003000,
+  "core_semver_maximum": 11000000
 }

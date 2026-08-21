@@ -33,5 +33,13 @@
     "typography",
     "twig",
     "text"
-  ]
+  ],
+  "project_description": "Use soft hyphen ( ­ ) HTML tag in Text (plain) and Text (plain, long) fields (eg. title).\n\n Usage on UI \n \n Create your field (in type of Text (plain) or Text (plain, long) ) \n Check Enable soft hyphen checkbox on Manage display tab on given field Plain text field formatter setting. \n Fill your field data like this: Lorem­Ipsumissimply dummy­textoftheprinting and typesetting industry. \n \n Usage on twig file \n You can use shy twig filter in twig file {{ field_name|shy }} \n\n Similar module \n CKEditor Soft hyphen Plugin \n\n Background \n There is a nice article from Tamás Hajas about this topic, https://integralvision.eu/en/blog/long-words-case-browser \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-04-03",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

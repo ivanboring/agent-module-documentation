@@ -39,5 +39,13 @@
     "entities",
     "properties",
     "custom"
-  ]
+  ],
+  "project_description": "This module is kind of a \"Config Construction Kit\".\n\n Parameters are a native part of configuration management. Think of dynamic and user-defined configuration properties, fully manageable and exportable.\n\n Examples for what parameters can be defined and used for:\n\n \n A number indicating a maximum resource capacity. \n Shared information contents as formatted text. \n Secrets such as API credentials. \n Selection of certain available content types and fields. \n A set of SVG icons. \n Automatically incrementing integer numbers, dates, and data from external Http web services. \n \n You can create global parameters for your site, but also manage specific ones for content types. You can access them via Tokens , Twig, ECA or directly as an API.\n\n Parameters guarantee their availability by providing an auto-locking mechanism on used collections. Locked collections cannot be deleted via UI, as long as they not have been unlocked again.\n\n Have a look at the README to see how you can get started.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2022-06-30",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

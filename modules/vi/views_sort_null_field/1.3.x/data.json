@@ -46,5 +46,13 @@
     "sort empty first",
     "hook_field_views_data_alter",
     "views sort handler"
-  ]
+  ],
+  "project_description": "This module provides an additional sort for FieldAPI fields, which sorts by whether the field is empty or not. This allows empty (i.e. NULL) values in fields to be sorted last.\n\n This module has for motivation the following problem:\n\n \n You have a view listing nodes. \n These nodes have a field on them, 'field_foo'. \n You want to sort the view by this field, ascending. \n Some nodes have nothing in this field. \n Because of the way SQL sorting works, the nodes with no value are at the top of the list. \n \n A common use case for this is using Draggable Views and a numeric weight field to order nodes. New nodes will receive a NULL value in the field, and so will appear at the top without this module's sort handler.\n\n In combination with the regular sort, this can be used to place empty values at the end of the ascending results, or at the top of descending results.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2013-06-25",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

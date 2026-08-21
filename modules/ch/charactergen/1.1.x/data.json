@@ -35,5 +35,13 @@
     "label",
     "automatic entity labels",
     "string"
-  ]
+  ],
+  "project_description": "This module generates a 10-character alphanumeric string. Suitable for automatic labeling data/content types. Like registry numbers, reference codes, or tracking identifiers.\n\n How the code works \n\n The characters in the Character Generator module are generated using a combination of the current time and a predefined character set. First, a set of characters that excludes easily confused ones (e.g., 'I' and '1', 'O' and '0') is defined: \"23456789ABCDEFGHJKLMNPQRSTUVWXYZ\". Then, the current time in hours, minutes, seconds, and milliseconds is obtained. To introduce an element of randomness, a random number between 0 and 100 is added to the milliseconds.\n\n Post-Installation \n\n \n Configuration: No additional configuration required; the module works out-of-the-box. \n Usage : The generated tokens can be accessed and utilized in entity label configurations. Navigate to your entity label settings and use the `[charactergen:random]` token. \n \n Additional Requirements \n\n Dependencies \n\n \n Token module: This module depends on the Token module for generating custom tokens. \n \n Similar Projects \n\n \n None that i know of at the moment. \n \n To-do \n\n \n Ensure that duplicates will not happen. Since there is no duplication check function. \n Add option to let users select length of the characters?",
+  "maintenance_status": "Seeking co-maintainer(s)",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2024-07-26",
+  "project_changed": "2026-06-23",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

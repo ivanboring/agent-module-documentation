@@ -35,5 +35,13 @@
     "featureflags",
     "extension",
     "rollout"
-  ]
+  ],
+  "project_description": "Back to top \n\n Overview \n Provides some new functionality for the featureflags module:\n\n \n Enable/disable routes depending on featureflag \n Enable/disable permissions depending on featureflag \n Check featureflag status with a twig function \n \n Back to top \n\n Usage \n Routes and permissions can be set in the feature flag settings and will be exported as config.\n\n Featureflag checking in twig works like this:\n\n \n\n{% if featureflag_active(\"demoflag\") %}\n\nFlag is active!\n\n{% endif %}\n\n \n\n \n About the versions \n For Drupal 10+ install Featureflags extensions version >= 1.1.3\n\n For Drupal 11+ install Featureflags extensions version ^2.0.0\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-07-29",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

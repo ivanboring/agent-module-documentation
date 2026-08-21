@@ -38,5 +38,13 @@
     "geojson",
     "map",
     "widget"
-  ]
+  ],
+  "project_description": "The DKAN Geo Widget module allows to use a leaflet and leaflet geoman based\n\nwidget for the DKAN schema.\n\n You can create markers and shapes on a leaflet map and save them as GeoJSON\n\nin the related (via schema ui) field.\n\n This brings in a feature again that DKAN D7 provided with Leaflet widget module \n\n Post-Installation \n use dkan_geo_widget as widget key for the property in the .ui schema (dataset.ui.json for example)\n\n Additional Requirements \n DKAN is required, and the json_form_widget module (in DKAN 2.x this is submodule of DKAN, now it is a standalone module).\n\n only for version 1.x of this module , the json_form_widget module needs to be enabled beforehand, it will not get\n\nautomatically enabled due to https://github.com/GetDKAN/dkan/discussions/4149 \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2024-06-25",
+  "project_changed": "2026-08-13",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

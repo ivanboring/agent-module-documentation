@@ -35,5 +35,13 @@
     "user",
     "experience",
     "helper"
-  ]
+  ],
+  "project_description": "Profile Manager is a helper module for managing custom profile user experiences. It aims to ease the efforts of profile maintainers. \n\n We often run into the same problems after creating a profile that will be used on many sites. The biggest is that some sites may need functionality that others don't. Profile Manager addresses this issue by introducing the idea of Optional Modules.\n\n Profile Manager provides Optional Modules by:\n\n \n Making it easy for developers to define and configure Optional Modules. \n Users can be given permission to enable Optional Modules for their site. \n Manages Optional Module config. \n \n Facilitates Optional Module config updates by importing the updated module config changes from the $module/config/install directory instead of what is in the sites current $profile/config/sync directory. \n Introduces Config Partials where Optional Modules include a part of config, like permissions being added to a specific role, that get installed along with the Optional Module. \n \n Provides tooling that orchestrates better deployments to prevent optional modules and their configuration from being uninstalled during a deployment. \n Provides an API for building out a custom administration toolbar (Like core's \"Manage\" drop down, but customized specific to the profile and separate from \"Manage\").",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-08-24",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

@@ -33,5 +33,13 @@
     "credentials",
     "encryption",
     "security"
-  ]
+  ],
+  "project_description": "Adds AES-256 client-side encryption to authentication forms (login, registration, user edit) with automatic server-side decryption. Uses per-form session keys for enhanced security and includes detailed logging for security auditing.\n\n Features \n \n Zero configuration - works out of the box \n Encrypts passwords and usernames before transmission \n Per-form, per-session encryption keys with server validation \n Security event logging (key mismatches, decryption failures) \n Supports CDN or local CryptoJS installation \n Compatible with standard Drupal forms \n \n Requirements \n \n PHP OpenSSL extension \n CryptoJS library (auto-loaded from CDN or place in /libraries/crypto-js ) \n \n Installation \n \n Install module as usual \n Module automatically attaches to login, registration, and user edit forms \n Optional: Place CryptoJS in /libraries/crypto-js to avoid CDN dependency \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-02-03",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

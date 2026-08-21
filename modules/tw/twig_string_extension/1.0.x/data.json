@@ -33,5 +33,13 @@
     "filters",
     "template",
     "extension"
-  ]
+  ],
+  "project_description": "Adds support for the Twig String Extension library \n\n Symfony Unicode String \n In order to access the Symfony\\Component\\String\\UnicodeString class in twig, you need to add it as an allowed class in your settings.php with the twig_sandbox_allowed_classes setting. For example:\n\n \n\n$settings['twig_sandbox_allowed_classes'] = [\n\n 'Symfony\\Component\\String\\UnicodeString',\n\n 'Drupal\\Core\\Template\\Attribute',\n\n];\n\n \n\n See more on how this is processed in the TwigSandboxPolicy .",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2022-10-24",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

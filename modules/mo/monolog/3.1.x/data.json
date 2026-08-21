@@ -50,5 +50,13 @@
     "dblog",
     "psr-3",
     "services.yml"
-  ]
+  ],
+  "project_description": "Overview \n This module integrates Drupal with the fantastic Monolog library by Seldaek to provide a better logging solution. Some of the benefits of using this module are as follows:\n\n \n Configurable logging levels \n A multitude of handlers \n All the power and flexibility of Monolog \n \n The Monolog module also has full watchdog integration, so it works with core and contributed modules out of the box.\n\n Installation \n The monolog library is the only requirement and can be installed by using composer .\n\n Usage \n See README.md .\n\n The Drupal Monolog module will override core Drupal logging behaviors. To still use Drupal loggers ( logger tagged services) such as Watchdog or contributed modules, you need to add them to this module configuration; see the \" Log to database \" topic in the readme.\n\n Monolog 2.x requires PHP 7.4 or PHP 8.0.x and Drupal > 8.7 and <= 10.\n\n Monolog 3.x requires PHP 8.1.x and Drupal > 10.1.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2013-03-08",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 13000000
 }

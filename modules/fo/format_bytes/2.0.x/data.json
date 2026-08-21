@@ -43,5 +43,13 @@
     "KB MB GB",
     "template",
     "byte conversion"
-  ]
+  ],
+  "project_description": "Provides a Twig Extension, that you can use in your Twig Templates. In twig when you get the value of a file, the size is in simple bytes and if you're intending to show it to your end-user, it's not user-friendly, this simple Twig filter helps with that and renders the file size in it's respected: 'B', 'KB', 'MB', 'GB', 'TB'\n\n Example: \n {{ node.field_attachment.entity.field_file.entity.filesize.value | format_bytes }}",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-11-06",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

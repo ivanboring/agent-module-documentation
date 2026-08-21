@@ -33,5 +33,13 @@
     "content",
     "originality",
     "api"
-  ]
+  ],
+  "project_description": "The copyscape module integrates Copyscape API and checks the originality of content published. In order to use this project, you will have to purchase a Copyscape subscription. They don't expose their API for free accounts. You can, however, test an URL from their website.\n\n This project aims to help large content sites with multiple editors to ensure the published nodes are not partially/entirely copied from other sources.\n\n From their website:\n\n Copyscape provides a free plagiarism checker for finding copies of your web pages online, as well as two more powerful professional solutions for preventing content theft and content fraud.\n\nCopyscape Premium provides more powerful plagiarism detection than the free service, plus a host of other features, including copy-paste originality checks, batch search, private index, case tracking and an API.\n\n \n Installation and setup: \n\n \n Install the module with composer as usual. \n Go to \"Admin\" > \"Extend\" and install the module. \n Configure the copyscape module admin/config/copyscape/settings. Create an account on copyscape API service, insert the account details in copyscape module settings. \n Go to /admin/config/copyscape/settings/content and check desired content type fields to be added to the copyright checked list. You can select as many content types/fields as you like, but the available fields are limited to long texts \n After that, every node added/edited will be tested against Copyscape API functions, unless the user can bypass the check. The user with uid=1 bypasses this check. Additional roles can be added to the bypass list from project's user configuration.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2014-10-03",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

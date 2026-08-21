@@ -74,5 +74,13 @@
     "content import",
     "revisions",
     "feeds tamper"
-  ]
+  ],
+  "project_description": "Synopsis \n Allows mapping to Paragraphs fields.\n\n Features \n * Supports mapping to nested Paragraphs fields.\n\n* Supports mapping to multi-valued Paragraphs fields.\n\n* Supports updating Paragraphs fields values.\n\nNote: As long as the field you are trying to map to supports feeds,\n\nthen this module supports it, for example,\n\nInterval field does not, it needs patching, see:\n\n https://www.drupal.org/project/interval/issues/2032715 \n\n Requirements \n * Feeds ( https://drupal.org/project/feeds )\n\n * Paragraphs ( https://drupal.org/project/paragraphs )\n\n Roadmap \n The project is NOT ready to use in production,\n\nand most of the issues are fixed in the development releases only.\n\n* support for nested Paragraphs fields .\n\n* support updating existing paragraphs fields .\n\n Known problems \n 7-1.0: \n\n* Import multiple paragraphs , fixed in the dev release.\n\n Pledges \n I will add support for Drupal 8 soon. , (there is only a dev release, not stable yet)\n\n Installation \n To install, copy the feeds_para_mapper directory and all its contents to your modules\n\ndirectory.\n\n Configuration \n It has no configuration page\n\nTo enable this module, visit administer -> modules, and enable Feeds Paragraphs.\n\n Usage \n Check out the documentation page \n\n For mapping multiple values, use Feeds Tamper \n\nAnd follow this guide \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-09-29",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

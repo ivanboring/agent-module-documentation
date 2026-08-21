@@ -36,5 +36,13 @@
     "server-side",
     "validation",
     "idempotency"
-  ]
+  ],
+  "project_description": "Server-side submit request validation prevents multiple forms submits.\n\n Allows setting timeouts for the specific forms which prevent multiple form submission during that time. Optionally form configuration can be set to skip timeout if the initial submit request was finished to reduce waiting time for the next submission for the user. Saet the validation error message for the situation when multiple submits was detected.\n\n Also, the module provides the possibility to use an API for the custom controllers for using the configurable locking mechanism. That will help to keep a single processing operation per session.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-09-14",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

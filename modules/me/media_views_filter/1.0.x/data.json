@@ -36,5 +36,13 @@
     "library",
     "search",
     "fields"
-  ]
+  ],
+  "project_description": "The Media Views Filter module provides a views text filter that allows filtering/searching by both media name and file name , as well as other media attributes.\n\n The distinction between files and media is a \"Drupalism\" that is needlessly confusing for those new to Drupal. A file entity and a media entity each have their own name, but the media content views provided by Drupal core (for example at /admin/content/media) only allow filtering by media name, not file name. Meanwhile, the core files content view (at /admin/content/files) allows filtering by file name, but provides no way to edit the associated media entity(ies), and so no way to edit the file. What if a content editor is trying to find a file, but only remembers the file name, not media name? If you install this module, your content editors will thank you.\n\n Features \n \n Provides a views text filter that allows filtering/searching by media name, file name, and media image alt text field/attribute. \n Provides a views field to display file name/path. \n Provides a views field to display media image alt text. \n \n Post-Installation \n Once installed, follow these steps:\n\n \n Edit a core media view (For example at: /admin/structure/views/view/media). \n Add a new filter criteria. Check the filter titled \"Media name/file name\" and click the Add and configure filter criteria button. \n Check \"Expose this filter to visitors, to allow them to change it\". Click the Apply button. \n Remove the original \"Media: Name\" filter. \n Save the view. \n Visit the view path. You can now filter media by both media name and file name as well as media image alt text. \n \n Optionally, you may choose to include additional fields in the views output, such as file name/path and media image alt text. This will add more transparency to the way the filter works.\n\n \n Edit a core media view. \n Add a new field. Check the field titled \"File name\". \n Click the Add and configure fields button, then click the Apply button. \n \n Optionally repeat the above steps, except add the \"Alt text\" field.\n\n If you are using Drupal configuration synchronization (like you should), remember to export config when you're finished editing a view.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2024-05-08",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

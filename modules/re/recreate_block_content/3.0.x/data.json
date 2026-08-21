@@ -46,5 +46,13 @@
     "panels",
     "page manager",
     "uuid"
-  ]
+  ],
+  "project_description": "This module recreates the Block Content for a exported Custom Block.\n\n It doesn't exports the content, the block is created as a placeholder, with no content.\n\n Just enable the module and thats it, the blocks are recreated on cache clear, so a drush cr will recreate the blocks if they don't exists.\n\n Since 8.x-2.0 the module now supports any module that declare dependencies on blocks. That means that it works with panels but not with panelizer, since it doesn't add a dependency to blocks. It also creates better titles for content blocks when possible and display messages on site or drush when a block is created.\n\n If you are looking for modules that exports the block content, take a look on Fixed block content or Simple block . However if you prefer to not have content on your version control system but need to export content, take a look on Deploy .",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-04-07",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

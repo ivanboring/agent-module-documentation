@@ -50,5 +50,13 @@
     "unique sku",
     "third party settings",
     "drupal commerce"
-  ]
+  ],
+  "project_description": "Commerce AutoSKU allows administrators to generate SKU's for Drupal Commerce products automatically. Using tokens, the SKU can be generated based on the value of arbitrary product fields such as title, author, or any custom fields you have added. Additional sitewide tokens are available when the Token module is enabled. \n\n Use Cases: \n \n You don't use the SKU field for anything important, and would prefer not to be required to fill it in each time you create a product. \n You want the SKU field to follow a rigid predefined structure. An example would be SKUs like \"LARGE-RED-TEE\" which would be generated from a pattern such as\n\n [commerce-product:field_size]-[commerce-product:field_color]-[commerce-product:title] \n \n Configuration/Setup \n Once the module is enabled, you can configure the SKU pattern used for each of your product types on the main product type edit form (admin/commerce/products/types/product, for the basic \"product\" type). It is reccomended that you use the Token module to help with token entry, but it is not strictly required.\n\n If you decide to use the [product:product-id] token, you should be aware that this will cause any new products to be saved twice. This shouldn't be an issue for most people, but if you have rules in place for when a product is saved, you may not want to use this token.\n\n This module was featured on Commerce Module Tuesday. Check out this screencast to see a demonstration on how to set it up.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2011-06-10",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

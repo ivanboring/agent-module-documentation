@@ -23,8 +23,12 @@
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
-  "categories": ["Security"],
-  "subcategories": ["HTTP security headers"],
+  "categories": [
+    "Security"
+  ],
+  "subcategories": [
+    "HTTP security headers"
+  ],
   "keywords": [
     "csp",
     "content security policy",
@@ -34,5 +38,13 @@
     "security headers",
     "violation report",
     "dedicated log"
-  ]
+  ],
+  "project_description": "This module enhances any module that adds the CSP header to a site, by providing a reporting endpoint, custom storage and aggregated reports that can be used to trace issues or adapt the CSP headers.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-11-17",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9002000,
+  "core_semver_maximum": 12000000
 }

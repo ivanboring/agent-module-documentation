@@ -33,5 +33,13 @@
     "fieldable",
     "bundle",
     "one-off"
-  ]
+  ],
+  "project_description": "Content Singleton offers a fieldable content entity that allows for exactly one instance of each bundle type. This feature enables the creation of unique site pages such as About Us, Contact, and Privacy Policy, complete with custom fields and dedicated URL paths.\n\n Features \n \n Singleton enforcement - Automatically prevents creating duplicate content per type \n Fieldable - Add any Drupal field type to customize your content structure \n Custom URL paths - Define frontend paths like /about-us or /contact per type \n Revisions - Full revision support with history, revert, and restore capabilities \n Translation ready - Multilingual support via Drupal's core translation system \n Publishing workflow - Publish/unpublish control for each singleton \n Granular permissions - Per-type permissions for view, edit, delete, and revision operations \n Views integration - Expose singleton data to Views for custom displays \n \n Post-Installation \n \n Navigate to Administration > Structure > Content Singleton Types (/admin/structure/content-singleton) \n Click Add Content Singleton Type and configure:\n \n Label and machine name \n Custom frontend path (optional, defaults to machine name) \n Whether to enable revisions by default \n \n \n Use Manage fields to add custom fields to your singleton type \n Use Manage display to configure how it renders \n Navigate to Administration > Content > Content Singletons (/admin/content-singleton) to create your singleton content \n Visit the configured path (e.g., /about-us) to view the published content \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-01-16",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 11000000,
+  "core_semver_maximum": 12000000
 }

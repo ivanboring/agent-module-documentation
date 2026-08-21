@@ -40,5 +40,13 @@
     "species",
     "views",
     "rest api"
-  ]
+  ],
+  "project_description": "This module provides integration with GBIF (Global Biodiversity Information Facility). Currently, only occurrences are supported. You can build views to directly display GBIF occurrences without storing them locally. Coupled with the Views Bulk Operations module (also for Drupal 9 ), you may use it to process GBIF occurrences on your website, e.g. importing them locally with the Migrate module.\n\n Back to top \n\n Installation \n This module requires PHP 7.2 or later.\n\n Drupal 7 \n You will need the php-gbif library. In order to install it with Composer (see the Composer Manager module for Drupal 7), use the following command:\n\n composer require restelae/php-gbif \n\n Install the GBIF Views module. Ensure that the php-gbif library is detected in the status report.\n\n Drupal 9 \n Install with Composer as usual:\n\n composer require drupal/gbif2 \n\n The GBIF Views submodule relies on External Entities to provide provide direct Entity API integration with GBIF remote data.\n\n Back to top \n\n Use \n Add a new view of type \"GBIF occurrences\". Select desired fields and filters. Sorting is not supported by the GBIF API.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2021-01-20",
+  "project_changed": "2024-02-06",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

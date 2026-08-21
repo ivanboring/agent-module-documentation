@@ -47,5 +47,13 @@
     "security",
     "cron",
     "CIDR"
-  ]
+  ],
+  "project_description": "Advanced ban is a replacement to Drupal core Ban module. Advanced ban module allows administrators to ban visits to their site from IP addresses like core ban module and has additive features:\n\n \n IP range ban (IPv4 only) \n IP ban reason \n Blocked IPs expire (unblock by cron) \n Unblock all IPs \n Search IP \n Format ban text \n Protected IPs list \n \n Advanced Ban integrations \n \n Autoban \n AbuseIPDB \n \n Migrate from Core Ban \n The Core Ban module will be deprecated in Drupal 11.3 and removed in Drupal 12.0 .\n\n Blocked IP addresses will be automatically migrated from the IP Ban module during the installation of the Advban module.\n\n Just replace these rows in your code for substitute Core Ban to Advanced Ban:\n\n \n Drupal\\ban\\BanIpManagerInterface to Drupal\\advban\\AdvbanIpManagerInterface \n ban.ip_manager to advban.ip_manager \n drupal:ban to advban:advban \n \n Sponsorship \n ...have a feature you'd like to sponsor? Get in touch \n\n 🇺🇦 This module is maintained by Ukrainian developers.\n\nPlease consider supporting Ukraine in a fight for their freedom and safety of Europe. Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-07-15",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

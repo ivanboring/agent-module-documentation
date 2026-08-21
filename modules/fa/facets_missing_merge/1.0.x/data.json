@@ -35,5 +35,13 @@
     "merge",
     "search",
     "processor"
-  ]
+  ],
+  "project_description": "Provides a facet processor that allows the missing facet item to be merged into another item.\n\n Allows you to merge the missing facet item onto an actual facet item.\n\n Back to top \n\n Example \n If you have a facet with the following items:\n\n \n Cat \n Dog \n Lizard \n \n With the facet \"missing\" option enabled, an extra item with a configurable title is added for items that do not have any of those values and your list becomes.\n\n \n Cat \n Dog \n Lizard \n None \n \n With this processor enabled, you can merge the missing facet item (None) onto an\n\nexisting item (in this example, Cat is the target).\n\n \n Cat (or None) \n Dog \n Lizard \n \n Back to top \n\n Configuration \n When enabling the processor for a facet ensure that it is ordered to execute before the URL processor in the build phase. This is because the processor modifies the missing filters on a facet item.\n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-04-28",
+  "project_changed": "2026-08-11",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

@@ -49,5 +49,13 @@
     "vocabulary",
     "metadata",
     "inspire"
-  ]
+  ],
+  "project_description": "DCAT-BE extends dcat and dcat_ap with the Belgian Federal DCAT profile.\n\n It adds Belgian-specific metadata fields, controlled vocabularies, validation rules, and extra entity types required for publishing catalogs that follow the Belgian profile.\n\n In addition to extending datasets, distributions, agents, and vCards, the module introduces dedicated entities for licenses, locations, and quality measurements.\n\n Features \n \n Adds Belgian Federal DCAT profile support on top of dcat and dcat_ap . \n Introduces new entities for License, Location, and Quality Measurement. \n Replaces several generic URI fields with entity references or taxonomy terms aligned with Belgian and EU vocabularies. \n Adds services for vocabulary import, validation, and export. \n Adds a dataset export link for JSON-LD DCAT-BE output. \n \n Validation and vocabularies \n The module is designed for stricter profile compliance. It imports and uses controlled vocabularies from Belgif, the EU Publications Office, ADMS, INSPIRE, and QUDT, and it validates required DCAT-BE fields before export or publication workflows.\n\n Output \n The module provides JSON-LD export for DCAT-BE compliant datasets and includes a dedicated export route for catalog output.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-05-22",
+  "project_changed": "2026-08-13",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

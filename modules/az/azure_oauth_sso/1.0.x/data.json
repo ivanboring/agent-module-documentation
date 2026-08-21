@@ -36,5 +36,13 @@
     "sso",
     "microsoft",
     "login"
-  ]
+  ],
+  "project_description": "The OAuth Login - [azure_oauth_sso] module empowers your Drupal website with seamless login experiences using industry-standard OAuth 2.0. This translates to a more convenient and secure way for your users to access your platform.\n\n Key Benefits: \n \n Effortless Logins : Leverage existing Microsoft Azure AD credentials for user authentication, eliminating the need for separate Drupal logins. \n Enhanced Security : Benefit from the robust security protocols of Azure AD, ensuring user data remains protected. \n Simplified User Management : Automate user registration and role assignment based on pre-defined Active Directory groups or department fields. \n Streamlined Configuration : Easily map essential user profile attributes like username, email, name, and more to corresponding Drupal user fields. \n Unified User Pictures : Maintain user profile consistency by synchronizing profile pictures between Drupal and Active Directory. \n Flexible Access Control : Enforce site-wide authentication with automatic redirection to Azure AD login for unauthenticated users. \n Token Retrieval Power : Access and utilize authorization tokens within your Drupal application using the provided service injection. \n \n To retrieve the authorization token\n\n $token = \\Drupal::service('azure_oauth_sso.token_service')->getToken(); \n\n Get Started Today! \n \n Website: https://www.ispectra.co \n Drupal Modules: Explore our full range of Drupal modules. \n Support: Contact us at [ support@ispectra.co ] for any inquiries. \n Module Configuration: Submit questions directly from the module's configuration page",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-03-11",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

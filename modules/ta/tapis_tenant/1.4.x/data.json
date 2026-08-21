@@ -37,5 +37,13 @@
     "configuration",
     "key",
     "science gateway"
-  ]
+  ],
+  "project_description": "Tapis has the notion of sites & tenants ( https://tapis.readthedocs.io/en/latest/technical/authentication.html ). All resources within Tapis (e.g., users, systems, apps, jobs, etc.) are tied to a tenant, and a site can have multiple tenants. Since our Tapis modules integrate various Tapis resources with Drupal (e.g., apps, systems, etc.), there also needs to be a way to manage the corresponding Tapis sites & tenants from Drupal. That is what this module offers.\n\n In short, this module adds Drupal support for Tapis sites & tenants, allowing site admins to connect existing Tapis sites & tenants to the Drupal site. This enables other resources (such as apps, systems, etc.) to be created within certain Tapis tenants via Drupal. Thus, a Drupal site can now have Tapis resources spanning multiple sites and tenants.\n\n Tapis site & tenant are created as custom content types within Drupal.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2024-12-05",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

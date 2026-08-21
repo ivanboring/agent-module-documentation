@@ -33,5 +33,13 @@
     "photos",
     "media",
     "integration"
-  ]
+  ],
+  "project_description": "This module integrates SmugMug API with Drupal. This module provides a number of services that provide\n\naccess to various API endpoints and data.\n\n Back to top \n\n Install Module \n composer require drupal/smugmug_api\ndrush en smugmug_api\n Back to top \n\n Getting Started with API \n Register your application with SmugMug API. \n \n Visit https://api.smugmug.com/api/developer/apply \n Register your application. \n \n Configure the Module \n \n Visit /admin/config/media/smugmug_api \n Add the API Key \n Add the API Secret \n Save the form, once the form is saved you are good to go. \n \n Back to top \n\n Services and Methods provided: \n API Client Service \n SmugMug API Client, this is the core connector between Drupal and SmugMug. It uses Guzzle to request API calls.\n\n See: Drupal\\smugmug_api\\Service\\Client \n\n Album Service \n Service class for SmugMug API Album. Exposes a number of SmugMug Album APIs\n\n See: Drupal\\smugmug_api\\Service\\Album \n\n User Service \n Service class for SmugMug API User. Exposes a number of SmugMug User APIs\n\n See: Drupal\\smugmug_api\\Service\\User \n\n Image Service \n Service class for SmugMug API Image. Exposes a number of SmugMug Image APIs\n\n See: Drupal\\smugmug_api\\Service\\Image \n\n Node Service \n Service class for SmugMug API Node. Exposes a number of SmugMug Node APIs\n\n See: Drupal\\smugmug_api\\Service\\Node \n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-04-25",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

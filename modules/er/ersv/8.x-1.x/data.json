@@ -36,5 +36,13 @@
     "handler",
     "autocreate",
     "field widget"
-  ]
+  ],
+  "project_description": "This module adds an entityreference selection plugin that allows to select different selection plugins for selection and validation.\n\n Example use cases:\n\n \n Reference only future events. With this module you can have only future events (view) for selection and all events (default) for validation \n Add and reference non-reusable foo entities (e.g. media) via Inline Entity Form. With this module you can have only reusable foo entities (view) for selection and all foo entities (default) for validation \n \n Without this module, you'd be able to reference those entities in the first place, but editing would remove them. With the module you can have a broader validation than selection plugin.\n\n Known issues:\n\n* [#3176278]",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-08-02",
+  "project_changed": "2026-08-19",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

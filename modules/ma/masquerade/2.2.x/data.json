@@ -39,5 +39,13 @@
     "roles",
     "permissions",
     "sudo"
-  ]
+  ],
+  "project_description": "The Masquerade module allows site administrators (or anyone with enough permissions) to switch users and surf the site as that user (no password required). That person can switch back to their own user account at any time.\n\n This is helpful for site developers when trying to determine what a client, logged in as themselves, might see when logged into the site.\n\n The masquerade module is designed as a tool for site designers and site administrators. While masquerading, a field is set on the $user object, and a menu item appears allowing the user to switch back. Database log (watchdog) entries are made any time a user masquerades or stops masquerading as another user.\n\n Anonymous masquerading \n Any previous support to masquerade as \"anonymous\" has always been buggy and hurts performance on larger sites. To masquerade as anonymous users, logout or use the private window of your browser.\n\n Related modules \n Masquerade float block \n\n Masquerade Field \n\n Masquerade Log \n\n Masquerade nominate \n\n Also use ecosystem page to see other ones added by maintainers\n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2006-02-14",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 13000000
 }

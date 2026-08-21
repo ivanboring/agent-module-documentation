@@ -49,5 +49,13 @@
     "views argument",
     "views sort",
     "views field"
-  ]
+  ],
+  "project_description": "This Drupal module attempts to provide context for content items by displaying a view block with links to other similar content. Similarity is based on the taxonomy terms assigned to content. Views are available based on similarity within each of the defined vocabularies for a site as well as similarity within all vocabularies. \n\n What does this really mean? How should you use this module?\n\n 1) Create a freetagging vocabulary called \"Tags\" assigned to the content types on which you'd like to display the \"Similar\" view block.\n\n2) Enable the view block called \"Similar entries from the Tags vocabulary\".\n\n3) Add keyword tags to the content.\n\n You can also create own views and add similar by term Nid argument, sort handler and similarity as field \n Now when you go to the page for a tagged content item, a block will show up displaying other content in descending order of common tags (terms).\n\n Issues \n As with all contributed modules, when considering submitting an issue:\n\n \n Clear the Similar by Terms Cache. \n Read the documentation (two or three times is better). \n Review the existing issues list . (Don't forget to select \"<all>\" for the \"Status\" field.) \n Gather all the appropriate information. This may include as following: \n \n Drupal version. \n Browser type and version. \n Error messages, if any. \n Module settings. \n Submit the issue. \n \n \n The module was originally created by Jeff Robbins and sponsored by Lullabot .\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2007-06-06",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 13000000
 }

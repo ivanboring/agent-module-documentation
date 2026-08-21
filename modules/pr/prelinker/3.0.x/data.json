@@ -35,5 +35,13 @@
     "performance",
     "link header",
     "head"
-  ]
+  ],
+  "project_description": "Prelinker provides a simple way to add preconnect and preload headers to either the response header for HTTP/2 compatible servers or via a <Link> element in the <Head> section of the HTML.\n\n \n \n\n A preconnect header tells the browser that a domain will be required for page resources and that it should begin the process of connecting to the server in preparation for downloading these resources.\n\n \n\n A preload response header informs the server to push the resources to the browser via HTTP/2 so that they will be available to browser earlier during the rendering process. \n\n A preload <Link> is similar but informs the browser that it should begin downloading the resources as they will be required during rendering.\n\n \n\n Page restrictions can be set for both domains and resources, for example you may want to preload a banner image on only the home page.\n\n Release 3.x\n\n \n Version 3.x is a major release with the following changes:\n\n \n Drupal 11 only : The 3.x branch drops support for Drupal 10 and requires Drupal 11. \n Visibility conditions : Preload and preconnect entities now support Drupal's condition plugin system to control when each entry is active (e.g. restrict to specific pages, roles, or request contexts). \n `fetchpriority` attribute : Preload link elements support the `fetchpriority` attribute (`high`, `low`, or `auto`) to hint the browser's resource prioritisation.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-01-02",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

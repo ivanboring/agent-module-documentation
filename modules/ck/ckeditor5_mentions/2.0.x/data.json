@@ -33,5 +33,13 @@
     "autocomplete",
     "tagging",
     "editor"
-  ]
+  ],
+  "project_description": "CKEditor 5 Mentions module for Drupal 9/10 that provides a mention feature enables smart autocompletion based on user input. When you type a pre-configured marker, such as @ or #, a panel displays with autocomplete suggestions.\n\n You can type the “@” character to invoke the mention autocomplete UI. The demo below is configured to suggest a static list of names (“Barney”, “Lily”, “Marry Ann”, “Marshall”, “Robin”, and “Ted”).\n\n Back to top \n\n Providing the feed \n The feed can be provided as:\n\n \n A static array – Good for scenarios with a relatively small set of autocomplete items. \n A callback – It provides more control over the returned list of items. \n \n When using a callback you can return a Promise that resolves with the list of matching feed items. These can be simple strings or plain objects with at least the name property. The other properties of this object can later be used e.g. when customizing the autocomplete list or customizing the output.\n\n For a full description of the module, visit the\n\n project page .\n\n Submit bug reports and feature suggestions, or track changes in the\n\n issue queue .\n\n Back to top \n\n CKEditor 5 Mentions Module \n The CKEditor 5 Mentions module: project page \n\n Online documentation: CKEditor 5 Mentions \n\n Back to top \n\n Status 🚧 \n The module is currently under active development. Have questions about the status, roadmap or would you like to use it in your project? Contact us: ckeditor \n\n Reporting issues: issue queue \n\n Back to top \n\n Installation: \n Install as you would normally install a contributed Drupal module. For further\n\ninformation, see\n\n Installing Drupal Modules .\n\n Using composer: \n composer require drupal/ckeditor5_mentions \n\n Back to top \n\n Requirements \n PHP >= 8.1\n\n Drupal >= 9.4 || 10\n\n Back to top \n\n Configuration \n Go to /admin/config/content/mention-feed to add/edit Mention Feeds where we can configure Marker, autocomplete Entity type and other configurations. Go to /admin/config/content/formats, and configure Text editor with CKeditor5 and enable the required feed items from Mentions Configuration. Online documentation: CKEditor 5 Premium Features \n\n Back to top \n\n Uninstallation \n Using composer: \n composer require remove/ckeditor5_mentions \n\n Back to top \n\n License \n Licensed under the terms of GNU General Public License Version 2 or later.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2023-04-06",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9004000,
+  "core_semver_maximum": 12000000
 }

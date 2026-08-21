@@ -38,5 +38,13 @@
     "entity form",
     "editorial",
     "sections"
-  ]
+  ],
+  "project_description": "Overview \n This module improves the usability of the Layout Builder interface by integrating it directly into entity edit forms (node edit, etc.). By implementing this module, content editing becomes more efficient, streamlined, and aligned with standard Drupal content management workflows.\n\n Key Features \n \n Unified Editing Experience : The Layout Builder interface is embedded directly into the entity\n\n edit form, eliminating the need to save, then click a separate \"Layout\" tab, and then save again. \n Day One Usability : When creating new entities, the Layout Builder UI is available\n\n immediately, without needing the entity to be saved first. \n Translation Support : Full compatible with content translation, allowing each translation to\n\n have its own unique set of blocks and layout structure. \n Multiple Instances : Supports multiple Layout Builder instances on a single form, such as when\n\n using Paragraphs or other nested entity structures. \n Admin Theme Integration : Because it lives on the Edit form, it naturally respects your Admin\n\n Theme (Gin, Claro, etc.) rather than forcing the frontend theme context often used by the standalone Layout\n\n Builder UI. \n \n Comparison with Layout Builder Formatter \n This module works hand-in-hand with the Layout\n\n Builder Formatter module to provide a complete \"Layout as a Field\" experience:\n\n \n Layout Builder Widget (This Module): Handles the Editing experience. It\n\n provides the form widget to edit layouts on the Node Edit form. \n Layout Builder Formatter : Handles the Display experience. It allows you to\n\n position the layout output as a standard field in the \"Manage Display\" settings, ensuring it renders where you\n\n want it relative to other fields. \n \n Installation & Usage \n \n Install and enable the module. \n Go to Manage Form Display for your entity (e.g.,\n\n admin/structure/types/manage/article/form-display ).\n \n Ensure the Layout field is enabled. \n Set the widget to Layout Builder Widget . \n Now, when you edit a node, the Layout Builder interface will appear directly on the form. \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-03-02",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8007007,
+  "core_semver_maximum": 12000000
 }

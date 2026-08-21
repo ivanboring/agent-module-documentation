@@ -44,5 +44,13 @@
     "drush",
     "development",
     "schema migration"
-  ]
+  ],
+  "project_description": "In [#2976035] the ability to run drush entup was removed, see the related change record for more details. This project aims to restore this functionality as a developer-only tool.\n\n The goal of this module is to have a quick way to apply schema updates while developing new entity types and ending up incrementally adding/removing/changing entity type/field definitions. \n\n When these changes are part of an official release (and not in the scope of a code development session), they should absolutely rely on DB update functions, as explained in the CR above, because that's the only way the entity schema update process can be predictable and reliable.\n\n For this reason, this module depends on Devel and is not meant to be enabled in production environments or relied upon in deployment workflows , see [#3082442] and [#3062511] for more details.\n\n Usage \n This command is a drop-in replacement of the legacy drush entup or drush entity-updates core commands, however drush updb --entity-updates is no longer supported. Just run the drush entup command as before.\n\n Do not use this to fix the Mismatched entity and/or field definitions error: again, this is not meant to fix production sites. \n\n If you encounter that error you should identify which module defines the problematic entity type or field definition and open a bug report or support request in its issue queue.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-03-11",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

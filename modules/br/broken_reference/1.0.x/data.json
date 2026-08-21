@@ -33,5 +33,13 @@
     "audit",
     "integrity",
     "references"
-  ]
+  ],
+  "project_description": "Find the existing broken entity references to improve quality.\n\n Ever had a situation where removing entity suddenly prevents unexpected pages to load?\n\n Maybe your site now throws error like this\n\n \n\nThe website encountered an unexpected error. Please try again later.\n\nError: Call to a member function getCacheTags() on null in Drupal\\views\\Plugin\\views\\query\\Sql->getCacheTags() (line 1677 of core/modules/views/src/Plugin/views/query/Sql.php).\n\n \n\n Many cases, this is result of some other entity referencing to the entity that just got deleted.\n\n This module offers you quick way to check whether you have such broken references laying around.\n\n Note : This module does not fix those entities, but allows you to research if you are in need of some hook_ENTITY_delete or hook_ENTITY_TYPE_delete implementations (or the existing ones need some more attention). Also note that this module reveals only the broken references that already exists, not the ones that are yet to come.\n\n For each entity type there should be implementation of such hook, which either removes the referencing entity or cleans up the references. Note that even if you are certain that the entity (of some type) never gets deleted, be prepared for that one case where it needs to be.\n\n How to use: \n\n \n Install this module \n Head to Reports -> Broken entity references (or just admin/config/development/broken_reference ) \n You'll see quick report here already \n Press the \"Build report\" to get full listing \n Tell your employer that each represented line might cause sudden page crash at some point \n \n In the report target entities are the entities that does not appear in the system anymore, source entities are the ones that still has reference to those target entities. If numbers does not match, it means that one source entity is referencing to multiple removed target entities in the same field.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2021-03-04",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -50,5 +50,13 @@
     "items_per_page",
     "hook_pager_serializer_row_alter",
     "json api"
-  ]
+  ],
+  "project_description": "The Page Serializer extends the default Serializer to include pagination data. This module is intended to be used with rest and the Rest export View with a decoupled UI. Including the pagination, data lets the front end know the total record count and other useful information. This eliminates the need to make another rest endpoint to get the total number of records.\n\n Configuration \n \n Navigate to Administration > Structure > Views > Add view and create a\n\nnew view of REST EXPORT \n In the Format, select the 'Pager Serializer'. \n On the style settings, provide the Accepted request formats to use. \n In the Pager, select the 'Paged output, full pager' \n Save the settings and view the result.\n \n \n Sample output \n Pager Serializer produces output like the following.\n\n \n\n{\n\n rows: [\n\n {...},\n\n {...}\n\n ],\n\n pager: {\n\n current_page: 0,\n\n total_items: 6,\n\n total_pages: 2,\n\n items_per_page: 5,\n\n }\n\n}\n\n \n\n Similar projects and how they are different \n Using Serializer with Views, only the rows are returned. This module extends Serializer to return the pagination data. All the property names are customizable, and properties can be disabled to meet the needs of the front end.\n\n Views Serialization Pager is another contributed module which also exposes pagination data.\n\n Develop Pager Serializer using DDEV ⚙ \n If you haven't already, install DDEV .\n\n \ngit clone git@git.drupal.org:project/pager_serializer.git\ncd pager_serializer\nddev config --project-type=drupal --docroot=web --php-version=8.4 --corepack-enable --project-name=pager-serializer\nddev add-on get ddev/ddev-drupal-contrib\nddev add-on get s-ayers/ddev-drupal-contrib-mkdocs\nddev start\nddev poser\nddev symlink-project\nddev drush site:install -y\nddev drush pm:install pager_serializer -y\nddev drush config:export -y\nddev drush user:login\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-02-26",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

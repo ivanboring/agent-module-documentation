@@ -39,5 +39,13 @@
     "php",
     "templates",
     "components"
-  ]
+  ],
+  "project_description": "Define entity view builders as plugins, defined per bundle. We call it PEVB in short, and heavily rely on it on our Drupal-starter .\n\n Back to top \n\n Posts \n \n Bare-Bones Theming in Drupal with PEVB \n https://www.gizra.com/content/pevb-layout-builder/ \n https://www.gizra.com/content/pevb-composable-element-trait/ \n \n Back to top \n\n Quickstart \n This module comes with an example module, so you could quickly spin it.\n\n \n Enable \"Pluggable Entity View Builder Example\" module. \n Clear cache, so the new settings will kick in. \n Create a new Article node, along with the title, body some tags and an image. \n At this point nothing should happen, as we haven't enabled the setting that \n overrides core's default Node entity view builder. \n Reload the article node, and see how it's theme has changed. \n \n It will look roughly like this:\n\n \n\n Back to top \n\n Paragraphs Integration \n PEVB has integration with Paragraphs module, as Paragraphs are nothing more than an entity, similar to a Node.\n\n With the Paragraphs module, we may create landing pages such as the homepage, search\n\npage, contact us, etc., that are highly customizable by site administrators.\n\nThis can be an alternative to core's Layout builder, in that it allows\n\ndevelopers to theme each element by itself, while site administrators can mix\n\nand match those elements into a page.\n\n See it in action:\n\n \n Enable the \"Pluggable Entity View Builder Paragraphs Example\" module. \n Article content type will now have a new \"Paragraphs\" field. \n Create a few Paragraphs and view the node. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-09-21",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 13000000
 }

@@ -46,5 +46,13 @@
     "email.validator",
     "service override",
     "mail"
-  ]
+  ],
+  "project_description": "Synopsis \n Drupal core uses the RFCValidation from egulias/EmailValidator to validate email addresses. However, the RFC allows for email addresses with no domain , which is often not the desired behaviour.\n\n This module implements all other Validations provided by egulias/EmailValidator as services.\n\nMore importantly, on the module config page, you can also replace the Core service (RFCValidation) with any of your choosing and even combine multiple using the MultipleValidationWithAnd validation.\n\n Included Validations:\n\n \n DNSCheckValidation (default) \n MessageIDValidation \n MultipleValidationWithAnd \n NoRFCWarningValidation \n RFCValidation, same as core, so only as option for MultipleValidationWithAnd. \n SpoofCheckValidation \n \n More info about the validations: https://github.com/egulias/EmailValidator#available-validations \n\n DNSCheckValidation is the default replacement Validation.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2022-03-16",
+  "project_changed": "2026-08-19",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

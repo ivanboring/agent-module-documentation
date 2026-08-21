@@ -35,5 +35,13 @@
     "short link",
     "autoshortqr",
     "page"
-  ]
+  ],
+  "project_description": "This modules adds autocomputed short url and QR code fields to nodes and terms.\n\n Installation \n Install the module using composer: composer require drupal/autoshortqr \n\nEnable the module using drush: drush en autoshortqr \n\n Dependencies \n The module requires drupal/barcodes and tecnickcom/tc-lib-barcode . For tecnickcom/tc-lib-barcode, the general packagist repo may be necessary.\n\n Setup \n Navigate to the content type ( /admin/structure/types/manage/TYPE ) or vocabulary ( /admin/structure/taxonomy/manage/TYPE ).\n\nIn the section Autocode, activate the desired functions.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2022-07-14",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

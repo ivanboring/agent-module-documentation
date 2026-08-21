@@ -36,5 +36,13 @@
     "messages",
     "editorial",
     "consistency"
-  ]
+  ],
+  "project_description": "Workbench Tabs integrates local task tabs and Drupal messages into the Toolbar. This means that custom themes don't need to place and style the local tasks, prevents long Drupal messages from breaking the layout during development, and improves editorial usability by placing the \"Edit\", \"View\", and \"Revisions\" tabs in a consistent location.\n\n Using this module \n \n In order to see the new toolbar additions, you must grant some roles the use workbench_tabs permission. \n If a user does not have the use workbench_tabs permission, status messages will be displayed in their normal location on the page. Custom themes should still provide styling for status messages so that they are legible and meaningful in these cases. \n If your block configuration places the local tasks in another part of the page, you must manually remove those blocks for each theme.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-09-07",
+  "project_changed": "2026-08-19",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

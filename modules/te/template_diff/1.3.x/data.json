@@ -33,5 +33,13 @@
     "compare",
     "theming",
     "developer"
-  ]
+  ],
+  "project_description": "When developing a theme, there is often a need to understand why a theme needed to override the template provided by the base theme. Displaying the diff between the two templates would help with this.\n\n This module provides a command that accepts a template name and will display the diff between two specified themes or modules. If no theme is specified it defaults to the active theme.\n\n Examples: \n\n Compare the the views-view template in my_theme theme vs your_theme .\n\n drush template_diff:show views-view my_theme your_theme \n\n Compare the the views-view template in my_theme theme vs your_module .\n\n drush template_diff:show views-view my_theme your_module \n\n Compare the the views-view template in the active theme vs its base theme.\n\n drush template_diff:show views-view",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2021-01-06",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

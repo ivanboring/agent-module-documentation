@@ -38,5 +38,13 @@
     "validation",
     "rsa",
     "ed25519"
-  ]
+  ],
+  "project_description": "Provides an sshkey_default field type for storing OpenSSH public keys on any fieldable Drupal entity (User, Node, custom entity types). Configure it in Field UI like any other field.\n\n \n Per-field allowlist of accepted algorithms ( ssh-rsa , ssh-dss , ssh-ed25519 ). \n Per-field minimum RSA modulus length (default 2048 bits). \n Structural validation via phpseclib rejects malformed and curve-invalid keys. \n Stores an OpenSSH-style SHA-256 fingerprint ( SHA256: , matching ssh-keygen -lf ) and the key's comment as an editable name. \n Access governed by the host entity's own field-access logic — no separate permissions. \n \n Release planning \n If you'd like to see a stable release, please help with [#3580605].",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2010-03-04",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 13000000
 }

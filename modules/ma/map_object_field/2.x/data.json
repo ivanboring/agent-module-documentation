@@ -35,5 +35,13 @@
     "google maps",
     "geometry",
     "field"
-  ]
+  ],
+  "project_description": "Module provides the field which allows editors to draw shapes(circles, lines, polygons, polylines, markers, rectangles) on Maps. Current version supports Google maps, but more map providers(Yandex, OSM) can be added in future.\n\n Back to top \n\n Features \n \n New field type \"map_object_field\" \n Configurable widget, you can configure types and number of objects available for drawing. \n Configurable formatter, admin can define width and height of displayed map. \n Every drawn shape has title and description which are displayed inside infowindow on click event(see screenshot). \n Editors can define fill and stroke colors for the shape \n \n Back to top \n\n REQUIREMENTS \n Drupal 8.3\n\n Back to top \n\n INSTALLATION \n Install as you would normally install a contributed Drupal module. See: https://www.drupal.org/documentation/install/modules-themes/modules-8 for further information.\n\n Back to top \n\n CONFIGURATION \n \n Get Google Map API key( https://developers.google.com/maps/documentation/javascript/get-api-key ),then visit /admin/configuration/map-object-field and set the key. More info: ( https://developers.google.com/maps/documentation/javascript/usage ) \n Don't forget to add your domains to google maps API \"white list\" for this key \n Attach field to any entity \n Configure field widget \n Configure field formatter \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-05-02",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

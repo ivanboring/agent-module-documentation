@@ -38,5 +38,13 @@
     "drush",
     "performance",
     "revisions"
-  ]
+  ],
+  "project_description": "Please note that this project is experimental. \n\n The Entity Usage Queue Tracking module adds support to Entity Usage for tracking via a queue. When the entity usage is tracked via a queue, the tracking information will be updated when cron runs. This means some references between entities could be missing. Only use this setting when you are sure there are no automatic processes using the tracking information to update or delete content.\n\n Since this is for advanced users only, this setting is not exposed in the UI. This can be enabled through the settings.php file by adding the following line:\n\n $config['entity_usage_queue_tracking.settings']['queue_tracking'] = TRUE;\n\n You also need to periodically run `drush clean_usage_table` to clean references\n\nto outdated revisions.\n\n Code for this module is largely based on https://www.drupal.org/project/entity_usage/issues/3015287#comment-1441…",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2022-10-07",
+  "project_changed": "2026-08-04",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

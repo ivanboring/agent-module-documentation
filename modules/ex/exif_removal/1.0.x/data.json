@@ -34,5 +34,13 @@
     "gps",
     "metadata",
     "upload"
-  ]
+  ],
+  "project_description": "EXIF Removal is a privacy-focused Drupal module that automatically strips sensitive metadata from uploaded images. It protects user privacy by removing GPS locations, device information, and timestamps that could potentially expose personal information.\n\n The module works silently in the background during the file upload process. When users upload images through any Drupal form (content creation, user pictures, media library, etc.), the module intercepts the upload, processes the image to remove sensitive metadata, and then allows the upload to complete normally.\n\n It uses GD and imagejpeg() to create a new copy of the image, imagejpeg() will reencode the image, we use the quality value 80 because the comment from PHP page https://www.php.net/manual/en/function.imagejpeg.php#76780 \n\n \nI did an experiment with the image quality parameter of the imagejpeg() function when creating jpegs. I found the optimal image quality with file size is taken into account to be 80 - very close to the default value of 75.\n\n Anything over 80 results in an unnecessary increase in file size without much increase in image quality.\n\n \n \n\n // Remove all EXIF data from the image.\n\n if ($file->getMimeType() == 'image/jpeg') {\n\n // Use GD to strip all EXIF data by re-saving the image.\n\n $image_resource = @imagecreatefromjpeg($path);\n\n if (!$image_resource) {\n\n // Failed to create image resource.\n\n return FALSE;\n\n } \n\n // Create a new image without EXIF data.\n\n imagejpeg($image_resource, $path, 80);\n\n imagedestroy($image_resource);\n\n return TRUE;\n\n }\n\n It also supports imagemagick if image_effects is installed.\n\n \n\n $image = $this->imageFactory->get($file->getFileUri());\n\n if ($this->moduleHandler->moduleExists('image_effects')\n\n && $image->getToolkit()->getPluginId() == 'imagemagick') {\n\n $toolkit = $image->getToolkit();\n\n if ($toolkit->apply('strip')) {\n\n $image->save();\n\n }\n\n }",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-03-12",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10003000,
+  "core_semver_maximum": 12000000
 }

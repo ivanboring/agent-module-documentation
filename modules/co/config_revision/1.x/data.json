@@ -37,5 +37,13 @@
     "history",
     "revert",
     "governance"
-  ]
+  ],
+  "project_description": "This module allows creating revision for config entities.\n\n The module adds a lightweight revisionable entity which is bundleable and non-translatable. The admin settings page can be used to make any config entity revisionable. A new revision is saved every time a config entity is saved. The config revision entity ignores the changes made to the config entities during config import. \n\n This module depends on the following core patch [#2350939-202] for revision UI to work properly.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2020-05-24",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

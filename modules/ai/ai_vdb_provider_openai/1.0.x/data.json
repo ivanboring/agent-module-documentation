@@ -37,5 +37,13 @@
     "vector database",
     "embeddings",
     "search"
-  ]
+  ],
+  "project_description": "NOTE: this module is under heavy development and is not production ready (yet).\n\n \n\n The AI Search OpenAI Vector Store Provider module integrates OpenAI's Vector Store API with Drupal's Search API, enabling semantic search powered by OpenAI's embedding and retrieval infrastructure. Instead of managing your own vector database, this module lets OpenAI handle document chunking, embedding generation, and vector storage — you simply upload content and search with natural language queries.\n\n Features \n Core Functionality \n \n Provides an OpenAI Vector Store backend for the AI Search module \n Automatically indexes Search API content to OpenAI's hosted vector storage \n Enables semantic (meaning-based) search rather than just keyword matching \n No embedding API calls required — OpenAI handles vectorization server-side \n \n Search API Integration \n \n Works with standard Search API Views — no custom display code needed \n Supports Views exposed filters on fields configured as \"Filterable Attributes\" \n Respects Drupal entity access permissions at search time \n Swappable with other AI Search backends (Milvus, Pinecone) without changing your Views \n \n Content Configuration \n \n Uses AI Search's field categorization: Main Content, Contextual Content, and Filterable Attributes \n Main Content and Contextual Content are indexed for semantic search \n Filterable Attributes (up to 16) enable Views filters by content type, taxonomy, date, etc. \n \n When to Use This Module \n \n You want semantic/AI-powered search without managing vector database infrastructure \n You're building a conversational search or RAG (Retrieval Augmented Generation) feature \n You already use OpenAI and want to consolidate your AI services \n You need a search backend that understands meaning, not just keywords \n \n Known Limitations \n \n Facets with counts are not supported (OpenAI doesn't return aggregations) \n Results are sorted by relevance only — no custom field sorting \n Maximum 16 filterable attributes per indexed item \n Requires an OpenAI API key with Vector Store access",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-06-03",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

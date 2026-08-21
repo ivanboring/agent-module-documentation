@@ -42,5 +42,13 @@
     "reference",
     "orphan purge",
     "needs save"
-  ]
+  ],
+  "project_description": "Overview \n Adds an Entity Reference field type with revision support, allowing specific entity revisions to be references. This is useful for modules like Paragraphs and Inline Entity Form .\n\n A common use case is where an entity is actually part of a parent entity (with an embedded entity form). When the parent entity is updated, the referenced entity is also updated, thus the previous revision of the parent entity should still be pointing to the previous version of the entity to fully support revision diff and rollback.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2015-01-21",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

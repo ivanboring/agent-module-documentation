@@ -39,5 +39,13 @@
     "entity browser",
     "image_widget_crop",
     "focal point"
-  ]
+  ],
+  "project_description": "This module is created to workaround a problem with the \" Image Widget Crop \" module. The problem is we cannot reuse the same image and have different crops of same crop type.\n\n This module solves the issue by duplicating the images used for cropping and deleting duplicate images when no longer needed. The duplication of the images and deleting them when they are needed no longer is handled internally, so users won't notice any change in workflow.\n\n This module also provides a Field Widget, \"ImageWidget crop (with browser)\", allowing the user to browse already existing images on the site rather than uploading images just for the field.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2020-12-08",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

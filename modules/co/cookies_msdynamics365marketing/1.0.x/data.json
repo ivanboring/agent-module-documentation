@@ -35,5 +35,13 @@
     "dynamics 365",
     "gdpr",
     "anonymize"
-  ]
+  ],
+  "project_description": "This module is very specific and work in progress. Do NOT use in production! \n\n Provides anonymize callbacks for Dynamics 365 Forms with COOKiES Consent Management Cookie Banner as described in How to disable non-essential Dynamics 365 Marketing cookies :\n\n This module does not add, handle or block any MS Dynamics 365 Form Code snippets. Neither it blocks the MS Dynamics 365 Marketing Scripts or Forms or Cookies. Its only focus is to set / remove the \"anonymize\" flag as documented. \n\n Back to top \n\n Functionality \n This module neither adds the MS Dynamics 365 Marketing Forms code to the project,\n\nnor it provides functionality to handle the codes.\n\n It simply adds the \"anonymize: true\" / \"anonymize: false\" flag JS Snippet from\n\n https://docs.microsoft.com/en-us/dynamics365/marketing/cookies#how-to-disable-non-essential-dynamics-365-marketing-cookies \n\nbased on the consent decision.\n\n \n If conset IS NOT given (default), it adds \"anonymize: true\". \n If consent IS given, it adds \"anonymize: false\". \n \n Technically spoken: \n If consent is not given , places\n\n \n\n function d365mktConfigureTracking() {\n return {Anonymize: true};\n }\n globally.\n\n If consent is given , calls\n\n \n\nMsCrmMkt.reconfigureTracking({Anonymize: false})\n\n \n\n Back to top \n\n How to use \n \n Enable and configure COOKiES module and this module. \n Add the MS Dynamics 365 Marketing Forms to your page like before. \n Ensure the anonymization is added to every page and is working as expected! \n \n Back to top \n\n How to test \n Call d365mktConfigureTracking(); in your browser console with and without cookie consent to check if anonymize: \"true\" or \"false\" is returned. If the function is not defined, something is broken.\n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2022-06-24",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

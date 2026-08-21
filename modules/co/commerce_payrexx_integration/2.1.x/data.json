@@ -35,5 +35,13 @@
     "commerce",
     "gateway",
     "webhook"
-  ]
+  ],
+  "project_description": "Back to top \n\n Overview \n This project provides a Payrexx integration for the Drupal Commerce payment and checkout system.\n\n Payrexx is a Swiss payment service provider that provides payment with all popular payment methods.\n\n Back to top \n\n Features \n This project includes a base module that allows an offsite payment with Payrexx.\n\n Back to top \n\n Installation and usage \n \n Install the module: composer require drupal/commerce_payrexx_integration \n\nEnable the module by running: drush en commerce_payrexx_integration or via extend page.\n \n \n Configure the module by following the steps:\n \n Create the payment gateway under /admin/commerce/config/payment-gateways and select \"Payrexx (Redirect to Payrexx)\" as plugin \n Populate required fields, e.g. instance name, secret, VAT, Fee (note: one of the ways to get instance name is from the first part of the URL when you log in to the admin panel eg. https:// instancename .payrexx.com/) \n \n \n \n Back to top \n\n Requirements \n You will need the following modules:\n\n Drupal Commerce (Commerce Payment module) \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2022-04-05",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -33,5 +33,13 @@
     "exclude",
     "export",
     "environment"
-  ]
+  ],
+  "project_description": "Allow site administrators to control some configuration settings when using the configuration management system.\n\n Drupal 8's configuration management is great for controlling site\n\nconfiguration, but sometimes a developer wants to loosen the shackles\n\non certain configuration items and let the site administrator change\n\nthe setting without it being overwritten by the configuration\n\nmanagement system on the next configuration sync.\n\n Deconfig allows for marking some configuration entries as exempt from import/export directly in the YAML files. This means that the fact that a configuration is excluded is documented right where it was supposed to be, and is obvious in code reviews. As a precaution, the configuration system will error on import/export if the item somehow ends up in the YAML file anyway. Alternatively, items can be \"soft\" deconfiged, which allows for a default value that will only be used if the site doesn't have the configuration item, for those items that needs a default value in order to not break things.\n\n See the readme for usage details.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-11-17",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

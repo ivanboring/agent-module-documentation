@@ -34,5 +34,13 @@
     "filter",
     "allowlist",
     "security"
-  ]
+  ],
+  "project_description": "This module provides a Restrict images to trusted sites filter which allows\n\nadministrators to provide a list of allowed hosts/domains for hosting images\n\nused in text fields.\n\n For security purposes, it's best to avoid letting users insert images from untrusted hosts. Drupal core provides a Restrict images to this site filter to provide security\n\nfor user-uploaded images in text fields. Unfortunately this is incompatible with\n\nsites that hosts user-loaded files offsite. This module fills a need by allowing sites that host user-uploaded images offsite ( CDN , S3/Cloudflare , etc) to restrict image URLs to trusted hosts.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-05-07",
+  "project_changed": "2026-08-17",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

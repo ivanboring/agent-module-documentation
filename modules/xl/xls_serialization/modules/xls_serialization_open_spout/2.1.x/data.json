@@ -45,5 +45,13 @@
     "memory",
     "export",
     "web services"
-  ]
+  ],
+  "project_description": "This module provides an Excel encoder for the Drupal 8 Serialization API. This\n\nenables the XLS format to be used for data output (and potentially input,\n\neventually). For example:\n\n \n Drupal 8's REST module can return data in XLS format. \n Views can output XLS data via a 'REST Export' view, or a\n\n Data Export view. \n Module developers can leverage XLS as a format when using the Serialization\n\nAPI. \n \n Installation \n \n Download and install PHPOffice/PhpSpreadsheet . The suggested installation method is to use Composer . \n Enable the xls_serialization module. \n \n Creating an XLS view \n \n Create a new view \n Add a Data Export display (this assumes the use of the Views Data Export) module. Otherwise add a REST Export view. \n Check only 'xls' for the accepted request formats under Format > Data export > Settings . \n Add desired fields to the view. \n Add a path, and optionally, a filename pattern. \n \n Related modules \n \n The Views Data Export Excel module extends the DataExport Views style and display classes from the Views Data Export module using the serializer provided by this module. \n Back to top",
+  "maintenance_status": "Seeking co-maintainer(s)",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-08-18",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

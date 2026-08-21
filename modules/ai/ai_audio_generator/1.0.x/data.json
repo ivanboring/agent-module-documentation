@@ -41,5 +41,13 @@
     "audio",
     "tts",
     "accessibility"
-  ]
+  ],
+  "project_description": "Leverages either Google TTS or AI Text to Speech (e.g. Gemini, ElevenLabs, OpenAI, etc) to generate long audio files using a curated view mode controlled version of your content item using natural voice.\n\n Features \n \n Provides a 'Save and generate audio' button next to save to allow content editors to trigger generation on demand when they have made a notable change. \n Runs via batch with chunking breaking at natural pauses (between paragraphs where possible, otherwise sentences) to ensure smooth audio when combining the per chunk audio clips. \n Handles any length of content. \n Provides voice control (dictated by e.g. OpenAI, Gemini, or other AI Provider options) or via Google TTS options, including language selection like en-GB instead of en-US. \n Allows SSML pronunciation control dictionary management (basic) when using Google TTS (or basic phonetical find and replace for non SSML AI generated voices). \n Text being read has fine-grained controlled via View Mode and template \n Automated test coverage for reliability and stability. Security coverage opt-in once stable release made. \n \n Post-Installation \n See the README.md file (to be transferred here eventually).\n\n Optional libraries \n Optionally composer require google/cloud-text-to-speech if you prefer to use Google TTS; it is cheaper for volume but sounds less natural. \n\n Similar projects \n \n https://www.drupal.org/project/tts - Does not handle batch, generates on demand rather than editor in control. Offers more out of the box rendering whereas this module simply produces the audio media file. Does not give the view mode and template control needed to curate the text. \n https://www.drupal.org/project/ai -> AI Automators - The automators module can generate simple audio files but does not handle joining large chunks together. The UI is quite different focused on simple on demand changes rather than giving the site editor control (which is important to manage costs on large reports) and does not give the view mode and template control needed to curate the text. \n https://www.drupal.org/project/elevenlabs - Uses AI Automators under the hood. It however also provides an AI provider, so ElevenLabs can be set as the provider. \n https://git.drupalcode.org/project/ai_audio_field - Relies on ffmpeg being installed to handle large file merging (which is not available on many hosts) and ultimately uses the AI Automator UI \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2026-04-15",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

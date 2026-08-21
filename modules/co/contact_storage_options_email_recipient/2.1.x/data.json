@@ -35,5 +35,13 @@
     "recipient",
     "email",
     "routing"
-  ]
+  ],
+  "project_description": "The contact_storage module supplies an 'Options email' field type which can be used to determine the recipient of the contact form. When an 'Options email' field is added to a form, you are still required to enter a recipient's email address on the contact form edit page. This results in an email sent to the entered recipient address and the recipient selected in the 'Options email' field.\n\n This module removes the recipient field when an required 'Options email' is added to the form and places a notification on top of the edit page: \"The recipient of this form is determined by the '[field name]' field.\". When a non-required 'Options email' field is added to the edit page: \"An optional additional recipient of this form is determined by the '[field name]' field.\".",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2018-07-18",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

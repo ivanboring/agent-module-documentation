@@ -37,5 +37,13 @@
     "vector database",
     "rag",
     "embeddings"
-  ]
+  ],
+  "project_description": "Built by a human using an AI assistant: 🤖 ➕ 🧠 \n \n A lot of the code in this module has been created using an AI assistant .\n\n \n \n\n \n The Qdrant VDB Provider is a Drupal module that integrates with the AI module to enable vector searches using Qdrant , a high-performance open-source vector database. It works seamlessly with AI Search and other vector-aware modules.\n\n Back to top \n\n Features \n \n Integration with AI and AI Search modules \n Collection creation and management in Qdrant \n Vector indexing, updating, and deletion \n Vector search with and without filters \n Supports cosine, dot product, and Euclidean similarity \n Compatible with local or remote Qdrant instances \n \n Back to top \n\n Why Qdrant? \n \n Qdrant is optimized for AI use cases and semantic search. It offers:\n\n \n High performance and scalability \n Advanced filtering and payload support \n Easy deployment and integration \n \n Back to top \n\n Installation \n composer require drupal/ai_vdb_provider_qdrant Back to top \n\n Post-Installation \n \n Enable the module using the UI or Drush:\n\n drush en ai_vdb_provider_qdrant \n Configure the Qdrant connection at:\n\n /admin/config/ai/vdb_providers/qdrant \n \n Create a Search API server at:\n\n /admin/config/search/search-api/add-server \n\n Use \"AI Search\" as the backend and \"Qdrant vector DB\" as the provider.\n \n Set up a new index and configure it using AI Search documentation. \n \n Back to top \n\n Requirements \n \n Qdrant server (local or remote) \n AI module \n AI Search module \n Key module \n Search API module \n PHP curl extension \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-06-09",
+  "project_changed": "2026-08-20",
+  "core_semver_minimum": 10002000,
+  "core_semver_maximum": 12000000
 }

@@ -39,5 +39,13 @@
     "commerce",
     "gateway",
     "latin america"
-  ]
+  ],
+  "project_description": "This is the continuation project for Commerce ePayco (a Colombian payment gateway), integrated here now.\n\n ePayco offers several tools for a project. It includes e-commerce payment gateway, payment links and others.\n\n Since many of those features maybe used out of a Drupal commerce website, we've moved Commerce ePayco as a sub-module depending on this last one, to be enabled only when Drupal commerce is available. This way, you can to take advantage of the ePayco integration without having a fully-available Drupal commerce instance. useful to do your own implementations/features easily. Also, Commerce ePayco has a complete rework to take advantage of this new feature. Therefore, if you're already an user of previous version, then you need to uninstall it before using this module.\n\n Available features:\n\n \n Integrate ePayco Off-site and \"On-page\" (iframe) payments with Drupal commerce 2.x. \n Store several sets of ePayco settings as configuration entities, and use them according your needs. \n Use pre-defined settings for Drupal commerce gateways and override them per store (useful to allow sellers to have their own payment account at ePayco). \n Alter payment data dinamically before sending to the gateway (a basic hook is provided for that purpose). \n Implement your own features (without Drupal commerce) by using a single/extendable Drupal service. \n Render free payment buttons (no need for Drupal commerce). Useful for quick donation pages. \n Basic integration with Business Rules module. ( NOT SUPPORTED YET IN DRUPAL 10, until BR for D10 is released )",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-09-07",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

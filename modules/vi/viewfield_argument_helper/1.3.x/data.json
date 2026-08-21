@@ -39,5 +39,13 @@
     "editorial",
     "views",
     "helper"
-  ]
+  ],
+  "project_description": "Provides a helper/info widget for the Viewfield arguments textfield.\n\n Making embedded Views can be tricky for content editors, particularly if they need to add contextual filtering. Viewfield exposes the contextual arguments as a text field, requiring the user to compose these arguments properly. For example \"204,95/72\" might mean pass (filter by) terms 204 OR 95 on the first contextual argument and node ID 72 on the second. But you have to know:\n\n - there are two contextual filters configured for this View display\n\n- the first is a term (which vocabularies?)\n\n- the second is a node (which bundles?)\n\n- how to figure out the term IDs and node IDs\n\n In its first iteration, this module attempts to lookup available options (i.e., entities) for the contextual arguments, based on how they're configured in the View, and expose a list of options to the user. The user still has to compose the contextual argument string, but at least they don't have to hunt as hard for what tid to use. A contextual argument composition wizard UI is on the long term roadmap.\n\n Since this module uses, in part, the argument validation settings to generate a list of entities, setting good validation on the contextual argument will limit the lookup table to relevant filter items. For instance, if you intend to limit a taxonomy tid argument to a specific taxonomy, setting up validation for that vid will restrict entities in the lookup table to that vid.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2021-02-26",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

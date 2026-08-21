@@ -35,5 +35,13 @@
     "sso",
     "authentication",
     "deny-list"
-  ]
+  ],
+  "project_description": "The CAS User Ban module prevents the creation of users based on their CAS username.\n\n When you delete a user, the module adds an option to ban the account, blocking future account regeneration.\n\n Why this is useful? \n\n CAS module can be configured to automatically create Drupal accounts on first-time CAS logins.\n\n If a user has produced unwanted content (e.g., spam) and you delete both the user and their content, the account can be recreated on the next login.\n\n This module lets you delete + ban in one step, so the user cannot log in again because the account won’t be recreated.\n\n Note: The module does not prevent user login for existing users with a related banned CAS username.\n\n \n Requirements \n \n CAS",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-06-12",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

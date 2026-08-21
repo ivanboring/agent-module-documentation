@@ -35,5 +35,13 @@
     "css",
     "theming",
     "styling"
-  ]
+  ],
+  "project_description": "Adds or removes classes from form elements based on the URL or route name or Form ID. For example if a module doesn't define a unique class for a button, you can add one with this module. You don't have to create a form alter hook for it.\n\n You can also remove any classes that are added via other modules. But be aware as this can result in AJAX errors on forms where a certain button is missing a required class. (For example if you remove the success class from the commerce Add to cart button, it could result to LogicException: The database connection is not serializable errors). So form item class removal should be your last resort during styling.",
+  "maintenance_status": "Seeking new maintainer",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2022-06-01",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

@@ -35,5 +35,13 @@
     "shim",
     "legacy",
     "api"
-  ]
+  ],
+  "project_description": "Backward Compatibility allows you to install old Drupal modules in current Drupal.\n\n Once you install Backward Compatibility, Drupal will no longer prevent you from installing old Drupal modules. The module you are trying to use may still not work in the latest version of Drupal, but Drupal will no longer stop you from doing what you tell it to do.\n\n This module works around Drupal modules that are missing this line in their info.yml files:\n\n \n\ncore_version_requirement: ^9 || ^10 || ^11\n\n \n\n Back to top \n\n Should I use this module?\n\nThis is a significantly better approach than patching a bunch of contributed modules that otherwise work in current Drupal because patching .info files is difficult. This module makes it easier to test and work on module upgrades to the latest Drupal version.\nWhat does this not do?\nThis is not a backwards compatibility layer for Drupal. This module does not fix old Drupal modules with deprecated code. I'd love to make that happen if I get ambitious though!\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-09-17",
+  "project_changed": "2026-08-20",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

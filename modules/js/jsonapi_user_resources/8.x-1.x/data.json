@@ -39,5 +39,13 @@
     "user",
     "api",
     "resources"
-  ]
+  ],
+  "project_description": "Provides JSON:API enhancements for user accounts using the JSON:API Resources . The additional endpoints will assist with building a decoupled/headless Drupal application that allows authenticated users to register, login, reset passwords, etc.\n\n This module adds the following JSON:API endpoints:\n\n \n /jsonapi/user/register : Register a new user \n /jsonapi/user/password/reset : Reset user password \n /user/{user}/password/update : Update user password \n \n Note that the user password may also be updated using the /jsonapi/user/user/{user} endpoint provided by Drupal core.\n\n Example requests \n /jsonapi/user/register \n \n\ncurl --location 'https://www.example.com/jsonapi/user/register' \\\n\n--header 'Content-Type: application/vnd.api+json' \\\n\n--header 'Accept: application/vnd.api+json' \\\n\n--data-raw '{\n\n \"data\": {\n\n \"type\": \"user--user\",\n\n \"attributes\": {\n\n \"name\": \"test 123\",\n\n \"mail\": \"test@test123456.com\",\n\n \"pass\": \"test\"\n\n } \n\n }\n\n}'\n\n /jsonapi/user/password/reset \n \n\ncurl --location 'https://example.com/jsonapi/user/password/reset' \\\n\n--header 'Content-Type: application/vnd.api+json' \\\n\n--header 'Accept: application/json' \\\n\n--data-raw '{\n\n \"data\": {\n\n \"type\": \"user--password-reset\",\n\n \"attributes\": {\n\n \"mail\": \"you@example.com\"\n\n }\n\n }\n\n}'",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-01-06",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

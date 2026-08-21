@@ -33,5 +33,13 @@
     "negotiator",
     "role",
     "presentation"
-  ]
+  ],
+  "project_description": "The Switch Theme module allows administrator to change default theme depending on role of the current authenticated user and the current URL.\n\n For example, you can apply a specific theme for one to n role(s) according to the current url whitch match with configured regex pattern. \n\n Practical case, for an authenticated user, who is on \"/account\" page. You can apply a specific theme for him with this configuration of the module:\n\n \n Role: Authenticated \n URI Pattern: #^/account$# \n Theme: Active specific theme to use \n \n Similar modules: \n \n Theme switcher \n \"Theme Switcher module allows you to create theme-switching rules which allow automatic selection of a theme based on Drupal 8 Conditions system.\"\n\n It works pretty well on D8 & D9",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2022-02-28",
+  "project_changed": "2026-08-19",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

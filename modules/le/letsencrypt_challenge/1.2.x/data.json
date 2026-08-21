@@ -36,5 +36,13 @@
     "well-known",
     "tls",
     "https"
-  ]
+  ],
+  "project_description": "This is a simple module that allows for a configuration of a Let's Encrypt challenge.\n\n It allows you to set some output for an http://www.example.com/.well-known/acme-challenge/FILENAME url.\n\n It will also look for an actual file present in public://letsencrypt_challenge/FILENAME and if present, it will return the content of that file instead. This could be used with clients that could potentially write the challenge file to that dir. I have had good experience with lego .\n\n If using apache, you will need to tweak the .htaccess file as per [#2408321].",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-09-27",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

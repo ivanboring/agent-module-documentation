@@ -33,5 +33,13 @@
     "file size",
     "optimization",
     "upload"
-  ]
+  ],
+  "project_description": "A module for compressing the images which are already existing in a website and compressing the images for new uploads.\n\n Installation steps: \n\nUsing composer: composer require drupal/image_compression\n\n Goto Configuration -> Image compression\n\nEnter the file size in bytes. If you need to select images of above 100KB provide the size value as 100000 and select the compression rate values.\n\nTry to upload the image and the image gets comperssed.\n\n For compressing already existing images. perform the above steps and goto\n\nConfiguration->Compress Existing images and perform the operation.\n\n Note:\n\nThe files folder should have proper writable permission. (766)",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2019-05-21",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 11000000
 }

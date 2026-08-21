@@ -33,5 +33,13 @@
     "scraping",
     "spam",
     "mailto"
-  ]
+  ],
+  "project_description": "The Email Obfuscator (a.k.a. Email Obfuscation Response Filter) uses an event\n\nlistener for each generated response to search for emails using regexes. The\n\nemails are obfuscated depending on where the text is found, helping to prevent\n\nemail scraping and reduce spam.\n\n Back to top \n\n Obfuscations \n Emails in a Mailto-Link \n Example: \n\n \n The email string excluding mailto: is reversed,\n\ne.g. \n An onfocus and an onmousedown JS listeners are added inline; these will\n\nrevert the email address following the mailto: prefix back to its original\n\nform. These two events cover the following cases: right-click, left-click\n\nand focus with tab.\nNote that:\n \n onfocus would do it for most browsers, but Safari needs onmousedown \n Reverting the already reversed email is only done once in a page load \n \n \n \n All other Emails \n Example: test@email.com \n\n \n A span with display:none containing a text with delimiters that are invalid\n\nemail characters is added in the middle of the email, e.g.\n\n test@!zilch!email.com \n \n Back to top \n\n Exclusions \n \n Any email that is invalid (according to PHP's filter_var function) \n Everything in the backoffice (admin pages) \n Emails inside HTML-attributes (placeholder attribute for input fields) \n Exclude Ajax webform request:\n \n Because Ajax is usually used when sending a web form.\nThis means that the request does not contain HTML, but a JSON object in\n\nwhich HTML is encoded with Unicode.\nThe regex does not apply here and it is not necessary to obfuscate this\n\nemail address as it is added by the sender. \n \n \n Content in routes that are whitelisted (see below) \n \n Whitelisting Routes \n \n Define whitelisted (excluded) routes in settings.php\n\n $settings['email_obfuscator'] = [\n 'ignored_routes' => [\n 'rest.api_layout_footer.GET',\n 'editor.link_dialog'\n ]\n ];\n For these routes, no obfuscation will take place.\n \n\n \n IMPORTANT: If you are using CKEditor 4 you should whitelist the route editor.link_dialog to avoid\n\nobfuscating the email in the CKEditor link dialog. \n \n Disabling use of data-nosnippet \n \n The attribute data-nosnippet is used by default, to disable displaying the $displayNoneText in search results.\n\nIt is possible to disable it in settings.php\n \n $settings['email_obfuscator'] = [\n 'use_datanosnippet' => FALSE,\n ];\n \n IMPORTANT: The data-nosnippet attribute is officially supported ONLY by the Googlebot. Support from other bots is not guaranteed. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-06-19",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

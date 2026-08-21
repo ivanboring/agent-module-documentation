@@ -33,5 +33,13 @@
     "components",
     "aggregation",
     "theme"
-  ]
+  ],
+  "project_description": "This is a utility module that assists with stylesheets for Single Directory Components. At this time, style libraries that have been added via Single Directory Components are being output in the wrong order (see [#3374901]), which causes issues with styles being overridden unexpectedly. This is particularly true with aggregation enabled. This module finds the component libraries and reassigns them to the THEME_AGGREGATE group.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2024-12-19",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10003000,
+  "core_semver_maximum": 12000000
 }

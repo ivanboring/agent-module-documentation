@@ -47,5 +47,13 @@
     "term depth",
     "product catalog",
     "faceted"
-  ]
+  ],
+  "project_description": "This lightweight module is trying to solve the problem that Views contextual filter named \"Content has taxonomy term ID (with depth)\" is available only for nodes and can not be used for products in Drupal Commerce 3.x.\n\n The Module extends Taxonomy module from Drupal core and provides a new contextual filter \"Product has taxonomy term ID (with depth)\".\n\n \n Drupal core taxonomy module index only for node entity. it doesn't maintain other entities.\n\n \n Compared to the Taxonomy module that uses relationship table \"commerce_product_taxonomy_index\" between terms and commerce_product, this module uses only SQL query on existing tables.\n\n \n This module supports more than one taxonomy_term reference field in commerce product entity",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-03-10",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

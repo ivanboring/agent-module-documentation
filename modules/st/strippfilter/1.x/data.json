@@ -35,5 +35,13 @@
     "html tags",
     "paragraph",
     "cleanup"
-  ]
+  ],
+  "project_description": "Strip paragraph tags from a text format that otherwise requires them.\n\n Features \n This module provides an input filter that strips opening and closing paragraph tags ( \n \n\n and \n\n ) so that you can designate a text format for producing inline WYSIWYG -edited output.\n\n For instance, you can make a three-part caption that will be rigidly formatted as a bold title followed by a caption that allows interior bold or italics but no paragraph breaks flowing into a credit that is always italicized and muted. The content editor can edit each part with CKEditor 5, but rather than being stuck with the paragraph tags for each section \n\n Installation \n Works with Drupal 8, 9, 10, and 11.\n\n composer require 'drupal/strippfilter:^1' \n\n Post-Installation \n Go to Administration » Configuration » Content authoring » Text formats and editors ( /admin/config/content/formats ) and create or edit the format you want to make always-inline by enabling the Strip paragraph tags filter. Make certain this filter runs last.\n\n Then for fields that should use this format, set allowed formats only to this format and in form display set the textarea to be only one or two lines.\n\n Additional Requirements \n No non-core requirements. Makes most sense with core CKEditor (CKEditor5), as the main use case is working around their stubborn insistence on forcing paragraph tags. (See github.com/ckeditor/ckeditor5/issues/762 for the stalled progress and alternate approaches.)\n\n Recommended modules/libraries \n Pairs well with Textarea widget for text fields .\n\n Similar projects \n Probably plenty and they probably have more functionality.\n\n Whether it is a bug or not Strip HTML tags filter cannot do this because the content between the tags gets removed too. So if you set it to strip p tags you get blank text, empty strings, back.\n\n Supporting this Module \n You can support Agaric's overall contributions to Drupal and a bit beyond by supporting Drutopia at opencollective.com/drutopia . Thanks!!\n\n Community Documentation \n Contributions welcome, the issue queue is always a good place to start.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-11-30",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

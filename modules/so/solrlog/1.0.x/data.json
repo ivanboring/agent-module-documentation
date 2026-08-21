@@ -36,5 +36,13 @@
     "events",
     "search api",
     "aggregation"
-  ]
+  ],
+  "project_description": "Do not use this module \n Functionality of this module was merged into Search API Solr \n\n This module provides Solr-based alternative to dblog as suggested by [#3475570].\n\n Features \n Provide dblog-like user interface without compromising site performance. Logs messages to Apache Solr instead of database\n\n Post-Installation \n This module creates \"Recent log messages (solr)\" view that is accessible under /admin/reports/solrlog.\n\nThis module may work alongside syslog and/or dblog, although having both dblog and this module enabled at the same time does not make much sense.\n\n Additional Requirements \n This module required Search API Solr module\n\n Back to top",
+  "maintenance_status": "Unsupported",
+  "development_status": "Obsolete",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-12-06",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10002000,
+  "core_semver_maximum": 12000000
 }

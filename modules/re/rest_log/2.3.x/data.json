@@ -40,5 +40,13 @@
     "requests",
     "responses",
     "audit"
-  ]
+  ],
+  "project_description": "This module logs REST API requests and responses - useful in development and troubleshooting REST API issues.\n\n Out of the box it stores the following information:\n\n \n Request method \n Request header \n Request URI \n Request cookie \n Request payload \n Response status \n Response header \n Response body \n Response time \n \n There is standard Drupal view with logs available at admin/reports/rest_log .(Reports > REST API Logging)\n\n Configuration: \n\nThe module provides a configuration form at /admin/config/development/logging/rest_log .(Configuration > Development > Logging and errors > REST Log settings)\n\n Additional features: \n\n- Auto cleanup for logs older than the Maximum lifetime setting. (30 days by default)\n\n- Include or exclude logs with the same-host referrer HTTP header.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-04-21",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

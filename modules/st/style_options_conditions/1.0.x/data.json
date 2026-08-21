@@ -37,5 +37,13 @@
     "paragraphs",
     "styling",
     "context"
-  ]
+  ],
+  "project_description": "Style Options Conditions extends the Style Options module with a condition plugin system for paragraph types. Style options are only shown in the editor and applied to rendered output when all declared conditions pass, enabling context-aware option visibility without writing custom PHP per paragraph type.\n\n Conditions are declared directly in your *.style_options.yml file alongside the options they guard. Multiple conditions on a single option are ANDed — all must pass. New condition types can be added by any module using the plugin system.\n\n Included submodule: Style Options Conditions: Layout \n The style_options_conditions_layout submodule provides the layout condition plugin, which evaluates visibility based on Layout Paragraphs context. layout_paragraphs is not a hard dependency — the plugin checks for the module at runtime and fails open if it is not installed.\n\n Example use cases \n \n Show a \"Container Width\" option only when a paragraph is placed at the top level of a page, not inside a grid \n Show a \"Column Span\" option only when a paragraph is inside a specific multi-column layout \n Show a layout-specific option only in certain regions (e.g. header and footer, but not content) \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-05-22",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

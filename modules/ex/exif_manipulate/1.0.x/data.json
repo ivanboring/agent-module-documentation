@@ -34,5 +34,13 @@
     "gps",
     "metadata",
     "upload"
-  ]
+  ],
+  "project_description": "This module strips out EXIF metadata from images upon upload. Modern cameras and phones include data in the images that they produce that may be privacy-sensitive, like location. It is a common requirement to strip out such information. It is intended to extend this module with extension points so that it is possible to not only strip out unwanted data,\n\nbut also insert new data.\n\n Note that the orientation information used by EXIF Orientation is left unaffected.\n\n Submit bug reports and feature suggestions, or track changes in the issue queue .\n\n Back to top \n\n Requirements \n This module requires the fileeye/pel PHP library. When installing the module using Composer (recommended), this will be installed automatically.\n\n Back to top \n\n Recommended modules \n It is recommended to install EXIF orientation , which will rotate uploaded files according to the rotation information.\n\n Back to top \n\n Installation \n Install as you would normally install a contributed Drupal module. For further information, see Installing Drupal Modules .\n\n Back to top \n\n Configuration \n \n Enable the module at Administration > Extend. \n Optionally, visit the conversion form at /admin/config/media/exif_manipulate; this will allow you to retroactively apply the module's logic on certain file system locations. \n \n Back to top \n\n Maintainers \n \n Ahmet Burkan - ahmetburkan \n Eelke Blok - eelkeblok \n Jaap Jan Koster - jaapjan \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-03-25",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

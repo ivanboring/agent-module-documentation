@@ -53,5 +53,13 @@
     "assignment method",
     "generation method",
     "config_update"
-  ]
+  ],
+  "project_description": "\"Features\" provides a user interface to bundle subsets of Drupal configuration into modules and an API to manage that configuration over time.\n\n How is Features different from core configuration management? \n Drupal core's configuration management system is designed to manage site configuration as a whole . Features uses the same system but facilitates managing only part of site configuration. Where Drupal core configuration exports include site-specific UUIDs, Features omits the UUIDs, making it possible to reuse a Feature across multiple sites.\n\n How is Features different from Recipes? \n Features was a precursor to Drupal Recipes . For most scenarios nowadays, Drupal Recipes should replace Features. Recipes are the right choice for quickly spinning up common site requirements like image galleries, sensible security defaults, or eCommerce integrations. But by design, Recipes do not supply updates. So if you want to add functionality to a site and periodically update that configuration , Features is still the right choice. Use Features when you want to:\n\n \n Deploy bundled functionality across multiple sites and provide periodic enhancements or fixes to all sites, where the component behaves the same across all sites over time. \n Deploy bundled functionality to a single site and be able to make changes to that configuration over time without having to manage the site's configuration as a whole. \n \n\n Documentation \n \n Full documentation guide for the Features Module \n Modules related to Features \n I'm a proficient Drupal developer with a deep understanding of configuration management. Do I need Features? \n \n \"Features\" for Drupal 7 \n Features was originally introduced during the Drupal 7 development cycle. A version of this module is still available for Drupal 7 but is not receiving bugfixes or enhancements.\n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2009-03-13",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 13000000
 }

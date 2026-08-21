@@ -42,5 +42,13 @@
     "delta",
     "views_arg_entity_field",
     "current_entity_field_value"
-  ]
+  ],
+  "project_description": "Views default_argument plugin to use values from the current page entity as default values for a contextual filter. Similar what the \"Content ID from URL\" default value is doing, except you can pull any field value from that content instead of just the ID (but also you're not limited only to nodes, all entity types are supported). \n\n A simple example would be to use the tags from the current page node to feed a \"similar content\" block. Works for any content entity type as long as the entity is accessible as a route parameter using the entity type id as the route parameter name (i.e. most entity routes).\n\n Back to top \n\n Installation & Usage \n \n Install as usual, no initial settings to set. \n Add a contextual filter to a view display \n Select provide default value from the \"When the filter is not available\" section \n Select \"Field value from Current Entity\" \n Select the Entity type and field name to use as the default value \n Additionally set options for an empty field fallback & multiple values handling \n \n Back to top \n\n Similar modules \n \n https://www.drupal.org/project/user_field_value \n \n If you need default_argument from current user.\n\n \n https://www.drupal.org/project/views_argument_token \n https://www.drupal.org/project/views_extras \n \n If you prefer to use tokens to get value you can use one of these.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-12-04",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

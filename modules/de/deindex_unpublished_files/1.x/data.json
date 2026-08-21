@@ -37,5 +37,13 @@
     "media",
     "access",
     "download"
-  ]
+  ],
+  "project_description": "The Deindex Unpublished Files module ensures that files associated with unpublished media are not publicly accessible. It achieves this either by adding a prefix to the file URL or by moving the file to the private files directory (private://unpublishedfiles), helping protect unpublished files from being exposed or indexed by search engines.\n\n The module functions only with media types that include a file field.\n\nIt also provides a \"Unpublish media by usage page\" at /admin/content/deindex-unpublished-files/unpublished-media that lists media usage (unpublished nodes, published nodes, and other entities) to help identify items that should be unpublished. Rows highlighted in light red indicate media that is only used in unpublished content.\n\n Installation \n\n Place the deindex_unpublished_files module folder into modules/contrib.\n\n Clear Drupal caches if necessary.\n\n Visit the configuration form at:\n\nConfiguration → Media → Unpublished files settings (if the module is enabled).\n\n Configuration \n\n Choose the method to make unpublished media files inaccessible:\n\n Prefix method: Adds a URL prefix to prevent access.\n\n Private files method: Moves the file to a private directory (private://unpublishedfiles).",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-09-24",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 13000000
 }

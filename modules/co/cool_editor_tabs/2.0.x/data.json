@@ -36,5 +36,13 @@
     "usability",
     "local tasks",
     "styling"
-  ]
+  ],
+  "project_description": "Cool Editor Tabs enhances the appearance and usability of Drupal's editor tabs (View, Edit, Translate, etc.), making them more accessible and visually consistent.\n\n 🔹 How it works: \n\n \n A toggle button is displayed at a fixed position on the screen. \n Clicking it reveals the editor tabs as intuitive, icon-based buttons. \n Only authenticated users with the \"Use Cool Editor Tabs\" permission will see the tabs, keeping the interface clean for visitors. \n \n 🔹 Features: \n\n \n Beautiful Heroicons v2 icons for all common tabs (Edit, Delete, Translate, Revisions, Layout, Clone and more). \n Built-in icon support for popular contrib modules: Metatag, Pathauto, Redirect, Webform, Scheduler, Simple XML Sitemap, Content Moderation and Rabbit Hole. \n First-letter fallback for tabs without a matching icon — no more white circles for unknown tabs. \n Configurable colors via Administration → Configuration → User interface → Cool Editor Tabs , with a built-in real-time WCAG 2.1 contrast checker. \n Developer API: implement hook_cool_editor_tabs_icon_alter() to provide custom icons for your own module's tabs. \n Drupal Icon API integration — the icon pack is available to other modules. \n \n 🔹 Requirements: \n\n \n Drupal 11.1 or higher",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2020-11-15",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

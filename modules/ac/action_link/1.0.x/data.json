@@ -41,5 +41,13 @@
     "workflow",
     "ajax",
     "links"
-  ]
+  ],
+  "project_description": "The Action Links module allows site admins to create links which perform an action when clicked.\n\n For example, an action link could:\n\n \n toggle a node's published status \n cycle through the options for a field value on an entity \n change the workflow status on an entity \n change a field value on an entity \n add a product to the user's shopping cart \n subscribe a user to a node \n \n Custom actions can be defined in code with plugins, and customized in the UI. Each action plugin can define configuration options and the parameters for the action, such as an entity to act on.\n\n Actions can be toggles, such as subscribe/unsubscribe, or linear, such as add to/remove from cart, or multidimensional, such as changing the workflow state of an entity.\n\n Action links can be configured to be output as one of:\n\n \n A JavaScript link which doesn't cause a page reload and updates itself with AJAX, showing a popup confirmation message. These degrade gracefully to plain reload links if JavaScript is disabled. \n A plain link which reloads the page, and shows a standard Drupal confirmation message. \n A form button styled as a link, which makes a POST request to reload the page \n A form button styled as a link, which makes an AJAX POST request \n A plain link which leads to a confirmation form. \n \n Link styles can be extended with plugins.\n\n Links, as well as AJAX popup messages, can be themed, with template suggestions for the action plugin ID and the action link entity ID.\n\n Back to top \n\n Status \n Action Link is close to a stable 1.0.0 release. See [#3563974].\n\n Back to top \n\n Relationship to Flag \n Action Link is the UX of Flag, but without the underlying flag storage, and with the ability to have the link perform any kind of action instead.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-03-16",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

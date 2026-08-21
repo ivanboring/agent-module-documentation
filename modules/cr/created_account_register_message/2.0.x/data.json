@@ -33,5 +33,13 @@
     "existing account",
     "enumeration",
     "user"
-  ]
+  ],
+  "project_description": "Instead of giving people who already have an account an error message when they attempt to register, this module gives the helpful message and sends a password reset e-mail to welcome them.\n\n For example, a person who had their account created by an administrator, or who self-registered already but hasn't logged in yet, and tries to register at the site is now shown a message letting her know her account is approved and that they have been sent an e-mail with a reset-link for her password: \"You already have an account, we have e-mailed a password reset link in case you do not remember your password.\"\n\n Without this module Drupal would trigger an unfriendly \"This email is already in use\" error.\n\n This is especially useful when an administrator creates an account for someone (to be helpful!) and that person never uses the link sent by the admin, but still conscientiously goes to register. The person later will try to register and, rather than an error, now will receive a message telling her that the account already exists and she just needs to set the password.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-06-22",
+  "project_changed": "2025-12-02",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 11000000
 }

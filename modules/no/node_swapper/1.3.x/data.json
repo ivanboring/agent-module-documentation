@@ -36,5 +36,13 @@
     "redirect",
     "alias",
     "content"
-  ]
+  ],
+  "project_description": "This module provides administrators an interface for swapping an old node for a new node while preserving all existing redirects and aliases. Once a node is swapped, users visiting the old URL (or an old alias, or old redirect) will see the new node.\n\n Requirements \n \n Redirect \n Pathauto \n \n Features \n Provides a simple admin-facing tool that allows users to swap an old node for a new node. Users are given a chance to review any changes before they occur.\n\n Administrators can also visit Admin > Configuration > System > Node Swapper Settings to alter some of the default behavior when swapping nodes. This includes being able to set a default URL suffix, and whether or not to unpublish the old node. Users can still override these settings on a case-by-case basis.\n\n Post-Installation \n Users with the \"Access Node Swapper\" permission simply need to activate the module and then navigate to Admin > Configuration > System > Node Swapper.\n\n Users with the \"Administer Node Swapper\" permission can visit Admin > Configuration > System > Node Swapper Settings to change Node Swapper's default behavior.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-04-22",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 13000000
 }

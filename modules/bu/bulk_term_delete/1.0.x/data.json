@@ -35,5 +35,13 @@
     "terms",
     "cleanup",
     "vocabulary"
-  ]
+  ],
+  "project_description": "The Bulk Term Delete module provides a convenient way to manage your taxonomy terms by enabling bulk deletion. Instead of removing terms one by one, site administrators or users with the appropriate permissions can select multiple terms from the taxonomy list page and delete them in a single action. This can save significant time and effort when cleaning up large taxonomies.\n\n Features \n\n Select multiple taxonomy terms from the terms list page.\n\n Delete selected terms in a single action.\n\n Works with Drupal 10 and Drupal 11.\n\n Installation\n\nDownload the module https://www.drupal.org/project/bulk_term_delete \n\nEnable the module via the Drupal admin interface or using Drush:\n\ndrush en bulk_term_delete -y\n\nNavigate to the taxonomy terms page, select the terms you want to delete, and use the bulk delete action.\n\n Permissions\n\nUsers must have the administer taxonomy permission to delete terms.\n\n Usage\n\nGo to Structure > Taxonomy.\n\nClick List terms for the vocabulary you want to manage.\n\nClick on Bulk Delete Terms.\n\nSelect the terms you want to delete using the check boxes.\n\nChoose Delete selected terms action.\n\nConfirm the deletion.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-12-09",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

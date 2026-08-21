@@ -44,5 +44,13 @@
     "wordfilter_process",
     "substitution",
     "comment filtering"
-  ]
+  ],
+  "project_description": "A simple but extendable word filter for Drupal. \n The Wordfilter module provides a suitable base for manual filtering of profanity (\"bad words\") as well as for dynamic keyword replacement.\n\n This module allows users to create and manage Wordfilter configurations.\n\nWordfilter configurations.. \n\n \n are multilingual, fully exportable Drupal configuration entities. \n may be (re)-used as filters at any text format, node and comment. \n contain a user-defined list of words, which will be filtered out (when enabled as filter). \n can optionally use a substitution text for the defined filter words. \n \n You can choose between different filtering processes, like direct filtering of specified words or token filtering. You may add your own implementation, e.g. for using an external web service which does the filtering for you.\n\n Update \n\n Support for filtering comment body and titles has been added and node title filtering has been improved. The wordfilter admin pages have been improved as well. Please check the issues queue for detail on specific issues affected.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2005-06-12",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 13000000
 }

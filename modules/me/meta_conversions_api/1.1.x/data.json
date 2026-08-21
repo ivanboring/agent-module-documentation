@@ -36,5 +36,13 @@
     "server-side",
     "tracking",
     "pixel"
-  ]
+  ],
+  "project_description": "Allows integrating with Meta Conversions API .\n\n Features \n \n Out of the box comes with a PageView event. \n Allows enabling/disabling each event and declaring new events. \n Uses hooks to control event triggering, for integration with cookie banners. \n \n Post-Installation \n \n Use composer to require the module and make sure facebook/php-business-sdk has also been installed. \n Go to the settings page and enter the Access Token and Pixel ID from Facebook. \n \n Additional Requirements \n Uses Facebook's PHP Business SDK.\n\n Usage \n Consent \n To require consent, you must implement hook_meta_conversions_api_allowed() (for example, checking a cookie).\n\n It is also recommended to override the Drupal.meta_conversions_api.allowedCallback function in your own JavaScript library, as this will avoid unnecessarily making requests to the server.\n\n Adding events \n You can implement hook_meta_conversions_api_event_names() to add your own events. This is only necessary if you intend on making it possible to disable the event.\n\n You can rename existing events with hook_meta_conversions_api_event_names_alter() .\n\n You can send your own events with the sendRequest() method of the MetaClient service.\n\n Back to top",
+  "maintenance_status": "Seeking co-maintainer(s)",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2023-07-12",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

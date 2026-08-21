@@ -45,5 +45,13 @@
     "everything",
     "purger",
     "processor"
-  ]
+  ],
+  "project_description": "This module allows you to directly invalidate one or more items through the administration user interface, without going through the Purge queue.\n\n The functionality is very similar to the \"p:invalidate\" Drush command. \n\n Back to top \n\n Requirements \n Purge module.\n\n Back to top \n\n Usage \n Go to the Purge Invalidation Form (/admin/config/development/performance/purge-invalidation-form) and enter the item(s) that needs to be invalidated, one per line.\n\n Example \n You just updated a page, and your changes need to be immediately available for your audience, without waiting until the Purge queue is processed.\n\n Using this module, you can enter the URL, path, tag, etc., and invalidate\n\nthe item right away, like so:\n\n \n Tag node:1 (Clears URLs tagged with \"node:1\" from external caching platforms). \n URL http://www.drupal.org/ (Clears the URL from external caching platforms). \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-12-30",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008006,
+  "core_semver_maximum": 12000000
 }

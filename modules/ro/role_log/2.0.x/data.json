@@ -33,5 +33,13 @@
     "logging",
     "security",
     "watchdog"
-  ]
+  ],
+  "project_description": "This is a simple module to log Drupal role and status (active/blocked) changes. All role or status changes for a user (whether made through the admin UI, Drush/Drupal Console, or programmatically) will be logged with \"info\" severity to Drupal's event log (the PSR-3 logging interface, formerly known as \"watchdog\"). You can view this event log using either the Database Logging or Syslog module in Drupal core.\n\n This site does what our clients need it to do, so we don't anticipate adding new features. But if you have an awesome idea for an additional feature or other improvement, please submit an issue and we'll consider it!",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-10-04",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

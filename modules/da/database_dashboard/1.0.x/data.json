@@ -33,5 +33,13 @@
     "stats",
     "table sizes",
     "admin"
-  ]
+  ],
+  "project_description": "This module provide an overview of the larger tables (in term of size an rows) of your drupal database.\n\n It provides also information about the cache tables.\n\n It can be be used for a basic monitoring of your database.\n\n \n\n Installation \n Like any other module : composer require drupal/database_dashboard \n\n Post-Installation \n Add to your settings.php or settings.local.php the following lines:\n\n<?php\n\n$databases['schema']['default'] = [\n\n 'host' => 'mariadb', // To Adapt\n\n 'database' => 'information_schema',\n\n 'username' => 'drupal', // To Adapt\n\n 'password' => 'drupal', // To Adapt\n\n 'prefix' => '',\n\n 'port' => '3306',\n\n 'namespace' => 'Drupal\\\\Core\\\\Database\\\\Driver\\\\mysql',\n\n 'driver' => 'mysql',\n\n];\n\n?>\n\n Now head to /admin/reports/database (or Reports / Database Dashboard) and relax.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-01-25",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

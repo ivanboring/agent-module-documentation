@@ -41,5 +41,13 @@
     "readmore",
     "toolbar button",
     "expandable content"
-  ]
+  ],
+  "project_description": "This module adds a new button to CKEditor which allows users to hide selected content and only show it on \"Read more\" button click.\n\n Installation \n CKEditor Module (Core) \n \n Enable the module \n Drag and drop the Read More button icon to the CKEditor toolbar in the Text formats you want to use it (admin/config/content/formats) \n Enable the filter Filter readmore \n If you have enabled \"Limit allowed HTML tags\" filter in Text formats and editors settings, check if you have \n\n present in the \"Allowed HTML tags\" section. Usually this is added automatically. \n Save the text format configuration and clear the cache. \n You can now use it in those Text formats. \n \n Wysiwyg Module (With CKEditor installed) \n \n Enable the module \n Enable \"Limit allowed HTML tags\" filter in Text formats and editors settings (admin/config/content/formats). \n Add \n\n in the \"Limit allowed HTML tags\" section. \n Enable \"Read more\" plugin in Wysiwyg profile settings (admin/config/content/wysiwyg).",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-11-09",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

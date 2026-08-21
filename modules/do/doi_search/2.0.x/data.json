@@ -33,5 +33,13 @@
     "search",
     "academic",
     "metadata"
-  ]
+  ],
+  "project_description": "Features: \n\n This module provides a service (doi_search.manager) that allows retrieving information publications using DOI ( https://www.doi.org/ ).\n\nUsage example: $data = \\Drupal::service('doi_search.manager')->getData({DOI})\n\n It also provides a search page in /doi-search were you can search for the publications.\n\n The API used can be consulted here http://api.crossref.org/swagger-ui \n\n Configuration: \n\n Configure the permissions in /admin/people/permissions/module/doi_search",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-01-24",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

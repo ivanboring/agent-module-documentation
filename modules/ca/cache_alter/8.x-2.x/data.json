@@ -33,5 +33,13 @@
     "cookie",
     "cache context",
     "performance"
-  ]
+  ],
+  "project_description": "RU: \n Всё ради того, чтобы на каждый запрос по переходу из рекламы не формировался свой отдельный page_cage а юзался существующий\n\n # В самом начале загрузки друпала чистит из $request->query ключи\n\n - utm_source\n\n - utm_medium\n\n - utm_campaign\n\n - utm_term\n\n - utm_content\n\n - gclid\n\n - yclid\n\n# Везде далее, в том числе и в dynamic_page_cache - кэш формируется без этих значений\n\n# При формировании `page_cage` берётся очищенный `$request->query`\n\n# При формировании `page_cage` к ключу добавляется значение куки `cache_context`, которая позволяет формировать разный статик кэш в зависимости от значения в этой куке, например положить туда выбранный город.\n\n EN: \n At the very beginning of loading Drupal cleans keys from `$request->query`\n\n - utm_source\n\n - utm_medium\n\n - utm_campaign\n\n - utm_term\n\n - utm_content\n\n - gclid\n\n - yclid\n\n# Everywhere further, including in dynamic_page_cache - is formed without these values\n\n# On the forming `page_cage`, a cleared `$request->query` is taken\n\n# On the forming `page_cage`, the cookie value `cache_context` is added to the key, which allows you to create different static cache depending on the value in this cookie, for example, put the selected city there.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-12-16",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

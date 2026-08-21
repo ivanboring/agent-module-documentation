@@ -46,5 +46,13 @@
     "batch",
     "since last export",
     "data export"
-  ]
+  ],
+  "project_description": "This module provides a simple export operation automatically for messages from each created contact form. It exports all fields and base data about the submission (such as logged in user and date submitted). It also handles fields that allow multiple options to be selected. This module requires Contact Storage .\n\n Back to top \n\n Installation \n To install this module, place it in your modules folder and enable it on the\n\nmodules page.\n\n Back to top \n\n Configuration \n There is nothing yet to configure. I would welcome suggestions as to what sort\n\nof configuration would be useful for your various use cases. If you wish to allow roles other than administrators to export form submissions, you should give them the 'Export contact form messages' permission.\n\n Back to top \n\n How to use this module \n Users with the 'Export contact form messages' will find an Export operation in the list of operations on the page containing the list of all contact forms. You can find that at `/admin/structure/contact`.\n\n Back to top \n\n Alternatives to this module \n You can set up individual views using the ` Views Data Export ` project. Both use the ` CSV Serialization ` project under the hood. This module differs in that you can allow editors to set up forms and the export functionality will automatically be available, while the Views method requires you set up a view for each newly created form. At the moment the Views method will allow further control over the output (but feature requests are welcome).\n\n Back to top \n\n Export formats \n This module currently supports exports for use in common spreadsheet programs such as Excel, Sheets, Numbers, etc using the CSV format via the CSV Serialization module.\n\n Back to top \n\n Feedback on this module \n Please add issues with feature requests as well as feedback on the existing functionality.\n\n Back to top \n\n TODO \n \n Handle large numbers of submissions with batch processing [completed] \n Allow control over which columns are exported [completed] \n Allow export to a file, potentially on a scheduled basis \n Allow export of new submissions since last export [completed] \n Give control over default options via config \n Add unit tests for a variety of field types, quantities of data, and settings \n \n Back to top \n\n Initial development \n Initial development of this module was sponsored by Fat Beehive until mid-2018.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-06-21",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

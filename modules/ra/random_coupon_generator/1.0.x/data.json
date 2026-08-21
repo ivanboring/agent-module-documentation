@@ -33,5 +33,13 @@
     "codes",
     "promotions",
     "discounts"
-  ]
+  ],
+  "project_description": "A small Drupal 10 admin module that generates large numbers of unique, non-sequential coupon codes using a prime-based obfuscation algorithm\n\n It provides an admin settings form and a generator form with an option to either output generated codes on the page or export them as a CSV download.\n\n The obfuscation algorithm is based on this blog post & the wotzebra/unique-codes package.\n\n Features \n \n Configure coupon length, character set, prefix & suffix. \n Configure obfuscating and max primes used by the generator algorithm. \n Generate large amounts of unique coupon codes in a single operation. \n Choose output: show codes on the page or download a CSV file. \n \n Configuration & usage \n Settings form \n Go to Admin → Configuration → System → Random coupon generator\n\n( /admin/config/system/random-coupon-generator/settings )\n\n Generator form \n Admin → Configuration → System → Random coupon generator → Generate coupons\n\n (/admin/config/system/random-coupon-generator/generate) \n\n Additional Requirements \n This module does not require other modules. It does require the wotzebra/unique-codes package (installed automatically via Composer).\n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-10-27",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

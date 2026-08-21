@@ -34,5 +34,13 @@
     "psr4",
     "test",
     "kernel"
-  ]
+  ],
+  "project_description": "Tecla is a very simple PHPUnit test helper tool. It provides a workaround for unnecessarily registered classes of disabled/uninstalled extensions what happens if you are running PHPUnit tests (see [#2006476].).\n\n The workaround is pretty simple: it is driven by a service provider which removes the appropriate PSR4 mappings from Drupal's class loader. The solution uses reflectors, so it has some performance impact, but the benefit is a more realistic behavior during testing.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2022-07-27",
+  "project_changed": "2026-02-23",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

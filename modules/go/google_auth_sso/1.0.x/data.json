@@ -38,5 +38,13 @@
     "workspace",
     "directory",
     "login"
-  ]
+  ],
+  "project_description": "This module is used to allow any google member to connect to a Drupal site.\n\nBased on GSuite User Custom Fields \n\nthis module will try to sync roles to the newly created user and at each user login.\n\n Installation \n Install as you would normally install a contributed Drupal module.\n\n Then go to `/admin/config/social-api/social-auth/google` in order to configure google OAuth settings.\n\nAdd this scope ` https://www.googleapis.com/auth/admin.directory.user.readonly ` in the field \"Scopes for API call\" (under Advanced settings).\n\nFor more information : https://www.drupal.org/docs/8/modules/social-api/social-api-2x/social-a…",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2022-04-15",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 11000000
 }

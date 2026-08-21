@@ -33,5 +33,13 @@
     "urls",
     "rewrite",
     "staging"
-  ]
+  ],
+  "project_description": "This module provides an HTML filter and a link widget/formatter to strip production domain names from links and images.\n\n The widget will automatically strip the current domain name from an absolute URL when saving a link field.\n\n The link formatter can have a custom mapping to use, or fallback to the general mapping. The text filter can have a custom mapping to use, or fallback to the general mapping.\n\n The following (advised in production) will disable the modules logic.\n\n <?php\n\n$settings['env_link_fixer_disabled'] = TRUE;\n\n?>\n\n You can easily add your local development names. These will be merged with the one defined in config.\n\n <?php\n\n$settings['env_link_fixer_custom_mappings'] = [\n\n 'local.example.com' => ' www.example.com,example.com ',\n\n 'local.example.net' => [\n\n ' www.example.net ',\n\n 'example.net',\n\n ],\n\n];\n\n ?>",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-01-23",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

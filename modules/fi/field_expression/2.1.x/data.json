@@ -45,5 +45,13 @@
     "math",
     "integer",
     "decimal"
-  ]
+  ],
+  "project_description": "Defines a new \"Expression\" field type which will evaluate a mathematical expression.\n\n Features \n \n Token module support. It's recommended that you use token so that your expressions can be evaluated with dynamic values from other fields. Otherwise you'll only really be able to hard code the expression on the field settings. \n Default values for tokens that don't resolve \n Ability to have the expression evaluated when the field is rendered (otherwise it is evaluated only when the node is saved and stored in the database as the field value) \n \n This module is sort of a D8 successor to Mathfield . Doesn't have all the features of mathfield, but it looks like we're using the same underlying expression evaluation library so should be able to do roughly the same level of mathematic evaluation.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-10-09",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

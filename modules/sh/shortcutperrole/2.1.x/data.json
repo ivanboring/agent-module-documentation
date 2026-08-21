@@ -41,5 +41,13 @@
     "role weight",
     "admin shortcuts",
     "shortcutperrole.settings"
-  ]
+  ],
+  "project_description": "Shortcut per Role is a simple module to allow a shortcut set to be assigned per role.\n\n This module works well when each user is generally assigned a single role like \"administrator\", \"content editor\", \"moderator\" etc. However this module becomes complicated and less useful if your roles and permissions model is such that each user has multiple roles. The current behavior will assign the shortcut set to the highest weighted role belonging to the user. If you find this behavior frustrating, please chip in on [#3145202].\n\n Follow the core issue [#1122816], from whence inspiration for this module came and consideration for inclusion into Drupal Core.\n\n Back to top \n\n Requirements \n Drupal core's Shortcut module must be enabled.\n\n Back to top \n\n Related modules \n \n Private Shortcut \n\nAllows users to manage their own shortcut set. Unlike shortcut per role, each Drupal user controls their own private shortcut set.\n They can be installed together, but both modules manage the default shortcut set, so only one of them actually takes effect according to the user permissions.\n\n \n \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2011-05-08",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

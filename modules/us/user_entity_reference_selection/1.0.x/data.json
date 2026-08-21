@@ -33,5 +33,13 @@
     "user",
     "fixed",
     "field"
-  ]
+  ],
+  "project_description": "This module provides a node entity reference selection handler that extends the default behavior to have access checks run against a fixed user rather than the current. It was built to allow admins to populate public-facing entity reference fields without fear of including inaccessible content.\n\n Back to top \n\n \nInstallation \n Install as you would normally install a contributed Drupal module. See: https://www.drupal.org/node/895232 for further information.\n\n Back to top \n\n \nConfiguration \n When configuring the entity reference field, choose the Default with fixed user access reference method. As well as the usual configuration options, there is an additional field User to run as . Enter the user to have access checks run as. Be careful if choosing an authenticated user: there are security implications. \n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-06-06",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

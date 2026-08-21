@@ -35,5 +35,13 @@
     "gateway",
     "victoriabank",
     "moldova"
-  ]
+  ],
+  "project_description": "This module integrates the VictoriaBank Gateway API with Drupal Commerce.\n\n Installation \n \n Contact a VictoriaBank manager to receive integration instructions. \n Generate your own public/private key pair. \n Create a folder named vicb_pem inside your private file system: private://vicb_pem . \n Copy the following files to the vicb_pem folder:\n \n key.pem \n pubkey.pem \n victoria_pub.pem \n \n \n Create and configure the new payment gateway in Drupal Commerce. \n \n Callback URL: https://yourdomain.com/commerce-vb-md/callback \n\n Minimum Requirements \n Requires Drupal Commerce Core version 3.x\n\n Supporting this Module \n Developer: https://paypal.me/pavelculacov \n\n Charity Support: https://hopeforelika.com/donate",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2022-10-31",
+  "project_changed": "2026-03-03",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

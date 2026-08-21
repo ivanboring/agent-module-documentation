@@ -1,7 +1,7 @@
 {
   "name": "PhonePe Payment",
   "data_name": "phonepay_payment",
-  "description": "A PhonePe payment gateway for Drupal Commerce. SECURITY: the callback marks orders paid from an UNVERIFIED anonymous POST (no X-VERIFY check, no status re-fetch) \u2192 pay-less-fulfillment (danger 4). Do not deploy unpatched.",
+  "description": "A PhonePe payment gateway for Drupal Commerce. SECURITY: the callback marks orders paid from an UNVERIFIED anonymous POST (no X-VERIFY check, no status re-fetch) → pay-less-fulfillment (danger 4). Do not deploy unpatched.",
   "version": "4.0.x",
   "package": null,
   "composer_namespace": "drupal/phonepay_payment",
@@ -33,5 +33,13 @@
     "commerce",
     "gateway",
     "unverified callback"
-  ]
+  ],
+  "project_description": "Enables Drupal Commerce orders to be paid using PhonePe payment methods. \n\n PhonePe is a popular digital wallet and online payment application that supports instant money transfers and payments through UPI, cards, and wallet services.\n\n This module provides a Drupal Commerce PhonePe integration and includes a client library to initiate and process payments using the PhonePe Payment API .\n\n Configuration: \n\n \n Add the PhonePe Payment gateway from:\n\n admin/commerce/config/payment-gateways/add \n \n Enter the machine name of the profile type to be used for API-related customer details in the Profile textbox.\n\n (Default profile type: customer )\n \n The selected profile type must include an Address field/entity. \n Add a phone/mobile field to the selected profile type with the machine name: field_mobile \n \n Important: Ensure that the mobile number field is added to the selected profile type.\n\n You can add fields here:\n\n /admin/config/people/profile-types/manage/customer/fields \n\n \n For UAT testing and setup guidance, refer to:\n\n https://developer.phonepe.com/v1/docs/uat-testing \n\n Note: PhonePe SDK v2 is implemented in the 5.x branch.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2023-08-19",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

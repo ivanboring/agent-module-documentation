@@ -36,5 +36,13 @@
     "loadMultiple",
     "utility",
     "developer"
-  ]
+  ],
+  "project_description": "Provides a basic class to iterator over a large number of entities by lazily loading them and clearing the cache as it goes along.\n\n Something along the lines of:\n\n $nodes = new EntityIterator('node');\n\nforeach ($nodes as $node) {\n\n // ...\n\n} \n\n Will be obsoleted by [#2577417]",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-05-21",
+  "project_changed": "2026-07-28",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 11000000
 }

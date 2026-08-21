@@ -35,5 +35,13 @@
     "sync",
     "access",
     "multisite"
-  ]
+  ],
+  "project_description": "Simple module that allows to associate a Domain\n\nwith one or more roles so when a new user is\n\ncreated or saved it will also get the roles\n\nassociated with the domain if they are affiliated with it.\n\n Back to top \n\n Motivation \n Some Drupal modules provide functionality based on granular roles\n\nbut they don't care about domains so this module can serve as\n\nbridge for functionality that only works with permissions/roles.\n\nIt usually requires that you have create a role per domain.\n\n For example Menu admin per menu \n\nallows you to create a different menu per domain and give permissions to edit each menu to\n\nthe editors the role associated with each domain.\n\n Back to top \n\n Roadmap \n \n Remove role when the affiliation with the domain ends. \n Two way synchronyzation: Enable the affiliation to a domain when a user gets a certain role. \n \n Back to top \n\n Similar modules \n \n https://www.drupal.org/project/domain_role_access \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2023-12-05",
+  "project_changed": "2026-08-14",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

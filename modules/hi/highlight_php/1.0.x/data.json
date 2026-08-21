@@ -48,5 +48,13 @@
     "scrivo/highlight.php",
     "language detection",
     "a11y-light"
-  ]
+  ],
+  "project_description": "Back to top \n\n Summary \n Provides highlight.php integration to Drupal, allowing <code> blocks to be automatically highlighted with the correct language. highlight.php is a code syntax highlighter port of highlight.js.\n\n Back to top \n\n Installation \n \n Run composer require drupal/highlight_php and enable the highlight_php module. \n Configure a text format (admin/config/content/formats/manage/*) and enable the \"Highlight <code> tags in HTML.\" filter \n Add <code> blocks in CKEditor and watch them get auto-highlighted! See scrivo/highlight.php on GitHub for more documentation on expected behavior. \n \n You can also switch to the manual highlighting mode for more accurate language detection. To switch modes, visit /admin/config/content/highlight-php\n\n Back to top \n\n Notes \n All code tags that have a recognizable language will be automatically processed and styled by this filter. If you want to display code inline, please use a pre tag.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2022-01-03",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 13000000
 }

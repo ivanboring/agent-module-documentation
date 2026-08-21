@@ -33,5 +33,13 @@
     "js",
     "aggregation",
     "assets"
-  ]
+  ],
+  "project_description": "Back to top \n\n User story \n Once in a long while we get an imcomplete CSS or JS aggregate. We dont know why. The aggregate can be regenerated but browsers may have cached the incomplete file and all future visits are broken until browser cache expires. The long way to remedy this is to deploy a change to the site's CSS or JS. The deployment-free way to do is to merely flush caches, when you are using this module.\n\n Back to top \n\n Implementation \n Overrides CSSCollectionRenderer and JsCollectionRenderer services, effectively undoing the change from https://www.drupal.org/project/drupal/issues/3019393 . This module Always appends a querystring param whose value changes with each cache clear.\n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-03-04",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8007007,
+  "core_semver_maximum": 12000000
 }

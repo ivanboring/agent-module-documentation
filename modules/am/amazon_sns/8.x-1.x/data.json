@@ -34,5 +34,13 @@
     "webhook",
     "notifications",
     "signature"
-  ]
+  ],
+  "project_description": "This module allows a Drupal site to respond to Amazon SNS notifications. For example, perhaps some upstream system is processing a long job and the Drupal site needs to update entity data when it's done. Instead of being forced to poll with queues and use a background Drush command, SNS can instead push a notification to Drupal. Each SNS message triggers a\n\n Symfony Event that other modules or custom code can respond to. SNS itself handles redelivery and failure logging.\n\n As this module requires the AWS SDK, sites using this module will need to use Composer to grab it and all other dependencies.\n\n This module implements it's own API as an example for other modules. To learn how to create your own event subscribers, see amazon_sns.services.yml and \\Drupal\\amazon_sns\\Event\\SnsSubscriptionConfirmationSubscriber .\n\n Setting up a subscription \n This module expects all SNS notifications to be sent to /_amazon-sns/notify . To test basic functionality, you can create an SNS topic and send a test message using the Amazon Web Services console.\n\n \n Log in to AWS and open the SNS dashboard . \n Under Common Actions , create a topic. \n In the topic, click Create subscription .\n \n Select HTTP or HTTPS as the protocol. \n Enter https://example.com/_amazon-sns/notify as the endpoint. The URL\n\nmust be accessible to Amazon for SNS to work. Consider setting up a proxy\n\nlike ngrok or requestb.in for local environments or additional logging. \n After saving, there should be a subscription confirmation logged in Drupal's logs. \n \n \n Use Publish to Topic to send a test message. The message will be logged. You're ready to write any custom code needed to react to the notification.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-05-29",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -35,5 +35,13 @@
     "affected",
     "reporting",
     "discount"
-  ]
+  ],
+  "project_description": "Provides a service to give you the entities that are affected by a promotion.\n\n If your offer type supports it, you can do stuff like this:\n\n <?php\n\n/** @var \\Drupal\\affected_by_promotion\\AffectedEntitiesManager $mng */\n\n$mng = \\Drupal::service('affected_by_promotion.affected_entities_manager');\n\n/** @var \\Drupal\\Core\\Database\\Query\\SelectInterface $q */\n\n$q = $mng->getAffectedEntitiesQuery($promotion, 'commerce_product');\n\n$products = $q->execute();\n\n?>\n\n For your offer type plugin to support it, it has to implement the following interface:\n\n <?php\n\n\\Drupal\\affected_by_promotion\\SupportsAffectedEntitiesQueryInterface\n\n?>\n\n Which has the following method:\n\n <?php\n\npublic function getAffectedEntitiesQuery($entity_type_id);\n\n?>\n\n There is also an issue to get this into commerce: https://www.drupal.org/project/commerce/issues/3007070",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-09-27",
+  "project_changed": "2026-08-20",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

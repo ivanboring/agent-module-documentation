@@ -43,5 +43,13 @@
     "password reset",
     "user form",
     "administer users"
-  ]
+  ],
+  "project_description": "Sometimes we wanted to be able to allow some users to add other users, but not change any user's password.\n\n This module:\n\n \n Adds a new permission 'change other users password'. \n When the user_profile_form is loaded it checks to see if the current user has the proper permission or if they are editing their own account, otherwise it removes the password change option. \n There would be no point restricting the ability to change a user's password if they can still change the user's e-mail address, this option is removed as well. \n This also removes the option to delete a user. \n \n Credits \n Currently maintained by Heissen Lopez (heilop) . The initial development was by James Glasgow (jrglasgow) .",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2008-11-06",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

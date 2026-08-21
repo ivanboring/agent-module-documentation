@@ -37,5 +37,13 @@
     "gateway",
     "offsite",
     "webhook"
-  ]
+  ],
+  "project_description": "Stripe sofort \n This is the module for extending the commerce_stripe plugin to accept sofort. Sofort is an async payment available in Austria, Belgium, Germany, Italy, Netherlands and Spain. Approval can take from two days to 14 days (in averege).\n\n Requirements \n Stripe PHP library ( included via composer )\n\n Endpoint \n The endpoint for this module is /stripe-sofort-webhook (yourdomain/stripe-sofort-webhook). In the Stripe webhook configuration you need to set the following webhooks:\n\n \n payment_intent.payment_failed \n payment_intent.canceled \n payment_intent.success \n \n\n Local enviroment testing \n We are using endpoints so running on your local instance your site should be exposed over one of the following options: * Ngrok ( https://ngrok.com/ ) * Expose ( https://beyondco.de/docs/expose/introduction ) * In addition to that you need to add this module https://www.drupal.org/project/ngrok_drupal to have sessions working (logging in, carts etc)\n\n Setting up in Stripe dashboard \n Go to the stripe webhooks and add your exposed address. Under event types select charge (13 events will be selected). Copy the signature for your specific evniroment and place it in the Drupal payment configuration.\n\n Configuration \n \n Install and enable the plugin \n Austria, Belgium, Germany, Italy, Netherlands and Spain \n Machine name (Payment gateway id ) must be \"commerce_sofort_stripe\" \n add publishable key, secret key and signing secret. \n Setup the countries available to be: Austria, Belgium, Germany, Italy, Netherlands and Spain \n \n Additionally. You can add your signing secret to the settings file in a manner:\n\n $settings['stripe.sofort']['signing_secret'] = \"myStripeSigningSecretKey\"; \n\n This is useful if you have multiple enviroments.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-10-22",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 11000000
 }

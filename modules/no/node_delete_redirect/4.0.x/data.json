@@ -35,5 +35,13 @@
     "redirect",
     "content type",
     "editing"
-  ]
+  ],
+  "project_description": "Features \n This lightweight module allows administrators to configure, on a per-content-type basis, the path a user is redirected to after deleting a node. By default, Drupal will return the user to the front page. A use case for this module might be returning the user instead to the main news page when deleting a news article, for example.\n\n Usage \n Go to\n\n path : /admin/people/permissions \n\nensure that the right user has permission to administer node delete redirect settings.\n\nGo to\n\n path : /admin/config/content/node-delete-settings \n\nenable redirect, allow for content type where the redirection is needed & provide the path. Test by deleting a node of that content type.\n\n Use Cases \n \n Redirect to Drupal's internal paths on node deletion of specific content type \n \n Please refer to README.md for more help.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-03-08",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 11000000
 }

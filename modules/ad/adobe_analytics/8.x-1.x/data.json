@@ -33,5 +33,13 @@
     "tracking",
     "omniture",
     "script"
-  ]
+  ],
+  "project_description": "This module integrates the Site Catalyst analytics software into a Drupal site. All future development of what used to be the siteCatalyst module will happen here because it is now owned by Adobe and renamed to AdobeAnalytics Module.\n\n Installation \n To install the AdobeAnalytics module, you should first make sure that you have a SiteCatalyst account. Assuming you have your account information, simply install and enable this module as usual and then visit the settings page at admin/config/system/adobeanalytics.\n\n Custom Variables \n There are two methods available for adding custom tracking variables (aka props) to your site:\n\n In the GUI \n\n The settings page allows you to use tokens to create custom variables. Additionally, you can use the Context module to set these custom variables only on certain pages or for certain users (etc...)\n\n hook_adobeanalytics_variables() \n\n If you are developing your own module, you can create custom variables by taking advantage of hook_adobeanalytics_variables(). This hook expects you to return an associative array where the key is the name of the variable and the value is variable's value. For an example, see the README.txt that comes with this module or look at the adobeanalytics_adobeanalytics_variables() function in adobeanalytics.module.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2015-12-29",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

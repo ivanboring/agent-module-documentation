@@ -37,5 +37,13 @@
     "visibility condition",
     "query string",
     "GET parameter"
-  ]
+  ],
+  "project_description": "Conditional Plugin (Visibility) by Query Parameters \n Extends conditional plugin API to add URI Query Parameters to control the content visibility. Drupal core conditional plugin API provides the ability to control the visibility of content ( block ) using paths, etc. This module adds new conditional plugin to allow administrators to control the visibility of content using url query parameter.\n\n This plugin can be used to show or hide blocks, contents etc based on query parameter. It supports query parameter with array ex: ?visibility[]=show \n\n List of features using condition plugins,\n\n \n Block \n Rules \n Page manager \n etc \n \n Example usage:\n\n1) Display blocks if query parameter has \"visibility=show\" ( http::// www.example.com/?visibility=show )\n\n2) Hide all blocks (Using \"Negate the condition\" checkbox) if query parameter has \"app=true\" ( http::// www.example.com/?app=true )",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-04-11",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

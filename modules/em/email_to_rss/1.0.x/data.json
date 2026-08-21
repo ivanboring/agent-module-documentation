@@ -1,7 +1,7 @@
 {
   "name": "Email to RSS",
   "data_name": "email_to_rss",
-  "description": "Pulls email from an IMAP folder and exposes it as an RSS feed at a token-gated URL. The feed URL is a bearer secret exposing email content \u2014 use a high-entropy token, treat the URL as sensitive, and store IMAP credentials securely.",
+  "description": "Pulls email from an IMAP folder and exposes it as an RSS feed at a token-gated URL. The feed URL is a bearer secret exposing email content — use a high-entropy token, treat the URL as sensitive, and store IMAP credentials securely.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/email_to_rss",
@@ -33,5 +33,13 @@
     "rss",
     "feed",
     "token"
-  ]
+  ],
+  "project_description": "Email to RSS turns messages from an IMAP mailbox folder into a private RSS feed, so newsletters and other emails can be read in any feed reader.\n\n This module is useful when you want to follow email-only content without using your inbox as the reading interface. Configure an IMAP account and folder, run a sync, and Drupal will publish the fetched messages as an RSS feed protected by a secret token in the feed URL.\n\n Features \n \n Fetches email messages from a configured IMAP folder. \n Publishes fetched messages as an RSS 2.0 feed. \n Supports HTML email bodies using content:encoded . \n Deduplicates messages by Message-ID. \n Provides a private, token-protected feed URL. \n Allows administrators to configure the feed limit. \n Includes manual “Sync now” and “Delete all entries” actions. \n Runs sync during Drupal cron. \n \n Common use cases include reading newsletters in an RSS reader, archiving selected emails as a feed, or creating a self-hosted alternative to email-to-feed services.\n\n Post-Installation \n After installing the module, go to Administration → Configuration → Web services → Email to RSS .\n\n Configure the IMAP connection details:\n\n \n Host \n Port \n Encryption \n Username \n Folder \n Feed entry limit \n \n The IMAP password is not stored in Drupal configuration. Set it using the environment variable EMAIL_TO_RSS_IMAP_PASSWORD .\n\n The settings page displays the private RSS feed URL. Treat this URL as secret. Anyone with the tokenized URL can read the feed.\n\n Use Sync now to fetch messages immediately, or let Drupal cron fetch new messages automatically. Use Delete all entries to clear the local message mirror.\n\n Additional Requirements \n \n Drupal 10 or 11. \n PHP 8.2 or later. \n The Composer library webklex/php-imap , installed automatically when the module is installed with Composer. \n An IMAP-accessible email account. \n \n Recommended modules/libraries \n No additional Drupal modules are required.\n\n A regular cron setup is recommended so new messages are fetched automatically.\n\n Similar projects \n Aggregator in Drupal core consumes RSS feeds. Email to RSS does the reverse: it creates an RSS feed from email messages.\n\n Simplenews sends newsletters from Drupal. Email to RSS reads messages from an external mailbox and exposes them as a feed.\n\n External services such as Kill the Newsletter provide similar email-to-feed functionality as a hosted service. Email to RSS provides a self-hosted Drupal-based option.\n\n Supporting this Module \n Use the Drupal.org issue queue to report bugs, request features, or submit patches.\n\n Community Documentation \n Community documentation, walkthroughs, and examples can be added here as they become available.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2026-05-23",
+  "project_changed": "2026-08-20",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

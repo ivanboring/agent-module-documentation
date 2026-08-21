@@ -40,5 +40,13 @@
     "phpword",
     "document",
     "print"
-  ]
+  ],
+  "project_description": "Entity Word can create a word document from node entity based on title and body.\n\nURL to use: /entity-word/{node_id}/word in your required node twig file to download the entity content.\n\nExample: /entity-word/10/word\n\n Also \"Download Word Document\" local task tab will be visible to download the document.\n\n We will have to give the permission \" Access the download the node content as a word document \" to download the node as word document.\n\n Entity Word uses ` phpoffice/phpword ` library to generate word document.\n\n Install with composer only! \n\n-Module\n\n composer require drupal/entity_word \n\n No CSS and/or JS is required to manage the word document layout and font style.\n\nThere is a configuration settings through which layout, style of title and body of the word document can be managed by administrator.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-01-25",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 11000000
 }

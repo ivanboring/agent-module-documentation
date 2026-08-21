@@ -38,5 +38,13 @@
     "redirect",
     "path processor",
     "label"
-  ]
+  ],
+  "project_description": "The purpose of this module is to create terms in a selected vocabulary matching labels for a selected entity type and bundle. One use-case for this is when you need to allow nodes to be used as tags. For example, say you have a \"Person\" content type, which contains authors or people of interest and you'd like to tag content such as articles, quotes, books, etc. with those people.\n\n The module provides an interface where one or more sets of entities, bundles and vocabularies can be selected. When the configuration is saved, a batch process is ran to programmatically create one new term for each entity from the selected entity type and bundle.\n\n The terms are maintained on an on-going basis when entities are added/removed/renamed.\n\n When synced terms are rendered, their URLs are rewritten to point to their corresponding entity's canonical URL.\n\n Requests to the terms belonging to configured vocabularies are also checked and if a matching entity is found, the request is redirected to the entity's canonical URL.\n\n The module should work fine with already populated taxonomies, but if the configuration is removed, all terms with labels matching entities from the selected entity type/bundle will be removed, regardless of their preexistence.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-04-18",
+  "project_changed": "2026-06-16",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 11000000
 }

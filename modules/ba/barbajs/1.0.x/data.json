@@ -34,5 +34,13 @@
     "animation",
     "spa",
     "frontend"
-  ]
+  ],
+  "project_description": "Barba JS integrates the Barba.js library with Drupal to deliver smooth,\n\nSPA‑like page transitions with minimal setup. It auto‑loads a local build when\n\npresent, or falls back to the official CDN. The optional UI submodule lets you\n\ncontrol where and how the library is attached.\n\n Features \n \n Smooth, SPA‑like page transitions using Barba.js. \n No jQuery dependency; lightweight UMD builds. \n Automatic local vs. CDN loading with safe fallback. \n Optional plugins: CSS, Prefetch, Router. \n Granular control via “Barba JS UI” (themes, paths, plugins, variant). \n \n \nUse this module when you want faster, more fluid navigation without adopting a\n\nfull SPA framework. Typical use cases include content sites, portfolios, blogs,\n\nand marketing pages where page transitions improve perceived performance and UX.\n\n Post-Installation \n \n Enable Barba JS (auto‑attaches Barba to frontend pages). \n (Optional) Enable Barba JS UI for configuration at\n\n Configuration → User interface → Barba \n\n ( /admin/config/user-interface/barba/settings ).\n \n Choose attach method: Local (if UMD files exist) or CDN . \n Select plugins (CSS / Prefetch / Router) and build variant (min/non‑min). \n Limit loading by theme or by path patterns as needed. \n Add your transition code in your theme or a custom module:\n\n barba.init({\n transitions: [{\n name: 'fade',\n async leave({ current }) {\n await gsap.to(current.container, { opacity: 0 });\n },\n enter({ next }) {\n return gsap.from(next.container, { opacity: 0 });\n }\n }]\n}); \n \n Additional Requirements \n \n None. Barba.js can load from the bundled dist/ or jsDelivr CDN. \n (Optional) Local install: place UMD builds under\n\n libraries/barba/dist/ (or multisite equivalent).\n \n \n Recommended modules/libraries \n \n Barba JS UI (submodule): adds a configuration UI. \n GSAP (optional): for richer animation timelines. \n \n Similar projects \n \nModules that provide PJAX/AJAX navigation may offer partial page swaps, but\n\nBarba JS focuses on transition orchestration, view lifecycle hooks, and plugin\n\necosystem (CSS/Prefetch/Router) while staying library‑agnostic and lightweight.\n\n Supporting this Module \n \nEnjoying this project? You can support maintenance and new features by\n\nsponsoring issues on the project queue or contacting the maintainer on\n\nDrupal.org.\n\n Community Documentation \n \n Barba.js Docs: Get started \n Barba.js Examples: Demos \n GitHub: barbajs/barba \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-08-09",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9005000,
+  "core_semver_maximum": 12000000
 }

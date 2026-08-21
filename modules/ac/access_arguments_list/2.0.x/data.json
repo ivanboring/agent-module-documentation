@@ -36,5 +36,13 @@
     "user",
     "access",
     "developer"
-  ]
+  ],
+  "project_description": "Displays permission machine names in the admin permissions table at /admin/people/permissions , so developers can easily copy and use them in custom modules.\n\n Features \n - Shows the machine name below each permission\n\n- Click on any machine name to copy it to clipboard\n\n- Works with Drupal 9.3+, 10, and 11\n\n Usage \n 1. Enable the module\n\n2. Navigate to People > Permissions \n\n3. Machine names appear below each permission\n\n4. Click any machine name to copy it\n\n Example \n Use the copied machine name in your routing.yml :\n\n \n\nmy_module.example:\n\n path: '/example'\n\n defaults:\n\n _controller: '\\Drupal\\my_module\\Controller\\ExampleController::content'\n\n requirements:\n\n _permission: 'administer book outlines'\n\n \n\n Requirements \n - Drupal 9.3+, 10, or 11\n\n Configuration \n No configuration needed. Just enable and use.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-12-27",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

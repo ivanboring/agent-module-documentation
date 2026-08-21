@@ -33,5 +33,13 @@
     "toolbar",
     "link",
     "hosting"
-  ]
+  ],
+  "project_description": "This is a really simple module that will hopefully be unnecessary at some point. Currently Pantheon's Dashboard includes an Autopilot icon in Primary Navigation on the left. Unfortunately that is linked the Autopilot overview that shows the status for all sites in a workspace and only works for users with with a Workspace account.\n\n \n\n There should be a link directly to a site's Autopilot status if Autopilot is enable for that site.\n\n \n\n If a user who is a member of a Site Team navigates to https://dashboard.pantheon.io/site/[SITE ID]/autopilot/status, they can access the Autopilot status for that site. When enabled, this module just adds an icon to the toolbar for users given permission to use the module. The link uses a Pantheon environmental variable in the link, but it does not know whether the user has access to the link or even if Autopilot has been configured for the site.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-01-24",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

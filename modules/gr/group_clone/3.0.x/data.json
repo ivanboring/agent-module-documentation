@@ -35,5 +35,13 @@
     "duplicate",
     "content",
     "template"
-  ]
+  ],
+  "project_description": "Back to top \n\n Introduction \n This module allows cloning groups and their content along with any referenced\n\nentities.\n\nAs in the case of other group modules the 3.x releases work with Group 3.x. \n\n Previous releases are not supported anymore.\n\n Back to top \n\n Configuration \n Configuration can be found in Groups -> Settings -> Cloning settings.\n\nAn administrator (administer group permission) can define which group types\n\ncan be cloned and what should the default cloning behavior for different\n\ngroup content types be. After group cloning is enabled for a group type,\n\nall groups of that type will have a \"Clone\" tab.\n\n Back to top \n\n Reverting \n After a group is cloned, the cloning can be reverted from the \"Clone\" tab.\n\nThis deletes all the entities that have been cloned and doesn't affect the\n\nsource group in any way.\n\n Back to top \n\n Extending \n To implement a specific cloning method for any group content type plugin,\n\ncreate a new GroupContentCloner plugin in any module. See\n\n Drupal\\group_clone\\Annotation\\GroupContentCloner and\n\n Drupal\\group_clone\\Plugin\\GroupContentCloner\\GroupContentClonerInterface .\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2022-04-29",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

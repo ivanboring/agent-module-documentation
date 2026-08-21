@@ -38,5 +38,13 @@
     "display",
     "page building",
     "sdc"
-  ]
+  ],
+  "project_description": "Features \n This module allows fields to be placed into Drupal Canvas templates. This allows any field to be used in a Drupal Canvas template, without having to be mapped to a compatible component property. As such, it allows for a simpler modification of node templates, similar to how Layout Builder works, but also allowing the deeper customization of mapping field values to component properties where needed (and where the necessary mappings exist).\n\n That means your Canvas layouts can include values from fields that don't yet\n\nhave a mapping to a Canvas component property yet, such as Smart Date \n\nfields. It also means you can take advantage of Drupal's advanced rendering\n\ncapabilities for things like image styles or responsive image styles, and\n\nshow the full content of multivalue entity reference fields.\n\n \n\n The Field Display component also support third-party settings, so you can\n\nalso use modules that extend formatters, such as Date Augmenters .\n\n \n\n Disclosure: The initial build of this module was vibe coded using a combination of Claude and Codex.\n\n Back to top \n\n Demo Video \n \n\n Post-Installation \n 1. Navigate to the Template list in the Canvas editor and open a template.\n\n2. Open the component library and drag a Field Display component in.\n\n3. Select the field from the current node's content type.\n\n4. Select the formatter for that field.\n\n5. Configure any available formatter settings.\n\n Additional Requirements \n This project extends the functionality of Drupal Canvas .\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2026-04-17",
+  "project_changed": "2026-08-19",
+  "core_semver_minimum": 11002000,
+  "core_semver_maximum": 13000000
 }

@@ -35,5 +35,13 @@
     "globus",
     "oauth",
     "authentication"
-  ]
+  ],
+  "project_description": "Adds CILogon and Globus Auth OpenID Connect logins to Drupal 10, with prefilled endpoints, optional Key-based secret storage, customizable login buttons/help, and a clearer Connected Accounts experience.\n \n\n Back to top \n\n Features \n \n \n Ready clients: Purpose-built OpenID Connect plugins for CILogon (OSP) and Globus Auth (OSP) with sensible defaults.\n \n \n Secure secrets: Optional integration with the Key module to store client secrets safely.\n \n \n Login UI: Configurable “Log in with …” button text (global template + per-client overrides) and optional help text on the login page.\n \n \n Clear accounts: Connected Accounts shows “Connected to {IdP}” using IdP claims (CILogon idp_name , Globus identity_provider_display_name ).\n \n \n Back to top \n\n Post-Installation \n \n Enable: drush en cilogon_globus_auth . \n \n Configure clients: Configuration → People → OpenID Connect .\n \n Use plugins: ospclscigw (CILogon) and ospgascigw (Globus). \n Enter Client ID/Secret (or select a Key if Key is enabled). \n \n Register the shown redirect URI (e.g., /openid-connect/{plugin_id}/callback ) with your provider.\n \n \n \n \n Scopes: \n \n CILogon default: email , openid , profile , org.cilogon.userinfo . \n Globus default: openid email . \n \n \n \n Customize login UI: Go to /admin/config/people/cilogon-globus-auth .\n \n Set default button text template (use @client_title ). \n Optional per-client button/help text (HTML allowed). \n \n \n \n Back to top \n\n Additional Requirements \n \n Drupal core: Drupal 10. \n Module: openid_connect ^3.0@alpha (keep versions in sync). \n Optional: key (recommended for client secret storage). \n External: Active apps/credentials with CILogon and/or Globus. \n \n Back to top \n\n Recommended modules/libraries \n \n Key: Centralized, secure storage for client secrets referenced by the clients. \n \n Back to top \n\n Similar projects \n \n \n OpenID Connect (generic): Allows manual provider setup; this module adds purpose-built clients for CILogon/Globus, prefilled endpoints/scopes, UI text controls, and improved Connected Accounts labeling.\n \n \n Back to top \n\n Supporting this Module \n \n Issues and feature requests: Use the Drupal.org project issue queue. \n Contributions: Merge requests and reviews are welcome. \n \n Back to top \n\n Community Documentation \n \n OpenID Connect: https://www.drupal.org/project/openid_connect \n CILogon: https://www.cilogon.org/ \n Globus: https://www.globus.org/ \n \n Back to top \n\n Notes \n \n Clear caches ( drush cr ) after install/config changes. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-02-11",
+  "project_changed": "2026-08-11",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

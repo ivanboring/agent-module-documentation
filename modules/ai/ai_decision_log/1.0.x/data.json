@@ -38,5 +38,13 @@
     "ai",
     "provenance",
     "reporting"
-  ]
+  ],
+  "project_description": "AI Decision Log stores editorial and technical decisions as persistent, queryable content entities — an ADR-style (Architecture Decision Record) trail for both human and AI-assisted changes. It answers not just what changed but why , and keeps that reasoning available for review, onboarding and audit.\n\n The problem it solves \n Decisions made during content and configuration work — especially AI-assisted ones — usually vanish into commit messages, chat logs or nobody's memory. AI Decision Log captures them as first-class, permissioned records you can query and report on.\n\n What each decision records \n \n Title, summary and context — the situation and why a decision was needed. \n The decision and the alternatives that were considered. \n Related entities, configuration or modules. \n Source — whether the decision was human or AI-assisted, and by whom. \n \n Features \n \n Content-entity trail — decisions are permissioned, queryable entities with an admin report at /admin/reports/ai-decisions . \n One-call writer service — ai_decision_log.writer lets any module record a decision in a single call. \n AI Policy Gateway integration — mirrors every AI policy decision into the log automatically, storing only sanitized, prompt-free data (a hash of the input, never the raw prompt). \n \n Requirements \n \n Drupal 10.3+ or 11 \n \n Standalone — no other AI module is required.\n\n Installation \n composer require drupal/ai_decision_log Enable the module and review decisions under Reports.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-07-19",
+  "project_changed": "2026-07-22",
+  "core_semver_minimum": 10003000,
+  "core_semver_maximum": 13000000
 }

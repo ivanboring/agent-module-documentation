@@ -50,5 +50,13 @@
     "content entity menu",
     "GroupMenuBlock",
     "navigation"
-  ]
+  ],
+  "project_description": "About this Module \n Group module\n\n allows you to create arbitrary collections of your content and users on your site and grant access control permissions on those collections.\n\n \n This module lets you setup per group menus. The difference between this module\n\nand [Group Menu]( https://www.drupal.org/project/groupmenu ) is mainly in its\n\ndata model. That module creates everything as menu config items. This creates\n\neverything as content entities.\n\n The upside to this is that config ignore is not needed. No more config\n\nreplicating like rabbits all over the place when more and more groups are\n\ncreated. Nor are any patches needed for Drupal core or Group module.\n\n Group Content Menu 3.x \n Use this version for new installations. Supports Group version 3.x.\n\n Group Content Menu 2.x \n Use this version for upgrades from Group 1.x. Supports Group module 2.x.\n\n Group Content Menu 1.x \n Use this version for Group 1.x. Minimally supported with the release of Group 2.x and 3.x.\n\n Installing the Group Content Menu Module \n Note: Use of the module on a Composer managed site is also supported.\n\n \n Copy/upload the module to the modules directory of your Drupal installation. \n Enable the module in 'Extend' (/admin/modules). \n Configure the module to define a new menu type (/admin/structure/group_content_menu_types). \n Enable the menu type on the group content enablement tab i.e. /admin/group/types/manage/{group_type}/content.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-11-21",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

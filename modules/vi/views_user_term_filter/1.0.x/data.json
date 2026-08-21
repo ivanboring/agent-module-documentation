@@ -38,5 +38,13 @@
     "term reference",
     "personalization",
     "query"
-  ]
+  ],
+  "project_description": "Allows a site builder to build a view whose results will be automatically filtered to a taxonomy term set in the visitor's profile.\n\n For example, if a site categorizes content by region, that site can allow registered users to specify their own region in. their profile. This module provides an easy way to show each user content that has been tagged for the region they've specified in their profile.\n\n For anonymous users, this filter will show all results.\n\n It's also worth noting that this module doesn't (yet) perform any validation that the vocabulary targets for the two taxonomy terms reference field actually align (e.g. use a common vocabulary), which could mean that no results would ever show for the view.\n\n If instead of filtering results you'd prefer to boost search results that align to a user's profile, check out Search API Solr Boost By User Term .\n\n Dependencies \n This module requires the User Reference Field Cache Context module to provide better caching of the modified search results.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2022-07-03",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

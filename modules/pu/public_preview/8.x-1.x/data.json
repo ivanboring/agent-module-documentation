@@ -35,5 +35,13 @@
     "share link",
     "hash",
     "node"
-  ]
+  ],
+  "project_description": "This module allows anonymous users access for unpublished content.\n\n Why is this useful? \n You may want to send links to unpublished content to a colleague or publishing partner for review, or you may need to enable users without \"administer nodes\" permissions to access content as part of a Workflow process.\n\n Back to top \n\n Drupal 8 & 9 & 10 \n This version provides a form on the /node/{node}/preview-links path for users with the access preview links form permission where they can generate unique hashes for each translation of the node.\n\nThe node will be served on the /node/{node}/preview-link/{hash} path (regardless of being published or not), and this link can be shared with anonymous users.\n\n Back to top \n\n Drupal 6 & 7 \n The Drupal 6 & 7 versions are no longer maintained. They allow public access to unpublished content on a per-content-type basis.\n\n So they module allow you to assign a path suffix, like example.com/node/1234/ preview that can be accessed by users in roles that have been given authorization.\n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2008-07-14",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 11000000
 }

@@ -36,5 +36,13 @@
     "analytics",
     "tracking",
     "privacy"
-  ]
+  ],
+  "project_description": "Matomo (formerly Piwik) is a free and open source web analytics application.\n\n Some sites have a significant user base using NoScript or other browser extensions which limit ability to execute JavaScript.\n\n In addition, some sites have a strict privacy policy (e.g. GDPR or CCPA/CPRA) which prohibits logging of browser metadata tracked by the Matomo JavaScript client (piwik.js).\n\n This module uses an alternative syntax to setup Matomo tracking code via an image tag rather than loading piwik.js. A noscript tag containing the Matomo image tag tracking code is added to the bottom of every page.\n\n In addition, if Matomo module is not enabled, this module uses JavaScript to track the referrer URL.\n\n Matomo Noscript works with or without Matomo module installed. If it is not installed, you will need to configure a couple of settings in your settings.php file .\n\n You can support development by contributing or sponsoring .",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2015-05-08",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 13000000
 }

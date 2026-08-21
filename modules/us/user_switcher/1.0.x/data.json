@@ -33,5 +33,13 @@
     "masquerade",
     "admin",
     "csrf"
-  ]
+  ],
+  "project_description": "Features \n One‑click impersonation – Switch to any user directly from the “People” list (new Access this account operation).\n\n Safe restore – A floating “Return” button (or /user-switch/restore URL) brings you back to your original session whenever you want.\n\n UID 1 protection – Prevents non‑superadmins from impersonating the root user.\n\n Permission‑based access – Only roles with Switch to another user can use the tool; no extra configuration needed.\n\n Minimal footprint – Pure PHP; no external libraries, entities, or config forms. Ideal for quick permission debugging, client support, or training demos.\n\n Post‑Installation \n Enable User Switcher (/admin/modules).\n\n Grant the permission Switch to another user to the roles that should impersonate accounts (/admin/people/permissions).\n\n Go to People → Switch user or use the new Access this account drop‑button action.\n\n While impersonating, click the floating Return button (bottom‑right) or visit /user-switch/restore to revert.\n\n No config pages, content types, or text‑format tweaks— it “just works”.\n\n Additional Requirements \n None. The module relies only on Drupal core.\n\n Recommended modules/libraries \n Gin Admin Theme – visually integrates the floating button with its toolbar, but any admin theme works.\n\n Similar Projects \n Masquerade – mature impersonation module with breadcrumb support and more UI options.\n\nUser Switcher focuses on a tiny code base, zero config, and Drupal 10/11 readiness.\n\n Supporting this Module \n Feel like saying thanks? ⭐ the project on Drupal.org or report issues/PRs in the queue. \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-07-21",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

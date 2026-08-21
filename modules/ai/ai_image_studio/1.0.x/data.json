@@ -41,5 +41,13 @@
     "image-to-image",
     "studio",
     "conversational"
-  ]
+  ],
+  "project_description": "AI Image Studio provides a conversational workspace for generating images and refining them through sequential prompts. Each version remains visible in the session, with provider, model, output settings, processing time, token usage, and reported or estimated cost metadata.\n\n Features \n \n Create persistent image-generation sessions and iteratively refine generated images. \n Select providers and models exposed by Drupal AI, including compatible OpenAI and Grok providers. \n Control aspect ratio, resolution, and supported image-generation options. \n Compare version history with readable request and cost feedback. \n Save a selected result to Drupal Media, requiring alternative text at that point. \n \n Post-Installation \n Configure a compatible image provider through Drupal AI, grant the module permissions, then visit the AI Image Studio session page to create a session and submit the first prompt. Configure module defaults at /admin/config/ai/ai-image-studio .\n\n Additional Requirements \n Requires Drupal core 10.3 or 11, Drupal AI, and at least one Drupal AI provider supporting text-to-image generation. Sequential image refinement additionally requires an image-to-image capable provider/model. API usage may incur provider charges.\n\n Similar projects \n Unlike one-shot image generators, AI Image Studio focuses on a persistent, chat-like version history for iterative prompt-based refinement, comparison, usage reporting, and eventual Media Library saving.\n\n Community Documentation \n Installation and usage documentation is included in the project README.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-07-30",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10003000,
+  "core_semver_maximum": 12000000
 }

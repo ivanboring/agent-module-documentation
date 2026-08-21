@@ -35,5 +35,13 @@
     "dashboard",
     "migrate",
     "status"
-  ]
+  ],
+  "project_description": "The Content Migration Overview module provides a comprehensive summary of your content migration in Drupal.\n\n It supports migration from Drupal 7 to Drupal 10.3 and later versions.\n\n Features \n It provides a Drush command to validate the migrated content data.\n\n drush migration:stat OR drush mstat \n\n \nAfter running the Drush command, you will see the migration summary with total, passed, and failed counts, as well as the generated report path.\n\n \n\n Configuration \n Define the source database connection with the key ' migrate ' in addition to the 'default' database connection in settings.php.\n\n OR \n\n Configure the source database connection at /admin/config/system/migrate-database-credentials .\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-06-21",
+  "project_changed": "2026-08-13",
+  "core_semver_minimum": 10003000,
+  "core_semver_maximum": 12000000
 }

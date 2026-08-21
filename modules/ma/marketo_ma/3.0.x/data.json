@@ -44,5 +44,13 @@
     "leads",
     "tracking",
     "forms"
-  ]
+  ],
+  "project_description": "Adds Marketo marketing automation tracking capability to your website as well as the ability to capture lead data during user registration and form submission.\n\n Features \n \n Adds Munchkin tracking code to pages (include/exclude filters available for both paths and roles) \n Capture lead data using Marketo's Munchkin javascript or API integrations \n API based lead capture can be configured to be synchronous or asynchronous (captured data sent during cron execution). \n Capture leads during user creation, update, and/or login\n \n Ability to specify which user actions trigger lead capture \n Specify how user profile fields should map to Marketo fields \n \n \n \n 7.x Features \n\n Fully integrated with Webform \n \n Custom LeadSource per webform \n Map webform components to Marketo fields \n \n \n Rules integration \n Drush support\n \n View lead details \n View lead activity \n \n \n Marketo MA uses the Marketo REST API as of 7.x-2.x, previous versions used the SOAP API. \n\n 8.x Features \n\n Contact form (with contact_storage) integration \n Webform module integration \n\n Support and Contribute \n Feel free to file issues in the issue queue.\n\n Drupal 7 \n This is minimally maintained.\n\n Drupal 8+ \n 2.x branch \n This branch is based on and old Guzzle 3 based library. Because the library is no longer maintained and Guzzle 3 abandoned, this branch can't be only be minimally maintained. Additionally, Guzzle 3 is incompatible with PHP 8 which means it will be impossible to support Drupal 10 so this branch will be abandoned at some point in the future.\n\n 3.x branch \n This branch is based on a new GuzzleHttp based library being maintained by neclimdul. It is currently being actively maintained and developed.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2013-03-21",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12999999
 }

@@ -36,5 +36,13 @@
     "generate",
     "defaults",
     "content"
-  ]
+  ],
+  "project_description": "Bulk generate paragraphs with configurable default values and increment patterns.\n\n Features \n \n Bulk Generation : Generate multiple paragraphs at once (1-100) \n Nested Paragraphs : Full support for nested paragraph fields \n AJAX Refresh : Preserves unsaved form values after generation, with page reload fallback \n Dropdown UI : Matches Paragraphs widget add_mode setting \n Increment Patterns : Automatically increment dates and numbers \n Template Support : Use {n} for numbering, {n0} for 0-based numbering, {date:Y-m-d} for dates \n Field Types : Supports text, text with summary, number, date, date range, boolean, link, email, telephone, list, image, and file fields \n Admin Settings : Configure available increment options and defaults at /admin/config/content/bulk-paragraphs \n Per-widget Settings : Enable or disable bulk generation per Paragraphs widget \n Automatic Cleanup : Orphaned paragraphs are cleaned up via cron after 24 hours \n \n Post-Installation \n \n (Optional) Configure increment options at Administration > Configuration > Content authoring > Bulk Paragraphs \n Navigate to any content form with a Paragraphs field \n Click \"Bulk Generate\" next to any paragraph type's add button \n Configure the number of paragraphs and default values \n Click \"Generate\" \n \n Additional Requirements \n \n Paragraphs module \n \n Similar projects \n This module provides bulk generation functionality specifically designed for Paragraphs, filling a gap not addressed by other paragraph-related modules.\n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-12-27",
+  "project_changed": "2026-07-07",
+  "core_semver_minimum": 10002000,
+  "core_semver_maximum": 12000000
 }

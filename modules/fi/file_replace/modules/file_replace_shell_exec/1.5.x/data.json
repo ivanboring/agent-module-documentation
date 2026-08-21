@@ -38,5 +38,13 @@
     "automation",
     "run command",
     "file_replace submodule"
-  ]
+  ],
+  "project_description": "The file replace module is a small utility providing site administrators with the possibility to replace files, keeping the file uri intact. This is useful in cases where a file is linked or used directly but needs to be updated occasionally.\n\n Installation and usage \n Install the module as you would any contrib module, preferably with composer:\n\n composer require drupal/file_replace \n\n The module currently only provides a 'Replace' page for files. You will need to manually add links to the file overview page. Simply adding a global text field with a link like the following would work fine:\n\n admin/content/files/replace/{{ fid }}",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-01-21",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

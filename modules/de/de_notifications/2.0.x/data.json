@@ -35,5 +35,13 @@
     "entity",
     "decoupled",
     "changes"
-  ]
+  ],
+  "project_description": "The Decoupled Entity Notifications module provides a robust API for subscribing to entity updates, enabling seamless integration with decoupled frontends.\n\n Features \n \n Subscription Management : Allows users to subscribe to changes in specific entities. \n Customizable Notifications : Introduces a `notifications_settings` field that can be added to entity bundles. This field includes: \n \n A subfield to control whether an entity can be subscribed to. \n A user-configurable subfield for sending notifications on specific changes, along with a text field for detailed descriptions. \n \n \n Typical usecase for this module is receiving updates for entity changes with a decoupled frontend. \n\n Post-Installation \n Follow these steps to set up the Notifications module:\n\n \n Enable the Module : Install and enable the module in your Drupal site. \n Set the Secret Key : Add the following line to your `settings.php` file, replacing `{SECRET_KEY}` with a secure, private value. Using an environment variable for this key is highly recommended.\n\n \n $config['de_notifications.settings']['secret_key'] = {SECRET_KEY};\n\n \n \n Configure Module Settings : Go to `admin/config/system/de_notifications` to adjust the module’s settings. \n Set Up Cron Jobs : Configure the desired schedules for the \"Clean up unconfirmed subscriptions\" and \"Queue: Notify Subscribers\" cron jobs in your site's cron settings. \n Add the Notifications Field : Add the `notifications_settings` field to the desired entity bundle(s). \n Enable the Field : Activate the added field for one or more instances of your entity. \n Use the Endpoints : Make API requests to the module’s available endpoints as outlined in the documentation. \n \n Additional Requirements \n The Decoupled Entity Notifications (DEN) module requires:\n\n \n Dynamic Entity Reference \n \n DEN comes bundled with the submodule Decoupled Email Notifications Symfony Mailer (DENSM) to allow you to use symfony mailer as a notification type. If you plan to use DENSM, you'll also need to install the Symfony Mailer module.\n\n The modular architecture of DEN is designed for extensibility, allowing developers to create additional notification type submodules as needed.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-12-06",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

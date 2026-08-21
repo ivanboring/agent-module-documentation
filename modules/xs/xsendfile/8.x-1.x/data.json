@@ -33,5 +33,13 @@
     "x-accel-redirect",
     "download",
     "nginx"
-  ]
+  ],
+  "project_description": "What does this module do? \n The Xsendfile module enables fast transfer for private files in Drupal using the Xsendfile webserver module (Apache) or X-Accel-Redirect (Nginx). It does this by letting the webserver handle the private file transfer, instead of letting Drupal send the file response.\n\n Currently file downloads and image derivative downloads (created by image styles) are supported (8.x-1.x).\n\n Installation \n \n Install the module as usual. \n Enable private files. For information on how to do so, see https://www.drupal.org/docs/8/core/modules/file/overview#s-private-file… \n Go to /admin/config/media/file-system/xsendfile and enable either \"Files transferred by Nginx using X-Accel-Redirect\" or \"Files transferred by Apache using xsendfile\", depending on your webserver type. \n For Nginx: Copy/paste the suggested config (see README.txt), and reload Nginx.\n Please note: The Nginx configuration is untested. If you use this module with Nginx, please report your findings. Thanks! \n For Apache: install the xsendfile Apache module ( https://tn123.org/mod_xsendfile/ ), copy/paste the suggested config (see README.txt), and reload Apache. \n Back to top",
+  "maintenance_status": "Seeking co-maintainer(s)",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2012-01-13",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 11000000
 }

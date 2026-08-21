@@ -36,5 +36,13 @@
     "embed",
     "rich text",
     "forms"
-  ]
+  ],
+  "project_description": "The CKEditor 5 Webform Embed module streamlines the process of placing complex forms into your content. Instead of managing shortcodes or complex HTML snippets, this module provides a native CKEditor 5 widget that allows administrators to browse, select, and embed Webforms directly within the editor interface. It bridges the gap between powerful form functionality and a user-friendly authoring experience.\n\n Features \n \n Native Widget Integration: Provides a visual \"Webform\" block within the\n\neditor to easily move and manage embedded forms. \n AJAX Modal Browser: A user-friendly selection interface to browse\n\nand search for active webforms without leaving the content page. \n Live Editor Placeholders: Provides a clear visual representation of where the form will appear, ensuring editors understand the layout before hitting save. \n Double-Click Editing: Quickly swap out one form for another by double-clicking the widget to re-open the selection modal. \n Secure Rendering: Uses a dedicated server-side filter to transform semantic tags into fully functional, accessible Drupal Webforms on the frontend. \n \n Installation \n \n Install as you would any contributed Drupal module. See Installing Drupal Modules .\n\n composer require drupal/ck5_webform Enable the module using Drush:\n\n drush en ck5_webform Post-Installation \n \n After installation, you must configure your Text Formats to enable the embedding capabilities:\n\n \n Go to Configuration » Content authoring » Text formats and editors . \n Edit your preferred format (e.g., Basic HTML or Full HTML ). \n Drag the Embed Webform icon into the active toolbar. \n Enable the CKEditor 5 Webform Embed filter in the \"Enabled filters\" section.\n\n Note: This filter is responsible for rendering the form on the public site. \n If using Limit allowed HTML tags , ensure is added to the allowed tags list. \n \n Additional Requirements \n \n This module requires the following:\n\n \n CKEditor 5 (Core module in Drupal 10/11) \n Webform (Contributed module) \n \n Similar projects \n \n Entity Embed \n \n Supporting this Module \n \n If you find this module useful, please consider reporting bugs or submitting feature requests in the issue queue. Your feedback helps make this tool better for the entire community!\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-01-26",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

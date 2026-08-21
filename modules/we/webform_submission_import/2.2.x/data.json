@@ -43,5 +43,13 @@
     "import submissions",
     "webform submission",
     "csv upload"
-  ]
+  ],
+  "project_description": "Allows admin to upload a CSV of form submission data for import into a forms existing submissions.\n\n Install as normal. A new tab labeled \"Import Submissions\" will be added to your webform (i.e. /admin/structure/webform/manage/{my_form_id}).\n\n From there, simply upload a CSV file with the first row containing headers that match the field names from your form. Any extra columns are ignored.\n\n Form fields are validated on import, so any data from your CSV that does not pass validation will be skipped and logged.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-01-30",
+  "project_changed": "2026-08-21",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

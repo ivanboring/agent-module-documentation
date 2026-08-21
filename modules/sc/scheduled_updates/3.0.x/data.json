@@ -39,5 +39,13 @@
     "field values",
     "cron",
     "embargo"
-  ]
+  ],
+  "project_description": "The Scheduled Updates module allows scheduling updates at a specific date and time to entities such as Content(nodes), Users, Terms, Files and many more. Update dates can contain 1 or multiple fields. Since many more things are fields in Drupal 8 this means you can also update properties like published, promoted, sticky, title and pretty much anything else you can think of.\n\n \nAI was used on the 3.0.x branch to get it up to 10.4/11 standards. Please test heavily.\n \n This modules supports 2 different types of updates:\n\n Back to top \n\n Embedded Updates \n These updates can be embedded on the add/edit form of the entity they will be updating. \n\n Example uses: \n \n Scheduling Publish and/or UnPublish Dates directly on node forms. \n Set a user to inactive at a certain date on the user edit form. \n \n Back to top \n\n Independent Updates \n These updates are added directly using their own forms. When making these updates the user selects nodes, users or other entities they would like to update. These updates can target multiple entities in a single update.\n\n Example uses: \n \n Select a group of nodes to be promoted and/or published on a certain date. \n Select a group of users to be given a Manager role at the beginning of the next month. \n \n Back to top \n\n Alternatives \n \n https://www.drupal.org/project/scheduler : many sites use this. \n https://www.drupal.org/project/scheduled_publish : simple one-trick option \n https://www.drupal.org/project/scheduled_transitions \n https://www.drupal.org/project/advanced_scheduler \n \n Back to top \n\n Configuration \n Before making updates you must first create at least one Scheduled Update Type .\n\nA Scheduled Update Type:\n\n \n Can only target one entity type to update \n Can either be embedded or an independent update \n \n To easily create embedded updates click Add Update Field on the Manage Fields page of the entity type you want to update.\n\n To create a scheduled update type go to: Configuration -> Workflow -> Scheduled Updates -> Scheduled Update Types \n\n After you have created a Scheduled Update Type you will then be prompted to choose the fields from your target entity type to include on your new update type.\n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2015-12-16",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 13000000
 }

@@ -33,5 +33,13 @@
     "widget",
     "picker",
     "french"
-  ]
+  ],
+  "project_description": "Module relating to \"Design Système de l'État\" ( DSFR (in French) ) recommendations.\n\n This module provides color selection field types based on the official DSFR palette. For each field instance, you can:\n\n \n Limit the selectable colors \n Select the color code integration method \n Wrap the selected colors into custom css code \n Enable a contrast ratio validation from a color (hexadecimal code or DSFR color name) or from another DSFR color field. \n \n This module uses the official DSFR color variables names rather than the hexadecimal code, ensuring compatibility with both light and dark modes.\n\n The colors are not stored within the module itself but are imported from the official DSFR sources. The colors detection is automatic (based on a cron job), there is no additional action when you upgrade the DSFR library!\n\n Back to top \n\n Suite of modules \n This module is part of a set of projects to implement DSFR (in French) in Drupal.\n\n It is strongly recommended to use this module in addition to the base DSFR for Drupal theme.\n\n Back to top \n\n Useful links \n \n Colors palette documentation (in French) \n Colors usage documentation (in French) \n \n Back to top \n\n Other modules \n This module is inspired by the Color Field module.\n\nAs the DSFR enforces a limited color palette, this module can be used to enable a broader range of color options if needed.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-08-06",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10003000,
+  "core_semver_maximum": 13000000
 }

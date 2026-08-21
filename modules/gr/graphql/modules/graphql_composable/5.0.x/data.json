@@ -54,5 +54,13 @@
     "createArticle",
     "SDL",
     "resolver"
-  ]
+  ],
+  "project_description": "This module lets you craft and expose a GraphQL schema for Drupal 10 and 11.\n\n It is is built around webonyx/graphql-php . As such, it supports the full official GraphQL specification with all its features.\n\n You can use this module as a foundation for building your own schema with lots of data producer plugins available and through custom code.\n\n For ease of development, it includes the GraphiQL interface at /graphql/explorer.\n\n Back to top \n\n Example implementation \n Example modules: https://git.drupalcode.org/project/graphql/-/tree/5.x/examples \n\n Back to top \n\n Resources \n Documentation: https://drupal-graphql.gitbook.io/graphql/ \n\nProject homepage: https://www.drupal.org/project/graphql \n\n Back to top \n\n Upgrading from 4.x to 5.x \n GraphQL 5.x has the same architecture as 4.x, the main differences are small PHP type API breaks. Upgrading is recommended, check the release notes .\n\n Back to top \n\n Old 3.x version \n The 3.x version of this module is now in maintenance mode.\n\n Differences to the 5.x and 4.x versions: the 3.x version automatically generates a GraphQL schema from Drupal entities and data structures. It exposes Drupal details over the GraphQL API. The 5.x version leaves the GraphQL schema design to the developer, which makes it easier to hide Drupal internal details. The 5.x version requires the developer to setup and map the GraphQL API schema.\n\n Check out https://github.com/drupal-graphql/drupal-decoupled-app for a complete example of a fully decoupled React and GraphQL 3.x application.\n\n Upgrading from 3.x to 5.x \n We recommend upgrading from 3.x to 5.x to take advantage of the improvements made in the GraphQL module and the underlying GraphQL library. If you still require automatic generation of the schema then take a look at the GraphQL Compose or GraphQL Core Schema projects which have implemented automatic schema generation on top of the 5.x and 4.x GraphQL module.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2015-03-20",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -34,5 +34,13 @@
     "multilingual",
     "provider",
     "credentials"
-  ]
+  ],
+  "project_description": "If you're using the Key module, but need your provided key to be different per language viewed on the site, then this is the provider for you!\n\n Once installed, you simply add all the keys for the different languages to the key module as usual, and then create a special key that'll vary per language, select the new 'Key per Language' provider, and then for each configured language, specify the key that it'll provide.\n\n Then, in run time, when something asks Key module for the key for your whatever, this provider will look up what language the request is in, and pass the lookup onto the configured key.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-09-05",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8009000,
+  "core_semver_maximum": 12000000
 }

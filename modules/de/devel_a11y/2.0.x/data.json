@@ -40,5 +40,13 @@
     "tabbingmanager visualize",
     "a11y debug",
     "access devel information"
-  ]
+  ],
+  "project_description": "In Drupal 8, several very important accessibility improvements landed:\n\n \n [#1915302] \n [#1913086] \n \n This module exists to simplify using and testing these APIs.\n\n \n Drupal.announce announcements \n Can override Drupal.announce() to not only announce UI changes via ARIA live regions, but to also log these aural announcements to the browser console. \n Drupal.TabbingManager tabbing constraints \n Can log when tabbing is constrained and visually indicate which elements are reachable. \n \n Requirements \n This module requires the following modules:\n\n \n Devel \n \n Configuration \n Go to Administration » Configuration » Development » Devel settings » Devel Accessibility settings to configure which accessibility development tools you want to enable.\n\n Maintainers \n \n Wim Leers (Wim Leers) \n Jesse Beach (jessebeach) \n Florent Torregrosa (Grimreaper) \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2013-04-27",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 13000000
 }

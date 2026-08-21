@@ -35,5 +35,13 @@
     "tracking",
     "integrity",
     "enhancement"
-  ]
+  ],
+  "project_description": "Entity Usage Plus provides a few enhancements to the Entity Usage module: a view filter for unreferenced entities allowing users to identify entities that aren't linked/embedded elsewhere, an operation link for the usage tab, and an additional list of the child entities referenced by a given entity to the entity usage tab.\n\n Features \n One way this module may be helpful is to provide a view of media entities that were never used and can be removed. \n\n Note that if you are using revisions, Entity Usage still counts usage in previous revisions.\n\n Post-Installation \n If you did not previously have Entity Usage installed and configured, you will need to do that first and run the bulk update for existing content.\n\n If you want to display child entities of the current entity in the usage tab, you can enable that on the settings page at /admin/config/entity-usage/settings/entity-usage-plus and then clear the cache.\n\n If you want to display a list of unreferenced content/media/etc, you will need to create an administrative view of for example media items and apply the \"Limit to unreferenced entities\" view filter to it. This view is only as good as the data in the entity usage table, so make sure you've configured it to capture all the relationships you care about and run the batch script on all content.\n\n Additional Requirements \n This module requires the Entity Usage module to be installed and configured. This module uses Entity Usage permissions.\n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-07-17",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10002000,
+  "core_semver_maximum": 12000000
 }

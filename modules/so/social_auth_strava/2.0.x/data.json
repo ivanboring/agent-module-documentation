@@ -40,5 +40,13 @@
     "sso",
     "social api",
     "authentication"
-  ]
+  ],
+  "project_description": "Social Auth Strava allows users to register and login to your Drupal site with their Strava account. It is based on Social Auth and Social API projects.\n\n This module adds the path user/login/strava which redirects the user to Strava for authentication.\n\n After Strava has returned the user to your site, the module compares the email address provided by Strava to the site's users. If your site already has an account with the same email address, user is logged in. If not, a new user account is created. \n\n Update: Email is no longer available in Strava API, user id is used instead to log in the user. It should just work well for existing users as email was used as backup option.\n\n Login process can be initiated from the \"Strava\" button in the Social Auth block. Alternatively, site builders can place (and theme) a link to user/login/strava wherever on the site.",
+  "maintenance_status": "Seeking new maintainer",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2017-05-29",
+  "project_changed": "2026-08-20",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 11000000
 }

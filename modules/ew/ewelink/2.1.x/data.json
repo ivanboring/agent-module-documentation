@@ -33,5 +33,13 @@
     "smart home",
     "devices",
     "api"
-  ]
+  ],
+  "project_description": "🚪 Control eWeLink IoT devices (like smart door locks) directly from Drupal.\n\n This module integrates eWeLink smart devices with Drupal. It uses the eWeLink API PHP library for seamless communication with eWeLink’s cloud.\n\n ✨ Key Features:\n\n \n eWeLink Integration – Connects Drupal with the eWeLink ecosystem, allowing control of compatible smart devices. \n Activity Tracking – Logs user interactions with \"Activity\" entities for auditing and usage analytics. \n \n Custom Role & Permissions \n \n Role : this module creates a \" Open the Door User \" role for granular access control. \n Permission : this module creates a \" Access the Open the Door page \" permission to restrict device operations. \n \n You can enable/disable access to user or group of users (role) manually with Drupal UI ( /admin/people ) or via custom code, with _cron , user_save hooks. See working use case on Bee Hotel .\n\n Interactive Device Control – Provides a customizable \"Open the Door\" page where users can trigger eWeLink-connected devices (e.g., smart locks, switches). \n ✅ Extensible for more use cases – Support for additional eWeLink devices (lights, switches, sensors, cameras) can be added.\n \n Flexible Access Management – Admins can assign permissions manually (via roles) or programmatically (via custom logic) to control who can use eWeLink functions. \n \n 💡 Get Involved!\n\n🔧 Developers & users: Report bugs, suggest features, or contribute via the issue queue.\n\n🤝 Collaboration welcome! Help expand this module’s capabilities.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2022-03-14",
+  "project_changed": "2026-05-26",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

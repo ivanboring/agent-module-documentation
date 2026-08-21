@@ -35,5 +35,13 @@
     "formatter",
     "date range",
     "display"
-  ]
+  ],
+  "project_description": "Provides a field formatter to simplify daterange field output. Easily create simplified date and time range phrases like \"October 5, 2013, 10:00 AM to 1:30 PM.\"\n\n This formatter wraps https://github.com/flack/ranger (which is based on the range formatter in fullCalendar ) to provide a simplified set of date range output options outside of the standard Drupal date format configuration. Format options for date and time are enumerated by the PHP IntlDateFormatter class:\n\n \n\nIntlDateFormatter::NONE (integer)\n\n Do not include this element\n\nIntlDateFormatter::FULL (integer)\n\n Completely specified style (Tuesday, April 12, 1952 AD or 3:30:42pm PST)\n\nIntlDateFormatter::LONG (integer)\n\n Long style (January 12, 1952 or 3:30:32pm)\n\nIntlDateFormatter::MEDIUM (integer)\n\n Medium style (Jan 12, 1952)\n\nIntlDateFormatter::SHORT (integer)\n\n Most abbreviated style, only essential data (12/13/52 or 3:30pm)\n\n \n\n See https://github.com/flack/ranger/blob/master/README.md for more details. For non 'en' locales, the PHP extension php-intl is required.\n\n Similar modules:\n\n \n Daterange Compact",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2018-07-20",
+  "project_changed": "2026-08-20",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

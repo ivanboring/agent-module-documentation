@@ -35,5 +35,13 @@
     "automators",
     "data extraction",
     "text"
-  ]
+  ],
+  "project_description": "This module helps you do normal extraction tasks that you would usually use regular expression and code to solve, inside your AI Automator workflow. This is a submodule from the AI module that allows you to automate almost anything.\n\n This means that if you for instance are scraping a website and you want to extract all images from a scraped webpage into image fields, there is an Automator for it.\n\n It also offers you to use regular expressions to scrape or even count instances of some pattern inside any type of text field.\n\n This uses normal code to help you with your AI stuff.\n\n \n \n\n Extract all images from an article into image fields using one of the Extractor Automator Types together with a scraper Automator Type. \n \n Note that this makes the AI Interpolator Extractor obsolute for Drupal 10.3+.\n\n For more information on how to use the AI Automator (previously AI Interpolator), check https://workflows-of-ai.com .\n\n Back to top \n\n Features \n \n Extract images according to your settings from HTML. \n Extract files according to your settings from HTML. \n Extract links from unstructured text. \n Extract e-mails from unstructured text. \n Fill an integer field with how many times a regex on a text field exists. \n Extract text from unstructured text fields into text fields. \n \n Back to top \n\n Requirements \n \n To use it, you need to use a third party module using the service. Currently its only usable with the AI Automator submodule of the AI module \n \n Back to top \n\n How to use as AI Automator type (link extraction example) \n \n Install the AI module . \n Install this module. \n Create some entity or node type with a text long field. \n Create a link. \n Enable AI Automator checkbox and configure it. \n Create an entity of the type you generated, fill in the text field with some HTML with links and save. \n The links should be populated in the link field. \n \n Back to top \n\n Sponsors \n This module was supported by FreelyGive ( https://freelygive.io/ ), your partner in Drupal AI.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-07-08",
+  "project_changed": "2026-08-19",
+  "core_semver_minimum": 10003000,
+  "core_semver_maximum": 12000000
 }

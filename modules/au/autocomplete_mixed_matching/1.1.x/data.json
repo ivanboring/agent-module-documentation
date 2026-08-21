@@ -35,5 +35,13 @@
     "contains",
     "widget",
     "reference"
-  ]
+  ],
+  "project_description": "This module provides an autocomplete widget for entity reference fields that combines \"STARTS_WITH\" and \"CONTAINS\" matching.\n\nOther than that, the widget behaves exactly like the one from Drupal core.\n\n The result has all the matches that start with the search string, followed by matches that only contain the search string but that don't start with it.\n\n Features \n Comparison with core entity autocomplete widget.\n\n \n \n \n Search term \n Limit \n Core\n\nSTARTS_WITH \n Core\n\nCONTAINS \n New:\n\nMixed matching \n \n \n \n \n \"Frog\" \n 3 \n Frog \n\n Frog eggs \n 99 frog s\n\nAcrobatic frog \n\nCyan frog \n Frog \n\n Frog eggs\n\n99 frog s \n \n \n “Frog” \n 1 \n Frog \n 99 frog s \n Frog \n \n \n “egg” \n 3 \n - \n Frog egg s \n Frog egg s \n \n \n \n Use case \n The main use case are reference fields with a large number of potential targets.\n\nIn these cases neither the \"CONTAINS\" nor the \"STARTS_WITH\" mode are completely suitable:\n\n \n For \"STARTS_WITH\", there may be no results, if all the items start with a prefix like \"The ...\" or a number.\n \n For \"CONTAINS\", the exact match may never show up, because the list is filled up with less relevant matches.\n \n \n Post-Installation \n Configure any entity form display, use the widget for an entity reference field.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-06-13",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

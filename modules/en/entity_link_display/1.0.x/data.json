@@ -35,5 +35,13 @@
     "view mode",
     "canonical",
     "computed"
-  ]
+  ],
+  "project_description": "Entity Link Display provides a simple, reusable field formatter that renders a link to the current entity’s canonical URL. This allows site builders to add direct \"view\" links for content entities (nodes, users, taxonomy terms, etc.) directly in display modes, view modes, or Layout Builder without writing any custom code or overriding templates.\n\n It’s particularly useful when building admin dashboards, reports, or content listings where a quick link to the full entity page is needed.\n\n Unlike traditional approaches where you might need to override templates or write custom Twig for teasers, view modes, or Layout Builder displays, this module works out of the box — just like the \"Link to content\" field in Views. \n\n Requirements \n\n------------\n\nThis module requires no modules outside of Drupal core.\n\n Installation \n\n------------\n\n * Install as you would normally install a contributed Drupal module. Visit\n\n [Installing Modules]( https://www.drupal.org/docs/extending-drupal/installing-modules ) for further information.\n\n Features \n\n------------\n\n \n Adds a field formatter for rendering the current entity's URL as a clickable link. \n Works with all fieldable entity types (nodes, taxonomy terms, users, etc.). \n Allows customization of:\n \n Link text (e.g., title, \"View\", or custom string). \n Link target (_self or _blank). \n Option to include or exclude the URL scheme (https://). \n \n \n Supports multilingual sites (uses the correct translated URL). \n Integrates with all view modes and display modes. \n \n Use Cases: \n\n------------\n\n \n Add a \"View\" or \"Read more\" link to custom entity displays. \n Build editorial or administrative views with quick access links to content. \n Provide end users with a clean way to navigate to referenced entities. \n \n Post-Installation \n\n------------\n\nOnce the module is enabled:\n\n \n Go to the \"Manage display\" tab of any fieldable entity type (e.g., content type, taxonomy term, user). \n Find \"Display Link\" field and place as per your requirements. \n Configure the formatter settings:\n \n Choose what text should appear in the link. \n Set whether the link should open in the same window or a new tab. \n Adjust additional options such as the link class, title attribute, etc. \n \n \n Save the display settings.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-05-26",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

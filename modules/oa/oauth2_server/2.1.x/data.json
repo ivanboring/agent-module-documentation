@@ -60,5 +60,13 @@
     "jwk",
     "sso",
     "api authentication"
-  ]
+  ],
+  "project_description": "Provides OAuth2 server functionality based on the\n\n oauth2-server-php library.\n\n Dependencies: Entity API , Entity reference , X Autoload .\n\n Important: 7.x-1.0-rc2 is the last version that supports PHP 5.2.\n\nAll later versions require PHP 5.3 and X Autoload (due to oauth2-server-php itself requiring PHP 5.3 from version v1.0). \n\n Features \n \n Entity-based architecture. \n Supports creating multiple exportable servers with own scopes and clients. \n Designed for an unbounded number of scopes. \n Supported grant types: \n \n \n Authorization code \n Client credentials \n Refresh token \n Password \n JSON Web Token (JWT) \n \n \n Support for the implicit flow. \n Support for per-client automatic authorization (skipping the authorization form). \n Services integration (authentication). \n Support for OpenID Connect . \n \n Warning: The Services integration requires Services 3.6 (or newer).\n\n The tests can be used as an example client-side implementation.\n\n See the documentation page for information on getting started.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2013-02-26",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

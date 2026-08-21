@@ -35,5 +35,13 @@
     "document loader",
     "extract",
     "text"
-  ]
+  ],
+  "project_description": "Enables extracting Text from PDFs through a Document Loader plugin with the PDF Parser PHP library. It enables Drupal modules to register and use PDF parsing in their document processing workflows.\n\n Features \n \n Extracts the text from PDFs to be used through Document Loader \n Minimal dependencies using straight PHP, without any additional web service requirements \n Retrieve MetaData from the PDF (page count, author, etc) \n \n Available Inputs \n \n PDF: A document from a File URI \n \n Available Outputs \n \n Text: Plain text content from the PDF \n HTML: Semantic HTML extraction \n Markdown: HTML output converted to Markdown \n \n Post-Installation \n Visit the Document Loader configuration page to see PDF Parser available.\n\n Additional Requirements \n Install with Composer to ensure you have all the required dependencies:\n\n \n Document Loader \n smalot/pdfparser \n \n \n\ncomposer require drupal/document_loader_pdfparser\n\n \n\n Recommended modules/libraries \n None.\n\n Similar projects \n \n AI File To Text \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2026-02-12",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10004000,
+  "core_semver_maximum": 13000000
 }

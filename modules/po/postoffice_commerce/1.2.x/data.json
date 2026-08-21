@@ -40,5 +40,13 @@
     "mail plugin",
     "order receipt",
     "themed email"
-  ]
+  ],
+  "project_description": "The Postoffice module sends themed emails with Symfony Mailer .\n\n This module provides a mail plugin for commerce compatibility.\n\n \n For a full description of the module, visit the project page \n To submit bug reports and feature suggestions, or track changes, visit the issue tracker \n \n Back to top \n\n Requirements \n This module requires Postoffice and Drupal Commerce \n\n Back to top \n\n Installation \n \n Install as you would normally install a contributed Drupal module. Visit the Installing Modules documentation page for further information. \n \n Back to top \n\n Configuration \n \n \n Setup postoffice_commerce_mail as the mail plugin for mails sent by commerce:\n\n drush config:set system.mail interface.commerce postoffice_commerce_mail Note: Many commerce extensions (such as commerce_shipping ) use the commerce core mail handler to send mails. Those are covered with the configuration above. One exception is commerce_license . This project relies on the core mail manager. For this reason it is necessary to also configure the Postoffice Commerce Mail plugin for commerce_license explicitly:\n\n drush config:set system.mail interface.commerce_license postoffice_commerce_mail \n \n Back to top \n\n See Also \n This module is geared towards developers. If it does not suit your modus operandi, please have a look at the Symfony Mailer module.\n\n Back to top \n\n Maintainers \n Current maintainers:\n\n \n znerol \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2022-11-13",
+  "project_changed": "2026-08-21",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

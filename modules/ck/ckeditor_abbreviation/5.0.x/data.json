@@ -45,5 +45,13 @@
     "accessibility",
     "context menu",
     "wysiwyg"
-  ]
+  ],
+  "project_description": "Adds a button to CKEditor for inserting and editing abbreviations. If an existing abbr tag is selected, the context menu in Drupal 7 also contains a link to edit the abbreviation.\n\n Requirements \n Drupal 7 \n CKEditor Module \n\n Drupal 8/9 \n CKEditor Module - Core\n\n Drupal 10 \n CKEditor5 Core Module or CKEditor 4 Module \n\n Drupal 10.3+ \n CKEditor5 Core Module\n\n Installation \n \n Download the module into /modules/contrib \n Enable the ckeditor_abbreviation module \n \n Configure your WYSIWYG toolbar to include the abbreviation button.\n\n The button is available in the CKEditor toolbar configuration of text formats if you set CKEditor/CKEditor5 as text editor.\n\n Move the icon into the active toolbar. Enable the filter\n\n'Limit allowed HTML tags and correct faulty HTML'. For CKEditor4 add the title attribute to the allowed HTML abbr tag, if you want to allow an explanation of the abbreviation.\n\n \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-05-07",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -36,5 +36,13 @@
     "frontend",
     "polyfill",
     "core deprecation"
-  ]
+  ],
+  "project_description": "Provides a Drupal library definition for the JavaScript Cookie library (js-cookie) after it was deprecated in Drupal 10 and removed from Drupal 11 .\n\n Instructions\n Installing this module and the library dependency \n Follow the README.md instructions \n\n Using this module as dependency for the js-cookie library (as developer) \n \n If using this in a custom module, run composer require drupal/js_cookie from your project root. \n If using this in a contributed module, make sure to list js_cookie:js_cookie in your module's .info.yml file dependencies. If your contributed module also has a manual composer.json file, make sure to add a require dependency on \"drupal/js_cookie\": \"^1.0\" . \n Replace any of your .libraries.yml dependencies on core/js-cookie with js_cookie/js-cookie .\n \n Avoid using CDN (Privacy) \n To avoid using CDN see README for more information.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-09-05",
+  "project_changed": "2026-08-20",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

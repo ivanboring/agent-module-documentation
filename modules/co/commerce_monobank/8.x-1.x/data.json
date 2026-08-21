@@ -35,5 +35,13 @@
     "payment",
     "gateway",
     "ukraine"
-  ]
+  ],
+  "project_description": "🇺🇦 \n \n This module is maintained by Ukrainian developers.\n\nPlease consider supporting Ukraine in a fight for their freedom and safety of Europe. \n \n \n \n This module provides a Drupal Commerce payment method to embed the payment services provided by Mobobank.\n\n Dependencies \n \n Commerce Core \n \n Installation and Configuration \n \n Download the module from Drupal.org and extract it to your modules folder. \n Enable it. \n Register acquiring via the link \n Go to /admin/commerce/config/payment-gateways and add a new Monobank gateway and configure it. \n \n If you want to use the module in test mode, just switch the Test/Live button. It works automatically.\n\nSee the screenshot for an example of how to set up.\n\n How it works \n The module creates an additional field in the order where it adds the invoice ID. Based on this identifier, information about the payment status is obtained.\n\n Development \n Improve the module with me.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2023-12-30",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -50,5 +50,13 @@
     "exposed filter",
     "views_daterange_filters_daterange",
     "end_value"
-  ]
+  ],
+  "project_description": "Adds filter options for date range fields. Install and rebuild cache to see the options.\n\n It will be obsolete when this core issue is resolved: [#2924061]\n\n For more information see this discussion: [#3068036]\n\n Includes \n Filters by date ranges which include the supplied date.\n\n \n Add filter on the date range field \n Select operator \"Includes\" \n Modify date options as required \n \n Includes (Unbound) (Version 2.x+) \n Filters by date ranges which include the supplied date, properly handling ranges that do not have an end date defined ( optional end date ).\n\n \n Add filter on the date range field \n Select operator \"Includes (Unbound)\" \n Modify date options as required \n \n The Includes (Unbound Indexed) operator does not apply the DATEFORMAT function in the query WHERE condition, which enables database index usage and results in better performance.\n\n Overlaps \n Filters by date ranges which overlap with the supplied date range.\n\n \n Add filter on the date range field \n Select operator \"Overlaps\" \n Modify date options as required \n \n Ends by \n Filters by date ranges which end by the supplied date. Equivalent to \"End date <= supplied date\". Useful for grouped filters when using \"Start date\". See screenshot below.\n\n \n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-05-13",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

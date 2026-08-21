@@ -37,5 +37,13 @@
     "files",
     "analytics",
     "reporting"
-  ]
+  ],
+  "project_description": "The Download Statistics module extends functionality of the core Statistics module and provides for Drupal 8/9 some file download statistics functionality that was available in Drupal 7 through Download Count module.\n\n The file download statistics are useful in determining which files visitors most often download from your site. It provides a customisable \"Popular file downloads\" block that displays the most downloaded files today and for all time, and the last files downloaded. The block can be added to any region of your theme and it allows to configure the number of most recent downloaded files to display, the number of all time downloads to display and the number of day's top downloads to display.\n\n The module provides extensive Views support: the views fields for Total File Downloads count, File Downloads Today count and Most Recent File Download timestamp.\n\n The important configuration step for this module to be able to count downloads - as for any other module that controls or monitors files access - is to setup the \"private\" directory for the uploaded files. In the \"Field settings\" tab of the file upload field definition, make sure you select Upload destination: Private files . The private directory has to be configured in settings.php. If the upload destination is \"Public files\", the web server sends the file to client browser directly, bypassing Drupal code, and counting downloads is impossible.\n\n Once you setup your files to go to a private directory, you can use the block from the module or you can build your own block with the views to show the attachments and their downloads right on a node page.\n\n To enable/disable the file downloads count, navigate to Download Statistics Settings page at /admin/config/system/download-statistics. On the same settings page you can clear the file downloads table if desired. \n\n To use the enabled download counter on a particular Views page or block display, select File URI with Download Count as URI Formatter type in Views UI.\n\nTo count downloads of an attachment from node or media page, select File with Download Statistics recorded as Format in Manage Display tab for a particular entity type.\n\n Finally, set the necessary permissions so that the counter is visible to the users.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-09-16",
+  "project_changed": "2026-08-20",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 13000000
 }

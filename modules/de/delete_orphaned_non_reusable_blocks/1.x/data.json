@@ -33,5 +33,13 @@
     "orphaned",
     "cleanup",
     "block content"
-  ]
+  ],
+  "project_description": "Back to top \n\n Notes \n \n This module should not be run on a production environment. \n Backup the database of any system you are going to run this on before running it. \n The module deletes content created in Layout Builder it considers orphaned. There is no rollback. \n The module uses the inline block usage service (getUsage) to determine if a block is orphaned or not. As documentation on this service is limited you should confirm it is doing what you expect before using it. \n \n Back to top \n\n Description \n When a page is built using layout builder and a custom block is added, \"Create Custom Block\", a block of type 'non reusable' or 'inline' is created.\n\n These blocks 'belong' only to the Layout they are added to and can't be used anywhere else unlike normal blocks. \n\n At some points in the past development of Layout Builder and possibly still now while developing it was/is possible for these blocks to be orphaned. The original page/layout can have been deleted/removed but the non reusable custom blocks still exist in the system.\n\n The primary issue with orphaned blocks is that if you have modules supplying those custom blocks and you try to remove/reinstall them you will get errors from the system telling you that you still have content and your module can't be removed.\n\n There is no way in the Drupal system to see these blocks or remove them so you are stuck.\n\n This is what this module helps with. It searches the system for non reusable blocks and checks to see if they are still in use.\n\n If a non reusable block is found to be orphaned and no longer referenced by anything then it is deleted.\n\n Back to top \n\n Usage \n \n Install the module as any other D8+ module using composer. \n Enable the module and clear cache and then navigate to Admin->Content authoring->Delete Orphaned Block Content. \n The module will search for orphaned blocks and if any found ask if you want to delete them (all or nothing at the moment). \n If you wish to continue and delete the orphaned blocks click 'Delete orphans' \n You will be asked to confirm and if you do the orphaned blocks will be deleted. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2022-09-09",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 11000000
 }

@@ -39,5 +39,13 @@
     "multilingual",
     "multisite",
     "hostname"
-  ]
+  ],
+  "project_description": "Overview \n\n Creates a language negotiation based on a domains language settings.\n\n Installation \n\n Install via composer:\n\n composer require \"drupal/domain_language_negotiation:^3.0@alpha\" \n\n Dependencies \n\n - Your site uses Domain Access module (domain)\n\n- Your site uses Domain Language Access module (domain_language). From 3.0.0 this module has been integrated and is therefore no longer required as a dependency. \n\n Example: \n\n - You have a site with 2 languages enabled: English (EN) and Dutch (NL)\n\n- You created 2 domains using the Domain Access module: Domain1 and Domain2\n\n- You setup Domain1 to only have EN language enabled (using Domain Language Access module)\n\n- You setup Domain2 to only have NL language enabled (using Domain Language Access module)\n\n While you can setup available and default languages via the Domain Language Access module,\n\nyour site can still be in the wrong language (like Domain2 being in EN instead of NL) because currently there is no language detection method based on these domain language settings.\n\n This module provides that for you.\n\nTo me this seemed to be the missing link to get domain_language working in Drupal 8.\n\n Tested and created this module while using these versions of domain and domain_language at the time of writing:\n\ndomain: 1.x-dev\n\ndomain_language: 1.0-alpha2 ( From 3.0.0 this module has been integrated and is therefore no longer required as a dependency. )",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2019-12-05",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

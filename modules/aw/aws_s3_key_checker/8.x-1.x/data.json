@@ -35,5 +35,13 @@
     "batch",
     "head",
     "credentials"
-  ]
+  ],
+  "project_description": "Offers a form to check if a series of keys exists or not inside a AWS S3 bucket.\n\n Back to top \n\n Introduction \n This module is useful to perform a batch operation to ensure a list of keys is present or not inside a bucket.\n\n It performs a HEAD operation to see if a key exists inside a AWS S3 bucket. That key can be prefixed and/or suffixed with any string.\n\n Back to top \n\n Requirements \n \n A working AWS S3 bucket \n A valid AWS account and credentials (access and secret key) \n AWS SDK for PHP : installed by this module when using composer \n The \"READ\" ACL permission granted for the user performing the check \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-03-18",
+  "project_changed": "2026-08-13",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12999999
 }

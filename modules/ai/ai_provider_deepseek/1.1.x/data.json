@@ -39,5 +39,13 @@
     "provider",
     "key",
     "open weight"
-  ]
+  ],
+  "project_description": "Back to top \n\n DeepSeek Provider \n DeepSeek Provider is a module that integrates DeepSeek's Large Language Model (LLM) with Drupal's AI module. This integration allows you to use DeepSeek's powerful language capabilities within your Drupal site.\n\n Back to top \n\n Requirements \n \n AI module \n Key module \n \n Back to top \n\n Installation \n \n Install the module using composer:\n\n composer require 'drupal/ai_provider_deepseek:^1.0@alpha' \n Enable the module:\n\n drush en ai_provider_deepseek \n \n Back to top \n\n Configuration \n \n Go to /admin/config/system/keys/add to add your Deepseek API key. \n Go to /admin/config/ai/providers/deepseek to configure the Deepseek provider and set the key you created. \n \n Back to top \n\n Usage \n \n Once configured, you can use Deepseek's LLM capabilities through any feature that utilizes Drupal's AI module. The provider will be available as an option in the AI module's configuration interfaces.\n \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2024-12-30",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

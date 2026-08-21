@@ -37,5 +37,13 @@
     "widget",
     "select",
     "tags"
-  ]
+  ],
+  "project_description": "Please use the Tagify module instead of Choices Autocomplete. This project will be marked as obsolete unless a new maintainer is found. \n Provides Choices.js form widget for select lists and entity reference autocomplete field types. Rich text (HTML+CSS) formatting of entity reference values and autocomplete results. Supports both standard and views selection entity reference handlers including autocreate (i.g. tags). Easy configuration with the field widget settings form.\n\n Field Types \n \n List (text) \n List (integer) \n List (float) \n Entity Reference \n \n Themes \n Styles for these Drupal themes included:\n\n \n Olivero \n Claro \n \n Element \n Need to use Choices.js autocomplete on a custom element? Sure!\n\n \n\n$form['custom_element'] = [\n\n '#type' => 'choices_autocomplete',\n\n '#title' => t('My select'),\n\n '#options' => [\n\n 'no' => t('No'),\n\n 'yes' => t('Yes'),\n\n ],\n\n '#multiple' => TRUE,\n\n];\n\n \n\n Usage \n \n Download and install the module. Recommended install method is composer:\n\n composer require drupal/choices_autocomplete \n Go to the \"Manage form display\" tab of the entity type. \n Select the \"Choices.js Autocomplete\" widget on the field. \n Configure and save changes. \n \n NOTICE: 2.x has removed the composer.libraries.json file. Be sure to remove it from the composer merge configuration before upgrading from 1.1.x.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2022-05-22",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -37,5 +37,13 @@
     "logging",
     "cli",
     "configuration"
-  ]
+  ],
+  "project_description": "The Admin Audit Trail Config Sync module extends the Admin Audit Trail\n\nmodule by logging configuration synchronization events performed from the command line (`drush config:import`).\n\n Admin Audit Trail's own logging is skipped for CLI requests because it\n\nrelies on the current request being a web request. This module subscribes\n\nto the core configuration import event and writes audit trail entries\n\ndirectly to the database, so that config sync operations are always\n\ncaptured regardless of whether they were triggered through the web UI or\n\nvia Drush.\n\n \n For a full description of the module, visit the project page:\n https://www.drupal.org/project/admin_audit_trail_config_sync \n To submit bug reports and feature suggestions, or to track changes:\n https://www.drupal.org/project/issues/admin_audit_trail_config_sync \n \n Back to top \n\n Requirements \n This module requires the following module:\n\n \n Admin Audit Trail \n \n Back to top \n\n Installation \n Install as you would normally install a contributed Drupal module. Visit https://www.drupal.org/docs/extending-drupal/installing-modules for further information.\n\n Back to top \n\n Configuration \n This module has no configuration options. Once enabled, it automatically registers a \"Config Sync\" event type in the Admin Audit Trail overview and logs an `import_success` entry every time a configuration import completes. The log entry includes a summary of the changes (creates, updates, deletes) and, when available, the SSH user that triggered the import.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-08-10",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 13000000
 }

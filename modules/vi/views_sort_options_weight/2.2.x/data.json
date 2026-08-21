@@ -42,5 +42,13 @@
     "options weight",
     "views sort handler",
     "ORDER BY CASE"
-  ]
+  ],
+  "project_description": "Adds Views sorting plugins that allow setting weight for each list field or entity bundle option.\n\n For instance: \n\nYou have an entity with a \"list\" field, which we'll call \"Status.\" The available options are:\n\n new|New\n\ncanceled|Canceled\n\napproved|Approved\n\nneed_feedback|Need Feedback \n\n You want to sort the view display based on these options. However, entities with the status \"Canceled\" should appear at the top of the list, followed by \"New,\" then \"Need Feedback,\" and finally \"Approved\" at the bottom. This module can help you achieve that! See the \"How to Use\" section for more details.\n\n Supported field types: \n \n \"List (text)\" - list_string \n \"List (integer)\" - list_integer \n \"List (float)\" - list_float \n \n + Entity Bundle (Type) \n\n + User Role \n\n How to use: \n \n Go to the Views settings form and choose one of the sorting plugins that have the \"(set weight)\" suffix. \n Set weight (integer number) for each of the proposed options \n \n\n Similar projects and how they are different: \n \n Views List Sort : offers similar functionality but doesn't allow to change the weight of available options; supports only \"list_string\" fields; doesn't support \"type\" (bundle) property. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2019-09-13",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

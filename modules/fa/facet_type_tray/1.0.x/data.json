@@ -37,5 +37,13 @@
     "search api",
     "facets",
     "filter"
-  ]
+  ],
+  "project_description": "Integrates the Type Tray content type organizer with the Facets module, so that content type categories defined in Type Tray can be used as a hierarchical facet in Search API views.\n\n Requirements \n \n Search API \n Facets \n Type Tray \n \n Content types must have a Type Tray category assigned for them to appear grouped in the facet. Types without a category are indexed under their own machine name.\n\n How it works \n The module provides three plugins:\n\n \n Search API processor: Type Tray ( type_tray ): Indexes each node with its Type Tray category as a separate field. Both the category key (parent level, e.g. resources ) and a compound category.bundle value (child level, e.g. resources.page ) are stored, enabling two-level hierarchy in the facet widget. \n Facets build processor: Type Tray - Merge node types ( type_tray ): Resolves the indexed category and compound values back to human-readable labels for display in the facet widget. \n Facets sort processor: Sort by Type Tray categories ( type_tray_category ): Orders facet results according to the category order defined in the Type Tray configuration. \n \n Setup \n \n Add the Type Tray Search API processor to your search index under Configuration > Search API > [your index] > Processors , then re-index. \n Add a facet for the new Type Tray category field on your Search API view. \n On the facet, enable the Type Tray: Merge node types build processor and optionally the Sort by Type Tray categories sort processor. \n To get the two-level category/bundle hierarchy, also enable the Type Tray hierarchy plugin on the facet and choose a widget that supports hierarchy (e.g. the core checkbox widget with the hierarchy option enabled). \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-06-10",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

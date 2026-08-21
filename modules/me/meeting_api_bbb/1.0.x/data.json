@@ -36,5 +36,13 @@
     "meeting",
     "video",
     "key"
-  ]
+  ],
+  "project_description": "BigBlueButton implementation for Meeting API module. WIP.\n\n ⚠️ Important: SHA-1 support removed in 1.0.0-alpha5 \n As of release 1.0.0-alpha5 , support for SHA-1 has been dropped. This change is not handled automatically via a post_update hook because it also requires updating the shared secret on your BigBlueButton server.\n\n What you need to do before updating: \n\n \n Generate a new shared secret using a supported hashing algorithm on your BBB server. \n Update your Drupal site's module configuration to use the new secret. \n Verify the connection between Drupal and your BBB server is working. \n \n If you update to 1.0.0-alpha5 or later without completing these steps, authentication with your BBB server will fail.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-08-07",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

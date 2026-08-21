@@ -35,5 +35,13 @@
     "contacts",
     "sync",
     "email marketing"
-  ]
+  ],
+  "project_description": "This module allows you to map user field values with Brevo according to your requirements. It also dynamically provides Brevo contact lists in the Drupal mapping form. An additional feature is the Key/Value functionality. When the user selects an option key, the corresponding value is mapped accordingly.\n\n For example, if a user maps a content reference field and selects the key option, the key value will be saved in Brevo. When the value option is selected, the exact value of the field will be saved.\n\n Features \n The module provides three main headers in the Mapping Configuration form: User Field, Value, and Mapping Field, accessible only by administrators.\n\n \n User Field: Displays only the user fields available on the site. \n Value: Allows you to select the type of values you want to map. \n Mapping Field: Dynamically displays Brevo contact attributes based on the fields added by the user. \n \n Additional Requirements \n This module requires the Brevo: Digital Marketing Tool (formerly Sendinblue) module.\n\n( https://www.drupal.org/project/sendinblue_api )\n\n Configuration \n \n After installing the module, navigate to Configuration -> User Mapping under the Sendinblue API services. \n In the User Field section, select the user field you want to map. \n Choose the Key/Value option to specify how values should be mapped. \n Select the corresponding Brevo Field to map the user field to. \n Save the mapping form. \n You can also select the Brevo contact list as per your needs. \n After configuration, go to the user form, enter the required information, and save it. \n Once saved, your information will be synced with Brevo based on the selected mapping fields and contact list values. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-12-26",
+  "project_changed": "2026-07-21",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

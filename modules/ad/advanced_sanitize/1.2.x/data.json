@@ -33,5 +33,13 @@
     "sql",
     "pii",
     "development"
-  ]
+  ],
+  "project_description": "Advanced sanitize gives the developer ability to automate database sanitisation.\n\n This module replaces sensitive information stored in database with use of either Faker.php library or developer-defined values according to definition file sanitise sensitive data. You can fake user emails, notes, phone numbers, remove images, mask commerce data, etc.\n\n To sanitise the database you'll need generally two steps: define configuration file (see README and examples folder in module's repo) and set path to your file at configuration form (/admin/config/development/sanitize-settings). After that you can launch sanitisation right from mentioned config form or with drush command.\n\n Database will be secure for development and testing-ready just with one command launch!",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2023-01-16",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

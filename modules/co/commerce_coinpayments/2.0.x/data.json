@@ -38,5 +38,13 @@
     "ipn",
     "bitcoin",
     "gateway"
-  ]
+  ],
+  "project_description": "Back to top \n\n Commerce Coinpayments \n =====================\n\nCoinPayments.net Payments Module for Drupal Commerce, which accepts all\n\ncryptocurrencies for payments in your drupal site. To check the supported\n\ncoins visit - https://www.coinpayments.net/supported-coins \n\n Back to top \n\n Installation: \n =============\n\n - Extract the files in your module directory (typically modules/contrib).\n\n - Visit the modules page and enable the module.\n\n - From the modules page you will find links to\n\n - permission settings\n\n - help\n\n This module is safe to use on a production site.\n\nJust be sure to grant 'access commerce coinpayments ipn' permission(Drupal 8 only) to all\n\nusers in (including ANONYMOUS USERS).\n\n Back to top \n\n How to Configure Module: \n ========================\n\n - Go to Commerce Store, Configuration, Payment gateways.\n\n - Click on \"Add payment gateway\" button to add new payment gateway.\n\n - Insert Name & Display name for new payment gateway & select\n\n \"CoinPayments.net - Pay with Bitcoin, Litecoin, and other\n\n cryptocurrencies (Off-site redirect)\" plugin from the given list.\n\n - Enter your Merchant ID & IPN Secret and click Save.\n\n - And you should be all set to use this module.\n\n Back to top \n\n How to Test Module: \n ===================\n\n - First you need to create store ( https://www.example.com/admin/commerce/config/stores )\n\n before creating any commerce product in drupal site.\n\n - Then create a new product( https://www.example.com/admin/commerce/products ).\n\n - Add newly created product to cart using “add to cart” button on product page.\n\n - Goto the cart page - https://www.example.com/cart & click on checkout button & proceed to checkout.\n\n - Fill up the details & click on “continue to review” button & then click on “pay & complete purchase”.\n\n - User will be redirected to coinpayments page & after selecting currency barcode will generate.\n\n - After successful payment you will see the order status completed on\n\n link “ https://www.example.com/admin/commerce/orders ”\n\n Drupal 7 version of this module already developed by Coinpayments.net - https://www.coinpayments.net/merchant-tools-plugins. Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2018-03-14",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

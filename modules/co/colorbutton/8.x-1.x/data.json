@@ -38,5 +38,13 @@
     "wysiwyg",
     "editor plugin",
     "colorbutton"
-  ]
+  ],
+  "project_description": "Integrates the CKEditor ColorButton plugin to CKEditor for Drupal 8 and Drupal 9 .\n\n Allows users to add color to text or background color behind it. Basic settings are supported for specifying the list of colors that can be allowed in the editor.\n\n This module requires the PanelButton module for CKEditor.\n\n Installation \n \n Download the plugin from http://ckeditor.com/addon/colorbutton at least version 4.5.6. \n Place the plugin in the root libraries folder (/libraries). \n Enable Color Button module in the Drupal admin. \n Configure your CKEditor toolbar to include the button (either text or background color, or both). \n \n Note: There is a compatibility problem with the latest 4.15.1 versions of the Color Button and Panel Button libraries. See [#3183012] for more information.\n\n Note: Both buttons are using inline CSS styles to style the content, so they will work only in text formats where HTML Filter (\"Limit allowed HTML tags\") is not enabled. See [#3182292] and [#3109650] for more information.\n\n You can enter a list of hex values to support to limit the user on what colors they can use. Leave blank to use the default values from the plugin.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-04-01",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 11000000
 }

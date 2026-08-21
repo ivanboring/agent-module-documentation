@@ -33,5 +33,13 @@
     "messages",
     "queue",
     "api"
-  ]
+  ],
+  "project_description": "Batch Messenger is divided into three pieces of functionality:\n\n \n Group Symfony Messenger messages together into a collection. (Base functionality). \nSimply add a CollectionItem stamp with a shared ID. \n Expose a UI of progress of each collection. (Optional, enabled by default) \n Intercept Drupal Batch API calls ( batch_set() ) and replace with Messenger internals. (Optional, enabled by default) \n \n This allows you to adopt Symfony Messenger, while providing a nice UI for the user. Performance of operations improve dramatically, as they may be worked in parallel, instead of single threaded. Message resources (CPU/memory, etc) can be increased in a worker, while granting the possibility to reduce web thread resources since they don't need to scale up for Batch API operations.\n\n When the legacy Batch API is used ( \\batch_set ), the UI is retained, and we provide status updates to the user despite operations not actually running in the web requests.\n\n The module is a drop-in replacement for Batch API. If you encounter issues, uninstalling the module will return existing behavior. Though, any in-progress batches will be deleted.\n\n \n More information can be found in the README.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-07-10",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10003000,
+  "core_semver_maximum": 12000000
 }

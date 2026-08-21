@@ -38,5 +38,13 @@
     "design",
     "agents",
     "api"
-  ]
+  ],
+  "project_description": "Read a Penpot design's context from server-side PHP and hand it to Drupal's AI Agent tools, so the Drupal Canvas AI assistant can work from the real design — its colours, typography, structure, and text — instead of a screenshot. Paste a Penpot link and the assistant reads it.\n\n It is the Penpot counterpart of AI Figma , and works with Drupal Core and Drupal CMS alike — config-driven and theme-agnostic.\n\n What it provides \n \n the Penpot connection — a stored, read-only access token and a settings page, and \n two AI Agent tools — Penpot: List Design Pages and Penpot: Read Design Context — that list a file's pages and read one page's colours, typography and verbatim text. \n \n Under the hood it talks to the Penpot API ( penpot.example.com/api/rpc/command/… ) directly from PHP — the same design data the Penpot MCP server surfaces — using a stored access token, with no interactive login. The token lives in the Key module, encrypted at rest via Easy Encryption .\n\n Quick start \n \n composer require drupal/ai_penpot and enable the module. \n Create a Penpot access token ( Your account → Access tokens ). Self-hosted instances must enable the enable-access-tokens flag. \n At Configuration → AI → AI Penpot , set your Penpot instance URL, paste the token into the Penpot Key, and click Test Penpot connection . \n Add the two tools to your Canvas AI agent, open the Canvas editor's AI panel, and paste a Penpot link. \n \n Documentation \n https://project.pages.drupalcode.org/ai_penpot/ — Installation, Configuration, and the AI Agent tools reference.\n\n Requirements \n \n Drupal ^11.2 \n AI (Drupal AI) and AI Agents \n Key and Easy Encryption \n A Penpot instance (Penpot Cloud or self-hosted) and a Penpot access token \n \n Related \n Works with any AI Agent on any AI Assistance page — the Drupal Canvas AI Agents and any other AI Agent.\n\n \n AI Figma — the same, for Figma designs. \n Drupal Canvas \n Display Builder AI \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2026-06-20",
+  "project_changed": "2026-08-11",
+  "core_semver_minimum": 11002000,
+  "core_semver_maximum": 12000000
 }

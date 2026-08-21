@@ -39,5 +39,13 @@
     "saki",
     "refund",
     "hungary"
-  ]
+  ],
+  "project_description": "Commerce CIB provides a Drupal Commerce payment method through the gateway of the CIB Bank .\n\n This module complies to the following requirements of the CIB Bank:\n\n \n Sends out an email to the customer with the transaction details in case of both successful and failed transactions. \n Handles transaction timeouts correctly. \n \n It does not deal with displaying neither the required bank and bank card logos nor the banking and payment information links. \n\n Install \n D7 \n The D7 module does not work from php 7.2 upwards due to [#3154815].\n\n \n Enable the commerce_cib module \n At /admin/commerce/config/payment-methods edit the CIB bank payment method. Click edit next to the \"CIB bank\" action. Fill out the form. \n Enable the commerce_cib_rules module to get example rules. At /admin/config/workflow/rules edit (or if you want to export them, clone and edit) the CIB rules to your liking. \n \n D8 \n \n Enable the commerce_cib module \n Add a CIB payment gateway at admin/commerce/config/payment-gateways.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2013-10-30",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 11000000
 }

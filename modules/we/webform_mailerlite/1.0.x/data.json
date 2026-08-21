@@ -35,5 +35,13 @@
     "email marketing",
     "subscribers",
     "integration"
-  ]
+  ],
+  "project_description": "Features \n \n A simple webform handler to create a new Subscriber on a MailerLite account. \n By default, the Subscribers do not belong to a MailerLite Group. \n Ability to add more data on the Subscriber. See https://developers.mailerlite.com/docs/subscribers.html#create-upsert-subscriber \n Ability to assign Subscribers on a specific Group \n The module uses the official PHP library, https://github.com/mailerlite/mailerlite-php . \n \n Installation \n \n Install this module normally. \n Create a MailerLite account \n Create a new MailerLite API key ( https://developers.mailerlite.com/docs/#authentication ) \n Add your key on Drupal settings ( $settings['mailerlite_key'] = \"eyJ0eXA...iOiJKV\"; ) \n Create a MailerLite handler for a webform. Map the required Email field accordingly. \n \n Plan \n \n Allow more actions for the Subscribers API (except from the \"Subscriber:create\") as also as more API entities (Campaign, Group, Segment, Form etc) \n Provide more options to store the MailerLite key on Drupal. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-09-27",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 13000000
 }

@@ -36,5 +36,13 @@
     "tika",
     "indexing",
     "embeddings"
-  ]
+  ],
+  "project_description": "This suite is primarily a set of APIs and tools to improve the developer experience.\n\nThis module provides a number of utility and helper APIs for developers to transform content into plain text. \n\n Back to top \n\n Use Entity to Text if \n \n You need to get plain-text content of Nodes for Indexing content into a Search Engine (Solr, Elasticsearch, ...). \n You want to get plain-text of Nodes Paragraphs for SEO or JSON-LD. \n You need to transform \"Node entity\" field(s) into plain-text content. \n You need to transform \"Paragraphs entity\" field(s) into plain-text content. \n You need to transform \"File entity\" into plain-text through Tika. \n \n Back to top \n\n Usage \n See code example for complete usage of Entity to Text.\n\n Back to top \n\n Dependencies \n The main module requires ezyang/htmlpurifier \n\n \n The submodule entity_to_text_tika requires the library vaites/php-apache-tika . \n The submodule entity_to_text_paragraphs requires the library drupal/paragraphs . \n \n Back to top \n\n Which version should I use? \n \n \n Drupal Core \n Entity to Text \n \n \n 8.x \n unsupported \n \n \n 9.x \n 1.0.x \n \n \n 10.x \n 1.1.x \n \n \n 11.x \n 1.1.x \n \n \n Back to top \n\n Getting Started \n We highly recommend you to install the module using `composer`.\n\n \n\n$ composer require drupal/entity_to_text\n\n \n\n Back to top \n\n Supporting organizations \n This project is sponsored by Antistatique .\n\nWe are a Swiss Web Agency, Visit us at www.antistatique.net or Contact us .\n\n Back to top \n\n Credits \n Thank you to all our wonderful contributors .\n\nEntity to Text is currently maintained by Kevin Wenger . \n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-04-09",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9003000,
+  "core_semver_maximum": 13000000
 }

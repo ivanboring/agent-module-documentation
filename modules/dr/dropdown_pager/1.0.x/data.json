@@ -35,5 +35,13 @@
     "views",
     "accessible",
     "pagination"
-  ]
+  ],
+  "project_description": "Provides an accessible dropdown-based pager option for Drupal Views. Replaces the standard full pager with a compact dropdown button that saves space while maintaining all core pager functionality.\n\n Features \n Basic Functionality: \n\n- Dropdown-based pagination interface replacing the standard full pager\n\n- Compact button showing current page (e.g., \"5 / 6\")\n\n- Full navigation: First, Previous, Next, Last buttons\n\n Unique Features: \n\n- WCAG 2.1 AA compliant with ARIA labels and keyboard navigation\n\n- Optional search field to quickly jump to specific pages\n\n- Customizable text templates for button and page links\n\n Post-Installation \n No separate configuration page. Configure directly in Views:\n\n 1. Edit a View (Structure → Views)\n\n2. Go to Pager settings\n\n3. Select \"Paged output, dropdown pager\"\n\n4. Configure options (items per page, templates, search, etc.)\n\n5. Save the View\n\n The dropdown pager appears automatically on the frontend. Fully themeable via `views-dropdown-pager.html.twig` template.\n\n Additional Requirements \n - Drupal 10.3+ or Drupal 11+\n\n- Views module (core)\n\n No additional dependencies required.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2026-02-12",
+  "project_changed": "2026-08-11",
+  "core_semver_minimum": 10001000,
+  "core_semver_maximum": 12000000
 }

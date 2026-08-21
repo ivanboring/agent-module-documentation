@@ -36,5 +36,13 @@
     "next",
     "navigation",
     "sequence"
-  ]
+  ],
+  "project_description": "Menu Pager adds a block for each menu that adds previous and next link navigation based on the current page.\n\n It does this by flattening the menu tree to calculate which links should come before and after the menu link corresponding to the current page. This can optionally be restricted to links with the same parent as the active menu link (by default, it uses traverses the entire menu tree).\n\n A port of this module is available for Backdrop CMS \n\n API \n Menu Pager provides a simple API for retrieving previous and next links for a given menu item.\n\n <?php\n\n$navigation = menu_pager_get_navigation($menu_link);\n\n// $navigation['previous'] and $navigation['next'] will contain the links\n\n?>\n\n There are hooks to ignore certain paths from appearing in menu pagers.\n\n Out-of-the-box support is included to ignore and paths from Special Menu Items and from Menu Firstchild .\n\n Add your own paths with hook_menu_pager_ignore_paths($menu_name) and hook_menu_pager_ignore_paths_alter(&$paths, $menu_name) .\n\n Drupal 8 New features \n \n Override the templates for next and previous links \n Custom next and previous label option in block configuration \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-11-02",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

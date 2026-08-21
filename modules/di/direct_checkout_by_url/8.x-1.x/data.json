@@ -41,5 +41,13 @@
     "direct",
     "campaign",
     "cart"
-  ]
+  ],
+  "project_description": "Makes it possible to share a link to redirect a user directly to the checkout page, with given items in the cart.\n\n We allow two different variations of request. One is to pass a comma\n\nseparated list of SKUs in the products parameter. The other one is the\n\npass an array of products in the query parameters, in which case one\n\ncan specify the quantity as well.\n\n An example on the first case:\n\n mysite.com/direct-checkout-by-url?products=1234,5678 \n\n That would end up adding the products with sku 1234 and 5678 to the cart, both with a quantity of 1.\n\n An example of the second case:\n\n mysite.com/direct-checkout-by-url?products[0][quantity]=2&products[0][sku]=1234 \n\nThat would end up adding the product with sku 1234 to the cart with a quantity of 2.\n\n Redirecting to other places than the checkout page \n Even though the name would indicate that it exclusively redirects users to the checkout page, you can also redirect to other places using Drupal's built in destination query parameter.\n\n One such example could be to redirect to the cart instead of the checkout page. Given a product with a SKU 123 you would then use this link:\n\n mysite.com/direct-checkout-by-url?products=123&destination=cart",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-12-11",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

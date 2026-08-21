@@ -41,5 +41,13 @@
     "render element",
     "media reference",
     "webform"
-  ]
+  ],
+  "project_description": "This module provides a Form API element to select a Media entity from the Media Library. This element can be used in all standalone forms. I'm currently using this in a Paragraphs behavior form to select a background image with crop-support, but you can use it in a Layout builder form, or a configuration form under \"Settings\"... \n\n The implementation is borrowed from the Media Library widget and follows its user interface as well as its possibilities:\n\n \n You can limit the allowed media types by passing the machine names of those media types \n The default value is either:\n \n Empty: NULL \n a single Media entity's ID: (int) 1 \n multiple Media entity ID's separated by comma as a string: (string) 1,2,3,4 \n \n \n \n <?php\n\n$form['image'] = [\n\n '#type' => 'media_library',\n\n '#allowed_bundles' => ['image'],\n\n '#title' => t('Upload your image'),\n\n '#default_value' => NULL|1|'1,2,3',\n\n '#description' => t('Upload or select your profile image.'),\n\n];\n\n?>\n\n I chose to release this as a standalone module so anyone can review / contribute / fork / ... without having to wait on the official core patch ( https://www.drupal.org/project/drupal/issues/3065677 ).\n\n Feel free to test-drive, suggest improvements or post bug reports should you encounter any!\n\n All features have been implemented thus far, so if anyone lacks something, feel free to create an issue!",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-10-23",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 13000000
 }

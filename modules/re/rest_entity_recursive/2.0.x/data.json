@@ -36,5 +36,13 @@
     "serialisation",
     "references",
     "decoupled"
-  ]
+  ],
+  "project_description": "Provides new \"json_recursive\" REST format which exposes all fields and referenced entities by default. You may want to use this module if you need to fetch almost everything in one request.\n\n Default usage:\n\n \n\nGET https://example.com/node/1?_format=json_recursive\n\n \n\n Limit max depth of loaded references:\n\n \n\nGET https://example.com/node/1?_format=json_recursive&max_depth=3\n\n \n\n Find examples how to customize and fine-tune the output in submodules:\n\n \n rest_media_recursive - exposes Media, with image styles. \n rest_paragraphs_recursive - exposes Paragraphs and items from Paragraphs Library.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-03-07",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

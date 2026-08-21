@@ -42,5 +42,13 @@
     "token replacement",
     "entity_display_build_alter",
     "handler"
-  ]
+  ],
+  "project_description": "This module provides a way to show empty fields that would otherwise be hidden.\n\n It achieves this by appending new settings to existing display formatters. These settings allow you to display a value using either:\n\n \n custom text, as defined by the field administrator \n to show the results of a custom callback \n to show the default empty value (if default is not empty itself!) \n \n This last option may be useful in case the field is not required and the instance default value was added after content had been already created.\n\n For example, you could have a list of checkboxes. If none are checked, normally the entire field would be removed from the display. However, with this module you could display something like \"Status unknown\", \"Nothing selected\" or \"This user failed their IQ test\" when the field was empty.\n\n Note that this can be easily achieved in a custom preprocess callback or hook_field_attach_view_alter() if you know some PHP coding. However, our client wanted multiple fields to display something if empty, and they kept changing this text, so we made it configurable!\n\n 7.x-2.x \n\nThe 2.x branch of this module defines a plugin system that allows easy creation of custom reactions to empty fields.\n\n Dependencies \n Field formatter settings",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2012-06-25",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -46,5 +46,13 @@
     "taxonomy_index",
     "views filter",
     "depth"
-  ]
+  ],
+  "project_description": "The Taxonomy Entity Index module maintains a normalized index of all terms associated with a specific entity and revision. The core {taxonomy_index} table only maintains its data for published nodes. This module maintains its data for all entity types (regardless of published or not) and also indexed by revision.\n\n This module will be ported to Drupal 8 and the plan is to also possibly move this feature into core for Drupal 9.\n\n Core issues:\n\n[#962664]\n\n[#1040786]\n\n[#610076]\n\n Current features:\n\n[entity-type:terms] array token if Token is enabled.\n\nViews integration: use Taxonomy Entity Index for defining relationships or filters in Views.\n\nBatch Re-Indexing through the UI or drush tei-rebuild \n\n If you are installing this module into an existing site, visit admin/config/system/taxonomy-entity-index to rebuild the Taxonomy Entity Index.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2011-06-11",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

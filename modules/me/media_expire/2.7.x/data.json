@@ -43,5 +43,13 @@
     "drush",
     "date field",
     "graphql"
-  ]
+  ],
+  "project_description": "This module enables you to unpublish your media entites automatically by setting an expire field.\n\n Instructions:\n\n \n \"Activate media expire\" on admin/structure/media/manage/{media} \n Specify an expire field \n Optionally: You are able to provide a fallback entity for unpublished entities \n \n Drupal checks on every cron-run if there are expired media elements. Additionally you can use \"drush media-expire-check\" for a manually check\n\n Versions \n\n 8.x-2.x - Compatible with Drupal 8.4.x and above, this is where primary development will be focused.\n\n8.x-1.x - Compatible with media_entity.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-10-11",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

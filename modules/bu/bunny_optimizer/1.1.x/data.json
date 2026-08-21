@@ -37,5 +37,13 @@
     "image optimization",
     "bunny.net",
     "media"
-  ]
+  ],
+  "project_description": "Features \n This module integrates the Bunny Optimizer service as an image toolkit, allowing you to keep your existing image styles while offloading the generation and caching of image derivatives to Bunny CDN.\n\n Post-Installation \n Change the image toolkit by going to Configuration > Media > Image toolkit , selecting Bunny Optimizer and filling in the CDN hostname setting.\n\n Image effects \n The following standard image effects are supported by this image toolkit:\n\n \n Crop \n Desaturate \n Resize \n Scale \n Scale and crop \n \n Other image effects should either be removed or be replaced by any of the custom image effects provided by this module:\n\n \n Automatically optimize \n Blur \n Brightness \n Contrast \n Flip vertically \n Flip horizontally \n Hue \n Quality \n Saturation \n Sepia \n Sharpen \n Smart Face Crop \n \n Image classes \n Bunny Optimizer image classes can be applied by creating an image style with only the Apply a Bunny Optimizer image class image effect. More information about this feature can be found here .\n\n Additional Requirements \n In addition to this module you need a Bunny CDN account with a pull zone configured to either pull images from an origin server or a Bunny storage zone.\n\n Recommended modules/libraries \n The Bunny CDN module can be used if your pull zone is configured to cache full page responses.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-11-09",
+  "project_changed": "2026-08-21",
+  "core_semver_minimum": 9003000,
+  "core_semver_maximum": 12000000
 }

@@ -35,5 +35,13 @@
     "symfony",
     "automation",
     "conditions"
-  ]
+  ],
+  "project_description": "Easily add complex composite conditions or calculated values as token in your ECA workflows using and, or, (), calculation... The module provides symfony ExpressionLanguage component integration to ECA .\n\n Features \n \n Expression Language Condition : making simple or complex workflows much easier to build \n (Upcoming) Expression Language Value : add calculated values to your workflows as easily as Excel formulas \n \n Condition expression example : [entity:nid] in [ 2, 6, 7 ] and (\"[entity:type]\" == \"article\" or [user:uid] == 1) \n\n Post-Installation \n \n Enable the module. \n Create an ECA workflow \n Click on a link and select \"Expression Language Condition\" \n Enter an expression using tokens and ExpressionLanguage Syntax \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-01-08",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

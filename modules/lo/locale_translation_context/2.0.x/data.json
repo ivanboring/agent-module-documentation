@@ -38,5 +38,13 @@
     "filter",
     "strings",
     "disambiguation"
-  ]
+  ],
+  "project_description": "This module adds context filtering capabilities to the core translation interface.\n\n Back to top \n\n Impacted pages \n Configuration > Regional and Language > Translate interface > Translate \n Allow to filter the translated strings by context.\n\n Configuration > Regional and Language > Translate interface > Export \n Allow to export strings for a specific context.\n\n Back to top \n\n Use case \n Using contexts when writing custom code is a good practice. It allows to clearly separate your custom strings from the core and contrib modules strings, and to be able to translate the same string differently if the context of the word is not the same.\n\n Example of a translation string using context:\n\n t('This is my custom string', array(), array('context' => 'custom_project'); \n\n Unfortunately, the Drupal core does not provide any functionalities in the admin interface to make use of the strings translation contexts. This module adds basic functionalities to manipulate contexts.\n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-09-15",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -35,5 +35,13 @@
     "bundle",
     "access control",
     "permissions"
-  ]
+  ],
+  "project_description": "Hello to all! This simple module forked from Entity Bundle Permissions but much more useful. It allows to set up access permission for any content-based entity type. Differences from original module:\n\n \n You can (and should, after installation) configure permission scopes for different types of entities using settings. Now the permissions page looks simpler. \n You can easily clear unnecessary permissions via module settings. You don't need to use the \"reverse permissions\" model to remove all the unnecessary permissions, as in the original module. \n Permissions sorted by base entity type (Content, Comment, Media) first, and then by entity type (article, etc). \n Permissions model differs from original module. For example, users will only need to \"View published content\" to be able to view content, but also have \"Access content items \"Basic page\"\" to use operations. \n Unlike the original module, it works on both PHP7 (tested with PHP 7.4) and PHP 8.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2022-10-23",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

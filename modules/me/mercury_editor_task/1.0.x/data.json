@@ -38,5 +38,13 @@
     "layout paragraphs",
     "content editing",
     "inline entity form"
-  ]
+  ],
+  "project_description": "The Mercury Editor Task provides a dedicated 'Mercury Editor' task (tab) to the editing experience.\n\n Back to top \n\n Features \n Installation\n\n \n Configure 'Mercury Editor' form display mode. \n Enables 'Mercury Editor' form display for all content types that use Mercury Editor. \n \n UI/UX\n\n \n Adds dedicated 'Mercury Editor' (a.k.a Layout) task (and route) to nodes. \n Modifies the controller for Mercury Editor entity forms to support dedicated 'Mercury Editor' route. \n Hides layout paragraphs builder widgets on the node edit form.\n \n For the Schema.org Devel module's generate query parameter we must visual hide the widget to ensure all data is submitted as expected. \n \n \n Adds 'Mercury Editor' to operations when node type supports 'Mercury Editor'. \n \n Back to top \n\n Notes \n \n This is a proof-of-concept for only nodes. \n Decide if this approach should support all content entity types. \n \n Back to top \n\n Configuration \n \n Go to the Mercury Editor Task Settings configuration page.\n(/admin/config/content/mercury-editor/task) \n Enter the label to display for the dedicated Mercury Editor task and operation. \n Enter the field names, field groups, and components to display via the dedicated Mercury Editor form mode. \n Check 'Update all existing Mercury Editor form modes' \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2024-09-16",
+  "project_changed": "2026-08-19",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

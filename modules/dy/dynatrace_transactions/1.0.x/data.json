@@ -33,5 +33,13 @@
     "transactions",
     "monitoring",
     "naming"
-  ]
+  ],
+  "project_description": "Drupal module for naming transactions in Dynatrace according to route, bundle, and role.\n\n Why \n I wanted to keep the naming of transactions from the wonderful Newrelic Transactions module , but I also wanted to use Dynatrace for monitoring my Drupal sites. This module is a port of the New Relic Transactions module, adapted to work with Dynatrace.\n\n Dynatrace does not have a PHP extension, but if you call a method on a PHP class, then you can capture that value and use it as a request attribute.\n\nYou can then name a trace using that request attribute.\n\n Additional Requirements \n Once this module is installed and working you will need to configure Dynatrace to capture the name of the transaction as a request attribute.\n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-07-23",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

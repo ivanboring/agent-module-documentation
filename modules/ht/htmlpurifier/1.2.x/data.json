@@ -47,5 +47,13 @@
     "ezyang/htmlpurifier",
     "wysiwyg security",
     "filter"
-  ]
+  ],
+  "project_description": "HTML Purifier is a standards-compliant HTML filter library. HTML Purifier will not only remove all malicious code (better known as XSS) with a thoroughly audited, secure yet permissive whitelist, it will also make sure your documents are standards compliant, something only achievable with a comprehensive knowledge of W3C's specifications. \n\n HTML Purifier is very tasty when combined with WYSIWYG editors and is more comprehensive, standards-compliant, permissive and extensive than Drupal's built-in filtered HTML option, which uses a derivative of kses. You can read more about it at this comparison page. Want custom fonts, tables, inline styling, images, and more? Want just a restricted tag set but bullet-proof standards-compliant output? HTML Purifier is for you!\n\n The HTML Purifier module is licensed under GPL v2 or later, however, the HTML Purifier library itself is licensed under LGPL v2.1 or later.\n\n Want to give it a test drive? Try it out on simplytest.me .\n\n Install the module using composer:\n\n composer require 'drupal/htmlpurifier:^1.0' \n\n Enable it and configure the filter for each text format in Administration - Configuration - Text formats and editors (admin/config/content/formats).\n\n You can use the HTML Purifier Configuration Documentation as reference to learn and edit the configuration settings available in YAML format within the filter settings form textarea.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2007-12-06",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

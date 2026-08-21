@@ -37,5 +37,13 @@
     "migrate",
     "automation",
     "import"
-  ]
+  ],
+  "project_description": "ECA Entity Import provides the ECA (Event-Condition-Action) migrate process plugin for entity imports, enabling advanced automation and workflow integration during entity import processes.\n\n Features \n \n ECA Integration: Seamlessly integrate ECA models with entity import processes \n Importer ID Tracking: Access the entity importer ID within ECA models via tokens \n Event-Driven Processing: Trigger custom workflows based on entity import events \n Zero Configuration: Simple setup with no complex configuration requirements \n \n Post-Installation \n When the ECA process plugin is active, the following token is available within your ECA models:\n\n row:source:importer_id - Contains the ID of the current entity importer\n\n Additional Requirements \n Version 2 \n \n Drupal: ^10.5 || ^11 \n Core migrate module \n Entity Import module \n ECA module with eca_migrate (>=2.1.15) \n \n Version 3 \n \n Drupal: ^11.2 \n Core migrate module \n Entity Import module \n ECA module with eca_migrate (>=3.0.3) \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-09-10",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10005000,
+  "core_semver_maximum": 12000000
 }

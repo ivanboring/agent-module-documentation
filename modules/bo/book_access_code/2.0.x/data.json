@@ -37,5 +37,13 @@
     "restriction",
     "token",
     "session"
-  ]
+  ],
+  "project_description": "The Book Access Code module adds the ability to use access codes to grant read access to Books. This adds functionality to Drupal core's book module.\n\n Features / Design Decisions \n \n Multiple access codes can be assisted to each book, and/or one access code can grant access to multiple books. \n Once an access code is provided it is saved in that user's session. This prevents the user from having to repetitively provide the access code when navigating between pages/chapters of a book, or when moving between books that share the same access code. \n Access codes can be used with anonymous and authenticated users. \n This module adds access restrictions on top of drupal's existing access system, meaning that the roles that the visitors must already be granted access to view published book page content, and if the book has an active access code, the user must also provide one of the active access codes for that book. \n This access code module only restricts access to view the book node pages and does not restrict any other view mode. This allows users to browse/search books and view teaser view modes, but when they go to read the book they will be prompted for an access code. \n \n Installation \n composer require 'drupal/book_access_code:^2.0' \n\n Configuration \n You can edit the access denied, access code required message by navigating to /admin/config/system/book_access_code/settings.\n\n You can add and manage book access codes at /admin/structure/book/access_code\n\n There is a permission that can be added to any role to allow them to bypass the book access code. This can be helpful for content editor roles.\n\n Back to top",
+  "maintenance_status": "Seeking co-maintainer(s)",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-04-03",
+  "project_changed": "2026-08-20",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 11000000
 }

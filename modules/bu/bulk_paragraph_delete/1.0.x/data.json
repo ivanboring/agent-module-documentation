@@ -35,5 +35,13 @@
     "types",
     "admin",
     "cleanup"
-  ]
+  ],
+  "project_description": "Bulk Paragraph Delete\n\n Introduction\n\nBulk Paragraph Delete allows administrators to delete multiple paragraph types\n\nat once from the Drupal admin UI, rather than removing them one at a time.\n\nBefore deleting, the module checks whether each paragraph type is still\n\nreferenced in any field configuration and skips those with a warning message,\n\npreventing configuration dependency errors.\n\n Features\n\nBulk selection with checkboxes and select-all functionality\n\nDependency validation — skips paragraph types still in use\n\nWarning messages identifying which fields reference a protected type\n\nIntegrates as an action button on the Paragraph Types listing page\n\n Requirements\n\nDrupal core 10.3 or 11\n\nParagraphs module\n\n Installation\n\nInstall as you would normally install a contributed Drupal module. See\n\nInstalling Drupal Modules\n\nfor further information.\n\ndrush en bulk_paragraph_delete\n\n Configuration\n\nNo configuration is required. After enabling the module, navigate to:\n\nAdministration > Structure > Paragraph types\n\n(/admin/structure/paragraphs_type)\n\nA Bulk Delete Paragraphs action button will appear. Click it to access the\n\nbulk deletion form.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2026-05-28",
+  "project_changed": "2026-07-21",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

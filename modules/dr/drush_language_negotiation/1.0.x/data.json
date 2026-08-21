@@ -34,5 +34,13 @@
     "cli",
     "default",
     "multilingual"
-  ]
+  ],
+  "project_description": "Back to top \n\n Drush language negotiation \n When importing configuration files via Drush we had the issue that when importing configuration like webform config files our default language of the website wasn't taken into account (Which was Dutch - NL). Drush was thinking the site was in ENG.\n\n This module resets the language to the default language of the website.\n\n Back to top \n\n How to use \n Enable the language negotiator on: \"/admin/config/regional/language/detection\"\n\nThen when importing configuration via Drush (this language negotiator only works with Drush ) this negotiator reset the language to the default language of the website.\n\n Back to top \n\n Supporting organizations \n \n Federal Police Belgium \n \n \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2022-09-03",
+  "project_changed": "2026-07-14",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

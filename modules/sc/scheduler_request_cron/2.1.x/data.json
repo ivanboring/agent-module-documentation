@@ -33,5 +33,13 @@
     "request",
     "publish",
     "automation"
-  ]
+  ],
+  "project_description": "This module runs the Scheduler cron job automatically after requests. The interval between executions can be set.\n\n Prerequisites \n This module requires the following Drupal modules:\n\n \n Scheduler \n \n Installing \n Install the module using composer: composer require drupal/scheduler_request_cron \n\n Options \n \n Interval: The minimum interval in minutes between executions. The cron is only run when a page is requested. Defaults to 5 minutes. \n Log: Enables logging of the cron execution (additionally to Scheduler log). Defaults to false. \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2023-06-06",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

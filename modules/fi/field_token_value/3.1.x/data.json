@@ -53,5 +53,13 @@
     "concatenate fields",
     "views",
     "placeholder"
-  ]
+  ],
+  "project_description": "This module creates a Field API type and widget which allows a field to be created with the value containing tokens. A simple field formatter is also provided to allow for the field value to be output on the page.\n\n The value and tokens for the field are set within the instance settings with the field value being set in a presave.\n\n An example of when this module could be useful is if you are wanting to combine the output of multiple fields for use in Views, or providing tokens within an additional string like \"This page was last updated [node:changed]\". This field is then available within the manage display of the entity bundle.\n\n Note: The input field with the default value in the create/edit form is hidden. You can tell whether it is working, as the field value should display once saved. If it doesn't then it is likely that the token couldn't be replaced which is likely because either the token itself isn't available at the time of saving or the token was not added correctly and can't be found.\n\n Requirements \n \n Token \n \n Similar projects \n \n Concat Field : Concatenates the display values of selected fields within the bundle into a single field on save. Does not use tokens and only concatenates the field values with a space. \n Field default token : Enables the use of tokens as field default values. Adds the option to existing fields instead of creating a new field. Because it is a default value it can be overwritten on the entities creation form. \n Computed Field : Allows for fields to be populated through the use of PHP code, including other other values. This module is intended to be used by PHP developers to insert & execute PHP code on a Drupal website. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-01-04",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

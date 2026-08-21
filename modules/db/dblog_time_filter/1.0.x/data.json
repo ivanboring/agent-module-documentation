@@ -33,5 +33,13 @@
     "log",
     "time filter",
     "report"
-  ]
+  ],
+  "project_description": "Purpose: Enhances the Drupal Core \"Recent Log Messages\" report page ( /admin/reports/dblog ) by adding critical debugging and usability features currently missing from the core functionality.\n\n Key Features: \n Real-Time Server Clock: Displays the Current Server Time that updates every second (using a client-side offset). This provides developers with an immediate, consistent time reference essential for correlating logs with specific events, regardless of the client's local machine time. The clock display is positioned directly before the exposed filter form.\n\n Quick Time Range Filters: \n Adds a new Select element to the Views exposed form, allowing users to instantly filter log messages by common, relative time periods (e.g., \"Last 10 minutes,\" \"Last hour,\" \"Last day\") without manually calculating or entering timestamps.\n\n Improved UX: \n Reduces vertical spacing and adjusts the visual layout of the filter form for a cleaner, more efficient debugging experience.\n\n Important Developer Notice (Core Feature Alteration) \n ⚠️\n\nThis module alters the default behavior and output of a Drupal Core feature (specifically, the 'Watchdog' View exposed form).\n\n This module is designed to serve as a temporary, high-value solution to address known gaps in debugging tools within Drupal Core.\n\n Planned Module Sunset: If the features provided by this module (specifically the quick time filtering and improved time referencing) are officially adopted and covered by a future Drupal Core release, this module will be marked as unsupported, deprecated, and eventually suspended to prevent conflicts and encourage the use of the native core solution.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-11-03",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 13000000
 }

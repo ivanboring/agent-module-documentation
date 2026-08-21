@@ -36,5 +36,13 @@
     "pathauto",
     "headless",
     "decoupled"
-  ]
+  ],
+  "project_description": "Features \n This module adds a list of breadcrumbs to the Path in the JSON:API resources like the following example\n\n \n\n{\n\n path: {\n\n ...\n\n alias: \"/projects/project-1\",\n\n breadcrumbs: [\n\n {\n\n path: \"/\",\n\n label: \"Home\"\n\n },\n\n {\n\n path: \"/projects\",\n\n label: \"Projects\"\n\n },\n\n {\n\n path: \"/projects/project-1\",\n\n label: \"Project 1\"\n\n }\n\n ]\n\n }\n\n}\n\n \n\n Post-Installation \n Navigate to /admin/config/services/jsonapi/resource_types and override a resource. Pathauto provides a Path field on which this applies. On the advanced operation you can select the Breadcrumbs Field enhancer.\n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2024-03-17",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

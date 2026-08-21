@@ -38,5 +38,13 @@
     "api",
     "import",
     "request"
-  ]
+  ],
+  "project_description": "This module adds a new Fetcher type plugin to use in the Feeds module. You may use this to fetch a Download URL (i.e. JSON/XML) and specify custom parameters before getting successful responses on POST requests.\n\n How to Use:\n\n \n Add the module to your project, using composer \n Edit via Structure > Feed Type, select Download From URL additional POST parameters fetcher. \n Add a Feed Content (Content > Feed) and add header and POST parameter \n \n Guzzle request options BODY and FORM_PARAMS: https://docs.guzzlephp.org/en/stable/request-options.html \n\n This module was inspired by this module for GET with header requests: Feeds Fetcher Headers",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2022-03-07",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

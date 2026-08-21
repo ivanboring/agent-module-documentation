@@ -36,5 +36,13 @@
     "count",
     "menu",
     "async"
-  ]
+  ],
+  "project_description": "Back to top \n\n Overview \n Only for logged-in users:\n\nDisplay unread statuts on node view: new or updated \n\nDisplay the amount of unread node on a menu item.\n\n Back to top \n\n How it work \n Data are based on the Drupal core history table.\n\nIt just add an extra field on every content type to display the status.\n\nThe extra field display a placeholder. A javascript is launch after the page load and get unread status badge trough ajax and insert it in each placeholders.\n\nNo page load performance loss. Works with every kind of cache\n\n After each node page display drupal core save the timestamp in history table.\n\nSo the status are updated on every node page load.\n\n Back to top \n\n Configuration \n Simple and fast :\n\nExemple : A page display one or multiples views : \n\n \n Install and configure the module \n Edit the menu link -> select the displayed views on the notifications handler field. \n Add the Content Notification Status on the node view mode \n Done !\n \n Back to top \n\n Extend \n This module could be extended with custom plugins.\n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2021-10-15",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -46,5 +46,13 @@
     "prebuilt view",
     "developer api",
     "plugin"
-  ]
+  ],
+  "project_description": "This module is intended to be used by other modules to offer Views templates.\n\nModules can implement ViewsTemplateBuilder plugins to provide Views templates.\n\n Extend the ViewsBuilderBase class to make View template programmatically\n\n Extend the ViewsDuplicateBuilderBase class to make a View Template from a *.yml Views Template file.\n\n Views Templates should put in the 'views_templates' in the root directory\n\nof the module.\n\n Creates the views templates functionality which was removed in D8 views. A view is effectively a collection of templates and/or variable definitions that can be passed around as a self-contained unit. This then represents a particular interface or presentation style for other objects or items of data. You can use views to implement custom \"skins\" for an application or content set. You can use them to help simplify the presentation of common objects or data types. You can even use them to automate the presentation of complex data structures such as that generated in an XML::DOM tree or similar. You let an iterator do the walking, and the view does the talking (or in this case, the presenting). Voila - you have to view independent, structure shy traversal using templates.\n\n Views templates can be overridden with a variety of names, using the view, the display ID of the view, the display type of the view, or some combination thereof.\n\n For each view, there will be a minimum of two templates used. The first is used for all views: views-view.html.twig.\n\n The second template is determined by the style selected for the view. Note that certain aspects of the view can also change which style is used; for example, arguments that provide a summary view might change the style to one of the special summary styles.\n\n The default style for all views is views-view-unformatted.html.twig\n\n Many styles will then farm out the actual display of each row to a row style; the default row style is views-view-fields.html.twig.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2015-11-11",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

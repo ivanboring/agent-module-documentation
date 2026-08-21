@@ -42,5 +42,13 @@
     "block access check",
     "inline block",
     "alpha"
-  ]
+  ],
+  "project_description": "Embed Block is tiny module that renders a block into formatted text by using a format filter.\n\n On order to embed a block in text, you should add the following placeholder: {block:PLUGIN_ID} , where PLUGIN_ID is the block plugin identifier. The block access is checked against the current user and if the access is denied, the filter replaces the placeholder with an empty string (\"\"). If the specified plugin ID doesn't exist, the placeholder is kept unchanged.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2020-02-14",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

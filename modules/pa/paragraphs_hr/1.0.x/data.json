@@ -33,5 +33,13 @@
     "hr",
     "divider",
     "separator"
-  ]
+  ],
+  "project_description": "A simple paragraph type that allows the user to insert a horizontal rule <hr> into the page.\n\n By default there are two possible horizontal rule 'types' (CSS classes) that can be applied to the paragraph.\n\n \n Thin (hr--thin) \n Thick (hr--thick) \n \n These values can be altered via the hook_paragraphs_hr_allowed_values_alter function.\n\n e.g.\n\n function MODULE_paragraphs_hr_allowed_values_alter (&$options) {\n\n $options = [\n\n 'class1' => 'Class 1',\n\n 'class2' => 'Class 2',\n\n 'class3' => 'Class 3',\n\n 'class4' => 'Class 4'\n\n ];\n\n}\n\n \n\n Note: The site's theme is responsible for providing the CSS styles associated with the defined CSS classes.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-05-18",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

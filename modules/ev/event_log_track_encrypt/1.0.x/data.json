@@ -37,5 +37,13 @@
     "event log track",
     "elt",
     "security"
-  ]
+  ],
+  "project_description": "Event Log Track Encrypt add support for encrypted logs to Events Log Track module (ELT).\n\n Features \n Event Log Track Encrypt add support for encrypted logs to Events Log Track module (ELT)\n\n This feature is useful for protecting, without loss, certain sensitive data that may be stored in ELT logs (e.g. the modification of a configuration entity containing credentials).\n\n The module uses public key cryptography to encrypt data: The data is encrypted with a public key before being recorded in the ELT log. Only the owner of the private key corresponding to the public key is able to decrypt the data.\n\n Only the 'description' part of an ELT log is encrypted.\n\n The module provides drush commands for decrypting data, but no graphical user interface.\n\n Post-Installation \n \n Generate your public/private key pair (for more information see README - Key generation) \n Configure the public key: \n \n Go to the key administration interface (/admin/config/system/keys): Administration > Configuration > System > Keys \n Edit the key named `Event log track public key` by clicking on the 'Modify' button. \n Confirm the warning message (Be extremely careful when editing a key!...) by clicking on the `Edit` button. \n In the `Key value` field, copy your public key . Warning: copy your public key, not your private key! \n Save the modification by clicking on the `Save` button. \n \n Enable encryption: \n \n Go to the ELT module administration interface (/admin/config/system/events-log-track): Administration > Configuration > System > Event log track \n In the `Encryption` section: \n \n Check `Enable encryption` box \n Select the type of events to be encrypted (e.g. `config`). \n \n Save changes by clicking on the `Save configuration` button. \n \n \n For a full description and help, see README \n\n Additional Requirements \n Event Log Track Encrypt requires the following modules:\n\n \n Events Log Track \n Encrypt \n Key \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-05-27",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

@@ -48,5 +48,13 @@
     "spoof validation",
     "RFC validation",
     "egulias"
-  ]
+  ],
+  "project_description": "Use the user's email address as the username! \n\n This module enables the use of email addresses as the Drupal account username.\n\nThe following things are changed / added:\n\n \n The name user field is not required anymore \n The mail user field is now required \n The mail user field is more thoroughly validated \n The name user field is set to the value of the mail field on presave. \n Existing users have their name set to the mail field value if they have an email set. \n Configurable validation of email DNS settings and spoofing (requires intl PHP extension)",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-08-22",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

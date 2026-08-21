@@ -43,5 +43,13 @@
     "web services",
     "decoupled",
     "headless"
-  ]
+  ],
+  "project_description": "The REST API Access Token module provides a Drupal authentication provider that uses tokens (in headers) as the primary factor of authentication.\n\nAdditionally module provide signature verification for requests and response cache.\n\n Installation \n Install the REST API Access Token module as you would normally install a contributed Drupal module. Next, enable module in admin panel.\n\n Configuration \n Navigate to Administration > Configuration > REST API Access Token.\n\n If you want to remove other user tokens \n use EventSubscriberInterface and AccessTokenEvents::TOKEN_RESPONSE:\n\n try {\n\n $this->tokenRepository->removeOtherUserTokens($token);\n\n} catch (\\Throwable $e) {} \n\n Supporting: \n https://www.drupal.org/u/marcinkazmierski - Development and maintenance.\n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-05-28",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -35,5 +35,13 @@
     "post-production",
     "ai",
     "transcription"
-  ]
+  ],
+  "project_description": "Auphonic is an AI service that normalizes the audio levels of audio or video files. This means that if you have a problem with one audio file having fluctuating volumes or that your files have different volumes per file, this is your solution.\n\n You can think of it as an automatic sound engineer for normalization tasks.\n\n This works as a provider for the Audio-to-Audio method in the AI module and will be usable in the AI Automator module.\n\n Post-Installation \n \n Install the Auphonic and AI Interpolator Auphonic modules \n Visit /admin/config/auphonic/settings and setup the username and password. \n Generate a source mp3 file field (not normalized file) \n Generate a destination mp3 file field (processed audio) and enable the AI Interpolator rule \"Auphonic Normalize Audio\" on it. \n \n Requirements \n For the audio normalization, you only need an Auphonic account. Its free for 2 hours of processing per month.\n\n For video normalization you need FFMpeg installed on the server.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-04-30",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9002000,
+  "core_semver_maximum": 12000000
 }

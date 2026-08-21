@@ -38,5 +38,13 @@
     "publish",
     "cron",
     "datetime"
-  ]
+  ],
+  "project_description": "Taxonomy Scheduler offers the possibility to add a \"Publish on\" field on the level of a vocabulary, where a date and time can be filled in for scheduled publishing per vocabulary term. A cron run will consequently change the status of the term from Unpublished to Published.\n\n Requirements \n \n hook_event_dispatcher ( https://www.drupal.org/project/hook_event_dispatcher ) \n taxonomy (drupal core) \n datetime (field) \n \n Configuration \n \n Configuration can be found at \"/admin/config/taxonomy_scheduler\". \n Choose the vocabularies where the field should be added. \n Optionally a field name can be chosen and whether the field is required. \n Save the settings. \n Make sure a regular cron is setup, so your taxonomy terms are published on the set time. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-02-14",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 11000000
 }

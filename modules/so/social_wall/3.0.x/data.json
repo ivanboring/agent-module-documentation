@@ -42,5 +42,13 @@
     "feed",
     "aggregation",
     "social"
-  ]
+  ],
+  "project_description": "This module provides a block that displays feeds from any social network.\n\n Out of the box, it provides 2 social networks already implemented : Twitter & Instagram.\n\nAny other social networks and the way they are displayed can be implemented in your module.\n\nAvailable back-office configurations :\n\n \n Which social networks to display \n Social networks order \n The social networks configuration (API credential, number of posts to show, or whatever for custom social networks...) \n New permission Administer social networks \n \n Back to top \n\n Requirements \n This module requires and installs 2 external libraries (Twitter & Instagram) :\n\n \n \"abraham/twitteroauth\": \"^2\" ( GitHub ) \n \"pgrimaud/instagram-user-feed\": \"^6\" ( GitHub ) \n \n No need to add them if you use composer to install the module.\n\n Back to top \n\n Usage \n Configure each social network (API credentials, number of posts, etc...) on Configuration > Web services > Social networks .\n\nAdd the Social wall block to the page you want, and configure social networks display in the block configuration.\n\n To add other social networks (for developers), see included Readme.\n\n Back to top \n\n Suggestions \n Feel free to suggest improvements !\n\n Back to top \n\n Credits \n This project is sponsored by :\n\n \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-05-20",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

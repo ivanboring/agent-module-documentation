@@ -38,5 +38,13 @@
     "merge",
     "multiple views",
     "listing"
-  ]
+  ],
+  "project_description": "Allows creating unions between views to combine the output into one view. This can help with combining different entity types such as media and nodes into a single view output.\n\n =========\n\n Usage \n Build or choose a view to act as the parent for all combined views. Each view, including the parent view, must use the fields display handler. Add the Views Combine field to start unionizing. Continue adding Views Combine fields to fuse multiple views together. Optionally, add the Views Combine filter to enable view display based conditioning.\n\n Exposed filter(s) \n Input from exposed filters is automatically passed to each combined view. To apply the inherited input on the combined view ensure the exposed filter identifier matches the parent view.\n\n Exposed sort \n Sort currently only supports the entity created or changed timestamps.\n\n Supported display handlers \n Only view displays of the field handler type are compatible. Future versions could support additional display handlers.\n\n Use \"Rendered Entity\" for all output and view modes to control per entity type/bundle \n\n Views Cache \n Tag based cache invalidation may not be entirely supported inside combined views. More testing required.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-11-30",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

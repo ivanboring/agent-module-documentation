@@ -35,5 +35,13 @@
     "api",
     "oauth",
     "activities"
-  ]
+  ],
+  "project_description": "This module implements the Strava API v3 for use in a Drupal website.\n\n Good to know \n Strava no longer exposes athlete email addresses, so this module cannot create new Drupal accounts from a Strava login.\n\n Existing Drupal users can still link their account to Strava: sign in to Drupal first, then connect via the Strava login block or the /admin/strava page. Once linked, signing in via Strava works as expected. Only sign-up through Strava is unsupported.\n\n As of 3.0.0-alpha2 the module supports refresh tokens, so Strava sessions no longer expire after 6 hours. Access tokens are refreshed automatically. See [#3611129].\n\n \n Sponsors",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-05-04",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 13000000
 }

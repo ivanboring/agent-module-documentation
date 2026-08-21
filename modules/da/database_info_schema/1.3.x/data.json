@@ -33,5 +33,13 @@
     "drush",
     "tables",
     "developer"
-  ]
+  ],
+  "project_description": "Overview \n This is a Schema & Metadata Explorer that works as an administrative and diagnostic tool designed to give developers and database administrators a comprehensive, real-time look into the database's architecture and physical footprint. It serves as a centralized tool for structural introspection and storage monitoring.\n\n Key Features \n \n Schema Inventory: Retrieves and lists all table names existing within the connected database or specific schemas. \n Field-Level Introspection: Drills down into individual tables to display all fields (columns), detailing their specific data types, character maximum lengths, nullability, and key constraints. \n Index Mapping: Catalogs all indexes associated with each table (e.g., primary, unique, non-clustered), providing visibility into how data retrieval is currently optimized. \n Granular Storage Metrics: Calculates and displays precise data consumption metrics, including: \n Total Database Size: The aggregate disk space currently utilized by the entire database. \n Table Sizes: The specific storage footprint of the data within each individual table. \n Index Sizes: The disk space consumed specifically by the indexes on each table, allowing administrators to weigh query performance benefits against storage costs. \n \n Back to top \n\n Primary Value \n This module streamlines database auditing, accelerates onboarding for new developers by providing immediate structural context, and aids in performance tuning and capacity planning by clearly highlighting where storage is being heavily utilized.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-04-21",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

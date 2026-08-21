@@ -46,5 +46,13 @@
     "address lookup",
     "location entity",
     "view geo permission"
-  ]
+  ],
+  "project_description": "Provides a entity for storing, and reusing, geographic information.\n\n Pre-configured to use openstreetmap tiles, and geocoder openstreetmap backend. The intention is that this can be exchanged for preferred services. More detail about gecoder options can be found on the Installing new Geocoders page\n\n There are two default bundle types, address and area.\n\n There is an overview of the bundles and reusing addresses on the wiki.\n\n Back to top \n\n Ordnance Survey Places geocoder\n \n This module provides a Drupal geocoder plugin for the Ordnance Survey Places PHP geocoder. This plugin is useful for geocoding and address lookup using the Ordnance Survey Places API which covers addresses in the UK. This plugin requires an API key. It is free for UK local authorities.\n\n Back to top \n\n Good to know\n \n Install the Ordnance Survey Places PHP geocoder to use this plugin as per the composer suggestion.\n\nThere is a known issue with Drupal geocoder plugins that they sometimes do not immediately appear in the Geocoder provider dropdown at /admin/config/system/geocoder/geocoder-provider. If this happens, restart PHP or the (virtual) machine hosting PHP and then review the dropdown.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-04-30",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

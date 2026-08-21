@@ -45,5 +45,13 @@
     "staging",
     "drush maillog:clear",
     "mailsystem"
-  ]
+  ],
+  "project_description": "Maillog provides an easy possibility to log all Mails for debugging purposes. It's possible to prevent the mails to being sent, so there is no need for an extra mail server to test the mail functionality of other modules or the drupal core. Additionally you can immediately display the mail through the devel dpm() facility.\n\n Warning \n Recording mails may be in violation of some regional legal regulations. The maintainers of this module deny all responsibility for how individual site owners & maintainers use this module.\n\n Drupal 11 and beyond \n This module is obsolete as the Drupal community is moving towards Symfony Mailer as the default mail system; for logging functionality use the Symfony Mailer Log module.\n\n More information \n Please see the included README.txt file.\n\n To get started:\n\n \n Download and install the module. \n Configure it at \"Configuration\" -> \"Development\" -> \"Mail Log Settings\" (admin/config/development/maillog). \n Cause the site to send some emails. \n Load the Mailllog report at \"Reports\" -> \"Maillog\" (admin/reports/maillog). \n View the emails, delete them as desired. \n \n Use of the Mailsystem module is recommended.\n\n Issue Reports \n Before reporting an issue always test with the latest release to see if you problem has already been fixed.\n\n Similar modules \n \n Symfony Mail Log logs all emails from Symfony Mailer ; this is the best long-term solution for Drupal sites. \n Redirection of mail only with Reroute Email (D7, D8/9) \n Feature rich rerouting with Advanced Mail Reroute (D7) \n Pure logging is also done by Mail Logger (D7) \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Obsolete",
+  "security_advisory_coverage": "covered",
+  "project_created": "2010-07-30",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -38,5 +38,13 @@
     "reassign",
     "content",
     "safeguard"
-  ]
+  ],
+  "project_description": "The only purpose of this module is to remove the \"Delete the account and make its content belong to the Anonymous user\" (user_cancel_reassign) option from appearing on the User Cancellation Form (/user/{user}/cancel) and the Bulk User Cancellation Form (/admin/people/cancel).\n\n There is an open core bug, #2977362: Revision user incorrectly appears as anonymous user when node author is cancelled , that comes up when using this option. Additionally, we are seeing a critical issue where old revisions created by the deleted user are being republished as the default version of a node. Given the severity of this issue, we've created this extremely simple module to remove that option.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2021-02-07",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

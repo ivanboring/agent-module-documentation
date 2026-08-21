@@ -36,5 +36,13 @@
     "batch",
     "migrate",
     "content"
-  ]
+  ],
+  "project_description": "Trucie module provides content import from the spreadsheet file.\n\n Main features:\n\n \n Supported formats: xlsx, xls, ods, csv. \n Provides UI to configure the import (this can be exported to site config). \n Provides basic processing rules for fields from the source file. \n Supports ANY entity type including custom entities (not just nodes and taxonomy terms). \n Provides events (similar to hooks) to make it possible to write custom data processing. \n \n There are number of modules available that provides content import from xlsx or csv, the main difference is that Trucie supports all entity types and not just the ones that comes from core (nodes, terms, etc). Additionally, it's possible to configure basic processing rules for fields (like floatval or preg_replace).\n\n This module is inspired by Migrate API and Feeds module. But with Migrate API you have to manually upload the source file to some directory on the server in order to do the content import, while with Trucie you can just select the file on the form to upload it.\n\n It requires basic understanding of how entities are structured, so it's recommended to have a tech-savvy guy to configure the imports. But once it's set up any one can do the import from file at any time.\n\n Feel free to check module readme for examples and more details.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-03-10",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

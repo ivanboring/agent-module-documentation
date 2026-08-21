@@ -42,5 +42,13 @@
     "linked data",
     "vocabulary",
     "semantic web"
-  ]
+  ],
+  "project_description": "This module provides a dedicated entity type for SKOS modeling. The module requires access to a triplestore database , such as Virtuoso .\n\n Technical details and constraints \n The module allows loading SKOS concept schemes and concepts as entities in Drupal. The entities will be loaded from the graph IRIs specified in the related configuration.\n\n Since all the graphs are passed to the methods for loading entities, this enforces the limitation of having unique IRIs (IDs in Drupalese) for the SKOS entities present in all the graphs.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-07-30",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

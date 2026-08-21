@@ -33,5 +33,13 @@
     "query",
     "visibility",
     "block"
-  ]
+  ],
+  "project_description": "Tools like Views, Search API, Facets, and more rely on request parameters to process specific types of input. But, this functionality is often limited to whatever the tool itself provides.\n\n One limitation we encountered was the ability to conditionally render logic based on request parameters.\n\n For instance, I may want to display a block conditionally if a page does not have a query parameter \"search\". This use case works well with the Block Visibility Groups module, except we need a condition for processing these parameters from the request.\n\n As such, this module provides a condition to process parameters found in a request.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-12-12",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

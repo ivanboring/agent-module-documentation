@@ -43,5 +43,13 @@
     "food",
     "content type",
     "schema"
-  ]
+  ],
+  "project_description": "Recipe is a module for sharing cooking recipes. It provides a Recipe content type, an Ingredient entity type, an Ingredient reference field, and custom Views display styles for recipe sharing and printing.\n\n Back to top \n\n History \n Recipe is one of the oldest contrib modules! The first lines of code were written in 2002. Check out the CHANGELOG.txt file for a glance into Drupal's early history.\n\n Recipe existed before CCK and the Field API. It provided the content type via custom database tables, a practice which lasted through the 7.x-1.x development cycle. The Recipe module's purpose began to gradually diminish as fields became widely adopted, enabling site builders to create their own customized content types that had better integration with other APIs.\n\n Today, the 8.x-2.x branch is built using standard field types from Drupal Core as well as a custom field for Ingredient references. Think of this Recipe content type as starting point. It is expected that you will extend and modify recipes to meet your individual needs.\n\n Back to top \n\n Upgrading from a 6.x or 7.x Branch \n The upgrade paths for 6.x and 7.x recipe data are considered complete. Several features have been dropped from the module, either because they can be done better by other APIs, relied on proprietary software, or simply didn't work properly. Check the release notes for more information.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2003-09-28",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 13000000
 }

@@ -35,5 +35,13 @@
     "declarative",
     "dependencies",
     "forms"
-  ]
+  ],
+  "project_description": "This module provides a simpler way for form elements to be updated via AJAX in response to another element having its value changed.\n\n Similarly to core's form states system, this uses a declarative syntax without any callbacks.\n\n For example:\n\n <?php\n\n$form['controlling_element'] = [\n\n '#type' => 'checkbox',\n\n '#title' => 'Click me',\n\n];\n\n // This container is automatically updated when the user changes the value of\n\n// the controlling_element checkbox.\n\n$form['my_container'] = [\n\n '#type' => 'container',\n\n '#ajax' => [\n\n 'updated_by' => [\n\n // Form parents of the controlling element.\n\n ['controlling_element'],\n\n ],\n\n ],\n\n];\n\n // Set this after build callback on the whole form to set up the AJAX\n\n// behaviours.\n\n$form['#after_build'][] = FormAjax::class . '::ajaxAfterBuild';\n\n?>\n\n This project includes a demo module with working examples.\n\n This is a proof of concept for a core issue , but can also be used as a contrib dependency.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2024-05-23",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": null,
+  "core_semver_maximum": null
 }

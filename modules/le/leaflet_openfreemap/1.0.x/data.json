@@ -35,5 +35,13 @@
     "map",
     "tiles",
     "geospatial"
-  ]
+  ],
+  "project_description": "Adds OpenFreeMap vector tile map styles to the\n\n Leaflet module . OpenFreeMap is a\n\nfully open-source, free-to-use tile service with no API key required.\n\n Three styles are provided:\n\n \n Liberty — full-detail default style (recommended) \n Positron — ultra-clean, minimal style \n Bright — high-contrast style \n \n Tiles are rendered using MapLibre GL via the leaflet-maplibre-gl plugin,\n\nwhich is bundled with the Leaflet contrib module.\n\n Back to top \n\n Requirements \n \n Leaflet 10.x\n\n (must include MapLibre GL JS and leaflet-maplibre-gl — available from\n\n Leaflet bundled libraries) \n Drupal 10.2+ or Drupal 11 \n \n Back to top \n\n Installation \n \n Enable the module with Drush: drush pm:enable leaflet_openfreemap \n No API key or external account is required. \n \n Back to top \n\n Configuration \n After enabling the module, the three OpenFreeMap map styles will appear in any\n\nLeaflet map selector (e.g. Leaflet formatter, Geofield map widget). Select one\n\nof the OpenFreeMap options from the map dropdown.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-04-22",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

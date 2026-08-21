@@ -36,5 +36,13 @@
     "backend",
     "search",
     "client"
-  ]
+  ],
+  "project_description": "This module provides a Search API Backend for ElasticSearch.\n\n The module uses the official ElasticSearch PHP Client . It is therefore compatible with any version of ElasticSearch >= 8.\n\n Important:\n\n \n\n To give you the freedom to choose the ElasticSearch version on your own, the ES PHP Client is not a composer dependancy of this module. Based on your installed ES version, you have to install the related ES PHP Client using composer:\n\n \n\ncomposer require elasticsearch/elasticsearch ^8.11\n\n \n\n Features \n \n Search API integration for indexing, field mapping, views etc. \n Facets \n More Like This \n Connector plugin type for external connector extensions \n GeoData support \n NGram analyzer support \n \n Credits \n This module heavily based on the work of the Search Api Opensearch module.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-01-22",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

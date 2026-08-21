@@ -35,5 +35,13 @@
     "select",
     "widget",
     "a11y"
-  ]
+  ],
+  "project_description": "Summary \n Provides a Render element that extends from a Select field and automatically converts it to use the Accessible Autocomplete library.\n\n Installation \n \n Download as per normal \n Install Accessible Autocomplete either:\n \n Using npm into the folder above your Drupal installation. npm i -S @drupal/autocomplete . The library should exist at /path/to/drupal/../node_modules/@drupal/autocomplete \n Manually, and extracting to /libraries/a11y_autocomplete inside your Drupal installation. \n \n \n Enable the module as usual \n Select it as a widget for field UI fields, or if you're a developer, use the new '#type' => 'a11y_autocomplete' anywhere you'd use '#type' => 'select' \n \n Known issues \n Please use the issue queue to report any issues.\n\n Credits \n Written by Lee Rowlands for a client of PreviousNext\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2022-03-13",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9002000,
+  "core_semver_maximum": 12999999
 }

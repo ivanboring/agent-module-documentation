@@ -34,5 +34,13 @@
     "access control",
     "config entity",
     "grouping"
-  ]
+  ],
+  "project_description": "This module allows administrators to create groups of permissions. \n\n Back to top \n\n Overview \n Managing permissions can be hard once you have multiple entity types and many modules installed. Roles are too broad and individual permissions are too granular. The Permission Group module allows you to organise permissions into groups which in turn can be assigned to a role.\n\n Back to top \n\n How it works \n \n Permission groups are configuration entities. \n Once a permission group is a assigned to a role, the permissions that are part of the group cannot be removed from the role via the role UI. \n Permission groups can contain other permission groups allowing you to build hierarchies. \n The module provides a stripped down form to assign permission groups to roles allowing you to make this available to user administrators without exposing the entire permission form. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-01-13",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 11000000
 }

@@ -39,5 +39,13 @@
     "event subscriber",
     "security header",
     "same origin"
-  ]
+  ],
+  "project_description": "Back to top \n\n Summary \n Drupal 8+ has a feature built into core that stops the site from being rendered within an iframe, there are good reasons for this - https://www.drupal.org/node/2514136 \n\nBut sometimes you want your site in an iframe, so that's what this module does, based on configured paths (whitelist / blacklist).\n\n Back to top \n\n Requirements \n \n None beyond core \n \n Back to top \n\n Configuration \n \n /admin/config/system/allow_iframed_site Enter paths you want to allow or deny iFrames access to. \n \n Back to top \n\n Similar modules \n \n https://www.drupal.org/project/x_frame_options \n https://www.drupal.org/project/seckit \n https://www.drupal.org/project/http_response_headers \n \n In contrast to this module, they are typically not path-based, but provide further functionalities. That's the main difference.\n\n Back to top \n\n Credits \n \n 4k4 - http://drupal.stackexchange.com/questions/188924/how-to-embed-drupal-co… \n Back to top",
+  "maintenance_status": "Seeking new maintainer",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-06-09",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

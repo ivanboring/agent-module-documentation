@@ -33,5 +33,13 @@
     "error pages",
     "field",
     "site builder"
-  ]
+  ],
+  "project_description": "This module provides additional feature on admin/config/system/site-information page, so 404 and 403 fields becomes autocomplete. \n\n \n\n There are additional settings provided at admin/config/system/autocomplete_4xx, so you can play with these settings to adjust results of autocomplete search. Available options are:\n\n - include routes - by default it's set to false and only node paths (represented by node titles) are considered to be potential results.\n\n - include parameterized routes - this option is also set to false, as it allows to include in autocomplete results paths with {parameters}\n\n - include unpublished nodes - by default unpublished nodes are not included in the list, this option provides an ability to include it\n\n - define which content types should be included for setting up 4xx pages - by default all the node without bundles filtering are available to search through, this option can narrow down results to specific content types.\n\n Requirements \n This module requires no modules outside of Drupal core.\n\n Configuration \n 1. Enable the module at Administration > Extend or via drush.\n\n2. Go to /admin/config/system/site-information\n\n3. `Error pages` section (403 and 404) should now contain autocomplete fields instead of simple textfields.\n\n4. By default autocomplete searches through all published nodes.\n\n5. You can adjust search settings at `/admin/config/system/autocomplete_4xx`\n\n Back to top",
+  "maintenance_status": "Seeking co-maintainer(s)",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-03-02",
+  "project_changed": "2026-01-27",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

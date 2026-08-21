@@ -38,5 +38,13 @@
     "metatag",
     "placeholder",
     "empty"
-  ]
+  ],
+  "project_description": "Allows a token to be given a default value in the event of no value being found.\n\n This can be altered per content type.\n\n Back to top \n\n Installation \n After installing this module it can be configured from the Token Defaults configuration page admin/config/search/token_defaults.\n\n Now you are ready to add a token default; adding the pattern string to be replaced, and the default string to use in the event that a replacement cannot be found.\n\n Back to top \n\n Known Issues \n \n There are currently no restrictions on what can be entered for the token pattern string, validation is required to restrict this to a single valid token pattern. \n There are not currently any tests written for this module. \n Currently a single content type must be selected, this restriction could be lifted or it could be applicable to multiple content types. \n There is not currently a way to restrict this to the context of the replacement, for example pathauto. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-08-13",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -33,5 +33,13 @@
     "numbers",
     "formatter",
     "statistics"
-  ]
+  ],
+  "project_description": "Provides a field formatter that integrates the countUp.js library.\n\nThe field formatter can be used on integer, float and decimal fields.\n\nField formatters can be applied in the display settings of an entity, for example.\n\n Module Dependencies \n For the module to work, you need to add the countup-js library to your projects libraries folder.\n\nYou can either do this manually or use composer merge plugin for this.\n\n Installation with composer merge plugin \n 1. Add the repository to your composer.json file. It should look something like this:\n\n \n\n{\n\n [...]\n\n \"repositories\": [\n\n {\n\n \"type\": \"composer\",\n\n \"url\": \"https://packages.drupal.org/8\"\n\n },\n\n {\n\n \"type\": \"package\",\n\n \"package\": {\n\n \"name\": \"inorganik/countup-js\",\n\n \"version\": \"2.4.2\",\n\n \"type\": \"drupal-library\",\n\n \"dist\": {\n\n \"url\": \"https://github.com/inorganik/countUp.js/archive/refs/tags/v2.4.2.zip\",\n\n \"type\": \"zip\"\n\n }\n\n }\n\n },\n\n ]\n\n [...]\n\n \n\n 2. Add the config for merge-plugin in your composer.json in the extra section:\n\n \n\n{\n\n \"extra\": {\n\n \"merge-plugin\": {\n\n \"include\": [\n\n \"web/modules/contrib/*/composer.libraries.json\"\n\n ],\n\n \"recurse\": true\n\n }\n\n },\n\n}\n\n \n\n 3. If not added yet, install composer merge plugin.\n\n \n\ncomposer require 'wikimedia/composer-merge-plugin:^2.0'\n\n \n\n 4. Install / Update the module by running one of the following commands:\n\n \n\ncomposer require 'drupal/countup_formatter:^1.0'\n\ncomposer update -W\n\ncomposer update drupal/countup_formatter -W\n\n \n\n Manual installation \n Download the source code from github (Version 2.4.2 or newer) and place it in your projects libraries folder, which can typically be found in web/libraries/.\n\nMake sure the path \"libraries/countup.js/dist/countUp.umd.js\" exists.\n\n Clear the Drupal cache.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-11-09",
+  "project_changed": "2026-08-20",
+  "core_semver_minimum": 9002000,
+  "core_semver_maximum": 12000000
 }

@@ -37,5 +37,13 @@
     "slug",
     "varchar field",
     "validation constraint"
-  ]
+  ],
+  "project_description": "This module provides a machine name field.\n\n If you just need a stand-alone machine name field (a field with a value that will never change for same reason), use this. If you want two fields tied together (a frequent UI pattern in Drupal core), use Safeword.\n\n Historical information and motivation regarding this module \n 2011-10-26: The module was created by beejeebus and hunmonk for the D7 Version of the Project-Project ( Report from Project 7.x-2.0 BADCamp Sprint ):\n\n This takes advantage of the D7 FormAPI machine_name form element #type and exposes it as a Field API field you can attach to any entity bundle. We’re using this for the project shortname on project node types, but since it could be useful to anyone, we published it as a separate project.\n\n \n 2012-04-24: C_Logemann Is the new Maintainer .\n\n Safeword is a similar module. However, it depends on using a related text field and the machine name is auto-generated from that:\n\n Safeword module provides a standard text field and when text is input displays a matching machine name field which automatically converts the text into a machine name formatted version, which can also be hand edited.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2011-10-25",
+  "project_changed": "2026-08-21",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 13000000
 }

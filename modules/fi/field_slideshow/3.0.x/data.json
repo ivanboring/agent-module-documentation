@@ -47,5 +47,13 @@
     "thumbnails",
     "colorbox",
     "gallery"
-  ]
+  ],
+  "project_description": "Back to top \n\n Overview \n Provides a Slideshow formatter for Image fields, using JQuery Cycle plugin.\n\n Compared to Views slideshows, building the slideshow from multiple nodes, this module builds it from a single node, with a multi-valued Image/Media/Field Collection field.\n\n Back to top \n\n Available options \n \n Image style \n Caption \n Link \n Transition effect \n Transition speed \n Timeout \n Pager (numbers or thumbnails, with optional carousel) \n Prev/Next controls \n \n Back to top \n\n Requirements \n \n Libraries API \n Jquery Cycle plugin \n JCarousel \n \n Back to top \n\n Integration \n This module plays well with:\n\n \n Colorbox (to enlarge images) \n Media (to provide the images to the slideshow, and use additional fields for captions and/or links) \n Field Collection (to provide the images to the slideshow, and use additional fields for captions and/or links) \n Imagefield Crop (as an alternative to the default Image field) \n \n Back to top \n\n Tutorial \n perisdr has written a small tutorial here .\n\n Back to top \n\n Cycle2 \n I would like to inform all users that field_slideshow 8.3.x module now support Cycle2 plugin.\n\n \n use composer require 'drupal/field_slideshow:^3.x' \n Download the JQuery Cycle 2 plugin here :\n\n https://github.com/zakgreene/cycle2/ \n\n (It is fork from original Cycle2 repo\n\n which support the latest jQuery version)\n\n (don't choose the Lite version), and move the downloaded\n\n jquery.cycle2.min.js file into /libraries/jquery.cycle2/ \n Optionally download swipe plugin from\n\n http://malsup.github.io/min/jquery.cycle2.swipe.min.js \n Install Drupal Colorbox module if you want to use colorbox modal. \n Read Roadmap 8.3 \n And check README.txt file \n Field collections and any entity reference field are not supported, check issue \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2011-01-06",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

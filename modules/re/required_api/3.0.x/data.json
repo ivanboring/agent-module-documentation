@@ -41,5 +41,13 @@
     "form error handler",
     "required by role",
     "field_config"
-  ]
+  ],
+  "project_description": "This module provides a framework for plugins to conditionally mark fields as required. It contains one default condition, which is the same as the core behaviour: the field is either always or never required. \n\n This is an API module, which means that you need to install other modules providing required strategies. The following strategies are currently available:\n\n \n Required by role : allows fields to only be required when the current user has a certain role \n Required by Content Moderation state : allows fields to only be required when their associated entity reaches a certain Content Moderation state",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2013-12-14",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -46,5 +46,13 @@
     "drush cim",
     "config collection",
     "language.*"
-  ]
+  ],
+  "project_description": "Use this module with multisite setup where you have sites sharing the same config, but with different enabled languages.\n\n The module prevents Drush from exporting/importing config files of languages that are not installed. This is particularly useful in Drupal multisite setup where you have multiple sites with in the same codebase, but each site has different enabled languages.\n\n This module fixes this issue: [#2917048]",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-08-31",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

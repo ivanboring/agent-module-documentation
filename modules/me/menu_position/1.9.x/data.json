@@ -47,5 +47,13 @@
     "dynamic menu placement",
     "menu_position.settings",
     "menu parent selector"
-  ]
+  ],
+  "project_description": "Often times site builders want certain types of content to appear in a specific position in the navigational menu. The simplest solution, adding all of that content individually to the menu system, has performance and usability issues. (Imagine hundreds of menu items added to one spot in the menu.)\n\n This module allows for the creation of rules that will dynamically add the current page into the menu system at the requested spots.\n\n This includes affecting:\n\n \n The main links of the theme \n The secondary links of the theme \n The breadcrumb trail \n Menu blocks provided by core's Menu module \n Menu blocks provided by the Menu Block module \n \n Plug-ins \n Currently, the Menu position module provides \"content type\", \"pages\", \"taxonomy\", \"user\", \"vocabulary\" and \"language\" plug-ins that allows conditions to be added to rules. Additionally, this module also provides a simple API for \"rule conditions\" plug-ins so module developers can develop their own logic for adding dynamic menu positioning. The module comes with Features integration.\n\n See the following files for more information:\n\n \n menu_position.api.php \n menu_position.example_plugin.inc \n menu_position.node_type.inc \n \n Please submit your useful plug-ins for inclusion with this module!",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2010-10-21",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

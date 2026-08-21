@@ -33,5 +33,13 @@
     "rendering",
     "view mode",
     "fields"
-  ]
+  ],
+  "project_description": "This module disables entity view displays & view modes for websites that don't need it. Examples of such projects are headless projects where frontend rendering happens outside Drupal, or projects rendering their frontend without using view displays and field formatters.\n\n Back to top \n\n Installation \n You can install the module using Composer:\n\n \n\ncomposer require drupal/no_entity_view_display\n\n \n\n Back to top \n\n Configuration \n After enabling the module, visit the settings form at admin/config/system/no-entity-view-display to choose for which entity types view displays should be disabled. After submitting, existing view displays and view modes are deleted and no new ones will be created. Any menu links pointing to view display/view mode related pages are removed.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2022-09-21",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

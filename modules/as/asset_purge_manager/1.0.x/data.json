@@ -33,5 +33,13 @@
     "cleanup",
     "unused",
     "files"
-  ]
+  ],
+  "project_description": "The Asset Purge Manager module provides a convenient interface within Drupal to manage and purge assets from your site's public directory. It offers seamless integration with Drupal's administrative interface, allowing users to easily delete and manage files while ensuring that the integrity of the site's file references is maintained.\n\n Installation and Setup:\n\n \n\n \n Install the module through your preferred method, ensuring that there are no non-core dependencies required. \n Enable the module at yoursite/admin/modules. \n Set permissions for users to view and access the Asset Purge Manager at yoursite/admin/people/permissions. \n Navigate to the Asset Purge Manager tab at yoursite/admin/content/asset_purge_manager. Here, you'll find a comprehensive list of writable files in your site's public directory. \n \n Usage:\n\n \n\n \n Asset Purge Manager Tab: Upon accessing the Asset Purge Manager tab, users will be presented with a list of files in the public directory. This interface allows for easy identification and management of files that may need to be deleted or replaced. \n File Replacement: If a file managed by Drupal is deleted, the Asset Purge Manager module automatically replaces it with a new empty file. This proactive approach prevents potential issues with dangling file references within the site. \n Exercise Caution: It's essential to exercise caution when using the Asset Purge Manager. Avoid deleting files that you don't fully understand, as doing so may inadvertently impact the functionality or integrity of your site. Following this precaution ensures a smooth and error-free management process. \n \n Configuration:\n\n The module offers configuration options to customize the user experience:\n\n Files per Page: The number of files displayed per page can be configured according to your preference. This setting can be adjusted at yoursite/admin/config/media/asset_purge_manager.\n\n Use Case:\n\n Imagine you're managing a Drupal website that frequently updates its media assets, such as images, videos, or downloadable files. With the Asset Purge Manager module, you can effortlessly navigate to the administrative interface and review the list of files in the public directory. If any obsolete or redundant files are identified, you can promptly delete them, ensuring that your site remains clutter-free and optimized for performance.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2024-04-30",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

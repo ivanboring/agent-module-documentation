@@ -51,5 +51,13 @@
     "development",
     "inspection",
     "trace"
-  ]
+  ],
+  "project_description": "Kint is a dumper in the vein of var_dump() , with keyboard controls, search, access path provision, and automatic data parsing.\n\n Once installed, this module enables the standard Kint dump functions d and s in both PHP and twig. Additional functions can be configured through the settings page. Bundled Kint themes are available to select from, and you can also configure the date format.\n\n Before the module loads Kint dumps will be silent. When the module loads the module setting \"Enable early dump\" determines whether dumps will be visible. After authentication the user permissions will decide.\n\n Back to top \n\n Twig \n Twig development mode must be enabled in Configuration > Development settings for dumps in twig templates to be visible.\n\n Back to top \n\n Devel \n When installed alongside Devel , Kint can be used as a Devel dumper. In this mode Devel's permissions will be used. Kint has the option to override Devel's dump in ddebug_backtrace and provide its own.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2013-12-12",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 13000000
 }

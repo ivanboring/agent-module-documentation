@@ -36,5 +36,13 @@
     "nlp",
     "natural language",
     "named entity"
-  ]
+  ],
+  "project_description": "Search API Solr NLP adds support for Solr's OpenNLP integration to Search API Solr .\n\n Due to the requirement for trained models for natural language processing that might take a lot of space, this functionality encapsulated in an optional module and not included in Search API Solr itself.\n\n Search API Solr NLP adds some new fulltext field types to Solr config sets, for example \"nouns\". Using this field type you can filter any text for nouns. The resulting data stored in the index is great source for features like auto complete or spell check.\n\n Installation \n This module has to be installed via composer to pull its dependencies. These contain a set of pre-trained models for different languages from apache.org. The first download ever of these files takes some time. Composer isn't fast on fetching those files. So it isn't an error when the first time download takes longer! Afterwards these files are cached.\n\n Your Solr hosting provider must allow you to provide or upload \"your\" Solr config-set. Once this module is installed, the generated config-sets of Search API Solr will automatically contain all required files.\n\n The default distribution of Solr already contains the required OpenNLP libraries.\n\n If you use Solr Cloud you might have to adjust a zookeeper setting. one way is to set the environment variable accordingly:\n\n SOLR_OPTS=$SOLR_OPTS -Djute.maxbuffer=50000000",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-11-04",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8009000,
+  "core_semver_maximum": 12000000
 }

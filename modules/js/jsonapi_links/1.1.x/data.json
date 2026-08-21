@@ -38,5 +38,13 @@
     "hateoas",
     "decoupled",
     "response size"
-  ]
+  ],
+  "project_description": "The JSON:API Links module makes it possible to remove the \"links\" attributes from Drupal's JSON:API responses. This saves bandwidth by making responses more compact.\n\n There is one exception: if you request `/jsonapi` (or the path you set as the root path), nothing will be removed.\n\n You can toggle this behavior via a UI setting.\n\n The approach this module takes was originally suggested by Wim Leers .\n\n Back to top \n\n Requirements \n This module requires no modules outside of Drupal core.\n\n Back to top \n\n Installation \n Install as you would normally install a contributed Drupal module.\n\n Back to top \n\n Configuration \n \n Enable the module at Administration > Extend. \n Configure the module at `/admin/config/services/jsonapi/links`. To remove links, check \"Remove all links attributes\". \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2022-10-26",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -38,5 +38,13 @@
     "exempt url",
     "maintenance_mode service",
     "access site in maintenance mode"
-  ]
+  ],
+  "project_description": "Drupal allows you to set your site into maintenance mode in order to deploy code and database upgrades safely. However, access to the site during maintenance mode is by default controlled by a permission, which is generally only given to administrative users. It's not possible to test the site as a regular anonymous or authenticated user without giving all anonymous/authenticated users the \"Use the site in maintenance mode\" permission, so you generally have to test those things on the fly after moving the site back to \"live\" mode.\n\n Until now, that is! This D7+ module (the necessary hook doesn't exist in D6 and below) allows specific people to perform the necessary testing on the site with all role combinations without opening the site up to all of your visitors.\n\n Exemptions can be added by\n\n \n Specifying a list of IP addresses (individually or by CIDR notation) \n Specifying a list of URLs \n Specifying a query string variable",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2010-12-20",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

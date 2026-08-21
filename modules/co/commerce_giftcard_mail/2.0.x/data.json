@@ -38,5 +38,13 @@
     "activation",
     "order",
     "commerce_email"
-  ]
+  ],
+  "project_description": "Module to fill the gap between Commerce Gift Card and Commerce Email.\n\n It allows you to send E-mails with the Giftcard details to a customer when the order containing the giftcard has being paid.\n\n INSTALLATION \n\n Install the module\n\n IMPORTANT: You need to install the patch on this issue: https://www.drupal.org/project/commerce_giftcard/issues/3181301 which includes the 'commerce_giftcard.giftcard_activated' event, dispatched when the order has being paid.\n\n In version 2.x the correct patch is added automatically via composer. \n\n CREATE AN E-MAIL\n\n \n\nGo to the Commerce Email confiugration page: /admin/commerce/config/emails and create a new Email entity with the Giftcard activated event.\n\nIn the e-mail you can use the giftcard entity tokens.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2022-09-09",
+  "project_changed": "2025-03-04",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

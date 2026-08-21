@@ -40,5 +40,13 @@
     "migration",
     "import",
     "content workflow"
-  ]
+  ],
+  "project_description": "About Content Workflow by Bynder \n Enhance content creation with Bynder’s Content Workflow , the ultimate collaborative solution that reduces production time, facilitates structured content at scale, and grants you the freedom to harness the power of generative AI—all while ensuring a secure and organized approach tailored to your needs.\n\n Module Overview \n Installing this module on your site allows you to quickly migrate content from your Content Workflow account to Drupal. Content can be imported as any sort of node content type, and you can choose to create new pages or overwrite existing entities.\n\n The module currently supports the following features:\n\n \n Migrate content from Content Workflow \n Update content in Drupal from Content Workflow \n Update content from Drupal to Content Workflow \n Multilingual support using Entity translation module \n Meta tag basic support \n Content hierarchy \n Drush support \n \n This module isn’t backwards compatible with older, major versions of the module and there is no upgrade path.\n\n Installation \n We're highly recommend to use the latest stable 1.x version of this module.\n\nThis module uses a custom made library for API communication, because of this, using composer to install the module is the most efficient/easiest way.\n\n To install the latest development version run composer command from your Drupal root directory: composer require 'drupal/content_workflow_bynder' .\n\nThis way the module dependencies will be automatically downloaded.\n\n This package requires a Content Workflow account. A free trial can be created here .\n\n Previous Package \n This package is a replacement for the now deprecated GatherContent \n\n Installing this module on a site that has GatherContent enabled will automatically migrate existing configuration. The workflow to switch is:\n\n \n Add this project with composer and install it \n Uninstall Gathercontent \n Remove Gathercontent from composer after it has been uninstalled on all environments \n \n Planned Improvements \n We're continuously improving and updating the module.\n\n Related modules\n\nGatherContent OG - integration with Organic Groups for Drupal 7",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-12-15",
+  "project_changed": "2026-08-20",
+  "core_semver_minimum": 9002000,
+  "core_semver_maximum": 12000000
 }

@@ -35,5 +35,13 @@
     "user",
     "activity",
     "metrics"
-  ]
+  ],
+  "project_description": "Counts the amount of times a user has logged in and exposes it to Views, nothing more.\n\n It differs from other modules by\n\n \n Not keeping a database record for every login, just increment. So there is no need to worry about purging configuration or data loss \n No privacy concern (GDPR, ...): no other user data like IP or user agent are stored \n Deletes the count related record if the user is deleted \n Views configuration does not require aggregation or relationship \n \n Similar projects \n \n Login History \n Login Tracker",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2023-10-20",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

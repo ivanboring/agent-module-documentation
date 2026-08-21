@@ -39,5 +39,13 @@
     "lazy",
     "blocks",
     "performance"
-  ]
+  ],
+  "project_description": "This module provides the ability to load blocks that are placed on the page via layout builder to be loaded with Ajax.\n\n This module will override the currently rendered block by added a placeholder. Then javascript loads the fully rendered block and replaces the placeholder.\n\nThis can increase performance on your site.\n\n Back to top \n\n Requirements \n Some modules that are provided by core - block, block_content, node, taxonomy, user and views.\n\n Back to top \n\n Install \n Installing through composer is recommended.\n\n Back to top \n\n Usage \n \n Modify a layout and configure a block. \n Check the 'Enable Ajax for this block.' checkbox and save. \n Save the layout. \n Visit the page and confirm that the block is loading via ajax. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-11-06",
+  "project_changed": "2026-08-13",
+  "core_semver_minimum": 10002000,
+  "core_semver_maximum": 12000000
 }

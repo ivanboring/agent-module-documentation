@@ -38,5 +38,13 @@
     "date",
     "ranking",
     "recency"
-  ]
+  ],
+  "project_description": "Deprecated \n Since Search API Solr 4.1.12 date boosting is supported by that module itself. Therefore, you need this module only if you want to set different date boosting for multiple views using the same Search API index.\n\n More information about Search API date boosting feature \n\n Search API Solr doesn't provide a way to set boosting the results by date from the UI. Instead, you have to alter the query programmatically as said in [#2855329]. \n\n Description \n This module provides a \"Boost by Date\" views filter to Search API index-based views that can be used to achieve the boosting without programming.\n\n Usage \n 1. create a Search API solr server and index.\n\n2. set at least one \"Date\" field in the index. For example, the node's created field can be used.\n\n3. create a Search API index view.\n\n4. set descending order by relevance.\n\n5. add \"Boost by Date\" filter.\n\n6. Optional: you can tweak the parameters for calculating the boost. You can read information about these parameters here: https://www.hashbangcode.com/article/drupal-8-date-search-boosting-sear… \n\n Back to top",
+  "maintenance_status": "Seeking new maintainer",
+  "development_status": "No further development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-05-07",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

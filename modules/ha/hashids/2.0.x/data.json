@@ -35,5 +35,13 @@
     "ids",
     "short id",
     "encode"
-  ]
+  ],
+  "project_description": "Hashids is a small open-source library that generates short, unique, non-sequential ids from numbers.\n\n It converts numbers like 347 into strings like “yr8”, or array of numbers like [27, 986] into “3kTMd”.\n\n You can also decode those ids back. This is useful in bundling several parameters into one or simply using them as short UIDs.\n\n See the official project page at http://hashids.org/ \n\n Features:\n\n Api Examples \n \n\nhashids_generate(27, 986); // 3kTMd\n\nhashids_generate(array(27, 986)); // 3kTMd\n\nhashids_decode('3kTMd'); // array(27, 986)\n\n \n\n Hashids Hash field \n Generate a hashid by selecting reference ids in field settings. Supports entity reference, commerce, or relation references.\n\n Download and include the library in sites/all/libraries.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2015-04-13",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

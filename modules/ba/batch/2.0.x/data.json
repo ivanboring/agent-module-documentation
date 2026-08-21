@@ -35,5 +35,13 @@
     "developer",
     "tools",
     "framework"
-  ]
+  ],
+  "project_description": "Developer tools for creating batch operations.\n\n Usage \n This module does not provide any user-facing functionality. The functionality\n\nallows developers to more easily create batch functionality, with better\n\norganization and usability.\n\n Includes:\n\n \n Base classes for creating operations \n Default/base class for finished operations \n Batch builder to create batch array definitions \n Drush generate commands to quickly whip-up new operations and finished operations \n \n See the README for examples and further information.\n\n Breaking change \n Note that the 2.0.0-alpha5 release includes a breaking change to highwater type batch operations. If you're extending the highwater base class, you will need to update your code to conform to the new `::getItems` method.\n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-09-14",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8009000,
+  "core_semver_maximum": 12000000
 }

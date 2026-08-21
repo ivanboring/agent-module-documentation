@@ -51,5 +51,13 @@
     "migrate:import",
     "developer tools",
     "row source destination"
-  ]
+  ],
+  "project_description": "Debug your Drupal migrations with ease. Migrate Devel provides developer tools to inspect source data, destination values, and entity IDs as rows are processed—right in your terminal.\n\n Back to top \n\n Features \n \n --migrate-debug – View source, destination, and saved entity IDs after each row is processed \n --migrate-debug-pre – Inspect source and destination values before processing begins \n Debug process plugin – Add inline debugging to any migration YAML to trace values through the pipeline \n \n \n Part of the Migrate Ecosystem \n Migrate Devel works seamlessly with Migrate Tools and Migrate Plus . Use it alongside your existing migration workflow—just add a flag to your Drush command and start debugging.\n\n \n Back to top \n\n Usage \n Add debug flags to your migrate commands:\n\n <?php\n\ndrush migrate:import my_migration --migrate-debug\n\ndrush migrate:import my_migration --migrate-debug-pre\n\n?>\n\n Back to top \n\n Documentation \n Full documentation is available in the README file , including:\n\n \n Drush command options and examples \n Debug process plugin configuration \n Integration with Migrate Tools and Migrate Plus \n \n Back to top \n\n Related Modules \n \n Migrate Tools – Drush commands for running and managing migrations \n Migrate Plus – Additional source plugins, process plugins, and migration groups \n Migrate Source CSV – Import data from CSV files \n Migrate Manifest – Run migrations defined in a manifest file \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-02-24",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

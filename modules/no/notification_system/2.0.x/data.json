@@ -38,5 +38,13 @@
     "groups",
     "ajax",
     "block"
-  ]
+  ],
+  "project_description": "A similar module is the DANSE project which could fit your use case. The Notification System Module is more modular and has some different approaches.\n\n The notification_system module provides a pluggable architecture for aggregating, displaying and sending notifications in drupal.\n\n It is thought as a base module for developers to provide notifications from their own modules.\n\n It doesn't matter where the notifications are stored, so it is possible to have notifications that are in the drupal database, in external applications and also notifications that are generated on request.\n\n The module is concepted based on plugins so every module can implement its own notification provider. Adminstrators can then bundle notification types to groups and show them to the user in form of a notification center or a block on the frontpage or whatever you want. The module is so basic that it can handle all cases.\n\n With the notification_dispatch submodule, it is possible to send out the gathered notifications via multiple \"dispatchers\", for example by email or via web push. But a dispatcher for Slack or Microsoft Teams is also possible, as the dispatcher is also extensible via plugins.\n\n NOTE: Web Push requires the web_push_api module which is not yet D10 ready, you will need to utilize patches to install this feature.\n\n \n\n Have a look at the documentation for more information, use cases and guides how to setup and integrate the module in your project.\n\n Currently the module is being used in production on two websites, and runs there without bigger problems.\n\n I'd love to talk to someone about the architecture, development and possible use cases for the notification_system module. So if you are interested just reach out to me on the Drupal Slack channel #notification_system , via mail ( max.bachhuber@bahuma.io ) or on any other platform where you can find my user @bahuma20",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-04-02",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

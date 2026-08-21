@@ -33,5 +33,13 @@
     "multi-value",
     "field",
     "display"
-  ]
+  ],
+  "project_description": "The Entity Delta Formatter module provides a field formatter for entity\n\nreference fields that displays a selected set of items from a field with\n\nmultiple items.\n\n Install \n \n Install as you would normally install a contributed Drupal module. Visit:\n\n https://www.drupal.org/docs/8/extending-drupal-8/installing-drupal-8-mo… \n\n for further information.\n \n \n Usage \n \n \n Set the field formatter for an entity reference field to\n\n \"Rendered entities by delta\".\n \n \n In the configuration menu, specify deltas.\n \n \n Select an item by entering its position in the list starting with 1.\n \n \n Select an item from the end of the list by entering its position from the\n\n end as a negative number. E.g. \"-2\" to get the second to last item.\n \n \n Select ranges of items by specifying the inclusive start and end separated\n\n by \"_\". E.g. \"1_3\" to get the first, second and third items or \"2_-1\" to get\n\n all items but the first.\n \n \n Multiple selections may be combined using commas. E.g \"1_3, -1\" to get the\n\n first, second, third, and last items.\n \n \n \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-04-05",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

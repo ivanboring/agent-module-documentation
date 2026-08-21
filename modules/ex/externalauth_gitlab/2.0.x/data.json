@@ -35,5 +35,13 @@
     "login",
     "sso",
     "externalauth"
-  ]
+  ],
+  "project_description": "Externalauth Gitlab OAuth2 connector will allow users of your site to authenticate against a running gitlab instance via OAuth2. The module will not register new users, just map existing users via the email-address.\n\n Back to top \n\n Dependencies: \n \n externalauth \n \n Back to top \n\n Installation \n \n Install via composer composer require drupal/externalauth_gitlab \n this should install all needed depencencies \n Enable the module \n Configure the module at /admin/config/people/externalauth-gitlab-settings \n \n Back to top \n\n Usage \n \n The module will add a new local task at /user \n When visiting that link the user will gets redirected to the gitlab instance, if the user authenticates successfully, it will get authenticated in Drupal. \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2019-01-13",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -33,5 +33,13 @@
     "render element",
     "lazy",
     "performance"
-  ]
+  ],
+  "project_description": "The AJAX Placeholder module provides a render element that will defer loading the content to an AJAX request, similar to how lazy builders work. This can greatly improve the performance and caching of pages. The main benefit over lazy builders and Bigpipe, is that the AJAX request will load asynchronously which will significantly improve the user experience when lots of render elements are placed on the same page.\n\n Features \n The module provides a new render element to load content via AJAX:\n\n \n\n $build['awesome'] = [\n\n '#type' => 'ajax_placeholder',\n\n '#callback' => ['mymodule.service:callback', [$arg1, $arg2]],\n\n ];\n\n \n\n The module requires no configuration, and can be used by developers to improve the performance of pages that show lots of different content that can be hard to cache (like dashboards).",
+  "maintenance_status": "Seeking co-maintainer(s)",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-06-28",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

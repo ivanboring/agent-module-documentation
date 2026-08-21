@@ -35,5 +35,13 @@
     "analysis",
     "refactoring",
     "migration"
-  ]
+  ],
+  "project_description": "Drupal Module Upgrader provides drush commands to scan the source of a Drupal 7 module, flags any code that requires updating to modern Drupal, points off to any relevant API change notices , and (where possible) will actually attempt to convert the Drupal 7 code automatically to modern Drupal!\n\n The module is kept on life support to aid Drupal 7 upgraders, but further development is not planned .\n\n Installation \n \n The \"minimum-stability\" option in the site's composer.json file must be set to \"dev\". \n Install the module like you would any other Drupal module, it will bring along the needed dependencies. \n \n Usage \n \n Place the Drupal 7 module you wish to port into your modern Drupal site's /modules directory. \n To scan code and get a report of code that needs updating and how, run the following inside the modern Drupal root directory:\n \n\ndrush dmu-analyze MODULE_NAME\n\n \n\n This will export a report showing any relevant change notices where you can\n\n read more.\n\n \n To attempt to upgrade your Drupal 7 module's code to modern Drupal automatically,\n\n run the following inside the modern Drupal root directory:\n\n \n\ndrush dmu-upgrade MODULE_NAME\n\n \n\n The script will output a few lines as it attempts various conversions. Go into your modules/MODULE_NAME directory and check out all of your new YAML files and such. ;)\n \n \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2014-02-14",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

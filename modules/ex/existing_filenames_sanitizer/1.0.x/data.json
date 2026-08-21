@@ -36,5 +36,13 @@
     "drush",
     "files",
     "cleanup"
-  ]
+  ],
+  "project_description": "This module provides a Drush command to sanitize existing filenames in your Drupal site. It's especially useful if you enable Drupal core’s filename sanitization but have legacy files uploaded before that setting was active. \n\n Features include: \n\n \n Bulk sanitization of permanent file entities \n Dry-run mode for safe previews \n Configurable sanitization options (e.g., transliteration, lowercase, whitespace handling) \n Conflict detection to avoid overwriting \n Graceful handling of temporary or missing files \n Progress tracking and detailed logging \n \n Ideal for maintaining consistent, safe filenames across your file system, especially in multilingual or legacy environments.\n\n Requirements: \n\n \n Drupal 10 or 11 \n Drush 10+ \n File module enabled",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-06-29",
+  "project_changed": "2026-08-11",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

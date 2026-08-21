@@ -48,5 +48,13 @@
     "creator_wizard",
     "views argument",
     "group_id_depth"
-  ]
+  ],
+  "project_description": "Subgroup Modules \n There are two options for creating Subgroups:\n\n \n Subgroup (Graph) ggroup \n \nUses a Graph model to calculate relationships between groups.\n\nHas more flexibility in including poly-trees, however graph enumeration requires more processing.\n \n Subgroup (Tree) subgroup \n \nUses a Forest of Rooted Trees model to calculate relationships between groups.\n\nConfiguration limits that a Group Type has a fixed position in tree.\n\nRooted tree enumeration is simpler than graph enumeration (quicker/less processing)\n \n \n Read more about Graph Theory on Wikipedia \n\n Subgroup (Graph) 2.0 \n This version is based on Group 2.0, which provides upgrade path.\n\nGroupContentEnabler plugin was replace with GroupRelationship plugin.\n\nThe rest of the module works as before.\n\n Subgroup (Graph) 3.0 \n This version is based on Group 3.0, in this version the plugin id is changed subgroup to ggroup to avoid conflicts with other modules.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-08-04",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -38,5 +38,13 @@
     "restriction",
     "access",
     "geoblock"
-  ]
+  ],
+  "project_description": "This module ensures that designated website pages cannot be accessed or viewed from specific geographic locations, using geolocation country code provided by a customizable request header. The header name can be configured in the module settings, enabling compatibility with diverse environments and setups.\n\n Key Features \n\n Page-level Geofencing: \n\nEnable geofencing restrictions on an individual page or for a page and its sub-pages (sub-paths).\n\n Configurable Request Header:\n\n Admins can specify the exact header name (e.g., HTTP_CF_IPCOUNTRY, X-Country-Code, etc.) that contains the relevant geolocation data.\n\n Granular Restriction:\n\n Allow or deny access based on selected countries/regions derived from the configurable request header.\n\n Logging of Changes:\n\n Time-stamped logs for all restriction configuration changes, including enabling/disabling, scope, affected countries, restriction type, and legal reasoning.\n\n Default Behavior:\n\n No geofencing by default; restrictions must be explicitly configured per page.\n\n Legal Compliance:\n\n Requires justification for any restriction applied for documentation purposes.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-10-27",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

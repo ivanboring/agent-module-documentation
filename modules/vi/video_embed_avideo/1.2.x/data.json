@@ -35,5 +35,13 @@
     "embed",
     "video embed field",
     "media"
-  ]
+  ],
+  "project_description": "This module provides AVideo handler for Video Embed Field .\n\n AVideo is a versatile and advanced video streaming platform tailored for individual content creators, businesses, and developers alike. This allows you to operate a data-sovereign video platform yourself. AVideo is distributed under Json License .\n\n Users can add AVideo videos to their site by pasting the video URL into a video embed field.\n\n Install module \n Install module via composer and enable it e.g. via drush. After enabling you have to adjust URL and name of your AVideo server on /admin/config/media/avideo .\n\n Additional Requirements \n Video Embed Field \n\n \n Back to top \n\n Using AVideo without deprecated video_embed_field \n For using AVideo with Core Media and without deprecated video_embed_field module you can use oembed_providers . After installing do these steps:\n\n Create a custom provider \n Lets assume the url is https://video.example.org and the name is Example Video Portal .\n\n Provider name: Example Video Portal (must be the same as the name of your AVideo portal!)\n\n Provider URL: https://video.example.org \n\n Endpoint schemes:\n\n \n\nhttps://video.example.org/channel/*/videoEmbed/*/*\n\nhttps://video.example.org/channel/*/videoEmbed/*\n\nhttps://video.example.org/videoEmbed/*/*\n\nhttps://video.example.org/videoEmbed/*\n\nhttps://video.example.org/vEmbed/*/*\n\nhttps://video.example.org/vEmbed/*\n\n \n\n Endpoint URL: https://video.example.org/oembed/ \n\n Discovery: disabled\n\n Available formats: json \n\n Create Provider Buckets \n To generate a media source you have to create a \"Provider Bucket\". Just add a new bucket, choose your name and select your new created provider ( Example Video Portal ).\n\n Create Media Entity \n Now you can create a new media entity and choose your created bucket as media source.\n\n Supporting this Module \n This module was developed for the German Environment Agency (Umweltbundesamt, UBA).\n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-03-09",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

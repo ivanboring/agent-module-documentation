@@ -39,5 +39,13 @@
     "export",
     "drush",
     "codegen"
-  ]
+  ],
+  "project_description": "GraphQL Export \n GraphQL Export enables exporting your GraphQL schemas and introspection data to files.\n\n An example usage: You have Drupal and a detached frontend in a monorepo. You can use this module to export the full schema to the frontend application on config export for usage by frontend tooling. \n\n This module enables: \n Web UI \n This module will expose a simple interface at /admin/config/graphql/servers/manage/SERVER_MACHINE_ID_HERE/export where you can see and manually export the schema.\n\n Exporting with Drush \n To enable drush exporting, optionally add the following to your settings.php :\n\n <?php\n\n$settings['graphql_export'] = [\n\n 'SERVER_MACHINE_ID_HERE' => [\n\n 'graphqls' => '../path/to/save/schema.graphqls',\n\n 'json' => '../path/to/save/schema.json',\n\n ],\n\n];\n\n?>\n\n Run drush config:export to export your files.\n\n You can change the file paths to whatever you like, as long as the path is writable by Drupal when exporting your config.\n\n GraphQL 3.x support \n Use the 8.x-1x branch. This version is not actively maintained. It only has drush integration, and there is slight differences in the settings required. View branch README for more info.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-10-30",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

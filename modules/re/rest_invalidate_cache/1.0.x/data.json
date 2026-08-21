@@ -35,5 +35,13 @@
     "invalidate",
     "tags",
     "performance"
-  ]
+  ],
+  "project_description": "This modules adds a simple REST endpoint that invalidates specific cache tags.\n\n It can be useful if you need to invalidate cache tags from an external service.\n\n To use it:\n\n \n Install this module and restui . \n Browse to /admin/config/services/rest . \n Enable the Invalidate cache resource and add an authentication method. \n You can then send a POST request to /invalidate_cache/[comma separated cache tags] to invalidate these cache tags.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2022-11-16",
+  "project_changed": "2026-07-14",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

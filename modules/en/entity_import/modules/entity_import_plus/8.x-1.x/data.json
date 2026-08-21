@@ -34,5 +34,13 @@
     "plus",
     "submodule"
   ],
-  "part_of": "entity_import"
+  "part_of": "entity_import",
+  "project_description": "The entity importer module provides a user interface for site administrators to import various entities. At the moment the module only support CSV files as the source, but due to the plugin type architecture this can easily be expanded to other file formats. There are also plans in the road-map to support other common source types moving forward.\n\n The entity importer module was built on top of the migration API. Importers are able to support migration dependencies within one interface, this allows site administrators to manage all related imports without having to navigate to multiple screens. The module exposes a robust configuration interface, which allows a user to point-and-click to build a simple or complex importer. This includes field mappings and data processing/transformation (migration lookups, entity lookup, string replacement, etc.), which you would expect if you were writing a custom migration using YAML.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-02-05",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

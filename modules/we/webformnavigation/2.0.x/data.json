@@ -47,5 +47,13 @@
     "validation",
     "draft",
     "submission log"
-  ]
+  ],
+  "project_description": "The goal of this module is to provide the ability to navigate forward and backward through a web form using the Webform Progress tracker (aka wizard progress bar) supplied by the webform module on multi-page web forms. It also allows for the ability to bypass validation when the user presses the \"next\" button as they navigate through the form.\n\n Synopsis \n The goal of this module is to provide the ability to navigate forward and backward through a web form using the Webform Progress tracker (aka wizard progress bar) supplied by the webform module on multi-page web forms. It also allows for the ability to bypass validation when the user presses the \"next\" button as they navigate through the form.\n\n Configuration \n \n Enable the module at Administration > Extend. \n Go to your webform's settings page /admin/structure/webform/manage/webform_machine_name/settings and scroll to the \"Third Party Settings\" section. \n To allow for forward navigation, simply check the checkbox labeled \"Allow forward navigation when the wizard progress bar is enabled\" checkbox. \n To allow for bypassing validation when a user presses the \"Next\" button check the \"Prevent validation when the user presses the \"Next Page\" button\" checkbox. \n Insure the navigation progress bar is enabled by visiting /admin/structure/webform/manage/webform_machine_name/settings/form and checking the \"Show wizard progress bar\" checkbox. \n Enable the webform navigation handler in the Emails / Handlers tab: /admin/structure/webform/manage/webform_machine_name/settings/handlers \n \n Credits \n rymcveigh \n\n Dependencies \n \n Webform \n The webform logger module that is built into the webform module. \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-12-09",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

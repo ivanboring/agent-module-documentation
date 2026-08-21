@@ -37,5 +37,13 @@
     "target",
     "import",
     "mapping"
-  ]
+  ],
+  "project_description": "Maps Feeds source values directly into paragraph entity sub-fields, allowing feed imports to create and populate paragraph entities on a host node (or any other entity type) without custom code.\n\n Back to top \n\n REQUIREMENTS\n \n \n Drupal 10.2 or 11 \n feeds (drupal/feeds) \n paragraphs (drupal/paragraphs) \n entity_reference_revisions (drupal/entity_reference_revisions) \n \n Back to top \n\n INSTALLATION\n \n \n Place the module at docroot/modules/custom/paragraph_feeds_target/. \n Enable it: ddev drush en paragraph_feeds_target -y \n Rebuild the cache: ddev drush cr \n \n Back to top \n\n HOW IT WORKS\n \n The module registers a @FeedsTarget plugin (paragraph_field) for every entity_reference_revisions (ERR) field on the target bundle. It scans the allowed paragraph bundles of each ERR field and exposes every sub-field of every bundle as an individual mapping target.\n\n Target IDs follow the pattern:\n\n {host_field} {para_bundle} {para_field}\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-04-20",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10002000,
+  "core_semver_maximum": 12000000
 }

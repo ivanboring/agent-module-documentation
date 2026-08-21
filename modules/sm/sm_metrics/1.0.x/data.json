@@ -35,5 +35,13 @@
     "queue",
     "latency",
     "monitoring"
-  ]
+  ],
+  "project_description": "Records metrics about processing for consumption by others, including:\n\n \n Pre-handle time : the time spent between a message dispatch and when processing begins. Most of the time will be attributed to time spent waiting for a worker to pick up the task. \n Hand time : time spent by the message handle to execute a message. \n \n Notes: stats are always complete, stats will not appear until processing for each message is complete. Metrics use database persistence, so catastrophic connection failures will still cause metrics not be logged, at least until the message is processed. \n\n A UI is also included to display summaries of statistics per transport and message combination. (See screenshots)\n\n The module is ready as soon as its installed, other configuration options are documented in the README .\n\n The Symfony Messenger Monitoring project makes use of SM Metrics to record statistics.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2026-06-04",
+  "project_changed": "2026-07-28",
+  "core_semver_minimum": 11003000,
+  "core_semver_maximum": 12000000
 }

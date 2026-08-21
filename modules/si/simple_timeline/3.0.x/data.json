@@ -45,5 +45,13 @@
     "position_items",
     "position_marker",
     "views_view_simple_timeline"
-  ]
+  ],
+  "project_description": "The Simple Timeline module allows the rendering of entities selected by a view on a simple vertical timeline.\n\n This plugin has been ported to drupal from the wordpress posts timeline plugin.\n\n Usage: \n\n \n Download and enable this module. \n Create / Edit a view. \n In the 'Format' section, set the 'Format' as 'Simple Timeline'. \n Also in the 'Format' section, set the 'Show' as 'Simple Timeline Item'. \n Configure the fields that should be shown in the title and body. \n Configure any other parameters you may need and save the view. \n You can also use Node-view or the Panel-fields as row plugins with the simple timeline Plugin. \n \n A tutorial to the D7 version. \n\n Tutorial \n Hans has been kind enough to create a tutorial for this module .\n\n Configuration \n Create a new view and choose the style plugin Simple Timeline. Settings provided by the views style plugin timeline are :\n\n Position of rows\n\nyou can set the position of rows related to the timeline : on the left, on the right or alternated.\n\nPosition of the marker\n\nYou can set the marker's vertical position : top, center or bottom of each row\n\n Customization \n To customize the timeline and marker look, you can override some simple css rules in your theme.\n\n For example.\n\n The timeline color\n\n ul.timeline-list:after {\n\n background-color: #555555;\n\n} \n\nAnd the marker color\n\n ul.timeline-list li.timeline-item .timeline-item-wrapper span.timeline-marker {\n\n background: #fff;\n\n border: 3px solid #555555;\n\n border-radius: 0;\n\n} \n\n You can choose to display rows with fields and customize each field as you want with standard options provided by Views, more powerful and flexibles. Or you can choose to display row as entities rendered (by selecting Content for the Show option).\n\n Alternatives \n Timeline Block \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2013-12-28",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 13000000
 }

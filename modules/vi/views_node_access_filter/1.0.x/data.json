@@ -42,5 +42,13 @@
     "hook_node_grants",
     "admin content",
     "editor UX"
-  ]
+  ],
+  "project_description": "This module provides a Views filter to only show the nodes that the current user is allowed to edit. This is typically useful as an UX improvement for editors on the /admin/content page.\n\n Note: because of the way core deals with node access (for performance reasons), this module may not take into account some node access modules which change the update access without updating the node access registry.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-02-28",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

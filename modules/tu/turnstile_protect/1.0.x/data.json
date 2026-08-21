@@ -39,5 +39,13 @@
     "challenge",
     "cloudflare",
     "rate limit"
-  ]
+  ],
+  "project_description": "Put your site routes behind a Cloudflare Turnstile.\n\n Features \n Add a Cloudflare Turnstile challenge in front of specific routes/paths on your site to help protect them from being hit with distributed bot traffic.\n\n \n Choose which IP(s) should never be challenged \n Specify which bots to never challenge \n Choose to only challenge when site visitors have an IP within a range that is sending excessive traffic to your site \n \n Post-Installation \n \n Follow the turnstile module install instructions \n Configure which route(s) to protect in this module's settings at /admin/config/people/captcha/turnstile-protect \n If you want to exclude IPs from being protected, configure them in the captcha IP settings on your site at /admin/config/people/captcha \n \n Additional Requirements \n \n Turnstile \n Captcha \n \n Similar projects \n \n turnstile - which protects forms, but this module protects the entire site from aggressive bots (using that module's turnstile CAPTCHA integration). \n If you use traefik, you can enable this same functionality using the captcha protect traefik plugin , which will likely result in faster response times. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-10-18",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

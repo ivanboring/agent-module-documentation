@@ -37,5 +37,13 @@
     "cache",
     "async",
     "invalidation"
-  ]
+  ],
+  "project_description": "Integrates Purge with Symfony Messenger. allowing for efficient off-thread realtime Purge dispatches.\n\n The module replaces Purge 's built-in queue (normally database or memory) with Symfony Messenger , enabling invalidations to be dispatched asynchronously (e.g. to Redis/RabbitMQ/SQS) with deduplication and configurable delays. Workers consuming the Messenger queue then execute the actual purge calls, decoupling cache invalidation from HTTP request threads.\n\n Back to top \n\n Installation \n \n Install and configure Purge , Symfony Messenger , and Purge Messenger . \n Navigate to admin/config/development/performance/purge and select Change engine under the Queue dropdown. \n Select Messenger and save. \n New invalidations will now be intercepted via Symfony Messenger. \n The now-redundant Purge command ( drush p:queue-work ) can be disabled. \n \n Back to top \n\n Configuration \n Optional configuration is available:\n\n \n Set purge_messenger.delay to delay message delivery \n Set purge_messenger.immediate to buffer invalidations and send them in a batch after the HTTP response is sent. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2026-03-17",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10005000,
+  "core_semver_maximum": 12000000
 }

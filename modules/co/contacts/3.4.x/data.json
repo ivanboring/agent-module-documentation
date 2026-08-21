@@ -59,5 +59,13 @@
     "individual",
     "organisation",
     "search api"
-  ]
+  ],
+  "project_description": "What is Contacts \n We are working on the Decoupled User Authentication ( http://drupal.org/project/decoupled_auth ) in Drupal 8 and this module will provide CRM support in Drupal.\n\n How to install \n Because we are currently relying on some core and contrib patches, you will need to either manually patch some of our dependencies or use composer with the composer patches project. It is recommended to use drupal-composer/drupal-project \n\n You can add Contacts to your project with the following commands:\n\n \n\n# Enable patches declared by dependencies.\n\ncomposer config extra.enable-patching true \n\n composer require drupal/contacts\n\ndrush en contacts\n\n How to get involved \n We are still actively developing, so if you want to get involved:\n\n https://drive.google.com/folderview?id=0B75147wXh1SWUW1YZjU2a0hTV2M&usp… \n\n https://gitlab.com/freelygive/drupal/contacts \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2015-11-27",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8009000,
+  "core_semver_maximum": 12000000
 }

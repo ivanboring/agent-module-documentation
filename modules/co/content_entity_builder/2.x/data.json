@@ -33,5 +33,13 @@
     "ui",
     "code generation",
     "entity"
-  ]
+  ],
+  "project_description": "Always Clear the cache if you have problem with this module. \n Content Entity Builder, this module allow you build a content entity type and add base field to it by config.It also support export you content entity to module code and download it.\n\n Features: \n Bundles，revision, translatable, Owner are supported since beta14, both of them are optional.We add a Mode option for custom entity type since beta14, it has 4 options:\n\n \n Basic : the original way , One entity One table, keep your database table clean. \n Basic Plus : Basic + bundles support. \n Advanced : + bundles + translatable + Owner + Changed + Published \n Full : a custom content type like node, Advanced + revision. \n \n How to use it \n \n Add a content entity type at admin/structure/content-types, for example \"author\", select mode \"Basic\", \n at admin/structure/content-types/manage/author, add base field to it, for example \"Name\", \"Age\", \"Description\" \n config entity type settings, include entity keys, entity paths. Make sure you know what you do. \n Click Save button! It will sync your config with database table \n If you select other mode option, you could see a \"Bundles\" tab, Click it you could manage the bundles of the entity type. \n Manage form display at admin/structure/content-types/manage/author/form-display, manage display at admin/structure/content-types/manage/author/display \n Add content at \"/author/add\", the path you could config \n Config entity permission at admin/people/permissions \n Click export tab, you could navigate to admin/structure/content-types/export,at here you could export your content entities to module code. It save you a lot time to create a custom content entity module. \n \n Similar modules: \n ECK \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-05-05",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 13000000
 }

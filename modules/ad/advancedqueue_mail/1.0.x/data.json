@@ -37,5 +37,13 @@
     "notification",
     "queue",
     "email"
-  ]
+  ],
+  "project_description": "Back to top \n\n Description \n This module sends email notifications when Advanced Queue jobs complete, fail, or are scheduled for retry. For example, notify website administrators when queue processing fails for an item after multiple retries.\n\n Back to top \n\n Features \n \n Configurable notifications for job success, retry, and failure events \n Simple admin interface integrated with Advanced Queue settings \n Customizable email subject and body with placeholder support \n Works with Drupal core's mail system out of the box \n Optional Mailer Plus integration for advanced email features \n \n Back to top \n\n Requirements \n \n Drupal 10.2+ or Drupal 11 \n Advanced Queue 1.6+ \n Optional: Mailer Plus \n \n Back to top \n\n Configuration \n After installation, navigate to Administration > Configuration > System > Queues > Mail Notifications to configure email notifications for each event type.\n\n For each event (success, retry, failure), you can configure:\n\n \n Whether to enable notifications \n Recipient email addresses \n Email subject and body with placeholders like [job_id] , [job_type] , [queue_id] , and [message] \n \n Back to top \n\n Mailer Plus (DSM+) Integration (previously Symfony Mailer) \n For advanced email features like HTML templates, attachments, and policy-based configuration, enable the included Advanced Queue Mailer Plus submodule. This replaces the core mail implementation with Mailer Plus (previously known as Symfony Mailer), allowing you to configure emails through Mailer Plus's policy system.\n\n Back to top \n\n Upgrading from Previous Versions (pre 1.0.0) \n If you were previously using this module with Mailer Plus, the update process will automatically enable the Mailer Plus submodule to maintain your existing configuration.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-09-29",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9004000,
+  "core_semver_maximum": 12000000
 }

@@ -38,5 +38,13 @@
     "middleware",
     "api",
     "performance"
-  ]
+  ],
+  "project_description": "Provides a Drupal cache backend for Kevinrob/guzzle-cache-middleware .\n\n Usage \n <?php\n\nuse GuzzleHttp\\Client;\n\nuse GuzzleHttp\\HandlerStack;\n\nuse Kevinrob\\GuzzleCache\\CacheMiddleware;\n\nuse Kevinrob\\GuzzleCache\\Strategy\\PrivateCacheStrategy;\n\nuse Drupal\\guzzle_cache\\DrupalGuzzleCache;\n\n // Create default HandlerStack\n\n$stack = HandlerStack::create();\n\n // Create a Drupal Guzzle cache. Its' useful to have a separate cache bin to\n\n// manage independent of other cache bins. Here is how you might define such a\n\n// cache bin in a *.service.yml file:\n\n// cache.my_custom_http_cache_bin:\n\n// class: Drupal\\Core\\Cache\\CacheBackendInterface\n\n// tags:\n\n// - { name: cache.bin }\n\n// factory: cache_factory:get\n\n// arguments: [my_custom_http_cache_bin]\n\n$cache = new DrupalGuzzleCache(\\Drupal::service('cache.my_custom_http_cache_bin'));\n\n // Push the cache to the stack.\n\n$stack->push(\n\n new CacheMiddleware(\n\n new PrivateCacheStrategy($cache)\n\n ),\n\n 'cache'\n\n);\n\n // Initialize the client with the handler option\n\n$client = new Client(['handler' => $stack]);\n\n // Fetch the URI cached if available.\n\n$response = $client->request('GET', ' http://www.example.com/ ');\n\n?>",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-10-31",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

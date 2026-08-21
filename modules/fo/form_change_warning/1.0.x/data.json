@@ -33,5 +33,13 @@
     "unsaved",
     "changes",
     "ux"
-  ]
+  ],
+  "project_description": "You can display the \"You have unsaved changes\" warning on a form when any input has been changed.\n\n \n\n Just attach the defined library to your form.\n\n <?php\n\n/**\n\n * Implements hook_form_alter().\n\n */\n\nfunction YOURMODULE_form_alter(&$form, FormStateInterface $form_state, $form_id) {\n\n $form['#attached']['library'][] = 'form_change_warning/form_change_warning';\n\n}\n\n?>\n\n Similar modules \n Confirm Leave",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-01-10",
+  "project_changed": "2026-07-21",
+  "core_semver_minimum": 10003000,
+  "core_semver_maximum": 12000000
 }

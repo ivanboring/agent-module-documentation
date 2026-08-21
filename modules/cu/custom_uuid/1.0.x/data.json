@@ -36,5 +36,13 @@
     "media",
     "config reference",
     "identifier"
-  ]
+  ],
+  "project_description": "Create content block/custom block and media with custom UUID.\n\n The Custom UUID modules allows the users to add the custom UUID for Block Content and Media Entity as of now. This would be useful for developers and site builders to create a block/media with the mentioned UUID in configuration. This module introduces a new field Custom UUID to add the custom UUID. Leave it empty if don't want a custom UUID, it will create entity with default Drupal UUID.\n\n Features \n This module allows to create the entity(block and media) with UUID in the correct format. It would be useful will pushing configuration to other instance which has UUID of entity which acts as content i.e,. Block and Media.\n\n Post-Installation \n No fancy things, the new UUID field will be visible to user on new block/media creation page.\n\n Additional Requirements \n No special requirements. As this module alters the Media and Block form, those are required.\n\n Similar projects \n Recreate Block Content will create recreate a block of specified UUID with dummy content of specified block type in the configuration on cache clear.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-01-18",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9005000,
+  "core_semver_maximum": 11000000
 }

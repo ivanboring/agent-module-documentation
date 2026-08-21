@@ -33,5 +33,13 @@
     "file",
     "dblog",
     "logs"
-  ]
+  ],
+  "project_description": "The module gives ability to use Watchdog File as a storage for logs, this is different from internal Syslog module in the sense that it can be any file you specify and it doesn't require syslog.\n\n This is useful in context of logging to an external file and mirroring logs to external logging platform like Logstash or Sumologic. You can share the file in a mounted docker volume and have a sidecar logging container read it and mirror it in realtime.\n\n The module originally is a port of D7 sandbox: https://www.drupal.org/sandbox/kpander/1986402 \n\n Want to support the development of this project? \n Buy me a coffee ☕️",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-04-26",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

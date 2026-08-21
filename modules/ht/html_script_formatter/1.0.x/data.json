@@ -1,7 +1,7 @@
 {
   "name": "HTML Script Formatter",
   "data_name": "html_script_formatter",
-  "description": "A field formatter that outputs the raw field value UNESCAPED (renders HTML/JS). SECURITY: stored-XSS-by-design \u2014 only for fully-trusted fields.",
+  "description": "A field formatter that outputs the raw field value UNESCAPED (renders HTML/JS). SECURITY: stored-XSS-by-design — only for fully-trusted fields.",
   "version": "1.0.x",
   "package": "Field Formatter",
   "composer_namespace": "drupal/html_script_formatter",
@@ -35,5 +35,13 @@
     "formatter",
     "raw",
     "xss"
-  ]
+  ],
+  "project_description": "INTRODUCTION \n\nThis module will add field formatter on every field type and profile type in manage display section where user can change the field format\n\n REQUIREMENTS \n\n -No any special requirements.\n\n INSTALLATION \n\nInstall via /admin/modules\n\ndrush en html_script_formatter -y\n\ncomposer require drupal/html_script_formatter\n\n MAINTAINERS\n\nCurrent maintainers:\n\n Radheshyam Kumawat - https://www.drupal.org/u/radheymkumar",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2021-05-31",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

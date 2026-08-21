@@ -35,5 +35,13 @@
     "ckeditor",
     "field",
     "formatter"
-  ]
+  ],
+  "project_description": "Back to top \n\n Overview \n Custom TOC provides a field type that stores editable Table of Contents markup. The CKEditor widget can generate a starter TOC from a chosen source field and lets editors refine link text per page. The formatter renders the saved TOC so the published page matches the stored field value.\n\n Back to top \n\n Features \n \n Generate a TOC from headings and edit link text per node. \n Keep TOC output stable across view modes. \n Handle missing or removed fields safely. \n \n Back to top \n\n Requirements \n \n Drupal core 10 or 11. \n toc_api module enabled. \n \n Back to top \n\n Installation \n \n Enable the module. \n Add the \"TOC (CKEditor)\" field to a content type. \n Select a formatted text source field (text processing enabled). \n \n Back to top \n\n Configuration \n \n Choose the source field for heading extraction. \n Set allowed text formats and a default format. \n Configure toc_api \"TOC type\" settings for headings and template. \n \n Back to top \n\n Usage \n \n Create or edit content with headings in the source field. \n Click \"Regenerate TOC\" to build the initial markup. \n Optionally edit the TOC HTML, then save the node. \n \n Back to top \n\n Notes \n \n Avoid enabling toc_api_example to prevent heading id changes on view. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-01-15",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

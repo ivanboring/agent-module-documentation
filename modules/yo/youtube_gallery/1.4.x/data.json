@@ -49,5 +49,13 @@
     "oauth",
     "upload video",
     "drush ytg:libraries"
-  ]
+  ],
+  "project_description": "This module allows retrieving youtube channel videos on the website.\n\n It will helpful module for those who want to integrate own youtube channel videos to the website in less time.\n\n This module very useful for News Channel, Educational, Entertainment, Social, etc. because they upload videos to youtube on daily basis. You can easily integrate youtube with the website.\n\n No need to upload videos to the server, directly upload videos to youtube channel and retrieve to the website with the using of this module.\n\n Requirements \n\n Go to from Google Developers Console click on Youtube Data API and get new api key.\n\n Installation \n composer require drupal/youtube_gallery:'^1.3' \n\n drush ytg:libraries \n\n Configuration \n \n Visit https://console.cloud.google.com/ , log in with the account that owns your youtube channel and configure youtube api , get the (google api key) and then get your Youtube channel ID from your youtube channel. \n visit /admin/config/youtube_gallery/manage \n Enter your Google API key \n Enter your Youtube Channel ID \n Enter the number of videos \n Save the form. \n Add the youtube block either via the /admin/structure/block or some other means and configure the visibility. \n That's it, visit the page(s) with the block and your channel videos will be there. \n See the README.md for more details. \n \n README.md Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-05-17",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

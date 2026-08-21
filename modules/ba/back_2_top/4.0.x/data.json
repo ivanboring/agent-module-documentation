@@ -35,5 +35,13 @@
     "javascript",
     "navigation",
     "accessibility"
-  ]
+  ],
+  "project_description": "This module creates a back-to-top button on the bottom-right corner of your website. The button will initially be invisible, but once the viewer scrolls down the button will appear. The webpage will scroll back up slowly once the button is clicked. This comes in handy especially when you have a very long webpage, to keep users from doing the tedious task of having to scroll all the way back up using their mouse scroll button.\n\n What this module does is it adds a new div to your website with an i.d. of 'toTop'. You can add custom styling to the button by accessing #toTop in your CSS stylesheet. To customize it you may need to add an '!important' rule (without quoutes) next to your CSS attribute to override the modules default theme. For example, to change the button's color you need to create a new color rule for the #toTop i.d. in your templates css stylesheet, then add\n\n'!important' at the end to make sure it overrides all other CSS rules.\n\n REQUIREMENTS \n\n No special requirements.\n\n INSTALLATION \n\n Install as you would normally install a contributed Drupal module.\n\nSee: https://www.drupal.org/node/895232 for further information.\n\n CONFIGURATION \n\n \n Navigate to the 'Block layout' page of your theme. \n Place the 'Back-to-Top' block in the lowest region of your template, which is usually the Footer region. \n \n MAINTAINER/S \n\n \n Joseph Bernadas (jbernadas) - https://www.drupal.org/u/jbernadas",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2020-01-09",
+  "project_changed": "2026-08-04",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

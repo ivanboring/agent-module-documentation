@@ -37,5 +37,13 @@
     "text message",
     "india",
     "bulk sms"
-  ]
+  ],
+  "project_description": "This module provides integration between Fast2sms and SMS Framework .\n\n Maintainers of this module are not affiliated with the Fast2sms Group.\n\n There are no external dependencies or special requirements, it's simple installation and configuration has only adding api key from Fast2sms.\n\n Drupal 7\n\n \n\n$mobile_number = 'YOUR NUMBER';\n\n$sms_template = 'This is test Message.';\n\n// You need to have fast2sms as default as send it in options\n\n$email_send = sms_send($mobile_number, $sms_template);\n\n \n\n Drupal 8 & 9\n\n $sms_service = \\Drupal::service('sms.provider');\n\n// Next two lines are optional\n\n$gateway = \\Drupal\\sms\\Entity\\SmsGateway::load('fast2sms'); // Name of your gateway you give in config.\n\n$gateway->setSkipQueue(1);\n\n$sms = (new \\Drupal\\sms\\Message\\SmsMessage())\n\n ->setMessage('This is a test message') // Set the message.\n\n ->addRecipient('YOUR NUMBER') // Set recipient phone number\n\n ->setGateway($gateway) // This is optional\n\n ->setDirection(\\Drupal\\sms\\Direction::OUTGOING);\n\ntry {\n\n $sms_service->queue($sms);\n\n}\n\ncatch (\\Drupal\\sms\\Exception\\RecipientRouteException $e) {\n\n // Thrown if no gateway could be determined for the message.\n\n}\n\ncatch (\\Exception $e) {\n\n // Other exceptions can be thrown.\n\n}",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-05-23",
+  "project_changed": "2026-07-28",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -35,5 +35,13 @@
     "source",
     "fileset",
     "migration"
-  ]
+  ],
+  "project_description": "Allows a set of YAML files to be used as a source for migrations. Each file represents a row for migration.\n\n In my_migrate_module/migrations/pages.yml: \n\n \n\nid: pages\n\nsource:\n\n plugin: yaml_fileset\n\n path: 'modules/custom/my_migrate_module/content/pages'\n\n ids:\n\n id:\n\n type: string\n\nprocess:\n\n title: title\n\n body/value: body\n\n body/format:\n\n plugin: default_value\n\n default_value: plain_text\n\n source: body_format\n\ndestination:\n\n plugin: 'entity:node'\n\n default_bundle: page",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-08-30",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

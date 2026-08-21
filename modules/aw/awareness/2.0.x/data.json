@@ -35,5 +35,13 @@
     "interfaces",
     "api",
     "library"
-  ]
+  ],
+  "project_description": "Provides traits and improve DX for commonly-used services.\n\n See the code to see which services are supported.\n\n Example: Add the entity type manager to a service \n\n <?php\n\n namespace Drupal\\my_module;\n\n use Drupal\\awareness\\Entity\\EntityTypeManagerAwareTrait\n\n /**\n\n * My service.\n\n */\n\nclass MyService {\n\n use EntityTypeManagerAwareTrait;\n\n // Custom code can call $this->getEntityTypeManager() to utilize the service.\n\n }\n\n ?>\n\n Creating awareness for custom services \n\n This module provides a Drush code generator to create awareness traits. If your module provides service, run the following to create traits for your services:\n\n drush gen awareness:trait \n\n Creating awareness for core services \n\n A good bit of the commonly-used core services are provided by the traits included in this module. If you come across a core service that is not supported, please open an issue and/or a merge request to add a trait for the service.\n\n Creating awareness for contrib services \n\n This module is not intending to provide awareness for services from other contrib modules--that's their job. If there is a very widely used module that won't provide awareness of its services, we can discuss adding a submodule to this project to provide awareness.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-11-05",
+  "project_changed": "2026-08-14",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

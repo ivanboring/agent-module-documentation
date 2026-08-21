@@ -35,5 +35,13 @@
     "wysiwyg",
     "editor",
     "fix"
-  ]
+  ],
+  "project_description": "CKEditor5 Label Fix \n Following lessons learned developing CKEditor5 Table Fix .\n\n A lightweight plugin that restores HTML label markup support (like for example:\n\n CKEditor 4 accepted this: \n \n\n \n \n\n You hold a federal wine licence issued by the Canada Revenue Agency (CRA) under section 14 of the Excise Act, 2001 , valid at the time you apply to the program and up to or after March 31, 2026\n\n \n \n \n \n\n CKEditor 5 without the ckeditor5_label_fix plugin turns the above into this (SURPRISE!) : \n \n\n \n \n\n You hold a federal wine licence issued by the Canada Revenue Agency (CRA) under \n\n section 14 of the  \n\n Excise Act, 2001 \n\n, valid at the time you apply to the program and up to or after March 31, 2026\n \n \n \n\n Features \n ckeditor5_label_fix is especially useful after upgrading from CKEditor4.\n\n \n With the ckeditor5_label_fix plugin the markup now renders as follows: \n \n \n \n\n \n \n You hold a federal wine licence issued by the Canada Revenue Agency (CRA) under section 14 of the  Excise Act, 2001 , valid at the time you apply to the program and up to or after March 31, 2026 \n \n \n \n\n \n Provides a faux CKEditor button for easy enablement \n Works with Drupal 10/11 and any text format using CKEditor5 \n Designed for upgraded sites coming from CKEditor4 that need legacy label markup preserved \n \n Use cases: \n\n \n Government and enterprise sites with legacy or semantic label markup \n WCAG-compliant label elements \n Any site where CKEditor 5 strips valid label structure and formatting \n \n Post-Installation \n \n Enable the CKEditor5 Label Fix plugin on the same text format. Look for the “Label Fix Dummy” button and add it to the toolbar. \n Save your text format — the plugin is now active. \n \n No visible button will appear in the CKEditor UI, but the plugin will be loaded silently in the background to preserve your full label markup.\n\n Additional Requirements \n None. This module only requires Drupal core CKEditor 5 support and does not depend on contrib modules.\n\n Related projects \n \n CKEditor5 Sup Fix \n CKEditor5 Table Fix \n CKEditor5 Definition List Fix",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-06-06",
+  "project_changed": "2026-08-13",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 13000000
 }

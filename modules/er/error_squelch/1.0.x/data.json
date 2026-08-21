@@ -33,5 +33,13 @@
     "messages",
     "squelch",
     "noise"
-  ]
+  ],
+  "project_description": "Suppresses Drupal status, warning, and error messages whose text matches configured patterns. Useful for hiding persistent test-mode notices, CI/CD log noise, and chatty third-party module warnings that clutter screenshots, training videos, and on-call dashboards.\n\n What it does \n Filters $variables['message_list'] at hook_preprocess_status_messages() against an admin-configured list of patterns (substring or PHP regex). Matched messages are removed before the status messages template renders. Suppression is purely cosmetic; the underlying cause of any message is not addressed.\n\n Key features \n \n Substring match (case-insensitive, default) or PHP regex with delimiters \n Optional logging of suppressed messages to the error_squelch channel for audit trails \n Drush commands for managing patterns from the CLI: drush error-squelch:list / add / remove (aliases esl / esa / esrm ) \n Test mode injects a known status message visible only to users with the Administer Error Squelch permission, so operators can verify the filter is working before deploying patterns to production \n Modern Drupal patterns: OO hooks via #[Hook] , #config_target throughout the form, Drush 12+ command layout \n \n When to use it \n Reduce noise from known-benign messages while a proper fix is pending: a payment gateway's hardcoded \"running in test mode\" notice, missing-file warnings during an in-progress media sync, chatty contrib modules with unhelpful defaults. Not a substitute for fixing the underlying issue; the suppressed message is gone but the condition that triggered it isn't.\n\n Requirements \n \n Drupal 10.3 or later, or Drupal 11 \n No additional modules required \n Drush 11 or later (optional, only for the CLI commands) \n \n What's next \n Error Squelch is now covered by the Drupal Security Advisory policy.\n\nVulnerability reports go to security@drupal.org ; see\n\n the\n\nDrupal Security Team procedures for the disclosure process. Do not\n\nreport security issues through the public issue queue.\n\n No further behavioural changes are planned for the 1.0.x line; future\n\nwork will track Drupal core compatibility and any reported bugs.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2026-04-20",
+  "project_changed": "2026-08-14",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

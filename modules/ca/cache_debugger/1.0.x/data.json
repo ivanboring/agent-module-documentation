@@ -33,5 +33,13 @@
     "tags",
     "contexts",
     "developer"
-  ]
+  ],
+  "project_description": "The Cache Debugger module offers a straightforward interface to enable or disable render cache debugging for your Drupal site. This feature is particularly useful in development environments where inspecting cache behavior and troubleshooting caching issues are necessary without directly modifying the services.yml file.\n\n To activate render cache debugging, go to the module's configuration page at /admin/config/development/cache-debugger.\n\n Once enabled, debugging output will be appended to each rendered element.\n\n Simply visit any page on your Drupal site, and you will see additional debug information in the HTML output. This information includes cache contexts, tags, and other cache-related metadata for each rendered element.\n\n Enabling the module creates a copy of the default.services.yml file as services.yml and updates it to set debug: true. Disabling the module removes the services.yml file.\n\n Please note that this module is intended for use in development environments only and should never be enabled on production sites due to the significant performance impact of cache debugging.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2024-10-26",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

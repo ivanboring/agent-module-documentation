@@ -42,5 +42,13 @@
     "database size big",
     "NumericItemBase",
     "feeds target"
-  ]
+  ],
+  "project_description": "The default core fields do not include a bigint field. This module allows you to have a true BigInt (19) value. That means the number can contain 19 digits. It IS possible to kind of get a bigInt using either the text or decimal fields that come with Drupal 7 Core fields, but neither of those are TRUE BigInt values. Text values are not even numbers and thus views cannot evaluate them as such, so that option is no good. Another option is the Decimal field, but at the time of this writing its not a viable solution because of a bug. But even without a bug, it still wouldnt really be viable because then the number is a float and not a bigint :D",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2012-11-14",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -21,8 +21,12 @@
   "provides_drush_commands": false,
   "provides_config_schema": false,
   "provides_plugin_types": [],
-  "categories": ["Site structure"],
-  "subcategories": ["Block enhancements"],
+  "categories": [
+    "Site structure"
+  ],
+  "subcategories": [
+    "Block enhancements"
+  ],
   "keywords": [
     "block",
     "block visibility",
@@ -33,5 +37,13 @@
     "negate",
     "wildcard",
     "path matching"
-  ]
+  ],
+  "project_description": "This module adds an exclude pages filter for blocks. \n Maintained by: @jcontreras\n\nSupport the module development at: https://buymeacoffee.com/vati \n\n This module excludes specific pages after the wildcard or between wildcards; simply prefix the path pattern with a '!' in the block page visibility configuration.\n\n Show - or - hide blocks on specific paths \n \n This works for visibility set to \"show for the listed pages\"; in this case, the exclude paths will hide the block on pages that match, despite the wildcard set to show.\n\n Or the other way around, if the page list is set to \"hide for the listed pages,\" the excluded paths will show the block on pages where the pattern matches, despite the wildcard being set to hide.\n\n Basic example where a wildcard is used to display the block on pages under the user path: \n\n    /user/* <-- this will make the block visible on all pages under the path. \n\n But let's say you want to exclude a specific page or another path directory under the path \"/user/?\":\n\n    !/user/jc <-- now you will be able to specifically exclude the \"jc\" page \n\n or/and:\n\n    !/user/jc/* <-- exclude on all pages under \"jc/?\" \n\n ( Drupal 7 - No need for leading slashes on the URL as of Drupal 7 standards )\n\n --- DRUPAL 10 Upgrade --- \n\n Use this on your composer file:\n\n \"drupal/block_exclude_pages\": \"^2.0 || ^2.2\" \n\n Happy Coding!",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-09-27",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

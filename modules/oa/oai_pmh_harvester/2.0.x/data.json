@@ -38,5 +38,13 @@
     "cron",
     "library",
     "records"
-  ]
+  ],
+  "project_description": "Harvest biblios from an OAI-PMH source, like Koha, and cache them in a table, so that we can refer to them from fields.\n\n This module does not provide the FieldType, FieldWidget or FieldFormatter plugins for working with the data.\n\nThat would be the job of a separate module depending on this one.\n\n Back to top \n\n Installing \n Add the module to your Drupal project and enable it.\n\n \n\ncomposer require drupal/oai_pmh_harvester\n\ndrush en oai_pmh_harvester\n\n \n\n Back to top \n\n Using \n \n Navigate to Admin -> Config -> Web services -> OAI-PMH Harvester -> Settings (`admin/config/services/oai_pmh_harvester/settings_form`). \n Enter the URL to your OAI-PMH provider. For a Koha site, this is something like ` https://example.com/cgi-bin/koha/oai.pl ` \n Choose a harvest interval. Since OAI-PMH provides the records in the order that they were added, this will determine roughly how many records we try to harvest per cron run. \n Save configuration \n Make sure cron runs regularly, or run it manually from the Status page (`admin/config/services/oai_pmh_harvester/status_form`). \n A table called `oai_pmh_harvester_bib_records` will now exist in your database, and it will get filled with bibliographic records harvested from your OAI-PMH endpoint. \n Look at the table column comments for further guidance and do with the data what you wish. \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2020-05-25",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 11000000
 }

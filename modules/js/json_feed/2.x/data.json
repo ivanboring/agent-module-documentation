@@ -46,5 +46,13 @@
     "views row",
     "content_html",
     "json_feed"
-  ]
+  ],
+  "project_description": "The JSON Feed format is a pragmatic syndication format, like RSS and Atom, but with one big difference: it’s JSON instead of XML.\n\n \n This module extends Views to provide a feed in the JSON Feed syndication format display plugin.\n\n JSON Feed example feed output:\n\n \n\n{\n\n \"version\": \"https://jsonfeed.org/version/1\",\n\n \"title\": \"My Example Feed\",\n\n \"home_page_url\": \"https://example.org/\",\n\n \"feed_url\": \"https://example.org/feed.json\",\n\n \"items\": [\n\n {\n\n \"id\": \"2\",\n\n \"content_text\": \"This is a second item.\",\n\n \"url\": \"https://example.org/second-item\"\n\n },\n\n {\n\n \"id\": \"1\",\n\n \"content_html\": \"\n \n\n Hello, world!\n\n \",\n\n \"url\": \"https://example.org/initial-post\"\n\n }\n\n ]\n\n}\n\n For details on the JSON Feed format, see the v1 spec .",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-06-02",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 11000000
 }

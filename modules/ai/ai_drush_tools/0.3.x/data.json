@@ -34,5 +34,13 @@
     "upgrade",
     "inspection",
     "developer"
-  ]
+  ],
+  "project_description": "A set of Drush commands for Drupal module upgrade checks, Drupal.org project inspection, and optional AI-assisted analysis.\n\n A set of Drush commands for Drupal module upgrade checks, Drupal.org project inspection, and optional AI-assisted analysis.\n\n Includes:\n\n \n ai:module-check \n ai:module-check-list \n ai:project-info \n ai:setup \n ai:setup:bridge \n \n Descriptions \n\n ai:module-check \n\n \n Checks a Drupal module’s upgrade path to the next major core version \n Resolves core modules from a built-in registry \n Checks contrib modules via Packagist with Drupal.org fallback \n Can add optional AI commentary on migration risk, pitfalls, and next steps \n Tested on D10 to D11 \n \n ai:module-check-list \n\n \n Runs the same module-upgrade analysis for a list of modules \n \n ai:project-info \n\n \n Fetches Drupal.org project health signals such as releases, compatibility, usage by branch, maintainers, issue summaries, and security advisory coverage \n Can add optional AI commentary on maintenance risk and adoption concerns \n \n ai:setup \n\n \n Wizard that configures AI defaults in drush.yml \n Supports LiteLLM, Drupal AI, and host-backed AI CLI workflows \n \n ai:setup:bridge \n\n \n Installs DDEV host bridge helpers so Drush in the container can use host-native AI CLIs such as Claude, Codex, and OpenCode \n \n Unique characteristics \n\n \n Deterministic checks work without AI \n AI is additive, not authoritative \n Supports both API-backed AI and host-native CLI-backed AI for DDEV workflows",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-03-23",
+  "project_changed": "2026-06-22",
+  "core_semver_minimum": 10003000,
+  "core_semver_maximum": 12000000
 }

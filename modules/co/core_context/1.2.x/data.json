@@ -49,5 +49,13 @@
     "page manager",
     "runtime contexts",
     "ContextInterface"
-  ]
+  ],
+  "project_description": "This module exists to create an ability to store contexts for entities, which will be usable by Layout Builder.\n\n It provides no UI or API, and you should not need to install it except as a dependency of another module.\n\n Core Context was written because Panels supported providing arbitrary context values to blocks, but that functionality was not added directly to Layout Builder. This module exists as a shim for that functionality. Context values are either stored in a field (for content entities), or third-party settings (for config entities), but for the time being, they can only be put there programmatically.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-05-04",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

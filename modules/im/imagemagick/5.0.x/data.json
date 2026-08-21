@@ -46,5 +46,13 @@
     "webp",
     "avif",
     "media"
-  ]
+  ],
+  "project_description": "Allows to use ImageMagick or GraphicsMagick as image toolkit for Image API in Drupal. This integration is based on invoking the convert binary through shell access to process images. The Imagick module is an alternative toolkit module that uses the Imagick PHP extension instead.\n\n Requirements \n \n ImageMagick (or GraphicsMagick ) needs to be installed on your server and the convert (or gm ) binary needs to be accessible and executable from PHP. \n If Postscript or PDF support is required, then Ghostscript must also be installed on your server. \n The PHP configuration must allow invocation of proc_open() (which is security-wise identical to exec() ). \n \n Consult your server administrator or hosting provider if you are unsure about these requirements.\n\n Installation \n The module MUST be installed using Composer, see Download contributed modules and themes using Composer .\n\n Require the module via\n\n $ composer require drupal/imagemagick \n\n This will download both the module release appropriate for the Drupal version in use, and any dependency.\n\n Configuration \n \n Go to Administration » Configuration » Media » Image toolkit and change the image toolkit to ImageMagick . \n If the convert binary cannot be found in the default shell path, you need to enter the full path to ImageMagick's convert executable. \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2011-01-30",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

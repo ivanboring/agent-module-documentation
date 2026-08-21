@@ -38,5 +38,13 @@
     "notify",
     "comment",
     "guest"
-  ]
+  ],
+  "project_description": "Overview \n Easily allow anonymous users to post content to your website by adding this field to any entity type and giving the permission to create that entity type or bundle to the anonymous user role. The most typical use-case of this module and the reason why it was initially created is for allowing the creation of forums by unauthenticated users, while requesting their name and email address, and whether they'd like to get notified.\n\n Features \n \n \n Provides an Anonymous Author field type, containing the following values:\n \n Name \n Email \n Get notified \n \n \n \n If the user requested to be notified, an email is sent upon updates of the entity or comments on it, the content of which can be modified using the provided hooks:\n \n hook_anonymous_author_notification_alter \n hook_anonymous_author_notification_TYPE_alter \n \n where TYPE is one of \"update\" or \"comment\".\n \n\n \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-12-07",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

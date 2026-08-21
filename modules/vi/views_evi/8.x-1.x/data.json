@@ -38,5 +38,13 @@
     "context",
     "injection",
     "default value"
-  ]
+  ],
+  "project_description": "This module solves the fundamental and longstanding problem ([#357082] & Itangalos Sandbox ) of views argument filters (=contextual filters): they are far less potent than regular filters.\n\n It does this by allowing to wire argument tokens to exposed filters and optionally hide them. It also allows new use cases, think: use one exposed widget for two filters.\n\n Help needed:\n\n* [#2375869] - Volunteers wanted to extend the handbook pages .\n\n This module allows us to use the values of contextual filters as inputs for exposed filters ... and optionally hide them.\n\n Here's a possible use case for the module:\n\n A value is provided in the URL (this is our contextual filter).\n\nWe can set the exposed filter to have this value.\n\nWe can hide the exposed filter if we wish (always, or depending on whether or not a value is provided).\n\n Update of plugin API \n Developers: If you want to write own plugins, come to [#2634030], as the ViewsEviValueInterface is likely to change.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2014-11-06",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

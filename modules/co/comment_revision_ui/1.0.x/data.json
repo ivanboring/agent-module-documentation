@@ -36,5 +36,13 @@
     "revert",
     "audit",
     "permissions"
-  ]
+  ],
+  "project_description": "This module takes advantage of work in progress Drupal core patches to add a revision UI for comments. Most of the code of this project was taken from the Block Content Revision UI module.\n\n Instructions \n \n Apply the work from [#2880154] as patch to your project to make comment entities revisionable. \n Run database updates \n Apply the work from [#2350939] as patch to your project to include the generic revision UI which is used by this module. \n Assign the appropriate user permissions. See 'Comment Revision UI' section in /admin/people/permissions . \n Export any configuration changes if necessary",
+  "maintenance_status": "Seeking co-maintainer(s)",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2022-10-14",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9001000,
+  "core_semver_maximum": 11000000
 }

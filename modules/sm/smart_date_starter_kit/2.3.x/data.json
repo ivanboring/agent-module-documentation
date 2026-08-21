@@ -39,5 +39,13 @@
     "content type",
     "starter",
     "kit"
-  ]
+  ],
+  "project_description": "This Configuration Kit , soon to be a Recipe , creates an Event content type and a related Events view, with tabs to show upcoming and past events.This module is intended to help you get started using Smart Date . If you need to display your dates in a calendar, you should also consider Smart Date Calendar Kit .\n\n Once installed, this module doesn't really provide any additional functionality, so it can be safely uninstalled right away.\n\n This module has been tested to work with both recent branches of Smart Date.\n\n Note that the Event content type, as created by this module allows unlimited values for the When field, which uses Smart Date to input and display times and dates. This was a deliberate choice so the field could make use of recurring dates, if desired (see instructions below). If you don't want to allow more than one value per node, you should change this setting at /admin/structure/types/manage/event/fields/node.event.field_when/storage before adding any Event content.\n\n Back to top \n\n Installation \n If using composer and drush, installation is as simple as running composer require drupal/smart_date_starter_kit \n\nand then drush en smart_date_starter_kit -y . This will download and install all the necessary modules, and provide an Events content type and related view with two displays, related together via tab navigation.\n\n Back to top \n\n Recurring Events \n Recurring events (available in Smart Date since 8.x-2.0) are not enabled by default, but the overall configuration has been built to support them. If recurring dates are required, enable the Smart Date Recur module and then go to /admin/structure/types/manage/event/fields/node.event.field_when in your site to enable recurring values for the field.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-02-15",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

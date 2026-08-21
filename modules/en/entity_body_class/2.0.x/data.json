@@ -33,5 +33,13 @@
     "theming",
     "entity",
     "classes"
-  ]
+  ],
+  "project_description": "Provides a new \"Body CSS class(es)\" field for all entity types. The value of the field will be added as a class for the body tag on the entity page.\n\n Entity types: \n The module supports all entity types that have canonical routes. e.g. Node, Taxonomy term, User, Comment, Media, etc.\n\n Permissions: \n You can configure who can see the field on the form by managing the Manage body class fields permission.\n\nYou can configure who can add default values on the /admin/config/content/body-class-settings page by managing the Manage body class settings permission.\n\n Form display: \n The module adds a base field that can be hidden by moving it to the disabled region on the manage form display page.\n\nThere is a validation callback for the field to filter values against XSS. The field also supports tokens.\n\n Maintainers: \n This project is originally written by AstonVictor .\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-02-16",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

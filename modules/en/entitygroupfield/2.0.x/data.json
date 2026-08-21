@@ -46,5 +46,13 @@
     "membership",
     "gnode",
     "entity reference selection"
-  ]
+  ],
+  "project_description": "Entity Group Field provides a computed field that can be configured on any entity types that are associated with Groups , allowing users with sufficient permissions to view group associations directly while viewing entities and to manage group associations while editing entities.\n\n For example, it can be used on 'user' entities to manage group memberships while editing a user's profile, or to manage what groups a given node is associated with while editing the node. Without this, you have to go to the group page(s) to associate entities with groups.\n\n This is a replacement for the gcontent_field submodule from the patch at [#2813405]. It now lives here as a standalone project with a new name, and includes many improvements (both in the UI and the code), test coverage, and more. There's no migration path. Sites that used the legacy gcontent_field module will have to uninstall it manually, install entitygroupfield , and then reconfigure all the view and form modes where the computed field should appear.\n\n More documentation can be found in the README.md .\n\n The 1.0.x branch only works with Group API version 1 (the 8.x-1.x series), and is compatible with Drupal 8.8, 9 and 10. The 2.0.x branch supports both Group API versions 2 and 3, and is compatible with Drupal 9, 10 and 11.\n\n See the known bugs .\n\n Help welcome!",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-06-16",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

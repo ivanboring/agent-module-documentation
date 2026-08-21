@@ -36,5 +36,13 @@
     "code",
     "signup",
     "spam"
-  ]
+  ],
+  "project_description": "This module changes the user account activation process from email verification link to be based on numeric code, so instead of sending the verification link this module allows to send a separate email with verification code. User accounts remain blocked till they enter the code, so the user flow now is\n\n \n Create new account form submit \n Sends email and shows another form to enter verification code \n Once verified user is logged in \n \n This is thus similar to email verification with link but uses verification code.\n\n Why making a dupe module because otp verification module is already providing similar functionality, this one is for free.\n\n The module is compatible with drupal 8 and 9.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-01-01",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

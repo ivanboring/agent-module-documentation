@@ -41,5 +41,13 @@
     "draft",
     "publish cascade",
     "smart revisions"
-  ]
+  ],
+  "project_description": "Reusable paragraphs library for the LocalGov Drupal distribution.\n\n Back to top \n\n What's in it? \n A node field \n Provides the localgov_page_components node field. This field can be used to add new Page components or select an existing one within a node. The recommended field widget is Entity browser which should use the Page component browser.\n\n This field is currently used in the localgov_services_page content type. But it can be used in any other content type.\n\n LinkIt integration \n The LinkIt module can use URLs belonging to localgov_link and localgov_contact Page components when the localgov_paragraphs module is available. Setup steps follow:\n\n Access the LinkIt profile configuration page from /admin/config/content/linkit.\n\nSelect the Manage matchers operation for the Default profile. This should take you to /admin/config/content/linkit/manage/default/matchers.\n\nClick Add matcher which should land you at /admin/config/content/linkit/manage/default/matchers/add.\n\nSelect Page components as the matcher. Save and continue. This should present the Page components matcher edit form.\n\nSelect Link and Contact as Bundle restrictions. Other Paragraph types are unsupported at the moment.\n\nLimit search results to 20.\n\nSelect the Group by bundle checkbox within Bundle grouping.\n\nSelect Page components from the Substitution Type dropdown within URL substitution.\n\nSave changes.\n\nSuggestions provided by LinkIt should now include localgov_link and localgov_contact Page components.\n\n Back to top \n\n Known issues \n Some Page component edit forms (e.g. localgov_documents) try to open a modal. This leads to a modal within a modal scenario which doesn't work. The work around is to edit such Page components from their own edit page. These can be looked up from /admin/content/paragraphs.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-04-30",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

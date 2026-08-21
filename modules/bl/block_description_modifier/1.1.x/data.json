@@ -37,5 +37,13 @@
     "description",
     "label",
     "block"
-  ]
+  ],
+  "project_description": "Auto-fill and hide the “Block description (info)” field for Custom Blocks used in Layout Builder and block forms. Keeps block labels consistent and reduces manual editor input.\n\n Features \n \n Central configuration page listing all Custom Block types (block_content bundles). \n Layout Builder inline blocks support \n Configure selected block types for use as inline blocks. \n Automatically sets the inline block label/description based on a chosen strategy. \n Hides title-related inputs in the Layout Builder add/edit dialog (where applicable). \n Content block support (regular Custom Blocks) \n For configured block types, the module always hides “Block description (info)” on the block add/edit form. \n Automatically fills “Block description (info)” on save. \n Configurable fill strategies (extensible) \n String: a fixed text (up to 60 characters) \n Content block label: uses the Custom Block type label \n \n Field: copies from a selected text field (normalized); falls back to “corrupted field” if the field is removed or empty\n\n(The “Field” option is only shown when eligible text fields exist.)\n\n Use cases \n Reduce editorial overhead by removing the need to manually maintain block descriptions.\n\n Keep block labels consistent across markets/components.\n\n Improve maintainability of complex Layout Builder pages by enforcing predictable inline block labels.\n\n Post-Installation \n Enable the module and clear caches.\n\n Go to the module’s configuration page under Administration » Configuration » Content authoring (exact location depends on your admin menu setup).\n\n Configure:\n\n \n Selected inline blocks: choose block types used as Layout Builder inline blocks and set the fill strategy. \n Available blocks: configure how regular Custom Blocks should auto-fill “Block description (info)”. \n Create/edit blocks or Layout Builder pages to see: \n “Block description (info)” hidden where configured. \n “Block description (info)” automatically populated on save. \n \n Additional Requirements \n Drupal core 11.x\n\n Uses core Custom Blocks (block_content) and integrates with core Layout Builder forms.\n\n No external libraries or APIs are required.\n\n Recommended modules/libraries \n \n Layout Builder (core) – recommended to benefit from inline block form behavior and auto-labeling in Layout Builder. \n \n Inline Entity Form (contrib, optional) – recommended if you edit referenced Custom Blocks in embedded subforms (nested editing). \n \n Admin Toolbar (contrib, optional) – improves navigation to the configuration page. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-02-02",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 11000000,
+  "core_semver_maximum": 12000000
 }

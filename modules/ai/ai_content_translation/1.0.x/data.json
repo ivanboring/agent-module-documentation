@@ -37,5 +37,13 @@
     "openai",
     "multilingual",
     "content"
-  ]
+  ],
+  "project_description": "Transform your multilingual Drupal site with AI-powered translations that preserve your content's meaning, tone, and formatting. This module integrates OpenAI's powerful language models to provide high-quality automated translations for all your content, including complex structured content with paragraphs and other entity references . The module will gracefully skip translating entities such as taxonomy terms and fields with datetime, numeric, and currency types, allowing for trouble-free translation. For complex content structures, there is an option to activate batch processing.\n\n Key Settings \n Provides fields for:\n\n \n OpenAI API Key \n System Prompt (customizable text) \n Model selection (GPT-4, GPT-4-Turbo, GPT-3.5-Turbo) \n Temperature \n Timeout settings \n Activate/Deactivate batch processing for complex structures \n Logging & Debugging \n \n Enhanced Translation UI \n\nModifies the content translation interface from the content listing page. When you want to translate a content piece, simple navigate to the node and choose \"AI Translate to \". Uses your custom system prompt + \"Translate it to [language]\" to obtain the translation from OpenAI.\n\n Advanced AI Integration \n\nThese are the main AI features available:\n\n \n Uses OpenAI's latest models (GPT-4, GPT-4 Turbo, GPT-3.5 Turbo) \n Customizable system prompts to control translation style and tone \n Adjustable temperature settings to balance accuracy and creativity \n Configurable timeouts for handling large content pieces \n \n Post-Installation \n Navigate to Configuration > Content Authoring > AI Content Translation to manage the settings. Enable batch processing if you translate content with multiple entities (if you ran into timeouts).\n\n Additional Requirements \n You need an OpenAI key to use this module.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-02-27",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

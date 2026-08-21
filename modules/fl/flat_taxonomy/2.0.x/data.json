@@ -39,5 +39,13 @@
     "term hierarchy",
     "vocabulary form",
     "hierarchy_manager"
-  ]
+  ],
+  "project_description": "This is a very basic module which provide a new option in vocabulary creation/edition form to enforce it to be flat.\n\nAs a developer, I faced some situation where the vocabulary was supposed to be flat and development have been done based on that assumption. Later, a contributor creates a new term using the parent field (hierarchical vocabulary). It causes issue on the front-end or at least it is confusing for the contributor.\n\nThis module should avoid the situation by removing the possibility to create nested terms.\n\n \n Alter the term creation/edition for to be sure it is impossible to select a parent. \n Alter the term overview page to be sure it is impossible to create a nested vocabulary. \n \n The Drupal 7 version of the module has some additional features:\n\n \n Drush integration to flatten a vocabulary \n Confirmation step on vocabulary edition form if the form is flagged to be flatten but contains nested terms. \n \n Any new feature to be added to the module is welcomed ;-)",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2015-10-21",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

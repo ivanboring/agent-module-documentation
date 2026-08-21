@@ -53,5 +53,13 @@
     "RFC3966",
     "national format",
     "click to call"
-  ]
+  ],
+  "project_description": "This module provides extra formatter to core's Telephone field. It utilizes the giggsey/libphonenumber-for-php library to provide support for standardized telephone formats:\n\n \n International \n National \n E164 \n RFC3966 \n \n Requirements \n In addition to core modules, this module has one external composer dependency: giggsey/libphonenumber-for-php library\n\nFollow this doc page to learn more how to download module and its dependencies with composer.\n\n Suggestions \n It's recommended to use telephone_validation module to ensure certain data quality level. If telephone number could be parsed and stored in telephone field, we can expect it to be parsable and formattable by telephone_formatted field formatter.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-03-24",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

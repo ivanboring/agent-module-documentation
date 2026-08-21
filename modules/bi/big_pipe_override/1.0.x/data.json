@@ -33,5 +33,13 @@
     "disable",
     "rendering",
     "performance"
-  ]
+  ],
+  "project_description": "This module is meant for development purposes \n Some times you want to disable big pipe, for example to make sure you can set breakpoints in JS files in attached libraries. Just drop in this module and enable it in settings.php like so:\n\n <?php\n\n$settings['big_pipe_override_enabled'] = TRUE;\n\n?>\n\n When changing this value, you should clear the cache.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-02-17",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

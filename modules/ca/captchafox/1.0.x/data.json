@@ -1,7 +1,7 @@
 {
   "name": "CaptchaFox",
   "data_name": "captchafox",
-  "description": "A privacy-focused CAPTCHA provider for the CAPTCHA module. Verifies the challenge SERVER-SIDE (Drupal POSTs the response + secret to https://api.captchafox.com/siteverify and only passes on success) \u2014 the client can't self-assert. Store the secret key securely.",
+  "description": "A privacy-focused CAPTCHA provider for the CAPTCHA module. Verifies the challenge SERVER-SIDE (Drupal POSTs the response + secret to https://api.captchafox.com/siteverify and only passes on success) — the client can't self-assert. Store the secret key securely.",
   "version": "1.0.x",
   "package": "Spam control",
   "composer_namespace": "drupal/captchafox",
@@ -35,5 +35,13 @@
     "spam",
     "bot",
     "privacy"
-  ]
+  ],
+  "project_description": "The CaptchaFox module integrate CaptchaFox web service to improve the CAPTCHA system.\n\n Features \n CaptchaFox helps you protect your form by adding CaptchaFox integration to Captcha module.\n\n Installation \n Install as you would normally install a contributed Drupal module.\n\n Requirements \n \n CAPTCHA module \n CaptchaFox account \n \n Configuration \n \n Enable CaptchaFox and CAPTCHA modules in: admin/modules \n You'll now find a CaptchaFox tab in the CAPTCHA administration page\n\n available at: admin/config/people/captcha/captchafox \n Create an account in the CaptchaFox Website \n Input the site and secret keys into the CaptchaFox settings \n Visit the Captcha administration page and set where you want the\n\n CaptchaFox form to be presented: admin/config/people/captcha \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-11-22",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

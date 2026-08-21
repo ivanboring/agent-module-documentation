@@ -42,5 +42,13 @@
     "query parameters",
     "utm",
     "url-with-query"
-  ]
+  ],
+  "project_description": "Adds some current-page:url token variations that are geared for customized canonical urls that contain query parameters.\n\n Features \n Spurred into being by [#1198032], this module provides the tokens:\n\n [current-page:url-with-query] \n\n The URL of the current page with query string included, if it exists.\n\n [current-page:url-with-query:without-some-parameters:param1,param2,…] \n\n The URL of the current page with query string included but filtered by removing the provided query parameters. e.g. 'without-some-parameters:utm_campaign,utm_medium,utm_source' would be replaced with the current url, with the three utm parameters filtered out if they existed.\n\n [current-page:url-with-query:with-some-parameters:param1,param2,…] \n\n The URL of the current page with query string included but filtered to only include the provided query parameters. e.g. 'with-some-parameters:page,category_id' would return a url containing only query parameters, '?page=1&category_id=2' if they existed.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-02-08",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

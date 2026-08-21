@@ -52,5 +52,13 @@
     "emergency_publisher role",
     "content moderation workflow",
     "scheduled transitions"
-  ]
+  ],
+  "project_description": "Localgov Drupal Alert banner module, adds a global alert banner block and entity.\n\n Order of alerts \n In terms of order, it should be Notable Death -> Major -> Minor -> Announcement and then in date updated order.\n\n Scheduling alert banners \n Scheduling the publishing and unpublishing of alert banners is done using the Scheduled Transitions module. Scheduling is not enabled by default. To turn it on just enable the Scheduled Transitions module.\n\n Disable provided CSS. \n This module will provide default CSS colours so it can be used out the box. If you wish to theme these yourself, you can disable the provided CSS with the following code in your themes THEMENAME.info.yml file:\n\n libraries-override:\n\n localgov_alert_banner/alert_banner:\n\n css:\n\n component:\n\n css/localgov-alert-banner.css: false \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-04-10",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

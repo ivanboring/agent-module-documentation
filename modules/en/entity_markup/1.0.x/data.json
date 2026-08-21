@@ -35,5 +35,13 @@
     "fields",
     "output",
     "theming"
-  ]
+  ],
+  "project_description": "This module allows for more granular control of the entity field markup to reduce the number of twig template overrides needed for a project. \n\n For complex situations overriding is still supported, but if your change is something simple (i.e. having a title field render with a certain header tag) this module lets you do it all from the admin instead of making a new twig template.\n\n Similar Modules \n Fences - https://www.drupal.org/project/fences \n\nThis module does a similar function, but only on a per field basis. Entity Markup does this functionality on a per field per view mode basis to allow for greater flexibility on complex projects.\n\n Display Suite - https://www.drupal.org/project/ds \n\nThis module does allow for field markup customization, but it's also a fully built out layout manager. I wanted to use the core layout manager, so this module wasn't quite what I was looking for.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2022-08-18",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

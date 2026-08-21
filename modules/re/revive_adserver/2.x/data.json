@@ -36,5 +36,13 @@
     "ads",
     "advertising",
     "self-hosted"
-  ]
+  ],
+  "project_description": "The Revive Adserver module provides a block and field, that render Revive Adserver Ad zones.\n\n Back to top \n\n Features \n \n Add Revive Adserver ads using a Drupal block plugin \n Attach Revive Adserver ads to any fieldable entity using a Drupal Field \n Choose between the following ads delivery methods\n \n Asynchronous Javascript \n iFrame \n Javascript \n \n \n Make the delivery method configurable on per entity base (optional) \n Sync the ad zones from Revive \n \n Back to top \n\n Installation \n \n Download the module with composer. \n Enable the module. \n \n Back to top \n\n Configuration \n \n Configure the module at /admin/structure/services/revive-adserver . \n Optional: Sync the zones via the Revive API in the module configuration. \n \n Block \n Add a block and set configure the to-be-rendered zone and delivery method.\n\n Field \n Add a field to your designated content entity. Choose the delivery method in the field display configuration.\n\n If you like to let your content editors choose the invocation method on per entity base you can enable the checkbox in the field's configuration. You can limit the available methods in the \"Manage fields\" configuration.\n\n Back to top \n\n Requirements \n \n A composer-based workflow \n Block (Drupal core) \n Field (Drupal core) \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-09-19",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

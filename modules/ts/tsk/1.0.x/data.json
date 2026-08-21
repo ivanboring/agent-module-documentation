@@ -37,5 +37,13 @@
     "maintenance",
     "private tempstore",
     "shared tempstore"
-  ]
+  ],
+  "project_description": "The module enables to manage and clean up temporary storage data. \n\n Key Features \n Core TSK Module \n \n Drush Commands : Precise command-line control over temporary storage cleanup \n Flexible Targeting : Support for both private and shared temporary storage types \n Granular Control : Target specific collections and keys or perform bulk operations \n Safe Operations : Built-in validation and error handling \n \n TSK Admin Module (Optional) \n \n Web Interface : User-friendly administration interface \n Visual Overview : Browse all temporary storage collections and their contents \n One-Click Operations : Point-and-click deletion of storage items \n Configuration Entities : Set up automated cleanup rules \n \n Usage Examples \n Command Line (Drush) \n # Clean up specific temporary storage collection\ndrush temp-store-killer private email_tfa\n\n# Remove layout builder temporary data\ndrush tsk shared layout_builder.section_storage.overrides\n\n# Execute all configured cleanup operations\ndrush temp-store-killer:all Web Interface \n \n Navigate to Administration → Reports → Temporary storage collections \n Browse collections and delete items individually \n Configure automated cleanup rules at Administration → Configuration → Development → Temporary Storage Killer \n \n Installation \n composer require drupal/tsk\ndrush en tsk\n# Optionally enable admin interface\ndrush en tsk_admin Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-05-05",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

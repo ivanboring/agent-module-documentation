@@ -49,5 +49,13 @@
     "content staging",
     "content deploy",
     "drush content export"
-  ]
+  ],
+  "project_description": "The Single Content Sync module offers a unique and super easy way to export any content (node, taxonomy, media, users, blocks, paragraphs, and etc.) and further import them to a different environment or to a different website, even if it has a totally different structure.\n\n The module generates a YAML code snippet for the content item that can just be copied from one site and pasted into another one. No manual steps or other user interaction is needed afterward. Besides, the module can generate a ZIP archive that contains assets and one or multiple exported entities.\n\n The module is very helpful for content migration and syncing, default content, managing content export/import in backend, lost content recovery, and content debugging.\n\n The module is able to export/import:\n\n \n \n All entity types\n \n you can extend or alter existing logic per entity type \n \n \n \n All field types\n \n you can extend or alter existing logic per field type \n \n \n \n All entity references\n \n \n entity_reference and dynamic_entity_reference are supported out of the\n\n box\n \n \n it uses recursive approach, so it can even find the deepest reference of\n\n the deepest reference\n \n \n \n Menu structure of exported nodes \n Book \n \n Media assets\n \n svg_image_field , file , and image are supported out of the box \n \n \n Content translations \n Internal links between content \n Assets and internal links in Rich text \n \n Layout builder sections and components with all the settings and relations\n \n \n You can also import content on deployment, so no user interaction is needed.\n\n The import functionality allows you to create content if it didn't exist or update an existing one if the uuid was matched.\n\n You can either use UI or custom services or a custom drush command to export/import content\n\n Documentation \n Check out this guide to see the module’s overview and the guidelines for using it.\n\n https://www.drupal.org/docs/contributed-modules/single-content-sync \n\n Still have questions? \n There is a slack channel under Drupal workspace. Here is a link to jump into\n\n https://drupal.slack.com/archives/C045328ESKY \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-01-13",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

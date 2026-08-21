@@ -34,5 +34,13 @@
     "service",
     "dependency injection",
     "scheduling"
-  ]
+  ],
+  "project_description": "The module provides a service collector which executes tagged services on each hook_cron() and allows developers to not write any code to *.module file and have simple time controlling functionality.\n\n The module doesn't have any configurations or UI. It's created for developers and only developers will decide how they will control the execution of their services.\n\n To use the module developer must create a class which implementing \\Drupal\\cron_service\\CronTaskInterface interface (or its descendant) and define it as a service with tag 'cron_service'.\n\n The module provides the following interfaces:\n\n \\Drupal\\cron_service\\CronTaskInterface declares only execute() method which must be the entry point of desired logic. This method will be invoked on every cron run.\n\n \\Drupal\\cron_service\\ScheduledCronTaskInterface additionally declares getNextExecutionTime():int  method which should return the timestamp when execute() method should be executed next time. \n\n \\Drupal\\cron_service\\TimeControllingCronTaskInterface  additionally declares shouldRunNow():bool  method which is called before every call to execute()  and can prevent the execution by returning FALSE. It can contain additional checks of the current time or the current environment.\n\n A small note \n Despite the fact the project is marked as completed, I'm still opened for ideas. Feel free to add feature requests to the issues list if you think this module can be improved in any way.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-02-20",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

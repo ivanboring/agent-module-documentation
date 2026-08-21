@@ -37,5 +37,13 @@
     "obfuscation",
     "path processor",
     "encrypt"
-  ]
+  ],
+  "project_description": "Many times we come across a situation when we want to hide the Url from end users.\n\nSo Commerce Url Hash module is used to hide Order ID from Url for Commerce Checkout Urls.\n\n Let's consider example,\n\nIn Drupal Commerce, we have Checkout flow, which has following Urls,\n\n \n /checkout/123/order_information \n /checkout/123/payment \n /checkout/123/confirmation \n \n \n\n So 123 is the Order ID, so the intent of this module is to hide the Order ID from Urls and provide the hash ('###') value.\n\n \n\n Back to top \n\n Requirements: \n \n A clean Drupal 8 installation. \n Commerce module. \n \n Back to top \n\n Installation and Usage: \n \n Download Commerce Url Hash module \n Enable the Commerce Url Hash module. \n Now you can go to checkout Urls you will see Order ID is converted to hash value. \n Note:- In this module for encypt/decrypt service is available. So in custom module if you want to convert Order ID to hash or hash to Order ID you can use service (commerce_url.encrypt_decrypt) available in services.yml\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2017-06-22",
+  "project_changed": "2026-08-04",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 11000000
 }

@@ -33,5 +33,13 @@
     "access",
     "hardening",
     "restrict"
-  ]
+  ],
+  "project_description": "This module allows block URLs in Drupal to avoid unexpected access. Returning a 401 error.\n\n This module can be useful to allow access to the admin part only for selected IPs.\n\n Requirements \n This module requires no modules outside of Drupal core.\n\n Similar projects \n If there are modules providing similar functionality, please describe what differentiates them.\n\n Configuration \n Navigate to Config → System → Control admin access ( /admin/config/system/control-admin-access )\n\n Fill out the following two fields:\n\n \n \n Field 1 - Enter IPs or IP ranges (Whitelist): Input the IP addresses or ranges of the computers to be granted access to the specified URL or URLs.\n\n \n \n Field 2 - Enter URLs to block except for Whitelist: Specify the URLs of the pages to be blocked, excluding users specified in the first field.\n\n \n \n For example: \n\n In Field 1 \n\n192.168.1.10 (a single IP)\n\n10.0.0.0/24 (an IP range)\n\n In Field 2 \n\n/admin/settings\n\n/user/1/edit\n\n \n\n Users connecting from the specified IP addresses (whitelisted) will have unrestricted access to the entire site, including the specified URLs.\n\n Users connecting from IPs outside the whitelist will be blocked from accessing the specified URLs, even if they are administrators or have other privileged roles.\n\n This way, you can control and restrict access to certain parts of your Drupal site based on IP addresses. Adjust the IPs and URLs according to your specific needs and security requirements.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-09-26",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

@@ -36,5 +36,13 @@
     "password reset",
     "theming",
     "people"
-  ]
+  ],
+  "project_description": "This module is designed to generate a custom login block for use on the Drupal user login page.\n\n Features \n \n Show the Drupal default login, your external login service of choice, or both. \n Add a title for the Hybrid Login block \n Add a description to the Hybrid Login block, informing users how they can access their account using an external login service. \n Deny/allow access to the password reset page \n Add a description to the password reset page, informing users how they can reset their password on Drupal or selected login service \n \n Post-Installation \n \n Place the \"Hybrid Login\" block on the Block Layout page, located at Structure > Block layout \n \n It is recommended to place the block in the \"Content\" region, above the \"Main page content\" and below the \"Admin tabs\", if applicable. \n \n Configure the block with the recommended settings \n \n Display title: Optional \n Show for the listed pages: /user/login \n \n Visit the admin settings page for Hybrid Login, located at Configuration > People > Login settings \n \n /admin/config/people/hybrid_login \n \n It is recommended to clear cache after changing any Hybrid Login settings. \n \n Additional Requirements \n Recommended modules/libraries \n This module was created around the SAML Authentication module , but allows configuration to work with other SAML modules.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-01-26",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

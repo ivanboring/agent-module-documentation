@@ -33,5 +33,13 @@
     "priority",
     "value",
     "computed"
-  ]
+  ],
+  "project_description": "EntityFallbackValue provides developers with a flexible cascade system to retrieve entity field values based on defined priorities.\n\n Back to top \n\n The problem it solves \n When displaying content, you often want to show a value that can be carried by multiple optional fields. Instead of writing custom logic each time, EntityFallbackValue lets you define a priority chain once — if the first field is empty, it falls back to the next, and so on.\n\n Back to top \n\n Features \n \n Plugin system — define your own fallback chains with a structured, reusable plugin API \n Token integration — use fallback values anywhere tokens are supported \n Twig method — access fallback values directly in your templates\n \n \n Back to top \n\n Example use case \n An entity has three optional description fields: Long description, Description, and Chapô. You want to display whichever is filled in, in that priority order. Define the chain once via a plugin, then use the token or Twig method to retrieve the resolved value — no custom PHP needed at the template level.\n\n Back to top \n\n Documentation \n For installation and usage instructions, see the README.txt file included in the module repository.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-06-16",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

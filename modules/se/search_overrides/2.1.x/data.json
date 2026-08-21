@@ -46,5 +46,13 @@
     "search override entity",
     "PreQueryEvent",
     "manual ranking"
-  ]
+  ],
+  "project_description": "This module provides a method for users with the necessary permissions to manually override the results being returned by Search API Solr. They will be able to choose a specific search term, and pick which nodes should be at the top, and also choose to exclude nodes so they will not be shown in the results.\n\n Back to top \n\n New Features in the 2.x Branch \n \n Edit in the node form - A big new feature is the ability to manage overrides for a node within the node edit form, as shown in the bottom screen capture to the right \n Promote more than nodes - you now have the option to have the autocomplete query Solr instead of just node titles. That means any content in your index can be promoted, not just nodes \n \n Back to top \n\n Similar Modules \n This module has overlap with Search API Best Bets in its use of Solr's elevateIds and excludeIds. That module only allows individually promoting or excluding nodes, and so doesn't provide a way for an editor to specify the order if more than one node has been promoted.\n\n Back to top \n\n Requirements \n Also note that support for the elevateIds and excludeIds parameters was introduced in Solr 4.7, so this module won't work for environments with very old Solr installs.\n\n Back to top \n\n Installation \n Once the module is installed, users with access can go in the toolbar to Configuration > Search > Search Overrides and begin creating as many overrides as needed. If you update the settings with your search path and query parameter, it will provide links for each override to view the results both modified and unmodified.\n\n Also note that using this module will cause Solr to ignore the contents of an elevate.xml file for the core, if one is available.\n\n Back to top \n\n Demo \n \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-03-01",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

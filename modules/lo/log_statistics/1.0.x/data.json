@@ -37,5 +37,13 @@
     "graph",
     "reporting",
     "severity"
-  ]
+  ],
+  "project_description": "This module logs total number of each logging severity levels (defined in RFC 5424) in a custom table on a day-to-day basis and outputs a graph based on that. The graph is created with the help of Google Charts .\n\n Requirements \n \n This module requires Database logging (dblog) module of Drupal core. \n Please make sure you have already set up a cron job that runs at least once a day. \n \n Working \n \n This module logs total number of each severity levels (emergency, alert, critical, error, warning, notice and info) on a cron run. \n For e.g. on today's cron run, yesterday's total number of each log is stored in the module's generated custom table. \n The stored data is used by Google Charts to prepare a graph (as of now, for last 10 days). The graph can be seen on the /log-statistics page. \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2020-11-28",
+  "project_changed": "2026-04-03",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -39,5 +39,13 @@
     "redirect",
     "notification",
     "bank"
-  ]
+  ],
+  "project_description": "This project integrates Tpay into the http://drupal.org/project/commerce payment and checkout systems. Allowing you to make online payments using this gateway. After receiving payment, commerce payment entity is created and attached to proper order.\n\n REQUIREMENTS \n\n This module requires the following modules:\n\n * Commerce2 ( https://drupal.org/project/commerce )\n\n CONFIGURATION \n\n * Please Add \"Tpay\" Payment gateway under\n\n \"admin/commerce/config/payment-gateways/add\" using Tpay Redirect Plugin.\n\n * Add the required credentials.\n\n DEVELOPERS \n\n After receiving payment, this module fires TPAY_PAYMENT_RECEIVED event which you can react to and add your own actions.\n\n Maintainer for 8.x: Reytron\n\n Maintainer for 7.x: lamp5",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2017-07-27",
+  "project_changed": "2026-08-11",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 11000000
 }

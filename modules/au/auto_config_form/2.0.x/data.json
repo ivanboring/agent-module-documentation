@@ -33,5 +33,13 @@
     "schema",
     "developer",
     "settings"
-  ]
+  ],
+  "project_description": "The Schema form module can do everything that this module does, and more. I will continue to fix bugs in this module, but development of new features should happen in Schema form .\n\n \n Generate your custom module's configuration form automatically from its schema definitions. \n\n Writing config forms is boring. Mostly they all look the same, or are not very important, especially if it's for simple or small modules or for a limited amount of users. So let's automate it!\n\n Back to top \n\n Example \n If your module has config, it will have a schema file, e.g. at my_module/config/schema/my_module.schema.yml . Here is an example:\n\n \n\nmy_module.settings:\n\n type: config_object\n\n label: 'My module settings'\n\n translatable: false\n\n mapping:\n\n foo:\n\n type: string\n\n title: 'Foo'\n\n label: 'How much foo?'\n\n bar:\n\n type: boolean\n\n title: 'Enable bar'\n\n label: 'Whether to run bar or not.'\n\n \n\n To create an automatic config form using this schema, create my_module/Form/ConfigForm.php with the following:\n\n <?php\n\n namespace Drupal\\my_module\\Form;\n\n use Drupal\\auto_config_form\\AutoConfigFormBase;\n\n /**\n\n * Settings form for my module.\n\n *\n\n * @package Drupal\\my_module\\Form\n\n */\n\nclass ConfigForm extends AutoConfigFormBase {\n\n /**\n\n * {@inheritDoc}\n\n */\n\n protected function getSchemaKey(): string {\n\n return 'my_module.settings';\n\n }\n\n }\n\n?>\n\n That's it!\n\n Back to top \n\n Next steps \n \n If you need to customize anything, just override some of the methods of AutoConfigFormBase. \n To make the settings page accessible, you need to add a route. See https://www.drupal.org/docs/drupal-apis/routing-system/introductory-dru… . \n To make your route available in a menu, see https://www.drupal.org/docs/drupal-apis/menu-api/providing-module-defin… . \n \n Back to top \n\n Drupal core compatibility \n \n Drupal 10: Use version 1.x \n Drupal 11: Use version 2.x \n \n Drupal 10 needs protected $typedConfigManager; and Drupal 11 needs protected TypedConfigManagerInterface $typedConfigManager; , and they are mutually exclusive. This forces us to maintain separate versions of this module for Drupal 10 and Drupal 11. See https://www.drupal.org/project/auto_config_form/issues/3532554 and https://www.drupal.org/project/auto_config_form/issues/3412011 for where we accidentally messed this up twice.\n\n Back to top \n\n Similar modules \n \n Automatic Configuration Form (this module): Started September 2021 \n Schema-based config forms Started April 2023 \n Schema form Started April 2025 \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2021-09-01",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

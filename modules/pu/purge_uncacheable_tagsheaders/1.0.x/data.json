@@ -38,5 +38,13 @@
     "graphql",
     "reverse proxy",
     "invalidation"
-  ]
+  ],
+  "project_description": "By default the request event listener of the purge module will only add tags headers to cacheable responses. This module adds the tags headers from purge plugins to uncacheable requests as well.\n\n This can be useful if the caching decision is handled (or overridden) in an upstream shared cache. Other use cases include graphql requests that use a POST method and thus are not cacheable by Drupal.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-07-14",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9005000,
+  "core_semver_maximum": 12000000
 }

@@ -33,5 +33,13 @@
     "aggregate",
     "retention",
     "404"
-  ]
+  ],
+  "project_description": "This module restores time-based garbage collection for CSS and JavaScript aggregates, preventing the complete deletion of aggregate directories during cache rebuilds that was introduced in 10.1.\n\n Background \n\n Drupal 10.1 introduced significant performance improvements to CSS/JS aggregation by implementing lazy generation of aggregate files. However, these changes also modified cache clearing behavior to delete entire /sites/*/files/{css,js} directories during every cache rebuild ( drush cr ).\n\n While this approach works well for dynamic sites where aggregates can be regenerated on-demand, it creates critical issues for static generators.\n\n This module reinstates the pre-10.1 behavior by preventing wholesale deletion of CSS/JS directories during cache clears and implementing time-based cleanup that only removes genuinely stale files.\n\n Relates issues:\n\n - [#3301573]",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-06-12",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10002000,
+  "core_semver_maximum": 12000000
 }

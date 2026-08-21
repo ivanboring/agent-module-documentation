@@ -33,5 +33,13 @@
     "modules",
     "dependencies",
     "report"
-  ]
+  ],
+  "project_description": "This module provides drush commands to audit the status of contributed modules and themes similar to what you would find in admin/reports/updates. It is intended to be used in CI tools. To obtain a list of security updates you can just use the composer audit command but it will not show you all issues with modules and themes.\n\n Features \n \n An unsupported command to get a list of unsupported projects. drush projects_audit:unsupported . A project can be marked as not supported by a maintainer for a number of reasons i.e. if the project is no longer recommended to be used, or if a new version has been released and the current release is no longer maintained.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2024-03-15",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

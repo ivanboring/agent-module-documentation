@@ -49,5 +49,13 @@
     "validation constraint",
     "feeds target",
     "isbn.isbn_service"
-  ]
+  ],
+  "project_description": "ISBN is a simple field/widget module. It provides simple validation for ISSN-8, ISBN-10, and ISBN-13. Javascript validation is available. Display options include raw (as inserted) and clean (dashes and spaces removed).\n\n Drupal 7 and 8 versions \n For this version only validation through form submission is implemented. Javascript, format options and ISSN-8 would be nice to have.\n\n Drupal 8 - Dependencies \n Instead of reinventing the wheel, on Drupal 8 version of this module, both validation and format are done by an external library. The library used is Nicebooks ISBN library .\n\nThis library is already included to be download if you download ISBN module via Composer like:\n\n composer require drupal/isbn \n\n Instead of using Composer, this library can also be installed using the Ludwig module.\n\n Drupal 6 version \n Additional CCK display plugin modules could be written.\n\n Requirements \n \n CCK (Content) Module (Drupal 6 only) \n \n Formatter Modules \n \n OpenLibrary API (Drupal 6 only) \n \n Credits \n \n Drupal 6 version by Jon Pugh , sponsored by FivePaths \n Drupal 7 and 8 version by Rafael Ferreira Silva (rfsbsb) . \n ISBN/ISSN algorithms provided by Robert D. Cameron \n \nThanks to aaustin for writing the original module and letting me take it over.\n \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2008-04-02",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

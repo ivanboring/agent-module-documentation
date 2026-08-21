@@ -35,5 +35,13 @@
     "fields",
     "submission",
     "merge"
-  ]
+  ],
+  "project_description": "This module provides a Webform handler that allows you to combine submitted field values into a separate field on the form. It can handle simple use cases such as combining First Name and Last Name fields into a Full Name, or combining data into a Comments field before submitting to a CRM.\n\n Post-Installation \n \n Install and enable the module as usual. \n Enable the handler for a form under Settings -> Emails/Handlers. \n Specify the field that should hold the combined values \n Use webform submission tokens ( [webform_submission:values:*] or other tokens to populate the combined field data. \n \n Additional Requirements \n Requires the Webform module.\n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-07-09",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

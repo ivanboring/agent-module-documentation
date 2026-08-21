@@ -34,5 +34,13 @@
     "defaults",
     "submodule"
   ],
-  "part_of": "image_sizes"
+  "part_of": "image_sizes",
+  "project_description": "Responsive image styles depend on the parent element width. \n\n Blow up your google page speed rank. \n\n Back to top \n\n Installation 3.x \n Install as usual.\n\n Back to top \n\n How to use \n - You can enable image sizes default module for some standards.\n\n- A image formatter for fields is provided\n\n- Use drush command for create a preset\n\n Recommended modules \n Image sizes works great with one of the following modules:\n\n* https://www.drupal.org/project/focal_point \n\n* https://www.drupal.org/project/image_widget_crop \n\n Example drush commands \n \n\n# Generate a preset with name default without ratio\n\ndrush isg \"Default\" 100 1400 100 \n\n # Add a blurred placeholder. Needs image_effects module.\n\ndrush isg \"Default\" 100 1400 100 --generate-thumbnail\n\n # Generate style with 4x3 ratio\n\ndrush isg \"Default\" 100 1400 100 --ratio=4x3 \n\n # Generate style with 4x3 ratio with focal point. Works only with ratio option.\n\ndrush isg \"Default\" 100 1400 100 --ratio=4x3 --use-focal-point\n\n # Generate style with 4x3 ratio with image_widget_crop. Works only with ratio option.\n\ndrush isg \"Default\" 100 1400 100 --ratio=4x3 --use-manual-crop\n\n # Convert to png file. Default is webp.\n\ndrush isg \"Default\" 100 1400 100 --format=png\n\n \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-09-06",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

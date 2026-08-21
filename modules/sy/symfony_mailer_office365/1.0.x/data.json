@@ -35,5 +35,13 @@
     "oauth",
     "microsoft",
     "graph"
-  ]
+  ],
+  "project_description": "Symfony Mailer Office365 Integration \n Why? \n Office365 stops support for sending via SMTP with Basic Auth information (Username & Password).\n\n A modern OAuth Flow is required. Since there is no feasable Drupal solution as of writing, this module provides a gap until there is an implementation provided by Symfony itself or a different solution.\n\n How-To \n 1. Register your app with Microsoft Entra and provide Redirect URL: ` https://example.com/office365/oauth/callback `\n\n2. Configure with given credentials\n\n`admin/config/system/mailer/office365`\n\n3. Add \"Office 365 - OAuth\" Transport to your mailing policy\n\n4. Login to save OAuth State with Drupal (Link available here: `admin/config/system/mailer/office365`)\n\n Refreshing the token state \n Using OAuth requires you to keep refreshing the access token with the given refresh token once it expired.\n\nThis module provides two ways to do that.\n\n a) Drupal Cron\n Refreshing (if necessary) happens when the Drupal Cron is run.\n\nIn that case make sure it gets run at least every 12 hours to be on the safe side.\n\n See Token Lifetime: https://learn.microsoft.com/en-us/entra/identity-platform/refresh-token… \n\n b) Drush Command\n If you want to refresh the token (if necessary) in an own interval separate to the cron you can run the following drush command:\n\n drush office365:refresh \n\n Please choose an appropriate interval for this method as well.\n\n Troubleshooting \n You should check the status page `admin/config/system/mailer/office365` and check the system logs (watchdog f.e) for any error messages.\n\n Credits \n This was insipired by the following gists\n\n \n https://gist.github.com/dbu/3094d7569aebfc94788b164bd7e59acc \n https://gist.github.com/beerendlauwers/03acb112c80af0bf91546a05f790057a \n \n Even though a lot has been rewritten, this inspired a lot how this concept was implemented. Thanks!\n\n Please also see https://github.com/symfony/symfony/pull/52585 for development with symfony, which would make this module probably obsolete.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-04-11",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

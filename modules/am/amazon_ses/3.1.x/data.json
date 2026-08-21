@@ -52,5 +52,13 @@
     "mail queue",
     "transactional email",
     "MailSentEvent"
-  ]
+  ],
+  "project_description": "Back to top \n\n Module Description \n This module is used to send email via Amazon SES , instead of using Drupal's native mail system.\n\n Back to top \n\n Advantages of this module \n \n You do not need to set up your own SMTP server. \n Less configuration; just setup your AWS credentials and you are all set. \n This module sends email via Amazon SES by directly calling the API. \n \n Back to top \n\n Dependencies \n \n Amazon Web Services \n \n For full functionality, the following AWS permissions are required.\n\n \n ses:GetAccount \n ses:CreateEmailIdentity \n ses:DeleteEmailIdentity \n ses:GetEmailIdentity \n ses:ListEmailIdentities \n \n Back to top \n\n Configuration \n \n Configure Amazon Web Services with your AWS credentials. \n Verify your email address or domain at /admin/config/services/amazon_ses/settings/identities. \n Configure Drupal to use Amazon SES for sending email. The most common way to do this is to use the Mail System module. \n \n Back to top \n\n Similar Modules \n \n Swiftmailer \n SMTP module \n Amazon SES Mailer \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2011-02-25",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

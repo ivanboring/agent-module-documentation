@@ -37,5 +37,13 @@
     "oppwa",
     "payment",
     "webhook"
-  ]
+  ],
+  "project_description": "This module integrates ACI PAY.ON Payments Gateway (formerly known as \"Open Payment Platform\") with Drupal Commerce, integrating the COPYandPAY (also known as PAYFRAME) payment widget in Drupal Commerce checkout flow.\n\n The ACI PAY.ON Payments Gateway is often used as white label solution and named differently per country, eg. in Portugal it is offered by SIBS and called \"SIBS Payments\", in Austria by Hobex and by Viveum (\"VIVEUM Meteorpay\").\n\n Requirements \n Commerce Open Payment Platform depends on Drupal Commerce of course, given a strict dependency on commerce_payment sub module.\n\n Please note, that there's a soft-dependency on advancedqueue module. The commerce_opp core module does not need advancedqueue, but as soon as you install the commerce_opp_webhooks submodule, you'll need advancedqueue too. Therefore, we do not add advancedqueue as a requirement to our composer.json, only as a suggestion!\n\n Installation \n See the modules README.md for information on installing and configuring this module.\n\n Credits \n Commerce Open Payment Platform module was originally developed and is currently\n\nmaintained by Mag. Andreas Mayr .\n\n All initial development was sponsored by agoraDesign KG .\n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-07-20",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

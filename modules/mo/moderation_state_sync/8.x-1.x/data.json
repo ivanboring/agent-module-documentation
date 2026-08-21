@@ -35,5 +35,13 @@
     "sync",
     "translations",
     "multilingual"
-  ]
+  ],
+  "project_description": "Sync Content Moderation state between entity languages based on conditions.\n\n Example use case \n Given that the moderation state is translatable for an entity bundle, if the source language reaches the unpublished state all other languages should have the same one. So, e.g. it stays consistent with a multilingual Simple Sitemap inclusion per node.\n\n Configuration \n For a Workflow, under 'Workflow settings', then for the desired states - check 'Enable moderation state sync'.\n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2020-03-19",
+  "project_changed": "2026-08-04",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

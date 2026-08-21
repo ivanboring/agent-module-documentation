@@ -35,5 +35,13 @@
     "role",
     "filter",
     "selection"
-  ]
+  ],
+  "project_description": "This module adds a new reference method called \"Taxonomy terms with role filter\" that can be selected when configuring a taxonomy term reference field. When selected, the available terms in the reference field will be filtered based on the current user's role via a field configured on the vocabulary that is being referenced.\n\n For this filter to work, the target vocabulary must have a \"Role\" reference field. Then, on each term, content editors can specify which user roles should be able to select the term. If no role is selected, then a user with any role can select the term.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2022-01-05",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

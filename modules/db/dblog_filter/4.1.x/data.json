@@ -44,5 +44,13 @@
     "exclude",
     "reduce log noise",
     "regex log filter"
-  ]
+  ],
+  "project_description": "Summary: \n\nAre you trying to store only the log messages that are required? Either it is Warnings, Notice, Php, Debug, etc. \n\n Your site will have an impact each time a log message makes an entry to the Database. Still, do you want to see the preferred type of logs? But store only the required/necessary logs. \n\n Here is the Module you are searching for. \n\n DBLOL FILTER and/or SYSLOG FILTER only stores or records those logs based on the settings provided.\n\n \n Features: \n\n * DBLOG and/or SYSLOG FILTER module allows you to store only filtered log messages based on log type and log level.\n\n * Useful to restrict unwanted message types and reduce watchdog size for\n\n better performance.\n\n * Majorly useful in production sites when we want to log only\n\n limited messages.\n\n * Logging can be restricted either by the Levels. To Log only Error Level logs\n\n for a site, you can check \"Errors\" under \"Select Severity Levels.\" on the configuration page.\n\n * Custom logging can also be done by ignoring all the core logs too, by setting\n\n the values under \"Enter DB Log type and Severity Levels.\"\n\n Additional Features: \n\n * Syslog FILTER is added additionally. \n\n * Based on the log module enabled, this module will work on DB log and/or Syslog.\n\n * Syslog filter format will be fixed for now. (In the future will add a hook for this to alter any available variables)",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-10-21",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

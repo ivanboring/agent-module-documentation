@@ -1,7 +1,7 @@
 {
   "name": "Aadhaar Number Widget",
   "data_name": "aadhaar_number_widget",
-  "description": "A field widget that validates an Indian Aadhaar number (format + Verhoeff checksum). SECURITY: Aadhaar is highly regulated PII \u2014 encrypt/restrict/mask it.",
+  "description": "A field widget that validates an Indian Aadhaar number (format + Verhoeff checksum). SECURITY: Aadhaar is highly regulated PII — encrypt/restrict/mask it.",
   "version": "2.0.x",
   "package": "Field Types",
   "composer_namespace": "drupal/aadhaar_number_widget",
@@ -35,5 +35,13 @@
     "verhoeff",
     "pii",
     "field"
-  ]
+  ],
+  "project_description": "INTRODUCTION \n\nAadhaar Card is a unique identity card issued to the Indian citizen by the Unique Identification Authority of India- UIDAI. The card has an arbitrary grouping of 12 numerical figures that are unique for each Aadhaar cardholder.\n\nThis 12-digit number is known as the Aadhaar card number and is used to identify individuals. The card comprises the demographic and biometric data of the person and therefore is used mainly for authentication.\n\n CONFIGURATION \n\nAllow the text field widget aadhaar number validate formatter.\n\n INSTALLATION \n\n- drush en aadhaar_number_widget -y\n\n- composer require drupal/aadhaar_number_widget",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2022-10-28",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

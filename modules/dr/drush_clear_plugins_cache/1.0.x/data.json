@@ -35,5 +35,13 @@
     "cache",
     "development",
     "devel"
-  ]
+  ],
+  "project_description": "After see this: DefaultPluginManager::clearCachedDefinitions \n\n Don't resort to calling \\Drupal::cache()->delete() and friends to make Drupal detect new or updated plugin definitions. Always use this method on the appropriate plugin type's plugin manager!\n\n \n I build this drush command to allow clear plugin managers cache.\n\n Help:\n\n \n\nClear plugin manager cached definitions. \n\n Examples:\n\n drush_clear_plugins_cache:clear-cache plugin.manager.group_content_enabler Clear group_content_enabler plugin manager cache.\n\n drush_clear_plugins_cache:clear-cache all Clear all plugin manager cache.\n\n drush_clear_plugins_cache:clear-cache Clear all plugin manager cache. \n\n Arguments:\n\n [pluginType] The plugin manager service name. Default 'all'. \n\n Aliases: pmcc",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2020-10-19",
+  "project_changed": "2026-08-11",
+  "core_semver_minimum": 8007007,
+  "core_semver_maximum": 11000000
 }

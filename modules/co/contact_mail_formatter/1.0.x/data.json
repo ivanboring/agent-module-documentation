@@ -39,5 +39,13 @@
     "formatter",
     "ckeditor",
     "mail"
-  ]
+  ],
+  "project_description": "Contact Mail Formatter module will provide HTML Mail for Contact messages which are fully-fledged entities in Drupal.\n\nThis plus core contact module aim to provide functionality to send Html Mail with dynamic data\n\n You can refer to this blog for proper formatted mail Formatting Guidlines \n\n Features \n\n \n HTML Mail \n CKeditor \n Token Support \n \n Requires Module \n\n \n Token ( Token Module ) \n SMTP ( SMTP Module ) \n \n How to configure SMTP & send HTML Mail? \n\n First, the SMTP module will automatically be installed, if you use composer to install the Contact Mail Formatter module. Otherwise you need to download it separately. Now as it's installed, you need to go to \"/admin/config/system/smtp\". Follow the steps below.\n\n \n Set the SMTP as default mail system by enabling it.\n \n In SMTP server settings, set the SMTP server (e.g. smtp.gmail.com)\n \n Use the default port 25.\n \n In SMTP authentication, set the authentication username & password provided by your mail server.\n \n And last but not least, enable the checkbox “Allow to send emails formatted as HTML”.\n \n See the screenshots for better understanding.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-01-17",
+  "project_changed": "2026-08-13",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -33,5 +33,13 @@
     "library",
     "developer",
     "druhels"
-  ]
+  ],
+  "project_description": "Some helpers for Drupal developers.\n\n Example:\n\n NodeHelper::isNodePage() - Return TRUE if current page is a node page.\n\n NodeHelper::getCurrentNode() - Return current node in node page.\n\n DrupalHelper::getCurrentPageTitle() - Return current page title.\n\n DrupalHelper::getCurrentRouteName() - Return current route name.\n\n DrupalHelper::sendMail() - Send mail without need implements hook_mail().\n\n FileHelper::getFileEntityByUri() - Return file entity object by file uri.\n\n TaxonomyHelper::getAllChildTerms() - Return all child terms regardless of depth.\n\n CommerceHelper::getCartsTotalPrice() - Return carts total price.\n\n And many many more.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2013-12-21",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 16000000
 }

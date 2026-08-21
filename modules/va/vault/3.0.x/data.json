@@ -46,5 +46,13 @@
     "key management",
     "credentials",
     "kv"
-  ]
+  ],
+  "project_description": "Core APIs for integrating Drupal with Hashicorp Vault or the Linux Foundation OpenBao.\n\n What is Vault for Drupal? \n Vault for Drupal is a tool for securely accessing secrets using the Hashicorp Vault API. \n\n A secret is anything that you want to tightly control access to, such as API keys, passwords, or certificates.\n\n What is Hashicorp Vault or The Linux Foundation OpenBao? \n Hashicorp Vault is a source available (BSL license) project.\n\nThe Linux Foundation OpenBao is an open source (MPL 2.0 license) fork of Hashicorp Vault.\n\n Both provide secure storage of secrets outside of Drupal.\n\n Hashicorp Vault \n \n What is Vault? \n Common Use Cases \n \n The Linux Foundation OpenBao \n \n What is OpenBao? \n Common Use Cases \n \n Why Vault/OpenBao with Drupal? \n Unparalleled Feature-Set \n\n Vault and OpenBao have a significant range of features for storing secrets in a secure manner:\n\n Some features include:\n\n \n Encrypted key/value storage \n Encryption-as-a-service \n Automatic rotation of credentials \n Revocation of credentials \n Audit logging for compliance and intrusion detection \n \n Free and Open Source Software \n\n The Drupal community has produced some excellent tooling to abstract secret storage and encryption . However there are issues with the ecosystem of tools which leverage these abstractions to perform the cryptographic functions.\n\n \n Most of the existing integrations are for commercial services \n The FOSS options are difficult to operate in a secure manner \n \n Modules Integrating with Vault for Drupal \n Authentication Strategies \n Authentication strategies allow Drupal to securely authenticate with the secret storage.\n\n \n Token Authentication \n AppRole Authentication \n \n Secret Engines \n Secret engines provide a method for storing/retrieving static/dynamic secrets from the storage.\n\n \n Key Value \n AWS Dynamic Credentials \n \n Encrypt-as-a-Service \n Provides methods where encryption/decryption are performed by the secrets storage without revealing the cryptographic keys. Storage of the encrypted content is outside of the secrets server.\n\n \n Transit Encryption \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-05-28",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

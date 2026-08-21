@@ -43,5 +43,13 @@
     "MergeFilter",
     "retain customizations",
     "filterRead"
-  ]
+  ],
+  "project_description": "Config Merge provides a method for three-way merging of configuration items and a Config Filter plugin that safely merges configuration updates into the site's active configuration.\n\n Back to top \n\n Use case \n Config Merge is used by the Configuration Synchronizer module to do three-way merging of configuration updates from extensions.\n\n Back to top \n\n Similar and related modules \n \n The Config Ignore module allows you to specify a list of configuration items that will be ignored when you synchronize configuration from one environment to another. \n The Configuration Overlay module provides a configuration filter to turn the configuration export into an overlay of the shipped configuration of all installed configuration. Installing this module and subsequently exporting configuration will leave only those configuration files in your export directory that have been added or modified relative to the shipped configuration of modules and installation profiles. \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-05-27",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -33,5 +33,13 @@
     "endpoint",
     "testing",
     "ci"
-  ]
+  ],
+  "project_description": "Exposes drush commands so that they can be called with POST.\n\n To be used in automated testing (ie Cypress) when you can't run drush commands, for example when your testing suite runs on a different container than your web server.\n\n Back to top \n\n \nUsage \n In your Cypress test do a POST request:\n\n cy.request({\n method: 'POST', // Make sure this is POST\n url: '/api/drush/cron'\n});\n \n\n You can also use cURL from command line for testing:\n\n curl -X POST https://SITENAME.ddev.site/api/drush/cron\n \n\n \nLogin to a site in a Cypress test \n describe('I can login using Drush', () => {\n it('Logs me in', () => {\n // Login\n cy.request({\n method: 'POST',\n url: '/api/drush/uli',\n }).then((response) => {\n expect(response.status).to.eq(200);\n expect(response.body).to.have.property('success', true);\n\n const uli = response.body.output.trim();\n\n cy.visit(uli);\n // You are logged in!\n })\n })\n})\n Back to top \n\n \nRequirements \n It is assumed that you have a complete understanding of what you are enabling on your site!\n\n There are precautions that make it difficult to run this modules on production, but they will not save you if you intentionally enable it there. So be very careful.\n\n Back to top \n\n \nInstallation \n \n Install as you would normally install a contributed Drupal module. See: https://www.drupal.org/node/895232 for further information. \n There are no permissions, this is a module oriented to automated testing only. Everything is allowed by default. \n Allow the module to run, by enabling it in your settings.local.php file:\n\n // Enable drush_endpoint\n$settings['drush_endpoint_enabled'] = TRUE;\n$settings['drush_endpoint_allow_uli'] = TRUE;\n \n \n NOTE \n\n As you see above, uli commands need that extra line to be enabled.\n\n \n WARNING \n\n Do not put the above lines in production!\n\n \n Back to top \n\n \nMaintainers \n \n Bill Seremetis (bserem) - https://www.drupal.org/u/bserem \n \n \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-01-22",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 13000000
 }

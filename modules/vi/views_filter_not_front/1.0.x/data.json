@@ -41,5 +41,13 @@
     "exclude_front_page_node",
     "system.site page.front",
     "FrontPageNode service"
-  ]
+  ],
+  "project_description": "This module add a new views filter, that allows you to exclude the frontpage node from views.\n\n New: A Search API processor plugin that allows you to exclude the frontpage\n\nnode from Search API indexes\n\n It checks if system.site.page.front is a node and if thats true, this node will be excluded from the views results.\n\n This can be helpful if you have changing front page nodes and do always want to exclude the front page node from certain views. While you can exclude the frontpage node also by using the bultin node id filter from views, you would have to manually update the node id filter if you change the frontpage.\n\nThis module is also useful if you do not know what the front page node will be, for example if you install a view from configuration in different sites and each site can possibly have different front page nodes.\n\nIf the frontpage is not a node, the filter will be skipped.\n\n Installation:\n\n \n Install module as asual. \n Add the filter \"Not front page\" to your view. \n optional add Search API processor \"Exclude front page node\" to your index",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-11-02",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

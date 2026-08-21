@@ -1,7 +1,7 @@
 {
   "name": "IP Ban",
   "data_name": "ip_ban",
-  "description": "Bans access by IP address or by country (GeoIP via ip2country). Coarse gate \u2014 IP is spoofable / GeoIP approximate.",
+  "description": "Bans access by IP address or by country (GeoIP via ip2country). Coarse gate — IP is spoofable / GeoIP approximate.",
   "version": "2.0.x",
   "package": "Security",
   "composer_namespace": "drupal/ip_ban",
@@ -36,5 +36,13 @@
     "geoip",
     "block",
     "access"
-  ]
+  ],
+  "project_description": "A large majority of all websites have content that's only relevant to a country or region. This can be problematic because visitors from other countries or regions may not exactly be visiting your site with your best interests in mind. \n\n This module allows you configure the site to be \"read only\" or \"complete ban\" for a visitor based on individual IP addresses or by country (using IP address lookup). \n\n For complete bans, you can redirect the user to any page you choose and/or display an \"error\" message. There is nothing preventing you from entering an external address as the page to redirect to.\n\n \"Read only\" will allow you to disable blocks for visitors from a country or IP address set to \"Read only\", and disallows access to all /user pages. If you also need to disable forms, it is recommended you install the Read only mode module . \n\n This module also allows you to specify blocks to disable for \"Read only\" mode users. For example, it really makes no sense to enable the user login block in \"Read only\" mode. You should also consider disabling blocks on the page you set to redirect to for \"complete ban\" users.\n\n Requirements \n This module depends on the ip2country module , which, per the module page, can take a few minutes to install.\n\n Thank you to Samco-AMC for sponsoring part of this module's development.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2016-08-05",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

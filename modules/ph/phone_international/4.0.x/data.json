@@ -58,5 +58,13 @@
     "phone_international_basic_string",
     "tel link",
     "validation"
-  ]
+  ],
+  "project_description": "Drupal module for entering and validating international telephone number.\n\n Based on/uses the Javascript plugin intl-tel-input by jackocnr \n\n Attention \n Version >= 4.x \n Since the module requires an external library, Composer must be used.\n\n composer require \"drupal/phone_international\"\n Manual Version \n Download it from the release page and place it in Drupal's library folder.\n\n Composer Version \n It's recommended to use asset-packagist to install JavaScript libraries.\n\nCheck next steps:\n\n \n \n Add the Composer Installers Extender PHP package by oomphinc to your project's root composer.json file, by running the following command:\n\n composer require oomphinc/composer-installers-extender\n \n \n Add Asset Packagist to the \"repositories\" section of your project's root composer.json.\n\n {\n \"type\": \"composer\",\n \"url\": \"https://asset-packagist.org\"\n}\n \n \n Ensure that NPM and Bower assets are registered as new \"installer-types\" and, in addition to type:drupal-library, they are registered in \"installer-paths\" to be installed into Drupal's /libraries folder, within the \"extra\" section of your project's root composer.json file.\n\n \"extra\": {\n \"installer-types\": [\n \"npm-asset\",\n \"bower-asset\"\n ],\n \"installer-paths\": {\n \"web/libraries/{$name}\": [\n \"type:drupal-library\",\n \"type:npm-asset\",\n \"type:bower-asset\"\n ]\n }\n}\n \n \n You may now require libraries from NPM or Bower via Composer on the command line:\n\n composer require \"npm-asset/intl-tel-input:^25.3\"",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-12-19",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12999999
 }

@@ -38,5 +38,13 @@
     "options",
     "allowed values",
     "backed enum"
-  ]
+  ],
+  "project_description": "This module allows you to create List fields (integer/string) that get their allowed values from a PHP enum class. It also provides shortcuts to easily extract enum instances from field items and field item lists, for use in custom code:\n\n \n\n$entity->get('field_some_enum')->enum\n\n$entity->get('field_some_enum')->enums()\n\n \n\n Core issue \n This module will become partially obsolete once [#3249600] lands. The only difference will be the above mentioned possibility to get the enum instance(s) in custom code.\n\n Post-Installation \n Create a new field of type Enum (text) or Enum (integer) , set the enum class that should be referenced and use it like any other field.\n\n Similar projects \n \n Taxonomy Enum : also provides a field type for working with PHP enums, but this one automatically syncs all enum cases with taxonomy terms \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-08-04",
+  "project_changed": "2026-08-20",
+  "core_semver_minimum": 9003000,
+  "core_semver_maximum": 12000000
 }

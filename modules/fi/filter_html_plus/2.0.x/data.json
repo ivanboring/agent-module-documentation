@@ -35,5 +35,13 @@
     "allowed html",
     "attributes",
     "xss"
-  ]
+  ],
+  "project_description": "This module does one simple thing: it allows you to whitelist attributes globally, for all HTML tags, when using the core \"Limit allowed HTML tags and correct faulty HTML\" text filter. \n\n For example, if you want to allow users to specify the \"class\" and \"tabindex\" attributes on any tag, then just install this module and update your filter config by adding the following to the \"Allowed HTML tags\" list (in addition to the list of tags you wish to allow):\n\n <* class tabindex> \n\n This allows you to use the \"Limit allowed HTML tags and correct faulty HTML\" without being forced to enumerate every single attribute on every single tag.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2020-04-01",
+  "project_changed": "2026-08-19",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

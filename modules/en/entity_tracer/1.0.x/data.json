@@ -33,5 +33,13 @@
     "references",
     "trace",
     "debug"
-  ]
+  ],
+  "project_description": "The entity tracer module provides a UI to easily track entity references across entity types. \n\n \n\n Features \n - A UI to generate a diagram showing all of the requested entity relationships.\n\n- Diagram is nested and will recursively find and list reference fields and their related entities\n\n- To make finding and updating values easier, the fields are bolded and the entities being referenced will link to said entity's field page.\n\n- Works with D8 and D9 as well to help with migration.\n\n Post-Installation \n - Go to /admin/config/development/entity-tracer-settings and select the entity types you want to track\n\n- Set the maximum depth (defaults to 10)\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-04-15",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -36,5 +36,13 @@
     "allowlist",
     "symfony mailer",
     "deliverability"
-  ]
+  ],
+  "project_description": "Introduction \n The Symfony Mailer Reply-to module limits all outgoing email 'From' addresses to a whitelist and moves unrecognized 'From' addresses to the 'Reply-to' address.\n\n The primary use case for this module is when the outgoing email server will only send emails from a known email address or domain.\n\n Requirements \n Drupal Symfony Mailer integrates Symfony Mailer into Drupal\n\n Installation \n Install as you would normally install a contributed Drupal module. See: https://www.drupal.org/node/895232 for further information.\n\n Configuration \n \n Add 'From filter' to Mail policies as needed (/admin/config/system/mailer) \n \n Similar modules \n \n Webform Reply To allows you to customize the Reply-To for each webform. \n Contact Reply-To replaces From with site email, and uses it for Reply-To for contact forms only. \n \n Related issues/feature requests \n \n Issue #111702: Set fixed \"from:\" and add \"Reply-to:\" to comply with DMARC \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-03-07",
+  "project_changed": "2026-08-13",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

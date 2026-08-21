@@ -33,5 +33,13 @@
     "references",
     "usage",
     "content"
-  ]
+  ],
+  "project_description": "Simple and lightweight module to display referenced entities . Works with all entity type. Do not track usage but simply displays the list of referenced entities in a new tab.\n\n This module adds a tab to each entity type's local tasks where users with sufficient permission can quickly see the list of all referenced entities.\n\n Most common use case: enable \"Usage\" tab on Node and select \"Medias\" to get the list of all Media used by a node - including media in WYSIWYG, entity_reference fields, paragraphs...etc. \n\n This module detects referenced entities from the following field types:\n\n \n entity_reference field \n Image fields \n Paragraphs fields - and fields inside paragraphs \n Text fields - e.g. CKEditor fields and embed entities \n \n How to install \n \n Download the module \n composer require drupal/entity_usage_light \n Enable the module\n drush en entity_usage_light \n Activate the module per entity type in Admin > Config > Content Authoring > Entity Usage Light settings \n Go a bundle config edit form (e.g. the \"article\" node type) \n Select the detectable entity types for this bundle \n Open an entity and go to \"Usage\" tab (cf. screenshots) \n If bundle has revisions enabled, you can also view Usage per revisions (WIP in this issue )\n \n Similar modules \n \n Entity Usage : recommended if you need a more advanced tool to track referenced entities usage throughout your website. \n \n Slack channel \n Join the discussion on Slack in the #entity-usage-light channel. Details on how to connect to Drupal Slack here .\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2022-06-13",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 13000000
 }

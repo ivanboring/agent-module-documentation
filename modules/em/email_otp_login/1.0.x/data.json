@@ -1,7 +1,7 @@
 {
   "name": "Email OTP Login",
   "data_name": "email_otp_login",
-  "description": "Passwordless login via a 6-digit code emailed to the user. SECURITY: the login/verify endpoints are public (access content) and verification has NO rate-limiting, NO attempt limit, NO invalidation on failed guesses, and NO OTP expiry (the code is stored raw in State) \u2014 so an anonymous attacker can brute-force any account's 6-digit OTP and take it over. Do NOT use until it enforces attempt-limiting + expiry.",
+  "description": "Passwordless login via a 6-digit code emailed to the user. SECURITY: the login/verify endpoints are public (access content) and verification has NO rate-limiting, NO attempt limit, NO invalidation on failed guesses, and NO OTP expiry (the code is stored raw in State) — so an anonymous attacker can brute-force any account's 6-digit OTP and take it over. Do NOT use until it enforces attempt-limiting + expiry.",
   "version": "1.0.x",
   "package": "User",
   "composer_namespace": "drupal/email_otp_login",
@@ -35,5 +35,13 @@
     "passwordless",
     "brute force",
     "account takeover"
-  ]
+  ],
+  "project_description": "This module enables users to log in to the Drupal site using a one-time password (OTP) sent to their registered email address. Please note that this functionality is only available for registered users and does not support anonymous users.\n\n Simply add a menu with /otp-email link to use email otp login",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-01-13",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

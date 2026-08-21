@@ -42,5 +42,13 @@
     "base field override",
     "orphan cleanup",
     "field settings"
-  ]
+  ],
+  "project_description": "The Composite Reference module allows users to mark entity reference fields as composite.\n\n Composite reference fields ensure that referenced entities get deleted when the referencing entity is deleted.\n\n The deletion is prevented if the referenced entity is referenced by another entity but typically you should ensure you only use this capability for entities that can be referenced only once.\n\n How to \n The module works with both Entity Reference and Entity Reference Revisions field types.\n\n Field configs \n For configurable (bundle) fields, edit the field configuration and check the box to mark the reference as composite. The rest is taken care of.\n\n Base fields \n For base fields, simply set a custom field setting on the entity reference or entity reference revision field definition, like so:\n\n $fields['my_field'] = BaseFieldDefinition::create('entity_reference')\n\n ->setLabel(t('My reference'))\n\n ->setSettings([\n\n 'target_type' => 'node',\n\n 'composite_reference' => TRUE,\n\n ]);\n\n \n\n If the base field gets overridden, this setting will get exported to the third party setting and it will continue to work.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-06-09",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

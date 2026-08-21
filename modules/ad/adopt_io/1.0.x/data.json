@@ -33,5 +33,13 @@
     "cmp",
     "consent",
     "cookies"
-  ]
+  ],
+  "project_description": "Adopt.io Integration Module for Drupal \n The Adopt.io module provides integration with the GoAdOpt service, offering a safe and intuitive cookie banner solution for Drupal websites.\n\n Prerequisites \n Before installing the Adopt.io Integration module, ensure that you have the following:\n\n - A Drupal website (version 8, 9, or 10)\n\n- Administrative permissions to install modules\n\n Installation \n Steps to Install \n\n 1. Get your website code: \n - Go to Adopt website ( https://goadopt.io/ ) and get your website code\n\n 2. Install the Module: \n - Run `composer require 'drupal/adopt_io'`\n\n 3. Enable the Module: \n - Log in to your Drupal website as an administrator.\n\n- Go to `Extend` in the administration menu (`/admin/modules`). Scroll down to the `Adopt Io Integration` module and check the box next to it or.\n\n- Or using drush, run `drush en adopt_io`.\n\n 4. Configure the Module: \n - After enabling the module, navigate to `Configuration` > `Web services` > `Adopt.io Integration settings` (or `admin/config/services/adopt_io`).\n\n- Enter your Adopt.io website code in the provided field.\n\n- Click the `Save configuration` button to save your changes.\n\n Support \n For any questions, issues, or feature requests related to the Adopt.io Integration module.\n\n License \n This module is licensed under the GNU General Public License, version 2 or later. See the [LICENSE](LICENSE) file for details.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2024-04-29",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

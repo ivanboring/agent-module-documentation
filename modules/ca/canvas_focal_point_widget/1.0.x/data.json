@@ -35,5 +35,13 @@
     "image",
     "widget",
     "experience builder"
-  ]
+  ],
+  "project_description": "Widget to set focal point and image scale within canvas editor interface. \n\n I have used the great Focal Point module in the past however that module set the focal point globally for an image. Also the focal point is set at generation and editing of the media entity. I wanted the ability to set focal point per instance in Canvas interface. For example, the same media entity is used on a hero component with a specific focal point and then used in a card with a different focal point. \n\n *Work in Progress and generated with the help of AI*\n\n Features \n Provides a visual focal point picker and image scale slider for\n\n Canvas component image props.\n\n - Drag-and-drop focal point dot overlaid on a live image thumbnail\n\n- Optional scale slider (100–200 %) when a `{prefix}_scale` prop is present\n\n- Auto-discovers any prop pair following the `{prefix}_focal_x` /\n\n `{prefix}_focal_y` naming convention — no per-component configuration needed\n\n Example props:\n\n \n\nmedia_focal_x:\n\n type: number\n\n title: Image Focal Point X (%)\n\n description: Horizontal focal point as a percentage (0 = left, 50 = center, 100 = right).\n\n default: 50\n\n minimum: 0\n\n maximum: 100\n\n examples:\n\n - 50\n\nmedia_focal_y:\n\n type: number\n\n title: Image Focal Point Y (%)\n\n description: Vertical focal point as a percentage (0 = top, 50 = center, 100 = bottom).\n\n default: 50\n\n minimum: 0\n\n maximum: 100\n\n examples:\n\n - 50\n\nmedia_scale:\n\n type: number\n\n title: Image Scale (%)\n\n description: Scale the image within its container (100 = fit, 200 = 2× zoom).\n\n default: 100\n\n minimum: 100\n\n maximum: 200\n\n examples:\n\n - 100\n\n \n\n Corresponding example twig\n\n \n\n{% set media_img_style = 'object-fit:cover;object-position:' ~ focal_x ~ '% ' ~ focal_y ~ '%;transform:scale(' ~ scale_css ~ ');transform-origin:' ~ focal_x ~ '% ' ~ focal_y ~ '%' %} \n\n {% block media %}\n\n \n src=\"{{ media.src }}\"\n\n alt=\"{{ media.alt|default('') }}\"\n\n class=\"absolute inset-0 h-full w-full\"\n\n style=\"{{ media_img_style }}\"\n\n width=\"{{ media.width }}\"\n\n height=\"{{ media.height }}\"\n\n loading=\"lazy\"\n\n />\n\n {% endblock %}\n\n \n\n Additional Requirements \n - Drupal 11 or later\n\n- Canvas module\n\n Similar projects \n Focal Point sets the focal point globally for an image. Also the focal point is set at generation and editing of the media entity. Canvas Focal Point Widget sets the focal point per media instance in Canvas editor interface. \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-04-19",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 11000000,
+  "core_semver_maximum": 12000000
 }

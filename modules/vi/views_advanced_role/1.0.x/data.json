@@ -35,5 +35,13 @@
     "access",
     "advanced",
     "access control"
-  ]
+  ],
+  "project_description": "This module creates a plugin to enhance the core views role access functionality.\n\n In addition to allowing a user with at least one of the selected roles access to the view (the core \"or\" option), the plugin provided by this module will provide an \"and\" option so that a user must have all of the selected roles to be allowed access to the view.\n\n There is also an option to \"negate\" the action so that a user is allowed access to the view if they do not have any of the selected roles (the \"or\" option), or to allow a user access if they do not have all of the selected roles (the \"and\" option).\n\n The plugin also ensures that the same access criteria is applied to any route associated with a view using the Views Advanced Role access. This is most usually a page display rather then a block display.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-11-19",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

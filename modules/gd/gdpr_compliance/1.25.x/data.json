@@ -43,5 +43,13 @@
     "compliance",
     "js_cookie",
     "cookie notice"
-  ]
+  ],
+  "project_description": "Basic GDPR Compliance use cases (drupal 8.x only):\n\n \n Form checkboxes \n Pop-up alert \n Policy Page \n \n Policy Page \n * If the Policy Page does not suit you\n\n - create your own, replace the link & clear cache.\n\n - or modify policy content with `HOOK_gdpr_compliance_policy_alter()`\n\n* Policy Page based on:\n\n \n EN: edps.europa.eu\n\n data-protection-legal-notices & legal-notices \n DE: policy by Joachim Namyslo \n RU: project/fz152 \n TODO: Français \n \n Form Settings: \n * User register / login\n\n * Contact forms\n\n * Node Add forms\n\n * Webform basic support (see #2972730 )\n\n Cookies Settings: \n like eu_cookie_compliance but more easy to use:\n\n * User / Guest display\n\n * Color settings\n\n * Bootstrap friendly\n\n eu_cookie_compliance code diff \n * js based on core/jquery.cookie & very small and understandable\n\n* pop-up is translatable template\n\n Usage: \n composer require 'drupal/gdpr_compliance:^1.0' \n\n Settings screenshot: \n \n\n \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-12-14",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

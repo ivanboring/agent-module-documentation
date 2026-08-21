@@ -36,5 +36,13 @@
     "composer",
     "monitoring",
     "versions"
-  ]
+  ],
+  "project_description": "The Drupitor Client module provides a secure API endpoint to check for available Composer package updates in your Drupal installation. This module is designed for integration with external monitoring services while maintaining strict security controls.\n\n Back to top \n\n Requirements \n \n Drupal 10+ \n Composer-based Drupal installation \n PHP proc_open() function available \n Composer executable accessible on the system \n \n Back to top \n\n Installation \n \n Install the module via Composer or manually:\n \n Via Composer: composer require drupal/drupitor_client \n Manually: Download from the project page and place in your sites modules directory. \n \n \n Enable the module using Drush or via the UI:\n \n Via Drush: drush en drupitor_client \n Via UI: Navigate to Administration > Extend and enable \"Drupitor Client\" \n \n \n Configure the module at Administration > Configuration > Development > Drupitor Client \n \n Back to top \n\n Configuration \n Configure via UI \n\nAfter installation, navigate to Administration > Configuration > Development > Drupitor Client to configure:\n\n \n Enable/Disable: Control whether the API endpoint is accessible \n Composer Path: Specify the absolute path to your Composer executable \n Command Timeout: Set timeout for Composer commands (10-300 seconds) \n \n The module starts in a disabled state for security and must be explicitly enabled.\n\n Configure via settings.php \n\nYou can also manage the configuration via settings.php:\n\n \n\n$config['drupitor_client.settings']['enabled'] = TRUE;\n\n$config['drupitor_client.settings']['api_token'] = '[YOUR_API_TOKEN]';\n\n$config['drupitor_client.settings']['encryption_key'] = '[YOUR_ENCRYPT_KEY]';\n\n$config['drupitor_client.settings']['encryption_method'] = 'AES-256-GCM';\n\n$config['drupitor_client.settings']['composer_path'] = 'composer';\n\n$config['drupitor_client.settings']['command_timeout'] = '60';\n\n \n\n Back to top \n\n API usage \n When enabled, the module provides a JSON endpoint at: /drupitor/api/v1/updates \n\n The endpoint is only accessible when:\n\n \n The module itself is enabled, and it's functionality is enabled on the configuration page \n The correct API token (configured on the configuration page) is provided in the request header (recommended) or as a query parameter (not recommended for security reasons) \n \n Back to top \n\n Logging \n All operations are logged to the 'drupitor_client' channel for security auditing and troubleshooting.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-08-23",
+  "project_changed": "2026-06-09",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

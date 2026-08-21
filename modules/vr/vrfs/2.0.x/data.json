@@ -37,5 +37,13 @@
     "widget",
     "exposed filters",
     "embed view"
-  ]
+  ],
+  "project_description": "This module provides new plugins and also extends functionality for the Views Reference Field module.\n\n The main goal of the plugins is to provide more intuitive widgets to be able to configure contextual filters to the views so that a ‘Content Manager’ user has a more intuitive interface to configure the referenced view.\n\n On the other hand, this module implements a field widget and a field formatter improved, in order to pass additional information to the @ViewsReferenceSetting plugins. Specifically, the ‘entity type’ and the ‘bundle’ where the view is being referenced are provided. In this way, a developer who wants to develop a plugin of type @ViewsReferenceSetting, can improve the user experience in the configuration form and additionally can inject information to the view at rendering time, as can be seen in the files attached to this description.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2024-05-21",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

@@ -38,5 +38,13 @@
     "fallback",
     "cdn-cgi",
     "responsive"
-  ]
+  ],
+  "project_description": "This module is to serve the styled images using Cloudflare's service on production environment and to fallback to Drupal's default Image Style management for non-production / local development environments.\n\n Read more about Cloudflare's image resizing service at: https://developers.cloudflare.com/images/about/ \n\n Today most of the sites use one or the other CDN, one of the widely used CDN is Cloudflare. This provides a nice service to serve scaled / styled images from CDN itself. But if we use this, there is no way to show images without custom work on non-production environments where CDN is not used and especially on local development environments. This module is intended to fix this issue.\n\n Also, there is cost involved with use of the service so it is best to do it per image style to keep a check on usage (and costs).\n\n \nNote: Since the goal is to serve the images from CDN and only to fallback when not using via CDN it is bit heavy on PHP processing.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-12-21",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

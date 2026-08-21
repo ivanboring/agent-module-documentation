@@ -40,5 +40,13 @@
     "export",
     "views",
     "memory"
-  ]
+  ],
+  "project_description": "This module provides a views display type for CSV and JSON for exporting large result sets using a streaming Response and limiting the amount of memory consumed by the entity system. The goal is to allow exporting 100k and larger result sets without running out of PHP memory.\n\n Obviously, this requires hacks and tweaks including possibly skipping some of the normal views hooks so that the views result can be iterated rather than loading the full SQL result set into memory initially. Live preview is skipped. Some other contributed modules that interact with views may be incompatible with this approach.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-04-16",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

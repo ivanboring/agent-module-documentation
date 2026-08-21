@@ -37,5 +37,13 @@
     "anonymous",
     "maxmind",
     "localization"
-  ]
+  ],
+  "project_description": "Based on GeoIP, this module provides timezone information for anonymous users too.\n\n Let's say you have a list like that:\n\n - 08/08/2020 11:00AM\n\n - 09/08/2020 2:00PM\n\n Drupal generally renders it according to the timezone of the user, except for anonymous user, where site default timezone is in use. This module makes it possible for anonymous users to see the dates and times (beware that even dates can change due to timezone difference) in their own local timezone. It is as precise as a GeoIP database can be.\n\nBeware that it significantly decreases the performance of the site, page cache is eliminated, you still have render array caching. Therefore, make sure that you use timezone cache context wisely where needed.\n\n Requirements:\n\n - https://dev.maxmind.com/geoip/geolite2-free-geolocation-data?lang=en",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-09-07",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 11000000
 }

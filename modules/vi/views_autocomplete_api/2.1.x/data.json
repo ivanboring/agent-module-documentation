@@ -35,5 +35,13 @@
     "typeahead",
     "api",
     "suggestions"
-  ]
+  ],
+  "project_description": "This module allows you to populate any autocomplete textfield via Views driven data and as little coding as possible. This is a tiny module. It is known to work with views built on top of Search API module .\n\n This module does not package any style for now . Screenshot is an example of result you can achieve after some CSS work. Of course, we would be happy to include any provided style proposed in the issue queue !\n\n Usage \n 1 - Create one or more views :\n\n \n The last field of the View is used to show the proposed results. You can rewrite results to combine multiple fields (images, links, texts, etc.) \n The field before will be used for injection on selection and should be plain text (you can rewrite the field as well) \n You can use header / footer and no result behavior. \n The exposed filters will be used to filter the view with the input of the user into the autocomplete text field (you can user AND / OR, so for example seach on users the name or email). You can still use non-exposed filters to restrict the search. \n You can use [autocomplete] token that contains the current search input \n \n 2 - Just do a little form_alter against any textfield element :\n\n \n\n$form['my_text_field']['#autocomplete_route_name'] = 'views_autocomplete_api';\n\n$form['my_text_field']['#autocomplete_route_parameters'] = [\n\n 'view_name' => 'my_view_name1,my_view_name2,...'\n\n];\n\n \n\n Note that the master display of the Views will be used.\n\n Views Autocomplete Search is a good example for testing some of those functionalities applied to the search field of the core default search block.\n\n Differences with the D7 version : you can use [autocomplete] token wherever you are (for example in the header of the View to link to a research page). Drupal 8 version supports highlighting as well.\n\n Alternative modules: \n Search Autocomplete : uses Views as well to generate autocomplete path.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2013-06-26",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

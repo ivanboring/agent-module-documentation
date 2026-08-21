@@ -36,5 +36,13 @@
     "booking",
     "views",
     "calendar"
-  ]
+  ],
+  "project_description": "The Date Range Availability module allows you to manage and display availability for entities (e.g., events, products, resources) based on date ranges. It provides a simple way to define and show availability states (e.g., Available, Unavailable, Coming Soon) directly within theme templates or as a global field in Views. This module is ideal for event management, e-commerce, booking systems, and more.\n\n Features \n Define Availability: Set availability states based on date ranges.\n\nMultiple States: Supports states like Available, Unavailable, and Coming Soon.\n\nViews Integration: Add an Availability field to Views to display the entity's current state.\n\nCustom Theming: Use the node_availability Twig function to display availability in templates.\n\nFlexible Use Cases: Perfect for event management, e-commerce, booking systems, and more.\n\n Installation and Usage \n 1. Install the Module\n\nDownload and enable the Date Range Availability module.\n\n2. Use in Theming\n\nTo display the availability state in your theme templates, use the node_availability() function. This function accepts two parameters:\n\nNode: A variable node that holds node object in twig.\n\nDate Range Field: The machine name of the date range field.\n\nExample:\n\n \n\n{% set state = node_availability(node, 'field_date') %} \n\n {{ state.label }} \n\n \n\n3. Use in Views\n\nTo show the availability state in Views:\n\nAdd the Availability field to your View.\n\nConfigure the field by specifying the machine name of the date range field (e.g., field_date).\n\nThe availability state will be displayed for each row in the View.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-01-19",
+  "project_changed": "2026-08-04",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

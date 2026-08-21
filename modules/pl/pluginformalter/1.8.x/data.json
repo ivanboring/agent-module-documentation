@@ -50,5 +50,13 @@
     "deprecated",
     "webprofiler",
     "form weight"
-  ]
+  ],
+  "project_description": "Back to top \n\n Obsoletion \n Drupal 11.2+ now supports OOP hooks. You should move your FormAlter plugins into the /src/Hook/ folder and convert them to #[Hook()] attributes:\n\n \n https://www.drupal.org/blog/drupal-11-2-0 \n https://www.hashbangcode.com/article/drupal-11-object-oriented-hooks-and-hook-service-classes \n \n There are no plans to upgrade this module to Drupal 12 as a result, as traditional hooks are deprecated.\n\n Back to top \n\n Overview \n This module provides three annotation Plugins to be used to alter Forms , Paragraphs forms and Inline Entity Forms .\n\n It allows you to use Dependency Injection of services and to define a weight for your plugin which will affect the alteration queue.\n\n Multiple plugins can alter the same form.\n\n It also decorates the Forms data collector used by the WebProfiler module by adding a list of all the plugins affecting each form.\n\n \n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Obsolete",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-05-13",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

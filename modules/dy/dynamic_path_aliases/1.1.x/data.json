@@ -35,5 +35,13 @@
     "path processor",
     "entity",
     "rewrite"
-  ]
+  ],
+  "project_description": "Change entity type router paths without having to create path aliases. Uses inbound/outbound processing to rewrite paths on the fly. Rewrites are cached to keep subsequent requests performant. Varying paths per entity type bundle is supported. For example, /article/{node} for an article and /blog-post/{node} for a blog post. Works with any entity type route!\n\n Usage \n \n Download and install the module. Recommended install method is composer:\n\n composer require drupal/dynamic_path_aliases \n Go to /admin/config/search/path/rewrite to add path rewrites. \n \n Token replacements \n Sorry, tokens are NOT supported! Tokens would add too much performance overhead. This approach is intended to avoid the creation of many path alias entities while still allowing paths to be easily changed. For example, on larger sites with many thousands of users or content. If tokens are absolutely necessary, use the tried and true https://www.drupal.org/project/pathauto module.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2022-09-19",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

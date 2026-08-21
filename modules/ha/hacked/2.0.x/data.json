@@ -43,5 +43,13 @@
     "hacked:list-projects",
     "hacked:diff",
     "hacked report"
-  ]
+  ],
+  "project_description": "This module does not and will not prevent your site from being 'hacked'. \n\n This module scans the currently installed Drupal, contributed modules and themes, re-downloads them and determines if they have been changed. Changes are marked clearly and if the diff module is installed then Hacked! will allow you to see the exact lines that have changed.\n\n Hacked! also provides drush integration so that you can see what files have changed from the command line.\n\n This is primarily a developer tool and should never ever (don't even think it) be installed on a production site.\n\n Similar modules \n There are a number of other 'integrity' modules, such as ' md5check ', ' File integrity check ' and ' Sentry '. These modules have features to protect a live site from code changes or to only check Drupal core.\n\n Windows support \n Windows is not currently supported by this module, if you want to write a patch to get it fully working, then please post it in the issue queue.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2009-10-08",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

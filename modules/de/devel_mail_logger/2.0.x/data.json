@@ -40,5 +40,13 @@
     "mailsystem",
     "development",
     "debug"
-  ]
+  ],
+  "project_description": "This Modules provides a way prevent outgoing emails from being send and logs them to the Database. Also it contains a minimal Admin UI to view logged mails.\n\n Drupal 8 \n The provided MailInterface devel_mail_log logs all outgoing mails into database. Activate it via https://www.drupal.org/project/mailsystem or in settings.php.\n\n Drupal 7 \n Drupla 7 version uses a different approach, it uses hook_mail_alter to abort sending and then allows to view the logged email, admin can then send these logged emails using the normail mailing system, this is helpful to test emails real time.\n\n Drupal 7 version also has logging for Civicrm emails.\n\n Drupal 7 version development sponsored by Gokhale Method \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2018-05-16",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

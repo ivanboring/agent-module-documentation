@@ -33,5 +33,13 @@
     "well-known",
     "domain",
     "commerce"
-  ]
+  ],
+  "project_description": "This module does one very simple thing, provide a config form with a file upload field to upload your Apple Pay verification file, and a route to display the contents of that file for Apple to verify you own your site.\n\n Post-Installation \n Once installed, visit /admin/config/system/apple-pay-verification and upload the verification file provided by Apple. The contents of the file should be displayed at /.well-known/apple-developer-merchantid-domain-association as Apple requires. If you don't see it, try clearing the cache first and then check again.\n\n Additional Requirements \n This module doesn't require any other modules, but it's a great compliment to any integration that handles Apple Pay.\n\n Recommended modules/libraries \n Commerce Stripe's payment element integrates well with this module. Once installed, login to Stripe and add a new payment method domain . Download the required file for upload through the settings form, then confirm with Stripe that the configuration is all set. You should be able to use the Apple pay option on the Stripe payment element now.\n\n Supporting this Module \n Support me on Patreon \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2023-10-27",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

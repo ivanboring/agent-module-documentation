@@ -36,5 +36,13 @@
     "audit",
     "activity log",
     "messages"
-  ]
+  ],
+  "project_description": "This module allows adding log messages to entities. Log messages are shown on a \"Log\" tab on the entity they are associated with.\n\n Log messages can be added to a configurable set of entity types.\n\n This module is intended to be used in cases where you want to store log messages but the default Drupal watchdog / logging interface is insufficient. E.g. you want the log messages to appear within the context of an entity, you want more\n\npersistency in the storage of these log message, and / or you want specific roles to access these log messages, while you do not want these roles to access the default Drupal watchdog UI.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-07-08",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

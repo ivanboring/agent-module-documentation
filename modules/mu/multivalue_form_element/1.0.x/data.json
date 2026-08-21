@@ -43,5 +43,13 @@
     "custom form",
     "repeating fields",
     "ajax add more"
-  ]
+  ],
+  "project_description": "Provides a multi-value form element that wraps any number of form elements.\n\nThe wrapped elements will be repeated based on the cardinality specified on the wrapper.\n\nIt basically brings the delta cardinality concept of fields to form elements.\n\nEach set of child elements (\"delta\") can be re-ordered with drag-and-drop.\n\n \n\n$form['contacts'] = [\n\n '#type' => 'multivalue',\n\n '#title' => $this->t('Contacts'),\n\n '#cardinality' => MultiValue::CARDINALITY_UNLIMITED,\n\n 'name' => [\n\n '#type' => 'textfield',\n\n '#title' => $this->t('Name'),\n\n ],\n\n 'mail' => [\n\n '#type' => 'email',\n\n '#title' => $this->t('E-mail'),\n\n ],\n\n];",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2020-11-23",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

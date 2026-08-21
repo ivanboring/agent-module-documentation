@@ -42,5 +42,13 @@
     "contact_message",
     "manage display",
     "embed form"
-  ]
+  ],
+  "project_description": "This module adds a field formatter to display a rendered Contact form from Drupal 8 core's Contact module using an entity reference field on an entity.\n\n Contact forms are entities, and thus fieldable in Drupal 8. However, the core functionality does not include a field formatter to display the forms. This module provides that functionality.\n\n Installation: \n \n Ensure core's Contact module is enabled. \n Install this module as you normally would. \n Add a Reference field of type other to your content type or entity. \n Select Contact form from the \"Type of item to reference\" select list. Hint: It's under \"Configuration\", not Content. \n Set the default values if so desired and save. \n Go to your entity's Manage form display screen and you can display the field to your administrators using Autocomplete, Checkboxes, or a Select. \n Go to your entity's Manage display screen and choose Rendered Contact Form for the format. \n You are now ready to add contact forms to your entity! \n \n Use in combination with Paragraphs and Inline Entity Form to allow your admins to quickly and easily add Contact forms where ever they need to!",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-08-04",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

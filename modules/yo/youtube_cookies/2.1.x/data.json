@@ -46,5 +46,13 @@
     "facade",
     "consent",
     "text format filter"
-  ]
+  ],
+  "project_description": "This module attempts to make the YouTube videos played on the site with the cookie privacy policy. If the user has not enabled the YouTube-related cookies, the YouTube videos will be displayed with a façade.\n\n Compatibility \n \n OneTrust \n EU Cookie Compliance \n \n Integrations \n \n Iframe field type \n CKEditor: Filter to prevent loading YouTube iframes. \n \n Configuration \n \n Go to /admin/config/system/youtube-cookies \n Fill the \"Cookie category\" with the category machine name that should be accepted to play the YouTube videos. \n Select your \"Cookie compliance system\". \n Set the \"Action when the user have not consent\".\n NOTE: The youtube-nocookie.com domain option is deprecated as it is not fully GDPR compliant and will be removed in future versions. \n Customise the pop-up message and save it. \n \n To block YouTube videos added via CKEditor, go to the text format and enable the \"YouTube cookies filter\".\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-10-14",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

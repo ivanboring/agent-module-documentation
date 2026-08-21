@@ -42,5 +42,13 @@
     "sync flag",
     "migrate_plus",
     "settings.php"
-  ]
+  ],
+  "project_description": "The Migrate Scheduler module provides the functionality of executing the\n\nmigrations on a particular schedule.\n\n Cron API which is built into the Drupal core is used to schedule the migrations.\n\n INSTALLATION AND CONFIGURATION \n Install as you would normally install a contributed Drupal module. See:\n\n https://www.drupal.org/node/895232 for further information.\n\n The module currently relies on the configuration set in the settings.php file,\n\nwith a plan to support the configuration from the admin UI [#2973261]\n\n Place the following configuration variable in any of the active settings.php, or\n\nsettings.local.php, or settings.local.php\n\n <?php\n\n $config['migrate_scheduler']['migrations'] = [\n\n 'migration_1' => [\n\n 'time' => 3600, # To be executed after every 1 hour.\n\n 'update' => TRUE, # To be executed with the --update flag.\n\n ],\n\n 'migration_2' => [\n\n 'time' => 28800, # To be executed after every 8 hours.\n\n ],\n\n 'migration_3' => [\n\n 'time' => 60, # To be executed every minute.\n\n 'sync' => TRUE, # To be executed with the --sync flag.\n\n ],\n\n];\n\n?>\n\n The above configuration is similar to executing:\n\n \n drush mim migration_1 --update - after every hour. \n drush mim migration_2 - after every 8 hours. \n drush mim migration_3 --sync - after every one minute \n \n The settings like update , and sync can be used together as well.\n\n RECOMMENDED MODULES \n \n Migrate Plus ( https://www.drupal.org/project/migrate_plus ): Enhancements to core migration support \n Migrate Tools ( https://www.drupal.org/project/migrate_tools ): Tools to assist in developing and running migrations. \n \n SUPPORT \n To submit bug reports and feature suggestions, or to track changes:\n\n https://www.drupal.org/project/issues/search/migrate_scheduler \n\n MAINTAINERS \n Current maintainers:\n\nAjit Shinde - https://www.drupal.org/u/ajits \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-05-16",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

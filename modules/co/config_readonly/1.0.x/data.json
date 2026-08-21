@@ -46,5 +46,13 @@
     "ConfigFormBase",
     "service provider",
     "config.storage"
-  ]
+  ],
+  "project_description": "This module allows to lock any configuration changes done via the Drupal admin UI. This can be useful in scenarios where for example configuration changes should not be done on the production environment, but only on staging or local environments.\n\n To enable readonly mode, enable this module and add this to your settings.php:\n\n<?php\n\n$settings['config_readonly'] = TRUE;\n\n?>\n\n To lock production and not other environments, your code in settings.php\n\nmight be a conditional on an environment variable like:\n\n <?php\n\nif (isset($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] === 'prod') {\n\n $settings['config_readonly'] = TRUE;\n\n}\n\n?>\n\n The following approaches are somewhat discouraged since they may allow anyone with Drush or shell access to bypass or disable the protection and change configuration in production.\n\n To allow all changes via the command line and enable readonly mode for the UI only:\n\n<?php\n\nif (PHP_SAPI !== 'cli') {\n\n $settings['config_readonly'] = TRUE;\n\n}\n\n?>\n\n You could similarly toggle read-only mode based on the presence or absence of a file on the webserver (e.g. in a location outside the docroot).\n\n <?php\n\nif (!file_exists('/home/myuser/disable-readonly.txt')) {\n\n $settings['config_readonly'] = TRUE;\n\n}\n\n?>\n\n You may whitelist forms so that their config may be changed on the live site. See the following documentation for more information:\n\n https://git.drupalcode.org/project/config_readonly/blob/HEAD/README.txt",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2014-02-13",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

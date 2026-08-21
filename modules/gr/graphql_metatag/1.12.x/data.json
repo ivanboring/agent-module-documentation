@@ -48,5 +48,13 @@
     "MetaProperty",
     "MetaLinkHreflang",
     "MapArray scalar"
-  ]
+  ],
+  "project_description": "This module enables the export of data from the \"Metatag\" ecosystem modules:\n\n \n Metatags \n Schema.org Metatag \n External Hreflang \n \n Usage \n Here is an example of how to obtain data in GraphQL queries\n\n \n\n{\n\n nodeQuery {\n\n entities {\n\n ... on Node {\n\n metasSchema: entitySchemaMetatags\n\n metas: entityMetatags {\n\n type: __typename\n\n property: key\n\n content: value\n\n }\n\n }\n\n }\n\n }\n\n}",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-02-05",
+  "project_changed": "2026-08-20",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

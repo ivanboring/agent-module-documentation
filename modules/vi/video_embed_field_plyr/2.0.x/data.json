@@ -37,5 +37,13 @@
     "video embed field",
     "youtube",
     "vimeo"
-  ]
+  ],
+  "project_description": "This module adds a field formatter for the video_embed_field or the Core oEmbed that comes with Drupal 9.\n\nIt provides a formatter using the Plyr Video player .\n\n Plyr is a lightweight very extensible HTML5 video player,with out of the box support for Vimeo, YouTube and locally hosted MP4 files.\n\nCurrently this module only supports Youtube and Vimeo, as we didn't have use for self hosted video's at this moment.\n\n The actual field formatter output is rendered through a Twig template, so you can override that in your own theme to further control the full output of the video field on rendering level.\n\n \n\n the Plyr options are customizable per field instance per view mode. \n\n \n\n the Plyr options are shown in the overview mode",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-01-05",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

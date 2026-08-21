@@ -37,5 +37,13 @@
     "lrs",
     "analytics",
     "e-learning"
-  ]
+  ],
+  "project_description": "A Drupal 8 integration of Experience API (xAPI) statements emitted by H5P content types to be captured and sent to Learning Record Store (LRS).\n\n Module captures all the statements that H5P will generate for both authenticated and anonymous users. Statements are sent to the internal endpoint that will add the timestamp, then put that statement into a queue. Queue will be handled and batches of statements would be generated and stored. Those batches will be sent to the configured LRS store.\n\n LRS settings page would also allow to change the batch size.\n\n Module requires cron jobs to be configured so that batches would be handled in a meaningful way.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2019-02-21",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -40,5 +40,13 @@
     "manage display",
     "allowed_tags",
     "markup"
-  ]
+  ],
+  "project_description": "This is a very simple module that enables an HTML field format for text and string fields.\n\n Useful for plain text fields that might have basic html and needs to be rendered as such.\n\n Provides a simple solution for many different use cases.\n\n By default, this module outputs the HTML code of the field unfiltered.\n\nIt is therefore the responsibility of the site operator to take appropriate\n\nmeasures, e.g. against XSS. Access should be restricted to trusted roles.\n\n Requirements \n No special requirements at this time.\n\n Install \n It is recommended to install via composer. See below for commands:\n\n \n\ncomposer require drupal/html_field_formatter\n\ndrush en html_field_formatter\n\n \n\n Configuration \n \n Goto Structure -> Content Types and select a content type to change. \n Goto \"Manage Display\" page and change \"Format\" on desired field to \"HTML\". \n Configure any formatting settings as needed. \n Save changes. \n Now field should be formatted as HTML. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-11-09",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

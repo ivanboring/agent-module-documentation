@@ -38,5 +38,13 @@
     "requests",
     "debugging",
     "integrations"
-  ]
+  ],
+  "project_description": "Log all drupal core http_client request & response logs in database. So we can easily track the outgoing request made by \\Drupal::httpClient() .\n\n Features: \n\n1. This module logs all the request and response data made by drupal core \\Drupal::httpClient() ;.\n\n2. provide UI to manage the logs, for example: filter, view details etc.\n\n How to use :\n\n1. composer require drupal/http_client_log\n\n2. drush en -y http_client_log\n\n3. using below code to start request.\n\n \n\nuse Drupal\\Component\\Serialization\\Json;\n\n$base_url = \"https://httpbin.org\";\n\n$client = \\Drupal::httpClient(); \n\n $response = $client->get($base_url . '/get');\n\n$data = Json::Decode($response->getBody());\n\ndpm($data);\n\n $response = $client->get($base_url . '/anything', [\n\n 'headers' => [\n\n 'accept' => 'application/json'\n\n ],\n\n]);\n\n$data = Json::decode($response->getBody());\n\ndpm($data);\n\n $response = $client->post($base_url . '/status/500', [\n\n 'verify' => true,\n\n 'headers' => [\n\n 'accept' => 'text/plain'\n\n ],\n\n]);\n\n$data = $response->getBody()->getContents();\n\ndpm($data);\n\n4. visit \"/admin/reports/http-client-log\"",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-09-19",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

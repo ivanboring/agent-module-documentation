@@ -39,5 +39,13 @@
     "delimiter",
     "parser",
     "open-data"
-  ]
+  ],
+  "project_description": "Finetune some features of DKAN datastore imports.\n\nCurrently just allowing to configure the CSV parser in terms of delimiter and quotes.\n\n Features \n Allows to configure delimiter and quoting character for DKAN datastore import, which is not possible directly via DKAN at this moment.\n\n There is also a submodule datastore_mysql_import_tweak which allows to configure\n\nthe delimiter for the datastore_mysql_import module too.\n\n Post-Installation \n configurable via: admin/dkan/parser-settings\n\n Additional Requirements \n requires DKAN specifically the datastore module\n\n only version 1.x \n\nthe datastore module needs to be enabled beforehand, it will not get\n\nautomatically enabled due to https://github.com/GetDKAN/dkan/discussions/4149 \n\n if using the MySql import (datastore_mysql_import), the datastore_mysql_import_tweak\n\nmodule should be enabled (it needs datastore_mysql_import)\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2024-05-02",
+  "project_changed": "2026-08-13",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

@@ -41,5 +41,13 @@
     "watchdog",
     "logging settings",
     "ignored channels"
-  ]
+  ],
+  "project_description": "Once Drupal bootstraps, it stops sending errors to PHP's error log — which could be the web server error log, syslog or stderr on the command line. Error Log module adds the PHP error log as a Drupal logger implementation, so errors will once again appear in the same log or console that they appeared in before Drupal bootstrapped.\n\n Because Drupal ≥8 does log some critical/fatal errors to PHP's error log, redundant log messages may appear in some circumstances. Drush provides its own console logger; Error Log module is therefore not active in the Drush environment unless the PHP error_log configuration directive is set.\n\n Similar modules: \n Logging and Alerts has a similar errorlog (web server logging) module, but unfortunately it calls the theme() and t() functions, which should not be called by a logger, and does not fully clean up HTML-encoded exception messages. Monolog is a much more powerful solution for logging to the error log or elsewhere. The only advantage of Error Log module is bare bones simplicity. (This module can actually be used with Monolog by enabling the drupal.error_log handler.)\n\n Credits: \n Created and maintained by mfb – you can support development by contributing or sponsoring .\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-01-12",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 13000000
 }

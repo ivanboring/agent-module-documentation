@@ -35,5 +35,13 @@
     "node",
     "maintenance",
     "links"
-  ]
+  ],
+  "project_description": "Adds a per-node broken-links report tab for editors and site administrators.\n\n Back to top \n\n What this module does\n \n \n Depends on the Link Checker module. \n Installs a View named broken_links_per_node_report . \n Adds a local task tab titled Broken Links on node pages. \n Shows broken link records for the current node at:\n \n node/%node/broken-links \n \n \n \n Back to top \n\n Requirements\n \n \n Drupal 10 or Drupal 11 \n Contrib module: linkchecker \n \n \n Back to top \n\n Installation\n \n \n Ensure the Link Checker module is installed. \n Enable this module: \n \n drush en linkchecker_per_node -y\n \n Rebuild caches: \n \n drush cr\n Back to top \n\n Usage\n \n \n Open any node page. \n Click the Broken Links local task. \n Review the report table (status code, URL, and check timestamps). \n \n Back to top \n\n Permissions\n \n \n Grant the permission View broken links per node to roles that should access the node tab report. \n \n Back to top \n\n Configuration\n \n The report is provided by the View config:\n\n \n views.view.broken_links_per_node_report \n \n You can adjust fields, filters, and display settings in the Views UI.\n\n Back to top \n\n Uninstall behavior\n \n On uninstall, the module removes its installed View configuration:\n\n \n views.view.broken_links_per_node_report \n \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-04-28",
+  "project_changed": "2026-08-11",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

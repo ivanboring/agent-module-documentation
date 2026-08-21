@@ -37,5 +37,13 @@
     "css",
     "images",
     "layout"
-  ]
+  ],
+  "project_description": "A Drupal module that extends Responsive Image to support CSS container queries.\n\n How It Works \n\n 1. Create breakpoints with \"container\" in the group name\n\nMYTHEME.container.sm:\n\n label: 'Container SM (240px)'\n\n mediaQuery: 'all and (min-width: 240px)'\n\n weight: 1\n\n group: MYTHEME.container\n\n multipliers:\n\n - 1x\n\n2. Use these breakpoints in a Responsive Image Style\n\n3. The module automatically detects and enables container query mode\n\n How to use \n\n1. Go to `/admin/config/media/responsive-image-style`\n\n2. Create a style, select \"container query images\" as the breakpoint group\n\n3. Map your image styles\n\n4. Use the standard Responsive Image formatter",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2026-02-13",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10002000,
+  "core_semver_maximum": 12000000
 }

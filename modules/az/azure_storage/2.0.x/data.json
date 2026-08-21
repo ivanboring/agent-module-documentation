@@ -33,5 +33,13 @@
     "blob",
     "file system",
     "cloud"
-  ]
+  ],
+  "project_description": "This project provides an easy integration with Microsoft Azure Storage services (blobs, tables and queues)..\n\n GitHub mirror: https://github.com/baikho/drupal-azure_storage \n\n Usage \n \n\n/** @var \\Drupal\\azure_storage\\AzureStorageClientInterface $storage_client */\n\n$storage_client = \\Drupal::service('azure_storage.client');\n\n \n\n Storage Queue Service examples \n \n\n// Simple usage.\n\n$storage_queue_service = $storage_client->getStorageQueueService(); \n\n // Or with a dedicated connection string.\n\n$storage_queue_service = $storage_client\n\n ->setStorageQueueService($connection_string)\n\n ->getStorageQueueService();\n\n // Send a message.\n\n$storage_queue_service->createMessage('queue_name', 'message');",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-10-04",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008003,
+  "core_semver_maximum": 11000000
 }

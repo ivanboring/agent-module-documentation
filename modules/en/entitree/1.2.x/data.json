@@ -38,5 +38,13 @@
     "tree",
     "entities",
     "structure"
-  ]
+  ],
+  "project_description": "Entitree provides a tree structure to content entities in a Drupal site. Along with the structure itself, Entitree provides tools to enable support for entity types as well as an API for accessing the tree structure. Once an entity type is made available, all entities of that type can be added to the tree.\n\n Back to top \n\n Included Submodules \n Entitree Node \n Support for the Node (content) entity type is provided in a submodule. This module must be enabled for Node support to be provided.\n\n Entitree Taxonomy Term \n Support for the Taxonomy Term entity type is provided in a submodule. This module must be enabled for Taxonomy Term support to be provided.\n\n Entitree Location Rules \n Once an entity is added to the tree structure its paths should be managed only by Entitree. Use the included Entitree Location Rules module to generate paths automatically when creating and updating entities (consider this a replacement for Pathauto in the Entitree ecosystem). \n\n Entitree Permissions \n Enable and configure the included Entitree Permissions module to define permissions in the context of the tree structure. This is a robust system that supports:\n\n \n Cascading permissions per sub-tree: Define a permission and specify if it applies only to a single location in the tree or that location and all of its descendants. Conflicting permissions in descendants will override cascading permissions. \n Define permissions based on any user context: Unlike Drupal core, Entitree provides support for user and role-based permissions out-of-the-box. A plugin type is defined to allow for further extension of this behavior. In the future this should be expanded to support fields on the User entity type. \n Assigned priority to permissions: Any number of permissions can be defined on a location. Every permission is assigned a priority value allowing the administrator to have full control over the order applied when a user's context matches multiple permissions. \n \n Back to top \n\n Current Limitations \n \n Multilingual support: Multilingual support is only partially implemented. At this point the data structure is in place, but logic still needs to be completed to leverage the data. This module should be avoided for multilingual projects for now. \n \n Back to top \n\n Roadmap \n \n Complete updates to meet Drupal coding standards. \n Add multilingual support. \n Add user property permissions type. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2020-10-28",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -50,5 +50,13 @@
     "operator",
     "greater than",
     "less than"
-  ]
+  ],
+  "project_description": "This module adds an extra tab to each Webform node, allowing you to specify validation rules for your Webform components. You can create one or more of the predefined validation rules, and select which Webform component(s) should be validated against those. By using the hooks provided by this module, you can also define your own validation rules in your own modules.\n\n Back to top \n\n How to use \n When you edit any component of a supported type, near the bottom of the edit pane there will be a section called \"Form extra validation\" which contains the configuration.\n\n Back to top \n\n Frequently asked questions \n \n Q: Can I validate values against my own dataset, set of codes or database table? \n A: You should create your own custom module which hooks into this module. See custom module example . \n Q: Can i perform client-side (Javascript) validation with this module? \n A: No you can't. Check out the clientside_validation module for this functionality. \n Q: Can you help with my regular expression? \n A: You can validate against a whole range of things using the regular expressions validation rules, so we cannot give examples for every use case. You could ask for some help in the issue queue with regards to your exact regular expression. There are already some examples available; have a look at Regular Expressions for Webform Validation (thx nfd) and regexlib.com for more examples. \n \n Back to top \n\n Features overview \n The following validation rules are currently included:\n\n \n Equal values on multiple fields \n Compare two fields \n Require at least one of two fields \n Require at least one of several fields \n \n Not all the validators that were available in Drupal 7 have been implemented on Drupal 8+.\n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2009-11-16",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -36,5 +36,13 @@
     "cache",
     "invalidation",
     "media"
-  ]
+  ],
+  "project_description": "The Varnish file purger is a new Drupal project developed to address compatibility issues between the Varnish Purge and Purge File modules, especially in setups where files are served across multiple domains. In scenarios involving the file_replace module, these existing modules did not effectively handle file purging, leading to stale file caches being served by Varnish.\n\n The Varnish file purger module simplifies the integration, ensuring that file purges work seamlessly across various domains. It directly manages purging of replaced or updated files, making it compatible with multi-domain configurations and solving the setup issues that arise when using Varnish with the file_replace module.\n\n Post-Installation \n The module can be configured at /admin/config/development/varnish_file_purge \n\n The following configuration can be added:\n\n \n Varnish connection configurations: Scheme, Host and Port \n The Purge method: whether to use the BAN or PURGE method (Keep in mind to prepare your vcl for the method selected. \n The base URL(s) of your website, so the purge happens across every single domain. \n \n Additional Requirements \n \n Requires a functional Varnish set-up. \n \n Similar projects \n \n The Purge file module allows you to purge files across multiple domains. \n The Varnish purge \n allows you to use Varnish as CDN to purge your caches.\n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2024-09-02",
+  "project_changed": "2026-08-11",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

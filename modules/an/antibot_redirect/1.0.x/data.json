@@ -35,5 +35,13 @@
     "redirect",
     "bots",
     "security"
-  ]
+  ],
+  "project_description": "This module protects specific pages from bots by requiring ReCaptcha.\n\n Features \n \n Restricts bot access to selected pages by enforcing reCAPTCHA. \n Works with Drupal 10 and Drupal 11 \n No impact on authenticated users \n \n Post-Installation \n \nAfter installing the module, go to the URL:\n\n \n /admin/config/system/antibot-redirect . \n Set the verification page title and description. \n Add protected URLs that should require verification. \n Save the configuration. \n \n\n Additional Requirements \n \nThis module requires the reCAPTCHA module.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-01-16",
+  "project_changed": "2026-06-22",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

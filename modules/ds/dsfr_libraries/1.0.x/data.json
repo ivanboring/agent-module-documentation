@@ -35,5 +35,13 @@
     "assets",
     "theming",
     "components"
-  ]
+  ],
+  "project_description": "This module automatically declares components from the French State Design System (DSFR) as Drupal libraries.\n\n Features \n If you need to use a component, you can attach it to your render array like this:\n\n<?php\n\n$build['#attached']['library'][] = 'dsfr_libraries/checkbox';\n\n?>\n\n Or declare it as a dependency of your own library:\n\n \n\n dependencies:\n\n - dsfr_libraries/checkbox\n\n \n\n The JS and CSS from this component will then be included in the page.\n\n Additional Requirements \n The dsfr needs to be installed in web/libraries/dsfr/ .\n\n For example, you can use Asset Packagist to install it with Composer:\n\n \n\n{\n\n \"require\": {\n\n \"npm-asset/gouvfr--dsfr\": \"^1.12\"\n\n },\n\n \"repositories\": [\n\n {\n\n \"type\": \"composer\",\n\n \"url\": \"https://asset-packagist.org\"\n\n }\n\n ],\n\n \"extra\": {\n\n \"installer-paths\": {\n\n \"web/libraries/dsfr\": [\n\n \"npm-asset/gouvfr--dsfr\"\n\n ]\n\n },\n\n \"installer-types\": [\n\n \"npm-asset\"\n\n ]\n\n }\n\n}\n\n \n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-10-29",
+  "project_changed": "2026-08-04",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

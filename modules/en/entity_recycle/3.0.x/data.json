@@ -35,5 +35,13 @@
     "undelete",
     "restore",
     "deletion"
-  ]
+  ],
+  "project_description": "The Entity Recycle module provides a trash / recycle bin functionality for\n\ncontent entities. This module allows users to soft-delete entities and only users\n\nwith the correct permission can permanently delete or restore an entity. This module\n\nmay be useful for preventing an accidental delete of an entity. The module creates\n\na locked boolean field on an entity and if the field is set to TRUE then the entity is\n\nconsidered to be in the recycle bin. The entity in the recycle bin can only be seen\n\nby users with a 'view entity recycle bin' permission.\n\n FEATURES\n\n------------\n\n - Recycle bin / Trash functionality.\n\n - Soft delete functionality.\n\n - Restore deleted items.\n\n - Purge/Delete items in the recycle bin after a certain amount of time.\n\n REQUIREMENTS\n\n------------\n\n This module requires no modules outside of the Drupal core.\n\n NOTES\n\n------------\n\n By default, this module does not alter any existing views, so in order to\n\n remove recycle bin items from showing up in the view results you need to\n\n add a field filter (recycle_bin) and set the default value to FALSE. For reference\n\n see the Content Recycle Bin view.\n\n For how to do it programmatically see the module README.txt file.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2020-12-07",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9003000,
+  "core_semver_maximum": 12000000
 }

@@ -38,5 +38,13 @@
     "edit mode",
     "assistant",
     "agents"
-  ]
+  ],
+  "project_description": "AI+ adds the AI tool to Edit Mode for the + Suite page builder .\n\n \n \n\n \n ▶ Watch an introduction to +Suite \n\n AI Plus adds an AI chatbot tool to Plus Suite 's Edit Mode toolbar, letting content editors talk to an AI assistant that can read and modify the page they're currently editing. The AI understands which entity the user is viewing and which specific blocks and fields they've selected, enabling contextual interactions like \"change this heading\" or \"add an image section below this.\"\n\n Back to top \n\n Features \n \n AI tool in Edit Mode — Toolbar button (hotkey A) that opens an AI chatbot panel alongside the page editor. \n Element selection — Click AI indicators on blocks and fields to select them as context. Selections appear as numbered badges on the page and chips in the chat panel. \n Contextual awareness — Automatically injects current page entity metadata and selected element descriptions into the AI agent's system prompt, so the model knows exactly what it's working with. \n Auto-refresh after AI changes — Two modes: polling (periodic change-check endpoint) and instant (triggered directly from chat responses). Both reload the editable page after the AI modifies entities. \n Component highlighting — After refresh, highlights the specific Layout Builder components that were changed by the AI. \n Open-link injection — When the AI creates a new entity, a clickable link is prepended to the chat response so the user can navigate to it. \n \n Back to top \n\n How it works \n AI Plus is a thin integration layer. It doesn't implement its own chat API or LLM handling — it wires together Navigation Plus (Edit Mode toolbar), AI Chatbot (chat UI), AI Agents (agent framework), and optionally Entity Blueprint (JSON entity serialization for AI).\n\n When the user opens the AI chatbot, the module resolves the current route to an entity and appends contextual information to the AI system prompt. If the user has selected specific elements on the page, those are resolved into rich descriptions (using Entity Blueprint when available) and included as numbered context items.\n\n After the AI makes changes, the module detects the modifications and automatically refreshes the page, highlighting exactly which components were affected.\n\n Recommended \n \n Entity Blueprint — provides rich element descriptions and component introspection for selected elements, and AI tool persistence hooks for change detection and refresh \n Plus Suite — An AI powered page builder built on Layout Builder. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2026-03-25",
+  "project_changed": "2026-06-30",
+  "core_semver_minimum": 11000000,
+  "core_semver_maximum": 12000000
 }

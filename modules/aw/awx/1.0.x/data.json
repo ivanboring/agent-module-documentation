@@ -34,5 +34,13 @@
     "automation",
     "rest",
     "devops"
-  ]
+  ],
+  "project_description": "The AWX / Ansible Tower Client module provides a lightweight Drupal service for launching automation jobs on an AWX / Ansible Tower / Red Hat Ansible Automation Platform instance via its REST API. It gives other modules a single, reusable API client for triggering job templates and surfacing the resulting job in AWX, without each module having to reinvent HTTP plumbing, authentication, logging, and configuration.\n\n Use it any time you want Drupal to drive infrastructure or operational automation — provisioning environments, kicking off backups, restarting services, deploying configuration, running ad-hoc playbooks from a workflow, and so on. It is intentionally small: a client library wrapped in a configuration form, not a workflow engine.\n\n Features \n \n A single, autowired awx.awx_client service for launching job templates from any module. \n Launch a template by name (the numeric ID is resolved automatically) so you never hardcode instance-specific IDs — or by numeric ID when you already have it. \n Typed failure modes for clean error handling, and a helper to link operators straight to the running job in AWX. \n A simple settings form for the AWX URL, API token, connect/response timeouts, and TLS verification. \n \n Usage \n The module exposes no UI for launching jobs. Inject the awx.awx_client service into your own code and launch a job template by name:\n\n $job_id = $awx_client->createJobFromTemplateName('Provision customer', $extra_vars); Check the return value against AwxClient::REQUEST_FAILURE_MODES to handle errors, and use getJobUrl($job_id) to link operators to the job in AWX.\n\n Configuration \n After enabling, visit Administration → Configuration → Web services → AWX / Ansible Tower ( /admin/config/services/awx ) to set the base URL, API token, timeouts, and TLS verification.\n\n Why not a generic HTTP / webhook module? \n General-purpose HTTP client and webhook modules can be wired up to AWX manually, but they make each consumer handle authentication, endpoint construction, error semantics, and logging on its own. This module is purpose-built for AWX / Ansible Tower's job-template API (name lookup and /api/v2/job_templates/{id}/launch/ ) and exposes it as a typed Drupal service.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2026-05-01",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

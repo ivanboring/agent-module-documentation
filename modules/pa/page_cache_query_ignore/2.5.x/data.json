@@ -47,5 +47,13 @@
     "exclude",
     "include",
     "ignore redirects"
-  ]
+  ],
+  "project_description": "Page Cache Ignore query parameters improves the performance of the page_cache module by removing client side variables from the cache key.\n\n As an example: with the Drupal core page_cache implementation, the following\n\nURLs will be considered different.\n\n \n https://my.site/ \n https://my.site/?gclid=abc \n \n By setting the query parameters to gclid, and choosing exclude as the type, these links will be considered identical by the cache and performance will be greatly improved. This will also reduce the size of your cache. With 2.1+ you can choose to use an exclusion or inclusion list of query parameters.\n\n This module is not a replacement to a properly configured CDN. However, it will provide a significant improvement where a CDN is not an option or desired.\n\n Configuration \n \n Configure the query parameters that you wish to ignore in Administration > Configuration > Development > Performance > Page cache query ignore. \n Provide a list of query parameters and select the type, then click Submit.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-08-09",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 13000000
 }

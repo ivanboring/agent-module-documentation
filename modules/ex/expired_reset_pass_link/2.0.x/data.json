@@ -33,5 +33,13 @@
     "expiry",
     "security",
     "user"
-  ]
+  ],
+  "project_description": "Add the expired password reset link timeout setting on the user settings page.\n\n CONFIGURATION \n\n Goto: /admin/config/people/accounts\n\n INSTALLATION \n\n - Install via /admin/modules\n\n- composer require drupal/expire_reset_pass_link\n\n- drush en expire_reset_pass_link -y\n\n CONFIGURATION BY SETTINGS.PHP \n\nchange the user password reset link timeout in settings.php file\n\n$settings['user.settings']['password_reset_timeout'] = 86400;",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2024-10-26",
+  "project_changed": "2026-07-08",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 13000000
 }

@@ -36,5 +36,13 @@
     "soft delete",
     "hierarchy",
     "restore"
-  ]
+  ],
+  "project_description": "Adds Trash support to Entity hierarchy.\n\n Features \n Adds support for Trash to Entity hierarchy module.\n\nWhen moving entities to trash (soft-delete) the delete-hooks in other modules are not triggered by default.\n\nThis module triggers all post-delete actions in Entity hierarchy, like moving its children.\n\nThe hierarchy information remains, so the entity can get restored.\n\n Post-Installation \n No further steps necessary.\n\n Additional Requirements \n Entity hierarchy 5.x and Trash modules are required.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-02-20",
+  "project_changed": "2026-08-11",
+  "core_semver_minimum": 10005000,
+  "core_semver_maximum": 12000000
 }

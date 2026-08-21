@@ -1,7 +1,7 @@
 {
   "name": "Entity Field Fetch",
   "data_name": "entity_field_fetch",
-  "description": "A field that mirrors (fetches) field values from OTHER entities. SECURITY CAVEAT: it does not check the source entity's view/field access \u2014 don't mirror restricted fields onto more-public hosts.",
+  "description": "A field that mirrors (fetches) field values from OTHER entities. SECURITY CAVEAT: it does not check the source entity's view/field access — don't mirror restricted fields onto more-public hosts.",
   "version": "1.0.x",
   "package": "Field types",
   "composer_namespace": "drupal/entity_field_fetch",
@@ -33,5 +33,13 @@
     "mirror",
     "reference",
     "cross-entity"
-  ]
+  ],
+  "project_description": "When you need for a field or paragraph on one node or term to be the source of content for every node on another content type, this module can get you there. It allows you to have a workflow for centralized content.\n\n Back to top \n\n How does it work? \n Any node or term can be created to serve as the source of the centralized content. An Entity Field Fetch field is then added to an entity (content type, vocabulary, paragraph) that should display the centralized content. The Entity Field Fetch field goes and gets (fetches) the source content from the centralized content entity and displays it on both view and edit modes for the destination entity. The source data also rides along with the destination entity in a manner similar to an entity reference so it works with entity loads and data APIs.\n\n Example:\n\n \"field_cc_top_of_page_content\": [\n {\n \"target_type\": \"paragraph\",\n \"target_uuid\": \"7192f5fb-08dd-4401-a863-c5a09cc7de50\",\n \"target_field\": null\n }\n\n\"field_cc_middle_content\": [\n {\n \"target_type\":\"node\",\n \"target_uuid\": \"65555dc-72dw-4561-j724-de59cc7dr64\",\n \"target_field\": \"field_source_middle\"\n }\n Alternate approaches?\n\n \n Blocks - Blocks can work for shared content, however their workflow is more abstract and editorial experience is not ideal. The other drawback is that the data does not belong to the entity which can complicate decoupled approaches. \n Markup field - The data is edited in the field setting which makes workflow and revisions impossible to set up. \n \n Back to top \n\n Setup \n \n Enable Entity Field Fetch module. \n Create a node or term to have the field or paragraph you want to be the source of your centralized content. \n Edit the content type that should display your centralized content.\n\na. Add a field of type Entity Field Fetch field .\n\nb. In the field configuration set the:\n \n “target entity type” (node or term) of the centralized content. \n “target entity id” (nid or tid) of the centralized content. \n “field machine name” for the field to be fetched from the centralized content. \n if content to be fetched is in a paragraph, set the UUID of the paragraph. \n \n \n When you view or edit any entity that has this Entity Field Fetch field, you will see the content from the centralized content. \n \n Back to top \n\n Caching \n The content displayed by an Entity Field Fetch field is cached based on the central content source. Updating the centralized content will cause the cache to be updated.\n\n Back to top \n\n Requirements \n None.\n\n Back to top \n\n Caveats \n \n If source content is deleted, your content type that uses it breaks. \n \n Back to top \n\n Screenshot of Entity Field Fetch field \n Example of Entity Field Fetch fields in use.\n\n \n\n Example of field level config.\n\n \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-01-19",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -37,5 +37,13 @@
     "validation",
     "widget",
     "country code"
-  ]
+  ],
+  "project_description": "A field widget for entering and validating international telephone numbers.\n\n This module provides an additional field widget to core's Telephone field type. \n\n It utilizes a popular Javascript plugin for entering and validating international telephone numbers. The Javascript plugin uses a custom build of Google's libphonenumber library for validation, and supports the many different national number formats. (We suggest using E164 format ).\n\n Requirements \n In addition to core modules, this module has one external Composer dependency: jackocnr/intl-tel-input .\n\n Follow README to learn more about how to download this module and its dependencies with Composer. Note: This module expects that intl-tel-input is available via the Libraries API.\n\n Suggestions \n Works well alongside backend validation via telephone_validation and field display via telephone_formatter .\n\n Roadmap \n Currently, this module assumes default intl-tel-input settings, plus client-side validation and provides the utilsScript path. Upon passing client-side validation, this module will auto format the entered value. Eventually, this module could provide field settings options to match the available options from the intl-tel-input Javascript plugin.\n\n Alternatives \n International Phone Field provides a new field type using this same Javascript plugin.\n\nThis module diverged from International Phone Field by targeting the core Telephone field type, and by including the Javascript plugin through Composer, explicitly listing it as a drupal-library .\n\n Attributions \n Uses the jackocnr/intl-tel-input Javascript library.\n\nInspired by both the telephone_validation and telephone_formatter modules.\n\nInspired by Webform's use of composer libraries to get the required package to be of type drupal-library .\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2019-06-24",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8009000,
+  "core_semver_maximum": 12000000
 }

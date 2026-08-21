@@ -39,5 +39,13 @@
     "navigation",
     "active-trail",
     "expand menu"
-  ]
+  ],
+  "project_description": "Menu Trail By Path sets the active-trail on menu items according to the current url.\n\n For example if you are at yoursite.com/blog/category1/article1 \n\nMenu Items with these paths will get the active-trail class on them and expand accordingly.\n\n blog\n\nblog/category1\n\nblog/category1/article1\n\n This is particularly useful if you want a lot of nodes to appear as children of certain nodes / taxonomy term / views / referenced nodes / etc, but do not want to add them all to the menu. eg. hundreds of blog articles.\n\n Menu Trail By Path is best used in conjunction with Pathauto . \n\n This module is similar to Menutrails (D6) and Menu Position (D7), except no configuration is needed . It uses the path URL to determine the active-trail instead of setting rules for each node type. It also works for non-node pages such as taxonomy term and views. Just enable the module to see the results.\n\n Drupal 8 \n \n Make sure to use a \" menu.html.twig \" like the classy-theme (or use that as base theme, like bartik does), stable-theme and stark-theme will not add the classes that you propably will expect, see \" No active trail class gets added \"-issue. \n The module now has some settings for performance optimizations, see release notes for 8.x-1.2 \n \n Drupal 7 \n \n can also handle breadcrumb by path \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2010-03-12",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

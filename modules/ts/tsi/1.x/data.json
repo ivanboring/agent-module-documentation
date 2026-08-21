@@ -35,5 +35,13 @@
     "interface",
     "drush",
     "ui strings"
-  ]
+  ],
+  "project_description": "This module provides a drush command and a service to add UI translations.\n\n Back to top \n\n Drush \n Add a single 'singular' string translation:\n\n drush tsi \"example\" \"Beispiel\" \"de\" \n\n Add a single 'plural' string translation:\n\n drush tpi \"1 example\" \"1 Beispiel\" \"@count examples\" \"@count Beispiele\" \"de\" \n\n Back to top \n\n TSI Service \n You can also use the tsi.service to add translations. For example in a update or deploy hook:\n\n <?php\n\n\\Drupal::service('tsi.service')->addTranslation('example', 'Beispiel', 'de');\n\n\\Drupal::service('tsi.service')->addPluralTranslation('1 example', '1 Beispiel', '@count examples', '@count Beispiele', 'de', '');\n\n?>\n\n To import multiple strings you can use:\n\n <?php\n\n$translations = [\n\n 'cat' => 'Katze',\n\n 'dog' => 'Hund',\n\n];\n\n \\Drupal::service('tsi.service')->addMultipleTranslation($translations, 'de');\n\n?>\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-03-24",
+  "project_changed": "2026-08-20",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

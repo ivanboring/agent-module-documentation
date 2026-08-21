@@ -49,5 +49,13 @@
     "lightning",
     "moderation state",
     "time_step"
-  ]
+  ],
+  "project_description": "Lightning Scheduler allows you to schedule a moderation state change to happen in the future.\n\n This project was originally developed as part of the Lightning distribution (under the Lightning Workflow component), but is now a standalone project. The name was kept for making BC easier, but this project can be installed on any Drupal site.\n\n Back to top \n\n Installation \n As with other Drupal modules, you can install this project by using composer:\n\n composer require drupal/lightning_scheduler \n\n It requires the following core modules:\n\n \n Content moderation \n Datetime \n Workflows \n \n Back to top \n\n Configuration & Usage \n This module has no required configuration. Once installed, the entities that can be moderated and have the \"Moderation state\" widget visible on the entity form will now display the scheduling options below it:\n\n \n\n \n\n \n\n Back to top \n\n Alternatives \n \n Scheduled Transitions \n Scheduler \n Scheduler content moderation integration \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-09-06",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -50,5 +50,13 @@
     "hmac",
     "guzzle",
     "outbound email"
-  ]
+  ],
+  "project_description": "This module implements Azure Communication Services to send email using Drupal's Mail API.\n\n Post-Installation \n \n Set your Azure Communication Services endpoint url at /admin/config/config/azure_mailer \n Set your secret access key with settings.php or manually with drush. It can't be read or modified from the UI.\n\n Example:\n\n $config['azure_mailer.settings']['secret'] = getenv('AZURE_COMM_SECRET');\n\n $config['azure_mailer.settings']['endpoint'] = getenv('AZURE_COMM_ENDPOINT');\n \n Change your default mailer to Azure Communication Services Mailer at /admin/config/system/mailsystem \n \n Third-party dependencies (installed automatically with composer) \n - https://packagist.org/packages/mobomo/guzzle-azure-hmac-auth \n\n- https://www.drupal.org/project/mailsystem \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-06-06",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 13000000
 }

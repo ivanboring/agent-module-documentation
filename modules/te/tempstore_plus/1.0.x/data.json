@@ -38,5 +38,13 @@
     "workspaces",
     "param converter",
     "strategy"
-  ]
+  ],
+  "project_description": "Tempstore+ makes Edit Mode work on non-layout builder pages for the + Suite page builder .\n\n \n \n\n \n ▶ Watch an introduction to +Suite \n\n Back to top \n\n Overview \n Tempstore + extends Drupal's temporary storage system with a flexible strategy pattern, enabling multiple modules to customize tempstore behavior without conflicts.\n\n Back to top \n\n Problem \n Drupal's core LayoutTempstoreRepository is designed to handle Layout Builder section storage. However, other modules and systems need different tempstore behaviors. Without tempstore_plus , each module must override layout_builder.tempstore_repository directly, which:\n\n \n Conflicts when multiple modules try to override the same service \n Complex inheritance chains that are difficult to maintain \n Challenges supporting optional module dependencies \n \n Back to top \n\n Solution \n Tempstore + implements the Strategy Pattern for tempstore operations:\n\n \n Strategies implement TempstoreStrategyInterface and define logic for specific\n\n storage types \n Tagged services are automatically discovered and registered with configurable\n\n priority \n Priority-based selection ensures the right strategy handles each tempstore operation \n \n Back to top \n\n Features \n \n Workspace Awareness : Built-in support for workspace isolation via\n\n WorkspaceKeyTrait \n Extensible : Add custom strategies by creating a class and tagging it as a service \n No Conflicts : Multiple modules can provide strategies without overriding each other \n Backward Compatible : Works alongside modules that haven't adopted the pattern yet \n \n Back to top \n\n Included Strategies \n \n LayoutTempstoreStrategy : Handles Layout Builder section storage with workspace\n\n awareness \n EntityTempstoreStrategy : Adds tempstore functionality for non-Layout Builder pages \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-11-29",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

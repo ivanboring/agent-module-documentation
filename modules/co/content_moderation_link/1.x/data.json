@@ -35,5 +35,13 @@
     "transition",
     "permissions",
     "workflow"
-  ]
+  ],
+  "project_description": "This module allows editors to move content to a different workflow state by\n\naccessing a specially crafted URL, for example:\n\n https://mydomain.com/content-moderation-link/process/in_review/node/108,109\n\n \n\nNote that the last three parts of the URL are meant to provide:\n\n- the machine name of the target workflow state (e.g. draft or published)\n\n- the machine name of entity type (e.g. node)\n\n- one or more IDs that should be processed\n\n Note that this module currently uses existing permissions, so to use the link a\n\nuser must be authenticated (they will be redirected to the login page if not)\n\nand have permission to use the transition needed from the content's current\n\nstate to the target state.\n\n A possible use case for this functionality is providing administrators with \"one click\" moderation links to publish (or otherwise move in a workflow) one or more pieces of content, from within another system, for example an email or Slack message.\n\n With the 1.1.x branch, you can now easily generate the necessary URLs using a token such as:\n\n [node:moderation-link:published]",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2022-05-27",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

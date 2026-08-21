@@ -36,5 +36,13 @@
     "read-only",
     "reorder",
     "configuration"
-  ]
+  ],
+  "project_description": "When using config_readonly with Drupal >= 11.3, taxonomy terms can no longer be reordered because the overview form now extends EntityForm (see: https://www.drupal.org/node/3528300 ).\n\n This module restores term reordering by whitelisting the taxonomy.vocabulary.* configuration pattern while still preventing configuration changes. Editing is disabled by making the form disabled, and deletion is blocked through access control.\n\n This module originated from the issue : https://www.drupal.org/project/config_readonly/issues/3600953 .",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2026-06-15",
+  "project_changed": "2026-08-04",
+  "core_semver_minimum": 11001000,
+  "core_semver_maximum": 12000000
 }

@@ -34,5 +34,13 @@
     "entities",
     "bulk",
     "data"
-  ]
+  ],
+  "project_description": "It provides user interface to import Entity(Content and Taxonomy) from excel or csv file.\n\n If we want to import entity for different languages, we have to include 'langcode' as a separate column in the excel file and mention the value such as 'en' for English language.\n\n It support Drupal core and paragraph fields.\n\n Example :\n\n - Text\n\n - Reference(content/taxonomy)\n\n - Number\n\n - Date and Date range\n\n - file/image\n\n - paragraph\n\n REQUIREMENTS \n\n Since this module requires phpoffice/phpspreadsheet library, Please use composer to download this module.\n\n INSTALLATION \n\n * Install the Entities Import module as you would normally install a\n\n contributed Drupal module. Visit https://www.drupal.org/node/1897420 \n\n for further information. \n\n CONFIGURATION \n\n 1) Go to /admin/structure/entities-import and click \"Add Entities Import Type\" button.\n\n 2) Choose entity type.\n\n 3) Please mention the field name in the \"Unique value fields\".(example: field_tags,title) and\n\n add multiple field by next line. This field is used to update the content/taxonomy if already exists.\n\n 4) Please mention \"Title Field Name\" for generating title/name for content/taxonomy. If you fill this\n\n field as blank, then \"Unique value fields\" will be used to generate title/name.\n\n 5) Please mention the folder path for file/image field (Example: article-images).\n\n We need to mention the file/image name in excel. After import is completed, We need to move the file/image manually to the server in the mentioned folder path.\n\n 6) After saving entity type, click the edit button to see the \"Import article\" button.\n\n 7) Click the \"Import article\" button to import content/taxonomy with current configuration.\n\n 8) You can add multiple configuration entity import type to import content/taxonomy.\n\n 9) Sample template file is available in doc folder. Please follow the same structure in the template.\n\n Note: All the excel fields mention in the excel should be match with content type or taxonomy fields.\n\n MAINTAINERS \n\n Current maintainers:\n\n Elavarasan R - https://www.drupal.org/user/1902634",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-01-20",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12999999
 }

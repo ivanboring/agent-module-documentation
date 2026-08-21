@@ -38,5 +38,13 @@
     "configuration",
     "display",
     "entity"
-  ]
+  ],
+  "project_description": "This module provides a configuration layer for Extra Field to allow developers to manage the placement of extra fields via configuration rather than in annotation properties. The module also allows for the usage of multiple instances of the same extra field plugin on an entity, without having to define multiple instances of the plugin in code.\n\n Back to top \n\n Instructions \n Requirements \n Extra Field \n\n Installation \n \n Add the module to your project with composer require drupal/extra_field_configuration or manually download the source and place it in modules/contrib . \n Enable the module. \n \n Configuration \n Create extra field instances from extra field plugins and manage entity assignments at /admin/structure/extra-field .\n\n Plugin Changes \n To enable an extra field plugin to be configured by this module, the deriver property must be present on the annotation. It is also recommended to omit bundles property, to ensure the extra field is not managed in two different ways.\n\n A complete Extra Field Configuration plugin annotation would look like:\n\n \n* @ExtraFieldDisplay(\n* id = \"plugin_id\",\n* label = @Translation(\"Field name\"),\n* deriver = \"Drupal\\extra_field_configuration\\Plugin\\Derivative\\ExtraFieldConfigurationDeriver\",\n* weight = 10,\n* visible = false,\n* )\n The class definitions of the extra field plugins remains unchanged with this module, and Extra Field Plus plugins can also be used. The location of plugins class files also remains the same.\n\n Printing in Templates \n Field names for printing in templates can be found on the admin screen at /admin/structure/extra-field . The field name is generated from the machine name defined when creating the extra field instance.\n\n Back to top \n\n Examples \n The included extra_field_configuration_examples module provides example extra field plugins in both simple and formatted flavors.\n\n Back to top \n\n Maintainers \n \n Benjamin Baird \n Back to top",
+  "maintenance_status": "Seeking co-maintainer(s)",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-03-17",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

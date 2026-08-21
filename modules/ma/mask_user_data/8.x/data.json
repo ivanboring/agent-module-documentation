@@ -33,5 +33,13 @@
     "pii",
     "privacy",
     "sanitize"
-  ]
+  ],
+  "project_description": "Deprecated \n Please use GDPR module instead.\n\n \n Description \n IMPORTANT: Do not use this module on a production environment. \n\n This module will mask all the current data in your database related to the users. You can easily define a map with the fields to map and the Faker function to use for the mapping. As it's using Faker, the data will look realistic whilst being completely faked from the original one.\n\n This module could be really useful when considering the new GDPR legislation ( Enforcement date: 25 May 2018 ), as all the user data could easily be masked in development/local copies.\n\n Installation and usage \n After installing the module (detailed steps on readme file) you need to click on another enable checkbox to make sure that the module is not turned on by accident. This setting can be set in settings.php .\n\n It uses the PHP library Faker and each user field or property can map to a Faker function (ie: mail maps to email ,\n\n field_phone maps to phoneNumber , etc.). This can be defined in:\n\n* settings.php using $conf['mask_user_data_map_array'] = array(...) .\n\n* Via the UI. \n\n Once everything is set up you can run: drush mud or wait until (or trigger) cron or perform the actions via the UI. \n\n TODO \n * More unit tests.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2017-12-06",
+  "project_changed": "2026-08-19",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

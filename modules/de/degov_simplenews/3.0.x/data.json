@@ -35,5 +35,13 @@
     "newsletter",
     "consent",
     "privacy policy"
-  ]
+  ],
+  "project_description": "This module extends Simplenews with a couple of helpful (GDPR-related) features:\n\n \n adds required fields to define privacy policy pages for all enabled languages \n adds a required checkbox to the signup form to give consent to the processing of personal information \n hides the signup form if the privacy pages have not been defined \n adds fields for first and last name to the signup form \n adds information that consent has been given to the subscriber details page \n adds a cron job that deletes subscribers with all unconfirmed subscriptions after a defined period of time Only in 8.x-1.x, as this functionality is now provided by Simplenews itself. \n \n deGov Simplenews was originally developed as part of the deGov distribution . Since it contains many features that might be useful to the general public, we decided to spin it off as its own project.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-09-18",
+  "project_changed": "2026-08-19",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 11000000
 }

@@ -35,5 +35,13 @@
     "content",
     "find replace",
     "fields"
-  ]
+  ],
+  "project_description": "This module enables directly searching the database for values in entity fields and replacing that text.\n\n It is currently under active development. While you are free to use it, we recommend that you do so with extreme caution.\n\n Search and replace queries operate directly on selected database tables and columns. Each operation is batched to scale for large datasets. Targeted tables and columns can be limited by entity, bundle, field name, column name, and field data type.\n\n Uses cases for this module include:\n\n \n Replacing absolute URLs into relative URLs \n Replacing file path URLs with a new path after moving filesystem directories \n Rewriting external URLs to a new local endpoint \n Identifying the frequency and location of a problem string (ex. Microsoft styling) \n Changing strings to fit a consistent pattern",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2020-11-10",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8007007,
+  "core_semver_maximum": 11000000
 }

@@ -35,5 +35,13 @@
     "handlers",
     "management",
     "developer"
-  ]
+  ],
+  "project_description": "The Entity Admin Handlers module provides an out-of-the box admin UI for custom entity types whose configuration means that the admin UI code in Drupal core doesn't fit.\n\n This reduces the need for boilerplate code to provide a UI to manage fields on the entity type and its bundles.\n\n The following cases are provided for.\n\n Back to top \n\n Single bundle entity type \n This is for entity types that do not use bundles and in effect, have a single\n\nbundle which typically has the same name as the entity type.\n\n This is identical to the way the core user entity type works.\n\n The handlers define a dummy route for Field UI module to hang its routes off.\n\n Back to top \n\n Plain bundle entity type \n This is for entity types that use multiple bundles, but do not have a config\n\nentity type that defines the bundles (so for example, if the content entity type\n\nis 'foo', there is no 'foo_type' entity type).\n\n Such an entity type may have its bundles defined in hook_entity_bundle_info()\n\nimplementations, or have them derived from plugins using the Entity API contrib\n\nmodule 's bundle plugins functionality.\n\n The handlers define a route that lists the bundles, and a dummy route for each\n\nbundle for Field UI module to hang its routes off.\n\n For each of these cases, the module provides:\n\n \n a route provider handler \n an entity links handler \n where required, a controller for any routes that are defined. \n \n Back to top \n\n Requirements \n This module expects the patch at https://www.drupal.org/project/drupal/issues/2976861 to be applied in order to provide menu, task, and action links. The routes will work without it, however.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2019-05-03",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -36,5 +36,13 @@
     "newsletter",
     "automation",
     "subscribers"
-  ]
+  ],
+  "project_description": "At this time, the Simplenews \"subscribe\" and \"unsubscribe\" actions (among other events, actions, and conditions) are not available to models created with ECA: Event - Condition - Action. This tries to fix that. (See this Simplenews issue for more background._\n\n Features \n Upon installation (along with the required ECA and Simplenews modules), two new actions are made available to ECA models: \"Subscribe to newsletter\" and \"Unsubscribe from newsletter.\" Three conditions are also made available: \"User is currently subscribed,\" \"User has ever subscribed,\" and \"Check for self-unsubscribes.\"\n\n The \"Check for self-unsubscribes\" carries a caveat. Although Simplenews records the newsletter id for a subscribe, it does not do the same for an unsubscribe. Therefore this condition checks whether a user has previously unsubscribed from ANY newsletter. If you use this condition, you may want to use \"Send email\" or another action to notify and administrator to check for false positives.\n\n Post-Installation \n Here's an an example of how this module can be used:\n\n Event: Presave content entity (Type and bundle: User -any- )\n\nAction: Subscribe to newsletter (Email address: [user:mail] Subscribe to: default)\n\n When saved and enabled, that model will automatically subscribe a user to the \"default\" (machine name) newsletter when the user is created or updated. Additional conditions can be added as with any ECA module. For example, \"role of current user.\"\n\n Additional Requirements \n Requires ECA and Simplenews modules.\n\n Back to top",
+  "maintenance_status": "Seeking new maintainer",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-12-08",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10004000,
+  "core_semver_maximum": 12000000
 }

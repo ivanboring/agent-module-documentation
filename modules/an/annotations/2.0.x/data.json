@@ -1,7 +1,7 @@
 {
   "name": "Annotations",
   "data_name": "annotations",
-  "description": "Provides shared functionality for the Annotations suite \u2014 annotation entities, targets and types.",
+  "description": "Provides shared functionality for the Annotations suite — annotation entities, targets and types.",
   "version": "2.0.x",
   "package": "Annotations",
   "composer_namespace": "drupal/annotations",
@@ -37,5 +37,13 @@
     "entity",
     "collaboration",
     "suite"
-  ]
+  ],
+  "project_description": "Annotations lets you attach structured notes to any part of a Drupal site: content types, custom entities, individual fields, vocabularies, roles, etc. Those notes live in one place and can be exposed wherever you need them. \n\n It is a context-driven, organic documentation layer that stays with your site, that your users and AI can use - accumulated domain-specific knowledge . A Context Management System , if you will...\n\n Annotation entities offer the full gamut of Drupal's flexibility, with built-in fieldability, revisions, translation, workflows etc.\n\n Annotations doesn't touch your content, change your content model, or add fields to anything else. It's a metadata layer that sits alongside your existing setup.\n\n What it can do:\n\n \n Attach editorial guidance, technical notes, or business logic to any entity type or field in your site \n Surface those notes as in-context overlays on edit forms, so content editors have guidance exactly when they need it \n Assemble them into a structured context payload for AI tools & agents, handing your AI agent an accurate, knowledge-filled map of your site \n Track annotation coverage so you know what's documented and what's not \n Generate/export documentation for onboarding packs, handover docs, etc from your annotation content \n Command line tools - think, a man page for your entity types \n \n Annotations uses a slightly different access model in that it is conceptually divided into two camps: management and consumption. The core modules are the annotation management modules, the remainder are consumer modules. The permissions exposed by it reflect this. More in the README(s).\n\n \n Disclosure \n This project and its submodules were generated with help from AI. However , the design & development has been guided and curated as carefully as possible, somewhat as an experiment in AI development. The project was undertaken over a period of many weeks and represents considerable effort. Whilst I have done my best, I expect there to be initial omissions and errors.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-08-08",
+  "project_changed": "2026-08-19",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

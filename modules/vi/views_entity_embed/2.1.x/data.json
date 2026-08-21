@@ -52,5 +52,13 @@
     "data-view-display",
     "text format",
     "wysiwyg"
-  ]
+  ],
+  "project_description": "Views entity embed module allows you to embed views in textarea using WYSIWYG editor. Another similar module is Advanced Insert View .\n\n Requirements :\n\n \n Editor and Filter or Link modules included with Drupal core. \n Embed module \n Entity Embed module \n \n Back to top \n\n Supported branches \n These branches are maintained:\n\n \n 2.1.x \n Branch for Drupal 10.6+, Drupal 11.3+, and CKEditor 5. \n 2.0.x \n Has security support until the Drupal 10 EOL. \n \n Back to top \n\n Installation & configuration \n \n Download module and store it in module folder or use composer ( composer require drupal/views_entity_embed) . \n Enable the module \n Enable the filter 'Display embedded views' for the desired text formats from the Text formats and editors configuration page. ( admin/config/content/formats )\n\nIf the Limit allowed HTML tags filter is enabled, add to the Allowed HTML tags.\n Go to Embed buttons administration page (admin/config/content/embed) and create a new button, which embedded type is ' Views '.\n\n You can choose between the both options: \n \n Filter which Views to be allowed as options: \n Filter which Display to be allowed as options: \n \n Only the selected views will be allowed to be embed by this Views embed button and for the Views Displays is the same. If you leave the options unchecked so all the views will be allowed. \n\n To enable the WYSIWYG plugin, move the views-entity-embed button into the Active toolbar for the desired text formats. \n \n In WYSIWYG after click the Views Embed Button there are 4 steps\n\n \n Select the view \n Select the display \n Checkbox for override the title \n Populate the context filters ( if the view has) \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-01-23",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

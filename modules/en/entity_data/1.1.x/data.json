@@ -33,5 +33,13 @@
     "key value",
     "storage",
     "api"
-  ]
+  ],
+  "project_description": "Entity data provides a simple API to add data to any entity. \n\n Drupal 10, 11 \n Entity data service works similar to core's 'user.data' service. Except the we don't restrict it only to user entity. You can set data for any content entities.\n\n The primary usage involves the getter/setter methods:\n\n \n\n// Set custom data to entity.\n\n\\Drupal::service('entity.data')->set($module_name, $entity_id, $custom_data_name, $entity_type, $value); \n\n // Get custom data for entity.\n\n\\Drupal::service('entity.data')->get($module_name, $entity_id, $custom_data_name, $entity_type);\n\n // Delete custom data for entity\n\n\\Drupal::service('entity.data')->delete($module_name, $entity_id, $custom_data_name, $entity_type);\n\n \n\n Drupal 7 \n It works similar to core's variable_set/get/del system. Except the data is associated with a entity and only loaded when that entity is loaded. \n\n The primary usage involves the getter/setter methods:\n\n \n\nentity_data_set($entity_type, $entity_id, $name, $value, $revision_id = 0, $language = LANGUAGE_NONE); \n\n entity_data_get($entity_type, $entity_id, $name, $default = NULL, $revision_id = 0, $language = LANGUAGE_NONE);\n\n entity_data_del($entity_type, $entity_id, $name, $revision_id = 0, $language = LANGUAGE_NONE);\n\n \n\n In addition to using the getter/setter methods, entity_data is automatically attached on entity_load and saved on entity_insert/entity_update. The data can be accessed using following the format:\n\n $entity->entity_data[$name] \n\n This also means that entity data will export and import with the entity.\n\n Sponsors \n \n European Commission (Drupal 9, 10) \n LevelTen Interactive (Drupal 7) \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2015-07-26",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

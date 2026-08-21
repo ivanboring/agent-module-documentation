@@ -40,5 +40,13 @@
     "queue",
     "multilingual",
     "integration"
-  ]
+  ],
+  "project_description": "This module provides an integration with AT-LS translate service to create or update our translatable entities.\n\n Installation \n Install as usual, see Installing Modules or Installing modules' Composer dependencies for further information.\n\n Configuration \n Before configuring this module, it is necessary to map the languages and create\n\nthe necessary API keys:\n\n \n Go to admin/config/services/at-ls/languages and maps AT-LS languages(ISO 639-2) with our Drupal installation langcodes. \n Go to admin/config/system/keys and add the keys for your AT-LS API key/s. \n \n Then we can go to the configuration page admin/config/services/at-ls/settings\n\n Finally, go to the mappings page `admin/config/services/at-ls/mappings` to set the translatable entities and fields.\n\n Sponsors \n \n Amara S.A. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2024-09-16",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

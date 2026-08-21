@@ -37,5 +37,13 @@
     "eca",
     "key",
     "websocket"
-  ]
+  ],
+  "project_description": "Features \n Using the team-reflex/discord-php -package, this module offers a drush-command to start the included ReactPHP -loop and dispatches Symfony-events for certain things that happen inside it.\n\n Use-cases/examples for ECA (see attachment) \n \n Log a watchdog-message when the DiscordPHP-loop is ready \n Send a reply when a certain message is posted in a channel \n \n Make sure that you enable the ECA-submodule if you want to import that example-model. \n\n A typed-data definition and a normalizer for the DiscordPHP Message-class is also present, this allows you to see which tokens are available when those Symfony-events are fired.\n\n Post-Installation \n \n Generate a bot and write down its token \n Change the installed key-configuration by pasting your Discord-bot token \n \n Additional Requirements \n \n For the discrd_php_eca -submodule, the ECA -module is required \n \n Recommended modules/libraries \n \n ECA \n \n Community Documentation \n \n DiscordPHP \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-02-09",
+  "project_changed": "2026-08-11",
+  "core_semver_minimum": 9004000,
+  "core_semver_maximum": 12000000
 }

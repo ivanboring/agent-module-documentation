@@ -48,5 +48,13 @@
     "attachment",
     "inline",
     "dl"
-  ]
+  ],
+  "project_description": "Back to top \n\n Introduction \n This module aims to facilitate the direct download of media entities from their canonical path.\n\n After installing this module, all media entities will serve their source field as a direct download using an inline content-disposition. It's also possible to serve media using an attachment content-disposition. \n\n Back to top \n\n Configuration \n This module does not have any configuration.\n\n Back to top \n\n Security Considerations \n This module delegates access control to Drupal core's media module, which allows blanket access to view all media entities. If custom access controls are needed, consider writing a module to implement hook_ENTITY_TYPE_access() .\n\n Back to top \n\n Internal API Notice \n This module does not intentionally expose any API meant to be used by other contributed modules. Semantic versioning is used, but only to convey meaning with regard to the functionality provided to sites.\n\n Until such time that this module wishes to provide a public API, all interfaces are to be assumed for internal use only (unless otherwise explicitly stated).\n\n Back to top \n\n Similar Modules \n \n Media Entity Download \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-05-14",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8009000,
+  "core_semver_maximum": 12000000
 }

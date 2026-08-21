@@ -48,5 +48,13 @@
     "voting field",
     "reviews",
     "widget plugin"
-  ]
+  ],
+  "project_description": "A flexible field based voting system for the Voting API framework, which does not itself expose any voting mechanisms to end users.\n\n Installation with composer \n \n composer config repositories.antennaio '{\"type\":\"package\",\"package\":{\"name\":\"antennaio/jquery-bar-rating\",\"version\":\"1.2.2\",\"type\":\"drupal-library\",\"dist\":{\"type\":\"zip\",\"url\":\"https://github.com/antennaio/jquery-bar-rating/archive/v1.2.2.zip\"}}}' \n composer require antennaio/jquery-bar-rating \n composer require drupal/votingapi_widgets \n \n Installation \n 1. Download this module.\n\n2. Download the required jQuery Bar Rating Plugin and place it inside of the libraries folder (/libraries).\n\nFor composer based projects please install the library as described on the Drupal Documentation .\n\n Example:\n\n Insert the following repository inside of the Drupal composer.json (/composer.json):\n\n {\n\n \"type\": \"package\",\n\n \"package\": {\n\n \"name\": \"antennaio/jquery-bar-rating\",\n\n \"version\": \"1.2.2\",\n\n \"type\": \"drupal-library\",\n\n \"dist\": {\n\n \"type\": \"zip\",\n\n \"url\": \"https://github.com/antennaio/jquery-bar-rating/archive/v1.2.2.zip\"\n\n }\n\n }\n\n }\n\n \n\n and execute \"composer require antennaio/jquery-bar-rating\".\n\n3. Install VotingAPI Widget the usual way .\n\n Back to top",
+  "maintenance_status": "Seeking co-maintainer(s)",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-11-18",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

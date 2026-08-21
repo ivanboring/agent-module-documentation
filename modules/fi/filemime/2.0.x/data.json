@@ -38,5 +38,13 @@
     "type",
     "content-type",
     "detection"
-  ]
+  ],
+  "project_description": "Drupal determines the MIME type of each uploaded file by applying a MIME type mapping to the file name. The default mapping is hard-coded in ExtensionMimeTypeGuesser .\n\n The File MIME module allows site administrators to alter the built-in mapping. For example, you may wish to serve FLAC files as audio/flac rather than application/x-flac .\n\n On the File MIME settings page, the MIME type mapping can be extracted from the server's mime.types file and/or configured via a text field, and can also be applied retroactively to all previously uploaded files.\n\n Disabling this module will restore Drupal's built-in mapping.\n\n You can support development by contributing or sponsoring .",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2008-06-11",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 13000000
 }

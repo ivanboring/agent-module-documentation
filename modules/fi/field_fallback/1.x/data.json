@@ -37,5 +37,13 @@
     "default",
     "empty",
     "fields"
-  ]
+  ],
+  "project_description": "Description \n Field fallback allows you to configure a field as fallback. When no value was provided, the value of the fallback field will be used. This module works with all types of fields.\n\n Example use case \n When you have multiple image fields, header image and teaser image. Where the header image is shown on the node page and the teaser image in the overview. When a user is creating a node he doesn't have to fill in the teaser image. It will fallback to the image uploaded in the header image field. When the image shown on the overview doesn't comply, e.g. uploaded portrait image and image style is configured landscape, the user can override that image by uploading one in the teaser_image field.\n\n How to configure \n Create or edit a field. The module adds a dropdown with all possible fallback fields.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-12-03",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

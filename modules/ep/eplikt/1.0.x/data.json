@@ -36,5 +36,13 @@
     "rss",
     "export",
     "media"
-  ]
+  ],
+  "project_description": "The e-Plikt module provides a streamlined solution for managing legal deposit requirements within digital publishing workflows. It enables organizations to comply with legal deposit mandates by integrating seamlessly with existing Drupal-based systems.\n\n Read more about e-Plikt at National Library of Sweden .\n\n Back to top \n\n Requirements \n \n The core Media module \n The Media entity download module \n \n Back to top \n\n Installation \n Install as you would normally install a contributed Drupal module. For further information, see Installing Drupal Modules .\n\n Back to top \n\n Configuration \n Configure the e-Plikt module on the e-Plikt configuration page (/admin/config/services/eplikt).\n\n \n Enter your Publisher unique identifier in the form http://id.kb.se/organisations/SE+ev.[-suffix] \n Enter the default value for Access rights \n Select witch Sources you want to enable \n \n When the above steps are completed click Save . After you have saved the configuration form and have selected at least one source you will be presented with additional configuration options for the selected sources.\n\n Back to top \n\n Source plugins \n The module ships with two source plugins, Node and Media . For most use cases these will be enough. If you have complex content structure or embedded content that needs to be included in the e-Plikt delivery you can make your own plugin.\n\n For inspiration look at the included plugins at Drupal\\eplikt\\Plugin\\eplikt and the base class at Drupal\\eplikt\\EpliktSourceBase .\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-03-14",
+  "project_changed": "2025-09-18",
+  "core_semver_minimum": 11000000,
+  "core_semver_maximum": 12000000
 }

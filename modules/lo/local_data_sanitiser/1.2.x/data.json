@@ -36,5 +36,13 @@
     "gdpr",
     "local",
     "development"
-  ]
+  ],
+  "project_description": "Local Data Sanitiser provides CLI-only tools for cleaning personal data from copied local Drupal databases.\n\n Features \n \n Deletes Webform submissions when the Webform module is installed. \n Anonymises non-administrator user accounts. \n Anonymises customer and contact data stored in content entity fields. \n Lets developers choose which sanitiser tasks to run. \n Shows planned record counts before execution. \n Shows a destructive-action warning with the detected environment before making changes. \n Uses a modular task-plugin system so more data sanitiser tasks can be added later. \n \n Requirements \n \n Drupal 10.3 or Drupal 11 \n Drush \n \n Recommended \n \n Webform, if you want to remove Webform submissions. \n Config Filter, if you want the module kept out of exported config in local environments. \n \n Usage \n drush en local_data_sanitiser -y\ndrush local-data:sanitise The command is hidden from the Extend UI and is intended for developer CLI use only. It refuses to run outside a detected local environment unless --force is supplied.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-04-14",
+  "project_changed": "2026-06-22",
+  "core_semver_minimum": 10003000,
+  "core_semver_maximum": 12000000
 }

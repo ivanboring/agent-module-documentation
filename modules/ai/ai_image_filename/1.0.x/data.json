@@ -36,5 +36,13 @@
     "filename",
     "vision",
     "seo"
-  ]
+  ],
+  "project_description": "Automatically renames uploaded images using AI vision to generate descriptive, SEO-friendly filenames based on image content.\n\n Back to top \n\n Overview \n When an image is uploaded to Drupal, this module will send the image to an AI Vision Model, and rename the file with a short, descriptive filename. For example: golden-retriever-catching-frisbee-in-park.jpg . Rather than having a bunch of non-descriptive images, like IMG_1234.jpg , you can finally have clean image filenames.\n\n Back to top \n\n Requirements \n \n Drupal 10 or 11 \n AI module with a configured provider that supports Chat with Image Vision \n \n Back to top \n\n Installation \n Install as you would normally install a contributed Drupal module. For further\n\ninformation, see\n\n Installing Drupal Modules .\n\n Back to top \n\n Configuration \n \n Navigate to Administration > Configuration > AI > AI Image Filename at /admin/config/ai/ai-image-filename \n Configure the settings as such... \n \n \n \n \n Setting \n Description \n \n \n \n \n Enable \n Toggle AI filename generation on or off without uninstalling the module. \n \n \n AI Prompt \n The prompt sent to the AI Chat with Vision model that will be used to generate the filename. \n \n \n AI Provider/Model \n The specific vision-capable model used to understand the context of the image. \n \n \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2026-04-07",
+  "project_changed": "2026-08-11",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

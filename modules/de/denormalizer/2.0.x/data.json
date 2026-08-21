@@ -33,5 +33,13 @@
     "data",
     "transformation",
     "export"
-  ]
+  ],
+  "project_description": "This module denormalizes entities using database views or tables. Also known as star schema, snowflake schema, snowflaking, etc.\n\n This is a tool used to assist business intelligence tools in consuming Drupal data without knowing Drupal internals (like how to join fields).\n\n Inspired by http://drupal.org/project/etl with a different approach. Denormalizer does not use entity_load and also does not perform the \"Load\" part of ETL.\n\n Warning: as this module creates databases and performs destructive operations on tables and views, take extra caution when using this module. There are sanity checks to prevent you from overwriting your own tables, but you've been warned!\n\n To use, enable the module.\n\n Add a hook to your custom module to define the data you want to denormalize. See hook_denormalizer_info():\n\n <?php\n\n/**\n\n * Implements hook_denormalizer_info().\n\n *\n\n * Provide a list of plain tables and entities that should be denormalized.\n\n */\n\nfunction hook_denormalizer_info() {\n\n return array(\n\n // Plain Drupal table\n\n 'location' => array(\n\n 'base table' => 'location',\n\n ),\n\n // Typical entity\n\n 'denormalized_table' => array(\n\n 'entity_type' => 'node',\n\n 'bundles' => array('page', 'story'),\n\n 'changed_key' => 'changed',\n\n ),\n\n // Some external table\n\n 'ScormActivity' => array(\n\n 'base table' => 'ScormActivity',\n\n 'external' => TRUE,\n\n 'changed_key' => 'update_dt',\n\n ),\n\n );\n\n}\n\n?>\n\n Visit admin/config/development/denormalizer\n\n Set prefixes and where you want your views or tables to be.\n\n - View mode will create database views.\n\n- Table mode will create tables and SELECT data into them. On the next run, they will incrementally update based on the primary key and the \"changed\" field.\n\n- DB determines where these views or tables live. This is useful if you want to restrict access to a BI or ETL tool by putting denormalized data in a new database.\n\n Use the \"Create\" tab to create/update views or tables.\n\n Use the \"Export\" tab to see the SQL that will be used.\n\n Related modules\n\n \n Views fast field - build Views without entity_load() \n Singer - export denormalizer info as a singer catalog file",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-03-14",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

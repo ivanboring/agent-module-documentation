@@ -33,5 +33,13 @@
     "environments",
     "staging",
     "deployment"
-  ]
+  ],
+  "project_description": "🌀 Batch Content Sync \n Push and sync content across Drupal environments with ease. \n\nBatch Content Sync helps editors send content to QA, Stage, or Prod using a streamlined interface and REST endpoints.\n\n \n 🚀 Features \n Batch Content Sync provides a lightweight, editor-friendly solution for synchronizing content between Drupal environments such as QA, Stage, and Production.\n\n Key Features: \n\n \n Push content (nodes) to QA, Stage, or Production from the content overview page. \n Custom REST endpoints for receiving structured content payloads. \n Automatically includes referenced media, taxonomy terms, and paragraph items. \n Built-in access token authentication—no need for external contrib modules. \n Clean JSON logging of push attempts for troubleshooting or audit history. \n Minimal dependencies—ideal for lean, CI/CD-friendly deployments. \n \n Use Cases: \n\n \n Editorial teams staging content before production release. \n Development workflows requiring content parity across environments. \n Automating deployments of updated or newly published content. \n Reducing manual duplication effort and copy-paste errors. \n \n \n ⚙️ Post-Installation \n After installing the module, visit the configuration page at:\n\n /admin/config/content/batch-content-sync There you can define the target environment URLs (e.g., QA, Stage, Prod) and set the access token for secured communication.\n\n To use the module:\n\n \n Navigate to Content overview at /admin/content . \n Select one or more content items (nodes). \n From the Action dropdown, choose:\n \n Push to QA \n Push to Stage \n Push to Prod \n \n \n \n Your content will be pushed via custom REST calls to the configured target.\n\n \n 📦 Additional Requirements \n No contrib dependencies required. Works with Drupal Core only.\n\n Make sure:\n\n \n The target site also has Batch Content Sync installed. \n REST endpoints are accessible. \n Access tokens match between environments. \n \n \n 🔧 Recommended Modules / Libraries \n Optional but useful enhancements:\n\n \n Diff – for comparing content before and after sync. \n Paragraphs – supported out-of-the-box. \n Media – also supported for embedded assets. \n \n \n 💸 Supporting this Module \n If this module saves you time or budget, you can support development here:\n\n \n 🧉 Buy me a coffee \n 🤝 Sponsor feature requests via GitHub or issue queue \n \n \n 📚 Community Documentation \n \n Basic docs available in the module’s README.md . \n More coming soon — including video walkthroughs and tutorials. \n Want to contribute? PRs and edits are welcome!",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-07-31",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

@@ -35,5 +35,13 @@
     "ajax",
     "cart",
     "ux"
-  ]
+  ],
+  "project_description": "This module ajaxify the add to cart submit button provided by the commerce module.\n\nBy default, the add to cart button make a submission and reload the page.\n\nNow :\n\n \n Submission does not reload the page \n An animated image show add to cart is processed. \n Messages are displayed in status messages area \n Cart block is reloaded \n \n A configuration needs to be made in /admin/commerce/config/commerce-addtocart-ajax to define the selector to display status messages. This depends of your theme. By default, .status-messages is used.\n\n This module has started as a fork of Ajax add to cart module for multiple reasons :\n\n \n ajax_add_to_cart module seemed to not be maintained anymore and was buggy \n The modal feature should not be required \n Does not follow good practices \n Keep it simple",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-01-30",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 13000000
 }

@@ -33,5 +33,13 @@
     "invalidation",
     "tags",
     "developer"
-  ]
+  ],
+  "project_description": "Drupal already does very good job regarding caching and invalidating the content. But sometimes you may want to make couple of adjustments to cache behavior. For instance, you may want to sanitize (strip) particular cache tags and cache contexts which are too generic and place some more specific ones instead.\n\n This module introduces couple of such caching improvements.\n\n Its main feature is to sanitize cache tags and cache contexts for listed blocks. So if you want to get rid off too generic cache tags ( node_list , taxonomy_term_list , etc) and cache contexts ( route , url , url.query_args , etc), it does the job. \n\n It introduces also custom cache tag for the views so it's placing more specific tags for the views. Namely, it places {entity}_{bundle}_pub (like node_article_pub or node_recipe_pub ) instead of too general node_list . Placing them out of the box based on the configured filters and contexts in particular view.\n\n Contribute \n \n Reach out at #drunomics-contribute @ the Drupal Slack !",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-09-12",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

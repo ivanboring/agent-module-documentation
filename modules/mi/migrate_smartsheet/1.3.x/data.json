@@ -39,5 +39,13 @@
     "column",
     "api",
     "import"
-  ]
+  ],
+  "project_description": "This developer module extends the migrate process plugins to work specifically with the Smartsheet API. \n\n When creating your migration .yml file, you must provide a Smartsheet API key. To keep your API key safe, I suggest using one of the tactics in this great lullabot article . \n\n When making requests to the Smartsheet API, there are 2 JSON arrays used to grab the raw data in the sheet, 'rows' and 'columns.' Use the 'columns' array to look up each column's ID. Use the process plugin to iterate through each 'row' and return the data for a specified column ID. \n\n Please read the README.txt file and the comments in Smartsheet.php for more information on how to use this process plugin.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2022-10-03",
+  "project_changed": "2024-02-13",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

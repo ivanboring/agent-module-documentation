@@ -35,5 +35,13 @@
     "user",
     "account",
     "roles"
-  ]
+  ],
+  "project_description": "The Webform User Registration module allows Drupal site builders to create custom user registration forms using the Webform module.\n\nBy default, the module provides two mappable fields: username, email. These can be mapped immediately after installing the module to set up a basic user registration flow.\n\n Features \n \n Allows user registration through Webform submissions. \n Supports Webform CiviCRM, allowing registration forms to interact with CiviCRM data. \n Provides an extendable plugin system - you can create custom plugins for any Drupal field and map them on the Webform page. \n Supports additional form elements, such as file uploads. \n Allows per-Webform role assignment based on settings. \n Works seamlessly with other Webform-based processes. \n \n Post-Installation \n \n After installation, go to the Webform where you want to add user registration. \n Navigate to Settings > Emails/Handlers and add the User Registration handler. \n Configure the handler by mapping Webform fields to user account fields (e.g., username, email, password). \n Set up additional configurations, such as role assignment, email notifications, and account activation settings. \n Save the handler, and users submitting this Webform will be registered automatically. \n \n Additional Requirements \n \n Webform module \n Webform CiviCRM (optional, for CiviCRM integration) \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-02-20",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10003000,
+  "core_semver_maximum": 12000000
 }

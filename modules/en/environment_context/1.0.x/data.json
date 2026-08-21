@@ -33,5 +33,13 @@
     "dev",
     "prod",
     "condition"
-  ]
+  ],
+  "project_description": "Environment Context provides a robust way to detect and act on the current runtime environment (e.g. development, staging, production) in Drupal. It integrates deeply with Drupal’s context, condition, and caching systems.\n\n ✅ Features \n \n Detects the current environment via:\n \n settings.php \n Environment variables ( DRUPAL_ENVIRONMENT ) \n Pluggable event-based detection \n \n \n Provides a Context Provider for environment \n Adds a Condition Plugin to use environment in:\n \n Block visibility \n Layout Builder \n Other context-aware systems \n \n \n Defines an environment Typed Data plugin for strong typing \n Adds an environment Cache Context to vary content by environment \n Easily extendable: other modules can register environments or override detection \n \n ⚙️ How it works \n The module dispatches events to determine the current environment and all known environments. This makes detection and registration extensible without hardcoding logic in one place.\n\n It provides:\n\n \n A context provider plugin: EnvironmentContext \n A condition plugin: EnvironmentCondition \n A typed data plugin: Environment \n A cache context plugin: environment \n \n You can use these in block visibility, service injections, or even configuration splits.\n\n 📦 Installation \n composer require drupal/environment_context\ndrush en environment_context\n This module has no UI — it works behind the scenes and via developer APIs.\n\n 🚀 Example Usage \n Get the current environment in a service: \n\n $env = \\Drupal::service('environment_context.context.environment')->getCurrentEnvironment(); React to specific environments: \n\n if ($env === 'production') {\n // Do something only on production\n} Define environments via event listener: \n\n $event->addEnvironment('production', ['label' => 'Production']); Add an environment condition to a block: \n\n \n Use the \"Current environment\" condition in block visibility settings \n Select one or more matching environments \n \n 📎 Requirements \n \n Drupal 10 or 11 \n No external dependencies \n \n 🧩 Related Projects \n \n Config Split — often used alongside to manage config per environment \n Environment Indicator — UI decoration for environments \n Sites — Supports environment based site settings \n \n 💬 Feedback & Contributions \n Contributions, feature requests, and bug reports are welcome via the issue queue .\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-06-10",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 13000000
 }

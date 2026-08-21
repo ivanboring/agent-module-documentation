@@ -36,5 +36,13 @@
     "clone",
     "sitemap",
     "seo"
-  ]
+  ],
+  "project_description": "Extends the Entity Clone module to automatically clone Simple Sitemap settings whenever entities are cloned.\n\n Features \n \n Automatically clones Simple Sitemap overrides for content entities. \n Preserves global Simple Sitemap settings for config entities. \n Requires Entity Clone and Simple Sitemap modules. \n \n Post-Installation \n Once the module is installed and enabled, it works automatically—no configuration page or additional setup is required.\n\n \n When you clone an entity (node, taxonomy term, media, or any other content entity with Simple Sitemap overrides), the module ensures that all Simple Sitemap inclusion/exclusion settings from the original entity are copied to the cloned entity. \n No new content types, text formats, or other configuration changes are necessary. \n For administrators, the module is transparent: the cloned entities behave exactly like the originals in the sitemap, maintaining any overrides without manual intervention. \n Optional: If you want to verify which settings were cloned, you can enable debug logging in the subscriber to output copied overrides for testing purposes. \n \n Additional Requirements \n \n Drupal 10.x or 11.x \n Entity Clone module: required to perform the actual cloning of entities. \n Simple Sitemap module (v4.2.2 or later): required to provide sitemap overrides and configuration. \n \n Similar projects \n There are no other modules that specifically combine Entity Clone and Simple Sitemap functionality.\n\n \n The Entity Clone module alone clones entities, but does not copy Simple Sitemap overrides. \n The Simple Sitemap module manages sitemap inclusion/exclusion, but has no built-in cloning support. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-08-19",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

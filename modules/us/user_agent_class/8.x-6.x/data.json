@@ -33,5 +33,13 @@
     "browser",
     "css classes",
     "theming"
-  ]
+  ],
+  "project_description": "This module helps you to set css class in body depends on header user agent, device. \n\n \n\n Configuration module:\n\n - User agent (Browser) admin/config/system/user-agent \n\n \n Chrome \n Firefox \n Opera \n Safari \n Trident \n etc. ability to add any browsers by trigger from Header User-Agent: \n \n - Device (Phone, Table, etc) admin/config/system/device \n\n \n Android \n iPhone \n iPad \n Blackberry \n Windows Phone \n etc. ability to add any devices by trigger from Header User-Agent: \n \n - Responsibility (Frontend/Backend) admin/config/system/provide \n\n It is possible to select a method for adding a class in body by Frontend-js (by default) and Backend-php (Advanced need to disable \"internal page cache\" module and only keep \"dynamic page cache\" enabled.)\n\n An example Header -> User Agent: \n\n - Chrome\n\n Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)\n\nChrome/60.0.3112.90 Safari/537.36",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-08-15",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12999999
 }

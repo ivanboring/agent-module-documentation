@@ -33,5 +33,13 @@
     "widget",
     "dropdown",
     "options"
-  ]
+  ],
+  "project_description": "3rd party js selectpicker bootstrap-select form widget for Bootstrap themed sites. Library will be loaded by default via CDN.\n\nBut the module will check if you have a local copy in web/libraries/bootstrap-select and use it instead.\n\n This module implements the js package bootstrap-select a jQuery plugin for bootstrap sites. The widget is suitable for most option fields like (list_integer, list_float, list_string, entity_reference)\n\n Implemented Options \n \n Live search \n Actions box \n Placeholder \n Header \n Selected text format \n \n If you need another option just add a feature request.\n\n Dependencies: \n Bootstrap v4's requirements \n\n I want to use my local bootstrap-select files \n You can download the library manually via Github or use asset packagist https://asset-packagist.org/ in your composer.json\n\nAdd the following to your project composer.json in the \"repositories\" section.\n\n \n\n\"repositories\": [\n\n {\n\n \"type\": \"composer\",\n\n \"url\": \"https://asset-packagist.org\"\n\n }\n\n]\n\n \n\nMake sure you have required the oomphinc/composer-installers-extender package.\n\nAdd the following to your project composer.json in the \"extra\" section.\n\n \"installer-types\": [\n\n \"bower-asset\",\n\n \"npm-asset\"\n\n ],\n\n \"installer-paths\": {\n\n \"web/libraries/{$name}\": [\"type:drupal-library\", \"type:npm-asset\"],\n\n } \n\nNow you can composer require npm-asset/bootstrap-select \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-04-22",
+  "project_changed": "2026-08-11",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

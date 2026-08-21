@@ -36,5 +36,13 @@
     "entities",
     "design",
     "presentation"
-  ]
+  ],
+  "project_description": "Back to top \n\n Overview \n The Modifier module defines a system for defining how modifications can be consistently applied to elements on a page. Modifiers work by leveraging the power of the Drupal theming system and abstracting it to a Modifier interface which provides for the application of modifications on elements defined by a selector.\n\n The power of Modifiers comes from being applicable to elements as defined by a selector. This means they can be applied to entities (Nodes, Blocks, Paragraphs, Users, etc), theme regions (header, footer, etc), View Modes (full, teaser, etc), classes in the WYSIWYG and anything you can think of and define.\n\n Modifiers are developed by architects and programmers and used by site builders and editors. They are designed to make site building easy and pleasurable... and fast.\n\n The module is comprised of a number of components which work together:\n\n \n A Modifier interface and plugin manager which defines what Modifiers do. \n An internal system which converts field content data into a simple array structure which is used to configure the Modifier instances. \n A hook into entity rendering, allowing for modifiers to attach to entities. \n \n This module is a foundation for two other helpful modules:\n\n \n Look Handle collections of Modifiers and apply them on a per page basis. \n Modifiers pack A number of Modifier implementations to get you up can running quickly with useful modifications such as colors, background images, parallax images, background video, shadows, corners and the like. \n \n Back to top \n\n Documentation \n We have a documentation , where you can find quick start instructions and how to implement your own Modifier. Please let us know if you would like to extend some part.\n\n Back to top \n\n Slack \n There is a slack channel for Modifiers .\n\n Back to top \n\n Maintainers \n This module is maintained by developers at Morpht. For more information on the company and our offerings, see morpht.com .\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-06-13",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 13000000
 }

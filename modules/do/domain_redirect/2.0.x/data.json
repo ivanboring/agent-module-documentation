@@ -36,5 +36,13 @@
     "multi-domain",
     "url",
     "per-domain"
-  ]
+  ],
+  "project_description": "Makes redirects domain-aware, allowing the same source path to redirect to different destinations depending on the active domain.\n\n Back to top \n\n Features \n \n Adds a Domain field to redirects — scope a redirect to a specific domain or leave it global (all domains). \n Domain-specific precedence — when the same source path has both a domain-specific and a global redirect, the domain-specific one wins. \n Domain column and filter in the redirect admin list for easy management. \n Domain-aware unique hash validation — the same source path can have different redirects on different domains. \n \n Back to top \n\n Requirements \n \n Domain 3.x \n Redirect 1.x \n Drupal 10.2+ or 11.x \n \n Back to top \n\n Configuration \n No configuration is needed. Once installed:\n\n \n Go to Administration > Configuration > Search and metadata > URL redirects . \n When adding or editing a redirect, select a domain from the Domain dropdown or leave it as All domains for a global redirect. \n Use the Domain exposed filter to filter the redirect list by domain. \n \n Back to top \n\n How it works \n \n Adds a domain_id entity reference field to the redirect entity via hook_entity_base_field_info() . \n Decorates the redirect.repository service to filter redirect lookups by the active domain during request handling. \n Replaces the RedirectUniqueHash entity constraint with a domain-aware version that allows the same source hash for different domains. \n Modifies the database index on the redirect table from a unique key on hash to a composite index on (hash, domain_id) for query performance. \n \n Back to top \n\n Note \n Starting with 2.x, this module was completely rewritten with no upgrade path from prior versions (7.x / 8.x). The original module used custom redirect paths ( /domain-redirect/12345 ). The 2.x version integrates with the Redirect module instead. See HISTORY.md in the repository for details about the original module.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2011-11-29",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

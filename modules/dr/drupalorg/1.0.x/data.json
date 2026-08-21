@@ -38,5 +38,13 @@
     "customizations",
     "security releases",
     "site-specific"
-  ]
+  ],
+  "project_description": "Customizations used on Drupal.org itself. It is not meant to be useful to other sites, except as an educational example of the kinds of modifications you can make via a site-specific module.\n\n More information about the state of planned work on Drupal.org can be found on the Drupal.org Roadmap .\n\n Navigation \n drupalorg_crosssite stores the navigation for all Drupal.org sites. Drupal.org is actually 5+ Drupal installations, meant to act as one whole site. Masthead and content tabs navigation is shared across all sites. This module keeps it in code, so changes can be pushed to all sites and keep track of what navigation to show on any given page.\n\n Custom Pages \n Custom pages, which have dynamic elements or a lot of markup, are kept in .tpl.php files, using Drupal's theme system. For layout, we use simple HTML and Bluecheese's grid system.\n\n Branches \n The branch currently deployed on Drupal.org is 7.x-3.x .\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2007-10-20",
+  "project_changed": "2026-08-11",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

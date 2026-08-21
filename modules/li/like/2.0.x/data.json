@@ -36,5 +36,13 @@
     "reaction",
     "button",
     "social"
-  ]
+  ],
+  "project_description": "This module provides a Like formatter that allows visitors (both registered and anonymous) to like a content entity.\n\n \n\n Disclaimer : This module will not support a \"dislike\" feature.\n\n The only difference between version 1 and version 2 is the different compatibility of the dependencies due to [#3331367].\n\n Installation instructions \n \n Install as any other module (See Installing modules instructions ) \n Enable which content entity types are you going to use the module in (For example, \"Content\"). This can be done from /admin/config/user-interface/like \n Configure the field position in the display settings of the bundles where you want to show the Like element, you can also configure the literals shown for the Like actions in the formatter. \n \n Architecture / Components \n \n A non fieldable, non translatable Like entity that saves the entity ids and types that have been liked. \n A computed field that provides a calculated value of the number of likes. \n A formatter that allows easy placement of the Like element and configure / translate the settings (mind that currently the patch from [#2546212] is needed to see the translation UI for formatter settings). \n A GET endpoint that is called when the Like element is displayed and ensures that the count is relatively accurate. \n An semaphore and ajax subscriber to prevent excessive clicking on the Like element. \n \n Requirements \n \n Entity module \n Cache control override module \n JS Cookie module for version 2.x \n Like uses Font Awesome, so you can integrate it by using the FA module or in any other way you might be used to integrate FA already. \n To prevent malicious form submissions in the Like element, you can also install Antibot and it will integrate automatically. \n \n Similar modules \n Please note that most modules below do not support anonymous users' likes.\n\n \n Voting API reactions \n Like/Dislike \n Simple like button \n Like it \n Like & Dislike \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2022-11-30",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

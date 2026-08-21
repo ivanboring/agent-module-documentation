@@ -36,5 +36,13 @@
     "fields",
     "settings",
     "validation"
-  ]
+  ],
+  "project_description": "Specify what should happen when uploaded files and images have the same name as existing files. Configured per field, the options are are grouped by entity type.\n\n The module aims to work with all file fields without having to replace existing widgets or file fields. It does this by altering the underlying file handling rather than the UI.\n\n To use, install and go to Admin -> Config -> Media -> File Upload Options to configure.\n\n It also supports file uploads via REST.\n\n Fields defined in code \n\n To configure file fields defined in code, specify the field name under \"Custom Fields\".\n\n Alternatively, non-entity fields will be automatically added to \"Custom Fields\" when viewing the form with the field on it. The replace behaviour can then be configured within File Upload Options.\n\n Back to top \n\n REST \n \n Ability to specify how to handle existing files with the same file name \n Re-use an existing file entity with the same URI rather than create a new one \n \n Back to top \n\n Why? \n Currently there is no unified way of handling file uploads in Drupal core. Additionally, many contrib modules go about it their own way. File replace options are generally not available in the UI and are difficult to achieve even in code.\n\n There are a number of related issues which deal with the issue of file management. Once these are resolved modules such as File Upload Options would be much simpler or preferably obsolete.\n\n \n [#2940383] \n [#2648816] \n [#2241865] \n [#3221796] \n \n Back to top \n\n Similar modules \n See the project pages for how these modules work.\n\n \n Media Entity File Replace \n File Replace \n File Field Replace \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2020-02-19",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

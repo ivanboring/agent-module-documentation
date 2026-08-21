@@ -35,5 +35,13 @@
     "link",
     "metadata",
     "preview"
-  ]
+  ],
+  "project_description": "Back to top \n\n ABOUT \n Media OpenGraph provides a new media source plugin and a default media type\n\nusing it.\n\n This media type renders similar to pasting a link into Twitter or Facebook -\n\ngrabs the metatags/open graph tags from an external link and renders a preview\n\nlocally. The default media type maps an image metatag, title and description\n\nwith some very basic styling. It is expected that most sites would want to\n\ncustom style/theme.\n\n Example of three rendered urls:\n\n \n First with no description tag. \n Second with neither image nor description tags. \n Third with description, image and title tags. \n \n \n\n Back to top \n\n REQUIREMENTS \n Drupal 9 or 10 with media enabled. Media Library is recommended.\n\n Back to top \n\n INSTALLATION \n Install as you would normally install a contributed Drupal module. See the\n\n install docs \n\nif required in the Drupal documentation for further information.\n\n Composer is required. \n\n Back to top \n\n CONFIGURATION \n Site builders can customize the mapping of metatags to fields by creating a\n\nnew media type or editing the default media type.\n\n \n\n Metatags results from fetching of pages is cached in the Drupal backend cache\n\nfor 1hr. Any mapped metadata onto fields on media are normally semi-permanent\n\nie, only changed if you change the source field and resave. Metatags on pages\n\noutside of your site/control are a lot more likely to change than metadata on\n\nfiles that you've uploaded. By default data is cached for 1 week.\n\n Advanced site builders can use non-documented metatags by manually editing and\n\nimporting config.\n\n Back to top \n\n FAQ \n Any questions? Ask away on the issue queue or contact the maintainer.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2022-08-16",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

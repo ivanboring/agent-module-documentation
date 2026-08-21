@@ -37,5 +37,13 @@
     "metadata",
     "open-data",
     "theming"
-  ]
+  ],
+  "project_description": "Back to top \n\n \nINTRODUCTION \n The DKAN extra fields module provides JSON Schema property values in extra fields in Drupal field display UI.\n\n Back to top \n\n \nREQUIREMENTS \n DKAN and apply patch 4310-plus.patch that is given with this module.\n\n Back to top \n\n \nINSTALLATION \n Install as you would normally install a contributed Drupal module. See: https://www.drupal.org/node/895232 for further information. DKAN module needs to be enabled (specifically (dkan_)metastore_search module).\n\n only for version 1.x \n\nThis needs to be done manually due to this issue \n\n Back to top \n\n \nCONFIGURATION \n Put the desired extra fields in the output of your node view admin/structure/types/manage/data/display for example\n\n Back to top \n\n \nCUSTOMIZATION \n \ndkan_extra_field_item - Outputs Items that have multiple properties in one extra field \n You can use hook_preprocess_HOOK() for dkan_extra_field_item to control the output of labels and values for the extra field items. Check the output of $variables in the hook and see that there is an array keys that contains the property key names. You can hide key and value or change the key label. Also dkan_extra_field_item has a lot of theme_suggestions to vary on.\n\n Back to top \n\n \nMAINTAINERS \n Current maintainers:\n\n \n Stefan Korn - https://www.drupal.org/u/stefankorn \n \n \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2024-05-07",
+  "project_changed": "2026-08-12",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

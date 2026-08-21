@@ -45,5 +45,13 @@
     "TYPE_HTML_RESTRICTOR",
     "hook_link_alter",
     "filter_noopener"
-  ]
+  ],
+  "project_description": "This project adds a filter that enables it to add rel=\"noopener\" to all WYSIWYG added links.\n\n This is done in order to prevent window.opener from being exploited.\n\n For more information on this subject check out: https://mathiasbynens.github.io/rel-noopener/ \n\n Configuration \n \n Navigate to Administration > Extend and enable the module. \n Navigate to Administration > Configuration > Text formats and editors. \n For each text format Configure and select the 'Add noopener to all links' checkbox and save configuration.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-03-21",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

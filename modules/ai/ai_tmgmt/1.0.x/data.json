@@ -42,5 +42,13 @@
     "openai",
     "ollama",
     "machine translation"
-  ]
+  ],
+  "project_description": "The AI TMGMT (Translation Management) module is an AI translator plugin for the Translation Management Tools (TMGMT) project. It uses the AI module under the hood to allow you to use OpenAI, Ollama, and many more other providers (both paid and local/free). You will always have access to the latest and most cost-effective models to translate your content accurately and automatically.\n\n Back to top \n\n Features overview \n \n Fast automated translation of content using AI with ability to tweak translation style. \n Integration with the AI Translate sub-module of the AI module to allow AI model selection and prompts to differ per language \n Translate one or multiple nodes by a few simple mouse clicks. \n Use advanced translation jobs management tool to submit and review translations. \n The project of course also supports implicitly all the features which are provided by TMGMT like a feature-rich review process, being able to translate different sources and more. \n \n Back to top \n\n Installation \n Install as you would normally install a contributed Drupal module. For further information, see Installing Drupal Modules .\n\n Back to top \n\n Configuration \n \n Enable this module and at least one TMGMT 'Source' provider like 'Content Entity Source' \n Configure at least one Provider in the AI module at /admin/config/ai/settings \n Enable the TMGMT AI Provider at /admin/tmgmt/translators \n Check it works by going to /admin/tmgmt/sources, request a translation, and reviewing the generated translation results. \n \n Note: you probably want to install this patch as the base TMGMT module runs jobs twice, so you will use more tokens until the issue is fixed: [#3198609] \n\n Back to top \n\n Prompt Examples \n Default prompt \n\n \n\nTranslate from %source% into %target% language \n\n %text%\n\n Ability to change style of the translation \n\n \n\nTranslate from %source% into %target% language in Ernest Hemingway style \n\n %text%\n\n Back to top \n\n Migrating from the 'TMGMT OpenAI' module \n Steps to migrate from https://www.drupal.org/project/tmgmt_openai :\n\n \n Install this module as per the instructions \n Ensure the new AI TMGMT provider is set up correctly \n Ensure all Jobs related to tmgmt_openai are completed \n Disable the tmgmt_openai provider \n Uninstall the tmgmt_openai module \n \n Back to top \n\n Maintainers \n \n Minnur Yunusov ( minnur ) Wrote the original module and continues to maintain the project. \n Scott Euser ( scott_euser ) Ported the module over to leverage the AI module and supports maintenance. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-10-08",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

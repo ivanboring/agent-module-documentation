@@ -33,5 +33,13 @@
     "settings",
     "formatter",
     "display"
-  ]
+  ],
+  "project_description": "Shared Field Display Settings (sfds) adds the ability to track and update field display settings and form display settings for fields that are opted in to sharing.\n\n How to use:\n\n \n Install as normal via Composer: composer require 'drupal/sfds:1.0.x-dev@dev' \n Enable the module via Drush ( drush en sfds ) or via the UI (/admin/modules) \n Consult your site's field list (/admin/reports/fields) to see which fields are shared (optional) \n Edit the \"storage settings\" of a shared field. You will see a section labelled \"Shared field display settings.\" \n Activate the checkbox to \"Enable shared field display for this field\" \n Choose \"Global\" or \"Per bundle\" for the \"Shared field display mode\" \n Select a bundle from the list to use that bundle's field display settings as the global default \n Save the storage settings",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-06-26",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

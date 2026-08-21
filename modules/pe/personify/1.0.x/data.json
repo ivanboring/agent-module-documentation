@@ -33,5 +33,13 @@
     "membership",
     "ymca",
     "integration"
-  ]
+  ],
+  "project_description": "🇺🇦 \n \n This module is maintained by Ukrainian developers.\n\nPlease consider supporting Ukraine in a fight for their freedom and safety of Europe. \n \n \n ## Integration with Personify\n\n ### Requirements\n\n #### SoapClient\n\n Enable PHP Soap Extention\n\n```sh\n\nphpenmod soap\n\nservice apache2 restart\n\n```\n\n1. Locate your php.ini file and find these two lines:\n\n extension=soap\n\n 2. Remove the “;” character at the beginning or add them to the file.\n\n 3. Restart your web server.\n\n In case of error:\n\n```\n\nPHP Warning: PHP Startup: Unable to load dynamic library ...\n\n```\n\nInstall missing extension. For example, for PHP 7.2:\n\n```\n\nsudo apt-get install php7.2-soap\n\n```\n\n ### Credentials \n\n Add Personify credentials to your settings.php file.\n\n ```\n\n# Personify SSO data.\n\n$config['personify.settings']['prod_wsdl'] = ''\n\n$config['personify.settings']['stage_wsdl'] = ''\n\n$config['personify.settings']['vendor_id'] = ''\n\n$config['personify.settings']['vendor_username'] = ''\n\n$config['personify.settings']['vendor_password'] = ''\n\n$config['personify.settings']['vendor_block'] = ''\n\n # Personify Prod endpoint.\n\n$config['personify.settings']['prod_endpoint'] = ''\n\n$config['personify.settings']['prod_username'] = ''\n\n$config['personify.settings']['prod_password'] = ''\n\n # Personify Stage endpoint.\n\n$config['personify.settings']['stage_endpoint'] = ''\n\n$config['personify.settings']['stage_username'] = ''\n\n$config['personify.settings']['stage_password'] = ''\n\n```",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2021-09-20",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

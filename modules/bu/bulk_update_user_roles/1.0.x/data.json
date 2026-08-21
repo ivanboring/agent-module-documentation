@@ -1,7 +1,7 @@
 {
   "name": "Bulk Update User Roles",
   "data_name": "bulk_update_user_roles",
-  "description": "Bulk-adds/removes roles across ALL users in one click. SECURITY: the form route requires only 'administer users', but it offers EVERY role (including administrator) and applies them directly (addRole) \u2014 bypassing core's rule that role assignment needs 'administer permissions'. So an 'administer users'-only account can grant itself/everyone the admin role (privilege escalation). Restrict to 'administer permissions' and filter to assignable roles.",
+  "description": "Bulk-adds/removes roles across ALL users in one click. SECURITY: the form route requires only 'administer users', but it offers EVERY role (including administrator) and applies them directly (addRole) — bypassing core's rule that role assignment needs 'administer permissions'. So an 'administer users'-only account can grant itself/everyone the admin role (privilege escalation). Restrict to 'administer permissions' and filter to assignable roles.",
   "version": "1.0.x",
   "package": "Other",
   "composer_namespace": "drupal/bulk_update_user_roles",
@@ -35,5 +35,13 @@
     "privilege escalation",
     "administer users",
     "administrator"
-  ]
+  ],
+  "project_description": "The Bulk Update User Roles module enables site administrators to assign or remove roles for multiple users at once, either in bulk or by selecting users randomly.\n\n Features \n The Bulk Update User Roles module enables site administrators to assign or remove roles for multiple users at once, either in bulk or by selecting users randomly.\n\n Post-Installation \n After the module is installed go to admin > configuration > Bulk Update User Roles config page to assign or remove roles.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-07-16",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

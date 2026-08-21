@@ -35,5 +35,13 @@
     "blocks",
     "experience builder",
     "reuse"
-  ]
+  ],
+  "project_description": "Exposes a Drupal Canvas pattern as blocks that render a configurable pattern. This allows placing the pattern via a block, so that it can be centrally managed.\n\n Why \n Placing a pattern through the Canvas UI forks it: the component tree is copied into the page. By placing a pattern via the block, it stays centrally managed via the block.\n\n Features \n \n A lightweight canvas_pattern_block config entity. Select the pattern to be exposed by a block. \n Each entity is exposed as a block that editors place via Canvas \n \n Usage \n \n Create one or more patterns in Drupal canvas \n Add a new Pattern block under Admin >> Structure >> Pattern blocks and select your pattern \n Place the block, e.g. via Drupal canvas. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-06-09",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10003000,
+  "core_semver_maximum": 12000000
 }

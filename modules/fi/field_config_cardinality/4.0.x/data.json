@@ -46,5 +46,13 @@
     "entity reference",
     "options select",
     "shared field storage"
-  ]
+  ],
+  "project_description": "Allows the cardinality of specific config fields to be overridden.\n\n( Field instance cardinality for drupal 8)\n\n If you want to reuse fields between bundles , field config cardinality will allows two fields, one single and one multiple, and saves the information in the same table in the database. This reduces the number of tables per field in the database.\n\n Example: field_dates, it is possible to be multiple field on article content type, and reuse with single field on page content type, and the information is saved on same database table.\n\n Drupal supports this, but there is no UI for it. This module acts as a shim to enable this granular control over cardinality.\n\n If in testing you find a widget that is not supported, please check the active issues and create a new one if it has not already been reported.\n\n Long term, it would be best to refactor based on [#1029298-99], but this has yet to be tested.\n\n Similar modules \n Limited Field Widgets - Accomplishes the same net result, but allows customization per entity form mode vs bundle's the field configuration.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-05-18",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 13000000
 }

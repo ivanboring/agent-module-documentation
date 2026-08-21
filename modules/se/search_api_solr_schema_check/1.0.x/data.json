@@ -36,5 +36,13 @@
     "drift",
     "validation",
     "monitoring"
-  ]
+  ],
+  "project_description": "If you use Search API Solr, over time as you update the module, you'll be required to regenerate and re-upload its configuration schema to your Solr server. This is often a manual process and is easily overlooked. Whilst the Search API Solr module has some basic validation in place to warn you if the schema is out of date, it doesn't verify that the server is using the files you want to be using.\n\n Features \n If you store your Solr config in the repository along with your Drupal code, point this module to the location of the config in your repository and then you'll be warned if the active config in Solr differs to the code in your respository.\n\n Post-Installation \n Go to the Status Report at /admin/reports/status - if the files match, you'll see confirmation in the 'Checked' section for each file and each configured server. If any file differs, you'll see an Error stating the server and file.\n\n Additional Requirements \n Search API Solr \n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-06-03",
+  "project_changed": "2026-08-14",
+  "core_semver_minimum": 10001000,
+  "core_semver_maximum": 12000000
 }

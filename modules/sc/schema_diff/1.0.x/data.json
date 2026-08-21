@@ -33,5 +33,13 @@
     "database",
     "developer",
     "diagnostic"
-  ]
+  ],
+  "project_description": "Developer only \n This module is intended to be used by developers to help debug Mismatched entity and/or field definitions errors in their status report.\n\n It should not be used in production\n\n \n This is a utility module that allows to view the schema difference on /admin/reports/status page.\n\n Features \n - Whenever there are any mis-matched entity field definitions, those are visible on \"admin/reports/status\" page. Currently, Drupal core doesn't provide any way to view what is the difference between defined storage schema and installed storage schema.\n\n- This module allows to view the difference for each field in tabular format.\n\n Post-Installation \n - Visit the \"admin/reports/status\" page after installing the module.\n\n- Visit entity field mismatch error section.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2023-06-28",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12999999
 }

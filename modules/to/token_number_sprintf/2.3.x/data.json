@@ -36,5 +36,13 @@
     "sprintf",
     "format",
     "field"
-  ]
+  ],
+  "project_description": "This module adds a dynamic \"Formatted\" token for decimal, float, and integer fields that allows the use of a sprintf formatting string to format the number.\n\n Note that this is a simple application of the function using a single value:\n\n sprintf($your_format_string, $numeric_field_value); \n\n A formatting string that expects multiple values will produce no output.\n\n Use case \n We had a need for this functionality when we needed to generate automatic entity labels for nodes that included a number field, and needed that number padded with leading zeroes in the labels.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2019-09-12",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -35,5 +35,13 @@
     "widget",
     "form",
     "partial"
-  ]
+  ],
+  "project_description": "The Partial Datelist module allows site administrators to customize the visibility of the Select list widget by deactivating individual parts of date and date/time components (e.g., year, month, day, hour, minute, second) both in Date and Date Range fields. This is particularly useful for scenarios where only specific parts of a date or time need to be collected (e.g. year only, or year/month).\n\n By integrating with Drupal's widget configuration interface, this module enhances date entry flexibility by providing an intuitive way to hide unwanted dropdowns for simple date and date/time widgets, as well as range fields.\n\n Features \n \n Hide specific date parts (e.g., year, month, day) or time parts (e.g., hour, minute, second) in the \"Select list\" widget. \n Compatible with both Datetime and Datetime Range field types. \n Easy configuration through the field widget settings interface. \n Improves user experience by simplifying date input forms. \n This module is ideal for use cases where collecting partial date or time information is sufficient, such as year-only fields for historical records. \n \n Upgrading \n Version 1.1.x drops this module's outdated procedural hook functions in favor of PHP attribute-based hook implementations (#[Hook]). For those who are upgrading form a previous version (1.0.x), make sure to run database updates ( drush updb or visit update.php ) right after deploying this version: until that runs, the site may still be relying on a cached reference to the removed functions, thus causing the website to error out.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-04-29",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 13000000
 }

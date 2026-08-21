@@ -36,5 +36,13 @@
     "timestamp",
     "watchdog",
     "debugging"
-  ]
+  ],
+  "project_description": "This module is useful for projects where you wish to keep database logging messages for a set period of time. You understand the risks that setting a time limit increases the risk of having a high quantity of items in your database log.\n\n Features \n This enhances the Database Logging Module from core by:\n\n \n Adding an index on the timestamp for performance filtering by date (eg, you can use this in the /admin/reports/dblog View) \n Providing an option to have cron delete messages by amount of time that has passed rather than by quantity of messages \n Control the amount of time per module, e.g. keeping login logs for a month, but cron logs for just a week \n \n Post-Installation \n Go to /admin/config/development/logging and choose 'Timespan' instead of the default 'Row limit'. Enter a timespan like '-7 days' to delete messages that are older than 7 days. This accepts anything that strtotime() accepts.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-10-18",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

@@ -35,5 +35,13 @@
     "hook_file_download",
     "hook_file_access",
     "developer"
-  ]
+  ],
+  "project_description": "Provides an event-based system for checking file access and file\n\ndownloadability plus file copying and removal.\n\n This module does nothing on its own and is for developers to simplify their\n\ntask when deciding whether a file can be displayed or downloaded.\n\n Client modules should have event subscribers for either (or both):\n\n \n - UniversalFileDownloadEvent \n - UniversalFileAccessEvent \n \n The file download event allows a module to decide whether it wants to permit\n\nthe download (call `$event->denyDownload()` if not) and can also add headers\n\nif that's needed. An event subscriber will need to be created for that.\n\n The file access event allows a module to decide whether a file (probably an\n\nimage) can be viewed or downloaded.\n\n There is a a base event subscriber for this which should be extended, the\n\nclient module only needs to provide some data through two methods to decide\n\nwhether access is permitted.\n\n Apart from checking download and access, the service also provides the ability\n\nto copy and remove files.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-01-10",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

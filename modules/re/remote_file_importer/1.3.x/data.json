@@ -35,5 +35,13 @@
     "ftp",
     "sftp",
     "ingestion"
-  ]
+  ],
+  "project_description": "The Remote File Importer is a module designed for dynamic data synchronization from remote storage systems. This community module seamlessly integrates with Drupal, enabling automated scanning and downloading of new files from remote data sources, such as FTP storage, into Drupal’s file storage.\n\n Key Features:\n\n \n Multiple Remote Storages : Supports adding and managing multiple (FTP) data sources, each with customizable settings. \n Configurable Settings : Customize the schedule, remote storage details, and destination subfolders through a user-friendly backend UI. \n Manual & CLI Execution : The module allows for manual execution through the UI or command-line interface using Drush. \n FTP (FTPS) Protocol Support : Securely connect to remote storage using FTP or FTPES, configuring hostname, port, user credentials, and source folder. \n Intelligent File Handling : Options to enable file modification date checks and deletion, ensuring only relevant and updated files are imported. \n \n This module is perfect for organizations needing regular, automated data imports from remote FTP servers, offering flexibility, security, and ease of integration with existing Drupal infrastructures.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2024-02-21",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9004000,
+  "core_semver_maximum": 12000000
 }

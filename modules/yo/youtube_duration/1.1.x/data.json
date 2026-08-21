@@ -44,5 +44,13 @@
     "contentDetails",
     "ISO 8601 duration",
     "remote video"
-  ]
+  ],
+  "project_description": "This module allows a Drupal duration field on a oEmbed video media entity to be filled by querying the Youtube API.\n\n The duration of a Youtube video cannot be accessed via oEmbed. This is where this module comes in and provides duration by querying the Youtube API. The module relies on a Drupal duration field for storing the duration information and a Youtube/Google API key is needed to query the Youtube API.\n\n Installation \n \n install the module as usual \n Add a duration field to your oEmbed media entity \n Configure your oEmbed media entity to use this duration field to store the duration information (you will also need to put Youtube/Google API key in)",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-09-07",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

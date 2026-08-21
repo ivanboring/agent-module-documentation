@@ -33,5 +33,13 @@
     "values",
     "indexing",
     "normalize"
-  ]
+  ],
+  "project_description": "This module allows to create static value mappings for index fields, which will be saved into a new index field. It is possible to map many source values to one target value. The new field is facet compatible.\n\n Example:\n\n source key / value | target value\n\n------------------------------------\n\nopen | undone\n\nwaiting | undone\n\nsuccessfully closed | done\n\nunsuccessfully closed | done\n\n Whether you need the source key or the source value for the mapping depends on the field type. \n\n Tested with Search API, Search API Solr and Facet API.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2017-11-24",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

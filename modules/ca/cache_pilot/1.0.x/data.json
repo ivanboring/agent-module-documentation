@@ -33,5 +33,13 @@
     "performance",
     "management",
     "opcode"
-  ]
+  ],
+  "project_description": "Cache Pilot provides command-line tools to clear APCu and OPcache caches via FastCGI, essential for deployments using PHP-FPM. This module ensures reliable cache management without relying on web requests, making it ideal for CLI workflows.\n\n Features \n \n Cache Clearing : Clear APCu and Zend OPcache caches via Drush commands ( cache-pilot:apcu:clear and cache-pilot:opcache:clear ), UI, or programmatically using a dedicated service. \n Deployment-Friendly : Designed for use in deployment scripts where PHP-FPM runs separately from CLI. \n Flexible Connections : Configure FastCGI via TCP (e.g., tcp://127.0.0.1:9000 ) or Unix domain sockets (e.g., unix:///var/run/php/php-fpm.sock ). \n Cache Statistics Report : Provides a new Report page with APCu and/or Zend OPcache statistics. \n \n Use this module to ensure PHP opcode caches are reliably reset during deployments, avoiding stale code or cached data issues.\n\n Post-Installation \n \n Navigate to Configuration > Performance > Cache Pilot Settings . \n Configure the Connection DSN :\n \n TCP : Connects using the '[host]:[port]' information, for example: tcp://127.0.0.1:9000 or tcp://php:9000 . \n Unix Domain Socket : Connects using a unix socket to which you provide a path, for example: unix:///var/run/php/php-fpm.sock \n \n \n Use Drush commands in deployment scripts (recommended before drush deploy ). \n \n To disable in specific environments, override the configuration in settings.php :\n\n $config['cache_pilot.settings']['connection_dsn'] = NULL; Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-03-24",
+  "project_changed": "2026-07-28",
+  "core_semver_minimum": 10003000,
+  "core_semver_maximum": 12000000
 }

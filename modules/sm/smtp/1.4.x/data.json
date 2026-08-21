@@ -43,5 +43,13 @@
     "ssl",
     "mail delivery",
     "transactional email"
-  ]
+  ],
+  "project_description": "This module allows Drupal to bypass the PHP mail() function and send email directly to an SMTP server. The module supports SMTP authentication and can even connect to servers using SSL if supported by PHPMailer. \n\n Back to top \n\n What does SMTP do? \n It sends mail via the SMTP protocol using the PHPMailer library . While it can be a standalone module for the Drupal mailsystem, you can also use the Mail System module to manage multiple mailer modules including SMTP.\n\n What does SMTP NOT do? \n This module does not support (and will not support) sending mail via other protocols or APIs other than SMTP.\n\nFor Example: While services like sendgrid do support SMTP, you may get a better experience using the Sendgrid Integration Module \n\n Back to top \n\n Dependencies \n \n PHPMailer \n \n Integrations \n \n Mail System \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2005-10-25",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

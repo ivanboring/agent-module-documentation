@@ -43,5 +43,13 @@
     "development",
     "drush",
     "fixtures"
-  ]
+  ],
+  "project_description": "Most projects with a QA and UAT workflow need a way to let testers access privileged user roles on dev and stage environments that they might not otherwise have access to in production.\n\n This module offers a dead simple solution: it automatically creates a dummy user account for each role on the site when it's installed, where the username and password are both set to a known value. By only installing this helper module on dev and stage, it's easy to provide testers with access to these environments via static accounts.\n\n For instance, if your site has a content_editor role, then this module (when installed) will create a user account with the content_editor role and the credentials \"qa_content_editor\" / \"qa_content_editor\".\n\n Future plans are to allow for more customization, such as configuration of the prefix, default passwords, whether roles should be created at install time, etc...",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2017-04-07",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

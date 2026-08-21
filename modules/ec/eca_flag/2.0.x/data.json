@@ -43,5 +43,13 @@
     "events",
     "actions",
     "bookmarks"
-  ]
+  ],
+  "project_description": "Integrates ECA with Flag . \n\n For now, as the Flag module doesn't have a stable release yet, you need to apply 2 patches to the flag module when starting to use this:\n\n \n Integrate with ECA - this is already included in Flag 8.x-4.x-dev \n Re-implement tokens \n \n Features \n \n Events\n \n You can either react on Insert flagging entity or Flag events. Both will operate similarly. The same for either Delete flagging entity or Unflag events. \n If either of those events gets triggered, ECA puts several things onto the token stack:\n \n flag the flag entity \n flagging the flagging entity \n entity the flagged or unflagged entity \n \n Note: if a flagging gets added or if the unflagging happens on exactly on entity, then you get those items on the token stack. However, unflagging can be triggered for many entities at once, then you get a list on the token system under the name flaggings where each item in the list contains the tokens listed above\n\n \n \n \n Conditions\n \n There is 1 condition from eca_flag which asserts whether a given entity is flagged or not \n All other conditions can be achieved with the Compare two scalar values condition by using tokens from the flag entities \n \n \n Actions\n \n There is 1 action to get one or many flagging entities for a given entity and stored as an entity or a list of entities onto the token stack \n Actions provided by the Flag module to flag or unflag entities can also be used in ECA models",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2022-07-13",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

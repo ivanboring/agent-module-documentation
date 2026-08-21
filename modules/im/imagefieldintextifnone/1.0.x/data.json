@@ -41,5 +41,13 @@
     "display",
     "fallback",
     "article"
-  ]
+  ],
+  "project_description": "Embed an image from an image field in a long text field (such as the body) if an image is not already embedded.\n\n The primary use case is to place the main image (already used in the teaser) early into the text if there's not already an image there.\n\n The image will be placed immediately prior to the second paragraph, so that it is shown between the first and second paragraphs. Our recommendation is to use CSS to center it above the second paragraph on mobile and inset at the top right of the second paragraph (on tablet, desktop, etc.)\n\n Known issues \n To start, this is hard-coded to field_image and the body field of the Article content type, but the goal is to make this configurable. If this module would meet your need, please post an issue! (Patches also welcome, naturally.)\n\n Also, it is incompatible with Layout Manager. This might be an easy fix— making sure this module runs before Layout Manager, or finding a hook that runs right before Layout Manager goes to work, or (please no) dig into the random-named arrays that Layout Builder moves everything into.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-07-24",
+  "project_changed": "2026-04-04",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

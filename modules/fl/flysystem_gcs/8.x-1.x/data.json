@@ -38,5 +38,13 @@
     "remote files",
     "stream wrapper",
     "bucket"
-  ]
+  ],
+  "project_description": "Flysystem Google Cloud Storage provides a Google Cloud Storage plugin\n\nfor Flysystem. This plugin allows you to replace the local file system with Google\n\nStorage . Flysystem GCS can be used as the default file system or can be configured\n\nfor each file/image field separately.\n\n Back to top \n\n Requirements \n Upload the Service Account JSON file to your site by following these steps:\n\n \n \n Create a project in GCP . \n Go to the storage browser and create a bucket . \n Create a Service Account and get private key:\n \n Go to the Service Accounts page . \n Create Service Account with Storage Admin role. \n Create a new key for the Service Account (key type - JSON). \n Download the JSON file to a private folder in your site. \n \n \n \n This module requires the following dependencies:\n\n \n Flysystem \n Flysystem Adapter for Google Cloud Storage \n \n Back to top \n\n Installation \n Install as you would normally install a contributed Drupal module. For further\n\ninformation, see Installing Drupal Modules .\n\n Back to top \n\n Configuration \n Stream wrappers are configured in settings.php (see the Flysystem README.md).\n\n Example configuration \n $settings['flysystem'] = [\n 'cloud-storage' => [\n 'driver' => 'gcs',\n 'config' => [\n 'bucket' => 'example',\n 'keyFilePath' => '/serviceaccount.json',\n 'projectId' => 'google-project-id',\n // More options: https://googlecloudplatform.github.io/google-cloud-php/#/docs/google-cloud/v0.46.0/storage/storageclient?method=__construct.\n // Optional local configuration; see https://github.com/Superbalist/flysystem-google-cloud-storage#google-storage-specifics.\n '_localConfig' => [\n 'prefix' => 'extra-folder/another-folder/',\n // Change part of URLs from https://storage.googleapis.com/[bucket_name]/extra-folder/another-folder/ to https://cname/.\n 'uri' => 'https://cname',\n ],\n ],\n 'cache' => true, // Cache filesystem metadata.\n ],\n];\n After this, make sure to apply the following configuration changes to your Drupal installation:\n\n \n Change the default download method for File system at /admin/config/media/file-system . \n Change the upload destination for existing fields. \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-12-04",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

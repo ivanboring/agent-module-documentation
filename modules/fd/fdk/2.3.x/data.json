@@ -33,5 +33,13 @@
     "output",
     "formatter",
     "fdk"
-  ]
+  ],
+  "project_description": "The Field Display Kit (FDK) module helps to fine tune rendering of any field in the system.\n\n These features are supported:\n\n \n Changing title (label) of the field independently in each display (aka view mode). \n Changing title (label) element tag, as well as add classes and other attributes. \n Changing wrapper element of the field, as well as add classes and other attributes to the wrapper. \n Changing wrapper element of each individual field item, as well as add classes and other attributes to the wrapper. \n Allows to link any field item. Tokens like [node:url] can be used to build the link \n \n When enabled, this module will provide configurations for every field on every entity of your site. It will work with fields that are displayed normally or with Layout Builder.\n\n Important notice \n This module brings its own version of field.html.twig . If any of your themes overrides field.html.twig then it needs to be overriding field.html.twig from this module, not from core. Otherwise, you may not get desired output as per FDK settings.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2020-08-19",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

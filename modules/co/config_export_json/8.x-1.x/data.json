@@ -39,5 +39,13 @@
     "api",
     "configuration",
     "data export"
-  ]
+  ],
+  "project_description": "This project allows you to export your configs as a JSON to be accessed by any other application / Framework\n\n Back to top \n\n How export your config to JSON \n $config = [\n\n 'customProject' => [\n\n 'key1' => 'value1',\n\n 'key2' => 'value2',\n\n 'key3' => 'value3',\n\n 'keyX' => 'valueX',\n\n ],\n\n]; \n\n \\Drupal::service(\"config_export_json.api\")->add($config);\n\n Back to top \n\n JSON \n You can access at:\n\n https://yoursite.local/sites/default/files/config/config.json \n\n P.s. If your prefer you can access your JSON at:\n\n https://yoursite.local/api/config.json \n\n Example:\n\n \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-01-22",
+  "project_changed": "2026-07-28",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

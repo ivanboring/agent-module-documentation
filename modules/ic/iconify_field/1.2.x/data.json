@@ -42,5 +42,13 @@
     "field",
     "ckeditor",
     "picker"
-  ]
+  ],
+  "project_description": "The Iconify Field module for Drupal allows you to easily add SVG icons to any type of content, using the amazing Iconify project.\n\n Back to top \n\n Components \n \n Field integration with a user-friendly icon picker \n A CKEditor 5 plugin to easily let content editors add icons \n An API to allow developers to integrate any feature in their own custom modules \n \n Back to top \n\n What does it do? \n In short, it provides a new field type for selecting icons from any collection of Iconify icons. The resulting icon or icons will be rendered in SVG form on the frontend, without the need for any client-side JavaScript.\n\n Additionally, a separate module is provided to provide a CKEditor 5 plugin. This makes it easy for content editors to include icons in their content.\n\n Back to top \n\n Can it do anything else? \n It can! Of course, just providing a field type for one or more icons can quickly become very limiting. That is why some helpers are provided alongside the module.\n\n Twig function \n You might run into situations where you have custom functionality, and want to embed a single icon in a Twig template. That's where the iconify_field Twig function comes in. Simply provide the collection and name of the icon, and the correct icon will be rendered.\n\n For example:\n\n<?php\n\n{{ iconify_field('mdi:account') }}\n\n?>\n\n The icon picker is pretty nice, can I use it in my custom form? \n Be my guest! It's quite simple to include, since a custom form element is provided with this module.\n\n Here's a code snippet to get you started:\n\n<?php\n\n$form['icon'] = [\n\n '#type' => 'iconify_field',\n\n '#default_collection' => 'mdi', // Can also be NULL, in which case the first collection will be pre-selected\n\n '#collections' => [ // Can also be empty, in which case all collections are allowed\n\n 'mdi',\n\n 'tabler',\n\n ],\n\n '#default_value' => 'mdi:account',\n\n];\n\n?>\n\n \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-05-18",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12999999
 }

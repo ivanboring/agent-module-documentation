@@ -37,5 +37,13 @@
     "validation",
     "editorial",
     "fields"
-  ]
+  ],
+  "project_description": "The Textarea Limit module adds in character limiting to selected textarea widgets. Widgets are selected on the respective form display edit form(s). A global character limit can be used, configurable via admin form or a local limit can be set.\n\n Requirements \n This module requires the jquery.limit javascript library which is currently loaded externally.\n\n Install/Usage \n Install module via composer:\n\n \n\ncomposer require drupal/textarea_limit\n\ndrush en textarea_limit\n\n \n\n \n Configure global settings at: /admin/config/content/textarea-limit \n Setup/add textarea field on entity of choice. \n Adjust field form display formatting options on textarea field. Set custom text limit or use global text limit. \n Now goto create/edit form for entity and inspect textarea field. It should now indicate how many characters are left/limit you. \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-04-26",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

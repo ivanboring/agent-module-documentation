@@ -36,5 +36,13 @@
     "asset import",
     "media",
     "dam"
-  ]
+  ],
+  "project_description": "This module has been absorbed into the Acquia DAM project. Use of this standalone project is deprecated.\n Since the replacement module has the same machine name as the standalone module, the upgrade might be a pain. The deployment may need to involve manually disabling the acquiadam_asset_import module as a pre-deployment step.\n\n \n This module allows you to bulk import the contents of folders from Acquia DAM into your Drupal site. This extends the functionality provided by Media: Acquia DAM, allowing you to have assets in Drupal without having to first associate them to another Drupal entity.\n\n 8.x-1.x Branch \n For use with Media: Acquia DAM version 8.x-1.x, which supports the Acquia DAM Classic Service\n\n 2.0.x Branch \n For use with Media: Acquia DAM version 2.0.x, which supports the Acquia DAM Service backed by Widen.\n\n Upgrading from 8.x-1.x to 2.0.x \n Upgrade with caution.\n\n There is an untested upgrade path that just changes the \"folders\" to \"categories\" in acquiadam_asset_import.config . Whether or not this is effective depends on the specifics of the upgrade path between the Acquia DAM Classic Service and the Acquia DAM Service backed by Widen. The maintainers here do not know the details there.\n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Obsolete",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-02-26",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

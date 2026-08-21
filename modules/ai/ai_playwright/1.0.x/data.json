@@ -38,5 +38,13 @@
     "headless browser",
     "agents",
     "screenshot"
-  ]
+  ],
+  "project_description": "Gives Drupal AI Agents eyes on a rendered page. AI Playwright opens a page of your site in a real headless browser (Playwright / Chromium) and hands the AI Agent a screenshot, the page title, the visible text, and any console errors — so the Drupal Canvas AI assistant can look at what it builds and verify or refine it, instead of building blind. It works almost as if the agent were using the Playwright MCP, but from inside Drupal as an AI Agent tool.\n\n The idea started as a plugin inside Display Builder AI ; this module lifts it out into a small, standalone tool for Drupal Canvas and Drupal Canvas AI Agents . Config-driven and framework-agnostic.\n\n What it provides \n \n an AI Agent tool — Browser preview (Playwright) — that captures a page and returns a screenshot file id (pass it to describe_image to \"see\" it), the title, text, and console errors, and \n a settings page for the internal base URL, the Node binary, the timeout, and whether off-site URLs are allowed. \n \n Requirements \n \n Drupal ^11.2 \n AI (Drupal AI) and AI Agents \n Drupal core file \n On the server: Node.js 18+ and Playwright with Chromium \n \n Security \n The tool opens an authenticated browser as the acting user, so it sees the same content that user can. It is gated on the Use the AI Playwright browser tool permission, targets this site only unless an administrator enables off-site URLs, and passes every argument as an argv array — never an interpolated shell string.\n\n Related \n Works with any AI Agent on any AI Assistance page — the Drupal Canvas AI Agents and any other AI Agent.\n\n \n AI Figma — read a Figma design's context for AI Agents. \n Drupal Canvas \n Display Builder AI \n \n Documentation \n https://project.pages.drupalcode.org/ai_playwright/ \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2026-06-21",
+  "project_changed": "2026-08-11",
+  "core_semver_minimum": 11002000,
+  "core_semver_maximum": 12000000
 }

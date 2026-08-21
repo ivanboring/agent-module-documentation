@@ -35,5 +35,13 @@
     "post",
     "at protocol",
     "sharing"
-  ]
+  ],
+  "project_description": "This module adds a UI to the Bluesky Integration module, which provides Drupal services, for the potibm/phluesky library which provides a PHP library for Bluesky social using the AT Protocol.\n\n Features \n This module adds a \"Post to Bluesky\" tab to the local actions menu for selected node types. The tab presents a form with the Title, Summary, and Link for the node, which can be edited before posting to Bluesky.\n\n Post-Installation \n The configuration page allows the site administrator to select the content types on which to display the \"Post to Bluesky\" tab.\n\nThere are permissions for both the configuration and the actual usage.\n\n Additional Requirements \n drupal/bsky - The Bluesky Integration module , which in turn requires the potibm/phluesky library\n\n Supporting this Module \n Use the module. Share your Drupal content to Bluesky. I'll be happy if you do.\n\n Community Documentation \n Documentation page \n\n Notice \n This module is only of value for a single user system. The Bluesky Integration module it's based on stores a single credential for authenticating to the Bluesky network. Since most Drupal sites are multi-user this may be of limited value. I hope to be able to provide multi-user support in a future release.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-01-31",
+  "project_changed": "2026-08-11",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

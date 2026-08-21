@@ -33,5 +33,13 @@
     "user",
     "mail",
     "notifications"
-  ]
+  ],
+  "project_description": "The Disable Account Emails module provides site administrators with fine-grained control over which automated user account emails are sent from your Drupal site. This lightweight utility allows you to selectively disable specific types of user-related emails while keeping others active.\n\n How It Works \n The module leverages Drupal's form alteration and mail alteration hooks to implement its functionality:\n\n Form Integration: Uses hook_form_FORM_ID_alter() to inject a configurable set of checkboxes into the user administration settings page, placing them in a dedicated \"Disable Account Emails\" details fieldset below the main \"Emails\" vertical tab.\n\n Email Suppression: Implements hook_mail_alter() to intercept outgoing emails from the user module, checking each email against the administrator's configured preferences before allowing or preventing delivery.\n\n Configuration Management: Stores settings using Drupal's configuration system, with a schema definition ensuring data integrity across environments.\n\n Clean Uninstall: Provides proper cleanup during uninstallation by implementing hook_uninstall() to remove all configuration when the module is uninstalled.\n\n The module provides granular control over nine different types of automated user emails, including welcome messages, account activation notices, password recovery emails, and account cancellation confirmations—all without requiring any code modifications or complex configuration.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-03-14",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 11000000,
+  "core_semver_maximum": 12000000
 }

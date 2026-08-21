@@ -44,5 +44,13 @@
     "GeoLocator",
     "local_private",
     "country lookup"
-  ]
+  ],
+  "project_description": "Automatically keeps the MaxMind GeoLite2 Country database up to date. On each cron run, the module issues a HEAD request to check whether MaxMind has published a newer build — no download occurs unless a newer version is detected, so it never counts against MaxMind's daily download limit under normal operation.\n\n The database is stored in Drupal's private filesystem (not publicly accessible) and downloaded using MaxMind's direct download API with HTTP Basic Authentication, fully compatible with MaxMind's R2 presigned URL infrastructure. Also provides a \"Local dataset (private filesystem)\" GeoLocator plugin for the GeoIP module and an admin tab for credential management and on-demand downloads.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-03-23",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

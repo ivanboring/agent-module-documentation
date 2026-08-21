@@ -38,5 +38,13 @@
     "export",
     "config",
     "deployment"
-  ]
+  ],
+  "project_description": "The Features Permissions module allows for permissions to be managed (exported/imported) by the Features module.\n\n Drupal attaches permissions to roles. When a role is exported, all permissions are exported with the role. If a role is included in a feature, then all permissions for that roles are included in that feature. In many instances this is not desirable. As a result, permissions are stripped by default when exporting roles. See User permission handling and Move export processing to a configurable plugin .\n\n The Features Permissions module provides a permission config entity type that is synced with roles. When a role entity is updated, the associated permission entities are also updated. This allows for exportability. When a permission entity is imported or reverted by Features, the associated roles are also updated.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-08-31",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8009000,
+  "core_semver_maximum": 12000000
 }

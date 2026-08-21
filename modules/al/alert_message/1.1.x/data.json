@@ -41,5 +41,13 @@
     "announcement",
     "emergency",
     "scheduled"
-  ]
+  ],
+  "project_description": "Alert Message is a lightweight module that provides an easy way for administrators to display important temporary notifications to website visitors. These notifications can be configured to appear for anonymous users, logged-in users, specific individuals, or specific user roles.\n\n Back to top \n\n Key Features \n \n Dismissible Alerts: Users can click a notification to dismiss it for the duration of their browser session. \n Customization Options: Administrators can create multiple messages with distinct visibility criteria. Messages can be displayed in the top highlighted area or within a dedicated section of the page. Additionally, alerts can be scheduled for future publication and removal via cron. \n User and Role Targeting: Administrators can restrict alerts to specific groups based on assigned roles (e.g., editors, content authors) or individual usernames. \n Translatable: All alert messages are fully translatable. \n Custom Theming: The module includes a basic template, which developers can override to further customize the visual appearance of the alerts. \n Lightweight: A minimal module with only one dependency: the Entity module. \n \n Back to top \n\n How to Use \n \n Place the Alert Message block in the desired region of your layout. \n Create an alert message via the module's administrative interface. \n Hide non necessary fields from the alert message display \n Optionally , override the template file to customize the theme and appearance of your alerts. \n \n \n How does this module compare to Notification Message ? \n\n The primary difference lies in the architectural approach. This module leverages Drupal core features to remain lightweight and relies on invalidating the alert message block cache to determine visibility. This method effectively prevents Cumulative Layout Shift (CLS) .\n\n Since version 1.1.0, the module has utilized Lazy Builders to render the block. This leverages the Dynamic Page Cache , which significantly improves performance and keeps the cache table size to a minimum.\n\n Using with Varnish \n\n This module is compatible with Varnish. However, due to how Drupal handles caching for anonymous users, the Dynamic Page Cache will always be used once a user dismisses an alert. Though, the page should be normally served via Varnish until the former happens.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-05-09",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9003000,
+  "core_semver_maximum": 12000000
 }

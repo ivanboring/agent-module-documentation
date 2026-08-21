@@ -36,5 +36,13 @@
     "sync",
     "workflow",
     "content moderation"
-  ]
+  ],
+  "project_description": "Book Moderation Sync Module \n The Book Moderation Sync module synchronizes moderation states between books and their children (chapters or pages) in Drupal. It leverages the book and content_moderation modules to manage relationships and moderation states effectively.\n\n Features \n \n Moderation State Synchronization : When a book's moderation state is updated (e.g., published or archived), all its children inherit the same state. \n Child Deletion : Option to automatically delete child nodes when a book is deleted. \n \n Usage \n Moderation State Synchronization \n \n Create a book and add chapters or pages as children. \n Update the moderation state of the book (e.g., set it to \"Published\"). \n All child nodes will automatically inherit the same moderation state. \n \n Child Deletion \n \n Enable the delete_children_on_book_delete option in the module's configuration. \n Delete a book. \n All associated child nodes will be automatically deleted. \n \n Configuration \n The module provides a configuration option:\n\n \n Delete children when a book is deleted : If enabled, child nodes are deleted when their parent book is deleted. \n \n Dependencies \n \n Book : Manages the hierarchical structure of books and their children. \n Content Moderation : Handles moderation states for nodes. \n \n Technical Details \n The module uses the following services and methods:\n\n \n BookManager : Manages book-related operations, such as adding nodes to a book. \n BookOutlineStorage : Handles the storage of book relationships. \n ModerationInformation : Provides moderation state information for entities. \n \n Links \n \n Book Module \n Content Moderation Module \n \n License \n This project is licensed under the GPLv2 license.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-01-05",
+  "project_changed": "2026-08-11",
+  "core_semver_minimum": 10003000,
+  "core_semver_maximum": 12000000
 }

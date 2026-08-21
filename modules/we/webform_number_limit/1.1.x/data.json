@@ -35,5 +35,13 @@
     "number",
     "sum",
     "quota"
-  ]
+  ],
+  "project_description": "This module provides Webform handlers that allow forms with a number element to have submission limits based on the sum of those numbers. It's similar to the Options/Checkbox limit handler provided by the Webform Options Limit official submodule, but instead of counting every submission as 1, it allows that number to be taken from a number element.\n\n A practical application would be a registration form with the possibility to not just register yourself, but to also bring a certain amount of guests, while making sure those guests also count towards the maximum amount of registrations.\n\n Post-Installation \n After installing the module, add one of two Webform handlers to your webform. The Number limit handler can be used to set a maximum amount of registrations per form, while the Options/Checkbox with number limit handler can be used to set a different maximum amount of registrations depending on the chosen option of a certain options or checkbox element.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-09-04",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

@@ -35,5 +35,13 @@
     "oauth",
     "endpoint plugin",
     "licensing"
-  ]
+  ],
+  "project_description": "What is EditionGuard API? \n This module helps you to connect with\n\n EditionGuard API . Integrate with EditionGuard API v2 Synopsis\n\n https://api.editionguard.com/v2/welcome/synopsis .\n\n Important Note \n\nThe intended audience is module developers or web site programmers.\n\n Usage \n The base module does not have a UI and does nothing by itself. The intended audience is module developers or web site programmers. Only the configuration may be relevant for webmasters and website builders.\n\n For module developers \n\nCheck src/Form/TestForm.php for examples.\n\n \n \n \n \n <?php\n\n // Edition Guard Client API.\n\n $client = \\Drupal::service('editionguard_api.client');\n\n // Create ebook - https://editionguard.api-docs.io/v2/book .\n\n $form_params['title'] = 'MY_BOOK_TITLE_NAME';\n\n $fid = $entity->get(\"MY_FIELD_FILE_NAME\")->entity->getFileUri();\n\n $stream_wrapper_manager = \\Drupal::service('stream_wrapper_manager')\n\n ->getViaUri($fid);\n\n $file_path = $stream_wrapper_manager->realpath();\n\n $form_params['resource'] = $file_path;\n\n $endpoint = $client->getEndpointPluginManager()->createInstance('book_create');\n\n $result = $client->request($endpoint, $endpoint_query_params = [], $endpoint_form_params);\n\n // Get ebooks list - https://editionguard.api-docs.io/v2/book .\n\n $endpoint = $client->getEndpointPluginManager()->createInstance('book_list');\n\n $result = $client->request($endpoint, $endpoint_query_params = [], $endpoint_form_params = []);\n\n ?>\n\n \n \n \n \n  \n\n Related Modules \n EditionGuard \n Commerce EditionGuard \n\n  \n\n Credits \n This module is a adapted fork of trustpilot_api .\n\nBig thank you to Daggerhart who developed the trustpilot_api well written module.\n\n  \n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2020-09-17",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

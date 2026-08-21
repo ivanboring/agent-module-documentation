@@ -47,5 +47,13 @@
     "views_view form mode",
     "mass update",
     "editable views"
-  ]
+  ],
+  "project_description": "The Views Entity Form Field module transforms your Drupal Views into powerful, editable spreadsheets. It allows you to embed actual form widgets directly into View rows, enabling users to update multiple entities simultaneously from a single page.\n\n Features \n \n Bulk Inline Editing: Edit text, select lists, checkboxes, and more directly within a View. \n Familiar UI: Fields are added through the standard Views interface, prefixed with \"Form field: [Field name]\" . \n Native Integration: Respects Drupal’s Field API and widget settings. \n \n How to Use \n \n Navigate to your View configuration. \n Under Fields , click \"Add\" and search for fields prefixed with \"Form field:\" . \n Add the \"Global: Views Entity Form Field save button\" to the View Footer to allow users to submit their changes. \n \n \n Important Notes \n While this module is highly flexible, please keep the following technical considerations in mind:\n\n \n \n Access Control: The module checks for edit access on both the entity and the specific field. \n \n Tip: Some entities (such as Commerce Product Variations) may not implement granular access checks correctly. Always ensure your View page has strict permission settings or implement hook_entity_access() for added security.\n \n\n \n \n \n Bulk Form Operations (BFO) Conflict: There is a known compatibility issue with the Views Bulk Operations (BFO) module. BFO tends to hijack the submit button, which can trigger validation errors if no checkboxes are selected.\n\n Recommendation: Avoid using both modules on the same View display.\n \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-05-07",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

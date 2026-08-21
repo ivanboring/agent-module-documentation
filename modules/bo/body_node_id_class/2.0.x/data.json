@@ -40,5 +40,13 @@
     "Drupal 7 body class",
     "theming",
     "html attributes"
-  ]
+  ],
+  "project_description": "Body node ID class module is used to add node ID (nid) and node type as a class to tag on node pages.\n\nIn Drupal 7 core there was a unique node ID class in the tag.\n\nThis is forward-port of that functionality for Drupal 8.\n\n Installation \n Install as you would normally install a contributed Drupal module.\n\n Configuration \n This module works out of the box, once you enable it there is no need to configure anything, except clear your caches.\n\nNode ID will show up in tag as \"page-node-{nid}\" \n\nand Node Type will show up as \"page-node-type-{bundle}\" which is equivalent to Drupal 7 core functionality.\n\n Usage \n This module is useful for cases when specific pages need custom styling.\n\nTarget page using unique node ID as following CSS class (replace 123 with targeted node ID):\n\n .page-node-123{ } \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-08-08",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

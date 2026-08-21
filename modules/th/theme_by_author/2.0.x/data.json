@@ -37,5 +37,13 @@
     "user",
     "per-author",
     "switch"
-  ]
+  ],
+  "project_description": "Theme by author allows you to change the theme of a given entity based on its author.\n\n It does not work only on nodes, but on any entity type, that implements \\Drupal\\user\\EntityOwnerInterface. This module adds a new \"theme\" base field to the user entity. Upon visiting the canonical route (detail page) of an (EntityOwnerInterface) entity, the implementend theme negotiator will return the correct theme of the entity's author, if that user entity has a custom theme set.\n\n Unlike existing solutions for older Drupal versions, where user/role specific theme settings meant to load the specified theme for any page, but only for that user, when he/she is logged in and visiting the page, this module to the contrary loads the specified theme for specific nodes/content entities, but for everyone that is visiting the page.\n\n Credits \n Theme by author module was originally developed and is currently\n\nmaintained by Mag. Andreas Mayr .\n\n All initial development was sponsored by agoraDesign KG .",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-01-07",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 11000000
 }

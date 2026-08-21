@@ -33,5 +33,13 @@
     "modules",
     "listing",
     "multi-site"
-  ]
+  ],
+  "project_description": "ACSF modules listing module allows you to check the usage of custom and contribution modules on all ACSF websites per environment. It can help you detect websites with a specified module usage or optimize performance with unnecessary module uninstall.\n\n Features \n Enabled modules search through the whole ACSF environment.\n\n Post-Installation \n After installation go to the /admin/config/services/modules-usage/configuration and configure cache lifetime if necessary. This option allows you to store the module search results for a limited time to reuse them during the next search and speed up further search attempts.\n\n \n\n Collect your username and token on your ACSF environment\n\n \n\n Collect cloud environment URL\n\n \n\n Add your SSH key to the Acquia cloud if not added before\n\n \n\n Using the credentials collected above, configure the new ACSF Environment.\n\n \n\n Run a search by module name using the configured environment.\n\n \n\n Additional Requirements \n This module requires SSH2 PHP library \n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2024-11-13",
+  "project_changed": "2025-06-26",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

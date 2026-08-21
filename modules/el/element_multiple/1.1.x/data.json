@@ -36,5 +36,13 @@
     "developer",
     "widget",
     "values"
-  ]
+  ],
+  "project_description": "This module provides a form element to assist in creation of multiple elements.\n\n Installation \n Install as usual, see Installing Drupal 8 Modules or Installing modules' Composer dependencies for further information.\n\n Configuration \n No configuration needed.\n\n Usage \n <?php\n\n$form['multiple'] = [\n\n '#type' => 'element_multiple',\n\n '#title' => 'Multiple values',\n\n '#header' => [\n\n ['data' => $this->t('First name'), 'width' => '50%'],\n\n ['data' => $this->t('Second name'), 'width' => '50%'],\n\n ],\n\n '#element' => [\n\n 'first_name' => [\n\n '#type' => 'textfield',\n\n '#title' => $this->t('First name'),\n\n ],\n\n 'last_name' => [\n\n '#type' => 'textfield',\n\n '#title' => $this->t('Last name'),\n\n ],\n\n ],\n\n '#default_value' => $config->get('multiple'),\n\n];\n\n?>\n\n Credits & Thanks \n The Drupal 8/9 version of this module is heavily based on the Webform module \n\n Similar modules \n \n Multivalue form element \n \n Sponsors \n \n Amara S.A. \n \n \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-07-16",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

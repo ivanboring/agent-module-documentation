@@ -41,5 +41,13 @@
     "geocoding",
     "coordinates",
     "map"
-  ]
+  ],
+  "project_description": "Drupal Module to geocode address fields using ajax.\n\n Back to top \n\n INTRODUCTION \n This will add a new widget for address fields to be able to geocode the address and\n\npopulate any geofield field, doing it with ajax.\n\n Back to top \n\n REQUIREMENTS \n This module requires the following modules enabled in Drupal:\n\n \n Geofield \n Geocode \n Address \n \n This module also requires a map provider.\n\n Back to top \n\n INSTALLATION \n Install as you would normally install a contributed Drupal module. Visit Drupal's documentation for further information.\n\n Back to top \n\n HOW IT WORKS \n To get a correctly function it needs the address field and geofield field.\n\nIt takes the values of that fields Country,Street Address, Postal Code and City and formats\n\nthe string to ${add1} ${add2}, ${locality}, ${postal_code} ${country} to be seek by geocode module through ajax using the provider that's set in geocode configuration.\n\nIt can position the first resolved address automatically in geofield widget (if checkbox is checked) or do it manually when a select option is picked.\n\n Back to top \n\n CONFIGURATION \n Once we have installed the module we must make a little configuration so that it works correctly.\n\n \n Configure the form display » Address Widget » Choose Address geocoder value » Set field target settings with your geofield map value(machine name). \n Edit Geofield » manage fields » Geocode » Geocode method » Click geocode from an existing field and choose your address field. \n Pick \"single to multiple\" for \"Multi-value input handling\". \n Finally select your Geocoder providers. \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2019-10-28",
+  "project_changed": "2026-08-20",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

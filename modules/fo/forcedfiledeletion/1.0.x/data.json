@@ -33,5 +33,13 @@
     "force",
     "unlink",
     "managed files"
-  ]
+  ],
+  "project_description": "This module is a rework of the Force File Delete (force_file_delte) module that is now unmaintained and was misnamed.\n\n The module modifies the File view so that delete links aren't shown if the user doesn't have permission to delete the file or if it doesn't exist in the filesystem anyway. It implements a new 'forcibly delete a file' permission that allows a user to delete a file even if the usage count is non-zero. Lastly, it alters the warning and button text when a file's usage is non-zero and implements deleting the file itself upon confirmation.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2022-11-09",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

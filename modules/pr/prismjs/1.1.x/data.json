@@ -38,5 +38,13 @@
     "code",
     "documentation",
     "languages"
-  ]
+  ],
+  "project_description": "This module enables the Prism Js plugin from prismjs.com in your WYSIWYG. It includes the highlightjs library and all available styles for it. If you've ever wanted to drop code examples in your Drupal content and have it highlighted in a pretty format, this is for you. Since that project relies on WYSIWYG module, and this one only requires D9/10 core, it made sense to rename it.\n\n This module provides a way to allow editors to insert styled components into CKEditor5 without having\n\nto grant the editors permission.\n\n \n\nBasic Usage \n\nAfter completing the moduel installation, go to the filter format you want to configure (must be using CKEditor5). Drag the Prism Js icon into the active toolbar, and the config form will\n\nappear below with a syntax highlighting style and supported languages\n\noption. Configure the languages and theme from here /admin/config/content/prism-js. By default, few are checked for you. Uncheck ones you won't need, it's optional. This only controls the options in the dialog window of CKEditor5 when inserting a source code.\n\nNote that your filter format must support the use of pre and code tags under allowed tags as well, if using anything other than Full HTML. You also need to configure the HTML filter (if Limit Allowed Tags is enabled) to allow the class attribute like so. Drupal 9 ships with CKEditor 5, so it depends on the ckeditor module from core.\n\n Support \n\nPlease post bug reports, feature requests and support requests to the Prism Js module issue queue . If you met any problems with this module - feel free to create an issue.\n\n Demo \n\n \n Go to https://simplytest.me/project/prismjs . \n Click \"Launch Sandbox\". \n Install Drupal as normal. \n Enable \"Prism Js\" module, and any optional modules you wish to try out. \n Go to /admin/config/content/prism-js and configure available languages and default theme \n Go to admin/config/content/formats/manage/full_html and drag the Prism js icon on the active toolbar \n Add content with text editor click on the prismjs icon and add your code. Double click on the code snippet to edit the source code.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2023-03-24",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

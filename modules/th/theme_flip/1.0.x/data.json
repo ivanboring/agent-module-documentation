@@ -35,5 +35,13 @@
     "ajax",
     "frontend",
     "widget"
-  ]
+  ],
+  "project_description": "Theme Flip is a lightweight frontend theme previewer for Drupal that lets visitors switch between configured themes without changing the site's active theme. Each preview is isolated to the current visitor's session, allowing multiple users to preview different themes simultaneously without affecting one another or modifying system.theme .\n\n \n\n Theme switching happens through an internal Drupal AJAX sub-request, re-rendering the current page under the selected theme without a full page reload or navigation. The module is CSRF-protected for both authenticated and anonymous visitors, requires no contributed modules, and is built entirely on Drupal core APIs.\n\n Features \n\n \n Preview installed themes without changing the site's default theme. \n Session-based previews isolated to each visitor. \n Instant theme switching without a full page reload. \n Floating preview dock with configurable theme list. \n Optionally hide the widget on specific routes, such as Drupal Canvas and Layout Builder. \n CSRF-protected theme switching for authenticated and anonymous visitors. \n Drupal core only — no contributed dependencies.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-07-31",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

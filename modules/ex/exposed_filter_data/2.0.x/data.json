@@ -35,5 +35,13 @@
     "filter",
     "display",
     "context"
-  ]
+  ],
+  "project_description": "This module provides a themed function called \"get_exposed_filter_output()\" which print out the values of the exposed filter used in a view.\n\nThis can be useful in the view header, in case the exposed filter is in a block, but there is a need to show the user according to what filter he got the results.\n\n The idea is based on the discussion - [#658566].\n\n To use this module you should:\n\n Enable the module \n Add in the relevant view's header the php\n\n<?php\n\nprint get_exposed_filter_output();\n\n?>\n \n Theme the content in any way you like by creating your own exposed_filter_data.tpl.php \n All of the exposed filters are available in the $exposed_filters variable inside the template file.\n\n The basic template is not very useful since it does not have the proper labels of the filters.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2010-07-29",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

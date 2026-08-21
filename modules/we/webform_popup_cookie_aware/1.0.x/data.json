@@ -35,5 +35,13 @@
     "cookie",
     "lead capture",
     "modal"
-  ]
+  ],
+  "project_description": "A generic Drupal module that displays a popup with a Webform on node pages.\n\nThe popup is hidden after submission using a browser cookie, ensuring it does not break page caching.\n\nUse Case: Marketing Forms need to be setup to force user to share data before they can access a node. Once a user submits the form, poup should not annoy user any more.\n\n \n Caution: Code is generated from AI, prompted and tested by human. \n Features \n - Popup appears only on selected node types.\n\n- Uses any Webform.\n\n- Popup is hidden after submission (cookie-based).\n\n- All logic is client-side for cache-friendliness.\n\n- Admin UI to select node types and webform. Admins can select what webforms will show on what \n\n Post-Installation \n - Enable the module and the Webform module.\n\n- Place the \"Webform Popup Block\" in a visible region.\n\n- Toggle visibility by block visibility rules by roles, content type or on a specific page.\n\n- Configure at '/admin/config/content/webform-popup-cookie-aware' which content types and webform to use.\n\n- The popup will show on selected node types until submitted.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-07-01",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

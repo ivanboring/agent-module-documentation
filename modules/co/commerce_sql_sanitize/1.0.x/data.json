@@ -36,5 +36,13 @@
     "gdpr",
     "development",
     "database"
-  ]
+  ],
+  "project_description": "This project extends Drush's SQL sanitize command to perform additional operations on Commerce specific fields and tables. This includes:\n\n \n Sanitize order email and IP addresses \n Sanitize addresses (converting most values to `[Sanitized]`) \n Delete all commerce logs (e.g., from the order activity stream) \n Delete all carts, though not all _Draft_ orders \n Delete all tax numbers from customer profiles \n Delete all payment methods \n \n Command line options let you disable any of these operations.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-02-23",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9001000,
+  "core_semver_maximum": 12000000
 }

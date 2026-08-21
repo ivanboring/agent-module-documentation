@@ -35,5 +35,13 @@
     "preformatted",
     "headings",
     "editor"
-  ]
+  ],
+  "project_description": "This module adds support for the \n\n tag and makes it available in the editor's Heading list. \n\nWhen you apply to text, basic visual styling such as a monospace font and a background is displayed in the editor to indicate preformatted content\n\n Configuration: \nAfter enabling the module, is automatically added to the Heading section of the editor.\n\nHowever, if your text format has \"Limit allowed HTML tags and correct faulty HTML\" enabled (for example, Basic HTML), you need to re-save the text format settings. This ensures that is automatically added to the Allowed HTML tags list.\n\n Limitations: \nThe module works reliably as long as the tag does not contain nested elements. Wrapping plain text or single-level tags (such as \n\n or ) behaves as expected. However, wrapping multiple block-level elements or deeply nested tags may produce unexpected results.\n\n Documentation: \n https://www.drupal.org/docs/extending-drupal/contributed-modules/contri… Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-05-05",
+  "project_changed": "2026-08-20",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 13000000
 }

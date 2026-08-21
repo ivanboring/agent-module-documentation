@@ -35,5 +35,13 @@
     "answers",
     "community",
     "voting"
-  ]
+  ],
+  "project_description": "Overview \n Answers enables the implementation of a Question & Answer system in a Drupal site. Users can post questions and other users can answer them. To see it at work (based on the most recent 7.x-4.x-dev version), head over to its Demo site and have a look at the Questions there.\n\n New version now available for testing (7.x-4.0-rc3) \n Please note: this version is not yet compatible with prior versions.\n\n The most important changes include:\n\n \n Replaces the references module with entityreference (references was at one point likely to be deprecated) \n Integrates supporting modules into this module (Best Answer, etc...) \n Improves the interface including better layout and putting comment forms and new answers form on question pages \n Improves code quality \n Automated Tests \n \n Summary of Functionality \n What the module does:\n\n \n Users can ask new questions\n \n Directly ('node/add/answers-question') \n \n \n Users can review questions\n \n All questions: 'questions' \n Unanswered questions: unanswered' \n \n \n When viewing lists of questions, users can sort by title, post date, and number of answers \n Users can post answers to questions \n When displaying a question, the system shows the answers to that question. \n \n For more detail and configuration options, see the file \"answers.readme.txt\" in the module. \n\n Supporting Modules \n There are some supporting modules:\n\n \n Best Answer: Enables question authors to select a best answer. Depending on a setting, this will lock the question \n Answers Voting: Enables users to vote answers and questions up/down \n Answers Userpoints: Adds user reputations to Answers (using integration with UserPoints ) following a point system like that on StackExchange \n Expire Questions: Automatically expire questions after a set amount of time has past \n Relevant Answers: Provide blocks which can be placed on pages to capture and display questions specific to each page \n Answers Taxonomy: Adds tags to questions. \n \n These modules relate to the 7.x-3.x version, and have been transformed to sub-modules of the Answers module in the 7.x-4.x version.\n\n Module Dependencies \n Drupal 7 \n\n \n Entity Views Attachment \n Features \n References \n Nodereference Count \n Node Reference URL Widget \n Strongarm \n Views \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2007-10-11",
+  "project_changed": "2026-06-16",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -39,5 +39,13 @@
     "nuxt",
     "lupus",
     "headless"
-  ]
+  ],
+  "project_description": "This module turns Drupal into an API backend that provides the main content and page metadata only. \n\n The module renders pages into a tree of custom elements and provides JSON responses containing the page metadata and content. While the responses are always served in JSON, the page content may be delivered using custom elements serialized as markup or as a JSON data structure.\n\n The module works by providing a new custom_elements format (e.g. enabled via appending ?_format=custom_elements to the URL) and integrates with Drupal's routing system - thus pages are processed as regular by Drupal, meaning all regular routing, authentication and request processing stays working. For rendering content as custom elements, the custom elements module is used and required.\n\n Usage \n\n \n The module is providing the API for Lupus Decoupled Drupal , which makes it possible to access it via a simple API-prefix /ce-api/ , but can be used on its own as well. \n The module makes Drupal provide an API backend that may be used with varying frontend technologies that render the custom elements. \n \n Dependencies: \n\n \n Custom elements \n Metatag - for adding in metatags (could be made optional) \n \n Contribute \n \n Reach out at #drunomics-contribute at the Drupal Slack !",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-04-23",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

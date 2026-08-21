@@ -37,5 +37,13 @@
     "australia",
     "new zealand",
     "geocoding"
-  ]
+  ],
+  "project_description": "This module implements integration between Webform and the AddressFinder service ( https://addressfinder.com.au/ ), providing autocompletion and validation for addresses in Australia and New Zealand.\n\n To use the module, install (composer require drupal/webform_location_addressFinder) and enable it as you would any other drupal module, then visit /admin/structure/webform/config/elements, tick the checkbox next to \"Location (AddressFinder)\" in the Element Types table and save the updated configuration. You can then add a \"Location (AddressFinder)\" element in the configuration of a form. The AddressFinder API key is entered in the element configuration, on the General tab, at the bottom of the 'Location (AddressFinder) settings' section of the form.\n\n The module was based on the Algolia Places plugin, and developed by Ladoo as part of the build of a new site for Victoria's Road Safety Camera Commissioner ( https://cameracommissioner.vic.gov.au ). The module has been released to the public domain with the permission of the Commissioner.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-06-28",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

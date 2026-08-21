@@ -40,5 +40,13 @@
     "oembed",
     "media",
     "iframe_title_filter"
-  ]
+  ],
+  "project_description": "Synopsis \n This text format filter helps ensure that embedded \n\n tags include a title attribute, in order to comply with WCAG guidelines . When an iFrame does not have a title attribute, this filter parses the src attribute's URL and adds a title attribute that reads \"Embedded content from [url]\".\n\nA number of Drupal filters generate iframes (e.g., media , video_filter , but their compliance with iFrame accessibility requirements varies. This filter is meant to be a universal band-aid to this particular guideline.\n\n Requirements \nThis module requires no modules outside of Drupal core. \n\nUnder \"Filter processing order,\" make sure that this filter is set to run after any HTML filtering, as well as after any filters that would be generating iFrames (e.g., video_filter). Back to top",
+  "maintenance_status": "Seeking co-maintainer(s)",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-03-14",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 13000000
 }

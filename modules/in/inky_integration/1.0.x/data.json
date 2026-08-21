@@ -36,5 +36,13 @@
     "responsive",
     "html-email",
     "xsl"
-  ]
+  ],
+  "project_description": "Just install the module and it should just work? hopefully!\n\n ## Maintanence:\n\nPeriodically update inky_integration/css/foundation-for-emails.css from here:\n\n https://github.com/foundation/foundation-emails/blob/develop/dist/found… \n\n ## PHP setup:\n\nInstall/enable xsl extension. Composer will not allow installing this module without enabling this first.\n\n ## Dockerfile:\n\n- apt-get update -y\n\n- apt-get install -y libxslt1-dev\n\n- docker-php-ext-install xsl",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-09-16",
+  "project_changed": "2025-09-16",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

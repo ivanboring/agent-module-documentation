@@ -38,5 +38,13 @@
     "flexform",
     "md5",
     "notify"
-  ]
+  ],
+  "project_description": "This project integrates CCBill into the http://drupal.org/project/commerce payment and checkout systems. Allowing you to make online payments using this gateway. After receiving payment, commerce payment entity is created and attached to proper order.\n\n This payment gateway currently supports one time payments only.\n\n REQUIREMENTS \n\n This module requires the following modules:\n\n * Commerce2 ( https://drupal.org/project/commerce )\n\n CONFIGURATION \n\n * Configure Flexform payment flow\n\n * Configure notification Webhook - section Enabling Webhooks in the Admin Portal (default notify url: /payment/notify/ {payment_name} )\n\n * Please Add \"CCBill\" Payment gateway under\n\n \"admin/commerce/config/payment-gateways/add\" using CCBill Plugin.\n\n * Add the required credentials.\n\n DEVELOPERS \n\n For developers, the module fires a CCBILL_PAYMENT_RECEIVED event after payment is received, which can be used to trigger additional actions.\n\n Overall, this module provides a convenient and secure way to process online payments using CCBill, and the ability for developers to customize and extend its functionality through event triggering.\n\n SPONSORED BY: Grupa IT",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2023-04-06",
+  "project_changed": "2025-10-20",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 11000000
 }

@@ -35,5 +35,13 @@
     "access",
     "api",
     "visibility"
-  ]
+  ],
+  "project_description": "Adds a simple API to determine if an Entity is publicly accessible or not.\n\n <?php\n\n/**\n\n * Determine if an entity is publicly visible.\n\n *\n\n * @param string $entity_type\n\n * An entity type of $entity.\n\n * @param object $entity\n\n * The entity object.\n\n * @param array $options\n\n * An optional array of options to use when determining publicity.\n\n * @param array $data\n\n * An optional array of additional data to use when determining publicity.\n\n *\n\n * @return bool\n\n * TRUE if the entity is publicly visible, or FALSE otherwise.\n\n */\n\nfunction entity_is_public($entity_type, $entity, array $options = array(), array $data = array())\n\n?>\n\n This goes beyond simply checking entity_access() as an anonymous user, but also checks other conditions like the following:\n\n \n Does the entity actually have a URI? Is the URI the frontpage path or a non-administrative path? \n An optional check for requiring the entity to have a URL alias. \n Is the entity going to be processed with the Rabbit hole module ? \n \n The module additionally provides an API for other modules to help determine if an entity is publicly accessible or not.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2015-01-07",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10002000,
+  "core_semver_maximum": 13000000
 }

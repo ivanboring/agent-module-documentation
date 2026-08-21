@@ -38,5 +38,13 @@
     "theme",
     "media queries",
     "drupalSettings"
-  ]
+  ],
+  "project_description": "This module exposes theme-related breakpoints as directly usable Javascript variables.\n\n Back to top \n\n Usage \n When developing client-side Javascript applications,\n\nyou might need to know about the breakpoints your currently used theme defines.\n\nThemes can define breakpoints this way ,\n\nbut they're not exposed automatically for client-side behaviors.\n\n This module helps frontend developers by exposing the breakpoints\n\nas Javascript variables, being directly accessible via\n\n window.themeBreakpoints .\n\n The function themeBreakpoints.getCurrentBreakpoint() \n\ntells you the currently matching breakpoint for the given client.\n\n A new event themeBreakpoint:changed is being provided, which fires\n\nwhen the matching breakpoint of the client has changed. With this event, you're\n\nable to implement responsive Javascript behaviors via event listeners.\n\n Example event listener:\n\n \n\nwindow.addEventListener('themeBreakpoint:changed', function (event) {\n\n alert('The current breakpoint has been changed to ' + event.detail.name);\n\n});\n\n \n\n Backend developers can use the theme_breakpoints_js \n\nservice for conveniently receiving breakpoints defined by themes.\n\nIt already takes care about defined breakpoints by base themes and also\n\nloads them in case a theme doesn't define breakpoints by itself.\n\n Back to top \n\n Installation \n - This module obviously depends on Drupal core's breakpoint module.\n\n- Install this module as usual .\n\n- No configuration required. Once enabled, the currently used theme's breakpoints are available as JS variables.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-04-27",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

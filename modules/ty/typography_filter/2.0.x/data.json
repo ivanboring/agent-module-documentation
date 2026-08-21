@@ -33,5 +33,13 @@
     "smart quotes",
     "text",
     "input filter"
-  ]
+  ],
+  "project_description": "Back to top \n\n Overview \n Text filter to automatically improve typography of your content. It relies on the JoliTypo PHP library.\n\n Back to top \n\n How to use \n As a filter in editor \n \n Go to your text filters configuration page ( admin/config/content/formats ); \n Edit or create a filter, check the \"Improve typography\" filter; \n Enable necessary filter types and save the configuration. \n \n As a service \n To process HTML content:\n\n \n\n// Parameters: only $content is required, other parameters have default values.\n\n$content = '\n \n\n Some\n text\n\n \n ';\n\n$rules = ['CurlyQuote', 'Dash'];\n\n$locale = 'en';\n\n$protected_tags = '\n\n ';\n\n// Process.\n\n$result = \\Drupal::service('typography_filter.manager')->fix($content, $rules, $locale, $protected_tags);\n\n To process non-HTML content:\n\n \n\n// Parameters: only $content is required, $rules parameter has default value.\n\n$content = 'Some text';\n\n$rules = ['CurlyQuote', 'Dash'];\n\n// Process.\n\n$result = \\Drupal::service('typography_filter.manager')->fixString($content, $rules); \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-04-17",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

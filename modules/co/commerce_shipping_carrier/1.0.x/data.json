@@ -35,5 +35,13 @@
     "carrier",
     "fulfillment",
     "config"
-  ]
+  ],
+  "project_description": "The Commerce Shipping Carrier module is a simple module that allows you to add your own shipping carriers and configure the URL patterns to create tracking links similar to what was offered in the simple_package_tracking module for D7. This helps especially where flat rate shipping methods don't support tracking urls.\n\n Installation \n \n Install the module. \n Go to Configuration >> Shipping >> Carriers, or @ /admin/commerce/config/shipping_carriers to create a carrier. \n In the URL pattern, Use [tracking_code] where the tracking number should appear in the URL for that specific carrier. \n \n The carriers you create will be available to select from when you create shipments for an order. They will take the tracking number you provide, and format the number into a tracking link.\n\n You can also add {{ shipment_entity.shipping_carrier.entity.label }} to the commerce-shipment-confirmation.html.twig template file in a custom module to display the shipping carrier in the shipping confirmation email.\n\n Or something like this:\n\n {% if shipment_entity.shipping_carrier.target_id is not null %}\n\n 'Shipping carrier:'\n\n {{ shipment_entity.shipping_carrier.entity.label }}\n\n{% endif %}",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-10-26",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

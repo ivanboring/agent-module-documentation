@@ -37,5 +37,13 @@
     "api",
     "media",
     "token"
-  ]
+  ],
+  "project_description": "Generate dynamic images from HTML/CSS templates directly within Drupal. This module empowers content creators and site builders to create styled images on the fly using configurable templates mapped to Drupal content.\n\n Features \n HTML/CSS + Twig + Drupal Tokens \n Create templates using Twig syntax and Drupal tokens (e.g., [node:title], [node:content-type]) within HTML/CSS to generate images dynamically.\n\n Background Image Support \n Upload images and reference them in your HTML/CSS template via tokens \n\n Field-Specific Configuration \n Assign templates to specific Image or Media image fields on any content type.\n\n Multiple Templates Per Field \n You can create multiple templates for the same image field. All active templates will be available in the node edit form. Select your desired template and save the node—an image will be automatically generated using that template and stored in the field.\n\n Image Report \n View a report of all dynamic images generated, with filtering by template name, content type, or node.\n\n External Image Generation API \n Uses the HTML/CSS to Image API to convert HTML/CSS into images. This API is a required dependency for the module to function.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-06-13",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

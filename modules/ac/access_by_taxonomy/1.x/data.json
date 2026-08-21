@@ -37,5 +37,13 @@
     "node grants",
     "access control",
     "roles"
-  ]
+  ],
+  "project_description": "Use this module to give access to content depending on the taxonomy terms that are applied to it. \n\n Features \n On the taxonomy term you can specify who are the roles or the specific users that are allowed to a certain term. When the term is applied to a node, then only those users and roles will be able to access. \n\n On the node edit page, you'll be able to inspect the access permission currently stored on the database and you will see how permissions will change depending on the taxonomy terms applied to the content.\n\n Post-Installation \n After installation you will see permission fields on taxonomy terms where to specify which roles and users a term is restricted to.\n\n Additional Requirements \n Other than core, this module needs only taxonomy relation fields to work on.\n\n Similar projects \n A similar functionality is provided by permissions_by_term. We think this solution is leaner and has less complications, as we use only node access hooks and simply deal with the core content access functionality.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-07-23",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

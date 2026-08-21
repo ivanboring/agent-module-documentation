@@ -47,5 +47,13 @@
     "score threshold",
     "site key",
     "secret key"
-  ]
+  ],
+  "project_description": "This module provides integration with Google reCAPTCHA V3.\n\n This module doesn't allow you to automatically enable reCAPTCHA protection on any form; you will have to manually add a form element of #type recaptcha_element in code.\n\n This module does however provide a Webform Handler that allows you to enable reCAPTCHA protection on a webform using the webform UI.\n\n This module does not rely on any other Drupal module. After comparing/testing several other reCAPTCHA v3 implementations we decided to create yet another one. In our opinion all existing solutions have several issues (mostly related to caching reCAPTCHA verification results, incorrectly sharing these between users and breaking Drupal cacheability).",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-07-07",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

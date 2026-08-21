@@ -37,5 +37,13 @@
     "wavesurfer",
     "visualization",
     "media"
-  ]
+  ],
+  "project_description": "Audio Wavesurfer module provide a field formatter to display audio with waveform. This module contains also a sub module Audio Wavesurfer Clips that for clipping audio file.\n\n Features \n Display audio files with waveforms using the wavesurfer library : Wavesurfer library .\n\n This module also have a waveform storage option that generates waveforms on the back side, so that the front side doesn't have to calculate points, allowing instantaneous waveform rendering.\n\n Audio Wavesurfer Clips (sub-modules) \n Provides an UI for clipping audio files using regions of the wavesurfer library. This sub-module uses the Audio Clips API module, which manages clipping and clip type definition.\n\n Post-Installation \n WaveSurfer Library \n You don't need to install WaveSurfer library to use this module because library is downloaded with CDN. However, we recommend that you download it. You can specify on /admin/config/audio_wavesurfer/settings whether you want to use the downloaded library or the cdn.\n\n If you want to install WaveSurfer library you can use Node : WaveSurfer library .\n\n Configurations \n Color and bar are customizable on /admin/config/audio_wavesurfer/settings. \n\n It's also possible on this settings to activate Waveform Storage. IMPORTANT: to use Waveform Storage it is necessary to have FFMpeg library.\n\n Go on audio media configuration /admin/structure/media/manage/audio/display and select Audio Wavesurfer Formatter as Format.\n\n Audio Wavesurfer Clips (sub-modules) \n On the audio media /admin/structure/media/manage/audio/form-display set Audio Wavesurfer Clip Widget on audio field. On settings you can specify which clip type you want to enable.\n\n Additional Requirements \n \n FFMpeg : If you want to use waveform storage options. \n \n Audio Wavesurfer Clips (sub-modules) \n \n Audio Clips API : To create audio clips type and clipping audio. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-05-18",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

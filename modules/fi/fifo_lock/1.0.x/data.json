@@ -34,5 +34,13 @@
     "database",
     "semaphore",
     "lock backend"
-  ]
+  ],
+  "project_description": "Drupal Locking mechanisms with FIFO (Ticket lock)\n\n The original Drupal Locking mechanisms is great.\n\nHowever, it does not respect first comer.\n\nIt just randomly select a waiting request and process it, which makes some requests to timeout if they are getting unlucky.\n\nGiven that the server throughput is enough, this module should reduce the error rate due to timeout from the unlucky request.\n\n Any collaboration are welcome.",
+  "maintenance_status": "Seeking co-maintainer(s)",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2021-08-23",
+  "project_changed": "2024-03-05",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

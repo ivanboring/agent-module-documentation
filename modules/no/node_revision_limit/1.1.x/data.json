@@ -35,5 +35,13 @@
     "prune",
     "content type",
     "history"
-  ]
+  ],
+  "project_description": "Back to top \n\n Node Revision Limit \n The module allow to choose the number of revisions to keep to nodes.\n\nOnce set, revision deletions will occur on each node update to keep that number limit, independently for each language activated.\n\nThe module is compatible with the usage of Content Translation and Content Moderation\n\n Back to top \n\n Context \n This lightweight module has been developped because the Node Revision Delete module do not work properly on multilingual sites.\n\n https://www.drupal.org/project/node_revision_delete/issues/3262899 \n\n Back to top \n\n How to use \n - Enable the module.\n\n- Go to /admin/config/content/node_revision_limit .\n\n- For each enabled language, set the number of revisions to keep (default: 3).\n\n- Revisions are pruned automatically the next time the node is updated.\n\n Back to top",
+  "maintenance_status": "Seeking co-maintainer(s)",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2022-02-17",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 11000000
 }

@@ -36,5 +36,13 @@
     "security",
     "integrity",
     "crossorigin"
-  ]
+  ],
+  "project_description": "The External Script SRI module allows site administrators to easily add external JavaScript library paths with support for Subresource Integrity (SRI) hashes and the crossorigin attribute. This ensures enhanced security for third-party scripts by verifying their integrity.\n\n Features \n Basic Functionality \n\n This module provides a user-friendly interface for configuring external JavaScript libraries with the following options:\n\n \n Specify JavaScript file URLs. \n Add SRI hash values for each library. \n Mark libraries as sensitive to flag them for additional scrutiny. \n Set the crossorigin attribute value for each script. \n \n Unique Features \n\n \n Dynamic Configuration Form: A table-based configuration form to easily manage multiple JavaScript libraries. \n Security Focus: Ensures integrity checks for third-party scripts by supporting the SRI hash mechanism. \n Flexible Crossorigin Support: Allows administrators to specify the appropriate crossorigin attribute for CORS compliance. \n \n Use Cases \n\n \n Websites relying on external JavaScript libraries for functionality or design. \n Applications requiring strict security compliance for third-party script integrity. \n Development teams needing an organized, centralized way to manage external scripts. \n \n Post-Installation \n Once installed, follow these steps to configure the module:\n\n \n Navigate to the module’s configuration page under Configuration > External Script SRI. \n \n Use the provided form to:\n \n Add the module name and library name. \n Enter the JavaScript file URL. \n Generate and input the SRI hash (use SRI Hash Generator). \n Optionally mark the library as sensitive. \n Set the crossorigin attribute. \n \n \n Save the configuration to enable the specified libraries with SRI support. \n \n Additional Requirements \n Dependencies \n\n Drupal Core : Version 9 or higher.\n\n No additional modules are required, but access to third-party JavaScript files and a reliable SRI hash generation tool is recommended.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-01-06",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9005000,
+  "core_semver_maximum": 12000000
 }

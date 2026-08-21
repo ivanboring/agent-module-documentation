@@ -38,5 +38,13 @@
     "access control",
     "hook_entity_access",
     "uid 1"
-  ]
+  ],
+  "project_description": "Disable user 1 edit module makes it so that that all operations on user 1 is disabled. \n\n Why? \n Well, if a role has the permission \"administer users\", this by default includes user 1. If they can edit user 1, then they can also edit their email and password. If they can edit their email and password, then they can take over the account, and therefore they can also gain additional privileges than their current role.\n\n If you want to enable users to administer users without risking them editing user 1, then you need this module.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-01-18",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

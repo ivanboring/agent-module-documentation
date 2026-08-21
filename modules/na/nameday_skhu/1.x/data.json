@@ -33,5 +33,13 @@
     "hungarian",
     "calendar",
     "locale"
-  ]
+  ],
+  "project_description": "NAMEDAY SK HU\n\n Name: nameday_skhu\n\nDrupal: 8\n\n DESCRIPTION:\n\nThis module provides blocks for Slovakian and Hungarian namedays.\n\n Service usage:\n\nuse Drupal\\nameday_skhu\\NamedayClass;\n\n $nameday_service = \\Drupal::service('nameday');\n\n$nameday = $nameday_service->nameday('hu', '2017', '04', '10');\n\n INSTALLATION:\n\n Follow the drupal module installation document: [ https://www.drupal.org/docs/8/extending-drupal-8/installing-drupal-8-mo… ]\n\nEnable the nameday block on block layout.\n\nMAINTAINERS:\n\nZsolt Nagy (balagan) - https://www.drupal.org/u/balagan",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2017-08-22",
+  "project_changed": "2026-06-02",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -1,7 +1,7 @@
 {
   "name": "Rules Flag",
   "data_name": "rules_flag",
-  "description": "Integrates the Rules and Flag modules \u2014 Rules events for flagging/unflagging entities.",
+  "description": "Integrates the Rules and Flag modules — Rules events for flagging/unflagging entities.",
   "version": "1.0.x",
   "package": "Rules",
   "composer_namespace": "drupal/rules_flag",
@@ -37,5 +37,13 @@
     "automation",
     "events",
     "business rules"
-  ]
+  ],
+  "project_description": "This module provides integration of 'Rules' and 'Flag' modules. It adds rules events after flagging or unflagging an entity, and the event action to create a new flagging entity. It adds rules examples with the events and actions.\n\n rules condition \n \n If the entity is flagged \n If the flag has id \n \n rules events \n It provides rules events after flagging an entity with two context variables, one is flagging entity, the other one is the entity flagged.\n\n \n After flagging a content item \n After flagging a user \n ... \n After unflagging a user \n ... \n \n rules actions \n \n Create a new flagging entity \n Delete scheduled entity \n \n rules examples \n It provides rules examples with the events, when install the module, these example will be imported with disabled status.\n\n \n Show a message when the article is flagged \n Show a message when the article is flagged as best article \n Show a message when the user is flagged \n Show a message when the user is unflagged \n Flag the article when it is created \n Flag the article when it is created and unflag it in schedule \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-08-31",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

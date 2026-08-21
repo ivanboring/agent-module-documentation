@@ -36,5 +36,13 @@
     "pre-deploy",
     "update",
     "migration"
-  ]
+  ],
+  "project_description": "Back to top \n\n Documentation \n This project is a drush integration that enables \"pre-deploy\" hooks.\n\n Drush 10 introduced the drush deploy command with the intent to standardize drupal deployment. drush deploy is implemented in terms of a standard sequence of drush commands:\n\n drush updatedb --no-cache-clear\n\ndrush cache:rebuild\n\ndrush config:import\n\ndrush cache:rebuild\n\ndrush deploy:hook \n\nThe very last step ( drush deploy:hook ) invokes HOOK_deploy_NAME hooks. The \"deploy\" hooks are similar to post_update hooks and are useful when you need to execute code at the very end of the deploy process.\n\n This project introduces the concepts of \" pre-deploy \" hooks that are executed at the very beginning of the deploy process.\n\n They take a similar form of the existing hooks, if your modules is named foo then in a foo.predeploy.php file you can write a function like this:\n\n /**\n\n * Hook description here.\n\n */\n\nfunction foo_predeploy_some_text_here(&$sandbox) {\n\n} \n\n Additionally, this project provides the deploy:pre-hook and deploy:pre-hook-status commands which are similar to the deploy:hook and deploy:hook-status commands. The first command runs pending \"pre-deploy\" hooks and the second one prints information about pending \"pre-deploy\" update hooks.\n\n Back to top \n\n Installation \n composer require drupal/drush_pre_deploy\n\n This project requires drush at least at version 10.3.0.\n\n In your project's main composer.json make sure installer-paths folder is set for \"drupal-module\" type:\n\n \"extra\": {\n\n ...\n\n \"installer-paths\": {\n\n ...\n\n \"web/modules/contrib/{$name}\": [\"type:drupal-module\"], \n\nTo make sure the hook command is discovered, you need to add a custom \"drush.yml\" configuration in a drush folder like this:\n\n .\n\n└── ROOT_PROJECT_PATH/\n\n └── drush/\n\n └── drush.yml \n\nDrush will discover this file automatically and will use its configuration to load commands. Add the following code into drush.yml:\n\n drush:\n\n include:\n\n - ${env.PWD}/web/modules/contrib/drush_pre_deploy/src/global \n\n Back to top \n\n Documentation note for D7 \n The D7 version README contains specific installation instructions for a d7 composer based installation and development instructions for writing predeploy hooks.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-10-06",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

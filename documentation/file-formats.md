@@ -35,6 +35,23 @@ Structured metadata, distilled from `*.info.yml`, `composer.json`, and the feed.
 | `subcategories` | our taxonomy | finer groupings from `categories.yml` |
 | `keywords` | derived | search terms |
 
+### Enriched project metadata (deterministic, from the JSON:API feed)
+
+Added by [`scripts/enrich-data-json.py`](../scripts/enrich-data-json.py), which fetches the
+project node by machine name — no reinstall. These are **project-level**, so every version dir
+and submodule of a project carries the same values. Run it after documenting a module
+(`--dir modules/{ab}/{name}`) or backfill the whole tree (`--all`).
+
+| Field | Source (JSON:API `node/project_module`) | Notes |
+|---|---|---|
+| `project_description` | `body.processed` → plaintext | the **real** project-page description (vs the info.yml one-line `description`); capped ~4000 chars; also fed into search |
+| `maintenance_status` | `field_maintenance_status` (term name) | e.g. "Actively maintained" |
+| `development_status` | `field_development_status` (term name) | e.g. "Under active development" |
+| `security_advisory_coverage` | `field_security_advisory_coverage` | e.g. `covered` |
+| `project_created` | `created` | `YYYY-MM-DD` |
+| `project_changed` | `changed` | `YYYY-MM-DD` |
+| `core_semver_minimum` / `core_semver_maximum` | same feed fields | ints, e.g. `8000000` / `12000000` |
+
 ## `usage.md`
 
 Three blocks separated by a line containing only `---`:

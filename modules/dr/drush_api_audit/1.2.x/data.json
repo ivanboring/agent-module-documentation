@@ -33,5 +33,13 @@
     "audit",
     "deprecation",
     "maintenance"
-  ]
+  ],
+  "project_description": "This module provides Drush commands for auditing Headless/Decoupled API routes. It helps identify routes with open access, missing access requirements, and potential security misconfigurations.\n\n Features \n \n Drush command to list all API routes(Endpoint). \n Drush command to audit API route(Endpoint) access permissions. \n \n Post-Installation \n After installing this module, you will be able to run the Drush commands shipping with this module.\n\n \n drush api:route --help \n drush api:audit:permission --help \n \n Additional Requirements \n This module works with Drush 12/13. That saying your need to have Drush installed with your Drupal project.\n\n Supporting this Module \n You can support this module by reporting issues, suggestions or new features.\n\n Community Documentation \n Readme file \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-11-20",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

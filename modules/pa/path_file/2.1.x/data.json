@@ -44,5 +44,13 @@
     "BinaryFileResponse",
     "allowed extensions",
     "file serving"
-  ]
+  ],
+  "project_description": "The Path File module allows content editors to upload files and specify the url at which they will be available. Normally, when uploading a file to Drupal with the same name as an existing file, it is given a new name instead of overwriting the existing file. This can problematic when file urls are referenced in content, menus, etc but may need to be updated in the future. The Path File module allows you to mitigate the impact of those changes by setting up a canonical url alias which will always point to the most up-to-date file.\n\n Quickstart \n After installing the module, visit /admin/structure/path_file_entity and click the \"Add Path file entity\" button. The creation form allows you to assign a name (used for labeling), upload a file, and provide a path at which that file should be accessible.\n\n You can update the allowed file extensions for this module by visiting the settings page here: /admin/structure/path_file_entity/settings .\n\n If anonymous users are unable to view published files, please verify that they have the \"View published Path file entity entities\" permission.\n\n Requirements \n The core file module must be installed.\n\n Similar Modules \n The File Aliases module provides similar functionality in that it allows you to use custom customized paths for your uploaded files. However, the Path File module allows you to treat files as first-class content. Each file is wrapped in an entity with can be published/unpublished and permissions can be managed independently of nodes.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-09-02",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -38,5 +38,13 @@
     "replacement",
     "cleanup",
     "preg_replace"
-  ]
+  ],
+  "project_description": "Adds a filter that can be applied to text formats to make complex replacements.\n\n Requirements \n This module requires no modules outside of Drupal core.\n\n Installation \n Install as you would normally install a contributed Drupal module. For further\n\ninformation, see Installing Drupal Modules .\n\n Configuration \n \n Visit your text formats and editors at admin/config/content/formats \n Edit a text format \n Add the Regex Text Replacement filter. For example, the following will replace h2 tags with h3...\n\n \n\n/]*)>(.*?)<\\/h[1|2][^>]*>/mi||\n\n (2) \n \n\n \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-10-21",
+  "project_changed": "2026-08-19",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

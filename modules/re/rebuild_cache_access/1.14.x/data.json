@@ -40,5 +40,13 @@
     "admin",
     "permission",
     "navigation"
-  ]
+  ],
+  "project_description": "This module provides a new permission: rebuild cache access . Every role with this permission set will have a nice and big \"Rebuild Cache\" admin toolbar button. Clicking this button simply fires drupal_flush_all_caches() . That's all.\n\n Note: Normally it should be sufficient that all relevant caches are flushed automatically when changes to content are made. Nevertheless in real world it sometimes may be necessary to have other roles than the ones with administer site configuration permission being able to rebuild the caches.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-01-08",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

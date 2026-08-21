@@ -37,5 +37,13 @@
     "apps",
     "hpc",
     "integration"
-  ]
+  ],
+  "project_description": "This module adds support for Tapis apps within Drupal ( https://tapis.readthedocs.io/en/latest/technical/apps.html ). In Tapis, an app version refers to a particular configuration of a (singularity/docker) container that can be run on a Tapis system as a job.\n\n There are 3 main types of apps that this module supports:\n\n \n Batch: This is a non-interactive CLI-based app \n Web: This is a web app (e.g., Jupyter Notebook, etc.) \n VNC: This is a VNC app that VNC clients can connect to \n \n Using this module, Drupal users can now create & manage these types of Tapis apps within the Drupal site.\n\n Tapis apps are represented as custom content types within Drupal, and this module also takes care of creating a view on the user's profile page for viewing all the apps that the user has access to.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2024-12-05",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

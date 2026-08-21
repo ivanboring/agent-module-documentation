@@ -40,5 +40,13 @@
     "router.admin_context",
     "backend theme",
     "system themes page"
-  ]
+  ],
+  "project_description": "Drupal allows you to define a different theme for administration pages (Administer -> Site configuration -> Administration theme). By default this only applies to pages with a path starting with 'admin' and content editing pages.\n\n The Administration theme module allows you to use this theme on more pages like :\n\n- batch processing pages\n\n- devel node load and render pages\n\n- coder code review pages\n\n- pages you define yourself in the provided textarea\n\n Some of these options will only be available to you if they apply to your installation, i.e. you have the module installed which generates these pages.\n\n Back to top \n\n Use default theme (not administration theme) for anonymous users on admin/* \n This is possible using this module. See issue http://drupal.org/node/372156 for more details.\n\n Back to top \n\n Module maintainers \n You can add extra pages by implementing hook_admin_theme_options in a module.\n\nFor Drupal 7 the hooks are hook_admin_theme_info and hook_admin_theme_check \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2008-11-14",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

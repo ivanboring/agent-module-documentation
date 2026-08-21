@@ -48,5 +48,13 @@
     "block_content",
     "appearance",
     "layout_builder_st"
-  ]
+  ],
+  "project_description": "Asymmetric translations for overrides when using the layout builder. This module allows you to choose different layouts and blocks for different languages on content items that override Layout Builder settings for their entity type.\n\n For example, the Article node with the ID 34 needs to have two additional Blocks shown among its content that aren't present on other Article nodes, but the English translation needs to display the first Block on the left, and the second Block on the right, while the German translation needs the reverse, to show the first Block on the right, and the second Block on the left.\n\n A widget which you can configure on 'Manage form display' is available to allow copying blocks or not when creating a new translation. When you add an inline block to the layout, the language will be set automatically to the language of the entity. In case you don't want this behavior, add $settings['layout_builder_at_set_content_block_language_to_entity'] = FALSE; to settings.php.\n\n Behind the scenes \n Sections are stored as multi-valued fields on Layout Builder Overrides, and different layouts translations are stored as translations of these fields. The module makes the layout section field translatable when enabling layout builder on an entity display. On install, existing layout section fields are also made translatable.\n\n After install \n After install, go to admin/config/regional/content-language to enable translation on the Layout fields that are available.\n\n If you want each translation to have the same layouts and sections see the Layout Builder Symmetric Translations module but the 2 modules will not work together on 1 site .\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-05-14",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

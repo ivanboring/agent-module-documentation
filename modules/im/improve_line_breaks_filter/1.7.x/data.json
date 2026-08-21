@@ -45,5 +45,13 @@
     "improve line breaks",
     "filter plugin",
     "TYPE_TRANSFORM_IRREVERSIBLE"
-  ]
+  ],
+  "project_description": "The text editor often replaces the line breaks with empty paragraphs \n \n\n nbsp;\n\n . Paragraphs with a margin can weaken the look of your website. This module provides a text filter that replaces empty paragraphs, for example \n \n\n or \n \n\n  \n\n with \n tags.\n\n Back to top \n\n Remove empty paragraphs \n This module also allows you to remove empty paragraphs if you want to delete them completely. This is not recommended because sometimes the editor needs to add an extra space between the text.\n\n Back to top \n\n Configuration \n \n Go to 'Text formats and editors' on the page '/admin/config/content/formats' \n Add a new text format or edit an existing one \n In the chosen text format, select the 'Improve line breaks' option \n Change its order on the list \n If you want to completely delete empty paragraphs set checkbox 'Remove empty paragraphs' on the 'Improve line breaks' tab in the 'Filter settings' \n Click on the 'Save configuration' button \n \n Notice : The Improve line breaks filter should be triggered after the 'Convert line breaks into HTML' and 'Correct faulty and chopped off HTML' if these are selected.\n\n This module skip ignore tags ( script , style , code , pre , object , iframe ) when it replaces or removes unnecessary paragraphs.\n\n \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-06-12",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

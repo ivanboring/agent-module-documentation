@@ -36,5 +36,13 @@
     "file",
     "postfile",
     "basic auth"
-  ]
+  ],
+  "project_description": "The module creates an endpoint on the site at /postfile/upload that accepts a POST request for uploading a single file into a specified file system (public, private, etc). \n\n The POST request requires a user with the proper permissions before the file is uploaded. The endpoint uses the basic_auth REST authentication provider.\n\n The request would look something like this:\n\n \n\ncurl\n\n--location 'https://www.example.com/postfile/upload' \\\n\n--header 'Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ' \\\n\n--form 'file=@\"/path/to/file.csv\"'",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-05-28",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

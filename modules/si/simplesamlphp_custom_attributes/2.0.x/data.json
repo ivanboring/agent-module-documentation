@@ -36,5 +36,13 @@
     "user fields",
     "simplesamlphp",
     "mapping"
-  ]
+  ],
+  "project_description": "This module is a child module of simpleSAMLphp Authentication . It provides a user interface to map attributes from SAML login to user fields.\n\n Attributes are mapped in 'Configuration' -> 'People' -> 'SimpleSAMLphp Auth Attribute Mapping'.\n\n Once attributes are mapped the module calls the ' hook_simplesamlphp_auth_user_attributes ' to save the values to a user's fields on login.\n\n Attributes mapping uses friendly names like 'givenName' and 'sn' if configured in your SimpleSAMLphp setup. If friendly name is not configured then you will use oid's like 'urn:x'. Refer to your configuration.\n\n This module is based on rael9's sandbox: SAML Auth Custom Attribute Mapping .",
+  "maintenance_status": "Seeking co-maintainer(s)",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-01-05",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -37,5 +37,13 @@
     "rbac",
     "config_filter",
     "hierarchy"
-  ]
+  ],
+  "project_description": "This module aims to allow \"non-admin\" Roles (ie: Roles that does not have the administer permissions permission) to manage and delegate permissions for \"lower\" Roles.\n\n The role hierarchy (that's why we use the lower/higher terminology) is taken from the Core roles weight configuration.\n\nSo higher (more permissive) roles would be able to handle permissions to lower (less permissive) roles.\n\n You might benefit to use this module in projects that have a defined role hierarchy structure, and the need of handling permissions only by some of those roles. Avoiding the use of the too-broad and sometimes risky administer permissions permission provided by the User Core module.\n\n In summary, this module provides a more restricted way to delegate permissions.\n\n NOTE: The module restricts the \"delegable\" permissions to the ones that the current user Role has, in this way the \"higher\" role user won't be able to grant permissions that they do not have.\n\n See the README file for instructions on How to Configure and How to Use.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-08-18",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

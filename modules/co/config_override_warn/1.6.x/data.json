@@ -47,5 +47,13 @@
     "config entity form",
     "UserPermissionsForm",
     "user roles"
-  ]
+  ],
+  "project_description": "Implements the warning message proposed by [#2408549] from one module without needing any changes to configuration forms.\n\n This module uses PHP reflection to modify a core class method from protected to public. Typically, it is not recommended to use reflection in production code/environments , but there's no way around it for this module and it should be a minimal impact to performance since it only affects pages that have configuration forms.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-06-07",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

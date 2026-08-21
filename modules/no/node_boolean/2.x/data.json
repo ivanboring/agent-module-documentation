@@ -33,5 +33,13 @@
     "node",
     "block visibility",
     "field"
-  ]
+  ],
+  "project_description": "This module is a simple plugin to enable boolean (checkbox) fields on a node to be used as a condition to determine whether or not a block (or other entity using conditions for visibility) should be visible.\n\n Back to top \n\n Usage \n If you wish to show a block on a content page (node), but only when a checkbox has been checked on that node, then edit the block (in Block Layout: admin/structure/block) and select Node Boolean under Visibility and select the field whose value will be evaluated.\n\n Back to top \n\n Requirements \n This module relies on the core node module being installed.\n\n Back to top \n\n Similar Projects \n Entity Field Condition \n\nThe entity field condition module is really good as it allows the use of any field type, but with the limitation of only allowing a single field to be evaluated. This contrasts to the Node Boolean module in its only currently being applicable to boolean fields but being able to evaluate against multiple boolean fields and comparing them in an either all or any combination.\n\n Back to top \n\n Known Limitations \n \n This module is currently limited to Node fields but could be extended to apply to other entity types. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-08-12",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

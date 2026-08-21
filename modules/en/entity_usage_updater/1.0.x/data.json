@@ -37,5 +37,13 @@
     "bulk",
     "migration",
     "repoint"
-  ]
+  ],
+  "project_description": "This extends the Entity Usage module to allow you to update or remove tracked references to entities. For example you can update any references to node 21 to point to node 42 instead. Or you can remove all references to node 84.\n\n Post-Installation \n \n Configure Entity Usage . If a reference isn't being tracked by Entity Usage then it won't be updated by this module. \n Go to admin/content/update-references and enter the details of the target entity you'd like to find and the ID of its replacement.\n\nmodule.\n Or go to admin/config/content/link-remover and enter the details of the target entity you'd like to remove all the links to.\n \n Additional Requirements \n \n Entity Usage \n \n Development kindly sponsored by Coupa.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-08-23",
+  "project_changed": "2026-03-09",
+  "core_semver_minimum": 10002000,
+  "core_semver_maximum": 12000000
 }

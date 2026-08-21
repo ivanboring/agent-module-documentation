@@ -36,5 +36,13 @@
     "checkout",
     "payment",
     "gateway"
-  ]
+  ],
+  "project_description": "This proejct integrates the Swedish payment company Payson into Drupal Commerce Payment system. \n\n We now have a have a prerelease for Drupal 8/9.\n\n Installation (Drupal 8/9) \n\nJust install it as any other module, thanks to Payson new Rest-API we don't need to install any libraries.\n\n Installation (Drupal 7 version only) \n\n After all dependencies are fullfilled, download Paysons API code from https://github.com/PaysonAktiebolag/api-integration-php and install it in /sites/all/libraries/payson_checkout/ \n\n When you are done there should be two directories in that folder \"example\" and \"lib\".\n\n Drupal 7.x- Supported Cart Line types \n\n The 7.x-2.0-beta7 version of the module currently support Cart Line Items for the following modules. If you miss someone in list, just open an issue and I will look into it, a patch is even better. For adding support for other line item types check the switch in function\n\npayson_checkout_order_items, it's around row 755.\n\n \n commerce_gc \n Commerce Coupon \n Commerce Discount",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-06-17",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

@@ -1,7 +1,7 @@
 {
   "name": "Document Loader Plugin - Webpage",
   "data_name": "document_loader_webpage",
-  "description": "A Document Loader plugin that server-side fetches and converts a given web page (Guzzle GET). Because it fetches the configured URL from the server, restrict/allowlist who can set the URL \u2014 a user-controllable URL is an SSRF vector.",
+  "description": "A Document Loader plugin that server-side fetches and converts a given web page (Guzzle GET). Because it fetches the configured URL from the server, restrict/allowlist who can set the URL — a user-controllable URL is an SSRF vector.",
   "version": "1.0.x",
   "package": "Document Loader Plugins",
   "composer_namespace": "drupal/document_loader_webpage",
@@ -35,5 +35,13 @@
     "document loader",
     "ssrf",
     "fetch"
-  ]
+  ],
+  "project_description": "Provides a Document Loader plugin that fetches web pages over HTTP/HTTPS\n\nand converts the content into multiple output formats.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2026-02-13",
+  "project_changed": "2026-08-04",
+  "core_semver_minimum": 10003000,
+  "core_semver_maximum": 12000000
 }

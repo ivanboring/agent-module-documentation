@@ -41,5 +41,13 @@
     "inline block",
     "layout builder",
     "theming"
-  ]
+  ],
+  "project_description": "Drupal 8 core does not provide support for theme suggestions for custom block type Twig templates.\n\n Having a theme suggestion tied to the type of block is a very simple way to provide modular design components, affording consistent patterns per block type driven through Drupal's block system. This can be used with the standard block placement, Panels, or any other system that leverages blocks. Advanced supported cases include the use of the Components module, which can afford more granular, reusable templates included within other templates.\n\n This module provides the following theme suggestion based on the Twig naming convention:\n\n block--block-content-{{ machine-name-of-block-type }}.html.twig \n\n For example, a custom block type with machine name testing_this_out would now have a corresponding template suggestion for all blocks of that type block--block-content-testing-this-out.html.twig .\n\n The Twig template assumes all of the standard markup found in all other the block templates, including the corresponding fields of that block type.\n\n Note that the Drupal 10.3+ version supports block suggestions by itself. Here is the change record - https://www.drupal.org/node/3304793",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-09-19",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

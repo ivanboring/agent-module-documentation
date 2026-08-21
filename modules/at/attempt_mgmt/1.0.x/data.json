@@ -35,5 +35,13 @@
     "quiz",
     "scorm",
     "results"
-  ]
+  ],
+  "project_description": "This module provides a field that once attached to an entity provides full attempt management to it.\n\n It let's you:\n\n \n Create and select an individual attempt type. \n Limit attempts based on a number from 0 to 255. \n Set a grading method (\"best attempt\", \"last attempt\"). \n Show attempt status messages. \n Provides locking mechanism if attempt limit exceeded. \n \n There are many more Settings that suites your situation.\n\n Features & Use case \n You can easily attach the attempt field to an entity that holds a reference to a webform. You would now have attempt management working for that webform. You could attach a scorm field and attach attempt management to it to limit the attempts to the scorm material with ease. There are many more scenarios possible with that module.\n\n It provides also an attempt api for other modules. The modules equipped with that api can so integrate attempt management for their custom use case.\n\n Post-Installation \n You simply install that module like any other module. Visit the settings page (/admin/config/system/attempt-management/settings) for that module to configure it. \n\n Recommended modules/libraries \n \n Scorm field (Branch 2.x) \n \n Community Documentation \n To come ...\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2024-08-23",
+  "project_changed": "2026-07-28",
+  "core_semver_minimum": null,
+  "core_semver_maximum": null
 }

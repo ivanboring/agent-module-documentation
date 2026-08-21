@@ -37,5 +37,13 @@
     "generation",
     "node",
     "image"
-  ]
+  ],
+  "project_description": "AI Featured Image is a Drupal 11 module that automatically generates featured images for new nodes using artificial intelligence. Leveraging the DALL·E API (OpenAI), it creates a unique image based on the node's title and content, and automatically assigns it to the configured image field.\n\n Ideal for news sites, blogs, government portals, or any site that needs to visually enrich its content without relying on a designer.\n\n Key Features \n\n \n Per content type configuration: enable automatic image generation only for the bundles you select. \n Configurable image field: specify the field where the generated image will be stored. \n Custom prompt: define a template to describe what the AI should generate (e.g., Header about: [title] - [body] ). \n Placeholder replacement: automatically replaces [title] , [body] , and other fields. \n Integration with DALL·E (OpenAI): directly calls the API to generate the image. \n Automatic storage: the image is saved in public://ai_images/ as a File entity. \n \n Requirements \n\n \n An OpenAI account with access to the image generation API (DALL·E). \n A valid API key. \n HTTPS connection enabled on the server. \n An image field (e.g., field_image ) configured on the target content types. \n \n How to Use \n\n \n Install the module as usual (via Composer or manually). \n Go to the configuration page: /admin/config/content/ai-featured-image \n Enter your OpenAI API Key. \n Select the content types where the feature should apply. \n Specify the image field (e.g., field_image). \n Optionally, customize the prompt to generate more relevant images. \n \n Roadmap (future versions) \n\n \n Support for Media fields. \n Preview image before saving. \n Support for other models (Stable Diffusion, Replicate, Gemini, Claude). \n Usage limits per user or role. \n Integration with editorial workflows.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-07-30",
+  "project_changed": "2026-04-14",
+  "core_semver_minimum": 11000000,
+  "core_semver_maximum": 12000000
 }

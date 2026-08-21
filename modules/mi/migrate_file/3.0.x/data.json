@@ -58,5 +58,13 @@
     "remote file",
     "download",
     "csv import"
-  ]
+  ],
+  "project_description": "Defines additional migrate plugins for importing files.\n\n These plugins are meant to facilitate importing files in the same migration as other data. Typically, with a D7 to D8 migration for example, you would first migrate all your files in a dedicated files migration, and then your nodes after so they can reference the already migrated files. But what if you're just importing nodes from a CSV or external non-drupal API where some of the fields are external file paths? These plugins make it so the files can be imported in the same migration as the rest of the data.\n\n Back to top \n\n File Import \n Imports a file from an local or external source. Files will be downloaded or copied from the source if necessary and a file entity will be created for it. The file can be moved, reused, or set to be automatically renamed if a duplicate exists.\n\n Back to top \n\n Image Import \n Imports an image from an local or external source. Extends the file_import plugin (described above) and adds the following additional optional configuration keys for the image alt, title, width and height attributes.\n\n Back to top \n\n Remote File Url \n Create a file entity with a remote url without downloading the file. It is assumed if you're using this process plugin that you have something in place to properly handle the external uri on the file object (e.g. the Remote Stream Wrapper module ). \n\n For all the plugins, see the corresponding plugin class file for a detailed description of the config and examples. \n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-10-09",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

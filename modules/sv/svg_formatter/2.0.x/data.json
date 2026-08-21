@@ -50,5 +50,13 @@
     "aria-labelledby",
     "svg-formatter.html.twig",
     "svg_image"
-  ]
+  ],
+  "project_description": "SVG Formatter module provides support for using SVG images on your website.\n\n The standard image field in Drupal doesn't support SVG images. This module adds a new formatter for the file field, which allows files with any extension to be uploaded. In the formatter settings, you can set the default image size and enable alt and title attributes. If you want to add some CSS and Javascript magic to your SVG images, then use the inline SVG option.\n\n You can also use this module in combination with SVG Image module. If that module is installed, you can use the SVG Formatter formatter for the image field.\n\n Installation \n\n Composer \n\n composer require drupal/svg_formatter \n\n Drush \n\n drush en svg_formatter -y \n\n How to use it? \n\n Drupal and SVG images - Blog post describing how to use the module\n\n Screencast: https://youtu.be/ctussLn-2Ck \n\n 1. Add a file field to your content type, taxonomy, or any other entity type, and add svg to the allowed file extensions.\n\n2. Go to the 'Manage display' and change the field format to 'SVG Formatter'.\n\n3. Set image dimensions if you want and enable or disable attributes.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-01-17",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

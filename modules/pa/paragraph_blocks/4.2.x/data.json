@@ -50,5 +50,13 @@
     "paragraphs library",
     "max cardinality",
     "block label"
-  ]
+  ],
+  "project_description": "Back to top \n\n Summary \n With this, you can use paragraphs to create structured content on your page, and allow layout builder to place the block anywhere!\n\n It allows you to place each value of a muti-value paragraph field into a different block using Drupal's Layout Builder. It allows you to place paragraph fields from related entities in a similar manner. It does so by extending both paragraphs with an admin title that is only used in the UI for layout and extending layout manager by providing the blocks for placement.\n\n Back to top \n\n Which branch should I use? \n For Drupal 10 and higher, use the 4.x branch. The earlier 3.x is only there if you still run an old D8/D9 site.\n\n Back to top \n\n Using with Core Layout Builder \n Defining paragraph labels in entity type configuration \n Check \"Use Layout Builder\" on the entity referencing the paragraph. Click \"Save\". Click on \"Manage Layout.\" Click on \"Add Block\" from somewhere in the layout builder. The blocks can be named by defining a default admin_title per paragraph type. There are a couple of paragraph specific tokens available so you can easily define a pattern like: \"[paragraph:bundle] - [paragraph:summary]\".\n\n Using individual paragraph labels per entity \n If you also check \"Allow each paragraph\", you can place blocks based on the admin label you give for each paragraph item. Then edit the entity itself. Click on the \"Layout\" tab. Now when you click on \"Add Block\" instead of seeing the patterned title you will see paragraph items with the individual admin labels provided during editing.\n\n Back to top \n\n Demo \n \n\n Back to top \n\n Support \n For critical issues, please ping us on Drupal slack.\n\n Back to top \n\n Similar modules \n \n Layout Paragraphs \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-04-28",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

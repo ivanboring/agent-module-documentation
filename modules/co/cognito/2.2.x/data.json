@@ -35,5 +35,13 @@
     "authentication",
     "sso",
     "externalauth"
-  ]
+  ],
+  "project_description": "Provides an integration against Amazon Cognito . When this module is enabled, all user authentication flows are handled through Cognito, including User Registration, User Login and Password Reset.\n\n Back to top \n\n Why use this module? \n Federated Login \n You can provide federated login between multiple systems, you may have a mobile app, another web app or other Drupal instances, all communicating with the same User Pool.\n\n Access to AWS Resources \n When you authenticate through Cognito, the token can be used to access other AWS resources. We need to do some work to expose this information but it's a use case that is attractive and will be solved. E.g. if you were using API gateway, your Drupal login could be used to control access to those API endpoints.\n\n Back to top \n\n Logging in with other identity providers \n The best way to achieve this currently is to install OpenID Connect and assign a domain to your User Pool. This way, you'll use the AWS hosted login form which can handle signing users in with Facebook/Google/SAML and your own User Pool which this module will be registering users into directly.\n\n Back to top \n\n Setup \n Currently the module only supports a \"Email\" Cognito flow process, which basically means email is used for the unique identifier. You must set this when you create your User Pool, it cannot be changed later. In the future support for a \"Username\" flow will also be added.\n\n Here are the relevant configuration details that are required.\n\n $settings['cognito'] = [\n\n 'region' => 'us-east-2',\n\n 'credentials' => [\n\n 'key' => '',\n\n 'secret' => '',\n\n ],\n\n 'user_pool_id' => 'us-east-2_XXXXXXX',\n\n 'client_id' => '',\n\n]; \n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-08-11",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

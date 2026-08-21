@@ -36,5 +36,13 @@
     "per-domain",
     "display",
     "multi-domain"
-  ]
+  ],
+  "project_description": "The Domain Views Display module works with Domain Access to allow the administrator to override a Views display with another on specific domains. For example if you have an RSS listing page for a.example.com and b.example.com and you want to modify the listing on b.example.com you can create a new display tailored to b.example.com and configure the old display to use the new one on b.example.com .\n\n It's an alternative to using domain-specific config overrides and was created to provide a simple user interface for site builders to configure everything within one view. Currently it's not possible to use Domain Config UI with Views; if that changes, this module will be largely obsolete.\n\n Back to top \n\n \nRequirements \n \n Views (core) \n Domain Access \n \n Back to top \n\n \nInstallation \n Install as you would normally install a contributed Drupal module. See: https://www.drupal.org/node/895232 for further information.\n\n Back to top \n\n \nConfiguration \n \n When configuring the view, there should be a new field group in the center column Domain overrides . \n Click the link next to Override display . \n You should be able to choose which display to use for every configured domain. \n \n Back to top \n\n \nKnown issues \n \n It's possible to set up loops where display A redirects to display B which redirects to display A. \n If you rename a display that overrides another, you'll need to reconfigure the override. \n Views configured to have domain-specific overrides don't add the domains as config dependencies of the view (possibly related to [#2426607]). \n \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-05-26",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10003000,
+  "core_semver_maximum": 12000000
 }

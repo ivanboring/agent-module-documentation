@@ -39,5 +39,13 @@
     "chunked upload",
     "media",
     "image"
-  ]
+  ],
+  "project_description": "Adds a widget to upload files via Uppy ( https://uppy.io/ ).\n\n Uses the chunking, resumable, TUS file transfer protocol ( https://tus.io/ ).\n\n For decoupled / CORS purposes, you will need to add these allowed headers to your services.yml:\n\n 'upload-checksum', 'upload-concat', 'upload-key', 'upload-length', 'upload-metadata', 'upload-offset', 'location', 'tus-checksum-algorithm', 'tus-extension', 'tus-max-size', 'tus-resumable', 'tus-version'\n\n \n\n Back to top \n\n Requirements: \n Currently only works with the TUS uploader available here on drupal.org.\n\nIf you are using Drupal as a REST endpoint only, you can also use Uppy directly through your frontend, in which case you will not need this module. You just need to add these values to the meta property in Uppy core (examples included):\n\n \n\nmeta: {\n\n entityType: 'node',\n\n entityBundle: 'article',\n\n fieldName: 'field_image'\n\n} \n\n Back to top \n\n Upgrading to 3.0.x: \n You can safely upgrade from 8.x-2.x to 3.0.x with no special steps required. This was just a D9.3+ & D10 compatibility update.\n\n Back to top \n\n Experimental! \n It currently uploads files reliably and saves to the entity, however I anticipate users to discover an issue somewhere.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2018-09-27",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

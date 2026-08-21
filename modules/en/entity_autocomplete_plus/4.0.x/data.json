@@ -35,5 +35,13 @@
     "token",
     "suggestions",
     "matcher"
-  ]
+  ],
+  "project_description": "This module overrides the core entity autocomplete matcher.\n\n 1.x injects the path and entity ID in the list of results with the goal of disambiguating entities. \n\n 2.x attempts to do this same but allow some configuration via tokens for what information is included by the matcher. 2.x also allows global override of the hard-coded 10-item autocomplete limit.\n\n 3.x moves the token substitution patterns per-field using field widget third-party settings but maintains the global matcher limit override.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2017-05-07",
+  "project_changed": "2026-08-20",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 11000000
 }

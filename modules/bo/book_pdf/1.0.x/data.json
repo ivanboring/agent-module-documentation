@@ -1,7 +1,7 @@
 {
   "name": "Book PDF",
   "data_name": "book_pdf",
-  "description": "Prints an entire Book to a PDF. SECURITY: the PDF route renders any node's book content with NO entity view-access check \u2192 anonymous read of unpublished/restricted content (danger 4).",
+  "description": "Prints an entire Book to a PDF. SECURITY: the PDF route renders any node's book content with NO entity view-access check → anonymous read of unpublished/restricted content (danger 4).",
   "version": "1.0.x",
   "package": "Book",
   "composer_namespace": "drupal/book_pdf",
@@ -35,5 +35,13 @@
     "export",
     "access bypass",
     "print"
-  ]
+  ],
+  "project_description": "Back to top \n\n Installation \n wkhtmltopdf is used to generate the PDF document so this will need to be installed on your system before you can use this module. \n\n Once the wkhtmltopdf binary is installed then you should use Composer to install the Drupal module and it's PHP dependencies: composer require drupal/book_pdf \n\n Back to top \n\n Usage \n Once the module is installed and enabled you will find a 'Book PDF: link' block which can be used to present the user with a link to download a Book as PDF when placed on a Book page.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2020-10-13",
+  "project_changed": "2026-08-04",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

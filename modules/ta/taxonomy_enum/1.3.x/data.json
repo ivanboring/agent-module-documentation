@@ -36,5 +36,13 @@
     "php enum",
     "machine name",
     "developer"
-  ]
+  ],
+  "project_description": "This module allows you to synchronise taxonomy vocabularies with PHP enums . This is especially useful if you have a taxonomy vocabulary with a fixed set of terms and custom code that needs to behave differently based on which term is referenced. It basically allows you to reference a taxonomy term in code without having to hardcode ID's, which makes your code more portable between environments.\n\n Features \n \n Automatically creates terms based on the enum cases \n Automatically deletes respective terms once enum cases have been removed (configurable) \n Disables the possibility to manually create/delete terms (configurable) \n Stores default field values in config as machine names instead of entity UUID's \n Allows you to get enum instances in custom code: $entity->get('some_taxonomy_enum_field')->enum \n Contains code to easily migrate existing entity reference fields: \\Drupal::service('taxonomy_enum.migration')->migrateField('field_tags', 'node');",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-02-16",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9003000,
+  "core_semver_maximum": 12000000
 }

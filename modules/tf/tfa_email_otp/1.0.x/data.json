@@ -48,5 +48,13 @@
     "flood control",
     "validation plugin",
     "setup plugin"
-  ]
+  ],
+  "project_description": "This module provides a TFA plugin to send an One-Time password (code) via email.\n\nWhich is required by Create \"Email one-time-code\" Validation Plugin & related Setup Plugin \n\n Post-Installation \n It is a TFA plugin, which means it requires TFA module and its dependencies installed.\n\n Migration \n If you migrated the email plugin from the patch ( https://www.drupal.org/project/tfa/issues/2930541 ), it is highly recommended using Drush to install this module to prevent a potential time-out error during the installation. Also, you have to make sure you clear the cache after installing this module and then remove the patch from your codebase(composer.json).\n\n Supporting this Module \n You can support this module by reporting bugs with this module. \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-12-14",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

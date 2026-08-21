@@ -38,5 +38,13 @@
     "ingest",
     "rag",
     "extraction"
-  ]
+  ],
+  "project_description": "Document Loader provides a consistent, plugin-driven API for ingesting documents from multiple sources and normalizing them into reusable output formats. It standardizes discovery, configuration, and execution of document loaders so other modules can focus on their own features instead of wiring bespoke ingestion logic.\n\n Back to top \n\n Features \n \n Attribute-based plugins for registering loaders and loader types \n Runtime discovery via Drupal plugin managers with cache support \n Configurable defaults that map loader types to concrete loader plugins \n Common input/output interfaces to keep transport details decoupled \n Reusable input/output types for standard formats (JSON, CSV, Markdown, etc)\n Integration points within the Drupal user interface (MDXEditor, Field Widget Actions, etc) \n \n Back to top \n\n Installation \n \n Install the module as you normally would \n Install one of the below recommended modules to ensure a Document Loader plugin is available \n Visit admin/config/media/document-loader to test out loading your own documents \n \n Back to top \n\n Recommended Modules \n \n \n \n Module \n Document Types \n \n \n \n \n PDF Parser \n PDF \n \n \n Webpage \n Remote Web Pages \n \n \n PHPWord \n Word, ODT, RTF \n \n \n AI File To Text \n Word, Spreadsheet, CSV, Text, Markdown, leveraging AI module \n \n \n Plugin API \n HTTP/HTTPS API Calls \n \n \n HTML Processor \n Web Pages \n \n \n Parquet \n Parquet \n \n \n AI Simple PDF To Text \n Deprecated by AI File To Text \n \n \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-12-14",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10004000,
+  "core_semver_maximum": 12000000
 }

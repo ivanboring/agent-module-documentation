@@ -46,5 +46,13 @@
     "search_api_date",
     "views filter handler",
     "date field"
-  ]
+  ],
+  "project_description": "This module add the possibility to expose date/date time filter with year (format CCYY ) instead of using full date (format CCYY-MM-DD HH:MM:SS ) or offset from the current time .\n\n This module support Bootstrap Datepicker library \n\n Configuration \n This module has only one setting if you want to display your exposed filter with Bootstrap Datepicker library go to /admin/config/views-year-filter/settings check Use Bootstrap Datepicker , SAVE and Clear cache . \n\n you will have Datepicker popup with only years as it shown in the last screenShot.\n\n Note: This module support the following operators\n\n \n Less than \n Less than or equal to \n Equal to \n Not equal to \n Greater than or equal to \n Greater than \n Between \n \n ⚠️ Warning \n This module conflicts with the Smart Date module because both implement hook_views_plugins_filter_alter .\n\nIf Smart Date is enabled, you must use its date filter with year granularity instead of the filter provided by this module.\n\n As a result, when Smart Date is enabled, the date filter from this module will not appear as an option for your date fields.\n\n Note: This applies only to Date-only fields, not DateTime fields or Search API date fields.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-09-27",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

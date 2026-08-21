@@ -33,5 +33,13 @@
     "api",
     "twig",
     "links"
-  ]
+  ],
+  "project_description": "This Bitly Shortener module integrates drupal sites with the Bitly URL shortening service. We can use it in a custom module and twig template.\n\n CONFIGURATION \n\nCreate an account on Bitly. Save the access token in the Bitly shortener configuration form. https://app.bitly.com/settings/api/ \n\n Block: \n\nBitly Shortener block assing in drupal block region. Generate the Bitly Shortener URL of the current page.\n\n Services: \n\n $bitly_url = \\Drupal::service('bitly_shortener')->shortener('https://www.drupal.org/'); \n\n Twig: \n\n {% set site_url = url(\"\") %} \n\n {{ bitly_shortener(site_url|render|render) }}",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2022-07-23",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -48,5 +48,13 @@
     "locale",
     "language filtering",
     "menu tree manipulator"
-  ]
+  ],
+  "project_description": "At the moment, all menu items are displayed regardless of it being translated or not. Menu block current language attempts to resolve this by providing a replacement for core's Menu block that filters out the untranslated menu links.\n\n Back to top \n\n Usage \n In order for this module to have any effect, you must replace menu blocks provided by the System module with menu blocks provided by this module.\n\n Supported menu link types:\n\n- Custom Menu Links ( Drupal\\menu_link_content\\Entity\\MenuLinkContent )\n\n- Views menu links ( Drupal\\views\\Plugin\\Menu\\ViewsMenuLink )\n\n- String translated links\n\n See: https://www.drupal.org/node/2466553 for more details.\n\n Back to top \n\n Versions \n - 2.x: Requires Drupal 9.3+ or 10.0+, PHP 8.0+\n\n- 8.x-1.x: Drupal 8 and 9 support. Supports PHP 7.4+. No further development\n\n Back to top \n\n Installation \n composer require drupal/menu_block_current_language \n\n Back to top \n\n Similar modules \n Menu Multilingual \n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2016-12-02",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -41,5 +41,13 @@
     "hide per role",
     "email display",
     "account"
-  ]
+  ],
+  "project_description": "This small module is to show Drupal user's email address in user profile page.\n\n Drupal 7 branch: \n\nConsistently this get required in most of our Apps so instead of implement hook_user_view() this every time ,, a small module can do this for you without writing any more code with a control page so you can control(Weight, Label Display, enable/disable it).\n\n This module doesn't add anything to your database ,, it simply renders the same registered email of the user in profile page.\n\n Drupal 8 branch: \n\nTo use all of this module features go to:\n\n Configuration » People » Account settings » Manage display \n and select Show email address Format.\n\n Features for D7 & D8 branches: \n\n \n Select which role can see the field by permission. \n select to hide roles email field in the module settings. \n By default userone email field is hidden until you choose to show it in the\n\n module settings.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-04-02",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

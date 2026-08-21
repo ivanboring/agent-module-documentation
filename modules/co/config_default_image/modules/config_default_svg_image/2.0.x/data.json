@@ -42,5 +42,13 @@
     "fallback image",
     "svg_image",
     "config_default_svg_image"
-  ]
+  ],
+  "project_description": "Image field formatter allowing to set a default image deployable through config management. It stores a file path into config, instead of a content uuid.\n\n This addresses the problem that the core default image feature uses a file content. If you use config management (drush cex/cim...) you will deploy the config but not the content, so the default image wouldn't work in production.\n\nA blog post about this problem: https://www.58bits.com/blog/2016/04/13/synchronizing-default-images-ima…",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-10-12",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

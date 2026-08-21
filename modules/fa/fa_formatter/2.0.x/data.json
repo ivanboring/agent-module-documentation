@@ -35,5 +35,13 @@
     "stars",
     "integer field",
     "formatter"
-  ]
+  ],
+  "project_description": "This is a field formatter for a selectlist with int values. Its use is to make some kind of ratingdisplay avaliable but without any processing! It just outputs an int select field as icons. You can use Fontawesome or any other iconservice using the same schema. The rating image can be ANY fontawesome icon. Apples, stars, circles you name it.\n\n You can also use other icon libs. I for example use a custom one i generated with iconmoon because i dont want 4MB FA files to be loaded in the background. \n\n How to use? \n\n \n Create a field list(int) \n Add selectable values like 1 2 3 4 5 6 \n Chose the field formatter in the field settings to output and add your icon code \n Chose an icon from https://fontawesome.com/icons?d=gallery \n For example: \n Your selection is outputted with the icon! \n \n I used it to rate books for my project about - EXAMPLE Audiobooks(Hörbücher) and output these ratings with stars.\n\n Scroll down and you see some stars and dots: Example . In the backend that is just an in select field and i used views with my formatter to display it as icons. Do not be confused about interactive the rating at the top of the page. That is something different and can be done with the Rate or Fivestars Module\n\n Why \n\n I have already worked on Starrating in the D7 Version, but the D8 version has a dedicated own fieldttype. I see no use in creating a custom fielddtype so i used a core type that already exists.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-05-13",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

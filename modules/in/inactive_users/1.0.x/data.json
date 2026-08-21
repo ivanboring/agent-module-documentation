@@ -1,7 +1,7 @@
 {
   "name": "Inactive Users",
   "data_name": "inactive_users",
-  "description": "Detects users inactive for a configured period, warns them by email, and can block/delete dormant accounts. A security-positive account-hygiene tool \u2014 but deletion is destructive, so configure grace periods and exempt admin/service accounts.",
+  "description": "Detects users inactive for a configured period, warns them by email, and can block/delete dormant accounts. A security-positive account-hygiene tool — but deletion is destructive, so configure grace periods and exempt admin/service accounts.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/inactive_users",
@@ -35,5 +35,13 @@
     "dormant",
     "cleanup",
     "security"
-  ]
+  ],
+  "project_description": "Inactive users module helps site administrators manage and clean up user accounts that have been inactive for over 6 months by:\n\n Identifying inactive users\n\n Sending warning emails\n\n Deleting accounts if no action is taken after 7 days",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-08-20",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

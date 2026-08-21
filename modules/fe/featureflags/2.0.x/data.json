@@ -35,5 +35,13 @@
     "rollout",
     "condition plugin",
     "cache context"
-  ]
+  ],
+  "project_description": "Back to top \n\n What is Feature Flags? \n Feature flags provide the ability to restrict features to certain environments, while still using the same code base on all servers.\n\n Back to top \n\n Administration \n The main administration page is located at admin/config/development/featureflags , and lists all the current feature flags in the system. A new feature flag can be created by loading admin/config/development/featureflags/add .\n\n Back to top \n\n API \n Create a feature flag as a config entity. The status of the flag (active/inactive) is stored in state. The config entity is used for defining flags, but not storing their state.\n\n Example: \n \n\n<?php \n\n use Drupal\\featureflags\\Entity\\FeatureFlag;\n\n if (FeatureFlag::isActive('my_feature_flag')) {\n\n // Do something.\n\n}\n\nelse {\n\n // Do something else.\n\n}\n\n ?>\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2013-02-08",
+  "project_changed": "2026-08-20",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

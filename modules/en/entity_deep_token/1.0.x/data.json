@@ -35,5 +35,13 @@
     "deep",
     "reference",
     "values"
-  ]
+  ],
+  "project_description": "Entity Deep Token \n Provides customizable tokens to recursively access fields of related entities. \n\n This module defines a new token type called `entity_deep_token`, which allows you to traverse relationships between entities (such as nodes) and access properties like ID, label, bundle, or raw field values, even across multiple levels of depth.\n\n Purpose \n By default, Drupal’s token system only supports direct (one-level) relationships. This module enables token-based access to deeply nested related entities, which is particularly useful for:\n\n \n Hierarchical breadcrumbs generation. \n Metadata generation based on related entity values. \n Custom URL building and conditional logic. \n \n Installation \n Install the module via Composer:\n\n composer require drupal/entity_deep_token \n\n Enable it via the admin interface or Drush:\n\n drush en entity_deep_token \n\n How to Use \n The module adds a new token type: entity_deep_token. It works in any entity context (e.g., node) and allows you to traverse entity reference chains using a structured syntax.\n\n General Syntax \n [entity-deep-token::entity::entity:\n\n] \n\n \n : Name of the entity reference or other field. \n entity: Indicates traversal to the referenced entity. \n \n\n : Values like id, label, bundle, value, target_id, etc. \n \n Example 1: \n\n degree node → department → school \n\n Entity relationship:\n\n degree → field_department → department → field_school → school \n\n Get the school node ID:\n\n [entity-deep-token:field_department:entity:field_school:entity:id] \n\n Get the school node title:\n\n [entity-deep-token:field_department:entity:field_school:entity:label] \n\n Get the school node bundle:\n\n [entity-deep-token:field_department:entity:field_school:entity:bundle] \n\n Example 2: Get raw creation date from a related entity \n Suppose you have an entity reference field field_related_node and you want the creation timestamp:\n\n [entity-deep-token:field_related_node:entity:created:value] \n\n Limitations \n Only works when in an entity context (node, user, taxonomy_term, etc.).\n\n Does not yet support multiple values in reference fields (only the first item is accessed).\n\n Does not format raw values (e.g., timestamps are not human-readable).\n\n Future Ideas \n \n Support multiple field values (e.g., 0, 1, etc.) \n Support date formatting via date:format \n Better integration with the Token UI (autocomplete suggestions) \n \n Maintenance \n This module is experimental but stable. Contributions, bug reports, and feature requests are welcome.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-06-25",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

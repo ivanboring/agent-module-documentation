@@ -44,5 +44,13 @@
     "FileAccessControlHandler",
     "hook_entity_type_alter",
     "admin content files"
-  ]
+  ],
+  "project_description": "Core did not support a delete_ui (see [#2949017]) before 10.1. Since that issue has merged, this module is no longer necessary after 10.1.\n\n This module adds the capability to delete files from the file admin view (UI). It assumes that the admin knows what they are doing and trusts that when they want to delete a file (even one with a non zero usage count) that they really want to remove the file. When removing files that are referenced by other entities, core takes care of removing the reference.\n\n This capability was previously provided by file_entity but when media went into core in Drupal 8.4, file_entity was no longer recommended (read the project page). We can delete media entities but we can't actually delete files.\n\n The general philosophy seems to be that files are not first class entities, that they are always attached to something, and that they only get deleted when that something is deleted. However, because of various bugs in core (see [#2821423], automatic file deletion was removed (see [#2891902]). So we no longer delete files that are in use. But we also have no way for an admin to remove files that they know are not in use.\n\n This modules recreates the minimal parts from file_entity module to provide delete access and an admin UI by doing the following:\n\n \n adds an admin permission to 'delete any file' \n ensures that the file entity supports delete by adding the core entity delete template; this allows core to add an entity operations field \n adds the entity operations field to the file admin view; this is done as configuration, so it can easily change it to the 'delete' link if you prefer. \n \n There are several contrib solutions, none do exactly what this module does:\n\n \n file_delete \n delete_files \n fancy_file_delete \n force_file_delte",
+  "maintenance_status": "Unsupported",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-08-18",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -58,5 +58,13 @@
     "order invoice",
     "confirmation email",
     "Drupal Commerce"
-  ]
+  ],
+  "project_description": "Commerce Invoice is a module for Drupal Commerce that allows store owners to generate, customize, and manage PDF invoices for customer orders. It supports automatic invoice generation, PDF rendering via Entity Print, and flexible invoice numbering through configurable patterns.\n\n Features \n \n Automatic invoice generation upon order placement. \n Manual invoice generation using the provided service. \n Support for multiple invoice types. \n PDF generation using the Entity Print module. \n Configurable invoice numbering using number patterns. \n \n Installation \n \n Enable the module. \n Go to the desired Order Type edit form and enable invoicing for that order type. \n You can optionally enable automatic invoice generation so that invoices are created when orders are placed. \n Ensure your private file system path is correctly configured. See Drupal's documentation on private file systems . \n \n Invoice Type Configuration \n \n Commerce Invoice provides a \"Default\" invoice type and a \"Credit memo\" that can be customized at:\n\n /admin/commerce/config/invoice-types \n\n PDF Rendering with Entity Print \n \n This module requires the Entity Print module to generate PDF versions of invoices.\n\n Once Entity Print is installed, set the PDF engine to Php Wkhtmltopdf for best results.\n\n \n For further details, please refer to Entity Print PDF Engine Support .\n\n Invoice Number Customization \n \n The invoice number format is managed using Commerce Number Patterns.\n\n You can configure these patterns at:\n\n /admin/commerce/config/number-patterns \n\n \n By default, the included invoice type uses the \"infinite\" number generation strategy, but this can be adjusted as needed.\n\n Manually Generating Invoices \n \n Developers can generate invoices manually using the service provided by the module:\n\n <?php\n\n$invoice_generator = \\Drupal::service('commerce_invoice.invoice_generator');\n\n$invoice_generator->generate($orders, $store, $profile);\n\n?>\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2011-05-23",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

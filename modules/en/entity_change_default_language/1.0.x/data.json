@@ -43,5 +43,13 @@
     "queue worker",
     "drush",
     "entity_change_default_language"
-  ]
+  ],
+  "project_description": "This module provides a service for changing the default language of an entity.\n\n No user interface for now, only a helper module for developers.\n\n <?php\n\n /** @var \\Drupal\\entity_change_default_language\\EntityChangeDefaultLanguageInterface $default_language_fixer */\n\n $default_language_fixer = \\Drupal::service('entity_change_default_language');\n\n $default_language_fixer->update(\\Drupal\\node\\Entity\\Node::load(1), 'es', TRUE, ['en']);\n\n?>",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-11-24",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

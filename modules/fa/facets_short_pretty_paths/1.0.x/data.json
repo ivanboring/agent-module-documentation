@@ -35,5 +35,13 @@
     "url",
     "search",
     "seo"
-  ]
+  ],
+  "project_description": "Shortens Facets Pretty Paths aliases.\n\n Before considering to install this module, review this issue from Facets Pretty Paths [#3308521]\n\n \n Removes the term ids from the term aliases. If a machine name is not available yet, there is a fallback to the default term coder, with the term id, to guarantee unicity. \n Multiple values (Facet items) are delimited by a dot, the Facet alias is present only once. \n \n So we have e.g.: /color/black.yellow.red\n\ninstead of /color/black-1/color/yellow-2/color/red-3\n\n Configuration \n \n Select the Short pretty paths URL processor for the Facet source \n Select the Taxonomy term machine name pretty paths coder for the Facet if you use this module, or add a field to the vocabulary and declare it in settings.php\n\n $settings['facets_short_pretty_paths_field_name'] = 'field_name'; \n \n Dependencies \n \n Facets Pretty Paths \n Optional (since 1.0.0-alpha3) Taxonomy Machine Name \n \n Known limitation \n The Taxonomy Machine Name module provides uniqueness for terms from the same vocabulary.\n\nAlso there is a RTBC issue about Machine names are not generated after enabling module \n\n Related Facet Pretty Paths issues \n A contributed solution has been favoured to a patch as:\n\nwe introduce a potential dependency to Taxonomy Machine Name ( https://www.drupal.org/project/facets_pretty_paths/issues/3024640 )\n\nit requires to override the active_filters service ( https://www.drupal.org/project/facets_pretty_paths/issues/2878617 )\n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2020-06-04",
+  "project_changed": "2026-08-20",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

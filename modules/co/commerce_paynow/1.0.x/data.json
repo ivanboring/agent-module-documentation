@@ -35,5 +35,13 @@
     "gateway",
     "paynow",
     "mbank"
-  ]
+  ],
+  "project_description": "Provides integration with the Paynow (mBank) payment gateway for Drupal Commerce.\n\n Requirements \n Commerce Paynow module requires Drupal Commerce 3 module enabled.\n\n Configuration \n \n Go to Commerce > Configuration > Payment gateways. \n Add a new payment gateway and select 'Paynow' as the plugin. \n Enter your Paynow integration details (API Key, Signature Key). \n Optionally enable logging for debugging purposes. \n \n Usage \n \n Customers can select Paynow as a payment method during checkout. \n The module handles Paynow webhook notifications to update payment statuses automatically. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-07-10",
+  "project_changed": "2026-08-13",
+  "core_semver_minimum": 11000000,
+  "core_semver_maximum": 12000000
 }

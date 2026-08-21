@@ -35,5 +35,13 @@
     "uri",
     "click-to-text",
     "formatter"
-  ]
+  ],
+  "project_description": "Provides a link field type that supports sms: URIs and a compatible formatter.\n\n This module creates a new field type for SMS links, this field allows editors to add sms:+123456789 type links. \n\n The module is based on the core Link field so it has all the same configuration options.\n\n Usage \n \n Add a new field of type Link (with SMS support) to your content type or entity. \n In the field settings or when entering data, use sms: URIs such as:\n\n sms:+1234567890\n\nsms:+1234567890?body=Hello \n \n Choose the formatter Link with SMS support when configuring display options to ensure correct rendering.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-06-27",
+  "project_changed": "2026-08-07",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

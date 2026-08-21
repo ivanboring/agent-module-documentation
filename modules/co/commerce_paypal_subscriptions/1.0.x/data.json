@@ -35,5 +35,13 @@
     "recurring",
     "commerce",
     "payment"
-  ]
+  ],
+  "project_description": "Enables commerce order to be purchased through paypal subscriptions . This module may be helpful to you in case you want recurring payments in your site.\n\n The paypal products and plans can be generated dynamically. Currently, the price of the plans is based on the commerce order total price. \n\n This module uses the modern Paypal API. In case you need to use NVP/SOAP API, please use Paypal subscriptions \n\n For more information about Paypal subscriptions please checkout out the official documentation \n\n Post-Installation \n After installing the module, it is possible to add a payment gateway with 'Paypal checkout subscriptions' payment method. It requires Paypal client ID and client secret.\n\n To finish configuring the checkout it is needed to have a product and a plan in your Paypal account. In case you want them to be generated dynamically, select 'Dynamic plans' and check 'Autogenerate product'. Otherwise, you can fill the 'Default subscription plan' with a subscription plan that must have been previously created.\n\n Currently, if you use dynamically generated products, please note that the product will be only generated in the paypal environment you are working with. If you want to configure it for a new environment (production / sandbox, it is needed to change the credentials in the UI , clearing the product ID field and press save. Using the config split module is fully recommended for these cases.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-05-16",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

@@ -1,7 +1,7 @@
 {
   "name": "SIBS API Commerce",
   "data_name": "sibs_api_commerce",
-  "description": "SIBS payment gateway for Drupal Commerce. Payment fulfillment is API-verified: onReturn and the status endpoint re-fetch the payment status from SIBS's API server-side and only complete the order when the API reports 'Success' (no forged fulfillment). Minor caveat: the status route is public (_access TRUE) and discloses payment status by guessable order_id \u2014 add an ownership check.",
+  "description": "SIBS payment gateway for Drupal Commerce. Payment fulfillment is API-verified: onReturn and the status endpoint re-fetch the payment status from SIBS's API server-side and only complete the order when the API reports 'Success' (no forged fulfillment). Minor caveat: the status route is public (_access TRUE) and discloses payment status by guessable order_id — add an ownership check.",
   "version": "1.0.x",
   "package": "SIBS",
   "composer_namespace": "drupal/sibs_api_commerce",
@@ -36,5 +36,13 @@
     "commerce",
     "gateway",
     "iberia"
-  ]
+  ],
+  "project_description": "The SIBS API Commerce Module for Drupal Commerce is designed to seamlessly integrate SIBS, a widely used payment service provider, into your Drupal-based e-commerce store. This module allows merchants to securely process online payments, supporting a wide range of payment methods including credit and debit cards, and providing a smooth, reliable checkout experience for customers. By leveraging the SIBS API, the module ensures that all transactions are processed in compliance with industry security standards, offering both convenience and peace of mind. With easy configuration and robust support for common payment flows, this module helps you enhance your online store’s payment capabilities, ensuring efficient and secure transactions every time.\n\n Post-Installation \n Configure the SIBS API at (/admin/config/sibs-api).\n\nAdd new payment gateway at (admin/commerce/config/payment-gateways/add) and select SIBS API SPG OFFSITE\n\nSelect the avaliable payment methods that you want: Reference (MB) / CARD (Credit Card) / MBWAY\n\n Additional Requirements \n This module requires SIBS API and COMMERCE PAYMENT modules.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-01-30",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -41,5 +41,13 @@
     "operator",
     "replacement token",
     "rewrite"
-  ]
+  ],
+  "project_description": "Views Conditional is a simple module that allows you to define conditionals (if xxx then yyy)\n\nwith fields in views. \n\n Drupal 9/10 Conditions include:\n\n \n Equal To \n Not Equal To \n Greater Than \n Greater Than or Equals \n Less Than \n Less Than or Equals \n Empty \n Not Empty \n Contains \n Does Not Contain \n Length Equal To \n Length Not Equal To \n Length Greater Than \n Length Less Than \n \n Views conditional allows you to output text based on the result of the condition.\n\n ---\n\n How to use Views Conditional in your Views:\n\n1. Create a view. Add some fields under \"FIELDS\".\n\n2. Click on \"ADD\" next to fields. Scroll down to \"Views: Views Conditional\", probably found near the bottom of the list.\n\n3. Add and configure fields...\n\n4. Choose a field to run a condition against, and provide values accordingly.\n\n5. Save, views conditional handles the logic and returns as specified.\n\n Documentation \n Read the WebWash Tutorial for Views Conditional\n\n Note: \n\nIn many cases since Drupal 8, this module may be obsolete, because using Twig for Views rewriting we can now use conditional logic.\n\n {% if {{ field_show_other_flag }} %}\n\n {{ field_other_thing }}\n\n{% else %}\n\n {{ field_main_thing }}\n\n{% endif %}",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2013-04-22",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

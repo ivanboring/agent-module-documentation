@@ -49,5 +49,13 @@
     "views-sort",
     "views-argument",
     "pagination"
-  ]
+  ],
+  "project_description": "Back to top \n\n What does this module do? \n It creates JSON:API Resource for each Views display, allowing for easy consumption of this data outside of Drupal.\n\n When installed the module activates resources for all of your enabled views, you can optionally disable the resource by editing the view.\n\n The URL of the JSON:API Views resource based on your current preview state is displayed while editing a view, this includes filters, pagination and sorts.\n\n  \n\n Back to top \n\n Summary of current features \n \n JSON:API resource per View display: /jsonapi/views/{{ viewId }}/{{ displayId }} \n Pagination: ?page=# \n Exposed filters: ?views-filter[{{ filter }}]={{ value }} \n Contextual filters: ?views-argument[]={{ value } \n \n Multiple arguments as such ?views-argument[]={{ value }}&views-argument[]={{ value2 }} \n \n \n Exposed sorts: ?views-sort[sort_by]={{ sortId }} \n \n  \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-02-21",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12999999
 }

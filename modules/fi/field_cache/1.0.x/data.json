@@ -33,5 +33,13 @@
     "formatter",
     "max-age",
     "contexts"
-  ]
+  ],
+  "project_description": "The module allows administrators to set cache controls on field formatters. max-age, contexts, and tags are all supported.\n\n Features \n The contents rendered in fields may vary depending on various conditions. This allows administrators to quickly and easily add cache variable to fields without having to preprocess.\n\n Post-Installation \n To configure the field's cache properties, edit the field formatter for it in \"Manage Display\"\n\n Additional Requirements \n Drupal's internal page cache modules may not respect the rules set on the formatter for anonymous users. Uninstall these modules and use an external cache engine, e.g. CloudFlare, Varnish, etc.\n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-08-28",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

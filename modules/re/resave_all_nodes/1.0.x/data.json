@@ -38,5 +38,13 @@
     "drush",
     "reindex",
     "pathauto"
-  ]
+  ],
+  "project_description": "This module provides a form and a Drush command both implementing Batch API to resave all nodes or all nodes of a selected type.\n\n Note: Drush core also provide a re-save command now! (since v11.0.0-rc1) \n \n Re-save all article entities:\n drush entity:save node --bundle=article \n Re-save all shortcut entities:\n drush entity:save shortcut \n Re-save nodes 22 and 24:\n drush entity:save node 22,24 \n Re-save all nodes except node 9, 14 and 81:\n drush entity:save node --exclude=9,14,81 \n Re-save all users:\n drush entity:save user \n Re-save all node entities in steps of 5:\n drush entity:save node --chunks=5",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2019-10-09",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

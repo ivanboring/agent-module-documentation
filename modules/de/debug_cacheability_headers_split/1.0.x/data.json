@@ -33,5 +33,13 @@
     "debug",
     "cache tags",
     "development"
-  ]
+  ],
+  "project_description": "Most webservers have a maximum header size limit . Most common limit is 8K per header, which may be configurable or not, as is (at the time of writing) the case of Apache2 with mod_proxy_fcgi .\n\n For complex sites, the number of cache tags may be large, so when http.response.debug_cacheability_headers is enabled, the respective headers' size may exceed the server limit, resulting in server errors (WSOD, 502 Bad Gateway etc).\n\n Related issues with more details and discussion:\n\n \n https://www.drupal.org/project/drupal/issues/2954339 \n https://www.drupal.org/project/drupal/issues/2844620 \n \n The proposed approach is to split the large cacheability header(s) into multiple ones within the limit (e.g. ' X-Drupal-Cache-Tags ', ' X-Drupal-Cache-Tags-1 ', ' X-Drupal-Cache-Tags-2 ' etc).\n\n Features \n When http.response.debug_cacheability_headers is enabled and if one of the cacheability headers exceeds the configured size limit, the header is automatically split into chunks.\n\n Post-Installation \n The default applicable configuration for the header limits is:\n\n- 8192 (8KB) for the size limit per header\n\n- 8000 (< 8KB) for the header chunk size when split\n\n You may configure these at /admin/config/development/settings/cacheability .\n\n Alternatively, you may override them via `settings.local.php` file as follows: \n\n <?php\n\n$config['debug_cacheability_headers_split.settings']['header_size_limit'] = 5120;\n\n$config['debug_cacheability_headers_split.settings']['header_chunk_size'] = 5000;\n\n?>\n\n Additional Requirements \n None.\n\n Similar projects \n \n Core patch for Drupal 9 and 10 \n Core Drupal 11 fix (merge request active) \n \n I do not believe that this is a core bug nor that it should be addressed by Drupal core. See detailed explanation here .\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-06-25",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9005000,
+  "core_semver_maximum": 12000000
 }

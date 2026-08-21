@@ -35,5 +35,13 @@
     "dense vector",
     "semantic search",
     "ai"
-  ]
+  ],
+  "project_description": "The ultimate goal of this module is to enable a Solr search to let users use a loose, natural language in search queries and still get semantically relevant results (see screenshots).\n\n This module allows you to:\n\n \n Use the core Drupal AI framework to allow provider selection. Any provider supported by Drupal AI can be used. \n Select from any embedding model from selected AI provider \n Make vector dimension configurable \n Make similarity function configurable \n \n You will need at a minimum Solr 9.6 or higher installed with Search API Solr 4.x, along with the Drupal AI module and a configured AI provider. On the DenseVector processor configuration, you can select which provider to use to generate the embeddings to store in the index. \n\n \n\n At this point, you should be able to do vector based searches with Solr in Drupal. Note that there are some limitations with Solr that the module cannot currently address. It is best to store only one field as a dense vector, as that is all Solr can support at the moment.\n\n While using any provider is supported via the AI module, this module was tested using OpenAI and Ollama provider modules using their respective embedding models. Changing providers on the processor is easy, but do note that updating existing Solr configuration requires regenerating and uploading your configuration set and reindexing. Not all embedding models produce the same size vectors, resizing the field requires these steps for Solr to reflect the new changes.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-06-09",
+  "project_changed": "2026-08-11",
+  "core_semver_minimum": 10003000,
+  "core_semver_maximum": 12000000
 }

@@ -37,5 +37,13 @@
     "monitoring",
     "seo",
     "report"
-  ]
+  ],
+  "project_description": "Module Overview: External Link Status Checker \n External Link Status Check helps site administrators monitor outbound links across Drupal content entities by detecting external URLs, tracking their availability, and identifying broken links using background queue processing.\n\n The module automatically scans entities when content is created, updated, or processed during cron runs. It stores detected links and schedules status checks using Drupal’s Queue API to ensure reliable performance even on large sites.\n\n Use cases \n This module is useful for:\n\n \n SEO audits \n Content quality assurance \n Detecting broken outbound references \n Maintaining editorial link integrity \n Monitoring external partner links \n Preparing accessibility or compliance reports \n \n How it works \n The module scans supported content entities for outbound links and stores them in a tracking table. Link verification tasks are then processed asynchronously using Drupal’s Queue API to avoid performance impact during page requests.\n\n Scanning is triggered:\n\n \n when entities are created \n when entities are updated \n during cron execution \n via administrator-controlled scan settings \n \n Configuration \n After enabling the module, configure scan behavior at:\n\n /admin/config/system/external-link-scan \n\nYou can see the dashboard here:\n\n /admin/reports/external-links",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2022-03-02",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -44,5 +44,13 @@
     "customizable filters",
     "display plugin",
     "preset filters"
-  ]
+  ],
+  "project_description": "This module allows you to configure which exposed filters on a views block display should be configurable as default values by the site administrator when placing the block .\n\n Enabling a filter to be configurable looks like:\n\n \n\n And then the exposed filter will be available and saved into the block placement configuration, to be used as a default value when rendering the exposed form:\n\n \n\n This is helpful in a scenario such as:\n\n \n You created a blog feature. \n You would like site admins to be able to embed the blog into layout builder. \n The site admin should be able to pre-configure the blog and assign a set of filters on them, eg \"embed the blog, but only the 'fitness' tagged blog posts\". \n \n Known issues \n You need this core patch if you use AJAX for the view [#2605218]",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-01-11",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

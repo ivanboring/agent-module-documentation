@@ -33,5 +33,13 @@
     "framework",
     "plugin",
     "tracking"
-  ]
+  ],
+  "project_description": "This module provides the plugin framework to make arbitrary checks on updated\n\ncontent entities (node, term, user etc) to see if they have been changed.\n\n This module does nothing on its own. \n\n See the node change plugins provided as examples.\n\n The module plugins only work on content entities, because they have an\n\n\"original\" entity attached when they go through the entity update hooks, this\n\nallows us to compare fields in an arbitrary way.\n\n Plugins should specify precisely which entities they deal with.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-01-09",
+  "project_changed": "2026-05-19",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

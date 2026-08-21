@@ -36,5 +36,13 @@
     "sticky",
     "lazy load",
     "javascript"
-  ]
+  ],
+  "project_description": "Back to top \n\n Summary \n Waypoints is a small jQuery plugin that makes it easy to execute a function whenever you scroll to an element.\n\n Waypoints makes a solid base for modern UI patterns that depend on a user’s scroll position on the page. Take a look at a few examples .\n\n Back to top \n\n Configuration \n The module has an admin interface, where you can enable to always include the JavaScript file to the site.\n\nOtherwise you can include it manually via a simple function callback:\n\n \n\n<?php\n\ndrupal_add_library('waypoints', 'waypoints');\n\n?>\n\n \n\n Back to top \n\n Usage \n For example:\n\n \n\njQuery('#comments').waypoint(function() {\n\n alert('You have scrolled to the comments.');\n\n});\n\n \n\n \n\n(function ($) {\n\n $(document).ready(function() {\n\n if ($('#block-1').length) {\n\n var waypoint = new Waypoint({\n\n element: document.getElementById('block-1'),\n\n handler: function(direction) {\n\n $('.another-block')\n\n .toggleClass('someclass', direction === 'down');\n\n }\n\n });\n\n }\n\n });\n\n}(jQuery));\n\n \n\n For the full documentation visit the plugin's homepage. \n\n Views Load More module supports the use of this module. \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2011-04-21",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 13000000
 }

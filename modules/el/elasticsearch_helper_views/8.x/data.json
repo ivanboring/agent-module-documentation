@@ -35,5 +35,13 @@
     "search",
     "index",
     "integration"
-  ]
+  ],
+  "project_description": "Elasticsearch Helper Views module provides a way to display Elasticsearch results using Drupal Views.\n\n Back to top \n\n Requirements \n \n Drupal 9 or 10 \n Elasticsearch Helper module \n \n Back to top \n\n Installation \n Elasticsearch Helper Views module can be installed via the\n\n standard Drupal installation process .\n\n \n Install Elasticsearch search engine ( how-to ). \n Install and enable Elasticsearch Helper module. \n Install and enable Elasticsearch Helper Views module. \n \n Back to top \n\n Usage \n \n Install Elasticsearch search engine ( how-to ). \n Install the Elasticsearch Helper module, configure it and create indices using ElasticsearchIndex type plugins in a custom module. \n Create an ElasticsearchQueryBuilder type plugin in a custom module. \n If you want to create exposed filter in your view, you will have to create custom views filter plugins and define them in a hook_views_data_alter() hook for elasticsearch_result data type. \n Create a view and select Elasticsearch result as a data type. \n In a view configuration form click on the Query settings link and select the query building plugin that will generate Query DSL for this particular view. \n Save the view. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-06-05",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9004000,
+  "core_semver_maximum": 11000000
 }

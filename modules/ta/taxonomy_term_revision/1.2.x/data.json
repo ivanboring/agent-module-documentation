@@ -39,5 +39,13 @@
     "forced new revision",
     "content moderation for terms",
     "moderation handler"
-  ]
+  ],
+  "project_description": "This module stores revisions for the taxonomy terms.\n\n Whenever users saves or updates taxonomy terms it will create new revision for term as it works with nodes. This provides textarea field to fill a revision log message.\n\n Also on the taxonomy term edit page a new menu tab appears after the module\n\ninstallation which will list all of the taxonomy term's revisions and provides\n\n2 operations for each taxonomy term revisions:\n\n \n revert: which will revert the revision. \n delete: which will delete the revision. \n \n Also the module is adding some handler class for taxonomy term to\n\nsupport workflow as it works for content types.\n\n Note: This module works with Drupal 8.8.x onwards.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2020-02-12",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

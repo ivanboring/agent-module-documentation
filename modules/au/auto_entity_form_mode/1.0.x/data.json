@@ -33,5 +33,13 @@
     "register",
     "developer",
     "forms"
-  ]
+  ],
+  "project_description": "This is a small helper module that makes it easier to use custom form modes.\n\n By default, when creating a custom form mode, you can't use them without writing a hook in a custom module:\n\n \n\nfunction my_module_entity_type_build(array &$entity_types) {\n\n $default_entity_form_class = $entity_types['node']->getFormClass('default');\n\n $entity_types['node']->setFormClass('my_custom_form_mode', $default_entity_form_class);\n\n}\n\n \n\n Without this hook, using \\Drupal::service('entity.form_builder')->getForm($node, 'my_custom_form_mode'); will result in the following error:\n\n \n\nDrupal\\Component\\Plugin\\Exception\\InvalidPluginDefinitionException: The \"node\" entity type did not specify a \"my_custom_form_mode\" form class.\n\n \n\n This module automatically registers all custom form modes so you can actually use them, without writing that extra hook.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2022-06-23",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

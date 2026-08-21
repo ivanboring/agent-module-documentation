@@ -35,5 +35,13 @@
     "address",
     "api",
     "suggestions"
-  ]
+  ],
+  "project_description": "Project Description \n \n \n DaData Integration connects Drupal forms with the DaData Suggestions API to provide smart autocomplete for addresses, cities, companies, names, and emails. Simplifies form filling and improves data accuracy.\n\n \n Features \n \n \n \n Autocomplete for:\n \n \n Addresses (with granular control: country, region, city, settlement, street, house).\n \n \n Companies (party) — quick organization search.\n \n \n Full names (fio) — autofill personal names.\n \n \n Emails — suggest valid email addresses.\n \n \n \n \n Works with any textfield in Drupal (including Webform elements ).\n \n \n Multiple fields can be configured via the admin UI.\n \n \n Configurable API URL (for self-hosted gateways or DaData mirrors).\n \n \n Ships with translation support (English + Russian).\n \n \n \n Post-Installation \n \n \n After enabling the module:\n\n \n \n Go to Configuration → Web services → DaData Integration (/admin/config/services/dadata).\n \n \n Enter your API Key (required) and optionally override the Base API URL .\n \n \n Add the form fields (by HTML id, e.g. edit-city) that should use DaData suggestions.\n \n \n For each field, choose:\n \n \n Suggestion type (address, fio, email, party).\n \n \n Granularity (bound) — only available for addresses.\n \n \n \n \n Save the configuration.\n \n \n \n From now on, the configured fields will automatically show DaData suggestions as users type.\n\n \n Additional Requirements \n \n \n \n Drupal 10 or later .\n \n \n A valid DaData API key (free or paid, available at dadata.ru ).\n \n \n No additional contrib modules required.\n \n \n \n Community Documentation \n \n \n \n DaData API Docs — official API reference.\n \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-09-25",
+  "project_changed": "2026-07-28",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 13000000
 }

@@ -36,5 +36,13 @@
     "file",
     "data",
     "display"
-  ]
+  ],
+  "project_description": "Back to top \n\n Introduction \n A Field formatter that renders CSV files uploaded to a Drupal File field as a themable HTML table.\n\n Back to top \n\n Requirements \n This module requires the following modules:\n\n \n File field \n \n Back to top \n\n Installation \n Install as you would normally install contributed Drupal modules.\n\n The DataTables JS library may be loaded from the DataTables CDN.\n\n If you would like to use the DataTables setting \"Load from local files\", you will need to also install the DataTables libraries locally with Composer:\n\n 1. Run: composer require mnsami/composer-custom-directory-installer \n\n 2. Add the DataTables libraries, under extra , installer-paths in composer.json :\n\n \n\n \"web/libraries/{$name}\": [\n\n \"datatables.net/datatables.net\",\n\n \"datatables.net/datatables.net-dt\",\n\n \"type:drupal-library\"\n\n ],\n\n \n\n 3. Run: composer require datatables.net/datatables.net-dt \n\n Back to top \n\n Configuration \n Create a Drupal File field on a content type.\n\n On the \"Manage Display\" tab for the content type, select \"CSV File as Table\" as the Format for the created File field.\n\n Any properly formatted CSV file uploaded through the created File field will be processed to generate an HTML table.\n\n This field formatter includes options to provide a download link for the original File, plus options to process the rows and fields in the CSV file, and provide CSS classes for components of the generated HTML table.\n\n The field configuration setting \"Smart URL handling\" allows https URLs, email addresses, and a limited form of Markdown link syntax ([text](url)) found in the CSV file to be rendered as links.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-07-16",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

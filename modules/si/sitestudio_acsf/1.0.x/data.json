@@ -38,5 +38,13 @@
     "site factory",
     "multisite",
     "deployment"
-  ]
+  ],
+  "project_description": "A utility module providing a per-site route for leveraging the database template storage feature released in v6.3.5 of Acquia Site Studio .\n\n This is useful (but not limited to) hosting platforms that use a distributed filesystem such as Acquia Site Factory where rapid file read/write operations can lead to unexpected behaviours with Site Studio.\n\n KeyValue Storage \n This module switches Site Studio template storage to the database as opposed to the file system (current default behaviour) to improve read/write consistency.\n\n Once enabled you will need to run a full Site Studio rebuild to migrate all templates to the database:\n\n Drush \n $ drush cohesion:rebuild \n\n UI \n /admin/cohesion/developer/rebuild \n\n Note: Once enabled, Database utilisation will increase especially during rebuild and sync operations, be aware that using this module\n\nwill also increase the size of your database.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2022-09-15",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

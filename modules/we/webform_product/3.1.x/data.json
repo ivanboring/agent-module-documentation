@@ -42,5 +42,13 @@
     "paid form",
     "registration",
     "checkout"
-  ]
+  ],
+  "project_description": "Webform Product can create a Commerce order from any Webform submission.\n\n This module can be used for websites that have commerce for payment of predefined product types, but in need of a more flexible product for temporary product types or highly customisable product types, like a quick donation form or a promotional product.\n\n With Webform you can create simple or very complex forms, combine this with the easy to setup handler and you got a new product, ready to be paid with any payment provider defined in Drupal Commerce.\n\n Back to top \n\n This module includes \n \n Configurable Webform submission handler \n Commerce order item type \n Price options for webform elements \n Top pricing options for webform elements \n \n Back to top \n\n Version 2.x and 3.x \n New webform submission handler, found at https://github.com/chx/webform_product/pull/6 \n\n Review the following video to help setup the module.\n\n https://www.youtube.com/watch?v=zf1ZGKZVGQQ \n\n The 3.0.x version of the module requires the creation of the \"field_link_order_origin\" field in the order type to function properly. The video shows the full process. \n\n The 3.1.x version does not need this extra field on the order type, as it saves the reference in the order data. \n\n The module currently only works well with off-site payment providers (for example: saferpay, stripe checkout or paypal).\n\n \n\n\"A workaround could be to select a different \"Checkout step\" for the Webform Product Handler. \"Order information\" or \"Review\" may get in early enough in the process.\"\n\n Back to top \n\n Version 1.x \n Original idea found at https://github.com/chx/webform_product/ \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-02-06",
+  "project_changed": "2026-08-21",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

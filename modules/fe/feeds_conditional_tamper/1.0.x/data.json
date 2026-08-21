@@ -36,5 +36,13 @@
     "conditional",
     "import",
     "skip"
-  ]
+  ],
+  "project_description": "FEEDS CONDITIONAL TAMPER \n\n Extends the Feeds Tamper module with two plugins that conditionally skip a feed item or a field value based on a configurable condition. The condition is evaluated against any source field in the feed row, or against the field value being tampered itself.\n\n Back to top \n\n REQUIREMENTS\n \n \n Drupal 10.2 or 11 \n tamper (drupal/tamper) \n feeds_tamper (drupal/feeds_tamper ^2.0) \n \n Back to top \n\n INSTALLATION\n \n \n Place the module at docroot/modules/custom/feeds_conditional_tamper/. \n Enable it: ddev drush en feeds_conditional_tamper -y \n Rebuild the cache: ddev drush cr \n \n Back to top \n\n PLUGINS PROVIDED\n \n Skip item on condition (skip_item_on_condition) When the condition is TRUE, the entire feed row is dropped â the node (or other entity) is not created or updated for that row. Equivalent to the built-in \"Required\" plugin, but driven by a flexible comparison rather than a simple empty/not-empty check.\n\n Skip value on condition (skip_value_on_condition) When the condition is TRUE, only the current field value is cleared (set to NULL). The rest of the feed row continues to be processed normally â the node is saved, but that particular field is left empty.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-04-20",
+  "project_changed": "2026-08-11",
+  "core_semver_minimum": 10002000,
+  "core_semver_maximum": 12000000
 }

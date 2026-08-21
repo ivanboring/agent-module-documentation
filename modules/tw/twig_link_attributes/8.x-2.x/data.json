@@ -35,5 +35,13 @@
     "url",
     "template",
     "theming"
-  ]
+  ],
+  "project_description": "Simple twig filter to add attributes to link() item.url's in templates.\n\n Has the advantage of merging attributes so modules like Menu Link Attributes do not have their attributes blown away in the template.\n\n For example, current documentation encourages themers to do this:\n\n {{ link(item.title, item.url, { 'class':['menu__link']}) }} \n\n However classes added via preprocess or Menu Link Attributes will no longer be applied, as the above code blows them away.\n\n Usage: \n Filter: link_attributes('attribute type':[attribute values]) \n\n E.g. in menu.html.twig you can do stuff like this:\n\n {{ link(item.title, item.url|link_attributes({'class' : ['menu__link'], 'data-drupal-example' : ['is-item']})) }}",
+  "maintenance_status": "Seeking new maintainer",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2016-09-30",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 11000000
 }

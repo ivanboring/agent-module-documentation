@@ -35,5 +35,13 @@
     "drush",
     "verify",
     "data"
-  ]
+  ],
+  "project_description": "The Data Migration Report module is created to simplify and improve the data migration process from Drupal 7 to Drupal 10 and later versions. By using this module, developers and administrators can ensure data integrity, trace mapping issues, and gain insights into the migration process, ultimately leading to smoother transitions and better data management.\n\n Supported Entity Types: \n \n User \n Node \n Taxonomy \n Content block \n Comment \n Menu links \n URL alias \n File \n Field Collection \n Paragraphs \n \n Features \n This module provides two powerful Drush commands that facilitate the generation of comprehensive content mapping YAML files and enable detailed testing and reporting of migration data.\n\n \n \n Generate Content Mapping YAML: \n \n Command: drush generate:content-mapping \n Description: This command creates a YAML file that maps source data fields to Drupal content fields. It helps in visualizing how data from the source system corresponds to Drupal’s fields and is essential for configuring migration processes. \n \n \n \n Test Data and Generate Report: \n \n Command: drush migration:test \n Description: This command runs a test migration based on the provided mapping and generates a detailed report. The report includes data validation results, any issues encountered, and a summary of successfully migrated data. This helps in identifying and addressing potential problems before executing a full migration. \n \n Arguments: \n \n entity_type - The type of the content entity being migrated. \n bundle - The bundle of the content entity. \n \n \n \n Options: \n \n --limit - Number of items to process. \n --ids - List of source content ids to process. \n \n \n \n \n \n Configuration \n Define the source database connection with the key ' migrate ' in addition to the 'default' database connection in settings.php.\n\n OR \n\n Configure the source database connection at /admin/config/system/migrate-database-credentials .\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2024-07-22",
+  "project_changed": "2026-08-13",
+  "core_semver_minimum": 10003000,
+  "core_semver_maximum": 12000000
 }

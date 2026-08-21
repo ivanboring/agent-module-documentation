@@ -47,5 +47,13 @@
     "CSP",
     "field formatter",
     "string_long"
-  ]
+  ],
+  "project_description": "This module allows the creation of Media assets from Tyler Technologies Data & Insights . This allows you to manage data and create visualizations within Tyler Technologies Data & Insights and then embed them within Drupal anywhere Media allows, including fields and WYSIWYG.\n\n Features \n \n Allows to use Tyler Technologies Data & Insights embeds as media \n Allows to restrict the hosts from where we can embed \n If the CSP module is installed, automatically adds those hosts to the frame-src policy. \n \n Requirements \n \n Works with Drupal 10.3+ and 11 \n \n Installation \n \n Media: Tyler Technologies Data & Insights can be installed via the standard Drupal installation process. \n \n Configuration \n \n Create a new Media Type and select \"Tyler Data & Insights\". \n Add the \"Administer Media: Tyler Data & Insights allowed hosts\" permission to any privileged user that can add hosts. \n Add the permissions for which roles can create media with this new media type. \n Go to Configuration > Media > Tyler Technologies Data & Insights settings and add the hosts that you want to embed from. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-09-22",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

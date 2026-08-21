@@ -36,5 +36,13 @@
     "indexing",
     "hidden content",
     "processor"
-  ]
+  ],
+  "project_description": "Search API can index content but Rabbit Hole can prevent content from being accessed.\n\n This module provides a Search API Processor that prevents indexing of content items that have Rabbit Hole enabled and are using Rabbit Hole's 'Access Denied' or 'Page Not Found' plugins by default (but can be configured to prevent indexing of whichever you want).\n\n Example usage \n \n Set up Node Articles to use Rabbit Hole \n Set up a Search API Index to index Node Articles \n Create an Article 'An article that should not be found' and set it to 'Access Denied' \n \n Without this module, 'An article that should not be found' will be a result in your Search (but clicking it will still lead to access denied).\n\n With this module enabled and configured 'An article that should not be found' will be excluded from being indexed and appearing as a result.\n\n Post-Installation \n \n Go to your Search API index -> Processors. \n Enable \"Indexing Rabbit Hole Filter\" \n \n Additional Requirements \n This module only works if you have both Search API and Rabbit Hole enabled.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-04-23",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 13000000
 }

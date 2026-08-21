@@ -44,5 +44,13 @@
     "navigation",
     "block",
     "sequence"
-  ]
+  ],
+  "project_description": "The Pager module provides in-page Prev and Next navigation links with/without Views and node display integrations.\n There are currently 2 theme options, (center block or slide-out side tabs).\n\n Configuration options Include:\n\n \n Previous Text: The text at the bottom of all previous links. \n Next Text: The text at the bottom of all next links. \n Image Field: The image filed to use for the block, (if navigation between content types is desired then it's convenient if they share an image field). \n Image Style: The image style to use for the block. To get a consistant look, an image style that's scaled and cropped to specific aspect ration work best. To improve performance a size that matches display size, (or is close) works best. \n Theme: There are currently two themes. A center block and side tabs. \n Content Types: The content types that will be included in the this block's pagination. Pagination between content types is simplest if hey share taxonomy and an image field. \n Taxonomy Terms: The terms that will be included in pagination. \n Maintain Term: If set the prev/next links will have the same taxonomy as the current content, (Dogs to Dogs and Cats to Cats). If not set then pagination will include any of the taxonomy terms selected, (Dogs to Dogs or Dogs to Cats or Cats to Honey Badgers). \n Direction: Forward is cronoligical order from first to last, (first is oldest, last is newest). \n End Behavior: The behavior at the first and last content.\n \n Loop means the last content will feature a link to the first, (and vice versa).\n Current means that when displaying the first or last content one pane will link to itself. \n Single means that only one pagination link will appear, (next on first and prev on last). \n \n \n \n Sub-module \"Pager Views\", (3.1.0-beta*) \n The sub-module \"Pager Views\" implements the Pager's functionality but integrated with the the Views module.\n\n Sub-module \"Pager Views Example\", (3.1.0-beta*) \n The sub-module \"Pager Views Example\" provides an example view, content type, node display and image style to get developers/site builders started. Combined with devel generate it should give y'all and idea if this is going to work with your use case, (probably want to try this on dev instance first).\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2018-07-16",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

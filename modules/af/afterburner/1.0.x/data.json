@@ -33,5 +33,13 @@
     "queue",
     "background",
     "processing"
-  ]
+  ],
+  "project_description": "Afterburner is a performance module for Drupal that brings true concurrency to background and queue processing.\n\nIt integrates Spatie’s Async library to process tasks in parallel PHP workers, both during the Terminate event and within queue systems.\n\n Why Afterburner? \n\nDrupal’s native queue system and terminate hooks are sequential — they process one item at a time or run within a single PHP request.\n\nAfterburner adds a layer of asynchronous concurrency, enabling heavy post-response or queue workloads to execute in parallel, without blocking user-facing requests.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-11-10",
+  "project_changed": "2026-07-21",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

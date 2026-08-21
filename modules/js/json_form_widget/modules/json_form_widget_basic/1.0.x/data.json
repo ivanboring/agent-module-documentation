@@ -39,5 +39,13 @@
     "basic widget",
     "form display",
     "json_form_widget_basic"
-  ]
+  ],
+  "project_description": "JSON Form Widget\n This module provides a versatile way to create Drupal form elements from a JSON schema . Why would you need to create a form from JSON? This allows for a wide range of flexibility when customizing a content type without hard coding every field.\n\n The inspiration for this module and the syntax for the UI Schema come from react-jsonschema-form . While the UI schemas are not actually interoperable at this time, and RJSF supports more features of JSON-Schema than this module is currently able to, we hope to close that gap over time.\n\n TIP: A good way to visualize what this module is doing is to use RJSF team's react-jsonschema-form playground as this modules functionality is largely similar in regards to how the schema translates to different form fields/structure.\n\n \n \n Plugin \n This module requires a plugin to provide a \"widget\" that will supply the schema(s) that define the fields of the form(s). At the moment, the module does not ship with a standalone plugin, so can be thought of as an \"API module\" (we hope to change this situation soon). JSON Form Widget was originally part of the DKAN module , and a working example of a widget plugin can be seen in the DKAN codebase .\n\n Using a combination of \"router\", \"helper\", and \"handler\" classes, as well as some extensions on Drupal core elements, a widget plugin needs to implement its own logic to retrieve the correct JSON Schema. JSON Form Widget then builds the form according to the retrieved schema and any schema user interface options if supplied (see SchemaUiHandler.php and its contained methods for more information about UI options).\n\n The examples section of this README can be used to understand how different field types translate directly to Drupal form elements and subsequently, how they would look within the Drupal user interface. They come from the default schemas in DKAN but represent most of what is currently available from JSON Form Widget, no matter where your schema comes from.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-08-21",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10004000,
+  "core_semver_maximum": 12000000
 }

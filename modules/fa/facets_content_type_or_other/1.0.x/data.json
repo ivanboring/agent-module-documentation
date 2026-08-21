@@ -35,5 +35,13 @@
     "other",
     "search",
     "facet"
-  ]
+  ],
+  "project_description": "The Facets Content type or Other module provides a way to index content types and group some into an \"Other\" category. The content type labels can be overridden in the configuration.\n\n Example:\n\n * Article\n\n* Basic page\n\n* Other\n\n Configuration \n 1. Configure the Content type or Other settings at `/admin/config/search/facets-content-type-or-other`.\n\n2. In your Search index, go to Fields and add a \"Content type or other\" field.\n\n3. Go to Facets and add a Facet for Content type or other.\n\n4. Under \"Facet sorting\", select \"Content type or Other - Sort order\" and make sure that all other sorting options are deselected.\n\n5. Re-index all content.",
+  "maintenance_status": "Seeking co-maintainer(s)",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2022-08-30",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12999999
 }

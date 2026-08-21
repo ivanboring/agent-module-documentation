@@ -1,7 +1,7 @@
 {
   "name": "Country Block",
   "data_name": "country_block",
-  "description": "Blocks visitors from specific countries by GeoIP (Smart IP). Coarse gate \u2014 GeoIP is approximate and IP-spoofable.",
+  "description": "Blocks visitors from specific countries by GeoIP (Smart IP). Coarse gate — GeoIP is approximate and IP-spoofable.",
   "version": "1.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/country_block",
@@ -35,5 +35,13 @@
     "geoip",
     "smart ip",
     "restrict"
-  ]
+  ],
+  "project_description": "This module allows site administrators to block access to their Drupal site based on the user's country of origin. It uses the Smart IP module to determine the user's location from their IP address. If a user is visiting from a country on the blocklist, they will be denied access and shown a configurable message.\n\n Features \n This module provides a simple yet effective way to control access to your site based on geography.\n\n \n Block by Country: Easily block entire countries using a simple list of country codes. \n Configurable Blocklist: An administrator can add or remove countries from the blocklist through a user-friendly interface. \n Customizable Message: Set a custom message that will be displayed to users who are denied access. \n Permission-based Access: Configuration is protected by a dedicated permission, ensuring only authorized users can change the settings. \n \n \n This module is ideal for sites that need to restrict content based on regional licensing, comply with legal requirements, or reduce malicious traffic from specific parts of the world.\n\n Post-Installation \n Once installed, follow these steps to configure the module:\n\n \n \n Set Permissions: Navigate to the permissions page\n\n ( /admin/people/permissions ) and grant the \"Administer Country Block\" permission to the appropriate user roles (e.g., Administrator).\n \n Configure Settings: Go to the module's configuration page at /admin/config/system/country-block . \n \n Add Blocked Countries: In the \"Blocked Countries\" text area, enter the two-letter country codes (ISO 3166-1 alpha-2) for the countries you wish to block. Each code should be on a new line. For your convenience, the form includes a link to a list of country codes.\n \n Customize the Message: In the \"Blocked Message\" field, you can edit the default message that will be shown to users from a blocked country. \n Save: Click \"Save configuration\". The country block is now active. \n \n Additional Requirements \n This module requires the following:\n\n \n \n Smart IP ( smart_ip ) module: This module is essential for identifying the user's country based on their IP address. The Smart IP module itself requires a configured data source (e.g., a GeoIP database) to function correctly. Please follow the installation and configuration instructions for the Smart IP module.\n \n \n Recommended modules/libraries \n \n There are no other recommended modules for this project. However, it is highly recommended to keep the GeoIP database used by the Smart IP module up-to-date to ensure accurate country detection.\n\n Similar projects \n \n While other modules may provide geographic tools, Country Block is focused on simplicity and ease of use for one specific task: blocking countries. Modules like IP-based Determination of Country, City, and Language offer broader location data but do not provide a direct blocking mechanism. Country Block is a lightweight solution for those who need a simple \"on/off\" switch for country access.\n\n \n \n \n \n Back to top \n\n 🇺🇦 \n \n This module is maintained by Ukrainian developers.\n\nPlease consider supporting Ukraine in the fight for their freedom and the safety of Europe. \n \n \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-02-07",
+  "project_changed": "2026-08-11",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

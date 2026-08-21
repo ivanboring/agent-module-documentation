@@ -37,5 +37,13 @@
     "sanitize",
     "upload",
     "file"
-  ]
+  ],
+  "project_description": "[📄_0] ➡️ [📄] \n The Clean Filename module reverses Drupal's default file naming behavior to ensure new uploads always get clean, original filenames.\n\nWhen a file with the same name as an existing file is uploaded, rather than the new file being given a suffix (like 0, _1), the existing file gets renamed while the clean name is preserved for the new upload.\n\n \n \n How It Works: \n Default Drupal Behavior: \n\n \n Existing: document.pdf \n New upload: document_0.pdf ❌ \n \n With Clean Filename Module: \n\n \n Existing: document.pdf → document_1.pdf (renamed) \n New upload: document.pdf ✅ (keeps clean name) \n \n \n \n The Process: \n \n Drupal processes upload: Detects conflict and creates filename_0.ext \n Module detects rename: Recognizes Drupal added a suffix to the new file \n Smart renaming: Moves existing file to next available suffix \n Clean result: New file gets the original, clean filename \n \n \n \n Key Benefits: \n \n Latest files have clean URLs - better for SEO and user experience \n Existing references preserved - old files keep their current URLs \n Per-field configuration - enable only where needed \n Intelligent suffix management - handles complex naming scenarios",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2025-08-07",
+  "project_changed": "2026-05-12",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

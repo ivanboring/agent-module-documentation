@@ -48,5 +48,13 @@
     "batch",
     "reconcile",
     "cleanup"
-  ]
+  ],
+  "project_description": "Audit files is designed to perform audits of your upload directory and the corresponding database records. It will cross check that all files in the database have a corresponding physical file, or it will check that all files in the upload directory have a corresponding entry in the database.\n\n This module can be helpful in identifying orphan files that have not been deleted when their corresponding node was removed.\n\n The module has configurable options to ignore specified files and/or directories.\n\n The reports allow you to permanently remove files or database entries that represent orphans.\n\n Versions \n \n \n Major version \n 4.2.x \n 4.3.x ( Future ) \n \n \n Drupal core \n ^10.3 \n ^10.3 \n \n \n PHP Compatibility \n >=8.1 \n >=8.2 \n \n \n Stability \n Stable \n N/A \n \n \n Support \n Bug fixes \n New features and bug fixes \n \n \n Until PHP 8.1 security support ends or Drupal 10.1 EOL, whichever is earlier. \n Until PHP 8.3 security support ends or Drupal 11.0 EOL, whichever is earlier. \n \n \n View support for previous versions .",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2007-04-18",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -36,5 +36,13 @@
     "link",
     "hmac",
     "order"
-  ]
+  ],
+  "project_description": "Makes it possible to send a link to finish an order that for example an admin has created either with adding things to cart, or by creating it in the UI.\n\n The module does not itself expose any interface, but you can use its helper methods to generate URLs for people to \"claim\" orders:\n\n <?php\n\nCheckoutLinkManager::generateUrl($order);\n\n?>\n\n This will redirect the user to the checkout, allowing them to complete the order in question.\n\n By default, a link expires after 24 hours.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2019-06-11",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -36,5 +36,13 @@
     "recurring",
     "dates",
     "indexing"
-  ]
+  ],
+  "project_description": "This module provides Search API support for fields created with the Recurring Dates Field module.\n\n Features \n This module allows entities with recurring date fields to be indexed multiple times in a search index, with one item for each date occurrence.\n\n The module defines an additional content entity datasource for each recurring date field. This datasource should be used instead of the datasource for content entities that comes with Search API module. The recurring date field datasource generates multiple items for each occurrence of a recurring date field, up to a configurable point in the future. Each occurrence will appear as a different search result.\n\n When search items are loaded, the occurrence date is set on a computed field on the entity. This field should be used for filtering, sorting, and displaying results instead of the recurring date field.\n\n Post-Installation \n \n Edit or create a SearchAPI index. \n Enable the 'Date occurrences' datasource for the entity type and recurring date you want to index. \n Add the computed date occurrence field to the index to sort items by date. \n Configure the view mode used in search results to shoe the computed date occurrence field. \n \n Additional Requirements \n \n Recurring Dates Field \n Search API \n Computed Field \n \n Recommended modules/libraries \n \n Search API Common Fields allows using common fields between Recurring Date datasources and Search API's built-in Content datasources. \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2024-05-31",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

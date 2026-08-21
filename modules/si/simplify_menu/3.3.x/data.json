@@ -42,5 +42,13 @@
     "headless",
     "json menu",
     "custom menu markup"
-  ]
+  ],
+  "project_description": "The simplify_menu module uses a TwigExtension to gain access to Drupal's main menu's (or any other menu for that matter), render array so it can be accessed from a twig template. Among the many advantages of having full control of the menu's render array in a twig template is the ability to customize the markup for your menus to ensure they are accessible and comply with standards.\n\n How to use \n \n\n{# Get menu items #}\n\n{% set items = simplify_menu('main') %} \n\n {# Iterate menu tree #}\n\n {% for menu_item in items.menu_tree %}\n \n {{ menu_item.text }} \n \n {% endfor %}\n\n \n\n Blog post \n Read a detailed blog post by Tim Dickens of Mediacurrent.\n\n https://www.mediacurrent.com/blog/simplify-menu-and-twig-macros \n\n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-01-12",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

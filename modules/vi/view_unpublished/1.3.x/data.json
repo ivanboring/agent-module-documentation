@@ -40,5 +40,13 @@
     "moderation",
     "editorial",
     "preview"
-  ]
+  ],
+  "project_description": "Description: \n\nThis module allows you to grant access for specific user roles to view unpublished nodes of a specific type of other user. Access control is quite granular in this regard.\n\n Additionally, using this module does not require any modifications to your existing URL structure.\n\n Sample use case: \n\nUsed in concert with the Override node options module, you can give specific roles the ability to publish/unpublish certain node types without giving those roles administrative access to all nodes .\n\n Usage: \n\nview_unpublished looks the access permission: \n\n \n \nView unpublished (node type) or\n \n \nView any unpublished content\n \n \n After installing the module, navigate to your user access page and assign the appropriate permissions to the roles you wish to be able to view unpublished nodes.\n\n Common problems \n\nIf for some reason this module seems to not work, try rebuilding the node\n\npermissions: Administration > Reports > Status > Rebuild. Note that this\n\ncan take significant time on larger installs and it is HIGHLY recommended\n\nthat you back up the site first.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2008-08-11",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

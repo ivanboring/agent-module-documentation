@@ -35,5 +35,13 @@
     "queue",
     "performance",
     "stackdriver"
-  ]
+  ],
+  "project_description": "Provide Google Trace Integration.\n\n Installation \n Download this module as usual :\n\n \n\ncomposer require drupal/google_trace \n\n Enable it trough drush or from the UI\n\n drush en google_trace \n\n Two environment variables need to be set for the logger to work:\n\n - GOOGLE_APPLICATION_CREDENTIALS : Relative path from Drupal root to JSON file containing authentication credentials (e.g. : ../files/my-project-5115.json)\n\n- GOOGLE_CLOUD_PROJECT : Google Cloud Project name (e.g. : my-gcp-project-5115)",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2021-10-13",
+  "project_changed": "2026-08-04",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 11000000
 }

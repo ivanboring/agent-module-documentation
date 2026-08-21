@@ -41,5 +41,13 @@
     "png",
     "upload",
     "image toolkit"
-  ]
+  ],
+  "project_description": "This module reads EXIF data to rotate images that have an Orientation key set. This module solves the issue where iOS devices take images in one position but set an EXIF Orientation value, leaving applications viewing the image responsible for rotating the image.\n\n This module spawned from a patch for File Entity: [#2290011]\n\n More info on EXIF orientation: http://www.daveperrett.com/articles/2012/07/28/exif-orientation-handlin… \n\n NOTE: There appears to be an issue in core with imagerotate() and PHP 5.5: [#2215369]. 7.x patch is in works. (Thanks GuyPaddock",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2014-08-06",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -37,5 +37,13 @@
     "delete",
     "sync",
     "cleanup"
-  ]
+  ],
+  "project_description": "When using migrate to import data from external data sources, we often have the issue, that the external data source deletes records we previously imported. In our database remain \"orphans\" and our migrate_map tables are full of orphaned entries.\n\n This modules comes with a handy drush command to remove orphans from a specific migration by comparing the migrate_map table and the external data source.\n\n You have two options:\n\n \n Delete orphaned entities \n Disable orphaned entities \n \n Usage: \n \n\ndrush migrate:orphans-purge \n\n \n\n \n\ndrush migrate:orphans-disable",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-10-28",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

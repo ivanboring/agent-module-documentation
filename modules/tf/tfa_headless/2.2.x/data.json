@@ -37,5 +37,13 @@
     "headless",
     "simple oauth",
     "authentication"
-  ]
+  ],
+  "project_description": "Provides headless TFA support for Google Authenticator, using the TFA Module.\n\n Features \n The module exists of 4 endpoints:\n\n /api/totp/generate \n Generates an uri for a QR code and a seed.\n\n /api/totp/status \n Checks the status of the user, if TFA is enabled or not.\n\n /api/totp/register \n Registers the user so it can use TFA\n\n /api/totp/login \n Checks if the user is authorized to login with the given code.\n\n Post-Installation \n The endpoints can be enabled under Settings > Webservices > REST .\n\n Additional Requirements \n Depends on the module TFA .\n\nUses REST to provide the endpoints.\n\n RESTUI is a nice to have.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2024-04-16",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

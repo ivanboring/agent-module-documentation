@@ -35,5 +35,13 @@
     "tree",
     "parent",
     "structure"
-  ]
+  ],
+  "project_description": "The Entity Reference (with) Hierarchy module extends Drupal core's standard entity reference field, transforming it from a flat, linear list into a powerful rooted tree structure .\n\n While Drupal core only supports simple lists of references, this module allows you to define complex hierarchies directly within a single field on the host entity.\n\n Back to top \n\n Architecture: The Rooted Tree Approach \n Unlike other hierarchy solutions that create \"nested sets\" by chaining reference fields across multiple individual entities, this module manages the entire hierarchy map via a single field. This rooted tree architecture stores depth and weight metadata alongside the target ID on the primary entity.\n\n This approach is exceptionally well-suited for Paragraphs , where you may need to manage deeply nested layouts and components without the overhead of cross-entity field chaining.\n\n Back to top \n\n Key Features \n \n Visual Hierarchy Management: Includes a drag-and-drop interface identical to the familiar UI used for managing taxonomy terms or menu links in Drupal core. \n Single-Field Data Model: The entire tree is stored and managed on the root host entity. \n Revision Support: Fully compatible with Entity Reference Revisions , allowing for historical tracking and revisioning of the entire hierarchical structure. \n Ecosystem Ready: Works seamlessly with Inline Entity Form and Paragraphs for advanced content modeling. \n \n Back to top \n\n Example Structure \n The module tracks both delta (weight) and depth to maintain the tree:\n\n \n Reference A (delta 0, depth 0)\n \n Reference B (delta 1, depth 1) \n Reference C (delta 2, depth 1)\n \n Reference D (delta 5, depth 2) \n \n \n \n \n Reference E (delta 3, depth 0) \n \n Back to top \n\n Comparison to Entity Hierarchy \n It is important to distinguish this module from Entity Hierarchy :\n\n \n Entity Hierarchy creates trees through a chain of reference fields pointing to one another (a nested set model). \n Entity Reference (with) Hierarchy uses a single field on the primary entity to manage the structure (a rooted tree ). \n \n Back to top \n\n Background & Credits \n This project was born from a desire to create a more generic, unstyled version of Bricks . During development, it incorporated improvements and logic inspired by the entity_reference_hierarchy repository by maijs.\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2020-07-10",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

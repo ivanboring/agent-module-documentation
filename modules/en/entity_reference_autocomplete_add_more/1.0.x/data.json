@@ -33,5 +33,13 @@
     "add more",
     "widget",
     "multi-value"
-  ]
+  ],
+  "project_description": "If non-entity custom form require a form element that allows adding entity reference and individual entity need to be added using it's own input field same as \"entity_reference_autocomplete\" widget with tags=false, this module provides that ability. As \"entity_reference_autocomplete\" require field storage attached to it, it only works with entity forms. This module is a light weight alternative that can be used for any custom forms. This module is only for developer use.\n\n Features \n Allows referencing other entities in a custom form. It provides an entity autocomplete input box and \"add more item\", \"remove\" buttons to add multiple reference entities using individual inputs.\n\n Post-Installation \n This is for dev use only, after installation this module enables a new FormElement type called \"entity_reference_autocomplete_add_more\".\n\n Example code:\n\n <?php\n\n$form['field_name'] = [\n\n '#type' => 'entity_reference_autocomplete_add_more',\n\n '#target_type' => 'entity_type',\n\n '#title' => $this->t('Field label'),\n\n '#selection_settings' => ['target_bundles' => ['bundle_name'], 'match_limit' => 15],\n\n '#default_value' => [0=>['target_id' => 123],1=>['target_id' => 234]],\n\n];\n\n?> \n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-08-07",
+  "project_changed": "2026-08-14",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

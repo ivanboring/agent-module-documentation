@@ -38,5 +38,13 @@
     "migration",
     "images",
     "links"
-  ]
+  ],
+  "project_description": "Allows administrators to replace the base URL in <img> and <a> elements.\n\n Users tend to create links and images in their content with absolute URLs. This can be a problem if the site moves to another domain (perhaps between development and production sites) or is behind a proxy, with a different address for authenticated users. \n\n Some replacement examples:\n\n Before: Some link \n\nAfter: Some link \n\n Before: \n\nAfter: \n\n You can setup such replacements in the URL Replace Filter settings as follow:\n\n Original: http://example.com:8080/ \n\nReplacement: %baseurl/ \n\n Original: http://dev.example.com/ \n\nReplacement: %baseurl/ \n\n %baseurl is a token for your site's base URL. The above examples assume a site located in the domain's root directory (in which case %baseurl is actually empty). \n\n Drupal versions \n The module is available for Drupal 10, 9, 8, 6, 5, and 4.7. In most cases, Drupal 7 has better alternatives.\n\n See also \n \n Pathologic (for most D7 cases a better option than URL Replace Filter) \n Pathfilter \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2007-03-14",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

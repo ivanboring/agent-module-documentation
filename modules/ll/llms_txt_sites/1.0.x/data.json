@@ -37,5 +37,13 @@
     "group",
     "ai",
     "multi-site"
-  ]
+  ],
+  "project_description": "Site-aware /llms.txt endpoint for multisite Drupal installations — merges a configurable header and ordered llms_txt_section entities per site (requires sites , group /llms.txt and llms_txt ).\n\n Features \n Per-site assignment of sections (uses the sites contrib technique), preserves ordering from the llms_txt_section entities, and emits correct cache tags and the site cache context so outputs invalidate precisely.\n\n When and why to use: Use this on different sites that must expose a controlled, site-specific llms.txt output.\n\n Additional Requirements \n \n Drupal 10 or 11. \n PHP 8.2+. \n Required contrib modules: /llms.txt , sites \n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2026-01-21",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

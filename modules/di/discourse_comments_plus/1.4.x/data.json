@@ -35,5 +35,13 @@
     "forum",
     "integration",
     "discussion"
-  ]
+  ],
+  "project_description": "Discourse Comments (+) module provides integration with Discourse. Discourse is the 100% open source discussion platform.\n\n Features: \n \n Publishes Drupal Nodes as topics on Discourse \n Retrieves posts from Discourse and shows them as comments on corresponding Drupal node \n (+) Let visitors login Discourse with SSO and able to add comments directly from Drupal \n \n Usage Instructions: \n \n Enable the module \n Provide the Discourse API keys etc at admin/config/discourse_comments/discourse_comments_settings \n (+) Provide the Discourse SSO secret key at admin/config/discourse_comments/discourse_comments_settings \n While publishing a node for the first time, enable the \"Publish to Discourse\" checkbox on node edit page \n Place the \"Discourse comments\" block on any Drupal node page where you want the associated Discourse comments to be fetched and displayed \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-02-01",
+  "project_changed": "2026-03-24",
+  "core_semver_minimum": 10003000,
+  "core_semver_maximum": 12000000
 }

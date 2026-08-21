@@ -43,5 +43,13 @@
     "object dump",
     "array dump",
     "development"
-  ]
+  ],
+  "project_description": "Implementation of dBug for Drupal.\n\n Features \n \n PHP version of ColdFusion’s cfdump. \n Outputs colored and structured tabular variable information. \n Variable types supported are: Arrays, Classes/Objects, Database and XML Resources. \n Ability to force certain types of output. Example: You can force an object variable to be outputted as an array type variable. \n Stylesheet can be easily edited. \n Table cells can be expanded and collapsed. \n \n The main modification is to return a render array instead of echo.\n\n dBug page: https://github.com/ospinto/dBug \n\n Usage: \n $dbug_variable = Dbug::debug($variable);\n\n$output['#attached']['library'][] = 'dbug/dbug';\n\n$output['variable'] = [\n\n '#type' => 'markup',\n\n '#markup' => $dbug_variable,\n\n]; \n\n Change the $variable for the variable you want to show the debug information.",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2017-03-29",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

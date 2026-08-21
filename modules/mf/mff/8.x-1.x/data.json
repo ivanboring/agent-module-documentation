@@ -33,5 +33,13 @@
     "formatter",
     "display",
     "download"
-  ]
+  ],
+  "project_description": "File formatters for media entity file fields. \n\n \n Use media \"Name\" field instead of description as the file link text. \n Render file as its \"Description\" only with no link. Useful with Views when wanting to display the file field's description rather than create a new field. \n \n The option to open a document in a new window requires this core patch: [#2727281-43]\n\n When using the \"Name\" field as the link text, the \"Description\" field can be displayed separately in the template file:\n\n {{ file._referringItem.description }}",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2019-05-01",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8008000,
+  "core_semver_maximum": 12000000
 }

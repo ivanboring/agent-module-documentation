@@ -35,5 +35,13 @@
     "users",
     "community",
     "notification"
-  ]
+  ],
+  "project_description": "The Mentions module offers Twitter like functionality, recording all references to a user's username - using the [@username] or [@#uid] filter format - from various locations, providing a centralized page to track all mentions (via the Views module).\n\n Features \n \n Tracks Mentions on any Entity. \n An Input filter to convert [@username] or [@#uid] to the user's profile, e.g., [@deciphered] and [@#103796] become @deciphered . \n Customizable input ( [@username] , [@#uid] ) and output ( @username ) patterns, including support for Tokens. \n Autocompletion of mentions; Using the jQuery textcomplete library usernames will be suggested while mentioning.\n Integrations with:\n \n Machine name - Use a Machine name field as the mention source. \n Rules - React to created, updated and deleted mentions. \n Views - Display a list of all mentions, mentions by user, and more. \n \n \n \n Recommended Modules \n \n Libraries API \n Token \n Views \n \n Usage/Configuration \n Once installed, the Mentions filter needs to be enabled on your desired Text formats, this can be done via the Text formats page.\n\n \n /admin/config/content/formats \n \n Customisation settings for input and output patterns are available via the Mentions configuration form:\n\n \n /admin/config/content/mentions \n Back to top",
+  "maintenance_status": "Seeking co-maintainer(s)",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "covered",
+  "project_created": "2009-07-16",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

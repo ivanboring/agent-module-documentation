@@ -33,5 +33,13 @@
     "performance",
     "monitoring",
     "lcp"
-  ]
+  ],
+  "project_description": "Real-user Core Web Vitals for Drupal.\n\n Captures LCP, CLS, INP, FCP, and TTFB from real visitor browsers using the standard web-vitals JS. Stores them in two tables: cwv_beacons for real-user data, cwv_probes for cron-driven synthetic observations. Renders correlation panels at /admin/reports/cwv that join each metric to backend signals.\n\n What you can answer out of the box:\n\n \n Does Drupal's page cache hit rate predict LCP on this route? \n Are slow INP outliers concentrated on logged-in pages? \n Did the count of \"poor\" beacons shift after the deploy on Tuesday? \n Which routes have the worst p75 TTFB? \n \n No third-party service. No JS calls to external endpoints. Data stays in your database.\n\n Privacy and hardening. Capture is off after install. Sampling defaults to 0.1. Per-IP flood protection and a configurable table-size guard defend the endpoint. Three URL-storage policies (hash, path-only, full) cover the GDPR / CCPA exposure the site can tolerate. Outlier filtering is on by default for new installs and drops obvious non-RUM noise (backgrounded-tab artefacts, broken-page beacons) before storage. SECURITY.md and PERFORMANCE.md in the repo cover the full posture and sizing tables.\n\n Built as a substrate. A frozen, security-advisory-covered collector contract with four shapes (synchronous, async-decoration, probe, panel-contribution) lets sibling modules add their own context fields and report panels via a single tagged service. Built-in collectors ship the Drupal cache state, render-tree size, backend cache hit/miss, database query count, OPcache and APCu runtime health, edge-cache state across the major CDN vendors, and upstream / CDN request-ID correlation.\n\n Roadmap in ROADMAP.md . Contract design in docs/collector-contract.md .",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2026-04-26",
+  "project_changed": "2026-08-13",
+  "core_semver_minimum": 10003000,
+  "core_semver_maximum": 12000000
 }

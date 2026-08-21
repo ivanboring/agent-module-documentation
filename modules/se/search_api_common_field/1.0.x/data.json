@@ -42,5 +42,13 @@
     "aggregated fields",
     "index field",
     "facets"
-  ]
+  ],
+  "project_description": "This module allows defining fields on Search API index which merge matching properties on multiple datasources. \n\n For example, if two datasources on an index have an identically-named date field, this module allows a single field which provides a value for items from either datasource. This means that items from both datasources can use the same field for indexing, filtering, sorting, and display. This simplifies the building of components such as facets and views. \n\n Post-Installation \n \n At the Fields page for your search index, click 'Add fields' \n Select 'Common field' \n Select which common property to use. \n \n Additional Requirements \n \n Search API \n Back to top",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Maintenance fixes only",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2024-06-07",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

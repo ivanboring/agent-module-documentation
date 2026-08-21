@@ -36,5 +36,13 @@
     "terms",
     "access",
     "security"
-  ]
+  ],
+  "project_description": "Drupal core allows site builders and administrators to assign granular permissions to create, edit, and delete terms, but does not natively allow for any granular control over viewing or referencing unpublished terms. When combined with the Inline Entity Form module this becomes more apparent as it becomes possible for a user to create an unpublished term to be referenced from a parent entity.\n\n This module extends the Access Control and Term Entity Reference Select logic to implicitly grant the ability to view and reference unpublished terms in a vocabulary to any user who has create, edit, or delete permissions for terms in that vocabulary, adding flexibility to the content creation process.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2025-05-17",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }

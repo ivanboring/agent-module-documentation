@@ -1,7 +1,7 @@
 {
   "name": "Expose UUID",
   "data_name": "expose_uuid",
-  "description": "Adds a UUID field to entity edit forms, gated by the 'edit uuid' permission (which also allows CHANGING the UUID). Changing an entity's UUID can break references/integrations \u2014 restrict the permission to trusted admins.",
+  "description": "Adds a UUID field to entity edit forms, gated by the 'edit uuid' permission (which also allows CHANGING the UUID). Changing an entity's UUID can break references/integrations — restrict the permission to trusted admins.",
   "version": "8.x-1.x",
   "package": "Admin",
   "composer_namespace": "drupal/expose_uuid",
@@ -33,5 +33,13 @@
     "entity",
     "admin",
     "identifier"
-  ]
+  ],
+  "project_description": "Drupal 8 comes with the Configuration Manager module. When you export configuration it exports references to placed custom blocks, but not the blocks themselves (which results in 'missing blocks'). You have to manually create them in the environments you are syncing it to, but then they get a different UUID. With this module you can make the UUID of these blocks the same through the admin interface.",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2016-08-02",
+  "project_changed": "2026-08-11",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12000000
 }

@@ -36,5 +36,13 @@
     "registration",
     "spam",
     "rules"
-  ]
+  ],
+  "project_description": "This module blocks users from registering or logging in basing on the entered username or email, or on the IP address used to connect, making it useful for fighting spam accounts.\n\n This module is a drop-in replacement (with some enhancements) for the access rules functionality which was removed from Drupal 7 .\n\n The Drupal 8 version implements plugins to allow custom user restrictions to be created above and beyond the name, email, and IP plugins included.\n\n Alternatives \n \n If the intention is only allowing or restricting account registration basing on the domain used by email addresses, there is the Restrict Domain Registration module \n To validate email addresses using advanced, configurable rules, there is the Advanced Email Validation module, which also allows to verify the domain used by email addressed exists and has MX records configured \n The Disposable Email Address Blocker module protects Drupal form email fields by disallowing email addresses from a custom blacklist of disposable email address domains",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2008-06-02",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 12999999
 }

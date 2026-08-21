@@ -38,5 +38,13 @@
     "rest",
     "headless",
     "api"
-  ]
+  ],
+  "project_description": "The Address decoupled module is an API expose for the Address module.\n\n The module consists of a service that connects to the address services for building an address format via API, validating any address, listing all the available countries, and saving an address to any entity.\n\n The module has several API endpoints that work with the address logic. As a note, there is no support yet for the zone or country field types, but only for the address because it's a common usage in most of the cases.\n\n Features \n There are 5 rest resources for:\n\n \n Listing all the countries or those filtered by the country codes \n Getting the country data like subdivisions, fields (required, optional), postal code pattern, etc. to build the address format form via decoupled \n The address validation \n Address save for a particular entity into a particular field \n Get the commerce store supported countries information \n \n Post-Installation \n Once the module gets installed make sure to configure the user permissions for the corresponding user roles to access the new REST resources from this module. The permissions can be found under the RESTful Web Services . Here are the permissions:\n\n \n Access GET on Address decoupled - Countries list resource \n Access GET on Address decoupled - Country data resource \n Access GET on Address decoupled - Validate address resource \n Access POST on Address decoupled - Save address resource \n Access GET on Address decoupled - Store Supported Countries resource \n \n Additional Requirements \n The module requires the module Address and the core module Rest .\n\n Community Documentation \n The usage documentation can be found here .\n\n Back to top",
+  "maintenance_status": "Actively maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "covered",
+  "project_created": "2023-11-16",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 9000000,
+  "core_semver_maximum": 12000000
 }

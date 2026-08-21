@@ -36,5 +36,13 @@
     "express",
     "order",
     "rule"
-  ]
+  ],
+  "project_description": "This module allows users to skip the cart for certain product types, creating an order without any additional actions. This is useful e.g. if you have some free products for registration purposes and want users to quickly sign up.\n\n This alters the add to cart form for the product variation, replacing the standard add to cart submit behaviour for any product variations that any cart skip rules apply to.\n\n You can currently set this up based on any or all of:\n\n \n Product type \n Product variation type \n Product variation price \n Whether user is currently authenticated \n \n For each rule, you can define what order and order item is created, and you can set the UI text shown to the user in the buttons, terms and conditions link, success message, etc.\n\n Commerce cart skip rules are config entities so will become part of the site's configuration.\n\n To set up \n - Go to /admin/commerce/config/products/commerce_cart_skip\n\n- Create a rule and define the conditions\n\n- Go to a product with a variation matching those rules and test",
+  "maintenance_status": "Minimally maintained",
+  "development_status": "Under active development",
+  "security_advisory_coverage": "not-covered",
+  "project_created": "2021-06-25",
+  "project_changed": "2026-08-18",
+  "core_semver_minimum": 8000000,
+  "core_semver_maximum": 11000000
 }
