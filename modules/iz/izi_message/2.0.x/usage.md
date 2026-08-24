@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Izi Message restyles Drupal's status messages as light, responsive notification panels, replacing the block of text that core renders at the top of the page.
+Izi Message replaces Drupal's in-page status/warning/error message block with iziToast pop-up toasts, so a save confirmation or validation notice appears as a light, animated notification instead of a strip of text at the top of the page.
 
 ---
 
-Drupal renders messages wherever the theme places the status-messages region, which on a long form means a confirmation appears above the fold while the user is looking at the bottom of the page — the same problem `toastr` addressed in wave 66, approached with a different library and a lighter footprint. The module is small: a settings form at `/admin/config/development/izi_message/settings` under `administer site configuration`, a stylesheet, `src/Utility` helpers and `config/install` defaults, with no dependencies beyond core and a range of `^9.3 || ^10 || ^11`. The considerations are the same as for any transient-message treatment, and they are accessibility rather than aesthetics: a message that appears and disappears must be in an appropriate ARIA live region to reach a screen reader, the timeout must be long enough to read, and **error and validation messages should not auto-dismiss at all** — those are the ones a user needs to re-read while correcting a form. A common and sensible compromise is to apply the treatment to the admin theme only, so editors get the improved confirmation experience while front-end validation messages keep core's persistent behaviour.
+The module overrides core's `status_messages` render element (via `hook_element_info_alter`), pulls whatever the messenger is holding, and re-renders it into hidden markers that a small JS behavior feeds to the third-party iziToast library as toasts. A single settings form at `/admin/config/development/izi_message/settings` (permission `administer site configuration`) writes one config object, `izi_message.settings`, whose keys are iziToast options — position, timeout, theme, max width, font sizes, drag/close behaviour, progress bar, overlay, and open/close animations (including separate mobile transitions) — and `hook_preprocess_page` exposes that config to the browser as `drupalSettings.iziMessage`. It has no module dependencies and a core range of `^9.3 || ^10 || ^11`, but it does need the iziToast v1.4.0 library unpacked at `/libraries/iziToast/`; until that file exists, `hook_requirements` blocks the module with a "Library not detected" error. The considerations are accessibility rather than aesthetics: a transient toast must land in an appropriate ARIA live region to reach a screen reader, the timeout must be long enough to read, and error/validation messages ideally should not auto-dismiss — those are exactly the ones a user re-reads while correcting a form (set `timeout` to `0` for no auto-close). A common, sensible scoping is to apply the treatment to the admin theme only so editors get improved confirmations while front-end validation keeps core's persistent behaviour.
 
 ---
 
-- Show status messages as light notifications.
-- Confirm a save without scrolling up.
-- Improve feedback on long forms.
-- Give an application-style message experience.
-- Configure message position and timeout.
-- Keep errors visible until dismissed.
-- Reduce layout shift from message blocks.
-- Style messages to match a theme.
-- Improve editor feedback after saving.
-- Show AJAX operation results clearly.
+- Show status messages as light iziToast notifications.
+- Confirm a save without scrolling back to the top of the page.
+- Improve feedback on long forms where the message region is off-screen.
+- Give an application-style, non-blocking message experience.
+- Configure toast position (top/bottom, left/right/center).
+- Set how long a toast stays before auto-closing (`timeout`).
+- Keep messages visible until dismissed (`timeout` = 0).
+- Choose a light or dark toast theme.
+- Set title and message font sizes.
+- Cap toast width with `maxWidth`.
+- Enable drag-to-dismiss and a close ("x") button.
+- Show a timeout progress bar on each toast.
+- Pause or reset the timeout while the pointer is over a toast.
+- Pick open/close animations, with separate mobile transitions.
+- Show a page overlay behind toasts and optionally close on overlay click.
+- Support right-to-left layouts.
+- Reduce layout shift caused by core's message block.
 - Apply the treatment to the admin theme only.
-- Reduce visual weight of confirmations.
-- Improve a dashboard's feedback.
-- Show queued messages after a redirect.
-- Provide non-blocking notifications.
-- Match a modern admin interface.
-- Improve mobile message display.
+- Show queued messages after a redirect as toasts.
 - Support a site still on Drupal 9.3.

@@ -1,7 +1,7 @@
 {
   "name": "External Links Filter",
   "data_name": "elf",
-  "description": "A text-format filter that adds a CSS class to external and mailto links, with an optional HMAC-signed redirect.",
+  "description": "A text-format filter that adds CSS classes to external and mailto links, with optional rel tokens, new-tab, an accessible label, and an internal redirect for external links.",
   "version": "1.x",
   "package": "Filters",
   "composer_namespace": "drupal/elf",
@@ -9,8 +9,8 @@
   "dependent_modules": [
     "drupal:editor"
   ],
-  "configure": "elf.settings",
-  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "configure": "elf.admin_settings",
+  "core_version_requirement": "^8 || ^9 || ^10",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/elf",
@@ -24,18 +24,18 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Content authoring"
+    "Content editing experience"
   ],
   "subcategories": [
-    "Text filters"
+    "Text format filters"
   ],
   "keywords": [
     "external links",
     "filter",
     "mailto",
     "css class",
-    "redirect",
-    "hmac"
+    "nofollow",
+    "redirect"
   ],
   "project_description": "External Links Filter (ELF) is an input filter that adds small icons to external and mailto links, informing users the link will take them to a new site or open their email client. It also includes the ability of adding \"rel=nofollow\" to links as well. Wikipedia is a well-known example of this technique.",
   "maintenance_status": "Minimally maintained",
@@ -44,5 +44,5 @@
   "project_created": "2008-01-27",
   "project_changed": "2026-08-18",
   "core_semver_minimum": 8000000,
-  "core_semver_maximum": 12000000
+  "core_semver_maximum": 11000000
 }

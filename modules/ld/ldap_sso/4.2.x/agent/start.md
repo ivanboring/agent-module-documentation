@@ -1,24 +1,33 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # LDAP SSO (ldap_sso) — agent index
 
-Automatic login from an upstream authenticator (Kerberos/NTLM at the web server), resolved
-against LDAP. Depends on `ldap_servers` and `ldap_authentication` (composer `drupal/ldap ^4.4`).
-Core requirement `^10.3 || ^11`.
+Logs a Drupal user in from an identity the web server has already authenticated (Kerberos/NTLM
+via `mod_auth_sspi`/`mod_auth_kerb`), resolved against LDAP — no Drupal login form. The identity is
+read from a `$_SERVER` variable (default `REMOTE_USER`) that the web server sets, then handed to
+`ldap_authentication` to resolve/provision the matching account and finalize the session.
 
-| Route | Path | Requirements |
-|---|---|---|
-| `ldap_sso.login_controller` | `/user/login/sso` | **`_custom_access`** (`LoginController::access`), `no_cache: TRUE` |
+Depends on `ldap:ldap_servers` and `ldap:ldap_authentication` (composer `drupal/ldap ^4.4`).
+Core `^10.3 || ^11`. Configure route: `ldap_sso.admin_form` (`/admin/config/people/ldap/sso`).
+No permissions, no Drush, no plugin types of its own. Provides config schema for `ldap_sso.settings`.
 
-Both are correct: whether SSO applies is a configuration/request question rather than a
-permission, and anything establishing a session must not be cached.
+- **Configure SSO (which server variable, seamless mode, excluded paths/hosts, logout redirect)** →
+  [configure/settings.md](configure/settings.md)
+- **How SSO actually runs (event subscriber, `/user/login/sso` route, cookies, logout)** →
+  [events/sso.md](events/sso.md)
 
 Key facts:
-- **The trust boundary is the web server, not Drupal.** The server authenticates and passes the
-  identity in a server variable; Drupal trusts it. Consequences to state in any review:
-  - if a **proxy passes through a client-supplied header** that the module reads, authentication
-    is spoofable — the server configuration is part of the security boundary;
-  - confirm which variable is read and that it cannot be influenced by the client;
-  - keep a non-SSO login path available for accounts that are not in the directory.
-- Account provisioning and role mapping belong to `ldap_authentication` / `ldap_user`, not here.
-- Distinguish from `drupalauth4ssp` (wave 57), where Drupal is the *identity provider* for
-  SimpleSAMLphp; here Drupal is the *consumer* of an upstream authentication.
+- Config object **`ldap_sso.settings`**; keys: `seamlessLogin` (bool), `ssoVariable` (string, default
+  `REMOTE_USER`), `ssoSplitUserRealm`, `ssoRemoteUserStripDomainName`, `cookieExpire`,
+  `ssoExcludedPaths` (seq), `ssoExcludedHosts` (seq), `redirectOnLogout`, `logoutRedirectPath`
+  (default `/user/login`), `enableLoginConfirmationMessage`.
+- Routes: **`ldap_sso.login_controller`** → `/user/login/sso` (`_custom_access`
+  `LoginController::access` — anonymous only; `no_cache: TRUE`); **`ldap_sso.admin_form`** →
+  `/admin/config/people/ldap/sso` (`_permission: 'administer site configuration'`).
+- Services: **`ldap_sso.boot`** (`LdapSsoBootSubscriber`, event_subscriber on
+  `KernelEvents::REQUEST` priority 30), **`ldap_sso.server_variable`** (`ServerVariableLookup`,
+  reads `$_SERVER[ssoVariable]`), `logger.channel.ldap_sso`.
+- Login is finalized in `LoginController::login` via `user_login_finalize()` only after
+  `ldap_authentication`'s `ldap_authentication.login_validator_sso` (`LoginValidatorSso`) returns a
+  Drupal user.
+- Runtime cookies: `sso_stop` (opt this browser out until it expires), `sso_login_running`
+  (in-flight guard against a redirect loop).

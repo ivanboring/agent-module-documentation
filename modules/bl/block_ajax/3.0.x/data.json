@@ -1,14 +1,20 @@
 {
-  "name": "Block Ajax",
+  "name": "Ajax Block",
   "data_name": "block_ajax",
-  "description": "Load and refresh blocks over AJAX, with optional entity context.",
+  "description": "Adds a per-block \"Load block via Ajax\" third-party setting; flagged blocks render a placeholder and fetch their markup from a custom route after page load.",
   "version": "3.0.x",
   "package": null,
   "composer_namespace": "drupal/block_ajax",
-  "composer_requirements": {},
-  "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^10 || ^11",
+  "composer_requirements": {
+    "drupal/core": "^10.3 || ^11",
+    "drupal/token": "^1"
+  },
+  "dependent_modules": [
+    "block",
+    "token"
+  ],
+  "configure": "block.admin_display",
+  "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/block_ajax",
@@ -17,17 +23,18 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Performance",
-    "Content display"
+    "Content display",
+    "Performance"
   ],
   "subcategories": [
     "Block enhancements",
-    "Lazy loading"
+    "Lazy loading",
+    "Block-level cache control"
   ],
   "keywords": [
     "block",

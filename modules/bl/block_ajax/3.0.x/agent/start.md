@@ -1,37 +1,32 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-# Block Ajax (block_ajax) — agent index
+# Ajax Block (block_ajax) — agent index
 
-Loads blocks over AJAX after page render. Routes `/block/ajax/{block_id}` plus node, taxonomy-term
-and user context variants, all `_permission: 'access content'` and `no_cache: TRUE`.
-Core requirement `^10 || ^11`.
+Adds a "Load block via Ajax" option to every block's config form (a `block_ajax` third-party
+setting under `settings`). A flagged block renders a small placeholder in its region; client JS
+then fetches the block's real markup from a custom route and swaps it in after page load — useful
+for personalised/expensive blocks that would otherwise make the whole page uncacheable.
 
-> ## Do not expose 3.0.1 — two access failures, both exploited
->
-> **1. Entity-context routes have no entity access check.** `loadBlockNodeContext()` passes the
-> route's `{node}` straight into `$this->token->replace($renderedBlock, ['node' => $node])`.
-> An anonymous request returned an **unpublished** node's title
-> (`$node->access('view', anonymous)` verified FALSE):
->
-> ```
-> $ curl "http://web/block/ajax/tokenprobe/node/4?plugin_id=block_content:…"
-> {"content":"… LEAK-START CONFIDENTIAL-UNPUBLISHED-TITLE LEAK-END …"}
-> ```
->
-> Any node token resolves the same way — `[node:body]`, `[node:field_*]`, `[node:author]`. The
-> term and user routes share the pattern; **`[user:mail]` is a token**.
->
-> **2. Block visibility is bypassed on the config-entity path.** `getBlockInstance()` checks
-> `$block_plugin->access()` on the *plugin* branch only; when the id resolves to a block config
-> entity it calls `blockViewBuilder->build()` with no `$block->access()`. A block restricted to
-> authenticated users (`Block::access('view')` verified FALSE for anonymous) rendered in full to an
-> anonymous request.
->
-> Also unfixed: block configuration comes from `$request->get('config')` with no key allow-list,
-> and `filterConfiguration()` discards the return value of its recursive call so nested values are
-> never `Xss::filter()`ed. Full transcripts in the local `security.md`.
+- Dependencies: `block` (core), `token` (contrib). Core: `^10.3 || ^11`.
+- Configure: no dedicated settings page — options live per block on the block config form.
+  `configure` points at core's block-layout page (`block.admin_display`), which this module's
+  route subscriber re-routes to its own list controller.
+- Defines 1 permission, 0 drush commands, 0 plugin types, and no config schema/config objects.
 
-Key facts (the pattern, once patched):
-- The idea is sound: one per-user block otherwise makes a whole page uncacheable. Core's
-  **BigPipe** and **`#lazy_builder`** solve the same problem without a public rendering endpoint —
-  prefer them unless there is a specific reason not to.
-- `no_cache: TRUE` on all routes is correct for per-request block rendering.
+Solution docs:
+- **Turn a block into an Ajax block / set its options (max-age, spinner, button, refresh, context)** → [configure/ajax-block-settings.md](configure/ajax-block-settings.md)
+- **Understand/consume the AJAX render endpoint (routes, request params, JS)** → [blocks/ajax-endpoint.md](blocks/ajax-endpoint.md)
+- **Call the service / trigger a refresh from PHP or JS** → [api/services.md](api/services.md)
+- **See which hooks it implements (block build/view alters, form override)** → [hooks/hooks.md](hooks/hooks.md)
+- **The gatekeeping permission** → [permissions/permissions.md](permissions/permissions.md)
+
+Key facts (real machine names):
+- Third-party setting namespace: block config `settings['block_ajax']` with keys `is_ajax`,
+  `max_age`, `show_spinner`, `placeholder`, `load_button`, `load_button_text`, `refresh_block`,
+  `refresh_interval`, `context['context_type']`, `ajax_defaults['method'|'timeout'|'others']`.
+- Routes: `block_ajax.ajax_block` (`/block/ajax/{block_id}`) plus node / taxonomy-term / user
+  context variants; all `_permission: 'access content'`, `no_cache: TRUE`.
+- Services: `block_ajax.ajax_blocks` (`AjaxBlocks`), `block_ajax.block_view_builder`
+  (`BlockViewBuilder`), `block_ajax.route_subscriber`.
+- Permission: `administer ajax blocks`.
+- Library: `block_ajax/ajax_blocks`. Theme hook: `block_ajax_block`. Cache tag: `block_ajax`.
+- JS Ajax command / event: `AjaxBlockRefreshCommand` triggers the `RefreshAjaxBlock` DOM event.
