@@ -1,0 +1,6 @@
+# Runtime deps for the MCP server (build + serve). No torch, no onnxruntime.
+# Pin exact versions so the embedding space and protocol stay stable across releases.
+mcp==1.29.0
+sqlite-vec==0.1.9
+model2vec==0.9.0
+numpy>=1.26
