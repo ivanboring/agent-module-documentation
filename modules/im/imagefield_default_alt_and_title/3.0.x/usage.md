@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Imagefield Default Alt And Title fills empty image alt and title attributes from the host entity's title, and can backfill existing content in a batch.
+Imagefield Default Alt And Title fills empty image alt and title attributes with the host entity's label, both as a client-side autofill on the edit form and as a batch backfill over existing content.
 
 ---
 
-Empty alt text is the most common accessibility failure on content-managed sites, and the reason is workflow: an editor adding six images to an article will not write six descriptions. There are two ways to attack that. `auto_alter` (wave 64) generates a description from the image itself using a vision service, which costs money per image and produces a draft describing what is *in* the picture. This module takes the cheaper, cruder route — use the entity's title as a default — which requires no service, no cost and no network call, and produces something contextual rather than descriptive. Both are imperfect, and the honest framing is that a title-derived alt is better than nothing and worse than a written description: it conveys *what the image belongs to* rather than *what it shows*, which for an illustrative photograph accompanying an article is often adequate and for an informational diagram is not. The batch form is the part that earns its place, letting an existing site with thousands of empty alt attributes be filled in one operation rather than image by image. Settings sit at `/admin/config/search/imagefield-default-alt-and-title` under `administer site configuration`, with PHP 8.1+ and core `^10.3 || ^11`.
+Empty alt text is the most common content-management accessibility failure, and the cause is workflow: an editor adding several images to a node will rarely stop to write a description for each. This module attacks that cheaply by defaulting the alt and title attributes to the entity's own label (node title, term name, or Commerce product title). It works two ways that are configured independently. First, on the settings page you pick which bundles get the on-form helper; for those, a small JavaScript behavior prefills any empty image-widget Alt and Title inputs from the Title/Name field and keeps them in sync while the editor types, stepping aside the moment the editor fills an input by hand. Second, an "Update images" batch form lets you select node types, taxonomy vocabularies, or Commerce product types and sweep all existing entities of those bundles, writing the entity label into every image field's empty alt and title without touching values that are already filled. The default is always the label — there is no configurable template and no token replacement — so a title-derived alt conveys what an image belongs to rather than what it depicts; it is a sensible baseline for illustrative photos and for backfilling a legacy library, not a replacement for written descriptions of informational images. The module defines no permissions of its own (both admin pages use "administer site configuration"), ships no config schema, and requires PHP 8.1 and Drupal core ^10.3 || ^11.
 
 ---
 
-- Fill empty alt text from the node title.
-- Backfill alt attributes across existing content.
-- Reduce empty alt attributes site-wide.
-- Improve an accessibility audit score.
-- Provide a default before editors write one.
-- Set the title attribute automatically.
-- Run a batch over a legacy image library.
-- Reduce accessibility remediation effort.
-- Give imported images a default description.
-- Support an accessibility improvement programme.
-- Fill alt text after a migration.
-- Avoid per-image manual entry.
-- Improve image SEO cheaply.
-- Provide a baseline before AI description.
-- Fix images added without alt text.
-- Apply defaults per field.
-- Reduce the count of accessibility errors.
-- Handle a bulk content import.
+- Prefill empty image alt text from the node title as editors type.
+- Prefill the image title attribute from the entity label on the edit form.
+- Enable the autofill only for selected node types.
+- Enable the autofill for taxonomy vocabularies.
+- Enable the autofill for Commerce product types.
+- Backfill alt attributes across all existing nodes of a type.
+- Batch-fill alt and title over a legacy image library.
+- Fill missing alt text after a content migration or import.
+- Reduce the count of empty-alt accessibility errors site-wide.
+- Improve an accessibility audit score with minimal effort.
+- Provide a default alt value before editors write a real one.
+- Avoid per-image manual alt/title entry during bulk content entry.
+- Give imported images a contextual default description.
+- Sweep taxonomy term images to add missing alt/title.
+- Sweep Commerce product images to add missing alt/title.
+- Establish an SEO baseline for image alt and title attributes.
+- Preserve any alt/title an editor already entered while filling the rest.
+- Keep alt and title in sync with the title during initial content creation.
+- Run a one-off cleanup over content created before the module was installed.
+- Provide a baseline before layering an AI image-description tool on top.

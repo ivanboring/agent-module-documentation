@@ -7,7 +7,7 @@
   "composer_namespace": "drupal/wsdata",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "wsdata.settings",
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -28,8 +28,17 @@
   "provides_plugin_types": [
     "WSConnector",
     "WSDecoder",
-    "WSEncoder",
-    "WSReplacement"
+    "WSEncoder"
+  ],
+  "config_entities": [
+    "wsserver",
+    "wscall"
+  ],
+  "services": [
+    "wsdata",
+    "plugin.manager.wsconnector",
+    "plugin.manager.wsencoder",
+    "plugin.manager.wsdecoder"
   ],
   "categories": [
     "Integrations",
@@ -44,6 +53,7 @@
     "api",
     "rest",
     "soap",
+    "graphql",
     "connector",
     "configuration"
   ],

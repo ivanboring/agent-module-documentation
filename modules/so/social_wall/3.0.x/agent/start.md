@@ -1,28 +1,36 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-# Social Wall (social_wall) — agent index
+# Social Wall — agent index
 
-Aggregates posts from several social networks into one wall. `social_network_config` config
-entities at `/admin/config/services/social-wall` (`administer social networks`).
-Core requirement `^8 || ^9 || ^10 || ^11`.
-Libraries: `abraham/twitteroauth ^2`, `pgrimaud/instagram-user-feed ^6||^7`.
+Aggregates the latest posts from one or more social networks into a single "wall" rendered by a
+block. Each network is a `social_network` plugin (Twitter and Instagram ship built in); its
+credentials/options are held on a `social_network_config` config entity, and a block picks which
+networks to show and in what order. Fetched posts are cached (15 min Twitter, 20 min Instagram).
 
-> ## Establish platform viability before anything else
->
-> The code may be fine; the integrations it assumes largely are not available on those terms any
-> more:
-> - **Twitter/X** — the API is now a paid product with no free read tier of the kind a social wall
->   assumes.
-> - **Instagram** — the **Basic Display API**, which `pgrimaud/instagram-user-feed` targeted for a
->   user's own recent posts, has been **shut down**. The replacement is the Graph API, restricted
->   to business and creator accounts.
->
-> Check, per network, whether access is obtainable and at what cost before evaluating anything
-> else. Same caution as `instagram_media` (wave 64) and `video_embed_instagram` (wave 59).
+Depends only on core (`^8 || ^9 || ^10 || ^11`) but the two built-in connectors need external PHP
+libraries: `abraham/twitteroauth ^2` (Twitter) and `pgrimaud/instagram-user-feed ^6||^7` (Instagram),
+pulled in via composer. `configure` route: `entity.social_network_config.collection`
+(`/admin/config/services/social-wall`). Defines one permission, a plugin type, config schema; no Drush.
+
+- **Add/edit a network's credentials & options (config entity, settings form, drush/PHP)** →
+  [configure/social-networks.md](configure/social-networks.md)
+- **The block that renders the wall (choose networks, order, cache)** →
+  [blocks/social-wall-block.md](blocks/social-wall-block.md)
+- **The `social_network` plugin type — write your own connector** →
+  [plugins/social-network.md](plugins/social-network.md)
+- **The permission** → [permissions/permissions.md](permissions/permissions.md)
+- **Theme hooks / templates to override the wall markup** → [theme/templates.md](theme/templates.md)
 
 Key facts:
-- Each network is a **configuration entity**, so credentials land in config — keep API keys and
-  tokens in environment variables per this repo's convention, not in exported YAML.
-- Where the requirement is one platform, a narrower module or the platform's official embed is
-  more durable than an aggregator depending on two libraries.
-- Surface: `src/Entity/`, `src/` services, `social_wall.routing.yml`, `css/social_wall.css`,
-  `config/schema`.
+- Config entity type `social_network_config` (prefix `social_wall.social_network_config`); exported
+  keys `id`, `label`, `widget`. Per-network settings (API keys etc.) live in third-party settings
+  `social_wall.sn_config` on the entity.
+- Routes are all `entity.social_network_config.{collection,add_form,edit_form,delete_form}` under
+  `/admin/config/services/social-wall`, gated by permission `administer social networks`.
+- Plugin type `social_network`: manager service `plugin.manager.social_network`
+  (`Drupal\social_wall\Plugin\SocialNetworkManager`), annotation `@SocialNetwork`, base
+  `SocialNetworkBase`, interface `SocialNetworkInterface`, discovery dir `Plugin/SocialNetwork`,
+  alter hook `social_wall_social_network_info`.
+- Built-in plugins: `twitter_social_network`, `instagram_social_network`.
+- Block plugin id `social_wall_block` (admin label "Social wall block").
+- Theme hooks: `social_wall__block`, `social_network_twitter_block`, `social_network_instagram_block`;
+  CSS library `social_wall/social_wall.styles`.

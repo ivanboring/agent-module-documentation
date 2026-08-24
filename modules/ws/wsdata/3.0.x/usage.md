@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Web Service Data models external web services as **configuration**: a connector, an encoder and a decoder are configured in the admin UI, and the resulting data source can then be used in a block or a field without writing an API client.
+Web Service Data (wsdata) models an external web service as Drupal configuration: you define a server (an endpoint plus a transport connector) and a call (which server, which response decoder and request encoder, plus per-call options), then read the decoded response from PHP, a block, or an entity field — no bespoke API-client module needed.
 
 ---
 
-The recurring shape of an integration is the same each time — call a service, decode the response, pick out some values, render them — and the recurring outcome is a bespoke module per service. WSData abstracts the parts: a **WSConnector** plugin handles the transport (HTTP, SOAP and others), **WSEncoder** and **WSDecoder** plugins handle request and response formats, **WSReplacement** handles token substitution in the request, and the whole thing is stored as a configuration entity so it deploys with the site. The submodules supply the consumption points: **wsdata_field** makes a service a field on an entity, **wsdata_block** renders one as a block, **wsdata_extras** adds further plugins, and **wsdata_example** is the worked example. Configuration lives at `/admin/config/services/wsdata` behind `administer site configuration`, and the core requirement is `^9 || ^10 || ^11`. Two things matter in practice: any credential the service needs is configuration, so it belongs in an environment variable rather than an exported YAML file; and a page rendering a live external call is only as fast and as available as that service, so caching and failure behaviour need to be settled before it goes on a high-traffic page.
+The recurring shape of a web-service integration is always the same — call a service, decode the response, pick out a value, render it — and the usual result is a one-off module per service. WSData splits those parts into swappable plugins and stores the wiring as config. A **WSServer** entity holds the endpoint and a **WSConnector** plugin (Simple HTTP, HTTP-with-language, GraphQL, SOAP, or a local file). A **WSCall** entity points at a server and pairs it with a **WSDecoder** (JSON, XML, string, or a list decoder from `wsdata_extras`) and a **WSEncoder** (JSON or string) for the request body, plus connector options such as the path, HTTP method, headers and a cache TTL. Calls run through the `wsdata` service (`WSDataService::call()`), which fills `[name]` replacements and Drupal tokens into the URL, performs the request, decodes the body, selects a nested value by a colon-delimited key, and caches the result in a dedicated `wsdata` cache bin (GET responses honour the endpoint's `Cache-Control: max-age` or a per-call expiry). Submodules provide the consumption points: `wsdata_block` renders a call as a block, and `wsdata_field` binds a call to a custom-storage entity field so the value is fetched at entity-load time. Everything is admin-configured under *Structure → Web Service Server / Web Service Call* and *Configuration → Web services → WSData settings* (all behind `administer site configuration`), and it exports and deploys with the site like any other config.
 
 ---
 
-- Show data from an external API in a block.
-- Add a web service value as a field.
-- Configure a REST integration without code.
-- Call a SOAP service from Drupal.
-- Decode a JSON or XML response.
-- Substitute tokens into a request.
-- Deploy an integration as configuration.
-- Show live inventory from a supplier.
-- Display exchange rates on a page.
-- Render an external status feed.
-- Reuse one connector across several data sources.
-- Add a new transport as a plugin.
-- Prototype an integration quickly.
-- Show weather or transport data.
-- Keep integration config in version control.
-- Avoid a bespoke module per service.
-- Cache external responses.
-- Support an intranet dashboard.
+- Show data from an external REST API inside a block.
+- Populate an entity field from a web service at load time.
+- Configure a REST integration without writing an API client.
+- Call a SOAP service from Drupal via the SOAP connector.
+- Query a GraphQL endpoint and render selected fields.
+- Read a local JSON/XML file as a data source.
+- Decode a JSON response and pick a nested value by key path.
+- Decode an XML response into a nested array.
+- Substitute `[name]` replacements and Drupal tokens into a request URL.
+- Swap the current content language into an endpoint URL.
+- Cache external responses in a dedicated cache bin with a TTL.
+- Reuse one server across several calls.
+- Add a new transport by writing a connector plugin.
+- Add a custom response format by writing a decoder plugin.
+- Deploy an integration entirely as exported configuration.
+- Show live inventory, exchange rates, or a status feed on a page.
+- Test a configured call from the admin UI before wiring it up.
+- Expose a web-service value as a Views field.
+- Point an exported integration at a per-environment endpoint via State.
+- Prototype an integration quickly without a bespoke module.

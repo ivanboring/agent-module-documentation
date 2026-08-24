@@ -1,21 +1,24 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Imagefield Default Alt And Title (imagefield_default_alt_and_title) — agent index
 
-Fills empty image **alt** and **title** attributes from the host entity's title, with a **batch**
-form for existing content. PHP >= 8.1. Core requirement `^10.3 || ^11`.
-Settings at `/admin/config/search/imagefield-default-alt-and-title`, plus a batch form at
-`.../batch-page` — both `administer site configuration`.
+Fills empty image **alt** and **title** attributes with the host entity's label (node title,
+term name, product title). Two independent mechanisms: a client-side autofill on the entity
+edit form, and a server-side **batch** backfill for existing content. The default text is
+always the entity label — there is no configurable text and no token replacement.
+
+- No hard module dependencies. Core `^10.3 || ^11`, PHP `>= 8.1`.
+- `configure` route: `imagefield_default_alt_and_title.settings` → `/admin/config/search/imagefield-default-alt-and-title` (`administer site configuration`).
+- No permissions defined (both routes use core `administer site configuration`); no drush; no plugins; no config schema.
+
+Solutions:
+- **Turn on the edit-form autofill for chosen bundles** → [configure/settings.md](configure/settings.md)
+- **Backfill alt/title on existing content in bulk** → [configure/batch.md](configure/batch.md)
 
 Key facts:
-- **The batch is what earns its place**: an existing site with thousands of empty alt attributes
-  can be filled in one operation (`src/ImagefieldDefaultAltAndTitleBatch.php`).
-- **Be honest about quality when recommending it.** A title-derived alt says *what the image
-  belongs to*, not *what it shows*. For an illustrative photo accompanying an article that is often
-  adequate; for an informational diagram or chart it is not, and a decorative image should have
-  **empty** alt rather than a title.
-- Compare `auto_alter` (wave 64): that generates a description from the image via a vision service
-  — better output, per-image cost, and the image leaves the site. This is free, offline and cruder.
-  A site doing accessibility work seriously will want written alt text for meaningful images and
-  can use either of these for the long tail.
-- The `title` attribute is not a substitute for `alt` and is not reliably announced by assistive
-  technology — setting it is an SEO/tooltip nicety, not an accessibility fix.
+- Config object `imagefield_default_alt_and_title.settings`, single key `imagefield_default_alt_and_title_entity_types` (array of bundle machine names that get the edit-form JS).
+- Settings route/form: `imagefield_default_alt_and_title.settings`, class `ImagefieldDefaultAltAndTitleForm`, form id `imagefield_default_alt_and_title`.
+- Batch route/form: `imagefield_default_alt_and_title.batch` → `.../batch-page`, class `ImagefieldDefaultAltAndTitleBatchForm`, form id `imagefield-alt-title-batch`.
+- Batch processor: `Drupal\imagefield_default_alt_and_title\ImagefieldDefaultAltAndTitleBatch::processBatch()` / `::finished()`.
+- JS library `imagefield_default_alt_and_title/image-data` (`js/imagefield_default_alt_and_title.js`, behavior `initImgAltTitle`), attached by `hook_form_alter`.
+- Supported entity types (bundles offered): `node_type`, `taxonomy_vocabulary`, `commerce_product_type`.
+- `hook_uninstall` deletes the settings config; `hook_help` renders `README.txt`.

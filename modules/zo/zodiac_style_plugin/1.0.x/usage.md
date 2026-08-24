@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Zodiac Style Plugin adds a Views style built on the Zodiac layout library, using Drupal's **breakpoint** system so a listing's grid responds to the theme's declared breakpoints rather than to hard-coded widths.
+Zodiac Style Plugin adds a single Views style, **Zodiac**, that renders a view's results as a carousel/slider built on the bundled `@librarymarket/zodiac` JavaScript library, with slider options that can be tuned globally and overridden per Drupal **breakpoint**.
 
 ---
 
-Views' own grid style takes a column count and applies it everywhere, which means a four-column grid is four columns on a phone unless the theme fixes it in CSS — and that fix lives in the theme, disconnected from the view. This plugin takes the breakpoint route instead: `src/Plugin` supplies the Views style, `config/schema` its settings, and the dependency on core `breakpoint` means the responsive behaviour comes from the breakpoints the theme already declares, so a listing and the rest of the site change shape at the same widths. Requirements are PHP 8.1+, core `breakpoint` and `views`, with the info file declaring `^10.1 || ^11` and composer `^10.3 || ^11` — the info file is what Drupal enforces. One thing to notice when reviewing the release: it ships a **`node_modules/` directory** in the tarball, which is unusual — it means unreviewed npm packages land in the web root, it inflates the deployed footprint, and it is worth excluding at deploy time.
+Pick the Zodiac style on any view (with a row style such as fields) and its rows become slides in a horizontal carousel with previous/next buttons, autoplay, infinite scrolling, an accessible live region, and configurable spacing, items-per-view, and animation timing. Everything is set from the Views UI — there is no settings page, route, or permission of its own; the style plugin `Drupal\zodiac_style_plugin\Plugin\views\style\Zodiac` stores its options inside the view, attaches the `zodiac_style_plugin/behavior` library, and passes a per-instance settings object to the JS under `drupalSettings.zodiac`. The distinctive part is breakpoint integration: choosing a core breakpoint group exposes per-breakpoint overrides, and at render time each breakpoint's media-query string becomes a `mediaQueryOptions` entry, so the slider adapts at the same widths the theme already declares rather than at hard-coded ones. Requirements are PHP 8.1+, core `breakpoint` and `views`; the info file declares `^10.1 || ^11` (the info file is what Drupal enforces; composer says `^10.3 || ^11`). The library's own assets ship under `node_modules/@librarymarket/zodiac/dist/` and are referenced directly from the library definition, so that directory must remain deployed alongside the module.
 
 ---
 
-- Render a view as a responsive grid.
-- Tie a listing's columns to theme breakpoints.
-- Avoid hard-coded column counts.
-- Build a card grid from a view.
-- Keep listing and page breakpoints aligned.
-- Show a gallery grid that adapts.
-- Configure columns per breakpoint.
-- Replace Views' fixed grid style.
-- Build a product listing grid.
-- Support a responsive design system.
-- Show search results in a grid.
-- Adapt a team listing to screen width.
-- Reduce theme CSS for listings.
-- Reuse breakpoints already declared.
-- Build a news grid.
-- Support a mobile-first layout.
-- Configure the style from the Views UI.
-- Improve listing layout on tablets.
+- Turn a view of nodes into an autoplaying carousel.
+- Build a featured-content slider from a view.
+- Show a rotating hero/banner of promoted items.
+- Display a product carousel with several items per view.
+- Create an image or media gallery slider.
+- Add previous/next navigation to a listing.
+- Present testimonials as a rotating slider.
+- Show related content as a horizontal carousel.
+- Adjust items-per-view per breakpoint for mobile vs desktop.
+- Slow or speed up the slide transition animation.
+- Enable infinite (looping) scrolling on a carousel.
+- Pause autoplay when a visitor hovers the slider.
+- Announce the active slide to screen readers via a live region.
+- Set the gap between slides in pixels.
+- Tie slider responsiveness to the theme's breakpoints.
+- Disable autoplay on small screens only.
+- Build a logo or partner carousel.
+- Show recent posts as a swipeable slider.
+- Create a news highlights carousel.
+- Configure the whole slider from the Views UI without code.

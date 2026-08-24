@@ -1,27 +1,33 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Social Wall aggregates posts from several social networks into one combined feed on the site — the "social wall" pattern used on campaign and event pages.
+Social Wall aggregates the latest posts from one or more social networks into a single combined "wall" rendered by a Drupal block — the pattern used on campaign, event, and community pages.
 
 ---
 
-The module models each network as a `social_network_config` configuration entity managed at `/admin/config/services/social-wall` behind `administer social networks`, so credentials and settings per network are configuration and several networks combine into one display. The implementation depends on two PHP libraries — `abraham/twitteroauth ^2` for Twitter/X and `pgrimaud/instagram-user-feed ^6||^7` for Instagram — and that is where the difficulty lies, because both platforms have changed fundamentally since this approach was designed. Twitter's API is now a paid product with no free read tier of the kind a social wall assumes, and Instagram's Basic Display API — the route these libraries used for a user's own recent posts — has been shut down, with the replacements restricted to business and creator accounts through the Graph API. So the code may be sound while the integrations it depends on are not available on the terms the module assumes. Anyone considering it should establish, per network, whether current API access is obtainable and at what cost, before weighing anything else. Where the requirement is a single platform, a narrower module or an official embed is usually the more durable answer.
+Each network you want to show is modelled as a `social_network_config` configuration entity managed at `/admin/config/services/social-wall` behind the `administer social networks` permission; the entity records which connector plugin to use and holds that plugin's settings (account, API credentials, number of posts, text-length cap) as third-party settings. Connectors are `social_network` plugins — Twitter (`twitter_social_network`, via `abraham/twitteroauth`) and Instagram (`instagram_social_network`, via `pgrimaud/instagram-user-feed`) ship built in, and developers can add their own by extending `SocialNetworkBase`. The single "Social wall block" then lets an editor tick which configured networks to display and drag them into order; at render time each connector fetches its recent posts (results cached ~15 min for Twitter, ~20 min for Instagram to stay under API quotas), and the block themes them into one list. The real-world catch is external API access: Twitter's read API is now a paid product and Instagram's per-user feed access has been heavily restricted since these libraries were designed, so before adopting the module confirm, per network, that you can still obtain the API access the connector assumes.
 
 ---
 
-- Show posts from several networks in one feed.
+- Show posts from several networks in one combined feed.
 - Build a campaign page's social wall.
-- Display an event hashtag stream.
-- Aggregate brand social content.
-- Configure each network separately.
+- Display an event or conference activity stream.
+- Aggregate brand social content on a marketing site.
+- Configure each network separately as its own entity.
+- Show a Twitter/X user timeline in a block.
+- Show an Instagram account's recent media in a block.
+- Combine Twitter and Instagram posts in one wall.
+- Choose which configured networks a given block displays.
+- Reorder networks on the wall by drag-and-drop weight.
+- Cap post text length before truncation per network.
+- Limit the number of posts pulled per network.
+- Cache remote posts to avoid hitting API rate limits.
+- Fall back to the last cached posts when an API call fails.
+- Add a custom connector for another social network (developer).
+- Restrict network configuration to trusted admins by permission.
+- Manage per-network API credentials as configuration.
+- Override the wall markup with a theme template.
+- Style the wall with the bundled CSS library.
+- Place the wall block via Block Layout or Layout Builder.
 - Show social proof on a landing page.
-- Combine Twitter and Instagram content.
-- Manage network credentials as configuration.
-- Restrict social configuration by permission.
-- Display a conference's social activity.
-- Show community content on a homepage.
-- Keep social content current automatically.
-- Style the wall to match a theme.
-- Show a curated hashtag feed.
-- Drive traffic to social accounts.
 - Provide a social sidebar block.
-- Aggregate content for a marketing site.
-- Refresh the wall on cron.
+- Inline Instagram images as data URIs to sidestep CORS.
+- Log connector errors to the `social_wall` channel for debugging.

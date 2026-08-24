@@ -1,20 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Toastr (toastr) — agent index
 
-Renders Drupal status messages as **toastr.js** toast notifications. Core-only dependencies.
-Core requirement `^9 || ^10 || ^11`.
-Settings at `/admin/config/system/toastr`, permission **`administer toastr`**.
+Integrates the **toastr.js** JavaScript library so Drupal's status/warning/error
+messages render as transient "toast" popups instead of in the page's status-messages
+region. Two hooks do the work: `hook_page_attachments` attaches the JS on every page,
+and `hook_js_settings_alter` pulls the pending messages out of the Messenger
+(`deleteAll()`) and hands them to the browser via `drupalSettings.toastr`. A JS
+behavior (`Drupal.behaviors.toastrMessages` in `js/messages.js`) then calls
+`toastr[type](message)` for each one.
+
+- Dependencies: core only (`core/jquery`, `core/drupalSettings`). No module deps.
+- Core requirement: `^9 || ^10 || ^11`.
+- Configure route: `toastr.settings` → `/admin/config/system/toastr` (permission `administer toastr`).
+- Provides: 1 permission, a config object with schema. No drush, no services, no plugins.
+- The toastr.js library itself is loaded from a **CDN** (cdnjs), not bundled — see theme doc.
+
+Solution docs:
+- **Change position, timeouts, easing and behaviour** → [configure/settings.md](configure/settings.md)
+- **Gate the settings page** → [permissions/permissions.md](permissions/permissions.md)
+- **Understand the library integration and how a message becomes a toast** → [theme/messages.md](theme/messages.md)
 
 Key facts:
-- **Accessibility is the thing to get right**, and it is easy to get wrong:
-  - a toast must be in an appropriate **ARIA live region** to reach a screen reader;
-  - the timeout must be long enough to read — a three-second dismissal excludes anyone reading
-    slowly or using assistive technology;
-  - **error and validation messages should not auto-dismiss at all**, and are generally better
-    left in the page where they persist and can be re-read.
-- The library is not bundled — check the status report if messages render normally rather than as
-  toasts.
-- Surface: `src/Form/ToastrSettingsForm.php`, `toastr.libraries.yml`, `config/install`,
-  `config/schema`. No `src/Plugin`.
-- Consider scope: applying it to the **admin theme only** gives the editorial benefit without
-  changing how front-end validation errors behave for visitors.
+- Config object: `toastr.settings` (16 keys, all `toastr_*`; defaults also live in
+  `ToastrSettingsForm::defaultSettings()`).
+- Route: `toastr.settings`; form: `\Drupal\toastr\Form\ToastrSettingsForm` (id `toastr_settings`).
+- Permission: `administer toastr`.
+- Libraries: `toastr/core` (the toastr.js CDN asset + jQuery) and `toastr/messages` (js/messages.js).
+- Hooks: `toastr_page_attachments()`, `toastr_js_settings_alter()` in `toastr.module`.
+- drupalSettings contract: `drupalSettings.toastr.messages` (keyed by type) and
+  `drupalSettings.toastr.settings` (the `toastr_*` values).
