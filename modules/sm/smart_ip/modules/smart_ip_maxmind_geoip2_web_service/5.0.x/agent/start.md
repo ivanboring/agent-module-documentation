@@ -1,27 +1,28 @@
 # Smart IP MaxMind GeoIP2 Precision web service (smart_ip_maxmind_geoip2_web_service) — agent index
 
-A **Smart IP data source**: geolocation via MaxMind's hosted **GeoIP2 Precision** web service.
-Depends on `smart_ip`. No admin page of its own — injects a section into Smart IP's settings form
-(`/admin/config/people/smart_ip`).
+A **Smart IP data source**: geolocation via MaxMind's hosted **GeoIP2 Precision** web service
+(a per-lookup HTTPS API call — no local database, no cron download). It ships no admin page of its
+own (`configure: smart_ip.settings`); it injects a sub-form into Smart IP's settings form via the
+`smart_ip.display_admin_settings` event and becomes active when you set
+`smart_ip.settings:data_source` = **`maxmind_geoip2_web_service`**. Depends on `smart_ip`.
 
-**To activate:** `drush en smart_ip_maxmind_geoip2_web_service -y`, then set
-`smart_ip.settings:data_source` = **`maxmind_geoip2_web_service`**.
+- **Enable it, set the service type + MaxMind credentials, pick it as the active source, and how a
+  lookup is performed** → [configure/settings.md](configure/settings.md)
+- **The Smart IP query API, location keys, session/profile persistence** →
+  `modules/sm/smart_ip/5.0.x/agent/api/location.md`
+- **The data-source (event-subscriber) model shared by all sources** →
+  `modules/sm/smart_ip/5.0.x/agent/extend/data-source.md`
 
 Key facts:
 - `sourceId()` = `maxmind_geoip2_web_service`; `configName()` =
   `smart_ip_maxmind_geoip2_web_service.settings`.
-- Config `smart_ip_maxmind_geoip2_web_service.settings`:
-  - `service_type` — MaxMind Precision endpoint: `country` / `city` / `insights`. Default `city`.
-  - `user_id` — MaxMind account/user id. Default null.
-  - `license_key` — MaxMind license key. Default null.
-- Implemented as `SmartIpEventSubscriber extends SmartIpEventSubscriberBase`; `processQuery()`
-  calls the MaxMind web service (via `WebServiceUtility` + `geoip2/geoip2`) and fills the location.
-  Makes a **per-lookup API call**; no local database, no cron download (no `manualUpdate`/`cronRun`
-  database logic).
-- Query API, location keys, events: see modules/sm/smart_ip/5.0.x/agent/
-  (`api/location.md`, `extend/data-source.md`).
-
-```bash
-drush cset smart_ip_maxmind_geoip2_web_service.settings service_type city -y
-drush cset smart_ip.settings data_source maxmind_geoip2_web_service -y
-```
+- Class `Drupal\smart_ip_maxmind_geoip2_web_service\EventSubscriber\SmartIpEventSubscriber` (extends
+  `SmartIpEventSubscriberBase`); service
+  `smart_ip_maxmind_geoip2_web_service.smart_ip_event_subscriber` tagged `event_subscriber`.
+  No route, no permission, no Drush; `manualUpdate()`/`cronRun()` are intentionally empty.
+- Config `smart_ip_maxmind_geoip2_web_service.settings`: `service_type`
+  (`country`|`city`|`insights`, default `city`), `user_id`, `license_key`.
+- Endpoint: `https://<user_id>:<license_key>@geoip.maxmind.com/geoip/v2.1/<service_type>/<ip>`
+  (base `geoip.maxmind.com/geoip/v2.1`), fetched through Drupal's `http_client` and JSON-decoded.
+- `processQuery()` fills the location keys country, countryCode, region, regionCode, city, zip,
+  latitude, longitude, timeZone, isEuCountry (and originalData).

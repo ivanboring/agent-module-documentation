@@ -1,46 +1,24 @@
 # Quiz - Multichoice — agent index
 
-Adds the **`multichoice`** question type to Quiz (parent:
-[../../../../7.1.x/agent/start.md](../../../../7.1.x/agent/start.md)). Depends on `quiz` and
-`field_group`. No configure route/permissions/Drush; one module setting.
+Adds the **`multichoice`** question type to Quiz: a list of alternatives (each with its own
+correct flag, per-choice score, and per-choice feedback), supporting single- or multiple-answer
+selection and optional shuffling. Parent engine:
+[../../../../7.1.x/agent/start.md](../../../../7.1.x/agent/start.md) (shared `quiz.question`
+plugin contract:
+[../../../../7.1.x/agent/plugins/question-types.md](../../../../7.1.x/agent/plugins/question-types.md)).
+Depends on `quiz` and `field_group`. No configure route, no permissions, no Drush.
 
-## The type
+- **The `multichoice` question type — plugin, response class, fields, scoring** →
+  [plugins/question-type.md](plugins/question-type.md)
+- **The one module setting (`quiz_multichoice.settings:scoring`)** →
+  [configure/settings.md](configure/settings.md)
 
-- Plugin: `MultichoiceQuestion` (`#[QuizQuestion(id: 'multichoice')]`), handler
-  `response => MultichoiceResponse`.
-- Config entity: `quiz.question.type.multichoice` (bundle of `quiz_question`); answer bundle
-  `quiz.result.answer.type.multichoice`.
-- Question fields (on the `multichoice` `quiz_question` bundle):
-  - `alternatives` — entity_reference_revisions to **`multichoice`** paragraphs.
-  - `choice_multi` — boolean: allow more than one answer (checkboxes vs radios).
-  - `choice_boolean` — boolean: simple correct/incorrect scoring.
-  - `choice_random` — boolean: shuffle alternatives each attempt.
-- Each **`multichoice` paragraph** (one alternative) has: `multichoice_answer` (text),
-  `multichoice_correct` (boolean), `multichoice_score_chosen`, `multichoice_score_not_chosen`
-  (integers), `multichoice_feedback_chosen`, `multichoice_feedback_not_chosen` (text).
-- Scoring (`MultichoiceResponse`): sums the chosen/not-chosen scores of the alternatives; the
-  default model comes from `quiz_multichoice.settings:scoring` (`0` or `1`).
-
-## Create one in code
-
-```php
-use Drupal\quiz\Entity\QuizQuestion;
-use Drupal\paragraphs\Entity\Paragraph;
-$a1 = Paragraph::create(['type'=>'multichoice','multichoice_answer'=>'Paris','multichoice_correct'=>1,'multichoice_score_chosen'=>1]);
-$a1->save();
-$a2 = Paragraph::create(['type'=>'multichoice','multichoice_answer'=>'Rome','multichoice_correct'=>0]);
-$a2->save();
-$q = QuizQuestion::create([
-  'type'=>'multichoice','title'=>'Capital of France',
-  'choice_multi'=>0, 'choice_random'=>1, 'choice_boolean'=>1,
-  'alternatives'=>[$a1, $a2],
-]);
-$q->save();
-```
-
-## Read/settings
-
-```bash
-drush cget quiz_multichoice.settings scoring
-drush php:eval '$l=\Drupal::entityTypeManager()->getStorage("quiz_question")->loadByProperties(["type"=>"multichoice","title"=>"Capital of France"]);$q=reset($l);print "choice_multi=".$q->get("choice_multi")->value;'
-```
+Key facts:
+- Plugin: `MultichoiceQuestion` (`#[QuizQuestion(id: 'multichoice')]`), response handler
+  `MultichoiceResponse`. Namespace `Drupal\quiz_multichoice\Plugin\quiz\QuizQuestion`.
+- Config bundles: `quiz.question.type.multichoice`, `quiz.result.answer.type.multichoice`.
+- Alternatives are `multichoice` Paragraphs referenced by the `alternatives` field; toggles
+  `choice_multi`, `choice_boolean`, `choice_random`.
+- JS library `quiz_multichoice/helper` (`js/helper.js`) assists score/correct entry on the
+  question edit form.
+- Config object `quiz_multichoice.settings` (`scoring`, default `0`).

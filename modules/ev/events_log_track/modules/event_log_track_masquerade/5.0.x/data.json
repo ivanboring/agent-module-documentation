@@ -1,9 +1,9 @@
 {
-  "name": "Event Log Track Masquerade",
+  "name": "Events Log Track Masquerade",
   "data_name": "event_log_track_masquerade",
   "description": "Logs user masquerading sessions.",
   "version": "5.0.x",
-  "package": null,
+  "package": "Logging",
   "composer_namespace": "drupal/events_log_track",
   "composer_requirements": {},
   "dependent_modules": [
@@ -22,17 +22,20 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Administration"
+    "Administration tools"
   ],
   "subcategories": [
-    "Logging / audit"
+    "Audit trail / activity logging"
   ],
   "keywords": [
-    "events",
-    "event log track masquerade",
+    "events log track",
+    "masquerade",
+    "unmasquerade",
+    "impersonation",
+    "audit",
     "submodule"
   ],
   "part_of": "events_log_track",

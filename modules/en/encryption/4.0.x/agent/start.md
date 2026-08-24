@@ -1,12 +1,22 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Encryption (encryption) — agent index
 
-Simple symmetric **AES-256-CTR** encrypt/decrypt (openssl), key in **`$settings['encryption_key']`**
-(settings.php). Version **4.0.0**. Core `^10.1 || ^11`.
+Supplies a simple two-way symmetric encrypt/decrypt service using PHP's openssl
+(`AES-256-CTR`). The single key lives in `$settings['encryption_key']` in settings.php
+(a base64-encoded 32-byte value). No module dependencies; needs the `openssl` PHP
+extension. Version 4.0.0, core `^10.1 || ^11`.
 
-**Done right:** key in settings.php (not config/DB/git); **fresh random IV** per op (`random_bytes(16)`)
-prepended to ciphertext; README documents generating a 32-byte key.
+No settings page (no configure route), no permissions, no drush commands, no plugins,
+no config schema. The module is one service plus a reusable trait that other code calls.
 
-**Scope:** protects data at rest against a **DB-only** compromise (leaked dump, SQLi read). Does
-**not** protect against anyone who can read settings.php or run code (they have the key). CTR is a
-confidentiality mode — treat integrity handling as unverified for your use unless checked.
+- **Encrypt/decrypt a value from custom code** → [api/service.md](api/service.md)
+- **Add `encrypt()`/`decrypt()` to your own form/class via the trait** → [api/service.md](api/service.md)
+- **Set the key in settings.php and read the runtime status check** → [configure/key.md](configure/key.md)
+
+Key facts:
+- Service id: `encryption` (class `Drupal\encryption\EncryptionService`, interface `Drupal\encryption\EncryptionServiceInterface`).
+- Trait: `Drupal\encryption\EncryptionTrait` — methods `encrypt()`, `decrypt()`, `getEncryptionKey()`.
+- Settings key: `$settings['encryption_key']` — base64 of exactly 32 raw bytes.
+- Cipher: `AES-256-CTR` via `openssl_encrypt` / `openssl_decrypt`.
+- Runtime check: `hook_requirements()` in `encryption.install` (requirement id `encryption`); state key `encryption.test_value`; reset with `?encryption_reset_test_string=1` on the status report.
+- Composer: `ext-openssl`, `php: ">= 7"`, `drupal/core: ^10.1 || ^11`.

@@ -5,11 +5,13 @@
   "version": "2.0.x",
   "package": "Access control",
   "composer_namespace": "drupal/simplesamlphp_custom_attributes",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/simplesamlphp_auth": "^4.1"
+  },
   "dependent_modules": [
     "drupal:simplesamlphp_auth"
   ],
-  "configure": null,
+  "configure": "simplesamlphp_custom_attributes.list",
   "core_version_requirement": "^10 || ^11.3",
   "active_installs": null,
   "list_position": null,

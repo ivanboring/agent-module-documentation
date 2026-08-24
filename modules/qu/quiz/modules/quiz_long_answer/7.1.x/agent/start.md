@@ -1,37 +1,23 @@
 # Quiz - Long answer — agent index
 
-Adds the **`long_answer`** (essay) question type to Quiz (parent:
-[../../../../7.1.x/agent/start.md](../../../../7.1.x/agent/start.md)). Depends on `quiz`.
-**Manually graded.** No configure route/permissions/Drush; one module setting.
+Adds the **`long_answer`** (essay / multi-paragraph) question type to Quiz. The taker writes a
+free-text response that a **human grades manually** against an optional rubric. Parent engine:
+[../../../../7.1.x/agent/start.md](../../../../7.1.x/agent/start.md) (shared `quiz.question`
+plugin contract:
+[../../../../7.1.x/agent/plugins/question-types.md](../../../../7.1.x/agent/plugins/question-types.md)).
+Depends only on `quiz`. No configure route, no permissions, no Drush.
 
-## The type
+- **The `long_answer` question type — plugin, response class, fields, manual grading** →
+  [plugins/question-type.md](plugins/question-type.md)
+- **The one module setting (`quiz_long_answer.settings:default_max_score`)** →
+  [configure/settings.md](configure/settings.md)
 
-- Plugin: `LongAnswerQuestion` (`#[QuizQuestion(id: 'long_answer')]`), handler
-  `response => LongAnswerResponse`.
-- Config entity: `quiz.question.type.long_answer` (bundle of `quiz_question`); answer bundle
-  `quiz.result.answer.type.long_answer`.
-- Fields on the `long_answer` bundle:
-  - `long_answer_rubric` — text_long: optional grading guidance shown to the evaluator.
-  - `answer_text_processing` — boolean: whether the taker's answer uses a filtered text format.
-- **Grading is manual**: `LongAnswerResponse::score()` calls `setEvaluated(FALSE)`, so the
-  answer goes to Quiz's *unevaluated results* queue until a grader awards points.
-- Max score defaults to `quiz_long_answer.settings:default_max_score` (shipped `10`).
-
-## Create one in code
-
-```php
-use Drupal\quiz\Entity\QuizQuestion;
-$q = QuizQuestion::create([
-  'type' => 'long_answer',
-  'title' => 'Explain photosynthesis',
-  'long_answer_rubric' => 'Award points for mentioning light, water and CO2.',
-]);
-$q->save();
-```
-
-## Read it back / settings
-
-```bash
-drush cget quiz_long_answer.settings default_max_score
-drush php:eval '$l=\Drupal::entityTypeManager()->getStorage("quiz_question")->loadByProperties(["type"=>"long_answer","title"=>"Explain photosynthesis"]);$q=reset($l);print $q->get("long_answer_rubric")->value;'
-```
+Key facts:
+- Plugin: `LongAnswerQuestion` (`#[QuizQuestion(id: 'long_answer')]`), response handler
+  `LongAnswerResponse`. Namespace `Drupal\quiz_long_answer\Plugin\quiz\QuizQuestion`.
+- Config bundles: `quiz.question.type.long_answer`, `quiz.result.answer.type.long_answer`.
+- Question fields: `long_answer_rubric` (`text_long`), `answer_text_processing` (`boolean`).
+  Answer field `long_answer` (`text_long`) on the answer bundle.
+- **Not auto-scored**: `LongAnswerResponse::score()` returns `NULL` and calls
+  `setEvaluated(FALSE)` — answers wait in Quiz's unevaluated-results queue for a grader.
+- Config object `quiz_long_answer.settings` (`default_max_score`, default `10`).

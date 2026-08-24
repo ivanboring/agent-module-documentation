@@ -1,32 +1,31 @@
 # Smart IP MaxMind GeoIP2 binary database (smart_ip_maxmind_geoip2_bin_db) — agent index
 
-A **Smart IP data source**: offline geolocation against a downloaded MaxMind GeoIP2/GeoLite2
-`.mmdb` file (via `geoip2/geoip2`). Depends on `smart_ip`. No admin page of its own — it injects
-a section into Smart IP's settings form (`/admin/config/people/smart_ip`).
+A **Smart IP data source**: offline IP geolocation against a local MaxMind GeoIP2/GeoLite2 `.mmdb`
+binary file. It ships no admin page of its own (`configure: smart_ip.settings`); it injects a
+sub-form into Smart IP's settings form via the `smart_ip.display_admin_settings` event and becomes
+active when you set `smart_ip.settings:data_source` = **`maxmind_geoip2_bin_db`**. Depends on
+`smart_ip`; needs the `geoip2/geoip2` PHP library (reads the DB with `\MaxMind\Db\Reader` when the
+`maxminddb` C extension is present, else `\GeoIp2\Database\Reader`).
 
-**To activate:** `drush en smart_ip_maxmind_geoip2_bin_db -y`, then set
-`smart_ip.settings:data_source` = **`maxmind_geoip2_bin_db`** (this source's `sourceId()`).
+- **Enable it, set its options (version/edition/credentials/auto-update/custom path), pick it as
+  the active source, and how the DB is downloaded/refreshed** →
+  [configure/settings.md](configure/settings.md)
+- **The Smart IP query API, location keys, session/profile persistence** →
+  `modules/sm/smart_ip/5.0.x/agent/api/location.md`
+- **The data-source (event-subscriber) model shared by all sources** →
+  `modules/sm/smart_ip/5.0.x/agent/extend/data-source.md`
 
 Key facts:
 - `sourceId()` = `maxmind_geoip2_bin_db`; `configName()` = `smart_ip_maxmind_geoip2_bin_db.settings`.
-- Config `smart_ip_maxmind_geoip2_bin_db.settings`:
-  - `version` — `lite` (free GeoLite2) or a commercial edition. Default `lite`.
-  - `edition` — `city` or `country`. Default `city`.
-  - `user_account` — MaxMind account id (for downloads). Default null.
-  - `license_key` — MaxMind license key. Default null.
-  - `db_auto_update` — refresh the `.mmdb` on cron. Default **true**.
-  - `bin_file_custom_path` — use your own database file. Default null.
-- Implemented as `SmartIpEventSubscriber extends SmartIpEventSubscriberBase`:
-  `processQuery()` (lookup), `manualUpdate()` + `cronRun()` (download/refresh via
-  `DatabaseFileUtility`), `formSettings()`/`validateFormSettings()`/`submitFormSettings()`
-  (admin sub-form).
-- Requires the `geoip2/geoip2` PHP library.
-- Query API, location keys, events, and the data-source model: see
-  modules/sm/smart_ip/5.0.x/agent/ (`api/location.md`, `extend/data-source.md`).
-
-Set the source with drush:
-
-```bash
-drush cset smart_ip_maxmind_geoip2_bin_db.settings edition city -y
-drush cset smart_ip.settings data_source maxmind_geoip2_bin_db -y
-```
+- Class `Drupal\smart_ip_maxmind_geoip2_bin_db\EventSubscriber\SmartIpEventSubscriber` (extends
+  `SmartIpEventSubscriberBase`); service `smart_ip_maxmind_geoip2_bin_db.smart_ip_event_subscriber`
+  tagged `event_subscriber`. No route, no permission, no Drush of its own.
+- Config `smart_ip_maxmind_geoip2_bin_db.settings`: `version` (`licensed`|`lite`, default `lite`),
+  `edition` (`city`|`country`, default `city`), `user_account`, `license_key`, `db_auto_update`
+  (bool, default **true**), `bin_file_custom_path`.
+- DB filenames: `GeoLite2-City.mmdb` / `GeoLite2-Country.mmdb` (lite),
+  `GeoIP2-City.mmdb` / `GeoIP2-Country.mmdb` (licensed). Default store: `private://smart_ip`.
+- Auto-download URL base: `https://download.maxmind.com/app/geoip_download`; weekly cron refresh
+  (Wednesday). State key `smart_ip_maxmind_geoip2_bin_db.last_update_time`.
+- `processQuery()` fills the location keys country, countryCode, region, regionCode, city, zip,
+  latitude, longitude, timeZone, isEuCountry (and originalData).

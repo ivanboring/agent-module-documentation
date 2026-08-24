@@ -1,28 +1,32 @@
 # Smart IP IP2Location binary database (smart_ip_ip2location_bin_db) — agent index
 
-A **Smart IP data source**: offline geolocation against a downloaded IP2Location **BIN** database
-(via `ip2location/ip2location-php`). Depends on `smart_ip`. No admin page of its own — injects a
-section into Smart IP's settings form (`/admin/config/people/smart_ip`).
+A **Smart IP data source**: offline IP geolocation against a local IP2Location **BIN** database
+(separate IPv4 and IPv6 files) read with `ip2location/ip2location-php`. It ships no admin page of its
+own (`configure: smart_ip.settings`); it injects a sub-form into Smart IP's settings form via the
+`smart_ip.display_admin_settings` event and becomes active when you set
+`smart_ip.settings:data_source` = **`ip2location_bin_db`**. Depends on `smart_ip`.
 
-**To activate:** `drush en smart_ip_ip2location_bin_db -y`, then set
-`smart_ip.settings:data_source` = **`ip2location_bin_db`**.
+- **Enable it, set version/edition/token/caching/auto-update/custom path, pick it as the active
+  source, and how the BIN files are downloaded/refreshed** →
+  [configure/settings.md](configure/settings.md)
+- **The Smart IP query API, location keys, session/profile persistence** →
+  `modules/sm/smart_ip/5.0.x/agent/api/location.md`
+- **The data-source (event-subscriber) model shared by all sources** →
+  `modules/sm/smart_ip/5.0.x/agent/extend/data-source.md`
 
 Key facts:
 - `sourceId()` = `ip2location_bin_db`; `configName()` = `smart_ip_ip2location_bin_db.settings`.
-- Config `smart_ip_ip2location_bin_db.settings`:
-  - `version` — `lite` (free IP2Location LITE) or a commercial edition. Default `lite`.
-  - `edition` — BIN code, e.g. `DB11`. Default `DB11`.
-  - `token` — IP2Location download token. Default null.
-  - `db_auto_update` — refresh BIN on cron. Default **false**.
-  - `caching_method` — reader cache mode (`no_cache` default; shared-memory/file options).
-  - `bin_file_custom_path` — use your own BIN file. Default null.
-- Implemented as `SmartIpEventSubscriber extends SmartIpEventSubscriberBase`: `processQuery()`
-  (lookup via `Ip2locationBinDb`), `manualUpdate()` + `cronRun()` (download/refresh via
-  `DatabaseFileUtility`), plus the admin sub-form methods.
-- Requires the `ip2location/ip2location-php` PHP library.
-- Query API, location keys, events, data-source model: see modules/sm/smart_ip/5.0.x/agent/.
-
-```bash
-drush cset smart_ip_ip2location_bin_db.settings edition DB11 -y
-drush cset smart_ip.settings data_source ip2location_bin_db -y
-```
+- Class `Drupal\smart_ip_ip2location_bin_db\EventSubscriber\SmartIpEventSubscriber` (extends
+  `SmartIpEventSubscriberBase`); service `smart_ip_ip2location_bin_db.smart_ip_event_subscriber`
+  tagged `event_subscriber`. No route, no permission, no Drush of its own.
+- Config `smart_ip_ip2location_bin_db.settings`: `version` (`licensed`|`lite`, default `lite`),
+  `edition` (product code `DB1`..`DB24`; lite: `DB1/DB3/DB5/DB9/DB11`; default `DB11`), `token`
+  (licensed download token), `db_auto_update` (bool, default **false**), `caching_method`
+  (`no_cache`|`memory_cache`|`shared_memory`, default `no_cache`), `bin_file_custom_path`.
+- BIN filenames: `IP2LOCATION-LITE-<edition>.BIN` / `…-<edition>.IPV6.BIN` (lite);
+  `IP-<PRODUCT>.BIN` / `IPV6-<PRODUCT>.BIN` (licensed). Default store: `private://smart_ip`.
+- Auto-download (licensed only) from `https://www.ip2location.com/download`; **lite auto-download is
+  not supported** (needs an interactive login). Monthly cron refresh (first Wednesday). State keys
+  `…last_update_time`, `…current_ip_version_queue`.
+- `processQuery()` fills the location keys country, countryCode, region, regionCode, city, zip,
+  latitude, longitude, timeZone, isEuCountry (and originalData).

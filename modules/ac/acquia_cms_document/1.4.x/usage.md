@@ -1,30 +1,30 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Acquia CMS — Document provides a ready-made **Document media type** with its fields, form and view displays, and related configuration already built — one component of the Acquia CMS content model.
+Acquia CMS — Document ships a ready-made **Document media type** — a file-based media bundle for locally hosted documents (PDF, Office, and other office/text formats) with its source file field, Categories and Tags taxonomy fields, form displays, view displays, and content translation already built. It is one feature module of the Acquia CMS content model and expects its shared layer, `acquia_cms_common`, to be present.
 
 ---
 
-Acquia CMS is Acquia's Drupal distribution, and it is assembled from small single-purpose modules like this one. Rather than a site builder creating a downloadable document (PDF etc.) type from scratch — the fields, the widgets, the view modes, the pathauto pattern, the metatag defaults — this module ships that configuration as a unit, so the Document type exists and is editor-ready the moment it is enabled.
-
-The value and the limitation are the same fact: it is **distribution configuration, not a generic feature**. It encodes Acquia's opinions about what a Document should be, and it is designed to sit alongside the rest of the Acquia CMS family and share their common layer (`acquia_cms_common`). On an Acquia CMS site it is exactly right. On an unrelated site it is a strong set of assumptions to take on — usable as a starting point, but you inherit the whole model, and it expects its siblings to be present.
-
-Because it is configuration, what it does is fixed by that config: it creates the Document media type and wires its displays. Extending it means adding fields and adjusting displays as you would any type. It travels with a config export like any other content-type configuration.
+Acquia CMS (now "Acquia Drupal Starter Kit") is Acquia's Drupal distribution, assembled from small single-purpose feature modules like this one. Instead of a site builder creating a downloadable-document media type from scratch — the source file field with its extension allowlist, the taxonomy fields, the default and media-library form displays, the default and embedded view displays, content translation — this module delivers that as installed config, so the Document type exists and is editor-ready the moment it is enabled. The media type id is `document`, its source is the core `file` plugin, and its source field `field_media_file` accepts a fixed set of document/office extensions (`csv txt rtf pdf doc docx xls xlsx ppt pptx pps odt ods odp`). A little PHP declares the five per-bundle media permissions and grants them to the distribution's `content_author` and `content_editor` roles, and on install it rewrites editor config (via an `acquia_cms_common` helper) so documents can be embedded in text formats. The `field_categories`/`field_tags` field storages and the taxonomy vocabularies they reference are owned by `acquia_cms_common`, not by this module. The value and the limitation are the same fact: it is distribution configuration, not a generic feature. On an Acquia CMS site it is exactly right; on an unrelated site you inherit the whole model and its sibling dependency. There is no settings page — you operate it by editing the shipped config entities, and it travels with a config export like any other content configuration.
 
 ---
-- Add a Document media type to a site.
-- Author a downloadable document (PDF etc.).
-- Get a pre-built Document media type with fields configured.
-- Reuse Acquia CMS's Document model.
-- Standardise Document content across a site.
-- Get view displays for Document out of the box.
-- Get form display for Document configured.
-- Skip building the Document media type by hand.
-- Adopt Acquia CMS's Document configuration.
-- Provide editors a ready Document form.
-- Base a custom Document type on this one.
-- Get pathauto and metatag defaults for Document.
-- Enable Document as part of Acquia CMS.
-- Match the Acquia CMS content model.
-- Export the Document config with the site.
-- Extend the Document media type with extra fields.
-- Use Document with the rest of the Acquia CMS family.
-- Provide a consistent Document editing experience.
+- Add a file-based Document media type to a site.
+- Let editors upload and manage locally hosted documents (PDF, Office, text).
+- Get a pre-built Document type with its source file field configured.
+- Restrict document uploads to a specific set of office/text extensions.
+- Provide Categories and Tags taxonomy fields on documents out of the box.
+- Reuse Acquia CMS's Document model across sites.
+- Standardise document media across a site.
+- Get default and Media Library form displays for documents.
+- Get a default (thumbnail) and an embedded view display for documents.
+- Embed a document link in body text via the `embedded` view mode.
+- Enable content translation for document media.
+- Grant document-media create/edit/delete permissions to Acquia CMS roles.
+- Assign the five per-bundle document permissions to custom roles.
+- Skip building the Document media type and its displays by hand.
+- Adopt Acquia CMS's Document configuration as a starting point.
+- Base a custom document type on this one and extend it with extra fields.
+- Match the Acquia CMS content model for documents.
+- Export the Document config with the rest of the site config.
+- Provide a consistent document editing experience across authors.
+- Organise documents by category and free-tagging for search/listing.
+- Add documents through the Media Library add flow.
+- Auto-create tags on the fly while tagging a document.

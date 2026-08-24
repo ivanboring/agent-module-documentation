@@ -5,11 +5,13 @@
   "version": "2.0.x",
   "package": null,
   "composer_namespace": "drupal/like_and_dislike",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/votingapi": "^3.0"
+  },
   "dependent_modules": [
     "votingapi:votingapi"
   ],
-  "configure": null,
+  "configure": "like_and_dislike.admin_settings",
   "core_version_requirement": "^10.1 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -24,10 +26,10 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Content"
+    "User engagement"
   ],
   "subcategories": [
-    "Voting / feedback"
+    "Rating / voting"
   ],
   "keywords": [
     "like",

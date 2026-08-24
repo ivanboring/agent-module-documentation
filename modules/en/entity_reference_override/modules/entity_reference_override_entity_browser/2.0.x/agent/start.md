@@ -1,24 +1,27 @@
 # Entity reference override Entity Browser (entity_reference_override_entity_browser) — agent index
 
 Submodule of **entity_reference_override**. Adds ONE field widget so `entity_reference_override`
-fields can select entities via **Entity Browser** while still capturing a per-reference override
-(custom title). No config form, no permissions, no services. Depends on `entity_browser` and
-`entity_reference_override`.
+fields can select their referenced entities through the **Entity Browser** module while still
+capturing the parent's per-reference **override** text (custom title) for each selected item.
+No admin UI (`configure` = null), no permissions, no Drush, no services, no plugin *types* — just
+the one widget plugin. Depends on `entity_browser` and `entity_reference_override`.
 
-This is a thin widget shim — the facts below are the whole surface.
+- **Enable the Entity Browser widget on an `entity_reference_override` field, how the per-row
+  override box works, and its AJAX behavior** → [fields/widget.md](fields/widget.md)
+
+For the override MECHANISM itself (the `entity_reference_override` field type, its `override` /
+`override_format` storage, `override_label` setting, widgets, and the `override_action`
+formatters) see the parent docs:
+`modules/en/entity_reference_override/2.0.x/agent/configure/field.md` and
+`modules/en/entity_reference_override/2.0.x/agent/plugins/plugins.md`.
 
 Key facts:
 - Widget plugin id **`entity_browser_entity_reference_override`** (label "Entity browser"),
-  class `Drupal\entity_reference_override_entity_browser\Plugin\Field\FieldWidget\EntityReferenceOverrideEntityBrowser`,
+  class `Drupal\entity_reference_override_entity_browser\Plugin\Field\FieldWidget\EntityReferenceOverrideEntityBrowser`;
   `multiple_values = TRUE`, `field_types = {entity_reference_override}`.
 - Extends Entity Browser's `EntityReferenceBrowserWidget`; adds an `override` textfield to each
-  row of the widget's `current` items table (title/placeholder from the field's `override_label`).
-- Override values survive AJAX add/remove: they are serialised into a hidden
-  `entity_reference_override_default_values` element and re-read; `massageFormValues()` copies each
-  row's `override` back onto the saved field values.
+  row of the widget's `current` items table (title/placeholder taken from the field's
+  `override_label` setting).
 - Config schema `field.widget.settings.entity_browser_entity_reference_override` extends
-  `field.widget.settings.entity_browser_entity_reference` (no extra keys).
-- To use: on **Manage form display** of a bundle with an `entity_reference_override` field, set the
-  widget to **"Entity browser"** (and configure the Entity Browser as usual).
-- Parent field type, formatters and `override_action` modes: see
-  modules/en/entity_reference_override/2.0.x/agent/.
+  `field.widget.settings.entity_browser_entity_reference` — adds no extra keys.
+- No config form, no routes, no permissions, no Drush, no services, no plugin managers.

@@ -5,29 +5,34 @@
   "version": "1.1.x",
   "package": null,
   "composer_namespace": "drupal/simple_cron",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "dragonmantank/cron-expression": "^3.1.0",
+    "php": ">=8.1"
+  },
   "dependent_modules": [],
-  "configure": null,
+  "configure": "simple_cron.settings",
   "core_version_requirement": "^10.2 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/simple_cron",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [
     "simple_cron_examples"
   ],
   "provides_permissions": true,
-  "provides_drush_commands": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "simple_cron"
+  ],
   "categories": [
-    "Administration"
+    "Administration tools"
   ],
   "subcategories": [
-    "Cron / scheduling"
+    "Cron / task scheduling"
   ],
   "keywords": [
     "cron",

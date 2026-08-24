@@ -1,26 +1,23 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Logs configuration changes. — a submodule of **events_log_track**.
+Enables configuration-change tracking for Events Log Track: every config save and delete is recorded in the audit report with type `config`, including a short human-readable diff of the keys that changed.
 
 ---
 
-This is one of events_log_track's submodules. Logs configuration changes. It exposes nothing on its own beyond that role and is governed by the parent module's configuration, permissions and behavior; enable it when you need this specific capability and leave it off otherwise, so the site only carries the parts of events_log_track it actually uses.
-
-See the parent module for the overall system this fits into.
+`EventLogTrackConfigSubscriber` subscribes to core's `ConfigEvents::SAVE` and `ConfigEvents::DELETE`. On save it distinguishes a brand-new config object ("Config added") from an edit, for which it builds a compact diff (`key: old -> new`, with add/remove/change handling for nested arrays) while ignoring `dependencies`, `third_party_settings`, `_core`, `uuid`, and `langcode`; on delete it records "Config removed". The config object name is stored in `ref_char`, so the parent's wildcard `skip_patterns` (e.g. `system.*`) can silence noisy sources. `EventLogTrackConfigHooks` registers the `config` handler (operations save/delete) so these show up in the report's exposed filters. Entries write through the parent `event_log_track.manager` service, inheriting retention and the `access event log track` permission.
 
 ---
-- Enable event_log_track_config to add this capability.
-- Extend events_log_track with event_log_track_config.
-- Keep it disabled if not needed.
-- Depend on events_log_track.
-- Scope functionality to what you enable.
-- Add only the sub-features you use.
-- Compose the parent's feature set.
-- Turn on per requirement.
-- Reduce surface by enabling selectively.
-- Combine with sibling submodules.
-- Configure via the parent module.
-- Review what it exposes before enabling.
-- Match it to your use case.
-- Keep the parent's permissions in force.
-- Enable alongside the parent.
-- Use it as part of the parent's system.
+
+- Audit all configuration changes across the site.
+- See a before/after diff of what a config save changed.
+- Track who edited system, field, view, or module settings.
+- Record configuration deletions.
+- Distinguish newly added config from edits.
+- Filter the audit report to only `config` events.
+- Silence noisy config sources with wildcard skip patterns.
+- Investigate configuration drift between deployments.
+- Detect unauthorized settings changes.
+- Correlate config changes with the acting user and IP.
+- Demonstrate change-management compliance.
+- Prune old config-change records via cron retention.
+- Trace the history of a specific config object by name (`ref_char`).
+- Export a report of configuration activity over a period.
+- Spot risky changes such as permission or access settings edits.

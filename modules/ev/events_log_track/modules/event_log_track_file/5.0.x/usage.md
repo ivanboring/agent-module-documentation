@@ -1,26 +1,23 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Logs file CUD events performed by the user. — a submodule of **events_log_track**.
+Enables file-entity tracking for Events Log Track: file create/update/delete operations appear in the audit report with type `file`, capturing the file URI and name.
 
 ---
 
-This is one of events_log_track's submodules. Logs file CUD events performed by the user. It exposes nothing on its own beyond that role and is governed by the parent module's configuration, permissions and behavior; enable it when you need this specific capability and leave it off otherwise, so the site only carries the parts of events_log_track it actually uses.
-
-See the parent module for the overall system this fits into.
+`EventLogTrackFileHooks` registers the `file` handler (operations insert/update/delete) and implements `hook_file_insert`, `hook_file_update`, and `hook_file_delete`. Each entry stores the file URI as the description, the file id in `ref_numeric`, and the filename in `ref_char`, then writes through the parent `event_log_track.manager` service. Note this tracks the managed-file entity lifecycle (which fires on uploads and file cleanup), inheriting filtering, retention, and the `access event log track` permission from the parent.
 
 ---
-- Enable event_log_track_file to add this capability.
-- Extend events_log_track with event_log_track_file.
-- Keep it disabled if not needed.
-- Depend on events_log_track.
-- Scope functionality to what you enable.
-- Add only the sub-features you use.
-- Compose the parent's feature set.
-- Turn on per requirement.
-- Reduce surface by enabling selectively.
-- Combine with sibling submodules.
-- Configure via the parent module.
-- Review what it exposes before enabling.
-- Match it to your use case.
-- Keep the parent's permissions in force.
-- Enable alongside the parent.
-- Use it as part of the parent's system.
+
+- Audit file uploads across the site.
+- Record the storage URI of each managed file created.
+- Track file replacements and updates.
+- See when temporary or orphaned files are deleted.
+- Filter the audit report to only `file` events.
+- Trace a file's history by its id (`ref_numeric`).
+- Investigate where a specific filename came from.
+- Detect unexpected file deletions.
+- Correlate uploads with the acting user and IP.
+- Demonstrate accountability for uploaded assets.
+- Prune old file-change records via cron retention.
+- Exclude temp-file noise using skip patterns.
+- Export a report of file activity over a period.
+- Combine with media tracking for full asset auditing.
+- Identify large numbers of files created by one account.

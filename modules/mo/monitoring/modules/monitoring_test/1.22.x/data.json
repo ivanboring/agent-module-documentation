@@ -1,7 +1,8 @@
 {
   "name": "Monitoring Test",
   "data_name": "monitoring_test",
-  "description": "Monitoring base test module.",
+  "description": "Hidden test-fixture submodule for the Monitoring project: a State-driven test_sensor plugin, sensor-config fixtures, a queue worker and a result subclass used by Monitoring's automated tests.",
+  "hidden": true,
   "version": "1.22.x",
   "package": "Monitoring",
   "composer_namespace": "drupal/monitoring",
@@ -27,7 +28,8 @@
     "Developer tools"
   ],
   "subcategories": [
-    "Test content generation"
+    "Test content generation",
+    "Example / reference code"
   ],
   "keywords": [
     "monitoring",

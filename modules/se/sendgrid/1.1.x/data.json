@@ -3,20 +3,27 @@
   "data_name": "sendgrid",
   "description": "Allows site to send emails using Sendgrid email service.",
   "version": "1.1.x",
-  "package": null,
+  "package": "Mail",
   "composer_namespace": "drupal/sendgrid",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "sendgrid/sendgrid": "~7",
+    "drupal/mailsystem": "*",
+    "html2text/html2text": "^4"
+  },
   "dependent_modules": [
     "mailsystem:mailsystem"
   ],
-  "configure": null,
+  "configure": "sendgrid.settings_form",
   "core_version_requirement": "^9 || ^10  || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/sendgrid",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "sendgrid/sendgrid",
+    "html2text/html2text"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
@@ -24,10 +31,11 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Administration"
+    "Integrations"
   ],
   "subcategories": [
-    "Email / mail systems"
+    "Email / mail delivery",
+    "Queue / background processing"
   ],
   "keywords": [
     "sendgrid",

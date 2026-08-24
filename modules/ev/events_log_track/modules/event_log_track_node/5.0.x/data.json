@@ -1,9 +1,9 @@
 {
-  "name": "Event Log Track Node",
+  "name": "Events Log Track Node",
   "data_name": "event_log_track_node",
   "description": "Logs node CUD events performed by the user.",
   "version": "5.0.x",
-  "package": null,
+  "package": "Logging",
   "composer_namespace": "drupal/events_log_track",
   "composer_requirements": {},
   "dependent_modules": [
@@ -22,17 +22,19 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Administration"
+    "Administration tools"
   ],
   "subcategories": [
-    "Logging / audit"
+    "Audit trail / activity logging"
   ],
   "keywords": [
-    "events",
-    "event log track node",
+    "events log track",
+    "node",
+    "cud",
+    "audit",
     "submodule"
   ],
   "part_of": "events_log_track",

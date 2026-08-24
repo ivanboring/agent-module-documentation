@@ -1,9 +1,9 @@
 {
-  "name": "Event Log Track Syslog",
+  "name": "Events Log Track Syslog",
   "data_name": "event_log_track_syslog",
   "description": "Integrate ELT with Syslog.",
   "version": "5.0.x",
-  "package": null,
+  "package": "Logging",
   "composer_namespace": "drupal/events_log_track",
   "composer_requirements": {},
   "dependent_modules": [
@@ -26,14 +26,18 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Administration"
+    "Administration tools"
   ],
   "subcategories": [
-    "Logging / audit"
+    "Audit trail / activity logging"
   ],
   "keywords": [
-    "events",
-    "event log track syslog",
+    "events log track",
+    "syslog",
+    "watchdog",
+    "token",
+    "logger",
+    "backend",
     "submodule"
   ],
   "part_of": "events_log_track",

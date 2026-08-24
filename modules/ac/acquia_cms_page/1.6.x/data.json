@@ -1,18 +1,20 @@
 {
-  "name": "Acquia CMS Provides an unstructured Page ",
+  "name": "Acquia CMS Page",
   "data_name": "acquia_cms_page",
   "description": "Provides an unstructured Page content type and related configuration.",
   "version": "1.6.x",
   "package": "Acquia CMS",
   "composer_namespace": "drupal/acquia_cms_page",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/acquia_cms_image": "^1.5.10"
+  },
   "dependent_modules": [
     "acquia_cms_image:acquia_cms_image",
     "drupal:path",
     "field_group:field_group"
   ],
   "configure": null,
-  "core_version_requirement": "^10.3 || ^11",
+  "core_version_requirement": "^9.5 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/acquia_cms_page",
@@ -21,9 +23,9 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Distribution"

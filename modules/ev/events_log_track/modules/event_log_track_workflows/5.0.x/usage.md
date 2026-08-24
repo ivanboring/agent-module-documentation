@@ -1,26 +1,23 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Logs workflows events performed by the user. — a submodule of **events_log_track**.
+Enables content-moderation workflow tracking for Events Log Track: when a node or group with a `moderation_state` field changes state (e.g. Draft → Published), the transition appears in the audit report with type `workflows`.
 
 ---
 
-This is one of events_log_track's submodules. Logs workflows events performed by the user. It exposes nothing on its own beyond that role and is governed by the parent module's configuration, permissions and behavior; enable it when you need this specific capability and leave it off otherwise, so the site only carries the parts of events_log_track it actually uses.
-
-See the parent module for the overall system this fits into.
+`EventLogTrackWorkflowsHooks` registers the `workflows` handler and implements `node_insert`/`node_update` and `group_insert`/`group_update`, guarded by `hasField('moderation_state')`. Insert records the initial workflow state of a newly created entity; update records only genuine state transitions by comparing the original and current `moderation_state`. The description names the entity and the old→new state; `ref_numeric` is the entity id and `ref_char` its title/label. Entries write through the parent `event_log_track.manager` service. Deletions are not tracked here (use the node/group submodules). Filtering, retention, and the `access event log track` permission are inherited from the parent.
 
 ---
-- Enable event_log_track_workflows to add this capability.
-- Extend events_log_track with event_log_track_workflows.
-- Keep it disabled if not needed.
-- Depend on events_log_track.
-- Scope functionality to what you enable.
-- Add only the sub-features you use.
-- Compose the parent's feature set.
-- Turn on per requirement.
-- Reduce surface by enabling selectively.
-- Combine with sibling submodules.
-- Configure via the parent module.
-- Review what it exposes before enabling.
-- Match it to your use case.
-- Keep the parent's permissions in force.
-- Enable alongside the parent.
-- Use it as part of the parent's system.
+
+- Audit content-moderation state transitions (Draft → Review → Published).
+- See who moved a node from one workflow state to another.
+- Record the initial state of newly created moderated content.
+- Track workflow transitions on moderated Group entities.
+- Filter the audit report to only `workflows` events.
+- Reconstruct the moderation timeline of a single node.
+- Detect content published without going through review.
+- Investigate who archived or unpublished content via workflow.
+- Correlate state changes with the acting editor and IP.
+- Demonstrate editorial-workflow compliance.
+- Prune old workflow records via cron retention.
+- Exclude specific titles using skip patterns.
+- Export a report of moderation activity over a period.
+- Combine with node tracking for a full content history.
+- Identify rapid back-and-forth state changes on an item.

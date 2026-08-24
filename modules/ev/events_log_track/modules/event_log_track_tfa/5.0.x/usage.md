@@ -1,26 +1,23 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Logs user authentication via TFA. — a submodule of **events_log_track**.
+Enables two-factor (TFA) login tracking for Events Log Track: completing the TFA challenge is recorded in the audit report with type `authentication_tfa` and operation `TFA login`, complementing the login/logout events from `event_log_track_auth`.
 
 ---
 
-This is one of events_log_track's submodules. Logs user authentication via TFA. It exposes nothing on its own beyond that role and is governed by the parent module's configuration, permissions and behavior; enable it when you need this specific capability and leave it off otherwise, so the site only carries the parts of events_log_track it actually uses.
-
-See the parent module for the overall system this fits into.
+`EventLogTrackTfaHooks` registers the `authentication_tfa` handler and hooks the TFA entry form (`tfa_entry_form`) through the parent's form-submit dispatch. When a non-anonymous user completes the second factor, `formSubmit()` records a `TFA login` entry whose description carries a session count (`SC(<n>)`, via the parent manager's `sessionCount()`), with the uid in both `uid` and `ref_numeric` and the username in `ref_char`. It requires the `event_log_track_auth` submodule and the contrib TFA module. Entries write through the parent `event_log_track.manager` service, inheriting filtering, retention, and the `access event log track` permission.
 
 ---
-- Enable event_log_track_tfa to add this capability.
-- Extend events_log_track with event_log_track_tfa.
-- Keep it disabled if not needed.
-- Depend on events_log_track.
-- Scope functionality to what you enable.
-- Add only the sub-features you use.
-- Compose the parent's feature set.
-- Turn on per requirement.
-- Reduce surface by enabling selectively.
-- Combine with sibling submodules.
-- Configure via the parent module.
-- Review what it exposes before enabling.
-- Match it to your use case.
-- Keep the parent's permissions in force.
-- Enable alongside the parent.
-- Use it as part of the parent's system.
+
+- Audit successful two-factor authentications.
+- Distinguish TFA logins from password-only logins in the report.
+- Track the session count at the moment of a TFA login.
+- Filter the audit report to only `authentication_tfa` events.
+- Verify that privileged accounts completed two-factor login.
+- Investigate a suspicious login that bypassed or used TFA.
+- Correlate TFA logins with the account and IP.
+- Demonstrate strong-authentication compliance.
+- Combine with `event_log_track_auth` for a full login trail.
+- Detect accounts that never complete the TFA step.
+- Prune old TFA records via cron retention.
+- Export a report of two-factor logins for an account.
+- Spot unusual TFA login times for an admin.
+- Confirm TFA enforcement after a policy change.
+- Trace a user's TFA login history by uid (`ref_numeric`).

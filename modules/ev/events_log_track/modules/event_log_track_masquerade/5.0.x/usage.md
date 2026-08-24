@@ -1,26 +1,23 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Logs user masquerading sessions. — a submodule of **events_log_track**.
+Enables masquerade tracking for Events Log Track: when an administrator starts or stops impersonating another user (via the contrib Masquerade module), the action appears in the audit report with type `masquerade`.
 
 ---
 
-This is one of events_log_track's submodules. Logs user masquerading sessions. It exposes nothing on its own beyond that role and is governed by the parent module's configuration, permissions and behavior; enable it when you need this specific capability and leave it off otherwise, so the site only carries the parts of events_log_track it actually uses.
-
-See the parent module for the overall system this fits into.
+`EventLogTrackMasquerade` subscribes to the kernel request event and matches Masquerade's routes: `entity.user.masquerade` logs a `masquerade` event naming the admin and the target user (both name and uid), and `masquerade.unmasquerade` logs an `unmasquerade` event, reconstructing the original admin from the session metadata bag. `EventLogTrackMasqueradeHooks` registers the `masquerade` handler so these show up in the report's filters. The actor details live in the description; entries write through the parent `event_log_track.manager` service, inheriting filtering, retention, and the `access event log track` permission. This gives an accountability trail for one of the most sensitive administrative capabilities.
 
 ---
-- Enable event_log_track_masquerade to add this capability.
-- Extend events_log_track with event_log_track_masquerade.
-- Keep it disabled if not needed.
-- Depend on events_log_track.
-- Scope functionality to what you enable.
-- Add only the sub-features you use.
-- Compose the parent's feature set.
-- Turn on per requirement.
-- Reduce surface by enabling selectively.
-- Combine with sibling submodules.
-- Configure via the parent module.
-- Review what it exposes before enabling.
-- Match it to your use case.
-- Keep the parent's permissions in force.
-- Enable alongside the parent.
-- Use it as part of the parent's system.
+
+- Audit every time an admin impersonates another user.
+- Record who was impersonated and by whom.
+- Track when a masquerade session ends (unmasquerade).
+- Filter the audit report to only `masquerade` events.
+- Investigate actions taken while masquerading.
+- Detect misuse of the impersonation feature.
+- Demonstrate accountability for privileged support actions.
+- Correlate a user complaint with a masquerade session.
+- See the admin uid and target uid for each session.
+- Prune old masquerade records via cron retention.
+- Export a report of impersonation activity over a period.
+- Combine with content/auth tracking to attribute masqueraded actions.
+- Confirm support staff only impersonate authorized accounts.
+- Spot unusually frequent masquerading by an account.
+- Provide evidence for security or privacy reviews.

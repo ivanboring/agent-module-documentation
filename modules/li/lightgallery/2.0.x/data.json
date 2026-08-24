@@ -5,11 +5,15 @@
   "version": "2.0.x",
   "package": "Media",
   "composer_namespace": "drupal/lightgallery",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "bower-asset/lightgallery": "^2.0",
+    "composer/installers": "^2.0",
+    "oomphinc/composer-installers-extender": "^2.0"
+  },
   "dependent_modules": [
     "drupal:image"
   ],
-  "configure": null,
+  "configure": "lightgallery.admin.settings",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -24,10 +28,12 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Media"
+    "Media",
+    "Content display"
   ],
   "subcategories": [
-    "Galleries / lightbox"
+    "Lightbox / modal display",
+    "Field formatters"
   ],
   "keywords": [
     "lightgallery",

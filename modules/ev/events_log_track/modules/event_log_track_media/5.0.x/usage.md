@@ -1,26 +1,23 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Logs media CUD events performed by the user. — a submodule of **events_log_track**.
+Enables media-entity tracking for Events Log Track: media create/update/delete operations appear in the audit report with type `media`, including the media name, bundle, and revision log message.
 
 ---
 
-This is one of events_log_track's submodules. Logs media CUD events performed by the user. It exposes nothing on its own beyond that role and is governed by the parent module's configuration, permissions and behavior; enable it when you need this specific capability and leave it off otherwise, so the site only carries the parts of events_log_track it actually uses.
-
-See the parent module for the overall system this fits into.
+`EventLogTrackMediaHooks` registers the `media` handler (operations insert/update/delete) and implements the three `media` entity hooks; each records the media name, bundle, and (when present) revision log message in the description, the media id in `ref_numeric`, and the label in `ref_char`, writing through the parent `event_log_track.manager` service. A separate `EventLogTrackMediaViewsHooks` adds the `elt_media_join` Views relationship so reports can join the logged media by id. Filtering, retention, and the `access event log track` permission are inherited from the parent.
 
 ---
-- Enable event_log_track_media to add this capability.
-- Extend events_log_track with event_log_track_media.
-- Keep it disabled if not needed.
-- Depend on events_log_track.
-- Scope functionality to what you enable.
-- Add only the sub-features you use.
-- Compose the parent's feature set.
-- Turn on per requirement.
-- Reduce surface by enabling selectively.
-- Combine with sibling submodules.
-- Configure via the parent module.
-- Review what it exposes before enabling.
-- Match it to your use case.
-- Keep the parent's permissions in force.
-- Enable alongside the parent.
-- Use it as part of the parent's system.
+
+- Audit media creation across all media types.
+- Track edits to media items, including revision notes.
+- See who deleted a media asset.
+- Filter the audit report to only `media` events.
+- Distinguish media insert vs update vs delete.
+- Trace a media item's history by its id (`ref_numeric`).
+- Build a Views report joining media events to the media entity.
+- Detect unauthorized removal of images or videos.
+- Correlate media changes with the acting user and IP.
+- Demonstrate accountability for the media library.
+- Prune old media-change records via cron retention.
+- Exclude specific media names using skip patterns.
+- Export a report of media activity over a period.
+- Combine with file tracking for complete asset auditing.
+- Identify media published then quickly changed.

@@ -1,9 +1,9 @@
 {
-  "name": "Event Log Track Stdout",
+  "name": "Events Log Track Stdout",
   "data_name": "event_log_track_stdout",
   "description": "Integrate ELT with Stdout.",
   "version": "5.0.x",
-  "package": null,
+  "package": "Logging",
   "composer_namespace": "drupal/events_log_track",
   "composer_requirements": {},
   "dependent_modules": [
@@ -26,14 +26,19 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Administration"
+    "Administration tools"
   ],
   "subcategories": [
-    "Logging / audit"
+    "Audit trail / activity logging"
   ],
   "keywords": [
-    "events",
-    "event log track stdout",
+    "events log track",
+    "stdout",
+    "stderr",
+    "docker",
+    "token",
+    "logger",
+    "backend",
     "submodule"
   ],
   "part_of": "events_log_track",

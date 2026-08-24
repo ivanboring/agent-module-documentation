@@ -1,26 +1,23 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-When the cache is cleared, it is recorded who cleaned it. — a submodule of **events_log_track**.
+Enables cache-clear tracking for Events Log Track: every full cache flush is recorded in the audit report with type `cache_clear`, capturing who triggered it.
 
 ---
 
-This is one of events_log_track's submodules. When the cache is cleared, it is recorded who cleaned it. It exposes nothing on its own beyond that role and is governed by the parent module's configuration, permissions and behavior; enable it when you need this specific capability and leave it off otherwise, so the site only carries the parts of events_log_track it actually uses.
-
-See the parent module for the overall system this fits into.
+`EventLogTrackClearCacheHooks` registers the `cache_clear` handler and implements `hook_cache_flush`, which fires on a full rebuild (admin *Clear all caches*, `drush cr`, or any `drupal_flush_all_caches()`). The entry records "Cache cleared" with the current user id in `ref_numeric` and the username in `ref_char`, then writes through the parent `event_log_track.manager` service. Because cache clears often happen on the command line, remember that CLI events are only stored when the parent's `log_cli` setting is enabled. Filtering, retention, and the `access event log track` permission are inherited from the parent.
 
 ---
-- Enable event_log_track_clear_cache to add this capability.
-- Extend events_log_track with event_log_track_clear_cache.
-- Keep it disabled if not needed.
-- Depend on events_log_track.
-- Scope functionality to what you enable.
-- Add only the sub-features you use.
-- Compose the parent's feature set.
-- Turn on per requirement.
-- Reduce surface by enabling selectively.
-- Combine with sibling submodules.
-- Configure via the parent module.
-- Review what it exposes before enabling.
-- Match it to your use case.
-- Keep the parent's permissions in force.
-- Enable alongside the parent.
-- Use it as part of the parent's system.
+
+- Audit every full cache clear and who performed it.
+- Detect frequent cache flushes that may indicate a problem.
+- Correlate a performance dip with a recent cache clear.
+- Filter the audit report to only `cache_clear` events.
+- See whether a clear came from the UI or (with log_cli) from Drush.
+- Investigate unexpected cache rebuilds.
+- Hold operators accountable for production cache clears.
+- Record the acting user's IP for each clear.
+- Prune old cache-clear records via cron retention.
+- Export a report of cache-clear frequency over time.
+- Combine with deployment auditing to confirm post-deploy rebuilds.
+- Identify who ran a rebuild during an incident.
+- Track cache clears alongside config changes.
+- Spot automation or bots repeatedly flushing caches.
+- Demonstrate operational accountability for maintenance actions.

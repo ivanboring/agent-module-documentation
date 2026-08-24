@@ -1,26 +1,23 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Logs block content CUD events performed by the user. — a submodule of **events_log_track**.
+Enables custom-block (block content) tracking for Events Log Track: create/update/delete of content blocks appears in the audit report with type `block_content`.
 
 ---
 
-This is one of events_log_track's submodules. Logs block content CUD events performed by the user. It exposes nothing on its own beyond that role and is governed by the parent module's configuration, permissions and behavior; enable it when you need this specific capability and leave it off otherwise, so the site only carries the parts of events_log_track it actually uses.
-
-See the parent module for the overall system this fits into.
+`EventLogTrackBlockContentHooks` registers the `block_content` handler (operations insert/update/delete) and implements the three `block_content` entity hooks. Each entry records the block bundle, label, and published status in the description, the block id in `ref_numeric`, and the label in `ref_char`, then writes through the parent `event_log_track.manager` service. Filtering, retention, and the `access event log track` permission come from the parent.
 
 ---
-- Enable event_log_track_block_content to add this capability.
-- Extend events_log_track with event_log_track_block_content.
-- Keep it disabled if not needed.
-- Depend on events_log_track.
-- Scope functionality to what you enable.
-- Add only the sub-features you use.
-- Compose the parent's feature set.
-- Turn on per requirement.
-- Reduce surface by enabling selectively.
-- Combine with sibling submodules.
-- Configure via the parent module.
-- Review what it exposes before enabling.
-- Match it to your use case.
-- Keep the parent's permissions in force.
-- Enable alongside the parent.
-- Use it as part of the parent's system.
+
+- Audit creation of reusable custom blocks.
+- Track edits to block content and their published state.
+- See who deleted a custom block.
+- Filter the audit report to only `block_content` events.
+- Distinguish block insert vs update vs delete.
+- Trace a block's change history by its id (`ref_numeric`).
+- Record which content editor changed a promotional block.
+- Detect accidental or unauthorized block deletions.
+- Demonstrate accountability for reusable content.
+- Correlate block changes with the acting user and IP.
+- Prune old block-change records via cron retention.
+- Exclude specific block labels with skip patterns.
+- Export a report of block edits over a period.
+- Combine with Layout Builder auditing workflows.
+- Identify blocks published then quickly unpublished.
