@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-BEF Date filters adds date-specific widgets to Better Exposed Filters, so an exposed date filter can be a date picker or a range selector rather than a text field expecting a particular format.
+BEF Date filters adds a single Better Exposed Filters widget, "Year and month for date range", that turns a Views date "Is between" exposed filter into a Year dropdown and a Month dropdown, computing the underlying date range for the visitor instead of making them type dates into text inputs.
 
 ---
 
-Better Exposed Filters improves the presentation of Views exposed filters — checkboxes instead of a multi-select, links instead of a dropdown — but its widget set is oriented at lists and text. A date filter exposed through plain Views renders as a text input into which a visitor is expected to type something the filter can parse, which is a reliable source of empty result sets. This module adds the date-aware widgets that make an exposed date filter usable: date pickers and range controls appropriate to the filter's operator. It depends on `better_exposed_filters` alone, with `config/schema` for its settings and core `^10 || ^11`. As with any exposed filter, the caching question is worth confirming: exposed input varies the result set, so a page with date filters needs the right cache contexts, and a date range that includes "today" is time-dependent in a way that interacts with cache lifetime — a filtered listing cached for a day will show yesterday's idea of "this week".
+Better Exposed Filters improves the presentation of Views exposed filters, but its stock widgets are oriented at lists and text, so a plain exposed date filter renders as text inputs into which a visitor must type a parseable date — a reliable source of empty result sets. This module registers one BEF filter-widget plugin, `bef_year_month_between`, that is offered only for date filter handlers that are not grouped. When chosen, it hides the native min/max date inputs and shows two selects instead: a Year (the current year through the ten prior years) and a Month (January–December). A small client-side behaviour maps the picked year and month to the hidden min/max fields — a chosen month becomes that calendar month, a year with no month becomes the whole year, and Views then processes the resulting range through its normal date filter. There is no settings page and no configuration object of its own; the widget is selected per filter in the Views UI, and BEF stores that choice in the display's exposed-form settings. It depends on `better_exposed_filters` (which brings Views) and runs on Drupal `^10 || ^11`. Because a range that resolves against "the current year" is time-dependent, a page cached for a long lifetime can show a stale idea of "now", so confirm the display's cache max-age where that matters.
 
 ---
 
-- Give an exposed date filter a date picker.
-- Let visitors pick a date range.
-- Stop visitors typing dates in the wrong format.
-- Filter events by date visually.
-- Improve a news archive's filters.
-- Add a from/to range control.
-- Filter a calendar listing.
-- Reduce empty result sets from bad input.
-- Improve mobile date entry.
-- Filter by publication date.
-- Combine date filters with BEF's other widgets.
-- Provide a "next 30 days" style filter.
-- Improve an events listing's usability.
-- Filter a report by period.
-- Make an exposed filter accessible.
-- Support a booking availability search.
-- Filter by a date range on a field.
-- Improve a document archive's search.
+- Filter a news archive by year and month with dropdowns.
+- Turn a "content is between two dates" filter into year/month selects.
+- Let visitors browse posts month by month.
+- Filter a blog listing by publication year.
+- Filter events by the month they occur.
+- Stop visitors having to type dates in the right format.
+- Reduce empty result sets caused by bad date input.
+- Add a whole-year filter (pick a year, leave the month blank).
+- Add a single-month filter (pick a year and a month).
+- Improve mobile usability of a date filter (selects, not typing).
+- Filter a document archive by period.
+- Filter a report view by year.
+- Give an exposed created/changed-date filter a friendlier control.
+- Filter a photo gallery by month taken.
+- Browse meeting minutes by year and month.
+- Filter podcast episodes by release month.
+- Provide an "archive by month" style navigation on a view.
+- Combine the year/month widget with BEF's other exposed-filter widgets.
+- Filter a datetime field ("Is between") without a date picker.
+- Make a date-range filter accessible via labelled selects.

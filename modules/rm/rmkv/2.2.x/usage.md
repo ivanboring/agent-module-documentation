@@ -1,33 +1,28 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Remove system.schema key/value (rmkv) provides Drush commands to delete `system.schema` key/value entries left behind when a module's code is gone but its schema record is not — the state that makes Drupal complain about a missing module it can no longer uninstall.
+Remove system.schema key/value (rmkv) provides two Drush commands that delete orphaned entries from Drupal's `system.schema` key/value collection — the records left behind when a module, theme, or profile is removed from disk without first being uninstalled.
 
 ---
 
-There is a specific, maddening failure state in Drupal maintenance: a module was removed from the codebase (deleted from `modules/`, dropped from composer) without being uninstalled first. Its code is gone, but its entry in the `system.schema` key/value store remains. Drupal now knows about a module it cannot find — update runs warn, `drush pm:uninstall` cannot act because there is no code to run `hook_uninstall()`, and the site carries a phantom dependency.
-
-The correct fix is surgical: delete the orphaned `system.schema` entry directly. Doing that by hand means a raw key/value delete against the database, which is exactly the kind of manual surgery that is easy to get wrong. This module packages it as Drush commands, so the operation is named, repeatable and less error-prone than a hand-written query.
-
-That also makes it a **maintenance and recovery tool, not a site feature** — it belongs in a developer's or operator's toolkit, run deliberately when this situation arises, not left enabled as part of a site's normal function. Because it deletes schema bookkeeping, use it only when you understand which entry is orphaned; removing the wrong key would tell Drupal a still-present module is uninstalled. This campaign's own workflow notes describe the same orphaned-schema state as a recovery scenario; this module is one way to resolve it.
+Drupal keeps every installed extension's last-run schema/update version in the `system.schema` key/value store. If a module (or theme/profile) is deleted from the codebase before being properly uninstalled, its `system.schema` entry is orphaned, and the status report warns "Module {name} has an entry in the system.schema key/value storage, but is missing from your site." rmkv fixes this from the command line. The service `rmkv.commands` (`Drupal\rmkv\Commands\RemoveKeyValueCommands`) loads the `system.schema` store via the `keyvalue` factory and injects `extension.list.profile`, `module_handler`, and `theme_handler` to confirm a name is genuinely absent from the site. `drush rmkv:check <machine_name>` is a read-only test that reports whether the entry can be safely removed; `drush rmkv <machine_name>` performs the deletion, but only when the entry exists and does not belong to an installed profile, module, or theme — so it cannot clobber a live extension's schema record. The module has no web routes, permissions, or configuration; the equivalent browser form is provided by the bundled `rmkv_form` submodule. Always back up the database before removing a record, and confirm the target is truly orphaned first.
 
 ---
 
-- Remove an orphaned system.schema entry.
-- Fix "module is missing" after deleting code.
-- Recover from a module removed without uninstall.
-- Clear a phantom module dependency.
-- Stop update warnings about a gone module.
-- Delete a stale schema key via Drush.
-- Avoid a raw database key/value delete.
-- Package schema surgery as a command.
-- Clean up after an aborted uninstall.
-- Resolve a half-removed module.
-- Run it as a recovery step.
-- Keep it in an operator toolkit.
-- Confirm which entry is orphaned first.
-- Repair a broken update path.
-- Remove a schema record with no code.
-- Undo a code-first module deletion.
-- Script the fix across environments.
-- Diagnose a missing-module error.
-- Restore a clean module list.
-- Use it deliberately, not as a feature.
+- Clear the "has an entry in the system.schema key/value storage, but is missing from your site" status-report warning.
+- Remove the leftover schema record of a module deleted from disk without being uninstalled.
+- Clean up after a contrib module was `rm -rf`'d instead of `drush pm:uninstall`'d.
+- Recover a site whose update/status page complains about a missing-but-recorded module.
+- Verify with `drush rmkv:check` whether a machine name is safe to purge before deleting it.
+- Purge orphaned schema entries left by a removed theme.
+- Purge orphaned schema entries left by a removed install profile.
+- Script the cleanup of several orphaned schema records across environments in a deploy hook.
+- Confirm a suspected orphan is really orphaned without changing anything (`rmkv:check`).
+- Avoid manual `key_value` table edits by using a guarded command instead.
+- Tidy a database imported from a project that shipped extra modules you never installed.
+- Resolve phantom dependency/updates noise caused by a stale `system.schema` key.
+- Remove a schema record for a renamed module after moving to its new machine name.
+- Clean up experimental modules removed during development without a full uninstall.
+- Restore a clean status report before running Drupal core or contrib updates.
+- Automate orphaned-schema cleanup in CI when rebuilding a site from a database dump.
+- Fix update.php / `drush updb` noise about a module that no longer exists.
+- Safely refuse (via the built-in guard) to delete the schema of a still-installed module.
+- Diagnose which of several warnings correspond to truly removable entries.
+- Provide developers a reproducible CLI step for a rare but time-consuming recovery task.

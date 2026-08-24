@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-NBSP Filter manages non-breaking spaces in filtered text — inserting them where typography requires and removing the stray ones editors accumulate.
+NBSP Filter is a text-format filter that manages non-breaking spaces at render time: it can strip every existing non-breaking space back to a normal space, then insert `&nbsp;` or narrow no-break spaces (U+202F) before and after configured characters — chiefly to keep punctuation from wrapping onto a new line the way French and Spanish typography require.
 
 ---
 
-Non-breaking spaces are a genuine typographic requirement and a genuine editorial nuisance. Required, because some languages and conventions demand them: French puts one before `; : ! ?`, many style guides forbid a line break between a number and its unit or between a title and a surname. A nuisance, because editors pasting from Word bring hundreds of them in, where they defeat text wrapping, break search matching and leave odd gaps. Handling this as a **text filter** rather than in the editor is the right architecture — it applies at render time to all content including migrated and API-submitted text, where an editor plugin only affects what is typed after installation. The module is configured through the ordinary text format interface (`configure: filter.admin_overview` points at the format list), depends on core only, and spans `^8 || ^9 || ^10 || ^11`. Two notes: filter order matters, since a filter that runs after markup-restricting filters sees different text; and inserting non-breaking spaces changes what search indexes and string comparisons see, so a site with strict search matching should verify the interaction.
+The module registers a single `@Filter` plugin (`nbsp_filter`, `TYPE_TRANSFORM_IRREVERSIBLE`) that you enable per text format at `/admin/config/content/formats`, alongside core filters. Its `process()` method runs up to five passes driven by five settings. `clean_all` (default on) first normalises all non-breaking spaces in the text — the `&nbsp;` entity, UTF-8 U+00A0, and the narrow/thin/hair/zero-width space code points — down to plain spaces, which is handy for cleaning content pasted from Word. Then `insert_before` (default `?!;:`) turns a space before those punctuation marks into `&nbsp;`, `insert_after` (default `¿¡`) turns a space after those marks into `&nbsp;`, and `insert_narrow_before`/`insert_narrow_after` (defaults `»` and `«`) turn whitespace around the guillemets into a narrow no-break space. Each character list is applied as a regex character class, so entries should be plain characters. Because it works as a filter rather than an editor plugin, the rules apply to all rendered content — migrated, API-submitted, and hand-typed alike — and settings are stored per format in `filter.format.<id>.filters.nbsp_filter`. The filter's weight in the format decides its order relative to other filters; since it only inserts space entities it is best placed late so its output is preserved. Core-only, no dependencies, no permissions, no drush.
 
 ---
 
-- Add non-breaking spaces before French punctuation.
-- Strip stray nbsp pasted from Word.
-- Keep a number and its unit together.
-- Prevent a line break in a title.
-- Apply typographic rules at render time.
-- Clean up imported content's spacing.
-- Enforce a house style automatically.
-- Handle French typography correctly.
-- Fix wrapping around currency symbols.
-- Apply rules per text format.
-- Cover migrated content automatically.
-- Keep initials with a surname.
-- Reduce manual typographic correction.
-- Improve text rendering quality.
-- Fix spacing in a multilingual site.
-- Clean up editor-introduced whitespace.
-- Apply typography without editor plugins.
-- Support a publishing style guide.
+- Add a non-breaking space before French punctuation (`? ! ; :`).
+- Add a non-breaking space after inverted Spanish marks (`¿ ¡`).
+- Insert narrow no-break spaces inside guillemets (`» «`).
+- Strip stray non-breaking spaces pasted from Word.
+- Normalise thin, hair, and zero-width spaces to plain spaces.
+- Keep a number and its unit on the same line.
+- Prevent a line break in a title before a colon.
+- Apply typographic spacing rules at render time.
+- Clean up spacing in imported/migrated content.
+- Enforce a house style automatically across a format.
+- Handle French typography correctly on a multilingual site.
+- Set the punctuation list per text format.
+- Turn insertion off but keep only the cleanup (`clean_all`).
+- Cover API-submitted content the same as hand-typed.
+- Reduce manual typographic correction for editors.
+- Improve rendered text quality without an editor plugin.
+- Configure the filter programmatically via `FilterFormat::setFilterConfig()`.
+- Export the per-format settings through configuration management.
+- Keep initials with a surname by adding a custom character to the list.
+- Remove non-breaking spaces that defeat text wrapping.

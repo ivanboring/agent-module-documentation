@@ -1,37 +1,34 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-REST Entity Recursive adds a `json_recursive` format that serialises an entity together with everything it references, to whatever depth is configured.
+REST Entity Recursive adds a `json_recursive` REST serialization format that returns a content entity together with every field and referenced entity it points to, inlined recursively in one response, up to a depth you control with `?max_depth=`.
 
 ---
 
-Drupal's default REST serialisation gives you an entity and references as targets — ids you have to fetch separately. For a page built from nested paragraphs with media inside them, that is a request waterfall: fetch the node, discover four paragraphs, fetch them, discover their media, fetch that. A front end doing this is slow in exactly the way a decoupled build is supposed to avoid.
+Drupal's default REST serialization hands back an entity plus its references as bare target ids you then have to fetch one by one. For a page built from nested paragraphs with media inside them, that is a request waterfall: fetch the node, discover its paragraphs, fetch them, discover their media, fetch that. A decoupled front end doing this is slow in exactly the way going headless was supposed to avoid.
 
-A recursive format inlines the tree. One request, everything the consumer needs, with a depth limit to stop it from following references forever.
+`json_recursive` inlines the whole tree instead. Request `GET /node/1?_format=json_recursive` and the response contains the node and every referenced entity expanded in place, each tagged with synthetic `entity_type` and `entity_bundle` keys. A `max_depth` query parameter (default 10, `0` = root only) caps how deep the walk follows references. The work is done by three tagged core-Serialization services — a `JsonRecursiveEncoder` plus a `ContentEntityNormalizer` and a recursion-driving `ReferenceItemNormalizer` — with no route, config object, permission, or plugin of the module's own; who may hit the endpoint is governed by core REST resource configuration.
 
-**This release fatals on class load under Drupal 11.4, and it was verified.** `ReferenceItemNormalizer::normalize()` declares a return type of `array|string|int|float|bool|\ArrayObject|NULL` while core's `EntityReferenceFieldItemNormalizer::normalize()` declares `: array`. PHP return types are covariant — a child may narrow but never widen — so the class cannot be loaded at all:
-
-```
-Fatal error: Declaration of Drupal\rest_entity_recursive\Normalizer\ReferenceItemNormalizer::normalize(…)
-must be compatible with Drupal\serialization\Normalizer\EntityReferenceFieldItemNormalizer::normalize(…): array
-```
-
-The fatal appeared in a live response and took Drush with it; recovery required removing the module from `core.extension` directly. It arrived here as a dependency of `anu_lms`.
-
-**Two design points worth carrying even once the signature is fixed**, because they apply to any recursive serialiser. The depth limit is a correctness control, not a tuning knob — a cyclic reference without one is an infinite response. And **access is applied per entity as the tree is walked**, so a recursive response can legitimately contain some referenced entities and not others; a consumer that assumes a complete tree will misbehave when part of it is filtered out.
+Two behaviors matter to a consumer. Depth is the only bound on recursion — there is no visited-entity tracking — so a cycle is stopped solely by `max_depth`. And access is re-checked at every level as the tree is walked: fields the caller cannot view are dropped and referenced entities the caller cannot view are left as bare targets rather than expanded, so a response can legitimately be a partial tree. Note also that on core 10.2+/11.x the recursion normalizer currently fatals on class load because its `normalize()` return type is wider than the core parent's `: array`, so verify the format works on your core version before relying on it. Tune the output either by enabling the bundled submodules (`rest_media_recursive`, `rest_menu_recursive`, `rest_paragraphs_recursive`) or by adding a higher-priority normalizer that sets the `settings` context (`exclude_fields`, `disable`).
 
 ---
 
-- Fetch an entity and its references in one request.
-- Avoid a request waterfall in a front end.
-- Serialise nested paragraphs with their media.
-- Set a depth limit for recursion.
-- Prevent an infinite response from a cycle.
-- Handle a tree partially filtered by access.
-- Check the module against your core version.
-- Diagnose a normalizer return-type fatal.
-- Understand PHP return type covariance.
-- Recover a site after a class-load fatal.
-- Feed a decoupled front end efficiently.
-- Compare with JSON:API includes.
-- Report the signature upstream.
-- Evaluate it once the return type is fixed.
-- Plan serialisation for a nested content model.
+- Fetch a node and all its referenced entities in a single REST request.
+- Avoid a request waterfall when building a decoupled front end.
+- Serialize nested paragraphs together with their media in one payload.
+- Cap recursion with `?max_depth=3` to keep responses small.
+- Return only the root entity (references as targets) with `?max_depth=0`.
+- Feed a static-site generator the full content tree per entity.
+- Expose an entity graph to a mobile app in one round trip.
+- Select the format per request via `?_format=json_recursive`.
+- Negotiate the format with an `Accept: application/json-recursive` header.
+- Exclude specific fields from the output via a custom normalizer's `settings` context.
+- Stop a given entity type from being expanded via the `settings['disable']` flag.
+- Add image-style URLs to media in the tree with the `rest_media_recursive` submodule.
+- Expand a menu link tree over REST with the `rest_menu_recursive` submodule.
+- Expand Paragraphs and Paragraphs-Library items with `rest_paragraphs_recursive`.
+- Rely on per-entity access filtering so responses respect the caller's permissions.
+- Handle a partially-filtered tree where some references are collapsed to targets.
+- Write a higher-priority normalizer to reshape a specific entity type's output.
+- Check the recursion normalizer against your core version before deploying.
+- Understand PHP return-type covariance when diagnosing the class-load fatal.
+- Compare recursive inlining against JSON:API `include` for a nested content model.
+- Plan a serialization strategy for a deeply nested content model.

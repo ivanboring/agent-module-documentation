@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Views Organization Chart renders a view's results as an organisation chart — boxes connected by lines showing reporting or hierarchical relationships — instead of as a list or table.
+Views Organization Chart renders a view's results as an organization chart — boxes joined by lines showing reporting or hierarchical relationships — instead of as a list or table, using the Highcharts organization chart type.
 
 ---
 
-Staff directories, committee structures and departmental hierarchies are all stored as entities with a parent reference, and Views will happily list them; what it cannot do is show the shape. An organisation chart makes the structure legible at a glance, which is the entire reason such diagrams exist. This module supplies it as a Views **style plugin**, so the content, filtering and sorting remain ordinary Views concerns and only the rendering changes — a view already listing staff can be switched to a chart with one setting, and back again. It depends on core `views` with `config/schema` for its settings, on core `^10 || ^11`. The two things to check when adopting it are the ones that apply to every diagram of hierarchical data: how it behaves at depth and width, since a chart with two hundred people across seven levels is a different rendering problem from a chart with twenty; and how it degrades on a narrow screen, where a wide chart either scrolls or becomes unreadable. Verifying the accessible fallback matters too — a visual hierarchy needs an equivalent that a screen reader can follow.
+Staff directories, committee structures and departmental hierarchies are stored as entities with a parent reference, and Views will happily list them; what a list cannot do is show the shape. This module supplies that shape as a Views style plugin, so content, filtering and sorting stay ordinary Views concerns and only the rendering changes: a view already listing staff switches to a chart with one Format setting and back again. You add two fields to the display — a name field for each node's label and an entity-reference parent field that supplies the hierarchy edges — and optionally a title/subtitle field, an avatar image field (run through the core thumbnail image style), and a comma-separated list of per-level colors. It works with any entity a view can list: taxonomy terms via their parent field, users via a manager reference, or nodes via a content reference. The Highcharts runtime is loaded from the code.highcharts.com CDN at page load, so the chart needs outbound access to that host, and there is no settings page — everything is configured per display in the Views UI. It depends functionally on core Views and runs on Drupal 9 through 12.
 
 ---
 
 - Show a staff structure as a chart.
 - Visualise a departmental hierarchy.
 - Display a committee structure.
-- Show reporting lines.
-- Render a taxonomy hierarchy visually.
-- Build an org chart from content.
+- Show reporting lines between employees.
+- Render a taxonomy term hierarchy visually.
+- Build an org chart from node content.
 - Show a team's structure on an intranet.
-- Switch a staff listing to a chart.
+- Switch a staff listing view to a chart.
 - Present a board and its committees.
-- Show a service hierarchy.
+- Show a service or product hierarchy.
 - Visualise a category tree.
-- Present a project structure.
-- Filter a chart with Views filters.
-- Show one department's branch.
+- Present a project or work-breakdown structure.
+- Filter a chart with ordinary Views filters.
+- Show one department's branch of the tree.
 - Build a directory with visual structure.
 - Present a governance structure.
-- Show an organisational restructure.
-- Render a hierarchy without custom code.
+- Add avatar photos to each chart node.
+- Colour each hierarchy level differently.
+- Render an org chart without writing custom code.
+- Show a manager-to-report tree from a user reference field.

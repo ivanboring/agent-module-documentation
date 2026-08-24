@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Cleaner runs scheduled housekeeping — clearing caches, trimming log tables, optimising the database — on a schedule rather than when someone remembers.
+Cleaner runs scheduled site housekeeping from cron — truncating cache tables, deleting expired sessions, emptying the watchdog log, running MySQL `OPTIMIZE`, and truncating any extra tables you name — with each function turned on individually.
 
 ---
 
-A long-running Drupal site accumulates: cache tables that grow between clears, watchdog rows, session records, orphaned files. None of it is urgent and all of it eventually matters, which is exactly the kind of work that gets deferred until a backup takes an hour or a query slows down. This module puts it on a schedule: a settings form at `/admin/config/system/cleaner` under `administer site configuration` chooses what runs and how often, with `src/EventSubscriber` triggering the work and `src/Event` letting other modules join in. It requires PHP 8.1+ and core `^10 || ^11`, with no module dependencies; the release is **3.0.0-alpha1**. Two things to settle before enabling it. Clearing caches on a schedule is not free — a cache clear on a busy site causes a rebuild storm, so the schedule wants to be off-peak and infrequent rather than hourly. And anything that deletes rows deserves the same treatment as `revision_cleanup` (wave 62): decide the retention policy deliberately, because log and session data can be the record an incident investigation depends on, and deletion is irreversible.
+A long-running Drupal site accumulates cache rows that grow between clears, `watchdog` entries, and abandoned session records; on MySQL, tables also collect unused "overhead" space. Cleaner puts that maintenance on a schedule instead of leaving it to be done by hand. Its `hook_cron` implementation dispatches a single `cleaner.run` event once the configured interval has elapsed since the previous cron run, and five event subscribers — each gated by its own setting in the `cleaner.settings` config object — do the work: flush and truncate `cache_%` tables, truncate an admin-supplied list of additional tables, `OPTIMIZE` MySQL tables that have free space, delete `sessions` rows older than the PHP cookie lifetime, and truncate `watchdog` (only when `dblog` is enabled). Everything is configured on one form at `/admin/config/system/cleaner` under `administer site configuration`, and every action is written to the `cleaner` logger channel. The module ships with all functions disabled and does nothing until you choose an interval and enable at least one function. It requires PHP 8.1+ and core `^10 || ^11`, has no module dependencies, and exposes the `cleaner.run` event so other modules can hook their own periodic cleanup onto the same schedule. The newest release on the 3.0.x branch is `3.0.0-alpha1`.
 
 ---
 
-- Clear caches on a schedule.
-- Trim watchdog rows automatically.
-- Optimise database tables periodically.
-- Keep a long-running site tidy.
-- Reduce database growth.
-- Schedule maintenance off-peak.
-- Shrink backups by pruning logs.
-- Clear stale session records.
-- Automate routine housekeeping.
-- Reduce manual maintenance work.
+- Clear caches on a schedule from cron.
+- Truncate all `cache_%` tables periodically.
 - Keep cache tables from growing unbounded.
-- Free disk space on a small host.
-- Improve query performance over time.
-- Run cleanup through cron.
-- Extend cleanup via events.
-- Reduce time to restore a backup.
-- Apply a retention policy to logs.
-- Keep a legacy site manageable.
+- Empty the `watchdog` log automatically on a test site.
+- Delete expired sessions from the `sessions` table.
+- Reclaim MySQL table overhead with scheduled `OPTIMIZE`.
+- Run `OPTIMIZE LOCAL` to skip replicating the optimization.
+- Truncate custom module tables by naming them in settings.
+- Reduce database growth on a long-running site.
+- Shrink backups by pruning log and cache rows.
+- Improve query performance as tables defragment.
+- Schedule heavy maintenance to run off-peak.
+- Choose a run interval from 15 minutes up to one week.
+- Run cleanup on every cron invocation with the "Every time" setting.
+- Automate routine database housekeeping without a drush script.
+- Extend the cleanup run with your own event subscriber.
+- Trigger a cleanup run programmatically via the event dispatcher.
+- Keep a legacy or low-maintenance site tidy over time.
+- Reduce manual maintenance for site administrators.
+- Free disk space on a small or shared host.

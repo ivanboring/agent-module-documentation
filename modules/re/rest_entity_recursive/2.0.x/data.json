@@ -1,7 +1,7 @@
 {
   "name": "REST Entity Recursive",
   "data_name": "rest_entity_recursive",
-  "description": "Adds a json_recursive REST format exposing all fields and referenced entities by default.",
+  "description": "Registers a json_recursive REST format that serialises a content entity with all of its fields and referenced entities inlined recursively, to a configurable depth.",
   "version": "2.0.x",
   "package": "Web services",
   "composer_namespace": "drupal/rest_entity_recursive",
@@ -16,18 +16,20 @@
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [],
+  "submodules": [
+    "rest_media_recursive",
+    "rest_menu_recursive",
+    "rest_paragraphs_recursive"
+  ],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Decoupled",
-    "Import and export"
+    "Decoupled"
   ],
   "subcategories": [
-    "REST / web services",
-    "Data export"
+    "REST / web services"
   ],
   "keywords": [
     "rest",

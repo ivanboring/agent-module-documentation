@@ -1,27 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-AWS Bedrock Provider makes Amazon Bedrock available to Drupal's AI module, so the models hosted there — Anthropic's Claude, Amazon's own, and others — can back any AI feature on the site.
+AWS Bedrock Provider registers Amazon Bedrock as a provider for Drupal's AI module, so any AI feature can run its chat, embeddings and text-to-image work against Bedrock foundation models — Anthropic Claude, Amazon Titan, Meta Llama, Mistral, Cohere, AI21 and Stable Diffusion — without a feature caring which model backs it.
 
 ---
 
-The AI module abstracts providers so that a feature written against it works with whichever model a site configures, and this supplies the Bedrock one through `aws/aws-sdk-php ^3.316`. Two things make it a notably good fit for organisations that are already on AWS. Credentials are held through the **Key** module (`drupal/key ^1.18` is a hard requirement), so AWS access keys can come from an environment variable or a file provider rather than being written into exported configuration — the pattern this repo requires and the failing that produced findings against other modules in this campaign. And because Bedrock runs inside an AWS account, model usage sits under the same IAM policies, billing and data-residency arrangements as the rest of that account, which is frequently what makes an AI feature approvable at all: prompts do not leave the organisation's cloud tenancy in the way they do with a public API endpoint. Configuration is at `/admin/config/ai/providers/aws_bedrock` under `administer ai providers`. The release is **1.1.0-beta4**, and requirements are core `^10.3 || ^11` with `ai`, `key` and `aws`.
+The AI module abstracts providers so a feature written against it works with whichever model a site configures; this module supplies the Bedrock one via `aws/aws-sdk-php ^3.316`. It authenticates by reusing an AWS "profile" from the Amazon Web Services (`aws`) module rather than asking for keys itself: the settings form at `/admin/config/ai/providers/aws_bedrock` (permission `administer ai providers`) only selects an existing `aws_profile` entity, and the module stores just that profile's id. Because Bedrock runs inside the site's own AWS account, model usage falls under the account's existing IAM policies, billing and region choices, which is often what makes an AI feature approvable for organisations already standardised on AWS. Model discovery queries `listFoundationModels` and can be narrowed to on-demand models or widened with manually listed model ids (useful when IAM grants run-but-not-list access); the discovered list is cached and refreshed on save. The plugin supports chat (Converse API, streaming, tool calling, image input), text and image embeddings, and text-to-image. The documented release is 1.1.0-beta4; requirements are core `^10.3 || ^11` with `ai`, `key` and `aws`.
 
 ---
 
-- Use Claude models through AWS Bedrock.
-- Keep AI usage inside an AWS account.
-- Hold AWS credentials in a Key entity.
-- Meet a data-residency requirement for AI.
-- Bill AI usage through AWS.
-- Apply IAM policies to model access.
-- Back Drupal AI features with Bedrock.
-- Avoid sending prompts to a public API.
-- Use an approved cloud provider for AI.
-- Switch models without changing features.
-- Support an AWS-standardised organisation.
-- Use Bedrock for translation or summarisation.
-- Configure credentials from environment variables.
-- Support a regulated AI deployment.
-- Use a region-specific model endpoint.
-- Combine Bedrock with other AI providers.
-- Meet a procurement requirement for AI hosting.
-- Audit AI usage through AWS.
+- Back Drupal AI features with AWS Bedrock foundation models.
+- Use Anthropic Claude models through Bedrock.
+- Use Amazon Titan text, embedding and image models.
+- Use Meta Llama, Mistral, Cohere or AI21 chat models.
+- Generate images with Stable Diffusion XL or Titan Image Generator.
+- Produce text embeddings for a vector search index.
+- Produce image embeddings with Titan multimodal embeddings.
+- Keep AI traffic inside an existing AWS account and region.
+- Reuse an AWS module profile (access keys or assumed IAM role) for auth.
+- Apply AWS IAM policies and billing to model usage.
+- Switch the backing model without changing the AI feature.
+- Run streaming chat responses from Bedrock.
+- Call Bedrock tools / function calling from an agent.
+- Send images into a Claude 3 vision chat.
+- Restrict the model picker to on-demand models only.
+- Add a provisioned or otherwise unlisted model by id manually.
+- Combine Bedrock with other AI providers on the same site.
+- Meet a data-residency requirement for AI processing.
+- Run an optional moderation pass before each request.
+- Hot-swap the AWS profile per call for multi-account setups.
+- Reach the raw BedrockRuntime SDK client from custom code.
+- Use Bedrock for summarisation, translation or classification.

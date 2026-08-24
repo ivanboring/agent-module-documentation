@@ -1,7 +1,7 @@
 {
   "name": "Lionbridge Translation Provider",
   "data_name": "tmgmt_contentapi",
-  "description": "TMGMT translator plugin for the Lionbridge Content API.",
+  "description": "TMGMT translator plugin that connects Drupal to the Lionbridge Content API for professional (human) translation.",
   "version": "9.4.x",
   "package": "Translation Management",
   "composer_namespace": "drupal/lionbridge_translation_provider",
@@ -9,8 +9,8 @@
   "dependent_modules": [
     "tmgmt:tmgmt"
   ],
-  "configure": null,
-  "core_version_requirement": "^10 || ^11",
+  "configure": "entity.tmgmt_translator.collection",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/lionbridge_translation_provider",
@@ -19,17 +19,18 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "FormatPlugin (Plugin/tmgmt_contentapi/Format, manager plugin.manager.tmgmt_contentapi.format)"
+  ],
   "categories": [
     "Multilingual",
     "Integrations"
   ],
   "subcategories": [
-    "Language switcher",
-    "REST / web services"
+    "Translation / multilingual"
   ],
   "keywords": [
     "lionbridge",
