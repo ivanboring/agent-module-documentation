@@ -14,7 +14,7 @@
   "dependent_modules": [
     "monitoring:monitoring"
   ],
-  "configure": null,
+  "configure": "ohdear_integration.settings",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -22,19 +22,23 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [
-    "ohdearapp/ohdear-php-sdk ^4.4.0"
+    "ohdearapp/ohdear-php-sdk ^4.4.0",
+    "ohdearapp/health-check-results ^1.0"
   ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
-  "provides_drush_commands": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Administration tools",
-    "Security"
+    "Integrations",
+    "Performance",
+    "Administration tools"
   ],
   "subcategories": [
+    "Health check endpoint",
+    "Application performance monitoring",
     "Error tracking & monitoring",
     "Dashboard / reporting"
   ],

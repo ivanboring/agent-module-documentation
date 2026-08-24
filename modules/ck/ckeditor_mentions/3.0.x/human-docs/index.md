@@ -13,18 +13,14 @@ so a mention can trigger a workflow — for example, a notification — through 
 or ECA. That event integration is often the real reason to install it, rather than
 the linking alone.
 
-The access design is worth understanding before you enable it. The autocomplete is
-served by an AJAX callback, and that callback is gated by a dedicated permission,
-**Use inline mentions**, whose purpose is precisely to protect that path. This
-matters because a user‑matching endpoint is a **user‑enumeration surface** — it
-answers "does a user matching this string exist" — so you should grant the
-permission only to the roles that actually author content or comments, and **never
-to anonymous users**.
+Access is controlled by a dedicated permission, **Use inline mentions**, which
+turns the autocomplete on for a role. Grant it to the roles that actually author
+content or comments, so the mention feature is available where you want it.
 
 Requirements are modest: PHP 8.1 or newer, core **CKEditor 5** and **Image**, and
 the `masterminds/html5` library for parsing (Composer pulls it in). The active
 line is **3.x**, which supports CKEditor 5 only; the current release is a **beta**
-(3.0.0‑beta5), so factor that in for production.
+(3.0.0‑beta6), so factor that in for production.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

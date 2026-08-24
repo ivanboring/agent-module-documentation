@@ -1,27 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Read time calculates and displays how long content will take to read — the "5 min read" line that has become standard on articles.
+Read time displays an estimated "X min read" line on nodes, calculated as the word count of chosen text fields divided by an assumed words-per-minute and shown as a placeable pseudo-field.
 
 ---
 
-The label does a small amount of real work: it sets expectations before someone starts, and readers use it to decide whether to read now or save for later, which is why publishing platforms adopted it almost universally. Calculating it is a word count divided by an assumed reading speed, and the value of a module rather than a snippet is that the calculation is consistent, configurable and available wherever content is rendered rather than only where somebody remembered to add it. This module handles that, with configuration schema for the settings and a wide core range of `^8.8 || ^9 || ^10 || ^11`; the release is **2.0.0-beta4**. Two things worth knowing when configuring it. The assumed words-per-minute is a **convention rather than a measurement** — the common figures of 200–250 wpm come from studies of adult reading of prose, and technical content, tables and code read far more slowly, so a documentation site's estimates will be optimistic. And what counts as a word matters: whether images, captions and embedded media contribute to the estimate changes the answer noticeably on a picture-heavy article.
+Configuration is per content type: a "Read time" tab on each node type's edit form lets you enable the feature, pick which text fields (and paragraph reference fields) are counted, set the words-per-minute divisor (default 225), choose a format (hours & minutes or minutes only, in short or long wording), and set a display template with a `:read_time` token. Enabling a type exposes a `read_time` pseudo-field you position at Manage Display, per view mode, so the estimate can appear on full nodes, teasers and listings consistently. The value is computed by stripping tags from the selected fields and dividing `str_word_count` by the words-per-minute, then cached in a dedicated `read_time` database table and recomputed whenever the node is inserted or updated. Because it is cached, changing the words-per-minute or the counted fields does not retouch already-saved nodes until each is re-saved. The module has no global settings page, defines no permissions or drush commands, and requires only core's node module (with optional support for Paragraphs).
 
 ---
 
-- Show "5 min read" on an article.
+- Show a "5 min read" line on articles.
 - Set reader expectations before they start.
-- Help readers decide what to read now.
-- Display reading time in a teaser.
-- Add reading time to a listing.
-- Configure assumed reading speed.
-- Show reading time in an RSS description.
-- Improve engagement on long-form content.
-- Give a blog a familiar convention.
+- Help readers decide what to read now versus save.
+- Display reading time in a teaser view mode.
+- Add reading time to a content listing.
+- Configure the assumed reading speed per content type.
+- Count only the body field toward the estimate.
+- Include additional text fields in the estimate.
+- Count text inside referenced Paragraphs.
+- Show reading time as "1 hour, 5 minutes".
+- Show reading time as compact "65 mins".
+- Add a custom label around the number via the display template.
+- Position the read-time field with Manage Display.
+- Show reading time only on the full node, not teasers.
+- Give a blog a familiar reading-time convention.
 - Display reading time per content type.
-- Reduce bounce on long articles.
 - Show read time in a card component.
-- Support a documentation site's navigation.
-- Add reading time to search results.
-- Signal article length consistently.
-- Improve a magazine-style listing.
-- Show read time on a mobile teaser.
-- Support a newsletter's article list.
+- Support a documentation site's article navigation.
+- Add reading time to search-result rows.
+- Signal article length consistently across templates.
+- Improve a magazine-style article index.
+- Refresh a node's estimate by re-saving it after tuning the speed.

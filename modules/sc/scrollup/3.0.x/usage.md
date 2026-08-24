@@ -1,27 +1,33 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Scrollup adds the floating "back to top" button that appears once a visitor has scrolled down a long page.
+Scrollup adds a floating "scroll to top" button that appears once a visitor has scrolled down a long page and smooth-scrolls back to the top when clicked.
 
 ---
 
-The control is a small usability convention with a real purpose on long pages, particularly on mobile where there is no keyboard Home key and the alternative is a lot of swiping. This module supplies it configurably — a settings form at `/admin/config/system/scrollup` under `administer site configuration` controls appearance and behaviour, with `config/schema` for the settings — depending on nothing beyond core and targeting `^10.3 || ^11.0`, an unusually narrow range that excludes earlier Drupal 10 minors. Three things are worth getting right when configuring it, all accessibility rather than aesthetics: the button must be **keyboard reachable and focusable**, since a control only usable by pointer excludes exactly the users who benefit most from not having to scroll; it needs an accessible name, because an icon-only button announces nothing useful; and the scroll itself should respect `prefers-reduced-motion`, since an animated jump to the top is precisely the kind of motion that causes problems for people with vestibular disorders. Those are the same considerations recorded for `animated_scroll_to` in wave 61.
+The module needs no theme code: a `hook_preprocess_page` implementation attaches a small vanilla-JavaScript behavior and a stylesheet to every page rendered with a selected theme, and the button is injected into the `<body>` client-side. A settings form at `/admin/config/system/scrollup` (permission `administer site configuration`) writes a single config object, `scrollup.settings`, controlling the button label, its side (left/right, RTL-aware), background and hover colors, the scroll offset after which it appears, the scroll speed, and which installed themes display it. It depends on nothing beyond core and targets `^10.3 || ^11.0`. Because the control is purely presentational and injected the same way on every page of a selected theme, configuration is site-wide rather than per-page; teams that need finer visibility or accessible-name/reduced-motion guarantees should plan to override the CSS and markup in their own theme.
 
 ---
 
 - Add a back-to-top button to long pages.
-- Improve navigation on mobile.
-- Help visitors return to the menu.
-- Show the button after scrolling.
-- Configure the button's position.
-- Improve usability on a documentation page.
-- Reduce swiping on long articles.
-- Style the button to match a theme.
-- Add the control without theme code.
-- Improve a long listing page.
-- Support readers of long-form content.
-- Show the button only on selected pages.
-- Provide a keyboard-reachable control.
-- Improve a policy document's navigation.
-- Reduce friction on a long form.
-- Add a familiar UI convention.
-- Support a mobile-first audience.
-- Configure appearance centrally.
+- Improve navigation on mobile where scrolling is tedious.
+- Help visitors return to the top menu quickly.
+- Show the button only after a set scroll distance.
+- Choose whether the button sits on the left or right.
+- Match the button's background color to a theme.
+- Change the hover color of the button.
+- Rename the button label from "Scroll up".
+- Restrict the button to specific themes only.
+- Enable the button on the front-end theme but not the admin theme.
+- Improve usability on a long documentation page.
+- Reduce swiping on long-form articles.
+- Support readers of long policy or legal documents.
+- Add a familiar UI convention without writing JavaScript.
+- Improve a long product listing or archive page.
+- Speed up or slow down the smooth scroll animation.
+- Configure appearance centrally from one settings form.
+- Add the control without touching theme templates.
+- Help users on a long single-page site return to navigation.
+- Provide a consistent scroll-to-top across a multi-theme site.
+- Reduce friction on a long checkout or registration form.
+- Set the scroll threshold higher on pages with a tall header.
+- Give a mobile-first audience an easy way back to the top.
+- Restyle the button by overriding `.scrollup` in a custom theme.

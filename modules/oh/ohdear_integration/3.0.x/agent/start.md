@@ -1,33 +1,38 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-# OhDear Integration (ohdear_integration) — agent index
+# ohdear_integration — agent index
 
-Publishes `monitoring` sensor results to **Oh Dear**, and pulls Oh Dear's data back into the
-Drupal admin. Depends on `monitoring ^1.11`; SDK `ohdearapp/ohdear-php-sdk ^4.4.0`.
-Core requirement `^10 || ^11`.
+Integrates a Drupal site with the **Oh Dear** monitoring service. It publishes the
+`monitoring` module's sensor results as an Oh Dear *application health check* JSON
+endpoint, pings Oh Dear on cron (scheduled-tasks monitoring), and pulls Oh Dear data
+(checks, uptime, broken links, maintenance windows) back into Drupal admin report
+pages and drush commands through the Oh Dear PHP SDK.
 
-| Route | Path | Access |
-|---|---|---|
-| `…healthcheck` | `/json/oh-dear-health-check-results` | **`_access: 'TRUE'`** — authenticated in the controller |
-| `…settings` | `/admin/config/system/ohdear-settings` | `administer site configuration` |
-| `…info` / `…broken_links` / `…uptime` | `/admin/reports/ohdear/…/{monitor_id}` | `access ohdear info` |
+- Requires `monitoring` (`monitoring:monitoring`); Composer also pulls
+  `ohdearapp/ohdear-php-sdk ^4.4.0` and `ohdearapp/health-check-results ^1.0`.
+- Core: `^10 || ^11`. Configure route: `ohdear_integration.settings`
+  (`/admin/config/system/ohdear-settings`).
+- Defines 1 permission, 4 drush commands and config schema; no plugin types.
 
-**The `_access: 'TRUE'` is compensated, and this was verified.** `OhDearIntegrationController::access()`
-requires either a matching `oh-dear-health-check-secret` (header **or query parameter**) or the
-`monitoring reports` permission; denials are logged and returned `no-store`. Probed on this site:
+## What you'd do → doc
+- **Set the health secret / API key / cron URI / monitor id** → [configure/settings.md](configure/settings.md)
+- **Understand the health-check JSON endpoint & its caching** → [api/healthcheck-endpoint.md](api/healthcheck-endpoint.md)
+- **Call the Oh Dear data services / read the report pages** → [api/services.md](api/services.md)
+- **Run maintenance / info / uptime / broken-links from the CLI** → [drush/commands.md](drush/commands.md)
+- **Grant access to the Oh Dear report pages** → [permissions/permissions.md](permissions/permissions.md)
+- **Ping Oh Dear scheduled-tasks on cron** → [hooks/cron.md](hooks/cron.md)
 
-```
-anonymous, no secret     -> {"error": "Access denied!"} HTTP 403
-anonymous, wrong secret  -> {"error": "Access denied!"} HTTP 403
-```
-
-Two improvements a maintainer would want:
-- **`hash_equals()` instead of `===`** — the comparison is strict (so no numeric-string juggling,
-  unlike `cache_utility` in wave 61) but is not constant-time.
-- **Drop the query-parameter form of the secret.** A secret in a URL lands in web-server access
-  logs, `Referer` headers and proxy logs; a header does not. Configure the monitor to send the
-  header.
-
-Other notes:
-- The endpoint publishes whatever `monitoring`'s sensors report — cron status, available security
-  updates, disk and database health. That is useful to operations and useful to an attacker, which
-  is why the secret matters.
+## Key facts
+- Config object `ohdear_integration.settings` — keys `ohdear_healthcheck_secret`,
+  `ohdear_cron_uri`, `ohdear_api_key`, `ohdear_monitor_id`, plus optional
+  `healthcheck_cache_max_age` (read by code, not in the shipped schema).
+- Env overrides (each wins over config): `OHDEAR_API_KEY`, `OHDEAR_HEALTHCHECK_SECRET`,
+  `OHDEAR_MONITOR_ID`, `OHDEAR_CRON_URI`.
+- Routes: `ohdear_integration.healthcheck` → `/json/oh-dear-health-check-results`;
+  `ohdear_integration.settings` → `/admin/config/system/ohdear-settings`;
+  `ohdear_integration.info` / `.broken_links` / `.uptime` →
+  `/admin/reports/ohdear/{info,broken-links,uptime}/{monitor_id}`.
+- Services: `ohdear_healthcheck.generator` (OhDearHealthcheckGenerator),
+  `ohdear_sdk` (OhDearSdkService), `ohdear_integration.info` (OhDearInfo), and a
+  page-cache request policy `ohdear_healthcheck.page_cache_request_policy.disallow_ohdear_healthcheck_requests`.
+- Permission: `access ohdear info`. Drush: `ohdear:maintenance`, `ohdear:info`,
+  `ohdear:broken-links`, `ohdear:uptime`.

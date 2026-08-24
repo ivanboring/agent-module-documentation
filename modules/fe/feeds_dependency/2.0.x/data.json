@@ -5,12 +5,14 @@
   "version": "2.0.x",
   "package": "Feeds",
   "composer_namespace": "drupal/feeds_dependency",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/feeds": "~3.0"
+  },
   "dependent_modules": [
     "feeds:feeds"
   ],
   "configure": null,
-  "core_version_requirement": "^9 || ^10 || ^11",
+  "core_version_requirement": "^9 || ^10",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/feeds_dependency",
@@ -21,13 +23,13 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content"
+    "Import and export"
   ],
   "subcategories": [
-    "Feeds / import"
+    "Content migration / import"
   ],
   "keywords": [
     "feeds",

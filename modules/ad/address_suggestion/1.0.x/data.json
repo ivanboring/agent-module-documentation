@@ -5,7 +5,9 @@
   "version": "1.0.x",
   "package": "Field types",
   "composer_namespace": "drupal/address_suggestion",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/address": "^1 || ^2"
+  },
   "dependent_modules": [
     "address:address"
   ],
@@ -21,7 +23,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": false,
+  "provides_config_schema": true,
   "provides_plugin_types": [
     "AddressProvider"
   ],
@@ -30,6 +32,7 @@
     "Integrations"
   ],
   "subcategories": [
+    "Address autocomplete / verification",
     "Geospatial / location",
     "Form widgets / select UI"
   ],

@@ -1,18 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Scrollup (scrollup) — agent index
 
-Floating "back to top" button. No dependencies. **Core requirement `^10.3 || ^11.0`** — narrow,
-excluding earlier Drupal 10 minors.
-Settings at `/admin/config/system/scrollup` (`administer site configuration`).
+Adds a floating "scroll to top" button that appears after the visitor scrolls down a page and
+smooth-scrolls back to the top when clicked. Pure config + a vanilla-JS `Drupal.behaviors`; no
+dependencies beyond core. Core: `^10.3 || ^11.0`.
+
+- Configure route: `scrollup.form` at `/admin/config/system/scrollup` (permission
+  `administer site configuration`). Menu link `scrollup.admin` under `system.admin_config_ui`.
+- Defines no permissions, no services, no drush, no plugins. Provides config schema.
+
+Solution docs:
+- **Set the label, position, colors, appear-threshold, speed, and which themes show it** →
+  [configure/settings.md](configure/settings.md)
+- **How the button is attached and rendered (library, drupalSettings, JS behavior, CSS)** →
+  [theme/button.md](theme/button.md)
 
 Key facts:
-- **Three accessibility points to verify, not aesthetics:**
-  1. **Keyboard reachable and focusable** — a pointer-only control excludes the users who most
-     benefit from not scrolling.
-  2. **Accessible name** — an icon-only button announces nothing useful to a screen reader.
-  3. **Respect `prefers-reduced-motion`** — an animated jump to the top is exactly the motion that
-     affects people with vestibular disorders. Same point as `animated_scroll_to` (wave 61).
-- Surface: `src/Form/ScrollupForm.php`, `config/install`, `config/schema`, libraries. No routes
-  beyond the settings form, no permissions of its own.
-- Consider whether CSS `scroll-behavior: smooth` plus a plain anchor covers the requirement — it
-  needs no module and honours reduced-motion automatically.
+- Config object: `scrollup.settings` (schema `config/schema/scrollup.schema.yml`, type `config_object`).
+- Config keys: `scrollup_themename` (sequence), `scrollup_title`, `scrollup_window_position`,
+  `scrollup_speed`, `scrollup_position`, `scrollup_button_bg_color`, `scrollup_button_hover_bg_color`.
+- Form: `\Drupal\scrollup\Form\ScrollupForm` (`ConfigFormBase`, form id `scrollup_form`), injects
+  `theme_handler`.
+- Attach hook: `scrollup_preprocess_page()` attaches library `scrollup/scrollup` + drupalSettings
+  only when the active theme is listed in `scrollup_themename`.
+- Library `scrollup/scrollup`: `js/scrollup_top.js`, `css/scrollup_top.css`; deps
+  `core/drupalSettings`, `core/drupal`, `core/once`. JS behavior `Drupal.behaviors.scrollup`.
+- Defaults seeded by `scrollup_install()`: position `1`, bg `#CCCCCC`, hover `#000000`,
+  title `Scroll up`, window position `600`, speed `0`, themename `[<default theme>]`.
