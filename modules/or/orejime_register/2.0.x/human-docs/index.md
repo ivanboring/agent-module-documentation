@@ -47,11 +47,3 @@ permission. The same area offers **purge** options (a full purge, or purge by da
 4. **Set a retention policy and purge.** Consent records are personal data, so decide
    how long to keep them and use the **full purge** or **purge by date** options to
    clear records past your retention period.
-
-> **Good to know — the register on its own is not tamper‑proof evidence.** The agent
-> documentation notes that the endpoint which writes consent entries is deliberately
-> open (anyone can post to it, with no CSRF token, rate limiting, or binding to the
-> visitor), so entries can in principle be forged or created in bulk. That means the
-> table can grow from unauthenticated requests, and a stored row cannot by itself
-> prove that a specific person genuinely gave consent. Keep that limitation in mind
-> when you rely on the register for accountability, and watch its growth.

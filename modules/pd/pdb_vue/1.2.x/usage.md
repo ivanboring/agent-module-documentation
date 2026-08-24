@@ -1,27 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-PDB Vue enables Vue.js components to be placed as Drupal blocks through **Progressively Decoupled Blocks** — the middle path between a fully decoupled front end and a purely server-rendered site.
+PDB Vue registers Vue.js as a framework for the Progressively Decoupled Blocks (`pdb`) module: any module or theme that ships a Vue component folder becomes a placeable Drupal block that mounts a Vue app or component in that block's region, while Drupal keeps rendering the rest of the page.
 
 ---
 
-Full decoupling means a separate application, its own routing, its own build and deployment, and losing Drupal's block layout, contextual links and page assembly. Progressive decoupling keeps Drupal rendering the page and lets JavaScript take over specific regions — the interactive shopping basket, the live dashboard — which is often the right trade. PDB provides that mechanism generically; this module adds Vue as a supported framework, with `src/Render` and `src/Plugin` handling the rendering and block integration and a settings form at `/admin/config/services/pdb-vue` behind `administer decoupled vue blocks`. The eleven example submodules are the real documentation: `vue_example_*` and `vue3_example_*` cover Vue 2 and Vue 3, `vue3_vite` and `vue_example_webpack` show two build toolchains, `vue3_pinia_a`/`vue3_pinia_b` demonstrate shared state between two separately placed components, and `vue_spa_component`/`vue3_spa_component` show a single-page app inside a block. Requirements are `pdb >= 1.0` and core `^9 || ^10 || ^11`. Worth noting that Vue 2 reached end of life at the end of 2023, so new work belongs on the Vue 3 examples.
+Full decoupling means a separate front-end application with its own routing, build and deployment, and it gives up Drupal's block layout, contextual links and page assembly. Progressive decoupling keeps Drupal in charge of the page and hands specific regions — an interactive basket, a live dashboard — to JavaScript, which is often the right trade for a single feature. The parent `pdb` module provides that mechanism generically by discovering "component" directories (an `*.info.yml` with `type: pdb`) across the codebase; `pdb_vue` adds Vue as a supported `presentation`. It exposes each discovered Vue component as a `vue_component` block derivative, attaches the correct Vue 2 or Vue 3 libraries (plus Vuex, Pinia and vue-demi) per a site-wide setting, auto-builds a block config form from the component's declared fields, and passes those field values into the component as Vue props and via `drupalSettings`. A settings page at `/admin/config/services/pdb-vue` chooses the Vue version, toggles an un-minified development mode (which also reveals the shipped example components), and enables a Single-Page-App mode that mounts one global Vue app so components can be placed multiple times. Eleven example components (Vue 2 and Vue 3, template files, Vite and webpack builds, Pinia-shared state, and in-block SPAs) are the practical documentation. Vue 2 reached end of life at the end of 2023, so new work belongs on the `vue3_*` examples.
 
 ---
 
-- Place a Vue component as a Drupal block.
-- Add interactivity to one region of a page.
-- Avoid full decoupling for a single feature.
-- Keep Drupal's block layout and page assembly.
-- Share state between two Vue blocks with Pinia.
-- Build a dashboard widget in Vue.
-- Run a small SPA inside a Drupal page.
-- Use Vite as the build toolchain.
-- Learn the pattern from shipped examples.
-- Add a live-updating component.
-- Reuse an existing Vue component in Drupal.
-- Give a team a Vue entry point.
-- Progressively modernise a front end.
-- Build an interactive form in Vue.
-- Keep server-side rendering for the rest of the page.
-- Place the same component in several regions.
-- Migrate from Vue 2 to Vue 3 examples.
-- Prototype a decoupled feature cheaply.
+- Place a Vue.js component as a Drupal block.
+- Add interactivity to one region of a page without decoupling the whole site.
+- Keep Drupal's block layout, contextual links and page assembly.
+- Choose Vue 3 (default) or Vue 2 site-wide from one settings page.
+- Pass block configuration fields into a Vue component as props.
+- Read a placed block's settings in Vue via `drupalSettings.pdb.configuration`.
+- Render the same component in several regions using SPA component mode.
+- Run a small single-page app inside a Drupal page.
+- Share state between two separately placed blocks with Pinia.
+- Use Vuex for legacy or Vue 2 state management.
+- Turn on development mode to load Vue Devtools and expose demo blocks.
+- Ship a Vue block from a custom module or subtheme, no PHP required.
+- Provide a component's markup from a separate `template.html` file.
+- Build components with Vite and serve the bundle from a block.
+- Build components with the Vue CLI / webpack toolchain.
+- Attach an extra JS library (e.g. Pinia) to a component from its info.yml.
+- Override or swap the bundled Vue library from a theme.
+- Mount the global SPA Vue instance on a custom root element.
+- Progressively modernise a legacy front end one block at a time.
+- Prototype a decoupled feature cheaply before committing to full decoupling.
+- Give a front-end team a Vue entry point inside an existing Drupal site.
+- Learn the integration pattern from the eleven shipped example components.

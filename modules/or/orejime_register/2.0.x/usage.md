@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Orejime Register records every cookie consent acceptance and decline made through the Orejime consent manager into a database table, so a site can show what visitors chose.
+Orejime Register records every cookie-consent acceptance and decline made through the Orejime consent manager into a database table, so a site can show and audit what visitors chose.
 
 ---
 
-Orejime handles the consent dialog itself; this module adds the record-keeping half. Each Orejime service becomes a column in a table created and extended programmatically — `createColumn()` adds one per service — and a row is written when a visitor makes a choice. An admin listing at `/admin/reports/orejime-register/list` and a purge route sit behind `administer orejime entities`, with `src/Services` holding the storage layer and `src/Hook` the integration. Composer requires Orejime `^3`, and `core_version_requirement` is `^10.1 || ^11 || ^12`, already covering Drupal 12. The design decision to understand before deploying it is that the write endpoint at `/orejime_register` is deliberately open — its routing comment says "Anyone can add an entry to the registry" — with no CSRF token, no rate limiting and nothing binding an entry to the visitor who made it. This campaign confirmed by experiment that ten anonymous requests produce ten rows. That matters more here than it would elsewhere, because the table's purpose is evidentiary: the local security notes set out why a forgeable record does not evidence consent, and what a maintainer would need to change.
+Orejime handles the consent dialog itself; this module adds the record-keeping half. Each Orejime service becomes a column in a table created and extended programmatically — `Database::createColumn()` adds one tinyint column per service (named `{service_name}_{service_id}`), and `updateColumn()` renames it when a service is renamed. When a visitor makes a choice, the attached `cookies-register` JS posts the full consent set to `/orejime_register`, and `RegisterController::save()` writes a row (1 = accepted, 0 = declined) via the `orejime_register.database` service. An admin listing at `/admin/reports/orejime-register/list`, plus purge-all and purge-by-date forms, sit under Reports behind the parent module's `administer orejime entities` permission. There is no settings form and no configuration step — enabling the module is enough. It requires Orejime `^3` and declares `core_version_requirement: ^10.1 || ^11 || ^12`, already covering Drupal 12.
 
 ---
 
-- Record which cookie categories visitors accept.
-- Keep a log of consent decisions.
-- Show an auditor what choices were offered.
-- Track decline rates for a tracking category.
-- Purge old consent records.
-- List consent entries in the admin UI.
-- Add a column per consent service automatically.
-- Support a GDPR accountability requirement.
-- Report on consent rates over time.
-- Retain consent decisions for a defined period.
-- Complement the Orejime banner with storage.
+- Record which cookie categories visitors accept or decline.
+- Keep a persistent log of consent decisions inside Drupal.
+- Provide GDPR accountability evidence of consent choices.
+- Show an auditor what consent options were offered.
+- Track decline rates for a tracking or analytics category.
+- List consent entries in the admin Reports UI.
+- Add a register column automatically for each Orejime service.
+- Rename a register column when a consent service is renamed.
+- Purge all consent records before or after a review.
+- Purge consent records within a specific date range.
+- Enforce a manual data-retention period on consent data.
+- Report on consent acceptance rates over time.
+- Measure the effect of banner wording on consent.
+- Complement the Orejime banner with server-side storage.
 - Review consent data before a privacy audit.
-- Measure the effect of banner wording.
-- Keep consent records inside Drupal.
-- Provide evidence for a data-protection review.
+- Retain consent decisions for a defined period.
 - Track consent across a multilingual site.
-- Prepare consent reporting for Drupal 12.
-- Clear the register after a retention period.
+- Prepare consent reporting for Drupal 11 or 12.
+- Query the register programmatically via `orejime_register.database`.
+- Back-fill register columns for existing services on install.

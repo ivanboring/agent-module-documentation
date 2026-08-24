@@ -33,14 +33,15 @@
   "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "commerce_fedex_service (Plugin/Commerce/FedEx, @CommerceFedExPlugin)"
+  ],
   "categories": [
     "E-commerce",
     "Integrations"
   ],
   "subcategories": [
-    "Shipping rate calculation",
-    "Order management"
+    "Shipping rate calculation"
   ],
   "keywords": [
     "fedex",

@@ -1,22 +1,24 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-# SDC – Component library (sdc_component_library) — agent index
+# SDC - Component library (sdc_component_library) — agent index
 
-Preview page for a site's **Single Directory Components**. No module dependencies.
-Core requirement `^10.3 || ^11` (matching SDC availability).
+Renders one preview page listing every Single Directory Component (SDC) known to the
+site. Each component that ships a `<machine>.story.twig` file is rendered with that
+file's dummy data; each component also gets a "Show code" snippet and an in-page
+axe-core accessibility scan. No module dependencies (uses core's SDC plugin manager).
+Core requirement: `^10.3 || ^11`.
 
-| Route | Path | Permission |
-|---|---|---|
-| `sdc_component_library.component_list` | `/sdc-component-library` | **`access sdc component library`** (`restrict access: true`) |
-| `sdc_component_library.settings` | `/admin/config/system/sdc-component-library` | — |
+Configure route: `sdc_component_library.settings` (`/admin/config/system/sdc-component-library`).
+Defines 1 permission. No drush commands. Defines no plugin types (it consumes core's
+`plugin.manager.sdc`). Provides config schema and a theme hook.
+
+- **Change the preview page path** → [configure/settings.md](configure/settings.md)
+- **Control who can view the library** → [permissions/permissions.md](permissions/permissions.md)
+- **How the page discovers and renders components (theme hook + template)** → [theme/component-preview.md](theme/component-preview.md)
 
 Key facts:
-- **The restricted permission is appropriate**, and worth explaining rather than assuming: a
-  component gallery enumerates the site's front-end building blocks and renders arbitrary
-  components with sample props. That is useful reconnaissance and occasionally a rendering
-  surface — not something to leave open.
-- **Renders through Drupal itself**, using props from each component's own schema. That is the
-  advantage over Storybook: no Node toolchain, no parallel rendering environment, and no drift
-  between the story and what the site actually outputs. The trade-off is fewer authoring features
-  (controls, docs pages, interaction tests).
-- Surface: `src/Controller/ComponentsController.php`, `src/Routing/`, `src/Form/SettingsForm.php`,
-  `config/install`, `config/schema`, plus a `components_preview` library declared in the info file.
+- Preview route: `sdc_component_library.component_list`, default path `/sdc-component-library`, controller `\Drupal\sdc_component_library\Controller\ComponentsController::content`.
+- Config object `sdc_component_library.settings`, single key `path`; changing it rebuilds routes so the page moves to the new path.
+- Permission: `access sdc component library` (settings form uses core `administer site configuration`).
+- Theme hook `component_preview` (variable `components`); template `templates/component-preview.html.twig`.
+- Libraries `sdc_component_library/components_preview` and `sdc_component_library/axe_core`.
+- Controller dependencies: `@plugin.manager.sdc` (core `ComponentPluginManager`) and `@theme.manager`.

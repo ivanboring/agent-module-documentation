@@ -1,9 +1,9 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Image Scale and Crop (Without Upscale) adds an image effect that behaves like core's Scale and Crop but refuses to enlarge an image that is already smaller than the target — so a small upload stays small instead of being blown up into a blurry mess.
+Image Scale and Crop (Without Upscale) adds one image-style effect, "Scale and crop (without upscale)", that crops to a target aspect ratio exactly like core's Scale and Crop but never enlarges a source image already smaller than the target — a small upload stays small instead of being blown up into a blurry, pixelated derivative.
 
 ---
 
-Core's Scale and Crop always produces an image at the configured dimensions, scaling up if the source is smaller. For a design that needs an exact box that is the right behaviour; for a site where editors upload whatever they have, it means a 400-pixel logo becomes a soft, artefacted 1200-pixel banner, and nobody notices until it is in production. The alternatives in core are unsatisfying: Scale alone will not crop to an aspect ratio, and Scale and Crop cannot be told to stop. This effect fills the gap — `src/Plugin` supplies the image effect, with `config/schema` for its settings and an `image_scale_and_crop_without_upscale.post_update.php` for update handling. The only dependency is core `image` and the range is `^9 || ^10 || ^11`. The design consequence to plan for is that derivatives are no longer guaranteed to be a fixed size, so a layout expecting exact dimensions needs CSS that tolerates a smaller image — which is generally the better outcome than a stretched one, but it is a decision rather than a free win.
+Core's Scale and Crop always emits an image at the configured dimensions, scaling up when the source is smaller; for an exact fixed box that is correct, but on a site where editors upload whatever they have it means a 400-pixel logo becomes a soft, artefacted 1200-pixel banner that nobody notices until production. Core's alternatives do not help: Scale alone will not crop to a ratio, and Scale and Crop cannot be told to stop. This module's effect fills that gap by subclassing core's `ScaleAndCropImageEffect` (`src/Plugin/ImageEffect/ScaleAndCropWithoutUpscaleImageEffect.php`): before delegating to the parent it recomputes the effective target so that when the source is smaller in either dimension the target box is shrunk to fit rather than the image being enlarged, preserving the configured aspect ratio and the chosen crop anchor. You add it to any image style through the normal Image styles UI (it reuses core's width/height/anchor form), and it also implements `transformDimensions()` so predicted `<img>` dimensions stay correct. Its only dependency is core `image`, it supports `^9 || ^10 || ^11`, and a `post_update` hook casts legacy string width/height config to integers without triggering a derivative flush. The design consequence to plan for is that derivatives are no longer guaranteed to be a fixed size, so a layout expecting exact dimensions needs CSS that tolerates a smaller image (`max-width`/`object-fit` rather than fixed `width`/`height`) — generally the better outcome than a stretched image, but a deliberate decision rather than a free win.
 
 ---
 
@@ -22,6 +22,9 @@ Core's Scale and Crop always produces an image at the configured dimensions, sca
 - Reduce complaints about fuzzy images.
 - Handle legacy images from a migration.
 - Crop consistently without quality loss.
-- Support a site still on Drupal 9.
-- Apply to selected image styles only.
-- Improve accessibility of image-heavy pages.
+- Support a site still on Drupal 9, 10, or 11.
+- Apply the effect to selected image styles only.
+- Choose the crop anchor (center, top-left, etc.) per style.
+- Add the effect to a style via drush php:eval.
+- Keep predicted img dimensions accurate for lazy layouts.
+- Enforce a max resolution while allowing smaller outputs.

@@ -1,20 +1,27 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Views Display Union (views_display_union) — agent index
 
-Views display type that combines several displays' results with a SQL **UNION**. Depends on core
-`views`. Core requirement `^10.2 || ^11 || ^12` (declares Drupal 12).
+Adds a Views **display plugin** (`id: union`) that combines its own result set with one or more
+"main" displays in the same view using a SQL `UNION`. You add a union display to a view, list its
+fields/filters/arguments to match a page or block display, and set its **Attach to** option to that
+main display. At run time the module UNIONs the union display's query into the main display's query,
+so sorting, paging and the row style all apply to the **combined** result set. Useful to logically
+OR result sets that use different contextual filters or relationships but expose the same fields.
 
-Key facts:
-- Surface: `src/Plugin/` (display + query plugins), `src/Hook/`, `config/schema`,
-  `views_display_union.services.yml`. No routes or permissions.
-- **It is a real SQL `UNION`**, and two consequences follow:
-  1. the constituent displays must produce **compatible column sets** — mismatches surface as SQL
-     errors, not as Views validation messages;
-  2. **access is applied per constituent query.** On a site with node access modules or an entity
-     access module, verify that each constituent enforces access as expected — a UNION is where
-     access assumptions are easiest to get wrong, and the failure is silent over-disclosure.
-- Choose it over Search API when the requirement is genuinely a query-combination problem rather
-  than a search problem; Search API brings an indexing stack, relevance and facets that a UNION
-  does not.
-- Sorting and paging apply to the **combined** set — that is the advantage over rendering several
-  views in sequence.
+- Dependency: core `views`. Core requirement: `^10.2 || ^11 || ^12`.
+- No routes, no permissions, no drush, no settings page (`configure` is null).
+- Configured per view: the union display's **Attach to** option (`displays`).
+
+Solution docs:
+- **Add and configure a union display — options, validation rules, runtime mechanism, config schema**
+  → [views/union-display.md](views/union-display.md)
+
+Key facts (real machine names):
+- Display plugin: `Drupal\views_display_union\Plugin\views\display\Union`, id `union`, title "Union".
+- Display option: `displays` — array of main display ids this union attaches to. Config schema key
+  `views.display.union`, mapping `displays` (sequence of strings).
+- Hook service: `Drupal\views_display_union\Hook\ViewsDisplayUnionHooks` (autowired). Implements
+  `hook_views_pre_execute` (builds the UNION), `hook_views_ui_display_tab_alter` (hides UI rows in
+  the Views UI for union displays), `hook_help`.
+- The UNION is built with core `Select::union()` on the compiled Views queries — both `query` and
+  `count_query`. Union displays are discovered through the main display's `getAttachedDisplays()`.
