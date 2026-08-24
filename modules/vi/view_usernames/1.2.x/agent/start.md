@@ -1,54 +1,56 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # View Usernames (view_usernames) — agent index
 
-Makes username visibility a permission rather than an implicit right. One permission, an
-extensible decider API, and hardening of the render paths. No config form, no schema, no Drush.
-Requires core `user`; PHP >= 8.1.6; core `^10.5.8 || ^11.2.8` (a deliberately narrow constraint).
+Turns username visibility into a permission instead of an implicit right. Core Drupal exposes every
+username (author fields, comment bylines, `getDisplayName()`, `#theme => 'username'`, JSON:API user
+resources). This module hardens all those paths: a username is shown to another user only when a
+chain of pluggable "deciders" allows it. Depends only on core `user`. No settings form
+(`configure` null), no config schema, no Drush. PHP >= 8.1.6; core `^10.5.8 || ^11.2.8`.
+
+- **The `view usernames` permission** → [permissions/view-usernames.md](permissions/view-usernames.md)
+- **Extending who may see whose username (the decider API)** → [api/deciders.md](api/deciders.md)
+- **The enforcement hooks + the correct `view label` access pattern + JSON:API/mail behavior** →
+  [hooks/enforcement.md](hooks/enforcement.md)
+- **Leak-proof user entity-reference autocomplete (selection handler)** →
+  [fields/user-selection.md](fields/user-selection.md)
 
 Key facts:
-- Permission **`view usernames`**. Its own description warns: usernames may contain personal
-  information — granting it to anonymous or all authenticated users re-opens the exposure,
-  "also modules like JSON API exposes all usernames with this permission".
-- Default policy (`DefaultViewUsernameAccessDecider`, priority **1024**): a username is visible if
-  the account is **anonymous**, the viewer **is** that user, or the viewer has
-  **`administer users`** or **`view usernames`**.
-- **Decider API** — `view_usernames.view_username_access_decider`
-  (`ViewUsernameAccessDeciderCollector`) is a `service_id_collector` over the
-  **`view_username_access_decider`** tag (`required: true`), resolved through `class_resolver`.
-  Add your own:
-
-  ```yaml
-  # mymodule.services.yml
-  mymodule.same_group_decider:
-    class: Drupal\mymodule\SameGroupUsernameDecider
-    tags:
-      - { name: view_username_access_decider, priority: 512 }
-  ```
-
-  Implement `ViewUsernameAccessDeciderInterface::canViewUserName(AccountInterface $acting_user,
-  UserInterface $other_user): AccessResultAllowed|AccessResultForbidden`.
-- Enforcement points (all in `view_usernames.module`, delegating to `EntityHooks`):
-  - `hook_user_access()` → `userEntityAccess()` (the `view label` operation),
-  - `hook_entity_field_access()` → `entityFieldAccess()`,
-  - `hook_preprocess_username()` — the belt-and-braces guard; the source notes it "is not supposed
-    to be here but currently this is the safest way … to ensure every call that uses
-    `#theme => 'username'` inherits this access check".
-  Cacheability is bubbled explicitly (`Utility\CacheabilityBubbleUpper`,
-  `view_usernames_user_format_name_alter()`).
-- Internal services — **do not depend on or decorate these**, they are marked `@internal`:
-  `view_usernames.user_format_name_hardening_bypasser`
-  (`TemporaryUserFormatNameHardeningBypasser`) and
-  `event_subscriber.view_usernames.jsonapi_early_rendering_fix`.
-- Classes are `final` and `@internal` throughout; the supported extension point is the decider tag,
-  not subclassing.
+- Permission string: **`view usernames`** (`view_usernames.permissions.yml`).
+- Default policy — `DefaultViewUsernameAccessDecider` (service
+  `view_usernames.view_username_access_decider.default`, priority **1024**): username visible if the
+  account is **anonymous**, the viewer **is** that account, or the viewer holds **`administer users`**
+  or **`view usernames`**; otherwise **forbidden**.
+- Extension point — tag a service with **`view_username_access_decider`** (optional `priority`)
+  implementing `Drupal\view_usernames\Contracts\ViewUsernameAccessDeciderInterface::canViewUserName(AccountInterface $acting_user, UserInterface $other_user): AccessResultAllowed|AccessResultForbidden`.
+  The collector service `view_usernames.view_username_access_decider`
+  (`ViewUsernameAccessDeciderCollector`, a `service_id_collector`, `required: true`) runs them in
+  priority order; first allow wins.
+- Enforcement (all in `view_usernames.module`, most delegating to `EntityHooks`):
+  `hook_entity_access` (`view label` op) → `EntityHooks::userEntityAccess()`;
+  `hook_entity_field_access` (`view` op on the user `name` field) → `EntityHooks::entityFieldAccess()`;
+  `hook_preprocess_username` (last-resort blank of `#theme => 'username'` output);
+  `hook_user_format_name_alter` (last-resort blank of `getDisplayName()`);
+  `hook_module_implements_alter` makes the format-name hook run last.
+- Correct caller pattern: `$user->access('view label', NULL, TRUE)` as `#access` on a
+  `#theme => 'username'` element (see hooks doc).
+- Entity-reference selection handler id: `default:strict_user_filtered_by_view_usernames`
+  (`Plugin/EntityReferenceSelection/UserSelection`).
+- Internal automatic behavior: the mail plugin manager is decorated
+  (`MailManagerDecorator` via `MailPluginDecoratorPass`) so emails still resolve real usernames; an
+  event subscriber (`event_subscriber.view_usernames.jsonapi_early_rendering_fix`) relaxes the
+  format-name guard on JSON:API entity requests (JSON:API enforces field access itself).
+- Everything except the two `Contracts\*` interfaces is `final` / `@internal`. The supported
+  extension point is the decider tag — never subclass or decorate the internal services
+  (`view_usernames.user_format_name_hardening_bypasser`, the JSON:API subscriber).
 
 Operational notes:
 
 ```bash
 drush role:perm:add editor 'view usernames'
+# List roles that currently hold it:
 drush php:eval 'foreach (\Drupal\user\Entity\Role::loadMultiple() as $r) { if ($r->hasPermission("view usernames")) print $r->id() . "\n"; }'
 ```
 
-Expect knock-on effects: author fields, comment bylines, JSON:API user resources and Views
-username fields all start rendering a placeholder for users without the permission. Audit
-public-facing displays after enabling.
+Enabling the module changes existing displays: author names, comment bylines, Views username fields
+and JSON:API user resources start rendering blank for viewers who lack access. Audit public-facing
+displays afterward.

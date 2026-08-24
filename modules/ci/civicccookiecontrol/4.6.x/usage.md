@@ -1,33 +1,44 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Civic Cookie Control integrates the commercial Civic Cookie Control consent widget into Drupal, providing the cookie-consent banner and controls needed to comply with UK and EU cookie law.
+Civic Cookie Control is a Drupal front end to Civic UK's commercial **Cookie Control** consent widget.
+It stores the widget's configuration in Drupal (one settings object plus IAB TCF v1/v2 objects and four
+config-entity types), assembles it into Civic's JSON config object, injects that as
+`drupalSettings.civiccookiecontrol` on every page, and loads Civic's CDN-hosted JavaScript which renders
+the consent banner. It supports GDPR and CCPA modes and IAB TCF v1/v2, and needs a Civic API/license key.
 
 ---
 
-Cookie-consent law requires that non-essential cookies are not set until the visitor agrees, with granular control and a record of consent. Civic Cookie Control (from CIVIC UK) is a widely used product for this; this module wires it into Drupal — configuration for the API key and categories, and the rendering of the consent UI — so a site gets a compliant, recognised consent experience without building one.
-
-Two things are worth stating. First, it is a **front end to a third-party product**: it needs a Civic Cookie Control account and API key, and the consent widget is Civic's script, so you take on that service and its terms. Second — and this is the part sites get wrong — a consent banner only achieves compliance if the scripts that set cookies actually respect it. The module gives you the consent UI and the machinery to gate scripts by category; making analytics, marketing and embed scripts fire only after consent is a configuration job you must complete, or the banner is decorative. A submodule adds GOV.UK-styled variant.
-
-For a UK/EU site needing recognised consent, it is a solid choice. Configure the categories, connect the API key (ideally not in plain config), and verify that gated scripts truly wait for consent.
+The module's job is configuration and embedding, not cookie blocking: the banner only makes a site
+compliant if the scripts that actually set cookies are wired to the appropriate Cookie Control category's
+`onAccept`/`onRevoke` callbacks so they run only after consent. Administration lives at
+`/admin/config/system/cookiecontrol` behind the single `administer civiccookiecontrol` permission, as a
+multi-step form (enter + validate the API key, then configure appearance, text, behaviour, privacy and
+CCPA statements, custom branding and accessibility). Cookie categories, necessary cookies, excluded
+countries and per-language text overrides are managed as config entities; IAB Transparency & Consent
+Framework text and vendor lists have their own tabs. The GOV.UK/DWP variant is provided by the
+`civic_govuk_cookiecontrol` submodule. The API/license key is a client-side widget key that Civic's
+script needs in the browser, so it is emitted in the page's `drupalSettings` by design.
 
 ---
 
-- Add a cookie-consent banner.
-- Comply with UK cookie law.
-- Comply with EU cookie law.
-- Use Civic Cookie Control on Drupal.
-- Gate cookies by consent category.
-- Record visitor consent.
-- Provide granular cookie controls.
-- Block analytics until consent.
-- Block marketing scripts until consent.
-- Configure consent categories.
-- Connect a Civic API key.
-- Use a GOV.UK-styled variant.
-- Give visitors cookie choices.
-- Show a recognised consent UI.
-- Verify gated scripts wait for consent.
-- Manage consent for embeds.
-- Avoid building a consent tool.
-- Meet GDPR cookie requirements.
-- Restrict consent administration.
-- Front a third-party consent product.
+- Add an EU/UK cookie-consent banner to a Drupal site with an explicit opt-in (GDPR).
+- Run the consent widget in CCPA "Do Not Sell My Personal Information" mode for US audiences.
+- Gate Google Analytics / GTM so tags fire only after the visitor accepts the analytics category.
+- Block marketing/advertising pixels until consent, and clear them on revoke via `onRevoke`.
+- Present IAB TCF v2 (CMP) vendor consent for ad-tech partners.
+- Categorise cookies (necessary vs optional) and describe each for the preferences panel.
+- Declare "necessary" cookies that are always allowed and shown as such.
+- Suppress the banner in specific countries via excluded-country ISO codes.
+- Localise all banner text per language (alt-language entities) in browser- or Drupal-language mode.
+- Link the banner's privacy statement to a Drupal node (privacy policy page).
+- Add a separate CCPA privacy statement with its own node link and reject button.
+- Customise widget position, layout, theme, fonts and colours (PRO/CUSTOM licenses).
+- Remove Civic branding / the widget icon on paid licenses and supply your own toggle button.
+- Run custom JavaScript when the widget loads via the `onLoad` hook.
+- Keep the banner off admin pages, or force it on with the `drupal_admin` toggle.
+- Set consent-cookie flags: secure, SameSite value, sub-domain sharing, expiry.
+- Enable Civic's consent logging for an audit trail.
+- Show the widget in explicit "open" state on first visit and notify-once afterwards.
+- Reset the built config after edits by clearing the `civiccookiecontrol_config` cache.
+- Provide a GOV.UK DWP-pattern cookie banner and details page via the submodule.
+- Import/export the whole consent configuration as Drupal config (categories, languages, texts).
+- Work across a subscription's multiple sites with a PRO_MULTISITE key.
+- Validate a Civic license key from the settings form before going live.

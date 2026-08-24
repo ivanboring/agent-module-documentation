@@ -5,7 +5,10 @@
   "version": "4.0.x",
   "package": "Statistics",
   "composer_namespace": "drupal/google_analytics_counter",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "google/analytics-data": "^0.17",
+    "ext-bcmath": "*"
+  },
   "dependent_modules": [
     "drupal:node"
   ],
@@ -22,13 +25,16 @@
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "GoogleAnalyticsCounterResultProcessor (manager: plugin.manager.google_analytics_counter_result_processor, annotation: @GoogleAnalyticsCounterResultProcessor)"
+  ],
   "categories": [
     "Integrations",
-    "Content display"
+    "User engagement"
   ],
   "subcategories": [
     "Analytics & tracking",
+    "Google APIs / OAuth",
     "Popularity / hotness tracking"
   ],
   "keywords": [

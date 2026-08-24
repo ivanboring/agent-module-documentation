@@ -1,18 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Custom Nid (custom_nid) — agent index
 
-Lets a permitted user set the **node ID** on the node create form. No dependencies.
-Core requirement `^9.2 || ^10 || ^11`. (Version `11.0.0` tracks the core major, not semver.)
+Adds a **"Nid"** text field to the node **create** form so a permitted user can type the
+node ID the new node should get, instead of taking the next auto-increment value. On a new
+node the typed value is applied to `nid` at save time. Only applies to node creation, never
+to editing an existing node.
+
+- Dependencies: none (the info.yml declares no `dependencies:`). Core `^9.2 || ^10 || ^11`.
+- Configure route: **none** — no settings form, no config object, no config schema.
+- Provides: one **permission**, no drush commands, no plugin types, no services.
+
+Solutions:
+- **Who may set a custom nid, and the exact permission** → [permissions/permissions.md](permissions/permissions.md)
+- **How the field is added, validated, and applied to `nid` (form_alter + presave)** → [hooks/behavior.md](hooks/behavior.md)
 
 Key facts:
-- Whole module: `custom_nid.module`, `.info.yml`, `.permissions.yml`, `README.md`, `LICENSE.txt`.
-- One permission, **`custom_nid access`**, `restrict access: true` — and the restriction is
-  load-bearing. Setting a primary key by hand can:
-  - collide with an existing node,
-  - jump the auto-increment sequence so future IDs skip ranges,
-  - break anything assuming IDs are dense or monotonic (paging by ID, incremental sync, external
-    references).
-- **Grant it for a migration window, then revoke.** It is not a permission to leave assigned.
-- Legitimate uses are narrow and all about identifier preservation: legacy URL continuity,
-  restoring a deleted node at its original ID, matching an external system. For anything
-  repeatable, use Migrate, which sets IDs as part of a mapped, rollbackable process.
+- Whole module: `custom_nid.module`, `custom_nid.info.yml`, `custom_nid.permissions.yml`,
+  `README.md`, `LICENSE.txt`. No `src/`, no routing, no services, no config.
+- Permission string: **`custom_nid access`** (title "Adminster Custom Nid", `restrict access: true`).
+  Not granted to any role by default.
+- The added form element is a plain Form-API `textfield` named **`custom_nid_field`**
+  (title "Nid", `#size`/`#maxlength` 15, `#weight` -50). It is NOT a Field-API field.
+- Hooks implemented: `hook_form_alter` (`custom_nid_form_alter`) and
+  `hook_entity_presave` (`custom_nid_entity_presave`).
+- Validation (form `#validate` `custom_nid_form_validate`): value must be numeric ("Nid is
+  not numeric.") and must not match an existing `node.nid` ("Nid already exists.").
+- The field appears only when the form object is a `Drupal\node\NodeForm`, the current user
+  has `custom_nid access`, and the node has no `nid` yet (i.e. a new node).

@@ -1,28 +1,24 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # File Mime Validator (file_mime_validator) — agent index
 
-Validates an upload's **real** MIME type against its claimed extension. No module dependencies.
-Core requirement `^10 || ^11`.
+Adds a server-side upload check that detects a file's real (content-based) MIME type and
+compares its category against the category implied by the filename/extension, as
+defence-in-depth behind core's extension allow-list. Implemented as a `hook_file_validate()`
+implementation that delegates to the `file_mime_validator` service. No module dependencies;
+core `^10 || ^11`; package `Security`.
+
+Configure route: `file_mime_validator.file_types_mime_config_form`
+(`/admin/config/system/file-mime-validator/file-types-mime-config`). No permissions, drush
+commands, or plugin types are defined. Ships a config object + schema.
+
+- **Change which MIME types map to each category (text / image / compression / audio / video)** → [configure/mime-types.md](configure/mime-types.md)
+- **Understand or call the validation logic (service, real-MIME detection, hook wiring)** → [api/validator-service.md](api/validator-service.md)
 
 Key facts:
-- **Defect: the configuration form is unreachable.**
-  `file_mime_validator.routing.yml` gates
-  `/admin/config/system/file-mime-validator/file-types-mime-config` with:
-
-  ```yaml
-  requirements:
-    _permission: "administer"
-  ```
-
-  Drupal defines **no permission named `administer`**. `hasPermission('administer')` is false for
-  every account, so only user 1 — which bypasses permission checks — can reach the form. Nothing
-  can be granted to fix this; it needs a code change (`administer site configuration`, or a
-  permission the module declares). The module ships **no `permissions.yml`** at all.
-  The validation itself still runs; only the settings screen is affected. Configure via
-  `drush cset file_mime_validator.settings …` in the meantime.
-- Surface: `src/Service/` (validation), `src/Form/FileTypesMimeConfig.php`,
-  `file_mime_validator.services.yml`, `config/install`, `config/schema`,
-  `file_mime_validator.module`.
-- Conceptually this is defence in depth *behind* Drupal's extension allow-list, not a
-  replacement for it. Keep the allow-list narrow as well — an accurate MIME check on a type you
-  should never have accepted does not help.
+- Service id `file_mime_validator` (class `Drupal\file_mime_validator\Service\FileMimeValidator`); public methods `checkRealMime(File $file): array` and `getFileType(string $mime): string`.
+- Wiring: `file_mime_validator_file_validate(File $file)` in `file_mime_validator.module` implements `hook_file_validate()`.
+- Real-MIME detection: Symfony `FileinfoMimeTypeGuesser` (PHP `finfo` / libmagic) reading the file's bytes.
+- Config object `file_mime_validator.settings` with keys `file_mime_validator_text`, `file_mime_validator_image`, `file_mime_validator_compression`, `file_mime_validator_audio`, `file_mime_validator_video` (each a comma-separated MIME list).
+- Logger channel `file_mime_validator` (service `logger.channel.file_mime_validator`).
+- Settings form class `Drupal\file_mime_validator\Form\FileTypesMimeConfig`; menu link parent `system.admin_config_system`; route permission `administer`.
+- Also implements `hook_help()` for `help.page.file_mime_validator`.

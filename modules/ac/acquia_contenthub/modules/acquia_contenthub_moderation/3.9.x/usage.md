@@ -1,31 +1,35 @@
-The moderation submodule (experimental) lets a subscriber site import incoming Content Hub content directly into a chosen Content Moderation workflow state instead of always publishing it.
+Experimental Content Hub submodule for subscriber sites: it imports syndicated content into a
+configured content-moderation state per workflow (for example `draft`) rather than publishing it
+outright, creating a pending forward revision when the target state is unpublished.
 
 ---
 
-It adds an "Acquia Content Hub: Import Moderation State" selector to each workflow's edit form
-(`workflow_edit_form`), letting you map, per workflow, the moderation state that imported
-content should land in (e.g. force everything from publishers into `draft` for local review).
-The choice is stored in `acquia_contenthub_moderation.settings` under
-`workflows.<workflow>.moderation_state`. During import it registers a `pre_entity_save`
-subscriber (`create_moderated_forward_revision.pre_entity_save`) that creates a moderated
-forward revision in the configured state so subscriber editors keep editorial control rather
-than having publisher content go straight live. It requires `acquia_contenthub_subscriber` and
-core `content_moderation`, is marked experimental, and has no permissions or Drush of its own.
+By default Content Hub imports arrive in whatever state the CDF carries, which on a subscriber can
+mean content is published immediately. This submodule lets an editor pick, per workflow, the
+moderation state that incoming content should land in. It stores that choice in
+`acquia_contenthub_moderation.settings` under `workflows.<workflow_id>.moderation_state`, set
+through an "Import Moderation State" select added to the core workflow edit form. At import time
+the `CreateModeratedForwardRevision` subscriber (on the base module's `PRE_ENTITY_SAVE` event,
+priority 5) applies that state to the imported entity — and, when the state is not a published
+one, marks the revision non-default so the live version on the subscriber is untouched until an
+editor promotes it. It depends on `acquia_contenthub_subscriber` and core `content_moderation`,
+warns on install, and raises a requirements error for any workflow left unconfigured. No routes,
+permissions, or Drush commands.
 
 ---
 
-- Import syndicated content into a "draft" state for local editorial review.
-- Prevent publisher content from going live automatically on a subscriber.
-- Map a specific import moderation state per workflow.
-- Force incoming content into an "needs review" state before publishing.
-- Keep editorial control on delivery sites in a syndication fleet.
-- Create moderated forward revisions for imported entities.
-- Route different workflows to different import states.
-- Land imported content in a custom workflow state (e.g. "syndicated").
-- Configure the import state from the standard workflow edit form.
-- Store the mapping in config for deployment across environments.
-- Combine with the subscriber module's import queue.
-- Support governance requirements that mandate review of external content.
-- Avoid publishing unreviewed content pulled from other origins.
-- Let moderators approve syndicated updates on their own schedule.
-- Apply per-workflow policies for content moderation of imports.
+- Import syndicated content as `draft` (or another state) instead of published.
+- Keep an editorial review step for content arriving from publishers.
+- Create pending forward revisions for unpublished imported content.
+- Avoid overwriting a subscriber's live revision with incoming syndication.
+- Configure a distinct import state per workflow.
+- Route imports for different content types into different moderation states.
+- Hold syndicated content for local approval before it goes live.
+- Set the import state directly from the workflow edit form.
+- Set the import state via `drush cset` for automation.
+- Apply the import state only to the languages present in the CDF.
+- Enforce governance over what syndicated content is published on a subscriber.
+- Surface a requirements error when a workflow has no import state configured.
+- Combine content moderation with Content Hub subscriber imports.
+- Support staged publishing workflows across a multi-site network.
+- Let editors promote imported drafts to published on their own schedule.

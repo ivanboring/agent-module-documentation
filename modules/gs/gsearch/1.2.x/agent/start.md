@@ -1,30 +1,40 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # GSearch (Dataforsyningen) (gsearch) — agent index
 
-Danish address field type/widgets backed by **Dataforsyningen's GSearch API**. Depends on core
-`field` and `select2 ^2`; also requires `thecodingmachine/safe ^2`.
-Core requirement `^10.5 || ^11`. Settings at `/admin/config/gsearch/config`
-(gated by `administer site configuration`; no module-specific permission).
+Danish address field for Drupal, backed by **Dataforsyningen's GSearch v2 REST API**. Adds an
+`address_gsearch` field type (with a matching Select2 widget and a formatter) so editors pick a
+real Danish address by autocomplete instead of typing free-hand. Selecting a suggestion stores a
+normalized address plus `postnummer`, `postnummernavn`, country code (`DK`) and WGS84 lat/long.
+An optional per-field free-text mode accepts non-Danish/informal addresses. Positioned as a
+replacement for the DAWA-based `address_dawa`.
+
+- Depends on core `field` and contrib `select2:select2`; composer also requires
+  `thecodingmachine/safe ^2` and `ext-json`.
+- Core: `^10.5 || ^11`. Configure at `/admin/config/gsearch/config`
+  (route `gsearch.settings`, permission `administer site configuration`).
+- No module-specific permissions, no drush commands, no plugin types of its own.
+
+Solution docs:
+- **Set the API token / endpoint** → [configure/settings.md](configure/settings.md)
+- **Add & use the address field (type, widget, formatter, free-text)** → [fields/address.md](fields/address.md)
+- **Look up addresses / build field values from code** → [api/service.md](api/service.md)
 
 Key facts:
-- Default endpoint `https://api.dataforsyningen.dk/rest/gsearch/v2.0/`
-  (`GsearchService::$defaultApiUrl`), overridable via the `api_url` setting; an API `token`
-  setting is sent with requests.
-- Two front-end routes, **both `_permission: 'access content'`** — anonymous on a default site:
-
-  | Route | Path |
-  |---|---|
-  | `gsearch.autocomplete` | `/gsearch/address` |
-  | `gsearch.autocomplete.select2` | `/gsearch/address/select2` |
-
-  Both pass `?q=` straight to `GsearchService::getAddresses()`. This is **not** SSRF — the target
-  URL is admin-configured, not caller-supplied — and the token is not echoed back. What it does
-  mean is that **anyone who can load the site can consume the site's Dataforsyningen quota**
-  through these endpoints. If the API is rate-limited or billed, treat the endpoints as an abuse
-  surface and consider a rate limit in front of them.
-- Per this repo's convention the API token belongs in an environment variable
-  (`ddev dotenv set .ddev/.env --gsearch-token=…`) surfaced through a Key entity, not committed
-  in exported config.
-- Surface: `src/Services/`, `src/GsearchAddress.php`, `src/AddressGsearchItemInterface.php`,
-  `src/Plugin/` (field type/widget/formatter), `src/Controller/GsearchAutocomplete.php`,
-  `templates/gsearch-address{,es}.html.twig`.
+- Config object `gsearch.settings`: keys `api_url` (default
+  `https://api.dataforsyningen.dk/rest/gsearch/v2.0/`) and `token`. Schema in
+  `config/schema/gsearch.schema.yml`.
+- Service id `gsearch.address` → `Drupal\gsearch\Services\Gsearch`
+  (`getAddresses()`, `getAddress()`, `getAddressById()`, `getFieldValue()`,
+  `getFieldValueById()`, `validateToken()`; static `encodeSelect2Value()` / `decodeSelect2Value()`).
+- Field plugin ids (all `address_gsearch`): FieldType `AddressGsearchItem`, FieldWidget
+  `AddressGsearchWidget`, FieldFormatter `AddressGsearchFormatter`. Field settings key
+  `allow_freetext`; widget settings `size` / `placeholder` / `freetext_coords`.
+- Widget autocomplete endpoints (called by Select2): `gsearch.autocomplete` → `/gsearch/address`
+  and `gsearch.autocomplete.select2` → `/gsearch/address/select2`
+  (`GsearchAutocomplete::getResults` / `getResultsSelect2`).
+- Value object `Drupal\gsearch\GsearchAddress`; field interface
+  `Drupal\gsearch\AddressGsearchItemInterface`.
+- Theme hooks `gsearch_address` / `gsearch_addresses`; templates in `templates/`; CSS library
+  `gsearch/base`.
+- Update hook `gsearch_update_10001` adds a `country_code` column to existing `address_gsearch`
+  field tables.

@@ -3,10 +3,14 @@
   "data_name": "jquery_ui_filter",
   "description": "Converts static HTML to a jQuery UI Accordion or Tabs widget.",
   "version": "2.0.x",
-  "installed_release": "2.0.0-beta1",
+  "installed_release": "8.x-2.0-beta1",
   "package": "Input filters",
   "composer_namespace": "drupal/jquery_ui_filter",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/jquery_ui_tabs": "^2.1",
+    "drupal/jquery_ui_accordion": "^2.1",
+    "drupal/jquery_ui": "^1.7"
+  },
   "dependent_modules": [
     "drupal:filter",
     "jquery_ui:jquery_ui (>=8.x-1.7)",
@@ -40,12 +44,12 @@
     "accordion",
     "tabs",
     "text filter",
-    "heading to accordion",
+    "accordion token",
     "jquery_ui_filter",
     "static html widget",
     "deprecated jquery ui"
   ],
-  "project_description": "Back to top \n\n Introduction \n The jQueryUI filter converts static HTML to a jQuery UI accordion or tabs widget.\n\n For example, this module converts the below HTML code into a collapsed jQueryUI accordion widget.\n\n \n\n [accordion collapsed]\n\n Section I \n Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\n\n Section II \n Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\n\n Section III \n Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\n\n [/accordion]\n\n \n\n Learn more about jQueryUI's accordion and tabs widget.\n\n Back to top \n\n Usage \n Accordion \n Use [accordion] and [/accordion] to create a jQuery UI accordion. Using [accordion collapsed] will start with the accordion closed.\n\n Tabs \n Use [tabs] and [/tabs] to create a jQuery UI tabs.\n\n Back to top \n\n Features \n \n Supports all jQuery UI accordion and tabs options. \n Adds bookmark support to accordions and tabs. \n Scrolls to bookmarked accordion or tabs. \n Gracefully degrades when JavaScript is disabled. \n Defaults to original markup when an accordion or tabs widget is printed. \n \n Back to top \n\n Installation \n \n \n Copy/upload the jquery ui filter.module to the modules directory of your Drupal installation.\n\n \n \n Enable the 'jQueryUI filter' modules in 'Extend'. (admin/modules)\n\n \n \n Visit the 'Configuration > Content authoring > Text formats and editors' (admin/config/content/formats).\n\n \n \n Enable (check) the jQueryUI filter under the list of filters and save the configuration.\n\n \n \n IMPORTANT: In 'Filter processing order', the 'jQuery UI accordion and tabs widgets' filter must be after the 'Correct faulty and chopped off HTML' filter.\n\n \n \n (optional) Visit the 'Configuration > Content authoring > Text formats and editors > jQuery UI filter' (admin/config/content/formats/jquery ui filter).\n\n \n \n Back to top \n\n Notes \n General \n \n Goal is to keep this module as simple as possible. \n Make it easy for developers and site builders to provide custom configuration. \n Allow accordion and tabs widgets to still be extended and enhanced with custom code. \n \n For Site Builders \n \n \n Any jQuery UI accordion or tabs option is supported.\n\n \n \n The [token] options can contain valid JSON data which will be converted to JavaScript array and objects when a widget is rendered.\n\n \n JSON data must be valid . \n JSON can be wrapped in single quote instead of double quotes. \n JSON parsing errors will logged to the browser's console. \n The below example would create sliding tabs.\n [tabs show='{\"effect\": \"slideDown\", \"duration\": 1000}' hide='{\"effect\": \"slideUp\", \"duration\": 1000}'] \n \n \n \n For Developers \n \n \n 75% of this module's core code is in jquery_ui_filter.js, which transforms HTML5\n\n tags containing data-ui-* attributes into jQuery UI accordion and/or tabs with customize options. \n \n \n The actually filter \\Drupal\\jquery_ui_filter\\Plugin\\Filter\\jQueryUiFilter just transforms [tokens] with options into \n \n\n tags with data-ui-* attributes. Example:\n \n [accordion collapsed customAttribute=\"some value\"]\n\n \n\n \n...is transformed into...\n \n\n \n \n \n All camelCase options will be convert to lower case hyphen delimited attributes, which are support by HTML5. The hyphen delimited attributes will be converted back into camelCase options when the widget is rendered.\n\n \n \n A JsFiddle example has been setup to allow cross-browser testing and debugging outside of Drupal.\n\n \n \n The tests directory contains manual test scripts and static HTML5 examples for testing the front end JavaScript behavior.\n\n \n \n Back to top \n\n Similar Modules \n \n Quick tabs \nCreate blocks of tabbed views and blocks. \n Back to top",
+  "project_description": "The jQueryUI filter converts static HTML to a jQuery UI accordion or tabs widget. Editors wrap heading/content HTML in [accordion] or [tabs] token markup inside a text-format-filtered field; the filter rewrites the tokens into <div data-ui-*> markup and the module's JavaScript builds the jQuery UI widget at render time. Because jQuery UI was removed from Drupal core, it depends on the contrib jquery_ui, jquery_ui_accordion and jquery_ui_tabs projects. Any jQuery UI accordion/tabs option can be passed as a token attribute (including JSON values). Widgets gracefully degrade to plain HTML when JavaScript is disabled or the page is printed.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

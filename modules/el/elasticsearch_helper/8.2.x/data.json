@@ -5,7 +5,9 @@
   "version": "8.2.x",
   "package": "Elasticsearch Helper",
   "composer_namespace": "drupal/elasticsearch_helper",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "elasticsearch/elasticsearch": "^8.0"
+  },
   "dependent_modules": [
     "drupal:serialization"
   ],
@@ -19,17 +21,21 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
-  "provides_drush_commands": false,
+  "provides_permissions": true,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "elasticsearch_index (Plugin/ElasticsearchIndex, @ElasticsearchIndex, plugin.manager.elasticsearch_index.processor)",
+    "elasticsearch_auth (Plugin/ElasticsearchAuth, @ElasticsearchAuth, plugin.manager.elasticsearch_auth)"
+  ],
   "categories": [
     "Site search",
     "Developer tools"
   ],
   "subcategories": [
     "Search backend",
-    "Content indexing"
+    "Content indexing",
+    "Plugin system"
   ],
   "keywords": [
     "elasticsearch",

@@ -1,21 +1,33 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Resave All Nodes (resave_all_nodes) — agent index
 
-Batch-resaves all nodes, or all nodes of one type. Depends on core `node`.
-Core requirement `^8.8 || ^9 || ^10 || ^11`.
-Form at `/admin/config/development/resave-all-nodes`; Drush command in `src/Commands`
-(registered via `drush.services.yml`).
+Maintenance tool that re-saves every node — or every node of selected content types —
+through Batch API, so that presave/update logic added after the content was created
+finally runs against it (path aliases, Search API queue, computed fields, metatag
+defaults, denormalised values, revisions, entity-update event subscribers). Two triggers
+share one batch class: an admin form and a Drush command.
+
+Depends on core `node`. Core requirement `^8.8 || ^9 || ^10 || ^11`.
+No stored config object / no config schema. `configure` route: `resave_all_nodes.form`.
+
+- **Trigger it from the UI (the form, content-type filter, chunk size, runtime behavior)** →
+  [configure/form.md](configure/form.md)
+- **Trigger it from the CLI (the Drush command, options, aliases)** →
+  [drush/commands.md](drush/commands.md)
+- **Who is allowed to run it** →
+  [permissions/permissions.md](permissions/permissions.md)
 
 Key facts:
-- Single permission **`resave all nodes`**, marked `restrict access: TRUE`. Correct: a resave
-  fires every `presave`/`update` hook on the site.
-- Side effects to warn about before running it:
-  - path aliases may be regenerated (Pathauto), changing URLs;
-  - Search API and other queues get re-populated;
-  - `changed` timestamps move — pair with `preserve_changed_ui` (also documented in this wave)
-    if that matters;
-  - **a new revision per node** if the content type creates revisions by default;
-  - anything subscribing to entity update events fires, including outbound integrations.
-- Prefer the Drush command over the form on any site with real volume; both use Batch API, but
-  only Drush avoids the browser round trip.
-- The `.info.yml` reports the legacy `version: '8.x-1.0-beta2'` — this is a **beta** release.
+- Route `resave_all_nodes.form` at `/admin/config/development/resave-all-nodes`, form
+  `\Drupal\resave_all_nodes\Form\ResaveAllNodesForm`, gated by `_permission: 'resave all nodes'`.
+- Single permission `resave all nodes` (`restrict access: TRUE`). No other roles can reach the form.
+- Menu link `resave_all_nodes.toolbar_menu` under `system.admin_config_development`.
+- Drush command `resave-all-nodes` (alias `ran`), options `--bundles`, `--chunk-size` (default 250);
+  service `resave_all_nodes.commands` = `\Drupal\resave_all_nodes\Commands\ResaveAllNodesCommands`
+  (registered in `drush.services.yml`).
+- Shared batch: `\Drupal\resave_all_nodes\Batch\ResaveAllNodesBatch::batchOperation()` /
+  `::batchFinished()`. It calls `$node->save()` and also saves every non-default translation.
+- Heavy operation: it fires every presave/update hook, may create a revision per node, moves
+  `changed` timestamps, and re-populates queues. Prefer the Drush path on any real-volume site.
+- `.info.yml` reports legacy `version: '8.x-1.0-beta2'` — this branch has only alpha/beta releases.
+- Note: Drush core added its own `drush entity:save node` (since 11.0.0-rc1) which overlaps this.

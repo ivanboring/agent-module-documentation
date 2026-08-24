@@ -1,22 +1,28 @@
 # Campaign Monitor Registration — agent index
 
-Glue submodule: adds Campaign Monitor newsletter opt-in to the core **user registration** form. Depends on the
-parent `campaignmonitor` module. No plugins, no config schema.
+Submodule of the parent `campaignmonitor` module. Adds a newsletter **opt-in** checkbox (and, per
+config, that list's subscribe fields) to the core **user registration** form, so a new account can be
+subscribed to Campaign Monitor list(s) as it is created. All logic lives in
+`campaignmonitor_registration.module`; the actual API work is delegated to the parent's subscription
+manager. No plugins, no Drush, no config schema.
 
-How it works (all in `campaignmonitor_registration.module`):
-- `hook_form_user_register_form_alter()` — adds a `campaignmonitor_subscribe` checkbox and, per
-  `campaignmonitor_registration.settings` `list` value: `single` → parent's `singleSubscribeForm($config)` fields;
-  otherwise a `selection` checkboxes element of lists whose per-list setting `display.registration` is on.
-  Appends `campaignmonitor_registration_form_user_register_submit` to the submit handlers.
-- Submit handler: if opt-in checked, rebuilds `CustomFields` (un-flattened) and calls the parent
-  `campaignmonitor.subscription_manager::subscribeSubmitHandler()` to subscribe the new account's email.
-- `hook_form_campaignmonitor_list_settings_form_alter()` — adds a "Display list on registration page" checkbox to
-  each list's settings form (saved via `CampaignMonitorManager::setListSettings()`).
+- **Admin settings form + config keys (opt-in label, list mode/id)** → [configure/settings.md](configure/settings.md)
+- **The form alters it implements (register form + per-list settings form) and submit handlers** → [hooks/form-alters.md](hooks/form-alters.md)
+- **Permission it defines** → [permissions/permissions.md](permissions/permissions.md)
 
-Config/permissions:
-- Admin form route `campaignmonitor_registration.admin` at `admin/config/services/campaignmonitor/registration`
-  (perm `administer campaignmonitor`). Default config `campaignmonitor_registration.settings` ships
-  `list_id_text`.
-- Permission `access campaignmonitor registration` (`restrict access: TRUE`).
+Parent module docs:
+- Index → [../../../../3.0.x/agent/start.md](../../../../3.0.x/agent/start.md)
+- Services (the subscribe form/handler reused here) → [../../../../3.0.x/agent/api/services.md](../../../../3.0.x/agent/api/services.md)
 
-Parent docs: [../../../../3.0.x/agent/start.md](../../../../3.0.x/agent/start.md)
+Key facts:
+- Dependency: `campaignmonitor:campaignmonitor` (parent). `core_version_requirement: ^10.2 || ^11.0`.
+- Admin route `campaignmonitor_registration.admin` → `admin/config/services/campaignmonitor/registration`
+  (perm `administer campaignmonitor`), form `CampaignMonitorRegistrationAdminForm`, form id
+  `campaignmonitor_registration_admin_settings`.
+- Config object `campaignmonitor_registration.settings`; keys `checkbox_text`, `list`, `list_id`,
+  `list_id_text` (default config ships only `list_id_text`). No config schema shipped.
+- Register-form field added: `campaignmonitor_subscribe` (checkbox). Per-list toggle added:
+  `display.registration`.
+- Permission `access campaignmonitor registration` (`restrict access: TRUE`) — declared but not referenced
+  by the module's code.
+- Reuses parent services `campaignmonitor.manager` and `campaignmonitor.subscription_manager`.

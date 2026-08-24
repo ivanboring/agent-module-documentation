@@ -1,28 +1,35 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Taxonomy Term Glossary turns a taxonomy vocabulary into a glossary: matching words in rendered content are highlighted automatically and the term's description is shown to the reader in a dialog or tooltip.
+Taxonomy Term Glossary turns a taxonomy vocabulary into a glossary: as content is rendered, occurrences of your glossary terms are highlighted automatically, and readers can see each term's definition in a jQuery UI dialog, a Tippy.js tooltip, or a plain link. It also ships an A–Z "Glossary alphabetical" block for browsing and searching the glossary.
 
 ---
 
-The core idea is a text filter that scans rendered content for terms from configured vocabularies and wraps the matches, plus a small JavaScript layer that fetches the definition on demand from three JSON endpoints — search by letter, search by term text, and fetch by term id. Presentation is pluggable: the module defines its own `TermGlossaryHandler` plugin type (manager, base class, interface and annotation all present), and three submodules supply alternatives — **term_glossary_abbr** renders matches as HTML `<abbr>` elements, **term_glossary_tippy** uses Tippy.js tooltips, and **term_glossary_per_node** allows per-node control over whether glossary processing runs. Dependencies are core `taxonomy` and `text` plus `jquery_ui_dialog` for the default dialog presentation, and configuration lives at `/admin/config/glossary`. Note that the JSON endpoints are gated only by `access content`, i.e. anonymous on a typical site, and that one of them does not restrict itself to the configured vocabularies or check per-term access — this module's local security notes cover that in detail, and it is the main thing to check before enabling it on a site whose taxonomy is not entirely public.
+Highlighting runs at render time in a `preprocess_field` hook rather than a stored text-format filter, so field content is never modified in the database. You enable it per field on the *Manage display* screen (the eligible formatters are `text_default`, `text_trimmed`, and `string`), optionally overriding the global vocabulary for that field. Global behavior is configured at `/admin/config/glossary`: which vocabularies to use, whole-word and case-sensitive matching, match-once-per-field or per-content, synonyms drawn from a chosen field, per-term overrides, self-reference exclusion, a term view mode for the popup, JSON cache duration, and tags/classes to skip while scanning. Presentation is pluggable through a `TermGlossaryHandler` plugin type: core ships the jQuery UI dialog (`default`), `custom_js`, and `link` handlers, and the `term_glossary_abbr`, `term_glossary_tippy`, and `term_glossary_per_node` submodules add an `<abbr>` handler, Tippy.js tooltips, and per-node opt in/out respectively. The alphabetical block is backed by three JSON endpoints (search by letter, search by text, fetch by id) and a small JS layer that renders the definition on demand. Dependencies are core `taxonomy` and `text` plus `jquery_ui_dialog`. Integrators can reshape results and match markup through four alter hooks documented in `term_glossary.api.php`.
 
 ---
 
 - Highlight glossary terms automatically in body text.
-- Show a definition in a dialog when a reader clicks a term.
-- Present acronyms as `<abbr>` elements with expansions.
+- Show a term's definition in a dialog when a reader clicks it.
+- Present acronyms and jargon with inline definitions.
 - Use Tippy.js tooltips instead of a modal dialog.
-- Build an A-Z glossary index page.
-- Let editors maintain definitions as taxonomy terms.
-- Disable glossary processing on selected nodes.
-- Search glossary terms from the front end.
-- Explain jargon to a general audience.
-- Keep definitions in one place across a whole site.
-- Add a medical or legal terms glossary.
-- Support multilingual glossaries by language.
-- Choose which vocabularies act as glossaries.
-- Render definitions through a chosen view mode.
+- Render matches as plain links to the term page.
+- Build an A–Z glossary index/search page from a block.
+- Search glossary terms by letter or by text from the front end.
+- Let editors maintain definitions as ordinary taxonomy terms.
+- Reuse an existing taxonomy vocabulary as a glossary.
+- Drive a glossary from several vocabularies at once.
+- Override the glossary vocabulary on a specific field.
+- Match whole words only to avoid partial hits (e.g. "step" inside "step-by-step").
+- Keep punctuation like hyphens from breaking word boundaries.
+- Match case-sensitively when term casing matters.
+- Link a term only once per field or once per whole page.
+- Support synonyms so several spellings resolve to one term.
+- Override match rules on individual terms with per-term fields.
+- Avoid self-links when a term appears in its own description.
+- Render the popup through a chosen term view mode.
+- Exclude marked-up regions from scanning with the `glossary-exclude` class or ignored tags.
+- Support multilingual glossaries, matching terms per language.
+- Toggle glossary processing on individual nodes.
 - Extend presentation with a custom handler plugin.
-- Improve accessibility of abbreviations.
-- Avoid manually linking every jargon term.
-- Give a documentation site inline definitions.
-- Reuse an existing taxonomy as a glossary.
+- Alter search results or generated match markup via hooks.
+- Give a documentation or knowledge-base site inline definitions.
+- Add a medical, legal, or technical terms glossary.

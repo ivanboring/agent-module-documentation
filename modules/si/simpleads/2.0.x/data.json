@@ -5,13 +5,15 @@
   "version": "2.0.x",
   "package": null,
   "composer_namespace": "drupal/simpleads",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/js_cookie": "^1.0"
+  },
   "dependent_modules": [
     "drupal:rest",
     "drupal:views",
     "js_cookie:js_cookie"
   ],
-  "configure": null,
+  "configure": "simpleads.advertisement",
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -26,10 +28,11 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Content"
+    "Content display"
   ],
   "subcategories": [
-    "Advertising"
+    "Advertising / ad units",
+    "Charts / data visualization"
   ],
   "keywords": [
     "ads",

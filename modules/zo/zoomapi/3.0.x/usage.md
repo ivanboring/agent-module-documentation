@@ -1,29 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Zoom API is a developer module wrapping the Zoom.us REST API: it registers a Zoom client through the API Tools framework and exposes incoming Zoom webhooks as Drupal events, so custom code can react to meetings, recordings and participants.
+Zoom API is a developer module that wraps the Zoom.us REST API: it registers a Zoom client through the API Tools framework and re-broadcasts incoming Zoom webhooks as Drupal events, so custom code can call Zoom endpoints and react to meetings, webinars, recordings and participants.
 
 ---
 
-Rather than shipping a UI, the module gives developers the two halves of a Zoom integration. Outbound, it defines a client via `apitools` — the configuration form is API Tools' own (`configure: apitools.client_config_form.zoomapi`), so credentials, base URL and OAuth settings are managed there, and a `ZoomapiServiceProvider` wires the client into the container. Inbound, a single route `/zoomapi-webhooks` accepts **POST only** and hands the payload to `ZoomApiWebhooksController::capture()`, which dispatches a `ZoomApiWebhookEvent` carrying the decoded payload, the event name and the original request — so a custom module subscribes to that event and reacts. Access to the webhook route is a `_custom_access` callback, `ZoomApiWebhooksController::authorize()`, implementing Zoom's signature verification: it requires the `x-zm-signature` header and a configured Event Secret Token, rebuilds the expected signature from the request, and allows the request only if the two match — otherwise it logs a notice and returns `AccessResult::forbidden()`. The route is marked `no_cache`. As the description says, this is "mainly meant to be a developer module": read the README before wiring it up.
+Rather than shipping a UI, the module gives developers the two halves of a Zoom integration. Outbound, it defines an API Tools client plugin (`zoomapi`, service `zoomapi.client`, class `Drupal\zoomapi\Plugin\ApiTools\Client`) that authenticates with a Zoom **Server-to-Server OAuth** app using the `account_credentials` grant and exposes Guzzle-style `get`/`post`/`patch`/`delete` methods returning decoded JSON; credentials, base URI (`https://api.zoom.us`), path (`v2`) and token URL live on the API Tools client form (`configure: apitools.client_config_form.zoomapi`, config object `apitools.client.zoomapi`), and a `ZoomapiServiceProvider` wires the client into the container. Inbound, the single route `/zoomapi-webhooks` accepts **POST only** and hands the payload to `ZoomApiWebhooksController::capture()`, which dispatches a `ZoomApiWebhookEvent` carrying the decoded payload, the Zoom event name and the original request on `ZoomApiEvents::WEBHOOK_POST` (`zoomapi.webhook.post`); the controller also answers Zoom's `endpoint.url_validation` handshake. Secrets are held as **Key** entities (the module requires `apitools`, which requires `key`). As the description says, this is "mainly meant to be a developer module" — you write a custom module that calls the client and/or subscribes to the event.
 
 ---
 
-- React in Drupal when a Zoom meeting ends.
-- Store recording links when Zoom publishes them.
+- Call Zoom REST endpoints (users, meetings, webinars) from custom code via `zoomapi.client`.
+- Authenticate with a Zoom Server-to-Server OAuth app without managing tokens yourself.
+- React in Drupal when a Zoom meeting starts or ends.
+- Store recording links when Zoom publishes a recording.
 - Create Drupal content from Zoom webinar registrations.
-- Sync meeting participants into Drupal.
-- Trigger notifications on Zoom events.
-- Call Zoom REST endpoints from custom code.
-- Manage Zoom credentials through API Tools.
-- Verify webhook authenticity with Zoom's signature scheme.
-- Log unverified webhook attempts.
-- Build a meetings dashboard from Zoom data.
-- Schedule Zoom meetings from Drupal content.
+- Sync meeting participants into Drupal user or membership records.
+- Trigger notifications or emails on specific Zoom events.
+- Subscribe to specific Zoom event types in a custom event subscriber.
+- Build a meetings or webinars dashboard from Zoom data.
+- Schedule Zoom meetings from Drupal content edits.
 - Update event nodes when a Zoom webinar changes.
-- Integrate attendance data with membership records.
-- Subscribe to specific Zoom event types in a custom module.
-- Keep webhook handling out of custom controllers.
-- Provide a single verified webhook endpoint.
-- Debug incoming Zoom payloads via the event object.
-- Reuse the API Tools client for other Zoom calls.
-- Support multiple Zoom accounts through client configuration.
-- Automate follow-up emails after a Zoom session.
+- Answer Zoom's endpoint URL-validation handshake automatically.
+- Manage Zoom credentials and endpoints through the API Tools client form.
+- Keep API secrets in Key entities (env var or file provider).
+- Provide a single webhook endpoint for all Zoom Event Subscriptions.
+- Inspect the raw incoming request through the event's `getRequest()`.
+- Reuse the same client for any Zoom API v2 endpoint.
+- Support multiple environments by overriding `base_uri`/`base_path` in config.
+- Automate follow-up workflows after a Zoom session completes.
+- Decouple Zoom webhook handling from your own controllers.

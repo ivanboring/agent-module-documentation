@@ -1,18 +1,26 @@
 # Taxonomy Class — agent index
 
-Adds one string base field `taxonomy_class` ("CSS class(es)") to every taxonomy term and outputs its
-first value as a class on the rendered term. No config UI, no dependencies, no config schema, no plugins.
+Adds a single string base field, `taxonomy_class` ("CSS class(es)"), to every taxonomy term.
+Its first value is appended as a CSS class on the rendered term template wrapper, letting editors
+style individual terms without touching templates. No settings page, no dependencies beyond core.
 
-Everything worth knowing (small module, no solution subdocs needed):
-- **Base field:** `taxonomy_class` (string) added to `taxonomy_term` via
-  `hook_entity_base_field_info`. Display-configurable on the term form; weight 35.
-- **Form:** `hook_form_taxonomy_term_form_alter` wraps the field in a collapsed "Taxonomy Class
-  settings" details group (`#group => 'advanced'`) — shown ONLY to users with permission
-  `administer taxonomy classes`; otherwise the alter returns early and the field is not exposed.
-- **Output:** `taxonomy_class_preprocess_taxonomy_term` reads
-  `$term->get('taxonomy_class')->getValue()[0]['value']` and appends it to
-  `$variables['attributes']['class']`. Only the FIRST value is used. Rendered through core's
-  `Attribute` object (escaped on output).
-- **Permission:** `administer taxonomy classes` (in `taxonomy_class.permissions.yml`; no
-  `restrict access` flag) — gates visibility/editability of the class field on the term form.
-- **Set programmatically:** `$term->set('taxonomy_class', 'my-class')->save();`
+- **Dependencies:** none (core only; `^8 || ^9 || ^10 || ^11`).
+- **Configure route:** none — no settings page, no config object, no config schema.
+- **Provides:** one permission. No drush commands, no plugin types, no services, no routes.
+
+Solution docs:
+- **Add / set the per-term CSS class field** → [fields/taxonomy_class.md](fields/taxonomy_class.md)
+- **How the class reaches the rendered term markup** → [theme/class-output.md](theme/class-output.md)
+- **Who may edit term classes** → [permissions/permissions.md](permissions/permissions.md)
+
+Key facts:
+- Base field: `taxonomy_class` (type `string`, label "CSS class(es)"), added to entity type
+  `taxonomy_term` via `hook_entity_base_field_info` (`taxonomy_class_entity_base_field_info`).
+  Form display: `string_textfield`, weight 35, display-configurable on the term form.
+- Form alter: `taxonomy_class_form_taxonomy_term_form_alter` moves the field into a collapsed
+  `details` group "Taxonomy Class settings" (`#group => 'advanced'`), shown only to users holding
+  the permission; the alter returns early otherwise.
+- Output: `taxonomy_class_preprocess_taxonomy_term` appends the field's FIRST value to
+  `$variables['attributes']['class']`.
+- Permission: `administer taxonomy classes`.
+- Set programmatically: `$term->set('taxonomy_class', 'my-class')->save();`

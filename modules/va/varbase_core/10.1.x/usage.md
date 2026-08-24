@@ -1,28 +1,34 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Varbase Core is the component bundle at the centre of the Varbase distribution: it pulls in and pre-configures the roughly one hundred contrib modules a Varbase site is expected to have, and ships eight submodules that each own one area of that configuration.
+Varbase Core is the foundation module of the Varbase distribution: it enables and pre-configures the module set a Varbase site is expected to have, ships shared configuration, roles and role-permission grants, and provides eight packaged submodules that each own one area of that setup.
 
 ---
 
-Varbase Core is not a feature module — it is a *composition*. Its `composer.json` requires around 100 contrib projects (ECA and BPMN.iO for automation, Gin and Gin Login for the admin theme, Webform, Content Lock, Password Policy, SecKit, Security Review, CAPTCHA, reCAPTCHA, Honeypot, Antibot, Shield, Flood Control, Better Exposed Filters, Field Group, Display Suite, Views Bootstrap, Entityqueue, Inline Entity Form, Trash, Project Browser, Automatic Updates and more), and its `install:` list enables about 60 of them at install time. Its own PHP is small: a settings index at `/admin/config/varbase` that just renders the Varbase menu block, one general settings form, a `src/Drush` command namespace, and `src/Hook` handlers. A single permission — `access varbase settings` — gates both routes. The real content is in `config/`, which is split into `install`, `optional`, `managed` and a `permissions` directory, plus eight submodules: **varbase_admin** (admin configuration), **varbase_page** (Basic page content type), **varbase_security** (password policy, username-enumeration prevention, SecKit, Security Review), **varbase_internationalization**, **varbase_webform**, **varbase_tour**, **varbase_default_content** and **varbase_development** — which its own description warns must be disabled in production. Core requirement is pinned tightly to `~11.4.0`, so the module tracks a single core minor rather than a range.
+Varbase Core is a *composition*, not a feature. Its `composer.json` requires ~100 contrib projects (ECA + BPMN.iO for automation, Gin/Gin Login for admin, Webform, Content Lock, Password Policy, SecKit, Security Review, CAPTCHA/reCAPTCHA, Honeypot, Antibot, Better Exposed Filters, Field Group, Display Suite, Views Bootstrap, Entityqueue, Inline Entity Form, Trash, Project Browser, Automatic Updates and more). `hook_install` then enables the ~60 modules listed under `install:` in its info.yml and bulk-imports its `config/optional/` config by regex scan; `hook_modules_installed` defers more "managed" config for automated_cron, editoria11y, sitewide_alert and varbase_email until those modules are turned on. Its own code is small: a settings landing page at `/admin/config/varbase`, a two-checkbox general-settings form (`varbase_core.general_settings` — `welcome_status`, `allow_custom_account_name`), five developer drush commands, node/subqueue form alters, two provided tokens (`[site:origin-url]`, `[default-active-theme:path]`), and a single `access varbase settings` permission. Role permissions for anonymous/authenticated/editor/content_admin/seo_admin/site_admin ship under `config/permissions/`. The eight submodules split the rest: varbase_admin (admin config), varbase_page (Basic page type), varbase_security (password policy, SecKit, honeypot, username-enumeration prevention), varbase_internationalization, varbase_webform, varbase_tour, varbase_default_content and varbase_development — whose own description warns it must be disabled in production. Core is pinned to `~11.4.0`, so the module tracks one Drupal minor rather than a range.
 
 ---
 
-- Stand up a Varbase site with its expected module set already present.
-- Get an opinionated Drupal configuration instead of assembling one.
-- Enable ECA-based automation out of the box.
-- Ship a hardened security baseline (password policy, SecKit, Security Review).
-- Provide editors with the Gin admin theme pre-configured.
-- Add a Basic page content type with Varbase's field setup.
-- Group all distribution settings under one admin page.
-- Manage which configuration is ignored on deployment.
-- Enable multilingual support as a single switch.
-- Provide guided tours to new editors.
-- Load starter default content for a new site.
-- Turn on developer tooling only in non-production environments.
-- Gate distribution settings behind one permission.
-- Keep webform features consistent across Varbase sites.
-- Adopt Varbase's module choices without installing the full profile.
-- Pin a site to a specific Drupal core minor deliberately.
-- Give a team a shared baseline across many sites.
-- Reduce per-project module selection work.
-- Layer additional Varbase feature modules on a common core.
+- Stand up a Varbase site with its expected module set already enabled and configured.
+- Adopt Varbase's opinionated Drupal baseline instead of assembling one by hand.
+- Enable ECA-based automation (login, role-change and recertification workflows) out of the box.
+- Ship an opinionated security baseline (password policy, SecKit, Security Review, honeypot).
+- Get the Gin admin theme and admin tooling pre-configured.
+- Add a Basic `page` content type with Varbase's field, layout and SEO setup.
+- Group all distribution settings under one `/admin/config/varbase` landing page.
+- Toggle the front-page welcome message (`?welcome`) on or off.
+- Allow or disallow custom account usernames site-wide.
+- Manage which configuration is ignored on deployment (config_ignore is a hard dependency).
+- Auto-apply managed defaults when you later enable automated_cron, editoria11y, sitewide_alert or varbase_email.
+- Provide the `[site:origin-url]` and `[default-active-theme:path]` tokens to other modules.
+- Enable multilingual support as a single submodule switch.
+- Provide guided editor tours / a welcome modal to new authors.
+- Load starter default content for a fresh site.
+- Turn on developer tooling (devel, dblog, reroute_email) only in non-production environments.
+- Gate the distribution settings pages behind one permission.
+- Reorder the node-edit sidebar to Varbase's expected layout.
+- Repair mismatched entity/field definitions after upgrades via `drush edupdb`.
+- Strip permissions that no longer exist after an upgrade via `drush rnep`.
+- Run optional per-module update hooks on demand via `drush varbase-up`.
+- Localize merge-request patches into the project's `patches/` folder via `drush var-ccup`.
+- Layer additional Varbase feature modules on a shared, common core.
+- Give a team a consistent baseline across many Varbase sites.
+- Pin a site deliberately to a single Drupal core minor.

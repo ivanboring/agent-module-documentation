@@ -1,35 +1,45 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Apigee Edge integrates Drupal with Apigee (Edge or X), Google's API-management platform, turning a Drupal site into an API developer portal: developers register, create apps, get API keys, and subscribe to API products, with Drupal as the front end over Apigee's backend.
+Apigee Edge connects a Drupal site to a Google Apigee organization (Apigee Edge public/private cloud
+or Apigee X/hybrid) and turns it into an API developer portal. Drupal users become Apigee developers,
+and developer apps, API products, and app credentials/API keys are managed from Drupal as
+SDK-backed entities.
 
 ---
 
-An API program needs a portal — somewhere developers sign up, read docs, create an application, receive credentials and manage their usage. Apigee provides the API gateway and the entities (developers, apps, API products); this module makes Drupal the portal over them, synchronising Drupal users with Apigee developers and exposing app and key management as Drupal entities and forms.
-
-It is a substantial integration with real security surface, and the permission to note is **`bypass api product access control`** — API products gate which developers may consume which APIs, and that permission overrides the gate, so it belongs only to trusted administrators. There is also `administer apigee edge`. The connection to Apigee is authenticated with credentials that, correctly, are handled through the **Key** module (a dependency), so the Apigee auth secret lives in a Key entity rather than plain config.
-
-The submodules extend it: `apigee_edge_teams` adds team-owned apps, `apigee_edge_apiproduct_rbac` adds role-based access to API products, `apigee_edge_actions` adds Rules-style reactions to Apigee events, and `apigee_edge_debug` adds request logging. It requires an Apigee organization to connect to — without an Apigee backend it has nothing to integrate. For anyone running an API program on Apigee, it is the official portal building block.
+The module authenticates to the Apigee Management API through a Key entity (of type `apigee_auth`)
+whose value holds the org, endpoint, auth type (basic/OAuth for Edge, service-account JWT for X), and
+credentials — stored via environment variables, a private file, or any Key provider. The
+`apigee_edge.sdk_connector` service builds the Apigee SDK client (over Drupal's core HTTP
+client, with configurable timeouts/proxy), and entity controllers expose developers, apps, and API
+products with in-memory caching. Registration/verification, developer↔user synchronization (form and
+Drush), API-product visibility rules, per-entity display/caching, and an error page are all
+configurable under Configuration → Apigee. Four submodules extend it: Teams (companies), Actions
+(Rules events), Debug (API call logging), and API Product RBAC. It requires the contrib `key` and
+`entity` modules and the `apigee/apigee-client-php` library, PHP 8.3+.
 
 ---
 
-- Build an API developer portal.
-- Let developers register for API access.
-- Let developers create apps.
-- Issue API keys to developers.
-- Subscribe apps to API products.
-- Sync Drupal users with Apigee developers.
-- Manage apps as Drupal entities.
-- Gate APIs by product access.
-- Restrict bypass of product access control.
-- Store Apigee credentials in a Key entity.
-- Add team-owned apps with apigee_edge_teams.
-- Add RBAC on API products.
-- React to Apigee events with actions.
-- Log Apigee requests for debugging.
-- Front Apigee with Drupal.
-- Onboard API consumers.
-- Provide app credential management.
-- Connect to an Apigee organization.
-- Administer the Apigee integration.
-- Run an API program portal.
-- Manage API product subscriptions.
-- Grant admin-only product bypass.
+- Build an API developer portal on Drupal backed by Apigee Edge or Apigee X.
+- Let site users self-register and automatically become Apigee developers.
+- Store Apigee org credentials in a Key using environment variables (no secrets in the DB).
+- Store Apigee credentials in a private-filesystem file instead of environment variables.
+- Connect to Apigee X / hybrid using a GCP service-account JSON key.
+- Connect to Apigee Edge using basic auth or OAuth.
+- Let developers create and manage their own apps and API keys from `/user/apps`.
+- Associate API products with developer apps and enforce which products a role may consume.
+- Restrict API-product visibility to specific roles (public/private/internal mapping).
+- Rotate, revoke, or delete an app's API keys while protecting its only active key.
+- Synchronize existing Drupal users into Apigee developers after first install (`drush apigee-edge:sync`).
+- Create a least-privilege Apigee role for the Drupal connection (`drush create-edge-role`).
+- Show per-app analytics and export analytics data as CSV.
+- Relabel the "API Product" / "Developer App" entities to match your product wording.
+- Tune Apigee API connection timeouts and route calls through an HTTP proxy.
+- Map custom Drupal user/app fields to Apigee developer attributes.
+- Show a friendly error page when the Apigee connection is unavailable.
+- Schedule developer synchronization as a background job via cron.
+- Extend the API client User-Agent from another module.
+- Add a custom field-storage format plugin to control how a field serializes to an Apigee attribute.
+- Replace the API-product access model entirely from a custom module via `hook_api_product_access`.
+- Organize developers into teams/companies with shared apps (Teams submodule).
+- Log and inspect every Apigee API request/response for debugging (Debug submodule).
+- Trigger Rules reactions when apps, teams, or products change (Actions submodule).
+- Enforce role-based access to API products instead of visibility (RBAC submodule).

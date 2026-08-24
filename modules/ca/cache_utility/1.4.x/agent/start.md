@@ -1,42 +1,33 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Cache Utility (cache_utility) — agent index
 
-HTTP endpoints for clearing Drupal caches, cache tags, **PHP OPcache** and **APCu**. No module
-dependencies. Core requirement `^10 || ^11`. Settings at
-`/admin/config/development/cache_utility` (permission `administer cache utility configuration`,
-`restrict access: true`). Submodule: `cache_utility_admin_toolbar`. Drush commands in
-`src/Commands/`.
+Exposes cache operations as authenticated HTTP JSON endpoints, Drush commands, and a settings-form
+UI: clear and inspect Drupal's `cache_*` tables, the `cachetags` table, PHP **OPcache** and **APCu**.
+The point is that OPcache and APCu are per-PHP-process, so a load-balanced or containerised deploy
+can flush them on each web node with a `curl` call — something `drush cr` alone cannot reach.
+No module dependencies; core `^10 || ^11`.
 
-## Authentication is a shared header secret, not Drupal access
+Settings route: `cache_utility.settings` → `/admin/config/development/cache_utility`
+(permission `administer cache utility configuration`). Config object: `cache_utility.settings`.
+Defines 1 permission and 10 Drush commands; no plugin types; ships no config schema.
+Submodule: `cache_utility_admin_toolbar` (adds flush links under Admin Toolbar Extras).
 
-All twelve action/status routes are declared **`_access: 'TRUE'`** with
-`_maintenance_access: 'TRUE'`, and each controller instead checks:
+## What you'd do
+- **Set the access key and choose which caches piggyback on `drush cr`** → [configure/settings.md](configure/settings.md)
+- **Call the HTTP JSON API (clear / status / config per cache)** → [api/http-endpoints.md](api/http-endpoints.md)
+- **Run cache operations from Drush** → [drush/commands.md](drush/commands.md)
+- **Add flush links to the admin toolbar** → [api/admin-toolbar.md](api/admin-toolbar.md)
+- **The permission it defines** → [permissions/permissions.md](permissions/permissions.md)
 
-```php
-$accessKey = $request->headers->get("CU-ACCESS-KEY");
-if (!$accessKey) { return denied; }
-if ($accessKey != Drupal::config('cache_utility.settings')->get('security.accessKey')) { return denied; }
-```
-
-**Verified anonymously on this site: every route returns
-`{"success":false,"error":"Access denied."}`** — so the bare `_access: 'TRUE'` is not the hole it
-looks like. Two real problems with the implementation are recorded in the local `security.md`:
-
-- the comparison is `!=`, which applies numeric-string juggling — a numeric key like `1000` is
-  matched by `1e3` (verified on PHP 8.4) — and is not constant-time, on endpoints with **no flood
-  control**;
-- **`security.accessKey` lives in `cache_utility.settings`**, so `drush cex` commits the secret to
-  version control. Exclude it from export or override it from `settings.php`/an environment
-  variable.
-
-Routes (all GET): `drupalcache/{clear,status}`, `drupalcachetables/clear`,
-`cachetags/{clear,status}`, `opcache/{clear,config,status}`, `apcu/{clear,config,status}`, all
-under `/admin/cache_utility/`.
-
-Other notes:
-- **`opcache_reset()` affects the whole PHP-FPM pool**, not only this site — relevant on shared
-  hosting.
-- `_maintenance_access: 'TRUE'` is deliberate: the endpoints answer during maintenance mode,
-  which is when a deploy needs them.
-- `skip_ssl_verification` only adds `--insecure` to the **example** curl command shown on the
-  settings form; it changes no request the module makes.
+## Key facts
+- Config object `cache_utility.settings` — keys: `security.accessKey`, `flushCaches.opcache`,
+  `flushCaches.apcu`, `flushCaches.drupal_cachetags`, `flushCaches.drupal_cachetables`,
+  `skip_ssl_verification`.
+- API auth: every JSON route requires a `CU-ACCESS-KEY:` request header equal to
+  `security.accessKey`. `hook_install()` seeds that key with `Crypt::randomBytesBase64(32)`.
+- Permission `administer cache utility configuration` gates the settings form and the submodule's
+  toolbar routes (the submodule routes also require `_csrf_token`).
+- 11 JSON API routes under `/admin/cache_utility/…` (all GET) + 1 settings route.
+- Drush command prefix `cache_utility:` / `cu:` — 10 commands, each accepts `--host`.
+- Runtime hook: `hook_cache_flush()` resets/clears the enabled `flushCaches.*` targets on every
+  `drupal_flush_all_caches()`.

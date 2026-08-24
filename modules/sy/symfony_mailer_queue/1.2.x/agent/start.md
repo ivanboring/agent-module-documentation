@@ -1,48 +1,43 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Symfony Mailer Queue (symfony_mailer_queue) — agent index
 
-Queues Symfony Mailer emails and sends them from a cron queue worker, with configurable
-retry behaviour. Requires contrib `symfony_mailer`. No routes, no permissions, no Drush;
-config schema shipped.
+Moves outbound Symfony Mailer email off the request onto a Drupal queue. You attach a
+`queue_sending` email adjuster to a **mailer policy**; matching emails are pushed to the
+`symfony_mailer_queue` queue and delivered later by a cron queue worker, with per-policy
+retry/requeue behaviour.
 
-Key facts:
-- **Service decoration**: `symfony_mailer_queue.services.yml` overrides the `email_factory`
-  service with `Service\EmailFactory` so emails are built as `QueueableEmail`
-  (`QueueableEmailInterface`). `SymfonyMailerQueueServiceProvider` completes the wiring.
-- **Email adjuster `queue_sending`** (`Plugin\EmailAdjuster\QueueSendingEmailAdjuster`) — attach
-  it to a **mailer policy** to queue that policy's mail. `build()`:
-  - throws `\LogicException('Attempted to queue a non-queueable email.')` if the email is not a
-    `QueueableEmailInterface`;
-  - if `!$email->isInQueue()`, pushes a `SymfonyMailerQueueItem` onto the queue
-    (`queueFactory->get(SymfonyMailerQueueWorker::QUEUE_NAME, TRUE)`) and skips inline sending
-    (`SkipMailException`).
-- **Queue** name `symfony_mailer_queue`; worker
-  `Plugin\QueueWorker\SymfonyMailerQueueWorker` with `cron = {"time" = 60}`.
-- **Adjuster settings** (schema `symfony_mailer.email_adjuster_plugin.queue_sending`):
+- Requires contrib `symfony_mailer` (`drupal/symfony_mailer:^1.5`), core `^10.3 || ^11`.
+- **No settings page / configure route of its own** — configured per policy under
+  `symfony_mailer`'s Mailer UI (`/admin/config/system/mailer`, route `symfony_mailer.policy`).
+- No permissions. No Drush commands. No new plugin *types* (it ships plugin *instances*:
+  one EmailAdjuster + one QueueWorker). Config schema shipped.
 
-  | Setting | Default | Meaning |
-  |---|---|---|
-  | `queue_behavior` | `delayed` | `delayed` requeue, immediate requeue, or suspend the queue |
-  | `requeue_delay` | `60` (seconds) | Delay before a failed item is retried |
-  | `maximum_attempts` | — | Retry cap |
-  | `send_wait_time` | — | Wait time applied when sending |
+## Solution docs
+- **Queue a policy's mail + tune retries / cron** → [configure/queue-sending.md](configure/queue-sending.md)
+- **How queueing works (factory decoration, worker, DTO, language)** → [api/queue-mechanism.md](api/queue-mechanism.md)
+- **React to send failures / requeues** → [events/events.md](events/events.md)
 
-  The help text is explicit that **not all queue backends support delays** — Drupal's database
-  queue does; for those that do not, a one-minute lease applies, and cron garbage collection
-  must be configured to release items.
-- **`symfony_mailer_queue.settings` is deprecated for removal** (`maximum_attempts`,
-  `requeue_delay`, `send_wait_time`); the schema is kept only for migration. Configure the
-  adjuster per policy instead.
-- Events: `Event\EmailSendFailureEvent` and `Event\EmailSendRequeueEvent`, each carrying the
-  `SymfonyMailerQueueItem` as a readonly property.
-- `StaticLanguageNegotiator` (+ interface) preserves the originating language so a queued email
-  renders in the right language rather than the cron run's.
-- `hook_uninstall()` deletes `symfony_mailer_queue.settings` **and** strips the `queue_sending`
-  adjuster from every `mailer_policy` config entity.
+## Key facts
+- Queue name: `symfony_mailer_queue` (`SymfonyMailerQueueWorker::QUEUE_NAME`); worker
+  `Plugin\QueueWorker\SymfonyMailerQueueWorker`, annotation `cron = {"time" = 60}`.
+- Adjuster plugin id `queue_sending` (`Plugin\EmailAdjuster\QueueSendingEmailAdjuster`); its
+  settings live inside the mailer policy config under `configuration.queue_sending`.
+- Adjuster settings keys: `queue_behavior` (default `delayed`; values `delayed`/`requeue`/`suspend`),
+  `requeue_delay` (default `60` s), `maximum_attempts` (default `5`), `send_wait_time` (default `0` s).
+- Config schema: `symfony_mailer.email_adjuster_plugin.queue_sending`.
+- Service override: `email_factory` is redefined in `symfony_mailer_queue.services.yml` to
+  `Service\EmailFactory`, producing `QueueableEmail` (`QueueableEmailInterface`) objects.
+- `SymfonyMailerQueueServiceProvider` registers `symfony_mailer_queue.static_language_negotiator`
+  (only when the `language` module is enabled).
+- Events: `Event\EmailSendFailureEvent`, `Event\EmailSendRequeueEvent` (each holds a readonly
+  `SymfonyMailerQueueItem $item`).
+- `hook_cron()` runs `garbageCollection()` on the queue to release delayed items.
+- Deprecated `symfony_mailer_queue.settings` config object exists only for migration
+  (`hook_update_10101` moves it into the adjuster); `hook_uninstall()` deletes it and strips the
+  `queue_sending` adjuster from every `mailer_policy`.
 
 ```bash
 drush en symfony_mailer symfony_mailer_queue -y
-# Attach the adjuster to a policy in the Mailer policy UI, then:
-drush queue:list | grep symfony_mailer_queue
+# Add the "Queue sending" adjuster to a policy in the Mailer UI, then:
 drush queue:run symfony_mailer_queue
 ```

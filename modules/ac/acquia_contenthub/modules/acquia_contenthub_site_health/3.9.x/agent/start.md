@@ -1,12 +1,15 @@
 # acquia_contenthub_site_health — agent start
 
-**Experimental** ("use with caution"). Audits/repairs known Drupal↔Content Hub
-incompatibilities on a publisher. Requires `acquia_contenthub`. No UI, permissions, or config.
+**Experimental** submodule of **acquia_contenthub**. Audits for known incompatibilities between
+Drupal and Content Hub. In this release it ships exactly **one Drush command** that repairs
+configuration entities whose `uuid` is `NULL` (which break syndication) by assigning them freshly
+generated UUIDs. Depends on `acquia_contenthub`. No routes, permissions, config, or plugin types.
 
-## Drush
-- `acquia:contenthub-fix-config-entities-with-null-uuids` — find config entities with NULL
-  UUIDs and assign each a random UUID. NULL config UUIDs break `depcalc`/export (Content Hub
-  keys everything by UUID), so run this before a first full publish or when export errors on
-  config.
+- **The Drush repair command (publisher-only), aliases, exact behavior** → [drush/commands.md](drush/commands.md)
 
-CLI-only utility; no further solution docs.
+Key facts:
+- Drush service `acquia_contenthub_site_health.commands` = `AcquiaContentHubConfigNullUuidsFix`.
+- Command `acquia:contenthub-fix-config-entities-with-null-uuids` (alias `ach-fix-null-uuids`).
+- Refuses to run unless `acquia_contenthub_publisher` is enabled (it throws — "should only be run
+  on a publisher site").
+- `.module` provides `hook_help` only.

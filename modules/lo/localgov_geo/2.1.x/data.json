@@ -17,7 +17,9 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "localgovdrupal/localgov_os_places_geocoder_provider": "1.x-dev"
+  },
   "submodules": [
     "localgov_geo_address",
     "localgov_geo_area",
@@ -25,7 +27,7 @@
   ],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": false,
+  "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
     "Site structure",

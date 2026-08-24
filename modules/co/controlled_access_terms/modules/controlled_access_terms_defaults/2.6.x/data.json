@@ -1,9 +1,9 @@
 {
   "name": "Controlled Access Terms Defaults",
   "data_name": "controlled_access_terms_defaults",
-  "description": "Install content types for geographic location, corporate body, family, person and subject along with default form configuration and RDF mapping.",
+  "description": "Config-only submodule that installs default taxonomy vocabularies (person, family, corporate body, subject, geographic location, and more) pre-wired with Controlled Access Terms fields, displays, and RDF mappings.",
   "version": "2.6.x",
-  "package": null,
+  "package": "Controlled Access Terms",
   "composer_namespace": "drupal/controlled_access_terms",
   "composer_requirements": {},
   "dependent_modules": [
@@ -32,17 +32,22 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content"
+    "Site structure",
+    "Integrations"
   ],
   "subcategories": [
-    "Taxonomy management"
+    "Taxonomy hierarchy",
+    "Fields",
+    "Semantic metadata"
   ],
   "keywords": [
     "controlled",
-    "defaults"
+    "defaults",
+    "authority",
+    "taxonomy"
   ],
   "part_of": "controlled_access_terms",
   "project_description": "This module creates bundles to represent common named entities in archival description (Corporate Bodies, Families, and Persons) as well as subject terms. It also provides several field types - EDTF Dates, Authority Links, and Typed Relations - that assist in library and archival description.\n\n It is intended to be used in conjunction with both the ArchivesSpace/Drupal 8 Integration project and Islandora , though it has no dependencies on either and can be used on its own.\n\n Development is done on Github.com so please contribute PRs there rather than MRs here.",

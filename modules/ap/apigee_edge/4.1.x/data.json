@@ -5,21 +5,27 @@
   "version": "4.1.x",
   "package": "Web services",
   "composer_namespace": "drupal/apigee_edge",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "apigee/apigee-client-php": "~4.1.0",
+    "php-http/guzzle7-adapter": "^1.0",
+    "ext-json": "*"
+  },
   "dependent_modules": [
     "drupal:file",
     "drupal:user",
+    "entity:entity",
     "drupal:filter",
     "drupal:options",
-    "key:key"
+    "key:key",
+    "drupal:system"
   ],
-  "configure": null,
+  "configure": "apigee_edge.settings",
   "core_version_requirement": "^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/apigee_edge",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "~8.3.0 || ~8.4.0 || ~8.5.0",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [
@@ -29,9 +35,12 @@
     "apigee_edge_teams"
   ],
   "provides_permissions": true,
-  "provides_drush_commands": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "ApigeeFieldStorageFormat (plugin.manager.apigee_field_storage_format)",
+    "EdgeEntityType (Apigee SDK-backed entity type annotation)"
+  ],
   "categories": [
     "Web services"
   ],

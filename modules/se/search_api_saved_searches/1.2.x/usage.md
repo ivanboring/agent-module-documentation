@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Search API Saved Searches lets a visitor save a search and be emailed when new results match it — the "alert me about new listings like this" feature familiar from job boards and property sites.
+Search API Saved Searches lets a visitor save a Search API search and be emailed when new matching results appear — the "alert me about new listings like this" feature familiar from job boards, marketplaces and property sites. A saved search is a `search_api_saved_search` content entity; a `search_api_saved_search_type` config/bundle entity controls how it behaves.
 
 ---
 
-The module models a saved search as a content entity (`search_api_saved_search`) with its own type entity governing behaviour, so different kinds of saved search can have different notification schedules, activation rules and index bindings. Its routing is a good example of doing entity access properly: every route — view, edit, delete and **activate** — is gated by `_entity_access` on the specific operation rather than a blanket permission, and `activate` is its own operation, which matters because activation is how an anonymous visitor's saved search is confirmed by email. Permissions are partly generated: `administer search_api_saved_searches` is declared, and `Permissions::bySavedSearchType()` adds per-type permissions at runtime through a `permission_callbacks` entry. A `search_api_saved_searches.plugin_type.yml` declares a notification plugin type, so how alerts are delivered is extensible. Its `.info.yml` sets `lifecycle: stable`, an explicit maintainer signal. Two operational realities to plan for: notifications run on cron and re-execute saved queries, so the cost scales with the number of saved searches; and anonymous saved searches mean storing email addresses, which is personal data with a retention question and needs the activation flow to prevent someone signing up an address they do not own.
+Each saved search stores the exact query that ran on the page (including any Facets, Views or other filters) so its results match what the visitor saw. The bundle entity (`search_api_saved_search_type`) decides which search displays can be saved, which notification methods are used, the schedule of notifications, and how "new" results are detected — either by a date field ("created after last check") or by diffing result IDs against the `search_api_saved_searches_old_results` table. On cron (`hook_cron` → `NewResultsCheck::checkAll()`, batched via `cron_batch_size`), each due query is re-run and new results are delivered through a pluggable notification plugin (`search_api_saved_searches_notification`); the built-in `email` plugin sends Token-templated mails. Anonymous visitors save a search by entering an email address and confirming it via an activation link, and each saved search can be viewed, edited or deleted from links in the email. Visitors save searches through the "Save search" block, which renders the create form for whichever Search API query executed on the same page — so the underlying search view must have caching disabled. Registered users get a per-user Views listing of their saved searches, and their searches are automatically claimed, updated on email change, or deactivated when they are blocked. A `check-all` Drush command mirrors the cron run for manual or scheduled execution.
 
 ---
 
 - Let visitors save a search and be alerted to new results.
-- Email a job seeker when matching vacancies appear.
-- Notify buyers about new property listings.
-- Bookmark a faceted search for later.
-- Send a daily or weekly digest of new matches.
-- Let anonymous visitors subscribe by email.
-- Confirm an anonymous subscription by activation link.
-- Offer different alert schedules per search type.
-- Let users manage their saved searches.
-- Drive re-engagement with new content.
-- Alert staff to new internal submissions.
-- Extend delivery with a notification plugin.
-- Give registered users a saved-search list.
-- Reduce manual checking of a listings page.
-- Notify on new results in a specific category.
-- Support a marketplace's alert feature.
-- Provide alerts without a separate mailing tool.
-- Track which searches visitors care about.
+- Email a job seeker when new matching vacancies are indexed.
+- Notify buyers when new property listings match their filters.
+- Alert marketplace users to new items in a saved category search.
+- Send a daily, weekly or hourly digest of new matches.
+- Let anonymous visitors subscribe by email with a confirmation link.
+- Offer different alert schedules and rules per saved-search type.
+- Give registered users a page listing and managing their saved searches.
+- Save a faceted or Views-filtered search exactly as displayed.
+- Let users create a saved search without first running the search.
+- Detect new results by a "created" date field for efficiency on large indexes.
+- Cap how many new results each notification email includes.
+- Add a custom delivery channel (SMS, push) via a notification plugin.
+- Place a "Save search" block below any Search API search results.
+- Drive re-engagement by pulling visitors back to new content.
+- Automatically remove a user's saved searches when the account is deleted.
+- Stop notifications when a user is blocked or loses the "use" permission.
+- Run alert checks from cron or on demand with Drush.
+- Throttle cron work with a configurable batch size.
+- Customize activation and notification email subject/body with tokens.

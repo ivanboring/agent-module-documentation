@@ -5,11 +5,14 @@
   "version": "2.3.x",
   "package": "Authentication",
   "composer_namespace": "drupal/oidc",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/externalauth": "^2.0",
+    "sop/jwx": "^0.11.0"
+  },
   "dependent_modules": [
     "externalauth:externalauth"
   ],
-  "configure": null,
+  "configure": "oidc.admin.settings",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -22,14 +25,16 @@
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "OpenidConnectRealm (manager: plugin.manager.openid_connect_realm, annotation: Drupal\\oidc\\OpenidConnectRealm\\Annotation\\OpenidConnectRealm, dir: Plugin/OpenidConnectRealm)"
+  ],
   "categories": [
-    "Security",
-    "Integrations"
+    "Access control",
+    "Security"
   ],
   "subcategories": [
-    "Single sign-on",
-    "Authentication providers"
+    "OAuth / OpenID Connect client",
+    "External authentication"
   ],
   "keywords": [
     "oidc",

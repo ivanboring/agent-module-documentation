@@ -1,43 +1,42 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Apigee API Catalog (apigee_api_catalog) — agent index
 
-Publishes OpenAPI (and, via submodules, AsyncAPI/GraphQL/free-form) documentation as `apidoc`
-nodes. Core-only dependencies (`text`, `entity`, `file`, `user`, `node`, `path`, `options`,
-`file_link`). No `configure` route, no permissions of its own; config schema shipped.
+Publishes API reference documentation on a Drupal developer portal. Enabling the module creates an
+`apidoc` node type ("OpenAPI Doc") whose OpenAPI spec is either an uploaded file or fetched from a
+remote URL, then rendered on the node with Apigee's SmartDocs field formatter. Ships two Views for
+the catalog listing, a per-node **Re-import** operation, and a `SpecFetcher` service.
 
-Submodules (own docs, all **Apigee (Experimental)**):
-- `apigee_asyncapi_doc` → [../../modules/apigee_asyncapi_doc/3.1.x/agent/start.md](../../modules/apigee_asyncapi_doc/3.1.x/agent/start.md)
-- `apigee_graphql_doc` → [../../modules/apigee_graphql_doc/3.1.x/agent/start.md](../../modules/apigee_graphql_doc/3.1.x/agent/start.md)
-- `apigee_freeform_doc` → [../../modules/apigee_freeform_doc/3.1.x/agent/start.md](../../modules/apigee_freeform_doc/3.1.x/agent/start.md)
+- No `configure` route (operate it through the `apidoc` node type, its Manage display, and the two Views).
+- No permissions of its own — access is ordinary node access on the `apidoc` bundle (contrib node-access modules apply).
+- No drush commands, no config schema, no plugin managers of its own.
+- Dependencies (info.yml): `text`, `entity`, `file`, `user`, `node`, `path`, `options`, `file_link`, `apigee_edge`.
 
-Key facts:
-- Node type **`apidoc`** with fields (all in `config/install`):
+Submodules shipped in the project (separate modules, each defining its own node type; enable
+individually — not documented here):
+- `apigee_asyncapi_doc` — AsyncAPI docs (`asyncapi_doc` node type).
+- `apigee_graphql_doc` — GraphQL docs (`graphql_doc` node type).
+- `apigee_freeform_doc` — free-form docs (`freeform_doc` node type).
 
-  | Field | Purpose |
-  |---|---|
-  | `field_apidoc_spec` | The specification content |
-  | `field_apidoc_spec_file_source` | Upload vs. remote-URL source |
-  | `field_apidoc_file_link` | Remote spec URL (uses `file_link`) |
-  | `field_apidoc_spec_md5` | Checksum of the last fetched spec — how "did it change?" is answered |
-  | `field_apidoc_fetched_timestamp` | Last fetch time |
-  | `field_api_product` | The Apigee API product reference |
+What you'd do:
+- **Understand the `apidoc` node type, its fields, and how to change the spec renderer** → [fields/apidoc.md](fields/apidoc.md)
+- **Fetch/re-import a spec from a URL; call the SpecFetcher service** → [api/spec-fetcher.md](api/spec-fetcher.md)
+- **Hook into the apidoc node lifecycle as an integrator** → [hooks/node-lifecycle.md](hooks/node-lifecycle.md)
+- **Work with the catalog listing pages, `/api/{id}` aliases, breadcrumb and 404 redirect** → [views/catalog.md](views/catalog.md)
 
-- **`SpecFetcher`** (`SpecFetcherInterface::fetchSpec(NodeInterface $apidoc): string`) injects
-  `file_system`, `http_client`, `entity_type.manager`, translation, messenger and a logger.
-- Re-import: route `entity.node.reimport_spec_form` at **`/node/{node}/reimport`**
-  (`_entity_form: node.reimport_spec`, `_node_operation_route: TRUE`) with
-
-  ```php
-  // ApiDocReimportSpecForm::checkAccess()
-  return AccessResult::allowedIf($entity->bundle() == 'apidoc' && $entity->access('update', $account));
-  ```
-
-  so re-import rides on ordinary node update access — no separate permission.
-- Hooks: `hook_entity_type_build()`, `hook_entity_bundle_field_info_alter()`,
-  `hook_node_presave/insert/update()`, `hook_entity_operation()` (adds the Re-import operation),
-  `hook_form_node_form_alter()`, plus `ApigeeApiCatalogBreadcrumbBuilder` and
-  `EventSubscriber\PageNotFoundEventSubscriber`.
-- `UpdateService` and `Plugin/Validation` handle spec updates and validation constraints.
-
-Note: the `apidoc` node type and spec handling work without a live Apigee connection; the
-`field_api_product` reference is what ties a doc to Apigee itself.
+Key facts (real machine names):
+- Node type: `apidoc` (label "OpenAPI Doc"), `new_revision: true`.
+- Fields on `node.apidoc`: `field_apidoc_spec` (file, ext `yaml json`, `public://apidoc_specs`),
+  `field_apidoc_spec_file_source` (list_string, values `file`/`url`), `field_apidoc_file_link`
+  (file_link, ext `yaml json`), `field_apidoc_spec_md5` (string), `field_apidoc_fetched_timestamp`
+  (timestamp), `field_api_product` (entity_reference → `api_product`), plus core `body`.
+- Service ids: `apigee_api_catalog.spec_fetcher` (`SpecFetcher`), `apigee_api_catalog.updates`
+  (`UpdateService`), `apigee_api_catalog.page_not_found_subscriber`, `apigee_api_catalog.breadcrumb`,
+  `logger.channel.apigee_api_catalog`.
+- Field formatter plugin: `apigee_api_catalog_smartdocs` (`SmartDocsFormatter`, for `file` fields).
+- Validation constraint plugin: `ApiDocFileLink` (added to `field_apidoc_file_link`).
+- Reimport route: `entity.node.reimport_spec_form` → `/node/{node}/reimport`, form op `node.reimport_spec`.
+- Views: `view.apigee_api_catalog.page_1` at `/apis` (public "API Catalog"), `view.api_catalog_admin.page_1`
+  at `/admin/content/apis` (admin "API catalog").
+- `SpecFetcherInterface` constants: `SPEC_AS_FILE='file'`, `SPEC_AS_URL='url'`; statuses
+  `STATUS_UPDATED`, `STATUS_UNCHANGED`, `STATUS_ERROR`.
+- Conflicts with the deprecated `apigee_edge_apidocs` module (install-time requirement check).

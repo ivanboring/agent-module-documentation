@@ -1,26 +1,25 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Allows using remote entities, for example through a REST interface. — a submodule of **external_entities**.
+# external_entities_pathauto — usage
+
+Pathauto integration for External Entities. Enabling this submodule lets you generate clean URL
+aliases for external entity types with the Pathauto module, the same way you would for nodes or other
+content entities. Each external entity type gains an "Automatically generate aliases" checkbox, and a
+Pathauto pattern for the derived entity type drives the alias.
 
 ---
 
-This is one of external_entities's submodules. Allows using remote entities, for example through a REST interface. It exposes nothing on its own beyond that role and is governed by the parent module's configuration, permissions and behavior; enable it when you need this specific capability and leave it off otherwise, so the site only carries the parts of external_entities it actually uses.
-
-See the parent module for the overall system this fits into.
+Because external entities have no local save event, aliases are generated when an entity is loaded
+(if the type has alias generation enabled and no alias exists yet). The setting is stored as a
+third-party setting on the external entity type config; the module also registers a pathauto alias-type
+plugin so Pathauto's bulk generate/delete operations work on external entity types. Requires the
+Pathauto module.
 
 ---
-- Enable external_entities_pathauto to add this capability.
-- Extend external_entities with external_entities_pathauto.
-- Keep it disabled if not needed.
-- Depend on external_entities.
-- Scope functionality to what you enable.
-- Add only the sub-features you use.
-- Compose the parent's feature set.
-- Turn on per requirement.
-- Reduce surface by enabling selectively.
-- Combine with sibling submodules.
-- Configure via the parent module.
-- Review what it exposes before enabling.
-- Match it to your use case.
-- Keep the parent's permissions in force.
-- Enable alongside the parent.
-- Use it as part of the parent's system.
+
+- Give remote records human-readable, SEO-friendly URLs.
+- Configure a Pathauto pattern per external entity type.
+- Enable or disable alias generation per type via a checkbox.
+- Bulk-generate aliases for existing external entities from Pathauto's UI.
+- Bulk-delete aliases for an external entity type.
+- Build patterns from mapped external fields (and inherited annotation fields).
+- Keep alias generation automatic as new remote records appear.
+- Combine with the file-field and Views submodules for a fully browsable remote dataset.

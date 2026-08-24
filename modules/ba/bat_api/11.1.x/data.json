@@ -1,11 +1,13 @@
 {
   "name": "Booking and Availability Management API",
   "data_name": "bat_api",
-  "description": "Exposes BAT (Booking and Availability Management) data over a REST API.",
+  "description": "Exposes BAT (Booking and Availability Toolkit) unit and event/availability data over an HTTP JSON API for a FullCalendar front end.",
   "version": "11.1.x",
-  "package": "Web services",
+  "package": "bat",
   "composer_namespace": "drupal/bat_api",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/restui": "^1.2"
+  },
   "dependent_modules": [
     "bat_event:bat_event",
     "bat_fullcalendar:bat_fullcalendar",
@@ -23,13 +25,16 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Web services"
+    "Decoupled",
+    "E-commerce"
   ],
   "subcategories": [
-    "Booking / availability"
+    "REST / web services",
+    "Availability management",
+    "Booking / scheduling"
   ],
   "keywords": [
     "bat",
@@ -37,7 +42,8 @@
     "availability",
     "rest",
     "api",
-    "calendar"
+    "calendar",
+    "fullcalendar"
   ],
   "project_description": "The BAT API provides generalized API (REST) access to Booking and Availability Data.",
   "maintenance_status": "Actively maintained",

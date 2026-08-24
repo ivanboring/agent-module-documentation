@@ -5,7 +5,9 @@
   "version": "2.1.x",
   "package": null,
   "composer_namespace": "drupal/phpspreadsheet",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "phpoffice/phpspreadsheet": "~1"
+  },
   "dependent_modules": [],
   "configure": null,
   "core_version_requirement": "^8 || ^9 || ^10",
@@ -15,13 +17,13 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [
-    "phpoffice/phpspreadsheet:~1"
+    "phpoffice/phpspreadsheet"
   ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"

@@ -31,17 +31,21 @@
     "danse_webhook",
     "eca_danse"
   ],
-  "provides_permissions": true,
-  "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [
-    "DanseEvent"
+    "Danse (event sources; manager plugin.manager.danse.plugin, annotation @Danse, dir Plugin/Danse)",
+    "DanseRecipientSelection (manager plugin.manager.danse.recipient.selection, annotation @DanseRecipientSelection, dir Plugin/DanseRecipientSelection)"
   ],
   "categories": [
-    "Automation",
-    "User engagement"
+    "User engagement",
+    "Administration tools",
+    "Automation"
   ],
   "subcategories": [
+    "Activity / notification messages",
+    "Messaging framework",
     "Audit trail / activity logging",
     "Workflow / business rules"
   ],

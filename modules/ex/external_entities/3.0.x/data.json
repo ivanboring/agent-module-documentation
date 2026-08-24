@@ -3,9 +3,11 @@
   "data_name": "external_entities",
   "description": "Allows using remote entities, for example through a REST interface.",
   "version": "3.0.x",
-  "package": "Web services",
+  "package": "External Entities",
   "composer_namespace": "drupal/external_entities",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "galbar/jsonpath": "^2.0||^3.0"
+  },
   "dependent_modules": [],
   "configure": null,
   "core_version_requirement": "^10 || ^11",
@@ -27,12 +29,20 @@
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "external_entities_storage_client (plugin.manager.external_entities.storage_client, @StorageClient)",
+    "external_entities_data_aggregator (plugin.manager.external_entities.data_aggregator, @DataAggregator)",
+    "external_entities_field_mapper (plugin.manager.external_entities.field_mapper, @FieldMapper)",
+    "external_entities_property_mapper (plugin.manager.external_entities.property_mapper, @PropertyMapper)",
+    "external_entities_data_processor (plugin.manager.external_entities.data_processor, @DataProcessor)"
+  ],
   "categories": [
-    "Web services"
+    "Decoupled",
+    "Developer tools"
   ],
   "subcategories": [
-    "Remote / external data"
+    "REST / web services",
+    "Entity API"
   ],
   "keywords": [
     "external entities",

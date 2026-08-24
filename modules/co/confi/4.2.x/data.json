@@ -3,7 +3,7 @@
   "data_name": "confi",
   "description": "A 'clever' configuration import tool that imports config more granularly than core's all-or-nothing sync.",
   "version": "4.2.x",
-  "package": null,
+  "package": "Configuration",
   "composer_namespace": "drupal/confi",
   "composer_requirements": {},
   "dependent_modules": [],
@@ -19,13 +19,15 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Administration"
+    "Administration tools",
+    "Developer tools"
   ],
   "subcategories": [
-    "Configuration management"
+    "Configuration management",
+    "Deployment / release management"
   ],
   "keywords": [
     "configuration",

@@ -1,7 +1,7 @@
 {
   "name": "CKEditor 4 - LTS",
   "data_name": "ckeditor_lts",
-  "description": "Restores CKEditor 4 (removed from core) as a contrib module — an interim path with important security caveats.",
+  "description": "Re-publishes the CKEditor 4 text editor that Drupal core removed for CKEditor 5, registering the `ckeditor` editor plugin and bundling the CKEditor 4 build so existing CKEditor 4 formats, toolbars and plugins keep working on Drupal 9.4-11.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/ckeditor_lts",
@@ -22,12 +22,15 @@
   "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "CKEditorPlugin (plugin.manager.ckeditor.plugin, Plugin/CKEditorPlugin)"
+  ],
   "categories": [
-    "Content authoring"
+    "Content editing experience"
   ],
   "subcategories": [
-    "WYSIWYG editors"
+    "WYSIWYG / rich text editor",
+    "CKEditor plugins"
   ],
   "keywords": [
     "ckeditor 4",

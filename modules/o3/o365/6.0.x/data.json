@@ -6,7 +6,12 @@
   "installed_release": "6.0.0-beta6",
   "package": "Microsoft 365",
   "composer_namespace": "drupal/o365",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/externalauth": "^2.0",
+    "drupal/oauth2_client": "^4.0",
+    "microsoft/microsoft-graph": "^1.40",
+    "xantios/mimey": "^2.2"
+  },
   "dependent_modules": [
     "oauth2_client:oauth2_client",
     "externalauth:externalauth"
@@ -17,10 +22,25 @@
   "list_position": 2608,
   "project_url": "https://www.drupal.org/project/o365",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.0",
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [],
+  "submodules": [
+    "o365_sso",
+    "o365_sso_user",
+    "o365_profile",
+    "o365_profile_rest",
+    "o365_rest",
+    "o365_outlook_mail",
+    "o365_outlook_calendar",
+    "o365_onedrive",
+    "o365_sharepoint_file",
+    "o365_sharepoint_field",
+    "o365_contacts",
+    "o365_groups",
+    "o365_teams",
+    "o365_links"
+  ],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
@@ -30,8 +50,9 @@
     "Access control"
   ],
   "subcategories": [
-    "Single sign-on (SSO) provider",
+    "Cloud services (Azure)",
     "OAuth / OpenID Connect client",
+    "Single sign-on (SSO) provider",
     "External authentication"
   ],
   "keywords": [

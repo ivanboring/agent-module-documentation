@@ -1,11 +1,17 @@
 {
   "name": "Media Contextual Cropping API",
   "data_name": "media_contextual_crop",
-  "description": "Provides API Element for Media Contextual Cropping.",
+  "description": "API for cropping one media image differently depending on where it is used.",
   "version": "2.2.x",
   "package": "Media Contextual Cropping",
   "composer_namespace": "drupal/media_contextual_crop",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drush/drush": ">11",
+    "drupal/crop": "^2.3",
+    "composer/installers": "^1.9 || ^2.0",
+    "cweagans/composer-patches": "^1.7 || ^2.0",
+    "drupal/core": "^11.4"
+  },
   "dependent_modules": [
     "crop:crop",
     "drupal:field"
@@ -33,6 +39,7 @@
   ],
   "subcategories": [
     "Image cropping",
+    "Media derivatives / transcoding",
     "Plugin system"
   ],
   "keywords": [
@@ -49,6 +56,6 @@
   "security_advisory_coverage": "covered",
   "project_created": "2022-10-10",
   "project_changed": "2026-08-18",
-  "core_semver_minimum": 9004000,
+  "core_semver_minimum": 11004000,
   "core_semver_maximum": 12000000
 }

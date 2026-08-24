@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Entity Translation Sync copies selected field values across an entity's translations when it is saved, so fields that should never differ by language — a price, a date, an image, a reference — stay identical without an editor updating each translation by hand.
+Entity Translation Sync gives an editor a single page — an "Entity translation sync" tab and entity-operation link on configured content entities — where they tick which translatable fields of the current language to copy into which other translations, then run one batch that writes and saves them. It turns "open five translation edit forms and re-enter the same media/price/date" into one action, without making the field permanently shared.
 
 ---
 
-Drupal's `content_translation` decides translatability per field, which sounds like it solves this and does not quite: marking a field untranslatable makes it genuinely shared, which breaks as soon as one language legitimately needs to differ, and changing that setting later is a data migration. This module works at the other end — the fields stay translatable, but on save the configured ones are propagated to the other translations. That leaves the escape hatch open and makes the sharing an editorial policy rather than a schema decision. The settings form at `/admin/config/regional/entity-translation-sync` chooses which fields sync, `src/EventSubscriber` performs the propagation, and `src/Access` plus `EntityTranslationSyncPermissions` supply the access layer. Permissions are partly **generated**: `entity_translation_sync.permissions.yml` declares `synchronize any entity translation` and then a `permission_callbacks` entry pointing at the permissions class, so finer-grained per-context permissions appear at runtime and will not be found by grepping the YAML alone. Note that the settings form is gated by core's `administer site configuration` rather than by any of the module's own permissions. Dependency is core `content_translation`; core range `^9 || ^10 || ^11`.
+Drupal's `content_translation` decides translatability per field, which sounds like it solves the "same value everywhere" problem but does not: marking a field untranslatable makes it genuinely shared at the schema level and breaks the moment one language legitimately needs to differ, and reversing that is a data migration. This module works at the other end — fields stay translatable, and an editor propagates the configured ones on demand from a per-entity page rather than automatically. An admin first enables entity types, bundles and fields at `/admin/config/regional/entity-translation-sync` (`SettingsForm`, gated by `administer site configuration`), storing the selection in `entity_translation_sync.settings:entity_types` as `entity_types.<type>.bundles.<bundle>.fields[]`; only translatable types/bundles/fields are offered and `entity_reference_revisions` (Paragraphs) fields are excluded. Enabling a type must be followed by a cache rebuild, because the link template (`drupal:entity-translation-sync`, added in `hook_entity_type_alter`), the runtime route (`entity.<type>.entity_translation_sync`, registered by `EntityTranslationSyncRouteSubscriber` on `RoutingEvents::ALTER`), the tab (`EntityTranslationSyncLocalTasks` deriver) and the per-type permissions are all derived from that config. Who may run a sync is controlled by the static `synchronize any entity translation` and the generated per-type `synchronize <type> translation` permissions (from `EntityTranslationSyncPermissions::permissions`, so they will not be found by grepping the YAML). On the sync page (`EntityTranslationSyncForm`) a table shows each configured non-empty field against every other translation language; the editor checks field/language pairs, and a batch copies the current-language value into each selected translation and saves the entity once. Dependency is core `content_translation`; core range `^9 || ^10 || ^11`.
 
 ---
 
-- Keep a product price identical across translations.
-- Sync an image field to every language.
-- Propagate a date field across translations.
-- Keep entity references aligned between languages.
-- Avoid marking a field untranslatable permanently.
-- Let one language deviate when it genuinely must.
-- Reduce duplicated editing across languages.
-- Keep a taxonomy reference consistent site-wide.
-- Sync a boolean flag across translations.
-- Maintain shared metadata in a multilingual site.
-- Fix drift between translations of the same node.
-- Apply an editorial policy about shared fields.
-- Keep media attachments identical per language.
-- Reduce translation-workflow errors.
-- Restrict who may synchronise translations.
-- Sync fields on save without a batch job.
-- Keep prices consistent for a multilingual shop.
-- Support a translation team working asynchronously.
+- Copy a product price into all of a node's translations at once.
+- Push one media/image field to every translation from a single page.
+- Keep a date field identical across a node's languages.
+- Align an entity-reference (e.g. taxonomy term) across translations.
+- Fix drift between translations without opening each translation edit form.
+- Avoid marking a field untranslatable permanently just to share it.
+- Let one language still deviate later, since fields stay translatable.
+- Enable syncing only for chosen entity types (node, media, taxonomy_term…).
+- Restrict syncable fields to a curated per-bundle list.
+- Grant "Synchronize node translation" to editors who maintain multilingual content.
+- Grant "Synchronize any entity translation" to a super-editor role.
+- Add an "Entity translation sync" operation link to content listings.
+- Add an "Entity translation sync" tab to an entity's canonical page.
+- Sync a boolean/flag field across a node's translations.
+- Keep shared metadata consistent on a multilingual site.
+- Reduce repetitive re-entry for a translation team.
+- Batch-update several translations of one entity in a single submit.
+- Support custom content entity types that expose a canonical link template.
+- Exclude Paragraphs / entity_reference_revisions fields from sync (unsupported).
+- Propagate values only where the editor has field edit access.

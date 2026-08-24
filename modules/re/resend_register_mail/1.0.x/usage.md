@@ -1,27 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Resend registration / welcome email adds a bulk action to the people admin screen that re-sends the account activation or welcome mail to selected users — the standard fix for "the invitation never arrived".
+Resend registration / welcome email gives admins two ways to send a user's account mail again: a bulk action on the People screen and a button on each user's edit form. It is the standard fix for "the welcome mail never arrived."
 
 ---
 
-Drupal sends the registration mail once, at account creation. When it bounces, lands in spam, or the account was created before mail was configured, core offers no way to send it again short of a password reset, which is a different message with different wording. This module supplies the missing action. `src/Plugin` provides the user action so it appears in the People screen's bulk-operations dropdown, `src/Form/UserMultipleResendEmail` is the confirmation step at `/admin/user/resend-email`, and `src/Hook` plus `config/install` wire in defaults and let the mail type be chosen. The route requirement is worth noting: `_permission: 'administer users+resend account emails'` — the `+` is Drupal's OR syntax, so either permission suffices. The module's own permission, `resend account emails`, is marked **`restrict access: true`**, which is right, because re-sending an activation mail can regenerate a one-time login link for an account. Dependencies are core `user` only, and the release requires core `^10.2 || ^11`.
+Drupal sends the registration mail once, when the account is created. If it bounces, lands in spam, or the account existed before mail was configured, core offers no built-in way to send it again. This module fills that gap. It registers a user Action (`resend_register_mail_action`) so operators can select users on `/admin/people`, choose the action, and land on a confirm form at `/admin/user/resend-email` where they pick the mail type — welcome for admin-created accounts, welcome for self-registration, the pending-approval message, or a password-recovery request — with a sensible default derived from the site's `user.settings.register` mode. It also adds a "Resend welcome message" / "Resend awaiting approval message" button to the user edit form via `hook_form_user_form_alter` for one-off resends. Both paths ultimately call core's `_user_mail_notify()` against the target account and skip accounts that have no email address. The module ships one permission (`resend account emails`), the enabling action config, and a config schema entry; it has no settings page and no Drush commands. Dependencies are core `user` only, and it requires core `^10.2 || ^11`.
 
 ---
 
 - Re-send a welcome email that never arrived.
-- Bulk re-invite a batch of imported users.
+- Bulk re-invite a batch of imported users from the People screen.
 - Recover from a period when the site could not send mail.
 - Re-send activation mail after fixing SMTP.
 - Onboard users migrated from another system.
 - Trigger the welcome message for pre-created accounts.
-- Avoid using password reset as a substitute invitation.
-- Give a support team a self-service fix for missing mail.
-- Re-send to a single user from the People screen.
-- Restrict resending to a dedicated permission.
-- Re-invite users after a domain change.
+- Send the pending-approval message again to an awaiting-approval account.
+- Re-send to a single user via the button on their edit form.
+- Choose which account mail type to resend on the confirm form.
+- Re-send after correcting a user's email address.
+- Re-invite users after a domain or hostname change.
 - Reach users whose mail was quarantined.
-- Choose which account mail type to resend.
-- Handle onboarding for a cohort of new staff.
-- Confirm the action before mail goes out.
+- Handle onboarding for a cohort of new staff at once.
+- Confirm the selected users before mail goes out.
+- Delegate resending to a support role via the dedicated permission.
+- Send a password-recovery request from the same confirm form.
+- Default the mail type to match the site's registration mode.
+- Skip accounts with no email automatically during a bulk resend.
 - Combine with a mail-logging module to verify delivery.
 - Reduce helpdesk tickets about missing invitations.
-- Re-send after correcting a user's email address.
+- Re-send the admin-created welcome mail to a specific account.
+- Resend without resorting to a manual password reset.

@@ -1,32 +1,39 @@
-The dashboard submodule provides a Content Hub dashboard UI for monitoring syndication and jumping to entity edit forms, gated by its own "Administer Acquia ContentHub Dashboard" permission.
+Adds an embedded Acquia Content Hub dashboard (an Angular app) for monitoring syndication, plus an
+"automatic publisher discovery" feature that keeps a CORS allow-list of publisher webhook origins
+current so the dashboard can communicate with publisher sites.
 
 ---
 
-It registers a dashboard at `/admin/acquia-contenthub/contenthub-dashboard` (plus an index
-sub-page) served by `ContentHubDashboardController` and protected by a custom access check
-(`_contenthub_dashboard_access`) backed by the `administer ach dashboard` permission. A helper
-route (`/acquia-contenthub/entity-edit/{entity_type}/{uuid}`) resolves a Content Hub UUID to a
-local entity and redirects to its edit form, making it easy to jump from the dashboard to the
-underlying content. It adds a Drush command
-(`acquia:contenthub-dashboard-allowed-origins`) for managing which origins the dashboard is
-allowed to display, ships its own JS library and services, and depends on the base
-`acquia_contenthub` module. It is a monitoring/reporting layer rather than part of the
-publish/subscribe data path.
+This submodule surfaces a Content Hub dashboard at
+`/admin/acquia-contenthub/contenthub-dashboard`, rendered as an iframe around a prebuilt Angular
+application shipped in the module's `dashboard/` directory. Access is gated by a dedicated,
+restricted permission (`administer ach dashboard`) plus a connected Content Hub client, enforced
+by the `ContentHubDashboardAccess` check. It stores two settings in
+`acquia_contenthub_dashboard.settings`: `auto_publisher_discovery` (a master toggle exposed as a
+checkbox on the base Content Hub admin settings form when the subscriber module is enabled) and
+`allowed_origins` (publisher webhook origins). When discovery is on, the module attaches a
+`client_publisher_filter` to the site's webhook, seeds allowed origins from the service, updates
+them on validated inbound webhooks (`UpdateAllowedOrigins` on the base `HANDLE_WEBHOOK` event), and
+extends the site's CORS configuration (headers, methods, origins) by swapping the
+`http_middleware.cors` service for `ContentHubCors`. A Drush command
+(`acquia:contenthub-dashboard-allowed-origins`, alias `ach-dao`) refreshes the origin list on
+demand. A helper route resolves a Content Hub UUID to a local entity's edit form. It depends on
+`acquia_contenthub`; discovery/CORS additionally need `acquia_contenthub_subscriber`.
 
 ---
 
-- Monitor Content Hub syndication status from a dedicated dashboard.
-- Give operators a single admin screen for Content Hub health.
-- Grant dashboard access separately via the "Administer Acquia ContentHub Dashboard" permission.
+- Monitor Content Hub syndication from an admin dashboard.
+- View export and import queue counts at a glance.
+- Delegate dashboard access via a dedicated restricted permission.
+- Require a connected Content Hub client before showing the dashboard.
+- Keep a CORS allow-list of publisher webhook origins up to date automatically.
+- Toggle automatic publisher discovery from the Content Hub settings form.
+- Attach a publisher-discovery filter to the site's webhook.
+- Extend CORS headers and methods needed for Content Hub API calls.
+- Refresh allowed origins on demand with a Drush command.
+- Update allowed origins in response to validated inbound webhooks.
 - Jump from a Content Hub UUID to the local entity's edit form.
-- Manage allowed origins shown on the dashboard via Drush.
-- Restrict which origins' content the dashboard surfaces.
-- Provide a reporting view distinct from the base settings form.
-- Review syndication activity without running Drush audits.
-- Add a dashboard entry under the Acquia Content Hub admin area.
-- Support multi-origin subscriptions by filtering displayed origins.
-- Redirect editors to content by UUID for quick fixes.
-- Offer a delegated, lower-privilege view for dashboard-only users.
-- Complement publisher/subscriber queues with an at-a-glance overview.
-- Serve as the operational monitoring surface for a syndication fleet.
-- Keep dashboard concerns isolated behind their own access check.
+- Seed allowed origins by querying the service for publisher clients.
+- Preserve existing wildcard CORS entries when extending CORS.
+- Embed the Angular dashboard app served from the module.
+- Give operators visibility into a multi-site syndication network.

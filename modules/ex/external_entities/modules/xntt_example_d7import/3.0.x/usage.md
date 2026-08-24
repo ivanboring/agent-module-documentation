@@ -1,26 +1,26 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Demonstrate how to create a programmatically custom external entity type that can be used to import Drupal 7 data exposed by the "RESTful Web Services" module. — a submodule of **external_entities**.
+# xntt_example_d7import — usage
+
+An example module for External Entities that installs a ready-made external entity type for reading a
+Drupal 7 site's content through its RESTful Web Services (restws) JSON API. It is a learning template:
+enable it, look at the `d7import` type, then repoint it at your own Drupal 7 site and extend the field
+mapping to match your content.
 
 ---
 
-This is one of external_entities's submodules. Demonstrate how to create a programmatically custom external entity type that can be used to import Drupal 7 data exposed by the "RESTful Web Services" module. It exposes nothing on its own beyond that role and is governed by the parent module's configuration, permissions and behavior; enable it when you need this specific capability and leave it off otherwise, so the site only carries the parts of external_entities it actually uses.
-
-See the parent module for the overall system this fits into.
+The shipped `d7import` type is read-only and uses a REST storage client (demoed against drupal.org's
+`api-d7` endpoint). It maps the D7 node id, title, uuid, language, and a body text field, and shows the
+parent module's `locks` feature by pinning the base path, deletion, translation settings, and core
+field mappers. Install is blocked if a `d7import` type already exists. To physically import the fetched
+records into local Drupal content, combine it with the External Entity Manager synchronization feature.
 
 ---
-- Enable xntt_example_d7import to add this capability.
-- Extend external_entities with xntt_example_d7import.
-- Keep it disabled if not needed.
-- Depend on external_entities.
-- Scope functionality to what you enable.
-- Add only the sub-features you use.
-- Compose the parent's feature set.
-- Turn on per requirement.
-- Reduce surface by enabling selectively.
-- Combine with sibling submodules.
-- Configure via the parent module.
-- Review what it exposes before enabling.
-- Match it to your use case.
-- Keep the parent's permissions in force.
-- Enable alongside the parent.
-- Use it as part of the parent's system.
+
+- Display Drupal 7 nodes inside a Drupal 9/10/11 site as entities.
+- Learn how to define an external entity type from installable configuration.
+- See a REST storage client configured for a Drupal 7 RESTful Web Services endpoint.
+- Study JSONPath and direct property mappings against real D7 node JSON.
+- Repoint the endpoint URLs at your own Drupal 7 site.
+- Add fields matching your D7 content type and map them.
+- See the External Entities `locks` feature applied to protect a config-defined type.
+- Use as a first step toward importing D7 content with the External Entity Manager.
+- Prototype a legacy-site content bridge without writing code.

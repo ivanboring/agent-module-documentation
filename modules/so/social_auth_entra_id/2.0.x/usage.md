@@ -1,27 +1,30 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Microsoft Entra ID SSO Login lets users sign in to Drupal with their Microsoft Entra ID (formerly Azure AD) account — the common requirement for an intranet or any site backed by a Microsoft 365 tenant.
+Microsoft Entra ID SSO Login adds a "Log in with Microsoft" option to Drupal, letting users sign in with their Microsoft Entra ID (formerly Azure AD) account — the common need for an intranet, employee portal, or any site backed by a Microsoft 365 tenant.
 
 ---
 
-The flow is standard OAuth/OIDC: `/user/login/entra-id` redirects the visitor to Microsoft, and a callback route receives them back with a code that is exchanged for tokens and matched to a Drupal account. The redirect route is declared `_access: "TRUE"` with an explanatory comment — necessarily so, because the person starting a login is by definition not yet authenticated — and `no_cache: TRUE`, which is also correct, since a cached redirect would break the per-session state handling. A settings form at `/admin/config/services/entra-id/settings` holds the tenant, client ID and client secret, gated by `administer site configuration` (the module also declares its own `administer social_auth_entra_id settings` permission, though the routing uses core's). Two things matter more than anything else on a module of this kind, and both should be verified rather than assumed on any deployment: that the OAuth **`state` parameter is generated per session and checked on return** — the control that prevents login-CSRF, and the exact defect that produced an existing danger-4 finding against `oauth_login_oauth2` in this collection — and that the **client secret** is not committed in exported configuration but sourced from an environment variable, per this repo's convention. Requirements are core `user` and core `^9 || ^10 || ^11`.
+The module implements the OAuth 2.0 Authorization Code flow directly against Microsoft (it is self-contained and does not require the Social API framework — only core `user`). A visitor sent to `/user/login/entra-id` is redirected to Microsoft; the callback at `/user/login/entra-id/callback` exchanges the code for tokens and reads the user's email from the ID token claims. That email is matched to a Drupal account, which is either logged in or, when "Register and Login" is selected, created on the fly. Administrators configure the Azure client ID, client secret, and tenant ID at `/admin/config/services/entra-id/settings`, choose the account type (organization / both / personal), pick login behavior, restrict to an allowlist of email domains, and toggle blocks for user 1 and the administrator role. Credentials can be moved out of the database by overriding them in `settings.php`. A configurable "Entra ID Login Block" places a themeable "Log in with Microsoft" button anywhere, and the callback URL to register in Azure is shown on the settings form. Requirements: core `user` and Drupal `^9 || ^10 || ^11`.
 
 ---
 
 - Let staff sign in with their Microsoft 365 account.
-- Add SSO to a Drupal intranet.
+- Add single sign-on to a Drupal intranet.
 - Remove separate Drupal passwords for employees.
-- Meet a policy requiring corporate identity.
-- Map Entra ID users to Drupal accounts.
-- Provision accounts on first sign-in.
+- Meet a policy requiring corporate identity for login.
+- Map Entra ID users to Drupal accounts by email.
+- Auto-provision Drupal accounts on first sign-in.
+- Restrict SSO to an existing-users-only ("Login Only") mode.
 - Reduce password-reset support load.
-- Enforce MFA at the identity provider.
-- Support a tenant-restricted login.
+- Enforce MFA and conditional access at Microsoft.
+- Limit login to a single Azure tenant (organization mode).
+- Allow both work/school and personal Microsoft accounts (common mode).
+- Restrict logins to specific email domains.
+- Provide a themeable "Log in with Microsoft" button block.
+- Add a direct login link anywhere via `/user/login/entra-id`.
+- Keep local Drupal accounts alongside SSO.
+- Block user 1 and administrators from SSO login.
 - Centralise account deprovisioning in Entra ID.
-- Provide a "Sign in with Microsoft" button.
-- Keep local accounts alongside SSO.
-- Support contractors via guest accounts.
-- Audit sign-ins centrally.
-- Comply with a corporate SSO mandate.
-- Simplify onboarding for new staff.
-- Reduce credential reuse risk.
-- Integrate a site with a Microsoft-centric estate.
+- Support an educational Microsoft 365 estate.
+- Onboard new staff without creating Drupal passwords.
+- Move client credentials into environment variables via settings.php.
+- Show the Azure Redirect URI to paste into the app registration.

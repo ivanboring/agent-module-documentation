@@ -1,30 +1,36 @@
-OpenAI Speech to Text adds an admin form (`/admin/config/openai/audio`) that uploads an audio file and returns a transcription (or translation) via OpenAI's Whisper audio endpoint, using the core `openai.api` service.
+OpenAI Speech to Text adds an admin form that sends an audio file to OpenAI's Whisper endpoint and
+returns the transcription — or a translation into English — as text. It is an explorer/utility form
+for testing OpenAI's speech-to-text capability from inside Drupal.
 
 ---
 
-This is a thin UI submodule over OpenAI Core. It registers one route `openai_audio.audio_form`
-(the module's `configure` target) rendering `AudioForm`, guarded by the module's own
-permission `access openai audio`. The form takes an audio file and options and calls
-`openai.api->speechToText($model, $file, $task, $temperature, $response_format)` (Whisper),
-returning the transcribed/translated text. It stores no config of its own and defines no
-plugins; it is an explorer/utility for experimenting with the audio endpoint. Requires the
-OpenAI API key to be configured on the parent module.
+The module provides one form at `/admin/config/openai/audio` (`AudioForm`), gated by the
+`access openai audio` permission. You supply the absolute path to an audio file and choose a task
+(transcribe = same language, translate = to English); on submit it calls the parent `openai.api`
+service's `OpenAIApi::speechToText()` with the hard-coded `whisper-1` model, and the resulting text is
+shown in a read-only textarea via AJAX. OpenAI's own limits apply (max 25 MB; mp3, mp4, mpeg, mpga,
+m4a, wav, webm). It has no configuration object or Drush command and depends on the parent OpenAI
+module for the API key and service.
 
 ---
 
-- Transcribe an uploaded audio file to text in the Drupal admin.
-- Translate spoken audio into English text via Whisper.
-- Prototype the OpenAI audio endpoint before wiring it into custom code.
-- Convert meeting/interview recordings into text for editing.
-- Generate a first-draft transcript for a podcast episode.
-- Test different Whisper models and response formats.
+- Transcribe a recorded meeting or interview to text.
+- Translate foreign-language audio into English text.
+- Generate a rough transcript for a podcast episode.
 - Produce captions/subtitles source text from audio.
-- Give editors a self-service transcription tool behind a permission.
-- Check transcription quality for a given audio sample.
-- Extract quotes from a recorded talk.
-- Turn voice notes into written content.
-- Evaluate temperature settings' effect on transcription.
-- Provide accessibility text alternatives for audio media.
-- Draft show-notes from an audio file.
-- Verify API connectivity for the audio endpoint.
-- Gate transcription access with the `access openai audio` permission.
+- Test Whisper transcription quality on sample files.
+- Convert voice memos into editable text.
+- Draft show notes from a recording.
+- Extract quotes from an audio interview.
+- Create searchable text from audio archives.
+- Prototype a transcription workflow before automating it.
+- Provide editors an in-admin speech-to-text tool.
+- Transcribe user-submitted audio for review.
+- Generate text for accessibility from audio content.
+- Translate multilingual recordings for a global audience.
+- Check transcription accuracy across audio formats.
+- Turn lecture recordings into study notes.
+- Produce transcripts for compliance or records.
+- Convert webinar audio into a written summary source.
+- Evaluate Whisper against other transcription tools.
+- Generate transcripts for QA of media content.

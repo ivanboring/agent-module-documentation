@@ -1,42 +1,30 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Entity Usage Delete Stop (entity_usage_node_delete_stop) — agent index
 
-Blocks the node **delete confirm form** for nodes that Entity Usage reports as used, per content
-type. Three form hooks, one permission, a config schema for the third-party setting. Requires
-contrib `entity_usage`.
+Addon for the contrib **Entity Usage** module. Per content type, it blocks the node
+**delete confirm form** for nodes that Entity Usage reports as still used: it appends an
+error to Entity Usage's delete warning and disables the delete button. A pure form-level
+guard, implemented entirely in `entity_usage_node_delete_stop.module` (three form hooks) —
+no routes, services, controllers, drush, or plugins.
+
+- Requires contrib `entity_usage`. **No settings page of its own** (`configure: null`); the
+  toggle lives on each content type's edit form.
+- Defines **1 permission** and a **config schema** for one third-party setting.
+
+Solutions:
+- **Turn the stop on/off for a content type, and how it works at runtime** → [configure/delete_stop.md](configure/delete_stop.md)
+- **Let trusted users bypass the stop** → [permissions/permissions.md](permissions/permissions.md)
 
 Key facts:
-- Per-bundle switch stored as a **third-party setting** on the node type:
-  `entity_usage_node_delete_stop.prohibit_deletion` (0/1), set by the
-  *Entity Usage Node Delete Settings* details group on the node type form
-  (`hook_form_node_type_form_alter()` + an `#entity_builders` callback).
-- **Two preconditions** for anything to happen — both easy to miss:
-  1. `entity_usage.settings:delete_warning_message_entity_types` must include **`node`**;
-  2. Entity Usage must have rendered `$form['entity_usage_delete_warning']` on the delete form.
-  Otherwise the settings checkbox is not even shown, and the stop does not apply.
-- On `node_confirm_form` (`hook_form_node_confirm_form_alter()`), when the setting is on and the
-  user lacks **`skip node delete stop`**:
-
-  ```php
-  $form['entity_usage_delete_warning']['#message_list']['error'][] =
-    t('Deletion is disabled until all usages are removed.');
-  $form['actions']['submit']['#disabled'] = TRUE;
-  ```
-
-- **Scope limit — important.** This is a *form-level* guard only. There is no
-  `hook_entity_access`, no `hook_entity_predelete` and no delete-access alter, so nodes can still
-  be deleted by: `drush entity:delete`, Views Bulk Operations, migrations, REST/JSON:API,
-  `$node->delete()` in custom code, or any other non-confirm-form path. Treat it as an editorial
-  safety net, not referential-integrity enforcement.
-
-```bash
-# Precondition:
-drush cget entity_usage.settings delete_warning_message_entity_types
-# Turn the stop on for a bundle:
-drush php:eval '
-$t = \Drupal\node\Entity\NodeType::load("page");
-$t->setThirdPartySetting("entity_usage_node_delete_stop", "prohibit_deletion", 1);
-$t->save();'
-# Escape hatch:
-drush role:perm:add administrator 'skip node delete stop'
-```
+- Per-bundle switch = third-party setting `prohibit_deletion` (boolean) on `node.type.*`,
+  namespace `entity_usage_node_delete_stop`. Schema key
+  `node.type.*.third_party.entity_usage_node_delete_stop:prohibit_deletion`.
+- **Two preconditions** gate everything: (1) `entity_usage.settings:delete_warning_message_entity_types`
+  must contain `node`; (2) Entity Usage must have rendered `$form['entity_usage_delete_warning']`
+  on the delete form. Otherwise the checkbox is not shown and the stop never fires.
+- Permission: `skip node delete stop` (bypasses the stop).
+- Hooks: `hook_form_node_type_form_alter` (adds the checkbox + the `#entity_builders`
+  callback `entity_usage_node_delete_stop_entity_builder`) and
+  `hook_form_node_confirm_form_alter` (applies the stop when the form is a `NodeDeleteForm`).
+- Scope limit: form-only guard — there is no `hook_entity_access` / predelete, so Drush,
+  Views Bulk Operations, migrations, REST/JSON:API, and `$node->delete()` still delete freely.

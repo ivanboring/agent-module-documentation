@@ -1,29 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-LocalGov Services is the base of the LocalGov Drupal service model: a services landing page, second-level sublanding pages, ordinary service pages, shared navigation and status updates — delivered as five submodules over a small shared core.
+LocalGov Services: Core is the foundation of the LocalGov Drupal service model. It installs the service landing and sub-landing content types, a dedicated services menu, and the pathauto patterns that make service URLs mirror the section tree, and it ships a services call-to-action block plus a "link with type" field widget. The richer behaviour — page and status content types, and the navigation that links pages into a service — lives in its five submodules.
 
 ---
 
-Councils organise content around *services* — "Bins and recycling", "Parking" — each with a landing page, sections beneath it, and many detail pages, all sharing one navigation tree. This module supplies the shared foundation and, as its own description says, "won't do anything on its own": you enable the submodules you need. `localgov_services_landing` provides the top-level service node type, `localgov_services_sublanding` the second-level pages, `localgov_services_page` the ordinary content pages within a service, `localgov_services_navigation` the navigation shared between service pages (and external pages linking into the tree), and `localgov_services_status` status updates attached to a service landing page — the mechanism councils use for "bin collections delayed" style notices. The core module installs the `localgov_services_landing` and `localgov_services_sublanding` node types, a dedicated `localgov-services-menu`, and pathauto patterns for both the landing pages and the service hierarchy, so URLs reflect the service tree automatically. It depends on `localgov_core` and `pathauto`; Search API integration is a test dependency, so search of services comes from `localgov_search` rather than from here.
+Councils organise content around *services* — "Bins and recycling", "Parking" — each with a landing page, sub-sections beneath it, and many detail pages that share one navigation tree. This core module supplies the shared skeleton: it installs the `localgov_services_landing` and `localgov_services_sublanding` node types, the `localgov-services-menu` system menu, and two pathauto patterns (a plain `[node:title]` alias for landing pages and a `localgov_services_hierarchy` pattern that nests page and sub-landing URLs under their parent service). It also provides the `localgov_service_cta_block` "call to action" block, which renders the buttons stored in a node's `localgov_common_tasks` link field, and the `link_with_type` widget that lets editors tag each of those links as an action or an informational link. Content is joined into a service through the `localgov_services_parent` entity-reference field and its `localgov_services` selection handler (provided by the `localgov_services_navigation` submodule), which also drives the hierarchy pathauto opt-in and a drag-and-drop child-ordering UI on landing forms. As its own description notes, the base module "won't do anything on its own" — you enable the submodules you need: landing, sub-landing, page, navigation and the optional status pages. It depends on `localgov_core` and `pathauto`; search of services comes from `localgov_search`, which is only a test dependency here.
 
 ---
 
-- Publish a council's services in a consistent structure.
-- Give each service a landing page with child pages beneath it.
-- Add second-level sublanding pages for large services.
+- Publish a council's services in a consistent landing-page structure.
+- Give each service a top-level landing page with sub-sections beneath it.
+- Add second-level sub-landing pages for large services.
 - Share one navigation tree across every page of a service.
-- Publish status updates against a service landing page.
-- Warn residents about a temporary service disruption.
-- Generate service URLs that mirror the service hierarchy.
-- Link external pages into a service's navigation.
-- Keep service structure consistent across editorial teams.
-- Enable only the parts of the service model a site needs.
+- Generate service page URLs that automatically nest under their parent service.
+- Alias landing-page URLs from just the page title.
+- Attach an arbitrary content type into a service section via the `localgov_services_parent` field.
+- Show a row of call-to-action buttons at the top of a service page.
+- Let editors mark each service link as an "action" or "information" link.
+- Reorder the child pages that appear under a landing page by drag and drop.
+- Place a services menu block in the secondary-menu region.
+- Group the four service "add content" links under one admin-toolbar menu item.
+- Point a landing page's destinations at any bundle that opts into services.
+- Publish optional service-status updates (e.g. "collections delayed") via the status submodule.
+- Enable only the parts of the service model a site actually needs.
 - Provide a predictable information architecture for residents.
-- Group related content under one service umbrella.
-- Give services their own menu separate from the main menu.
-- Support A–Z service listings built on the landing pages.
-- Keep pathauto patterns for services in configuration.
-- Add a service section without touching the main menu.
-- Model a service with many detail pages cleanly.
-- Reuse the LocalGov editorial conventions across councils.
-- Combine services with LocalGov directories and news.
+- Keep pathauto patterns for services in version-controlled configuration.
 - Migrate a legacy council site into a service-oriented structure.
+- Combine services with LocalGov directories, guides and step-by-step content.
+- Rename a legacy `localgov_services_menu` menu to the hyphenated machine name via update hook.
+- Build a custom node-context block by extending the module's `ServicesBlockBase`.
+- Keep service navigation consistent across editorial teams and councils.

@@ -1,36 +1,32 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # XLS Views Data Export (xls_views_data_export) — agent index
 
-Spreadsheet-oriented extension of **Views Data Export**, able to write results into an existing
-template workbook. Depends on `views_data_export` and `xls_serialization`. No permissions of its
-own, no Drush; config schema shipped.
+Extends **Views Data Export** so a `data_export` display can write its rows into an
+**existing XLS/XLSX template workbook** (a branded sheet with headers/formatting/formulas already
+in place) instead of a blank grid. It swaps the class behind the built-in `data_export` display via
+`hook_views_plugins_display_alter`, adds a few per-display options, and streams the merged workbook
+through a small upload form. Requires `phpoffice/phpspreadsheet ^2.3` and the PHP `zip` extension.
 
-> **Undeclared composer dependencies.** `info.yml` carries a `@TODO: should add these
-> dependencies to the composer.json` — `views_data_export` and `xls_serialization` are Drupal
-> dependencies only, so `composer require drupal/xls_views_data_export` alone will not pull them.
-> Require them explicitly.
+Dependencies: `views_data_export` and `xls_serialization` (Drupal modules; **not** declared in
+composer.json — install them explicitly), plus Composer libs `phpoffice/phpspreadsheet` + `ext-zip`.
+No settings page (all config is per-view-display). No permissions of its own, no Drush, no config
+schema shipped.
+
+- **Add XLS/XLSX-into-template export to a view** → [views/xls_data_export.md](views/xls_data_export.md)
+- **Understand the per-display options (default template, worksheet name, override, flip path)** → [views/xls_data_export.md](views/xls_data_export.md)
+- **How the export route/form/response merge into the template at runtime** → [views/xls_data_export.md](views/xls_data_export.md)
+- **The request subscriber that fulfils the export redirect** → [events/export_redirect.md](events/export_redirect.md)
 
 Key facts:
-- Display plugin `Plugin\views\display\XlsDataExport extends
-  Drupal\views_data_export\Plugin\views\display\DataExport`, with
-  `const DISPLAY_PLUGIN = 'data_export'`. It uses PhpSpreadsheet directly
-  (`IOFactory`, `Spreadsheet`, `Worksheet`), which is how results are written into an existing
-  workbook rather than a fresh grid.
-- **`collectRoutes(RouteCollection $collection)`** is overridden:
-  - an export route is only created when the display's *Allow export* option is TRUE
-    (`if ($route = $collection->get("view.$view_id.$display_id"))`);
-  - contextual-filter path segments are rewritten to named `{arg_N}` parameters and recorded in an
-    argument map, so exports work for views with arguments.
-- Options form: `buildOptionsForm()`, `validateOptionsForm()`, `submitOptionsForm()` add the
-  template/spreadsheet settings in the Views UI.
-- `Form\XlsExportForm` triggers an export; `EventSubscriber\ExportRedirectSubscriber` handles the
-  redirect afterwards; `xls_views_data_export.services.yml` registers them.
-
-```bash
-composer require drupal/xls_views_data_export drupal/views_data_export drupal/xls_serialization
-drush en xls_views_data_export -y
-# Then add a "Data export" display to a view and choose the XLS options.
-```
-
-Note the module description mentions writing "to an existing PDF" — the code is spreadsheet-based
-(PhpSpreadsheet); read that as an existing **workbook**.
+- Display plugin: `Drupal\xls_views_data_export\Plugin\views\display\XlsDataExport extends
+  Drupal\views_data_export\Plugin\views\display\DataExport`, `const DISPLAY_PLUGIN = 'data_export'`.
+- Installed by ALTER, not by a new plugin id: `xls_views_data_export_views_plugins_display_alter()`
+  rewrites `$definitions['data_export']['class']` to `XlsDataExport`.
+- Per-display option keys (stored on `views.display.data_export`): `default_fid`,
+  `default_worksheet_name`, `default_override_sheet`, `flip_path`.
+- Export form: `Drupal\xls_views_data_export\Form\XlsExportForm` (form id `xls_export_form`).
+- Service: `xls_views_data_export.export_redirect` →
+  `Drupal\xls_views_data_export\EventSubscriber\ExportRedirectSubscriber` (KernelEvents::REQUEST, priority -64).
+- Route created per view/display only when export is enabled: `view.<view_id>.<display_id>.export`
+  (with `_excel_file` / `_worksheet_name` / `_override_sheet` path params).
+- Install requirement: `xls_views_data_export_requirements()` errors if the PHP `zip` extension is missing.

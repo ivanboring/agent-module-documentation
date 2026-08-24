@@ -5,7 +5,12 @@
   "version": "3.1.x",
   "package": "Apigee",
   "composer_namespace": "drupal/apigee_api_catalog",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/entity": "^1.6",
+    "drupal/file_link": "^2.2",
+    "drupal/apigee_edge": "^3.1.0 || ^4.1.0",
+    "webonyx/graphql-php": "^15.19"
+  },
   "dependent_modules": [
     "drupal:text",
     "drupal:entity",
@@ -14,7 +19,8 @@
     "drupal:node",
     "drupal:path",
     "drupal:options",
-    "drupal:file_link"
+    "drupal:file_link",
+    "drupal:apigee_edge"
   ],
   "configure": null,
   "core_version_requirement": "^10 || ^11",
@@ -22,7 +28,7 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/apigee_api_catalog",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [
@@ -32,7 +38,7 @@
   ],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Integrations",

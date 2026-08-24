@@ -1,25 +1,38 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Module Builder (module_builder) — agent index
 
-UI for **`drupal-code-builder/drupal-code-builder ^4.6`**, generating custom-module scaffolding.
-Core requirement `^8 || ^9 || ^10 || ^11`. Submodule: `module_builder_devel`.
+Developer tool that scaffolds Drupal module code from an admin UI. It stores each module you build
+as a `module_builder_module` config entity, lets you add components (hooks, plugins, services,
+entity types, routes/forms, CLI commands, tests) through tabbed forms, generates the code with the
+external **`drupal-code-builder/drupal-code-builder ^4.6`** library, and writes the files to disk.
+No module dependencies; core `^8 || ^9 || ^10 || ^11`. Configure route: `module_builder.settings`.
+One permission (`create modules`), no Drush commands, ships a `module_builder_devel` submodule.
+
+- **Settings form, the `data_directory` + generator settings, running the code analysis** →
+  [configure/settings.md](configure/settings.md)
+- **Building a module: the config entity, section-form tabs, write locations, generate & write** →
+  [configure/build.md](configure/build.md)
+- **The single permission and what it gates** → [permissions/permissions.md](permissions/permissions.md)
+- **Services (DCB wrapper, file writer), the DCB integration, the invoked hook** →
+  [api/services.md](api/services.md)
 
 Key facts:
-- **Single permission `create modules`, `restrict access: true`** — gates *every* route
-  including the settings form. Correct: this writes PHP into the codebase.
-  (The permission's YAML has a typo, `decription:` instead of `description:`, so the permissions
-  page shows no description. Cosmetic.)
-- Routes:
-
-  | Route | Path |
-  |---|---|
-  | `module_builder.settings` | `/admin/config/development/module_builder/settings` |
-  | `module_builder.analyse` | `/admin/config/development/module_builder/analyse` |
-  | `module_builder.autocomplete` | `/module_builder/autocomplete/{property_address}` |
-
-- **Run "Analyse site code" first.** The generator builds its knowledge of hooks, plugin types and
-  services from *this site's* code, so output matches the installed core version and enabled
-  modules rather than a generic template. Re-run it after upgrading core or adding modules.
-- The heavy lifting is in the external library, which Drush's own generate commands also use —
-  so output is consistent with `drush generate`.
-- Developer tool: keep it out of production, or at least keep `create modules` ungranted there.
+- Config object `module_builder.settings`: `data_directory` (string, default `module_builder_data`,
+  a folder under `public://` where DCB stores its analysis) and `generator_settings.module` (mapping,
+  schema type `ignore`, holds DCB `Configuration` task values applied to all generated code).
+- Built modules are `module_builder.component.*` config entities (entity type
+  `module_builder_module`, config prefix `component`); config-exported keys `id`, `name`,
+  `location`, `data`.
+- Services: `module_builder.drupal_code_builder` (`DrupalCodeBuilder::getTask($name, $opts)` wraps
+  `\DrupalCodeBuilder\Factory`), `module_builder.module_file_writer`
+  (`ModuleFileWriter::getRelativeModuleFolder()` / `writeSingleFile()`),
+  `logger.channel.module_builder`.
+- Permission `create modules` (`restrict access: true`) is the entity `admin_permission` and the
+  requirement on every route.
+- Routes: `module_builder.settings` (`/admin/config/development/module_builder/settings`),
+  `module_builder.analyse` (`…/analyse`), `module_builder.adopt_module_form` (`…/adopt-module`),
+  `module_builder.autocomplete` (`/module_builder/autocomplete/{property_address}`),
+  `entity.module_builder_module.collection` (`/admin/config/development/module_builder`) plus the
+  add/edit/section/generate/delete entity routes.
+- Run **Analyse site code** (`module_builder.analyse`) first and after any core/module change: the
+  generator learns hooks, plugin types and tagged services from *this* site's code.

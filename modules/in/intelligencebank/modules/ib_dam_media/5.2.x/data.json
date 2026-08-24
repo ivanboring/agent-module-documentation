@@ -1,9 +1,9 @@
 {
-  "name": "Ib Dam Media",
+  "name": "IB: Media integration",
   "data_name": "ib_dam_media",
   "description": "Integrates the Media module ecosystem with IntelligenceBank DAM",
   "version": "5.2.x",
-  "package": null,
+  "package": "IntelligenceBank DAM",
   "composer_namespace": "drupal/intelligencebank",
   "composer_requirements": {},
   "dependent_modules": [
@@ -12,7 +12,7 @@
     "drupal:media_library",
     "ib_dam:ib_dam"
   ],
-  "configure": null,
+  "configure": "ib_dam_media.configuration_form",
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -30,11 +30,16 @@
     "Media"
   ],
   "subcategories": [
-    "Digital asset management"
+    "Media sources",
+    "Digital asset management (DAM)"
   ],
   "keywords": [
     "intelligencebank",
-    "ib dam media",
+    "ib_dam_media",
+    "media source",
+    "media library",
+    "asset browser",
+    "embed",
     "submodule"
   ],
   "part_of": "intelligencebank",

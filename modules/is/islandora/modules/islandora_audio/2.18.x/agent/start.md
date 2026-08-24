@@ -1,21 +1,25 @@
 # Islandora Audio — agent index
 
-Adds an audio derivative **Action** and an HTML5 audio **formatter** to
-[Islandora Core](../../../../2.18.x/agent/start.md). No config page, no permissions. Depends on `islandora`.
+Adds an audio derivative-generation **Action** plus an HTML5 audio **field formatter** (with WebVTT captions)
+to [Islandora Core](../../../../2.18.x/agent/start.md). Transcoding is done by the **Homarus** (FFmpeg)
+microservice, not in PHP. Config-light: one Action class, one formatter, a `hook_theme`, a JS library, a config
+schema. **No settings page, no permissions, no services, no drush.** Depends only on `islandora`.
 
-## Action (`src/Plugin/Action/GenerateAudioDerivative.php`)
+- **The `generate_audio_derivative` Action (id, defaults, config keys, runtime data flow)** →
+  [plugins/actions.md](plugins/actions.md)
+- **The `islandora_file_audio` formatter + `<audio>` template + captions JS** → [fields/formatter.md](fields/formatter.md)
+- **How derivatives are wired up (Context Condition + Derivative reaction, the microservice round-trip)** →
+  parent [plugins/context.md](../../../../2.18.x/agent/plugins/context.md)
 
-- `@Action(id = "generate_audio_derivative")`, extends `AbstractGenerateDerivative`.
-- Defaults: `queue = islandora-connector-homarus`, `mimetype = audio/mpeg`.
-- Inherits `source_term_uri`, `derivative_term_uri`, `destination_media_type`, `args` (FFmpeg args),
-  `scheme`, `path` from the core abstract action. Consumed by the **Homarus/FFmpeg** microservice, which PUTs
-  the transcoded file back via Islandora's media-source REST routes.
+## Key facts
 
-## Field formatter
-
-- `islandora_file_audio` (`src/Plugin/Field/FieldFormatter/IslandoraFileAudioFormatter.php`) — renders a
-  file field as an HTML5 `<audio>` player; uses `js/audio.js` and `templates/islandora-file-audio.html.twig`.
-  Set it on the audio media's *Manage display*.
-
-Setup: Context Condition matching audio objects → Derivative reaction running `generate_audio_derivative`
-(see core [plugins/context.md](../../../../2.18.x/agent/plugins/context.md)).
+- Action `generate_audio_derivative` (`type = node`, extends core `AbstractGenerateDerivative`). Defaults:
+  `queue = islandora-connector-homarus`, `mimetype = audio/mpeg`, `destination_media_type = audio`,
+  `args = -codec:a libmp3lame -q:a 5`, `path = …/[node:nid]-[term:name].mp3`. `mimetype` validated to start with `audio/`.
+- Field formatter `islandora_file_audio` ("Audio with Captions"), field type `file`, extends core
+  `IslandoraFileMediaFormatterBase`; `getMediaType()` = `audio`.
+- Theme hook `islandora_file_audio` (vars: `files`, `tracks`, `attributes`) → `templates/islandora-file-audio.html.twig`.
+- Library `islandora_audio/audio` (`js/audio.js`) parses WebVTT `media_track` files and shows synced captions.
+- Config schema keys: `action.configuration.generate_audio_derivative`;
+  `field.formatter.settings.islandora_file_audio` (extends core `field.formatter.settings.file_audio`).
+- No `config/install/` — media types / Contexts come from the full Islandora install, not this submodule.

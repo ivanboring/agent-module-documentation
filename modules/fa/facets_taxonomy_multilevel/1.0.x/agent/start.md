@@ -1,20 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Facets Taxonomy Multilevel (facets_taxonomy_multilevel) — agent index
 
-Two Facets **processor** plugins for hierarchical taxonomy facets. Composer:
-`drupal/facets ^2.0 || ^3.0`. Core requirement `^9 || ^10 || ^11`.
+Adds two Facets **build processors** for hierarchical taxonomy facets. Enabled per facet from the
+Facets UI, they refine (filter) the facet's already-computed result list so a deep vocabulary shows
+one level at a time instead of every term at once. No index changes, no routes, no permissions.
+Depends on `facets` (and core `taxonomy`). Composer: `drupal/facets ^2.0 || ^3.0`; core
+`^9 || ^10 || ^11`. No settings page (`configure` null).
 
-| Processor | Effect |
-|---|---|
-| **Term Depth** | restrict the facet to terms at a chosen hierarchy depth |
-| **Term Dependent** | make this facet's contents depend on another facet's active selection |
+| Processor (plugin id) | Build stage weight | Effect |
+|---|---|---|
+| Term Depth (`term_depth`) | 40 | Keep only facet results whose term sits at one chosen depth of one vocabulary |
+| Term Dependent (`term_dependent`) | 41 | Keep only child terms of the term selected in another (dependee) facet |
+
+- **Term Depth: level + vocabulary settings, runtime tracing** → [configure/term-depth.md](configure/term-depth.md)
+- **Term Dependent: dependee-facet drill-down settings, runtime tracing** → [configure/term-dependent.md](configure/term-dependent.md)
 
 Key facts:
-- Processors are enabled **per facet** in the Facets UI. They change how an existing facet
-  behaves; they do not alter the search index or the facet's source, so enabling and disabling
-  them is free and reversible.
-- Term Dependent is the drill-down mechanism: pair it with Term Depth (level 0 for the parent
-  facet) to get "categories first, then subcategories of the chosen category".
-- No routes, no permissions. Surface: `src/Plugin/` and `config/schema`.
-- Pairs naturally with `facets_autocomplete` (wave 58) on the same search page — depth/dependency
-  to shorten the list, autocomplete for the facets that are still long.
+- Plugins are of the `@FacetsProcessor` type (defined by the Facets module), classes in
+  `src/Plugin/facets/processor/`; both implement `BuildProcessorInterface` — they run in the facet's
+  `build` stage and only trim the result array.
+- Term Depth settings: `level` (1-based, 1 = root level) and `bundle` (vocabulary machine name).
+  Term Dependent settings: a map keyed by dependee facet id, each `{ dependee: true }`.
+- Term Dependent runs AFTER Term Depth (stage weight 41 > 40) and reads the dependee facet's
+  `term_depth` settings, so the dependee facet must have Term Depth enabled.
+- Config schema: `config/schema/facets_taxonomy_multilevel.processor.schema.yml`; the values are
+  stored inside each facet config entity under `processor_configs.<id>.settings`.
+- `.module` implements only `hook_help`. No `*.services.yml`, `*.routing.yml`, `*.permissions.yml`,
+  or drush.

@@ -1,23 +1,30 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Auto Node Translate Bulk (ant_bulk) — agent index
 
-Bulk runner for **Auto Node Translate**. Composer: `drupal/auto_node_translate ^3.0`.
-Core requirement `^10.2 || ^11`. **Release is 2.0.0-rc4 — release candidate.**
+Bulk companion to **Auto Node Translate**. Translates every existing node of the selected
+content type(s) into the selected language(s) using the machine-translation provider that
+`auto_node_translate` is already configured with. Runs as a Batch process (one node per
+step). Two entry points: an admin form and a Drush command.
 
-| Route | Path | Permission |
-|---|---|---|
-| `ant_bulk.translate` | `/ant-bulk/translate` | **`use bulk auto translate`** (`restrict access: true`) |
-| `ant_bulk.settings` | `/admin/config/regional/ant-bulk-settings` | `administer site configuration` |
+- Depends on `auto_node_translate` (composer `drupal/auto_node_translate:^3.0`); core `^10.2 || ^11`.
+- Optional integration with `content_moderation` (pick the moderation state of new translations).
+- Configure route: `ant_bulk.settings` → `/admin/config/regional/ant-bulk-settings`.
+- Defines 1 permission, 1 Drush command, 1 service, 1 alter hook. No plugin types; no config schema.
+
+Solutions:
+- **Run a bulk translation from the UI** → [configure/translate.md](configure/translate.md)
+- **Restrict runs to published nodes** → [configure/settings.md](configure/settings.md)
+- **Run a bulk translation from the CLI** → [drush/commands.md](drush/commands.md)
+- **Who may run bulk translation** → [permissions/permissions.md](permissions/permissions.md)
+- **Translate programmatically via the service** → [api/services.md](api/services.md)
+- **Exclude specific nodes from a run** → [hooks/alter.md](hooks/alter.md)
 
 Key facts:
-- The restricted permission is doing real work. Bulk translation sends every selected node's
-  content to the configured provider, and providers bill **per character** — so
-  `use bulk auto translate` is effectively "may spend the translation budget". Treat it as a
-  financial control as well as an editorial one.
-- **Content leaves the site.** Anything selected is transmitted to a third-party translation
-  provider, including unpublished nodes if they are in the selection. Confirm that is acceptable
-  before a first run.
-- Provider configuration belongs to `auto_node_translate`, not here — this module reuses it.
-- Surface: `src/TranslationManager.php`, `src/Form/`, `src/Drush/`, `ant_bulk.api.php` (extension
-  points), `ant_bulk.services.yml`.
-- Prefer the Drush path for large runs; machine output should be reviewed before publication.
+- Service: `ant_bulk.manager` → `Drupal\ant_bulk\TranslationManager`.
+- Reuses `auto_node_translate.translator` — calls `Translator::translateNode($node, $translations)`.
+- Routes: `ant_bulk.translate` (`/ant-bulk/translate`, form `TranslateForm`), `ant_bulk.settings` (`/admin/config/regional/ant-bulk-settings`, form `SettingsForm`).
+- Permission: `use bulk auto translate` (gates the translate form; `restrict access: true`).
+- Config object: `ant_bulk.settings`, single key `status` (bool). No config/schema shipped.
+- Drush: `ant_bulk:translate` (alias `anttrans`).
+- Alter hook: `hook_ant_bulk_translation_items_alter(array &$nodes)` (UI path only).
+- Menu links: both routes appear under `system.admin_config_regional`.

@@ -5,7 +5,10 @@
   "version": "2.0.x",
   "package": "Performance",
   "composer_namespace": "drupal/igbinary",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "ext-igbinary": "*",
+    "ext-zlib": "*"
+  },
   "dependent_modules": [],
   "configure": null,
   "core_version_requirement": "^10.3 || ^11.0 || ^12",
@@ -19,15 +22,13 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Performance",
-    "Developer tools"
+    "Performance"
   ],
   "subcategories": [
-    "Caching",
-    "Serialization"
+    "Caching backend"
   ],
   "keywords": [
     "igbinary",

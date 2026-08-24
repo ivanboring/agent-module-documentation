@@ -1,13 +1,14 @@
 {
   "name": "IntelligenceBank DAM",
   "data_name": "intelligencebank",
+  "module_machine_name": "ib_dam",
   "description": "The bridge between IntelligenceBank DAM & Drupal",
   "version": "5.2.x",
-  "package": "Media",
+  "package": "IntelligenceBank DAM",
   "composer_namespace": "drupal/intelligencebank",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "ib_dam.settings_form",
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -23,18 +24,27 @@
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "IbDamAssetValidation (annotation @IbDamAssetValidation; manager plugin.manager.ib_dam.asset_validation)"
+  ],
   "categories": [
-    "Media"
+    "Media",
+    "Integrations"
   ],
   "subcategories": [
-    "Digital asset management"
+    "Digital asset management (DAM)",
+    "Media embedding"
   ],
   "keywords": [
     "dam",
     "intelligencebank",
+    "ib_dam",
     "assets",
     "media",
+    "asset browser",
+    "embed",
+    "cdn",
+    "download",
     "wysiwyg"
   ],
   "project_description": "The IntelligenceBank DAM Connector for Drupal provides an easy way to access IntelligenceBank assets for importing,\n\nor embedding directly from the Drupal core Media Library module.\n\n There are two ways to insert assets from IntelligenceBank:\n\n \n By creating a local copy of the asset into Drupal’s media storage \n By embedding a public CDN link to the asset in IntelligenceBank \n \n Limitations \n Possible problems with using Media Library, IB DAM in single modal mode.\n\nUsually for sites that use lots of Layout Builder modules that enhances UI with misc modals.\n\nThere is placeholder for option to fix this issue.\n\nRelated discussion - Fix Nested Modals by Drupal core and Media Library Form API Element .",

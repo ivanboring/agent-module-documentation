@@ -1,27 +1,32 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Whatsapp Bubble adds the floating WhatsApp button familiar from small-business sites: a fixed-position link that opens a chat with a configured number.
+Whatsapp Bubble adds the floating WhatsApp button familiar from small-business sites: a fixed-position link that opens a chat with a configured number and, optionally, a prefilled message.
 
 ---
 
-The implementation is straightforward — a configuration form at `/admin/config/services/whatsapp-bubble` for the number and message, a block plugin in `src/Plugin`, `templates/wab.html.twig` for the markup and `css/whatsapp_bubble.css` for the fixed positioning — with no dependencies beyond core and nothing stored per user. The route is gated by `access administration pages`, which is a slightly loose choice for a form that changes a public contact channel: that permission is granted to fairly ordinary staff roles on many sites, and it is weaker than the `administer site configuration` most similar modules use. Two things to weigh before adding it to a public site. The button is an outbound link to `wa.me`/`api.whatsapp.com`, so no Meta script is loaded and there is no tracking implication in the way an embedded widget would have — a genuine advantage of the link-based approach. But the configured phone number is published in the page source to every visitor, including scrapers, so it should be a business number rather than a personal one. Core requirement is `^10 || ^11`.
+The module is deliberately small. A settings form at `/admin/config/services/whatsapp-bubble` (config object `whatsapp_bubble.config`) holds the destination `phone_number`, a default `message`, horizontal and vertical alignment, an inverse color option, and an `is_enabled` switch. When `is_enabled` is on, `hook_page_bottom()` injects the bubble on every non-admin page, so no block placement is needed. If you prefer placement control, the module also provides two block plugins: `whatsapp_bubble_block` (the same floating bubble) and `whatsapp_button_block` (a labelled button with configurable small text and a per-block phone-number override that falls back to the global number). Both blocks and the auto-injection render through shared theme hooks (`wab`, `wab_button`) whose Twig templates build an outbound `https://wa.me/<number>` link; the bubble also appends the `urlencode`d message as `?text=`. Styling comes from one CSS-only library (`whatsapp_bubble/main`) via classes such as `whatsapp-bubble`, the alignment classes, and `inverse`, all easy to override in a theme. Output carries the cache tag `config:whatsapp_bubble.config`, so edits propagate immediately. The button is a plain link — no Meta or third-party chat script is loaded — and there are no dependencies beyond Drupal core `^10 || ^11`.
 
 ---
 
-- Add a floating WhatsApp contact button.
-- Let visitors start a chat from any page.
+- Add a floating WhatsApp contact button to a site.
+- Let visitors start a WhatsApp chat from any page.
 - Give a small business a direct contact channel.
-- Prefill a message when the chat opens.
-- Show the bubble only on selected pages.
-- Provide contact on mobile without a form.
-- Place the button as a block.
-- Style the bubble to match a brand.
-- Offer support chat without a widget script.
-- Reduce friction for enquiries.
-- Add a call-to-action on a landing page.
+- Prefill a message that appears in the chat box.
+- Inject the bubble site-wide with a single config flag.
+- Place the bubble only where you want using a block.
+- Add a labelled "Contact us via WhatsApp" button block.
+- Point different sections at different numbers via the button block override.
+- Provide contact on mobile without a web form.
+- Position the bubble left, right, or center.
+- Pin the bubble to the top, middle, or bottom.
+- Switch to the inverse (green background, white icon) style.
+- Style the bubble to match a brand with a CSS or Twig override.
+- Offer support chat without loading a widget script.
+- Add a call-to-action to a landing page.
 - Contact a sales team from a product page.
-- Avoid loading a third-party chat script.
-- Show a contact option to mobile visitors.
-- Theme the bubble with a Twig override.
-- Configure the number without a deployment.
-- Add a support channel to a campaign site.
+- Keep the bubble off admin pages automatically.
+- Change the destination number without a deployment.
 - Complement a contact form with instant chat.
+- Reduce friction for pre-sales enquiries.
+- Add a WhatsApp channel to a campaign microsite.
+- Temporarily hide the bubble by toggling the enable flag.
+- Show a consistent bubble and button that share one theme layer.

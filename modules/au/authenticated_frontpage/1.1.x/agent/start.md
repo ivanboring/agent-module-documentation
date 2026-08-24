@@ -1,20 +1,30 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Custom Frontpage for Authenticated users (authenticated_frontpage) — agent index
 
-Serves a different front page to logged-in users **at the same path** (no redirect).
-No dependencies. Core requirement `^8 || ^9 || ^10 || ^11`.
-Settings at `/admin/config/system/authenticated-frontpage`, permission
-**`administer authenticated_frontpage configuration`** (`restrict access: true`).
+Gives logged-in users a different front page from anonymous visitors. When an authenticated
+user requests the site front page (`/`), a kernel-request event subscriber issues a **302
+redirect** to an admin-configured node or internal path; the target page is then flagged as
+the front page so the theme renders it like the homepage. Optionally redirects anonymous
+users away from that authenticated front page. Targeting can be limited to selected roles.
+
+No dependencies beyond core. `core_version_requirement: ^8 || ^9 || ^10 || ^11`.
+Settings page: `/admin/config/system/authenticated-frontpage` (route
+`authenticated_frontpage.settings_form`). Defines one permission, no drush, no plugins,
+no config schema.
+
+Solutions:
+- **Set the authenticated front page and how it targets users** → [configure/settings.md](configure/settings.md)
+- **Grant who may change the setting** → [permissions/permissions.md](permissions/permissions.md)
 
 Key facts:
-- Implemented as an **event subscriber** (`src/EventSubscriber/`) that resolves the front-page
-  request, not as a redirect. That keeps `/` as the URL for both audiences — the main reason to
-  choose it over a redirect module.
-- **Check cache contexts.** A response varying on authentication state must carry
-  `user.roles:authenticated` (or `user`), or Drupal's internal page cache can serve the
-  authenticated variant to anonymous visitors. Verify with the page cache enabled, not only while
-  logged in — this is the failure mode to test for first.
-- Conflicts in spirit with anything else that claims the front page (`localgov_login_redirect`,
-  `login_destination`, a `<front>` route override). Pick one mechanism.
-- Whole surface: `src/EventSubscriber/`, `src/Form/SettingsForm.php`, `.module`, `.routing.yml`,
-  `.permissions.yml`. No config schema directory.
+- Config object: `authenticated_frontpage.settings`. Nested keys under the
+  `authenticated_frontpage.` prefix: `field_loggedin_frontpage` (node id),
+  `field_loggedin_frontpage_path` (internal path string), `field_is_path` (bool: use path
+  vs node), `field_roles` (checkboxes map of role id => id-or-0), `field_redirect_anonymous` (bool).
+- Event subscriber service: `authenticated_frontpage.event_subscriber`
+  (class `Drupal\authenticated_frontpage\EventSubscriber\AuthenticatedFrontpageSubscriber`),
+  handles `KernelEvents::REQUEST`.
+- Theme hook: `authenticated_frontpage_preprocess_page()` sets `$variables['is_front'] = TRUE`
+  when the request carries the `is_authenticated_front` attribute.
+- Permission: `administer authenticated_frontpage configuration` (`restrict access: true`).
+- Route/form: `authenticated_frontpage.settings_form` → `Drupal\authenticated_frontpage\Form\SettingsForm` (form id `authenticated_frontpage`).

@@ -5,7 +5,9 @@
   "version": "4.0.x",
   "package": "Example modules",
   "composer_namespace": "drupal/examples",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/hal": "^2.0"
+  },
   "dependent_modules": [
     "toolbar"
   ],
@@ -15,9 +17,11 @@
   "list_position": 1960,
   "project_url": "https://www.drupal.org/project/examples",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "^8.1",
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/devel": "Some modules will be able to pretty-print PHP with this module."
+  },
   "submodules": [
     "action_example",
     "ajax_example",

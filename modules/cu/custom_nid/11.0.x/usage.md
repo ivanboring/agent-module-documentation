@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Custom Nid adds a field to the node creation form that lets a permitted user choose the node's ID, rather than taking the next value from the sequence.
+Custom Nid adds a "Nid" text field to the node creation form so a permitted user can choose the new node's ID instead of letting Drupal assign the next auto-increment value.
 
 ---
 
-This exists for one real problem: preserving URLs and references when content moves into Drupal from elsewhere. If a legacy system's article 4217 is linked from a thousand external pages and its Drupal URL must remain `/node/4217`, the node ID has to be set rather than assigned. Migrate can do this, but for a handful of nodes recreated by hand, or content restored after a mistaken deletion, a field on the form is the proportionate tool. The module is four files, with one permission — **`custom_nid access`**, marked `restrict access: true`. That restriction is not decorative. Node IDs are the primary key: choosing one can collide with an existing node, can create gaps or jump the sequence so that future auto-assigned IDs behave unexpectedly, and any system that assumed IDs are monotonic or dense will be surprised. It is a tool for a migration window, not a permission to leave granted. Core requirement is `^9.2 || ^10 || ^11`, and the version numbering (11.0.0) tracks the core major rather than semantic versioning.
+The module solves one narrow problem: setting a specific node ID when content is (re)created in Drupal, so URLs and ID-based references stay stable. If a legacy system's article 4217 must keep living at `/node/4217`, or a node is being rebuilt by hand to match an ID used elsewhere, the ID has to be set rather than assigned. Custom Nid does this with a single Form-API text field ("Nid") shown only on the node *create* form, only to users holding the `custom_nid access` permission, and only while the node has no ID yet. On submit it checks the value is numeric and not already taken (message "Nid already exists.") and then, in `hook_entity_presave`, applies it to the new node's `nid`. It is four files with no dependencies, no settings page, and no configuration — install it, grant the permission to the role doing the import, and the field appears. For anything repeatable or large-scale, Drupal's Migrate API is the mapped, rollbackable way to set IDs; Custom Nid is the proportionate tool for a handful of nodes.
 
 ---
 
-- Preserve legacy node IDs during a migration.
-- Keep /node/4217 pointing at the same article.
+- Preserve legacy node IDs when recreating content in Drupal.
+- Keep `/node/4217` pointing at the same article after a rebuild.
 - Recreate a deleted node with its original ID.
-- Match IDs with an external system.
-- Restore content after an accidental deletion.
-- Keep inbound links working after a rebuild.
-- Recreate a small set of nodes by hand.
-- Align node IDs across environments.
-- Fix a node created with the wrong ID.
-- Support a phased migration.
-- Keep references from a legacy database valid.
-- Avoid a full migration for a few nodes.
-- Reproduce a production node on staging.
-- Maintain stable identifiers for an API consumer.
-- Restrict ID assignment to a migration role.
-- Preserve IDs referenced in printed material.
-- Rebuild a site section without breaking links.
-- Test behaviour at a specific node ID.
+- Match node IDs with an external system that references them.
+- Restore a small set of nodes by hand after an accidental deletion.
+- Keep inbound links working after moving content between systems.
+- Align node IDs across staging and production for a few items.
+- Reproduce a specific production node on a staging site.
+- Give a permitted migration role the ability to type node IDs.
+- Set an ID for content whose ID is baked into business logic.
+- Keep references from a legacy database valid without a full migration.
+- Preserve IDs that appear in printed or emailed material.
+- Test behavior at a specific, known node ID.
+- Fill an intended ID gap during a phased content import.
+- Recreate content at an ID an API consumer already caches.
+- Add the field only for trusted roles by scoping the permission.
+- Verify an ID is free at submit time via the built-in uniqueness check.
+- Hide the field automatically on edit forms (it only shows on create).
+- Fall back to normal auto-increment by leaving the field blank.
+- Keep URL and reference continuity during a system replacement.

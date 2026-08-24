@@ -1,29 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Auto Node Translate Amazon provider plugs Amazon Translate into the Auto Node Translate module, so machine translations of node content can be produced by AWS rather than another provider.
+Auto Node Translate Amazon provider adds Amazon Translate (AWS) as a machine-translation backend for the Auto Node Translate module, so node field content is translated through the AWS Translate API instead of another engine.
 
 ---
 
-Auto Node Translate handles the Drupal side of automatic node translation — which fields to translate, when to trigger it, how to save the result — and delegates the actual translating to a provider plugin. This module supplies the AWS one: `AmazonTranslator`, an `AutoNodeTranslateProvider` plugin, plus a settings form at `auto_node_translate_amazon.settings` for the AWS credentials and region the plugin needs. Once configured, Amazon Translate appears as a choice wherever Auto Node Translate asks which provider to use, and translation requests go to the AWS API with the source and target language codes derived from Drupal's language configuration. The module is deliberately small — a plugin and a settings form with a config schema — because everything else belongs to the parent module. Store the AWS keys in environment variables (via a Key entity where supported) rather than in exported configuration.
+Auto Node Translate handles the Drupal side of automatic node translation — which fields to translate, when to trigger it, and how to save the result — and delegates the actual translating to a provider plugin. This module supplies the AWS one: `AmazonTranslator`, an `AutoNodeTranslateProvider` plugin (id `auto_node_translate_amazon`, label "Amazon"), plus a settings form at `/admin/config/regional/amazon` for the AWS access key, secret and region. The plugin builds an `Aws\Translate\TranslateClient` from the official `aws/aws-sdk-php` library and calls `translateText()` once per string, passing the Drupal source and target langcodes straight through as the AWS `SourceLanguageCode`/`TargetLanguageCode`. On an AWS error it shows the error message and returns the original text so translation degrades gracefully. Once configured, choose "Amazon" as the default provider in Auto Node Translate's own settings (`auto_node_translate.settings:default_api`). The module is deliberately small — one plugin plus a three-field settings form — because everything else about the translation workflow belongs to the parent module.
 
 ---
 
 - Machine-translate node content with Amazon Translate.
-- Use an existing AWS account for Drupal translations.
-- Offer Amazon as an alternative to other translation providers.
-- Translate content into several languages automatically.
-- Keep translation costs on an existing AWS bill.
-- Meet data-residency requirements by choosing an AWS region.
-- Bulk translate a content backlog.
-- Provide a first-pass translation for editors to review.
+- Reuse an existing AWS account to power Drupal translations.
+- Offer Amazon as an alternative to DeepL, Google, LibreTranslate or MyMemory backends.
+- Translate node fields into multiple target languages automatically.
+- Keep translation spend on an existing AWS bill.
+- Pick an AWS region to meet data-residency requirements.
+- Bulk-translate a backlog of existing content.
+- Produce first-pass machine translations for editors to review.
 - Translate on node save via Auto Node Translate's triggers.
-- Choose Amazon per site while other sites use another provider.
-- Keep AWS credentials in configuration managed by the settings form.
-- Translate only selected fields as configured in the parent module.
-- Support languages Amazon Translate covers.
-- Reduce manual translation effort for high-volume content.
-- Provide translations for a multilingual intranet.
-- Switch providers without changing content workflows.
-- Test translation quality across providers.
-- Automate translation as part of an editorial workflow.
-- Translate imported content automatically.
-- Keep the provider implementation isolated in one plugin.
+- Use Amazon on one site while other sites use a different provider.
+- Store the AWS key, secret and region in one settings form.
+- Translate only the fields the parent module is configured to handle.
+- Support the source/target language codes Amazon Translate accepts.
+- Reduce manual translation effort for high-volume, multilingual sites.
+- Provide translations for a multilingual intranet or portal.
+- Switch translation engines without changing the content workflow.
+- Compare translation quality across providers.
+- Automate translation as part of an editorial publishing flow.
+- Translate imported or migrated content automatically.
+- Keep the AWS-specific integration isolated in a single plugin.

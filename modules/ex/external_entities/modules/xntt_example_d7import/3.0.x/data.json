@@ -3,7 +3,7 @@
   "data_name": "xntt_example_d7import",
   "description": "Demonstrate how to create a programmatically custom external entity type that can be used to import Drupal 7 data exposed by the \"RESTful Web Services\" module.",
   "version": "3.0.x",
-  "package": null,
+  "package": "External Entities",
   "composer_namespace": "drupal/external_entities",
   "composer_requirements": {},
   "dependent_modules": [
@@ -21,13 +21,14 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Web services"
+    "Developer tools"
   ],
   "subcategories": [
-    "Remote / external data"
+    "Example / reference code",
+    "Content migration / import"
   ],
   "keywords": [
     "external",

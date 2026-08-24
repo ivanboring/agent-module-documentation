@@ -1,33 +1,28 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # IBAN Field (iban_field) — agent index
 
-An IBAN **field widget** (plus a Webform element in a submodule). No config form, no permissions,
-no Drush; config schema shipped for the widget settings. Requires core `field`.
+Adds an IBAN **field widget** for core `string` (single-line text) fields: a plain textfield input
+that validates the entered value as an International Bank Account Number (country, length, mod-97
+checksum) and normalises it to uppercase on submit. It has **no field type and no formatter of its
+own** — values are stored in an ordinary `string` field and rendered by whatever formatter that field
+uses. Depends on core `field`. No settings page, no permissions, no Drush, no services. Ships config
+schema for the widget settings.
 
-Submodule (own docs):
-- `webform_iban_field` →
-  [../../modules/webform_iban_field/2.0.x/agent/start.md](../../modules/webform_iban_field/2.0.x/agent/start.md)
+Submodule (its own docs): `webform_iban_field` — the same IBAN validation as a Webform element →
+[../../modules/webform_iban_field/2.0.x/agent/start.md](../../modules/webform_iban_field/2.0.x/agent/start.md)
+
+- **Apply the IBAN widget to a field, its settings, and how validation works** →
+  [fields/iban-widget.md](fields/iban-widget.md)
 
 Key facts:
-- Widget `@FieldWidget(id = "iban_field", label = "IBAN Field")` — `IbanFieldWidget`, applied to
-  text field types (see the `field_types` list in the annotation). It is a **widget only**: there
-  is no custom field *type*, so the value is stored in an ordinary text field.
-- Widget settings (schema `field.widget.settings.iban_field`):
-
-  | Setting | Type | Meaning |
-  |---|---|---|
-  | `size` | integer | Width of the textfield |
-  | `placeholder` | label | Placeholder text |
-
-- Validation rejects structurally invalid IBANs at form submission. Because validation lives in
-  the **widget**, values written programmatically or through REST/JSON:API bypass it — add an
-  entity constraint if you need enforcement at the storage layer.
-
-```bash
-# Point an existing text field's form display at the widget:
-drush cset core.entity_form_display.node.supplier.default \
-  content.field_bank_account.type iban_field -y
-drush cset core.entity_form_display.node.supplier.default \
-  content.field_bank_account.settings.placeholder 'NL91ABNA0417164300' -y
-drush cr
-```
+- Widget plugin `@FieldWidget(id = "iban_field", label = "IBAN Field")` →
+  `Drupal\iban_field\Plugin\Field\FieldWidget\IbanFieldWidget` (extends `WidgetBase`),
+  `field_types = { "string" }`.
+- Widget settings (schema `field.widget.settings.iban_field`): `size` (integer, default 60) and
+  `placeholder` (label, default `''`).
+- Validation: static `IbanFieldWidget::validateIbanElement()`, wired as `#element_validate`, runs the
+  Symfony `Symfony\Component\Validator\Constraints\Iban` constraint; on violation sets the form error
+  "This is not a valid International Bank Account Number (IBAN)."; empty input is allowed; valid input
+  is uppercased before storage.
+- Validation lives in the widget only, so values written via REST/JSON:API or programmatically are not
+  IBAN-checked at the storage layer.

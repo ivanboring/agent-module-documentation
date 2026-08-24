@@ -1,9 +1,9 @@
 {
-  "name": "Ib Dam Wysiwyg",
+  "name": "IB: CKEditor WYSIWYG integration",
   "data_name": "ib_dam_wysiwyg",
-  "description": "Integrates ib_dam directly into ckeditor. Useful for websites not using the media suite of modules that need WYSIWYG support.",
+  "description": "Integrates ib_dam directly into ckeditor. Useful for websites not using the media suite of modules that need WYSIWYG support. Deprecated; removed in 6.0.0.",
   "version": "5.2.x",
-  "package": null,
+  "package": "IntelligenceBank DAM",
   "composer_namespace": "drupal/intelligencebank",
   "composer_requirements": {},
   "dependent_modules": [
@@ -23,17 +23,23 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
+    "Content editing experience",
     "Media"
   ],
   "subcategories": [
-    "Digital asset management"
+    "CKEditor plugins",
+    "Rich text embedding"
   ],
   "keywords": [
     "intelligencebank",
-    "ib dam wysiwyg",
+    "ib_dam_wysiwyg",
+    "ckeditor",
+    "wysiwyg",
+    "filter",
+    "deprecated",
     "submodule"
   ],
   "part_of": "intelligencebank",

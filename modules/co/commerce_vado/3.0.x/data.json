@@ -5,13 +5,15 @@
   "version": "3.0.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_vado",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "~2.8 || ^3.0"
+  },
   "dependent_modules": [
     "commerce:commerce_cart",
     "commerce:commerce_product",
     "commerce_price"
   ],
-  "configure": null,
+  "configure": "commerce_vado.manage",
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": 348,
   "list_position": 2486,
@@ -24,14 +26,17 @@
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "commerce_vado_group_widget (manager: plugin.manager.commerce_vado_group_widget, annotation: @CommerceVadoGroupWidget)"
+  ],
   "categories": [
     "E-commerce"
   ],
   "subcategories": [
     "Add to cart forms",
     "Promotions / discounts",
-    "Cart management"
+    "Cart management",
+    "Pricing / price lists"
   ],
   "keywords": [
     "commerce",

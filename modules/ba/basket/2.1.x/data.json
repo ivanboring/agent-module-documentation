@@ -3,10 +3,14 @@
   "data_name": "basket",
   "description": "Online store core",
   "version": "2.1.x",
-  "version_note": "Installed but could not be enabled on a bare Drupal 11.4 site in this wave (wave-prepare reported FAILED); documented from source plus install metadata.",
+  "version_note": "Documented from source of the 2.1.20 stable release (newest on the 2.1.x branch).",
   "package": "Online store",
   "composer_namespace": "drupal/basket",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "mpdf/mpdf": "^8.0",
+    "phpoffice/phpspreadsheet": "^1.6",
+    "php": ">=8.1"
+  },
   "dependent_modules": [
     "drupal:node",
     "drupal:token",
@@ -24,28 +28,42 @@
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
-  "provides_drush_commands": false,
-  "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "BasketPayment (@BasketPayment, Plugin/Basket/Payment)",
+    "BasketDelivery (@BasketDelivery, Plugin/Basket/Delivery)",
+    "BasketDeliverySettings (@BasketDeliverySettings, Plugin/Basket/DeliverySettings)",
+    "BasketDiscount (@BasketDiscount, Plugin/Basket/Discount)",
+    "BasketParams (@BasketParams, Plugin/Basket/Params)",
+    "BasketPopup (@BasketPopupSystem, Plugin/Basket/Popup)",
+    "BasketStockBulk (@BasketStockBulk, Plugin/Basket/Stock)",
+    "BasketExtraSettings (@BasketExtraSettings, Plugin/Basket/Extra)"
+  ],
   "categories": [
     "E-commerce"
   ],
   "subcategories": [
     "Storefront platform",
+    "Cart management",
     "Order management",
-    "Cart management"
+    "Payment gateway",
+    "Inventory / stock management",
+    "Promotions / discounts"
   ],
   "keywords": [
     "basket",
     "alternative commerce",
     "online store",
+    "shopping cart",
     "orders",
-    "cart",
-    "scss_compiler",
+    "checkout",
+    "payment",
     "delivery",
-    "payment"
+    "currency",
+    "scss_compiler"
   ],
-  "project_description": "New free Drupal store module (alternative to Drupal Commerce). With this module you can create a fully functional online store on CMS Drupal, which works immediately after installation.\n\n The module can be extended based on plugins that are implemented in it and which give it great flexibility and adaptability for different tasks. All this ensures the development of the store in accordance with modern requirements and standards of e-commerce.\n\n Back to top \n\n Features \n \n Can work simultaneously with many types of materials (node). \n Has its own price field and works only with it. \n \n There is a customization system:\n \n Currencies. \n Delivery. \n Payment systems. \n \n \n Order management with the ability to filter / export / print invoices. \n System of e-mail notifications about new orders. \n Template system (twig editor) that can be edited directly from the admin panel. There is also a preview. \n \n Back to top \n\n Advantages: \n \n Simple installation \n Ability to install the module on an existing project \n Flexibility and adaptability of the module \n No need to install additional packages and advanced php settings (module works with basic php settings). \n \n \n Back to top \n\n Need support for your Drupal store? \n \n Support from 99$/month. \n Any modifications to the store at a rate of 50$/hour. \n Individual store design from 1499$. \n \n For support, please email hello@alternativecommerce.org \n\n \n \n Back to top \n\n Free help for Alternativecommerce owners \n Join the Telegram group \n\n \n Back to top \n\n Dependencies \n \n Node \n Token \n SCSS/Less Compiler \n Views \n \n Back to top \n\n Setup \n \n \n To start, you need to install the modules:\n \n Token \n SCSS/Less Compiler \n \n \n On the module site, you need to scroll down to the download link. Then right-click on the link, and copy the address sent. \n Then you go to your site on Drupal, and in the admin panel click on \"Extend\" (Screenshot \"Extend\" in the attachment). After you go to the Extend tab, you click \"Install new module\" (Screenshot \" Install new module \" in the attachment). \n In the \"Install from a URL\" field, paste the link you copied on the module's website and click \"Install\" (Screenshot \" Install \" in the attachment) \n Once you have installed the module, you need to turn it on. To do this, click \"Enable newly added modules\" (Screenshot \" Enable newly added modules \" in the attachment) \n Then in the search box, enter the name of the module you installed (in this case \"Token\"), and put a \"checkbox\" before the name of the module. Then click \"Install\" again (Screenshot \" Install-Token \" in the attachment). \n To install \"SCSS/Less Compiler\" you need to perform the same steps as for \"Token\", but before installing you need to go to the folder with your site, and create a new folder \"libraries\" \n To install \"SCSS/Less Compiler\" you need to perform the same steps as for \"Token\", but before installing you need to go to the folder with your site, and create a new folder \"libraries\". Then copy the scssphp folder there, which can be downloaded from the SCSS / Less Compiler website. Then unzip the archive to the \"libraries\" folder. \n After installing SCSS / Less Compiler, you need to reset the site cache in the admin panel. \n Now you can install the \"Basket\" module, it is installed in the same way as the \"Token\" module. \n If you did everything right, it appears in the admin panel\n\nnew tab \"Shop\" (Screenshot \" Shop \" in the attachment). \n \n After installing the module, you will need to configure its main functions:\n\n \n \n Creating a product page.\n \n To create a product page, you will need to create the structure of that page. To do this, you need to go to the tab \"Structure\" in the administration panel. Then in the \"Structure\" tab you need to go to \"Content types\" (Screenshot \" Content types \" in the attachment). \n According to the link \"Content types\", you need to click \"Add content type\". \n Now you need to give the name of the content, we will have the product, so we give it the name \"Goods\" …",
+  "project_description": "New free Drupal store module (alternative to Drupal Commerce). With this module you can create a fully functional online store on CMS Drupal, which works immediately after installation.\n\n The module can be extended based on plugins that are implemented in it and which give it great flexibility and adaptability for different tasks. All this ensures the development of the store in accordance with modern requirements and standards of e-commerce.\n\n Features: works simultaneously with many node types as products; has its own price field and works only with it; customization system for currencies, delivery and payment systems; order management with filter / export / print invoices; e-mail notifications about new orders; template system (twig editor) editable directly from the admin panel with preview.\n\n Advantages: simple installation; can be installed on an existing project; flexible and adaptable; works with basic php settings (no advanced php required).\n\n Dependencies: Node, Token, SCSS/Less Compiler, Views. Optional: set $config['basket']['not_use_session'] = TRUE in settings.php to run the cart without PHP sessions.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

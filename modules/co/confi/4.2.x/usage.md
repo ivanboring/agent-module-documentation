@@ -1,33 +1,36 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Config Import (project confi, machine name config_import) is a configuration-import tool aimed at importing config more selectively and cleverly than core's all-or-nothing `config:import`.
+Config Import (project confi, machine name config_import) is a programmatic developer tool for importing, exporting, and patching a named subset of Drupal configuration, rather than running core's all-or-nothing `config:import`. It has no UI — you call its services from update hooks and deploy scripts.
 
 ---
 
-Core configuration management is deliberately whole-site: `drush config:import` applies the entire sync directory, and if anything in it conflicts with the active state the whole import can stall. That is safe but blunt, and on real projects it produces friction — you want to import *this* set of changes, or import despite an unrelated divergence, without hand-editing the sync directory. This module offers a more granular import path.
+Core configuration management is deliberately whole-site: `drush config:import` applies the entire sync directory as one transaction, which is safe but blunt. During project development you often want to apply just *this* set of config objects — the roles you changed, one view, a single field — without disturbing everything else and without hand-editing the sync directory. Confi provides that. The `config_import.importer` service imports or exports only the config names you list: `importConfigs()` takes a full snapshot of active config, overlays your named `.yml` files, then uses core's own `StorageComparer` and `ConfigImporter` to apply only the resulting diff, so unrelated divergences neither block the import nor get pulled in. `exportConfigs()` writes named active objects back out to files. A second service, `config_import.param_updater`, copies a single nested property from a YAML file into an existing active config object when you want to patch one value rather than replace the whole object. A `hook_config_import_configs_alter` denylist lets a site protect specific config names from ever being imported.
 
-The machine name is `config_import` while the project is `confi`, which matters when enabling it or referencing its routes. Configuration import is powerful and consequential — it can change permissions, roles, field definitions and access rules — so any tool that makes importing easier also makes it easier to import the wrong thing. Restrict who can drive it to trusted administrators, review what a granular import will actually change before applying, and treat it as part of a deliberate deployment process rather than an ad-hoc button.
-
-For teams whose deployment workflow chafes against core's all-or-nothing import, it is a sharper tool. Use it with the same care as any config-changing operation, since the blast radius of a bad import is the whole site's behaviour.
+The intended workflow is inside `hook_update_N()`: point the importer at a config directory with `setDirectory()` (it defaults to the site's `config_sync_directory`), list the config names to bring in, and ship it as part of a deployment. Because config import can change permissions, roles, fields and access rules, treat every import as a deliberate, reviewed deployment step, and remember that naming a config whose file is missing deletes that config from the site. Version 4.2.0 ships no UI, routes, permissions, or Drush commands — despite older README text, this release is API-only.
 
 ---
 
-- Import configuration selectively.
-- Avoid core's all-or-nothing import.
-- Import a subset of config changes.
-- Import despite an unrelated divergence.
-- Smooth a config deployment.
-- Apply specific config changes.
-- Review changes before importing.
-- Drive a granular config import.
-- Deploy config more flexibly.
-- Restrict who can import config.
-- Reduce config-import friction.
-- Handle config conflicts pragmatically.
-- Import config in a workflow.
-- Preview a config import's effect.
-- Treat imports as deliberate.
-- Manage configuration deployment.
-- Import changed items only.
-- Avoid hand-editing the sync directory.
-- Control the config-import blast radius.
-- Support a CI deployment.
+- Import a specific subset of config in a `hook_update_N()`.
+- Update one config object without a full sync import.
+- Apply a changed view, role, or field during deployment.
+- Avoid core's all-or-nothing `config:import`.
+- Import config despite an unrelated divergence in the sync directory.
+- Export selected active config objects to files.
+- Patch a single nested property in a config object from a file.
+- Update a view's pager or a filter format field programmatically.
+- Ship config changes as part of a module's update path.
+- Point imports at a directory outside the webroot with `setDirectory()`.
+- Protect certain config objects from import with a denylist hook.
+- Smooth a config deployment in CI.
+- Remove a config object by importing its (missing) name.
+- Reduce config-import friction during active development.
+- Reapply a module's default config after editing it.
+- Bring in `core.extension` or specific settings selectively.
+- Keep unrelated local config untouched during an import.
+- Drive granular imports from a deploy script.
+- Restore one property to a known value from install config.
+- Sync a handful of config objects between environments.
+- Treat config imports as deliberate, reviewed steps.
+- Avoid hand-editing the sync directory for partial changes.
+- Update multiple features' config across an update hook chain.
+- Log config-property updates to the `config_update` channel.
+- Import config from a custom staging directory.

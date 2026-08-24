@@ -1,9 +1,9 @@
 {
-  "name": "Esa Pager",
+  "name": "Elasticsearch - Search API Pager",
   "data_name": "esa_pager",
   "description": "Custom pager for Elasticsearch - Search API elasticsearch pages.",
   "version": "2.2.x",
-  "package": null,
+  "package": "Search",
   "composer_namespace": "drupal/elasticsearch_search_api",
   "composer_requirements": {},
   "dependent_modules": [],
@@ -19,17 +19,19 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Search"
+    "Content display"
   ],
   "subcategories": [
-    "Elasticsearch integration"
+    "Pagers & lazy loading"
   ],
   "keywords": [
     "elasticsearch",
     "esa pager",
+    "pager",
+    "views",
     "submodule"
   ],
   "part_of": "elasticsearch_search_api",

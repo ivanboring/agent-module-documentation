@@ -1,56 +1,33 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Token Modifier (token_modifier) — agent index
 
-A meta token type that transforms other tokens, plus a small plugin type for the transformations.
-No config, no permissions, no schema, no Drush. Requires contrib `token`.
+Adds a meta token type **`token-modifier`** that wraps any other token and runs its
+resolved value through a transformation (uppercase, trim, strip-tags, urlencode, …).
+Transformations are plugins of a `token_modifier` plugin type, so sites can add their own.
+Depends on contrib **token**. No settings page, no permissions, no config schema, no Drush.
+
+Basic form: `[token-modifier:{modifier-id}:{original-token}]`
+e.g. `[token-modifier:uppercase:node:title]`, `[token-modifier:urlencode:current-user:name]`.
+
+Do / find it here:
+- **Modifier syntax, the 10 shipped modifier ids, chaining, and writing your own modifier** → [plugins/token-modifier.md](plugins/token-modifier.md)
+- **How it plugs into the Token system (hook_token_info / hook_tokens dispatch, the alter hook, runtime trace)** → [hooks/token-integration.md](hooks/token-integration.md)
+- **The plugin-manager service, the transform() contract, and the base class** → [api/services.md](api/services.md)
 
 Key facts:
-- Token type **`token-modifier`**. Syntax:
-
-  ```
-  [token-modifier:MODIFIER:REST:OF:THE:TOKEN]
-  e.g. [token-modifier:uppercase:node:title]
-       [token-modifier:urlencode:node:field_slug]
-  ```
-
-  `hook_tokens()` explodes the token name on `:`, shifts off the first part as the **modifier
-  plugin id**, re-joins the rest, and calls
-  `$plugin->transform("[$token]", $data, $options)`.
-- **Plugin type `token_modifier`**: manager `TokenModifierPluginManager`, annotation
-  `@TokenModifier` (`src/Annotation/TokenModifier.php`), base class `TokenModifierPluginBase`,
-  interface `TokenModifierInterface`, namespace `Plugin/token_modifier/`.
-- Shipped modifiers: `Length`, `Lowercase`, `Ltrim`, `Rtrim`, `Trim`, `StripTags`, `TitleCase`,
-  `UpperCase`, `UpperCaseFirst`, `Urlencode`.
-- `hook_token_info()` registers the type and every discovered modifier with `dynamic => TRUE`, so
-  they show up in the Token browser.
-
-Writing a modifier:
-
-```php
-// mymodule/src/Plugin/token_modifier/Slugify.php
-namespace Drupal\mymodule\Plugin\token_modifier;
-
-use Drupal\token_modifier\Plugin\TokenModifierPluginBase;
-
-/**
- * @TokenModifier(
- *   id = "slugify",
- *   name = @Translation("Slugify"),
- *   description = @Translation("Lowercases and replaces non-alphanumerics with dashes.")
- * )
- */
-class Slugify extends TokenModifierPluginBase {
-  // implement transform($token, array $data, array $options)
-}
-```
-
-Then `[token-modifier:slugify:node:title]`.
-
-Gotchas:
-- The modifier resolves the inner token by **re-running token replacement**, so the inner token
-  must be valid in the same `$data` context; a token needing data you did not pass yields an empty
-  string.
-- `createInstance()` is called with the modifier id straight from the token text — an unknown id
-  raises a plugin exception rather than leaving the token untouched, so validate patterns you let
-  editors write.
-- `core_version_requirement` is the loose `>=8`; the installed release is 2.0.6.
+- Token **type**: `token-modifier` (hyphen). Every modifier is a token of that type keyed by its
+  plugin id, registered `dynamic => TRUE` so it appears in the Token browser.
+- **Shipped modifier ids** (in `src/Plugin/token_modifier/`): `urlencode`, `uppercase`,
+  `lowercase`, `title-case`, `upper-case-first`, `length`, `trim`, `ltrim`, `rtrim`, `strip-tags`.
+  Note the real id is `upper-case-first` (not `uppercase-first`), and there is **no** `sentence-case`
+  modifier despite the README mentioning one.
+- `length` takes an extra numeric argument before the token:
+  `[token-modifier:length:{n}:{token}]` e.g. `[token-modifier:length:8:current-user:name]`.
+- **Plugin type** `token_modifier`: manager service `plugin.manager.token_modifier`
+  (`Drupal\token_modifier\Plugin\TokenModifierPluginManager`), annotation `@TokenModifier`
+  (`src/Annotation/TokenModifier.php`), interface `TokenModifierInterface`, base class
+  `TokenModifierPluginBase`, plugin dir `Plugin/token_modifier/`, alter hook
+  `hook_token_modifier_info_alter`.
+- Module file `token_modifier.module` implements `hook_token_info()` + `hook_tokens()`; the only
+  service is the plugin manager (`token_modifier.services.yml`).
+- `core_version_requirement: '>=8'`; documented release 2.0.6.

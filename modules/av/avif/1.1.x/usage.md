@@ -1,27 +1,30 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Avif generates AVIF copies of image style derivatives, so browsers that support the format get a substantially smaller file while everything else keeps the original.
+Avif serves AVIF copies of core image-style derivatives to browsers that accept the format, while every other browser keeps the original derivative — a smaller download for supporting clients with no change to your image styles.
 
 ---
 
-AVIF typically beats both JPEG and WebP at the same visual quality, often by a wide margin, which makes it one of the cheaper page-weight wins available — but Drupal's image system produces one derivative per style, in the source format. This module hooks that pipeline: `src/Avif.php` and `src/Plugin` with `src/Annotation` define a converter plugin type, so the actual encoding can come from whichever backend a host offers (GD, Imagick or a command-line encoder), and `src/Routing` plus `src/Controller` handle serving. A settings form at `/admin/config/media/avif` under `administer site configuration` controls the behaviour, and the dependency is core `image` alone. Two operational notes matter more than the code. AVIF **encoding is expensive** — considerably slower than JPEG, and generating derivatives on first request can make an uncached image request slow enough to time out, so a warming strategy is worth planning. And browser support, while now broad, is not universal, so the fallback path is what actually serves some visitors; verify it rather than assuming. The release is 1.1.0-rc1, a release candidate, and core requirement is `^10.3 || ^11`.
+Drupal's image system produces one derivative per image style, in the source format. This module bolts AVIF onto that pipeline in two places. An event subscriber (`avif.route_subscriber`) repoints the core `image.style_public` route at its own `ImageStyleDownloadController`, which wraps the core controller and only diverges when the requested `?file=` ends in `.avif` and the request `Accept`s `image/avif`; in that case it lets the unmodified core controller resolve, access-check, and generate the source derivative, then produces an AVIF copy next to it (`<derivative>.avif`) and returns it. A responsive-image preprocess (`avif_preprocess_responsive_image`) injects an extra `<source type="image/avif">` ahead of each existing source, with the srcset URLs rewritten by `Avif::getAvifSrcset()`, so a `<picture>` element offers AVIF first and falls back automatically. Encoding is pluggable through the `AvifProcessor` plugin type (manager `plugin.manager.avif_processor`); the one shipped plugin, `imagemagick`, delegates to the contrib `drupal/imagemagick` toolkit's `convert` operation — GD and CAVIF are named on the project page but not shipped. A settings form at `/admin/config/media/avif` chooses the `processor` and `quality` (config object `avif.settings`, quality default 60). Because AVIF is delivered through responsive-image styles, fields must use a Responsive image formatter to benefit; a plain Image formatter emits a single `<img>` and no AVIF source. A per-URI lock avoids double-encoding, returning HTTP 503 while a copy is being generated. The dependency is core `image` alone, plus a runtime toolkit that can encode AVIF; core requirement is `^10.3 || ^11` and the newest release on this branch is 1.1.0-rc1.
 
 ---
 
 - Serve smaller images to browsers that support AVIF.
-- Cut page weight without changing image styles.
-- Improve Core Web Vitals scores.
-- Generate AVIF alongside existing derivatives.
+- Cut page weight without changing existing image styles.
+- Improve Core Web Vitals / Largest Contentful Paint.
+- Generate an AVIF variant alongside each responsive-image derivative.
 - Reduce bandwidth costs on an image-heavy site.
-- Keep JPEG fallbacks for older browsers.
-- Choose an encoder backend by plugin.
-- Improve mobile load times.
-- Compress hero images more aggressively.
-- Add AVIF without a CDN image service.
-- Apply AVIF to selected image styles.
-- Speed up a gallery page.
-- Reduce storage pressure from large derivatives.
-- Improve performance on slow connections.
-- Test AVIF savings before rolling out.
-- Serve modern formats from Drupal itself.
-- Complement responsive image styles.
-- Reduce time to largest contentful paint.
+- Keep JPEG/PNG fallbacks for Safari and other non-AVIF clients.
+- Pick the encoder backend via the AvifProcessor plugin type.
+- Encode through the ImageMagick toolkit already on the server.
+- Add a custom encoder plugin (e.g. a CLI encoder) for your host.
+- Tune AVIF quality centrally from one settings form.
+- Apply AVIF to selected responsive image styles.
+- Speed up a gallery or media-listing page.
+- Improve mobile load times on slow connections.
+- Compress hero images more aggressively than JPEG allows.
+- Add modern-format delivery without a third-party CDN image service.
+- Serve AVIF from Drupal itself rather than an edge transform.
+- Complement existing responsive image breakpoints.
+- Reduce storage/transfer pressure from large derivatives.
+- Warm derivatives ahead of traffic to avoid request-time encode cost.
+- Roll AVIF out per display without touching content types' data.
+- Integrate with Blazy (its `data-srcset` sources are rewritten too).

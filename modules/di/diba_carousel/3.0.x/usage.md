@@ -1,28 +1,34 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Diba Carousel Slider provides a single block plugin that renders a Bootstrap carousel from image, link and text fields — a slider you place in a region, with no content type, entity or admin section to set up first.
+Diba Carousel Slider provides one block plugin that builds a Bootstrap carousel directly from an entity type's own fields — pick the entity type, filter and sort the content, map fields to image/title/description/link, and place it in a region. No slide content type, view or extra module is required.
 
 ---
 
-Where most Drupal slider solutions ask you to assemble the pieces — a slide content type, a view, an Entityqueue for ordering, a library integration — this module ships the finished component. The block plugin in `src/Plugin` carries the slide data in its own block configuration, validated by `config/schema`, and renders through `templates/block--diba-carousel.html.twig`; `diba_carousel.libraries.yml` and `assets/css` supply the styling on top of Bootstrap's carousel markup, so a Bootstrap-based theme gets the behaviour it already has JS for. Its dependency list is all core (`block`, `user`, `node`, `image`, `options`, `link`) — no contrib, no external library download, no CDN. There is no route, no permission and no service: placing and configuring the block is done through the normal block layout UI under `administer blocks`. The `core_version_requirement` of `^9.5 || ^10 || ^11` makes it usable across three major versions, and because the configuration lives in the block, a placed carousel exports with the rest of a site's config.
+Most Drupal slider solutions ask you to assemble a stack — a slide content type, a view for the query, Entityqueue for ordering, and a JS library integration. Diba Carousel collapses all of that into a single configurable block. Each block instance runs its own entity query (any fieldable content-entity type: nodes, users, comments, media, terms) with bundle, publishing-status and single-field filters, an order field with ascending/descending/random direction, and a result limit. It then composes each result into a slide by reading the fields you assign as image, title, description and link, with image styles, multivalue-image strategies (first/last/random/all-split), truncation and a "See more" link. All of this — plus Bootstrap layout options (indicators, controls, autoplay interval, columns per slide) and free-form CSS class fields — is stored in the block's own configuration, validated by the `block.settings.diba_carousel` schema and exported with the rest of a site's config. Dependencies are core only (`block`, `user`, `node`, `image`, `options`, `link`); the module emits Bootstrap carousel markup and expects the theme to supply Bootstrap's CSS/JS (Bootstrap, Barrio and subthemes are the tested targets). Optional `custom_pub` integration exposes custom publishing options as extra node filters.
 
 ---
 
-- Put an image carousel in a page region.
-- Add a homepage banner slider without a content type.
-- Build a slider on a Bootstrap-based theme.
-- Give each slide a link and caption.
-- Configure slides from the block layout UI.
-- Export a configured carousel with site configuration.
-- Avoid installing a JavaScript slider library.
-- Place different carousels in different regions.
-- Restrict a carousel to specific pages via block visibility.
-- Add a promotional slider to a landing page.
-- Provide a lightweight alternative to Slick or Swiper.
-- Reuse Bootstrap's existing carousel behaviour.
-- Theme the carousel via a single Twig override.
-- Ship a carousel as part of a site's config export.
-- Keep slider markup consistent with a Bootstrap theme.
-- Set up a slider with core dependencies only.
-- Give a small site a banner without extra infrastructure.
-- Control slide order from the block form.
-- Support a site still on Drupal 9.5.
+- Put an image carousel in any page region without building a view.
+- Add a homepage banner slider sourced from Article nodes.
+- Build a slider on a Bootstrap-based theme (Bootstrap, Barrio).
+- Give each slide a title link and a caption description.
+- Show a carousel of the 5 most recent promoted nodes.
+- Randomise slide order on each page load.
+- Restrict a carousel to specific bundles (content types).
+- Filter slides by a field value, including a taxonomy term id.
+- Drive the filter value from a URL query param (`[query:arg]`) or path segment (`[argument:N]`).
+- Split a multivalue image field into one slide per image.
+- Apply an image style to scale/crop slide images.
+- Skip content that has no image.
+- Truncate long descriptions on a word boundary with a "See more" link.
+- Build carousels over users, comments, media or taxonomy terms, not just nodes.
+- Show multiple items per slide (2/3/4/6/12 columns).
+- Disable autoplay by setting the interval to 0.
+- Add utility classes to hide the carousel or caption on small screens.
+- Use the "Diba left captions" style for a left-aligned caption panel.
+- Export a configured carousel with `drush cex` / `drush cim`.
+- Place different carousels in different regions with different content.
+- Add a promotional slider to a landing page via block visibility rules.
+- Provide a lightweight alternative to Slick/Swiper with no extra JS download.
+- Reuse the theme's existing Bootstrap carousel behaviour.
+- Filter node content by custom publishing options (with `custom_pub`).
+- Support sites still on Drupal 9.5 through 11.

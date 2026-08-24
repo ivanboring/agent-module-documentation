@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-File Mime Validator checks a file upload's **real** MIME type rather than trusting its extension, closing the gap where a script renamed to `.jpg` passes a field's allowed-extensions check.
+File Mime Validator adds a server-side upload check that detects a file's real MIME type from its content and compares the resulting category against the category implied by the filename, so an upload whose bytes do not match its extension can be rejected rather than trusted.
 
 ---
 
-Drupal's file field validates the extension, and the extension is chosen by whoever uploads the file. That is adequate while the allowed list contains only inert types, and inadequate the moment the list widens or the storage is public: a PHP or HTML payload named `photo.jpg` satisfies an extension check completely. This module adds the missing step — inspect the file's actual content type and compare it against what the extension claims. `src/Service` holds the validation logic, `src/Form` the configuration, `config/install` and `config/schema` the per-file-type MIME mappings, all wired through `file_mime_validator.services.yml`. It has no module dependencies and targets core `^10 || ^11`. One defect to be aware of before relying on the UI: the configuration route requires `_permission: "administer"`, which is **not a permission Drupal defines** — there is no `administer` permission in core — so the form at `/admin/config/system/file-mime-validator/file-types-mime-config` is unreachable for every account except user 1, which bypasses permission checks entirely. The validation itself is unaffected; only the settings screen is gated behind a permission that can never be granted.
+Drupal's file field validates the extension, and the extension is chosen by whoever uploads the file, so a payload named `photo.jpg` satisfies an extension check even when its content is something else. This module adds the missing step: it implements `hook_file_validate()` (`file_mime_validator_file_validate()`), which delegates to the `file_mime_validator` service. The service's `checkRealMime()` derives the file's real MIME type from its content with Symfony's `FileinfoMimeTypeGuesser` (PHP `finfo` / libmagic reading the actual bytes), sorts both the filename MIME and the detected MIME into one of five categories — text, image, compression, audio, video — and returns an error when the categories disagree. The five category lists live in the `file_mime_validator.settings` config object (keys `file_mime_validator_text`, `file_mime_validator_image`, `file_mime_validator_compression`, `file_mime_validator_audio`, `file_mime_validator_video`), each a comma-separated MIME list you can extend from the settings form or with drush. Mismatches and unrecognised types are written to the `file_mime_validator` logger channel. The module has no dependencies, targets core `^10 || ^11`, and defines no permissions, drush commands, or plugin types.
 
 ---
 
-- Reject a PHP script renamed to .jpg.
-- Validate the true MIME type of uploads.
-- Harden a public file field.
-- Stop extension-spoofed uploads.
-- Enforce a mapping of extension to MIME type.
+- Reject a script renamed to `.jpg` whose real content is not an image.
+- Validate the true content type of uploaded files, not just the extension.
+- Harden a public file or image field as defence-in-depth.
+- Stop extension-spoofed uploads on any entity's file field.
+- Enforce a category mapping of extension to MIME type.
 - Protect an image field from non-image content.
-- Reduce the risk of stored XSS via SVG or HTML.
-- Complement Drupal's extension allow-list.
-- Meet an upload-security requirement.
-- Check documents uploaded by anonymous users.
-- Prevent polyglot file uploads.
-- Add a validation layer without custom code.
-- Audit which MIME types a site accepts.
-- Protect a media library from mislabelled files.
-- Reduce reliance on server configuration alone.
-- Validate uploads on a webform.
-- Catch mismatches introduced by a migration.
-- Support a penetration-test remediation item.
+- Complement Drupal's extension allow-list with a content check.
+- Add an upload-validation layer without writing custom code.
+- Configure which MIME types count as text / image / compression / audio / video.
+- Extend the allowed-MIME lists so they stay current with new formats.
+- Log uploads whose detected type disagrees with their extension.
+- Audit which MIME categories a site accepts.
+- Apply the same content check across every file field site-wide.
+- Set the MIME category lists via drush in a deployment pipeline.
+- Read the current MIME configuration with `drush cget`.
+- Detect a document uploaded under a mismatched extension.
+- Reject a compressed archive disguised as a media file.
+- Catch mismatches introduced by a content migration.
+- Support an upload-security remediation item from a review.
+- Understand the validation flow by reading the service's `checkRealMime()` method.

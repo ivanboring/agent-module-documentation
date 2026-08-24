@@ -1,24 +1,34 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Existing Values Autocomplete Widget (existing_values_autocomplete_widget) — agent index
 
-Text-field widget that autocompletes from values already stored in the same field. Depends on
-core `field` and `text`. Core requirement `^10.1 || ^11`.
-**Current release is 2.0.0-rc1 — release candidate.**
+Provides a field widget for `string` text fields that autocompletes from values already
+stored in that same field elsewhere on the site (a lightweight alternative to taxonomy
+references or "allowed values"). The widget extends core `StringTextfieldWidget` and wires
+each field element to a JSON autocomplete route backed by one controller.
 
-Key facts:
-- One route, `/existing-values/autocomplete/{entity_type_id}/{bundle}/{field_name}`, with
-  `_permission: 'access content'` and `[a-z_]+` patterns on all three parameters.
-  Despite the permissive-looking requirement, `AutocompleteController::handleAutocomplete()`
-  applies two real gates:
-  1. it reads the bundle's **form display** and returns `[]` unless the component's widget type
-     is `existing_autocomplete_field_widget` — so only fields deliberately configured with this
-     widget are queryable;
-  2. per candidate value it loads a representative entity and requires **both**
-     `$entity->access('view')` and `$entity->get($field_name)->access('view')`.
-- Behavioural quirk to know: the SQL selects from the field's data table for the *entity type*
-  and does **not** filter by `{bundle}` — the bundle argument is used only to look up the form
-  display. Suggestions can therefore include values stored on other bundles sharing the field
-  name. Access is still checked per value, so this is a correctness surprise, not a disclosure.
-- Distinct values come from `MIN(f.entity_id)` grouped by the value column, so the access check
-  is made against one representative entity per value.
-- Suggestion count comes from the widget's `suggestions_count` setting (default 15).
+- Dependencies: core `field` and `text`. Core requirement `^10.1 || ^11`. No external
+  composer requirements.
+- No module settings page (`configure` is null). Configuration is per field, on each
+  bundle's **Manage Form Display** page: pick the "Autocomplete: existing values" widget.
+- Defines no permissions and no drush commands. Provides one field widget plugin and one
+  route/controller. Ships config schema for the widget settings.
+
+Solutions:
+- **Turn a text field into an existing-values autocomplete** → [fields/widget.md](fields/widget.md)
+- **How the autocomplete endpoint works (route, params, query, filtering)** → [api/autocomplete-route.md](api/autocomplete-route.md)
+- **Map D7 CCK autocomplete widgets to this widget during migration** → [hooks/migration.md](hooks/migration.md)
+
+Key facts (real machine names):
+- Widget plugin id: `existing_autocomplete_field_widget`, label "Autocomplete: existing values",
+  `field_types = {"string"}`, class `Drupal\existing_values_autocomplete_widget\Plugin\Field\FieldWidget\ExistingAutocompleteFieldWidget`.
+- Widget setting: `suggestions_count` (integer, default `15`, `#min` 1, required).
+- Config schema key: `field.widget.settings.existing_autocomplete_field_widget`
+  (extends `field.widget.settings.string_textfield`).
+- Route: `existing_values_autocomplete_widget.autocomplete`, path
+  `/existing-values/autocomplete/{entity_type_id}/{bundle}/{field_name}`, `_format: json`,
+  `_permission: 'access content'`; each param constrained by `[a-z_]+`.
+- Controller: `AutocompleteController::handleAutocomplete($request, $entity_type_id, $bundle, $field_name)`.
+- Services injected: `entity_type.manager`, `database`, `entity_field.manager`, `entity_display.repository`.
+- Hooks implemented: `hook_help`, `hook_field_migration_field_widget_info`.
+- Matching is case-insensitive; suggestions are limited to values on entities/fields the
+  current user may view, and capped at `suggestions_count`.

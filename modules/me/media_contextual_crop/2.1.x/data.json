@@ -5,7 +5,13 @@
   "version": "2.1.x",
   "package": "Media Contextual Cropping",
   "composer_namespace": "drupal/media_contextual_crop",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drush/drush": ">11",
+    "drupal/crop": "^2.3",
+    "composer/installers": "^1.9 || ^2.0",
+    "cweagans/composer-patches": "^1.7 || ^2.0",
+    "drupal/core": "^10 || ^11"
+  },
   "dependent_modules": [
     "crop:crop",
     "drupal:field"
@@ -21,15 +27,19 @@
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
-  "provides_drush_commands": false,
-  "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "media_contextual_crop",
+    "media_contextual_crop_use_case"
+  ],
   "categories": [
     "Media",
     "Developer tools"
   ],
   "subcategories": [
     "Image cropping",
+    "Media derivatives / transcoding",
     "Plugin system"
   ],
   "keywords": [

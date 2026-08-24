@@ -1,26 +1,27 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-External Entities config for drupal.org. — a submodule of **external_entities**.
+# external_entities_drupalorg — usage
+
+An example module for External Entities that ships ready-made configuration reading the public
+drupal.org APIs. It contains no PHP — only optional configuration — and exists to demonstrate a working
+REST storage client and a working JSON:API storage client, complete with fields, displays, and Views,
+that you can browse and then copy for your own sources.
 
 ---
 
-This is one of external_entities's submodules. External Entities config for drupal.org. It exposes nothing on its own beyond that role and is governed by the parent module's configuration, permissions and behavior; enable it when you need this specific capability and leave it off otherwise, so the site only carries the parts of external_entities it actually uses.
-
-See the parent module for the overall system this fits into.
+Enabling it installs two read-only external entity types: `drupalorg_rest_issue` (drupal.org issues via
+the REST endpoint `api-d7/node.json`, listed at `/drupalorg-rest-issue`) and `drupalorg_jsonapi_module`
+(drupal.org modules via JSON:API, listed at `/drupalorg-jsonapi-module`), each with an example Views
+display and body/issue fields whose mappings illustrate the parent's field-mapper, property-mapper, and
+data-processor pipeline. Depends only on the External Entities module.
 
 ---
-- Enable external_entities_drupalorg to add this capability.
-- Extend external_entities with external_entities_drupalorg.
-- Keep it disabled if not needed.
-- Depend on external_entities.
-- Scope functionality to what you enable.
-- Add only the sub-features you use.
-- Compose the parent's feature set.
-- Turn on per requirement.
-- Reduce surface by enabling selectively.
-- Combine with sibling submodules.
-- Configure via the parent module.
-- Review what it exposes before enabling.
-- Match it to your use case.
-- Keep the parent's permissions in force.
-- Enable alongside the parent.
-- Use it as part of the parent's system.
+
+- See a working REST storage client configuration end to end.
+- See a working Drupal JSON:API storage client configuration.
+- Browse live drupal.org issues as Drupal entities at `/drupalorg-rest-issue`.
+- Browse live drupal.org modules as Drupal entities at `/drupalorg-jsonapi-module`.
+- Inspect example field mappings (simple, constant, value-mapping data processor).
+- Learn how to map a coded value (issue category/status/priority) to a label.
+- Use the shipped example Views as templates for your own listings.
+- Clone a type at `/admin/structure/external-entity-types` and repoint it at your API.
+- Prototype a decoupled integration without writing a storage client first.
+- Teach or demo External Entities with a real public data source.

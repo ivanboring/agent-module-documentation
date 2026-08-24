@@ -1,28 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Social Post is the autoposting half of the Social API family: it stores each user's connection to a social network and pushes site content out to those networks automatically, with the actual network implementations shipped as separate provider modules.
+Social Post is the autoposting arm of the Social API family: it provides the framework for modules that publish content to social networks on a user's behalf, storing each user's connection (provider account id plus an OAuth access token) as a `social_post` content entity. It does nothing visible on its own — installing a per-network implementer (Twitter, Facebook, LinkedIn, …) is what adds actual posting.
 
 ---
 
-Social API splits into three siblings — Social Auth (log in with), Social Widgets (embed) and Social Post (publish out). This module owns the last of those. It defines a `social_post` content entity holding the association between a Drupal user and a social account: `user_id`, `plugin_id`, `provider_user_id`, `name`, a `link`, an `additional_data` blob and — importantly — a **`token`** field holding the provider's OAuth access token used to post on the user's behalf. Around that sit a `PostManager` namespace, a `DataHandler`, a plugin manager for network implementations, and an admin page at `/admin/config/social-api/social-post` listing the installed integrations. Providers such as Twitter or Facebook are separate projects that plug in here, so this module on its own does nothing visible until at least one is installed. Three permissions are declared — viewing the user-entity lists, deleting all users' accounts, and deleting one's own. Requirements are PHP 8.1+, Social API `^4` and core `link`. Because the entity stores live access tokens, database access and backups need to be treated accordingly, and access to the delete and list screens deserves a careful look — see this module's local security notes.
+Social API is split into three siblings — Social Auth (log in with), Social Widgets (embed) and Social Post (publish out); this module owns publishing. It defines a `social_post` content entity that binds a Drupal user to a social account, with fields `user_id`, `plugin_id`, `provider_user_id`, `name`, a `link`, an `additional_data` blob and a `token` field holding the provider's OAuth access token used to post. Around it sit three services (`social_post.user_authenticator`, `social_post.user_manager`, `social_post.data_handler`), an `OAuth2ControllerBase` scaffolding the OAuth connect/callback flow, a `Plugin\Network\NetworkBase` and a `PostManager\OAuth2Manager` base class that implementers extend, and an admin page at `/admin/config/social-api/social-post` listing installed integrations. Networks such as Twitter or Facebook are separate provider projects that plug in here through the shared Social API `@Network` plugin type. Three permissions are declared, covering viewing the connected-account lists and deleting accounts. Requirements are PHP 8.1+, Social API `^4` and core `link`; core support is `^9.5 || ^10 || ^11`.
 
 ---
 
-- Post new content automatically to a social network.
+- Post new content automatically to a social network on a user's behalf.
 - Let users connect their own social account for autoposting.
-- Share a token across several posting integrations.
-- Publish announcements without a manual copy-paste step.
-- Manage which networks a site autoposts to.
-- Let a user disconnect their own social account.
-- Give administrators a list of connected accounts.
-- Add a new network by writing a provider module.
-- Reuse Social API's shared OAuth plumbing.
-- Push editorial content to a brand account.
+- Store a per-user provider OAuth token for later publishing.
+- Reuse one stored connection across several posting operations.
+- Publish site announcements without a manual copy-paste step.
+- Let a user disconnect their own connected social account.
+- Give administrators a table of connected accounts per network.
+- Add a new network by writing a Social Post implementer module.
+- Reuse Social API's shared OAuth `@Network` plugin plumbing.
+- Push editorial content to a brand or organization account.
 - Keep posting credentials per user rather than site-wide.
 - Audit which users have connected which networks.
-- Revoke a connection when a user leaves.
-- Combine autoposting with Social Auth login.
-- Schedule outbound posts from Drupal content.
-- Report on which content was autoposted.
-- Support several accounts on the same network.
-- Store provider metadata alongside the connection.
-- Build a bespoke integration on the plugin API.
+- Build the OAuth connect flow with the provided controller base.
+- Combine autoposting with Social Auth login on the same site.
+- Support several accounts on the same network via distinct records.
+- Store provider profile metadata alongside the connection.
+- Look up a Drupal user from a provider user id.
+- Update a stored token when the provider refreshes it.
+- Load all connected accounts for a given provider.
+- Base a bespoke integration on the `PostManager` API.

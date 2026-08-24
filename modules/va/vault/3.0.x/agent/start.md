@@ -1,27 +1,43 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Vault (vault) — agent index
 
-Base module of the HashiCorp **Vault** suite. Wraps `csharpru/vault-php ^4.2`; PHP `^8.1`;
-Symfony Cache `^6`. Core requirement `^10.0 || ^11.0`.
-Settings at `/admin/config/system/vault` (`vault.admin`).
+Integrates Drupal with a HashiCorp **Vault** / OpenBao secrets server. This is the
+base/infrastructure module of a suite: it ships a Vault HTTP client service, a
+`VaultConfig` settings wrapper, a lease-renewal cron job, and two plugin types
+(authentication strategies and lease storage). It ships **no** auth strategy of its own
+and nothing that consumes secrets — the Key provider, the encryption/Transit integration,
+and the Token/AppRole auth strategies are SEPARATE drupal.org projects that depend on this
+module. Enabling `vault` alone gives you a configured, authenticating client and the
+plugin extension points, nothing that uses them.
+
+- Dependencies: PHP `^8.1`, `csharpru/vault-php ^4.2`, `symfony/cache ^6`, core `^10.0 || ^11.0`. No Drupal module dependencies.
+- Configure route: `vault.admin` → `/admin/config/system/vault` (permission `administer vault`).
+- Defines 1 permission, 2 plugin types, config schema. No Drush commands. No submodules ship in the package.
+
+Solution docs:
+- **Point Drupal at a Vault server; set auth strategy and lease options** → [configure/settings.md](configure/settings.md)
+- **Read/write secrets and manage leases from code** → [api/client.md](api/client.md)
+- **Add a new authentication strategy (token, AppRole, …)** → [plugins/auth.md](plugins/auth.md)
+- **Choose or add a lease-storage backend** → [plugins/lease-storage.md](plugins/lease-storage.md)
+- **The admin permission** → [permissions/permissions.md](permissions/permissions.md)
 
 Key facts:
-- **It is infrastructure, not a feature.** Its own description says it "provides core
-  dependencies of vault module suite" — the consumers (Key provider, encryption integration)
-  are separate projects. Enabling this alone gives you a configured client and nothing that
-  uses it.
-- Two plugin types:
-  - **`VaultAuth`** — authentication methods (`VaultAuthBase`, `VaultAuthInterface`,
-    `VaultAuthManager`, `src/Annotation/`);
-  - **`VaultLeaseStorage`** — where leases are persisted (`VaultLeaseStorageBase`,
-    `…Manager`, `src/Plugin/VaultLeaseStorage/`).
-  Lease storage is not incidental: Vault credentials are time-bound, so a site must persist and
-  renew leases or secrets stop resolving mid-flight.
-- Client surface: `VaultClient`, `VaultClientFactory`, `VaultConfig`, `VaultCacheManager`,
-  `src/Logging/`, `src/Exceptions/`.
-- **Permission note:** `administer vault` is **not** marked `restrict access: true`, although the
-  form it gates configures how the site authenticates to the secrets manager. Grant it as
-  narrowly as full site administration.
-- Upstream docs are a `mkdocs.yml` site, not just the README.
-- Fits this repo's secrets convention as the tier above environment variables: where a Key
-  entity's env provider is enough, use that; Vault is for rotation, leases and central audit.
+- Config object `vault.settings`; keys `base_url`, `plugin_auth`, `auth_plugin_config`,
+  `lease_ttl_increment`, `lease_renew_cron`, `plugin_lease_storage`,
+  `lease_storage_plugin_config`, `read_cache_ttl`.
+- Services: `vault.vault_client` (authenticating client, with lease storage),
+  `vault.vault_client_no_lease_storage`, `vault.config` (`VaultConfigInterface`),
+  `vault.cache.manager`, `plugin.manager.vault_auth`, `plugin.manager.vault_lease_storage`,
+  `logger.channel.vault`. The client is built by `vault.vault_client_factory`
+  (`VaultClientFactory::createInstance`), which authenticates on instantiation.
+- Client class `Drupal\vault\VaultClient` (extends `Vault\CachedClient`), interface
+  `VaultClientInterface`; API version constant `v1`, `buildPath()` prefixes `/v1`.
+- Plugin types: `VaultAuth` (dir `Plugin/VaultAuth`, base `VaultAuthBase`, interface
+  `VaultAuthInterface`, annotation `@VaultAuth`, manager `plugin.manager.vault_auth`,
+  alter `hook_vault_vault_auth_info_alter`) and `VaultLeaseStorage` (dir
+  `Plugin/VaultLeaseStorage`, base `VaultLeaseStorageBase`, annotation `@VaultLeaseStorage`,
+  manager `plugin.manager.vault_lease_storage`, alter `hook_vault_vault_lease_storage_info_alter`).
+  Shipped lease-storage plugins: `state`, `static`, `encrypted_state`. No auth plugins ship here.
+- Hooks implemented: `hook_cron` (renew leases + prune cache), `hook_cache_flush`
+  (clear client cache), `hook_theme`, `hook_requirements` (checks the vault-php SDK,
+  a configured auth plugin, and an auth ping to `/v1/auth/token/lookup-self`).

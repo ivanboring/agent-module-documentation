@@ -1,27 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Countdown provides a block that counts down to — or up from — a chosen moment, showing days, hours, minutes and seconds.
+Countdown provides a single configurable block that counts down to — or up from — a chosen date/time, showing days, hours, minutes and seconds, either rendered server-side or as a live JavaScript timer.
 
 ---
 
-The whole module is one block plugin plus its assets: `src/Plugin` for the block, `templates/countdown.html.twig` for the markup, `js/lib` for the countdown library and `js/countdown.admin.js` with `css/countdown.admin.css` for the configuration form's own behaviour. Configuration lives in the block instance, validated by `config/schema`, so a placed countdown exports and imports with the rest of a site's configuration and several countdowns can coexist with different targets. Counting **up** from a past date is supported as well as down to a future one, which covers "days since" as well as "days until". The only dependency is core `block`, and the core range is a wide `^8.8 || ^9 || ^10 || ^11`. Two practical notes: the countdown runs in JavaScript on the client, so it reflects the visitor's clock rather than the server's and needs no cache-busting; and because it is a block, visibility conditions decide where it appears — pair it with something like `request_data_conditions` if the countdown should only show in certain contexts.
+The module is one block plugin, `countdown_block` (`Drupal\countdown\Plugin\Block\Countdown`), plus a bundled JS timer engine (`countdown/timer`) and its Drupal integration layer (`countdown/integration`). Every option lives on the placed block instance and is validated by config schema `block.settings.countdown_block`, so a countdown exports and imports with the rest of a site's configuration and several can coexist with different targets. A `render_mode` switch chooses between `static` (server-side PHP math, updates on refresh, works without JavaScript, with a `<noscript>` fallback) and `realtime` (a client-side timer with selectable precision from minutes to milliseconds, verbose/compact/custom display styles, timezone handling, drift compensation, and count-up as well as count-down). When the timer reaches zero a configurable completion action fires — do nothing, hide, show a message, redirect, reload, switch to elapsed time, or dispatch a custom JavaScript event — and a `Drupal.countdown` JS API (`getTimer`, `controlTimer`, `getAllTimers`) plus `countdown:*` events let other code react. The only dependency is core `block`; configuring a block needs the core `administer blocks` permission, and blocks are rendered uncached so the time is always current. Core support is a wide `^8.8 || ^9 || ^10 || ^11`.
 
 ---
 
-- Count down to a product launch.
-- Show days remaining until an event.
-- Count up from a project's start date.
-- Display a registration deadline.
-- Place a countdown in a page region.
-- Show a countdown on selected pages only.
-- Build anticipation for a campaign.
-- Count down to a maintenance window.
-- Show time remaining in a sale.
-- Export a configured countdown with site config.
-- Run several countdowns on one site.
-- Theme the countdown with a Twig override.
-- Show days since an anniversary.
-- Add urgency to a donation appeal.
-- Count down to a conference.
-- Display a countdown in a sidebar.
-- Support a site still on Drupal 9.
-- Show a deadline without writing JavaScript.
+- Count down to a product launch or release.
+- Show days remaining until a conference or event.
+- Count up from a project's start or launch date ("days since").
+- Display a registration or submission deadline with a live timer.
+- Place a countdown in any block region and target it with block visibility rules.
+- Show a lightweight server-side countdown on SEO-critical pages.
+- Run a high-precision millisecond timer for a special effect.
+- Show a completion message when the timer hits zero.
+- Redirect visitors to an event page the moment a countdown ends.
+- Auto-reload a page when a sale or window opens.
+- Switch automatically to elapsed time after an event starts.
+- Trigger a custom JavaScript event (e.g. open a modal) on completion.
+- Link the event name to more information (internal path or external URL).
+- Format the timer with a custom token template like "DD days, HH:MM:SS".
+- Show a compact "3d 2h 1m" or verbose "3 days, 2 hours" display.
+- Set and optionally display the event's timezone.
+- Run several independent countdowns on one page.
+- Export a configured countdown with site configuration.
+- Drive or pause a timer programmatically via the JS API.
+- Build urgency for a limited-time offer or donation appeal.
+- Support a site still on Drupal 8.8 or 9.
+- Add a "time since launch" milestone counter.

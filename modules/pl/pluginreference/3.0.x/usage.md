@@ -1,27 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Plugin Reference provides a field type that stores a **soft reference to a plugin** — a plugin ID rather than an entity ID — so content can point at a block plugin, a condition, a formatter or any other plugin type without that plugin being an entity.
+Plugin Reference provides a `plugin_reference` field type that stores a **plugin ID** (plus optional plugin configuration) instead of an entity ID, so content and config can point at a block, a condition, a queue worker or any other plugin type — with autocomplete, validation and per-field selection handlers, exactly like Entity Reference does for entities.
 
 ---
 
-Drupal's entity reference field is the answer whenever content needs to point at something that is an entity. Plugins are not entities: they are discovered from code, identified by string ID, and have no storage of their own — so referencing one means storing a string and hoping it still exists, with no autocomplete and no validation. This module makes that a proper field. `src/Plugin` supplies the field type, widget and formatter, `src/Element` a form element, and — the interesting part — it defines its own selection-handler plugin type (`PluginReferenceSelectionManager`, `PluginReferenceSelectionBase`, `PluginReferenceSelectionManagerInterface`, using PHP attributes in `src/Attribute`), mirroring how entity reference lets a field narrow which targets are selectable. `PluginTypeHelperInterface` abstracts plugin-type discovery. An autocomplete route at `/pluginreference/autocomplete/{target_type}/{selection_handler}/{selection_settings_key}` backs the widget, correctly gated by a dedicated permission marked `restrict access: true` — appropriate, since the endpoint enumerates the site's available plugins. "Soft" is the important word: nothing guarantees the referenced plugin still exists after a module is removed, so consuming code must handle a missing plugin.
+Entity Reference is the answer whenever content needs to point at an entity, but plugins are not entities: they are discovered from code, identified by a string ID, and have no storage of their own, so referencing one usually means storing a bare string and hoping it still exists. This module turns that into a proper field. A field's storage setting `target_type` names a plugin type whose manager service is `plugin.manager.<target_type>`; the field's `handler`/`handler_settings` choose a selection handler that decides which plugin IDs are referenceable and how they sort or filter. It ships three widgets — `plugin_reference_select` (default), `plugin_reference_autocomplete` and `plugin_reference_options_buttons` — two formatters (`plugin_reference_id`, `plugin_reference_label`), and a `plugin_autocomplete` form element backed by a permission-gated, HMAC-verified autocomplete route. When a referenced plugin implements a configuration form, the widget embeds it and stores the result in the item's `configuration` column, so the field captures both *which* plugin and *how* it is configured. It also defines its own `PluginReferenceSelection` plugin type (manager `plugin.manager.plugin_reference_selection`) so site builders can narrow selectable plugins, and a `PluginTypeHelper` service that discovers plugin managers by scanning service IDs. "Soft" is the load-bearing word: nothing guarantees the referenced plugin still exists after a module is removed, and the field renders a dangling ID as empty, so consuming code must handle a missing plugin.
 
 ---
 
-- Let editors choose a block plugin from a field.
-- Store a reference to a condition plugin.
-- Build configuration content that points at plugins.
+- Let editors choose a block plugin from a field on a node.
+- Store a reference to a condition plugin in content.
+- Reference a queue worker or action plugin from configuration.
 - Give a field an autocomplete over plugin IDs.
-- Narrow selectable plugins with a selection handler.
-- Reference a formatter plugin from content.
-- Avoid hard-coding plugin IDs in configuration.
-- Validate that a chosen plugin exists.
-- Build a plugin picker for site builders.
-- Reference a custom plugin type.
-- Support a rules-style configuration entity.
-- Let content drive which plugin runs.
-- Write a selection handler to filter plugins.
-- Restrict plugin enumeration to trusted users.
-- Model a pluggable component chooser.
-- Reference a queue worker from configuration.
-- Provide a typed alternative to a plain text field.
-- Prototype plugin-driven behaviour quickly.
+- Capture both a plugin and its configuration in one field.
+- Narrow the selectable plugins with a selection handler.
+- Reference a field formatter or field type plugin.
+- Validate that a chosen plugin still exists on save.
+- Build a plugin picker UI for site builders.
+- Reference a custom plugin type your module defines.
+- Filter selectable plugins by provider or plugin ID.
+- Exclude specific plugins from a field with a negated filter.
+- Group the select-list options per providing module.
+- Restrict plugin-list enumeration to trusted roles via the permission.
+- Write a `PluginReferenceSelection` handler to control referenceable plugins.
+- Show only blocks the current user may access (block selection handler).
+- Render the stored plugin's ID or human label with a formatter.
+- Instantiate the referenced plugin in code via `referencedPlugin()`.
+- Model a rules-style or pluggable-component configuration entity.
+- Provide a typed alternative to hard-coding plugin IDs in a text field.
+- Prototype plugin-driven behaviour against entities quickly.
+- Let content drive which plugin runs a background action.

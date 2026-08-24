@@ -1,27 +1,33 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Notifications Widget adds the bell icon familiar from social platforms: a dropdown listing recent activity relevant to the user, with an unread count.
+Notifications Widget adds the bell icon familiar from social platforms: a dropdown that lists recent site activity with an unread count, updated in place as the viewer reads, deletes, or clears items.
 
 ---
 
-The module logs events and renders them through a block, with `src/Services` holding the logging API other modules call — `views_kanban`, documented in wave 60, is one such caller, invoking `logNotification()` when a card moves. Configuration is split across two forms, both under `administer site configuration`: general settings at `/admin/config/system/notifications_widget` and logger settings at `/admin/config/people/notifications_widget/loggers`, the latter path hinting that which events are logged is thought of as a people-management concern. Two stylesheets cover the dropdown and its base styling, and `config/optional` alongside `config/install` means some configuration applies only when its dependencies are present. The dependency on core **`rest`** is worth noticing: the widget fetches its notifications over a REST endpoint rather than rendering them server-side, which is what allows the count to update without a page reload — but it also means REST is enabled on the site, and that any endpoint the module exposes needs the usual scrutiny about which user's notifications it will return. The project name and module name differ (`notificationswidget` versus `notifications_widget`), which matters for `drush en`. The release is **2.0.0-alpha9**, an alpha.
+The module watches entity create/update/delete and, for any bundle you have enabled, writes a row into its own `notifications` table with a token-replaced message such as "Article X has been created by [user:name]" plus a link. A block plugin (`notification_widget_block`) renders those rows as a bell-and-dropdown for authenticated users, tracking per-user read and delete state in two side tables (`notifications_actions`, `notifications_clear_all`); a small JavaScript client posts read / delete / clear-all back to a REST endpoint (`POST /api/notification_update`) so the count changes without reloading the page. Configuration is one config object edited by two admin forms under `administer site configuration`: a per-bundle settings form at `/admin/config/system/notifications_widget` (enable which of Create/Update/Delete are logged, the message template, and the link per action) and a logger form at `/admin/config/people/notifications_widget/loggers` (exclude bundles, or add extra entity types like profile or paragraphs). Messages support Drupal tokens for `user`, `node`, `taxonomy_term`, and `comment`. Other modules can log their own items by calling the `notifications_widget.logger` service, and the `notifications` table is exposed to Views with relationships to node, comment, term, profile, and message. The block's Twig template assumes Bootstrap/Glyphicon CSS. The project machine name (`notificationswidget`) differs from the module name (`notifications_widget`), which matters for `drush en`; the documented `2.0.x` branch has only alpha releases, the newest being `2.0.0-alpha9`.
 
 ---
 
 - Show a notification bell with an unread count.
 - List recent activity in a dropdown.
-- Notify editors of content changes.
-- Log a notification from another module.
-- Show updates without a page reload.
-- Give users an activity feed.
-- Mark notifications as read.
-- Notify assignees of a task change.
-- Surface workflow transitions to editors.
-- Provide in-site alerts alongside email.
-- Configure which events are logged.
-- Place the bell as a block.
-- Style the dropdown to match a theme.
-- Reduce reliance on email notifications.
-- Show moderation activity to reviewers.
-- Integrate with a kanban board's status changes.
+- Notify editors when content of a given type is created.
+- Log a notification from another module via `logNotification()`.
+- Update the unread count without a page reload.
+- Give authenticated users an in-site activity feed.
+- Mark a notification as read.
+- Delete a single notification from the list.
+- Clear all notifications at once.
+- Customise the message per action with tokens like `[node:title]`.
+- Link each notification to the related entity with `[entity:url]`.
+- Choose which entity ops (Create/Update/Delete) are logged per bundle.
+- Exclude specific bundles from being logged.
+- Add extra entity types (profile, paragraphs, message) to the logger.
+- Place the bell as a block via Block layout.
+- Show only other users' activity ("skip own activities").
+- Show an admin-oriented feed of everyone's activity.
+- Build a custom notifications listing with Views.
+- Relate notifications back to nodes, comments, or terms in a view.
+- Surface taxonomy term changes to editors.
+- Notify on comment creation.
+- Reduce reliance on email for in-site alerts.
 - Give an intranet a familiar notification pattern.
-- Track what a user has already seen.
+- Track what a user has already seen via per-user read markers.

@@ -1,11 +1,14 @@
 {
-  "name": "Elasticsearch Search API",
+  "name": "Elasticsearch - Search API",
   "data_name": "elasticsearch_search_api",
   "description": "API module to create Elasticsearch based search pages",
   "version": "2.2.x",
   "package": "Search",
   "composer_namespace": "drupal/elasticsearch_search_api",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/elasticsearch_connector": "^7.0 || ^8.0",
+    "drupal/search_api": "^1.34"
+  },
   "dependent_modules": [
     "search_api:search_api",
     "elasticsearch_connector:elasticsearch_connector"
@@ -18,20 +21,28 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "gasparesganga/jquery-loading-overlay": "^2.1: Required when using AJAX search"
+  },
   "submodules": [
     "elasticsearch_search_api_example",
     "esa_pager"
   ],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Search"
+    "Site search",
+    "Developer tools"
   ],
   "subcategories": [
-    "Elasticsearch integration"
+    "Search backend",
+    "Search framework",
+    "Faceted search",
+    "Autocomplete / typeahead",
+    "Synonyms / alternate labels",
+    "Spellcheck / query suggestions"
   ],
   "keywords": [
     "elasticsearch",

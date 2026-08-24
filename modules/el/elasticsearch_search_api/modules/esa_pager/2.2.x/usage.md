@@ -1,26 +1,23 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Custom pager for Elasticsearch - Search API elasticsearch pages. — a submodule of **elasticsearch_search_api**.
+Esa Pager is a submodule of elasticsearch_search_api that provides a custom "large" pager — a Views pager plugin plus a themeable, AJAX-friendly pager template — for Elasticsearch - Search API result pages.
 
 ---
 
-This is one of elasticsearch_search_api's submodules. Custom pager for Elasticsearch - Search API elasticsearch pages. It exposes nothing on its own beyond that role and is governed by the parent module's configuration, permissions and behavior; enable it when you need this specific capability and leave it off otherwise, so the site only carries the parts of elasticsearch_search_api it actually uses.
-
-See the parent module for the overall system this fits into.
+Esa Pager adds a Views pager plugin (`esa_pager`, extending the core SQL full pager) and an `esa_pager` theme hook whose preprocess builds first/previous/numbered/ellipsis/next items from Drupal's pager manager, with `data-page` attributes for AJAX paging and a `url.query_args` cache context. The parent module's `SearchController::renderPager()` renders this theme directly, so the pager works both as a Views pager and on the framework's custom search pages. It ships no routes, permissions, services, config schema, or drush commands — only the plugin, theme, template, and a small CSS library.
 
 ---
-- Enable esa_pager to add this capability.
-- Extend elasticsearch_search_api with esa_pager.
-- Keep it disabled if not needed.
-- Depend on elasticsearch_search_api.
-- Scope functionality to what you enable.
-- Add only the sub-features you use.
-- Compose the parent's feature set.
-- Turn on per requirement.
-- Reduce surface by enabling selectively.
-- Combine with sibling submodules.
-- Configure via the parent module.
-- Review what it exposes before enabling.
-- Match it to your use case.
-- Keep the parent's permissions in force.
-- Enable alongside the parent.
-- Use it as part of the parent's system.
+- Add a large numbered pager to an Elasticsearch search results page.
+- Choose "Custom Esa pager" as the pager on a View.
+- Render first/previous/numbered/next links with ellipses.
+- Support AJAX page changes via data-page attributes.
+- Override the pager markup with a Twig template.
+- Show an accessible pager with visually-hidden labels.
+- Page through large Elasticsearch result sets.
+- Reuse the parent's SearchController pager rendering.
+- Keep query-string arguments across page links.
+- Style the pager via the esa_pager/pager CSS library.
+- Add a center window of page numbers around the current page.
+- Paginate a Search API view with a custom pager.
+- Provide previous/next navigation on a search page.
+- Enable alongside the parent search framework.
+- Keep it disabled when a custom pager is not needed.

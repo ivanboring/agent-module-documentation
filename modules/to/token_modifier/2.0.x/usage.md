@@ -1,29 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Token Modifier adds a meta token type that transforms the output of any other token: `[token-modifier:uppercase:node:title]` runs the node title through an uppercase plugin, with a small plugin type so sites can add their own transformations.
+Token Modifier adds a meta token type `token-modifier` that wraps any other token and runs its resolved value through a transformation: `[token-modifier:uppercase:node:title]` uppercases the node title. Ten transformations ship (case, trim, length, strip-tags, urlencode) and sites can add more as small plugins.
 
 ---
 
-Tokens are values, not expressions, so getting an uppercase title or a URL-encoded field has traditionally meant custom code. This module introduces the token type **`token-modifier`** whose token names are read as `modifier:the-rest-of-the-token`. `hook_tokens()` splits the name on `:`, takes the first part as the modifier plugin id, reassembles the remainder into a normal token string, and hands it to the plugin's `transform("[$token]", $data, $options)` — so any token available in the current context can be wrapped. Ten modifiers ship: `Length`, `Lowercase`, `Ltrim`, `Rtrim`, `Trim`, `StripTags`, `TitleCase`, `UpperCase`, `UpperCaseFirst` and `Urlencode`. They are plugins discovered by `TokenModifierPluginManager` from an `@TokenModifier` annotation, extending `TokenModifierPluginBase`, so adding a modifier is a small class in `src/Plugin/token_modifier/`. `hook_token_info()` advertises the type and every discovered modifier (each marked `dynamic`), so they appear in the Token browser. The module requires the contrib Token module and has no configuration, permissions or Drush commands.
+Tokens are plain values, so getting an uppercased title or a URL-encoded field used to mean custom code. This module registers the token type `token-modifier` whose token name reads as `{modifier-id}:{the-rest-of-the-token}`. Its `hook_tokens()` splits the name on `:`, takes the first segment as the modifier plugin id, rebuilds the remainder into a normal token, instantiates the plugin from `plugin.manager.token_modifier`, and calls `transform("[inner]", $data, $options)`; the plugin resolves the inner token with the core token service and applies a PHP string operation. The ten shipped modifier ids are `urlencode`, `uppercase`, `lowercase`, `title-case`, `upper-case-first`, `length` (which takes an extra `:{n}` argument, e.g. `[token-modifier:length:8:current-user:name]`), `trim`, `ltrim`, `rtrim` and `strip-tags`. Because each modifier re-runs token replacement, modifiers chain by prepending another `token-modifier:{id}:`. Every modifier is a plugin discovered by `TokenModifierPluginManager` from an `@TokenModifier` annotation extending `TokenModifierPluginBase`, so adding one is a small class in `src/Plugin/token_modifier/`, and `hook_token_info()` advertises each (marked `dynamic`) in the Token browser. The module requires the contrib Token module and has no configuration, permissions or Drush commands.
 
 ---
 
-- Uppercase a node title inside a pathauto pattern.
-- URL-encode a field value used in a link token.
-- Trim whitespace from an imported field before display.
-- Strip HTML tags from a body summary token.
-- Title-case a taxonomy term name in a page title.
-- Get the character length of a field value as a token.
-- Lowercase an email address token for consistency.
-- Normalise values used in generated file names.
-- Build cleaner metatag values from messy content.
-- Compose a URL query string safely from token values.
-- Apply transformations without writing a custom token.
-- Use modifiers in email templates.
-- Standardise casing in generated aliases.
+- Uppercase a node title inside a Pathauto alias pattern.
+- URL-encode a field value used inside a link or redirect token.
+- Trim whitespace from an imported field before it is displayed.
+- Strip HTML tags out of a body-summary token for a plain-text context.
+- Title-case a taxonomy term name in a generated page title.
+- Cap a username to the first 8 characters with `length`.
+- Lowercase an email-address token for consistent storage.
+- Normalise values used to build generated file names.
+- Produce cleaner Metatag values from messy content fields.
+- Safely compose a URL query string from token values.
+- Apply a transformation without writing a custom token plugin.
+- Reformat token values inside email templates.
+- Standardise letter casing across generated aliases.
 - Right-trim trailing separators from concatenated tokens.
-- Add a project-specific modifier as a small plugin.
-- Chain a modifier onto any contrib module's token.
-- Keep transformation logic out of Twig templates.
+- Left-trim a leading marker character off a field token.
+- Add a project-specific modifier as a small `@TokenModifier` plugin.
+- Chain uppercase over trim over any contrib module's token.
+- Keep string-transformation logic out of Twig templates.
 - Improve consistency of imported data at render time.
-- Discover available modifiers in the Token browser.
-- Reuse one modifier across many token contexts.
+- Expose available modifiers to editors through the Token browser.
+- Reuse one modifier across many different token contexts.
+- Alter or remove a modifier definition with `hook_token_modifier_info_alter()`.

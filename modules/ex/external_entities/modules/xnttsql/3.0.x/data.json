@@ -3,9 +3,11 @@
   "data_name": "xnttsql",
   "description": "Plugin for External Entities allowing to work with external SQL database schemas.",
   "version": "3.0.x",
-  "package": null,
+  "package": "External Entities",
   "composer_namespace": "drupal/external_entities",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/dbxschema": "^1.0@dev || ^2.0@dev"
+  },
   "dependent_modules": [
     "dbxschema:dbxschema",
     "external_entities:external_entities"
@@ -25,10 +27,11 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Web services"
+    "Developer tools"
   ],
   "subcategories": [
-    "Remote / external data"
+    "External database tables",
+    "Entity API"
   ],
   "keywords": [
     "external",

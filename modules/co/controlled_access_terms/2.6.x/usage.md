@@ -1,33 +1,34 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Controlled Access Terms provides authority-controlled vocabulary types — topic, geographic, person, family, and corporate body — plus an authority-link field, for sites that need rigorous, standards-based subject and name authorities (common in libraries, archives and digital collections).
+Controlled Access Terms provides three custom Drupal field types for rigorous library, archival, and digital-collection metadata: EDTF dates (uncertain, approximate, partial, and open-ended dates), Authority Links (a URL plus the authority it comes from, e.g. LCNAF or VIAF), and Typed Relations (an entity reference that also records the relationship type, e.g. Author or Publisher).
 
 ---
 
-Cultural-heritage and scholarly metadata does not use free-text tags; it uses **authorities** — a controlled record for a person, place or subject, often linked to an external identifier (LCNAF, VIAF, geonames). Modelling that in Drupal means specific vocabulary shapes and a field that can carry the authority link. This module (part of the Islandora-adjacent ecosystem) supplies those: structured entities for the standard agent and subject types, and an authorities-link field to connect a local term to an external authority record.
-
-It depends on **Geolocation** (for geographic terms) and **Token**, and it is squarely for the metadata-serious use case — a digital collection, an archive, a research repository — not a general content site, where it would be far more structure than needed. It provides the entities and the field; how you catalogue with them is your metadata practice.
-
-For libraries, archives and digital-humanities projects on Drupal, it brings recognised authority modelling. A `_defaults` submodule ships default configuration to get started.
+Cultural-heritage and scholarly metadata needs shapes that ordinary Drupal fields cannot express: dates that are uncertain or only partially known, references to external authority records, and relationships that must be typed (this person is the *author*, that one the *publisher*). This module (part of the Islandora ecosystem) supplies exactly those primitives as reusable field types with matching widgets and formatters. The EDTF field implements the Library of Congress Extended Date/Time Format (2018 / ISO 8601-2019), with a validating widget and a human-readable formatter that renders intervals, seasons, and uncertainty qualifiers. The Authority Link field is a core link field extended with a configurable "source authority" selector, and the Typed Relation field is an entity reference extended with a per-value relation type drawn from a configurable list (schema.org / MARC relators). Beyond the fields, it ships EDTFUtils/EDTFConverter helpers for validating and normalizing EDTF strings, Search API processors that index EDTF dates and years and typed relations for faceting, and RDF/JSON-LD normalization so the data emits as linked data. It depends on Geolocation and Token and requires the professional-wiki/edtf library. It has no settings page — everything is configured per field through the standard Field UI — and the companion controlled_access_terms_defaults submodule ships ready-made vocabularies and fields to start from.
 
 ---
 
-- Model subject authorities.
-- Model name authorities.
-- Add geographic authority terms.
-- Add person and family agents.
-- Add corporate body agents.
-- Link a term to an external authority.
-- Catalogue with controlled vocabularies.
-- Support library metadata.
-- Support archival description.
-- Build a digital collection.
-- Connect to LCNAF or VIAF.
-- Provide authority-link fields.
-- Use geolocation for places.
-- Model agents rigorously.
-- Adopt standards-based metadata.
-- Start from default authority config.
-- Run a research repository.
-- Avoid free-text subject tags.
-- Structure heritage metadata.
-- Integrate with an Islandora-style stack.
+- Store an uncertain or approximate date like "1984?" or "circa 1900".
+- Record a partially known date such as "19XX" or "1900-06-XX".
+- Model an open-ended date range ("1900/.." or "../1950").
+- Capture a season or sub-year grouping (Spring 2020 as "2020-21").
+- Display EDTF dates human-readably with configurable order and separators.
+- Validate EDTF strings on entry, or strictly require real calendar dates.
+- Link a term to its Library of Congress authority record.
+- Link an agent to a VIAF or geonames identifier.
+- Offer catalogers a dropdown of authority sources per field.
+- Reference a person as "Author" and another as "Publisher" on one field.
+- Model schema.org relationships (spouse, member of, works for) between terms.
+- Deduplicate repeated references while merging their relation labels.
+- Join Views from either side of a typed relation.
+- Facet a Solr index by EDTF year or by typed-relation type.
+- Index EDTF dates as Solr date-type values.
+- Normalize EDTF values to ISO 8601 in code.
+- Emit authority links and dates as JSON-LD / RDF linked data.
+- Build Islandora tokens for authors, contributors, publishers, and creation dates.
+- Migrate legacy text_edtf fields to the EDTF field type.
+- Support ArchivesSpace-to-Drupal metadata workflows.
+- Provide standards-based date entry for a research repository.
+- Avoid free-text tagging in favor of controlled authorities.
+- Start from default vocabularies via the defaults submodule.
+- Extend a core link field with provenance metadata.
+- Add typed relationships to a taxonomy of agents.

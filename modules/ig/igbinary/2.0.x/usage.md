@@ -1,27 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Igbinary registers serialization services backed by the igbinary PHP extension, a binary replacement for PHP's `serialize()` that produces smaller output and decodes faster.
+Igbinary registers swappable Drupal serialization services backed by the igbinary PHP extension and zlib compression, so a cache, key/value, or queue backend can store its data in a compact binary form instead of PHP's textual `serialize()` output.
 
 ---
 
-Drupal serialises constantly — every cache entry, every queue item, every key-value record goes through `serialize()`, and on a busy site that is a measurable share of both CPU time and cache storage. Igbinary encodes the same structures in a compact binary form: typically a large reduction in size and a meaningful gain in unserialise speed, which matters most where the cache backend is over a network (Redis, Memcached) and every byte is transfer. This module supplies the Drupal-side services — `serialization.igbinary`, `serialization.igbinary_gz` and, for comparison, `serialization.phpserialize_gz` — so a cache or queue backend can be pointed at them. Version **2.0.0-alpha3**, notable for declaring `^10.3 || ^11.0 || ^12`, which reaches ahead to a core major that does not exist yet. Two conditions before it can help. It needs the **igbinary PECL extension** compiled into PHP; without it the services are inert and nothing works, and that is an infrastructure decision rather than a Composer one. And **existing serialised data is not readable by the new format** — switching a live cache backend means the old entries are garbage, so the change belongs with a cache flush, and anywhere serialised data is *persisted* rather than cached (a queue mid-drain, a long-lived key-value store) it needs more thought than a flush.
+Drupal serializes constantly — every cache entry, key/value record, and queue item goes through a serializer, and on a busy site that is a measurable share of both CPU and storage. This module supplies three drop-in `SerializationInterface` services: `serialization.igbinary` (igbinary binary encoding), `serialization.igbinary_gz` (igbinary plus zlib compression), and `serialization.phpserialize_gz` (standard PHP serialize plus compression, for hosts without the igbinary extension). Igbinary typically yields a large reduction in serialized size and faster unserialization, which matters most where the backend is over a network such as Redis or Memcached and every byte is transfer. The module itself changes nothing until you wire a backend to one of its services, either by including the shipped `example.services.yml` from `settings.php` (`$settings['container_yamls'][]`) or by copying backend-factory overrides into `sites/default/services.yml`. A single settings value, `igbinary_compress_level` (default 1), tunes the zlib level for the compressed variants. Two conditions apply: the `serialization.igbinary*` services need the igbinary PECL extension compiled into PHP (an infrastructure decision, declared as `ext-igbinary`/`ext-zlib` in composer.json), and although reads auto-detect old formats, switching a live cache backend is best paired with a cache rebuild. This branch has no stable release yet — the current build is 2.0.0-alpha3, core `^10.3 || ^11.0 || ^12`.
 
 ---
 
 - Reduce cache entry size.
-- Speed up cache unserialisation.
+- Speed up cache unserialization.
 - Cut Redis memory usage.
 - Reduce network transfer to Memcached.
-- Improve performance on a busy site.
-- Compress serialised cache data.
-- Use a binary serialisation format.
-- Reduce database cache table size.
-- Speed up queue processing.
-- Lower cache backend costs.
-- Improve page generation time.
-- Compare serialisation strategies.
-- Tune a high-traffic site.
-- Reduce memory pressure.
-- Serialise large render arrays efficiently.
-- Improve key-value store performance.
-- Support a performance audit.
+- Store cache data in compact binary form.
+- Compress serialized cache data with zlib.
+- Point the database cache backend at igbinary.
+- Point the database key/value store at igbinary.
+- Point the expirable key/value store at igbinary.
+- Point a Redis cache backend at igbinary.
+- Reduce the database cache table size.
+- Speed up queue item processing.
+- Lower cache backend hosting costs.
+- Improve page generation time on a busy site.
+- Tune zlib compression level per environment.
+- Use PHP-serialize compression where the igbinary extension is unavailable.
+- Serialize large render arrays efficiently.
+- Improve key/value store throughput.
+- Migrate a cache backend format without a hard cutover (reads auto-detect old data).
+- Compare serialization strategies during a performance audit.
 - Reduce cache warm-up cost.
+- Lower memory pressure from serialized data.

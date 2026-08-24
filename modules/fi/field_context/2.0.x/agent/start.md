@@ -1,38 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Field Context (field_context) — agent index
 
-One Views **argument default** plugin that reads a contextual filter value from a field on the
-current route's node. No config form of its own, no permissions, no Drush; config schema shipped
-for the Views settings. Requires core `views`.
+Ships a single Views **argument default** plugin (`fcmatch`, "Field from route context") that
+reads a contextual filter's default value from a chosen field on the **node of the current
+route**. Lets one embedded view filter itself by the host node's own field value, with no URL
+argument. Depends on core `views`.
+
+No settings page (`configure` null). No permissions, no Drush, no services, no hooks, no
+routing. Defines no plugin *type* — it provides one implementation of core Views'
+`argument_default` plugin type. Ships only Views config schema.
+
+- **Configure/operate the `fcmatch` plugin inside a view (options, form, runtime, cache)** →
+  [views/argument_default.md](views/argument_default.md)
 
 Key facts:
-- Plugin `#[ViewsArgumentDefault(id: 'fcmatch', title: 'Field from route context')]` —
-  `FieldContext extends ArgumentDefaultPluginBase implements CacheableDependencyInterface`,
-  injecting `current_route_match` and `entity_field.manager`.
-- Options: `fcftype` (the chosen **node bundle**) plus one `fc{bundle}` option per bundle holding
-  the chosen field name. The form builds the bundle→fields map from
-  `entityFieldManager->getFieldMap()['node']` and uses **`#states`** rather than AJAX — the source
-  notes an AJAX callback inside the plugin class is not callable.
-- `getArgument()`:
-
-  ```php
-  $key = $this->options['fcftype'];
-  if (!empty($this->options['fc' . $key])
-      && ($node = $this->routeMatch->getParameter('node')) instanceof NodeInterface
-      && isset($node->getFieldDefinitions()[$this->options['fc' . $key]])) {
-    return $node->get($this->options['fc' . $key])->getString();
-  }
-  // otherwise: no return (NULL)
-  ```
-
-  So it is **node-only** (no support for other entity types), and it returns the field's
-  `getString()` — for a reference field that is the target id, for a multi-value field a
-  comma-joined string, which the contextual filter must be configured to accept
-  (*Allow multiple values*).
+- Plugin class `Drupal\field_context\Plugin\views\argument_default\FieldContext`,
+  attribute `#[ViewsArgumentDefault(id: 'fcmatch', title: 'Field from route context')]`,
+  `extends ArgumentDefaultPluginBase implements CacheableDependencyInterface`.
+- Injects `current_route_match` and `entity_field.manager` (via `create()`).
+- Options: `fcftype` (chosen node bundle) plus one `fc<bundle>` per bundle (chosen field name).
+  Form builds the bundle→field map from `entityFieldManager->getFieldMap()['node']` and uses
+  core `#states` (not AJAX) to reveal the right per-bundle field select.
+- `getArgument()` is **node-only**: reads the `node` route param, checks `instanceof
+  NodeInterface`, verifies the node has the chosen field, returns `->getString()`; otherwise
+  returns NULL (silent fallback to the view's "value not available" behavior).
 - Cacheability: `getCacheContexts()` → `['url']`, `getCacheMaxAge()` → `Cache::PERMANENT`.
-- Failure mode is silent: no node on the route, or the node lacking the field, yields NULL and the
-  view's "when the filter value is not available" setting takes over — set that deliberately
-  (usually *Hide view*).
-
-Configuring in a view: *Contextual filters → add → When the filter value is NOT available →
-Provide default value → Field from route context*, then pick the content type and field.
+- Config schema key: `views.argument_default.fcmatch` (sequence of string) in
+  `config/schema/field_context.views.schema.yml`. No config/install.

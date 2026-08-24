@@ -5,7 +5,10 @@
   "version": "1.0.x",
   "package": "Multilingual",
   "composer_namespace": "drupal/auto_node_translate_amazon",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/auto_node_translate": "^3.0",
+    "aws/aws-sdk-php": "^3.222"
+  },
   "dependent_modules": [
     "auto_node_translate:auto_node_translate"
   ],
@@ -21,7 +24,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Multilingual",

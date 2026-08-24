@@ -6,7 +6,10 @@
   "installed_release": "8.x-1.8",
   "package": null,
   "composer_namespace": "drupal/domain_path_redirect",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/redirect": "^1.12",
+    "drupal/domain": "^1.0 || ^2.0"
+  },
   "dependent_modules": [
     "domain:domain",
     "redirect:redirect (>= 1.12.0)"

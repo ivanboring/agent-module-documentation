@@ -1,27 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Config Terms provides vocabularies and terms as **configuration entities** rather than content, so a controlled list deploys with `drush cim` instead of having to be recreated or migrated on every environment.
+Config Terms provides vocabularies and terms as **configuration entities** (`config_terms_vocab`, `config_terms_term`) rather than content, so a controlled list is exported with `drush cex` and deployed with `cim` instead of being recreated or migrated on every environment.
 
 ---
 
-Drupal's taxonomy terms are content, which is right when editors own them and wrong when developers do. A list of statuses, regions, document types or service categories that code branches on is configuration in everything but storage: it needs to be identical across environments, reviewed in a merge request, and deployed rather than re-entered. Because core terms are content, teams end up with default content modules, migration stubs, or a hand-maintained list of term IDs that differ per environment — a recurring source of "it works on staging" bugs. This module supplies the config-entity equivalent: `config_terms_vocab` and `config_terms_term` entity types with a full admin UI at `/admin/structure/config-terms`, a `config_terms_views` submodule for Views integration, and per-vocabulary permissions generated at runtime by `ConfigTermsPermissions::permissions()` alongside the declared `administer config terms`. Term creation uses `_entity_create_access` scoped to the vocabulary, which is the correct pattern. The trade-off is the mirror of the benefit: config terms are not content, so they have no revisions, no translations through content translation, and nothing that expects a `taxonomy_term` entity — including most contrib term integrations — will work with them.
+Drupal's taxonomy terms are content, which is right when editors own them and wrong when developers do. A list of statuses, regions, document types or service categories that code branches on is configuration in everything but storage: it must be identical across environments, reviewable in a merge request, and deployed rather than re-entered. Because core terms are content, teams reach for default-content modules, migration stubs, or hand-maintained term-ID lists that drift per environment. This module supplies the config-entity equivalent: the `config_terms_vocab` and `config_terms_term` entity types (with label, description, weight, parents and a per-vocab hierarchy that is recomputed on save), a full tabledrag admin UI at `/admin/structure/config-terms`, storage handlers exposing `loadTree`/`loadChildren`/`loadParents`/`getTermOptions`, an `entity_reference` selection handler (`default:config_terms_term`) that scopes options to a chosen vocabulary, and the `config_terms_views` submodule for a Views filter. Access is a static `administer config terms` permission plus per-vocabulary `edit terms in <vid>` / `delete terms in <vid>` permissions generated at runtime by `ConfigTermsPermissions::permissions`. The trade-off mirrors the benefit: config terms are not `taxonomy_term` entities, so they are not fieldable and have no revisions, no content translation, and no compatibility with the taxonomy contrib ecosystem.
 
 ---
 
-- Deploy a controlled vocabulary with configuration.
-- Keep term IDs identical across environments.
+- Deploy a controlled vocabulary as configuration.
+- Keep term IDs identical across every environment.
 - Review a vocabulary change in a merge request.
 - Stop recreating reference lists per environment.
-- Model statuses that code branches on.
+- Model statuses or workflow states that code branches on.
 - Give developers ownership of a fixed list.
-- Prevent editors changing a controlled list.
-- Export vocabularies with `drush cex`.
+- Prevent editors from changing a controlled list.
+- Export vocabularies and terms with `drush cex`.
 - Roll back a term change with a config revert.
-- List config terms in a view.
-- Grant per-vocabulary permissions.
-- Ship a vocabulary with an install profile.
+- Filter content by config term in a view.
+- Grant per-vocabulary edit/delete permissions.
+- Ship a vocabulary with an install profile or module.
 - Avoid default-content modules for reference data.
 - Keep a service catalogue in version control.
 - Standardise a list across a multisite.
-- Audit where a term is referenced in config.
+- Reference config terms from an entity_reference field.
 - Model document types as configuration.
+- Build a parent/child hierarchy of config terms.
+- Reset a vocabulary to alphabetical order.
 - Remove environment drift in reference data.
+- Reorder terms with drag-and-drop in the admin overview.
+- Look up a term by name via `config_terms_term_load_multiple_by_name`.

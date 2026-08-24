@@ -3,9 +3,12 @@
   "data_name": "ui_patterns_field_formatters",
   "description": "Use patterns as field formatters templates.",
   "version": "2.1.x",
-  "package": null,
+  "package": "User interface",
   "composer_namespace": "drupal/ui_patterns_field_formatters",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/field_formatter": "^3.0@RC",
+    "drupal/ui_patterns": "^1.0@RC"
+  },
   "dependent_modules": [
     "field_formatter:field_formatter",
     "ui_patterns:ui_patterns"

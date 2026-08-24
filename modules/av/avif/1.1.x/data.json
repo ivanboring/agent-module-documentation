@@ -17,27 +17,30 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/imagemagick": "^4.0.2 (require-dev; the shipped 'imagemagick' processor needs a toolkit that can encode AVIF)"
+  },
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [
-    "AvifConverter"
+    "AvifProcessor"
   ],
   "categories": [
-    "Performance",
-    "Media"
+    "Media",
+    "Content display"
   ],
   "subcategories": [
-    "Responsive images",
-    "Lazy loading"
+    "Media derivatives / transcoding",
+    "Image toolkit / processing",
+    "Responsive images"
   ],
   "keywords": [
     "avif",
     "image style",
     "derivative",
-    "webp",
+    "responsive image",
     "compression",
     "performance"
   ],

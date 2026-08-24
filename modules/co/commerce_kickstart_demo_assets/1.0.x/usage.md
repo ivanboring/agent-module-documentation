@@ -1,27 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Commerce Kickstart Demo Assets ships the JavaScript, templates and other files used by the Commerce Kickstart Demo recipe — a supporting package rather than something to install on its own.
+Commerce Kickstart Demo Assets provides the code assets the Commerce Kickstart Demo recipe needs but a recipe cannot ship on its own: a Layout Builder "Slideshow" layout with a slick carousel (template plus JS/CSS libraries), and glue code that makes the recipe's imported default content work. It is a demo/asset support module that arrives as part of the Commerce Kickstart demo rather than something you install for its own sake.
 
 ---
 
-Commerce Kickstart was a full distribution in Drupal 7: install it and get a working store to learn from or start with. Distributions turned out to be a poor fit for the way Drupal is now assembled, and core's **recipes** replace them — a recipe applies configuration and content to an existing site instead of dictating how that site was built, so a store can be demonstrated without owning the whole installation. A recipe applies configuration, though, and cannot ship a JavaScript file or a Twig template; those must come from a module. That is what this is. Version **1.0.0**, core requirement **`^11`** — Drupal 11 only, which is consistent with a package built for the recipe system. Nothing here is meant to be chosen directly: it arrives as a dependency when the Kickstart demo recipe is applied, and the demo itself is for **evaluation and learning**, not for a production storefront. Demo content and demo assets on a live site are at best clutter and at worst a source of confusion about what is real, so plan the removal at the same time as the installation — which is easier said than done, since a recipe does not uninstall, and unpicking what it applied is manual work.
+Commerce Kickstart was a full distribution in Drupal 7; in Drupal 11 the demo is delivered as a core recipe that applies configuration and content to an existing site. A recipe can carry config and default content but cannot ship a Twig template, a JavaScript file, a Layout Builder layout plugin, or an event subscriber — those must come from a module, and that is what this package is. It contributes a `cklb_slideshow` Layout Builder layout (class `SlideshowLayout`, extending `bootstrap_layout_builder`'s `BootstrapLayout`) whose region turns each placed block into a carousel slide, backed by the `cklb-slideshow` and `slick` asset libraries and the `Drupal.behaviors.slickSlider` behavior that pulls slick-carousel from a CDN. It also carries the plumbing that makes the recipe's default content land correctly: a `node_presave` hook that rewrites Layout Builder references (block and background-media UUIDs) to the local entity IDs the Default Content API and `bootstrap_styles` leave unresolved, and a `DefaultContentSubscriber` that re-indexes the `products` Search API index once the import is applied. It has no settings page, no routes, and no permissions; core requirement is `^11` (Drupal 11 only), and although its info.yml declares no module dependencies, its code needs `bootstrap_layout_builder`, `search_api`, `layout_builder`, `media`, and `block_content` from the surrounding demo environment. Because it exists to support a demonstration, it belongs on evaluation, training, and sandbox sites rather than a production storefront, and — since a recipe does not uninstall — plan for the fact that removing the demo content it helps import is manual work.
 
 ---
 
 - Support the Commerce Kickstart demo recipe.
-- Evaluate Drupal Commerce quickly.
-- Learn from a worked store example.
-- Demonstrate Commerce to a client.
-- Provide templates to a demo recipe.
-- Set up a training environment.
-- Explore Commerce configuration.
-- Show a working storefront.
-- Provide assets a recipe cannot ship.
-- Build a sandbox store.
-- Prepare a Commerce workshop.
-- Compare Commerce with alternatives.
-- Test a Commerce upgrade path.
-- Show product display options.
-- Demonstrate a cart and checkout flow.
-- Provide reference configuration.
-- Support a proof of concept.
-- Learn the recipe system by example.
+- Supply a Layout Builder slideshow layout to the demo.
+- Turn Layout Builder blocks into carousel slides.
+- Render a hero slideshow with the slick carousel.
+- Attach the slick-carousel JS/CSS assets a recipe cannot ship.
+- Fix up imported Layout Builder content so blocks resolve.
+- Rewrite block UUID references to local block IDs on import.
+- Resolve Bootstrap background-media UUIDs to media IDs.
+- Re-index the products Search API index after content import.
+- Evaluate Drupal Commerce quickly from a worked example.
+- Learn the Commerce Kickstart demo store setup.
+- Demonstrate a Commerce storefront to a client.
+- Set up a Commerce training or workshop environment.
+- Build a sandbox store for experimentation.
+- Explore Layout Builder + Bootstrap layout patterns.
+- Study how a module backs a core recipe.
+- Provide a worked default-content import example.
+- Show a product listing powered by Search API.
+- Prototype a slideshow-driven landing section.
+- Reference code for recipe-plus-module packaging.
+- Support a Commerce proof of concept.
+- Demonstrate cart and checkout in a seeded store.

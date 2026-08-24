@@ -1,49 +1,33 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Entity Reference Patterns (entity_reference_patterns) — agent index
 
-Controls the labels shown by entity-reference autocompletes and option lists, using token patterns
-held in a config entity. Requires contrib `token`. Core `^10.6 || ^11.3 || ^12` — a recent-core
-module using OO hooks.
+"Pathauto for autocomplete fields." Rewrites the labels shown in entity-reference **autocomplete
+suggestions**, **existing/default field values**, and **select/checkbox/radio option lists** from the
+bare `Label (id)` to a Token string configured per entity type + bundle. Presentation only — the
+stored reference value is unchanged. Depends on contrib **`token`**. Core `^10.6 || ^11.3 || ^12`
+(OO hooks). Configure route: `entity.entity_reference_pattern.collection`
+(`/admin/config/search/entity-reference-patterns`). Defines 5 permissions, a config entity type, and a
+config schema; no Drush commands, no plugin types.
+
+- **Create/manage a pattern (config entity, form fields, PHP/drush, schema, matching + runtime
+  mechanism)** → [configure/patterns.md](configure/patterns.md)
+- **Who can manage patterns** → [permissions/permissions.md](permissions/permissions.md)
 
 Key facts:
-- Config entity **`entity_reference_pattern`**, `config_export`: `id`, `label`, `type`,
-  `pattern` (a **token string**), `selection_criteria`, `weight`.
-  Admin UI `/admin/config/search/entity-reference-patterns` with `collection`, `new`, `edit`,
-  `duplicate`, `delete` links; list builder
-  `Controller\EntityReferencePatternListBuilder`, form `Entity\Form\PatternEditForm`.
-- Permissions:
-
-  | Permission | `restrict access` |
-  |---|---|
-  | `administer entity reference pattern` | **true** |
-  | `delete entity reference pattern` | **true** |
-  | `add entity reference pattern` | — |
-  | `edit entity reference pattern` | — |
-  | `duplicate entity reference pattern` | — |
-
-- Application (OO hooks in `src/Hook/EntityReferencePatternsHooks.php`):
-  - `#[Hook('element_info_alter')]` — hooks the module's matcher into autocomplete elements;
-  - `#[Hook('options_list_alter')]` — applies the same labels to select/checkbox widgets, so
-    autocomplete and dropdown presentations agree.
-- `src/EntityReferencePatterns.php` + `src/EntityReferencePatternMatcher.php` build the suggestion
-  labels; `js/entity_reference_patterns.js` supports the widget behaviour.
-- `weight` orders patterns; `selection_criteria` decides which fields/widgets a pattern applies to.
-
-```bash
-drush cget entity_reference_pattern.entity_reference_pattern.my_pattern
-drush php:eval '
-\Drupal::entityTypeManager()->getStorage("entity_reference_pattern")->create([
-  "id" => "node_with_author",
-  "label" => "Node with author",
-  "type" => "node",
-  "pattern" => "[node:title] — [node:author:name]",
-  "weight" => 0,
-])->save();'
-drush cr
-```
-
-Notes:
-- Patterns are tokens, so anything the Token module can resolve for that entity type works; an
-  unresolvable token renders empty rather than erroring.
-- Because labels are altered at the **element** level, code that reads the reference field's raw
-  value is unaffected — this changes presentation only.
+- Config entity `entity_reference_pattern`, `config_prefix: pattern` → config name
+  **`entity_reference_patterns.pattern.<id>`**. Exported keys: `id`, `label`, `type` (target entity
+  type), `pattern` (Token string), `selection_criteria` (`{bundles: {...}}`), `weight`; also
+  `status`. Schema key `entity_reference_patterns.pattern.*`.
+- Admin UI: draggable list `Controller\EntityReferencePatternListBuilder`; forms
+  `Entity\Form\PatternEditForm` / `PatternDuplicateForm`; modal (AJAX) add/edit/duplicate/delete.
+- Permissions: `administer entity reference pattern` (restricted), `add`/`edit`/`duplicate`, and
+  `delete entity reference pattern` (restricted).
+- Runtime services/hooks: route subscriber `entity_reference_patterns.route_subscriber` swaps the core
+  `system.entity_autocomplete` controller for `Controller\EntityAutocompleteController` +
+  `EntityReferencePatternMatcher` (`entity_reference_patterns.autocomplete_matcher`);
+  `#[Hook('element_info_alter')]` repoints the autocomplete element `#value_callback` at
+  `Element\EntityAutocomplete` (default-value labels); `#[Hook('options_list_alter')]` →
+  `EntityReferencePatterns` (`entity_reference_patterns.module`) rewrites select-widget labels.
+- Matching: `EntityReferencePatternEntity::loadByTargetType()` / `findMatchingPattern()` — enabled
+  patterns sorted by `weight`, lightest matching bundle wins; tokens resolved with `['clear' => TRUE]`.
+- JS `entity_reference_patterns.autocomplete` hides the trailing ` (id)` in the visible input.

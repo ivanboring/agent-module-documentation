@@ -5,7 +5,11 @@
   "version": "2.2.x",
   "package": null,
   "composer_namespace": "drupal/smart_date_calendar_kit",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/add_content_by_bundle": "^1.0",
+    "drupal/fullcalendar": "^3.0@beta",
+    "drupal/smart_date_starter_kit": "^2.0"
+  },
   "dependent_modules": [
     "drupal:node",
     "drupal:user",
@@ -26,13 +30,13 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"
   ],
   "subcategories": [
-    "Calendar / events"
+    "Event management"
   ],
   "keywords": [
     "smart date",

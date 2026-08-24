@@ -5,11 +5,14 @@
   "version": "8.x-1.x",
   "package": null,
   "composer_namespace": "drupal/mailjet_api",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "mailjet/mailjet-apiv3-php": "^1.5.0",
+    "html2text/html2text": "~4.0.1"
+  },
   "dependent_modules": [
     "mailsystem:mailsystem"
   ],
-  "configure": null,
+  "configure": "mailjet_api.admin_settings_form",
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -24,10 +27,10 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Administration"
+    "Integrations"
   ],
   "subcategories": [
-    "Email / mail systems"
+    "Email / mail delivery"
   ],
   "keywords": [
     "mailjet",

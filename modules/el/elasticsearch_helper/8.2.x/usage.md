@@ -1,32 +1,35 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Elasticsearch Helper provides the connection, index management and document-building layer for talking to Elasticsearch directly, without Search API.
+Elasticsearch Helper is a framework for indexing Drupal content into Elasticsearch through the official Elasticsearch PHP client, embracing the Elasticsearch API directly rather than abstracting it behind Search API.
 
 ---
 
-There are two ways to use Elasticsearch from Drupal. Search API treats it as one backend among several, which is right when the requirement is site search and you may want to swap backends. Elasticsearch Helper takes the other route: Elasticsearch is the point, and the module gives you index definitions, document builders and a client rather than an abstraction over search generally.
-
-That suits requirements Search API models awkwardly — a document shape that is not a Drupal entity, aggregations driving a dashboard, an index consumed by something other than the site, or a mapping that needs specific Elasticsearch features.
-
-The trade is the ecosystem: no facets module, no processors, no swapping backends later without rewriting. Choose it when Elasticsearch's own capabilities are the requirement, not when "search" is.
-
-**Three operational points belong in any direct Elasticsearch integration.** The credential has index-write access, so keep it out of exported configuration. The cluster is a network dependency — decide what happens when it is unreachable, because an unhandled failure during indexing is a failed content save. And **indexed documents leave Drupal's access model behind**: whatever access applied to the source is not enforced by Elasticsearch, so anything reading the index directly sees everything in it. That is fine for a public site search and is the thing to think hardest about when the index contains anything restricted.
-
-`inqube`, in the same wave, sits on top of this kind of arrangement to expose queries through Views.
+Where Search API treats Elasticsearch as one interchangeable backend, Elasticsearch Helper hands you the primitives instead: an `ElasticsearchIndex` plugin type you extend, fluent mapping and field definition builders, a configured client service, and an operation pipeline with events. You declare an index plugin with a target index name and (optionally) a Drupal entity type; the module then keeps documents in sync on entity create/update/delete, either synchronously or through a queue. Index creation, dropping, reindexing and truncation run from drush or the queue worker. Connection details (hosts, scheme, pluggable authentication, SSL) live in a single settings form, and pluggable `ElasticsearchAuth` methods (basic auth, API key, or your own) plus a client-builder alter hook let you shape the client. Because you control the mapping and the normalized document shape, it fits document structures that are not plain entities, aggregation-driven dashboards, language-specific analyzers, and indices consumed by other applications. On its own the module indexes nothing until you add an index plugin — the bundled `elasticsearch_helper_example` module shows working plugins and normalizers.
 
 ---
 
-- Index Drupal content in Elasticsearch.
-- Define an index and its mapping.
-- Build documents that are not entities.
-- Drive a dashboard from aggregations.
-- Use Elasticsearch features Search API hides.
-- Serve an index to another application.
-- Choose between this and Search API.
-- Weigh losing the Search API ecosystem.
-- Keep the Elasticsearch credential out of config.
-- Decide behaviour when the cluster is down.
-- Avoid a failed content save on indexing error.
-- Recognise that indexed documents lose Drupal access.
-- Restrict who can query the index directly.
-- Reindex after a mapping change.
-- Plan an Elasticsearch architecture.
+- Index Drupal nodes or other entities into Elasticsearch.
+- Define an Elasticsearch index and its field mapping in PHP.
+- Auto-sync documents on entity insert, update and delete.
+- Defer indexing to a queue for large content imports.
+- Build documents that are not Drupal entities.
+- Drive a dashboard or report from Elasticsearch aggregations.
+- Use Elasticsearch features that Search API hides.
+- Serve a purpose-built index to a separate application.
+- Create per-language indices with language-specific analyzers.
+- Add custom multi-fields and object sub-properties to a mapping.
+- Provide a custom serializer/normalizer for indexed documents.
+- Set up index mappings before bulk indexing with a drush command.
+- Reindex all content of an entity type on the next cron run.
+- Drop or truncate indices from the command line.
+- List all registered index plugins via drush.
+- Connect to a multi-node Elasticsearch cluster.
+- Authenticate to Elasticsearch with basic auth or an API key.
+- Add a bespoke authentication method as a plugin.
+- Point the connection at an HTTPS cluster with a custom CA certificate.
+- Attach a logger or custom handler to the Elasticsearch client.
+- React to index/document operations through events.
+- Veto or rewrite a document before it is indexed.
+- Suspend the indexing queue when the cluster is unreachable.
+- Run search and multi-search queries scoped to a plugin's indices.
+- Perform bulk and upsert document operations.
+- Auto-create a module's indices when that module is installed.

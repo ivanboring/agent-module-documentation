@@ -1,32 +1,35 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # PhpSpreadsheet
 
-A thin dependency wrapper. It has no routes, forms, services, schema or hooks of its own; its only job is to declare a Composer dependency on `phpoffice/phpspreadsheet` (~1) so that the classes under the `PhpOffice\PhpSpreadsheet` namespace autoload on the site. Other contrib/custom modules that need to generate or parse Excel/ODS/CSV files depend on it.
+A dependency-only wrapper module that makes the `phpoffice/phpspreadsheet` PHP library available to a Drupal site, so other modules can read and write spreadsheet files (xlsx, xls, ods, csv, html).
 
 ---
 
-# Installing & configuring
-
-- Require with Composer (`composer require drupal/phpspreadsheet`) which pulls in `phpoffice/phpspreadsheet`.
-- Enable the module (`drush en phpspreadsheet`); there is nothing to configure.
-- No admin UI, no permissions, no config entities.
-- Depend on it from another module's `.info.yml` and use the library classes directly.
+The module ships no code of its own beyond a `phpspreadsheet.info.yml` and a `composer.json`. Its sole purpose is to declare a Composer requirement on `phpoffice/phpspreadsheet` (`~1`) so that the `PhpOffice\PhpSpreadsheet\` classes autoload across the site. Contrib and custom modules that need to generate or parse Excel/ODS/CSV files depend on it (listing `phpspreadsheet` in their own `.info.yml`) and then use the library's `Spreadsheet`, `IOFactory`, reader, and writer classes directly. There is no admin UI, no settings, no permissions, no services, and no hooks — enabling the module simply guarantees the library is present and autoloading.
 
 ---
 
-- Provides the `PhpOffice\PhpSpreadsheet` classes to the Drupal autoloader.
-- Used as a dependency by modules that export data to `.xlsx`/`.xls`.
-- Used by modules that import/parse uploaded spreadsheets.
-- Enables building `Spreadsheet` objects and writing them with `Xlsx`/`Csv` writers.
-- Enables reading spreadsheets with `IOFactory::load()`.
-- No routing, controllers or forms of its own.
-- No permissions defined.
-- No configuration schema or settings form.
-- Contains only an `.info.yml` and `composer.json` — pure library glue.
-- Core requirement is broad (`^8 || ^9 || ^10`).
-- Version 2.1.0 of the module maps to library major `~1`.
-- Security posture depends entirely on how consuming code uses the library (CSV/formula injection, XXE on load) — this module adds no attack surface itself.
-- Consuming modules should sanitise cell values (guard leading `=`,`+`,`-`,`@`) to avoid CSV/formula injection when exporting.
-- Consuming modules should validate/limit uploaded files before `IOFactory::load()`.
-- Keep the library patched by updating the Composer constraint.
-- Uninstalling is safe once no dependent module needs the library.
+- Make the `PhpOffice\PhpSpreadsheet` classes available to the Drupal autoloader.
+- Provide the spreadsheet library that xlsx-export modules depend on.
+- Provide the library that spreadsheet-import and parsing modules depend on.
+- Build a `Spreadsheet` object in memory and populate its cells.
+- Write a workbook to `.xlsx` with `Writer\Xlsx`.
+- Write a workbook to legacy `.xls` with `Writer\Xls`.
+- Export tabular data to `.csv` with `Writer\Csv`.
+- Export a workbook to OpenDocument `.ods` with `Writer\Ods`.
+- Render a workbook to HTML with `Writer\Html`.
+- Read an uploaded spreadsheet with `IOFactory::load()`.
+- Auto-detect a file's format via `IOFactory::identify()`.
+- Convert an uploaded `.xlsx` into a PHP array with `toArray()`.
+- Generate downloadable reports from query or Views results in a custom module.
+- Produce Excel exports of entity or content data on demand.
+- Import bulk content or configuration from a supplied spreadsheet.
+- Set cell formatting, styles, and column widths programmatically.
+- Add multiple worksheets to a single workbook.
+- Set document metadata (title, author, company) on an export.
+- Apply formulas and let PhpSpreadsheet calculate the values.
+- Stream a generated spreadsheet as a file download response.
+- Satisfy the library requirement for modules such as `phpexcel` or custom exporters.
+- Keep a single, Composer-managed copy of the library shared by several modules.
+- Enable the module with no configuration step (`drush en phpspreadsheet`).
+- Uninstall cleanly once no dependent module needs the library.

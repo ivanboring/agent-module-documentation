@@ -1,11 +1,15 @@
 {
   "name": "Controlled Access Terms",
   "data_name": "controlled_access_terms",
-  "description": "Provides authority-controlled vocabulary entities (topic, geographic, person, family, corporate) and an authority-link field.",
+  "description": "Provides custom field types for authority/controlled-vocabulary metadata: EDTF dates, authority links, and typed relations, plus their widgets, formatters, EDTF utilities, and Search API processors.",
   "version": "2.6.x",
-  "package": null,
+  "package": "Controlled Access Terms",
   "composer_namespace": "drupal/controlled_access_terms",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/geolocation": "^3.2",
+    "drupal/token": "^1.7",
+    "professional-wiki/edtf": "^2 || ^3"
+  },
   "dependent_modules": [
     "geolocation:geolocation",
     "token:token"
@@ -18,24 +22,33 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
-  "submodules": [],
+  "suggests": {
+    "drupal/name": "Provides western-centric structured names.",
+    "drupal/rdf": "Provides ability to map fields to RDF."
+  },
+  "submodules": [
+    "controlled_access_terms_defaults"
+  ],
   "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Content"
+    "Content editing experience",
+    "Integrations"
   ],
   "subcategories": [
-    "Taxonomy management"
+    "Fields",
+    "Date/time fields",
+    "Link fields",
+    "Semantic metadata"
   ],
   "keywords": [
     "authority",
     "controlled vocabulary",
-    "islandville",
+    "edtf",
+    "islandora",
     "metadata",
-    "agents",
     "linked data"
   ],
   "project_description": "This module creates bundles to represent common named entities in archival description (Corporate Bodies, Families, and Persons) as well as subject terms. It also provides several field types - EDTF Dates, Authority Links, and Typed Relations - that assist in library and archival description.\n\n It is intended to be used in conjunction with both the ArchivesSpace/Drupal 8 Integration project and Islandora , though it has no dependencies on either and can be used on its own.\n\n Development is done on Github.com so please contribute PRs there rather than MRs here.",

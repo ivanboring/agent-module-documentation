@@ -1,7 +1,7 @@
 {
-  "name": "Recurring Period",
+  "name": "Recurring Time Period",
   "data_name": "recurring_period",
-  "description": "Provides a configurable plugin for defining recurring time periods.",
+  "description": "Provides a configurable plugin type for calculating recurring time periods (fixed, rolling, or unlimited) from a start date.",
   "version": "8.x-1.x",
   "package": null,
   "composer_namespace": "drupal/recurring_period",
@@ -21,13 +21,16 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "recurring_period"
+  ],
   "categories": [
-    "Content"
+    "Developer tools"
   ],
   "subcategories": [
-    "Date / time"
+    "Plugin system",
+    "Entity API"
   ],
   "keywords": [
     "recurring",

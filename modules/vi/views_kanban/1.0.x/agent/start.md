@@ -1,38 +1,37 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Views kanban (views_kanban) — agent index
 
-Views **style plugin** rendering a view as a drag-and-drop kanban board. Depends on core `views`.
-Core requirement `^9 || ^10 || ^11 || ^12`. Submodule: `views_kanban_demo`.
+A Views **style plugin** (`kanban`) that renders a view's results as a drag-and-drop
+Kanban board: each row is a card, a chosen status field becomes the columns, and dragging a
+card between columns writes the new value back to the entity through an AJAX route. Depends on
+core `views`. No global settings page — all configuration lives in the display's Format
+settings (config schema `views.style.kanban`).
 
-> ## Do not deploy 1.0.25 on a site with untrusted traffic
->
-> The drag-and-drop write route is **unauthenticated**. Confirmed by experiment on this site
-> (transcript in the local `security.md`): an anonymous `curl` with no cookie and no token
-> changed a published node's field value, and the module answered
-> `{"success":true,"message":"Anonymous change from To do to Done"}`.
->
-> ```yaml
-> update_entity_kanban_state:
->   path: '/views-kanban/update-state/{view_id}/{display_id}/{entity_id}/{state_value}'
->   requirements:
->     _permission: 'access content'      # anonymous on a default site
->     entity_id: \d+
-> # registered methods: GET,POST — no _csrf_token, no _entity_access
-> ```
->
-> `KanbanController::updateState()` calls `$entity->set($status_field, $state_value)` then
-> `$entity->save()` with **no `$entity->access('update')` check anywhere in the file**. The only
-> validation is that the value is in `getAllowedValues()` — a data-validity check, not an
-> authorisation one. Each call can also send mail to the owner and assignees, so it doubles as an
-> outbound-mail trigger.
+- Core requirement: `^9 || ^10 || ^11 || ^12`. Package `Views`. License GPL-2.0-or-later.
+- Provides no permissions, no drush commands, no new plugin types. Ships a config schema and one
+  submodule `views_kanban_demo` (a Task node type + example view; also depends on `field_states`).
 
-Key facts (once patched, or on a trusted-network deployment):
-- Configure as a display **format**: `status_field` supplies the columns, `history_field` gets an
-  appended change log, `assign_field` and `send_email`/`send_notification` drive notifications.
-- Column values come from the field's allowed values, a `state_machine`/`workflows` workflow, or
-  a referenced vocabulary (`getAllowedValues()`).
-- Optional integrations are null-guarded via `$container->has()`: `pwa_firebase`, `notify_widget`,
-  `notifications_widget`, `field_states`. Absent modules are simply skipped.
-- `$entity_type` falls back to **`'user'`** when the view's `type` filter carries no
-  `entity_type` — worth knowing when debugging unexpected targets.
-- Templates: `views-view-kanban.html.twig` (board), `views-email-kanban.html.twig` (mail).
+Solution docs:
+- **Pick "Kanban" as a display format and choose the status/other fields** → [views/kanban-style.md](views/kanban-style.md)
+- **Understand how columns are built and how a drag persists the change** → [api/update-state-route.md](api/update-state-route.md)
+- **React to a status change (PHP alter hook or the JS event) and optional module integrations** → [hooks/integrations.md](hooks/integrations.md)
+- **Override the board / email templates, library, drupalSettings** → [theme/templates.md](theme/templates.md)
+
+Key facts (real machine names):
+- Style plugin id `kanban`, class `Drupal\views_kanban\Plugin\views\style\Kanban`, theme hook
+  `views_view_kanban`, template `views-view-kanban.html.twig`; preprocess
+  `template_preprocess_views_view_kanban()` in `views_kanban.theme.inc`.
+- Style option keys: `status_field` (required), `title_field`, `progress_field`, `assign_field`,
+  `history_field`, `total_field`, `date_field`, `send_email`, `send_notification`, `dialog_width`,
+  `order`, `default`, `disable_dragdrop`, `disable_add`, `show_hide_columns`.
+- Drag-save route `update_entity_kanban_state`:
+  `/views-kanban/update-state/{view_id}/{display_id}/{entity_id}/{state_value}` →
+  `KanbanController::updateState()`; requires permission `access content`; `entity_id` matches `\d+`.
+- Alter hook invoked before save: `hook_kanban_change_status($entity, $view, $origin_state)`.
+- JS custom event `viewsKanban` dispatched after a successful move (detail: view_id, display_id,
+  entityId, state, to, total, point).
+- Library `views_kanban/kanban` (`js/kanban.js`, `css/kanban.css`); also attaches
+  `core/drupal.dialog.ajax`. drupalSettings flag `views_kanban.permission_drag` gates the client
+  drag handles.
+- Optional module integrations, all null-guarded: `pwa_firebase`, `notify_widget`,
+  `notificationswidget`, `field_states`, `field_permissions`, `paragraphs_table`.

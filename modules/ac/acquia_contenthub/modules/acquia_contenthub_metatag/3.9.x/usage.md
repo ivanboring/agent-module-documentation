@@ -1,31 +1,33 @@
-The metatag submodule makes Metatag fields syndication-aware: it transforms the canonical URL token so a syndicated entity's canonical points to the publishing site, and lets you opt out of that behavior.
+Metatag handling for Acquia Content Hub: when a content entity with a Metatag field is
+syndicated, this submodule rewrites the `canonical_url` so the exported CDF carries the
+publisher's real absolute node URL instead of the unresolved `[node:url]` token.
 
 ---
 
-When both Metatag and Content Hub are active, this submodule provides a custom serializer for
-metatag fields (`acquia_contenthub.metatags.serializer`) and alters the Metatag defaults form
-and metatag field widgets to explain the behavior: Content Hub automatically transforms the
-`[node:url]` token in the canonical URL so that, when an entity is syndicated to a subscriber,
-its canonical URL resolves to the **publishing** site's node URL (good for SEO / avoiding
-duplicate-content penalties across a syndication fleet). Site owners who do not want this can
-opt out by setting `ach_metatag_node_url_do_not_transform` to `1` in
-`acquia_contenthub_metatag.settings` (via `drush cset` or `settings.php`). It has no admin
-form, permissions, or Drush of its own and depends on `acquia_contenthub` + `metatag`.
+Content Hub serializes entities to CDF for syndication across sites. A Metatag field storing
+`canonical_url` as `[node:url]` would otherwise syndicate the raw token, which each subscriber
+would resolve to its own local URL — losing the canonical pointer back to the publishing site.
+This submodule adds an event subscriber (`EntityMetatagsSerializer`, on the base module's
+`SERIALIZE_CONTENT_ENTITY_FIELD` event at priority 110) that, for `metatag`-type fields, replaces
+`[node:url]` in `canonical_url` with the publisher's absolute URL before the value is written to
+CDF. The behavior can be disabled per site with the single config flag
+`acquia_contenthub_metatag.settings:ach_metatag_node_url_do_not_transform`. It requires the
+`acquia_contenthub` and `metatag` modules and defines no routes, permissions, or Drush commands.
 
 ---
 
-- Keep a syndicated entity's canonical URL pointing at the publishing site for SEO.
-- Avoid duplicate-content penalties when the same content appears on many sites.
-- Automatically transform the `[node:url]` canonical token during syndication.
-- Opt out of canonical transformation with `ach_metatag_node_url_do_not_transform=1`.
-- Set the opt-out per site in `settings.php` for environment-specific behavior.
-- Explain the canonical behavior to editors directly on the Metatag defaults form.
-- Show the same guidance on individual metatag field widgets.
-- Serialize metatag field values correctly into CDF for syndication.
-- Preserve SEO metadata across publisher and subscriber sites.
-- Let subscriber sites keep their own canonical when opting out.
-- Support multi-site SEO strategies for shared content.
-- Configure the behavior entirely via config (no UI needed).
-- Ensure canonical URLs survive the export/import round trip.
-- Combine with publisher/subscriber to control cross-site SEO signals.
-- Centralize canonical handling instead of per-site template overrides.
+- Keep the SEO canonical URL pointing at the publisher when syndicating content.
+- Rewrite `[node:url]` in the metatag `canonical_url` to an absolute publisher URL on export.
+- Preserve canonical metadata across a network of subscriber sites.
+- Avoid subscribers resolving the canonical token to their own local URLs.
+- Opt a site out of the rewrite with a single config flag.
+- Set the opt-out via `drush cset` or `settings.php` without a UI.
+- Syndicate SEO metadata consistently alongside content.
+- Support editorial teams that rely on canonical URLs for duplicate-content control.
+- Explain the transform to editors via updated help text on metatag forms/widgets.
+- Integrate Metatag values into the Content Hub CDF payload correctly.
+- Maintain canonical-URL integrity in multi-site publishing.
+- Ensure syndicated articles credit the originating site's canonical URL.
+- Combine with the base module's publisher export pipeline.
+- Handle metatag fields on nodes and other content entities during export.
+- Keep canonical URLs stable when content is re-syndicated.

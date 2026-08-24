@@ -1,26 +1,24 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Allows bulk text messages to be sent to registered users. — a submodule of **smsframework**.
+SMS Blast is a submodule of SMS Framework. It adds one form at `/sms_blast` that sends a single text message to every registered user who has a verified phone number.
 
 ---
 
-This is one of smsframework's submodules. Allows bulk text messages to be sent to registered users. It exposes nothing on its own beyond that role and is governed by the parent module's configuration, permissions and behavior; enable it when you need this specific capability and leave it off otherwise, so the site only carries the parts of smsframework it actually uses.
-
-See the parent module for the overall system this fits into.
+Where you want to reach your whole membership at once by text — an announcement, an outage notice, an event reminder — SMS Blast provides the simplest possible tool: one message field, one Send button. It looks up every user with a verified phone number (via the framework's phone-number verification records), deduplicates so each person receives one message, and sends through the parent SMS Framework's phone-number provider, meaning the message is queued and delivered by whatever gateway you have configured. Access is gated by the `Send SMS Blast` permission, and users only receive messages if a phone-number field has been bound to the user bundle and confirmed. It has no configuration of its own; all gateway, queue and phone-number setup lives in SMS Framework.
 
 ---
-- Enable sms_blast to add this capability.
-- Extend smsframework with sms_blast.
-- Keep it disabled if not needed.
-- Depend on smsframework.
-- Scope functionality to what you enable.
-- Add only the sub-features you use.
-- Compose the parent's feature set.
-- Turn on per requirement.
-- Reduce surface by enabling selectively.
-- Combine with sibling submodules.
-- Configure via the parent module.
-- Review what it exposes before enabling.
-- Match it to your use case.
-- Keep the parent's permissions in force.
-- Enable alongside the parent.
-- Use it as part of the parent's system.
+
+- Text an announcement to all registered users.
+- Send an outage or maintenance notice by SMS.
+- Broadcast an event reminder to your membership.
+- Send a one-off promotional message to all users.
+- Notify all users of a policy or schedule change.
+- Reach every user with a verified phone number at once.
+- Send a bulk alert through your configured gateway.
+- Restrict bulk-send ability with the Send SMS Blast permission.
+- Deliver one message per user (deduplicated).
+- Queue a mass SMS for cron-driven delivery.
+- Message only users who confirmed their phone number.
+- Provide a simple staff tool for site-wide SMS.
+- Send a weather or safety warning to all users.
+- Push a time-sensitive update to subscribers.
+- Follow a bulk email with a bulk SMS.

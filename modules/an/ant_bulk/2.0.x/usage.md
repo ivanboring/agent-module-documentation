@@ -3,25 +3,27 @@ Auto Node Translate Bulk runs Auto Node Translate over many nodes at once — th
 
 ---
 
-Auto Node Translate hands a node's fields to a machine-translation provider and writes back the translations. That is exactly what is needed for new content and useless for the thousand existing nodes a site has when it goes multilingual. This module supplies the missing bulk path: a form at `/ant-bulk/translate`, a `TranslationManager` service coordinating the work, a Drush command namespace for running it outside a browser, and `ant_bulk.api.php` documenting the extension points. Its own permission, `use bulk auto translate`, is marked **`restrict access: true`**, which is correct for reasons that are as much financial as they are editorial: bulk translation sends every selected node's content to a translation provider, and providers charge per character, so the permission is effectively "may spend the translation budget". The settings form at `/admin/config/regional/ant-bulk-settings` is separately gated by `administer site configuration`. Composer requires `auto_node_translate ^3.0` and core `^10.2 || ^11`; the release is 2.0.0-rc4, a release candidate. As with any machine translation, output needs review before publication — and content sent for translation leaves the site, which matters for unpublished or confidential material.
+Auto Node Translate hands a node's fields to a machine-translation provider and writes the translations back. That is exactly what new content needs and does nothing for the thousands of existing nodes a site already has when it goes multilingual. This module supplies the missing bulk path. A form at `/ant-bulk/translate` lets an editor pick target languages and content types (only types with content translation enabled are offered), optionally cap the number of nodes, and choose whether to overwrite existing translations; a `TranslationManager` service (`ant_bulk.manager`) builds the node list and dispatches a Batch that calls `auto_node_translate`'s translator on each node. A Drush command `ant_bulk:translate` (alias `anttrans`) does the same from the CLI for one content type and language at a time. When `content_moderation` is installed, the form can assign a moderation state to the new translations. A small settings form toggles whether only published nodes are processed, and a `hook_ant_bulk_translation_items_alter()` hook lets other modules drop nodes from a run. The provider, credentials and field mapping all belong to `auto_node_translate` — this module only orchestrates which nodes and languages flow through it. Composer requires `auto_node_translate ^3.0` and core `^10.2 || ^11`.
 
 ---
 
-- Translate a backlog of nodes in one operation.
-- Add a new language to an existing multilingual site.
-- Run bulk translation from Drush.
-- Translate one content type at a time.
-- Seed translations for human post-editing.
-- Reduce manual translation effort on launch.
-- Restrict who may spend the translation budget.
-- Queue translations rather than blocking a request.
-- Translate content migrated from another system.
-- Fill gaps where translations are missing.
-- Provide draft translations for review.
+- Translate a backlog of existing nodes in one operation.
+- Add a new language to an established multilingual site.
+- Run bulk translation from Drush on a schedule or during deploys.
+- Translate one content type at a time into one target language.
+- Seed machine translations for human post-editing.
+- Reduce manual translation effort at launch.
+- Cap a run to the newest N nodes with the batch-size field.
+- Skip nodes that already have a translation, or overwrite them.
+- Restrict processing to published nodes only via the settings form.
+- Assign a content-moderation state to newly created translations.
+- Translate content migrated in from another system.
+- Fill gaps where some translations are missing.
+- Provide draft translations for editorial review.
 - Support a site expanding into a new market.
-- Re-translate after a source content change.
-- Extend the process via the module's API hooks.
-- Schedule bulk translation outside peak hours.
-- Estimate translation cost before committing.
-- Translate a campaign's content set together.
-- Keep the same provider configuration as single-node translation.
+- Re-translate after source content changes, with overwrite on.
+- Exclude specific nodes from a run through the alter hook.
+- Translate a whole content type before an event or launch.
+- Reuse the same provider configuration as single-node translation.
+- Kick off large runs from the CLI to avoid browser timeouts.
+- List only translation-enabled content types for selection.

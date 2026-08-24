@@ -1,26 +1,33 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Plugin for External Entities allowing to work with external SQL database schemas. — a submodule of **external_entities**.
+# xnttsql — usage
+
+External Entities SQL Database Storage Client. Adds a `sql` storage client so an external entity type
+can be backed by an external SQL database or schema (MySQL/PostgreSQL, and whatever the dbxschema
+module supports). You provide SQL queries for Read, List, Count and — optionally — Create, Update and
+Delete, and each column the Read query returns becomes a field on the entity.
 
 ---
 
-This is one of external_entities's submodules. Plugin for External Entities allowing to work with external SQL database schemas. It exposes nothing on its own beyond that role and is governed by the parent module's configuration, permissions and behavior; enable it when you need this specific capability and leave it off otherwise, so the site only carries the parts of external_entities it actually uses.
-
-See the parent module for the overall system this fits into.
+The client uses the Database Cross-Schema Query API (dbxschema) to reach other schemas or other
+database connections declared in `settings.php`. Tables are referenced with a `{index:table}`
+notation tied to the configured schema list, computed columns are aliased with `AS`, and filter values
+supplied by the entity query are bound as parameters. Optional named placeholders (resolved from a
+constant or a lookup query) keep the same query set portable across databases. It is not enabled in
+the parent's default storage clients because of the extra dbxschema dependency.
 
 ---
-- Enable xnttsql to add this capability.
-- Extend external_entities with xnttsql.
-- Keep it disabled if not needed.
-- Depend on external_entities.
-- Scope functionality to what you enable.
-- Add only the sub-features you use.
-- Compose the parent's feature set.
-- Turn on per requirement.
-- Reduce surface by enabling selectively.
-- Combine with sibling submodules.
-- Configure via the parent module.
-- Review what it exposes before enabling.
-- Match it to your use case.
-- Keep the parent's permissions in force.
-- Enable alongside the parent.
-- Use it as part of the parent's system.
+
+- Expose rows of an external SQL table as a Drupal entity type.
+- Read from a different schema of the same PostgreSQL database as Drupal.
+- Read from a separate MySQL database sharing the Drupal server credentials.
+- Read from a completely separate database server (different driver, credentials).
+- Join several tables in a Read query and map the result columns to fields.
+- Return a computed/expression column (e.g. concatenation) as a single field.
+- Make entities read-only by providing only Read/List/Count queries.
+- Enable create/update/delete by adding the corresponding queries.
+- Use SQL procedures/functions in CREATE/UPDATE to keep logic in the database.
+- Parameterize queries with named placeholders resolved from constants or lookups.
+- Filter and sort remote rows from Views or entity queries via source-side SQL.
+- Read PostgreSQL array columns (`array_*`) into multi-value fields.
+- Read JSON columns (`json_*`) into structured field values.
+- Combine multiple schemas/databases into one entity type with several sql clients.
+- Migrate or mirror data between two schemas by pointing write queries at a second schema.

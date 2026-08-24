@@ -26,23 +26,21 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Content editing experience",
-    "Forms and surveys"
+    "Content editing experience"
   ],
   "subcategories": [
-    "Field validation",
     "Fields",
-    "Webform elements"
+    "Field validation",
+    "Form widgets / select UI"
   ],
   "keywords": [
     "iban",
     "bank account",
     "field widget",
     "iban validation",
-    "webform element",
-    "webform_iban_field",
+    "sepa",
     "payment details",
-    "sepa"
+    "string field"
   ],
   "project_description": "Features \n\nThis module provides an IBAN field via the Drupal Field API. The module comes shipped with a second module which provides Webform support.\n\n IBAN numbers are validated by country, length and the mod97 validation of IBAN numbers.\n\n Usage \n\n \n Enable the module like any other module \n Add a textfield to an entity and select the IBAN field formatter in the form display settings, or when using the Webform IBAN submodule, add the IBAN webform field on a webform. \n \n Dependencies \n\n \n Submodule webform_iban_field: Webform \n \n Known problems \n\n No known problems yet, found one? Please create an issue!",
   "maintenance_status": "Actively maintained",

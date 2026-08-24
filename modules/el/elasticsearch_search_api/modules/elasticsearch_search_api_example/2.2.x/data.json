@@ -1,9 +1,9 @@
 {
-  "name": "Elasticsearch Search Api Example",
+  "name": "Elasticsearch - Search API Example",
   "data_name": "elasticsearch_search_api_example",
   "description": "Example module of an implementation for the Elasticsearch - Search API module.",
   "version": "2.2.x",
-  "package": null,
+  "package": "Search",
   "composer_namespace": "drupal/elasticsearch_search_api",
   "composer_requirements": {},
   "dependent_modules": [
@@ -22,17 +22,21 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Search"
+    "Developer tools",
+    "Site search"
   ],
   "subcategories": [
-    "Elasticsearch integration"
+    "Example / reference code",
+    "Faceted search"
   ],
   "keywords": [
     "elasticsearch",
     "example",
+    "reference",
+    "faceted search",
     "submodule"
   ],
   "part_of": "elasticsearch_search_api",
