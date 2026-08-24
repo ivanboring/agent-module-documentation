@@ -1,18 +1,38 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Tabs And Accordion Layout (lb_tabs) — agent index
 
-Two Layout Builder layouts: **tabs** and **accordion**. Depends on `jquery_ui_tabs` and
-`jquery_ui_accordion`. Core requirement `^9 || ^10 || ^11`.
+Provides two Drupal **Layout Builder layout plugins** — `lb_tabs_tabs` (Tabs) and
+`lb_tabs_accordion` (Accordion) — that render a section's blocks as a jQuery UI tab
+strip or accordion instead of a stacked column. Both extend one base class and share
+the same three per-layout settings.
 
-Key facts:
-- Layout plugins live in `layouts/tabs` and `layouts/accordion` (plus `src/Plugin/`,
-  `config/schema`, `lb_tabs.libraries.yml`). No routes, permissions or configuration pages.
-- **The jQuery UI dependencies are the thing to weigh.** `jquery_ui_tabs` and
-  `jquery_ui_accordion` are contributed modules carrying components Drupal removed from core after
-  Drupal 9. jQuery UI is in long-term maintenance, not active development.
-- **Accessibility is inherited, not provided.** Tabs and accordions are patterns where keyboard
-  operation, focus management and ARIA state decide whether they are usable. That behaviour comes
-  from the jQuery UI components — test it rather than assuming, particularly with a screen reader.
-  A modern alternative built on `<details>` or an ARIA-authoring-practices implementation may be
-  preferable on a site with accessibility obligations.
-- Purely a display arrangement — no effect on which blocks a user may see.
+- Depends on contrib modules `jquery_ui_tabs` and `jquery_ui_accordion` (the jQuery UI
+  components removed from core after Drupal 9).
+- Core requirement `^9 || ^10 || ^11`.
+- **No** routes, permissions, drush commands, config entities, `.module`/`.install`, or
+  services. **No** settings page (`configure` is null) — settings are set per section in
+  the Layout Builder UI.
+- Ships config **schema** (`config/schema/lb_tabs.schema.yml`), templates, JS behaviors,
+  CSS, and a `libraries.yml`.
+
+## Solution docs
+- **Add/operate the tabs or accordion layout, its settings, regions, and rendering** →
+  [plugins/layouts.md](plugins/layouts.md)
+
+## Key facts
+- Layout plugin ids: `lb_tabs_tabs`, `lb_tabs_accordion` (annotation category `Effects`,
+  labels `Tabs` / `Accordion`).
+- Base class: `Drupal\lb_tabs\Plugin\Layout\LbTabsLayoutBase` (extends core
+  `LayoutDefault`); subclasses `TabsLayout`, `AccordionLayout`.
+- Settings keys (config schema type `lb_tabs`): `initially_active_item` (integer),
+  `collapsible` (boolean), `labels_from_blocks` (boolean).
+- Config schema types: `layout_plugin.settings.lb_tabs`,
+  `layout_plugin.settings.lb_tabs_accordion`.
+- Regions: `content_blocks` (default) and, for tabs with `labels_from_blocks`,
+  `label_blocks`.
+- Templates: `lb-tabs-tabs` (`layouts/tabs/lb-tabs-tabs.html.twig`), `lb-tabs-accordion`
+  (`layouts/accordion/lb-tabs-accordion.html.twig`).
+- Libraries: `lb_tabs/tabs`, `lb_tabs/accordion` (front-end, JS+CSS), and
+  `lb_tabs/tabs_in_lb`, `lb_tabs/accordion_in_lb` (CSS-only, used inside the LB editor).
+- JS behaviors: `Drupal.behaviors.lb_tabs`, `Drupal.behaviors.lb_tabs_accordion` — read
+  `drupalSettings[pluginId][domId]` and call jQuery UI `.tabs(options)` / `.accordion(options)`.

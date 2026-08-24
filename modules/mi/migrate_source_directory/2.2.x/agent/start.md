@@ -1,18 +1,27 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Migrate Source Directory (migrate_source_directory) — agent index
 
-Migrate **source plugin** that reads a directory of files as rows. Depends on core `migrate`.
-Core requirement `^9 || ^10 || ^11`. No routes, no permissions, no UI.
+Migrate **source plugin** (`plugin: directory`) that walks one or more filesystem
+directories and yields one migration row per file, exposing each file's path and stat
+metadata as source properties. Consumed from a migration YAML `source:` block.
+
+- **Depends on** core `migrate`. Core: `^9 || ^10 || ^11`. Package `Migration`.
+- **No** configure route/settings form, permissions, services, drush commands, hooks, or
+  new plugin type — `configure` is null.
+- **Provides** one migrate source plugin (an instance of core's migrate-source plugin type).
+
+Solution docs:
+- **Use the directory source in a migration (config keys, source fields, worked examples)**
+  → [plugins/directory.md](plugins/directory.md)
 
 Key facts:
-- Whole module: `src/Plugin/` (the source plugin) + `config/schema`. It is consumed from
-  migration YAML, not configured in the admin UI.
-- **Fills a genuine gap:** Migrate ships sources for database, CSV, JSON, XML and URLs — not the
-  filesystem. Without this, importing a folder starts by generating a manifest CSV that has to be
-  regenerated whenever the folder changes.
-- Each file becomes a row with path/metadata as source properties for the process pipeline to map
-  onto a file or media entity.
-- The directory is read **at migration time**, so a folder that changes between `migrate:status`
-  and `migrate:import` yields different counts. Relevant when the source is a live share.
-- The path comes from migration configuration — written by a developer, not supplied by an end
-  user — so it is not an untrusted input in normal use.
+- Plugin id: `directory` (`@MigrateSource`, `source_module = "migrate_source_directory"`).
+- Class: `Drupal\migrate_source_directory\Plugin\migrate\source\Directory` extends `SourcePluginBase`.
+- Config keys: `directory` (required, string|list), `file_mask` (PCRE regex), `recurse_level`
+  (int, default `-1`), `id_prefix` (string), `file_must_contain_string` (string|list); plus
+  core `track_changes`. Legacy alias `urls` → `directory`.
+- Row ID: `sourceID` (string). Source fields: `sourceID`, `source_file_basename`,
+  `source_file_extension`, `source_file_filename`, `source_file_mtime`, `source_file_path`,
+  `source_file_pathname`, `source_file_realpath`, `source_file_size`, `source_file_type`.
+- The directory paths come from the migration definition (config), validated with `is_dir()`
+  when the plugin is built; the directory is scanned at import time.

@@ -1,17 +1,17 @@
 {
   "name": "UI Patterns Field Group",
   "data_name": "ui_patterns_field_group",
-  "description": "Integrates UI Patterns with Field Group, letting field groups render as UI Patterns components.",
+  "description": "Adds a 'Pattern' field-group formatter that renders a field group through a UI Patterns pattern (component), mapping the group's child fields to pattern slots, and registers a 'fieldgroup' UI Patterns source. On the 1.x line it ships as a submodule of the ui_patterns project.",
   "version": "1.x",
-  "package": null,
-  "composer_namespace": "drupal/ui_patterns_field_group",
+  "package": "User interface",
+  "composer_namespace": "drupal/ui_patterns",
   "composer_requirements": {},
   "dependent_modules": [
-    "ui_patterns:ui_patterns",
-    "field_group:field_group"
+    "field_group:field_group",
+    "ui_patterns:ui_patterns"
   ],
   "configure": null,
-  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ui_patterns_field_group",
@@ -25,10 +25,12 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
+    "Theming",
     "Content display"
   ],
   "subcategories": [
-    "UI Patterns integrations"
+    "Twig / component libraries",
+    "Field formatters"
   ],
   "keywords": [
     "ui patterns",

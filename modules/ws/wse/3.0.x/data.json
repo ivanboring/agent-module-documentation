@@ -1,5 +1,5 @@
 {
-  "name": "Workspaces Extras",
+  "name": "Workspaces Extra",
   "data_name": "wse",
   "description": "Provides extra functionality for the Workspaces module.",
   "version": "3.0.x",
@@ -13,7 +13,7 @@
     "drupal:workspaces",
     "drupal:workspaces_ui"
   ],
-  "configure": null,
+  "configure": "wse.settings",
   "core_version_requirement": "^11.3 || ^12",
   "active_installs": null,
   "list_position": null,
@@ -42,18 +42,18 @@
     "Administration tools"
   ],
   "subcategories": [
-    "Deployment / release management",
-    "Content preview"
+    "Revision management",
+    "Deployment / release management"
   ],
   "keywords": [
     "workspaces",
     "staging",
-    "preview",
-    "deploy",
-    "scheduling",
-    "content staging"
+    "content staging",
+    "revert",
+    "publish",
+    "revision squashing"
   ],
-  "project_description": "Provides various new functionalities for the core Workspaces module:\n\n \n New status field for workspaces with open/closed value (workspaces are closed once published) \n Clone a workspace's metadata on publish \n Rollback changes from a closed workspace \n Move content between workspaces \n Discard changes in a workspace \n Simplified Toolbar workspace switcher \n Revision squashing upon workspace publish \n Allowlist for additional workspace-safe forms \n Workspace-aware revisions listing page \n \n Several submodules are also provided:\n\n \n Workspaces Deploy (wse_deploy) - deploy workspace content using an import/export system \n Workspaces Group Access (wse_group_access) - restrict workspaces to groups of users; not an integration with the Group module \n Workspaces Layout Builder (wse_layout_builder) - Layout Builder tweaks for Workspaces \n Workspaces Menu (wse_menu) - adds the ability to stage menu hierarchies in a workspace \n Workspaces Scheduler (wse_scheduler) - schedule Workspace publishing \n Workspaces Task Monitor (wse_task_monitor) - provides real-time UI monitoring for Workspace operations \n \n  \n\n Deprecated submodules:\n\n \n Workspaces Config (wse_config) - promoted to a standalone project: Workspace Config \n Workspaces Preview (wse_preview) - promoted to a standalone project: Workspace Preview \n \n  \n\n Compatibility chart \n\n \n \n \n Branch \n Drupal Version \n \n \n \n \n 3.0.x \n 11.3+ \n \n \n 2.0.x \n 10.3 – 11.2 \n \n \n 1.0.x \n 10.1, 10.2",
+  "project_description": "Provides various new functionalities for the core Workspaces module: a new open/closed status field (workspaces close on publish), revert of a published workspace, moving/discarding content changes between workspaces, clone-on-publish, revision squashing on publish, a workspace-safe forms allowlist, a simplified toolbar switcher, and a Switch-to-Live block. Ships submodules: wse_deploy (import/export deployment), wse_group_access, wse_lb (Layout Builder), wse_menu, wse_scheduler, wse_task_monitor, wse_prune; and deprecated wse_config / wse_preview (promoted to standalone workspace_config / workspace_preview).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

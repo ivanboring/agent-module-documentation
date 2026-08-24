@@ -1,27 +1,35 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Workspaces Extras fills in what core's Workspaces module leaves out — configuration staging, deployment, scheduled publishing, previews for people without accounts, menu handling and housekeeping — through nine submodules layered on the core feature.
+Workspaces Extra (wse) rounds out core Workspaces with the operations a real editorial-staging workflow needs: workspaces gain an open/closed status and close automatically on publish, a published workspace can be reverted as a unit, and individual content changes can be moved or discarded between workspaces. It adds clone-on-publish, revision squashing, a safe-forms allowlist so ordinary forms can submit inside a workspace, and a simplified toolbar switcher — plus submodules for deployment, scheduling, menus, Layout Builder, group access, task monitoring and pruning.
 
 ---
 
-Core Workspaces lets a team assemble a set of content changes and publish them together, which is the right primitive and, on its own, not a workflow. WSE supplies the rest, one concern per submodule: **wse_config** brings configuration changes into a workspace (core Workspaces handles content only, which is the single biggest gap), **wse_deploy** handles pushing between environments, **wse_scheduler** publishes a workspace at a chosen time, **wse_preview** shares a preview with reviewers who have no Drupal account, **wse_menu** deals with menu links inside a workspace, **wse_lb** with Layout Builder, **wse_group_access** with Group integration, **wse_task_monitor** with visibility of long-running operations, and **wse_prune** with clearing out old workspaces — necessary, because workspace data accumulates. A `/wse/switch-to-live` route is declared `_access: 'TRUE'`, which is benign since Live is the default state everyone can already see. Note the core requirement: **`^11.3 || ^12`** — this release does not support Drupal 10 at all — and that it is **3.0.0-alpha4**, an alpha, for a module operating on unpublished content and deployment.
+Core Workspaces lets a team stage a set of content changes and publish them together, but stops there. WSE supplies the surrounding machinery on the top-level module: a `status` base field marks each workspace open or closed (publishing closes it), `PublishedRevisionStorage` records what each publish changed so `WorkspaceReverter` can roll a closed workspace back through a UI form or `wse.workspace.pre_revert`/`post_revert` events, and per-entity "Move to another workspace" and "Discard changes" operations appear on the workspace change list. Publishing behaviour is configurable at `/admin/config/workflow/workspaces/settings` (`wse.settings`): squash intermediary revisions on publish (queued via the `wse_revision_cleaner` worker), clone the workspace into a fresh draft on publish, and choose whether all or only published revision IDs are stored. A safe-forms allowlist plus `WorkspaceSafeFormInterface` decides which forms may submit inside a workspace; everything else gets a "this will write to Live" confirmation. Optional integrations (diff, trash) enrich the change list and cron cleanup. It requires Drupal 11.3+/12 and, at 3.0.0-alpha5, has no stable release yet.
 
 ---
 
-- Stage configuration changes alongside content.
-- Publish a set of changes together at a chosen time.
-- Share a preview with someone who has no account.
-- Deploy a workspace between environments.
-- Schedule a site relaunch for a specific moment.
-- Handle menu links inside a workspace.
-- Preview Layout Builder changes in a workspace.
-- Prune old workspaces to control growth.
-- Monitor a long-running publish operation.
-- Combine workspaces with Group access.
-- Review a campaign's changes as a set.
-- Avoid publishing half-finished changes.
-- Coordinate a multi-page content update.
-- Give stakeholders a preview link.
-- Roll out a seasonal change on schedule.
-- Keep configuration and content changes together.
-- Reduce release-day risk.
-- Track what a workspace will change.
+- Automatically close a workspace once its changes are published.
+- Revert an entire already-published workspace back to its prior state.
+- Move one entity's draft changes from one workspace to another.
+- Discard a single entity's changes within a workspace.
+- Clone a workspace's metadata into a new draft when it is published.
+- Squash intermediary draft revisions when a workspace publishes to keep history lean.
+- Delay revision squashing by a configurable number of hours.
+- Store the exact revision IDs each publish changed for later rollback.
+- Let editors choose per-publish whether to save all or only published revision IDs.
+- Allow selected custom forms to submit inside a workspace without a Live warning.
+- Warn editors before a non-workspace-safe form writes straight to Live.
+- Show a read-only published/draft status badge on chosen entity types.
+- Give reviewers a "View changes" diff link per tracked entity (with the diff module).
+- Offer a "Switch to Live" block/link while browsing a workspace.
+- Use a simplified, faster toolbar/navigation workspace switcher.
+- Limit and age out the list of recently used workspaces.
+- Disable confusing nested sub-workspaces site-wide.
+- Block edits and publishing on a workspace that has already been published (closed).
+- Append the active workspace to internal URLs for share/preview links.
+- Deploy workspace content between environments (wse_deploy submodule).
+- Schedule a workspace to publish at a chosen time (wse_scheduler submodule).
+- Stage menu-link hierarchy changes inside a workspace (wse_menu submodule).
+- Restrict which user groups may use a workspace (wse_group_access submodule).
+- Monitor long-running workspace operations in real time (wse_task_monitor submodule).
+- Prune and clean up old workspaces to control data growth (wse_prune submodule).
+- Coordinate a multi-page seasonal content update and roll it out as one release.
+- Reduce release-day risk by previewing and reverting a full change set.

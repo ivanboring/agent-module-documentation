@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Icons is an **API module** for icon handling: it defines how icon sets are declared and rendered, and ships adapters for Font Awesome, Fontello, IcoMoon and a generic picker rather than binding the site to one library.
+Icons is a base **API module** for using icons in Drupal. It defines an `icon_set` config entity, an **IconLibrary** plugin type (one plugin per icon library), a render element and a picker form element, and a `list_icon` field type with widget and formatter. Icons are rendered as CSS icon-font `<span>` elements addressed as `set_id:icon_name`, so a site can adopt several icon libraries and swap providers without changing how icons are stored.
 
 ---
 
-The pattern this addresses is familiar from the two icon modules documented in wave 59 — `iconify_icons` binds a site to the Iconify API, `font_iconpicker` to whatever font project you configure — and both are useful and both are commitments. Icons takes the API position instead: a core module defining the abstraction, plus one submodule per provider (`icons_fontawesome`, `icons_fontello`, `icons_icomoon`, `icons_iconpicker`), so a site enables the providers it uses and can add another without changing how icons are stored or rendered. It ships an `icons.field_type_categories.yml`, placing its field types into Drupal's field-type category system so they appear sensibly in the field-add UI. Dependencies are core `options` alone, and the core requirement is `^10.5 || ^11` — relatively recent, which matters because Drupal 11.1 introduced an icon API in core itself, so a site on a current core should check whether core's own icon support covers the requirement before adding this.
+Rather than binding a site to one icon library, Icons provides the abstraction: you enable a provider submodule (`icons_fontawesome`, `icons_fontello`, `icons_icomoon`) or supply your own IconLibrary plugin, then create Icon Sets at `/admin/appearance/icon_set` (gated by `administer site configuration`). Each set pairs a plugin with its settings — for the bundled JSON providers, a local library path whose metadata file (`selection.json` / `config.json` / `icon-families.json`) is parsed into the set's icon list. Once a set exists, icons appear everywhere the module wires them in: a `list_icon` field on any entity (with a styled select widget or the searchable fontIconPicker widget from `icons_iconpicker`), a `#type => 'icon'` render element for code, and built-in prefix/suffix icon pickers on menu link content items and Views menu displays that render into the menu via `hook_preprocess_menu`. Rendering is always class-based (an IconLibrary plugin's `build()` adds CSS classes and attaches the set's stylesheet); there is no inline SVG. Because Drupal 11.1 shipped a core icon API with overlapping scope, a site on current core should check whether core's own support suffices before adding this.
 
 ---
 
-- Support several icon libraries on one site.
-- Add Font Awesome icons to content.
-- Use IcoMoon or Fontello icon sets.
-- Give editors an icon picker.
-- Switch icon provider without changing stored data.
-- Add a provider by enabling a submodule.
-- Standardise icon handling across a site.
-- Place icon fields in the field-add UI sensibly.
-- Reuse one icon abstraction across modules.
-- Migrate between icon libraries.
-- Provide icons for a component library.
-- Let a theme declare its own icon set.
-- Add icons to menu items.
-- Support a design system's icon inventory.
-- Render icons consistently across entity types.
-- Keep icon choices in exportable configuration.
-- Enable only the providers a site uses.
-- Build a bespoke provider on the API.
+- Adopt several icon libraries on one site behind one API.
+- Add Font Awesome, IcoMoon or Fontello icons to content.
+- Give editors a searchable icon picker widget.
+- Add an icon field to nodes, taxonomy terms or any entity.
+- Render an icon from code with a `#type => 'icon'` render array.
+- Add a prefix/suffix icon to a menu link.
+- Add an icon to a Views menu tab or link.
+- Switch icon provider without changing stored field values.
+- Add a bespoke icon library by writing an IconLibrary plugin.
+- Keep icon-set definitions in exportable configuration.
+- Store icon choices as portable `set:name` string values.
+- Group icons by set in the field-add and select UIs.
+- Point an Icon Set at a locally hosted webfont library.
+- Reuse one icon abstraction across modules and themes.
+- Override icon markup per provider or per set via theme suggestions.
+- Provide icons for a component or design system.
+- Let a theme ship its own icon set plugin.
+- Standardise icon handling across entity types.
+- Migrate a site between icon libraries.
+- Enable only the provider submodules a site actually uses.

@@ -20,11 +20,17 @@
     "access_policy_ui"
   ],
   "provides_permissions": true,
-  "provides_drush_commands": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
   "provides_plugin_types": [
-    "AccessPolicyHandler",
-    "AccessRule"
+    "AccessRule (plugin.manager.access_policy.access_rule)",
+    "SelectionRule (plugin.manager.access_policy.selection_rule)",
+    "SelectionStrategy (plugin.manager.selection_strategy)",
+    "AccessPolicyOperation (plugin.manager.access_policy_operation)",
+    "AccessPolicyQuery (plugin.manager.access_policy_query)",
+    "AccessRuleArgument (plugin.manager.access_rule_argument)",
+    "AccessRuleWidget (plugin.manager.access_rule_widget)",
+    "Http403Response (plugin.manager.http_403_response)"
   ],
   "categories": [
     "Access control"

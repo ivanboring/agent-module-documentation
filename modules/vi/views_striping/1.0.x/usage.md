@@ -1,27 +1,39 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Views striping adds alternating classes to Views rows — zebra striping and its relatives — as a pluggable system rather than a fixed odd/even pair.
+Views Striping adds `odd`/`even` CSS classes to the rows of a table-style View so a theme can
+zebra-stripe them, without writing a template preprocessor. You enable its "Row striping" display
+extender in the global Views advanced settings, then per view pick a striping type in the table
+Format settings.
 
 ---
 
-Views already emits `views-row` classes and themes commonly add `odd`/`even` in a template, which covers the simplest case and nothing beyond it. Real designs ask for more: repeating every third row, alternating in pairs, striping that restarts per group, or classes derived from the row's own data. This module makes striping a **plugin type** — `ViewsStripingTypeManager` with `src/Annotation` and a `views_striping.plugin_type.yml`, plus `views_striping.api.php` documenting the contract — so a site can add a striping strategy without a template override, and choose per view which one applies. It depends on core `views` alone, has no routes, permissions or configuration pages, and spans `^8 || ^9 || ^10 || ^11`. It is presentational only: the classes land on rows and everything else about the view is untouched, so it is a cheap thing to try and a cheap thing to remove.
+Under the hood the module ships a Views display extender (`views_striping`) plus a small plugin
+type, `ViewsStripingType`, that decides which class each row gets. Two strategies come built in:
+`alternating` flips `odd`/`even` on every row, and `field_value` keeps the same class until a
+chosen field's rendered value changes between adjacent rows (useful for grouping visually by a
+sorted column). Classes are added at preprocess time via `Attribute::addClass()` on the table and
+on the contrib Views Aggregator results table style — those are the only two supported styles, and
+you supply the CSS for `.odd`/`.even` yourself. It carries no config, permissions, drush commands,
+or routes, and other modules can register additional striping strategies as plugins or retarget the
+built-ins through `hook_views_striping_type_info_alter`.
 
 ---
 
-- Add zebra striping to a view.
-- Alternate row classes in pairs.
-- Stripe every third row.
-- Restart striping per group.
-- Add classes derived from row data.
-- Avoid a template override for striping.
-- Choose a striping strategy per view.
-- Write a custom striping plugin.
-- Improve readability of a long table.
-- Style alternating rows in a listing.
-- Support a design system's row treatment.
-- Highlight rows by position.
-- Apply striping consistently across views.
-- Stripe a grid rather than a table.
-- Add classes for the first and last rows.
-- Reduce theme code for common patterns.
-- Support a site still on Drupal 8.
-- Prototype row styling from the Views UI.
+- Zebra-stripe a table View's rows with alternating `odd`/`even` classes.
+- Improve readability of a long table listing.
+- Turn on row striping without editing a Twig template.
+- Enable the "Row striping" display extender site-wide in Views advanced settings.
+- Choose a striping type per view display in the table Format settings.
+- Flip the stripe every row with the `alternating` type.
+- Keep one stripe until a column's value changes, using the `field_value` type.
+- Visually group adjacent rows that share the same sorted-column value.
+- Stripe a Views Aggregator results table the same way as a core table.
+- Style alternating rows purely from theme CSS on `.odd`/`.even`.
+- Apply consistent row striping across several views.
+- Prototype row styling from the Views UI instead of in code.
+- Add a custom striping strategy as a `ViewsStripingType` plugin.
+- Stripe every Nth row by writing a small plugin.
+- Add a class derived from a field's value via a custom plugin.
+- Retarget a built-in striping type to your own class with the alter hook.
+- Give a design system's table treatment stable row classes to hook onto.
+- Support a site still on Drupal 8 through 11 with one presentational module.
+- Remove striping cleanly by unticking the display extender before uninstall.
+- Choose different striping strategies for different table views on the same site.

@@ -1,25 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # AI Media Image (ai_media_image) — agent index
 
-Adds **"Generate Image with AI"** to media image creation, producing a media entity from a text
-prompt. Depends on the **`ai`** module and core `media_library`.
-Core requirement `^10.2 || ^11`. **Release is 1.0.0-alpha4 — alpha.**
+Adds a **"Generate Image with AI"** option to Drupal's media image creation forms. An editor
+types a text prompt, the module asks the AI module's configured **text-to-image** provider for an
+image, previews it, and saves the result as a normal `image` media entity in the Media Library.
 
-| Surface | Detail |
-|---|---|
-| Settings | `/admin/config/ai/ai_media_image`, permission **`administer ai`** (AI module's) |
-| Editorial permission | **`generate image with ai`** — who sees the option on media forms |
+- **Dependencies:** `ai:ai` (provider abstraction + the `text_to_image` operation) and
+  `drupal:media_library`. Core `^10.2 || ^11`.
+- **Configure route:** `ai_media_image.settings_form` → `/admin/config/ai/ai_media_image`
+  (permission `administer ai`). The provider/model/API key themselves live in the **`ai`** module,
+  not here — set a default `text_to_image` provider at `/admin/config/ai/settings`.
+- **Permissions:** yes — one, `generate image with ai`.
+- **Drush:** none. **Plugin types:** none. **Config schema:** yes (`ai_media_image.settings`).
 
-Key facts:
-- The **provider and API key live in the `ai` module**, not here. Model choice, credentials and
-  quota are configured once there; this module only consumes them.
-- **`generate image with ai` is a spending permission.** Each generation costs money at the
-  provider. Treat granting it as a budget decision, not only an editorial one.
-- **Three things to raise before adoption**, none of them code issues:
-  1. *Cost per call*, as above.
-  2. *Rights and retention* — provider terms differ on who owns generated output and whether
-     prompts are retained for training. A legal question, not a module setting.
-  3. *Alt text* — generated images arrive with none, and there is no source or photographer to
-     describe. The accessibility obligation is unchanged and arguably harder.
-- Generated results are ordinary media entities, so everything downstream (image styles, media
-  library, usage tracking) works normally.
+## Solution docs
+- **Turn on / control the AI generate option on media forms** → [hooks/form_alter.md](hooks/form_alter.md)
+- **Configure the settings form + prerequisites** → [configure/settings.md](configure/settings.md)
+- **Who may generate images** → [permissions/permissions.md](permissions/permissions.md)
+
+## Key facts (real machine names)
+- Config object: `ai_media_image.settings`, single key `provider_configuration_open` (bool, default `true`).
+- Settings route: `ai_media_image.settings_form`; admin menu link `ai_media_image.settings` under `ai.admin_settings`.
+- Permission: `generate image with ai`.
+- Service: `ai_media_image.add_form` → `Drupal\ai_media_image\Form\AiMediaImageAddForm` (extends
+  media_library `AddFormBase`; marked `@internal`).
+- Altered form ids: `media_image_add_form`, `media_library_add_form_upload`, `media_library_add_form_dropzonejs`.
+- Generation goes through `ai.provider` / `ai.form_helper`, operation type `text_to_image`, form key prefix `image_generator`.
+- Saved output: `public://ai_generated_image_<uniqid>.jpg`, bundle `image`.

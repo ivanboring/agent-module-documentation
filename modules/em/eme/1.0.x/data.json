@@ -20,14 +20,19 @@
   "provides_permissions": true,
   "provides_drush_commands": true,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "Eme export (@Export, manager: eme.export_plugin_manager, dir: Plugin/Eme/Export)",
+    "Eme reference discovery (@ReferenceDiscovery, manager: eme.discovery_plugin_manager, dir: Plugin/Eme/ReferenceDiscovery)"
+  ],
   "categories": [
     "Import and export",
     "Developer tools"
   ],
   "subcategories": [
     "Content migration / import",
-    "Migration tooling"
+    "Migration tooling",
+    "Code generation / scaffolding",
+    "Data export"
   ],
   "keywords": [
     "migrate",

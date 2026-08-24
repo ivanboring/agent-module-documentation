@@ -1,27 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Redirect Extensions adds bulk operations to the Redirect module: change the status code or the destination of many redirects at once, and export the redirect list.
+Redirect Extensions is an add-on to the Redirect module that adds bulk editing of redirects (change the status code or the destination of a whole selection at once), a replacement admin listing View with a CSV export, and per-redirect tracking of who created or last changed each one.
 
 ---
 
-Redirect stores each redirect as an entity with a source, a destination and an HTTP status code, and its admin UI edits them one at a time. That is fine until a site migration leaves nine hundred redirects pointing at a path that has since moved, or someone realises that a batch created as 302 should have been 301 — at which point the choice is a database update or an afternoon of clicking. This module supplies the missing bulk forms: `/admin/config/search/redirect/edit/status` for status codes and `/admin/config/search/redirect/edit/dest` for destinations, both gated by Redirect's own `administer redirects` permission rather than a new one. `RedirectDatabaseStorage` (behind an interface) implements the bulk operations, and `views_data_export` is a dependency because export is part of the offering. Requirements are `redirect` and `views_data_export`, with core `^9.4 || ^10 || ^11`. Worth knowing when planning: bulk-changing destinations is not reversible through the UI, and redirect status codes have real SEO consequences — 301 tells search engines the move is permanent and transfers ranking signals, 302 does not — so a bulk change of code is a decision to make deliberately rather than to tidy up.
+Redirect stores each redirect as an entity with a source, a destination and an HTTP status code, and its stock admin UI edits them one at a time and records nothing about authorship. That is fine until a migration leaves hundreds of redirects pointing at a path that has since moved, or a batch created as 302 should have been 301, or someone asks who added a particular redirect and when. This module fills those gaps without a settings page. It replaces Redirect's built-in listing with its own `url_redirects` View (disabling the core `redirect` View on install) so the extra columns fit, and the listing carries a bulk-operations checkbox column feeding two Views Bulk Operations actions: "Bulk edit redirect type" routes the selection to a confirm form at `/admin/config/search/redirect/edit/status` offering a status-code select, and "Bulk edit redirect destination" routes to `/admin/config/search/redirect/edit/dest` offering a new destination (internal path, alias, `<front>`, or external URL, with a guard against self-redirect loops). Both forms reuse Redirect's own `administer redirects` permission rather than declaring a new one, and each action also checks per-entity edit access. Alongside that, the View exposes a CSV export at `/admin/config/search/redirect/redirects.csv` via the Views Data Export module, and a small `redirect_extensions` table — populated from `hook_redirect_insert`/`update`/`delete` through the `redirect_extensions.redirect_storage` service — records the created-by user and the created/modified timestamps shown in the listing. Worth knowing when planning: bulk changes are applied uniformly to every selected redirect and are not reversible through the UI, and redirect status codes carry SEO weight (301 signals a permanent move and transfers ranking signals, 302 does not), so a bulk status change is a deliberate decision. Two portability notes: `views_data_export` (plus `rest`, `serialization`, `csv_serialization`) is pulled in transitively, and the storage service is written against the MySQL driver specifically.
 
 ---
 
-- Change many redirects from 302 to 301.
+- Change many redirects from 302 to 301 in one operation.
 - Repoint a batch of redirects to a new destination.
-- Fix redirects after a section moves.
-- Export the redirect list for review.
+- Fix redirects after a site section moves.
 - Clean up redirects created by a migration.
-- Correct a status code applied in error.
-- Audit redirects in a spreadsheet.
+- Correct a status code that was applied in error.
 - Bulk-update redirects after a rebrand.
-- Repoint redirects to a replacement page.
-- Reduce manual editing of redirect entities.
-- Hand a redirect list to an SEO consultant.
-- Consolidate redirects to one target.
-- Fix a typo repeated across many redirects.
-- Prepare redirects before a launch.
-- Review redirect coverage after a migration.
-- Change redirect codes for a site section.
-- Export redirects before a cleanup.
-- Apply an SEO recommendation in bulk.
+- Consolidate a set of redirects onto one target page.
+- Fix a destination typo repeated across many redirects.
+- Prepare and tidy redirects before a launch.
+- Export the full redirect list to CSV for review.
+- Hand a redirect list to an SEO consultant as a spreadsheet.
+- Audit redirect coverage after a migration.
+- See who created a given redirect and when.
+- Find recently modified redirects using the tracking columns.
+- Sort or filter redirects in the admin list by status code.
+- Apply an SEO recommendation to a group of redirects at once.
+- Replace the stock redirect listing with one showing authorship.
+- Point a group of legacy paths at a replacement URL.
+- Reduce manual, one-at-a-time editing of redirect entities.
+- Take a reviewable export before a redirect cleanup.
+- Set the same permanent (301) status across a section's redirects.
+- Track redirect churn by created and modified timestamps.

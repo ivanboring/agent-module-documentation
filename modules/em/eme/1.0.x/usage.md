@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Entity Migrate Export takes content that exists on a site and writes out a **migration module** that recreates it — turning "these fifty nodes should exist on every environment" into code rather than a manual task.
+Entity Migrate Export takes content that already exists on a site and writes out a **generated module** of Migrate API migrations plus their source data, turning "these entities should exist on every environment" into code rather than a manual step.
 
 ---
 
-Getting content into a new environment has three usual answers, all imperfect: a database copy (too much, and wrong for a fresh site), Default Content (good, but a distinct format with its own limits), or hand-writing migrations (correct and slow). This module generates the third automatically. You choose entities through a form at `/admin/config/development/entity-export`, optionally building a **collection** at `.../collection` to gather related content, and the module writes a module directory containing migration YAML and the data files — which can then be committed, reviewed, and run with the ordinary migrate tooling on any environment. `src/Export`, `src/Utility`, `InterfaceAwareExportBatchRunner` and Drush command support carry the work. Both permissions — `export content` and `manage content export settings` — are marked **`restrict access: TRUE`**, correctly: exporting content extracts it wholesale, so the permission is effectively read-everything-and-take-it-away, and it should be treated as a data-egress control rather than a convenience. Requirements are core `^8.9 || ^9 || ^10 || ^11`; `migrate_plus` appears in `require-dev`, so check it on the target site.
+Getting content into another environment has three usual answers, all imperfect: a database copy (too much, and wrong for a fresh site), Default Content (good, but its own serialization format), or hand-writing migrations (correct and slow). Entity Migrate Export automates the third. You pick entity types on the export form at `/admin/config/development/entity-export` (or run `drush eme:export --types node,block_content`), and the module discovers everything the selection references — directly and in reverse, via its reference-discovery plugins — then emits a Drupal module: one migration YAML per entity type/bundle under `migrations/`, one JSON source file per entity under `data/`, copied binary assets under `assets/`, and a small `.module` that wires the Migrate Plus `url`/`json` source to the module's real path at import time. From the UI the result is downloaded as `eme.tar.gz`; from Drush it is written straight into `modules/custom`. On the target site you enable the generated module and run `drush migrate:import --group <group> --execute-dependencies` (with Migrate Plus and Migrate Tools present). The `Collection` tab lists modules eme has generated before and re-exports them in place, so an export can be refreshed as content changes. The work is carried by `ExportPluginBase`/`JsonFiles`, the two plugin managers (`eme.export_plugin_manager`, `eme.discovery_plugin_manager`), `InterfaceAwareExportBatchRunner`, and the `EmeCommands` Drush class; eme itself has no contrib dependencies, though the generated module needs `migrate_plus`.
 
 ---
 
 - Turn existing content into a migration module.
-- Ship reference content with a codebase.
+- Ship reference/starter content with a codebase.
 - Recreate a set of nodes on a fresh environment.
 - Export content for a client handover.
-- Review content changes in a merge request.
-- Seed a new site with starter content.
+- Review content changes as migration files in a merge request.
+- Seed a new site with demo content.
 - Move content between environments reproducibly.
-- Avoid a database copy for a few entities.
-- Export a collection of related entities.
-- Generate migrations rather than writing them.
+- Avoid a database copy for just a few entities.
+- Export a collection of related entities together.
+- Generate migrations instead of hand-writing them.
 - Rebuild demo content after a reset.
 - Version-control structural content.
-- Provide test fixtures from real content.
-- Export taxonomy alongside nodes.
-- Run the generated migration from Drush.
-- Recreate content during CI.
+- Provide test fixtures built from real content.
+- Export taxonomy and media alongside nodes automatically.
+- Run the generated migration from Drush in CI.
+- Refresh a previous export after content changes (`--update` / Collection).
 - Hand content to another team as code.
-- Migrate a site section into a new build.
+- Migrate one site section into a new build.
+- Export with file assets copied into the module.
+- Restrict the export form to selected entity types via ignored-types settings.

@@ -1,27 +1,32 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Revision Cleanup deletes old entity revisions on a schedule, so a site that has been creating a revision on every save for several years stops carrying the whole history in its database.
+Revision Cleanup prunes old **node** revisions on a schedule so a site that has been creating a revision on every save for years stops carrying its entire history in the database.
 
 ---
 
-Revisions are cheap individually and expensive in aggregate: a content type that creates one per save, edited daily for five years, leaves close to two thousand rows per node across the revision tables, and on a large site that becomes the majority of the database — slowing backups, restores and the entity queries that join those tables. Core offers no retention policy, so the options are a custom script or a module. This one supplies a settings form at `/admin/config/system/revision-cleanup` gated by `administer site configuration`, with `src/Services` holding the deletion logic and `src/Plugin` the scheduled execution. There are no dependencies beyond core and the range is wide, `^8 || ^9 || ^10 || ^11`. What matters when adopting it is not the mechanics but the policy: **revision deletion is irreversible**, and revisions are frequently the only record of who changed what — which can be a compliance requirement, not merely a convenience. Establish the retention rule deliberately, test it on a copy of production, and keep a backup from before the first run. Note also that a default revision must never be deleted, and that content moderation states live on revisions, so pruning interacts with moderation history.
+Revisions are cheap individually and expensive in aggregate: a content type that stores one per save, edited daily for five years, leaves close to two thousand rows per node across the revision tables, and on a large or multilingual site those tables become the majority of the database — slowing backups, restores and the entity queries that join them. Core ships no retention policy. This module adds one: a settings form at `/admin/config/system/revision-cleanup` (permission `administer site configuration`) sets `days_to_keep` and `revisions_per_month`, and once the "Run on cron" switch is on, `hook_cron` runs at most once a day and hands the work to a queue. The service `RevisionCleanupService` computes, per node, which revisions to keep — everything newer than N days, plus the newest M revisions in each calendar month per language — and enqueues the rest; the `revision_cleanup_processor` QueueWorker deletes them (about a minute of work per cron run, or `drush queue-run revision_cleanup_processor` on demand). The current/default revision and each language's latest translation-affected revision are always protected, and `hook_revisions_cleanup_keep_alter` lets a site keep more (e.g. moderation drafts). Deletion is irreversible, so the master switch defaults off; retention is a policy decision worth testing on a copy of production with a backup in hand.
 
 ---
 
 - Reduce database size on a long-lived site.
-- Delete revisions older than a retention period.
-- Keep a fixed number of revisions per node.
+- Delete node revisions older than a retention period.
+- Keep a fixed number of revisions per month per node.
+- Keep all revisions from the last N days.
+- Respect per-language revision history on a multilingual site.
 - Speed up backups and restores.
-- Reduce revision table bloat.
-- Apply a retention policy to content history.
-- Clean up after a bulk resave.
-- Schedule cleanup rather than running it by hand.
+- Reduce revision-table bloat.
+- Apply a documented retention policy to content history.
+- Clean up after a bulk resave of nodes.
 - Free space before a migration.
 - Reduce query time on revision joins.
-- Prune revisions on selected content types.
-- Meet a data-minimisation obligation.
+- Schedule cleanup rather than running it by hand.
+- Force an immediate pass with `drush queue-run revision_cleanup_processor`.
+- Keep moderation drafts via `hook_revisions_cleanup_keep_alter`.
+- Preserve the current/published revision automatically.
 - Shrink a database dump for local development.
-- Remove revisions from an abandoned workflow.
-- Control growth on a high-edit site.
+- Control revision growth on a high-edit site.
 - Reduce hosting storage costs.
+- Bucket retention by the site timezone instead of UTC.
+- Cascade-remove paragraph revision data attached to pruned node revisions.
+- Log each cleanup action to a dedicated watchdog channel.
 - Prepare a site for an upgrade.
-- Enforce a documented retention rule.
+- Enforce a data-minimisation retention rule.

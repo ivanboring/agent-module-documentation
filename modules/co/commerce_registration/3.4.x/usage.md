@@ -1,27 +1,30 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Commerce Registration connects the Registration module to Drupal Commerce, so signing up for an event becomes a purchasable product — with capacity, checkout, and a waitlist when the event fills.
+Commerce Registration lets a Drupal Commerce store sell event sign-ups: a product variation becomes a Registration host, adding it to the cart creates a registration, and the order's payment state drives the registration from held/pending to complete. Capacity is checked server-side and abandoned carts release their held spaces.
 
 ---
 
-Registration models capacity and sign-ups against a host entity; Commerce models products, carts and payment. Selling tickets needs both, and the join between them is what this module supplies: a Commerce product becomes a registration host, adding it to the cart creates a registration, and completing checkout confirms it. Routes hang off the product — `/product/{commerce_product}/registrations` and its settings sibling — and are gated by a **custom access check**, `_manage_commerce_registrations_access_check`, rather than a flat permission, which is the right pattern for access that must consider the product as well as the user. Two submodules cover the harder parts of real event selling: **commerce_registration_waitlist** handles what happens when capacity is reached, and **commerce_registration_change_host** allows a registration to be moved to a different event — the "can I switch to the Thursday session?" request that otherwise means a refund and a rebooking. Dependencies are substantial: six Commerce modules plus `registration`, with composer requiring **Commerce `^3.0`** and `registration ^3.4.2`. Core requirement is `^10.3 || ^11`.
+The module joins two subsystems: Registration models capacity and sign-ups against a host entity, while Commerce models products, carts, orders and payment. Here the purchasable entity is the existing Commerce **product variation** — you add a `registration` field to the variation type (never the product type; an install requirement and a field-storage constraint enforce this), pick a registration type per variation, and the product gains a Manage Registrations local task. During checkout one of two panes creates the registrations: `registration_process` (silent, buyer-only, placed before Payment Process) or `registration_information` (an inline form per space for entering field data or registering others). A tagged availability checker validates the requested quantity against the host's remaining room on every cart/checkout refresh, and a product-variation filter hides full or closed variations from add-to-cart forms; an order processor prunes items whose registrations were canceled or expired. The order subscriber moves held registrations to pending on order placement, to complete when the order is fully paid, and to canceled when a cart order is canceled; cart edits and deletions clean up the corresponding registrations. Order-item unit prices come from Commerce's own price resolution — the module never trusts a client-supplied price, and the registration count mirrors the server-side order-item quantity. Access to the manage/settings/broadcast routes is delegated per variation to the Registration module's own manage-registrations access check rather than any permission defined here. Two optional submodules extend the flow: `commerce_registration_waitlist` (waitlisted items priced free until a space opens) and `commerce_registration_change_host` (move a registration to another variation/session). Requires Commerce `^3.0`, Registration `^3.4.2`, core `^10.3 || ^11`.
 
 ---
 
-- Sell tickets to an event.
-- Create a registration when a product is purchased.
-- Enforce event capacity through Commerce.
-- Put attendees on a waitlist when an event fills.
-- Move a registration to a different session.
-- Take payment for a course place.
-- Manage registrations from the product page.
-- Refund and release a place.
-- Sell multiple ticket types per event.
-- Combine tickets with other products in one cart.
-- Report on registrations alongside orders.
-- Promote a waitlisted attendee automatically.
-- Charge different prices per attendee type.
-- Handle a conference's ticketing.
-- Sell workshop places with limited capacity.
-- Let attendees change their session choice.
-- Confirm registration only after payment.
-- Integrate event sign-up with existing checkout.
+- Sell tickets to an event as a Commerce product.
+- Create an event registration automatically when a product is purchased.
+- Enforce event capacity through Commerce checkout and add-to-cart forms.
+- Show remaining spaces on the add-to-cart form (spaces-available widget).
+- Collect extra registration field data during checkout.
+- Let a buyer register other people, not just themselves.
+- Put a hold on limited spaces while the buyer completes checkout.
+- Release held spaces automatically from abandoned carts.
+- Confirm a registration only after full payment is received.
+- Sell multiple ticket types per event via product variations.
+- Combine event tickets with other products in one cart.
+- Manage all registrations for a product from its Manage Registrations tab.
+- Edit per-variation registration settings from the product Settings tab.
+- Email all registrants of a product or a single variation.
+- Report on registrations alongside orders in Views.
+- Charge different prices per attendee type using variations.
+- Prevent deleting a registration that is in use by an order.
+- Migrate Drupal 7 registrations with their order association.
+- Hide the email filter on large registration lists automatically.
+- Put attendees on a waitlist when an event fills (waitlist submodule).
+- Move a registration to a different session (change-host submodule).

@@ -1,23 +1,23 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-# Instagram Media (instagram_media) — agent index
+Instagram Media renders a business/creator Instagram account's recent posts in a Drupal block. On block save (and again on cron) it calls the Facebook Graph API with a long-lived access token, downloads each post's media to `public://instagram_media/<block_id>/`, caches the metadata in two custom tables, and renders it through a Twig template with optional image styles, grid, Swiper and Fancybox.
 
-Renders an Instagram feed in a block. Depends on core `block`.
-Core requirement `^9 || ^10 || ^11`. Permission `administer instagram media block`.
+Dependencies: core `block` only; talks to Graph API v22.0 over HTTPS. There is **no settings page** — everything is configured per block instance in Block layout (place the "Instagram Media Block"). The module defines one permission, one service, `hook_cron`, a theme hook, and an alter hook. No routes, no drush commands.
 
-**Check platform viability before recommending this or any Instagram feed module.** The issues
-are external to the code:
-- Instagram's **Basic Display API** — the usual "show my own recent posts" route — has been
-  deprecated and shut down. Current paths are the **Graph API** (business/creator accounts only)
-  or **oEmbed** (individual posts). Verify which this release targets and whether that endpoint
-  still answers.
-- **Access tokens expire.** These are long-lived-but-finite credentials needing periodic refresh.
-  A feed that works at launch can stop silently weeks later — monitor it rather than assuming.
-- The token is a **secret**: on this repo's convention put it in an environment variable
-  (`ddev dotenv set`) surfaced through a Key entity, not in exported configuration.
+- **Place and configure the feed block (token, limit, styles, grid, swiper/fancybox)** → [blocks/instagram-media.md](blocks/instagram-media.md)
+- **Full settings reference + config object / schema keys + set via drush/PHP** → [configure/settings.md](configure/settings.md)
+- **Call the API client service directly / the Graph API flow + DB tables** → [api/service.md](api/service.md)
+- **Cron sync, token auto-refresh, and the build alter hook** → [hooks/hooks.md](hooks/hooks.md)
+- **The permission** → [permissions/permissions.md](permissions/permissions.md)
+- **Theme hook, template variables, attached libraries** → [theme/theme.md](theme/theme.md)
 
 Key facts:
-- Surface: `src/Plugin/` (block), `src/Service/` (API client), `src/Hook/`, `templates/`,
-  `misc/css` + `misc/images`, `config/schema`.
-- The single permission gates **block administration**, not viewing the feed.
-- Unlike `video_embed_instagram` (wave 59), which embeds a single post via Video Embed Field,
-  this pulls a feed — so it needs API credentials where that one does not.
+- Block plugin id: `instagram_media` (admin_label "Instagram Media Block"), class `Drupal\instagram_media\Plugin\Block\InstagramMedia`
+- Service id: `instagram_media.instagram_media_service` (class `InstagramMediaService`)
+- Config object: `block.block.<id>` → `settings.*`; schema type `block.settings.instagram_media`
+- Graph API base: `https://graph.facebook.com/v22.0/`
+- DB tables: `instagram_media_posts`, `instagram_media_links`
+- Media directory: `public://instagram_media/<block_id>/`
+- Permission: `administer instagram media block`
+- Cache tag: `instagram_media:media`
+- Theme hook: `instagram_media_block`; alter hook: `hook_instagram_media_build_alter(&$build)`
+- Library: `instagram_media/instagram` (CSS only); `swiper` / `fancybox` are pulled from the active theme
