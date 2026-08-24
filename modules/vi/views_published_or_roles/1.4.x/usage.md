@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Views Published or Roles adds a Views filter expressing "published, **or** unpublished but the current user has one of these roles" — the condition a listing needs when editors should see their drafts inline with live content.
+Views Published or Roles adds two non-exposable Views filters on nodes: "Published or has role" keeps published content plus unpublished content the current user may see (as author, via bypass access, or by holding a selected role), and "Current user has roles" shows a listing only to holders of selected roles.
 
 ---
 
-The requirement is common and awkward in Views: a listing that shows published content to everyone and also shows unpublished items to editors. Views' status filter is a single value, and its filter groups can express OR, but combining a status condition with a role condition across the OR boundary is not something the UI does cleanly — so the usual outcomes are two views rendered together (which breaks paging and sorting) or a hook_views_query_alter written per project. This module supplies the condition as a filter plugin in `src/Plugin`, with `config/schema` for its settings, depending on core `views` alone and spanning `^8 || ^9 || ^10 || ^11`. The important caveat for anyone reviewing it is what a Views filter is and is not: it shapes the **query**, and Drupal's node access system is what actually decides whether a user may see an entity. A filter that admits unpublished rows for a role does not grant that role access, and on a site where the rendered output could reveal more than the filter intends, the entity access check is the thing to verify — a filter is a listing convenience, not an access control.
+The requirement is common and awkward in Views: a single listing that shows published content to everyone yet also surfaces unpublished items to editors or reviewers, without giving that role a broad content-editing permission. Views' status filter is a single value and combining a status condition with a role condition across an OR boundary is not something the filter-group UI does cleanly, so sites end up rendering two views together (which breaks paging and sorting) or writing a bespoke `hook_views_query_alter()`. This module supplies the condition as filter plugins registered through `hook_views_data_alter()` on the `node` table: `status_has_role` (Content: Published or has role) OR-combines the core published/own-unpublished/bypass logic with a subquery testing whether the current user holds one of the roles configured on the filter, and `current_user_has_roles` (Content: Current user has roles) gates the whole view on the current user's roles when you need that check without a Views relationship to the author. Both are configured by the view builder — they cannot be exposed to visitors — and their selected roles are stored in the view's own config (schema type `views.filter.in_operator`). It depends on core `views` alone and spans `^8 || ^9 || ^10 || ^11`. Being Views filters, they shape the query; Drupal's entity view-access system still decides what a returned node actually reveals, so the filter is a listing convenience layered on top of normal access.
 
 ---
 
-- Show editors their unpublished drafts in a listing.
-- List published content to everyone else.
-- Avoid rendering two views together.
-- Keep paging correct across mixed content.
-- Show unpublished items to a review role.
-- Build an editorial dashboard listing.
-- Preview drafts alongside live content.
-- Sort published and unpublished together.
-- Avoid a custom query alter.
-- Give moderators visibility of pending items.
-- Show authors their own unpublished work.
-- Build a "my content" listing.
-- Combine status and role in one filter.
-- Reduce bespoke Views code.
-- Support a review workflow's listing.
-- Show scheduled content to editors.
-- Keep a single view for two audiences.
-- Support a site still on Drupal 8.
+- Show editors their unpublished drafts in a listing alongside live content.
+- List published content to everyone while a review role also sees pending items.
+- Let a chosen role see unpublished nodes without granting content-edit permissions.
+- Avoid rendering two views together to mix published and unpublished rows.
+- Keep paging and sorting correct across mixed published/unpublished content.
+- Build an editorial or moderation dashboard listing pending nodes.
+- Show authors their own unpublished work via the own-unpublished branch.
+- Give a reviewer role visibility of drafts for a workflow.
+- Combine published status and role membership in a single filter.
+- Replace a bespoke `hook_views_query_alter()` with a configured filter.
+- Pair with View Unpublished so one role previews unpublished nodes.
+- Restrict an entire view to holders of specific roles (current_user_has_roles).
+- Show a "staff only" listing gated on the viewer's roles.
+- Look up the current user's roles without a Views relationship to the author.
+- Let bypass-node-access holders see everything through the same view.
+- Keep a single view serving two audiences at different visibility levels.
+- Preview scheduled or draft content for editors before publication.
+- Reduce duplicated view configurations for published vs unpublished.
+- Support a review workflow's inbox of items awaiting approval.
+- Support a site still on Drupal 8 through 11 with one filter.

@@ -1,27 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Grouped by field widget renders a reference field's checkboxes **grouped under their parents**, so a term list drawn from several vocabularies or a deep hierarchy arrives organised instead of as one flat column.
+Group by Field Widget replaces the flat checkbox/radio list of an entity-reference field with nested, collapsible `details` groups, organising the choices by fields that live on the referenced entities.
 
 ---
 
-A reference field pointing at more than one vocabulary, or at a hierarchical one, renders in core as a single undifferentiated list of checkboxes: "Health", "Cardiology", "Finance", "Payroll", "Diabetes" with nothing indicating that three of those belong under one heading and two under another. Editors then tick the wrong thing, or scroll past the option they wanted. This widget groups the options under their parent — vocabulary or parent term — which turns the same list into something scannable. It is a widget plugin in `src/Plugin` with `config/schema` for its settings, no dependencies beyond core, and no routes, permissions or configuration pages; the core requirement is `~9.0 || ^10.0 || ^11`. Because it is a widget substitution, the field type and stored values are untouched and switching back costs nothing. Note there are two schema files in the release — `config/schema/` and a stray top-level `group_by_field_widget.schema.yml` — and two licence files, which is untidy but harmless.
+Drupal's stock entity-reference widgets render every choice as one undifferentiated column, which gets hard to scan when a field references many entities or when those entities naturally belong to categories, departments, venues, or other parent records. This module's `group_by_field_reference_widget` (a single `@FieldWidget` extending `OptionsWidgetBase`, applicable to any `entity_reference` field) keeps the field type and stored values exactly as they are and only changes the form UI: it reads a configured "Group by" path — up to three levels, following entity-reference fields on the referenced entity, e.g. `field_facility.field_campus` — and wraps the options in nested `details` sections titled by the resolved parent entity's label. Multi-value fields render as checkboxes, single-value fields as radios (an optional radio can be cleared by clicking it again, via a small `core/once` behaviour). The selectable options themselves still come from the field's own selection handler, so referenceable-entity and access filtering are untouched; you can switch the widget on or off per form display at no cost. It is core-only, ships no routes/permissions/settings page, and its only configuration is the widget's own settings on *Manage form display*.
 
 ---
 
-- Group taxonomy checkboxes by vocabulary.
-- Show child terms under their parent.
-- Make a multi-vocabulary field scannable.
-- Reduce mis-tagging by editors.
-- Organise a long checkbox list.
-- Improve a categorisation field's usability.
-- Show hierarchy in a reference widget.
-- Keep the field type unchanged.
-- Improve tagging accuracy.
-- Group options on a webform-style field.
-- Help editors find the right term.
-- Reduce scrolling on a tagging field.
-- Show subject areas grouped by discipline.
-- Improve a faceted content model's entry form.
-- Switch widget per form display.
-- Support a deep vocabulary.
-- Reduce editorial review corrections.
-- Make a service taxonomy usable.
+- Group a "Displays" reference field by Facility, then by Campus.
+- Organise a long entity-reference checkbox list into sections.
+- Show reference options under their parent record instead of a flat list.
+- Group products referenced on a node by their category entity.
+- Group employees by their department entity.
+- Group locations by region or campus.
+- Group events by venue.
+- Group equipment by facility.
+- Group documents by owning organisation.
+- Add up to three nested grouping levels on one reference field.
+- Follow an entity-reference chain to group by a grandparent entity.
+- Turn a many-option reference field into a scannable picker.
+- Reduce mis-selection on a large reference field.
+- Render single-value reference fields as grouped radios.
+- Render multi-value reference fields as grouped checkboxes.
+- Let editors clear an optional radio selection by re-clicking it.
+- Open all group sections by default for quick scanning.
+- Keep grouping without changing how values are stored.
+- Group options coming from a Views-based selection handler by chosen bundles.
+- Switch to grouped display per form display, reversibly.
+- Give editors parent context to tell similarly named options apart.
+- Improve usability of a deeply referenced content model's edit form.

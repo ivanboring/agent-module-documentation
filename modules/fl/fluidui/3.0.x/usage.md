@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Fluid UI adds the **Fluid Infusion** libraries to Drupal — an accessibility framework built around user preferences, letting visitors adjust text size, contrast, line spacing and layout to suit themselves.
+Fluid UI - Infusion integrates the Fluid Project's **Infusion UI Options** framework into a Drupal site's front end, adding a "display preferences" toolbox that lets visitors adjust font size, line height, font family, contrast theme, link styling, and generate a table of contents — with their choices saved in a cookie and reapplied on every page.
 
 ---
 
-Infusion comes from the Inclusive Design Research Centre and takes a different position from most accessibility widgets: rather than offering a fixed menu of "high contrast" and "big text" buttons, it implements a **preferences framework** where a visitor's chosen settings can persist and apply across participating sites. That grounding in inclusive-design research is the reason to prefer it over an ad-hoc overlay. This module supplies the Drupal integration — `src/Hook`, `src/Plugin` and `src/Form` with a settings form at `/admin/config/fluidui/adminsettings` and `css/fluid.css`. Two things to note. The settings route is gated by **`access administration pages`**, which is looser than the `administer site configuration` comparable modules use — that permission is granted to fairly ordinary staff roles on many sites, and this form changes site-wide front-end behaviour. And the core requirement `^10.5 || ^11.2` is unusually narrow, targeting recent minors only. As with `accessibility_menu` (wave 60), the honest framing is that a preferences layer helps visitors who want to adjust presentation and does not substitute for accessible markup, keyboard operability and adequate contrast in the design itself.
+The module bundles a precompiled copy of the Infusion library (v4.8.0) inside its own `infusion/` directory and loads it locally, so no external CDN or download step is required to get a working widget — optionally, a site can drop a custom-compiled Infusion build into `/libraries/infusion` and the module's `hook_library_info_alter` will use that copy instead. On each front-end page, `fluidui_preprocess_page()` attaches the `fluidui.infusion` and `fluidui.theme` asset libraries; `js/fluidui_load.js` then bootstraps the widget by calling `fluid.uiOptions()` against the `.flc-prefsEditor-separatedPanel` container rendered from `templates/fluid-ui-block.html.twig`. By default the toolbox is auto-rendered at the top of every non-admin page via `hook_page_top`, but a `fluidui_as_block` setting switches it to a placeable `fluidui_block` block so you can position it in any region. A small settings form at `/admin/config/fluidui/adminsettings` (config object `fluidui.adminsettings`) controls whether the toolbox also appears on admin pages, whether it runs as a block, and a newline-separated URL blacklist (with trailing `/*` wildcard support) of paths where it should be hidden. To avoid a flash of unstyled preferences, `fluidui_preprocess_html()` reads the visitor's `fluid-ui-settings` cookie server-side and adds matching `fl-theme-*` / `fl-font-*` body classes on first render. Interface translations are shipped as JSON files under `messages/{en,fr,es}` and copied to `public://fluidui-translations/` at install rather than being managed through Drupal's translation UI.
 
 ---
 
-- Let visitors adjust text size and contrast.
-- Offer line-spacing and layout preferences.
-- Use a research-grounded accessibility framework.
-- Persist a visitor's display preferences.
-- Support users with low vision.
-- Meet a procurement requirement for personalisation.
-- Offer preferences beyond a fixed widget.
-- Adjust font family for readability.
-- Give a public-sector site an inclusive-design layer.
-- Support dyslexia-friendly typography.
-- Let visitors simplify the interface.
-- Apply preferences across a site.
-- Complement real accessibility work.
-- Provide a keyboard-reachable preferences panel.
-- Support an inclusive design programme.
-- Offer contrast themes to visitors.
-- Reduce reliance on browser zoom.
-- Align with IDRC inclusive design practice.
+- Give visitors a preferences toolbox to change font size, contrast, and line spacing.
+- Add a research-grounded accessibility layer to a public-facing site.
+- Let users pick a high-contrast theme that persists across page loads.
+- Offer a dyslexia-friendly font-family switch.
+- Generate an on-demand table of contents from a page's headings.
+- Support low-vision users who need larger text without browser zoom.
+- Enhance form input styling for readability.
+- Reapply a visitor's saved display preferences on every page automatically.
+- Show the toolbox only on the public site and keep it off admin pages.
+- Extend the toolbox onto admin pages when staff need it too.
+- Hide the toolbox on specific paths (e.g. checkout or login) via the URL blacklist.
+- Hide the toolbox on whole path prefixes using a trailing `/*` wildcard.
+- Place the preferences widget in a chosen theme region as a block.
+- Swap in a custom-compiled Infusion build from `/libraries/infusion`.
+- Serve the accessibility library entirely from your own server (no CDN).
+- Provide preference controls in English, French, or Spanish via bundled JSON messages.
+- Meet a procurement requirement for user-adjustable presentation.
+- Complement (not replace) accessible markup and design work.
+- Underline or bold links for visitors who need stronger link cues.
+- Avoid a flash of default styling by rendering saved preferences server-side.

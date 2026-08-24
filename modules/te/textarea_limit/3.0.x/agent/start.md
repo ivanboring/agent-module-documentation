@@ -1,20 +1,25 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Textarea Limit (textarea_limit) — agent index
 
-Character limit with a live counter on selected **textarea widgets**. Core-only dependencies.
-Core requirement `^9 || ^10 || ^11`.
-Settings at `/admin/config/content/textarea-limit`, permission `administer textarea_limit`.
+Adds a live character counter ("You have N of M characters remaining.") to the
+`string_textarea` and `text_textarea` field widgets. You enable it per widget on the
+entity's **Manage form display** page (third-party settings), choosing either a fixed
+per-widget limit or a shared global limit. Enforcement is CLIENT-SIDE ONLY (a jQuery
+counter); nothing validates length server-side. Core-only, `^9 || ^10 || ^11`.
+
+- **Set the shared global character limit** → [configure/global-limit.md](configure/global-limit.md)
+- **Turn on the counter for a specific textarea widget** → [configure/widget.md](configure/widget.md)
+- **Grant access to the settings form** → [permissions/permissions.md](permissions/permissions.md)
+- **Override the counter markup / understand the library** → [theme/counter.md](theme/counter.md)
 
 Key facts:
-- **It is an editorial aid, not validation.** The counter is JavaScript: it guides the person
-  typing. Anything that submits without running the script — a programmatic save, an import, a
-  REST/JSON:API write — is unaffected. Where the limit must actually hold, add a server-side
-  constraint on the field as well.
-- Configured centrally (which widgets are limited) rather than per field instance, so one settings
-  page covers the site.
-- Own permission rather than `administer site configuration`, so the limits can be tuned by an
-  editorial lead.
-- Overlaps with **`maxlength`** (a `varbase_core` dependency, wave 56) — do not run both on the
-  same widget; pick one.
-- Surface: `textarea_limit.module`, `src/Form/LimitTextSettingsForm.php`,
-  `css/textarea_limit.css`, `textarea_limit.libraries.yml`, `config/install`.
+- Config object: `textarea_limit.settings`, single key `global_limit` (string, default `'1000'`). No config schema ships.
+- Settings route: `textarea_limit.settings` → `/admin/config/content/textarea-limit` (form `\Drupal\textarea_limit\Form\LimitTextSettingsForm`).
+- Permission: `administer textarea_limit`.
+- Third-party settings namespace `textarea_limit`, keys `textarea_limit_char_limit` and `textarea_limit_use_global_limit` (constants in `\Drupal\textarea_limit\TextareaLimitConstants`).
+- Applies only to widget plugin ids `string_textarea` and `text_textarea`.
+- Hooks: `hook_element_info_alter`, `hook_field_widget_third_party_settings_form`, `hook_field_widget_settings_summary_alter`, `hook_field_widget_form_alter`, `hook_theme`.
+- Pre-render callback: `\Drupal\textarea_limit\TextareaLimitCallbacks::limitPreRender` (TrustedCallbackInterface).
+- Theme hook: `textarea_limit_remaining` (template `templates/textarea-limit-remaining.html.twig`).
+- Library `textarea_limit/textarea_limit` (js + css); depends on `core/jquery` and `textarea_limit/jquery.limit` (an EXTERNAL remote script from googleapis storage).
+- No drush, no services, no plugin types, no entities.

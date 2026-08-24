@@ -1,38 +1,40 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Webform Protected Downloads (webform_protected_downloads) — agent index
 
-Gates a file behind a webform submission, issuing a link at
-`/webform_protected_file/{hash}/download` (`_permission: 'access content'` — anonymous).
-Depends on `webform ^6.2`, core `file`, `token`. **Release is 8.x-1.0-alpha3 — alpha.**
+Adds a Webform **handler** that gates a file download behind a form submission. When a visitor
+submits a webform that carries the handler, the module stores a `webform_protected_downloads`
+content entity linking that submission to the configured file and mints a per-submission
+download link at `/webform_protected_file/{hash}/download`. The link is surfaced through the
+`[webform_submission:protected_download_url]` token, placed in a confirmation message or email.
 
-> ## Do not leave `verify_access` on `basic`
->
-> On `basic` the **hash is the only authentication**, and the hash is not a secret. From
-> `webform_protected_downloads.module:53`:
->
-> ```php
-> 'hash' => Crypt::hashBase64(implode(':', [$submission->id(), $handler->getHandlerId(), time()])),
-> ```
->
-> `Crypt::hashBase64()` is an **unkeyed SHA-256** — verified on this site by reproducing the value
-> with a plain `hash('sha256', …)`, and by brute-forcing the timestamp component in 5,001 hashes
-> over a 10,000-second window. All three inputs are enumerable: submission ids are sequential, the
-> handler id is a fixed string (default `webform_protected_downloads`), and `time()` is narrowed by
-> the notification email's `Date` header. Anyone can compute the URL for anyone's file.
-> Full transcript in the local `security.md`.
->
-> **Mitigation:** set `verify_access` to `owner`, `view_submission`,
-> `owner_or_view_submission` or `owner_and_view_submission`. Those paths call
-> `$submission->isOwner($currentUser)` and `$submission->access('view')` — real checks that do not
-> depend on the hash being secret.
+Depends on `webform:webform ^6.2`, core `file`, and `token:token`. There is **no module settings
+page** (`configure` is null) — everything is configured per webform on the handler. Defines no
+permissions and no Drush commands. Provides a config schema for the handler settings and one
+content entity type.
+
+- **Add the handler to a webform; every handler setting; file upload + allowed extensions;
+  expiry / one-time links; and surfacing the link via the token** →
+  [configure/handler.md](configure/handler.md)
+- **The manager service, the `webform_protected_downloads` entity + its methods, and the
+  download route / controller flow** → [api/manager.md](api/manager.md)
 
 Key facts:
-- `expire` (minutes) and `onetime` are checked independently of the hash, which limits the window
-  but does not fix the scheme.
-- The controller skips **all** owner/view checks when `verify_access` is `'basic'`:
-  `if (!empty($wpd_settings['verify_access']) && $wpd_settings['verify_access'] !== 'basic')`.
-- The handler help text describes the hash as verified "regardless of which option is chosen",
-  which reads as reassurance that the link is unguessable. Treat that as a description of a
-  lookup, not of a security property.
-- Surface: `src/Entity/WebformProtectedDownloads.php`, `src/WebformProtectedDownloadsManager.php`,
-  `src/Controller/`, `src/Plugin/WebformHandler/`.
+- Webform handler plugin id `webform_protected_downloads` (class `WebformProtectedDownloadsHandler`,
+  label "Webform Protected Download", category "Downloads", cardinality UNLIMITED — add several per
+  webform for several downloads).
+- Handler setting keys: `verify_access`, `expiration_one_time`, `expiration_time`,
+  `expiration_page`, `expiration_page_custom`, `expiration_error_message`, `protected_file`,
+  `protected_file_allowed_extensions`, `debug`. Config schema type
+  `webform.handler.webform_protected_downloads`.
+- Uploaded files land under `private://webform_protected_downloads/[Y]-[m]` and are marked
+  permanent via `file.usage` when the handler is saved.
+- Content entity type `webform_protected_downloads` (base_table `webform_protected_downloads`,
+  key `id`); fields: `webform_submission`, `handler_id`, `file`, `hash`, `active`, `expire`,
+  `onetime`.
+- Service `webform_protected_downloads.manager` (class `WebformProtectedDownloadsManager`):
+  `getSubmissionByHash($hash)`, `getSubmissionByUuid($uuid, $handler_id = '')`.
+- Route `webform_protected_downloads.download` → `WebformProtectedDownloadsController::protectedFileDownload`
+  (path `/webform_protected_file/{hash}/download`, `_permission: 'access content'`).
+- Token `[webform_submission:protected_download_url]`, with a per-handler sub-token, e.g.
+  `[webform_submission:protected_download_url:webform_protected_downloads_2]`.
+- Release documented: `8.x-1.0-alpha3` (no stable release exists on this branch).

@@ -1,20 +1,34 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Google Index API (google_index_api) — agent index
 
-Sends `URL_UPDATED` / `URL_DELETED` notifications to **Google's Indexing API** via
-`google/apiclient ^2.0`. Core requirement `^10.2 || ^11`.
-Settings `/admin/config/services/google-index-api` and a bulk-update form, both behind
-**`administer google index api`**.
+Notifies **Google's Indexing API** (`https://indexing.googleapis.com/v3/urlNotifications:publish`)
+that a URL was updated (`URL_UPDATED`) or removed (`URL_DELETED`) so Google recrawls it promptly.
+Authenticates with a Google service-account JSON key through the `google/apiclient ^2.0` library.
+The module ships a service you call from your own entity hooks; it does not hook entities itself.
+
+Core requirement `^10.2 || ^11`. Uses **State** (not config) for its two settings, and the core
+**file** module (managed_file / File entity / file.usage) — required at runtime though not declared
+in `info.yml`. Configure route: `google_index_api.settings_form`
+(`/admin/config/services/google-index-api`). Defines one permission, no drush, no plugins, no
+config schema.
+
+- **Configure the credential + base domain** → [configure/settings.md](configure/settings.md)
+- **Bulk-submit many URLs (post-migration backfill)** → [configure/bulk-update.md](configure/bulk-update.md)
+- **Call the API from your entity update/delete hooks** → [api/service.md](api/service.md)
+- **The one permission** → [permissions/permissions.md](permissions/permissions.md)
 
 Key facts:
-- **Google's policy scopes the Indexing API to job postings and livestream content.** Using it for
-  general pages is outside the documented scope regardless of whether the calls succeed. Establish
-  that the site's use case qualifies before recommending it — the alternative for general content
-  is a sitemap.
-- Authentication uses a **Google service account key** (a JSON credential file). That is a real
-  secret: keep it out of the docroot and out of exported configuration, and reference it by path
-  from an environment variable per this repo's convention.
-- `src/Batch/` handles bulk submission — the right path for a backlog, since the API is
-  rate-limited per project per day.
-- `composer.json` still declares `"php": ">=5.4.0"`, which is vestigial; the info file's
-  `^10.2 || ^11` core requirement is what applies.
+- Service id `google_index_api.client` → class `Drupal\google_index_api\Service\GoogleIndexApi`;
+  public methods `updateUrl($url)` and `deleteUrl($url)`; scope
+  `https://www.googleapis.com/auth/indexing`.
+- State keys: `google_index_api_json_file` (managed-file fid array) and
+  `google_index_api_base_domain` (prepended to every submitted path).
+- Routes: `google_index_api.settings_form` and
+  `google_index_api.google_index_api_bulk_update_form`
+  (`/admin/config/services/google-index-api/bulk-update`), both requiring
+  `administer google index api`.
+- Batch class `Drupal\google_index_api\Batch\GoogleIndexApiBatch` (`batchProcess`/`batchFinished`)
+  backs the bulk form.
+- Google scopes the Indexing API to job-posting and livestream pages; general pages are outside its
+  documented use, and the quota is ~200 calls/project/day. Establish the use case qualifies before
+  recommending it.

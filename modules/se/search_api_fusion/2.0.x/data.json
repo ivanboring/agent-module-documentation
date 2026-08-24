@@ -1,7 +1,7 @@
 {
   "name": "Search API Fusion",
   "data_name": "search_api_fusion",
-  "description": "Extends Search API Solr with a connector for Lucidworks Fusion, including a click-signals endpoint.",
+  "description": "Extends Search API Solr with a connector for Lucidworks Fusion, including request and click signals.",
   "version": "2.0.x",
   "package": "Search",
   "composer_namespace": "drupal/search_api_fusion",
@@ -10,7 +10,7 @@
     "search_api_solr:search_api_solr"
   ],
   "configure": null,
-  "core_version_requirement": "^10.1 || ^11",
+  "core_version_requirement": "^10",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/search_api_fusion",
@@ -24,10 +24,13 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Search"
+    "Site search"
   ],
   "subcategories": [
-    "Solr integration"
+    "Search backend",
+    "Hosted search (SaaS)",
+    "Autocomplete / typeahead",
+    "Spellcheck / query suggestions"
   ],
   "keywords": [
     "search api",
@@ -43,6 +46,6 @@
   "security_advisory_coverage": "covered",
   "project_created": "2018-11-27",
   "project_changed": "2026-08-20",
-  "core_semver_minimum": 9000000,
+  "core_semver_minimum": 10000000,
   "core_semver_maximum": 11000000
 }

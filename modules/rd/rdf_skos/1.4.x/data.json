@@ -26,14 +26,18 @@
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "ConceptSubset (manager: plugin.manager.concept_subset, annotation: @ConceptSubset)"
+  ],
   "categories": [
     "Site structure",
-    "Integrations"
+    "Integrations",
+    "Multilingual"
   ],
   "subcategories": [
     "Taxonomy hierarchy",
-    "REST / web services"
+    "Semantic metadata",
+    "Translation / multilingual"
   ],
   "keywords": [
     "skos",

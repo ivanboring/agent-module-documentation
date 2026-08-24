@@ -1,21 +1,27 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Search API Fast (search_api_fast) — agent index
 
-Parallel indexing for **Search API** using simultaneous workers. Depends on `search_api ^1.0`.
-Core requirement `^9.5 || ^10 || ^11`.
-Settings at `/admin/config/search/search-api-fast` (`administer site configuration`).
-Drush integration via `drush.services.yml`.
+Drush-only tool that (re)indexes a **Search API** index in PARALLEL by spawning many
+background Drush workers, each draining its own database queue. Aimed at large indexes
+(10k+ items) where sequential Search API indexing is too slow. Requires a Unix/Linux host,
+Drush, and `search_api ^1.0`. Core `^9.5 || ^10 || ^11`. All work runs from the CLI; the
+only route is an admin settings form.
+
+Config object: `search_api_fast.performance` (keys `index_workers`, `worker_batch_size`,
+`max_batches_worker_respawn`, `drush`). Settings form route `search_api_fast.settings` at
+`/admin/config/search/search-api-fast` (permission `administer site configuration`), menu
+link under `system.admin_config_search`. No module-defined permissions.
+
+- **Run a parallel (re)index / clear an index** → [drush/commands.md](drush/commands.md)
+- **Tune worker count, batch size, respawn interval, drush path** → [configure/settings.md](configure/settings.md)
 
 Key facts:
-- **Drush is the intended entry point.** Parallel indexing belongs in a terminal or job runner,
-  not a browser request — a web request has a timeout and one PHP process.
-- `src/SearchApiFastQueue.php` distributes work across workers; `src/Constants/` and the settings
-  form control configuration.
-- **The bottleneck it addresses** is usually Drupal bootstrapping and rendering each item, not the
-  search backend — which is why parallelising helps at all.
-- **Worker count is an infrastructure decision, not a preference.** Workers compete for database
-  connections, PHP processes and backend throughput. Too many converts a slow reindex into an
-  outage — and the database connection limit is usually the first thing to hit. Test on a copy of
-  production before running it there.
-- Pairs with `purge_control` (wave 64): a mass reindex often accompanies mass entity operations,
-  which flood Purge.
+- Drush service id `search_api_fast.commands` → class `SearchApiFastCommands` (`drush.services.yml`).
+- Commands: `search-api-fast:index` (alias `sapi-fast`) is the public entry point;
+  `search-api-fast:index-queue` (alias `sapi-ifq`) is the internal per-worker command it spawns.
+- `hook_init()` (`search_api_fast_init`) primes the static `SearchApiFastConfig` helper from config.
+- `SearchApiFastQueue` extends core `DatabaseQueue` with bulk `createItems`/`claimItems`/`deleteItems`
+  (multi-item claims). Items are round-robined into one `{queue}` row-set per worker, named
+  `search_api_fast_index_fast_<index>_<worker>`.
+- Config object ships via `config/install/search_api_fast.performance.yml`; there is no config
+  schema, and the settings form does not expose the `drush` key.

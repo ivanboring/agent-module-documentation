@@ -1,7 +1,7 @@
 {
   "name": "User Menu Avatar",
   "data_name": "user_menu_avatar",
-  "description": "Replaces user.login and user.page menu items with the current user picture and/or the username.",
+  "description": "Replaces the user.login and user.page menu link titles with the current user's picture and/or name via hook_preprocess_menu.",
   "version": "11.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/user_menu_avatar",
@@ -28,8 +28,7 @@
     "Theming"
   ],
   "subcategories": [
-    "Navigation menus",
-    "Admin toolbar / navigation"
+    "Navigation menus"
   ],
   "keywords": [
     "user menu",

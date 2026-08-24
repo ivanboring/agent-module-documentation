@@ -1,16 +1,16 @@
 {
   "name": "Grouped by field widget",
   "data_name": "group_by_field_widget",
-  "description": "Provides a widget that groups checkboxes by their parents. Useful for grouping terms into their vocabularies.",
+  "description": "Entity-reference field widget that renders options as nested collapsible details groups, grouped by fields on the referenced entities.",
   "version": "1.2.x",
   "package": null,
   "composer_namespace": "drupal/group_by_field_widget",
   "composer_requirements": {
-    "drupal/core": "^9 || ^10 || ^11"
+    "drupal/core": "^9 || ^10 || ^11 || ^12"
   },
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "~9.0 || ^10.0 || ^11",
+  "core_version_requirement": "~9.0 || ^10.0 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/group_by_field_widget",
@@ -24,16 +24,16 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Content editing experience"
+    "Content editing experience",
+    "Site structure"
   ],
   "subcategories": [
-    "Form widgets / select UI",
-    "Taxonomy hierarchy"
+    "Form widgets / select UI"
   ],
   "keywords": [
     "widget",
     "checkboxes",
-    "taxonomy",
+    "radios",
     "grouping",
     "hierarchy",
     "entity reference"
