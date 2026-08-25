@@ -1,16 +1,19 @@
 {
   "name": "Link Icons formatter",
   "data_name": "link_icons",
-  "description": "Field formatter that renders a Font Awesome brand icon for the service a Link field points to.",
+  "description": "Field formatter that renders a Font Awesome icon for the service a Link field points to.",
   "version": "3.1.x",
   "package": "Fields",
   "composer_namespace": "drupal/link_icons",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/core": "^8 || ^9 || ^10 || ^11",
+    "drupal/fontawesome": "^2 || ^3"
+  },
   "dependent_modules": [
     "drupal:link",
     "fontawesome:fontawesome"
   ],
-  "configure": null,
+  "configure": "entity.link_icon_service.collection",
   "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,

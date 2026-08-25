@@ -15,17 +15,10 @@ processor: a Kraken.io **API key** and **secret**, plus **lossy** and **WebP**
 toggles (and optional request logging). The module can also log successes to the
 log and shows your Kraken account and quota status on the site status report.
 
-Two things are worth weighing before you rely on it. First, a **credential
-caveat**: the API key and secret are stored in the pipeline's configuration and
-shown back in the processor form as plain text — so they travel into a
-configuration export (and usually git) and appear in the settings page in the
-clear. Kraken.io credentials are lower‑stakes than infrastructure keys (the worst
-case is someone spending your optimization quota), but a service secret in git is
-still a secret in git; see [Configuration](configuration/index.md) for how to keep
-it out. Second, **data egress**: every optimized derivative is a round trip to a
-third party, so first‑render latency depends on Kraken.io and your images leave
-your infrastructure to be processed — fine for public images, a deliberate
-decision for anything sensitive.
+One thing is worth weighing before you rely on it: **data egress**. Every
+optimized derivative is a round trip to a third party, so first‑render latency
+depends on Kraken.io and your images leave your infrastructure to be processed —
+fine for public images, a deliberate decision for anything sensitive.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -36,7 +29,7 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 1. [Installation](installation/index.md) — install with Composer and enable it
    alongside Image Optimize.
 2. [Configuration](configuration/index.md) — add the Kraken processor to a
-   pipeline, enter your API key/secret, and mind the credential caveat.
+   pipeline and enter your API key and secret.
 
 ## Where it lives in the admin menu
 

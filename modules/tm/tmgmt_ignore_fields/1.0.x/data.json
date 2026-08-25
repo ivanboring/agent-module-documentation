@@ -3,20 +3,23 @@
   "data_name": "tmgmt_ignore_fields",
   "description": "Lets administrators exclude specific fields from TMGMT translation jobs.",
   "version": "1.0.x",
-  "package": "Translation Management",
+  "package": "tmgmt_ignore_fields",
   "composer_namespace": "drupal/tmgmt_ignore_fields",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "php": ">=8.0",
+    "drupal/tmgmt": "^1.17"
+  },
   "dependent_modules": [
     "tmgmt:tmgmt",
     "tmgmt:tmgmt_content"
   ],
-  "configure": "tmgmt_ignore_fields.settings",
+  "configure": "tmgmt_ignore_fields_settings_form",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/tmgmt_ignore_fields",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.0",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
@@ -28,7 +31,7 @@
     "Multilingual"
   ],
   "subcategories": [
-    "Translation management"
+    "Translation / multilingual"
   ],
   "keywords": [
     "tmgmt",

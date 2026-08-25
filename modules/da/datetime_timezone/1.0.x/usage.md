@@ -9,7 +9,7 @@ This module makes it part of the data. The field type extends core's `datetime` 
 
 It is a distinct field type built on core `datetime`, which means — as with any new field type — an existing core date field cannot be converted in place; adopting it for existing content is an add-a-field-and-migrate exercise. Decide before the content exists where you can.
 
-Three classes, no routes, no permissions, no configuration page.
+Four small classes — a field type, a widget, and two formatter classes — with no routes, no permissions and no configuration page.
 
 ---
 

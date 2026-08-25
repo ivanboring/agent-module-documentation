@@ -1,33 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Last Visited Pages records the routes a user visits and provides a block that lists the title, URL and time of each recent visit — a per-user "recently viewed" history.
+Last Visited Pages records the pages each user visits and provides a block that lists the title, link and time of their recent visits — a per-user "recently viewed" history.
 
 ---
 
-A "recently viewed" list is a genuinely useful navigation aid on content-heavy sites: an intranet where people return to the same handful of documents, a catalog where a shopper retraces their steps, a documentation site. This module builds it from an event subscriber that watches the current route and a block plugin that renders the collected history, with an admin setting for how many links to keep.
-
-The thing to be deliberate about is that this is **tracking**, and tracking is a privacy surface. The module is recording, per user, which pages they looked at and when — which is exactly the browsing-history data that carries expectations and, in some jurisdictions, obligations. That is fine and expected for authenticated users on a site where the feature is visible and the benefit is theirs; it deserves a second look before being switched on for a broad audience, and a thought about what happens for anonymous users (who are far more numerous and whose "history" is both less useful and more of a storage and privacy question). Check where the history is stored, how long it is kept, and whether anonymous tracking is wanted at all.
-
-As a feature it is small and self-contained: an event subscriber, a block, a settings form, and cache invalidation so the block stays current.
+Install it with `composer require drupal/last_visited_pages` and enable it (it depends on core's **Block** module); a `last_visited_pages` database table is created to hold the history. From then on an event subscriber watches every request and, for any page that has a title, stores the page's **title, path and time** against the visitor — keeping the **20 most recent** entries per user. To surface the history, place the **Last Visited Pages** block (in Block layout) in a region such as a sidebar or footer; its block settings let you choose how many links to show and the date format (a named format like *medium*, or a custom PHP date pattern), and whether to display the block label. A site-wide settings form at **Configuration** (`/admin/config/last-visited-pages-settings`, requires *Administer site configuration*) sets `max_places`, the ceiling for the "number of items" choice offered to blocks. Because the block's cache max-age is 0 it always reflects the latest visits. Bear in mind this is per-user browsing-history tracking — a privacy surface worth a deliberate decision about who is tracked and how the block is scoped before switching it on for a broad audience.
 
 ---
 
-- Show a user their recently viewed pages.
-- Add a "recently viewed" block.
-- Help users retrace their steps.
-- Aid navigation on a large intranet.
-- List recent page titles and URLs.
-- Show when each page was visited.
-- Configure how many links to keep.
-- Place the history block in a region.
-- Support returning to frequent documents.
-- Decide whether to track anonymous users.
-- Review where history is stored.
-- Review how long history is retained.
-- Treat browsing history as a privacy surface.
-- Keep the feature visible to those tracked.
-- Restrict the block's placement.
-- Invalidate the block when routes are visited.
-- Offer a catalog "recently viewed" list.
-- Limit the history length for performance.
-- Reconsider tracking on a public site.
-- Give authenticated users a visit history.
+- Show a user their recently viewed pages in a block.
+- Add a "recently viewed" navigation aid to a sidebar or footer.
+- Help users retrace their steps on a content-heavy site.
+- Aid navigation on a large intranet or documentation site.
+- Offer a catalog "recently viewed" list for shoppers.
+- List recent page titles as clickable links.
+- Show the time each page was visited next to each link.
+- Choose a named date format (short, medium, long) for the timestamps.
+- Use a custom PHP date pattern for the visit time.
+- Configure how many recent links a block shows.
+- Cap the maximum links offered to blocks via the settings form.
+- Place the history block using normal Block layout regions.
+- Restrict where the block appears with block visibility conditions.
+- Show or hide the block's label heading.
+- Keep the block current with its zero cache max-age.
+- Limit stored history to the 20 most recent entries per user for performance.
+- Support quickly returning to frequently used documents.
+- Give authenticated users a personal visit history.
+- Decide whether anonymous visitors should be tracked at all.
+- Treat browsing history as a privacy surface before broad rollout.
+- Remove the table cleanly by uninstalling the module.
+- Inspect stored history directly in the `last_visited_pages` table.

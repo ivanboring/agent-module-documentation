@@ -26,31 +26,6 @@ Save the processor, then assign the pipeline to the image styles you want
 optimized. Kraken.io's account and quota status will appear on the **Status
 report** (**Reports → Status report**).
 
-## Credential caveat — please read
-
-By default the **API key and secret are stored in the pipeline's configuration**
-and rendered back into the processor form as plain‑text fields. That means they
-travel into a configuration export (and usually into git) and are visible in the
-settings page HTML in clear.
-
-Kraken.io credentials are lower‑stakes than infrastructure keys — the realistic
-worst case is someone spending your optimization quota — but a service secret in
-git is still a secret in git. To reduce the exposure:
-
-- Prefer keeping the key/secret out of committed configuration. If you can,
-  reference them from an environment variable via a `settings.php` configuration
-  override rather than saving them in the exported pipeline config. With DDEV:
-
-  ```bash
-  ddev dotenv set .ddev/.env --kraken-api-key=<your-key> --kraken-api-secret=<your-secret>
-  ddev restart
-  ```
-
-  Never commit `.ddev/.env`.
-- If you must store them in the pipeline config, be aware they will be in your
-  config export, and restrict who can read that repository and reach the settings
-  page.
-
 ## A note on data egress
 
 Every optimized derivative is a round trip to Kraken.io, so first‑render latency

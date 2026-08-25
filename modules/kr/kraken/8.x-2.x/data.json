@@ -5,7 +5,9 @@
   "version": "8.x-2.x",
   "package": null,
   "composer_namespace": "drupal/kraken",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "kraken-io/kraken-php": "^1.6"
+  },
   "dependent_modules": [
     "imageapi_optimize:imageapi_optimize"
   ],
@@ -16,7 +18,9 @@
   "project_url": "https://www.drupal.org/project/kraken",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "kraken-io/kraken-php:^1.6"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
@@ -27,15 +31,16 @@
     "Media"
   ],
   "subcategories": [
-    "Image optimization"
+    "Image toolkit / processing"
   ],
   "keywords": [
     "kraken",
+    "kraken.io",
     "image optimization",
     "imageapi optimize",
-    "compression",
+    "image compression",
     "webp",
-    "cdn"
+    "lossy"
   ],
   "project_description": "Image Optimize | Kraken \n The Kraken module provides integration with the Kraken.io service for the Image Optimize pipeline system.\n\n To use, install the module using composer, and then edit the Image Optimize pipeline you'd like to use Kraken with, and add a Kraken type processor.\n\n Logging and help \n The processor will optionally log successes to the watchdog and the status report page will provide an overview of the Kraken account status, quota status etc.",
   "maintenance_status": "Minimally maintained",
