@@ -1,41 +1,38 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Download File (download_file) — agent index
 
-A file-field formatter plus a controller that force downloads. No config form, no permissions of
-its own, no schema, no Drush. Requires core `file`.
+Adds one file-field formatter (**Direct Download**) whose links point at a small controller that
+serves the file bytes with attachment headers, so PDFs/images/docs save to disk instead of opening
+inline. No config form, no permissions of its own, no config schema, no Drush. Depends only on core
+`file`.
 
-Key facts:
-- Formatter **`@FieldFormatter(id = "direct_download", label = "Direct Download")`**
-  (`DirectDownloadFormatter`) — set it on a file field's view display.
-- Route `download_file.download_file_path` — `/download/file/{file}`, parameter upcast to
-  `entity:file`, controller
-  `DownloadFileController::downloadFileDirectDownload(FileInterface $file): BinaryFileResponse`.
-- **Access**: `_custom_access: DownloadFileController::access`, whose whole body is
-  `return $file->access('download', $account, TRUE);`. So private-file access, `file_download`
-  hooks and any contrib access rules are honoured — the module adds no bypass and no permission of
-  its own.
-- Response: `new BinaryFileResponse($file->getFileUri(), 200, $headers)` with download headers.
-- Alter hook: `hook_download_file_headers_alter(array &$headers, FileInterface $file): void` —
-  documented example sets `$headers['Expires'] = 0`.
-- Template `templates/direct-download-file-link.html.twig` for the rendered link.
+- Core: `^10.0 || ^11`. Package: `Fields`. `configure`: none.
+- One field formatter, one route+controller, one alter hook, one theme hook/template. That is the
+  whole module.
 
-```bash
-drush cset core.entity_view_display.node.article.default \
-  content.field_attachment.type direct_download -y
-drush cr
-```
+## What you'd do → where
 
-```php
-// Adjust headers for one file type.
-function mymodule_download_file_headers_alter(array &$headers, \Drupal\file\FileInterface $file): void {
-  if ($file->getMimeType() === 'application/pdf') {
-    $headers['Cache-Control'] = 'private, max-age=0, must-revalidate';
-  }
-}
-```
+- **Turn on direct download for a file field (select the formatter, its class/style settings)** →
+  [fields/formatter.md](fields/formatter.md)
+- **Understand/call the download route, the controller, the access check and the response headers** →
+  [api/download-route.md](api/download-route.md)
+- **Change the response headers per file (e.g. `Expires`, `Cache-Control`)** →
+  [hooks/headers-alter.md](hooks/headers-alter.md)
 
-Notes:
-- Downloads stream through PHP, so very large files bypass any web-server-level `X-Sendfile`
-  optimisation unless you add it via the headers hook.
-- The route takes a **file entity id**, so files without a `file` entity (raw paths) are not
-  supported.
+## Key facts (real machine names)
+
+- Formatter: `direct_download` (label "Direct Download"), field types `file` only, class
+  `Drupal\download_file\Plugin\Field\FieldFormatter\DirectDownloadFormatter` (extends core
+  `FileFormatterBase`). Settings keys: `class`, `styles` (both plain text, `Xss::filterAdmin`-ed).
+- Route: `download_file.download_file_path` → `/download/file/{file}`; `{file}` upcast
+  `type: entity:file` (numeric file id); controller
+  `Drupal\download_file\Controller\DownloadFileController::downloadFileDirectDownload`; access
+  callback `DownloadFileController::access` (`_custom_access`).
+- Access body: `return $file->access('download', $account, TRUE);` — delegates entirely to core
+  File access (private files stay protected; public files are public by core design).
+- Response: `new BinaryFileResponse($file->getFileUri(), 200, $headers)` with `Content-Disposition:
+  attachment`, `application/octet-stream`, `Accept-Ranges: bytes`, no-cache headers.
+- Alter hook: `hook_download_file_headers_alter(array &$headers, FileInterface $file): void`
+  (`download_file.api.php`).
+- Theme hook `direct_download_file_link` + template `templates/direct-download-file-link.html.twig`;
+  preprocess builds `link` from `link_text` + `url`.

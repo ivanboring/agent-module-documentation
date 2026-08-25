@@ -1,33 +1,27 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-# jQuery UI Selectable (jquery_ui_selectable) — agent index
+# jQuery UI Selectable — agent index
 
-Marker/companion module that re-exposes the deprecated-in-core **jQuery UI Selectable** widget
-as a Drupal asset library. Ships only `.info.yml` — no config, permissions, plugins, JS, or
-admin UI. Depends on `jquery_ui` (`^1.7`). `configure` is null. Nothing to configure; the only
-thing to know is how to attach the library.
+Code-free metapackage that re-publishes the jQuery UI Selectable widget (removed from core) as the
+attachable asset library **`jquery_ui_selectable/selectable`** (jQuery UI 1.13.2). No config, no
+permissions, no schema, no plugins, no services, no routes, no Drush. The module ships only
+`info.yml` + `composer.json`; everything you do with it is attach one library.
 
-## The one fact: attach `jquery_ui_selectable/selectable`
+- Depends on: `jquery_ui`. Core: `^9.2 || ^10 || ^11`. Package: `jQuery UI`.
+- Configure route: none (`configure` is null).
 
-The base `jquery_ui` module declares the library on this module's behalf
-(`jquery_ui_library_info_alter()` reading `jquery_ui.libraries.data.json`), so once this module
-is enabled you attach:
+## What you'd do → where
 
-```php
-// Render array
-$build['#attached']['library'][] = 'jquery_ui_selectable/selectable';
-```
-```yaml
-# your_theme.libraries.yml — depend on it
-your-widget:
-  js:
-    js/your-widget.js: {}
-  dependencies:
-    - jquery_ui_selectable/selectable
-```
+- **Attach the library, initialize `.selectable()`, and migrate `core/jquery.ui.selectable`
+  references** → [theming/attach-library.md](theming/attach-library.md)
 
-Then in JS: `$('#my-list').selectable({ stop: function (e, ui) { /* … */ } });`
+## Key facts (real machine names)
 
-Library contents (from `jquery_ui.libraries.data.json`): jQuery UI **1.13.2**
-`assets/vendor/jquery.ui/ui/widgets/selectable-min.js` + `themes/base/selectable.css`;
-dependencies `core/jquery`, `jquery_ui/mouse`, `jquery_ui/widget`, `jquery_ui/internal.version`,
-`jquery_ui/internal.widget-css`. All served from the `jquery_ui` module's path.
+- **Library id:** `jquery_ui_selectable/selectable` — defined NOT here but in the `jquery_ui`
+  module's `jquery_ui.libraries.data.json` (key `jquery_ui_selectable` → `selectable`), injected
+  into this module's namespace by `jquery_ui_library_info_alter()` in `jquery_ui.module`.
+- **Assets** (under `jquery_ui/assets/vendor/jquery.ui/`): JS `ui/widgets/selectable-min.js`
+  (minified, weight -11); CSS `themes/base/selectable.css` (component).
+- **Auto-pulled dependencies:** `core/jquery`, `jquery_ui/mouse`, `jquery_ui/widget`,
+  `jquery_ui/internal.version`, `jquery_ui/internal.widget-css`.
+- **Version dir vs release:** module release `2.1.0`; docs bucket `jq/jquery_ui_selectable/2.1.x`.
+- Upstream jQuery UI is end-of-life; use as a legacy compatibility bridge only.

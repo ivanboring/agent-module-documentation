@@ -1,43 +1,34 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Views Condition (views_condition) — agent index
 
-A single **condition plugin** matching the view + display currently being rendered. No config of
-its own, no permissions, no schema, no Drush. Depends on core `views`.
+One core-**condition plugin** that matches based on whether the current page is a view page (and
+optionally which view + display). No config of its own, no permissions, no schema, no Drush, no
+services. Depends on core `views`. Core: `^9.4 || ^10 || ^11`. Package: `Views`.
 
-Key facts:
-- Plugin `@Condition(id = "views_condition")` —
-  `ViewsCondition extends ConditionPluginBase implements ConditionInterface,
-  ContainerFactoryPluginInterface`, injecting the **view storage** (`EntityStorageInterface`) and
-  **`CurrentRouteMatch`**.
-- `buildConfigurationForm()`:
-  - a `radios` element titled *Views Condition* selecting the overall mode;
-  - then, per view, a `details` element labelled with the view's label containing a **checkbox per
-    display** (`$display['display_title']`), so selection is view-display granular.
-  - `validateConfigurationForm()` normalises the submitted selection.
-- Evaluation uses the current route match to identify the rendered view/display, so it is
-  path-independent — aliases and language prefixes do not matter.
-- `views_condition.libraries.yml` + `js/views_condition.js` improve the form UX (collapsing the
-  per-view details groups).
-- Being a plain condition plugin, it shows up in **block visibility**, Layout Builder section
-  visibility, the Context module, and anywhere `condition` plugins are evaluated.
+- Plugin id `views_condition`, class
+  `Drupal\views_condition\Plugin\Condition\ViewsCondition` (extends core
+  `ConditionPluginBase`). It is a **consumer** of core's Condition plugin type, not a new plugin
+  type — so it works in block visibility, Layout Builder section visibility, the Context module,
+  and any code that evaluates conditions.
+- Evaluation is route-based and does **not** run or query any view (see security note below).
 
-Using it in block config:
+## What you'd do → where
 
-```yaml
-# block.block.mysidebar
-visibility:
-  views_condition:
-    id: views_condition
-    negate: false
-    # selection shape follows the plugin's configuration form
-```
+- **Configure it on a block / understand the three modes, the stored config shape, and the
+  evaluate() logic; write a view display it can target** →
+  [plugins/views_condition.md](plugins/views_condition.md)
 
-```bash
-drush cget block.block.mysidebar visibility
-```
+## Key facts (real machine names)
 
-Notes:
-- The condition only matches when a **view** is being rendered on the route; on non-view pages it
-  does not apply (combine with `negate` for "everywhere except views").
-- Views embedded via blocks or fields are identified by the route, so an embedded display inside a
-  node page evaluates against the node route, not the view.
+- Condition plugin: `@Condition(id = "views_condition", label = "Views")` — `ViewsCondition`
+  implements `ConditionInterface, ContainerFactoryPluginInterface`; injects the **`view`
+  entity storage** (`entity_type.manager`→`getStorage('view')`) and **`current_route_match`**.
+- Three modes (`application` config key): `''` (Not Restricted → always TRUE), `all_pages`
+  (All View Pages), `specific_views` (Specific View Pages, uses the `views` config map).
+- Reads route parameters `view_id` / `display_id` (set by Views on its page-display routes).
+- `calculateDependencies()` adds `module: views` plus a `config: views.view.{id}` dep per
+  selected view.
+- Library `views_condition/views_condition` (`js/views_condition.js`) — adds a summary to the
+  block-settings vertical tab; no runtime effect.
+- Legacy `view_pages` boolean config is migrated to `application` in the constructor.
+- No `configure` route; not configured on its own — configured wherever a condition is placed.
