@@ -5,7 +5,10 @@
   "version": "1.0.x",
   "package": "Development",
   "composer_namespace": "drupal/ignition",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "openai-php/client": "^0.4 || ^0.7.4 || ^0.10.0",
+    "spatie/ignition": "^1.5"
+  },
   "dependent_modules": [],
   "configure": "ignition.settings",
   "core_version_requirement": "^10 || ^11",
@@ -14,7 +17,10 @@
   "project_url": "https://www.drupal.org/project/ignition",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "spatie/ignition",
+    "openai-php/client"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
@@ -31,10 +37,12 @@
   "keywords": [
     "ignition",
     "error handler",
+    "error page",
     "stack trace",
     "debugging",
     "spatie",
-    "solutions"
+    "solution provider",
+    "openai"
   ],
   "project_description": "This integrates the spatie/ignition package error handler for Drupal 10.x.\n\n It is meant for development purposes - after enabling, you can get the new error/exception page UI and add solutions to your custom exceptions as shown in the screenshot. Do not enable this module on a production website, as the exception/error output may show sensitive information.\n\n After enabling the module, all errors will display through Ignition. See the docs about how to add user friendly Solutions to custom thrown exceptions. Solutions allow you to add descriptive text and links to potential solutions, documentation, guides, runbooks or other useful resources (see screenshot) when that particular error is encountered.\n\n See this blog post for some more information on why you may want to use this module.\n\n Ignition only works if the Drupal log level is set to All messages, with backtrace information . As a general rule, you should always set the Drupal log level to None on live/production environments.\n\n You can add a snippet like this to you settings.php file to achieve this:\n\n <?php\n\nif (SITE_IS_PROD) {\n\n $config['system.logging']['error_level'] = 'hide';\n\n}\n\n?>\n\n For Acquia environments, you can use following snippet for example:\n\n <?php\n\nif (isset($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] == 'prod') {\n\n $config['system.logging']['error_level'] = 'hide';\n\n}\n\n?>\n\n You can also enable AI integration to get potential explanations for the error right in the output:\n\n \n\n The color theme and the editor used for the code preview can be configured by clicking the cog icon in the top right corner of the error page. The settings are stored in the user or session storage, so they will be remembered across multiple requests.\n\n The Store settings in ~/.ignition.json option in the settings form at /admin/config/development/ignition can be used to store the Ignition settings in a file in the user's home directory. This is useful if you want to share the same settings across multiple projects. This is only recommended for local, non-shared development environments.\n\n Installing \n 1. Run composer require drupal/ignition:^1.0 \n\n2. Enable the module.\n\n3. Clear the cache.\n\n4. Exceptions should now render through Ignition instead of Drupal.",
   "maintenance_status": "Actively maintained",

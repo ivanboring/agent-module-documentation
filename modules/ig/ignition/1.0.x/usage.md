@@ -3,29 +3,29 @@ Ignition Error Handler swaps Drupal's error page for spatie/ignition — the err
 
 ---
 
-Drupal's own verbose error page is a wall of text; Ignition presents the same information as something you can read, with the failing line highlighted and the frames navigable. The solution providers are the interesting part: the module ships several Drupal-specific ones — `EntityQueryAccessCheckSolutionProvider`, `PermissionsMustExistSolutionProvider`, `MysqlReadCommittedSolutionProvider` — that recognise common Drupal mistakes and say what to do about them, plus an `OpenAISolutionProvider` that will ask a model.
-
-**The access model is layered and correct, which is worth noting because error handlers frequently get it wrong.** `ErrorHandlerSubscriber` checks four things before rendering anything: the user holds `view ignition error page`, the module is enabled in configuration, the error level is `ERROR_REPORTING_DISPLAY_VERBOSE`, and errors are displayable. Any one of those failing falls back to Drupal's normal handling.
-
-Two things to weigh. **`view ignition error page` is not marked `restrict access`, and what it grants is source code, stack traces and request context** on any error — that is the module's purpose, and it is also a permission that should not be handed out casually or left granted on a production site. And `/_ignition/update-config` accepts a POST from any holder of that permission and writes the posted JSON to user data, session, or — when `store_settings_file` is on — to `~/.ignition.json` on the server, with **no CSRF token** despite being state-changing. The impact is limited to Ignition's own display preferences, but the file variant is shared by everyone.
-
-The `package: Development` designation is accurate. Treat it as `vitals_extra`'s dev-modules check would.
+Install with Composer (`composer require drupal/ignition`, which also pulls `spatie/ignition` and `openai-php/client`), enable the module, and clear cache. Because this is a **development tool** — its whole job is to display source code, stack traces and request context — the module's README says not to enable it on a production site. It renders **only** when four conditions all hold: the module setting **Enabled** is on (form at `/admin/config/development/ignition`), Drupal's error display is set to **All messages, with backtrace information** at `/admin/config/development/logging`, the current user holds the **`view ignition error page`** permission, and the error is displayable; otherwise Drupal's normal error handling runs. The distinctive feature is **solution providers**: the module ships Drupal-aware ones — `EntityQueryAccessCheckSolutionProvider` (an entity query missing `accessCheck()`), `PermissionsMustExistSolutionProvider` (a role referencing a non-existent permission), `MysqlReadCommittedSolutionProvider` (a MySQL isolation-level deadlock) — that recognise common mistakes and tell you what to do, plus an optional `OpenAISolutionProvider` that asks a model when you supply an API key. You can add your own by implementing `HasSolutionsForThrowable` and tagging the service `ignition_solution_provider`. Display preferences (colour theme, code editor) are set from the cog icon on the error page and remembered per user, per session, or in a shared `~/.ignition.json` file depending on the **Store settings in ~/.ignition.json** option. On production, keep the error display set to **None** (a `settings.php` guard such as `if (SITE_IS_PROD) { $config['system.logging']['error_level'] = 'hide'; }` enforces it).
 
 ---
 
 - Read a stack trace that is actually readable.
-- See the failing line with surrounding source.
+- See the failing line with the surrounding source.
+- Inspect request context and environment while debugging.
 - Get a suggested fix for a common Drupal error.
 - Recognise an entity query missing an access check.
-- Recognise a permission that does not exist.
-- Diagnose a MySQL isolation level problem.
-- Ask a model for a solution to an unfamiliar error.
+- Recognise a role permission that does not exist.
+- Diagnose a MySQL isolation-level deadlock.
+- Ask a model (OpenAI) to explain an unfamiliar error.
+- Write a custom solution provider for your own exceptions.
+- Register that provider with the `ignition_solution_provider` tag.
+- Turn Ignition on or off from the settings form.
+- Enable dark mode for the error page.
+- Set the required verbose error/log level for a dev site.
 - Fall back to Drupal's handler outside verbose mode.
-- Restrict error pages to developers.
-- Keep the module out of production.
-- Audit a production site for the module.
-- Revoke the permission after debugging.
-- Configure Ignition display preferences.
-- Store preferences per user rather than in a file.
+- Restrict error pages to developers via the permission.
+- Keep the module and verbose errors out of production.
+- Force production error display to None in settings.php.
+- Configure Ignition display preferences from the cog menu.
+- Store preferences per user rather than in a shared file.
+- Share the same Ignition look across projects via ~/.ignition.json.
 - Speed up debugging on a local site.
-- Understand what the permission actually grants.
+- Cache OpenAI solutions in a dedicated cache bin.

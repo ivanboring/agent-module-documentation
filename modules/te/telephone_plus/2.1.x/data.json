@@ -5,7 +5,10 @@
   "version": "2.1.x",
   "package": "Field types",
   "composer_namespace": "drupal/telephone_plus",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "giggsey/libphonenumber-for-php-lite": "^9.0",
+    "php": ">=8.4"
+  },
   "dependent_modules": [
     "drupal:field",
     "drupal:telephone"
@@ -16,20 +19,21 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/telephone_plus",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.4",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"
   ],
   "subcategories": [
-    "Field types",
-    "Contact details"
+    "Fields",
+    "Field formatters",
+    "Form widgets / select UI"
   ],
   "keywords": [
     "telephone",

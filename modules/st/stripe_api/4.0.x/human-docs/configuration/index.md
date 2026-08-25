@@ -36,9 +36,7 @@ Stripe API turns verified webhooks into Drupal events that other modules
 subscribe to. When you (or a developer) write such a subscriber, treat the event
 payload as a starting point rather than the last word: for anything that grants
 access or fulfils an order, re-fetch the relevant object directly from Stripe
-before acting on it. Also be aware that an invalid-signature request causes the
-full (escaped) request body to be logged, so on a busy or attacked site keep an
-eye on log volume for that endpoint.
+before acting on it.
 
 ## Save
 

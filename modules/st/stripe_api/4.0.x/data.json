@@ -1,11 +1,14 @@
 {
   "name": "Stripe API",
   "data_name": "stripe_api",
-  "description": "Integration with the Stripe API library.",
+  "description": "Provides the Stripe PHP SDK as a Drupal service plus a signature-verified webhook event.",
   "version": "4.0.x",
   "package": "Stripe",
   "composer_namespace": "drupal/stripe_api",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "stripe/stripe-php": "^7.36",
+    "drupal/key": "^1.13"
+  },
   "dependent_modules": [
     "key:key"
   ],
@@ -28,8 +31,8 @@
     "Integrations"
   ],
   "subcategories": [
-    "Payments",
-    "Webhooks"
+    "Payment gateway",
+    "Secrets & key management"
   ],
   "keywords": [
     "stripe",

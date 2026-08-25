@@ -3,25 +3,27 @@ Leave Confirm warns a user who navigates away from a form with unsaved changes, 
 
 ---
 
-Losing work is the editorial complaint that damages trust in a site fastest, and Drupal's long forms make it easy: a node with forty fields and several paragraphs represents twenty minutes of work held only in the browser, and a mistaken click on a menu item, a browser back gesture, or an accidental tab close discards all of it with no warning and no recovery. Every application that holds work in a form guards against this, and the browser provides the mechanism — a `beforeunload` handler produces the "Leave site? Changes you made may not be saved" dialog. Version **1.1.9** on core `^10 || ^11`, with configurable points at its own admin route so the warning applies where it is wanted rather than everywhere. Three things are worth knowing about this mechanism, because it is more constrained than it looks. **Browsers deliberately limit it**: the message cannot be customised — it is the browser's wording, not the site's — and modern browsers only show it at all if the user has interacted with the page, precisely to stop it being used to trap people. **It cannot fire on programmatic navigation**, so a JavaScript-driven route change in a decoupled or AJAX-heavy interface bypasses it entirely and needs its own handling. And **false positives are what make people disable it**: a form that reports changes because a widget rewrote a value on load, or because a WYSIWYG normalised whitespace, produces a warning on every exit, and a warning that is always wrong is dismissed reflexively — including the time it was right.
+Losing work is the editorial complaint that damages trust fastest, and Drupal's long forms make it easy — a node with dozens of fields and several paragraphs is twenty minutes of work held only in the browser, discarded by one mistaken click with no warning. Leave Confirm guards chosen forms with the browser's `beforeunload` dialog. After enabling the module (`composer require drupal/leave_confirm`), configure it at **Configuration » User interface » Leave confirm configuration** (`/admin/config/user-interface/leave-confirm-points`); access needs the **Administer leave confirm settings** permission. The tricky part to know: **guarding is opt-in per form and every point ships disabled**, so nothing happens until you turn one on. Installation seeds points for the user login/register/password and personal-contact forms, plus one per node type and per webform when those modules are present — all switched off. To protect a form, either **Enable** a seeded point or click **Add leave confirm point** and enter the form's real form ID (e.g. `node_page_form` for adding a page, `node_page_edit_form` for editing, `user_register_form`, `webform_submission_<id>_form`; base form IDs also work). Three constraints are worth knowing because the mechanism is more limited than it looks: the message wording **cannot be customised** (the browser substitutes its own), it **only appears once the user has interacted with the page**, and it **does not fire on JavaScript-driven navigation**, so decoupled or AJAX-heavy flows bypass it. False positives — a widget that rewrites a value on load, a WYSIWYG that normalises whitespace — are what make people dismiss the warning reflexively, so enable it where edits are genuinely at risk rather than everywhere.
 
 ---
 
-- Warn before leaving an unsaved node form.
-- Prevent losing twenty minutes of editing.
-- Guard a long webform against navigation.
-- Warn on accidental tab close.
-- Protect a paragraph-heavy page's edits.
-- Reduce editorial frustration.
-- Guard a settings form against loss.
-- Warn before a back-button navigation.
+- Warn before leaving an unsaved node add/edit form.
+- Enable a shipped point for the user registration form.
+- Protect the personal contact form from accidental loss.
+- Guard a long webform against navigation away.
+- Add a new form point by its form ID.
+- Protect a paragraph-heavy page's in-progress edits.
+- Prevent losing twenty minutes of editing to a stray click.
+- Warn on an accidental tab close or back gesture.
+- Guard a specific content type's form while leaving others alone.
+- Restrict who can configure guarded forms via a role permission.
 - Protect a translation in progress.
-- Guard a media upload form.
-- Warn on unsaved layout changes.
-- Protect a survey submission in progress.
+- Guard a media upload form mid-edit.
+- Warn on unsaved layout or tabledrag reordering changes.
+- Protect a survey or application submission in progress.
 - Reduce support requests about lost work.
-- Guard a complex configuration form.
+- Guard a complex configuration or settings form.
 - Warn before leaving a comment draft.
-- Protect an application form's entries.
-- Guard a moderation review form.
 - Warn on unsaved profile edits.
+- Enable protection only on high-value forms to avoid false-positive fatigue.
+- Deploy guarded-form points as config for a repeatable environment.

@@ -1,27 +1,33 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Stripe API wires the Stripe PHP library into Drupal — credentials, a configured client, and a webhook endpoint that other modules subscribe to.
+Stripe API wires the official Stripe PHP library into Drupal — credential storage, a pre-configured client service, and a webhook endpoint that other modules subscribe to.
 
 ---
 
-It is infrastructure rather than a payment feature: it does not take a payment, it makes the Stripe library available and turns Stripe's callbacks into Drupal events, so a subscription module, a donation form or a commerce integration can build on one authenticated client and one verified webhook rather than each inventing both. Version **4.0.2** on `^8` through `^11`, requiring **`key`** — a hard dependency, so the secret key comes from a Key entity backed by an environment variable and never reaches exported configuration, which is the arrangement every payment integration should have and many do not. **The webhook handling is done correctly and is worth citing as the reference implementation.** `/stripe/webhook` is `POST` only with `_permission: 'access content'`, and the real authentication is the signature: the handler calls the official SDK's `Webhook::constructEvent($payload, $sig_header, $secret)`, which verifies the HMAC against the endpoint's signing secret with a timestamp tolerance and a constant-time comparison. A failure returns **403 without dispatching anything**, webhooks can be disabled entirely by configuration, and a transient failure returns **503 with `Retry-After`** so Stripe retries rather than treating the event as delivered. That last detail is the one most integrations get wrong. Two notes. On an invalid signature the handler **logs the full request body**, which an unauthenticated caller controls — it goes through a placeholder so it is escaped, but it is a log-flooding surface on an endpoint anyone can reach. And the events dispatched are only as safe as their subscribers: a subscriber that trusts an event's contents without re-reading the object from Stripe is trusting a payload, and re-fetching is the standard advice for anything that moves money.
+It is infrastructure rather than a payment feature: it does not take a payment or add a checkout button, it makes the Stripe library available and turns Stripe's callbacks into Drupal events, so a subscription module, a donation form or a commerce integration can build on one authenticated client and one webhook instead of each inventing both. Install it with Composer (`composer require drupal/stripe_api -W`), which pulls in `stripe/stripe-php`, and enable it together with its hard dependency, the **Key** module. Configure it at **Configuration → Web services → Stripe API** (`/admin/config/services/stripe_api`, permission **Administer Stripe API**): choose **test** or **live** mode, and for each mode select the Key entities that hold your Stripe **secret key**, **publishable key** and webhook **signing secret**. Because the credential fields use Key's `key_select`, only the Key entity id is stored in configuration — the recommended pattern is a Key backed by an environment variable, so the raw secret never lands in the database or in exported config. Developers use the module by injecting the `@stripe_api.stripe_api` service and calling `getStripeClient()` to get a `\Stripe\StripeClient` that already carries the configured key and API version. To receive events, register the webhook URL shown on the settings form (`/stripe/webhook`) in the Stripe Dashboard, paste that endpoint's signing secret into the matching field, and write an event subscriber for the `stripe_api.webhook` event (a `StripeApiWebhookEvent` exposing `->type` and the full `\Stripe\Event`). A site-wide warning message appears while the module is in **test** mode, and webhook handling can be switched off entirely from configuration for sites that only make outbound Stripe calls.
 
 ---
 
-- Provide a Stripe client to other modules.
-- Receive Stripe webhooks securely.
-- Store a Stripe secret key in a Key entity.
-- Build a donation integration.
-- React to a payment succeeded event.
-- Handle a subscription lifecycle event.
-- Verify webhook signatures properly.
-- Integrate Stripe with a custom module.
-- Handle a failed payment notification.
-- Support a commerce Stripe integration.
-- React to a refund event.
-- Build a membership payment flow.
-- Log Stripe webhook events.
-- Disable webhooks temporarily.
-- Handle a dispute notification.
-- Support a recurring billing integration.
-- Provide test and live key configuration.
-- React to a customer created event.
+- Provide a shared, authenticated Stripe client to other modules.
+- Inject the `@stripe_api.stripe_api` service into a custom class.
+- Call the Stripe API from PHP with `getStripeClient()`.
+- Store a Stripe secret key in a Key entity instead of config.
+- Keep Stripe credentials out of exported configuration.
+- Switch between Stripe test and live mode.
+- Pin a custom Stripe API version, or use the account default.
+- Receive Stripe webhooks at `/stripe/webhook`.
+- Subscribe to the `stripe_api.webhook` event in a custom module.
+- React to a `checkout.session.completed` event.
+- React to an `invoice.paid` or payment-succeeded event.
+- Handle a failed-payment or refund notification.
+- Drive a subscription or recurring-billing lifecycle.
+- Build a donation integration on top of the client.
+- Support a Drupal Commerce Stripe integration.
+- Grant licensed or membership access after a Stripe event.
+- Register the webhook endpoint URL in the Stripe Dashboard.
+- Override the webhook signing secret via an environment variable.
+- Log incoming Stripe webhook events for debugging.
+- Disable incoming webhook handling entirely.
+- Test the Stripe connection from the settings form.
+- Read the current mode, API key, or publishable key in code.
+- Re-fetch a Stripe object from the client before acting on an event.
+- Provide separate test and live key configuration side by side.

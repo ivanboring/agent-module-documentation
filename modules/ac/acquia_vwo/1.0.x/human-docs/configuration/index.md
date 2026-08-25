@@ -37,10 +37,8 @@ named for.
 ## The permission
 
 At **People → Permissions** (`/admin/people/permissions`), assign **Administer Acquia
-VWO** to the roles that should manage the integration. Note that this permission is
-**not** access-restricted even though it controls a script that can alter what
-visitors see — so grant it only to trusted administrators, and treat it as more
-sensitive than an ordinary settings permission.
+VWO** to the roles that should manage the integration. As with any configuration
+permission, grant it only to roles you trust to manage site settings.
 
 ## Two things to arrange before you go live
 

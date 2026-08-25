@@ -21,9 +21,8 @@ client-side** before a visitor sees it — that is the whole point of the tool, 
 also means the VWO account becomes part of your site's trust boundary. Second, it
 **sets cookies to bucket visitors**, so on an EU-facing site it needs consent gating
 like any other non-essential tracker (a consent tool such as `usercentrics` or
-`consent_mode` is how that is arranged). Worth noting: the *administer acquia vwo*
-permission is **not** access-restricted, even though it controls a script that can
-change what visitors see — so grant it carefully.
+`consent_mode` is how that is arranged). As with any configuration permission, grant
+*administer acquia vwo* only to roles you trust to manage the integration.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token-cheap references for an AI coding agent, read the sibling

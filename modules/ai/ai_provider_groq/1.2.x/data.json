@@ -5,7 +5,9 @@
   "version": "1.2.x",
   "package": "AI Providers",
   "composer_namespace": "drupal/ai_provider_groq",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.2.0"
+  },
   "dependent_modules": [
     "ai:ai",
     "key:key"
@@ -25,11 +27,10 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Integrations"
+    "Artificial Intelligence (AI)"
   ],
   "subcategories": [
-    "AI",
-    "API providers"
+    "AI provider abstraction / LLM gateway"
   ],
   "keywords": [
     "groq",
