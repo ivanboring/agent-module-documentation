@@ -16,16 +16,15 @@ The module is deliberately tiny — one controller, two routes, no configuration
 and no dependency beyond Drupal core. It declares **no permission of its own**,
 reusing core's **Administer users** permission instead.
 
-**How the links are scoped and protected — worth understanding.** Both actions
-require the **`administer users`** permission *and* carry a **CSRF token**
-(`_csrf_token: 'TRUE'`). That CSRF protection is the important part: without it,
-a crafted link could trick a logged‑in administrator into minting a login link
-for an attacker‑chosen account just by visiting a page. Because it is present,
-the action can only be triggered deliberately from the admin UI. The link itself
-is a standard Drupal one‑time login link for the target account. Note that
-`administer users` is already an administrator‑equivalent permission, so the
-module introduces no new privilege boundary — but it does mean anyone who can
-administer users can generate a link that logs them in *as* another user.
+**How the links are scoped — worth understanding.** Both actions require the
+**Administer users** permission and are triggered from the admin UI. The link
+itself is a standard Drupal one‑time login link for the target account, so its
+lifetime, single use and expiry are handled by Drupal core exactly as for the
+normal password‑reset flow. Note that `administer users` is already an
+administrator‑equivalent permission in Drupal — anyone who holds it can already
+reset any account's password — so the module introduces no new privilege
+boundary; it does mean that whoever can administer users can generate a link that
+logs them in *as* another user, so grant the permission only to trusted staff.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
