@@ -2,7 +2,8 @@
 
 One field formatter that trims trailing zeros from core `decimal` fields (3.00 → "3", 3.23 → "3.23").
 Trivial module: no config page (`configure` null), no permissions, no services, no schema, no plugin
-types, no hooks to implement. Depends only on core `field`.
+types, no routes. The only hook is `hook_help()` (renders the README on the module's help page).
+Depends only on core `field`.
 
 Everything you need:
 - **Formatter plugin:** `human_decimal` (label "Human decimal"),

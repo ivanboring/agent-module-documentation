@@ -1,3 +1,4 @@
+<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 IDLC ("Config Filter - Ignore Disabled Languages") is a single `config_filter` plugin that stops Drupal's config export/import (`drush cex`/`cim`) from touching the `language.<langcode>` config collections of languages that are not installed on the current site.
 
 ---

@@ -1,5 +1,5 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-# jQuery UI Selectable — agent index
+# jQuery UI Selectable (jquery_ui_selectable) — agent index
 
 Marker/companion module that re-exposes the deprecated-in-core **jQuery UI Selectable** widget
 as a Drupal asset library. Ships only `.info.yml` — no config, permissions, plugins, JS, or
