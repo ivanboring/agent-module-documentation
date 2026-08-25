@@ -13,19 +13,14 @@ photographs, a competition entry with artwork. These involve files that are larg
 several, or both, often on connections worse than the developer's — and Drupal's
 stock widget gives no progress, no preview, and no recovery when an upload fails
 near the end. DropzoneJS supplies the interface half of that. It requires the
-**Webform** module and the **DropzoneJS** module.
+**Webform** module and the **DropzoneJS** module, and it configures like any
+other webform file‑upload element: allowed extensions, maximum file size, how many
+files are accepted, whether it is required, and the destination the files are
+stored in.
 
-A few things belong in any "nicer uploader" conversation, and they're all about
-the server rather than the browser — worth knowing whether or not you act on them
-directly:
-
-- **Client‑side validation is a convenience, not a guarantee.** Extension, size,
-  and count limits shown in the browser must be enforced again on submission,
-  because a decoupled uploader can post whatever it chooses.
-- **The upload endpoint should check the caller may write to that field**, not
-  merely that they're logged in.
-- **Abandoned uploads need collecting**, or a public form can turn into
-  unauthenticated disk consumption over time.
+Uploads use the DropzoneJS module's own upload endpoint, which is controlled by
+its **`dropzone upload files`** permission — grant that permission to the roles
+(including anonymous, for a public form) that should be able to use the element.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -58,7 +53,3 @@ file** appears as an element type you can add.
    size, and how many files it allows — then save.
 5. View the form and confirm the drag‑and‑drop upload area appears with previews
    and progress.
-
-> **Reminder:** treat the browser‑side extension/size/count limits as convenience
-> only, and make sure your form and file handling enforce the real limits and
-> access checks on the server side.

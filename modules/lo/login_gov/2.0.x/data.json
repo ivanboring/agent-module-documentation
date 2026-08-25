@@ -5,7 +5,11 @@
   "version": "2.0.x",
   "package": "User authentication",
   "composer_namespace": "drupal/login_gov",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/key_asymmetric": "^1.2",
+    "drupal/openid_connect": "^3.0",
+    "firebase/php-jwt": "^6.11"
+  },
   "dependent_modules": [
     "openid_connect:openid_connect (>=3.0)",
     "key_asymmetric:key_asymmetric (>=1.2.0)"
@@ -17,7 +21,9 @@
   "project_url": "https://www.drupal.org/project/login_gov",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "firebase/php-jwt"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
@@ -25,12 +31,13 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Security",
-    "Integrations"
+    "Access control",
+    "Security"
   ],
   "subcategories": [
-    "Single sign-on",
-    "Government"
+    "OAuth / OpenID Connect client",
+    "Single sign-on (SSO) provider",
+    "External authentication"
   ],
   "keywords": [
     "login.gov",

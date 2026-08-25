@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Config Suite adds import, export and automation around Drupal's configuration management, from a single administration screen.
+Config Suite automates Drupal's configuration export and import and lets a configuration export be reused across sites that have different UUIDs.
 
 ---
 
-Core's configuration workflow is a pair of commands and a synchronise screen, and it assumes a discipline that real teams do not maintain: change configuration, export it, commit it, import it elsewhere. The gaps are familiar. Someone changes a setting on production and forgets to export, so the next import silently reverts it. A partial export is difficult, so a developer working on one feature exports everything and produces a diff nobody can review. And there is no automation, so every step is a command somebody has to remember. This module collects improvements in that area behind `administer config suite`. Version **2.0.5** on core `^10.1 || ^11`. Two things to think about before adopting a tool in this space, both of which decide more than the tool does. **Automating export changes what a diff means**: once configuration is exported automatically, the diff stops being a record of deliberate change and becomes a record of everything including accidents, so the review step moves from "export" to "commit" and someone has to be doing it — the same point that applies to `config_auto_export`, documented earlier in this campaign. And **the durable answer to configuration drift is usually `config_readonly` rather than better export tooling**: making production configuration immutable removes the whole class of problem instead of managing it, at the cost of the friction that `config_readonly_menu_ui` exists to carve exceptions into. Reach for automation where the team genuinely cannot lock production, and for the lock where it can.
+Core's configuration workflow is a pair of Drush commands (`config:export`/`config:import`) plus a synchronise screen, and it assumes a discipline that real teams do not always keep: change configuration, export it, commit it, import it on the next environment. Config Suite removes the two Drush steps by wiring them to events. **Automatic export** listens for the config-save event and copies each saved item straight from the database into the `config_sync_directory` the moment a form is saved. **Automatic import** listens on every request and, for a user in the `administrator` role, runs a full core config import from the sync folder whenever that folder is newer than the last config write — so a `git pull` into the sync folder is applied simply by loading a page as an admin. It also **disables core's cross-site UUID check**, so an export taken from one site can be imported into another copy with a different `system.site:uuid` without the "Site UUID in source storage does not match the target storage." error. Both toggles live at `/admin/config/config_suite/admin_settings` behind the `administer config suite` permission and default to on; installing the module also performs a one-time full export so the sync folder matches the running site. Version **2.0.5** on core `^10.1 || ^11`, with no dependencies beyond core. Two things are worth weighing before adopting automation here: automating export means the git diff records every config save (accidents included), so the review step effectively moves to your VCS commit; and where a team can lock production instead, making configuration immutable with `config_readonly` removes configuration drift rather than continuously reconciling it.
 
 ---
 
-- Export configuration from an admin screen.
-- Import configuration without the CLI.
-- Automate a configuration workflow.
-- Reduce configuration drift.
-- Export a subset of configuration.
-- Support a team without CLI access.
-- Review configuration changes before import.
-- Automate export after a change.
-- Support a config-driven deployment.
-- Reduce forgotten exports.
-- Manage configuration on a hosted platform.
-- Compare active and stored configuration.
-- Support a client-managed site.
-- Simplify a configuration handover.
-- Export configuration for a migration.
-- Support an agency workflow.
-- Reduce configuration mistakes.
-- Manage config without drush.
+- Automatically export configuration to the sync folder when a form is saved.
+- Automatically import pending configuration when an admin loads a page.
+- Reuse a configuration export from one site on another with a different UUID.
+- Avoid running `drush config:export` after every change.
+- Avoid running `drush config:import` after a git pull.
+- Keep the sync folder continuously in step with the database.
+- Deploy configuration by committing sync files and pulling on the target.
+- Onboard a new site copy from an existing site's exported config.
+- Skip the "Site UUID does not match" error when importing foreign config.
+- Reduce forgotten configuration exports.
+- Support a git-based configuration workflow.
+- Let non-CLI admins apply configuration by browsing the site.
+- Move configuration between local, staging and production copies.
+- Toggle automatic import on or off per environment.
+- Toggle automatic export on or off per environment.
+- Seed the sync folder with the full active config at install time.
+- Keep configuration collections in sync alongside the main config.
+- Compare the sync folder against active config on each admin request.
+- Reduce manual steps in a configuration deployment.
+- Support a client-managed site where admins avoid the CLI.

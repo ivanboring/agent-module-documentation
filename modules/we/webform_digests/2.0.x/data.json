@@ -1,12 +1,14 @@
 {
-  "name": "Webform Digests",
+  "name": "Webform Submissions Notification",
   "data_name": "webform_digests",
   "description": "Periodic digest emails of webform submissions.",
   "version": "2.0.x",
-  "package": null,
+  "package": "Webform",
   "composer_namespace": "drupal/webform_digests",
   "composer_requirements": {},
-  "dependent_modules": [],
+  "dependent_modules": [
+    "webform:webform"
+  ],
   "configure": null,
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
@@ -17,17 +19,18 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
-  "provides_drush_commands": false,
+  "provides_permissions": true,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Integrations",
-    "Workflow"
+    "Forms and surveys",
+    "Automation"
   ],
   "subcategories": [
-    "Webform",
-    "Notifications"
+    "Submission handling",
+    "Email / mail delivery",
+    "Cron / task scheduling"
   ],
   "keywords": [
     "webform",
@@ -35,7 +38,9 @@
     "email",
     "submissions",
     "summary",
-    "cron"
+    "cron",
+    "notification",
+    "queue"
   ],
   "project_description": "This module adds a daily digest email for webform submissions. These are customised per webform and can optionally have conditions attached to determine which submissions are flagged. All fields allow tokenised input to allow the values to be altered based on webform / source entity.\n\n Installation \n This module defines a custom cron job so it can be determined how frequently the cron job runs.\n\n The pre defined setup is for it to run daily using Drupal's cron hook.",
   "maintenance_status": "Actively maintained",

@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Webform DropzoneJS adds a DropzoneJS-backed upload element to Webform, giving drag-and-drop, previews and progress in place of the plain file input.
+Webform DropzoneJS adds a DropzoneJS-backed drag-and-drop upload element to Webform, giving previews and progress in place of the plain file input.
 
 ---
 
-Forms that collect files are forms where the upload is the hardest part for the submitter. A job application with a CV, a grant submission with supporting documents, a claim with photographs, a competition entry with artwork — each involves files that are large, several, or both, on connections that are worse than the developer's. Drupal's stock widget is an `<input type="file">` and a page submit: no progress, no preview, no indication that anything is happening during a two-minute upload, and no recovery when it fails at ninety percent. DropzoneJS supplies the interface half of that. Version **1.1.0** on `^9 || ^10 || ^11`, requiring `webform` and **`dropzonejs`** — the latter is a hard dependency and is not pulled in automatically by the project's composer metadata, so enabling this without installing `dropzonejs` first fails with a missing-dependency error. Three things belong in any conversation about a nicer uploader, and they are all about the server rather than the browser. **Client-side validation is a convenience**: extension, size and count limits shown in the browser must be enforced again on submission, because a decoupled uploader posts what it chooses. **The endpoint must check the caller may write to that field**, not merely that they are logged in — a chunked or AJAX upload endpoint gated only on being authenticated is a recurring finding in this campaign. And **abandoned uploads need collecting**, or a public form becomes unauthenticated disk consumption.
+The module provides one Webform element, **DropzoneJS**, listed in the webform element browser under **File upload elements**. It is version **1.1.0** and runs on `^9 || ^10 || ^11`, and it has two hard dependencies: **`webform`** and **`dropzonejs`**. The `dropzonejs` dependency is not pulled in automatically by this project's composer metadata, so it must be installed first (along with the Dropzone JS library that `dropzonejs` itself needs) — enabling `webform_dropzonejs` without `dropzonejs` present fails with a missing-dependency error. Once enabled, add the **DropzoneJS** element to any webform and configure it like a normal managed-file element: allowed file extensions, whether multiple files are accepted (`#multiple`), maximum file size in megabytes, whether the field is required, and the upload destination (the file storage scheme and directory the saved files are written to). Because the element extends webform's `WebformManagedFileBase`, its allowed-extensions setting falls back to the site default at `webform.settings` → `file.default_managed_file_extensions` when left blank, and submitted files become permanent Drupal `file` entities attached to the submission. On the front end the widget lets submitters drag files in, shows a thumbnail preview for images, reports progress, and offers remove links; on an existing submission the previously-uploaded files are re-shown in the Dropzone and can be removed. Uploads reuse the `dropzonejs` core upload endpoint, which is gated by the core **`dropzone upload files`** permission — grant that permission to the roles (including anonymous, for public forms) that should be able to use the element.
 
 ---
 
-- Add drag-and-drop upload to a form.
-- Collect a CV on an application form.
-- Upload supporting documents to a grant form.
-- Show upload progress to submitters.
-- Accept photographs on a claim form.
-- Upload artwork for a competition.
-- Improve upload on a slow connection.
-- Preview an image before submitting.
-- Upload several files at once.
-- Reduce failed uploads on mobile.
-- Accept large files on a webform.
-- Improve a job application form.
-- Collect evidence files.
-- Upload a portfolio to a form.
-- Reduce support requests about uploads.
-- Accept documents on a tender form.
-- Improve a report-a-problem form.
-- Upload scans to a public form.
+- Add a drag-and-drop upload element to a webform.
+- Collect a CV or resume on a job-application form.
+- Attach supporting documents to a grant or funding submission.
+- Accept photographs on an insurance or damage claim form.
+- Upload artwork or entries for a competition form.
+- Let submitters upload several files at once in one field.
+- Show image thumbnails as files are added to the form.
+- Show upload progress on a form with large attachments.
+- Replace the plain `<input type="file">` widget with a nicer uploader.
+- Accept scanned documents on a public request form.
+- Collect evidence or attachment files on a report-a-problem form.
+- Upload a portfolio or work samples on an application.
+- Restrict accepted files to a specific extension list per element.
+- Cap the number of files a submitter may attach.
+- Cap the maximum size of each uploaded file.
+- Make a file upload mandatory on a webform.
+- Store submitted files in a private file directory.
+- Re-show and let users remove already-attached files when editing a submission.
+- Accept documents on a tender or procurement form.
+- Add multi-file upload to a contact or intake form.

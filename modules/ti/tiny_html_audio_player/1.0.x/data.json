@@ -5,7 +5,10 @@
   "version": "1.0.x",
   "package": "Fields",
   "composer_namespace": "drupal/tiny_html_audio_player",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/howlerjs": "^1",
+    "drupal/core": "^9.3 || ^10 || ^11"
+  },
   "dependent_modules": [
     "howlerjs:howlerjs"
   ],
@@ -17,18 +20,20 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/fontawesome": "^2"
+  },
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Media management",
+    "Media",
     "Content display"
   ],
   "subcategories": [
-    "Audio",
+    "Audio embedding",
     "Field formatters"
   ],
   "keywords": [

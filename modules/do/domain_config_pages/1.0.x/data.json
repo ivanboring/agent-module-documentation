@@ -5,7 +5,10 @@
   "version": "1.0.x",
   "package": "Domain",
   "composer_namespace": "drupal/domain_config_pages",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/config_pages": "^2.0",
+    "drupal/domain": "^2.0"
+  },
   "dependent_modules": [
     "config_pages:config_pages",
     "domain:domain"
@@ -29,7 +32,7 @@
     "Administration tools"
   ],
   "subcategories": [
-    "Multi-site / domains",
+    "Multi-domain / affiliate sites",
     "Configuration management"
   ],
   "keywords": [

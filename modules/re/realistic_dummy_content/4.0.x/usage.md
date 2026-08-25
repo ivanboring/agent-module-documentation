@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Realistic Dummy Content generates demo content that looks like real content — using supplied images and text templates rather than the lorem-ipsum-and-grey-boxes that core's Devel Generate produces.
+Realistic Dummy Content makes Devel's `devel_generate` produce demo content that looks real — portraits, stock photos and proper sentences supplied from files — instead of lorem-ipsum text and grey placeholder boxes.
 
 ---
 
-The difference matters more than it sounds. A design reviewed against `Bfjkl Qwerty Xzcv` and a grey placeholder is a design nobody has actually seen: real headlines are longer than the mock, real photographs are the wrong aspect ratio, real names break the column, and every one of those is discovered after launch when the content arrives. Generating plausible content instead — proper sentences, images of the right shape, names of realistic length — surfaces those problems while they are still cheap. It also makes a demo persuasive: a stakeholder shown a site full of placeholder text is being asked to imagine the product, and one shown plausible content is looking at it. The module reads from a directory structure of images and text you supply, so the content resembles *this* site's content rather than generic filler, with a `realistic_dummy_content_api` submodule providing the mechanism. Version **4.0.0-beta1** on core `^10 || ^11`, in the Development package and tagged `developer`. **Its own description says "Do not enable on production sites", and that is the operative instruction**: a content generator on a live site is one mistaken command away from thousands of entities that then have to be identified and removed, and content-generation modules are a standing item on any inherited-site audit for exactly that reason. Keep it in `require-dev` so it cannot be enabled where it does not belong, and pair it with a way to remove what it created.
+Install both this module and Devel's `devel_generate` (`ddev composer require drupal/devel drupal/realistic_dummy_content`, then `ddev drush en realistic_dummy_content devel_generate`); the parent module pulls in its `realistic_dummy_content_api` submodule automatically. With that in place, generating content the normal Devel way (`drush devel-generate-content`, `drush devel-generate-users`, or the *Configuration → Development → Generate content* forms) yields articles with real stock images and body text, and users with real profile portraits — because a `hook_entity_presave` in the API module rewrites each generated entity's fields from a directory of example files. To use **your own** content, reproduce the directory layout `MYMODULE/realistic_dummy_content/fields/{entity_type}/{bundle}/{field_name}/` in a custom module and drop in `.txt` files (text) or `.jpg/.png/.gif` files (images), optionally with `*.format.txt` / `*.alt.txt` companion files for a body's text format or an image's alt text; if you want only your content, keep `realistic_dummy_content_api` enabled and disable the example `realistic_dummy_content` module. For scripted, ordered generation (for example *4 pages then 10 articles*), write a **recipe** class and run `drush generate-realistic` (alias `grc`). Content selection is random by default; flip the `realistic_dummy_content_api_rand` config value off for reproducible output. The module is a **beta** in the Development package and its own description says *"Do not enable on production sites"* — keep it in `require-dev` and use it in development, CI and demo environments only.
 
 ---
 
-- Generate realistic demo content.
-- Review a design with plausible text.
-- Populate a site for a stakeholder demo.
-- Test layouts with real-length headlines.
-- Generate content with proper images.
-- Fill a site for user testing.
-- Test a view with realistic data.
-- Check a design against long names.
-- Populate a development environment.
-- Generate content for a training site.
-- Test pagination with volume.
-- Check responsive layouts with real images.
-- Prepare a sales demonstration.
-- Test search with meaningful text.
-- Generate content matching a site's domain.
-- Populate a prototype.
-- Test performance with content volume.
-- Generate fixtures for manual testing.
+- Generate realistic demo articles with stock photos instead of grey boxes.
+- Give devel-generated users real profile portraits.
+- Review a page design against real-length headlines and body text.
+- Populate a fresh site for a stakeholder or sales demo.
+- Fill a development environment with plausible content.
+- Supply your own images/text by mirroring the `realistic_dummy_content/fields/...` directory.
+- Add example content to a custom module for its own demo.
+- Set a specific text format for generated body fields via `*.format.txt` files.
+- Set alt text on generated images via `*.alt.txt` files.
+- Script a fixed sequence of entities with a recipe and `drush generate-realistic`.
+- Regenerate a bundle from scratch using the recipe `kill => TRUE` option.
+- Produce reproducible fixtures by switching selection from random to sequential.
+- Seed content for automated or manual QA testing.
+- Test Views, pagers and search against meaningful, volume content.
+- Check responsive image layouts with real photographs.
+- Populate a training or documentation site with believable data.
+- Keep only your custom content by disabling the example module and keeping the API submodule.
+- Add realistic dummy support for a custom field type via the manipulator alter hook.
+- Mark non-devel content as "dummy" for replacement via the dummy-detection hook.
+- Prototype a content model quickly before real content exists.

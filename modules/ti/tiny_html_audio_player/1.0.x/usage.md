@@ -1,27 +1,30 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-tiny-player HTML audio player renders an audio field with a compact custom player, built on the Howler audio library.
+tiny-player HTML audio player renders a file field's audio as a compact custom player built on the Howler JavaScript library.
 
 ---
 
-The browser's native `<audio>` element works, is accessible by default, and looks different in every browser — which is fine for a single file on a page and unsatisfying for a site where audio is the content. A site publishing a podcast, an oral-history archive, a language course or a music catalogue wants a player that matches its design and behaves the same everywhere, and that means a custom player driving the audio through JavaScript. This one uses **Howler**, documented earlier in this campaign, which is the sensible choice: it abstracts the Web Audio API with an HTML5 Audio fallback and handles the browsers' quite different autoplay and codec behaviour. Version **1.0.4** on core `^9.3 || ^10 || ^11`. Three things to check with any custom audio player, because replacing a native control means taking on what it provided for free. **Keyboard operation**: play and pause on the space bar, seek with arrow keys, and a focusable control for each — a player operable only by clicking is unusable without a mouse. **Screen-reader state**: the play button's accessible name must change with state, and progress needs to be announced or at least exposed, or the player is a set of unlabelled buttons. And **a transcript is not optional** — a text alternative is a WCAG requirement for prerecorded audio, and it is also the only way the spoken content becomes searchable, which is usually what the site wanted from the audio in the first place.
+The module adds a single field formatter, **tiny-player HTML audio player**, to any **file** field that holds audio. To use it, add or reuse a file field (for example on an article or a media type), then on the entity's **Manage display** tab pick that formatter for the field; its settings — **show controls**, **autoplay** and **loop** — map straight onto the emitted `<audio>` element, and a multiple-files option controls whether several uploads render as separate players or one player with multiple sources. Rendering is entirely client-side enhancement: the formatter outputs an `<audio class="iru-tiny-player"><source></audio>` block and attaches `js/tinyPlayer.js`, which drives playback through **Howler** (the required `howlerjs` module), the sensible engine because it abstracts the Web Audio API with an HTML5 Audio fallback and smooths over the browsers' different autoplay and codec behaviour. The player library (MIT-licensed) is bundled with the module, and Font Awesome supplies the control icons — installed from a CDN by default, or served locally if you add the suggested `fontawesome` module. There is no settings page, permission or route: everything is per-field on Manage display. Because a custom player replaces a native control, check the three things a native `<audio>` gave for free — **keyboard operation** (play/pause and seek without a mouse), **screen-reader state** (the play control's accessible name should change with state), and **a transcript**, which is a WCAG requirement for prerecorded audio and also the only way the spoken content becomes searchable. Version **1.0.4**, core `^9.3 || ^10 || ^11`.
 
 ---
 
-- Play a podcast episode from a field.
-- Add a compact audio player to a page.
-- Publish an oral history recording.
-- Play a language course's audio.
-- Add a music sample player.
-- Match a player to the site's design.
+- Play a podcast episode from a file field.
+- Add a compact audio player to a content type.
+- Enable the player on an article's audio upload.
+- Publish an oral-history recording.
+- Play a language course's audio clips.
+- Add a music-sample player to a page.
+- Match an audio player to the site's design.
+- Show playback controls, autoplay or loop per field.
+- Render multiple audio uploads as separate players.
 - Play an interview recording.
-- Add audio to an article.
+- Add audio to an article body's attachment field.
 - Publish a lecture recording.
 - Play a pronunciation clip.
-- Add a consistent player across browsers.
-- Publish an audio guide.
-- Play a radio programme archive.
-- Add audio to a portfolio.
-- Publish a recorded reading.
-- Play a meditation track.
-- Add audio to a course page.
-- Publish a conference recording.
+- Get a consistent player look across browsers.
+- Publish an audio guide or walking tour.
+- Play a radio-programme archive item.
+- Add audio to a portfolio entry.
+- Publish a recorded reading or audiobook chapter.
+- Play a meditation or ambient track.
+- Publish a conference-session recording.
+- Serve the player icons locally by adding Font Awesome.

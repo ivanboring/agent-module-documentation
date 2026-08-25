@@ -1,9 +1,9 @@
 {
   "name": "Toolbar Edit Page Button",
   "data_name": "toolbar_edit_page_button",
-  "description": "Adds an edit button for the current page to the toolbar.",
+  "description": "Adds an admin-toolbar button linking to the current node's edit form.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Administration",
   "composer_namespace": "drupal/toolbar_edit_page_button",
   "composer_requirements": {},
   "dependent_modules": [],
@@ -17,22 +17,22 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience",
     "Administration tools"
   ],
   "subcategories": [
-    "Admin UI",
-    "Editorial productivity"
+    "Admin toolbar / navigation"
   ],
   "keywords": [
     "toolbar",
     "edit",
     "button",
+    "node",
     "shortcut",
     "editorial",
     "navigation"

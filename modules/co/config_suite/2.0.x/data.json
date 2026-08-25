@@ -1,11 +1,13 @@
 {
   "name": "Config Suite",
   "data_name": "config_suite",
-  "description": "Improvements to the configuration management workflow.",
+  "description": "Automatic config export/import and cross-site config reuse for Drupal.",
   "version": "2.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/config_suite",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/core": "^10.1 || ^11"
+  },
   "dependent_modules": [],
   "configure": "config_suite.config_suite_form",
   "core_version_requirement": "^10.1 || ^11",
@@ -27,15 +29,17 @@
   ],
   "subcategories": [
     "Configuration management",
-    "Deployment"
+    "Deployment / release management"
   ],
   "keywords": [
     "configuration",
+    "config",
+    "sync",
     "import",
     "export",
-    "workflow",
     "automation",
-    "config"
+    "uuid",
+    "deployment"
   ],
   "project_description": "Config Suite is a set of improvements to the core config system that eases the experience of working with configuration. \n\n Config Suite now has three big features that will change the way you do Drupal site building.\n\n Back to top \n\n Automatic Configuration Import\n\nYou'll never need import configuration again. Drush config-import (Drush cim). Simply update your sync folder with a git pull, or some other way to manage your files. Then load a page as an admin. That's it! Configuration imported. There's a slight delay during the import, but when there's no import needed, it's lightning fast.\nAutomatic Configuration Export\nYou'll never need to use drush config-export (drush cex) again. Simply save a form and the files in your config sync folder update.\nConfig Suite automatically exports when you change it by listening for the config save event. It takes configuration out of the database and puts it into the file system with no manual steps.\nReuse Configuration Between Sites\nConfig Suite allows you to reuse configuration created in one site in a new site with a different UUID. This fixes:\n\"Site UUID in source storage does not match the target storage.\"\nThanks\nSpecial Thanks to Maria Fisher and Sam Mortenson for some amazing code to make Config Suite possible.\nProject Goals\nThis project goal is to make configuration easier to reuse, edit, and deploy.\n Back to top",
   "maintenance_status": "Actively maintained",

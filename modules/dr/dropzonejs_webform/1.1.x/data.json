@@ -5,7 +5,9 @@
   "version": "1.1.x",
   "package": "Webform",
   "composer_namespace": "drupal/dropzonejs_webform",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/core": "^9 || ^10 || ^11"
+  },
   "dependent_modules": [
     "webform:webform",
     "dropzonejs:dropzonejs"
@@ -22,14 +24,14 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Media management",
-    "Content editing experience"
+    "Forms and surveys",
+    "Media"
   ],
   "subcategories": [
-    "Webform",
+    "Webform elements",
     "File uploads"
   ],
   "keywords": [
