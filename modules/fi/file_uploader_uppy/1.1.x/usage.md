@@ -1,27 +1,30 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-File Uploader by Uppy plugs the Uppy JavaScript uploader into the `file_uploader` module, replacing the plain file input with drag-and-drop, progress, previews and resumable transfers.
+File Uploader by Uppy plugs the Uppy JavaScript uploader into the File Uploader module, replacing the plain file input with a drag-and-drop Dashboard that shows progress, previews, and optional inline image editing.
 
 ---
 
-Drupal's stock file widget is an `<input type="file">` and a page submit, and the gap between that and what people expect from any modern application is wide: no drag target, no progress indication, no preview, no recovery when a large upload fails at ninety percent on a hotel wifi. Uppy is the widely used open-source answer, and it brings the piece that matters most for large files — **chunked, resumable uploads**, so a dropped connection resumes rather than restarting, and a file larger than PHP's `upload_max_filesize` can arrive in pieces. This module is the Drupal binding, depending on `file_uploader` which supplies the server side; version **1.1.0** on `^9 || ^10 || ^11`. The security questions belong to the server side and are worth stating because chunked upload endpoints are a recurring source of trouble: whether the endpoint enforces the **field's own** validators (extension, size, count) rather than only the site-wide ones, whether it checks the caller may write to the target field at all rather than merely being logged in, and whether abandoned partial uploads are ever collected — the campaign has recorded exactly those failures in other chunked-upload modules. The `file_uploader` parent was reviewed earlier in this campaign and its access handling held; that review is the right starting point rather than assuming it applies unchanged to a different front end.
+Drupal's stock file widget is an `<input type="file">` plus a page submit, which gives editors no drag target, no progress indication, no preview, and no way to fix a large upload that fails partway. This module swaps in **Uppy's Dashboard** for any `file` or `image` field: drag-and-drop, a queue of pending files, live progress, thumbnails, and an optional **Image Editor** (crop, rotate, zoom, flip) applied to new uploads before they are sent. Install it with `composer require drupal/file_uploader_uppy` (it pulls in **File Uploader**, `drupal/file_uploader`, which supplies the server side), enable the module, then go to **Manage form display** for the entity type, switch the file/image field's widget to **"File uploader by Uppy"**, and use the gear icon to set options — auto-proceed, progress details, status-bar and informer visibility, thumbnail size, the image editor and its allowed actions, and a light/dark/auto **theme**. Uppy uploads each file via its XHR plugin to the File Uploader endpoint, which saves the file and returns its id; the widget collects those ids so they become the field value on submit. The field's own **allowed extensions, maximum size, and cardinality** (set on the ordinary File/Image field settings) still govern what is accepted — Uppy mirrors them into its client-side hints, and the server enforces them. Interface translations load automatically for the current language via Uppy's locale files, and a `hook_file_uploader_uppy_locale` alter hook lets a custom module add or remap languages.
 
 ---
 
-- Add drag-and-drop file uploads.
-- Show upload progress to editors.
-- Resume an interrupted upload.
-- Upload files larger than the PHP limit.
-- Preview an image before saving.
-- Upload several files at once.
-- Improve the media upload experience.
-- Reduce failed large-file uploads.
-- Support uploads on unreliable connections.
-- Give editors a modern uploader.
-- Upload video files reliably.
-- Show a queue of pending uploads.
-- Cancel an upload in progress.
-- Reduce support requests about uploads.
-- Upload from a mobile device.
-- Support a document library workflow.
-- Replace the stock file widget.
-- Handle a batch of photographs.
+- Add drag-and-drop file uploads to a content type.
+- Show live upload progress to editors.
+- Preview images before they are saved.
+- Let editors crop, rotate, zoom, or flip an image before upload.
+- Upload several files into one field at once.
+- Replace the stock file/image widget with a modern uploader.
+- Give a document-library workflow a friendlier upload UI.
+- Improve the media upload experience for authors.
+- Auto-start uploads as soon as files are dropped.
+- Show or hide progress details in the status bar.
+- Hide the cancel button for a simpler interface.
+- Enlarge a single-file preview for photo fields.
+- Set custom thumbnail dimensions for previews.
+- Choose a light, dark, or auto Dashboard theme.
+- Restrict the image editor to specific actions (e.g. crop only).
+- Upload from a mobile device with a touch-friendly UI.
+- Localize the uploader UI to the site's language.
+- Add or remap an Uppy locale from a custom module.
+- Reduce support requests about the upload experience.
+- Handle a batch of photographs in a gallery field.
+- Theme the uploader wrapper via the `file_uploader_uppy` template.

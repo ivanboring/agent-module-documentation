@@ -1,7 +1,7 @@
 {
   "name": "Attach Inline",
   "data_name": "attachinline",
-  "description": "Attach inline JS/CSS snippets to a render array.",
+  "description": "Attach inline JS/CSS snippets to a render array via #attached.",
   "version": "8.x-1.x",
   "package": null,
   "composer_namespace": "drupal/attachinline",
@@ -15,7 +15,9 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/csp": "Restrict authorized inline code to limit XSS vulnerability"
+  },
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
@@ -26,8 +28,8 @@
     "Theming"
   ],
   "subcategories": [
-    "Asset libraries",
-    "Render API"
+    "CSS / JS injection",
+    "JavaScript libraries"
   ],
   "keywords": [
     "inline",
@@ -35,7 +37,9 @@
     "css",
     "assets",
     "render array",
-    "library"
+    "library",
+    "csp",
+    "attachments"
   ],
   "project_description": "Inline JavaScript should be re-rewritten for Drupal 8 to define libraries and use drupalSettings to pass data.\n\n When inline code blocks are absolutely necessary, this module extends Drupal's asset system to allow attaching inline scripts and styles to render array elements.\n\n When using Content Security Policy module , hashes are automatically added to the page's policy to remove the need for 'unsafe-inline' , and limit the risk of Cross Site Scripting vulnerabilities.\n\n Example Usage \n <?php\n\n$render['element'] = [\n\n '#attached' => [\n\n // Existing Functionality\n\n 'library' => [\n\n 'drupal/drupalSettings'\n\n ],\n\n 'drupalSettings' => ['module' => $data],\n\n // New functionality\n\n 'js' => [\n\n [\n\n 'data' => 'alert(\"Hi!\")',\n\n 'scope' => 'header',\n\n 'dependencies' => ['core/jquery'],\n\n ],\n\n ],\n\n 'css' => [\n\n [\n\n 'data' => '#logo { border 1px solid #000; }',\n\n 'attributes' => [\n\n 'media' => 'all',\n\n ]\n\n 'group' => CSS_THEME,\n\n ],\n\n ],\n\n ],\n\n];\n\n?>",
   "maintenance_status": "Actively maintained",

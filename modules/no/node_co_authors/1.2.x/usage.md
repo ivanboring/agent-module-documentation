@@ -1,36 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Node Co-Authors adds a co-authors field to nodes and grants those users the same rights over the content that the author has.
+Node Co-Authors adds a co-authors field to nodes and grants those users the same "own content" rights over the node that the author has.
 
 ---
 
-Drupal's ownership model has exactly one author per node, and every "own content" permission keys off it. That works until two people write something together, or a piece is handed over, or a team shares responsibility for a section — at which point the choices are to give everyone `edit any` (far too much) or to move the author field around (losing the record of who wrote it). Co-authorship is the missing middle. The implementation is worth reading as a model of how this should be done. A `co_authors` base field on nodes holds user references, and `hook_ENTITY_TYPE_access()` grants nothing on its own — it **requires the permission as well**:
-
-```php
-if ($op === 'update') {
-  return AccessResult::allowedIfHasPermission($account, 'edit own ' . $type . ' content')
-    ->andIf($isCoAuthor);
-}
-```
-
-`andIf`, not `orIf`. A co-author gets exactly the rights they would already have over their own content of that type, and no more — so naming someone a co-author cannot hand them a capability their role does not carry. Cache metadata is set correctly too (`cachePerUser()`, plus the node as a cacheable dependency). Version **1.2.3** on `^9 || ^10 || ^11`, depending on core `node`. Three permissions control who may edit the co-author list — for own content, for co-authored content, and for all content — and the second is the one to think about, since it lets a co-author add further co-authors, which is a chain worth deciding on deliberately.
+Install it with `composer require drupal/node_co_authors` and enable it (`drush en node_co_authors`); it depends only on core's **node** module and needs no configuration. Enabling it adds a revisionable, unlimited-cardinality **Co-authors** base field (an entity reference to users) to every content type, shown by default in the node form's Authoring-information group with an autocomplete widget — you can move or hide it per content type through the node's *Manage form display* / *Manage display* screens. Who may **edit that co-author list** is controlled by three permissions the module provides — *Edit the co-authors of own content*, *…of co-authored content*, and *…of all content* — plus `administer nodes`; grant them only to trusted roles, and note that the "co-authored content" one lets an existing co-author add further co-authors. What a co-author can then **do** with the node is deliberately tied to the standard "own content" permissions: `node_co_authors_node_access()` allows a co-author to edit, delete, or view-while-unpublished a node **only when they also hold** `edit own <type> content`, `delete own <type> content`, or `view own unpublished content` respectively (it conjoins the two with `->andIf()`, never granting more than the user's role already carries and never spilling to nodes they were not added to). The module also ships a Views filter, **(Co-)author name (autocomplete)**, that matches content by author or any co-author, and a `[node:co_authors_email]` token that returns co-authors' email addresses for use in notifications.
 
 ---
 
 - Let two people edit one article.
-- Share ownership of a page.
-- Hand content over without changing the author.
-- Give a team edit rights to their section.
-- Credit a second writer.
-- Avoid granting edit any content.
+- Share ownership of a page without changing its author.
+- Hand content over while keeping the original author on record.
+- Give a team edit rights to their own section.
+- Credit a second writer on a node.
+- Avoid granting the far-too-broad `edit any content`.
 - Let an editor co-own a colleague's draft.
 - Support a collaborative writing workflow.
 - Allow a deputy to maintain a page.
-- Keep the original author recorded.
-- Let a co-author view an unpublished draft.
-- Support a departmental content owner.
-- Delegate maintenance of a page.
-- Share a landing page between teams.
-- Cover for a colleague's absence.
+- Let a co-author view an unpublished draft they were added to.
+- Let a co-author delete their shared content when they have delete-own rights.
+- Restrict who may add co-authors using the three module permissions.
+- Let a trusted co-author add further co-authors (delegation chain).
+- Cover for a colleague's absence on specific nodes.
 - Support pair-authored documentation.
-- Let a co-author delete their shared content.
-- Model shared editorial responsibility.
+- Move or hide the Co-authors field per content type via Manage form display.
+- Build a View listing nodes where a user is author or co-author.
+- Email co-authors using the `[node:co_authors_email]` token.
+- Model shared editorial responsibility for a departmental content owner.
+- Delegate maintenance of a landing page shared between teams.

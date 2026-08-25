@@ -1,9 +1,9 @@
 {
   "name": "Admin Theme Change",
   "data_name": "theme_change",
-  "description": "Changes the admin theme for selected pages.",
+  "description": "Switches the active theme for selected paths or routes via a theme negotiator, configured as config entities.",
   "version": "4.0.x",
-  "package": null,
+  "package": "Other",
   "composer_namespace": "drupal/theme_change",
   "composer_requirements": {},
   "dependent_modules": [
@@ -28,8 +28,8 @@
     "Administration tools"
   ],
   "subcategories": [
-    "Admin theme",
-    "Routing"
+    "Theme negotiation",
+    "Admin theme integration"
   ],
   "keywords": [
     "theme",
@@ -37,7 +37,8 @@
     "path",
     "route",
     "negotiation",
-    "switch"
+    "switch",
+    "config entity"
   ],
   "project_description": "This theme change module is used to show ANY SELECTED theme based on selective routes/paths and render the selected theme for that route/path.\n\nTheme Change module helps users to set the theme for the different path(s)/route(s).\n\n Note: If the user has permissions to view SELECTED theme, then the only theme will be accessible.\n\nEx: If any authenticated user wants to view '/abc' route in admin theme and '/xyz' in CUSTOM theme this module will help to show selected routes/paths in respectively selected theme.\n\n Added Delete Option and Wildcard for Paths.",
   "maintenance_status": "Actively maintained",

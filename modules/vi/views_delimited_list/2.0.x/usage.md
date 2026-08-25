@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Views Delimited List renders a view's results as a single run of text separated by a delimiter — "Design, Engineering, Marketing" rather than a bulleted list.
+Views Delimited List adds a Views display style that renders a view's results as one inline run of text — "Design, Engineering, and Marketing" — instead of a bulleted list, table, or grid.
 
 ---
 
-Small inline lists are everywhere and Views' built-in styles make them awkward. A node's tags in a byline, the authors of a paper, the departments a service belongs to, a set of file formats — each wants to read as a sentence fragment, comma-separated, with the delimiter appearing between items and not after the last one. Views offers HTML list, table, grid and unformatted, and producing an inline comma-separated run from any of them means CSS that fights the markup or a template override on every site that needs one. A style plugin is the right layer: it governs how the result set as a whole is wrapped, which is exactly what "join these with a delimiter" is. Version **2.0.0** on `^9 || ^10 || ^11`, depending on core `views`. Two things it is worth checking against the requirement, since they are where implementations differ. **The last separator** is a typographic decision — English prose often wants "A, B and C" rather than "A, B, C" — so if the output is read as prose rather than as data, confirm whether a distinct final delimiter is configurable. And **the delimiter must be escaped** in any context where it is also the field separator: exporting a comma-delimited list into a CSV cell produces a broken file unless the cell is quoted, so a delimited *display* and a delimited *export format* are different jobs and should not be confused.
+Install it like any contrib module (`ddev composer require drupal/views_delimited_list` then enable **Views Delimited List**); it only needs core **Views**. To use it, edit a View, set **Format** to **Delimited text list**, and open its **Settings**. There you set the **Delimiter text** (default `, `), a **Conjunctive text** for the word before the final item (default ` and `), a **Prefix** and **Suffix** placed inline around the whole run, and length-dependent rules: **Separator between two items**, a **Long list count** threshold (2 or 3), and **Separator before last item in long list** — each choosing Delimiter, Conjunctive, or Both, which is how you switch between US style ("A, B, and C") and UK style ("A, B and C"). The style must be used with a **Fields** row, and for the items to sit on one line the fields you display should be set to *inline*; the module ships a whitespace-trimmed fields template so rows do not add stray gaps. All text you type into these settings is escaped by Twig on output like any other Views text — so treat the delimiter and conjunctive as literal display text, not as a place to inject markup. Note that the default conjunctive stores the HTML entity `&nbsp;`, which shows literally; use a plain space or a real non-breaking space character if you want that spacing.
 
 ---
 
-- Show tags as a comma-separated list.
-- List authors inline in a byline.
-- Render departments as a sentence fragment.
-- Avoid a bulleted list for two items.
-- Show categories inline.
-- Produce a compact related-items list.
-- List file formats after a title.
-- Show a service's locations inline.
-- Render a list into a meta line.
-- Avoid a template override for a small list.
-- Show keywords under an article.
-- List speakers at an event.
+- Show a node's tags as a comma-separated list.
+- List the authors of a paper inline in a byline.
+- Render the departments a service belongs to as a sentence fragment.
+- Avoid a bulleted list when there are only two items.
+- Show taxonomy categories inline under a title.
+- Produce a compact related-items line.
+- List available file formats after a document title.
+- Show a service's locations on one line.
+- Render a list of values into a meta line.
+- Avoid a per-site template override for a small inline list.
+- Show article keywords beneath the body.
+- List the speakers at an event.
 - Render a compact taxonomy summary.
 - Show a product's available sizes.
-- List contributors to a page.
-- Produce a pipe-separated list.
-- Show a breadcrumb-like trail.
-- Render an inline list in a teaser.
+- List the contributors to a page.
+- Produce a pipe-separated or slash-separated run by changing the delimiter.
+- Switch a list between US ("A, B, and C") and UK ("A, B and C") punctuation.
+- Wrap the list in a prefix/suffix such as "Tags:" and a period.
+- Render an inline list inside a teaser or card.
+- Show an entity reference field's targets as one readable sentence.

@@ -1,7 +1,7 @@
 {
   "name": "AJAX BigPipe",
   "data_name": "ajax_big_pipe",
-  "description": "Sends pages using the BigPipe technique.",
+  "description": "Lazy-loads placeholdered blocks via AJAX when they scroll into view, extending core BigPipe.",
   "version": "1.0.x",
   "package": "Web services",
   "composer_namespace": "drupal/ajax_big_pipe",
@@ -29,15 +29,19 @@
     "Decoupled"
   ],
   "subcategories": [
-    "Caching",
-    "Progressive rendering"
+    "Lazy loading",
+    "Progressive decoupling",
+    "REST / web services"
   ],
   "keywords": [
     "bigpipe",
     "ajax",
     "performance",
-    "progressive rendering",
+    "lazy loading",
+    "intersection observer",
     "placeholder",
+    "block",
+    "progressive rendering",
     "rest"
   ],
   "project_description": "Back to top \n\n Introduction \n Adds additional placeholders like bigpipe does it, but load blocks via ajax when they apear in the vision using intersection observer. This module allows to significantly reduce a source html data.\n\n Back to top \n\n Configuration \n Check a checkbox in the block visibility configuration \"Use AJAX BigPipe\"\n\nEach block setup individually\n\n Back to top",

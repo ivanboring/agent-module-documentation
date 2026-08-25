@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-AJAX BigPipe extends core's BigPipe technique to AJAX responses, so the personalised parts of a page delivered by an AJAX request stream in rather than holding up the whole reply.
+AJAX BigPipe lets you mark individual blocks so they load in the background via AJAX once they scroll into view, keeping the initial page HTML small and the shell fast.
 
 ---
 
-Core's BigPipe is one of Drupal's better performance ideas: the cacheable shell of a page is sent immediately, the personalised fragments — the user menu, the cart count, anything that varies per visitor — are replaced by placeholders, and each is streamed in as it is rendered. The visitor sees content quickly instead of waiting for the slowest component. Core applies that to ordinary page responses, and this extends the same treatment to **AJAX** responses, which matter increasingly as more of a page is loaded after the initial request — a Views AJAX pager, a dialog, an off-canvas panel, a decoupled fragment fetch. It depends on core `big_pipe` and `rest`, version **1.0.8** on `^9 || ^10 || ^11`. Three things to be clear about with any BigPipe-family module. **Placeholders are a correctness mechanism as well as a speed one** — a fragment that is auto-placeholdered because it varies per user must actually declare that variance in its cache contexts, and a fragment with wrong cache metadata is served to the wrong person, which is a disclosure rather than a slow page. **The gain is real but conditional**: streaming needs the whole response path to not buffer, so a reverse proxy, an output filter or a compression layer that waits for the complete body removes the benefit silently. And it changes the shape of a response, so anything downstream that parses AJAX replies should be tested rather than assumed.
+Install it like any module (`drush en ajax_big_pipe`); it depends on core's **BigPipe** and **REST** modules and pulls in no external libraries. There is **no settings page** — you turn it on one block at a time. Edit a block, open its **Visibility** tab, and tick **"Use AJAX BigPipe"**. From then on the module replaces that block with a lightweight placeholder in the page HTML; when the placeholder scrolls near the viewport, an `IntersectionObserver` in `misc/ajax_big_pipe.js` fetches the real block from the module's `/api/bigpipe` endpoint and swaps it in. Per block you can choose what shows while it loads: an animated **spinner**, one of several CSS **skeleton templates** (`views`, `block`, `banner`), your own **custom markup**, or a **static preview** (a one-time sanitized snapshot of the block cached and shown until the live content arrives). A **"distance"** setting controls how far before the viewport loading begins, so content is usually ready by the time the user reaches it. Requests to the endpoint are validated with a `hash_salt`-keyed token that pins each call to the exact render callback and arguments the server emitted, and a `big_pipe_nojs` cookie cleanly disables the whole mechanism for no-JS clients. The module also registers an **"AJAX BigPipe" Status toggle on Views displays**, though in 1.0.8 that flag is stored but not yet consumed — the block path is the one that works end to end. Because the fragments arrive after page load, this is a rendering/perceived-performance tool: make sure anything downstream that parses AJAX responses, and any block whose content varies per visitor, is tested with it enabled.
 
 ---
 
-- Stream personalised parts of an AJAX response.
-- Speed up a Views AJAX pager.
-- Improve dialog load time.
-- Apply BigPipe to off-canvas panels.
-- Reduce time to first content.
-- Improve perceived performance.
-- Stream a cart summary.
-- Load a personalised block progressively.
-- Improve an AJAX-heavy interface.
-- Reduce blocking on a slow fragment.
-- Improve dashboard responsiveness.
-- Stream search results into a page.
-- Support a progressively decoupled front end.
-- Reduce waiting on a personalised menu.
-- Improve a logged-in user's experience.
-- Stream a comment thread.
-- Speed up a filtered listing.
-- Extend core BigPipe's reach.
+- Lazy-load a heavy block only when it scrolls into view.
+- Shrink the initial HTML payload of a page.
+- Speed up perceived load time on long pages.
+- Defer a below-the-fold block until the user scrolls to it.
+- Show a spinner while a slow block loads.
+- Show a CSS skeleton (views / block / banner) placeholder while loading.
+- Provide custom loading markup for a specific block.
+- Display a static snapshot of a block as its loading preview.
+- Start loading a block a set distance before it reaches the viewport.
+- Reduce time-to-first-content on content-heavy landing pages.
+- Offload an expensive sidebar block off the critical render path.
+- Progressively render a dashboard made of many blocks.
+- Load a marketing/banner block after the main content paints.
+- Keep the page shell fast while a personalized block streams in behind it.
+- Improve responsiveness of an AJAX/scroll-heavy interface.
+- Fetch block content through the `/api/bigpipe` REST endpoint on demand.
+- React to fragments arriving via the `ajaxBigPipeLoad` DOM event.
+- Fall back to normal inline rendering for no-JS clients via the `big_pipe_nojs` cookie.
+- Turn the behavior on or off per individual block, with no global config.
+- Extend core BigPipe-style placeholdering to scroll-triggered AJAX loading.

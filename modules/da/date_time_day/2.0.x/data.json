@@ -1,11 +1,13 @@
 {
   "name": "Date time day",
   "data_name": "date_time_day",
-  "description": "Stores start and end time of a single day.",
+  "description": "Field type storing a date plus a start and end time on that same day.",
   "version": "2.0.x",
   "package": "Field types",
   "composer_namespace": "drupal/date_time_day",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "php": ">=7.3"
+  },
   "dependent_modules": [
     "drupal:datetime"
   ],
@@ -15,7 +17,7 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/date_time_day",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=7.3",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
@@ -27,16 +29,18 @@
     "Content editing experience"
   ],
   "subcategories": [
-    "Field types",
-    "Dates and time"
+    "Date/time fields",
+    "Fields",
+    "Field formatters"
   ],
   "keywords": [
     "date",
     "time",
     "field",
+    "datetimeday",
     "opening hours",
     "single day",
-    "range"
+    "start end time"
   ],
   "project_description": "🇺🇦 \n \n This module is maintained by Ukrainian developers.\n\nPlease consider supporting Ukraine in a fight for their freedom and safety of Europe. \n \n \n Date time day provides the ability to store start, end times of the single day.\n\n Requirements \n This module requires the following modules:\n\n \n Field (Drupal core) \n Datetime (Drupal core) \n \n Installation \n \n Download and enable as normal module \n \n Configuration \n You could configure form view mode and display view mode, like in any standard field. See Field UI help for more details.\n\n Uninstalling \n \n Remove all dependend fields, otherwise you won't be able to uninstall it. \n Uninstall as a normal module. \n \n Project on github.com - date_time_day",
   "maintenance_status": "Seeking co-maintainer(s)",

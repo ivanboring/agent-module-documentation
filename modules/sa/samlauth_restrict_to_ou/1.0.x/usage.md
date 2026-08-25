@@ -3,25 +3,27 @@ SAML Authentication Restrict to OU refuses site access to SAML-authenticated use
 
 ---
 
-Federated login answers *who you are* and says nothing about *whether you belong here*. A university identity provider authenticates every student, every member of staff and every contractor; an enterprise one authenticates the whole company. A site meant for one faculty, one department or one business unit therefore needs a second gate after authentication succeeds, and the **Organizational Unit** attribute — carried in SAML assertions and inherited from the LDAP directory conventions behind most identity providers — is the usual discriminator. This module applies that check against a configured list, so an authenticated user from the wrong OU is turned away rather than silently given an account. It depends on `samlauth`, version **1.0.5** on core `^10 || ^11`, with settings at `/admin/config/people/saml-restrict` behind a `restrict access: true` permission — appropriate, since the configuration screen is the access-control policy itself. Three things determine whether the gate is trustworthy. **OU values are strings from another system**, so a directory reorganisation renames them and the list stops matching, usually by locking everyone out — decide who watches for that. **A user may have multiple OU values** or a nested path, so establish whether matching is exact, prefix or substring, since a substring match on `Finance` also admits `Finance Contractors`. And **the check must apply on every login, not only at account creation**: someone who moves to a different OU should lose access, and if the local account persists and remains usable, the restriction has become a one-time filter rather than an ongoing control.
+Federated login answers *who you are* and says nothing about *whether you belong here*: a university or enterprise identity provider authenticates everyone in the directory, so a site meant for one faculty, department or business unit needs a second gate after authentication succeeds. This module is a small add-on to the **`samlauth`** module that adds that gate using the **Organizational Unit** attribute carried in SAML assertions (typically an Active-Directory Distinguished Name such as `CN=jdoe,OU=Staff,OU=Users,DC=corp`). Install it with `composer require drupal/samlauth_restrict_to_ou`, enable it (`drush en samlauth_restrict_to_ou`), then configure it at **`/admin/config/people/saml-restrict`** (Configuration → People, permission *Administer SAML Authentication Restrict to OU*): tick **Restrict Login to OUs** (the master switch — while off, all SAML users pass), set the **SAML Attribute Name** that carries the OU data (default `dn` for Active Directory), list the **Allowed OUs** one per line *without* an `ou=` prefix, optionally turn on **Strict Mode**, and optionally customise the **Access Denied Message**. Under the hood it hooks samlauth's `user_sync` event, which fires *after* the IdP response is validated but *before* the user is logged in or an account is created; it pulls every `OU=…` component out of the attribute and matches it against your list. Matching is **case-insensitive whole-value equality**, not substring — `Staff` admits `OU=Staff` but not `OU=Staff Contractors` — and in the default (non-strict) mode belonging to **any one** listed OU is enough, whereas Strict Mode requires the user to belong to **all** of them. A user who does not qualify is turned away before any account or session is created, and someone whose directory OU no longer matches is refused on their next login, so the check is an ongoing control rather than a one-time filter. The main operational caveat is that OU values are strings owned by another system: a directory reorganisation that renames them will stop the list matching (usually locking people out), so decide who watches for that, and remember that enabling the restriction with an **empty** OU list lets everyone in.
 
 ---
 
-- Restrict a site to one faculty.
-- Allow only one department to log in.
-- Gate access by directory OU.
-- Refuse authenticated users from elsewhere.
-- Limit an intranet to a business unit.
-- Add authorisation after SSO.
-- Prevent contractors from accessing a site.
-- Restrict a research site to one school.
-- Enforce an access policy from the directory.
-- Avoid manual account approval.
-- Limit a project site to its team.
-- Use existing directory structure for access.
-- Restrict a staff-only site.
-- Keep student accounts out of a staff tool.
-- Apply an organisational access rule.
-- Support a devolved university structure.
-- Reduce account provisioning work.
-- Enforce a group-wide access standard.
+- Restrict a Drupal site to one faculty or school.
+- Allow only one department to log in through SAML.
+- Gate access by Active Directory Organizational Unit.
+- Refuse authenticated users who belong to another business unit.
+- Limit an intranet to a single division.
+- Add an authorization layer on top of SSO/SAML sign-in.
+- Prevent contractors in a separate OU from accessing a site.
+- Restrict a research portal to one department.
+- Enforce an access policy straight from the directory structure.
+- Avoid building and maintaining manual account-approval workflows.
+- Require membership of every listed OU (Strict Mode) for sensitive sites.
+- Allow membership of any one of several OUs (default mode).
+- Keep student accounts out of a staff-only tool.
+- Reuse an existing AD/LDAP structure for site access decisions.
+- Show a custom, high-visibility "access denied" message to rejected users.
+- Toggle the whole restriction on or off without losing its configuration.
+- Reduce account-provisioning and role-assignment overhead.
+- Support a devolved university structure with per-site OU rules.
+- Turn a broad enterprise IdP into per-site access control.
+- Enforce a group-wide access standard across several sites.

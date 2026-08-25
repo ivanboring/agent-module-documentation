@@ -5,7 +5,10 @@
   "version": "1.1.x",
   "package": "Cookies Management",
   "composer_namespace": "drupal/cookie_samesite_support",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "php": ">=7.4.0",
+    "drupal/core": "^9.0 || ^10 || ^11"
+  },
   "dependent_modules": [],
   "configure": null,
   "core_version_requirement": "^9 || ^10 || ^11",
@@ -13,21 +16,20 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/cookie_samesite_support",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=7.4.0",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Security",
-    "Integrations"
+    "Access control"
   ],
   "subcategories": [
-    "Sessions and cookies",
-    "Embedding"
+    "Session management"
   ],
   "keywords": [
     "samesite",
