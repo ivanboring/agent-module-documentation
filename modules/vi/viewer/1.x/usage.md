@@ -1,31 +1,32 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Viewer displays CSV, XLSX and other data files as tables and previews inline, rendering file contents in the browser.
+Viewer imports CSV, XLSX/XLS and PDF files from an upload, path, URL, FTP or SFTP and displays them on your site as tables, charts, calendars, tabs, accordions or PDF previews.
 
 ---
 
-A spreadsheet or CSV attached to a page is more useful shown as a table than as a download link. Viewer renders CSV, XLSX and similar files as inline tables/previews. The security consideration is that it parses and renders file contents: the files it displays should be trusted or access-controlled, since rendering an attacker-supplied spreadsheet involves parsing (parsers have had vulnerabilities) and displaying its contents (a CSV/spreadsheet can contain markup or formula-like content that, if rendered unescaped, could be an injection vector). Confirm the displayed files come from a trusted/access-controlled source and that the rendering escapes cell content. For displaying trusted data files it is a useful inline viewer.
+Install as usual (`composer require drupal/viewer` then enable it; the FTP/SFTP source plugins and XLSX support depend on the composer libraries `league/flysystem-ftp`, `league/flysystem-sftp-v3` and `phpoffice/phpspreadsheet`, and the `drupal:rest` module is required). Work in two steps. First create a **Source** at `/admin/structure/viewer-source`: pick a file type (**CSV**, **XLSX** or **PDF**) and where the file comes from (**upload**, absolute **path**, remote **URL**, **FTP** or **SFTP**), set parse options such as the CSV delimiter/enclosure, and optionally schedule automatic re-imports on cron with **Slack or email notifications** on success/failure. Then create one or more **Viewers** on that source at `/admin/structure/viewers`: choose a display plugin (Table, DataTables, FooTable, Spreadsheet, Chart.js or ApexCharts chart, Fullcalendar, PDF.js, Tabs, Vertical Tabs or Accordion), configure each column (override the header, hide it, reorder it, or run its values through a **cell converter** like image, link, money, number, percentage or Peity sparkline), and add row **filters**. Finally embed the viewer three ways: place the **Viewer block** at `/admin/structure/block`, add a **Viewer field** to a content type and reference it, or add the **Viewer** button and filter to a **CKEditor 5** text format and insert viewers directly into rich-text content. The data is not imported into Drupal entities — the parsed file is cached and rendered on the fly from a JSON endpoint, so re-importing the source updates every place the viewer appears. Run `drush viewer:import` (alias `vimp`) to trigger scheduled imports from the CLI.
 
 ---
 
-- Display a CSV as a table.
-- Preview an XLSX inline.
-- Show a spreadsheet in the browser.
-- Render data files as tables.
-- Preview attached files.
-- Confirm files are trusted.
-- Ensure cell content is escaped.
-- Access-control displayed files.
-- Show tabular data inline.
-- Avoid rendering untrusted spreadsheets.
-- Preview a data file.
-- Display file contents.
-- Enable when needed.
-- Keep disabled otherwise.
-- Restrict administration.
-- Confirm on your site.
-- Test before production.
-- Review configuration.
-- Pair with related modules.
-- Verify theme fit.
-- Match your use case.
-- Confirm compatibility.
+- Show a CSV file as an interactive table on a page.
+- Preview a PDF inline with PDF.js.
+- Render spreadsheet data as a Chart.js or ApexCharts chart (bar, line, pie/doughnut, scatter, bubble, candlestick, treemap).
+- Display an XLSX workbook with each worksheet in its own tab.
+- Turn a CSV of events into a Fullcalendar calendar.
+- Import a data file automatically from a remote URL on a schedule.
+- Pull a report over FTP or SFTP and display it.
+- Load a file from an absolute server path, using date tokens in the path.
+- Let editors upload a CSV/XLSX and show it without a developer.
+- Add a searchable, paginated DataTables view of tabular data.
+- Group several data sets into tabs, vertical tabs or accordions.
+- Override or rename spreadsheet column headers for display.
+- Hide or reorder columns without editing the source file.
+- Format a column as currency, a percentage, a number or a Peity sparkline.
+- Convert URL columns into clickable links or inline images.
+- Filter displayed rows by column value, date or list membership.
+- Embed a data table or chart inside CKEditor 5 rich-text content.
+- Place a data viewer in any region via the Viewer block.
+- Reference a viewer from a content type through a Viewer field.
+- Get a Slack or email alert when a scheduled import fails.
+- Refresh all scheduled sources from the command line with `drush vimp`.
+- Show financial, analytical or statistical data that lives in flat files.
+- Extend the module with custom display, source, file-type or cell-converter plugins.

@@ -3,11 +3,11 @@
   "data_name": "xhprof",
   "description": "Provides code profiling with XHProf integration.",
   "version": "2.x",
-  "package": null,
+  "package": "Development",
   "composer_namespace": "drupal/xhprof",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "xhprof.admin_configure",
   "core_version_requirement": "^10.2 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -22,15 +22,19 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Administration"
+    "Developer tools",
+    "Performance"
   ],
   "subcategories": [
-    "Diagnostics"
+    "Debugging & inspection",
+    "Application performance monitoring"
   ],
   "keywords": [
     "xhprof",
     "profiling",
+    "profiler",
     "performance",
+    "tideways",
     "diagnostics",
     "debugging"
   ],

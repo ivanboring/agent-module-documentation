@@ -3,13 +3,13 @@
   "data_name": "file_downloader",
   "description": "Provides download options for file fields by exposing a field formatter.",
   "version": "3.x",
-  "package": "Media",
+  "package": "Custom",
   "composer_namespace": "drupal/file_downloader",
   "composer_requirements": {},
   "dependent_modules": [
     "drupal:file"
   ],
-  "configure": null,
+  "configure": "entity.download_option_config.collection",
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -22,12 +22,15 @@
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "DownloadOption"
+  ],
   "categories": [
     "Media"
   ],
   "subcategories": [
-    "File display"
+    "File downloads",
+    "Field formatters"
   ],
   "keywords": [
     "file",

@@ -1,7 +1,7 @@
 {
   "name": "Dynamic Reference Selection",
   "data_name": "dynamic_reference_selection",
-  "description": "Dynamic Reference Selection",
+  "description": "Entity-reference selection handler that filters a child field's options by a parent field's value via a View, with AJAX refresh.",
   "version": "1.x",
   "package": null,
   "composer_namespace": "drupal/dynamic_reference_selection",
@@ -19,20 +19,26 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "DynamicReferenceSelectionReactsOn"
+  ],
   "categories": [
-    "Content"
+    "Content editing experience",
+    "Content display"
   ],
   "subcategories": [
-    "Entity reference"
+    "Entity selection",
+    "Form widgets / select UI"
   ],
   "keywords": [
     "entity reference",
-    "selection",
-    "dynamic",
-    "context",
-    "reference"
+    "selection handler",
+    "dependent field",
+    "views",
+    "ajax",
+    "contextual filter",
+    "cascading select"
   ],
   "project_description": "Dynamic filtering for Entity Reference fields based on parent field values, with AJAX support. Lightweight and focused: ideal for projects that need dynamic reference filtering without the complexity of full rules engines.\n\n Description \n Dynamic Reference Selection allows you to create dependent Entity Reference fields using Views as the data source. The options in a child reference field are dynamically filtered based on the selection of a parent field, enabling use cases such as Genre > Song or Country > City selection patterns.\n\n This module is a clean, modern fork of the Business Rules Entity Reference Selection plugin , offering the same dependent filtering functionality without the overhead of the full Business Rules module—which is no longer maintained. It also provides a more robust and flexible alternative to Dependent Field and Dependant Reference Method , which are not actively maintained and do not support Drupal 11.\n\n How It Works \n \n Configure a parent and child Entity Reference field (e.g., Genre and Song). \n Create a View for the child entity (e.g., songs) with a contextual filter (e.g., genre ID or UUID). \n In the child field settings, select \"Dynamic Reference Selection\" as the reference method. \n Choose the View and map the parent field as the argument. \n AJAX is used to refresh the child options when the parent selection changes. \n \n Both parent and child fields must use the “Select list” widget in the form display for the dynamic filtering to work properly.\n\n Credits \n Inspired by and initially based on the Business Rules module’s reference plugin. Extended and maintained to support modern Drupal projects.\n\n Similar modules \n \n ECA: Event - Condition - Action\n\n \n Business Rules \n Dependent Fields \n Dependant Reference Method \n Back to top",
   "maintenance_status": "Actively maintained",

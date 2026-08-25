@@ -3,11 +3,11 @@
   "data_name": "custom_500_error",
   "description": "customize 500 internal server error page",
   "version": "1.x",
-  "package": null,
+  "package": "Improvement",
   "composer_namespace": "drupal/custom_500_error",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "custom_500_error.custom_error_config_form",
   "core_version_requirement": "^8.8 || ^9.0 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -19,13 +19,13 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Administration"
+    "Administration tools"
   ],
   "subcategories": [
-    "Error pages"
+    "Custom error pages"
   ],
   "keywords": [
     "500",

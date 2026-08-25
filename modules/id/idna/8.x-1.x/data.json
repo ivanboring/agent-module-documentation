@@ -3,9 +3,11 @@
   "data_name": "idna",
   "description": "Provides IDNA Convert Service and demo-page.",
   "version": "8.x-1.x",
-  "package": null,
+  "package": "Other",
   "composer_namespace": "drupal/idna",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "algo26-matthias/idna-convert": ">3.0"
+  },
   "dependent_modules": [],
   "configure": null,
   "core_version_requirement": "^8 || ^9 || ^10 || ^11",
@@ -14,18 +16,21 @@
   "project_url": "https://www.drupal.org/project/idna",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "algo26-matthias/idna-convert"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
   ],
   "subcategories": [
-    "Utilities"
+    "External library management",
+    "Data transformation"
   ],
   "keywords": [
     "idna",

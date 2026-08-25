@@ -1,31 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Dynamic Reference Selection provides an entity-reference selection handler whose allowed referenceable entities are determined dynamically by context.
+Dynamic Reference Selection lets one entity-reference field's options depend on the value chosen in another (parent) field, using a View as the data source with an AJAX refresh.
 
 ---
 
-An entity-reference field's list of selectable targets is usually fixed by the field settings; sometimes it needs to depend on context — the current user, another field's value, a role. Dynamic Reference Selection is a selection handler that narrows the referenceable entities dynamically. Because a selection handler governs what a user can reference, it has a mild access dimension: narrowing the list is a UI convenience, but it is not a security boundary — a determined user could reference an entity the handler would hide (via a crafted request) unless the underlying entity access also restricts it. So use it to guide selection, and rely on entity access for real restriction. Confirm the dynamic logic produces the intended list.
+Install the module (it needs core **Views** enabled; Views is required at runtime but not declared in the module's `info.yml`, so enable it yourself). The pattern is Country → City, Genre → Song, and similar cascading selects. First build a **View** on the *child* entity type with an **Entity Reference** display whose first **contextual filter** accepts the parent value (an entity ID, or a UUID). Then on the child reference field's settings choose **Reference method → "Dynamic Reference Selection: Make field dependent using views"** (`dynamic_reference_selection_views`), pick that **View + display**, choose the **Parent field** it depends on, optionally tick **Reference parent by UUID** (when the view's argument expects UUIDs), and optionally add extra comma-separated **View arguments** appended after the parent value. In **Manage form display**, set **both** the parent and child widgets to **Select list** or **Check boxes/radio buttons** (the handler warns it does not fully work with the autocomplete widget). At runtime the parent value is passed as the view's first argument to compute the child's options; when the parent changes, an attached `#ajax` callback re-runs the view and rebuilds the child `<select>`/checkboxes/radios in place while preserving any still-valid selection. Multi-value child fields and Paragraphs subforms are supported. Note that the list of allowed targets is defined entirely by the **View** you configure, so use the view's own filters and access settings to control which entities are offered.
 
 ---
 
-- Narrow reference options by context.
-- Filter referenceable entities dynamically.
-- Base selection on the current user.
-- Vary options by another field.
-- Guide entity reference selection.
-- Use a dynamic selection handler.
-- Confirm the dynamic list.
-- Treat as UI, not access boundary.
-- Rely on entity access for restriction.
-- Configure contextual references.
-- Enable when needed.
-- Keep disabled otherwise.
-- Restrict administration.
-- Confirm on your site.
-- Test before production.
-- Review configuration.
-- Pair with related modules.
-- Verify theme fit.
-- Match your use case.
-- Confirm compatibility.
-- Use deliberately.
-- Review after upgrades.
+- Build cascading (dependent) select lists such as Country → City.
+- Filter a child reference field's options by a parent field's value.
+- Use a Views Entity Reference display as the source of referenceable entities.
+- Refresh child options over AJAX when the parent selection changes.
+- Configure the dependency entirely in the child field's reference-method settings.
+- Map a parent field as the first contextual-filter argument of the view.
+- Pass extra static arguments to the view after the parent value.
+- Reference the parent by UUID instead of entity ID for config portability.
+- Support multi-value parent fields (values are passed as a comma list).
+- Keep multi-value child fields multiple even when they start with no options.
+- Work with Select list and Check boxes/radio buttons widgets.
+- Support Paragraphs subforms (resolves the nearest nested paragraph).
+- Replace the unmaintained Business Rules Entity Reference Selection plugin.
+- Offer a Drupal 11-compatible alternative to Dependent Field / Dependant Reference Method.
+- Validate submitted targets against what the current parent value allows.
+- Sort child options alphabetically with a leading "-Select-" placeholder.
+- Alter the built reference element via the `dynamic_reference_selection.form_field_alter` event.
+- Extend behaviour with a custom `DynamicReferenceSelectionReactsOn` plugin.
+- Rely on the configured View's filters and access for which entities are offered.
+- Add cascading references without a full rules engine.
