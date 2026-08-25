@@ -3,7 +3,7 @@
   "data_name": "content_moderation_owner_permissions",
   "description": "Permissions for moderating own content.",
   "version": "1.x",
-  "package": null,
+  "package": "LocalGov Drupal",
   "composer_namespace": "drupal/content_moderation_owner_permissions",
   "composer_requirements": {},
   "dependent_modules": [
@@ -21,18 +21,23 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Workflow"
+    "Access control",
+    "Automation"
   ],
   "subcategories": [
-    "Content moderation"
+    "User roles & permissions",
+    "Workflow / state management",
+    "Workflow / business rules"
   ],
   "keywords": [
     "content moderation",
     "owner",
+    "own content",
     "permissions",
+    "transition",
     "self-moderate",
     "workflow"
   ],

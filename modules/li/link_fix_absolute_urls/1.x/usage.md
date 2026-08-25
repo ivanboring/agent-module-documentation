@@ -1,31 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Link Fix Absolute URLs converts absolute URLs in link fields that point to the current site into internal path references.
+Link: Fix Absolute URLs automatically converts same-site absolute URLs stored in link fields into portable internal references whenever an entity is saved.
 
 ---
 
-Content authored with full URLs to the site's own pages (pasted from a browser) becomes brittle — the links break if the domain changes and do not benefit from Drupal's internal link handling. Link Fix Absolute URLs converts such same-site absolute URLs in link fields to internal path references. It is a content-hygiene utility with no security surface; it only rewrites links that point at the current site. Confirm it does not rewrite intentionally-absolute links (e.g. a canonical external mirror), and that the conversion matches your link-handling expectations.
+Editors often paste a full URL (for example `https://www.example.com/about`) into a **link field** when they really mean a page on the same site. Those hardcoded absolute URLs are brittle: they break if the domain changes, bypass Drupal's internal link handling, and can leak a staging hostname into production. This module watches `hook_entity_presave()` and, for every `link`-type field on the entity being saved, checks whether the URL points at the current site; if it does, it rewrites the stored value to an internal reference — `entity:node/<id>` for nodes (aliases resolved through the path-alias system), `internal:/<path>` for other routed paths or local files, and `internal:/` for the front page — while leaving the link **title** and all off-site links untouched. Installation is the entire setup: run `composer require drupal/link_fix_absolute_urls` and enable the module (`drush en link_fix_absolute_urls`); there is **no settings page, permission, or configuration** of any kind. Only links saved *after* enabling are fixed, so to clean up content that already exists, re-save the affected entities — either by re-saving them in the UI, or programmatically with `\Drupal::service('link_fix_absolute_urls.link_processor')->process($entity)` (save the entity only if it returns `TRUE`), which the maintainers suggest wiring into a `hook_post_update_NAME()` for a one-shot site-wide fix.
 
 ---
 
-- Convert same-site absolute URLs to internal.
-- Fix pasted full URLs in links.
-- Make links domain-independent.
-- Use internal path references.
-- Clean up link fields.
-- Avoid brittle absolute links.
-- Confirm intentional-absolute links.
-- Benefit from internal link handling.
-- Rewrite own-site links.
-- Improve link hygiene.
-- Enable when needed.
-- Keep disabled otherwise.
-- Restrict administration.
-- Confirm on your site.
-- Test before production.
-- Review configuration.
-- Pair with related modules.
-- Verify theme fit.
-- Match your use case.
-- Confirm compatibility.
-- Use deliberately.
-- Review after upgrades.
+- Convert same-site absolute URLs in link fields to internal references.
+- Fix full URLs editors paste into link fields.
+- Rewrite `https://mysite.com/node/12` to `entity:node/12`.
+- Resolve pasted path aliases back to their canonical node reference.
+- Turn a same-site file URL into an `internal:/…` path.
+- Point front-page links at `internal:/` instead of the absolute home URL.
+- Make internal links survive a domain or hostname change.
+- Strip a leaked staging hostname out of stored links.
+- Normalise `http://`, `https://`, and `www.` variants of your own domain.
+- Leave genuinely external links completely unchanged.
+- Preserve each link's title text while fixing its URI.
+- Benefit from Drupal's internal link and access-aware URL handling.
+- Install with `composer require drupal/link_fix_absolute_urls`.
+- Enable with `drush en link_fix_absolute_urls` — no further setup.
+- Run with zero configuration, no settings page, and no permissions.
+- Apply the fix to every entity type that has link fields.
+- Reuse the `link_fix_absolute_urls.link_processor` service in custom code.
+- Bulk-fix existing content by re-saving affected entities.
+- Migrate a whole site's links from a `hook_post_update_NAME()`.
+- Skip `Redirect` entities automatically to avoid breaking redirects.
+- Clean up link fields as a content-hygiene step before a site relaunch.
+- Keep link data portable across environments.

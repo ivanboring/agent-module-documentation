@@ -5,7 +5,9 @@
   "version": "2.x",
   "package": "Commerce",
   "composer_namespace": "drupal/commerce_currencies_price",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "~2.4 || ~3.0"
+  },
   "dependent_modules": [
     "commerce:commerce",
     "commerce:commerce_price"
@@ -22,20 +24,22 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Commerce"
+    "E-commerce"
   ],
   "subcategories": [
-    "Pricing"
+    "Pricing / price lists",
+    "Fields"
   ],
   "keywords": [
     "commerce",
     "currency",
     "price",
     "multi-currency",
-    "pricing"
+    "pricing",
+    "field"
   ],
   "project_description": "Field type based on commerce price field and currency.\n\nIt allows entering prices for all currencies inside one field, instead of creating per currency field. Data are serialized.\n\n To get array, use $entity->field_name->prices \n\nTo get first value array of Price objects use $entity->field_name->get(0)->prices \n\n Field type does not have limit on cardinality \n\n Useful for cases when you need to save prices but not necessarily utilizing\n\nquerying by currency prices or resolving them.\n\n Planned feature:\n\nIntegration with multicurrency module -> commerce_currency_resolver \n\n D9 use 2.0 version, last compatible composer require 'drupal/commerce_currencies_price:2.0'",
   "maintenance_status": "Actively maintained",

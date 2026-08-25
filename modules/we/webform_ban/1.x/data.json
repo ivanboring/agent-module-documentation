@@ -21,12 +21,14 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Access control"
+    "Access control",
+    "Security"
   ],
   "subcategories": [
+    "IP address restriction",
     "Spam prevention"
   ],
   "keywords": [
@@ -34,7 +36,9 @@
     "ban",
     "ip",
     "spam",
-    "abuse"
+    "abuse",
+    "submission",
+    "moderation"
   ],
   "project_description": "Integration of the Webform module with the core Ban module.\n\n It mainly helps to ban IP addresses of webform submissions to prevent spamming.",
   "maintenance_status": "Actively maintained",

@@ -1,13 +1,13 @@
 {
-  "name": "Defer JS",
+  "name": "DeferJs",
   "data_name": "deferjs",
   "description": "This module helps you to lazy load JS files.",
   "version": "1.x",
-  "package": null,
+  "package": "custom",
   "composer_namespace": "drupal/deferjs",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "deferjs.settings",
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -19,13 +19,13 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Performance"
   ],
   "subcategories": [
-    "Front-end performance"
+    "Lazy loading"
   ],
   "keywords": [
     "defer",

@@ -1,31 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-ECA Content Access integrates ECA (Event-Condition-Action automation) with the Content Access module, letting content-access grants be driven by ECA models.
+ECA Content Access adds two ECA actions that grant or revoke a role's per-node access on a single node through the Content Access module.
 
 ---
 
-Content Access provides per-content-type and per-node access grants; ECA provides no-code automation. ECA Content Access bridges them, so access grants can be set or adjusted by ECA models reacting to events. Because this drives ACCESS CONTROL through automation, its correctness is the correctness of the ECA models built with it — an access rule expressed as an ECA model is as safe as that model, and a mistake grants or denies the wrong access. So building these models is a trusted, security-sensitive activity: restrict who can build ECA models, test the resulting grants against adversarial cases (does the wrong user get access?), and run node_access_rebuild appropriately. It depends on both ECA and Content Access. Powerful, but access-as-automation demands care.
+Install it with Composer (`composer require drupal/eca_content_access`) and enable it with its dependencies, ECA and Content Access (`drush en eca_content_access`); it needs `eca ^2||^3` and `content_access ^2` on Drupal 10.4+/11 and PHP 8.1+. It has no settings page, permissions, routes, or Drush commands of its own — all it provides are two ECA action plugins, **Content access: grant access** (`eca_content_access_grant_access`) and **Content access: revoke access** (`eca_content_access_revoke_access`), that you drop into an ECA model in the modeller. Each acts on the node your model is processing and takes an **operation** (`view`, `view_own`, `update`, `update_own`, `delete`, `delete_own`), a **role**, a **follow-up** choice, and a **clear-cache** toggle. When it runs it edits that node's row in Content Access's per-node settings and re-acquires the node's grant records via core's node-access system. This only works on content types that have **per-node access** enabled in Content Access; otherwise the action is not permitted and does nothing. Note the `rebuild` follow-up option currently only shows a message (it does not rebuild directly), and that because the actions change access control, the correctness of your grants is the correctness of the ECA models you build — so treat model-building as trusted and test that the right users (and only them) get access.
 
 ---
 
-- Drive content access from ECA.
-- Automate access grants.
-- Integrate ECA and Content Access.
-- Set grants by ECA model.
-- React to events with access changes.
-- Restrict who builds the models.
-- Test grants adversarially.
-- Rebuild node access as needed.
-- Model dynamic access rules.
-- Treat access-automation as sensitive.
-- Combine ECA and Content Access.
-- Verify the wrong user is denied.
-- Enable when needed.
-- Keep disabled otherwise.
-- Restrict administration.
-- Confirm on your site.
-- Test before production.
-- Review configuration.
-- Pair with related modules.
-- Verify theme fit.
-- Match your use case.
-- Confirm compatibility.
+- Grant a role per-node `view` access from an ECA model.
+- Grant per-node `update` or `delete` access to a role on one node.
+- Grant `view_own`, `update_own`, or `delete_own` for a role.
+- Revoke a role's per-node access for a chosen operation.
+- Drive access changes from any ECA event (e.g. entity save, workflow transition).
+- Automate per-node grants without visiting the Content Access node tab by hand.
+- Add the action to a node-subject ECA model in the BPMN modeller.
+- Pick the operation and role in the action's config form.
+- Enable per-node access on the content type first (required precondition).
+- Choose a follow-up: do nothing, show a rebuild-link message, or (currently just) message.
+- Toggle clear-cache to flush caches after the change when needed.
+- Combine grant and revoke actions in one model to swap a role's access.
+- React to a role assignment by granting matching node access.
+- Restrict who can build ECA models, since these actions change access control.
+- Test grants adversarially — confirm the wrong user is still denied.
+- Rebuild node access permissions after changes when grants must take effect broadly.
+- Verify the action actually ran (grants changed) on your content_access 2.x site.
+- Keep per-node grants in sync with your editorial workflow.
+- Use tokens to select which node the action operates on.
+- Pair with other ECA modules to build richer access automation.
