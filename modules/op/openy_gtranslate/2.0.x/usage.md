@@ -1,35 +1,26 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Open Y Google Translate provides a block that places the Google Translate widget on a site, as packaged for the Open Y / YMCA Website Services distribution.
+Open Y Google Translate provides a single block that places the Google Translate widget on a site, packaged for the Open Y / YMCA Website Services distribution.
 
 ---
 
-The Google Translate widget is the pragmatic answer for organisations that must offer many languages and cannot fund translating any of them. For a YMCA or a similar community organisation serving a multilingual population, the alternative to machine translation in the browser is usually no translation at all, and a rough translation of opening hours and programme information is worth more than an English-only page.
-
-The module is a single block plugin, `Plugin/Block/OpenYGTranslateBlock`, placed through normal block layout with the usual visibility conditions — so it can be shown in a header region site-wide, or restricted to the pages where it matters.
-
-Three things to be clear about, because they are true of the widget rather than of this module.
-
-**Machine translation is not site translation.** Nothing is reviewed, terminology is not controlled, and the translated page is not indexed as a translation. If a page carries legal, medical or safety information, an unreviewed rendering of it is a real risk, and those pages deserve human translation regardless.
-
-**It is a third-party script.** The widget loads from Google and sends page content there; on an EU-facing site that belongs in the privacy notice and behind consent, which is what a CMP like Usercentrics or the Consent Mode module exists to arrange.
-
-**Drupal's own multilingual system is unaffected** — this is a display-layer overlay, not content translation, and the two can coexist: real translations where they matter, the widget as a fallback elsewhere.
+Install and enable the module (`drush en openy_gtranslate`), then place the **Open Y Google Translate** block (category *OpenY*) through the normal Block Layout UI at `/admin/structure/block`, choosing a region and any visibility conditions — commonly a header region site-wide, or restricted to the pages that matter. The block has no settings of its own: it renders a "Select Language" link and, when a visitor clicks it, lazily loads Google's translate script and builds the widget in the visitor's language, so nothing is fetched from Google until someone actually asks to translate. Three things are worth being clear about because they are properties of the widget rather than of this module: **machine translation is not site translation** (nothing is reviewed, terminology is uncontrolled, and translated pages are not indexed as translations, so legal, medical and safety content still needs human translation); **it is a third-party script** that sends page content to Google, which on EU-facing sites belongs in the privacy notice and behind cookie consent (e.g. Usercentrics or a Consent Mode module); and **Drupal's own multilingual system is unaffected** — this is a display-layer overlay that coexists with real translations, which you should still use where accuracy matters.
 
 ---
 
-- Offer machine translation on a community site.
+- Offer machine translation on a community or YMCA site.
 - Serve a multilingual population without a translation budget.
-- Place a translate widget in the header.
-- Show the widget only on selected pages.
+- Place a translate widget in a header region.
+- Show the widget only on selected pages via block visibility.
 - Provide a fallback where real translations are absent.
 - Translate programme and opening-hours information roughly.
-- Combine with real translations for key pages.
-- Restrict the widget by block visibility conditions.
-- Gate the widget behind cookie consent.
-- Document the third-party script in a privacy notice.
-- Identify pages that need human translation instead.
+- Combine the widget with real translations for key pages.
 - Add translation to an Open Y site quickly.
-- Understand why translated pages are not indexed.
+- Restrict the widget by block visibility conditions.
+- Gate the widget behind cookie consent for GDPR.
+- Document the third-party Google script in a privacy notice.
+- Identify pages that need human translation instead.
+- Understand why machine-translated pages are not indexed.
 - Audit which pages rely on machine translation.
-- Measure how much traffic uses the widget.
-- Decide which pages must not rely on it.
+- Decide which pages must not rely on the widget.
+- Style the placeholder link for desktop and mobile menus.
+- Reuse the same block in popups and dynamically injected content.

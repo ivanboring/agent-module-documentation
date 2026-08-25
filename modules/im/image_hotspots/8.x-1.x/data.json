@@ -21,15 +21,15 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Media management",
-    "Content editing experience"
+    "Media",
+    "Content display"
   ],
   "subcategories": [
-    "Image annotation",
-    "Field formatters"
+    "Field formatters",
+    "Fields"
   ],
   "keywords": [
     "hotspots",
@@ -37,7 +37,8 @@
     "annotation",
     "labels",
     "interactive",
-    "diagram"
+    "diagram",
+    "tooltip"
   ],
   "project_description": "Image hotspots module allows you to mark the different areas of the image by text labels (similar to annotations).\n\nYou can mark a person on the image or a part of the image. Hotspots are responsive . When you scale the image, hotspots scale proportionally. \n\n The module is integrated with drupal image module, so it's possible to add hotspots to any image field .\n\nHotspot module uses jcrop library and jquery tooltip library.\n\n 7.x-2.x version is fully revised. The module has no own formatter and uses image formatter. \n\n This module is under active development.\n\nNew features will be added very soon!\n\n Created by ADCI solutions team.",
   "maintenance_status": "Actively maintained",

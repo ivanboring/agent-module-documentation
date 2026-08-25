@@ -1,27 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Library attach lets content declare which asset libraries the page needs, through a text-format filter, so a snippet that requires a script gets it without the theme loading it everywhere.
+Library attach adds a text-format filter, "Library scanner", that attaches a CSS/JS asset library to the page whenever content contains HTML matching a selector the library declared.
 
 ---
 
-The problem shows up on any site where content carries interactive markup. One article contains a chart, three pages need a map, a landing page uses a lightbox — and the library those depend on has to be attached from somewhere. The blunt answer is loading it in the theme on every page, which is a payload the other nine hundred pages do not need. The clean answer is a custom formatter or a paragraph type per case, which is right and is a development task for each. A filter that reads a marker in the content is the pragmatic middle: content declares its own dependency and the asset system does the rest, keeping the library inside Drupal's aggregation and dependency ordering rather than a `<script>` tag pasted into the body. Version **1.0.1** on core `^10 || ^11`, depending on core `filter`. **The security consideration is what the filter's configuration is worth**, and it needs saying plainly: attaching a library means loading JavaScript, so whoever can put the marker in content can cause a script to run on the page. Which libraries are attachable must therefore be an allow-list set by an administrator, not a name taken from the content — a filter that attaches whatever library the text names hands script-loading to anyone who can edit a body field. Confirm which this does before enabling it on a format that non-trusted users can use, and treat the filter's configuration as an administrative surface either way.
+The problem it solves: a snippet of content needs a script or stylesheet — a chart, a map, a lightbox, a syntax highlighter — but you do not want that asset loaded on every page (a payload most pages never use) and you do not want to build a custom formatter or paragraph type for each case. With this module a developer opts a library in once by adding a `filter-selector-css` or `filter-selector-xpath` key to the library's entry in a `*.libraries.yml` file, for example `filter-selector-css: 'table.chart, div.chart'`. You then enable the **Library scanner** filter (id `library_attach`) on the relevant text format at `/admin/config/content/formats`. On render, the filter loads the content HTML, runs each declared selector against it with `DOMXPath`, and for every match attaches the matching `extension/library_name` through Drupal's normal asset aggregation and dependency ordering — the content text itself is left untouched. CSS selectors are converted to XPath via `symfony/css-selector` (a composer requirement, alongside the `ext-dom` PHP extension); `filter-selector-xpath` takes precedence when both keys are set. The selector map is discovered across core, enabled modules, and the active theme, and cached under the `library_info` tag, so run `drush cr` after changing a selector. Importantly, the set of attachable libraries is fixed by developers, not named by editors: content can only trigger one of the pre-declared selectors, never request an arbitrary library. The module has no settings page, no permissions, no services, no routes, and no drush commands — it is one filter plugin plus the library-YAML convention. Version **1.0.1**, core `^10 || ^11`, depends on core `filter`.
 
 ---
 
-- Load a chart library on one article.
-- Attach a map library where it is used.
-- Avoid loading a library site-wide.
-- Let content declare its dependencies.
-- Attach a lightbox for one page.
-- Reduce payload on pages that do not need it.
-- Keep libraries in the asset pipeline.
-- Avoid pasting a script tag in content.
-- Attach a slider library per node.
-- Support an occasional interactive embed.
-- Load a syntax highlighter on doc pages.
-- Attach a library from a WYSIWYG.
-- Support editor-built interactive content.
-- Reduce theme-level asset bloat.
-- Attach a font only where used.
-- Load an animation library selectively.
-- Support a one-off campaign page's assets.
-- Keep aggregation working for content assets.
+- Load a chart library only on articles that contain a chart.
+- Attach a map library where a map element appears.
+- Avoid loading an interactive library site-wide from the theme.
+- Let content pull in its own JS/CSS dependency automatically.
+- Attach a lightbox library only on pages that use it.
+- Reduce asset payload on pages that do not need the library.
+- Keep content-triggered libraries inside Drupal's aggregation pipeline.
+- Avoid pasting raw `<script>` tags into body fields.
+- Attach a slider library when a slider markup pattern is present.
+- Load a syntax highlighter only on documentation pages.
+- Trigger a library attachment from WYSIWYG-authored HTML.
+- Support occasional interactive embeds without a custom formatter.
+- Attach a font-icon library only where its markup occurs.
+- Load an animation library selectively per piece of content.
+- Provide assets for a one-off campaign page without theme changes.
+- Declare an attachable library with a CSS selector in `*.libraries.yml`.
+- Declare an attachable library with an XPath selector for precise matching.
+- Enable the "Library scanner" filter on a chosen text format.
+- Confirm attachable libraries via the format's long filter tips.
+- Keep the stored content text unchanged while still loading its assets.
+- Order the filter after embed/line-break filters so their HTML is scanned.
+- Rebuild caches (`drush cr`) after editing a `filter-selector-*` key.

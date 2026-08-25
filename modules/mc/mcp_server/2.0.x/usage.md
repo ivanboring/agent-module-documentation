@@ -1,27 +1,32 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-MCP Server implements the Model Context Protocol in Drupal, exposing site resources, content and APIs as tools an AI assistant can call.
+MCP Server turns your Drupal site into a Model Context Protocol server, so AI assistants can call tools, read resources, and use saved prompts against your content over HTTP or the command line.
 
 ---
 
-MCP is the emerging standard for giving a language model access to a system's capabilities: the server advertises resources, prompts and tools, and an assistant discovers and invokes them. Putting one in front of Drupal means an assistant can read content, search, and — depending on what is exposed — change things, which is genuinely useful for editorial assistance, content operations and site administration, and is a category of integration that did not exist two years ago. Version **2.0.0-beta1** on core `^10 || ^11`, serving `/mcp` (relocatable via the `mcp_server.base_path` parameter), with `no_cache: TRUE` and `_auth: ['cookie']`. The security posture is better than the category average and is worth reading closely, because this is a new kind of surface. **`access mcp server` is `restrict access: true` and, in its own description, "ships ungranted by default"** — an explicit statement that the endpoint is closed until someone opens it, which is the correct default for a capability endpoint. **Authentication is cookie-only**, so there is no bearer-token path to leave lying around, and the assistant acts as a specific Drupal user with that user's permissions. That last point is the one to build on: **every tool call happens as an account, so the account's permissions are the boundary** — an assistant given an administrator session can do whatever an administrator can, and the interesting failure mode is not the module but the prompt, since a model that reads site content and can also act on it can be induced by content it reads to take actions nobody asked for. Treat the account as a service identity with the narrowest permission set the task needs.
+The module embeds the official `mcp/sdk` PHP SDK and offers two transports: an HTTP endpoint at **`/_mcp`** for web-based MCP clients, and a STDIO transport started with **`drush mcp:server`** for local clients such as Claude Desktop. The parent module is runtime-only; enable the **mcp_server_ui** submodule to get admin pages at `/admin/config/services/mcp-server` for server settings (name, version, pagination limit, session TTL), resource-plugin toggles, and prompt authoring. It ships **no tools on its own** — install **mcp_server_tool_bridge** and it exposes any `drupal/tool` (Tool API) tool as an MCP tool through a simple **MCP Tool Configuration** entity (pick a tool by autocomplete, give it an MCP name), with no PHP required; developers can alternatively write a native `#[Tool]` plugin. Resources are provided by `ResourceTemplate` plugins (the **mcp_server_examples** submodule includes a `content_entity` template that serves any content entity as JSON:API), and prompts are `mcp_prompt_config` config entities with typed text/image/audio/resource messages and pluggable argument autocomplete. Access is layered and closed by default: the `/_mcp` route requires the `access mcp server` permission (which ships **ungranted**), every request runs as a specific Drupal account (cookie session, or an OAuth2 Bearer token when **mcp_server_oauth** is enabled), each call passes through the `mcp_server.authorize_call` event, and bridge tools still run the underlying Tool API tool's own access check. The optional **mcp_server_oauth** submodule (requiring Simple OAuth 2.1) adds per-tool OAuth2 scope requirements and advertises them via RFC 9728 protected-resource metadata. Grant `access mcp server` only to a role scoped to exactly what the assistant should be able to do, since that account's permissions are the effective boundary.
 
 ---
 
-- Let an AI assistant read site content.
-- Expose search to an assistant.
-- Support editorial AI assistance.
-- Give a model access to site resources.
-- Automate content operations.
-- Expose Drupal tools over MCP.
-- Support an AI-assisted workflow.
-- Let an assistant query taxonomy.
-- Provide prompts to an AI client.
-- Build an AI integration on a standard.
-- Expose an API surface to a model.
-- Support content review by an assistant.
-- Give an assistant a scoped account.
-- Automate repetitive editorial tasks.
-- Expose site data for analysis.
-- Support an AI-driven migration check.
-- Build an internal assistant integration.
-- Relocate the MCP endpoint path.
+- Expose Drupal to an AI assistant over the Model Context Protocol.
+- Connect an MCP client (Claude Desktop, MCP Inspector, Claude Code) to your site.
+- Serve MCP over HTTP at `/_mcp` for web-based clients.
+- Serve MCP over STDIO with `drush mcp:server` for local/CLI clients.
+- Turn any Tool API tool into an MCP tool with no code, via configuration.
+- Give each exposed tool a friendly MCP name and description.
+- Write a custom `#[Tool]` plugin for bespoke server-side actions.
+- Expose content entities as MCP resources using the JSON:API example template.
+- Restrict which entity types are exposed as resources with a deny-list.
+- Author reusable prompts with arguments and typed messages.
+- Add text, image, audio, or embedded-resource content to a prompt.
+- Provide argument autocomplete from an entity query or a static list.
+- Require callers to authenticate before reaching the endpoint.
+- Run each tool call as a specific, least-privileged Drupal account.
+- Add per-tool OAuth2 scope requirements with the OAuth submodule.
+- Advertise supported OAuth scopes via RFC 9728 metadata discovery.
+- Add custom authorization policy through the `mcp_server.authorize_call` event.
+- Configure server name, version, and pagination limit shown to clients.
+- Persist MCP sessions in the database for distributed deployments.
+- Enable an admin UI for tools, prompts, resources, and settings.
+- Keep the endpoint closed by default until you grant access to a role.
+- Let assistants read site content through a governed, access-checked interface.
+- Prototype AI tooling on Drupal using the official MCP PHP SDK.

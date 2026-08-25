@@ -1,11 +1,16 @@
 {
   "name": "Lupus Custom Elements Renderer",
   "data_name": "lupus_ce_renderer",
-  "description": "Renders main content as custom elements.",
+  "description": "Renders main content using custom elements.",
   "version": "2.7.x",
   "package": null,
   "composer_namespace": "drupal/lupus_ce_renderer",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/core": "^9 || ^10 || ^11",
+    "drupal/custom_elements": "^2.0 || ^3.0.0-alpha2",
+    "drupal/metatag": "^1.23 | ^2.0",
+    "drunomics/service-utils": "*"
+  },
   "dependent_modules": [
     "metatag:metatag",
     "custom_elements:custom_elements"
@@ -17,7 +22,9 @@
   "project_url": "https://www.drupal.org/project/lupus_ce_renderer",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "drunomics/service-utils"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
@@ -29,8 +36,9 @@
     "Content display"
   ],
   "subcategories": [
-    "Web components",
-    "Headless rendering"
+    "Progressive decoupling",
+    "Preview & draft mode",
+    "Static site generation"
   ],
   "keywords": [
     "custom elements",

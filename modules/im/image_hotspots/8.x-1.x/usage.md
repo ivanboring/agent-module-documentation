@@ -1,27 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Image Hotspots lets editors mark regions of an image with labelled points, creating an annotated image the visitor can explore.
+Image Hotspots lets editors mark regions of an image with labelled points, creating an annotated image visitors can explore.
 
 ---
 
-The pattern answers a specific need that a caption cannot: an image where the information is *where* something is. A product photograph labelling its features, a floor plan marking rooms, a diagram identifying parts, a team photograph naming people, a map of a site with points of interest, an anatomical illustration. Doing it in the image itself bakes the text into a raster — untranslatable, unsearchable, unreadable to a screen reader and wrong the moment a label changes. Doing it as overlaid markup keeps the text as text. Version **8.x-1.0-beta5** — a **beta** — on core `^10.1 || ^11`, depending on core `image`, with hotspot creation, update and delete on their own routes behind an `edit image hotspots` permission, which is designed to be used **while viewing the image** rather than on the node form. Two things follow from that design and are worth checking. **The routes are state-changing controller endpoints**, so confirm they are POST-only or carry `_csrf_token`, since a GET route that deletes a hotspot behind a flat permission is triggerable from an external page. And **the permission is per-site rather than per-image** — `edit image hotspots` does not say *which* images, so anyone holding it can annotate any image the site displays, which needs weighing on a site where images belong to different teams. Separately, and importantly: **an annotated image is an accessibility question**, because points positioned over a picture are meaningless without a keyboard path and a text alternative that conveys the same information in order.
+The pattern answers a need a caption cannot: an image where the information is *where* something is — a product photo labelling its features, a floor plan marking rooms, a diagram naming parts, a team photo naming people, a map with points of interest. To use it, install the module (it depends only on core **Image**), give the roles that should annotate images the **`edit image hotspots`** permission at `/admin/people/permissions`, then on your content type's **Manage display** switch the image field's formatter to **"Image with Hotspots"** and pick an image style. From then on, anyone with the permission who opens a page showing that image sees an **Add hotspot** button under it: they drag a rectangle over the image (a Jcrop selection), type a **title**, optional **description**, optional **link** and whether it should open in a new window, and save. Each hotspot is stored as its own `image_hotspot` entity bound to that field, file and image style, and is shown as a **hover tooltip** or a **click modal** depending on the formatter's *Hotspot style* setting. Titles, descriptions and links are **translatable** per hotspot when you view the image in a non-default language. Because a hotspot is tied to the exact image style it was drawn on, **changing the field's image style hides existing hotspots** (they are not migrated), and deleting the source file or its image style queues the orphaned hotspots for automatic removal on the next cron run. Hotspots scale proportionally as the image is resized, so the annotations stay aligned on responsive layouts. The module is version **8.x-1.0-beta5** (a beta) and runs on core `^10.1 || ^11`.
 
 ---
 
 - Label features on a product photograph.
 - Mark rooms on a floor plan.
-- Identify parts in a diagram.
+- Identify parts in a technical diagram.
 - Name people in a team photograph.
 - Mark points of interest on a map.
 - Annotate an anatomical illustration.
-- Add explanatory labels to an image.
+- Add explanatory labels to any image.
 - Build an interactive infographic.
 - Label equipment in a workshop photo.
 - Annotate a screenshot for documentation.
 - Mark locations on a campus image.
-- Keep labels translatable.
-- Add clickable regions to an image.
-- Explain a technical drawing.
-- Label ingredients in a photograph.
-- Annotate a historical image.
+- Add clickable regions that link elsewhere.
+- Show extra detail in a hover tooltip.
+- Show detail in a click-to-open modal dialog.
+- Keep labels as translatable text, not baked into the image.
+- Explain a technical or engineering drawing.
+- Label ingredients in a food photograph.
+- Annotate a historical photograph.
 - Mark defects on an inspection photo.
-- Build a guided image tour.
+- Build a guided, explorable image tour.
+- Point out amenities on a venue photo.
+- Highlight destinations on a travel map.

@@ -1,21 +1,42 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Token Entity Render (token_entity_render) — agent index
 
-Tokens that **render a whole entity in a chosen view mode**, rather than substituting one field's
-value. Version **2.0.0**. Core requirement `^9 || ^10 || ^11`.
+Registers a family of tokens shaped `[<entity_type>:render:<view_mode>]` (e.g. `[node:render:teaser]`,
+`[user:render:full]`) whose replacement value is the **entity rendered in that view mode**, not a
+single field value. The whole module is one `.module` file with two hooks: `hook_token_info_alter()`
+advertises a `render:<view_mode>` token for every view mode of every entity type, and `hook_tokens()`
+performs the substitution by loading the entity's view builder and rendering it. It has no config
+page, no route, no service and no plugin of its own — it plugs straight into core's token pipeline and
+uses only core services.
 
-**The gap it fills:** Drupal's tokens are field-level (`[node:title]`, `[node:field_summary]`).
-Nothing covers "put the rendered thing here" — an email containing the article as it appears on the
-site, a digest of several nodes, a PDF template, a block embedding a rendered teaser.
+The entity that gets rendered is always the one already in the token context (`$data['entity']`); the
+token string carries the view-mode name only, never an entity id, so a token cannot pick out an
+arbitrary entity. The replacement is a finished HTML string produced with core's renderer in
+isolation, so it carries none of the render array's cache metadata back to the caller — attach cache
+tags yourself where the surrounding output must invalidate when the entity changes.
 
-**State this before anyone builds on it — it is what makes rendering tokens different from field
-tokens: a rendered entity carries access and cache metadata, and a token substitution is a
-string.**
-1. **Access.** Rendering into an email sent by **cron** renders as whoever cron is — usually with no
-   user context. An **unpublished node, an access-restricted field or a personalised block** can be
-   rendered into a message and sent to someone who could not view any of it. Render with an
-   **explicit account**.
-2. **Cache metadata has nowhere to go** once the result is a string, so the containing page or email
-   does not inherit the cache tags of what it contains. Add them **deliberately**.
+- Depends on: nothing beyond Drupal core (info.yml declares no `dependencies:`; it uses core token
+  hooks and the core `entity_type.manager` / `renderer` services).
+- Core: `^9 || ^10 || ^11`. Package: `Token`. Version `2.0.0`.
+- No settings page / `configure` route, no permissions, no drush commands, no config schema, no plugin
+  types.
+- Hooks implemented: `hook_token_info_alter()`, `hook_tokens()`.
 
-Neither failure is visible when it happens.
+## What you'd do → where
+
+- **Use the render tokens / understand exactly how the substitution works** →
+  [api/tokens.md](api/tokens.md)
+
+## Key facts (real machine names)
+
+- Token pattern: `[<entity_type>:render:<view_mode_machine_name>]`. The `render:` prefix is fixed; the
+  suffix is the view-mode machine name with the `<entity_type>.` prefix stripped (stored view mode
+  `node.teaser` → `[node:render:teaser]`).
+- Hooks: `token_entity_render_token_info_alter()` (registration) and `token_entity_render_tokens()`
+  (substitution), both in `token_entity_render.module`.
+- Core services used (none redefined): `entity_type.manager` — `getStorage('entity_view_mode')` +
+  `getViewBuilder()`; `renderer` — `renderPlain()`.
+- Render path: `EntityViewBuilder::view($data['entity'], $view_mode)` → `Renderer::renderPlain()`
+  (`renderPlain()` is deprecated in core 10.3 and removed in 12.0 — see api/tokens.md).
+- A `render:<view_mode>` token is added only for entity types that another module already exposes as a
+  token type (`$data['tokens'][<entity_type>]` must already exist).
