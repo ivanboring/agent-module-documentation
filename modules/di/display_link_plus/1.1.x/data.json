@@ -1,12 +1,14 @@
 {
   "name": "Display Link Plus",
   "data_name": "display_link_plus",
-  "description": "Enhanced link field formatter options.",
+  "description": "Views header/footer area handler that renders an access-checked link to another display in the same view.",
   "version": "1.1.x",
-  "package": null,
+  "package": "Views",
   "composer_namespace": "drupal/display_link_plus",
   "composer_requirements": {},
-  "dependent_modules": [],
+  "dependent_modules": [
+    "drupal:views"
+  ],
   "configure": null,
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
@@ -25,16 +27,19 @@
     "Content display"
   ],
   "subcategories": [
-    "Field formatters",
-    "Links"
+    "Views field handlers",
+    "Lightbox / modal display"
   ],
   "keywords": [
+    "views",
     "link",
-    "formatter",
+    "area handler",
+    "header",
+    "footer",
     "display",
-    "field",
-    "url",
-    "options"
+    "modal",
+    "off-canvas",
+    "button"
   ],
   "project_description": "This module adds to the functionality of core's display_link views header / footer plugin in a number of ways:\n\n \n Performs an access check as part of the render process, so the link is only shown to users who can access the display \n Option to override the label \n Option to provide one or more classes to use on the link (for example, to format as a button) \n Option to render the display in the settings tray or modal dialog, and if either specify a width \n \n This module aims to improve the admin UI by building in links to common tasks, within public-facing views. As such, it is similar to Add Content By Bundle and has a very similar implementation, though they address entirely different use cases.",
   "maintenance_status": "Actively maintained",

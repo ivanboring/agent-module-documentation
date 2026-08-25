@@ -1,7 +1,7 @@
 {
   "name": "Download All Files",
   "data_name": "download_all_files",
-  "description": "Field formatter and block for downloading all of an entity's files.",
+  "description": "Field formatter that zips and downloads all files in an entity's file/image field.",
   "version": "2.0.x",
   "package": "Files",
   "composer_namespace": "drupal/download_all_files",
@@ -21,10 +21,10 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Media management",
+    "Media",
     "Content display"
   ],
   "subcategories": [

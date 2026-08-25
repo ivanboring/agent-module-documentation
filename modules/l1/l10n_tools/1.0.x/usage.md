@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-L10n Tools removes obsolete interface-translation rows — strings from modules that are gone, translations for languages no longer enabled, entries left behind by long-uninstalled code.
+L10n Tools is a maintenance module that trims Drupal's interface-translation (`locale`) database tables through three operations: removing translations identical to their source string, removing untranslated source strings, and resetting the translation-update status so core re-checks localize.drupal.org.
 
 ---
 
-Drupal's interface translation tables accumulate and never shrink. `locales_source` gains a row for every translatable string every module has ever declared, `locales_target` a row per translation of each, and `locales_location` records where each string was found. Uninstalling a module does not remove its strings; disabling a language does not remove its translations. On a long-lived multilingual site with a history of modules that came and went, these tables reach hundreds of thousands of rows, and the cost is real: every database export and import carries them, the translation administration interface pages through them, and cache warming and translation rebuilds get slower in proportion. Version **1.0.3** on `^9 || ^10 || ^11`, depending on core `locale`, with an `access l10n_tools form` permission correctly marked `restrict access: TRUE` — appropriate, since the form deletes data. Two things before running it. **Custom translations are not recoverable from anywhere**: a string translated by hand in the UI, rather than imported from a `.po` file, exists only in the database, so a cleanup that decides it is orphaned deletes work that cannot be re-downloaded — take a database backup first, and prefer a dry run if the tool offers one. And **"orphaned" is a judgement about the current codebase**: a module that is temporarily uninstalled, or one enabled only on another environment, has strings that look obsolete here and are not.
+Install with `composer require drupal/l10n_tools` and enable it (`drush en l10n_tools`); it depends only on core's Interface Translation (`locale`) module and requires no third-party libraries. Grant the restricted **`access l10n_tools form`** permission, then open *Configuration › Regional and language › L10n Tools* (`/admin/config/regional/l10n_tools`). The form has three collapsible sections, each of which acts immediately on the database — there is no saved configuration and no undo. **Equal translations**: click "Show all equal translations" to list every entry whose translated string is byte-identical to its source (optionally scoped to only user-customized, only imported, or both via the filter select), then "Clear translations of all listed equal translations" to delete those target rows. **Orphan / untranslated translations**: list, then delete `locales_source` strings that have no translation at all — the form notes this is safe because Drupal rebuilds those source strings on demand. **Reset translation status**: clears the recorded translation-update status and zeroes the last-checked timestamps for all projects, so the next update check re-downloads from localize.drupal.org (use the provided link, or `drush locale-check && drush locale-update`, to run it). The same three operations are available as Drush commands — `l10n_tools:deet` (with `--custom-only` / `--imported-only` / `--both`), `l10n_tools:deot`, and `l10n_tools:rets`. Because deletions are immediate and irreversible, **back up the database first**; note that hand-entered custom translations live only in the database and cannot be re-downloaded, and that the module's SQL is MySQL/MariaDB-specific. This is version 1.0.3, compatible with Drupal `^9 || ^10 || ^11`.
 
 ---
 
-- Shrink oversized locale tables.
-- Remove strings from uninstalled modules.
-- Delete translations for disabled languages.
-- Speed up database exports.
-- Clean up after a long migration.
-- Reduce translation table size.
-- Improve translation UI performance.
-- Tidy an inherited multilingual site.
-- Remove expired translation entries.
-- Reduce backup size.
-- Speed up cache rebuilds.
-- Clean up before a major upgrade.
-- Remove obsolete string locations.
-- Audit translation table growth.
-- Prepare a site for a language removal.
-- Reduce import time for developers.
-- Clean up test translations.
-- Maintain a long-lived multilingual site.
+- Delete translations that are identical to their source string.
+- Remove only user-customized "equal" translations.
+- Remove only imported (localize.drupal.org) "equal" translations.
+- Clean up both imported and customized equal translations at once.
+- Delete source strings that were never translated.
+- List equal or orphan translations to preview before deleting.
+- Reset the interface-translation update status.
+- Force Drupal to re-check localize.drupal.org for new translations.
+- Zero the `locale_file` last-checked timestamps for all projects.
+- Run translation cleanup from the admin UI.
+- Run translation cleanup from the CLI with Drush.
+- Shrink oversized `locales_source` / `locales_target` tables.
+- Speed up database exports on a large multilingual site.
+- Reduce backup size on a translation-heavy site.
+- Tidy an inherited or long-lived multilingual site.
+- Clean up a development database after translation testing.
+- Prepare a site before a major translation re-import.
+- Recover translation-update checking after a stuck status.
+- Reduce load on the translation administration UI.
+- Automate periodic locale-table cleanup via cron-run Drush.

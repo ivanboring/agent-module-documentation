@@ -1,25 +1,45 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Download All Files (download_all_files) — agent index
 
-Field formatter and block that zip an entity's file field on demand. Depends on core `file`.
-Route: `/download_all_files/{entity_type}/{entity}/{field_name}` with
-`_custom_access: DownloadController::access`. Version **2.0.2**. Core requirement `^10.2 || ^11`.
+Adds a "download all" link to a core **File**/**Image** field. The field formatter
+`file_download_all` ("Table of files with download all link") renders the field as a table of its
+files plus one link to a route that zips every file in the field and streams it as an attachment.
+Zipping is on demand — the archive is built from the field itself at request time, so it never drifts
+out of step with the files the way a hand-maintained second zip would. Depends only on core `file`.
 
-**The idea is right** — the alternative sites reach for is a second, manually maintained zip that
-immediately falls out of step with the field it duplicates.
+Mechanism: the formatter builds `Url::fromRoute('download_all_files.download_path', {entity_type,
+entity, field_name})`; that route resolves to `DownloadController::downloadAllFiles()`, which loads
+each referenced `file` entity, adds it to a `\ZipArchive` (via the module's `Zip` archiver plugin)
+under a temp path, and returns a `BinaryFileResponse` with a `Content-Disposition: attachment`.
 
-**Three defects in 2.0.2, all found on review; none hard to fix, all present:**
-1. **`{field_name}` is unvalidated** beyond `$entity->hasField()`. Naming a non-file field on any
-   viewable entity reaches `$file_storage->load($file['target_id'])` with NULL —
-   **verified anonymously**: `HTTP 500, AssertionError: Cannot load the "file" entity with NULL ID`.
-   A cheap unauthenticated way to flood the error log, and a stack trace where display is on.
-2. **No field-level access check.** `access()` tests `$entity->access('view')`; the controller then
-   reads whatever field it was handed. `hook_entity_field_access()` is never consulted. The
-   per-file `$file_obj->access('view')` saves the **private**-scheme case (core consults referencing
-   entities) but **not the public** one — public files are not access-controlled. So a field hidden
-   from this user, holding public files, is downloadable.
-3. **Zips are never deleted**, written to
-   `temp://daf_zips/{entity_type}/{id}-{lang}-{field}-{uid}.zip` — a predictable path and unbounded
-   growth. Directly fetchable if `file_temp_path` is inside the public files directory.
+- Depends on: `drupal:file`.
+- Core: `^10.2 || ^11`. Package: `Files`.
+- **No settings page / `configure` route.** All configuration is per field-display (the formatter's
+  settings on Manage display). No permissions, no drush, no config schema shipped.
+- One field formatter (`file_download_all`) and one archiver plugin (`DownloadAllFileZip`). There is
+  **no block plugin** despite the info.yml description mentioning one — it is not in the code.
 
-Fixes: check the field's type and `->access('view')` before reading; delete or GC the archive.
+## What you'd do → where
+
+- **Understand / call the download route and controller (archiver included)** →
+  [api/download.md](api/download.md)
+- **Turn on the "download all" link for a file/image field and tune its display** →
+  [fields/download-all-formatter.md](fields/download-all-formatter.md)
+
+## Key facts (real machine names)
+
+- Route: `download_all_files.download_path` —
+  `/download_all_files/{entity_type}/{entity}/{field_name}`, controller
+  `Drupal\download_all_files\Controller\DownloadController::downloadAllFiles`, access callback
+  `::access` (`_custom_access`). Route option `parameters.entity.type: entity:{entity_type}`.
+- Controller service args: `file_system`, `event_dispatcher`.
+- Field formatter: id `file_download_all`, label "Table of files with download all link", field
+  types `file`, `image`; class `Plugin\Field\FieldFormatter\DownloadAllFormatter` (extends
+  `EntityReferenceFormatterBase`).
+- Formatter settings keys: `use_description_as_link_text`, `details`, `details_state`,
+  `details_title`, `simple_theme`, `link_position`, `link_icon`, `link_title`.
+- Archiver plugin: id `DownloadAllFileZip`, class `Plugin\Archiver\Zip` (extends core
+  `Drupal\Core\Archiver\Zip`), extensions `{"zip"}`.
+- Library: `download_all_files/theme` (CSS `css/download_all_files.css`). Icon:
+  `images/downloadIcon.svg`.
+- Hooks: `hook_help` only (`download_all_files.module`).

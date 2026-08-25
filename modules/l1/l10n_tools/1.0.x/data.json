@@ -1,7 +1,7 @@
 {
   "name": "L10n Tools",
   "data_name": "l10n_tools",
-  "description": "Cleans up unnecessary and expired translation database entries.",
+  "description": "Cleans up redundant interface-translation rows and resets translation-update status.",
   "version": "1.0.x",
   "package": "Multilingual",
   "composer_namespace": "drupal/l10n_tools",
@@ -20,16 +20,16 @@
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
-  "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Multilingual",
     "Administration tools"
   ],
   "subcategories": [
-    "Interface translation",
-    "Maintenance"
+    "Translation / multilingual",
+    "Database maintenance / optimization"
   ],
   "keywords": [
     "locale",

@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Easy Responsive Tabs to Accordion adds field-group formatters that render a group of fields as tabs on wide screens and as an accordion on narrow ones.
+Easy Responsive Tabs to Accordion adds two field-group formatters that render a group of fields as horizontal or vertical tabs on wide screens and collapse them to an accordion on narrow ones.
 
 ---
 
-Tabs and accordions solve the same problem — too much content for one screen — at different widths. Tabs need horizontal room for their labels and stop working on a phone, where the row either wraps into an unreadable block or scrolls sideways; an accordion works at any width and wastes vertical space on a desktop where the tabs would have fitted. Choosing one for both is a compromise; switching between them at a breakpoint is what the design usually wanted. This module makes that a **field group** formatter, which is the right layer — `field_group` already organises fields into tabs, fieldsets and details in both form and view displays, so this adds a rendering option to a structure that already exists rather than introducing a parallel one. It also means the grouping is configured once and applies to the node form as well as the rendered page, if the site wants it in both. Version **4.0.0** on core `^9.4 || ^10 || ^11`, requiring `field_group`. The accessibility requirement is the one that separates a working implementation from a decorative one, and it is harder here than for plain tabs because **the semantics have to change with the layout**: a tab set needs `role="tablist"`, `role="tab"`, `role="tabpanel"`, `aria-selected` and arrow-key navigation, while an accordion needs a button per header with `aria-expanded` — so the component must switch roles at the breakpoint, not merely restyle. Test with a screen reader at both widths, not one.
+The module builds on the **Field Group** module rather than introducing its own structure: you group fields as you normally would, then choose one of its formatters to control how the group is displayed. A parent group uses the **"Easy Responsive Tabs to Accordion - Tabs"** formatter (`ertta_tabs`) as the wrapper, and each child group uses **"Easy Responsive Tabs to Accordion - Tab"** (`ertta_tab`); every child group's label becomes a tab header and its fields become that tab's panel. Both formatters work on **Manage form display** and **Manage display**, so the same grouping can theme the node edit form and the rendered entity. The rendering is powered by the external **"Easy Responsive Tabs to Accordion" jQuery plugin**, which you must download and unpack into the site's `/libraries/easy-responsive-tabs/` directory (it is not installed by Composer) — without it nothing initialises. The wrapper exposes settings for the layout `type` (Horizontal, Vertical, or Accordion), `width`, whether it fits its container, whether panels start closed, active/inactive tab background colours, tab-head and content border colours, and an optional unique `id`; these are emitted as `data-*` attributes and read by the plugin. It requires `field_group` and supports Drupal `^9.4 || ^10 || ^11`. Note that responsive tabs/accordions carry an accessibility burden — the interaction semantics differ between tab and accordion modes — so verify the result with a keyboard and screen reader at both widths.
 
 ---
 
-- Show field groups as tabs on desktop.
-- Switch to an accordion on mobile.
-- Organise a long content type's display.
-- Group specifications into tabs.
-- Present a product's details responsively.
-- Reduce page length on mobile.
-- Show related fields together.
-- Use field groups for tabbed display.
-- Organise a node edit form into tabs.
-- Present a policy document by section.
-- Group contact details separately.
-- Improve a dense page's readability.
-- Show a course's modules as tabs.
-- Present staff details in sections.
-- Organise a profile's fields.
-- Improve mobile content navigation.
-- Show technical details in a tab.
-- Structure a long product page.
+- Show a field group as tabs on desktop and an accordion on mobile.
+- Organise a long content type's display into tabs.
+- Group product specifications into separate tabs.
+- Present a product's details responsively across devices.
+- Reduce page length on mobile by collapsing sections.
+- Show related fields together under one tab.
+- Turn a dense node edit form into tabbed sections.
+- Present a policy or documentation page section by section.
+- Group contact details into their own tab.
+- Improve a dense page's readability with tabbed grouping.
+- Show a course's modules or lessons as tabs.
+- Present staff or team member details in sections.
+- Organise a user profile's fields into tabs.
+- Improve mobile content navigation with an accordion.
+- Put technical details behind a dedicated tab.
+- Structure a long product page into digestible panels.
+- Display the same grouping on both the form and the rendered view.
+- Render nested vertical tabs for sub-sections.
+- Start a group with all panels closed until clicked.
+- Style active/inactive tabs with custom background and border colours.

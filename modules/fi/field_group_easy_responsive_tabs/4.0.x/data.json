@@ -5,7 +5,10 @@
   "version": "4.0.x",
   "package": "Fields",
   "composer_namespace": "drupal/field_group_easy_responsive_tabs",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/core": "^9.4 || ^10 || ^11",
+    "drupal/field_group": "^3.0 || ^4.0"
+  },
   "dependent_modules": [
     "field_group:field_group"
   ],
@@ -16,20 +19,22 @@
   "project_url": "https://www.drupal.org/project/field_group_easy_responsive_tabs",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "easy-responsive-tabs (jQuery plugin, unpack into /libraries/easy-responsive-tabs)"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content editing experience",
-    "Theming"
+    "Content display",
+    "Content editing experience"
   ],
   "subcategories": [
-    "Form display",
-    "Tabs and navigation"
+    "Tabbed content / accordion",
+    "Field formatters"
   ],
   "keywords": [
     "field group",

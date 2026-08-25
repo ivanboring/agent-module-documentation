@@ -1,11 +1,15 @@
 {
   "name": "Extra Paragraph Types (EPT): Carousel",
   "data_name": "ept_carousel",
-  "description": "Adds a Carousel paragraph type with Tiny Slider.",
+  "description": "Adds a Carousel paragraph type built on the Tiny Slider library.",
   "version": "2.0.x",
   "package": "Extra Paragraph Types",
   "composer_namespace": "drupal/ept_carousel",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ept_core": "^2.0",
+    "drupal/paragraphs": "^1.0",
+    "levmyshkin/tiny-slider": "^2.9"
+  },
   "dependent_modules": [
     "drupal:link",
     "drupal:media",
@@ -20,20 +24,23 @@
   "project_url": "https://www.drupal.org/project/ept_carousel",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "tiny-slider"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content editing experience",
-    "Media management"
+    "Content display",
+    "Content editing experience"
   ],
   "subcategories": [
-    "Paragraphs",
-    "Carousels and sliders"
+    "Carousel / slider",
+    "Structured content / page building",
+    "Media embedding"
   ],
   "keywords": [
     "carousel",
