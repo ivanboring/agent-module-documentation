@@ -1,39 +1,66 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Onomasticon (onomasticon) — agent index
 
-A glossary **text filter** backed by a taxonomy vocabulary, plus a CKEditor exclude button. No
-config form of its own (settings live on the text format), no permissions, no schema, no Drush.
+A glossary **text-format filter** backed by a taxonomy vocabulary, plus a CKEditor "exclude from
+glossary" button. Enable the filter `filter_onomasticon` on a text format, point it at a
+vocabulary, and every rendered piece of text in that format has its glossary terms wrapped in a
+`dfn`/`abbr`/`cite` tag carrying the term's definition (as a CSS tooltip, a `title` attribute, or an
+ARIA-described element). Terms are matched **on the parsed HTML DOM** (`Masterminds\HTML5`), only
+inside `#text` nodes and never inside tag names/attributes or a configurable list of disabled tags,
+so markup is never corrupted.
 
-Key facts:
-- Filter `@Filter(id = "onomasticon", title = "Onomasticon Filter")` — `FilterOnomasticon`.
-  It returns the text unchanged when `onomasticon_vocabulary` is empty, so enabling the filter
-  without choosing a vocabulary is a silent no-op.
-- **DOM-based, not regex**: text is loaded with `Masterminds\HTML5` into a DOMDocument, normalised,
-  and traversed (`processChildren()`); replacements are built as document fragments via
-  `appendXML()` and swapped in. A fragment that fails to parse is skipped
-  (`try/catch`, `$bool = FALSE`), so a malformed definition silently drops that one replacement.
-- Filter settings (per text format):
+The whole module is plugins: one `@Filter` plugin (`FilterOnomasticon`), a CKEditor 4 plugin and a
+CKEditor 5 plugin (`glossaryExclude`) that wrap selected text in a `<nonomasticon>` element to
+exclude it, and a CKEditor4→5 upgrade plugin. The `.module` adds `hook_theme` (template
+`onomasticon`), an alter hook (`hook_onomasticon_terms_alter`), and two request-static cache
+helpers. There is an optional soft integration with the **Synonyms** module.
 
-  | Setting | Meaning |
-  |---|---|
-  | `onomasticon_vocabulary` | Vocabulary holding glossary terms |
-  | `onomasticon_definition_field` | Machine name of the definition field; empty = term description |
-  | `onomasticon_definition_filters` | Run `check_markup()` on the description — **the UI warns this can cause infinite loops** if definitions contain glossary terms |
-  | `onomasticon_tag` | HTML tag wrapping a match |
-  | `onomasticon_disabled` | Tags to skip; anchors and the wrapping tag are added automatically |
-  | `onomasticon_implement` | How the definition is attached (a `title`-attribute implementation strips tags — attributes cannot hold markup) |
-  | `onomasticon_orientation` | Tooltip above/below |
-  | (cursor) | Mouse cursor over a glossary term |
+- Depends on: nothing hard (info.yml has no `dependencies`). Soft: `synonyms` (used only when the
+  `synonyms.provider_service` exists), `ckeditor5`/`ckeditor` (only for the exclude button).
+- Core: `^9.3 || ^10 || ^11`. Package: `custom`. Requires the PHP **mbstring** extension.
+- **No dedicated settings page / `configure` route.** All configuration is per text format, on the
+  filter's settings form (`admin/config/content/formats/manage/{format}`).
+- No permissions, no config schema, no Drush, no routes, no services, defines no plugin types.
 
-- Cacheability: the `FilterProcessResult` adds
-  **`taxonomy_term_list:{vocabulary}`**, so editing/adding a glossary term invalidates rendered
-  text without a manual cache clear.
-- Editor integration: `Plugin/CKEditorPlugin/OnomasticonExcludeCkeditorButton` (CKEditor 4 style
-  annotation) **and** `onomasticon.ckeditor5.yml` for CKEditor 5; `js/build/glossaryExclude.js`,
-  `css/glossary_exclude.css` (front end) and `css/glossary_exclude.admin.css` (editor).
-- Helpers `onomasticon_get_term_cache()` / `onomasticon_set_term_cache($term_id)` in the `.module`
-  memoise term lookups during a request; `hook_theme()` registers `templates/onomasticon.html.twig`.
+## What you'd do → where
 
-Performance note: every text render walks the DOM and matches against the vocabulary. On large
-vocabularies and long bodies this is not cheap — rely on the render cache and avoid enabling the
-filter on formats used for very large documents.
+- **Turn the glossary on for a text format and tune matching/display** →
+  [configure/filter.md](configure/filter.md)
+- **Understand/override the rendered tooltip markup (the three implementation modes)** →
+  [configure/filter.md](configure/filter.md)
+- **Let editors exclude a passage from glossary processing (`<nonomasticon>`)** →
+  [plugins/ckeditor.md](plugins/ckeditor.md)
+- **Alter the set of glossary terms, or the theme hook / request caches** →
+  [hooks/index.md](hooks/index.md)
+
+## Key facts (real machine names)
+
+- Filter plugin: **`filter_onomasticon`** (`src/Plugin/Filter/FilterOnomasticon.php`), title
+  "Onomasticon Filter", `type = TYPE_TRANSFORM_IRREVERSIBLE`. Returns the text unchanged when
+  `onomasticon_vocabulary` is empty (enabling it without picking a vocabulary is a silent no-op).
+- Filter settings keys (defaults): `onomasticon_vocabulary` (""), `onomasticon_definition_field`
+  ("description"), `onomasticon_definition_filters` (false), `onomasticon_tag` ("dfn"),
+  `onomasticon_disabled` ("abbr audio button cite code dfn form meta object pre style script
+  video"), `onomasticon_implement` ("extra_element"), `onomasticon_orientation` ("below"),
+  `onomasticon_cursor` ("default"), `onomasticon_repetition` (""), `onomasticon_ignorecase` (false),
+  `onomasticon_termlink` (false). Stored under `filters.filter_onomasticon.settings.*` on the
+  `filter.format.{format}` config entity. **No config schema ships.**
+- Theme hook: **`onomasticon`** → `templates/onomasticon.html.twig`; variables `tag`, `needle`,
+  `description`, `implement`, `orientation`, `cursor`, `termlink`, `termpath`, `term`.
+- Alter hook: **`hook_onomasticon_terms_alter(array &$terms)`** (invoked as
+  `->alter('onomasticon_terms', $terms)` in `FilterOnomasticon::getTaxonomyTerms()`).
+- Module functions: `onomasticon_get_term_cache()`, `onomasticon_set_term_cache($term_id)` (request
+  `drupal_static`, used by the "prevent page repetition" mode); `onomasticon_help()`.
+- CKEditor 5 plugin: definition `onomasticon.ckeditor5.yml` id **`onomasticon_glossary_exclude`**,
+  toolbar item **`glossaryExclude`**, JS `glossaryExclude.GlossaryExclude`, model attribute /
+  command `nonomasticon`, allowed element `<nonomasticon>`. CKEditor 4 plugin
+  `@CKEditorPlugin(id = "nonomasticon")` (`OnomasticonExcludeCkeditorButton`, button `nonomasticon`).
+  Upgrade path `@CKEditor4To5Upgrade(id = "nonomasticon")` maps button `nonomasticon` → `glossaryExclude`.
+- Libraries (`onomasticon.libraries.yml`): `onomasticon/default` (front-end CSS
+  `onomasticon.theme.css`, auto-attached by the template), `onomasticon/glossary_exclude`,
+  `onomasticon/admin.glossary_exclude`.
+- Cacheability: the `FilterProcessResult` adds cache tag **`taxonomy_term_list:{vocabulary}`**, so
+  adding/editing a glossary term invalidates rendered text with no manual cache clear.
+
+Performance note: every render in the format parses the body into a DOM and matches it against the
+whole vocabulary, so it is not free on large vocabularies / long bodies — rely on the render cache.

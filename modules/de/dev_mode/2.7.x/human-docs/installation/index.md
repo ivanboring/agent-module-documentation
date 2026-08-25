@@ -41,7 +41,6 @@ caches off, verbose errors, no aggregation, and no-cache meta tags on every page
 > (which prints backtraces to visitors), turns off page and render caching, and
 > writes to `settings.php`. If `settings.php` is not writable it will `chmod`
 > `sites/default` to `0777` while it edits `services.yml`, then set it to `0555`.
-> Read `security.md` at this module's root before using it anywhere shared.
 
 ## Turning it off
 

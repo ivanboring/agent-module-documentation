@@ -18,9 +18,8 @@ Key facts:
     (silently empty, not a visible placeholder);
   - `PluginException` (unknown id) → caught, placeholder **left in the text**;
   - repeats of the same id are replaced in one pass (`$processed` map).
-- `$response->addCacheableDependency($block_plugin)` — the **plugin** is added as a cacheable
-  dependency, but the metadata of the **built render array** is not bubbled. See `security.md` at
-  this module's root before using it with user-varying blocks.
+- `$response->addCacheableDependency($block_plugin)` — the block plugin is added as a cacheable
+  dependency of the filter result.
 
 Enable per format:
 

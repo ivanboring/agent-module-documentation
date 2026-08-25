@@ -1,12 +1,14 @@
 {
   "name": "Node Token",
   "data_name": "node_token",
-  "description": "Provides dedicated tokent types for each node bundle.",
+  "description": "Provides dedicated token types for each node bundle.",
   "version": "1.4.x",
   "installed_release": "8.x-1.4",
   "package": "Token",
   "composer_namespace": "drupal/node_token",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/token": "~1.0"
+  },
   "dependent_modules": [
     "drupal:token"
   ],

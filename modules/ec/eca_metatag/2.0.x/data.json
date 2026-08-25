@@ -5,7 +5,11 @@
   "version": "2.0.x",
   "package": "ECA",
   "composer_namespace": "drupal/eca_metatag",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "php": ">=8.1",
+    "drupal/eca": "^2.0 || ^3.0",
+    "drupal/metatag": "^2.0"
+  },
   "dependent_modules": [
     "eca:eca (^2 || ^3)",
     "metatag:metatag"
@@ -16,13 +20,13 @@
   "list_position": 2614,
   "project_url": "https://www.drupal.org/project/eca_metatag",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": false,
+  "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
     "Automation",
@@ -37,10 +41,13 @@
     "metatag",
     "eca_metatag_add_tag",
     "eca_metatag_set_tag_value",
+    "eca_metatag:tags",
+    "eca_metatag:alter",
+    "hook_metatags_alter",
     "EcaAction",
     "no-code automation",
     "meta tag automation",
-    "BPMN"
+    "SEO"
   ],
   "project_description": "Integrates ECA with Metatag .\n\n This integration allows ECA to do a couple of things about Metatags:\n\n \n Listen to the Provide a list of tags event, when the Metatag module creates their list of available metatags, and add any extra Metatag with the Add Tag action, which are then available in the UI to configure just like any other Metatag. \n Listen to the Alter metatags event and change the value of any existing Metatag with the Set tag value action.",
   "maintenance_status": "Actively maintained",

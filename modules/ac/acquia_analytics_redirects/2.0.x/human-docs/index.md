@@ -35,10 +35,9 @@ background once enabled.
 Enable it (see [Installation](installation/index.md)) on a site fronted by Acquia
 Cloud Varnish, and it takes effect immediately. No configuration, no maintenance.
 
-> **Important — deploy only behind Acquia/Varnish.** The module **trusts** the
-> `X-Acquia-Stripped-Query` header, which on Acquia Cloud is set and sanitized by
-> Varnish. If your site runs off Acquia, or an environment lets requests reach
-> Drupal while bypassing Varnish, that header would be attacker-controlled: a
-> redirect would keep its original (trusted) path but carry an attacker-chosen query
-> string. Only enable this module on sites served through the intended Acquia
-> Varnish tier.
+> **Built for the Acquia Varnish tier.** The module only does anything when the
+> `X-Acquia-Stripped-Query` header is present, and that header is produced by Acquia
+> Cloud's Varnish. On a site that is not fronted by that Varnish tier the header is
+> normally absent, so the module is a no-op — it is designed for, and only useful on,
+> Acquia Cloud. Also note that core's Internal Page Cache module must be
+> disabled/uninstalled for the module to take effect.

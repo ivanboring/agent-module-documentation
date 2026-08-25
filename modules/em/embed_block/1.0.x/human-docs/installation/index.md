@@ -10,8 +10,7 @@
 There are no third-party Composer or PHP library requirements.
 
 > **Note on maturity:** the packaged release is `8.x-1.0-alpha4`. Test it before
-> relying on it in production, and read `security.md` at this module's root for the
-> caching caveat around user-varying blocks.
+> relying on it in production.
 
 ## Install with Composer
 

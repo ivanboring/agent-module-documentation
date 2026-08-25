@@ -1,11 +1,13 @@
 # Search by current language — agent index
 
 Forces core node search to return only current-language results (plus `und`/`zxx` neutral) and
-hides the advanced-search language filter. No config, no permissions, no services, no schema —
-just two hooks in `search_current_language.module`. Depends on core `search`, `language`,
-`content_translation`. Affects **core Search only**, not Search API.
+hides the advanced-search language filter. No config page, no routes, no permissions, no services,
+no schema, no plugin types — the whole module is three hooks in `search_current_language.module`
+(`hook_help`, `hook_query_TAG_alter`, `hook_form_FORM_ID_alter`) plus a no-op update hook
+(`search_current_language_update_8100` in `.install`, exists only to force a cache clear). Depends
+on core `search`, `language`, `content_translation`. Affects **core Search only**, not Search API.
 
-No solution docs are warranted (the whole module is two small hooks). Behavior:
+No solution docs are warranted (trivial module). Behavior:
 
 - `search_current_language_query_alter(AlterableInterface $query)` — for queries tagged
   `search_node_search` or `search_search_exclude_node_search`: removes any existing `i.langcode`

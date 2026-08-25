@@ -6,7 +6,7 @@ settings. **No configuration UI by design** and no permissions, schema or Drush.
 
 > **Never enable on production.** It sets `error_level: verbose` (backtraces to visitors), turns
 > off page/render caching, and writes to `settings.php` — or, failing that, chmods
-> `sites/default` to 0777 while it edits `services.yml`. See `security.md` at this module's root.
+> `sites/default` to 0777 while it edits `services.yml`.
 
 Key facts:
 - `hook_install()`:

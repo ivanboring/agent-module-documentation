@@ -19,9 +19,8 @@ placeholder); an **unknown** plugin id leaves the placeholder untouched in the
 text, which helps you spot a typo; and because it is an ordinary text filter, you
 turn it on per text format — which is also how you control who can use it.
 
-This is an early release (`8.x-1.0-alpha4`), so treat it accordingly and read
-`security.md` at this module's root for an important caching caveat about
-user-varying blocks.
+This is an early release (`8.x-1.0-alpha4`), so test it before relying on it in
+production.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token-cheap references for an AI coding agent, read the sibling

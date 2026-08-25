@@ -20,7 +20,6 @@ This is emphatically **not** a production tool. It exposes backtraces to visitor
 disables caching, and writes to your site's settings files — and if `settings.php`
 is not writable it will temporarily loosen the permissions on `sites/default` to
 edit `services.yml` directly. Use it only on local, CI or review environments.
-See `security.md` at this module's root for the full caveats.
 
 This guide is written for a **human** setting the module up by hand. If you want
 terse, token-cheap references for an AI coding agent, read the sibling

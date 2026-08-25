@@ -4,9 +4,9 @@
 
 - **Drupal 10.3, 11, or 12** (`core_version_requirement: ^10.3 || ^11 || ^12`).
 - A site hosted on **Acquia Cloud** (behind Acquia's Varnish), which is where the
-  `X-Acquia-Stripped-Query` header this module relies on is produced. See the
-  deployment warning on the [main page](../index.md#how-to-use-it) — do not enable
-  it on sites reachable outside that Varnish tier.
+  `X-Acquia-Stripped-Query` header this module relies on is produced. On any other
+  host that header is normally absent, so the module simply does nothing — it is
+  designed for the Acquia Varnish tier (see the [main page](../index.md#how-to-use-it)).
 
 There are no other module dependencies and no third-party Composer or PHP library
 requirements (`composer.json` declares no dependencies).
