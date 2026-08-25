@@ -29,13 +29,12 @@ drush en override_cache_control_headers -y
 ## Grant the permission
 
 The module provides the **Administer override cache control headers** permission,
-which is flagged as *restricted* because of its reach — a bad rule can expose
-private content through a shared cache. Grant it only to trusted administrators
-under **People → Permissions**.
+which is flagged as *restricted* because it controls site-wide caching behaviour.
+Grant it only to trusted administrators under **People → Permissions**.
 
 ## Verify it worked
 
-Visit `/admin/config/develop/override-cache-control-headers` to confirm the
+Visit `/admin/config/development/override-cache-control-headers` to confirm the
 settings form loads (see [Configuration](../configuration/index.md)). After adding
 a rule, request the matching URL and inspect its response headers (browser dev
 tools or `curl -I`) to confirm the `Cache-Control` header matches what you set.

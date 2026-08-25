@@ -1,30 +1,27 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Override Cache Control Headers lets an administrator set the `Cache-Control` header for specific URLs, overriding what Drupal would send.
+Override Cache Control Headers lets an administrator set the `Cache-Control` response header on chosen URL patterns, overriding what Drupal would otherwise send.
 
 ---
 
-Drupal computes cache headers from render metadata, and that is usually right. Where it is not, the alternatives are unattractive: patch the code path, put rules in the web server or CDN where the people who understand the content cannot see them, or accept the wrong behaviour. This module offers a third option — a URL pattern and the header you want.
-
-The cases that come up in practice are specific. A landing page that must never be cached during a campaign; a rarely-changing legal page that could sit in a CDN for a day; an endpoint whose default headers make an integration misbehave; a path that must not be stored by an intermediary at all.
-
-**Cache-Control is a security control as well as a performance one, and this module is the place to say so.** The header decides whether a shared cache — a CDN, a corporate proxy, a browser on a shared machine — may store a response. Overriding it too permissively on a path that returns anything personalised is how one user's page is served to another, which is the classic and most damaging caching bug. The direction of the mistake matters: a too-conservative override costs performance, a too-permissive one leaks data.
-
-The permission `administer override cache control headers` is `restrict access: true`, which is the correct call for a setting with that reach.
+Install it with Composer (`composer require drupal/override_cache_control_headers`) and enable it (`drush en override_cache_control_headers`); it has no dependencies beyond Drupal core `^8 || ^9 || ^10 || ^11`. Configure it at **Configuration › Development › Override Cache Control Headers** (`/admin/config/development/override-cache-control-headers`), which requires the `administer override cache control headers` permission. In the first textarea you add one rule per line in the form `path|directives`, for example `/blog|public, max-age=3600` or `/sitemap.xml|must-revalidate, no-cache, private`; paths may use `*` wildcards and may include a query string for exact matching. A second textarea adds **temporary** rules that also carry an expiry in minutes (`path|directives|minutes`); those are stored in Drupal's State, are listed back with their expiry time, can be cleared with the **Delete All Entry** button, and are removed automatically on cron once they expire. The same timed override can be set from the command line with `drush occh:set-temp-headers "/path|directives|minutes"`. The directives accepted by the form validator are `must-revalidate`, `no-cache`, `no-store`, `public`, `private`, `proxy-revalidate`, `max-age` and `s-maxage`. Internally a `kernel.response` event subscriber matches the request URI against your rules and rewrites the `Cache-Control` header; a `hook_override_cache_control_headers` hook fires when rules are added so you can, for example, purge a Varnish or CDN cache. Note that Drupal core still governs the cacheability of dynamic pages, so an override chosen for a page core considers uncacheable may be re-adjusted by core.
 
 ---
 
-- Stop a campaign landing page being cached.
-- Cache a legal page in a CDN for longer.
-- Fix an integration broken by default headers.
-- Prevent an intermediary storing a response.
-- Set max-age for a specific URL.
-- Add no-store to a sensitive path.
-- Keep cache rules where content owners can see them.
-- Avoid patching code for a header change.
-- Avoid burying rules in the CDN configuration.
-- Restrict who may change cache headers.
-- Review overrides on personalised paths.
-- Avoid caching a personalised response publicly.
-- Audit which URLs have overrides.
-- Test header behaviour through the CDN.
-- Document a site's caching exceptions.
+- Cache a rarely-changing page in a CDN for longer with `public, max-age=…`.
+- Stop a specific page being cached during a campaign with `no-store`.
+- Send `no-cache, private` for a sitemap or feed URL.
+- Add `must-revalidate` so intermediaries re-check before serving.
+- Set `s-maxage` for shared caches without changing browser caching.
+- Apply a rule to a whole section using a `/section/*` wildcard.
+- Match a URL only when a given query string is present (`/search?category=blog|…`).
+- Match a path regardless of its query string (omit the `?` in the rule).
+- Override headers only for a fixed time window using the temporary textarea.
+- Set a timed override from a deploy script with `drush occh:set-temp-headers`.
+- Review the currently active timed overrides and their expiry on the settings form.
+- Clear all timed overrides at once with the Delete All Entry button.
+- Let cron automatically revert temporary overrides when they expire.
+- Purge a reverse-proxy/CDN cache from `hook_override_cache_control_headers` when rules change.
+- Restrict who may change cache headers via the `administer override cache control headers` permission.
+- Keep per-URL caching exceptions in one place instead of scattered web-server config.
+- Adjust `max-age` for a single URL without patching code.
+- Fix an integration that misbehaves because of Drupal's default headers on a path.

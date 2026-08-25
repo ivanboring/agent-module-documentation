@@ -12,13 +12,12 @@ desired header separated by a `|`. You can also set a rule that lasts only for a
 headers are automatically restored — handy for a temporary change during an
 incident or a campaign. There's a Drush command for the timed overrides too.
 
-> **`Cache-Control` is a security control, not only a performance one.** It
-> decides whether a shared cache — a CDN, a corporate proxy, a browser on a shared
-> machine — may store a response. A too‑permissive override on a page that returns
-> anything user‑specific can cause one user's page to be served to another. **The
-> direction of the mistake matters:** too conservative merely costs performance;
-> too permissive can leak private data. Review every rule that touches a path
-> returning personalised content.
+> **The `Cache-Control` header controls whether — and for how long — a browser,
+> proxy or CDN may store a response.** Pick the directives for each rule to match
+> how that page is meant to be cached: `public, max-age=…` to let shared caches
+> keep a page, `no-store` or `no-cache, private` to keep a page out of shared
+> caches. Drupal core still decides the cacheability of dynamic pages, so choose
+> rules with the specific path in mind.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -34,5 +33,5 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 ## Where it lives in the admin menu
 
 The settings form is at **Configuration → Development → Override Cache Control
-Headers** (`/admin/config/develop/override-cache-control-headers`), behind the
+Headers** (`/admin/config/development/override-cache-control-headers`), behind the
 restricted **Administer override cache control headers** permission.

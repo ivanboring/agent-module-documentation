@@ -24,11 +24,10 @@ apply. Because it works through the Date Augmenter API rather than a bespoke fie
 several augmenters can contribute to the same rendered date without knowing about
 each other — an "add to calendar" link and an associated notice can coexist.
 
-Its only dependency is the **Date Augmenter** module. Two caveats: this release is
+Its only dependency is the **Date Augmenter** module. One caveat: this release is
 an **alpha** (1.0.0‑alpha8), and it introduces a new entity type with its own
-**add** and **administer** permissions — a new access surface. Verify that the
-entity's access handling matches your editorial roles before relying on it in
-production.
+**add** and **administer** permissions. Test it against your workflow before
+relying on it in production.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -54,5 +53,4 @@ display settings, as described below.
    augmenter, and — if you defined more than one bundle — choose which bundle(s)
    may be associated with that field.
 4. Grant the **add date content entities** and **administer date content
-   entities** permissions to the appropriate roles under **People → Permissions**,
-   and double‑check the access behaviour suits your editorial workflow.
+   entities** permissions to the appropriate roles under **People → Permissions**.

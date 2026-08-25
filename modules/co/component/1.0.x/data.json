@@ -7,7 +7,7 @@
   "composer_namespace": "drupal/component",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "component.admin_form",
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -16,10 +16,12 @@
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [],
+  "submodules": [
+    "component_example"
+  ],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Theming",

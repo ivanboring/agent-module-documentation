@@ -1,32 +1,30 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Gutenberg Bootstrap Blocks adds container, row and column blocks to the Gutenberg editor, so editors can build Bootstrap grids inside content.
+Gutenberg Bootstrap Blocks adds Container, Row and Column blocks to the Gutenberg editor so editors can build Bootstrap grids visually inside content.
 
 ---
 
-Gutenberg gives Drupal a block-based editing experience, and its default blocks cover content well and layout barely. On a Bootstrap site that is a gap editors notice immediately: they can write a paragraph but not put two of them side by side.
-
-This module adds the grid primitives — container, row, column — as Gutenberg blocks emitting Bootstrap's markup, so an editor composes a grid in the editor and gets the theme's existing responsive behaviour without writing classes.
-
-Two things worth being deliberate about. **Layout in content is a design decision handed to editors**, and the usual consequence is pages that drift from the design system. A component-based approach (a card grid block that produces the right layout) constrains more than raw containers and rows do; offering both is how a site ends up with three ways to make two columns. Decide which one editors should reach for.
-
-And **responsive behaviour is Bootstrap's, not the editor's** — a two-column row stacks on mobile because Bootstrap says so, which is usually what you want and occasionally not. Editors composing grids should be shown what their layout does at mobile width, because the editor's canvas is a desktop.
-
-The release is **1.0.0-rc3**, a release candidate.
+Install the module with `composer require drupal/gutenberg_bs_blocks` and enable it (`drush en gutenberg_bs_blocks`); it depends on the **Gutenberg** editor module and needs no configuration of its own — there is no settings page. Two site prerequisites make it useful: enable the **Gutenberg Experience** on the content type you want to edit (done in the Gutenberg module's settings), and make sure your front theme ships **Bootstrap ≥ 4.5**, because the blocks only emit Bootstrap grid classes — they do not bundle Bootstrap for the front end. In the editor a new **Bootstrap** block category appears with three blocks: **Container** (`container`/`container-fluid`), **Row** (`row` with optional `justify-content-*` / `align-items-*` alignment), and **Column** (`col*` with per-breakpoint size, order and offset controls for Xs–Xl). Columns only insert inside a Row; when you add a Row you pick a variation such as `50 / 50`, `30 / 70`, `70 / 30`, `33 / 33 / 33`, or `25 / 50 / 25`. The blocks are **static** — the grid markup is written into the node body when you save and rendered as-is on the front end, so the visual result matches your theme's Bootstrap. You can also convert an existing core Group (or a multi-block selection) into a Container via the block transforms. The current release is `1.0.0-rc3`, a release candidate; the compiled assets live in `build/` and are what Drupal loads.
 
 ---
 
-- Put two paragraphs side by side in Gutenberg.
-- Build a Bootstrap grid inside content.
-- Add a container block to the editor.
-- Compose rows and columns visually.
-- Reuse the theme's responsive behaviour.
-- Avoid writing Bootstrap classes by hand.
-- Decide between raw grids and components.
-- Avoid three ways to make two columns.
-- Show editors what a layout does on mobile.
-- Check stacking behaviour at small widths.
-- Constrain layout choices to the design system.
-- Evaluate a release candidate.
-- Train editors on grid blocks.
-- Audit content using raw grid markup.
-- Document the grid-versus-component rule for editors.
+- Install Gutenberg Bootstrap Blocks with Composer and Drush.
+- Enable the Gutenberg Experience on a content type before using the blocks.
+- Ensure the front theme provides Bootstrap 4.5 or newer.
+- Add a Bootstrap Container block in the Gutenberg editor.
+- Choose a wide (`container`) or full-width (`container-fluid`) container.
+- Add a Row block and pick a column-split variation.
+- Build a 50 / 50 two-column layout.
+- Build a 30 / 70 or 70 / 30 asymmetric two-column layout.
+- Build a 33 / 33 / 33 or 25 / 50 / 25 three-column layout.
+- Add Column blocks inside a Row.
+- Set per-breakpoint column size for Xs, Sm, Md, Lg, Xl.
+- Set column order and offset per breakpoint.
+- Align a row's columns horizontally (start / center / end).
+- Align a row's columns vertically (top / center / bottom).
+- Put two paragraphs side by side without writing CSS classes.
+- Convert an existing core Group block into a Bootstrap Container.
+- Group several selected blocks into a Container via transforms.
+- Compose responsive Bootstrap grids visually inside content.
+- Preview the grid inside the editor with bundled Bootstrap CSS.
+- Rebuild the JS/CSS bundles after editing source under `libraries/`.
+- Evaluate the 1.0.0-rc3 release candidate on a Gutenberg site.

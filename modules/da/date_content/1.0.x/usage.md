@@ -1,30 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Date Content Augmenter attaches arbitrary content to a date value through the Date Augmenter API.
+Date Content Augmenter lets you attach your own fielded content to a single value of a date field, shown inline wherever that date is rendered.
 
 ---
 
-Date Augmenter is an API for adding things to a rendered date — the canonical example being an "add to calendar" link. This module extends the idea: associate any content entity with a date, so a date in a listing or on an event can carry related material.
-
-The uses that follow are editorial rather than technical. A date on a programme carries the notice explaining why that session differs; a historical date in a timeline carries the source document; a deadline carries the guidance for meeting it. Each of those is content that belongs *to a date*, not to the page the date appears on, and there is no natural place for it in a normal content model.
-
-Working through the Date Augmenter API rather than as a bespoke field is what makes it composable: several augmenters can contribute to the same rendered date, so an "add to calendar" link and an associated notice coexist without either knowing about the other.
-
-The release is **1.0.0-alpha8**, an alpha, and the module defines its own entity type with add and administer permissions. Verify the entity's access handling against your editorial roles before relying on it, since a new entity type is a new access surface.
+Install it with Composer (`composer require drupal/date_content`) alongside its dependency **Date Augmenter**, then enable both. On install the module creates a **Date Content** entity type and a starter bundle called **Session** (with example *Topic* and *Speaker* fields); you can edit that bundle's fields at `/admin/structure/date_content_types/session/edit/fields`, or delete it and build your own bundles at `/admin/structure/date_content_types/add` with whatever fields you need (plain fields for simple cases, entity-reference fields for richer models such as a Speaker or Location entity). The behaviour is switched on **per date-field formatter**: go to *Manage display* for the entity that has the date field, open the formatter settings, and enable the **Content** augmenter that Date Augmenter exposes there. In the augmenter settings you choose which Date Content bundle(s) may be added, whether to show content and links for past events, and whether the add/edit forms open on a normal page, in a **modal**, or in an **off-canvas tray** (with a configurable width). When the date renders, each value gains an **Add** link (or the existing content plus **Edit**/**Remove** links) for viewers with the relevant permission — `add`, `edit`, `delete`, or `administer date content entities`. Although designed with **Smart Date** in mind, it works with any date field whose formatter supports Date Augmenter, including core date fields, and because it uses the augmenter API it coexists with other augmenters (such as an add-to-calendar link) on the same date. The current release is **1.0.0-alpha8** (alpha), so evaluate it against your editorial roles before production use.
 
 ---
 
-- Associate content with a date value.
-- Attach a notice to a specific session date.
-- Link a source document to a historical date.
-- Add guidance to a deadline.
-- Compose several augmenters on one date.
-- Coexist with an add-to-calendar link.
-- Model content that belongs to a date.
-- Use the Date Augmenter API rather than a field.
-- Create date content entities.
-- Restrict who may create date content.
-- Verify the entity's access handling.
-- Evaluate an alpha before relying on it.
-- Show related material in a listing.
-- Annotate a programme's dates.
-- Plan a timeline with sourced entries.
+- Attach a topic and speaker to each occurrence of a recurring monthly meeting.
+- Add a per-session note explaining why one date in a series differs.
+- Link a source document to a specific historical date on a timeline.
+- Attach guidance for meeting a particular deadline date.
+- Associate a different location entity with each date of an event series.
+- Use entity-reference fields to reuse a Speaker or Location across dates.
+- Show related content inline wherever a date field is rendered.
+- Compose the Content augmenter alongside an add-to-calendar augmenter on one date.
+- Augment core date fields, not just Smart Date fields.
+- Create a custom Date Content bundle with your own fields.
+- Edit the starter Session bundle's Topic and Speaker fields.
+- Delete the Session bundle and start from a clean bundle.
+- Open the add/edit form in a modal dialog.
+- Open the add/edit form in an off-canvas settings tray.
+- Set the dialog width for modal or tray forms.
+- Limit which bundles can be added on a given date field.
+- Hide content and links once an event is in the past.
+- Restrict who may add, edit, or delete date content by permission.
+- Track revisions of date content per bundle.
+- Translate date content into multiple languages.
+- List and administer all date content at /admin/content/date_content.
+- Build Views over Date Content using the bundled Views wizard.

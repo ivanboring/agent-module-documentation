@@ -5,7 +5,9 @@
   "version": "1.0.x",
   "package": "Date Augmenter",
   "composer_namespace": "drupal/date_content",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/date_augmenter": "^1.0"
+  },
   "dependent_modules": [
     "date_augmenter:date_augmenter"
   ],
@@ -29,11 +31,13 @@
   ],
   "subcategories": [
     "Date/time fields",
-    "Related content"
+    "Related content",
+    "Editorial notes / annotations"
   ],
   "keywords": [
     "date augmenter",
     "dates",
+    "smart date",
     "calendar",
     "related content",
     "annotations"

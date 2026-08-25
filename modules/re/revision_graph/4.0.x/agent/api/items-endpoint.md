@@ -64,10 +64,13 @@ A commit is one **(revision, language)** pair.
 | `message` | rendered revision log HTML (server-filtered through `Xss::getHtmlTagList()`) |
 | `urls` | ordered action links, each `{name, label, url}`; `name` ∈ `view`/`revert`/`delete` — branch on `name`, not the translated `label`. Access-checked, so an absent action is one this user may not take |
 
-Notes: `parents` vs `provenance` — `parents` is inferred topology; `provenance` is what the module
-actually recorded (usually the same commit). On a genuine fork/revert they differ, and the renderer
-draws a recorded edge heavier (class `recorded`, `<title>` "Recorded provenance"). The endpoint never
-emits a commit whose `parents` and `provenance` are both set and different.
+Notes: `parents` is the topology the graph draws; `provenance` flags which of those edges the module
+actually *recorded* (versus inferred). When provenance was recorded the resolver takes the edge's
+other end from the recorded revision, so `parents` already points at that same commit — in the
+payload `provenance` is therefore either empty or exactly equal to `parents`, and the endpoint never
+emits a commit whose `parents` and `provenance` are both set and different. The renderer draws a
+recorded edge heavier: `stroke-width` `3` instead of `2`, and it adds the `recorded` token to the
+edge's `revision-graph__connection` class (`RevisionGraphGenerator.ts`). It does not add a `<title>`.
 
 ## Provenance base field (`revision_graph_parent`)
 

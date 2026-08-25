@@ -1,30 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Workbench Reviewer assigns individual pieces of content to specific people for review, on top of content moderation.
+Workbench Reviewer lets content editors assign an individual piece of content to a named user for review, on top of Drupal core's Content Moderation.
 
 ---
 
-Content moderation gives a site states and transitions: draft, review, published. What it does not give is a person. "In review" is a state that belongs to nobody, and on a site with any volume that is where content stops — everyone assumes someone else is looking at it.
-
-This module adds the missing dimension. A piece of content is assigned to a named reviewer, so "in review" becomes "waiting for you", which is the difference between a workflow that moves and one that accumulates.
-
-The editorial questions it makes answerable are the ones editors actually ask: what is waiting for me, what is waiting on someone who has left, how long has this been sitting there. None of those can be answered from a moderation state alone.
-
-The release is **3.0.0-beta2**, a beta, on a module that sits in an editorial workflow — verify the assignment behaviour against your moderation states before depending on it, particularly what happens to an assignment when content transitions or when the assigned user is blocked or deleted. An assignment pointing at a departed colleague is the failure mode that reintroduces exactly the problem the module solves.
+Install it with `composer require drupal/workbench_reviewer` and enable it (it depends on core **Content Moderation**); there is **no settings page and no configuration** to fill in. The module adds a **Reviewer** field only to content types that are attached to a moderation workflow, so first put your content types under a workflow at `/admin/config/workflow/workflows`. When you edit a node, a **Workflow** section appears in the right-hand advanced sidebar containing the **Reviewer** autocomplete (pick any user) and the **Revision log message** box; assigning a reviewer is optional and is saved with the node revision. Reviewers find their work at **Content → Assigned to me** (`/admin/content/assigned-to-me`), a View that lists unpublished content assigned to the current user — reaching that page requires the core **`view all revisions`** permission, so grant it to the roles that should review. The assigned reviewer is also available as a token, `[node:workbench_reviewer]` (and chained user tokens such as `[node:workbench_reviewer:mail]`), on any moderated entity type — handy for notification emails. Note this is a **3.0.0-beta2** release: verify how assignments behave across your state transitions and when an assigned user is blocked or deleted before relying on it in production.
 
 ---
 
-- Assign content to a named reviewer.
-- Turn "in review" into "waiting for you".
-- See what is waiting for me to review.
-- Find content assigned to someone who left.
-- Measure how long content sits in review.
-- Move content through an editorial workflow.
-- Combine assignment with moderation states.
+- Install with Composer and enable alongside Content Moderation.
+- Put a content type under a moderation workflow so the Reviewer field appears.
+- Assign a node to a specific person to review.
+- Add a revision log note in the same Workflow sidebar section.
 - Reassign content to a different reviewer.
-- Report on review workload.
-- Chase an overdue review.
-- Verify behaviour on a state transition.
-- Handle an assignment to a blocked user.
-- Handle an assignment to a deleted user.
-- Evaluate a beta before depending on it.
-- Plan an editorial review process.
+- See the content that is waiting for me to review.
+- Open the "Assigned to me" tab under the Content admin page.
+- Grant reviewers the `view all revisions` permission so they can see their queue.
+- Restrict the review queue to a role by editing the shipped View.
+- Turn a nobody-owns-it "in review" state into "waiting for you".
+- Find content still assigned to a colleague who has left.
+- Send a notification email using the `[node:workbench_reviewer]` token.
+- Pull the reviewer's email with a chained token like `[node:workbench_reviewer:mail]`.
+- Build a custom View filtered by reviewer using the `workbench_reviewer_node_reviewer` argument.
+- Show the assigned reviewer on the node display by enabling the field on Manage display.
+- Read or set the reviewer from code via the `workbench_reviewer` entity-reference field.
+- Track who was assigned per revision (the field is revisionable).
+- Report on outstanding review workload across content.
+- Evaluate the beta before depending on it in an editorial workflow.
+- Verify assignment behaviour when content transitions state or the assignee is blocked/deleted.

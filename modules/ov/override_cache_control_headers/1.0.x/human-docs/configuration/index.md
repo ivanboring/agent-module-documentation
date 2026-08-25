@@ -8,7 +8,7 @@ form. Rules are plain text, one per line.
 1. Log in as a user with the **Administer override cache control headers**
    permission (restricted — trusted administrators only).
 2. Go to **Configuration → Development → Override Cache Control Headers**, or
-   navigate directly to `/admin/config/develop/override-cache-control-headers`.
+   navigate directly to `/admin/config/development/override-cache-control-headers`.
 
 ## Permanent per‑URL rules
 
@@ -52,9 +52,9 @@ automatically. You can also set a timed override from the command line with Drus
 drush occh:set-temp-headers "/sitemap.xml|must-revalidate, no-cache, private|10"
 ```
 
-## Choosing header values safely
+## Choosing header values
 
-Common `Cache-Control` directives you'll use in these rules:
+The directives the settings form accepts (its validator rejects anything else) are:
 
 - **`public`** — any cache may store the response.
 - **`private`** — only the user's own browser may store it; shared caches
@@ -66,13 +66,12 @@ Common `Cache-Control` directives you'll use in these rules:
 - **`s-maxage=<seconds>`** — like `max-age` but only for shared caches.
 - **`must-revalidate` / `proxy-revalidate`** — once stale, the response must be
   revalidated before reuse (the `proxy-` form applies only to shared caches).
-- **`immutable`**, **`stale-while-revalidate=<seconds>`**,
-  **`stale-if-error=<seconds>`** — finer‑grained freshness controls.
 
-> **The important rule:** for any path that can return **user‑specific or private**
-> content, never allow a shared cache to store it — use `private` (and typically
-> `no-store` or `no-cache`), not `public`. A too‑permissive value here is how one
-> user's page ends up served to another. When in doubt, err on the conservative
-> side: that only costs performance, whereas the permissive mistake leaks data.
+Combine them as a comma-separated list, exactly as you would in a real
+`Cache-Control` header (for example `public, max-age=3600` or
+`must-revalidate, no-cache, private`). Match the directives to how the page is
+meant to be cached; remember that Drupal core still governs the cacheability of
+dynamic pages, so an override on a page core treats as uncacheable may be adjusted
+by core.
 
 Click **Save configuration** to apply your rules.

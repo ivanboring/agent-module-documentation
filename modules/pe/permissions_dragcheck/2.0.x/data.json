@@ -14,12 +14,14 @@
   "project_url": "https://www.drupal.org/project/permissions_dragcheck",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "scarlac/drag-check-js"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools",
@@ -27,7 +29,7 @@
   ],
   "subcategories": [
     "User roles & permissions",
-    "Keyboard shortcuts"
+    "Form widgets / select UI"
   ],
   "keywords": [
     "permissions",
