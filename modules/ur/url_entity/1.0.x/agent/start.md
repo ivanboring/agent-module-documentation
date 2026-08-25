@@ -14,3 +14,8 @@ Key facts:
   `explode('/', $path)` helpers get wrong.
 - If a site has it enabled and nothing depends on it, it is dead weight — check
   `composer why drupal/url_entity` before removing.
+
+Capabilities:
+- [API — the extractor service](api/extractor.md) — service id `url_entity.extractor`, its
+  four methods (`getCurrentEntity`, `getRefererEntity`, `getEntityByRoute`, `getEntityByUrl`),
+  and how resolution behaves.

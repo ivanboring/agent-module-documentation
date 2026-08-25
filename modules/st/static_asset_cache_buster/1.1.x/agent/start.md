@@ -7,6 +7,14 @@ core, no routes, no permissions, no configuration form.** Core requirement `^10 
 Key facts:
 - Whole module: `static_asset_cache_buster.module`, `src/Plugin/`, `src/Entity/`. Enabling it
   is the configuration.
+- **How it hooks in (interop):** `hook_field_formatter_info_alter()` swaps the *class* of core's
+  `image_url` and `file_url_plain` formatters for its own subclasses; `hook_entity_type_alter()`
+  reassigns the `image_style` entity class to a subclass (so derivative URLs get busted in
+  `buildUrl()`); `hook_preprocess_image()` and `template_preprocess_file_link()` append the
+  query to the `image`/`file_link` theme hooks. Another module that also overrides the same
+  formatter class or the `image_style` entity class will conflict — last hook wins.
+- The marker is `?cb=` + first 8 hex chars of `md5(file.changed timestamp)`, appended with `&`
+  when the URL already has a query string. Value derives only from the file's `changed` time.
 - Solves the in-place file replacement problem: Drupal keeps the URI when a file is replaced,
   so browsers and CDNs holding a long TTL keep serving the old bytes. The version marker is
   derived from the file's own metadata, so it changes only when the file does.

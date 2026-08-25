@@ -1,16 +1,22 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Twig HTML entities decode (twig_htmlspecialchars_decode) — agent index
 
-One Twig filter wrapping PHP's `htmlspecialchars_decode()`. No dependencies, no routes, no
-permissions, no config. Core requirement `^9 || ^10 || ^11`.
+One Twig filter, `htmlspecialchars_decode`, wrapping PHP's `htmlspecialchars_decode()`. No
+dependencies, routes, permissions, config, schema, or hooks. Core `^9 || ^10 || ^11`.
 
 Key facts:
-- Whole module: `src/TwigHtmlSpecialCharsDecode.php` +
-  `twig_htmlspecialchars_decode.services.yml` (tagged `twig.extension`).
-- **Escaping note.** The filter *removes* escaping. Twig's auto-escaper still runs on the
-  result, so `{{ value|htmlspecialchars_decode }}` alone is safe — the hazard is
-  `{{ value|htmlspecialchars_decode|raw }}`, which hands unescaped, previously-escaped content
-  straight to the page. Never chain it with `raw` on untrusted input.
-- It treats a symptom. Double-encoded values almost always come from a token, migration or
-  external feed that escaped too early; fixing that source is the durable answer, and this
-  filter is the patch when you cannot.
+- Whole module: `src/TwigHtmlSpecialCharsDecode.php` (extends `Twig\Extension\AbstractExtension`,
+  registers the filter in `getFilters()`) + `twig_htmlspecialchars_decode.services.yml` (tagged
+  `twig.extension`, service id `twig_htmlspecialchars_decode.twig.TwigHtmlSpecialCharsDecode`).
+- Filter name: **`htmlspecialchars_decode`**; implementation
+  `filter($text)` → `htmlspecialchars_decode((string) $text)`. Registered with **no `is_safe`
+  flag** and no `preserves_safety`, so it returns a plain string that Twig re-escapes on print in
+  auto-escaped contexts.
+- Reason it exists: the Drupal 8 idiom `value|convert_encoding('UTF-8', 'HTML-ENTITIES')` throws
+  under Drupal 9+ (Twig switched from `mbstring` to `iconv`, which rejects `HTML-ENTITIES`). This
+  filter is the one-step replacement.
+
+## What you'd do → where
+
+- **Use the `htmlspecialchars_decode` filter in a template — syntax, behavior, escaping, and how
+  to add a similar filter yourself** → [theming/twig-filter.md](theming/twig-filter.md)

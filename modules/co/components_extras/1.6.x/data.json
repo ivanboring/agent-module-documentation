@@ -24,22 +24,26 @@
   "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": false,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "component_theme"
+  ],
   "categories": [
     "Developer tools",
     "Theming"
   ],
   "subcategories": [
-    "Hook / event system",
-    "Structured content / page building"
+    "Twig / component libraries",
+    "Plugin system"
   ],
   "keywords": [
     "components",
     "render element",
     "twig",
     "component library",
+    "component",
     "theme",
-    "plugin"
+    "plugin",
+    "sdc"
   ],
   "project_description": "Synopsis \n Components extras module provides a Drupal render element to use Twig components from the Components module in render arrays.\n\n Requirements \n No special requirements.\n\n Recommended modules \n No specific recommendations, you can use this module as is.\n\n Roadmap \n This module is minimally maintained. It will be updated if needed but no further development is planned.\n\n Known problems \n None yet\n\n Credits \n Current maintainer: Marc-Antoine Marty \n\n This project is sponsored by : \n\n \n\n Restrictions \n No restrictions.\n\n Back to top",
   "maintenance_status": "Minimally maintained",

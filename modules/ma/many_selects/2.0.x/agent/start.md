@@ -1,15 +1,26 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Many Selects (many_selects) — agent index
 
-Field widget replacing `<select multiple>` with a series of single selects. Depends on core
-`options`. PHP >= 8.1. Core requirement `^10.2 || ^11`.
+A single field widget that replaces the native `<select multiple>` with one **single** select
+per value. On a multi-value field, core's multiple-value wrapper stacks one dropdown per delta
+plus an "Add another item" button, so editors pick values one at a time instead of ctrl-clicking.
+Widget-only: the field type and stored values are untouched, so switching it on/off is reversible
+with no migration.
 
 Key facts:
-- **Widget only — no data model change.** It is chosen per form display; the field type and
-  stored values are untouched, so switching to or from it is reversible with no migration.
-- No routes, no permissions, no config forms. Surface is `src/Plugin/` (the widget),
-  `src/Hook/`, `many_selects.module` and `many_selects.services.yml`.
-- Positioned between core's two options: native multi-select (compact, hostile) and checkboxes
-  (usable, unmanageable past a few dozen values). Reach for this when the list is long *and*
-  the multi-select is causing errors.
-- Ships a `.tugboat/` config, so upstream runs a live demo environment for the project.
+- **Widget** `many_options_select` ("Many select list"), class
+  `OptionsManySelectWidget extends OptionsSelectWidget`. Field types: `entity_reference`,
+  `list_integer`, `list_float`, `list_string`.
+- Depends on core **Options**; needs Field UI to select it. PHP >= 8.1. Core `^10.2 || ^11`.
+- **No routes, no permissions, no config entities, no config schema, no drush, and no new plugin
+  types.** The only PHP is the widget, a `hook_help` provider (`src/Hook/ManySelectsHooks.php`,
+  service `many_selects.hook_subscriber`), `many_selects.module` and `many_selects.services.yml`.
+- One widget setting: `empty_label` (default `- None -`).
+- Ships a `.tugboat/` config (upstream live-demo environment).
+
+## What you'd do → where
+
+- **Enable the widget, its field types, settings (`empty_label`), and how the single-select /
+  `_none` behaviour works** → [fields/widget.md](fields/widget.md)
+
+There is nothing else to configure — no admin UI, no permissions to grant, no API to call.
