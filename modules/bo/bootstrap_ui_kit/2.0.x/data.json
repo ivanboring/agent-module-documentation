@@ -1,11 +1,13 @@
 {
   "name": "Bootstrap UI Kit",
   "data_name": "bootstrap_ui_kit",
-  "description": "Branded UI kit inheriting theme styles.",
+  "description": "In-site UI kit / living style guide (/ui-kit) previewing your Bootstrap 5 theme's foundations and SDC components.",
   "version": "2.0.x",
   "package": "User interface",
   "composer_namespace": "drupal/bootstrap_ui_kit",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "twbs/bootstrap-icons": "^1.10"
+  },
   "dependent_modules": [],
   "configure": "bootstrap_ui_kit.settings",
   "core_version_requirement": "^8 || ^9 || ^10 || ^11",
@@ -14,28 +16,32 @@
   "project_url": "https://www.drupal.org/project/bootstrap_ui_kit",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "twbs/bootstrap-icons"
+  ],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
     "Theming",
-    "Content editing experience"
+    "Developer tools"
   ],
   "subcategories": [
-    "Bootstrap",
-    "Design tokens"
+    "Twig / component libraries",
+    "Theme development tools"
   ],
   "keywords": [
     "bootstrap",
     "ui kit",
-    "components",
-    "branding",
-    "theme",
-    "styles"
+    "style guide",
+    "component library",
+    "sdc",
+    "single directory components",
+    "bootstrap icons",
+    "theme"
   ],
   "project_description": "The UI Kit gives your team a single, reliable place to see exactly how every element on your site looks and behaves — all available at /ui-kit .\n\n What's included in version 1 \n \n Minimal setup — works with your existing theme straight out of the box. \n Control the look of the UI Kit itself using CSS variables. \n Manage glossary sections directly through the UI — add, remove, or reorder without touching code. \n Custom sections are picked up automatically. \n Link directly to any section and copy the URL to share with your team. \n Automatic colour contrast checking built in. \n Full support for Bootstrap Icons and SVG sprites. \n \n \n What's new in version 2 \n \n Browse and preview components through a simple, story-based system. \n Works across single projects and monorepos — components are discovered automatically. \n Consistent component previews with support for multiple variants and overrides. \n Icon search on the iconography page. \n Lightweight and easy to tailor to your project. \n \n Single Directory Components (SDC) support \n Version 2 optionally integrates with SDC Display , allowing site builders to assign components to fields, field groups, or view modes directly through the backend UI — no template editing required. The quickest way to get started is by using the Bootstrap Components module (a lightweight port of the ui_suite_bootstrap SDC components).\n\n Back to top",
   "maintenance_status": "Actively maintained",

@@ -1,27 +1,27 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Commerce Price formatter renders a product's price with its promotions applied, so a discounted item shows the original and the reduced price.
+Commerce Price formatter adds a strikethrough "was price / discounted price / percent off" display to Drupal Commerce's existing Calculated price field formatter.
 
 ---
 
-Commerce calculates promotions at the order level, which is correct — a promotion may depend on the cart's contents, the customer, the quantity or the date — and it means a product listing showing the plain price is telling the truth about the product and the wrong thing about what the customer will pay. The gap is commercially significant rather than cosmetic: "£40, was £50" is the single most effective piece of information on a listing page, and a shop that shows £40 with no reference price has spent the discount without getting the benefit. Rendering the promoted price at display time closes it. Version **1.0.1** on `^9 || ^10 || ^11`, requiring `commerce`, `commerce_product` and `commerce_promotion`. Three things to get right, and they are the three that make promotional pricing legally and technically awkward. **Reference-price claims are regulated** in most markets — the UK and EU require that a "was" price was genuinely charged for a defined period, so a formatter showing a struck-through figure is making a claim the business has to be able to justify, which is a rules question rather than a display one. **A price shown must equal the price charged**, so whatever the formatter computes has to use the same promotion resolution the order will, or the listing and the cart disagree and the customer is the one who notices. And **promoted prices vary by context** — customer, quantity, date, store — so the formatter's output is not cacheable as a shared value unless the cache metadata says what it varied by.
+The module does not add a new formatter; it enhances Commerce's built-in **Calculated price** formatter (`commerce_price_calculated`). After installing it (requires **Commerce**, **Commerce Product** and **Commerce Promotion**, on Drupal `^9 || ^10 || ^11`), go to **Administration → Commerce → Configuration → Product variation types → your type → Manage display**, set the **Price** field's Format to **Calculated price**, open the formatter's settings and tick **"Enable discount format for calculated price"**. From then on, whenever that calculated price is rendered and a promotion has reduced it, the price is shown as the discounted amount with the original price struck through and a rounded **"(NN% off)"** label, using the module's small Twig template and stylesheet. The base and calculated prices come from Commerce's own price calculator, so the discount reflects the same promotion resolution Commerce applies. Two things to remember: the checkbox is only honoured on the variation type's **default** view display (the code reads that display specifically), and the module prints the raw price numbers, so if you need currency symbols or custom markup you will want to override the `commerce-price-formatter.html.twig` template. Because the rendered price is cached per product-variation cache tag, **clear the cache after changing promotions or display settings** so the frontend reflects the update.
 
 ---
 
-- Show a discounted price on a listing.
-- Display "was" and "now" prices.
-- Render a promotion's effect on a product.
-- Show a sale price in a catalogue.
-- Display a percentage saving.
-- Show promoted prices on a product page.
-- Render a member price.
-- Show a bulk discount in a listing.
-- Display a time-limited offer's price.
-- Show original and reduced prices.
-- Render a promotion on a teaser.
-- Display a strikethrough price.
-- Show the price a customer will pay.
-- Render promotional pricing in a view.
-- Display a campaign discount.
-- Show a clearance price.
-- Render a bundle's discounted price.
-- Display seasonal pricing.
+- Show a promotional "was / now" price on a product variation.
+- Display the original price struck through next to the discounted price.
+- Add a rounded "percent off" label to a discounted product.
+- Enable discount display via the Calculated price formatter's settings checkbox.
+- Surface an active Commerce promotion's effect directly in the price.
+- Show sale pricing on a product detail page.
+- Present a strikethrough price on a product listing that uses the calculated formatter.
+- Communicate savings to shoppers at the point of display.
+- Reuse Commerce's own promotion calculation for the shown discount.
+- Highlight a time-limited offer's reduced price.
+- Show member or role-based promotional pricing where a Commerce promotion applies.
+- Display bulk or quantity-based discount results in the price.
+- Turn the discount display on or off per product variation type.
+- Confirm the discount display is active from the Manage display summary line.
+- Override the shipped Twig template to add currency symbols or custom markup.
+- Style the discount output with the bundled CSS classes after customising the template.
+- Keep listing and product pages consistent by rendering the calculated (promoted) price.
+- Clear cache to refresh promoted prices after editing a promotion.

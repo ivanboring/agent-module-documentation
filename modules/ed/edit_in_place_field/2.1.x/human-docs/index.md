@@ -19,12 +19,10 @@ currently compatible with the Views "Node operations bulk form" field.
 
 Editing is gated by a permission — **"Allow to use edit in place field to save
 entities"** (`edit in place field editing permission`) — which you grant to the
-roles that should be able to save inline. Because an in‑place save is a *write
-path*, grant this thoughtfully: a save endpoint should still be honoring
-per‑entity edit access, per‑field edit access, the field's validation constraints,
-and CSRF protection. Treat the permission as the switch that turns on inline
-saving for a role, and grant it only where field‑level access rules are simple
-enough that a flat permission is the right gate.
+roles that should be able to save inline. Users without it see every field in its
+normal, read‑only display; the inline controls appear only for roles that have the
+permission. Treat it as the switch that turns on inline saving for a role, and
+grant it to the editorial roles that already maintain this content.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -50,6 +48,6 @@ described below.
 4. View the content or the View as one of those roles — the field is now editable
    directly on the page, and saving writes it without opening the node form.
 
-> **Tip:** Grant the editing permission carefully. Because saving happens outside
-> the normal form, confirm that the roles you give it to should be able to write
-> those fields, especially on sites where field‑level access matters.
+> **Tip:** Switch only the fields that genuinely benefit from a quick inline
+> correction to the *Edit in place* formatter, and grant the editing permission to
+> the editorial roles that already look after this content.

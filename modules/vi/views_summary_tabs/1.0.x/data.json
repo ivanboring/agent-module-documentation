@@ -1,14 +1,16 @@
 {
   "name": "Views Summary Tabs",
   "data_name": "views_summary_tabs",
-  "description": "Renders a Views summary as tabs.",
+  "description": "Renders a view's argument summary as a row of tabs.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Views",
   "composer_namespace": "drupal/views_summary_tabs",
   "composer_requirements": {},
-  "dependent_modules": [],
+  "dependent_modules": [
+    "drupal:views"
+  ],
   "configure": null,
-  "core_version_requirement": "^10 || ^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/views_summary_tabs",
@@ -25,8 +27,8 @@
     "Content display"
   ],
   "subcategories": [
-    "Views style plugins",
-    "Tabs and navigation"
+    "Views styles",
+    "Tabbed content / accordion"
   ],
   "keywords": [
     "views",

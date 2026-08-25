@@ -1,22 +1,45 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Commerce Price formatter (commerce_price_formatter) — agent index
 
-Renders a product's price **with promotions applied** — original and reduced. Requires `commerce`,
-`commerce_product`, `commerce_promotion`. Version **1.0.1**.
-Core requirement `^9 || ^10 || ^11`.
+Adds a **strikethrough "was / now + percent off"** display to Commerce's existing **Calculated price**
+field formatter (`commerce_price_calculated`, from `commerce_product`). It provides no formatter of its
+own. Instead four hooks in `commerce_price_formatter.module` bolt onto the core Commerce formatter: a
+**third-party settings checkbox** ("Enable discount format for calculated price") is added to that
+formatter's *Manage display* settings, and when it is checked the module's `preprocess` of the
+`commerce_price_calculated` theme hook compares the variation's **base price** to its **calculated
+(promotion-applied) price**, computes a rounded percent difference, and replaces the rendered price
+with a small template showing the discounted price, the struck-through base price and the "% off".
 
-**Why the gap exists:** Commerce resolves promotions **at the order level** — correctly, since a
-promotion may depend on cart contents, customer, quantity or date. So a listing showing the plain
-price tells the truth about the **product** and the wrong thing about **what the customer will
-pay**. Commercially that matters: *"£40, was £50"* is the most effective information on a listing
-page, and a shop showing £40 with no reference price has **spent the discount without getting the
-benefit**.
+The whole surface is: one theme hook + Twig template, one CSS library, and the two formatter-settings
+hooks. There are **no routes, controllers, services, forms, permissions, plugin types, config schema,
+or drush commands**. The discount only renders when the `price` component on the variation's **`default`
+view display** has the third-party flag enabled (the preprocess hardcodes `view_mode = 'default'` when it
+reads the display component) and when `basePrice != calculatedPrice`.
 
-**Three things to get right — the three that make promotional pricing awkward:**
-1. **Reference-price claims are regulated.** The UK and EU require a "was" price to have been
-   genuinely charged for a defined period. A struck-through figure is a **claim the business must
-   justify** — a rules question, not a display one.
-2. **A price shown must equal the price charged.** The formatter must use the **same promotion
-   resolution the order will**, or listing and cart disagree — and the customer notices.
-3. **Promoted prices vary by context** (customer, quantity, date, store), so the output is **not
-   cacheable as a shared value** unless the cache metadata says what it varied by.
+- Depends on: `commerce:commerce`, `commerce:commerce_product`, `commerce:commerce_promotion`
+  (composer requires `drupal/commerce:^2.40 || ^3`). The base price/calculated price come from the
+  Commerce price **calculator** (promotions resolved via `commerce_promotion`).
+- Core: `^9 || ^10 || ^11`. Package: `Commerce`. Version **1.0.1**.
+- No settings page / `configure` route — configured **per field formatter** on *Manage display*.
+  No permissions, no drush, no plugin types, no config schema of its own.
+
+## What you'd do → where
+
+- **Turn the discount display on for a product variation / how the base-vs-calculated math and the
+  template work / the `default`-view-mode gotcha** → [fields/formatter.md](fields/formatter.md)
+
+## Key facts (real machine names)
+
+- Extends (does not define) formatter plugin id **`commerce_price_calculated`** via third-party settings.
+- Third-party settings provider/key: **`commerce_price_formatter` / `commerce_price_formatter`** (a
+  boolean checkbox) on that formatter's `third_party_settings`.
+- Hooks (all in `commerce_price_formatter.module`): `hook_field_formatter_third_party_settings_form`,
+  `hook_field_formatter_settings_summary_alter`, `hook_theme`,
+  `hook_preprocess_commerce_price_calculated`.
+- Theme hook: **`commerce_price_formatter`** (variable `viewData`), template
+  `templates/commerce-price-formatter.html.twig` (renders `viewData.calculated_price`,
+  `viewData.base_price`, `viewData.applied_discount`).
+- Library: **`commerce_price_formatter/format`** (`css/style.css`, dep `core/drupalSettings`).
+- Cache tag added when rendering: `commerce_product_variation:<id>`.
+- CSS classes in the stylesheet: `.pdp-mrp-verbiage-amt-wrapper`, `.pdp-mrp`, `.percent-off`,
+  `.inc-taxes` (note: the shipped template does not actually emit these class names).

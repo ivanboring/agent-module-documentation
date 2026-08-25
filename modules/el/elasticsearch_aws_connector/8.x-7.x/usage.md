@@ -1,27 +1,27 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Elasticsearch AWS Connector signs Elasticsearch requests with AWS Signature Version 4, so a Drupal site can talk to Amazon's managed Elasticsearch or OpenSearch service.
+Elasticsearch AWS Connector lets the Elasticsearch Connector module talk to an Amazon-managed Elasticsearch or OpenSearch domain by signing each request with AWS Signature Version 4.
 
 ---
 
-A self-hosted Elasticsearch is reached with a URL and optionally basic auth, and every Drupal integration assumes that. Amazon's managed service is different: access is controlled by **IAM**, and requests must be signed with SigV4 — the same signing scheme as the rest of the AWS API — so an unsigned request is rejected regardless of network position. That single difference is why a site cannot simply point `elasticsearch_connector` at an AWS domain, and it is what this module supplies. Version **8.x-7.2** on `^8.8` through `^11`, requiring `elasticsearch_connector`. Three things worth knowing. **IAM is a better security model than the alternative, and the alternative is what people fall back to**: a managed domain can be opened to an IP range with no signing at all, which is simpler and means anyone who reaches the endpoint reads and writes the whole index — so the signing is worth the setup rather than being an obstacle to route around. **The credentials should be an instance role rather than keys**, since a site running on EC2, ECS or EKS can assume a role and never hold a long-lived secret, and where keys are unavoidable they belong in environment variables with an IAM policy scoped to the specific domain and actions. And **a search index usually contains everything the site can index**, including unpublished content if the indexer was configured carelessly, so the access policy on the domain is protecting a copy of the site's content rather than a cache — and the version numbering here (`8.x-7.2`, tracking Elasticsearch 7) is worth checking against what the AWS domain actually runs, since OpenSearch forked from Elasticsearch at 7.10 and the APIs have diverged since.
+Amazon's managed Elasticsearch/OpenSearch controls access with **IAM** and requires every request to be **SigV4-signed**, which a stock `elasticsearch_connector` cluster does not do — so this thin glue module supplies the signing. It adds nothing you visit directly: install it alongside `elasticsearch_connector` (`composer require drupal/elasticsearch_aws_connector`, `drush en elasticsearch_aws_connector`), then edit your cluster at **Configuration → Search and metadata → Elasticsearch Connector**, turn on **Use authentication**, and pick the new authentication type **"Amazon Web Services - signed requests"**. That reveals an **AWS region** field (for example `eu-west-1` or `us-west-2`) and an **AWS authentication type** selector with two choices: **AWS IAM Role** (`aws_role`, the default — the site's ambient AWS credentials from an EC2/ECS/EKS instance role, environment, or shared config are used, so nothing is entered) and **AWS Credentials** (`aws_credentials` — you supply an access **key** and **secret**). On save, whenever `elasticsearch_connector` builds its client for a host whose auth method is the AWS-signed-requests type and a region is set, this module attaches an `ElasticsearchPhpHandler` (from the `jsq/amazon-es-php` library) that signs the outgoing request; if the region is left empty it shows *"One must configure the AWS region."* and does not sign. Version **8.x-7.2** targets the Elasticsearch 7 series — confirm that matches what your AWS domain actually runs, since OpenSearch forked from Elasticsearch at 7.10.
 
 ---
 
-- Connect Drupal to AWS OpenSearch.
-- Sign Elasticsearch requests with SigV4.
-- Use IAM to control search access.
-- Avoid opening a search domain by IP.
-- Connect to Amazon Elasticsearch Service.
-- Use an instance role for search access.
+- Connect a Drupal site to Amazon OpenSearch Service.
+- Connect a Drupal site to Amazon Elasticsearch Service.
+- Sign Elasticsearch Connector requests with AWS SigV4.
+- Add "Amazon Web Services - signed requests" as a cluster auth type.
+- Authenticate search traffic to a managed AWS domain via IAM.
+- Use an EC2/ECS/EKS instance IAM role for search access.
+- Use an explicit AWS access key and secret when no role is available.
+- Set the AWS region for a signed Elasticsearch cluster.
+- Run Search API + Elasticsearch Connector against AWS OpenSearch.
+- Avoid running and patching your own Elasticsearch servers.
+- Point an existing Elasticsearch Connector cluster at an AWS endpoint.
 - Support a cloud-hosted search backend.
-- Authenticate search requests to AWS.
-- Support a managed search deployment.
-- Connect a Drupal site to OpenSearch.
-- Avoid running Elasticsearch yourself.
-- Support an AWS-hosted architecture.
-- Secure a search backend with IAM.
-- Connect Search API to AWS.
-- Use scoped IAM policies for search.
-- Support a multi-account AWS setup.
-- Sign requests from a container.
-- Integrate with a managed search cluster.
+- Sign search requests from inside a container or serverless task.
+- Support a multi-account or multi-region AWS search setup.
+- Keep search traffic within the AWS IAM access model.
+- Integrate a Drupal search index with a managed search cluster.
+- Switch a cluster between IAM-role and explicit-credential authentication.
+- Configure signed requests entirely from the connector's cluster form.

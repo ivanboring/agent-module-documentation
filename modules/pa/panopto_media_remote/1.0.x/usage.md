@@ -1,27 +1,28 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Panopto Media Remote adds Panopto as a provider for the `media_remote` module, so a lecture-capture recording can be referenced as a media entity by URL.
+Panopto Media Remote adds Panopto as a provider for the `media_remote` module, so a lecture-capture recording is referenced as a media entity by its URL and shown as an embedded iframe.
 
 ---
 
-Panopto is lecture capture: universities and training organisations record teaching into it, and the recordings carry the institution's access controls, its retention policy and often its captioning. A Drupal site alongside such a platform needs to reference those recordings rather than hold them — the video is large, it is governed elsewhere, and copying it would duplicate both the storage and the access decision. `media_remote` is the right base for that, because it deliberately stores a URL and renders an embed without pretending to own the asset, unlike a media source that downloads and manages a file. Version **1.0.1** on `^8` through `^11`, requiring `media_remote`. Three things follow from referencing rather than holding. **Access lives with Panopto**, which is the point and the complication: a recording restricted to a course is embedded on a Drupal page that may be public, and what a visitor sees is whatever Panopto decides — so the Drupal page must not imply access it cannot grant, and a page whose only content is an embed the visitor cannot play is a broken page from their point of view. **The embed is a third-party request** carrying a view to Panopto, which for an institutional platform is usually acceptable and still belongs in the privacy notice. And **captions are the accessibility requirement** for recorded teaching, and they live in Panopto rather than in Drupal — so the question of whether a recording is captioned is answered on the platform, and a site publishing links to uncaptioned lectures has an obligation it cannot discharge from its own side.
+Install it with Composer (`composer require drupal/panopto_media_remote`, which pulls in **`media_remote`**) and enable both modules; there is no settings page. You wire it up through the Media system: at **Structure → Media types → Add media type**, name the type (for example `Panopto`) and choose **"Remote Media URL"** as the media source, then on that type's **Manage display** set the URL field's format to **"Remote Media - Panopto"**. Open the formatter's settings to set the iframe **width** and **height** (defaults `640px` × `480px`, given in pixels or as a percentage like `100%`). Finally add a media reference field to any content type and point it at the new media type, so editors paste a Panopto **Embed** or **Viewer** URL (`https://…​.panopto.<tld>/Panopto/Pages/Embed.aspx?id=…`) when creating media. The module **references rather than downloads** the video: it stores only the URL, validates it against a Panopto URL pattern when the media is saved, and renders an `<iframe>` that the visitor's browser loads directly from Panopto — Drupal itself makes no request to Panopto. Because the recording still lives on Panopto, **access, retention and captioning stay with the platform**: a recording restricted to a course will only play for viewers Panopto authorises, and whether a lecture is captioned is decided in Panopto, not in Drupal — worth remembering on public pages and in a privacy notice, since each embed is a third-party request to Panopto.
 
 ---
 
-- Embed a Panopto lecture recording.
+- Embed a Panopto lecture recording on a page.
 - Reference lecture capture in a course page.
-- Add a recorded seminar to a page.
-- Link training recordings from Drupal.
-- Reference video governed by the LMS.
-- Embed a recorded lecture in an article.
-- Add Panopto video to a media library.
-- Reference a recording without copying it.
-- Support a university's video platform.
+- Add a recorded seminar to an article.
+- Show training recordings from Drupal without hosting the video.
+- Reference video that is governed by the LMS/Panopto.
+- Add a Panopto video to the media library for reuse.
+- Reference a recording without copying its storage.
+- Set the embed iframe size per view display (width/height).
+- Support a university's video platform inside Drupal.
 - Embed a recorded conference session.
 - Add lecture video to a course listing.
-- Reference recordings with institutional access.
-- Embed a training video from Panopto.
+- Reference recordings that keep Panopto's access controls.
+- Embed a training video from a Panopto Embed URL.
 - Support a hybrid teaching site.
-- Add a recorded lab demonstration.
-- Reference a webinar recording.
-- Embed a captioned lecture.
-- Support an education media workflow.
+- Add a recorded lab demonstration to content.
+- Reference a webinar recording by URL.
+- Embed a captioned lecture whose captions live in Panopto.
+- Build a Panopto media type on the Remote Media URL source.
+- Let editors paste an Embed or Viewer URL to create media.

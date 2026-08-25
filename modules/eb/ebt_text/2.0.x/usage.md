@@ -1,27 +1,30 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-EBT Text adds a ready-made Text block type with the Extra Block Types family's shared presentation settings — spacing, background, container width.
+EBT Text adds a ready-made Text block type — a WYSIWYG body with the Extra Block Types family's shared design options for spacing, background, borders and container width.
 
 ---
 
-The plain text block is the component every site needs most and configures worst. Core's basic block gives a body field and nothing else, so the moment a design calls for that text on a coloured background, with padding above it, constrained to a narrower column, the answers are a CSS class typed into a field, a custom block type built per project, or a template override — and each of those is invented again on the next site. Attaching the shared `ebt_core` settings to a text block turns the common presentation decisions into a form. That the simplest component in the family is the one worth having is not a criticism: a text block is placed more often than every other component combined. Version **2.0.0** requiring `ebt_core`, core requirement `^10.1 || ^11 || ^12`. Two things to weigh, and they are the family's standing trade. **Pre-built is quick to adopt and awkward to diverge from** — the markup and settings are the module's, so a design the options do not cover means overriding templates, at which point a locally defined block type is often cheaper. And **it becomes a dependency of the content**: pages are built from it, so removing the module later leaves blocks with no type. Worth remembering too that **EBT is the block-shaped family and EPT the paragraph-shaped one**, and the distinction decides where the component can go: a block is placeable in a region, droppable into a Layout Builder section and referenceable from a field, while a paragraph belongs to one page's field.
+Install it with `composer require drupal/ebt_text` and enable it; it pulls in **EBT Core** (`ebt_core`), and because the shipped display config also references them, **Field Group** (`field_group`) and core **Text** must be enabled too. Enabling adds a `block_content` type called **EBT Text** with two fields: a **required** WYSIWYG **Body** and a **Block settings** field holding the design options. Create one at **Content » Blocks » Add content block » EBT Text** (or drop an inline *EBT Text* block into a **Layout Builder** section, or place a reusable block under **Structure » Block layout**). The edit form has two tabs: **Content** (block description + Body) and **Settings**, where you set margin, padding, border (width/color/style/radius), background color or a background image/video from the media library, edge-to-edge, and container max width. On the front end the block wraps your text in an `.ebt-container` and applies those choices as an inline `<style>` built by EBT Core (each value HTML-escaped; box values must be numeric and colors valid hex). The Body renders through whatever **text format** the editor chose, so allowed HTML follows your site's format/role setup. Site-wide defaults (primary/secondary colors, breakpoints, container widths) live on the shared EBT Core settings form at **Configuration » Content authoring » Extra Block Types (EBT) settings**. Two things to weigh — the family's standing trade-off: pre-built is quick to adopt but **awkward to diverge from** (an uncovered design means template overrides, at which point a local block type is often cheaper), and it **becomes a dependency of your content** (pages are built from it, so removing the module later leaves blocks with no type — uninstalling deliberately keeps the block type and existing blocks). Remember EBT is the **block**-shaped family and EPT the **paragraph**-shaped one: a block is placeable in a region, droppable into Layout Builder and referenceable from a field, while a paragraph belongs to one page's field.
 
 ---
 
-- Add a styled text block to a region.
-- Place text on a coloured background.
-- Add padding around a text block.
-- Constrain text to a narrow column.
-- Add a text block to a Layout Builder section.
-- Give editors consistent text styling.
-- Reuse a styled text block across pages.
-- Add an introduction block.
-- Place a notice with background styling.
-- Build a page section from text.
-- Add a callout block.
-- Give a footer a styled text area.
-- Add a text block with spacing options.
-- Standardise text presentation.
-- Build a simple content section.
-- Add a quote block with styling.
-- Place explanatory text in a sidebar.
-- Add a text block without custom code.
+- Add a styled rich-text block to a region.
+- Drop a text block into a Layout Builder section.
+- Place a reusable text block under Block layout.
+- Put body text on a colored background.
+- Add padding above and around a block of text.
+- Add a border with a chosen width, color and style.
+- Round a text block's corners with a border radius.
+- Constrain text to a narrower container width.
+- Make a text section span edge to edge across the viewport.
+- Set a background image behind text (cover, contain, repeat or parallax).
+- Add a background video behind an intro section.
+- Add an overlay tint over a background image or video.
+- Give editors a consistent, form-driven way to style text.
+- Build an introduction or lead-in section.
+- Add a callout or notice block with background styling.
+- Create a footer text area with spacing options.
+- Standardize text presentation across a site.
+- Add explanatory text to a sidebar.
+- Compose a simple content section without custom CSS.
+- Apply site-wide color and breakpoint defaults from EBT Core.
+- Keep block styling in configuration instead of ad-hoc CSS classes.

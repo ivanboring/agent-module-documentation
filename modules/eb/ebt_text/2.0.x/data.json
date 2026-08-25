@@ -1,11 +1,13 @@
 {
   "name": "Extra Block Types (EBT): Text",
   "data_name": "ebt_text",
-  "description": "Adds a Text block type with styling options.",
+  "description": "Adds a Text block type with a WYSIWYG body and the shared EBT design options.",
   "version": "2.0.x",
   "package": "Extra Block Types",
   "composer_namespace": "drupal/ebt_text",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ebt_core": "^2.0"
+  },
   "dependent_modules": [
     "ebt_core:ebt_core"
   ],
@@ -21,15 +23,16 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience",
-    "Theming"
+    "Site structure"
   ],
   "subcategories": [
-    "Blocks",
-    "Structured content / page building"
+    "Block enhancements",
+    "Structured content / page building",
+    "WYSIWYG / rich text editor"
   ],
   "keywords": [
     "text",

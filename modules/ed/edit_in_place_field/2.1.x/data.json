@@ -1,7 +1,7 @@
 {
   "name": "Edit in place field",
   "data_name": "edit_in_place_field",
-  "description": "Adds an edit-in-place option to fields.",
+  "description": "Field formatters that let editors edit and save a field value inline on the rendered page.",
   "version": "2.1.x",
   "package": "Fields",
   "composer_namespace": "drupal/edit_in_place_field",
@@ -23,18 +23,18 @@
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience",
-    "Security"
+    "Content display"
   ],
   "subcategories": [
     "In-place editing",
-    "Field widgets / select UI"
+    "Field formatters"
   ],
   "keywords": [
     "in-place",
-    "editing",
-    "field",
-    "inline",
+    "inline editing",
+    "field formatter",
     "quickedit",
+    "entity reference",
     "editorial"
   ],
   "project_description": "Provide formatters to allow in-place editing in a View or other display (full content, teaser...).\n\n Compatibility\n\nThis module is compatible with Drupal 9.2 and higher and Drupal 10, 11\nAdd more flexibility by using with Drupal Chosen\nOr by using with Drupal Select2\nAs known issue, Edit In-place field is not compatible for now with the View field \"Node operations bulk form\", it cause the HTTP exception \" The specified #ajax callback is empty or not callable\".\n\nAlready done\n\nLong basic text edition\nSimple text edition (like content title)\nEntity reference selection. (node, taxonomy term...)\nEntity reference filtered by a parent field.\nCompatible with others administration themes like Claro and Gin\n\nTo do\n\nRender fields by using available options (like link to content)\nAdd other field types available like integer, float...\n\nUsage\n\nEdit the display of an entity reference field\nSelect the \"Edit in place\" formatter\nApply the permission \"Allow to use edit in place field to save entities.\" to the In-place editor user role.\n\n Back to top",

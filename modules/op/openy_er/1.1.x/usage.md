@@ -7,7 +7,7 @@ The problem is specific and, once you have hit it, immediately recognisable. Whe
 
 The plugins here — `DefaultSelectionNoDependency`, `NodeSelectionNoDependency`, `BlockSelectionNoDependency`, sharing `SelectionNoDependencyTrait` — provide the same selection behaviour with the dependency calculation suppressed. The field still references content at runtime; the config just stops claiming it cannot exist without it.
 
-**This release cannot be installed as shipped.** Its `info.yml` declares `drupal:plugin` as a dependency, but `plugin` is not a core module — it is the contrib project `drupal/plugin`. **Verified:** `drush en openy_er` fails with *"module 'openy_er' is missing its dependency module plugin"*, and the module's directory contains no `composer.json`, so composer never pulls `drupal/plugin` in. Requiring `drupal/plugin` explicitly resolves it. The fix upstream is a one-line correction of the namespace in the dependency declaration plus a composer requirement.
+**This release may not install as shipped.** Its `info.yml` declares `drupal:plugin` as a dependency, but there is no core module named `plugin` — that is the contrib project `drupal/plugin`, and the module ships no `composer.json` to pull it in, so on a site without `drupal/plugin` present the module will not enable (missing dependency `plugin`). Nothing in the code actually uses that project, so the declaration looks like a mistake. Running `composer require drupal/plugin` before enabling resolves it; the upstream fix is to drop (or correct) the stray dependency.
 
 ---
 

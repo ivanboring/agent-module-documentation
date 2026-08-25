@@ -1,23 +1,44 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Video Embed JW Player (video_embed_jwplayer) — agent index
 
-**JW Player** provider plugin for **Video Embed Field**. Requires `video_embed_field`.
-Version **8.x-1.4**. Core requirement `^8 || ^9 || ^10 || ^11`.
+Adds **JW Player / JW Platform** as a provider to **Video Embed Field** (`drupal/video_embed_field`).
+An editor pastes a JW Player embed/preview URL into a `video_embed_field` field; this module's one
+plugin, `JwPlayer`, recognises the URL, extracts the `MEDIAID-PLAYERID` combined id from it, and
+renders an `<iframe>` pointing at `//content.jwplatform.com/players/<id>.html`. It also derives the
+poster/thumbnail URL (`https://cdn.jwplayer.com/thumbs/<mediaid>-720.jpg`) that the parent module
+downloads and caches. That is the entire module — one class,
+`src/Plugin/video_embed_field/Provider/JwPlayer.php`, extending `ProviderPluginBase`.
 
-**JW Player solves a different problem from YouTube or Vimeo.** It is a **paid hosting and player
-product**, bought by organisations that want video on their own terms: **no platform branding**, no
-recommended-videos panel suggesting a competitor at the end, **no advertising they did not sell**,
-control over the player's appearance, and **analytics they own**. Broadcasters, publishers and
-larger commercial sites use it for exactly those reasons.
+Everything else — the field type/widget, the "Video" formatter/thumbnail formatter, the WYSIWYG and
+media-source integration, and the iframe render element — comes from `video_embed_field`. Provider
+plugins are deliberately tiny: they only answer "is this my URL?", "what is the id?", and "what
+markup/thumbnail?".
 
-The plugin is small because the parent module supplies the field type, formatters, WYSIWYG
-integration and media source.
+- Depends on: `video_embed_field:video_embed_field`. No other libraries.
+- Core: `^8 || ^9 || ^10 || ^11`. Package: `Video Embed Field`. Version `8.x-1.4`.
+- **No** settings page / `configure` route, **no** routes, **no** services, **no** permissions,
+  **no** hooks, **no** drush, **no** config schema, **no** `.module`/`.install` file.
+- Defines **no** plugin type; it supplies one **instance** of the parent's `VideoEmbedProvider`
+  plugin type (id `jwplayer`).
 
-**Three things worth attaching:**
-1. **A third-party player is still a third-party request** with cookies and a reported view — the
-   **consent** question applies as it does to YouTube, whatever the vendor relationship.
-2. **Video needs captions** — a **WCAG** requirement for prerecorded content and the only route to
-   the words being **searchable**. On a paid platform captioning is usually a feature to **turn on
-   and pay for**, not one that appears.
-3. **Provider plugins are fragile.** A changed embed URL format or player API breaks the plugin
-   until someone updates it — check the release date against current platform behaviour.
+## What you'd do → where
+
+- **Understand/extend the JW Player provider plugin — URL formats it accepts, the id/thumbnail
+  extraction, the iframe it emits, and how to add your own provider like it** →
+  [plugins/provider.md](plugins/provider.md)
+
+## Key facts (real machine names)
+
+- Plugin: `VideoEmbedProvider` id **`jwplayer`**, title "JW Player", class
+  `Drupal\video_embed_jwplayer\Plugin\video_embed_field\Provider\JwPlayer`, annotation
+  `@VideoEmbedProvider`, discovery dir `src/Plugin/video_embed_field/Provider/`.
+- Base class: `Drupal\video_embed_field\ProviderPluginBase`.
+- Methods: `renderEmbedCode($width, $height, $autoplay)`, `getRemoteThumbnailUrl()`,
+  `getRemoteThumbnailWidth()`, `getJwPlayerMediaId()`, `getJwPlayerPlayerId()`, static
+  `getIdFromInput($input)`.
+- Constant: `REMOTE_THUMBNAIL_WIDTH = 720`.
+- Render element emitted: `video_embed_iframe` (parent), `#provider => 'jwplayer'`,
+  `#url => '//content.jwplatform.com/players/<id>.html'`.
+- Thumbnail template: `https://cdn.jwplayer.com/thumbs/<mediaid>-<width>.jpg`.
+- URL-match regex: `@\/\/\w+\.(jwplayer|jwplatform)\.com\/[^\/]+\/(?<id>[\_\-a-zA-Z0-9]+)@i`.
+- Combined id format: `MEDIAID-PLAYERID` (media id = before the first `-`, player id = after).

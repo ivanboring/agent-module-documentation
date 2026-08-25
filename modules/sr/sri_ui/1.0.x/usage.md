@@ -1,27 +1,30 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Subresource Integrity UI lets an administrator add `integrity` and `crossorigin` attributes to asset libraries from a configuration screen.
+Subresource Integrity UI lets an administrator add `integrity`, `crossorigin`, `async` and cache-busting query strings to externally hosted JS/CSS from a settings screen, so the browser verifies each CDN file against a pinned SHA-256 hash before running it.
 
 ---
 
-An externally hosted script is a standing grant of execution rights to whoever controls that URL — a CDN compromise, a hijacked host, a DNS takeover, or simply a maintainer republishing a different build under the same path all result in the browser running code nobody reviewed, with no signal that anything changed. Subresource Integrity is the platform's answer: attach the expected hash, and the browser compares before executing and refuses on mismatch. Modules that declare CDN-hosted libraries frequently omit it — `redoc_field_formatter` in wave 70 loads Redoc from jsDelivr with no hash at all — and the declaration is in the module's own `libraries.yml`, which a site cannot edit without patching. Making it configuration puts the decision with the site. Version **1.0.3** on `^8` through `^11`, behind `administer site configuration`. Two things decide whether SRI helps or breaks the page, and both catch people out. **`crossorigin` is required for SRI to function at all**: the browser needs a CORS-mode fetch to inspect the response, and the host must send permissive CORS headers — without both, the script **fails to load** rather than merely failing to be verified, which is the most common way an SRI rollout takes a site down. And **a hash pins one exact file**, so when upstream publishes an update the script stops loading until the hash is updated — which is the point rather than a nuisance, provided versioned URLs are pinned and a hash update is treated as a review step. Compare `external_script_sri`, documented in wave 72, which addresses the same problem from a per-script list.
+An externally hosted script is a standing grant of execution rights to whoever controls that URL — a CDN compromise, a hijacked host, a DNS takeover, or a maintainer republishing a different build under the same path all end with the browser running code nobody reviewed. Subresource Integrity is the platform answer: attach the expected hash and the browser refuses on mismatch. Install with `composer require drupal/sri_ui` and enable it (`ddev drush en sri_ui`); the module adds **no dependencies** and needs no libraries. Configure at **`/admin/config/services/sri`** (permission `administer site configuration`): the feature is **off by default**, so first tick **Enable custom SRI integrity attributes**, then add one entry per external asset — its **full URL** (matching exactly the URL Drupal emits for that library/script), the `integrity` checksum (paste one from https://www.srihash.org/ or leave blank to have it generated on the next refresh), and — importantly — a **`crossorigin`** value such as `anonymous`, because without a CORS-mode fetch the hashed file *fails to load* rather than merely failing to verify. Optional per-entry flags add an `async` attribute, a `query_string` cache-buster, and **Auto hash refresh on page request** (throttled by the *Timeout for next refresh* seconds value). The module also regenerates hashes from the source file on **cron** and via the Drush command **`ddev drush update-assets-hash256`**, downloading each configured URL and recomputing `sha256-…`. After saving, **rebuild caches** (`ddev drush cr`) so the new attributes reach the front end. Note SRI only helps assets Drupal declares as `type: external`; locally hosted or aggregated assets are unaffected, and each listed URL must match byte-for-byte or the attributes are silently not applied.
 
 ---
 
-- Add integrity hashes to CDN libraries.
-- Protect against a CDN compromise.
-- Add crossorigin to an external script.
-- Meet a security audit requirement.
-- Verify a third-party library.
-- Harden a site loading external assets.
-- Detect an unexpected library change.
-- Support a content security programme.
-- Pin a library to a known build.
-- Reduce supply-chain risk.
-- Add SRI without patching a module.
-- Satisfy a penetration test finding.
-- Protect a payment page's scripts.
-- Configure library attributes centrally.
-- Document external script dependencies.
-- Block execution of a tampered file.
-- Support a regulated site's controls.
-- Review third-party library updates deliberately.
+- Add integrity hashes to CDN-hosted libraries.
+- Protect against a CDN or upstream host compromise.
+- Add a `crossorigin` attribute to an external script.
+- Meet a security-audit or pen-test SRI requirement.
+- Verify a third-party library before it executes.
+- Harden a site that loads external assets.
+- Detect an unexpected upstream library change.
+- Support a content-security / supply-chain programme.
+- Pin a library to a known, reviewed build.
+- Reduce third-party supply-chain risk.
+- Add SRI without patching a module's `libraries.yml`.
+- Generate a hash automatically from the asset URL.
+- Refresh hashes on cron or via Drush.
+- Append a cache-busting query string to an external asset.
+- Add an `async` attribute to a third-party script.
+- Centrally manage external-asset attributes from one screen.
+- Protect the scripts on a payment or checkout page.
+- Document a site's external script dependencies.
+- Block execution of a tampered CDN file.
+- Support a regulated site's integrity controls.
+- Review third-party library updates deliberately (hash mismatch flags them).

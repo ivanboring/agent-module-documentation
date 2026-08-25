@@ -5,7 +5,9 @@
   "version": "1.0.x",
   "package": "Media",
   "composer_namespace": "drupal/panopto_media_remote",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/media_remote": "^1.9"
+  },
   "dependent_modules": [
     "media_remote:media_remote"
   ],
@@ -21,15 +23,15 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Media management",
+    "Media",
     "Integrations"
   ],
   "subcategories": [
     "Video embedding",
-    "Education"
+    "Media embedding"
   ],
   "keywords": [
     "panopto",
