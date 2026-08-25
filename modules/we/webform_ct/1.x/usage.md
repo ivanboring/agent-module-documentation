@@ -1,31 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Webform Custom JavaScript (webform_ct) lets a permitted user attach custom JavaScript to a webform's confirmation, gated by a dedicated permission.
+Webform Conversion Tracking (webform_ct) lets a permitted editor attach custom JavaScript to a single webform's confirmation page, typically an ad or analytics conversion-tracking snippet.
 
 ---
 
-Sometimes a webform needs a bit of custom JavaScript — a conversion pixel on confirmation, a bespoke interaction. webform_ct allows attaching custom JS to a webform, and it does the important thing correctly: the custom-JavaScript field is gated by a **dedicated permission** (`webform_ct.administer_webform_confirmation_javascript`) with `#access` control, not available to every webform editor. That matters because attaching arbitrary JavaScript is a stored-XSS capability — the script runs in visitors' browsers — so it must be restricted to fully trusted users, and the module scopes it to its own permission rather than folding it into general webform editing. Grant that permission only to developers/administrators you trust with client-side code, never to ordinary form builders.
+Install it alongside the **Webform** module (`composer require drupal/webform drupal/webform_ct`, then `drush en webform_ct`). It adds no settings page of its own; instead, on a webform's **Confirmation** settings tab (`/admin/structure/webform/manage/MY-FORM/settings/confirmation`) it adds a **"Confirmation Javascript Code"** field — a CodeMirror JavaScript editor — that appears only when the confirmation type is **Page** or **Inline** (it is not supported for None, Message, Modal, URL, or URL + message). Enter your snippet **including its own `<script>…</script>` tags**, save, and the code is stored on that webform as the third-party setting `webform_ct.confirmation_custom_javascript` and emitted on the confirmation page/message when the form is submitted. The field is only visible to users who hold the dedicated permission **"Administer Webform Confirmation JavaScripts"** (`webform_ct.administer_webform_confirmation_javascript`, marked *restrict access*), which is separate from Webform's general permissions — so you grant confirmation-JavaScript editing independently of general form administration. The same value can be set programmatically with `$webform->setThirdPartySetting('webform_ct', 'confirmation_custom_javascript', '<script>…</script>')` or in a webform's exported config under `third_party_settings.webform_ct`.
 
 ---
 
-- Add custom JS to a webform.
-- Attach a conversion pixel.
-- Run JS on confirmation.
-- Gate custom JS by permission.
-- Restrict the JS capability.
-- Grant JS access to trusted users only.
-- Treat custom JS as stored XSS.
-- Keep it from ordinary editors.
-- Add bespoke form interaction.
-- Confirm who holds the permission.
-- Add tracking on submit.
-- Scope the JS permission narrowly.
-- Enable when needed.
-- Keep disabled otherwise.
-- Restrict administration.
-- Confirm on your site.
-- Test before production.
-- Review configuration.
-- Pair with related modules.
-- Keep setup minimal.
-- Verify theme fit.
-- Audit access.
+- Fire an ad-network conversion pixel when a webform is submitted.
+- Add a Google Ads / Google Analytics conversion event on confirmation.
+- Add a Meta/Facebook pixel event to a form's confirmation page.
+- Add a LinkedIn or TikTok conversion snippet on submit.
+- Run custom analytics tracking only on the confirmation page.
+- Attach a per-webform JavaScript snippet without a whole-site tag manager.
+- Set the confirmation JavaScript on the Confirmation settings tab.
+- Enter the snippet with its own `<script>` tags in the CodeMirror field.
+- Use it with the **Page** confirmation type.
+- Use it with the **Inline** confirmation type.
+- Grant the "Administer Webform Confirmation JavaScripts" permission to a trusted role.
+- Keep confirmation-JavaScript editing separate from general webform administration.
+- Read the stored snippet via `$webform->getThirdPartySetting('webform_ct', 'confirmation_custom_javascript')`.
+- Set the snippet from code with `setThirdPartySetting()` and `$webform->save()`.
+- Define the snippet in a webform's exported config under `third_party_settings.webform_ct`.
+- Deploy conversion tracking as configuration across environments.
+- Run `drush updatedb` after updating to apply `webform_ct_update_8001`.
+- Render the README as the module help page (`/admin/help/webform_ct`).
+- Enable the optional `markdown` module for nicer help-page formatting.
+- Install alongside `drupal/webform` (required dependency).
+- Add a different tracking snippet per webform.
+- Turn tracking off for a webform by clearing the field.

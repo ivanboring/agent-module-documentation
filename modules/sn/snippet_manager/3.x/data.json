@@ -5,31 +5,39 @@
   "version": "3.x",
   "package": null,
   "composer_namespace": "drupal/snippet_manager",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "php": ">=8.1.0",
+    "drupal/core": "^10.3 || ^11.0",
+    "drupal/codemirror_editor": "^2.0"
+  },
   "dependent_modules": [
     "drupal:filter",
     "drupal:file",
     "codemirror_editor:codemirror_editor"
   ],
-  "configure": null,
+  "configure": "entity.snippet.collection",
   "core_version_requirement": "^10.3 || ^11.0",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/snippet_manager",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "SnippetVariable"
+  ],
   "categories": [
-    "Content display"
+    "Content display",
+    "Theming"
   ],
   "subcategories": [
-    "Theming / templates"
+    "Block enhancements",
+    "Twig / component libraries"
   ],
   "keywords": [
     "snippet",
@@ -37,7 +45,8 @@
     "reusable",
     "block",
     "template",
-    "embed"
+    "embed",
+    "code"
   ],
   "project_description": "Snippets are pieces of Twig code that can be used to build site layouts. The module provides an administrative interface to manage and render snippets on the site.\n\n Related modules \n \n Snippet metatag",
   "maintenance_status": "Minimally maintained",

@@ -1,31 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Menu CSS Names adds CSS class names to Drupal menu links, derived from the link, so menus can be styled per-item.
+Menu CSS Names adds a per-item CSS class to Drupal menu links, derived from each link's title, so menu items can be styled individually.
 
 ---
 
-Styling a specific menu item — a highlighted 'Sign up', a differently-coloured section — needs a stable CSS hook, and core menu markup does not always provide one per item. Menu CSS Names adds class names to menu links so each item is targetable in CSS. It is a theming convenience with no security surface. The generated classes derive from the link, so confirm they are stable across content changes if your CSS depends on them.
+Core menu markup does not always give you a stable, per-item hook for CSS, so styling one specific menu item — a highlighted **Sign up**, a coloured section link, a CSS-sprite icon — is awkward. Once enabled (it depends on `menu_ui`), Menu CSS Names implements `hook_preprocess_menu` and appends a class to every rendered menu item, including nested child items. The class is built from the link title: it is transliterated to ASCII, stripped of tags, lowercased, and every character that is not a letter, digit, underscore or hyphen becomes a hyphen — so **Product Information** becomes `product-information` and you write `li.product-information { … }`. Regular menus are processed automatically; a small settings form at `/admin/config/menu_css_names` (permission *administer menu_css_names configuration*) has two checkboxes — **Include classes for Local actions** and **Include classes for Local Tasks** — both on by default, that also add the same class to admin tabs and action buttons. There is no separate library, JS or CSS to load; the class simply appears in the menu markup for your theme's CSS to target. Because the class follows the current title, it changes if an editor renames the link, so confirm class stability if your CSS depends on a specific name.
 
 ---
 
-- Add CSS classes to menu links.
-- Style a specific menu item.
-- Target menu items in CSS.
-- Highlight a menu link.
-- Style menus per item.
-- Get stable CSS hooks.
-- Theme a menu item.
-- Add per-item classes.
-- Style a section link.
-- Confirm class stability.
-- Enable when needed.
-- Keep disabled otherwise.
-- Restrict administration.
-- Confirm on your site.
-- Test before production.
-- Review configuration.
-- Pair with related modules.
-- Keep setup minimal.
-- Verify theme fit.
-- Audit access.
-- Match your use case.
-- Confirm compatibility.
+- Add a CSS class to every menu link.
+- Style one specific menu item.
+- Target menu items individually in CSS.
+- Highlight a single menu link (e.g. a call-to-action).
+- Apply CSS-sprite icons per menu item.
+- Style nested / child menu items.
+- Predict a link's class from its title (Product Information → product-information).
+- Add classes to admin local tasks (tabs).
+- Add classes to admin local actions (buttons).
+- Turn the local-tasks class output off.
+- Turn the local-actions class output off.
+- Restrict who can change the settings via the dedicated permission.
+- Enable the module and clear caches to start classing menus.
+- Style a section link differently from the rest of a menu.
+- Keep menu styling in the theme's CSS rather than templates.
+- Reproduce the D7 "Menu CSS Names" behavior on Drupal 10/11.
+- Check class stability before relying on it after editors rename links.
+- Reset the two toggles to defaults via the shipped update hook.
+- Configure per-item styling without writing a preprocess hook yourself.
+- Combine per-item classes with CSS sprite techniques.

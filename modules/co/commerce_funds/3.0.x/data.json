@@ -3,9 +3,11 @@
   "data_name": "commerce_funds",
   "description": "Provides a funds management system.",
   "version": "3.0.x",
-  "package": "Commerce",
+  "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_funds",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^3.0"
+  },
   "dependent_modules": [
     "commerce:commerce",
     "commerce:commerce_checkout",
@@ -14,7 +16,7 @@
     "commerce:commerce_product",
     "commerce:commerce_store"
   ],
-  "configure": null,
+  "configure": "commerce_funds.settings",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -22,17 +24,25 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/commerce_exchanger": "Allows currency conversion.",
+    "drupal/encrypt": "Encrypt users sensitive data (such as bank details).",
+    "symfony/intl": "Needed to validate bank details against symfony constraints."
+  },
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "WithdrawalMethod"
+  ],
   "categories": [
-    "Commerce"
+    "E-commerce"
   ],
   "subcategories": [
-    "Payment"
+    "Gift cards / store credit",
+    "Payment gateway",
+    "Currency conversion / exchange rates"
   ],
   "keywords": [
     "commerce",

@@ -9,17 +9,16 @@ blocks. Snippet Manager centralises them in one place.
 A snippet is a Twig template with its own variables. You can render a snippet as
 a **block** (placing it through the normal Block layout UI) and you can embed one
 snippet inside another with the provided `snippet()` Twig function, and pull in
-views and blocks from within a snippet. Snippets render through Drupal's
-**sandboxed** Twig (`inline_template`), which blocks the usual template‑injection
-route to code execution.
+views and blocks from within a snippet. Snippets render through Drupal's standard
+Twig (`inline_template`) — the same engine that renders your theme templates.
 
 Because a snippet author is effectively writing Twig that renders on the live
 site, creating and editing snippets requires the **`administer snippets`**
 permission, and that is a **high‑trust** capability — comparable to letting
-someone edit theme templates. Grant it only to developers and trusted site
-builders, never to ordinary content editors. Used as intended, it is a clean way
-to keep reusable snippets organised; the one rule is to keep `administer
-snippets` narrow.
+someone edit theme templates or run arbitrary PHP. Grant it only to developers
+and trusted site builders, never to ordinary content editors. Used as intended,
+it is a clean way to keep reusable snippets organised; the one rule is to keep
+`administer snippets` narrow.
 
 The module depends on core's **Filter** (`filter`) and **File** (`file`)
 modules, and on the contributed **CodeMirror Editor**

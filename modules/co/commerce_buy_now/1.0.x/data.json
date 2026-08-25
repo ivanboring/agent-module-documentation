@@ -3,7 +3,7 @@
   "data_name": "commerce_buy_now",
   "description": "Allow for customer add product to the cart and redirect the customer to the checkout page by clicking on the \"Buy Now\" button",
   "version": "1.0.x",
-  "package": "Commerce",
+  "package": "Commerce Buy Now",
   "composer_namespace": "drupal/commerce_buy_now",
   "composer_requirements": {},
   "dependent_modules": [
@@ -25,19 +25,21 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Commerce"
+    "E-commerce"
   ],
   "subcategories": [
-    "Checkout"
+    "Add to cart forms",
+    "Checkout customization"
   ],
   "keywords": [
     "commerce",
     "buy now",
     "checkout",
     "cart",
+    "add to cart",
     "conversion"
   ],
   "project_description": "Commere Buy Now module alows for customer add product to the cart and redirect the customer to the checkout page by clicking on the \"Buy Now\" button.\n\n Requirements \n This module requires the following:\n\n Drupal Commerce",

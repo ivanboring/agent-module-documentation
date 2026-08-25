@@ -3,9 +3,11 @@
   "data_name": "entity_preprocess_services",
   "description": "Adds a module which allows users to preprocess entities using services instead of only hooks.",
   "version": "3.0.x",
-  "package": null,
+  "package": "Theming",
   "composer_namespace": "drupal/entity_preprocess_services",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "php": ">=8.1"
+  },
   "dependent_modules": [],
   "configure": null,
   "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
@@ -13,7 +15,7 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/entity_preprocess_services",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [
@@ -21,17 +23,20 @@
   ],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content display"
+    "Developer tools",
+    "Theming"
   ],
   "subcategories": [
-    "Theming / templates"
+    "Hook / event system",
+    "Theme development tools"
   ],
   "keywords": [
     "preprocess",
     "services",
+    "service tag",
     "theming",
     "dependency injection"
   ],

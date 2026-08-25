@@ -3,7 +3,7 @@
   "data_name": "migrate_child_entity_generate",
   "description": "Provides a migrate process plugin for generating entities that only exist in context of their parent, eg. paragraphs",
   "version": "1.x",
-  "package": null,
+  "package": "Migration",
   "composer_namespace": "drupal/migrate_child_entity_generate",
   "composer_requirements": {},
   "dependent_modules": [
@@ -21,13 +21,15 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content"
+    "Import and export",
+    "Developer tools"
   ],
   "subcategories": [
-    "Migration"
+    "Content migration / import",
+    "Migration tooling"
   ],
   "keywords": [
     "migrate",
