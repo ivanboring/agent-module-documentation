@@ -1,11 +1,15 @@
 {
-  "name": "Views Vanilla Javascript Flip Cards - VVJF",
+  "name": "Views Vanilla Javascript 3D Flipbox - VVJF",
   "data_name": "vvjf",
   "description": "Accessible 3D flip-card display format for Views.",
   "version": "2.0.x",
   "package": "VVJ",
   "composer_namespace": "drupal/vvjf",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "php": ">=8.3",
+    "drupal/core": "^11.3 || ^12",
+    "drupal/vvj_core": "^2.0"
+  },
   "dependent_modules": [
     "drupal:views",
     "drupal:filter",
@@ -17,7 +21,7 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/vvjf",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "8.3",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
@@ -34,6 +38,8 @@
   ],
   "keywords": [
     "views",
+    "style plugin",
+    "flipbox",
     "flip card",
     "3d",
     "accessible",

@@ -1,13 +1,17 @@
 {
   "name": "Buttons Config",
   "data_name": "buttons_config",
-  "description": "Changes the text on content and media type form submit buttons.",
+  "description": "Changes the submit-button text on content, media, and comment type forms.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Fields",
   "composer_namespace": "drupal/buttons_config",
   "composer_requirements": {},
-  "dependent_modules": [],
-  "configure": null,
+  "dependent_modules": [
+    "drupal:media",
+    "drupal:node",
+    "drupal:comment"
+  ],
+  "configure": "buttons_config.admin_config_page",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -17,9 +21,9 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"

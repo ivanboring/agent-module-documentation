@@ -1,15 +1,20 @@
 {
   "name": "Commerce Profile Pane",
   "data_name": "commerce_profile_pane",
-  "description": "Checkout pane for editing user profiles.",
+  "description": "Commerce checkout pane for creating or editing a customer Profile entity during checkout.",
   "version": "8.x-1.x",
   "package": "Commerce",
   "composer_namespace": "drupal/commerce_profile_pane",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^2.38 || ^3",
+    "drupal/profile": "^1.8",
+    "drupal/inline_entity_form": "^1 || ^3"
+  },
   "dependent_modules": [
     "commerce:commerce",
     "commerce:commerce_checkout",
-    "profile:profile"
+    "profile:profile",
+    "inline_entity_form:inline_entity_form"
   ],
   "configure": null,
   "core_version_requirement": "^9 || ^10 || ^11",

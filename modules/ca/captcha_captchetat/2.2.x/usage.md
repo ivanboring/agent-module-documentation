@@ -1,39 +1,30 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-CaptchEtat plugs the French government's CAPTCHA service into the CAPTCHA module, as an alternative to reCAPTCHA and similar.
+CaptchEtat (with CAPTCHA) plugs the French government's official CaptchEtat challenge into Drupal's CAPTCHA module, as a state-operated, accessibility-focused alternative to reCAPTCHA.
 
 ---
 
-For a French public-sector site, the choice of CAPTCHA is partly a policy question. reCAPTCHA sends visitor data to Google; CaptchEtat is operated by the state's own digital service and is designed to satisfy French accessibility requirements, which matters because CAPTCHAs are one of the most reliable ways to exclude disabled users from a form.
-
-The module supplies the challenge through an endpoint at `/captchetat/object`, with settings and a separate form for the visible texts.
-
-**Its open endpoint is well built and worth citing as a model.** `/captchetat/object` carries `_access: 'TRUE'`, which is correct and unavoidable — a CAPTCHA precedes authentication, so there is no permission to check. What matters is what it does instead, and `CaptchaObjectController::get()` does all of it: requires the captcha type and, except for images, an identifier; checks service availability; and then uses **Drupal's flood service** with a configurable IP limit and window, registering each attempt and returning a distinct flooded response. It even logs flood denials. That is markedly better than several modules reviewed in this campaign that guard far more sensitive operations with nothing — `alogin`'s TOTP verification, in this same wave, has no attempt limiting at all.
-
-**One defect, read from source.** The sound-object branch tests a constant rather than comparing to it:
-
-```php
-if (CaptchaClientInterface::OBJECT_TYPE_SOUND) {
-  $response->headers->set('Content-Disposition', 'attachment; filename="' . $objectType . '.wav"');
-  $response->headers->set('Content-Type', 'audio/x-wav');
-}
-```
-
-`OBJECT_TYPE_SOUND` is `'sound'` — a non-empty string, so the condition is **always true** and every response, image challenges included, is sent as `audio/x-wav` with a `.wav` attachment disposition. It should be `if ($objectType === CaptchaClientInterface::OBJECT_TYPE_SOUND)`. Whether it breaks the visual CAPTCHA depends on how the front end consumes the response; either way the headers are wrong.
+Install it with Composer (`composer require drupal/captcha_captchetat`) and enable it alongside its required dependency, the **CAPTCHA** module. Before it can do anything you must complete the CaptchEtat authorization ("habilitation") process at api.gouv.fr — the service is reserved for French public entities and inter-ministerial partners — and obtain a `client_id` and `client_secret` from the PISTE "Applications" area. Enter those, together with the fixed scope `piste.captchetat`, on the settings form at **Administration › Configuration › People › CAPTCHA › CaptchEtat** (`/admin/config/people/captcha/captchetat`); a sandbox toggle lets you point at the test hosts first, and a **Type** radio chooses the challenge style (visual or audio; alphabetic, numeric, or alphanumeric; 4 to 12 characters, French or English). A second **Texts** tab customises the messages shown when the service is unavailable or when a visitor hits the per-IP rate limit. Configuring credentials does not protect any form on its own — as with any CAPTCHA type you then assign the **CaptchEtat** challenge to specific forms from the CAPTCHA module's own admin pages (default challenge or per-form CAPTCHA points). At runtime the challenge image or sound is fetched through the site's own `/captchetat/object` endpoint, and each submission is verified server-side against the CaptchEtat API, so a code is accepted only if the government service confirms it. If the credentials are missing or the API healthcheck fails, the module quietly falls back to the CAPTCHA module's built-in Math challenge, and the status report flags the API as unreachable.
 
 ---
 
-- Use a French government CAPTCHA.
-- Avoid sending visitor data to Google.
-- Meet French accessibility requirements.
-- Offer an audio CAPTCHA alternative.
-- Serve the challenge from an open endpoint.
-- Rate-limit challenge generation by IP.
-- Log flood-control denials.
-- Configure the IP limit and window.
-- Customise the CAPTCHA texts.
-- Cite the endpoint as a flood-control model.
-- Notice the always-true sound-type branch.
-- Check the Content-Type on image challenges.
-- Report the constant-not-comparison defect.
-- Restrict who administers the integration.
-- Compare CAPTCHA options for a public-sector site.
+- Add a French government CAPTCHA to forms on a public-sector site.
+- Use a state-operated challenge instead of Google reCAPTCHA.
+- Avoid sending visitor data to a third-party advertising provider.
+- Meet French accessibility (RGAA) expectations for CAPTCHAs.
+- Offer an audio CAPTCHA alternative to the visual one.
+- Support French and English challenge text.
+- Choose an alphabetic, numeric, or alphanumeric challenge.
+- Choose a challenge length from 4 up to 12 characters.
+- Protect native Drupal forms, Webforms, and custom forms.
+- Enter CaptchEtat OAuth client_id and client_secret in the admin UI.
+- Test against the CaptchEtat sandbox before going live.
+- Customise the "service unavailable" message shown to users.
+- Customise the rate-limit message shown to users.
+- Rate-limit challenge generation per IP address.
+- Tune the flood IP limit and time window from configuration.
+- Verify each submitted code server-side against the government API.
+- Fall back automatically to the Math CAPTCHA when credentials are missing.
+- Surface a CaptchEtat healthcheck in the Drupal status report.
+- Restrict administration to trusted users via a dedicated permission.
+- Translate the settings and texts with config translation.
+- Migrate an existing CaptchEtat v1 authorization to this v2 module.

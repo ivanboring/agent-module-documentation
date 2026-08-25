@@ -2,23 +2,21 @@
 
 ## Requirements
 
-- **Drupal 10 or 11** (`core_version_requirement: ^10 || ^11`, with the project's
-  supported core range extending up to Drupal 12).
+- **Drupal 11.2 or newer, or Drupal 12** (`core_version_requirement: ^11.2 || ^12`).
 - No other module dependencies, and no additional PHP or library requirements.
+- The [Group](https://www.drupal.org/project/group) module is optional — if it is
+  installed, Speedboxes also enhances its group-permissions form.
 
 ## Install with Composer
 
 From the project root:
 
 ```bash
-composer require drupal/speedboxes -W
+composer require drupal/speedboxes
 ```
 
-The `-W` (`--with-all-dependencies`) flag lets Composer update any shared
-dependencies as needed.
-
 > **Using DDEV?** Prefix Composer and Drush with `ddev` when you run from your host
-> machine — `ddev composer require drupal/speedboxes -W`, `ddev drush …`. Inside
+> machine — `ddev composer require drupal/speedboxes`, `ddev drush …`. Inside
 > the container (`ddev ssh`) run them without the prefix.
 
 ## Enable the module
@@ -27,12 +25,11 @@ dependencies as needed.
 drush en speedboxes -y
 ```
 
-That is all it takes — the drag-to-toggle behaviour is active immediately on
-checkbox grids across the admin UI. There is no configuration.
+That is all it takes — the drag-to-toggle behaviour is active immediately on the
+Permissions form. There is no configuration.
 
 ## Verify it worked
 
 Go to **People → Permissions** (`/admin/people/permissions`). Left-click and drag
 the mouse across a run of checkboxes; a small toolbar should appear letting you
-check, uncheck or invert the selection. Remember to review the resulting role
-before saving, since the permissions grid controls site access.
+check, uncheck or invert the selection. Save the form to apply the change.

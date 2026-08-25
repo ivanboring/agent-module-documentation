@@ -5,22 +5,18 @@ dragging across them, instead of clicking each one individually. You left-click
 and drag the mouse over a group of checkboxes; a small toolbar appears, and you
 can **check**, **uncheck**, or **invert** the selection in one gesture.
 
-Drupal has some famously dense checkbox grids — the permissions page above all,
-but also bulk operations, field settings and taxonomy forms — and configuring them
-one click at a time is slow. On a site with many modules the permissions grid can
-hold thousands of checkboxes, so setting up a role means a lot of clicking.
-Drag-to-toggle is a small usability improvement that saves a real and irritating
-amount of time on the setup work every project does. It works the moment you
-enable it — there is nothing to configure — and has no dependencies.
+Drupal's permissions page is a famously dense checkbox grid — on a site with many
+modules it can hold thousands of checkboxes, so setting up a role means a lot of
+clicking. Speedboxes targets exactly that screen. When enabled it automatically
+attaches its behaviour to two forms: the core **Permissions** page
+(`/admin/people/permissions`) and, if the [Group](https://www.drupal.org/project/group)
+module is installed, the **group permissions** form. There is nothing to configure
+and no dependencies — it works the moment you enable it.
 
-**One caution, on the permissions page especially.** That is exactly where
-clicking quickly is most expensive, because permissions are the site's access
-control and a permission granted by accident looks identical afterwards to one
-granted deliberately. The fix is not to avoid the module but to change what you
-review: after a bulk change, **read back what the role now holds** rather than
-trusting the gesture, pay particular attention to anything marked *restrict
-access*, and export configuration so the change appears in a diff that can be
-reviewed like any other.
+The drag interaction only changes the checkboxes in your browser. Nothing is
+saved until you submit the form with its usual **Save permissions** button, so
+it is good practice to glance over the resulting role before saving — the same
+as with any manual edit to the permissions grid.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token-cheap references for an AI coding agent, read the sibling
@@ -33,8 +29,7 @@ terse, token-cheap references for an AI coding agent, read the sibling
 
 ## How to use it
 
-There is nothing to configure. Once enabled, go to any page with a grid of
-checkboxes (for example **People → Permissions**), left-click and drag across the
-boxes you want to change, and use the small toolbar that appears to check, uncheck
-or invert them. After a bulk change on the permissions page, review the resulting
-role before saving.
+There is nothing to configure. Once enabled, go to **People → Permissions**
+(`/admin/people/permissions`), left-click and drag across the boxes you want to
+change, and use the small toolbar that appears to check, uncheck or invert them.
+Then save the form as usual to apply the change.

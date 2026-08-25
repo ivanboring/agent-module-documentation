@@ -1,31 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Search API Mark Outdated flags content in search results that has not been updated for a configured period.
+Search API Mark Outdated visually flags rows in a Search API view whose content has been edited since the search index last indexed it.
 
 ---
 
-Search results present everything as equally current, and on a site with years of content that is misleading in a specific way: a policy page last touched in 2019 looks exactly like one revised last week. Readers cannot tell, and neither can the editors who should be reviewing it.
-
-Marking outdated results makes age visible where people actually encounter content, which is search rather than an admin report.
-
-That dual audience is the interesting part. For a **reader**, an age marker is honesty — it says how much to trust what follows. For an **editor**, the same marker is a work queue that appears in the course of normal use rather than requiring a deliberate audit.
-
-**Two decisions worth making rather than defaulting.** What counts as outdated differs wildly by content type — a news article is stale in a month and an organisational history is fine for a decade — so a single site-wide threshold will be wrong for most of the site. And **"changed" is not the same as "reviewed"**: a typo fix resets the timestamp without anyone having checked the content, so the marker measures editing activity rather than accuracy. If accuracy is what matters, a separate reviewed-date field is what to sort on.
+The point of the module is to close a small but confusing gap: after you edit content, the search index does not update instantly — indexing usually runs on cron or in a queue — so for a while your Search API views keep showing the old, indexed version. This module makes that staleness visible instead of silent. Whenever a **content entity** is saved, it records that entity's Search API item id(s) in Drupal `State` (one entry per index, keyed `search_api_mark_outdated_<index_id>`), for every translation; when Search API later reindexes those items it fires the `ITEMS_INDEXED` event and the module clears them again. You surface the flag by adding the Views field **"Search API mark outdated field"** to a view built on a Search API index. The field renders a hidden `<div data-is-outdated="0|1">` for each row, and — when its `add_row_class` option is on (the default) — attaches a small JS behavior that adds the CSS class `search-api-outdated` to the row's `<tr>`, which your theme can then style (a badge, a background tint, a "may be out of date" note). Note two things: "outdated" means **index-stale, not old** — it is unrelated to how long ago content was authored and there is no time threshold to configure; and the JS row class assumes a **table** row style, so for a non-table view you turn the option off and style the `[data-is-outdated="1"]` attribute directly. There is no settings page, permission, or drush command — the only configuration is that one checkbox on the Views field.
 
 ---
 
-- Mark stale content in search results.
-- Show readers how current a page is.
-- Give editors a work queue in normal use.
-- Set an outdated threshold per content type.
-- Avoid one site-wide staleness rule.
-- Distinguish changed from reviewed.
-- Add a reviewed-date field for accuracy.
-- Prompt a content review cycle.
-- Identify pages nobody has touched.
-- Improve trust in search results.
-- Sort results by freshness.
-- Audit content age across a site.
-- Plan a review schedule.
-- Document the module's behaviour for the team.
-- Review it during a site audit.
-- Verify its assumptions after an upgrade.
+- Flag search-result rows whose indexed copy is out of date.
+- Warn editors that a page they just edited is not yet reindexed.
+- Show a "may be outdated" badge on stale Search API view rows.
+- Tint or outline stale rows in a search results table.
+- Add the "Search API mark outdated field" to a Search API view.
+- Keep the default `add_row_class` option to auto-add the `search-api-outdated` class.
+- Turn `add_row_class` off and style the `data-is-outdated` attribute yourself.
+- Style stale rows in a non-table view via the `[data-is-outdated="1"]` attribute.
+- Give a QA reviewer a visual cue that a result predates the latest edit.
+- Reassure editors that outdated markers clear automatically once cron reindexes.
+- Track index staleness per Search API index in Drupal State.
+- Flag every translation of an edited entity, not just the current language.
+- Read the outdated state from custom code via the manager service.
+- Manually mark or clear items as outdated from a script.
+- Explain to a content team why edits do not appear in search immediately.
+- Highlight rows to prioritise a manual reindex.
+- Distinguish freshly edited content from already-indexed content in a view.
+- Add a visual freshness cue without changing the search backend.
+- Document the module's index-staleness behaviour for the team.
+- Review its assumptions after a Search API or Drupal upgrade.

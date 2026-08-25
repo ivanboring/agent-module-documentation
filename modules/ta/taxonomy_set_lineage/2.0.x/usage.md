@@ -1,31 +1,30 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Taxonomy Set Lineage adds a term's ancestors automatically when the term is selected.
+Taxonomy Set Lineage automatically adds a term's ancestors to an entity's taxonomy reference fields when the entity is saved.
 
 ---
 
-Hierarchical vocabularies create a recurring problem: an editor tags an article with *Primary schools*, and a listing filtered by *Education* misses it, because nothing said the article was about education. The editor knows the hierarchy; the data does not.
-
-The two usual answers are both bad. Ask editors to select every ancestor, and they will forget. Query the hierarchy at read time, and every listing pays for a recursive lookup.
-
-Materialising the ancestors on save is the third option and generally the right one: the editor picks the specific term, the data records the whole lineage, and every consumer — Views, facets, search indexes, feeds — sees it without knowing the vocabulary is hierarchical.
-
-**Two things follow from materialising, and both need a plan.** The stored lineage is a **copy**, so moving a term in the hierarchy leaves existing content pointing at the old ancestry until something re-saves it — check whether the module reacts to term moves, and if not, that a re-save job exists. And **removing an ancestor is ambiguous**: if an editor deletes *Education* from an article still tagged *Primary schools*, does it come back on the next save? Whichever the module does, editors should know, because a field that silently re-adds what someone removed is a field they stop trusting.
+Install the module (`drupal/taxonomy_set_lineage`, no dependencies) and enable it, then visit **Configuration › Content authoring › Taxonomy Set Lineage** (`/admin/config/content/taxonomy_set_lineage`, needs the *administer taxonomy* permission). Tick at least one **vocabulary** — that is the only required setting. Leave the *Entity types*, *Bundles* and *Fields* boxes empty to apply lineage everywhere those vocabularies are referenced, or tick some to narrow the scope to specific entity types, bundles or individual reference fields. From then on, whenever content is saved and one of its scoped taxonomy-reference fields **changes**, the module loads each selected term's parents and inserts the missing ancestors immediately before the child term (so a page tagged *Berlin* also ends up tagged *Germany* and *Europe*, ordered root-first). It only **adds** terms, never removes them, and it only reacts to fields whose value actually changed — so it does not retro-fit content you have not edited. Two caveats worth telling editors: because the stored ancestors are a copy, **re-parenting a term in the vocabulary does not update already-saved content** until each item is re-saved; and if an editor removes only an ancestor while keeping the leaf, the ancestor is **re-added on the next save**. For existing content, use the bundled **Update Taxonomy Term Parents** bulk action on `/admin/content` (also gated by *administer taxonomy*) to backfill parents on selected nodes in one pass. Note that field **cardinality** is respected — on a single-value field there is no room for parents, so none are added — and in multilingual setups only the terms in the language just edited are processed.
 
 ---
 
-- Add ancestor terms automatically.
-- Make a specific tag appear in a broad listing.
-- Avoid asking editors to select every parent.
-- Avoid recursive lookups at read time.
-- Let facets see the whole lineage.
-- Feed a search index with ancestors.
-- Check what happens when a term moves.
-- Plan a re-save job after hierarchy changes.
-- Decide whether a removed ancestor returns.
-- Tell editors what the field does.
-- Choose which vocabularies get lineage.
-- Audit content tagged before enabling it.
-- Backfill lineage on existing content.
-- Document the module's behaviour for the team.
-- Review it during a site audit.
-- Verify its assumptions after an upgrade.
+- Tag content with a leaf term and have its ancestors added automatically.
+- Make a page tagged *Berlin* also appear under *Germany* and *Europe*.
+- Stop editors from having to hand-pick every parent term.
+- Avoid recursive hierarchy lookups at read time by materialising ancestors on save.
+- Let Views listings filtered by a broad term include narrowly-tagged content.
+- Feed facets and search indexes the full lineage of each term.
+- Enable lineage for one specific vocabulary only.
+- Restrict lineage saving to chosen entity types.
+- Restrict lineage saving to specific bundles (e.g. only Articles).
+- Restrict lineage saving to individual taxonomy reference fields.
+- Apply lineage to fields that use a View-based term selection handler.
+- Backfill parents on existing nodes with the *Update Taxonomy Term Parents* bulk action.
+- Repair content that was tagged before the module was configured.
+- Add newly-required parents after re-parenting terms (via the bulk action).
+- Understand that removing an ancestor is undone on the next save.
+- Understand that moving a term leaves old content on stale lineage until re-saved.
+- Respect single-value field cardinality (no parents forced into a one-term field).
+- Keep multilingual term sets independent per language.
+- Restrict who can configure it to holders of *administer taxonomy*.
+- Document the field's auto-tagging behaviour for the editorial team.
+- Audit hierarchical-taxonomy tagging during a site review.

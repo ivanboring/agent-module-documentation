@@ -1,11 +1,13 @@
 {
   "name": "Search API Mark Outdated",
   "data_name": "search_api_mark_outdated",
-  "description": "Visually marks outdated content in Search API views.",
+  "description": "Visually flags Search API view rows whose source content changed since it was last indexed.",
   "version": "1.0.x",
-  "package": null,
+  "package": "search_api",
   "composer_namespace": "drupal/search_api_mark_outdated",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/search_api": "^1.16"
+  },
   "dependent_modules": [
     "search_api:search_api"
   ],
@@ -25,18 +27,19 @@
   "provides_plugin_types": [],
   "categories": [
     "Site search",
-    "Content editing experience"
+    "Content display"
   ],
   "subcategories": [
-    "Search result sorting",
-    "Dashboard / reporting"
+    "Content indexing",
+    "Views field handlers"
   ],
   "keywords": [
     "search api",
     "outdated",
-    "freshness",
-    "content audit",
-    "views"
+    "reindex",
+    "index staleness",
+    "views field",
+    "state"
   ],
   "project_description": "",
   "maintenance_status": "Minimally maintained",

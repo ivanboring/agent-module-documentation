@@ -1,32 +1,30 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Buttons Config lets a site change the label on the submit button of content and media type forms.
+Buttons Configuration lets an administrator change the text shown on the submit ("Save") button of content type, media type, and comment type add/edit forms, per bundle.
 
 ---
 
-"Save" is the right word for a page and the wrong one for a good many other things. A job application is *submitted*; an incident report is *filed*; a draft is *saved* but a moderated item is *sent for review*. When the button says something other than what the action does, editors hesitate, and on a form used by the public they hesitate visibly — an application form whose button says "Save" leaves people unsure whether they have applied.
-
-Changing the label per content type is a small change with a real effect on that hesitation, and doing it as configuration keeps it out of a form alter in a site module where nobody will find it.
-
-**The label is a promise about what happens, so make it accurate rather than merely friendlier.** If the button says "Publish" but the content type is moderated and the item goes to review, the wording has made the interface less truthful rather than more welcoming. Match the word to the actual outcome, including what the moderation workflow does.
-
-Worth noting that button text is user-facing copy: it needs translating on a multilingual site, and a label set as configuration should go through the usual translation route rather than being typed once in one language.
+Install it like any contributed module (`ddev drush en buttons_config`); it depends only on Drupal core's **Node**, **Media**, and **Comment** modules, which must be enabled. All setup is in the UI at **Administration → Configuration → Content authoring → Buttons Configuration** (`/admin/config/content/buttons-config`), a landing page linking three editable forms — **Content Types**, **Media Types**, and **Comment Types** — each reachable only with the *Admin buttons config* permission. On a form you pick a bundle, choose whether the change applies to the **Save** (add) or **Edit** form, tick **Enabled**, type the replacement text (up to 50 characters) into **Custom Text**, and save; the setting is stored in a plain config object (`buttons_config.node.settings`, `buttons_config.media.settings`, or `buttons_config.comment.settings`). At runtime a global `hook_form_alter` matches the current form id against your saved rows and rewrites `$form['actions']['submit']['#value']`, so the next time an editor opens that type's form the button shows your wording (core escapes the text, so it is safe but not itself translatable per-language — set it in your default language). Note that because of how form ids are built, the content-type options are the most reliable; the media **Edit** option and comment relabeling do not always match a real form id.
 
 ---
 
-- Rename a form's submit button.
-- Say Submit on an application form.
-- Say File on an incident report.
-- Say Send for review on a moderated type.
-- Reduce editor hesitation.
-- Reassure public form users.
-- Keep the change in configuration.
-- Avoid a hidden form alter.
-- Match wording to the real outcome.
-- Avoid promising Publish on a moderated type.
-- Translate button labels.
-- Set labels per content type.
-- Set labels per media type.
-- Audit button wording across forms.
-- Document the module's behaviour for the team.
-- Review it during a site audit.
-- Verify its assumptions after an upgrade.
+- Rename the Save button on a content type's add form.
+- Rename the Save button on a content type's edit form.
+- Say "Publish article" instead of "Save" on a news type.
+- Say "Submit application" on a public-facing application content type.
+- Say "File report" on an incident-report content type.
+- Rename the Save button on a media type's add form.
+- Give image uploads a "Add to library" button label.
+- Set a per-bundle button label without writing a custom module.
+- Keep button wording as site configuration instead of a hidden form alter.
+- Reduce editor hesitation caused by a generic "Save" label.
+- Reassure anonymous users on a public submission form.
+- Match the button word to what the action actually does.
+- Avoid promising "Publish" on a moderated content type.
+- Configure labels from Administration → Configuration → Content authoring.
+- Restrict who can change labels via the Admin buttons config permission.
+- Enable or disable a configured label with the Enabled checkbox.
+- Limit label text to 50 characters.
+- Store the labels in exportable config objects.
+- Review current button-text overrides during a site audit.
+- Verify the module's form-id matching after a Drupal upgrade.
+- Document the button-wording conventions for an editorial team.

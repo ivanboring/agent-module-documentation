@@ -3,12 +3,10 @@
   "data_name": "ultimate_table_field",
   "description": "Field type for storing tabular data.",
   "version": "2.0.x",
-  "package": null,
+  "package": "Field types",
   "composer_namespace": "drupal/ultimate_table_field",
   "composer_requirements": {},
-  "dependent_modules": [
-    "drupal:field"
-  ],
+  "dependent_modules": [],
   "configure": null,
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
@@ -21,8 +19,10 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "ultimate_table_cell_field"
+  ],
   "categories": [
     "Content editing experience",
     "Content display"
@@ -37,7 +37,10 @@
     "tabular",
     "data",
     "rows",
-    "columns"
+    "columns",
+    "cell field plugin",
+    "formatter",
+    "widget"
   ],
   "project_description": "The Ultimate Table Field module introduces a versatile \"Ultimate Table\" field type for storing structured table data (rows and columns) in Drupal. It includes an easy-to-use table field widget for managing table content. Additionally, the module offers an extendable Ultimate Table Cell field plugin system, allowing users to define custom cell field forms and formatters. By default, it comes with four pre-configured cell field plugins: Text, Text (Long), Link, and File.\n\n For more information, visit the module documentation page",
   "maintenance_status": "Actively maintained",
