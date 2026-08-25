@@ -1,31 +1,32 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Audit Export provides auditing and reporting tools that export site information — content, configuration, users — for review, with core, post and tool submodules.
+Audit Export inventories your Drupal site's structure — content types, entities, blocks, menus, taxonomy, views, users/roles and enabled modules — into stored reports you can view, export to CSV, schedule, or push to a remote endpoint.
 
 ---
 
-Auditing a site — inventorying content, config, users, and modules — for a review, a handover, or a compliance check is tedious by hand. Audit Export provides tools to gather and export that information, with `audit_export_core`, `audit_export_post` and `audit_export_tool` submodules. The security note is that an audit export is a concentrated dump of site information, some of it sensitive (user data, configuration that includes access rules), so the export is admin-gated and the resulting files should be handled as sensitive: restrict who can run and read them, and do not leave audit exports in public or shared locations.
+Install the module with Composer (`composer require drupal/audit_export`) and enable it with `drush en audit_export`; the required **Audit Export Core** submodule is pulled in automatically. Configure it at **`/admin/config/system/audit-export`** (permission *Administer Audit Export settings*), where you set whether exports are saved to the filesystem (`temporary`, `public`, or `private`) and how cron processing is scheduled. Run and read reports at **`/admin/reports/audit-export/reports`**: the overview lists each audit with a **Run audit** action and a **Process all** button, and each report page shows the data as a table with a **Download CSV** button (when filesystem saving is enabled). Audits are plugins (`@AuditExport`), so developers can add custom ones under `src/Plugin/AuditExport/`. From the command line use `drush audit-export:list`, `drush audit-export:run [--all]`, `drush audit-export:export <id>`, and `drush audit-export:queue`. Enable the optional **Audit Export Post** submodule to POST reports to an external URL (with none/basic/bearer auth and TLS verification), and the optional **Audit Export Tool API** submodule (needs `drupal/tool`) to expose audits as Tool API tools for AI agents and MCP clients. Reports are stored in the `audit_export_report` table and can be regenerated any time.
 
 ---
 
-- Audit and export site info.
-- Inventory content and config.
-- Export a site review.
-- Report on users and modules.
-- Support a site handover.
-- Restrict who runs audits.
-- Handle exports as sensitive.
-- Keep exports out of public paths.
-- Audit for compliance.
-- Export configuration inventory.
-- Review site state.
-- Gather audit data.
-- Enable when needed.
-- Keep disabled otherwise.
-- Restrict administration.
-- Confirm on your site.
-- Test before production.
-- Review configuration.
-- Pair with related modules.
-- Verify theme fit.
-- Match your use case.
-- Confirm compatibility.
+- Inventory every content type on a site.
+- Audit entity types and their fields.
+- List all placed/enabled blocks.
+- Report on menus and their links.
+- Audit taxonomy vocabularies and terms.
+- Inventory Views and their displays.
+- List enabled modules with versions.
+- Flag modules with pending security updates.
+- Build a users-by-roles matrix.
+- Export any report as a CSV file.
+- Prepare a site handover document.
+- Support a compliance or security review.
+- Schedule audits to refresh via cron.
+- Run audits from the command line in CI/CD.
+- Queue large audits for background processing.
+- Push audit data to a central monitoring endpoint.
+- Track site health across multiple environments.
+- Feed audit CSVs into external analytics tools.
+- Expose audits to AI agents via Tool API / MCP.
+- Let an LLM query stored report data with pagination.
+- Write a custom audit plugin for bespoke data.
+- Store report snapshots for trend analysis.
+- Restrict who can view, run, and export audits.
