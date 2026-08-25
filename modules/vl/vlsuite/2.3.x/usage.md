@@ -1,33 +1,32 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-VLSuite is a page-building suite on top of Layout Builder: a library of block types, content collections, media types, layouts, animations, icon fonts and utility classes, assembled so a site can build landing pages without bespoke development for each component.
+VLSuite (Visual Layout Suite) is a page-building suite on top of Drupal core's Layout Builder that ships a ready-made library of layouts, block types, collections and media types plus an identifier-based utility-class system, so site builders can assemble landing pages without bespoke development for each component.
 
 ---
 
-Layout Builder gives you sections and whatever blocks exist; it does not give you the blocks. Most projects then spend weeks building the same set — a hero, a call to action, a card grid, a statement, a gallery, a video embed, a webform block — and every project builds them slightly differently. VLSuite ships that set: `vlsuite_block_*` submodules for CTA, headings menu, icon, image, local and remote video, paragraph, text, webform and attachments; `vlsuite_collection_*` for card, gallery, hero and statement collections; `vlsuite_media_*` for document, icon, image and local/remote video media types; plus layouts, a slider, a modal, animations, an icon font and utility classes.
-
-Sixteen top-level submodules and roughly thirty-six enabled components make this an adoption decision rather than an installation. Two pieces are there to manage that: **`vlsuite_shuttle`**, which the project description recommends installing "to optimize initial setup time" — the setup helper — and **`vlsuite_generator`**, which produces components. **`vlsuite_demo`** installs example content, which is the fastest way to see what the suite actually offers before committing, and equally something to remove before launch.
-
-The permission `administer vlsuite settings` is `restrict access: true` and gates the settings index at `/admin/config/vlsuite`. A `VLSuiteUninstallValidator` guards uninstall, which is a good sign in a suite this size: it prevents removing a piece other pieces depend on and leaving a site with broken layouts.
-
-Take the whole suite or don't. Cherry-picking a couple of block types brings the foundation anyway, and the value is in the coherence of the set rather than in any individual component.
+VLSuite is one project made of **37 submodules**, so adopting it is a decision about a set rather than a single install. The fastest paths are the two setup helpers: enable **`vlsuite_shuttle`** to wire up the base suite (media, blocks, layouts, layout builder, utility classes, icon font, tabs and the headings menu) for a customised install without example entities, or **`vlsuite_demo`** to also install ready-to-use example content and a landing content type — both modules auto-disable themselves once they finish. The suite depends on `layout_builder` and, via Composer, on `layout_builder_restrictions`, `section_library`, `media_library_form_element`, `layout_builder_operation_link` and `entity`; it works best on a **Bootstrap 5** theme because the shipped utility classes are Bootstrap's, but because VLSuite stores abstract *identifiers* and maps them to CSS classes in config (`/admin/config/vlsuite/utility-classes`), you can retune those class strings for any theme after install without editing existing content. Settings live under `/admin/config/vlsuite` behind the `administer vlsuite settings` permission; four extra "advanced" permissions (`use advanced vlsuite utility classes`, `... layout options`, `... slider options`, `... animations options`) let you decide which editors may reach the more delicate appearance controls. When building, editors must place the **`vlsuite_*` block variants** (not core's) so the Appearance, Slider and Animation options appear, and can restyle any block or section live from a floating previewer. Remove `vlsuite_demo`'s example content before launch, and note that per-bundle uninstall validators block removing a piece while content of that type still exists.
 
 ---
 
-- Build landing pages from a ready-made component set.
-- Place a hero, CTA and card grid without custom development.
-- Give editors a consistent library of block types.
-- Add a slider or carousel to a Layout Builder page.
-- Show a gallery collection.
-- Embed local or remote video as a component.
-- Place a webform inside a built page.
-- Use an icon font across components.
-- Apply animations to layout sections.
-- Apply utility classes from the editor.
-- Add a modal to a page.
-- Install demo content to evaluate the suite.
-- Speed initial setup with the shuttle module.
-- Generate a new component with the generator.
-- Standardise landing-page structure across a site.
-- Avoid rebuilding the same components each project.
-- Keep uninstall safe with the bundled validator.
-- Remove demo content before launch.
+- Install the suite base fast with `vlsuite_shuttle` (auto-uninstalls after setup).
+- Evaluate the suite quickly with `vlsuite_demo` example content, then remove it before launch.
+- Build a landing page from the ready-made `vlsuite_landing` content type.
+- Assemble pages from one-to-four-column VLSuite layouts with optional top/bottom regions.
+- Add tabbed or accordion sections with the layout-tabs submodule.
+- Place hero, card, gallery and statement/quote collection blocks.
+- Place basic blocks: text, CTA, image, icon, local video, remote video, attachments, webform.
+- Embed a YouTube/Vimeo video via the core-oEmbed `vlsuite_remote_video` media type.
+- Add an auto-generated in-page anchor menu with the headings-menu block.
+- Apply utility classes (spacing, colour, alignment) to any block or section from the editor.
+- Preview appearance changes live before committing them via the floating previewer.
+- Restyle the whole site by re-mapping utility identifiers to your theme's CSS classes.
+- Turn a column layout into a slider/carousel with per-section slider options.
+- Add scroll-triggered entrance/exit animations to sections and blocks.
+- Use an icon font across components via the `vlsuite_icon_font_icon` field.
+- Set a media background on a section or block.
+- Duplicate an inline block inside Layout Builder in one click.
+- Save reusable sections and full layouts to the Section Library.
+- Restrict which blocks are allowed per layout via Layout Builder Restrictions.
+- Grant a content-editor role appearance control without letting it touch advanced options.
+- Configure per-submodule settings (block, media, modal, icon font, animations) under `/admin/config/vlsuite`.
+- Scaffold a custom component module from a library template with `drush generate vlsuite-module`.
+- Extend the suite by adding your own layouts or block variants that pick up the same utilities.

@@ -5,7 +5,11 @@
   "version": "2.0.x",
   "package": "VVJ",
   "composer_namespace": "drupal/vvja",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "php": ">=8.3",
+    "drupal/core": "^11.3 || ^12",
+    "drupal/vvj_core": "^2.0"
+  },
   "dependent_modules": [
     "drupal:views",
     "drupal:filter",

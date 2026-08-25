@@ -19,7 +19,7 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools",
@@ -27,7 +27,7 @@
   ],
   "subcategories": [
     "Configuration management",
-    "Reports"
+    "Dashboard / reporting"
   ],
   "keywords": [
     "overrides",
@@ -35,7 +35,7 @@
     "config",
     "report",
     "environment",
-    "pantheon"
+    "multidev"
   ],
   "project_description": "Known Overrides is a simple module that can help you set up config overrides in your settings.php or settings.local.php and flag them in the Known Overrides Report, where only the differences between the Config and Override Config are shown.\n\n Why do we need this? Modules like Mail Safety are amazing at stopping email leaking from your local ddev version of the site. But when reviewing the Mail Safety settings form, you won't see your overrides there, and then start to panic if your emails are leaking via SMTP.\n\n Post-Installation \n Edit your settings.local.php file \n\n After the `<?php` line add the following array check, and setter.\n\n \n\nif (!isset($settings['knownOverrides'])) {\n\n $settings['knownOverrides'] = [];\n\n}\n\n \n\n Add your config override\n\n \n\n// Config override\n\n$config['mail_safety.settings']['enabled'] = TRUE;\n\n// Add the config name `mail_safety.settings` to settings knownOverrides array\n\n$settings['knownOverrides'][] = 'mail_safety.settings';\n\n \n\n The items stored in $settings['knownOverrides'] will then be compared to the editable config and any differences reported on.\n\n Similar projects \n \n Configuration Override Warn module will report within a config form if there are any overrides detected. Highly recommended. However, it does not offer a separate report outside of the overridden module's configuration. \n \n Community Documentation \n See the readme.md file for more information.\n\n Back to top",
   "maintenance_status": "Actively maintained",

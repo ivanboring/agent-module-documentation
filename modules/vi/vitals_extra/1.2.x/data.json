@@ -5,7 +5,9 @@
   "version": "1.2.x",
   "package": "Security",
   "composer_namespace": "drupal/vitals_extra",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/vitals": "^2.2"
+  },
   "dependent_modules": [
     "vitals:vitals"
   ],
@@ -21,7 +23,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools",

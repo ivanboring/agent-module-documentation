@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Form Decorator lets a form be modified by a decorator service rather than by `hook_form_alter()`, giving form changes a class, a service definition and a testable boundary.
+Form decorator is a developer module that lets you alter any Drupal form with a small decorator class instead of `hook_form_alter()`, keeping the form as a real object with dependency injection.
 
 ---
 
-`hook_form_alter()` is Drupal's oldest extension point and its least pleasant. Every module's alterations to every form end up in one procedural function per module, dispatched by a chain of `if ($form_id == …)` branches; ordering between modules is governed by module weight, which nobody wants to reason about; the code cannot be unit tested without a bootstrapped Drupal; and dependencies have to be fetched with `\Drupal::service()` because there is nowhere to inject them. A decorator changes all of that: one class per concern, constructor injection, an explicit service definition, and a stack whose order is declared rather than inferred. This module supplies the mechanism with a `form_decorator_example` submodule showing the shape. Version **1.1.0** on core `^10 || ^11`, no dependencies, no permissions, no configuration — infrastructure for other modules. Two things to weigh. **It is an additional indirection layer**, so a developer opening the codebase who does not know the pattern will look for a `hook_form_alter` that is not there — the same trade `autoservices` makes, and worth agreeing on as a team rather than adopting silently. And **decorating a form does not decorate its security**: validation and submit handlers added this way are still ordinary handlers, `#access` and route access still govern who reaches the form at all, and a decorator that adds a field must still ensure that field's value is validated on submission.
+Install it with `composer require drupal/form_decorator` and enable it (`drush en form_decorator`); it needs only Drupal core (`^10 || ^11 || ^12`), adds no configuration screen, no permissions and no routes, so once enabled there is nothing to set up. Under the hood it swaps core's `form_builder` service for a subclass that, on every form build, wraps the form object in whichever decorator plugins apply. To use it you (a developer) create a class under your module's `src/FormDecorator/` directory that extends one of `FormDecoratorBase` (generic forms), `EntityFormDecoratorBase` (entity forms) or `ContentEntityFormDecoratorBase` (content-entity forms), and annotate it with the `#[FormDecorator('form_<FORM_ID>_alter', $weight)]` attribute to say which form and in what order it runs; the fastest way to create one is `drush generate form-decorator`, which interviews you and writes the file. In the class you override only the methods you care about — typically `buildForm()` (call `$this->inner->buildForm(...)` first, then change `$form`), `validateForm()` to add checks, or `submitForm()`/`save()` to react to submission — and everything you do not override is forwarded to the original form untouched. Because a decorator is an ordinary plugin, you inject services through a normal `create()`/constructor (`ContainerFactoryPluginInterface`) rather than reaching for `\Drupal::service()`, and you can unit-test the class directly. Multiple decorators can target the same form and are applied in `weight` order (lower first), so behaviours compose predictably. Enable the bundled **Form decorator example** submodule to see five working decorators on the login, registration and node forms, but treat it as a demo rather than something to run in production. Remember to `drush cr` after adding or changing a decorator, since definitions are cached; and note that decoration only changes a form's build/validate/submit — who is allowed to reach the form is still governed by core route access and element `#access`.
 
 ---
 
-- Replace a hook_form_alter with a class.
-- Inject services into form modifications.
-- Unit test a form alteration.
-- Give form changes an explicit order.
-- Organise many form alterations.
-- Add a field to a form from a service.
-- Reduce a module's procedural code.
-- Make form changes reviewable per concern.
-- Avoid \Drupal::service() calls in alters.
-- Structure a large module's form logic.
-- Decorate a specific form by id.
-- Share form logic between modules.
-- Test form changes in isolation.
-- Modernise legacy alter code.
-- Add validation from a decorator.
-- Keep form concerns separated.
-- Follow a decorator pattern in Drupal.
-- Simplify a crowded .module file.
+- Replace a `hook_form_alter()` with a dedicated class.
+- Inject services into a form alteration via the constructor.
+- Unit-test a form modification in isolation.
+- Give competing form changes an explicit, declared order.
+- Add a field or markup to a specific form by id.
+- Add extra validation to the user registration form.
+- Add custom submit/save behaviour to an entity form.
+- Add a created-date picker to node forms and persist it.
+- Organise many form tweaks as one class per concern.
+- Keep a form as a real object instead of an array in a hook.
+- Decorate every form on the site with a single `form_alter` decorator.
+- Decorate a whole family of forms via a base form id.
+- Reduce procedural code in a crowded `.module` file.
+- Scaffold a new decorator quickly with `drush generate form-decorator`.
+- Alter or remove another module's decorators with `hook_form_decorator_info()`.
+- Modernise legacy alter code into injectable, testable classes.
+- Compose several independent alterations on the same form.
+- Ship reusable form behaviour as plugins from a shared module.
+- Study the bundled example submodule to learn the pattern.
+- Avoid `\Drupal::service()` calls inside form-alter logic.

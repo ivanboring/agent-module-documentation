@@ -1,21 +1,42 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Browser Back Button (browser_back_button) — agent index
 
-Handles browser back-button behaviour on pages whose state does not survive it. No dependencies.
-Version **2.0.2**. Core requirement `^10 || ^11`.
+Provides one **block** ("Browser Back Button Block", id `browser_back_button_block`) that renders an
+in-page clickable element — configurable text or an image, default "Back" — which runs
+`window.history.back()` when clicked. It is the browser's Back action placed inside the page as a
+themeable block: you position it through Block layout and set its label per placement. No routes,
+services, permissions, drush commands, plugin types, or dedicated settings page — the only
+configuration is per-block.
 
-**The specific failure is the back/forward cache (bfcache).** Browsers restore a previous page from
-memory rather than re-requesting it, so the visitor returns to **the DOM as they left it** — stale
-cart count, a form still showing a submitted state, a logged-in header on a page they have since
-logged out of, an AJAX region that no longer matches the server.
+The mechanism is small and self-contained. The block's `build()` renders the
+`browser_back_button_history` theme hook (`<div id="back-button-wrapper">{{ data.body }}</div>`) and
+attaches the `browser_back_button/browser_back_button.history` JS library. That library's Drupal
+behavior `browser_back_button` binds a click handler to `#back-button-wrapper` and calls
+`window.history.back()`. The block body is stored as a `text_format` value and printed through
+`check_markup`, so the allowed HTML is bounded by the text format the admin placing the block selects.
 
-On a shop or members' area these are not cosmetic: **a restored page showing an authenticated state
-after logout is a real disclosure on a shared computer**, and a stale cart is a support ticket.
+- Depends on: nothing (info.yml declares no `dependencies`).
+- Core: `^8 || ^9 || ^10 || ^11`. Package: none (info.yml sets no `package`). Version 2.0.2.
+- No settings page / `configure` route. Per-block config only, reached via Block layout → "Configure block".
+- No permissions, no drush, no services, no plugin types. Provides config schema and one theme hook.
+- No routes, endpoints, or callbacks; the only input is the admin-configured block body.
 
-**Two things to understand before reaching for it:**
-1. **The mechanism matters.** Forcing a reload on restore fixes correctness and **costs the speed
-   bfcache exists to provide**. Doing it site-wide is a large regression for a problem affecting a
-   few pages — target the pages whose state genuinely cannot survive restoration.
-2. **The underlying problem is usually cache headers.** A page that must not be restored should say
-   so: **`Cache-Control: no-store`** is the standard server-side opt-out of bfcache. A JavaScript
-   workaround is what you use when the headers are not yours to set.
+## Key facts (real machine names)
+
+- Block plugin: `browser_back_button_block` — `src/Plugin/Block/BrowserBackButtonBlock.php` (extends
+  `BlockBase`; `admin_label` and `category` both "Browser Back Button Block").
+- Block config keys (schema `block.settings.browser_back_button_block`,
+  `config/schema/browser_back_button.schema.yml`): `body` (`text_format` — the button text/image;
+  default value "Back") and `reload_status` (`boolean`, default `1`). Only `body` is exposed in
+  `blockForm()` (element `#type => text_format`, title "Back Button Text or Image").
+- Theme hook: `browser_back_button_history` (variable `data`, template
+  `templates/browser-back-button-history.html.twig`), registered by `browser_back_button_theme()`.
+- Library: `browser_back_button/browser_back_button.history` (`js/browser_back_button.history.js`;
+  dependencies `core/drupal`, `core/jquery`, `core/once`). Behavior id `browser_back_button`; binds
+  `click` on `#back-button-wrapper` → `window.history.back()`.
+- Hooks implemented (`browser_back_button.module`): `hook_help` (`help.page.browser_back_button`,
+  renders `README.txt`, via the `markdown` filter if that module is enabled, else escaped `<pre>`),
+  `hook_theme`.
+- NOTE: the project description and README advertise a "page reload option" (the `reload_status`
+  config). The shipped 2.0.2 JavaScript only calls `window.history.back()` — it does not read
+  `reload_status` and does not force a reload. Treat reload as unimplemented in this release.

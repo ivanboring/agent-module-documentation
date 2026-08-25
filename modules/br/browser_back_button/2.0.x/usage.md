@@ -1,27 +1,30 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Browser Back Button addresses what happens when a visitor uses the browser's back button on pages whose state does not survive it.
+Browser Back Button provides a placeable block that renders a clickable "Back" control which sends the visitor one step back in their browser history.
 
 ---
 
-The back button is the most-used control in any browser and the one web applications handle worst. The specific failure is the **back/forward cache**: browsers restore a previous page from memory rather than re-requesting it, so the page a visitor returns to is the DOM as they left it — with a stale cart count, a form still showing a submitted state, a logged-in header on a page they have since logged out of, or an AJAX-loaded region that no longer matches the server. On a shop or a members' area those are not cosmetic; a restored page showing an authenticated state after logout is a real disclosure on a shared computer, and a stale cart is a support ticket. This module handles that class of problem, version **2.0.2** on core `^10 || ^11`, no dependencies. Two things to understand before reaching for it. **The mechanism matters** — forcing a reload on restore fixes correctness and costs the speed the back/forward cache exists to provide, and doing it on every page is a large regression for a problem that affects a few; the better shape is to target the pages whose state genuinely cannot survive restoration. And **the underlying problem is usually cache headers**: a page that must not be restored should say so, and `Cache-Control: no-store` is the standard, server-side way to opt out of the back/forward cache — a JavaScript workaround is what you use when the headers are not yours to set.
+Install and enable the module like any contributed module (`composer require drupal/browser_back_button`, then enable it), after which it adds no admin section, permissions, routes, or settings page of its own. Everything happens through **Block layout** (`/admin/structure/block`): place the **"Browser Back Button Block"** in any region, open **Configure block**, and set **Back Button Text or Image** — a rich-text (`text_format`) field that accepts plain text (default `Back`) or markup such as an `<img>` tag for an icon. On the front end the block renders as `<div id="back-button-wrapper">…your text…</div>`; the module's JavaScript (library `browser_back_button/browser_back_button.history`, built on `core/drupal`, `core/jquery` and `core/once`) binds a click handler to that element and calls `window.history.back()`, so clicking it is equivalent to pressing the browser's Back button. The button text is stored through a text format and printed with `check_markup`, so the HTML you can use is bounded by the formats available to the admin placing the block. Note that although the module's description mentions a "page reload option" (a `reload_status` setting exists in config), the shipped 2.0.2 JavaScript only navigates back and does not force a reload. Because the control simply mirrors the browser Back button, it is most useful where you want an obvious, styleable in-page Back affordance — multi-step flows, deep detail pages, kiosk or touch layouts — rather than as a fix for cache or state problems.
 
 ---
 
-- Fix a stale cart count after going back.
-- Prevent a logged-out page showing as logged in.
-- Reload a page restored from cache.
-- Fix a form showing a stale submitted state.
-- Handle back navigation on a members' area.
-- Prevent stale AJAX content on return.
-- Fix an incorrect header after logout.
-- Handle back button on a checkout page.
-- Prevent a restored page showing old data.
-- Fix navigation state after going back.
-- Handle history navigation in an application.
-- Prevent confusion on a shared computer.
-- Fix a stale notification count.
-- Handle back navigation on a dashboard.
-- Reload a personalised page on return.
-- Prevent a resubmitted form state.
-- Fix back-button behaviour on a wizard.
-- Handle restoration of a filtered listing.
+- Add an on-page "Back" button to a content region.
+- Give a multi-step form or wizard a visible Back control.
+- Provide a Back link on deep detail or product pages.
+- Add a large, touch-friendly Back button for a kiosk display.
+- Place a styled Back button in a sidebar block.
+- Use an image or icon as the Back button instead of text.
+- Offer a Back control on mobile layouts with little browser chrome.
+- Add a Back button to a printable or embedded view.
+- Give a documentation or help section an in-page Back link.
+- Put a Back button at the bottom of a long article.
+- Add a Back affordance to a landing page built from blocks.
+- Provide a Back button inside a modal-driven flow.
+- Add a themeable Back control that matches the site design.
+- Show the Back button only on certain pages via block visibility settings.
+- Re-label or localize the Back button per placement.
+- Add a Back button to a members' dashboard region.
+- Give a step-by-step checkout a consistent Back control.
+- Add a Back link to a search results page.
+- Provide a Back button for a gallery or media detail page.
+- Render the Back control as plain page markup you can style with CSS.
+

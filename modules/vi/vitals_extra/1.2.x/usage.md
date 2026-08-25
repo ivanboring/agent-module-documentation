@@ -1,30 +1,28 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Vitals extras adds four checks to the Vitals health-check framework: update status, environment indicator configuration, development modules left enabled, and mail configuration.
+Vitals extras adds four read-only checks to the Vitals health-check framework: update status, environment indicator, development modules left enabled, and mail configuration.
 
 ---
 
-Vitals provides the plugin type and the reporting; this module supplies checks for the things that most often go wrong quietly between deployments. Each is a `Plugin/VitalsCheck` — `UpdateStatus`, `EnvironmentIndicator`, `DevModules`, `Mail` — so they appear alongside whatever else the site's Vitals installation reports.
-
-The `DevModules` check is the one that earns the module its `package: Security`. Development modules left enabled in production are a recurring, entirely avoidable exposure: Devel exposes arbitrary PHP execution and entity dumps; a database log UI, a stage-file-proxy, a test-content generator, an enabled `dblog` with no rotation — each is fine locally and a problem in front of the internet. They get enabled during an incident and never removed, because nothing complains.
-
-`UpdateStatus` covers the other recurring one: a site running a module with a published security advisory, where the information was available and nobody was looking. `Mail` catches a site that cannot actually send — the failure that hides until a password reset does not arrive. `EnvironmentIndicator` catches the setup where staging looks exactly like production, which is how content gets edited in the wrong place.
-
-Because they are Vitals plugins, the results go wherever the site already sends Vitals output, which is the point: a check nobody reads is not a check.
+Install it with `composer require drupal/vitals_extra` and `drush en vitals_extra` (the **Vitals** module, 2.2 or higher, is a required dependency and provides the plugin type, the settings page, and the reporting endpoint). This module adds no page or configuration of its own; instead you enable its checks individually on the Vitals settings page at `/admin/config/services/vitals`, and their results appear in Vitals' own token-protected JSON output at `/vitals/{token}`, keyed by plugin id. The four checks are: **`update_status`** — the core update-check interval plus the list of addresses that receive update notifications (also reading Symfony Mailer's update policy when that module is present) and a boolean saying whether any address is set; **`environment_indicator`** — the current environment `name` (from the Environment Indicator module's config) and `release` (from its state value), so staging can be told apart from production; **`dev_modules`** — booleans for whether **devel**, **stage_file_proxy** (with an origin set), **shield** (enabled), and **reroute_email** (or **symfony_mailer_reroute**) are actually active, which is why the module ships under `package: Security`; and **`mail`** — the effective mail `provider` and `transport`, resolved across mailsystem, symfony_mailer, swiftmailer, smtp, and phpmailer_smtp. Each check simply reads config or state and returns a small array, so they are safe to enable and cheap to run from an external monitor.
 
 ---
 
-- Warn when development modules are enabled in production.
-- Detect a module with an outstanding security advisory.
-- Check that mail is actually configured.
-- Verify the environment indicator is set.
-- Add health checks to an existing Vitals setup.
-- Include update status in automated monitoring.
-- Catch Devel left on after an incident.
-- Confirm staging is visually distinguishable from production.
-- Detect a site that cannot send password resets.
-- Report health checks to an external monitor.
-- Add deployment hygiene to a routine audit.
-- Standardise checks across a fleet of sites.
-- Feed check results into an ops dashboard.
-- Verify a site after a handover.
-- Build a pre-launch checklist from the results.
+- Add update-status, environment, dev-module, and mail checks to an existing Vitals install.
+- Enable the four extra checks individually at `/admin/config/services/vitals`.
+- Report the core update-check interval to an external monitor.
+- List the e-mail addresses configured to receive update notifications.
+- Confirm at least one update-notification address is set (`emails_status`).
+- Include Symfony Mailer's update-policy recipients in the update check.
+- Detect that the Devel module is enabled in production.
+- Detect that Stage File Proxy is active with an origin configured.
+- Detect that Shield is enabled.
+- Detect that Reroute Email (or Symfony Mailer Reroute) is intercepting mail.
+- Surface which environment name the Environment Indicator module is set to.
+- Read the deployed release value from environment_indicator state.
+- Tell staging apart from production in automated monitoring.
+- Report the effective mail provider and transport of the site.
+- Verify the site is configured to actually send mail (not the default sink).
+- Feed all of the above into an ops dashboard as JSON.
+- Standardise deployment-hygiene checks across a fleet of sites.
+- Build a post-deploy or handover checklist from the check output.
+- Extend the set with a custom `VitalsCheck` plugin by subclassing `VitalsExtraPlugin`.

@@ -1,7 +1,7 @@
 {
   "name": "Browser Back Button",
   "data_name": "browser_back_button",
-  "description": "Handles browser back button behaviour.",
+  "description": "Block that renders a clickable Back button (runs window.history.back()).",
   "version": "2.0.x",
   "package": null,
   "composer_namespace": "drupal/browser_back_button",
@@ -22,20 +22,20 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Content editing experience",
-    "Developer tools"
+    "Content display",
+    "Site structure"
   ],
   "subcategories": [
-    "JavaScript",
-    "Navigation"
+    "Block enhancements",
+    "Navigation menus"
   ],
   "keywords": [
     "back button",
     "browser",
     "history",
     "navigation",
-    "javascript",
-    "cache"
+    "block",
+    "javascript"
   ],
   "project_description": "This module provides one custom block named as \"Browser Back Button Block\" available in block layout section.\n\n By clicking the Configure button on the block, update the settings for this block and place any where in the region.\n\n It also supports page reload, while clicking the back button. So that any updates on the pages are reflected immediately.\n\n INSTALLATION \n\n * Install the Back Button module as you would normally install a\n\n contributed Drupal module. Visit https://www.drupal.org/node/1897420 \n\n for further information. \n\n Usage : \n \n Go to the Block Layout and place the \"Back Button Block\" in any active region. \n In the \"Configure block\" section, add text or image for back button. \n \n MAINTAINERS\n\n Current maintainers:\n\n Elavarasan R - https://www.drupal.org/user/1902634",
   "maintenance_status": "Seeking new maintainer",

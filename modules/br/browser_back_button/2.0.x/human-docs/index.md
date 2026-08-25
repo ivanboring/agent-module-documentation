@@ -1,35 +1,18 @@
 # Browser Back Button — manual setup guide
 
-**Browser Back Button** (`browser_back_button`) addresses what happens when a
-visitor uses the browser's Back button and lands on a page whose state has not
-survived. The specific culprit is the browser's **back/forward cache** (bfcache):
-to feel instant, browsers often restore a previous page from memory rather than
-re‑requesting it — so the visitor returns to the DOM exactly as they left it.
+**Browser Back Button** (`browser_back_button`) adds a single, placeable **block**
+that shows a clickable "Back" control on the page. When a visitor clicks it, the
+module's JavaScript calls `window.history.back()` — exactly what the browser's own
+Back button does — so it is an in-page, themeable Back affordance you can drop into
+any region. It has no dependencies and works on Drupal 8, 9, 10, and 11.
 
-That is fine for a static article, but on interactive pages it means stale state:
-a cart count that no longer matches, a form still showing a submitted state, an
-AJAX‑loaded region that no longer matches the server, or — most seriously — a
-logged‑in header on a page the visitor has since logged out of. On a shop or a
-members' area those are not cosmetic: a restored page showing an authenticated
-state after logout is a real disclosure on a shared computer, and a stale cart is a
-support ticket. This module handles that class of problem. It has no dependencies
-and supports Drupal 10 and 11.
-
-Two things are worth understanding before you reach for it:
-
-1. **The mechanism has a cost.** Forcing a reload when a page is restored fixes
-   correctness but throws away exactly the speed the back/forward cache exists to
-   provide. Applying it to every page is a large performance regression for a
-   problem that only affects a few pages — target the pages whose state genuinely
-   cannot survive restoration.
-2. **The underlying problem is usually cache headers.** A page that must not be
-   restored should say so, and `Cache-Control: no-store` is the standard,
-   server‑side way to opt a page out of the back/forward cache. A JavaScript
-   workaround like this module is what you use when those headers are not yours to
-   set.
+Use it wherever a visible, styleable Back control helps: multi-step flows and
+wizards, deep detail or product pages, kiosk/touch layouts, or long articles. The
+label can be plain text (default "Back") or markup such as an `<img>` icon, and you
+set it per block placement.
 
 This guide is written for a **human** using the module. If you want terse,
-token‑cheap references for an AI coding agent, read the sibling
+token-cheap references for an AI coding agent, read the sibling
 [`agent/`](../agent/start.md) docs instead.
 
 ## Contents
@@ -39,18 +22,21 @@ token‑cheap references for an AI coding agent, read the sibling
 
 ## Where it lives in the admin menu
 
-This is a lightweight JavaScript‑oriented module. It adds no permissions of its
-own and no top‑level admin section — once enabled it does its work on the front end
-via JavaScript. Its behavior is best scoped to the specific pages that need it (see
-below) rather than applied blanket across the whole site.
+The module adds no permissions and no top-level admin section of its own. Everything
+is configured through **Block layout** (Structure → Block layout): place the
+"Browser Back Button Block" in a region and use **Configure block** to set its text
+or image.
 
 ## How to use it
 
 1. Install and enable the module (see [Installation](installation/index.md)).
-2. Identify the pages whose state genuinely cannot survive a Back‑button
-   restoration — a checkout, a cart, a members' area, a dashboard, a multi‑step
-   wizard.
-3. Prefer fixing the root cause with a `Cache-Control: no-store` response header on
-   those pages where you control the headers; use this module's JavaScript approach
-   for the cases where you cannot. Either way, keep the fix targeted to the affected
-   pages so you do not give up the back/forward cache's speed site‑wide.
+2. Go to **Structure → Block layout** (`/admin/structure/block`) and place the
+   **"Browser Back Button Block"** in the region where you want the Back control.
+3. In **Configure block**, set **Back Button Text or Image** — plain text (default
+   "Back") or markup such as an `<img>` for an icon — and save.
+4. Optionally use the block's standard **visibility** settings to show it only on the
+   pages that need a Back control.
+
+> Note: the project description mentions a "page reload option", but the shipped
+> 2.0.2 release only navigates back (`window.history.back()`) and does not force a
+> page reload.

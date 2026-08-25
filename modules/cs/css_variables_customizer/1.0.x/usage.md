@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-CSS Variables Customizer lets a theme's CSS custom properties be overridden from the administration interface, so colours, spacing and typography can be adjusted without editing stylesheets.
+CSS Variables Customizer lets an administrator override a theme's CSS custom properties (design tokens like `--color-primary` or `--card-radius`) from the admin interface, so colours, spacing and typography can change without editing stylesheets or running a deployment.
 
 ---
 
-Modern themes express their design tokens as CSS custom properties — `--color-primary`, `--spacing-md`, `--font-heading` — precisely so they can be changed in one place, and Drupal offers no way to change them without a code deployment. That gap is felt most by the people least able to bridge it: a client who wants their brand colour applied, a sub-site that differs from its parent only in accent colour, a campaign that needs a different palette for six weeks. The alternatives are a sub-theme per variation, which is a codebase per client, or a colour module of the kind core removed, which rewrote stylesheets and never handled anything but colour. Overriding custom properties handles all of it, because the theme already decided which values are tokens. Version **1.0.0-beta3** — a **beta** — on core `^10 || ^11`, with an overview at its own admin route. Three things to think about. **A value written into a page is a value that needs escaping**: custom property values end up inside a `style` block or attribute, so the module must validate them rather than concatenating administrator input into CSS, and CSS injection is a real if less familiar vector. **Only what the theme declared as a variable is adjustable**, so a theme with three tokens offers three levers regardless of what the client asks for. And **where the overrides live** decides everything about deployment: configuration means they export and deploy and are overwritten by a config import, while content or state means they survive deployment and are invisible in a diff.
+A theme opts in by adding a `css_variables_customizer:` section to its `.info.yml` that lists the source stylesheets (files or whole folders) holding its tokens, and by wrapping each overridable variable in `/* @css-variables-customizer-category <name> */` … `/* @css-variables-customizer-category-end */` comment annotations; the module parses those files (and any Single Directory Component that carries the same annotations) and builds a per-theme form at **Appearance → CSS Variables Customizer** (`/admin/appearance/css-variables-customizer`), reachable only by users with the core **`administer themes`** permission. There you set a **value** and a **CSS selector** (default `:root`) for each discovered variable, add extra one-off variables in a free-form **Custom** textarea (`--name: value;` per line), and **preview** unsaved changes before committing — with the optional **SDC Styleguide** module rendering live component previews in an iframe. Saved values are written to a configuration object (`css_variables_customizer.customizations.<theme>`), so they export with your config, deploy between environments, and are overwritten by a config import; on every request a `page_top` hook injects them as `<style>` blocks at the top of the page, scoped to the selector you chose. Only variables the theme actually annotated are adjustable, and if a variable is later removed from the code it simply stops appearing on the form. The module has no dependencies, provides no Drush commands or permissions of its own, and supports Drupal 10 and 11 (documented at **1.0.0-beta3**, a beta — test before production).
 
 ---
 
-- Change a theme's primary colour.
-- Apply a client's brand palette.
-- Adjust spacing without editing CSS.
-- Create a campaign colour scheme.
-- Differentiate a sub-site by accent colour.
-- Avoid a sub-theme per client.
-- Let a site owner adjust typography.
-- Change a colour without a deployment.
-- Support a white-label deployment.
-- Adjust a theme's design tokens.
-- Preview a palette change.
-- Apply seasonal branding.
-- Adjust contrast for accessibility.
-- Support a multi-brand installation.
-- Change a heading font variable.
-- Tune a theme after launch.
-- Support a design handover.
-- Adjust border radius site-wide.
+- Change a theme's primary colour without a deployment.
+- Apply a client's brand palette to a base theme.
+- Adjust spacing or border-radius site-wide from the admin UI.
+- Change a heading or body font variable.
+- Create a temporary campaign colour scheme.
+- Differentiate a sub-site by accent colour only.
+- Avoid maintaining a sub-theme per client or variation.
+- Let a non-developer site owner tune design tokens.
+- Override tokens on Single Directory Components (SDC).
+- Scope an override to a specific CSS selector, not just `:root`.
+- Add extra one-off custom properties via the Custom textarea.
+- Preview a palette change before saving it.
+- Preview SDC component overrides with the SDC Styleguide module.
+- Support a white-label or multi-brand installation.
+- Adjust contrast or colours for accessibility tweaks.
+- Configure several themes independently on one site.
+- Tune a theme's look after launch without a code change.
+- Export theme-token overrides as configuration for deployment.
+- Keep the override list in step with the theme (removed variables disappear).
+- Group exposed variables under readable category headings in the UI.
