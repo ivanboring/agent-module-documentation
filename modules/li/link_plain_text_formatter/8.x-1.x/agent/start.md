@@ -1,18 +1,21 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Link Plain Text Formatter (link_plain_text_formatter) — agent index
 
-One field formatter: renders a **link field as plain text** (URL or title) rather than an anchor.
-Depends on core `link`. Single class, no configuration surface beyond formatter settings.
-Version **8.x-1.3**. Core requirement `^8 || ^9 || ^10 || ^11`.
+One field formatter that renders a core **`link` field as plain text** — the link *title* when it has
+one, otherwise the URL string — instead of an `<a>` anchor. Trivial module: no config page
+(`configure` null), no settings form of its own, no routes, no services, no permissions, no config
+schema, no plugin types. The only hook is `hook_help()` (renders an About blurb on the module's help
+page). Depends only on core `link`. Version **8.x-1.3**, core `^8 || ^9 || ^10 || ^11`, package
+*Field types*.
 
-**Why it exists:** every core link formatter produces an `<a>`. Plain-text email, CSV export,
-print stylesheets, SMS, QR sources and `alt` attributes all want the string. The alternative is a
-Views field rewrite or a template override per case.
-
-**Point of care — stripping the anchor does not make a URL safe in every context:**
-- a `javascript:` URI is inert as text and dangerous the moment something re-links it;
-- a URL in a **CSV cell** starting with `=`, `+`, `-` or `@` is a **formula-injection** vector in
-  a spreadsheet.
-
-Neither is this module's bug — the consumer owns that escaping — but this formatter is where those
-strings start their journey.
+Everything you need:
+- **Formatter plugin:** id `link_plain_text_formatter` (label "Plain text"),
+  `src/Plugin/Field/FieldFormatter/LinkPlainTextFormatter.php`, extends core `FormatterBase`. Applies
+  to field type `link`.
+- **Use it:** on *Manage display* for any entity/bundle that has a Link field, set the field's Format
+  to "Plain text". It exposes no formatter settings of its own.
+- **Logic (`itemText()`, LinkPlainTextFormatter.php:51):** if `$item->title` is empty, take
+  `$item->getUrl()` (falling back to the `<none>` route) and use `$url->toString()`; otherwise use the
+  title. The chosen string is passed through `Html::escape()` and returned as the item's `#markup`.
+- **No security surface** — pure render formatter; the emitted string is HTML-escaped, and there are
+  no routes, services, or permissions.

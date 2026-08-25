@@ -3,9 +3,12 @@
   "data_name": "ai_search",
   "description": "Offers an implementation of the Search API that uses a Vector DB server for indexing content.",
   "version": "2.0.x",
-  "package": null,
+  "package": "AI (Experimental)",
   "composer_namespace": "drupal/ai_search",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "2.x-dev#bfa34269",
+    "league/html-to-markdown": "^5.1"
+  },
   "dependent_modules": [
     "ai:ai",
     "search_api:search_api (>=8.x-1.40)"
@@ -17,13 +20,19 @@
   "project_url": "https://www.drupal.org/project/ai_search",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
-  "suggests": {},
+  "library_dependencies": [
+    "league/html-to-markdown"
+  ],
+  "suggests": {
+    "league/commonmark": "Allows previewing of chunked content when configuring the fields to be indexed in AI Search, and formats messages in the AI Chatbot module."
+  },
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "EmbeddingStrategy"
+  ],
   "categories": [
     "Site search",
     "Artificial Intelligence (AI)"

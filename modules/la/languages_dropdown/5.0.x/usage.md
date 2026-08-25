@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Languages Dropdown renders the language switcher as a dropdown instead of a list of links, which is what a site with more than three languages needs.
+Languages Dropdown (Bootstrap) renders Drupal's language switcher as a compact Bootstrap 5 dropdown of country flags and/or language labels instead of a flat list of links.
 
 ---
 
-Core's language switcher block prints every language as a link, and that is the right presentation for two or three and unmanageable at fifteen — a European institution's site, a global product site, anything with regional variants. A dropdown collapses the list to one control, which fits in a header and does not push the navigation onto a second row. This module supplies that, depending on core `language` and targeting `^10 || ^11`. The accessibility points are the ones that separate a usable language switcher from a frustrating one, and they are easy to get wrong with a dropdown: each option needs its **`lang` and `hreflang`** attributes so assistive technology announces language names in their own language rather than mispronouncing them in the page's; the control needs a label, since an unlabelled select of language names is ambiguous; and if the dropdown navigates on change rather than on submit, that is a change-of-context that catches keyboard users mid-selection — a submit button or an explicit confirmation avoids it. Worth checking these rather than assuming, because they are the difference between the switcher working for the audience it exists for.
+Install the module with Composer (`composer require drupal/languages_dropdown`) and enable it; it depends only on core **Language**, so you also need at least two configured languages and language negotiation set up. The flags come from the external **Bootstrap 5 Languages** library — download `danrod96-new/bootstrap5-languages` and extract it to `/libraries/bootstrap5-languages` (the status report at `admin/reports/status` warns if it is missing). Then go to **Structure → Block layout**, place the **"Language switcher (Bootstrap)"** block in a region (typically the header), and in its *Bootstrap settings* choose **Dropdown display components** (`Icons and text` or `Only icons`) and **Icon Size** (`Small`, `Medium`, or `Large`). The block can be placed multiple times. On a Bootstrap 5 theme the dropdown just works; on a non-Bootstrap theme the module loads Bootstrap 5.3.5 JS/CSS from a CDN so the toggle still functions — this 5.x branch is meant for Bootstrap 5 sites, and the maintainers point everyone else to the older 3.0.x release. There is no global configuration page: every option lives on the block instance, so different regions or language types can show different styles.
 
 ---
 
-- Show many languages in one control.
-- Fit a language switcher into a header.
-- Replace a long list of language links.
-- Support a site with fifteen languages.
-- Reduce header clutter.
-- Improve mobile language switching.
-- Show regional variants compactly.
-- Support an institutional multilingual site.
-- Keep navigation on one row.
-- Show the current language clearly.
-- Improve a global site's switcher.
-- Place the dropdown as a block.
-- Style the switcher to match a theme.
-- Support a translation-heavy site.
-- Reduce visual weight of the switcher.
-- Show language names natively.
-- Improve switcher usability.
-- Support a multi-market site.
+- Replace the core language switcher with a dropdown.
+- Show many languages in one compact control.
+- Add a flag-based language switcher to a header.
+- Show country flags next to language names.
+- Show flags only, without labels, to save space.
+- Pick a small, medium, or large flag size per block.
+- Place a language switcher on a Bootstrap 5 theme.
+- Fit a switcher for fifteen languages into one button.
+- Keep site navigation on a single row.
+- Improve mobile language switching with a dropdown.
+- Style the switcher to match a Bootstrap theme.
+- Place multiple switcher blocks in different regions.
+- Show a separate switcher per language type.
+- Add a switcher to a non-Bootstrap theme via the CDN fallback.
+- Display regional language variants compactly.
+- Reduce header clutter from many language links.
+- Highlight the current language with an active class.
+- Configure the switcher entirely per block instance.
+- Support an institutional or multi-market multilingual site.
+- Give an agency-built Bootstrap site a themed language switcher.

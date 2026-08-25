@@ -1,27 +1,34 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Easy Social adds social sharing widgets — Facebook, LinkedIn, Pinterest, X/Twitter and email — as a configurable set placed on content.
+Easy Social adds a configurable set of social share buttons — Twitter/X, Facebook, LinkedIn, Pinterest and a plain email link — that you place on your content.
 
 ---
 
-Share buttons are a standing request and a standing problem. The request is straightforward: give readers a one-click way to post an article. The problem is that the official widgets from each network are **third-party scripts that track visitors on load**, before anyone has clicked anything, which under GDPR makes them a consent-gated technology rather than a decoration — a share button set that loads unconditionally is a common finding in privacy audits. This module provides per-network settings forms, each behind the `administer easy_social` permission (correctly marked `restrict access: TRUE`), and an example submodule; version is **8.x-3.2** on `^9 || ^10 || ^11`. Two practical notes. The **Twitter** naming throughout predates the rebrand to X and the associated widget changes, so verify that integration still behaves. And the privacy-respecting alternative is worth knowing: plain `https://www.facebook.com/sharer/sharer.php?u=…`-style links load no third-party code at all, work without JavaScript, and cost nothing but the share-count display — which is why several sites replace widget sets with link sets outright, or gate the widgets behind the consent manager.
+Install the module the usual way (`composer require drupal/easy_social` then enable **Easy Social**; it depends on nothing and supports Drupal `^9 || ^10 || ^11`, current release **8.x-3.2**). Grant the **Administer Easy Social** permission (`administer easy_social`) to the roles that should configure it — it is deliberately restricted. Configuration lives at **Administration → Configuration → Web services → Easy Social** (`/admin/config/services/easy-social`): the main tab picks which networks are globally enabled and whether their JavaScript loads asynchronously, and one tab per network (Twitter, Facebook, LinkedIn, Pinterest, Email) sets that network's options — for example Twitter `via`/`hashtags`/button size, Facebook layout and colour scheme, the LinkedIn counter, the Pinterest description, and the Email button's label, subject and body. To make the buttons appear you either place the **"Easy Social"** block in a region through Block Layout, or turn on the **"Easy Social widgets"** field on a content type's **Manage display** tab (available for content, comments, files, taxonomy terms and users). The same enabled-widgets set is used everywhere it is shown. Each official network button loads that network's own third-party script in the visitor's browser (`platform.twitter.com`, `connect.facebook.net`, `platform.linkedin.com`, `assets.pinterest.com`); the Email button is a pure `mailto:` link with no external code. Developers can add their own buttons with `hook_easy_social_widget()` (plus a matching `easy_social_<name>` theme hook and template) and adjust the entity types the display field attaches to with `hook_easy_social_supported_entity_alter()`; the bundled **Easy Social Example** submodule shows the full pattern.
 
 ---
 
-- Add share buttons to articles.
-- Let readers post to LinkedIn.
-- Add a Pinterest save button.
-- Share a page by email.
-- Configure which networks appear.
-- Place sharing widgets per content type.
-- Add sharing to a blog.
-- Increase article reach.
-- Configure widget appearance.
-- Add sharing to a news site.
-- Gate share widgets behind consent.
-- Provide sharing on mobile.
-- Support a marketing campaign.
-- Add sharing to a product page.
-- Show sharing in a specific view mode.
-- Control sharing per node.
-- Standardise sharing across a site.
-- Replace hand-coded share links.
+- Add social share buttons to articles and blog posts.
+- Let readers post a page to Facebook.
+- Let readers share to LinkedIn.
+- Add a Pinterest "Pin it" button to image-heavy content.
+- Offer a Tweet / share-to-X button.
+- Add a "share by email" link that opens the visitor's mail client.
+- Choose exactly which networks appear site-wide.
+- Set the Twitter attribution (`via`) and default hashtags.
+- Configure the Facebook button layout, width and colour scheme.
+- Configure the LinkedIn share counter position.
+- Preset a Pinterest description for pins.
+- Customise the email button label, subject line and body text.
+- Place the share buttons in a sidebar or footer region via a block.
+- Show share buttons automatically on every node of a content type.
+- Enable share buttons on comments, taxonomy terms, files or user profiles.
+- Restrict who can change the sharing configuration to specific roles.
+- Load the widget JavaScript asynchronously for performance.
+- Standardise one share-button set across the whole site.
+- Replace hand-coded, per-theme share markup with managed configuration.
+- Add sharing to a news, marketing or campaign site.
+- Support sharing on mobile as well as desktop.
+- Build a bespoke share button for a network not included by default.
+- Rename or remove a bundled widget from code.
+- Extend sharing to custom entity types.
+- Prototype a custom widget quickly from the Easy Social Example submodule.

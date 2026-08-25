@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Entity Reference Media supplies a field type, widget and formatter for referencing media, extending what core's media reference field offers.
+Entity Reference Media adds a "Media Enhanced" reference field that stores a per-reference caption and video start/end time alongside each referenced media item, with a matching Media Library widget and a rendered-entity formatter.
 
 ---
 
-Core already has an entity reference field pointing at media entities, with the Media Library widget, so a module in this space exists to add something the core combination does not do — typically per-reference metadata such as a display override, an alternative caption, or a link target stored alongside the reference rather than on the media entity itself. That distinction matters: data belonging to the *relationship* between a node and a media item (how this article crops this image, what caption it uses here) does not belong on the media entity, which is shared across all its uses. The module depends on core `media` and `media_library` and spans `^8.8` through `^11`. The release is **1.0.0-rc7**, a release candidate — long-lived rc numbering usually means a stable API in practice, but it is not a stable release. Before adopting it, confirm what its field type stores beyond the target ID, because if the answer is "nothing extra" then core's own media reference field plus the Media Library widget covers the case with no contrib dependency, and a custom field type is a migration cost later.
+Install it like any contrib module (it needs core **Media** and **Media Library**), then add a field of type **Media Enhanced** to a content type or other fieldable entity — the field always targets media entities and can hold multiple items. In the field's settings, choose which media types (bundles) the field targets and tick, per bundle, whether to enable the **Caption** and the **Start/End time** extras. On the *Manage form display* tab set the widget to **Media library**: editors pick items in the usual media-library modal, and for each selected item they get a "Show default caption text" checkbox (with a custom-caption textarea when unchecked) and a "Use default video start/end time" checkbox (with start/end number inputs when unchecked). On *Manage display* set the formatter to **Rendered entity** and, per media bundle, map the caption / start / end onto a real text or number field that exists on that media type; at render time the formatter temporarily writes the per-reference values onto those media fields (in memory, never saved) before rendering the media in the chosen view mode. The value of this over a plain core media reference is that the caption and timings belong to *this* reference, so the same image or video can carry different text or a different clip range everywhere it is reused. The current release is **1.0.0-rc7**, a release candidate, and if you need the field to work with widgets or formatters other than the two it ships you would have to patch or alter those (e.g. `hook_field_formatter_info_alter`).
 
 ---
 
-- Reference a media item from a node.
-- Store per-reference media metadata.
-- Override a media display per use.
-- Add a caption specific to one use.
-- Pick media through the media library.
-- Reference an image with extra settings.
-- Attach a link target to a media reference.
-- Build a media-heavy content type.
-- Reference a video with a poster override.
-- Keep relationship data off the media entity.
-- Support an editorial media workflow.
-- Select multiple media items.
-- Format a media reference consistently.
-- Reference documents from a page.
-- Support a gallery field.
-- Add per-use alt text.
-- Extend core's media reference field.
-- Show media in a custom view mode.
+- Reference one or more media items from a node or other entity.
+- Add a caption that is specific to one use of a media item.
+- Show a different caption for the same image on different pages.
+- Store per-reference metadata without editing the shared media entity.
+- Set a start time for a referenced video, per reference.
+- Set an end time (clip range) for a referenced video, per reference.
+- Reuse one video with a different start/end in each place.
+- Fall back to the media item's own caption with a single checkbox.
+- Fall back to the media item's own start/end time with a checkbox.
+- Pick media through the standard Media Library modal.
+- Select multiple media items in one field.
+- Override a chosen text field on the media entity with the custom caption.
+- Override chosen fields on the media entity with the video start/end.
+- Render referenced media in a configurable view mode.
+- Enable the caption UI only for specific media bundles.
+- Enable the start/end UI only for specific media bundles (e.g. video).
+- Build an image gallery field with per-image captions.
+- Build a video field with per-placement clip trimming.
+- Keep relationship-specific data off reusable media assets.
+- Extend core's media reference field with editorial extras.

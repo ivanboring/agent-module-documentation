@@ -9,7 +9,7 @@
   "dependent_modules": [
     "drupal:node"
   ],
-  "configure": null,
+  "configure": "confirm_unpublish.settings",
   "core_version_requirement": "^10.2 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -19,17 +19,17 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience",
-    "Workflow"
+    "Automation"
   ],
   "subcategories": [
-    "Editorial safeguards",
-    "Publishing workflow"
+    "Unsaved changes protection",
+    "Content scheduling / publishing"
   ],
   "keywords": [
     "unpublish",
@@ -37,7 +37,8 @@
     "modal",
     "node",
     "safeguard",
-    "editorial"
+    "editorial",
+    "logging"
   ],
   "project_description": "Confirm Unpublish adds a confirmation dialog when unpublishing nodes to prevent accidental content removal. Site administrators can optionally enable logging to the database log (watchdog) when a user accepts the confirmation prompt.\n\n By default, the confirmation dialog is shown for all content types. However, administrators can selectively exclude specific content types from this behavior through the module’s configuration form.\n\n Back to top \n\n Requirements \n This module requires no modules outside of supported versions of Drupal core.\n\n Back to top \n\n Installation \n \n Install as you would normally install a contributed Drupal module. For further information, see Installing Drupal Modules .\n\n Back to top \n\n Configuration \n The configuration form is located at:\n\n /admin/config/content/confirm-unpublish From here you can:\n\n \n Customize the confirmation message displayed when unpublishing a node. \n Enable or disable logging to the Recent Log Messages report. \n Exclude specific content types from the confirmation behavior. \n \n \n When enabled, the confirmation dialog appears only for content types\n\n not excluded in the configuration. All types are included by default.\n\n \n If logging is enabled, a message is recorded in the database log\n\n ( /admin/reports/dblog ) each time a user accepts the unpublish confirmation.\n\n Back to top \n\n Troubleshooting & FAQ \n Q: The dialog isn’t showing up for a content type. \n\nA: Make sure the content type is not excluded in the module’s configuration settings.\n\n Q: Does this module actually prevent unpublishing? \n\nA: No. It adds a confirmation dialog to reduce mistakes, but users can still proceed to unpublish after confirming.\n\n Q: What gets logged when logging is enabled? \n\nA: The log includes the user name and node path for each confirmed unpublish event.\n\n Back to top",
   "maintenance_status": "Actively maintained",

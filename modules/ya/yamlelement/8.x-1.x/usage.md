@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Yaml Form Element provides a reusable YAML form element — a textarea that parses and validates YAML — plus a field widget and formatter built on it.
+Yaml Form Element provides a reusable `#type => 'yaml'` Form API element — a textarea that parses and validates YAML on submit — plus a field widget and formatter that let a core `map` field be edited and displayed as YAML.
 
 ---
 
-Drupal itself is full of YAML, and any module offering structured-but-open configuration eventually needs a place for an administrator to type some. Doing it with a plain textarea means invalid YAML reaches the save handler and the parse error surfaces somewhere unhelpful; doing it properly means writing a `#element_validate` that runs the parser and reports errors on the element. This module packages that once: `#type => 'yamlelement'` in any form, with parsing and validation handled, and a matching field widget and formatter for storing YAML in a field. Version **8.x-1.5** on core `^8.8` through `^11`. One thing to be clear about, since it is the mistake this element makes easy: **valid YAML is not the same as acceptable data**. The element checks syntax; it cannot check that the keys are the ones your code expects or that the values are within range, so consuming code still needs its own validation and must not assume the parsed structure has any particular shape. And exposing a YAML element to anyone less than fully trusted deserves a moment's thought about what the parsed structure is then used *for* — a YAML blob that becomes plugin configuration, a service argument, or a render array is a much larger surface than one that becomes display text.
+This is a developer-facing module with no UI of its own: install it with `composer require drupal/yamlelement` and enable it (`drush en yamlelement`), and there is no settings page to visit. In a custom form you add a field with `'#type' => 'yaml'`; you set `#default_value` to a **PHP array/structure** (the element dumps it to YAML text for the textarea), and after a valid submit `$form_state->getValue()` gives you back the **parsed PHP structure** rather than a string — so your code always works with native values and never has to call the parser itself. Invalid YAML is caught by the element's own `#element_validate`, which reports the error `"The Yaml in <field> is not valid."` on the element instead of letting a parse error surface later in the save handler. The same element powers a field **widget** and **formatter** (both named `yamlelement`) for the core `map` field type: attach the widget on *Manage form display* to edit the stored map as YAML, and the formatter on *Manage display* to render it inside a `<pre>` block. Because `map` fields are not offered in the *Add field* UI, this is most useful for `map` fields defined in code. It runs on Drupal `^8.8 || ^9 || ^10 || ^11` (release **8.x-1.5**) and depends only on core. One thing to keep in mind: the element validates YAML **syntax** only — it does not check that the keys and values are the ones your code expects, so consuming code still needs to validate the parsed structure it receives.
 
 ---
 
-- Add a YAML field to a settings form.
-- Validate YAML before saving.
-- Store structured data in a field.
-- Give administrators a YAML editor.
-- Report YAML syntax errors properly.
-- Reuse one YAML element across forms.
-- Store configuration as YAML content.
-- Edit a mapping without a custom form.
-- Provide flexible per-node settings.
-- Show YAML in a formatted output.
-- Prototype a structured field quickly.
-- Store a list of key-value pairs.
-- Configure a module with free-form YAML.
-- Avoid writing a parser callback.
-- Edit chart configuration as YAML.
-- Store options for a custom widget.
-- Provide developer-facing settings.
-- Validate indentation before save.
+- Add a YAML textarea to a settings or configuration form.
+- Validate YAML syntax before a form is saved.
+- Report YAML parse errors on the element, not in the save handler.
+- Reuse one YAML element across many custom forms.
+- Edit a stored `map` field as YAML in the entity form.
+- Display a `map` field's contents as formatted YAML.
+- Store structured, free-form data without writing a custom widget.
+- Let developers hand-edit a nested configuration structure.
+- Provide per-entity settings as an editable YAML blob.
+- Avoid re-inventing a YAML parse/validate callback in each module.
+- Get a parsed PHP array straight from `$form_state`.
+- Seed the element from a PHP array via `#default_value`.
+- Edit a list of key/value pairs quickly.
+- Prototype a structured field before building a real widget.
+- Store options for a custom render/plugin as YAML.
+- Give admins a code-editor-style textarea for structured input.
+- Round-trip a nested data structure between form and storage.
+- Render map-field data read-only inside a `<pre>` block.
+- Keep developer-only configuration out of the main UI.
+- Attach the widget/formatter to a code-defined `map` base field.

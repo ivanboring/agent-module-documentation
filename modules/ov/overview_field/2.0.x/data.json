@@ -1,7 +1,7 @@
 {
   "name": "Overview Field",
   "data_name": "overview_field",
-  "description": "Creates an overview field.",
+  "description": "Field type whose select options are supplied by code via an alter hook.",
   "version": "2.0.x",
   "package": "Field types",
   "composer_namespace": "drupal/overview_field",
@@ -23,15 +23,15 @@
   ],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools",
     "Content display"
   ],
   "subcategories": [
-    "Field types",
-    "Extension points"
+    "Fields",
+    "Hook / event system"
   ],
   "keywords": [
     "field",

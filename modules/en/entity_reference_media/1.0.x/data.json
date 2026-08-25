@@ -22,23 +22,25 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Media management",
+    "Media",
     "Content editing experience"
   ],
   "subcategories": [
-    "Field types",
-    "Media library"
+    "Entity selection",
+    "Fields",
+    "Field formatters"
   ],
   "keywords": [
     "media",
     "entity reference",
-    "field",
-    "widget",
-    "formatter",
-    "media library"
+    "field type",
+    "media library widget",
+    "rendered entity formatter",
+    "caption",
+    "video start end"
   ],
   "project_description": "Similar to Entity Reference Module but specially designed for referencing Media items.\n\n Back to top \n\n Problems we solve: \n Modify/Add a Caption to a Media item and change it OUTSIDE of the Media item and not inside of it. Also supports video Start-End fields. So you can use the Media item multiple times with different captions / start-end video values.\n\n Back to top \n\n It also contains: \n Optimized `Media Library` Widget and optimized `Entity Reference` Formatter, so the new `entity_reference_media` works nicely with them.\n\n There is a bigger Drupal Core issue, which this module tries to bypass and make it also a more flexible solution.\n\n \n In case you want to use `entity_reference_media` with other Widgets/Formatters rather than `Media Library Widget` and `EntityReferenceFormatter` - the patch for other modules would be needed. Or `hook_field_formatter_info_alter` (or similar).\n\n Back to top",
   "maintenance_status": "Actively maintained",

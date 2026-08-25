@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Views Attachments as Tabs renders a view's attachment displays as tabs on the parent display, turning several attached views into a tabbed interface without custom templates.
+Views Attachments as Tabs renders a view's main display and its attachment displays as a tabbed interface instead of a stacked main-view-plus-attachments layout, without any custom templates.
 
 ---
 
-Views attachments already let one display hang off another — a "related content" list beneath a main listing, a summary above a table. What they do not do is give you a way to present several of them as alternatives rather than as a stack, which is what a tabbed panel is. Doing that by hand means a preprocess function, a template and some JavaScript per site; this module makes it a display setting, with theme-specific submodules for **Bootstrap** and for core's **Olivero** so the markup matches the theme's own tab component rather than looking imported. Version is **1.1.2** on `^9 || ^10 || ^11`, depending on core `views`. The accessibility point applies to every tab implementation and is the thing to check: a correct tab set needs `role="tablist"`, `role="tab"` and `role="tabpanel"`, `aria-selected`, arrow-key navigation between tabs, and only the active panel exposed — markup that merely looks like tabs is a set of links to hidden divs, which reads badly in a screen reader. Also worth remembering that content in an inactive tab is still in the DOM: it is rendered, it costs query time, and it is findable by in-page search.
+Views attachments already let one display hang off another — a "related content" list beneath a main listing, a summary above a table — but they stack; they give you no way to present several of them as switchable alternatives, which is what a tabbed panel is. This module adds a Views **display extender** that puts an *Enable / Tab title / Tab weight* option group on any display that uses attachments and on each attachment, then supplies a dedicated theme hook and preprocess that gather the main view plus every enabled attachment into ordered tab buttons (`role="tab"`) and panels (`role="tabpanel"`), sorted by weight. Install it, then enable the **"Views attachment tabs"** display extender under **Structure → Views → Settings → Advanced** (this is a manual step — the module does not tick it for you), open a view's **Attachment tabs** group to enable and title the main tab, and click **Attach as tab** on each attachment to add it. The module ships **no CSS or JS itself**, so pick a theme layer: enable `views_attachment_tabs_bootstrap` for Bootstrap 4/5 themes, enable `views_attachment_tabs_olivero` for core's **Olivero** (adds the interactive JS and a mobile trigger), or implement `hook_preprocess_views_view_attachment_tabs()` to add your theme's own tab classes and behavior. An optional **tokenize** setting lets a tab title use Views field/argument tokens from the first row. Accessibility is the thing to verify with any tab UI — a correct set needs `aria-selected`, arrow-key navigation between tabs, and only the active panel exposed — and note that every panel is rendered into the DOM up front, so inactive-tab content still costs query time and is findable by in-page search. Requires Drupal `^9 || ^10 || ^11` and core Views only.
 
 ---
 
-- Show related views as tabs.
-- Present alternative listings compactly.
-- Turn attachments into a tabbed panel.
-- Match Bootstrap's tab component.
-- Match Olivero's tab styling.
-- Group several views on one page.
-- Reduce vertical page length.
-- Show categories as tabs.
-- Present a dashboard's sections.
-- Avoid custom tab templates.
-- Show a summary and a detail view.
-- Organise a long listing page.
-- Present filtered variants side by side.
-- Build a tabbed report page.
-- Show archive years as tabs.
-- Keep related content on one page.
-- Support a themed tab interface.
-- Reduce navigation between pages.
+- Present a view and its attachments as switchable tabs.
+- Show related views as tabs on one page.
+- Turn a summary display and a detail display into two tabs.
+- Group several attached listings into a tabbed panel.
+- Reduce vertical page length on a listing page.
+- Show taxonomy categories as separate tabs.
+- Build a tabbed report or dashboard from one view.
+- Present filtered variants of a list side by side.
+- Show archive years or months as tabs.
+- Keep related content together without extra pages.
+- Match a Bootstrap theme's native tab component.
+- Match Olivero's primary-tabs styling and mobile behavior.
+- Avoid writing a custom tab template and JavaScript per site.
+- Order tabs deterministically with a per-tab weight.
+- Use a token-driven tab title from the first result row.
+- Add accessible `role="tablist"`/`tab`/`tabpanel` markup to a view.
+- Provide theme-specific tab markup via a preprocess hook.
+- Reduce navigation between separate listing pages.
+- Organize a long page into compact tabbed sections.
+- Show a block view's attachments as tabs inside a region.
