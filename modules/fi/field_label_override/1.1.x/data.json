@@ -6,7 +6,9 @@
   "package": "Fields",
   "composer_namespace": "drupal/field_label_override",
   "composer_requirements": {},
-  "dependent_modules": [],
+  "dependent_modules": [
+    "drupal:field"
+  ],
   "configure": null,
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
@@ -22,12 +24,12 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Content display",
-    "Content editing experience"
+    "Content editing experience",
+    "Content display"
   ],
   "subcategories": [
-    "Display settings",
-    "Field formatters"
+    "Field label customization",
+    "Display mode governance"
   ],
   "keywords": [
     "field label",

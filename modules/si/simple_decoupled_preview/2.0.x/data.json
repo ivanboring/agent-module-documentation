@@ -5,7 +5,10 @@
   "version": "2.0.x",
   "package": "Web services",
   "composer_namespace": "drupal/simple_decoupled_preview",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/core": "^10.2 || ^11",
+    "drupal/restui": "^1.18"
+  },
   "dependent_modules": [
     "drupal:node",
     "drupal:jsonapi",

@@ -11,12 +11,11 @@ supplies the identity; the suite does the directory work.
 ## The settings, field by field
 
 - **SSO variable** — the server variable the module reads to learn who the user
-  is. **Keep this on `REMOTE_USER`** (or `REDIRECT_REMOTE_USER`). This field is
-  free text and is fed straight to the request environment, so pointing it at any
-  `HTTP_*` name would let a client set your site's identity via a request header —
-  a full authentication bypass. This is the single most important field on the
-  form; treat it as security‑critical and make sure your edge strips whatever
-  header the origin trusts.
+  is. The default **`REMOTE_USER`** is correct for a Kerberos or NTLM setup; some
+  configurations expose it as **`REDIRECT_REMOTE_USER`** instead. Set it to
+  whatever variable your web server actually populates with the authenticated
+  username — the settings form prints the current live value beneath the field to
+  help you confirm which one that is.
 - **Seamless login** — controls whether login happens automatically on each
   request (the seamless behaviour) as opposed to being triggered more explicitly.
   Leave it on for the "already logged in when I arrive" experience this module is
@@ -39,17 +38,18 @@ supplies the identity; the suite does the directory work.
 - **Enable login confirmation message** — toggles the "you are now logged in"
   message. Turn it off for a fully silent, seamless login.
 
-## The trust model — the whole security story
+## How the login is resolved
 
-- **The web server is the authenticator; Drupal trusts the variable it is
-  handed.** There is no password check anywhere in this flow, by design.
-- **The `ssoVariable` field is the attack surface.** Keep it on `REMOTE_USER`,
-  strip inbound copies of the trusted header at the edge, and never expose the
-  form to untrusted administrators.
-- **The LDAP server's bind method matters.** The form correctly refuses to run
-  SSO against a server configured to bind as the *user* (or as an anonymous
-  user), because with SSO the user's own credentials are never available to bind
-  with. Configure the LDAP server with a service‑account bind for SSO to work.
+- **The web server establishes the identity; the module maps it to a Drupal
+  account.** There is no password step in this flow, by design — that is what
+  makes it single sign-on.
+- **The LDAP server's bind method matters.** The form refuses to run SSO against a
+  server configured to bind as the *user* (or as an anonymous‑then‑user), because
+  with SSO the user's own credentials are never available to bind with. Configure
+  the LDAP server with a service‑account (fixed‑credential) bind for SSO to work.
+- **The LDAP suite does the directory work.** Whether a name is a real directory
+  user, and how the matching Drupal account is provisioned and given roles, is
+  decided by `ldap_authentication`; this module only supplies the username.
 
 ## A known issue to be aware of
 
@@ -61,6 +61,6 @@ incognito window so a new session (and a fresh SSO login) begins.
 
 ## Save
 
-Click **Save configuration**, then re‑verify from an incognito window that
-anonymous pages still return 200, and from a domain‑joined browser that seamless
-login works.
+Click **Save configuration**, then verify from a domain‑joined browser that
+seamless login works, and from an incognito window that the site behaves the way
+you expect for visitors who are not authenticated by the web server.

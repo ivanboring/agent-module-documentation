@@ -1,31 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-LDAP SSO Auth logs users in from an SSO identity the web server has already established — typically Kerberos or NTLM setting `REMOTE_USER` — and resolves that name against the servers configured by the LDAP module.
+LDAP SSO Auth logs users into Drupal from a single sign-on identity the web server has already established — Kerberos, NTLM or an SSO proxy setting a `$_SERVER` variable such as `REMOTE_USER` — and resolves that username against the servers configured by the LDAP module.
 
 ---
 
-The premise is that authentication happened before Drupal saw the request: Apache negotiated Kerberos, or an SSO proxy set a header, and the resulting username is sitting in `$_SERVER`. This module reads that variable, optionally splits `user@realm`, hands the name to `ldap_authentication`'s SSO login validator and calls `user_login_finalize()` if the LDAP server recognises it. No password is ever involved, which is the point and also the whole risk surface: the module's security rests entirely on the variable being unforgeable.
-
-**Do not deploy 8.x-2.4 without reading this.** On a stock nginx/php-fpm stack — which is what DDEV, Lando and most containerised hosting use — `fastcgi_params` sets `REMOTE_USER` to the empty string when no HTTP authentication took place. The module tests the variable with `!== NULL`, and `'' !== NULL`, so its authentication provider `applies()` to every request. The service tag omits `global: TRUE`, so core's `AuthenticationSubscriber::onKernelRequestFilterProvider()` then throws `AccessDeniedHttpException('The used authentication method is not allowed on this route.')`. **Verified on a clean install: enabling the module returns 403 to every anonymous request on every route; uninstalling it returns 200.** The failure is invisible to the person configuring it, because `applies()` returns FALSE once a session has a uid, and because `/user/login`, `/user/logout` and `/user/password` are on a hard-coded exclusion list — the login page keeps working while the rest of the site 403s for anonymous visitors and crawlers.
-
-The second thing to know is that `ssoVariable` is an unvalidated free-text field. Setting it to any `HTTP_*` name turns an attacker-supplied request header into the site's identity source; verified, an anonymous request carrying the configured header reached LDAP validation under the attacker's chosen username. Keep it on `REMOTE_USER` or `REDIRECT_REMOTE_USER`, and make sure the edge strips whatever header the origin trusts.
+Install it with `composer require drupal/ldap` and enable `ldap_sso_auth` alongside its dependencies `ldap_servers` and `ldap_authentication` (`drush en ldap_sso_auth`); it requires Drupal `^9 || ^10 || ^11`. The premise is that authentication happens **before** Drupal sees the request: your web server negotiates Kerberos (`mod_auth_kerb`), NTLM (`mod_auth_sspi`) or an upstream SSO proxy, and the resulting username lands in a server variable. Configure the module at **Administration › Configuration › People › LDAP servers › SSO Auth** (`/admin/config/people/ldap/sso-auth`, which needs the *administer site configuration* permission). The main setting is **Server variable containing the user** (`ssoVariable`, default `REMOTE_USER`); the form conveniently prints the live value your web server is currently sending so you can confirm what to point it at. Turn on **Split user name and realm** if identities arrive as `user@realm` (on by default, right for `mod_auth_kerb`), and **Strip REMOTE_USER of domain name** if you also want manual logins without the realm to reach the same account. Use **Excluded Paths** and **Excluded Hosts** to skip SSO on specific pages or hostnames — the module already skips `/user/login`, `/user/logout`, `/user/password`, `/user/login/sso` and password-reset links. Under **Login customization** you can redirect users to an internal path on logout (`redirectOnLogout` / `logoutRedirectPath`, validated as an internal Drupal path). At runtime a Drupal authentication provider reads the variable, optionally splits the realm and strips the domain, hands the name to `ldap_authentication`'s SSO login validator and finalises the Drupal login when the LDAP server recognises it — no password is exchanged with Drupal. Because there is no password available, the settings form will refuse to enable SSO against an LDAP server whose bind method is per-user or anonymous-then-user. The project recommends **not** enabling the core Internal Page Cache module; the module ships a page-cache policy that bypasses the cache when an SSO identity is present.
 
 ---
 
-- Log users in from Kerberos negotiation done by Apache.
-- Accept an NTLM-authenticated Windows desktop identity.
-- Map an SSO username to a Drupal account via LDAP.
-- Strip a `@realm` suffix before the LDAP lookup.
-- Strip a domain name from the remote username.
-- Exclude specific paths from SSO handling.
-- Exclude specific hostnames from SSO handling.
-- Redirect users somewhere specific after logout.
-- Suppress the "you are now logged in" message.
-- Reuse an existing corporate LDAP directory for site access.
-- Avoid asking intranet users for a password at all.
-- Combine SSO with the LDAP module's user provisioning.
-- Diagnose which server variable the web server is actually setting.
-- Confirm an LDAP server's bind method is compatible with SSO.
-- Keep password reset working alongside SSO.
-- Decide whether an SSO deployment needs a header or a real Kerberos negotiation.
-- Audit an inherited site that already has this module enabled.
-- Understand why anonymous users are seeing 403 on an nginx host.
+- Log intranet users into Drupal from an Apache/Kerberos negotiation with no login prompt.
+- Accept an NTLM-authenticated Windows desktop identity via `mod_auth_sspi`.
+- Sign users in from an upstream SSO reverse proxy that sets `REMOTE_USER`.
+- Map an SSO username onto a Drupal account through the LDAP module's servers.
+- Point the module at `REDIRECT_REMOTE_USER` instead of `REMOTE_USER` when your web server uses it.
+- Diagnose which server variable the web server is actually sending, from the settings form.
+- Split a `user@realm` identity before the LDAP lookup.
+- Strip a `@domain` suffix or `domain\` prefix from the remote username.
+- Reconcile SSO logins with manual LDAP logins so they hit one account.
+- Exclude specific paths (for example maintenance or health-check URLs) from SSO.
+- Exclude specific hostnames from SSO on a multi-hostname site.
+- Keep the core login, logout, password and password-reset pages working alongside SSO.
+- Redirect users to a chosen internal path after they log out.
+- Reuse an existing corporate LDAP directory for site access without storing passwords in Drupal.
+- Combine SSO with the LDAP module's user provisioning and role mapping.
+- Confirm an LDAP server's bind method is compatible with password-less SSO before enabling.
+- Provision Drupal accounts on first SSO visit via `ldap_authentication`'s login validator.
+- Run SSO on a stack where authentication is handled entirely at the web-server layer.
+- Audit an inherited site that already has this module enabled and see how identities are resolved.
+- Decide whether a deployment needs a real Kerberos/NTLM negotiation or an SSO proxy.

@@ -24,5 +24,9 @@ Practical fit: pair it with a codegen step in CI, gate merges on the schema diff
 - Document the API surface for reviewers.
 - Answer what the schema looked like at a past release.
 - Export several servers by id in one command.
-- Choose the output type with a command option.
+- Choose the output type (`graphqls` or `json`) with the `--type` command option.
+- View a server's schema read-only in the admin UI before downloading.
+- Configure per-server output file paths in `settings.php`.
+- Fall back to `private://<server>.graphqls` / `.json` when no path is set.
+- Skip a server on config export with `skip_config_export`.
 - Keep schema artefacts out of manual copy-and-paste.

@@ -1,11 +1,14 @@
 {
   "name": "Extra Paragraph Types (EPT): Timeline",
   "data_name": "ept_timeline",
-  "description": "Adds a Timeline paragraph type with several presentation styles.",
+  "description": "Adds a Timeline paragraph type that renders reorderable dated events as a vertical timeline.",
   "version": "2.0.x",
   "package": "Extra Paragraph Types",
   "composer_namespace": "drupal/ept_timeline",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ept_core": "^2.0",
+    "drupal/paragraphs": "^1.0"
+  },
   "dependent_modules": [
     "ept_core:ept_core",
     "paragraphs:paragraphs"
@@ -22,7 +25,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience",
@@ -30,7 +33,8 @@
   ],
   "subcategories": [
     "Structured content / page building",
-    "Manual content ordering"
+    "Manual content ordering",
+    "Media embedding"
   ],
   "keywords": [
     "paragraphs",

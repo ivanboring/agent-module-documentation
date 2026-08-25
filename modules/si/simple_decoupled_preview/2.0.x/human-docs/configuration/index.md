@@ -12,10 +12,10 @@ reviewing preview activity.
 ## The settings
 
 - **Preview callback URL** (`preview_callback_url`) — the route on your decoupled
-  front end that editors are sent to when they click Preview. The front end uses
-  this together with the payload to request the draft through JSON:API.
-  **Security‑critical:** because the payload concerns unpublished content, this
-  destination must not be publicly guessable or unauthenticated.
+  front end that editors are sent to when they click Preview. At render time the
+  module appends `/{bundle}/{uuid}/{langcode}/{uid}` and uses it as the iframe
+  source; the front end uses those path parts to request the draft through the
+  preview REST endpoint.
 - **Bundles** (`bundles`) — the content types for which preview is supported. Tick
   the bundles your front end can render as previews.
 - **Includes** (`includes`) — the JSON:API relationships (referenced entities) to
@@ -44,8 +44,11 @@ data, when an editor reports "preview is broken" you can see exactly what was
 requested and when. Old entries expire and are removed automatically per the
 settings above.
 
-## Before go‑live
+## Enable the preview REST resource
 
-Review the access configuration on the JSON:API preview resource itself — do not
-assume it. The preview payload exposes **unpublished** content, so both the callback
-URL and the JSON:API resource need to be protected against unauthenticated access.
+For the front end to fetch preview JSON, enable the **Simple Decoupled Preview JSON**
+REST resource under **Configuration → Web services → REST**: turn on the **GET**
+method, the **json** format, and the authentication provider(s) your front end uses.
+Then, under **People → Permissions**, grant **Access GET on Simple Decoupled Preview
+JSON resource** to the role your front end authenticates as. If the front end is on a
+different origin, enable CORS in your `services.yml`.

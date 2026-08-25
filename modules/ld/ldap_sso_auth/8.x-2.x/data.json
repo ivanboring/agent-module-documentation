@@ -5,7 +5,9 @@
   "version": "8.x-2.x",
   "package": "Lightweight Directory Access Protocol",
   "composer_namespace": "drupal/ldap_sso_auth",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ldap": "^4.3"
+  },
   "dependent_modules": [
     "ldap:ldap_servers",
     "ldap:ldap_authentication"

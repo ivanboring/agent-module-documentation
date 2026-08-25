@@ -25,13 +25,13 @@ to one day and automatic deletion on by default, so the table does not grow with
 bound. Permissions are cleanly separated between administering the preview
 configuration and reading the logs.
 
-**One thing to get right at deployment:** the preview payload contains
-**unpublished** content. Whatever the callback URL points at must not be publicly
-guessable or unauthenticated, and the JSON:API preview resource's access should be
-reviewed deliberately rather than assumed. Also note the module has a hard
-dependency on **RESTUI** (`restui`) — a UI module for REST resources — which is
-unusual to see in a runtime dependency list and means enabling this brings the REST
-resource UI along with it.
+To serve previews to the front end you enable the **Simple Decoupled Preview JSON**
+REST resource (GET, `json` format, and the authentication provider your front end
+uses) and grant its access permission to the front end's role — the
+[Configuration](configuration/index.md) guide walks through this. Note the module
+has a hard dependency on **RESTUI** (`restui`) — a UI module for REST resources —
+which is unusual to see in a runtime dependency list and means enabling this brings
+the REST resource UI along with it.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

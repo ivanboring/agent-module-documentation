@@ -53,8 +53,9 @@ Keep these limited to trusted editorial and administrative roles.
 
 1. Configure the preview settings — callback URL, covered bundles, includes, and log
    expiry — see [Configuration](../configuration/index.md).
-2. Review access on the JSON:API preview resource **before go‑live**, since the
-   preview payload carries unpublished content.
+2. Enable the **Simple Decoupled Preview JSON** REST resource (GET, `json`, and your
+   authentication provider) in the REST UI, and grant its access permission to the
+   role your front end authenticates as.
 
 ## Verify it worked
 

@@ -1,31 +1,32 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Simple Decoupled Preview redirects the editor's Preview button to a decoupled front end, passing the unsaved node through JSON:API, and records every preview attempt as a `preview_log_entity`.
+Simple Decoupled Preview lets a headless front end render an editor's unsaved node preview, by serialising the draft to JSON:API, storing it, and exposing it through a REST endpoint and an iframe on Drupal's preview page.
 
 ---
 
-Preview is the hardest thing to keep working in a headless build. The editor is in Drupal, the rendering is somewhere else, and the content being previewed does not exist in any saved form the front end can fetch. This module's answer is to send the front end to a configured callback URL with enough context to request the draft through JSON:API, using the bundled `simple_decoupled_preview_jsonapi` submodule which exposes node previews on that API. Settings choose the callback URL, which bundles are covered, and which relationships to include in the payload.
-
-The logging half is what makes it operable. Every preview creates a `preview_log_entity` with its own list builder, views data and access control handler, so when an editor says "preview is broken" there is a record of what was requested and when. Log entities expire — `log_expiration` defaults to 86400 seconds and `delete_log_entities` defaults to true — so the table does not grow without bound.
-
-Permissions are properly separated: `administer simple decoupled preview` and `administer preview log entity entities` are both `restrict access: TRUE`, with distinct add/delete permissions for the log entities. Note the hard dependency on `restui` — a UI module for REST resources — which is unusual in a runtime dependency list and means enabling this brings the REST resource UI along with it.
-
-The main thing to get right at deployment is the trust boundary between Drupal and the front end. The preview payload contains unpublished content, so whatever the callback URL points at must not be publicly guessable or unauthenticated, and the JSON:API preview resource needs its access reviewed rather than assumed.
+Preview is the hard part of a decoupled build: the editor works in Drupal, the rendering happens elsewhere, and the draft being previewed is not saved anywhere the front end can fetch. Core's JSON:API can serialise a node preview, but only for the same authenticated user who created it (the draft lives in that user's tempstore), so a separately authenticated front end cannot read it. This module bridges the gap. When an editor clicks **Preview** on a configured content type, a submit handler serialises the in-memory node to JSON:API format via the bundled `simple_decoupled_preview_jsonapi` submodule and saves it as a `preview_log_entity` keyed by the node UUID, language and previewing user id. Drupal's preview page then shows a `decoupled_preview` view mode whose only output is an `<iframe>` pointing at your configured `preview_callback_url` with `/{bundle}/{uuid}/{langcode}/{uid}` appended; your front-end preview page loads in that frame and calls back to the REST endpoint `/api/preview/{uuid}?uid=…&langcode=…` to fetch the stored JSON and render it. On the settings form you choose the callback URL, which node bundles are previewable, and which JSON:API relationships (`includes`) to embed. Turning it on requires enabling the **Simple Decoupled Preview JSON** REST resource (GET, `json`, and your auth providers) in the REST UI provided by the `restui` dependency, granting the resource's access permission to the front end's role, and — per content type — enabling the Preview button and the **Decoupled Preview** view mode. A cron task deletes expired log entities (`log_expiration` defaults to one day, `delete_log_entities` defaults to true) so the table stays small, and every preview is recorded as a log entity with its own admin list, views data and access handler for troubleshooting. Core requirement is `^10.2 || ^11`, framework-agnostic (Gatsby, Next.js, or any front end that can consume the iframe and call the API).
 
 ---
 
-- Preview unsaved content in a decoupled front end.
-- Send an editor's Preview button to a Next.js preview route.
-- Expose node previews through JSON:API.
+- Preview an unsaved node in a decoupled front end.
+- Send an editor's Preview button to a Next.js or Gatsby preview route.
+- Serialise a draft node to JSON:API format for a headless renderer.
+- Fetch stored preview JSON from a front end via `/api/preview/{uuid}`.
 - Limit preview support to selected content types.
-- Include referenced entities in the preview payload.
-- Log every preview request for troubleshooting.
-- Expire preview log entries automatically.
+- Embed referenced entities in the preview payload with JSON:API includes.
+- Preview unsaved referenced (paragraph/media) entities alongside the node.
+- Preview a translation before it is published.
+- Render the preview inside an iframe on Drupal's preview page.
+- Point the preview iframe at a local dev URL or a production front end.
+- Consume the preview from any front-end framework, not just one.
+- Log every preview request as an entity for troubleshooting.
 - List and filter preview logs in a view.
-- Diagnose why a preview failed for an editor.
-- Keep preview configuration in exported config.
+- Diagnose why a preview failed for a specific editor.
+- Expire old preview log entities automatically on cron.
+- Keep the preview log table small on a busy editorial site.
+- Choose the JSON:API relationship depth returned per content type.
+- Reuse Drupal's authentication providers for the preview API.
 - Separate who may configure preview from who may read its logs.
-- Give a front-end team a stable preview contract.
-- Support draft mode in a static-generated site.
-- Preview a translation before publishing it.
-- Review access on the JSON:API preview resource before go-live.
-- Retire a bespoke preview integration.
+- Give a front-end team a stable, versioned preview contract.
+- Support draft mode in a statically generated site.
+- Replace a bespoke or Gatsby-only preview integration.
+- Keep preview configuration in exported config.
