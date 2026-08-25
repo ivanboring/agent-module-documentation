@@ -1,11 +1,14 @@
 {
   "name": "WOW JS",
   "data_name": "wowjs",
-  "description": "Integrates the WOW.js scroll-reveal library.",
+  "description": "Integrates the WOW.js library to reveal Animate.css animations as you scroll down a page.",
   "version": "1.1.x",
   "package": "Animate CSS",
   "composer_namespace": "drupal/wowjs",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/core": "^8.8 || ^9 || ^10 || ^11",
+    "drupal/animatecss": "^1.1"
+  },
   "dependent_modules": [
     "animatecss:animatecss"
   ],
@@ -16,7 +19,9 @@
   "project_url": "https://www.drupal.org/project/wowjs",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "WOW.js (matthieua/WOW) at /libraries/wow, or jsDelivr CDN fallback"
+  ],
   "suggests": {},
   "submodules": [
     "wowjs_ui"
@@ -26,11 +31,12 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
+    "Content display",
     "Theming"
   ],
   "subcategories": [
-    "Animation",
-    "JavaScript libraries"
+    "Scroll-driven animation",
+    "CSS animation library"
   ],
   "keywords": [
     "wow.js",

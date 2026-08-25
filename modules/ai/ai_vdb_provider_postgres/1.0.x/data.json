@@ -5,7 +5,10 @@
   "version": "1.0.x",
   "package": "AI Vector Database Providers (Experimental)",
   "composer_namespace": "drupal/ai_vdb_provider_postgres",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.1@beta",
+    "ext-pgsql": "*"
+  },
   "dependent_modules": [
     "ai:ai",
     "key:key"

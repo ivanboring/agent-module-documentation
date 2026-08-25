@@ -1,27 +1,30 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Paragraphs Collection provides behaviour plugins, style plugins and grid layouts for Paragraphs — and describes itself, in its own module description, as a collection of **EXPERIMENTS**.
+Paragraphs Collection adds reusable behavior plugins, styles and grid layouts to the Paragraphs module — and describes itself, in its own module info, as a collection of **EXPERIMENTS**.
 
 ---
 
-Paragraphs gives editors component-assembled pages and provides the mechanism rather than the components. Two directions have been taken from there: pre-built paragraph *types* like the EPT family, and pre-built *plugins* that change how any paragraph behaves. This module is the second — behaviour plugins such as a lockable state, style plugins that apply presentation classes, and grid layouts with a report at `/admin/reports/paragraphs_collection/layouts` listing what is available. It comes from the Thunder distribution's ecosystem and shows it: capable, opinionated and closely tied to the way Thunder builds pages. Version **8.x-1.0-alpha12** on `^10.2 || ^11` — an **alpha**, and the module's own capitalised "EXPERIMENTS" is doing deliberate work in that description. Take it at face value: plugins here may change shape between releases, and behaviour plugin settings are stored on the paragraph entities themselves, so a plugin that changes or disappears leaves data behind on content. It defines an `administer lockable paragraph` permission plus a `permission_callbacks` entry generating further permissions per plugin. The realistic assessment for a new project: read it for the ideas, adopt individual pieces knowingly, and do not build a client's page-building strategy on an alpha that names itself an experiment unless someone is prepared to own the churn.
+Install it with Composer (`composer require drupal/paragraphs_collection`) and enable it with `drush en paragraphs_collection`; it requires **Paragraphs** plus core **Image** and **Link**, and targets Drupal `^10.2 || ^11`. It does not add its own settings page — instead each behavior is switched on per paragraph type at `/admin/structure/paragraphs_type/<type>` under "Behavior plugins". The module ships four behaviors: **Style** (apply a pre-defined visual style — CSS classes, attributes, libraries and optional Twig template — to a paragraph), **Grid layout** (arrange a paragraph's referenced children into columns), **Lock editing** (prevent editing of a paragraph unless the user has the `administer lockable paragraph` permission), and **Visibility per language** (show or hide a paragraph based on the interface language). Styles, style groups and grid layouts are discovered from YAML files (`*.paragraphs.style.yml`, `*.paragraphs.style_group.yml`, `*.paragraphs.grid_layouts.yml`) that **any module or theme** can provide, so you extend the palette without code. Two read-only reports at `/admin/reports/paragraphs_collection/styles` and `/admin/reports/paragraphs_collection/layouts` (behind `administer paragraphs types`) list what is available; the styles report doubles as a form to globally enable/disable styles. Enabling the bundled **Demo** submodule (`paragraphs_collection_demo`) is the quickest way to see it working — it installs example paragraph types and content and adds Accordion, Anchor, Background-image and Slider (Slick) behaviors, pulling in `slick`, `block_field` and `jquery_ui_accordion`. Heed the README: this is an alpha with no guaranteed upgrade path before a beta, and behavior settings are stored on the paragraph entities, so treat it as experimental.
 
 ---
 
-- Add a lockable state to a paragraph.
-- Apply style classes to a component.
-- Use a grid layout for paragraphs.
-- Lock a section against editing.
-- Explore paragraph behaviour plugins.
-- See available grid layouts.
-- Add presentation options to any paragraph.
-- Study a Thunder-style approach.
-- Prototype component behaviours.
-- Add per-plugin permissions.
-- Arrange paragraphs in a grid.
-- Apply a style plugin to a type.
-- Learn the behaviour plugin API.
-- Restrict editing of a locked component.
-- Add layout options to paragraphs.
-- Evaluate paragraph plugin patterns.
-- Reuse a style across paragraph types.
-- Compare with pre-built paragraph types.
+- Apply a pre-defined visual style (CSS classes/libraries) to a paragraph.
+- Restrict which style groups a paragraph type may use.
+- Gate "advanced" styles behind a per-style permission.
+- Arrange a paragraph's child items into a grid layout.
+- Offer editors a chosen subset of grid layouts per paragraph type.
+- Lock a paragraph so only privileged users can edit it.
+- Show or hide a paragraph depending on the interface language.
+- Add an accordion effect to a paragraph's field (demo submodule).
+- Add a jump-to anchor id to a paragraph (demo submodule).
+- Use an image field as a paragraph background (demo submodule).
+- Turn a multi-value field into a Slick slider (demo submodule).
+- Define custom styles in a module or theme via YAML.
+- Add reusable grid layouts via YAML discovery.
+- Review every available style and where it is used.
+- Review every available grid layout and where it is used.
+- Globally enable or disable discovered styles from one form.
+- Install example paragraph types and demo content quickly.
+- Attach a style's Twig template suggestion to a paragraph.
+- Study Thunder-style page-building patterns for Paragraphs.
+- Prototype paragraph behaviour plugins against a real example.
+- Extend paragraph presentation without touching field storage.

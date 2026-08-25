@@ -5,7 +5,10 @@
   "version": "8.x-2.x",
   "package": "Administration",
   "composer_namespace": "drupal/patchinfo",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "php": ">=7.2",
+    "ext-json": "*"
+  },
   "dependent_modules": [
     "drupal:update"
   ],
@@ -15,7 +18,7 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/patchinfo",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=7.2",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [
@@ -24,21 +27,24 @@
     "patchinfo_source_info"
   ],
   "provides_permissions": false,
-  "provides_drush_commands": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "PatchInfoSource"
+  ],
   "categories": [
     "Administration tools",
     "Developer tools"
   ],
   "subcategories": [
-    "Deprecated / obsolete",
-    "Dependency management"
+    "Status report management",
+    "Plugin system"
   ],
   "keywords": [
     "patch",
     "update",
     "composer",
+    "plugin",
     "obsolete",
     "deprecated",
     "maintenance"

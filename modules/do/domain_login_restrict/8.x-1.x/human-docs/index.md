@@ -16,13 +16,11 @@ is actually affiliated with, and it ships a **`login to any domain`** permission
 (correctly marked as a restricted-access permission) for administrators and
 support staff who legitimately need to reach every domain.
 
-The module does not work purely on enable — you switch the restriction on from the
-Domain settings, and you can additionally enforce it per domain using roles. Two
-things are worth verifying on your own installation, because a login restriction
-that has gaps is worse than none (people trust it): which entry points it covers
-(a check on the login form is not necessarily a check on password reset, an SSO
-callback, a REST/JSON:API session request, or `drush uli`), and what happens to a
-user who is *already* signed in when their affiliations change.
+The module does not do anything purely on enable — you switch the restriction on
+from the Domain settings, and you can additionally enforce it per domain using
+roles. The restriction is applied at login time; a user who is *already* signed in
+keeps their session until it expires, so change-of-affiliation takes effect on
+their next login.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

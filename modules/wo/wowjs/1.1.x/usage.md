@@ -1,27 +1,33 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-WOW JS integrates the WOW.js library, which triggers Animate.css animations as elements scroll into view.
+WOW JS integrates the WOW.js library so Animate.css animations play as elements scroll into view.
 
 ---
 
-Scroll-reveal is a design convention: content fades or slides in as it enters the viewport, which gives a page rhythm and signals that there is more below. WOW.js is the long-standing library for it, pairing with **Animate.css** to supply the animations themselves — hence the dependency on the `animatecss` module, which provides that library. A `wowjs_ui` submodule adds a configuration interface. Version **1.1.1** on `^8.8` through `^11`. Two things belong in any conversation about scroll animation. **`prefers-reduced-motion`** is the important one: a substantial number of people experience motion sickness, vertigo or migraine from moving content, they express that through an operating-system setting, and a site that ignores it causes real symptoms rather than a stylistic disagreement — so confirm the media query is respected, and if it is not, that is a defect to fix before launch rather than a preference. **Content that starts invisible** is the other: reveal animations typically set opacity to zero and rely on JavaScript to restore it, so a script that fails to load, an error earlier on the page or an aggressive content blocker leaves the page blank. A progressive approach — visible by default, animated only when the script has confirmed it is running — avoids that, and is worth verifying rather than assuming.
+The module comes in two parts. The base **WOW JS** module is code-first: enable it, add the class `wow` together with an Animate.css class (keep the `animate__` prefix, e.g. `<section class="wow animate__slideInLeft">`), and it initializes WOW.js for you — no `new WOW().init()` in your own JavaScript, and no settings page. It depends on the **AnimateCSS** module (`drupal/animatecss`) for the animation CSS. The WOW.js JavaScript library itself is **not bundled**: place it at `/libraries/wow/dist/wow.min.js` (download `https://github.com/matthieua/WOW/archive/master.zip`, extract, rename to `wow`) and the module serves it locally; if it is missing the module automatically falls back to a **jsDelivr CDN** copy, and the Status Report flags this as a dismissible warning. The optional **WOW JS UI** submodule (`wowjs_ui`, depends on AnimateCSS UI) adds a point-and-click layer: it injects a "WOW settings" / "WOW default options" panel into the AnimateCSS settings page — choose local vs CDN, minified vs source, and the WOW defaults (`offset`, `mobile`, `live`, `once`, `mirror`, scroll container, reset) stored in the `wowjs.settings` config object — and adds per-animation **Once**/**Mirror** toggles to the AnimateCSS *Add animation* form so non-coders can turn WOW on for specific selectors. Two things are worth confirming for any scroll-animation build: that the site still honors the operating-system `prefers-reduced-motion` setting (moving content triggers real motion sickness/vertigo for some visitors), and that content is not left invisible if the script fails to run.
 
 ---
 
 - Fade content in on scroll.
-- Add scroll-reveal animations.
-- Animate sections as they enter view.
-- Give a long page rhythm.
-- Highlight a call to action on scroll.
-- Animate cards into place.
+- Add scroll-reveal animations to a page.
+- Animate sections as they enter the viewport.
+- Give a long page visual rhythm.
+- Highlight a call to action as it scrolls into view.
+- Animate cards into place on scroll.
 - Add motion to a landing page.
-- Reveal statistics as they appear.
-- Animate a feature list.
+- Reveal statistics or counters as they appear.
+- Animate a feature list on scroll.
 - Add polish to a marketing page.
-- Stagger animations down a page.
-- Signal more content below.
+- Stagger entrance animations down a page.
+- Signal that there is more content below.
 - Animate an image gallery's entry.
-- Add subtle motion to a homepage.
-- Support a design's animation spec.
-- Configure animations without code.
+- Add subtle motion to a homepage hero.
+- Implement a design's scroll-animation spec.
+- Configure WOW defaults without writing JavaScript (via WOW JS UI).
+- Enable WOW per element from the AnimateCSS add-animation form.
+- Load WOW.js locally or from a CDN as a fallback.
+- Switch between minified (production) and source (development) library builds.
+- Set a trigger offset so animations fire slightly before elements are fully visible.
+- Enable or disable animations on mobile devices.
 - Animate testimonials into view.
-- Add entrance effects to a section.
+- Add entrance effects to individual sections.
+- Use a custom scroll container instead of the window.

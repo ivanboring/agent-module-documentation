@@ -19,13 +19,12 @@ admin listing and the Media Library much easier to work with, since editors see
 the actual image rather than a placeholder.
 
 - **Enable it** if you want those previews and your site can reach the remote
-  images. Bear in mind this means the site fetches the remote URL server‑side when
-  the media is saved — see the SSRF note in the [main guide](../index.md) — and
-  that generating the thumbnail depends on the remote image being reachable and
-  processable by your configured image toolkit.
-- **Leave it off** if you would rather the site never fetch remote images
-  server‑side, accepting that the admin/library views will show a generic
-  placeholder instead of the picture.
+  images. Bear in mind this means the site downloads the remote image server‑side
+  when the media is saved, and that generating the thumbnail depends on the remote
+  image being reachable and processable by your configured image toolkit.
+- **Leave it off** if you would rather the site not store local copies, accepting
+  that the admin/library views will show a generic placeholder instead of the
+  picture.
 
 Adjust the option to suit your site and click **Save configuration**.
 

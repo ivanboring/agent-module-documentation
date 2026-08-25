@@ -5,7 +5,9 @@
   "version": "2.2.x",
   "package": "Configuration",
   "composer_namespace": "drupal/config_auto_export",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "php": ">=8.1"
+  },
   "dependent_modules": [],
   "configure": "config_auto_export.settings",
   "core_version_requirement": "^10.3 || ^11",
@@ -13,13 +15,16 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/config_auto_export",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/config_split": "Route split configs into their split folders on export.",
+    "drupal/config_ignore": "Skip exporting configs matched by config_ignore rules."
+  },
   "submodules": [],
   "provides_permissions": true,
-  "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools",
@@ -27,7 +32,7 @@
   ],
   "subcategories": [
     "Configuration management",
-    "Deployment"
+    "Deployment / release management"
   ],
   "keywords": [
     "configuration",

@@ -5,7 +5,10 @@
   "version": "1.0.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_purchasable_entity",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/core": "^9 || ^10 || ^11",
+    "drupal/commerce": "^2.19 || ^3.0"
+  },
   "dependent_modules": [
     "commerce:commerce",
     "commerce:commerce_price",
@@ -23,10 +26,11 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": false,
+  "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "E-commerce"
+    "E-commerce",
+    "Developer tools"
   ],
   "subcategories": [
     "Storefront platform",

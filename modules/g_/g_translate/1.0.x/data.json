@@ -1,7 +1,7 @@
 {
   "name": "GTranslate",
   "data_name": "g_translate",
-  "description": "Uses Google Translate to translate a website.",
+  "description": "Places a Google Translate widget block for on-the-fly machine translation.",
   "version": "1.0.x",
   "package": "Multilingual",
   "composer_namespace": "drupal/g_translate",
@@ -21,7 +21,7 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Multilingual",
@@ -29,7 +29,8 @@
   ],
   "subcategories": [
     "Machine translation",
-    "Blocks"
+    "Language switcher",
+    "Google APIs / OAuth"
   ],
   "keywords": [
     "google translate",

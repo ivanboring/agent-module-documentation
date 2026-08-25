@@ -30,11 +30,11 @@ silently until someone notices. There is also a legal dimension — many image h
 forbid hotlinking or require attribution, so make sure you have the rights to
 embed the images you reference.
 
-> **A note for site builders on server‑side fetching.** Generating local
-> thumbnails means the site fetches the remote URL from the server. Any feature
-> that resolves a user‑supplied URL server‑side is, in principle, an SSRF
-> surface — so restrict who can create remote‑image media to trusted editors, and
-> be mindful of what URLs they can point at on networks the server can reach.
+> **A note for site builders on server‑side fetching.** When media is saved the
+> site contacts the remote URL from the server to confirm it returns an image, and
+> — if you turn on local thumbnails — to download the preview. That means the
+> remote host must be reachable from your web server, and creating remote‑image
+> media should be restricted to trusted editors, as it is for any media type.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

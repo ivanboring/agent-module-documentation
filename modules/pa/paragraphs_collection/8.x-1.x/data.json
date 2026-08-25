@@ -5,7 +5,9 @@
   "version": "8.x-1.x",
   "package": "Paragraphs",
   "composer_namespace": "drupal/paragraphs_collection",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/paragraphs": "^1.12"
+  },
   "dependent_modules": [
     "paragraphs:paragraphs",
     "drupal:image",
@@ -33,8 +35,9 @@
     "Theming"
   ],
   "subcategories": [
-    "Paragraphs",
-    "Structured content / page building"
+    "Structured content / page building",
+    "CSS classes / body classes",
+    "Template suggestions"
   ],
   "keywords": [
     "paragraphs",

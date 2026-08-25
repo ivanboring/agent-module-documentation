@@ -1,23 +1,63 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Domain Login Restrict (domain_login_restrict) — agent index
 
-Prevents login on a domain the account is not affiliated with, on a **Domain**-module multi-site.
-Requires `domain` and `domain_access`. Version **8.x-1.4**.
-Core requirement `^8 || ^9 || ^10 || ^11 || ^12` — a five-major span; a statement of intent, not
-evidence of testing.
+On a **Domain**-module multi-site (one Drupal install, one shared user table, several hostnames),
+this module restricts which accounts may log in on which domain. When enabled, login succeeds only if
+the **active domain** is present in the account's **Domain Access** field (`field_domain_access`), and
+optionally only if the account holds one of a per-domain allow-list of roles. It also, optionally,
+auto-affiliates newly created accounts with the current domain and grants them per-domain roles. The
+`login to any domain` permission (marked `restrict access: true`) bypasses every check, for admins and
+support staff.
 
-Permission: **`login to any domain`**, `restrict access: true` — for administrators and support
-staff who must reach every domain.
+The module has **no routes, no config entities and no settings form of its own** — all behaviour is
+wired through `hook_form_alter` and stored in the **State** API. The enforcement runs as a form
+`#validate` handler that is `array_unshift`-ed to the front of the login form's validators
+(`_domain_login_restrict_validate` in `domain_login_restrict.module:96`), calling the shared
+`_domain_login_restrict_check()` (`domain_login_restrict.module:334`); the same check is added to the
+password-reset request form (`user_pass`) as `_domain_login_restrict_reset_password_validate`
+(`:239`), and `hook_user_login` (`:410`) re-runs it for JSON/`api_json` requests. The active domain
+comes from `domain.negotiator`→`getActiveDomain()`; matching is a strict `in_array($currentDomain->id(), $userDomainList)`
+on domain machine ids, and the role check is `array_intersect` of the per-domain allowed roles with
+the user's roles.
 
-**The exposure it addresses, which genuinely surprises people:** Domain runs several sites from
-one installation with **one user table**, and authentication is **global**. Domain governs
-*content* access, not *login* — so an account created for one site can sign in on **every** domain
-the installation serves. On a group of brands, a set of client sites, or a public site beside a
-partner portal, that is a real boundary failure.
+- Depends on: `domain:domain`, `domain:domain_access` (info.yml). No Composer requirements (no `composer.json`).
+- Core: `^8 || ^9 || ^10 || ^11 || ^12`. Package: `Domain`. Version: **8.x-1.4** (dir label `8.x-1.x`).
+- **No settings page / `configure` route.** Config is stored in **State**, edited on the Domain
+  module's own forms (`domain_settings`, `domain_edit_form`). No config schema, no config/install.
+- Permissions: **one** — `login to any domain` (`restrict access: true`). No Drush commands.
+- Plugins: uses core types only — one **Block** (`domain_login_block`) and one **Form**
+  (`domain_list_form`). Defines no new plugin type.
 
-**Two things to verify on the specific installation — a login restriction with gaps is worse than
-none, because it is trusted:**
-1. **Which entry points are covered.** A check on the login form is not a check on **password
-   reset**, an **SSO callback**, a **REST/JSON:API** session request, or **`drush uli`**.
-2. **Existing sessions.** A restriction applied only at login leaves anyone already signed in
-   unaffected when their affiliations change.
+## What you'd do → where
+
+- **Turn the restriction on, configure per-domain roles, auto-assign domain/roles to new users, read
+  the State keys and the exact match logic** → [configure/settings.md](configure/settings.md)
+- **Grant/understand the `login to any domain` bypass permission** →
+  [permissions/permissions.md](permissions/permissions.md)
+
+## Key facts (real machine names)
+
+- Hooks (`domain_login_restrict.module`): `hook_help`, `hook_user_insert` (`:36` auto-assign domain +
+  roles to new users), `hook_form_alter` (`:85`), `hook_user_login` (`:410`).
+- Altered forms: `user_login`, `user_login_block`, `user_login_form` (add `_domain_login_restrict_validate`);
+  `user_pass` (add `_domain_login_restrict_reset_password_validate`); `domain_settings` (global toggles
+  + submit `_domain_login_restrict_config_submit`); `domain_edit_form` (per-domain role checkboxes +
+  submit `_domain_login_restrict_config_role_submit`).
+- Core functions: `_domain_login_restrict_check()` (`:334`), `_domain_login_restrict_user_lookup()`
+  (`:295`, loads by `name` then by `mail`), `_domain_login_restrict_validate()`,
+  `_domain_login_restrict_reset_password_validate()`.
+- State keys: `domain_login_restrict_enabled` (bool, global on/off),
+  `domain_login_restrict_assign_domain` (bool, auto-affiliate new users),
+  `domain_login_restrict_role_<domainId>` (array, roles allowed to log in on that domain),
+  `domain_login_restrict_assign_role_<domainId>` (array, roles auto-granted to new users on that domain).
+- Permission: `login to any domain` (`domain_login_restrict.permissions.yml`, `restrict access: true`).
+- Block plugin id: `domain_login_block` (`src/Plugin/Block/LoginBlock.php`, admin label "Domain Login
+  block", `getCacheMaxAge()=0`, `blockAccess` = `access content`) — renders the domain switcher form.
+- Form: `domain_list_form` (`src/Form/DomainListForm.php`) — a `<select>` of enabled domains whose
+  `onchange` navigates to `$domain->getUrl()`; not the login gate, just a domain picker.
+- Service: `domain_login_restrict.login_block` → `Drupal\domain_login_restrict\Form\DomainListForm`
+  (`domain_login_restrict.services.yml`; the block builds the form via `form_builder`, so this service
+  entry is effectively unused).
+- Logger channel: `domain_login_restrict` (writes an error on each blocked login/reset attempt).
+- Field used (from `domain_access`): `field_domain_access` on the user entity.
+- Service used: `domain.negotiator` (`getActiveDomain()`).

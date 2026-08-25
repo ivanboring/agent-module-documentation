@@ -5,7 +5,9 @@
   "version": "2.2.x",
   "package": "Fragments",
   "composer_namespace": "drupal/fragments",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "php": ">8.1"
+  },
   "dependent_modules": [],
   "configure": "entity.fragment_type.collection",
   "core_version_requirement": "^10.3 || ^11",
@@ -13,9 +15,13 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/fragments",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">8.1",
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/views_bulk_operations": "Provides more advanced administration screen.",
+    "drupal/inline_entity_form": "Create fragments where and when you need them.",
+    "drupal/auto_entitylabel": "Automatically create a title for fragments based on other fields."
+  },
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
@@ -27,7 +33,7 @@
   ],
   "subcategories": [
     "Structured content / page building",
-    "Reusable content"
+    "Entity selection"
   ],
   "keywords": [
     "fragments",

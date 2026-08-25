@@ -22,6 +22,11 @@ Drupal's configuration workflow assumes discipline: change something in the UI, 
 - Catch a production configuration change.
 - Support a GitOps workflow.
 - Export config from a shared environment.
-- Trigger a webhook manually.
+- Trigger a webhook manually (form or `drush cae:trigger`).
+- Pause and resume auto-export from the CLI (`drush cae:pause` / `cae:resume`).
+- Batch a burst of changes behind a delay before firing.
+- Route split configs to their folders alongside config_split.
+- Skip ignored config via config_ignore rules.
+- Pass auth tokens or a target branch as webhook params/headers.
 - Keep config exports current for review.
 - Support a multi-developer team's workflow.
