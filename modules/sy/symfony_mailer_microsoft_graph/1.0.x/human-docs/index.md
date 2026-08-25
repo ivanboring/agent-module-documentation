@@ -10,16 +10,16 @@ with OAuth application credentials is the supported replacement.
 There are two Graph transports for Symfony Mailer, and it helps to know which is
 which: the other one, `symfony_mailer_graphapi`, wraps the community
 `vitrus/symfony-office-graph-mailer` library (pre-1.0). **This** module instead
-uses **`microsoft/microsoft-graph`, pinned at exactly `2.7.0`** — Microsoft's own
-official SDK. For something sitting in the mail path, the official SDK at an
-exact pin is the more conservative choice, and the exact pin means an SDK update
-cannot change behaviour underneath you; the trade-off is that moving the SDK
-version needs a new module release. The module depends on **Symfony Mailer**
-(`symfony_mailer`), needs **PHP 8.1 or higher**, and works on Drupal 10 and 11.
+uses **`microsoft/microsoft-graph`** (Composer requirement `^2.7`) — Microsoft's
+own official SDK — plus `symfony/http-client`. For something sitting in the mail
+path, the official SDK is the more conservative choice. The module depends on
+**Symfony Mailer** (`symfony_mailer`), needs **PHP 8.1 or higher**, and works on
+Drupal 10, 11, and 12.
 
 The credentials are an **Azure app registration** — tenant ID, client ID, and
-client secret. The client secret is a live credential: keep it out of exported
-config, store it in an environment variable, and surface it through a Key entity.
+client secret. The client secret is a live credential: treat it as sensitive,
+preferably keeping it in an environment variable surfaced through a Key entity,
+and rotate it if it may have been exposed.
 And scope the app registration to a **specific mailbox** with an application
 access policy rather than granting `Mail.Send` tenant-wide — otherwise a
 compromised Drupal site could send as anyone in the organisation. (Note also that

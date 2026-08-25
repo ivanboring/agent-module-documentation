@@ -1,11 +1,15 @@
 {
   "name": "Webform Quiz Elements",
   "data_name": "webform_quiz_elements",
-  "description": "Adds quiz-style elements to Webform.",
+  "description": "Adds scored quiz elements (radio questions with correct answers, feedback and a total score) to Webform.",
   "version": "1.0.x",
   "package": "Webform",
   "composer_namespace": "drupal/webform_quiz_elements",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "php": ">=8.1",
+    "drupal/core": "^10.2||^11",
+    "drupal/webform": "^6"
+  },
   "dependent_modules": [
     "webform:webform"
   ],
@@ -15,21 +19,21 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/webform_quiz_elements",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Forms and surveys",
     "User engagement"
   ],
   "subcategories": [
-    "Form builder",
-    "Submission handling"
+    "Webform elements",
+    "Quiz / assessment"
   ],
   "keywords": [
     "webform",

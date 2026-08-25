@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Video Embed Panopto adds Panopto as a provider for Video Embed Field, so a lecture-capture URL pasted into a video field renders as an embedded player.
+Video Embed Panopto adds Panopto as a provider for Video Embed Field, so a Panopto lecture-capture URL pasted into a video field renders as an embedded Panopto player.
 
 ---
 
-Panopto is the lecture-capture and video-management platform used across a large part of higher education, which makes this a narrow module with a well-defined audience: universities running Drupal that need recorded lectures and seminars embedded in course pages. Video Embed Field's architecture is a provider plugin per platform, and this supplies that one plugin — the module is `src/Plugin`, an info file and a licence, with `video_embed_field` as its only dependency and a wide core range of `^8 || ^9 || ^10 || ^11`. The practical consideration is not the code but the access model: Panopto content is frequently **restricted to authenticated members of an institution**, so an embed that works for a signed-in staff member may show nothing to an anonymous visitor or to someone outside the organisation. That behaviour comes from Panopto's own access control rather than from Drupal, and it is worth establishing which folders are public before assuming embeds will render for the intended audience.
+Install it with Composer (`composer require drupal/video_embed_panopto`) and enable it — its one dependency, **Video Embed Field**, is pulled in automatically — then there is nothing to configure in the module itself: it has no settings page, permissions, or routes. All the real work happens in Video Embed Field: add a **Video Embed** field to a content type (or use the Video Embed WYSIWYG dialog / a Video Embed media type), and set the field's display formatter to **Video** (the embedded iframe player), **Video URL**, or **Thumbnail** (a preview image, optionally linked to the video). This module teaches Video Embed Field to recognise two Panopto URL shapes — `https://<your-institution>.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=<session-id>` and the equivalent `…/Pages/Embed.aspx?id=<session-id>` — so an editor just pastes the URL from Panopto's **Share** dialog into the field. The player's width, height, autoplay and responsive behaviour all come from Video Embed Field's formatter settings, and the teaser thumbnail is fetched from Panopto's Public API (`SessionPreviewImage`). Because the embed URL carries your institution's own Panopto server hostname, embeds work for whichever audience Panopto itself permits — much Panopto content is limited to signed-in members of the institution, so confirm a session's folder is public before expecting anonymous site visitors to see it.
 
 ---
 
 - Embed a recorded lecture in a course page.
-- Add Panopto to a video field.
-- Show a seminar recording on a site.
-- Reuse Video Embed Field's formatters.
-- Let editors paste a Panopto URL.
-- Embed training videos for staff.
-- Show a conference recording.
-- Keep video hosted on the institutional platform.
-- Provide a consistent video field across providers.
-- Embed a departmental video library item.
-- Show a recorded induction session.
-- Support a university's Drupal site.
-- Render Panopto alongside YouTube videos.
-- Embed a lecture in a student handbook page.
-- Keep captions and player features from Panopto.
-- Support an education media workflow.
-- Show a recorded webinar.
-- Add lecture capture without custom code.
+- Add Panopto as a provider on a Video Embed field.
+- Paste a Panopto `Viewer.aspx` share URL and have it play inline.
+- Paste a Panopto `Embed.aspx` URL into a video field.
+- Show a seminar or webinar recording on a site.
+- Use the Video formatter for an embedded Panopto iframe player.
+- Use the Thumbnail formatter to show a Panopto preview image.
+- Link a Panopto thumbnail to the full node or the provider page.
+- Set player width, height, autoplay and responsive sizing via Video Embed Field.
+- Reuse Video Embed Field's formatters and widgets for Panopto videos.
+- Embed Panopto videos inside body text with the Video Embed WYSIWYG dialog.
+- Create a Panopto-backed media type via Video Embed Media.
+- Render Panopto alongside YouTube and Vimeo in the same field.
+- Provide a consistent video field across multiple providers.
+- Keep lecture video hosted on the institutional Panopto platform.
+- Embed a departmental video-library item or induction recording.
+- Add lecture capture to a Drupal site without writing custom code.
+- Pull a Panopto session's preview image for use as a teaser.
+- Support a university or college education media workflow.
+- Migrate/standardise course pages onto Panopto embeds.

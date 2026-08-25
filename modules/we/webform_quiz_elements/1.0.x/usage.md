@@ -1,27 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Webform Quiz Elements adds quiz-style elements to Webform — questions with correct answers and scoring — so an assessment can be built with the form builder a site already has.
+Webform Quiz Elements adds scored quiz elements to Webform — radio questions with a correct answer and per-answer feedback, a per-question result, and a total-score element — so a quiz is just a webform.
 
 ---
 
-Drupal's dedicated quiz modules bring their own content types, question banks and result storage, which is right for a learning platform and disproportionate for a knowledge check at the end of an article or a short compliance test. Webform already handles building the form, validating input, storing submissions, emailing results and exporting data; what it lacks is the notion that an answer can be *correct*. This module adds that as elements, so a quiz is a webform and everything Webform already does — conditional logic, multi-step, access control, handlers, exports — applies unchanged. It depends on `webform` and targets `^10 || ^11`. The thing to be clear about is what this is not: correct answers are part of the **form definition**, so anyone who can inspect the rendered form or its configuration can potentially see them, and scoring happens where the submission is processed. For a low-stakes knowledge check that is fine and the convenience is the point. For an assessment with real consequences — certification, recruitment, anything graded — the answer key needs to be genuinely server-side and the module's threat model checked rather than assumed.
+Install with `composer require drupal/webform_quiz_elements` and enable it; it requires the **Webform** module (`^6`) and targets Drupal `^10.1 || ^11`. Everything is configured per element inside the Webform builder — there is no module settings page. Add a **Radios (quiz element)** (`quiz_element_radios`) for each question: fill in the normal radio **Options**, then fill the required **Quiz options** field, a YAML map with one entry per option value giving `is_correct` (true/false) and a `feedback` message — the keys and count must match the options exactly. Add one **Quiz total score** (`webform_quiz_elements_score`) element, set its **Passing score percentage** and the pass/fail messages; the score is `correct / total × 100` computed server-side and the pass/fail message is chosen against your threshold. Add a **Result (per quiz element)** (`webform_quiz_elements_result`) element per question and point its **Show results for** (`source`) at the matching question. By default the score and result elements are set to **Display on: view**, so they appear after submission — e.g. on the confirmation page (set the confirmation message to `[webform_submission:values:html]`) or on a later wizard page in a multi-page quiz. The token `[webform:quiz_elements_count]` prints the number of quiz questions (useful for "Question 1 of N"). Import the module's `docs/example.yml` to see a full working quiz. Because a quiz is a webform, all of Webform's conditional logic, multi-step wizards, access control, handlers, emailing and exports apply unchanged.
 
 ---
 
-- Add a knowledge check to an article.
-- Build a short quiz with Webform.
-- Score a compliance test.
-- Add correct answers to form questions.
+- Add a knowledge check to the end of an article.
+- Build a short quiz using the Webform builder.
+- Score a compliance or training test.
+- Mark correct answers on radio questions.
+- Give per-answer feedback (why an option is right or wrong).
+- Show a total score with a pass/fail message.
+- Set a passing-score percentage threshold.
+- Show a per-question result element after submission.
+- Display quiz results on the confirmation page.
+- Build a multi-page quiz (question, then result on the next page).
 - Reuse Webform's conditional logic in a quiz.
-- Email quiz results to a participant.
-- Export quiz submissions.
-- Build an onboarding assessment.
+- Reuse Webform's access control for who can take the quiz.
+- Email quiz results to a participant via a Webform handler.
+- Export quiz submissions with Webform's exporters.
+- Build an onboarding or induction assessment.
 - Add a self-assessment to a course page.
-- Avoid a full quiz platform.
-- Use Webform's access control for a quiz.
-- Build a multi-step assessment.
-- Score a survey with right answers.
-- Add a training check.
-- Reuse existing Webform skills.
-- Build a fun engagement quiz.
-- Store results as submissions.
-- Report on quiz outcomes.
+- Print "Question 1 of N" with the quiz-count token.
+- Run a fun engagement or trivia quiz.
+- Store quiz attempts as normal webform submissions.
+- Avoid installing a full quiz/LMS platform for a simple check.
+- Translate questions, options, feedback and score messages.
+- Report on quiz outcomes using Webform submission views.

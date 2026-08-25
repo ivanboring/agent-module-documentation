@@ -7,7 +7,8 @@
   "composer_namespace": "drupal/symfony_mailer_microsoft_graph",
   "composer_requirements": {
     "php": ">=8.1",
-    "microsoft/microsoft-graph": "2.7.0"
+    "microsoft/microsoft-graph": "^2.7",
+    "symfony/http-client": "^6.0 || ^7.0"
   },
   "dependent_modules": [
     "symfony_mailer:symfony_mailer"
@@ -18,9 +19,10 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/symfony_mailer_microsoft_graph",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [
-    "microsoft/microsoft-graph 2.7.0"
+    "microsoft/microsoft-graph ^2.7",
+    "symfony/http-client ^6.0 || ^7.0"
   ],
   "suggests": {},
   "submodules": [],
@@ -29,17 +31,17 @@
   "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Integrations",
-    "Administration tools"
+    "Integrations"
   ],
   "subcategories": [
     "Email / mail delivery",
-    "OAuth / OpenID Connect client"
+    "Cloud services (Azure)"
   ],
   "keywords": [
     "symfony mailer",
     "microsoft graph",
     "office 365",
+    "azure",
     "oauth",
     "transport",
     "smtp"

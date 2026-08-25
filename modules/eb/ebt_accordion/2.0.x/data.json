@@ -1,16 +1,18 @@
 {
   "name": "Extra Block Types (EBT): Accordion",
   "data_name": "ebt_accordion",
-  "description": "Adds Accordion block type.",
+  "description": "Adds an Accordion/FAQ block type driven by jQuery UI Accordion.",
   "version": "2.0.x",
   "package": "Extra Block Types",
   "composer_namespace": "drupal/ebt_accordion",
   "composer_requirements": {
     "drupal/ebt_core": "^2.0",
+    "drupal/jquery_ui_accordion": "^2.0",
     "drupal/paragraphs": "^1.0"
   },
   "dependent_modules": [
     "ebt_core:ebt_core",
+    "jquery_ui_accordion:jquery_ui_accordion",
     "paragraphs:paragraphs"
   ],
   "configure": null,

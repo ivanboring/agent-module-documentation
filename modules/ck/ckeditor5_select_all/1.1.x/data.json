@@ -6,7 +6,9 @@
   "package": "CKEditor 5",
   "composer_namespace": "drupal/ckeditor5_select_all",
   "composer_requirements": {},
-  "dependent_modules": [],
+  "dependent_modules": [
+    "ckeditor5"
+  ],
   "configure": null,
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
@@ -19,7 +21,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": false,
+  "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience",

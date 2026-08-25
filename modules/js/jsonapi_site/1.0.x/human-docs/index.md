@@ -14,15 +14,14 @@ slogan; the front-page, 403, and 404 paths; the default language code; the defau
 and admin themes; and the global logo and favicon paths. There is nothing to
 configure in an admin form — the endpoint works as soon as the module is on.
 
-Access to the endpoint is limited to **any authenticated user**, and requests
+The endpoint is read-only and requires an authenticated caller. Requests
 authenticate using the **Key Auth** module (a hard dependency), which is how a
-non-browser client identifies itself. It is worth understanding precisely what
-"any authenticated user" means: it is not a permission, so on a site with open
-registration, anyone who signs up can read the response. The payload also includes
-the site's configured **email address** and the **`system.site` UUID** alongside
-the obviously-public values. Neither is a credential, but neither is something you
-would normally publish to every registered account, so if that matters on your
-site, consider stripping them (see "Adding or removing values" below).
+non-browser client identifies itself: a client sends a Key Auth API key belonging
+to a user account that holds Key Auth's **"use key authentication"** permission.
+Ordinary browser session cookies do not apply to this route, and anonymous
+requests are rejected with a 403. In practice you set up an API key for the
+account your front end will use and have the front end send that key with each
+request.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -55,6 +54,5 @@ picture of the backend API alongside these basic settings.
 The module provides an alter hook, `hook_jsonapi_site_data_alter(&$data)`
 (documented in the module's `jsonapi_site.api.php`), for a custom module to adjust
 the payload. Use it to **add** your own values for a bespoke client, or to
-**remove** values you would rather not expose — for example stripping the site
-email or UUID if the "any authenticated user" access model is broader than you
-want for that data.
+change or remove any of the default attributes so the response matches exactly
+what your front end expects.

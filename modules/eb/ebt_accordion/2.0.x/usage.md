@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-EBT Accordion ships a ready-made Accordion block type — collapsible sections for FAQs, policy documents and anything where a long page reads better folded up.
+EBT Accordion adds a ready-made "Accordion / FAQ" block type: a stack of collapsible Question/Answer sections you place in a region or in Layout Builder.
 
 ---
 
-It is the accordion member of the Extra Block Types family, whose slideshow component was documented in wave 60: components as **block types** rather than paragraph types, so they can be placed in regions and in Layout Builder, with `ebt_core` supplying the settings they share. This one contributes the accordion — configuration defining the block type and its fields, templates for the render contexts, and the family's usual plugin and hook structure. Composer requires `ebt_core ^2.0` and `paragraphs ^1.0`, and `core_version_requirement` is `^10.1 || ^11 || ^12`, already covering Drupal 12. The accessibility point applies to every accordion and is worth stating rather than assuming: a collapsible section needs proper button semantics, `aria-expanded` state and keyboard operation, and content hidden inside a collapsed panel is not found by the browser's in-page search — which matters on a policy or FAQ page where visitors expect Ctrl+F to work. Compare `lb_tabs` (wave 63), which provides accordion and tab **layouts** for Layout Builder on jQuery UI; this is a block type with its own markup.
+Install it with Composer (`composer require drupal/ebt_accordion`) and enable it; it pulls in **EBT Core**, **jQuery UI Accordion** and **Paragraphs**, and the Media "Image" type should exist first (EBT Core uses it for background images). Enabling the module creates a `block_content` block type **EBT Accordion/FAQ** — add one at `block/add/ebt_accordion`. Each accordion section is a Paragraph with a **Title / Question** and a **Text / Answer**, both formatted-text fields (so a question can include an icon or bold text), and you add as many sections as you need under the block's **Content** tab. The block's **Settings** tab controls the behaviour: a visual **style** preset (`Default`, `Text only`, `Plus/Minus icons on the left/right`), whether sections are **collapsible**, whether they start **all closed** or **all opened**, an **active** panel index, a **height style**, options to force-collapse on tablet/mobile, and the shared EBT design options (margins, borders, background, container width). At display time the module initialises **jQuery UI Accordion** on the block using those settings; page-wide colours and responsive breakpoints come from the EBT Core settings form at `admin/config/content/ebt-settings`. The module has no settings page, permissions or routes of its own, and on uninstall it intentionally leaves the block type in place so existing content is not lost. One usability note worth planning for: content inside a collapsed panel is not found by the browser's in-page (Ctrl+F) search, which matters on long FAQ or policy pages.
 
 ---
 
-- Build an FAQ page with collapsible answers.
-- Fold a long policy document into sections.
-- Place an accordion in any region.
-- Give editors a collapsible content block.
-- Reduce page length on dense content.
-- Show product specifications by section.
-- Add an accordion to a landing page.
-- Reuse an accordion block across pages.
-- Share styling settings with other EBT components.
-- Present terms and conditions in sections.
-- Show course modules collapsed.
-- Improve mobile readability.
-- Theme the accordion with a template.
-- Add an accordion without a developer.
-- Present service information by topic.
-- Group related questions.
-- Export a configured accordion with site config.
-- Prepare a component for Drupal 12.
+- Build an FAQ page with collapsible question-and-answer sections.
+- Fold a long policy or terms document into expandable sections.
+- Place an accordion block in any theme region.
+- Add an accordion inside a Layout Builder layout.
+- Give editors a reusable collapsible content block.
+- Choose the "Plus/Minus icons on the left" style for a classic FAQ look.
+- Choose the "Text only" style for a minimal, icon-free accordion.
+- Start the accordion with all sections collapsed to shorten the page.
+- Start with all sections open, but collapse them on mobile.
+- Open a specific panel by default via the active-index setting.
+- Make the accordion non-collapsible so one panel is always open.
+- Put Font Awesome icons or bold text in a question via formatted text.
+- Show product specifications grouped by section.
+- Present course modules or lesson lists collapsed.
+- Group related support questions by topic.
+- Reduce page length on dense, content-heavy pages.
+- Share colour and breakpoint defaults with other EBT blocks via EBT Core.
+- Theme the accordion by overriding its Twig templates.
+- Export a configured accordion block with your site configuration.
+- Reuse the same accordion block across multiple pages.
