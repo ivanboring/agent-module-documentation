@@ -28,7 +28,7 @@
   "provides_plugin_types": [],
   "categories": [
     "Content display",
-    "Site search"
+    "Automation"
   ],
   "subcategories": [
     "Views exposed filters",
@@ -37,10 +37,13 @@
   "keywords": [
     "views",
     "token",
+    "exposed input",
     "exposed filters",
-    "search results",
-    "title",
-    "no results"
+    "query string",
+    "view more link",
+    "filtered link",
+    "display link",
+    "pager"
   ],
   "project_description": "This module provides a global Views token that contains its exposed input as a query string.\n\n Post-Installation \n After installation, use the [view:exposed-input] token anywhere in your view's configuration where replacement tokens are supported. The token will be replaced with a query string representing the view's exposed input. If non-empty, the token value will be prefixed with a question mark.\n\n This module has no configuration of its own.",
   "maintenance_status": "Actively maintained",

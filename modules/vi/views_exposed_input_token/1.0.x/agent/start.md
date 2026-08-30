@@ -1,18 +1,20 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Exposed input token (views_exposed_input_token) — agent index
 
-Global Views token containing the view's **exposed input**. Depends on core `views`.
-PHP >= 8.1. Core requirement `^10.3 || ^11`.
+Adds one global Views token, `[view:exposed-input]`, holding the view's current exposed input
+as a URL query string (e.g. `?id=3&page=1`). Use it to build links that carry the visitor's
+active exposed-filter selections to another URL. Depends on core `views`. PHP >= 8.1,
+core `^10.3 || ^11`. No config, permissions, routes or `src/`.
 
 Key facts:
-- Whole module: `views_exposed_input_token.module`, `.info.yml`, `composer.json`,
-  `CONTRIBUTING.txt`, `LICENSE.txt`. No routes, permissions, config or `src/`.
-- Solves a recurring need: Views has no token for the exposed filter values, so "12 results for
-  *kitchen*" or "No results for *kitchen*" normally means a preprocess function, a custom area
-  plugin, or JavaScript reading the query string.
-- **Escaping caution.** The token's value is request input, and echoing search input is the
-  textbook reflected-XSS shape. Views areas that run tokens through the text format system escape
-  it; a custom template that emits it raw does not. Confirm on the specific area where the token
-  is used rather than assuming.
-- Works in any Views area accepting tokens — header, footer, empty text, and titles where token
-  replacement is available.
+- Whole module is five files: `views_exposed_input_token.module` (the two hooks + a helper),
+  `.info.yml`, `composer.json`, `CONTRIBUTING.txt`, `LICENSE.txt`.
+- The token lives under the `view` token type, so it resolves only where the `view` object is
+  passed to token replacement (Views Global text areas, view title, link-building areas) — not
+  in generic node/entity token contexts.
+- Value is `?` + `http_build_query($view->getExposedInput())`; empty string when there is no
+  exposed input; the pager page is appended as `page=N` past page 0; internal Views routing
+  keys are stripped.
+
+Capabilities:
+- [The `[view:exposed-input]` token — mechanism, placement, and query-string composition](api/views_exposed_input_token.md)
