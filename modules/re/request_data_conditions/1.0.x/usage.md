@@ -1,27 +1,36 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Request Data Conditions adds condition plugins that test the incoming request — a cookie, an HTTP header, a query parameter or a session value — so block visibility and anything else built on Drupal's condition system can respond to request state rather than only to path and role.
+Request Data Conditions adds four Drupal condition plugins that test the current request's cookies, HTTP headers, URL query parameters and session values, so blocks, layout sections and Context reactions can be shown or hidden based on that request data.
 
 ---
 
-Drupal's condition plugin system underpins block visibility, and core ships the obvious conditions: request path, content type, user role, language. What it does not offer is any way to say "show this block when the `campaign` query parameter is set", or "when this cookie is present", or "when a session flag was set earlier in a flow". This module fills that gap with four condition plugins in `src/Plugin`, and because they are ordinary conditions they work anywhere conditions are consumed — block layout most obviously, but also Context, Page Manager and any custom code using the condition manager. The module is four files plus an install file, with no routes, permissions, configuration page or dependencies, and core `^9.3 || ^10 || ^11`. Two things deserve care in use. Cache: conditions that vary on request data need the right cache contexts, or a page cached for one visitor is served to another with the wrong blocks — check behaviour under page cache before relying on it anonymously. Trust: cookies, headers and query parameters are all attacker-controlled, so these conditions are for *presentation*, never for access control.
+The module contributes four plugins to Drupal's condition system (`plugin.manager.condition`): **Cookie values** (`cookie_values`), **HTTP headers** (`http_headers`), **URL query parameters** (`url_query_parameters`) and **Session values** (`session_values`). Each reads a key-value bag from the current `Request` — respectively `cookies->all()`, `headers->all()`, `query->all()` and the session's `all()` — and evaluates a list of rules the admin configures. Every rule has three fields: a **Name** (the cookie/header/param/session key to look up), an **Operator**, and a **Value**. Nine operators are available: *must equal*, *must not equal*, *must be set*, *must be set and have any value*, *must be set and have no value*, *must not be set*, *matches regular expression*, *must contain* and *must not contain*. A **Require all** checkbox (default on) switches between AND (every rule must pass) and OR (any one rule passes) semantics across the rules of a single plugin instance. Because these are ordinary condition plugins they work anywhere Drupal consumes conditions — core block visibility, Layout Builder section visibility, the [Context](https://www.drupal.org/project/context) module's condition reactions, Page Manager, or your own code calling the condition manager. Each plugin declares the matching cache context (`cookies:NAME`, `headers:NAME`, `url.query_args:NAME`, or `session`) so render caching varies correctly. The module has no routes, no permissions, no settings page and no dependencies; you configure it entirely from the host form (block/section/context) where you add the condition. Note that these are **visibility** conditions, not access control: cookies, headers and query parameters are fully client-controlled, so never use them to protect sensitive content.
 
 ---
 
-- Show a block only when a query parameter is present.
-- Vary content on a marketing campaign cookie.
-- Show a banner to visitors arriving from a specific referrer header.
-- React to a session flag set earlier in a flow.
-- Display a debug block when a header is set.
-- Target a block at traffic from a load balancer header.
-- Hide a block once a dismissal cookie exists.
-- Show onboarding only during a session.
-- Test a variant behind a query parameter.
-- Combine request conditions with role conditions.
-- Drive a Context reaction from a cookie.
-- Show a notice to users with a preference cookie.
-- Support an A/B test's presentation layer.
-- Reveal a preview block via a header.
-- Personalise a region without a personalisation suite.
-- Reuse conditions across block and Context.
-- Show a locale banner from a geo header.
-- Gate a promotional block on a campaign parameter.
+- Show a block only when a specific cookie is present.
+- Hide a block when a cookie has a particular value.
+- Reveal a promo block only when the URL carries `?campaign=spring`.
+- Show a "beta" block only to requests carrying a custom HTTP header.
+- Gate a block on a value stored in the user's session.
+- Toggle a Context reaction based on a query parameter.
+- Control Layout Builder section visibility by request data.
+- Match a cookie exactly with the *must equal* operator.
+- Exclude one value with *must not equal*.
+- Show content only when a query parameter is set (any value) via *must be set*.
+- Require a parameter to be set but empty via *must be set and have no value*.
+- Require a header to be present and non-empty via *must be set and have any value*.
+- Hide a block when a cookie is absent using *must not be set*.
+- Match a header against a regular expression (no surrounding slashes).
+- Show a block when a query value *contains* a substring.
+- Hide a block when a cookie value *must not contain* a substring.
+- Combine several rules with AND by leaving **Require all** checked.
+- Combine several rules with OR by unchecking **Require all**.
+- Match A/B-test bucketing carried in a cookie.
+- Personalize a region based on a feature-flag query parameter.
+- Detect a load balancer or CDN header and adjust visibility.
+- Match a locale or currency cookie set by earlier code.
+- Show a message when a `debug=1` query parameter is present.
+- Vary a block for authenticated flows using a session flag.
+- Add multiple named rules to one condition instance.
+- Invert the whole condition with the condition system's standard "Negate" toggle.
+- Build request-data-driven visibility without writing custom code.

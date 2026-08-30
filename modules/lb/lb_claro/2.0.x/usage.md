@@ -1,29 +1,30 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Layout Builder Claro restyles Layout Builder to match the Claro admin theme: it swaps in CSS for the layout canvas, off-canvas dialogs, entity forms and the media library so the builder stops looking like a different application.
+Layout Builder Claro is an opinionated CSS/theming module that styles Drupal's Layout Builder, its off-canvas tray, media library, and entity forms to look like the Claro admin theme when the front-end (canvas) theme is a custom theme.
 
 ---
 
-Layout Builder's own styling predates Claro and sits awkwardly inside it — mismatched form controls, off-canvas panels that look like Seven, media-library dialogs with their own conventions. This module is a targeted CSS-and-render fix rather than a feature. Four stylesheets (`layout-builder.css`, `off-canvas.css`, `entity-forms.css`, `media-library.css`) are attached through `lb_claro.libraries.yml`, and three hooks make them land in the right places: `hook_form_alter()` attaches the entity-form styling to the relevant forms, `hook_css_alter()` removes or reorders the core stylesheets that would otherwise fight the Claro-matched ones, and `hook_theme_registry_alter()` adjusts theme hooks so the builder's markup can be restyled. An `OffCanvasRenderer` class handles the off-canvas dialog specifically, which is where core's styling diverges most. The installed release is `2.0.0-alpha2` and it requires PHP 8.1; there is no configuration, no permissions and nothing to set up beyond enabling it.
+The module ships four theme-weighted CSS libraries (`layout_builder`, `off_canvas`, `media_library`, `entity_forms`) and attaches them, together with several core Claro libraries, to every Layout Builder editing form via `hook_form_alter()` (the defaults form, overrides form, and the `layout_layout_builder_form` layout-library save form; that save form also gets a `layout-builder-form` wrapper class). On `layout_builder.*` routes it runs `hook_css_alter()` to strip out most of Claro's own CSS (keeping only a small allowlist: variables, toolbar, icon-link, dialog, media-library), the Stable/Stable9 layout-builder and off-canvas reset stylesheets, and two jQuery UI dialog stylesheets, so its own rules win without a reset fight. `hook_theme_registry_alter()` re-points several media-library view/template hooks (widget views, unformatted rows, wrapper, container, media item) at Claro's own templates so the media library inside Layout Builder renders with Claro markup. It also registers a `ServiceModifierInterface` service provider (`LbClaroServiceProvider`) that swaps core's `main_content_renderer.off_canvas` service for its own `OffCanvasRenderer` subclass; that renderer reads the single config value `lb_claro.settings:off_canvas_initial_width` (default 800) and applies it as the off-canvas dialog's initial width, giving a wider tray than core's default. There is no admin UI, no permissions, no routes, and no plugins — configuration is the one integer, set via config/drush. Requirements are Layout Builder, Claro, and Media Library (documented in the README; not hard `dependencies` in the info file).
 
 ---
 
-- Make Layout Builder look native inside the Claro admin theme.
-- Fix mismatched form controls in the layout canvas.
-- Restyle off-canvas dialogs to Claro conventions.
-- Align media library dialogs with the admin theme.
-- Improve the editor experience for Layout Builder sites.
-- Reduce visual noise when configuring blocks.
-- Give content editors a consistent admin UI.
-- Avoid writing bespoke admin CSS in a custom theme.
-- Keep Layout Builder usable on smaller screens.
-- Match entity forms inside the builder to Claro.
-- Remove conflicting core Layout Builder styles.
-- Present a coherent look across admin screens.
-- Reduce editor training friction on a new build.
-- Improve contrast and spacing in the builder.
-- Apply the styling site-wide by enabling one module.
-- Keep the fix separate from the site's own theme.
-- Roll back instantly by uninstalling.
-- Support Layout Builder on Drupal 10 and 11 alike.
-- Avoid patching core Layout Builder CSS.
-- Give stakeholders a more polished demo of Layout Builder.
+- Make Layout Builder pages look like the Claro admin theme when using a custom front-end theme.
+- Get a wider off-canvas tray for editing blocks/sections in Layout Builder.
+- Set the off-canvas tray's initial width via configuration.
+- Style the media library inside Layout Builder to match Claro.
+- Style Layout Builder entity forms (defaults and overrides forms) with Claro-like cards.
+- Remove Claro's conflicting CSS on Layout Builder routes so the module's styles apply cleanly.
+- Remove Stable/Stable9 off-canvas reset CSS that fights with custom themes.
+- Work around the CKEditor-in-off-canvas reset issue (core #2952390) by dropping the reset file.
+- Give the layout-library save form the `layout-builder-form` wrapper styling.
+- Theme the media library widget views (grid and table) with Claro templates.
+- Theme the media library wrapper and content container with Claro markup.
+- Provide a consistent admin editing experience across sites with different canvas themes.
+- Attach Claro global styling and dialog libraries to Layout Builder forms automatically.
+- Avoid writing custom Layout Builder CSS by dropping in a ready-made stylesheet set.
+- Widen the block-configuration tray for forms with many fields.
+- Match media-library exposed filters and managed-file widgets to Claro styling.
+- Keep the admin toolbar and dialog visuals intact while restyling Layout Builder.
+- Set a project-wide default off-canvas width in a config-management workflow.
+- Override the off-canvas dialog width per environment via config split.
+- Improve readability of Layout Builder forms rendered on top of a minimal custom theme.
+- Standardize Layout Builder look-and-feel across a multisite where themes differ.
