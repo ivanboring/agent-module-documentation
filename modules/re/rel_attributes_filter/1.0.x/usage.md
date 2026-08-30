@@ -1,27 +1,28 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Rel Attributes Filter adds `rel` attributes to links in filtered text — `nofollow`, `noopener`, `noreferrer` — as a text format filter, so editors do not have to add them and cannot forget.
+Rel Attributes Filter adds `rel` attributes (`nofollow`, `noopener`, `noreferrer`) to anchor tags through three text-format filter plugins you enable per text format. No configuration form and no code — you toggle the filters on a format at `admin/config/content/formats`.
 
 ---
 
-Two separate problems share this solution. The SEO one is `rel="nofollow"` on user-contributed or outbound links, which stops a site's authority flowing to spam and is the standard defence on any site with comments or community content. The security one is `rel="noopener"` on links opening in a new tab: without it, the opened page gets a reference to the opener through `window.opener` and can navigate the original tab elsewhere — the "tabnabbing" pattern. Modern browsers imply `noopener` for `target="_blank"`, but older ones do not and the attribute remains the correct explicit defence. Handling both in a **text filter** rather than in the editor is the right architecture, because it applies at render time to all content — including content that predates the rule, content imported by migration and content submitted through an API — where a CKEditor plugin would only affect what is typed after it was installed. The module is small (`src/Plugin` plus a `.module` file), depends on core only, and spans `^8 || ^9 || ^10 || ^11`. Filter order matters: it must run where it can see the rendered anchors.
+The module ships three core `@Filter` plugins — `filter_nofollow`, `filter_noopener` and `filter_noreferrer` — each of type `TYPE_TRANSFORM_IRREVERSIBLE`. When a filter is enabled on a text format, it parses the rendered HTML with Drupal core's `Html::load()` (a DOMDocument-based parser), walks every `<a>` element, and sets the corresponding `rel` token. Only anchors that carry `target="_blank"` are modified — despite the plugin titles reading "add to all links", plain and `target="_self"` links are left untouched. If an anchor already has a `rel` value the new token is prepended (e.g. an existing `rel="nofollow"` becomes `rel="noopener nofollow"`); otherwise `rel` is created. The `rel` tokens are hardcoded constants, never drawn from config or user input, and the DOMDocument round-trip (`Html::serialize()`) escapes attribute values, so the transform cannot inject markup. Configuration is entirely through the text-format UI: enable one or more of the three filters on the formats you want. There is no settings form, no permissions, no config schema, and no Drush command. The module is core-only (no dependencies) and works on Drupal 8 through 11.
 
 ---
 
-- Add nofollow to outbound links.
-- Add noopener to links opening in a new tab.
-- Prevent tabnabbing from external links.
-- Stop authority flowing to spam links.
-- Apply rel attributes to existing content.
-- Enforce a link policy without editor effort.
-- Add noreferrer to third-party links.
-- Apply rules per text format.
-- Cover migrated content automatically.
-- Handle links submitted through an API.
-- Reduce SEO risk from user-generated content.
-- Apply rel attributes to comment links.
-- Standardise link behaviour across a site.
-- Meet a security review recommendation.
-- Avoid relying on editors to remember.
-- Apply rules at render time.
-- Support an older browser audience.
-- Configure per text format.
+- Add `rel="noopener"` to `target="_blank"` links to prevent reverse-tabnabbing on formats used by untrusted authors.
+- Add `rel="noreferrer"` to new-tab links so the destination cannot read the referring URL.
+- Add `rel="nofollow"` to outbound new-tab links so search engines do not pass authority to them.
+- Harden a comment or user-generated-content text format where authors can insert links.
+- Apply link-hardening to existing, migrated, or API-submitted content at render time (a filter runs on all content, not only what is typed after install).
+- Enable `noopener` on a "Full HTML" format to backfill the attribute on legacy content authored before browsers implied it.
+- Stack multiple tokens on one format (enable `nofollow` + `noopener` together) to produce `rel="nofollow noopener"`.
+- Enforce SEO `nofollow` policy on links added by editors in CKEditor without training every author.
+- Reduce link-spam value in moderated content by stripping followed-link authority from new-tab links.
+- Retrofit referrer-privacy on outbound links without a custom preprocess hook or CKEditor plugin.
+- Keep `rel` hardening consistent across every rendering of a field, including views, feeds, and JSON output that reuses the format.
+- Add new-tab safety attributes to marketing/body content edited by non-technical staff.
+- Combine with `filter_html` on the same format (filter order permitting) to first restrict tags, then add `rel`.
+- Provide a lightweight, dependency-free alternative to writing a custom `hook_link_alter` or DOM-processing filter.
+- Ensure affiliate or sponsored outbound links opened in a new tab carry `nofollow`.
+- Meet a security-review checklist item requiring `noopener`/`noreferrer` on all `target="_blank"` anchors.
+- Apply the same policy to multiple text formats by enabling the filter on each one.
+- Protect against `window.opener` abuse on older browsers that do not imply `noopener`.
+- Document/enforce a site-wide link policy purely through configuration that ships in config export.
+- Serve as a base to fork if you need the token applied to links regardless of `target` (the current code gates on `target="_blank"`).

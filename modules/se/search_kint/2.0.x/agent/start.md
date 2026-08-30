@@ -14,3 +14,11 @@ Key facts:
   inherits that restriction entirely.
 - Aimed squarely at render arrays and loaded entities — structures where Kint's collapsed tree is
   correct but unnavigable.
+- **Entirely front-end**: one `hook_page_attachments()` attaches a JS/CSS library; the JS enhances
+  the HTML Devel's Kint already rendered. It never produces a dump itself.
+
+## What you'd do → where
+
+- **Understand exactly what it hooks into, the DOM contract, the search behavior, and how the
+  "Get path" trail builds `$var[...]->...` paths / entity-getter code** →
+  [hooks/search-kint.md](hooks/search-kint.md)

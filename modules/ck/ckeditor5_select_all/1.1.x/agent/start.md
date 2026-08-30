@@ -17,20 +17,31 @@ that otherwise assumes a keyboard.
 
 Facts:
 - **Depends on:** `ckeditor5` (Drupal core).
-- **Core:** `^10 || ^11`. **Package:** CKEditor 5.
+- **Core:** `^10 || ^11`. **Package:** CKEditor 5. **License:** GPL-2.0-or-later.
 - No settings page (`configure: ''` → null), no permissions, no services, no routes, no drush, no
   hooks, no plugin *types*, no custom JS.
 
-Everything you need (real machine names):
-- **CKEditor 5 plugin id:** `ckeditor5_select_all_selectall` (in `ckeditor5_select_all.ckeditor5.yml`).
-  It binds the upstream CKEditor 5 plugin `selectAll.SelectAll` (bundled with core, not shipped here).
-- **Toolbar item:** `selectall` (label "Select All"); `elements: false` — the plugin adds no HTML
-  elements/tags, so no text-format filter changes are needed.
+## What you'd do → where
+
+- **Add the Select All button to a text format's toolbar (the only setup step)** →
+  [configure/toolbar.md](configure/toolbar.md)
+- **Understand how the YAML-only CKEditor 5 plugin is registered (reusable pattern for wrapping a
+  core-bundled CKEditor 5 feature)** → [plugins/ckeditor5-plugin.md](plugins/ckeditor5-plugin.md)
+
+## Key facts (real machine names)
+
+- **CKEditor 5 plugin id:** `ckeditor5_select_all_selectall` (the top-level key in
+  `ckeditor5_select_all.ckeditor5.yml`). It binds the upstream CKEditor 5 plugin
+  `selectAll.SelectAll` (bundled with core, not shipped by this module).
+- **Toolbar item id:** `selectall` (label "Select All") — this is the string stored in a text
+  format's `editor.editor.{format}` toolbar `items` array.
+- **`elements: false`** — the plugin adds no HTML elements/tags, so no text-format filter or
+  allowed-HTML changes are needed.
 - **Admin library:** `ckeditor5_select_all/admin.selectall` — CSS only (`css/selectall.admin.css`),
-  which sets the button icon `icons/marker.svg` on the `.ckeditor5-toolbar-button-selectAll` class.
+  which sets the button icon `icons/marker.svg` via the `.ckeditor5-toolbar-button-selectAll` class.
 - **Config schema key:** `ckeditor5.plugin.ckeditor5_select_all_selectall`
   (`config/schema/ckeditor5_select_all.schema.yml`) — an empty mapping; the plugin stores no settings.
-- **Use it:** Admin › Configuration › Content authoring › **Text formats and editors** → *Configure*
-  a format (e.g. Basic/Full HTML) → drag **Select All** into the CKEditor 5 toolbar → *Save*. Available
-  immediately to anyone who can use that format; no cache rebuild required.
+- **Tests:** one kernel test, `SelectAllKernelTest` (`@group ckeditor5_select_all`), covering plugin
+  discovery, toolbar-item registration, label, `elements: false`, `CKEditor5PluginDefault`
+  instantiation, empty dynamic config, library + schema existence, and editor-entity persistence.
 - **No security surface.**
