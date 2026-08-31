@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Bootstrap External Link Pop-up renders `external_link_popup`'s outbound-link warning as a Bootstrap modal rather than the parent module's own dialog.
+Bootstrap External Link Pop-up swaps the `external_link_popup` module's jQuery UI "you are leaving this site" dialog for a Bootstrap modal, so the outbound-link confirmation matches a Bootstrap-themed frontend without extra CSS.
 
 ---
 
-The parent module shows a confirmation when a visitor clicks a link leaving the site — *"You are now leaving our website"* — which is a requirement in several sectors: public bodies and regulated financial and health organisations often must not appear to endorse third-party content, and a documented interstitial is how that is demonstrated. This module is presentation only: on a Bootstrap-themed site it uses the framework's own modal, which is already loaded, matches the rest of the site and needs no additional styling to override. Version **2.2.0** on core `^9.3 || ^10 || ^11`, requiring `external_link_popup`. Two things to attach, and they are the ones that make an interstitial acceptable rather than merely present. **A modal is a focus event**: it must trap focus while open, return focus to the link on dismissal, close on Escape, and announce itself as a dialog — a warning nobody can dismiss with a keyboard is a link nobody can follow, and this is the same checklist as every other modal in this campaign. And **an interstitial has a cost that is worth naming to whoever asked for it**: it interrupts every outbound click, it is dismissed without being read after the second time, and it does not stop anyone going anywhere. Where the requirement is regulatory it is the right answer regardless; where it is a preference, a visual indicator on external links is the lighter alternative and is usually what the concern actually needed.
+This module is a thin presentation layer over **External Link Pop-up** (`external_link_popup`), which it hard-depends on. The parent module owns everything configurable — the pop-up messages, titles, Yes/No button labels, the trusted-domain whitelist and which links trigger a warning — all managed at `/admin/config/content/external_link_popup` under the *administer external link popup* permission; this module adds **no routes, permissions, config or config schema of its own**. What it contributes is exactly two things. First, `hook_page_bottom()` renders a Twig template (`templates/bootstrap-external-link-popup.html.twig`) that places one empty, hidden Bootstrap `.modal` markup block near the end of every page, with fixed element IDs (`externalLinkPopupModal`, `…ModalLabel`, `…ModalBody`, `…ModalCloseButton`, `…ModalContinueButton`). Second, `hook_page_attachments_alter()` appends the module's `dialog` library **only when** the parent's `external_link_popup/dialog` library is already attached, and that JS (`js/dialog.js`) overrides `Drupal.behaviors.externalLinkPopup.openDialog`: on an external-link click it copies the popup's title, body (with `[link:url]`/`[link:text]` tokens HTML-encoded), and button labels into the modal, wires the **Continue** button to `window.open(element.href, element.target, 'noopener')`, then opens the modal using the Bootstrap 5 API (`new bootstrap.Modal(...)`) or the Bootstrap 4 jQuery `.modal()` API depending on the detected `bootstrap.Tooltip.VERSION`. Because it reuses the parent's click-interception and domain matching, everything about *when* a warning appears is inherited unchanged. Crucially, **the module ships no Bootstrap CSS or JS** — the active theme (Radix, Barrio, or a custom Bootstrap theme) must already load them, or the modal silently fails to open. Version **2.2.0**, core `^9.3 || ^10 || ^11`. Theming is done by overriding the provided Twig template (keep the ID variables intact) to add Bootstrap classes. As with any modal, treat it as a focus event: it should trap focus, be dismissable with Escape/keyboard, and return focus to the link — and remember an interstitial interrupts every outbound click and stops no one, so it earns its place mainly where a documented leaving-site disclaimer is a real requirement.
 
 ---
 
-- Warn visitors before they leave the site.
-- Meet a regulatory disclaimer requirement.
-- Show an outbound-link modal in Bootstrap style.
-- Avoid endorsing third-party content.
-- Match the theme's modal styling.
-- Add a leaving-site notice.
-- Support a public body's link policy.
-- Warn before a financial site's outbound links.
-- Show a health-information disclaimer.
-- Avoid extra CSS for the popup.
-- Support a compliance requirement.
-- Add a confirmation to partner links.
-- Use the theme's existing modal component.
-- Warn about leaving a secure area.
-- Support a documented linking policy.
-- Style an interstitial consistently.
-- Add a disclaimer to external references.
-- Meet an audit's linking requirement.
+- Show the external-link "you are leaving this site" warning as a Bootstrap modal.
+- Match the outbound-link confirmation to a Bootstrap-themed frontend.
+- Avoid writing custom CSS to restyle the parent module's jQuery UI dialog.
+- Reuse the theme's already-loaded Bootstrap modal component for the interstitial.
+- Present a regulatory leaving-site disclaimer in on-brand styling.
+- Warn visitors before they follow a link to a third-party domain.
+- Keep a public body from appearing to endorse external content.
+- Add a compliance interstitial on a financial or health site using Bootstrap.
+- Confirm before opening partner or affiliate links in a new tab.
+- Support both Bootstrap 4 and Bootstrap 5 themes with one module.
+- Override the parent module's `openDialog` to render into a Bootstrap `.modal`.
+- Place a reusable hidden modal in the page bottom via a Twig template.
+- Customize the modal markup by overriding `bootstrap-external-link-popup.html.twig`.
+- Add extra Bootstrap classes to the leaving-site modal without patching the parent.
+- Keep outbound-link configuration centralized in External Link Pop-up.
+- Trigger the modal only on links outside the configured domain whitelist.
+- Open the confirmed destination safely with `noopener` to prevent reverse tabnabbing.
+- Provide a documented, styled exit disclaimer for an accessibility/compliance audit.
+- Show a themed confirmation when leaving a secure or members-only area.
+- Standardize interstitial styling across a Bootstrap-based multisite.

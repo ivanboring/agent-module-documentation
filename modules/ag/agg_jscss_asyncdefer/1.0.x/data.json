@@ -1,7 +1,7 @@
 {
   "name": "Aggregation JS CSS async defer",
   "data_name": "agg_jscss_asyncdefer",
-  "description": "Adds async/defer attributes to libraries and aggregates.",
+  "description": "Applies async/defer attributes to JS and CSS asset libraries site-wide and splits aggregates by attribute.",
   "version": "1.0.x",
   "package": "Performance",
   "composer_namespace": "drupal/agg_jscss_asyncdefer",
@@ -26,16 +26,18 @@
     "Theming"
   ],
   "subcategories": [
-    "Front-end performance",
-    "Asset libraries"
+    "Critical CSS / CSS optimization",
+    "CSS / JS injection"
   ],
   "keywords": [
     "async",
     "defer",
     "aggregation",
     "javascript",
+    "css",
     "performance",
-    "assets"
+    "assets",
+    "render-blocking"
   ],
   "project_description": "This module allows you to load JS and CSS files with async or defer attributes for selected libraries or force all JS and CSS files to use a specific attribute. If the files are compressed, it creates different compressed files based on the attribute.\n\n Through a configuration form located at Configuration > Development > Performance, you can choose to force all JS or CSS files to use a specific attribute or select individual libraries to apply the attribute.",
   "maintenance_status": "Actively maintained",

@@ -1,23 +1,38 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-# OpenRouter Provider (ai_provider_openrouter) — agent index
+# ai_provider_openrouter — agent start
 
-**OpenRouter** provider plugin for Drupal's **`ai`** module. Requires `ai` and **`key`**.
-`administer ai providers` is `restrict access: true`. Version **1.1.6**.
-**Core requirement `^10.5 || ^11.2` — unusually tight at both ends.**
+Registers the `openrouter` **AiProvider** plugin for the AI (AI Core) module, routing operations
+through **OpenRouter** — an OpenAI-compatible LLM aggregator at `https://openrouter.ai/api/v1`.
+Depends on `ai` and `key`. Version 1.1.6, core `^10.5 || ^11.2`.
 
-**The `key` dependency is the right arrangement** — the API key comes from a **Key entity** rather
-than a settings field, so it never reaches exported configuration.
+- Supported operation types (`getSupportedOperationTypes()`): **`chat`, `embeddings`,
+  `text_to_image`**. Capability: `StreamChatOutput`.
+- HTTP is done through the `ai_provider_openrouter.client` service (`OpenRouterClient`), which
+  wraps the **`openai-php/client`** SDK plus a raw Guzzle call for the models listing.
+- API key is a **Key** entity — config stores only its machine name (`api_key`), never the secret.
+  The client resolves it at request time via `key.repository`.
+- Config UI: **Admin → Config → AI → AI Providers → OpenRouter** at
+  `/admin/config/ai/providers/openrouter/settings` (route `ai_provider_openrouter.settings`,
+  permission `administer ai providers`).
+- Provides two permissions of its own (`administer ai providers`, `use ai provider openrouter`)
+  and a config schema. No Drush commands.
 
-**What OpenRouter adds:** it is itself an aggregator — one account and one API reach models from
-OpenAI, Anthropic, Google, Meta and others, with routing and fallback. That indirection is the point
-for a site comparing models, using different ones per task, or avoiding a single vendor's contract.
-**It also costs a layer:** OpenRouter sees every prompt and response passing through.
+## Map
 
-**Three things for the deployment conversation:**
-1. **The key is a spending credential** — real cost, at speed. Environment variable behind a **Key**
-   entity, a **spend limit set at the provider**, and someone watching it.
-2. **Data handling is contractual, not technical.** Prompts may carry personal data or unpublished
-   content, and passing them through an aggregator to an underlying provider is a **processing
-   chain** that belongs in the privacy assessment.
-3. **Model availability changes without notice** on an aggregator — a site pinned to a specific
-   model needs a plan for the day it is withdrawn.
+- Settings form, config object, key selection, model whitelist, base URL, default-provider toggle →
+  [configure/settings.md](configure/settings.md)
+- The `openrouter` AiProvider plugin — chat/embeddings/text-to-image handling, streaming, tools,
+  reasoning, multimodal, model discovery → [providers/openrouter.md](providers/openrouter.md)
+- Calling OpenRouter from code (the `ai.provider` service and the client service) →
+  [api/ai_provider_openrouter.md](api/ai_provider_openrouter.md)
+
+## Notes
+
+- OpenRouter is an aggregator: one key reaches models from OpenAI, Anthropic, Google, Meta,
+  Mistral, Qwen, Grok and others. Every prompt and response passes through OpenRouter — a data
+  processing chain worth capturing in a privacy assessment, and a real spend credential worth a
+  provider-side limit.
+- Streaming is forced on for legacy (non-agent) DeepChat assistants and disabled for agent-based
+  assistants (three DeepChat hooks in the `.module` file). See the provider doc.
+- Model availability on an aggregator can change without notice; a site pinned to one model needs
+  a fallback plan.

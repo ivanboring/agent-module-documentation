@@ -1,11 +1,16 @@
 {
   "name": "GraphQL Webform",
   "data_name": "graphql_webform",
-  "description": "GraphQL integration for Webform.",
+  "description": "Provides GraphQL integration for the Webform module.",
   "version": "3.0.x",
   "package": "GraphQL",
   "composer_namespace": "drupal/graphql_webform",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "php": "^8.3",
+    "drupal/graphql": "^5@rc",
+    "drupal/webform": "^6.3@beta",
+    "symfony/string": "^6 || ^7"
+  },
   "dependent_modules": [
     "webform:webform (6.x)",
     "graphql:graphql (5.x)"
@@ -18,31 +23,42 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": "8.3",
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/address": "Allows to expose the 'advanced_address' webform element to GraphQL endpoints.",
+    "drupal/recaptcha": "Exposes Google reCAPTCHA v2 element settings through the graphql_webform_captcha submodule.",
+    "drupal/recaptcha_v3": "Exposes Google reCAPTCHA v3 element settings through the graphql_webform_captcha submodule.",
+    "drupal/telephone_validation": "Validates 'tel' webform submissions against libphonenumber when phone-number validation is configured on the element.",
+    "drupal/turnstile": "Exposes Cloudflare Turnstile element settings through the graphql_webform_captcha submodule."
+  },
   "submodules": [
     "graphql_webform_captcha"
   ],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "GraphQL schema extension (Plugin/GraphQL/SchemaExtension: WebformExtension, plus WebformCaptchaExtension in the submodule)",
+    "GraphQL data producers (Plugin/GraphQL/DataProducer: webform_load, webform_form, webform_submit, webform_load_submission, webform_submission_confirmation, webform_entity_autocomplete, and ~30 element-property producers)"
+  ],
   "categories": [
     "Decoupled",
-    "Content editing experience"
+    "Forms and surveys"
   ],
   "subcategories": [
-    "GraphQL",
-    "Webform"
+    "GraphQL schema",
+    "Webform elements",
+    "Submission handling"
   ],
   "keywords": [
     "graphql",
     "webform",
     "decoupled",
+    "headless",
     "forms",
     "submission",
-    "headless"
+    "mutation"
   ],
-  "project_description": "GraphQL Webform exposes forms built with the Webform module to a decoupled (headless) frontend through GraphQL . Forms are designed in Drupal with Webform as usual; a frontend (React, Vue, a mobile app, …) can then display them, collect input and send submissions back.\n\n Back to top \n\n What it does \n \n The most commonly used form elements are supported (see the list below). \n Supports conditional fields: depending on a visitor's answers, other fields can appear, hide or become required. \n Submissions are validated, and validation errors are returned for each field. \n A confirmation message, title and redirect are returned after a submission. \n File uploads are supported. \n Closed forms, scheduled open and close dates, and submission limits are handled, including the message to display when a form is unavailable. \n \n Back to top \n\n Requirements \n \n Webform module \n GraphQL module \n \n Two optional modules add more elements when installed: Address (for the address element) and Telephone Validation (for validating phone numbers).\n\n Back to top \n\n Branches \n \n 1.x: Supports GraphQL 3.x \n 2.x: Supports GraphQL 4.x \n 3.x: Supports GraphQL 5.x \n \n Back to top \n\n Supported elements \n Text & input \n\n \n Text field \n Text area \n Email \n Telephone \n URL \n Hidden \n Autocomplete \n Number, Range, Rating, Scale \n Color \n Signature \n Name \n \n Date & time \n\n \n Date \n Date and time \n Time \n \n Choices \n\n \n Select / dropdown \n Radios \n Checkboxes \n Select, radios and checkboxes with an “other” option \n Table select \n Likert \n Term and entity select \n \n Files \n\n \n File upload \n Audio file \n \n Layout & groups \n\n \n Fieldset \n Details \n Section \n Flexbox \n Composite (a group of the elements above) \n Address \n \n Display & actions \n\n \n Markup and formatted text \n Message \n Horizontal rule \n Computed value \n Terms of service \n Submit and reset buttons \n \n Back to top \n\n Contributing \n Bug reports, feature requests and MRs are welcome! Please use the issue queue .\n\n Back to top",
+  "project_description": "GraphQL Webform exposes forms built with the Webform module to a decoupled (headless) frontend through GraphQL. Forms are designed in Drupal with Webform as usual; a frontend (React, Vue, a mobile app, ...) queries the form definition, renders it, and posts submissions back through a GraphQL mutation.\n\nWhat it adds to the GraphQL schema:\n- A `webformById(id)` query returning a `Webform` (id, label, settings) whose `form` field returns a `WebformForm` — a built form instance that depends on the source entity and the current user's access. `WebformForm` carries the `elements` list (one GraphQL type per Webform element plugin, e.g. `WebformElementTextfield`, `WebformElementSelect`, `WebformElementManagedFile`), the form `title`, source-entity fields, and an `unavailable` field describing why a form cannot be filled in (closed, opening later, source-entity required/mismatched, limit reached) with a machine-readable `reason`.\n- A `submitWebform(id, elements, files, requestValues, sourceEntityId, sourceEntityType)` mutation that creates a real Webform submission by running Webform's programmatic `api` form pipeline, returning a `WebformSubmissionResult` with `errors`, per-element `validationErrors`, and the created `submission` (id, uuid, token, tokenUrl, confirmation).\n- A `webformConfirmation(submissionId, token, webformId)` query returning the confirmation message/title/redirect.\n- A `webformEntityAutocomplete(webformId, elementKey, input)` query resolving entity-autocomplete matches.\n\nSubmissions are validated server-side (element validators fire through Form API), file uploads are supported via the GraphQL multipart request spec, conditional `#states` logic is exposed, and closed/scheduled/limited forms are reported. The `graphql_webform_captcha` submodule exposes per-provider CAPTCHA rendering settings (reCAPTCHA v2/v3, Turnstile) so a decoupled frontend can render the widget; the solved token is sent back through the mutation's `requestValues` argument and validated on the server.\n\nBranches: 1.x supports GraphQL 3.x, 2.x supports GraphQL 4.x, 3.x supports GraphQL 5.x.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

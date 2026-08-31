@@ -1,7 +1,7 @@
 {
   "name": "Watchdog Delete Filter",
   "data_name": "watchdog_delete_filter",
-  "description": "Selectively delete dblog entries by filter.",
+  "description": "Selectively delete dblog (watchdog) log entries by type and/or severity, instead of core's all-or-nothing clear.",
   "version": "2.0.x",
   "package": null,
   "composer_namespace": "drupal/watchdog_delete_filter",
@@ -17,19 +17,19 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/chosen": "Turns the multi-select Type/Severity widgets into searchable Chosen selects."
+  },
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Administration tools",
-    "Security"
+    "Administration tools"
   ],
   "subcategories": [
-    "Logging",
-    "Maintenance"
+    "Database maintenance / optimization"
   ],
   "keywords": [
     "watchdog",
@@ -37,9 +37,11 @@
     "delete",
     "filter",
     "logs",
+    "severity",
+    "type",
     "maintenance"
   ],
-  "project_description": "Watchdog Delete Filter module offers useful filters to selectively delete entries in the Watchdog provided by the Drupal core's Dblog module. At the present time, two filters are provided: Type and Severity .\n\n Why this module? \n \n\nThe Dblog module from Drupal core provides a UI to delete ALL the watchdog entries in the database ( admin/reports/dblog/confirm ), without any kind of filtering. In some installations, there are repetitive errors and/or super-verbose modules that fill up the watchdog , displacing other significant errors. This module lets the user to clean the watchdog from these annoying entries, reducing the dblog table size . It is specially useful to clean dblog tables configured to keep more than 100000 entries .\n\n This module will be deprecated if someday the watchdog entries will be made Drupal entities, since modules like Views Bulk Operations (VBO) will then handle the watchdog cleaning operations more powerfully. See https://www.drupal.org/project/views_bulk_operations/issues/2994794 .\n\n How it works? \n \n\nThis module overrides the form ( admin/reports/dblog/confirm ) provided by the core Dblog module, adding the type and the severity filters.\n\n REQUIREMENTS \n This module requires the following module:\n\n \n Dblog (from Drupal core) \n \n RECOMMENDED MODULES \n \n Chosen : Chosen uses the Chosen jQuery plugin to make your multi-select elements more user-friendly. \n \n INSTALLATION \n Install the Watchdog Delete Filter module as you would normally install a contributed Drupal module. Visit https://www.drupal.org/node/1897420 for further information.\n\n CONFIGURATION \n No configuration required. Just visit admin/reports/dblog/confirm to start using the module.\n\n SIMILAR MODULES \n \n Watchdog Prune : It allows you to selectively delete watchdog entries based on criteria, like age. The module lets you configure the cleaning process as a cron job. Conversely, Watchdog Delete Filter is a simpler module: it does not handle entries age and it requires manual intervention for cleaning. \n \n SPONSOR \n This module was created and sponsored by Interdruper , a Madrid (Spain) based company that provide specialist consulting, auditing and development services in Enterprise Drupal.\n\n * Interdruper - https://www.interdruper.com/ \n\n Back to top",
+  "project_description": "Watchdog Delete Filter module offers useful filters to selectively delete entries in the Watchdog provided by the Drupal core's Dblog module. At the present time, two filters are provided: Type and Severity.\n\nWhy this module? The Dblog module from Drupal core provides a UI to delete ALL the watchdog entries in the database (admin/reports/dblog/confirm), without any kind of filtering. In some installations, there are repetitive errors and/or super-verbose modules that fill up the watchdog, displacing other significant errors. This module lets the user clean the watchdog from these annoying entries, reducing the dblog table size. It is specially useful to clean dblog tables configured to keep more than 100000 entries.\n\nThis module will be deprecated if someday the watchdog entries are made Drupal entities, since modules like Views Bulk Operations (VBO) would then handle the watchdog cleaning operations more powerfully.\n\nHow it works? This module overrides the confirm form at admin/reports/dblog/confirm provided by the core Dblog module, adding the Type and the Severity filters. It requires the core Dblog module. Chosen is a recommended (optional) module to make the multi-select widgets more user-friendly. No configuration required. A similar but different module is Watchdog Prune, which deletes by age and can run as a cron job; Watchdog Delete Filter is simpler, filters by type/severity, and requires manual intervention. Created and sponsored by Interdruper, a Madrid (Spain) based Drupal consultancy.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "not-covered",
