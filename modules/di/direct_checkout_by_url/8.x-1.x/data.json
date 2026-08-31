@@ -1,11 +1,13 @@
 {
   "name": "Direct checkout by URL",
   "data_name": "direct_checkout_by_url",
-  "description": "Send a user straight into checkout via a URL pattern.",
+  "description": "Provides a URL that builds a Commerce cart from SKUs in the query string and redirects the visitor straight to checkout.",
   "version": "8.x-1.x",
   "package": null,
   "composer_namespace": "drupal/direct_checkout_by_url",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^2.0 || ^3.0"
+  },
   "dependent_modules": [
     "commerce:commerce_product",
     "commerce:commerce_order",
@@ -22,27 +24,30 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": [
+    "use direct checkout",
+    "administer direct checkout by url"
+  ],
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "E-commerce",
-    "Integrations"
+    "E-commerce"
   ],
   "subcategories": [
-    "Cart and checkout",
-    "Marketing campaigns"
+    "Cart management",
+    "Checkout customization",
+    "Add to cart forms"
   ],
   "keywords": [
     "commerce",
     "checkout",
+    "cart",
     "url",
-    "direct",
-    "campaign",
-    "cart"
+    "buy now",
+    "deep link"
   ],
-  "project_description": "Makes it possible to share a link to redirect a user directly to the checkout page, with given items in the cart.\n\n We allow two different variations of request. One is to pass a comma\n\nseparated list of SKUs in the products parameter. The other one is the\n\npass an array of products in the query parameters, in which case one\n\ncan specify the quantity as well.\n\n An example on the first case:\n\n mysite.com/direct-checkout-by-url?products=1234,5678 \n\n That would end up adding the products with sku 1234 and 5678 to the cart, both with a quantity of 1.\n\n An example of the second case:\n\n mysite.com/direct-checkout-by-url?products[0][quantity]=2&products[0][sku]=1234 \n\nThat would end up adding the product with sku 1234 to the cart with a quantity of 2.\n\n Redirecting to other places than the checkout page \n Even though the name would indicate that it exclusively redirects users to the checkout page, you can also redirect to other places using Drupal's built in destination query parameter.\n\n One such example could be to redirect to the cart instead of the checkout page. Given a product with a SKU 123 you would then use this link:\n\n mysite.com/direct-checkout-by-url?products=123&destination=cart",
+  "project_description": "Makes it possible to share a link that builds a Commerce cart from products passed in the query string and redirects the visitor directly to the checkout page. Products are addressed by SKU. Two request shapes are accepted: a comma-separated list of SKUs (each added with quantity 1) via '?products=1234,5678', or an array carrying explicit quantities via '?products[0][sku]=1234&products[0][quantity]=2'. Each SKU is loaded as a Commerce product variation, checked against the availability manager, and added to the visitor's default cart at its server-resolved price; the cart is then either kept or emptied first depending on the 'reset_cart' setting. After adding, the controller redirects to the checkout form for the cart order (or to the cart page if nothing was added). Because the redirect is a normal internal redirect, Drupal's built-in 'destination' query parameter can send the visitor somewhere else instead (for example '&destination=cart').",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

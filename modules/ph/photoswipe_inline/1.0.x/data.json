@@ -1,12 +1,16 @@
 {
-  "name": "PhotoSwipe Inline",
+  "name": "PhotoSwipe Inline Text Filter",
   "data_name": "photoswipe_inline",
-  "description": "Inline PhotoSwipe galleries.",
+  "description": "A text-format filter that wraps inline <img> tags so body-content images open in a PhotoSwipe lightbox.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/photoswipe_inline",
-  "composer_requirements": {},
-  "dependent_modules": [],
+  "composer_requirements": {
+    "drupal/photoswipe": "^5.0"
+  },
+  "dependent_modules": [
+    "photoswipe"
+  ],
   "configure": null,
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
@@ -19,25 +23,27 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Media management",
-    "Content display"
+    "Content editing experience",
+    "Media"
   ],
   "subcategories": [
-    "Lightbox",
-    "Galleries"
+    "Text format filters",
+    "Lightbox / modal display"
   ],
   "keywords": [
     "photoswipe",
-    "gallery",
     "lightbox",
     "inline",
+    "text filter",
+    "ckeditor",
     "images",
+    "gallery",
     "zoom"
   ],
-  "project_description": "How it works \n \n There is PhotoSwipe module. Well you know. If you want to open your inline images (inserted via CKEditor for example) in PhotoSwipe, you need to MANUALLY add some HTML tags and CSS classes \n This module adds a text filter which makes this automatically. Just insert images any way \n Now your images are opening in PhotoSwipe \n \n Is it working with CKEditor? \n Yes! Just insert images to CKEditor any way\n\n How to enable this text filter? \n If you are a newbie in Drupal, see official docs \n\n Dependencies \n PhotoSwipe \n\n Back to top",
+  "project_description": "There is the PhotoSwipe module. If you want to open your inline images (inserted via CKEditor for example) in PhotoSwipe, you normally need to MANUALLY add HTML tags and CSS classes. This module adds a text filter that does it automatically: insert images any way you like and they open in PhotoSwipe. Works with CKEditor. Enable the filter on a text format under Administration > Configuration > Content authoring > Text formats and editors. Depends on the PhotoSwipe module (>= 5).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

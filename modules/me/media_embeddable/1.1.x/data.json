@@ -1,7 +1,7 @@
 {
   "name": "Media: Embeddable",
   "data_name": "media_embeddable",
-  "description": "Media entity for embedding HTML code.",
+  "description": "Adds an 'Embeddable' media type whose source is a block of embed HTML/iframe code, rendered as-is by a dedicated HTML field formatter.",
   "version": "1.1.x",
   "package": "Media",
   "composer_namespace": "drupal/media_embeddable",
@@ -21,22 +21,26 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "Media source plugin: media_embeddable (Embeddable) — src/Plugin/media/Source/HTMLEmbed.php",
+    "Field formatter plugin: html_field_formatter (HTML Field Formatter) — src/Plugin/Field/FieldFormatter/HTMLFieldFormatter.php"
+  ],
   "categories": [
-    "Media management",
-    "Security"
+    "Media",
+    "Content display"
   ],
   "subcategories": [
     "Media sources",
-    "Embeds"
+    "Media embedding"
   ],
   "keywords": [
     "media",
     "embed",
     "html",
     "iframe",
-    "oembed",
+    "embed code",
+    "widget",
     "third-party"
   ],
   "project_description": "Back to top \n\n Media: Embeddable \n Embed html and iframes safely using Media.\n\n Back to top \n\n Usage \n \n Install the module \n Configure the settings \"/admin/config/media_embeddable\" \n Add 'Embeddable' media entities. \n \n Sponsored and developed by: \n \n\n Back to top",

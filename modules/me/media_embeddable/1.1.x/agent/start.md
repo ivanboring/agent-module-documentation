@@ -1,20 +1,47 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Media: Embeddable (media_embeddable) — agent index
 
-Media type whose **source is a block of HTML**, so a third-party embed becomes a reusable media
-entity. Depends on core `media`. Settings at `/admin/config/media/…`;
-`administer media embeddable` is **`restrict access: true`**. Version **1.1.2**.
-Core requirement `^10 || ^11`.
+A Media type whose **source is a block of embed/iframe HTML code**, so a third-party embed becomes
+a reusable media entity instead of markup pasted into a body field. Core `^10 || ^11`; depends on
+core `media`. Installed version **1.1.2** (docs track `1.1.x`).
 
-**Treat that permission as the module's defining characteristic, not an incidental setting.**
-A stored, reusable block of arbitrary HTML is a stored, reusable block of **arbitrary JavaScript**.
-Whoever may create these entities can execute code in the browser of every visitor to **every page
-referencing them** — and it does **not** pass through a text format's filtering the way pasted
-markup would. Restrict creation to the people you would trust to deploy code.
+## Mechanism (read the source, not the tagline)
+- **Media source plugin** `media_embeddable` — `src/Plugin/media/Source/HTMLEmbed.php`
+  (`@MediaSource id="media_embeddable"`, `allowed_field_types={"text_long"}`,
+  `media_library_add` form = `EmbeddableForm`). `getMetadata()` returns the media UUID as the
+  default name.
+- **Media type + field** are installed as config: `media.type.media_embeddable`, storage/field
+  `field_media_embeddable` (text_long). Standard add/edit form
+  (`/media/add/media_embeddable`) uses a plain `text_textarea` widget.
+- **Media Library add form** — `src/Form/EmbeddableForm.php` (extends
+  `media_library\Form\AddFormBase`). `validateHtml()` parses input with `DOMDocument`/`DOMXPath`
+  and applies `media_embeddable.settings` rules to `<script>` tags only.
+- **Field formatter** `html_field_formatter` — `src/Plugin/Field/FieldFormatter/HTMLFieldFormatter.php`.
+  Renders the stored field value via `Markup::create($item->value)` through
+  `templates/media-embeddable.html.twig` (output as-is; no text-format filter). Optional
+  "Responsive" setting attaches `media_embeddable/responsive` (CSS + `js/responsive.js`, which
+  reads iframe width/height client-side to set an aspect-ratio wrapper, skipping Facebook iframes).
+- **No server-side fetching.** There is no HTTP client, `file_get_contents`, or oEmbed resolver.
+  Embedded scripts/iframes load in the visitor's browser.
 
-**What it genuinely fixes:** an embed pasted into a body field cannot be reused, cannot be found
-again, and cannot be updated in one place when the provider changes their code. As a media entity
-it is in the library, referenced from fields, searchable, and updated once.
+## Config / admin
+- Settings form `MediaEmbeddableSettings` at route `media_embeddable.settings`
+  = `/admin/config/media_embeddable`, permission **`administer media embeddable`**
+  (`restrict access: true`). Menu link under `system.admin_config_media`.
+- `media_embeddable.settings` keys: `allow_tag_without_src` (default 0),
+  `allow_tag_with_content` (default 0), `only_allowed_hosts` (default 1),
+  `allowed_hosts` (default `instagram.com`, `twitter.com`, `x.com`). These constrain only
+  `<script src>` in the Media Library add flow.
+- No Drush commands. No config schema file ships. `hook_uninstall()` refuses to uninstall while
+  any `media_embeddable` media entities still exist, then deletes `field_media_embeddable`.
 
-**Also a consent question.** The provider's script sees every visitor — it belongs behind the
-consent manager exactly as an analytics tag does.
+## Operational note
+The stored HTML is rendered verbatim and does **not** pass through a text format's filtering — so
+granting create/edit on the `media_embeddable` bundle is equivalent to granting raw-HTML output.
+Scope the core media create/update permissions for this bundle to editors you would trust with a
+Full HTML text format, and put third-party embed scripts behind your consent manager (the
+provider's script sees every visitor).
+
+## Solution-type detail
+- `media-sources/embeddable-source.md` — the media source + type, the two input paths, the
+  script-tag settings, and the formatter/rendering behaviour.

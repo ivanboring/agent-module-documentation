@@ -1,27 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-EBT Image Gallery adds a ready-made Image Gallery block, with GLightbox providing the full-size viewer.
+EBT Image Gallery adds a reusable "EBT Image Gallery" block content type: reference Image media, pick a grid layout, and the images render as a CSS grid that opens full size in a GLightbox lightbox.
 
 ---
 
-Where the EPT family supplies pre-built **paragraph types**, the Extra Block Types family supplies pre-built **block types**, sharing an `ebt_core` for the common settings just as EPT does. The distinction matters for where the component can go: a paragraph lives inside a content entity's field, so it belongs to a page; a block can be placed in a region through block layout, dropped into a Layout Builder section, or referenced from a field with `block_field` — which makes it the right shape for something that should appear on many pages or in a sidebar rather than inside one page's body. This one is a gallery, requiring `ebt_core`, core `media` and the **`glightbox`** module for the viewer. GLightbox, like Tiny Slider in the EPT carousel, is a **vanilla-JavaScript library with no jQuery**, which is the right direction for a modern Drupal front end. Version **2.0.0**, core requirement `^10.1 || ^11 || ^12`, and the same installation prerequisite as its siblings — an image media type must exist, or the install fails on an unmet configuration dependency. The lightbox checklist applies as it does to every such component and is worth verifying rather than assuming: focus trapped inside the viewer while open, focus returned to the thumbnail on close, Escape to dismiss, the viewer announced as a dialog, and thumbnails on the page with the full-size image fetched on demand rather than twenty originals loaded up front.
+Installing the module creates a `block_content` bundle called `ebt_image_gallery` with three fields: `field_ebt_image_gallery` (an unlimited-cardinality entity reference to Image `media`, edited with the Media Library widget and required), the standard `body`, and `field_ebt_settings` (the shared `ebt_core` settings field). The bundle's custom widget, `ebt_settings_image_gallery` (extending ebt_core's `EbtSettingsDefaultWidget`), adds a single extra control on top of the inherited Design options: a **Styles** radio set — `one_column` through `five_columns`, plus `fixed_size_image`, `fluid_grid` and `featured_images_grid`. The chosen style value is added verbatim as a CSS class on the block wrapper (`block--…--ebt-image-gallery.html.twig`), and the module's component CSS (`css/ebt_image_gallery.css`) turns that class into a `display:grid`/flex layout. Each referenced image is rendered by the GLightbox field formatter through a shipped media view display, using the module's `ebt_gallery_image` image style (scale-and-crop 365×265) for the thumbnail and grouping every image in the block into one lightbox gallery (`glightbox_gallery: parent`), so clicking a thumbnail opens the full-size image with prev/next navigation. GLightbox is vanilla JavaScript with no jQuery. Because it is a block, a gallery can be placed in a region via Block layout, dropped into a Layout Builder section, or referenced from a field — the right shape for something that should appear on many pages rather than inside one page's body. Requirements: `ebt_core`, the `glightbox` module and core `media`; an **Image media type must already exist** or `hook_requirements` blocks installation. The inherited Design options (spacing, borders, background color/media, container width, edge-to-edge) are configured through ebt_core and applied as per-block inline `<style>` at render time. The module ships no permissions of its own — creating and editing these blocks is governed by core block-content / Layout Builder permissions, and site-wide colors and breakpoints live on the EBT Core settings form.
 
 ---
 
-- Add an image gallery block.
-- Place a gallery in a sidebar.
-- Show a gallery on several pages.
-- Add a gallery to a Layout Builder section.
-- Build a photo grid with a lightbox.
-- Show exhibition images.
-- Add a gallery without custom code.
-- Place a gallery block per region.
-- Show product photography.
-- Build a portfolio block.
-- Add a swipeable gallery.
-- Show press images.
-- Reuse a gallery across the site.
-- Build a team photo grid.
-- Show event photographs.
-- Add a lightbox gallery block.
-- Give editors a ready-made gallery.
-- Show a project's images in a block.
+- Add a ready-made image gallery block to a page.
+- Place a gallery block in a sidebar region via Block layout.
+- Drop a gallery into a Layout Builder section.
+- Show the same gallery on several pages by reusing the block.
+- Build a photo grid whose images open in a lightbox.
+- Present exhibition or event photographs in a grid.
+- Show product photography as a 3- or 4-column grid.
+- Build a portfolio or project-images block.
+- Display a team photo grid.
+- Show press or media-kit images with full-size viewing.
+- Lay images out as a featured-images grid (one large, several small).
+- Use a fluid grid that reflows to fit the container width.
+- Use a fixed-size image grid for uniform thumbnails.
+- Give non-technical editors a gallery without custom theming.
+- Reference existing Media Library images into a gallery.
+- Add captions to gallery images (shown by GLightbox from media alt/name).
+- Apply consistent spacing, borders or a background to a gallery via ebt_core Design options.
+- Make a gallery span edge-to-edge across the viewport.
+- Constrain a gallery to a preset container width.
+- Reuse one branded gallery block across a whole site section.
+- Swap thumbnail dimensions by editing the ebt_gallery_image image style.
+- Change the number of columns without touching code.

@@ -1,31 +1,36 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Site Studio Views Element adds an element to the Site Studio (Cohesion) builder that lets an author pick a View and render it inside a component.
+Site Studio Views Element adds a "Drupal View" element to the Acquia Site Studio (Cohesion) builder that lets an author pick a View block display from a dropdown and render it inside a component or template.
 
 ---
 
-Site Studio is a visual page builder with its own element vocabulary, and Views is where a Drupal site's listings live. Without a bridge, a page built in Site Studio either cannot include a listing at all or includes a hard-coded one placed by a developer. This module supplies the bridge: a Views element in the Site Studio palette, so an author selects the View and display like any other element setting.
+Site Studio is Acquia's commercial visual page builder with its own element vocabulary; Views is where a Drupal site's listings live. Without a bridge, embedding a View in a Site Studio layout means creating a block instance for each View block display, placing it in the theme's hidden region, and re-placing it in every environment — brittle, and prone to the "Undefined block" errors Site Studio shows when a referenced block goes missing. This module removes that chore: it registers a single Cohesion custom element (plugin id `site_studio_views_element`, label "Drupal View") whose only setting is a `view_id` select. That select is built at runtime from every View, listing only displays whose `display_plugin` is `block`, keyed as `view_id:display_id`; page, feed, attachment and other display types are deliberately excluded. Choosing one and rendering the element runs `Views::getView()`, sets the chosen display, and returns the display's `buildRenderable()` render array wrapped in the module's own `site-studio-views-element` theme hook.
 
-The practical value is that listings stop being a developer task. A team building landing pages in Site Studio can put "latest news, three items" or "events in this category" into a page themselves, and the listing keeps all of Views' behaviour — filters, sorts, contextual arguments, pagers, access and caching — because it is still the View doing the work.
+The practical value is that listings stop being a block-management task. An author drops the element onto a component, picks "Latest news – Block", and the listing appears wherever that component is placed — no hidden-region blocks, no per-environment block placement, and no extra rows loaded on every page just because a block sits in a region. Because the output is a normal Views render array built through core's `#type => 'view'` element, the View's access plugin, filters, sorts, pager, and cache metadata all still apply — the module does not re-implement any of that, it just hands core the display to build.
 
-Site Studio itself is Acquia's commercial product and requires a licence; the `cohesion` module is its Drupal side and is a hard dependency here. This module is only useful on a site that already has that stack.
+Two constraints shape where this is useful. First, only **block** displays appear in the dropdown; a listing you want to embed must have a Block display on its View. Second, the element passes **no arguments** to the View — it calls `buildRenderable($display)` with no `$args`, so a display with contextual filters resolves them only from its own "Provide default value" settings, not from anything the element or the surrounding Site Studio context supplies. Plan contextual filters accordingly.
 
-The core range `^8 || ^9 || ^10 || ^11` spans four majors, which as always says more about intent than about testing — verify against the Site Studio version in use, since the element API is Site Studio's rather than Drupal's and moves on its own schedule.
+This is an add-on to a commercial stack: the `cohesion` module (Site Studio's Drupal side) and Acquia's Site Studio licence are hard requirements, and `views` is the other dependency. The core range `^8 || ^9 || ^10 || ^11` spans four majors and reflects intent more than test coverage — the element API belongs to Site Studio, which versions on its own schedule, so verify against the installed Site Studio version.
 
 ---
 
-- Place a View inside a Site Studio component.
-- Let authors add a listing without a developer.
-- Embed a news listing in a landing page.
-- Show category-filtered events in a component.
-- Choose the View display from the builder UI.
-- Keep Views filters and sorts in a built page.
-- Use contextual filters inside a Site Studio layout.
-- Preserve Views access checks in composed pages.
-- Reuse an existing View in a new page design.
-- Combine designed components with dynamic listings.
-- Avoid hard-coding listings into components.
-- Give a marketing team self-service listings.
-- Verify the element against the installed Site Studio version.
-- Audit which Views are embedded in Site Studio pages.
-- Confirm the Site Studio licence covers the site.
-- Plan a listing strategy for a Site Studio build.
+- Embed a View listing inside a Site Studio component.
+- Add a "Drupal View" element to a Site Studio template.
+- Let an author place a listing without creating a hidden-region block.
+- Show a "latest news, N items" block display in a landing page.
+- Render a category or tag listing inside a designed component.
+- Pick the View block display from the Site Studio element settings dropdown.
+- Reuse an existing View block display across several Site Studio components.
+- Keep Views filters, sorts and pager in a page-builder layout.
+- Preserve the View's own access checks when embedded (access is enforced at render).
+- Stop maintaining per-environment block placements for embedded Views.
+- Avoid "Undefined block" errors from missing block instances in components.
+- Reduce hidden-region block bloat that renders on every page load.
+- Give a marketing team self-service listings inside Site Studio.
+- Expose only block displays for embedding, hiding page/feed/attachment displays.
+- Add a Block display to a View specifically so it becomes embeddable here.
+- Design contextual-filter default values on the display (the element passes no args).
+- Override the `site-studio-views-element` template to wrap or restyle the embed.
+- Audit which View block displays are embedded across Site Studio components.
+- Confirm the Acquia Site Studio licence and `cohesion` module are in place before relying on this.
+- Verify the element against the installed Site Studio / Cohesion version after an upgrade.
+- Pair with Views Minimum Condition to hide a component when its View has no results.

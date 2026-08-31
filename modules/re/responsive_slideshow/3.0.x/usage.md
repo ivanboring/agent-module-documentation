@@ -1,27 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Responsive Slideshow provides a slideshow built on Bootstrap's own carousel component, for sites using a Bootstrap-based theme.
+Responsive Slideshow installs a dedicated "Responsive Slideshow" content type and a block that renders the most recent published slides as a Bootstrap 5 carousel, for sites whose theme already ships Bootstrap 5.
 
 ---
 
-The value is in the qualifier, exactly as it is for `uikit_image_formatter`. A site on a Bootstrap theme already ships Bootstrap's JavaScript and CSS, including a carousel component with its own markup conventions, its own indicators and controls, and its own responsive behaviour. A slideshow module that drives that component adds no library, no additional weight and no styling to override; a slideshow module that brings its own library adds all three and then looks imported. So on a Bootstrap site this is the sensible choice and on any other site it is the wrong one, which is the first thing to establish. Version **3.0.0** on core `^9.4 || ^10 || ^11`, depending on core `image`, configured behind an `administer responsive slideshow` permission. Two things worth attaching. **Bootstrap's carousel has known accessibility limitations** that the framework's own documentation acknowledges — auto-advance without an accessible pause control, and slide transitions that are not announced — so a site with a conformance obligation should disable auto-advance and verify keyboard operation rather than assume the framework has handled it. And the general carousel point stands: **content past the first slide is largely unseen**, so the decision to build one should be made on the merits rather than because the design template had one, and where several teams each want the top of the homepage, a carousel is the compromise that satisfies nobody's metrics.
+The mechanism is content-driven, not a field formatter. Installing the module creates a locked `responsive_slideshow` content type (fields: a required slide **image**, a plain-text **teaser**, a rich-text **body**, a **link**, and a **hide-detail-page** boolean), an image style `responsive_slideshow_style` that scale-and-crops to 1320x347, and default settings. You author slides as nodes of that type, then place the module's **Responsive Slideshow** block (plugin id `responsive_slideshow`, category "Blocks") in a region — typically the front page. On render the block runs `responsive_slideshow_homepage()`, which queries published `responsive_slideshow` nodes joined to the image field, in the current or unspecified language, ordered by `changed` DESC and limited to the configured slide count (node-access tagged). For each slide it builds the image URL through the image style, HTML-escapes the alt/title, truncates the node title to 90 characters and the description (teaser, or body run through the `restricted_html` format) to a configurable length, and resolves the link — either the node's own detail page, or the value of the Link field when "hide detail page" is set. It renders the `slideshow_data` theme hook (`templates/slideshow-data.html.twig`) as ordinary Bootstrap 5 carousel markup (`data-bs-ride`, indicators, prev/next controls). Crucially the module ships **only** a CSS library and **no slider JavaScript**: the carousel is driven by Bootstrap's own JS, which must come from the site's Bootstrap 5 theme, so on a non-Bootstrap site the slideshow will not animate. The value is entirely in that qualifier — on a Bootstrap theme it adds no library and no weight; anywhere else it is the wrong choice, which is the first thing to establish. A settings form at `/admin/config/user-interface/responsive_slideshow` (permission `administer responsive slideshow`) controls slide count, description length, and auto-advance interval in milliseconds; the block output is uncached (`max-age 0`). Note also the general carousel caveats: Bootstrap's carousel has acknowledged accessibility limitations (auto-advance without an accessible pause control, un-announced slide transitions), and content past the first slide is largely unseen — build one on the merits, not because the template had one.
 
 ---
 
-- Add a slideshow to a Bootstrap site.
-- Use the theme's own carousel component.
-- Show rotating images on a homepage.
-- Avoid adding a second slider library.
-- Match Bootstrap's markup conventions.
-- Build a hero slideshow.
-- Show featured content in rotation.
-- Add indicators and controls.
-- Keep page weight low on a Bootstrap theme.
-- Show a photo sequence.
-- Add a responsive image slider.
-- Build a promotional rotation.
-- Show partner logos.
-- Add a slideshow block.
-- Use existing theme styling.
-- Build a campaign banner rotation.
-- Show product highlights.
-- Add a slideshow without new CSS.
+- Add a homepage hero slideshow to a Bootstrap 5 Drupal site.
+- Render rotating featured content as a Bootstrap carousel.
+- Manage slides as editable nodes rather than a widget config blob.
+- Show the N most recently updated slides automatically.
+- Place a slideshow block in the front-page content region.
+- Author a slide with an image, title, teaser, and link.
+- Link a slide to its node detail page.
+- Link a slide to an external URL instead of a detail page.
+- Set how many slides the carousel shows.
+- Set the auto-advance interval between slides.
+- Truncate slide descriptions to a fixed character length.
+- Reuse the site's Bootstrap theme without adding a second slider library.
+- Crop all slide images to a consistent 1320x347 through an image style.
+- Adjust slide image dimensions by editing the `responsive_slideshow_style` image style.
+- Show a promotional or campaign banner rotation.
+- Show partner or product logos in rotation.
+- Give editors a simple content type for banner management.
+- Restrict who can configure the slideshow via a dedicated permission.
+- Keep front-page page weight low on a Bootstrap theme.
+- Provide a multilingual slideshow that falls back to the default language.
+- Decide whether a carousel is warranted before building one.
+- Disable auto-advance and verify keyboard operation for accessibility conformance.

@@ -1,11 +1,14 @@
 {
   "name": "Meeting API",
   "data_name": "meeting_api",
-  "description": "Runs meetings through pluggable backends.",
+  "description": "Models meetings as entities and runs them through pluggable backend plugins.",
   "version": "1.0.x",
   "package": "Meeting API",
   "composer_namespace": "drupal/meeting_api",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/datetime_range_timezone": "^1.0@alpha",
+    "league/period": "^5.3"
+  },
   "dependent_modules": [
     "datetime_range_timezone:datetime_range_timezone"
   ],
@@ -25,24 +28,29 @@
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "meeting_api_backend (Plugin/MeetingApiBackend, attribute Drupal\\meeting_api\\Attribute\\Backend, interface Drupal\\meeting_api\\BackendInterface, manager Drupal\\meeting_api\\BackendPluginManager)",
+    "meeting_api_time_constraint (Plugin/MeetingApiTimeConstraint, attribute Drupal\\meeting_api_scheduler\\Attribute\\TimeConstraint; provided by the meeting_api_scheduler submodule)"
+  ],
   "categories": [
-    "Integrations",
-    "Workflow"
+    "Developer tools",
+    "Content display"
   ],
   "subcategories": [
-    "Video conferencing",
-    "Scheduling"
+    "Plugin system",
+    "Entity API",
+    "Event management",
+    "Booking / scheduling"
   ],
   "keywords": [
     "meeting",
-    "video",
-    "zoom",
-    "conference",
+    "conferencing",
+    "backend plugin",
+    "entity api",
     "scheduling",
-    "backend"
+    "framework"
   ],
-  "project_description": "A module that allows to run meetings through various backend types. WIP.",
+  "project_description": "A framework module that models meetings as a revisionable content entity and delegates the actual conferencing technology to pluggable backend plugins, so a site can create, list and reference meetings without binding itself to one provider. Ships a Manual URL backend and an optional FullCalendar-based scheduler. Alpha; provides an API only, with no permission logic beyond admin gating.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

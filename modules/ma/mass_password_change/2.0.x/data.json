@@ -25,21 +25,23 @@
   "provides_plugin_types": [],
   "categories": [
     "Security",
-    "User management"
+    "Automation",
+    "Access control"
   ],
   "subcategories": [
-    "Incident response",
-    "Bulk operations"
+    "Bulk operations",
+    "Password reset"
   ],
   "keywords": [
     "password",
     "reset",
     "bulk",
-    "incident",
-    "breach",
-    "users"
+    "vbo",
+    "action",
+    "users",
+    "incident"
   ],
-  "project_description": "This module supports mass user operations for accounts page (admin/people) and Views Bulk Operations (VBO) .\n\n Module prevent change admin (uid=1) user password.\n\n \n Reset password (one-time login link). \n Change password. \n \n Development sponsored by NeverGone during his volunteer time.",
+  "project_description": "Adds two bulk user operations to the people administration screen (/admin/people) and to Views Bulk Operations (VBO). 'Password reset' emails the selected accounts the standard Drupal one-time login (password reset) link; it does not alter the stored password. 'Change password' prompts the administrator for a single new password on a confirmation form and writes that same password onto every selected account. Both operations require the core 'administer users' permission, and both skip user 1 and the acting administrator at selection time (the reset action additionally skips blocked accounts). The module defines no configuration UI and no permissions of its own. Development sponsored by NeverGone (Kurucz Istvan) during volunteer time.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

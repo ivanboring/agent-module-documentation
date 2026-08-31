@@ -1,7 +1,7 @@
 {
   "name": "None Title",
   "data_name": "none_title",
-  "description": "Hides node titles when <none> is entered.",
+  "description": "Suppresses a node title from display when an editor types the literal string <none> into the title field; handled on the node page and in Views output.",
   "version": "3.1.x",
   "package": "Node",
   "composer_namespace": "drupal/none_title",
@@ -21,25 +21,26 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content display",
-    "Content editing experience"
+    "Content display"
   ],
   "subcategories": [
-    "Titles and headings",
-    "Display settings"
+    "Views field handlers",
+    "Field formatters"
   ],
   "keywords": [
     "title",
     "hide",
     "node",
     "display",
+    "none",
+    "heading",
     "landing page",
-    "heading"
+    "views"
   ],
-  "project_description": "This module makes it possible to write <none> in the node title field to hide the title.",
+  "project_description": "This module makes it possible to write <none> in the node title field to hide the title from display.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",
