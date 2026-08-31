@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Webform Promotion Code adds a form element that validates a promotion or voucher code against a configured list.
+Webform Promotion Code adds a Webform text element that rejects a submission unless the value typed matches one of an admin-configured list of valid codes.
 
 ---
 
-Codes turn up wherever access or price is being gated without a full commerce system: a conference registration with a speaker code, a members-only booking form, a training course with a partner discount, a survey restricted to invited participants, a free-trial signup. Building the check by hand means a validation handler and somewhere to keep the codes, and the somewhere is usually a hard-coded array. A dedicated element makes the codes configuration and the validation part of the form. Version **8.x-1.2** on `^9 || ^10 || ^11`, requiring `webform`. Three things determine whether the codes are worth anything. **Single-use versus reusable is the design question**: a code that can be submitted repeatedly is a code that will be, once one recipient posts it somewhere, so if uniqueness matters the element must record redemption rather than only validate — check which this does before designing a campaign around it. **Codes must be guess-resistant and rate-limited**: a short or sequential code with an unlimited number of attempts is enumerable, and core's flood control is the thing that stops that, since the form otherwise offers unlimited free guesses. And **the comparison should be constant-time and the codes stored appropriately** — a code is a shared secret, so `hash_equals()` is the right primitive, and a list of live codes sitting in exported configuration is a list in version control.
+The module registers a single Webform element, `webform_promotion_code`, rendered as an ordinary `<input type="text">`. Its element-configuration form (fieldset "Promotion code settings") holds a `codes` textarea — one valid code per line — plus three helper properties (`amount`, `code_length`, `code_pattern`) that drive a client-side "Auto generate" button which fills the textarea with random codes (the button and generation run entirely in JavaScript on the admin form; they do not affect validation). At submit time the element's `#element_validate` callback trims the submitted value, splits the stored `#codes` string on newlines into an array, and calls `in_array()` — a case-sensitive, non-constant-time membership test. A non-empty value that is not in the list produces the error "*<title>* must be a valid code."; an empty value passes (the element is optional unless you also mark it required). There is **no database table, no state, no entity, and no config schema** — the code list lives as a plaintext property inside the Webform's own element configuration (and therefore inside any config export / version control). Critically, the element only *validates*; it never records that a code was used, so **a valid code can be redeemed on unlimited submissions**. To enforce single use you must separately turn on Webform's built-in **Unique** value constraint on the element, which rejects a code that already appears in a prior submission of that form. The module ships no routes, permissions, hooks, services, Drush commands, or submodules; requires the `webform` module; and works on Drupal 9, 10, and 11.
 
 ---
 
-- Validate a conference speaker code.
-- Gate a members-only booking form.
-- Apply a partner discount code.
+- Gate an anonymous Webform behind an invitation/access code so only code holders can submit.
+- Add a voucher or promotion-code field to a signup form.
+- Apply a partner or campaign discount code as an entry requirement.
+- Password-protect a Webform without user accounts.
 - Restrict a survey to invited participants.
-- Validate a free-trial code.
-- Add a voucher field to a form.
-- Gate a registration behind a code.
-- Validate an access code for training.
-- Restrict a form to code holders.
-- Add a promotion code to a signup.
-- Validate a referral code.
-- Gate an event registration.
-- Check a membership code.
-- Add a discount code element.
-- Restrict a competition entry.
-- Validate a campaign code.
-- Gate a download form.
-- Check an invitation code.
+- Validate a conference speaker or attendee code.
+- Gate a members-only booking or reservation form.
+- Validate an access code for a training course or download.
+- Restrict a competition or giveaway entry to code holders.
+- Validate a referral code on a lead form.
+- Auto-generate a batch of random one-off codes from the element config screen.
+- Distribute unique codes and enforce single use by pairing the element with Webform's "Unique" setting.
+- Check a membership code before allowing an RSVP.
+- Add a campaign code field to an event registration.
+- Gate a whitepaper/download request form behind a code.
+- Validate an early-access beta code.
+- Require a valid coupon string before a Webform-driven order request.
+- Screen out anonymous spam by requiring a shared secret code.
+- Restrict a feedback form to a known cohort via a shared code.
+- Verify an invitation token pasted from an email.

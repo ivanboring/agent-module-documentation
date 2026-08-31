@@ -1,14 +1,16 @@
 {
   "name": "Guardian",
   "data_name": "guardian",
-  "description": "Requires privileged users to log in via password reset or drush uli.",
+  "description": "Requires guarded users (user 1 by default) to log in only via password reset or drush uli, and reverts any change to their email/password.",
   "version": "2.2.x",
   "package": "Security",
   "composer_namespace": "drupal/guardian",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/core": "^10.2 || ^11"
+  },
   "dependent_modules": [],
   "configure": "guardian.settings",
-  "core_version_requirement": "^9.4 || ^10 || ^11",
+  "core_version_requirement": "^10.2 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/guardian",
@@ -23,26 +25,30 @@
   "provides_plugin_types": [],
   "categories": [
     "Security",
-    "User management"
+    "Access control"
   ],
   "subcategories": [
-    "Login",
-    "Account hardening"
+    "Superuser (user 1) protection",
+    "Login page protection",
+    "Session management"
   ],
   "keywords": [
     "guardian",
     "user 1",
-    "login",
+    "superuser",
+    "root admin",
     "password",
-    "root",
-    "hardening"
+    "drush uli",
+    "password reset",
+    "account hardening",
+    "credential protection"
   ],
-  "project_description": "Guardian protects specified Users a.k.a. 'guarded users' from logging in with a username and password and changes to the login data (username or password).\n\n To login with a guarded user, login is possible with drush uli [uid] or a password reset url.\n\n In this way there will be no need to store and share complex passwords within your organization.\n\n Back to top \n\n Installation \n Developers \n To install the module, make sure that the user 1 account has the correct mail address and that the mail address is the same as the init column in your user database table.\n\n System Administrators \n System administrators need to assign a shared inbox or group mail address for development teams to receive the password reset mail. If a person is leaving the project, only access to the webserver and the shared inbox needs to be denied to secure the website for user 1 access.\n\n Back to top \n\n Usage \n \n Use drush to request a one time login url: drush uli [uid] \n Access the password reset form: /user/password \n Back to top",
+  "project_description": "Guardian forces specified 'guarded users' (user 1 / uid 1 by default, plus any accounts declared via hook_guardian_guarded_users) to authenticate only through a one-time login link — a `/user/password` reset email or `drush uli [uid]` — rather than a stored username/password. It removes the password as an entry point: on every save of a guarded account it pins the account's mail and init to the address in `$settings['guardian_mail']` and sets the password to NULL, so a leaked or guessed password is worthless and there is no need to store or share complex admin passwords within an organization. Guarded users are also force-logged-out after a configurable inactivity window (default 2 hours, `$settings['guardian_hours']`), and cron restores any guarded account whose credentials were changed out of band. Enabling or disabling the module sends a notification (with client IP, host and, on CLI, the terminal user) to the guardian_mail address.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
   "project_created": "2016-01-14",
-  "project_changed": "2026-08-18",
-  "core_semver_minimum": 8000000,
+  "project_changed": "2026-08-10",
+  "core_semver_minimum": 10002000,
   "core_semver_maximum": 12000000
 }

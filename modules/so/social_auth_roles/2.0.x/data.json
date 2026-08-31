@@ -1,7 +1,7 @@
 {
   "name": "Social Auth Roles",
   "data_name": "social_auth_roles",
-  "description": "Assign roles to users created via Social Auth.",
+  "description": "Automatically assigns admin-selected roles to Drupal accounts created via Social Auth, without affecting normal registration.",
   "version": "2.0.x",
   "package": "Social",
   "composer_namespace": "drupal/social_auth_roles",
@@ -21,25 +21,25 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "User management",
+    "Access control",
     "Security"
   ],
   "subcategories": [
-    "Registration",
-    "Roles and permissions"
+    "User registration",
+    "User roles & permissions"
   ],
   "keywords": [
     "social auth",
     "roles",
     "registration",
     "oauth",
-    "assignment",
-    "users"
+    "role assignment",
+    "user creation"
   ],
-  "project_description": "Social Auth Roles allows Administrators to use an interface to decide what Roles to automatically assign new users created with Social Auth.\n\n Back to top \n\n Configuration \n This modules adds a path /admin/config/social-api/social-auth/roles . You'll see a list of roles existing in your Drupal instance. Select which roles you want assigned new accounts on creation via Social Auth.\n\n Back to top \n\n Example use case \n All employees of a company use Google Accounts. You've limited Google login to _JUST_ the company's domain. And when new users are created via Google Accounts, you want them given the Employee role. Any accounts made traditionally via Drupal are not affected by this module.\n\n Requires \n Social Auth \n\n Back to top",
+  "project_description": "Social Auth Roles allows administrators to choose, through an interface, which roles are automatically assigned to new users created via the Social Auth suite. It listens for the Social Auth USER_CREATED event and, when a new account is created through a social provider, adds each admin-selected role to that account in addition to the default authenticated user role. Accounts created the ordinary way through Drupal registration are not affected. Configuration lives at /admin/config/social-api/social-auth/roles, where a checkbox list of all site roles (except anonymous and authenticated) lets the administrator pick the set to grant. Example use case: all employees of a company use Google Accounts, Google login is limited to the company domain, and new users created via Google should receive an Employee role automatically. Requires the Social Auth module.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

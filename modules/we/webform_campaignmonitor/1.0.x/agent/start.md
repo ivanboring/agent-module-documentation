@@ -1,20 +1,47 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Webform Campaign Monitor (webform_campaignmonitor) — agent index
 
-Webform **handler** subscribing a submitter to a **Campaign Monitor** list. Requires
-`campaignmonitor` and `webform`. Version **1.0.1**. Core requirement `^10.3 || ^11.0`.
+A single **Webform handler** plugin (`id: campaignmonitor`) that subscribes a submitter to a
+**Campaign Monitor** list when a form is submitted. Version **1.0.1**, core `^10.3 || ^11.0`.
+Requires **`campaignmonitor`** and **`webform`**.
 
-**Why a handler beats the alternatives:** an embedded provider form does not match the site's design
-and bypasses Drupal's validation; a custom submit handler posting to an API usually has **no error
-handling**. A handler keeps the form Drupal's — styling, validation, spam protection,
-accessibility — with the subscription running **after** a valid submission.
+## What this module actually is
 
-**Three things to settle:**
-1. **Consent is the whole point of a subscription form.** The record must show **what was agreed to
-   and when**. An unticked box the handler subscribes anyway is the failure regulators look for; a
-   **pre-ticked box is not consent** under GDPR.
-2. **API failure needs a plan.** Fail the submission (losing a signup for a reason the visitor
-   cannot act on), succeed silently (losing the subscription with nobody knowing), or **queue and
-   retry** — only the third is really acceptable. **Check what this does.**
-3. **The API key is a live credential** over the subscriber list — personal data *and* a commercial
-   asset. Environment variable, **Key** entity, scoped as narrowly as the provider allows.
+- **One file of logic:** `src/Plugin/WebformHandler/WebformCampaignMonitorHandler.php`. No routes,
+  no services, no config schema, no `.module`, no library of its own.
+- **It delegates everything Campaign Monitor.** The API key, client ID, the `createsend-php`
+  library, list retrieval and the subscribe request all live in the required **`campaignmonitor`**
+  module. This handler pulls lists via `campaignmonitor.manager::getLists()` and subscribes via
+  `campaignmonitor.subscription_manager::userSubscribe()`.
+- **Handler traits:** cardinality **unlimited** (multiple handlers per form), results processed,
+  submission required, tokens enabled.
+
+## Configuration (per webform handler)
+
+Settings → Emails / Handlers → Add handler → **CampaignMonitor**:
+
+- **List** (`list`, required) — `webform_select_other`; a configured list or a token.
+- **Email field** (`email`, required) — select over the form's `email`-type elements.
+- **Control field** (`control`, optional) — a checkbox element; if set and unticked, the handler
+  does nothing. This is the **opt-in gate**.
+- **Merge vars** (`mergevars`) — token-aware YAML; the `name:` key becomes the subscriber name.
+- **Double opt-in** (`double_optin`, default TRUE).
+
+## Runtime behaviour (`postSave`)
+
+1. Skips updates — runs only for a **new** submission.
+2. If a control field is configured and its value is empty, returns without subscribing.
+3. Token-replaces the configuration, reads the email from submission data, `Yaml::decode()`s the
+   merge vars, then calls `userSubscribe($list, $email, $name, $mergevars, $interest_groups,
+   $double_optin)`.
+
+## Gotchas
+
+- `$name = $mergevars['name'];` assumes a `name` key — an empty/nameless mergevars block raises a
+  PHP warning. Always include `name:` in the YAML.
+- `interest_groups` is in `defaultConfiguration()` but has no form control (always `[]`).
+- Lists only appear after the campaignmonitor module has run cron to fetch them.
+
+## Solution-type docs
+
+- [handlers/campaignmonitor-handler.md](handlers/campaignmonitor-handler.md) — the handler plugin in detail.

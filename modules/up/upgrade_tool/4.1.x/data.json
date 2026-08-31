@@ -1,11 +1,14 @@
 {
   "name": "Open Y Upgrade Tool",
-  "data_name": "upgrade_tool",
-  "description": "Upgrade path tool logging configuration overrides.",
-  "version": "4.1.x",
+  "data_name": "openy_upgrade_tool",
+  "description": "Config-upgrade helper for the Open Y / YMCA Website Services distribution (drupal.org project 'upgrade_tool', module machine name 'openy_upgrade_tool'). Tracks which config a site has customised away from the distribution defaults, shows a diff dashboard, and lets a maintainer keep the customisation or restore the distribution version.",
+  "version": "4.2.0",
   "package": "YMCA Website Services",
   "composer_namespace": "drupal/upgrade_tool",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/confi": "^4.0.0",
+    "drupal/core": ">=11.0.13"
+  },
   "dependent_modules": [
     "config_import:config_import"
   ],
@@ -22,14 +25,16 @@
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "config_event_ignore"
+  ],
   "categories": [
     "Administration tools",
-    "Developer tools"
+    "Distribution"
   ],
   "subcategories": [
     "Configuration management",
-    "Upgrades and migration"
+    "Deployment / release management"
   ],
   "keywords": [
     "upgrade",
@@ -37,14 +42,15 @@
     "ymca",
     "config",
     "distribution",
-    "diff"
+    "diff",
+    "config_import"
   ],
-  "project_description": "Back to top \n\n 🇺🇦 \n \n This module is maintained by Ukrainian developers.\n\nPlease consider supporting Ukraine in a fight for their freedom and safety of Europe. \n \n \n This module add the ability to upgrade configs and log manual config changes.\n\nIt tracks changes to configs during manual config editing or hook_update_N and provides a dashboard which could be used to rollback changes if not needed\n\n Back to top \n\n How it works \n Presentation (*english language) \n\n A few topics that are covered:\n\n - How upgrade path problems were solved in the distribution of OpenY\n\n - Separation of the openy_upgrade_tool module into a contrib project\n\n - Problems to be Solved\n\n Back to top",
+  "project_description": "This module adds the ability to upgrade Open Y configs and log manual config changes. It tracks changes to configuration made during manual config editing or via hook_update_N, and provides an Upgrade Dashboard that can be used to review and roll back changes that are not wanted. Part of the Open Y / YMCA Website Services distribution; the drupal.org project is named 'upgrade_tool' but the module machine name is 'openy_upgrade_tool'. Depends on the config_import module (drupal.org project 'confi') for partial-config (single-property) updates. Maintained by Ukrainian developers.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
   "project_created": "2017-05-31",
   "project_changed": "2026-08-18",
-  "core_semver_minimum": 8000000,
+  "core_semver_minimum": 11000000,
   "core_semver_maximum": 12000000
 }

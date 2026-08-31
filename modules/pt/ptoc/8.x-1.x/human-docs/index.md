@@ -29,18 +29,22 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 1. [Installation](installation/index.md) — install the module with Composer and
    enable it.
 
-There is **no settings page** for this module. It works through configuration the module
-provides — described in "How it works" below.
+There is a small **configuration form** at *Administration > Structure > Paragraphs types
+> Configure Paragraphs ToC* (`/admin/structure/paragraphs_type/ptoc`, permission
+*administer paragraphs types*). Use it to choose which paragraph types (and which of their
+fields) appear in the contents list, and to toggle a **debug** mode that outlines each
+paragraph. Everything else works through configuration the module provides — described in
+"How it works" below.
 
 ## How it works
 
 The module ships three pieces that fit together:
 
-- **View modes** — a "Table of Contents" view mode for paragraphs (`toc`) that shows
+- **View modes** — a "Table of Contents" view mode for paragraphs (`ptoc`) that shows
   only the title (`field_ptoc_title`) and nested paragraphs (using the same view mode),
   and a matching view mode for nodes that shows just the paragraphs field
   (`field_ptoc_sections`).
-- **A View** — `ptoc_table_of_contents` creates a **block** that takes the current
+- **A View** — the `ptoc` view creates a **block** that takes the current
   node's ID and renders that node in the "Table of Contents" view mode, producing the
   contents list.
 - **Custom theming** — a preprocess step adds an `id` to each paragraph in the default

@@ -12,12 +12,12 @@ pointing at `internal:/node/<nid>/edit`. Otherwise it emits a `visually-hidden` 
 only — never for views, taxonomy terms, users, the front page or other entity types, none of which set
 a `node` route parameter.
 
-Gating is by the module's own permission alone; it does **not** call `$node->access('update')`, so the
-button can appear for a permitted user on a node they cannot actually edit — clicking then lands on
-core's normal access-denied page. Following the link grants no access of its own: `/node/{node}/edit`
-is a core route (`entity.node.edit_form`) that enforces its own access. Output caching uses the
-contexts `user.permissions` and `url`. The nid is also printed in parentheses next to the label so
-editors can see which node they are about to open.
+Gating is by the module's own permission and by whether a `node` route parameter is present — not by
+per-node edit access — so the button can appear for a permitted user on a node they cannot actually
+edit; clicking then lands on core's normal access-denied page. Following the link grants no access of
+its own: `/node/{node}/edit` is a core route (`entity.node.edit_form`) that enforces its own access.
+Output caching uses the contexts `user.permissions` and `url`. The nid is also printed in parentheses
+next to the label so editors can see which node they are about to open.
 
 - **Depends on:** nothing declared in `.info.yml` (no `dependencies:` key), but requires the core
   **node** module at runtime (uses `Drupal\node\NodeInterface`).

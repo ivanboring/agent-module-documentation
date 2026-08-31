@@ -1,22 +1,65 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Paragraphs Table of Contents (ptoc) — agent index
 
-Builds pages from **nested paragraphs** and generates a **table of contents from their structure**.
-Depends on core `block`, `entity_reference_revisions`, `field`, `file`, `image`, `link` — a wide
-list, reflecting a module that ships the paragraph types as well as the contents logic.
-Version **8.x-1.4**. Core requirement `^8 || ^9 || ^10 || ^11`.
+Config-driven module that builds long pages from **nested Paragraphs** and renders an
+**in-page table of contents** from that structure — one jump link per paragraph. Version
+**8.x-1.4**, core `^8 || ^9 || ^10 || ^11`. Package `Paragraphs`. Author calls it "basically
+a proof of concept." No config schema shipped, no permissions defined by the module, no
+Drush, no plugins.
 
-**Why structure beats the alternatives:**
-- **from body-field headings** — parses markup and depends on editors using the right heading
-  levels, which they have not;
-- **by hand** — right on the day it is written, wrong after the first edit;
-- **from paragraph structure (this)** — the structure **is** the data, so the contents list is a
-  rendering of it and **cannot disagree**.
+## What it installs
+- Node type **`ptoc_page`** ("Page with sections") with `field_ptoc_sections`
+  (entity_reference_revisions → paragraph, cardinality -1).
+- Paragraph types **`ptoc_text`, `ptoc_container`, `ptoc_image`, `ptoc_links`** (each has
+  `field_ptoc_title`; container/bundle references sub-paragraphs).
+- View mode **`ptoc`** ("Table of Contents") for both `node` and `paragraph`.
+- View **`ptoc`** with a **block display** (`views_block__ptoc_block_1`) that renders the
+  current node in the `ptoc` view mode, keyed on the page's `nid` contextual argument
+  (validated with `entity:node`, operation `view` → respects node access). Default block
+  placed in `sidebar_first` (Bartik).
 
-**Three things determine whether it works:**
-1. **Anchors must be stable.** A contents entry links to a section; an id derived from changing text
-   **breaks every shared deep link** (the same trade `auto_anchors`, wave 77, faces).
-2. **The contents list is navigation** — a real list of links, keyboard reachable, marked up so a
-   screen reader can jump with it. That is the main thing a contents list is for.
-3. **It should reflect access.** A section a visitor may not see must not appear, or the list
-   becomes **an index of what is being withheld**.
+## The mechanism (there is no heading parsing)
+`ptoc.module`:
+- `ptoc_preprocess_paragraph()` — for the **default** view mode, sets
+  `attributes['id'] = 'paragraph-' . $paragraph->id()` (numeric entity id → stable anchor
+  target). For the `ptoc` view mode, sets `ptoc_link_text = key($content)` (first enabled
+  field). If `ptoc.settings:debug` is on, adds class `ptoc-debug` + attaches
+  `ptoc/ptoc-debug`.
+- `ptoc_theme_suggestions_paragraph()` / `_node()` — swap in `ptoc_paragraph` /
+  `ptoc_node` templates for the `ptoc` view mode. `ptoc_theme()` registers them
+  (base hooks `paragraph` / `node`).
+- `templates/ptoc-paragraph.html.twig` — emits
+  `<a href="#paragraph-{{ paragraph.id.value }}">{{ link_text }}</a>` where `link_text` is
+  the **rendered content render-array** of the first `ptoc`-mode field (or a translated
+  `Paragraph @id` fallback), then renders the remaining fields (nested sub-paragraphs).
+  `templates/ptoc-node.html.twig` wraps the node's `ptoc` output in `<nav>`.
+
+Anchors are keyed on the **numeric paragraph id**, not heading text, so deep links survive
+edits. The link label is a rendered field render-array, auto-escaped by Twig — no
+regex/DOM/string-concat markup building.
+
+## Configuration
+- Route `ptoc.type_enable` → `/admin/structure/paragraphs_type/ptoc` (the `configure`
+  link; local task under the Paragraphs types collection). Permission
+  **`administer paragraphs types`**. Form `PtocConfigForm` (`src/Form/PtocConfigForm.php`):
+  1. Toggle **debug** (`ptoc.settings:debug`).
+  2. Per paragraph type: enable/disable the `ptoc` display mode (creates/updates
+     `core.entity_view_display.paragraph.<bundle>.ptoc`); when enabled, pick which
+     `field_*` components show in it. First enabled field = link text (visually-hidden
+     label, `ptoc` view mode on reference fields).
+- Only fields whose machine name starts with `field_` are toggled by the form.
+
+## Typical setup
+1. Enable module; place the **Table of Contents** block on the target pages.
+2. Create a `ptoc_page` node, add paragraphs to Sections, save → sidebar ToC of jump links.
+3. To add a ToC to another content type: re-use `field_ptoc_sections`, enable its `ptoc`
+   display, configure the `ptoc` view mode fields, and widen the View filter/argument +
+   block visibility to that bundle (or clone the View/block). See `README.md`.
+
+## Files
+- `ptoc.module` — preprocess + theme-suggestion + theme hooks (all the custom code).
+- `src/Form/PtocConfigForm.php` — the admin config form.
+- `templates/ptoc-paragraph.html.twig`, `templates/ptoc-node.html.twig` — ToC rendering.
+- `config/install/*` — node type, paragraph types, fields, view modes, the `ptoc` View,
+  `ptoc.settings.yml` (`debug: false`).
+- `css/ptoc.css` — debug outline (`ptoc/ptoc-debug` library).

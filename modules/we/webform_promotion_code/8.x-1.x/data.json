@@ -1,7 +1,7 @@
 {
   "name": "Webform Promotion Code",
   "data_name": "webform_promotion_code",
-  "description": "Promotion code element for Webform.",
+  "description": "Adds a Webform text element that validates a submitted promotion/voucher code against an admin-configured plaintext list.",
   "version": "8.x-1.x",
   "package": "Webform",
   "composer_namespace": "drupal/webform_promotion_code",
@@ -21,30 +21,31 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "E-commerce",
-    "Content editing experience"
+    "Forms and surveys",
+    "E-commerce"
   ],
   "subcategories": [
-    "Webform",
-    "Validation"
+    "Webform elements",
+    "Promotions / discounts"
   ],
   "keywords": [
     "promotion code",
     "voucher",
     "webform",
+    "webform element",
     "validation",
     "discount",
-    "element"
+    "access code"
   ],
-  "project_description": "\"Webform Promotion Code\" will expose a new field type called \"Promotion code\". This \"Promotion code\" will be rendered as a text field for your users. The user will use this field to insert a \"Promotion code\". When the user submits the form, the information inserted on this field will be validated against a code list registered by Drupal admin when the Webform was configured (see the screenshots below for more details).\n\nYou can use \"Webform Promotion Code\" in order to add passwords to your Webforms.\n\nOnly users that has one valid code will be able to submit the form. You can use this module when you want to create a Webform for anonymous users but you want to control who is able to submit it.\n\n Step 1 Add a new element to the Webform\n\n \n\n Step 2 Configure a list of valid codes\n\n \n\n Step 3 A text field will be added to your form. The user must provide a valid code from the registered list.\n\n \n\n IMPORTANT NOTICE:\n\nIf you want avoid users to use the same code again, please make sure that you are using the \"Unique\" configuration provided by Webform as shown below:",
+  "project_description": "\"Webform Promotion Code\" exposes a new Webform element called \"Promotion code element\". It renders as a plain text field on the form. When the form is submitted, the value the user typed is validated against a list of valid codes that the site builder entered (one per line) when configuring the element. Submissions whose code is not in the list are rejected with a validation error; submissions with a matching code (or an empty value, since the element is not required by itself) are accepted. The element config form includes a client-side \"Auto generate\" helper that fills the code list with N random codes of a chosen length and character set. The module stores codes in plaintext inside the Webform's element configuration, performs a simple case-sensitive in_array() membership check, and does NOT track redemption — a valid code can be reused on every submission unless the site builder separately enables Webform's built-in \"Unique\" value constraint. Common uses: gating an anonymous Webform behind an invitation/access code, adding a voucher or partner-discount field, or password-protecting a form. Requires the Webform module.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",
   "project_created": "2019-08-01",
   "project_changed": "2026-08-18",
-  "core_semver_minimum": 8000000,
+  "core_semver_minimum": 9000000,
   "core_semver_maximum": 12000000
 }

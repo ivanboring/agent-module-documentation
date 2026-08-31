@@ -1,11 +1,13 @@
 {
-  "name": "BrightEdge Autopilot (be_ixf_drupal)",
+  "name": "BrightEdge IX Foundation (be_ixf_drupal)",
   "data_name": "be_ixf_drupal",
-  "description": "BrightEdge Instant eXperience Framework integration: injects BrightEdge-managed SEO content server-side.",
+  "description": "Integrates BrightEdge's Instant eXperience Framework (IXF): the bundled PHP SDK fetches vendor-managed \"capsules\" over cURL at render time and injects the returned SEO markup, meta tags, and redirects into node pages server-side.",
   "version": "8.x-5.x",
-  "package": null,
+  "package": "BrightEdge",
   "composer_namespace": "drupal/be_ixf_drupal",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "brightedge/be_ixf_php_sdk": "^1.5.15"
+  },
   "dependent_modules": [],
   "configure": "brightedge.admin_form",
   "core_version_requirement": "^8 || ^9 || ^10 || ^11",
@@ -14,20 +16,22 @@
   "project_url": "https://www.drupal.org/project/be_ixf_drupal",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "brightedge/be_ixf_php_sdk"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Search engine optimization (SEO)",
     "Integrations"
   ],
   "subcategories": [
-    "SEO analysis / audit",
-    "Analytics & tracking"
+    "Meta tags / structured metadata",
+    "Search engine indexing"
   ],
   "keywords": [
     "brightedge",
@@ -35,14 +39,15 @@
     "seo",
     "autopilot",
     "capsule",
-    "server-side injection"
+    "server-side injection",
+    "bc0a"
   ],
-  "project_description": "BrightEdge IX Foundation Drupal Module \n\n Integrates BrightEdge IX Foundation with Drupal, enabling autopilot content injection, SEO-driven redirects, and block-level BrightEdge content delivery.\n\n BrightEdge is the global leader in enterprise organic search and content performance, empowering marketers to transform online content into measurable business results like traffic, conversions, and revenue. The BrightEdge platform, trusted by global brands like Microsoft and Adobe and 57 of the Fortune 100, is powered by a sophisticated deep-learning engine. It's the only platform capable of web-wide, real-time measurement of content engagement across all digital channels, including search, social, and mobile.\n\n Back to top \n\n Requirements\n \n \n Drupal 8, 9, 10, or 11 \n PHP 7.4 or higher \n Composer \n A valid BrightEdge account ID (format: f000000ZZZ ) \n \n brightedge/be_ixf_php_sdk ^1.5.15 (installed via Composer) \n \n Back to top \n\n Installation\n \n 1. Install via Composer (recommended)\n \n From the root of your Drupal project, run:\n\n composer require drupal/be_ixf_drupal\n This will also pull in the required brightedge/be_ixf_php_sdk PHP library automatically.\n\n 2. Manual installation\n \n If Composer is not available:\n\n \n Download the module and place it in web/modules/custom/be_ixf_drupal/ (or modules/custom/ ). \n Manually download brightedge/be_ixf_php_sdk ^1.5.15 and ensure it is autoloaded. \n \n 3. Enable the module\n \n Via Drush:\n\n drush en be_ixf_drupal\ndrush cr\n Or via the Drupal admin UI at Extend ( /admin/modules ), search for BrightEdge IX Foundation Module , check the box, and click Install .\n\n Back to top \n\n Configuration\n \n Navigate to Configuration > System > BrightEdge ( /admin/config/services/brightedge ).\n\n \n \n \n Setting \n Description \n Default \n \n \n \n \n Capsule Mode \n Connection mode Production or Production Global \n \n Production \n \n \n Account ID \n Your BrightEdge account ID in f000000ZZZ format (required) \n \n \n \n Enable Storage Capsule \n Toggle storage capsule feature \n Disabled \n \n \n \n API Endpoint (optional) \n \n Custom API endpoint URL, e.g. https://ixfN-api.bc0a.com \n \n https://ixfd-api.bc0a.com \n \n \n Block Cache Maximum Age \n Cache lifetime for BrightEdge blocks in seconds \n 3600 \n \n \n \n Canonical Host (optional) \n \n Override the canonical host sent to BrightEdge \n â \n \n \n Protocol \n Protocol used for canonical URL construction â HTTP or HTTPS \n \n HTTP \n \n \n \n After saving, clear Drupal's cache:\n\n drush cr\n Back to top \n\n Usage\n \n BrightEdge Foundation Content Block\n \n The module provides a configurable block plugin that renders BrightEdge autopilot content.\n\n \n Go to Structure > Block layout ( /admin/structure/block ). \n Click Place block in the desired region. \n Search for BrightEdge Foundation Content Block and click Place block . \n In the block configuration form, set:\n \n \n Type â choose body_open , body_1 , or a custom featured group ID. \n \n Feature Group Id â visible only when Type is set to the custom option; enter the content block ID from BrightEdge. \n \n \n Save the block. \n \n Cache behaviour: The block caches per URL path and query string. Cache lifetime uses the Block Cache Maximum Age value set in the module configuration.\n\n Back to top \n\n Licenses\n \n Module license\n \n The code of this module is licensed under the GPLv2 (or later) license, meaning you are free to modify, redistribute, and use it according to the terms of the GPL.\n\n Branding assets license\n \n All branding assets, including logos and images, are owned by BrightEdge Technologies Inc and are provided under a proprietary license. These assets cannot be used for other purposes outside of this module without permission from BrightEdge Technologies Inc.\n\n Back to top",
+  "project_description": "BrightEdge IX Foundation module. Connects a Drupal site to the BrightEdge (bc0a.com) enterprise SEO platform via the bundled brightedge/be_ixf_php_sdk. At render time the SDK issues a cURL request to the BrightEdge capsule API (https://ixfd-api.bc0a.com by default), keyed by the account ID and a hash of the current page URL, and returns a \"capsule\" of JSON. The module injects the capsule's head content into html_head via hook_page_attachments(), exposes an IXFContentBlock block plugin that emits body-level capsule content, and runs a kernel RESPONSE event subscriber (RedirectHTTPHeaders) that applies any capsule-defined redirect. Configure the account ID, capsule mode, optional API endpoint, canonical host/protocol, and block cache lifetime at /admin/config/services/brightedge. Requires a valid BrightEdge account. Current release 8.x-5.10.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
   "project_created": "2018-01-31",
-  "project_changed": "2026-08-18",
+  "project_changed": "2025-11-11",
   "core_semver_minimum": 8000000,
   "core_semver_maximum": 12000000
 }
