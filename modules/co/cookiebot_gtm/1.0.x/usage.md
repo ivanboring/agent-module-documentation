@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Cookiebot + GTM wires Cookiebot's consent signal into Google Tag Manager, so tags fire according to the consent categories the visitor chose.
+Cookiebot + GTM injects the Cookiebot consent script and the Google Tag Manager container together on every non-admin page, and can emit Google Consent Mode defaults so GTM tags fire according to the consent categories the visitor chose.
 
 ---
 
-The architecture is the one large organisations end up with, and it is worth understanding because it is where consent actually gets enforced. **Cookiebot** scans the site, categorises the cookies it finds and presents the banner. **Google Tag Manager** is where marketing adds and removes tags without a deployment. Neither alone is sufficient: Cookiebot knows what the visitor agreed to and cannot stop a GTM tag firing, and GTM fires tags and knows nothing about consent. The join is Google's **Consent Mode**, in which the consent state is pushed into GTM's data layer and each tag's trigger tests it — and getting that join right is the whole compliance question. This module supplies the Drupal side, version **1.0.20** on `^8.8` through `^11`, with an `access cookiebot gtm config` permission correctly marked `restrict access: TRUE`. Three things to verify rather than assume, because each is a common way this architecture fails silently. **The consent signal must arrive before any tag can fire**, or the first pageview leaks regardless of what the visitor later chooses. **Tags added in GTM by someone who does not know the convention will fire unconditionally**, since the consent check lives in each tag's trigger rather than in the container — which makes the tag inventory a recurring governance task rather than a setup step. And **anything Drupal itself adds is outside GTM entirely**: a module that attaches an analytics script through Drupal's asset system is not governed by any of this, and is the thing a scan finds.
+The module supplies the Drupal side of a common enterprise stack. **Cookiebot** (loaded from `consent.cookiebot.com/uc.js`, keyed by a Domain Group Id / `cbid`) scans the site, categorises cookies and shows the banner. **Google Tag Manager** (loaded from `googletagmanager.com`, keyed by a `GTM-XXXX` container id) is where marketing adds and removes tags without a deployment. This module drops both loaders into the page head via `hook_page_attachments_alter()`, plus the GTM `<noscript>` iframe into `page_top`, and — when Google **Consent Mode** is enabled — an inline `gtag("consent","default",…)` block whose six signals (`ad_personalization`, `ad_storage`, `ad_user_data`, `analytics_storage`, `functionality_storage`, `personalization_storage`) come from admin checkboxes. Both loaders carry `data-cookieconsent="ignore"`, so the actual consent enforcement is expected downstream — in each GTM tag's trigger and in Consent Mode — not by blocking the container. Everything is driven from one config object behind a dedicated `access cookiebot gtm config` permission (correctly `restrict access: TRUE`): the container id is pattern-validated `GTM-XXXX`, and there are options for a custom GTM hostname, a GTM environment (auth token + preview id), a per-language container id, and the banner language. A public `/cookie-declaration` page renders Cookiebot's `cd.js` declaration for the configured `cbid`. Two things to verify rather than assume: the consent signal must reach GTM before any tag can fire, or the first pageview leaks whatever the visitor later declines; and tags added in GTM that ignore the convention fire unconditionally, since the check lives in each trigger, not in this module.
 
 ---
 
-- Connect Cookiebot consent to GTM.
-- Fire tags according to consent categories.
-- Implement Google Consent Mode.
-- Gate analytics tags behind consent.
-- Meet a GDPR requirement with GTM.
-- Support a marketing team's tag workflow.
-- Block marketing tags until opt-in.
-- Push consent state to the data layer.
-- Support a cookie scan's categories.
-- Reduce compliance risk from tags.
-- Support an enterprise consent architecture.
-- Gate remarketing tags.
-- Add consent-aware tag firing.
-- Support a multi-market consent setup.
-- Audit which tags respect consent.
-- Implement consent for a tag container.
-- Support a privacy programme.
-- Reduce unconsented tracking.
+- Load Cookiebot and Google Tag Manager together from one Drupal config screen.
+- Add the GTM container by its `GTM-XXXX` id with format validation.
+- Enable Google Consent Mode defaults for GTM tags.
+- Set `analytics_storage` / `ad_storage` / `ad_user_data` / `ad_personalization` defaults to granted or denied.
+- Gate marketing and analytics tags behind Cookiebot consent categories.
+- Push a consent-default state to GTM's data layer before tags fire.
+- Show a public cookie-declaration page at `/cookie-declaration`.
+- Set the Cookiebot banner language to the current site language.
+- Use a different GTM container id per language on a multilingual site.
+- Point GTM at a custom hostname (server-side / first-party GTM).
+- Load a specific GTM environment using an auth token and preview id.
+- Choose Cookiebot auto vs manual cookie-blocking mode.
+- Keep the consent scripts off admin routes automatically.
+- Meet a GDPR requirement to block tags until opt-in.
+- Support a marketing team's GTM tag workflow while staying compliant.
+- Provide the noscript GTM iframe fallback.
+- Reduce unconsented tracking on first pageview.
+- Audit which cookies Cookiebot has categorised for the site.
+- Restrict who can change consent/tag configuration to one dedicated permission.
+- Stand up an enterprise consent + tag-manager architecture on Drupal.

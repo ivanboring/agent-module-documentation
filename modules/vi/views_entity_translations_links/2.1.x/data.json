@@ -1,11 +1,13 @@
 {
   "name": "Views Entity Translations Links",
   "data_name": "views_entity_translations_links",
-  "description": "Views field with add/edit translation buttons.",
+  "description": "Views field rendering per-language add/edit translation links for each row's entity.",
   "version": "2.1.x",
   "package": "Custom",
   "composer_namespace": "drupal/views_entity_translations_links",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/config_rewrite": "^1.1"
+  },
   "dependent_modules": [
     "config_rewrite:config_rewrite"
   ],
@@ -21,15 +23,15 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Multilingual",
-    "Administration tools"
+    "Content display"
   ],
   "subcategories": [
-    "Content translation",
-    "Views"
+    "Translation / multilingual",
+    "Views field handlers"
   ],
   "keywords": [
     "translation",
@@ -37,7 +39,7 @@
     "links",
     "multilingual",
     "editorial",
-    "buttons"
+    "content translation"
   ],
   "project_description": "Provides an additional field with quick links that can be added in the content listing and allows content managers to edit existing translations or add missing ones much easier. Also gives an overview of the status of translations for all pages directly in the Content view. The workflow is simplified as it reduces the steps needed to perform these actions. \n\n How to use the module:\n\nAfter enabling the module, the \"Entity translations field\" should be available in the Display edit of the Content view: /admin/structure/views/view/content.\nAfter you add the field a column with all enabled languages and the translation status of each page should appear in the content listing.\n Back to top",
   "maintenance_status": "Minimally maintained",

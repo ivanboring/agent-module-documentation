@@ -1,7 +1,7 @@
 {
   "name": "Easy Carousel",
   "data_name": "easy_carousel",
-  "description": "Simple carousel from a field of media.",
+  "description": "Build carousels/sliders from reusable Carousel and Carousel Slide content entities, rendered by four configurable block types.",
   "version": "2.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/easy_carousel",
@@ -20,27 +20,29 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Media management",
-    "Content display"
+    "Content display",
+    "Media"
   ],
   "subcategories": [
-    "Carousels and sliders",
-    "Field types"
+    "Carousel / slider",
+    "Media embedding"
   ],
   "keywords": [
     "carousel",
     "slider",
+    "slideshow",
     "media",
-    "field",
-    "simple",
-    "images"
+    "block",
+    "bootstrap",
+    "gallery",
+    "brands"
   ],
-  "project_description": "Easy Carousel! \n The easy way to add a Carousel in your site...\n\n Features \n Posibility to create a Carousel in a easy way. You can create a carousel using the existing Media items or simply create a plain carousels.\n\nYou can customize a lot of carousel properties, like display/or not controls, indicators, height, transition speed, colors... \n\n Carousel Types \n By default, there are three types of carousel blocks:\n\n \n Simple carousel (with media in top and content in bottom) \n Bootstrap carousel (style with bootstrap library) \n Brands carousel (an infinite scroll carousel, normally used to show brands, logos, etc.) \n Gallery carousel \n \n Export/Import carousels \n You can export your carousels and carousel items in a zipped file to make a backup. This zip file could be imported later.\n\nATTENTION: When you import a zip file, all existent carousels and items will be deleted.\n\n Instructions \n \n Create the carousel items under Content->Carousels Items and customize them. \n Create a new carousel entity under Content->Carousels and add the items that appears in the carousel. \n Add a new Easy Carousel Block in the desired region, choose the created carousel and configure all the properties (speed, height, etc...). \n \n That's all! \n\n Supporting this Module \n By supporting me on Buy me a coffe! , you're not only helping me continue my work but also contributing to the growth and improvement of Drupal for everyone.\n\n Your support allows me to dedicate more time to developing and maintaining these modules, ensuring they remain reliable and up-to-date with the latest Drupal standards. Whether it's fixing bugs, adding new features, or providing support to fellow developers, your contribution directly fuels the progress of these projects.\n\n Thank you for considering supporting my efforts. Together, we can build a stronger Drupal community and empower more websites with robust, customizable solutions. Let's continue making a positive impact together!\n\n Bootstrap carousel: \n \n\n Simple carousel: \n \n\n Brands carousel: \n \n\n \n\n Gallery carousel: \n \n\n Back to top",
+  "project_description": "Easy Carousel provides an editor-friendly way to build image/media/text carousels in Drupal 11. It ships two custom content entity types — Carousel (an ordered collection) and Carousel Slide (carousel_item, an individual slide) — that editors manage under Content. Each slide can carry a referenced Media item (image, uploaded video, or remote oEmbed video), a base64-encoded inline image, or an external image URL, plus a title, rich-text description, link, per-slide background/title/description colors, opacity, and text alignment/position. A Carousel references any number of slides. The carousel is placed on the site by adding one of four block plugins — Simple, Bootstrap, Brands (infinite marquee), or Gallery — selecting a Carousel entity and configuring per-block options (controls, indicators, autoplay, speed, height, slide width, margins). Rendering is done by dedicated Twig templates and vanilla-JS libraries bundled locally with the module (a customized Bootstrap 5 build for the Bootstrap type). An admin Export/Import pair serializes all carousels and slides to a ZIP for backup/migration (import destructively deletes existing carousels/slides first).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

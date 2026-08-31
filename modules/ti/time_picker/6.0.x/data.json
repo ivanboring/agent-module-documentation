@@ -1,7 +1,7 @@
 {
   "name": "Time and Time Range Picker Field",
   "data_name": "time_picker",
-  "description": "Time and time-range picker field types.",
+  "description": "Two field types (time, and time range) whose widget attaches a Materialize clock picker to a text input.",
   "version": "6.0.x",
   "package": "Field types",
   "composer_namespace": "drupal/time_picker",
@@ -16,19 +16,21 @@
   "project_url": "https://www.drupal.org/project/time_picker",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "materialize (1.0.0-beta, loaded from cdnjs CDN)"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"
   ],
   "subcategories": [
-    "Field types",
-    "Dates and time"
+    "Date/time fields",
+    "Duration / time fields"
   ],
   "keywords": [
     "time",
@@ -38,7 +40,7 @@
     "opening hours",
     "widget"
   ],
-  "project_description": "OVERVIEW \n\n Time Field Picker for Drupal 8 module provides a two field for displaying and submitting time and time-range for Drupal site.\n\nHere you can select different color theme for time picker like Sky blue, Iris blue theme, Parrot green theme ...etc.\n\n INSTALLATION \n\n \n Download this module by this link . \n Place time_picker module into your modules directory. \n Go to admin/modules and enable Time and Time Range Picker Field module. \n \n BENEFITS \n\n - This module provide two fields Time picker and Time-Range Picker.\n\n- Responsive\n\n- Supports 12 and 24 hour time formats\n\n- We provide different theme for time picker like Sky blue, Iris blue theme, Parrot green theme ...etc.",
+  "project_description": "Provides two field types, \"Time Picker\" (a single time of day) and \"Time Range Picker\" (a start and end time), for storing times without a date attached. The widget renders a plain text input and attaches the Materialize clock/modal time picker via JavaScript; the Materialize library is loaded from the cdnjs CDN. Per-field storage settings choose one of five color themes (default, sky blue, iris blue, parrot green, dark gray) and a 12-hour or 24-hour clock. Submitted values are validated with a regular expression against the chosen hour format, and the range widget additionally checks that end is not earlier than start. Stored as plain strings (VARCHAR 255).",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

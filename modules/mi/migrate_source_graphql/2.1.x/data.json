@@ -1,11 +1,13 @@
 {
   "name": "Migrate Source GraphQL",
   "data_name": "migrate_source_graphql",
-  "description": "Migrate source plugin reading from a GraphQL endpoint.",
+  "description": "Migrate source plugin that runs one configured query against a GraphQL endpoint and yields the returned nodes as migration source rows.",
   "version": "2.1.x",
   "package": "Migration",
   "composer_namespace": "drupal/migrate_source_graphql",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "gmostafa/php-graphql-client": "^1.9"
+  },
   "dependent_modules": [
     "drupal:migrate"
   ],
@@ -16,20 +18,22 @@
   "project_url": "https://www.drupal.org/project/migrate_source_graphql",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "gmostafa/php-graphql-client"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Import and export",
     "Integrations"
   ],
   "subcategories": [
-    "Migrate API",
-    "GraphQL"
+    "Content migration / import",
+    "Migration tooling"
   ],
   "keywords": [
     "migrate",
@@ -39,7 +43,7 @@
     "api",
     "migration"
   ],
-  "project_description": "Back to top \n\n 🇵🇸 \n This module extends the list of core migrations source by adding the new GraphQL query source.\n\n For further details and advanced options visit the complete module documentation . \n\n Back to top \n\n What's means? \n This means that like as Migrate Source CSV , for example, you can create a migration YAML file inside of which configure the GraphQL endpoint and write the query from which to extract the contents.\n\n Back to top \n\n Features \n \n GraphQL Endpoint : Mandatory option to define the endpoint URL. \n Authentication Options :\n \n auth_scheme : Supports various auth schemes (Basic, Bearer, Digest, etc.). \n auth_parameter : Paired with auth_scheme to generate the Authorization header. \n \n \n Data Key Customization : Define a custom name for the \"data\" property or use nested structures with property separators or dynamic mappings. \n Custom IDs : Specify custom fields and types for item IDs (defaults to id as a string if omitted). \n Query Definition : Mandatory query structure:\n \n arguments : Allows filtering, pagination, etc. \n fields : Defines query response fields, with a mandatory fields property in YAML. \n \n \n Iterator Placeholder : % placeholder allows dynamic mapping within nested arrays. \n ResultsEvent :\n \n getResults() : Retrieves query results. \n setResults() : Enables result modifications, allowing modules to subscribe and manipulate migration data. \n \n \n \n Back to top \n\n How it works? \n Source options \n The graphql source offers a number of options to allow you to best configure your query. In short:\n\n \n\nsource:\n\n plugin: graphql \n\n # [mandatory] The GraphQL endpoint\n\n endpoint: \n\n # [optional] Basic, Bearer, Digest, etc...\n\n auth_scheme: \n\n # [optional] Paired with auth_scheme will generate the string that\n\n # will be passed to the Authorization header\n\n auth_parameter: \n\n # [optional] Used to specify a different name for \"data\" property\n\n data_key: \n\n # [mandatory] from here starts the query definition\n\n query:\n\n # [mandatory] The query name\n\n :\n\n # [optional] Query arguments (filtering, pagination, and so on...).\n\n # See the example below.\n\n arguments:\n\n # [mandatory] Query fields definition\n\n fields:\n\n # [mandatory] It is 'data' if no different value has been set in data_key\n\n - :\n\n - \n\n - \n\n - \n\n Let's take an example. \n For this example we will use the GraphQLZero (Fake Online GraphQL API for Testing and Prototyping) from which we will migrate some entities, that on GraphQLZero are called posts , into the our Drupal instance populating the our's default articles.\n\n Follow GraphQL query shows how to get a list of posts from GraphQLZero:\n\n \n\nquery {\n\n posts {\n\n data {\n\n id\n\n title\n\n body\n\n }\n\n }\n\n}\n\n \n\n The response: \n\n \n\n Back to top \n\n The migration \n So we, as first thing, have to setup the YAML migration file. As like as follow:\n\n \n\nid: migrate_graphql_posts_articles\n\nlabel: 'Migrate posts from GraphQLZero'\n\nmigration_tags: null\n\nsource:\n\n plugin: graphql \n\n endpoint: 'https://graphqlzero.almansi.me/api'\n\n auth_scheme: Bearer\n\n auth_parameter: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3...'\n\n query:\n\n posts:\n\n fields:\n\n -\n\n data:\n\n - id\n\n - title\n\n - body\n\n ids:\n\n id:\n\n type: string\n\nprocess:\n\n title: title\n\n body: body\n\n destination:\n\n plugin: 'entity:node'\n\n default_bundle: article\n\n migration_dependencies: { }\n\n The only difference between the GraphQL query and the YAML transposition is the mandatory property fields , the usefulness of which is solely a matter of choice for the developer.\n\n For further details and advanced options , including configuring the data_key parameter and using different authorization schemas, visit the complete module documentation in the \"How it Works?\" section.\n\n Back to top",
+  "project_description": "This module extends the list of core migration sources by adding a new GraphQL query source. Like Migrate Source CSV, you create a migration YAML file that configures a GraphQL endpoint and a query from which to extract the content, then run the migration with the standard Migrate/Drush workflow. The source plugin (id: graphql) reads the endpoint URL, an optional Authorization scheme/parameter, an optional data_key property path, and a query definition (query name, optional arguments, and fields) from the migration's source configuration. It builds the query with the gmostafa/php-graphql-client library, sends a single POST request, walks the JSON response down the configured data_key path (supporting a '%' token to map across an indexed array), dispatches a ResultsEvent so other modules may alter the result set, and yields each result decoded as an associative array of source-row values. It does not implement automatic pagination or cursor-following; any paging must be expressed as query arguments in the migration YAML.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

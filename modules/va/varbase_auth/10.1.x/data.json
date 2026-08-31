@@ -1,11 +1,19 @@
 {
   "name": "Varbase Social Single Sign-On",
   "data_name": "varbase_auth",
-  "description": "Social login for Varbase via the Social API — Facebook, X, LinkedIn, Google and others.",
+  "description": "Varbase feature that wires the Social Auth provider ecosystem (Google, Facebook, LinkedIn and others) into a site and places a social-login block on the login and register pages.",
   "version": "10.1.x",
   "package": "Varbase",
   "composer_namespace": "drupal/varbase_auth",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/core": "~11.4.0",
+    "vardot/varbase-patches": "~10.1.0",
+    "drupal/social_api": "~4.1.0",
+    "drupal/social_auth": "~4.2.0",
+    "drupal/social_auth_google": "~4",
+    "drupal/social_auth_facebook": "~4",
+    "drupal/social_auth_linkedin": "~4"
+  },
   "dependent_modules": [
     "drupal:system",
     "drupal:block",
@@ -23,7 +31,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Access control",
@@ -37,12 +45,14 @@
     "varbase",
     "social login",
     "social auth",
+    "single sign-on",
     "sso",
     "oauth",
+    "google",
     "facebook",
-    "google"
+    "linkedin"
   ],
-  "project_description": "Adds single sign-on using existing information from a social networking service. Such as Facebook , LinkedIn , or Google . Built using Social API .\n\n \n\n \n \n\n \n \n Requirements: \n \n Social API. \n Social Auth. \n Social Auth Google. \n Social Auth Facebook. \n Social Auth Linkedin. \n \n \n\n \n \n\n Back to top \n\n Use With Varbase Distribution: \n This module is best used with Varbase distribution.\n\n Can be installed with any Drupal site. Even if installed with the Minimal or Standard profile.\n\n However, using it with Varbase gives you way much more cool stuff!\n\n \n\n \n\n \n Back to top \n\n Varbase documentation \n Check out Varbase documentation for more details.\n\n \n \n \n \n \n\n Sponsored and developed by Vardot. \n \n\n Back to top",
+  "project_description": "Varbase Social Single Sign-On adds single sign-on to a Drupal site using an existing identity on a social networking service such as Google, Facebook, or LinkedIn. It is a thin Varbase feature built on the Social API / Social Auth ecosystem: it declares the provider modules as Composer dependencies, runs an install recipe that enables Social Auth Google, and ships an optional social-login block that appears on the login and register pages. It can be installed on any Drupal site (Minimal or Standard profile), but is designed for and best used with the Varbase distribution. Sponsored and developed by Vardot.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

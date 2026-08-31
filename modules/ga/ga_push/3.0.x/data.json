@@ -1,11 +1,13 @@
 {
   "name": "Google Analytics Push",
   "data_name": "ga_push",
-  "description": "Attaches push events to Google Analytics.",
+  "description": "Provides a PHP API for other modules and Rules to record Google Analytics events, dispatched either client-side (browser dataLayer push) or server-side (GA4 Measurement Protocol).",
   "version": "3.0.x",
   "package": "Statistics",
   "composer_namespace": "drupal/ga_push",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "br33f/php-ga4-mp": "^0.1.0"
+  },
   "dependent_modules": [],
   "configure": "ga_push.settings",
   "core_version_requirement": "^10.3 || ^11",
@@ -15,7 +17,9 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/google_analytics": "Falls back to its 'account' setting for the tracking ID when ga_push has none of its own."
+  },
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
@@ -26,17 +30,17 @@
   ],
   "subcategories": [
     "Analytics / tag management",
-    "Events"
+    "Analytics & tracking"
   ],
   "keywords": [
     "google analytics",
-    "events",
-    "push",
-    "tracking",
+    "ga4",
+    "measurement protocol",
     "datalayer",
-    "measurement"
+    "events",
+    "server-side tracking"
   ],
-  "project_description": "Back to top \n\n Supported Push types \n You can implement your own methods to communicate with GA.\n\n Google nowadays let you communicate to analytics with the current push types:\n\n \n \n \n Push types \n GA4 \n DataLayer \n \n \n \n \n Pageview \n \n \n \n \n Event \n \n \n \n \n Ecommerce \n \n \n \n \n Enhanced Ecommerce \n \n \n \n \n Social \n \n \n \n \n Exceptions \n \n \n \n \n \n Back to top \n\n Features :\n \n \n Client and Server side tracking. You can choose which mode better fits your needs! \n \n Back to top \n\n Dependencies : \n \n Google Analytics 4 Measurement Protocol PHP Library: https://github.com/br33f/php-GA4-Measurement-Protocol \n \n Back to top \n\n Modules that uses ga_push as dependency \n \n Commerce Google Analytics (2.x) : commerce_google_analytics \n \n Please let us know about new modules that uses GA Push!\n\n Back to top \n\n Changes Introduced in 2.x Version \n We removed the deprecated methods from GA, introduced the GA4 method and kept Datalayer.\n\n We keep the same event types.\n\n We keep the functions:\n\nga_push_add_ecommerce()\n\nga_push_add_event()\n\nga_push_add_pageview()\n\nga_push_add_social()\n\n Removed options parameter from ga_push_add.\n\n The following properties are not supported on GA4 service:\n\n \n\n- * - 'tid': Override Tracking ID / Web Property ID (Classic User account\n\n- * aka UA)\n\n- * of the google analytics module config.\n\n- * Universal and Classic GA Methods.\n\n- * - 'cid': Override Universal Client ID of the current user cookie.\n\n- * Only for Universal GA methods.\n\n- * - 'utma': Force Classic GA __utma cookie of the current user cookie\n\n- * Only for Classic GA methods.\n\n- * - 'utmb': Force Classic GA __utmb cookie of the current user cookie\n\n- * Only for Classic GA methods.\n\n- * - 'ua': Override User Agent of the current user.\n\n- * Only for Universal GA methods.\n\n- * - 'uip': Override User IP of the current user.\n\n- * Only for Universal GA methods.\n\n \n\n We remove the includes and use services instead.\n\nExample GA4:\n\n \n\n/** @var \\Drupal\\ga_push\\GA4MPService $ga4mpService **/\n\n$ga4mpService = \\Drupal::service('ga_push.ga4mp'); \n\n $form_url = 'https://example.com/your-form';\n\n // Create the event data array\n\n$event_data = [\n\n 'eventCategory' => 'LandingPage',\n\n 'eventAction' => 'Submit',\n\n 'eventLabel' => $form_url,\n\n];\n\n // Send the event\n\n$ga4mpService->sendEvent($event_data, 'GA_PUSH_TYPE_EVENT');\n\n Datalayer:\n\n \n\n/** @var \\Drupal\\ga_push\\DataLayerService $datalayerService **/\n\n$datalayerService = \\Drupal::service('ga_push.datalayer'); \n\n $form_url = 'https://example.com/your-form';\n\n // Create the event data array\n\n$event_data = [\n\n 'event' => 'GAEvent',\n\n 'eventCategory' => 'LandingPage',\n\n 'eventAction' => 'Submit',\n\n 'eventLabel' => $form_url,\n\n];\n\n // Send the event\n\n$datalayerService->pushData($event_data, 'GA_PUSH_TYPE_EVENT');\n\n Or use the functions ga_push_add*\n\n Credits \n\nInitial development by GeduR.\n\nDevelopment of this module is sponsored by Metadrop .\n\n Back to top",
+  "project_description": "GA Push provides an API so other modules (and Rules) can record Google Analytics events from PHP. Each event is dispatched through a pluggable 'method' registered via hook_ga_push_method. Two methods ship: 'datalayer-js' (client-side; queues the push and emits a dataLayer.push(...) into an inline script in the page head) and 'ga4mp-php' (server-side; sends a GA4 Measurement Protocol hit via the br33f/php-ga4-mp library). Supported push types include event, pageview, ecommerce, social and exception, though the two shipped methods only implement a subset (datalayer-js: event; ga4mp-php: event and ecommerce). A settings form at /admin/config/system/ga-push selects the default method and stores the GA4 measurement ID and Measurement Protocol api_secret. Version 3.0.0-alpha1 is an alpha for Drupal 10.3+/11. Initial development by GeduR; sponsored by Metadrop.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

@@ -1,7 +1,7 @@
 {
   "name": "Cookiebot + GTM",
   "data_name": "cookiebot_gtm",
-  "description": "Cookiebot consent implemented through Google Tag Manager.",
+  "description": "Injects the Google Tag Manager container and the Cookiebot consent script together, with optional Google Consent Mode defaults, so GTM tags respect Cookiebot's consent categories.",
   "version": "1.0.x",
   "package": "SEO",
   "composer_namespace": "drupal/cookiebot_gtm",
@@ -19,7 +19,7 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Security",
@@ -32,8 +32,9 @@
   "keywords": [
     "cookiebot",
     "gtm",
+    "google tag manager",
     "consent",
-    "tag manager",
+    "consent mode",
     "gdpr",
     "cookies"
   ],
