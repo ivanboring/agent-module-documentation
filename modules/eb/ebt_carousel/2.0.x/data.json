@@ -1,11 +1,15 @@
 {
   "name": "Extra Block Types (EBT): Carousel",
   "data_name": "ebt_carousel",
-  "description": "Adds a Carousel block type with Tiny Slider.",
+  "description": "Adds a Carousel block type whose slides (media image + caption + optional wrapping link) are rendered with the Tiny Slider vanilla-JS library; per-block slider and design options come from the shared EBT settings field.",
   "version": "2.0.x",
   "package": "Extra Block Types",
   "composer_namespace": "drupal/ebt_carousel",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ebt_core": "^2.0",
+    "drupal/paragraphs": "^1.0",
+    "levmyshkin/tiny-slider": "^2.9"
+  },
   "dependent_modules": [
     "drupal:link",
     "drupal:media",
@@ -20,30 +24,35 @@
   "project_url": "https://www.drupal.org/project/ebt_carousel",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "levmyshkin/tiny-slider"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Media management",
-    "Content editing experience"
+    "Content display",
+    "Site structure"
   ],
   "subcategories": [
-    "Blocks",
-    "Carousels and sliders"
+    "Carousel / slider",
+    "Block enhancements",
+    "Media embedding"
   ],
   "keywords": [
     "carousel",
+    "slider",
     "block",
     "ebt",
     "tiny slider",
-    "slider",
-    "media"
+    "paragraphs",
+    "media",
+    "layout builder"
   ],
-  "project_description": "Extra Block Types: Carousel module provides ability to add a block with Tiny Slider.\n\n https://github.com/ganlanyuan/tiny-slider \n\n http://ganlanyuan.github.io/tiny-slider/demo/ \n\n Demo: EBT Carousel \n\n EBT modules provide ability to add different blocks in Layout Builder in few clicks. You can install separate block types from this bunch of EBT modules:\n\n \n EBT Accordion / FAQ \n EBT Basic Button \n EBT Block \n EBT Bootstrap Button \n EBT Call to Action \n EBT Carousel \n EBT Columns \n EBT Countdown \n EBT Counter \n EBT Hero \n EBT Image \n EBT Image Gallery \n EBT Micromodal \n EBT Quote \n EBT Slick Slider \n EBT Slideshow \n EBT Stats \n EBT Tabs \n EBT Text \n EBT Tiles \n EBT Timeline \n EBT Video \n EBT Video and Image Gallery \n EBT Views \n EBT Webform \n EBT Webform Popup \n \n All EBT block types contain default widget for EBT blocks, which has Design options for:\n\n \n CSS Box (margins, paddings, borders) \n Background using color, image (including parallax and cover), video (Youtube) \n Edge to edge, Container width \n \n More about EBT blocks read on EBT Core module page:\n\n https://www.drupal.org/project/ebt_core \n\n \n Demo \n \n \n EBT Demo site \n \n\n This is a demo site with EBT modules. Feel free to log in to create or edit pages:\n\n \n https://ebt.drupalbook.org/user \nUsername: editor \nPassword: editor \n \n\n \n You can also download EBT Demo distribution and install it locally:\n\n Download EBT Demo distribution \n \n\n \n \n If you are looking for Extra Paragraph Types , you can use these modules:\n\n \n Extra Paragraph Types (EPT) Modules \n \n \n EPT Accordion / FAQ \n EPT Basic Button \n EPT Block \n EPT Bootstrap Button \n EPT Call to Action \n EPT Carousel \n EPT Columns / Container \n EPT Countdown \n EPT Counter \n EPT Hero \n EPT Image \n EPT Image Gallery \n EPT Micromodal \n EPT Quote \n EPT Slick Slider \n EPT Slideshow \n EPT Stats \n EPT Sticky Menu \n EPT Tabs \n EPT Text \n EPT Tiles \n EPT Timeline \n EPT Video \n EPT Video and Image gallery \n EPT Views \n EPT Webform \n EPT Webform Popup \n \n \n \n \n \n \n \n \n \n Need another Extra Block Type? \n Contact Us \n\n \n \n\n \n \n \n \n \n Back to top",
+  "project_description": "Extra Block Types: Carousel adds a reusable \"EBT Carousel\" custom block type. Each block holds a repeatable \"EBT Carousel item\" paragraph (a media-library image, an optional long-text caption, and an optional link that wraps the whole slide), and renders the collection as a Tiny Slider carousel. Tiny Slider is a small vanilla-JavaScript slider (no jQuery for the slider itself), shipped locally via the levmyshkin/tiny-slider Composer package (loaded from /libraries with the module's own tiny-slider.js as fallback init wrapper). The block exposes an extensive per-block settings form (from ebt_core's EBT Settings field, extended by this module) covering slider mode (carousel vs gallery/fade), axis, slides-to-show/scroll, gutter/edge padding, auto/fixed width, speed, loop, auto height, responsive breakpoints (mobile/tablet/desktop), controls (prev/next text and position), navigation dots, autoplay (timeout, direction, hover-pause), and animation classes, plus the shared EBT design options (margin/border/padding box, border colour/style/radius, background colour, background media image/video with parallax/cover/overlay, edge-to-edge, container max width). Part of the Extra Block Types suite built on ebt_core; EBT blocks are intended to be placed in regions or dropped into Layout Builder sections in a few clicks. The paragraph slide image respects an optional image style chosen in the block settings.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

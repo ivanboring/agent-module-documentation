@@ -1,21 +1,37 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Geolocation Provider (geolocation_provider) — agent index
 
-**Plugin type for geolocation services**, so code asks for a location without naming which service
-answers. Depends on core `serialization`. Does nothing alone — infrastructure for modules that
-implement or consume providers. Version **2.0.0**.
-Core requirement `^8 || ^9 || ^10 || ^11`.
+**Address geocoding behind a Drupal plugin type.** Turns an address string into coordinates
+(forward geocoding) and coordinates back into an address (reverse geocoding) through a swappable
+`GeolocationProvider` plugin. This is **address geocoding, not IP geolocation** — no MaxMind, no IP
+lookup, no API keys. Version **2.0.0**, core `^8 || ^9 || ^10 || ^11`, depends only on core
+`serialization`.
 
-**Why the abstraction earns its place:** a specific provider's response shape, identifiers and
-failure modes otherwise spread into controllers, blocks and preprocess functions — and then the
-contract changes, the free tier disappears, the data-protection assessment objects to a US provider,
-or the site moves behind a CDN that already supplies the answer for free.
+## What it actually is
+- A plugin type `GeolocationProvider` (annotation `@GeolocationProvider`, manager service
+  `plugin.manager.geolocation_provider_plugin`, plugins live in `Plugin/GeolocationProvider/`).
+- Base class `GeolocationProviderPluginBase` injects Guzzle `http_client` + `serializer`; its
+  `get($url, $to_array)` fetches a provider endpoint and decodes it through a custom `geojson`
+  serializer format into a `FeatureCollection` of `Feature` value objects (or a raw array when
+  `$to_array` is TRUE).
+- Two shipped providers, **both keyless** (no API key anywhere in the module):
+  - **Bano** (`bano_geolocation_provider`) → French IGN API `https://data.geopf.fr/geocodage/search/`
+    and `/reverse/`.
+  - **Nominatim** (`nominatim_geolocation_provider`) → `https://nominatim.openstreetmap.org/search`
+    and `/reverse`, plus a `geolocationStructured($street, $postcode, $city)` method.
+- Four demo/JSON callback routes, all gated only by `_permission: 'access content'` (see api/).
+- No config form, no config schema, no permissions, no Drush commands, no submodules.
 
-**Three things belong in any geolocation conversation:**
-1. **An IP address is personal data** under GDPR, and looking one up **sends it to a third party** —
-   a processing activity needing a basis and a privacy-notice entry, however routine it feels.
-2. **IP geolocation is approximate and confidently wrong.** Country reliably, city sometimes, finer
-   rarely — and **wrong for VPN users, mobile networks and corporate proxies**. Gating access or
-   content on it produces a support queue.
-3. **A lookup on the request path is a network call on the request path.** Cache per session or per
-   IP prefix, or the site's response time becomes the provider's.
+## Mechanism at a glance
+1. A consumer (or a callback route) asks the manager for a provider instance by plugin id.
+2. The provider builds the request URL with `Url::fromUri(...)` (query params URL-encoded) and calls
+   `get()`.
+3. `get()` runs a Guzzle GET (default TLS verification on) and the `GeoJsonEncoder` turns a GeoJSON
+   `FeatureCollection` reply into `FeatureCollection`/`Feature` objects; a non-FeatureCollection
+   reply decodes to `NULL`.
+
+## Read next
+- `agent/plugins/provider-plugin-type.md` — the plugin type, base class, manager, the
+  `FeatureCollection`/`Feature` model, and how to write a custom provider.
+- `agent/api/routes-and-callbacks.md` — the four JSON callback routes, their parameters, and the
+  access model.

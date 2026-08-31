@@ -1,7 +1,7 @@
 {
   "name": "File MIME",
   "data_name": "filemime",
-  "description": "Rewrites the MIME type of uploaded files.",
+  "description": "Rewrites the extension-to-MIME-type map Drupal uses when guessing an uploaded file's MIME type, from a server mime.types file and/or administrator-supplied overrides.",
   "version": "2.0.x",
   "package": null,
   "composer_namespace": "drupal/filemime",
@@ -24,27 +24,27 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Media management",
-    "Security"
+    "Media",
+    "Developer tools"
   ],
   "subcategories": [
-    "File uploads",
-    "MIME types"
+    "File & media metadata",
+    "File uploads"
   ],
   "keywords": [
     "mime",
     "file",
     "upload",
-    "type",
     "content-type",
-    "detection"
+    "mime.types",
+    "extension"
   ],
-  "project_description": "Drupal determines the MIME type of each uploaded file by applying a MIME type mapping to the file name. The default mapping is hard-coded in ExtensionMimeTypeGuesser .\n\n The File MIME module allows site administrators to alter the built-in mapping. For example, you may wish to serve FLAC files as audio/flac rather than application/x-flac .\n\n On the File MIME settings page, the MIME type mapping can be extracted from the server's mime.types file and/or configured via a text field, and can also be applied retroactively to all previously uploaded files.\n\n Disabling this module will restore Drupal's built-in mapping.\n\n You can support development by contributing or sponsoring .",
+  "project_description": "Drupal determines the MIME type of each uploaded file by applying an extension-to-MIME-type mapping to the file name. The default mapping is hard-coded in core's ExtensionMimeTypeGuesser. The File MIME module lets site administrators alter that built-in mapping. For example, you may wish to serve FLAC files as audio/flac rather than application/x-flac. On the File MIME settings page the mapping can be extracted from the server's mime.types file and/or configured via a text field, and can also be applied retroactively to all previously uploaded files via a batch. Uninstalling the module restores Drupal's built-in mapping.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
   "project_created": "2008-06-11",
   "project_changed": "2026-08-18",
-  "core_semver_minimum": 8000000,
+  "core_semver_minimum": 11002000,
   "core_semver_maximum": 13000000
 }

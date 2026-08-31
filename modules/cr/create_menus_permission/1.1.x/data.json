@@ -1,7 +1,7 @@
 {
   "name": "Create Menus Permission",
   "data_name": "create_menus_permission",
-  "description": "Separate permission for creating menus.",
+  "description": "Defines a permission for creating menus separate from editing menus.",
   "version": "1.1.x",
   "package": "Administration",
   "composer_namespace": "drupal/create_menus_permission",
@@ -21,20 +21,20 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Security",
+    "Access control",
     "Site structure"
   ],
   "subcategories": [
-    "Permissions",
-    "Menus"
+    "User roles & permissions",
+    "Navigation menus"
   ],
   "keywords": [
     "menu",
     "permission",
-    "create",
+    "create new menu",
     "administer menu",
     "least privilege",
     "delegation"
@@ -45,6 +45,6 @@
   "security_advisory_coverage": "covered",
   "project_created": "2021-03-18",
   "project_changed": "2026-08-18",
-  "core_semver_minimum": 8000000,
+  "core_semver_minimum": 10000000,
   "core_semver_maximum": 12000000
 }

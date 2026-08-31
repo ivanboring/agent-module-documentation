@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Workbench Tabs puts Drupal's local task tabs and status messages in the same place on every page, rather than wherever the current theme happens to render them.
+Workbench Tabs pulls Drupal's local task tabs (Edit / View / Revisions / Delete) and status messages out of the theme and renders them in a fixed bar at the top of every page, so their position and styling no longer depend on which theme is drawing the current page.
 
 ---
 
-An editor moves between the front-end theme and the admin theme constantly — view a node, edit it, view it again — and the two themes put the tab row and the message region in different places, at different widths, with different styling. The result is that the controls an editor uses most move around, and the confirmation that a save worked appears somewhere different depending on which side of the site they are on. On a front-end theme that never anticipated administrative use, the tab row may be squeezed into a content column or, if the theme forgot the region, absent entirely. Fixing the position is a small change with a large aggregate effect, because it is paid on every content operation. Version **8.x-1.8** on `^9 || ^10 || ^11`, part of the Workbench family, with a `use workbench_tabs` permission so the treatment applies to editors rather than to everyone. Two things to verify, the same two that apply to any relocation of these elements. **Status messages carry `aria-live`**, so a new message is announced without moving focus — relocating them must preserve that, or feedback becomes visual-only for screen-reader users. And **local tasks are navigation**: they must remain keyboard reachable with a visible focus indicator and the active tab distinguishable by more than colour, which is where cosmetic changes to this row usually go wrong.
+The module implements `hook_page_top()` to add its own render element to every page. A small service, `WorkbenchTabsInfo::applyWorkbenchTabs()`, decides whether to do so: it returns TRUE when the `enable_for_admin_theme` setting is on, or when the current route is *not* using the admin theme. So out of the box (setting off) the bar appears only on front-end/non-admin-theme pages, where relocating the tabs is most valuable; the settings form's "Everywhere" option flips it on for admin pages too, and the `workbench_tabs_update_8001` hook sets that flag for existing sites to preserve prior behaviour. The bar itself is a themed `<div class="workbench-tabs toolbar">` containing two custom render elements: `workbench_tabs_local_tasks` (a `LocalTasks` element that asks the core `plugin.manager.menu.local_task` for the primary and secondary tasks of the current route, with a regex workaround for canonical entity routes hijacked by Page Manager) and `workbench_tabs_status_messages` (a `StatusMessages` element that reads `messenger->all()` and then `deleteAll()`, so each message is shown exactly once, in this bar instead of the theme's normal location). The whole element carries `#access => hasPermission('use workbench_tabs')`, so only users granted that permission (authenticated users by default) get the relocation; everyone else sees messages where their theme normally puts them. When the bar is active, `hook_block_build_alter()` sets `#access => FALSE` on the core `local_tasks_block` to prevent the tabs appearing twice. A small JS behaviour adds a Show/Hide-messages toggle and auto-collapses the message drawer once the user scrolls past it. Despite the "Workbench" package name the module is standalone — no dependency on the Workbench module or on the core Toolbar module. Settings live at `/admin/config/content/workbench-tabs` behind `administer site configuration`.
 
 ---
 
-- Keep editor tabs in one place site-wide.
-- Show status messages consistently.
-- Fix tabs missing from a front-end theme.
-- Improve editorial consistency.
-- Show a save confirmation reliably.
-- Reduce editor confusion between themes.
-- Keep local tasks visible on every page.
-- Improve a Workbench-based workflow.
-- Fix a squeezed tab row.
-- Show messages in a fixed location.
-- Improve editorial efficiency.
-- Support editors working across themes.
-- Restrict the treatment to editors.
-- Reduce missed confirmations.
-- Improve a custom theme's admin usability.
-- Show moderation tabs consistently.
-- Support a content team's workflow.
-- Fix inconsistent message placement.
+- Keep the Edit/View/Revisions tabs in one fixed place across every theme.
+- Show status messages in a consistent location regardless of theme.
+- Let a custom front-end theme skip placing and styling local task tabs.
+- Surface local tasks on a front-end theme that has no tabs region.
+- Prevent long status messages from breaking a page layout.
+- Give editors a predictable spot for administrative controls while browsing the site.
+- Restrict the relocated tabs/messages to editors via the `use workbench_tabs` permission.
+- Apply the treatment only on non-admin themes (default) to leave the admin theme untouched.
+- Apply the treatment everywhere, including admin pages, via the "Everywhere" setting.
+- Ensure each Drupal message is displayed exactly once per request.
+- Avoid duplicate tab rows by suppressing the core local tasks block when active.
+- Collapse the message drawer automatically as the user scrolls down.
+- Provide a manual Show/Hide toggle for the message area in the bar.
+- Support editorial workflows where users move between front-end and admin themes.
+- Standardize local-task placement across a multi-theme site.
+- Keep local tasks working on entity pages whose routes are altered by Page Manager.
+- Remove the need for each theme to define and style a status-message region.
+- Give screen-reader-friendly, single-render message output for confirmations.
+- Configure whether the bar covers admin pages from a single settings form.
+- Roll out consistent editorial chrome without editing every theme template.

@@ -1,11 +1,16 @@
 {
   "name": "Extra Paragraph Types (EPT): Video",
   "data_name": "ept_video",
-  "description": "Adds a single-video paragraph type.",
+  "description": "Adds single video (Remote videos and Local) paragraph type.",
   "version": "2.0.x",
   "package": "Extra Paragraph Types",
   "composer_namespace": "drupal/ept_video",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ept_core": "^2.0",
+    "drupal/paragraphs": "^1.0",
+    "drupal/glightbox": "^1.0",
+    "drupal/glightbox_media_video": "^1.0"
+  },
   "dependent_modules": [
     "drupal:media",
     "ept_core:ept_core",
@@ -20,30 +25,39 @@
   "project_url": "https://www.drupal.org/project/ept_video",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "glightbox:glightbox",
+    "glightbox_media_video:glightbox_media_video"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Media management",
+    "Content display",
+    "Media",
     "Content editing experience"
   ],
   "subcategories": [
-    "Paragraphs",
-    "Video embedding"
+    "Video embedding",
+    "Lightbox / modal display",
+    "Structured content / page building"
   ],
   "keywords": [
     "video",
     "paragraphs",
     "ept",
     "remote video",
+    "oembed",
     "glightbox",
-    "media"
+    "lightbox",
+    "media",
+    "youtube",
+    "vimeo"
   ],
-  "project_description": "Extra Block Types (EPT): Video module provides ability to add single video via Media field. it can be displayed as a thumbnail with lightbox popup.\n\n Demo: EPT Video \n\n EPT modules provide ability to add different paragraphs in few clicks. You can install separate paragraph types from this bunch of EPT modules:\n\n \n EPT Accordion / FAQ \n EPT Basic Button \n EPT Block \n EPT Bootstrap Button \n EPT Call to Action \n EPT Carousel \n EPT Columns / Container \n EPT Countdown \n EPT Counter \n EPT Hero \n EPT Image \n EPT Image Gallery \n EPT Micromodal \n EPT Quote \n EPT Slick Slider \n EPT Slideshow \n EPT Stats \n EPT Sticky Menu \n EPT Tabs \n EPT Text \n EPT Tiles \n EPT Timeline \n EPT Video \n EPT Video and Image gallery \n EPT Views \n EPT Webform \n EPT Webform Popup \n \n All EPT paragraph types contain default widget for EPT paragraphs, which has Design options for:\n\n \n CSS Box (margins, paddings, borders) \n Background using color, image (including parallax and cover), video (Youtube) \n Edge to edge, Container width \n \n \n Demo \n \n \n EPT Demo site \n \n\n This is a demo site with EPT modules. Feel free to log in to create or edit pages:\n\n \n https://ept.drupalbook.org/user \nUsername: editor \nPassword: editor \n \n\n \n You can also download EPT Demo distribution and install it locally:\n\n Download EPT Demo distribution \n \n\n \n \n More about EPT paragraphs read on EPT Core module page:\n\n https://www.drupal.org/project/ept_core \n\n If you are looking for Extra Block Types , you can use these modules:\n\n \n Extra Block Types (EBT) Modules \n \n \n EBT Accordion / FAQ \n EBT Basic Button \n EBT Block \n EBT Bootstrap Button \n EBT Call to Action \n EBT Carousel \n EBT Columns \n EBT Countdown \n EBT Counter \n EBT Hero \n EBT Image \n EBT Image Gallery \n EBT Micromodal \n EBT Quote \n EBT Slick Slider \n EBT Slideshow \n EBT Stats \n EBT Tabs \n EBT Text \n EBT Tiles \n EBT Timeline \n EBT Video \n EBT Video and Image Gallery \n EBT Views \n EBT Webform \n EBT Webform Popup \n \n \n \n \n \n \n \n \n \n Need another Extra Block Type? \n Contact Us \n\n \n \n\n \n \n \n \n \n Back to top",
+  "project_description": "Extra Paragraph Types (EPT): Video ships a single 'EPT Video' Paragraphs bundle that references a core Media 'Remote Video' (oEmbed) entity and renders it, by default, as a clickable thumbnail that opens the video in a GLightbox overlay player. Per-paragraph presentation (margins/padding/border, background color/image/video, edge-to-edge, container width, additional classes, title tag) comes from the shared EPT design options provided by ept_core's field_ept_settings. The paragraph carries an optional title and body text alongside the video. It is one of the Extra Paragraph Types (EPT) family, all built on ept_core; install only the paragraph types you need. Requires core Media plus ept_core, paragraphs, glightbox and glightbox_media_video; installation is blocked until a 'Remote Video' media type exists.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

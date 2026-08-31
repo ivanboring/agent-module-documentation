@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Create Menus Permission splits menu creation out of `administer menu`, so a role can add menus without gaining control of the site's entire menu structure.
+Create Menus Permission adds a single `create new menu` permission and lets a role reach the "Add menu" form without holding core's all-or-nothing `administer menu`.
 
 ---
 
-`administer menu` is one of Drupal's coarser permissions. It covers creating and deleting menus, editing every link in every menu including the administration menu, and — because menu links can point anywhere — arranging the site's navigation in whatever way the holder chooses. It is genuinely an administrative permission, which makes it awkward for the common delegated case: a department that needs its own menu for its own section, an editor building navigation for a microsite, a team whose menu is theirs and whose site's main menu is not. The choice today is all of it or none of it, and "all of it" is usually granted because the alternative is a ticket every time. This module adds a narrower permission through a **`permission_callbacks`** entry, generating what is needed rather than declaring a fixed list — which is the right mechanism when the permission set depends on what exists. Version **1.1.0** on core `^10 || ^11`, depending on core `menu_ui`. Two things to establish, because a partial permission that leaks is worse than none. **What creating a menu implies**: whoever creates a menu usually administers it, so confirm whether the new permission also confers editing rights over the created menu and whether it stops there. And **menu links are navigation, and navigation is trust** — a link is a piece of the site's chrome pointing wherever its author chose, so a delegated menu that can be placed in a shared region is a delegated ability to put arbitrary links in front of every visitor.
+Core gates the whole menu-management UI behind one permission, `administer menu`: it covers creating menus, deleting menus, and editing every link in every menu including the administration menu. There is no way in core to hand out just the ability to add a menu. This module fills exactly that gap and nothing more. It registers one permission, `create new menu`, through a `permission_callbacks` entry (`CreateMenusPermission::CreateMenusPermission`), and implements one hook, `create_menus_permission_menu_create_access()` — an implementation of `hook_ENTITY_TYPE_create_access()` for the `menu` config entity. That hook returns `AccessResult::allowed()` when the account holds `create new menu` and `AccessResult::forbidden()` otherwise, which is what governs the `entity.menu.add_form` route (`/admin/structure/menu/add`, requirement `_entity_create_access: 'menu'`). The scope is genuinely narrow: the permission grants only the creation of a new (empty) menu. Editing an existing menu, adding or rearranging its links, and deleting menus all still run through the menu edit/delete routes, which require `menu.update`/`menu.delete` access and therefore still demand `administer menu` — a `create new menu` holder cannot touch any menu that already exists, cannot add links, and cannot reach the administration menu. One interaction matters in practice: because the access hook returns *forbidden* (not neutral) when the permission is missing, and a forbidden create-access result short-circuits core's default admin-permission check, enabling this module means `administer menu` on its own no longer allows creating menus. Grant `create new menu` alongside `administer menu` to any role that previously created menus, or it will silently lose that ability. The module was written for use with Workbench Menu Access (and is derived from Simple Menu Permissions, dropping the per-menu permissions), but it depends only on core `menu_ui` and works standalone. Version 1.1.0, core `^10 || ^11`. There is no configuration UI and no config schema — the only artifact is the permission on `admin/people/permissions`.
 
 ---
 
-- Let a department create its own menu.
-- Delegate menu creation without full control.
+- Let a non-admin role create its own menu without granting `administer menu`.
+- Delegate the "Add menu" form to a department or team.
 - Apply least privilege to menu management.
-- Let an editor build a microsite's navigation.
-- Avoid granting administer menu.
-- Reduce the number of full administrators.
-- Support a devolved site structure.
-- Let a team manage its own navigation.
-- Separate creating from administering menus.
-- Reduce ticket volume for menu requests.
-- Support a multi-team intranet.
-- Delegate navigation to a section owner.
-- Restrict who may edit the main menu.
-- Support a campaign team's structure.
-- Grant menu creation to a role.
-- Reduce privilege creep.
-- Support a permissions audit.
-- Enable self-service navigation building.
+- Give an editor the ability to spin up a menu for a microsite.
+- Avoid handing out `administer menu` just so someone can add a menu.
+- Reduce the number of full menu administrators.
+- Pair with Workbench Menu Access to delegate per-menu editing while keeping creation separate.
+- Keep the permissions list flat instead of one permission per menu (unlike Simple Menu Permissions).
+- Let a site builder create empty menus for a colleague to populate later.
+- Restrict editing of the main and administration menus to full admins while allowing menu creation.
+- Support a devolved, multi-team intranet where each team seeds its own menu.
+- Reduce ticket volume for "please create a menu for us" requests.
+- Grant menu creation to a role during a permissions audit / least-privilege cleanup.
+- Enable self-service creation of menus in an editorial workflow.
+- Combine `create new menu` with `administer menu` so existing menu admins keep both create and edit rights.
+- Provision a campaign or event team with the ability to start a new navigation structure.
+- Separate the "create" verb from the "administer" verb in a permissions model.
+- Let a distribution/install profile grant menu creation to a custom editor role.
+- Audit which roles can create menus independently of who can edit them.
+- Prototype menu structures without exposing the full menu administration surface.

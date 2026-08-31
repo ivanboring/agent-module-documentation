@@ -5070,3 +5070,24 @@ appbanners	no-D11 (packagist core ^9||^10)
 entity_overlay	no-D11 (packagist core ^9||^10)
 # obsolete: info.yml lifecycle: obsolete (upstream deprecated; core refuses to install). Existing start-only doc left as historical.
 devel_kint_extras
+# domain_language_negotiation: 3.0.0-alpha7 deletes core language.types config on install → every subsequent module enable fatals in core LanguageNegotiator (D11)
+domain_language_negotiation
+# image_base64_formatter: D11 fatal — ImageBase64Formatter::$currentUser property type incompatible with core ImageFormatter (AccountInterface) on D11.4, fatals on field-formatter plugin discovery
+image_base64_formatter
+# acquia_purge_varnish: D11 drush-fatal — ships OLD-style drush.services.yml + src/Commands/ (annotated-command API removed in Drush 12+); breaks drush command discovery globally ("no commands defined in pm namespace"), so a whole wave fails to enable. Matches campaign-drush-fatal-enable-blocker.
+acquia_purge_varnish
+# drupal_association_extras: docs already accurate at review (wave 39), no redo needed — skip so pick-redo does not re-surface it (it is clean+thin: no security.md, no agent solution subdirs)
+drupal_association_extras
+ai_agents_test
+disable_html5_validation
+smart_read_more_link
+trusted_proxy_headers_debug
+webform_gmap_field
+abjs
+text_with_title
+transaction
+masked_input
+graphql_twig
+rtz
+gridstack
+entityform_block
