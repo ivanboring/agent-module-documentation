@@ -1,20 +1,51 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Site Meta (sitemeta) — agent index
 
-Page title / description / keyword meta tags via configurable **Site meta entities**, driven by
-core **`token`**. Permissions: `add site meta entities`, `administer site meta entities`.
-Version **8.x-1.7**. Core requirement `^9.3 || ^10 || ^11`.
+Sets a page's `<title>`, `<meta name="description">` and `<meta name="keywords">` from **`Site meta`
+content entities** matched by **internal system path**, with **node/term token** support. Version
+**8.x-1.7**. Core `^9.3 || ^10 || ^11`. Requires core **`token`**. No config form, no config schema.
 
-**Position against the obvious alternative.** `metatag` dominates this space — comprehensive, well
-maintained, and correspondingly large (tag groups, per-bundle defaults, Open Graph, Twitter cards,
-Schema.org, a substantial configuration surface). A smaller module that does titles and descriptions
-well is reasonable for a site whose requirement is exactly those.
+## What it actually does
+- **Storage**: a `sitemeta` **content entity** (`base_table: sitemeta`) with fields `path`, `name`
+  (title), `description`, `keywords`, plus `user_id`, `langcode`, `created`, `changed`. Managed at
+  `admin/content/sitemeta` (list / add / edit / delete) — see `src/Entity/SiteMeta.php`,
+  `src/Form/SiteMetaForm.php`, `src/SiteMetaListBuilder.php`.
+- **Emission**: `sitemeta_preprocess_html()` in `sitemeta.module` runs on every page. It resolves the
+  current internal path + langcode via `SitemetaGenerator::getSiteMeta()`, then:
+  - sets `head_title['title']` (replaces the default title),
+  - appends a `description` meta tag to `#attached['html_head']`,
+  - appends a `keywords` meta tag.
+  Each value is passed through `\Drupal::token()->replace($value, $types, ['clear' => TRUE])` where
+  `$types` holds the current `node` and/or `taxonomy_term`.
+- **Matching** (`src/SitemetaGenerator.php`): (1) exact `path` + `langcode` `loadByProperties`; then
+  (2) `wildcardCheck()` over rules whose `path` contains `%` — the substring before the first `%` is
+  a prefix matched with `str_contains` against the internal path and its alias. **Quirk:** the loop
+  has an unconditional `return FALSE` after the first iteration, so only the first wildcard rule is
+  ever reliably considered. Treat exact per-path rules as the dependable mode.
+- **Node form**: `sitemeta_form_node_form_alter()` adds a "Custom meta" details group (advanced
+  sidebar) to node edit forms; its submit handler saves/updates a `sitemeta` entity for that node's
+  `/node/{nid}` path. The path field is `#disabled` and forced to the node's own path (Drupal resets
+  disabled values to the default, so it cannot be pointed at another path).
 
-**Two things to check before choosing it:**
-1. **What it covers.** Any site that gets **shared** eventually wants **Open Graph** and Twitter
-   cards — at which point this becomes a stepping stone to installing `metatag` anyway. **Running
-   both means two systems writing to the same `<head>` with no arbitration**, producing duplicate
-   tags that search engines handle unpredictably.
-2. **Tokens vs literals decides whether it scales.** A rule per page is unmanageable past a few
-   dozen; a **token-driven rule per bundle** is one rule for a thousand nodes. The `token`
-   dependency suggests the latter is intended — confirm per-bundle defaults are the primary mode.
+## Permissions (`sitemeta.permissions.yml`)
+`administer site meta entities` (restrict access), `add site meta entities`, `edit site meta
+entities`, `delete site meta entities`. Entity routes in `sitemeta.routing.yml` are each gated by the
+matching permission.
+
+## Output safety
+Values are emitted through the render system: the title via Twig `safe_join`, and the meta `content`
+as an `html_tag` attribute — both **attribute-escaped**, not printed raw. No `|raw`, no string
+concatenation into `<head>`.
+
+## Scope / limits — read before recommending
+- **Only** title + description + keywords. **No** Open Graph, Twitter cards, canonical, robots, or
+  Schema.org. `metatag` remains the comprehensive option; running both means two systems writing the
+  same `<head>` with no arbitration (duplicate tags).
+- No config form and **no config schema** (`provides_config_schema: false`); rules are content
+  entities, not exported configuration.
+- `composer.json`'s `description` is a copy-paste error (mentions SMTP email) — ignore it; the
+  `.info.yml` description is authoritative.
+
+## Docs in this set
+- `../usage.md` — short / dense / use-case bullets.
+- `config/site-meta-entities.md` — how to create and match a rule (fields, wildcard, tokens).

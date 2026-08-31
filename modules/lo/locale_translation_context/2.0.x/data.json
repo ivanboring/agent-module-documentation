@@ -1,11 +1,13 @@
 {
   "name": "Locale Translation Context",
   "data_name": "locale_translation_context",
-  "description": "Adds context filtering to the translation interface.",
+  "description": "Adds a context (msgctxt) filter to core's interface-translation Translate and Export screens, plus context-aware Drush export.",
   "version": "2.0.x",
   "package": "Multilingual",
   "composer_namespace": "drupal/locale_translation_context",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/core": "^10.1 || ^11"
+  },
   "dependent_modules": [
     "drupal:locale"
   ],
@@ -20,26 +22,32 @@
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
-  "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_drush_commands": [
+    "locale:context-export (alias locale-context-export)",
+    "locale:export (overridden to accept --context)"
+  ],
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Multilingual",
-    "Administration tools"
+    "Multilingual"
   ],
   "subcategories": [
-    "Interface translation",
-    "Admin UI"
+    "Translation / multilingual",
+    "Translation template extraction"
   ],
   "keywords": [
     "locale",
     "context",
+    "msgctxt",
+    "gettext",
     "translation",
+    "interface translation",
     "filter",
-    "strings",
-    "disambiguation"
+    "disambiguation",
+    "po export",
+    "drush"
   ],
-  "project_description": "This module adds context filtering capabilities to the core translation interface.\n\n Back to top \n\n Impacted pages \n Configuration > Regional and Language > Translate interface > Translate \n Allow to filter the translated strings by context.\n\n Configuration > Regional and Language > Translate interface > Export \n Allow to export strings for a specific context.\n\n Back to top \n\n Use case \n Using contexts when writing custom code is a good practice. It allows to clearly separate your custom strings from the core and contrib modules strings, and to be able to translate the same string differently if the context of the word is not the same.\n\n Example of a translation string using context:\n\n t('This is my custom string', array(), array('context' => 'custom_project'); \n\n Unfortunately, the Drupal core does not provide any functionalities in the admin interface to make use of the strings translation contexts. This module adds basic functionalities to manipulate contexts.\n\n Back to top",
+  "project_description": "This module adds context filtering capabilities to Drupal core's user interface translation (locale) pages. Gettext contexts (msgctxt) let developers disambiguate identical source strings that must be translated differently depending on meaning, but core exposes no way to see or filter by them. This module adds a Context filter to the Translate screen (admin/config/regional/translate), a Context select to the Export screen, and a context-aware Drush export command. Depends on the core locale module. No configuration form and no custom permissions; access is governed by core's 'translate interface' permission.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

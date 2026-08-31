@@ -1,18 +1,32 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # User View Mode (user_view_mode) — agent index
 
-Creates a **display view mode per user role**, so profiles render according to the roles an account
-holds. No dependencies. Version **8.x-1.4**. Core requirement `^10 || ^11`.
+Assigns an existing **user view mode to each role**, then swaps a user profile into that view mode
+when the account renders. Version **8.x-1.4**. Core `^10 || ^11`. No dependencies, no permissions,
+no routes, no services. The entire module is **two hooks** in `user_view_mode.module`.
 
-**What it replaces:** one display for all users — every field on every profile, hidden by CSS or
-left empty — or a preprocess function with a chain of role checks. A view mode per role turns that
-into **display configuration**: exportable, editable in the Field UI, not buried in a theme.
+## Mechanism (read this first)
+1. **`hook_form_user_role_form_alter()`** — adds two fields to the role add/edit form
+   (`admin/people/roles/manage/{role}`): a **View Mode** `select` (options are the user entity's
+   view modes) and a **Weight** number field. A submit handler saves both as **third-party
+   settings** on the `user.role.*` config entity: `user_view_mode.view_mode` and
+   `user_view_mode.weight`. The module ships **no config schema** for these keys.
+2. **`hook_entity_view_mode_alter()`** — when a `user` entity renders in `full` or `default`, it
+   reads the account's non-locked roles (`getRoles(TRUE)` — anonymous/authenticated excluded) and
+   rewrites `$view_mode` to the configured value. **One** role → that role's setting. **Several**
+   roles → the role with the **highest weight** wins. Falls back to `full` when a role has no
+   setting. Does nothing if the account has no non-locked role.
 
-**Two things to think through:**
-1. **Users hold several roles.** The module needs a rule for which view mode wins when an account
-   is both staff and author — first match, highest weight, most specific — and **that rule is the
-   whole behaviour**. Establish it before designing around it.
-2. **A view mode is a display decision, not access control.** Hiding a field in one role's view
-   mode does not stop it being readable through **JSON:API**, a **view**, a **search index** or a
-   different view mode. Anything genuinely confidential needs **field-level access**; this is the
-   wrong tool for that job.
+## Two accuracy notes
+- **The tie-break uses the role's core weight** (`Role::getWeight()`, the drag order at
+  `admin/people/roles`), **not** the "Weight" field this module adds to the form. That field is
+  written and shown as a form default but is **never read** by the selection logic — effectively
+  dead for multi-role resolution.
+- **A view mode is a display decision, not access control.** Choosing a role's view mode changes
+  which fields appear in that render only. Drupal still enforces user-view access and per-field
+  access; every field stays readable through **JSON:API**, **Views**, a **search index**, or a
+  different view mode. For anything confidential use **field-level access** — this is the wrong
+  tool.
+
+## Configure
+- `agent/config/view-mode-per-role.md` — set a role's view mode and understand multi-role resolution.

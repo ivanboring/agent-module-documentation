@@ -1,11 +1,13 @@
 {
   "name": "Masquerade Field",
   "data_name": "masquerade_field",
-  "description": "Masquerade as users listed in a user field.",
+  "description": "Adds a user-account field listing the specific accounts an account may masquerade as, narrowing Masquerade from site-wide to a per-user allow list.",
   "version": "2.0.x",
   "package": null,
   "composer_namespace": "drupal/masquerade_field",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/masquerade": "^2.0"
+  },
   "dependent_modules": [
     "masquerade:masquerade"
   ],
@@ -22,24 +24,31 @@
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "Field type: masquerade_field (extends core EntityReferenceItem, targets user)",
+    "Field formatter: masquerade_field_default (extends EntityReferenceLabelFormatter; renders masquerade links)",
+    "EntityReferenceSelection: masquerade_field_user (user selection handler)",
+    "Views field handler: masquerade_link (extends views EntityLink)",
+    "Validation constraint: ExcludeOriginUser (prevents self-masquerade)"
+  ],
   "categories": [
-    "User management",
-    "Security"
+    "Access control",
+    "Administration tools"
   ],
   "subcategories": [
-    "Impersonation",
-    "Permissions"
+    "User roles & permissions",
+    "Session management"
   ],
   "keywords": [
     "masquerade",
     "impersonation",
-    "support",
     "switch user",
-    "field",
-    "delegation"
+    "support",
+    "user field",
+    "delegation",
+    "least privilege"
   ],
-  "project_description": "This module extends Masquerade , by providing a user field referring other accounts that the user is able to masquerade as.\n\n Administrators, granted with administer users and edit masquerade field permission, are able to edit any user profile and select target accounts that the user being edited will be able to masquerade.\n\n Users granted with view own masquerade field are able to see this field in their account. The module provides a formatter that allows the user to masquerade, by clicking on the target user link.",
+  "project_description": "Masquerade Field extends the Masquerade module by adding a base field ('Masquerade as') to the user entity that references the specific accounts a given user is permitted to masquerade as. Instead of granting the broad 'masquerade as any user' or per-role masquerade permissions, an administrator populates a per-user allow list of target accounts. The module plugs into Masquerade's hook_masquerade_access() so that any account named in a user's 'Masquerade as' field becomes a permitted masquerade target for that user. A field formatter renders each target as a masquerade link (reusing Masquerade's own CSRF-protected /user/{user}/masquerade route), and a Views field handler plus an optional 'Masquerade as' block/view expose the same list. Permissions: 'edit masquerade field' (restrict access) controls who may set the target lists; 'view own masquerade field' and 'view any masquerade field' control who may see them.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

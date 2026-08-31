@@ -1,20 +1,23 @@
 {
   "name": "Cool Editor Tabs",
   "data_name": "cool_editor_tabs",
-  "description": "Improved styling and usability of editor tabs.",
+  "description": "Restyles Drupal's local task tabs (View, Edit, Translate, ...) into a floating, icon-based pop-up menu for authenticated editors.",
   "version": "2.0.x",
   "package": "Administration",
   "composer_namespace": "drupal/cool_editor_tabs",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "cool_editor_tabs.settings",
   "core_version_requirement": "^11.1",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/cool_editor_tabs",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "core/drupal",
+    "core/once"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
@@ -22,22 +25,25 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Content editing experience",
+    "Administration tools",
     "Theming"
   ],
   "subcategories": [
-    "Admin UI",
-    "Tabs and navigation"
+    "Local tasks / tabs",
+    "Template suggestions",
+    "Color schemes"
   ],
   "keywords": [
+    "local tasks",
     "tabs",
     "editor",
     "admin",
+    "icons",
     "usability",
-    "local tasks",
-    "styling"
+    "heroicons",
+    "icon api"
   ],
-  "project_description": "Cool Editor Tabs enhances the appearance and usability of Drupal's editor tabs (View, Edit, Translate, etc.), making them more accessible and visually consistent.\n\n 🔹 How it works: \n\n \n A toggle button is displayed at a fixed position on the screen. \n Clicking it reveals the editor tabs as intuitive, icon-based buttons. \n Only authenticated users with the \"Use Cool Editor Tabs\" permission will see the tabs, keeping the interface clean for visitors. \n \n 🔹 Features: \n\n \n Beautiful Heroicons v2 icons for all common tabs (Edit, Delete, Translate, Revisions, Layout, Clone and more). \n Built-in icon support for popular contrib modules: Metatag, Pathauto, Redirect, Webform, Scheduler, Simple XML Sitemap, Content Moderation and Rabbit Hole. \n First-letter fallback for tabs without a matching icon — no more white circles for unknown tabs. \n Configurable colors via Administration → Configuration → User interface → Cool Editor Tabs , with a built-in real-time WCAG 2.1 contrast checker. \n Developer API: implement hook_cool_editor_tabs_icon_alter() to provide custom icons for your own module's tabs. \n Drupal Icon API integration — the icon pack is available to other modules. \n \n 🔹 Requirements: \n\n \n Drupal 11.1 or higher",
+  "project_description": "Cool Editor Tabs restyles Drupal's local task tabs (View, Edit, Translate, Delete, Revisions, ...) into a compact, icon-based menu. A single settings/gear toggle button is fixed to the bottom-right of the screen; clicking it expands the local tasks as circular icon buttons. It is achieved almost entirely in CSS (only a small toggle behaviour uses JavaScript). The restyled tabs appear only for authenticated users holding the 'use cool editor tabs' permission and only on non-admin routes, so anonymous visitors are unaffected.\n\nHow it works:\n- hook_page_attachments() attaches the admin_tabs library (CSS + toggle JS) for any authenticated user with the permission, and injects the five configurable colours as CSS custom properties (:root variables) after validating each as a strict hex colour.\n- Theme suggestion + preprocess hooks swap the menu_local_task(s) / menu_local_action templates for the module's 'better' variants on non-admin routes, replacing each tab title with an SVG icon (Heroicons v2) resolved from the tab's route name, with a first-letter fallback for unmatched tabs.\n\nFeatures:\n- Built-in icons for core tabs and popular contrib modules (Metatag, Pathauto, Redirect, Webform, Scheduler, Simple XML Sitemap, Content Moderation, Rabbit Hole, Devel, Layout Builder, Clone).\n- Colour configuration at Administration -> Configuration -> User interface -> Cool Editor Tabs, with a live client-side WCAG 2.1 non-text contrast checker (3:1) on the settings form.\n- Registers a Drupal Icon API icon pack (cool_editor_tabs) usable by other modules.\n- Developer hook hook_cool_editor_tabs_icon_alter() to map custom route names to icons / packs.\n\nThe module is essentially a maintained fork of the abandoned better_admin_tabs project. Requires Drupal 11.1 or higher.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

@@ -1,7 +1,7 @@
 {
   "name": "User View Mode",
   "data_name": "user_view_mode",
-  "description": "Provides a view mode for each user role.",
+  "description": "Selects which user view mode a profile renders in, based on the account's role.",
   "version": "8.x-1.x",
   "package": null,
   "composer_namespace": "drupal/user_view_mode",
@@ -19,25 +19,23 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "User management",
     "Content display"
   ],
   "subcategories": [
-    "View modes",
-    "Display settings"
+    "View mode switching"
   ],
   "keywords": [
     "user",
     "view mode",
     "role",
-    "display",
-    "profile",
-    "rendering"
+    "profile display",
+    "entity_view_mode_alter",
+    "third-party settings"
   ],
-  "project_description": "This module allows you to choose the default view mode display for the user depending on his role.\n\n Installation \n \n Install module as usual: Install contrib modules \n Edit or create a role and set your view mode. \n \n For users with multiple roles, the weight will be used to detect the view mode for the user profile.\n\n \n\n Sponsored and developed by: \n \n\n Back to top",
+  "project_description": "This module allows you to choose the default view mode display for the user depending on his role. Edit or create a role and set your view mode. For users with multiple roles, the weight will be used to detect the view mode for the user profile.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

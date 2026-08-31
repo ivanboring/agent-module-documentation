@@ -1,7 +1,7 @@
 {
   "name": "Paragraphs Selection",
   "data_name": "paragraphs_selection",
-  "description": "Paragraph bundles declare where they can be used.",
+  "description": "Paragraph bundles declare which fields they may be used on, inverting Paragraphs' field-side allowed-types configuration.",
   "version": "2.0.x",
   "package": "Paragraphs",
   "composer_namespace": "drupal/paragraphs_selection",
@@ -30,15 +30,15 @@
     "Site structure"
   ],
   "subcategories": [
-    "Paragraphs",
-    "Content modelling"
+    "Structured content / page building",
+    "Entity selection"
   ],
   "keywords": [
     "paragraphs",
     "selection",
     "bundles",
-    "restrict",
-    "nesting",
+    "allowed types",
+    "entity reference selection",
     "content model"
   ],
   "project_description": "Let paragraph bundles define where they can be used. \n\n Basically, this module reverses the way entity reference selection handling is done by the paragraphs module. This allows paragraph bundles to provide entity, field and weight configuration that would otherwise be in the parent entity field configuration, enabling a slightly different config management approach.\n\n If you have any ideas as to how to improve the configuration form on the field settings, let me know!",

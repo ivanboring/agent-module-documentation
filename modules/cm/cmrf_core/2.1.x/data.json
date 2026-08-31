@@ -1,11 +1,13 @@
 {
   "name": "CiviMRF Core",
   "data_name": "cmrf_core",
-  "description": "Connects Drupal to CiviCRM over REST.",
+  "description": "Drupal-side abstraction for calling a remote (or local) CiviCRM instance's APIv3/APIv4 over REST, via configurable connection profiles and connectors.",
   "version": "2.1.x",
   "package": "CiviCRM",
   "composer_namespace": "drupal/cmrf_core",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "civimrf/cmrf_abstract_core": "^0.10.8"
+  },
   "dependent_modules": [],
   "configure": null,
   "core_version_requirement": "^8 || ^9 || ^10 || ^11",
@@ -14,7 +16,9 @@
   "project_url": "https://www.drupal.org/project/cmrf_core",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "civimrf/cmrf_abstract_core"
+  ],
   "suggests": {},
   "submodules": [
     "cmrf_call_report",
@@ -27,22 +31,21 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Integrations",
-    "Security"
+    "Integrations"
   ],
   "subcategories": [
-    "CRM",
-    "APIs"
+    "CRM integration"
   ],
   "keywords": [
     "civicrm",
     "cmrf",
+    "civimrf",
     "rest",
     "crm",
     "integration",
     "api"
   ],
-  "project_description": "CMRF is the CiviCRM Modular Remote-Access Framework. You can read about the ideas behind this framework at GitHub repository . This module handles the Drupal (8+9) integration. \n\n Contribute \n Development is done on GitHub in the 8.x-dev . Thats is also the place where you can submit your PR's.",
+  "project_description": "CMRF is the CiviCRM Modular Remote-access Framework (\"CiviMRF\"). This module handles the Drupal 8+ integration: it lets Drupal talk to a CiviCRM instance either remotely over CiviCRM's REST endpoint or locally through the in-process CiviCRM API. Calls are made through a Core service using configurable connection profiles (URL + site key + API key) and connectors, are persisted to a database call log, and can be cached. Submodules add Views sources (cmrf_views), Webform submission handling (cmrf_webform), a call report UI (cmrf_call_report), and an example client (cmrf_example).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

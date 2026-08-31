@@ -1,13 +1,14 @@
 {
   "name": "Views Contact Form",
   "data_name": "views_contact_form",
-  "description": "Renders a contact form through Views.",
+  "description": "Field formatter for email fields that renders an inline site-wide contact form whose recipient is the field's email value.",
   "version": "2.0.x",
-  "package": null,
+  "package": "Other",
   "composer_namespace": "drupal/views_contact_form",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:views"
+    "drupal:views",
+    "drupal:contact"
   ],
   "configure": null,
   "core_version_requirement": "^8 || ^9 || ^10 || ^11",
@@ -21,25 +22,28 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "Field formatter: views_contact_form_email_formatter (for email field types)"
+  ],
   "categories": [
     "Content display",
-    "Integrations"
+    "Forms and surveys"
   ],
   "subcategories": [
-    "Views",
-    "Forms"
+    "Field formatters",
+    "Contact forms"
   ],
   "keywords": [
     "contact",
     "form",
+    "email field",
+    "field formatter",
     "views",
-    "personal",
-    "message",
-    "listing"
+    "recipient",
+    "message"
   ],
-  "project_description": "Back to top \n\n Use cases \n \n You need to create a block, an attachement or a page with a custom URL with a contact form inside that will send an email to a particular person ( the value of the recipient is taken from any field you want ), you will use this module, Views and/or Panels. \n You need to create block that will send an email to the author of a content. \n You need to create block that will send an email to an email field, referenced through a reference in another content. \n Instead of displaying an email field as an email link ( with mailto: ), display a contact form instead and the value of the recipient is the value of a field. \n \n Back to top \n\n This module provides \n \n A new Views style which display a contact form, in a block, a page or an attachement. Recipients are taken from a field you define. \n A new Views handler \"Contact form\" for the default \" User:email \" field. So you can display a contact form that will send an email to the user when submitted. \n A new formatter when used with the Email Field module to display the contact form. \n A submodule to hook into Honeypot \n A submodule to hook into Mollom \n \n Back to top \n\n Dependencies \n \n Views module ( optional ) \n Email Field module ( optional ) \n Honeypot \n Mollom \n \n Back to top \n\n Help \n You should check the screenshots, it's quite self-explanitory, or use the issue queue!\n\n Back to top \n\n FAQ \n \n Q : Are these screenshots from D7 ?\n\n A : Yes, it's Drupal 7 and the Navbar module . \n Q : When I choose the \"Views Contact Form\" display style in my view, it doesn't work.\n\n A : Make sure to disable the checkbox \"Display all values in the same row\" in the \"Multiple Field Settings\" fieldset of the email field. ( See this issue )\n \n Q : Does it works with captcha ?\n\n A : Yes, the form id to use is: views_contact_form_contact_form .\n \n \n Back to top \n\n TODOs \n \n Use the default Drupal's contact form to generate the form. \n D8 version \n Write documentation and video tutorial for newcomers.\n Improving code. \n \n Back to top \n\n Ideas for the future \n \n Use CTools plugin system to add other forms into the list ? \n Back to top",
+  "project_description": "Views Contact Form (2.0.x) provides a single field formatter, 'views_contact_form_email_formatter', for core email field types. Instead of printing an email address (as a plain value or a mailto: link), the formatter renders a full core contact-message form inline in the field's place, and sets the form's recipients to the email value(s) held by the field being formatted. It is designed for use on any entity display or in a Views 'field' row where an email field is shown, so a listing (of users, nodes, referenced entities, etc.) can present a per-row 'send a message to this address' form. The admin picks which non-personal contact form (feedback, or any custom contact form) supplies the form's fields and settings, and can optionally also add that contact form's own configured recipients alongside the field value. The rendered form reuses core's contact_message entity form (Drupal\\contact\\MessageForm), so subject/message fields, the authenticated-user name/mail lock, copy-to-self restriction for anonymous users, and core contact flood control all still apply. NOTE: the installed 2.0.x code is far smaller than the drupal.org project page (which still describes the Drupal 7 era Views style/handler and Honeypot/Mollom submodules) - none of those exist in 2.0.x; only the email field formatter ships. NOTE: the module hard-depends on the core Contact module at runtime (it loads ContactForm and creates contact_message entities) but its info.yml only declares a dependency on Views, so Contact must be enabled manually.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
