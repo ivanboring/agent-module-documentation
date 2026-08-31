@@ -23,3 +23,6 @@ vulnerabilities:**
    its best.
 
 PHP 7 removed the `/e` modifier, so an admin-supplied pattern cannot execute code.
+
+**See also:** [`filters/regex-replacement-filter.md`](filters/regex-replacement-filter.md) —
+plugin ID, rule syntax, and the full `process()` behaviour.

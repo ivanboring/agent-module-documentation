@@ -1,11 +1,13 @@
 {
   "name": "OG Menu",
   "data_name": "og_menu",
-  "description": "Group creators and admins can edit their own group menu.",
+  "description": "Allow group creators and site admins to edit their own group menu.",
   "version": "2.0.x",
   "package": "Organic groups",
   "composer_namespace": "drupal/og_menu",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/og": "^1.0 || ^2.0"
+  },
   "dependent_modules": [
     "drupal:menu_ui",
     "og:og"
@@ -23,14 +25,17 @@
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "entities",
+    "blocks"
+  ],
   "categories": [
-    "User management",
-    "Site structure"
+    "Site structure",
+    "Access control"
   ],
   "subcategories": [
-    "Organic groups",
-    "Menus"
+    "Navigation menus",
+    "Groups & memberships"
   ],
   "keywords": [
     "organic groups",

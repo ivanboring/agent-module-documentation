@@ -5,7 +5,9 @@
   "version": "2.0.x",
   "package": null,
   "composer_namespace": "drupal/entity_repository",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/core": "^8 || ^9 || ^10 || ^11"
+  },
   "dependent_modules": [],
   "configure": null,
   "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
@@ -21,14 +23,14 @@
   ],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
   ],
   "subcategories": [
-    "Service container",
-    "Query API"
+    "Entity API",
+    "Example / reference code"
   ],
   "keywords": [
     "repository",
@@ -36,9 +38,12 @@
     "entity",
     "service",
     "developer",
-    "pattern"
+    "pattern",
+    "node",
+    "taxonomy",
+    "comment"
   ],
-  "project_description": "Provides a basic API for queries. This module won't do much by itself.\n\nExtend the base classes and create your own repository classes.\n\n Usage \n e.g. when creating a repository for the news content type.\n\n Create a service \n \n\nnews.repository.news:\n\n class: Drupal\\news\\Repository\\NewsRepository\n\n parent: entity_repository.repository.node\n\n \n\n Create a repository class \n The property $bundles limits the results to the given bundles. The base\n\nNodeRepository class contains a lot of queries by default like findAll().\n\n<?php\n\n namespace Drupal\\news\\Repository;\n\n use Drupal\\entity_repository\\Repository\\NodeRepository;\n\n /**\n\n * Class NewsRepository.\n\n *\n\n * @package Drupal\\news\\Repository\n\n */\n\nclass NewsRepository extends NodeRepository {\n\n protected $bundles = ['news'];\n\n /**\n\n * {@inheritdoc}\n\n */\n\n public function findByTags(array $tags = [], int $pager = NULL, $sort = NULL) : array {\n\n $query = $this->getBaseQuery();\n\n if (!empty($tags)) {\n\n $query->condition('field_news_tags', $tags, 'IN');\n\n }\n\n if ($pager) {\n\n $query->pager($pager);\n\n }\n\n if ($sort) {\n\n $query->sort($sort['field'], $sort['dir'], $this->getLangCode());\n\n }\n\n return $this->getResults($query);\n\n }\n\n }\n\n Use the repository class \n <?php\n\n$nodes = \\Drupal::service('news.repository.news')->findAll();\n\n?>\n\n Create a repository without a custom class \n When you don't need custom queries, you can create a repository without without creating an empty repository class.\n\nYou can add a new service and call the setBundles or setVocabularies for taxonomy terms on the base class.\n\n \n\nnews.repository.news:\n\n class: Drupal\\entity_repository\\Repository\\NodeRepository\n\n arguments:\n\n - '@database'\n\n - '@entity_type.manager'\n\n - '@language_manager'\n\n calls:\n\n - [setBundles, [['news']]]\n\n \n\n Back to top",
+  "project_description": "Provides base repository services which can be extended. This module won't do much by itself. It supplies abstract/base repository classes (EntityRepository, NodeRepository, TaxonomyTermRepository, CommentRepository) registered as parent services, so entity queries live in named, injectable services instead of being copied through controllers, blocks and forms. Extend a base class (or reuse it via setBundles/setVocabularies) to constrain results to specific bundles/vocabularies and add domain-specific query methods. The base classes provide findAll(), findBy(), countBy(), countBaseQuery() and loadByIds(), each running an entity query with access checking enabled and an access tag added. A separate entity_repository_example submodule demonstrates the pattern with a news content type.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

@@ -1,27 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Scheduled Updates changes field values on entities at a chosen time — publish at nine on Monday, switch a price on the first of the month, clear a banner when a campaign ends.
+Scheduled Updates changes field values on any entity — node, user, term, file — at a chosen future time: publish at nine on Monday, switch a price on the first of the month, deactivate a user at term end. Updates are themselves entities, so they are listable, reviewable and revisable before they fire, and they run on cron.
 
 ---
 
-The common case is publishing, and `scheduler` covers that well for nodes. This is the general version: any field on any entity type, including users and taxonomy terms, set to a new value at a future moment. That covers things the publishing-only modules cannot — embargoing a document until an announcement, rotating a promoted flag, changing a price, expiring a status field on a user account. Updates are entities themselves, so they are listable, revisable and reviewable before they fire. Version **3.0.1**, depending on core `options` and on `inline_entity_form`, with a core requirement of `^10.4 || ^11.3 || ^12` — note **`^11.3`**, which excludes earlier 11.x releases, and a reach into a core major that does not exist yet. Permissions include `administer scheduled update types`, `administer scheduled updates` and `view scheduled update entities`, plus a `permission_callbacks` entry generating per-type permissions so different teams can own different kinds of update. The operational reality to plan for is **cron**: an update fires when cron runs, not at the instant configured, so a site whose cron runs hourly cannot honour a nine-o'clock embargo to the minute. If the timing matters — a press release, a regulated disclosure — cron frequency is the constraint to fix first, and it is worth confirming what happens to an update whose moment passed while cron was not running.
+The mechanism has two moving parts. A **Scheduled Update Type** (`scheduled_update_type`, a config entity that is also the bundle) targets exactly one entity type, declares a **field map** from fields on the update to fields on the target, and picks an **Update Runner** plugin. A **Scheduled Update** (`scheduled_update`, a content entity of that bundle) holds the new field values plus an `update_timestamp`. When cron fires (`hook_cron` -> `UpdateRunnerUtils::runAllUpdates(..., TRUE)`, also runnable manually via the runner form or `drush sup:run`), each type's runner queues the updates whose timestamp has passed and are still un-run, then copies the mapped values onto the target and saves it. There are two families of type. **Embedded** updates live on an entity-reference field added to the target's own add/edit form (via Inline Entity Form) — the `default_embedded` and `latest_revision` runners scan those reference fields for entities carrying ready updates; attaching one therefore requires edit access to the target. **Independent** updates (`default_independent` runner) are created through their own add form where the editor picks target entities by autocomplete; a single update can target many entities. Runner options control what happens after a run (`DELETE`/`ARCHIVE`), what happens to an invalid update (`DELETE`/`REQUEUE`/`ARCHIVE`), whether a new revision is created, and — importantly — which user the update runs *as* (`USER_UPDATE_RUNNER`, `USER_OWNER`, `USER_REVISION_OWNER`, `USER_UPDATE_OWNER`); under cron the runner switches to user 1. The operational reality to plan for is cron: an update fires when cron next runs, not at the configured instant, so a site whose cron runs hourly cannot honour a nine-o'clock embargo to the minute. Requires core `options` and `inline_entity_form`; core requirement `^10.4 || ^11.3 || ^12`. Version 3.0.2.
 
 ---
 
-- Publish a page at a set time.
-- Unpublish a campaign when it ends.
-- Change a price on a date.
+- Publish a node at a set date and time.
+- Unpublish a campaign page when it ends.
+- Change a commerce/price field on a specific date.
 - Embargo a document until an announcement.
-- Expire a promoted flag.
-- Schedule a field value change.
-- Update a user field on a date.
-- Clear a banner automatically.
-- Schedule a status change on a term.
-- Plan a coordinated content release.
-- Automate a seasonal change.
-- Schedule an update for review first.
-- Let a team own its own update type.
+- Toggle a promoted or sticky flag on a schedule.
+- Deactivate (block) a user account at a future date.
+- Grant a role to a group of users at the start of next month.
+- Expire a status field on a user account.
+- Schedule a taxonomy-term field change.
+- Update any field, on any entity type, at a future moment.
+- Select many entities and update them all in one independent update.
+- Embed publish/unpublish scheduling directly on the node edit form.
+- Review or revise a pending update before it fires.
+- Let different teams own different update types via per-type permissions.
+- Coordinate an editorial content release.
+- Automate a seasonal or recurring content change.
 - Retire content on a schedule.
-- Change a taxonomy field later.
-- Schedule bulk field updates.
-- Support an editorial calendar.
-- Time a product launch.
+- Run updates against the latest revision for moderated (forward-revision) content.
+- Choose whether an update creates a new entity revision.
+- Run scheduled updates manually or from Drush (`sup:run`) instead of waiting for cron.
+- Archive completed updates for an audit trail instead of deleting them.
+- Re-queue an update automatically when the target fails validation.

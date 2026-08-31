@@ -1,11 +1,13 @@
 {
   "name": "Scheduled Updates",
   "data_name": "scheduled_updates",
-  "description": "Schedule updates to field values on entities.",
+  "description": "Schedule field-value changes on any entity type (nodes, users, terms, files) to run at a future time via cron.",
   "version": "3.0.x",
-  "package": null,
+  "package": "Other",
   "composer_namespace": "drupal/scheduled_updates",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/inline_entity_form": "^3"
+  },
   "dependent_modules": [
     "drupal:options",
     "inline_entity_form:inline_entity_form"
@@ -21,16 +23,19 @@
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
-  "provides_drush_commands": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "update_runner"
+  ],
   "categories": [
-    "Workflow",
+    "Automation",
     "Content editing experience"
   ],
   "subcategories": [
-    "Publishing workflow",
-    "Scheduling"
+    "Content scheduling / publishing",
+    "Cron / task scheduling",
+    "Workflow / state management"
   ],
   "keywords": [
     "scheduling",
@@ -40,7 +45,7 @@
     "cron",
     "embargo"
   ],
-  "project_description": "The Scheduled Updates module allows scheduling updates at a specific date and time to entities such as Content(nodes), Users, Terms, Files and many more. Update dates can contain 1 or multiple fields. Since many more things are fields in Drupal 8 this means you can also update properties like published, promoted, sticky, title and pretty much anything else you can think of.\n\n \nAI was used on the 3.0.x branch to get it up to 10.4/11 standards. Please test heavily.\n \n This modules supports 2 different types of updates:\n\n Back to top \n\n Embedded Updates \n These updates can be embedded on the add/edit form of the entity they will be updating. \n\n Example uses: \n \n Scheduling Publish and/or UnPublish Dates directly on node forms. \n Set a user to inactive at a certain date on the user edit form. \n \n Back to top \n\n Independent Updates \n These updates are added directly using their own forms. When making these updates the user selects nodes, users or other entities they would like to update. These updates can target multiple entities in a single update.\n\n Example uses: \n \n Select a group of nodes to be promoted and/or published on a certain date. \n Select a group of users to be given a Manager role at the beginning of the next month. \n \n Back to top \n\n Alternatives \n \n https://www.drupal.org/project/scheduler : many sites use this. \n https://www.drupal.org/project/scheduled_publish : simple one-trick option \n https://www.drupal.org/project/scheduled_transitions \n https://www.drupal.org/project/advanced_scheduler \n \n Back to top \n\n Configuration \n Before making updates you must first create at least one Scheduled Update Type .\n\nA Scheduled Update Type:\n\n \n Can only target one entity type to update \n Can either be embedded or an independent update \n \n To easily create embedded updates click Add Update Field on the Manage Fields page of the entity type you want to update.\n\n To create a scheduled update type go to: Configuration -> Workflow -> Scheduled Updates -> Scheduled Update Types \n\n After you have created a Scheduled Update Type you will then be prompted to choose the fields from your target entity type to include on your new update type.\n\n Back to top",
+  "project_description": "The Scheduled Updates module allows scheduling updates at a specific date and time to entities such as Content (nodes), Users, Terms, Files and many more. Update dates can contain 1 or multiple fields. Since many things are fields in Drupal this means you can also update properties like published, promoted, sticky, title and pretty much anything else you can think of.\n\nAI was used on the 3.0.x branch to bring it up to Drupal 10.4/11 standards; the maintainers ask that it be tested heavily.\n\nThe module supports two different types of updates:\n\nEmbedded Updates: created on the add/edit form of the entity they will update (via an entity-reference field and Inline Entity Form). Example uses: scheduling publish and/or unpublish dates directly on node forms; setting a user to inactive at a certain date on the user edit form.\n\nIndependent Updates: added directly through their own forms. The user selects the nodes, users or other entities they would like to update; a single independent update can target multiple entities. Example uses: select a group of nodes to be promoted and/or published on a certain date; select a group of users to be given a Manager role at the beginning of the next month.\n\nConfiguration: before making updates you must first create at least one Scheduled Update Type. A Scheduled Update Type can only target one entity type to update, and is either embedded or independent. To easily create embedded updates click 'Add Update Field' on the Manage Fields page of the entity type you want to update. To create a scheduled update type go to Configuration -> Workflow -> Scheduled Updates -> Scheduled Update Types. After creating a type you choose the fields from your target entity type to include on the update type (a field map from update fields to target fields). Alternatives include scheduler, scheduled_publish, scheduled_transitions and advanced_scheduler.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

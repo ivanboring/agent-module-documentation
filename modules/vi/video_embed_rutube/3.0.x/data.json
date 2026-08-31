@@ -1,11 +1,13 @@
 {
   "name": "Video Embed Rutube",
   "data_name": "video_embed_rutube",
-  "description": "Video Embed Field integration with Rutube.",
+  "description": "A video_embed_field integration with Rutube.",
   "version": "3.0.x",
   "package": "Video Embed Field",
   "composer_namespace": "drupal/video_embed_rutube",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/video_embed_field": "^3"
+  },
   "dependent_modules": [
     "video_embed_field:video_embed_field"
   ],
@@ -21,15 +23,16 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Media management",
-    "Integrations"
+    "Media",
+    "Content display"
   ],
   "subcategories": [
     "Video embedding",
-    "Regional platforms"
+    "Media embedding",
+    "Media sources"
   ],
   "keywords": [
     "rutube",
@@ -37,9 +40,10 @@
     "embed",
     "video_embed_field",
     "provider",
-    "russia"
+    "russia",
+    "oembed"
   ],
-  "project_description": "This module provides Rutube handler for Video Embed Field .\n\nUsers can add Rutube videos to their site by pasting the video's URL into a video embed field.\n\nin the setting users can set width and height and also autoplay option of the video.\n\nThis module also can get thumbnail image from Rutube website for using it as a teaser image.\n\n Requires:\n\n Video Embed Field \n\n Compatibility \n \n Drupal >=10.3 & 11 \n \nVideo Embed Rutube 3.0 supports Drupal >=10.3 & 11 and compitable with Video Embed Field 3\n\n \n \n Drupal >=9.2 & 10 \n \nVideo Embed Rutube 8.x-1.5 supports Drupal >=9.2 & 10 and compitable with Video Embed Field 8.x-2.5",
+  "project_description": "Video Embed Rutube adds Rutube as a provider handler for the Video Embed Field module. Once enabled, an editor can paste a Rutube video URL (for example https://rutube.ru/video/<hash>/) into any Video Embed Field and it renders as an embedded Rutube player plus a downloadable thumbnail, exactly like the YouTube and Vimeo providers that ship with Video Embed Field.\n\nThe module is a single provider plugin. It recognises rutube.ru /video/ and /shorts/ URLs, extracts the 32-character hex video id, builds an https://rutube.ru/play/embed/<id> iframe (honouring the field's width, height and autoplay settings and a ?t= start-time from the source URL), and fetches the poster image from Rutube's oEmbed endpoint (https://rutube.ru/api/oembed/) for use as the local thumbnail.\n\nRutube is a major Russian video platform, so this is the practical choice for sites whose audience or content cannot rely on YouTube. All field-type, formatter, WYSIWYG and Media-source plumbing comes from the parent Video Embed Field module; this project only teaches it how to talk to Rutube.\n\nRequires Video Embed Field 3.x. Version 3.0 supports Drupal >=10.3 and 11; the older 8.x-1.5 branch supports Drupal >=9.2 and 10 with Video Embed Field 8.x-2.5.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

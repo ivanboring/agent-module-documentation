@@ -1,11 +1,13 @@
 {
   "name": "Commerce Cart Links",
   "data_name": "commerce_cart_links",
-  "description": "Links that manipulate a customer's cart via query parameters.",
+  "description": "Build links whose URL adds product(s) to a customer's Drupal Commerce cart and optionally empties/deletes it, applies a coupon, and redirects.",
   "version": "1.2.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_cart_links",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^2.3 || ^3"
+  },
   "dependent_modules": [
     "commerce:commerce_cart"
   ],
@@ -28,18 +30,21 @@
     "Integrations"
   ],
   "subcategories": [
-    "Cart and checkout",
-    "Marketing campaigns"
+    "Cart management",
+    "Add to cart forms",
+    "Advertising / ad networks"
   ],
   "keywords": [
     "commerce",
     "cart",
-    "links",
-    "campaign",
+    "cart links",
+    "add to cart url",
     "share cart",
+    "coupon",
+    "campaign links",
     "query parameters"
   ],
-  "project_description": "Commerce Cart Links lets you construct links that can manipulate a customer's shopping cart using query parameters. It supports emptying or deleting any existing cart and then adding one or more products to the cart, redirecting to an optional landing page after processing.\n\n An example case for this module is checkout links through Google Merchant Center, allowing ads to send a shopper directly to the checkout form with a cart containing the advertised product. Another use case would be a punchout catalog purchase flow that directs the customer externally to Drupal Commerce to complete the transaction.\n\n \n Building cart links \n All cart links are handled by the /cart-links route. Cart contents are manipulated according to what follows in the URL:\n\n \n At least one URL argument including a product variation ID and quantity to be added to the cart separated by a hyphen. For example, to add 2 of product variation 57 to the cart, the URL would be /cart-links/57-2 . To add additional products to the cart, use multiple such URL arguments, e.g. /cart-links/57-2/384-1 . \n Optionally, for each of the URL arguments, an entity type can be set to override the default entity type for the entities being purchased. For example, to add 2 of product variations 57 to the cart with the entity type commerce_product_variation, the URL would be /cart-links/57-2-commerce_product_variation . \n Append the default_entity_type=# query parameter to set the default entity type for purchasable entities. If not set, commerce_product_variation will be used. \n Append the destination=/redirect/url query parameter to redirect the customer to a specific URL after the cart link has been processed similar to the query parameter behavior on form submission. If this parameter is omitted, the customer will either be redirected to the shopping cart form. \n Append the store=# query parameter to force the use of a specific store when resolving or creating a new cart.\n Append the existing query parameter with the value of new to force the creation of a new cart for this link without affecting any other carts the user may already have. \n Append the existing query parameter with the value of empty to empty a customer's existing cart (if one exists) before adding any the new product(s) to it. \n Append the existing query parameter with the value of delete to delete a customer's existing cart(s) before processing the cart link, meaning a new cart will always be created. \n Append the coupon_code=# query parameter to automatically apply a specific coupon code when adding products to the cart. \n \n \n If the existing query parameter is not set in the link, Commerce Cart Links will simply add the relevant product(s) to whatever cart is resolved for the user.\n\n These parameters are designed to give you maximum control over how existing carts and / or new carts are treated prior to the add to cart operation. However, a multi-store site or a site that depends on users managing multiple carts may experience issues when a cart link bypasses the default store resolving process.",
+  "project_description": "Commerce Cart Links lets you construct links that manipulate a customer's Drupal Commerce shopping cart through the URL. A link to /cart-links/57-2/384-1 adds 2 of purchasable-entity 57 and 1 of 384 to the cart, then redirects to the cart page (or a destination). Query parameters control the behavior: existing=new|empty|delete manages the customer's current cart, store=# forces a store, default_entity_type / a per-product third hyphen segment override the purchasable entity type, destination=/path sets the post-processing redirect, and coupon_code=# applies a promotion coupon. Prices, order type and product validity are resolved server-side from the loaded entities; the URL supplies only entity IDs, quantities and options. Access to /cart-links is gated by a custom access check that validates the query parameters, checks the request referer against an optional admin-configured allowlist, and requires the 'view commerce cart links' permission. The module also ships a 'Share cart' feature: a views area button and modal (CartLinksBuilder service) that generate a shareable /cart-links URL representing the current cart, gated by the 'generate cart share links' permission. A typical use case is checkout links from ad channels such as Google Merchant Center that drop the advertised product straight into the shopper's cart.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

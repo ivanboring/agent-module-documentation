@@ -1,27 +1,32 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Commerce Cart Links builds URLs that add products to a customer's cart, so a campaign email, a printed QR code or a partner's site can drop someone straight into a filled basket.
+Commerce Cart Links lets a URL add one or more products to a Drupal Commerce cart (optionally emptying/deleting the existing cart, applying a coupon, and redirecting), plus a "Share cart" button that generates such a link for the current cart.
 
 ---
 
-The pattern is old and still effective: a "reorder my usual" link in an email, a QR code on packaging that adds the refill, a bundle link that fills a cart with six items in one click. Drupal Commerce 1 had this feature and it was missed; this is the Commerce 3 version, depending on `commerce_cart` and configured at `/admin/commerce/config/orders/cart-links`, version **1.2.0** on `^9 || ^10 || ^11`. There is also a share-cart modal, so a customer can generate a link to their own basket and send it to a colleague for approval — a genuinely useful B2B flow. The access model is layered and worth understanding: the `/cart-links` route runs a custom access check that validates the query parameters, checks the **referer**, and requires the **`view commerce cart links`** permission, with a separate `generate cart share links` permission for the share feature and a `restrict access: true` administer permission for settings. That referer check is what stops arbitrary sites from firing cart manipulations at your customers, so if links must work from email clients or QR codes, confirm the allowed-referer configuration covers those cases — a referer is frequently absent entirely. The `existing` parameter accepts `new`, `empty` and `delete`, the last of which discards the customer's current cart, so decide deliberately whether campaign links should be able to do that.
+The module registers one processing route, `commerce_cart_links.process_cart_links` at `/cart-links`, whose `_controller` is `CartLinksController::processCartLinks`. Because a route can't take an arbitrary number of path arguments, an inbound path processor (`CartLinksPathProcessor`, priority 200) rewrites `/cart-links/57-2/384-1` into a `products[]` query array and forwards to `/cart-links`. Each product segment is parsed by `getProductPartsFromUrl()` as `entityId-quantity[-entityType]` (split on `-`). Access is a `_custom_access` check, `CartLinksController::checkAccess`, that AND-combines three conditions: `validateQueryParams()` (each product's entity id and quantity must be non-empty integers; any per-product `entityType`, and a `default_entity_type` query param, must be a registered purchasable entity type per `commerce.purchasable_entity_type_repository`; `existing`, if present, must be one of `new`/`empty`/`delete`), `validateRefererUrl()` (matches the request `referer` host against the admin `allowlist_urls` list via `path.matcher`; an empty allowlist allows any referer, and a missing referer is allowed unless `require_referer_url` is on), and the `view commerce cart links` permission. `prepareOrderItems()` then loads each purchasable entity (default entity type `commerce_product_variation`), builds order items via `commerce_cart.cart_manager`, groups them by the resolved order type, validates each order item and drops any with constraint violations (surfacing the message). Prices are taken from the loaded entities — the URL never carries a price or adjustment. The `existing` param selects the cart strategy: `new` always creates a fresh cart (and, for anonymous users, registers the new cart id in `commerce_cart.cart_session`), `empty` empties the resolved cart first, `delete` deletes existing cart(s) first, and absent it adds to whatever cart `commerce_cart.cart_provider` resolves. `store=#` forces a specific `commerce_store`; `coupon_code=#` is validated against enabled, applicable `commerce_promotion_coupon`s before being appended. Finally it issues a `RedirectResponse` to the `destination` query param (routed through `Url::fromUserInput()` with a forced leading slash) or to `commerce_cart.page`. Configuration lives in `commerce_cart_links.settings` (`allowlist_urls`, `require_referer_url`), edited at `/admin/commerce/config/orders/cart-links` behind `administer commerce_cart_links` (restricted). Separately, the "Share cart" feature — a Views area plugin `commerce_cart_links_share_cart_button` (exposed on `commerce_order` via `hook_views_data_alter`) opening an AJAX modal (`ShareCartModalController`), backed by the `commerce_cart_links.cart_links_builder` service (`CartLinksBuilder::buildUrl`) — turns the current cart into a `/cart-links/...?existing=empty` URL; its access requires the order to be one of the current user's carts plus the `generate cart share links` permission. A route subscriber disables route normalization when the `redirect` module is present (which would otherwise 403 the multi-segment path).
 
 ---
 
-- Add a product to the cart from an email.
-- Build a reorder link for a customer.
-- Fill a cart from a QR code.
-- Create a bundle link for a campaign.
-- Let a partner link into your store.
-- Share a cart with a colleague.
-- Support a B2B approval flow.
-- Add several products in one click.
-- Link to a cart from a printed catalogue.
-- Replace a cart on a campaign click.
-- Start a new cart from a link.
-- Add a product with a set quantity.
-- Support a repeat-purchase reminder.
-- Link into a specific store.
-- Redirect after adding to the cart.
-- Support a promotional landing page.
-- Simplify a reorder workflow.
-- Enable one-click sample requests.
+- Add a specific product variation and quantity to the cart from a link: `/cart-links/57-2`.
+- Add several products at once: `/cart-links/57-2/384-1`.
+- Send an ad/campaign link (e.g. Google Merchant Center) that lands the advertised product in the cart.
+- Put an "add to cart" URL in a marketing email so recipients arrive with items pre-loaded.
+- Encode a re-order link (a QR code / SMS) that rebuilds a known set of products.
+- Empty the customer's existing cart before adding the link's products: append `?existing=empty`.
+- Force a brand-new cart without touching the customer's other carts: `?existing=new`.
+- Delete the customer's existing cart(s) so a new one is always created: `?existing=delete`.
+- Add to whatever cart already exists (default when `existing` is omitted).
+- Auto-apply a promotion coupon when the products are added: `?coupon_code=SUMMER25`.
+- Redirect the shopper to a landing/checkout page after processing: `?destination=/checkout`.
+- Default to the cart page after processing when no `destination` is given.
+- Target a specific store on a multi-store site: `?store=2`.
+- Add a purchasable entity that is not a product variation by overriding the default type: `?default_entity_type=commerce_product` or a per-item third segment `/cart-links/57-2-commerce_product_variation`.
+- Give shoppers a "Share cart" button in a cart view that produces a copyable link to their cart.
+- Let a customer send their built-up cart to a friend or another device via the shared link.
+- Restrict which referring domains may trigger cart links by configuring the referer allowlist.
+- Require a referer to be present before any cart link is processed (`require_referer_url`).
+- Build a punchout-style flow where an external catalog hands off to Commerce with a pre-filled cart.
+- Generate cart links programmatically from an order with the `CartLinksBuilder` service.
+- Combine cart-strategy and coupon params for a promo drop: `/cart-links/57-1?existing=empty&coupon_code=WELCOME`.
+- Add a large quantity of one item in a single click for wholesale/bulk reorder links.
+- Keep cart links working alongside the `redirect` module (normalization is auto-disabled for the route).

@@ -1,11 +1,13 @@
 {
   "name": "Social Media Platforms",
   "data_name": "social_media_platforms",
-  "description": "Adds social media links to pages via a block.",
+  "description": "Provides a block that displays a configurable, ordered set of links to the site owner's own social-media profiles, rendered as image icons, font icons, and/or labels.",
   "version": "1.1.x",
-  "package": null,
+  "package": "Custom",
   "composer_namespace": "drupal/social_media_platforms",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/core": "^10.2 || ^11"
+  },
   "dependent_modules": [
     "drupal:block"
   ],
@@ -17,7 +19,10 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/domain": "domain_config submodule to override the settings form per domain and language while placing a single block.",
+    "fontawesome": "Any icon-font library (FontAwesome, Bootstrap Icons, etc.) to use the 'font' icon source."
+  },
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
@@ -28,18 +33,18 @@
     "Integrations"
   ],
   "subcategories": [
-    "Blocks",
-    "Social sharing"
+    "Block enhancements",
+    "Social network integration"
   ],
   "keywords": [
     "social media",
-    "links",
+    "profile links",
     "block",
     "icons",
-    "profiles",
-    "footer"
+    "footer",
+    "font icons"
   ],
-  "project_description": "Social Media Platforms module\n Provides a block that allows to display a set of links to several social network profiles.\n\n This module differs from Social Media Links Block and Field in the fact that the social network configuration does not live in the block, but in a separate settings form.\n\n This module works nicely with Domain submodule Domain Config, which allows to override the configuration forms for each individual domain and language, and then, place a single block for all the domains and languages available.\n\n Back to top \n\n \nRequirements \n This module requires the block core module.\n\n Back to top \n\n \nRecommended modules \n This module is recommended to be used in combination with domain_config submodule from Domain .\n\n Fontawesome module to use the Font icons type.\n\n Back to top \n\n \nFeatures \n \n Configurable social media platforms order. \n Customize the label names. \n Configure the display ( icons, labels, icons + labels ) \n Easy integration with icon libraries such as FontAwesome, Bootstrap Icons, and similar. ( >= 1.1 ). \n Customize your own icons images via preprocess hook in the theme. \n If using domain and domain_config, configure different social media platforms for each one, with one single block. \n \n Back to top \n\n \nSupported social media platforms \n \n Facebook \n Youtube \n LinkedIn \n X ( Twitter ) \n Instagram \n Pinterest \n TikTok \n \n Back to top \n\n \nDocumentation \n Read the complete documentation here .\n\n Back to top \n\n \nMaintainers \n \n [Guiu Rocafort Ferrer] - guiu.rocafort.ferrer \n \n [Ekaterina Shoshina] - shoshina.ekaterina \n \n \n Back to top",
+  "project_description": "Social Media Platforms module\n Provides a block that allows to display a set of links to several social network profiles.\n\n This module differs from Social Media Links Block and Field in the fact that the social network configuration does not live in the block, but in a separate settings form.\n\n This module works nicely with Domain submodule Domain Config, which allows to override the configuration forms for each individual domain and language, and then, place a single block for all the domains and languages available.\n\nRequirements\n This module requires the block core module.\n\nRecommended modules\n This module is recommended to be used in combination with domain_config submodule from Domain. Fontawesome module to use the Font icons type.\n\nFeatures\n Configurable social media platforms order. Customize the label names. Configure the display ( icons, labels, icons + labels ). Easy integration with icon libraries such as FontAwesome, Bootstrap Icons, and similar ( >= 1.1 ). Customize your own icons images via preprocess hook in the theme. If using domain and domain_config, configure different social media platforms for each one, with one single block.\n\nSupported social media platforms\n Facebook, Youtube, LinkedIn, X ( Twitter ), Instagram, Pinterest, TikTok.\n\nMaintainers\n Guiu Rocafort Ferrer (guiu.rocafort.ferrer); Ekaterina Shoshina (shoshina.ekaterina).",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-ECA State Machine connects ECA — the event-condition-action automation framework — to the State Machine module, so state transitions become events ECA can react to and actions ECA can perform.
+ECA State Machine connects ECA — the event-condition-action automation framework — to the State Machine module, so a workflow's transitions become events ECA can react to, its states and transitions become conditions ECA can test, and a transition becomes an action ECA can trigger. It ships one derived event, two conditions, and one action; a workflow must already be configured for any of them to do anything.
 
 ---
 
-Two mature pieces of infrastructure sit either side of this. **State Machine** models a workflow as states and legal transitions, and it is what Drupal Commerce uses for order and payment state; it is precise about what may follow what, and deliberately says nothing about side effects. **ECA** is the successor to Rules: a visual, model-driven way to express "when this happens, if that holds, do this", built by drawing a diagram in BPMN or a similar notation rather than by writing a module. Each is useful alone and the combination is where the value is — "when an order moves to *fulfilment*, if the customer is in the EU, send this notification and set that field" is a sentence a business analyst can write, and neither module can express it alone. Version **2.0.3**, requiring `eca ^2 || ^3` and `state_machine`, on core `^10.4 || ^11`, with an `eca_state_machine_example` submodule showing a working model. The caution is one that applies to all automation-by-configuration: the logic **lives in configuration, not in code**, so it does not appear in a code review, and a model that fires on a transition and causes another transition can loop. Export the models with config, review them the way you would review code, and test the loops.
+State Machine models a workflow as named states and legal transitions between them (`from`/`to`), stored on a `state` field of a content entity; it is what Drupal Commerce uses for order and payment state, and it deliberately says nothing about side effects. ECA is the model-driven successor to Rules — "when this happens, if that holds, do this" drawn in a modeller (BPMN or the built-in editor) rather than written as a module. This module is the glue: it defines no plugin type of its own, contributing plugins into ECA's existing event/condition and Drupal core's action plugin types. Concretely it adds (1) a derived ECA **event** `state_machine` with two derivatives — `state_machine.pre_transition` and `state_machine.post_transition`, each carrying State Machine's `WorkflowTransitionEvent` and exposing the transitioning entity as the `entity` token; (2) two **conditions** — `eca_state_machine_entity_state` ("State Machine: Entity State"), which reads an entity's state field and compares it to a chosen `workflow-state`, and `eca_state_machine_workflow_transition` ("State Machine: WorkflowTransition"), which inside a transition event matches the workflow, the to-state, and optionally the from-state (read off `$entity->original`); and (3) one **action** `eca_state_machine_transition` ("State Machine: trigger entity state transition"), which looks up a transition on the named workflow from the entity's current state to a chosen to-state and applies it, then saves the entity. Everything lives in ECA models, which are trusted site configuration; there are no routes, permissions, Drush commands, or config UI of its own (`configure` is null) — only a config schema for the two conditions, the action, and the two event derivatives. The bundled `eca_state_machine_example` submodule defines a demo node workflow (`default`, group `eca_node_with_bundle`, states edited/needs_review/published/archived) purely so you have something to wire a model against; it is for trying the integration, not for production. The usual automation-by-configuration cautions apply: the logic is in config, not code, so it never shows up in a code review, and an action that fires on a transition and triggers another transition can loop — export and review the models like code, and test the loops.
 
 ---
 
-- React when an order changes state.
-- Send a notification on a transition.
-- Automate a fulfilment step.
-- Trigger a transition from an ECA model.
-- Model a business process visually.
-- Let an analyst express a workflow rule.
-- Connect Commerce order states to automation.
-- Set a field when a state changes.
-- Log a state transition.
-- Notify a team on approval.
-- Automate a payment follow-up.
-- Trigger an email on rejection.
-- Move an entity through states automatically.
-- Replace custom hook code with a model.
-- Support a subscription lifecycle.
-- Escalate a stalled process.
-- Coordinate two workflows.
-- Automate a document approval chain.
+- React from an ECA model whenever a State Machine transition fires (pre or post).
+- Send a notification when an order moves to a fulfilment state.
+- Run an approval side effect on a specific workflow transition.
+- Automatically move a node from "needs review" to "published" from a model.
+- Trigger a State Machine transition on an entity as an ECA action.
+- Set another field on the entity when its state changes.
+- Test whether an entity is currently in a given workflow state before acting.
+- Branch a model on which transition (workflow + to-state + from-state) triggered it.
+- Log every state transition of a content entity.
+- Notify a team when an item reaches "needs review".
+- Escalate or archive an entity that has sat in a state.
+- Automate a Commerce order/payment follow-up on a state change.
+- Coordinate two workflows so a transition in one advances the other.
+- Replace bespoke `hook_entity_update` state-change code with an ECA model.
+- Guard a side effect so it only runs on transitions into a specific state.
+- Only fire when the transition came from one particular from-state.
+- Drive a document approval chain visually.
+- Support a subscription lifecycle's state changes.
+- Try the whole integration against the bundled example node workflow.
+- Model a business process an analyst can read, using real State Machine transitions.

@@ -1,11 +1,15 @@
 {
   "name": "One Time Password",
   "data_name": "one_time_password",
-  "description": "HOTP/TOTP one-time passwords (RFC 4226, RFC 6238).",
+  "description": "TOTP/HOTP two-factor authentication (RFC 4226 / RFC 6238) using an authenticator app, integrated into Drupal's login, one-time-login and REST login flows.",
   "version": "2.0.x",
   "package": null,
   "composer_namespace": "drupal/one_time_password",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "spomky-labs/otphp": "^11.3.0",
+    "endroid/qr-code": "^6.0",
+    "symfony/clock": "^7.2"
+  },
   "dependent_modules": [
     "drupal:user"
   ],
@@ -16,30 +20,39 @@
   "project_url": "https://www.drupal.org/project/one_time_password",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "spomky-labs/otphp",
+    "endroid/qr-code",
+    "symfony/clock"
+  ],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": [
+    "administer one time password settings"
+  ],
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
     "Security",
-    "User management"
+    "Access control"
   ],
   "subcategories": [
     "Two-factor authentication",
-    "Login"
+    "Login page protection",
+    "Session management"
   ],
   "keywords": [
     "totp",
     "hotp",
     "2fa",
+    "mfa",
     "two-factor",
     "authenticator",
-    "rfc 6238"
+    "rfc 6238",
+    "otphp"
   ],
-  "project_description": "One Time Password is an opinionated, lightweight, near zero-configuration module with 100% test coverage. It provides two factor authentication to users by way of the Time-based One-time Password Algorithm (RFC 6238) .\n\n The 8.x-1.x branch has no configuration options. The 2.x series have a configuration form with one option - Force users to setup TFA . At some point the configuration option might be removed and that option will be controlled by the branch.\n\n Many apps implement this spec, providing users lots of options for storing and managing their one-time-passwords. Some popular apps which will integrate with this module are:\n\n \n Google authenticator ( iTunes & Google Play ) \n Authy \n Authenticator (Windows phone) \n Duo Mobile \n \n An example of the functionality:\n\n \n \n \n \n \n \n Back to top \n\n Which TFA module is right for me? \n View a comparison of two factor authentication modules. \n\n Back to top \n\n Related projects \n \n OTP SMS \n Back to top",
+  "project_description": "One Time Password is an opinionated, lightweight, near zero-configuration module that adds Time-based One-time Password (TOTP, RFC 6238) two-factor authentication to Drupal accounts. Users scan a QR code with an authenticator app (Google Authenticator, Authy, Duo Mobile, etc.) and are then prompted for a 6-digit code during login. The shared secret is stored on the user entity as an otpauth:// provisioning URI via the spomky-labs/otphp library; QR codes are rendered with endroid/qr-code. It hooks the standard login form, the one-time-login (password reset) link flow, and the REST user-login endpoint (X-OTP header), with per-user and per-IP flood control and TOTP window replay protection. The 2.x branch adds a single configuration option to force all authenticated users to enable 2FA. There are no recovery/backup codes in this branch.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
