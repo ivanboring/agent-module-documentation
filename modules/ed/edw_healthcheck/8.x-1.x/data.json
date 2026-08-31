@@ -1,11 +1,13 @@
 {
   "name": "EDW Health check monitoring",
   "data_name": "edw_healthcheck",
-  "description": "Exposes Drupal and module status as JSON.",
+  "description": "Exposes a Drupal site's core/module/theme versions, update status, cron, enabled-module list and server (PHP/DB) info as JSON at a permission-gated endpoint for an external monitoring server.",
   "version": "8.x-1.x",
   "package": "Custom",
   "composer_namespace": "drupal/edw_healthcheck",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/core": "^8 || ^9 || ^10 || ^11"
+  },
   "dependent_modules": [
     "drupal:update",
     "drupal:basic_auth"
@@ -21,16 +23,19 @@
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
-  "provides_drush_commands": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "EDWHealthCheckPlugin (Plugin/EDWHealthCheckPlugin)"
+  ],
   "categories": [
     "Administration tools",
     "Security"
   ],
   "subcategories": [
-    "Monitoring",
-    "Reports"
+    "Dashboard / reporting",
+    "Status report management",
+    "Version disclosure / fingerprinting"
   ],
   "keywords": [
     "healthcheck",
@@ -38,9 +43,11 @@
     "status",
     "versions",
     "json",
-    "update"
+    "update",
+    "basic_auth",
+    "cron"
   ],
-  "project_description": "The HealthCheck module is a monitoring module that exports the status of a drupal application's core, modules and themes in a JSON format.",
+  "project_description": "The EDW HealthCheck client module exports a Drupal application's status and versioning — core, contrib modules and themes with their update status, last-cron run, the enabled-module list, and PHP/database versions — as JSON at /edw_healthcheck/{type}. The endpoint is gated by an 'edw healthcheck access' permission and accepts HTTP basic auth, so an external EDW HealthCheck monitoring server can poll it with a dedicated account. Optional per-component plugins add a core status-report summary, dblog message counts and an inactive-accounts listing. Also ships legacy Drush 8 commands and a settings form.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

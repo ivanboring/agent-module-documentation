@@ -1,11 +1,13 @@
 {
   "name": "Video Embed Spotify",
   "data_name": "video_embed_spotify",
-  "description": "Spotify provider for Video Embed Field.",
+  "description": "Spotify provider plugin for Video Embed Field: recognises open.spotify.com URLs and renders the Spotify embed iframe player.",
   "version": "2.0.x",
   "package": "Video Embed Field",
   "composer_namespace": "drupal/video_embed_spotify",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/video_embed_field": "^3.0"
+  },
   "dependent_modules": [
     "video_embed_field:video_embed_field"
   ],
@@ -21,25 +23,27 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Media management",
-    "Integrations"
+    "Media",
+    "Content display"
   ],
   "subcategories": [
-    "Audio",
-    "Media sources"
+    "Audio embedding",
+    "Media embedding"
   ],
   "keywords": [
     "spotify",
     "podcast",
     "music",
+    "audio",
     "embed",
     "provider",
-    "audio"
+    "video_embed_field",
+    "oembed"
   ],
-  "project_description": "This module provides Spotify handler for Video Embed Field.\n\n Requirements \n Video Embed Field \n\n Installation \n \n Install module as usual. \n Add video embed field to content type \n Check Spotify in allowed content providers \n Add/edit node of this content type \n Copy \"Share » Copy link\" from Spotify (starts with: https://open.spotify.com/ ) into field \n \n Read README.txt for more information.\n\n Back to top",
+  "project_description": "This module provides a Spotify handler (provider plugin) for Video Embed Field. It recognises open.spotify.com share URLs — track, album, artist, playlist, show and episode, plus legacy embed and user URLs — and renders the corresponding Spotify embed iframe. Remote thumbnails are fetched from Spotify's oEmbed endpoint. Requirements: Video Embed Field. Installation: install as usual, add a video embed field to a content type, check Spotify in the allowed content providers, then paste a Spotify Share » Copy link (starting https://open.spotify.com/) into the field.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

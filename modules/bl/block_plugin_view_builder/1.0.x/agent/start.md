@@ -22,4 +22,16 @@ metadata**. The output looks correct without those two, which is why a helper is
    directly rendered plugin may appear where configuration said it should not.
 2. **A plugin's cache metadata belongs to whatever renders it.** A plugin varying by user renders
    differently per user — code that **drops its cacheability** produces a fragment **cached for
-   everyone**. The standard way this becomes a disclosure rather than a bug.
+   everyone**. The standard way this becomes a disclosure rather than a bug. This module attaches it
+   for you: cache keys, contexts, tags (`block_view` + the plugin's own), max-age, and the access
+   result's cacheable metadata.
+
+**It handles access correctly:** `viewPlugin()` calls `$plugin->access(current_user, TRUE)` before
+building; disallowed → nothing is built. It checks the **plugin's own** access, not any placed-block
+**visibility conditions** (there is no block config entity) — supply the plugin id accordingly.
+
+**Details:**
+- [`agent/api/service.md`](api/service.md) — the `block_plugin.view_builder` service: `view()` /
+  `viewPlugin()`, the returned render array (cache keys, lazy builder vs. eager title blocks, block
+  alters), access handling, and how entity/scalar contexts are JSON round-tripped through the lazy
+  builder.

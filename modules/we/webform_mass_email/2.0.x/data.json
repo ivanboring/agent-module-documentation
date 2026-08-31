@@ -1,11 +1,13 @@
 {
   "name": "Webform Mass Email",
   "data_name": "webform_mass_email",
-  "description": "Sends bulk email to webform recipients.",
+  "description": "Sends a bulk email to every address collected by a chosen webform email element, via Drupal's queue and cron.",
   "version": "2.0.x",
   "package": "Webform",
   "composer_namespace": "drupal/webform_mass_email",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/webform": "^5.0 || ^6.0"
+  },
   "dependent_modules": [
     "webform:webform_ui"
   ],
@@ -17,34 +19,37 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "token": "Enables a webform_submission token browser and token validation on the message body."
+  },
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Integrations",
-    "Security"
+    "Forms and surveys",
+    "User engagement"
   ],
   "subcategories": [
-    "Webform",
-    "Email marketing"
+    "Email / mail delivery",
+    "Submission handling"
   ],
   "keywords": [
     "webform",
     "mass email",
-    "bulk",
+    "bulk email",
     "recipients",
     "submissions",
-    "broadcast"
+    "queue",
+    "cron"
   ],
-  "project_description": "Back to top \n\n Overview \n Webform Mass Email module provides a functionality to send mass email for the subscribers of a webform.\n\n You can select which email field from the result you would like to use as the recipient's address.\n\n This module uses Drupal's 'queue' table and cron jobs to send the emails\n\nfor users.\n\n Back to top \n\n Drupal 11 \n Module is now compatible with Drupal 11 - testing is welcome.\n\n Back to top \n\n Maintainers \n This module is sponsored by Wunder and version 8 was ported by Morpht .\n\n Back to top",
+  "project_description": "Webform Mass Email provides a functionality to send mass email for the subscribers of a webform. You can select which email field from the result you would like to use as the recipient's address. This module uses Drupal's 'queue' table and cron jobs to send the emails for users. Module is now compatible with Drupal 11.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
   "project_created": "2011-09-21",
   "project_changed": "2026-08-18",
-  "core_semver_minimum": 8000000,
+  "core_semver_minimum": 8008000,
   "core_semver_maximum": 12000000
 }

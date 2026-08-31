@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Video Embed Spotify adds Spotify as a provider for Video Embed Field, so a Spotify URL — a track, an album, a playlist or a podcast episode — renders as an embedded player.
+Video Embed Spotify adds Spotify as a provider for Video Embed Field, so an `open.spotify.com` URL — a track, album, artist, playlist, show or podcast episode — pasted into a video embed field renders as an embedded Spotify player.
 
 ---
 
-The name is the first thing to explain: Video Embed Field's provider architecture is good enough that it gets used for things that are not video, and Spotify is mostly audio. That matters for what the module is actually used for, which is podcasts more often than music. An organisation with a podcast publishes it to Spotify because that is where listeners are, and then wants each episode on its own page on the site — with show notes, a transcript, links and the episode embedded — because the site is where the episode is findable, citable and permanent. This supplies the embed half, requiring `video_embed_field`, version **2.0.2** on core `^10.3 || ^11`. Three things worth attaching. **A Spotify embed is a third-party request** that reports the visit and sets cookies before anyone presses play, so it belongs behind the consent manager exactly as an analytics tag does — and this is the case where sites most often forget, because a podcast player does not feel like tracking. **Audio needs a transcript**, which is a WCAG requirement for prerecorded content and, more usefully for a podcast, the only way the episode's content becomes searchable — a podcast page without a transcript is a page about an episode rather than a page containing one. And **the platform decides what the embed shows**: playback for a non-subscriber is limited to a preview on some content, so a page built around an embed shows different things to different visitors, which is worth knowing before the embed is the page's main content.
+The module is a single provider plugin (`Drupal\video_embed_spotify\Plugin\video_embed_field\Provider\Spotify`) that extends Video Embed Field's `ProviderPluginBase`; it ships no configuration, no permissions, no services and no schema. One regular expression drives everything: `^https://(open\.spotify\.com/)(embed-podcast/|embed/)?(?<type>album|artist|episode|playlist|show|track|user)/(?<id>[0-9A-Za-z_-]*)(\?.*)?$` (case-insensitive). `getIdFromInput()` returns the named `id` capture, which Video Embed Field uses both to decide the plugin is applicable and as the video ID; `buildEmbedUrl()` re-matches the same regex and assembles `https://open.spotify.com/embed[-podcast]/{type}/{id}` — the `-podcast` segment is added only for `episode` and `show` types. `renderEmbedCode()` returns a `video_embed_iframe` render element pointing at that URL with attributes `frameborder=0`, `allowfullscreen`, `allowtransparency=true` and `allow=encrypted-media`; Video Embed Field's Twig template emits the `<iframe>` and auto-escapes the `src`. Because it is a Video Embed Field provider, it inherits that module's field type, formatters (embedded player and thumbnail), colorbox/modal integration and per-field allowed-provider selection — nothing here is Spotify-specific beyond URL recognition and the iframe attributes. The name is worth explaining to an agent: Video Embed Field's provider architecture is generic enough that it gets reused for things that are not video, and Spotify is mostly audio — in practice this module is used for podcasts more often than music, so treat the field as an audio/media field, not a video one. Remote thumbnails are unusual: `getRemoteThumbnailUrl()` overrides the base and fetches Spotify's oEmbed endpoint (`https://open.spotify.com/oembed?url={input}`) with a raw `file_get_contents()` call, returning `thumbnail_url`; the host is fixed to Spotify, so this is not an open fetch. Requires `video_embed_field` (`^3.0`); version 2.0.2 on core `^10.3 || ^11`.
 
 ---
 
-- Embed a podcast episode on its page.
-- Add a Spotify player to an article.
-- Publish show notes with an episode.
-- Embed a playlist on a page.
-- Add a track to a review article.
-- Reference an album in a listing.
-- Build a podcast archive with players.
-- Embed an interview episode.
-- Add music to an artist profile.
-- Publish an episode page with a transcript.
-- Embed a curated playlist.
-- Add audio to an event page.
-- Reference a Spotify show.
-- Build a podcast series listing.
-- Embed a recorded talk.
-- Add a soundtrack to a project page.
+- Embed a Spotify podcast episode on its own node page.
+- Add a Spotify player to an article body via a video embed field.
+- Publish show notes alongside an embedded episode.
+- Embed a curated Spotify playlist on a landing page.
+- Add a single track to a music-review article.
+- Reference an album in a discography listing.
+- Embed a Spotify show (podcast series) page.
+- Embed an artist page as a player.
+- Build a podcast archive where each item embeds its episode.
+- Add audio to an event or project page.
 - Reference an episode from a news item.
-- Support a podcast publishing workflow.
+- Recognise legacy `open.spotify.com/embed/...` and `embed-podcast/...` URLs already in content.
+- Restrict a field to Spotify by selecting it in Video Embed Field's allowed providers.
+- Render a Spotify thumbnail (via oEmbed) as a click-to-play preview using Video Embed Field's thumbnail formatter.
+- Combine Spotify with YouTube/Vimeo in one multi-provider media field.
+- Support a podcast publishing workflow where editors paste a Share link.
+- Add a soundtrack or interview clip to a portfolio entry.
+- Embed a recorded talk hosted as a Spotify episode.
+- Place a Spotify player behind a consent manager as a third-party embed.
+- Migrate existing Spotify links into structured media fields.

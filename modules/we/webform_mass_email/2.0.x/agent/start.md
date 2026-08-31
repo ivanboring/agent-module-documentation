@@ -1,26 +1,41 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Webform Mass Email (webform_mass_email) — agent index
 
-Sends a message to **everyone who submitted a given webform**. Requires `webform_ui`.
-Configure at `/admin/structure/webform/config/mass_email`. Version **2.0.0**.
-Core requirement `^8.8 || ^9 || ^10 || ^11`.
+Adds a **Mass Email** tab to a webform's Results that emails **one message to every address** the form's
+submissions collected. Recipients are read from a chosen email element, de-duplicated, queued (one item per
+unique address) into Drupal's `webform_mass_email` queue, and delivered by a **cron queue worker** —
+individual sends, never a shared `To`/`CC`. Version **2.0.0**. Core `^8.8 || ^9 || ^10 || ^11`.
+Requires **`webform:webform_ui`** (composer: `drupal/webform ^5.0 || ^6.0`).
 
-**Why it beats the alternative:** exporting addresses to a spreadsheet and pasting them into a mail
-client loses the record of what was sent and **puts a list of personal data on somebody's laptop**.
+## Mechanism (source of truth)
+- **Send form** `src/Form/WebformResultsMassEmailForm.php`, route `entity.webform.results_mass_email`,
+  path `/admin/structure/webform/manage/{webform}/results/mass-email`.
+  - `buildForm()` lists every element of type `email`, `webform_email_confirm`, `webform_email_multiple`
+    as the **Email field** select; warns and stops if the form has no email element or no submissions.
+  - Body is a `textarea`, or a `text_format` editor when the **html** setting is on. With the optional
+    `token` module it gets `token_element_validate` + a `webform_submission` token-tree link.
+  - `submitForm()` queries `webform_submission_data` for `sid`/`value` where `webform_id` = this form and
+    `name` = the chosen element, de-dupes addresses (`webform_email_multiple` values are split on commas),
+    and calls `queueFactory->get('webform_mass_email')->createItem(...)` once per unique address. Shows
+    *"N items queued for sending."* — the count is reported **after** queueing, not before.
+- **Queue worker** `src/Plugin/QueueWorker/WebformMassEmailQueue.php` (`@QueueWorker id="webform_mass_email"`,
+  default `cron time = 15`). `processItem()` skips items missing email/subject/body, replaces
+  `[webform_submission:*]` tokens against **that item's own** submission (`clear => TRUE`), and sends via
+  `plugin.manager.mail`→`webform_mass_email_mail()` with the single address as `$to`. Re-throws on failure
+  so the item is retried.
+- **hook_mail** (`webform_mass_email.module`, key `mass_email`): `from` = `system.site` mail;
+  sets `Content-Type: text/html` header only when the html setting is on.
+- **hook_queue_info_alter**: overrides the queue's per-cron `time` with the configured `cron` value.
 
-**This is bulk email over personal data. Two things go wrong: consent and mistakes.**
+## Config & access
+- Settings form `webform.config.mass_email` at `/admin/structure/webform/config/mass-email`
+  (perm **`administer webform_mass_email`**). Config `webform_mass_email.settings`: `cron` (int seconds,
+  default 15), `html` (bool), `log` (bool). See [configure/settings.md](configure/settings.md).
+- Send route requires **all** of: perm `send webform_mass_email`, entity access `webform.submission_view_any`,
+  and `WebformEntityAccess::checkResultsAccess`. So a sender must already be able to view that form's results.
 
-**Consent** — submitting a form is **not** agreement to receive further email. *"They gave us their
-address"* covers **telling them the event is cancelled**; it does **not** cover a newsletter.
-Anything beyond the direct follow-up the submitter would expect needs its own lawful basis.
-
-**Mistakes** — a bulk send is irreversible:
-- the **recipient count must be visible before sending**;
-- a **test send** should be possible;
-- **the `To` field must never be used.** A form's respondents are not a mailing list, and putting
-  them in `To` or `CC` **publishes every address to every recipient** — among the most commonly
-  reported data breaches in any sector.
-
-**Two further notes:** large sends need **queueing** rather than one request, which will time out;
-and the site's mail must **deliver at that volume**, which a default PHP mail configuration cannot
-(see `sparkpost`, wave 71; `symfony_mailer_office365`, wave 71; `govuk_notify`, same wave).
+## Notes / gotchas
+- **No test send, no recipient preview**, no unsubscribe — it emails the full de-duped list on submit.
+- HTML mode only adds a header; you must install a module that actually renders HTML email.
+- Deliverability: hundreds of messages via PHP `mail()` will bounce/spam — use a real MTA/relay.
+- Consent is on you: form submission is not consent to further mail beyond the expected follow-up.
