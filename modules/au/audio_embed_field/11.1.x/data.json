@@ -1,7 +1,7 @@
 {
   "name": "Audio Embed Field",
   "data_name": "audio_embed_field",
-  "description": "Field type for third-party audio such as SoundCloud.",
+  "description": "Provides a field type for displaying audio from 3rd party providers such as SoundCloud, plus a Custom URL provider for HTML5 audio files. Turns a pasted URL into an embedded player, thumbnail or Colorbox modal, and ships a core Media source submodule.",
   "version": "11.1.x",
   "package": "Audio",
   "composer_namespace": "drupal/audio_embed_field",
@@ -17,22 +17,33 @@
   "project_url": "https://www.drupal.org/project/audio_embed_field",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
-  "suggests": {},
+  "library_dependencies": [
+    "colorbox/colorbox"
+  ],
+  "suggests": {
+    "drupal/colorbox": "Enables the 'Colorbox Modal' formatter (thumbnail that launches the player in a modal). Optional; the module works without it."
+  },
   "submodules": [
     "audio_embed_media_core"
   ],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "AudioEmbedProvider (Plugin/audio_embed_field/Provider) — the provider plugin type, gathered by the audio_embed_field.provider_manager service; ships SoundCloud and CustomUrl implementations",
+    "field type: audio_embed_field (Audio Embed)",
+    "field widget: audio_embed_field_textfield (Audio Textfield)",
+    "field formatters: audio_embed_field_audio (Audio), audio_embed_field_thumbnail (Thumbnail), audio_embed_field_colorbox (Colorbox Modal)",
+    "render elements: audio_embed_iframe, audio_embed_html5",
+    "media source (submodule audio_embed_media_core): audio_embed_field"
+  ],
   "categories": [
-    "Media management",
-    "Integrations"
+    "Media"
   ],
   "subcategories": [
-    "Audio",
-    "Media sources"
+    "Audio embedding",
+    "Media sources",
+    "Field formatters"
   ],
   "keywords": [
     "audio",
@@ -40,9 +51,11 @@
     "embed",
     "field",
     "podcast",
-    "media"
+    "media",
+    "html5 audio",
+    "oauth"
   ],
-  "project_description": "Audio Embed Field creates a simple field type that allows you to embed audio.\n\n Soundcloud and custom urls plugins are provided with module.\n\n Sub-modules also provided for integration with Drupal core media and media_entity.\n\n Audio embed field simply creates an embedded audio player, to play attached\n\nmedia.\n\n Requirements \n For the audio_embed_media module, you will need the media_entity module.\n\n For the audio_embed_media_core module, you will need the core media module.\n\n The base module also requires field and image from core.\n\n The module can make use of colorbox , but it is not required.\n\n Install \n Install via composer:\n\n \n\ncomposer require drupal/audio_embed_field\n\ndrush en audio_embed_field\n\n \n\n More install notes below:\n\n \n Install as usual as per http://drupal.org/node/895232 for further information. \n You can add Audio embed fields via the normal interface on content types. \n If using media_entity , the audio_embed_media module included provides a media_entity bundle bridge. \n If using core media, the audio_embed_media_core module provides a media source\n\nfor creating a new media type. \n When you add fields, select the providers you want to use, including Custom URL and Soundcloud. If using Soundcloud, you need to obtain a client ID from the Soundcloud \n Developers site: https://developers.soundcloud.com/ \n \n Customize \n You may override the template files in the /templates folder in your custom theme.\n\n See Twig debugging output for possible override suggestions.\n\n Back to top",
+  "project_description": "Audio Embed Field creates a simple field type that allows you to embed audio.\n\nSoundCloud and Custom URL plugins are provided with the module. Submodules are also provided for integration with Drupal core media and media_entity. Audio embed field simply creates an embedded audio player to play attached media.\n\nRequirements: for the audio_embed_media module you need media_entity; for the audio_embed_media_core module you need core media. The base module requires field and image from core. The module can make use of colorbox but it is not required.\n\nWhen you add fields, select the providers you want to use, including Custom URL and SoundCloud. If using SoundCloud you need to obtain a Client ID (and, in 11.1.x, a Client Secret for OAuth 2.1) from the SoundCloud Developers site: https://developers.soundcloud.com/ . You may override the Twig template files in the /templates folder in your theme.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

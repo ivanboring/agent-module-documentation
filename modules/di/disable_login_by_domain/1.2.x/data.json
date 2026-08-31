@@ -1,7 +1,7 @@
 {
   "name": "Disable login by domain",
   "data_name": "disable_login_by_domain",
-  "description": "Disables user logins based on domain or hostname.",
+  "description": "Disables user logins based on the site's request domain or hostname.",
   "version": "1.2.x",
   "package": null,
   "composer_namespace": "drupal/disable_login_by_domain",
@@ -25,11 +25,12 @@
   "provides_plugin_types": [],
   "categories": [
     "Security",
-    "User management"
+    "Access control"
   ],
   "subcategories": [
-    "Login",
-    "Multi-site / domains"
+    "Login page protection",
+    "Multi-domain / affiliate sites",
+    "Session management"
   ],
   "keywords": [
     "login",
@@ -37,9 +38,9 @@
     "hostname",
     "disable",
     "multi-site",
-    "restriction"
+    "cdn"
   ],
-  "project_description": "This module tries to prevent users from logging in on certain domains (or all domains).\n\n Warning : This module is not designed as a security tool; instead, it is intended for convenience. See both the use case and security considerations below.\n\n Back to top \n\n Use case \n Here's an example use case. Imagine that you use a CDN for public traffic to your Drupal site, at URL https://www.example.com . Public traffic users are not supposed to log into Drupal; only your internal staff can log in (e.g., to edit pages).\n\n Your staff uses the \"origin\" URL to log into Drupal, at https://manage.example.com . This URL is only available behind a VPN.\n\n For this reason, no one should be allowed to log into Drupal on the public/CDN domain name. They shouldn't even be allowed to try to log in.\n\n This module helps to achieve that goal. It blocks the user login forms when they are accessed on the public domain name.\n\n Back to top \n\n Features \n You can list which domains to affect. Drupal tries to prevent users from logging in, whenever using one of these domains. Specifically, Drupal does these things on those domains: \n\n \n Disables the login page \n Disables the User login block \n Disables the user login form itself \n If a user finds another way to log in, this stops a user from actually getting logged in \n \n Back to top \n\n Installation \n \n Install like any other module \n Manage the domains at /admin/config/people/disable-login-by-domain \n \n Back to top \n\n Similar modules \n These are similar modules:\n\n \n Prevent Login : Disables the login page entirely, regardless of which domain you're on. \n Disable user login and registration : Also disables the login and password-reset pages, but you can configure which one(s) to block. \n Limit Domain Access By Role : Stops a user from logging in on certain domains. However, the page page and login form are still available on those domains. \n Disable login : Blocks access to the login page unless you have a special key in the URL. \n Login disable : Very similar to the previous module, except this one blocks the login form itself. Along with this, it tries to log out a user if they do find a way to log in. \n \n Back to top \n\n Security considerations \n This module uses the Host / X-Forwarded-Host request header to determine the site's domain name. This header could be overridden by a malicious user, allowing them to circumvent the protections provided by this module. To do this, they could send a value that is both 1) not a blocked domain and 2) is in the\n\ntrusted host list (assuming that list is set; if not set, do it ASAP, see next).\n\n To help protect against this sort of attack, set Drupal's Trusted Host\n\nSettings . Setting this list does not guarantee an attacker cannot bypass this module, but\n\ndoes make it harder.\n\n Back to top",
+  "project_description": "This module tries to prevent users from logging in on certain domains (or all domains).\n\n Warning : This module is not designed as a security tool; instead, it is intended for convenience. See both the use case and security considerations below.\n\n Use case \n Imagine that you use a CDN for public traffic to your Drupal site, at URL https://www.example.com . Public traffic users are not supposed to log into Drupal; only your internal staff can log in (e.g., to edit pages). Your staff uses the \"origin\" URL to log into Drupal, at https://manage.example.com . This URL is only available behind a VPN. For this reason, no one should be allowed to log into Drupal on the public/CDN domain name. They shouldn't even be allowed to try to log in. This module helps to achieve that goal: it blocks the user login forms when they are accessed on the public domain name.\n\n Features \n You can list which domains to affect. Drupal tries to prevent users from logging in whenever the site is being served on one of these domains. Specifically, on those domains Drupal: disables the login page ( /user/login ) and the REST/HTTP login route; disables the User login block (including when placed via Layout Builder); disables the user login form itself if it is embedded elsewhere; and, when the \"hijack login attempts\" option is enabled, immediately logs out any user who still finds a way to log in by invalidating the session.\n\n Installation \n Install like any other module, then manage the domains at /admin/config/people/disable-login-by-domain . Enter one disallowed domain per line, or use * to disallow all domains.\n\n Security considerations \n This module uses the Host / X-Forwarded-Host request header to determine the site's domain name. This header could be overridden by a malicious user, allowing them to circumvent the protections provided by this module: they could send a value that is both 1) not a blocked domain and 2) is in the trusted host list. To help protect against this, set Drupal's Trusted Host Settings. Setting this list does not guarantee an attacker cannot bypass this module, but does make it harder.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

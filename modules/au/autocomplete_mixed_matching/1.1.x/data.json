@@ -1,7 +1,7 @@
 {
   "name": "Autocomplete widget with mixed matching",
   "data_name": "autocomplete_mixed_matching",
-  "description": "Autocomplete combining STARTS WITH and CONTAINS matching.",
+  "description": "Entity reference autocomplete widget that runs STARTS_WITH first, then fills the remaining slots with CONTAINS matches.",
   "version": "1.1.x",
   "package": null,
   "composer_namespace": "drupal/autocomplete_mixed_matching",
@@ -25,18 +25,18 @@
     "Content editing experience"
   ],
   "subcategories": [
-    "Field widgets / select UI",
-    "Entity reference"
+    "Form widgets / select UI",
+    "Entity selection"
   ],
   "keywords": [
     "autocomplete",
-    "matching",
+    "entity reference",
     "starts with",
     "contains",
-    "widget",
-    "reference"
+    "field widget",
+    "matcher"
   ],
-  "project_description": "This module provides an autocomplete widget for entity reference fields that combines \"STARTS_WITH\" and \"CONTAINS\" matching.\n\nOther than that, the widget behaves exactly like the one from Drupal core.\n\n The result has all the matches that start with the search string, followed by matches that only contain the search string but that don't start with it.\n\n Features \n Comparison with core entity autocomplete widget.\n\n \n \n \n Search term \n Limit \n Core\n\nSTARTS_WITH \n Core\n\nCONTAINS \n New:\n\nMixed matching \n \n \n \n \n \"Frog\" \n 3 \n Frog \n\n Frog eggs \n 99 frog s\n\nAcrobatic frog \n\nCyan frog \n Frog \n\n Frog eggs\n\n99 frog s \n \n \n “Frog” \n 1 \n Frog \n 99 frog s \n Frog \n \n \n “egg” \n 3 \n - \n Frog egg s \n Frog egg s \n \n \n \n Use case \n The main use case are reference fields with a large number of potential targets.\n\nIn these cases neither the \"CONTAINS\" nor the \"STARTS_WITH\" mode are completely suitable:\n\n \n For \"STARTS_WITH\", there may be no results, if all the items start with a prefix like \"The ...\" or a number.\n \n For \"CONTAINS\", the exact match may never show up, because the list is filled up with less relevant matches.\n \n \n Post-Installation \n Configure any entity form display, use the widget for an entity reference field.\n\n Back to top",
+  "project_description": "Provides an entity reference autocomplete field widget that combines STARTS_WITH and CONTAINS matching. It first returns entities whose label starts with the typed string; if fewer than the match limit are found, the remaining slots are filled with entities whose label merely contains the string. This puts the most relevant (prefix) matches at the top while still surfacing substring matches, which neither of core's single operators does on its own: STARTS_WITH can return nothing when every label begins with a prefix like \"The\" or a number, and CONTAINS can bury the exact match under less relevant results. Implemented as a field widget (MixedMatchingAutocompleteWidget, extending core's EntityReferenceAutocompleteWidget) that hard-codes the primary operator to STARTS_WITH and a fallback operator to CONTAINS, plus a decorator of core's entity.autocomplete_matcher service (AdvancedEntityAutocompleteMatcher) that understands the extra fallback_match_operator selection setting and performs the two-query fallback chain. Matching, sorting and access filtering are delegated to the core entity reference selection handler.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

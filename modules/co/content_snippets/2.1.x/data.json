@@ -1,13 +1,13 @@
 {
   "name": "Content Snippets",
   "data_name": "content_snippets",
-  "description": "Configurable content snippets.",
+  "description": "Small editable text snippets stored as configuration, consumed via a PHP API, tokens, and Twig variables.",
   "version": "2.1.x",
   "package": "Content Snippets",
   "composer_namespace": "drupal/content_snippets",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "content_snippets.config.admin_index",
   "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -19,25 +19,25 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience",
     "Administration tools"
   ],
   "subcategories": [
-    "Reusable content",
+    "Token / placeholder replacement",
     "Configuration management"
   ],
   "keywords": [
     "snippets",
-    "reusable",
-    "strings",
-    "content",
+    "reusable text",
+    "tokens",
+    "twig",
     "configuration",
     "editors"
   ],
-  "project_description": "Content Snippets is a simple module that provides an administrative and content editor interface for editing small bits of text that can then be used by developers when they would be otherwise tempted to hard-code content into custom code, themes, etc. Then these bits of text can be controlled by Content Editors without developer intervention. The snippets are also available as global tokens and in twig.\n\n This module is a potentially more powerful option if you need more significant configuration options, and the ability to create new configuration pages and fields beyond just content snippets: https://www.drupal.org/project/config_pages",
+  "project_description": "Content Snippets provides a simple way to make small bits of text that would otherwise be hard-coded in custom code, themes or forms editable by content editors without a developer or a deployment. An administrator defines named snippets (label, machine ID, storage type, help text, group, weight); content editors then fill in the values on a dedicated 'Snippets' page under Content. Each snippet is referenced by its machine name in three ways: the PHP function content_snippets_retrieve('id'), the token [content_snippets:id], or the Twig variable {{ contentSnippets.id }}. Snippet definitions live in the content_snippets.items config object and their values in content_snippets.content, so both are ordinary configuration that deploys with the codebase and is overwritten by a configuration import. Snippet types are Number, Line (plain text), Paragraph (plain text) and, when the Filter module is enabled, Paragraph (formatted), the last of which runs its value through a chosen text format on render.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

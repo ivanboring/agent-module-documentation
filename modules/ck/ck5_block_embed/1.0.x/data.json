@@ -1,7 +1,7 @@
 {
   "name": "CKEditor5 block embed",
   "data_name": "ck5_block_embed",
-  "description": "Embed content, view and region blocks in CKEditor 5.",
+  "description": "A CKEditor 5 toolbar button and text-format filter that embed content blocks, view blocks, and the active theme's region blocks into body content.",
   "version": "1.0.x",
   "package": "CKEditor 5",
   "composer_namespace": "drupal/ck5_block_embed",
@@ -16,30 +16,43 @@
   "project_url": "https://www.drupal.org/project/ck5_block_embed",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "core/ckeditor5",
+    "core/ckeditor5.essentials",
+    "editor/drupal.editor.dialog",
+    "core/drupal.dialog.off_canvas"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "ck5_block_embed (custom embed-render plugin type; manager plugin.manager.ck5_block_embed, annotation @Ck5BlockEmbed, namespace Plugin/Ck5BlockEmbed; core plugins content_block, view_block, theme_block)",
+    "filter (ck5_block_embed \"Embed blocks\" text filter)",
+    "ckeditor5 (ck5_block_embed_ck5BlockEmbed, derived to :default)"
+  ],
   "categories": [
     "Content editing experience",
-    "Security"
+    "Content display"
   ],
   "subcategories": [
-    "WYSIWYG",
-    "Blocks"
+    "CKEditor plugins",
+    "Rich text embedding",
+    "Block enhancements",
+    "View embedding"
   ],
   "keywords": [
     "ckeditor5",
     "block",
+    "block_content",
     "embed",
     "views",
     "region",
-    "editor"
+    "editor",
+    "filter"
   ],
-  "project_description": "The CKEditor5 Block Embed module allows administrators to easily embed blocks within the CKEditor5 interface:\n\n \n \n Content Blocks : These include both basic predefined blocks (such as basic blocks) and manually created custom blocks. Administrators can add these blocks directly from the CKEditor5 toolbar, making it easy to display dynamic or reusable content blocks across pages.\n \n \n View Blocks : These can either be default or manually created, with a block display mode that determines how the content is rendered. View blocks are ideal for displaying dynamic or templated content, such as user-generated data, and can be quickly inserted through the CKEditor5 interface.\n \n \n Region Blocks : Predefined layout regions (like headers, footers, or sidebars) from the active theme. The benefit of Region Blocks is the ability to place core, contrib, or custom-module blocks within these regions. Administrators can configure settings via a configuration form, allowing specific blocks to be placed in the region and available within the CKEditor5 interface. Additionally, \"readonly\" regions can be created, ensuring blocks are not shown on the front end, providing greater control over content placement and visibility.\n \n \n \n This module makes it simple to manage and insert complex content and layout elements, providing flexibility and control over how content is displayed on the site.\n\n \n Note : Avoid including any block within itself or creating a self-contained scenario. Embedding a block inside itself will create an infinite loop, which can break the editor and disrupt the page rendering.\n\n \n Video Demo \n\n View video \n\n \n Support \n\nPlease post bug reports, feature requests and support requests to the CKEditor5 block embed module issue queue . If you met any problems with this module - feel free to create an issue.\n\n Configuration and Demo \n\n \n Go to https://simplytest.me/project/ck5_block_embed . \n Click \"Launch Sandbox\". \n Install Drupal as normal. \n Enable \"CKEditor5 block embed\" module, and any optional modules you wish to try out. \n Go to /admin/config/content/formats/manage/full_html or any other editor where you wish to implement the functionality and drag the Embed Block icon on the active toolbar and checking the box next to the Embed blocks filter. \n Add/edit the content with editor, click on the \"Embed blocks\" icon where the Embed blocks feature lets you embed any content blocks, view blocks, and region blocks from the active theme.",
+  "project_description": "The CKEditor5 Block Embed module adds an \"Embed Block\" toolbar button and a companion \"Embed blocks\" text-format filter that let editors place three kinds of block into body content: content blocks (block_content entities), view blocks (a view's block display), and region/theme blocks (block config entities placed in the active theme). The button opens a modal dialog that lists the available blocks and, on submit, inserts a placeholder element (<ck5-block-embed data-plugin-id data-plugin-config data-button-id>) into the markup. At display time the filter parses that element, instantiates the matching embed plugin, and renders the referenced block, view, or region block. Because the reference is resolved on render, updating the underlying block updates every field that embeds it. The toolbar button is gated by the 'use ck5 block embed button' permission (removed from the editor JS settings for users who lack it). The module ships no configuration UI of its own beyond enabling the filter and toolbar button on a text format at /admin/config/content/formats.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

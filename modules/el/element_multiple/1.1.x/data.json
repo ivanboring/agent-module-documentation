@@ -1,48 +1,59 @@
 {
   "name": "Element Multiple",
   "data_name": "element_multiple",
-  "description": "Form element supporting multiple values.",
+  "description": "Developer Form API render element (#type => 'element_multiple') for collecting an unlimited (or capped) number of values, single or composite, with AJAX add/remove, drag-and-drop sorting and cardinality.",
   "version": "1.1.x",
-  "package": null,
+  "package": "Fields",
   "composer_namespace": "drupal/element_multiple",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "php": ">=8.2",
+    "drupal/core": "^10.5 || ^11"
+  },
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^10 || ^11",
+  "core_version_requirement": "^10.5 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/element_multiple",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.2",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "Render/Form element plugin (#[FormElement('element_multiple')], class Drupal\\element_multiple\\Element\\ElementMultiple extends FormElementBase) — usable as '#type' => 'element_multiple' in any Form API array."
+  ],
   "categories": [
     "Developer tools",
-    "Content editing experience"
+    "Content editing experience",
+    "Forms and surveys"
   ],
   "subcategories": [
-    "Form API elements",
-    "Forms"
+    "Form widgets / select UI",
+    "Plugin system",
+    "Webform elements"
   ],
   "keywords": [
     "form element",
-    "multiple",
+    "render element",
+    "form api",
+    "multiple values",
     "add more",
-    "developer",
+    "cardinality",
+    "composite element",
+    "drag-and-drop",
     "widget",
-    "values"
+    "developer"
   ],
-  "project_description": "This module provides a form element to assist in creation of multiple elements.\n\n Installation \n Install as usual, see Installing Drupal 8 Modules or Installing modules' Composer dependencies for further information.\n\n Configuration \n No configuration needed.\n\n Usage \n <?php\n\n$form['multiple'] = [\n\n '#type' => 'element_multiple',\n\n '#title' => 'Multiple values',\n\n '#header' => [\n\n ['data' => $this->t('First name'), 'width' => '50%'],\n\n ['data' => $this->t('Second name'), 'width' => '50%'],\n\n ],\n\n '#element' => [\n\n 'first_name' => [\n\n '#type' => 'textfield',\n\n '#title' => $this->t('First name'),\n\n ],\n\n 'last_name' => [\n\n '#type' => 'textfield',\n\n '#title' => $this->t('Last name'),\n\n ],\n\n ],\n\n '#default_value' => $config->get('multiple'),\n\n];\n\n?>\n\n Credits & Thanks \n The Drupal 8/9 version of this module is heavily based on the Webform module \n\n Similar modules \n \n Multivalue form element \n \n Sponsors \n \n Amara S.A. \n \n \n\n Back to top",
+  "project_description": "Element Multiple provides a single Form API render element, '#type' => 'element_multiple', that gives any custom form the multi-value 'Add another' behaviour that Drupal otherwise ties to the Field system. It renders a table of repeated inputs with AJAX add/remove operations, an 'Add N more items' button, optional drag-and-drop weight sorting, configurable cardinality and min/empty item counts. The repeated input can be a single element (e.g. a textfield) or a composite of several named sub-elements (a row of columns), and an optional #key turns the returned array into an associative keyed map. Purely developer/API facing: no admin UI, no configuration, no permissions. The implementation is heavily based on the Webform module's multiple element. Maintained by Cambrico (Pedro Cambra, Manuel Egio).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
   "project_created": "2021-07-16",
   "project_changed": "2026-08-18",
-  "core_semver_minimum": 8008000,
+  "core_semver_minimum": 10005000,
   "core_semver_maximum": 12000000
 }
