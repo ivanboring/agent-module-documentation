@@ -1,16 +1,16 @@
 {
   "name": "Leaflet Mapbox",
   "data_name": "leaflet_mapbox",
-  "description": "Adds Mapbox tile layers to the Leaflet module.",
+  "description": "Provides Leaflet integration with Mapbox",
   "version": "2.0.x",
-  "package": null,
+  "package": "Geofield",
   "composer_namespace": "drupal/leaflet_mapbox",
   "composer_requirements": {},
   "dependent_modules": [
     "leaflet:leaflet"
   ],
-  "configure": null,
-  "core_version_requirement": "^10 || ^11",
+  "configure": "leaflet_mapbox.settings",
+  "core_version_requirement": "^10.3 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/leaflet_mapbox",

@@ -1,22 +1,27 @@
 {
   "name": "Search API SearchStax",
   "data_name": "search_api_searchstax",
-  "description": "Search API backend for SearchStax-hosted Solr.",
+  "description": "Provides integration between your Drupal site and the SearchStax Solr service.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Search",
   "composer_namespace": "drupal/search_api_searchstax",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/search_api_solr": "^4.2.1",
+    "solarium/solarium": "^6.2.7"
+  },
   "dependent_modules": [
-    "search_api:search_api"
+    "search_api_solr:search_api_solr"
   ],
   "configure": null,
-  "core_version_requirement": "^10 || ^11",
+  "core_version_requirement": "^8.9 || ^9.3 || ^10.2 || ^11.0",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/search_api_searchstax",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "solarium/solarium"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
@@ -28,16 +33,19 @@
     "Integrations"
   ],
   "subcategories": [
-    "REST / web services",
+    "Hosted search (SaaS)",
+    "Search backend",
     "Content indexing"
   ],
   "keywords": [
     "searchstax",
     "solr",
     "search api",
+    "solr connector",
     "hosted search",
-    "backend",
-    "index"
+    "token auth",
+    "saas",
+    "backend"
   ],
   "project_description": "SearchStax Search API Module provides Search API Solr connector plugin.",
   "maintenance_status": "Actively maintained",
