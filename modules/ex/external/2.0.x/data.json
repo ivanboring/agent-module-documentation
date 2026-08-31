@@ -1,7 +1,7 @@
 {
   "name": "External Links",
   "data_name": "external",
-  "description": "Opens links to external sites in new tabs.",
+  "description": "Opens links to external sites (and optionally PDFs) in new browser tabs client-side with jQuery, instead of target=_blank.",
   "version": "2.0.x",
   "package": null,
   "composer_namespace": "drupal/external",
@@ -14,7 +14,11 @@
   "project_url": "https://www.drupal.org/project/external",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "core/jquery",
+    "core/drupal",
+    "core/drupalSettings"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
@@ -22,22 +26,20 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Content display",
-    "Accessibility"
+    "Security"
   ],
   "subcategories": [
-    "Links",
-    "Text formats and filters"
+    "Outbound link privacy"
   ],
   "keywords": [
     "external links",
     "new tab",
-    "target",
-    "rel",
-    "noopener",
-    "links"
+    "new window",
+    "outbound links",
+    "window.open",
+    "pdf"
   ],
-  "project_description": "This extremely simple module allows you to easily open links to external sites or PDF documents in new tabs. It uses jQuery instead of target=_blank so the markup will still validate. You can also configure which pages you would like this module to apply to.\n\n It's preferred over the great http://drupal.org/project/extlink module for cases when you either only need this one feature (since this module is much more lean) or it is important that the generated (i.e., dynamically by JavaScript) markup still validate.\n\n Back to top \n\n Installation \n \n Download and enable the module \n Configure module on /admin/config/content/external \n Profit! You're done! However, if you want to enable or disable the module on a per-page basis, visit the configuration page. \n \n Back to top \n\n Alternatives \n \n http://drupal.org/project/extlink \n \n Credits \n This module is brought to you by Little Blue Labs with love.\n\n Back to top",
+  "project_description": "This extremely simple module opens all links to external sites in new tabs. It uses jQuery (client-side window.open) instead of target=_blank so the generated markup will still validate. An optional setting also opens links to PDF documents in new tabs, and any link given class=\"newtab\" is opened in a new tab as well. A configuration page at /admin/config/content/external lets you enable/disable the behaviour site-wide, toggle the PDF behaviour, and list Drupal paths (with the * wildcard and the <front> token) on which the behaviour should not run. It is preferred over the extlink module for cases where you only need this one lean feature or where it is important that the dynamically generated markup still validate.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

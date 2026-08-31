@@ -1,27 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Reading Rating scores the readability of a text field and shows the result to the editor as they write.
+Reading Rating scores the readability of a text field and shows the result to the editor, live, as they type. Enabled per field in the form display; the whole calculation runs client-side in JavaScript.
 
 ---
 
-Readability formulas — Flesch–Kincaid and its relatives — estimate how hard a passage is from sentence length and syllable counts. They are crude by construction and they are also the most actionable editorial feedback available, because the two things they measure are the two things a writer can fix: shorter sentences and shorter words. For public-sector and health sites the target is usually explicit — many government style guides specify a reading age, and accessibility guidance treats plain language as a requirement rather than a preference — so a score in the edit form turns an abstract standard into a number that moves while you type. Version **1.2.1** on core `^10 || ^11`, depending on core `field_ui`, with a `manage reading rating` permission for the settings. Three things to be honest about when recommending it. **The formulas are English-specific**: syllable counting assumes English orthography, so a score on German, Finnish or Welsh text is arithmetic without meaning, and a multilingual site needs a per-language answer or none. **They measure form, not sense** — a passage of short sentences containing undefined jargon scores well and communicates nothing, which is exactly the failure mode of writing to a score. And **a target is guidance, not a gate**: blocking submission on a readability number produces text contorted to satisfy an arithmetic rule, so the useful implementation shows the score and leaves the judgement with the writer.
+The mechanism is deliberately small. You enable it per field on a form display (the field's widget gear → "Reading Rating Settings" → "Enable Reading Rating", optionally "Enable grade level"), which stores a third-party widget setting. At render time the module's `#process` callback tags the textarea with a `reading-rating` class, attaches its library, and appends a themed widget below the field. From there everything is browser-side: a bundled copy of TextStatistics.js (`js/text-statistics.js`) computes the **Flesch Reading Ease** score and the **Flesch–Kincaid grade level** on `keyup`/`change`/`paste`, for both plain textareas and CKEditor 5 instances, and the widget highlights one bucket — Easy / Moderate / Difficult, and optionally an Elementary-through-College-graduate grade band. Nothing is submitted, stored, or validated: no score is written to the entity, no request is made, and submission is never blocked. Version **1.2.1** on core `^10 || ^11`, depending on core `field_ui`; the only permission, `manage reading rating`, gates a settings form at `/admin/config/content/reading-rating` where the bucket labels are made **configurable and translatable** (via core `config_translation`). Three things to be honest about when recommending it. **The formulas are English-specific** — syllable counting assumes English orthography, so a score on German, Finnish or Welsh text is arithmetic without meaning, and a multilingual site needs a per-language answer or none. **They measure form, not sense** — a passage of short sentences full of undefined jargon scores well and communicates nothing, the exact failure mode of writing to a score. And **a target is guidance, not a gate** — this module wisely only displays the number and leaves the judgement with the writer. Supported widgets out of the box: `string_textarea`, `text_textarea`, and `text_textarea_with_summary`; other widgets can opt in via `hook_reading_rating_widget_settings()`.
 
 ---
 
-- Show a readability score while writing.
-- Meet a plain-language requirement.
-- Support a government style guide's reading age.
-- Improve health information's clarity.
-- Give editors objective feedback.
-- Encourage shorter sentences.
-- Support an accessibility programme.
-- Score a summary field.
-- Improve public-sector content quality.
-- Review readability before publishing.
-- Support an editorial standards policy.
-- Score help text for clarity.
-- Improve a policy page's readability.
-- Train new editors on plain language.
-- Compare readability across content.
-- Meet a charity's accessibility commitment.
-- Flag overly complex passages.
-- Support a content design practice.
+- Show editors a live readability score as they write.
+- Meet a plain-language requirement on public-sector content.
+- Support a government style guide's target reading age.
+- Improve the clarity of health information.
+- Give editors objective, actionable feedback on sentence and word length.
+- Encourage shorter sentences and simpler words.
+- Support an accessibility programme's plain-language goals.
+- Add a grade-level band (Elementary → College graduate) alongside the Easy/Moderate/Difficult rating.
+- Improve overall public-sector content quality.
+- Review readability in the edit form before publishing.
+- Back an editorial standards policy with a visible metric.
+- Score help text and instructional copy for clarity.
+- Improve a dense policy page's readability.
+- Train new editors on writing to a readability target.
+- Relabel the rating buckets ("Easy", "Moderate", …) to house wording via the settings form.
+- Translate the rating and grade labels with `config_translation`.
+- Enable readability scoring on a CKEditor 5 body field.
+- Enable it on a plain (non-WYSIWYG) long-text field.
+- Flag overly complex passages to the author without blocking save.
+- Extend support to a custom text widget via `hook_reading_rating_widget_settings()`.
+- Support a content-design practice with in-form feedback.
+- Meet a charity or NGO's accessibility commitment on written content.

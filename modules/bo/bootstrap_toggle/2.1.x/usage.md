@@ -1,27 +1,33 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Bootstrap Toggle renders boolean checkboxes as sliding toggle switches, using the Bootstrap Toggle library.
+Bootstrap Toggle adds a "Bootstrap Toggle" field widget for core boolean fields that renders the checkbox as a sliding on/off switch (via the minhur/bootstrap-toggle JS library), plus a matching read-only formatter that shows the same switch on display.
 
 ---
 
-The toggle switch has become the expected control for an on/off setting, largely because mobile operating systems made it so, and a plain checkbox now reads as a form field rather than a switch — which matters where the control *is* the setting: a published flag, a feature enabled or disabled, a notification preference. The distinction that decides whether a toggle is right is **when the change takes effect**. A switch implies immediacy: the user expects it to do the thing now, as it does everywhere else they meet one. A checkbox in a form implies "this will be saved when I submit". Using a switch for a value that only applies on save is a mismatch that makes people think a setting did not stick. Version **2.1.1** on core `^10 || ^11`. Two accessibility points, and they are what separates a working toggle from a decorative one. **The underlying input must remain a real checkbox**, focusable and operable with the spacebar, with the visual switch as presentation — a `div` styled as a switch is invisible to assistive technology unless it carries `role="switch"` and `aria-checked` and handles keys itself, and most implementations that go that route only do the first part. And **the state must be conveyed by more than position and colour**: a green-versus-grey switch with no label conveys nothing to a colour-blind user or a screen reader, so on/off text or an accessible name that changes with state is required rather than optional.
+The module is a thin bridge between Drupal's boolean field type and the third-party Bootstrap Toggle JavaScript library. It registers a field widget (`bootstrap_toggle_switch`) and a field formatter of the same id, both restricted to the core `boolean` field type. The widget's `formElement()` builds an ordinary `#type => checkbox` and tags it with `data-toggle="toggle"` plus a set of `data-*` attributes (`data-on`, `data-off`, `data-size`, `data-onstyle`, `data-offstyle`, and optional numeric `data-height`/`data-width`) derived from the per-form-display settings; the bundled `js/bootstrap_toggle_reattach.js` behavior then calls `$('input[data-toggle="toggle"]').bootstrapToggle()` to convert those checkboxes into switches. The library itself is attached only when a form actually contains a toggle: the widget sets a `attached_toggle` flag on the form state, and `hook_form_alter()` reads that flag to attach the `bootstrap_toggle/bootstrap_toggle` library. That library declares its JS/CSS at `/libraries/bootstrap_toggle/...`, so the actual library (minhur/bootstrap-toggle 2.2.2, MIT) must be installed under the site's libraries directory — it is not shipped with the module, and `hook_requirements()` raises an error until it is found. Settings are exposed on Manage form display (and, for the formatter, Manage display): show/hide the field label, custom On/Off text, size (large/normal/small/mini), On and Off Bootstrap contextual colours (primary/success/info/warning/danger/default), and optional height/width overrides. The formatter simply reuses the widget internally, renders the same checkbox `disabled` with a `checked` attribute reflecting the stored value, and thereby shows a non-interactive switch on entity display. The module also ships a `form-element-label--toggle` template and theme-suggestion hooks so the label markup fits Bootstrap; correct appearance still depends on a Bootstrap-based theme being active where the form/display renders. Requires core `^8.9 || ^9 || ^10 || ^11`; version 2.1.1.
 
 ---
 
-- Render a published flag as a switch.
-- Show a feature toggle in settings.
-- Improve a preferences form's clarity.
-- Make a boolean field look like a switch.
-- Match a Bootstrap theme's controls.
-- Improve mobile form usability.
-- Show notification preferences as toggles.
-- Clarify an on/off setting.
-- Improve an admin settings form.
-- Render a subscription opt-in.
-- Show a visibility flag as a switch.
-- Improve a configuration screen.
-- Match modern interface expectations.
-- Show a boolean in a compact form.
-- Improve a dashboard's controls.
-- Render a status field as a toggle.
-- Support a Bootstrap-themed admin.
-- Clarify a two-state choice.
+- Render a node's "Published"/"Promoted" boolean field as an on/off switch on the edit form.
+- Show a custom `field_active` boolean as a Bootstrap Toggle in a content type's form.
+- Give a user-profile "Receive newsletter" boolean field a switch instead of a checkbox.
+- Display a boolean field as a read-only switch on the node's full view using the matching formatter.
+- Label the two states with domain words ("Yes"/"No", "Live"/"Draft", "Enabled"/"Disabled").
+- Colour the On state green (success) and Off state grey (default) for a status field.
+- Use the danger/warning contextual colours to flag a risky boolean (e.g. "Maintenance mode").
+- Pick a size (large/normal/small/mini) to fit the switch into a dense admin form.
+- Hide the redundant field label so only the switch and its On/Off text show.
+- Match the site's Bootstrap theme so switches look native on add/edit pages.
+- Improve mobile form usability by replacing tiny checkboxes with larger touch targets.
+- Present a subscription opt-in boolean as a modern toggle.
+- Show a visibility/feature flag as a switch in a settings-style content form.
+- Configure per-form-display so the same field looks different in different form modes.
+- Override switch width/height for a boolean with long custom On/Off labels.
+- Render a "Featured" flag as a coloured switch on a landing-page content type.
+- Give an editorial "Ready for review" boolean an unmistakable on/off affordance.
+- Use the read-only formatter to show boolean state as a switch in a teaser or table-less view.
+- Replace a checkbox on a Webform-adjacent content-entity form field (boolean fields only).
+- Standardise all boolean toggles across content types to one Bootstrap look.
+- Combine with a Bootstrap admin theme to make the entire edit UI consistent.
+- Show a two-state choice where the control itself communicates the current setting.
+- Configure custom On/Off text to make an ambiguous boolean self-explanatory.
+- Apply distinct On vs Off styles so the current state is obvious at a glance.

@@ -1,13 +1,15 @@
 {
   "name": "Varnish File Purge",
   "data_name": "varnish_file_purge",
-  "description": "Purges files from Varnish when they keep consistent URLs.",
+  "description": "Sends PURGE/BAN requests directly to a Varnish server for a file's URL (and its image-style derivatives) whenever the file entity is inserted, updated, or deleted.",
   "version": "1.1.x",
   "package": "Purge - reverse proxies & CDNs",
   "composer_namespace": "drupal/varnish_file_purge",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "cweagans/composer-patches": "dev-main"
+  },
   "dependent_modules": [],
-  "configure": null,
+  "configure": "varnish_file_purge.configuration",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -23,21 +25,22 @@
   "provides_plugin_types": [],
   "categories": [
     "Performance",
-    "Media management"
+    "Media"
   ],
   "subcategories": [
     "Cache invalidation",
-    "CDN"
+    "CDN integration"
   ],
   "keywords": [
     "varnish",
     "purge",
+    "ban",
     "files",
-    "cache",
-    "invalidation",
-    "media"
+    "reverse proxy",
+    "cache invalidation",
+    "multi-domain"
   ],
-  "project_description": "The Varnish file purger is a new Drupal project developed to address compatibility issues between the Varnish Purge and Purge File modules, especially in setups where files are served across multiple domains. In scenarios involving the file_replace module, these existing modules did not effectively handle file purging, leading to stale file caches being served by Varnish.\n\n The Varnish file purger module simplifies the integration, ensuring that file purges work seamlessly across various domains. It directly manages purging of replaced or updated files, making it compatible with multi-domain configurations and solving the setup issues that arise when using Varnish with the file_replace module.\n\n Post-Installation \n The module can be configured at /admin/config/development/varnish_file_purge \n\n The following configuration can be added:\n\n \n Varnish connection configurations: Scheme, Host and Port \n The Purge method: whether to use the BAN or PURGE method (Keep in mind to prepare your vcl for the method selected. \n The base URL(s) of your website, so the purge happens across every single domain. \n \n Additional Requirements \n \n Requires a functional Varnish set-up. \n \n Similar projects \n \n The Purge file module allows you to purge files across multiple domains. \n The Varnish purge \n allows you to use Varnish as CDN to purge your caches.\n\n Back to top",
+  "project_description": "The Varnish file purger is a Drupal project developed to address compatibility issues between the Varnish Purge and Purge File modules, especially in setups where files are served across multiple domains. In scenarios involving the file_replace module, those existing modules did not effectively handle file purging, leading to stale file caches being served by Varnish.\n\nUnlike the Purge-framework modules it is compared to, varnish_file_purge does NOT depend on or use the purge framework, its queue, or its processors. It hooks file entity insert/update/delete and sends PURGE or BAN requests straight to a configured Varnish host over Guzzle, one request per configured domain (via a spoofed Host header), for the file's absolute URL. When the file is updated it only purges if the bytes actually changed (size, URI, or a sha256 content hash differ). Optionally it also purges the existing image-style derivatives of PNG/JPEG files.\n\nPost-Installation: configure at /admin/config/development/varnish_file_purge. Settings: Varnish connection (scheme, host, port), the purge method (BAN or PURGE — prepare your VCL for the chosen verb), the comma-separated list of domains so the purge fires across every front/back-office host, a Debug toggle that logs each purged URL, and a Purge Image styles toggle.\n\nRequires a functional Varnish set-up you can reach from the web server. Similar projects: Purge File (purge files across multiple domains) and Varnish purge (use Varnish as a CDN and purge caches).",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

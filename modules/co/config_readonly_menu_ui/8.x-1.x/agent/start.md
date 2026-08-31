@@ -1,20 +1,45 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Configuration Read-only Menu UI (config_readonly_menu_ui) — agent index
 
-Carves an exception into **`config_readonly`** so **content menu links** can be reordered on a
-locked-down site. Requires `config_readonly`, `menu_ui`, `menu_link_content`. Version **8.x-1.3**.
-Core requirement `^8 || ^9 || ^10 || ^11`.
+Add-on for **`config_readonly`** that carves a narrow exception so **content menu links**
+(`menu_link_content` entities) can still be reordered while a site runs with
+`$settings['config_readonly'] = TRUE`. The menu's **configuration** parts stay frozen.
+Requires `config_readonly`, `menu_ui`, `menu_link_content`. Version **8.x-1.3**.
+Core requirement `^8 || ^9 || ^10 || ^11`. Ships no permissions, routes, services or config schema.
 
-**The friction it resolves is structural, not a bug.** Menus mix two storage kinds: the **menu** is
-configuration, its **content menu links** are content entities — and the menu administration form
-saves **both**. So `config_readonly` blocks a purely editorial reordering because the form touches
-configuration. Editors experience this as *"I can't move a menu item on the live site"*, which is a
-legitimate complaint.
+## The problem it solves
+A menu mixes two storage kinds: the **menu** and any module/config-defined links are configuration
+(`system.menu.*`); **content menu links** are content entities. Core's menu overview form
+(`Drupal\menu_ui\MenuForm`) saves the menu **config entity** on every submit, so `config_readonly`
+blocks the entire form — editors cannot even move a purely content-defined link. Editors experience
+this as *"I can't reorder the menu on the live site."*
 
-**Two things to note:**
-1. **Every exception to a lock is a hole in the lock.** The value of the whole arrangement depends
-   on this one being narrow — **confirm what it actually permits**, since "reorder links" and "edit
-   the menu form" are different sizes of exception.
-2. **Menu weights are content here, so they do not travel with a configuration export.** A reorder
-   made on production **stays on production** — the intended consequence, and one that whoever
-   expects environments to match needs to understand.
+## Mechanism (read the source — one `.module`, one form class)
+- **`config_readonly_menu_ui.module`**
+  - `hook_entity_type_alter()` — swaps the `menu` entity `add`/`edit` form class to
+    `Drupal\config_readonly_menu_ui\ContentMenuForm`, **unconditionally** (so the cached form
+    definition is right whenever read-only mode is later toggled on).
+  - `hook_config_readonly_whitelist_patterns()` — returns `['system.menu.*']`, adding that pattern
+    to `config_readonly`'s whitelist so menu-config writes are not blocked by the lock.
+- **`src/ContentMenuForm.php`** (extends core `MenuForm`) — active only when `Settings::get('config_readonly')` is true:
+  - `form()` — `#disabled = TRUE` on every top-level element **except `links` and `actions`**;
+    adds a warning that parts of the form are read-only.
+  - `submitForm()` — **skips `parent::submitForm()`** (which would save the menu config entity);
+    calls only `submitOverviewForm()`, persisting content-link weight/enabled changes. The config
+    entity is never written by this form.
+  - `buildOverviewForm()` — for each link that is **not** a `MenuLinkContent` (a config-defined
+    link): disables its `weight` and `enabled` widgets and hides its operations. If any such
+    read-only link exists, removes the table's `#tabledrag` (drag-and-drop could change a config
+    link's weight), so editors reorder via the weight `<select>` fields instead.
+
+## Two things to understand
+1. **Content-link weights are content, not config** — a reorder made on production does not travel
+   with a config export; it stays on the environment where it was made.
+2. **Mixed menus can trap positions** — the README warns you cannot place a content link between two
+   config links of equal weight (Drupal's integer-weight model). Space config-link weights out, or
+   keep menus single-kind.
+
+## Files
+- `data.json` — metadata.
+- `usage.md` — orientation + use cases.
+- No permissions, Drush commands, routes, services or config schema.

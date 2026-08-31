@@ -1,22 +1,37 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-# Reading Rating (reading_rating) — agent index
+# reading_rating — agent start
 
-Scores the **readability** of a text field and shows the result to the editor. Depends on core
-`field_ui`. `manage reading rating` gates the settings. Version **1.2.1**.
-Core requirement `^10 || ^11`.
+Shows editors a **readability rating** of a text field, live in the edit form, as they type.
+The score is **Flesch Reading Ease** plus an optional **Flesch–Kincaid grade level**, computed
+entirely **client-side** by a bundled copy of TextStatistics.js. Nothing is stored, submitted, or
+validated — it only displays a rating below the field; save is never blocked. Depends on core
+`field_ui`. Version **1.2.1**, core `^10 || ^11`.
 
-**Why crude formulas are still useful:** Flesch–Kincaid and relatives estimate difficulty from
-sentence length and syllable counts. Crude by construction — and the most **actionable** editorial
-feedback available, because the two things they measure are the two things a writer can fix.
-For public-sector and health sites the target is often explicit (a specified reading age; plain
-language treated as an accessibility requirement), and a live score turns an abstract standard into
-a number that moves while you type.
+## How it wires together
+- Enabled **per field** on a form display via a third-party widget setting (`enable_reading_rating`,
+  optional `enable_grade_level`). Set in `hook_field_widget_third_party_settings_form()`.
+- At render, `ReadingRatingCallbacks::readingRatingProcess()` (a `#process` on `textarea`/`textfield`,
+  added by `hook_element_info_alter()`) adds the `reading-rating` class, attaches the
+  `reading_rating/reading_rating` library, and appends the `reading_rating_widget` theme below the field.
+- `js/reading-rating.js` reads the field value (or CKEditor 5 data) on `keyup`/`change`/`paste`,
+  runs `js/text-statistics.js`, and highlights the matching bucket. Thresholds:
+  Reading Ease `<50` → Difficult, `<60` → Moderate, else Easy; grade `≤5/≤8/≤12/≤16/≤17`.
+- Bucket + grade **labels** are configurable and translatable via `reading_rating.settings`
+  (config schema + `config_translation`), edited at the settings form.
 
-**Three things to be honest about:**
-1. **The formulas are English-specific.** Syllable counting assumes English orthography — a score on
-   German, Finnish or Welsh text is arithmetic without meaning. A multilingual site needs a
-   per-language answer or none.
-2. **They measure form, not sense.** Short sentences full of undefined jargon score well and
-   communicate nothing — the exact failure mode of writing to a score.
-3. **A target is guidance, not a gate.** Blocking submission on a readability number produces text
-   contorted to satisfy arithmetic. Show the score; leave the judgement with the writer.
+## Solution-type docs
+- Turn it on for a text field, supported widgets, grade level → [fields/enable-on-field.md](fields/enable-on-field.md)
+- Extend to a custom widget with the settings hook → [api/widget-settings-hook.md](api/widget-settings-hook.md)
+
+## Config & permission
+- Settings form: `/admin/config/content/reading-rating` (route `reading_rating.settings`),
+  gated by the `manage reading rating` permission. Edits the 11 rating/grade label strings in
+  `reading_rating.settings:text_replacements`. Strings are translatable via core `config_translation`.
+- Upgrading from 1.1.x: **run `drush updb`** — updates 10001/10002 seed the default label config;
+  without them the widget renders empty labels (a deprecated pre-render logs a warning to run updb).
+
+## Honest limitations (for recommendations)
+1. **English-specific.** Syllable counting assumes English orthography; a score on German, Finnish
+   or Welsh text is arithmetic without meaning. Multilingual sites need a per-language answer or none.
+2. **Measures form, not sense.** Short sentences full of undefined jargon score well and say nothing.
+3. **Guidance, not a gate.** The module only displays the number and leaves judgement with the writer.
