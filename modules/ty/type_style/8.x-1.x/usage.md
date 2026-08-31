@@ -1,27 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Type Style adds configuration for styling entity bundles distinctly — a colour or visual marker per content type, moderation state or other bundle.
+Type Style adds a "Style settings" fieldset (a colour picker and an icon-name text field) to every entity-bundle edit form — content type, custom block type, media type, taxonomy vocabulary, file type, or any type opted in via hook. The chosen colour and icon are stored as third-party settings on the bundle config entity and read back through a Twig function, Views field plugins and entity tokens; the module renders no markup or CSS of its own.
 
 ---
 
-On a site with twenty content types, an editor's working day involves telling them apart constantly: in the content listing, in a reference autocomplete, in a moderation queue, in search results, on the page they have just opened. Text alone does that poorly, because a label is read and a colour is recognised — which is why every issue tracker colours its ticket types and every calendar colours its event categories. Giving each bundle a visual identity in the administrative interface is a small change that makes a large content model navigable, and the `type_style_moderation` submodule extends the same idea to workflow states, where the distinction people most need at a glance is draft versus published. Version **8.x-1.2** on `^8` through `^11`, with a `type_style_example` submodule. Two things determine whether it helps or hinders. **Colour alone fails a substantial minority** — around one in twelve men has some form of colour vision deficiency, and red-versus-green is the pair most often chosen and least often distinguishable — so a bundle's marker needs a second channel, whether a label, an icon or a shape, and that is a requirement rather than a refinement. And **a palette needs an owner**: eight thoughtfully chosen colours make a listing readable, and twenty arbitrary ones make it noise, so the value depends on someone deciding the set rather than each content type being given a colour when it is created.
+The module is a metadata store, not a renderer. When you edit a bundle you set two values — a hex `color` and a free-text `icon` name — and Type Style persists them as third-party settings on the bundle's config entity (`node.type.*.third_party.type_style`, and likewise for block_content, media, taxonomy and file types). Everything downstream is consumption: the `type_style(entity_or_type, id, style, default)` Twig function returns a value for a rendered entity or a loaded bundle; Views gains `type_style`, `type_style_color` and `type_style_icon` fields on every bundle base table, where the colour field uses a `postRender` trick that swaps `data-type-style-color` / `data-type-style-background-color` placeholder attributes for real `style="color: …"` strings (the workaround for Views not letting rewritten text carry inline styles); and tokens `[node:type-style-color]`, `[node:type-style-icon]` and `[node:type-style-*]` expose the same values to any token-aware feature. How a value becomes visible design is left entirely to the site — an icon name typically feeds an icon font, and the global settings form at `/admin/structure/type-style/settings` (permission `administer type style`) only chooses which icon font library — Material, Font Awesome or Ionicons — is attached to pages from a CDN, a convenience you can switch off. All values are sanitised on read to `[a-zA-Z0-9\-_#]` and the colour is validated to a six-digit hex on save, so the stored strings are safe to emit. The `type_style_moderation` submodule applies the same colour/icon idea to Content Moderation / Workbench Moderation workflow states and transitions, and `type_style_example` seeds every content type with a random colour and icon plus a demo view for a quick look.
 
 ---
 
-- Colour-code content types in listings.
-- Distinguish draft from published visually.
-- Mark event types in a moderation queue.
-- Give each bundle a visual identity.
-- Improve a large content model's usability.
-- Distinguish types in an autocomplete.
-- Colour moderation states.
-- Help editors scan a content listing.
-- Mark a restricted content type.
-- Distinguish media types visually.
-- Improve editorial orientation.
-- Mark taxonomy vocabularies distinctly.
-- Colour a workflow state.
-- Improve a busy admin interface.
-- Distinguish paragraph types.
-- Mark content types in search results.
-- Support a large editorial team.
-- Improve scanning of a moderation dashboard.
+- Associate a brand colour with each content type and read it in Views.
+- Give each content type an icon name that drives an icon font.
+- Colour-code rows in the admin content listing by bundle.
+- Add a coloured swatch to a reference-autocomplete or teaser via Twig.
+- Distinguish media types with per-type icons in a media library view.
+- Mark taxonomy vocabularies with distinct colours.
+- Style custom block types by bundle.
+- Style file (media) types by bundle.
+- Colour draft-versus-published in a moderation queue (moderation submodule).
+- Give workflow states and transitions their own colour/icon (moderation submodule).
+- Emit a per-type colour into a Views field using the `data-type-style-color` attribute trick.
+- Pull a bundle colour into an email or message via the `[node:type-style-color]` token.
+- Render an entity's type icon in a custom template with `type_style(node, 'icon')`.
+- Look up a style from a bundle machine name: `type_style('node_type', 'article', 'color')`.
+- Add extra style keys (e.g. secondary_color) via `hook_type_style_form_alter()`.
+- Extend styling to entity types that lack bundle third-party settings via `hook_type_style_entity_support()`.
+- Seed demo colours/icons on all content types with the `type_style_example` submodule.
+- Choose Material, Font Awesome or Ionicons as the auto-attached icon font.
+- Turn off the CDN icon font when the theme already ships one.
+- Build a colour-and-icon legend for a large content model.
+- Feed per-type icons to a component/SDC library through Twig.
+- Drive conditional SVG rendering off a per-type icon name.

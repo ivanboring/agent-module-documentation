@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Date Group is a formatter for date range fields that collapses the repeated parts of a start and end date into one readable string.
+Date Group is a field formatter for core `daterange` fields that collapses the parts a start and end date share into one readable string — "May 01-03, 2016" instead of "May 01, 2016 - May 03, 2016".
 
 ---
 
-Core renders a date range as two formatted dates with a separator, which is correct and unreadable: "12 March 2026 09:00 – 12 March 2026 17:00" repeats the date to say the event is on one day, and "12 March 2026 – 15 March 2026" repeats the month and year to say it spans four days in the same month. Every publication has a house style for this — "12 March 2026, 09:00–17:00", "12–15 March 2026", "28 March – 2 April 2026" — and it exists because a reader parses the collapsed form instantly and the expanded one word by word. Doing it in Drupal without a formatter means a preprocess function comparing the two dates piece by piece, written per site and usually handling the same-day case and forgetting the same-month one. Version **8.x-1.0-beta4** — a **beta** — on `^8` through `^11`, depending on core `datetime_range`. Three things determine whether the output is right. **The comparison has to happen in the display timezone**, not UTC, or an event from 23:00 to 01:00 is "the same day" in storage and two days to the reader. **All-day events are a distinct case** — a range with no meaningful time should not render "00:00–00:00", and whether the field can express all-day at all is a modelling question the formatter cannot answer. And **the rules are language-specific**: the collapsed forms above are English conventions, and a multilingual site needs the pattern per language rather than one string with substitutions, which is the point at which a formatter's configurability either covers the requirement or does not.
+The module adds one field formatter, id `date_group`, selectable in Manage Display for any Date range (`daterange`) field. It extends core's `DateRangeDefaultFormatter`, so it reuses the standard settings — a date **format type**, a **separator** (default `-`), a **timezone override** and a **from/to** control — and adds one of its own, a **time separator** (default `:`). At render time it puts both dates in the current default timezone, then decides: if the start and end timestamps are identical it just renders the single date; otherwise it picks one of three merge strategies from the parsed date parts. **Different years** produces the full start, the separator, and the full end ("August 27, 2016-May 14, 2017"). **Same month** merges the day into a range and keeps the month and year once ("May 01-03, 2016"). **Same year, different month** keeps the year once at the end ("May 05-June 06, 2016"). It does the merge by splitting the chosen date-format pattern character by character and reassembling it, then formatting through Drupal's date formatter, and it emits the result as plain `#markup` with a `timezone` cache context. Because the pattern is taken apart by hand, this is a display-only convenience with real edges: the maintainer's own recommendation is to choose a **date-only format with no time component** — time is only partially handled in the same-month branch and not at all in the others — and the inherited `from_to` setting is ignored once grouping kicks in. The grouped path also compares in the request's default timezone rather than the formatter's own `timezone_override`, so a range crossing midnight can group differently than a reader expects. None of this touches access or storage; it changes only how an already-access-checked date value is printed.
 
 ---
 
-- Render an event's date range readably.
-- Collapse a same-day date range.
-- Show "12–15 March 2026".
-- Format an opening hours range.
-- Render a conference's dates.
-- Show a course's start and end.
-- Format an exhibition's run.
-- Render a booking window.
-- Show a campaign's period.
-- Format a same-month range compactly.
-- Render a multi-day event's dates.
-- Show a session's times on one day.
-- Format a festival's dates.
-- Render a membership period.
-- Show a job posting's window.
-- Format a report's coverage period.
-- Render a tour's dates.
-- Show a listing's date range tidily.
+- Render an event's date range as "12-15 March 2026" instead of repeating the month and year.
+- Collapse a single-day range that has equal start and end into one date.
+- Show a same-month multi-day range with the day collapsed to a range.
+- Show a cross-month, same-year range with the year printed once.
+- Show a cross-year range as two full dates joined by a separator.
+- Format a conference's run compactly in a listing.
+- Render an exhibition's opening and closing dates.
+- Show a course's start and end on a catalog card.
+- Format a festival's dates for a teaser.
+- Render a campaign or promotion period.
+- Show a booking or availability window.
+- Format a membership or subscription period.
+- Render a job posting's application window.
+- Show a report's coverage period.
+- Configure a custom separator between the two dates (e.g. an en dash).
+- Choose the site date format used to build the grouped string.
+- Pick a date-only format so grouping stays clean (maintainer's recommendation).
+- Keep a single formatter across day, month, and year spans without per-case theming.
+- Replace a hand-written preprocess function that compared the two dates piece by piece.
+- Apply consistent date-range typography across every entity type that has a daterange field.

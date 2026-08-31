@@ -1,48 +1,52 @@
 {
-  "name": "Waypoints",
+  "name": "jQuery Waypoints",
   "data_name": "waypoints",
-  "description": "Integrates the Waypoints scroll library.",
+  "description": "Registers the jQuery Waypoints scroll library as a Drupal asset library, with an admin toggle to attach it site-wide.",
   "version": "2.2.x",
-  "package": null,
+  "package": "User interface",
   "composer_namespace": "drupal/waypoints",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "levmyshkin/waypoints": "^4.0"
+  },
   "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^10 || ^11",
+  "configure": "waypoints.settings_form",
+  "core_version_requirement": "^10.1 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/waypoints",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "jQuery Waypoints 4.0.1 (MIT), Composer package levmyshkin/waypoints, served locally from /libraries/waypoints/lib/jquery.waypoints.min.js (no CDN)"
+  ],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Theming",
+    "Content display",
     "Developer tools"
   ],
   "subcategories": [
-    "JavaScript libraries",
-    "Animation"
+    "Scroll-driven animation",
+    "JavaScript libraries"
   ],
   "keywords": [
     "waypoints",
     "scroll",
     "trigger",
-    "sticky",
-    "lazy load",
-    "javascript"
+    "jquery",
+    "javascript",
+    "scrollspy"
   ],
-  "project_description": "Back to top \n\n Summary \n Waypoints is a small jQuery plugin that makes it easy to execute a function whenever you scroll to an element.\n\n Waypoints makes a solid base for modern UI patterns that depend on a user’s scroll position on the page. Take a look at a few examples .\n\n Back to top \n\n Configuration \n The module has an admin interface, where you can enable to always include the JavaScript file to the site.\n\nOtherwise you can include it manually via a simple function callback:\n\n \n\n<?php\n\ndrupal_add_library('waypoints', 'waypoints');\n\n?>\n\n \n\n Back to top \n\n Usage \n For example:\n\n \n\njQuery('#comments').waypoint(function() {\n\n alert('You have scrolled to the comments.');\n\n});\n\n \n\n \n\n(function ($) {\n\n $(document).ready(function() {\n\n if ($('#block-1').length) {\n\n var waypoint = new Waypoint({\n\n element: document.getElementById('block-1'),\n\n handler: function(direction) {\n\n $('.another-block')\n\n .toggleClass('someclass', direction === 'down');\n\n }\n\n });\n\n }\n\n });\n\n}(jQuery));\n\n \n\n For the full documentation visit the plugin's homepage. \n\n Views Load More module supports the use of this module. \n\n Back to top",
+  "project_description": "Waypoints is a small jQuery plugin that makes it easy to execute a function whenever you scroll to an element. It makes a solid base for modern UI patterns that depend on a user's scroll position on the page. The Drupal module packages the levmyshkin/waypoints library (v4.0.1) as a Drupal asset library named waypoints/waypoints, served locally from /libraries/waypoints/lib/jquery.waypoints.min.js. An admin settings form (/admin/config/user-interface/waypoints, gated by the 'configure waypoints module' permission) exposes a single checkbox, 'Always include JavaScript file to the site'; when checked, hook_page_attachments attaches the library on every page. Otherwise other modules or themes attach waypoints/waypoints from their own render arrays or #attached. Views Load More supports this module.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
   "project_created": "2011-04-21",
   "project_changed": "2026-08-18",
-  "core_semver_minimum": 8000000,
+  "core_semver_minimum": 10001000,
   "core_semver_maximum": 13000000
 }

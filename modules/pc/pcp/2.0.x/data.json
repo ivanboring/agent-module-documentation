@@ -1,7 +1,7 @@
 {
   "name": "Profile Complete Percentage",
   "data_name": "pcp",
-  "description": "Shows how complete a user's profile is.",
+  "description": "Displays a block showing how complete the current user's profile is, based on admin-selected user fields.",
   "version": "2.0.x",
   "package": null,
   "composer_namespace": "drupal/pcp",
@@ -17,17 +17,17 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "User management",
-    "Content editing experience"
+    "User engagement",
+    "Content display"
   ],
   "subcategories": [
-    "Profiles",
-    "Engagement"
+    "Block enhancements",
+    "Charts / data visualization"
   ],
   "keywords": [
     "profile",
@@ -35,9 +35,10 @@
     "percentage",
     "onboarding",
     "engagement",
-    "users"
+    "progress bar",
+    "user fields"
   ],
-  "project_description": "Profile Complete Percent (PCP) is an add-on to the core Profile module or the Profile2 module. It allows administrators to select profile fields as mandatory for a user to achieve a 100% profile completeness status.\n\n Overview of the functionality \n \n A block is created which displays the current logged in user's profile complete percent data. In Drupal 7, an additional block is created per Profile2 profile type. \n As the user fills out more of their profile, the percent increases. \n Additionally, a \"next\" tip link is displayed informing the user that if they fill out a particular field in their profile, they will increase their profile complete percent to a specific value. A link is provided for this \"next\" tip, sending the user to the exact page and highlighting the exact field that they need to fill out to increase their profile percent. \n \n Development of this module is sponsored by LimoenGroen, Amsterdam-based Drupal specialists .\n\n The Drupal8 port is done by Akash Jain .",
+  "project_description": "Profile Complete Percent (PCP) is an add-on that encourages users to finish their profile. An administrator selects which user (account) fields count toward completion, and the module provides a 'Profile Complete Percentage' block that shows the currently logged-in user their own completion percentage as a progress bar. As the user fills out more fields, the percentage rises. A 'next tip' link suggests one more field to fill in (chosen randomly or in fixed order), tells the user what percentage that would reach, and deep-links to the exact field on their account edit form. All data is computed on the fly, so activating or deactivating required fields updates the display immediately. Development was sponsored by LimoenGroen; the Drupal 8 port was done by Akash Jain.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

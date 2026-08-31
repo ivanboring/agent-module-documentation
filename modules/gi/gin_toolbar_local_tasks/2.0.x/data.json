@@ -1,7 +1,7 @@
 {
   "name": "Gin Toolbar Local Tasks",
   "data_name": "gin_toolbar_local_tasks",
-  "description": "Moves local tasks into the Gin toolbar.",
+  "description": "Moves the current page's local task tabs into the administration toolbar.",
   "version": "2.0.x",
   "package": "Gin",
   "composer_namespace": "drupal/gin_toolbar_local_tasks",
@@ -17,19 +17,22 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/gin_toolbar": "Only needed when wanting to use the local tasks in combination with the gin toolbar in the frontend."
+  },
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content editing experience",
+    "Administration tools",
     "Theming"
   ],
   "subcategories": [
-    "Admin UI",
-    "Tabs and navigation"
+    "Local tasks / tabs",
+    "Admin toolbar / navigation",
+    "Admin theme integration"
   ],
   "keywords": [
     "gin",

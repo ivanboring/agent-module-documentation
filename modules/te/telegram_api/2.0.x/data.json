@@ -1,7 +1,7 @@
 {
-  "name": "Telegram API",
+  "name": "Telegram API for Drupal modules",
   "data_name": "telegram_api",
-  "description": "Telegram integration for Drupal modules.",
+  "description": "Developer-facing service for sending messages to a Telegram bot chat, with an optional Webform submission handler submodule.",
   "version": "2.0.x",
   "package": null,
   "composer_namespace": "drupal/telegram_api",
@@ -14,8 +14,12 @@
   "project_url": "https://www.drupal.org/project/telegram_api",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
-  "suggests": {},
+  "library_dependencies": [
+    "ext-curl"
+  ],
+  "suggests": {
+    "drupal/webform": "Enables the telegram_api_webform submodule to post Webform submissions to a Telegram chat."
+  },
   "submodules": [
     "telegram_api_webform"
   ],
@@ -24,11 +28,12 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Integrations"
+    "Integrations",
+    "Forms and surveys"
   ],
   "subcategories": [
-    "Messaging",
-    "Notifications"
+    "Chat / messaging",
+    "Submission handling"
   ],
   "keywords": [
     "telegram",
@@ -36,9 +41,10 @@
     "messaging",
     "notifications",
     "webform",
-    "api"
+    "queue",
+    "api client"
   ],
-  "project_description": "The module is for developers. Add some telegram integration for your site.\n\n New features of 2.0.x branch: \n\n \n Value object instead of a lot of parameters in service function \n Webform handler to send webform data to telegram \n Send to custom endpoint \n Queue as option (delay send) \n \n 2.0.x Send to telegram bot example \n\n \n\nuse Drupal\\telegram_api\\ValueObject\\TelegramMessage; \n\n $message = new TelegramMessage(\n\n text: 'Hello from Drupal!',\n\n token: '618218965:AAG...',\n\n chatId: '12345678',\n\n);\n\n \\Drupal::service('telegram_api.service')?->sendToTelegramBot($message);\n\n 2.0.x Send to queue example \n\n \n\nuse Drupal\\telegram_api\\ValueObject\\TelegramMessage; \n\n $message = new TelegramMessage(\n\n text: 'Hello from Drupal!',\n\n token: '618218965:AAG...',\n\n chatId: '12345678',\n\n);\n\n \\Drupal::service('telegram_api.service')?->queue($message);\n\n And then drush queue:run telegram_api_queue \n\n 1.0.x Send to telegram bot example \n\n $result = \\Drupal::service('telegram_api.service')->sendToTelegramBot($text, $token, $chat_id);\n\nif ($result !== TRUE) {\n\n \\Drupal::logger('My module')->error($result);\n\n}",
+  "project_description": "Developer-oriented Telegram integration. Provides a single service, telegram_api.service (class Drupal\\telegram_api\\TelegramApiService), that POSTs a message to the Telegram Bot API sendMessage endpoint. It is send-only: the module registers no routes, controllers, webhook receiver, config form, or permissions. Messages are described with a Drupal\\telegram_api\\ValueObject\\TelegramMessage value object (text, bot token, chat_id, optional parse_mode, optional SOCKS5 proxy, optional custom endpoint URL). Two send paths exist: sendToTelegramBot() sends synchronously; queue() defers the send onto the 'telegram_api_queue' queue, drained by the TelegramQueueWorker QueueWorker on cron (or 'drush queue:run telegram_api_queue'). The telegram_api_webform submodule (requires drupal/webform) adds a 'telegram_api_handler' WebformHandler that formats a submission as an HTML message (bold webform title, per-field label/value lines, comma-separated excluded fields) and sends it to a configured bot token + chat_id. New in the 2.0.x branch: value object instead of many positional parameters, the Webform handler, custom-endpoint support, and the queue/delayed-send option. 2.0.x send example: use Drupal\\telegram_api\\ValueObject\\TelegramMessage; $message = new TelegramMessage(text: 'Hello from Drupal!', token: '618218965:AAG...', chatId: '12345678'); \\Drupal::service('telegram_api.service')?->sendToTelegramBot($message); Queue example: same construction then ->queue($message); then drush queue:run telegram_api_queue.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

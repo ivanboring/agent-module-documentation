@@ -17,3 +17,7 @@ normally.
 **Both target specifications are Google's and change independently of Drupal releases.** The real
 test of a feed is the item-level rejection report in Merchant Center / News, not the module
 version — say so when recommending it.
+
+## Solutions
+- [views/feeds.md](views/feeds.md) — the exact Views recipe: style/row plugin ids, every row-option
+  key, which fields are required, the auto-emitted elements, and the two field formatters.

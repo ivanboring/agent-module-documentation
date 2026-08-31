@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Gin Toolbar Local Tasks moves Drupal's local task tabs into the toolbar, for sites using the Gin admin theme.
+Gin Toolbar Local Tasks moves the current page's local task tabs (Edit / View / Revisions / Translate and the like) into Drupal's administration toolbar, so they sit in one fixed place instead of in the local-tasks row on the page.
 
 ---
 
-Gin is now the most widely used contrib admin theme and the direction core's own administration is moving, and it rearranges the administrative interface substantially — which leaves the local tasks row in an awkward position, since it was designed for a layout Gin no longer has. The tabs are the controls an editor uses most, and their placement is one of the standing complaints about administrative Drupal in any theme: they push content down, they sit differently in every theme, and they multiply on a site with moderation, translation and layout enabled. Putting them in the toolbar gives a fixed location that does not move the page, which is what a set of persistent controls should have. Version **2.0.0** on core `^10 || ^11`, depending on core `toolbar`. Two things to check, and they are the same two that apply to every relocation of these elements in this campaign. **Local tasks are navigation**, so they must remain keyboard reachable with a visible focus indicator and the active tab distinguishable by more than colour — which is where cosmetic changes to this row usually go wrong. And **the toolbar is itself contested space**: core's `navigation` module is replacing the toolbar in newer releases, so a module placing things into the old toolbar is building on something the project is moving away from, and its longevity depends on following that transition. Compare `workbench_tabs` and `admin_toolbar_messages`, documented earlier, which address the same placement problem from different directions.
+The module is tiny and does exactly one thing. It implements `hook_toolbar_alter()` to attach a `#pre_render` callback (`GinToolbarLocalTasks::localTasks`, a `TrustedCallbackInterface`) to the core toolbar's `administration` tray. At render time that callback asks core's local-task plugin manager (`plugin.manager.menu.local_task`) for the local tasks of the current route, walks the primary tabs in weight order, and — crucially — keeps only the tabs whose `#access` result `isAllowed()`, so a user never sees a tab they cannot reach. The surviving tabs are injected as a single expandable "Local Tasks" menu item at the top of the administration menu (below any `admin_toolbar_tools.help` item, which is kept on top). The parent link points at the route's `edit_form` task when one exists. Because the tab set and its visibility depend on the page and the viewer, the callback copies the local-task manager's cacheable metadata onto the toolbar build — that metadata carries the `route` cache context plus whatever contexts the access checks depend on (typically `user.permissions`), which is what keeps the relocated tabs correct per page and per user. Despite the name, it does **not** require the Gin theme or the `gin_toolbar` module: it operates on core's toolbar, so it works with any theme that uses the core toolbar; `gin_toolbar` is only *suggested*, for using the tabs with Gin's frontend toolbar. There is no configuration, no permission, no admin form — enable it and the tabs move. It depends only on core `toolbar`, targets core `^10 || ^11`, and pairs naturally with Admin Toolbar. Its main limitation is directional: core's new `navigation` module is superseding the classic toolbar, and this module hooks the classic toolbar, so on sites that have switched to `navigation` it has nothing to alter.
 
 ---
 
-- Move editor tabs into the Gin toolbar.
-- Keep local tasks in a fixed position.
-- Stop tabs pushing content down.
-- Improve Gin's editorial layout.
-- Tidy a crowded task row.
-- Make Edit easier to find in Gin.
-- Improve editing on narrow screens.
-- Give tabs a consistent location.
-- Reduce editorial friction in Gin.
-- Improve a moderation workflow's interface.
-- Keep revisions tabs accessible.
-- Improve translation tab placement.
-- Support a Gin-themed editorial site.
-- Reclaim vertical space in admin.
-- Improve first-time editor orientation.
-- Keep tabs visible while scrolling.
-- Tidy the admin interface.
-- Support a content team using Gin.
+- Move a node's Edit / View / Revisions tabs into the admin toolbar.
+- Keep local tasks in one fixed position across every admin page.
+- Stop the local-tasks row from pushing page content down.
+- Tidy a crowded tabs row on entities with many local tasks.
+- Give editors a single, predictable place to find "Edit".
+- Improve editing ergonomics on the Gin admin theme specifically.
+- Combine with Admin Toolbar so tabs live alongside the admin menu.
+- Keep Translate / Manage-display tabs reachable without hunting the page.
+- Reclaim vertical space above the content on edit-heavy screens.
+- Surface Layout / Manage tabs for content editors in the toolbar.
+- Keep moderation-related tabs visible in a consistent spot.
+- Provide toolbar access to the current page's tasks on narrow viewports.
+- Preserve per-user tab visibility (access-filtered) after relocation.
+- Avoid a bespoke theme override just to reposition the tabs row.
+- Standardise tab placement across a content team using Gin.
+- Use with any core-toolbar theme, not only Gin, despite the name.
+- Reduce visual clutter for first-time editors orienting on a page.
+- Keep the active task discoverable while the page scrolls.
+- Migrate from 1.x (which required gin_toolbar) to 2.x (which does not).
+- Serve tabs from core's local-task manager so custom tabs appear automatically.

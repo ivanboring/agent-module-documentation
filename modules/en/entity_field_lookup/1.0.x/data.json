@@ -1,11 +1,13 @@
 {
   "name": "Entity Field Lookup",
   "data_name": "entity_field_lookup",
-  "description": "Migrate process plugin finding entities by field query.",
+  "description": "Migrate API process plugin that finds an existing entity by running an entity field query.",
   "version": "1.0.x",
   "package": "Migrate",
   "composer_namespace": "drupal/entity_field_lookup",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/core": "^10.1 || ^11"
+  },
   "dependent_modules": [],
   "configure": null,
   "core_version_requirement": "^10.1 || ^11",
@@ -19,25 +21,24 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Import and export",
     "Developer tools"
   ],
   "subcategories": [
-    "Migrate API",
-    "Entity reference"
+    "Content migration / import",
+    "Migration tooling"
   ],
   "keywords": [
     "migrate",
-    "lookup",
-    "entity",
-    "field",
     "process plugin",
-    "reference"
+    "entity lookup",
+    "field query",
+    "reference resolution"
   ],
-  "project_description": "Process plugin for Migrate API which looks up for an existing entity based on an EntityQuery performed on a field that is declared in the configuration.",
+  "project_description": "Process plugin for the Migrate API that looks up an existing entity based on an EntityQuery performed against a field declared in the plugin configuration, returning the matched entity id (or NULL on no match) for use as a reference during migration.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

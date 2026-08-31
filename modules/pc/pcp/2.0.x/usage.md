@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Profile Complete Percentage calculates how much of a user's profile has been filled in and displays it as a percentage.
+Profile Complete Percentage (pcp) shows the logged-in user a block with a progress bar reporting how much of their profile is filled in, based on the account fields an administrator marks as counting toward completion.
 
 ---
 
-The progress bar on a profile is one of the most reliably effective pieces of interface in any product, and the reason is well documented: an incomplete task is uncomfortable in a way that an unstarted one is not, so a bar at 60% draws people back to finish where a page of empty fields does not. Sites want the completion data for two different purposes, and they are worth separating. **For the user**, it is a prompt — a nudge toward adding a photograph, a biography, a set of interests, which makes the community better and the profile more useful. **For the organisation**, it is a metric — how many members have supplied the information the site was built around, which is the number that says whether a directory, a matching feature or a mailing segmentation is actually going to work. Version **2.0.0** on `^9 || ^10 || ^11`. Three things worth attaching. **What counts as complete is a value judgement encoded as configuration** — including every field makes 100% unreachable and the bar meaningless, so the useful configuration is the fields that genuinely matter, which is a smaller list than the profile has. **Percentages create pressure to fill fields**, so a profile asking for a date of birth, a phone number or a photograph is using the bar to extract data the user might otherwise decline — which is fine if the fields are genuinely needed and is a dark pattern if they are not. And **the percentage is derived data about a person**, so where it is displayed matters: showing another member's completion score on a directory says something about them that they did not choose to publish.
+The mechanism is small and entirely display-side. At `/admin/config/people/pcp` (permission `pcp administer`) an admin ticks which user (account) fields count toward "complete" — the checkbox list is built from the `user` entity's configurable fields (`FieldConfigInterface`), so it covers custom account fields, not core name/email. Three global options sit alongside: hide the block once the user reaches 100%, show the "next" field in **random** or **fixed** order, and open the field deep-link in the **same** or a **new** window. The module then provides a **"Profile Complete Percentage"** block (in the *User* category, id `pcp_block`) whose `blockAccess` allows any **authenticated** user and whose `build()` always loads the **current** user — so every viewer sees only their **own** completion, never anyone else's. `PcpService::getCompletePercentageData()` intersects the configured field list with the user's real fields (dropping stale/deleted config), counts how many are empty via `$user->get($field)->isEmpty()`, and returns current percent, next percent, completed/incomplete counts, and a suggested "next" empty field. The block renders `pcp_template` (a CSS progress bar plus a *"Filling out X will bring your profile to N% complete"* line that deep-links to `/user/{uid}/edit#edit-{field}-wrapper`). Everything is computed live — the block sets `getCacheMaxAge(0)` — so toggling required fields updates displays immediately. Version **2.0.0**, core `^9 || ^10 || ^11`, no dependencies beyond core `field`/`user`. Two practical cautions: including **every** field makes 100% unreachable (configure only fields that genuinely matter), and a completion bar creates pressure to supply data, which is a nudge when the fields are needed and a dark pattern when they are not.
 
 ---
 
-- Show a profile completion bar.
-- Encourage users to add a photograph.
-- Prompt members to complete their profile.
-- Measure how many members are complete.
-- Improve directory data quality.
-- Support an onboarding flow.
-- Show remaining profile steps.
-- Encourage biography completion.
-- Report profile completeness to admins.
-- Improve a matching feature's data.
-- Nudge users to add interests.
-- Track community profile quality.
-- Support a membership onboarding.
-- Show completeness on a dashboard.
-- Encourage contact detail completion.
-- Segment members by profile completeness.
-- Improve a networking site's data.
-- Prompt for missing profile fields.
+- Show a logged-in user a profile-completion progress bar.
+- Nudge new members to finish onboarding after registration.
+- Prompt users to upload a profile photograph.
+- Encourage members to write a biography or "about" field.
+- Suggest one concrete next field to fill in, with a deep link to it.
+- Deep-link the user straight to the exact account-edit field to complete.
+- Show what percentage the next field would bring the profile to.
+- Hide the reminder block automatically once the profile hits 100%.
+- Randomise which "next" field is suggested on each page load.
+- Present suggested fields in a fixed order instead of random.
+- Drive completion of custom account fields (interests, location, phone).
+- Improve data quality for a member directory that reads those fields.
+- Improve match/recommendation features that depend on profile data.
+- Support a community site's engagement loop around richer profiles.
+- Segment or measure membership by which fields members have filled.
+- Place the completion block in a sidebar, dashboard, or user page.
+- Open the field link in a new window to keep the current page.
+- Update completion instantly when admins add or remove required fields.
+- Keep completion display strictly per-viewer (each user sees only their own).
+- Limit "complete" to a curated subset of fields so 100% is achievable.
