@@ -1,7 +1,7 @@
 {
   "name": "Bulk Copy Fields",
   "data_name": "bulk_copy_fields",
-  "description": "Bulk copy field values from one field to another.",
+  "description": "Provides a bulk action that copies values from one field to another compatible field across selected content entities, via a multi-step confirmation form and Batch API.",
   "version": "8.x-1.x",
   "package": null,
   "composer_namespace": "drupal/bulk_copy_fields",
@@ -11,7 +11,7 @@
   ],
   "configure": null,
   "core_version_requirement": "^8 || ^9 || ^10 || ^11",
-  "active_installs": null,
+  "active_installs": 137,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/bulk_copy_fields",
   "license": "GPL-2.0-or-later",
@@ -19,27 +19,27 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Administration tools",
-    "Import and export"
+    "Content editing experience",
+    "Automation"
   ],
   "subcategories": [
-    "Bulk operations",
-    "Content migration"
+    "Bulk field updates",
+    "Bulk operations"
   ],
   "keywords": [
     "bulk",
     "copy",
     "fields",
     "action",
-    "migration",
+    "field migration",
     "content model"
   ],
-  "project_description": "Synopsis\n\nA module for those who need to bulk copy field values in nodes or other entities to another field in the entity.\n\n Similar Projects\n\nNone known\n\n Requirements\n\nLatest release of Drupal 8.x.\n\n Configuration\n\nEnable the module\n\nGo to /admin/content\n\nSelect Some nodes\n\nSelect Action \"Bulk Copy Content Fields\"\n\nHit \"Apply to selected items\"\n\nSelect the Field(s) to copy from\n\nHit \"Next\"\n\nSelect the Field(s) to copy to\n\nHit \"Next\"\n\n\"Are you sure?\" - Hit \"Copy Fields\"\n\nWait for batch process.\n\nDone\n\n NOTE: This module is not designed to work with contrib VBO, only Core Actions in /admin/content/* using Core Bulk Update fields",
+  "project_description": "Bulk Copy Fields adds a core Action that copies the value of one field into another compatible field across the content entities selected on a Core Bulk Operations listing (for example /admin/content). On install and whenever a new entity type appears, the module auto-creates one configured action per entity type (id 'bulk_copy_fields_on_<entity_type>', label 'Bulk Copy <Label> Fields'). Choosing the action stores the selected entities in the private tempstore and redirects to a four-step confirmation form (/admin/bulk_copy_fields): pick languages, pick source field(s), map each source field to a same-type destination field, confirm. A Batch process then copies each source field's value into the destination field on every selected entity and saves it (creating a new revision for nodes). Field types must match (with date/created/changed grouped as datetime, entity_reference_revisions mappable to entity_reference, and string_long mappable to text_with_summary); entity-reference target types and bundles are validated and incompatible referenced items are dropped with a warning. There is no undo. The module is explicitly experimental and, per its own maintainer notes, is designed for Core Actions only, not the contrib Views Bulk Operations module.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

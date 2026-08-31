@@ -1,7 +1,7 @@
 {
   "name": "Timeline Block",
   "data_name": "timeline_block",
-  "description": "Chronological timeline block.",
+  "description": "A configurable block plugin that renders editor-entered events as a chronological timeline in one of 10 CSS layouts.",
   "version": "1.2.x",
   "package": "Timeline Block",
   "composer_namespace": "drupal/timeline_block",
@@ -21,15 +21,14 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content display",
-    "Theming"
+    "Content display"
   ],
   "subcategories": [
-    "Blocks",
-    "Data visualisation"
+    "Block enhancements",
+    "Manual content ordering"
   ],
   "keywords": [
     "timeline",
@@ -39,12 +38,12 @@
     "block",
     "milestones"
   ],
-  "project_description": "Timeline Block lets you enter timelines from your drupal block configuration area. It is a customizable drupal timeline module. Using this timelines module lets you easily add timelines on your drupal website. Timeline block provides a visual representation of the alignment of time to display a list of events in chronological order or activities that happened at a particular phase.\n\n Depending on the module you choose, you can show timeline title, time phase and description with images. We can also use the Testimonial order weight select option which can be used to provide customized sorting of timelines.\n\n This module provides 10 different predefined layouts and we can also override the css design on our theme css.\n\n We can also override the timeline template and css for design layout with abailable variables on the twig template.\n\n We can copy the template file from templates/timeline-block.html.twig to your theme file and customize the html and implement your own layout with custom css and also implement other carousel with custom js.\n\n Available variables on the twig template:\n\n Available variables:\n\n- timeline_data: Array of timeline.\n\n - time: timeline time value\n\n - title: title of the timeline\n\n - description: description of the timelie \n\n - timeline_settings: Array of timeline configurations\n\n - timeline_layout: template layout\n\n Support \n Please post bug reports, feature requests and support requests to the Timeline Block module issue queue .\n\n Back to top \n\n Demo \n \n Go to https://simplytest.me/project/timeline_block . \n Click \"Launch Sandbox\". \n Install Drupal as normal. \n Enable \"Timeline Block\" module, and any optional modules you wish to try out. \n \n \n Installation and download \n Installation with Composer: \n\n composer require 'drupal/timeline_block' \n\n \n Download latest version \n \n \n \n Back to top \n\n Looking for Timeline Block support? \n \n \n Free community support options \n Developers can participate our support channels on a best-effort basis, Drupal Answers .\n\n \n \n \n Alternate Module: \n\n Views Timeline — a similar module with a view that displays content in a timeline format for better visual presentation.\n\n Back to top",
+  "project_description": "Timeline Block provides a single custom block plugin (id `timeline_block`, admin label \"Timeline Block\") that lets an editor build a timeline entirely inside the block configuration form and render it as a chronological sequence of events. Each timeline item has a plain-text Title, a plain-text Time/phase label, a rich-text Description (a `text_format` element, default `basic_html`), and a numeric weight (1-120) used to sort the items. A block-wide rich-text Timeline header and a layout selector (Layout 1 through Layout 10) complete the form. Items are added and removed with AJAX buttons; on save the whole set is serialised to JSON and stored as three block-config keys (`timeline_data`, `timeline_header`, `timeline_layout`). The block renders via the `timeline_block` theme hook and the bundled `templates/timeline-block.html.twig`, which contains all 10 layout markups selected by the stored `timeline_layout` value; a single theme-level CSS library (`css/timeline.css`) styles them. There is no JavaScript and no external/CDN library. The module also manages CKEditor-embedded images inside the header and item descriptions: `hook_form_alter` on the block delete form plus `blockSubmit` load the referenced File entities, mark them permanent, register file usage under the `editor`/`file` provider, and mark newly-orphaned files temporary. It softly depends on core `file`, `editor` and `filter` (uses `\\Drupal\\file\\Entity\\File`, `_editor_parse_file_uuids`, and `#type => text_format`) although the info file only declares a dependency on core `block`. 10 predefined pure-CSS layouts, manual weight sorting, and template/CSS override are the extent of the feature set. Maintained by Sujan Shrestha.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
   "project_created": "2023-02-17",
   "project_changed": "2026-08-18",
-  "core_semver_minimum": 8009000,
+  "core_semver_minimum": 9000000,
   "core_semver_maximum": 12000000
 }

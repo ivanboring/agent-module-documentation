@@ -1,7 +1,7 @@
 {
   "name": "Block Condition Published",
   "data_name": "block_condition_published",
-  "description": "Block visibility condition on published status.",
+  "description": "Block visibility conditions that show/hide a block by the published status of the node or taxonomy term on the current route.",
   "version": "1.0.x",
   "package": "Other",
   "composer_namespace": "drupal/block_condition_published",
@@ -19,15 +19,15 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Site structure",
-    "Content display"
+    "Content display",
+    "Site structure"
   ],
   "subcategories": [
-    "Conditions",
-    "Block visibility"
+    "Visibility conditions",
+    "Block enhancements"
   ],
   "keywords": [
     "block",
@@ -35,9 +35,10 @@
     "published",
     "visibility",
     "unpublished",
-    "status"
+    "node",
+    "taxonomy term"
   ],
-  "project_description": "A module that provides a condition plugin for blocks. Allows to display block on pages depending on publishing status of the content. For example, a block can be shown for editors on unpublished pages only.\n\n Features \n Supports both classic Published/Unpublished status and workflows ( Review, Draft... etc.) as well. In case of workflows, all states such as Draft, Unpublished, Review... are treated as unpublished, state Published is treated as published content.\n\n Node entity type is supported.\n\n Taxonomy term published state is supported since 1.0.0-beta1 release.\n\n Post-Installation \n Go to your website's block layout settings, choose a block you want and set condition Published State for it.\n\n Additional Requirements \n None.\n\n Recommended modules/libraries \n N/A.\n\n Similar projects \n \n Moderation State Condition \n \n Supporting this Module \n tbd\n\n Community Documentation \n tbd\n\nDrupalpod\n\nSimplytest.me\n\n Back to top",
+  "project_description": "A module that provides 'Published State' condition plugins for blocks. Allows a block to be displayed on pages depending on the publishing status of the node or taxonomy term on the current route. For example, a block can be shown for editors on unpublished pages only.\n\nFeatures\n\nSupports both the classic Published/Unpublished status and content-moderation workflows (Review, Draft, etc.). In the workflow case, all non-published states such as Draft, Unpublished, Review are treated as unpublished, and only the Published state is treated as published content.\n\nNode entity type is supported. Taxonomy term published state is supported since the 1.0.0-beta1 release.\n\nPost-Installation\n\nGo to the site's block layout settings, choose a block and add the 'Node published state' or 'Term published state' visibility condition to it.\n\nSimilar projects: Moderation State Condition.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

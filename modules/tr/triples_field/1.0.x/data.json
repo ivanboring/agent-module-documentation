@@ -1,9 +1,9 @@
 {
-  "name": "Triples Field",
+  "name": "Triple field",
   "data_name": "triples_field",
-  "description": "Field type storing RDF-style subject-predicate-object triples.",
+  "description": "Provides a single field type whose item stores three separate, independently-typed sub-values (first / second / third), with two widgets and four display formatters. A three-column fork of the Double Field module; unrelated to RDF triples.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Field types",
   "composer_namespace": "drupal/triples_field",
   "composer_requirements": {},
   "dependent_modules": [],
@@ -22,27 +22,29 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Developer tools",
-    "SEO"
+    "Content editing experience",
+    "Content display",
+    "Site structure"
   ],
   "subcategories": [
-    "Field types",
-    "Structured data"
+    "Fields",
+    "Field formatters",
+    "Form widgets / select UI"
   ],
   "keywords": [
-    "rdf",
-    "triples",
-    "semantic",
-    "linked data",
-    "predicate",
-    "field"
+    "triple field",
+    "three subfields",
+    "composite field",
+    "compound field",
+    "double field",
+    "field type"
   ],
-  "project_description": "Base on module Double field I just added a third field. All credit goes to @chi. Help someone who is looking for a triple field and don't want to create paragraphs :)\n\n \n If you are looking for n fields \n\nFor more column in field you can use module Data field you can set name of columns in database and there is more features\n \n Do you like this module? Show your appreciation by buying me ☕ .",
+  "project_description": "Base on module Double field I just added a third field. All credit goes to @chi. Help someone who is looking for a triple field and don't want to create paragraphs :)\n\nIf you are looking for n fields, for more columns in a field you can use module Data field where you can set the name of the columns in the database and there are more features.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
   "project_created": "2022-03-01",
   "project_changed": "2026-08-18",
-  "core_semver_minimum": 8009000,
-  "core_semver_maximum": 13000000
+  "core_semver_minimum": 10000000,
+  "core_semver_maximum": 12000000
 }
