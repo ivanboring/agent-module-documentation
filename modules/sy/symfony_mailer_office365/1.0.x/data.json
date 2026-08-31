@@ -1,42 +1,57 @@
 {
-  "name": "Symfony Mailer Office 365",
+  "name": "Symfony Mailer office365",
   "data_name": "symfony_mailer_office365",
-  "description": "Office 365 transport for Symfony Mailer.",
+  "description": "Adds an Office 365 / Microsoft 365 OAuth2 (XOAUTH2) SMTP transport to Symfony Mailer, replacing retired basic-auth SMTP.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Custom",
   "composer_namespace": "drupal/symfony_mailer_office365",
-  "composer_requirements": {},
-  "dependent_modules": [],
-  "configure": null,
+  "composer_requirements": {
+    "drupal/symfony_mailer": "^1.5",
+    "league/oauth2-client": "^2.7"
+  },
+  "dependent_modules": [
+    "symfony_mailer"
+  ],
+  "configure": "symfony_mailer_office365.config",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/symfony_mailer_office365",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "league/oauth2-client"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
-  "provides_drush_commands": false,
+  "provides_drush_commands": [
+    "symfony_mailer_office365:refresh (alias office365:refresh) — refresh the stored OAuth access token if expired; --force refreshes unconditionally"
+  ],
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "Provides an Office 365 transport for Symfony Mailer: a Symfony Mailer transport-factory service (Office365EsmtpTransportFactory, tag mailer.transport_factory, schemes office365/microsoft) plus a symfony_mailer MailerTransport plugin instance office365_oauth (Office 365 - OAuth). It does not define a new plugin type."
+  ],
   "categories": [
     "Integrations"
   ],
   "subcategories": [
-    "Mail delivery",
-    "Authentication providers"
+    "Email / mail delivery",
+    "Email / SMTP",
+    "Cloud services (Azure)"
   ],
   "keywords": [
     "office 365",
+    "microsoft 365",
     "symfony mailer",
     "email",
-    "oauth",
-    "microsoft",
-    "graph"
+    "smtp",
+    "oauth2",
+    "xoauth2",
+    "entra",
+    "azure"
   ],
-  "project_description": "Symfony Mailer Office365 Integration \n Why? \n Office365 stops support for sending via SMTP with Basic Auth information (Username & Password).\n\n A modern OAuth Flow is required. Since there is no feasable Drupal solution as of writing, this module provides a gap until there is an implementation provided by Symfony itself or a different solution.\n\n How-To \n 1. Register your app with Microsoft Entra and provide Redirect URL: ` https://example.com/office365/oauth/callback `\n\n2. Configure with given credentials\n\n`admin/config/system/mailer/office365`\n\n3. Add \"Office 365 - OAuth\" Transport to your mailing policy\n\n4. Login to save OAuth State with Drupal (Link available here: `admin/config/system/mailer/office365`)\n\n Refreshing the token state \n Using OAuth requires you to keep refreshing the access token with the given refresh token once it expired.\n\nThis module provides two ways to do that.\n\n a) Drupal Cron\n Refreshing (if necessary) happens when the Drupal Cron is run.\n\nIn that case make sure it gets run at least every 12 hours to be on the safe side.\n\n See Token Lifetime: https://learn.microsoft.com/en-us/entra/identity-platform/refresh-token… \n\n b) Drush Command\n If you want to refresh the token (if necessary) in an own interval separate to the cron you can run the following drush command:\n\n drush office365:refresh \n\n Please choose an appropriate interval for this method as well.\n\n Troubleshooting \n You should check the status page `admin/config/system/mailer/office365` and check the system logs (watchdog f.e) for any error messages.\n\n Credits \n This was insipired by the following gists\n\n \n https://gist.github.com/dbu/3094d7569aebfc94788b164bd7e59acc \n https://gist.github.com/beerendlauwers/03acb112c80af0bf91546a05f790057a \n \n Even though a lot has been rewritten, this inspired a lot how this concept was implemented. Thanks!\n\n Please also see https://github.com/symfony/symfony/pull/52585 for development with symfony, which would make this module probably obsolete.",
+  "project_description": "Symfony Mailer Office365 Integration. Office 365 has been retiring support for sending mail via SMTP with basic authentication (username and password), which requires a modern OAuth 2.0 flow. This module fills that gap for the symfony_mailer (Symfony Mailer) module: it authenticates to smtp.office365.com over SMTP using the XOAUTH2 SASL mechanism with an OAuth2 access token, obtained through the delegated authorization-code flow against login.microsoftonline.com and stored in Drupal state. Setup: register an app in Microsoft Entra with redirect URL /office365/oauth/callback, enter Client ID, Client Secret, Tenant ID and the sending e-mail at /admin/config/system/mailer/office365, add the 'Office 365 - OAuth' transport to a Symfony Mailer mailing policy, then click 'Login via Microsoft' to complete interactive consent and store the token. The refresh token keeps the access token alive: refreshing happens on Drupal cron (run at least every 12 hours) or via 'drush office365:refresh'. Client credentials may also be overridden from settings.local.php via $config['symfony_mailer_office365.config']. Inspired by community gists; may become obsolete once Symfony ships native support.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

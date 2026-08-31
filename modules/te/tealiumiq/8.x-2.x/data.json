@@ -1,11 +1,13 @@
 {
   "name": "Tealium iQ Tag Management",
   "data_name": "tealiumiq",
-  "description": "Integration with Tealium iQ tag management.",
+  "description": "Integration with Tealium iQ tag management: embeds the utag loader and builds the utag_data data layer.",
   "version": "8.x-2.x",
   "package": "Tealium",
   "composer_namespace": "drupal/tealiumiq",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/token": "^1.0"
+  },
   "dependent_modules": [
     "drupal:field",
     "token:token"
@@ -19,18 +21,23 @@
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [],
+  "submodules": [
+    "tealiumiq_context"
+  ],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "TealiumiqTag",
+    "TealiumiqGroup"
+  ],
   "categories": [
     "Integrations",
-    "Security"
+    "User engagement"
   ],
   "subcategories": [
     "Analytics / tag management",
-    "Cookie consent / GDPR"
+    "Analytics & tracking"
   ],
   "keywords": [
     "tealium",

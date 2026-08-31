@@ -1,7 +1,7 @@
 {
   "name": "RUA - Remove Uppercase Accents",
   "data_name": "rua",
-  "description": "Removes uppercase accents for Greek characters.",
+  "description": "Remove uppercase accents for Greek characters.",
   "version": "2.0.x",
   "package": "Javascript",
   "composer_namespace": "drupal/rua",
@@ -14,30 +14,36 @@
   "project_url": "https://www.drupal.org/project/rua",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "core/jquery",
+    "core/drupalSettings"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Multilingual",
-    "Theming"
+    "Theming",
+    "Multilingual"
   ],
   "subcategories": [
-    "Typography",
-    "Localisation"
+    "CSS / JS injection",
+    "Translation / multilingual"
   ],
   "keywords": [
     "greek",
     "accents",
-    "uppercase",
-    "typography",
     "tonos",
-    "localisation"
+    "uppercase",
+    "text-transform",
+    "small-caps",
+    "typography",
+    "localisation",
+    "jquery"
   ],
-  "project_description": "This module utilizes jquery to remove accents from greek (currently) accented characters that have been capitalized through CSS.\n\nIt adds a script that runs on the document ready event.\n\n The JS script can easily be adapted to other languages.\n\n The selection is based on the effective CSS rules defining the uppercase text\n\ntransformation text-transform: uppercase; and font-variant: small-caps; \n\n The text below this line is in Greek in order to aid people searching for accent removal:\n\n Back to top \n\n Αφαίρεση τόνων στα κεφαλαία στο Drupal \n Η συγκεκριμένη μονάδα αφαιρεί τους τόνους από τα γράμματα που έχουν μετατραπεί σε κεφαλαία μέσω CSS.\n\n Back to top \n\n Credits \n Adapted for Drupal by bserem for SRM .\n\n Back to top",
+  "project_description": "This module uses jQuery to remove accents from Greek (currently) accented characters that have been capitalized through CSS. It adds a script that runs on the document ready event and re-runs after every AJAX response. The selection is based on the effective CSS rules defining the uppercase text transformation: text-transform: uppercase; and font-variant: small-caps;. The JS script can easily be adapted to other languages. The project used to be called 'remove_upcase_accents'.\n\nΑφαίρεση τόνων στα κεφαλαία στο Drupal. Η συγκεκριμένη μονάδα αφαιρεί τους τόνους από τα γράμματα που έχουν μετατραπεί σε κεφαλαία μέσω CSS. Adapted for Drupal by bserem for SRM.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

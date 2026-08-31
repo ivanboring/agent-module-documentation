@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Symfony Mailer Office 365 adds a Microsoft 365 transport to Symfony Mailer, so Drupal sends through an organisation's existing Microsoft tenancy.
+Symfony Mailer Office365 adds an Office 365 / Microsoft 365 transport to the Symfony Mailer (`symfony_mailer`) module, so Drupal delivers mail through an organisation's Microsoft tenancy over SMTP authenticated with OAuth 2.0 (XOAUTH2) instead of a basic-auth username and password.
 
 ---
 
-Organisations standardised on Microsoft 365 usually require all mail to leave through it: it is where the audit trail, the retention policy, the data-residency commitment and the anti-abuse controls already live, and a site sending directly is outside all of them. The technical obstacle is that Microsoft has been steadily retiring **basic authentication** for SMTP — a username and password in a settings form no longer works on a modern tenancy — and the replacement is **OAuth 2.0**, with a registered application, a client secret or certificate, and delegated or application permissions granted by a tenant administrator. That is a different setup conversation from an SMTP host and port, and it usually involves someone other than the Drupal team. This module supplies the transport for **Symfony Mailer**, which is the direction Drupal mail is moving — core has been migrating away from its own mail system toward Symfony's, and the contrib `symfony_mailer` module is where that work is expressed — so the choice of base matters as much as the transport itself. Version **1.0.0-alpha5** on core `^10 || ^11`: an alpha, for the component that carries every password reset. Treat the client secret exactly as an API key — environment variable, Key entity, never in exported configuration — and remember that **secrets expire**: an Azure application client secret has a maximum lifetime, so put its expiry in a calendar, because the failure mode is that all site mail stops on a date nobody recorded.
+Microsoft has been switching off **basic authentication** for SMTP on Microsoft 365 tenancies, so the classic "SMTP host, port, username, password" configuration simply stops working. The modern replacement is **OAuth 2.0**, and that is what this module implements — but note the specific flavour, because it changes what you have to do. It uses the **delegated authorization-code flow**, not client-credentials: an administrator registers an application in **Microsoft Entra** (Client ID, Client Secret, Tenant ID, redirect URL `/office365/oauth/callback`), enters those plus the sending mailbox address at `/admin/config/system/mailer/office365`, and then clicks **Login via Microsoft** to perform an interactive consent as that mailbox's user. The resulting access token **and refresh token** are stored in Drupal **state** (`office365_oauth_token`); actual mail delivery then talks to `smtp.office365.com:587` and authenticates each connection with the SASL **XOAUTH2** mechanism (`AUTH XOAUTH2 base64(user=…\x01auth=Bearer <token>\x01\x01)`). This is *SMTP*, not the Microsoft Graph `sendMail` API — the scopes requested are `SMTP.Send`, `IMAP.AccessAsUser.All` and `offline_access`. Wiring is done through Symfony Mailer's own plumbing: the module registers a `mailer.transport_factory` service (`Office365EsmtpTransportFactory`, DSN schemes `office365`/`microsoft`) and a `MailerTransport` plugin `office365_oauth` ("Office 365 - OAuth") that you attach to a **mailing policy**. Because the access token expires (typically ~1 hour) and is renewed with the refresh token, the token must be refreshed regularly: `hook_cron` force-refreshes on every cron run (so cron must run at least every 12 hours before the refresh token itself lapses), or you can run `drush office365:refresh` (`--force`) on your own schedule. Two operational hazards dominate: **saving the config form deliberately clears the stored token and forces a re-login**, and the **Azure client secret has a maximum lifetime** — when it expires, all site mail stops on a date nobody wrote down. The client secret is held in Drupal configuration (or overridden from `settings.local.php`); there is no Key-entity integration, so treat that config as sensitive. Installed version here is **1.0.0-rc1** on core `^10 || ^11`; the project is minimally maintained and its releases are **not covered** by the security advisory policy — reasonable for the component that carries every password-reset e-mail to be watched closely.
 
 ---
 
-- Send site mail through Microsoft 365.
-- Meet an organisational mail policy.
-- Replace retired basic authentication.
-- Use OAuth for SMTP authentication.
-- Keep mail inside a Microsoft tenancy.
-- Satisfy a data-residency requirement.
-- Send from an existing corporate mailbox.
-- Keep an audit trail of outgoing mail.
-- Avoid a separate mail provider contract.
-- Use Symfony Mailer as the mail system.
-- Send from an intranet site.
-- Meet an IT department's requirement.
-- Route mail through corporate anti-abuse controls.
-- Send notifications from a shared mailbox.
-- Support a public-sector mail policy.
-- Replace an SMTP module that stopped working.
-- Authenticate with a registered Azure app.
-- Consolidate mail infrastructure.
+- Send all Drupal mail through a Microsoft 365 / Office 365 mailbox.
+- Replace an SMTP setup that broke when Microsoft disabled basic authentication.
+- Authenticate outbound SMTP with OAuth 2.0 (XOAUTH2) tokens instead of a stored password.
+- Keep outgoing mail inside a corporate Microsoft tenancy for audit, retention and data-residency.
+- Add an "Office 365 - OAuth" transport to a Symfony Mailer mailing policy.
+- Route mail from a specific shared or service mailbox in Entra.
+- Register a Microsoft Entra application and connect Drupal to it via an interactive login.
+- Satisfy an IT / security policy that forbids direct SMTP or third-party mail relays.
+- Consolidate all site notification e-mail onto existing Microsoft 365 infrastructure.
+- Adopt Symfony Mailer as the mail system while still delivering via Microsoft 365.
+- Send mail from an intranet or public-sector site tied to a Microsoft tenancy.
+- Avoid contracting a separate transactional-email provider (SendGrid, Mailgun, SES).
+- Refresh the OAuth access token automatically on Drupal cron.
+- Refresh the OAuth token on a custom interval with `drush office365:refresh`.
+- Override the client secret / IDs per-environment from `settings.local.php`.
+- Complete OAuth consent once and let the refresh token keep delivery working.
+- Diagnose delivery by checking token expiry on the module's status page and the watchdog log.
+- Re-authenticate after rotating an expired Azure client secret.
+- Provide a stopgap for Microsoft 365 SMTP OAuth until Symfony ships native support.
+- Send from a `@yourdomain` corporate address so mail passes SPF/DKIM/DMARC for that domain.

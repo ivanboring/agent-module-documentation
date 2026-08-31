@@ -1,14 +1,14 @@
 {
   "name": "Username Validation",
   "data_name": "username_validation",
-  "description": "Adds validation rules for usernames.",
+  "description": "Adds admin-configurable validation rules (min/max length, blacklisted characters/words, no-spaces) to the username field on user registration and profile edit, with optional AJAX feedback.",
   "version": "8.x-1.x",
-  "package": null,
+  "package": "Other",
   "composer_namespace": "drupal/username_validation",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^9 || ^10 || ^11",
+  "configure": "username_validation.username_validation_config",
+  "core_version_requirement": "^9.3 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/username_validation",
@@ -17,32 +17,32 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "User management",
+    "Access control",
     "Security"
   ],
   "subcategories": [
-    "Validation",
-    "Registration"
+    "User registration",
+    "Spam prevention"
   ],
   "keywords": [
     "username",
     "validation",
     "registration",
-    "rules",
-    "restriction",
+    "blacklist",
+    "min max length",
     "spam"
   ],
-  "project_description": "This module helps in creating new rules to validate user name, like disallowing numbers, allowing certain special characters (_ - .), blocked words as well as setting up minimum /maximum characters limit. This also provides ajax validations as optional configuration.\n\n Other recommended modules:\n\n \n Custom username validation was good module but it is very difficult for non-tech people to provide pattern.",
+  "project_description": "Username Validation lets a site administrator enforce simple rules on the account name field of the user registration and profile-edit forms: a minimum and maximum character count, a comma-separated blacklist of forbidden characters and words, and an option to disallow spaces. It can also relabel and re-describe the username field on the registration form and, optionally, show the same errors live via AJAX on the field's change event. Rules are applied through a form_alter validate handler on user_register_form and user_form; they are not entity-level constraints, so programmatic account creation is not affected.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
   "project_created": "2016-04-15",
   "project_changed": "2026-08-18",
-  "core_semver_minimum": 8000000,
+  "core_semver_minimum": 9003000,
   "core_semver_maximum": 12000000
 }

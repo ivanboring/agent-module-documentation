@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Open Accessibility adds the Open Accessibility JavaScript widget — a floating toolbar offering larger text, higher contrast, link highlighting and similar adjustments.
+Open Accessibility ships the jQuery-based "Open Accessibility" widget (a re-package of Jossef Harush Kadouri's open-source plugin) as a placeable Drupal block: a floating toolbar offering larger text, higher contrast, link highlighting, readable font, cursor and image controls. All JS/CSS is bundled with the module — nothing is fetched from a CDN.
 
 ---
 
-These toolbars are widely requested, usually by someone who has been told the site must be accessible and is looking for a visible sign of it. The module does what it says: a configuration form at `/admin/config/user-interface/open-accessibility` behind a `configure open accessibility` permission, and a widget on the front end. Version **2.0.1** on core `^10 || ^11`. What has to be said alongside it, because it is the single most consequential piece of advice in this area: **an accessibility overlay is not accessibility conformance, and the accessibility community is broadly opposed to overlays** on the grounds that they address symptoms and can actively interfere. The reasons are concrete. People who need larger text or higher contrast overwhelmingly already have it configured in their operating system and browser, and a site-level widget duplicates that at best. Screen-reader users bring their own software, and an overlay that manipulates the DOM can conflict with it. Most importantly, an overlay cannot fix what actually fails an audit — missing alternative text, unlabelled form controls, keyboard traps, poor heading structure, insufficient contrast in the design itself — all of which live in the markup and the content. If the goal is a legal or procurement requirement (WCAG 2.2 AA, EN 301 549, the European Accessibility Act), that is met by fixing the site, and an overlay can even be cited as evidence that the underlying problems were known. Reach for this only as an addition to a site that already conforms, never as a route to conformance.
+The mechanism is small and worth knowing exactly. A single core Block plugin, `open_accessibility_block` ("Open Accessibility"), is what puts the widget on the page: place it in any region (Block layout) and its `build()` attaches the `open_accessibility/open-accessibility` library and hands four values to the front end through `drupalSettings.openAccessibility` — `menu_opened`, `mobile_enabled`, `text_selector`, `icon_size` (the block also references a `highlighted_links` key that no config screen sets, so it is always null). The library is `js/open-accessibility.min.js` (the vendored plugin) plus `js/open-accessibility-settings.js`, which calls `$('header').openAccessibility({...})` reading those drupalSettings, with `core/jquery` as the one dependency; styling is `css/open-accessibility.min.css`. Configuration lives at `/admin/config/user-interface/open-accessibility` behind a dedicated `configure open accessibility` permission (a standard `ConfigFormBase`, so admin-gated and CSRF-protected): checkboxes for "Expanded by default" and "Enable on Mobile", a required comma-separated "Zoom HTML tags" selector (default `body,h1,h2,h3,h4,p,div,span`), and an Icon Size select (Small/Medium/Large). The block sets `getCacheMaxAge(0)`. Version **2.0.1**, core `^10 || ^11`. What must be said alongside any overlay module, because it is the single most consequential piece of advice here: **an accessibility overlay is not accessibility conformance, and the accessibility community is broadly opposed to overlays.** People who need larger text or higher contrast overwhelmingly already have it configured in their OS and browser; screen-reader users bring their own software and a DOM-manipulating overlay can conflict with it; and an overlay cannot fix what actually fails an audit — missing alt text, unlabelled form controls, keyboard traps, poor heading structure, insufficient contrast in the design. If the driver is WCAG 2.2 AA, EN 301 549 or the European Accessibility Act, that is met by fixing the site, and an overlay can even be cited as evidence the underlying problems were known. Reach for this only as an addition to a site that already conforms — never as a route to conformance.
 
 ---
 
-- Add a text-resize control.
+- Place a floating accessibility toolbar via a block.
+- Add a text-resize (zoom) control.
 - Offer a high-contrast mode.
 - Highlight links on request.
-- Add a visible accessibility widget.
-- Respond to a stakeholder request.
-- Offer readable-font switching.
-- Add a dyslexia-friendly font option.
-- Provide a cursor size control.
-- Add a widget alongside a conformant site.
+- Provide a readable-font toggle.
+- Add a cursor-size control.
+- Offer an image-hiding / focus mode.
+- Configure which HTML tags the zoom feature targets.
+- Choose the toolbar icon size (small/medium/large).
+- Have the menu expanded by default on load.
+- Enable or disable the widget on mobile.
+- Restrict who can configure it via a dedicated permission.
+- Add a visible accessibility widget without a CDN dependency (assets are bundled).
+- Respond to a stakeholder or procurement request for a visible a11y control.
+- Support visitors who lack OS-level display settings.
 - Offer per-visitor display preferences.
-- Provide a quick contrast toggle.
-- Add an accessibility statement link.
-- Support users without OS-level settings.
-- Offer image-hiding for focus.
-- Provide a keyboard-navigation hint.
-- Add a visible commitment signal.
-- Support a public-sector expectation.
-- Complement an accessibility programme.
+- Add a widget alongside an already-conformant site.
+- Signal a public-sector accessibility expectation.
+- Complement (not replace) an accessibility remediation programme.
+- Give editors a one-click block to add to a region.

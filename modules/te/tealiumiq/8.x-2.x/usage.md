@@ -1,27 +1,32 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Tealium iQ Tag Management embeds Tealium's `utag` loader and builds the data layer that its tags read, with per-entity tag values driven by tokens.
+Tealium iQ Tag Management injects Tealium's `utag.js` loader into non-admin pages and builds the `utag_data` JavaScript data layer that its tags read, with default, per-entity, context, and token-driven values.
 
 ---
 
-Enterprise marketing organisations do not add tracking scripts to sites; they add **one** container and manage everything inside it. Tealium iQ is one of the major tag managers alongside Google Tag Manager and Adobe Launch, and the value proposition is governance: the marketing team adds and removes tags without a Drupal deployment, and the organisation has a single inventory of what runs on its pages. What the site owes the container is a **data layer** — a structured description of the current page: content type, section, publication date, author, product identifier — because a tag manager can only act on what the page tells it. Getting that right is the actual work, and this module makes it configurable, using **`token`** so values are drawn from the entity being viewed rather than hard-coded. Version **8.x-2.4** on `^10.2 || ^11`, with two permissions, both `restrict access: TRUE`: `manage global tealium tags` and `administer tealium settings`. That restriction is correct and worth understanding — a tag manager can inject arbitrary JavaScript into every page, so anyone who can point the site at a container has, in practice, the ability to run code on every visitor's browser. Two further points: **consent** governs the container as much as any individual script, so the container must be integrated with the consent manager rather than assumed to handle it; and a **data layer is a disclosure decision** — anything put into it is visible to every tag in the container and to anyone reading the page source, so do not put personal data there without deciding to.
+The module has two jobs. First, it composes the loader URL from three settings — `account`, `profile`, `environment` — into `https://tags.tiqcdn.com/utag/{account}/{profile}/{environment}/utag.js` (or, when a first-party-domain `fpd_url` is set, `{fpd_url}/{profile}/{environment}/utag.js`) and emits it on every front-end page. Loading is either **asynchronous** (a JS library in `hook_page_attachments` reads `drupalSettings.tealiumiq` and injects the script) or **synchronous** (a Twig template in `hook_page_top`/`hook_page_bottom` writes an inline `var utag_data = {…}` block followed by the `utag.js` `<script>`). An optional `utag.sync.js` can be added to the head, and an "anonymous only" switch suppresses the loader for logged-in users. Second — the real work — it builds the **data layer**: a `Udo` service holds the `utag_data` namespace and a properties array assembled by the `Tealiumiq` service from four layers, applied in order: **defaults** (config `tealiumiq.defaults`, on by `defaults_everywhere`), an **`AlterUdoPropertiesEvent`** other modules subscribe to (the `tealiumiq_context` submodule maps Context reactions here), **per-entity field values**, and a **`FinalAlterUdoPropertiesEvent`** for last-minute renaming. Values may contain `token` patterns (e.g. `[current-page:title]`), resolved against the entity on the current route and reduced to plain text before being JSON-encoded. Per-entity values live in a `tealiumiq` map field: `hook_entity_base_field_info` attaches a computed base field to every canonical content entity for REST normalization, while site builders add the editable "Tealium tags" field through Field UI (its widget serializes the tag values into one column). The tag vocabulary itself is pluggable — `@TealiumiqTag` and `@TealiumiqGroup` annotation plugins (shipped: `page_name`, `page_url` in the `page` group). Configuration is admin-gated behind two `restrict access: TRUE` permissions, `administer tealium settings` and `manage global tealium tags`. Note the design implication: a tag manager can run arbitrary vendor JavaScript on every visitor's page, and anything placed in the data layer is visible in page source to every tag and every reader, so consent handling and PII disclosure are decisions the integrator must own — the module does neither.
 
 ---
 
-- Add a Tealium container to a site.
-- Build a data layer for tag management.
-- Let marketing manage tags without deploys.
-- Expose content type to analytics.
-- Pass product data to tags.
-- Populate the data layer with tokens.
-- Support an enterprise analytics standard.
-- Consolidate tracking scripts.
-- Add tags to a specific section.
-- Support a group-wide tag governance policy.
-- Pass author and publication date to tags.
-- Integrate with a consent manager.
-- Support a marketing measurement plan.
-- Track campaign pages.
-- Provide page metadata to tags.
-- Replace hand-added tracking scripts.
-- Support a multi-brand tag setup.
-- Audit what runs on the site's pages.
+- Add a Tealium iQ container to a Drupal site by entering account, profile, and environment.
+- Serve the loader from a first-party domain via `fpd_url` instead of `tags.tiqcdn.com`.
+- Build a `utag_data` data layer that Tealium tags can act on.
+- Choose asynchronous or synchronous loading of `utag.js`.
+- Load tags at the top or bottom of the page in synchronous mode.
+- Also emit `utag.sync.js` in the document head.
+- Suppress tracking for authenticated users (anonymous-only mode).
+- Set site-wide default data-layer values (e.g. page name, page URL).
+- Populate the data layer from entity tokens like `[current-page:title]`.
+- Override the data layer per node/entity with a "Tealium tags" field.
+- Translate and revision per-entity tag values using core Field/translation.
+- Drive tags conditionally with the Context module via `tealiumiq_context`.
+- Alter or rename data-layer properties from a custom module via events.
+- Expose content type, section, author, or publication date to analytics.
+- Pass product or campaign identifiers to marketing tags.
+- Run a headless/decoupled site with API-only mode (module emits nothing itself).
+- Add custom data-layer variables through `@TealiumiqTag` plugins.
+- Consolidate hand-added vendor tracking snippets into one governed container.
+- Let marketing manage vendor tags without a Drupal deployment.
+- Expose per-entity Tealium tags to REST/JSON consumers via the computed base field.
+- Support a multi-brand or group-wide tag governance policy.
+- Switch between Drupal (`Json::encode`) and PHP (`json_encode`) data-layer serialization.
+- Audit what marketing scripts run on the site's pages.

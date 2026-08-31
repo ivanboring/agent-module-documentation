@@ -1,7 +1,7 @@
 {
   "name": "Search API Sorts Widget",
   "data_name": "search_api_sorts_widget",
-  "description": "Form widget for the Search API Sorts module.",
+  "description": "Turns the Search API Sorts block's list of sort links into a single \"Sort by\" select dropdown.",
   "version": "1.0.x",
   "package": "Search",
   "composer_namespace": "drupal/search_api_sorts_widget",
@@ -23,22 +23,26 @@
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "search_api_sorts_widget"
+  ],
   "categories": [
-    "Search",
+    "Site search",
     "Content display"
   ],
   "subcategories": [
-    "Search UI",
-    "Blocks"
+    "Search result sorting",
+    "Form widgets / select UI"
   ],
   "keywords": [
     "search api",
+    "search api sorts",
     "sorts",
+    "sort by",
     "widget",
-    "block",
     "dropdown",
-    "facets"
+    "select",
+    "block alter"
   ],
   "project_description": "Provides a select/dropdown form-based widget for Search API Sorts .\n\n Features \n\n \n Separate labels for ascending and descending values. \n Show only ascending, or descending, or both (D7 only). \n Autosubmit (require ctools for D7) \n \n Setup \n\n \n Go to the search index page: admin/config/search/search_api/index/[SEARCH_INDEX] \n Enable the required sorts on the \"Sorts\" tab. \n Switch to the \"Sorts widget\" tab. \n Select \"Use form widget\" (\"Active\" for D8). \n Optionally configure auto-submit functionality. \n Provide labels for the ascending and descending values of each sort field. \n Choose directions to display in the \"Orders\" column (D7 only). \n Save settings. \n \n Sponsoring \n\n \n Initial development sponsored by 2Stroke Interactive . \n Port to D8/D9 sponsored by Vista Research Group .",
   "maintenance_status": "Minimally maintained",

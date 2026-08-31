@@ -1,20 +1,35 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # RUA — Remove Uppercase Accents (rua) — agent index
 
-Removes accents from **Greek** text rendered in uppercase. No dependencies. Package `Javascript`.
-Version **2.0.2**. Core requirement `^10 || ^11 || ^12` (reaches into a major that does not exist
-yet).
+Client-side JS module that removes tonos accents from **Greek** text CSS-rendered in uppercase.
+Version **2.0.2**. Core `^10 || ^11 || ^12`. Package `Javascript`. No dependencies, no config,
+no routes, no permissions, no PHP classes.
 
-**The rule it encodes, which non-Greek developers do not know exists:** in modern Greek a lowercase
-word carries a tonos on its stressed vowel — Ελλάδα — and the uppercase form does **not**:
-ΕΛΛΑΔΑ, not ΕΛΛΆΔΑ. CSS `text-transform: uppercase` does not know that, so every uppercase heading,
-button and menu item on a Greek site comes out visibly wrong to a Greek reader.
+## The rule it encodes
+In modern Greek a lowercase word carries a tonos on its stressed vowel — Ελλάδα — and the uppercase
+form does **not**: ΕΛΛΑΔΑ, not ΕΛΛΆΔΑ. CSS `text-transform: uppercase` (and `font-variant:
+small-caps`) does not apply that rule, so uppercased headings, buttons and menu items on a Greek
+site come out visibly wrong to a Greek reader. RUA fixes the rendered DOM.
 
-**Two notes:**
-- **The transformation happens in the browser** (it is a JS module), so it does not change what is
-  **stored**, what **search indexes**, or what a reader **copies out of the page** — the last
-  arguably a virtue.
-- **The more durable fix, where available, is correct `lang="el"`** and letting the browser apply
-  its own casing rules. Modern browsers handle Greek uppercasing correctly when the language is
-  declared. This module covers the cases where that is not enough — which on a Drupal site is
-  common, because per-string `lang` is often absent.
+## Entire mechanism
+- `rua.module` — `rua_page_attachments()` attaches the `rua/rua` library on **every** page. That is
+  the whole PHP surface.
+- `rua.libraries.yml` — `rua/rua` = `js/jquery.rua.js`, depends on `core/jquery` +
+  `core/drupalSettings`.
+- `js/jquery.rua.js` — adds jQuery pseudo-selectors `:uppercase` (computed `text-transform ===
+  "uppercase"`) and `:smallcaps` (computed `font-variant === "small-caps"`). On `document.ready`
+  and on every `ajaxComplete`, it runs `$(":uppercase").not(".fieldset-legend").removeAcc()` (same
+  for `:smallcaps`). `removeAcc` reads `innerHTML` (or `.value` for inputs), applies a fixed chain
+  of Greek accent → plain replacements, and writes the string back.
+
+## Notes for agents
+- **Presentation-only, in the browser.** It never changes stored content, the search index, or what
+  crawlers/copy-paste extract — only the live DOM.
+- **Greek-only and hardcoded.** The replacement map lives in the JS; extending to another language
+  means editing `js/jquery.rua.js` — there are no settings.
+- **`fieldset` legends are deliberately excluded** via `.not(".fieldset-legend")`.
+- **Better fix where you control markup:** a correct `lang="el"` lets the browser cased-render Greek
+  itself; RUA is the blanket fallback for strings that lack it.
+- No `configure` route — nothing to visit in admin after enabling. Just enable the module.
+
+See `../usage.md` for prose + use cases, `../data.json` for metadata.
