@@ -1,7 +1,7 @@
 {
   "name": "Schema.org Education",
   "data_name": "schema_education",
-  "description": "Adds EducationalOccupationalProgram to the JSON-LD output.",
+  "description": "Adds the Schema.org EducationalOccupationalProgram type as Schema Metatag properties, contributing its vocabulary to Schema Metatag's JSON-LD output.",
   "version": "1.0.x",
   "package": "SEO",
   "composer_namespace": "drupal/schema_education",
@@ -24,12 +24,11 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "SEO",
-    "Content display"
+    "Search engine optimization (SEO)"
   ],
   "subcategories": [
-    "Structured data",
-    "Metatags"
+    "Structured data / Schema.org",
+    "Semantic metadata"
   ],
   "keywords": [
     "schema.org",
@@ -37,9 +36,12 @@
     "education",
     "seo",
     "structured data",
-    "course"
+    "EducationalOccupationalProgram",
+    "metatag",
+    "course",
+    "program"
   ],
-  "project_description": "This module provides the following Schema.org type:\n\n \n EducationalOccupationalProgram \n \n Back to top \n\n Requirements \n \n Schema.org Metatag module 2.5.x or higher. \n \n Back to top \n\n Usage \n \n Enable the schema_education module. \n Go to Administration > Configuration > Search and metadata > Metatags ( /admin/config/search/metatag \n Select your entity type and bundle, expand the \"Schema.org: EducationalOccupationalProgram\" fieldset and fill in the field mappings you want to publish. \n Back to top",
+  "project_description": "This module provides one Schema.org type as a Schema Metatag group:\n\n- EducationalOccupationalProgram\n\nRequirements: Schema.org Metatag (schema_metatag).\n\nUsage: enable the module, go to Administration > Configuration > Search and metadata > Metatags (/admin/config/search/metatag), select an entity type/bundle, expand the \"Schema.org: EducationalOccupationalProgram\" fieldset and map the properties you want to publish. Schema Metatag assembles and renders the JSON-LD.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

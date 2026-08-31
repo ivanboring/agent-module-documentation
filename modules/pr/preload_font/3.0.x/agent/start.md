@@ -1,21 +1,41 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Preload Font (preload_font) — agent index
 
-Emits `<link rel="preload">` for web fonts. Configure at
+Emits `<link rel="preload">` resource hints for web fonts in the page head. Configure at
 `/admin/config/user-interface/preload-font` behind `administer site configuration`.
-Version **3.0.1**. Core requirement `^10 || ^11`.
+Version **3.0.1**. Core `^10 || ^11`. No dependencies, permissions, services, plugins, or Drush.
 
-**Why fonts need this:** the browser discovers them late — parse HTML → request CSS → parse CSS →
-find `@font-face` → find it applies → *then* request the font. Several round trips in, after the
-text has painted in a fallback. The result is a flash of the wrong font plus a **layout shift**, so
-it is a Core Web Vitals penalty, not just an aesthetic one.
+## Mechanism (the whole module)
 
-**Three details decide whether the preload helps or hurts:**
-1. **`crossorigin` is mandatory, even same-origin.** Font requests are CORS-mode; without it the
-   browser fetches the file **twice**. This is the most common way a font preload backfires.
-2. **Preload only the specific weights and subsets used above the fold.** Preloading a nine-weight
-   family front-loads bandwidth ahead of the CSS and images that decide when the page is usable.
-3. **`font-display: swap` is separate and complementary.** Preload makes the font arrive sooner;
-   `font-display` decides what the visitor sees until it does.
+- **Config form** `Drupal\preload_font\Form\PreloadFontSettingsForm` (`ConfigFormBase`, route
+  `preload_font.config`): a single `fontPaths` textarea, one URL per line, saved as a newline-joined
+  string in config object **`preload_font.settings`** (key `fontPaths`). No config schema ships.
+- **`preload_font_page_attachments_alter()`** (`preload_font.module`) reads `fontPaths`, splits on
+  `PHP_EOL`, and calls `_preload_fonts()` per line. Output goes to
+  `$attachments['#attached']['html_head_link']` (rendered as `<link>` via Drupal's `html_tag`
+  element, which HTML-escapes attributes).
 
-Value over a theme change: the hints live in configuration rather than in a template.
+## Three branches in `_preload_fonts()`
+
+1. **Contains `fonts.googleapis.com`** → a `<link rel="preconnect" href="//fonts.gstatic.com/" crossorigin>`
+   plus `<link rel="preload" as="style" href="…" crossorigin onload="this.onload=null;this.rel='stylesheet'">`
+   (load-then-swap CSS trick). The `onload` string is hardcoded, not user input.
+2. **Starts with `/` or `http`** → `<link rel="preload" as="font" href="…" crossorigin>`; if
+   `pathinfo()` finds an extension, adds `type="font/{ext}"` (e.g. `font/woff2`).
+3. **Otherwise** → ignored.
+
+Every hint carries **`crossorigin`** unconditionally (required for CORS-mode font fetches).
+
+## Validation (`validateForm`)
+
+Deduplicates lines; rejects a path that is not a valid URL, does not start with `/` or `http`, or
+ends with `/`; rejects a `fonts.googleapis.com` URL missing `display=swap`.
+
+## Why fonts need this
+
+Browsers discover fonts late: parse HTML → request CSS → parse CSS → find `@font-face` → find it
+applies → *then* request the font. A preload hint moves the request to the top of the document,
+cutting FOUT and font-driven layout shift. Value over a theme change: hints live in exportable
+configuration, not a template.
+
+See `agent/configure/settings.md` for the settings/emission detail. See `../usage.md` for use cases.

@@ -1,7 +1,7 @@
 {
   "name": "URL Replace Filter",
   "data_name": "url_replace_filter",
-  "description": "Replaces base URLs in img and a elements.",
+  "description": "Text-format filter that rewrites the base URL prefix of href attributes on <a> and src attributes on <img> at render time, via configurable original-to-replacement string rules.",
   "version": "8.x-1.x",
   "package": "Content display",
   "composer_namespace": "drupal/url_replace_filter",
@@ -28,23 +28,25 @@
     "Import and export"
   ],
   "subcategories": [
-    "Text formats and filters",
-    "Content migration cleanup"
+    "Text format filters",
+    "Content migration / import"
   ],
   "keywords": [
     "url",
     "filter",
+    "text format",
     "base url",
     "migration",
-    "images",
-    "links"
+    "href",
+    "img src",
+    "domain move"
   ],
-  "project_description": "Allows administrators to replace the base URL in <img> and <a> elements.\n\n Users tend to create links and images in their content with absolute URLs. This can be a problem if the site moves to another domain (perhaps between development and production sites) or is behind a proxy, with a different address for authenticated users. \n\n Some replacement examples:\n\n Before: Some link \n\nAfter: Some link \n\n Before: \n\nAfter: \n\n You can setup such replacements in the URL Replace Filter settings as follow:\n\n Original: http://example.com:8080/ \n\nReplacement: %baseurl/ \n\n Original: http://dev.example.com/ \n\nReplacement: %baseurl/ \n\n %baseurl is a token for your site's base URL. The above examples assume a site located in the domain's root directory (in which case %baseurl is actually empty). \n\n Drupal versions \n The module is available for Drupal 10, 9, 8, 6, 5, and 4.7. In most cases, Drupal 7 has better alternatives.\n\n See also \n \n Pathologic (for most D7 cases a better option than URL Replace Filter) \n Pathfilter \n Back to top",
+  "project_description": "Allows administrators to replace the base URL in <img> and <a> elements. Users tend to create links and images in their content with absolute URLs, which becomes a problem when a site moves to another domain (for example between development and production) or sits behind a proxy with a different address for authenticated users. The module provides a single text-format @Filter plugin, 'url_replace_filter'. Enable it on a text format, then in that format's vertical settings tab enter a list of original base-URL strings and their replacements. At render time the filter uses a case-insensitive regular expression to find href=\"...\" on <a> elements and src=\"...\" on <img> elements whose value begins with an original string and rewrites that leading portion to the replacement. The replacement may contain the token %baseurl, which is expanded to the site base path with any trailing slash removed. Rules run in the order entered, so more specific URLs must be placed before broader ones. Stored content is never altered; only the rendered, filter-cached output is rewritten. It is narrower than a general regex text-replacement filter because it only touches those two attributes and will not corrupt matching text that appears in prose or code samples. Older 8.x-1.0 supports Drupal 8; the current 8.x-1.2 targets Drupal 10 and 11. Pathologic is often a better fit for complex D7-era cases.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",
   "project_created": "2007-03-14",
   "project_changed": "2026-08-18",
-  "core_semver_minimum": 8000000,
+  "core_semver_minimum": 10000000,
   "core_semver_maximum": 12000000
 }

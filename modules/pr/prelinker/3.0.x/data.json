@@ -1,11 +1,13 @@
 {
   "name": "Prelinker",
   "data_name": "prelinker",
-  "description": "Configurable preload and preconnect links.",
+  "description": "Configurable preload and preconnect resource hints, delivered as Link response headers or <link> elements in the head.",
   "version": "3.0.x",
   "package": "Performance and scalability",
   "composer_namespace": "drupal/prelinker",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/core": "^11"
+  },
   "dependent_modules": [],
   "configure": "prelinker.admin_overview",
   "core_version_requirement": "^11",
@@ -25,8 +27,8 @@
     "Performance"
   ],
   "subcategories": [
-    "Front-end performance",
-    "Resource hints"
+    "Prefetching / preloading",
+    "Critical CSS / CSS optimization"
   ],
   "keywords": [
     "preload",
@@ -34,9 +36,11 @@
     "resource hints",
     "performance",
     "link header",
+    "fetchpriority",
+    "http2 push",
     "head"
   ],
-  "project_description": "Prelinker provides a simple way to add preconnect and preload headers to either the response header for HTTP/2 compatible servers or via a <Link> element in the <Head> section of the HTML.\n\n \n \n\n A preconnect header tells the browser that a domain will be required for page resources and that it should begin the process of connecting to the server in preparation for downloading these resources.\n\n \n\n A preload response header informs the server to push the resources to the browser via HTTP/2 so that they will be available to browser earlier during the rendering process. \n\n A preload <Link> is similar but informs the browser that it should begin downloading the resources as they will be required during rendering.\n\n \n\n Page restrictions can be set for both domains and resources, for example you may want to preload a banner image on only the home page.\n\n Release 3.x\n\n \n Version 3.x is a major release with the following changes:\n\n \n Drupal 11 only : The 3.x branch drops support for Drupal 10 and requires Drupal 11. \n Visibility conditions : Preload and preconnect entities now support Drupal's condition plugin system to control when each entry is active (e.g. restrict to specific pages, roles, or request contexts). \n `fetchpriority` attribute : Preload link elements support the `fetchpriority` attribute (`high`, `low`, or `auto`) to hint the browser's resource prioritisation.",
+  "project_description": "Prelinker provides a simple way to add preconnect and preload resource hints, delivered either as a Link response header (early over HTTP/2 or HTTP/3) or via a <link> element in the <head> section of the HTML.\n\nA preconnect hint tells the browser that a domain will be required for page resources and that it should begin connecting to that server (DNS, TCP, TLS) in preparation for downloading those resources. A preload hint tells the browser (or, as a Link header, an intermediary) to fetch a specific file early so it is available sooner during rendering.\n\nPreconnect domains and preload files are each stored as their own configuration entities, so they are listable, exportable, individually editable, and drag-orderable by weight. Each entry supports Drupal's condition (visibility) plugin system, so a hint can be limited by request path, content type, language, theme, role, and any other condition plugin -- for example, preloading a hero image only on the front page.\n\nBeyond the manually configured entities, Prelinker can scan the rendered HTML and lift resource hints into Link headers automatically: images marked with data-preload-image attributes, existing <link rel=\"preload\"> / <link rel=\"preconnect\"> tags, stylesheet <link>s, and CSS @import URLs.\n\nRelease 3.x is a major release: Drupal 11 only (drops Drupal 10), adds visibility conditions on preload/preconnect entities, and adds the fetchpriority attribute (high, low, auto) on preload link elements.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

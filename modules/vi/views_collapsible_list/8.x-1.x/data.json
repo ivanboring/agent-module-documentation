@@ -1,7 +1,7 @@
 {
   "name": "Views collapsible lists",
   "data_name": "views_collapsible_list",
-  "description": "Views style for expanding/collapsing fields.",
+  "description": "Provides a Views style for expanding/collapsing fields.",
   "version": "8.x-1.x",
   "package": null,
   "composer_namespace": "drupal/views_collapsible_list",
@@ -16,19 +16,25 @@
   "project_url": "https://www.drupal.org/project/views_collapsible_list",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "core/jquery",
+    "core/drupalSettings",
+    "core/drupal"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "Views style plugin: CollapsibleList (@ViewsStyle id=collapsible_list, extends views HtmlList)"
+  ],
   "categories": [
     "Content display"
   ],
   "subcategories": [
-    "Views style plugins",
-    "Accordions and disclosure"
+    "Views styles",
+    "Tabbed content / accordion"
   ],
   "keywords": [
     "views",
@@ -36,9 +42,11 @@
     "collapsible",
     "style plugin",
     "faq",
-    "disclosure"
+    "disclosure",
+    "expand",
+    "collapse"
   ],
-  "project_description": "Synopsis \n The Views Collapsible List module provides a new style plugin for Views that renders items in a list where you can expand and collapse additional information for an item. You can select multiple fields to be shown/hidden by this toggle. This allows you to present additional information to users if they want to see it without having too much clutter when the page initially loads.\n\n Credits \n \n kevin.dutra \n Back to top",
+  "project_description": "The Views Collapsible List module provides a new style plugin for Views that renders items in a list where you can expand and collapse additional information for an item. You can select multiple fields to be shown/hidden by this toggle. This allows you to present additional information to users if they want to see it without having too much clutter when the page initially loads. Maintained by kevin.dutra; sponsored by Workday.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

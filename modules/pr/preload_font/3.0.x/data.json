@@ -1,7 +1,7 @@
 {
   "name": "Preload Font",
   "data_name": "preload_font",
-  "description": "Preloads fonts in the head tag.",
+  "description": "Emits <link rel=\"preload\"> resource hints for admin-listed web fonts in the page head to avoid FOUT/layout shift.",
   "version": "3.0.x",
   "package": "Preload Font",
   "composer_namespace": "drupal/preload_font",
@@ -19,25 +19,25 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Performance",
-    "Theming"
+    "Performance"
   ],
   "subcategories": [
-    "Front-end performance",
-    "Web fonts"
+    "Prefetching / preloading"
   ],
   "keywords": [
     "preload",
     "font",
-    "performance",
-    "cls",
     "web fonts",
+    "performance",
+    "fout",
+    "layout shift",
+    "google fonts",
     "head"
   ],
-  "project_description": "This module preloads the fonts to avoid flash of unstyled text (FOUT) issue",
+  "project_description": "This module preloads the fonts to avoid flash of unstyled text (FOUT) issue.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",
