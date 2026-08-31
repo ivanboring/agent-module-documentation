@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Recipe supplies a recipe content type with structured ingredients, quantities and instructions, plus an `ingredient` submodule providing the field type that parses them.
+Recipe ships a `recipe` node bundle for cooking recipes plus an `ingredient` submodule whose custom field type stores each ingredient as a structured quantity + unit + reference rather than a line of prose.
 
 ---
 
-A recipe is the standard example of content that looks like prose and is really data. "200g plain flour" is a quantity, a unit and an ingredient, and treating it as a line of text means the site cannot scale a recipe to six servings, cannot convert grams to ounces, cannot build a shopping list from three recipes, and cannot list everything containing tomatoes. The `ingredient` field type is where that work happens — parsing the human phrasing into parts and keeping both — and it is the reason this module is more than a content type someone could have configured. Version **8.x-2.3** on core `^10 || ^11`, depending on core `node`, `path` and `text`. **A name collision worth flagging carefully**: Drupal core now has a feature called **recipes** — packaged configuration and content applied to an existing site, the replacement for distributions — and it has nothing to do with cooking. On a Drupal 10.3+ site the word is ambiguous in exactly the contexts where it matters, so say which is meant. Beyond that, the thing a recipe site actually wants is **`Recipe` structured data**: Google renders recipes as rich results with a photograph, a star rating, the cook time and the calorie count, and that presentation is worth more traffic than the content type itself — so check what JSON-LD this emits, or plan to add `schema_metatag` alongside it.
+Installing the module and its required `ingredient` submodule creates a `recipe` node type (fields: description, instructions, notes, source, prep time, cook time, yield amount/unit) and a separate `ingredient` content entity (name-only, translatable, at `/ingredient/{id}`). The substance is the `ingredient` field type (`Drupal\ingredient\Plugin\Field\FieldType\IngredientItem`, extends core `EntityReferenceItem`): each delta stores `target_id` (the ingredient entity), a `quantity` float, a `unit_key` string and a free-text `note`, entered through the `ingredient_autocomplete` widget which parses fractions like `1 1/2` into decimals and auto-creates missing ingredient entities. Units come from editable config (`ingredient.units` — `us`, `si`, `common` sets defined in `IngredientUnitUtility`); a per-field setting picks which sets appear and the default unit. At display time `recipe_node_view()` adds two pseudo-fields declared via `hook_entity_extra_field_info`: **Total time** sums every integer field on the bundle whose `field_config_edit_form` third-party checkbox `recipe:total_time` is ticked (shown only when ≥2 such fields have values), and **Yield** concatenates `recipe_yield_amount`/`recipe_yield_unit`; their labels/label-display are configured on the node-type edit form's "Recipe settings" tab. Durations render through `recipe_duration` theming (minutes → "1 hour 30 minutes") and, if core `rdf` is enabled, templates emit `schema:totalTime` (ISO-8601 via `recipe_duration_iso8601()`) and `schema:recipeYield` RDFa. Formatters: `recipe_duration` (integer), `ingredient_default` and `ingredient_recipeml` (ingredient field). Export is done with a custom Views **display** plugin (`recipe`, id `recipe`, returns a `CacheableResponse` with its own Content-Type) plus two **style** plugins — `recipeml` (RecipeML 0.5 XML) and `recipe_plain_text` (wordwrapped, tag-stripped text) — wired up by the shipped optional views `recipes`, `recipeml`, `recipe_plain_text` and `ingredients`. All access uses standard node permissions plus the ingredient entity permissions (`add/edit/delete/view ingredient`, `administer ingredient`); there is no bulk import beyond an optional Feeds target and the D6/D7 migration hooks. This module has nothing to do with core's config-and-content "Recipes" system (Drupal 10.3+) — say which is meant on any 10.3+ site.
 
 ---
 
-- Build a recipe website.
-- Store ingredients as structured data.
-- Scale a recipe to different servings.
-- List recipes containing an ingredient.
-- Convert between metric and imperial.
-- Build a shopping list from recipes.
-- Publish a restaurant's dishes.
-- Add cooking times and yields.
-- Support a food blog.
-- Build a community cookbook.
-- Publish a family recipe archive.
-- Add nutritional information.
-- Support a meal-planning site.
-- Publish recipes with rich results.
-- Categorise recipes by cuisine.
-- Search recipes by ingredient.
-- Build a bakery's product pages.
-- Publish a dietary-restriction index.
+- Build a cooking-recipe website with a ready-made content type.
+- Store each ingredient as structured quantity + unit + reference, not prose.
+- Enter quantities as fractions (`1 1/2`) that are parsed to decimals.
+- Auto-create ingredient entities as editors type new names.
+- Restrict a recipe field to U.S., metric (SI) or common unit sets.
+- Compute and display a recipe's total time from multiple time fields.
+- Combine yield amount and unit into one displayed pseudo-field.
+- Emit schema.org RDFa (`totalTime`, `recipeYield`) for richer search results.
+- Export recipes as RecipeML 0.5 XML for interchange with other recipe software.
+- Offer a printer-friendly plain-text view of recipes.
+- Maintain a reusable, translatable ingredient vocabulary at `/admin/content/ingredient`.
+- List every recipe that references a given ingredient.
+- Normalize new ingredient names to lowercase (trademark-aware) on save.
+- Migrate legacy Recipe 6.x/7.x nodes and ingredients into the field-based model.
+- Import recipes/ingredients in bulk via the Feeds ingredient target.
+- Publish a restaurant menu or bakery product pages as structured dishes.
+- Run a community cookbook or family recipe archive.
+- Support a food blog or meal-planning site with consistent recipe data.
+- Categorize recipes by cuisine using ordinary taxonomy fields.
+- Extend the supplied Recipe type with nutrition or dietary fields (it is a starting point).

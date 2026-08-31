@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Token Debug shows what tokens actually resolve to in a given context, instead of leaving a developer to guess why a placeholder came out empty.
+Token Debug UI adds one admin form at `/admin/config/development/tokendebug` where you paste text containing tokens, name some real entities as context (`node:17`, `user:1`), and see the text with every token replaced by its actual value — the answer to "what does this token evaluate to right now?" that core's token browser (which only lists what is *available*) does not give.
 
 ---
 
-Tokens fail silently, which is what makes them hard to work with. A meta description built from `[node:field_summary]` that comes out empty offers no explanation — the field may be empty, the token may not exist for that entity type, the context may not have been passed, the module providing it may not be enabled, or the name may simply be misspelled. Core's token browser lists what is *available*, which is a different question from what a token *evaluates to right now for this entity*. This module answers the second, version **8.x-1.1** on `^8` through `^11`, no dependencies beyond the token system. Because it is a debugging tool, the deployment position is the important part and it is the same as for `devel`: **useful in development, not for production**. Token values include content that may be unpublished and fields that may be access-controlled, and a debugging interface that prints resolved values is a disclosure surface if it is reachable by anyone it should not be. Confirm which permission gates it, keep it out of the production module list rather than merely unlinked from a menu, and treat it as one of the modules to check for when auditing an inherited site — a debugging tool left enabled in production is a recurring finding in the campaign's reviews.
+The module is a single `FormBase` (`Drupal\tokendebug\Form\TokenDebugForm`, form id `tokendebug_form`) mounted on the route `tokendebug.form` and gated by the permission `tokendebug:use form`. The form has four inputs: a **Text with tokens** textarea, a **Token data** textarea where each line is an `entity_type:id` pair (e.g. `node:17`), a **Clear unknown tokens** checkbox, and a **Show metadata** checkbox. On validation each data line is parsed by `parseData()`, which splits on the first colon and calls `entityTypeManager->getStorage($type)->load($id)`; a bad entity type or a missing id becomes a form error, otherwise the loaded entity object is keyed by its type into a `$data` array. On submit the form calls the core token service `\Drupal::service('token')->replace($text, $data, ['clear' => $clear], $metadata)` and prints the result as a status message via `Markup::create()`. When **Show metadata** is ticked, the collected `BubbleableMetadata` (cache tags, cache contexts, max-age) is `print_r`'d into a `<pre>` status message so you can see the cacheability the tokens bubbled up. The form also renders a `token_tree_link` element (the browsable token list) whose `#token_types` are the entity types you entered — that theme hook comes from the contrib **token** module, which is why token is a functional dependency even though `tokendebug.info.yml` declares no dependencies. Because it resolves tokens against real, loaded entities and prints the actual values, the form is a data-disclosure surface if reachable by anyone it should not be: it is a development/debugging aid, so keep it out of production module lists (not merely unlinked from the menu) and treat the `tokendebug:use form` permission as high-trust, admin-only.
 
 ---
 
-- See what a token resolves to.
-- Debug an empty meta description.
-- Diagnose a failing path pattern.
-- Check a token exists for an entity type.
-- Debug an email template's placeholders.
-- Find a misspelled token name.
-- Confirm a context is being passed.
-- Inspect token values for a node.
-- Debug a scheduled message.
-- Check a field token's output.
-- Diagnose a metatag problem.
-- Verify a token before using it.
-- Debug a token in a view.
-- Inspect available token values live.
-- Troubleshoot a pathauto pattern.
-- Confirm a custom token works.
-- Debug a token in a webform handler.
-- Investigate token behaviour per entity.
+- See what a specific token actually resolves to for a real entity.
+- Debug why a meta description built from `[node:field_summary]` comes out empty.
+- Distinguish an empty field from a nonexistent or misspelled token name.
+- Check that a token even exists for a given entity type.
+- Resolve `[node:title]` and `[node:author:name]` against a specific node id.
+- Inspect a user's token values by entering `user:1` as data.
+- Diagnose a failing Pathauto URL pattern before saving it.
+- Verify a token string before pasting it into a Metatag configuration.
+- Debug the placeholders in an email or Message template.
+- Confirm a custom token provided by your module returns the expected value.
+- Browse the available token tree for the entity types you supply.
+- See the cache tags, contexts, and max-age a token bubbles up (Show metadata).
+- Check whether "Clear unknown tokens" changes the rendered output.
+- Troubleshoot a token used in a Views field or rewrite.
+- Confirm a token in a Webform handler resolves correctly.
+- Test a token against a scheduled or queued message context.
+- Reproduce a token that renders differently in a theme.
+- Verify multi-entity data (e.g. `node:17` plus `user:3`) in one replacement.
+- Teach yourself the token syntax by experimenting interactively.
+- Audit an inherited site for a debugging module left enabled in production.

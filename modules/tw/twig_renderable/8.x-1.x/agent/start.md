@@ -1,22 +1,40 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Twig Renderable (twig_renderable) — agent index
 
-Twig extension adding functions for **building and manipulating render arrays inside templates**.
-No dependencies, no configuration. Version **8.x-1.5**.
-Core requirement `^8 || ^9 || ^10 || ^11`.
+A single Twig extension that adds one function and two filters for working with render arrays
+and `Attribute` objects **from inside a Twig template**. No dependencies, no configuration, no
+permissions, no config schema. Version **8.x-1.5**, core `^8 || ^9 || ^10 || ^11`.
 
-**The boundary it crosses is deliberate:** Drupal's template layer receives render arrays and prints
-them, and gives templates little ability to construct one — logic in preprocess, presentation in
-Twig. That is sound, and it is friction for small cases: wrapping a value in a `#type` element,
-conditionally attaching a library, adding a cache tag, building a link array without a preprocess
-function whose only job is that line.
+Registered as one service, `twig_renderable.twig.attr_extension`
+(`Drupal\twig_renderable\TwigExtension\RenderablesExtension`), tagged `twig.extension`,
+constructed with `@renderer`.
 
-**Use it with a clear view of the trade:**
-- **Logic in templates is outside the debugger's easy reach and outside a unit test.** A codebase
-  that assembles render arrays in Twig is one where the next developer must read the templates to
-  learn what a page loads.
-- **Preprocess remains right for anything with a condition in it.** The honest use here is the
-  one-line wrapper case.
-- **Cache metadata added from a template is easy to get wrong in the direction that matters.** A
-  missing **cache tag** is a stale page; a missing **cache context** is a page served to the wrong
-  person — and the second becomes a security finding, not a bug report.
+## What it provides
+
+- **`will_have_output(variable, ...parents)`** — function. Returns a **boolean**: whether the
+  named render array (or scalar) in the template context produces non-empty output once rendered.
+  Variadic path of nested keys; `needs_context` + `needs_environment`.
+  Example: `{% if will_have_output('content', 'field_foo') %}`.
+- **`add_class(class)`** — filter. Appends a class to a render array's `#attributes.class`, or
+  calls `->addClass()` on an `Attribute`. Returns the modified renderable/attribute.
+- **`merge_attributes(attributes)`** — filter. Merges an attributes array (or `Attribute`) into a
+  render array's `#attributes` (via `array_merge_recursive`) or into an `Attribute` object.
+
+## Mechanism to know
+
+`will_have_output` walks the context with `NestedArray::getValue`; if the value is an array it
+renders it through the real renderer, then **overwrites the context entry with the rendered
+`#markup`** (so a later `{{ ... }}` prints the cached result instead of rendering again), strips
+HTML comments when Twig debug is enabled, and returns `trim($output) != ''`. For a scalar it
+returns `trim($value) != ''`. A missing/`NULL` value returns `FALSE`. Testing a variable therefore
+also **finalises** it — a deliberate side effect, not a leak.
+
+## Safety
+
+None of the callbacks set an `is_safe` flag. `will_have_output` returns a boolean, and the filters
+return renderables/`Attribute` objects that Twig escapes normally; the rendered markup carries the
+safety the renderer already gave it. There is no new escaping bypass here.
+
+## Detail
+
+- `twig/functions-and-filters.md` — the function and both filters, signatures, examples, gotchas.

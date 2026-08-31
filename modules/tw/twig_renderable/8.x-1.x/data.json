@@ -1,7 +1,7 @@
 {
   "name": "Twig Renderable",
   "data_name": "twig_renderable",
-  "description": "Twig extension for working with render arrays.",
+  "description": "Twig extension providing a will_have_output() function that tests whether a render array produces non-empty output, plus add_class and merge_attributes filters for render arrays and Attribute objects.",
   "version": "8.x-1.x",
   "package": "Twig",
   "composer_namespace": "drupal/twig_renderable",
@@ -19,23 +19,23 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Developer tools",
-    "Theming"
+    "Theming",
+    "Developer tools"
   ],
   "subcategories": [
-    "Render API",
-    "Templates"
+    "Twig / component libraries",
+    "Template suggestions"
   ],
   "keywords": [
     "twig",
     "render array",
     "template",
     "theming",
-    "extension",
-    "developer"
+    "attribute",
+    "extension"
   ],
   "project_description": "Provides a Twig extension to work with render arrays.\n\n Back to top \n\n Function \n \n will_have_output('path', 'to', 'render', 'array') \n \n Back to top \n\n Filters \n \n add_class(string|array $class) \n merge_attributes(array|\\Drupal\\Core\\Template\\Attribute $attributes) \n Back to top",
   "maintenance_status": "Actively maintained",

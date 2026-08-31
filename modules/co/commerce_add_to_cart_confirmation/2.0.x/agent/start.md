@@ -1,22 +1,58 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-# Commerce add to cart confirmation (commerce_add_to_cart_confirmation) — agent index
+# Commerce add to cart confirmation (`commerce_add_to_cart_confirmation`) — agent index
 
-Confirmation screen/dialog after a product is added. Requires `commerce_cart`, `commerce_product`
-and core **`views`**. Version **2.0.0**. Core requirement `^10.3 || ^11`.
+Shows a modal **confirmation dialog** after a product is added to a Drupal Commerce cart, in place
+of Commerce's default status message. Version **2.0.0**, core `^10.3 || ^11`. Requires
+`commerce_cart`, `commerce_product` and core **`views`** (composer requires `drupal/commerce:^3`).
+GPL-2.0-or-later. **No settings form, no routes, no permissions, no Drush.**
 
-**The Views dependency is the interesting part** — the confirmation's contents are a **view**, so
-related products, recently viewed items or a cart summary can be shown **without custom code**.
+## How it actually works (server-driven, no custom route)
 
-**Why it matters commercially:** the default is a status message that is often off-screen on a long
-product page, so the shopper is unsure the click registered — and either adds twice or abandons.
-More importantly, this is the **moment with the most attention in the session**: the shopper has
-just committed, and "continue shopping" vs "go to checkout" is the highest-leverage choice on the
-store.
+1. **Capture** — `src/EventSubscriber/ConfirmationMessageSubscriber.php` subscribes to
+   `\Drupal\commerce_cart\Event\CartEvents::CART_ENTITY_ADD`. On add-to-cart it calls
+   `CartConfirmationManager::recordAddToCart(['order_item_id' => …, 'quantity' => …])`, which stores
+   that array in the **private** tempstore collection `commerce_add_to_cart_confirmation`
+   (service `commerce_add_to_cart_confirmation.manager`, backed by `@tempstore.private`).
+2. **Place** — `commerce_add_to_cart_confirmation_page_bottom()` (hook_page_bottom) inserts a
+   `#type => 'commerce_add_to_cart_confirmation_message'` render element into every page and attaches
+   the `commerce_add_to_cart_confirmation/commerce_add_to_cart_confirmation` library.
+3. **Render** — `src/Element/AddToCartMessage.php` (RenderElement) turns itself into a placeholdered
+   `#lazy_builder` → `AddToCartMessage::renderMessage()`. That callback calls
+   `CartConfirmationManager::getCartItemInfo()` which **reads and then clears** the tempstore (one-shot).
+   If an `order_item_id` is pending it loads the `commerce_order_item`, runs the
+   `confirm_message_product_display` view with the order item ID as contextual argument, and injects
+   the rendered HTML + view title into `drupalSettings.commerce_add_to_cart_confirmation.{content,title}`.
+   The body is themed by `templates/commerce_add_to_cart_confirmation.html.twig`
+   (`#theme` = `commerce_add_to_cart_confirmation`; preprocess in the `.module`).
+4. **Display** — `js/commerce_add_to_cart_confirmation.js` reads `drupalSettings`, and if `content`
+   is set opens a `Drupal.dialog` (core/drupal.dialog) modal titled with `title`, width 745. The
+   Twig template provides a **"Go to cart"** link (`commerce_cart.page`) and a **"Continue shopping"**
+   link (`.commerce-add-to-cart-confirmation-close`) that just closes the dialog.
 
-**Two things that turn a helpful confirmation into an obstacle:**
-1. **It must not block the next action.** A modal requiring dismissal before adding a second item
-   makes buying three things *worse* than the status message. "Continue shopping" must be one
-   obvious click.
-2. **A modal is a focus event.** Trap focus while open, return focus to the add-to-cart button on
-   close, close on **Escape**, and announce itself. A confirmation nobody can dismiss with a
-   keyboard is a checkout nobody can complete.
+## What it provides
+
+- **Render element** `commerce_add_to_cart_confirmation_message` (`AddToCartMessage`) — reusable.
+- **Service** `commerce_add_to_cart_confirmation.manager` (`CartConfirmationManager` /
+  `CartConfirmationManagerInterface`): `recordAddToCart()`, `getCartItemInfo()`, `clear()`.
+- **View** `confirm_message_product_display` (optional config; base table `commerce_order_item`,
+  arg = order item ID, `access: none`, no page/path display) — the confirmation body.
+- **Two view modes**: `commerce_product.add_to_cart_confirmation_view` and
+  `commerce_product_variation.add_to_cart_confirmation`.
+- **Two Views area handlers** (`hook_views_data` in `.views.inc`, classes in
+  `src/Plugin/views/area/`): `OrderItemOrderTotal` ("Order total for views with order item id
+  argument") and `OrderOtherCount` ("Order other total count" → "N other items in your Cart").
+- **Theme hook + template**, CSS, and JS library.
+- **Runtime requirement** (`.install`): warns if the `confirm_message_product_display` view is deleted.
+
+## Configuration (there is no admin UI)
+
+Everything is customised by editing the **view** and the two **view modes** — see
+[`config/customization.md`](config/customization.md). Internals for reuse/extension are in
+[`api/internals.md`](api/internals.md).
+
+## Security / access
+
+The order item ID is taken **only** from the current user's own private tempstore, never from
+request input — there is no route or controller that echoes cart content. Confirmation body is
+rendered through Views/Twig (auto-escaped) before it reaches `drupalSettings`. No known
+vulnerabilities; covered by the security advisory policy.

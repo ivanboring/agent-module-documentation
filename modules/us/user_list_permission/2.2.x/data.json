@@ -1,11 +1,14 @@
 {
   "name": "User List Permission",
   "data_name": "user_list_permission",
-  "description": "A permission for viewing the user list without administer permissions.",
+  "description": "Adds an 'access people list' permission so a role can view the /admin/people user list without being granted 'administer users'.",
   "version": "2.2.x",
   "package": "User",
   "composer_namespace": "drupal/user_list_permission",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "php": ">=8.3",
+    "drupal/core": ">=11.1"
+  },
   "dependent_modules": [
     "drupal:user"
   ],
@@ -19,32 +22,35 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": [
+    "access people list"
+  ],
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "User management",
+    "Access control",
     "Security"
   ],
   "subcategories": [
-    "Permissions",
-    "Admin UI"
+    "User roles & permissions",
+    "Views access control"
   ],
   "keywords": [
     "permission",
     "user list",
     "people",
-    "admin",
-    "access",
-    "least privilege"
+    "admin/people",
+    "administer users",
+    "least privilege",
+    "views access"
   ],
-  "project_description": "Provides a grantable permission for users needing access to view the user list aka People list at /admin/people/list preventing the need to grant the broad and problematic administer users permission.\n\n When installed, if the People view is used with the core administer users permission, it is modified to the new permission. Existing roles with administer users are granted the new permission.\n\n Similar projects \n \n User Create Permission - Grants a role ability to create users without needing to grant administer users permission. \n \n Project image: 'posts' by @Rflor from the Noun Project",
+  "project_description": "Provides a single grantable permission, 'access people list', that lets a role view the People list at /admin/people without needing the broad and dangerous 'administer users' permission (which also permits editing any account, changing emails and passwords, blocking, cancelling and assigning roles).\n\nOn install the module rewrites the access of the core views.view.user_admin_people display from the 'administer users' permission to 'access people list' (only when the view still uses the core default), and grants 'access people list' to every existing role that already holds 'administer users', so nothing breaks for current administrators. A route subscriber is included to re-gate the non-Views core entity.user.collection route as well.\n\nThe permission is marked 'restrict access: true' because the People list discloses account data (usernames, status, roles, member-for and last-access, plus email if the site adds those columns). Operations links and the bulk-action form on the list remain independently access-checked by core, so a viewer without 'administer users' can see the list but cannot edit, block, cancel or role-change accounts through it.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",
   "project_created": "2020-03-03",
   "project_changed": "2026-08-18",
-  "core_semver_minimum": 8000000,
+  "core_semver_minimum": 11001000,
   "core_semver_maximum": 12999999
 }

@@ -1,21 +1,54 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-# Recipe (recipe) — agent index
+# Recipe (`recipe`) — agent index
 
-Recipe content type with structured ingredients, quantities and instructions. Submodule
-**`ingredient`** supplies the field type that parses them. Depends on core `node`, `path`, `text`.
-Version **8.x-2.3**. Core requirement `^10 || ^11`.
+Culinary-recipe module: a `recipe` **node bundle** plus a bundled **`ingredient`** submodule that
+adds an Ingredient **content entity** and a custom `ingredient` reference **field type**. Version
+**8.x-2.3**, `core_version_requirement: ^10 || ^11`. Requires `recipe:ingredient`, core `node`,
+`path`, `text`. License GPL-2.0-or-later. Config schema provided; no Drush commands; no plugin
+*types* defined.
 
-**Flag the name collision carefully.** Drupal core now has a feature called **recipes** — packaged
-configuration and content applied to an existing site, the replacement for distributions. It has
-nothing to do with cooking, and on a Drupal 10.3+ site the word is ambiguous in exactly the contexts
-where it matters. **Say which is meant.**
+> **Name collision — always disambiguate.** Core has a separate feature called **Recipes**
+> (packaged config + content applied to a site, the successor to distributions), unrelated to this
+> module and to cooking. On a Drupal 10.3+ site say which is meant.
 
-**Why the `ingredient` field type is the substance of the module:** "200g plain flour" is a
-quantity, a unit and an ingredient. As a line of text the site cannot scale to six servings, convert
-units, build a shopping list from three recipes, or list everything containing tomatoes. Parsing the
-human phrasing into parts — and keeping both — is the work.
+## What it actually is (read the source, not the name)
 
-**What a recipe site actually wants next:** **`Recipe` structured data**. Google renders recipes as
-rich results with a photograph, star rating, cook time and calories, and that presentation is worth
-more traffic than the content type. Check what JSON-LD this emits, or plan `schema_metatag`
-alongside it.
+- `recipe.info.yml` — bundle-provider module. Only route is `recipe.landing_page` (`/recipe`,
+  `_permission: 'access content'`). Config `install/` ships the `recipe` node type, nine
+  `field.storage`/`field.field` definitions (description, instructions, notes, source, prep_time,
+  cook_time, yield_amount, yield_unit, and the `ingredient` field), form/view displays, and
+  optional views + RDF mapping. No `recipe.permissions.yml`.
+- `recipe.module` — the logic: view-time pseudo-fields, node-type/field third-party settings,
+  duration + RDFa theming, D6/D7 migration wiring. See [hooks](hooks/overview.md).
+- `modules/ingredient/` — the substance: the Ingredient entity, the `ingredient` field type,
+  the autocomplete widget, unit config, and all the entity permissions.
+
+## Map
+
+- [fields/ingredient-field.md](fields/ingredient-field.md) — the `ingredient` field type, its 4
+  stored columns, the `ingredient_autocomplete` widget (fraction parsing, autocreate), unit sets,
+  and the formatters.
+- [fields/pseudo-fields.md](fields/pseudo-fields.md) — Total time + Yield extra fields, how the
+  `recipe:total_time` third-party checkbox drives the sum, duration formatting, RDFa.
+- [views/export.md](views/export.md) — the `recipe` Views display plugin and the `recipeml` /
+  `recipe_plain_text` style plugins; shipped views.
+- [permissions/overview.md](permissions/overview.md) — node permissions + the five `ingredient`
+  entity permissions and the access handler.
+- [configure/overview.md](configure/overview.md) — Ingredient settings form, node-type "Recipe
+  settings" tab, per-field unit config, editable `ingredient.units`.
+- [hooks/overview.md](hooks/overview.md) — `hook_entity_extra_field_info`, `recipe_node_view`,
+  form alters, `hook_migration_plugins_alter` / `hook_migrate_prepare_row`.
+
+## Key names
+
+- Entity: `ingredient` (base_table `ingredient`, data_table `ingredient_field_data`,
+  admin_permission `administer ingredient`, links `/ingredient/{ingredient}[/edit|/delete]`).
+- Field type `ingredient` → `IngredientItem` (extends `EntityReferenceItem`); widget
+  `ingredient_autocomplete`; formatters `ingredient_default`, `ingredient_recipeml`.
+- Integer formatter `recipe_duration` (`RecipeDurationFormatter`).
+- Views: display `recipe`, styles `recipeml` + `recipe_plain_text`; views `recipes`, `recipeml`,
+  `recipe_plain_text`, `ingredients`.
+- Services: `recipe.breadcrumb`, `ingredient.breadcrumb`, `ingredient.unit`, `ingredient.quantity`,
+  `ingredient.fuzzymatch`.
+- Config: `ingredient.settings` (`ingredient_name_normalize`), `ingredient.units` (sets `us`,
+  `si`, `common`).

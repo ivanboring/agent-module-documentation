@@ -1,11 +1,13 @@
 {
   "name": "Simple XML sitemap exclude pattern",
   "data_name": "simple_sitemap_exclude",
-  "description": "Adds exclude patterns for Simple XML Sitemap.",
+  "description": "Adds exclude patterns for Simple XML sitemap.",
   "version": "1.0.x",
   "package": "SEO",
   "composer_namespace": "drupal/simple_sitemap_exclude",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/simple_sitemap": "^4.2"
+  },
   "dependent_modules": [
     "simple_sitemap:simple_sitemap"
   ],
@@ -24,16 +26,16 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "SEO"
+    "Search engine optimization (SEO)"
   ],
   "subcategories": [
-    "Sitemaps",
-    "Search engines"
+    "XML sitemaps"
   ],
   "keywords": [
     "sitemap",
     "exclude",
     "pattern",
+    "regex",
     "seo",
     "simple_sitemap",
     "paths"

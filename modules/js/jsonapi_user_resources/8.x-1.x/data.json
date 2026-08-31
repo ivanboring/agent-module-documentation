@@ -1,11 +1,13 @@
 {
   "name": "JSON:API User Resources",
   "data_name": "jsonapi_user_resources",
-  "description": "JSON:API resources for users, such as registration.",
+  "description": "Adds JSON:API endpoints for anonymous user registration, password-reset request, and one-time-login password update.",
   "version": "8.x-1.x",
   "package": null,
   "composer_namespace": "drupal/jsonapi_user_resources",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/jsonapi_resources": "^1.0@beta"
+  },
   "dependent_modules": [
     "drupal:jsonapi",
     "jsonapi_resources:jsonapi_resources"
@@ -18,29 +20,32 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/jsonapi_hypermedia": "Dev/optional. When installed, the module exposes an `authenticated-as` top-level hypermedia link pointing to the current user's JSON:API individual resource."
+  },
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Decoupled",
-    "User management"
+    "Access control"
   ],
   "subcategories": [
-    "JSON:API",
-    "Registration"
+    "REST / web services",
+    "User registration",
+    "Password reset"
   ],
   "keywords": [
     "jsonapi",
     "registration",
     "decoupled",
+    "headless",
     "user",
-    "api",
-    "resources"
+    "password reset"
   ],
-  "project_description": "Provides JSON:API enhancements for user accounts using the JSON:API Resources . The additional endpoints will assist with building a decoupled/headless Drupal application that allows authenticated users to register, login, reset passwords, etc.\n\n This module adds the following JSON:API endpoints:\n\n \n /jsonapi/user/register : Register a new user \n /jsonapi/user/password/reset : Reset user password \n /user/{user}/password/update : Update user password \n \n Note that the user password may also be updated using the /jsonapi/user/user/{user} endpoint provided by Drupal core.\n\n Example requests \n /jsonapi/user/register \n \n\ncurl --location 'https://www.example.com/jsonapi/user/register' \\\n\n--header 'Content-Type: application/vnd.api+json' \\\n\n--header 'Accept: application/vnd.api+json' \\\n\n--data-raw '{\n\n \"data\": {\n\n \"type\": \"user--user\",\n\n \"attributes\": {\n\n \"name\": \"test 123\",\n\n \"mail\": \"test@test123456.com\",\n\n \"pass\": \"test\"\n\n } \n\n }\n\n}'\n\n /jsonapi/user/password/reset \n \n\ncurl --location 'https://example.com/jsonapi/user/password/reset' \\\n\n--header 'Content-Type: application/vnd.api+json' \\\n\n--header 'Accept: application/json' \\\n\n--data-raw '{\n\n \"data\": {\n\n \"type\": \"user--password-reset\",\n\n \"attributes\": {\n\n \"mail\": \"you@example.com\"\n\n }\n\n }\n\n}'",
+  "project_description": "Provides JSON:API resources for user account operations that core's JSON:API deliberately does not expose, built on the JSON:API Resources framework. It adds three anonymous-only endpoints for building a decoupled/headless front end: register a new account, request a password reset, and complete a password update from a one-time-login link.\n\nEndpoints (all prefixed with the JSON:API base path, default /jsonapi; all require the caller to be NOT logged in):\n\n- POST /jsonapi/user/register - create a new user account (honours user.settings.register and verify_mail).\n- POST /jsonapi/user/password/reset - request a password-reset email by name or mail.\n- PATCH /jsonapi/user/{user}/password/update - set a new password using a timestamp+hash from the reset link.\n\nThe user password may also be updated using core's /jsonapi/user/user/{user} endpoint. The module dispatches events (registration validate/complete, password reset) that subscribers use to send the standard user notification emails.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

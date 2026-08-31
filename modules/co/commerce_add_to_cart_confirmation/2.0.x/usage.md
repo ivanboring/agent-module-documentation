@@ -1,27 +1,28 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Commerce add to cart confirmation shows a confirmation screen or dialog after a product is added, instead of leaving the shopper on the product page with only a status message.
+Commerce add to cart confirmation shows a modal dialog confirming what was just added to the cart, instead of leaving the shopper on the product page with only Commerce's default "added to your cart" status message.
 
 ---
 
-The default behaviour is a status message at the top of the page, which on a long product page is frequently off-screen — so the shopper is unsure whether the click registered, clicks again, and either adds two or abandons. A confirmation resolves the ambiguity and, more importantly, is the moment with the most attention in the whole session: the shopper has just committed to something, and the two questions in front of them are "continue shopping" or "go to checkout". That choice is the single highest-leverage piece of interface on a store, which is why every large retailer has one. This module supplies it, requiring `commerce_cart`, `commerce_product` and core `views` — the Views dependency being the interesting part, since it means the confirmation's contents are a view and can therefore show related products, recently viewed items or a cart summary without custom code. Version **2.0.0** on core `^10.3 || ^11`. Two things to get right, both of which turn a helpful confirmation into an obstacle when they are wrong. **It must not block the next action**: a modal that has to be dismissed before adding a second item makes buying three things worse than the status message did, so the "continue shopping" path needs to be one click and obvious. And **a modal is a focus event**, so it must trap focus while open, return focus to the add-to-cart button on close, close on Escape, and announce itself — a confirmation nobody can dismiss with a keyboard is a checkout nobody can complete.
+The mechanism is worth understanding because it is entirely server-driven and uses no custom routes. When a product is added, the module's event subscriber (`ConfirmationMessageSubscriber`) reacts to Commerce's `CART_ENTITY_ADD` event and records the new order item's ID and quantity in the **private** tempstore keyed to the current user/session. On the *next* page render, `hook_page_bottom()` places a `commerce_add_to_cart_confirmation_message` render element (a placeholdered `#lazy_builder`) into the page; that builder reads and immediately clears the tempstore, and if an order item is pending it renders the `confirm_message_product_display` **view** with the order item ID as its contextual argument, then hands the resulting HTML and the view title to the browser through `drupalSettings`. A small behavior in `commerce_add_to_cart_confirmation.js` picks that up and opens it as a `Drupal.dialog` modal (core/drupal.dialog / jQuery UI) with "Go to cart" and "Continue shopping" buttons, the latter simply closing the dialog. Because the confirmation body is a View, you customise it without code: the module ships two dedicated view modes — `commerce_product.add_to_cart_confirmation_view` and `commerce_product_variation.add_to_cart_confirmation` — plus two Views area handlers (`OrderItemOrderTotal` and `OrderOtherCount`, exposed as "Order total for views with order item id argument" and "Order other total count") so the footer can show the cart total and an "N other items in your Cart" line. There is **no settings form** (README: "no menu nor modifiable settings"); all configuration is done by editing the view and the two view modes at the display/Manage-display level. Version **2.0.0** targets core `^10.3 || ^11` and requires `commerce_cart`, `commerce_product` and core `views`; the view is *optional* config, so a runtime requirements check warns if someone deletes it. Two design points determine whether the confirmation helps or hurts: the "continue shopping" path must be one obvious click so buying several items in a row is not slowed, and since the dialog is a focus event it should trap focus, restore it on close and dismiss on Escape (behaviour largely inherited from core's dialog, not added by this module).
 
 ---
 
-- Confirm an item was added to the cart.
-- Offer continue shopping or checkout.
-- Reduce duplicate add-to-cart clicks.
-- Show a cart summary after adding.
-- Suggest related products at the right moment.
-- Improve add-to-cart clarity.
-- Reduce cart abandonment.
-- Show an upsell after adding.
-- Confirm on a long product page.
-- Improve mobile purchase flow.
-- Show shipping progress toward free delivery.
-- Increase average order value.
-- Reassure the shopper the click worked.
-- Show recently viewed items.
-- Guide a shopper to checkout.
-- Reduce support queries about the cart.
-- Improve a store's conversion rate.
-- Display a cross-sell view.
+- Confirm to a shopper that an item was actually added to the cart.
+- Replace Commerce's easy-to-miss status message with a prominent modal.
+- Offer an explicit "Go to cart" vs "Continue shopping" choice at the moment of highest attention.
+- Reduce duplicate add-to-cart clicks on long product pages where the status message is off-screen.
+- Show the added product's title, quantity and line total in the confirmation.
+- Display the running cart total in the confirmation footer via the bundled Views area handler.
+- Show an "N other items in your Cart" summary line alongside the just-added item.
+- Embed a related-products or cross-sell view inside the confirmation without custom code.
+- Surface recently viewed items at the point of add-to-cart.
+- Customise the added-product display by editing the `add_to_cart_confirmation` view mode for products.
+- Customise the variation display via the `add_to_cart_confirmation` product-variation view mode.
+- Restyle the modal (width, buttons, layout) through the shipped CSS/theme template.
+- Override `commerce_add_to_cart_confirmation.html.twig` to change the confirmation markup.
+- Reduce cart abandonment by guiding the shopper straight to checkout.
+- Increase average order value by upselling in the confirmation dialog.
+- Improve the mobile purchase flow where inline status messages scroll away.
+- Reassure shoppers the click worked, cutting "did my order go through?" support queries.
+- Reuse the `commerce_add_to_cart_confirmation_message` render element to place the confirmation elsewhere.
+- Detect a missing confirmation view through the module's runtime requirements warning.
