@@ -1,48 +1,66 @@
 {
   "name": "Libraries Provider",
   "data_name": "libraries_provider",
-  "description": "Lets modules define how their external libraries are served.",
+  "description": "Lets modules and themes declare how their external front-end libraries are served (jsDelivr CDN or local /libraries), with per-library version, minification, variant, replacement and custom-option overrides via hook_library_info_alter.",
   "version": "2.0.x",
-  "package": null,
+  "package": "Libraries",
   "composer_namespace": "drupal/libraries_provider",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "php": ">=8.0",
+    "drupal/hook_event_dispatcher": "^4",
+    "drupal/core_event_dispatcher": "^4",
+    "drupal/form_options_attributes": "^2",
+    "php-http/guzzle7-adapter": "^1.0",
+    "upstreamable/jsdelivr-api-client": "^1",
+    "drupal/autoservices": "^1"
+  },
   "dependent_modules": [
     "hook_event_dispatcher:core_event_dispatcher (^4)",
     "autoservices:autoservices (^1)"
   ],
-  "configure": null,
+  "configure": "entity.library.collection",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/libraries_provider",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
-  "library_dependencies": [],
-  "suggests": {},
+  "php_requirement": ">=8.0",
+  "library_dependencies": [
+    "php-http/guzzle7-adapter",
+    "upstreamable/jsdelivr-api-client"
+  ],
+  "suggests": {
+    "sassphp (PHP extension)": "Required only for the custom-options (SASS variable compilation) feature; see https://github.com/absalomedia/sassphp"
+  },
   "submodules": [
     "libraries_provider_ui"
   ],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "LibrarySource"
+  ],
   "categories": [
     "Developer tools",
     "Performance"
   ],
   "subcategories": [
-    "Asset libraries",
-    "External library management"
+    "External library management",
+    "JavaScript libraries",
+    "CDN integration"
   ],
   "keywords": [
     "libraries",
     "cdn",
+    "jsdelivr",
     "local",
-    "external",
     "assets",
-    "provider"
+    "library_info_alter",
+    "npm",
+    "asset-packagist"
   ],
-  "project_description": "Libraries provider is a module meant to relieve themes and modules from the loading of and configuration of third party assets.\n\n Back to top \n\n Features \n \n Allows to choose wether to load a library from a CDN or the local filesystem.\n Update the version of the library using the interface.\n When to load the minified or the normal version can be configured.\n Replacement libraries for other libraries can be configured.\n The user can choose what variant of the library to load in case there is options.\n When the library has custom options e.g sass variables the different values can be configured. \n The module relies on the hook_library_info_alter to apply transformations to the libraries based on what has been configured.\n\n Back to top \n\n Installation \n Due to relying on external PHP libraries from packagist.org to handle connections to the JsDelivr API the module can only be installed using composer. \n\n composer require drupal/libraries_provider:^1 Have look at Composer template for Drupal projects to get familiar on how to manage Drupal projects with composer.\n\n Back to top \n\n Provide libraries \n This module relies on adding additional data to the\n\n mytheme.libraries.yml or mymodule.libraries.yml \n\nso for example to load Fontawesome 5: \n\n fontawesome:\n remote: https://github.com/FortAwesome/Font-Awesome\n version: 5.8.0\n license:\n name: Font Awesome Free License\n url: https://github.com/FortAwesome/Font-Awesome/blob/master/LICENSE.txt\n gpl-compatible: true\n css:\n base:\n https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.8.0/css/all.min.css:\n type: external\n minified: true\n libraries_provider:\n enabled: true\n source: cdn.jsdelivr.net\n npm_name: '@fortawesome/fontawesome-free' The information under the libraries_provider key defines\n\nthe defaults for this library.\n\n \n enabled : When this library is attached it will only load its assets if enabled. \n This is useful for disabling optional libraries or loading replacements. \n\n \n \n source : The ID of the plugin that can handle this library by default. \n It needs to match the url information provided for the library css and js above. \n\n \n \n npm_name : The ID of this library on NPM to be able to retrieve information. \n There is additional properties that can be defined:\n\n \n blacklist_releases (array of values): avoid certain versions to be listed. \n Sometimes the upstream build is not released correctly or has security problems. \n\n \n \n minified : never , always or when_aggregating (default) \n When the upstream release offers only minified versions or only normal versions the default needs to be changed. \n\n \n \n variants_available : list of possible variations of this library.\n variant_regex : the regex that matches the part of the path that needs to be replaced to change to the selected variant.\n variant : default variant.\n replaces : the ID of libraries that are replaced by this library. \n Some CSS skins already include the base library so loading the css twice is something to avoid. It can be useful when blundling or compiling libraries in a custom project and some others provided by other modules need to be replaced. The libraries provider ID is formed like NAMEOFMODULEORTHEME__KEYOFTHELIBRARY. Note the two underscores. The KEYOFTHELIBRARY can be obtained from the NAMEOFMODULEORTHEME.libraries.yml file. It similar to the concept of libraries-override but replacing all the assets provided by the library. \n\n \n An example can be seen at: https://gitlab.com/upstreamable/drulma/-/blob/8.x-1.x/drulma.libraries.yml \n\n Note that a library being enabled does not mean that it will be loaded on every page request. It still needs to be attached from a module or a theme \n\n Back to top \n\n Source plugins \n The assets can be attached to the frontend from a CDN or from the local filesystem.\n\n Currently the module implements a plugin for the JsDelivr CDN\n\nand another for local libraries in the /libraries folder.\n\n Other implementations for CDNs or ways to load a library can be added to this …",
+  "project_description": "Libraries provider relieves themes and modules from hard-coding where their third-party front-end assets are loaded from. A module or theme adds a `libraries_provider` key to a library definition in its *.libraries.yml (declaring an npm_name, default source, minification policy, variants, replacements). The module then rewrites those library definitions at runtime via hook_library_info_alter (a core_event_dispatcher LibraryInfoAlterEvent subscriber), so the site can switch each library between the jsDelivr CDN and the local /libraries filesystem, pick a version, choose minified/normal serving, select a variant, or have one library replace another. Version lists come from the jsDelivr data API (npm packages) or a local package.json. The optional libraries_provider_ui submodule exposes a 'library' config entity list at /admin/structure/libraries where admins with the 'administer libraries' permission edit these overrides. Custom options (currently SASS variable overrides compiled with the sassphp extension) are supported for locally-served libraries.",
   "maintenance_status": "Minimally maintained",
   "development_status": "No further development",
   "security_advisory_coverage": "covered",

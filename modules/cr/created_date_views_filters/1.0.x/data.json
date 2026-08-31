@@ -1,13 +1,14 @@
 {
   "name": "Created Date Views Filters",
   "data_name": "created_date_views_filters",
-  "description": "Additional created-date filters for Views.",
+  "description": "Adds two Views filters on the entity created date: a Year dropdown and a Month dropdown.",
   "version": "1.0.x",
+  "release": "1.0.6",
   "package": "Views",
   "composer_namespace": "drupal/created_date_views_filters",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:views"
+    "views"
   ],
   "configure": null,
   "core_version_requirement": "^8 || ^9 || ^10 || ^11",
@@ -21,24 +22,31 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
+  "provides_views_plugins": {
+    "filter": [
+      "year_filter",
+      "month_filter"
+    ]
+  },
   "categories": [
     "Content display"
   ],
   "subcategories": [
-    "Views query enhancements",
-    "Dates and time"
+    "Views exposed filters",
+    "Views query enhancements"
   ],
   "keywords": [
     "views",
     "date",
     "filter",
     "created",
-    "relative",
-    "period"
+    "year",
+    "month"
   ],
-  "project_description": "This module provides the months and years dropdown filter for a created date in views\n\n Requirements \n\nThis module requires core module views.\n\n Installation\n\n Install as you would normally install a contributed Drupal module. For further\n\ninformation, see\n\n[Installing Drupal Modules]( https://www.drupal.org/docs/extending-drupal/installing-drupal-modules ).\n\n Configuration \n\n \n The module has no menu or adjustable settings. \n There is no configuration. \n The module will provide the \"Month filter: Filter\" and \"Year filter: Filter\" in the view when enabled.",
+  "notes": "Registers two Views filter handlers via hook_views_data() on the pseudo-table 'views' with field 'created': year_filter (Drupal\\created_date_views_filters\\Plugin\\views\\filter\\YearFilter, id 'year_filter', title 'Year filter - Filter') and month_filter (MonthFilter, id 'month_filter', title 'Month filter - Filter'). Both extend FilterPluginBase (not the date/numeric base, so no operator/min-max UI). YearFilter renders a select of the last six years (date('Y')-5 through current year, default current year); its query() adds addWhereExpression(0, \"EXTRACT(YEAR FROM FROM_UNIXTIME($table.created)) = :year\", [':year' => value]). MonthFilter renders a select of month names january..december, converts the chosen name to a month number with date('m', strtotime($value)), then addWhereExpression(0, \"EXTRACT(MONTH FROM FROM_UNIXTIME($table.created)) = :month\"). $table is array_key_first($query->tables) (the View's first/base table) -- NOT the field's own table, so on Views whose base table is not the one holding 'created' (or with an aliased first table) the generated SQL can reference a wrong/absent column. EXTRACT ... FROM_UNIXTIME is MySQL/MariaDB syntax; it is not portable to PostgreSQL or SQLite. No config, no schema, no permissions, no services, no admin form -- everything is done per-View in the Views UI. README lists maintainer chanderbhushan.",
+  "project_description": "This module provides the months and years dropdown filter for a created date in views.\n\nRequirements: this module requires core module Views.\n\nInstallation: install as you would normally install a contributed Drupal module.\n\nConfiguration: the module has no menu or modifiable settings. There is no configuration. When enabled, the module provides the \"Month filter: Filter\" and \"Year filter: Filter\" in the view.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

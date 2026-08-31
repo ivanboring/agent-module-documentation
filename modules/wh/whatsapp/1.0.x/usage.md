@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Drupal WhatsApp sends messages through WhatsApp's Business API, for notifications on the channel a large part of the world actually reads.
+Drupal WhatsApp embeds a hosted ChatWith.io / tochat.be chat widget by placing a block that loads the vendor's `bundle.js` for a widget key you store in a Key entity — a floating "chat on WhatsApp" button, not a server-side messaging integration.
 
 ---
 
-In much of Latin America, South Asia, Africa and southern Europe, WhatsApp is the default messaging channel and email is something people check occasionally — a delivery notification, an appointment reminder or a booking confirmation sent by email is simply less likely to be seen than the same message on WhatsApp. This module supplies the integration, and the notable detail is its dependency: **`key`**, the standard Drupal module for credential storage, is a hard requirement rather than a suggestion. That is exactly the right decision and unusual enough to be worth calling out — most integration modules put an API token in a settings form and therefore into exported configuration, where it reaches version control; requiring a Key entity means the token can come from an environment variable and never touch config. Version **1.0.5** on core `^10.2 || ^11`, with `whatsapp configuration form` marked `restrict access: true`. Two things to understand about the channel rather than the module. WhatsApp's Business API is **template-based for business-initiated messages**: outside a 24-hour window opened by the user contacting you, only pre-approved message templates may be sent, so the copy has to be submitted to Meta and approved before the site can use it — which changes the development workflow, since message text is no longer something a developer edits freely. And it is a **paid, per-conversation** channel with an account that can be suspended for policy violations, so the failure modes include commercial and policy ones, not just technical.
+Despite the name, this module sends nothing itself and never touches WhatsApp's Business API. It ships one core **Block plugin** ("WhatsApp block") whose entire output is a single tag — `<script defer src="//widget.tochat.be/bundle.js?key=WIDGET_KEY"></script>` — pointing at the **ChatWith.io / tochat.be** SaaS. That third-party JavaScript is what actually renders the floating chat button and click-to-chat behaviour in the visitor's browser; the module's job is just to inject the loader on the pages where you place the block. The `WIDGET_KEY` is an account identifier you obtain from ChatWith.io, and the module's one genuinely opinionated choice is that it is stored in a **Key entity** (the `key` module is a hard dependency, not a suggestion) rather than in a plain settings field. Configuration is a two-field form at `/admin/config/services/whatsapp`, gated by the restricted `whatsapp configuration form` permission: a `key_select` for the widget key and a checkbox, **"Locally cache external library"**. When that box is ticked the module downloads `bundle.js` to `public://whatsapp/bundle.js`, serves it from your own domain, and refreshes it once every 24 hours via `hook_cron` (the caching machinery is adapted from the Google Analytics module, hash-comparing local vs. remote before replacing). Practical caveats: placing the block loads and executes remote vendor code on every page it appears — a supply-chain and privacy consideration you accept from tochat.be — and the widget key is by design embedded in the page's HTML for the browser to read, so treat it as a public site identifier rather than a secret even though it lives in a Key entity.
 
 ---
 
-- Send order updates over WhatsApp.
-- Notify users on their preferred channel.
-- Send appointment reminders.
-- Confirm a booking by message.
-- Reach users who do not read email.
-- Send delivery notifications.
-- Support a Latin American audience.
-- Send a two-factor code by WhatsApp.
-- Notify about a support ticket update.
-- Send event reminders.
-- Reach customers in South Asia.
-- Send a shipping notification.
-- Support a messaging-first market.
-- Send a payment confirmation.
-- Notify about an account change.
-- Store the API token in a Key entity.
-- Send template-based business messages.
-- Reduce missed notifications.
+- Add a floating "chat with us on WhatsApp" button to the site.
+- Let visitors start a WhatsApp conversation from any page (click-to-chat).
+- Place the chat widget only on specific pages via block visibility conditions.
+- Show the widget only to anonymous visitors, or only on the contact page.
+- Drive support conversations to WhatsApp instead of a web form.
+- Add a sales/enquiry chat channel to a marketing landing page.
+- Embed a ChatWith.io / tochat.be widget you already pay for into Drupal.
+- Store the ChatWith.io widget key in a Key entity instead of a config field.
+- Source the widget key from an environment variable via the Key module's env provider.
+- Serve the vendor's bundle.js from your own domain (local cache) for a stricter CSP.
+- Reduce third-party CDN calls by locally caching the widget JavaScript.
+- Refresh the cached widget script automatically once a day on cron.
+- Restrict who can change the widget configuration with a dedicated permission.
+- Swap the widget key across environments by pointing at a different Key.
+- Add a WhatsApp contact channel without writing any custom JavaScript.
+- Give a multilingual site a single chat entry point on every page.
+- Place the block in a footer or sticky region as a persistent contact affordance.
+- A/B test placing the chat widget on some content types and not others.
+- Turn the widget off site-wide by unplacing or disabling the block.
+- Temporarily disable local caching to always fetch the latest vendor script.

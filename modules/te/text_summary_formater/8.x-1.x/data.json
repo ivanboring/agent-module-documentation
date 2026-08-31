@@ -1,7 +1,7 @@
 {
   "name": "Text Summary Formatter",
   "data_name": "text_summary_formater",
-  "description": "Formatter that displays only the summary.",
+  "description": "Field formatter that displays only the summary of a text-with-summary field.",
   "version": "8.x-1.x",
   "package": "Custom",
   "composer_namespace": "drupal/text_summary_formater",
@@ -21,24 +21,23 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"
   ],
   "subcategories": [
-    "Field formatters",
-    "Teasers"
+    "Field formatters"
   ],
   "keywords": [
     "summary",
     "teaser",
     "formatter",
     "text",
-    "trimmed",
-    "excerpt"
+    "excerpt",
+    "abstract"
   ],
-  "project_description": "Provide a 'Summary Only' formatter for text with summary fields.",
+  "project_description": "Provides a 'Summary only' field formatter for text-with-summary fields that renders just the summary and nothing when no summary was written.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Pager provides a block with previous/next navigation between individual pieces of content, rather than the numbered paging of a listing.
+Pager provides a configurable block that shows previous/next links between individual nodes — a thumbnail, title and prev/next label — not the numbered paging of a listing.
 
 ---
 
-Two different things share the word "pager" and confusing them wastes time. Views' pager moves through **pages of a list**; this moves through **items in a sequence** — the previous and next article, the next chapter of a document, the following item in a collection. That kind of navigation keeps a reader moving through a body of content instead of returning to an index between each item, which is why every documentation site, book-like structure and serialised archive has it. Version **3.0.1** on core `^9.3 || ^10 || ^11`, configured at its own admin route behind `administer pager`, and note the **unusually wide dependency list** — `block`, `filter`, `node`, `system`, `taxonomy`, `text` and `user` — which suggests the sequence can be derived from several different orderings rather than only from creation date. Two things determine whether the result is right. **What defines the sequence** is the whole design: creation date, a weight field, taxonomy order and menu order each give a different "next", and the one that matches the reader's mental model is usually the one the page's own navigation implies. And **sequence links are per-item and cacheable**, so a block showing the next article must vary by the current item and be invalidated when a neighbouring item is added, unpublished or reordered — otherwise it points at content that has moved or disappeared, which is a broken link the site will not notice.
+Two unrelated things share the word "pager"; do not confuse them. Core/Views' pager moves through **pages of a list**; this module moves through **individual nodes in a chronological sequence** — the previous and next article, the next item in a tagged collection. It ships **one plugin, a Block** (`id: pager`, "Pager Block"), and nothing else in the installed **3.0.1** release (the Views-integration sub-modules exist only on the 3.1.0-beta line and are not here). The mechanism is concrete and narrow: place the block on node pages, and on any node route it runs raw SQL against `node_field_data` joined to `taxonomy_index` to find the neighbouring **published** nodes ordered **strictly by the node `created` timestamp** — there is no weight field, menu order or custom sort, despite what a first glance at the wide dependency list (`block`, `filter`, `node`, `system`, `taxonomy`, `text`, `user`) might suggest. Each block instance is configured entirely on the **block placement form** (there is no standalone settings page — the `configure: pager.admin` link in the .info.yml points at a route the module never defines): Previous/Next text, an **Image Field** and **Image Style** (both required — a node with no value in that image field still links but shows no picture), a **Theme** (`pager_block` centred, or `pager_wings` fixed slide-out side tabs), the **Content Types** and **Taxonomy Terms** to include (both required), **Maintain Term** (keep the current node's term vs. any selected term), **Direction** (forward = oldest→newest, or backward), and **End Behavior** (`loop` back to the first/last, `single` show only one link, or `current` link to self). Because the neighbour set changes as content is added, unpublished or retagged, the build sets `#cache max-age 0` (the block is uncacheable and recomputed every request). Two conditions gate visibility: the current node's type must be in the selected types, and it must be tagged with one of the selected terms — otherwise `getTid()` returns 0 and the block renders empty. The `administer pager` permission is declared but unused; block placement is governed by core's `administer blocks`.
 
 ---
 
-- Add previous/next links to articles.
-- Navigate chapters of a document.
-- Move through a serialised archive.
-- Link to the next item in a collection.
-- Keep readers moving through content.
-- Add sequence navigation to a book.
-- Navigate a series of tutorials.
-- Link between related news items.
-- Add next-article links to a blog.
-- Navigate a photo essay's parts.
-- Move through a taxonomy's content.
-- Add navigation to a documentation set.
-- Link through a course's lessons.
-- Navigate a report's sections.
-- Add a previous link to a page.
-- Move through a product range.
-- Support a reading sequence.
-- Reduce returns to the index page.
+- Add previous/next node links to articles tagged with a shared taxonomy.
+- Navigate chronologically between items in a tagged collection.
+- Move readers through a serialised archive of posts, oldest to newest.
+- Show a thumbnail-plus-title prev/next widget under node content.
+- Link between news items that share a category term.
+- Add a slide-out side-tab "wings" pager fixed to the viewport edges.
+- Add a centred prev/next block below an article body.
+- Keep prev/next navigation within a single content type.
+- Navigate across several content types that share a taxonomy and image field.
+- Loop from the newest item back to the oldest (End Behavior: loop).
+- Stop at the ends, showing only one link (End Behavior: single).
+- Link the first/last item to itself at the boundary (End Behavior: current).
+- Reverse the reading order with Direction: backward.
+- Keep the neighbour within the current node's exact term (Maintain Term).
+- Present a photo/portfolio series with image thumbnails between items.
+- Customise the "Previous"/"Next" labels per block placement.
+- Reduce returns to an index page between items.
+- Restrict a pager to a curated set of taxonomy terms.
+- Give a blog category its own next-article navigation.
+- Show sequence navigation only on node pages that qualify (else render nothing).

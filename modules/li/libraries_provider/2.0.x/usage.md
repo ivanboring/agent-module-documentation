@@ -1,27 +1,27 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Libraries Provider lets a site choose how each external JavaScript library is served — from a CDN, from a local copy, or from a specific version — rather than accepting whatever the declaring module hard-coded.
+Libraries Provider lets a module or theme declare *how* its external front-end libraries are served, instead of hard-coding a CDN URL or a local path. The declaring extension adds a `libraries_provider` key to its `*.libraries.yml` entry; the site can then switch that library between the jsDelivr CDN and the local `/libraries` folder, pick a version, choose when to serve the minified file, select a variant, or let one library replace another. The optional `libraries_provider_ui` submodule adds an admin screen for all of this.
 
 ---
 
-Modules that need a third-party library declare it in their `libraries.yml`, and the choice they make there becomes the site's choice. Some point at a CDN, which is convenient and means every page load depends on a third party being reachable, sends visitor IP addresses to that host, and requires a CSP allowance — `redoc_field_formatter` in this campaign loads Redoc from jsDelivr with no integrity hash. Others require a local copy, which is right for privacy and air-gapped environments and means the site maintainer must place the files and keep them updated. Neither choice belongs to the module author, and this makes it a site decision with a `libraries_provider_ui` submodule for making it through an interface. Version **2.0.4** on core `^10 || ^11`. Two things to note. The **dependencies are substantial** — `hook_event_dispatcher` and `autoservices`, both architectural modules in their own right, so this brings more than its own weight and that is worth weighing against a smaller intervention like overriding one library in a theme's `libraries-override`. And the reason to want it is usually one of three concrete requirements: a **content security policy** that must enumerate hosts, a **privacy or GDPR** position that forbids third-party requests, or an **offline or restricted network** where a CDN is unreachable. If none of those applies, core's `libraries-override` in a theme handles the occasional case.
+The mechanism is a `hook_library_info_alter` subscriber (`LibrariesReplacements`, wired through `core_event_dispatcher`'s `LibraryInfoAlterEvent`): for every discovered library that carries a `libraries_provider` key, it merges in defaults, overlays any saved `library` config entity, and rebuilds the `css`/`js` asset paths through a chosen **LibrarySource plugin**. Two source plugins ship: `cdn.jsdelivr.net` (builds `https://cdn.jsdelivr.net/npm/<npm_name>@<version>/<path>` and fetches available versions from the jsDelivr data API via `upstreamable/jsdelivr-api-client`) and `local` (serves from `/libraries/<asset-packagist-name>` and reads the version from the library's `package.json`). Each plugin exposes `getCanonicalPath()` / `getPath()` so a path can be normalised from one source and re-emitted for another, plus `isAvailable()` / `getAvailableVersions()`. Minification is resolved per component against `system.performance` (`always`, `never`, or `when_aggregating`). Overrides are stored as a `library` **config entity** (`libraries_provider.library.<extension>__<name>`; note the double underscore) whose `postSave`/`preDelete` clear the library-discovery cache and, when `custom_options` are set, compile SASS variables into the library's CSS file using the `sassphp` PHP extension. The base module has **no UI and no permission**; the `libraries_provider_ui` submodule provides the `/admin/structure/libraries` entity list/edit/revert forms gated by the `administer libraries` permission, and depends additionally on `form_options_attributes`. A `LibrarySource` plugin type (annotation `@LibrarySource`, namespace `Plugin/LibrarySource`) lets other modules add further sources (e.g. the `lp_fontawesome` contrib module). Two tokens are exposed: `[library:variant]` and `[library:version]`.
 
 ---
 
-- Serve a library locally instead of from a CDN.
-- Meet a content security policy requirement.
-- Avoid third-party requests for privacy.
-- Support an air-gapped deployment.
-- Pin a library to a specific version.
-- Override a module's library choice.
-- Reduce external dependencies.
-- Serve libraries from an internal mirror.
-- Support a restricted network.
-- Centralise library decisions.
-- Switch a library source without patching.
-- Meet a GDPR requirement on third parties.
-- Add integrity control over libraries.
-- Support an offline environment.
-- Standardise library serving across modules.
-- Reduce page-load dependency on a CDN.
-- Audit which external hosts are used.
-- Configure library sources through a UI.
+- A theme (e.g. Drulma) ships a CSS framework and wants site builders to choose CDN vs. local delivery of Bulma without editing YAML.
+- Serve a JS/CSS library from jsDelivr on production but from `/libraries` on an air-gapped or CDN-forbidden environment, toggled per site.
+- Meet a Content-Security-Policy or GDPR/privacy requirement that forbids third-party asset hosts by switching every managed library to `local`.
+- Pin a specific upstream version of a library from the versions the jsDelivr API reports, chosen from a dropdown.
+- Blacklist a broken or vulnerable upstream release so it never appears in the version selector (`blacklist_releases`).
+- Force minified assets always (or never) regardless of Drupal's CSS/JS aggregation setting, or default to "when aggregating".
+- Let a Bulmaswatch/Bootswatch-style skin library **replace** the base framework library so the base CSS is not loaded twice (`replaces`).
+- Disable an optional library entirely (`enabled: false`) so its assets are voided even when attached.
+- Offer named **variants** of a library (e.g. theme skins) selectable from the UI, with a per-variant docs URL surfaced in the form.
+- Download a library via asset-packagist (`composer require npm-asset/...`) and have the UI automatically offer the local copy.
+- Override upstream SASS variables (custom options) and recompile the library's CSS locally, without maintaining a full front-end build (requires `sassphp` and a locally-served library).
+- Provide a module (like `lp_fontawesome`) that bundles a library definition plus a matching source plugin for a specific CDN.
+- Add a new CDN or delivery mechanism by implementing a `LibrarySource` plugin.
+- Centrally see, in one admin table, every managed library with its current version, source and enabled state.
+- Revert a library override back to the extension's declared defaults (delete the config entity) from the UI.
+- Track which library version/variant is in use inside other configuration via the `[library:version]` / `[library:variant]` tokens.
+- Give site builders control over front-end library delivery while keeping the choice out of code, so it survives config export/import.
+- Provide a consistent way for multiple contrib modules/themes to expose their libraries for CDN-or-local switching under one screen.

@@ -1,7 +1,7 @@
 {
   "name": "Twig Events",
   "data_name": "twig_events",
-  "description": "Wraps the Twig engine to dispatch events at key points.",
+  "description": "Swaps the site's Twig theme engine for a wrapper that dispatches a Symfony event around every template render, letting code observe or rewrite rendered output.",
   "version": "1.0.x",
   "package": "Core",
   "composer_namespace": "drupal/twig_events",
@@ -21,23 +21,23 @@
   ],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools",
     "Theming"
   ],
   "subcategories": [
-    "Render API",
-    "Extension points"
+    "Hook / event system",
+    "Theme development tools"
   ],
   "keywords": [
     "twig",
     "events",
-    "theme",
-    "dispatch",
-    "developer",
-    "hooks"
+    "theme engine",
+    "template render",
+    "event dispatcher",
+    "render output"
   ],
   "project_description": "A wrapper for the twig engine to dispatch events at key points.",
   "maintenance_status": "Actively maintained",

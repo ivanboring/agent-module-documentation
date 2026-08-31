@@ -1,11 +1,14 @@
 {
   "name": "Drupal WhatsApp",
   "data_name": "whatsapp",
-  "description": "Sends WhatsApp messages to users.",
+  "description": "Embeds a hosted ChatWith.io / tochat.be WhatsApp chat widget on the site by placing a block that loads the vendor's bundle.js keyed by a Key entity.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/whatsapp",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/key": "^1.15",
+    "drupal/core": "^10.2 || ^11"
+  },
   "dependent_modules": [
     "key:key"
   ],
@@ -27,18 +30,19 @@
     "Integrations"
   ],
   "subcategories": [
-    "SMS / messaging",
-    "Notifications"
+    "Chat / messaging"
   ],
   "keywords": [
     "whatsapp",
-    "messaging",
-    "notifications",
-    "business api",
+    "chat widget",
+    "chatwith.io",
+    "tochat.be",
     "key",
-    "meta"
+    "block",
+    "click-to-chat",
+    "javascript widget"
   ],
-  "project_description": "This module provides a widget that integrates a personalized messaging link for WhatsApp service with Key module.\n\n What is WhatsApp? \n According to the company:\n\n WhatsApp Messenger is a cross-platform mobile messenger that replaces SMS and works through the existing internet data plan of your device. WhatsApp is available for iPhone, BlackBerry, Android, Windows Phone, Nokia Symbian60 & S40 phones. Because WhatsApp Messenger uses the same internet data plan that you use for email and web browsing, there is no cost to message and stay in touch with your friends.\n\n \n Late 2011 numbers: 1 billion messages per day, ~20 million users.\n\n Installation and usage \n Here's a demo video on how to use and configure the module: https://youtu.be/DWzd0DkdTYE \n\n \n If your site is managed via Composer , use Composer to download the whatsapp module running composer require 'drupal/whatsapp:1.0' . Otherwise copy/upload the whatsapp module to the modules directory of your Drupal installation.\n Enable the 'WhatsApp' module 'Extend'. (/admin/modules) \n Go to admin/config/services/whatsapp and choose a widget key provided by chatwithio. \n If you have not registered any keys yet, go to admin/config/system/keys and add a new one. \n Once you have done this you can enable the widget by adding a WhatsApp block in the layout. \n \n Sponsors \n \n ChatWith.io \n Back to top",
+  "project_description": "The WhatsApp (\"WhatsApp Widget\") module embeds a hosted, third-party WhatsApp chat/click-to-chat widget onto the site. It does NOT talk to WhatsApp's Business API and does not send messages server-side. Instead it provides a single core Block plugin (\"WhatsApp block\") that renders `<script defer src=\"//widget.tochat.be/bundle.js?key=WIDGET_KEY\"></script>`, where WIDGET_KEY is a widget identifier issued by the ChatWith.io / tochat.be SaaS and stored in a Key entity (the `key` module is a hard dependency). The vendor's JavaScript then draws the floating chat button/widget in the visitor's browser. Configuration lives at /admin/config/services/whatsapp behind the restricted `whatsapp configuration form` permission: an admin picks the Key that holds the widget key and, optionally, enables \"Locally cache external library\" so the bundle.js is downloaded to public://whatsapp/bundle.js (refreshed daily on cron) and served from the site instead of from the vendor CDN. Developed and maintained by Cambrico; sponsored by ChatWith.io.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

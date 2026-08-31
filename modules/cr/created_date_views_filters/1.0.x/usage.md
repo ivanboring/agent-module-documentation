@@ -1,27 +1,30 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Created Date Views Filters adds filters on a node's creation date expressed as periods — this month, last year — rather than as raw timestamp comparisons.
+Created Date Views Filters adds two Views filter handlers on the entity `created` timestamp: a **Year** dropdown (the last six years) and a **Month** dropdown (January–December). Each matches rows whose creation date falls in the chosen year or calendar month.
 
 ---
 
-Views can already filter on `created`, and it does so as an operator plus a value, which means a date filter is either an absolute timestamp that goes stale the moment it is saved, or an offset expression that a site builder has to get right. "Content from this month" is not "created after 1 August" — that is content from *this particular* August, and next month the view is wrong. Views' relative-date syntax can express it, but the syntax is unforgiving and the failure is silent: a view that quietly returns nothing, or returns everything, is much harder to notice than one that errors. Named period filters make the intent explicit and keep it correct as time passes. Version **1.0.6** on `^8` through `^11`, depending on core `views`, with no configuration outside the Views UI. Two points. **Period boundaries are a timezone question** — "this month" begins at midnight in someone's timezone, and on a site with an international audience the site default, the user's setting and UTC give three different answers, so establish which the filter uses before trusting a report built on it. And **relative filters interact with caching**: a view whose result changes at midnight needs cache metadata that expires then, or it will keep serving yesterday's answer, which is exactly the kind of bug that surfaces as "the dashboard was wrong on Monday morning".
+The module is deliberately small: `hook_views_data()` attaches two filter plugins to the `views` pseudo-table against the `created` field, and both extend the plain `FilterPluginBase` — so there is no operator, no min/max, just a single `<select>`. **Year** offers `date('Y')-5` through the current year (default: current year) and generates `EXTRACT(YEAR FROM FROM_UNIXTIME(<table>.created)) = :year`. **Month** offers the twelve month *names*, converts the chosen name to a number with `strtotime()`, and generates `EXTRACT(MONTH FROM FROM_UNIXTIME(<table>.created)) = :month`. The month filter matches *every* year's occurrence of that month, and the two filters combine (AND) when both are added, so "March 2023" needs both. Values are bound with named placeholders, so input is parameterized. Two real caveats. The `EXTRACT(... FROM FROM_UNIXTIME(...))` expression is **MySQL/MariaDB-specific** — it is not portable to PostgreSQL or SQLite. And the target table is `array_key_first($query->tables)`, the View's *first* table, not the table that actually holds `created`; on a View whose base table is not `node`/the timestamp's owner (or whose first table is aliased), the emitted SQL can point at the wrong or a nonexistent column. There are no settings, no schema, and no admin form — everything is configured per-View in the Views UI, and the filters can be exposed like any other.
 
 ---
 
-- Show content created this month.
-- List last year's articles.
-- Filter a dashboard by period.
-- Show this week's submissions.
-- Build a monthly report view.
-- Avoid stale absolute date filters.
-- Show recent content without offsets.
-- Filter an archive by year.
-- Build a quarterly summary.
-- Show today's new content.
-- Report on last month's activity.
-- Filter a moderation queue by age.
-- Show content from the current year.
-- Build an editorial activity view.
-- Filter by a named period.
-- Avoid relative-date syntax mistakes.
-- Show submissions since the period start.
-- Build a recurring report.
+- Filter a content View to items created in a chosen year.
+- Filter a content View to items created in a chosen calendar month.
+- Expose the Year dropdown so visitors pick a year on the front end.
+- Expose the Month dropdown as a front-end month picker.
+- Combine Year + Month to scope a listing to one month of one year.
+- Build a "this year's articles" listing without hand-writing a date offset.
+- Give editors a simple year picker over a node admin View.
+- Add a month selector to an archive/blog index View.
+- Let users browse posts by the month they were published.
+- Scope a report View to a single calendar year.
+- Add a quick year facet to a search-results View.
+- Filter a comments or submissions View by creation year.
+- Provide a "born in month X" style filter over any entity with `created`.
+- Narrow a large content list to one year to reduce rows shown.
+- Offer a year dropdown limited to the last six years on a recent-content View.
+- Match every March across all years for a seasonal listing.
+- Add year/month filters to a media library View.
+- Build a yearly digest View driven by an exposed year filter.
+- Let an editorial dashboard filter activity by month.
+- Replace a fiddly core relative-date filter with a plain named dropdown for whole-year/whole-month scoping.
+- Combine with other Views filters (status, type) to slice content by creation period.

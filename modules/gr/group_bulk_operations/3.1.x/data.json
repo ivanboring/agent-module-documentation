@@ -1,11 +1,13 @@
 {
   "name": "Group Bulk Operations",
   "data_name": "group_bulk_operations",
-  "description": "Bulk actions on groups via Views.",
+  "description": "Adds core Views bulk-form actions for the Group module: assign a group role, remove a member, or change the owner across many groups at once via a batch.",
   "version": "3.1.x",
   "package": "Group",
   "composer_namespace": "drupal/group_bulk_operations",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/group": "^2.0 || ^3.0"
+  },
   "dependent_modules": [
     "group:group"
   ],
@@ -21,25 +23,32 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "Action: group_assign_role (Plugin/Action/AssignGroupRole)",
+    "Action: remove_group_user (Plugin/Action/RemoveGroupUser)",
+    "Action: update_group_owner (Plugin/Action/UpdateGroupOwner)",
+    "ViewsField: group_bulk_form (Plugin/views/field/GroupBulkForm)"
+  ],
   "categories": [
-    "User management",
+    "Automation",
+    "Access control",
     "Administration tools"
   ],
   "subcategories": [
     "Bulk operations",
-    "Groups"
+    "Groups & memberships",
+    "User roles & permissions"
   ],
   "keywords": [
     "group",
-    "bulk",
-    "vbo",
-    "roles",
+    "bulk operations",
+    "views bulk form",
+    "group roles",
     "membership",
-    "views"
+    "group owner"
   ],
-  "project_description": "This module creates an Action plugin that can assign/update a user's group role and update owner of the group for multiple groups in once. \n\n When you are managing a site with many groups, it could be painful to update a user's role or owner of the group for multiple groups, e.g. giving a user admin role in tens of groups, which requires changing configurations repeatedly for each group . This module provides the capability to update a user's roles for as many groups as you want in one time.\n\n Usage: \n \n Add \"Bulk Update\" field to group list view\n\n \n \n Ensure \"Assign group role and Remove Group User\" is in Action selected\n\n \n \n Select the group that the user's role to be changed on the group list view page, apply the action",
+  "project_description": "Group Bulk Operations adds Group-entity actions to a Views bulk form so a site administrator can act on many groups at once instead of editing each group individually. It ships three core Action plugins of type 'group' — Assign group role, Remove group user, and Update group owner — plus a Views field handler (group_bulk_form) that extends core's BulkForm and is exposed on the 'groups' Views base table. Selecting groups in a view and running an action stashes the chosen group IDs into the current user's private tempstore and redirects to a configuration form (under /admin/group/*, all gated by the global 'administer group' permission) where the operator picks the target user(s) and, for role assignment, the roles. The form then runs a Batch API process that adds or re-adds the user as a member with the chosen roles, removes the member, or sets the group owner across every selected group. Depends on Group; works with core Views only (not the contrib Views Bulk Operations module).",
   "maintenance_status": "Seeking co-maintainer(s)",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

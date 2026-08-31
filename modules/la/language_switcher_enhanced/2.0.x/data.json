@@ -1,23 +1,27 @@
 {
   "name": "Language Switcher Enhanced",
   "data_name": "language_switcher_enhanced",
-  "description": "Improved language switcher behaviour.",
+  "description": "Provides a better language switcher block with more options.",
   "version": "2.0.x",
-  "package": null,
+  "package": "Multilingual",
   "composer_namespace": "drupal/language_switcher_enhanced",
-  "composer_requirements": {},
-  "dependent_modules": [],
+  "composer_requirements": {
+    "php": "^7.1|^8.0"
+  },
+  "dependent_modules": [
+    "language"
+  ],
   "configure": null,
-  "core_version_requirement": "^10 || ^11",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/language_switcher_enhanced",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=7.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
@@ -27,17 +31,17 @@
   ],
   "subcategories": [
     "Language switcher",
-    "SEO"
+    "Block enhancements"
   ],
   "keywords": [
     "language switcher",
     "multilingual",
     "translation",
-    "fallback",
-    "seo",
-    "links"
+    "block",
+    "dropdown",
+    "untranslated"
   ],
-  "project_description": "",
+  "project_description": "Overrides the core language switcher block with an enhanced block that adds options for label display (translated name / language ID / native name), structure (single list or Bootstrap dropdown), per-language soft-hiding behind a permission, and how to handle languages with no translation of the current entity (follow core, link to the language homepage, or disable the link).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

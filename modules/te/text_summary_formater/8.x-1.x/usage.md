@@ -1,27 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Text Summary Formatter displays only the summary part of a text-with-summary field, and nothing when the summary is empty.
+Text Summary Formatter adds a "Summary only" field formatter that renders just the summary part of a text-with-summary field, and nothing when the summary is empty.
 
 ---
 
-Core's text-with-summary field has three formatters and none of them is this one. "Default" shows the full body, "Summary or trimmed" shows the summary and falls back to a trimmed body when there is none, and "Trimmed" always trims. The gap is the case where a summary should be shown **only when an editor wrote one** — a homepage promo, a card in a listing, a related-items panel — because an automatic trim of the first two hundred characters of body text produces a sentence cut mid-clause, which reads as neglect. This formatter makes the presence of a summary the editorial signal: written, it appears; not written, the element is empty and the design can respond. Version **8.x-1.5** on `^10 || ^11`, depending on core `text`. The project name carries a typo — the project is **`text_summary_formater`** with one `t`, while the module it ships is **`text_summary_formatter`** spelled correctly — so `composer require drupal/text_summary_formatter` fails and `drush en text_summary_formater` fails, each for the opposite reason. Worth checking the design consequence too: a card that renders nothing where a summary was expected needs a layout that tolerates it, so decide whether an empty summary means an omitted element, a hidden card, or a different fallback chosen deliberately rather than by a trim.
+The module ships one plugin, `Drupal\text_summary_formatter\Plugin\Field\FieldFormatter\TextSummaryFormatter` (`@FieldFormatter` id `text_summary_formatter`, label "Summary only"), applicable only to `text_with_summary` field types (core's Body field being the canonical case). `viewElements()` iterates the field items and, for each one whose `summary` is non-empty, emits a `#type => processed_text` render element whose `#text` is the summary wrapped in `<div class='summary-only'>…</div>` and whose `#format` is the item's own stored text format — so the summary is run through `check_markup()` with its assigned format and filtered exactly like any other body output. Items with an empty `summary` are skipped entirely (`continue`), so the formatter produces **no output at all** rather than falling back to a trimmed body — this is the deliberate difference from core's "Summary or trimmed" formatter, which manufactures a truncated excerpt when no summary was written. The plugin has no configurable settings, no settings form, no config schema, no permissions and no routes; it is pure display and is governed entirely by core's field-formatter and text-format access. Two spelling caveats matter operationally: the **project** is `text_summary_formater` (one `t`) while the **module machine name** is `text_summary_formatter` (two `t`s), so `composer require drupal/text_summary_formater` and `drush en text_summary_formatter` are the correct commands — mixing the spellings fails. Enable it, then at Manage display for the entity/view mode select "Summary only" for the text-with-summary field. Requires core `text`; supports Drupal `^10 || ^11`.
 
 ---
 
-- Show only editor-written summaries.
-- Avoid mid-sentence trimmed text.
-- Render a card's promo text.
-- Show a summary on a listing page.
-- Leave a teaser empty without a summary.
-- Make summary presence an editorial signal.
-- Improve homepage card quality.
-- Avoid automatic excerpt truncation.
-- Show a curated excerpt only.
-- Render a related-items panel.
-- Support a design that hides empty cards.
-- Show a summary in a search result.
-- Present a deliberate abstract.
-- Avoid awkward truncation in a newsletter.
-- Show a summary in an RSS item.
-- Support an editorial excerpt workflow.
-- Render a summary in a tooltip.
-- Display an abstract on a publication.
+- Show only editor-written summaries, never an auto-generated excerpt.
+- Avoid mid-sentence trimmed body text on teasers.
+- Render a card's promo text from the summary field.
+- Show a summary on a listing or index page.
+- Leave a teaser empty when no summary was written.
+- Make the presence of a summary an editorial signal the design can respond to.
+- Improve homepage card quality by suppressing awkward truncation.
+- Display a curated abstract on a publication or article.
+- Render a related-items panel using summaries.
+- Support a design that hides cards with no summary.
+- Show a summary in a search result row.
+- Present a deliberate, hand-written excerpt in an RSS feed item.
+- Support an editorial excerpt / abstract workflow.
+- Show a short summary in a tooltip or hover card.
+- Drive a "featured content" block from summaries only.
+- Provide a clean summary-only view mode for a Body field.
+- Keep a newsletter block free of truncated sentences.
+- Render summaries in a Views field display via the entity's Manage display.
+- Show a promo blurb on a landing page section.
+- Give a taxonomy-term or user Body field a summary-only display.
+- Ensure list pages stay compact by rendering only concise summaries.
+- Fall through to an empty region so a fallback template can take over.

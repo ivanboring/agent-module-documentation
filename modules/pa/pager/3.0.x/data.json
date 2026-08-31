@@ -27,25 +27,31 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "block"
+  ],
   "categories": [
     "Content display",
     "Site structure"
   ],
   "subcategories": [
-    "Blocks",
-    "Navigation"
+    "Pagers & lazy loading",
+    "Navigation menus",
+    "Block enhancements"
   ],
   "keywords": [
     "pager",
     "previous",
     "next",
-    "navigation",
+    "prev/next",
+    "node navigation",
     "block",
+    "taxonomy",
+    "chronological",
     "sequence"
   ],
-  "project_description": "The Pager module provides in-page Prev and Next navigation links with/without Views and node display integrations.\n There are currently 2 theme options, (center block or slide-out side tabs).\n\n Configuration options Include:\n\n \n Previous Text: The text at the bottom of all previous links. \n Next Text: The text at the bottom of all next links. \n Image Field: The image filed to use for the block, (if navigation between content types is desired then it's convenient if they share an image field). \n Image Style: The image style to use for the block. To get a consistant look, an image style that's scaled and cropped to specific aspect ration work best. To improve performance a size that matches display size, (or is close) works best. \n Theme: There are currently two themes. A center block and side tabs. \n Content Types: The content types that will be included in the this block's pagination. Pagination between content types is simplest if hey share taxonomy and an image field. \n Taxonomy Terms: The terms that will be included in pagination. \n Maintain Term: If set the prev/next links will have the same taxonomy as the current content, (Dogs to Dogs and Cats to Cats). If not set then pagination will include any of the taxonomy terms selected, (Dogs to Dogs or Dogs to Cats or Cats to Honey Badgers). \n Direction: Forward is cronoligical order from first to last, (first is oldest, last is newest). \n End Behavior: The behavior at the first and last content.\n \n Loop means the last content will feature a link to the first, (and vice versa).\n Current means that when displaying the first or last content one pane will link to itself. \n Single means that only one pagination link will appear, (next on first and prev on last). \n \n \n \n Sub-module \"Pager Views\", (3.1.0-beta*) \n The sub-module \"Pager Views\" implements the Pager's functionality but integrated with the the Views module.\n\n Sub-module \"Pager Views Example\", (3.1.0-beta*) \n The sub-module \"Pager Views Example\" provides an example view, content type, node display and image style to get developers/site builders started. Combined with devel generate it should give y'all and idea if this is going to work with your use case, (probably want to try this on dev instance first).\n\n Back to top",
+  "project_description": "The Pager module provides a configurable block that adds previous/next navigation between individual nodes. Placed on node pages, the block finds the neighbouring published nodes ordered strictly by node creation time (chronological), restricted to selected content types and selected taxonomy terms, and renders each neighbour as a thumbnail (chosen image field + image style), the node title, and a prev/next label linking to the node. Two visual themes are shipped: a centred 'block' theme and a fixed slide-out 'wings' side-tabs theme. Per-block configuration: Previous Text, Next Text, Image Field, Image Style, Theme, Content Types, Taxonomy Terms, Maintain Term (keep the current node's term), Direction (forward = oldest-to-newest / backward), and End Behavior (loop, single, or current). Nodes must be tagged with one of the selected taxonomy terms and carry the selected image field for the block to appear. The installed 3.0.1 release ships only the block; the 3.1.0-beta line adds optional Views-integration sub-modules that are not present here.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
