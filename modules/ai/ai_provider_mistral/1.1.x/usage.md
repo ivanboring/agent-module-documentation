@@ -1,27 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Mistral AI Provider adds Mistral as a provider for Drupal's AI module.
+Mistral AI Provider registers Mistral as a provider for Drupal's AI module, so any AI feature on the site can run chat, embeddings and moderation through Mistral's EU-hosted models.
 
 ---
 
-The `ai` module abstracts providers so a site's AI features are written once and pointed at whichever service it uses, and which service that is has become a procurement question rather than a technical one. Mistral is a **French** company running models in the European Union, and for European public bodies, healthcare organisations and anyone whose data-protection assessment has stalled on transfers to the United States, that is the deciding factor rather than a detail — the prompts, which routinely contain content and sometimes personal data, stay within the EU and under the same regulator as the organisation sending them. Mistral also publishes open-weight models, so a site can start with the hosted API and move to self-hosting without rewriting anything above the provider layer, which is a meaningful exit route. Version **1.1.0-rc1** — a release candidate — requiring `ai` and **`key`**, with `administer ai providers` marked `restrict access: true`; core requirement `^10.3 || ^11`. The `key` dependency is the right arrangement, keeping the API key in a Key entity from an environment variable rather than in exported configuration. Three things belong in the deployment regardless of provider. **The key is a spending credential** and can incur real cost quickly, so set a limit at the provider and have someone watch it. **A prompt is a disclosure** — whatever is sent has left the site, so unpublished content, personal data and internal notes in a prompt need the same consideration as any other transfer. And **model availability changes**, so pin a model, and know what the site does when it is withdrawn or its behaviour shifts under the same name.
+This is a thin provider plugin: it implements the `ai` module's `ChatInterface`, `EmbeddingsInterface` and `ModerationInterface`, and nothing above the provider layer needs to know Mistral is behind them. Chat covers streaming, multi-turn conversations, tool/function calling, structured JSON-schema output and multimodal input (images and documents are sent inline as base64), with `max_tokens`, `temperature` and `top_p` as tunable parameters; embeddings run through `mistral-embed`; moderation defaults to `mistral-moderation-latest` and returns per-category flags and scores. The chat and moderation model lists are fetched live from Mistral's `/models` endpoint and filtered by the capabilities the caller asks for (vision, function calling, JSON output), then cached for 24 hours. Requests are made by the third-party `partitech/php-mistral` PHP library over a PSR-18 HTTP client with TLS verification left at its secure default; the bearer credential is the Mistral API key, which the module never stores in configuration itself — it stores only a reference to a **Key entity** and resolves the actual secret server-side at request time via the Key module. Version **1.1.0-rc1** is a release candidate requiring `ai ^1.2.0`, `key ^1.18` and PHP 8.2+; core requirement is `^10.2 || ^11`. Configuration lives at `/admin/config/ai/providers/mistral` behind the `administer ai providers` permission (`restrict access: true`) and holds two values: the key selector and an optional advanced **Custom API Host** that overrides the default `https://api.mistral.ai` endpoint (useful for proxies or mock servers). Three considerations apply to any AI provider: the key is a spending credential, so cap it at Mistral and watch usage; a prompt is a data disclosure that leaves the site, so treat personal data and unpublished content in prompts as a transfer; and model names change, so pin a model and plan for it being withdrawn. The provider also exposes helper methods for Mistral's Files API (upload, signed URL, list, retrieve, delete) for OCR, batch and fine-tuning workflows, though those are not first-class AI operation types.
 
 ---
 
-- Use an EU-hosted AI provider.
-- Meet a data-residency requirement.
-- Add AI features with European models.
-- Avoid US data transfers for prompts.
-- Support a public-sector AI assessment.
-- Provide models to the AI module.
-- Summarise content with Mistral.
-- Add AI translation assistance.
-- Support a GDPR-constrained deployment.
-- Plan a path to self-hosted models.
-- Store an AI key in a Key entity.
-- Add AI search to a European site.
-- Generate alt text with an EU provider.
-- Support a healthcare organisation's constraints.
-- Use open-weight models later.
-- Add content assistance for editors.
-- Meet a procurement requirement.
-- Power an AI feature with EU hosting.
+- Add Mistral as an AI provider for the whole `ai` module family.
+- Run chat completions through `mistral-large-latest` or another chat model.
+- Stream chat responses token-by-token to the UI.
+- Call tools / functions from a Mistral chat model.
+- Get structured JSON output constrained by a JSON schema.
+- Send images to a vision-capable Mistral model (multimodal chat).
+- Send a document inline to a Mistral chat model.
+- Generate text embeddings with `mistral-embed` for search or RAG.
+- Moderate user-submitted text with `mistral-moderation-latest`.
+- Meet an EU data-residency requirement with a French provider.
+- Avoid US data transfers for AI prompts.
+- Store the Mistral API key in a Key entity backed by an environment variable.
+- Point AI features at a proxy or mock server via the Custom API Host override.
+- List only the chat models that support vision or function calling.
+- Set the default chat and embeddings model when configuring the provider.
+- Summarise or rewrite content for editors using an EU model.
+- Add AI-assisted translation with European hosting.
+- Power a RAG / vector-search feature with Mistral embeddings.
+- Cap and monitor AI spend against a single API key.
+- Upload files to Mistral for OCR, batch or fine-tuning workflows.
+- Plan a migration path from the hosted API to self-hosted open-weight models.
+- Support a GDPR-constrained or public-sector AI assessment.

@@ -1,7 +1,7 @@
 {
   "name": "Role login page",
   "data_name": "role_login_page",
-  "description": "Role-based login pages.",
+  "description": "Create multiple standalone, role-gated login pages, each at its own URL with its own field labels and post-login destination.",
   "version": "2.0.x",
   "package": "Custom Login",
   "composer_namespace": "drupal/role_login_page",
@@ -19,25 +19,26 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "User management",
+    "Access control",
     "Security"
   ],
   "subcategories": [
-    "Login",
-    "Redirects"
+    "User roles & permissions",
+    "Login page protection"
   ],
   "keywords": [
     "login",
     "roles",
+    "custom login page",
+    "role-based",
+    "authentication",
     "redirect",
-    "landing",
-    "destination",
-    "custom"
+    "anonymous"
   ],
-  "project_description": "This functionality helps in creating multiple login pages with specific roles\n\n -- Configuration --\n\n 1. Configure at Administer > Configuration > ROLE LOGIN SETTINGS > Role login settings list \n\n 2. Click on add login page link.\n\n 3. Then use the login path and verify the form and try to login.",
+  "project_description": "This functionality helps in creating multiple login pages with specific roles.\n\nEach page is a standalone login form at its own URL (accessible only to anonymous users), with configurable username/password/submit labels, page title, CSS class, and error messages. Only users holding one of the page's allowed roles may authenticate there; on success they are redirected to that page's configured redirect path.\n\n -- Configuration --\n\n 1. Configure at Administer > Configuration > ROLE LOGIN SETTINGS > Role login settings list.\n\n 2. Click on the add login page link.\n\n 3. Then use the login path and verify the form and try to login.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

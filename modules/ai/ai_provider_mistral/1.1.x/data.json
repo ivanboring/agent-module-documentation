@@ -1,42 +1,51 @@
 {
   "name": "Mistral AI Provider",
   "data_name": "ai_provider_mistral",
-  "description": "AI provider plugin for Mistral.",
+  "description": "Registers Mistral AI as a provider plugin for the AI module, routing chat, embeddings and moderation operations through Mistral's API with the key stored in a Key entity.",
   "version": "1.1.x",
   "package": "AI Providers",
   "composer_namespace": "drupal/ai_provider_mistral",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "php": ">=8.2",
+    "drupal/ai": "^1.2.0",
+    "drupal/key": "^1.18",
+    "partitech/php-mistral": "^0.1.26"
+  },
   "dependent_modules": [
     "drupal:ai",
     "drupal:key"
   ],
-  "configure": null,
-  "core_version_requirement": "^10.3 || ^11",
+  "configure": "ai_provider_mistral.settings_form",
+  "core_version_requirement": "^10.2 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_provider_mistral",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
-  "library_dependencies": [],
+  "php_requirement": ">=8.2",
+  "library_dependencies": [
+    "partitech/php-mistral"
+  ],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Integrations",
-    "Security"
+    "Artificial Intelligence (AI)",
+    "Integrations"
   ],
   "subcategories": [
-    "AI",
-    "API providers"
+    "AI provider abstraction / LLM gateway",
+    "Secrets & key management"
   ],
   "keywords": [
     "mistral",
     "ai",
     "llm",
     "provider",
+    "embeddings",
+    "moderation",
     "key",
     "europe"
   ],

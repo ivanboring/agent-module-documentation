@@ -1,27 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Pluggable Entity View Builder moves entity rendering into PHP classes — one per bundle — instead of preprocess functions and Twig templates.
+Pluggable Entity View Builder (PEVB) overrides a core entity type's view builder so each bundle's output is produced by a per-bundle PHP plugin class — one `build{ViewMode}` method per view mode — instead of preprocess functions and Twig templates.
 
 ---
 
-Drupal's theme layer splits rendering across several places: a preprocess function prepares variables, a template arranges them, a formatter renders each field, and a hook may alter any of it. For a simple site that separation is a feature. For a component-driven build it produces a rendering path spread over four files in three directories with no type checking, no autocompletion and nothing an IDE can follow — and the logic that decides what a card shows ends up in a preprocess function that is neither testable nor obviously the place to look. Putting the build in a class inverts that: one class per bundle, a method per view mode, constructor injection for whatever it needs, and a return value that is an ordinary render array. It becomes code a developer can read, test and refactor. The approach comes from Gizra and is opinionated in a way worth understanding before adopting it, because it changes where a team looks for rendering logic. Version **1.2.7** on core `^10 || ^11`, with example submodules including one for paragraphs. Two things follow. **Cache metadata becomes the class's responsibility** — a render array built in PHP carries only the contexts, tags and max-age it is given, and the theme layer will not supply them, so a component varying by user must say so or be cached wrongly. And **it is a team decision rather than a per-feature one**: a codebase with half its rendering in templates and half in view builders is harder to work in than either alone, so adopt it deliberately and consistently or not at all.
+PEVB is a developer rendering framework from Gizra. You turn it on per entity type at `/admin/config/system/pluggable-entity-view-builder` (checkboxes for `block_content`, `comment`, `media`, `node`, `taxonomy_term`, `user`, and `paragraph` when Paragraphs is installed); `hook_entity_type_alter` then swaps that type's view builder class for a PEVB subclass (`NodeViewBuilder`, `ParagraphViewBuilder`, `CommentViewBuilder`, `BlockContentViewBuilder`, or the generic `EntityViewBuilder`). The subclass short-circuits core's `buildMultiple()`: for each entity it looks up a plugin whose id is `"{entity_type}.{bundle}"` (e.g. `node.article`) in the `EntityViewBuilder` plugin type (`Plugin/EntityViewBuilder`, annotation or `#[EntityViewBuilder]` attribute). If a plugin exists it takes over completely — no field formatters, no `entity_view_display`, no other theme hooks run, so the plugin is the single source of the render array. If no plugin matches the bundle, or the plugin has no method for the requested view mode, PEVB falls back to core's default rendering, so adoption can be incremental per bundle. You write a class extending `EntityViewBuilderPluginAbstract` and add a method per view mode: `default` is remapped to `full`, and the view-mode name is title-cased with separators stripped to derive the method (`teaser` -> `buildTeaser`, `search_result` -> `buildSearchResult`). Each method receives `($build, $entity)` and returns a render array. The abstract base pulls in `BuildFieldTrait`, whose helpers read field values (`getTextFieldValue`, `getLinkFieldValue`, `getDateFieldValue`, `getTextListFieldLabelValue`, `getBooleanFieldValue`), build images (`buildImage`, `buildImageStyle`, `buildResponsiveImage`, `getMediaImageAndAlt`), and render referenced/child entities (`buildEntities`, `buildReferencedEntities`, `buildReferencedEntitiesWithViewModes`) — the reference and entity helpers run `access('view')` checks and add each entity's cache dependency. `BuildBlockTrait` adds `buildBlock`/`buildContentBlock` for embedding blocks. Cache metadata is the plugin's responsibility: the base `build()` seeds `$this->cacheableMetadata` from the incoming `$build` and re-applies it at the end, and the field helpers add dependencies to it implicitly — but anything you load yourself (via `entityTypeManager`, entity queries) must be added to `$this->cacheableMetadata` manually or the output caches wrongly. A ships-with PHPStan rule enforces that classes using the build-entities helpers declare the `$cacheableMetadata` property. The Paragraphs example shows the intended headline use: paragraphs become composable, individually themed page-building components, a code-first alternative to Layout Builder. Because PEVB replaces the entire field-rendering pipeline for overridden bundles, it is a deliberate team-wide choice — a codebase split between templates and view builders is harder to work in than either alone.
 
 ---
 
-- Build entity output in PHP.
-- Replace preprocess functions with classes.
-- Make rendering logic testable.
-- Build a card component in code.
-- Use dependency injection while rendering.
-- Refactor a complex template.
-- Support a component-driven build.
-- Render paragraphs from classes.
-- Make rendering IDE-navigable.
-- Centralise a bundle's display logic.
-- Test a component's render array.
-- Replace scattered preprocess hooks.
-- Build a teaser in a class.
-- Support a design-system implementation.
-- Type-check rendering code.
-- Reduce template complexity.
-- Build view-mode-specific output.
-- Support a large front-end codebase.
+- Render a node bundle from a PHP class instead of a Twig template.
+- Build an article's teaser and full view mode in one typed, testable class.
+- Adopt component/atomic-design rendering in a headless or design-system build.
+- Theme paragraphs as composable page sections (a Layout Builder alternative).
+- Replace scattered preprocess hooks with constructor-injected render logic.
+- Give a bundle's display logic a single, IDE-navigable home.
+- Read field values safely with `getTextFieldValue()` / `getLinkFieldValue()`.
+- Build a styled or responsive image from a media/image field in code.
+- Render referenced entities with automatic view-access checks.
+- Render a paragraph reference field as a set of cards.
+- Embed a block or a custom block-content entity inside an entity's output.
+- Add per-plugin cache tags/contexts through `$this->cacheableMetadata`.
+- Roll out custom rendering one bundle at a time (unmatched bundles fall back to core).
+- Enable overriding only for chosen entity types via the settings form.
+- Override `media` rendering to control WYSIWYG-embedded media markup.
+- Unit/kernel-test a component by asserting on its returned render array.
+- Vary output per view mode by adding a `build{ViewMode}` method.
+- Invoke another module's build alter manually via `hook_..._build_ENTITY_TYPE_alter`.
+- Integrate `paragraphs_edit` contextual quick-links on rendered paragraphs.
+- Warn site builders that Manage Display changes are bypassed for overridden bundles.
+- Enforce the cache-metadata contract in CI with the bundled PHPStan rule.
+- Build a hero header, tag list, and body region as separate reusable methods/traits.

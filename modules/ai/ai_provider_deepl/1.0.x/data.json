@@ -1,11 +1,15 @@
 {
   "name": "DeepL Provider",
   "data_name": "ai_provider_deepl",
-  "description": "DeepL provider for the AI translations module.",
+  "description": "Registers DeepL as a provider plugin for the AI module, exposing DeepL's text-translation API as the AI module's translate_text operation with the API key stored in a Key entity.",
   "version": "1.0.x",
   "package": "AI Providers",
   "composer_namespace": "drupal/ai_provider_deepl",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "deeplcom/deepl-php": "^1.6",
+    "drupal/ai": "^1.0",
+    "drupal/key": "^1.19"
+  },
   "dependent_modules": [
     "ai:ai",
     "key:key"
@@ -17,7 +21,9 @@
   "project_url": "https://www.drupal.org/project/ai_provider_deepl",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "deeplcom/deepl-php"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
@@ -26,11 +32,11 @@
   "provides_plugin_types": [],
   "categories": [
     "Multilingual",
-    "Integrations"
+    "Artificial Intelligence (AI)"
   ],
   "subcategories": [
     "Machine translation",
-    "AI"
+    "AI provider abstraction / LLM gateway"
   ],
   "keywords": [
     "deepl",
@@ -38,9 +44,10 @@
     "ai",
     "provider",
     "multilingual",
-    "key"
+    "key",
+    "translate_text"
   ],
-  "project_description": "This module serves as a DeepL provider for the AI module .\n\n By installing and enabling it, you can integrate DeepL text translation API through the Drupal AI module's abstraction layer.\n\n Features \n Configuration: Provides a configuration form for DeepL authentication.\n\nPlugin Implementation: Implements a plugin for the Drupal AI module.\n\nText Translation Integration: Implements TranslateTextInterface.\n\n Dependencies \n The module depends on the AI module obviously as it is the DeepL provider for this module. It also depends on Key module for api key storage and the official DeepL PHP library .\n\n Back to top",
+  "project_description": "This module serves as a DeepL provider for the Drupal AI module. By installing and enabling it, you can integrate DeepL's text-translation API through the AI module's abstraction layer as the translate_text operation. It provides a configuration form for DeepL authentication (API key stored via the Key module), implements a single-model provider plugin for the AI module, and implements the AI module's TranslateTextInterface. It depends on the AI module (it is a provider for it), the Key module for API-key storage, and the official DeepL PHP client library (deeplcom/deepl-php).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

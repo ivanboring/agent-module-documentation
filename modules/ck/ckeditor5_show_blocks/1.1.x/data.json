@@ -1,14 +1,16 @@
 {
   "name": "CKEditor 5 Show Blocks",
   "data_name": "ckeditor5_show_blocks",
-  "description": "Outlines block-level elements in the editor.",
+  "description": "Adds a CKEditor 5 toolbar button that outlines every block-level element in the editing area and labels it with its tag name.",
   "version": "1.1.x",
-  "package": null,
+  "package": "CKEditor 5",
   "composer_namespace": "drupal/ckeditor5_show_blocks",
   "composer_requirements": {},
-  "dependent_modules": [],
+  "dependent_modules": [
+    "ckeditor5"
+  ],
   "configure": null,
-  "core_version_requirement": "^10 || ^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ckeditor5_show_blocks",
@@ -19,25 +21,25 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience",
     "Accessibility"
   ],
   "subcategories": [
-    "WYSIWYG",
-    "Semantic markup"
+    "CKEditor plugins",
+    "ARIA / semantic markup"
   ],
   "keywords": [
     "ckeditor5",
     "show blocks",
+    "block-level elements",
     "structure",
     "headings",
-    "debugging",
-    "markup"
+    "semantic markup"
   ],
-  "project_description": "This module adds Show Blocks feature to CKEditor 5.\n\n The CKEditor5 show blocks feature allows the content creators to visualize all block-level elements (except for widgets) by surrounding them with an outline and displaying their element name at the top-left corner of the box.\n\n Support \n\nPlease post bug reports, feature requests and support requests to the CKEditor 5 show blocks module issue queue . If you met any problems with this module - feel free to create an issue.\n\n Demo \n\n \n Go to https://simplytest.me/project/ckeditor5_show_blocks . \n Click \"Launch Sandbox\". \n Install Drupal as normal. \n Enable \"CKEditor 5 show blocks\" module, and any optional modules you wish to try out. \n Go to admin/config/content/formats/manage/full_html or any other editor where you wish to implement the functionality and drag the show blocks icon on the active toolbar \n Add/edit the content with editor, click on the show blocks icon where the show blocks feature lets you visualize all block-level elements by surrounding them with an outline and displaying their element name at the top-left.",
+  "project_description": "This module adds the Show Blocks feature to CKEditor 5.\n\nThe CKEditor 5 show blocks feature allows content creators to visualize all block-level elements (except for widgets) by surrounding them with an outline and displaying their element name in the top-left corner of the box. It is a thin Drupal integration that exposes CKEditor 5's built-in ShowBlocks plugin as a text-format toolbar toggle; the compiled plugin JavaScript is bundled with the module and served locally.\n\nSupport: post bug reports, feature requests and support requests to the CKEditor 5 show blocks module issue queue on drupal.org.\n\nDemo: see the CKEditor 5 show blocks feature guide at ckeditor.com, or launch a sandbox at simplytest.me, enable the module, add the Show Blocks button to a text format's active toolbar at admin/config/content/formats, then edit content and click the button to visualize block-level structure.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
