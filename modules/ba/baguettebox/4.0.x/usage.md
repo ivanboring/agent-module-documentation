@@ -1,27 +1,30 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-BaguetteBox is an image field formatter that opens images in a lightbox, using the BaguetteBox JavaScript library.
+BaguetteBox is a core-image field formatter that renders each image as a link into a swipe/touch-enabled baguetteBox.js lightbox gallery.
 
 ---
 
-The lightbox is one of the most-implemented features on the web and Drupal has a long list of modules for it — Colorbox, PhotoSwipe, Magnific and others, each wrapping a different library, each with a formatter and a set of options. What distinguishes them now is size and behaviour rather than features. BaguetteBox is a deliberately small library with **no dependencies** — no jQuery — built around swipe gestures and touch, which makes it a sensible default for a site that wants a gallery without adding a framework to the page for it. This module supplies the Drupal side as a formatter, depending on core `image`; version **4.0.0** with a core requirement of **`^11.3 || ^12`**, which is unusually tight — Drupal 11.3 or later only, and reaching into a major that does not exist yet. The point worth checking, and the one that separates lightboxes, is **keyboard and screen-reader behaviour**: a correct implementation traps focus inside the dialog while it is open, returns focus to the thumbnail that opened it on close, closes on Escape, and announces itself as a dialog. A lightbox that does none of that is a keyboard trap in the literal accessibility sense. The other consideration is what is loaded: a gallery that fetches full-size images eagerly can be several megabytes before anyone opens anything, so confirm that the large image is fetched on demand.
+The module adds a single field formatter (`baguettebox`, label "BaguetteBox") for the core `image` field type, subclassing core's own `ImageFormatter`. On **Manage display** you pick the formatter and set: a thumbnail **Image style**, a **default lightbox image style** (`baguette_image_style`), up to five **responsive lightbox breakpoints** (`baguette_image_style_responsive`, each a `width` + image style rendered into `data-at-{width}` attributes on the link so baguetteBox.js can swap sources by viewport), a CSS **selector** that decides which container becomes a gallery (default `.baguettebox`; change it to a field wrapper class to pool media-reference images into one gallery), an **animation** (`slideIn` / `fadeIn` / none), a **captions source** (`none` / image `title` / image `alt`), and booleans for **buttons**, **fullscreen**, **hide scrollbars** and **inline** display. Each rendered item is a `<a data-at-… href="{lightbox url}">{thumbnail image}</a>` (theme hook `baguettebox_formatter`, template `baguettebox-formatter.html.twig`, preprocessed by reusing core's image-formatter preprocess). The whole settings array is attached to `drupalSettings.baguettebox`, the `baguettebox/formatter` library is attached (which depends on the external `baguettebox/baguettebox` library — the `feimosi/baguetteBox.js` v1.11.1 files you must place at `/libraries/baguettebox.js/baguetteBox.min.js` and `.css`; a runtime requirements check errors if missing), and `js/baguettebox.js` calls `baguetteBox.run(selector, …)` in a `Drupal.behaviors` attach. Captions are passed through `Drupal.checkPlain()` before display. There is no admin settings route, no permissions, no Drush commands, no submodules — all configuration lives on the formatter instance. Core requirement is `^11.3 || ^12`; depends only on core `image`. A `post_update` hook backfills the `selector` setting (`.baguettebox`) onto existing displays.
 
 ---
 
-- Open gallery images in a lightbox.
-- Add swipe navigation to a gallery.
-- Show a full-size image on click.
-- Build a photo gallery from an image field.
-- Add a lightbox without jQuery.
-- Keep page weight low.
-- Show product photography large.
-- Support touch navigation.
-- Add a lightbox to a media field.
-- Browse images with the keyboard.
-- Display an exhibition's images.
-- Show a portfolio's work.
-- Add captions to lightbox images.
-- Support a mobile-first gallery.
-- Show press images at full size.
-- Build a simple image viewer.
-- Replace a heavier lightbox module.
-- Show a property listing's photos.
+- Open image-field images in a swipe/touch lightbox gallery.
+- Add a jQuery-free, dependency-light lightbox to a site.
+- Turn a multi-value image field into a click-to-enlarge gallery.
+- Serve a small thumbnail but a larger derivative inside the lightbox.
+- Swap the lightbox image by viewport using responsive width breakpoints.
+- Pool all images of a media-reference field into one gallery via a custom selector.
+- Show product photography large without leaving the page.
+- Display a portfolio or exhibition of images.
+- Show property-listing or real-estate photos at full size.
+- Present press or media-kit images for full-size viewing.
+- Add captions to lightbox images sourced from each image's alt or title.
+- Choose slide, fade, or no open animation for the lightbox.
+- Give the gallery next/prev buttons, fullscreen, and scrollbar hiding.
+- Support mobile-first, touch-navigable image browsing.
+- Replace a heavier lightbox module (Colorbox, PhotoSwipe) with a lighter one.
+- Attach the lightbox to Views-rendered image fields via the `baguettebox` class.
+- Render galleries inline (side-by-side thumbnails) with the inline option.
+- Keep initial page weight low by loading full images only on open.
+- Build a simple image viewer without writing custom JS.
+- Use the same formatter across content types and view modes.
+- Link each thumbnail to an original or styled derivative for the overlay.

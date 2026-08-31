@@ -1,7 +1,7 @@
 {
   "name": "System Messages Override",
   "data_name": "system_messages_override",
-  "description": "Alter and change Drupal's system messages.",
+  "description": "Replace the wording of Drupal's core status, warning and error messages from an admin config form, without code.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/system_messages_override",
@@ -19,25 +19,25 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content editing experience",
-    "Administration tools"
+    "User engagement",
+    "Multilingual"
   ],
   "subcategories": [
-    "Editorial help text",
-    "Messages"
+    "Activity / notification messages",
+    "String override / text replacement"
   ],
   "keywords": [
     "messages",
     "status message",
+    "messenger",
     "override",
     "wording",
-    "translation",
     "ux"
   ],
-  "project_description": "Back to top \n\n System Messages Override\n \n This module will override Drupal's core messenger with a custom messenger, which will override Drupal's messages depending on the configurations of the modules (/admin/config/system/messages-override). It also works with TranslatableMarkup objects.\n\n Back to top \n\n Usage Examples\n \n Inside the module configurations form, you add a message override, then fill in the original and the new messages.\n\n See README.md for examples\n\n Back to top \n\n Debugging \n You can check the \"Debug\" option with \"dblog\" module in the configurations to enable logging of exact messages so you can easily copy them and override them.\n\n \n\n Sponsored and developed by: \n \n\n Back to top",
+  "project_description": "Overrides Drupal's core messenger service with a custom Messenger subclass that, on every addMessage() call, matches the incoming message against a list of original/new pairs stored in config and swaps the wording. Configured at /admin/config/system/messages-override behind a restrict-access permission. Handles plain strings, TranslatableMarkup (matched on the untranslated string, arguments and options preserved) and any Stringable/Markup object. An optional Debug mode logs every message string to dblog so the exact text to match can be copied. Errors during override fall back to a preserved copy of the core messenger to avoid breaking the page.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

@@ -5,7 +5,9 @@
   "version": "4.0.x",
   "package": null,
   "composer_namespace": "drupal/baguettebox",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/core": "^11.3 || ^12"
+  },
   "dependent_modules": [
     "drupal:image"
   ],
@@ -16,7 +18,9 @@
   "project_url": "https://www.drupal.org/project/baguettebox",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "feimosi/baguetteBox.js 1.11.1"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
@@ -24,12 +28,13 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Media management",
-    "Content display"
+    "Content display",
+    "Media"
   ],
   "subcategories": [
     "Field formatters",
-    "Lightbox"
+    "Lightbox / modal display",
+    "Responsive images"
   ],
   "keywords": [
     "lightbox",
@@ -39,7 +44,7 @@
     "baguettebox",
     "swipe"
   ],
-  "project_description": "Drupal integration with baguetteBox.js library. The module provides 'Baguette Box' formatter for core image field type.",
+  "project_description": "Drupal integration with the baguetteBox.js JavaScript lightbox library. Provides a 'BaguetteBox' field formatter for the core image field type that renders each image as a link to a swipe/touch-enabled gallery lightbox, with per-formatter image styles (including responsive width breakpoints), animation, caption source, and behavior options.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

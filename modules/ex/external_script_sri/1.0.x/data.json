@@ -1,7 +1,7 @@
 {
   "name": "External Script SRI",
   "data_name": "external_script_sri",
-  "description": "Adds Subresource Integrity hashes to external scripts.",
+  "description": "Adds admin-configured Subresource Integrity (integrity + crossorigin) attributes to external JS already declared in module/theme libraries.yml files.",
   "version": "1.0.x",
   "package": "Security",
   "composer_namespace": "drupal/external_script_sri",
@@ -19,25 +19,24 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Security",
-    "Performance"
+    "Security"
   ],
   "subcategories": [
-    "Content security",
-    "Asset libraries"
+    "Code integrity / tamper detection"
   ],
   "keywords": [
     "sri",
     "subresource integrity",
+    "crossorigin",
     "cdn",
-    "security",
     "integrity",
-    "crossorigin"
+    "supply chain",
+    "external script"
   ],
-  "project_description": "The External Script SRI module allows site administrators to easily add external JavaScript library paths with support for Subresource Integrity (SRI) hashes and the crossorigin attribute. This ensures enhanced security for third-party scripts by verifying their integrity.\n\n Features \n Basic Functionality \n\n This module provides a user-friendly interface for configuring external JavaScript libraries with the following options:\n\n \n Specify JavaScript file URLs. \n Add SRI hash values for each library. \n Mark libraries as sensitive to flag them for additional scrutiny. \n Set the crossorigin attribute value for each script. \n \n Unique Features \n\n \n Dynamic Configuration Form: A table-based configuration form to easily manage multiple JavaScript libraries. \n Security Focus: Ensures integrity checks for third-party scripts by supporting the SRI hash mechanism. \n Flexible Crossorigin Support: Allows administrators to specify the appropriate crossorigin attribute for CORS compliance. \n \n Use Cases \n\n \n Websites relying on external JavaScript libraries for functionality or design. \n Applications requiring strict security compliance for third-party script integrity. \n Development teams needing an organized, centralized way to manage external scripts. \n \n Post-Installation \n Once installed, follow these steps to configure the module:\n\n \n Navigate to the module’s configuration page under Configuration > External Script SRI. \n \n Use the provided form to:\n \n Add the module name and library name. \n Enter the JavaScript file URL. \n Generate and input the SRI hash (use SRI Hash Generator). \n Optionally mark the library as sensitive. \n Set the crossorigin attribute. \n \n \n Save the configuration to enable the specified libraries with SRI support. \n \n Additional Requirements \n Dependencies \n\n Drupal Core : Version 9 or higher.\n\n No additional modules are required, but access to third-party JavaScript files and a reliable SRI hash generation tool is recommended.\n\n Back to top",
+  "project_description": "External Script SRI lets an administrator attach Subresource Integrity (SRI) hashes and a crossorigin attribute to externally hosted JavaScript files that are already declared in the site's module and theme *.libraries.yml files. It does NOT let you register arbitrary new script URLs and it does NOT fetch any script server-side: a hook_library_info_alter() implementation and a config form at /admin/config/system/sri-configuration are the whole module.\n\nHow it works: the configuration form scans every installed module and theme for *.libraries.yml files, collects each library's js entries whose path is external (begins with https://, http:// or //), and renders them in a read-only table (the JS path field is disabled). For each discovered external script the administrator supplies an SRI hash (generated externally, e.g. at srihash.org), chooses a crossorigin value (anonymous or use-credentials), and may tick 'Mark as Sensitive'. On save the whole table is stored in external_script_sri.sri_configuration.settings:js_library.\n\nOn every library build, hook_library_info_alter() looks up the matching module/library/js path and injects attributes.integrity = the saved hash and attributes.crossorigin = the saved value, so Drupal's asset renderer emits <script ... integrity=\"...\" crossorigin=\"...\">. Counter-intuitively, ticking 'Mark as Sensitive' SUPPRESSES the injection for that script (the alter hook skips any row where mark_as_sensitive is truthy), so a 'sensitive' script is left without SRI.\n\nAccess is gated by the 'administer external_script_sri' permission (restrict access: true). The module ships one config-install default (an empty js_library) and no config schema, no services beyond a thin Symfony Yaml wrapper, no Drush commands, and no submodules. Core requirement ^9.5 || ^10 || ^11; released version 1.0.1.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",
