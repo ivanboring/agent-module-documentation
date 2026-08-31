@@ -1,7 +1,7 @@
 {
   "name": "Edit own user account permission",
   "data_name": "edit_own_user_account_permission",
-  "description": "A permission controlling whether users may edit their own account.",
+  "description": "Replaces core's access on the user edit form with a new 'edit own user account' permission, so a site can control whether authenticated users may edit their own account at all.",
   "version": "8.x-1.x",
   "package": "Permissions",
   "composer_namespace": "drupal/edit_own_user_account_permission",
@@ -19,22 +19,21 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "User management",
+    "Access control",
     "Security"
   ],
   "subcategories": [
-    "Permissions",
-    "Registration"
+    "User roles & permissions"
   ],
   "keywords": [
     "permission",
     "user account",
     "edit own",
     "profile",
-    "restriction",
+    "route access",
     "least privilege"
   ],
   "project_description": "This module add 'edit own user account' permission.\n\n The goal of this module to prevent changes in user account information in the demo sites.\n\n Attension:\n\n1. This module manage edit permissions to the name, mail and password profile filed. You can manage permissions to the other profile entities by other admin menu settings.\n\n2. By disabling this permission you disallow editing only own user profile settings, he can edit other profiles if he has the appropriate permissions.\n\n3. To allow user 'Change own username' by classic permission of User module you should check 'Edit own user account' permission of this module. That is 'Edit own user account' permission has higher priority than 'Change own username' one.",
@@ -43,6 +42,6 @@
   "security_advisory_coverage": "covered",
   "project_created": "2011-07-08",
   "project_changed": "2026-08-18",
-  "core_semver_minimum": 8000000,
+  "core_semver_minimum": 10003000,
   "core_semver_maximum": 12000000
 }

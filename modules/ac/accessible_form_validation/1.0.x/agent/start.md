@@ -1,24 +1,53 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Accessible Form Validation (accessible_form_validation) — agent index
 
-Improves how Drupal reports form errors to assistive technology. No dependencies.
-Version **1.0.4**. Core requirement `^10 || ^11`.
+Client-side only. Replaces the browser's native HTML5 validation popups with inline, themeable,
+screen-reader-perceivable error messages. Version **1.0.4**, core `^10 || ^11`, no non-core
+dependencies. No permissions of its own (config gated by core `administer site configuration`), no
+Drush, no plugin types.
 
-**Why this is the highest-stakes accessibility area:** a user who cannot perceive a validation error
-cannot complete the form — cannot register, cannot pay, cannot make contact. Drupal's default is a
-message region at the top plus an `.error` class: workable for a sighted user scrolling up, much
-weaker otherwise.
+- **Settings (`accessible_form_validation.settings`): the two per-theme toggles, the custom
+  error-selector, and exactly when the library is attached** →
+  [configure/settings.md](configure/settings.md)
 
-**The checklist to hold this — or any similar module — against:**
-1. each failing field gets **`aria-invalid="true"`** and its message associated by
-   **`aria-describedby`**, so it is read when focus reaches the field, not only at the top of the
-   page;
-2. the error summary is **announced on appearance** and contains **links that move focus** to the
-   fields concerned;
-3. **focus moves** to the summary or first error on failed submission — otherwise a screen-reader
-   user has no signal anything happened;
-4. errors are conveyed by more than **colour** — the requirement people remember, and the least of
-   them.
+## Mechanism (what the code actually does)
 
-**Verify what it still adds on the specific core version.** Core has improved in this area across
-recent releases; the gap the module was written for may be narrower now.
+- `accessible_form_validation_form_alter()` attaches the library
+  `accessible_form_validation/accessible_form_validation` when the config toggle for the *active*
+  theme is on: `default_theme_enabled` when active theme == `system.theme:default`,
+  `admin_theme_enabled` when active theme == `system.theme:admin`. Always adds cache tag
+  `config:accessible_form_validation.settings`.
+- The error-container class is passed to JS via
+  `drupalSettings.accessibleFormValidation.errorMessageSelector`: on the default theme from
+  `default_theme_error_message_selector` if set; otherwise (default or admin theme) forced to
+  `form-item__error-message` when the active theme is `claro` or `gin`. JS default when nothing is
+  set is `form-item--error-message`.
+- Library (`assets/js/accessible_form_validation.js`, `Drupal.behaviors.accessibleFormValidation`,
+  deps `core/drupal`, `core/once`, `core/drupalSettings`):
+  - `once()` over every `form` that has ≥1 `*:required` element → sets attribute
+    `novalidate="novalidate"` and binds a `submit` handler. Forms with no required fields are
+    skipped.
+  - `once()` over `input, textarea, select` → for required ones binds `input`, `blur`
+    (only after a real pointer/key interaction, tracked via `data-afv-user-interacted`), and, for
+    Choices.js widgets (class `webform-choices`), `change` + `focusout`. Initialises
+    `aria-invalid="false"`.
+  - Validation uses the Constraint Validation API: `element.checkValidity()`;
+    invalid → `setInputAsInvalid` sets `aria-invalid="true"`, input classes `is-invalid error`,
+    `.form-item` classes `form-item--error was-validated`, `<label>` class `has-error`, and injects
+    an error `<div>` (class = the container selector, plus `invalid-feedback`) whose text is
+    `input.validationMessage` via `innerText`, inserted before `.form-item__description` if present.
+    valid → `setInputAsValid` reverses those and removes the error `<div>`.
+  - On submit: revalidates all `*:required`, and if `form.checkValidity()` is false calls
+    `event.preventDefault()` and focuses the first `input:invalid, textarea:invalid, select:invalid`.
+
+## Accuracy notes for agents (do not overstate)
+
+- It sets **`aria-invalid`** but does **NOT** set `aria-describedby` — the inline message is not
+  programmatically associated with the input by that attribute.
+- It does **NOT** build or ARIA-live-announce an error **summary**; accessibility rests on focus
+  movement to the first invalid field plus the per-field inline message text.
+- Error text is the browser's own `validationMessage` (localised by the browser, not by Drupal).
+- Only fields with the HTML `required` attribute are wired; non-required constraints are not
+  actively watched between submits.
+- Core's form-error accessibility has improved over recent releases — verify the remaining gap on the
+  specific core version.

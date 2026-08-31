@@ -1,27 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Private Messages provides user-to-user messaging: threads, an inbox, read state and bulk actions, as content entities.
+Private Messages (privatemsg) 2.x lets authenticated users exchange private, threaded messages through a Views-based inbox at `/messages`. A conversation is stored as two custom content entities: `privatemsg_message` (the body + author) and `privatemsg_thread` (one row per participant, all sharing a numeric `group`). Users compose to one or more recipients (or whole roles) via autocomplete, reply inside a thread, mark threads read/unread, delete their own messages, block other users, and tag threads. An unread-counter block and an account-menu badge surface new messages.
 
 ---
 
-Any site with a community eventually needs members to be able to contact each other without exchanging email addresses, and the Drupal 7 `privatemsg` module was the standard answer. This is the Drupal 10/11 line of the same project, modelling messages and threads as entities with their own settings forms, view modes and Views integration, and depending on **`views_bulk_operations`** for the "mark read, delete" actions an inbox needs. There are three migration submodules — two for Drupal 6 and one for Drupal 7 — which tells you where most of its installed base is coming from. Version **2.0.0-rc22** on core `^10.1 || ^11`: a release candidate, and the high rc number suggests a long stabilisation. Permissions are `administer privatemsg` (`restrict access: true`), `privatemsg write messages`, `privatemsg use messages actions` and `privatemsg delete own messages`. Because messages are private by definition, the thing to test on any messaging module before trusting it is **access on the entity routes**: whether requesting another user's thread or message id by URL is refused, whether an unpublished or deleted message stays unreachable, and whether the Views listings that build the inbox filter by the current user in the query rather than only in the display. Those are the failure modes that have produced advisories in messaging modules across every CMS, and they are worth an afternoon's testing on a site where the messages actually matter.
+Privatemsg 2.x replaces the Drupal 6/7 schema with an entity model. Sending a message creates one shared `privatemsg_message` entity and then one `privatemsg_thread` entity per participant; every thread row in the conversation carries the same `group` integer, the same `members` entity-reference list, and references the same message entities through the `private_messages` field, but each row's `owner` is a distinct participant. This per-owner-row design is how access is scoped: the thread access control handler grants `view` only when `owner === current user`, so the canonical URL `/messages/view/{privatemsg_thread}` only ever resolves to the viewer's own copy of a conversation. Reading state is tracked in the custom `pm_thread_history` table (uid + thread_group + access_timestamp), block relationships in `pm_block_user` (who/blocked), and the message/thread base tables are `pm_message` and `pm_index`. The inbox is the `all_privatemsg_threads` view, filtered to the current user via a `uid_current` filter on the owner relationship, with Views Bulk Operations (VBO) actions for mark read, mark unread, remove, and change tags. A decorated entity autocomplete matcher powers recipient selection (respecting block lists and the per-user "enable messages" flag), role-targeted sending (gated by `privatemsg send to role` and an `allowed_roles` config list), and thread-tag selection. Hooks add a "Send this user a private message" link and a privatemsg settings section (enable/notify) to user profiles, an unread badge to the account menu, an email notification on new messages, and a cron job that hard-deletes soft-deleted messages after a configurable number of days. Configuration lives at `/admin/config/content/privatemsg-settings` (`remove_after`, `allowed_roles`, `moderator_role`, `unblockable_roles`). Migration submodules cover Drupal 6 and 7; a `drush privatemsg:1to2` command migrates data from privatemsg 1.x tables.
 
 ---
 
-- Let members message each other privately.
-- Add an inbox to a community site.
-- Avoid exchanging email addresses.
-- Support member-to-member contact.
-- Provide threaded conversations.
-- Mark messages as read.
-- Delete a conversation.
-- Migrate messages from Drupal 7.
-- Add messaging to a membership site.
-- Support moderator-to-user contact.
-- Notify users of new messages.
-- Provide a support conversation channel.
-- Bulk-manage an inbox.
-- Support a forum's private replies.
-- Add messaging to an intranet.
-- Keep contact details private.
-- Provide a message archive.
-- Support a marketplace's buyer-seller chat.
+- Build a community/forum site where members send each other private messages.
+- Let users start a new conversation from `/messages/new` or `/messages/new/{uid}` (prefilled recipient).
+- Add a "Send this user a private message" link on user profile pages.
+- Send one message to multiple recipients at once (comma-separated autocomplete).
+- Send a message to every user in a role (with the `privatemsg send to role` permission and an allowed role).
+- Give users a threaded inbox at `/messages` with subject, participants, message count, and last-updated columns.
+- Show an unread-message counter in a block (`privatemsg_block`) and as a badge on the account menu item.
+- Let users reply inline within a conversation thread.
+- Let users delete their own individual messages (soft delete, later purged by cron).
+- Let a user leave a group conversation of 3+ participants.
+- Let users bulk mark threads read/unread, remove threads, or change tags from the inbox.
+- Let users tag their own threads with personal taxonomy tags and filter the inbox by tag.
+- Let users block other users so neither can message the other, managed at `/messages/blocked`.
+- Designate roles whose users cannot be blocked (`unblockable_roles`), e.g. site staff.
+- Email users a link to new messages when they have notifications enabled in their profile.
+- Let users opt out of private messaging entirely via a profile checkbox.
+- Give administrators a read-only view of any user's messages at `/user/{uid}/messages`.
+- Automatically purge soft-deleted messages from the database after N days via cron.
+- Migrate existing private messages from a Drupal 6 or Drupal 7 site using the bundled migration submodules.
+- Migrate data from privatemsg 1.x using `drush pmsg1to2`.
+- Send messages programmatically through the `privatemsg.common` service (`createNewMessageAndThreads()`).
+- Filter and search the inbox by subject, participant name, or tag.

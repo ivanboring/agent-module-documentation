@@ -1,11 +1,13 @@
 {
   "name": "Private Messages",
   "data_name": "privatemsg",
-  "description": "Private messages between users.",
+  "description": "Allow private messages between users.",
   "version": "2.0.x",
   "package": "Private Messages",
   "composer_namespace": "drupal/privatemsg",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/views_bulk_operations": "^4.2"
+  },
   "dependent_modules": [
     "drupal:block",
     "drupal:datetime",
@@ -16,7 +18,7 @@
     "views_bulk_operations:views_bulk_operations"
   ],
   "configure": "privatemsg.settings",
-  "core_version_requirement": "^10.1 || ^11",
+  "core_version_requirement": "^10.1 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/privatemsg",
@@ -30,31 +32,30 @@
     "privatemsg_migration_d7"
   ],
   "provides_permissions": true,
-  "provides_drush_commands": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "User management",
-    "Content editing experience"
+    "User engagement"
   ],
   "subcategories": [
-    "Messaging",
-    "Community"
+    "Messaging framework"
   ],
   "keywords": [
     "private messages",
     "messaging",
     "inbox",
     "threads",
+    "conversations",
     "community",
-    "users"
+    "block user"
   ],
-  "project_description": "Privatemsg allows your site's visitors to send private messages to each other. Perfect for community oriented sites, such as forums and social networking sites.\n\n What works now: \n\n \n Messages list \n Messages filters \n Mass actions in messages list (mark as read, mark as unread) \n Block with new messages counter \n View messages \n Delete messages \n Write new messages to any count of users \n Write new messages to roles \n View other messages if you are site admin \n Email about new messages (checkbox in user profile) \n Block users \n Set unblockable role \n Thread personal tags \n Views integration \n \n Migration from Drupal 6: \n\n How-to here \n\n Migration from Drupal 7: \n\n How-to here \n\n Migration from 1.0.x: \n\n How-to here \n\n How to send message programmatically \n\n How-to here",
+  "project_description": "Privatemsg allows your site's visitors to send private messages to each other. Perfect for community oriented sites, such as forums and social networking sites. In 2.x the data model is rebuilt on two custom content entities (privatemsg_message and privatemsg_thread): a conversation is a 'group' of per-recipient thread rows, each owned by one participant, all pointing at the same shared message entities. Features include a Views-based inbox with VBO bulk actions (mark read/unread, remove, change tags), a per-user unread-counter block and account-menu badge, recipient autocomplete (users or whole roles), per-user block lists with unblockable roles, personal thread tags (taxonomy), optional email notification on new messages, and cron-based purging of soft-deleted messages. Includes migration submodules from Drupal 6 and 7 and a drush command to migrate from privatemsg 1.x.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
   "project_created": "2003-09-28",
   "project_changed": "2026-08-18",
-  "core_semver_minimum": 9000000,
+  "core_semver_minimum": 10001000,
   "core_semver_maximum": 13000000
 }

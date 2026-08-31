@@ -1,11 +1,13 @@
 {
   "name": "Calculation Fields",
   "data_name": "calculation_fields",
-  "description": "Form element that evaluates math expressions.",
+  "description": "Adds spreadsheet-style form elements that evaluate an admin/developer-defined math expression over other fields and display the result live.",
   "version": "1.0.x",
   "package": "Fields",
   "composer_namespace": "drupal/calculation_fields",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "symfony/expression-language": "^6"
+  },
   "dependent_modules": [],
   "configure": null,
   "core_version_requirement": "^9 || ^10 || ^11",
@@ -14,8 +16,13 @@
   "project_url": "https://www.drupal.org/project/calculation_fields",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
-  "suggests": {},
+  "library_dependencies": [
+    "symfony/expression-language (^6, server-side evaluation)",
+    "math.js 11.11.1 (external CDN, cdnjs, client-side live evaluation)"
+  ],
+  "suggests": {
+    "drupal/webform": "Enable the webform_calculation_fields submodule to use the calculation elements inside Webforms."
+  },
   "submodules": [
     "calculation_fields_example",
     "webform_calculation_fields",
@@ -23,25 +30,34 @@
   ],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "Render element (FormElement) 'form_calculation_element' — a readonly number input that computes a result",
+    "Render element (FormElement) 'form_calculation_markup' — HTML markup that renders a computed result inside {{ }}",
+    "Webform element 'form_calculation_element' (WebformCalculationNumber, submodule) — number calculation element for webforms",
+    "Webform element 'form_calculation_markup' (WebformCalculationMarkup, submodule) — markup calculation element for webforms"
+  ],
   "categories": [
     "Content editing experience",
+    "Forms and surveys",
     "Developer tools"
   ],
   "subcategories": [
-    "Field types",
-    "Forms"
+    "Computed / derived fields",
+    "Webform elements",
+    "Form builder"
   ],
   "keywords": [
     "calculation",
     "math",
     "expression",
     "formula",
+    "computed field",
     "webform",
-    "fields"
+    "expression-language",
+    "mathjs"
   ],
-  "project_description": "This module extends the Drupal form API adding two more form element types. \n\n \n Calculation element \n Calculation element markup \n \n Both elements can evaluate a math expression and display the result.\n\n The Calculation element displays as number input, you can use this value as normal input displaying the result on the front, and the result value will be submitted to the backend.\n\n With Calculation element markup you can provide a specific markup to display the result. The result won't be submitted with the form.\n\n Webform integration. \n\nThese elements can also be used in Webforms. Just enable the Webform Calculation fields and you can use these elements on your webform.\n\n How does it work in a form array? \n\nThe example below demonstrates how to create the calculation number element.\n\nThe #evaluation_fields you gonna inform the math expression.\n\nAs you can see in the code below, to use another field from the form inside the expression you can use : it to inform the name of the field.\n\n \n\n$form['result'] = [\n\n '#type' => 'form_calculation_element',\n\n '#title' => $this->t('Result'),\n\n '#required' => TRUE,\n\n '#evaluation_fields' => '(:first_value + :second_value + :third_value) * :multiple',\n\n '#evaluation_round' => 2,\n\n];\n\n \n\n The result will be calculated when all those fields on the expression are populated. Then the field will be replaced by the value and finally, the expression will be executed and the input field will be updated with the result.\n\n You can use any kind of math expression like the examples below.\n\n \n\n'#title' => $this->t('BMI = weight (kg) / (height (m) * height (m))'),\n\n'#evaluation_fields' => ':weight / (:height * :height)',\n\n \n\n \n\n'#title' => $this->t('Loan Repayment Calculation Example'),\n\n'#evaluation_fields' => '(:loan_amount * :interest_rate * (1 + :interest_rate) ^ :loan_term) / ((1 + :interest_rate) ^ :loan_term - 1)',\n\n \n\n Additional Requirements \n On the front-end side we use the library Mathjs to evaluate the expression. You don't need to install this library.\n\nOn the back-end side to evaluate the expression we use symfony/expression-language package.\n\n Community Documentation \n If you need more information about how to configure the form elements please take a look on the README that has some examples and it's explained in details. Also, enable the calculation fields examples to see the elements working and feel free to take a look on the form CalculationFieldsExample \n\nAlso, to check more details about the integration with webforms please take a look at README and install the webform_calculation_fields_examples module to get some webforms already configured as examples.\n\n Back to top",
+  "project_description": "Calculation Fields extends the Drupal Form API with two render elements, form_calculation_element (a readonly number input) and form_calculation_markup (HTML output), that evaluate a math expression such as ':quantity * :unit_price' over the values of other form fields, like a spreadsheet cell. Fields are referenced in the expression by their machine name prefixed with a colon, and an optional default can be supplied with a pipe (e.g. :discount|0). The result is computed live in the browser with the math.js library as the referenced fields change, and re-computed and re-validated server-side on submit with symfony/expression-language so a tampered client value cannot forge the stored result. The webform_calculation_fields submodule exposes the same two elements as Webform elements (Calculation Field and Calculation Markup) so site builders can add live calculators to webforms without code; calculation_fields_example and webform_calculation_fields_examples ship worked examples (quantity/price, BMI, loan repayment).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

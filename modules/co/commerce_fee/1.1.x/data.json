@@ -1,11 +1,14 @@
 {
   "name": "Commerce Fee",
   "data_name": "commerce_fee",
-  "description": "UI for managing order fees.",
+  "description": "Provides a UI for managing fees.",
   "version": "1.1.x",
   "package": "Commerce",
   "composer_namespace": "drupal/commerce_fee",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "php": ">=8.1.0",
+    "drupal/commerce": "~2.25 || ^3.0"
+  },
   "dependent_modules": [
     "commerce:commerce",
     "commerce:commerce_order",
@@ -18,20 +21,23 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/commerce_fee",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1.0",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "commerce_fee.fee (plugin.manager.commerce_fee; namespace Plugin/Commerce/Fee)"
+  ],
   "categories": [
     "E-commerce"
   ],
   "subcategories": [
-    "Pricing and adjustments",
-    "Orders"
+    "Pricing / price lists",
+    "Order management",
+    "Conditions / business rules"
   ],
   "keywords": [
     "commerce",
@@ -41,7 +47,7 @@
     "adjustment",
     "pricing"
   ],
-  "project_description": "The Commerce Fee module allows you to define and apply custom fees to Drupal Commerce orders.\n\n \n These fees can represent service charges, surcharges, environmental levies, payment gateway costs, or any other non-product cost that needs to be added to an order total.\n\n Key Features \n \n ✅ Add fixed or percentage-based fees \n ⚙️ Apply fees conditionally based on:\n \n Order total \n Selected payment or shipping method \n User roles or customer profiles \n Custom business logic via plugin system \n \n \n 📦 Support for multiple fees per order \n 🧩 Extensible via custom fee type plugins \n 🧾 Fees appear in the order summary and are stored as order adjustments \n 🔄 Fees can be automatically applied or manually triggered by custom code \n \n Example Use Cases \n \n Add a credit card surcharge when a specific payment method is selected \n Apply an environmental handling fee on electronics orders \n Include a service fee for phone or in-person orders \n Add a delivery surcharge based on the selected shipping method \n \n Compatibility \n \n Compatible with Drupal Commerce 2.x and 3.x \n Fully integrated into the Commerce order and adjustment system \n Back to top",
+  "project_description": "The Commerce Fee module provides a UI for defining fees (surcharges) that Drupal Commerce adds to order totals. It mirrors the architecture of Commerce Promotion: each fee is a content entity that pairs a fee-offer plugin (fixed amount or percentage, at order or order-item level) with a set of commerce conditions, order types, stores, and a start/end date window. An order processor evaluates available fees during the order refresh and records each one as a positive 'fee' adjustment on the order or its order items, so fees flow through Commerce's normal pricing, tax, and refund machinery.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

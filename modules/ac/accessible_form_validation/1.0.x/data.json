@@ -1,20 +1,24 @@
 {
   "name": "Accessible Form Validation",
   "data_name": "accessible_form_validation",
-  "description": "Improves the accessibility of form validation messages.",
+  "description": "Replaces the browser's native HTML5 validation popups with inline, themeable, screen-reader-friendly error messages.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Accessibility",
   "composer_namespace": "drupal/accessible_form_validation",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "accessible_form_validation.settings",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/accessible_form_validation",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "core/drupal",
+    "core/once",
+    "core/drupalSettings"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
@@ -26,18 +30,22 @@
     "Content editing experience"
   ],
   "subcategories": [
-    "Forms",
-    "Validation"
+    "ARIA / semantic markup",
+    "Field validation"
   ],
   "keywords": [
     "accessibility",
     "forms",
     "validation",
-    "errors",
+    "aria-invalid",
+    "screen reader",
     "wcag",
-    "aria"
+    "inline errors",
+    "html5 validation",
+    "novalidate",
+    "constraint validation api"
   ],
-  "project_description": "Improves accessibility by converting native browser form validation messages into inline messages compatible with screen readers and theming.\n\n Features \n This module replaces browser-native form validation popups with inline error messages, making forms more accessible—especially for screen reader users.\n\nKey features include:\n\n \n Converts HTML5 browser validation messages into inline, themeable messages. \n Allows enabling separately for the default theme and the admin theme. \n Lets you customize the CSS class used for the error message container (default theme only). \n \n Post-Installation \n After installation:\n\n \n Navigate to the module’s configuration page at Configuration » User Interface » Accessible form validation. \n Choose whether to enable the feature for the default theme, the admin theme, or both. \n Optionally, define a custom CSS class for the error message container in the default theme. \n \n No additional setup is required unless your theme needs specific styling for error messages.\n\n Additional Requirements \n This module has no dependencies beyond Drupal core.\n\n Back to top",
+  "project_description": "Improves accessibility by converting native browser form validation messages into inline messages compatible with screen readers and theming.\n\nThe module attaches a small JS behaviour that adds `novalidate` to forms with required fields, then re-implements client-side validation through the Constraint Validation API. On blur/input and on submit it marks each failing field with `aria-invalid=\"true\"`, injects the browser's validationMessage into an inline error container inside the field's `.form-item`, toggles error/valid CSS classes, and moves focus to the first invalid field on a blocked submit. Enable independently for the default (front-end) theme and the admin theme, and optionally override the CSS class used for the error-message container on the default theme. No dependencies beyond Drupal core.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

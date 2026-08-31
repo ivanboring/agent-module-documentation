@@ -1,11 +1,13 @@
 {
   "name": "Howler.js",
   "data_name": "howlerjs",
-  "description": "Howler.js audio library integration.",
+  "description": "Howler.js audio JavaScript library integration.",
   "version": "1.0.x",
   "package": "Audio",
   "composer_namespace": "drupal/howlerjs",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/core": "^8.8 || ^9 || ^10 || ^11"
+  },
   "dependent_modules": [],
   "configure": null,
   "core_version_requirement": "^8 || ^9 || ^10 || ^11",
@@ -14,28 +16,33 @@
   "project_url": "https://www.drupal.org/project/howlerjs",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "howler.js 2.2.3 (MIT) — loaded from the jsDelivr CDN by default; optionally served locally from /libraries/howlerjs/"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Media management",
-    "Developer tools"
+    "Developer tools",
+    "Media"
   ],
   "subcategories": [
     "JavaScript libraries",
-    "Audio"
+    "External library management",
+    "Audio embedding"
   ],
   "keywords": [
     "howler.js",
+    "howler",
     "audio",
     "sound",
-    "library",
-    "player",
-    "media"
+    "web audio api",
+    "javascript",
+    "asset library",
+    "cdn"
   ],
   "project_description": "Module that integrates the howler.js audio library: https://howlerjs.com/ \n\n \n\n \" Audio library for the modern web. howler.js makes working with audio in JavaScript easy and reliable across all platforms.\"\n\n This module adds the library but doesn't integrate any players or additional features, you need to either install a player module or follow the documentation to add your use case.\n\n Modules that leverage howlerjs:\n\n - Tiny HTML Audio player",
   "maintenance_status": "Actively maintained",
