@@ -2,8 +2,8 @@
 
 **CKEditor 5 Dev tools** (`ckeditor5_dev`) is a developer's aid for anyone building
 or debugging CKEditor 5 integrations in Drupal. It answers the two questions that
-consume most CKEditor 5 integration time: *what is actually loaded in the editor
-build for this text format*, and *what is the editor's model doing while I type* —
+consume most CKEditor 5 integration time: *which CKEditor 5 plugins are registered
+and what markup does each allow*, and *what is the editor's model doing while I type* —
 the latter being something you cannot see by inspecting the DOM, because CKEditor's
 model is not the DOM.
 
@@ -12,8 +12,9 @@ It does three things:
 - **Enables the official CKEditor 5 Inspector**, a debugging overlay that appears
   on any page with an initialized CKEditor 5 instance, letting you inspect the
   editor's model, view, and commands live.
-- **Adds a loaded-plugin report** at `/admin/reports/ckeditor5-plugins`, showing
-  which CKEditor 5 plugins are in the build.
+- **Adds a plugin report** at `/admin/reports/ckeditor5-plugins`, listing every
+  CKEditor 5 plugin registered on the site (label, id, allowed HTML elements, and
+  the providing module) — the full registered set, not one text format's subset.
 - **Ships a plugin starter template** (in `ckeditor5_plugin_starter_template/`)
   that scaffolds a module providing a custom CKEditor 5 plugin.
 

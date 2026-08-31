@@ -1,27 +1,33 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Draggable CAPTCHA adds a drag-and-drop challenge type to the CAPTCHA module, where the visitor moves an element to a target.
+Draggable CAPTCHA adds a drag-and-drop / click challenge type to the CAPTCHA module: the form shows four small shape buttons (heart, "bwm", star, diamond) and a target image of one of them, and the visitor drags or clicks the shape that matches the target into a drop area.
 
 ---
 
-The appeal over a distorted-text CAPTCHA is real: it is faster, it does not depend on reading mangled characters, and it feels less hostile. The problem is what replaces the reading task. **A drag interaction is the least accessible input pattern the web has**, requiring a pointing device, fine motor control and sustained coordination — so a challenge that must be dragged excludes keyboard users entirely, anyone using a screen reader, anyone with a tremor or limited dexterity, and most people on a phone in one hand. Since the whole point of a CAPTCHA is to stand between a person and something they came to do, an inaccessible one does not degrade the experience; it ends it. The module's description says "draggable **& clickable**", which suggests a non-drag path exists, and confirming that path — that it is reachable by keyboard, announced, and equally effective — is the first thing to check, because it is the difference between a usable challenge and a barrier. Version **2.2.0-beta4** — a **beta** — on core `^10 || ^11`, requiring `captcha` and **`jquery_ui_droppable`**, which is worth noting: jQuery UI was removed from Drupal core and its remaining pieces are maintained on a best-effort basis, so this is built on a library the project has moved away from. Worth weighing against `turnstile`, documented in wave 79, which challenges invisibly and asks nothing of most visitors — an approach that is both more accessible and harder to solve at scale.
+The module registers two CAPTCHA types through `hook_captcha()` — **"Draggable Captcha"** and **"Draggable Captcha Mini"** (a smaller variant) — which you then attach to any protected form on CAPTCHA's admin screen (`/admin/config/people/captcha`, the module's `configure` route is `captcha_settings`); it has no settings page of its own. When a form renders, `_draggable_captcha_setup()` builds four random per-challenge hash codes (`Crypt::hmacBase64(mt_rand(), hash_salt)`, one per shape), picks one shape at random as the answer, and stores both the code map and the chosen key in `$_SESSION`. The four shapes are rendered as CSS-sprite `div`s (each `id="draggable_<hash>"`), shuffled in position, and the answer is shown only as a **server-rendered PNG crop** at `/draggable-captcha/target-img`, generated with GD from the session's answer key. jQuery UI Droppable powers the drag; a click path is also wired. On drop/click the JS writes the chosen shape's hash into a hidden `captcha_response` field and fires an AJAX call to `/draggable-captcha/{sid}/verify` **purely for visual success/fail feedback**. The real gate is server-side: CAPTCHA records the solution `'draggable_' . <answer-hash>` in the `captcha_sessions` table, and on submit `draggable_captcha_custom_validation()` checks `$response == $solution`. A "Refresh" link regenerates the challenge via an AJAX controller that calls `_captcha_update_captcha_session()`. Dependencies are the **captcha** module and **jquery_ui_droppable** (jQuery UI was removed from Drupal core; this rides on the contrib backport). Current release is **2.2.0-beta4** (a beta) on core `^10 || ^11`, GPL-2.0-or-later. Two caveats to weigh: **accessibility** — a drag interaction is hostile to keyboard, screen-reader, tremor and one-handed-mobile users; the click fallback softens but does not fully solve this — and **strength** — with only four possible answer shapes, blind guessing passes roughly 25% of the time, so it suits low-risk forms, not high-security ones (the project page says as much).
 
 ---
 
-- Add a drag-based CAPTCHA to a form.
-- Replace a text-distortion CAPTCHA.
-- Reduce spam on a contact form.
-- Add a friendlier challenge.
-- Protect a registration form.
-- Add a visual CAPTCHA option.
-- Reduce automated submissions.
-- Protect a comment form.
-- Offer an alternative to reading characters.
-- Add spam control to a webform.
-- Protect a newsletter signup.
-- Reduce bot registrations.
-- Add a click-based challenge.
-- Protect a password reset form.
-- Reduce moderation workload.
-- Add a challenge to a booking form.
-- Protect a search form from abuse.
-- Offer a non-text CAPTCHA.
+- Add a drag-or-click shape CAPTCHA to a Drupal form via the CAPTCHA module.
+- Offer a friendlier, mobile-oriented alternative to a distorted-text CAPTCHA.
+- Reduce casual spam on a site-wide contact form.
+- Protect a user registration form from low-effort bots.
+- Protect an anonymous comment form.
+- Add a challenge to a newsletter / mailing-list signup.
+- Guard a webform submission with a visual challenge.
+- Add the compact "Mini" variant where vertical space is tight.
+- Replace an existing image or math CAPTCHA challenge type.
+- Provide a click-only path for users who cannot drag.
+- Reduce moderation workload from automated submissions.
+- Add spam control to a booking or enquiry form.
+- Protect a password-reset request form.
+- Deter scripted abuse of a search or feedback form.
+- Offer a non-reading challenge (no mangled characters to decipher).
+- Combine with CAPTCHA's per-form placement to challenge only specific forms.
+- Let a challenge be refreshed in place without reloading the page.
+- Prototype a lightweight bot deterrent on a low-risk internal form.
+- Evaluate drag-based CAPTCHA UX before committing to it.
+- Pair with CAPTCHA's wrong-response logging to monitor bot pressure.
+- Serve as a stopgap where an invisible service (e.g. Turnstile/reCAPTCHA) is undesirable.
+- Add visual variety to a form's anti-spam step.
+- Challenge a survey or poll submission form.
+- Protect an "email to a friend" or share form.

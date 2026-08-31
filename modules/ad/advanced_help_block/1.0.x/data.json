@@ -1,7 +1,7 @@
 {
   "name": "Advanced Help Block",
   "data_name": "advanced_help_block",
-  "description": "Contextual help blocks shown on selected pages.",
+  "description": "Editorial help entities (title, filtered rich-text description, optional YouTube video, path-visibility rules) rendered through core's Help block on the pages you scope them to.",
   "version": "1.0.x",
   "package": "YMCA Website Services",
   "composer_namespace": "drupal/advanced_help_block",
@@ -22,7 +22,9 @@
   "project_url": "https://www.drupal.org/project/advanced_help_block",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "grt-youtube-popup"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
@@ -30,20 +32,19 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Administration tools",
-    "Content editing experience"
+    "Content editing experience",
+    "Administration tools"
   ],
   "subcategories": [
-    "Editorial help text",
-    "Blocks"
+    "Editorial notes / annotations"
   ],
   "keywords": [
     "help",
-    "contextual",
-    "block",
-    "editors",
-    "guidance",
-    "onboarding"
+    "contextual help",
+    "editorial guidance",
+    "onboarding",
+    "help block",
+    "path visibility"
   ],
   "project_description": "🇺🇦 \n \n This module is maintained by Ukrainian developers.\n\nPlease consider supporting Ukraine in a fight for their freedom and safety of Europe. \n \n \n Advanced Help Block is used in Admin interface of Open Y distribution in order to provide inline embedded videos, collapsible elements, proper modal windows",
   "maintenance_status": "Actively maintained",

@@ -1,11 +1,13 @@
 {
   "name": "Simple OAuth Revoke",
   "data_name": "simple_oauth_revoke",
-  "description": "Adds an RFC 7009 token revocation endpoint.",
+  "description": "Adds an RFC 7009 '/oauth/revoke' endpoint that lets an authenticated OAuth client revoke its own access and refresh tokens.",
   "version": "3.0.x",
   "package": null,
   "composer_namespace": "drupal/simple_oauth_revoke",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/simple_oauth": "^6"
+  },
   "dependent_modules": [
     "simple_oauth:simple_oauth"
   ],
@@ -21,15 +23,17 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Security",
-    "Decoupled"
+    "Access control",
+    "Decoupled",
+    "Security"
   ],
   "subcategories": [
-    "OAuth",
-    "APIs"
+    "OAuth / OpenID Connect provider",
+    "REST / web services",
+    "Session management"
   ],
   "keywords": [
     "oauth",
@@ -39,12 +43,12 @@
     "simple_oauth",
     "logout"
   ],
-  "project_description": "This module implements the token revocation endpoint for OAuth 2.0 as outlined by RFC 7009 .\n\n After enabling this module, an /oauth/revoke endpoint will be available to\n\nrevoke access or refresh tokens previously obtained by the Simple OAuth module.\n\n Revoking a Token \n To revoke a token, a POST request can be made to /oauth/revoke .\n\nThe body of the request must be in the application/x-www-form-urlencoded format and contain a token parameter set to the token to revoke.\n\n Authorization \n The request must be authorized with the client that originally issued the tokens. The client_id and client_secret can be provided in the request body or via Basic authentication.\n\nAlternatively, a bearer token may be used to authorize the request.\n\n Example \n \ncurl --location 'https://example.com/oauth/revoke' \\\n--header 'Content-Type: application/x-www-form-urlencoded' \\\n--data-urlencode 'token=' \\\n--data-urlencode 'client_id=' \\\n--data-urlencode 'client_secret='\n \nFor more details, see the RFC 7009 specification.",
+  "project_description": "This module implements the token revocation endpoint for OAuth 2.0 as outlined by RFC 7009. After enabling it, an /oauth/revoke endpoint becomes available to revoke access or refresh tokens previously obtained through the Simple OAuth module. To revoke a token, a POST request in application/x-www-form-urlencoded format is made to /oauth/revoke with a token parameter set to the token to revoke. The request must be authorized with the client that originally issued the tokens: the client_id and client_secret can be provided in the request body or via HTTP Basic authentication, or alternatively a valid bearer access token may be used to authorize the request. The endpoint verifies that the token being revoked belongs to the authenticating client before deleting it, and returns HTTP 200 whether or not the token existed, per the RFC.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
   "project_created": "2022-02-28",
   "project_changed": "2026-08-18",
-  "core_semver_minimum": 8000000,
+  "core_semver_minimum": 10000000,
   "core_semver_maximum": 12000000
 }

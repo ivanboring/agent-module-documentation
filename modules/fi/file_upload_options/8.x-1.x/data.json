@@ -1,7 +1,7 @@
 {
   "name": "File Upload Options",
   "data_name": "file_upload_options",
-  "description": "Additional upload options for file fields.",
+  "description": "Per-field control over what happens when an uploaded file has the same name as an existing one: rename the new file, replace the existing file, or reject the upload. Applies to file/image widgets, code-defined fields, and REST file uploads.",
   "version": "8.x-1.x",
   "package": "Media",
   "composer_namespace": "drupal/file_upload_options",
@@ -19,25 +19,26 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Media management",
-    "Security"
+    "Media",
+    "Content editing experience"
   ],
   "subcategories": [
-    "File uploads",
-    "Field widgets / select UI"
+    "File uploads"
   ],
   "keywords": [
-    "file",
-    "upload",
-    "options",
-    "fields",
-    "settings",
-    "validation"
+    "file upload",
+    "duplicate filename",
+    "replace file",
+    "rename file",
+    "file field",
+    "managed_file",
+    "rest file upload",
+    "filefield_paths"
   ],
-  "project_description": "Specify what should happen when uploaded files and images have the same name as existing files. Configured per field, the options are are grouped by entity type.\n\n The module aims to work with all file fields without having to replace existing widgets or file fields. It does this by altering the underlying file handling rather than the UI.\n\n To use, install and go to Admin -> Config -> Media -> File Upload Options to configure.\n\n It also supports file uploads via REST.\n\n Fields defined in code \n\n To configure file fields defined in code, specify the field name under \"Custom Fields\".\n\n Alternatively, non-entity fields will be automatically added to \"Custom Fields\" when viewing the form with the field on it. The replace behaviour can then be configured within File Upload Options.\n\n Back to top \n\n REST \n \n Ability to specify how to handle existing files with the same file name \n Re-use an existing file entity with the same URI rather than create a new one \n \n Back to top \n\n Why? \n Currently there is no unified way of handling file uploads in Drupal core. Additionally, many contrib modules go about it their own way. File replace options are generally not available in the UI and are difficult to achieve even in code.\n\n There are a number of related issues which deal with the issue of file management. Once these are resolved modules such as File Upload Options would be much simpler or preferably obsolete.\n\n \n [#2940383] \n [#2648816] \n [#2241865] \n [#3221796] \n \n Back to top \n\n Similar modules \n See the project pages for how these modules work.\n\n \n Media Entity File Replace \n File Replace \n File Field Replace \n Back to top",
+  "project_description": "File Upload Options lets you specify, per file or image field, what should happen when an uploaded file has the same name as a file that already exists. The four choices map to core's file-exists constants: leave core's current behaviour, rename the new file (EXISTS_RENAME, core default), replace/overwrite the existing file (EXISTS_REPLACE), or prevent the upload with an error (EXISTS_ERROR). Fields are discovered automatically from every file/image field on the site and grouped by entity type on one settings form at Admin -> Config -> Media -> File Upload Options.\n\nIt works without replacing any widget or field type. Instead it overrides the managed_file element's #value_callback so uploads are routed through the module's own save routine, which reads the configured option for that field and passes it to core's file-save pipeline. File and image fields, inline entity forms, and fields defined in code (registered under \"Custom fields\" by machine name) are all supported. REST file uploads are supported too: the module swaps core's file:upload REST resource for its own subclass that honours the same option and, on Replace, re-uses the existing file entity with the matching URI instead of creating a new one. An optional integration with filefield_paths sets the same replace behaviour for path-processed files. The module installs at weight -10 so it runs before other file-handling modules.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

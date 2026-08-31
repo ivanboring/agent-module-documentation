@@ -1,28 +1,51 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Views entity_access check (views_entity_access_check) — agent index
 
-Runs **`$entity->access()` on every row a view returns**, discarding rows the user may not see.
-Depends on core `views`. Settings behind `administer views_entity_access_check configuration`.
-Version **0.0.4** — a `0.0.x` version number, which is its own statement.
-Core requirement `^8.9 || ^9 || ^10 || ^11`.
+Implements **`hook_views_pre_render()`** and, for each view whose machine name is listed in config,
+walks `$view->result` and calls **`$row->_entity->access('view')`** for the current user, `unset()`ing
+every row that fails. No plugin, no field handler, no query alteration — one hard-coded loop.
+Depends on core `views`. Version **0.0.4** (`0.0.x` — deliberately never stable).
+Core requirement `^8.9 || ^9 || ^10 || ^11`. Maintained by DROWL.
 
-**The gap it addresses is one of Drupal's oldest**, and the module names it: core issue **777578**,
-open since 2010.
-- Views filters its **query** using the **node access grants** system — a SQL-level mechanism.
-- A module implementing **`hook_node_access()` / `hook_entity_access()`** decides in **PHP**, when
-  something asks `$entity->access('view')`.
-- **The Views query knows nothing about the second.** So a view can list entities the viewer cannot
-  open — title, row fields and often a teaser all rendered, with access-denied on click. Sites
-  discover this when a restricted document's title appears in search results.
+## What it is for
+The gap it addresses is one of Drupal's oldest, and the module names it: core issue **777578**, open
+since 2010.
+- Views filters its **SQL query** using **node access grants** (nodes) or `hook_query_TAG_alter()`
+  (other entities) — both SQL-level.
+- `hook_entity_access()` / `hook_node_access()`, where many access modules decide in **PHP** when code
+  calls `$entity->access('view')`, is **not consulted for listings**.
+- So a view can list entities the viewer cannot open — title, row fields and often a teaser rendered,
+  access-denied on click. This module drops those rows after the query.
 
-**Two consequences of checking after the query — plan for both:**
-1. **The pager lies.** The query counted rows the check then removes: a page of ten can show four,
-   and the total is wrong.
-2. **It costs an entity load per row** — exactly what the query was avoiding.
+## Mechanism (exact)
+- File: `views_entity_access_check.module`, function `views_entity_access_check_views_pre_render()`.
+- Reads `views_entity_access_check.settings:views` (a sequence of view machine names).
+- If `in_array($view->id(), $handleViews)`, loops results:
+  `if (!empty($value->_entity) && !$value->_entity->access('view')) { unset($view->result[$key]); }`.
+- Operation is **always `'view'`**, account is **always the current user** (no `$account` passed).
+- `access('view')` returns a boolean here (default `$return_as_object = FALSE`).
 
-Neither is a criticism; the module cannot do better from outside core. They are why **the real fix
-belongs in core**, and why this is a mitigation to apply **deliberately to the views that need it**
-rather than globally.
+## Configuration
+- Settings form route `views_entity_access_check.settings_form` at
+  `/admin/config/system/views-entity-access-check`, menu link under System.
+- `SettingsForm` (`src/Form/SettingsForm.php`) is a `ConfigFormBase`; a multi-select of all views
+  (`Views::getAllViews()`), stored as a list of view IDs.
+- The route requires permission `administer views_entity_access_check configuration`, but the module
+  **defines no `.permissions.yml`** — that permission is never declared, so only user 1 can reach the
+  form on a stock install (`provides_permissions` is false).
+- Config schema: `config/schema/views_entity_access_check.schema.yml` (`views` sequence of strings).
 
-Related: `par` (wave 76) is an example of a module that restricts without grants — precisely the
-case this catches.
+## Two consequences of filtering after the query — plan for both
+1. **Pager / total count are wrong.** They are computed from the unfiltered query; a page of ten can
+   show fewer, and the total is off.
+2. **One entity load + access check per row** — exactly the work the query avoided. Enable per-view,
+   only where needed, never globally. The settings form itself warns it "impacts performance and
+   caching."
+
+## Files
+- `views_entity_access_check.module` — the entire behavior (one hook).
+- `src/Form/SettingsForm.php` — the config form.
+- `*.routing.yml`, `*.links.menu.yml`, `config/schema/*.schema.yml`, `*.info.yml`.
+
+## Solution types
+- `views/` — enabling and mechanics of the row-level entity access filter.

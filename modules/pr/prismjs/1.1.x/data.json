@@ -1,11 +1,14 @@
 {
   "name": "Prism Js syntax highlighter",
   "data_name": "prismjs",
-  "description": "PrismJS syntax highlighting for CKEditor 5.",
+  "description": "CKEditor 5 plugin plus a reversible text-format filter that lets editors insert a code block, pick a language, and render it with PrismJS syntax highlighting.",
   "version": "1.1.x",
   "package": "CKEditor 5",
   "composer_namespace": "drupal/prismjs",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "php": "^7.3 || ^8.0 || ^8.1",
+    "drupal/core": "^9.2 || ^10 || ^11"
+  },
   "dependent_modules": [
     "drupal:ckeditor5"
   ],
@@ -15,31 +18,32 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/prismjs",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "^7.3 || ^8.0 || ^8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "prismjs (plugin.manager.ckedito5_prismjs)"
+  ],
   "categories": [
-    "Content editing experience",
-    "Theming"
+    "Content editing experience"
   ],
   "subcategories": [
-    "Code display",
-    "WYSIWYG"
+    "CKEditor plugins",
+    "Code editor / syntax highlighting"
   ],
   "keywords": [
     "prismjs",
     "syntax highlighting",
     "ckeditor5",
     "code",
-    "documentation",
+    "filter",
     "languages"
   ],
-  "project_description": "This module enables the Prism Js plugin from prismjs.com in your WYSIWYG. It includes the highlightjs library and all available styles for it. If you've ever wanted to drop code examples in your Drupal content and have it highlighted in a pretty format, this is for you. Since that project relies on WYSIWYG module, and this one only requires D9/10 core, it made sense to rename it.\n\n This module provides a way to allow editors to insert styled components into CKEditor5 without having\n\nto grant the editors permission.\n\n \n\nBasic Usage \n\nAfter completing the moduel installation, go to the filter format you want to configure (must be using CKEditor5). Drag the Prism Js icon into the active toolbar, and the config form will\n\nappear below with a syntax highlighting style and supported languages\n\noption. Configure the languages and theme from here /admin/config/content/prism-js. By default, few are checked for you. Uncheck ones you won't need, it's optional. This only controls the options in the dialog window of CKEditor5 when inserting a source code.\n\nNote that your filter format must support the use of pre and code tags under allowed tags as well, if using anything other than Full HTML. You also need to configure the HTML filter (if Limit Allowed Tags is enabled) to allow the class attribute like so. Drupal 9 ships with CKEditor 5, so it depends on the ckeditor module from core.\n\n Support \n\nPlease post bug reports, feature requests and support requests to the Prism Js module issue queue . If you met any problems with this module - feel free to create an issue.\n\n Demo \n\n \n Go to https://simplytest.me/project/prismjs . \n Click \"Launch Sandbox\". \n Install Drupal as normal. \n Enable \"Prism Js\" module, and any optional modules you wish to try out. \n Go to /admin/config/content/prism-js and configure available languages and default theme \n Go to admin/config/content/formats/manage/full_html and drag the Prism js icon on the active toolbar \n Add content with text editor click on the prismjs icon and add your code. Double click on the code snippet to edit the source code.",
+  "project_description": "Provides a CKEditor 5 plugin and a companion text-format filter that let content editors insert a source-code block, choose one of PrismJS's languages from a dialog, and have it rendered with PrismJS syntax highlighting on the published page. A toolbar button opens a dialog that stores the chosen language and code on a custom <prism-js> element (data-plugin-id / data-plugin-config); the 'Prism Js' filter later converts that element into PrismJS-ready <pre><code class=\"language-...\"> markup and attaches the selected theme's assets. All PrismJS CSS/JS (eight bundled themes) ships locally with the module. A settings form at /admin/config/content/prism-js selects which of ~297 languages appear in the editor dialog and the default color theme. Depends on core ckeditor5.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
