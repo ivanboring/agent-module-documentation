@@ -1,13 +1,13 @@
 {
   "name": "Umami Analytics",
   "data_name": "umami_analytics",
-  "description": "Integrates the Umami analytics platform.",
+  "description": "Adds the Umami web-analytics tracking script to every page, with role- and path-based visibility controls.",
   "version": "2.0.x",
-  "package": null,
+  "package": "Statistics",
   "composer_namespace": "drupal/umami_analytics",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "umami_analytics.admin_settings_form",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -17,17 +17,15 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Integrations",
-    "Security"
+    "Integrations"
   ],
   "subcategories": [
-    "Analytics / tag management",
-    "Cookie consent / GDPR"
+    "Analytics & tracking"
   ],
   "keywords": [
     "umami",
@@ -37,7 +35,7 @@
     "self-hosted",
     "tracking"
   ],
-  "project_description": "Adds the Umami Analytics web statistics tracking system to your website.\n\n Basic tracking is implemented and is working fine.\n\n Branch 1.x is D9 compatible and will receive no new features, new work will continue in 2.x branch which is D10/D11 compatible.\n\n TODO \n The next steps required to complete a fully functional basic version are:\n\n \n Implement all tracker configuration options https://umami.is/docs/tracker-configuration \n Cron implementation of local js cache \n Tests \n Support custom tracker events",
+  "project_description": "Adds the Umami Analytics web statistics tracking system to your website by injecting the Umami tracker script on every page. Umami is a simple, self-hosted, privacy-focused, cookieless alternative to Google Analytics. The module injects the admin-configured script URL and website ID, with visibility rules by user role, by request path, and single- or multi-domain tracking. Branch 1.x is D9-only and frozen; 2.x targets D10/D11. Still beta: local JS caching and cron sync are stubbed out (@TODO), and there is no test coverage. Current release 2.0.0-beta4.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

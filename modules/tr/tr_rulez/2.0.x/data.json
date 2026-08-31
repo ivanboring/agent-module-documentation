@@ -1,11 +1,13 @@
 {
   "name": "Rules Essentials",
   "data_name": "tr_rulez",
-  "description": "Missing functionality and documentation for the Rules module.",
+  "description": "Provides missing functionality and documentation for the Rules module.",
   "version": "2.0.x",
   "package": "Rules",
   "composer_namespace": "drupal/tr_rulez",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/rules": "4.0.x-dev"
+  },
   "dependent_modules": [
     "rules:rules"
   ],
@@ -23,31 +25,38 @@
     "rules_scheduler"
   ],
   "provides_permissions": false,
-  "provides_drush_commands": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Workflow",
+    "Automation",
     "Developer tools"
   ],
   "subcategories": [
-    "Business process automation",
-    "Rules"
+    "Workflow / business rules",
+    "Cron / task scheduling",
+    "Content cloning",
+    "Example / reference code",
+    "Hook / event system"
   ],
   "keywords": [
     "rules",
-    "scheduler",
-    "clone",
-    "examples",
     "automation",
-    "documentation"
+    "conditions",
+    "actions",
+    "events",
+    "data filters",
+    "flood",
+    "clone",
+    "scheduler",
+    "examples"
   ],
-  "project_description": "The Rules module for Drupal 9 is still in its beta release stage. This means, among other things, that some features that were present in Drupal 7 Rules have not yet been ported to D9 and that some features that were ported still need significant work. Additionally, the internal structure of Drupal 9 is significantly different than Drupal 7 so there are many concepts that differ between the two releases. Notably, there is almost no documentation yet for Rules in D9.\n\n This module means to change that.\n\n The purpose of this module is to provide the missing pieces that currently make Rules difficult to use in D9. Specifically, this module:\n\n \n Ports missing features from D7 \n Provides new features \n Provides a greatly enhanced Rules UI \n \n and ... most importantly\n\n \n Documents , with extensive examples, how to use Rules in Drupal 9! \n \n The documentation is written both for site builders (assumed to be non-programmers) and for programmers who want to provide Rules integration, port Rules integration from D7, or enhance Rules with new features.",
+  "project_description": "Rules Essentials (tr_rulez) augments the contrib Rules module for Drupal 10.3+/11. It adds Rules plugins that were missing from the Drupal 8+ port of Rules: new Conditions (flood-is-allowed, path-contains-text, path text comparison, site-in-maintenance-mode), new Actions (cache tag invalidator, flood register/clear event), new Events (user blocked/unblocked, entity bundle create/delete), a Condition set (XOR) expression, and two TypedData filters (link, raw). It also provides an optional improved Rules UI (enabled by default) that adds a clone operation for reaction rules and components, replacement list builders, and a reworked reaction-rule edit form. Two submodules ship with it: rules_examples (working example reaction-rule configurations distributed as config/optional, for learning and documentation) and rules_scheduler (a partially-implemented port of the D7 scheduler that stores tasks in a custom database table and drains them through a cron queue; several parts of the scheduler are stubbed/incomplete in 2.0.0). The module also supplies a Drush command to list field-type plugins, a D6/D7 rules-settings migration, and update hooks that renamed its events. Depends on the Rules module; requires the Typed Data API module (transitively via Rules).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
   "project_created": "2018-06-16",
   "project_changed": "2026-08-18",
-  "core_semver_minimum": 9002000,
+  "core_semver_minimum": 10003000,
   "core_semver_maximum": 12000000
 }

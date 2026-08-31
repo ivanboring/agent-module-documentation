@@ -1,12 +1,13 @@
 {
   "name": "Iconify Field",
   "data_name": "iconify_field",
-  "description": "Provides a field formatter for Iconify icons.",
+  "description": "Provides a field type, icon-picker widget and SVG formatter for Iconify icons.",
   "version": "1.2.x",
   "package": null,
   "composer_namespace": "drupal/iconify_field",
   "composer_requirements": {
-    "iconify/json": "*"
+    "php": ">=8.1",
+    "iconify/json": "^2.2"
   },
   "dependent_modules": [
     "drupal:field"
@@ -17,23 +18,40 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/iconify_field",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/ckeditor5": "Required by the bundled iconify_field_ckeditor submodule (icons in CKEditor 5 body text).",
+    "drupal/graphql_compose": "Enables the bundled GraphQLCompose plugin that exposes the icon field as a String in the GraphQL schema.",
+    "drupal/single_content_sync": "Enables the bundled SingleContentSync processor for import/export of icon field values."
+  },
   "submodules": [
     "iconify_field_ckeditor"
   ],
   "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "Field type: iconify_field_icon (Drupal\\iconify_field\\Plugin\\Field\\FieldType\\IconItem)",
+    "Field widget: iconify_field_icon_picker (Drupal\\iconify_field\\Plugin\\Field\\FieldWidget\\IconPicker)",
+    "Field formatter: iconify_field_icon_formatter (Drupal\\iconify_field\\Plugin\\Field\\FieldFormatter\\IconField)",
+    "Form element: iconify_field (Drupal\\iconify_field\\Element\\IconifyField)",
+    "Render element: iconify_icon (Drupal\\iconify_field\\Element\\IconifyIcon)",
+    "Twig function: iconify_field() (Drupal\\iconify_field\\Twig\\Extension\\IconifyField)",
+    "CKEditor5 plugin (submodule): iconify_field_ckeditor_iconify_field",
+    "GraphQLCompose field type: iconify_field_icon (optional, requires graphql_compose)",
+    "SingleContentSync field processor: iconify_field_icon (optional, requires single_content_sync)"
+  ],
   "categories": [
-    "Content editing experience",
-    "Theming"
+    "Content display",
+    "Content editing experience"
   ],
   "subcategories": [
-    "Field types",
-    "Icon libraries"
+    "Icon management",
+    "Field formatters",
+    "SVG / vector images",
+    "Fields",
+    "CKEditor plugins"
   ],
   "keywords": [
     "iconify",
@@ -41,14 +59,15 @@
     "svg",
     "field",
     "ckeditor",
-    "picker"
+    "picker",
+    "inline svg"
   ],
-  "project_description": "The Iconify Field module for Drupal allows you to easily add SVG icons to any type of content, using the amazing Iconify project.\n\n Back to top \n\n Components \n \n Field integration with a user-friendly icon picker \n A CKEditor 5 plugin to easily let content editors add icons \n An API to allow developers to integrate any feature in their own custom modules \n \n Back to top \n\n What does it do? \n In short, it provides a new field type for selecting icons from any collection of Iconify icons. The resulting icon or icons will be rendered in SVG form on the frontend, without the need for any client-side JavaScript.\n\n Additionally, a separate module is provided to provide a CKEditor 5 plugin. This makes it easy for content editors to include icons in their content.\n\n Back to top \n\n Can it do anything else? \n It can! Of course, just providing a field type for one or more icons can quickly become very limiting. That is why some helpers are provided alongside the module.\n\n Twig function \n You might run into situations where you have custom functionality, and want to embed a single icon in a Twig template. That's where the iconify_field Twig function comes in. Simply provide the collection and name of the icon, and the correct icon will be rendered.\n\n For example:\n\n<?php\n\n{{ iconify_field('mdi:account') }}\n\n?>\n\n The icon picker is pretty nice, can I use it in my custom form? \n Be my guest! It's quite simple to include, since a custom form element is provided with this module.\n\n Here's a code snippet to get you started:\n\n<?php\n\n$form['icon'] = [\n\n '#type' => 'iconify_field',\n\n '#default_collection' => 'mdi', // Can also be NULL, in which case the first collection will be pre-selected\n\n '#collections' => [ // Can also be empty, in which case all collections are allowed\n\n 'mdi',\n\n 'tabler',\n\n ],\n\n '#default_value' => 'mdi:account',\n\n];\n\n?>\n\n \n\n Back to top",
+  "project_description": "The Iconify Field module for Drupal lets you add SVG icons to any content, backed by the Iconify icon sets. It provides a new field type for selecting one or more icons from any Iconify collection, an icon-picker widget with a modal search UI, and a formatter that renders the chosen icon as inline SVG on the frontend with no client-side JavaScript required. Icons are read from the iconify/json Composer package installed on disk (via Iconify\\IconsJSON\\Finder), not from Iconify's public API, so rendering works offline and makes no third-party requests. Helpers include an iconify_field() Twig function for embedding a single icon in a template, a reusable iconify_field form element for custom forms, and a JSON API for listing collections and icons. A separate iconify_field_ckeditor submodule adds a CKEditor 5 plugin so content editors can drop icons into body text.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
   "project_created": "2024-05-18",
   "project_changed": "2026-08-18",
-  "core_semver_minimum": 10000000,
-  "core_semver_maximum": 12999999
+  "core_semver_minimum": 11020000,
+  "core_semver_maximum": 11999999
 }

@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Suggestion builds an n-gram index from site content and serves type-ahead suggestions from it, so a search box offers completions drawn from what the site actually contains.
+Suggestion builds its own n-gram index from published site content (plus admin-defined priority terms and terms visitors actually search for) and serves type-ahead completions from that index over a JSON endpoint, so a search box can offer suggestions drawn from what the site really contains — no Search API, Solr, or external service required.
 
 ---
 
-A search box with no suggestions makes visitors guess the site's vocabulary, and the guesses are usually wrong — people search for "car park" on a site that says "parking". Suggestions solve that by showing what will actually match, and they have to come from the content rather than from a hand-maintained list to stay current. This module builds the index itself, storing n-grams and serving them from `/suggestion/autocomplete`, with administration at `/admin/config/suggestion` behind `administer suggestion` and per-n-gram editing so an administrator can remove or adjust entries. The autocomplete route is declared `_access: 'TRUE'` — with a wry comment in the routing file, *"Save me from the people that would save me from myself"* — and the important question that raises is whether the index can leak content, which it cannot in the ordinary case: indexing filters on `status = 1`, so unpublished nodes are excluded. Worth knowing, though, that the filter is publication status rather than **node access**, so content that is published but restricted by a node-access module is still indexed, and its vocabulary can surface as suggestions. On a site with per-node access restrictions, review what is being indexed.
+A search box with no completions makes visitors guess a site's vocabulary, and the guesses are usually wrong — someone types "car park" where the content says "parking". Suggestion closes that gap by maintaining its own suggestion index and serving it as the user types. Indexing tokenizes text (lowercase, strip non-alphabetic characters, drop words shorter than the configured minimum, remove stopwords), then slices the remaining words into overlapping n-grams of `atoms_min`..`atoms_max` words in both forward and reversed order, and stores each n-gram in a dedicated `{suggestion}` table with a `density` score used for ranking. Three sources feed the index: titles of the content types you select (rebuilt on cron and via a batch "Index Suggestions" form, and kept live by node insert/update/delete hooks), "priority" phrases an administrator types into the settings form (scored highest), and "surfer" searches — terms visitors submit through a search box that the module has attached autocomplete to, admitted to the index only when their words already appear in your published content. At request time the controller at `/suggestion/autocomplete?q=…` lowercases and trims the query, LIKE-matches it against the index (prefix first, then substring to fill the limit), and returns a JSON array of `{value,label}` objects that Drupal's core autocomplete widget renders. You wire it up by dropping the module's "Suggestion Search" block in place of the core search block, or by naming a `form_id:field_name` pair in the settings so the module attaches `#autocomplete_route_name` to that field, or by adding that route to any field yourself in `hook_form_FORM_ID_alter()`. Administration lives at `/admin/config/suggestion` behind the `administer suggestion` permission, with sub-pages for indexing, searching the index, and editing or removing individual n-grams. The autocomplete route is intentionally open (`_access: 'TRUE'`) so anonymous visitors get completions, and the index is limited to published nodes of the selected content types; queries shorter than the configured minimum length return an empty array.
 
 ---
 
-- Suggest search terms as visitors type.
-- Draw suggestions from real content.
-- Help visitors find the site's vocabulary.
-- Reduce zero-result searches.
-- Improve a search box's usability.
-- Remove an unwanted suggestion.
-- Build suggestions without an external service.
-- Improve mobile search entry.
-- Reduce misspelled queries.
-- Show popular terms first.
-- Support a documentation site's search.
-- Keep suggestions current automatically.
-- Limit suggestions to chosen content types.
-- Improve discoverability of content.
-- Reduce reliance on exact wording.
-- Support a large content archive.
-- Cache suggestion responses.
-- Improve conversion from search.
+- Offer search completions as visitors type, sourced from real content.
+- Replace the core search block with an autocompleting "Suggestion Search" block.
+- Add autocomplete to an existing search field by naming its `form_id:field_name` pair in settings.
+- Attach the `suggestion.autocomplete` route to any text/search field in `hook_form_FORM_ID_alter()`.
+- Provide typeahead without installing Search API, Solr, or a SaaS search backend.
+- Reduce zero-result searches by surfacing the vocabulary the site actually uses.
+- Seed the index by batch-indexing titles of chosen content types.
+- Keep the index current automatically as nodes are created, edited, unpublished, or deleted via cron sync.
+- Curate high-value completions by entering "priority" phrases that always rank first.
+- Let real visitor searches ("surfer" terms) organically strengthen popular completions.
+- Suppress unwanted terms with a configurable stopword list.
+- Remove or re-weight an individual completion from the per-n-gram edit page.
+- Tune suggestion volume and latency via min/max characters, min/max words, and result-limit settings.
+- Limit suggestions to specific content types.
+- Rank completions by a computed density score so popular/priority phrases appear first.
+- Serve cacheable autocomplete responses (1-hour max-age, varied by the `q` query argument).
+- Support a large content archive where a hand-maintained suggestion list is impractical.
+- Improve mobile and small-keyboard search entry by cutting typing.
+- Point the search block's form action at `/search/node`, a Views search page, or any search path.
+- Run entirely inside Drupal with no third-party dependency.

@@ -1,17 +1,19 @@
 {
   "name": "Splidebox",
   "data_name": "splidebox",
-  "description": "Lightbox using Splide slider.",
+  "description": "Splide within a lightbox.",
   "version": "2.0.x",
-  "package": null,
+  "package": "Splide",
   "composer_namespace": "drupal/splidebox",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/splide": "^2.0"
+  },
   "dependent_modules": [
-    "splide:splide",
-    "blazy:blazy"
+    "splide",
+    "blazy"
   ],
   "configure": null,
-  "core_version_requirement": "^10 || ^11",
+  "core_version_requirement": ">=8.8",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/splidebox",
@@ -24,7 +26,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Media",
@@ -40,7 +42,11 @@
     "gallery",
     "images",
     "blazy",
-    "modal"
+    "modal",
+    "media switcher",
+    "no jquery",
+    "thumbnail navigation",
+    "zoom"
   ],
   "project_description": "Splide within lightbox.\n\n Back to top \n\n Requirements \n \n Blazy \n Splide \n \n Back to top \n\n Best with \n \n Lightbox image style option with Scale (has width and empty height), not cropped. Or original if already optimized before upload. \n Thumbnail style with Crop at blazy-related formatters so to have thumbnail navigation properly. \n \n Back to top \n\n Features \n \n Since 2.0.3, thumbnail navigation, removable at Blazy UI under Splidebox. Be sure to fill out Thumbnail style option at blazy-related formatters when choosing Splidebox under Media switcher option. \n Since 2.0.3 + Blazy:2.23, works with Views Blazy Grid, Table, List, Splide, etc., read more . \n Supports zoomable (Responsive|Picture) image, (local|remote) video, AJAX loaded contents. \n Fullscreen window. \n Wheel zoom. \n Works with product variations w/o ElevateZoom Plus . \n \n Read more README .\n\n Back to top",
   "maintenance_status": "Minimally maintained",

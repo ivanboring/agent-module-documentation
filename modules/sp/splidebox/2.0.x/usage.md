@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Splidebox provides a lightbox built on the Splide slider, so clicking an image in a gallery opens it full-size with the rest of the set navigable in place.
+Splidebox opens gallery images and media in a full-screen lightbox powered by the Splide slider, letting the whole set be swiped, zoomed, and navigated in place. It has no formatter of its own — you turn it on by choosing "Image to Splidebox" under the Media switcher option of a Blazy or Splide formatter, the Blazy Filter, or a Blazy-related Views style.
 
 ---
 
-The lightbox is a solved problem with many implementations, and what distinguishes them now is the library underneath. Splide is a modern, dependency-free slider — no jQuery — which is the reason to pick this over the older Colorbox and Fancybox integrations on a site that has moved past jQuery, and it means the gallery navigation inside the lightbox is the same component the site may already use for carousels. It depends on `splide` for the library integration and `blazy`, which supplies the lazy-loading and media-handling layer that several Drupal media modules build on; that second dependency is worth noticing, because Blazy is a substantial module in its own right and pulling it in for a lightbox alone is a larger commitment than it first appears. Core requirement is `^10 || ^11`. The accessibility points are the ones that separate a good lightbox from a bad one and should be tested rather than assumed: focus must move into the dialog and be trapped there, Escape must close it, focus must return to the trigger afterwards, and the dialog needs the right role and label — a lightbox that fails these is unusable by keyboard and confusing with a screen reader.
+Splidebox is a thin integration layer on top of Blazy and Splide rather than a standalone lightbox: it registers itself as a Blazy lightbox (`hook_blazy_lightboxes_alter`), and its entire trigger surface is the "Image to Splidebox" choice in Blazy's Media switcher select. Any Blazy-based renderer — the Blazy or Splide field formatters, the Blazy Filter text-format filter for inline images, Blazy Views fields, and Blazy Grid/Splide/Table/List Views styles — inherits it for free, so there is no per-module configuration to learn. When applicable, the module serializes the lightbox's Splide optionset (zoom, fullscreen, media, and thumbnail-nav settings) to a base64-encoded JSON string in a `data-splidebox` attribute; the client-side loader (`js/splidebox.load.min.js`, decoding via `atob` + JSON parse) reads it and builds the lightbox DOM on demand from a dummy template. Two config entities ship as install config: the `splide.optionset.splidebox` main optionset (default skin Skyblue) and `splide.optionset.splidebox_nav` for the asNavFor thumbnail strip; both are edited through the normal Splide UI at `/admin/config/media/splide` (needs the `splide_ui` submodule and `administer splide`), while thumbnail navigation is selected under Blazy's Extras settings at `/admin/config/media/blazy` (needs `blazy_ui`). Beyond images it supports responsive/picture images, local audio/video, remote video (SoundCloud, iframe providers), SVG, data-URI, and AJAX-loaded node content via a per-formatter "Lightbox AJAX link" select that pulls a single-value link field and loads that node as the lightbox body — access-checked server-side. Everything is vanilla JS (no jQuery), which is the reason to prefer it over Colorbox/Fancybox on a modern site; the real cost is that it drags in Blazy (a large media module) as a hard dependency. Core requirement is `>=8.8` (runs on 10 and 11). Accessibility is the thing to verify by hand: Escape closes the dialog, but confirm focus is trapped in the lightbox and returns to the trigger, and that the dialog exposes an appropriate role and name.
 
 ---
 
-- Open gallery images in a lightbox.
-- Navigate a photo set full-size.
-- Add a lightbox without jQuery.
-- Reuse Splide for gallery navigation.
-- Show a product image gallery.
-- Enlarge an article's images.
-- Provide a modern lightbox on a Drupal 10 site.
-- Combine lazy loading with a lightbox.
-- Show captions in the lightbox.
-- Support touch swipe in a gallery.
-- Replace a jQuery-based lightbox.
-- Show a media library selection full-size.
-- Improve an image-heavy article.
-- Support a portfolio site.
-- Show a case study's images.
-- Provide keyboard navigation in a gallery.
-- Match a Splide-based theme.
-- Enlarge a diagram for readability.
+- Open a field's gallery images in a Splide lightbox.
+- Turn a lightbox on via the Media switcher "Image to Splidebox" option — no separate formatter.
+- Add a modern, jQuery-free lightbox to a Blazy or Splide field formatter.
+- Lightbox inline images in body text through the Blazy Filter.
+- Lightbox images rendered by a Blazy Grid / Splide / Table / List Views style.
+- Add thumbnail (asNavFor) navigation under the lightbox images.
+- Enable wheel and click zoom on full-size images.
+- Open the lightbox in a fullscreen window.
+- Swipe a photo set full-size on touch devices.
+- Lightbox local audio and video, and remote video (iframe providers).
+- Lightbox responsive/picture images, SVG, and data-URI sources.
+- Load a node's rendered content into the lightbox via AJAX ("Lightbox AJAX link").
+- Show a product image gallery without ElevateZoom Plus.
+- Show captions as an overlay or inline (Colorbox-style) in the lightbox.
+- Reuse the same Splide component a Splide-themed site already loads.
+- Combine Blazy lazy loading with a lightbox on image-heavy articles.
+- Pick a lightbox skin (default Skyblue) via the `splidebox` Splide optionset.
+- Override per-field behavior (`box_nav`, `box_ajax_only`, `box_layout`, `box_caption_pos`) through `hook_splidebox_attach_alter`.
+- Provide keyboard-closable (Escape) full-size viewing for a portfolio or case study.
+- Replace a Colorbox/Fancybox integration on a site that has dropped jQuery.

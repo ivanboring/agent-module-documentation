@@ -11,7 +11,7 @@ page). Depends only on core `link`. Version **8.x-1.3**, core `^8 || ^9 || ^10 |
 Everything you need:
 - **Formatter plugin:** id `link_plain_text_formatter` (label "Plain text"),
   `src/Plugin/Field/FieldFormatter/LinkPlainTextFormatter.php`, extends core `FormatterBase`. Applies
-  to field type `link`.
+  to field type `link`. Full reference: [`fields/link-plain-text-formatter.md`](fields/link-plain-text-formatter.md).
 - **Use it:** on *Manage display* for any entity/bundle that has a Link field, set the field's Format
   to "Plain text". It exposes no formatter settings of its own.
 - **Logic (`itemText()`, LinkPlainTextFormatter.php:51):** if `$item->title` is empty, take
