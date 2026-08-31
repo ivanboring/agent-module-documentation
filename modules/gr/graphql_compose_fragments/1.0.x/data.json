@@ -1,11 +1,14 @@
 {
   "name": "GraphQL Compose: Fragments",
   "data_name": "graphql_compose_fragments",
-  "description": "Extends GraphQL Compose with fragment generation for client-side queries.",
+  "description": "Auto-generates GraphQL fragment definitions for every type in a GraphQL Compose schema, shown in an admin form for copy-paste and optionally exposed through the info query.",
   "version": "1.0.x",
   "package": "GraphQL Compose (Contrib)",
   "composer_namespace": "drupal/graphql_compose_fragments",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "php": "^8.1",
+    "drupal/graphql_compose": "^2 || ^3"
+  },
   "dependent_modules": [
     "graphql_compose:graphql_compose"
   ],
@@ -29,7 +32,7 @@
   ],
   "subcategories": [
     "GraphQL schema",
-    "API documentation / OpenAPI"
+    "Code generation / scaffolding"
   ],
   "keywords": [
     "graphql",

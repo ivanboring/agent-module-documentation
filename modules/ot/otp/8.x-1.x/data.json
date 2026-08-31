@@ -1,12 +1,14 @@
 {
   "name": "OTP for account creation",
   "data_name": "otp",
-  "description": "Email verification via one-time password at registration.",
+  "description": "Replaces Drupal's registration email-verification link with a numeric one-time code the registrant types on a form.",
   "version": "8.x-1.x",
   "package": null,
   "composer_namespace": "drupal/otp",
   "composer_requirements": {},
-  "dependent_modules": [],
+  "dependent_modules": [
+    "user"
+  ],
   "configure": "otp.settings",
   "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
@@ -22,22 +24,23 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Security",
-    "User management"
+    "Access control",
+    "Security"
   ],
   "subcategories": [
-    "Registration",
-    "Two-factor authentication"
+    "Email verification",
+    "User registration"
   ],
   "keywords": [
     "otp",
     "registration",
     "email verification",
-    "code",
+    "one-time password",
+    "verification code",
     "signup",
-    "spam"
+    "account activation"
   ],
-  "project_description": "This module changes the user account activation process from email verification link to be based on numeric code, so instead of sending the verification link this module allows to send a separate email with verification code. User accounts remain blocked till they enter the code, so the user flow now is\n\n \n Create new account form submit \n Sends email and shows another form to enter verification code \n Once verified user is logged in \n \n This is thus similar to email verification with link but uses verification code.\n\n Why making a dupe module because otp verification module is already providing similar functionality, this one is for free.\n\n The module is compatible with drupal 8 and 9.",
+  "project_description": "OTP for account creation replaces Drupal core's link-based email verification at registration with a numeric one-time code. On install it sets user.settings:verify_mail to FALSE and alters the user register form so a new account is saved blocked, a random numeric code is generated and emailed, and the registrant is redirected to a verify form at /user/register/otp. Entering the correct code activates the account and logs the user in. The code length (1-10 digits, default 6), the email subject and body (with [user:otp] and [user:otp_form_url] tokens), and flood thresholds for generating and submitting codes are configurable at /admin/config/people/otp. No submodules, no services, no plugin types, no Drush commands, no permissions of its own; the settings route is gated by the core 'administer site configuration' permission and the verify/resend routes are open (_access: TRUE) because the user is not yet authenticated.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

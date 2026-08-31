@@ -1,19 +1,38 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Digital Analytics Program (usfedgov_google_analytics) — agent index
 
-Adds the **US GSA Digital Analytics Program (DAP)** script. Settings behind
-`administer federal google analytics`. Version **3.0.0**. Core requirement `^10.3 || ^11`.
+Attaches the **US GSA Digital Analytics Program (DAP)** "Universal Federated Analytics"
+tracking script to public pages. Version **3.0.0**, core `^10.3 || ^11`, package Statistics.
+No dependencies. All behaviour is configuration-driven from one config object.
 
-**A compliance module, not a choice.** DAP is a government-wide analytics service run by the GSA;
-participating agencies embed a standard script, data flows to a shared federal account, and a
-subset appears publicly on **analytics.usa.gov**. Participation is **mandated for executive-branch
-public-facing sites** under OMB policy. For those agencies the question is not whether to add it
-but whether the agency identifier, script version and page exclusions are right.
+## What it does (mechanism)
+- `hook_page_attachments` (`src/Hook/PageAttachments.php`) attaches an asset library from
+  `usfedgov_google_analytics.libraries.yml`. **Attaches only when** `status` is on, an
+  **Agency is set**, the user is **anonymous**, the route is not `user.login`/`user.logout`/
+  `user.pass`, and it is **not an admin route**. Adds cache tag
+  `config:usfedgov_google_analytics.settings`.
+- `hook_js_alter` (`src/Hook/JsUrlQueryBuilder.php`) appends the configured DAP options to the
+  `Universal-Federated-Analytics(-Min).js` URL as a query string (`UrlHelper::buildQuery`,
+  URL-encoded; booleans rewritten to literal `true`/`false`; only non-default, non-empty
+  values sent).
+- Script source: **DAP CDN** `https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js`
+  (`id="_fed_an_ua_tag"`, `async`) by default, or bundled local copies (8.0.0 / 8.5.0 / 8.6.0,
+  minified or not) under `js/`.
+- `hook_runtime_requirements` (`src/Hook/RuntimeRequirements.php`) shows a status-report
+  warning while the Agency is blank.
 
-**Two things worth knowing:**
-- **The consent calculus differs from a commercial tracker's** — government-operated, published
-  privacy policy, federally set retention. Materially different from a vendor product, though still
-  third-party JavaScript on every page and still belongs in the privacy notice.
-- **The name is misleading now.** The project name says "google analytics" and the module says
-  "Digital Analytics Program" — DAP's history is on Google Analytics but the platform underneath has
-  changed. **Check what the current release actually loads** rather than inferring from either name.
+## Key facts
+- **Config object:** `usfedgov_google_analytics.settings` (schema `config/schema/`, defaults
+  `config/install/`). Fields: `status`, `library`, and `query_parameters.*`.
+- **Settings route:** `/admin/config/services/dap` (`usfedgov_google_analytics.form`).
+- **Permission:** `administer federal google analytics` (gates the route).
+- **Required field:** `query_parameters.agency` — nothing loads without it.
+- On save, the form clears the library-discovery cache (query string is baked into the
+  library definition at build time).
+
+## Solution docs
+- [config/settings.md](config/settings.md) — every setting, defaults, the attach conditions,
+  and how to configure it via `drush`.
+
+Legacy procedural wrappers in `.module`/`.install` (`#[LegacyHook]`) just delegate to the
+`src/Hook/` classes; the OOP hook classes are the real implementation.

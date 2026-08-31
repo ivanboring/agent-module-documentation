@@ -1,7 +1,7 @@
 {
   "name": "Select Other",
   "data_name": "cck_select_other",
-  "description": "Select widget with an 'other' free-text option.",
+  "description": "Widget for core List fields offering the configured options plus an 'Other' choice that reveals a free-text field.",
   "version": "2.0.x",
   "package": "Field Widgets",
   "composer_namespace": "drupal/cck_select_other",
@@ -22,13 +22,18 @@
   "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "Field widget: cck_select_other (SelectOtherWidget) — for list_integer, list_float, list_string",
+    "Field formatter: cck_select_other (SelectOtherFormatter) — for the same three list types",
+    "Views filter: select_other (SelectOtherFilter) — extends the core options ListField filter",
+    "Validation constraint override: AllowedValues (SelectOtherAllowedValuesConstraint + validator) — replaces core's plugin site-wide via hook_validation_constraint_alter"
+  ],
   "categories": [
     "Content editing experience"
   ],
   "subcategories": [
-    "Field widgets / select UI",
-    "Forms"
+    "Form widgets / select UI",
+    "Field formatters"
   ],
   "keywords": [
     "select",
@@ -36,9 +41,11 @@
     "list field",
     "widget",
     "free text",
-    "options"
+    "options",
+    "cck",
+    "allowed values"
   ],
-  "project_description": "CCK Select Other introduces an alternative select list widget that provides a user with either a select list or text input.\n\n Features \n \n Uses native core List fields, which allows to swap out the select widget at any time. \n Provide a field formatter. \n Supports views filter. \n Support custom Other label. \n Drupal 8 and greater\n \n Uses allowed value. \n \n \n Drupal 6-7\n \n Supports allowed values and stores options in separate configuration. \n 7.x-2.x: Support field collection and other element altering modules. \n \n \n \n Known issues \n \n Drupal 7: i18n is not supported because i18n does not support form element children correctly . \n Drupal 8 or greater: Using checkboxes / radio buttons \n \n Release status \n \n 2.0.x : 2.0.0-alpha2 released. Drupal 11. \n 8.x-1.x : 1.6 stable released. Drupal 10 only. \n 7.x-2.x : Better support for field collection, list_integer. Not ready for production-use \n 7.x-1.x : 1.2 stable released. \n 6.x-1.x version is stable and works fine for normal use cases. There are a number of tasks related to advanced use cases such as with conditional field or flexifield. \n \n Drupal 8+: How it works \n The decoupling of fields and widgets caused much issue with this module as a field no longer understands what widget a value came from. Despite the benefit of decoupling this means that CCK Select Other MUST re-couple the dependency and blow away reliance on AllowedValuesConstraint and AllowedValuesConstraintValidator classes and redoing everything from scratch. Now any field that uses the select other widget in any form display will pass through allowed values. Don't like it? Fix core.\n\n Drupal 6: How it works \n CCK renders the form element as fieldset with multiple elements. When processed the form element is deconstructed into a simple element so that CCK will save the field properly. If validation fails the form element needs to be reconstructed as the fieldset.\n\n Back to top",
+  "project_description": "CCK Select Other provides a form widget for Drupal core List fields (list_string, list_integer, list_float; not list_boolean) that renders the field's configured allowed values as a select list with an added 'Other' option. Choosing 'Other' reveals a text input (toggled by a small jQuery behavior) into which the user types a value that is not in the list. The typed value is stored directly into the same list field. A matching field formatter, and a Views filter that adds the 'Other' option to exposed filters, are also provided. The widget setting is a customizable label for the 'Other' option (default 'Other').\n\nBecause Drupal decouples fields from widgets, a widget cannot normally relax a field's allowed-values validation. To make the free-text 'Other' value pass field validation, the module replaces core's AllowedValues validation constraint plugin site-wide (hook_validation_constraint_alter) with its own subclass and validator. For any List field that has this widget configured on at least one of its entity form displays, the submitted value is added to the constraint's allowed choices at validation time, so arbitrary values are accepted; for all other List fields the validator reproduces core's behavior. This is documented, intentional behavior (the module's README states 'Any field that has an instance using this widget will bypass allowed values').\n\nA direct successor to the classic Drupal 6/7 CCK 'Select (or other)' widget (the 'cck_' prefix). The 2.0.x branch targets Drupal 11.3+ / 12 and is an alpha release.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

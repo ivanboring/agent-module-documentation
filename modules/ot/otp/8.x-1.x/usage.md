@@ -1,27 +1,28 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-OTP for account creation verifies a registrant's email address by sending a one-time code and asking them to enter it, instead of sending a link they click.
+OTP for account creation replaces Drupal's registration email-verification *link* with a numeric one-time code the registrant types on a form to activate the account.
 
 ---
 
-Drupal's own verification is a link in an email: register, receive a message, click, account activated. It works and it has two weaknesses that matter in practice. The link is a **credential in an email** and can be consumed by a mail scanner, a link-preview bot or anyone with access to the inbox, and it takes the user out of the flow — they leave the browser, go to their mail, and a proportion never come back. A code entered on the page keeps them where they are, and a code is worth much less to something that merely follows URLs. This module supplies that flow, with a verification form at `/user/register/otp` and settings at `/admin/config/people/otp`, version **8.x-1.1** on a core range spanning `^8` through `^11`. The verification route is `_access: 'TRUE'` — necessarily so, since the person using it is not yet authenticated — which puts the whole weight of the design on what the form does with the code, and that is what to check on the specific release. **Code length and alphabet** determine the search space; **an attempt limit** is what makes that space matter, since a six-digit code with unlimited guesses is a million tries against a single account and no more; **expiry** bounds the window; and the comparison should use `hash_equals()` rather than `==`. Confirm those four before relying on it, and confirm that flood control applies to the send step too, or the form becomes a way to have your site email arbitrary addresses.
+Enabling the module runs `otp_install()`, which sets `user.settings:verify_mail` to `FALSE`, and `otp_form_user_register_form_alter()` rewrites the core user-registration form for non-admin submitters: the new account defaults to blocked (`status` = FALSE), core's `::save` handler is removed, the submit button becomes "Next", and `otp_user_register_submit()` takes over. That handler saves the (blocked) account, then calls `_otp_generate_otp()`, which checks the `user_otp` flood (keyed by the account email, `user_otp_generate_threshold` requests per `user_otp_generate_time_window` hours), generates a code with `random_int()` of `otp_no_of_digits` digits (1-10, default 6), emails it through `hook_mail()` key `send_otp` (subject/body from config with `[user:otp]` and `[user:otp_form_url]` tokens), stores `md5($otp)` and a timestamp in `user.data` (module `otp`, keys `otp_user_register_random_otp` / `..._time`) and puts the uid in `$_SESSION['otp_user_register_uid']`; the registrant is redirected to `otp.user_register_otp` at `/user/register/otp`. `OTPVerifyForm` (route `_access: 'TRUE'`) resolves the target user from the session uid, a `?u=<uuid>` query parameter, or (for the `administer site configuration` role) an explicit user id / email field, floods on `user_otp_submit`, rejects a code whose `md5()` does not match the stored value or that is older than 24 hours, and on success `activate()`s and `save()`s the user, deletes the stored code from `user.data`, and calls `user_login_finalize()` to log them in. `OTPResend::sendOtp()` (route `otp.user_register_otp_resend` at `/user/register/otp/resend/{uuid}`) and a "Resend" button re-issue a code. Admin settings live at `otp.settings` (`/admin/config/people/otp`); the shipped `config/install/otp.settings.yml` contains empty strings, so the module only behaves once an administrator saves the settings form, which populates the digit count, flood thresholds and email text.
 
 ---
 
-- Verify an email address with a code.
-- Replace the activation link with a code.
-- Keep users in the registration flow.
-- Reduce abandoned registrations.
-- Stop mail scanners consuming activation links.
-- Reduce spam registrations.
-- Confirm an address before activating.
-- Improve mobile signup completion.
-- Verify an address on a kiosk.
-- Add a code step to registration.
-- Avoid emailing a clickable credential.
-- Improve conversion on signup.
-- Support a familiar OTP experience.
-- Verify addresses for a community site.
-- Reduce fake account creation.
-- Confirm registration without leaving the page.
-- Support an app-like signup.
-- Validate an email in one session.
+- Verify a registrant's email with a typed numeric code instead of a click link.
+- Keep the user on the site through the whole signup instead of sending them to their inbox to click a link.
+- Reduce registrations abandoned at the "check your email and click" step.
+- Avoid emailing a clickable activation credential that a mail scanner or link-preview bot can consume.
+- Present an app-style "enter the code we sent you" verification screen at `/user/register/otp`.
+- Configure code length from 1 to 10 digits (default 6) at `/admin/config/people/otp`.
+- Customise the verification email subject and body with `[user:otp]` and `[user:otp_form_url]` tokens.
+- Rate-limit how often a given email can request a code via `user_otp_generate_threshold` / `user_otp_generate_time_window`.
+- Rate-limit verification attempts via `user_otp_submit_threshold` / `user_otp_submit_time_window`.
+- Let a registrant resend a code from the verify form or via `/user/register/otp/resend/{uuid}`.
+- Give an administrator (`administer site configuration`) a form to activate a pending account by user id or email.
+- Provide a familiar OTP experience for a community or membership site's signup.
+- Complete an email check within a single browser session on mobile or kiosk.
+- Deep-link a user straight to their verification form with `[user:otp_form_url]` (`?u=<uuid>`).
+- Replace core's link verification without writing custom code (the module swaps the flow on enable).
+- Localise the code email per language through the standard mail/token pipeline.
+- Add a lightweight friction step that discourages casual fake-account creation.
+- Confirm an address before the account can log in (accounts stay blocked until the code is entered).
+- Fall back to core link verification automatically on uninstall (`otp_uninstall()` re-enables `verify_mail`).

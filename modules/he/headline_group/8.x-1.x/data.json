@@ -1,7 +1,7 @@
 {
   "name": "Headline Group",
   "data_name": "headline_group",
-  "description": "A field for headlines that marks up interior text.",
+  "description": "A composite field type for a superhead / headline / subhead, rendered as semantic single-heading markup.",
   "version": "8.x-1.x",
   "package": "Field types",
   "composer_namespace": "drupal/headline_group",
@@ -19,23 +19,31 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "Field type: headline_group (Drupal\\headline_group\\Plugin\\Field\\FieldType\\HeadlineGroupItem)",
+    "Field widget: headline_complete (all fields; default)",
+    "Field widget: headline_headline_only (headline only)",
+    "Field formatter: headline_default (Headline Group (Complete); default)"
+  ],
   "categories": [
     "Content editing experience",
-    "Theming"
+    "Content display",
+    "Accessibility"
   ],
   "subcategories": [
-    "Field types",
-    "Semantic markup"
+    "Fields",
+    "Field formatters",
+    "ARIA / semantic markup"
   ],
   "keywords": [
     "headline",
     "heading",
     "kicker",
+    "superhead",
     "subhead",
-    "typography",
-    "semantic"
+    "field type",
+    "semantic markup"
   ],
   "project_description": "This field provides a mechanism to add subheads and \"superheads\" -- text above a headline -- to headlines in a semantic and flexible manner. This module uses a pattern described by this recommendation from the W3C. This is intended as an alternative to the common (but wrong!) process of jamming two Hs together.\n\n \nThe link above no longer provides guidance on markup for headings with super/subheadings. The most current, authoritative resource on the topic seems to be Subheadings, subtitles, alternative titles and taglines in HTML. A future release may implement the updated recommendations found there.\n \n Three fields are made available: \n\n \n Superhead (Text above a headline) \n Headline \n Subhead (Text below a headline) \n \n Configuration options are provided to hide or show the superhead / subhead fields on content entry; there is also a configuration option that allows the headline to either override or copy the page title. A formatter is provided that follows Example #3 from the W3C link above, but other patterns may be provided through additional formatters. Class names and the root tag are set in the field display settings.",
   "maintenance_status": "Minimally maintained",

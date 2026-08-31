@@ -1,7 +1,7 @@
 {
   "name": "Digital Analytics Program",
   "data_name": "usfedgov_google_analytics",
-  "description": "Adds the GSA Digital Analytics Program JavaScript.",
+  "description": "Adds the GSA Digital Analytics Program JavaScript to pages.",
   "version": "3.0.x",
   "package": "Statistics",
   "composer_namespace": "drupal/usfedgov_google_analytics",
@@ -25,18 +25,20 @@
     "Integrations"
   ],
   "subcategories": [
-    "Analytics / tag management",
-    "Government"
+    "Analytics & tracking",
+    "Analytics / tag management"
   ],
   "keywords": [
     "dap",
     "gsa",
+    "digitalgov",
     "analytics",
     "federal",
     "government",
-    "usa"
+    "usa",
+    "compliance"
   ],
-  "project_description": "This module integrates the U.S. Government's Digital Analytics Program (DAP) JavaScript which is provided by the General Services Administration (GSA) Digital.gov . Prior to the 3.x branch the module was named \"US Fed Government Google Analytics.\"\n\n Once the module is installed, navigate to /admin/config/services/dap and configure the settings for the module. At a minimum you must set a value for the Agency before the JavaScript will be attached to pages.\n\n You may choose to have the DAP CDN serve the JavaScript for your site (default) or to host the JavaScript from local files that are included with the module.\n\n Back to top \n\n Version 3.x \n The 3.x branch of the module brings it up to the latest standards provided by DAP version 8.5.0, which was released on 12/30/2024. This required a major rewrite of code and configuration. Some of the older settings provided by the module were incompatible with their DAP data types. This was the reason for the new major version of the module. You will need to review and update these settings in order to ensure you are capturing the data you expect. Please read the release notes before upgrading for more information. Post an issue in the queue if you discover any problems.\n\n Back to top \n\n Credits \n Initial development was performed by Blackstone Technology Group for DHS.\n\n Back to top",
+  "project_description": "This module integrates the U.S. Government's Digital Analytics Program (DAP) JavaScript, provided by the General Services Administration (GSA) at digital.gov. Once installed, navigate to /admin/config/services/dap and configure the settings. At a minimum you must set a value for the Agency before the JavaScript is attached to pages. The script can be served from the DAP CDN (https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js, the default) or from local copies bundled with the module (versions 8.0.0, 8.5.0, 8.6.0, minified or not). The module appends the configured DAP options (agency, subagency, site topic/platform, search-parameter and download tracking, YouTube/HTML5 video tracking, sub-domain and cookie settings, and parallel Google Analytics 4 reporting with custom-dimension slots) as a query string on the script URL. Prior to the 3.x branch the module was named \"US Fed Government Google Analytics\"; the 3.x rewrite brought it up to DAP version 8.5.0 standards and changed the configuration schema, so settings must be reviewed after upgrading. Initial development was performed by Blackstone Technology Group for DHS.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

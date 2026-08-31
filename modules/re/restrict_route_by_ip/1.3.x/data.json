@@ -1,11 +1,13 @@
 {
   "name": "Restrict route by IP",
   "data_name": "restrict_route_by_ip",
-  "description": "Restricts access to routes by IP address.",
+  "description": "Restricts access to configured routes (by route name, path, path wildcard, or regex) to an allowlist of IP addresses or ranges.",
   "version": "1.3.x",
   "package": "Administration",
   "composer_namespace": "drupal/restrict_route_by_ip",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/core": "^10 || ^11"
+  },
   "dependent_modules": [],
   "configure": "entity.restrict_route.collection",
   "core_version_requirement": "^10 || ^11",
@@ -17,23 +19,30 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": [
+    "admin restrict route by ip"
+  ],
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Security",
-    "Administration tools"
+    "Access control",
+    "Security"
   ],
   "subcategories": [
-    "Access control",
-    "Network controls"
+    "IP address restriction",
+    "Path / URL access restriction",
+    "Login page protection"
   ],
   "keywords": [
     "ip",
     "restrict",
     "route",
+    "path",
     "allowlist",
+    "cidr",
+    "ip range",
+    "access control",
     "admin",
     "network"
   ],
@@ -43,6 +52,6 @@
   "security_advisory_coverage": "covered",
   "project_created": "2021-11-24",
   "project_changed": "2026-08-18",
-  "core_semver_minimum": 8000000,
+  "core_semver_minimum": 10000000,
   "core_semver_maximum": 12000000
 }

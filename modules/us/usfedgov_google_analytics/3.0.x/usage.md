@@ -1,27 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Digital Analytics Program adds the US General Services Administration's DAP tracking script, which US federal government websites are required to run.
+Digital Analytics Program (usfedgov_google_analytics) attaches the US GSA Digital Analytics Program (DAP) tracking script to a site's public pages, with the agency identifier and tracking options set as configuration.
 
 ---
 
-This is a compliance module rather than a choice. The **Digital Analytics Program** is a government-wide analytics service operated by the GSA: participating agencies embed a standard script, the data flows into a shared federal analytics account, and a subset appears publicly on analytics.usa.gov. Participation is mandated for executive branch public-facing sites under OMB policy, so for the agencies concerned the question is not whether to add it but whether it is configured correctly — the agency identifier, the correct script version, and the exclusions for pages that should not report. Version **3.0.0** on core `^10.3 || ^11`, configured behind an `administer federal google analytics` permission. Two things worth knowing outside that context. **The consent calculus is different from a commercial tracker's**: the script is government-operated under a published privacy policy with data-retention rules set by federal policy, which is a materially different arrangement from a vendor's analytics product, though it is still third-party JavaScript loading on every page and still belongs in the privacy notice. And **the name is misleading in 2026** — the project name says "google analytics" and the module says "Digital Analytics Program", reflecting DAP's history on Google Analytics; the platform underneath has changed, so check what the current release actually loads rather than assuming from either name.
+The module injects the federal government's shared **DAP "Universal Federated Analytics"** JavaScript, which executive-branch public-facing sites are expected to run under OMB policy so their traffic reports into the government-wide analytics account (a subset of which is published on analytics.usa.gov). It is a thin, configuration-driven wrapper: `hook_page_attachments` (`src/Hook/PageAttachments.php`) attaches one of the module's asset libraries, and `hook_js_alter` (`src/Hook/JsUrlQueryBuilder.php`) appends the configured DAP options to the script URL as a query string. The script is served **from the DAP CDN by default** (`https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js`, `id="_fed_an_ua_tag"`, `async`), or from local copies bundled with the module (versions 8.0.0, 8.5.0, 8.6.0, minified or not) chosen on the settings form. The script is **only attached when**: tracking is enabled (`status`), an **Agency is configured** (the one required field), the visitor is **anonymous** (authenticated users are never tracked), the route is not `user.login`/`user.logout`/`user.pass`, and the page is **not an admin route**. All settings live in the single config object `usfedgov_google_analytics.settings` (schema in `config/schema/`), edited at `/admin/config/services/dap` behind the `administer federal google analytics` permission, and a status-report warning fires while the agency is still blank. Options cover: agency/subagency, site topic and platform (defaults to `Drupal`), extra search parameters (`sp`), download tracking with extra extensions (`autotracker`/`exts`), YouTube and HTML5 video tracking with milestone percentages (`yt`/`htmlvideo`/`ytm`), sub-domain linking (`sdor`), cookie expiration (`cto`), a development/test mode (`dapdev`), and **parallel Google Analytics 4** reporting to your own GA4 Measurement ID (`pga4`) with configurable custom-dimension slots. Values are emitted through `UrlHelper::buildQuery` (URL-encoded) and booleans are rewritten to the literal `true`/`false` strings DAP expects; only non-default, non-empty values are sent. The settings form clears the library-discovery cache on save because the query string is baked into the asset library at build time, and the attach adds a `config:usfedgov_google_analytics.settings` cache tag so cached pages update when settings change.
 
 ---
 
-- Meet a federal analytics mandate.
-- Add the DAP script to a government site.
-- Configure an agency identifier.
-- Report to analytics.usa.gov.
-- Comply with OMB analytics policy.
-- Add government-wide analytics.
-- Exclude pages from federal reporting.
-- Support a federal site launch.
-- Standardise analytics across an agency.
-- Meet a compliance review requirement.
-- Replace a hand-added DAP snippet.
-- Configure DAP without a theme change.
-- Support a .gov site's obligations.
-- Add analytics under a published privacy policy.
-- Report traffic to a shared account.
-- Support an agency's digital strategy.
-- Verify DAP installation.
-- Manage the DAP script as configuration.
+- Meet the federal DAP analytics mandate for a .gov site.
+- Add the government-wide DAP tracking script to public pages.
+- Set the agency identifier that DAP requires (e.g. DHS).
+- Set a sub-agency identifier (e.g. FEMA) under a parent agency.
+- Report traffic into the shared federal analytics account / analytics.usa.gov.
+- Serve the DAP script from the official CDN with no local files.
+- Pin a specific bundled DAP version (8.0.0 / 8.5.0 / 8.6.0), minified or not, for offline or air-gapped hosting.
+- Track file downloads and add extra tracked file extensions.
+- Track YouTube video engagement at 10/20/25% milestones.
+- Track HTML5 media playback (DAP 8.3.0+).
+- Tag the site's topic (e.g. health, travel) for cross-site DAP trends.
+- Tag the site platform (defaults to Drupal) for DAP reporting.
+- Add extra query-parameter names to DAP's search tracking.
+- Link sub-domains as one site for analytics (`sdor`).
+- Set the analytics cookie expiration in months.
+- Run a parallel Google Analytics 4 property alongside DAP using your own Measurement ID.
+- Map DAP custom dimensions to specific GA4 dimension slots for the parallel tracker.
+- Route traffic to the DAP TEST/DEV environment while validating a launch.
+- Exclude authenticated users, login/logout/password pages, and admin routes from tracking (built-in, no config needed).
+- Manage the DAP snippet as Drupal configuration instead of a hard-coded theme edit.
+- Get a status-report warning when the required agency value is missing.
+- Restrict who can change analytics settings via the `administer federal google analytics` permission.

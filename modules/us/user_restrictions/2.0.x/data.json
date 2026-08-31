@@ -1,32 +1,35 @@
 {
   "name": "User Restrictions",
   "data_name": "user_restrictions",
-  "description": "Rules restricting which users may access a site.",
+  "description": "Specifies rules for restricting users allowed access to a site.",
   "version": "2.0.x",
-  "package": "Security",
+  "package": null,
   "composer_namespace": "drupal/user_restrictions",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": "entity.user_restrictions.collection",
-  "core_version_requirement": ">=8",
+  "core_version_requirement": "^10.6 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/user_restrictions",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "8.3",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "user_restriction_type"
+  ],
   "categories": [
-    "Security",
-    "User management"
+    "Access control",
+    "Security"
   ],
   "subcategories": [
-    "Registration",
+    "User registration",
+    "IP address restriction",
     "Spam prevention"
   ],
   "keywords": [
@@ -35,14 +38,17 @@
     "blocklist",
     "registration",
     "spam",
-    "rules"
+    "access rules",
+    "username",
+    "email",
+    "regex"
   ],
-  "project_description": "This module blocks users from registering or logging in basing on the entered username or email, or on the IP address used to connect, making it useful for fighting spam accounts.\n\n This module is a drop-in replacement (with some enhancements) for the access rules functionality which was removed from Drupal 7 .\n\n The Drupal 8 version implements plugins to allow custom user restrictions to be created above and beyond the name, email, and IP plugins included.\n\n Alternatives \n \n If the intention is only allowing or restricting account registration basing on the domain used by email addresses, there is the Restrict Domain Registration module \n To validate email addresses using advanced, configurable rules, there is the Advanced Email Validation module, which also allows to verify the domain used by email addressed exists and has MX records configured \n The Disposable Email Address Blocker module protects Drupal form email fields by disallowing email addresses from a custom blacklist of disposable email address domains",
+  "project_description": "User Restrictions lets administrators define rules that refuse (or explicitly allow) account registration, login, and profile edits based on the entered username, the entered email address, or the client IP address. It is the Drupal 8+ replacement for the \"access rules\" feature removed from Drupal 7 core. Each rule is a configuration entity holding a regular-expression pattern, a restriction type plugin (username, email, or client IP), an allow/reject flag, the set of user forms it applies to, and an optional expiration time. Rules are enforced as validation handlers added to the user register, login, and edit forms; accounts holding the \"bypass user restrictions\" permission are exempt. The restriction types are pluggable, so third-party modules can add new kinds of restriction. Rules match case-insensitively and the pattern is used directly as a PCRE regular expression, so wildcard/complex matching is expressed with regex syntax.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
   "project_created": "2008-06-02",
   "project_changed": "2026-08-18",
-  "core_semver_minimum": 8000000,
-  "core_semver_maximum": 12999999
+  "core_semver_minimum": 10006000,
+  "core_semver_maximum": 11999999
 }
