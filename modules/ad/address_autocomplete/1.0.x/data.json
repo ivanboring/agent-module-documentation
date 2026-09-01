@@ -1,11 +1,14 @@
 {
   "name": "Address Autocomplete",
   "data_name": "address_autocomplete",
-  "description": "Autocomplete for address fields.",
+  "description": "Adds type-ahead address lookup to the Address field via a server-side proxy to a geocoding provider (Swiss Post, Google Places, Mapbox, or the French BAN).",
   "version": "1.0.x",
   "package": "Field types",
   "composer_namespace": "drupal/address_autocomplete",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/core": "^10.1 || ^11",
+    "drupal/address": "^1.7 || ^2.0"
+  },
   "dependent_modules": [
     "address:address"
   ],
@@ -17,29 +20,35 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/webform": "^6.1 — provides an 'Advanced address with autocomplete' Webform composite element"
+  },
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "AddressProvider"
+  ],
   "categories": [
-    "Content editing experience",
-    "Integrations"
+    "Integrations",
+    "Content editing experience"
   ],
   "subcategories": [
-    "Field widgets / select UI",
-    "Geolocation"
+    "Address autocomplete / verification",
+    "Form widgets / select UI",
+    "Geospatial / location"
   ],
   "keywords": [
     "address",
     "autocomplete",
-    "lookup",
-    "postcode",
-    "validation",
-    "forms"
+    "geocoding",
+    "google places",
+    "mapbox",
+    "swiss post",
+    "field widget"
   ],
-  "project_description": "This module enhances the Address module with autocomplete functionality.\n\n When you start to type the street, a list of matching addresses will be shown. When you pick one all relevant address fields (like street, city, postcode, country) will be populated.\n\n \n Back to top \n\n Providers \n Multiple provider can be configured.\n\n Currently available:\n\n \n Swiss Post API \n Google Maps \n Mapbox Geocoding \n \n \n Back to top \n\n Features \n \n New Address Autocomplete Widget included, which adds Drupal's #autocomplete functionality to the address field. \n Contains extendable AddressProvider plugin system, so it's possible to add new Provider plugins easily & switch between them. \n \n \n Getting involved and support \n Chat in Slack Sponsor ☕ \n\n Back to top",
+  "project_description": "This module enhances the Address module with autocomplete functionality.\n\n When you start to type the street, a list of matching addresses will be shown. When you pick one all relevant address fields (like street, city, postcode, country) will be populated.\n\n Multiple providers can be configured: Swiss Post API, Google Maps (Places), Mapbox Geocoding, and the French Base Adresse Nationale. Providers are pluggable (AddressProvider plugin type) so custom providers can be added by extending AddressProviderBase.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

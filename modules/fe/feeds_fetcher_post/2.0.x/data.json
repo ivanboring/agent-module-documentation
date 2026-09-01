@@ -1,11 +1,13 @@
 {
   "name": "Feeds Fetcher POST",
   "data_name": "feeds_fetcher_post",
-  "description": "Feeds fetcher using the POST method.",
+  "description": "Feeds fetcher plugin that downloads a source with an HTTP POST request, adding custom headers and a POST body (raw or form fields).",
   "version": "2.0.x",
   "package": "Feeds",
   "composer_namespace": "drupal/feeds_fetcher_post",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/feeds": "^3.0"
+  },
   "dependent_modules": [
     "feeds:feeds"
   ],
@@ -28,16 +30,18 @@
     "Integrations"
   ],
   "subcategories": [
-    "Feeds",
-    "APIs"
+    "Feed aggregation",
+    "Content syndication"
   ],
   "keywords": [
     "feeds",
     "post",
     "fetcher",
+    "http",
     "api",
     "import",
-    "request"
+    "headers",
+    "guzzle"
   ],
   "project_description": "This module adds a new Fetcher type plugin to use in the Feeds module. You may use this to fetch a Download URL (i.e. JSON/XML) and specify custom parameters before getting successful responses on POST requests.\n\n How to Use:\n\n \n Add the module to your project, using composer \n Edit via Structure > Feed Type, select Download From URL additional POST parameters fetcher. \n Add a Feed Content (Content > Feed) and add header and POST parameter \n \n Guzzle request options BODY and FORM_PARAMS: https://docs.guzzlephp.org/en/stable/request-options.html \n\n This module was inspired by this module for GET with header requests: Feeds Fetcher Headers",
   "maintenance_status": "Actively maintained",
@@ -45,6 +49,6 @@
   "security_advisory_coverage": "covered",
   "project_created": "2022-03-07",
   "project_changed": "2026-08-18",
-  "core_semver_minimum": 9000000,
+  "core_semver_minimum": 10000000,
   "core_semver_maximum": 12000000
 }

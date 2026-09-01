@@ -1,30 +1,32 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Monitoring HRM exposes `/healthz` — one endpoint whose HTTP status code says whether any of the Monitoring module's health sensors is failing.
+Monitoring HRM exposes one route, `/healthz`, whose HTTP status code (200 or 500) tells external infrastructure whether any of the Monitoring module's health sensors is currently failing.
 
 ---
 
-The shape is deliberate and correct for its consumers. A load balancer, a Kubernetes liveness probe or an uptime checker cannot parse a dashboard; they can act on a status code. Reducing the whole sensor set to one code is what makes Drupal's health visible to the infrastructure that decides whether to keep sending it traffic.
-
-`/healthz` is the conventional path, which matters more than it sounds — orchestration tooling and monitoring agents default to it, so the endpoint works with existing configuration rather than requiring a custom probe definition.
-
-The route carries a custom access requirement, `_monitoring_hrm_endpoint_access`, rather than a permission. That is the right decision for this kind of endpoint: the caller is a machine with no session, so a permission check would either fail or force the probe to authenticate. **Review what that access check actually allows before deploying**, because the two failure modes are opposite and both bad — an endpoint that requires authentication is a probe that always reports unhealthy, and an endpoint open to the internet tells anyone who asks whether your site's internals are degraded, which is reconnaissance.
-
-The usual arrangement is to restrict it at the network layer to the probing infrastructure. Whatever the module allows, the deployment should be explicit about who can reach `/healthz`.
+The module adds a single controller and a single route on top of the contrib `monitoring` module. On request it calls Monitoring's `SensorRunner`, counts the sensors whose status is `STATUS_CRITICAL`, and returns a tiny JSON body `{"count_failures": N}` — with status 500 when N is greater than zero and 200 when it is zero. The body is deliberately minimal because the consumers are machines, not people: a load balancer, a Kubernetes liveness/readiness probe, or an uptime service such as Pingdom or Statuscake reads the status code and acts on it. The route is guarded by a custom access check rather than a permission, using a `token` query-string argument compared against a configured `endpoint_key` (config object `monitoring_hrm.settings`, default `'top secret'`); there is no admin UI, so the key is set by config export or a `settings.php` override. Reducing the whole Monitoring sensor set to a single status code is what makes Drupal's internal health visible to the infrastructure deciding whether to keep sending it traffic.
 
 ---
 
-- Give a load balancer a health signal.
-- Configure a Kubernetes liveness probe.
-- Point an uptime checker at a real health check.
-- Reduce a sensor dashboard to one status code.
-- Use the conventional /healthz path.
-- Take an unhealthy instance out of rotation.
-- Alert when a Monitoring sensor fails.
-- Review the endpoint's access check before deploying.
-- Restrict /healthz at the network layer.
-- Avoid exposing internal health to the internet.
-- Avoid an endpoint that requires authentication.
-- Combine with the Monitoring module's sensors.
-- Add a health check to a deployment pipeline.
-- Verify the endpoint after a release.
-- Distinguish liveness from readiness checks.
+- Give a load balancer a single health signal to route on.
+- Configure a Kubernetes liveness probe against `/healthz`.
+- Configure a Kubernetes readiness probe that gates traffic.
+- Point Pingdom at the endpoint to alert on failures.
+- Point Statuscake or another uptime checker at a real health check.
+- Take an unhealthy instance out of rotation automatically.
+- Reduce Monitoring's sensor dashboard to one status code.
+- Alert the maintenance team when any Monitoring sensor fails.
+- Add a smoke-test health check to a deployment pipeline.
+- Verify a site's health immediately after a release.
+- Use the conventional `/healthz` path expected by orchestration tooling.
+- Pass a shared secret via the `token` query parameter to authorize the probe.
+- Set the `endpoint_key` through a `settings.php` config override.
+- Export and edit `monitoring_hrm.settings` to change the token.
+- Distinguish infrastructure liveness checks from human-readable dashboards.
+- Fail a canary deployment when sensor failures appear.
+- Monitor cron freshness, disk usage or other Monitoring sensors indirectly through one code.
+- Wire the endpoint into an external status page.
+- Restrict `/healthz` at the network or reverse-proxy layer to the probing infrastructure.
+- Return HTTP 500 to a probe so the orchestrator restarts or reschedules the pod.
+- Confirm 200 responses across a fleet before promoting a build.
+- Combine with the Monitoring module's own sensor configuration.
+- Give an SRE team a machine-readable single source of health truth.

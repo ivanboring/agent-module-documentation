@@ -1,12 +1,14 @@
 {
   "name": "CSV File Formatter",
   "data_name": "csvfile_formatter",
-  "description": "Renders CSV file fields as HTML tables.",
+  "description": "A file-field formatter that reads an uploaded CSV file and renders its contents as an HTML table on the entity display, with optional DataTables enhancement.",
   "version": "1.0.x",
   "package": "Fields",
   "composer_namespace": "drupal/csvfile_formatter",
   "composer_requirements": {},
-  "dependent_modules": [],
+  "dependent_modules": [
+    "file"
+  ],
   "configure": null,
   "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
@@ -14,7 +16,9 @@
   "project_url": "https://www.drupal.org/project/csvfile_formatter",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "datatables.net (optional, DataTables 2.2.2, loaded from CDN or local /libraries only when the 'Use DataTables' setting is enabled)"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
@@ -23,21 +27,22 @@
   "provides_plugin_types": [],
   "categories": [
     "Content display",
-    "Import and export"
+    "Media"
   ],
   "subcategories": [
     "Field formatters",
-    "Data display"
+    "Responsive tables",
+    "File downloads"
   ],
   "keywords": [
     "csv",
     "table",
     "formatter",
-    "file",
-    "data",
-    "display"
+    "file field",
+    "datatables",
+    "tabular data"
   ],
-  "project_description": "Back to top \n\n Introduction \n A Field formatter that renders CSV files uploaded to a Drupal File field as a themable HTML table.\n\n Back to top \n\n Requirements \n This module requires the following modules:\n\n \n File field \n \n Back to top \n\n Installation \n Install as you would normally install contributed Drupal modules.\n\n The DataTables JS library may be loaded from the DataTables CDN.\n\n If you would like to use the DataTables setting \"Load from local files\", you will need to also install the DataTables libraries locally with Composer:\n\n 1. Run: composer require mnsami/composer-custom-directory-installer \n\n 2. Add the DataTables libraries, under extra , installer-paths in composer.json :\n\n \n\n \"web/libraries/{$name}\": [\n\n \"datatables.net/datatables.net\",\n\n \"datatables.net/datatables.net-dt\",\n\n \"type:drupal-library\"\n\n ],\n\n \n\n 3. Run: composer require datatables.net/datatables.net-dt \n\n Back to top \n\n Configuration \n Create a Drupal File field on a content type.\n\n On the \"Manage Display\" tab for the content type, select \"CSV File as Table\" as the Format for the created File field.\n\n Any properly formatted CSV file uploaded through the created File field will be processed to generate an HTML table.\n\n This field formatter includes options to provide a download link for the original File, plus options to process the rows and fields in the CSV file, and provide CSS classes for components of the generated HTML table.\n\n The field configuration setting \"Smart URL handling\" allows https URLs, email addresses, and a limited form of Markdown link syntax ([text](url)) found in the CSV file to be rendered as links.\n\n Back to top",
+  "project_description": "A Field formatter that renders CSV files uploaded to a Drupal File field as a themable HTML table. Provides the 'CSV file as table' formatter for core file fields, with settings for header row, field separator / enclosure / escape characters, per-table/header/row CSS classes, UTF-8 re-encoding, sticky headers, an optional original-file download link (before or after the table), smart URL/email/Markdown-link handling of cell content, and optional client-side enhancement through the DataTables JavaScript library (sorting, searching, pagination, scrolling) loaded from a CDN or from locally installed library files.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

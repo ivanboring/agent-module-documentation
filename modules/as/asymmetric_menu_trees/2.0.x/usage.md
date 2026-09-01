@@ -1,27 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Asymmetric Menu Trees allows a menu to have a different structure in each language, rather than one tree with translated labels.
+Asymmetric Menu Trees lets one translated menu render a genuinely different tree in each language — different ordering, different parents, different enabled links and different link URLs — instead of forcing every language to share the single structure Drupal core stores.
 
 ---
 
-Drupal's multilingual model assumes a menu is one structure whose labels are translated, and that assumption holds only where the language versions of a site are translations of each other. Real multilingual sites frequently are not. A university's English site serves international applicants and its national-language site serves domestic ones, and the sections they need differ. A government site's minority-language version covers a subset of services because only that subset is available in that language. A company's regional sites carry different products. In each case forcing one tree means either showing links to content that does not exist in that language, or omitting sections the other language needs — and the usual workaround is a separate menu per language with a language condition on each block, which works and duplicates every shared item. Letting the tree differ where it must and stay shared where it can is the right shape. Version **2.0.0** on `^8` through `^11`. Two things follow. **A link to an untranslated page is the failure this exists to prevent**, so the module's value is realised only if the structures are actually maintained per language — an asymmetric menu that nobody has curated is a symmetric menu with extra configuration. And **navigation is part of what a site says it offers**: a section present in one language and absent in another is a statement about who the site is for, so the divergence is an editorial and sometimes a policy decision rather than a technical one, and it needs an owner in each language rather than being left to whoever last edited the menu.
+Drupal core stores exactly one structure per menu: a menu link has one parent, one weight and one enabled flag, shared across every language, and translation only swaps the label text. That is fine when the languages are faithful translations of each other, but many multilingual sites are not — a section may exist in one language and not another, or belong under a different parent, or need a different order or destination URL per audience. The historical workaround is a separate menu per language plus a language condition on each block, which duplicates every shared item. This module removes the constraint by making the relevant `menu_link_content` base fields translatable and reading them per language at render time. In its config form (`/admin/config/asymmetric_menu_trees`, gated by *administer site configuration*) an admin ticks which capabilities to enable: **link** (different URL per language), **order** (different weight *and parent* per language), and **enabled** (a link switched on for some languages and off for others). `hook_entity_base_field_info_alter()` then marks the corresponding fields (`link`, `weight`, `parent`, `enabled`) translatable. Every `menu_link_content` link's plugin class is swapped to `AsymmetricMenuLinkContent` (via `hook_menu_links_discovered_alter()`, `hook_install`, `hook_entity_insert` and an update hook that rewrite the `menu_tree` table's `class` column), whose `isEnabled()`, `getWeight()`, `getUrlObject()` and `getParent()` read the translated entity values when the site is multilingual. A `restructureTree` menu-tree manipulator is unshifted to the front of the system, menu-form and Superfish manipulator lists; it re-parents and re-depths the flat tree according to each link's per-language parent, caching the result per menu, language and tree shape (invalidated by the `config:system.menu.<name>` tag). A `removeDisabledLinks` manipulator supports Superfish menus. The module changes structure only — core's own access-filtering manipulator still runs afterward, so access-restricted links stay hidden. Requires no modules beyond core's `menu_link_content`; runs on Drupal 8 through 11. Because a link to an untranslated page is the exact failure this exists to prevent, the value is realised only if the per-language structures are actually curated — an uncurated asymmetric menu is just a symmetric menu with extra configuration.
 
 ---
 
-- Give each language its own menu structure.
-- Show different sections per language.
-- Serve international and domestic audiences differently.
-- Omit untranslated sections from a menu.
-- Support a minority-language subset.
-- Avoid links to untranslated pages.
-- Vary navigation by market.
-- Support a university's language versions.
-- Give a regional site its own structure.
-- Avoid duplicate menus per language.
-- Support a government's language policy.
-- Vary a product menu by region.
-- Keep shared items in one place.
-- Support an asymmetric site structure.
-- Show language-specific services.
-- Vary a footer menu per language.
-- Support a bilingual site with different content.
-- Curate navigation per language.
+- Give each language its own menu tree structure while keeping one menu.
+- Show a menu section in one language and hide it in another.
+- Re-parent a menu link differently per language.
+- Order menu links differently per language (different weight per translation).
+- Enable a menu link for some languages and disable it for others.
+- Point a menu link at a different URL depending on the language.
+- Serve international applicants and domestic students different navigation on one site.
+- Expose a minority-language subset of services without a duplicate menu.
+- Vary a product or footer menu by regional market.
+- Avoid linking to pages that do not exist in the current language.
+- Replace the "separate menu per language + block language condition" workaround.
+- Keep shared menu items defined once instead of duplicated across per-language menus.
+- Choose granularly (link / order / enabled) which properties become per-language.
+- Make menu-link `enabled`, `weight`, `parent` and `link` fields translatable.
+- Restructure the rendered tree from per-language parent relationships.
+- Provide asymmetric navigation to a Superfish-rendered menu.
+- Curate navigation as an editorial decision owned per language.
+- Support a bilingual site whose two languages offer different content.
+- Reflect a government language policy that ships fewer services in a minority language.
+- Give a university's English and national-language sites distinct menu structures.
+- Let a company's regional language sites carry different top-level sections.
+- Keep the block/menu placement unchanged while the structure diverges underneath.

@@ -1,11 +1,13 @@
 {
   "name": "Monitoring — Heart Rate Monitor",
   "data_name": "monitoring_hrm",
-  "description": "Single endpoint returning an HTTP status representing whether any Monitoring health sensor is failing.",
+  "description": "Single endpoint (/healthz) returning an HTTP status representing whether any Monitoring health sensor is failing.",
   "version": "2.0.x",
   "package": "Monitoring",
   "composer_namespace": "drupal/monitoring_hrm",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/monitoring": "~1.14"
+  },
   "dependent_modules": [
     "monitoring:monitoring"
   ],

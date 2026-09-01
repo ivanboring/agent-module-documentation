@@ -1,13 +1,15 @@
 {
   "name": "Video Embed TikTok",
   "data_name": "video_embed_tiktok",
-  "description": "TikTok provider for Video Embed Field.",
+  "description": "Embed TikTok videos into your website using Video Embed Field.",
   "version": "3.0.x",
   "package": "Video Embed Field",
   "composer_namespace": "drupal/video_embed_tiktok",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/video_embed_field": "^3"
+  },
   "dependent_modules": [
-    "video_embed_field:video_embed_field"
+    "video_embed_field"
   ],
   "configure": null,
   "core_version_requirement": "^10.3 || ^11",
@@ -21,25 +23,26 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Media management",
+    "Media",
     "Integrations"
   ],
   "subcategories": [
     "Video embedding",
-    "Social media"
+    "Social network integration"
   ],
   "keywords": [
     "tiktok",
     "video",
     "embed",
     "provider",
+    "video_embed_field",
     "social",
-    "short form"
+    "oembed"
   ],
-  "project_description": "INTRODUCTION\n\n------------\n\n Tiktok Video Embed Field is a submodule of Video Embed Field for Tiktok Video\n\nsupport.\n\nUsers can add Tiktok videos to their site by pasting the video URL into a video embed field.\n\n REQUIREMENTS\n\n------------\n\n * Video Embed Field \n\n INSTALLATION\n\n------------\n\n * Install as you would normally install a contributed Drupal module.\n\n See: https://www.drupal.org/node/895232 for further information.\n\n CONFIGURATION\n\n-------------\n\n The configuration is under the field type video_embed_field. It appears in\n\nthe list of allowed providers. If you have restricted the allowed providers\n\nyou will need to specifically add the \"Tiktok\" provider to the list of allowed\n\nproviders in your field.\n\n MAINTAINERS\n\n-----------\n\n Current maintainers:\n\n * Rahul Rasgon ( https://www.drupal.org/u/rahulrasgon )\n\n This project has been sponsored by:\n\n * QED42\n\n QED42 is a web development agency focused on helping organizations and\n\n individuals reach their potential, most of our work is in the space of\n\n publishing, e-commerce, social and enterprise.",
+  "project_description": "Video Embed TikTok is a provider plugin for the Video Embed Field module that adds support for embedding TikTok videos. Once installed it registers a \"TikTok\" provider that Video Embed Field discovers automatically. Editors paste a standard TikTok video URL (of the form https://www.tiktok.com/@user/video/{id}) into any video embed field and the module renders the official TikTok iframe embed and fetches the video's thumbnail through TikTok's public oEmbed endpoint. It ships a single plugin class and no configuration UI of its own; the provider is enabled and constrained through Video Embed Field's per-field \"Allowed providers\" setting. Maintained by Rahul Rasgon and sponsored by QED42.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

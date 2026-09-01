@@ -1,13 +1,13 @@
 {
   "name": "Asymmetric Menu Trees",
   "data_name": "asymmetric_menu_trees",
-  "description": "Different menu structures per language.",
+  "description": "Lets a single translated menu render a different tree structure (parent, order, enabled state, link URL) per language instead of one shared symmetric tree.",
   "version": "2.0.x",
-  "package": null,
+  "package": "Multilingual",
   "composer_namespace": "drupal/asymmetric_menu_trees",
   "composer_requirements": {},
-  "dependent_modules": [],
-  "configure": null,
+  "dependent_modules": ["menu_link_content"],
+  "configure": "asymmetric_menu_trees.asymmetric_menu_trees_config_form",
   "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -19,25 +19,27 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Multilingual",
     "Site structure"
   ],
   "subcategories": [
-    "Menus",
-    "Content translation"
+    "Translation / multilingual",
+    "Navigation menus"
   ],
   "keywords": [
     "menu",
     "multilingual",
     "translation",
-    "structure",
+    "menu tree",
     "asymmetric",
-    "navigation"
+    "navigation",
+    "menu_link_content",
+    "tree manipulator"
   ],
-  "project_description": "Asymmetric menu trees \n Menu system in Drupal core provides us the ability to translate menus for different languages in two ways:\n\n \n Create a single menu for all languages and translate the terms. \n Create different menus for different languages. \n \n This module deals with the shortcomings of the first way.\n\n One major shortcoming of the first way is that the structure of menu trees is fixed i.e. one can't change the following properties of the menu links in a tree for different languages:\n\n \n Weight \n Enabled \n Link URL \n \n This means that the menu tree remains 'symmetric' in all languages.\n\n This module makes the menu trees asymmetric by ability to change the following properties of the menu links in a tree for different languages:\n\n \n Weight \n Enabled \n Link URL",
+  "project_description": "Asymmetric menu trees. The menu system in Drupal core lets you translate menus for different languages in two ways: create a single menu for all languages and translate the terms, or create different menus for different languages. This module deals with the shortcomings of the first way. One major shortcoming is that the structure of a menu tree is fixed — you cannot change the weight, enabled state or link URL of the menu links in a tree per language, so the tree stays 'symmetric' in all languages. This module makes menu trees asymmetric by allowing the weight, enabled state, link URL and parent of menu links to differ per language.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

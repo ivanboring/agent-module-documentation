@@ -1,11 +1,14 @@
 {
   "name": "Group Notify",
   "data_name": "group_notify",
-  "description": "Emails group members when content is added.",
+  "description": "Emails a group's members when group content (a node) is added, updated, or commented on.",
   "version": "2.0.x",
   "package": "Group",
   "composer_namespace": "drupal/group_notify",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/core": "^9.5 || ^10 || ^11",
+    "drupal/group": "~2.2 || ~3.2"
+  },
   "dependent_modules": [
     "group:gnode"
   ],
@@ -17,29 +20,33 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/queue_mail": "Queues the notification emails instead of sending them synchronously during the node save; recommended for groups with many members to avoid slow saves."
+  },
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "User management",
-    "Workflow"
+    "User engagement",
+    "Site structure"
   ],
   "subcategories": [
-    "Groups",
-    "Notifications"
+    "Groups & memberships",
+    "Email / mail delivery"
   ],
   "keywords": [
     "group",
     "notify",
+    "notification",
     "email",
     "members",
-    "content",
+    "gnode",
+    "group node",
     "subscription"
   ],
-  "project_description": "Notify (email) members of a Group ( https://www.drupal.org/project/group ) when new group content is posted via Group Node plugins.\n\n Once the module has been enabled, browse to Administration -> Groups -> Group types -> Set available content. Plugins provided by \"Group Node\" (gnode) can be enabled to send email notifications. Click \"Install\" or \"Configure\" and check \"Notify group members\" to enable.\n\n If you experience a slowdown when saving a group node (lots of members to notify, perhaps) I suggest using the queue_mail module to mitigate this.",
+  "project_description": "Notify (email) members of a Group ( https://www.drupal.org/project/group ) when new group content is posted via Group Node (gnode) plugins.\n\n Once the module has been enabled, browse to Administration -> Groups -> Group types -> Set available content. Plugins provided by \"Group Node\" (gnode) can be enabled to send email notifications. Click \"Install\" or \"Configure\" and check \"Notify group members\" to enable.\n\n Notifications can be enforced (always sent) or toggled (an optional checkbox on the content form), sent to all members or only members holding a group permission, and optionally sent for new comments on group nodes. If you experience a slowdown when saving a group node (lots of members to notify, perhaps) the queue_mail module is recommended to mitigate this.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

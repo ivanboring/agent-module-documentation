@@ -1,21 +1,49 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Video Embed TikTok (video_embed_tiktok) — agent index
 
-**TikTok** provider for **Video Embed Field**. Requires `video_embed_field`.
-Version **3.0.0-beta1** — **beta**. Core requirement `^10.3 || ^11`.
+A single **provider plugin** for the **`video_embed_field`** module that adds **TikTok** as an
+embeddable video source. Package `Video Embed Field`. Depends on `drupal/video_embed_field:^3`.
+Core requirement `^10.3 || ^11`. License GPL-2.0-or-later. Version 3.0.x (packaged `3.0.0-beta1`).
 
-**Three things belong in any conversation about embedding this platform — heavier than for YouTube
-or Vimeo:**
-1. **The consent question is sharper.** The embed loads tracking from a platform whose data handling
-   has been the subject of **regulatory action in the EU, the UK and the US**, and several public
-   bodies **restrict or prohibit** its use on official devices and sites. For a government or health
-   organisation this is **a policy question before a technical one** — and the answer may be that the
-   embed is not permitted **even where the account is**.
-2. **Short-form video is rarely captioned**, and platform auto-captions are not a substitute. A site
-   republishing this content **carries the accessibility obligation the platform does not enforce**.
-3. **The content is not the organisation's to keep.** An embed goes blank when the video is removed,
-   the account is suspended, or the platform changes its embed rules. **Anything that matters should
-   exist as a hosted copy**, with the embed as a convenience rather than the other way round.
+- **Install/enable, the exact URL patterns matched, the iframe markup, thumbnails, and how to use it** →
+  [providers/tiktok.md](providers/tiktok.md)
 
-Why organisations want it: the platform is where a particular audience is; the site is where the
-content is **permanent, findable and controlled**.
+## What it actually is
+
+- **One plugin:** class `TikTok` in `src/Plugin/video_embed_field/Provider/Tiktok.php`, annotated
+  `@VideoEmbedProvider( id = "tiktok", title = @Translation("TikTok") )`, extending
+  `Drupal\video_embed_field\ProviderPluginBase`. That is the module's entire code — no `.module`
+  file, no forms, no permissions, no Drush, no config schema, no services.
+- Video Embed Field auto-discovers the plugin (annotation-based plugin manager). It appears in the
+  **Allowed providers** list on any *video embed field*; the module has no settings route of its own
+  (`configure` is null).
+
+## Mechanism (from source)
+
+- **`getIdFromInput($input)`** — the matcher Video Embed Field uses to decide whether this provider
+  handles a pasted URL. It runs:
+  `preg_match('/https?:\/\/(www\.)?tiktok.com\/(?<user_id>@[\S]*)\/video\/(?<id>[0-9]*)\/?/', $input, $matches)`
+  and returns `$matches['id']` (falls through to `NULL` on no match). The captured **id group is
+  `[0-9]*` — digits only** (e.g. `6718335390845095173`). `http`/`https`, optional `www.`, a trailing
+  slash and a query string (`?taken-by=…`) are all accepted; the unit test
+  `tests/src/Unit/ProviderUrlParseTest.php` pins these five URL forms.
+- **`renderEmbedCode($width, $height, $autoplay, $title_format = NULL, $use_title_fallback = TRUE)`**
+  returns a render array `#type => 'video_embed_iframe'`, `#provider => 'tiktok'`,
+  `#url => sprintf('https://www.tiktok.com/embed/%s', $this->getVideoId())`, with `#attributes`
+  `width`, `height`, `frameborder => '0'`, `allowfullscreen => 'allowfullscreen'`. When
+  `getName($title_format, $use_title_fallback)` resolves a title it is added as the iframe `title`
+  attribute (accessibility, new in Video Embed Field 3.0.x). Note the `$autoplay` argument is
+  accepted but not used.
+- **`oembedData()`** lazily fetches
+  `file_get_contents('https://www.tiktok.com/oembed?url=' . $this->getInput())` and `json_decode`s it
+  (associative). **`getRemoteThumbnailUrl()`** returns that payload's `thumbnail_url`, which Video
+  Embed Field imports as the field's thumbnail. The host fetched is always `www.tiktok.com`.
+
+## Notes
+
+- `getVideoId()` (from `ProviderPluginBase`) re-runs `getIdFromInput()` on the stored input, so the
+  embed `#url` always contains the digits-only id, never arbitrary URL text.
+- Minor: `oembedData()` guards on `!isset($this->oembedData)` (lowercase *e*) but assigns
+  `$this->oEmbedData` (the declared property) — the property names differ, so the cache guard never
+  hits and the oEmbed request is re-issued on each call. Behavioural quirk, not a correctness bug for
+  callers.
