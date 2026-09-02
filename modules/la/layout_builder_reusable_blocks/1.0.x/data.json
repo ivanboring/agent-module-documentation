@@ -1,14 +1,14 @@
 {
   "name": "Layout Builder Reusable Blocks",
   "data_name": "layout_builder_reusable_blocks",
-  "description": "Lets editors create and edit reusable content blocks from inside Layout Builder.",
+  "description": "Enable editors to create and edit reusable custom blocks directly from Layout Builder, without navigating to the Custom Block Library.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/layout_builder_reusable_blocks",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:layout_builder",
-    "drupal:block_content"
+    "layout_builder",
+    "block_content"
   ],
   "configure": "layout_builder_reusable_blocks.settings",
   "core_version_requirement": "^10 || ^11",
@@ -22,7 +22,7 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience",

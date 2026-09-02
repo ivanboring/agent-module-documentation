@@ -1,13 +1,15 @@
 {
   "name": "Auto Taxonomy Term Translation",
   "data_name": "auto_term_translate",
-  "description": "Extends Auto Node Translate to taxonomy terms, with a per-term translate form and a per-vocabulary bulk form.",
+  "description": "Extends Auto Node Translate to taxonomy terms: a per-term Automatic Translation form and a per-vocabulary bulk translate form that machine-translate term fields into the chosen languages.",
   "version": "2.0.x",
   "package": "Multilingual",
   "composer_namespace": "drupal/auto_term_translate",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/auto_node_translate": "^3.0"
+  },
   "dependent_modules": [
-    "drupal:content_translation",
+    "content_translation",
     "auto_node_translate"
   ],
   "configure": "auto_node_translate.settings",
@@ -22,7 +24,7 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Multilingual",
@@ -34,11 +36,12 @@
   ],
   "keywords": [
     "taxonomy",
-    "translation",
+    "term translation",
     "machine translation",
-    "bulk",
+    "bulk translate",
     "auto node translate",
-    "vocabulary"
+    "vocabulary",
+    "content translation"
   ],
   "project_description": "This module provides the ability to individually add automatic translations to taxonomy terms or translate a full vocabulary using external libraries.\n\n \n \n \n This is a sub-module of Auto Node Translate . \n \n \n Back to top \n\n Installation \n \n Normal module installation procedure. \n \n \n Back to top \n\n Dependencies \n Auto Node Translate \n\n \n Back to top \n\n Configuration \n For version 1 Configure the Automatic Translation at (/admin/config/auto_node_translate/config).\n\n For version 2 Configure the Automatic Translation at (/admin/config/regional/auto-node-translate-settings).\n\n \n Back to top \n\n Using \n \n Choose an API in the settings page. \n Create a translatable custom block, in any language. \n Click on the \"Automatic Translation\" tab. \n Choose the language(s) you want to translate to. \n This module will create or update the translations of the selected languages, automatically translating all text fields. \n \n \n Back to top \n\n Credits \n Powered by Javali \n\n Back to top",
   "maintenance_status": "Actively maintained",

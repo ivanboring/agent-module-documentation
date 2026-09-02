@@ -22,7 +22,7 @@ The judgement to make is editorial governance. Handing display control to conten
 - Configure formatter settings alongside the formatter choice.
 - Replace a preprocess hook that switched formatters conditionally.
 - Apply a different formatter in a promoted teaser.
-- Limit per-entity display choice to specific bundles.
-- Restrict which formatters editors may choose.
+- Limit per-entity display choice to specific bundles by only attaching the field there.
+- Show editors only formatters core deems applicable to the target field type.
 - Keep display variation out of the view mode explosion.
 - Review how a specific entity is being displayed.

@@ -1,7 +1,7 @@
 {
   "name": "Timetable Cron",
   "data_name": "timetable_cron",
-  "description": "Config entities that schedule cron-driven work on a timetable, with a manual force-run form.",
+  "description": "Overrides the core cron service so each hook_cron implementation runs on its own unix-crontab-style timetable, managed as config entities with a force-run action.",
   "version": "8.x-1.x",
   "package": null,
   "composer_namespace": "drupal/timetable_cron",

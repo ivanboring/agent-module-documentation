@@ -1,7 +1,7 @@
 {
   "name": "Link title formatter",
   "data_name": "link_title_formatter",
-  "description": "Field formatter that renders a link field's title as plain text without the anchor.",
+  "description": "Field formatter that renders a link field's title as plain, escaped text without the anchor.",
   "version": "2.0.x",
   "package": "Field Formatters",
   "composer_namespace": "drupal/link_title_formatter",
@@ -21,14 +21,13 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"
   ],
   "subcategories": [
-    "Field formatters",
-    "Link fields"
+    "Field formatters"
   ],
   "keywords": [
     "link field",

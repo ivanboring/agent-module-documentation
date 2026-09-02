@@ -1,28 +1,30 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Auto Taxonomy Term Translation brings Auto Node Translate's machine-translation workflow to taxonomy terms — a translate form on the term itself and a bulk form covering a whole vocabulary.
+Auto Taxonomy Term Translation adds Auto Node Translate's machine-translation workflow to taxonomy terms: an "Automatic Translation" tab on each term and a bulk form that translates an entire vocabulary at once.
 
 ---
 
-Term translation is the part of a multilingual build that tends to be left until last and then done by hand. A site with a few hundred tags, categories or product attributes needs every one of them translated for the language switcher to work properly, and translating them one at a time through the standard content-translation UI is slow enough that people skip it. This module adds a local task on the term and, more usefully, a bulk form at `/vocabulary/{vocabulary}/bulk-auto-translate-form` that runs the whole vocabulary through the translation provider Auto Node Translate is configured with.
+Multilingual sites usually get their nodes translated but leave taxonomy terms — the tags, categories and product attributes that whole sections are filed under — until last, then translate them by hand through the standard content-translation UI. This module removes that chore. It is a thin sub-module of `auto_node_translate` (which it requires at `^3.0`) and reuses that module's configured translation provider, its `Translator` service and its provider plugin manager; it adds no translation backend of its own. On each taxonomy term it registers an "Automatic Translation" local task and entity operation pointing at `taxonomy/{taxonomy_term}/auto-translate-form`, where an editor ticks the target languages and the term's text, link and paragraph fields are translated into new (or overwritten) term translations. For whole vocabularies it adds an "Auto Translate" tab on the vocabulary overview leading to `/vocabulary/{vocabulary}/bulk-auto-translate-form`, which loads every term in the vocabulary and runs them through the Batch API, one term per batch step, saving each as a new revision logged as "Automatic translation using <api>".
 
-Access is done carefully, which is worth noting because a bulk translate form is exactly the kind of route that gets a flat permission. `AutoTermTranslateAccessCheck` resolves the entity type's `content_translation` access callback first and returns that result if it allows, then falls back to a per-entity permission check — so the route inherits core's translation access rather than replacing it. The module's own permission, `use bulk auto translate`, is marked `restrict access: true`.
-
-The judgement call at deployment is editorial, not technical. Machine translation of single-word terms is where machine translation is weakest: there is no context to disambiguate, and a term is often the label a whole section of the site is filed under. Run the bulk form, then have someone review the output — treat it as a first pass, not a finished translation.
+Access follows core content translation rather than a single flat gate: the per-term route uses a custom access check (`AutoTermTranslateAccessCheck`) that defers to the entity type's `content_translation` access callback and only falls back to the per-bundle `auto translate …` permission, while the bulk form is gated by the module's own `use bulk auto translate` permission (marked restrict-access). Before either form runs it validates that a `default_api` is selected in `auto_node_translate.settings`, erroring out if the provider is unconfigured. Because single-word terms give a machine translator little context to disambiguate, treat the output as a first pass for human review rather than finished copy.
 
 ---
 
-- Translate a whole vocabulary in one operation.
-- Machine-translate taxonomy terms into a new language.
-- Add a translate tab to individual terms.
-- Complete term translations left behind by a content migration.
-- Bootstrap a new site language quickly.
-- Translate product attribute terms.
-- Translate category and tag labels for a language switcher.
-- Reuse Auto Node Translate's configured provider for terms.
-- Restrict bulk translation to trusted editors.
-- Respect core's content translation access on term routes.
-- Produce a first-pass translation for human review.
-- Fill gaps where only some terms are translated.
-- Translate terms for a newly added vocabulary.
-- Keep term translations in step after adding terms.
-- Decide which vocabularies are safe to machine-translate.
+- Machine-translate a single taxonomy term into one or more site languages from its "Automatic Translation" tab.
+- Translate an entire vocabulary in one operation from the vocabulary overview's "Auto Translate" tab.
+- Fill in term translations left behind after a content migration or import.
+- Bootstrap a newly added site language by bulk-translating all existing vocabularies.
+- Translate product-attribute terms (size, colour, material) for a Commerce catalogue.
+- Translate category and tag labels so a language switcher resolves every term.
+- Reuse the translation provider already configured for Auto Node Translate (e.g. MyMemory) for terms too.
+- Overwrite an existing term translation when the source term text has changed (per-term form flags each language as "new" or "overwrite").
+- Create missing translations only for the languages an editor selects, leaving others untouched.
+- Restrict bulk vocabulary translation to trusted editors via the restrict-access `use bulk auto translate` permission.
+- Honour core content-translation access on the per-term route so only users who may translate a term can auto-translate it.
+- Produce a first-pass draft translation of terms for a human translator to review and correct.
+- Keep term translations in step after adding new terms to an already-translated vocabulary.
+- Translate term description, link and referenced-paragraph fields, not just the name.
+- Record each automatic translation as a new term revision with a clear revision-log message and author.
+- Decide per vocabulary which term sets are safe to machine-translate versus which need human handling.
+- Batch-process large vocabularies without a request timeout, one term per step with a progress bar.
+- Give content teams a self-service term-translation workflow instead of exporting/importing translation files.
+- Return the editor to the vocabulary overview (bulk) or the term page (single) after translating.
+- Verify a translation provider is configured before allowing a translate run, with a clear error if not.

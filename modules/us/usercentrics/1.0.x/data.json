@@ -1,7 +1,7 @@
 {
   "name": "Usercentrics Consent Management Platform (CMP)",
   "data_name": "usercentrics",
-  "description": "Integrates the Usercentrics consent management platform and defers scripts until the matching consent is given.",
+  "description": "Integrates the Usercentrics CMP loader script and defers/blocks tracking scripts, page attachments and asset libraries until the matching Data Processing Service consent is given.",
   "version": "1.0.x",
   "package": "User interface",
   "composer_namespace": "drupal/usercentrics",
@@ -15,7 +15,9 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/media_oembed_provider_markup": "Replaces internal Drupal media oEmbed iframe URLs with the provider's HTML markup so the CMP / Smart Data Protection can recognise and block external embeds."
+  },
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,

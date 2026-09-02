@@ -1,31 +1,33 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Timetable Cron adds `timetable_cron` configuration entities that describe when work should run, extending core cron with a timetable rather than a single global interval, plus a form to force a run by hand.
+Timetable Cron replaces the core `cron` service with a subclass so that each `hook_cron` implementation can be given its own unix-crontab-style schedule (minute/hour/day/month/weekday), stored as `timetable_cron` config entities, with a force-run action and a per-job last-run/status list.
 
 ---
 
-Core cron is one queue on one schedule: everything registered runs when cron runs, and the only lever is how often that happens. Real sites want more shape than that — a nightly import that must not run during business hours, a cache warm that should only fire early morning, a heavy report that belongs at the weekend. Without something like this the usual answer is several system cron entries hitting different Drush commands, which moves the schedule out of Drupal and out of configuration.
+Core cron is one queue on one schedule: every registered `hook_cron` runs whenever cron runs, and the only lever is how often cron fires. Real sites often want more shape — a nightly import that must not run during business hours, a cache warm that should only fire in the early morning, a heavy report that belongs on the weekend. Without something like this the usual workaround is several system crontab entries hitting different Drush commands, which moves the schedule out of Drupal and out of configuration.
 
-Here each schedule is a configuration entity with its own add, edit, delete and **force** forms, listed at `/admin/config/system/timetable_cron`. Because they are config entities they export and deploy with the rest of the site's configuration, so the schedule is reviewable in a diff and identical across environments — which is the main reason to prefer this over crontab entries that live only on one server.
+Timetable Cron takes a different route. Its `TimetableCronServiceProvider` alters the container's `cron` service definition to use `Drupal\timetable_cron\TimetableCron`, a subclass of `Drupal\Core\Cron` that overrides `invokeCronHandlers()`. On each cron run it reads the current minute/hour/day/month/weekday, then for every known job compares those against the job's stored fields (with `*` meaning "any" and `*/N` interval support on minute and hour) and skips any job whose time does not match. The first time it sees a `hook_cron` implementation it auto-creates a matching config entity defaulting to `* * * * *` (run every time), so the schedule table fills itself in after the first cron run. Because the standard service is swapped out, this module is mutually exclusive with other cron managers such as Elysia Cron or Ultimate Cron — run only one.
 
-The force-run form is the operationally valuable part: when a scheduled job has not produced what was expected, being able to trigger it from the UI and watch the result beats waiting for the next window. The permission gating all of this, `configure timetable_cron`, is marked `restrict access: TRUE` — correctly, since forcing a job runs server-side work on demand.
-
-Note that the module's service arrangement includes a `TimetableCronServiceProvider` and a `ProxyClass`, so cron behaviour is decorated rather than merely observed; if cron stops behaving as expected after install, that decoration is where to look.
+Each schedule is a `timetable_cron` configuration entity (add/edit/delete forms plus a **force** action) listed at `/admin/config/system/timetable_cron`. Being config entities, schedules export and deploy with the rest of the site's configuration, so a schedule change is reviewable in a diff and identical across environments — the main reason to prefer this over crontab entries that live only on one server. Per-job last-run timestamps and the pending force flag are kept in Drupal state (`timetable_cron.runtime`), not in exported config. The force action queues a single next-run for one job; the actual work still happens on the next normal cron invocation. Everything is gated behind the `configure timetable_cron` permission.
 
 ---
 
-- Run a cron task only overnight.
+- Run a specific cron task only overnight.
 - Keep a heavy job out of business hours.
 - Schedule a weekly job separately from hourly ones.
-- Give each job its own timetable.
-- Force a scheduled job to run now.
+- Give each `hook_cron` implementation its own timetable.
+- Run a job every 10, 20 or 30 minutes with a `*/N` minute interval.
+- Run a job only on a chosen weekday.
+- Disable a single cron task without disabling its module.
+- Force one scheduled job to run on the next cron.
 - Export cron schedules with site configuration.
 - Keep schedules identical across environments.
 - Review a schedule change in a config diff.
-- Replace several crontab entries with in-Drupal schedules.
-- Delay a job until after a nightly import.
+- Replace several server crontab entries with in-Drupal schedules.
+- Delay a job until after a nightly import window.
 - Stop a report from competing with peak traffic.
-- Restrict who can change or force cron schedules.
-- List every scheduled job in one place.
+- List every scheduled job with its last-run time in one place.
 - Diagnose a job that did not run at the expected time.
+- Set up multiple schedules for the same job by copying an entry.
 - Retire a schedule without touching the server.
-- Stage a schedule change through deployment.
+- Stage a schedule change through a deployment pipeline.
+- Restrict who can change or force cron schedules to trusted admins.
