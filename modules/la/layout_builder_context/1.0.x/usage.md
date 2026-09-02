@@ -1,31 +1,37 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Layout Builder Context lets a Layout Builder section or an individual block inside it be shown or hidden according to a Context module condition.
+Layout Builder Context lets any Layout Builder section, or an individual block inside it, be shown or hidden at render time based on contrib Context module conditions.
 
 ---
 
-Layout Builder gives you per-entity layouts but almost no conditional display: a section is either in the layout or it is not. Core's block visibility conditions do not reach into Layout Builder components. So the usual answer — "show this promo only to anonymous users on the German site" — ends up as either a duplicate layout or a custom block plugin.
+Core's Layout Builder gives you per-entity layouts but almost no conditional display: a section is either in the layout or it is not, and core block-visibility conditions do not reach into Layout Builder components. The usual workarounds — a duplicated layout per audience, or a bespoke block plugin — are heavy for what is really a visibility rule.
 
-This module closes that gap by borrowing the Context module's condition system. Once enabled, layouts and blocks gain a **Context visibility** option; you build the Contexts at Admin > Structure > Context as usual, and select them here. If the conditions do not pass, the section or component is not rendered.
+This module closes that gap by borrowing the Context module's condition system. Once enabled, Layout Builder's add-block, update-block and configure-section forms gain a **Context visibility** fieldset; you build the Contexts at Admin > Structure > Context as usual and simply select them. At render time an event subscriber (for blocks) and a `preprocess_layout` hook (for sections) hand the selected Context IDs to a small `Visibility` service, which asks the Context manager to evaluate each Context's conditions. If they fail — and the "All Contexts must pass" checkbox is on — the section or component's content is removed from the render array with `#access = FALSE`.
 
-Two constraints are worth stating up front. **It drives visibility only** — Contexts that carry Reactions have no effect through this module, so a Context designed to swap a theme or add a block elsewhere will not do those things here. And it is a thin layer: a `BlockComponentRenderArraySubscriber` and a `Visibility` utility, roughly two classes, which means it inherits Context's evaluation semantics wholesale rather than reimplementing them.
-
-The pairing is the point. If a site already uses Context, its existing conditions become available inside Layout Builder for free.
+Two constraints matter. It drives **visibility only**: Contexts carrying Reactions have no effect through this module, and a disabled Context is treated as always passing. And when "All Contexts must pass" is unchecked, nothing is ever hidden — that mode is advisory. It is a deliberately thin layer (two classes plus a `.module`), so it inherits Context's evaluation semantics wholesale, and its filtering never runs inside the Layout Builder preview — only on the live render.
 
 ---
 
-- Hide a Layout Builder section conditionally.
-- Hide a single block inside a layout.
-- Reuse existing Context conditions in Layout Builder.
-- Show a promo only to anonymous users.
-- Vary a layout by language.
-- Vary a layout by path.
-- Vary a layout by user role.
-- Avoid duplicating a layout per audience.
-- Avoid writing a custom block plugin for visibility.
-- Build conditions at Admin > Structure > Context.
-- Apply Context visibility to a whole section.
-- Apply Context visibility to one component.
-- Understand Reactions have no effect here.
-- Keep visibility logic in one place.
-- Combine several conditions on one component.
-- Test that conditions evaluate as expected before launch.
+- Hide a whole Layout Builder section when a Context's conditions fail.
+- Hide a single block component inside a layout without touching the rest.
+- Reuse Context conditions you already built for the rest of the site inside Layout Builder.
+- Show a promotional block only to anonymous (not-logged-in) users.
+- Show an "upgrade" call-to-action only to authenticated users on a free plan.
+- Vary a section's visibility by the current site language.
+- Vary a component's visibility by request path or route.
+- Show or hide layout areas by user role.
+- Gate a component on a Context condition that inspects a user field value.
+- Gate a component on a Context condition that reads a session cookie.
+- Drive simple content personalization from a single node's layout.
+- Set up an A/B-style show/hide of two components on the same page.
+- Combine several Contexts on one component and require all of them to pass (AND logic).
+- Attach a second Context with "Add another" to build a multi-condition rule.
+- Use the "All Contexts must pass" toggle off to keep a component always visible while still tagging its Contexts.
+- Avoid duplicating an entire layout just to serve a different audience.
+- Avoid writing a custom block plugin solely to add visibility logic.
+- Keep audience/visibility logic centralized in reusable Context entities.
+- Show a seasonal banner section only during a date/time Context window.
+- Hide a component for visitors from a particular country using a geo Context condition.
+- Let the same node render different components for different segments of visitors.
+- Preview a layout in Layout Builder without the visibility rules interfering (filtering is skipped in preview).
+- Inherit correct cache contexts and cache tags automatically from each selected Context.
+- Introduce conditional Layout Builder display on a site that already standardizes on the Context module.
+- Verify visibility behavior with the module's kernel test before relying on it in production.

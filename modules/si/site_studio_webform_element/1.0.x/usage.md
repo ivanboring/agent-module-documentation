@@ -1,33 +1,28 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Site Studio Webform Element adds a Webform picker to the Site Studio builder, so a designer can place a form inside a component.
+Site Studio Webform Element adds a "Webform" custom element to the Acquia Site Studio builder so an editor can drop an existing Webform into a component.
 
 ---
 
-Site Studio builds pages from its own element vocabulary, and a Webform is not in that vocabulary unless something bridges the two. Without it, a page built in Site Studio either cannot contain a form or contains one placed by a developer in a template — which puts the form outside the builder the rest of the page lives in.
-
-This is that bridge, and it is the same shape as `site_studio_views_element` (wave 84): each capability the site already has needs re-exposing in the builder's terms, which is a recurring cost of a proprietary page builder.
-
-Because it places an existing Webform, the form's configuration stays where it belongs — fields, validation, handlers, confirmation and access are Webform's, and the placement is Site Studio's. Changing the form does not touch the page.
-
-**Two checks on any placed webform.** The form's **own access settings still apply**, so a form restricted to authenticated users placed on a public page renders as nothing at all — an empty region rather than an error, which is why it gets reported as "the form disappeared". And a form on a public page **will be found by bots**, so the site's CAPTCHA or honeypot has to apply to it.
-
-Requires the Site Studio stack, which is Acquia's commercial product — on any other site this has nothing to do.
+Acquia Site Studio (Cohesion) builds pages from its own vocabulary of drag-and-drop elements, and a Webform is not one of them. This module registers a `CustomElement` plugin (`WebformElement`, id `site_studio_webform_element`) that appears in the Layout Canvas as a **Webform** element with a single select field listing every Webform on the site by label. When the component renders, the chosen form is placed via a lazy builder (`#create_placeholder` + `#lazy_builder`) that hands off to core's `#type => 'webform'` render element — so the form is loaded late in the render pipeline, keeping the surrounding component cacheable instead of taking the uncacheable penalty of rendering a form inline. Nothing about the form itself moves: its fields, validation, handlers, confirmation and access all stay in Webform, and the module only records which form id to place. It is deliberately the same shape as the Site Studio Views Element module, only for Webform, and it avoids creating Webform nodes or blocks. The module also ships a small endpoint and JS helper (`/api/cohesion/webform-list`, `siteStudioWebformElementList`) so a component form's Select field can be populated dynamically as an "external data source" or "options from a custom function" for token-driven form placement. It requires the commercial Site Studio stack (`cohesion`) plus `webform`; on a site without Site Studio it does nothing.
 
 ---
 
-- Place a webform in a Site Studio component.
-- Let a designer add a form without a developer.
-- Keep form configuration in Webform.
-- Change a form without touching the page.
-- Move a form on the page without editing it.
-- Check the webform's access settings.
-- Diagnose a form that renders as nothing.
-- Apply spam protection to a public form.
-- Reuse an existing webform in a design.
-- Recognise the recurring cost of a proprietary builder.
-- Confirm the Site Studio licence covers the site.
-- Compare with the Views element bridge.
-- Audit which pages carry forms.
-- Document the module's behaviour for the team.
-- Review it during a site audit.
-- Verify its assumptions after an upgrade.
+- Place an existing Webform inside a Site Studio component from the Layout Canvas.
+- Let a content editor add a form to a page without a developer editing a template.
+- Pick which form a component shows from a select list of all site Webforms.
+- Keep a form's fields, validation, handlers and confirmation entirely in Webform.
+- Change a form's configuration without touching the page it sits on.
+- Move or reorder a form on a page by moving the component, not editing the form.
+- Avoid creating a Webform node or Webform block just to show a form on a built page.
+- Keep the surrounding component cacheable by lazy-loading the form at render time.
+- Reuse one Webform across many pages built in Site Studio.
+- Build a single "form" component whose form is chosen per placement.
+- Drive form choice from a component form Select field using a token value.
+- Populate that Select dynamically from `/api/cohesion/webform-list` as an external data source (Site Studio 7.5.0+).
+- Populate that Select via a custom function by entering `siteStudioWebformElementList` as the function name.
+- Mirror the Site Studio Views Element pattern for forms instead of views.
+- Confirm the site's Site Studio licence covers using the builder at all.
+- Verify a placed form still shows after a Webform or Site Studio upgrade.
+- Audit which built pages carry which forms by reviewing component values.
+- Standardise how designers embed contact / signup / survey forms in components.
+- Present the same form on many landing pages with consistent styling from the component.
+- Document for the team that form behaviour is Webform's and placement is Site Studio's.

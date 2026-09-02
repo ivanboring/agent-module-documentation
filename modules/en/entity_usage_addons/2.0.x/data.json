@@ -1,7 +1,7 @@
 {
   "name": "Entity Usage Addons",
   "data_name": "entity_usage_addons",
-  "description": "Field formatters that render where an entity is used, using data collected by Entity Usage.",
+  "description": "Two integer field formatters that render where an entity is used (a detailed list of referencing entities, or a linked count), reusing data collected by the Entity Usage module.",
   "version": "2.0.x",
   "package": "Other",
   "composer_namespace": "drupal/entity_usage_addons",
@@ -21,22 +21,25 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content display"
+    "Content display",
+    "Administration tools"
   ],
   "subcategories": [
-    "Entity reference display"
+    "Field formatters",
+    "Views field handlers",
+    "Entity reference tracking"
   ],
   "keywords": [
     "entity usage",
     "reference",
-    "formatter",
+    "field formatter",
     "where used",
     "backlinks"
   ],
-  "project_description": "Entity Usage Addons module provides:\n\n- A Usable service to get usage data.\n\n- A fieldformatter that can be used in views to get detailed usage statistics.\n\n Back to top \n\n Usage Information \n \n\n \n\n Back to top \n\n Install and Configure \n \n Enable the module \n Add an ID field to the view \n Choose the Entity Usage fieldformatter for the output of this field. \n Configure the field formatter to your liking. \n Back to top",
+  "project_description": "Entity Usage Addons is a small add-on to the Entity Usage module. It ships two integer field formatters and one helper service that surface Entity Usage's tracking data directly on an entity or Views display: a detailed formatter that lists the entities referencing the current entity (with per-row ID, entity link, publish status, and type columns), and a count formatter that renders a linked total. Place either formatter on an ID field via Manage display or a Views field. It has no routes, no permissions of its own, and no configuration page; the display-level formatter settings are the only configuration.",
   "maintenance_status": "Seeking new maintainer",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

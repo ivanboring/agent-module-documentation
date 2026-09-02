@@ -1,11 +1,13 @@
 {
   "name": "Unstructured",
   "data_name": "unstructured",
-  "description": "Client for Unstructured.io that extracts text, tables and images from documents, with AI Automator types.",
+  "description": "Client for Unstructured.io (hosted or self-hosted) that extracts text, tables and images from documents, exposed as an API service, three output formatters and four AI Automator types.",
   "version": "2.0.x",
   "package": "AI Tools",
   "composer_namespace": "drupal/unstructured",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/key": "^1.18"
+  },
   "dependent_modules": [
     "key:key"
   ],
@@ -21,13 +23,15 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content authoring"
+    "Import and export",
+    "Integrations"
   ],
   "subcategories": [
-    "AI content generation"
+    "Data transformation",
+    "Content migration / import"
   ],
   "keywords": [
     "unstructured.io",

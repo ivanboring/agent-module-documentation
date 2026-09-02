@@ -1,19 +1,21 @@
 {
-  "name": "HubSpot API",
+  "name": "Hubspot API",
   "data_name": "hubspot_api",
-  "description": "Library for integrating with the HubSpot API.",
+  "description": "Provides a library to easily integrate with the Hubspot API.",
   "version": "3.0.x",
-  "package": null,
+  "package": "Hubspot",
   "composer_namespace": "drupal/hubspot_api",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "hubspot/api-client": "^10"
+  },
   "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^10 || ^11",
+  "configure": "hubspot_api.settings",
+  "core_version_requirement": "^10.4 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/hubspot_api",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
@@ -25,14 +27,14 @@
     "Integrations"
   ],
   "subcategories": [
-    "CRM integration",
-    "Analytics & tracking"
+    "CRM integration"
   ],
   "keywords": [
     "hubspot",
     "crm",
     "api",
-    "marketing",
+    "oauth",
+    "private app",
     "contacts",
     "integration"
   ],

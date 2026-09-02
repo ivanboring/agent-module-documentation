@@ -1,34 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Entity Usage Explorer shows where each entity is referenced across the site.
+Entity Usage Explorer shows where a content entity is referenced across the site.
 
 ---
 
-"Can I delete this?" is the question every content audit stalls on. A media item might be embedded in twelve articles, referenced by a paragraph inside a landing page, and used as a social share image; a taxonomy term might organise half the site or nothing. Drupal knows the references exist but does not present them, so the honest answer is usually "nobody is sure", and the result is a site where nothing is ever deleted.
-
-An explorer answers it directly: here is what points at this thing.
-
-The uses follow immediately — safe deletion, impact assessment before changing a shared asset, finding orphaned content nothing references, and understanding why a term cannot be removed.
-
-**Two caveats worth knowing.** Usage tracking sees the references it knows how to see: entity reference fields and embeds are straightforward, but a link typed into body text, a path hard-coded in a template or an id passed through a custom module are references the explorer cannot know about. "No usages" therefore means "no tracked usages", which is a weaker statement than it looks and is exactly the case where a deletion surprises someone.
-
-And the report aggregates across the site, so it can show that a restricted entity is referenced from places the viewer cannot otherwise see. On a site with access-controlled content, who can read the usage report is a real question rather than a formality.
+Drupal knows the relationships between entities but does not surface them in one place, so the everyday question "is anything still using this?" has no direct answer. Entity Usage Explorer answers it by scanning entity-reference fields, menu links, and (when Paragraphs is present) Paragraphs Library items for references to a given entity, then presenting them on an overview page at `/admin/usage/{entity_type}/{entity_id}`. It also ships a Views field, `Base Entity Usage`, that renders the total usage count for each row as plain text or as a link to that overview page, and it adds a "Usage" operations link to every content entity's row for people who hold the `access entity usage dashboard` permission. It requires nothing beyond Drupal core; Views integration uses core Views, and Paragraphs support activates only when the Paragraphs module is installed.
 
 ---
 
-- Find out where an entity is used.
-- Decide whether something is safe to delete.
-- Assess impact before changing a shared asset.
-- Find orphaned content nothing references.
-- Understand why a term cannot be removed.
-- Audit media usage across a site.
-- Plan a content retirement programme.
-- Recognise that untracked references exist.
-- Treat 'no usages' as 'no tracked usages'.
-- Check for links typed into body text.
-- Check for hard-coded paths in templates.
-- Restrict who reads the usage report.
-- Consider restricted entities in aggregates.
-- Support a site migration.
-- Document the module's behaviour for the team.
-- Review it during a site audit.
-- Verify its assumptions after an upgrade.
+- Find out where a specific node, term, media item, or user is referenced.
+- Decide whether an entity is safe to delete before removing it.
+- Assess the blast radius before editing a widely shared asset.
+- Locate orphaned content that nothing references.
+- Understand why a taxonomy term or media item cannot be removed.
+- Audit media reuse across articles, blocks, and paragraphs.
+- Add a `Base Entity Usage` count column to a content-admin View.
+- Render that usage count as a link straight to the per-entity overview.
+- Export usage counts as CSV, JSON, or XML via Views Data Export.
+- Jump to an entity's usage from its row using the "Usage" operations link.
+- Trace a paragraph back to the parent node or entity that embeds it.
+- Find which Paragraphs Library items reuse a shared paragraph.
+- Detect references coming from menu links (`entity:` or `internal:` URIs).
+- Support a content cleanup or retirement programme with concrete data.
+- Plan a migration by mapping reference relationships first.
+- Review reference coverage during a periodic site audit.
+- Give editors a self-service way to check reuse before unpublishing.
+- Gate access to the usage overview per role with a dedicated permission.
+- Confirm an entity is unused before archiving it.
+- Build a reporting View of high-usage vs. zero-usage entities.

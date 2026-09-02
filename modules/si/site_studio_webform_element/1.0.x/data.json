@@ -1,14 +1,17 @@
 {
   "name": "Site Studio Webform Element",
   "data_name": "site_studio_webform_element",
-  "description": "Lets a Webform be selected in a Site Studio element.",
+  "description": "Allows Webforms to be selected in a Site Studio element.",
   "version": "1.0.x",
   "package": "Site Studio",
   "composer_namespace": "drupal/site_studio_webform_element",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "acquia/cohesion": "^6.8 || ^7 || ^8",
+    "drupal/webform": "^6.0"
+  },
   "dependent_modules": [
     "cohesion",
-    "webform:webform"
+    "webform"
   ],
   "configure": null,
   "core_version_requirement": "^9 || ^10 || ^11",
@@ -22,19 +25,20 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Forms and surveys",
     "Content display"
   ],
   "subcategories": [
-    "Submission handling",
-    "Structured content / page building"
+    "Webform elements",
+    "Submission handling"
   ],
   "keywords": [
     "site studio",
     "cohesion",
+    "acquia",
     "webform",
     "element",
     "forms"

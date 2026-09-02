@@ -1,31 +1,31 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Field Layout lets Manage display and Manage form display arrange fields into the regions of a layout plugin instead of a single ordered list. It is the contrib continuation of the core experimental module of the same name.
+Field Layout adds a per-view-mode layout selector to entity "Manage display" and "Manage form display" screens, so configurable fields can be arranged into the regions of a Layout Discovery layout plugin (e.g. two- or three-column layouts) instead of a single flat list.
 
 ---
 
-The core history is the thing to know first. `field_layout` shipped in Drupal 8 as an experimental core module, sat there for years, and was removed from core in 11.3. The contrib project picks it up; the `core_version_requirement: '>11.3'` in its info file is the seam — it deliberately refuses to install on any core that still ships its own copy, so there is no ambiguity about which one is active.
-
-What it does is unchanged. Every entity view display and form display gains a layout selector backed by `layout_discovery`, and fields are assigned to that layout's regions. Two-column and three-column layouts come from core; any layout plugin a theme or module defines is available too. The result is stored in the display configuration, so it travels with a config export like any other display setting.
-
-It is worth being clear about where this sits relative to Layout Builder, because they solve overlapping problems differently. Field Layout arranges **the fields of one entity's display** into regions — a per-bundle, per-view-mode decision made once by a site builder. Layout Builder arranges **blocks on a page**, optionally per entity, and can place things that are not fields at all. Field Layout is much smaller, has no per-entity override, and does not require the editor to learn a new interface.
-
-For a site that only ever wanted its fields in two columns, that difference is the whole argument.
+Field Layout swaps core's `EntityViewDisplay` and `EntityFormDisplay` entity classes for enhanced subclasses that carry a layout plugin ID and its settings as third-party config on each display. On the Field UI display and form-display edit forms it injects a "Layout settings" fieldset with a layout `<select>` (AJAX-refreshed) plus any configuration form the chosen layout plugin exposes; each field's Region column then lists that layout's regions. At render time it groups fields into their assigned regions and wraps them with the layout plugin's own template — for view displays it moves the fields into a `_field_layout` render section, and for forms it uses `#group` so field structure (and `hook_form_alter`) is preserved. It depends only on core's `layout_discovery` module and works with any discovered layout, including those from core, contrib, or a theme. It is the contrib continuation of the former experimental core module; on sites where Layout Builder is enabled, install-time logic converts existing field-layout displays into Layout Builder sections. There are no routes, permissions, services, or Drush commands of its own.
 
 ---
 
-- Arrange fields into two columns.
-- Arrange fields into three columns.
-- Apply a layout to a view mode.
-- Apply a layout to a form display.
-- Use a theme-provided layout for fields.
-- Keep field arrangement in configuration.
-- Replace the core module removed in 11.3.
-- Avoid Layout Builder for a simple column split.
-- Assign fields to named regions.
-- Vary the layout per view mode.
-- Vary the layout per bundle.
-- Export field layouts with config.
-- Use layouts defined by layout_discovery.
-- Keep editors out of a layout interface.
-- Restore a display arrangement lost when core dropped the module.
-- Style regions with the layout's own template.
+- Arrange node fields into a two-column layout on the default view display.
+- Give the article "teaser" view mode a different multi-region layout than the full view.
+- Lay out user-profile fields into columns on the user view display.
+- Reorganize the node edit form into regions on the "Manage form display" screen.
+- Use a core Layout Discovery layout (one/two/three column) to structure any entity's display.
+- Apply a custom layout plugin defined by a contrib module to an entity display.
+- Apply a theme-provided layout to a content type's field display so markup matches the theme.
+- Move a field into a specific region by choosing that region in the field's Region dropdown.
+- Configure a layout plugin's own settings (such as extra CSS classes) directly from Manage display.
+- Set distinct layouts per view mode (full, teaser, RSS) for the same bundle.
+- Structure taxonomy-term display fields into regions.
+- Structure media-entity display fields into a chosen layout.
+- Structure comment display fields into regions.
+- Keep the one-column layout as an unobtrusive default on displays that need no columns.
+- Migrate a Drupal 8 site that used the experimental core Field Layout to Drupal 9+ via this contrib module.
+- Transition field-layout displays into Layout Builder by enabling the `layout_builder` module (auto-conversion on install).
+- Export field-layout choices as configuration (stored under each display's `third_party_settings.field_layout`) for deployment.
+- Build region-based displays without needing the full per-entity override power of Layout Builder.
+- Programmatically set a display's layout via `setLayoutId()` / `setLayout()` on the display entity in an update hook or install code.
+- Read a display's current layout with `getLayoutId()` / `getLayoutSettings()` when writing display-aware code.
+- Ensure every display has a layout after install (the module backfills `layout_onecol` on all displays).
+- Provide a consistent columned form layout for editors across multiple content types.
+- Reset displays to a plain one-column arrangement by uninstalling the module (it rewrites displays to `layout_onecol`).

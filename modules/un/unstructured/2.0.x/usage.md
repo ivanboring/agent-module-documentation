@@ -1,31 +1,30 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Unstructured is a client for Unstructured.io — a service that takes a document (PDF, Word, image, and others) and returns its contents as structured elements. The module wraps the API and exposes it as AI Automator types.
+Unstructured is a Drupal client for Unstructured.io — a service (hosted SaaS or self-hosted container) that takes a document (PDF, Word, PowerPoint, image, email, HTML, markdown, and others) and returns its contents as structured elements, which the module turns into field values.
 
 ---
 
-Getting text out of a PDF is the sort of task that looks trivial until you try it. Unstructured.io does the parsing; this module supplies the Drupal side: an `UnstructuredApi` service, three output formatters (markdown, HTML, plain text), and four AI Automator plugins — `FileToText`, `FileToString`, `FileToTable` and `FileToImage` — so a file field can drive another field's value without any custom code.
-
-It can run either against the hosted API or against a self-hosted container. The README documents a DDEV recipe for the local case: add a `docker-compose.unstructured.yaml` with the `unstructured-api` image, restart, and point the module's host name at it, leaving the API key blank. That path is worth knowing about because it keeps documents out of a third-party service during development.
-
-**Credential handling here is done correctly**, which is worth saying because it often is not. The settings form uses `'#type' => 'key_select'`, so the API key is a Key entity and configuration stores only the key's id. Combined with the Key module's env provider, the secret never enters config, exported config, or git. This is the pattern other modules in this campaign get wrong.
-
-The service is also usable directly — `\Drupal::service('unstructured.api')` — for cases the Automator plugins do not cover.
+Getting clean text out of a PDF or scanned image is the kind of task that looks trivial until you try it; Unstructured.io does the machine-learning parsing and OCR, and this module supplies the Drupal side. It ships one service, `unstructured.api` (`UnstructuredApi`), that POSTs a Drupal file to the Unstructured `general/v0/general` endpoint and returns the parsed element array. Three formatters (`unstructured.text_formatter`, `unstructured.markdown_formatter`, `unstructured.html_formatter`) turn that element array into plain text, markdown, or HTML — extracting embedded images and rendering tables. On top of these sit four AI Automator plugins — `FileToText` (text_long), `FileToString` (string_long), `FileToTable` (tablefield) and `FileToImage` (image) — so an uploaded file field can drive another field's value with no custom code, choosing element types, output format, split mode, and OCR strategy from the automator form. The module can run against the hosted API (needs an API key stored as a Key entity) or against a self-hosted `unstructured-api` container (host name only, no key), and the README documents a DDEV recipe for the local case. The parsing service is also usable directly from custom code via `\Drupal::service('unstructured.api')->structure($file, $options)`.
 
 ---
 
-- Extract text from a PDF.
-- Extract text from a Word document.
-- Extract tables from a document.
-- Extract images from a document.
-- Populate a text field from an uploaded file.
-- Drive an AI Automator from a file field.
-- Return parsed content as markdown.
-- Return parsed content as HTML.
+- Extract plain text from an uploaded PDF into a text field.
+- Extract text from a Word (.doc/.docx) or PowerPoint (.ppt/.pptx) document.
+- OCR a scanned image (.jpg/.jpeg) into a text field.
+- Parse an email (.eml/.msg) or HTML file into structured text.
+- Extract tables from Excel, PDFs, Word files or images into a TableField.
+- Extract embedded images from a PDF into an image field.
 - Return parsed content as plain text.
-- Run against the hosted Unstructured.io API.
-- Run against a self-hosted container.
+- Return parsed content as markdown (with images written to the public files directory).
+- Return parsed content as HTML (with tables and inline images).
+- Split output per page, per element, or as one combined value.
+- Restrict extraction to chosen element types (titles, list items, headers, footers, formulas, images).
+- Choose an OCR/partition strategy: auto, fast, hi-res, or OCR-only.
+- Pick a hi-res layout model (Detectron2, YOLOX, Chipper) for complex documents.
+- Bypass the API when an uploaded text/markdown/HTML file already matches the requested output format.
+- Drive an AI Automator chain from a file field with no custom code.
+- Run against the hosted Unstructured.io SaaS API.
+- Run against a self-hosted Unstructured container.
 - Run locally in DDEV with no API key.
-- Store the API key as a Key entity.
-- Keep the API key out of exported configuration.
-- Call unstructured.api directly from custom code.
-- Keep documents out of a third-party service in development.
+- Store the hosted API key as a Key entity.
+- Call the `unstructured.api` service directly from custom code or a Drush script.
+- Feed extracted document text into other AI Automator steps for summarisation or tagging.
