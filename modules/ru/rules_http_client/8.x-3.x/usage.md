@@ -1,31 +1,29 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Rules HTTP Client adds a Rules action for making HTTP requests, so a Rules reaction can call an external URL as part of an automation.
+Rules HTTP Client adds a single Rules action, "Request HTTP data", that lets a site's Rules configurations send an HTTP request (GET/POST/PUT/DELETE/etc.) to a URL and capture the response body for use later in the same Rule.
 
 ---
 
-Rules automates 'when X happens, do Y', and a common Y is calling an external service — a webhook, an API. Rules HTTP Client adds an HTTP-request action to Rules. The security consideration is server-side request forgery: the action makes the Drupal server issue an HTTP request to a URL, and if that URL is drawn from user-controlled data (a submitted field fed into the action via a Rules data selector), an attacker could steer the server to fetch internal services — the classic SSRF. When the URL is a static, admin-configured value the risk is low (an admin building a rule can already reach out); the risk appears when the URL, or parts of it, come from untrusted input. So treat any rule where the request URL derives from user data as an SSRF surface: validate/allow-list the destination, and prefer static or admin-controlled URLs. Restrict who can build Rules, since a Rules author can make the server call arbitrary URLs.
+The module ships one `@RulesAction` plugin (`rules_http_client`, class `Drupal\rules_http_client\Plugin\RulesAction\RulesHttpClient`) that wraps Drupal's shared Guzzle `http_client` service. Site builders configure the action inside a reaction rule or rules component: they supply the URL, HTTP method, request headers (as `name: value` lines), a request body (as `param=value` pairs), a redirect limit, and a timeout — each of which can be a fixed value or a Rules data selector resolved at execution time. The action performs the request server-side and exposes the response body as a provided context value (`http_response`, a string) that downstream Rules actions can save, parse, or act on. An optional per-action Debug flag records the full request/response (method, URL, headers, bodies) to the `rules_http_client` logger channel, and — when the site-wide "Show responses" setting is on and the acting user holds Rules' debug permission — echoes those details to the UI as a status message. A settings form at `/admin/config/workflow/rules/http-client-settings` (permission `administer rules`) controls the "Show responses" toggle and the maximum logged response-body size. No extra database tables, entities, permissions, or Drush commands are added; everything is driven from the Rules UI. It requires the Rules module (`drupal/rules:^4.0`) and Drupal 10.3+ or 11.
 
 ---
 
-- Call an external URL from Rules.
-- Make an HTTP request in an automation.
-- Trigger a webhook on an event.
-- Call an API from a reaction.
-- Add an HTTP action to Rules.
-- Guard against SSRF.
-- Allow-list request destinations.
-- Prefer static/admin URLs.
-- Avoid user-controlled request URLs.
-- Restrict who builds Rules.
-- Validate the target URL.
-- Automate an outbound call.
-- Post data to a service.
-- Treat user-derived URLs as SSRF.
-- Integrate via HTTP.
-- Send an event notification.
-- Enable when needed.
-- Keep disabled otherwise.
-- Restrict administration.
-- Confirm on your site.
-- Test before production.
-- Review configuration.
+- Call a remote REST API from a reaction rule when a node is created, updated, or deleted.
+- POST content to an external service (CRM, marketing platform, analytics) whenever an entity event fires.
+- Send an outbound webhook to a third-party endpoint on a Rules-triggered event.
+- Fetch remote XML and combine it with Rules XPath Parser / Views XML Backend to parse the response.
+- Retrieve JSON from an external API and store the response string in an entity field via a follow-up Rules action.
+- Notify a chat/incident service (e.g. a Slack-style webhook URL) when a business condition is met.
+- Trigger a rebuild or cache-purge on a downstream/decoupled front end by hitting its API.
+- Synchronize a just-saved node to a remote Drupal site by POSTing to its REST endpoint.
+- Ping a monitoring/health-check URL on a scheduled Rules component (via Rules + a scheduler).
+- Submit form-style data to a remote endpoint using the `param=value` request-body syntax.
+- Set a custom `Accept` header (e.g. `application/xml`) so a remote service returns the desired format.
+- Send authenticated requests by supplying an `Authorization` header line in the action configuration.
+- Follow a bounded number of redirects by tuning the "Max Redirect" context value.
+- Guard against slow endpoints by setting a per-request "Timeout" (seconds).
+- Capture the response body into a Rules variable (`http_response`) for conditional branching.
+- Chain multiple HTTP calls within one Rule by adding several "Request HTTP data" actions.
+- Debug an integration by enabling the action's Debug flag and reading the `rules_http_client` log channel.
+- Post a status update to a social or messaging API when a comment or order is created.
+- Kick off an external workflow/automation (CI, Zapier-style webhook) from a Drupal content event.
+- Report a newly published node's URL to a search-indexing or CDN invalidation API.
+- Use the action inside a reusable Rules component so multiple rules can share one HTTP call.

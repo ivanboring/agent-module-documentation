@@ -1,15 +1,18 @@
 {
   "name": "Navigation +",
   "data_name": "navigation_plus",
-  "description": "Standardised editing UI for a suite of tool-based modules: a tool plugin type, mode plugins, sidebars and hotkeys built on core Navigation.",
+  "description": "A standardized, pluggable editing UI built on core Navigation: an Edit Mode, Mode/Tool/Sidebar plugin types, per-user hotkeys and drag-to-upload media, shared by the +Suite page-building modules.",
   "version": "2.3.x",
   "package": "Page Building",
   "composer_namespace": "drupal/navigation_plus",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/twig_events": "^1.0",
+    "drupal/tempstore_plus": "^1.0"
+  },
   "dependent_modules": [
-    "drupal:navigation",
-    "twig_events:twig_events",
-    "tempstore_plus:tempstore_plus"
+    "navigation",
+    "twig_events",
+    "tempstore_plus"
   ],
   "configure": "navigation_plus.settings",
   "core_version_requirement": "^11",
@@ -19,30 +22,41 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/edit_plus": "The Edit+ tool provides radical inline editing!",
+    "drupal/lb_plus": "The Layout Builder+ tools are a drop in replacement for the Layout Builder UI."
+  },
   "submodules": [
     "navigation_plus_entity_workflow"
   ],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "Mode",
+    "Tool",
+    "Sidebar"
+  ],
   "categories": [
     "Content editing experience",
-    "Site structure"
+    "Administration tools"
   ],
   "subcategories": [
     "In-place editing",
-    "Admin toolbar / navigation"
+    "Admin toolbar / navigation",
+    "Keyboard shortcuts"
   ],
   "keywords": [
     "navigation",
     "toolbar",
     "edit mode",
     "tool plugin",
+    "mode plugin",
     "sidebar",
     "hotkeys",
-    "lb_plus"
+    "plus suite",
+    "lb_plus",
+    "edit_plus"
   ],
   "project_description": "Navigation+ adds Edit Mode , the photoshop-like toolbar and pluggable UI foundation for the + Suite page builder .\n\n \n \n\n \n ▶ Watch an introduction to +Suite \n\n The Navigation module replaced Drupal's long standing Toolbar module . Navigation + lets module developers add Modes . Modes allow you to replace the Navigation UI, meaning you can toggle the top bar and side bar into a different mode like Edit Mode (included with this module) or Help Mode .\n\n Navigation + provides an optional Edit Mode which makes the Edit and Layout Tab obsolete. When you enter Edit Mode a Photoshop like toolbar shows tools that let you edit the page. Edit+ provides inline editing while Layout Builder+ is a drop in replacement for cores Layout Builder UI that adds a features and functionality like sortable sections, nested layouts (a block builder), but most importantly makes Layout Builder work without the layout tab. A true WYSIWYG experience.\n\n Check out the + Suite recipe for an easy way to install.",
   "maintenance_status": "Actively maintained",

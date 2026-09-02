@@ -1,5 +1,5 @@
 {
-  "name": "Cron Service",
+  "name": "Cron Service Manager",
   "data_name": "cron_service",
   "description": "Allows to move all your hook_cron() implementations to service classes.",
   "version": "2.0.x",
@@ -13,7 +13,7 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/cron_service",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.0",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [
@@ -21,21 +21,26 @@
   ],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Administration"
+    "Automation",
+    "Developer tools"
   ],
   "subcategories": [
-    "Cron / scheduling"
+    "Cron / task scheduling",
+    "Hook / event system"
   ],
   "keywords": [
     "cron",
     "service",
+    "service_collector",
+    "hook_cron",
+    "scheduling",
     "dependency injection",
-    "scheduling"
+    "state"
   ],
-  "project_description": "The module provides a service collector which executes tagged services on each hook_cron() and allows developers to not write any code to *.module file and have simple time controlling functionality.\n\n The module doesn't have any configurations or UI. It's created for developers and only developers will decide how they will control the execution of their services.\n\n To use the module developer must create a class which implementing \\Drupal\\cron_service\\CronTaskInterface interface (or its descendant) and define it as a service with tag 'cron_service'.\n\n The module provides the following interfaces:\n\n \\Drupal\\cron_service\\CronTaskInterface declares only execute() method which must be the entry point of desired logic. This method will be invoked on every cron run.\n\n \\Drupal\\cron_service\\ScheduledCronTaskInterface additionally declares getNextExecutionTime():int  method which should return the timestamp when execute() method should be executed next time. \n\n \\Drupal\\cron_service\\TimeControllingCronTaskInterface  additionally declares shouldRunNow():bool  method which is called before every call to execute()  and can prevent the execution by returning FALSE. It can contain additional checks of the current time or the current environment.\n\n A small note \n Despite the fact the project is marked as completed, I'm still opened for ideas. Feel free to add feature requests to the issues list if you think this module can be improved in any way.",
+  "project_description": "Cron Service Manager lets developers move hook_cron() logic out of .module files into tagged service classes. A service collector (tag 'cron_service') gathers every service implementing CronServiceInterface; on each hook_cron() the CronServiceManager iterates them and calls execute(). Optional interfaces add scheduling (ScheduledCronServiceInterface::getNextExecutionTime()) and per-run gating (TimeControllingCronServiceInterface::shouldRunNow()). Next-run timestamps, last-run timestamps and a per-service 'forced' flag are persisted in Drupal State. Individual jobs can be run/forced independently via the manager API, and errors during a job dispatch a CronServiceErrorEvent instead of aborting the whole cron run. The module ships no routes, config or UI of its own; the optional cron_service_ui submodule adds an admin listing and a 'force on next cron run' action.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

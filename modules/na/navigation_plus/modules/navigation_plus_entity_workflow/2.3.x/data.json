@@ -1,13 +1,13 @@
 {
   "name": "Navigation + Entity Workflow",
   "data_name": "navigation_plus_entity_workflow",
-  "description": "Deprecated. Functionality has moved into Navigation + and this submodule is slated for deletion.",
+  "description": "Deprecated submodule of Navigation +. Its functionality has moved into the main module; it ships only an uninstall update hook and is slated for deletion.",
   "version": "2.3.x",
   "package": "Page Building",
   "composer_namespace": "drupal/navigation_plus",
   "composer_requirements": {},
   "dependent_modules": [
-    "navigation_plus:navigation_plus"
+    "navigation_plus"
   ],
   "configure": null,
   "core_version_requirement": "^10 || ^11",
@@ -21,7 +21,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"
@@ -34,7 +34,8 @@
     "deprecated",
     "navigation_plus",
     "entity workflow",
-    "uninstall"
+    "uninstall",
+    "plus suite"
   ],
   "part_of": "navigation_plus",
   "deprecated": true,

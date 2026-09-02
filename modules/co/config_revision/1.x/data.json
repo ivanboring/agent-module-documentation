@@ -3,21 +3,19 @@
   "data_name": "config_revision",
   "description": "Allows to create revision for the config entities.",
   "version": "1.x",
-  "package": null,
+  "package": "Configuration",
   "composer_namespace": "drupal/config_revision",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:system",
-    "webform:webform",
-    "drupal:system"
+    "system"
   ],
-  "configure": null,
+  "configure": "config_revision.settings",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/config_revision",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
@@ -26,19 +24,23 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Administration"
+    "Administration tools"
   ],
   "subcategories": [
-    "Configuration management"
+    "Configuration management",
+    "Audit trail / activity logging"
   ],
   "keywords": [
     "config",
+    "configuration",
     "revision",
     "history",
     "revert",
-    "governance"
+    "diff",
+    "governance",
+    "audit"
   ],
-  "project_description": "This module allows creating revision for config entities.\n\n The module adds a lightweight revisionable entity which is bundleable and non-translatable. The admin settings page can be used to make any config entity revisionable. A new revision is saved every time a config entity is saved. The config revision entity ignores the changes made to the config entities during config import. \n\n This module depends on the following core patch [#2350939-202] for revision UI to work properly.",
+  "project_description": "Config Revision adds a revision history to configuration entities. Drupal's content entities have revisions but configuration entities do not, so a bad config edit is hard to review or undo without config-sync tooling. This module defines a lightweight, bundleable, non-translatable content entity (config_revision) whose bundles (config_revision_type) map one-to-one to the config entity types you opt in on the settings form. Every time an enabled config entity is saved a new revision is recorded (via hook_entity_insert / hook_entity_update); deleting the config entity deletes its revision record. Administrators can view the revision history, see an inline YAML diff between the current config and a stored revision, and revert the live config to a stored revision. Changes made during config import are ignored. The revision UI relies on core issue #2350939 for full functionality.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

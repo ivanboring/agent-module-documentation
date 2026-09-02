@@ -3,13 +3,15 @@
   "data_name": "rules_http_client",
   "description": "Provides an action for making http requests.",
   "version": "8.x-3.x",
-  "package": null,
+  "package": "Rules",
   "composer_namespace": "drupal/rules_http_client",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/rules": "^4.0"
+  },
   "dependent_modules": [
     "rules:rules"
   ],
-  "configure": null,
+  "configure": "rules_http_client.settings",
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -24,18 +26,22 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Workflow"
+    "Automation",
+    "Integrations"
   ],
   "subcategories": [
-    "Automation"
+    "Workflow / business rules"
   ],
   "keywords": [
     "rules",
     "http",
-    "ssrf",
+    "http client",
+    "rules action",
     "webhook",
+    "rest",
     "automation",
-    "api"
+    "guzzle",
+    "api request"
   ],
   "project_description": "This module adds an action wrapping of drupal_http_request() to use Rules for making HTTP requests. It has many general uses, because the Hypertext Transfer Protocol is the foundation of web data communication.\n\n One great use case is submitting POST requests to submit data to remote websites. Some helpful text processing functionality can be found in Rules Data Transforms . For retrieving remote data, you make like Views XML Backend combined with Views Rules .\n\n Credits \n \n Abhinesh Dhiman - Abhinesh \n Ajay Nimbolkar - AjayNimbolkar \n Benjamin Melançon - mlncn \n Chris Leppanen - twistor \n Mitchell Tannenbaum - mitchell \n Stuart Clark - Deciphered",
   "maintenance_status": "Actively maintained",

@@ -3,7 +3,7 @@
   "data_name": "views_expandable_table",
   "description": "Provides an expandable table style plugin.",
   "version": "1.x",
-  "package": null,
+  "package": "Views",
   "composer_namespace": "drupal/views_expandable_table",
   "composer_requirements": {},
   "dependent_modules": [
@@ -16,18 +16,23 @@
   "project_url": "https://www.drupal.org/project/views_expandable_table",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "core/jquery",
+    "core/drupal",
+    "core/once"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Views"
+    "Content display"
   ],
   "subcategories": [
-    "Style plugins"
+    "Views styles",
+    "Responsive tables"
   ],
   "keywords": [
     "views",

@@ -3,11 +3,11 @@
   "data_name": "imperva_cache_purger",
   "description": "Integration IMPERVA cache with module purge.",
   "version": "1.x",
-  "package": null,
+  "package": "Purge",
   "composer_namespace": "drupal/imperva_cache_purger",
   "composer_requirements": {},
   "dependent_modules": [
-    "purge:purge"
+    "purge"
   ],
   "configure": null,
   "core_version_requirement": "^9 || ^10 || ^11",
@@ -21,22 +21,25 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Performance"
   ],
   "subcategories": [
-    "CDN / caching"
+    "CDN integration",
+    "Cache invalidation"
   ],
   "keywords": [
     "imperva",
+    "incapsula",
     "cdn",
     "purge",
     "cache",
-    "edge"
+    "edge",
+    "invalidation"
   ],
-  "project_description": "Back to top \n\n Imperva cache purger \n You can use Imperva as a reverse proxy in front of your whole Drupal site.\n\n This module provides a very simple Imperva cache Purge Purger plugin.\n\n Back to top \n\n Installation \n After enabling the module you need to add credentials for connecting to your Imperva account.\n\n Configuration page you is located at /admin/config/development/performance/purge.\n\nPlease click the arrwo near Imperva cache Purger and then click Configure. This will open a modal window where you can set credentials for connection to you Imperva account.\n\n Back to top \n\n Configuration \n Imperva support different type of invalidations: by path and by cache tags also. But we recommend to use by cache tag as Drupal support it from the box. Information about API ID or API key you can find on admin configuration page or on Imperva documentation page.\n\n Back to top \n\n Testing \n How to test purger plugin and process of invalidations, please read documentation of module purge .\n\n Back to top",
+  "project_description": "Imperva Cache Purger is a Purge-module purger plugin that propagates Drupal cache invalidations to the Imperva (formerly Incapsula) CDN/WAF edge via Imperva's Cloud Application Security REST API. Imperva is deployed as a reverse proxy in front of the whole Drupal site; when content changes the edge must be told to drop its cached copies or visitors keep seeing stale pages. The module registers a single Purge purger (plugin id imperva_cache_purger) supporting path, wildcard-path, everything and tag invalidations, and issues DELETE requests to https://my.imperva.com/api/prov/v2/sites/{site_id}/cache authenticated with an Imperva API id/key. A kernel response subscriber also stamps a Cache-Tag header on cacheable responses so Imperva can associate edge objects with Drupal cache tags. Configuration (API id, API key, site id, invalidation type, optional endpoint override, enable/disable) lives on the purger's own config form reached from Purge's admin UI at /admin/config/development/performance/purge. Requires the Purge module; no submodules, permissions, or Drush commands of its own.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
