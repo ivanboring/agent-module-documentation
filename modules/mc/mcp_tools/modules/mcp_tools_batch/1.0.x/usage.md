@@ -1,28 +1,28 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-MCP Tools — Bulk content operations adds the MCP tools for create, update, delete, publish and role-assignment across many entities in one call.
+MCP Tools - Batch adds Tool API plugins for bulk operations — mass-creating, updating, publishing, and deleting nodes, creating taxonomy terms, and assigning a role to many users — from an MCP/AI connection, capped at 50 items per call.
 
 ---
 
-This is one of MCP Tools' 37 domain submodules. Enabling it registers a set of tool plugins that an AI assistant, connected through one of the parent module's transports, can call to work with bulk content operations on the site. It exposes nothing on its own — it is a capability the parent's server offers once this submodule is on.
-
-The tools it provides are: `AssignRoleToUsers`, `CreateMultipleContent`, `CreateMultipleTerms`, `DeleteMultipleContent`, `PublishMultiple`, `UpdateMultipleContent`. Each is a discrete operation the assistant invokes by name with typed arguments; there is no free-form access beyond them.
-
-Every control the parent enforces applies here without exception. The tools appear only because this submodule is enabled; the global read-only mode blocks their writes; a connection's scope (`read`/`write`/`admin`) governs what it may do; the `mcp_tools use batch` permission is required; and each call runs as the configured execution user, rate-limited. Enable this submodule when an assistant should be able to work with bulk content operations, and leave it off otherwise — the surface area you expose is exactly the set of submodules you turn on.
+This submodule of MCP Tools contributes six write `tool` plugins under the `batch` category, each backed by `BatchService`: create multiple nodes, update multiple nodes, publish/unpublish multiple nodes, delete multiple nodes, create multiple taxonomy terms, and assign a role to multiple users. Every call is bounded to 50 items (`BATCH_LIMIT`) and returns per-item success/skip/error lists. Access is enforced by the shared MCP Tools model — the `mcp_tools use batch` permission plus the connection's write scope, the content write-kind policy, and the read-only switch — and each service method additionally re-checks `canWrite()`. Delete refuses published nodes unless `force=true`. It depends only on the base mcp_tools module.
 
 ---
-- Have the assistant assign role to users.
-- Have the assistant create multiple content.
-- Have the assistant create multiple terms.
-- Have the assistant delete multiple content.
-- Have the assistant publish multiple.
-- Have the assistant update multiple content.
-- Enable this submodule to expose the bulk content operations domain.
-- Keep it disabled to hide these tools entirely.
-- Gate it behind the `mcp_tools use batch` permission.
-- Block its writes with the server's global read-only mode.
-- Restrict a connection to read scope to prevent its writes.
-- Run its tools as a least-privilege execution user.
-- Rate-limit how often an assistant calls these tools.
-- Audit which of its tools are exposed on the MCP status page.
-- Require a write scope before an assistant can change anything here.
-- Combine it with only the other domains an assistant needs.
+
+- Ask an AI to create 30 article stubs from a list in one call.
+- Bulk-update a field value across many nodes at once.
+- Publish a batch of drafted pages together.
+- Unpublish a set of outdated nodes in one operation.
+- Delete a group of unpublished test nodes safely.
+- Force-delete published nodes when explicitly intended.
+- Create a whole taxonomy vocabulary's terms from a list.
+- Assign an "editor" role to a cohort of users at once.
+- Seed demo content for a new site quickly.
+- Migrate a spreadsheet of items into nodes via an agent.
+- Apply an editorial change (e.g. status) to many items together.
+- Clean up stale content in bounded 50-item batches.
+- Onboard multiple users into a role during setup.
+- Generate structured content types with consistent fields in bulk.
+- Roll back a publish by unpublishing the same id set.
+- Integrate bulk content operations into an ECA or AI-agent workflow.
+- Avoid one-by-one node edits when scripting from Claude Code / Cursor.
+- Report per-item errors from a bulk run to fix just the failures.
+- Populate a category vocabulary before importing tagged content.
+- Batch-create landing pages for a campaign.

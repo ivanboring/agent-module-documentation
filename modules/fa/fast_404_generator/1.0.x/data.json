@@ -1,11 +1,13 @@
 {
   "name": "Fast 404 Generator",
   "data_name": "fast_404_generator",
-  "description": "Generates a static 404.html from a configured node so Fast 404 can serve a themed error page.",
+  "description": "Captures the site's first anonymous 404 response and saves it as public://404.html so the Fast 404 module can serve a themed static error page.",
   "version": "1.0.x",
   "package": "Performance and scalability",
   "composer_namespace": "drupal/fast_404_generator",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/fast_404": "^2.0 || ^3.0"
+  },
   "dependent_modules": [
     "fast_404:fast404"
   ],
@@ -15,19 +17,21 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/fast_404_generator",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.0",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Performance"
+    "Performance",
+    "Administration tools"
   ],
   "subcategories": [
-    "Caching / static output"
+    "Page cache control",
+    "Custom error pages"
   ],
   "keywords": [
     "fast 404",

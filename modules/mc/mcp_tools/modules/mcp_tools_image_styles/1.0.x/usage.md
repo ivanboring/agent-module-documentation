@@ -1,29 +1,28 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-MCP Tools — Image style management adds the MCP tools for creating styles, adding and removing effects, and listing both.
+MCP Tools for image style management (list, create, delete, add effects).
 
 ---
 
-This is one of MCP Tools' 37 domain submodules. Enabling it registers a set of tool plugins that an AI assistant, connected through one of the parent module's transports, can call to work with image style management on the site. It exposes nothing on its own — it is a capability the parent's server offers once this submodule is on.
-
-The tools it provides are: `AddImageEffect`, `CreateImageStyle`, `DeleteImageStyle`, `GetImageStyle`, `ListImageEffects`, `ListImageStyles`, `RemoveImageEffect`. Each is a discrete operation the assistant invokes by name with typed arguments; there is no free-form access beyond them.
-
-Every control the parent enforces applies here without exception. The tools appear only because this submodule is enabled; the global read-only mode blocks their writes; a connection's scope (`read`/`write`/`admin`) governs what it may do; the `mcp_tools use image_styles` permission is required; and each call runs as the configured execution user, rate-limited. Enable this submodule when an assistant should be able to work with image style management, and leave it off otherwise — the surface area you expose is exactly the set of submodules you turn on.
+MCP Tools - Image Styles is a submodule of MCP Tools. It contributes Tool API plugins (under `src/Plugin/tool/Tool/`) that let an MCP/AI connection work with image styles and their effects. All plugins extend `McpToolsToolBase`, so access requires the `mcp_tools use image_styles` permission plus the connection's scope (read for reads; write for mutations), and mutating operations additionally honour the global read-only switch and the config/content/ops write-kind policy. The mutating service methods re-check write access. It depends on `mcp_tools`, `image`.
 
 ---
-- Have the assistant add image effect.
-- Have the assistant create image style.
-- Have the assistant delete image style.
-- Have the assistant get image style.
-- Have the assistant list image effects.
-- Have the assistant list image styles.
-- Have the assistant remove image effect.
-- Enable this submodule to expose the image style management domain.
-- Keep it disabled to hide these tools entirely.
-- Gate it behind the `mcp_tools use image_styles` permission.
-- Block its writes with the server's global read-only mode.
-- Restrict a connection to read scope to prevent its writes.
-- Run its tools as a least-privilege execution user.
-- Rate-limit how often an assistant calls these tools.
-- Audit which of its tools are exposed on the MCP status page.
-- Require a write scope before an assistant can change anything here.
-- Combine it with only the other domains an assistant needs.
+
+- List existing image styles and their effects.
+- Inspect a single image style before editing it.
+- Discover which image effect plugins are installed.
+- Create a `thumbnail_square` image style.
+- Add a scale-and-crop effect to a style with width/height config.
+- Add a convert-to-webp effect to a style.
+- Reorder or prune effects by removing one by uuid.
+- Delete an unused image style.
+- Force-delete a style still referenced by fields.
+- Scaffold a responsive-image style set via an AI agent.
+- Audit image styles as part of a theme review.
+- Create derivative presets for a media library.
+- Let a read-only connection enumerate styles safely.
+- Standardise image styles across environments from MCP.
+- Drive image-style creation from Claude Code / Cursor.
+- Add crop effects for editorial image ratios.
+- Verify an effect's configuration keys before adding it.
+- Remove a deprecated effect from all styles.
+- Generate image styles from an ECA workflow via the Tool API.
+- Clean up styles left by an uninstalled module.

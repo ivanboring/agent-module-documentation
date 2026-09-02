@@ -1,31 +1,28 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Block Animate bundles Animate.css and exposes its animations as options on the block configuration form, so a site builder can make a block fade or slide in without writing CSS.
+Block Animate lets a site builder attach an Animate.css animation to any block by picking it from the block's configuration form, no CSS or preprocess code required.
 
 ---
 
-Animate.css is a stylesheet of named keyframe animations — `fadeInUp`, `bounceIn`, `slideInLeft` and several dozen more. Using it in Drupal normally means adding the library, attaching it to the right pages, and then getting the class names onto the right markup, which for a block means a preprocess function or a template override.
-
-This module does that plumbing. The animation is picked in the block's configuration UI at Structure > Block layout, stored with the block, and the class is applied when the block renders. `animate.min.css` ships with the module, so there is no external CDN request and no separate library download — worth noting, because the more common pattern in this space is a `libraries.yml` pointing at a CDN, which adds a third-party origin to every page.
-
-Two practical caveats. The library is loaded wherever an animated block appears, so a single decorative animation costs every visitor on that page the stylesheet. And entrance animations that trigger on load rather than on scroll will have already finished by the time a visitor scrolls to a block below the fold — the module supplies the classes, not the intersection logic.
-
-Accessibility deserves a thought: Animate.css respects `prefers-reduced-motion` in recent versions, but confirm that against the bundled copy before shipping motion to everyone.
+Animate.css is a stylesheet of named keyframe animations — `fadeInUp`, `bounceIn`, `slideInLeft`, `zoomOut` and roughly seventy more. Using it in Drupal normally means adding the library, attaching it to the right pages, and getting the class names onto the right markup, which for a block means a preprocess hook or a template override. Block Animate does that plumbing: it bundles `animate.min.css`, adds an "Animate CSS" fieldset to every block's configuration form at Structure > Block layout, and stores your choice as a block third-party setting. When the block renders, `block_animate_preprocess_block()` attaches the bundled library and appends `animate__animated animate__<effect>` to the block's class attribute (plus `animate__infinite infinite` when the infinite-loop checkbox is on). Because the CSS ships with the module there is no external CDN origin added to the page. Two practical caveats: the stylesheet loads on every page that contains an animated block, and entrance animations fire on load rather than on scroll, so a block below the fold will have finished animating before a visitor reaches it — the module supplies the classes, not the intersection/scroll logic. There are no routes, permissions, Drush commands or settings page; everything happens through the standard block form, which is gated by the core "administer blocks" permission.
 
 ---
 
-- Animate a block on page load.
-- Fade in a block.
-- Slide a block in from a direction.
-- Add motion without writing CSS.
-- Pick an animation in the block UI.
-- Avoid a preprocess hook for a class name.
-- Serve Animate.css locally rather than from a CDN.
-- Configure animation per block instance.
-- Draw attention to a call-to-action block.
-- Check the bundled copy honours prefers-reduced-motion.
-- Weigh the stylesheet cost per page.
-- Reconsider for blocks below the fold.
-- Keep animation choices in block config.
-- Export block animation settings with config.
-- Standardise entrance animations across a site.
-- Remove animations by editing the block.
+- Animate a block on page load without writing any CSS.
+- Fade a block in with `fadeIn` / `fadeInUp` / `fadeInDown`.
+- Slide a block in from a direction with `slideInLeft` / `slideInRight` / `slideInUp` / `slideInDown`.
+- Bounce a block into view with `bounceIn` or one of its directional variants.
+- Zoom a block in or out with `zoomIn` / `zoomOut` and their directional variants.
+- Draw attention to a call-to-action block with `pulse`, `tada`, `shake` or `flash`.
+- Apply a continuous looping animation by ticking the "infinite loop" checkbox.
+- Choose the animation from a dropdown in the block UI instead of editing templates.
+- Configure a different animation per block instance.
+- Serve Animate.css locally (bundled) rather than pulling it from a CDN.
+- Avoid adding a custom preprocess hook just to place a class name on a block.
+- Standardise entrance animations across many blocks on a site.
+- Export block animation choices with configuration (stored as block third-party settings).
+- Set the animation via config/YAML by writing the `block_animate` third-party setting on a block.
+- Remove an animation by selecting "-- No animation --" and re-saving the block.
+- Add flip effects (`flipInX` / `flipInY`) or light-speed / rotate / roll / hinge effects to a block.
+- Keep the animation choice with the block so it moves with configuration deployment.
+- Animate menu, custom, views or system blocks alike — any block that goes through the block config form.
+- Combine a decorative block animation with an existing theme without touching the theme's CSS.
+- Prototype motion quickly in the admin UI before committing to a bespoke animation approach.

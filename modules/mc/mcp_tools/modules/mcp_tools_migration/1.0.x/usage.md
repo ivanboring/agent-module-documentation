@@ -1,29 +1,26 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-MCP Tools — Import and export adds the MCP tools for CSV/JSON import and export with field mapping and validation.
+Submodule of MCP Tools that adds seven Tool API plugins for importing, exporting, and validating node content via CSV and JSON.
 
 ---
 
-This is one of MCP Tools' 37 domain submodules. Enabling it registers a set of tool plugins that an AI assistant, connected through one of the parent module's transports, can call to work with import and export on the site. It exposes nothing on its own — it is a capability the parent's server offers once this submodule is on.
-
-The tools it provides are: `ExportToCsv`, `ExportToJson`, `GetFieldMapping`, `GetImportStatus`, `ImportFromCsv`, `ImportFromJson`, `ValidateImport`. Each is a discrete operation the assistant invokes by name with typed arguments; there is no free-form access beyond them.
-
-Every control the parent enforces applies here without exception. The tools appear only because this submodule is enabled; the global read-only mode blocks their writes; a connection's scope (`read`/`write`/`admin`) governs what it may do; the `mcp_tools use migration` permission is required; and each call runs as the configured execution user, rate-limited. Enable this submodule when an assistant should be able to work with import and export, and leave it off otherwise — the surface area you expose is exactly the set of submodules you turn on.
+`mcp_tools_migration` gives an AI/MCP client a lightweight content-migration helper for node bundles. It imports rows from a CSV string or a JSON array into nodes of a given content type (with an optional column→field mapping), exports up to 100 nodes of a type to CSV or JSON, reports the required and optional fields for a content type so import data can be prepared correctly, validates a proposed import batch before it runs, and reports the status of the last import. Each import/export call is capped at 100 items. All tools extend `McpToolsToolBase` with category `migration`, so they inherit the parent access model (`mcp_tools use migration` permission, per-connection read/write scope, config write policy, global read-only switch); the write tools additionally check `canWrite()` in `MigrationService`. The submodule ships one permission and one service (`MigrationService`); it declares no config, routes, or forms.
 
 ---
-- Have the assistant export to csv.
-- Have the assistant export to json.
-- Have the assistant get field mapping.
-- Have the assistant get import status.
-- Have the assistant import from csv.
-- Have the assistant import from json.
-- Have the assistant validate import.
-- Enable this submodule to expose the import and export domain.
-- Keep it disabled to hide these tools entirely.
-- Gate it behind the `mcp_tools use migration` permission.
-- Block its writes with the server's global read-only mode.
-- Restrict a connection to read scope to prevent its writes.
-- Run its tools as a least-privilege execution user.
-- Rate-limit how often an assistant calls these tools.
-- Audit which of its tools are exposed on the MCP status page.
-- Require a write scope before an assistant can change anything here.
-- Combine it with only the other domains an assistant needs.
+
+- Import a batch of articles from a CSV string into a content type in one call (`mcp_migration_import_csv`).
+- Import structured items from a JSON array, each with a title and field values (`mcp_migration_import_json`).
+- Map source column names to Drupal field names during import (e.g. `{"Name":"title","Description":"body"}`).
+- Discover a content type's required vs optional fields before preparing import data (`mcp_migration_field_mapping`).
+- See allowed values for list fields so imported data matches the schema.
+- Validate an import batch and get per-row errors/warnings before committing anything (`mcp_migration_validate`).
+- Export up to 100 nodes of a type to CSV for a spreadsheet or backup (`mcp_migration_export_csv`).
+- Export nodes to a JSON array for downstream processing (`mcp_migration_export_json`).
+- Check whether the last import finished, and how many items succeeded or failed (`mcp_migration_import_status`).
+- Bulk-create landing pages, FAQs, or catalog entries from an agent-generated dataset.
+- Round-trip content between environments by exporting JSON here and importing it elsewhere.
+- Let an agent dry-run a migration (validate) and only import once the data is clean.
+- Cap runaway imports at 100 items per call to keep operations bounded.
+- Generate seed/demo content for a new content type from a small CSV.
+- Prepare a field-mapping plan by first inspecting the target bundle's fields.
+- Surface which rows failed and why, so the agent can fix and retry.
+- Restrict all content mutation to write-scoped connections while leaving field inspection read-only.
+- Export a content type's data for an SEO or content audit.

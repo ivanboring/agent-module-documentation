@@ -1,25 +1,33 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-# mcp_tools_remote — agent index
+# MCP Tools Remote Server (mcp_tools_remote) — agent index
 
-Submodule of **mcp_tools** — exposes MCP over **HTTP** at **`/_mcp_tools`** (GET/POST, `no_cache`).
-Version **1.0.0-beta18**. Core `^10.3 || ^11`. Depends on `mcp_tools`.
-Settings at `/admin/config/services/mcp-tools/remote` (`mcp_tools administer`).
+Transport submodule of **MCP Tools**. Serves the MCP protocol over **HTTP** (MCP Streamable HTTP)
+at `/_mcp_tools` with API-key authentication. **Disabled by default**; fails closed. Depends on
+`mcp_tools`. Requires `mcp/sdk` (enforced by `hook_requirements`, which also warns at runtime when
+enabled without a valid execution user). Core `^10.3 || ^11 || ^12`. License GPL-2.0-or-later.
+Version dir 1.0.x (installed 1.0.0-beta8).
 
-**Request pipeline (defense-in-depth, cite as a strong example):**
-1. Route access check → **404, never 403, when disabled** (concealment; `McpRemoteAccessCheck`).
-2. IP allowlist → miss = **404**.
-3. Origin allowlist, same-host default → miss = **404**.
-4. Accept header → wrong = **406**.
-5. API key (`Authorization: Bearer` or `X-MCP-Api-Key`) → missing/invalid = **401** + `WWW-Authenticate`.
+- **The HTTP endpoint pipeline, auth, scopes, execution user, and key management** →
+  [http/endpoint.md](http/endpoint.md)
+- **Settings (`mcp_tools_remote.settings`), routes and permissions** →
+  [config/settings.md](config/settings.md)
 
-Ordering is deliberate and documented: non-allowlisted clients get 404 **before** credentials are
-evaluated, so the endpoint's existence is not leaked; 401 is shown only to allowlisted callers.
+## What it provides (from source)
 
-**API keys (`ApiKeyManager`):** scoped, optional TTL, **stored hashed in State (not config)**,
-peppered with the site private key, via `code-wheel/mcp-security` — not hand-rolled.
-
-**Execution user:** must be configured; **refuses uid 1 unless `allow_uid1`** is set. Then
-server-profile validation, scope resolution, rate-limit client id = `remote_key:<key_id>`.
-
-Verified: disabled → 404. Configure allowlists tightly; least-privilege execution user. See
-[[mcp_tools]].
+- **Route** `mcp_tools_remote.handle` → `/_mcp_tools` (GET, POST), gated by
+  `_mcp_remote_access: 'TRUE'` (custom access check `McpRemoteAccessCheck`), `no_cache`. Controller
+  `src/Controller/McpToolsRemoteController.php` (`handle()`).
+- **Route** `mcp_tools_remote.settings` → `/admin/config/services/mcp-tools/remote`
+  (`RemoteSettingsForm`, permission `mcp_tools administer`).
+- **Access check** `src/Access/McpRemoteAccessCheck.php` — a presence gate only: 403 if the module
+  is disabled or no API key/Bearer header is present; the controller does full validation.
+- **API keys** `src/Service/ApiKeyManager.php` — wraps `code-wheel/mcp-http-security`
+  `ApiKeyManager`; keys stored **hashed** in `State`, peppered with `@private_key`; carry scopes +
+  optional TTL. `validate()`, `createKey()`, `listKeys()`, `revokeKey()`.
+- **Drush** `src/Commands/McpToolsRemoteCommands.php` — `mcp-tools:remote-key-create`,
+  `mcp-tools:remote-key-list`, `mcp-tools:remote-key-revoke`, `mcp-tools:remote-setup` (creates a
+  dedicated executor user + role and sets `uid`).
+- **Config** object `mcp_tools_remote.settings` (schema `config/schema/`, defaults
+  `config/install/`): `enabled`, `uid`, `allow_uid1`, `allowed_ips`, `allowed_origins`,
+  `server_name/version/id`, `pagination_limit`, `include_all_tools`, `gateway_mode`.
+- **Support classes**: `Clock/DrupalClock`, `Storage/DrupalStateStorage` (State-backed key store).

@@ -1,28 +1,27 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-MCP Tools — Ultimate cron jobs adds the MCP tools for listing, running, enabling and inspecting Ultimate Cron jobs.
+MCP Tools - Ultimate Cron lets an MCP/AI connection list, inspect, log, enable, disable, and run individual Ultimate Cron jobs on a Drupal site.
 
 ---
 
-This is one of MCP Tools' 37 domain submodules. Enabling it registers a set of tool plugins that an AI assistant, connected through one of the parent module's transports, can call to work with Ultimate Cron jobs on the site. It exposes nothing on its own — it is a capability the parent's server offers once this submodule is on.
-
-The tools it provides are: `DisableJob`, `EnableJob`, `GetJob`, `GetJobLogs`, `ListJobs`, `RunJob`. Each is a discrete operation the assistant invokes by name with typed arguments; there is no free-form access beyond them.
-
-Every control the parent enforces applies here without exception. The tools appear only because this submodule is enabled; the global read-only mode blocks their writes; a connection's scope (`read`/`write`/`admin`) governs what it may do; the `mcp_tools use ultimate_cron` permission is required; and each call runs as the configured execution user, rate-limited. Enable this submodule when an assistant should be able to work with Ultimate Cron jobs, and leave it off otherwise — the surface area you expose is exactly the set of submodules you turn on.
+This submodule of MCP Tools integrates with the contrib Ultimate Cron module via six `tool` plugins under the `ultimate_cron` category. Three are read tools (list jobs, get one job, read a job's recent logs) and three are write tools (enable, disable, run a job). They operate on `ultimate_cron_job` config entities through `UltimateCronService`, which uses the entity storage, the database (for logs), and the logger factory. Access is enforced by the shared MCP Tools model — the `mcp_tools use ultimate_cron` permission plus the connection scope, the ops write-kind policy, and the read-only switch — with write tools re-checking write access in `executeLegacy()`. Requires the Ultimate Cron module.
 
 ---
-- Have the assistant disable job.
-- Have the assistant enable job.
-- Have the assistant get job.
-- Have the assistant get job logs.
-- Have the assistant list jobs.
-- Have the assistant run job.
-- Enable this submodule to expose the Ultimate Cron jobs domain.
-- Keep it disabled to hide these tools entirely.
-- Gate it behind the `mcp_tools use ultimate_cron` permission.
-- Block its writes with the server's global read-only mode.
-- Restrict a connection to read scope to prevent its writes.
-- Run its tools as a least-privilege execution user.
-- Rate-limit how often an assistant calls these tools.
-- Audit which of its tools are exposed on the MCP status page.
-- Require a write scope before an assistant can change anything here.
-- Combine it with only the other domains an assistant needs.
+
+- Ask an AI which cron jobs are registered and their last run status.
+- Read the recent execution log of a job that keeps failing.
+- Run a single slow job on demand instead of a full cron pass.
+- Disable a misbehaving job while you investigate it.
+- Re-enable a job after a fix is deployed.
+- Inspect one job's schedule and configuration by machine name.
+- Triage cron problems per-job rather than site-wide.
+- Get a quick health overview of all scheduled jobs.
+- Kick a specific import/index job before a demo.
+- Pause a heavy job during a traffic spike, then resume it.
+- Check whether a job actually ran by reading its logs.
+- Integrate per-job cron control into an ECA or AI-agent workflow.
+- Diagnose "one job never runs" without opening the admin UI.
+- Confirm a job is enabled before relying on its output.
+- Run a maintenance job as part of a scripted runbook.
+- Compare last-run times across jobs to spot stalls.
+- Drive Ultimate Cron from Claude Code / Cursor over MCP.
+- Read logs to correlate a job with an error spike.
+- Temporarily disable a job that conflicts with a migration.

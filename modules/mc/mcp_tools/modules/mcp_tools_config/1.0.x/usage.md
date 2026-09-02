@@ -1,27 +1,28 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-MCP Tools — Configuration inspection and export adds the MCP tools for diffing, previewing and exporting configuration, and reviewing MCP-made changes.
+Submodule of MCP Tools that adds five Tool API plugins for inspecting configuration drift, previewing site-building operations as a dry run, and exporting the active configuration to the sync directory.
 
 ---
 
-This is one of MCP Tools' 37 domain submodules. Enabling it registers a set of tool plugins that an AI assistant, connected through one of the parent module's transports, can call to work with configuration inspection and export on the site. It exposes nothing on its own — it is a capability the parent's server offers once this submodule is on.
-
-The tools it provides are: `ExportConfig`, `GetConfigChanges`, `GetConfigDiff`, `GetMcpChanges`, `PreviewOperation`. Each is a discrete operation the assistant invokes by name with typed arguments; there is no free-form access beyond them.
-
-Every control the parent enforces applies here without exception. The tools appear only because this submodule is enabled; the global read-only mode blocks their writes; a connection's scope (`read`/`write`/`admin`) governs what it may do; the `mcp_tools use config` permission is required; and each call runs as the configured execution user, rate-limited. Enable this submodule when an assistant should be able to work with configuration inspection and export, and leave it off otherwise — the surface area you expose is exactly the set of submodules you turn on.
+`mcp_tools_config` lets an AI/MCP client reason about a site's configuration without a Drush shell. It compares active storage against the sync directory (the equivalent of `drush config:status`/`config:export`), shows a field-level diff for a single config object, tracks which config entities were touched by earlier MCP tool calls, and previews what a would-be operation (create role, grant permissions, add field, delete content type, export config, and so on) would change before anything is executed. Only the config export tool actually mutates anything; it writes active config to the sync directory and requires the admin scope plus an explicit `confirm=true`. All five tools are ordinary Tool API plugins extending `McpToolsToolBase`, so they inherit the parent module's access model: the `mcp_tools use config` permission, the per-connection read/write/admin scope, the config-only write policy, and the global read-only switch. The submodule ships no config objects, routes, or forms of its own — its work is done through the `config.storage`/`config.storage.sync` services and a small set of comparison/preview/tracking services.
 
 ---
-- Have the assistant export config.
-- Have the assistant get config changes.
-- Have the assistant get config diff.
-- Have the assistant get mcp changes.
-- Have the assistant preview operation.
-- Enable this submodule to expose the configuration inspection and export domain.
-- Keep it disabled to hide these tools entirely.
-- Gate it behind the `mcp_tools use config` permission.
-- Block its writes with the server's global read-only mode.
-- Restrict a connection to read scope to prevent its writes.
-- Run its tools as a least-privilege execution user.
-- Rate-limit how often an assistant calls these tools.
-- Audit which of its tools are exposed on the MCP status page.
-- Require a write scope before an assistant can change anything here.
-- Combine it with only the other domains an assistant needs.
+
+- Ask "what configuration has changed since the last export?" (`mcp_config_changes`) before syncing.
+- Get a per-config field-level diff between active and sync for one object, e.g. `system.site` (`mcp_config_diff`).
+- Review the exact create/update/delete changelist that an export would produce.
+- Preview creating a content type and see every config object it would generate (form/view displays).
+- Preview adding a field to a bundle and learn whether the storage already exists.
+- Preview deleting a content type and list dependent configuration that would be affected.
+- Preview creating or deleting a user role before committing to it.
+- Preview granting or revoking permissions on a role and see exactly which permissions would be added/removed.
+- Preview creating a taxonomy vocabulary or a view.
+- Dry-run an import-config operation to see what would be pulled from the sync directory.
+- Audit which configuration entities were created or modified through MCP tools (`mcp_config_mcp_changes`).
+- Decide whether a staging site has drifted from its committed configuration.
+- Export active configuration to the sync directory from an admin-scoped connection after reviewing the changelist.
+- Confirm that "no changes to export" before running a deploy step.
+- Let an agent walk a human through the impact of a site-building change without touching the database.
+- Detect accidental configuration overrides made outside of code.
+- Build a change summary for a pull request from the tracked-MCP-changes list.
+- Verify a specific configuration exists in active but not sync (new_in_active) or vice versa.
+- Gate configuration export behind the admin scope while still allowing read-only diff inspection.
+- Use the preview tools as a safety check step in an agent workflow that otherwise calls mutating site-building tools.

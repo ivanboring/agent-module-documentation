@@ -1,27 +1,26 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-MCP Tools — Block placement adds the MCP tools for listing, placing, configuring and removing blocks in theme regions.
+Adds MCP tools to place, configure, remove and enumerate blocks in theme regions.
 
 ---
 
-This is one of MCP Tools' 37 domain submodules. Enabling it registers a set of tool plugins that an AI assistant, connected through one of the parent module's transports, can call to work with block placement on the site. It exposes nothing on its own — it is a capability the parent's server offers once this submodule is on.
-
-The tools it provides are: `ConfigureBlock`, `ListAvailableBlocks`, `ListRegions`, `PlaceBlock`, `RemoveBlock`. Each is a discrete operation the assistant invokes by name with typed arguments; there is no free-form access beyond them.
-
-Every control the parent enforces applies here without exception. The tools appear only because this submodule is enabled; the global read-only mode blocks their writes; a connection's scope (`read`/`write`/`admin`) governs what it may do; the `mcp_tools use blocks` permission is required; and each call runs as the configured execution user, rate-limited. Enable this submodule when an assistant should be able to work with block placement, and leave it off otherwise — the surface area you expose is exactly the set of submodules you turn on.
+mcp_tools_blocks is a submodule of MCP Tools with five Tool API plugins (`MCP_CATEGORY = 'blocks'`) delegating to `BlockService`, which uses the block plugin manager and theme handler. Read tools list available block plugins and a theme's regions; the three write tools (place/configure/remove) are `ToolOperation::Write`, gated by `mcp_tools use blocks` plus a write scope, with `AccessManager::canWrite()` re-checked and audit-logged in the service.
 
 ---
-- Have the assistant configure block.
-- Have the assistant list available blocks.
-- Have the assistant list regions.
-- Have the assistant place block.
-- Have the assistant remove block.
-- Enable this submodule to expose the block placement domain.
-- Keep it disabled to hide these tools entirely.
-- Gate it behind the `mcp_tools use blocks` permission.
-- Block its writes with the server's global read-only mode.
-- Restrict a connection to read scope to prevent its writes.
-- Run its tools as a least-privilege execution user.
-- Rate-limit how often an assistant calls these tools.
-- Audit which of its tools are exposed on the MCP status page.
-- Require a write scope before an assistant can change anything here.
-- Combine it with only the other domains an assistant needs.
+
+- List every block plugin available to place on the site.
+- Enumerate a theme's regions (header, sidebar, footer, ...) before placing.
+- Place a menu block into the primary navigation region.
+- Add a search block to the header of the active theme.
+- Place a custom (block_content) block into a sidebar.
+- Configure a placed block's label or 'display title' setting.
+- Set visibility conditions on a block (e.g. specific pages/roles).
+- Reweight or relabel a block via ConfigureBlock.
+- Remove a block that is no longer wanted from a region.
+- Move a block by removing it from one region and placing it in another.
+- Set up a footer with several informational blocks.
+- Audit which blocks and regions exist before an AI redesign.
+- Place the same block into multiple themes.
+- Add a branding/site-name block to a new theme's header.
+- Prototype a page layout using core blocks from a prompt.
+- Disable a block region's contents by removing its blocks.
+- Let an agent assemble a landing sidebar from available blocks.
+- Reconfigure an existing block instead of recreating it.

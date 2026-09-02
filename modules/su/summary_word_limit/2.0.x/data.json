@@ -1,7 +1,7 @@
 {
   "name": "Summary Word Limit",
   "data_name": "summary_word_limit",
-  "description": "Adds a per-field word count limit to the summary of Text (formatted, long, with summary) fields.",
+  "description": "Adds a per-field word count limit to the summary of Text (formatted, long, with summary) fields, enforced as a validation constraint.",
   "version": "2.0.x",
   "package": "Fields",
   "composer_namespace": "drupal/summary_word_limit",
@@ -19,10 +19,10 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Fields"
+    "Content editing experience"
   ],
   "subcategories": [
     "Field validation"
@@ -33,9 +33,10 @@
     "validation",
     "constraint",
     "text with summary",
-    "teaser"
+    "teaser",
+    "third party settings"
   ],
-  "project_description": "This simple module allows you to add a word count limit to the summary of text_with_summary - AKA Text (formatted, long, with summary) - field types.\n\n This is enabled via third party settings on the field config, and implemented using a validation constraint .",
+  "project_description": "This simple module allows you to add a word count limit to the summary of text_with_summary - AKA Text (formatted, long, with summary) - field types. This is enabled via third party settings on the field config and implemented using a validation constraint, so the limit is enforced wherever the entity is validated (node form, REST, JSON:API, migrations and programmatic saves), not just in the edit form.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

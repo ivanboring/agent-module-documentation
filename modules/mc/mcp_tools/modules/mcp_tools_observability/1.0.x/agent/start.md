@@ -1,8 +1,21 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-# mcp_tools_observability — agent index
+# MCP Tools - Observability (mcp_tools_observability) — agent index
 
-Submodule of **mcp_tools**. Adds observability — logging and metrics — for MCP Tools activity. Version **1.0.0-beta18**. Core `^10.3 || ^11`.
-Depends on: `mcp_tools:mcp_tools`.
+Adapter submodule of **MCP Tools**. Logs every MCP tool execution (started / succeeded / failed) to
+the `mcp_tools` watchdog channel via one event subscriber. Depends on `mcp_tools`. No routes,
+permissions, or config. Core `^10.3 || ^11 || ^12`. License GPL-2.0-or-later. Version dir 1.0.x
+(installed 1.0.0-beta8).
 
-The parent's access model still governs it: only-if-enabled availability, global read-only mode,
-connection scopes, and per-domain permissions all apply. See [[mcp_tools]].
+- **The event subscriber and what it logs** → [events/logging.md](events/logging.md)
+
+## What it provides (from source)
+
+- `src/EventSubscriber/ToolExecutionLogSubscriber.php` — subscribes to `code-wheel/mcp-events`
+  `ToolExecutionStartedEvent` (→ `onStarted`, debug), `ToolExecutionSucceededEvent` (→ `onSucceeded`,
+  info), `ToolExecutionFailedEvent` (→ `onFailed`, warning; `REASON_EXECUTION` → error,
+  `REASON_POLICY_DRY_RUN` → info).
+- `mcp_tools_observability.services.yml` — registers the subscriber (`event_subscriber` tag) with
+  the parent's `@logger.channel.mcp_tools` channel.
+
+These events are dispatched by the parent's `ToolApiCallToolHandler` around tool execution; the
+arguments carried in them are already redacted for sensitive keys by the dispatcher.

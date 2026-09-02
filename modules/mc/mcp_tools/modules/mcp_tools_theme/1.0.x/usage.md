@@ -1,30 +1,28 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-MCP Tools — Theme management adds the MCP tools for enabling, disabling, and configuring themes and their settings.
+MCP tools for theme settings management.
 
 ---
 
-This is one of MCP Tools' 37 domain submodules. Enabling it registers a set of tool plugins that an AI assistant, connected through one of the parent module's transports, can call to work with theme management on the site. It exposes nothing on its own — it is a capability the parent's server offers once this submodule is on.
-
-The tools it provides are: `DisableTheme`, `EnableTheme`, `GetActiveTheme`, `GetThemeSettings`, `ListThemes`, `SetAdminTheme`, `SetDefaultTheme`, `UpdateThemeSettings`. Each is a discrete operation the assistant invokes by name with typed arguments; there is no free-form access beyond them.
-
-Every control the parent enforces applies here without exception. The tools appear only because this submodule is enabled; the global read-only mode blocks their writes; a connection's scope (`read`/`write`/`admin`) governs what it may do; the `mcp_tools use theme` permission is required; and each call runs as the configured execution user, rate-limited. Enable this submodule when an assistant should be able to work with theme management, and leave it off otherwise — the surface area you expose is exactly the set of submodules you turn on.
+MCP Tools - Theme is a submodule of MCP Tools. It contributes Tool API plugins (under `src/Plugin/tool/Tool/`) that let an MCP/AI connection work with theme install/uninstall, default/admin theme, and theme settings. All plugins extend `McpToolsToolBase`, so access requires the `mcp_tools use theme` permission plus the connection's scope (read for reads; write for mutations), and mutating operations additionally honour the global read-only switch and the config/content/ops write-kind policy. The mutating service methods re-check write access. It depends on `mcp_tools`.
 
 ---
-- Have the assistant disable theme.
-- Have the assistant enable theme.
-- Have the assistant get active theme.
-- Have the assistant get theme settings.
-- Have the assistant list themes.
-- Have the assistant set admin theme.
-- Have the assistant set default theme.
-- Have the assistant update theme settings.
-- Enable this submodule to expose the theme management domain.
-- Keep it disabled to hide these tools entirely.
-- Gate it behind the `mcp_tools use theme` permission.
-- Block its writes with the server's global read-only mode.
-- Restrict a connection to read scope to prevent its writes.
-- Run its tools as a least-privilege execution user.
-- Rate-limit how often an assistant calls these tools.
-- Audit which of its tools are exposed on the MCP status page.
-- Require a write scope before an assistant can change anything here.
-- Combine it with only the other domains an assistant needs.
+
+- Report the active, default, and admin themes.
+- List installed themes with their versions.
+- List all on-disk themes including uninstalled ones.
+- Read a theme's settings, logo, and favicon config.
+- Install (enable) an already-present theme.
+- Switch the site's default theme.
+- Set a separate admin theme.
+- Update a theme's logo path setting.
+- Toggle a theme feature (e.g. show/hide the site slogan).
+- Uninstall a theme that is no longer used.
+- Confirm a theme's regions before placing blocks.
+- Scaffold appearance settings during site setup via an AI agent.
+- Standardise theme config across environments from MCP.
+- Let a read-only connection review theme state safely.
+- Drive theme management from Claude Code / Cursor.
+- Check base-theme relationships before uninstalling.
+- Set the admin theme to a dedicated back-end theme.
+- Audit which theme is active as part of a site review.
+- Wire theme changes into an ECA workflow via the Tool API.
+- Prevent accidental removal of the active theme (guarded by the service).

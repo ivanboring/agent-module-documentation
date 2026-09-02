@@ -1,12 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-# mcp_tools_theme — agent index
+# MCP Tools - Theme (mcp_tools_theme) — agent index
 
-Submodule of **mcp_tools** — MCP tools for theme management. Version **1.0.0-beta18**. Core `^10.3 || ^11`.
-Depends on: `mcp_tools:mcp_tools`.
-Permission: `mcp_tools use theme`.
+Submodule of **mcp_tools**. Adds Tool API plugins for theme install/uninstall, default/admin theme, and theme settings from an MCP/AI connection.
+Package *MCP Tools*. Core `^10.3 || ^11 || ^12`. Depends on **mcp_tools**.
+No routes, forms, or config of its own.
 
-**Tools (8):** `DisableTheme`, `EnableTheme`, `GetActiveTheme`, `GetThemeSettings`, `ListThemes`, `SetAdminTheme`, `SetDefaultTheme`, `UpdateThemeSettings`.
+- **The 8 tools, inputs, operations and write-kinds** →
+  [tools/theme-tools.md](tools/theme-tools.md)
 
-Governed entirely by the parent's access model — enabled-only availability, global read-only mode,
-`read`/`write`/`admin` scopes, per-domain permission, execution-user identity, rate limiting.
-See [[mcp_tools]] for the model. This submodule only adds the tools; it changes no controls.
+## What it provides
+
+- 8 `tool` plugins in `src/Plugin/tool/Tool/`, all extending `McpToolsToolBase` with `MCP_CATEGORY = 'theme'` (3 Read, 5 Write).
+- Service `mcp_tools_theme.theme` (`ThemeService`) in `src/Service/`.
+- One permission: **`mcp_tools use theme`** (`restrict access: true`).
+
+## Access model (inherited)
+
+`McpToolsToolBase::checkAccess()` requires **`mcp_tools use theme`** + the operation's scope
+(Read → read; Write → write) and, for writes, a non-read-only connection whose write-kind policy
+permits this tool's kind. See [tools/theme-tools.md](tools/theme-tools.md).
+
+## Operate
+
+```bash
+drush en mcp_tools_theme -y
+```
+
+Grant `mcp_tools use theme` to the executor role and give the connection the matching scope.

@@ -1,13 +1,13 @@
 {
   "name": "Field Formatter Template",
   "data_name": "fft",
-  "description": "Renders any field through a Twig template chosen per formatter from a configured directory.",
+  "description": "Renders any field through a site-builder-selected Twig template discovered from a configured directory; ships a Views submodule (vff).",
   "version": "3.0.x",
   "package": "Field",
   "composer_namespace": "drupal/fft",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": "fft.settings",
+  "configure": "fft.admin_settings",
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -21,13 +21,14 @@
   ],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"
   ],
   "subcategories": [
-    "Field formatters"
+    "Field formatters",
+    "Views styles"
   ],
   "keywords": [
     "twig",

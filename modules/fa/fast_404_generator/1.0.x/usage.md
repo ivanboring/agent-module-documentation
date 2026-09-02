@@ -1,13 +1,12 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Fast 404 Generator writes a `404.html` file into the public files directory, rendered from a node you choose, so the Fast 404 module can serve a themed error page without bootstrapping Drupal.
+Fast 404 Generator captures the site's first anonymous 404 response and writes it to `public://404.html` so the Fast 404 module can serve a fully themed static error page without bootstrapping Drupal.
 
 ---
 
-Fast 404 exists because a missing image or a bot probing for `/wp-admin` should not cost a full Drupal bootstrap. It intercepts those requests early and returns a static response. The catch is that the static response it ships looks nothing like the site — plain text on a white page — and the alternative, letting Drupal render a real 404 node, gives up the performance the module was installed for.
+Fast 404 exists because a missing image or a bot probing for `/wp-admin` should not cost a full Drupal bootstrap: it intercepts those requests early and returns a static response. The catch is that the static response Fast 404 ships looks nothing like the site — plain markup — and letting Drupal render its real 404 page gives up the performance the module was installed for.
 
-This module resolves that by rendering the node once and saving the result as HTML. The generated file keeps the site's styles, menus and markup, so visitors get a page that looks like the site, served without touching PHP.
+This module bridges the two. It watches every response and, the first time an anonymous visitor triggers a 404 while no `public://404.html` exists yet, it saves that response's HTML to `public://404.html`. Because the captured body is the site's own core 404 page (the theme, blocks, menus, and whatever node or text is set as the site 404 in *Basic site settings*), the resulting static file keeps the site's look. Fast 404 then serves that file for subsequent 404s. There is no admin form and no per-node picker — the source is simply whatever the first anonymous 404 renders.
 
-Wiring it up is a settings.php edit, and the README is explicit about it:
+Wiring it up is a `settings.php` edit, and the README is explicit about it:
 
 ```php
 $site_404 = DRUPAL_ROOT . '/' . $site_path . '/files/404.html';
@@ -15,25 +14,27 @@ $settings['fast404_HTML_error_page'] = file_exists($site_404) ? $site_404 : FALS
 $settings['fast404_path_check'] = file_exists($site_404);
 ```
 
-The `file_exists()` guards are the important part: if the file has not been generated yet, Fast 404 falls back rather than serving a broken path.
-
-The thing to plan for is staleness. The generated file is a snapshot — change the theme, the menu or the node and the 404 page keeps the old markup until it is regenerated. Regeneration belongs in the deployment pipeline alongside cache rebuilds, not in someone's memory. And because the file is written into `public://`, it is directly fetchable at `/sites/default/files/404.html`, so it should contain nothing that is not already public.
+The `file_exists()` guards matter: until the file has been generated, Fast 404 falls back rather than pointing at a missing path. The generated file is a snapshot, so `hook_cron()` and `hook_cache_flush()` delete it — a cache rebuild forces regeneration from the next anonymous 404, keeping the static page in step with theme and menu changes. An optional `fast404_exts` regex in `settings.php` lets you skip request URIs (e.g. asset extensions) so their bare 404 body is never captured as the template.
 
 ---
 
-- Serve a themed 404 without bootstrapping Drupal.
-- Keep site styles on the error page.
-- Keep the menu on the error page.
-- Render a 404 page from a node.
-- Pair a static error page with Fast 404.
-- Avoid a plain-text error page.
-- Avoid a full bootstrap for missing files.
-- Add the settings.php snippet from the README.
-- Guard the settings with file_exists().
-- Regenerate the file after a theme change.
-- Regenerate the file after a menu change.
-- Add regeneration to the deployment pipeline.
-- Keep private content out of the 404 node.
-- Check the generated file at /sites/default/files/404.html.
-- Reduce load from bot probing.
-- Reduce load from missing images.
+- Serve a themed 404 page without bootstrapping Drupal.
+- Keep the site's theme, blocks and menus on the error page.
+- Pair a static error page with the Fast 404 module.
+- Avoid Fast 404's plain, unstyled default error page.
+- Avoid a full Drupal bootstrap for missing files and bot probes.
+- Capture the site's own core 404 page as the static template automatically.
+- Match each subsite's theme and menu on a multisite install without per-site HTML.
+- Skip editing or committing a hand-made `404.html` by hand or via git.
+- Add the `settings.php` snippet from the README to point Fast 404 at the file.
+- Guard the Fast 404 settings with `file_exists()` so a missing file falls back cleanly.
+- Regenerate the file after a theme change by clearing caches.
+- Regenerate the file after a menu change by clearing caches.
+- Let a cache rebuild refresh the static 404 automatically via `hook_cache_flush()`.
+- Let cron clear a stale `public://404.html` so it is rebuilt.
+- Use `fast404_exts` to exclude asset-extension URIs from being captured as the template.
+- Keep the static file limited to public, anonymous content (only anonymous 404s are captured).
+- Reduce load from bots probing for non-existent paths.
+- Reduce load from broken image and file references.
+- Verify the generated file at `/sites/default/files/404.html`.
+- Force a fresh capture by deleting `public://404.html` and hitting an unknown path anonymously.

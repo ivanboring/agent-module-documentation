@@ -1,13 +1,13 @@
 {
   "name": "Block Animate",
   "data_name": "block_animate",
-  "description": "Adds Animate.css entrance animations to blocks through the block configuration form.",
+  "description": "Adds Animate.css entrance/exit animations to blocks via the block configuration form (block third-party settings).",
   "version": "2.1.x",
   "package": null,
   "composer_namespace": "drupal/block_animate",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:block"
+    "block"
   ],
   "configure": null,
   "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
@@ -17,19 +17,21 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [
-    "animate.css (bundled)"
+    "animate.css (bundled as animate.min.css)"
   ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
+    "Theming",
     "Content display"
   ],
   "subcategories": [
-    "Block layout"
+    "CSS animation library",
+    "Block enhancements"
   ],
   "keywords": [
     "animate.css",
@@ -37,9 +39,9 @@
     "blocks",
     "css",
     "transitions",
-    "scroll"
+    "third-party settings"
   ],
-  "project_description": "This module is to provide block easy integration of Animate CSS.\n\n CONFIGURATION \n\n Administration » Structure » Block\n\nBlock configration - Animate CSS\n\n INSTALLATION \n\n - Install via /admin/modules\n\n- drush en block_animate -y\n\n- composer require drupal/block_animate\n\n See Example: https://animate.style/",
+  "project_description": "Block Animate integrates the Animate.css cross-browser CSS animation library with Drupal blocks. It bundles animate.min.css and adds an \"Animate CSS\" fieldset to every block's configuration form (Structure > Block layout), letting a site builder choose one of ~70 named animations (fadeIn, bounceIn, slideInLeft, zoomOut, etc.) plus an optional infinite-loop toggle. The chosen animation is stored as a block third-party setting and applied as animate__animated animate__<effect> classes when the block renders. No external CDN request, no routes, no permissions, no settings page.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

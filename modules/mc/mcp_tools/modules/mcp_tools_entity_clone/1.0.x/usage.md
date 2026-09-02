@@ -1,36 +1,26 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-MCP Tools — Entity cloning adds the MCP tools for cloning entities with or without their references, via Entity Clone.
+Submodule of MCP Tools that adds four Tool API plugins for cloning entities via the Entity Clone module from an AI/MCP client.
 
 ---
 
-This is one of MCP Tools' 37 domain submodules. Enabling it registers a set of tool plugins that an AI assistant, connected through one of the parent module's transports, can call to work with entity cloning on the site. It exposes nothing on its own — it is a capability the parent's server offers once this submodule is on.
-
-The tools it provides are: `CloneEntity`, `CloneWithReferences`, `GetCloneSettings`, `GetCloneableTypes`. Each is a discrete operation the assistant invokes by name with typed arguments; there is no free-form access beyond them.
-
-Every control the parent enforces applies here without exception. The tools appear only because this submodule is enabled; the global read-only mode blocks their writes; a connection's scope (`read`/`write`/`admin`) governs what it may do; the `mcp_tools use entity_clone` permission is required; and each call runs as the configured execution user, rate-limited. Enable this submodule when an assistant should be able to work with entity cloning, and leave it off otherwise — the surface area you expose is exactly the set of submodules you turn on.
+`mcp_tools_entity_clone` exposes the contrib Entity Clone integration to MCP tooling. Read tools list which entity types/bundles support cloning and describe a bundle's clone settings (title pattern, reference-clone behaviour, excluded fields, whether it contains paragraph fields). Two write tools perform clones: a single-entity clone with optional title prefix/suffix and child-paragraph handling, and a deep clone that also duplicates specified entity-reference fields and rewrites the references in the copy. All tools extend `McpToolsToolBase` with category `entity_clone`, inheriting the parent access model (`mcp_tools use entity_clone` permission, per-connection read/write scope, config write policy, global read-only switch); the clone tools also check `canWrite()` in `EntityCloneService`. The submodule depends on `entity_clone:entity_clone`, ships one permission and one service (`EntityCloneService`), and declares no config, routes, or forms.
 
 ---
-- Have the assistant clone entity.
-- Have the assistant clone with references.
-- Have the assistant get clone settings.
-- Have the assistant get cloneable types.
-- Enable this submodule to expose the entity cloning domain.
-- Keep it disabled to hide these tools entirely.
-- Gate it behind the `mcp_tools use entity_clone` permission.
-- Block its writes with the server's global read-only mode.
-- Restrict a connection to read scope to prevent its writes.
-- Run its tools as a least-privilege execution user.
-- Rate-limit how often an assistant calls these tools.
-- Audit which of its tools are exposed on the MCP status page.
-- Require a write scope before an assistant can change anything here.
-- Combine it with only the other domains an assistant needs.
-- Enable this submodule to expose the entity cloning domain.
-- Keep it disabled to hide these tools entirely.
-- Gate it behind the `mcp_tools use entity_clone` permission.
-- Block its writes with the server's global read-only mode.
-- Restrict a connection to read scope to prevent its writes.
-- Run its tools as a least-privilege execution user.
-- Rate-limit how often an assistant calls these tools.
-- Audit which of its tools are exposed on the MCP status page.
-- Require a write scope before an assistant can change anything here.
-- Combine it with only the other domains an assistant needs.
+
+- List all entity types and bundles that support cloning (`mcp_entity_clone_types`).
+- Inspect a bundle's clone settings and reference/paragraph fields before cloning (`mcp_entity_clone_settings`).
+- Clone a single node, media item, or paragraph with a sensible default title suffix (`mcp_entity_clone_clone`).
+- Add a custom title prefix or suffix to a cloned entity.
+- Choose whether child paragraphs are cloned along with the parent.
+- Deep-clone an entity plus specific referenced entities, updating references in the copy (`mcp_entity_clone_with_refs`).
+- Duplicate a landing page and its referenced components as a starting point for a new one.
+- Let an agent "make me a copy of article 12 to edit" without leaving the chat.
+- Clone a template node so editors start from a known-good structure.
+- Understand deep-clone behaviour (which reference fields are cloned vs preserved) before running it.
+- Detect whether a bundle contains paragraph fields that will be deep-cloned automatically.
+- Produce cloned entities as unpublished drafts by default for safe review.
+- Get the new entity's id and UUID back for follow-up edits or config references.
+- Bulk-duplicate a set of components by cloning references field-by-field.
+- Restrict cloning to write-scoped connections while leaving type/settings inspection read-only.
+- Seed A/B variants of a page by cloning and tweaking.
+- Answer "what can I clone here and how deep does it go?".
+- Support content-modelling workflows that rely on duplicating structured content.

@@ -1,29 +1,28 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-MCP Tools — Media management adds the MCP tools for creating media and media types, uploading files, and generating alt text.
+Media management operations: create, upload, and manage media entities.
 
 ---
 
-This is one of MCP Tools' 37 domain submodules. Enabling it registers a set of tool plugins that an AI assistant, connected through one of the parent module's transports, can call to work with media management on the site. It exposes nothing on its own — it is a capability the parent's server offers once this submodule is on.
-
-The tools it provides are: `CreateMedia`, `CreateMediaType`, `DeleteMedia`, `DeleteMediaType`, `GenerateAltText`, `ListMediaTypes`, `UploadFile`. Each is a discrete operation the assistant invokes by name with typed arguments; there is no free-form access beyond them.
-
-Every control the parent enforces applies here without exception. The tools appear only because this submodule is enabled; the global read-only mode blocks their writes; a connection's scope (`read`/`write`/`admin`) governs what it may do; the `mcp_tools use media` permission is required; and each call runs as the configured execution user, rate-limited. Enable this submodule when an assistant should be able to work with media management, and leave it off otherwise — the surface area you expose is exactly the set of submodules you turn on.
+MCP Tools - Media is a submodule of MCP Tools. It contributes Tool API plugins (under `src/Plugin/tool/Tool/`) that let an MCP/AI connection work with media types, media entities, and base64 file uploads. All plugins extend `McpToolsToolBase`, so access requires the `mcp_tools use media` permission plus the connection's scope (read for reads; write for mutations), and mutating operations additionally honour the global read-only switch and the config/content/ops write-kind policy. The mutating service methods re-check write access. It depends on `mcp_tools`, `media`, `file`.
 
 ---
-- Have the assistant create media.
-- Have the assistant create media type.
-- Have the assistant delete media.
-- Have the assistant delete media type.
-- Have the assistant generate alt text.
-- Have the assistant list media types.
-- Have the assistant upload file.
-- Enable this submodule to expose the media management domain.
-- Keep it disabled to hide these tools entirely.
-- Gate it behind the `mcp_tools use media` permission.
-- Block its writes with the server's global read-only mode.
-- Restrict a connection to read scope to prevent its writes.
-- Run its tools as a least-privilege execution user.
-- Rate-limit how often an assistant calls these tools.
-- Audit which of its tools are exposed on the MCP status page.
-- Require a write scope before an assistant can change anything here.
-- Combine it with only the other domains an assistant needs.
+
+- Ask an AI to create an `image` media type wired to core's image source.
+- Upload a base64-encoded screenshot and get back a File id.
+- Create a Media entity from an uploaded File id for use in a node's media reference.
+- Register a `remote_video` (oembed) media type for YouTube/Vimeo.
+- List available media types before creating content that references media.
+- Bulk-create media entities as part of an AI content-authoring flow.
+- Delete an obsolete media entity by its id.
+- Remove an unused media type once its content is cleared.
+- Attach an uploaded PDF as a `document` media item.
+- Seed a media library during site scaffolding.
+- Look up a media type's source field name before setting its value.
+- Let a read-only connection inventory media types without any write power.
+- Generate media programmatically from an AI agent over MCP.
+- Confirm an upload's public URL after storing a file.
+- Store uploads under a custom `public://uploads` directory.
+- Drive media creation from Claude Code / Cursor.
+- Wire media into an ECA workflow via the Tool API.
+- Clean up media types left over from a migration.
+- Validate that a filename's extension is permitted before uploading.
+- Reference created media in content-entity fields with `{"target_id": mid}`.

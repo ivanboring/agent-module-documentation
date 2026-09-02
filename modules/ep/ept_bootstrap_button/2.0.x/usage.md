@@ -1,31 +1,31 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-EPT Bootstrap Button adds one paragraph type — a Bootstrap-styled button — to the Extra Paragraph Types family.
+Adds a "Bootstrap Button" paragraph type that renders a link as a styled Bootstrap 5 button with configurable type, size, outline, alignment and state.
 
 ---
 
-The Extra Paragraph Types project is a set of small modules that each contribute one ready-made paragraph type, sharing configuration and styling through `ept_core`. This is the button. An editor building a landing page from paragraphs gets a call-to-action they can configure — text, link, Bootstrap variant, size, alignment — without a developer creating a paragraph type and a template for it.
-
-The value is in not doing the work, so the calculation is straightforward: a bespoke button paragraph is perhaps an hour of field configuration plus a template, and it is then yours to maintain. This is an enable, and it is then subject to somebody else's release schedule and styling decisions.
-
-It assumes Bootstrap. The classes it emits are Bootstrap's, so on a theme that is not Bootstrap-based the button will render unstyled until the classes are given meaning. That is not a defect — the module says Bootstrap in its name — but it is the thing to check before adding it.
-
-Being part of a family matters for planning too: the EPT modules share `ept_core`, so adopting one makes adopting the others cheap, and sites tend to end up with several.
+Extra Paragraph Types (EPT): Bootstrap Button is a tiny add-on to the EPT family. It ships a single Paragraphs bundle, `ept_bootstrap_button`, whose main field is a core Link field (`field_ept_bootstrap_button_link`) plus an `ept_settings` field from `ept_core` that carries button-specific display options. Editors pick a Bootstrap button type (primary, secondary, success, danger, warning, info, light, dark, link), an optional outline variant, a size (default/small/large), alignment (left/center/right), and toggles for open-in-new-tab, nofollow, active, disabled and stretched, plus a free-form custom CSS class. At render time the module's Twig template composes Bootstrap `btn`/`btn-*` classes and prints the link, while `ept_core`'s shared design options (CSS box, background, container width) still apply. The module has no routes, no permissions, no config form and no Drush commands of its own — it is pure content-building furniture. It assumes a Bootstrap-based theme; on a theme without Bootstrap the emitted classes are inert and the button renders unstyled.
 
 ---
 
-- Add a call-to-action button to a paragraph stack.
-- Let editors place a styled button without a developer.
-- Build a landing page from paragraphs.
-- Choose a Bootstrap button variant.
-- Choose a button size.
-- Align a button within its section.
-- Link a button to an internal page.
-- Link a button to an external URL.
-- Standardise button markup across a site.
-- Avoid building a bespoke button paragraph type.
-- Pair with other EPT paragraph types.
-- Share configuration through ept_core.
-- Confirm the theme is Bootstrap-based first.
-- Restyle the emitted Bootstrap classes if it is not.
-- Keep button styling out of individual templates.
-- Reuse one button type across content types.
+- Add a call-to-action button to a landing-page node built with Paragraphs.
+- Drop a "Buy now" / "Sign up" button into a marketing page without writing HTML.
+- Give editors a consistent, theme-approved button style instead of ad-hoc inline markup.
+- Render a primary Bootstrap button linking to a contact or lead form.
+- Create an outline (ghost) button using the `.btn-outline-*` variants.
+- Offer small (`btn-sm`) or large (`btn-lg`) button sizes per placement.
+- Left-, center- or right-align a button within its paragraph region.
+- Open an external link in a new tab (`target="_blank"`) from a button.
+- Add `rel="nofollow"` to a sponsored or untrusted outbound button link.
+- Visually mark a button as active (pressed) with the Bootstrap `active` class.
+- Show a disabled-looking button (adds `.disabled`) for not-yet-available actions.
+- Stretch a button to full width for mobile-friendly CTAs.
+- Attach a custom utility class to a button for one-off styling.
+- Combine the button with a heading (paragraph title field) above it.
+- Build a hero section's primary/secondary action pair using two button paragraphs.
+- Add download links styled as buttons on a resource or docs page.
+- Place a "Read more" button at the end of a teaser-style paragraph stack.
+- Standardize CTA buttons across many pages via the shared paragraph type.
+- Use `ept_core` design options to add margins/padding/background around a button block.
+- Mix the button paragraph with other EPT paragraph types (accordion, tabs, text) on one page.
+- Provide translators a per-language link title and URL (link field is translatable).
+- Give content teams a Bootstrap-documentation-linked UI so they pick semantic button colors.
+- Replace bespoke button components in a Bootstrap 5 theme with a reusable paragraph.

@@ -1,21 +1,24 @@
 {
   "name": "Domain Unique Path Alias",
   "data_name": "domain_unique_path_alias",
-  "description": "Adds a domain_id property to path_alias so the same alias can exist once per domain.",
+  "description": "Adds a domain_id property to core's path_alias entity so the same alias can exist once per Domain-module domain instead of being globally unique.",
   "version": "1.0.x",
   "package": "Domain",
   "composer_namespace": "drupal/domain_unique_path_alias",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/domain": "^2.0 || ^3.0",
+    "drupal/pathauto": "^1.12"
+  },
   "dependent_modules": [
-    "domain:domain",
-    "domain:domain_source",
-    "pathauto:pathauto",
-    "drupal:path_alias",
-    "drupal:field",
-    "drupal:node"
+    "domain",
+    "domain_source",
+    "pathauto",
+    "path_alias",
+    "field",
+    "node"
   ],
   "configure": null,
-  "core_version_requirement": "^9.4 || ^10 || ^11",
+  "core_version_requirement": "^10.2 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/domain_unique_path_alias",
@@ -26,13 +29,14 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Site structure"
   ],
   "subcategories": [
-    "URL aliases"
+    "Multi-domain / affiliate sites",
+    "URL alias generation"
   ],
   "keywords": [
     "domain",

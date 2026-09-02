@@ -1,5 +1,5 @@
 {
-  "name": "Mcp Tools Entity Clone",
+  "name": "MCP Tools - Entity Clone",
   "data_name": "mcp_tools_entity_clone",
   "description": "Entity Clone integration: clone entities with references and configurable options.",
   "version": "1.0.x",
@@ -11,7 +11,7 @@
     "entity_clone:entity_clone"
   ],
   "configure": null,
-  "core_version_requirement": "^10.3 || ^11",
+  "core_version_requirement": "^10.3 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/mcp_tools",
@@ -20,21 +20,22 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Artificial Intelligence"
+    "Artificial Intelligence (AI)"
   ],
   "subcategories": [
-    "AI agents / MCP"
+    "Model Context Protocol (MCP) server"
   ],
   "keywords": [
     "mcp",
     "ai",
     "agent",
     "entity",
+    "clone",
     "entity_clone"
   ],
   "part_of": "mcp_tools",

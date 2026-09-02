@@ -1,31 +1,32 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Field Formatter Template lets a site builder select a Twig template for any field's formatter, choosing from templates placed in a configured directory and annotated with a `{# Template Name: … #}` header.
+Field Formatter Template (FFT) lets a site builder pick a Twig template for any field's formatter, choosing from templates placed in a configured directory and annotated with a `{# Template Name: … #}` header.
 
 ---
 
-The usual way to change one field's markup is a theme template with a long suggestion name, which means a theme change, a cache rebuild, and knowledge of Drupal's suggestion rules. FFT moves that choice into the Manage display UI: write a template, give it a header comment, and it appears as an option on any field's formatter.
+The usual way to change one field's markup is a theme template with a long suggestion name, which means a theme change, a cache rebuild, and knowledge of Drupal's template-suggestion rules. FFT moves that choice into the *Manage display* UI: write a Twig file, give it a header comment, and it appears as a selectable option on any field's formatter. The template receives the field's `data`, the host `entity`, and any per-template `settings`, so it can produce arbitrary markup around the field's values.
 
-Templates are discovered by scanning a directory for files matching the theme extension, reading each one, and keeping those whose contents match `{# Template Name: … #}` and whose filename starts with the expected prefix. A `{# Settings: … #}` block can carry per-template settings. A submodule, `vff` (Views Formatter), extends the same idea to Views.
-
-**The template directory needs care, and the module gives none.** The setting is a plain text field with no `validateForm()` at all — nothing checks that the path is inside the docroot, outside `public://`, or not writable by the web server. Worse, the shipped default is `sites/all/formatter`, a **Drupal 7 path** that does not exist on any Drupal 8+ install, so the module does nothing until an administrator changes it — with no guidance about where to point it. The obvious wrong answer, and the one an administrator knows is writable, is the public files directory. Verified: pointed there, a planted `.html.twig` was discovered and offered with no warning.
-
-The good news, also verified, is that Drupal 11's Twig environment is sandboxed: the standard template-injection route to code execution (`{{ [...]|map('system') }}`) is refused. A planted template can still emit unescaped script, so the realistic worst case is stored XSS rather than a compromised server. Put the directory in the repository, outside `public://`, and treat templates as the code they are.
+Templates are discovered by scanning the configured directory for files matching the theme extension (`.html.twig`), reading each one, and keeping those whose contents contain a `{# Template Name: … #}` header and whose filename starts with the expected prefix (`fft` for field formatters, `views` for the Views submodule). An optional `{# Settings: … #}` block seeds default per-template settings, editable per formatter as simple `key = value` lines. The directory is set at `admin/config/content/fft`; note the shipped default `sites/all/formatter` is a Drupal 7 path and must be changed on a Drupal 8+ site before any template appears. A submodule, **vff** (Views Formatter), applies the same template-selection idea to a whole Views result set as a Views style plugin.
 
 ---
 
-- Choose a Twig template for a field formatter.
-- Change one field's markup without a theme template.
-- Give editors a choice of field renderings.
-- Add custom markup around a field's items.
-- Render a taxonomy field as inline tags.
-- Reuse a template across content types.
-- Carry per-template settings in a header comment.
-- Extend the same idea to Views with the vff submodule.
-- Keep the template directory outside public files.
-- Keep the template directory in version control.
-- Change the default directory — sites/all is a Drupal 7 path.
-- Treat FFT templates as code, not content.
-- Restrict who can write to the template directory.
-- Avoid pointing the directory at sites/default/files.
-- Review planted templates for unescaped output.
-- Confirm templates carry a Template Name header.
+- Choose a Twig template for a single field's formatter from the *Manage display* UI.
+- Change one field's markup without writing a theme template suggestion.
+- Offer editors or site builders a menu of ready-made field renderings.
+- Wrap a field's items in custom markup, classes, or containers.
+- Render a taxonomy/entity-reference field as inline linked tags.
+- Build a flexslider/carousel/owl-carousel image display over an image field.
+- Attach per-template JavaScript or CSS via the `js`/`css` settings keys.
+- Reference module, theme, or template-relative asset paths with `{module-name}`, `{theme}`, `{fft}` tokens in settings.
+- Reuse one template across many content types and bundles.
+- Carry default settings inside the template via a `{# Settings: … #}` header.
+- Apply one or two image styles to an image field and expose the derivative URLs to the template.
+- Reset Drupal's default field wrapper markup so the template controls the full output.
+- Render a whole Views result set through a custom Twig template with the vff style plugin.
+- Output raw rendered Views fields, or the styled row data, to a Views template.
+- Build a nested tree (e.g. a taxonomy hierarchy) from flat Views rows using vff's tree-field options.
+- Use a "clean" Views template that strips the default `views-view` wrapper markup.
+- Show a template even when a View returns no rows (vff "show when empty").
+- React to template variables before render by subscribing to the `fft.preprocess` event.
+- Keep FFT templates in version control alongside the rest of the site's code.
+- Point the template directory at a location the deployment controls rather than the default D7 path.
+- Provide multilingual-aware Views templates using the `langcode`, `langcode_content`, and `langcode_interface` variables vff injects.

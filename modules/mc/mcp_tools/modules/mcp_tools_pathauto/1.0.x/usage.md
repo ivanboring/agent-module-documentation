@@ -1,28 +1,28 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-MCP Tools — Url alias patterns adds the MCP tools for creating, updating and applying Pathauto patterns and generating aliases.
+URL alias pattern management: create, update, delete, and generate URL aliases using Pathauto patterns.
 
 ---
 
-This is one of MCP Tools' 37 domain submodules. Enabling it registers a set of tool plugins that an AI assistant, connected through one of the parent module's transports, can call to work with URL alias patterns on the site. It exposes nothing on its own — it is a capability the parent's server offers once this submodule is on.
-
-The tools it provides are: `CreatePattern`, `DeletePattern`, `GenerateAliases`, `GetPattern`, `ListPatterns`, `UpdatePattern`. Each is a discrete operation the assistant invokes by name with typed arguments; there is no free-form access beyond them.
-
-Every control the parent enforces applies here without exception. The tools appear only because this submodule is enabled; the global read-only mode blocks their writes; a connection's scope (`read`/`write`/`admin`) governs what it may do; the `mcp_tools use pathauto` permission is required; and each call runs as the configured execution user, rate-limited. Enable this submodule when an assistant should be able to work with URL alias patterns, and leave it off otherwise — the surface area you expose is exactly the set of submodules you turn on.
+MCP Tools - Pathauto is a submodule of MCP Tools. It contributes Tool API plugins (under `src/Plugin/tool/Tool/`) that let an MCP/AI connection work with Pathauto alias patterns and bulk alias generation. All plugins extend `McpToolsToolBase`, so access requires the `mcp_tools use pathauto` permission plus the connection's scope (read for reads; write for mutations), and mutating operations additionally honour the global read-only switch and the config/content/ops write-kind policy. The mutating service methods re-check write access. It depends on `mcp_tools`, `pathauto`.
 
 ---
-- Have the assistant create pattern.
-- Have the assistant delete pattern.
-- Have the assistant generate aliases.
-- Have the assistant get pattern.
-- Have the assistant list patterns.
-- Have the assistant update pattern.
-- Enable this submodule to expose the URL alias patterns domain.
-- Keep it disabled to hide these tools entirely.
-- Gate it behind the `mcp_tools use pathauto` permission.
-- Block its writes with the server's global read-only mode.
-- Restrict a connection to read scope to prevent its writes.
-- Run its tools as a least-privilege execution user.
-- Rate-limit how often an assistant calls these tools.
-- Audit which of its tools are exposed on the MCP status page.
-- Require a write scope before an assistant can change anything here.
-- Combine it with only the other domains an assistant needs.
+
+- List pathauto patterns for the `node` entity type.
+- Inspect a specific pattern's token string.
+- Create an article pattern `articles/[node:title]`.
+- Create a taxonomy pattern per vocabulary.
+- Update a pattern to add a date segment.
+- Enable or disable a pattern via its status flag.
+- Reorder patterns by weight for correct precedence.
+- Delete an obsolete alias pattern.
+- Bulk-generate aliases for all existing nodes.
+- Regenerate aliases after changing a pattern (update=true).
+- Generate aliases for a single content type/bundle.
+- Scaffold SEO-friendly URLs during site setup via an AI agent.
+- Audit which entity types have alias patterns.
+- Standardise URL patterns across environments from MCP.
+- Fix missing aliases after a content import.
+- Drive alias generation from Claude Code / Cursor.
+- Let a read-only connection review patterns without editing.
+- Add a bundle-specific override pattern.
+- Wire alias generation into an ECA workflow via the Tool API.
+- Clean up patterns left by a removed content type.

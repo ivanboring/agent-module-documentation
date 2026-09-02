@@ -1,30 +1,28 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-MCP Tools — Content and site analysis adds the MCP tools for audits, SEO, accessibility, security and broken-link checks — all read-only reporting.
+MCP Tools - Analysis adds read-only Tool API plugins that let an MCP/AI connection run site-health and content checks: broken links, SEO, a security review, performance, accessibility, a content audit, duplicate detection, and unused-field detection.
 
 ---
 
-This is one of MCP Tools' 37 domain submodules. Enabling it registers a set of tool plugins that an AI assistant, connected through one of the parent module's transports, can call to work with content and site analysis on the site. It exposes nothing on its own — it is a capability the parent's server offers once this submodule is on.
-
-The tools it provides are: `AnalyzePerformance`, `AnalyzeSeo`, `CheckAccessibility`, `ContentAudit`, `FindBrokenLinks`, `FindDuplicateContent`, `FindUnusedFields`, `SecurityAudit`. Each is a discrete operation the assistant invokes by name with typed arguments; there is no free-form access beyond them.
-
-Every control the parent enforces applies here without exception. The tools appear only because this submodule is enabled; the global read-only mode blocks their writes; a connection's scope (`read`/`write`/`admin`) governs what it may do; the `mcp_tools use analysis` permission is required; and each call runs as the configured execution user, rate-limited. Enable this submodule when an assistant should be able to work with content and site analysis, and leave it off otherwise — the surface area you expose is exactly the set of submodules you turn on.
+This submodule of MCP Tools contributes eight read `tool` plugins under the `analysis` category, each backed by a specialized analyzer service coordinated by the `AnalysisService` facade. The tools inspect entity, config, and database metadata and return structured results; none of them write. Access follows the shared MCP Tools model — the `mcp_tools use analysis` permission plus the connection's read scope. The broken-link tool performs no outbound requests unless an `allowed_hosts` allowlist is configured in `mcp_tools.settings`, and it validates every fetched host (including redirects) against that list. It depends only on the base mcp_tools module.
 
 ---
-- Have the assistant analyze performance.
-- Have the assistant analyze seo.
-- Have the assistant check accessibility.
-- Have the assistant content audit.
-- Have the assistant find broken links.
-- Have the assistant find duplicate content.
-- Have the assistant find unused fields.
-- Have the assistant security audit.
-- Enable this submodule to expose the content and site analysis domain.
-- Keep it disabled to hide these tools entirely.
-- Gate it behind the `mcp_tools use analysis` permission.
-- Block its writes with the server's global read-only mode.
-- Restrict a connection to read scope to prevent its writes.
-- Run its tools as a least-privilege execution user.
-- Rate-limit how often an assistant calls these tools.
-- Audit which of its tools are exposed on the MCP status page.
-- Require a write scope before an assistant can change anything here.
-- Combine it with only the other domains an assistant needs.
+
+- Ask an AI to scan published content for broken internal links.
+- Get an SEO check (meta tags, headings, alt text) for a specific page.
+- Run a quick review of permissions and role grants.
+- Review cache settings and recent watchdog errors for performance issues.
+- Check a page for accessibility problems like missing alt text.
+- Find stale content that has not been updated in N days.
+- List orphaned or draft content that needs attention.
+- Detect duplicate or near-duplicate pages by field similarity.
+- Identify fields that hold no data and could be removed.
+- Summarize site health as part of an automated audit.
+- Prioritize an SEO backlog from per-entity checks.
+- Surface heading-order problems for editors to fix.
+- Estimate database growth from a table-size review.
+- Let a read-only MCP connection assess a site without any write power.
+- Feed analysis output into an ECA or AI-agent remediation workflow.
+- Spot redundant content before a content consolidation.
+- Run accessibility spot-checks during content review.
+- Verify link health after a large content migration.
+- Check register-mode and similar config as a hardening step.
+- Drive site analysis from Claude Code / Cursor over MCP.
