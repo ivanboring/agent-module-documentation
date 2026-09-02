@@ -7,8 +7,9 @@
   "composer_namespace": "drupal/rest_log",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:rest",
-    "drupal:views"
+    "rest",
+    "views",
+    "file"
   ],
   "configure": "rest_log.settings",
   "core_version_requirement": "^8 || ^9 || ^10 || ^11",
@@ -16,11 +17,11 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/rest_log",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=7.4",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],

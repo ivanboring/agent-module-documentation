@@ -15,6 +15,9 @@ practice: the alias is resolved (a node load + `toUrl()`) **per link, per render
 uncached page pays that cost repeatedly; and it alters rendered links, so check interaction with
 anything else in the output pipeline — particularly language prefixes and link-tracking modules.
 
+**Solution doc:** [`agent/filters/filter.md`](filters/filter.md) — enabling it per text format, the
+plugin definition/attribute, the regex + callback logic, and behaviour gotchas.
+
 Everything you need:
 - **Filter plugin:** id `filter_node_alias_link_display`, title "Replace canonical node URLs with
   aliases", type `TYPE_TRANSFORM_IRREVERSIBLE`, weight `100` (runs late).

@@ -1,32 +1,33 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Views Data Export Excel adds Excel output to the Views Data Export module.
+Views Data Export Excel adds a native Excel (.xlsx) output format to the Views Data Export module.
 
 ---
 
-CSV is the honest export format and Excel is the one people ask for. The difference matters more than it sounds: CSV loses number formatting, mangles leading zeros, guesses at encodings and turns anything resembling a date into one. A finance team exporting reference numbers gets `1.23457E+11`, and nobody notices until it matters.
+Views Data Export gives a View downloadable output (CSV, XML, JSON). This add-on plugs in a spreadsheet format: it provides a Views display plugin and a Views style plugin (both keyed `data_export_excel`) that subclass Views Data Export's own DataExport display and style and mix in the Excel traits from the XLS Serialization module. XLS Serialization, in turn, uses `phpoffice/phpspreadsheet` to build the workbook, so the file is a real `.xlsx` (or legacy `.xls`) rather than a CSV with a spreadsheet extension. That distinction is the point of the module: a genuine spreadsheet keeps cell types, so a column of zero-padded reference codes stays text instead of being coerced into `1.23457E+11`, and date-shaped strings are not silently turned into dates.
 
-A real spreadsheet format keeps types, so a column of codes stays a column of codes.
-
-Being a Views Data Export format, everything else is unchanged — the View defines the fields, filters, sorts and access, and this adds an output option.
-
-**Two practical points.** Spreadsheet generation is **memory-hungry**, because the library builds the document before writing it; a 50,000-row export is a different proposition from a 500-row one, and batched export is the mechanism to reach for. And **an exported spreadsheet leaves the site's access controls behind** — a View that correctly shows a user only their own rows produces a file that can be forwarded to anyone. That is inherent to exporting and worth stating when an export is added to a View over sensitive data.
-
-There is also a formula-injection consideration with any spreadsheet export: a cell beginning `=`, `+`, `-` or `@` is interpreted as a formula by Excel, so user-supplied content can execute when the file is opened. Check whether the export escapes those, and if not, that content editors are the only source of the exported values.
+Because it is just another Views Data Export format, the View still owns the fields, filters, sorts, pager and access plugin; this only adds the output option and a handful of Excel-specific presentation controls (bold/italic/coloured header row, document metadata, and conditional row formatting, all supplied by XLS Serialization). It requires XLS Serialization 2.1.0+ and depends on Views Data Export; it defines no routes, permissions, services or Drush commands of its own — the export route and its access come from the Views Data Export display it extends. Note that large exports are memory-hungry (the workbook is built in memory before being streamed), and that an exported file, like any export, no longer carries the site's access controls once it is downloaded and forwarded.
 
 ---
 
-- Export a View as an Excel file.
-- Preserve leading zeros in codes.
-- Keep number formatting in an export.
-- Avoid CSV date mangling.
-- Give a finance team a usable file.
-- Reuse a View's filters and access.
-- Batch a large export.
-- Watch memory on a big spreadsheet.
-- Recognise that exports leave access behind.
-- Warn about forwarding exported data.
-- Check for formula-injection escaping.
-- Consider cells beginning with = or +.
-- Limit who can run an export.
-- Audit exports of sensitive Views.
-- Plan reporting output formats.
+- Add an Excel (.xlsx) download to an existing View.
+- Offer a spreadsheet export alongside CSV/XML/JSON on a Data Export display.
+- Preserve leading zeros in reference or account codes.
+- Keep numbers as numbers and text as text in an export.
+- Avoid CSV coercing code strings into scientific notation.
+- Avoid CSV turning date-shaped strings into dates.
+- Give a finance or reporting team a file they can open directly in Excel.
+- Reuse a View's existing fields, filters and sorts for the export.
+- Reuse a View's configured access plugin for who can export.
+- Produce a legacy .xls file instead of .xlsx via the style's format setting.
+- Bold or italicise the header row of the exported sheet.
+- Set a background colour on the header row.
+- Add document metadata (author, title, subject, keywords, company) to the workbook.
+- Apply conditional background colouring to rows based on a field's value.
+- Strip HTML tags from field output before writing cells.
+- Trim whitespace from cell values.
+- Auto-size columns and auto-height rows in the generated sheet.
+- Set the worksheet title from the View title.
+- Attach an Excel export as a companion display to a page View (Data Export display).
+- Batch a large Excel export via the Data Export display's batching.
+- Stay compatible with the XLS Serialization Extras feature set.
+- Standardise reporting output on a spreadsheet format across many Views.

@@ -1,37 +1,51 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # VBO Workflow Transition (vbo_workflow_transition) — agent index
 
-**Views Bulk Operations action** applying a workflow transition to selected entities.
-Version **1.1.0**. Core `^10.2 || ^11 || ^12`.
-Depends on `content_moderation`, `views`, `views_bulk_operations`, `workflows`.
+A single **Views Bulk Operations action** that transitions Content-Moderation entities through
+their workflow in bulk. Version **1.1.0**. Core `^10.2 || ^11 || ^12`. License GPL-2.0-or-later.
+Package `Custom`. Depends on core **`content_moderation`**, **`views`**, **`workflows`** and
+contrib **`views_bulk_operations`** (composer `require` names only `drupal/views_bulk_operations`).
 
-## Operate it (there is no config page)
+- **The action plugin — execute, config form, access, batch** →
+  [plugins/vbo_workflow_transition.md](plugins/vbo_workflow_transition.md)
+- **How to enable and wire it into a View (no settings page)** →
+  [config/setup.md](config/setup.md)
 
-1. Enable the module. It exposes one VBO action, id `vbo_workflow_transition_`,
-   label *"Transition content to a new workflow state"*, applicable to any entity type.
-2. Edit a View that lists moderated entities and add the **Global: Views bulk operations**
-   field; enable this action in that field's settings.
-3. Run the View, select rows (or "select all pages"), apply the action.
-4. On the confirmation page choose exactly one transition (each is a submit button,
-   grouped under its workflow) and optionally enter a **Revision Log Message**.
+## What it actually is
 
-There is no `configure` route, no permissions, no Drush, no config schema, and no plugin
-types defined by this module. Action config keys set at submit: `workflow_id`,
-`transition_id`, `revision_log_message`.
+- **One plugin**, no config page, **no permissions of its own**, no Drush, no services, no hooks,
+  no config schema, no submodules, no JS/CSS. The whole module is one PHP class.
+- `VboWorkflowTransition` (VBO action, id **`vbo_workflow_transition_`** — note the trailing
+  underscore; `type: ''` so it applies to **all entity types**; label *"Transition content to a
+  new workflow state"*), in
+  `src/Plugin/Action/VboWorkflowTransition.php`, extending
+  `views_bulk_operations\Action\ViewsBulkOperationsActionBase` and implementing
+  `ContainerFactoryPluginInterface`.
 
-## Two good properties of going through moderation
+## Mechanism (from source)
 
-Rather than writing states directly: per-entity **transition access is still checked** —
-`execute()` calls `StateTransitionValidationInterface::getValidTransitions()` for each entity
-and the current user, and only applies the chosen transition if it is valid for that entity,
-so a bulk operation cannot do what the user could not do singly. And the transition's
-**side effects still run**: each item gets a new revision (operator as revision author,
-optional log message, refreshed timestamps), preserving notifications, hooks and history.
+- **Config form** (`buildConfigurationForm`) expands the VBO selection to a concrete entity list
+  (`getAllResultsFromViewAsVboList`, handling "select all pages"/exclude mode, capped at
+  `MAX_SCAN_COUNT = 500` rows for the preview only), loads each entity's latest
+  translation-affected revision, and asks
+  `StateTransitionValidationInterface::getValidTransitions($entity, $currentUser)` which
+  transitions the **current user** may make. It renders a `details` group per workflow with a
+  submit button per transition (button `#name` = `submit:{transition_id}:{workflow_id}`) plus a
+  `revision_log_message` textarea. If nothing is eligible it shows an error and no options.
+- **submitConfigurationForm** reads the clicked button key to store `transition_id`, `workflow_id`
+  and `revision_log_message` into the action configuration.
+- **execute($entity)** re-checks per entity: entity must be `EditorialContentEntityBase`, its
+  workflow must equal the configured `workflow_id`, and the configured `transition_id` must be
+  among `getValidTransitions($entity, $currentUser)` — otherwise it returns NULL and **does not
+  save**. When valid it sets `moderation_state`, forces a **new revision** (log message, revision
+  user = current user, revision/changed time = request time, translation-affected TRUE) and saves.
+- **access()** returns the entity's `update` access for the account (the per-transition permission
+  check is deferred to `execute()`).
+- **finished()** overrides VBO's completion message to a single combined status message listing the
+  transitioned entity labels and the target state (uses `MESSAGE_SEP = '||||'`).
 
-## The risk is the selection, not the action
+## Post-install
 
-VBO can apply to every row matching a View, including rows on pages nobody looked at. Filter
-deliberately, check the count, and prefer a View that *shows* what will be affected. On a
-"select all pages" submission the confirmation preview scans only the first **500** rows
-(`MAX_SCAN_COUNT`) to decide which transitions to offer, but the action still processes every
-matching row on submit.
+No configuration route (`configure: null`). Enable the module, then edit a View that lists
+moderated entities and add the **"Global: Views bulk operations"** field. See
+[config/setup.md](config/setup.md).

@@ -26,8 +26,10 @@ selection. There is no PHP that reads, writes, or authorises anything.
 - No security surface (pure client-side JS attached to the core form; server-side save is untouched).
 
 ## What you'd do → where
+- **Install the JS library, how the form_alter attaches, and how the drag/colour behavior works** →
+  [usage/drag-select.md](usage/drag-select.md)
 - Use it: open `admin/people/permissions`, then click-and-drag across a column/run of checkboxes to
-  tick them all. Nothing to configure. (No topic files — the module has no configurable surface.)
+  tick them all, then **Save permissions**. Nothing to configure.
 - Install the JS library: place scarlac/drag-check-js under `/libraries/drag-check-js/` (see
   README for the composer `type: package` snippet). Without it the module still enables but the drag
   behavior no-ops (the plugin's `.dragCheck()` is undefined).

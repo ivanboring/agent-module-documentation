@@ -1,7 +1,7 @@
 {
   "name": "Commerce Repeat Order",
   "data_name": "commerce_repeat_order",
-  "description": "Lets a customer repeat a previous order.",
+  "description": "Lets a customer rebuild a cart from one of their previous Drupal Commerce orders via a link.",
   "version": "8.x-2.x",
   "package": "Commerce",
   "composer_namespace": "drupal/commerce_repeat_order",
@@ -22,7 +22,7 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "E-commerce"
@@ -38,7 +38,7 @@
     "cart",
     "customers"
   ],
-  "project_description": "Synopsis \n Commerce Repeat Order allows end user to repeat there order again and again.\n\n This module allows to repeat customer order just by creating an simple link or button.\n\n i.e. Link can be created as l('Repeat Order','commerce-repeat-order/%') where % is order id which needs to be passed dynamically to repeat that order.\n\n Order of same user will be allowed to repeat. Order of another user will not be added to cart by different customer.\n\n Similar projects and how they are different \n \n Commerce Reorder \n Commerce Repeat Order Provides a link which can be placed at any of tpl file or module. Just passing order id in parameter would repeat customer order \n Validation of order of same customer would be repeated \n Admin can select an option whether to replace existing order from cart or could add additional products to cart \n \n Dependencies \n \n Drupal Commerce \n Back to top",
+  "project_description": "Commerce Repeat Order lets an end user re-order a previous Drupal Commerce order by exposing a single route, /commerce-repeat-order/{commerce_order}, that rebuilds the customer's cart from the items of a prior order. The route is meant to be surfaced as a simple link or button (for example on the order detail page or the user's order history), passing the order id dynamically. A CommerceRepeatOrder controller loads the order, confirms the order belongs to the current user, then either adds the order's items to the existing default cart or replaces the cart, according to a site-wide setting. Only published products are copied; unavailable products are skipped with an optional status message. An OrderCloneEvent is dispatched per item so other modules can react. Requires Commerce and Commerce Cart.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

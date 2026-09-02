@@ -1,13 +1,17 @@
 {
   "name": "Views Data Export Excel",
   "data_name": "views_data_export_excel",
-  "description": "Adds Excel output to Views Data Export.",
+  "description": "Extends the Views Data Export module to add Excel support.",
   "version": "1.0.x",
   "package": "Views",
   "composer_namespace": "drupal/views_data_export_excel",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/views_data_export": "^1",
+    "drupal/xls_serialization": "^2.1"
+  },
   "dependent_modules": [
-    "views_data_export:views_data_export"
+    "views_data_export:views_data_export",
+    "xls_serialization:xls_serialization"
   ],
   "configure": null,
   "core_version_requirement": "^10.3 || ^11",
@@ -38,7 +42,7 @@
     "spreadsheet",
     "reporting"
   ],
-  "project_description": "Extends the Views Data Export module to add Excel support using the serializer provided by the XLS Serialization module.\n\n This module extends the DataExport Views style and display classes from the Views Data Export module. Keep in mind that any BC breaking change introduced in those classes could break this module and require an update.\n\n Important: Requires XLS Serialization module version 2.1.0+ .\n\n This module maintains compatibility with the XLS Serialization Extras features.\n\n Future \n Ideally, Views Data Export would offer a pluggable architecture to allow third-party modules to add new export formats seamlessly.",
+  "project_description": "Extends the Views Data Export module to add a native Excel (.xlsx) export format. It ships one Views display plugin and one Views style plugin (both id data_export_excel) that subclass the DataExport display and style from Views Data Export and mix in the Excel traits from the XLS Serialization module, which does the actual spreadsheet writing via phpoffice/phpspreadsheet. Because it subclasses classes owned by Views Data Export, a BC break in those classes can break this module. Requires XLS Serialization 2.1.0+ and is compatible with the XLS Serialization Extras feature set. The maintainers note that ideally Views Data Export would offer a pluggable format architecture so third-party formats could be added without subclassing.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

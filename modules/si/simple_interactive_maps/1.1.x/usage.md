@@ -1,30 +1,37 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Simple Interactive Maps embeds an SVG map whose regions respond to interaction — hover, click, link.
+Simple Interactive Maps embeds a plugin-provided SVG map whose named regions respond to interaction — hover tooltip, click action, link, modal, or loading another map.
 
 ---
 
-Not every map needs coordinates. A map of electoral regions, a floor plan, a schematic of a network, a country divided into sales territories — these are diagrams with named areas, and pushing them through a mapping library that expects latitude and longitude is more work for a worse result. An SVG with identified paths is the natural representation, and making those paths interactive is what turns the diagram into navigation.
+The maps themselves are not uploaded files; they are PHP `MapDefinition` plugins that return region path data. The module ships one such map (`us_states_territories` — the 50 states plus major-territory hotspots), and its two submodules add many more (per-state county maps and 118th-Congress district maps, both derived from US Census TIGER/Line shapefiles). To add a map that is not one of these, you write a small plugin class whose `mapData()` returns the region ids, labels, and SVG `path` data — there is no admin form for pasting or uploading SVG. Once a base map exists, an administrator creates an `interactive_map` config entity that selects that base map and, per region, overrides colours, sets a rich-text tooltip, groups regions, and attaches a click action. The built map is embedded as a block, through a text-format filter (a `<simple-map>` embed inserted with the CKEditor 5 button, or a legacy `[interactive_map map=ID]` shortcode), or loaded over AJAX from another map. Regions and groups can be edited in a table UI and round-tripped as JSON via the per-map Tools tab (region/group import and export).
 
-That is what this module does: upload the SVG, associate its regions with content or links, and the map becomes clickable.
+Clicking a region runs its action plugin in the browser: `none` (inert), `navigate_action` (go to a URL, optionally a new tab), `modal_content` (open a Drupal dialog with filter-processed HTML), or `ajax_load_map` (replace the current map with another). Tooltips and modal bodies are run through Drupal text formats, so their output is only as safe as the format an administrator picks.
 
-**SVG deserves its usual caution.** An SVG is an XML document that can contain scripts and external references, so the upload path matters: who may upload one, and whether it is sanitised. On a site where map uploads are an administrator task (`administer interactive_map`, which this module defines) that is a small surface; if the capability is delegated more widely, an SVG upload is effectively an HTML upload.
-
-**And an interactive map is only accessible if the interaction is.** Regions that respond to hover and click need keyboard equivalents and accessible names, and a map used for navigation needs a non-map alternative — a list of the same links — for anyone who cannot use it. That is a content requirement rather than a module setting, and it is the part most often skipped.
+Configuring maps requires the `administer interactive_map` permission; the module-wide colour defaults live behind `administer site configuration`. As with any interactive diagram, the interaction is only accessible if you also provide keyboard equivalents, accessible region names, and a non-map alternative (a list of the same links) for anyone who cannot use the map — that part is a content responsibility, not a switch in the module.
 
 ---
 
-- Embed a clickable regional map.
-- Make a floor plan interactive.
-- Link map regions to content.
-- Show sales territories as a diagram.
-- Avoid a coordinate-based mapping library.
-- Use an SVG with identified paths.
-- Restrict who may upload map SVGs.
-- Sanitise uploaded SVG content.
-- Provide keyboard equivalents for regions.
-- Give regions accessible names.
-- Offer a list alternative to the map.
-- Style regions with CSS.
-- Highlight a region on hover.
-- Audit SVG uploads on a site.
-- Plan an accessible interactive diagram.
+- Embed a clickable map of the US states in a block.
+- Turn a regional map into a visual navigation menu.
+- Pop up a modal with content when a region is clicked.
+- Load a drill-down map (state → counties) with AJAX from a parent map.
+- Show US congressional districts (118th Congress) as an interactive map.
+- Show a single state's counties as an interactive map.
+- Embed a map inside body text with the CKEditor 5 "Insert map" button.
+- Embed a map with the legacy `[interactive_map map=ID]` shortcode.
+- Give each region a rich-text hover tooltip.
+- Colour regions by group (e.g. party, region, status) with shared colours.
+- Override fill / stroke / hover / text colours per region or per group.
+- Hide specific regions from a base map.
+- Link each region to a different URL.
+- Define a custom map by writing a `MapDefinition` plugin.
+- Define a custom click behaviour by writing a `MapAction` plugin.
+- Set site-wide default fill/stroke/hover/text colours for new maps.
+- Preview a map before placing it, from the admin Preview tab.
+- Bulk-edit region labels, tooltips, colours, and actions in a table.
+- Export a map's region or group configuration to JSON and re-import it.
+- Serve a map as a standalone SVG image via its thumbnail route.
+- Reuse one base map for several differently-configured interactive maps.
+- Add a state-counties or district map without touching the parent module.
+- Group regions and override their action or tooltip in one place.
+- Build an org chart, floor plan, or seating diagram as a named-region SVG map.

@@ -40,11 +40,13 @@
     "vbo",
     "bulk operations",
     "workflow",
-    "moderation",
+    "content moderation",
     "transition",
-    "batch"
+    "moderation state",
+    "batch",
+    "revision"
   ],
-  "project_description": "Provides a views bulk operation action that can transition entities that are part of a workflow.\n\n Features \n A single views bulk operation with confirmation page that allows the current user to run any transition that is available.\n\nAllows a revision log message.\n\n Post-Installation \n There is no config page. You will need to edit your view that displays moderated entities and add the 'Global: Views bulk operations' field.\n\n Additional Requirements \n Views bulk operation\n\n Similar projects \n Moderated Content Bulk Publish provides similar functionality. That module uses Drupal actions while this uses views bulk operation. It also requires configuration and only allows for 'Draft', 'Unpublish', and 'Publish' while this module allows for any transition that is available. You cannot choose transitions that are not available to the current user.\n\n Back to top",
+  "project_description": "VBO Workflow Transition adds a single Views Bulk Operations action, 'Transition content to a new workflow state', that moves content-moderation entities through their workflow in bulk. From a View that lists moderated entities (with the 'Views bulk operations' field added), a user selects rows, chooses one of the transitions actually available to them, optionally writes a revision log message, and confirms. The action scans the selection, groups entities by the transitions the current user is allowed to make, shows how many of the selected entities can make each transition (including their current/latest moderation state), and on submit saves a new revision on each eligible entity with the new moderation state. There is no configuration page: you enable the module and add the 'Global: Views bulk operations' field to a View of moderated content. It differs from Moderated Content Bulk Publish (which uses core Actions and only offers Draft/Unpublish/Publish) by offering any transition available to the user via a single VBO action.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
