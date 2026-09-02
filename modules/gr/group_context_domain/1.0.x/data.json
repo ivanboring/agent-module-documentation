@@ -1,14 +1,20 @@
 {
-  "name": "Group Context Domain",
+  "name": "Group Context: Domain",
   "data_name": "group_context_domain",
-  "description": "Provides a Group context derived from the current domain.",
+  "description": "Provides a Group context based on Domain so blocks, Group Sites, etc. can consume it",
   "version": "1.0.x",
-  "package": null,
+  "package": "Group",
   "composer_namespace": "drupal/group_context_domain",
-  "composer_requirements": {},
-  "dependent_modules": [],
+  "composer_requirements": {
+    "drupal/group": "^2 || ^3",
+    "drupal/domain": "^2"
+  },
+  "dependent_modules": [
+    "group",
+    "domain"
+  ],
   "configure": null,
-  "core_version_requirement": "^10 || ^11",
+  "core_version_requirement": "^9.5 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/group_context_domain",
@@ -17,26 +23,30 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
     "Site structure",
-    "Access control"
+    "Developer tools"
   ],
   "subcategories": [
+    "Multi-domain / affiliate sites",
     "Groups & memberships",
-    "Multi-domain / affiliate sites"
+    "Plugin context providers"
   ],
   "keywords": [
     "group",
     "domain",
     "context",
+    "context provider",
+    "cache context",
     "multi-site",
-    "blocks"
+    "blocks",
+    "group sites"
   ],
-  "project_description": "Exposes a \"Group from domain\" context to be used with blocks, the Group Sites module or anything else that supports Drupal core contexts.\n\n Configuration is simple: Grant someone the 'set domain group' permission and visit a domain record form. You will then be able to assign a group (that you are allowed to edit) to said domain record.\n\n Supporting this module \n Drop me a line if you want to help fund (feature) development.",
+  "project_description": "Bridges the Group and Domain modules by tying a single Group entity to a single Domain record, then exposing the active domain's Group as a Drupal core context. Once a group is assigned to a domain on the domain record form (permission 'set domain group'), the 'Group from domain' context provider returns that group on every request served from the domain, regardless of the route, and a matching 'url.site.group' cache context lets any consuming code be cached per-group. This makes group-context-aware blocks (for example the Group operations block) and integrations like the Group Sites module work across a whole tenant domain rather than only on pages that carry a group ID in the URL. A DomainGroupUnique validation constraint enforces the one-group-per-domain, one-domain-per-group relationship.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

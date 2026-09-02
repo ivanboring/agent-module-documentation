@@ -1,7 +1,7 @@
 {
   "name": "Custom cache",
   "data_name": "custom_cache",
-  "description": "Cache backend that caps how long 'permanent' actually lasts.",
+  "description": "Database cache backend that caps how long 'permanent' cache items actually last.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/custom_cache",
@@ -19,7 +19,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Performance",
@@ -27,15 +27,17 @@
   ],
   "subcategories": [
     "Caching backend",
-    "Cache invalidation"
+    "Cache invalidation",
+    "Page cache control"
   ],
   "keywords": [
     "cache",
     "permanent",
     "expiry",
+    "ttl",
     "backend",
-    "invalidation",
-    "ttl"
+    "database",
+    "settings.php"
   ],
   "project_description": "🇺🇦 \n \n This module is maintained by Ukrainian developers.\nPlease consider supporting Ukraine in a fight for their freedom and safety of Europe. \n \n \n \n Custom cache module adds possibility to replace permanent caches to time limited caches. It's usefull for sites with a lot of nodes, drupal generates a lot of page caches without time limit which significantly increase a DB size with time.\n\n Installation \n Install it via composer like any other drupal module and add a configuration to a settings.php\n\n Configuration \n You need to add a configuration to your settings.php:\n\n Setup a cache time limit, as example for one day:\n\n $settings['custom_cache_melt_time'] = 86400; \n\n Add a cache backend service:\n\n $settings['cache']['bins']['render'] = 'cache.backend.custom_cache';\n\n$settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.custom_cache';\n\n$settings['cache']['bins']['page'] = 'cache.backend.custom_cache'; \n\n Exclude cids which we want to save:\n\n $settings['custom_cache_exclude_cids'] = [\n\n '/node/',\n\n '/taxonomy/term/',\n\n '/sites/default/files/',\n\n '/user/'\n\n];",
   "maintenance_status": "Actively maintained",

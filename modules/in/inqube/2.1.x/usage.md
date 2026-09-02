@@ -1,32 +1,29 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Inqube provides an easier way to build Elasticsearch queries from Views.
+Inqube lets a Drupal View run against an Elasticsearch index (via elasticsearch_helper) with the query body produced by a pluggable, site-provided query-builder class.
 
 ---
 
-Elasticsearch's query DSL is powerful and verbose, and reaching it from Drupal usually means either Search API's abstraction — which covers the common cases and hides the rest — or hand-written queries in a custom module, which puts search logic somewhere site builders cannot see.
-
-A Views query builder is the middle: the View expresses the query, so filters, sorts, arguments and the display all stay in configuration, and the Elasticsearch specifics are generated rather than typed.
-
-**Two things to know before choosing it over Search API.** Search API is the ecosystem — facets, processors, other backends, and a large body of modules that integrate with it — so a bespoke query builder trades that ecosystem for directness. That is a reasonable trade when the requirement is a specific Elasticsearch capability Search API does not expose, and a poor one when the requirement is ordinary search.
-
-And **an Elasticsearch cluster reached from Views is a network dependency in a page render.** Decide what a view does when the cluster is slow or unreachable — an unhandled failure on a search page is worse than an empty result set — and check whether queries are cached, because Views caching and search freshness pull in opposite directions.
+Inqube ("Index query builder for Elasticsearch") is a developer/base module that wires Views to the elasticsearch_helper Elasticsearch client. It registers a Views query plugin (`elasticsearch_query`, "Elasticsearch Query") that delegates building the actual query DSL to an `ElasticsearchQueryBuilder` plugin you write for your index. It also exposes a synthetic `elasticsearch_result` Views base table with field handlers that read values out of a hit's `_source`, render a matched Drupal entity in a view mode, convert source values into links, and an entity relationship that hydrates result rows into real entities. There is no admin UI, no routes, no permissions and no configuration schema — the module is meant to be extended in custom module code. To use it you add a builder plugin, create a View on the "Elasticsearch result" base table, pick your builder in the query settings, and add Inqube field/relationship handlers to shape output.
 
 ---
 
-- Build an Elasticsearch query from a View.
-- Keep search logic in configuration.
-- Expose filters and sorts to site builders.
-- Reach an Elasticsearch capability directly.
-- Avoid hand-written queries in a module.
-- Compare with Search API's abstraction.
-- Weigh losing the Search API ecosystem.
-- Decide behaviour when the cluster is down.
-- Avoid an unhandled failure on a search page.
-- Check query caching against freshness.
-- Use Views arguments in a search query.
-- Display Elasticsearch results in a View.
-- Audit which views query Elasticsearch.
-- Plan a search architecture.
-- Document this module's behaviour for the team.
-- Review it during a site audit.
-- Verify its assumptions after an upgrade.
+- Build a search results page backed by Elasticsearch instead of the SQL database, driven by a normal Drupal View.
+- Reuse Views' pager, exposed filters, arguments and sort UI on top of an Elasticsearch index.
+- Write a custom `ElasticsearchQueryBuilder` plugin that turns a view's filters/arguments/sorts into an Elasticsearch DSL query.
+- Start from `BaseRootQueryBuilder` to build per-"root" sub-queries combined with a `bool.should` operator.
+- Start from `BaseIndexRootQueryBuilder` when each root maps to a language-suffixed index (`{root}_index_{langcode}`).
+- Use the trivial `default` builder as a placeholder while scaffolding a view (returns an empty query body).
+- Map Views exposed filters to Elasticsearch `must`, `should`, `range`, or `query_string` clauses via `$shouldFilters`, `$mustFilters`, `$rangeFilters`, `$keywordFilters`.
+- Implement a keyword/full-text search box that expands each term into `keyword OR keyword* OR *keyword*` across configured `$keywordFields`.
+- Provide faceted-style range filtering (e.g. price/age buckets) by defining `$rangeFilters` with a ranges provider class.
+- Sort results by URL query parameters (`?sort_by=...&sort_order=asc|desc`) mapped through the builder's `$sortFields` allowlist.
+- Fall back to relevance (`_score`) sorting automatically when a keyword filter is active.
+- Render each Elasticsearch hit's stored fields on the page using the "Source field" handler (`elasticsearch_source`) with dot-notation for nested `_source` keys.
+- Use the "Inqube source field" handler to load a numeric source value as an entity label, optionally linked, or to convert a value into a link.
+- Use the "Inqube source link" handler to render `_source` link fields (`{uri, title}`, single or multi-valued) as trimmed links.
+- Render a full Drupal entity teaser/card from a search hit with the "Rendered entity" handler, choosing the view mode per entity-type:bundle in YAML.
+- Hydrate search hits into real Drupal entities via the entity relationship by pointing it at the `_source` keys that hold the entity type and entity id.
+- Show matched nodes/media/users with their real display and correct entity view-access checks, rather than raw index data.
+- Combine multiple indices/bundles in one result set by returning several roots from a builder and letting Inqube `should`-combine them.
+- Debug the generated Elasticsearch query in the browser console on AJAX views (for users with "administer views" when Views' "Show the SQL query" setting is on).
+- Add or alter Inqube Views fields/filters for the `elasticsearch_result` table from your own module via `hook_views_data_alter()`.
+- Expose aggregations by reading `$view->data` after execution (the raw Elasticsearch response is stored on the view).

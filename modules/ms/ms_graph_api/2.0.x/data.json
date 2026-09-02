@@ -1,15 +1,19 @@
 {
   "name": "Microsoft Graph API",
   "data_name": "ms_graph_api",
-  "description": "Integration layer for the Microsoft Graph API.",
+  "description": "Provides integration between Drupal and the Microsoft Graph API to ease implementation of business logic.",
   "version": "2.0.x",
   "package": "MS Graph API",
   "composer_namespace": "drupal/ms_graph_api",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/key": "^1.14",
+    "microsoft/microsoft-graph": "^1.36.0",
+    "guzzlehttp/uri-template": "^1.0"
+  },
   "dependent_modules": [
-    "key:key"
+    "key"
   ],
-  "configure": null,
+  "configure": "ms_graph_api.settings",
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -28,17 +32,20 @@
   ],
   "subcategories": [
     "Cloud services (Azure)",
-    "Google APIs / OAuth"
+    "Secrets & key management"
   ],
   "keywords": [
     "microsoft",
     "graph api",
+    "microsoft 365",
     "azure",
+    "entra id",
     "office 365",
-    "integration",
-    "key"
+    "oauth client credentials",
+    "key",
+    "api client"
   ],
-  "project_description": "An unofficial, lightweight wrapper around the\n\n Microsoft Graph SDK for PHP ,\n\npulled-in via Composer, for Drupal 8.x.\n\n Back to top \n\n Use Case \n This module is intended to provide an API for other modules to easily obtain\n\neither a site-wide \"default\" instance of the MS Graph API client using service\n\ninjection, or to be able to instantiate an API client using any number of\n\ncustom keys.\n\n This module does not provide site builders or end users with any additional\n\nfunctionality. Install it only if you are developing a custom module or are\n\nusing a module that indicates it depends on this module.\n\n Back to top \n\n Usage \n Installation \n It is recommended to install this via Composer so that the required version of\n\nthe Graph API PHP SDK can be pulled in.\n\n \ncomposer require 'drupal/ms_graph_api'\n Registration and Configuration \n See the README for instructions on how to register your Drupal site with Azure and configure keys.\n\n Obtaining Graph Instances \n Afterwards, you can obtain the default, authenticated API graph by getting the\n\n ms_graph_api.graph service and then calling any of the methods on the object\n\nyou get back that are\n\n documented for the PHP library .\n\nFor example, in procedural code and hooks:\n\n <?php\n\nuse Microsoft\\Graph\\Model;\n\n $graph = \\Drupal::service('ms_graph_api.graph');\n\n $user =\n\n $graph\n\n ->createRequest(\"GET\", \"/me\")\n\n ->setReturnType(Model\\User::class)\n\n ->execute();\n\n echo \"Hello, I am {$user->getGivenName()}.\";\n\n?>\n\n Getting a MS Graph API Graph for a Custom Key \n If your site needs to work with multiple Azure subscriptions, you do not need\n\nto configure the default key. Instead, define custom keys (of type\n\n\"MS Graph API Key\") for each of the different deployments, obtain the Graph\n\nAPI graph factory service, and construct a different API client for each custom\n\nkey.\n\n For example:\n\n <?php\n\nuse Microsoft\\Graph\\Model;\n\n $graph_factory = \\Drupal::service('ms_graph_api.graph.factory');\n\n$graph = $client_factory->buildGraphFromKeyId('my_graph_api_key');\n\n $user =\n\n $graph\n\n ->createRequest(\"GET\", \"/me\")\n\n ->setReturnType(Model\\User::class)\n\n ->execute();\n\n echo \"Hello, I am {$user->getGivenName()}.\";\n\n?>\n\n Back to top",
+  "project_description": "A lightweight developer-facing wrapper around the official Microsoft Graph SDK for PHP (microsoft/microsoft-graph), pulled in via Composer. It provides no site-builder or end-user features; it exists so other modules can obtain an authenticated Microsoft\\Graph\\Graph client without re-implementing credential storage and OAuth token exchange. Credentials (tenant domain, tenant ID, client ID, client secret) are stored in a dedicated 'MS Graph API Key' Key-entity type so the client secret can live in an environment variable and stay out of config exports. A factory service exchanges those credentials for an access token using the OAuth 2.0 client-credentials grant against login.microsoftonline.com, then returns a ready-to-use Graph client. A site-wide default key is selectable at /admin/config/services/ms-graph-api, and consuming code may also build a client from any custom key by ID.",
   "maintenance_status": "Seeking new maintainer",
   "development_status": "No further development",
   "security_advisory_coverage": "covered",

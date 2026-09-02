@@ -1,16 +1,40 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-# EBT: Hero (ebt_hero) — agent index
+# Extra Block Types (EBT): Hero (ebt_hero) — agent index
 
-Hero section **block type** for the **Extra Block Types** family.
-Version **2.0.0**. Core `^10.1 || ^11 || ^12`.
-Depends on `link`, `media`, `ebt_basic_button`, `paragraphs`.
+A single custom **`block_content` type `ebt_hero`** for building hero/banner sections, meant for
+**Layout Builder**. Package *Extra Block Types*. Core `^10.1 || ^11 || ^12`. License
+GPL-2.0-or-later. Version 2.0.0.
 
-**Install note, verified:** enabling it on a clean site failed with *"unmet dependencies:
-field.field.block_content.ebt_hero.field_ebt_hero_column_image (media.type.image)"* — the field
-config references a media type the module does not create. **Create the `image` media type first.**
-Same pattern as several EPT components in wave 83; the error names a config object rather than a
-missing feature, which is what makes it confusing.
+Depends on: **ebt_core** (`^2.0`, shared design settings + `ebt_settings` field type), **ebt_basic_button**
+(`^2.0`, the base settings widget + button-CSS service), **paragraphs** (`^1.0`), core **link** and
+**media**. Requires a Media **`image`** type to exist before install — otherwise
+`ebt_hero_requirements()` blocks it with an error naming "Media type Image".
 
-Hero points: it is almost always the page's **largest contentful paint** (responsive config is the
-highest-value performance lever; preload it), and **text over a photograph is a structural contrast
-problem** — overlay, scrim or constrained text area, because the image is what editors change.
+No routes, no permissions, no Drush, no `config/schema`, no settings form of its own. All output is
+config-installed fields + a preprocess hook + two Twig templates + a per-block CSS service.
+
+## What it provides (from source)
+
+- **Block type `ebt_hero`** with fields (config/install): `field_ebt_hero_title` (text_long),
+  `field_ebt_hero_title_prefix` (text_long), `body` (text_with_summary),
+  `field_ebt_hero_column_image` (entity_reference → media `image`, cardinality 1),
+  `field_ebt_hero_link` + `field_ebt_hero_second_link` (link), and `field_ebt_settings`
+  (`ebt_settings` field type from ebt_core).
+- **Field widget** `EbtSettingsHeroWidget` (id **`ebt_settings_hero`**,
+  `src/Plugin/Field/FieldWidget/EbtSettingsHeroWidget.php`) — extends
+  `ebt_basic_button`'s `EbtSettingsBasicButtonWidget` and adds hero controls (styles, overlay,
+  image position/order, mobile breakpoint, second-link options).
+- **Service** `ebt_hero.generate_hero_css` → `GenerateHeroCSS` (`src/Services/GenerateHeroCSS.php`)
+  — turns block settings into an inline `<style>` (responsive column stacking + overlay).
+- **Hooks** `EbtHeroHooks` (`src/Hook/EbtHeroHooks.php`, attribute + `#[LegacyHook]` shims in
+  `ebt_hero.module`): `hook_help` and `hook_preprocess_block` (injects `button_styles` +
+  `hero_styles`).
+- **Templates** `block--block-content--ebt-hero.html.twig`, `block--inline-block--ebt-hero.html.twig`.
+- **Libraries** `ebt_hero/common`, `ebt_hero/one_column`, `ebt_hero/two_columns` (CSS only).
+
+## Solution docs
+
+- Block type, fields, form/view displays, install requirement, EBT Core relationship →
+  [config/block-type.md](config/block-type.md)
+- The `ebt_settings_hero` widget, the `GenerateHeroCSS` service, the preprocess hook and the
+  templates (rendering pipeline) → [plugins/settings-widget-and-rendering.md](plugins/settings-widget-and-rendering.md)

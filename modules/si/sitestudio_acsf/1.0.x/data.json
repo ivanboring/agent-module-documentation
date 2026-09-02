@@ -1,11 +1,13 @@
 {
   "name": "Site Studio ACSF",
   "data_name": "sitestudio_acsf",
-  "description": "Site Studio configuration for Acquia Site Factory.",
+  "description": "Switches Site Studio (Acquia Cohesion) template and stylesheet storage from the filesystem to the database, for distributed-filesystem/multisite platforms such as Acquia Site Factory.",
   "version": "1.0.x",
   "package": "Site Studio",
   "composer_namespace": "drupal/sitestudio_acsf",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "acquia/cohesion": ">=6.3.5"
+  },
   "dependent_modules": [
     "cohesion_templates"
   ],
@@ -21,25 +23,30 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools",
-    "Site structure"
+    "Site structure",
+    "Developer tools"
   ],
   "subcategories": [
-    "Deployment / release management",
-    "Multi-domain / affiliate sites"
+    "Status report management",
+    "Module execution order",
+    "Multi-domain / affiliate sites",
+    "Filesystem abstraction"
   ],
   "keywords": [
     "site studio",
+    "cohesion",
     "acsf",
     "acquia",
     "site factory",
     "multisite",
-    "deployment"
+    "keyvalue storage",
+    "template storage"
   ],
-  "project_description": "A utility module providing a per-site route for leveraging the database template storage feature released in v6.3.5 of Acquia Site Studio .\n\n This is useful (but not limited to) hosting platforms that use a distributed filesystem such as Acquia Site Factory where rapid file read/write operations can lead to unexpected behaviours with Site Studio.\n\n KeyValue Storage \n This module switches Site Studio template storage to the database as opposed to the file system (current default behaviour) to improve read/write consistency.\n\n Once enabled you will need to run a full Site Studio rebuild to migrate all templates to the database:\n\n Drush \n $ drush cohesion:rebuild \n\n UI \n /admin/cohesion/developer/rebuild \n\n Note: Once enabled, Database utilisation will increase especially during rebuild and sync operations, be aware that using this module\n\nwill also increase the size of your database.",
+  "project_description": "A utility module that makes Acquia Site Studio (Cohesion) store its generated Twig templates and stylesheet JSON in the database (KeyValue storage) instead of on the filesystem, which is the current default. This targets hosting platforms with a distributed or per-site filesystem — notably Acquia Site Factory — where rapid file read/write of Site Studio's generated assets can produce inconsistent behaviour. The module aliases the cohesion.template_storage service to the KeyValue implementation and forces the cohesion.settings stylesheet_json_storage_keyvalue flag on via a config override. After enabling it a full Site Studio rebuild (drush cohesion:rebuild, or /admin/cohesion/developer/rebuild) is required to migrate existing templates into the database. Database usage grows in exchange for read/write consistency.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "not-covered",
