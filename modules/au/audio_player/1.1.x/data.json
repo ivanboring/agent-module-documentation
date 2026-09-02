@@ -1,7 +1,7 @@
 {
   "name": "Audio Player",
   "data_name": "audio_player",
-  "description": "Field formatter for audio files with skins, playlists, colour palettes and equalizers.",
+  "description": "Provides field formatters and a Views style for audio files with customizable skins, playlists, color palettes, and equalizers.",
   "version": "1.1.x",
   "package": "Audio Player",
   "composer_namespace": "drupal/audio_player",
@@ -23,7 +23,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Media",
@@ -31,17 +31,20 @@
   ],
   "subcategories": [
     "Audio embedding",
-    "Field formatters"
+    "Field formatters",
+    "Views styles"
   ],
   "keywords": [
     "audio",
     "player",
     "playlist",
     "skins",
+    "equalizer",
     "field formatter",
+    "views style",
     "media"
   ],
-  "project_description": "The Audio Player module for Drupal 10/11 provides a flexible and customizable solution for displaying audio players within your content. It supports both single audio files and playlists, providing different player modes depending on the number of files. With over 15+ skins, 10+ color palettes, and 15+ equalizer effects, the module allows for extensive customization, making it ideal for users who want a tailored audio experience on their site. This module integrates with Drupal’s File and Media fields, allowing site administrators to easily configure audio players through the content type’s display settings. You can override skins and customize styles using Twig templates and CSS within your theme for full creative control.\n\n Requirements \n\n This module requires Drupal 10/11 and works with the native File and Media fields in Drupal.\n\n \n No additional contributed modules or external libraries are required outside of Drupal core. \n \n \n Installation \n Install as you would normally install a contributed Drupal module. For more information, see Installing Drupal Modules .\n\n If using Composer:\n\n composer require drupal/audio_player\n Enable the module using Drush:\n\n drush en audio_player\n \n Configuration \n \n Go to: Structure → Content types → {content_type} → Manage display \n Allow audio file extensions such as mp3, wav, ogg, etc., from manage fields if not already configured and choose the Audio Player format for a File field type and or choose the Media Audio Player format for a Media field type using an audio media bundle. \n If the field cardinality is set to 1, the audio file will be displayed as a single track. \n If the field cardinality is greater than 1, choose to display the files either as a looped single track or as an audio playlist. \n Configure the appearance of the audio player by selecting from over 15 skins, 10+ color palettes, and 15+ equalizers. \n Optionally, override the skins' Twig templates (e.g., copy templates/audio-playlist/skin-one.html.twig to your theme). \n Save your display configuration. \n \n \n Customization \n To fully customize the appearance and behavior of the audio player:\n\n \n Override the default Twig templates for specific skins (e.g., templates/audio-playlist/skin-one.html.twig ) by copying them into your theme’s folder structure. \n Customize the player’s appearance with custom CSS (e.g., overriding colors, fonts, and layout styles). \n Use the audio-player CSS class for targeting and styling the audio player and player controls. \n You can define custom color palettes for your theme or module settings to personalize the audio player’s visual design. \n \n For more advanced customizations, you can modify the audio player’s HTML structure and CSS within the Twig templates.\n\n \n Troubleshooting \n \n Ensure that your File or Media - Audio fields are properly configured and that the correct file type (audio) is selected. \n Check if the correct player mode (single player or playlist) is selected based on the number of files in the field. \n Verify that the selected skin, color palette, and equalizer effects are applied properly. \n Ensure that any custom CSS styles are being loaded and applied to the audio player. \n \n You can add a field of type File or Media with the Audio bundle anywhere on the site — such as in content types, blocks, or paragraphs, etc — and upload single or multiple audio files. This module then helps display those audio files using different skins, color palettes, etc and is highly customizable. It’s also developer-friendly, making it easy to extend and integrate into your projects.\n\n \n Steps to Implement the Video Playlist on a View: \n\n \n \n Create a content type (e.g., Audio Content ) if not already done and add an Audio File field (or Media Audio field), subtitle, thumbnail image field field (or Media Audio field). Afterward, add contents with audio files.\n \n \n Go to Structure → Views and add a new view (e.g., Audio Playlist ). Set Show to Content and filter by Content Type . Add fields …",
+  "project_description": "Audio Player renders audio held in core File fields or Media (audio bundle) references as a themeable, self-contained HTML5 player built on jQuery and vanilla JS bundled with the module (no CDN, no external library). It supplies two field formatters plus a Views style plugin. A single file plays as one track; multiple files can be shown as looped singles or as a playlist. Presentation is chosen per display: 18 single-audio skins, 2-3 playlist skins, ~20 color palettes and ~27 canvas equalizer visualisations, all overridable via Twig templates and CSS in a theme. The player resolves each track from its managed-file URI and checks file view access before emitting a URL, so it inherits Drupal's private-file protection. It ships no routes, permissions, services, config entities or config schema.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

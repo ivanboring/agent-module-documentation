@@ -1,35 +1,49 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Htaccess (htaccess) — agent index
 
-One admin form that concatenates a default `.htaccess` with extra directives and writes
-`DRUPAL_ROOT/.htaccess`; optional rewrite on cron.
-Configure at `/admin/config/system/htaccess`. Version **3.0.0**.
-Core requirement `^10 || ^11`. No dependencies.
+An administrative interface for the site's root `.htaccess`. One config form loads Drupal's
+default (scaffold) `.htaccess` content, lets an admin append extra Apache directives, and on save
+concatenates the two and writes the result to `DRUPAL_ROOT/.htaccess`. Optionally the same
+combined content is re-written on every cron run.
 
-Permission: **`administer htaccess`**, `restrict access: true`, gates the only route.
+- Package `Administration`. Core `^10 || ^11`. No module dependencies. License GPL-2.0-or-later.
+  Version **3.0.0**.
+- Ships one submodule, **`robotstxt_utils`** (deletes the physical `robots.txt`), documented in
+  its own tree — see below.
 
-**Treat this permission as root-equivalent. Both halves verified on a clean install with an
-account holding only `administer htaccess`:**
+## What it provides
 
-1. **Arbitrary file read.** `default_htaccess_path` is unconstrained free text; `validateForm()`
-   checks only `file_exists() && is_readable()`, and the contents are rendered into a
-   `readonly` textarea. That account read `sites/default/settings.php` (37KB, incl. `hash_salt`)
-   and `/etc/passwd`. Fix: `realpath()` + require containment under `DRUPAL_ROOT`.
-2. **Unvalidated write.** `submitForm()` writes `$default_content . "\n\n" . $extra` to
-   `DRUPAL_ROOT/.htaccess` with `EXISTS_REPLACE`, no backup, no syntax check. After the test the
-   docroot `.htaccess` was the text of `settings.php`. That file carries core's `Options -Indexes`
-   and the `FilesMatch` deny rules; replacing it removes them. Unparsable content = HTTP 500 for
-   the whole site. `hook_cron()` re-writes it when `reemplazar_automaticamente` is on, so on-disk
-   repair is undone at the next cron.
+- **Route** `htaccess.admin_settings_form` → `/admin/config/system/htaccess`
+  (`_form: HtaccessAdminSettingsForm`), permission **`administer htaccess`**
+  (`restrict access: true`). Menu link under *Configuration → System*; one local task "Settings".
+- **Form** `Drupal\htaccess\Form\HtaccessAdminSettingsForm` (extends `ConfigFormBase`) — the whole
+  UI and the file write.
+- **Config** `htaccess.settings` (`config/install`, `config/schema`).
+- **Hooks** `htaccess_help()`, `htaccess_cron()` (in `.module`); `htaccess_install()`,
+  `htaccess_requirements()`, `htaccess_update_10001()` (in `.install`).
+- **Controller** `Drupal\htaccess\Controller\HtaccessController::content()` — would emit the
+  `.htaccess` body as `text/plain` and invoke `hook_htaccess()`, but **no route references it**
+  (unreachable in this release).
 
-On Apache the extra-directives textarea is inherently code-execution-capable (`AddHandler`,
-`auto_prepend_file`). That is the module's purpose, not a defect — but it is why the permission
-cannot be delegated.
+## Solution docs
 
-Config: `htaccess.settings` — `default_htaccess_path` (default
-`core/assets/scaffold/files/htaccess`), `configuraciones_extra`, `reemplazar_automaticamente`.
-Note `default_htaccess_path` is **missing from the config schema**, and `content` is declared but
-never written by the form.
+- **The settings form, config keys, cron write, install/requirements** →
+  [config/settings.md](config/settings.md)
 
-`HtaccessController::content()` exists but **has no route** — dead code. `hook_help()` still links
-to `base://htaccess` as though it were live.
+## Submodule (own nested tree)
+
+- **Robots.txt Utils** (`robotstxt_utils`) →
+  `modules/ht/htaccess/modules/robotstxt_utils/3.0.x/` — adds a "Delete physical robots.txt"
+  checkbox to the Robotstxt module's settings form and removes `DRUPAL_ROOT/robots.txt` on save
+  and cron. Requires the contrib `robotstxt` module.
+
+## Notes from source
+
+- Default source path is `core/assets/scaffold/files/htaccess`; the read-only preview textarea
+  shows whatever that path contains.
+- `htaccess_requirements()` reports an error on the status page when clean URLs are off or when
+  `DRUPAL_ROOT` is not writable.
+- Config key `default_htaccess_path` is written by the form but is **absent from
+  `htaccess.schema.yml`** (schema declares only `content`, `configuraciones_extra`,
+  `reemplazar_automaticamente`). Key `content` is declared and set by `hook_install()` but is
+  never written by the form.

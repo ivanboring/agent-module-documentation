@@ -5,7 +5,10 @@
   "version": "3.6.x",
   "package": "Page Building",
   "composer_namespace": "drupal/lb_plus",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/navigation_plus": "^2.3.6",
+    "drupal/tempstore_plus": "^1.0"
+  },
   "dependent_modules": [
     "drupal:layout_builder",
     "tempstore_plus:tempstore_plus",

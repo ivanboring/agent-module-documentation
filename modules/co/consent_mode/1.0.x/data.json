@@ -1,7 +1,7 @@
 {
   "name": "Consent Mode",
   "data_name": "consent_mode",
-  "description": "Emits a configurable Google Consent Mode v2 default script before other tags load.",
+  "description": "Emits a configurable Google Consent Mode v2 default script ahead of other Google tags.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/consent_mode",
@@ -14,12 +14,14 @@
   "project_url": "https://www.drupal.org/project/consent_mode",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "core/drupalSettings"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Integrations",

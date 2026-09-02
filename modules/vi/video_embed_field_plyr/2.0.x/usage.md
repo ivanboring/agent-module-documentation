@@ -1,31 +1,30 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Video Embed Field Plyr adds field formatters that render video fields — both Video Embed Field and core oEmbed — through the Plyr.js player instead of the provider's default embed.
+Renders video-embed and core oEmbed fields through the bundled Plyr.js player instead of the provider's own default embed.
 
 ---
 
-The default YouTube or Vimeo embed brings the provider's own chrome: their controls, their branding, their suggested-video overlays, and a player you cannot style. Plyr replaces that with a lightweight custom player that wraps the same underlying provider, so the video still streams from YouTube or Vimeo but the controls are yours — themeable with CSS, keyboard accessible, and consistent whichever provider a given video came from.
-
-That consistency is the usual reason to adopt it. A site with some YouTube videos, some Vimeo and some self-hosted MP4s otherwise shows three different player interfaces; Plyr gives one. Accessibility is the other: Plyr's controls are keyboard-navigable and screen-reader labelled to a standard the embedded players do not reliably meet.
-
-Two formatters ship, `PlyrEmbed` for Video Embed Field and `PlyrOembed` for core's oEmbed media, with shared behaviour in `PlyrSharedTrait` — so a site can move from contrib video fields to core media without changing player.
-
-Note the release is **2.0.0-rc2**, a release candidate, and that using a provider-backed player still loads the provider's script and sets their cookies. If the site runs a consent management platform, the Plyr embed needs gating the same as a raw embed would — a custom player wrapper does not change who the visitor's browser talks to.
+The module ships two field formatters. `PlyrEmbed` (formatter id `video_embed_field_plyr`) targets the contrib **Video Embed Field** field type: it asks that module's provider manager for the video id and embed data, then hands them to Plyr. `PlyrOembed` (formatter id `video_oembed_field_plyr`) targets **link / string / string_long** fields, but only applies when the field lives on a Media entity whose source is a core oEmbed source; it uses core's own oEmbed URL resolver and resource fetcher and only accepts video-type resources. Both share `PlyrSharedTrait`, which builds the per-instance Plyr configuration and attaches the libraries, so a site can move from contrib video fields to core Media without changing player. The default provider chrome (YouTube's or Vimeo's controls, branding and suggested-video overlays) is replaced by one lightweight custom player that is themeable with CSS and keyboard/screen-reader accessible. Player behaviour is configured per field display: autoplay, loop, reset-on-end, auto-hide controls, an individually toggleable set of control buttons (play, progress, mute, volume, settings, fullscreen, and more), a background-video mode that disables controls and force-loops muted, a YouTube no-cookie option, an optional RangeTouch enhancement for mobile sliders, and an IE11 polyfilled build. Rendering goes through the `video-embed-plyr.html.twig` / `video-oembed-plyr.html.twig` templates (with provider- and background-specific template suggestions), so themes can fully override the markup. Plyr 3.7.8 and RangeTouch 2.0.1 are bundled inside the module and served locally. Only YouTube and Vimeo are supported in practice; self-hosted MP4 is not implemented. The current release is 2.0.0-rc2 (a release candidate).
 
 ---
 
-- Replace YouTube's player chrome with a custom one.
-- Give Vimeo and YouTube videos one consistent player.
-- Style video controls with the site's CSS.
-- Improve keyboard accessibility of embedded video.
-- Render core oEmbed media through Plyr.
-- Render Video Embed Field values through Plyr.
-- Remove provider suggested-video overlays.
-- Present self-hosted and provider video identically.
-- Theme a video player to match a design system.
-- Keep the same player when migrating to core media.
-- Provide screen-reader-labelled video controls.
-- Configure the player per field display.
-- Reduce visual branding from video providers.
-- Gate the Plyr embed behind cookie consent.
-- Evaluate a release candidate before production use.
-- Audit which video fields use which player.
+- Replace YouTube's player chrome with one custom, themeable player.
+- Give Vimeo and YouTube videos a single consistent player interface.
+- Style video controls with the site's own CSS.
+- Improve keyboard and screen-reader accessibility of embedded video.
+- Render core Media oEmbed video through Plyr on a link/string field display.
+- Render Video Embed Field values through Plyr on a manage-display screen.
+- Remove the provider's suggested-video overlays and branding.
+- Choose exactly which control buttons appear (play, progress, mute, volume, settings, fullscreen, PiP, etc.) per display.
+- Autoplay a video on load for a hero/banner region.
+- Loop a short video and reset it to the start when it ends.
+- Enable background-video mode: controls off, muted, auto-looping, click-to-play disabled.
+- Use YouTube's no-cookie (`youtube-nocookie`) player domain.
+- Add the RangeTouch library to improve range sliders on touch devices.
+- Ship an IE11-compatible polyfilled Plyr build when legacy browser support is required.
+- Keep the same player when migrating a site from Video Embed Field to core Media.
+- Override the player markup per provider via Twig template suggestions (`video_embed_plyr__youtube`, `video_oembed_plyr__vimeo`, background variants).
+- Serve the Plyr assets locally rather than from a CDN.
+- Configure different player options for different view modes of the same field.
+- Present a set of mixed-provider videos with identical controls across a listing.
+- Merge extra Plyr JSON options (e.g. a local blank video, disabling the remote sprite) in a theme template override.
+- Audit which video field displays use the Plyr formatters versus the default embed.
+- Evaluate the 2.0.0-rc2 release candidate before committing it to production.

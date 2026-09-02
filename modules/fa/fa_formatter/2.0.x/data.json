@@ -1,7 +1,7 @@
 {
   "name": "Font Awesome Formatter for Int List",
   "data_name": "fa_formatter",
-  "description": "Field formatter that renders an integer field as a repeated Font Awesome icon, e.g. a star rating.",
+  "description": "Field formatter for list_integer fields that renders the stored value as a fixed row of icons (value 'on' icons plus the remaining 'off' icons, total = number of allowed values), e.g. a 5-star rating. Ships no icon library; you supply the icon markup.",
   "version": "2.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/fa_formatter",
@@ -33,10 +33,10 @@
     "icon",
     "rating",
     "stars",
-    "integer field",
-    "formatter"
+    "list_integer",
+    "field formatter"
   ],
-  "project_description": "This is a field formatter for a selectlist with int values. Its use is to make some kind of ratingdisplay avaliable but without any processing! It just outputs an int select field as icons. You can use Fontawesome or any other iconservice using the same schema. The rating image can be ANY fontawesome icon. Apples, stars, circles you name it.\n\n You can also use other icon libs. I for example use a custom one i generated with iconmoon because i dont want 4MB FA files to be loaded in the background. \n\n How to use? \n\n \n Create a field list(int) \n Add selectable values like 1 2 3 4 5 6 \n Chose the field formatter in the field settings to output and add your icon code \n Chose an icon from https://fontawesome.com/icons?d=gallery \n For example: \n Your selection is outputted with the icon! \n \n I used it to rate books for my project about - EXAMPLE Audiobooks(Hörbücher) and output these ratings with stars.\n\n Scroll down and you see some stars and dots: Example . In the backend that is just an in select field and i used views with my formatter to display it as icons. Do not be confused about interactive the rating at the top of the page. That is something different and can be done with the Rate or Fivestars Module\n\n Why \n\n I have already worked on Starrating in the D7 Version, but the D8 version has a dedicated own fieldttype. I see no use in creating a custom fielddtype so i used a core type that already exists.",
+  "project_description": "This is a field formatter for a select list with int values (core list_integer field). Its use is to make some kind of rating display available but without any processing! It just outputs an int select field as icons. You can use Font Awesome or any other icon service using the same schema (an <i> tag). The rating image can be ANY Font Awesome icon: apples, stars, circles, you name it. You can also use other icon libraries; the author uses a custom IcoMoon set to avoid loading multi-MB Font Awesome files. How to use: create a field list(int), add selectable values like 1 2 3 4 5 6, choose the 'FA Int Formatter' formatter in Manage display, and paste your icon HTML. The formatter renders a fixed row of icons per item: the stored value renders as 'on' icons and the remaining count (max allowed values minus value) as 'off' icons, styled by the module's CSS (yellow star-on, dark star-off). Originally built to display book ratings as stars in a Views listing; the field itself stays a plain integer select in the backend. Note the module ships only the display markup and its own small CSS, not the Font Awesome library itself.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

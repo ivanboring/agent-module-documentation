@@ -1,7 +1,7 @@
 {
   "name": "Image Link Attributes",
   "data_name": "image_link_attributes",
-  "description": "Adds class, target and rel attributes to the link an image field renders.",
+  "description": "Extends the core image field link to add custom class, target and rel attributes to the generated anchor.",
   "version": "8.x-1.x",
   "package": "Media",
   "composer_namespace": "drupal/image_link_attributes",
@@ -39,9 +39,10 @@
     "target",
     "rel",
     "class",
-    "lightbox"
+    "lightbox",
+    "responsive image"
   ],
-  "project_description": "About \n\nThe Image Link Attributes module extends Drupal's default image field so that when an image is linked, additional attributes can be applied to the link for \"Target\", \"Class\" and Relationship (ie: rel=\"lightbox-series\").\n\n * Works with image fields and responsive image fields.\n\n Usage \n\nInstall the Image Link Attributes module, then navigate to the display settings page of the content type with the image field that you would like to adjust. When you set the image to link to content or file, the additional settings will become available.\n\n Link to an Image Style variant \n\n From version 8.x-1.8 and newer, you can choose an Image Style variant instead of being confined to linking to the original file. To choose an Image Style variant, click the \"Link to alternate Image Style\" checkbox on the Image Field — Manage display settings form; then from the drop-down list of image styles choose the style you would like the field to link to.\n\n Known Issues \n\nNone.",
+  "project_description": "About\n\nThe Image Link Attributes module extends Drupal's default image field so that when an image field is set to link to its file or its content, additional attributes can be applied to the generated anchor: Target (target=xxx), Class (class=xxx) and Relationship (rel=xxx, e.g. rel=\"lightbox-series\"). It works with both image fields (formatter 'image') and responsive image fields (formatter 'responsive_image').\n\nUsage\n\nInstall the module, then navigate to the Manage display page of the bundle holding the image field. When the image is set to link to content or file, additional third-party settings become available under the field's formatter settings so you can enable custom attributes and set their values.\n\nLink to an Image Style variant\n\nFrom version 8.x-1.8 and newer, the linked image can point at an Image Style variant instead of the original file. Enable the 'Link to alternate Image Style' checkbox on the Manage display settings form and pick the image style the field should link to.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

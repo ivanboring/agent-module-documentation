@@ -1,31 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Image Link Attributes extends the image field's link output so the generated anchor can carry `class`, `target` and `rel` attributes.
+Image Link Attributes extends the core image field's link output so the generated anchor can carry `class`, `target` and `rel` attributes, plus an optional link to an image-style variant.
 
 ---
 
-Core's image formatter can link an image to its file or to its content, and produces a bare anchor. That is enough until something needs to hook into it: a lightbox library that binds to a class, a link that must open in a new tab, or an outbound image link that needs `rel="noopener"` — which is not cosmetic, since a `target="_blank"` link without it gives the opened page a handle on yours.
-
-Without this the options are a Twig override or a preprocess function per view mode, both of which put a single attribute in a place nobody will find later. Here it is configuration on the field display, plus a site-level settings form at `image_link_attributes.config`.
-
-Typical use is a gallery: give every linked image a lightbox class and let the JavaScript pick them up, with no template work. It is also the quickest way to make image links consistent across a site, since a lightbox that misses some images because one view mode was templated differently is a familiar bug.
-
-The module ships no PHP classes — it is configuration and hooks — so its surface is small and its upgrade risk correspondingly low.
+Core's `image` and `responsive_image` field formatters can link an image to its file or to its content, but they emit a bare anchor with no way to add attributes. This module hooks into those two formatters, adding third-party settings on the Manage display form so an editor can turn on custom attributes and set values for `target` (a select of `_blank`/`_self`/`_parent`/`_top`), `class` and `rel`. It also can point the link at an alternate image style instead of the original file. Which attributes are offered is controlled by the site-level config object `image_link_attributes.config`, and the values are rendered through Drupal's `link()` Twig function so they are escaped like any other link attribute. The module ships no PHP classes or plugins — only hooks, two Twig templates and config — so its surface and upgrade risk are small.
 
 ---
 
-- Add a lightbox class to linked images.
-- Open an image link in a new tab.
-- Add `rel="noopener"` to outbound image links.
-- Bind a gallery script to linked images by class.
-- Make image link markup consistent across view modes.
-- Add a tracking class to image links.
-- Replace a Twig override that added one attribute.
-- Configure attributes per field display.
-- Set site-wide defaults from a settings form.
-- Give image links a `rel="nofollow"` where needed.
-- Style linked images differently from unlinked ones.
-- Support a lightbox library without custom code.
-- Ensure a gallery script finds every linked image.
-- Keep attribute logic out of preprocess functions.
-- Add a data attribute-driven gallery grouping class.
-- Audit image link attributes across view modes.
+- Add a lightbox class to linked images so a JS library binds to them.
+- Open a linked image in a new tab with `target="_blank"`.
+- Add `rel="noopener"` (or `rel="noopener noreferrer"`) to image links that open a new tab.
+- Group images into a lightbox gallery via a shared `rel` value (e.g. `rel="lightbox-series"`).
+- Bind a gallery script to linked images by class with no template work.
+- Add `rel="nofollow"` to outbound image links.
+- Make image link markup consistent across every view mode of a bundle.
+- Configure link attributes per field display, not globally in a preprocess function.
+- Replace a one-off Twig override that existed only to add a single attribute.
+- Point a linked image at a specific image-style variant instead of the raw file.
+- Give responsive image fields the same custom link attributes as regular image fields.
+- Add a tracking or analytics class to image links.
+- Style linked images differently from unlinked ones via a class hook.
+- Provide a data-driven grouping class for a masonry or gallery grid.
+- Support a lightbox module (Colorbox, PhotoSwipe, etc.) without writing custom code.
+- Ensure a gallery script finds every linked image, even where a view mode was templated differently.
+- Keep link-attribute logic out of hook_preprocess in a custom theme.
+- Set which attributes editors may add by editing the site-level `image_link_attributes.config`.
+- Show the configured attributes on the Manage display summary line for review.
+- Audit and standardize image link attributes across content types.

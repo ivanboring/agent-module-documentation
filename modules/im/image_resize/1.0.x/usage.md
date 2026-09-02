@@ -1,32 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Image Resizer resizes uploaded images and converts them into other formats.
+Image Resizer resizes and re-encodes managed image files in place, on upload and on demand, via a cron-run queue.
 
 ---
 
-Editors upload what their camera or their designer gave them, which is routinely a 6000-pixel JPEG for a 400-pixel slot. Image styles handle the display size, but the original stays in the filesystem at full size, and on a site with years of uploads that is the bulk of the storage and the backups.
+Image Resizer targets the stored original file rather than its display derivatives. When a file is uploaded it is checked against a configured set of MIME types and an optional minimum file size, and matching files are placed on a queue. A queue worker (run on cron, or via `drush queue:run image_resize`) then loads each file, optionally downscales it to a maximum or minimum bounding box while preserving aspect ratio, and optionally converts it to another toolkit-supported format such as WebP or AVIF. It saves the result back over the managed file, updates the file entity's URI, name, MIME type and size, and rewrites the width/height stored on referencing image fields (current default revision only). With the ImageMagick toolkit a per-conversion quality override can be applied.
 
-Resizing on upload addresses the source rather than the presentation. Format conversion addresses the other half: WebP and AVIF are substantially smaller than JPEG at equivalent quality, and converting on ingest means every derivative afterwards starts from the smaller file.
-
-**Two things to settle before turning it on, because both are irreversible.** Resizing the original **discards pixels permanently** — if the site is also an archive, or if anyone might later need a print-resolution version, that decision cannot be undone from the resized file. Keeping originals elsewhere and resizing only what the web serves is the safe arrangement where it applies.
-
-And **format conversion changes what a download gives people**. A visitor who downloads a photograph expects a file their software opens; AVIF is not universally supported outside browsers. Converting derivatives is generally safe, converting the stored original less so.
-
-The release is **1.0.0-beta1** and it operates on files at upload time, so test it against a copy with representative images before pointing it at a production media library.
+Because the conversion overwrites the original file and the change is irreversible, the module is best introduced against a backup or a representative copy first. Existing images are not processed automatically; the settings form offers a batch "Requeue existing images" action to enqueue everything that currently matches the criteria. The only route the module adds is its admin settings form at `/admin/config/media/image-resizer`, gated by the `administer site configuration` permission.
 
 ---
 
-- Resize oversized images on upload.
-- Stop 6000-pixel originals filling storage.
-- Convert images to WebP.
-- Reduce backup size for a media library.
-- Start derivatives from a smaller source.
-- Set a maximum dimension for uploads.
-- Decide whether to keep originals.
-- Preserve print-resolution masters elsewhere.
-- Avoid discarding pixels irreversibly.
-- Consider what a download gives visitors.
-- Convert derivatives rather than originals.
-- Test against representative images first.
-- Evaluate a beta before production use.
-- Audit a media library's storage footprint.
-- Improve page weight from the source.
+- Downscale oversized originals automatically when files are uploaded.
+- Enforce a maximum bounding box (e.g. 3000x3000) across a media library.
+- Enforce a minimum bounding box so images never fall below a size.
+- Preserve aspect ratio while resizing (shorter/longer side scaled to fit).
+- Convert JPEG/PNG originals to WebP to cut storage and bandwidth.
+- Convert to AVIF where the toolkit and site support it.
+- Standardise every stored image on a single enforced format.
+- Set a per-conversion quality override with the ImageMagick toolkit.
+- Skip small images with a minimum file-size threshold.
+- Restrict processing to selected image MIME types only.
+- Avoid re-resizing images only marginally over the limit via a pixel size threshold.
+- Batch-requeue an entire existing media library to apply new settings.
+- Process conversions in the background on cron instead of blocking uploads.
+- Drain the queue on demand with `drush queue:run image_resize`.
+- Reduce backup and storage footprint by shrinking source files.
+- Start image-style derivatives from a smaller, cheaper source image.
+- Keep referencing image fields' stored width/height in sync after resizing.
+- Audit total image storage per MIME type from the settings form's tables.
+- Requeue after changing settings so existing files pick up the new rules.
+- Test the pipeline against representative images before a production rollout.
