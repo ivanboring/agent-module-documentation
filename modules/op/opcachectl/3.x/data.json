@@ -3,7 +3,7 @@
   "data_name": "opcachectl",
   "description": "Shows PHP OPcache status and allows cache clearing",
   "version": "3.x",
-  "package": null,
+  "package": "Performance and scalability",
   "composer_namespace": "drupal/opcachectl",
   "composer_requirements": {},
   "dependent_modules": [],
@@ -19,22 +19,25 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Administration"
+    "Performance",
+    "Administration tools"
   ],
   "subcategories": [
-    "Performance"
+    "Cache invalidation",
+    "Status report management"
   ],
   "keywords": [
     "opcache",
     "php",
     "cache",
+    "reset",
     "status",
-    "operations"
+    "deployment"
   ],
-  "project_description": "Simple Module to view PHP OPcache statistics and configuration. Allows to reset OPcache from admin interface and via PURGE and POST request remotely.",
+  "project_description": "Simple module to view PHP OPcache statistics and configuration and to reset the opcode cache. Reset is available from the Drupal admin interface (a confirm form) and, for deploy automation, from a dedicated JSON control route reachable via GET (status), POST and PURGE (reset), gated by an IP-allowlist / token access check configured in settings.php. It also replaces core's OPcache runtime-requirement report with richer statistics and configuration pages under Reports.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

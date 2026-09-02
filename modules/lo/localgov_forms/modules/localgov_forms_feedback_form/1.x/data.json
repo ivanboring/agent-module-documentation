@@ -1,13 +1,14 @@
 {
-  "name": "Localgov Forms Feedback Form",
+  "name": "LocalGov Forms Feedback Form",
   "data_name": "localgov_forms_feedback_form",
   "description": "A simple feedback form for LocalGov Drupal.",
   "version": "1.x",
-  "package": null,
+  "package": "LocalGov Drupal",
   "composer_namespace": "drupal/localgov_forms",
   "composer_requirements": {},
   "dependent_modules": [
-    "localgov_forms:localgov_forms"
+    "webform:webform",
+    "webform:webform_ui"
   ],
   "configure": null,
   "core_version_requirement": "^10 || ^11",
@@ -21,17 +22,20 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Forms and surveys"
   ],
   "subcategories": [
-    "LocalGov"
+    "Submission handling",
+    "Survey / data collection"
   ],
   "keywords": [
     "localgov",
     "feedback form",
+    "was this page helpful",
+    "webform",
     "submodule"
   ],
   "part_of": "localgov_forms",

@@ -1,31 +1,28 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Upload Size Per Role sets the maximum file-upload size per user role, so different roles get different upload limits.
+Upload Size Per Role overrides the maximum file-upload size on file fields per user role, so different roles can be granted larger or smaller upload limits.
 
 ---
 
-A blanket upload limit does not fit every role — trusted editors may need larger uploads than ordinary users, while keeping limits tight for the general public. Upload Size Per Role sets max upload size per role. It is a resource/abuse control: raising limits for trusted roles is fine, but the security-relevant direction is keeping limits low for untrusted roles, since large uploads consume storage and processing and can be an abuse vector. Confirm the per-role limits are set with untrusted roles bounded tightly, and remember this governs size, not file type — pair it with extension/type restrictions for the full upload-safety picture.
+Drupal file/image fields carry a single "Maximum upload size" setting that applies to everyone regardless of role. Upload Size Per Role replaces that one-size-fits-all limit with a per-role, per-field matrix: on the settings page (`/admin/config/media/upload-size-per-role`, `administer site configuration`) every `file`-type field on every fieldable entity type/bundle is listed, with a numeric MB cell for each user role. At form-build time `hook_form_alter()` reads the saved `upload_size_per_role.settings` mapping, picks the value configured for the current user's roles, caps it at PHP's `upload_max_filesize`, rewrites the widget description, and — importantly — sets the widget's real server-side upload validators (`FileSizeLimit`/`file_validate_size`) so the limit is enforced on submit, not merely displayed. Note the project's own guidance: leave the field's own "Maximum upload size" empty for any field you override, or the description rewrite can misbehave. The module governs upload size only, not file extension or type, so pair it with core's field-level extension restrictions for complete upload safety.
 
 ---
 
-- Set upload size per role.
-- Give editors larger uploads.
-- Keep public upload limits low.
-- Bound untrusted uploads.
-- Configure per-role limits.
-- Prevent large-upload abuse.
-- Raise limits for trusted roles.
-- Restrict anonymous uploads.
-- Pair with extension limits.
-- Control upload resource use.
-- Set a tight default.
-- Manage upload quotas by role.
-- Enable when needed.
-- Keep disabled otherwise.
-- Restrict administration.
-- Confirm on your site.
-- Test before production.
-- Review configuration.
-- Pair with related modules.
-- Verify theme fit.
-- Match your use case.
-- Confirm compatibility.
+- Give trusted editor roles a larger upload limit than ordinary users on a specific file field.
+- Keep the anonymous/authenticated upload limit small while allowing staff bigger files.
+- Set a different max upload size per role for each `file`-type field and bundle independently.
+- Raise the effective upload limit on a field above its stored default for privileged roles (capped at PHP's `upload_max_filesize`).
+- Lower the effective upload limit for a role below the field's default to conserve storage.
+- Configure the whole per-role/per-field matrix from one admin screen at `/admin/config/media/upload-size-per-role`.
+- Differentiate limits across custom roles (e.g. "contributor" vs "editor" vs "administrator").
+- Apply per-role sizing to file fields on nodes, media entities, users, taxonomy terms, or any fieldable entity.
+- Enforce the limit server-side via the widget's upload validators, not just as a displayed hint.
+- Automatically clamp any per-role value to what PHP's `upload_max_filesize` actually permits.
+- Restrict administration of these limits to site administrators (`administer site configuration`).
+- Manage upload allowances by role without writing custom form-alter code.
+- Support sites with diverse roles that each need different file-size budgets.
+- Reduce large-upload resource abuse from lower-trust roles.
+- Tailor the upload experience so each role sees a description reflecting its own limit.
+- Combine with core "Allowed file extensions" settings for both size and type control.
+- Reconfigure limits at any time from the config form; changes take effect on the next form build.
+- Reach the settings form from the Media section of the admin config page (menu link under `system.admin_config_media`).
+- Leave a field unmapped for a role to fall back to that field's own default max size.
+- Audit which roles get which upload budget across the whole site from a single table.

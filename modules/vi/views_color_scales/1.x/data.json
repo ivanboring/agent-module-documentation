@@ -3,11 +3,11 @@
   "data_name": "views_color_scales",
   "description": "Automatically enhances ALL Views numeric fields with optional Excel-style color scaling.",
   "version": "1.x",
-  "package": null,
+  "package": "Views",
   "composer_namespace": "drupal/views_color_scales",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:views"
+    "views"
   ],
   "configure": null,
   "core_version_requirement": "^10.3 || ^11",
@@ -24,9 +24,10 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Views"
+    "Content display"
   ],
   "subcategories": [
+    "Views field handlers",
     "Field formatters"
   ],
   "keywords": [

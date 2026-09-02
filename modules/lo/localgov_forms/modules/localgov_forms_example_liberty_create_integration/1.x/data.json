@@ -1,13 +1,14 @@
 {
-  "name": "Localgov Forms Example Liberty Create Integration",
+  "name": "LocalGov Forms example Liberty Create integration",
   "data_name": "localgov_forms_example_liberty_create_integration",
   "description": "Liberty Create API integration example.",
   "version": "1.x",
-  "package": null,
+  "package": "LocalGov Drupal",
   "composer_namespace": "drupal/localgov_forms",
   "composer_requirements": {},
   "dependent_modules": [
-    "localgov_forms:localgov_forms"
+    "localgov_forms:localgov_forms",
+    "token_environment:token_environment"
   ],
   "configure": null,
   "core_version_requirement": "^10 || ^11",
@@ -21,17 +22,24 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
+    "Integrations",
     "Forms and surveys"
   ],
   "subcategories": [
-    "LocalGov"
+    "CRM integration",
+    "Submission handling"
   ],
   "keywords": [
     "localgov",
-    "example liberty create integration",
+    "liberty create",
+    "netcall",
+    "caselink 360",
+    "webform remote post",
+    "crm integration",
+    "example",
     "submodule"
   ],
   "part_of": "localgov_forms",

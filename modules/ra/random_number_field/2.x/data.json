@@ -3,7 +3,7 @@
   "data_name": "random_number_field",
   "description": "Adds a random number field type which populates the field with a random number based on the min/max values given.",
   "version": "2.x",
-  "package": null,
+  "package": "Field",
   "composer_namespace": "drupal/random_number_field",
   "composer_requirements": {},
   "dependent_modules": [],
@@ -19,13 +19,14 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content"
+    "Site structure"
   ],
   "subcategories": [
-    "Fields"
+    "Fields",
+    "Field formatters"
   ],
   "keywords": [
     "random",
@@ -34,7 +35,7 @@
     "identifier",
     "non-cryptographic"
   ],
-  "project_description": "This module adds a new field type of 'Random Number Field'.\n\n Back to top \n\n What is a random number field? \n An integer field that when a new node/entity is created will be populated with a random integer between the min and max defined when the field type was created.\n\n Back to top \n\n Known Issues \n \n Needs unit tests adding. \n Back to top",
+  "project_description": "Random Number Field adds a field type of 'Random Number (integer)' that populates an entity with a random integer, drawn from a configurable min/max range, when new content is created. It extends core's integer field, widget and formatter and adds only the random-default behaviour, so it behaves like an ordinary integer field once saved. It is intended for non-cryptographic purposes such as raffle numbers, sampling weights, non-sequential display identifiers or test data.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

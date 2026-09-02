@@ -1,15 +1,19 @@
 {
-  "name": "EBT Webform",
+  "name": "Extra Block Types (EBT): Webform",
   "data_name": "ebt_webform",
   "description": "Adds Webform block type.",
   "version": "2.x",
-  "package": null,
+  "package": "Extra Block Types",
   "composer_namespace": "drupal/ebt_webform",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ebt_core": "^2.0",
+    "drupal/paragraphs": "^1.0",
+    "drupal/webform": "^6.0"
+  },
   "dependent_modules": [
-    "ebt_core:ebt_core",
-    "paragraphs:paragraphs",
-    "webform:webform"
+    "ebt_core",
+    "paragraphs",
+    "webform"
   ],
   "configure": null,
   "core_version_requirement": "^10.1 || ^11 || ^12",
@@ -23,22 +27,24 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content authoring"
+    "Content display",
+    "Site structure"
   ],
   "subcategories": [
-    "Block types"
+    "Block enhancements",
+    "Layout Builder"
   ],
   "keywords": [
     "ebt",
     "webform",
     "block",
     "form",
-    "layout"
+    "layout builder"
   ],
-  "project_description": "Extra Block Types: Webform module provides ability to add a block with Webform.\n\n Demo: EBT Webform \n\n EBT modules provide ability to add different blocks in Layout Builder in few clicks. You can install separate block types from this bunch of EBT modules:\n\n \n EBT Accordion / FAQ \n EBT Basic Button \n EBT Block \n EBT Bootstrap Button \n EBT Call to Action \n EBT Carousel \n EBT Columns \n EBT Countdown \n EBT Counter \n EBT Hero \n EBT Image \n EBT Image Gallery \n EBT Micromodal \n EBT Quote \n EBT Slick Slider \n EBT Slideshow \n EBT Stats \n EBT Tabs \n EBT Text \n EBT Tiles \n EBT Timeline \n EBT Video \n EBT Video and Image Gallery \n EBT Views \n EBT Webform \n EBT Webform Popup \n \n All EBT block types contain default widget for EBT blocks, which has Design options for:\n\n \n CSS Box (margins, paddings, borders) \n Background using color, image (including parallax and cover), video (Youtube) \n Edge to edge, Container width \n \n More about EBT blocks read on EBT Core module page:\n\n https://www.drupal.org/project/ebt_core \n\n \n Demo \n \n \n EBT Demo site \n \n\n This is a demo site with EBT modules. Feel free to log in to create or edit pages:\n\n \n https://ebt.drupalbook.org/user \nUsername: editor \nPassword: editor \n \n\n \n You can also download EBT Demo distribution and install it locally:\n\n Download EBT Demo distribution \n \n\n \n \n If you are looking for Extra Paragraph Types , you can use these modules:\n\n \n Extra Paragraph Types (EPT) Modules \n \n \n EPT Accordion / FAQ \n EPT Basic Button \n EPT Block \n EPT Bootstrap Button \n EPT Call to Action \n EPT Carousel \n EPT Columns / Container \n EPT Countdown \n EPT Counter \n EPT Hero \n EPT Image \n EPT Image Gallery \n EPT Micromodal \n EPT Quote \n EPT Slick Slider \n EPT Slideshow \n EPT Stats \n EPT Sticky Menu \n EPT Tabs \n EPT Text \n EPT Tiles \n EPT Timeline \n EPT Video \n EPT Video and Image gallery \n EPT Views \n EPT Webform \n EPT Webform Popup \n \n \n \n \n \n \n \n \n \n Need another Extra Block Type? \n Contact Us \n\n \n \n\n \n \n \n \n \n Back to top",
+  "project_description": "Extra Block Types (EBT): Webform ships a single reusable custom block type, 'EBT Webform' (block_content bundle ebt_webform), that references a Webform and renders it inline together with the EBT design/styling controls (spacing, borders, background color/image, edge-to-edge, container width) supplied by the EBT Core field. It is a thin, config-only module: it provides no PHP, routes, services, or permissions of its own. It defines the bundle via config/install, a required Form (webform reference) field, a Text (body) field, and the shared EBT Block settings field, then relies on ebt_core to preprocess the block and emit the generated inline CSS. The block can be placed in Layout Builder, in the classic block layout, or reused anywhere custom blocks are allowed. It is one of the many standalone EBT block-type modules and requires EBT Core, Paragraphs, and Webform.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

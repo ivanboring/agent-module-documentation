@@ -1,37 +1,42 @@
 {
-  "name": "Localgov Forms Lts",
+  "name": "LocalGov Forms long term storage",
   "data_name": "localgov_forms_lts",
   "description": "Long term storage for Webform submissions.",
   "version": "1.x",
-  "package": null,
+  "package": "LocalGov Drupal",
   "composer_namespace": "drupal/localgov_forms",
   "composer_requirements": {},
   "dependent_modules": [
-    "localgov_forms:localgov_forms"
+    "webform:webform"
   ],
-  "configure": null,
+  "configure": "localgov_forms_lts.lts_config",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/localgov_forms",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "8.0",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
-  "provides_drush_commands": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
     "Forms and surveys"
   ],
   "subcategories": [
-    "LocalGov"
+    "Submission handling"
   ],
   "keywords": [
     "localgov",
+    "long term storage",
     "lts",
+    "webform submissions",
+    "data warehousing",
+    "pii redaction",
+    "retention",
     "submodule"
   ],
   "part_of": "localgov_forms",
