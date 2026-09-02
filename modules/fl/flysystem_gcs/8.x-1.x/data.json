@@ -5,7 +5,9 @@
   "version": "8.x-1.x",
   "package": "Flysystem",
   "composer_namespace": "drupal/flysystem_gcs",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "superbalist/flysystem-google-storage": "^7.2.2"
+  },
   "dependent_modules": [
     "flysystem"
   ],
@@ -16,12 +18,14 @@
   "project_url": "https://www.drupal.org/project/flysystem_gcs",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "superbalist/flysystem-google-storage"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Media",

@@ -1,30 +1,24 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Eloqua API Auth Fallback authenticates to Eloqua using a resource owner password credentials grant when the normal OAuth flow is not available.
+Eloqua API Auth Fallback lets Eloqua API Redux re-authenticate to Eloqua non-interactively using an OAuth resource-owner password credentials grant, with a Drush command to generate or renew tokens on demand.
 
 ---
 
-The parent module uses an authorisation-code flow, which requires a human to complete a redirect. That is the right design and it does not fit every situation: a headless environment, a CI job, or an account where nobody can complete the browser step needs another way in. The resource owner password credentials grant is that other way — the client sends a username and password directly and receives a token.
+The parent module, Eloqua API Redux, authenticates with the interactive OAuth authorization-code flow: an administrator clicks through Eloqua's login screen and Drupal captures the returned tokens. That works for setup but breaks down for unattended sites — if the stored refresh token lapses (Eloqua refresh tokens expire after a year, or immediately once used), there is nobody at a browser to log back in and the integration silently stops working.
 
-**It is a fallback for a reason, and the reason belongs in any recommendation.** The password grant is deprecated in OAuth 2.1 and discouraged in the current security best-practice guidance, because it requires the client to hold the user's actual credentials rather than a scoped token. Everything that makes OAuth better than storing a password — the credential never reaching the client, the ability to revoke one integration without changing a password, MFA remaining meaningful — is given up.
+This submodule fills that gap. It stores the Eloqua site (company) name, username, and password, and implements the OAuth resource-owner password credentials grant so tokens can be minted from those credentials with no browser interaction. It plugs into the parent by decorating the `eloqua_api_redux.auth_fallback_default` service (via `decorates:` in its services file), so the parent client automatically calls into it when both the access and refresh tokens are gone. The same class is also registered as a Drush command, `eloqua_api_auth_fallback:generate-tokens` (alias `eloqua-gt`), so an administrator or a cron job can force a token refresh explicitly.
 
-So: **use it only where the authorisation-code flow genuinely cannot run**, use a dedicated service account rather than a person's credentials, scope that account to the minimum the integration needs, and store the credentials as environment variables rather than in configuration. And treat it as something to move off, not a permanent arrangement.
+Configuration lives at a settings page nested under the parent's Eloqua API settings, gated by the parent's `administer eloqua api settings` permission. Use this submodule when you run Eloqua syncs from cron or a headless process and need the connection to stay alive without a human completing the browser login.
 
 ---
 
-- Authenticate without a browser redirect.
-- Connect from a headless environment.
-- Authenticate an Eloqua integration in CI.
-- Use a fallback when the OAuth flow cannot run.
-- Use a dedicated service account.
-- Scope the account to the minimum needed.
-- Store credentials in environment variables.
-- Keep credentials out of configuration.
-- Understand why the password grant is discouraged.
-- Recognise what OAuth protections are given up.
-- Plan a move back to the authorisation-code flow.
-- Rotate service account credentials.
-- Audit which grant an integration uses.
-- Document the fallback's justification.
-- Document this component's conventions for the team.
-- Review it during a component audit.
-- Verify its behaviour after a theme change.
+- Keep an Eloqua integration authenticated on an unattended/headless site.
+- Re-authenticate automatically when both access and refresh tokens have expired.
+- Use the OAuth resource-owner password credentials grant instead of the browser flow.
+- Store the Eloqua site name, username, and password for non-interactive login.
+- Generate or renew Eloqua tokens from a Drush command (`drush eloqua-gt`).
+- Refresh tokens on a schedule from cron before a sync runs.
+- Recover a stalled integration whose refresh token lapsed without visiting the settings page.
+- Provision Eloqua tokens during an automated deployment.
+- Back a Drupal-to-Eloqua contact or webform sync that runs without an operator.
+- Configure fallback credentials from a settings page under the Eloqua API settings.
+- Extend the parent client's auth-fallback service via service decoration.
+- Restrict who can set the fallback credentials to Eloqua administrators.

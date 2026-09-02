@@ -19,24 +19,24 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Media",
-    "Administration tools"
+    "Content editing experience"
   ],
   "subcategories": [
     "Image toolkit / processing",
-    "Debugging & inspection"
+    "Content preview"
   ],
   "keywords": [
     "image styles",
     "preview",
     "media",
-    "effects",
-    "admin"
+    "derivatives",
+    "effects"
   ],
-  "project_description": "Displays the available image style derivatives when viewing a media entity, so that content editors can easily see how the image will look at various sizes.\n\n In order to view the derivatives:\n\n \n Enable the module \n Ensure that Standalone media URL is enabled at/admin/config/media/media-settings \n Visit the media entity page, e.g. /media/123",
+  "project_description": "Renders a preview of every image style derivative on the canonical page of an image media entity, so content editors can see what each configured image style actually produces without reading effect descriptions one by one. On the media page it replaces the default image-field output with a set of collapsible details elements — one per image style plus the original — each showing the styled image and a summary of its effects, preceded by an anchor-link index. A small admin settings form (admin/config/media/image-styles/imagestyles) lets you choose which styles are expanded by default. Requires core's Image and Media modules and Standalone media URLs, although the .info.yml does not declare these dependencies.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

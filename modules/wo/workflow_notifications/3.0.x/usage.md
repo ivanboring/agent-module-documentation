@@ -1,31 +1,33 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Workflow Notifications sends configurable messages when a Workflow module state transition occurs, queued for delivery, with an optional SMS submodule.
+Workflow Notifications sends configurable email messages when a Workflow module state transition occurs, with token-templated subject and body, per-transition recipient rules, and cron-queued delivery for scheduled or time-based triggers.
 
 ---
 
-Editorial workflow only works if the next person knows it is their turn. The Workflow module models the states and transitions; this module attaches notifications to them, as `workflow_notify` configuration entities managed per workflow type at `/admin/config/workflow/workflow/{workflow_type}/notifications`. Each one describes which transition it responds to and what gets sent.
+Editorial workflow only works if the next person knows it is their turn. The Workflow contrib module models the states and transitions; this module attaches notifications to them. Each notification is a `workflow_notify` configuration entity, managed per workflow type at `/admin/config/workflow/workflow/{workflow_type}/notifications`, and describes three things: which transition it fires on (a from-state, a to-state, or "any" of either), when it fires, and what is sent (subject plus a rich-text body, both token-aware). Recipients are assembled from an explicit list of email addresses, the members of chosen roles, and optionally the content author, with an option to restrict to users who actually participated in the entity's transitions.
 
-Delivery goes through a queue worker (`Plugin/QueueWorker/ScheduleMailQueue`) rather than being sent inline during the save request. That matters more than it sounds: sending mail synchronously ties the editor's save to the mail server's availability, and a slow or unreachable SMTP host turns into a slow or failed content save. Queued delivery means the transition completes and the mail follows on cron.
+Three trigger modes cover the common cases. "On state change" sends immediately when the transition is saved, via `hook_entity_update`. "Some days before a scheduled state change" and "No state change for some days" are time-based: `hook_cron` queues them once a day onto the `workflow_notifications.send` queue, and the `ScheduleMailQueue` queue worker delivers them on later cron runs. Queued delivery for the time-based modes means the transition save itself is never tied to mail-server availability.
 
-Access is done through entity access rather than a flat permission, which is the right pattern: the add route uses `_entity_create_access: 'workflow_notify'`, edit uses `_entity_access: 'workflow_notify.update'`, and the collection uses `administer workflow` — so notification configuration inherits the same authority as the workflow it belongs to rather than introducing a parallel one.
-
-The `workflow_sms_notify` submodule adds SMS delivery on the same transitions, depending on the `sms` framework module. Treat that as a separate decision: SMS is billed per message and reaches people outside working hours, so it suits approval escalations and not routine state changes.
+Mail is sent through Drupal's core mail manager, and `hook_mail()` marks the body as HTML, so the rich-text message renders as formatted email. Tokens in the subject, body, and recipient field are replaced against the changed entity and its transition (for example the node and the workflow transition), and the module adds a `workflow_state` token type of its own. The `workflow_sms_notify` submodule reuses the same trigger/recipient model to deliver SMS instead, through the core SMS Framework.
 
 ---
 
-- Email a reviewer when content enters review.
+- Email a reviewer when content enters a review state.
 - Notify an author when their content is published.
 - Tell an editor when something is sent back for changes.
-- Notify a group on a specific state transition.
-- Configure different messages per workflow type.
-- Queue notification mail instead of sending it inline.
-- Keep content saves independent of the mail server.
-- Send an SMS on an approval transition.
-- Escalate an overdue approval by text message.
-- Manage notifications alongside the workflow they belong to.
-- Delegate notification configuration through entity access.
-- Add a notification without writing a hook.
-- Export notification configuration with the site.
-- Review which transitions currently notify someone.
-- Retire a notification when a workflow changes.
-- Diagnose notifications that are queued but not delivered.
+- Notify every member of a role on a specific transition.
+- Send to an explicit list of email addresses, one per line.
+- Also notify the content author (via the author "role") when they own the entity.
+- Restrict a notification to users who actually participated in the entity's transitions.
+- Fire immediately on a state change, or on a schedule.
+- Warn assignees some days before a scheduled transition is due.
+- Chase entities that have sat in a state with no change for N days.
+- Template the subject and body with entity and transition tokens.
+- Use the `workflow_state` token type to include the state id, label, or workflow id.
+- Send formatted HTML email using a text-format body.
+- Configure completely different notifications per workflow type.
+- Queue time-based notifications for cron delivery instead of inline sending.
+- Export notification rules as configuration with the rest of the site.
+- Review, from the collection list, which transitions currently notify someone.
+- Retire or delete a notification when a workflow changes.
+- Add a notification without writing a custom hook or event subscriber.
+- Layer SMS onto the same transitions with the `workflow_sms_notify` submodule.

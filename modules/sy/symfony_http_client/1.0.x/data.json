@@ -6,7 +6,7 @@
   "package": "System",
   "composer_namespace": "drupal/symfony_http_client",
   "composer_requirements": {
-    "symfony/http-client": "*"
+    "symfony/http-client": "^6.4 || ^7.3"
   },
   "dependent_modules": [],
   "configure": null,
@@ -28,8 +28,7 @@
     "Integrations"
   ],
   "subcategories": [
-    "Service container",
-    "HTTP clients"
+    "REST / web services"
   ],
   "keywords": [
     "symfony",
@@ -39,7 +38,7 @@
     "autowire",
     "developer"
   ],
-  "project_description": "An implementation of Symfony's HTTP Client for Drupal.\n\n The primary driver for this project is Symfony HTTP Client is a dependency of various Symfony Notifier channels.\n\n By default, requests will directly execute with cURL. Further enhancements could include an adapter that forwards to Guzzle. though Guzzle will also make use of cURL.\n\n This project is not maintained or endorsed by Symfony or its team.",
+  "project_description": "An implementation of Symfony's HTTP Client for Drupal.\n\n The primary driver for this project is that Symfony HTTP Client is a dependency of various Symfony Notifier channels.\n\n By default, requests execute directly with cURL. Further enhancements could include an adapter that forwards to Guzzle, though Guzzle also uses cURL underneath.\n\n This project is not maintained or endorsed by Symfony or its team.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

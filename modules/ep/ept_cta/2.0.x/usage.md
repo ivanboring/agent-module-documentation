@@ -1,36 +1,33 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-EPT Call to Action adds a CTA paragraph — heading, text, button and media — to the Extra Paragraph Types family, with a settings widget that generates per-instance CSS.
+EPT Call to Action adds a Paragraphs type that combines a title, rich text, an optional image and one or two styled link buttons into a configurable one- or two-column call-to-action section, with the EPT family's shared per-paragraph design and button settings.
 
 ---
 
-The EPT family builds landing pages out of paragraph types that each carry their own design settings, so an editor can place a component and adjust its appearance without a developer. This one is the call-to-action block: a link field from `link`, media support from `media`, the button behaviour inherited from `ept_basic_button`, and a `GenerateCtaCSS` service that turns the chosen settings into styles for that specific paragraph.
-
-**Release 2.0.1 has a defect that stops the paragraph being editable, verified on a clean install.** `EptSettingsCtaWidget::__construct()` takes six parameters and calls `parent::__construct()` with five, but `ept_core` 2.0.0's `EptSettingsDefaultWidget::__construct()` requires seven. Instantiating the widget through the field widget plugin manager with a real `ept_settings` field definition produces:
-
-```
-ArgumentCountError: Too few arguments to function
-Drupal\ept_core\Plugin\Field\FieldWidget\EptSettingsDefaultWidget::__construct(),
-5 passed in ept_cta/src/Plugin/Field/FieldWidget/EptSettingsCtaWidget.php … and exactly 7 expected
-```
-
-The same probe instantiates `ept_settings_timeline` and `ept_settings_default` without error, so this is specific to `ept_cta`, not to the family. The practical result on this install: the module enables and the `ept_cta` paragraph type is created, but its default form display config is never written — the paragraph type exists with no working edit form.
-
-The cause is a missing version constraint. `ept_cta`'s composer requirements are `drupal/ept_basic_button ^2.0` and `drupal/paragraphs ^1.0`; it never names `ept_core`, so composer is free to resolve an `ept_core` whose widget signature the code does not match. Check the resolved `ept_core` version before relying on this, and pin it explicitly if you adopt the family.
+Landing and marketing pages repeatedly need the same block: a short headline and pitch next to (or above) a prominent button that drives a click. EPT Call to Action packages that as the `ept_cta` Paragraphs bundle so editors build it in a few clicks instead of hand-assembling fields. The bundle carries an optional title (`field_ept_title`, text_long), body text (`field_ept_text`, text_long), an optional image (`field_ept_cta_column_image`, a single Media reference limited to the `image` media type), and two link fields — a primary `field_ept_cta_link` and an optional `field_ept_cta_second_link` — each rendered as a styled button. Its settings widget, `ept_settings_cta` (`EptSettingsCtaWidget`, a subclass of EPT Basic Button's `EptSettingsBasicButtonWidget`), adds a **Styles** choice (2 Columns, 2 Columns fluid image, or One column), **Align Content** (left/center/right), **Image position** (left/right, for the two-column layouts), **Image position on mobile** (image first/last after the columns stack) and a numeric **Mobile breakpoint** at which the two columns collapse to one; it also duplicates the full Basic Button style set as a **Second Link options** group so the second button can have its own colors, shape, size, alignment, stretched flag and custom class. The primary button reuses EPT Basic Button's colors and styles, and the whole paragraph inherits ept_core's shared **Design** tab (margins/padding/border, background color/image/video, edge-to-edge, container width). Layout, alignment and button choices are written onto the wrapper as CSS classes by `templates/paragraph--ept-cta--default.html.twig`, which also attaches `ept_cta/ept_cta` (`css/ept_cta.css`) and prints three scoped inline `<style>` blocks: `styles` (ept_core design output), `button_styles` (button colors from EPT Basic Button) and `cta_styles` — the responsive column CSS that the module's own `ept_cta.generate_cta_css` service (`GenerateCtaCSS`) builds from the settings (column widths, image order, mobile stacking at the chosen breakpoint). The module requires `ept_basic_button` (which brings in `ept_core`), `paragraphs`, `link` and `media`; its `hook_requirements()` blocks install until a Media type named `image` exists. Version 2.0.x; core `^10.1 || ^11 || ^12`; maintained by levmyshkin and Narine_Tsaturyan. It ships no permissions, routes, config schema, or Drush of its own — the only settings are per-paragraph, plus the site-wide EPT defaults on ept_core's configuration form.
 
 ---
 
-- Add a call-to-action block to a landing page.
-- Give editors a button component with design settings.
-- Pair a CTA heading with supporting text.
-- Attach an image or video to a call to action.
-- Style a CTA per instance without writing CSS.
-- Build a landing page from paragraph components.
-- Reuse the EPT button behaviour in a larger block.
-- Let marketing assemble campaign pages unaided.
-- Keep CTA styling inside the content model.
-- Standardise call-to-action markup across a site.
-- Vary CTA appearance between pages.
-- Extend the EPT family with a promotional component.
-- Verify the resolved `ept_core` version before adopting.
-- Diagnose a paragraph type that has no edit form.
-- Pin EPT family versions together in composer.
+- Add a headline-plus-button call to action anywhere a Paragraphs field is enabled.
+- Build a two-column CTA with an image on the left and text plus button on the right.
+- Flip the image to the right column for alternating CTA rows down a page.
+- Use the "2 Columns fluid image" style so the image fills half the width edge to edge.
+- Fall back to a single-column, centered CTA for a simple banner.
+- Offer two buttons in one CTA — a primary and a secondary action side by side.
+- Give the second button its own color, shape, size and alignment via Second Link options.
+- Point a button at an internal node or an external URL using the Link fields.
+- Open a CTA link in a new tab and add rel="nofollow" for sponsored/outbound links.
+- Set a custom mobile breakpoint so the two columns stack at the width you choose.
+- Control whether the image appears first or last once the CTA stacks on mobile.
+- Center or left/right-align the CTA content within its container.
+- Apply per-section background color, image or video via the shared Design tab.
+- Make a full-width, edge-to-edge CTA band with inner content constrained to the container width.
+- Add margins, padding, borders or a border radius around a single CTA paragraph.
+- Reuse the same CTA paragraph type site-wide instead of building bespoke layouts.
+- Compose landing pages from stacked CTA sections without Layout Builder.
+- Add a Media image (with alt text and responsive image styles) as the CTA visual.
+- Pair a promotional image with a "Buy now" / "Sign up" button in a product CTA.
+- Style primary and secondary buttons as square, round or circle shapes.
+- Stretch a button to full width for a mobile-friendly tap target.
+- Add a custom CSS class to a button to hook site-specific styling.
+- Install just this paragraph type from the EPT family when a CTA is all you need.
+- Mix a CTA paragraph among other EPT paragraph types (text, image, columns) on one page.

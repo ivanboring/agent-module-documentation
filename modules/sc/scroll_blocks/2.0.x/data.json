@@ -1,13 +1,13 @@
 {
   "name": "Scroll blocks",
   "data_name": "scroll_blocks",
-  "description": "Shows or hides blocks based on how far the visitor has scrolled.",
+  "description": "Reveals a block as a slide-up panel (or hides it) based on the visitor's vertical scroll distance and window width, configured per block placement via block third-party settings.",
   "version": "2.0.x",
   "package": "User interface",
   "composer_namespace": "drupal/scroll_blocks",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:block"
+    "block"
   ],
   "configure": null,
   "core_version_requirement": "^8 || ^9 || ^10 || ^11",
@@ -24,18 +24,20 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Content display",
-    "Theming"
+    "Content display"
   ],
   "subcategories": [
     "Sticky / floating elements",
-    "Scroll-driven animation"
+    "Scroll-driven animation",
+    "Block enhancements"
   ],
   "keywords": [
     "scroll",
     "block visibility",
     "sticky",
-    "back to top",
+    "slide-up",
+    "popup",
+    "third party settings",
     "javascript",
     "user interface"
   ],
