@@ -1,27 +1,40 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # GOV Notify Integration (govuk_notify) — agent index
 
-Sends **email, SMS and letters** through **GOV.UK Notify** and its Canadian and Australian
-equivalents. Submodule `govuk_notify_views_backend`. Settings behind
-`administrator gov uk notify`. Version **3.2.1**. Core requirement `^10.3 || ^11`.
+Sends Drupal **email and SMS** through a Government **Notify** service — Gov.UK Notify (default),
+Government of Canada Notification (`ca`), or Australian Government Notify (`au`). It registers a
+core **Mail plugin** `govuk_notify_mail` and a service wrapping the official
+`alphagov/notifications-php-client`. Core `^10.3 || ^11`, version 3.2.x, GPL-2.0-or-later.
 
-**What Notify is:** the shared messaging platform built by the UK **Government Digital Service** and
-adopted as open source by the Canadian and Australian governments — hence all three in the
-description. For a public body it is usually the **default rather than a choice**: already procured,
-already assessed.
+- **Install, the settings form, config object + keys, service switching, testing** →
+  [config/settings.md](config/settings.md)
+- **The mail plugin: how email vs SMS is chosen, template/placeholder handling, sending API** →
+  [api/mail-and-send.md](api/mail-and-send.md)
+- **`govuk_notify_views_backend` submodule (message-log Views base table)** →
+  `modules/govuk_notify_views_backend/3.2.x/` (own data.json + agent docs)
 
-**What it handles that a site should not:**
-- **templates live in Notify**, so the wording of a statutory letter is edited and versioned by the
-  people responsible for it;
-- **delivery is reported per message**, so *"did the applicant receive the decision"* has an answer;
-- it sends **letters — actual printed post** — because a public service cannot assume digital
-  access, and a print pipeline is not something a website should build.
+## Dependencies
 
-**Three things for the deployment:**
-1. **Key scope matters.** Notify issues **live, test and team-only** keys — a live key in a
-   non-production environment is how a test run **sends real letters to real people**. A
-   recognisable incident in this sector, not a hypothetical.
-2. **Personalisation is the payload** — names, addresses, reference numbers, case details. A
-   processing activity to record, not a technical detail.
-3. **The template is the message.** An integration that **hard-codes text** defeats the arrangement
-   it was adopted for; the site's job is supplying the right variables.
+- Composer (NOT Drupal modules): `alphagov/notifications-php-client:^7.0.0` and
+  `php-http/guzzle7-adapter:*`. No `dependencies:` in the info.yml — no Drupal module deps.
+- Uses core services only: `config.factory`, `cache.data`, `logger.channel_base`,
+  `plugin.manager.mail`, `email.validator`, `current_user`.
+
+## What it provides (from source)
+
+- **Service** `govuk_notify.notify_service` → `Drupal\govuk_notify\NotifyService\GovUKNotifyService`
+  (interface `NotifyServiceInterface`): `sendEmail`, `sendSms`, `getTemplate` (cached),
+  `checkReplacement`, `listNotifications`. Constructs the `Alphagov\Notifications\Client` in its
+  constructor from `govuk_notify.settings` (base URL chosen by service, `apiKey`, Guzzle7 adapter).
+- **Mail plugin** `govuk_notify_mail` → `src/Plugin/Mail/GovUKNotifyMail.php` (annotation `@Mail`).
+  `hook_install()` registers it into `system.mail` `interface`; `hook_uninstall()` removes it.
+- **Logger channel** service `govuk_notify.logger_channel` (channel `govuk_notify`).
+- **Route** `govuk_notify.admin_settings_form` → `/admin/config/system/govuk_notify`
+  (`GovUKNotifyAdminForm`, `ConfigFormBase`), permission **`administrator gov uk notify`**,
+  menu link under *Configuration → System*.
+- **Permission** `administrator gov uk notify` (`govuk_notify.permissions.yml`).
+- **Config object** `govuk_notify.settings` (no `config/install`, no `config/schema` shipped).
+- **Submodule** `govuk_notify_views_backend` — a Views query/filter backend over the Notify
+  message log (documented in its own tree).
+
+No entities, no Drush commands, no config schema, no new plugin types.

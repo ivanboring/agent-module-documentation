@@ -1,21 +1,37 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Group Comment (group_comment) — agent index
 
-Brings **comments under the Group module's access system**, so reading and posting is decided by
-**group membership** rather than site-wide permissions. Requires core `comment` and `group`.
-Version **3.1.0-alpha1** — **alpha**. Core requirement `^10 || ^11`.
+Integrates core **Comment** with the **Group** module: each comment becomes a Group relationship,
+so comment access is decided by **group permissions** and comments auto-attach to the group(s) of
+their commented entity. Package `Group`. Version **3.1.0-alpha1**, core `^10 || ^11`.
+License GPL-2.0-or-later.
 
-**The gap:** Drupal's comment permissions are **per comment type and per site**, so a member of one
-group can read another group's discussion unless something intervenes — while a department's
-discussion, a project team's notes and a course cohort's questions all obviously belong to a group.
+Dependencies: core **`comment`**, contrib **`group` `^3.0`**. README note: core must be patched
+(drupal.org issue **#2879087**) for comment create-access delegation to work.
 
-**Two things worth attaching:**
-1. **Verify that group access here is real entity access**, so a restricted comment is restricted in
-   **Views, JSON:API and REST** — not merely hidden on the page. That is the property that makes the
-   module worth using, and the one `par` (wave 76) fails to provide for nodes.
-2. **Comments are indexed and notified.** A **search index** built before the restriction still
-   contains the text, and a **comment notification email** sends the content to whoever is
-   subscribed **regardless of group**. Scoping comments means checking the **index and the
-   notification path** as well as the access layer.
+## What it provides (from source)
 
-Related: `group_storage` (wave 80), `group_notify` (same wave), `group_bulk_operations` (wave 71).
+- **Group relation plugin** `group_comment` (`entity_type_id = "comment"`, `entity_access = TRUE`),
+  in `src/Plugin/Group/Relation/GroupComment.php`, with a **deriver** producing **one derivative
+  per comment type** (`GroupCommentDeriver.php`, ids `group_comment:<comment_type>`). Forces
+  `entity_cardinality = 1` and disables the cardinality / creation-wizard config fields.
+- **Three relation handlers** (services, `shared: false`) that wrap Group's defaults —
+  a permission provider, an access-control handler, and an operation provider.
+- **Attachment service** `group_comment.group_attachment` (`GroupCommentAttachment`) that attaches
+  comments to groups on insert and detaches them when a relationship is removed.
+- **Group permissions**: `access group_comment overview` (in
+  `group_comment.group.permissions.yml`) plus a per-comment-type
+  `skip comment approval group_comment:<type> entity` (added by the permission provider), on top of
+  Group's standard view/update/delete comment permissions.
+- **Optional view** `views.view.group_comments` (`config/optional/`): the per-group **Comments**
+  overview at path `group/%group/comments`, access-gated by the `access group_comment overview`
+  group permission.
+- **Hooks** in `group_comment.module` and one alter hook (`hook_group_comment_attach_groups_alter`,
+  documented in `group_comment.api.php`). No settings form, no Drush, no config schema.
+
+## Solution docs
+
+- **The `group_comment` relation plugin, its deriver, the three handlers, all group permissions,
+  and how access is delegated** → [plugins/group-relation.md](plugins/group-relation.md)
+- **The attach/detach service, the entity hooks that drive it, the alter hook, and the Comments
+  overview view** → [api/attachment.md](api/attachment.md)

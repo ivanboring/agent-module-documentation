@@ -1,27 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-EBT Call to Action adds a ready-made block type combining text with a button, using the Extra Block Types family's shared presentation settings.
+EBT Call to Action ships a reusable "Call to Action" block content type combining a title, body text, an optional image column, and one or two styled buttons, with the Extra Block Types family's shared design settings.
 
 ---
 
-The call to action is the component a marketing site places most and configures worst. It is a heading, a sentence, a button and some styling, and because it is so simple every project builds it again — as a custom block type, as a paragraph, as a chunk of HTML in a body field, or as three separate blocks arranged by CSS. Having it as a block type means one definition, placeable in a region, droppable into a Layout Builder section and referenceable from a field, with the family's spacing, background and container settings attached. Version **2.0.0** requiring `ebt_core`, core requirement `^10.1 || ^11 || ^12`. Two things are worth attaching, and they are about the component rather than the module. **A button is a link or a button and the distinction matters**: something that navigates should be an `<a>` and something that performs an action should be a `<button>`, because a screen reader announces them differently and a keyboard treats them differently — a styled `<div>` with a click handler is neither, and is the commonest accessibility defect in a component library. And **a call to action is measured**, so the button usually needs to carry whatever the site's analytics use to attribute a conversion — which is a field on the component rather than something added later by a selector, since a CSS selector that identifies a button breaks the first time the design changes. The family's standing trade applies too: pre-built is quick to adopt and awkward to diverge from, and the component becomes a dependency of every page built with it.
+The module installs a `block_content` bundle named `ebt_cta` with a fixed set of fields — a text title (`field_ebt_cta_title`), a body, a Media image reference (`field_ebt_cta_column_image`), a required primary link (`field_ebt_cta_link`) and an optional second link (`field_ebt_cta_second_link`), plus the shared EBT settings field (`field_ebt_settings`). Editors create instances under the custom block library and place them in a region or drop them into a Layout Builder section. A dedicated field widget, `EbtSettingsCtaWidget` (plugin id `ebt_settings_cta`, extending EBT Basic Button's widget), adds CTA-specific layout controls on top of the standard button and design options: a layout style (2 columns, 2 columns fluid image, or one column), content alignment, image position and mobile image order, and a mobile breakpoint. At render time `ebt_cta_preprocess_block()` (via `EbtCtaHooks`) turns those settings into inline `<style>` blocks — button styling from EBT Basic Button's `generate_custom_css` service and CTA layout/responsive rules from this module's own `ebt_cta.generate_cta_css` service (`GenerateCtaCSS`) — and two Twig templates (`block--block-content--ebt-cta` and `block--inline-block--ebt-cta`) render the columns and buttons. The module requires `ebt_basic_button`, `ebt_core`, `paragraphs`, and core `link`/`media`; on install it checks that a Media type "image" exists via `hook_requirements()`. Version 2.0.x, core `^10.1 || ^11 || ^12`.
 
 ---
 
-- Add a call-to-action block to a page.
-- Place a signup prompt in a region.
-- Add a donate button with supporting text.
-- Build a conversion block for a campaign.
-- Add a CTA to a Layout Builder section.
-- Place a contact prompt in a sidebar.
-- Add an enquiry call to action.
-- Build a consistent CTA component.
-- Add a download prompt block.
-- Place a subscribe call to action.
-- Add a booking prompt to pages.
-- Build a reusable conversion block.
-- Add a CTA to a footer region.
-- Place an apply-now button block.
-- Add a registration prompt.
-- Build a campaign conversion component.
-- Add a CTA with background styling.
-- Place a call to action per section.
+- Add a call-to-action block with a heading, paragraph and button to any page.
+- Place a two-column CTA with an image on the left and text plus button on the right.
+- Use the "2 Columns fluid image" style so the image bleeds to 50% of the viewport width.
+- Add a one-column, centered CTA (image row above the button).
+- Render two buttons in one CTA (primary and secondary link).
+- Drop a CTA block into a Layout Builder section.
+- Place a signup or subscribe prompt in a sidebar region.
+- Build a donate block with supporting copy and a donate button.
+- Add a campaign conversion block reused across landing pages.
+- Style the CTA buttons (colors, shape, size, alignment) via EBT Basic Button settings.
+- Mark a button to open in a new tab or carry `rel="nofollow"`.
+- Set a custom mobile breakpoint at which the two columns collapse to one.
+- Choose whether the image appears first or last after collapsing on mobile.
+- Reverse image/text order by setting image position to the right in a two-column layout.
+- Add a Media image beside the CTA text using the media library widget.
+- Apply the EBT design box (margins, paddings, borders, background) to the whole block.
+- Reference a CTA block from an entity reference field.
+- Create multiple CTA variants and place a different one per section.
+- Add an "apply now" or "book a demo" prompt to a footer region.
+- Provide editors a consistent, pre-built CTA component instead of hand-built HTML.

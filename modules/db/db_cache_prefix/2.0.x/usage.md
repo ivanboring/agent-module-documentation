@@ -1,27 +1,27 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Database cache prefix prepends a configurable string to every cache id written to the database backend.
+Database cache prefix prepends a configurable string (`$settings['db_cache_prefix']`) to every cache id written to Drupal's default database cache backend.
 
 ---
 
-The need arises when several Drupal installations share one cache store and would otherwise collide. Shared hosting where one database serves multiple sites; a multi-site arrangement with a common cache table; a blue-green deployment where two versions run against the same infrastructure and must not read each other's entries; a set of environments pointed at one Redis or database for convenience. Without a prefix the cache id `config:system.site` means different things in each, and whichever writes last wins — which produces the confusing class of bug where a setting changed on one site appears on another, or a deployment picks up the previous release's rendered output. A prefix scopes the keys so the collision cannot happen. Version **2.0.0-rc3** — a release candidate — on core `^10.3 || ^11`. Three things worth attaching. **Changing the prefix invalidates everything** — which is the intended behaviour when a new deployment wants a clean cache, and is a cold start on a busy site, so a prefix change is a deployment event rather than a configuration tweak. **A prefix is not isolation** in the security sense: entries are still in the same table, readable by anything with database access, so it prevents accidental collision rather than deliberate reading — genuinely separate stores are the answer where the requirement is confidentiality between tenants. And **core already offers `$settings['cache_prefix']`** for the database backend in some arrangements, so the first question is whether the site needs a module for this at all or whether the setting covers it, which depends on the backend in use.
+The module exists for the case where several Drupal codebases share one database cache table and would otherwise collide. It overrides the core `cache.backend.database` service with its own `PrefixedDatabaseBackendFactory`, which hands out `PrefixedDatabaseBackend` objects — a subclass of core's `DatabaseBackend` that overrides only `normalizeCid()` to glue `{prefix}_` onto the front of each cache id. The prefix is read at runtime from `$settings['db_cache_prefix']` in `settings.php` (there is no admin UI, no config object, no permissions, and no dependencies beyond core). When the setting is absent the backend behaves exactly like core. The intended scenarios are shared hosting where one database serves many sites, multi-site setups pointed at a common cache table, and blue-green / rolling deployments where an old and a new codebase run against the same infrastructure and must not read each other's stale rendered output or config cache. Two things are worth knowing before relying on it. Changing the prefix effectively invalidates the whole cache (old ids are now unreachable), which is the intended clean-start behaviour on a new deployment but also a cold cache on a busy site — treat a prefix change as a deployment event, not a config tweak. And a prefix is not confidentiality: every entry still lives in the same `cache_*` table and is readable by anything with database access, so it prevents accidental collision, not deliberate cross-tenant reading. Version 2.0.0-rc3, core `^10.3 || ^11`.
 
 ---
 
-- Separate cache entries between sites.
-- Avoid cache collisions on shared hosting.
-- Scope cache ids per environment.
-- Support a blue-green deployment.
-- Prevent one site reading another's cache.
-- Isolate cache between multisite instances.
-- Invalidate everything on a prefix change.
-- Support a shared cache backend.
-- Fix a setting appearing on the wrong site.
-- Scope cache per deployment version.
-- Separate staging and production cache.
-- Support several sites on one database.
-- Prevent stale rendered output after release.
-- Scope cache for a tenant.
-- Support a shared Redis instance.
-- Force a cold cache deliberately.
-- Isolate cache during a migration.
-- Support a multi-instance architecture.
+- Separate database cache entries between Drupal sites that share one database.
+- Avoid cache-id collisions on shared hosting where sites reuse a cache table.
+- Scope every cache id to a specific environment (dev / staging / prod).
+- Support a blue-green or rolling deployment against shared infrastructure.
+- Stop one codebase from reading another codebase's cached render arrays.
+- Prevent a config value cached on one site from surfacing on another.
+- Prevent stale rendered output being served after a release.
+- Force a deliberately cold cache by changing the prefix at deploy time.
+- Isolate cache during a migration where old and new code run in parallel.
+- Give each multi-site instance its own cache namespace in one table.
+- Derive the prefix from the deployment id / git SHA so each release is isolated.
+- Keep the standard database backend (no Redis/Memcache) while still segmenting.
+- Segment cache for a per-tenant instance sharing a database.
+- Ensure module-discovery cache from an old filesystem isn't reused by a new one.
+- Avoid the class of bug where "whichever instance writes last wins" corrupts cache.
+- Drop in transparently: with no setting configured it behaves like core.
+- Enable and disable per-environment by only setting the value where needed.
+- Pair with core's own `$settings['cache_prefix']` decision when weighing whether a module is needed at all.

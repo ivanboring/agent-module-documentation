@@ -1,17 +1,20 @@
 {
   "name": "Media Contextual Cropping with image_widget_crop Plugin",
   "data_name": "media_contextual_crop_iwc_adapter",
-  "description": "Adapter letting Image Widget Crop provide the cropping UI for Media Contextual Crop.",
+  "description": "Provides a plugin for using Image_widget_crop in contextual crop.",
   "version": "2.0.x",
   "package": "Media Contextual Cropping",
   "composer_namespace": "drupal/media_contextual_crop_iwc_adapter",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/image_widget_crop": "^2.4 || ^3.0",
+    "drupal/media_contextual_crop": "~2.2.0"
+  },
   "dependent_modules": [
-    "media_contextual_crop:media_contextual_crop",
-    "image_widget_crop:image_widget_crop"
+    "media_contextual_crop",
+    "image_widget_crop"
   ],
   "configure": null,
-  "core_version_requirement": "^10 || ^11",
+  "core_version_requirement": "^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/media_contextual_crop_iwc_adapter",
@@ -22,7 +25,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Media"
@@ -38,7 +41,7 @@
     "contextual crop",
     "adapter"
   ],
-  "project_description": "This module provide an adapter between Media Contextual Crop API and Image Widget Crop Plugin \n\n This module is just a plugin use by Media Contextual Crop implementation please check :\n\n - Media Contextual Cropping Embed \n\n- Media Contextual Cropping Field Formatter \n\n Requirements \n - Media Contextual Crop API \n\n- Image Widget Crop Plugin \n\n Branchs \n 1.1.x \n The 1.1.x branch are compatible with 1.2.x branch of main module in order to make it compatible with the core responsive_image formatter\n\n 2.0.x \n - Fully compatible with Media_contextual_crop 2.0.x release\n\n- Add context in embed media, in order to limit ghost crop & images\n\n- Remove all Drupal 9 compatibilities\n\n Back to top",
+  "project_description": "Adapter that plugs Image Widget Crop in as the cropping UI for the Media Contextual Crop API. It ships a single MediaContextualCrop plugin (id image_widget_crop, target field image_crop) extending MediaContextualCropPluginBase, plus hook_form_alter/after_build tweaks that adapt the Image Widget Crop widget for the override (per-usage) context and a small CSS library fixing the crop vertical tabs inside the WYSIWYG media dialog. It has no configuration of its own beyond native Image Widget Crop setup, and is only useful together with a use-case module such as Media Contextual Cropping Embed or Media Contextual Cropping Field Formatter. The 2.0.x branch tracks media_contextual_crop 2.2.x, adds embed context to limit ghost crops, and drops Drupal 9 support.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

@@ -1,16 +1,16 @@
 {
   "name": "Content Reporting",
   "data_name": "content_reporting",
-  "description": "Reporting and analytics on site content.",
+  "description": "Tracks node page views, clicks, time-spent and GDPR consent, then reports and exports the aggregates on an admin dashboard.",
   "version": "1.1.x",
   "package": "Custom",
   "composer_namespace": "drupal/content_reporting",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:node",
-    "drupal:views"
+    "node",
+    "views"
   ],
-  "configure": null,
+  "configure": "content_reporting.settings",
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -18,31 +18,36 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/eu_cookie_compliance": "Provides the GDPR-consent signal read by the tracker's JS.",
+    "drupal/charts": "Required by the content_reporting_charts submodule to render the graphs."
+  },
   "submodules": [
     "content_reporting_charts"
   ],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools",
-    "SEO"
+    "User engagement"
   ],
   "subcategories": [
-    "Reports",
-    "Content auditing"
+    "Dashboard / reporting",
+    "Analytics & tracking"
   ],
   "keywords": [
     "reporting",
     "analytics",
-    "content",
-    "audit",
+    "tracking",
+    "page views",
+    "gdpr",
+    "interactions",
     "charts",
     "statistics"
   ],
-  "project_description": "The Content Reporting module is a custom reporting solution for Drupal 10, optimized for performance and designed to provide detailed insights into page interactions, GDPR compliance , and flexible data management. It allows site administrators to efficiently generate comprehensive reports, track user interactions , and handle data exports, leveraging batch processing for optimal performance when saving and aggregating large datasets .\n\n How It Works \n Once installed and configured, the Content Reporting module starts tracking page views , time spent on page , interactions , and GDPR consents . Data is stored in custom database tables, and administrators can access it through user-friendly dashboards .\n\n The module integrates with the Charts module to generate visual reports, enabling users to monitor content performance over time with line , bar , or pie charts . Reports can be filtered by time period, displaying detailed views and time spent per page, and data can be exported for further analysis.\n\n A lightweight JavaScript is added to each page to send data updates to the backend in the background, without slowing down the site . The updates are processed in groups to reduce the load on the system. Importantly, no sensitive information like IP addresses, emails, or user IDs is collected, ensuring user privacy is maintained.\n\n Features \n \n Track Page Views: Automatically track how many times each piece of content on your site is viewed. \n Time spent on Page: Automatically track how much time users stay on a page \n GDPR Consent Tracking: Count the number of GDPR consents given by users and generate reports. \n User Interaction Tracking: Record various types of user interactions, such as clicks or time spent on specific content. \n Supports Background Tracking: Efficient tracking even when caching layers like CloudFront are enabled, ensuring all interactions are recorded. \n Detailed Reporting: Access a wide range of reports that display views, interactions, and consents for each piece of content. \n Chart Integration: Visualize your data with interactive charts, thanks to seamless integration with the Charts module using Highcharts. \n Performance: Content Reporting module care of website performance managing the data true Drupal Queue engine to avoid numerous requests to the Database. \n \n Post-Installation \n After installing the module, you'll find a new configuration page under the \"Reports\" section of your Drupal administration. From there, you can set up your preferred analytics tools, customize report templates, and start exploring your website's data.\n\n Recommended modules/libraries \n \n Drupal 9 or higher \n EU Cookie Compliance Module : For GDPR compliance features, the eu_cookie_compliance module must be installed and configured (optional but recommended) \n Charts Module : for visual reporting (optional but recommended) \n \n Similar projects \n While there are other reporting modules available for Drupal, this module stands out due to its user-friendly interface, extensive integration options, and focus on real-time data with care of performance.\n\n Roadmap \n Future improvements include:\n\n \n Support for additional types of user interactions. \n More advanced filtering options for reports. \n Integration with external analytics tools. \n \n Supporting this Module \n If you need support or have feedback on Content Reporting module, you can submit a support request or report an issue here .\n\n Credits \n Content Reporting Drupal 10 module is built with Gen AI support from Github Copilot to help write code and Google Bard to help write documentation. \n\n Back to top",
+  "project_description": "Content Reporting is a lightweight, self-contained analytics module for Drupal 9/10/11 that records how visitors engage with nodes and surfaces the results in an admin dashboard. A JavaScript behaviour attached to every node page POSTs a view event (and, when enabled, click and time-spent interaction events, plus a GDPR-consent flag read from the EU Cookie Compliance module) to backend endpoints. To keep page requests cheap, events are pushed onto Drupal core queues (content_reporting_track_queue and content_reporting_interactions_queue) and written to two custom tables (content_reporting_reports and content_reporting_interactions) by queue workers on cron. The dashboard at /admin/content-reporting/dashboard renders a paged, filterable table of per-node views, click breakdowns, time spent and GDPR-consent counts, and offers a CSV export. A settings form toggles the four tracking modes (GDPR, clicks, time-spent, logged-in users). A hook_cron purges report rows older than 30 days. The optional content_reporting_charts submodule adds a charts dashboard built on the contrib Charts module, rendering views-per-page, average time-spent per user type and average time-spent per page as column, bar and pie charts. The project is maintained for Drupal 10+ and is not covered by the security advisory policy.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

@@ -1,25 +1,25 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Bootstrap Multiselect (bootstrap_multiselect) — agent index
 
-Integrates the **Bootstrap Multiselect** library — a multiple-select rendered as a **dropdown of
-checkboxes**. Version **2.0.3**. Core requirement `^9 || ^10 || ^11`.
+Thin integration module for David Stutz's **bootstrap-multiselect** jQuery plugin (v1.1.1), which
+renders a `<select multiple>` as a Bootstrap dropdown of checkboxes. Version **2.0.3**, core
+`^9 || ^10 || ^11`. License GPL-2.0-or-later. Package "Other".
 
-**Why `<select multiple>` is worth replacing — it is the worst-understood control on the web:**
-- it needs **ctrl-click or shift-click**, which a large proportion of users do not know;
-- it **silently discards previous selections** when someone clicks normally;
-- it is nearly unusable on a **touch screen**;
-- it shows a few rows regardless of how many options exist.
+## What it actually provides
+- **One asset library**, `bootstrap_multiselect/multiselect` (defined in
+  `bootstrap_multiselect.libraries.yml`): bootstrap-multiselect 1.1.1 CSS + JS, depends on
+  `core/jquery` and `core/drupal`. JS loads with `defer`.
+- **One hook**, `bootstrap_multiselect_library_info_alter()` (in `bootstrap_multiselect.module`):
+  swaps the CDN URLs for local files under `/libraries/bootstrap_multiselect/...` when present.
 
-Checkboxes are self-explanatory — nobody needs telling that ticking two boxes selects two things.
-On a Bootstrap-themed site this uses the framework's own dropdown and needs no extra styling.
+## What it does NOT provide
+No form element, no field widget, no FormElement/FieldWidget plugin, no config or config schema,
+no route, no permission, no service, no Drush command, no `src/` directory, no submodules. It does
+not initialise the plugin on any element — the consuming theme/module attaches the library and calls
+`$el.multiselect()` itself.
 
-**Two things decide whether the replacement is an improvement or a regression:**
-1. **The underlying element must remain a real `<select multiple>`**, with the widget as
-   presentation. That is what keeps **keyboard operation, form submission and assistive technology**
-   working — a `div` of checkboxes pretending to be a select must reimplement all three and usually
-   reimplements none.
-2. **It must announce how many options are selected.** The whole difficulty of a multi-select is
-   that the state is not visible: a closed dropdown reading **"3 selected"** tells a screen-reader
-   user what a sighted user can see; one reading only "Categories" does not.
+## Dependencies
+Drupal core only (`drupal/core: ^9 || ^10 || ^11`). No contrib module dependencies.
 
-**A native control replaced without both is worse than the control it replaced.**
+## Solution docs
+- [Library, CDN-vs-local override, and usage](library/multiselect.md)

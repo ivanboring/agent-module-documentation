@@ -7,7 +7,7 @@
   "composer_namespace": "drupal/simplenews_resend",
   "composer_requirements": {},
   "dependent_modules": [
-    "simplenews:simplenews"
+    "simplenews"
   ],
   "configure": null,
   "core_version_requirement": "^8 || ^9 || ^10 || ^11",
@@ -19,27 +19,27 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Integrations",
-    "Workflow"
+    "User engagement",
+    "Administration tools"
   ],
   "subcategories": [
-    "Newsletters",
-    "Email marketing"
+    "Email / mail delivery",
+    "Workflow / business rules"
   ],
   "keywords": [
     "simplenews",
     "newsletter",
     "resend",
     "email",
-    "subscribers",
-    "corrections"
+    "sent status",
+    "reset"
   ],
-  "project_description": "Allows resetting the sent status of an already sent Simplenews newsletter issue to \"not sent\" so that users can resend the newsletter.\n\n Similar Modules \n https://www.drupal.org/project/simplenews_status_reset - Drupal 7 only",
+  "project_description": "Resets the sent status of an already-sent Simplenews newsletter issue back to \"not sent\" (SIMPLENEWS_STATUS_SEND_NOT), so the issue can be sent again through Simplenews' normal send flow without cloning the node or editing the status value in the database. Adds a permission-gated \"Reset newsletter status\" node operation and a confirm form; it does not itself send mail, it only clears the sent flag so Simplenews will send the issue again.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

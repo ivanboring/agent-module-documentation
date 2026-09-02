@@ -1,24 +1,37 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Content Reporting (content_reporting) — agent index
 
-Reports about **the site's own content** — how much, of what types, by whom, changing how — with a
-`content_reporting_charts` submodule. Depends on core `node` and `views`.
-Version **1.1.0-beta23** — **beta**, and the high beta number suggests a long stabilisation.
-Core requirement `^9 || ^10 || ^11`.
+First-party engagement analytics for nodes. A client-side tracker (`js/track.js`) POSTs view, click
+and time-spent events to backend routes; events are queued and written to two custom tables by cron
+queue workers; an admin dashboard reports and exports the aggregates. Version **1.1.0-beta23**,
+core `^9 || ^10 || ^11`.
 
-**The distinction from web analytics is the useful one:** analytics says **what visitors did**;
-content reporting says **what the site has** — the question nobody can answer past a few thousand
-nodes, and the one that arises whenever something must be decided about the content as a whole. How
-many pages; how many untouched for three years; which content types are actually used; who has
-stopped producing; how many nodes lack an image, a summary or a term. **That is the input to a
-content audit, a migration scope, a redesign's IA and a retirement programme** — without it those
-conversations proceed on impressions.
+- **Dependencies:** core `node`, `views`. Optional: `eu_cookie_compliance` (GDPR signal),
+  `charts` (only for the submodule).
+- **Submodule:** `content_reporting_charts` — see
+  `../../modules/content_reporting_charts/1.1.x/agent/start.md`.
 
-**Two things worth attaching:**
-1. **Counting content is a query problem at the scale where the answer matters.** Several aggregates
-   over fifty thousand nodes is a slow page at best — these reports belong **on a schedule with the
-   result stored**. Worth checking, because the naive implementation is fine on a development site
-   and **times out on production**.
-2. **A content report is a report about people as well as content.** *"Who has stopped producing"*
-   is a **performance statistic about named individuals** — publishing it to everyone with access to
-   the reports section is a decision, not a default.
+## What it provides
+- **Routes/controllers** (`content_reporting.routing.yml`):
+  - `content_reporting.dashboard` → `ContentReportingController::getReport` (`/admin/content-reporting/dashboard`, perm `content reporting view`).
+  - `content_reporting.export_to_csv` → `ContentReportingController::exportToCsv` (perm `content reporting view`).
+  - `content_reporting.settings` → `ContentReportingSettingsForm` (perm `content reporting admin`).
+  - `content_reporting.track_node` (`/track-content`, POST) and `content_reporting.track_interaction`
+    (`/track-content/interaction`, POST) → `TrackingController`, perm `access content`.
+- **Forms:** `ContentReportingSettingsForm` (config `content_reporting.settings`),
+  `ContentReportingFiltersForm` (dashboard filter form).
+- **Queue workers** (`src/Plugin/QueueWorker/`): `content_reporting_track_queue`
+  (`ContentReportingTrackWorker`) and `content_reporting_interactions_queue`
+  (`ContentReportingInteractionWorker`).
+- **Tables** (`content_reporting.install`): `content_reporting_reports`,
+  `content_reporting_interactions`.
+- **Permissions** (`content_reporting.permissions.yml`): `track content views`,
+  `content reporting view`, `content reporting admin`.
+- **Hooks** (`content_reporting.module`): `hook_preprocess_page` (attaches the tracker to node
+  pages), `hook_cron` (deletes report rows older than 30 days), `hook_help`.
+- **Library:** `content_reporting/track_node` (jQuery), `content_reporting/content_reporting.styles`.
+
+## Solution docs
+- Configuration & tracking modes: `config/settings.md`
+- Reporting dashboard, routes & permissions: `reporting/dashboard.md`
+- Tracking endpoints & queue pipeline: `api/tracking.md`

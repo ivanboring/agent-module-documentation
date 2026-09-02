@@ -1,27 +1,29 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-GOV Notify Integration sends email, SMS and letters through GOV.UK Notify and its equivalents in Canada and Australia.
+Send Drupal emails and SMS messages through a Government Notify service (Gov.UK Notify, Government of Canada Notification, or Australian Government Notify) by registering a Notify-backed mail plugin.
 
 ---
 
-Notify is the shared messaging platform built by the UK Government Digital Service and adopted, as open source, by the Canadian and Australian governments — which is why this module names all three. For a public body it is usually not a choice but the default: it is already procured, already assessed, and it handles the parts that are hard to do well and expensive to get wrong. Templates live in Notify rather than in the site, so the wording of a statutory letter is edited by the people responsible for it and versioned there. Delivery is reported per message, so "did the applicant receive the decision" has an answer. And it sends **letters** — actual printed post — which matters because a public service cannot assume digital access, and building a print pipeline is not something a website should be doing. Version **3.2.1** on core `^10.3 || ^11`, with a `govuk_notify_views_backend` submodule. Three things belong in the deployment. **The API key is scoped and the scope matters** — Notify issues live, test and team-only keys, and using a live key in a non-production environment is how a test run sends real letters to real people, which is a recognisable incident in this sector rather than a hypothetical. **Personalisation is the payload**, so what the site sends is names, addresses, reference numbers and case details, which makes the integration a processing activity to record rather than a technical detail. And **the template is the message**: because the wording lives in Notify, the site is responsible only for supplying the right variables, so an integration that hard-codes text is defeating the arrangement it was adopted for.
+GOV Notify Integration wraps the official `alphagov/notifications-php-client` in a Drupal service and a core Mail plugin (`govuk_notify_mail`). Once configured with an API key and template IDs on `/admin/config/system/govuk_notify`, any Drupal mail — system emails or programmatic `MailManager::mail()` calls — can be delivered via Notify. Recipients that validate as email addresses are sent as emails; anything else is treated as a phone number and sent as an SMS. You can either let Drupal render the body and pass it into a Notify "default" template (one `((subject))` and one `((message))` placeholder), or target a specific Notify template and supply its personalisation params directly. Template metadata is fetched from the API and cached. The service also supports the Canadian and Australian Notify endpoints, test-key "force temporary/permanent failure" simulation, and a companion `govuk_notify_views_backend` submodule that surfaces the Notify message log as a Views base table for dashboards.
 
 ---
 
-- Send email through GOV.UK Notify.
-- Send an SMS to a service user.
-- Send a printed letter from a service.
-- Meet a public sector messaging standard.
-- Use templates managed outside the site.
-- Report delivery of a decision letter.
-- Support a Canadian government service.
-- Send an appointment reminder by SMS.
-- Support an Australian government site.
-- Track message delivery status.
-- Send a confirmation to an applicant.
-- Support a statutory notification.
-- Send a reminder to a claimant.
-- Use a procured messaging platform.
-- Send a letter to someone offline.
-- Support a local authority's service.
-- Send a verification code by SMS.
-- Meet an accessibility-driven contact requirement.
+- Route all Drupal system emails (password resets, contact form, user registration) through Gov.UK Notify by ticking "Use Gov Notify to send system emails".
+- Send transactional emails to citizens from a public-sector Drupal site using an approved Notify account.
+- Send SMS text notifications to a phone number captured in a form or field.
+- Send both email and SMS from the same code path — the mail plugin auto-detects which based on whether the recipient is a valid email address.
+- Use a Drupal-rendered message body inside a Notify "default" template so you keep Drupal's templating engine.
+- Use a specific, Notify-designed template by passing its `template_id` and personalisation `params` in the message array.
+- Send a programmatic email: `\Drupal::service('plugin.manager.mail')->mail('govuk_notify', $key, $to, $langcode, $params)`.
+- Call the Notify service directly from custom code via `\Drupal::service('govuk_notify.notify_service')->sendEmail($to, $template_id, $params)`.
+- Send an SMS directly via `->sendSms($to, $template_id, $params)` with template placeholders in `params`.
+- Test the configured API key by entering a test email address on the settings form and saving (sends a live test email).
+- Test SMS delivery by entering a test phone number on the settings form and saving.
+- Point the same module at the Government of Canada Notification service by selecting the "ca" service option.
+- Point the module at the Australian Government Notify service by selecting the "au" service option.
+- Simulate temporary or permanent delivery failures against a Notify test key to exercise your error handling.
+- Fetch a template's metadata (subject/body/placeholders) with the service's cached `getTemplate($template_id)`.
+- Build a delivery-status dashboard by enabling `govuk_notify_views_backend` and creating a View on the "GovUK Notification Message Log" base table.
+- Filter that message-log View by message type (email/sms/letter), delivery status, or message id/reference.
+- Display Notify message fields — id, type, created/updated/sent timestamps, status, created_by, body, subject — as View columns.
+- Support multiple Government Notify jurisdictions from one Drupal codebase by switching the service selector.
+- Keep Notify template rendering server-side while still letting Drupal supply dynamic subject and body values.
+- Provide staff a read-only audit view of what messages were sent and their current delivery state.
