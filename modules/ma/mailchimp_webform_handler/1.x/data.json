@@ -1,13 +1,16 @@
 {
-  "name": "Mailchimp Webform Handler",
+  "name": "Mailchimp webform handler",
   "data_name": "mailchimp_webform_handler",
   "description": "Webform handler for Mailchimp.",
   "version": "1.x",
-  "package": null,
+  "package": "Webform",
   "composer_namespace": "drupal/mailchimp_webform_handler",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/webform": "^6.2",
+    "mailchimp/marketing": "^3.0"
+  },
   "dependent_modules": [
-    "webform:webform"
+    "webform"
   ],
   "configure": null,
   "core_version_requirement": "^10 || ^11",
@@ -21,20 +24,25 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Forms and surveys"
+    "Forms and surveys",
+    "Integrations"
   ],
   "subcategories": [
-    "Marketing integration"
+    "Submission handling",
+    "CRM integration"
   ],
   "keywords": [
     "mailchimp",
     "webform",
+    "webform handler",
     "marketing",
     "audience",
-    "contacts"
+    "list",
+    "subscribe",
+    "merge fields"
   ],
   "project_description": "This module allows you to add a new contact from a webform to a Mailchimp list without enabling a dependent Mailchimp-module.\n\n Why I created this module? \n\nIn a website we are developing we need to subscribe to different list from different Mailchimp-accounts based on the selected country/language.\n\nWe can add as many Mailchimp Webform handlers as we want to the webform, all with a different API-key. Based on the webform conditions, we can activate the correct handler and post data to the correct Mailchimp-account and list.",
   "maintenance_status": "Actively maintained",

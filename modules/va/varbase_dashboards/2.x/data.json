@@ -1,12 +1,20 @@
 {
   "name": "Varbase Dashboards",
   "data_name": "varbase_dashboards",
-  "description": "This dashboard is built on top of Dashboard module, utilize Drupal core's Layout Builder for dynamic dashboards management, Google Analytics Reports, and several enhanced blocks and widgets for an intuitive and flexible administration experience.",
+  "description": "Administrative dashboards built on the Dashboard module using Drupal core's Layout Builder, shipping enhanced blocks and views (content overview, drafts, recent changes, users, terms) and a default dashboard, primarily for the Varbase distribution.",
   "version": "2.x",
-  "package": null,
+  "package": "Varbase",
   "composer_namespace": "drupal/varbase_dashboards",
-  "composer_requirements": {},
-  "dependent_modules": [],
+  "composer_requirements": {
+    "drupal/dashboard": "~2",
+    "drupal/layout_builder_restrictions": "~3",
+    "drupal/statistics": "~1.0.0"
+  },
+  "dependent_modules": [
+    "dashboard",
+    "layout_builder_restrictions",
+    "statistics"
+  ],
   "configure": null,
   "core_version_requirement": "~11.4.0",
   "active_installs": null,
@@ -19,22 +27,26 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "VarbaseDashboard"
+  ],
   "categories": [
-    "Administration"
+    "Administration tools"
   ],
   "subcategories": [
-    "Admin UI"
+    "Dashboard / reporting"
   ],
   "keywords": [
     "dashboard",
     "varbase",
     "admin",
-    "reports",
-    "distribution"
+    "layout builder",
+    "blocks",
+    "views",
+    "reports"
   ],
-  "project_description": "A dashboard is what's missing for better Drupal administration experience.\n\n This dashboard is built on top of Dashboards module, utilize Drupal core's Layout Builder for dynamic dashboards management, and several enhanced blocks and widgets for an intuitive and flexible administration experience.\n\n The idea is made to provide the site admins with an appealing and concise dashboard to become the home of any Drupal site's administration task.\n\n \n Provides default set of dashboards with configuration and enhancements for dynamic default, editorial, and admin dashboard management system.\n\n \n\n \n\n \n Back to top \n\n Varbase documentation \n Check out Varbase documentation for more details.\n\n \n \n\n \nExpanded Navigation with the Dashboard\n\n \n \n Closed Navigation with the Dashboard\n\n \n\n \n \n\n \n \n\n Back to top \n\n Use With Varbase Distribution: \n This module is best used with Varbase distribution.\n\n Can be installed with any Drupal site. Even if installed with the Minimal or Standard profile.\n\n However, using it with Varbase gives you way much more cool stuff!\n\n \n\n \n\n \n Back to top \n\n Varbase documentation \n Check out Varbase documentation for more details.\n\n \n \n \n \n \n\n Sponsored and developed by Vardot. \n \n\n Back to top",
+  "project_description": "A dashboard is what's missing for better Drupal administration experience.\n\nVarbase Dashboards is built on top of the Dashboard (drupal/dashboard) module and uses Drupal core's Layout Builder for dynamic dashboard management. It ships several enhanced blocks and widgets (a user welcome block, a content/comment overview block, and an \"Add content\" menu plugin) plus a set of Views (all content, drafts, recent changes, recently created, terms, users, scheduled publishing) that populate a default \"Dashboard\" layout for an intuitive and flexible administration experience.\n\nThe idea is to give site admins an appealing, concise dashboard that becomes the home of any Drupal site's administration task. An install recipe provisions the default dashboard, the supporting Views, and grants a graded set of dashboard permissions to the standard Varbase editorial roles. It is best used with the Varbase distribution but can be installed on any Drupal 11 site.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

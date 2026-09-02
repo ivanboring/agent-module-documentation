@@ -1,11 +1,24 @@
 {
-  "name": "Seeds Security",
+  "name": "Seeds Security & Performance",
   "data_name": "seeds_security",
   "description": "Starter Module to enable all security modules",
   "version": "2.x",
-  "package": "Security",
+  "package": "Seeds",
   "composer_namespace": "drupal/seeds_security",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/captcha": "^2.0",
+    "drupal/recaptcha": "^3.4",
+    "drupal/password_policy": "^4.0",
+    "drupal/username_enumeration_prevention": "^1.4",
+    "drupal/login_security": "^2.0",
+    "drupal/session_limit": "^2.0",
+    "drupal/seckit": "^2.0",
+    "drupal/remove_http_headers": "^2.1",
+    "drupal/webform_spam_words": "^3.0",
+    "drupal/activities": "^1.0",
+    "drupal/restrict_ip": "^5.0",
+    "drupal/email_tfa": "^2.0"
+  },
   "dependent_modules": [
     "username_enumeration_prevention:username_enumeration_prevention",
     "captcha:captcha",
@@ -30,13 +43,15 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Security"
   ],
   "subcategories": [
-    "Hardening"
+    "HTTP security headers",
+    "Login page protection",
+    "Password policy"
   ],
   "keywords": [
     "security",

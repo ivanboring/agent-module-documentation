@@ -3,7 +3,7 @@
   "data_name": "papaparse",
   "description": "Provides Drupal library for the Papaparse javascript library.",
   "version": "1.x",
-  "package": null,
+  "package": "csv",
   "composer_namespace": "drupal/papaparse",
   "composer_requirements": {},
   "dependent_modules": [],
@@ -19,13 +19,13 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
   ],
   "subcategories": [
-    "Libraries"
+    "JavaScript libraries"
   ],
   "keywords": [
     "papaparse",
@@ -34,7 +34,7 @@
     "javascript",
     "parsing"
   ],
-  "project_description": "This module provides the Papaparse javascript library.",
+  "project_description": "PapaParse is a library-wrapper module: it declares a single Drupal asset library, also named 'papaparse', that registers the third-party PapaParse JavaScript CSV parser (version 5.3.0) so other modules and themes can depend on it and parse CSV in the browser. It ships no PHP, no routes, no permissions, no services and no configuration — only an .info.yml and a .libraries.yml. The declared JavaScript asset is loaded as an external resource; consuming code attaches the library via a #attached['library'] entry or a libraries-dependency.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

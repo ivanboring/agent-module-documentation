@@ -3,7 +3,7 @@
   "data_name": "transliterate_twig",
   "description": "Creates a twig filter for transliterating strings (without PECL)",
   "version": "2.x",
-  "package": null,
+  "package": "Twig",
   "composer_namespace": "drupal/transliterate_twig",
   "composer_requirements": {},
   "dependent_modules": [],
@@ -19,22 +19,25 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content display"
+    "Theming",
+    "Developer tools"
   ],
   "subcategories": [
-    "Theming / templates"
+    "Twig / component libraries",
+    "Data transformation"
   ],
   "keywords": [
     "transliterate",
     "twig",
     "filter",
     "ascii",
-    "theming"
+    "theming",
+    "pecl"
   ],
-  "project_description": "The module adds a twig filter for transliterating strings without PECL.\n\n It implements the same functionality of Transliterate Twig Filter module ( https://www.drupal.org/project/transliterate ), but using only Drupal functions.\n\n Example:\n\n {{ 'résidence' | tl }} => residence",
+  "project_description": "The module adds a Twig filter for transliterating strings without PECL. It registers a single Twig filter named 'tl' that converts accented and non-ASCII characters to their closest ASCII equivalents by delegating to Drupal core's own \\Drupal\\Component\\Transliteration\\PhpTransliteration service. It implements the same functionality as the Transliterate Twig Filter module (https://www.drupal.org/project/transliterate), but using only Drupal functions, so no PECL/intl extension is required.\n\nExample:\n\n {{ 'résidence' | tl }} => residence",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

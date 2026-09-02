@@ -3,9 +3,12 @@
   "data_name": "commerce_license_access_control",
   "description": "Grant specific content access with Commerce License",
   "version": "8.x-1.x",
-  "package": "Commerce",
+  "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_license_access_control",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/acl": "^2.0@beta",
+    "drupal/commerce_license": "^3.0"
+  },
   "dependent_modules": [
     "acl:acl",
     "commerce_license:commerce_license"
@@ -22,18 +25,21 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Commerce"
+    "E-commerce",
+    "Access control"
   ],
   "subcategories": [
-    "Payment"
+    "Licensing / paid access",
+    "Per-node view access"
   ],
   "keywords": [
     "commerce",
     "license",
     "access control",
+    "acl",
     "paywall",
     "members"
   ],
