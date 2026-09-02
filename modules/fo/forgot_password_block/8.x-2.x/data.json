@@ -3,12 +3,12 @@
   "data_name": "forgot_password_block",
   "description": "Custom block to display the forgot password form.",
   "version": "8.x-2.x",
-  "package": null,
+  "package": "User",
   "composer_namespace": "drupal/forgot_password_block",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:user",
-    "drupal:block"
+    "user",
+    "block"
   ],
   "configure": null,
   "core_version_requirement": "^8 || ^9 || ^10 || ^11",
@@ -22,13 +22,15 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "User interface"
+    "Access control",
+    "Content display"
   ],
   "subcategories": [
-    "User account"
+    "Password reset",
+    "Block enhancements"
   ],
   "keywords": [
     "password reset",
@@ -37,7 +39,7 @@
     "login",
     "user"
   ],
-  "project_description": "This module provides a Forgot Password Block.\n\n Install module and go to \"Block layout\" page. Select region and look for \"Forgot Password\" block. Select block and insert into region.\n\n You will type email address in the text field and forgot password link will be sent to your email address.",
+  "project_description": "Forgot Password Block provides a single block plugin that renders Drupal core's password-reset request form (Drupal\\user\\Form\\UserPasswordForm, the form served at /user/password) so it can be placed in any theme region, sidebar, modal, or login area via the standard Block Layout UI. It adds no form of its own and no configuration: the block simply fetches the core form through the form builder, so it inherits core's behaviour and security wholesale, including the CSRF token, the password-reset flood control, and the generic anti-enumeration confirmation message. Depends only on the core User and Block modules.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

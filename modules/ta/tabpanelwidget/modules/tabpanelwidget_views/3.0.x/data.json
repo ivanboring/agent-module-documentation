@@ -1,13 +1,14 @@
 {
-  "name": "Tabpanelwidget Views",
+  "name": "TabPanelWidget Views",
   "data_name": "tabpanelwidget_views",
   "description": "Provides a TabPanelWidget style plugin for Views.",
   "version": "3.0.x",
-  "package": null,
+  "package": "Custom",
   "composer_namespace": "drupal/tabpanelwidget",
   "composer_requirements": {},
   "dependent_modules": [
-    "tabpanelwidget:tabpanelwidget"
+    "tabpanelwidget",
+    "views"
   ],
   "configure": null,
   "core_version_requirement": "^9 || ^10",
@@ -24,14 +25,16 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "User interface"
+    "Content display"
   ],
   "subcategories": [
-    "UI components"
+    "Views styles",
+    "Tabbed content / accordion"
   ],
   "keywords": [
     "tabpanelwidget",
     "views",
+    "views style",
     "submodule"
   ],
   "part_of": "tabpanelwidget",

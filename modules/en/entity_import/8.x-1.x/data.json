@@ -3,13 +3,15 @@
   "data_name": "entity_import",
   "description": "Import entities from various sources.",
   "version": "8.x-1.x",
-  "package": null,
+  "package": "Migration",
   "composer_namespace": "drupal/entity_import",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "league/csv": "^9.27.0"
+  },
   "dependent_modules": [
     "drupal:migrate"
   ],
-  "configure": null,
+  "configure": "entity.entity_importer.collection",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -26,19 +28,21 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Content"
+    "Import and export"
   ],
   "subcategories": [
-    "Import / migration"
+    "Content migration / import",
+    "Migration tooling"
   ],
   "keywords": [
     "import",
     "entities",
     "csv",
-    "json",
-    "content"
+    "migration",
+    "content",
+    "field mapping"
   ],
-  "project_description": "The entity importer module provides a user interface for site administrators to import various entities. At the moment the module only support CSV files as the source, but due to the plugin type architecture this can easily be expanded to other file formats. There are also plans in the road-map to support other common source types moving forward.\n\n The entity importer module was built on top of the migration API. Importers are able to support migration dependencies within one interface, this allows site administrators to manage all related imports without having to navigate to multiple screens. The module exposes a robust configuration interface, which allows a user to point-and-click to build a simple or complex importer. This includes field mappings and data processing/transformation (migration lookups, entity lookup, string replacement, etc.), which you would expect if you were writing a custom migration using YAML.",
+  "project_description": "The entity importer module provides a user interface for site administrators to import content entities. It ships a CSV source out of the box; because sources are migrate source plugins, other file/data formats can be added. It is built on top of the core Migrate API: each configured importer becomes a derived migration, so importers support migration dependencies, field mappings, and data processing/transformation (migrate lookups, entity lookup, string replacement, explode, extract, callbacks, etc.) that you would otherwise hand-write in a migration YAML — all through a point-and-click admin interface. Uploaded files are parsed, imported into the chosen entity type/bundle, can be re-run to update existing entities, rolled back, and inspected via per-importer logs.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

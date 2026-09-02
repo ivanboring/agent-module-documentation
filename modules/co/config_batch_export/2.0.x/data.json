@@ -1,9 +1,9 @@
 {
-  "name": "Config Batch Export",
+  "name": "Configuration Batch Export",
   "data_name": "config_batch_export",
   "description": "Allows administrators export configuration using batch",
   "version": "2.0.x",
-  "package": null,
+  "package": "Core",
   "composer_namespace": "drupal/config_batch_export",
   "composer_requirements": {},
   "dependent_modules": [
@@ -11,7 +11,7 @@
     "drupal:file",
     "drupal:datetime"
   ],
-  "configure": null,
+  "configure": "config.sync",
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -23,13 +23,16 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Administration"
+    "Import and export",
+    "Administration tools"
   ],
   "subcategories": [
-    "Configuration management"
+    "Configuration management",
+    "Data export",
+    "Backup & restore"
   ],
   "keywords": [
     "config",

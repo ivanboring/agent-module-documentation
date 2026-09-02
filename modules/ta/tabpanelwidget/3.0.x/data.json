@@ -1,38 +1,44 @@
 {
-  "name": "Tab Panel Widget",
+  "name": "TabPanelWidget",
   "data_name": "tabpanelwidget",
   "description": "Provides the tabpanelwidget library for responsive and accessible tabs and accordions.",
   "version": "3.0.x",
-  "package": null,
+  "package": "Custom",
   "composer_namespace": "drupal/tabpanelwidget",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "tabpanelwidget.settings_form",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/tabpanelwidget",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "tabpanelwidget/tabpanelwidget"
+  ],
   "suggests": {},
   "submodules": [
-    "tabpanelwidget_views",
-    "tabpanelwidget_quicktabs"
+    "tabpanelwidget_quicktabs",
+    "tabpanelwidget_views"
   ],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "User interface"
+    "Content display",
+    "Accessibility"
   ],
   "subcategories": [
-    "UI components"
+    "Tabbed content / accordion",
+    "ARIA / semantic markup"
   ],
   "keywords": [
     "tabs",
     "tab panel",
+    "accordion",
+    "responsive",
     "accessible",
     "quicktabs",
     "views"

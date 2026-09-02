@@ -1,31 +1,31 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Routes List provides an admin report listing all registered routes on the site, for developers and site auditors.
+Routes List adds an admin report at /admin/reports/routes-list that lists every registered route on the site — path, route name, and a human-readable summary of each route's access rule — grouped by the module that provides it.
 
 ---
 
-When debugging or auditing a site, seeing every registered route — path, name, controller, requirements — in one place is genuinely useful, and Drupal offers no such overview out of the box. Routes List adds it as a report at /admin/reports/routes-list, gated by a dedicated `access routes list` permission. That permission matters: a full route inventory is a map of the site's surface, useful to a developer and equally useful to an attacker, so it should be restricted to trusted developers/administrators, not granted broadly. Keep it to the people who need it.
+Drupal registers hundreds of routes but offers no single screen that shows them all together with who can reach them. Routes List fills that gap: it iterates the route provider, resolves each route's access requirement into a plain description (a named permission with a link to the permissions page, "Any logged-in user", "Only anonymous users", entity-access control, "Custom rule", or a red "Allowed for anyone" flag), groups the rows under the providing module, and renders a sortable admin table. It is a developer and site-audit aid: install it, grant the dedicated `access routes list` permission to the developers/administrators who need it, read the report, and disable it again when finished. The module has no settings form and stores nothing — the report is computed live on each page load. It also registers minimal Views integration (a `router` base table with Name and Path fields/filters/sorts) for anyone who wants to build a custom routes view.
 
 ---
 
-- List all registered routes.
-- Audit the site's routes.
-- Debug routing.
-- See every path and controller.
-- Find a route by name.
-- Restrict route-list access.
-- Grant it to developers only.
-- Map the site's surface.
-- Review route requirements.
-- Keep the inventory restricted.
-- Enable when the feature is needed.
-- Keep it disabled otherwise.
-- Restrict administration to trusted roles.
-- Confirm behaviour on your site.
-- Test before production.
-- Review configuration.
-- Pair with related modules.
-- Keep the setup minimal.
-- Document why it was added.
-- Verify it fits your theme.
-- Audit access to it.
-- Match it to your use case.
+- List every registered route on the site in one screen.
+- See the path, route name, and access rule for each route side by side.
+- Audit which routes are reachable by anonymous users.
+- Spot routes flagged "Allowed for anyone" (`_access: TRUE`) at a glance.
+- Review which permission gates a given route.
+- Jump from a route's permission to that permission's row on the permissions page.
+- Identify routes gated only by login vs. anonymous-only routes.
+- Understand entity-access-controlled routes (op + entity type).
+- Inspect "Custom rule" routes via the serialized-requirements tooltip.
+- Group routes by their providing module for orientation.
+- Debug why a route is or isn't accessible.
+- Confirm a newly added module's routes registered as expected.
+- Find a route's machine name when writing links or tests.
+- Cross-check permission configuration during a security review.
+- Verify no unintended full-access URLs are exposed.
+- Build a custom routes report via the module's Views `router` base table.
+- Sort or filter routes by name or path in a Views display.
+- Restrict access to the report to trusted developers/admins only.
+- Enable the module only while auditing, then uninstall it.
+- Onboard developers by showing them the site's routing surface.
+- Document a site's URL surface for handover.
+- Sanity-check routing after a Drupal core or contrib upgrade.
+- Locate reports and diagnostics routes under /admin/reports.

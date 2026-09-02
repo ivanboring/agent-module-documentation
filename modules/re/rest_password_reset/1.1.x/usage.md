@@ -1,31 +1,29 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-REST Password Reset provides REST endpoints for requesting a password-reset link, retrieving a forgotten username, and completing a password reset — for decoupled/headless front ends.
+REST Password Reset exposes three REST endpoints so a decoupled (headless) Drupal frontend can retrieve a username, request a password-reset email, and set a new password without the standard Drupal login forms.
 
 ---
 
-A decoupled front end needs to drive the password-reset flow over an API rather than Drupal's own pages. REST Password Reset provides three REST resources for that: request a reset link by email, retrieve a username by email, and complete the reset with a hash+timestamp. Reviewed closely because password reset over an API is a classic place to leak user existence or mishandle tokens — and this module gets the important things right. The request endpoints return a **generic message** ('If there is an active user…') for both existing and non-existing emails, so they do not enumerate accounts; the reset completion compares the reset hash with **`hash_equals()`** (constant-time) against core's `user_pass_rehash()`, honours the configured reset timeout, and there is a **5-minute per-user flood check** on requests. One minor caveat: the request endpoints take the email as a GET URL parameter, so the email lands in server/proxy logs and browser history — a POST body would keep it out of logs. Overall it is a sound implementation to pair with a headless front end.
+The module builds on Drupal core's REST module and is aimed at decoupled sites (for example a React frontend). It registers three `@RestResource` plugins: a GET resource that emails a one-time reset link for a given email address, a GET resource that emails the account username for a given email address, and a POST resource that consumes the `uid`/`timestamp`/`hash` from that link plus a `new_password` and saves the new password. The reset link points at a configurable URL in your frontend (base URI + optional custom suffix + `uid/timestamp/hash`), and the emails are fully configurable and multilingual through an admin form. The reset link uses the same hashing (`user_pass_rehash()`) that core Drupal uses, so a link is bound to the account and expires like a normal Drupal one-time login link. You enable and grant access to the resources through the REST UI module, typically allowing anonymous cookie-authenticated access so the frontend can call them directly.
 
 ---
 
-- Reset a password over REST.
-- Request a reset link by email.
-- Retrieve a username by email.
-- Complete a reset with hash+timestamp.
-- Support a decoupled front end.
-- Avoid account enumeration.
-- Rely on hash_equals for the code.
-- Honour the reset timeout.
-- Rate-limit reset requests.
-- Drive reset from a SPA.
-- Keep the generic response message.
-- Note the email is in the GET URL.
-- Enable when the feature is needed.
-- Keep it disabled otherwise.
-- Restrict administration to trusted roles.
-- Confirm behaviour on your site.
-- Test before production.
-- Review configuration.
-- Pair with related modules.
-- Keep the setup minimal.
-- Document why it was added.
-- Verify it fits your theme.
+- Add password reset to a decoupled/headless Drupal site whose login lives in a React/Vue/Next frontend.
+- Let a user request a password-reset email by submitting only their email address from the frontend.
+- Send a reset email whose link targets a page in your own frontend rather than the Drupal backend UI.
+- Let a user who forgot their username retrieve it by email address.
+- Provide a "set a new password" flow in the frontend that POSTs `uid`, `timestamp`, `hash`, and `new_password` back to Drupal.
+- Reuse Drupal's native one-time-login hashing so reset links behave like standard Drupal reset links.
+- Configure the frontend base URL that reset links point to (the `fe_uri` setting).
+- Configure a custom URL suffix (e.g. `/password-reset/`) for the reset page in the frontend.
+- Customize the subject and body of the password-reset email, including tokens like `[site:name]` and `[user:display-name]`.
+- Customize the subject and body of the username-retrieval email.
+- Insert the generated one-time login link into the email with the `[rest_password_reset:login_link]` token.
+- Serve translated reset and username emails on a multilingual site (langcode is prefixed into the reset URL).
+- Return uniform, non-revealing responses whether or not the email belongs to a real account.
+- Throttle repeated reset/username emails for the same account so a mailbox is not flooded.
+- Integrate password recovery into a mobile app that talks to Drupal over REST with cookie authentication.
+- Keep the Drupal backend headless while still supporting the full forgot-password journey.
+- Enable/disable and set authentication/formats per endpoint through the REST UI module.
+- Restrict who may edit the email/URL configuration via the module's dedicated permission.
+- Localize the reset page path per language by relying on the langcode-prefixed reset URL.
+- Migrate a traditional Drupal login to a decoupled frontend without losing password recovery.
+- Provide a JSON API for username lookup and password reset that returns simple `message` payloads.

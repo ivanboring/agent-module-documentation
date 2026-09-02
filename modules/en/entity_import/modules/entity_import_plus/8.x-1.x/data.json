@@ -3,10 +3,11 @@
   "data_name": "entity_import_plus",
   "description": "Add additional import plugins that are related to contributed modules.",
   "version": "8.x-1.x",
-  "package": null,
+  "package": "Migration",
   "composer_namespace": "drupal/entity_import",
   "composer_requirements": {},
   "dependent_modules": [
+    "migrate_plus:migrate_plus",
     "entity_import:entity_import"
   ],
   "configure": null,
@@ -21,21 +22,24 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content"
+    "Import and export"
   ],
   "subcategories": [
-    "Import / migration"
+    "Content migration / import",
+    "Data transformation"
   ],
   "keywords": [
-    "entity",
-    "plus",
+    "entity import",
+    "migrate process",
+    "entity lookup",
+    "entity generate",
     "submodule"
   ],
   "part_of": "entity_import",
-  "project_description": "The entity importer module provides a user interface for site administrators to import various entities. At the moment the module only support CSV files as the source, but due to the plugin type architecture this can easily be expanded to other file formats. There are also plans in the road-map to support other common source types moving forward.\n\n The entity importer module was built on top of the migration API. Importers are able to support migration dependencies within one interface, this allows site administrators to manage all related imports without having to navigate to multiple screens. The module exposes a robust configuration interface, which allows a user to point-and-click to build a simple or complex importer. This includes field mappings and data processing/transformation (migration lookups, entity lookup, string replacement, etc.), which you would expect if you were writing a custom migration using YAML.",
+  "project_description": "Entity Import Plus is a submodule of Entity Import that adds migrate process plugins built on top of migrate_plus: Entity Lookup, Entity Generate, and String Replace. These make the parent module's point-and-click field mappings able to resolve inbound values to existing entity references, auto-create referenced entities that do not yet exist, and run search/replace (literal or regex) transformations during import. It also registers an event subscriber that seeds valid stub configuration for its migrate_plus-derived plugins so they instantiate cleanly inside Entity Import's dynamically built migrations.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

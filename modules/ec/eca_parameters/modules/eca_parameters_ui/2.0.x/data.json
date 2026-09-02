@@ -1,13 +1,15 @@
 {
-  "name": "Eca Parameters Ui",
+  "name": "ECA Parameters UI",
   "data_name": "eca_parameters_ui",
   "description": "Manage ECA parameters through the web user interface.",
   "version": "2.0.x",
-  "package": null,
+  "package": "ECA",
   "composer_namespace": "drupal/eca_parameters",
   "composer_requirements": {},
   "dependent_modules": [
-    "eca_parameters:eca_parameters"
+    "eca:eca_parameters",
+    "eca:eca_ui (^2)",
+    "parameters:parameters_ui"
   ],
   "configure": null,
   "core_version_requirement": "^10.3 || ^11",
@@ -19,20 +21,21 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Workflow"
+    "Automation"
   ],
   "subcategories": [
-    "Automation"
+    "Workflow / business rules"
   ],
   "keywords": [
     "eca",
     "ui",
-    "submodule"
+    "submodule",
+    "parameters"
   ],
   "part_of": "eca_parameters",
   "project_description": "This module integrates ECA with Parameters by providing events, conditions and actions when working with parameters within ECA. It also provides a new collection of parameters for ECA.\n\n The README contains some info what this module can do for you, and how to set it up.",

@@ -1,13 +1,14 @@
 {
-  "name": "Tabpanelwidget Quicktabs",
+  "name": "TabPanelWidget Quick Tabs",
   "data_name": "tabpanelwidget_quicktabs",
   "description": "A TabPanelWidget renderer plugin for Quick Tabs.",
   "version": "3.0.x",
-  "package": null,
+  "package": "Custom",
   "composer_namespace": "drupal/tabpanelwidget",
   "composer_requirements": {},
   "dependent_modules": [
-    "tabpanelwidget:tabpanelwidget"
+    "tabpanelwidget",
+    "quicktabs"
   ],
   "configure": null,
   "core_version_requirement": "^9 || ^10",
@@ -21,17 +22,18 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "User interface"
+    "Content display"
   ],
   "subcategories": [
-    "UI components"
+    "Tabbed content / accordion"
   ],
   "keywords": [
     "tabpanelwidget",
     "quicktabs",
+    "tab renderer",
     "submodule"
   ],
   "part_of": "tabpanelwidget",

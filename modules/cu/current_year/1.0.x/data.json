@@ -3,7 +3,7 @@
   "data_name": "current_year",
   "description": "Makes the current year accessible as an input filter.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Text Formats",
   "composer_namespace": "drupal/current_year",
   "composer_requirements": {},
   "dependent_modules": [],
@@ -19,13 +19,14 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content display"
+    "Content editing experience"
   ],
   "subcategories": [
-    "Text filters"
+    "Text format filters",
+    "Token / placeholder replacement"
   ],
   "keywords": [
     "year",
@@ -34,7 +35,7 @@
     "token",
     "date"
   ],
-  "project_description": "This very simple, light-weight module displays the current year in a block of text. You can use this in the body of a node, or in a block (in fact anywhere that accepts formatted text).\n\n The most common use for this is in the footer region of a website, where the site designer may wish to include a copyright notice that includes whatever the current year happens to be. Without a module like this, the actual year would have to be typed as 4 numeric digits (such as 2018), and all those references would need updating annually in early January. A site looks unprofessional and outdated if some instances miss being updated.\n\n To enable this simply:\n\n \n Download and enable the module \n Choose a text format that you want to be able to display the current year. \n In the list of Enabled Filters for that format, check \"Display Current Year\" \n If necessary, rearrange the Filter Processing Order to avoid problems \n \n Once you've done this, simply type the sequence &year; in any block of text that uses that text format. When that section of text is formatted and displayed, that token will be replaced with the current year.",
+  "project_description": "This very simple, light-weight module displays the current year in a block of text. You can use this in the body of a node, or in a block (in fact anywhere that accepts formatted text).\n\n The most common use for this is in the footer region of a website, where the site designer may wish to include a copyright notice that includes whatever the current year happens to be. Without a module like this, the actual year would have to be typed as 4 numeric digits (such as 2018), and all those references would need updating annually in early January. A site looks unprofessional and outdated if some instances miss being updated.\n\n To enable this simply:\n\n \n Download and enable the module \n Choose a text format that you want to be able to display the current year. \n In the list of Enabled Filters for that format, check \"Current Year\" \n If necessary, rearrange the Filter Processing Order to avoid problems \n \n Once you've done this, simply type the sequence &year; in any block of text that uses that text format. When that section of text is formatted and displayed, that token will be replaced with the current year.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

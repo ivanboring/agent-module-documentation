@@ -3,9 +3,12 @@
   "data_name": "eca_parameters",
   "description": "Integrates ECA: Event - Condition - Action with Parameters.",
   "version": "2.0.x",
-  "package": null,
+  "package": "ECA",
   "composer_namespace": "drupal/eca_parameters",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/eca": "^2.0",
+    "drupal/parameters": "^1.0"
+  },
   "dependent_modules": [
     "eca:eca (^2)",
     "parameters:parameters"
@@ -16,7 +19,7 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/eca_parameters",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [
@@ -27,10 +30,10 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Workflow"
+    "Automation"
   ],
   "subcategories": [
-    "Automation"
+    "Workflow / business rules"
   ],
   "keywords": [
     "eca",
