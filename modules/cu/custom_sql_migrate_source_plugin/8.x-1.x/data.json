@@ -3,7 +3,7 @@
   "data_name": "custom_sql_migrate_source_plugin",
   "description": "Migrations of content via custom SQL string.",
   "version": "8.x-1.x",
-  "package": null,
+  "package": "Custom",
   "composer_namespace": "drupal/custom_sql_migrate_source_plugin",
   "composer_requirements": {},
   "dependent_modules": [
@@ -23,13 +23,15 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content"
+    "Developer tools",
+    "Import and export"
   ],
   "subcategories": [
-    "Migration"
+    "Content migration / import",
+    "Migration tooling"
   ],
   "keywords": [
     "migrate",

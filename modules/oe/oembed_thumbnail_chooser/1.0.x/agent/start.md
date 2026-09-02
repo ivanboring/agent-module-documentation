@@ -38,8 +38,9 @@ cleanly but its hook is **never called** (a no-op). Verify the patch is present 
 thumbnail rewriting.
 
 ## What you'd do → where
-Everything is in the one hook; there are no topic areas to split out. Read
-`oembed_thumbnail_chooser.module` directly to change providers, size tokens, or the fallback ladder.
+Everything lives in the one hook. For the full mechanism (branches, size-token ladders, `$data`
+keys, the compatibility caveat, and how to add a provider) → [api/oembed-alter.md](api/oembed-alter.md).
+Or read `oembed_thumbnail_chooser.module` directly.
 
 ## Key facts (real machine names)
 - **File:** `oembed_thumbnail_chooser.module` — the module's only PHP.

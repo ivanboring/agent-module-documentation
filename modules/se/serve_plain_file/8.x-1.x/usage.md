@@ -1,31 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Serve Plain File serves administrator-configured plain-text files at chosen URLs — for ads.txt, google-site-verification, facebook domain ownership and similar verification files.
+Serve Plain File serves administrator-configured plain-text files (ads.txt, google-site-verification, Facebook domain ownership, sellers.json and similar) at chosen URLs, with the path and content managed as configuration in the Drupal backend.
 
 ---
 
-Verification and metadata files — ads.txt, sellers.json, google-site-verification, a Facebook domain-ownership file — need to be served at a specific URL, and editing the docroot or adding server config for each is awkward, especially where the docroot is not writable. Serve Plain File lets an administrator define these files and their content in the backend, and serves them at the configured URLs. The content is admin-authored configuration served at admin-chosen paths — there is no filesystem path input and no user-supplied content, so no traversal or injection surface; the admin routes are gated by `administer serve plain file`. Confirm the served paths do not unintentionally shadow real routes.
+Verification and metadata files often have to live at a fixed URL, and editing the docroot or adding web-server rules for each one is awkward — especially where the docroot is not writable or where SEOs need to change the file without a deploy. Serve Plain File lets an administrator define each file as a `served_file` config entity with a label, URL path, body content, MIME-Type and cache max-age; a dynamic route is registered per path and the controller returns the stored content with the configured Content-Type and cache headers. Because content is admin-authored configuration served at admin-chosen paths — there is no filesystem-path input and no user-supplied content — the served files carry no traversal or upload surface, and the admin screens are gated by the `administer serve plain file` permission. The MIME-Type is restricted to an admin-configurable allowlist and defaults to `text/plain`. Config entities move through Drupal's normal import/export, or can be exempted from config import with Config Ignore so they stay editable in production. Multi-language serving works only with domain-based language negotiation. Verify that a configured path does not unintentionally shadow a real route or file (the add/edit form rejects a path where a real file already exists).
 
 ---
 
-- Serve an ads.txt file.
-- Serve google-site-verification.
-- Serve a Facebook domain file.
-- Configure static files in the backend.
-- Serve files without docroot access.
-- Define a verification file.
-- Set the file content in config.
-- Restrict who configures served files.
-- Serve at a chosen URL.
-- Avoid editing the docroot.
-- Confirm paths don't shadow routes.
-- Serve sellers.json.
-- Enable when the feature is needed.
-- Keep it disabled otherwise.
-- Restrict administration to trusted roles.
-- Confirm behaviour on your site.
-- Test before production.
-- Review configuration.
-- Pair with related modules.
-- Keep the setup minimal.
-- Document why it was added.
-- Verify it fits your theme.
+- Serve an `ads.txt` file at the site root.
+- Serve a `sellers.json` advertising file.
+- Serve a Google `google-site-verification` file.
+- Serve a Facebook domain-ownership verification file.
+- Serve a Bing / Pinterest / other search-engine verification file.
+- Serve a small static `humans.txt` or `security.txt`-style file.
+- Configure static files entirely in the backend, without shell or FTP access.
+- Serve files when the docroot is not writable (immutable/containerized deploys).
+- Let SEOs update a verification or ads file without a code deploy.
+- Set an explicit `Content-Type` (from the allowlist) on a served file.
+- Control the `Cache-Control` max-age of a served file.
+- Manage served files as exportable configuration across environments.
+- Keep served-file content editable in production using Config Ignore.
+- Serve different content per domain in a multilingual, domain-negotiated site.
+- Register a URL path that does not correspond to any node or real file.
+- Restrict who can create or edit served files via a dedicated permission.
+- List, add, edit and delete served files from the admin UI.
+- Purge external caches (Varnish/CDN) on change via the `served_file` entity update/delete hooks.
+- Confirm a served path does not shadow an existing route or file before publishing.
+- Provide a quick per-path text endpoint without writing a custom controller.

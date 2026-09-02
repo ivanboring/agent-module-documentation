@@ -1,41 +1,41 @@
 {
   "name": "Block Usage Report",
   "data_name": "block_usage_report",
-  "description": "A report showing which blocks are enabled and where they are placed.",
+  "description": "Exposes a report showing which blocks are enabled and where they are placed.",
   "version": "1.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/block_usage_report",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^10.1 || ^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/block_usage_report",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "8.0",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Administration"
+    "Administration tools"
   ],
   "subcategories": [
-    "Reports"
+    "Dashboard / reporting"
   ],
   "keywords": [
     "block",
     "report",
     "audit",
-    "layout",
+    "layout builder",
     "placement",
     "inventory"
   ],
-  "project_description": "The Block Usage Report module provides a report page showing which blocks are enabled and disabled in the site's default theme, and which region they appear in. It also summarizes all Custom Blocks that are unplaced.",
+  "project_description": "Block Usage Report adds a single read-only admin report at /admin/reports/block-usage that lists which blocks are placed in the site's default theme, whether each is enabled or disabled, and which region it occupies. Beyond the region-placed blocks that core's block layout page already shows, it reflects placements that no core screen summarises: blocks embedded in content via the block_field module, blocks in Layout Builder bundle-default layout templates, blocks in per-entity overridden Layout Builder layouts, custom-block associations made through fixed_block_content, and custom blocks that are unplaced anywhere. Each detected placement links to the relevant operations. Integrations with block_field, layout_builder and fixed_block_content are auto-detected and optional; the module has no hard dependencies beyond core.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

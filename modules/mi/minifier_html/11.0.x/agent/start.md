@@ -1,27 +1,47 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Minifier HTML (minifier_html) — agent index
 
-Strips whitespace and comments from **every `HtmlResponse`** on `kernel.response`, via regex.
-Version **11.0.2**. Core `^10.1 || ^11`. No dependencies, **no routes, permissions or settings**.
+Reduces rendered page size by minifying the HTML of **every `HtmlResponse`** and compressing the
+inline CSS and JavaScript inside it. Works immediately on enable — **no routes, permissions,
+settings, config, or dependencies.** Version **11.0.2**. Core `^10.1 || ^11`. Package
+*Performance and scalability*. License GPL-2.0-or-later.
 
-Measured saving on a test page: 11,365 → 9,656 bytes (~15%).
+## What it actually is
 
-**Do not deploy without reading this.** The core is
-`preg_replace('/(\s)+/s', '\1', $html)` over the whole document — **no `<pre>`, `<code>`,
-`<textarea>` or `<script>` exclusion, and no way to add one.**
+- One service, `minifier_html.minifier` (`minifier_html.services.yml`), tagged `event_subscriber`.
+- One class: `MinifierHtmlSubscriber` in
+  `src/EventSubscriber/MinifierHtmlSubscriber.php`, implementing `EventSubscriberInterface`.
+- It subscribes to `KernelEvents::RESPONSE` (`kernel.response`) and, **only when the response is an
+  instance of `Drupal\Core\Render\HtmlResponse`**, replaces the body with a minified version. JSON,
+  XML, file and other response types pass through untouched.
+- No config objects, no `config/` directory, no schema, no permissions file, no routing file, no
+  hooks, no Drush, no plugins, no submodules, no libraries. `composer.json require` is empty.
 
-Verified by A/B on the same page:
+## How it works (from source)
 
-1. **`<pre>` is destroyed.** off → `function f() {\n    if (x) {`; on → `function f() { if (x) {`.
-2. **Stored content is corrupted through the edit form.** A textarea's contents are its *value*.
-   Body stored as `alpha\n\n\nbeta    gamma`; off → served identically; on → `alpha\nbeta gamma`.
-   An editor changing only the **title** and saving destroys the body's paragraph breaks. Silent,
-   cumulative, recoverable only from revisions. Applies to **every** textarea site-wide, including
-   one-value-per-line settings forms.
-3. All HTML comments removed unconditionally; the block-comment regex runs against `<script>`
-   contents, so a JS string containing `/*` truncates to the next `*/`.
+The subscriber applies plain regular expressions to the response body string, in order:
 
-Cleared: only `HtmlResponse` is touched; the line-comment regex correctly anchors `//` to line
-start, so URLs survive.
+1. Compress inline CSS/JS comments — `stripInlineComments()` runs `stripScriptTagComments()` then
+   `stripStyleTagComments()`, each matching `<script>…</script>` / `<style>…</style>` blocks and
+   applying `stripJsComments()` (removes `/* … */` block comments and whole-line `//` comments).
+2. Compress the whole document — `compressHtmlOutput()` applies three regexes:
+   strip whitespace before a tag (`/[^\S ]+\</s`), strip whitespace after a tag (`/\>[^\S ]+/s`),
+   and collapse any whitespace run to its first character (`/(\s)+/s`).
+3. HTML comment stripping via `/<!--(.|\s)*?-->/` is defined (`stripHtmlComments()`) but note it is
+   not called from `minifierHtmlOutput()` in this release — only the CSS/JS-comment and
+   whitespace passes run.
 
-**Recommend minifying at a CDN or reverse proxy instead** — they exclude `<pre>`/`<textarea>`.
+Entry point: `minifilterHtmlResponse()` → `minifierHtmlOutput($html)` →
+`stripInlineComments()` + `compressHtmlOutput()`.
+
+## Operate it
+
+- Enable: `drush en minifier_html -y`. Nothing else to do — it takes effect on the next request.
+  Disable/uninstall to turn it off; there is no runtime toggle.
+- Minification runs on **all** HTML responses, including authenticated and admin pages, because the
+  only gate is the `HtmlResponse` type check.
+
+## Solution docs
+
+- Architecture, the event subscriber, the exact regex passes, response coverage, and operational
+  notes → [architecture/subscriber.md](architecture/subscriber.md)

@@ -7,7 +7,7 @@
   "composer_namespace": "drupal/serve_plain_file",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "entity.served_file.collection",
   "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -15,26 +15,31 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/config_ignore": "Keep served-file config editable in production without being overwritten by config import."
+  },
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Administration"
+    "Administration tools",
+    "Search engine optimization (SEO)"
   ],
   "subcategories": [
-    "SEO / verification"
+    "Configuration management",
+    "Robots / crawler control"
   ],
   "keywords": [
     "ads.txt",
-    "verification",
+    "site verification",
     "static files",
     "serve",
-    "seo"
+    "seo",
+    "config entity"
   ],
-  "project_description": "Serve plain files \n Overview: \n This module provides a way to serve configurable plain text files.\n\n The main idea is to provide a way to configure static files in the backend,\n\nlike facebook domain ownership, google site verification or ads.txt, which may\n\nbe added or changed regularly by SEOs.\n\n It can be either used as a normal configuration which will be imported/exported or\n\nin conjunction with config_ignore to make it manageable in the production environment\n\nwithout being overwritten by config import.\n\n Usage: \n \n Install module & configure permission Administer served files \n Goto /admin/config/system/served_files \n Add a file with path, max-age & content \n The file is now available under the provided path \n \n If you have external caching providers, e.g. Varnish, CDNs you should monitor\n\nfile changes via entity type hooks and purge caches there.\n\n e.g:\n\n<?php\n\nuse Drupal\\serve_plain_file\\Entity\\ServedFile;\n\n /**\n\n * Implements hook_ENTITY_TYPE_update().\n\n */\n\nfunction my_module_served_file_update(ServedFile $entity) {\n\n $urls = $entity->getUrlsForCachePurging();\n\n my_module_purge_external_caches($urls);\n\n}\n\n /**\n\n * Implements hook_ENTITY_TYPE_delete().\n\n */\n\nfunction my_module_served_file_delete(ServedFile $entity) {\n\n $urls = $entity->getUrlsForCachePurging();\n\n my_module_purge_external_caches($urls);\n\n}\n\n?>\n\n Contribute \n \n Reach out at #drunomics-contribute at the Drupal Slack !",
+  "project_description": "Serve Plain File provides a way to serve configurable plain-text files whose path and content are defined in the Drupal backend. The main idea is to configure static files such as ads.txt, sellers.json, Google site-verification, or a Facebook domain-ownership file directly in the admin UI, where they can be added or changed regularly (e.g. by SEOs) without editing the docroot or touching server configuration. Each served file is stored as a served_file config entity, so it can be imported/exported through Drupal's configuration workflow, or kept editable in production via Config Ignore. A dynamic route is registered for each configured path and the content is returned with the configured MIME-Type (restricted to an admin-defined allowlist) and cache max-age. Multi-language serving is supported only when domain-based language negotiation is enabled.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",
