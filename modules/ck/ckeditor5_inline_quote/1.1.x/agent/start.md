@@ -1,30 +1,55 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # CKEditor 5 Inline Quote (ckeditor5_inline_quote) — agent index
 
-One CKEditor 5 plugin: a toggleable toolbar button that wraps the current selection in an inline
-quotation `<q>` element (for quoting inside a sentence, versus core's block quote). Trivial module:
-**no PHP at all** — no `.module`/`.install`, no routes, services, permissions, config schema, drush,
-or Drupal plugin types. The whole module is a CKEditor 5 plugin declared in
-`ckeditor5_inline_quote.ckeditor5.yml`, a prebuilt JS bundle (`js/build/inlineQuote.js`), a toolbar
-icon (`icons/quote.svg`) and one admin CSS file. Version **1.1.0**, package **CKEditor**.
+A CKEditor 5 plugin that adds a **toolbar button** which toggles an **inline quotation** around the
+selected text. The produced markup is a plain HTML **`<q>…</q>`** (no class, no `cite`, no `style`).
+PHP-free module — no `.module`, no `src/`, no services, no config. Package `CKEditor`. Core
+requirement `^9.3 || ^10 || ^11`. License GPL-2.0-or-later. Version 1.1.0.
 
-Mechanism: the CKE5 plugin `inlineQuote.InlineQuote` (source under `js/ckeditor5_plugins/inlineQuote/src/`,
-tutorial-derived) registers a command `toggleInlineQuote` and a toolbar button of the same name. In
-the editor model it toggles the text attribute `inline_quote` (`isFormatting`, `copyOnEnter`), which
-the converter maps one-to-one to the view/output element `<q>`. There is nothing to configure per
-site beyond adding the button to a toolbar and allowing `<q>` in the text format.
+- **Install/enable, adding the button to a format, the exact markup, and how `<q>` survives
+  `filter_html`** → [ckeditor5/inline-quote.md](ckeditor5/inline-quote.md)
 
-- **Depends on:** nothing in info.yml (`dependencies:` absent); relies on core CKEditor 5. Core: `^9.3 || ^10 || ^11`.
-- **Package:** CKEditor. **Configure route:** none (`configure` null). **Permissions:** none. **Drush:** none. **Plugin types:** none (it is itself a CKE5 plugin, not a new plugin type).
-- **Setup:** enable the module, then on *Admin → Configuration → Content authoring → Text formats and editors* edit a CKEditor 5 format and drag the **Inline quote** button into the active toolbar — per text format.
-- **The failure everyone hits:** the text format's allowed-HTML list must permit `<q>`, or the markup is stripped on save and the button appears to do nothing. Check that first when someone reports it not working.
-- **No security surface** (no PHP, no server-side input handling; pure editor plugin emitting a fixed `<q>` element).
+## What it actually is
 
-## Key facts (real machine names)
-- **CKE5 plugin definition id:** `ckeditor5_inline_quote_inline_quote` (in `ckeditor5_inline_quote.ckeditor5.yml`).
-- **JS plugin exported:** `inlineQuote.InlineQuote` (index.js exports `{ InlineQuote }`; glue plugin requires `InlineQuoteEditing` + `InlineQuoteUI`).
-- **Toolbar item id / command:** `toggleInlineQuote` (button label "Inline quote", toggleable).
-- **Editor model attribute:** `inline_quote` (extends `$text`); **view/output element:** `<q>` (the only allowed element declared: `elements: [<q>]`).
-- **Libraries:** `ckeditor5_inline_quote/inline_quote` (editor, `js/build/inlineQuote.js`; deps `ckeditor5/ckeditor5`, `core/ckeditor5.translations`); `ckeditor5_inline_quote/admin.inline_quote` (admin CSS `css/inline_quote.admin.css` — styles the toolbar icon `.ckeditor5-toolbar-button-toggleInlineQuote`).
-- **Icon:** `icons/quote.svg`. **Translations shipped:** de, en, fr (`js/build/translations/`).
-- Note: version 1.1.0 emits a bare `<q>` with no attributes. (The drupal.org project description mentions later custom class/cite support; that is not present in this source.)
+- A CKEditor 5 plugin registered in `ckeditor5_inline_quote.ckeditor5.yml` as
+  `ckeditor5_inline_quote_inline_quote`: CKEditor5 plugin **`inlineQuote.InlineQuote`**, Drupal
+  label **"CKEditor 5 Inline Quote"**, editor library `ckeditor5_inline_quote/inline_quote`,
+  admin library `ckeditor5_inline_quote/admin.inline_quote`.
+- **One toolbar item**: `toggleInlineQuote` (label **"Inline quote"**) — a toggle button an admin
+  drags into a format's *Active toolbar*.
+- `elements: [<q>]` — the plugin declares it provides the `<q>` tag, so enabling the button also
+  adds `<q>` to that format's allowed HTML (no attributes, no wildcard).
+- **No** `dependencies:` line in `.info.yml` (it does not declare a hard dep on the `ckeditor5`
+  module, though it only functions with a CKEditor 5 format). No permissions, no routes, no Drush,
+  no config object/schema, no submodules.
+
+## JS plugin (`js/ckeditor5_plugins/inlineQuote/src/`)
+
+Built to `js/build/inlineQuote.js` (webpack; `library: ckeditor5_inline_quote/inline_quote`).
+
+- `index.js` exports `{ InlineQuote }`.
+- `inline_quote.js` — the glue `InlineQuote` plugin; `requires` `InlineQuoteEditing` and
+  `InlineQuoteUI`.
+- `inline_quote-ui.js` — `InlineQuoteUI` registers the `toggleInlineQuote` button
+  (`ButtonView`, `isToggleable`, icon `icons/quote.svg`), bound to the `toggleInlineQuote` command;
+  clicking executes the command.
+- `inline_quote-editing.js` — `InlineQuoteEditing` extends `$text` schema with the `inline_quote`
+  attribute (`isFormatting: true`, `copyOnEnter: true`) and registers the
+  **`attributeToElement` converter `model: 'inline_quote'` → `view: 'q'`**. It adds the
+  `toggleInlineQuote` command as `new AttributeCommand(editor, 'inline_quote')`.
+- `attributecommand.js` — a generic CKEditor `AttributeCommand` (from CKSource) that toggles a
+  single text attribute on the selection.
+
+## Assets
+
+- `ckeditor5_inline_quote.libraries.yml` — `inline_quote` (the JS bundle; depends on
+  `ckeditor5/ckeditor5` + `core/ckeditor5.translations`) and `admin.inline_quote` (admin CSS
+  `css/inline_quote.admin.css` styling the toolbar icon).
+- `icons/quote.svg`, translations under `js/build/translations/` (de, en, fr).
+
+## Notes
+
+- No settings form: the module has nothing to configure per site beyond the toolbar/text-format
+  settings. `configure` is `null`.
+- Despite the drupal.org description mentioning "custom class and cite attributes", the shipped
+  1.1.0 source produces only a bare `<q>` (the converter maps to `view: 'q'` with no attributes).

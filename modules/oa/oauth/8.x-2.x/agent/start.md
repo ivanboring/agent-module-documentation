@@ -1,26 +1,43 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # OAuth 1.0 (oauth) — agent index
 
-**OAuth 1.0a** server authentication. Depends on core `system`. Permissions
-`access own consumers` and `oauth register any consumers`, both **`restrict access: TRUE`** —
-appropriate, since consumer registration is a grant of API access. Version **8.x-2.6**.
-Core requirement `^10.3 || ^11`.
+OAuth **1.0a** two-legged server authentication for Drupal. Registers a Drupal
+authentication provider that validates `Authorization: OAuth ...` signed requests via the
+PHP **PECL `oauth` extension** (`OAuthProvider`). Version **8.x-2.6**, core `^10.3 || ^11`.
 
-**How 1.0a differs, and why it survives:** instead of bearer tokens, **every request is signed**
-with a shared secret — so a captured request cannot be replayed and an intercepted token is not by
-itself usable. That made it viable before TLS was universal, and it persists in **long-lived
-enterprise APIs and some financial and government integrations** that still specify it.
+## Dependencies
+- Drupal: core `system` only (`oauth.info.yml`).
+- Runtime: the **PECL `oauth` PHP extension** — enforced by `oauth_requirements()` in
+  `oauth.install` (REQUIREMENT_ERROR if `\OAuthProvider` class is missing). No composer.json.
 
-**Honest positioning: a compatibility module, not a choice for new work.** **OAuth 2.0 with
-`simple_oauth`** is what a new integration should use — simpler to implement correctly, an active
-specification, and its weakness (bearer tokens usable by whoever holds them) is answered by **TLS
-everywhere**, now an assumption rather than an aspiration. Reach for 1.0a **when the other side
-requires it**.
+## What it provides
+- **Authentication provider** `authentication.oauth` (`OAuthDrupalProvider`, tag
+  `authentication_provider` provider_id `oauth`, priority 100) — `applies()` matches the
+  `Authorization: OAuth` header; `authenticate()` runs `OAuthProvider::checkOAuthRequest()`
+  in `is2LeggedEndpoint(TRUE)` mode.
+- **Consumer credentials** — per-user key/secret pairs stored in core `users_data`
+  (module key `oauth`); no custom entity. Managed via forms.
+- **Nonce table** `oauth_nonce` (`oauth_schema()` in `oauth.install`) for replay protection;
+  `oauth_cron()` deletes nonces older than 24h.
+- **Access checker** `oauth.access_checker` (`_oauth_access_check`, `CustomAccessCheck`).
+- **Page-cache policy** `DisallowOauthRequests` — never cache OAuth-authenticated responses.
+- **Config object** `oauth.settings` (keys `request_token_lifetime`, `login_path`).
 
-**Three things to check on any OAuth 1.0a implementation — where the signing scheme goes wrong:**
-1. the **signature comparison must be constant-time**;
-2. the **nonce must be tracked**, so a signed request cannot be replayed inside its timestamp window;
-3. the **timestamp window must be enforced and narrow** — a wide one turns nonce tracking into an
-   unbounded store.
+## Routes
+- `oauth.admin_form` — `/admin/config/services/oauth` — perm `administer oauth`.
+- `oauth.user_consumer` — `/user/{user}/oauth/consumer` (list) — `_oauth_access_check`.
+- `oauth.user_consumer_add` — `/oauth/consumer/add/{user}` — `_oauth_access_check`.
+- `oauth.user_consumer_delete` — `/oauth/consumer/delete/{user}/{key}` — `_oauth_access_check`.
 
-Related: `simple_oauth_revoke` (wave 80) for the OAuth 2.0 side's revocation endpoint.
+## Permissions (`oauth.permissions.yml`, all `restrict access: TRUE`)
+`access own consumers`, `oauth register any consumers`, `administer oauth`,
+`administer consumers`.
+
+## Solution docs
+- [agent/config/settings.md](config/settings.md) — install, PECL requirement, `oauth.settings`,
+  consumer management, admin form.
+- [agent/api/authentication-provider.md](api/authentication-provider.md) — the provider,
+  signature/nonce handling, routes, access check, page-cache policy.
+
+Note: OAuth 1.0a is a compatibility layer; new integrations usually prefer OAuth 2.0
+(`simple_oauth`). Use this when a client mandates 1.0a.

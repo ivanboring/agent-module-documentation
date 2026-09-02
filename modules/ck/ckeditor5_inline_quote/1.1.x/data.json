@@ -1,7 +1,7 @@
 {
   "name": "CKEditor 5 Inline Quote",
   "data_name": "ckeditor5_inline_quote",
-  "description": "CKEditor 5 plugin that wraps a text selection in an inline quotation element.",
+  "description": "CKEditor 5 plugin adding a toolbar button that toggles an inline quotation (an HTML <q> element) around the selected text.",
   "version": "1.1.x",
   "package": "CKEditor",
   "composer_namespace": "drupal/ckeditor5_inline_quote",
@@ -14,7 +14,10 @@
   "project_url": "https://www.drupal.org/project/ckeditor5_inline_quote",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "ckeditor5/ckeditor5",
+    "core/ckeditor5.translations"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
@@ -35,7 +38,7 @@
     "quotation",
     "editor plugin"
   ],
-  "project_description": "Basic module that adds a button in CKEditor 5 allowing to create HTML inline quotes: .\n\n The plugin now supports custom class and cite attributes using the CKEditor UI.\n\n All contributions are welcome!",
+  "project_description": "Adds a CKEditor 5 toolbar button that wraps the selected text in an inline quotation element (HTML <q>), for quoting a phrase inside a sentence rather than pulling a whole paragraph out as a block quote. It is a small, PHP-free module: a single CKEditor 5 plugin (inlineQuote.InlineQuote) is declared in ckeditor5_inline_quote.ckeditor5.yml with the toolbar item toggleInlineQuote (label 'Inline quote'), a prebuilt JS bundle (js/build/inlineQuote.js), a quote toolbar icon, and admin CSS. The plugin's .ckeditor5.yml lists elements: [<q>], so adding the button to a text format's toolbar also permits the <q> tag through that format's Limit allowed HTML tags filter. The shipped 1.1.0 code produces a plain <q>...</q> with no attributes. Installation: install as you would any contributed Drupal module, then add the Inline quote button to a CKEditor 5 text format's active toolbar.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

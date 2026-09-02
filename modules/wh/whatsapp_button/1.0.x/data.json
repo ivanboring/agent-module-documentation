@@ -1,14 +1,14 @@
 {
-  "name": "WhatsApp Button",
+  "name": "Whatsapp Button",
   "data_name": "whatsapp_button",
-  "description": "A WhatsApp contact button in a block.",
+  "description": "Provides a configurable block that renders a WhatsApp click-to-chat button.",
   "version": "1.0.x",
   "package": "Social Media",
   "composer_namespace": "drupal/whatsapp_button",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^9 || ^10 || ^11",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/whatsapp_button",
@@ -19,25 +19,26 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Integrations",
     "Content display"
   ],
   "subcategories": [
-    "Blocks",
-    "Messaging"
+    "Chat / messaging",
+    "Sticky / floating elements",
+    "Block enhancements"
   ],
   "keywords": [
     "whatsapp",
     "button",
     "contact",
     "block",
-    "messaging",
-    "click to chat"
+    "click to chat",
+    "floating button"
   ],
-  "project_description": "The WhatsApp Button module allows you to add a configurable block anywhere on your site, enabling quick and direct access to WhatsApp. With just one click, users can instantly start a conversation.\n\n Back to top \n\n Key Features \n \n Customizable contact number: Set the WhatsApp number where conversations will be directed. \n Predefined message customization: Configure an automatic message that loads upon opening the chat, so users only need to send it. \n Icon customization: Replace the default icon with a custom image to match your site's design. \n Flexible positioning with CSS and media queries: Adjust the button’s position on different screen sizes to fit your layout needs. \n \n Back to top \n\n Installation \n \n Run the following command to install the module:\n\n composer require 'drupal/whatsapp_button:^1.0' \n \n Go to /admin/structure/block in your site's address bar. \n Locate and place the WhatsApp Button block in your desired region. \n In the block settings, disable the \"Display title\" option and click \"Save Block.\" \n \n Back to top \n\n Customization \n The WhatsApp Button functions like any other block. To edit it, hover over the contextual link and click \"Edit.\"\n\n On the block configuration page, you can modify multiple settings:\n\n \n Text Information \n Customize the message displayed on the WhatsApp page, add text next to the icon, and define a tooltip. \n Image Settings \n Replace the default icon with a custom image. \n Define the image width using px (recommended), em, %, or any other CSS unit. \n Set different image widths for tablets and desktops (mobile uses the default size). \n Position Settings \n Adjust the button’s position from the bottom and right of the screen. \n Media Queries \n Customize media query breakpoints to control how the button behaves across different devices. \n Back to top",
+  "project_description": "The WhatsApp Button module adds a single configurable block that renders a floating WhatsApp click-to-chat button. Each placed block instance carries its own settings: the destination phone number, a pre-filled message, a tooltip, optional text beside the icon, a custom icon image (falling back to the bundled WhatsApp logo), the button's bottom/right position, and per-device (tablet/desktop) overrides for image width and position via CSS media queries. Clicking the button opens https://api.whatsapp.com/send with the number and message pre-populated. It requires no modules beyond Drupal core and provides no routes, permissions, services, or Drush commands of its own.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

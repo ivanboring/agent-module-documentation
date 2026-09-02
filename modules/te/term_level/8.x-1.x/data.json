@@ -1,12 +1,14 @@
 {
-  "name": "Term Level",
+  "name": "Term level field",
   "data_name": "term_level",
-  "description": "Field type for terms with an associated level.",
+  "description": "Field type for assigning terms with a level to an entity.",
   "version": "8.x-1.x",
   "package": "Taxonomy",
   "composer_namespace": "drupal/term_level",
   "composer_requirements": {},
-  "dependent_modules": [],
+  "dependent_modules": [
+    "taxonomy"
+  ],
   "configure": null,
   "core_version_requirement": "^9.1 || ^10 || ^11",
   "active_installs": null,
@@ -15,7 +17,9 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal:hal": "Enables the TermLevelItemNormalizer so the level column is included in HAL+JSON output; the normalizer class extends a hal class and only loads when hal is present."
+  },
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
@@ -25,18 +29,19 @@
     "Content editing experience"
   ],
   "subcategories": [
-    "Field types",
-    "Taxonomy"
+    "Fields",
+    "Field formatters",
+    "Form widgets / select UI"
   ],
   "keywords": [
     "taxonomy",
+    "term",
     "level",
     "proficiency",
     "skills",
-    "rating",
-    "field"
+    "field type"
   ],
-  "project_description": "This module provides a field type for referencing terms with a level to an entity, e.g. someone can add the term \"Java\" with the level \"Expert\" to a node. The levels can be defined in the field settings and consist of a numeric level key and a human readable level label. The structure of the specified vocabulary either has to be a flat-list or a single hierarchy with two hierarchy-levels, where the parents act as grouping terms.\n\n Currently, the only widget available displays the terms with its levels in a table. Each group (either whole vocabulary (if flat), or parent term) has a separate table. The amount of terms listed in the table can be defined in the widget settings. Furthermore, a tag cloud feature can be activated, where the remaining terms are listed in the last row (see screenshot example). Adding and removing of terms is done through AJAX.\n\n This project is sponsored by Jobiqo. Visit us at https://www.jobiqo.com .",
+  "project_description": "term_level provides a single Drupal field type, term_level, that stores a taxonomy term reference together with an integer level in one field item. It extends core's EntityReferenceItem, hard-defaulting the target entity type to taxonomy_term and adding a level column (unsigned int, indexed) alongside the target_id. The allowed levels are defined per field in the storage settings as newline-separated numeric-key|label pairs (for example 1|Beginner). The bundled widget (term_level_widget) extends the entity-reference autocomplete widget and adds a Level select built from those pairs; the bundled formatter (term_level_formatter) extends the entity-reference label formatter and appends the matching level label after the term label. An optional HAL normalizer adds the level value to serialized output when the hal module is installed. The module depends only on core taxonomy and ships config schema for the field storage/field/value settings.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

@@ -1,30 +1,33 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-VVJC renders Views results as a 3D carousel, built on vanilla JavaScript with no framework dependency.
+VVJC adds a Views display format that renders result rows as an accessible, dependency-free vanilla-JavaScript 3D carousel.
 
 ---
 
-The fourth member of the VVJ family, alongside the accordion, basic carousel and tabs formats, sharing `vvj_core`'s foundation. Where the basic carousel moves items horizontally, this one arranges them in perspective — a shape that suits a small set of items given prominence rather than a long list.
-
-Everything said about the family applies: vanilla JavaScript rather than a jQuery plugin, accessibility treated as the requirement, and Views doing the filtering, sorting, access and caching while the module only renders.
-
-**Two cautions specific to a 3D carousel.** The general carousel objection applies with more force — items rotated away from the viewer are not merely below the fold, they are visually de-emphasised on purpose, so this is a presentation for things that are equally optional rather than a way to show several important items. And **perspective transforms are motion**: a visitor who has set `prefers-reduced-motion` should get a static or simplified presentation, so check what the shipped CSS does with that media query.
-
-Core requirement is `^11.3 || ^12` with PHP 8.3, so like the rest of the family this is for current Drupal only.
+VVJC (Views Vanilla JavaScript 3D Carousel) registers a single Views style plugin, `views_vvjc` ("Views Vanilla JavaScript 3D Carousel"), that lays out each Views row as a cell on a virtual 3D cylinder (CSS `rotateY` + `translateZ`). Front-end behavior runs inside a `<vvjc-carousel>` custom element built on the shared `vvj_core` foundation — no jQuery, no bundled framework. The format is configured entirely through the Views UI style-options form (dimensions, autoplay interval, controls, accessibility toggles, background color/opacity, responsive breakpoint, optional deep linking) and works with any Views row style (Fields or Content/entity rows). It ships five per-breakpoint CSS libraries, a set of accessibility affordances (ARIA live-region announcements, full keyboard navigation, `prefers-reduced-motion` handling, IntersectionObserver pause-when-offscreen), touch/swipe gestures, deep-linkable slide fragments, `[vvjc:FIELD]` Views tokens for header/footer/empty text areas, and a `Drupal.vvjc.*` JavaScript API for programmatic control. It is display-only: Views still performs all filtering, sorting, access checking and caching.
 
 ---
 
-- Render Views results as a 3D carousel.
-- Give a small set of items visual prominence.
-- Present equally optional items in rotation.
-- Avoid a jQuery carousel plugin.
-- Keep Views filters and access in play.
-- Check keyboard operation of the carousel.
-- Respect prefers-reduced-motion.
-- Provide a static fallback for reduced motion.
-- Theme the carousel with the site's CSS.
-- Combine with a Views contextual filter.
-- Avoid placing important content in rotation.
-- Share the VVJ foundation with other formats.
-- Plan a Drupal 11.3+ front-end stack.
-- Compare with the basic carousel format.
-- Audit carousels for accessibility.
+- Turn a View of featured content into a rotating 3D carousel on the front page.
+- Give a small set of promoted items visual prominence in perspective.
+- Present equally-optional items (sponsors, partner logos) in gentle rotation.
+- Replace a jQuery carousel plugin with a lightweight vanilla-JS format.
+- Build a product highlight carousel from a commerce product View.
+- Show a photo gallery as a 3D carousel using entity/teaser rows.
+- Add a "Featured Articles" carousel block (see the shipped `vvjc_example` block display).
+- Configure autoplay from 2 s to 15 s, or disable auto-rotation entirely.
+- Offer play/pause, navigation arrows, a slide counter and a progress bar independently.
+- Provide dot navigation, with a scrollable dots variant for many slides.
+- Enable deep linking so individual slides get shareable `#carousel3d-<id>-<n>` URLs.
+- Respect `prefers-reduced-motion` by pausing rotation and disabling transitions.
+- Announce slide changes to screen-reader users through an ARIA live region.
+- Support full keyboard control (arrows, Space, Home, End), RTL-aware.
+- Enable touch/swipe gestures for mobile visitors.
+- Pause the carousel on hover, on tab switch, and when scrolled out of the viewport.
+- Tune the 3D look via width preset, per-screen heights, and CSS perspective.
+- Set a per-item background color with adjustable opacity, or disable it.
+- Pick a responsive breakpoint (576/768/992/1200/1400 px) for the layout shift.
+- Inject first-row field values into a View's header/footer/empty text with `[vvjc:field]` tokens.
+- Drive carousels from custom JS via `Drupal.vvjc.goToSlide/next/prev/pause/resume`.
+- Read the built-in help (rendered README) at `/admin/help/vvjc`.
+- Upgrade a 1.x carousel View in place — plugin ID, option keys and CSS classes are preserved.
+- Theme the carousel by overriding `views-view-vvjc.html.twig` or targeting the stable `.vvjc*` classes.
+- Combine with a Views contextual filter to build per-entity related-content carousels.

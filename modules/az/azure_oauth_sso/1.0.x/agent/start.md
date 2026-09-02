@@ -1,26 +1,42 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Azure OAuth Client SSO (azure_oauth_sso) — agent index
 
-Microsoft **Entra ID (Azure AD)** login, implementing the authorization-code flow against
-`login.microsoftonline.com` **directly** rather than through a shared OpenID Connect client. Field
-and role mapping forms. Login route `/oauth/login` (`access content`, `no_cache: TRUE`).
-Version **1.0.9**. Core requirement `^9 || ^10 || ^11`.
+Microsoft **Entra ID (Azure AD)** login for Drupal. Implements the OAuth 2.0 authorization-code
+flow **directly** against `login.microsoftonline.com` for a single Azure application (not through a
+shared `openid_connect` client), then reads the profile from **Microsoft Graph** (`/v1.0/me`).
+Version **1.0.9**. Core `^9 || ^10 || ^11`. Package `user`. No declared module dependencies (uses
+core `field`/`file`/`user`).
 
-**Do not deploy this release as an authentication mechanism without reading the security notes.**
+## What it provides
 
-**Verified on a clean install:** the OAuth **`state` parameter is the hard-coded literal `12345`**
-and is **never read on the callback**. The redirect to Microsoft carries the constant, and
-`/oauth/login?code=<anything>` reaches the token exchange **anonymously with no `state` supplied**.
-`state` exists to bind the authorization request to the callback so a callback the browser did not
-initiate is refused — without it the flow is open to **login CSRF**, signing a victim in as the
-**attacker's** identity so that everything they then enter lands in the attacker's account.
+- **Routes** (`azure_oauth_sso.routing.yml`):
+  - `azure_oauth_sso.oauthLogin` — `/oauth/login` — `OauthLogin::oauthLogin`; the redirect-to-Azure
+    and OAuth callback in one controller. `_permission: access content`, `no_cache: TRUE`.
+  - `azure_oauth_sso.testOauthLogin` — `/oauth/test-login` — `OauthLogin::testOauthLogin`; the
+    settings form's "Test Configuration" link. `_permission: access content`.
+  - `azure_oauth_sso.customerSetup` — `/admin/config/people/azure_oauth_sso/basic-config` —
+    `OauthConfigForm` (settings). `_permission: administer site configuration`.
+  - `azure_oauth_sso.OauthFieldsMappingForm` — `/admin/config/people/azure_oauth_sso/fields-mapping`
+    — `OauthFieldsMappingForm`. `administer site configuration`.
+  - `azure_oauth_sso.OauthRolesMappingForm` — `/admin/config/people/azure_oauth_sso/roles-mapping`
+    — `OauthRolesMappingForm`. `administer site configuration`.
+- **Service**: `azure_oauth_sso.token_service` → `Service\OAuthTokenService` — `getToken()`,
+  `refreshToken()`, `apiCall($url, $params, $method)`.
+- **Trait**: `BaseOAuth` — config getters (`getClientId`, `getAdTenant`, `getClientSecret`,
+  `getRedirectUri`) shared by the controller, service and settings form.
+- **Config objects**: `azure_oauth_sso.settings` (schema in `config/schema`),
+  `azure_oauth_sso.fields_mapping`, `azure_oauth_sso.roles_mapping` (created at runtime by their
+  forms).
+- **User fields** (installed in `config/install`): `field_access_token`, `field_refresh_token`
+  on `user` — store the Graph tokens. Removed on uninstall (`azure_oauth_sso.install`).
+- **Hooks** (`azure_oauth_sso.module`): `hook_form_alter` (login button), `hook_preprocess_page`
+  (immediate redirect of `/user/login`), `hook_user_logout` / `hook_menu_links_discovered_alter`
+  (optional Microsoft sign-out).
+- **No** permissions file, Drush commands, or plugin types.
 
-**Two further points:**
-- **Identity is matched on the Graph `mail` value alone** — no `oid`/`sub` binding, no tenant check.
-  The arrangement is only as safe as the Azure app being **single-tenant**, which the module neither
-  enforces nor warns about.
-- **Access and refresh tokens are stored in user entity fields** (`field_access_token`,
-  `field_refresh_token`) — anything exporting all user fields exports **live credentials**.
+## Solution docs
 
-**Prefer the `openid_connect` ecosystem** (see `oidc`, wave 71; `login_gov`, wave 78), which
-implements the flow properly.
+- [`agent/config/settings.md`](config/settings.md) — the three config objects, the settings +
+  field-mapping + role-mapping forms, routes, permissions, and where the client secret lives.
+- [`agent/api/login-flow.md`](api/login-flow.md) — the redirect → Azure → callback sequence, how a
+  Drupal user is matched/provisioned from Graph claims, roles/photo sync, and the token service.

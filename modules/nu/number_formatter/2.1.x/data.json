@@ -1,21 +1,23 @@
 {
   "name": "Number Formatter",
   "data_name": "number_formatter",
-  "description": "Reusable number format config entities and a field formatter that applies them.",
+  "description": "A single field formatter for integer, decimal and float fields that renders values with PHP's intl NumberFormatter (decimal, currency, percent, scientific, spell-out, ordinal and duration styles), locale-aware.",
   "version": "2.1.x",
   "package": null,
   "composer_namespace": "drupal/number_formatter",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "ext-intl": "*"
+  },
   "dependent_modules": [
     "drupal:field"
   ],
-  "configure": "entity.number_format.collection",
+  "configure": null,
   "core_version_requirement": "^8 || ^9 || ^10 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/number_formatter",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=7.4",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
@@ -28,16 +30,17 @@
     "Site structure"
   ],
   "subcategories": [
-    "Field formatters",
-    "Fields"
+    "Field formatters"
   ],
   "keywords": [
     "number format",
     "decimal",
-    "thousands separator",
     "currency",
+    "percent",
+    "intl",
+    "NumberFormatter",
     "field formatter",
-    "config entity"
+    "locale"
   ],
   "project_description": "A field display formatter for numbers based on PHP's Number Formatter class (part of the intl extension).\n\n Currently only limited parts of the Number Formatter class is implemented -- YMMV.",
   "maintenance_status": "Actively maintained",

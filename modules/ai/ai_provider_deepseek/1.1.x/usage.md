@@ -1,27 +1,28 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-DeepSeek Provider adds DeepSeek as a provider for Drupal's AI module.
+DeepSeek Provider registers DeepSeek as a chat provider plugin for Drupal's AI module, authenticated with an API key held in a Key entity.
 
 ---
 
-DeepSeek's position among providers is cost and openness: its models are priced well below the established Western APIs and its weights are published, so a site can prototype against the hosted API and move to self-hosting without changing anything above the provider layer — the same exit route `ai_provider_mistral` offers, at a lower price point. For a high-volume, low-stakes workload — classifying support tickets, generating alt-text drafts, summarising a large archive — the difference in cost per token decides whether the feature is affordable at all. Version **1.1.0** requiring `ai (>=1.0-beta)` and **`key`**, on core `^10 || ^11`. The `key` dependency keeps the API key in a Key entity from an environment variable rather than in exported configuration. **The consideration specific to this provider is jurisdiction, and it should be raised explicitly rather than left implied.** DeepSeek is a Chinese company processing in China, so prompts sent to the hosted API leave the EU and the UK, and several European regulators and public bodies have issued guidance restricting its use. For a site handling personal data, unpublished content or anything under an organisational data-residency policy, that is a procurement and data-protection decision rather than a technical one, and it needs answering before the module is configured rather than after. The **self-hosting route is what makes the model usable where the hosted API is not** — the weights can be run on infrastructure the organisation controls, which removes the transfer question entirely and is the reason openness matters here beyond ideology. The three standing points apply as for every provider: the key is a spending credential, a prompt is a disclosure, and a pinned model needs a plan for when it changes.
+The module ships one plugin, `DeepSeekProvider` (`#[AiProvider(id: 'deepseek')]`), that plugs DeepSeek's hosted, OpenAI-compatible chat API into the `ai` module's provider abstraction. It declares a single supported operation type, `chat`, so any AI-module feature that consumes a chat provider (chatbots, content suggestions, summarisation, classification) can select DeepSeek once a key is configured. Requests are issued through the `deepseek-php/deepseek-php-client` library, which targets `https://api.deepseek.com` over HTTPS with the key sent as a Bearer token; the module keeps that key in a Key entity (the `key` module is a hard dependency) rather than in exported configuration, so it can come from an environment variable. Configuration is a single form at `/admin/config/ai/providers/deepseek` where an administrator picks which key holds the DeepSeek credential. DeepSeek's appeal among providers is cost and open weights: models are priced below the established Western APIs and the weights are published, so a site can prototype against the hosted API and later move to self-hosted inference without changing anything above the provider layer. Version 1.1.0 requires `ai (>=1.0-beta)` and `key`, on core `^10 || ^11`. Note that as a hosted service DeepSeek processes prompts on its own infrastructure, so sending prompts to it is a data-disclosure and procurement decision for sites under data-residency obligations.
 
 ---
 
-- Add a low-cost AI provider.
-- Classify support tickets at volume.
-- Generate alt-text drafts cheaply.
+- Add DeepSeek as an AI provider for a Drupal site.
+- Give the AI module a low-cost chat backend.
+- Classify support tickets or comments at volume.
+- Generate alt-text drafts cheaply and in bulk.
 - Summarise a large content archive.
-- Prototype an AI feature affordably.
-- Provide models to the AI module.
-- Run open-weight models later.
-- Support a high-volume AI workload.
-- Store an AI key in a Key entity.
-- Compare provider costs.
-- Add AI classification to a workflow.
-- Generate metadata suggestions in bulk.
-- Support an experimental AI feature.
-- Plan a path to self-hosted inference.
-- Add content tagging assistance.
-- Reduce AI running costs.
-- Draft summaries for an editor to review.
-- Evaluate a model for a specific task.
+- Prototype an AI feature affordably before committing.
+- Power a chatbot built on the AI module with DeepSeek.
+- Provide chat completions to AI-module submodules (assistants, agents).
+- Store the DeepSeek API key in a Key entity from an environment variable.
+- Select a specific DeepSeek model per AI-module use case.
+- Compare provider cost by swapping DeepSeek in behind the AI abstraction.
+- Add AI-assisted content tagging or metadata suggestions.
+- Draft editorial summaries for a human to review.
+- Add AI classification to an editorial workflow.
+- Evaluate a DeepSeek model for a specific task before rollout.
+- Route a high-volume, low-stakes AI workload to a cheaper provider.
+- Restrict who can configure the provider via a dedicated permission.
+- Plan a later migration path toward self-hosted open-weight inference.
+- Hot-swap the API key at runtime for multi-tenant or per-request keys.

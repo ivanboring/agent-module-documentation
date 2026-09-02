@@ -1,7 +1,7 @@
 {
   "name": "Azure OAuth Client SSO",
   "data_name": "azure_oauth_sso",
-  "description": "Login through Microsoft Azure Active Directory.",
+  "description": "Login to a Drupal site through Microsoft Azure Active Directory / Entra ID.",
   "version": "1.0.x",
   "package": "user",
   "composer_namespace": "drupal/azure_oauth_sso",
@@ -22,12 +22,12 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Security",
-    "Integrations"
+    "Access control",
+    "Security"
   ],
   "subcategories": [
-    "Single sign-on",
-    "Authentication providers"
+    "OAuth / OpenID Connect client",
+    "External authentication"
   ],
   "keywords": [
     "azure",
@@ -35,9 +35,10 @@
     "oauth",
     "sso",
     "microsoft",
+    "graph",
     "login"
   ],
-  "project_description": "The OAuth Login - [azure_oauth_sso] module empowers your Drupal website with seamless login experiences using industry-standard OAuth 2.0. This translates to a more convenient and secure way for your users to access your platform.\n\n Key Benefits: \n \n Effortless Logins : Leverage existing Microsoft Azure AD credentials for user authentication, eliminating the need for separate Drupal logins. \n Enhanced Security : Benefit from the robust security protocols of Azure AD, ensuring user data remains protected. \n Simplified User Management : Automate user registration and role assignment based on pre-defined Active Directory groups or department fields. \n Streamlined Configuration : Easily map essential user profile attributes like username, email, name, and more to corresponding Drupal user fields. \n Unified User Pictures : Maintain user profile consistency by synchronizing profile pictures between Drupal and Active Directory. \n Flexible Access Control : Enforce site-wide authentication with automatic redirection to Azure AD login for unauthenticated users. \n Token Retrieval Power : Access and utilize authorization tokens within your Drupal application using the provided service injection. \n \n To retrieve the authorization token\n\n $token = \\Drupal::service('azure_oauth_sso.token_service')->getToken(); \n\n Get Started Today! \n \n Website: https://www.ispectra.co \n Drupal Modules: Explore our full range of Drupal modules. \n Support: Contact us at [ support@ispectra.co ] for any inquiries. \n Module Configuration: Submit questions directly from the module's configuration page",
+  "project_description": "Azure OAuth Client SSO lets people sign in to a Drupal site with a Microsoft Entra ID (Azure Active Directory) account using the OAuth 2.0 authorization-code flow against login.microsoftonline.com. An administrator supplies the Azure application's tenant ID, client ID and client secret; the module builds the authorize redirect, exchanges the returned code for tokens at the /oauth2/v2.0/token endpoint, and reads the signed-in person's profile from Microsoft Graph (https://graph.microsoft.com/v1.0/me). A matching Drupal account (by email) is logged in, or a new account is provisioned. Configuration screens let you map Microsoft Graph properties onto Drupal user fields, map Entra directory groups or the department field onto Drupal roles, optionally sync the profile photo, and choose between an immediate redirect to Microsoft or a login button rendered on selected forms. The access and refresh tokens are stored on the user entity and can be retrieved from the azure_oauth_sso.token_service service.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

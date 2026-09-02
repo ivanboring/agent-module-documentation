@@ -1,29 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Number Formatter turns number display settings into reusable `number_format` configuration entities, and provides a field formatter that applies a chosen one.
+Number Formatter adds one field-display formatter that renders integer, decimal and float field values through PHP's intl `NumberFormatter`, so a number can be shown as a locale-aware decimal, currency, percent, scientific, spell-out, ordinal or duration string.
 
 ---
 
-Core's number formatters keep their settings inside each field's display configuration. That is fine for one field and unmanageable for thirty: a site with prices, quantities, percentages and measurements ends up repeating the same decimal count, separators, prefix and suffix in every view mode, and a change to house style means editing all of them. This module inverts that — define the format once as a config entity, then point as many fields at it as you like.
+Core ships a "Number" formatter that lets you set a fixed number of decimals, a thousands/decimal separator and a prefix/suffix, but it has no concept of locale, currency codes, percentages, scientific notation, ordinals ("1st", "2nd") or spelling a value out in words. This module fills that gap by delegating the actual formatting to PHP's `intl` extension: you pick a NumberFormatter *style* on the field's *Manage display* screen, and the value is formatted for a chosen language. It is a small, focused module — a single `FormatterBase` plugin (id `number_formatter`) and nothing else: no entities, no routes, no permissions, no services, no blocks.
 
-The payoff is consistency and a single place to change it. Define "Currency (EUR)", "Percentage", "Quantity" and "Measurement" once; apply them across content types and view modes; adjust the format when the style guide changes and every field follows. Because formats are configuration entities they export, deploy and diff like anything else in config, and they are addressable from code if something needs to render a number the same way outside a field.
-
-The collection route is `entity.number_format.collection`, which is where the formats are managed. The module's own footprint is small — one formatter plugin and the entity type — and it declares core support through `^12`, so it is not a module you will be replacing at the next major.
+The formatter targets the three core number field types (`integer`, `decimal`, `float`). Choose a style from eight options; for the Currency style you also enter a 3-letter ISO 4217 currency code, and `formatCurrency()` renders the value with the right symbol and grouping for the language. For the non-currency styles the value is run through `NumberFormatter::format()` and wrapped with the number field's own prefix/suffix (with singular/plural handling via `|`). On a multilingual site an extra option lets you pick which language drives the formatting. The `intl` PHP extension is required; `hook_requirements()` reports an error on the status page if it is missing.
 
 ---
 
-- Define a reusable number format once.
-- Apply the same currency format across many fields.
-- Change house number style in one place.
-- Set decimal places consistently for prices.
-- Configure thousands and decimal separators per format.
-- Add a prefix or suffix to a number format.
-- Format percentages consistently sitewide.
-- Format quantities differently from prices.
-- Export number formats with site configuration.
-- Review a number format change in a config diff.
-- Apply a format to a field in a specific view mode.
-- Keep a teaser's number formatting in step with the full display.
-- Format measurements with a unit suffix.
-- Replace repeated per-field formatter settings.
-- Give editors a named format rather than raw settings.
-- Reuse a format from custom rendering code.
+- Display a price as locale-aware currency with the correct symbol (e.g. `$1,234.56`, `1.234,56 €`).
+- Format a decimal field as a percentage without storing the `%` in the data.
+- Show a very large or very small float in scientific notation.
+- Spell a number out in words ("one thousand two hundred") for accessibility or invoices.
+- Render an integer as an ordinal ("1st", "2nd", "3rd") for rankings or positions.
+- Format a numeric seconds field as a duration.
+- Present quantities with grouped thousands separators that match the site language.
+- Reuse the number field's existing prefix/suffix (unit label) around the formatted value.
+- Switch a field's number presentation without changing the stored value.
+- Apply different styles to the same value across view modes (teaser vs. full).
+- Show currency amounts in EUR on one field and USD on another via the per-display currency setting.
+- Localize number grouping/decimal marks by choosing the field or current language on a multilingual site.
+- Format measurement values (weights, distances) with consistent decimal grouping.
+- Display statistics or KPIs as percentages on a dashboard node.
+- Render ratings or scores as spelled-out or ordinal text.
+- Show scientific/engineering data fields in exponential form.
+- Keep numeric storage clean (raw number) while presenting a formatted string on output.
+- Provide accessible, human-readable numbers in reports and printed/PDF views.
+- Format financial figures per-locale in a multilingual commerce or catalogue site.
+- Verify the `intl` extension is installed via the module's status-report requirement check.

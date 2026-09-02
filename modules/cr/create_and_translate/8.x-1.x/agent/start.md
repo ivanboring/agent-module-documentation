@@ -18,6 +18,9 @@ strips the `destination` query argument from generated URLs when that destinatio
 translate redirect. There is no config UI, no settings, no external service, and no API keys — the
 module is purely a form/redirect ergonomic tweak on top of core Content Translation.
 
+- **Install, the button/redirect mechanism, the path processor, and operating notes** →
+  [behavior/save-and-translate.md](behavior/save-and-translate.md)
+
 - **Depends on:** `content_translation`, `language`, `node`, `taxonomy` (all core). The `taxonomy`
   dep is broader than the feature strictly needs and is pulled onto sites that do not use taxonomy.
 - **Core:** `^8 || ^9 || ^10 || ^11` (four majors — verify on the target core; surface is tiny).

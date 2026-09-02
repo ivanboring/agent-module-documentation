@@ -1,27 +1,28 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-OAuth 1.0 provides OAuth 1.0a server authentication, so a third-party consumer can act on a user's behalf against the site's API.
+Adds an OAuth 1.0a two-legged authentication provider to Drupal so external clients can authenticate to the site by signing each request with a per-user consumer key/secret pair.
 
 ---
 
-OAuth 1.0a predates OAuth 2.0 and works differently in a way that is worth understanding rather than dismissing: instead of bearer tokens, every request is **signed** with a shared secret, so a captured request cannot be replayed and a token intercepted in transit is not by itself usable. That made it viable before TLS was universal, and it is why it survives in places — some long-lived enterprise APIs and a number of financial and government integrations still specify it, so a Drupal site being consumed by one of those needs to speak it. Version **8.x-2.6** on core `^10.3 || ^11`, with `access own consumers` and `oauth register any consumers` both marked `restrict access: TRUE` — appropriate, since a consumer registration is a grant of API access. **The honest positioning is that this is a compatibility module rather than a choice for new work.** OAuth 2.0 with `simple_oauth` is what a new integration should use: it is simpler to implement correctly, has an active specification with modern extensions, and its weakness — bearer tokens being usable by whoever holds them — is answered by TLS everywhere, which is now the assumption rather than the aspiration. Reach for 1.0a when the other side requires it. Three things to check on any OAuth 1.0a implementation, because they are where the signing scheme goes wrong: the **signature comparison must be constant-time**; the **nonce must be tracked** so a signed request cannot be replayed within its timestamp window; and the **timestamp window must be enforced and narrow**, since a wide one turns nonce tracking into an unbounded store.
+The OAuth module registers a Drupal authentication provider (`authentication.oauth`, priority 100) that inspects the `Authorization: OAuth ...` header on incoming requests and validates the OAuth 1.0a signature using the PHP **PECL OAuth extension** (`OAuthProvider`). It operates in two-legged mode (`is2LeggedEndpoint(TRUE)`): there is no interactive user-authorization redirect flow — a client is identified purely by a consumer key/secret it was issued. Consumer credentials are generated per user and stored in Drupal's `users_data` store; each user can manage their own consumers at `/user/{user}/oauth/consumer`, and administrators can manage anyone's. A replay-protection nonce table (`oauth_nonce`) records seen nonces, and `hook_cron()` purges nonces older than 24 hours. A page-cache request policy prevents OAuth-authenticated responses from ever entering the page cache. This is a compatibility building block for other web-service modules that must speak OAuth 1.0a; new integrations should generally prefer OAuth 2.0 (`simple_oauth`). The module has no runtime PHP dependency other than core `system`, but it will not function unless the PECL `oauth` extension is installed (enforced by `hook_requirements()`).
 
 ---
 
-- Authenticate a legacy API consumer.
-- Support an integration requiring OAuth 1.0a.
-- Provide signed API access.
-- Let a partner act on a user's behalf.
-- Support an enterprise API contract.
-- Authenticate a financial integration.
-- Register an API consumer.
-- Support a government system's requirement.
-- Provide delegated API access.
-- Authenticate without bearer tokens.
-- Support a long-lived integration.
-- Let users authorise a third-party app.
-- Provide request-signed authentication.
-- Support a legacy mobile client.
-- Authenticate a desktop application.
-- Maintain an existing OAuth 1 integration.
-- Provide consumer key management.
-- Support a specified protocol version.
+- Authenticate REST / decoupled API requests to a Drupal site using OAuth 1.0a signed requests.
+- Provide server-side OAuth 1.0a support for legacy or enterprise clients that mandate 1.0a rather than 2.0.
+- Issue a per-user consumer key + consumer secret pair for machine-to-machine (two-legged) API access.
+- Let end users self-service their own API credentials from their user profile's "OAuth Consumers" tab.
+- Let administrators (permission `administer consumers`) provision or revoke consumer credentials on behalf of any user.
+- Add a signature-based authentication layer on top of custom routes exposed via Drupal's authentication provider system.
+- Protect an API endpoint against request replay via the built-in nonce store.
+- Serve as the authentication backend that other contrib modules build OAuth 1.0a integrations on.
+- Integrate a Drupal site with an external platform whose SDK signs outbound calls with OAuth 1.0a credentials.
+- Grant a mobile app a stable, per-user credential set to call back into the site.
+- Migrate an existing Drupal 6/7 OAuth 1.0a deployment forward to Drupal 10/11.
+- Expose an authenticated feed or data export that a partner system polls with signed requests.
+- Give each integration partner its own revocable key so access can be cut without disturbing others.
+- Configure the request-token lifetime and an alternate login path via the admin settings form.
+- Prevent OAuth-authenticated responses from leaking into the shared page cache.
+- Audit which consumers a user holds and delete stale or leaked credentials individually.
+- Back a headless commerce or content API where signed 1.0a requests are contractually required.
+- Provide OAuth 1.0a credentials for server-cron jobs that call the site's web services.
+- Bridge to a third-party service that only accepts OAuth 1.0a callbacks.
+- Stand up a two-legged OAuth endpoint without running a full authorization-server stack.

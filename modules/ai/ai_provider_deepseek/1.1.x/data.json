@@ -1,16 +1,18 @@
 {
   "name": "DeepSeek Provider",
   "data_name": "ai_provider_deepseek",
-  "description": "DeepSeek LLM provider for the AI module.",
+  "description": "DeepSeek LLM provider plugin for the AI module.",
   "version": "1.1.x",
   "package": "AI Providers",
   "composer_namespace": "drupal/ai_provider_deepseek",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "deepseek-php/deepseek-php-client": "^1.0"
+  },
   "dependent_modules": [
-    "ai:ai (>=1.0-beta)",
-    "key:key"
+    "ai",
+    "key"
   ],
-  "configure": null,
+  "configure": "ai_provider_deepseek.settings",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -20,17 +22,15 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Integrations",
-    "Security"
+    "Artificial Intelligence (AI)"
   ],
   "subcategories": [
-    "AI",
-    "API providers"
+    "AI provider abstraction / LLM gateway"
   ],
   "keywords": [
     "deepseek",
@@ -38,9 +38,10 @@
     "llm",
     "provider",
     "key",
+    "chat",
     "open weight"
   ],
-  "project_description": "Back to top \n\n DeepSeek Provider \n DeepSeek Provider is a module that integrates DeepSeek's Large Language Model (LLM) with Drupal's AI module. This integration allows you to use DeepSeek's powerful language capabilities within your Drupal site.\n\n Back to top \n\n Requirements \n \n AI module \n Key module \n \n Back to top \n\n Installation \n \n Install the module using composer:\n\n composer require 'drupal/ai_provider_deepseek:^1.0@alpha' \n Enable the module:\n\n drush en ai_provider_deepseek \n \n Back to top \n\n Configuration \n \n Go to /admin/config/system/keys/add to add your Deepseek API key. \n Go to /admin/config/ai/providers/deepseek to configure the Deepseek provider and set the key you created. \n \n Back to top \n\n Usage \n \n Once configured, you can use Deepseek's LLM capabilities through any feature that utilizes Drupal's AI module. The provider will be available as an option in the AI module's configuration interfaces.\n \n\n Back to top",
+  "project_description": "DeepSeek Provider registers DeepSeek as a provider plugin for Drupal's AI module. It exposes DeepSeek's OpenAI-compatible chat models to any feature built on the AI abstraction layer, authenticating with an API key stored in a Key entity. The provider supports the chat operation type and talks to the hosted DeepSeek API through the deepseek-php client library.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

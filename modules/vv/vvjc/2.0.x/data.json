@@ -5,11 +5,13 @@
   "version": "2.0.x",
   "package": "VVJ",
   "composer_namespace": "drupal/vvjc",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/vvj_core": "^2.0"
+  },
   "dependent_modules": [
-    "drupal:views",
-    "drupal:filter",
-    "vvj_core:vvj_core"
+    "views",
+    "filter",
+    "vvj_core"
   ],
   "configure": null,
   "core_version_requirement": "^11.3 || ^12",
@@ -17,7 +19,7 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/vvjc",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.3",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
