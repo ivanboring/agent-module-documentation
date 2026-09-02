@@ -1,7 +1,7 @@
 {
   "name": "Layout Builder Instant Preview",
   "data_name": "layout_builder_instant_preview",
-  "description": "Instant previews for Layout Builder custom blocks.",
+  "description": "Live in-place previews of custom blocks and layout sections while editing them in Layout Builder.",
   "version": "1.1.x",
   "package": null,
   "composer_namespace": "drupal/layout_builder_instant_preview",
@@ -10,7 +10,7 @@
     "drupal:layout_builder"
   ],
   "configure": null,
-  "core_version_requirement": "^10 || ^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/layout_builder_instant_preview",
@@ -28,16 +28,19 @@
   ],
   "subcategories": [
     "Layout Builder",
-    "Content preview"
+    "Content preview",
+    "Block enhancements"
   ],
   "keywords": [
     "layout builder",
     "preview",
     "instant",
+    "live preview",
     "blocks",
+    "off-canvas",
     "editing"
   ],
-  "project_description": "The Layout Builder Instant Preview module provides live previews when editing\n\ncustom blocks in Layout Builder.\n\n This module is a fork of Panopoly Magic . The differences between the modules are:\n\n \n Panopoly Magic displays block forms in a modal dialog, while this module uses the default off-canvas sidebar. \n This module only provides instant previews for custom blocks, not other fields or system blocks. \n This module provides instant previews when configuring a layout section. \n This module adds support for Drupal 10 and CKEditor 5.",
+  "project_description": "The Layout Builder Instant Preview module provides live previews when editing custom blocks in Layout Builder. Rather than filling out a block form, saving, and then looking at the result, the block's rendered output updates in place as the form is changed. It is a fork of Panopoly Magic, differing in that it renders in the default off-canvas sidebar instead of a modal dialog, previews only custom (non block_content) blocks rather than all fields or system blocks, also previews layout-section configuration, and adds support for Drupal 10/11 and CKEditor 5. It works by swapping three core Layout Builder routes (add-block, update-block, configure-section) for enhanced versions that add Preview/Cancel buttons and an 'Automatic preview' toggle, plus a JavaScript behavior that re-submits the form on change.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

@@ -1,7 +1,7 @@
 {
   "name": "File Inspector",
   "data_name": "file_inspector",
-  "description": "Finds unmanaged files in the file system and lets administrators inspect, delete or import them into the media library.",
+  "description": "Inspects the file system to identify unmanaged files and allows administrators to detect, inspect, delete or import them into the media library.",
   "version": "1.0.x",
   "package": "Media",
   "composer_namespace": "drupal/file_inspector",
@@ -15,9 +15,11 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/file_inspector",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/media": "Required for importing unmanaged files as Media entities"
+  },
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
@@ -34,6 +36,7 @@
   "keywords": [
     "files",
     "unmanaged",
+    "orphaned",
     "cleanup",
     "media library",
     "import",

@@ -1,7 +1,7 @@
 {
   "name": "Registration codes",
   "data_name": "regcode",
-  "description": "Requires or accepts a registration code during user registration.",
+  "description": "Provides functionality for using/enabling/requiring registration codes upon user registration.",
   "version": "2.0.x",
   "package": "Registration",
   "composer_namespace": "drupal/regcode",
@@ -20,12 +20,12 @@
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
-  "provides_drush_commands": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
     "Access control",
-    "Forms and surveys"
+    "Security"
   ],
   "subcategories": [
     "User registration",

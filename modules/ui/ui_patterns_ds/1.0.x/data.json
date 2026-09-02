@@ -5,11 +5,14 @@
   "version": "1.0.x",
   "package": "User interface",
   "composer_namespace": "drupal/ui_patterns_ds",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ds": "^3.28",
+    "drupal/ui_patterns": "^2.0"
+  },
   "dependent_modules": [
-    "ui_patterns:ui_patterns",
-    "ds:ds_extras",
-    "ui_patterns:ui_patterns_layouts"
+    "ui_patterns",
+    "ds_extras",
+    "ui_patterns_layouts"
   ],
   "configure": null,
   "core_version_requirement": "^10 || ^11",
@@ -40,7 +43,7 @@
     "field template",
     "components"
   ],
-  "project_description": "This module allow to use UI patterns as Display Suite field templates.",
+  "project_description": "Provides integration between UI Patterns and Display Suite: a Display Suite field can be rendered through a UI Patterns component or a Single Directory Component (SDC) instead of Display Suite's own field markup, with the field's value mapped onto a component slot via a dedicated 'ds_field' source plugin.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

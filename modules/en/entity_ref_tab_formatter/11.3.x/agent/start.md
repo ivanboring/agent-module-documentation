@@ -1,16 +1,41 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Entity Reference Tab Formatter (entity_ref_tab_formatter) — agent index
 
-Renders a multi-value **entity reference field as tabs or an accordion**, including Paragraphs.
-Version **11.3.0**. Core `^10 || ^11`. Selected in Manage display.
+A single **field formatter** that renders a multi-value entity reference field as **tabs** or an
+**accordion**. Package `Entity`. Core `^10.3 || ^11`. License GPL-2.0-or-later. Version 11.3.0.
+No hard module dependencies; **Views** is used only when the "Views block" body option is chosen.
 
-Panels are the referenced entities rendered through their **own view modes**, not markup extracted
-from them.
+- **The formatter, all settings, config schema, templates, JS, and how to enable it** →
+  [fields/formatter.md](fields/formatter.md)
 
-**"Accessible" is the claim to verify** — these are the two patterns most often shipped as styled
-divs with a click handler. Tabs: arrow keys between tabs, Tab into the panel, `aria-selected`, panel
-associated with its tab. Accordion: headers as real **buttons**, `aria-expanded`, `aria-controls`,
-keyboard-reachable content.
+## What it actually is
 
-Editorial point for both: content past the first panel is seen by few visitors and weighted less by
-search engines — the pattern suits **alternatives**, not fitting more on a page.
+- One plugin: `EntityReferenceTabFormatter` (id **`entity_reference_tab_formatter`**, label
+  *"Entity reference tab formatter"*), in
+  `src/Plugin/Field/FieldFormatter/EntityReferenceTabFormatter.php`, extending core's
+  **`FormatterBase`** (not `EntityReferenceFormatterBase`). Injects `entity_type.manager`,
+  `entity_field.manager`, `entity_type.bundle.info`, `entity_display.repository`.
+- `field_types = { "entity_reference", "entity_reference_revisions" }` — targets reference fields;
+  pairs well with Paragraphs but works with any referenced entity type.
+- **No** routes, **no** permissions, **no** services, **no** Drush, **no** install/update hooks.
+  One hook: `hook_theme()` in `entity_ref_tab_formatter.module`.
+
+## Provided theme hooks / templates
+
+- `entity_ref_tab_formatter` → `templates/entity-ref-tab-formatter.html.twig` (ARIA tablist +
+  `role="tabpanel"` panels).
+- `entity_ref_accordion_formatter` → `templates/entity-ref-accordion-formatter.html.twig` (native
+  `<details>`/`<summary>`).
+
+## Libraries (in `entity_ref_tab_formatter.libraries.yml`)
+
+- `entity_ref_tab_formatter/tab_formatter` — `js/tab_formatter.js`, deps `core/drupal`, `core/once`.
+- `entity_ref_tab_formatter/accordion_formatter` — `js/accordion_formatter.js` + `css/accordion_formatter.css`,
+  deps `core/drupal`, `core/once`. No jQuery UI. Attached at render time by the formatter.
+
+## Config
+
+- No config object of its own. Formatter settings live in the view-display config
+  (`core.entity_view_display.*`). Schema: `config/schema/entity_ref_tab_formatter.schema.yml`
+  (`field.formatter.settings.entity_reference_tab_formatter`). Settings keys and defaults in
+  [fields/formatter.md](fields/formatter.md).

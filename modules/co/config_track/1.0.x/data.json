@@ -3,12 +3,12 @@
   "data_name": "config_track",
   "description": "Logs changes to config entities and simple configuration into revisions.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Configuration",
   "composer_namespace": "drupal/config_track",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^10 || ^11",
+  "core_version_requirement": "^10.3 || ^11.1",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/config_track",
@@ -19,7 +19,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools",
@@ -27,7 +27,8 @@
   ],
   "subcategories": [
     "Audit trail / activity logging",
-    "Configuration management"
+    "Configuration management",
+    "Revision comparison"
   ],
   "keywords": [
     "config",
@@ -35,9 +36,10 @@
     "audit",
     "changes",
     "tracking",
-    "history"
+    "history",
+    "diff"
   ],
-  "project_description": "This module allows to log any configuration change in Drupal 9/10. \n\n All changes to configuration in any config collection will be tracked as well as that the order of changes will be preserved. The module provides a nice UI where you can see a list of all recent config changes in the system as well as the user that triggered those changes. A diff is also available in order to see the exact change.",
+  "project_description": "Config Track (info.yml label \"Config Revision\") logs every configuration change on a Drupal 10.3+/11.1+ site into a revision history. It listens to config CRUD events for simple configuration and to entity presave/predelete hooks for config entities, preserving the exact order in which changes occurred across all config collections (including per-language overrides). A UI under /config-revisions lists recent changes with the acting user, and each entry links to a diff against the previous revision of the same config object. The module has no settings; the report is gated by the core 'administer site configuration' permission.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

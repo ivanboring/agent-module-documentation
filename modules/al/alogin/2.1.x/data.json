@@ -5,7 +5,10 @@
   "version": "2.1.x",
   "package": "Security",
   "composer_namespace": "drupal/alogin",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "pragmarx/google2fa-qrcode": "^3.0",
+    "bacon/bacon-qr-code": "^2.0"
+  },
   "dependent_modules": [],
   "configure": "alogin.config",
   "core_version_requirement": "^9.5 || ^10 || ^11",
@@ -14,16 +17,19 @@
   "project_url": "https://www.drupal.org/project/alogin",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "pragmarx/google2fa-qrcode",
+    "bacon/bacon-qr-code"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
-  "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Access control",
-    "Security"
+    "Security",
+    "Access control"
   ],
   "subcategories": [
     "Two-factor authentication",

@@ -1,16 +1,18 @@
 {
   "name": "Link Checker Summary Mail",
   "data_name": "linkchecker_summary_mail",
-  "description": "Sends periodic link checker summary emails.",
+  "description": "Sends link checker summary mails in certain intervals.",
   "version": "2.0.x",
   "package": null,
   "composer_namespace": "drupal/linkchecker_summary_mail",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/linkchecker": "^1.0@beta || ^2.0@alpha"
+  },
   "dependent_modules": [
-    "linkchecker:linkchecker"
+    "linkchecker"
   ],
-  "configure": null,
-  "core_version_requirement": "^10 || ^11",
+  "configure": "linkchecker_summary_mail.settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/linkchecker_summary_mail",
@@ -29,6 +31,7 @@
   ],
   "subcategories": [
     "Dashboard / reporting",
+    "SEO analysis / audit",
     "Email / mail delivery"
   ],
   "keywords": [
@@ -36,6 +39,8 @@
     "broken links",
     "email",
     "summary",
+    "digest",
+    "cron",
     "reporting"
   ],
   "project_description": "This module adds options to send periodic emails about what links are broken on your site.\n\n It uses the awesome Link checker module to do the heavy lifting, and only sends reports based on this.",
