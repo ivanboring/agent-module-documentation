@@ -21,22 +21,25 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Multilingual"
   ],
   "subcategories": [
-    "Translation management"
+    "Translation / multilingual",
+    "String override / text replacement"
   ],
   "keywords": [
     "translation",
     "po",
+    "gettext",
     "deployment",
     "interface translation",
-    "overrides"
+    "locale",
+    "string override"
   ],
-  "project_description": "Makes it possible to have custom files in your translations directory, and therefore also to deploy translations.\n\n To deploy translations you can typically use this workflow.\n\n Back to top \n\n Make sure you have a translation file you can update \n There are 2 options that this module provides:\n\n Provide a translation file that is project specific \n This module provides one default translation file that you can use in your project. If you place a file called project_specific-custom.LANGUAGE.po in your translations folder, it will get automatically imported on locale updates. This file should look something like this:\n\n \n\nmsgid \"\"\n\nmsgstr \"\"\n\n\"Project-Id-Version: Custom\\\\n\"\n\n\"MIME-Version: 1.0\\\\n\"\n\n\"Content-Type: text/plain; charset=UTF-8\\\\n\"\n\n\"Content-Transfer-Encoding: 8bit\\\\n\"\n\n\"Plural-Forms: nplurals=2; plural=(n > 1);\\\\n\" \n\n # A quote from Scully in X files season 3, episode \"Pusher\".\n\nmsgid \"Please explain to me the scientific nature of the whammy\"\n\nmsgstr \"Forklar meg whammyens vitenskapelige natur\"\n\n Provide translation files common for your agency/organization/distribution \n This module also makes it easy to add your own custom translation files to be expected in the translation directory by exposing a hook for this.\n\n Here is one example:\n\n <?php\n\n/**\n\n * Implements hook_custom_translation_deployments_files().\n\n */\n\nfunction mymodule_custom_translation_deployments_files() {\n\n $items = [];\n\n $items[] = [\n\n 'name' => 'custom',\n\n 'project_type' => 'module',\n\n 'core' => '8.x',\n\n // We set the version to something static, but not to \"dev\".\n\n 'version' => 'mycompany',\n\n 'server_pattern' => ' http://ftp.drupal.org/files/translations/%core/%project/%project-%versi… ',\n\n 'status' => 1,\n\n ];\n\n return $items;\n\n}\n\n?>\n\n Back to top \n\n Make sure you have translations in version control \n Next step is to have your translation files in version control. For example keeping them in PROJECT_ROOT/translations . You can do this by setting the path to translations in the settings for \"File system\".\n\n Back to top \n\n Add a file and add a step for importing it in your deploy \n Last step is to keep a custom translation file called either custom-mycompany.nb.po (like the hook example) or project_specific-custom.nb.po (the default custom file provided by this module) in your translations directory (example for Norwegian). Then in your deploy job you make sure you update translations. For example by calling drush locale-update .\n\n Back to top",
+  "project_description": "Custom Translation Deployments lets you ship interface-translation .po files alongside your code and have Drupal's locale system import them automatically. It registers one or more synthetic \"projects\" with locale's project storage so that files matching a naming pattern (by default project_specific-custom.LANGUAGE.po) placed in the site's configured translations directory are picked up on a locale translation update, exactly like a contrib project's downloaded translations. A built-in default project (project_specific, version custom) works out of the box, and any module can expose additional file patterns via hook_custom_translation_deployments_files(). The intended workflow is to keep the .po files in version control and run drush locale:update as a deploy step, giving you repeatable, code-driven deployment of custom translation overrides across environments. The module has no admin UI, routes, permissions, services, or config of its own; all behaviour is driven by two Drupal locale hooks plus one info hook.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

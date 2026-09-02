@@ -3,7 +3,7 @@
   "data_name": "entity_reference_link",
   "description": "Format Entity Reference fields as links",
   "version": "2.x",
-  "package": null,
+  "package": "Fields",
   "composer_namespace": "drupal/entity_reference_link",
   "composer_requirements": {},
   "dependent_modules": [
@@ -21,7 +21,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"
@@ -33,9 +33,10 @@
     "entity reference",
     "link",
     "formatter",
-    "display"
+    "display",
+    "twig template"
   ],
-  "project_description": "Back to top \n\n Why this module? \n You have an entity reference field, but you are not looking to link it to the entity. Instead, you might want to link to another page using the entity ID as a parameter. Or, perhaps you would like to link to a view, and use the Entity ID as a query parameter for the filter? Or perhaps a query parameter used to prepopulate a form value? These can be done in custom code, using the Url and Link classes, but this module lets you handle many link-generating cases from the field display settings.\n\n Back to top \n\n How to use \n After installing the module, go to any entity display settings page, and entity reference fields will have an \"Entity Reference Custom Link\" format available. Select this, and fill the appropriate options\n\n Back to top",
+  "project_description": "Entity Reference Link ships a single field formatter, \"Entity Reference Custom Link\" (plugin id entity_reference_link), for core entity_reference fields. Instead of linking each referenced entity to its own canonical page, it builds a fully custom link per referenced item: the URL comes either from a named Drupal route (with the referenced entity ID and/or the referencing entity ID injected as route or query parameters) or from a custom href template, and the link text, extra HTML attributes and multi-value list markup are each driven by small inline Twig templates exposing the tokens {{ id }} (referenced entity ID), {{ referencing_id }} (the entity holding the field) and {{ label }} (referenced entity label). It is aimed at cases where an entity reference should point at a view, a form-prepopulation URL, a report page or any other route keyed by the referenced ID, rather than at the entity itself. All configuration lives in the field display settings; the module adds no routes, services, permissions, config schema or dependencies beyond core field.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "not-covered",

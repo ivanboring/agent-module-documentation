@@ -1,5 +1,5 @@
 {
-  "name": "Xframe Allow Webvisor",
+  "name": "Webvisor x-frame",
   "data_name": "xframe_allow_webvisor",
   "description": "Add X-Frame header (x-frame-options:Allow-From: https://webvisor.com).",
   "version": "8.x-1.x",
@@ -19,23 +19,25 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Security"
   ],
   "subcategories": [
-    "HTTP headers"
+    "HTTP security headers"
   ],
   "keywords": [
-    "clickjacking",
+    "content-security-policy",
     "csp",
     "frame-ancestors",
     "yandex",
     "webvisor",
+    "session recording",
+    "iframe",
     "x-frame-options"
   ],
-  "project_description": "Just add HTTP-CORS-HEADER\n\n x-frame-options:Allow-From: https://webvisor.com https://metrika.yandex.ru \n\n If you want more options, use https://www.drupal.org/project/seckit",
+  "project_description": "Xframe Allow Webvisor is a single-purpose module that lets Yandex Metrica WebVisor (a session-replay analytics tool) load the site inside an iframe. WebVisor renders the page in a frame to record and replay visitor sessions, which Drupal's default framing policy blocks. The module registers one kernel-response event subscriber (XframeSubscriber) that, on every response, sets a Content-Security-Policy header whose value is a frame-ancestors directive listing the site itself plus the Yandex WebVisor / Metrica origins. It ships no settings form, no configuration, no permissions and no routes; enabling the module is the whole of the configuration.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

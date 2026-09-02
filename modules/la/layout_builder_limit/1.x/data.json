@@ -3,11 +3,11 @@
   "data_name": "layout_builder_limit",
   "description": "Provides limits to components in layout builder sections and regions.",
   "version": "1.x",
-  "package": null,
+  "package": "Layout Builder",
   "composer_namespace": "drupal/layout_builder_limit",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:layout_builder"
+    "layout_builder"
   ],
   "configure": null,
   "core_version_requirement": "^10.1 || ^11",
@@ -24,19 +24,24 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Site structure"
+    "Site structure",
+    "Content editing experience"
   ],
   "subcategories": [
-    "Layout Builder extensions"
+    "Layout Builder",
+    "Content creation limits"
   ],
   "keywords": [
     "layout builder",
     "limit",
+    "minimum",
+    "maximum",
     "components",
-    "governance",
-    "restrict"
+    "regions",
+    "sections",
+    "governance"
   ],
-  "project_description": "Layout Builder Limit allows administrators to limit sections and regions to a minimum and maximum amount of components. This allows you require at least 1 block in a region, or limit the maximum amount of blocks in an entire section. \n\n When used in tandem with Layout Builder Lock and Layout Builder Restrictions you can completely control which sections are editable, which types of components may be added to sections or regions, and the amount of components allowed or required in a section or region.",
+  "project_description": "Layout Builder Limit lets administrators set a minimum and/or maximum number of components (blocks) allowed in a Layout Builder section, or per region within a section. Enable a minimum to require at least N blocks, or a maximum to cap a section/region at N blocks. The limits are configured directly on the section-configuration form (guarded by two module permissions, one for default displays and one for overrides) and stored as a layout third-party setting. When a maximum is reached the module hides the 'Add block' link and filters out available block plugins, and it validates the whole layout on save so an over-limit or under-limit layout cannot be persisted. When used together with Layout Builder Lock and Layout Builder Restrictions you can control which sections are editable, which block/layout types may be placed, and now how many components a section or region must or may contain.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

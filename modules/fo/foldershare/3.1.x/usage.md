@@ -1,31 +1,31 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-FolderShare manages shared files and folders — a hierarchical file manager inside Drupal with per-item ownership and sharing, like a private cloud drive.
+FolderShare turns a Drupal site into a private-cloud file manager where users create folders, upload files, organize a hierarchy, and share whole folder trees with chosen users, roles, or the public.
 
 ---
 
-FolderShare turns Drupal into a file-and-folder manager: users have folders, upload files, organise them hierarchically, and share items with other users or publicly — a private-cloud-drive experience. Because it stores and shares files with a per-item access model, its security is that access model, and it is built around a dedicated permission set: `view foldershare`, `author foldershare` (create/upload), `share foldershare` (share with users), `share public foldershare` (make public), and `administer foldershare`. The separation matters — public sharing is its own permission, so making a file world-readable is a distinct capability, not implied by ordinary sharing. The routes reflect it: `/foldershare` (own), `/foldershare/shared`, `/foldershare/public`, and `/foldershare/all` (admin-only). The things to get right operationally are which roles hold `share public foldershare` (that permission is what can expose files beyond the site's users) and confirming that the file storage is private (`private://`) so shared files are served through FolderShare's access checks rather than being directly fetchable. It is a substantial subsystem; treat the sharing permissions as the control surface and verify public-sharing is granted deliberately.
+FolderShare adds a single `foldershare` content entity type that models both files and folders in one nested tree, plus a graphical browser (like Windows Explorer / macOS Finder) at `/foldershare`. Users with the right module permissions create root items, upload and organize files, and rename/move/copy/duplicate/delete/download them through an AJAX "command" menu. Sharing is set on a folder tree's top-level (root) item as per-user view/author access grants that cascade to everything inside; a separate permission gates sharing with the anonymous public. Files are stored in Drupal's public or private file system under a per-user directory tree, and every file access is routed through an access-checked download controller. The module ships its own permissions, routes, a `FolderShareCommand` plugin type, Views integration, breadcrumb builder, search plugin, scheduled-task queue for long operations, and Drush maintenance commands.
 
 ---
 
-- Give users private folders.
-- Upload and organise files.
-- Share a file with another user.
-- Make a file public.
-- Browse a folder hierarchy.
-- Restrict who can share publicly.
-- Use private file storage.
-- Provide a cloud-drive experience.
-- Grant author/share separately.
-- Audit public-sharing access.
-- Manage shared files.
-- Confirm files are served via access checks.
-- Restrict administer foldershare.
-- Control per-item access.
-- Share folders with a team.
-- Keep public sharing deliberate.
-- Enable when needed.
-- Keep disabled otherwise.
-- Restrict administration.
-- Confirm on your site.
-- Test before production.
-- Review configuration.
+- Give authenticated users a personal "My Files" area at `/foldershare` for uploading and organizing documents.
+- Build a departmental shared drive where teams share folder trees with view or edit (author) access.
+- Publish downloadable assets (docs, software releases, press kits) to anonymous visitors via public sharing.
+- Let users drag-and-drop files and whole folders into the browser to upload them in bulk.
+- Organize uploads into a deep folder hierarchy that exists only in the database (files live under machine-managed paths).
+- Rename, move, copy, and duplicate files and folders through a right-click / toolbar command menu.
+- Download a single file, or ZIP-and-download a folder or a multi-item selection in one click.
+- Recover deleted items from a per-user trash/recycle folder before permanent deletion.
+- Compress selected items into a ZIP archive, or uncompress an uploaded archive, inside the browser.
+- Add descriptions and comments to files and folders (optional core Comment integration).
+- Search files and folders by name (and optionally file content) with the core Search or Search API modules.
+- Restrict which filename extensions may be uploaded site-wide from the admin settings form.
+- Cap the maximum upload size, independent of the PHP limit, from the admin settings.
+- Choose whether uploaded files are stored in the public or private (recommended) file system.
+- Limit which browser commands are available by editing the allowed-command list in configuration.
+- Let administrators moderate everyone's content, change ownership, and fix problems via the "administer foldershare" permission.
+- Provide a site-wide usage report at `/admin/reports/foldershare` showing per-user file counts and storage totals.
+- Embed a folder browser inside other content using the FolderShare field type, widget, and formatters.
+- Offer per-user home folders that are auto-created on first login.
+- Queue long-running deletes, copies, and moves as scheduled tasks that finish after each page load or at cron.
+- Run maintenance from the CLI: integrity check (`foldershare:fsck`), delete-all, inspect locks and pending tasks, and report version.
+- Expose files and folders over REST for scripted/remote access when the companion FolderShare REST module is installed.
+- Integrate with Views to build custom listings of files and folders.

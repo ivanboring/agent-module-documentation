@@ -1,31 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Xframe Allow Webvisor relaxes the site's framing policy to allow Yandex Webvisor (session recording) to load the site in an iframe — but it does so by overwriting the entire Content-Security-Policy header.
+Xframe Allow Webvisor emits a `Content-Security-Policy: frame-ancestors …` header on every response so that Yandex Metrica WebVisor can load the site inside an iframe for session recording.
 
 ---
 
-Yandex Webvisor records user sessions by loading the site in an iframe, which the default framing policy blocks. Xframe Allow Webvisor relaxes that by emitting a `Content-Security-Policy: frame-ancestors …` header allowing Yandex origins. The implementation has a serious side effect, verified in this review and detailed in the local security notes: it uses `$response->headers->set('content-security-policy', …)`, which **replaces** the whole CSP header rather than adding a directive to it — so any Content-Security-Policy the site already had (its own hardening, or from a security module) is silently destroyed and replaced with a policy containing only `frame-ancestors`. Verified: a strict `default-src 'self'; script-src 'self'; object-src 'none'` became just the frame-ancestors policy, losing all XSS-mitigation directives. It also allows cleartext `http://` Yandex origins to frame the site. So enabling this module on a site that relies on a CSP is a security regression. Only use it where Yandex Webvisor is genuinely needed and the site does not depend on a Content-Security-Policy for hardening — and treat the CSP-overwrite as a defect to be aware of (the module should merge, not replace).
+Yandex Metrica WebVisor is a session-replay tool that records and plays back visitor sessions by rendering the page inside an iframe on Yandex's side. A Drupal site's default framing policy prevents that. Xframe Allow Webvisor removes the obstacle with a single kernel-response event subscriber (`Drupal\xframe_allow_webvisor\EventSubscriber\XframeSubscriber`): on the `kernel.response` event it calls `$response->headers->set('content-security-policy', "frame-ancestors 'self' http://webvisor.com https://webvisor.com https://metrika.yandex.ru http://metrika.yandex.ru")`, so every response carries a Content-Security-Policy whose `frame-ancestors` directive lists the site itself and the Yandex WebVisor / Metrica origins. The module has no settings form, no configuration objects, no permissions and no routes — installing and enabling it is the entire setup, and the header value is hard-coded. Because the subscriber runs unconditionally, the header is applied to all paths, including admin and authenticated pages. Note that `set()` writes the header rather than merging into an existing one, so if the site or another module already sends a Content-Security-Policy, review how the two interact after enabling. For finer-grained control over framing and other security headers, the Security Kit (`seckit`) module is the general-purpose alternative.
 
 ---
 
-- Allow Yandex Webvisor to frame the site.
-- Relax the framing policy for session recording.
-- Only enable where Webvisor is used.
-- Beware it overwrites the whole CSP.
-- Do not run it with a hardening CSP.
-- Know it destroys an existing CSP.
-- Drop the http:// origins.
-- Understand the clickjacking trade.
-- Merge rather than replace the CSP.
-- Confirm no CSP is relied on.
-- Enable Webvisor framing knowingly.
-- Check the response CSP after enabling.
-- Avoid on CSP-hardened sites.
-- Treat the overwrite as a defect.
-- Restrict to where needed.
-- Review the framing exposure.
-- Enable when needed.
-- Keep disabled otherwise.
-- Restrict administration.
-- Confirm on your site.
-- Test before production.
-- Review configuration.
+- Allow Yandex Metrica WebVisor to load the site in an iframe for session replay.
+- Enable WebVisor recording on a Drupal site whose framing policy would otherwise block it.
+- Emit a `frame-ancestors` Content-Security-Policy directive permitting the Yandex WebVisor origins.
+- Permit framing by `webvisor.com` (http and https).
+- Permit framing by `metrika.yandex.ru` (http and https).
+- Keep `'self'` in the frame-ancestors list so the site can still frame its own pages.
+- Turn on WebVisor framing with zero configuration — enable the module and it works.
+- Add the required framing header without hand-editing web-server or settings.php config.
+- Support a Yandex Metrica analytics setup that relies on WebVisor session recording.
+- Apply the framing header site-wide across all routes and responses.
+- Inspect the emitted `Content-Security-Policy` response header to confirm WebVisor framing is allowed.
+- Verify in the browser dev-tools Network panel that the header is present on page loads.
+- Provide the framing allowance a Yandex Metrica tag/counter needs for WebVisor to attach.
+- Use on a marketing or content site that has adopted Yandex Metrica for behavioural analytics.
+- Serve as a minimal, dependency-free way to add one CSP framing directive.
+- Disable the module to immediately stop emitting the WebVisor framing header.
+- Review interaction with any existing Content-Security-Policy before enabling on a hardened site.
+- Combine consideration with Security Kit (`seckit`) when broader header control is needed.
+- Confirm WebVisor session recordings begin appearing in the Yandex Metrica dashboard after enabling.
+- Support Drupal 8, 9, 10 and 11 (core requirement `^8 || ^9 || ^10 || ^11`).
+- Restrict who can install/enable modules so the framing change is made deliberately.
+- Test on a staging environment before enabling in production.

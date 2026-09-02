@@ -3,11 +3,13 @@
   "data_name": "entity_slug",
   "description": "Implements a field that stores a URL-friendly slug for an entity.",
   "version": "2.x",
-  "package": null,
+  "package": "Fields",
   "composer_namespace": "drupal/entity_slug",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/pathauto": "~1.0"
+  },
   "dependent_modules": [
-    "pathauto:pathauto"
+    "pathauto"
   ],
   "configure": null,
   "core_version_requirement": "^10 || ^11",
@@ -21,22 +23,29 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "slugifier"
+  ],
   "categories": [
-    "Content"
+    "Content editing experience",
+    "Search engine optimization (SEO)"
   ],
   "subcategories": [
-    "Fields"
+    "Fields",
+    "Field formatters",
+    "URL alias generation"
   ],
   "keywords": [
     "slug",
     "url",
     "field",
     "identifier",
-    "clean url"
+    "clean url",
+    "pathauto",
+    "token"
   ],
-  "project_description": "Entity Slug provides generic, configurable slugging functionality for any fieldable entity by adding Slug and Slug Path field types.\n\n This module does NOT enforce any particular way to use the slug. What it DOES do:\n\n \n Creates a new Slug field type. \n Simply type text into the field, and the text can be converted into a URL-friendly slug. \n Supports extensible plugins for creating a slug based on user input. Currently this includes a token replacer and pathauto cleaner. \n Creates a new Slug Path field type supporting composing multiple slugs together. \n Supports some custom tokens for additional functionality.",
+  "project_description": "Entity Slug provides generic, configurable slugging functionality for any fieldable entity by adding Slug and Slug Path field types. It does not enforce any particular use for the slug; it simply lets an editor type text (optionally containing tokens) into a field, which is then converted to a URL-friendly string on save via a stack of pluggable \"slugifier\" plugins. Shipped slugifiers include a token replacer, a Pathauto cleaner, an entity token replacer, an entity alias replacer, a term-parent token replacer, and a short-circuit fallback selector. The Slug Path field type composes multiple slugs together into a \"/\"-separated path. Slugifiers are an extensible plugin type, so custom slug transformations can be added by other modules.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "not-covered",

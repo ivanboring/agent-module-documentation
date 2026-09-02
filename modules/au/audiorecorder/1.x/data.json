@@ -3,9 +3,11 @@
   "data_name": "audiorecorder",
   "description": "Provides a field widget for file-fields that uses the vmsg HTML5/JavaScript library for in-browser recording.",
   "version": "1.x",
-  "package": "Media",
+  "package": null,
   "composer_namespace": "drupal/audiorecorder",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "npm-asset/vmsg": "^0.4"
+  },
   "dependent_modules": [
     "drupal:file"
   ],
@@ -16,7 +18,9 @@
   "project_url": "https://www.drupal.org/project/audiorecorder",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "vmsg"
+  ],
   "suggests": {},
   "submodules": [
     "audiorecorder_webform_integration"
@@ -29,14 +33,17 @@
     "Media"
   ],
   "subcategories": [
-    "Field widgets"
+    "File uploads",
+    "Fields"
   ],
   "keywords": [
     "audio",
     "recorder",
     "media",
-    "webform",
-    "file"
+    "file field",
+    "widget",
+    "vmsg",
+    "webform"
   ],
   "project_description": "Provides a field widget for file-fields that uses the vmsg HTML5/JavaScript library for in-browser recording.\n\n See Middlebury's name-pronunciation documentation for an example of how this field widget can be used.\n\n Installation and Setup \n See the README.md for detailed instructions. Due to the usage of external libraries, installation via Composer requires a number of tweaks to your project's root composer.json to allow installation of npm assets into your libraries/ directory.\n\n Webform Integration \n An included submodule provides integration with Webform , providing an \"Audio recorder\" file-upload element. \n\n Back to top",
   "maintenance_status": "Actively maintained",

@@ -1,5 +1,5 @@
 {
-  "name": "Audiorecorder Webform Integration",
+  "name": "Audio Recorder Webform Integration",
   "data_name": "audiorecorder_webform_integration",
   "description": "Exposes the audiorecorder to webform.",
   "version": "1.x",
@@ -7,7 +7,8 @@
   "composer_namespace": "drupal/audiorecorder",
   "composer_requirements": {},
   "dependent_modules": [
-    "audiorecorder:audiorecorder"
+    "audiorecorder:audiorecorder",
+    "webform:webform"
   ],
   "configure": null,
   "core_version_requirement": "^9 || ^10 || ^11",
@@ -21,17 +22,20 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Media"
   ],
   "subcategories": [
-    "Field widgets"
+    "File uploads",
+    "Submission handling"
   ],
   "keywords": [
     "audiorecorder",
-    "webform integration",
+    "webform",
+    "audio",
+    "file upload element",
     "submodule"
   ],
   "part_of": "audiorecorder",
