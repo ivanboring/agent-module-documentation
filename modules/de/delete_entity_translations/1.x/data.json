@@ -7,7 +7,7 @@
   "composer_namespace": "drupal/delete_entity_translations",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "delete_entity_translations",
   "core_version_requirement": "^10.1 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
@@ -19,13 +19,15 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content"
+    "Multilingual",
+    "Administration tools"
   ],
   "subcategories": [
-    "Multilingual"
+    "Translation / multilingual",
+    "Database maintenance / optimization"
   ],
   "keywords": [
     "translations",

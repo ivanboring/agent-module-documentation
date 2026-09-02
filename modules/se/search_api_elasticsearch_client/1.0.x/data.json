@@ -1,11 +1,14 @@
 {
-  "name": "Search API Elasticsearch Client",
+  "name": "Search API ElasticSearch Client",
   "data_name": "search_api_elasticsearch_client",
   "description": "Provides an ElasticSearch backend for Search API.",
   "version": "1.0.x",
   "package": "Search",
   "composer_namespace": "drupal/search_api_elasticsearch_client",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/search_api": "^1.23",
+    "makinacorpus/php-lucene": "^1.1"
+  },
   "dependent_modules": [
     "search_api:search_api",
     "geofield:geofield"
@@ -16,19 +19,27 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/search_api_elasticsearch_client",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
-  "library_dependencies": [],
+  "php_requirement": "8.0",
+  "library_dependencies": [
+    "elasticsearch/elasticsearch",
+    "makinacorpus/php-lucene"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "ElasticSearchConnector",
+    "ElasticSearchAnalyser"
+  ],
   "categories": [
-    "Search"
+    "Site search"
   ],
   "subcategories": [
-    "Elasticsearch integration"
+    "Search backend",
+    "Content indexing",
+    "Faceted search"
   ],
   "keywords": [
     "elasticsearch",

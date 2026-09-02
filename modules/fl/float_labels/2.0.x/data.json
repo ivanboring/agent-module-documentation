@@ -3,32 +3,38 @@
   "data_name": "float_labels",
   "description": "Applies configurable, JS-enhanced floating CSS labels to Drupal forms.",
   "version": "2.0.x",
-  "package": null,
+  "package": "Forms",
   "composer_namespace": "drupal/float_labels",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "float_labels.admin_settings",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/float_labels",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "core/jquery",
+    "core/drupal"
+  ],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "User interface"
+    "Theming",
+    "Content display"
   ],
   "subcategories": [
-    "Form widgets"
+    "Form theming",
+    "Form widgets / select UI"
   ],
   "keywords": [
     "float labels",
+    "floating labels",
     "forms",
     "labels",
     "ux",

@@ -1,13 +1,14 @@
 {
-  "name": "Augmentor Ckeditor5",
+  "name": "CKEditor 5 Augmentor",
   "data_name": "augmentor_ckeditor5",
   "description": "Provides integration of Augmentor with CKEditor 5.",
   "version": "1.2.x",
-  "package": null,
+  "package": "Augmentor",
   "composer_namespace": "drupal/augmentor",
   "composer_requirements": {},
   "dependent_modules": [
-    "augmentor:augmentor"
+    "ckeditor5",
+    "augmentor"
   ],
   "configure": null,
   "core_version_requirement": "^10.1 || ^11 || ^12",
@@ -16,7 +17,9 @@
   "project_url": "https://www.drupal.org/project/augmentor",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "core/ckeditor5"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
@@ -24,14 +27,18 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Artificial Intelligence"
+    "Content editing experience",
+    "Artificial Intelligence (AI)"
   ],
   "subcategories": [
-    "AI content generation"
+    "CKEditor plugins",
+    "WYSIWYG / rich text editor"
   ],
   "keywords": [
     "augmentor",
     "ckeditor5",
+    "wysiwyg",
+    "ai",
     "submodule"
   ],
   "part_of": "augmentor",

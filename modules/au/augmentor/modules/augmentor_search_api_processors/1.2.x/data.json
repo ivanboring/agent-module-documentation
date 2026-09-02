@@ -1,13 +1,14 @@
 {
-  "name": "Augmentor Search Api Processors",
+  "name": "Search API Augmentor Processors",
   "data_name": "augmentor_search_api_processors",
   "description": "Provides Search API processors for augmenting search results.",
   "version": "1.2.x",
-  "package": null,
+  "package": "Augmentor",
   "composer_namespace": "drupal/augmentor",
   "composer_requirements": {},
   "dependent_modules": [
-    "augmentor:augmentor"
+    "augmentor:augmentor",
+    "search_api:search_api"
   ],
   "configure": null,
   "core_version_requirement": "^10.3 || ^11 || ^12",
@@ -21,17 +22,20 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Artificial Intelligence"
+    "Artificial Intelligence (AI)"
   ],
   "subcategories": [
-    "AI content generation"
+    "AI provider abstraction / LLM gateway"
   ],
   "keywords": [
     "augmentor",
-    "search api processors",
+    "search api",
+    "processor",
+    "index",
+    "query",
     "submodule"
   ],
   "part_of": "augmentor",

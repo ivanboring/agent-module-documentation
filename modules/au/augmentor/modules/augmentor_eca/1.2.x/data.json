@@ -1,13 +1,14 @@
 {
-  "name": "Augmentor Eca",
+  "name": "Augmentor ECA Rules",
   "data_name": "augmentor_eca",
   "description": "Provides additional eca rules for Augmentor.",
   "version": "1.2.x",
-  "package": null,
+  "package": "Augmentor",
   "composer_namespace": "drupal/augmentor",
   "composer_requirements": {},
   "dependent_modules": [
-    "augmentor:augmentor"
+    "augmentor:augmentor",
+    "eca:eca"
   ],
   "configure": null,
   "core_version_requirement": "^10.1 || ^11 || ^12",
@@ -21,17 +22,20 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Artificial Intelligence"
+    "Artificial Intelligence (AI)"
   ],
   "subcategories": [
-    "AI content generation"
+    "AI provider abstraction / LLM gateway"
   ],
   "keywords": [
     "augmentor",
     "eca",
+    "action",
+    "bpmn",
+    "workflow",
     "submodule"
   ],
   "part_of": "augmentor",

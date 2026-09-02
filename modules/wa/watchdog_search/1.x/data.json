@@ -3,11 +3,11 @@
   "data_name": "watchdog_search",
   "description": "Enhances the Watchdog log messages page by adding a search field and advanced filtering options.",
   "version": "1.x",
-  "package": null,
+  "package": "Search",
   "composer_namespace": "drupal/watchdog_search",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:dblog"
+    "dblog"
   ],
   "configure": null,
   "core_version_requirement": "^9 || ^10 || ^11",
@@ -15,25 +15,29 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/watchdog_search",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Administration"
+    "Administration tools",
+    "Developer tools"
   ],
   "subcategories": [
-    "Logging / audit"
+    "Dashboard / reporting",
+    "Debugging & inspection",
+    "Log aggregation"
   ],
   "keywords": [
     "watchdog",
     "dblog",
     "log",
     "search",
+    "filter",
     "diagnostics"
   ],
   "project_description": "Enhances the Watchdog log messages page by adding a search field and advanced\n\nfiltering options.\n\n Features \n \n Search through your Watchdog log messages. \n Filter your log messages by date. \n Open the full message in a modal directly from the log messages page. \n \n Installation \n You can install the module like any other Drupal module. For more information, please consult https://www.drupal.org/docs/extending-drupal/installing-modules .\n\n Usage \n This module automatically disables the dblog view and overrides the default log messages page with a custom implementation, where it will be possible for users to search through the log messages and filter them by date. Clicking on the shortened message will result into opening the full log message in a modal.\n\n Back to top",

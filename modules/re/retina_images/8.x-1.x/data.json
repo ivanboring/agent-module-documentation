@@ -3,7 +3,7 @@
   "data_name": "retina_images",
   "description": "Provide an image effect to output images in high resolution format for high resolution displays.",
   "version": "8.x-1.x",
-  "package": "Media",
+  "package": "Image styles",
   "composer_namespace": "drupal/retina_images",
   "composer_requirements": {},
   "dependent_modules": [
@@ -21,22 +21,24 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Media"
   ],
   "subcategories": [
-    "Image styles"
+    "Responsive images",
+    "Image toolkit / processing"
   ],
   "keywords": [
     "retina",
     "high-dpi",
-    "images",
     "2x",
-    "image effect"
+    "image effect",
+    "image style",
+    "resolution multiplier"
   ],
-  "project_description": "Retina Images adds an option to all image effects included with core to allow them to output high resolution images for high DPI or retina displays. When enabled as part of an image style, this module returns high resolution images for all devices, as is recommended and explained in Thomas Fuchs' excellent blog post .\n\n For best results you may need to specify a custom quality setting for each image style, which can be done easily with the Image Style Quality module.",
+  "project_description": "Retina Images swaps in its own subclasses of core's four image-effect plugins (resize, scale, scale-and-crop, crop) via hook_image_effect_info_alter(). Each subclass adds a 'Retinafy' checkbox and a 'Resolution multiplier' number field (default 2) to the effect's configuration form; when Retinafy is on, the effect multiplies the configured width and height by the multiplier before applying the transform, so the generated derivative is rendered at 2x (or Nx) pixel dimensions for high-DPI / retina displays. It ships three optional example image styles (thumbnail_retina, medium_retina, large_retina) and an admin preview route/controller. It has no configuration form of its own and no external dependencies beyond core Image.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

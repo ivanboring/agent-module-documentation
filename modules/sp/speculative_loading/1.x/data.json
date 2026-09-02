@@ -3,31 +3,33 @@
   "data_name": "speculative_loading",
   "description": "Enables browsers to speculatively prerender or prefetch pages to achieve near-instant loads based on user interaction.",
   "version": "1.x",
-  "package": null,
+  "package": "Performance",
   "composer_namespace": "drupal/speculative_loading",
   "composer_requirements": {},
   "dependent_modules": [
     "drupal:system"
   ],
-  "configure": null,
+  "configure": "speculative_loading.settings",
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/speculative_loading",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1.0",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "speculation_rules"
+  ],
   "categories": [
     "Performance"
   ],
   "subcategories": [
-    "Front-end performance"
+    "Prefetching / preloading"
   ],
   "keywords": [
     "speculation rules",

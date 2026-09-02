@@ -3,13 +3,13 @@
   "data_name": "node_delete_redirect",
   "description": "Enables user of the right permission to define redirection path on node deletion.",
   "version": "4.0.x",
-  "package": null,
+  "package": "Content",
   "composer_namespace": "drupal/node_delete_redirect",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:node"
+    "node"
   ],
-  "configure": null,
+  "configure": "node_delete_redirect.admin_settings_form",
   "core_version_requirement": "^9.3 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -27,16 +27,16 @@
     "Site structure"
   ],
   "subcategories": [
-    "Front page / routing"
+    "Entity page behavior & redirects"
   ],
   "keywords": [
     "node",
     "delete",
     "redirect",
     "content type",
-    "editing"
+    "post-delete"
   ],
-  "project_description": "Features \n This lightweight module allows administrators to configure, on a per-content-type basis, the path a user is redirected to after deleting a node. By default, Drupal will return the user to the front page. A use case for this module might be returning the user instead to the main news page when deleting a news article, for example.\n\n Usage \n Go to\n\n path : /admin/people/permissions \n\nensure that the right user has permission to administer node delete redirect settings.\n\nGo to\n\n path : /admin/config/content/node-delete-settings \n\nenable redirect, allow for content type where the redirection is needed & provide the path. Test by deleting a node of that content type.\n\n Use Cases \n \n Redirect to Drupal's internal paths on node deletion of specific content type \n \n Please refer to README.md for more help.\n\n Back to top",
+  "project_description": "Node Delete Redirect is a lightweight module that lets an administrator configure, per content type, the internal path a user is sent to after deleting a node. By default Drupal returns the user to the front page after a node delete; with this module you can, for example, send the user to the news listing after deleting a news article and to a different landing page for other bundles. Redirect targets are set on a single settings form (Configuration > Content authoring > Node delete redirect) and are validated as internal Drupal paths at save time. An optional alpha language-support option prefixes the redirect with the current language code so multilingual sites land on the language-appropriate version of the target path.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

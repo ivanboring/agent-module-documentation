@@ -1,13 +1,13 @@
 {
-  "name": "Augmentor Demo",
+  "name": "Demo Augmentor",
   "data_name": "augmentor_demo",
   "description": "Demo Augmentor to serve as a blueprint for developers.",
   "version": "1.2.x",
-  "package": null,
+  "package": "Augmentor",
   "composer_namespace": "drupal/augmentor",
   "composer_requirements": {},
   "dependent_modules": [
-    "augmentor:augmentor"
+    "augmentor"
   ],
   "configure": null,
   "core_version_requirement": "^10.3 || ^11 || ^12",
@@ -21,17 +21,22 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Artificial Intelligence"
+    "Developer tools",
+    "Artificial Intelligence (AI)"
   ],
   "subcategories": [
-    "AI content generation"
+    "Example / reference code",
+    "Plugin system"
   ],
   "keywords": [
     "augmentor",
     "demo",
+    "example",
+    "blueprint",
+    "plugin",
     "submodule"
   ],
   "part_of": "augmentor",
