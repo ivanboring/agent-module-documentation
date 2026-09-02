@@ -1,11 +1,13 @@
 {
   "name": "LocalGov Content Lock",
   "data_name": "localgov_content_lock",
-  "description": "Content Lock configured for LocalGov Drupal.",
+  "description": "Customises the Content Lock module for use with LocalGov Drupal.",
   "version": "1.2.x",
   "package": "LocalGov Drupal",
   "composer_namespace": "drupal/localgov_content_lock",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/content_lock": "^3.0"
+  },
   "dependent_modules": [
     "content_lock:content_lock"
   ],
@@ -21,7 +23,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience",
@@ -38,7 +40,7 @@
     "collision",
     "councils"
   ],
-  "project_description": "Customises the Content Lock module for use with LocalGov Drupal.\n\n When enabled this module will:\n\n Enable the Content Lock and Content Lock Timeout modules.\n\nEnables content locking for all enabled content types.\n\nAdds a link to the content lock view to the content admin page and the admin menu.\n\nThe default content lock timeout is left at 30 minutes. This can be changed at /admin/config/content/content_lock/timeout.",
+  "project_description": "Customises the Content Lock module for use with LocalGov Drupal. It is a thin glue module: it depends on Content Lock (drupal/content_lock ^3.0), and on install it turns on pessimistic locking for every node bundle by writing types.node = ['*' => '*'] into content_lock.settings. It also adds a 'Locked content' link to the admin content page (a local task tab) and the admin menu, both pointing at Content Lock's view.locked_content.page_1 listing. The module ships no configuration UI of its own; the lock timeout (default 30 minutes) and other behaviour are managed on Content Lock's own settings page at /admin/config/content/content_lock.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

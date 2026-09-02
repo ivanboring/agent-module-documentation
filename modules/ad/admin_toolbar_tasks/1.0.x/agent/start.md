@@ -1,13 +1,30 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Admin Toolbar Tasks (admin_toolbar_tasks) — agent index
 
-Renders administrative **local tasks** (view / edit / revisions / translate) in the **toolbar**
-rather than as tabs in the content area. Version **1.0.3**. Core `^10 || ^11`. Depends on `toolbar`.
+Moves administrative **local tasks** (the View / Edit / Revisions / Translate style tabs) off the
+content area and into a dropdown on the site **toolbar**. Version `1.0.3` (dir `1.0.x`).
+Core `^9.3 || ^10 || ^11`, PHP `>=7.4`. Package `Administration`. License GPL-2.0-or-later.
 
-Biggest gain on sites where editors work in the **front-end theme**, where tabs either collide with
-the design or get suppressed and become unreachable.
+## Dependency
+- `drupal:toolbar` (core Toolbar module) — hard dependency.
+- Works well alongside `admin_toolbar` (not required).
 
-**Two checks on a real site:** the toolbar is not infinitely wide — a content type with translation,
-moderation, revisions, devel and contrib tabs produces more tasks than fit, so check that case not a
-stock install; and local tasks are **access-filtered per route**, so **test as an editor, not as
-user 1**, which sees everything and therefore tests nothing.
+## What it provides (no routes, no permissions, no config, no services, no install)
+- **`hook_toolbar()`** — adds one `toolbar_item` (`admin_toolbar_tasks`, weight 1000, floated right)
+  whose contents are a lazy builder (`#create_placeholder`, cached by `route`), attaching the
+  `admin_toolbar_tasks/toolbar.item` library.
+- **`hook_menu_local_tasks_alter()`** — on **non-admin** routes (front-end theme), marks each tab
+  that points at an admin route, stashes its original `#access`, and hides it from the normal tab
+  block by setting `#access` to `AccessResult::forbidden()`.
+- **`AdminToolbarTasksBuilder`** (`src/AdminToolbarTasksBuilder.php`) — trusted `#lazy_builder`
+  callback that re-collects those marked tasks and renders the access-allowed ones as toolbar links.
+- **`hook_theme()`** — theme hook `links__admin_toolbar_tasks` (base hook `links`), template
+  `templates/links--admin-toolbar-tasks.html.twig` (renders a `⋮` toggle + `<ul>` when >1 link).
+- **Library** `toolbar.item` — `css/admin-toolbar-tasks.css` only (no JS, no external deps).
+
+Access is preserved end-to-end: a task appears in the toolbar only when its original per-route
+access result `->isAllowed()`, so what a user sees still varies by permission.
+
+## Solution docs
+- [Mechanism, builder & theming](api/builder.md) — how the alter + lazy-builder + template fit
+  together, cacheability, and how to override the markup/CSS.

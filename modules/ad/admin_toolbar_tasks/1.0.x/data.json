@@ -1,27 +1,27 @@
 {
   "name": "Admin Toolbar Tasks",
   "data_name": "admin_toolbar_tasks",
-  "description": "Shows administrative local tasks in the site toolbar.",
+  "description": "Splits off administrative local tasks and displays them in the site toolbar.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Administration",
   "composer_namespace": "drupal/admin_toolbar_tasks",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:toolbar"
+    "toolbar"
   ],
   "configure": null,
-  "core_version_requirement": "^10 || ^11",
+  "core_version_requirement": "^9.3 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/admin_toolbar_tasks",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=7.4",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools",
@@ -38,7 +38,7 @@
     "admin ui",
     "navigation"
   ],
-  "project_description": "Split of and display administrative local tasks as part of the site Toolbar.",
+  "project_description": "Split of and display administrative local tasks as part of the site Toolbar. It moves the View / Edit / Revisions / Translate style local-task tabs off the content area and into a dropdown on the site toolbar, which keeps them reachable and consistently styled on front-end themes where such tabs otherwise collide with the design or get suppressed.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

@@ -1,20 +1,22 @@
 {
   "name": "Swiffy Slider",
   "data_name": "swiffy_slider",
-  "description": "Lightweight slider and carousel.",
+  "description": "Super fast and lightweight slider and carousel",
   "version": "1.4.x",
   "package": null,
   "composer_namespace": "drupal/swiffy_slider",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "swiffy_slider.settings",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/swiffy_slider",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "dynamicweb/swiffy-slider"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
@@ -26,16 +28,18 @@
   ],
   "subcategories": [
     "Carousel / slider",
-    "JavaScript libraries"
+    "Field formatters",
+    "Views styles"
   ],
   "keywords": [
     "slider",
     "carousel",
     "lightweight",
-    "css",
-    "performance"
+    "css scroll-snap",
+    "views style",
+    "field formatter"
   ],
-  "project_description": "Drupal integration of Swiffy Slider .\n\n This module provides a field formatter for the field type entity_reference and a views format.\n\n Swiffy Slider provides a lightweight slider/carousel solution. All the sliding, dragging, snapping etc. are native browser behavior and not Javascript. Swiffy Slider can even run in a simple mode with no JS at all. Support for any input device (including touch pads, pencils, assistive devices) and 100% WCAG compatible.\n\n \n Back to top \n\n How to use it \n Implementation \n This module ships already the required library, but it is possible to override the used version.\n\n 1. Add the following snippet to your composer.json inside repositories\n\n \n\n{\n\n \"type\": \"package\",\n\n \"package\": {\n\n \"type\": \"drupal-library\",\n\n \"name\": \"dynamicweb/swiffy-slider\",\n\n \"version\": \"v1.6.0\",\n\n \"dist\": {\n\n \"url\": \"https://github.com/dynamicweb/swiffy-slider/archive/refs/tags/v1.6.0.zip\",\n\n \"type\": \"zip\"\n\n }\n\n }\n\n}\n\n \n\n 2. Download the dependency\n\n composer require dynamicweb/swiffy-slider \n\n 3. Enable the module\n\n Field formatter \n Mise en place \n \n Build a multi-value media field, e. g. in the content type article \n Create a content with at least two images in that field \n Go to https://swiffyslider.com/configuration/ and customize the slider options, copy the \"Perma link\" \n \n Configure the field formatter \n \n In your content type, go to \"Manage display\", spot the media field \n Under \"Format\", select \"Swiffy Slider\" \n Click settings (the gear icon) and paste the copied Perma link \n \n No third-party calls. The field allows the complete URL for your convenience, all customized config will be handled locally.\n\n Views display \n Have some nodes at hand (e. g. articles) and make sure you have configured a suitable teaser display (e. g. title, body trimmed to 200 characters, teaser image). \n\n \n Add a display to a node-based view, e. g. to the frontpage view \n Use unformatted list with teasers or fields, as you like \n Select format: Swiffy Slider \n Go to https://swiffyslider.com/configuration/ and customize the slider options, copy the \"Perma link\" \n Paste the copied link in the Settings field \"Configuration URL\" \n \n No third-party calls, as stated above.\n\n Back to top \n\n Known issues \n For some reason the loop (at the end of a list go to first item) does not work when snap behaviour is active. Any ideas welcome. \n\n Back to top \n\n Why only a configuration URL? \n Swiffy Slider has a lot of configuration options. We find it very convenient to configure everything on the Configuration page with a sample preview right in place. \n\n Replicating all settings to the field formatter or views settings would add a lot of complexity to the Drupal back-end forms. If you think it would be worth the effort nevertheless, we'd recommend to build a complimentary module with all the settings in the Drupal back-end. \n\n Back to top",
+  "project_description": "Drupal integration of the Swiffy Slider JavaScript library. Provides three field formatters (entity_reference/entity_reference_revisions, image, and text) plus a Views style that render field items or view rows as a lightweight slider/carousel. Sliding, dragging and snapping are native browser behaviour (CSS scroll-snap) rather than a JavaScript animation loop, so the bundled JS is tiny and the slider works with touch, trackpad and assistive devices. Sliders are configured by pasting a permalink copied from the swiffyslider.com configurator; the module parses that URL's query string into CSS classes, data-attributes and style custom properties on the slider container. A global default configuration URL can be set at /admin/config/content/swiffy_slider, and each formatter or views style can override it.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

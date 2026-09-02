@@ -1,32 +1,31 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Webform Eloqua adds a Webform handler that sends submissions to Oracle Eloqua.
+Webform Eloqua adds a Webform handler that maps form elements to Eloqua form fields and posts completed submissions to Oracle Eloqua.
 
 ---
 
-The pairing is the common one: Webform collects, Eloqua does the marketing automation, and the handler is the join. Doing it as a Webform handler rather than a custom submit function means it is configured per form in the UI, can be disabled without a deployment, and participates in Webform's own handler ordering and conditions.
+The module is deliberately thin: it ships one class, `WebformEloquaHandler` (a `@WebformHandler` plugin), and leans on two dependencies to do the real work. Webform provides the submission lifecycle and the per-form handler UI; `eloqua_api_redux` owns the Eloqua connection, credentials and REST transport through its `eloqua_api_redux.forms` service. You attach the "Eloqua" handler to a webform, pick a target Eloqua form (the list is pulled live from Eloqua), and map Webform elements to that form's fields. The mapping UI splits into "Default Webform Field Mapping" (submission metadata such as sid, created, remote_addr) and "User Field Mapping" (the elements you built into the form), and it AJAX-reloads the destination field list whenever you change the selected Eloqua form.
 
-It builds on `eloqua_api_redux` for the connection, which is the right layering — one credential, several consumers.
-
-**Two things belong in any form-to-CRM integration.** A submission posted to a marketing platform is **personal data leaving the site**, and the person filling the form should have been told; that is a consent and privacy-notice question decided when the form is designed, not when the handler is enabled. And **handler failure needs a decision**: if Eloqua is unreachable, does the submission still save locally, does the user see an error, and is anyone told that submissions stopped flowing? Silent handler failure is how an organisation discovers three weeks later that a campaign collected nothing.
-
-Worth checking whether the handler queues. A synchronous post ties form submission to Eloqua's availability, which turns their outage into your broken form.
+Posting is one-directional and event-driven. On `postSave`, the handler computes the submission state and calls `remotePost`, which returns immediately unless the state is `STATE_COMPLETED` — so drafts and partial saves are never sent, only finished submissions. It then builds an Eloqua `fieldValues` payload from the stored mapping and hands it to `Forms::createFormData()`. There is no queue: the post happens inline during submission save, so Eloqua's availability is on the critical path of the form. Validation is enforced at configuration time — the handler refuses to save a mapping that omits a field Eloqua marks required, or that references an Eloqua field id that no longer exists. Failure at post time is handled minimally: an empty API response is logged via the handler logger and the submission still saves locally; the end user is not shown an error. Because submissions leave the site for a marketing platform, treat the transfer as personal-data egress and cover it in the form's consent and privacy notices.
 
 ---
 
-- Send webform submissions to Eloqua.
-- Configure the handler per form.
-- Disable the integration without a deployment.
-- Reuse one Eloqua credential.
-- Order the handler among others.
-- Tell users their data goes to Eloqua.
-- Cover the transfer in a privacy notice.
-- Decide what happens when Eloqua is down.
-- Keep the submission locally on failure.
-- Alert when submissions stop flowing.
-- Check whether the handler queues.
-- Avoid tying submission to vendor uptime.
-- Map form fields to Eloqua fields.
-- Audit forms posting to a CRM.
-- Document the module's behaviour for the team.
-- Review it during a site audit.
-- Verify its assumptions after an upgrade.
+- Post completed Webform submissions to an Oracle Eloqua form.
+- Attach the "Eloqua" handler to any webform from the Webform UI (Handlers tab).
+- Select the destination Eloqua form from a live, name-ordered list pulled from Eloqua.
+- Map user-created Webform elements to Eloqua form fields.
+- Map default submission properties (sid, uuid, created, remote_addr, etc.) to Eloqua fields.
+- Run more than one Eloqua handler on the same webform (cardinality is unlimited).
+- Let Webform's handler conditions/ordering decide when the Eloqua post runs.
+- Enable or disable the Eloqua integration per form without a code deployment.
+- Reuse a single Eloqua API credential configured once in Eloqua API Redux across many forms.
+- Enforce that all Eloqua-required fields are mapped before the handler can be saved.
+- Catch stale mappings — configuration save fails if a mapped Eloqua field id no longer exists.
+- Send only finished submissions (STATE_COMPLETED); skip drafts and partial saves.
+- Apply Webform token replacement to submission values before they are posted.
+- Keep the submission stored locally in Drupal even when the Eloqua post fails.
+- Log Eloqua post failures to the webform handler log for later review.
+- Feed Eloqua campaigns, landing-page follow-ups, and contact lists from Drupal forms.
+- Sync newsletter/marketing sign-up forms into Eloqua contact records.
+- Push event-registration or gated-content forms into Eloqua for nurture flows.
+- Audit which webforms forward data to an external CRM/marketing platform.
+- Document the site's form-to-Eloqua data flow for a privacy or compliance review.
+- Decide and document what should happen when Eloqua is unreachable at submit time.

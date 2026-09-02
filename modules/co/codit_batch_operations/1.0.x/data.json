@@ -1,13 +1,16 @@
 {
-  "name": "Codit Batch Operations",
+  "name": "Codit: Batch Operations",
   "data_name": "codit_batch_operations",
-  "description": "Framework for running batch operations.",
+  "description": "Provides methods and framework for running batch operations.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Development",
   "composer_namespace": "drupal/codit_batch_operations",
   "composer_requirements": {},
-  "dependent_modules": [],
-  "configure": null,
+  "dependent_modules": [
+    "views",
+    "options"
+  ],
+  "configure": "codit_batch_operations.config_form",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -16,9 +19,11 @@
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [],
-  "provides_permissions": false,
-  "provides_drush_commands": false,
+  "submodules": [
+    "codit_batch_operations_ui"
+  ],
+  "provides_permissions": true,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
@@ -34,10 +39,11 @@
     "operations",
     "framework",
     "bulk",
-    "migration",
-    "cleanup"
+    "cron",
+    "drush",
+    "deploy"
   ],
-  "project_description": "Codit: Batch Operations is for Drupal developers to easily invoke batch operations in hook_update_n, Drush Deploy hooks, cron, with Drush, or using the UI.\n\n Back to top \n\n \nFeatures \n \n Baked-in reporting of operations performed in the batch into a BatchOpLog entity. \n If the Batch Operation gets interrupted (error, exception, ctrl-c, navigating away from the batch run ...), the operation is still logged. The state is kept, so the next time it runs, it picks up where it left off. \n Custom batch process scripts live in a local/custom module. \n Batch Operation scripts can be used the same way in:\n \n hook_update_n() \n post_update functions \n Drush deploy and post-deploy functions \n Drush command to execute Batch Operation scripts - drush codit-batch-operations:run {script class name} \n \n cron \n Optional UI \n \n \n Option to stop on first error, or to skip items that error and keep going. \n \n Back to top \n\n \nYou need this module if you want \n \n Custom Drupal cron jobs \n Make changes to Drupal content during deployment \n Make custom Drush commands that can be run in other ways \n Complete logging and auditing of Drupal operations \n Flexibility of how large scale content operations can be performed \n \n Back to top \n\n \nPost-Installation \n \n Assign any roles to the permission to manage the configuration. \n Assign any roles to the permissions to View Batch operation logs, and to execute batch operation scripts via the UI. \n Visit /admin/config/development/batch_operations/settings and set the following:\n \n The machine name of the local module that will contain the scripts. \n The user id of the user that will get named in entity saves. \n \n \n Go to the custom module that you identified, and add the directory src/cbo_scripts/ . This is where you will add your Batch Operations scripts. \n Optionally, enable the sub-module Codit: Batch operations UI . \n \n Back to top \n\n \nAdditional Requirements \n None\n\n Back to top \n\n \nRecommended modules/libraries \n None\n\n Back to top \n\n \nSimilar projects \n None\n\n Back to top \n\n \nHow to try a demo? \n \n Go to SimplyTest.me https://www.simplytest.me/project/codit_batch_operations \n \n Follow the prompts to \"Launch Sandbox\" \n Login with admin : admin \n Go to /admin/modules#edit-modules-development and enable the 'Codit: Batch Operations UI' submodule \n Go to settings /admin/config/development/batch_operations/settings \n \n For Machine name of local module, enter codit_batch_operations This fools it into showing the test Batch Operations. \n Set the User Id to 1 . \n Save the configuration. \n Go here /admin/config/development/batch_operations and run some Batch Operations and view the resulting logs. \n \n Back to top \n\n \nCreate your own BatchOperation script \n \n Copy the StarterScript.php.txt from this module in to your src/cbo_scripts directory that you created in the Post-Installation steps. \n Rename the file to be a MeaningfulName.php \n \n Open the file and change the name of the class, to match the filename. \n Change the namespace entry to use the module_name of where this script now resides. \n Adjust each of the methods in the script to return what is needed. \n \n Back to top \n\n \nExamples \n \n Basic script showing required interface methods. https://git.drupalcode.org/project/codit_batch_operations/-/blob/1.0.x/src/cbo_scripts/TestDo10Things.php \n \n \n Back to top \n\n \nRunning Batch Operation from hook_update_n() \n hook_update_n() runs before config import before hook_post_update() and before deploy (when using drush deploy ) They live in any module's install file. ( MY_MODULE_NAME.install.php ) Full documentation about hook_update_n() : https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Extension%21module.api.php/function/hook_update_N/ \n\n \n In whatever local/custom module you want to run this Batch Operation, add or use the existing MY_MODULE_NAME.install and add the following\n\n /**\n * A description of what this update will do.\n */\n function MY_MODULE_NAME_update_90??(&$sandbox) {\n $script = …",
+  "project_description": "Codit: Batch Operations is a developer framework for defining and running batch jobs against Drupal content. A batch job is a PHP class (a \"BatchOperation script\") that implements BatchScriptInterface: it gathers a set of items, processes them one at a time, and records the whole run into a BatchOpLog entity. The same script can be invoked from hook_update_N(), hook_post_update_NAME(), Drush deploy hooks, cron, the Drush command drush codit-batch-operations:run, or an optional web UI (the codit_batch_operations_ui submodule). Runs are resumable: if a run is interrupted by an error, exception, timeout, or the operator navigating away, state is stored so the next invocation picks up where it left off, and every step is written to a per-run log entity for auditing. Scripts can stop on the first error or gracefully skip failing items and continue. A configurable default user is attributed to entity saves, and helper traits provide common node- and taxonomy-term operations. The module ships example/test scripts and a StarterScript template. Because a script is arbitrary code that mutates content at scale, the UI-run and administer permissions are marked restrict access.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

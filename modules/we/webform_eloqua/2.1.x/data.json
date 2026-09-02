@@ -1,11 +1,14 @@
 {
   "name": "Webform Eloqua",
   "data_name": "webform_eloqua",
-  "description": "Webform handler that posts submissions to Oracle Eloqua.",
+  "description": "Webform handler that posts submissions to Oracle Eloqua via the Eloqua API Redux service.",
   "version": "2.1.x",
-  "package": "Webform",
+  "package": "Eloqua",
   "composer_namespace": "drupal/webform_eloqua",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/eloqua_api_redux": "^2.1",
+    "drupal/webform": "^6.3@beta"
+  },
   "dependent_modules": [
     "webform:webform",
     "eloqua_api_redux:eloqua_api_redux"
@@ -22,7 +25,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Forms and surveys",
@@ -35,11 +38,12 @@
   "keywords": [
     "webform",
     "eloqua",
-    "handler",
+    "webform handler",
     "marketing automation",
-    "submissions"
+    "crm",
+    "form submissions"
   ],
-  "project_description": "Webform Eloqua integrates Drupal 8.8+ Webforms with Eloqua.\n\n Back to top \n\n Requirements: \n \n Webform \n Eloqua API Redux \n \n Back to top \n\n High Level Design \n \n\n Back to top \n\n Documentation \n \n High Level Design \n Setup & Config \n Back to top",
+  "project_description": "Webform Eloqua adds a single Webform handler plugin (id 'webform_eloqua', label 'Eloqua') that maps Webform elements to Eloqua form fields and posts completed submissions to an Oracle Eloqua form via the eloqua_api_redux 'eloqua_api_redux.forms' service. The connection, authentication and HTTP transport are entirely delegated to the Eloqua API Redux module; this module contributes only the handler, its per-form configuration UI (Eloqua form selection plus a webform_mapping widget), required-field validation, and the postSave -> remotePost flow that fires on STATE_COMPLETED. Requires Webform and Eloqua API Redux.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

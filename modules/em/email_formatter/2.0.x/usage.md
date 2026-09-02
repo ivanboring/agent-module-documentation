@@ -1,31 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Email Formatter gives core's Email field display options beyond a plain mailto link.
+E-mail Formatter is a single field formatter for core's Email field that renders the address as an optional `mailto:` link with truncation, a text/HTML prefix, and an optional Font Awesome icon.
 
 ---
 
-Core renders an email field as a `mailto:` link and nothing else. Sites want more: the address as plain text, a link with different text, the address partially masked, or a link that opens a contact form instead.
-
-The reason this comes up so often is harvesting. An address published as plain markup is scraped within days of going online, and a staff directory is exactly the page that gets scraped. Every organisation publishing contact details eventually asks for obfuscation.
-
-**Obfuscation is worth doing and worth being honest about.** Splitting an address across markup, reversing it in CSS or assembling it in JavaScript defeats naive scrapers, which is most of them, and that is a real reduction in spam. It does not defeat a scraper that renders the page, and those exist. It is a friction measure, not a control — recommending it as protection overstates it, and dismissing it as useless understates the practical effect.
-
-**And obfuscation has a cost that is easy to miss.** An address assembled by JavaScript is not there for a screen reader user with a different reading strategy, is not selectable or copyable in the way a plain address is, and is invisible to anyone with scripting disabled. A contact form is usually the better answer where the address genuinely needs protecting, because it removes the address from the page rather than hiding it.
+Core's Email field ships one formatter that renders the stored address as a plain `mailto:` link. E-mail Formatter (plugin id `email_formatter`, label "E-mail formatter (with options)") replaces it with a configurable one, chosen per view-display on *Manage display*. Its six settings let you: toggle whether the address is wrapped in a `mailto:` link at all; truncate the visible address to a character count and append an ellipsis; prefix the address with escaped custom text; prefix it with admin HTML; and prefix it with one of nine hard-coded Font Awesome envelope/reply/inbox icons that can itself be a `mailto:` link. Everything is display-only — the module has no routes, permissions, services, Drush commands, or site-wide config; each field's choices are stored in that view-display's `settings` and described by `config/schema/email_formatter.schema.yml`. The Font Awesome icon output only appears if a Font Awesome library/module is installed to supply the `fas fa-*` classes.
 
 ---
 
-- Display an email address as plain text.
-- Use custom link text for a mailto.
-- Partially mask a published address.
-- Reduce harvesting from a staff directory.
-- Defeat naive scrapers.
-- Understand obfuscation as friction, not control.
-- Weigh the accessibility cost of obfuscation.
-- Keep an address selectable and copyable.
-- Consider a contact form instead.
-- Remove the address from the page entirely.
-- Choose a formatter per view mode.
-- Show a full address to authenticated users only.
-- Audit where addresses are published.
-- Document the module's behaviour for the team.
-- Review it during a site audit.
-- Verify its assumptions after an upgrade.
+- Turn a core Email field into a clickable `mailto:` link on the entity display.
+- Show an Email field as plain text with no link (uncheck *mailto*).
+- Truncate a long address to a set number of characters, ending with an ellipsis.
+- Set truncation to blank or 0 to disable truncation and show the full address.
+- Prefix the address with custom label text such as "Email: ".
+- Prefix the address with a Font Awesome envelope icon.
+- Choose among envelope, envelope-square, envelope-open, envelope-open-text, paper-plane, reply, reply-all, inbox, or mail-bulk icons.
+- Make the Font Awesome icon itself a `mailto:` link to the address.
+- Use a different formatter configuration per view mode (teaser vs. full).
+- Configure it entirely in the Field UI via the format's gear/cog settings.
+- Export the per-field settings in the view-display config for deployment.
+- Apply it to any Email field on nodes, users, taxonomy terms, or other fieldable entities.
+- Present a staff/contact directory's email addresses consistently across a site.
+- Shorten addresses that would otherwise break a narrow table column.
+- Combine a text prefix with an icon for a labelled contact line.
+- Keep the `mailto:` link on the icon while showing the address as plain text.
+- Read the current choices at a glance from the *Manage display* settings summary line.
+- Swap back to core's plain Email formatter at any time without data changes.
+- Style the rendered output further with your theme's CSS.
+- Validate the saved formatter settings against the module's config schema.

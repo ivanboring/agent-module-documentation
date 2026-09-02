@@ -1,16 +1,14 @@
 {
   "name": "YMD Date",
   "data_name": "ymd_date",
-  "description": "Field for pre-1970 dates with optional month and day.",
+  "description": "A field for storing pre-1970 dates with optional month and day elements.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Field types",
   "composer_namespace": "drupal/ymd_date",
   "composer_requirements": {},
-  "dependent_modules": [
-    "drupal:field"
-  ],
+  "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^10 || ^11",
+  "core_version_requirement": "^8.7.7 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ymd_date",
@@ -25,20 +23,22 @@
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience",
-    "Site structure"
+    "Content display"
   ],
   "subcategories": [
     "Date/time fields",
-    "Fields"
+    "Fields",
+    "Field formatters"
   ],
   "keywords": [
     "dates",
     "historical",
     "partial dates",
     "precision",
+    "pre-1970",
     "archives"
   ],
-  "project_description": "This module provides a date field which allows dates prior to epoch (1970) and allows values of year only, year/month, or year/month/day. The date value is stored in the format YYYYMMDD which allows natural sorting. When no month or day selections are made, 00 is stored in their place.\n\n A formatter is included which displays the date using the standard Drupal date/time formats of your choice.\n\n The included field widget allows selection of the beginning year and the year selector displays a range from this beginning year to the current year.\n\n A year-only token is also included to provide an example.",
+  "project_description": "This module provides a date field which allows dates prior to the Unix epoch (1970) and allows values of year only, year/month, or year/month/day. The date value is stored in the format YYYYMMDD which allows natural sorting. When no month or day selection is made, 00 is stored in its place.\n\nA formatter is included which displays the date using the standard Drupal date/time formats of your choice, choosing a different format depending on whether the stored value has month and day precision.\n\nThe included field widget presents year/month/day select lists; the beginning year of the year selector is a per-field setting and the range runs from that year to the current year.\n\nA Views filter (extending the numeric filter) with year/month/day select inputs, a year-only Token, and a Feeds target are also included.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

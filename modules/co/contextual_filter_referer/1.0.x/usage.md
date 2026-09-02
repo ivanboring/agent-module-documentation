@@ -1,31 +1,28 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Contextual Filter Referer supplies a View's contextual filter from the referring page, so context survives an AJAX request.
+Contextual Filter Referer supplies a View's contextual filter (argument) from the referring page's URL, so context survives an AJAX request.
 
 ---
 
-The problem is specific and maddening. A View placed as a block takes its argument from the page it is on — a node id, a term id, a path component. Then the visitor clicks the pager, the View reloads over AJAX, and the request no longer comes from that page: it comes from Views' AJAX endpoint, where the argument is gone. The first page of results is correct and every subsequent one is wrong, which is the sort of bug that gets reported as "the pager is broken".
-
-This module resolves the argument from the referring page instead, so the context survives.
-
-**Deriving context from the referer is the right pragmatic fix and carries the usual caveat**: `Referer` is a client-supplied header, and it can be absent — privacy settings, some proxies, and certain navigation strip it — or forged. For a listing filtered to "articles in this section" that is harmless: a forged referer shows a visitor a different section's public articles, which they could reach anyway. It stops being harmless the moment the argument controls **access** rather than presentation, because then a client-supplied header is deciding what is shown.
-
-So the rule is worth stating: use it for context, never as a filter that is doing the work of an access check. And decide what the View does when there is no referer at all, since an argument with no default produces either everything or nothing, and both are surprising.
+A View placed as a block takes its argument from the page it is on — a node id, or some path component. The visitor then clicks the pager or submits an exposed filter, the View reloads over Views' AJAX endpoint, and the request no longer originates from that page: it comes from `/views/ajax`, where the original URL context is gone. Page one is right and every later page is wrong — the classic "the pager is broken" report. The same failure hits entity-reference fields whose allowed values come from a View. This module ships two Views *argument default* plugins that read the `Referer` request header instead of the current URL: **Content ID from Referer** (`node_referer`) resolves the referring path to a route and returns its `node` parameter's id, and **Raw value from Referer URL** (`referer_raw`) returns a chosen path component (1-based index, optionally after resolving the path alias). You pick one of these as the "default value" source on a contextual filter, exactly as you would core's own "Content ID from URL" or "Raw value from URL". Enable the module, edit the View's contextual filter, choose *"Provide default value"*, and select the referer option. `Referer` is client-supplied and may be absent (privacy settings, some proxies, direct navigation) or spoofed, so use it to carry presentation context, and always give the argument a sensible fallback for the no-referer case; never let it stand in for an access check.
 
 ---
 
-- Keep a contextual filter across AJAX pagination.
-- Fix a pager that loses its argument.
-- Filter a block View by the current node.
-- Preserve context in an exposed filter submit.
-- Derive an argument from the referring page.
-- Handle a missing Referer header.
-- Set a default when no referer is present.
-- Avoid using it where access depends on the argument.
-- Keep access checks out of contextual filters.
-- Diagnose a View correct on page one only.
-- Test with referer-stripping browsers.
-- Understand the AJAX endpoint's context loss.
-- Audit Views relying on referer context.
-- Document the module's behaviour for the team.
-- Review it during a site audit.
-- Verify its assumptions after an upgrade.
+- Keep a contextual filter value across Views AJAX pagination.
+- Fix a block View pager that returns wrong results after page one.
+- Fix an exposed-filter submit that loses the page's node context.
+- Filter a block View by the node of the page it is placed on, through AJAX reloads.
+- Supply allowed values to an entity-reference field that are filtered by a View.
+- Use "Content ID from Referer" (`node_referer`) to get the referring page's node id.
+- Use "Raw value from Referer URL" (`referer_raw`) to grab one path component of the referring URL.
+- Pick the 3rd path segment of the referring URL as the argument (index is 1-based).
+- Resolve the referring path through its path alias before extracting a component.
+- Replace core's "Content ID from URL" default on a View that renders inside an AJAX region.
+- Set a "Provide default value" source on a Views contextual filter to the referer plugin.
+- Give the contextual filter a fallback for visitors whose browser strips the Referer header.
+- Diagnose a View that is correct on the first page but empty or wrong on later pages.
+- Preserve section/category context in a paged listing embedded as a block.
+- Test View behaviour with referer-stripping browsers or privacy proxies.
+- Audit which Views rely on referer-derived context before an upgrade.
+- Migrate a site off the unmaintained `swilmes/3204196` sandbox to this full project.
+- Document for the team why a Views argument is derived from the referring page.
+- Review referer-based contextual filters during a site audit.
+- Confirm the module's two argument-default plugins still resolve after a Drupal core upgrade.

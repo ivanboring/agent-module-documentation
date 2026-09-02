@@ -23,7 +23,7 @@ Drupal's normal FAPI, which keeps its own access check and CSRF token. Toggling 
 - No security surface: no server-side code path; the two enhanced forms enforce their own access and CSRF.
 
 ## What you'd do → where
-Trivial module — no topic files. Everything an agent needs is below.
+Trivial module. Full integration detail: [agent/integration/attach-to-forms.md](integration/attach-to-forms.md).
 
 - Where it activates: only the two permission grids. To make it apply elsewhere, add another
   `#[Hook('form_<FORM_ID>_alter')]` that attaches `speedboxes/speedboxes` (see `src/Hook/FormAlter.php`).

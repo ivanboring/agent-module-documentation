@@ -1,7 +1,7 @@
 {
   "name": "Contextual Filter Referer",
   "data_name": "contextual_filter_referer",
-  "description": "Contextual filters for Views driven by the referring page during AJAX calls.",
+  "description": "Two Views argument-default plugins that resolve a contextual filter value from the referring page's URL, so context survives Views' AJAX endpoint.",
   "version": "1.0.x",
   "package": "Views",
   "composer_namespace": "drupal/contextual_filter_referer",
@@ -10,7 +10,7 @@
     "drupal:views"
   ],
   "configure": null,
-  "core_version_requirement": "^10 || ^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/contextual_filter_referer",
@@ -21,25 +21,25 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display",
     "Developer tools"
   ],
   "subcategories": [
-    "Views query enhancements",
-    "Views exposed filters"
+    "Views query enhancements"
   ],
   "keywords": [
     "views",
     "contextual filter",
+    "argument default",
     "ajax",
     "referer",
     "pager",
     "context"
   ],
-  "project_description": "This project aims to be the solution for applying contextual filters to views that are executed during AJAX requests, such as entity reference fields that are filtered by a view. Just enable the module, and use one of the two options provided in the picture, just as you would their counterparts. These options will get the necessary data from the referer URL in the headers, rather than the current URL.\n\n This is a full project that has been created from an unmaintained sandbox project .",
+  "project_description": "This project aims to be the solution for applying contextual filters to views that are executed during AJAX requests, such as entity reference fields that are filtered by a view. Just enable the module, and use one of the two options provided, just as you would their counterparts. These options get the necessary data from the referer URL in the headers, rather than the current URL. It is a full project created from an unmaintained sandbox project (swilmes/3204196).",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

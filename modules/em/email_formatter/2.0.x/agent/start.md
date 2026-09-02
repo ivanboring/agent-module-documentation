@@ -1,14 +1,43 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-# Email Formatter (email_formatter) — agent index
+# E-mail Formatter (email_formatter) — agent index
 
-Display options for core's **Email field** beyond a plain `mailto:` link — plain text, custom link
-text, partial masking. Version **2.0.0-rc3**. Core `^10 || ^11`. Depends on `field`.
+A single field formatter for **core's Email field** that renders the address as an optional
+`mailto:` link with truncation, an escaped text prefix, an admin-HTML prefix, and one of nine
+hard-coded Font Awesome icons (optionally itself a `mailto:` link). Package **`Fields`**. Depends
+only on core **`field`**. Core requirement `^8 || ^9 || ^10 || ^11`. License GPL-2.0-or-later.
+Version dir **2.0.x** (installed `2.0.0-rc3`).
 
-**Be honest about obfuscation in both directions.** Splitting an address across markup, reversing it
-in CSS or assembling it in JS defeats **naive** scrapers, which is most of them — a real spam
-reduction. It does not defeat a scraper that renders the page. **Friction, not a control.**
+- **The formatter, all six settings, config schema, how to enable it, and caveats** →
+  [fields/formatter.md](fields/formatter.md)
 
-**And it has a cost that is easy to miss:** a JS-assembled address is absent for some assistive
-technology strategies, not selectable or copyable, and invisible without scripting. Where an address
-genuinely needs protecting, a **contact form** is usually better — it removes the address rather
-than hiding it.
+## What it actually is
+
+- One plugin: `EmailFormatter` (id **`email_formatter`**, label *"E-mail formatter (with
+  options)"*), `src/Plugin/Field/FieldFormatter/EmailFormatter.php`, extending core
+  `FormatterBase`. `field_types = { "email" }` — targets **core Email fields only**.
+- **No** routes, permissions, services, hooks beyond `hook_help` / `hook_install`, Drush, submodules,
+  libraries, or site-wide config. Selected and configured per view-display on *Manage display*.
+- Provides config schema for the formatter settings:
+  `config/schema/email_formatter.schema.yml`
+  (`field.formatter.settings.[email_formatter]`).
+
+## Mechanism (from source)
+
+- `viewElements()` loops the field items, reads `$item->getValue()['value']` (the address), and
+  assembles a `#markup` string: optional `fas fa-<icon> fa-fw` icon (optionally a `Link` to
+  `mailto:<address>`), then the address text (optionally truncated + `&hellip;`, optionally a
+  `mailto:` `Link`), prefixed by escaped `text` and admin-filtered `HTML`.
+- `settingsForm()` renders the six settings; `settingsSummary()` builds the one-line summary;
+  `defaultSettings()` and the legacy `hook_field_formatter_info()` in `.module` both declare
+  defaults.
+
+## Settings (`defaultSettings()`)
+
+`mailto` (TRUE), `truncate` (40), `text` (''), `HTML` (''), `icon` (`none`), `iconlink` (TRUE).
+Keys, behavior, the truncation quirk, the broken Custom-HTML option, and a config-export example
+are in [fields/formatter.md](fields/formatter.md).
+
+## Requirements note
+
+The icon option only shows a glyph if a Font Awesome library/module supplies the `fas fa-*` CSS
+(README recommends `drupal/fontawesome` 8.x-2.x+). The module itself declares no library.

@@ -1,32 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Swiffy Slider integrates the Swiffy Slider library — a slider built on CSS scroll-snap rather than a JavaScript animation loop.
+Swiffy Slider integrates the Swiffy Slider JavaScript library, adding three field formatters and a Views style that render field items or view rows as a lightweight, CSS-scroll-snap slider/carousel configured by a permalink from the swiffyslider.com configurator.
 
 ---
 
-Most Drupal carousel modules wrap a jQuery plugin from a decade ago. Swiffy Slider is a different generation: it uses CSS scroll-snap for the movement, which means the browser does the animating, touch and trackpad gestures work natively, and the JavaScript is a fraction of the size — the project's pitch is "super fast and lightweight" and the architecture is why.
-
-That has an accessibility consequence in its favour too: a scroll-snap slider is a scrolling container, so keyboard scrolling and screen reader traversal work by default rather than needing to be reimplemented. That is a better starting position than a JS-driven slider, though it still needs checking rather than assuming — visible focus on the controls and a pause control if anything auto-advances are still the module's responsibility.
-
-**The general carousel objection still applies** and should be said whatever the implementation quality: content past the first slide is rarely seen, so a carousel suits equally-optional items — logos, testimonials, gallery images — and is the wrong place for anything that matters. A fast, accessible carousel showing the primary call to action on slide three is still showing it to almost nobody.
-
-Worth choosing over a jQuery-based alternative on any site that has otherwise moved off jQuery, since that dependency is often the real cost of the older modules.
+The module wraps the bundled `dynamicweb/swiffy-slider` library (shipped under `assets/vendor/`, overridable with a locally installed copy via `hook_library_info_alter`). It gives you four render integrations, all driven by the same idea: a slider is described by a **configuration URL** — a permalink you build and copy from `https://swiffyslider.com/configuration/`. The service `swiffy_slider.configuration` (`Drupal\swiffy_slider\Configuration`, implementing `ConfigurationInterface`) parses that URL's query string in `toAttributes()` and turns query keys that start with `slider-` into CSS classes, keys starting with `data` into HTML data-attributes, and keys starting with `--swiffy-slider` into `style` custom properties, all placed on the slider container `<div>` (emitted through Drupal's `Attribute` object). The three formatters share `SwiffySliderFieldFormatterTrait`: `SwiffySliderEntityReferenceFormatter` (`swiffy_slider_entity_reference`, extends core `EntityReferenceEntityFormatter`, for `entity_reference` / `entity_reference_revisions`), `SwiffySliderImageFormatter` (`swiffy_slider_image`, extends core `ImageFormatter`, for `image`), and `SwiffySliderTextDefaultFormatter` (`swiffy_slider_text_default`, extends core `TextDefaultFormatter`, for `text` / `text_long` / `text_with_summary`). Each adds a single `swiffy_slider_permalink` setting (a URL, max length 1000) and attaches the `swiffy_slider/swiffy_slider-lib` library. The Views style `SwiffySlider` (`swiffy_slider`, extends `StylePluginBase`, uses row plugin, no grouping) adds a `configuration_url` option. Templates `field--swiffy-slider-entity-reference.html.twig` and `views-style-swiffy-slider.html.twig` wrap the items/rows in a `<ul class="slider-container">` with previous/next `slider-nav` buttons and `slider-indicators` dots. A global default configuration URL is stored in the config object `swiffy_slider.settings` (`configuration_url`) via `SettingsForm` at `/admin/config/content/swiffy_slider` (permission `administer site configuration`); when a formatter or style leaves its own URL empty, `toAttributes()` falls back to that global default, then to the configurator's base URL. `RenderHelper::attachCacheTags()` adds the settings config as a cacheable dependency when the global default is used. The module has no permissions of its own, no Drush commands, and no hard module dependencies declared (though the image/text formatters and the Views style rely on core `image`, `text` and `views` respectively).
 
 ---
 
-- Add a lightweight slider.
-- Use CSS scroll-snap for movement.
-- Get native touch and trackpad gestures.
-- Avoid a jQuery carousel dependency.
-- Reduce front-end payload.
-- Benefit from default keyboard scrolling.
-- Check visible focus on controls.
-- Provide a pause control for auto-advance.
-- Avoid placing the primary CTA past slide one.
-- Show partner logos in rotation.
-- Present testimonials.
-- Advise against a carousel where it will not work.
-- Replace an older slider module.
-- Audit carousels for accessibility.
-- Document the module's behaviour for the team.
-- Review it during a site audit.
-- Verify its assumptions after an upgrade.
+- Turn a multi-value image field into a swipeable image carousel on a node display.
+- Display a multi-value entity-reference field (e.g. referenced media or paragraphs) as a slider of rendered sub-entities.
+- Slide referenced entities rendered in a chosen view mode via the entity-reference formatter's `view_mode` setting.
+- Render a multi-value long-text field as a set of sliding text panels.
+- Present the results of a View (e.g. latest articles as teasers) as a carousel using the Swiffy Slider Views style.
+- Build a homepage "featured content" rotator from a node view without writing JavaScript.
+- Ship a touch-friendly, trackpad-friendly slider that uses native browser scroll-snap instead of a JS animation loop.
+- Configure slider look and behaviour visually on swiffyslider.com and paste the permalink — no per-option Drupal form to fill in.
+- Enable previous/next navigation arrows and indicator dots through the configurator permalink's `slider-nav-*` options.
+- Set a site-wide default slider configuration once at `/admin/config/content/swiffy_slider` and reuse it everywhere.
+- Override the global default configuration URL per field display or per view.
+- Add responsive per-breakpoint slide counts by choosing the relevant `slider-item-*` options in the configurator URL.
+- Apply CSS custom-property tweaks (gaps, item widths) via `--swiffy-slider-*` values carried in the permalink.
+- Pass through `data-*` slider behaviour flags (autoplay, loop, snap) encoded in the configurator URL query string.
+- Provide an accessible carousel (WCAG-oriented, keyboard/scroll traversable) without adding heavy dependencies.
+- Reuse the module's bundled library, or point it at a self-installed newer `swiffy-slider` release under `/libraries` for version control.
+- Give editors a consistent slider across many content types by standardising on one saved permalink.
+- Slide taxonomy-term or user references (any entity_reference target) rendered as cards.
+- Build a logo/partner strip that scrolls horizontally with snap points.
+- Create a testimonial slider from a long-text or entity-reference field.
+- Combine with a teaser view mode to make a "related content" slider under an article.
+- Avoid contributing custom Twig/JS for a carousel by relying on the module's templates and library attachment.

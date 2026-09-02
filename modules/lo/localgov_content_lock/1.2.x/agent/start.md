@@ -1,13 +1,33 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # LocalGov Content Lock (localgov_content_lock) — agent index
 
-**Content Lock** configured for LocalGov Drupal. Version **1.2.0**. Core `^10.2 || ^11`.
-Depends on `content_lock`.
+Thin glue/config module that switches on the **Content Lock** module for LocalGov Drupal. Version
+**1.2.0** (dir `1.2.x`). Core `^10.2 || ^11`. License GPL-2.0-or-later.
 
-Pessimistic locking — whoever opens the edit form holds it. **Configuring it well is the whole job**,
-which is why a distribution-specific module exists: which types lock, per-translation behaviour,
-timeout for abandoned sessions, and who may break a lock.
+## What it is
+It reimplements nothing. It depends on Content Lock and does three things:
+- `hook_install()` writes `types.node = ['*' => '*']` into `content_lock.settings`, enabling pessimistic
+  edit-locking for every node bundle (existing and future). Skipped when `$is_syncing`.
+- Adds a **local task tab** "Locked" on `/admin/content` (`localgov_content_lock.links.task.yml`).
+- Adds an **admin menu link** "Locked content" (`localgov_content_lock.links.menu.yml`).
+  Both point at Content Lock's `view.locked_content.page_1`.
 
-**Check lock breaking first.** Someone must be able to release a stale lock; if that is
-administrator-only on a team of forty editors, people wait or edit around it. Whoever can be reached
-quickly should be able to break one, and the module should record who did.
+## Dependencies
+- Module dep: `content_lock:content_lock` (info.yml).
+- Composer: `drupal/content_lock: ^3.0` (composer.json). No PHP or library deps.
+
+## What it provides
+- **No routes, permissions, services, plugins, hooks, drush commands, or config schema of its own.**
+- `.module` is an empty file-doc stub. All lock behaviour, permissions, and the timeout (default
+  30 min) live in Content Lock at `/admin/config/content/content_lock`.
+- No settings form (`configure` is null).
+
+## Files
+- `localgov_content_lock.install` — the one-shot install config write.
+- `localgov_content_lock.links.menu.yml` / `.links.task.yml` — admin/content links.
+- `tests/src/Functional/ContentLockTest.php` — asserts a node locks on edit and appears at
+  `/admin/content/locked-content`.
+
+## Solution docs
+- [config/install.md](config/install.md) — install behaviour, the config it writes, links, and how
+  to change the timeout / lock-break permissions (all in Content Lock).
