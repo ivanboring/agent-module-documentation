@@ -1,16 +1,16 @@
 {
-  "name": "Webform RRN/NRN",
+  "name": "Belgian National Insurance Number",
   "data_name": "webform_rrn_nrn",
-  "description": "Webform element for the Belgian national insurance number.",
+  "description": "Webform element and validator for the Belgian national insurance number (rijksregisternummer / numero de registre national).",
   "version": "8.x-2.x",
-  "package": "Webform",
+  "package": "Custom",
   "composer_namespace": "drupal/webform_rrn_nrn",
   "composer_requirements": {},
   "dependent_modules": [
-    "webform:webform"
+    "webform"
   ],
   "configure": null,
-  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "core_version_requirement": "^9.3 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/webform_rrn_nrn",
@@ -21,11 +21,11 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Forms and surveys",
-    "Access control"
+    "Content editing experience"
   ],
   "subcategories": [
     "Webform elements",
@@ -35,11 +35,13 @@
     "belgium",
     "rrn",
     "nrn",
+    "rijksregisternummer",
     "national number",
+    "webform",
     "validation",
-    "webform"
+    "input mask"
   ],
-  "project_description": "This module adds a \"Belgian National Insurance Number\" field type for webform forms. Belgian National Insurance Number is known in Belgium as \"Rijksregisternummer\" or \"Numéro de registre national\". \n\n This field provides:\n\n \n Input mask \n Regular expression validation \n Composition validation (date of birth - id - check) \n \n Requirements: \n\n \n webform module",
+  "project_description": "This module adds a \"Belgian National Insurance Number\" element to the Webform module. The Belgian National Insurance Number is known locally as \"Rijksregisternummer\" (nl) or \"Numero de registre national\" (fr). The element renders as a masked text field (999999-999-99) and validates the number's modulo-97 checksum, accepting both pre-2000 and post-2000 birth-date encodings. Requires the Webform module.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

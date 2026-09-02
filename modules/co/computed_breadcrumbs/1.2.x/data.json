@@ -1,13 +1,15 @@
 {
   "name": "Computed Breadcrumbs",
   "data_name": "computed_breadcrumbs",
-  "description": "Exposes breadcrumbs as computed fields on nodes.",
+  "description": "Exposes each content entity's breadcrumb trail as a computed link field.",
   "version": "1.2.x",
   "package": null,
   "composer_namespace": "drupal/computed_breadcrumbs",
   "composer_requirements": {},
-  "dependent_modules": [],
-  "configure": null,
+  "dependent_modules": [
+    "link"
+  ],
+  "configure": "computed_breadcrumbs.settings",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -17,7 +19,7 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
@@ -34,9 +36,10 @@
     "computed field",
     "decoupled",
     "jsonapi",
-    "navigation"
+    "navigation",
+    "link field"
   ],
-  "project_description": "Adds a computed property to nodes that returns the list of their breadcrumb links. Works fine with JSON:API.\n\n Usage \n \n\n$breadcrumbs = $node->get('breadcrumbs')->getValue();",
+  "project_description": "Adds a computed base field named 'breadcrumbs' to every content entity type. Reading the field builds the entity's breadcrumb trail (via Drupal's own breadcrumb builders) and returns it as a list of link items (uri + title), so the trail can be consumed as data over JSON:API/REST, in Views, or in code without rendering the page. Absolute URLs by default, switchable to relative in the module settings.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

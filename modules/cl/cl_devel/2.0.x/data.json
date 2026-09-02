@@ -1,14 +1,17 @@
 {
   "name": "CL Devel",
   "data_name": "cl_devel",
-  "description": "Development aids for component developers.",
+  "description": "Provides development aids to component developers.",
   "version": "2.0.x",
-  "package": null,
+  "package": "Components",
   "composer_namespace": "drupal/cl_devel",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "ext-json": "*",
+    "league/commonmark": "^2.4"
+  },
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^10 || ^11",
+  "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/cl_devel",
@@ -32,10 +35,11 @@
   "keywords": [
     "components",
     "sdc",
+    "single directory components",
     "development",
     "debugging",
-    "cl",
-    "single directory components"
+    "audit",
+    "cl"
   ],
   "project_description": "This project provides development features for CL Components.\n\n Audit pages \n Audit pages provide additional insight on components. This lets you understand what are the files and features each component uses.\n\n \n\n \n What version should I use? \n Select the version of this module based on the component solution that you are using.\n\n \n\n \n CL Components \n SDC \n SDC from core \n \n\n \n \n Use 1.x \n Use 2.x \n Use 2.x",
   "maintenance_status": "Actively maintained",

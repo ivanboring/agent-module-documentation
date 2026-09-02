@@ -1,14 +1,16 @@
 {
   "name": "Views Autocomplete API",
   "data_name": "views_autocomplete_api",
-  "description": "Creates autocompletion endpoints from Views.",
+  "description": "Turns a View into an autocomplete (typeahead) endpoint that returns JSON suggestions.",
   "version": "2.1.x",
-  "package": null,
+  "package": "Views",
   "composer_namespace": "drupal/views_autocomplete_api",
   "composer_requirements": {},
-  "dependent_modules": [],
+  "dependent_modules": [
+    "views"
+  ],
   "configure": null,
-  "core_version_requirement": "^10 || ^11",
+  "core_version_requirement": "^10.3 || ^11.0",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/views_autocomplete_api",
@@ -16,7 +18,9 @@
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [],
+  "submodules": [
+    "views_autocomplete_api_demo"
+  ],
   "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,

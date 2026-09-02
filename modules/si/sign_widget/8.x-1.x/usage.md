@@ -1,35 +1,30 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Signature lets a user draw a signature and stores it as a file, as a field widget and as a CKEditor integration.
+Signature (sign_widget) lets a user draw a signature on an HTML5 canvas and stores it as a PNG or SVG file, exposed as an image-field widget, an image-field formatter, and a CKEditor 5 toolbar button.
 
 ---
 
-Capturing a drawn signature is a recurring requirement — consent forms, delivery confirmations, agreements, registration flows — and doing it means a drawing surface in the browser plus somewhere to put the result. This module supplies both, with two endpoints behind them: one saving an SVG drawn in CKEditor, one saving a PNG and attaching it to an entity field.
-
-**Do not deploy this. Both endpoints are gated only by `access content`, which anonymous users hold on a standard site, and both were exercised anonymously on a clean install.**
-
-`/ajax/sign_widget/sendSign/{selector}` takes the **entity type, entity id and field name from the request body**, loads that entity, appends the uploaded file to that field and saves — with no access check of any kind. Verified: an anonymous caller who received **403 attempting to view** an unpublished node then modified and saved it, and separately modified **user 1**, the site administrator's account. That is unauthenticated arbitrary entity write, and every such write also creates a revision and fires the entire entity-save pipeline — hooks, moderation transitions, search reindexing, notifications.
-
-`/ajax/sign-widget/save` writes the request's `svg` field verbatim into a caller-chosen directory under `public://`. Verified: an anonymous POST stored `<svg><script>alert(document.domain)</script>…</svg>` and the file was then served from the site's own origin as `image/svg+xml` with the script intact — same-origin stored XSS. Filenames are `date('ymd') . '_' . rand(1000,9999)` written with `FileExists::Replace`, so a stored signature can be overwritten by collision, which for a signature is the whole problem.
-
-Neither route carries a CSRF token. The extensions are fixed in code, so neither can write a `.php` file, and core refuses traversal out of `public://` — but that is core declining a path the module passed through unchecked.
-
-If a project needs signature capture, treat this as unusable until the entity-write endpoint validates access and the SVG path sanitises its input.
+Capturing a hand-drawn signature is a recurring need — consent forms, delivery confirmations, agreements, registration flows — and it takes two things: a drawing surface in the browser and somewhere to keep the result. sign_widget supplies both on top of Drupal core's image field. Add a normal image field to any entity, then on *Manage form display* pick the **Sign** widget: editors get a canvas (powered by szimek/signature_pad) instead of a file upload, and the drawing is saved as a PNG image file referenced by the field. On *Manage display* the matching **Sign** formatter renders stored signatures and can also show a live canvas so a signature can be added straight from the rendered entity. A separate CKEditor 5 integration adds a **Signature** toolbar button that lets an author draw a signature and insert it into rich text as an inline SVG. Per-display settings tune the pen (dot size, min/max stroke width, pen and background colour, velocity smoothing), the canvas width, an optional colour toolbox, a remove/reset button, and whether the signature_pad library loads from a CDN or a locally installed copy. The module depends only on core's image module and needs no extra configuration objects; each behaviour is configured on the individual field display or text-format editor.
 
 ---
 
-- Capture a drawn signature on a form.
-- Attach a signature to a delivery record.
-- Sign a consent form online.
-- Store a signature as an image file.
-- Insert a signature in CKEditor.
-- Understand why the endpoints are unsafe.
-- Restrict access content before considering it.
-- Block .svg from the public files directory.
-- Force attachment disposition for SVG.
-- Audit a site already running this module.
-- Check whether entities were modified anonymously.
-- Look for unexpected file references on entities.
-- Review file_managed for unexpected signature files.
-- Report the missing access check upstream.
-- Choose an alternative signature solution.
-- Require authentication for signature endpoints.
+- Add a signature canvas to a content type's edit form via an image field.
+- Let a user draw a signature with a mouse, stylus, or touchscreen.
+- Store a captured signature as a PNG image file on an entity.
+- Display a stored signature with the Sign image formatter.
+- Draw over a default background image (e.g. sign an existing document scan).
+- Capture a signature on a consent or agreement form.
+- Record a delivery-confirmation signature against an order or record.
+- Collect a signature during a registration or onboarding flow.
+- Add a Signature button to a CKEditor 5 toolbar for rich-text authoring.
+- Insert an inline SVG signature into body text from the editor.
+- Capture multiple signatures in one multi-value image field.
+- Add a signature directly from a rendered entity display (formatter canvas).
+- Customise pen colour and stroke width per field display.
+- Set a fixed canvas width for consistent signature sizing.
+- Show a colour/size toolbox so signers can adjust the pen live.
+- Offer a clear/reset button so a signer can redo a signature.
+- Choose a transparent background so a signature overlays cleanly.
+- Serve the signature_pad library from a CDN with zero local install.
+- Serve signature_pad from a locally hosted copy for offline/air-gapped sites.
+- Store CKEditor signatures under a configurable subdirectory (e.g. inline-images).
+- Support Drupal 8 through 12 with a single release.
+- Reuse core image-field settings (alt/title fields, resolution, file directory).
