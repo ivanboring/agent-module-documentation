@@ -1,13 +1,13 @@
 {
-  "name": "Views Dynamic Fields and Filters",
+  "name": "Views dynamic fields and filters",
   "data_name": "views_dynamic_fields_and_filters",
   "description": "Enables site builders to easily enable or disable fields and filters in a view display conditionally based on the values of exposed/contextual filters or basically any request parameters.",
   "version": "1.x",
-  "package": null,
+  "package": "custom",
   "composer_namespace": "drupal/views_dynamic_fields_and_filters",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:views"
+    "views"
   ],
   "configure": null,
   "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
@@ -24,19 +24,22 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Views"
+    "Content display"
   ],
   "subcategories": [
-    "Fields"
+    "Views field handlers",
+    "Views exposed filters"
   ],
   "keywords": [
     "views",
     "dynamic",
     "fields",
     "filters",
-    "conditional"
+    "conditional",
+    "display extender",
+    "request parameters"
   ],
-  "project_description": "Introduction \n Enables site builders to easily enable or disable fields and filters in a view conditionally based on the values of exposed/contextual filters or basically any request parameters.\n\n Can be used for any display type and any format that uses the fields/filters defined in the view display.\n\n Idea \n The initial idea was to build more convenient content browsers where you show specific fields and filters only if the relevant content type was selected without having to programm custom code.\n\n With this resulting module there are endless use cases to apply this. In example:\n\n \n You have a JSON REST export made with views and wanted to show specific fields or apply a specific filter only if specific query parameters and values are supplied. \n Or express even more complex \"funnels\" i.e: Apply non-exposed filter \"a\" only if exposed filter \"b\" is one of \"foo\" or \"bar\" and exposed filter \"c\" is greater than 25 \n etc. ... \n \n Configuration \n General \n When installing this module, a new section Dynamic fields and filters will be available at the advanced column on each display in the views edit-UI.\n\n The Settings are per display, if you already have settings in another display of the same view you can copy them into the current display with a button in the dialog.\n\n \n\n Configurate \"parameters\" \n In the dialog you can assign up to 9 request parameters to listen to, so that you can enable or disable fields or filters when the value of a parameter matches a certain condition.\n\nEnter the request parameter names as they appear in the query i.e \"type\" for view-url \"example.com/my_view?type=foobar\". Works for POST-parameters as well. You can also find the parameter names of exposed filters or exposed sorts in their edit-dialog under \"filter identifier\" or \"sort field identifier\". For Contextual filters it will only work if their \"provide a default value type\" is \"Query parameter.\n\n Condition syntax \n Within the \"administrative title\" of a field or a filter you can use the condition syntax to only enable them if the parameter value matches the given expression:\n\n dff{1..9}|expression|Administrative title \n\n Where:\n\n dff{1..9} refers to a parameter.\n\n expression is either the string value to match or a more specific expression\n\n Administrative title is your custom admin label, you can also leave this blank. But dont forget the trailing | on expression.\n\n in example:\n\n dff2|foobar| expresses: Parameter dff2 equals \"foobar\" \n\n Always use the url-decoded version of the query value in expressions.\n\nIf in your url the parameter value is i.e foo+bar+foobar you would have to write: \n\n dff2|foo bar foobar| to get a match. \n\n Expression syntax \n For more specific expressions you can use the expression syntax within a condition:\n\n dff{1..9}|{operator:expression}| \n\n Available operators are:\n\n {neq:expression} - Not equals\n\n {in:expression,expression2,expression3} - In array (delimiter is \",\" without a space)\n\n {nin:expression,expression2,expression3} - Not in array\n\n {gt:expression} - Greater than\n\n {lt:expression} - Smaller than\n\n {cn:expression} - Contains\n\n {ncn:expression} - Not contains\n\n If the query value itself is an array like in this example query: \n\n ?types[]=foo&types[]=bar (url decoded for readability) \n\n Each element will be evaluated, the expression is true if one the elements matches. \n\n Chaining syntax \n You can logically chain multiple conditions with the chaining syntax:\n\n dff{1..9}|expression|OPERATOR|dff{1..9}|expression| \n\n Where:\n\n OPERATOR is either AND , OR or XOR (uppercase)\n\n You can use a total of 10 operators per label, each must be followed by the |dff{1..9}|expression| pattern.\n\n In example:\n\n dff2|{gt:5}|AND|dff4|{in:foo,bar}| expresses: dff2 is greater than 5 AND dff4 is one of \"foo\" or \"bar\" \n\n For detailed information on how they work, check out the php´s Logical Operators The here provided operators work with the precedence like using \"&&\", \"||\" and \"xor\" \n\n You can use the condition syntax for the …",
+  "project_description": "Introduction \n Enables site builders to easily enable or disable fields and filters in a view conditionally based on the values of exposed/contextual filters or basically any request parameters.\n\n Can be used for any display type and any format that uses the fields/filters defined in the view display.\n\n Idea \n The initial idea was to build more convenient content browsers where you show specific fields and filters only if the relevant content type was selected without having to programm custom code.\n\n With this resulting module there are endless use cases to apply this. In example:\n\n \n You have a JSON REST export made with views and wanted to show specific fields or apply a specific filter only if specific query parameters and values are supplied. \n Or express even more complex \"funnels\" i.e: Apply non-exposed filter \"a\" only if exposed filter \"b\" is one of \"foo\" or \"bar\" and exposed filter \"c\" is greater than 25 \n etc. ... \n \n Configuration \n General \n When installing this module, a new section Dynamic fields and filters will be available at the advanced column on each display in the views edit-UI.\n\n The Settings are per display, if you already have settings in another display of the same view you can copy them into the current display with a button in the dialog.\n\n Configurate \"parameters\" \n In the dialog you can assign up to 9 request parameters to listen to, so that you can enable or disable fields or filters when the value of a parameter matches a certain condition. Enter the request parameter names as they appear in the query i.e \"type\" for view-url \"example.com/my_view?type=foobar\". Works for POST-parameters as well. You can also find the parameter names of exposed filters or exposed sorts in their edit-dialog under \"filter identifier\" or \"sort field identifier\". For Contextual filters it will only work if their \"provide a default value type\" is \"Query parameter\".\n\n Condition syntax \n Within the \"administrative title\" of a field or a filter you can use the condition syntax to only enable them if the parameter value matches the given expression: dff{1..9}|expression|Administrative title. dff{1..9} refers to a parameter, expression is either the string value to match or a more specific {operator:value} expression, and Administrative title is your custom admin label (which may be left blank). Operators: neq, in, nin, gt, lt, cn, ncn. Conditions can be chained with the uppercase logical operators AND, OR and XOR.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

@@ -1,11 +1,15 @@
 {
-  "name": "EPT Countdown",
+  "name": "Extra Paragraph Types (EPT): Countdown",
   "data_name": "ept_countdown",
   "description": "Adds paragraph type with animated countdown.",
   "version": "2.x",
-  "package": null,
+  "package": "Extra Paragraph Types",
   "composer_namespace": "drupal/ept_countdown",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ept_core": "^2.0",
+    "drupal/paragraphs": "^1.0",
+    "levmyshkin/flipdown": "^1.0"
+  },
   "dependent_modules": [
     "drupal:datetime",
     "ept_core:ept_core",
@@ -18,22 +22,27 @@
   "project_url": "https://www.drupal.org/project/ept_countdown",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "levmyshkin/flipdown (FlipDown.js countdown widget, installed to /libraries/flipdown)"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content authoring"
+    "Content display",
+    "Content editing experience"
   ],
   "subcategories": [
-    "Paragraph types"
+    "Event management",
+    "Structured content / page building"
   ],
   "keywords": [
     "countdown",
     "timer",
+    "flipdown",
     "paragraphs",
     "ept",
     "landing page"

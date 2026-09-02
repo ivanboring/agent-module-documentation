@@ -1,13 +1,14 @@
 {
-  "name": "Openstreetmap Views",
+  "name": "OpenStreetMap Views Integration",
   "data_name": "openstreetmap_views",
-  "description": "Tools",
+  "description": "Views integration helper for OpenStreetMap that pulls in Leaflet for mapping OSM Node geodata",
   "version": "1.x",
   "package": null,
   "composer_namespace": "drupal/openstreetmap",
   "composer_requirements": {},
   "dependent_modules": [
-    "openstreetmap:openstreetmap"
+    "openstreetmap:openstreetmap",
+    "leaflet:leaflet"
   ],
   "configure": null,
   "core_version_requirement": "^8.7.7 || ^9 || ^10",
@@ -21,17 +22,19 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content"
+    "Integrations",
+    "Content display"
   ],
   "subcategories": [
-    "Geospatial"
+    "Geospatial / location"
   ],
   "keywords": [
     "openstreetmap",
     "views",
+    "leaflet",
     "submodule"
   ],
   "part_of": "openstreetmap",

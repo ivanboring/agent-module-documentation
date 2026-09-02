@@ -1,33 +1,39 @@
 {
-  "name": "Ad Entity Adtech V2",
+  "name": "Advertising Entity: AdTech Factory (v2)",
   "data_name": "ad_entity_adtech_v2",
   "description": "Integrates advertisement provided by AdTech Factory.",
   "version": "8.x-1.x",
-  "package": null,
+  "package": "Advertising",
   "composer_namespace": "drupal/ad_entity",
   "composer_requirements": {},
   "dependent_modules": [
     "ad_entity:ad_entity"
   ],
-  "configure": null,
+  "configure": "entity.ad_entity.collection",
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ad_entity",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
-  "suggests": {},
+  "library_dependencies": [
+    "AdTech Factory async tag / SDK (external, pasted into global settings, loaded client-side)"
+  ],
+  "suggests": {
+    "drupal/theme_breakpoints_js": "Initialize ad slots in respect of theme breakpoints."
+  },
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
+    "Integrations",
     "Content display"
   ],
   "subcategories": [
-    "Advertising"
+    "Advertising / ad networks",
+    "Advertising / ad units"
   ],
   "keywords": [
     "ad",

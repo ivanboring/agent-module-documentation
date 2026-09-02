@@ -3,20 +3,24 @@
   "data_name": "ad_entity",
   "description": "Provides consolidated management for various types of advertising instances.",
   "version": "8.x-1.x",
-  "package": null,
+  "package": "Advertising",
   "composer_namespace": "drupal/ad_entity",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/entity": "~1.0"
+  },
   "dependent_modules": [
     "entity:entity"
   ],
-  "configure": null,
+  "configure": "entity.ad_entity.collection",
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ad_entity",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "//securepubads.g.doubleclick.net/tag/js/gpt.js (Google Publisher Tag, external, client-side)"
+  ],
   "suggests": {},
   "submodules": [
     "ad_entity_fallback",
@@ -25,15 +29,19 @@
     "ad_entity_adtech",
     "ad_entity_generic"
   ],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "AdType",
+    "AdView",
+    "AdContext"
+  ],
   "categories": [
     "Content display"
   ],
   "subcategories": [
-    "Advertising"
+    "Advertising / ad units"
   ],
   "keywords": [
     "ads",

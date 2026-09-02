@@ -3,9 +3,11 @@
   "data_name": "pdf_preview_image",
   "description": "Autogenerates PDF preview into an image field.",
   "version": "3.x",
-  "package": "Media",
+  "package": "Field types",
   "composer_namespace": "drupal/pdf_preview_image",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "spatie/pdf-to-image": "^3.1"
+  },
   "dependent_modules": [
     "drupal:image"
   ],
@@ -16,27 +18,31 @@
   "project_url": "https://www.drupal.org/project/pdf_preview_image",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "spatie/pdf-to-image"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Media"
   ],
   "subcategories": [
-    "File display"
+    "Media derivatives / transcoding",
+    "Image toolkit / processing"
   ],
   "keywords": [
     "pdf",
     "preview",
     "thumbnail",
     "image",
+    "first page",
     "document"
   ],
-  "project_description": "PDF Preview Image module provides an image preview from a pdf file and save it on a field image type. It is a light version of Pdf to image field module.\n\n Requirements \n \n Package 'Convert a pdf to an image' which can be installed via composer:\n\n $ composer require spatie/pdf-to-image. \n Imagick and Ghostscript installed on server. \n \n Install \n \n Install package 'Convert a pdf to an image' via $ composer require spatie/pdf-to-image. \n Enable the module admin/modules. \n \n Using the module \n \n Go on a content type, create a file type field and set up on \"Allowed file extensions\" the pdf extension. \n On the bottom of file field settings will appear \"Pdf preview autogeneration\"; Check the box. \n There is an option to set up the image field where should be stored image from pdf. \n If there isn't an image field created in content type, go ahead create one, and then set up on \"Pdf Preview Autogeneration\". \n Back to top",
+  "project_description": "PDF Preview Image auto-generates a preview image of the first page of an uploaded PDF and stores it in a separate image field on the same entity. It has no admin UI, routes, or permissions of its own: it works by adding two third-party settings (an 'enable' checkbox and a 'target image field' selector) to the Field UI edit form of any core file field whose Allowed file extensions include 'pdf', and by rendering the preview during hook_entity_presave(). It requires the spatie/pdf-to-image Composer package (v3.x, pulled in automatically with the module), which uses the Imagick PHP extension; ImageMagick must be built with PDF (Ghostscript) delegate support on the server. Version 3.x rasterises PDFs through the Imagick PHP extension rather than shelling out to a command-line binary.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

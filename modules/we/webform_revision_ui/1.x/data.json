@@ -3,12 +3,13 @@
   "data_name": "webform_revision_ui",
   "description": "Adds Webform Revision UI.",
   "version": "1.x",
-  "package": null,
+  "package": "Webform",
   "composer_namespace": "drupal/webform_revision_ui",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/config_revision": "^1.0@beta",
+    "drupal/webform": "^6.3@beta"
+  },
   "dependent_modules": [
-    "drupal:config_revision",
-    "drupal:webform",
     "drupal:config_revision",
     "drupal:webform"
   ],
@@ -18,19 +19,21 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/webform_revision_ui",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1.0",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
+    "Administration tools",
     "Forms and surveys"
   ],
   "subcategories": [
-    "Webform extensions"
+    "Configuration management",
+    "Audit trail / activity logging"
   ],
   "keywords": [
     "webform",
@@ -39,7 +42,7 @@
     "governance",
     "revert"
   ],
-  "project_description": "This module adds Webform Revision UI.\n\n This module depends on the module Config Revision and the core patch [#2350939-202] to provide Webform Revision UI.",
+  "project_description": "This module adds a Revisions tab and revision history/revert UI to Webform configuration entities. It has no schema or settings of its own: it depends on the Config Revision module (which records a revision each time a webform is saved) and on Webform, and it wires Config Revision's generic version-history, revert and delete screens into the Webform admin UI under /admin/structure/webform/manage/{webform}/revisions. Access is governed by three dedicated permissions (view/revert/delete all webform revisions).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

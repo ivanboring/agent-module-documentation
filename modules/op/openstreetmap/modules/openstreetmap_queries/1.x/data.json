@@ -1,5 +1,5 @@
 {
-  "name": "Openstreetmap Queries",
+  "name": "OpenStreetMap Query Tools",
   "data_name": "openstreetmap_queries",
   "description": "Allows saving and processing of Overpass queries to sync OSM nodes",
   "version": "1.x",
@@ -9,7 +9,7 @@
   "dependent_modules": [
     "openstreetmap:openstreetmap"
   ],
-  "configure": null,
+  "configure": "entity.osm_query.settings",
   "core_version_requirement": "^8.7.7 || ^9 || ^10",
   "active_installs": null,
   "list_position": null,
@@ -19,19 +19,22 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content"
+    "Integrations",
+    "Content display"
   ],
   "subcategories": [
-    "Geospatial"
+    "Geospatial / location"
   ],
   "keywords": [
     "openstreetmap",
+    "overpass",
     "queries",
+    "sync",
     "submodule"
   ],
   "part_of": "openstreetmap",
