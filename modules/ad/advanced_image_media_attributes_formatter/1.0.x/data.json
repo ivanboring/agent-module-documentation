@@ -1,14 +1,17 @@
 {
   "name": "Advanced Image Media Attributes Formatter",
   "data_name": "advanced_image_media_attributes_formatter",
-  "description": "Adds fetchpriority and decoding attributes to image and media field output.",
+  "description": "Adds fetchpriority and decoding attributes (and a loading override for media) to image and media field output.",
   "version": "1.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/advanced_image_media_attributes_formatter",
   "composer_requirements": {},
-  "dependent_modules": [],
+  "dependent_modules": [
+    "image",
+    "media"
+  ],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/advanced_image_media_attributes_formatter",
@@ -19,22 +22,26 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content display"
+    "Content display",
+    "Performance"
   ],
   "subcategories": [
-    "Field formatters"
+    "Field formatters",
+    "Lazy loading",
+    "Responsive images"
   ],
   "keywords": [
     "image",
     "fetchpriority",
     "decoding",
+    "loading",
     "performance",
     "formatter"
   ],
-  "project_description": "Introduction \n If you're new to Drupal, images are added to content using Image fields (direct uploads) or via the Media library (reusable images). Drupal core already handles basic lazy loading, but lacks easy controls for advanced performance attributes.\n\n This module provides a simple solution: it adds UI options to set modern HTML attributes — fetchpriority (high/low/auto) and decoding (async/sync/auto) — directly on image fields. For Media library images, it also lets you override the loading attribute (lazy/eager).\n\n These attributes tell browsers how to prioritize and decode images, improving page speed and scores like Largest Contentful Paint (LCP) in Google PageSpeed/Lighthouse — especially for hero images or galleries.\n\n No coding required : just install, go to \"Manage display\" (or Views), and select options in the familiar Image or Rendered entity formatter settings.\n\n What solution does this module provide? \n\nIt gives beginners and pros an easy, no-code way to apply performance-best-practice image attributes that aren't yet in Drupal core, working seamlessly for both classic Image fields and Media entities.\n\n \nThis module adds fetchpriority and decoding attributes to image/media fields, plus loading override for media images. Easy UI to optimize performance—no code needed!)\n\n Features \n \n Basic functionality : Extends Drupal core's default \"Image\" formatter (for direct image fields) and \"Rendered entity\" formatter (for media references), including support for image styles and responsive images. \n Unique features :\n \n Direct dropdowns in formatter settings for fetchpriority (high, low, auto, or none). \n Direct dropdowns for decoding (async — recommended for smoother performance, sync, auto, or none). \n For media references: checkbox to override the inner image's loading attribute (lazy or eager), plus the above attributes, and select the target image field (usually field_media_image). \n \n \n When and why would someone use this module? When you want better control over image loading performance beyond core's basic lazy loading. Great for improving Core Web Vitals, prioritizing critical images (e.g., hero/banner with fetchpriority=high), or ensuring async decoding site-wide. \n Use cases :\n \n Hero images above the fold: fetchpriority=high + loading=eager \n Global optimization: decoding=async on all images \n Galleries/carousels below the fold: loading=lazy + fetchpriority=low \n Works in content types, Views, Paragraphs, Layout Builder, etc. \n \n \n \n Post-Installation \n After installing and enabling the module:\n\n \n No new configuration pages or content types are created — it integrates directly into existing interfaces. \n Visit any entity's Manage display (e.g., Structure > Content types > Article > Manage display). \n For direct Image fields: Choose the \"Image\" formatter — new options for fetchpriority and decoding will appear. \n For Media reference fields (e.g., pointing to \"Image\" media type): Choose \"Rendered entity\" formatter — check \"Override image loading\" to show options for loading (lazy/eager), fetchpriority, decoding, and the target image field. \n The same options are available in Views field settings. \n \n Clear caches (drush cr or via UI) if options don't appear immediately.\n\n Special consideration : The module globally extends core formatters using hook_field_formatter_info_alter(), so changes apply everywhere those formatters are used (site-wide consistency).\n\n Additional Requirements \n \n Drupal core ^10 or ^11 \n Core modules (already enabled by default): image and media \n \n No external libraries, APIs, or additional dependencies required.\n\n Recommended modules/libraries \n \n Blazy or Lazy: For advanced JavaScript-based lazy loading (as fallback or extra features). \n ImageAPI Optimize or modules supporting WebP/AVIF: To reduce image file sizes (complements these attributes). \n Tools like Google Lighthouse or PageSpeed Insights: To measure real-world improvements. \n \n Similar projects \n As of December 2025, no …",
+  "project_description": "Advanced Image Media Attributes Formatter adds UI controls for modern HTML image performance attributes to Drupal's existing Image and Rendered-entity (media) formatters. Instead of shipping new formatter plugins, it uses hook_field_formatter_info_alter() to swap the class behind core's 'image' and 'entity_reference_entity_view' formatters, so the extra options appear inline in the familiar Manage-display and Views formatter settings. For plain Image fields it exposes 'fetchpriority' (high/low/auto/none) and 'decoding' (async/sync/auto/none) dropdowns. For media reference fields rendered as entities it adds an 'Override image loading' checkbox that lets you pick the inner image field, set loading=lazy or loading=eager, and apply the same fetchpriority and decoding hints. Attributes are attached to the image render arrays through a pre-render callback so they flow into the standard image, image_style and image_formatter theme output, including image styles and responsive images. Typical use is improving Core Web Vitals such as Largest Contentful Paint by marking hero images fetchpriority=high/eager and lazy-loading below-the-fold images. No new configuration pages, content types, permissions, routes or services are created.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "not-covered",

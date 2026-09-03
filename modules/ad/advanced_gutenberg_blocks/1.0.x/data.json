@@ -1,18 +1,18 @@
 {
   "name": "Advanced Gutenberg Blocks",
   "data_name": "advanced_gutenberg_blocks",
-  "description": "Adds extra content blocks to the Gutenberg editor.",
+  "description": "Addon content and media blocks for the Gutenberg editor.",
   "version": "1.0.x",
   "package": "Gutenberg",
   "composer_namespace": "drupal/advanced_gutenberg_blocks",
   "composer_requirements": {},
   "dependent_modules": [
     "gutenberg",
-    "drupal:media",
-    "drupal:media_library"
+    "media",
+    "media_library"
   ],
   "configure": null,
-  "core_version_requirement": "^8||^9||^10||^11",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/advanced_gutenberg_blocks",
@@ -23,7 +23,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"
@@ -38,7 +38,7 @@
     "content",
     "media"
   ],
-  "project_description": "Advanced Gutenberg Blocks is a Gutenberg blocks module for site builder and editors. Our goal is to make it insanely easy for you to create better and engaging content with Gutenberg.\n\n ## Advanced Gutenberg Blocks currently includes the following blocks:\n\n * Section Break (H2)\n\n* Custom Heading\n\n* Heighlighted Text\n\n* Image Grid\n\n* Custom Text Block\n\n* Text + Image Slider - Repeater\n\n* Featured Media\n\n* Image Mosaic\n\n* Media Repeater Grid\n\n* Link Mosaic\n\n* Featured Text\n\n* Text + Image\n\n* Call to Action\n\n* Link List\n\n* Text Mosaic\n\n* Full width Image Slider\n\n* Spacer Block\n\n* FAQ Accordion\n\n* Custom Audio Block",
+  "project_description": "Advanced Gutenberg Blocks is a Gutenberg blocks module for site builders and editors. It registers a set of extra client-side Gutenberg blocks (headings, text, media, sliders, mosaics, call-to-action, FAQ accordion, audio, spacer and more) so authors can compose richer content in the Gutenberg editor without custom block development. It ships no admin UI, routes, permissions, services or config; the blocks are declared in JavaScript and the module only adds two example server-side Twig templates and a preprocess hook for the demo 'example' block namespace.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

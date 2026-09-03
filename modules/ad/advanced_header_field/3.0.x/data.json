@@ -1,14 +1,16 @@
 {
   "name": "Advanced Header Field",
   "data_name": "advanced_header_field",
-  "description": "A field type for heading text with an optional subtitle.",
+  "description": "Provides a customizable field type for heading text and optional subtitle.",
   "version": "3.0.x",
   "package": "Field types",
   "composer_namespace": "drupal/advanced_header_field",
   "composer_requirements": {},
-  "dependent_modules": [],
+  "dependent_modules": [
+    "link"
+  ],
   "configure": null,
-  "core_version_requirement": "^11||^12",
+  "core_version_requirement": "^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/advanced_header_field",
@@ -21,22 +23,27 @@
   ],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"
   ],
   "subcategories": [
-    "Fields"
+    "Fields",
+    "Field formatters",
+    "Link fields"
   ],
   "keywords": [
     "header",
     "heading",
     "subtitle",
     "field",
-    "title"
+    "title",
+    "link",
+    "semantic",
+    "anchor"
   ],
-  "project_description": "This module provides a heading field that allows you to split the semantic meaning of a heading and its visual style. Often times content editors will choose the incorrect tag for proper SEO and A11y because they want a specific visual size. It extends the link field, so that any heading can become a link. You can also provide it additional styles to suit your project’s needs. Another benefit is all data is stored in a single table.",
+  "project_description": "This module provides a heading field that separates the semantic meaning of a heading from its visual style. Content editors often pick the wrong tag for SEO/accessibility just to get a particular visual size; this field lets them choose the semantic tag (h2-h6) independently of a visual size class and additional style classes. Built on top of the core Link field, so any heading can optionally become a link, and every value (heading text, subtitle, link, options) is stored in a single field table. A companion advanced_header_field_navigation submodule adds an in-page jump-menu block driven by opted-in headings.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

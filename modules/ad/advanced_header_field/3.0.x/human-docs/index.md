@@ -6,10 +6,9 @@ dedicated field that stores heading text plus an optional **subtitle**, with a
 configurable heading level (the HTML heading markup it outputs). That keeps
 headings structured and consistent across content of the same type.
 
-It is a content-editing / fields feature: the heading text is authored content,
-output through Drupal's normal rendering (escaped as usual), and the field plays
-no part in access control. It ships an optional `advanced_header_field_navigation`
-submodule.
+It is a content-editing / fields feature, built on top of the core Link field so a
+heading can optionally become a link. It ships an optional
+`advanced_header_field_navigation` submodule that adds an in-page jump menu.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token-cheap references for an AI coding agent, read the sibling

@@ -1,14 +1,14 @@
 {
   "name": "Advanced Mega Menu",
   "data_name": "advanced_mega_menu",
-  "description": "A grid-based mega-menu layout builder using Views and Blocks.",
+  "description": "A grid-based mega-menu layout builder that lets you fill Drupal menu items with rows and columns of Views, block content, and theme/system blocks through a visual canvas, with an optional REST endpoint for decoupled front-ends.",
   "version": "1.1.x",
   "package": "Megamenu",
   "composer_namespace": "drupal/advanced_mega_menu",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": "advanced_mega_menu.megamenu_content.settings",
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/advanced_mega_menu",
@@ -22,19 +22,28 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Site structure"
+    "Site structure",
+    "Content display",
+    "Decoupled"
   ],
   "subcategories": [
-    "Navigation menus"
+    "Navigation menus",
+    "View embedding",
+    "Block enhancements",
+    "Grid layout",
+    "REST / web services"
   ],
   "keywords": [
     "mega menu",
     "navigation",
+    "menu",
     "views",
     "blocks",
-    "menu"
+    "grid layout",
+    "layout builder",
+    "rest"
   ],
-  "project_description": "Advanced Mega Menu provides a powerful, grid-based layout builder for Drupal navigation, enabling site builders to create complex, multi-row, and multi-column layouts through an intuitive visual interface.\n\n \n Unlike traditional static menus, every element within the mega menu is fully dynamic. By embedding Views, Block entities, and System blocks, the module ensures your navigation renders real-time data that updates automatically as your content changes. These components leverage Drupal’s core visibility system and Views contextual filters, allowing you to serve personalized content based on user roles, page types, or specific URL contexts. Designed for high performance and full responsiveness, it is the definitive choice for enterprise sites requiring a smart, data-driven navigation system.\n\n Features \n Core Functionality \n\n \nThis module provides a visual layout engine that transforms standard Drupal menu trees into sophisticated, grid-based navigation. It replaces simple nested lists with a canvas-style interface, allowing administrators to organize content into structured rows and columns directly within the Menu UI.\n\n Unique Features \n\n \n \n Fully Dynamic Content: Embed Views, Block Content entities, and System blocks to render real-time data that updates automatically.\n \n \n Contextual Intelligence: Leverage Drupal core visibility and Views contextual filters to personalize content based on user roles, page types, or URL context.\n \n \n Hybrid Rendering: Mix traditional menu links with custom blocks. Sub-menu links can be positioned above or below the grid, or hidden entirely.\n \n \n Mobile-Ready: Desktop grids automatically convert into touch-friendly vertical accordions.\n \n \n Decoupled Support: Built-in REST endpoints allow headless frontends (React, Vue, etc.) to consume complex grid layouts.\n \n \n Use Cases \n\n \n \n E-commerce: Product categories with a dynamic “Deal of the Day” view.\n \n \n Enterprise Portals: Personalized links or recent activity by role.\n \n \n Content Publishers: “Trending in this section” via contextual filters.\n \n \n Marketing: Promotional banners and CTAs without manual menu edits.\n \n \n \n Installation & Setup \n 1. Installation \n\n \n Install as you would any contributed Drupal module. See Installing Drupal Modules .\n\n composer require drupal/advanced_mega_menu Enable the module using Drush:\n\n drush en advanced_mega_menu \n 2. Permissions \n\n \n Navigate to People → Permissions ( /admin/people/permissions ) and grant the Administer Advanced Mega Menu permission to trusted roles.\n\n \n Configuration Workflow \n Step 1: Enable Menu Support \n\n Designate which menus should support Mega Menu functionality.\n\n \n \n Option A: Navigate to Structure → Menus . In the \"Operations\" dropdown for your chosen menu, select Enable Mega Menu .\n \n \n Option B: Go to Structure → Advanced Mega Menu → Configuration . Select multiple menus (e.g., Main, Footer, User) and click Save .\n \n \n Step 2: Access the Visual Builder \n\n Go to Structure → Menus and edit an enabled menu.\n\n \n \n Hover Interface: Hover over menu links to reveal builder icons.\n \n \n Gear Icon: Opens the Layout Builder in an AJAX modal.\n \n \n External Link Icon: Opens the full-screen Layout Builder.\n \n \n Step 3: Architect the Layout \n\n \n The builder uses a hierarchical \"Canvas\" approach: \n \n Add Row: Create a horizontal container. Use Column Width Mode to select predefined layouts (e.g., 2-column, 3-column flex) or choose Custom to apply your own grid classes.\n \n \n Add Column: Divide your row into vertical segments.\n \n \n Add Block: Populate columns with dynamic content . You can embed:\n \n Views Blocks (e.g., Latest News, Product Sliders) \n Block Content Entities (e.g., Custom Banners) \n System/Theme Blocks (e.g., Search, Site Branding) \n \n \n \n Step 4: Display & Visibility \n\n \n \n Display Mode: Choose Mega Only (hides standard sub-menu links) or Menu and Mega (displays both).\n \n \n Styling: Assign custom CSS classes to individual rows, columns, or wrappers (e.g., adding row and …",
+  "project_description": "Advanced Mega Menu turns ordinary Drupal menus into multi-row, multi-column mega-menu panels. For any top-level item of a mega-menu-enabled menu, an administrator opens a visual \"canvas\" layout builder (as an AJAX modal from the menu-edit screen or full-screen) and adds rows, splits each row into columns via a chosen column-width mode (auto/equal/fractional/flex/2-6 columns or a custom CSS-class mode), and drops content blocks into columns: Views block displays, custom Block Content entities, or theme/system blocks. Each layout is stored as a `megamenu_content` config entity keyed by the menu link UUID. Per-item display settings control whether to show the mega rows only, the normal child menu links only, or both (with links positioned above or below the grid), plus fallback wrapper/row/column CSS classes. Global settings pick which menus are mega-menu-enabled and configure an optional submenu expand/collapse icon (Unicode symbol or icon-font class, with ARIA labels) and an option to disable the module's own CSS/JS. Rendering is done through a preprocess-menu hook that swaps in the module's `menu--advanced-mega-menu.html.twig` template and builds each item's rows via the MegaMenuRowBuilder / MegaMenuBlockRenderer services. A REST resource (`GET /api/advanced-mega-menu/{menu_id}/{plugin_id}`) returns the rendered mega-menu HTML for decoupled front-ends. All building, editing and deleting is gated by the restricted `administer advanced mega menu` permission.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

@@ -1,14 +1,14 @@
 {
   "name": "Advanced 403 Redirect",
   "data_name": "advanced_403_redirect",
-  "description": "Redirects access-denied (403) responses to a configured page/destination.",
+  "description": "Redirects access-denied (403) responses whose path matches a stored rule to an admin-configured internal destination, optionally showing a message.",
   "version": "1.0.x",
   "package": "Other",
   "composer_namespace": "drupal/advanced_403_redirect",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/advanced_403_redirect",
@@ -19,22 +19,24 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
+    "Administration tools",
     "Site structure"
   ],
   "subcategories": [
-    "Error pages"
+    "Custom error pages",
+    "Entity page behavior & redirects"
   ],
   "keywords": [
     "403",
     "access denied",
     "redirect",
-    "error",
-    "forbidden"
+    "forbidden",
+    "unpublished content"
   ],
-  "project_description": "The Flexible 403 Redirect module allows site administrators to customize the redirection behavior when users attempt to access unpublished content. Instead of the default Drupal behavior, which redirects users to the access denied page, this module provides options to redirect users to a custom page, such as a listing page, homepage, or any other specified URL. Additionally, administrators can display custom messages upon redirection.\n\n Once configured, when a user tries to access unpublished content:\n\n Instead of seeing the default Access Denied page, they will be redirected based on the admin settings.\n\n If a message is configured, it will be displayed after redirection.",
+  "project_description": "Advanced 403 Redirect lets site administrators define per-path rules that change what happens when a request returns a 403 (access denied). Each rule is stored as an 'access_denied_url' content entity holding a source URL, a destination URL and an optional message. When a non-administrator hits a path that matches a rule's source, an event subscriber replaces the default access-denied page with a redirect to the configured destination and can display the message. Source URLs are validated to resolve to an existing, unpublished entity; destination URLs are validated to begin with a slash and resolve to a valid local route.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
