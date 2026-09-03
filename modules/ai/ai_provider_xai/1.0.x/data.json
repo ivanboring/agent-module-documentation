@@ -1,11 +1,15 @@
 {
   "name": "xAI Provider",
   "data_name": "ai_provider_xai",
-  "description": "Adds xAI (Grok) as an AI provider for the AI module.",
+  "description": "Adds xAI (Grok) as an AI provider for the Drupal AI module, using the grok-php/client library for chat.",
   "version": "1.0.x",
   "package": "AI Providers",
   "composer_namespace": "drupal/ai_provider_xai",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.0.4",
+    "drupal/key": "^1.18",
+    "grok-php/client": "^1.1"
+  },
   "dependent_modules": [
     "ai:ai",
     "key:key"
@@ -20,7 +24,7 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],

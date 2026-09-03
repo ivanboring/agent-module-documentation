@@ -1,16 +1,19 @@
 {
   "name": "Siliconflow Provider",
   "data_name": "ai_provider_siliconflow",
-  "description": "Enables the SiliconFlow inference API as an AI provider.",
+  "description": "Enables the SiliconFlow inference API as a Drupal AI provider for chat, embeddings, and text-to-image.",
   "version": "1.0.x",
   "package": "AI Providers",
   "composer_namespace": "drupal/ai_provider_siliconflow",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.0.0-beta1",
+    "drupal/key": "^1.18"
+  },
   "dependent_modules": [
     "ai:ai",
     "key:key"
   ],
-  "configure": null,
+  "configure": "ai_provider_siliconflow.settings_form",
   "core_version_requirement": "^10.2 || ^11",
   "active_installs": null,
   "list_position": null,

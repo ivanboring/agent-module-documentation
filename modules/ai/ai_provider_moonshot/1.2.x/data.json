@@ -1,16 +1,21 @@
 {
   "name": "Moonshot AI Provider",
   "data_name": "ai_provider_moonshot",
-  "description": "A Drupal AI provider plugin for Moonshot AI models.",
+  "description": "A Drupal AI provider plugin that routes chat operations to Moonshot AI (Kimi) models via their OpenAI-compatible API.",
   "version": "1.2.x",
   "package": "AI Providers",
   "composer_namespace": "drupal/ai_provider_moonshot",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.1.0",
+    "drupal/key": "^1.18",
+    "openai-php/client": ">=v0.10.1"
+  },
   "dependent_modules": [
-    "ai:ai"
+    "ai:ai",
+    "key:key"
   ],
   "configure": "ai_provider_moonshot.settings_form",
-  "core_version_requirement": "^10.3||^11",
+  "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_provider_moonshot",
@@ -21,20 +26,20 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Integrations"
+    "Artificial Intelligence (AI)"
   ],
   "subcategories": [
-    "LLM / AI provider"
+    "AI provider abstraction / LLM gateway"
   ],
   "keywords": [
     "ai",
     "moonshot",
+    "kimi",
     "llm",
-    "provider",
-    "integration"
+    "provider"
   ],
   "project_description": "Ai Provider moonshot (Kimi)\n\n Authentication \n https://platform.moonshot.cn/console/api-keys \n\n Supported Models \n \n 'kimi-k3' \n 'kimi-k2.7-code' \n 'kimi-k2.7-code-highspeed' \n 'kimi-k2.6' \n Back to top",
   "maintenance_status": "Actively maintained",

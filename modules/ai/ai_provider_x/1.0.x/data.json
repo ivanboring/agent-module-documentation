@@ -1,17 +1,21 @@
 {
   "name": "X AI Provider",
   "data_name": "ai_provider_x",
-  "description": "An AI provider that routes the Drupal AI module to X (Grok) AI.",
+  "description": "Adds X (xAI / Grok) as a provider for the Drupal AI module, routing chat, image-vision chat and embeddings to the api.x.ai OpenAI-compatible endpoint.",
   "version": "1.0.x",
   "package": "AI Providers",
   "composer_namespace": "drupal/ai_provider_x",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.0.4",
+    "drupal/key": "^1.18",
+    "openai-php/client": ">=v0.10.1"
+  },
   "dependent_modules": [
     "ai:ai",
     "key:key"
   ],
-  "configure": null,
-  "core_version_requirement": "^10.2||^11",
+  "configure": "ai_provider_x.settings_form",
+  "core_version_requirement": "^10.2 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_provider_x",
@@ -28,11 +32,12 @@
     "Artificial Intelligence (AI)"
   ],
   "subcategories": [
-    "LLM / AI provider"
+    "AI provider abstraction / LLM gateway"
   ],
   "keywords": [
     "ai",
     "x",
+    "xai",
     "grok",
     "provider",
     "llm"

@@ -1,38 +1,35 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-OpenAI Compatible Provider is a provider for OpenAI compatible APIs (DeepSeek, etc.).
+OpenAI Compatible Provider adds a configurable AI-module provider for any endpoint that speaks the OpenAI API (DeepSeek, SiliconFlow, Kimi, and other OpenAI-compatible services).
 
 ---
 
-OpenAI Compatible Provider adds an AI provider plugin for any **OpenAI-compatible** API to the Drupal AI
-module — so AI operations can be routed to services that speak the OpenAI API (DeepSeek, self-hosted/local
-LLMs, other OpenAI-compatible gateways) by pointing at a configurable base URL. It depends on the AI module,
-is configured at `ai_provider_openai_compatible.settings_form`, in the AI Providers package.
-
-Use it to use any OpenAI-compatible endpoint as an AI backend. Security notes: it authenticates with an API
-key — **store that as a secret** (Key entity / env var); the **base URL is admin-configured**, so point it
-only at trusted endpoints and use **HTTPS**; and prompts sent leave the site (data-handling for sensitive
-content — a **self-hosted/local** endpoint keeps data in-house). It has no access-control role. Configure the
-endpoint and API key.
+`ai_provider_openai_compatible` lets a site point the [AI module](https://www.drupal.org/project/ai)
+at any OpenAI-compatible API by setting a base endpoint URL and an API key. Unlike a vendor-specific
+provider, the models are fully admin-defined: an administrator lists one or more models — each with a
+model id, label, the operation types it supports (chat, embeddings, translate_text, …), a set of
+capabilities, and per-model YAML parameters (temperature, max_tokens, top_p, …). The API key is held
+through the **Key module** rather than in plain config. The module ships with DeepSeek `deepseek-chat`
+and `deepseek-reasoner` as example defaults and documents endpoints for DeepSeek, SiliconFlow, Zhipu
+AI, Alibaba Cloud (Tongyi Qianwen), 01.AI (Yi) and Moonshot AI (Kimi). Supports Drupal 10.3+ and 11.
 
 ---
 
-- Provide an OpenAI-compatible AI provider.
-- Route AI to DeepSeek/local LLMs/etc.
-- Point at a configurable base URL.
-- Depend on the AI module.
-- Configure at the settings form.
-- Store the API key as a secret.
-- Point the base URL at trusted endpoints only.
-- Use HTTPS.
-- Mind prompts sent to the provider (self-host keeps data in-house).
-- Have no access-control role.
-- Configure the endpoint and key.
-- Use OpenAI-compatible services.
-- Handle the AI provider.
-- Configure credentials.
-- Use a custom endpoint.
-- Handle credentials securely.
-- Configure the provider.
-- Route to LLMs.
-- Connect to an endpoint.
-- Provide AI models.
+- Connect the AI module to any OpenAI-compatible API endpoint.
+- Use DeepSeek `deepseek-chat` and `deepseek-reasoner` out of the box.
+- Point the provider at SiliconFlow, Zhipu AI, Kimi, Tongyi Qianwen, or Yi.
+- Set the base API endpoint URL from an admin form.
+- Store the API key securely via the Key module (no plaintext config).
+- Define custom models with an id, label, and human-readable name.
+- Choose which operation types each model supports (chat, embeddings, translate_text, …).
+- Declare per-model capabilities (JSON output, tools/function calling, structured response, vision).
+- Set per-model parameters (temperature, max_tokens, top_p) as YAML.
+- Add or remove model entries with AJAX in the settings form.
+- Run chat completions against a self-selected OpenAI-compatible service.
+- Expose translate_text or embeddings when a model declares them.
+- Filter selectable models by operation type and required capabilities.
+- Seed the default provider models for chat and embeddings automatically.
+- Switch providers by only changing the endpoint and API key.
+- Reuse OpenAI-style AI-module flows against a cheaper or regional API.
+- Configure models from config (config/install seeds DeepSeek examples).
+- Validate the endpoint URL and model config before saving.
+- Support Drupal 10.3, 11 sites running the AI module and Key module.

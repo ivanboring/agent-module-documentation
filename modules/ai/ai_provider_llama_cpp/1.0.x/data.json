@@ -1,13 +1,17 @@
 {
   "name": "llama.cpp",
   "data_name": "ai_provider_llama_cpp",
-  "description": "Adds llama.cpp as an AI provider using its OpenAI-compatible /v1 HTTP API.",
+  "description": "Provides a provider for llama.cpp using an OpenAI-compatible /v1 HTTP API.",
   "version": "1.0.x",
   "package": "AI Providers",
   "composer_namespace": "drupal/ai_provider_llama_cpp",
-  "composer_requirements": {},
-  "dependent_modules": [],
-  "configure": null,
+  "composer_requirements": {
+    "drupal/ai": "^1.2.0"
+  },
+  "dependent_modules": [
+    "ai"
+  ],
+  "configure": "ai_provider_llama_cpp.settings_form",
   "core_version_requirement": "^10.2 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -17,7 +21,7 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
@@ -34,7 +38,7 @@
     "openai-compatible",
     "provider"
   ],
-  "project_description": "⚠️ This module is no longer actively developed. \n\n Development has moved to AI Provider Universal , which supports llama.cpp along with Ollama, vLLM, LM Studio, LiteLLM, Fireworks, OpenAI and any other OpenAI-compatible server — with multiple server instances, models as config entities and per-model capability overrides.\n\n No new features will be added here. Only critical security fixes will be considered until a stable release of AI Provider Universal is available.\n\n Existing users: you can keep using this module for now, but we recommend migrating to AI Provider Universal. Configure your llama.cpp server at Configuration → AI → AI Servers (/admin/config/ai/providers/universal).\n\n llama.cpp AI Provider (Multi-instance) \n 1.2.0-beta1 is now available! This is the first beta of the 1.2 series with full multi-server support.\n\n A powerful, multi-instance provider for the AI module . While built with llama.cpp as its primary focus, it natively supports any OpenAI-compatible /v1 server (Ollama, vLLM, LiteLLM, LM Studio, etc.).\n\n Key Features \n \n Multi-server architecture : Configure and use multiple servers at the same time. Each server appears as an independent provider (e.g. llama_cpp:gpu , llama_cpp:embeddings ). \n Secure credentials : API keys are stored using the Key module (no more plaintext). \n Broad operation support : Chat, Embeddings, Speech-to-Text, Rerank, Moderation (LlamaGuard3 + ShieldGemma with multiple safety policies), and Text-to-Image. \n Per-server control : Model filtering with glob patterns, manual capability overrides, and configurable timeout + authentication per server. \n Smart model detection : Auto-detects capabilities from server metadata, Hugging Face tags, and name heuristics. \n Robust & cache-friendly : Model lists and types are cached per server in Drupal State. \n \n Supported Operations \n \n Chat completions ( /v1/chat/completions ) \n Embeddings ( /v1/embeddings ) \n Speech to Text (Whisper and similar) \n Rerank \n Moderation (native LlamaGuard3 and ShieldGemma support) \n Text to Image ( /v1/images/generations ) \n \n Installation \n Install via Composer:\n\n composer require drupal/ai_provider_llama_cpp Important: Composer installs the latest stable release by default (currently 1.0.0). To install the new 1.2.0-alpha1 (recommended for new projects), run:\n\n composer require 'drupal/ai_provider_llama_cpp:^2.0@alpha' Then enable the module:\n\n drush pm:enable ai_provider_llama_cpp Requirements \n \n Drupal 10.2, 11 or 12 \n AI module ^1.2 \n Key module ^1.18 (for secure API key storage) \n An OpenAI-compatible server (Ollama, vLLM, llama.cpp, LiteLLM...) \n \n See the release notes for full details and migration information from previous versions.\n\n Note: This is a beta release. Please test in development/staging",
+  "project_description": "An AI-module provider plugin that registers a self-hosted llama.cpp server (llama-server) as an AI provider through its OpenAI-compatible /v1 HTTP API. It supports chat completions and embeddings, auto-discovers the available models from the server's /v1/models endpoint (caching the mapping in Drupal State so the model list survives an offline server), and requires no API key — it is built for local and privately-hosted inference where prompt data stays on operator-controlled infrastructure. Configuration is a single admin form for the server host name and port. Note: the project is marked obsolete upstream, with development moved to a multi-instance successor.",
   "maintenance_status": "Unsupported",
   "development_status": "Obsolete",
   "security_advisory_coverage": "not-covered",

@@ -1,37 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Langdock Provider for Drupal AI provides an AI provider plugin for Langdock, letting the AI module use Langdock models.
+Adds Langdock as a selectable AI provider for the Drupal AI module, so chat and embeddings operations can be routed to Langdock's OpenAI-compatible LLM endpoint.
 
 ---
 
-Langdock Provider for Drupal AI adds a provider plugin for the Langdock LLM platform to the Drupal AI
-module — so AI operations (chat/completion/etc.) can be routed to Langdock models. It depends on the AI
-module and is configured at `ai_provider_langdock.settings_form`, in the AI package.
-
-Use it to use Langdock as an AI backend. The security-relevant point: it authenticates to the Langdock API
-with an API key — **store that key as a secret** (Key entity / environment variable), not in exported config
-or code, and be aware content sent to the AI provider leaves the site (data-handling for sensitive prompts).
-It is an integration/AI feature with no access-control role. Configure the Langdock connection and API
-key.
+`ai_provider_langdock` registers a single `AiProvider` plugin (`langdock`) that extends the Drupal AI module's `OpenAiBasedProviderClientBase`, so it talks to Langdock through the OpenAI PHP SDK against Langdock's OpenAI-compatible API (default endpoint `https://api.langdock.com/openai/eu/v1`). It supports two operation types — `chat` (including streaming, tool/function calling, and structured JSON-schema responses) and `embeddings` — and reads the live model list from the provider. The API key is held in a Key module entity and the endpoint host is set on the provider's settings form (`/admin/config/ai/providers/langdock`, gated by the `administer ai providers` permission). It depends on the `ai` and `key` modules. Once configured it becomes available to every AI-module feature (chat blocks, agents, the explorer, other modules that call `ai.provider`).
 
 ---
 
-- Provide a Langdock AI provider.
-- Route AI operations to Langdock.
-- Use Langdock LLM models.
-- Depend on the AI module.
-- Configure at the settings form.
-- Store the Langdock API key as a secret.
-- Avoid the key in exported config.
-- Mind data sent to the AI provider.
-- Handle sensitive prompts carefully.
-- Have no access-control role.
-- Configure the Langdock connection.
-- Use Langdock as a backend.
-- Authenticate to the Langdock API.
-- Handle the API key securely.
-- Configure AI provider.
-- Connect to Langdock.
-- Provide AI models.
-- Use an LLM provider.
-- Configure the provider.
-- Integrate Langdock AI.
+- Use Langdock as the chat backend for the Drupal AI module.
+- Generate text/chat completions against Langdock models.
+- Stream chat responses token-by-token in the AI UI.
+- Call Langdock with tool/function-calling payloads.
+- Request structured JSON-schema-constrained responses.
+- Produce text embeddings via Langdock (`text-embedding-ada-002`, `text-embedding-3-*`).
+- Power AI Assistants / agents with Langdock models.
+- Point the provider at the EU Langdock endpoint for data-residency needs.
+- Point the provider at a custom OpenAI-compatible Langdock host.
+- Select the default chat model for the site's AI operations.
+- Select the default embeddings model.
+- Store the Langdock API key in a Key entity (env or file provider).
+- Let editors use Langdock through CKEditor AI tools.
+- Feed Langdock into RAG/vector workflows via its embeddings.
+- Use `gpt-5`, `o1`, `o3` reasoning models exposed through Langdock (with reasoning-effort control).
+- Switch an existing site from another provider to Langdock without code changes.
+- Validate connectivity/credentials from the settings form before saving.
+- Cache the fetched model list to avoid repeated model-listing calls.
+- Compute embedding vector sizes for storage/index sizing.
+- Provide Langdock as one of several providers for per-operation defaults.

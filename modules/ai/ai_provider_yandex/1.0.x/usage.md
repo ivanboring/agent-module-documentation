@@ -1,37 +1,34 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-AI Provider Yandex enables the use of YandexGPT.
+YandexGPT Provider registers YandexGPT as a chat provider for the Drupal AI module.
 
 ---
 
-AI Provider Yandex provides a **YandexGPT AI provider** for the AI module — enabling YandexGPT models
-(text generation/chat) through Drupal's AI abstraction. It depends on the AI and Key modules, in the AI Providers
-package.
-
-Use it to add YandexGPT to AI-powered features. It is an AI/integration feature and it handles secrets
-**correctly**: it depends on the **Key** module, so the Yandex **API key/IAM credential** is stored as a Key
-(env/secret), not plain config, and (checked) it does **not** disable TLS verification on its calls to Yandex.
-Data-handling: prompts/content are **sent to Yandex** (external egress — confirm acceptable for the content),
-over HTTPS. It has no access-control role. Configure the Yandex Key and provider.
+YandexGPT Provider adds a single `yandex` AI-provider plugin to the Drupal AI module, exposing Yandex
+Cloud's **YandexGPT** foundation models for the `chat` operation type. It reuses the AI module's
+OpenAI-compatible base client, pointing it at Yandex Cloud's endpoint
+(`https://llm.api.cloud.yandex.net/v1`) and prefixing each model id with a `gpt://<catalog-id>/...`
+URI. Two settings are required: an **API key** (stored via the Key module) and a **catalog / folder
+identifier** that scopes the models to your Yandex Cloud folder. Configuration is a single admin form
+at `/admin/config/ai/providers/yandex` gated by `administer ai providers`. It depends on the AI module
+and the Key module and lives in the "AI Providers" package. The project is minimally maintained with no
+further development planned.
 
 ---
 
-- Provide a YandexGPT AI provider.
-- Enable YandexGPT models.
-- Use Drupal's AI abstraction.
-- Depend on the AI and Key modules.
-- Store the API key via the Key module (correct).
-- Not disable TLS verification.
-- Send prompts/content to Yandex (egress).
-- Confirm the egress is acceptable.
-- Use HTTPS.
-- Have no access-control role.
-- Configure the Yandex Key.
-- Handle YandexGPT.
-- Generate text.
-- Configure the provider.
-- Call Yandex.
-- Handle the integration.
-- Chat via Yandex.
-- Run YandexGPT.
-- Secure the key (Key module).
-- Provide YandexGPT.
+- Register YandexGPT as a selectable provider in the Drupal AI module.
+- Offer the YandexGPT Lite and Pro models for the `chat` operation.
+- Select between latest / RC variants of Lite and Pro (`yandexgpt-lite/latest`, `yandexgpt/rc`, etc.).
+- Route AI-module chat calls to Yandex Cloud's foundation-models endpoint.
+- Scope requests to a specific Yandex Cloud folder via the catalog identifier.
+- Authenticate to Yandex with a Key-module key.
+- Configure the API key and catalog id at `/admin/config/ai/providers/yandex`.
+- Restrict provider configuration to users with `administer ai providers`.
+- Back a chatbot block or content-generation workflow with YandexGPT.
+- Summarize, translate or rewrite content through YandexGPT.
+- Use YandexGPT as the model behind AI Automators / Agents.
+- Swap an existing AI-module chat workflow onto YandexGPT by changing the provider.
+- Keep the Yandex credential out of exported config by storing it as a Key entity.
+- Select `yandex` programmatically via `\Drupal::service('ai.provider')->createInstance('yandex')`.
+- Test YandexGPT prompts from the AI module's API Explorer.
+- Serve Russian-language AI features with a regionally hosted model.
+- Provide a fallback / alternative LLM alongside other AI-module providers.

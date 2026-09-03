@@ -1,16 +1,20 @@
 {
   "name": "Langdock Provider for Drupal AI",
   "data_name": "ai_provider_langdock",
-  "description": "A Drupal AI provider plugin for the Langdock LLM platform.",
+  "description": "A Drupal AI provider plugin that routes chat and embeddings operations to the Langdock (OpenAI-compatible) LLM platform.",
   "version": "1.0.x",
   "package": "AI",
   "composer_namespace": "drupal/ai_provider_langdock",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.2.0",
+    "drupal/key": "^1.18"
+  },
   "dependent_modules": [
-    "ai:ai"
+    "ai:ai",
+    "key:key"
   ],
   "configure": "ai_provider_langdock.settings_form",
-  "core_version_requirement": "^10.5||^11",
+  "core_version_requirement": "^10.5 || ^11.2",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_provider_langdock",
@@ -21,20 +25,20 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Integrations"
+    "Artificial Intelligence (AI)"
   ],
   "subcategories": [
-    "LLM / AI provider"
+    "AI provider abstraction / LLM gateway"
   ],
   "keywords": [
     "ai",
     "langdock",
     "llm",
     "provider",
-    "integration"
+    "openai-compatible"
   ],
   "project_description": "Delivers a Provider for Langdock Ai Platform - \"The all-in-one AI platform for your company\" - for Drupal AI module.\n\n Supported features at the moment:\n\n \n OpenAi Chat \n OpenAI Embedding \n \n Chat via Anthropic is still in progress (issue 3581405).",
   "maintenance_status": "Actively maintained",

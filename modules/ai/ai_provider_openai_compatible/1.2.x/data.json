@@ -1,16 +1,20 @@
 {
   "name": "OpenAI Compatible Provider",
   "data_name": "ai_provider_openai_compatible",
-  "description": "A Drupal AI provider for any OpenAI-compatible API endpoint (DeepSeek, local LLMs, etc.).",
+  "description": "Provider for OpenAI compatible APIs (DeepSeek, etc.).",
   "version": "1.2.x",
   "package": "AI Providers",
   "composer_namespace": "drupal/ai_provider_openai_compatible",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.2.0",
+    "drupal/key": "^1.18"
+  },
   "dependent_modules": [
-    "ai:ai"
+    "ai",
+    "key"
   ],
   "configure": "ai_provider_openai_compatible.settings_form",
-  "core_version_requirement": "^10.3||^11",
+  "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_provider_openai_compatible",
@@ -24,19 +28,19 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Integrations"
+    "Artificial Intelligence (AI)"
   ],
   "subcategories": [
-    "LLM / AI provider"
+    "AI provider abstraction / LLM gateway"
   ],
   "keywords": [
     "ai",
-    "openai",
+    "openai-compatible",
     "deepseek",
     "llm",
     "provider"
   ],
-  "project_description": "This module provides a flexible AI provider for OpenAI compatible APIs, Including\n\n \n \n\n \n DeepSeek \n SiliconFlow \n Zhipu AI (BigModel) \n Alibaba Cloud (Tongyi Qianwen) \n 01.AI (Yi) \n Moonshot AI (Kimi) \n other services that follow the OpenAI API specification \n \n \n\n Features \n \n OpenAI API Compatibility : Works with any service that implements the OpenAI API specification \n DeepSeek Support : Built-in support for DeepSeek models with example configurations \n Flexible Model Configuration : Define custom models via YAML configuration \n Dynamic Capabilities : Model capabilities are configurable per model \n Key Module Integration : Uses Drupal's Key module for secure API key storage \n \n Post-Installation \n 1. API Key Setup \n \n 1. Create a new key in the Key module (`/admin/config/system/keys/add`) \n 2. Select \"Authentication\" as the key type \n 3. Enter your API key in the \"Key value\" field \n 4. Save the key \n \n 2. Provider Configuration \n Navigate to `/admin/config/ai/providers/openai-compatible` and configure:\n\n \n API Key : Select the key you created \n API Endpoint : Enter the base URL (e.g., ` https://api.deepseek.com `) \n Models Configuration : Optional YAML configuration for custom models \n \n Configuration Fields \n \n label : Human-readable name for the model \n operation_types : Array of supported operation types (`chat`, `embeddings`, etc.) \n capabilities : Array of model capabilities (see below) \n parameters : Model-specific parameters (temperature, max_tokens, etc.) \n \n Back to top \n\n Supported Capabilities \n The module supports all capabilities defined in the AI module's `AiModelCapability` enum:\n\n \n `chat_with_image_vision`: Chat with image vision support \n `chat_with_audio`: Chat with audio support \n `chat_with_video`: Chat with video support \n `chat_system_role`: Chat with system role support \n `chat_json_output`: Chat with JSON output support \n `chat_structured_response`: Chat with structured response support \n `chat_tools`: Chat with tools/function calling support \n `chat_combined_tools_and_structured_response`: Chat with both tools and structured response \n \n Back to top \n\n Usage with DeepSeek \n DeepSeek Configuration Example \n \n 1. Get your API key from [DeepSeek Platform]( https://platform.deepseek.com/ ) \n 2. Create a key in Drupal's Key module with your DeepSeek API key \n 3. Configure the provider: \n - API Endpoint: ` https://api.deepseek.com ` \n - Use the key created above \n \n Available DeepSeek Models \n \n `deepseek-chat`: General chat model \n `deepseek-reasoner`: Advanced reasoning model with structured response support \n \n Back to top \n\n Extending for Other Providers \n To add support for other OpenAI compatible providers:\n\n \n 1. Update the YAML configuration with your provider's models \n 2. Adjust the API endpoint to your provider's URL \n 3. Configure model capabilities based on what your provider supports \n \n Additional Requirements \n \n Drupal 10.3+ or 11+ \n AI module (>= 1.2.0) \n Key module \n Back to top",
+  "project_description": "A flexible AI-module provider for any service that follows the OpenAI API specification — DeepSeek, SiliconFlow, Zhipu AI (BigModel), Alibaba Cloud (Tongyi Qianwen), 01.AI (Yi), Moonshot AI (Kimi) and similar. An administrator sets a base API endpoint URL plus an API key (stored through the Key module) and defines one or more models with their operation types, capabilities and per-model parameters via an admin form; the models can also be seeded from config. It ships with DeepSeek chat and reasoner models as defaults. Chat and any operation types the configured models declare are exposed to the AI module.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "not-covered",

@@ -12,10 +12,9 @@ whole job is to be the "adapter" between Drupal's AI abstraction and Yandex's
 cloud API. You install it, store your Yandex key securely, and then choose
 YandexGPT wherever a provider is offered.
 
-It handles secrets the right way: it depends on the **Key** module, so your
-Yandex API key or IAM credential lives as a Key entity (backed by an environment
-variable or secret store), never in plain configuration. It also keeps TLS
-verification on for its calls to Yandex.
+It depends on the **Key** module, so your Yandex API key or IAM credential lives
+as a Key entity (backed by an environment variable or secret store) rather than in
+plain configuration.
 
 **Data‑residency note:** YandexGPT is a **non‑US cloud service (Yandex,
 Russia)**. When a feature uses this provider, the prompt and content you send are

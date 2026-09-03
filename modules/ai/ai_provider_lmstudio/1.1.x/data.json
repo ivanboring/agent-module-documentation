@@ -1,16 +1,18 @@
 {
   "name": "LM Studio Provider",
   "data_name": "ai_provider_lmstudio",
-  "description": "A Drupal AI provider for LM Studio (run local LLMs).",
+  "description": "This enables the use of LM Studio for the AI module.",
   "version": "1.1.x",
   "package": "AI Providers",
   "composer_namespace": "drupal/ai_provider_lmstudio",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.2"
+  },
   "dependent_modules": [
-    "ai:ai"
+    "ai"
   ],
   "configure": "ai_provider_lmstudio.settings_form",
-  "core_version_requirement": "^10.2||^11",
+  "core_version_requirement": "^10.2 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_provider_lmstudio",
@@ -24,19 +26,19 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Integrations"
+    "Artificial Intelligence (AI)"
   ],
   "subcategories": [
-    "LLM / AI provider"
+    "AI provider abstraction / LLM gateway"
   ],
   "keywords": [
     "ai",
     "lm studio",
     "local llm",
     "provider",
-    "openai"
+    "openai-compatible"
   ],
-  "project_description": "Need a flexible AI solution you can run locally? LMStudio offers a powerful GUI and the ability to run AI models directly on your local machine for testing and development. Integrated with the AI module , LMStudio allows you to test and tweak models in a controlled environment before deploying them at scale.\n\n Features \n LMStudio offers a flexible, user-friendly GUI for testing and managing AI models locally. Perfect for developers and data scientists who want to experiment with AI models before integrating them into production, LMStudio works seamlessly with the AI module to bring your local testing workflows to life.\n\n Post-Installation \n \n Set up your API key using the Key module, pointing to your local instance of LMStudio. \n Navigate to /admin/config/ai/providers/lmstudio and link the API key you created. \n With the setup complete, you can start running and testing models directly from your local machine. \n \n Additional Requirements \n The AI module .\n\n Supporting this Module \n Support the AI module on OpenCollective .\n\n Community Documentation \n The documentation is available on https://project.pages.drupalcode.org/ai/ \n\n Back to top",
+  "project_description": "Registers a local LM Studio server as an AI provider for the Drupal AI module. LM Studio runs LLMs on a local machine behind an OpenAI-compatible HTTP API; this module points the AI module at that server (host name + optional port) so chat and embeddings operations run against locally-hosted models — useful for developers and data scientists who want to test and tweak models in a controlled environment before deploying at scale. Model discovery reads the server's /v1/models endpoint. No API key is used (a legacy api_key config value was removed by an update hook). An install hook migrates configuration from the older AI-core submodule (provider_lmstudio).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

@@ -1,29 +1,38 @@
 {
   "name": "AI Provider: Universal",
   "data_name": "ai_provider_universal",
-  "description": "A a universal multi-instance provider (servers and models as config entities) provider for the Drupal AI module.",
+  "description": "Universal multi-instance AI provider for the Drupal AI module: OpenAI-compatible servers and their models as config entities, ten+ backend plugins, plus optional smart routing, fact-check and content-governance submodules.",
   "version": "1.0.x",
   "package": "AI Providers",
   "composer_namespace": "drupal/ai_provider_universal",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.3.0",
+    "drupal/key": "^1.18"
+  },
   "dependent_modules": [
     "ai:ai",
     "key:key"
   ],
-  "configure": null,
+  "configure": "entity.ai_universal_server.collection",
   "core_version_requirement": "^11.1 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_provider_universal",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "^8.3",
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [],
-  "provides_permissions": true,
-  "provides_drush_commands": false,
+  "submodules": [
+    "ai_provider_universal_factcheck",
+    "ai_provider_universal_governance",
+    "ai_provider_universal_router"
+  ],
+  "provides_permissions": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "AiServerBackend (server backend plugins, Plugin/AiServerBackend)"
+  ],
   "categories": [
     "Artificial Intelligence (AI)"
   ],
@@ -34,10 +43,13 @@
     "ai",
     "provider",
     "llm",
-    "a",
-    "gateway"
+    "gateway",
+    "openai-compatible",
+    "multi-instance",
+    "ollama",
+    "routing"
   ],
-  "project_description": "Universal AI Provider is an enterprise-grade multi-instance provider for the Drupal AI ecosystem. It allows you to seamlessly mix local LLM engines (llama.cpp, Ollama, vLLM) and commercial cloud APIs (OpenRouter, Groq, Fireworks, Hugging Face, xAI/Grok, amazee.ai, LiteLLM) under a unified configuration framework.\n\n It brings cost-aware model routing, claim-level fact-checking, AI & plagiarism detection, and EU AI Act (Art. 50) compliance tools directly into Drupal without requiring core patches.\n\n \n Key Features \n \n Multi-Server & Multi-Key Architecture: Run multiple local and cloud server instances concurrently. Each server entity manages its own API keys, timeouts, model filters, and daily budget/rate limits. \n Models as Configuration: Discovered models are stored as exportable ai_universal_model entities. Configure cost rates, quality tiers, context limits, sampling parameters, and capability tags per model. \n Standard-Compliant Naming: Uses dot-separated entity IDs ( server.model ) for 100% compatibility with Drupal AI core and ai_search out of the box. \n Extensible Plugin API: Build custom backends using AiServerBackend plugins without modifying the multi-server UI or routing engine. \n \n \n Video Demo \n \n\n Watch: Drupal AI Factchecker — Claim-Level Fact-Checking on AMD (ROCm + vLLM) (2 min) \n\n \n Supported Backends (10) \n \n \n \n Backend Plugin \n Primary Target \n Features & Metadata \n \n \n \n \n openai_compatible \n llama.cpp, vLLM, LM Studio, OpenAI REST API \n Custom base URLs, manual cost/context configuration. \n \n \n ollama \n Local Ollama instances \n Auto-enriches model metadata via /api/show ; zero-cost routing defaults. \n \n \n ollama_cloud \n ollama.com \n Cloud catalog integration with manual routing metadata. \n \n \n openrouter \n OpenRouter API \n Dynamic model catalog, automatic pricing sync, and fallback routing. \n \n \n groq \n Groq Cloud LPU \n High-speed inference, context/token rate limit tracking. \n \n \n fireworks \n Fireworks AI \n Serverless LLM deployment catalog integration. \n \n \n huggingface \n Hugging Face Dedicated Endpoints / TGI \n Custom model endpoint support. \n \n \n grok_xai \n xAI (Grok) \n Native Grok API integration. \n \n \n amazee_ai \n amazee.ai \n Enterprise-hosted AI backend support. \n \n \n litellm \n LiteLLM Proxy \n Unified proxy routing across 100+ LLMs. \n \n \n \n \n Submodules \n \n Smart Router ( ai_universal_router ): Defines virtual Auto: ... models that route requests dynamically to the cheapest capable model, featuring automated failover on rate/budget limits. \n Fact Check, Plagiarism & Content Review ( ai_universal_factcheck ): Conducts claim verification against local indexed corpus or web evidence, AI writing detection, verbatim plagiarism search, scheduled node scans, and coverage report flags for bias detection. \n Content Governance ( ai_universal_governance ): Assists with EU AI Act (Art. 50) obligations by attaching guardrails, generating AI provenance metadata, and adding machine/human-readable content disclosures. \n \n \n ECA & Automation Integration \n All submodules integrate with the ECA (Event-Condition-Action) ecosystem out of the box:\n\n \n Trigger automated workflows when a fact-check scan flags unverified claims. \n Block or flag publishing workflows if plagiarism or AI-content thresholds are exceeded. \n Attach provenance and disclosure metadata automatically upon node save. \n \n \n Requirements & Compatibility \n \n Drupal: ^11.1 || ^12 \n PHP: ^8.3 \n Drupal AI Core: ^1.3 \n Patches Required: None \n \n \n Quick Start \n # Install via Composer\ncomposer require drupal/ai_provider_universal\n\n# Enable module and submodules\ndrush en ai_provider_universal ai_universal_router ai_universal_factcheck ai_universal_governance\n\n# Run database updates (if upgrading from 1.0.0-beta1)\ndrush updb\n Back to top",
+  "project_description": "AI Provider: Universal is a multi-instance provider plugin ('universal') for the Drupal AI (drupal/ai) ecosystem. Instead of one hard-coded endpoint, it models each remote inference service as an ai_universal_server config entity (backend plugin id, host/port, Key-entity API key, timeout, operation-type filter, per-server daily request/token limits) and each discovered model as an ai_universal_model config entity (cost rates, quality tier, context length, sampling and extra-parameter overrides, capability tags). It ships a plugin type, AiServerBackend, with twelve implementations covering OpenAI-compatible servers (llama.cpp, vLLM, LM Studio, Ollama, Groq, OpenRouter, Fireworks, Hugging Face, LiteLLM, DeepSeek, amazee.ai, xAI/Grok) and a native Anthropic Messages backend; other modules can contribute further backends without patching the module. Model entity ids use dot-separated 'server.model' form for compatibility with AI core and ai_search. API credentials are always resolved through the Key module. Three optional submodules add value on top of the provider: ai_provider_universal_router (cost-aware smart routing to the cheapest capable model with a decision log), ai_provider_universal_factcheck (claim-level fact verification, AI-writing and plagiarism detection, scheduled node scans) and ai_provider_universal_governance (AI Act Art. 50 transparency: guardrail defaults, disclosure suffixes, AI-origin provenance events). Requires Drupal ^11.1 || ^12, PHP ^8.3, drupal/ai ^1.3 and drupal/key.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
