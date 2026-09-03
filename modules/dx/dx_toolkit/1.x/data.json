@@ -3,7 +3,7 @@
   "data_name": "dx_toolkit",
   "description": "Developer utilities for Drupal developers: plugin systems, enhanced core utilities, and service helpers.",
   "version": "1.x",
-  "package": null,
+  "package": "DX",
   "composer_namespace": "drupal/dx_toolkit",
   "composer_requirements": {},
   "dependent_modules": [],
@@ -13,7 +13,7 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/dx_toolkit",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [
@@ -21,22 +21,26 @@
   ],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "entity_generator",
+    "service_injector"
+  ],
   "categories": [
     "Developer tools"
   ],
   "subcategories": [
-    "Utilities"
+    "Plugin system",
+    "Code generation / scaffolding"
   ],
   "keywords": [
     "dx",
-    "developer",
-    "toolkit",
-    "plugin",
+    "developer tools",
+    "plugin system",
+    "service injection",
     "utilities"
   ],
-  "project_description": "DX Toolkit provides reusable developer primitives—standardized patterns and plugin systems that improve code quality and reduce boilerplate in Drupal custom module development. Now available as a beta release for community testing.\n\n \n EntityGenerator plugin system for programmatically creating companion configuration entities. Solves use cases like:\n \n Generating a View Mode for every bundle of a custom entity type. \n Generating a REST Resource configuration for every Content Type \n Generating a Feed Type for every Taxonomy Vocabulary. \n \n \n FeedTypeGenerator base plugin provides specialized support for the Feeds ecosystem, handling both Feed Type and Feed entity creation and import. \n \n \n ServiceInstance pattern for self-identifying services with inline instantiation support.\n \n ServiceInstanceInterface requires implementing classes to declare their service name, enabling MyService::getService() syntax. \n ServiceInstanceTrait provides the implementation, allowing IDE autocompletion like MyService::getService()->someMethod() in static contexts. \n Simplifies testing by making mock container injection straightforward. \n \n \n Plugin enhancements via extended base classes for annotation plugin definitions and plugin manager definition.\n \n PluginManager includes additional methods:\n \n createInstances : Returns all plugin instances, optionally filtered by base plugin ID. \n getPluginDerivatives : Returns all definitions for a base plugin ID. \n createDerivativeInstances : Returns all plugin instances for a base plugin ID \n optionLabels : Returns id/label arrays for use in FAPI #options properties. \n \n \n PluginManagerPropertyQueryInterface / PluginManagerPropertyQueryTrait pair for returning definitions by property values from plugin manager. Gives plugin managers capability similar to entity storage handler's loadByProperties method.\n \n \n \n Core utility extensions that add production-tested functionality to Drupal's component layer.\n \n Environment utility class extends \\Drupal\\Component\\Utility\\Environment with enhanced CLI detection. \n Color utility class extends Drupal\\Component\\Utility\\Color with hex normalization, luminance calculations, and contrast checking (YIQ, luminance, 50% algorithms). \n Json utility class extends Drupal\\Component\\Serialization\\Json with control character removal and BOM stripping for malformed JSON handling. \n \n \n \n General purpose utilities :\n \n ArrayUtilities class \n \n arrayKeysCombined : Combines keys from two arrays into key/value pairs. \n arrayMapMerged : Provides one-level flattening of the results returned from the provided array_map callback. \n arrayFlattenRecursive : Provides recursive flattening of the results returned from the provided array_map callback. \n arrayKeyColumn : Derivative of array_column() function that maintains parent key associations. \n arraySortByKeys : Sorts one array by the keys of another. \n \n AsArrayTrait provides a simple trait for ensuring a value is always an array. \n OptionsGenerator that generates key/label arrays from an array of entities or a storage handler. \n StateBase provides an OO wrapper for the State key/value store. \n ExtensionBase provides extension-specific metadata. \n \n \n \n Demo Module: The included dx_toolkit_demo submodule provides working implementations of all plugin systems and patterns. Enable it to see concrete examples of ServiceInjector plugins with derivers, EntityGenerator implementations , and ServiceInstance pattern usage. Use these as templates for your own projects.\n\n Note: This is a Beta release intended for community testing. The plugin systems and utilities have been used in production environments. Please report any bugs or feature requests to the issue queue.",
+  "project_description": "DX Toolkit is a code-only developer library for building Drupal custom and contrib modules. It ships no routes, permissions, blocks, or configuration UI; instead it provides reusable PHP primitives that reduce boilerplate. Its EntityGenerator plugin system (annotation @EntityGenerator, manager plugin.manager.entity_generator, base EntityGeneratorBase, and the EntityTypeSourceEntityDeriver) programmatically creates companion configuration entities across the bundles of a source entity type, with a FeedTypeGeneratorBase specialization for the Feeds ecosystem. It defines a @ServiceInjector annotation describing a factory-based auto-service pattern (the demo submodule contains example plugins for it). It also adds a ServiceInstance pattern (ServiceInstanceInterface / ServiceInstanceTrait for MyService::getService() static access), extended plugin base classes and managers (PluginManager with createInstances/getPluginDerivatives/optionLabels, plus a PluginManagerPropertyQueryTrait findByProperties helper), an OO wrapper over core State (StateBase), and hardened extensions of core component utilities: Color (hex normalization, luminance, YIQ / 50% / luminance contrast selection), Json (control-character and BOM stripping), Environment (CLI detection), ArrayUtilities, OptionsGenerator, EntityFieldPropertyAdapter, and the Extension helper. The bundled dx_toolkit_demo submodule demonstrates the ServiceInjector pattern. This is a beta release intended for community testing.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

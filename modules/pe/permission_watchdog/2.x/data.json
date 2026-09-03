@@ -1,5 +1,5 @@
 {
-  "name": "Permission Watchdog",
+  "name": "Permission watchdog",
   "data_name": "permission_watchdog",
   "description": "Log changes to role permissions.",
   "version": "2.x",
@@ -7,7 +7,7 @@
   "composer_namespace": "drupal/permission_watchdog",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "permission_watchdog.settings",
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -15,25 +15,30 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/devel": "Provides the 'Role change' devel-generate plugin to create sample role_change_log entries for testing the report."
+  },
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Administration"
+    "Administration tools",
+    "Security"
   ],
   "subcategories": [
-    "Logging / audit"
+    "Audit trail / activity logging",
+    "User roles & permissions"
   ],
   "keywords": [
     "permissions",
+    "roles",
     "audit",
     "log",
-    "roles",
     "security",
-    "watchdog"
+    "change tracking",
+    "role change log"
   ],
   "project_description": "Permission watchdog logs all changes to permissions on roles so an administrator can audit the entire history of changes to permissions. This is useful for sites or applications which have security audit requirements to illustrate what permissions a role had at any given point in time.\n\n Related modules \n \n Role watchdog - tracks changes to users' roles. \n Role change notify - notifies users when their role has changed.",
   "maintenance_status": "Minimally maintained",

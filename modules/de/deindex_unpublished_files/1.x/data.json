@@ -1,16 +1,16 @@
 {
   "name": "Deindex Unpublished Files",
   "data_name": "deindex_unpublished_files",
-  "description": "Moves unpublished media files to private and restores them when published. Adds noindex handling.",
+  "description": "Moves an unpublished media entity's file to private storage (or renames it .ht_) and restores it on publish, so unpublished files stop being publicly downloadable.",
   "version": "1.x",
-  "package": "Access control",
+  "package": "SEO",
   "composer_namespace": "drupal/deindex_unpublished_files",
   "composer_requirements": {},
   "dependent_modules": [
     "drupal:file",
     "drupal:media"
   ],
-  "configure": null,
+  "configure": "deindex_unpublished_files.settings",
   "core_version_requirement": "^10.3 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
@@ -22,23 +22,27 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Access control"
+    "Access control",
+    "Search engine optimization (SEO)"
   ],
   "subcategories": [
-    "Private file access"
+    "Media access control",
+    "Unpublished content access",
+    "Search engine indexing"
   ],
   "keywords": [
     "unpublished",
+    "media",
     "files",
     "private",
-    "media",
-    "access",
-    "download"
+    "deindex",
+    "noindex",
+    "access"
   ],
-  "project_description": "The Deindex Unpublished Files module ensures that files associated with unpublished media are not publicly accessible. It achieves this either by adding a prefix to the file URL or by moving the file to the private files directory (private://unpublishedfiles), helping protect unpublished files from being exposed or indexed by search engines.\n\n The module functions only with media types that include a file field.\n\nIt also provides a \"Unpublish media by usage page\" at /admin/content/deindex-unpublished-files/unpublished-media that lists media usage (unpublished nodes, published nodes, and other entities) to help identify items that should be unpublished. Rows highlighted in light red indicate media that is only used in unpublished content.\n\n Installation \n\n Place the deindex_unpublished_files module folder into modules/contrib.\n\n Clear Drupal caches if necessary.\n\n Visit the configuration form at:\n\nConfiguration → Media → Unpublished files settings (if the module is enabled).\n\n Configuration \n\n Choose the method to make unpublished media files inaccessible:\n\n Prefix method: Adds a URL prefix to prevent access.\n\n Private files method: Moves the file to a private directory (private://unpublishedfiles).",
+  "project_description": "Deindex Unpublished Files targets a long-standing Drupal gap: unpublishing a media entity hides the media, but the underlying file, if stored in public://, remains directly downloadable at its URL. This module reacts to the media publish-state change (hook_media_presave) and physically relocates the file so it is no longer served publicly. Two operator-selectable modes exist: 'move' relocates unpublished public:// files into private://unpublishedfiles/ (served only through Drupal's file-access checks) and moves them back to public:// on republish; 'prefix' renames the file with a leading .ht_ (a dotfile blocked by Drupal's default .htaccess / recommended nginx rules) and strips the prefix on republish. It only affects media types that contain a file, image, or svg_image field. The module also ships an admin 'Media usage overview' page (Content > Unpublish media by usage) backed by a MediaUsageInspector service that scans nodes and other content entities (including CKEditor embeds, paragraphs, and revision references) to find media used only by unpublished content, with a bulk-unpublish action. Despite the SEO-sounding name and package, the mechanism is physical file relocation, not an HTTP header: the module does NOT emit an X-Robots-Tag header and does NOT implement hook_file_download, so it does not itself make any file-access grant/deny decision.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

@@ -3,7 +3,7 @@
   "data_name": "commerce_promo_link",
   "description": "Apply a promo code via URL.",
   "version": "2.x",
-  "package": "Commerce",
+  "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_promo_link",
   "composer_requirements": {},
   "dependent_modules": [
@@ -21,13 +21,13 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Commerce"
+    "E-commerce"
   ],
   "subcategories": [
-    "Promotions"
+    "Promotions / discounts"
   ],
   "keywords": [
     "commerce",
@@ -36,7 +36,7 @@
     "promo link",
     "discount"
   ],
-  "project_description": "This module allows to apply a promotion code / coupon code using an URL.\n\n Usage with an URL providing a coupon code: \n /commerce/promotion/{code} \n\n Example URL with promotion code \"10-TEST\" \n http://drupal.local/commerce/promotion/10-TEST \n\n All requests without destination will be redirected to front page.\n\n Example URL with destination \n http://drupal.local/commerce/promotion/10-TEST?destination=/node/2 \n\n Back to top",
+  "project_description": "Commerce Promo Link lets a shareable URL, /commerce/promotion/{code}, place a Drupal Commerce promotion coupon code into the visitor's private tempstore so it is applied automatically to their cart. Requires commerce_promotion. The controller validates the coupon (exists, enabled, within usage limits and start/end date windows) and, on success, shows a message and redirects to the front page (or to a core-sanitized ?destination). An order event subscriber then writes the single coupon onto the draft cart order on the next add-to-cart / cart / node / product page view, and a 'promo_link_only' Commerce condition can restrict a promotion so it applies only when it arrived through such a link.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
