@@ -3,14 +3,14 @@
   "data_name": "daxko",
   "description": "Provides a basic Daxko integration.",
   "version": "1.x",
-  "package": null,
+  "package": "YMCA Website Services",
   "composer_namespace": "drupal/daxko",
   "composer_requirements": {},
   "dependent_modules": [
-    "openy_socrates:openy_socrates",
-    "openy_mappings:openy_mappings"
+    "openy_socrates",
+    "openy_mappings"
   ],
-  "configure": null,
+  "configure": "daxko.settings",
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -20,21 +20,21 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Web services"
+    "Integrations"
   ],
   "subcategories": [
-    "Membership integration"
+    "CRM integration"
   ],
   "keywords": [
     "daxko",
     "ymca",
+    "openy",
     "membership",
-    "integration",
     "api"
   ],
   "project_description": "🇺🇦 \n \n This module is maintained by Ukrainian developers.\n\nPlease consider supporting Ukraine in a fight for their freedom and safety of Europe. \n \n \n Initial Daxko CRM integration, created for Open Y distribution\n\n ### How to cache membership data\n\n ```\n\ndrush ev '\\Drupal::service(\"daxko.data_wrapper\")->populateDaxkoMembershipTypes();'\n\n```\n\n ### How to remove all membership data.\n\n ```\n\ndrush ev '\\Drupal::service(\"daxko.data_wrapper\")->deleteMembershipTypeMappings();'\n\n```",

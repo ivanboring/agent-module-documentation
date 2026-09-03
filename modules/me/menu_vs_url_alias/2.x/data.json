@@ -1,13 +1,13 @@
 {
-  "name": "Menu vs URL Alias",
+  "name": "Menu vs. URL Alias",
   "data_name": "menu_vs_url_alias",
   "description": "Adds conditional validation between the Menu Item vs. URL Alias vertical tabs on node forms for specific content types.",
   "version": "2.x",
-  "package": null,
+  "package": "Path",
   "composer_namespace": "drupal/menu_vs_url_alias",
   "composer_requirements": {},
   "dependent_modules": [
-    "pathauto:pathauto"
+    "pathauto"
   ],
   "configure": null,
   "core_version_requirement": "^9 || ^10 || ^11",
@@ -21,20 +21,21 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content"
+    "Content editing experience"
   ],
   "subcategories": [
-    "URL aliases"
+    "Field validation",
+    "Navigation menus"
   ],
   "keywords": [
     "menu",
     "url alias",
     "validation",
-    "navigation",
-    "consistency"
+    "pathauto",
+    "node form"
   ],
   "project_description": "Connects the stock URL alias and menu settings tabs on node edit forms. If the menu item is enabled, the vertical tab and fields related to the alias will be hidden; conversely, if the menu item is not enabled, a custom alias is required. \n\n The goal of this module is to enforce better URL naming conventions by forcing content editors to pick between either menu-based paths (most likely using Pathauto ) or a completely custom path that does not rely on the menu. For best results, it's recommended to also hide the URL alias tab (using a module like Simplify , perhaps) for content types that rely on a fixed pattern, although there are no additional dependencies to require this specific convention.\n\n To enable this functionality, edit a content type and enable the feature on the \"Menu vs URL Alias\" vertical tab.",
   "maintenance_status": "Actively maintained",

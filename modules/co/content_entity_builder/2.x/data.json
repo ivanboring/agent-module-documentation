@@ -17,24 +17,28 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "base_field_config"
+  ],
   "categories": [
     "Developer tools"
   ],
   "subcategories": [
-    "Entity building"
+    "Code generation / scaffolding",
+    "Entity API"
   ],
   "keywords": [
     "content entity",
-    "builder",
-    "ui",
+    "entity type builder",
+    "base fields",
     "code generation",
-    "entity"
+    "scaffolding",
+    "eck alternative"
   ],
-  "project_description": "Always Clear the cache if you have problem with this module. \n Content Entity Builder, this module allow you build a content entity type and add base field to it by config.It also support export you content entity to module code and download it.\n\n Features: \n Bundles，revision, translatable, Owner are supported since beta14, both of them are optional.We add a Mode option for custom entity type since beta14, it has 4 options:\n\n \n Basic : the original way , One entity One table, keep your database table clean. \n Basic Plus : Basic + bundles support. \n Advanced : + bundles + translatable + Owner + Changed + Published \n Full : a custom content type like node, Advanced + revision. \n \n How to use it \n \n Add a content entity type at admin/structure/content-types, for example \"author\", select mode \"Basic\", \n at admin/structure/content-types/manage/author, add base field to it, for example \"Name\", \"Age\", \"Description\" \n config entity type settings, include entity keys, entity paths. Make sure you know what you do. \n Click Save button! It will sync your config with database table \n If you select other mode option, you could see a \"Bundles\" tab, Click it you could manage the bundles of the entity type. \n Manage form display at admin/structure/content-types/manage/author/form-display, manage display at admin/structure/content-types/manage/author/display \n Add content at \"/author/add\", the path you could config \n Config entity permission at admin/people/permissions \n Click export tab, you could navigate to admin/structure/content-types/export,at here you could export your content entities to module code. It save you a lot time to create a custom content entity module. \n \n Similar modules: \n ECK \n\n Back to top",
+  "project_description": "Content Entity Builder lets you build a custom content entity type and add base fields to it entirely through the admin UI, storing the definition as a config entity and applying it to the database on save. Four modes control the shape of the entity type: Basic (one entity, one table, no bundles), Basic Plus (adds bundles), Advanced (adds bundles, translatability, owner, changed and published), and Full (adds revisions, like a node). At runtime the entity types are registered dynamically in memory via hook_entity_type_build; nothing is written to your codebase. Base fields are provided by a pluggable BaseFieldConfig plugin type covering string, text (plain/long/formatted), integer, decimal, float, boolean, email, telephone, datetime, timestamp, created, changed, entity reference and list fields. An optional Export feature scaffolds a real Drupal module (entity classes, forms, access handlers, routing, permissions) from your content types and hands it to you as a downloadable .tar.gz, so you can graduate a prototyped entity type to hand-maintained code. Similar to ECK.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
