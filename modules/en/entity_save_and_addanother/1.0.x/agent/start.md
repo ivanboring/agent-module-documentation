@@ -22,8 +22,8 @@ button only appears on the *add* route (not edit) because each alter matches the
 - Core: `^8 || ^9 || ^10 || ^11`. Package: `Other`. Installed version: `1.0.2`.
 - No settings page (`configure` is `null`), no permissions, no Drush, no config schema, no plugin
   types, no libraries, no templates. Installing the module enables the feature site-wide.
-- Access: reuses core's own submit button and the entity's create access — no new access surface,
-  and Drupal form API supplies the CSRF token. No security surface.
+- Access: reuses core's own submit button and the entity's create access; adds no new route,
+  permission, or access check of its own.
 
 ## Key facts (real machine names)
 
@@ -48,6 +48,6 @@ button only appears on the *add* route (not edit) because each alter matches the
   `edit-entity-save-and-addanother-menu`, `edit-entity-save-and-addanother-block`,
   `edit-actions-entity-save-and-addanother-commerce-product`.
 - Redirect target: `Url::fromUserInput($current_path)` — the current internal add path (an entity
-  add route only; the `destination` query param is stripped, so no open redirect).
+  add route only); the handler strips the `destination` query param before redirecting.
 
 There are no further agent docs — the whole module is the single file above.

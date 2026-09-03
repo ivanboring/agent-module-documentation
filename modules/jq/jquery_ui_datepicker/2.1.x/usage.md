@@ -1,28 +1,26 @@
-jQuery UI Datepicker packages the (removed-from-core) jQuery UI Datepicker asset library as a Drupal library other modules and themes can depend on and attach.
+Provides the deprecated-from-core jQuery UI Datepicker widget as the Drupal asset library `jquery_ui_datepicker/datepicker`.
 
 ---
 
-jQuery UI was deprecated and progressively removed from Drupal core, so any module or theme that still relies on the `jquery.ui.datepicker` widget needs the library provided elsewhere. This module supplies exactly that: it defines a Drupal asset library for the jQuery UI Datepicker component and depends on the base `jquery_ui` module (which vendors the core jQuery UI files). It has no configuration UI, no permissions, no services and no PHP API of its own — you enable it and then attach its library from a render array, form element, or a theme's `*.libraries.yml`. This keeps legacy datepicker functionality working on Drupal 9.2+, 10 and 11 without pinning the whole site to core's removed copy. It is a lightweight compatibility shim, typically pulled in as a dependency by other contrib modules rather than installed directly. Because it is a thin library wrapper, upgrades mostly track the underlying `jquery_ui` package.
+`jquery_ui_datepicker` is a tiny compatibility shim. Drupal core removed the bundled jQuery UI asset libraries (they are deprecated and unmaintained upstream), so any theme or module that still calls `.datepicker()` or referenced the old `core/jquery.ui.datepicker` library needs another source for those assets. Enabling this module (which depends on the `jquery_ui` base module) makes the library `jquery_ui_datepicker/datepicker` available; attach it via a render array's `#attached[library]` or list it as a dependency in your own `*.libraries.yml`. The module ships no PHP, routes, permissions, configuration, or services — the base `jquery_ui` module declares the library and serves the JS/CSS (jQuery UI 1.13.2) on its behalf. Note jQuery UI is End-of-Life; treat this as a migration bridge and plan a modern replacement (e.g. a native `<input type="date">` or a maintained date-picker) for new work.
 
 ---
 
-- Keep a legacy jQuery UI datepicker working after core removed it.
-- Provide the `#datepicker` behavior for a custom form date field.
-- Attach the datepicker library from a module's render array via `#attached`.
-- Depend on it from another contrib module that needs a datepicker.
-- Add a calendar popup to a custom JavaScript widget.
-- Satisfy a theme that still calls `$.fn.datepicker()`.
-- Support date selection UI on Drupal 9.2/10/11 without core's copy.
-- Provide the asset for a Views exposed date filter that uses jQuery UI.
-- Enable inline calendar pickers in an admin form.
-- Back a contrib module (e.g. an older date/calendar module) that requires it.
-- Attach the library from `hook_page_attachments()` for site-wide availability.
-- Reference the library in a theme `*.libraries.yml` dependency.
-- Localize the datepicker via the bundled jQuery UI i18n assets.
-- Migrate a Drupal 7/8 feature relying on jQuery UI datepicker forward.
-- Avoid bundling your own copy of jQuery UI in a custom module.
-- Provide date range selection UIs built on the jQuery UI widget.
-- Add a datepicker to a custom Form API element type.
-- Keep contributed webform/date widgets functional during upgrades.
-- Share one vendored jQuery UI copy across many modules via `jquery_ui`.
-- Ensure consistent datepicker markup/styling across a legacy site.
+- Restore a datepicker calendar on an existing theme/module that broke after upgrading to a Drupal core version without bundled jQuery UI.
+- Replace a deprecated `core/jquery.ui.datepicker` library reference with `jquery_ui_datepicker/datepicker` in a custom module.
+- Replace a deprecated `core/jquery.ui.datepicker` reference in a custom or contrib theme's `*.libraries.yml`.
+- Attach the datepicker library to a specific render array so the calendar loads only on pages that need it.
+- Provide the datepicker assets required by a contrib module that still depends on jQuery UI Datepicker.
+- Add an inline calendar to a `<div>` on a custom admin form or report page.
+- Add a pop-up calendar to a plain text input in a custom form without pulling in an unrelated widget library.
+- Enable min/max date ranges, disabled dates, or number-of-months options via jQuery UI Datepicker's own JS API after attaching the library.
+- Localize the calendar (first day of week, RTL, translated month/day names) by also enabling core's `locale` module — the base module then wires `jquery_ui/locale` and Drupal locale settings into the datepicker library automatically.
+- Style the calendar with the bundled base theme CSS (`datepicker.css`) that ships with the library.
+- Keep a legacy date-entry UI working during a phased migration off jQuery UI.
+- Support a Webform or custom form element that expects the jQuery UI datepicker JS to be present.
+- Provide datepicker assets to a JavaScript behavior (`Drupal.behaviors`) that initializes calendars on `.js-datepicker` fields.
+- Load the datepicker widget alongside other jQuery UI shims (slider, resizable) that share the same `jquery_ui` base dependency.
+- Ensure a date field's client-side calendar renders consistently across Drupal 9.2, 10, and 11.
+- Vet a site's jQuery UI dependency surface by seeing exactly which widget (datepicker) a module pulls in.
+- Ship a lightweight dependency (only `drupal/jquery_ui`) rather than re-vendoring jQuery UI assets in your own project.
+- Give agents/tools a stable library name to attach when a task requires a jQuery UI calendar on a Drupal page.

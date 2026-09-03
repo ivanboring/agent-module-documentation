@@ -13,7 +13,7 @@
     "jquery_ui:jquery_ui"
   ],
   "configure": null,
-  "core_version_requirement": "^9.2 || ^10 || ^11",
+  "core_version_requirement": "^9.2 || ^10 || ^11 || ^12",
   "active_installs": 97215,
   "list_position": 30,
   "project_url": "https://www.drupal.org/project/jquery_ui_touch_punch",
@@ -42,10 +42,10 @@
     "draggable",
     "sortable",
     "slider",
-    "library",
-    "javascript"
+    "resizable",
+    "javascript library"
   ],
-  "project_description": "Drupal 8 includes jQuery UI in core, however it is no longer actively\n\nmaintained and has been marked deprecated. This module provides the\n\njQuery UI Touch Punch library for any themes and modules that require it.\n\n \n jQuery UI Touch Punch documentation \n jQuery UI Touch Punch API\n\ndocumentation \n \n Caution : jQuery UI was deprecated from core because it is no longer\n\nactively maintained, and has been marked “End of Life” by the OpenJS\n\nFoundation. It is not recommended to depend on jQuery UI in your own\n\ncode, and instead to select a replacement solution as soon as possible.\n\n Installation \n The module can be installed via the standard Drupal installation process. \n\n Requirements \n \n jQuery UI \n \n Related modules \n \n jQuery UI Accordion \n jQuery UI Button \n jQuery UI Checkboxradio \n jQuery UI Controlgroup \n jQuery UI Draggable \n jQuery UI Droppable \n jQuery UI Effects \n jQuery UI Menu \n jQuery UI Progressbar \n jQuery UI Selectable \n jQuery UI Selectmenu \n jQuery UI Slider \n jQuery UI Spinner \n jQuery UI Date Picker \n \n Maintainers \n \n\nThis module is maintained by developers at Morpht . For more information on the company and our offerings, see morpht.com .\n\n Back to top",
+  "project_description": "Provides the jQuery UI Touch Punch shim library so jQuery UI mouse-based widgets (draggable, droppable, sortable, slider, resizable, selectable) respond to touch events on mobile/tablet devices. Drupal core deprecated and removed the bundled jQuery UI libraries (change record https://www.drupal.org/node/3067969); this module declares the touch-punch library on top of the jquery_ui base module for any theme or module that still uses jQuery UI interactions. Beyond the jquery_ui base module it requires the external politsin/jquery-ui-touch-punch package, whose minified JS is served from /libraries/jquery-ui-touch-punch/. The module ships only a hook_help() implementation — no routes, permissions, config, services, or entities. jQuery UI is End-of-Life; the project recommends selecting a modern replacement rather than depending on jQuery UI in new code. Maintained by Morpht.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

@@ -1,3 +1,4 @@
+<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Views Core Entity Reference (views_core_entity_reference) — agent index
 
 Zero-config glue module: opts Views into Drupal Core's built-in `entity_reference` filter plugin for
@@ -8,11 +9,12 @@ entity-reference field's Views `filter.id` at Core's existing `entity_reference`
 the behaviour applies site-wide automatically; there is nothing to configure.
 
 - Depends on: `drupal:views`. Core: `^10.2 || ^11` (needs a Core with the `entity_reference` Views
-  filter — 10.2+/10.4.x/11.x). Package: `Views`.
+  filter — 10.2+/10.4.x/11.x). Package: `Views`. License GPL-2.0-or-later. Version 1.0.0-alpha3.
 - No settings page / `configure` route, no permissions, no services, no config schema, no plugin
-  types, no Drush, no libraries. Whole runtime surface is three hooks in two files. No sub-docs
-  warranted.
-- No security surface.
+  types, no Drush, no libraries, no composer.json. Whole runtime surface is three hooks in two files.
+
+- **The mechanism, the install migration, and how to operate it** →
+  [views/entity-reference-filter.md](views/entity-reference-filter.md)
 
 ## Key facts (real machine names)
 

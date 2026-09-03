@@ -1,3 +1,4 @@
+<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Git Deploy (git_deploy) — agent index
 
 Zero-config utility for sites run from **Git checkouts** of core/contrib. When Drupal.org packages a
@@ -30,9 +31,11 @@ URL), and `datestamp`/`_info_file_ctime` (the commit's `%at`). `hook_update_proj
   at install and at `/admin/reports/status`.
 
 ## What you'd do → where
-Nothing to configure or extend — there are no topic files because there is no operable surface. To
-use it: `drush en git_deploy -y`, then confirm Git-checked-out projects report real versions at
-`/admin/reports/updates`. To debug: check `/admin/reports/status` for the `git`/`exec()` requirement.
+Nothing to configure — there is no settings page, route, or plugin. The only substance is the
+version-detection algorithm and how to make it fire, documented in
+[api/version-detection.md](api/version-detection.md). To use it: `drush en git_deploy -y`, then
+confirm Git-checked-out projects report real versions at `/admin/reports/updates`. To debug: check
+`/admin/reports/status` for the `git`/`exec()` requirement.
 
 ## Key facts (real machine names)
 - Hooks implemented: `hook_system_info_alter()`, `hook_update_projects_alter()` (`git_deploy.module`);

@@ -1,4 +1,5 @@
-# Admin Login Path — agent index
+<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
+# Admin Login Path (admin_login_path) — agent index
 
 Zero-config theming helper. Flags core account routes as admin routes so login/register/
 password/cancel pages render with the **administration theme**. No settings, no permissions
@@ -7,8 +8,8 @@ call or configure.
 
 Key facts (whole module is ~4 tiny files — this index replaces reading them):
 - **Does NOT relocate/hide `/user/login`.** The name is misleading: it only changes the
-  *theme* of the account pages. It is not a login-path obscuring or protection module, adds
-  no access restriction, and creates no lockout or bypass risk.
+  *theme* of the account pages. It is not a login-path obscuring or protection module and adds
+  no access restriction.
 - Mechanism: `src/Routing/RouteSubscriber.php` (service `admin_login_path.route_subscriber`,
   tagged `event_subscriber`) iterates routes in `alterRoutes()` and calls
   `$route->setOption('_admin_route', TRUE)` on: `user.login`, `user.register`, `user.pass`,

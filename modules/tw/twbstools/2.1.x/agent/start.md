@@ -1,9 +1,13 @@
+<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Bootstrap tools (twbstools) — agent index
 
 Companion to the **Bootstrap 5 theme** (`bootstrap5`). Adds exactly one thing: a Bootstrap 5
 **style guide / cheatsheet** page at `/styleguide` that renders every Bootstrap 5 component on a
 single page, styled with the site's own Bootstrap assets, so editors and developers can preview the
-theme's markup and classes. There is nothing to configure — this file is the complete reference.
+theme's markup and classes. There is nothing to configure.
+
+- **The `/styleguide` page — route, controller, asset library, how it renders, operating notes** →
+  [pages/styleguide.md](pages/styleguide.md)
 
 The single route `twbstools.styleguide.render` (`/styleguide`) is handled by
 `StyleguideController::render()` (`src/Controller/StyleguideController.php`). The controller

@@ -14,7 +14,9 @@
   "project_url": "https://www.drupal.org/project/jquery_ui",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "jquery-ui 1.13.2"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
@@ -24,19 +26,21 @@
   "categories": [
     "Developer tools"
   ],
-  "subcategories": [],
+  "subcategories": [
+    "jQuery UI libraries"
+  ],
   "keywords": [
     "jquery",
     "jquery ui",
     "javascript",
-    "library",
-    "assets",
+    "asset library",
+    "libraries",
     "frontend",
-    "ui widgets",
+    "core replacement",
     "deprecated",
-    "core replacement"
+    "hook_library_info_alter"
   ],
-  "project_description": "A wrapper module around the jQuery UI effects library that lets module developers add swooshy, swishy effects to their code.\n\n See http://jqueryui.com/demos for some examples of what jQuery UI can do.\n\nSee http://jqueryui.com/docs for documentation on how to use it.\n\nSee http://jqueryui.com/support if you need help getting jQuery UI to work, once it's being added to your pages.\n\n This is a utility module that won't do anything on its own. See README.txt for how your module can use it to add jQuery UI effects to your pages.\n\n Back to top \n\n Drupal 7+ \n Since Drupal 7 ships with jQuery UI, the jQuery UI module has been deprecated and moved to the jQuery Update module.\n\n Back to top \n\n Drupal 8 \n jQuery UI was added to Drupal core in 2009 , but jQuery UI has been minimally maintained since 2017 and listed as an Emeritus project in https://openjsf.org/projects/ which is described as:\n\n Emeritus projects are those which the maintainers feel have reached or are nearing end-of-life \n\n \n jQuery UI is deprecated in Drupal core and considered internal from Drupal 9.\n\n This contrib project now has an 8.x branch to provide the asset libraries which are no longer provided as an API by Drupal core .\n\n The individual jQuery UI asset libraries are provided in separate modules .\n\n \n jQuery UI Accordion \n jQuery UI Autocomplete \n jQuery UI Button \n jQuery UI Checkboxradio \n jQuery UI Controlgroup \n jQuery UI Datepicker \n jQuery UI Dialog \n jQuery UI Draggable \n jQuery UI Droppable \n jQuery UI Effects \n jQuery UI Menu \n jQuery UI Progressbar \n jQuery UI Resizable \n jQuery UI Selectable \n jQuery UI Selectmenu \n jQuery UI Slider \n jQuery UI Spinner \n jQuery UI Tooltip \n Back to top",
+  "project_description": "Re-provides the jQuery UI 1.13.2 asset library that Drupal core deprecated (from Drupal 9) and made internal after removing it as a public API. jQuery UI was minimally maintained upstream and marked End of Life by the OpenJS Foundation, so core no longer offers it; this module ships the bundled JS/CSS themes/images so existing themes, modules and custom code that still depend on jQuery UI keep working. It declares the base libraries jquery_ui/core, jquery_ui/widget, jquery_ui/mouse, jquery_ui/position and jquery_ui/locale in jquery_ui.libraries.yml, and dynamically declares the full set of internal jQuery UI sub-libraries plus the widget/effect libraries for companion projects (jquery_ui_accordion, jquery_ui_datepicker, jquery_ui_dialog, jquery_ui_effects, etc.) via a hook_library_info_alter() implementation that reads jquery_ui.libraries.data.json. It has no configuration UI, no permissions, no routes (beyond hook_help) and no services. To migrate legacy code, replace old core/jquery.ui* library references with the jquery_ui/* equivalents. The maintainers recommend selecting a maintained replacement rather than adding new jQuery UI dependencies.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

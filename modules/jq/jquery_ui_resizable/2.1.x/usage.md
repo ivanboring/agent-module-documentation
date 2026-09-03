@@ -1,29 +1,26 @@
-jQuery UI Resizable re-supplies the jQuery UI Resizable interaction as a Drupal asset library, for modules and themes that still depend on it after jQuery UI was removed from Drupal core.
+Provides the deprecated-from-core jQuery UI Resizable interaction as the Drupal asset library `jquery_ui_resizable/resizable`.
 
 ---
 
-Drupal core deprecated and removed the bundled jQuery UI libraries, but some contrib and custom code still relies on individual jQuery UI widgets. This module (part of the jQuery UI family, alongside the `jquery_ui` base module) provides the **Resizable** interaction as the asset library `jquery_ui_resizable/resizable`, sourced through the `jquery_ui` module's asset definitions. It contains no configuration, PHP services, routes, or UI — it is purely a JavaScript library shim. Code that needs resizable behavior declares a dependency on `jquery_ui_resizable/resizable` in its own `*.libraries.yml` (or attaches it via `#attached`), then calls `.resizable()` in its JS. It depends on the `jquery_ui` base module (>= 8.x-1.7). Use it only as a compatibility shim; new code should prefer native CSS `resize` or modern JS where possible.
+`jquery_ui_resizable` is a tiny compatibility shim. Drupal core removed the bundled jQuery UI asset libraries (they are deprecated and unmaintained upstream), so any theme or module that still calls `.resizable()` or referenced the old `core/jquery.ui.resizable` library needs another source for those assets. Enabling this module (which depends on the `jquery_ui` base module) makes the library `jquery_ui_resizable/resizable` available; attach it via a render array's `#attached[library]` or list it as a dependency in your own `*.libraries.yml`. The module ships no PHP, routes, permissions, configuration, or services — the base `jquery_ui` module declares the library and serves the JS/CSS (jQuery UI 1.13.2) on its behalf. Note jQuery UI is End-of-Life; treat this as a migration bridge and plan a modern replacement (e.g. the CSS `resize` property or a maintained library) for new work.
 
 ---
 
-- Make a `<div>` or panel resizable by dragging its edges/handles.
-- Provide legacy jQuery UI resizable support to a contrib module after core removed it.
-- Attach `jquery_ui_resizable/resizable` as a library dependency in a module's `*.libraries.yml`.
-- Enable resizable textareas or containers in a custom admin UI.
-- Add resize handles to a draggable dialog or panel.
-- Let users resize a preview pane in a split-view interface.
-- Resize an image container interactively in an editor widget.
-- Constrain resizing to a min/max width and height via the widget options.
-- Preserve aspect ratio while resizing an element.
-- Make a map or canvas element user-resizable.
-- Add resizable columns to a custom layout builder tool.
-- Resize a sidebar or drawer in a custom theme component.
-- Provide a resizable code/preview area in a developer tool.
-- Keep an older theme's resizable interactions working on Drupal 10/11.
-- Attach the library from a render array via `#attached` libraries.
-- Resize a WYSIWYG or embed container in content editing.
-- Give users control over the height of a comment/text input box.
-- Build a resizable modal window in a custom module.
-- Resize dashboard widgets in a custom reporting UI.
-- Satisfy a transitive jQuery UI Resizable dependency of another library.
-- Ship resizable behavior without vendoring jQuery UI yourself.
+- Restore drag-to-resize handles on an existing theme/module that broke after upgrading to a Drupal core version without bundled jQuery UI.
+- Replace a deprecated `core/jquery.ui.resizable` library reference with `jquery_ui_resizable/resizable` in a custom module.
+- Replace a deprecated `core/jquery.ui.resizable` reference in a custom or contrib theme's `*.libraries.yml`.
+- Attach the resizable library to a specific render array so the interaction loads only on pages that need it.
+- Provide the resizable assets required by a contrib module that still depends on jQuery UI Resizable.
+- Make a custom admin panel, preview pane, or `<div>` user-resizable via drag handles.
+- Add resizable handles to a textarea or embedded editor container.
+- Constrain resizing with `minWidth`/`maxWidth`/`aspectRatio`/`containment` via jQuery UI's own JS API after attaching the library.
+- Wire `resize`/`stop` events to persist a panel's dimensions or re-layout dependent elements.
+- Style the resize handles with the bundled base theme CSS (`resizable.css`) that ships with the library.
+- Keep a legacy resizable UI working during a phased migration off jQuery UI.
+- Support a contrib module (e.g. an image/layout tool) whose JS expects the jQuery UI resizable code to be present.
+- Provide resizable assets to a JavaScript behavior (`Drupal.behaviors`) that initializes resizing on `.js-resizable` elements.
+- Load the resizable interaction alongside other jQuery UI shims (datepicker, slider) that share the same `jquery_ui` base dependency.
+- Ensure resizable handles render consistently across Drupal 9.2, 10, and 11.
+- Combine with `jquery_ui_touch_punch` so resize handles work on touch devices.
+- Ship a lightweight dependency (only `drupal/jquery_ui`) rather than re-vendoring jQuery UI assets in your own project.
+- Give agents/tools a stable library name to attach when a task requires a jQuery UI resizable element on a Drupal page.

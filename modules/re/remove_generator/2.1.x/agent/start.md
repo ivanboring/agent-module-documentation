@@ -1,3 +1,4 @@
+<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Remove Generator (remove_generator) — agent index
 
 Single-purpose hardening module: removes core's `<meta name="Generator" content="Drupal …">` tag
