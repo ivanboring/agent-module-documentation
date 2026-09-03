@@ -1,16 +1,23 @@
 {
   "name": "Acquia CMS DAM",
   "data_name": "acquia_cms_dam",
-  "description": "Provides Acquia DAM integration/configuration for Acquia CMS.",
+  "description": "Provides an Acquia DAM related configuration.",
   "version": "1.1.x",
   "package": "Acquia CMS",
   "composer_namespace": "drupal/acquia_cms_dam",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/acquia_cms_image": "^1.5.10",
+    "drupal/acquia_cms_video": "^1.5.8",
+    "drupal/acquia_dam": "^1"
+  },
   "dependent_modules": [
-    "acquia_cms_image:acquia_cms_image"
+    "acquia_cms_image:acquia_cms_image",
+    "acquia_cms_video:acquia_cms_video",
+    "acquia_dam:acquia_dam",
+    "acquia_dam:acquia_dam_integration_links"
   ],
   "configure": null,
-  "core_version_requirement": "^9.4||^10||^11",
+  "core_version_requirement": "^9.4 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/acquia_cms_dam",
@@ -21,22 +28,26 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Media"
+    "Media",
+    "Distribution"
   ],
   "subcategories": [
-    "Digital asset management (DAM)"
+    "Digital asset management (DAM)",
+    "Media embedding",
+    "Acquia CMS"
   ],
   "keywords": [
     "acquia dam",
+    "widen",
     "dam",
     "acquia cms",
     "media",
-    "assets"
+    "site studio"
   ],
-  "project_description": "The purpose of this module is to integrate Acquia Drupal Starter Kit with Acquia DAM .\n\n It enables the following features:\n\n \n Adding DAM display settings for media of type image for different image styles. \n Adding cohesion content templates for Acquia DAM media assets. \n Provides the flexibility to alter the assets library from media library to library provided by acquia_dam. \n \n INSTALLATION \ncomposer require drupal/acquia_cms_dam\n DOCUMENTATION \nIntegrating Acquia DAM with Acquia Drupal Starter Kit\n Back to top",
+  "project_description": "The purpose of this module is to integrate the Acquia CMS / Acquia Drupal Starter Kit with Acquia DAM (Widen). It is a thin configuration-only glue layer on top of the acquia_dam contrib module: it ships default media view displays for the acquia_dam_image_asset and acquia_dam_video_asset bundles across Acquia CMS image styles, ships Site Studio (Cohesion) content templates and a sync package for rendering DAM assets, and on install rewires Acquia CMS content-type image fields (article, event, page, person, place) so they can reference DAM image assets. It also points the Site Studio image browser at DAM media types. The actual DAM API integration, media source, and authentication are provided by the acquia_dam module.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

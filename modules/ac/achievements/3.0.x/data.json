@@ -1,25 +1,35 @@
 {
   "name": "Achievements",
   "data_name": "achievements",
-  "description": "A gamification framework: unlock achievements and earn points based on user milestones.",
+  "description": "Gamification framework: define achievement/badge config entities, award points on user milestones from code, and rank users on leaderboards.",
   "version": "3.0.x",
   "package": "Achievements",
   "composer_namespace": "drupal/achievements",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/jquery_ui_effects": "^2.0",
+    "drupal/jquery_ui_dialog": "^2.0"
+  },
   "dependent_modules": [
-    "drupal:file"
+    "file",
+    "jquery_ui_effects",
+    "jquery_ui_dialog"
   ],
-  "configure": "achievements.settings",
-  "core_version_requirement": "^9||^10||^11",
+  "configure": "achievements.config",
+  "core_version_requirement": "^9 || ^10 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/achievements",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "core/jquery",
+    "core/once",
+    "jquery_ui_dialog/dialog",
+    "jquery_ui_effects/fade"
+  ],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
@@ -27,16 +37,17 @@
     "User engagement"
   ],
   "subcategories": [
-    "Gamification"
+    "Popularity / hotness tracking"
   ],
   "keywords": [
     "achievements",
     "gamification",
-    "points",
     "badges",
-    "leaderboard"
+    "points",
+    "leaderboard",
+    "milestones"
   ],
-  "project_description": "The Achievements module offers the ability to create achievements and badges similar to systems seen on Xbox 360, Playstation 3, Foursquare, Gowalla, GetGlue, and more. For a Drupal site, this could mean commenting a certain number of times, starting a forum topic, visiting the site every day of the week, or anything else that can be tracked and coded.\n\n Current features and design:\n\n \n Achievement points are based on milestones, not continuous activity . Instead of getting 5 points every time a user posts a node, an equivalent milestone might instead reward 20 points for posting 10 nodes. If there's no achievement for posting 50 nodes, the user receives no further points. \n Since achievements are milestones, each one has its own leaderboard that lists when a user has met (or \"unlocked\") the goal and their matching rank. A site-wide leaderboard ranks users by points they've achieved, but also by timestamp -- if two users share the same point total, the person who got there first gets the higher rank. (img 1) (img 2) \n Relative leaderboards are supported and allow the user to see where they are in relation to nearby ranks or the top achievers. Leaderboards also show the latest achievement earned, allowing users to discover new milestones they might want to strive for. (img 3) \n Achievements can be made \"secret\" (if they're not unlocked, a user will see \"Secret Achievement\" placeholder text instead of actual data) and/or \"invisible\" (the achievement doesn't show up on the user's Achievements tab until it's unlocked). (img 4) \n Achievements can have images (or \"badges\") in one of three different states: unlocked, locked, or secret. Default images can be used for all achievements (and some are provided with the module), or you can override them on a per-achievement basis. (img 5) \n Achievements can be grouped into categories and tabbed with jQuery UI. (img 6) \n An adminterface allows you to manually grant or remove achievements . If the user is offline, unlocked achievements will display the next time the user visits the site. (img 7) \n Achievement unlocks fade-in and out at the window's bottom right corner. (img 8) \n Your code decides whether achievements are retroactively applied or not . \n \n Back to top \n\n Installation \n \n Copy the achievements/ directory to your sites/SITENAME/modules directory. \n Enable the module and configure it at admin/config/people/achievements . \n Set your desired permissions at admin/people/permissions . \n See \"Creating achievements\" for how to code your own achievements. \n \n Back to top \n\n Creating achievements \n I've made two entirely deliberate design decisions:\n\n \n No achievements are shipped by default. Earning the same achievement over and over again at dozens of Drupal sites is mind-numbingly not-fun. If you're going to offer achievements, at least _try_ to be creative and make them unique to your site. \n Creating achievements requires custom code. Achievements that can be automated in a user interface tend to be mind-numbingly not-fun and grindish (\"when user creates $n comments, $n posts\", etc.). Quality achievements require custom logic tailored to your site. \n \n I _do_ believe that achievement grinds have their place and I _do_ want to be rewarded for posting 1000 comments or 250 nodes. I just don't want to see default implementations on every site that uses this module. It's lazy. It's not-fun. It reflects poorly on my code and achievement whoredom if I promote cookie-cutter gamification on Drupal sites everywhere.\n\n To begin creating achievements:\n\n \n You'll need to create or use a custom module to implement the API. Further information about module development and the Drupal APIs you can listen on to trigger your achievements is available in the Develop for Drupal docs. At the minimum, read:\n \n\n \n Module file names and locations \n Telling Drupal about your module \n Implementing your first hook \n \n \n Read about the Achievements API, and examples, in achievements.api.php . \n Adding new …",
+  "project_description": "The Achievements module offers the ability to create achievements and badges similar to systems seen on gaming consoles and location apps. For a Drupal site this could mean commenting a certain number of times, starting a forum topic, visiting every day of the week, or anything else that can be tracked and coded. Points are milestone-based rather than continuous: instead of 5 points every time a user posts a node, a milestone might award 20 points for posting 10 nodes. Each achievement has its own leaderboard, and a site-wide leaderboard ranks users by points (ties broken by who reached the total first). Achievements can be marked secret (placeholder text until unlocked) or invisible (hidden from the tab until unlocked), can carry unlocked/locked/secret badge images (module ships defaults), and unlock notifications fade in at the window corner. No achievements ship by default and creating them requires custom code that calls the module's API from your own entity/event hooks; see achievements.api.php for the hooks and example implementations.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

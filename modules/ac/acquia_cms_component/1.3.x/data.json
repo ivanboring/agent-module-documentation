@@ -1,40 +1,56 @@
 {
   "name": "Acquia CMS Component",
   "data_name": "acquia_cms_component",
-  "description": "Provides components and related configuration for Acquia CMS.",
+  "description": "Provides components and related configuration.",
   "version": "1.3.x",
   "package": "Acquia CMS",
   "composer_namespace": "drupal/acquia_cms_component",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/acquia_cms_common": "^1.9 || ^2.1 || ^3.1",
+    "drupal/component": "^1.0",
+    "drupal/jsonapi_extras": "^3.24"
+  },
   "dependent_modules": [
-    "acquia_cms_common:acquia_cms_common"
+    "acquia_cms_common:acquia_cms_common",
+    "component:component",
+    "jsonapi_extras:jsonapi_extras"
   ],
   "configure": null,
-  "core_version_requirement": "^9.4||^10||^11",
+  "core_version_requirement": "^9.4 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/acquia_cms_component",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "react@17",
+    "react-dom@17",
+    "create-react-class@15.7.0",
+    "babel-standalone@6.26.0"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content editing experience"
+    "Developer tools",
+    "Content display",
+    "Decoupled"
   ],
   "subcategories": [
-    "Structured content / page building"
+    "Twig / component libraries",
+    "Block enhancements",
+    "Progressive decoupling"
   ],
   "keywords": [
     "acquia cms",
-    "components",
-    "page building",
-    "site building",
-    "content"
+    "single directory components",
+    "sdc",
+    "react",
+    "jsonapi",
+    "block component"
   ],
   "project_description": "Announcement \n Acquia CMS has been officially renamed to Acquia Drupal Starter Kit. \n\nRest assured, this change does not affect the standards or functionality of the product you know and appreciate. All specifications, features, and support will remain the same.\n\n Synopsis \n Acquia Drupal Starter Kit Component provides the ability to create JavaScript components and related configuration and is part of the Acquia Drupal Starter Kit .\n\n Installation \n composer require drupal/acquia_cms_component \n\n Back to top",
   "maintenance_status": "Actively maintained",
