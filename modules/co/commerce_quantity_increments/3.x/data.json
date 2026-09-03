@@ -3,9 +3,11 @@
   "data_name": "commerce_quantity_increments",
   "description": "Provides possibility to set and validate quantity increments on a per product variation level.",
   "version": "3.x",
-  "package": "Commerce",
+  "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_quantity_increments",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^2.29 || ^3"
+  },
   "dependent_modules": [
     "commerce:commerce_product"
   ],
@@ -21,20 +23,23 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Commerce"
+    "E-commerce"
   ],
   "subcategories": [
-    "Cart"
+    "Add to cart forms",
+    "Cart management",
+    "Conditions / business rules"
   ],
   "keywords": [
     "commerce",
     "quantity",
     "increments",
     "minimum",
-    "cart"
+    "cart",
+    "product variation"
   ],
   "project_description": "Commerce Quantity Increments is a small module on top of Drupal Commerce , that provides possibility to set and validate quantity increments on a per product variation level.\n\n Requirements \n Commerce Quantity Increments depends on Drupal Commerce of course, given a strict dependency on commerce_product sub module and a soft dependency on commerce_cart.\n\n This module is only available for the Drupal 8 version of Drupal Commerce! \n\n Credits \n Commerce Quantity Increments module was originally developed and is currently\n\nmaintained by Mag. Andreas Mayr .\n\n All initial development was sponsored by agoraDesign KG .\n\n Back to top",
   "maintenance_status": "Actively maintained",

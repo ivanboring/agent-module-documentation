@@ -3,13 +3,13 @@
   "data_name": "static_page",
   "description": "Allows node types to be configured so a text area defines the entire page",
   "version": "8.x-1.x",
-  "package": null,
+  "package": "Other",
   "composer_namespace": "drupal/static_page",
   "composer_requirements": {},
   "dependent_modules": [
     "drupal:node"
   ],
-  "configure": null,
+  "configure": "static_page.settings",
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -24,19 +24,23 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Content"
+    "Content display",
+    "Site structure"
   ],
   "subcategories": [
-    "Page building"
+    "Entity page behavior & redirects",
+    "Structured content / page building"
   ],
   "keywords": [
     "static page",
-    "markup",
+    "raw markup",
     "text area",
     "content type",
-    "html"
+    "html page",
+    "theme bypass",
+    "event subscriber"
   ],
-  "project_description": "I want to add several static pages to drupal. To be specific, for example,\n\n \n\n ....\n\n \n\n Hi there\n\n Link \n\n \n\n \n\n No sidebars. No Drupal anything. Just a nice page with some words. \n\n Front module provides an option \"Allows for static content to be displayed to the screen as is. This method does not pass through Drupal's theming system.\", but it only works on the front page.\n\n I could not find a module, So I decide write this small module to do it.\n\n Installation \n \n Install static_page module. \n You should add a dedicated content type, for example “Static page”, to use for static content. Make sure that your content type has a text area field. This module can use any (single) text area field to store the whole source code of the HTML page. \n Navigate to “/admin/config/content/static_page” to configure which content types will be used as static pages. For each content type, you select which text area holds the static page content. \n Navigate to the “/node/add” page, choose any content type(s) that are configured to be static pages, for example “node/add/static_page”. Here you enter a title (only used for the administrative interface), then put the whole source code of a HTML page into the text area. Save it. \n \n You will get a page exactly the same with your source code. This module lets you bypass Drupal’s theme layer.\n\n If you want to add CSS or JS to the pages, you'll have to put that directly into the section of the static page content.\n\n Security warning \n Any content type configured as a static page will bypass Drupal's regular text filtering system. Users with permission to create static_page-enabled content types can effectively bypass any XSS protections. You should only grant permission to create static pages to trusted users. \n\n Back to top",
+  "project_description": "Static Page lets you designate one or more node types whose entire HTML output is taken verbatim from a single text-area field, bypassing Drupal's theme layer. On the settings form at /admin/config/content/static_page you map each content type to one of its long-text fields (string_long, text_long or text_with_summary). A KernelEvents::REQUEST subscriber then intercepts the node's canonical (and revision) view route and returns the field's stored value as the raw HTTP response body -- no region, block, template, CSS or JS from the site is added. Authors put the whole source code of an HTML document (including their own head/style/script) into the field. Intended for one-off landing pages, embed/iframe targets, or any page that should render as authored markup with none of Drupal's chrome.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "not-covered",

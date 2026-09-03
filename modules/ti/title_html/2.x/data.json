@@ -3,11 +3,15 @@
   "data_name": "title_html",
   "description": "Allows node title to have other HTML tags.",
   "version": "2.x",
-  "package": null,
+  "package": "Field",
   "composer_namespace": "drupal/title_html",
   "composer_requirements": {},
-  "dependent_modules": [],
-  "configure": null,
+  "dependent_modules": [
+    "node",
+    "text",
+    "filter"
+  ],
+  "configure": "title_html_settings",
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -24,18 +28,22 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Content"
+    "Content display",
+    "Content editing experience"
   ],
   "subcategories": [
-    "Fields"
+    "Fields",
+    "CKEditor plugins"
   ],
   "keywords": [
     "title",
     "html",
-    "check_markup",
-    "xss",
     "node title",
-    "formatted"
+    "check_markup",
+    "text format",
+    "formatted title",
+    "field widget",
+    "ckeditor"
   ],
   "project_description": "This module allows node titles to have HTML tags.\n\n Title module provides a title field to replace entity title property. We can configure that title field to have filtered text. However, due to certain roadblocks from Drupal core, we cannot get formatted titles with html. This module fixes those roadblocks.\n\n Drupal 7 version of this module extend Title to do the job. Versions for Drupal 8 and above does not have any extra dependency.",
   "maintenance_status": "Actively maintained",

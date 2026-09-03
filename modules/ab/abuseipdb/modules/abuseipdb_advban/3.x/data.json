@@ -1,13 +1,14 @@
 {
-  "name": "Abuseipdb Advban",
+  "name": "AbuseIPDB Advanced ban",
   "data_name": "abuseipdb_advban",
   "description": "Integrates Advanced ban module.",
   "version": "3.x",
-  "package": null,
+  "package": "Other",
   "composer_namespace": "drupal/abuseipdb",
   "composer_requirements": {},
   "dependent_modules": [
-    "abuseipdb:abuseipdb"
+    "abuseipdb:abuseipdb",
+    "advban:advban"
   ],
   "configure": null,
   "core_version_requirement": "^10 || ^11",
@@ -21,12 +22,14 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
+    "Security",
     "Access control"
   ],
   "subcategories": [
+    "Intrusion prevention",
     "IP address restriction"
   ],
   "keywords": [

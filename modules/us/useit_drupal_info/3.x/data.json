@@ -10,7 +10,7 @@
     "drupal:update",
     "drupal:automated_cron"
   ],
-  "configure": null,
+  "configure": "useit_drupal_info.post_destination_settings",
   "core_version_requirement": "^11",
   "active_installs": null,
   "list_position": null,
@@ -22,20 +22,26 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Administration"
+    "Integrations",
+    "Administration tools"
   ],
   "subcategories": [
-    "Monitoring / reports"
+    "Application performance monitoring",
+    "Status report management",
+    "Cron / task scheduling"
   ],
   "keywords": [
     "useit",
+    "drupal",
+    "information",
     "monitoring",
-    "version",
+    "version reporting",
     "module inventory",
-    "reporting"
+    "update status",
+    "cron"
   ],
   "project_description": "The Useit Drupal Info module gathers your Drupal core and modules' versions and sends this data to a configured URL, simplifying centralized monitoring and management.\n\n Features \n Automatically collects the version of Drupal core and all installed modules.\n\n \n Allows you to configure a destination URL where the data is sent, enabling easy integration with external systems. \n Supports scheduling through cron for periodic data tracking. \n Offers an intuitive configuration interface, making it accessible for both beginners and advanced users. \n \n Post-Installation \n Configuration Process After Installation: Once installed, navigate to the configuration page at /admin/config/system/post_destination_settings . Here you can set:\n\n \n The destination URL where the information will be sent. \n The interval for cron tasks to execute automatically. \n \n This user-friendly setup integrates seamlessly with Drupal's administrative tools, requiring no advanced technical knowledge.\n\n Additional Requirements \n Requires Drupal core modules: Update Manager and Automated Cron .\n\n Back to top",
   "maintenance_status": "Minimally maintained",

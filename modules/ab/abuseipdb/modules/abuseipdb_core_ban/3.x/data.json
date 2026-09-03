@@ -1,12 +1,13 @@
 {
-  "name": "Abuseipdb Core Ban",
+  "name": "AbuseIPDB Core Ban",
   "data_name": "abuseipdb_core_ban",
   "description": "Integrates Drupal Core Ban module.",
   "version": "3.x",
-  "package": null,
+  "package": "Other",
   "composer_namespace": "drupal/abuseipdb",
   "composer_requirements": {},
   "dependent_modules": [
+    "drupal:ban",
     "abuseipdb:abuseipdb"
   ],
   "configure": null,
@@ -21,12 +22,14 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
+    "Security",
     "Access control"
   ],
   "subcategories": [
+    "Intrusion prevention",
     "IP address restriction"
   ],
   "keywords": [

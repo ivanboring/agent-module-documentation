@@ -3,11 +3,11 @@
   "data_name": "abuseipdb",
   "description": "Integrates Drupal site with AbuseIPDB to report malicious activity",
   "version": "3.x",
-  "package": "Access control",
+  "package": "Other",
   "composer_namespace": "drupal/abuseipdb",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "abuseipdb.settings",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -25,9 +25,11 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
+    "Security",
     "Access control"
   ],
   "subcategories": [
+    "Intrusion prevention",
     "IP address restriction"
   ],
   "keywords": [

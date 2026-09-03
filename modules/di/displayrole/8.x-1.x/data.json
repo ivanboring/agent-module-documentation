@@ -7,9 +7,9 @@
   "composer_namespace": "drupal/displayrole",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:user"
+    "user"
   ],
-  "configure": null,
+  "configure": "entity.entity_view_display.user.default",
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -21,21 +21,24 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "User interface"
+    "Content display",
+    "Access control"
   ],
   "subcategories": [
-    "User account"
+    "Fields",
+    "User roles & permissions"
   ],
   "keywords": [
     "roles",
     "display",
     "user profile",
-    "disclosure"
+    "extra field",
+    "username"
   ],
-  "project_description": "Easily show users' assigned role or roles on their profile pages by using this module.\n\n Features: \n It makes a list of user roles available for site administrators to choose to show as one of the display fields available on user profiles.\n\n Configuration: \n Enable the module and go to People » Account settings » Manage display and drag \"Roles\" to where you would like it to display relative to the order of other items, like \"Picture\" and \"Member for\", available on this form that, as it explains, \"lets administrators configure how fields should be displayed when rendering a user profile page.\"\n\n User roles are therefore also available in the user profile template (user.html.twig) without having to write a preprocess function in the theme or a module.\n\n Right now it displays a list of all roles that user has but it can and probably should be made more configurable.\n\n Installation \n Install as you would normally install a contributed Drupal module.\n\nFor Drupal 8, the recommended way to install this module is via Composer.\n\n This is a Drupal 8 only module with no plans to backport (it shouldn't be hard, though; volunteers always welcome).\n\n \n \n \n Back to top \n\n 🇺🇦 \n \n This module is maintained by Ukrainian developers.\n\nPlease consider supporting Ukraine in a fight for their freedom and safety of Europe. \n \n Back to top",
+  "project_description": "Display Role adds a 'Roles' pseudo-field to the user entity's display so administrators can show a user's assigned roles on their profile page. Enable the module and go to People » Account settings » Manage display, then place the 'Roles' component where you want it relative to other display elements such as 'Picture' and 'Member for'. Roles then render as an item list, and because the component participates in the user display they are also reachable from the user.html.twig template without writing a preprocess function. An optional, UI-less config flag (displayrole.settings:append_role_to_username) can additionally append the role list in parentheses to rendered usernames. The module ships only a .module hook file (no routes, permissions, services, or plugins) and depends solely on Drupal core's user module.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

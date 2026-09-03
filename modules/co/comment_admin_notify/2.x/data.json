@@ -7,10 +7,10 @@
   "composer_namespace": "drupal/comment_admin_notify",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:comment",
-    "token:token"
+    "comment",
+    "token"
   ],
-  "configure": null,
+  "configure": "comment_admin_notify.settings",
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -22,22 +22,24 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content"
+    "User engagement"
   ],
   "subcategories": [
-    "Comments"
+    "Activity / notification messages",
+    "Email / mail delivery"
   ],
   "keywords": [
     "comment",
     "notify",
     "email",
     "admin",
-    "moderation"
+    "moderation",
+    "token"
   ],
-  "project_description": "Comment Admin Notify is a lightweight tool to send notification e-mails to admin when user create comment.",
+  "project_description": "Comment Admin Notify sends a plain-text notification e-mail to a configured administrator address every time a new comment is inserted, on the content types you select. Subject and body are token-aware templates (comment and node tokens) edited from a single settings form; the module also logs each notification to the watchdog log. It depends on core Comment and the contributed Token module.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
