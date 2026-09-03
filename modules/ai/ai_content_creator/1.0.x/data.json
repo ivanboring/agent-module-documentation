@@ -1,40 +1,41 @@
 {
   "name": "AI Content Creator",
   "data_name": "ai_content_creator",
-  "description": "Generates content with AI (drafts articles/text from prompts).",
+  "description": "Adds an AJAX 'Generate content' panel to node forms that drafts text from a prompt via the OpenAI API.",
   "version": "1.0.x",
   "package": "Content",
   "composer_namespace": "drupal/ai_content_creator",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^10.3||^11",
+  "configure": "ai_content_creator.admin_settings",
+  "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_content_creator",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "clipboard.js"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Artificial Intelligence (AI)"
+    "Artificial Intelligence (AI)",
+    "Content editing experience"
   ],
-  "subcategories": [
-    "Content generation"
-  ],
+  "subcategories": [],
   "keywords": [
     "ai",
+    "openai",
     "content",
     "generator",
-    "articles",
-    "writing"
+    "node form"
   ],
-  "project_description": "The AI Content Creator module is a powerful tool for generating high-quality content for your Drupal website. It uses advanced natural language processing algorithms to write articles, blog posts, and other types of content in seconds. With its intuitive interface, you can easily specify the topic and tone of the content you want to create, and the AI will do the rest. Whether you need to generate content for a new blog post, update your website's product descriptions, or create engaging social media posts, the AI Content Creator is the perfect solution. Save time and effort while ensuring that your website always has fresh, engaging content.\n\n Want to support the development of this project? \n \n Buy me a coffee ☕️    Buy me a Pizza 🍕",
+  "project_description": "AI Content Creator adds an 'AI Content Generator' details panel to the add/edit form of selected node types. An author types a free-text prompt and clicks 'Generate content'; an AJAX callback calls the OpenAI Chat/Completions API through a Guzzle-based service and returns the generated text in a modal dialog with a 'Copy to clipboard' button. The generated text is not written into any field automatically — the author copies it into the fields they want. A single admin settings form stores the OpenAI endpoint URL, access token, model, max-tokens and temperature, and the content types that show the panel. The module talks to OpenAI directly (it does not use the drupal/ai abstraction) and ships no permissions or config schema of its own.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

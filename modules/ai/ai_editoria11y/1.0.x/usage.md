@@ -1,38 +1,30 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-AI Editoria11y adds "Fix with AI" buttons to Editoria11y.
+AI Editoria11y adds a "Fix with AI" button to Editoria11y accessibility tooltips in CKEditor 5, using AI to suggest a WCAG 2.1 AA fix the editor reviews and applies in place.
 
 ---
 
-AI Editoria11y adds **"Fix with AI" buttons to Editoria11y** accessibility checks — letting editors ask an
-AI (via the AI module and its CKEditor integration) to suggest fixes for flagged accessibility issues (e.g.
-rewrite alt text, fix headings). It depends on Editoria11y, core CKEditor 5, the AI module and AI CKEditor,
-provides its own permissions, in the Editoria11y package.
-
-Use it to AI-assist accessibility remediation. It is an AI/accessibility feature. Security/data handling: it
-**sends content to the configured AI provider** (via the AI module — external egress; confirm acceptable and
-that the provider **API key** is stored as a secret in the AI module's Key config), and AI suggestions should be
-**reviewed** before applying (don't blindly trust generated fixes). It has no access-control role beyond its
-permission. Configure the AI provider and enable the buttons.
+AI Editoria11y connects the Editoria11y real-time accessibility checker with the `drupal/ai` CKEditor integration (`ai_ckeditor`). When Editoria11y flags a supported issue in a CKEditor 5 field, the module's front-end injects a "Fix with AI" button into the issue tooltip. Clicking it captures the flagged element, its attributes and surrounding HTML/text context, then opens the AI CKEditor dialog (`ai_ckeditor.dialog`). The `FixAccessibility` AiCKEditor plugin builds a prompt from configurable system/user templates with placeholders (`{{ element_html }}`, `{{ issue_description }}`, `{{ element_tag }}`, surrounding context, attributes), posts it to the `ai_ckeditor` request endpoint, and streams the model's suggested corrected HTML into a custom preview that shows a before/after diff. The editor reviews and can edit the suggestion, then applies it: the fix is inserted through CKEditor's model (via `insertContent`, preserving undo history and inline/block image type), and Editoria11y re-runs to confirm the issue is resolved. "AI suggests, humans decide." Prompts, a "Fix with AI" button label, and a debug mode (showing element details and the full prompt) are configured in the text format's AI CKEditor plugin settings and stored in `ai_editoria11y.settings`; a single permission gates whether the integration is offered to a role.
 
 ---
 
-- Add Fix-with-AI to Editoria11y.
-- Suggest AI accessibility fixes.
-- Rewrite alt text/headings.
-- Depend on Editoria11y/AI/CKEditor.
-- Provide its own permissions.
-- Assist remediation.
-- Send content to the AI provider (egress).
-- Store the provider API key as a secret (AI/Key).
-- REVIEW AI suggestions before applying.
-- Have no access-control role beyond permission.
-- Configure the AI provider.
-- Handle AI a11y fixes.
-- Fix accessibility.
-- Configure the buttons.
-- Suggest fixes.
-- Handle the integration.
-- Assist editors.
-- Fix a11y.
-- Review suggestions.
-- Provide AI accessibility fixes.
+- Add a "Fix with AI" button to Editoria11y tooltips inside CKEditor 5 fields.
+- Suggest a fix for missing or empty table header cells.
+- Flag and fix content headings placed inside tables.
+- Fix empty headings, over-long headings and skipped heading levels.
+- Convert bold "fake headings" into real heading elements.
+- Suggest better link text for generic links like "click here" or "read more".
+- Fix empty links, links with no accessible label, and link text that is a bare URL.
+- Suggest alt text and fixes for over-long image alt text.
+- Convert dash/asterisk "fake lists" into proper list markup.
+- Rewrite ALL CAPS text blocks into normal case.
+- Review the AI suggestion as a before/after diff before applying anything.
+- Edit the AI suggestion in the dialog before inserting it.
+- Apply the fix in place while preserving CKEditor undo history.
+- Re-run Editoria11y automatically after a fix to confirm resolution.
+- Customize the AI system prompt (the "accessibility expert" role) per site.
+- Customize the user prompt template with placeholders for element, issue and context.
+- Choose which AI provider/model handles fixes in the text format's plugin settings.
+- Turn on debug mode to inspect element details, surrounding context and the full prompt.
+- Rename the "Fix with AI" button via the settings.
+- Gate the feature to specific roles with the "Use AI to fix accessibility issues" permission.
+- Keep accessibility remediation inside the authoring workflow instead of a separate audit tool.

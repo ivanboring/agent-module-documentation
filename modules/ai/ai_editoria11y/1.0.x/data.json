@@ -1,18 +1,22 @@
 {
   "name": "AI Editoria11y",
   "data_name": "ai_editoria11y",
-  "description": "Adds \"Fix with AI\" buttons to Editoria11y accessibility checks, using the AI module.",
+  "description": "Adds a \"Fix with AI\" button to Editoria11y accessibility tooltips in CKEditor 5, using the AI CKEditor integration to suggest WCAG 2.1 AA fixes an editor reviews and applies.",
   "version": "1.0.x",
   "package": "Editoria11y",
   "composer_namespace": "drupal/ai_editoria11y",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/editoria11y": "^3.0@beta",
+    "drupal/ai": "^1.2"
+  },
   "dependent_modules": [
+    "editoria11y:editoria11y",
+    "drupal:ckeditor5",
     "ai:ai",
-    "ai:ai_ckeditor",
-    "drupal:ckeditor5"
+    "ai:ai_ckeditor"
   ],
   "configure": null,
-  "core_version_requirement": "^10.3||^11",
+  "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_editoria11y",
@@ -26,19 +30,22 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Accessibility"
+    "Accessibility",
+    "Content editing experience"
   ],
   "subcategories": [
-    "AI assistance"
+    "ARIA / semantic markup",
+    "CKEditor plugins"
   ],
   "keywords": [
     "editoria11y",
     "ai",
     "accessibility",
-    "fix",
-    "ckeditor"
+    "ckeditor",
+    "wcag",
+    "fix"
   ],
-  "project_description": "Back to top \n\n Overview \n AI Editoria11y adds a \"Fix with AI\" button to Editoria11y accessibility tooltips in\n\n CKEditor 5 fields.\n\n When Editoria11y detects an accessibility issue, like missing table headers or generic \"click here\" link text, editors can click \"Fix with AI\" to get an\n\n intelligent suggestion. They review the suggestion, edit if needed, and apply it directly to the content. AI suggests, humans decide.\n\n Supported Accessibility Checks \n \n Tables: Missing header cells, empty header cells, content headings inside tables \n Headings: Empty headings, long headings, skipped heading levels, fake headings (bold text used as headings) \n Links: Empty links, links with no label, link text is a URL, generic link text (\"click here\", \"read more\"), links opening in new windows \n Text: Fake lists (dashes/asterisks instead of proper lists), ALL CAPS text blocks \n Images: Very long alt text \n \n Planned (later releases): \n\n \n Images: Missing alt, meaningless alt, placeholder alt, filename as alt, unpronounceable alt, decorative images, linked images without alt\n\n (requires image recognition) \n Embeds: Video captions, audio transcripts, data visualizations (requires video/audio capabilities) \n Documents: Linked document accessibility / PDFs (requires document analysis) \n \n Back to top \n\n Requirements \n \n Drupal 10.3+ or 11.x \n Editoria11y - Real-time accessibility checking \n AI module with AI CKEditor sub-module enabled \n At least one AI provider configured (OpenAI, Anthropic, Gemini, etc.) \n CKEditor 5 text format \n \n Back to top \n\n Installation \n \n Install via Composer: composer require drupal/ai_editoria11y \n Enable the module: drush en ai_editoria11y \n Grant the \"Use AI to fix accessibility issues\" permission to appropriate roles \n In each CKEditor 5 text format, enable the \"Fix Accessibility Issue\" AI CKEditor plugin and select an AI provider \n \n Back to top \n\n Configuration \n AI Provider \n Select which AI provider and model to use in the text format's AI CKEditor plugin settings ( Administration > Configuration > Content authoring >\n\n Text formats and editors ).\n\n Custom Prompts \n Optionally customize the system and user prompts in the same plugin settings form. Available placeholders:\n\n \n {{ element_html }} - The HTML of the element to fix \n {{ issue_description }} - Editoria11y's description of the problem \n {{ element_tag }} - The element's tag name (img, a, table, etc.) \n {{ element_text }} - The element's text content \n {{ before_html }} , {{ after_html }} - Surrounding HTML context \n {{ before_text }} , {{ after_text }} - Surrounding text context \n {{ attributes_info }} - Formatted list of the element's attributes \n \n Debug Mode \n Enable \"Debug mode\" in the plugin settings to display element details, surrounding context, and the full AI prompt in the fix dialog.\n\n Back to top",
+  "project_description": "AI Editoria11y bridges the Editoria11y accessibility checker and the drupal/ai CKEditor integration. When Editoria11y flags an issue in a CKEditor 5 field (missing table headers, empty or generic link text, skipped heading levels, fake lists, over-long alt text, and similar supported checks), the module injects a \"Fix with AI\" button into the Editoria11y tooltip. Clicking it opens the AI CKEditor dialog, sends the flagged element and its surrounding context to the configured AI provider through the ai_ckeditor request endpoint, streams back a suggested corrected HTML snippet, and shows a before/after diff. The editor reviews (and can edit) the suggestion before applying it in place; the fix is inserted through CKEditor's model so undo history is preserved, and Editoria11y re-checks the content. The module ships a single AiCKEditor plugin (FixAccessibility), a settings object holding customizable system/user prompts, a debug mode, and one permission that gates whether the integration library is attached.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

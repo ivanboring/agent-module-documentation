@@ -1,16 +1,16 @@
 {
   "name": "AI Content Cleanup",
   "data_name": "ai_content_cleanup",
-  "description": "AI-assisted cleanup workflows for migrated and legacy content.",
+  "description": "Admin dashboard that scans node text fields for markup issues (broken HTML, inline styles, heading jumps, missing alt, empty/deprecated tags) and rewrites them in place with regex/DOM rules.",
   "version": "1.0.x",
-  "package": "AI",
+  "package": "Content",
   "composer_namespace": "drupal/ai_content_cleanup",
   "composer_requirements": {},
   "dependent_modules": [
     "drupal:node",
     "drupal:text"
   ],
-  "configure": null,
+  "configure": "ai_content_cleanup.settings",
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -22,23 +22,24 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Artificial Intelligence (AI)",
+    "Content editing experience",
     "Import and export"
   ],
   "subcategories": [
-    "AI tooling / function calling"
+    "Data transformation"
   ],
   "keywords": [
-    "ai",
     "cleanup",
     "migration",
     "legacy",
-    "content"
+    "html",
+    "accessibility"
   ],
-  "project_description": "AI Content Cleanup is a Drupal content optimization and modernization module that automatically detects, cleans, and standardizes messy or outdated content across Drupal websites using AI-assisted processing and intelligent cleanup workflows.\n\n \nThe module helps organizations improve content quality, accessibility, consistency, and maintainability by automatically fixing broken HTML, removing unnecessary inline styles, normalizing heading structures, and modernizing legacy markup.\n\n \nDesigned for Drupal 10 and Drupal 11, the module provides automated cleanup operations, bulk processing tools, side-by-side content comparison, AI-powered recommendations, rollback support, and configurable cleanup rules directly within the Drupal admin interface.\n\n Features \n Broken HTML Repair \n \n Detect and repair malformed HTML \n Fix unclosed tags \n Normalize invalid markup structures \n Repair deprecated HTML patterns \n \n Inline Style Removal \n \n Remove inline CSS styles \n Convert styles into reusable classes \n Reduce unnecessary markup bloat \n Improve frontend consistency \n \n Heading Structure Standardization \n \n Normalize heading hierarchy \n Fix skipped heading levels \n Improve semantic structure \n Enhance accessibility and SEO \n \n Accessibility Cleanup \n \n Detect accessibility issues \n Add missing alt text placeholders \n Improve semantic markup \n Remove empty or inaccessible elements \n \n Legacy Markup Modernization \n \n Replace deprecated HTML tags \n Normalize outdated formatting \n Modernize legacy content structures \n Improve compatibility with modern themes \n \n AI-Assisted Recommendations \n \n Intelligent cleanup suggestions \n Automated issue prioritization \n Context-aware recommendations \n Confidence scoring for cleanup operations \n \n Bulk Cleanup Operations \n \n Bulk content cleanup workflows \n Batch processing support \n Content filtering and targeting \n Dry-run preview mode \n \n Content Comparison Editor \n \n Side-by-side content comparison \n Preview before applying changes \n Visual diff view \n Selective cleanup approval \n \n Templates & Cleanup Rules \n \n Create reusable cleanup templates \n Configure cleanup rules \n Content-type specific processing \n Advanced cleanup customization \n \n History & Rollback \n \n Cleanup history tracking \n Rollback previous cleanup operations \n Operation audit logs \n Cleanup reporting dashboard \n \n \n Use Cases \n Drupal Migration Cleanup \n \nClean migrated legacy content after Drupal upgrades or platform migrations.\n\n Accessibility Improvements \n \nImprove semantic structure and accessibility compliance across content.\n\n Content Standardization \n \nEnsure consistent formatting and markup across editorial teams.\n\n SEO Optimization \n \nImprove semantic HTML structure and heading hierarchy for better SEO.\n\n Legacy Content Modernization \n \nUpdate outdated markup and formatting for modern Drupal themes and frontend architectures.\n\n \n Benefits \n \n Improve content consistency \n Reduce manual cleanup effort \n Enhance accessibility compliance \n Improve frontend rendering quality \n Reduce markup bloat \n Modernize legacy content \n Simplify editorial workflows \n Improve maintainability \n \n Back to top",
+  "project_description": "AI Content Cleanup provides an admin dashboard (under Content → AI Content Cleanup) for detecting and fixing common markup problems in migrated and legacy node content: broken/unbalanced HTML, inline styles, skipped heading levels, images missing alt text, empty layout elements, and deprecated presentational tags. A scan walks the configured node bundles, records detected issues in two custom database tables, and shows them across dashboard, scan, results, editor, bulk, reports, templates and history pages. The side-by-side editor previews an original-vs-cleaned diff and can apply the cleaned markup back to a node as a new revision. Despite the name, this release performs the cleanup with deterministic regular-expression and DOMDocument transformations — it does not call an LLM or the drupal/ai module. Two permissions gate it: a read permission for dashboards/scans/reports and a restricted admin permission for the editor, bulk operations, templates and applying fixes.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

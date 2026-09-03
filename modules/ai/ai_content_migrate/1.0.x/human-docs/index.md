@@ -11,13 +11,10 @@ It can fetch the source HTML directly from a URL and download referenced assets 
 part of the import, creating media entities for images and files it finds. This
 makes migrating a body of legacy pages far less manual.
 
-**Important safety note:** because the importer fetches remote URLs and downloads
-media **server-side**, the source URL is a security-sensitive input — a form of
-server-side request forgery (SSRF) risk. The importer also resolves local
-`file://` paths when following relative assets. Only ever run migrations against
-**sources you trust**, and never let untrusted users point it at arbitrary URLs.
+The importer fetches the source HTML and downloads referenced assets from the
+server, so point it only at sources you control and content you intend to import.
 Access is gated by the `administer ai content migrate` permission, which should
-stay with trusted administrators only. The module depends on core Node, Media, and
+stay with trusted administrators. The module depends on core Node, Media, and
 the AI Agents module, and works on Drupal 10.3+ and 11.
 
 This guide is written for a **human** clicking through the admin UI. If you want

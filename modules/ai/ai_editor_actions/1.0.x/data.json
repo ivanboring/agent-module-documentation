@@ -1,17 +1,20 @@
 {
   "name": "AI Editor Actions",
   "data_name": "ai_editor_actions",
-  "description": "Adds ai text actions to ckeditor 5 (rewrite/summarize/translate selected text).",
+  "description": "AI text actions for CKEditor 5: users define, share and run rephrase/translate/summarize/custom transformations on selected text or the whole document, reviewing each result as a tracked change.",
   "version": "1.0.x",
   "package": "AI",
   "composer_namespace": "drupal/ai_editor_actions",
   "composer_requirements": {},
   "dependent_modules": [
     "ai:ai",
-    "drupal:ckeditor5"
+    "drupal:ckeditor5",
+    "drupal:editor",
+    "drupal:filter",
+    "drupal:user"
   ],
-  "configure": null,
-  "core_version_requirement": "^10.6||^11.3",
+  "configure": "entity.ai_editor_action.collection",
+  "core_version_requirement": "^10.6 || ^11.3 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_editor_actions",
@@ -28,16 +31,20 @@
     "Content editing experience"
   ],
   "subcategories": [
-    "CKEditor / WYSIWYG"
+    "CKEditor plugins",
+    "WYSIWYG / rich text editor"
   ],
   "keywords": [
     "ai",
     "ckeditor",
     "text actions",
-    "rewrite",
-    "editor"
+    "rephrase",
+    "translate",
+    "summarize",
+    "editor",
+    "speech-to-text"
   ],
-  "project_description": "AI Editor Actions adds an \"AI Actions\" dropdown to CKEditor 5 that runs user-defined AI text transformations - rephrase, fix grammar, translate, summarize, change tone, and more - on the selected text or, with nothing selected, the whole document. Generation happens in place: the result replaces the text and is highlighted as a tracked change you can review, step through its history, flip back to the original, regenerate or keep.\n\n The actions themselves are content, not code. Any editor with permission builds their own library of transformations right from the editor and, optionally, shares them with selected roles - so each team shapes the AI tools that fit their content, without a developer.\n\n Back to top \n\n Key features \n \n AI Actions dropdown in CKEditor 5 listing the actions available to the current user, plus a free-form \"Ask AI...\" option (a small inline input, no dialog). \n In-place generation : selecting an action runs the AI and inserts the generated result directly into the editor. \n Voice input (dictation) : speak your \"Ask AI\" or \"Tweak\" prompt with the microphone instead of typing. The clip is transcribed by a speech-to-text model and run hands-free. The mic button appears only when a speech-to-text model is configured. \n Well-formed HTML (structured output) : the AI can return its result as structured data the module renders into clean HTML - paragraphs, headings, lists, bold/italic. Applies to actions and \"Explain this\", with a plain-text fallback for models that don't support it. \n Distinct highlight colors : separately generated passages - even adjacent ones - get their own color, so they are easy to tell apart at a glance. \n Tracked changes with history : each result shows a small toolbar - previous/next through the generation history, Show original / Show AI version, Regenerate, Tweak, Discard and Keep. Pending changes are locked against accidental edits, and the highlight is never saved. \n \"Explain this\" read-only insight : explains the selected text - or the whole document when nothing is selected - in a small balloon without changing the content. Available from the dropdown, the on-selection menu, and the tracked-change balloon. \n User-owned actions : actions are content entities. Users create their own from the editor (\"Add Action...\") and, with an extra permission, share them with selected roles. Private actions stay private. \n Categories : group actions into submenus in the dropdown and sections on the admin listing; uncategorized actions stay at the top level. \n Selection menu (optional): selecting text pops up a small AI Actions menu right at the selection. \n AI Actions on plain text fields (no CKEditor) : a standalone twin brings the same experience - menu, \"Ask AI...\", \"Explain this\", voice input, and the full review balloon (previous/next, flip, tweak, regenerate, discard, keep) - to plain textfield and textarea fields. \n \"Explain any selection\" page widget : highlight any text on the page - help text, descriptions, plain content - for a small \"Explain this\" button and a read-only explanation balloon. \n Whole-document mode : with nothing selected, an action runs on the entire editor content as one tracked change. \n Survives Preview and refresh : pending changes are snapshotted per browser tab and restored when you return from preview or reload - until the content is saved. \n Abuse protection : input and instruction length caps and a configurable per-user hourly rate limit on AI requests. \n \n Back to top \n\n Screenshots \n \n\n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Back to top \n\n Configuration \n \n Configure your AI provider and set a default chat model at Administration > Configuration > AI ( /admin/config/ai/settings ). For voice input, also set a default speech-to-text model . \n Add the AI Actions button to the CKEditor 5 toolbar of the relevant text formats, at Text formats and editors . \n Grant the module's permissions to the appropriate roles. \n Manage actions and categories at Administration > Configuration > …",
+  "project_description": "AI Editor Actions adds an \"AI Actions\" dropdown to CKEditor 5 that runs user-defined AI text transformations (rephrase, fix grammar, simplify, shorten, expand, summarize, change tone, translate, and a free-form \"Ask AI\" instruction) on the selected text or, with nothing selected, the whole document. Each transformation is an ai_editor_action content entity owned by the user who created it and optionally shared with selected roles, so editors build their own library of actions without a developer. Results are generated in place and shown as a tracked, revertable change with a review toolbar. The module also ships a read-only \"Explain this\" insight, a twin experience for plain-text fields and any on-page selection, and optional speech-to-text voice input. It calls AI models through the drupal/ai provider abstraction (chat + speech_to_text operation types); the in-editor endpoints are permission-gated, CSRF-guarded and rate-limited per user.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

@@ -1,33 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-AI Document OCR provides a Google Document AI (OCR) provider to extract text from documents.
+AI Document OCR Provider adds a Google Cloud Document AI provider to Drupal's AI module so documents and images can be converted to text with OCR.
 
 ---
 
-AI Document OCR provides a Google Document AI (OCR) provider to extract text from documents. It builds on Drupal's AI module and depends on `ai`, `key`, `ai_automators`, in the AI Providers package.
-
-Use it for AI-assisted ocr / extraction. It is an AI/integration feature. Security/data handling: it **sends
-documents to the configured AI provider** (external egress — confirm acceptable for the content), the provider **API key** is stored via the Key module (secret),
-over HTTPS. It has no access-control role beyond its permission. Configure the AI
-provider.
+The module registers a `document_to_text` operation type and an `ai_document_ocr` AI provider (`DocumentOcrProvider`) that sends PDFs and images to a Google Cloud Document AI processor and returns extracted text, an overall confidence score, and structured data (pages, paragraphs, entities). Credentials are a Google Cloud service-account JSON key stored in the Key module; the processor and region are chosen on the provider settings form at `/admin/config/ai/providers/document-ocr`, where enabled processors are auto-discovered across regions. A `document_processor` AI Automator (from `ai_automators`) can run OCR automatically when a file or image field is filled, writing the result into a `string_long` target field. Requires the `ai`, `key`, and `ai_automators` modules and the `google/cloud-document-ai` Composer library.
 
 ---
 
-- Provides a google document ai (ocr) provider to extract text from documents.
-- Use Drupal's AI module.
-- Assist ocr / extraction.
-- Send documents to the AI provider (egress).
-- Confirm the egress is acceptable.
-- Store the API key as a secret.
-- Use HTTPS. Serve the workflow.
-- Have no access-control role beyond permission.
-- Configure the AI provider.
-- Handle the AI feature.
-- Run the AI task.
-- Configure it.
-- Process content.
-- Handle the integration.
-- Assist users.
-- Automate with AI.
-- Generate output.
-- Secure the key.
-- Provide AI ocr / extraction.
+- Extract plain text from uploaded PDF documents with Google Document AI.
+- OCR scanned images (JPEG, PNG, GIF, TIFF, BMP, WebP) into searchable text.
+- Add a `document_to_text` capability to the Drupal AI framework for other modules to call.
+- Store OCR results in a text field automatically when a node with a file/image field is saved.
+- Convert invoices, receipts, and forms to text for downstream processing.
+- Build a searchable archive from scanned paper documents.
+- Generate text alternatives for image-only content to aid accessibility.
+- Populate a summary or body field from an attached document via AI Automators.
+- Index document contents for site search after upload.
+- Extract structured data (pages, paragraphs, entities) alongside plain text.
+- Filter extracted text by a configurable confidence threshold.
+- Pick a specific Document AI processor (Document OCR, Form Parser, etc.) per site.
+- Route requests to a chosen Google Cloud region (US, EU, or a regional endpoint).
+- Auto-discover the enabled processors in a Google Cloud project across all regions.
+- Keep Google service-account credentials out of the database using the Key module.
+- Call the provider programmatically via `\Drupal::service('ai.provider')->createInstance('ai_document_ocr')`.
+- Feed base64-encoded document bytes plus a MIME type to the provider through `DocumentToTextInput`.
+- Retrieve confidence and structured data from `DocumentToTextOutput` (`getText()`, `getConfidence()`, `getStructuredData()`).
+- Process multi-page PDFs and report the page count in the output metadata.
+- Wire OCR into an automated content pipeline triggered by the AI Automators queue.
+- Digitize handwritten or form documents by selecting an appropriate processor.
+- Pre-fill content moderation or tagging workflows from extracted document text.

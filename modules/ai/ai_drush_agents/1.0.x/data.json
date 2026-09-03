@@ -1,13 +1,16 @@
 {
   "name": "AI Drush Agents",
   "data_name": "ai_drush_agents",
-  "description": "Provides Drush commands for interacting with AI agents from the command line.",
+  "description": "Drush commands for interacting with AI agents.",
   "version": "1.0.x",
   "package": "AI Tools",
   "composer_namespace": "drupal/ai_drush_agents",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai_agents": "^1.1.0",
+    "sevenecks/markdown-terminal": "^0.0.1"
+  },
   "dependent_modules": [
-    "ai_agents:ai_agents"
+    "ai_agents"
   ],
   "configure": null,
   "core_version_requirement": "^10.3 || ^11",
@@ -16,28 +19,33 @@
   "project_url": "https://www.drupal.org/project/ai_drush_agents",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "sevenecks/markdown-terminal"
+  ],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
-  "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Artificial Intelligence (AI)",
     "Developer tools"
   ],
   "subcategories": [
-    "AI agents / taskable AI"
+    "AI agents / taskable AI",
+    "AI tooling / function calling"
   ],
   "keywords": [
     "ai",
     "drush",
     "agents",
     "cli",
+    "function calling",
+    "config diff",
     "automation"
   ],
-  "project_description": "The AI Drush Agents is an Agent Runner and a collection of agents that makes it easier to work with and run agents in Drush. It works with the AI Agents module to create an extra experience.\n\n Features \n There are new commands that will exist:\n\n \n agents:run - Pick any agent on your system and start talking with them. \n agents:drush_explain \n agents:config_export_explain - If you have some configuration changes waiting to be exported, but you forgot what the did, this will give you answers in normal readable text. \n \n Post-Installation \n You need to setup AI Agents correctly first \n\n Back to top",
+  "project_description": "AI Drush Agents adds Drush commands that let you run AI Agents (from the ai_agents module) directly from the command line. It ships an interactive agent runner (agents:run) plus two purpose-built agents: a Drush command explainer (agents:drush_explain) that suggests the right drush command for a task, and a config-export explainer (agents:config_export_explain) that reads the diff between active and staged configuration and summarizes what a config export would change in plain language. It also provides four AiFunctionCall tool plugins (get_drush_commands, get_drush_code, get_config_entity, config_diff) that its agents call to gather context, and two ai_agent config entities installed on enable (drush_explain_agent, config_export_explainer). Requires a configured AI provider via the ai_agents / ai stack.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

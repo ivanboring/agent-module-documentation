@@ -1,11 +1,13 @@
 {
   "name": "AI Deep Reference",
   "data_name": "ai_dr",
-  "description": "Adds tokens that expose referenced taxonomy-term descriptions, for AI prompt building.",
+  "description": "Registers Drupal tokens that expose the raw description text of taxonomy terms referenced from a node, for building AI prompts.",
   "version": "1.0.x",
   "package": "AI",
   "composer_namespace": "drupal/ai_dr",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/token": "^1.0"
+  },
   "dependent_modules": [
     "token:token"
   ],
@@ -21,7 +23,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Automation"

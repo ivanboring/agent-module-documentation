@@ -1,21 +1,23 @@
 {
   "name": "AI Dropsolid",
   "data_name": "ai_dropsolid",
-  "description": "A dropsolid-specific ai bundle providing preconfigured ai provider settings.",
+  "description": "Dropsolid-specific AI support bundle: an XLM-Roberta tokenizer decorator, a token-aware text chunker + embedding strategy, and a LiteLLM request-tagging event subscriber.",
   "version": "1.0.x",
   "package": "AI",
   "composer_namespace": "drupal/ai_dropsolid",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai_provider_dropsolidai": "^1"
+  },
   "dependent_modules": [
     "ai_provider_dropsolidai:ai_provider_dropsolidai"
   ],
-  "configure": null,
-  "core_version_requirement": "^10||^11",
+  "configure": "ai_dropsolid.tokenizer_settings",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_dropsolid",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
@@ -27,14 +29,18 @@
     "Artificial Intelligence (AI)"
   ],
   "subcategories": [
-    "LLM / AI provider"
+    "Vector database / embeddings storage",
+    "AI provider abstraction / LLM gateway"
   ],
   "keywords": [
     "ai",
     "dropsolid",
-    "bundle",
-    "provider",
-    "llm"
+    "tokenizer",
+    "xlm-roberta",
+    "sentencepiece",
+    "litellm",
+    "embedding strategy",
+    "text chunking"
   ],
   "project_description": "Dropsolid improvements to AI installs. \n\n Features \n \n Better custom Tokenizer \n Better custom Embedding strategy \n custom configuration",
   "maintenance_status": "Actively maintained",

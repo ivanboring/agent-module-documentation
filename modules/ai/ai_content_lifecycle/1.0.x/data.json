@@ -1,7 +1,7 @@
 {
   "name": "AI Content Lifecycle",
   "data_name": "ai_content_lifecycle",
-  "description": "uses AI to detect and mark outdated content.",
+  "description": "Uses the drupal/ai chat provider to assess whether content is outdated and records the verdict on a 'content_life_cycle' tracking entity for editor review.",
   "version": "1.0.x",
   "package": "AI",
   "composer_namespace": "drupal/ai_content_lifecycle",
@@ -9,8 +9,8 @@
   "dependent_modules": [
     "ai:ai"
   ],
-  "configure": null,
-  "core_version_requirement": "^10||^11",
+  "configure": "ai_content_lifecycle.settings",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_content_lifecycle",
@@ -24,10 +24,11 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Artificial Intelligence (AI)"
+    "Artificial Intelligence (AI)",
+    "Content editing experience"
   ],
   "subcategories": [
-    "AI agents / taskable AI"
+    "AI content risk analysis"
   ],
   "keywords": [
     "ai",
@@ -36,7 +37,7 @@
     "governance",
     "freshness"
   ],
-  "project_description": "Back to top \n\n INTRODUCTION \n The AI Content Lifecycle module provides AI-powered content analysis to help content editors review and improve content quality on their Drupal site.\n\n The primary use cases for this module are:\n\n \n Automating content quality assessment using AI analysis \n Creating a workflow for content editors to review AI-analyzed content \n Tracking content review statuses (pending, analyzed, reviewed, updated, ignored) \n \n Back to top \n\n REQUIREMENTS \n \n Drupal 10 or 11 \n An AI service for content analysis (implementation dependent) \n \n Back to top \n\n INSTALLATION \n Install as you would normally install a contributed Drupal module.\n\nSee: https://www.drupal.org/node/895232 for further information.\n\n Back to top \n\n CONFIGURATION \n \n Navigate to Configuration > AI > AI Lifecycle settings \n Configure which content types and bundles should be analyzed \n Set up AI analysis parameters \n Use the batch process tool to analyze existing content \n New content will be automatically analyzed upon creation \n \n Back to top \n\n VIEWS INTEGRATION \n The module provides Views integration with relationships to connect content lifecycle entities to their referenced content entities (nodes, media, taxonomy terms, etc.).\n\n Back to top",
+  "project_description": "AI Content Lifecycle helps content editors find stale or incorrect content. An admin configures which content entity types and bundles to check and a per-bundle prompt describing what counts as outdated; a batch process then renders each entity, converts it to Markdown, and asks the site's configured drupal/ai chat provider to return a strict JSON verdict ({mark_for_update, reason}). When the model flags an item, the module creates or updates a revisionable 'content_life_cycle' entity referencing the content and stores the reason plus a review status (pending/analyzed/reviewed/updated/ignored). Editors work the queue from the entity's admin collection and an optional Views integration that relates lifecycle records to their nodes. All LLM access goes through the drupal/ai provider abstraction, so this module holds no API keys or HTTP client of its own.",
   "maintenance_status": "Seeking co-maintainer(s)",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
