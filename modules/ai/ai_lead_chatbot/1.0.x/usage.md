@@ -1,31 +1,29 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-AI Lead Chatbot adds an OpenAI-backed chat widget that qualifies visitors and captures leads.
+AI Lead Chatbot adds an OpenAI-backed chat widget that converses with visitors and stores captured leads as `chatbot_lead` entities.
 
 ---
 
-AI Lead Chatbot places a conversational chat widget on the site that talks to visitors via OpenAI, extracts lead details (name, contact, service interest) from the conversation, and stores completed leads as `chatbot_lead` entities that staff review under an admin list. It targets marketing/sales lead capture on public pages.
-
-The chat endpoints (`/chat/start`, `/chat`) are intentionally open to anonymous visitors (`_access: 'TRUE'`), and each `/chat` POST invokes OpenAI on the site's key with no rate-limiting or CSRF token — the module's own routing carries a TODO to add CSRF. Operators should front it with rate limiting/WAF to prevent unauthenticated cost abuse. Lead admin is gated by `view chatbot leads` / `manage chatbot leads`; config by `administer AI Lead Chatbot`. Depends on core `system` and `user`.
+AI Lead Chatbot places a floating chat widget on the site that talks to visitors through OpenAI's chat-completions API. During the conversation the assistant works to extract three details — the service the visitor is interested in, their name, and a phone or email contact — and once all three are collected it saves them as a `chatbot_lead` content entity that staff review under Content → Chatbot Leads. Per-session conversation state lives in Drupal's private tempstore. Administrators set the business name, chatbot tone, an FAQ knowledge base, and OpenAI model/temperature/max-tokens at Configuration → Services → AI Lead Chatbot; the OpenAI API key is read from `settings.php`. The widget can be auto-attached to all non-admin pages or placed manually via the "AI Lead Chatbot Widget" block, and because leads are Drupal entities they work with Views for reporting and export. The module depends only on core `system` and `user` and targets Drupal 11.
 
 ---
 
-- Place an AI chat widget on the site.
-- Talk to visitors via OpenAI.
-- Qualify and capture leads.
-- Extract name/contact/service from chat.
-- Store leads as `chatbot_lead` entities.
-- Let staff review leads in an admin list.
-- Expose `/chat/start` and `/chat` to anonymous visitors.
-- Invoke OpenAI per message on the site's key.
-- Lack built-in rate-limiting on `/chat`.
-- Lack a CSRF token (self-noted TODO).
-- Front with rate-limiting/WAF to curb cost abuse.
-- Gate lead viewing with `view chatbot leads`.
-- Gate lead management with `manage chatbot leads`.
-- Gate config with `administer AI Lead Chatbot`.
-- Depend on core `system` and `user`.
-- Require Drupal 11.
-- Support marketing/sales capture.
-- Filter chat input with Xss::filter.
-- Persist completed leads.
-- Monitor provider spend.
+- Add an AI chat widget to a public Drupal site for lead capture.
+- Qualify visitors through a natural conversation instead of a static contact form.
+- Extract a visitor's service interest, name, and contact from chat automatically.
+- Store completed leads as `chatbot_lead` content entities.
+- Review captured leads in the admin list at `/admin/content/ai-chatbot-leads`.
+- Build custom Views reports and exports over the lead entity.
+- Configure the chatbot's business name and conversational tone (friendly, professional, casual, formal).
+- Give the bot an FAQ knowledge base (`Question? | Answer` per line) it can answer from mid-conversation.
+- Choose the OpenAI model (e.g. `gpt-4o-mini`, `gpt-4`) per site.
+- Tune response creativity and length with temperature and max-tokens settings.
+- Auto-display the floating widget on all non-admin pages with one checkbox.
+- Place the widget deliberately on selected pages via the "AI Lead Chatbot Widget" block.
+- Keep the OpenAI API key out of config by reading it from `settings.php`.
+- Provide 24/7 first-line visitor engagement without live-chat staff.
+- Answer common pre-sales questions while still collecting contact details.
+- Power a headless/decoupled front end via the JSON `/chat/start` and `/chat` endpoints.
+- Support service businesses (agencies, consulting, legal, trades) capturing enquiries.
+- Qualify SaaS trial or demo requests before they reach sales.
+- Capture event or admissions enquiries conversationally.
+- Track which service each lead asked about for routing to the right team.
+- Grant marketing/sales staff read access to leads separately from edit/delete rights.

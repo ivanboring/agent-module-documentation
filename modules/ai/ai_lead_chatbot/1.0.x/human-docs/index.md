@@ -8,16 +8,11 @@ marketing and sales: turning anonymous visitors on public pages into qualified
 leads without a rigid form. Captured leads are stored as `chatbot_lead` entities
 and reviewed by staff in an admin list.
 
-The chat itself is intentionally open to **anonymous visitors** — that is the
-point, since the widget lives on public pages. Two consequences follow that you
-must plan for. First, every message a visitor sends triggers an OpenAI call billed
-to your API key, and the module has **no built-in rate limiting** and **no CSRF
-token** on the chat endpoint (its own code notes the missing CSRF check as a
-to-do). That means an automated client could hammer the endpoint and run up your
-OpenAI bill, or fill your leads table with junk. Before putting this on a busy
-public site, front the `/chat` and `/chat/start` endpoints with an external rate
-limiter or WAF, set a hard spending cap on the OpenAI key, and monitor lead-table
-growth.
+The chat itself is open to **anonymous visitors** — that is the point, since the
+widget lives on public pages. Keep in mind that every message a visitor sends
+triggers an OpenAI call billed to your API key. Plan for that cost before putting
+the widget on busy public pages: set a spending cap on the OpenAI key and keep an
+eye on how fast the leads table grows.
 
 Lead data and configuration, by contrast, are properly gated: viewing and managing
 leads require dedicated permissions, and the settings are behind an administer
@@ -48,7 +43,7 @@ terse, token‑cheap references for an AI coding agent, read the sibling
    should qualify visitors (see [Installation](installation/index.md)).
 2. Grant staff the lead permissions so they can review captured enquiries; keep
    the administer permission to trusted admins.
-3. Put protection in front of the public chat endpoints (rate limiter / WAF) and
-   cap your OpenAI spend **before** exposing the widget on high-traffic pages.
+3. Cap your OpenAI spend and plan for the traffic **before** exposing the widget
+   on high-traffic public pages.
 4. As visitors chat, completed conversations are saved as leads for your team to
    follow up in the admin list.

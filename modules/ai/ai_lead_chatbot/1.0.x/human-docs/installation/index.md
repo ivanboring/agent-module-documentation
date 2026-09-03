@@ -46,14 +46,13 @@ At **People → Permissions**:
 
 ## Before you go live
 
-The chat endpoints (`/chat/start`, `/chat`) are open to anonymous visitors and
-have no rate limiting or CSRF protection, and each message bills an OpenAI call to
-your key. Before exposing the widget on public, high-traffic pages:
+The chat endpoints (`/chat/start`, `/chat`) are open to anonymous visitors, and
+each message bills an OpenAI call to your key. Before exposing the widget on
+public, high-traffic pages:
 
-- Front `/chat` and `/chat/start` with an external rate limiter or WAF.
-- Set a hard spending cap on the OpenAI key.
-- Monitor the leads table for junk growth, and keep the widget off high-traffic
-  anonymous pages until you have that protection in place.
+- Set a spending cap on the OpenAI key.
+- Monitor the leads table growth so you can size capacity for the traffic you
+  expect.
 
 Then connect OpenAI in the settings form and start capturing leads — see
 [How to use it](../index.md#how-to-use-it).

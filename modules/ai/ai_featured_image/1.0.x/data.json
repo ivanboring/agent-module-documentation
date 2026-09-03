@@ -1,16 +1,16 @@
 {
   "name": "AI Featured Image",
   "data_name": "ai_featured_image",
-  "description": "Generates featured images for nodes using AI image generation.",
+  "description": "Auto-generates a node's featured/hero image with OpenAI DALL-E on presave.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Artificial Intelligence",
   "composer_namespace": "drupal/ai_featured_image",
   "composer_requirements": {},
   "dependent_modules": [
     "node",
     "file"
   ],
-  "configure": null,
+  "configure": "ai_featured_image.settings",
   "core_version_requirement": "^11",
   "active_installs": null,
   "list_position": null,
@@ -20,25 +20,25 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Artificial Intelligence (AI)",
     "Media"
   ],
   "subcategories": [
-    "AI tooling / function calling"
+    "AI image & video generation"
   ],
   "keywords": [
     "ai",
     "featured image",
-    "generation",
-    "node",
-    "image"
+    "dall-e",
+    "openai",
+    "node"
   ],
-  "project_description": "AI Featured Image is a Drupal 11 module that automatically generates featured images for new nodes using artificial intelligence. Leveraging the DALL·E API (OpenAI), it creates a unique image based on the node's title and content, and automatically assigns it to the configured image field.\n\n Ideal for news sites, blogs, government portals, or any site that needs to visually enrich its content without relying on a designer.\n\n Key Features \n\n \n Per content type configuration: enable automatic image generation only for the bundles you select. \n Configurable image field: specify the field where the generated image will be stored. \n Custom prompt: define a template to describe what the AI should generate (e.g., Header about: [title] - [body] ). \n Placeholder replacement: automatically replaces [title] , [body] , and other fields. \n Integration with DALL·E (OpenAI): directly calls the API to generate the image. \n Automatic storage: the image is saved in public://ai_images/ as a File entity. \n \n Requirements \n\n \n An OpenAI account with access to the image generation API (DALL·E). \n A valid API key. \n HTTPS connection enabled on the server. \n An image field (e.g., field_image ) configured on the target content types. \n \n How to Use \n\n \n Install the module as usual (via Composer or manually). \n Go to the configuration page: /admin/config/content/ai-featured-image \n Enter your OpenAI API Key. \n Select the content types where the feature should apply. \n Specify the image field (e.g., field_image). \n Optionally, customize the prompt to generate more relevant images. \n \n Roadmap (future versions) \n\n \n Support for Media fields. \n Preview image before saving. \n Support for other models (Stable Diffusion, Replicate, Gemini, Claude). \n Usage limits per user or role. \n Integration with editorial workflows.",
+  "project_description": "AI Featured Image automatically generates a featured/hero image for a node when it is saved without one. On node presave, for the content types you enable, it builds a prompt from the node (title/body placeholders), calls the OpenAI image-generation (DALL-E) API directly over HTTP, downloads the returned image into public://ai_images/ as a managed File entity, and assigns it to the image field you name. It is a small hook-driven helper with a single settings form (enable toggle, OpenAI API key, enabled content types, target image field machine name, prompt template) and one service, FeaturedImageGenerator. Intended for blogs, news sites and portals that want automatic imagery for content that ships without a picture. Note: it calls OpenAI directly (not through the drupal/ai provider abstraction).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

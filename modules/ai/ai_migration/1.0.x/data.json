@@ -1,18 +1,27 @@
 {
   "name": "AI Migration",
   "data_name": "ai_migration",
-  "description": "Leverages AI to make content migration easier via JSON:API and Migrate.",
+  "description": "Fetches web pages and uses an AI provider to extract their content into structured Drupal entities via a Migrate Plus data parser, guided by JSON schema derived from the target content type.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Migration",
   "composer_namespace": "drupal/ai_migration",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.2",
+    "drupal/migrate_plus": "^6.0",
+    "drupal/migrate_tools": "^6.1",
+    "drupal/document_loader_html_processor": "^2.0",
+    "drupal/schemata": "^1.0",
+    "league/commonmark": "*"
+  },
   "dependent_modules": [
     "drupal:ai",
     "drupal:jsonapi",
     "drupal:migrate",
     "drupal:migrate_plus",
     "drupal:serialization",
-    "drupal:schemata"
+    "drupal:schemata",
+    "drupal:schemata_json_schema",
+    "document_loader_html_processor:document_loader_html_processor"
   ],
   "configure": null,
   "core_version_requirement": "^10 || ^11",
@@ -21,28 +30,36 @@
   "project_url": "https://www.drupal.org/project/ai_migration",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "league/commonmark"
+  ],
   "suggests": {},
-  "submodules": [],
-  "provides_permissions": true,
+  "submodules": [
+    "ai_migration_example"
+  ],
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "ai_migration_prompt"
+  ],
   "categories": [
     "Artificial Intelligence (AI)",
     "Import and export"
   ],
   "subcategories": [
-    "AI tooling / function calling"
+    "Content migration / import",
+    "Migration tooling"
   ],
   "keywords": [
     "ai",
     "migration",
-    "jsonapi",
     "migrate",
-    "schema"
+    "schema",
+    "web scraping",
+    "structured output"
   ],
-  "project_description": "The AI Migration module is under active development. Please let us know in the issue queue if you are interested in participating.\n\n This module helps with migrating content into Drupal using AI to parse web pages based on your Drupal content type schema, generating migrations, that migrate the content creating Drupal nodes.\n\n \nGoals \n \n To make it easier to parse fairly unstructured content from web pages or documents and transform it into structured content in Drupal. \"Fill the fields, not bloat the body.\" \n To make it easy to migrate slices of content into a Drupal instance to support phased migration of legacy sites into Drupal sites. \n Spend less time tuning migrations and more time migrating. \n \n \n\n \nRequirements \n This module requires:\n\n \n drupal/ai:^1.2 \n drupal/jsonapi \n drupal/migrate:^6.0 \n drupal/migrate_plus:^6.1 \n drupal/serialization \n drupal/schemata:^1.0 \n drupal/schemata_json_schema \n \n \n\n \nRecommended Models \n We recommend using these models with AI Migration:\n\n \n OpenAI GPT-4.1-mini \n OpenAI GPT-5-nano \n Gemini 2.5 Flash \n \n \nInstallation & Configuration \n \n Install the module as you would any other module. \n Configure an AI API provider at /admin/config/ai/providers. \n Set the default AI API provider for Chat and Chat with Structured Response at /admin/config/ai/settings. \n Create a Drupal content type with fields that you want to populate with migrated content. \n Create a migration yml file in your custom module. See the simple_content_migration.yml file in the ai_migration_example submodule for an example. \n Execute the migration to migrate content. \n \n \n\n \nAI Migration Example \n Provides a sample migration that demonstrates AI Migration functionality. The submodule creates a content type called 'Simple Content Migration' that has fields that can be populated by the simple_content_migration.yml migration. The simple_content_migration.yml migration is a good starting point for creating your own migrations. The migration targets CA example website https://accessibility.civicactions.com/ and converts blog posts into Drupal nodes.\n\n \n\n \nCaching \n The module creates a cache bin where combinations of AI responses keyed by provider-model-prompt are stored. This way, identical queries to the same model will not incur additional costs from the provider. Keep in mind that clearing all caches also clears out the AI Migration cache.\n\n \n\n \nDevelopers and Contributors \n See CONTRIBUTING.md for details on how to set up a local development environment and contribute.\n\n \n\n \nMore Documentation \n See our additional documentation for more details.\n\n Back to top",
+  "project_description": "The AI Migration module is under active development. It helps migrate content into Drupal by using AI to parse web pages according to your Drupal content type schema, generating structured field data and creating Drupal nodes (or other entities) from it.\n\nGoals: make it easier to turn unstructured content from web pages or documents into structured Drupal content (\"fill the fields, not bloat the body\"), make it easy to migrate slices of content to support phased migration of legacy sites, and spend less time tuning migrations.\n\nHow it works: the module supplies an 'ai' Migrate Plus data parser. For each configured source URL it fetches the HTML (via the migrate_plus http data fetcher), optionally cleans/reduces it with the document_loader_html_processor (Symfony HtmlSanitizer), derives a JSON schema from the destination entity type and bundle using the Schemata module, and sends the HTML plus schema to the configured AI chat provider. The provider returns a JSON:API-shaped object whose fields are mapped onto the destination entity by ordinary Migrate process plugins. Responses are cached in a dedicated cache bin keyed by prompt+provider+model to avoid repeat provider costs.\n\nRequirements: drupal/ai ^1.2, drupal/migrate_plus, drupal/migrate_tools, drupal/document_loader_html_processor ^2.0 (brings document_loader and html_processor), drupal/schemata ^1.0, drupal/schemata_json_schema, core jsonapi/serialization, and league/commonmark (used to render the README on the help page). Recommended models include OpenAI GPT-4.1-mini, GPT-5-nano and Gemini 2.5 Flash. The ai_migration_example submodule ships ready-to-run sample migrations.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

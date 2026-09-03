@@ -1,13 +1,13 @@
 {
   "name": "AI Knowledge Connector",
   "data_name": "ai_knowledge_connector",
-  "description": "Connects Drupal entities with embedding providers and vector stores for AI retrieval.",
+  "description": "Connects Drupal entities with embedding providers and vector stores for RAG workflows.",
   "version": "1.0.x",
-  "package": null,
+  "package": "AI",
   "composer_namespace": "drupal/ai_knowledge_connector",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:system"
+    "system"
   ],
   "configure": null,
   "core_version_requirement": "^11",
@@ -22,7 +22,12 @@
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "VectorStore",
+    "EntityExtractor",
+    "ChunkStrategy",
+    "RetrievalStrategy"
+  ],
   "categories": [
     "Artificial Intelligence (AI)"
   ],

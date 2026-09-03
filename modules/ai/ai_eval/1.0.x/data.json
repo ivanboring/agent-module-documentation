@@ -1,30 +1,38 @@
 {
   "name": "AI Eval",
   "data_name": "ai_eval",
-  "description": "An evaluation framework for AI agents with pluggable graders and YAML datasets.",
+  "description": "Evaluation framework for AI agents and providers: pluggable graders, YAML/entity datasets, LLM judges, scoring with quality gates, trace review, and prompt optimization.",
   "version": "1.0.x",
   "package": "AI",
   "composer_namespace": "drupal/ai_eval",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.0",
+    "opis/json-schema": "^2.3"
+  },
   "dependent_modules": [
     "ai:ai",
     "drupal:options",
     "drupal:file"
   ],
-  "configure": null,
+  "configure": "ai_eval.settings",
   "core_version_requirement": "^11.3",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_eval",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "8.3",
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [],
+  "submodules": [
+    "ai_eval_droost"
+  ],
   "provides_permissions": true,
-  "provides_drush_commands": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "AiEvalGrader",
+    "AiEvalDatasetSource"
+  ],
   "categories": [
     "Artificial Intelligence (AI)"
   ],
