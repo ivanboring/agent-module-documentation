@@ -1,24 +1,27 @@
 {
   "name": "Affiliated",
   "data_name": "affiliated",
-  "description": "Provides common affiliate-marketing functionality (referrals/commissions), with Commerce/Webform/registration submodules.",
+  "description": "Affiliate/referral tracking framework: detects affiliate links, cookies the visitor, and records clicks, campaigns and attributed conversions as entities.",
   "version": "1.0.x",
   "package": "Affiliated",
   "composer_namespace": "drupal/affiliated",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:views",
-    "drupal:user"
+    "views",
+    "user"
   ],
-  "configure": null,
-  "core_version_requirement": "^10.1||^11",
+  "configure": "affiliated.settings",
+  "core_version_requirement": "^10.1 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/affiliated",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/commerce": "Required for affiliate_commerce submodule to track commerce order conversions",
+    "drupal/token": "Provides token browser for conversion label patterns"
+  },
   "submodules": [
     "affiliate_commerce",
     "affiliate_registrations",
@@ -29,19 +32,22 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "User engagement"
+    "User engagement",
+    "Integrations"
   ],
   "subcategories": [
-    "Affiliate / referrals"
+    "Analytics & tracking",
+    "Multi-domain / affiliate sites"
   ],
   "keywords": [
     "affiliate",
     "referral",
     "commission",
+    "tracking",
     "marketing",
-    "tracking"
+    "conversion"
   ],
-  "project_description": "Affiliate Tracking Framework for Drupal 10.3+ \n Affiliated provides the core infrastructure for tracking affiliate referrals and conversions in Drupal. It works out of the box for basic affiliate tracking, but the real power comes from extending it with your own business logic.\n\n Use the included submodules for simple implementations, or build custom conversion types, reporting, and commission rules tailored to your specific needs. The aim of this project is to provide the hooks, events, and entity structure to build your own affiliate tracking system based on your specific needs.\n\n This was originally based off the work done in affiliate_ng (Drupal 7), rebuilt for modern Drupal with improved architecture and extensibility.\n\n What's Included \n \n Click Tracking – Automatically detects affiliate links ( ?affiliate=CODE ), manages cookies, and logs clicks \n Conversion Entity System – Bundled entity type for tracking any conversion event you define \n Campaign Management – Affiliates can organize links into campaigns to track which efforts perform best \n Affiliate Dashboard – Each affiliate gets a dashboard at /user/UID/affiliate for link generation and statistics \n Ready-to-Use Submodules – Track Commerce orders, user registrations, and webform submissions \n \n How It Works \n \n Click – Visitor arrives via an affiliate link ( yoursite.com?affiliate=john123 ) \n Cookie – Affiliate ID is stored in the visitor's browser \n Action – Visitor completes a trackable action (purchase, registration, form submission) \n Conversion – If an affiliate cookie is found on the device, a conversion entity is created and attributed to the affiliate account \n \n Included Submodules \n \n affiliate_commerce – Track Drupal Commerce order conversions \n affiliate_registrations – Track new user registration conversions \n affiliate_webform – Track webform submission conversions \n \n For production sites, you'll likely want to extend this basic functionality or create custom conversion types that include your commission rules, validation logic, and business-specific requirements.\n\n Extending the module \n The framework is designed to be extended. Most implementations will add:\n\n \n Custom conversion types with specific commission calculations and validation \n Detailed reporting Views for affiliates and administrators \n Payout tracking and management workflows \n Custom notification systems and affiliate communications \n Integration with your specific business processes \n \n There is extensive documentation in the README file. Refer to this for examples of implementing custom conversion types, using hooks, and responding to events. I will keep this file updated as new features and API improvements are added.\n\n Quick Start \n \n Install the module like normal: composer require drupal/affiliated and drush en affiliated \n Configure settings at /admin/config/affiliate/settings \n Grant users that you want to be affiliates the \"act as an affiliate\" permission at a minimum, if you want them to view reporting you will also want to grat view access to the clicks, conversions, campaigns, etc. \n Enable the submodules you need (or create custom conversion types at /admin/structure/affiliate/conversion/types ) \n Affiliates can access their dashboard at /user/UID/affiliate \n \n Development Status \n Alpha stage: The module is functional and personally being used in production, but expect API changes before a stable 1.0. \n\n Support & Contributing \n Report bugs, request features, or submit patches in the issue queue . If you find this useful please chime in and let me know in the issue queue and on the #affiliated slack channel .\n\n Back to top",
+  "project_description": "Affiliated is an affiliate/referral tracking framework for Drupal 10.1+/11. A front-end behaviour detects an affiliate query parameter (default ?affiliate=CODE plus an optional affiliate_campaign=CODE), POSTs it to a tracker endpoint, and stores the affiliate id and campaign in browser cookies. When a cookied visitor later performs a trackable action, an affiliate_conversion entity is created and attributed to the referring affiliate account. It ships three content entities (affiliate_campaign, affiliate_click, affiliate_conversion with a config bundle affiliate_conversion_type), a per-user Affiliate Center dashboard at /user/{uid}/affiliate with own-only reporting Views for campaigns, clicks and conversions, an AffiliateManager service, and events/hooks for extending attribution and commission logic. Included submodules attribute conversions to Commerce orders, user registrations and Webform submissions. Rebuilt from the Drupal 7 affiliate_ng concept with a modern entity/event architecture; currently 1.0.0-alpha.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

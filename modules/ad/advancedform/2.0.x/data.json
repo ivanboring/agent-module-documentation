@@ -1,14 +1,14 @@
 {
   "name": "Advanced Form",
   "data_name": "advancedform",
-  "description": "Conditionally hides admin UI features on forms (a UI convenience, NOT an access control).",
+  "description": "Declutters node edit forms by hiding configured fields with CSS, revealable via a client-side toggle (a UI convenience, NOT access control).",
   "version": "2.0.x",
   "package": "Other",
   "composer_namespace": "drupal/advancedform",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": "advancedform.settings_form",
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/advancedform",
@@ -22,19 +22,23 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Administration tools"
+    "Administration tools",
+    "Theming"
   ],
   "subcategories": [
-    "Form UI customization"
+    "Form theming",
+    "CSS classes / body classes"
   ],
   "keywords": [
     "form",
+    "node form",
     "admin ui",
     "hide",
-    "conditional",
-    "ui"
+    "declutter",
+    "css",
+    "conditional"
   ],
-  "project_description": "A UI tweak to hide certain features or the form interface from normal use, but still have them available on the page for validation and quick access.\n\n This slims down the UI to make things seem simpler, without overloading the maintenance tasks with layers of permissions, or removing any control from the user.\n\n USAGE \n When enabled, any configured form can have elements hidden (by css) for normal use, and a small client-side button [Advanced] can be pressed to reveal the rest of the form as needed.\n\n CONFIGURATION \n The syntax for defining which form elements are 'hidden' is based entirely on css selectors, with some shortcuts.\n\n node-form:[#revision-information] \n\n- will hide the revision information fieldset on node forms.\n\n block-admin-configure:[#user-specific-visibility-settings] \n\n- will remove a seldom-used option from block admin pages.\n\n \n\nUse firebug or similar to find the correct selectors to choose your target form elements.\n\n A number of additional css classes are inserted into the form element for additional, specific control.\n\nTaxonomy terms selected on node forms are also set as context classes, so it's possible to define rules that only apply when a certain term is selected in the\n\nform.\n\nMore instructions are on the config page, which can be found at\n\n /admin/settings/advancedform (D6)\n\n /admin/config/user-interface/advancedform (D7)\n\n To debug the css or see how it works, look at the path '/advancedform_css'\n\n Permissions (required) \n The 7.x-1.0 release introduces a permission that provides access to the toggle button. If installing or upgrading, you should check user permissions and grant access to the roles that will have the ability to use advanced fields.\n\n SEE ALSO \n Written with reference to formfilter.module which does a similar job through access restrictions, whereas I want to trust my users, but avoid confusing\n\nthem. And clean up my own admin edit interface.\n\nThis module is intended to be more lightweight than formfilter, and does not have such an extensive admin UI. It is recommended you compare this module with that one and decide which suits you best.\n\n vertical_tabs.module is excellent, and takes a different approach at minimizing the screen size and hiding unwanted elements.\n\n This module has not been tested with and may not work well with vertical_tabs \n\n OTHERS:\n\n nodeformsettings.module - is a set of custom UI tweaks, half of which can now be done by this module.\n\n compact forms - marginally tidies up some forms on the client side.\n\n form defaults - advertises a UI for form_alter type operations. Untested\n\n Jammer - advertises similar features, though due to the odd name, it didn't come up in any initial searches for similar solutions. It's got a D7 version, so may be worth trying.\n\n Simplify does some of this also. It offers a limited pre-set list of page elements you can turn on and off with a config UI. It operates on the PHP side, so doesn't offer the on/off toggle.\n\n BACKGROUND \n This is more useful for in-house development with a set of trusted content editors. It was built for tutoring, where I needed to be able to demonstrate the functionality of the site as editors would see it, yet still have access to admin functions without messing around with switchuser etc.\n\nSo I switched off the clutter.\n\nCollapsed fieldsets are a good start, but there's still too many of them by the time we start with ecommerce products etc.\n\n Note this 'permission' isn't actually secure - the full form is still available to browser hacks - like disable css or js\n\n CSS-hide trick for context-sensitive forms developed by dman 2006\n\n Back to top",
+  "project_description": "Advanced Form is a lightweight UI tweak that slims down cluttered Drupal node edit forms. An administrator configures a set of CSS-selector rules; the module injects a generated stylesheet into node forms that hides the matching elements with `display: none`, and a small client-side toggle button lets editors reveal the full form on demand. Rules can be made context-sensitive: selecting a taxonomy term (or any options-select value) in the form adds a `selected-<label>` body class so rules can hide or show fields depending on what is chosen. This keeps day-to-day editing simple for trusted content editors without stripping access or adding permission layers. The hiding is purely cosmetic (CSS/JS on the client) and is explicitly not a security control — the full form is still present and submittable. The 2.0.x rewrite targets node forms only via hook_form_node_form_alter().",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

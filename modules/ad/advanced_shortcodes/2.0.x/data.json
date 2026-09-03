@@ -1,13 +1,13 @@
 {
   "name": "Advanced Shortcodes",
   "data_name": "advanced_shortcodes",
-  "description": "Adds a set of Bootstrap-style shortcodes (alerts, columns, accordions, icons, jumbotron, progress) to the Shortcode text filter.",
+  "description": "Adds a set of Bootstrap-style shortcode plugins (alerts, columns, rows, accordions, icon, jumbotron, progress, hr) to the Shortcode text-format filter.",
   "version": "2.0.x",
   "package": "Input filters",
   "composer_namespace": "drupal/advanced_shortcodes",
   "composer_requirements": {},
   "dependent_modules": [
-    "shortcode:shortcode"
+    "shortcode"
   ],
   "configure": null,
   "core_version_requirement": "^9 || ^10 || ^11",
@@ -21,7 +21,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"
@@ -37,9 +37,9 @@
     "accordion",
     "alert",
     "column",
-    "markup"
+    "jumbotron"
   ],
-  "project_description": "Advanced shortcode is complementary to a Shortcode module , You can use this module on Drupal 8, It will help you to create bootstrap elements very quickly.\n\n Requirements \n \n Shortcode \n Vendor stream wrapper \n \n Shortcode basic tags module \n [accordions] : The following shows a collapsible panel with a list group inside\n\n [accordion]   : this is accordion child \n\n [alerts] : to create predefined alert messages choose one Type like parameter : 1-success 2-info 3-warning 4-danger.\n\n [row] : in this row you can add multiple  colomn.\n\n [col] : create a multiple  colomn with width size .\n\n [progress] :A progress bar can be used to show a user how far along he/she is in a process.\n\n [jumbotron] :A jumbotron indicates a big box for calling extra attention to some special content or information.\n\n [hr] : a line tag\n\n Back to top",
+  "project_description": "Advanced Shortcodes complements the Shortcode module by shipping a set of ready-made Bootstrap-style shortcode plugins. Once the Shortcode text-format filter is enabled and the individual shortcodes are ticked on a text format, editors can wrap content in bracket tags such as [alerts], [accordions]/[accordion], [row]/[column], [icon], [jumbotron], [progress] and [hr] to output Bootstrap markup without writing HTML by hand. Each shortcode is a plugin under src/Plugin/Shortcode that builds a render array rendered by a Twig template in templates/. The module attaches its bundled Bootstrap CSS and an accordion accessibility script on all non-admin pages. It provides no routes, permissions, services or configuration of its own; it is configured entirely through the Shortcode filter settings on each text format.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

@@ -15,10 +15,9 @@ responsive grid columns and rows, collapsible accordions, inline icons, a hero
 Bootstrap CSS/JS and attaches it on the front end automatically (it skips admin
 pages), so the components are styled out of the box.
 
-There is a security consideration worth knowing up front: several of the
-shortcodes output their inner text without extra escaping. That makes them
-powerful but means they must only be enabled in text formats limited to **trusted
-editors** — see [Configuration](configuration/index.md) for the full explanation.
+Because the shortcodes are just an add-on to a text-format filter, you turn them
+on per text format and decide which roles can use that format — see
+[Configuration](configuration/index.md) for the steps.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token-cheap references for an AI coding agent, read the sibling
@@ -29,8 +28,7 @@ terse, token-cheap references for an AI coding agent, read the sibling
 1. [Installation](installation/index.md) — install the module with Composer and
    enable it alongside its Shortcode dependency.
 2. [Configuration](configuration/index.md) — enable the shortcode filter on a text
-   format, choose which shortcodes to allow, and the important trusted-format
-   security note.
+   format and choose which shortcodes to allow.
 
 ## Where it lives in the admin menu
 

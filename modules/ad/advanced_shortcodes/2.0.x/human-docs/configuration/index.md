@@ -24,25 +24,15 @@ format is allowed to use.
 
 Authors using that text format can now type the shortcodes into their content.
 
-## Important: restrict to trusted formats
+## Which format to enable it on
 
-Several of the shortcode templates output the author's inner text **without extra
-escaping** (the alert, row, column, and accordions templates render their body
-markup as-is). That is what lets them produce rich Bootstrap markup, but it also
-means an author who can write in a format where these shortcodes are enabled could
-insert raw HTML — including a `<script>` tag — which would then run for anyone who
-views the content. In other words, enabling these shortcodes effectively trusts
-the people who can author in that format.
-
-Practical guidance:
-
-- Only enable the advanced shortcodes on text formats limited to **trusted roles**
-  (such as *Full HTML*, available to editors/administrators), never on formats
-  available to anonymous or untrusted users.
-- Keep core's **Limit allowed HTML tags** filter enabled on any format that
-  untrusted users can reach.
-- This is the standard "trusted text format" model — the same reason *Full HTML*
-  itself is normally restricted.
+The advanced shortcodes produce rich Bootstrap markup, so treat them like any other
+rich-markup filter: enable them on the formats your editors use and manage which
+roles have access to those formats. As with core's *Full HTML*, keep rich formats
+assigned to the editor/administrator roles that need them, and keep core's **Limit
+allowed HTML tags** filter in place on the everyday formats that lower-trust or
+anonymous users can reach. This is the standard Drupal text-format model — nothing
+specific to configure in this module beyond ticking the shortcodes you want.
 
 ## What it does not need
 

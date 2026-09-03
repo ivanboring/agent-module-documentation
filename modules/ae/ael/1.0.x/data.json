@@ -1,7 +1,7 @@
 {
   "name": "As Event Listener",
   "data_name": "ael",
-  "description": "Enables event-listener registration via the #[AsEventListener] PHP attribute.",
+  "description": "A framework helper that lets modules register event listeners with Symfony's #[AsEventListener] PHP attribute instead of tagged services, via a ServiceProvider that adds container autoconfiguration for the attribute.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/ael",
@@ -17,15 +17,15 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
   ],
   "subcategories": [
-    "Code generation / scaffolding"
+    "Hook / event system"
   ],
   "keywords": [
     "event listener",
@@ -34,7 +34,7 @@
     "developer",
     "framework"
   ],
-  "project_description": "The \"AsEventListener\" module enables developers to use the Symfony attribute #[AsEventListener] to register event subscribers/listeners.\n\n To register an event subscriber in Drupal you need to create a service and tag\n\nit as event_subscriber . See Subscribe to and dispatch events on drupal.org.\n\n Symfony however defines the attribute #[AsEventListener] so developers are able to register classes or single methods as event listeners. This module brings this feature to Drupal.\n\nIt is planned to add this feature to Drupal core. Until #3376163 is fixed, this module provides a way to make use of it now.\n\n Usage \n To make use of this module you need to setup classes or methods as event\n\nlisteners using #[AsEventListener] . The classes needs to be in namespace Drupal\\[...]\\EventListener to be registered automatically.\n\n Example \n \n\n<?php \n\n namespace Drupal\\my_custom_module\\EventListener;\n\n #[AsEventListener(event: RoutingEvents::ALTER)]\n\nclass TestEventListener {\n\n /**\n\n * Use the class directly as event listener.\n\n *\n\n * @param \\Drupal\\Core\\Routing\\RouteBuildEvent $event\n\n * The dispatched event.\n\n */\n\n public function __invoke(RouteBuildEvent $event): void {\n\n // Do something.\n\n }\n\n }\n\n This will add this class as event listener for RoutingEvents::ALTER so every time this event is dispatched, TestEventListener::__invoke() is called.\n\n See Defining Event Listeners with PHP Attributes for details about how to use #[AsEventListener] .",
+  "project_description": "The \"AsEventListener\" module enables developers to use the Symfony attribute #[AsEventListener] to register event subscribers/listeners.\n\n To register an event subscriber in Drupal you normally need to create a service and tag it as event_subscriber. Symfony however defines the attribute #[AsEventListener] so developers are able to register classes or single methods as event listeners. This module brings this feature to Drupal.\n\n It is planned to add this feature to Drupal core; until #3376163 is fixed, this module provides a way to make use of it now.\n\n Usage \n To make use of this module you set up classes or methods as event listeners using #[AsEventListener], in an autoconfigured/autowired service. Example: a class annotated #[AsEventListener(event: RoutingEvents::ALTER)] with an __invoke(RouteBuildEvent $event) method is called every time that event is dispatched.\n\n See Defining Event Listeners with PHP Attributes for details about how to use #[AsEventListener].",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

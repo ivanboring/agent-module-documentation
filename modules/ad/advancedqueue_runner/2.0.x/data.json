@@ -1,22 +1,29 @@
 {
   "name": "Advanced Queue Runner",
   "data_name": "advancedqueue_runner",
-  "description": "Runs Advanced Queue jobs in the background without a cron job or CLI command.",
+  "description": "Runs Advanced Queue jobs continuously in the background as a daemon, without a cron job or a manual Drush command.",
   "version": "2.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/advancedqueue_runner",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "react/child-process": "^0.6.5",
+    "react/event-loop": "^1.2",
+    "drupal/advancedqueue": "^1.2"
+  },
   "dependent_modules": [
-    "advancedqueue:advancedqueue"
+    "advancedqueue"
   ],
-  "configure": null,
-  "core_version_requirement": "^8.8||^9||^10||^11",
+  "configure": "advancedqueue_runner.runner_config_form",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/advancedqueue_runner",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "react/child-process",
+    "react/event-loop"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
@@ -24,19 +31,23 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
+    "Administration tools",
     "Automation"
   ],
   "subcategories": [
-    "Queue / batch processing"
+    "Queue / background processing",
+    "Cron / task scheduling"
   ],
   "keywords": [
     "advanced queue",
     "queue",
+    "daemon",
     "background",
     "jobs",
+    "reactphp",
     "processing"
   ],
-  "project_description": "This module provides a way to run Advanced queue automatically as daemon without manually using a Drush command or running a Cron job. \n\n Requirements: \n\n \n Advanced Queue \n ReactPHP components: Event Loop and Child Process \n \n Installation: \n\n \n Highly recommend to install the module by using composer because it will install the module and its dependencies \n composer require 'drupal/advancedqueue_runner:^2.0' . \n\n \n Usage: \n\n \n Please visit /admin/config/advancedqueue/runner to configure and start the runner.",
+  "project_description": "Advanced Queue Runner assists the Advanced Queue (advancedqueue) module by processing its queued jobs automatically as a long-running background daemon, so queued work is picked up without configuring a cron job or manually invoking a Drush command. An admin configures and starts/stops the runner from a settings form at /admin/config/advancedqueue/runner: it records the site's Drush binary path and Drupal root path, the queue(s) to watch, a polling interval, and a per-queue (or system-wide) concurrency limit, then spawns a detached PHP process (src/Scripts/jobs.php). That process boots the Drupal kernel and uses ReactPHP's event loop to poll the selected queues on the interval, launching `drush advancedqueue:queue:process <queue>` child processes when jobs are pending. An optional hook_cron() step restarts the daemon if it is found to be no longer running (e.g. after a server reboot). Requires the Advanced Queue module and the ReactPHP event-loop and child-process libraries.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

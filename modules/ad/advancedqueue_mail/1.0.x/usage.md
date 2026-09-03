@@ -1,36 +1,37 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Advanced Queue Mail sends email notifications for Advanced Queue jobs.
+Advanced Queue Mail emails a configured recipient list when Advanced Queue jobs succeed, are retried, or permanently fail.
 
 ---
 
-Advanced Queue Mail **sends email notifications for Advanced Queue jobs** — emailing on queue job events
-(e.g. success/failure) so operators are notified about background processing, with a Symfony Mailer submodule.
-It depends on the Advanced Queue module, in the Mail package.
-
-Use it to get notified about queue-job outcomes. It is a mail/operations feature. Security note: it sends
-**automated email** — configure recipients to trusted operator addresses and keep templates from leaking
-sensitive job data; as with any mailer, avoid it becoming a noise/relay source. It has no access-control role.
-Configure the notification recipients and events.
+Advanced Queue Mail is an operations/notification helper for the Advanced Queue module. It subscribes to the
+`JOB_SUCCESS`, `JOB_RETRY` and `JOB_FAILURE` events and, for each event type you enable, sends an email built from
+an admin-configured subject and body template. Templates support the placeholders `[job_id]`, `[job_type]`,
+`[queue_id]`, `[message]` and `[state]`, which are filled in from the job that triggered the event. Out of the box
+it sends through Drupal core's mail system; enabling the bundled `advancedqueue_mail_symfony_mailer` submodule
+routes the same notifications through Mailer Plus (Symfony Mailer) so you can use policies, HTML and attachments.
+All settings live in one config object edited at *Configuration → System → Queues → Mail Notifications*.
 
 ---
 
-- Email notifications for queue jobs.
-- Notify on job success/failure.
-- Alert operators to processing.
-- Depend on the Advanced Queue module.
-- Provide a Symfony Mailer submodule.
-- Serve mail/operations.
-- Send automated email.
-- Send to trusted operator addresses.
-- Keep templates from leaking job data.
-- Have no access-control role.
-- Configure recipients and events.
-- Handle queue mail.
-- Send notifications.
-- Configure the mail.
-- Notify operators.
-- Handle the emails.
-- Alert on jobs.
-- Email outcomes.
-- Avoid noise/relay.
-- Provide queue notifications.
+- Email administrators when a queued job permanently fails (the default enabled event).
+- Notify a team when a job completes successfully.
+- Send an alert each time a job is scheduled for a retry.
+- Turn any of the three event notifications on or off independently.
+- Send to a comma-separated list of recipient addresses per event type.
+- Include the failing job's ID in the message with the `[job_id]` placeholder.
+- Include the job/plugin type with `[job_type]`.
+- Include the queue machine name with `[queue_id]`.
+- Include the job result message (e.g. an exception text) with `[message]`.
+- Include the job's final state with `[state]`.
+- Customise the subject line per event type.
+- Customise the body text per event type.
+- Monitor background import/sync queues without watching logs.
+- Get paged when a long-running batch queue fails after its retry budget is exhausted.
+- Route notifications through Mailer Plus for HTML emails by enabling the submodule.
+- Configure per-subtype Mailer Plus policies (Job success / Job retry / Job failure).
+- Keep the same recipients across a Drupal core mail setup and a Mailer Plus setup.
+- Alert on e-commerce order-processing queue failures.
+- Notify content teams when a bulk-publish queue finishes.
+- Watch cron-driven queues for silent failures.
+- Feed queue-failure notifications to a shared ops inbox.
+- Add queue observability to a site with no external monitoring stack.
