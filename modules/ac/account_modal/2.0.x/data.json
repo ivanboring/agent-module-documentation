@@ -1,14 +1,14 @@
 {
   "name": "Account Modal",
   "data_name": "account_modal",
-  "description": "Opens account links (login/register/reset) in a modal window.",
+  "description": "Adds the ability to open account links in a modal window.",
   "version": "2.0.x",
   "package": "User interface",
   "composer_namespace": "drupal/account_modal",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": "account_modal.admin_settings",
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/account_modal",
@@ -25,16 +25,18 @@
     "Content display"
   ],
   "subcategories": [
-    "Popups / modals"
+    "Lightbox / modal display"
   ],
   "keywords": [
     "account",
     "modal",
+    "dialog",
     "login",
     "register",
-    "dialog"
+    "password reset",
+    "ajax"
   ],
-  "project_description": "Back to top \n\n Description \n Account Modal lets you:\n\n \n Open the following account pages in a modal\n \n Account page (/user/%uid) \n Login page \n Register page \n Password reset page \n Profile add/edit pages (if using Profile module) \n \n \n Submit the opened forms via AJAX \n Show errors in the dialog without reloading \n Optionally reload after success instead of redirecting \n If using Profile, you can pop up a profile create dialog after user registration. \n \n Back to top \n\n Alternatives \n These modules offer similar functionality if Account Modal\n\ndoesn't fit your needs:\n\n \n Fancy Login \n Back to top",
+  "project_description": "Account Modal turns Drupal's account links (login, register, password reset, account page, account cancellation, and optionally Profile add/edit) into AJAX modal dialogs instead of full-page navigations. It works entirely through core hooks: hook_link_alter adds the use-ajax + data-dialog-type=modal attributes to links pointing at the configured account routes, and hook_form_alter attaches an #ajax submit callback so the core login/register/password forms submit inside the dialog. On success it closes the dialog and either redirects or reloads the page; on error it re-renders the core form with status messages inside the modal. An admin form at /admin/config/user-interface/account-modal selects which pages open in a modal and controls dialog size, message position, field-description hiding, header/footer block injection, and (with the Profile module) an optional post-registration profile-create dialog. The forms themselves are still served by their normal core routes, so their access checks and CSRF tokens are unchanged.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "not-covered",

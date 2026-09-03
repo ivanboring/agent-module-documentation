@@ -1,35 +1,30 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Accessible Menu provides a JavaScript library to help create WCAG-compliant, accessible menus in the DOM.
+Accessible Menu attaches the accessible-menu JavaScript library to core menu blocks so they become WCAG/WAI-ARIA keyboard-navigable, configured per menu.
 
 ---
 
-Accessible Menu provides a JavaScript library that helps make Drupal menus WCAG-compliant — adding
-proper keyboard navigation, ARIA attributes and focus handling to menus so they are accessible to
-keyboard and screen-reader users. It depends on core Menu UI and ships an `accessible_menu_bootstrap_5`
-submodule for Bootstrap 5 integration.
-
-Use it to make site navigation menus accessible. It is an accessibility/front-end feature enhancing menu
-markup/behaviour; it has no content or access role. Apply it to the relevant menus.
+Accessible Menu integrates the third-party accessible-menu library (NickDJM/accessible-menu) into Drupal so that any core menu block can be turned into a fully accessible interactive menu — with ARIA roles, arrow-key navigation, and focus/hover handling — from the admin UI. Each menu is configured on its normal edit form (Structure → Menus): pick a menu type (Disclosure Menu, Menubar, Top Link Disclosure Menu, or Treeview), optionally make it collapsible, and tune the open/close/transition CSS classes, transition and hover timing, and optional key support. A site-wide settings page controls how the library assets are delivered — an external CDN (jsDelivr or unpkg, at a chosen semver version or "latest") or a locally installed copy under /libraries. The module adds the behaviour, the ARIA attributes, and Twig template overrides only; it intentionally ships no CSS, leaving visual styling to your theme. The Bootstrap 5 submodule adds a Bootstrap-styled library variant and navbar-oriented templates, plus an "Expand at" breakpoint setting.
 
 ---
 
-- Make menus WCAG-compliant.
-- Add keyboard navigation to menus.
-- Add ARIA attributes to menus.
-- Handle menu focus accessibly.
-- Depend on core Menu UI.
-- Use the Bootstrap 5 submodule.
-- Support screen-reader users.
-- Have no content/access role.
-- Enhance menu accessibility.
-- Apply to site menus.
-- Improve menu keyboard support.
-- Make navigation accessible.
-- Add accessible menu behaviour.
-- Support keyboard users.
-- Improve a11y of menus.
-- Enhance menu markup.
-- Provide accessible menus.
-- Configure accessible menus.
-- Add ARIA to navigation.
-- Make menus accessible.
+- Make a core navigation menu keyboard-accessible (arrow keys, Home/End, Escape) without writing JavaScript.
+- Add correct WAI-ARIA roles and states to an existing site menu to improve WCAG compliance.
+- Turn a primary navigation menu block into an ARIA menubar.
+- Render a menu as a disclosure menu where submenus expand/collapse on activation.
+- Use a Top Link Disclosure Menu so a parent link is both clickable and a submenu toggle.
+- Present a nested menu as an ARIA treeview.
+- Make a menu collapsible behind a hamburger/toggle button on small screens.
+- Configure the CSS class applied when a submenu is open (default `show`).
+- Configure the CSS class applied when a submenu is closed (default `hide`).
+- Configure a transition class and transition duration for open/close animations.
+- Set separate open and close durations independent of the base transition duration.
+- Enable hover-to-open behaviour, with "on" or "dynamic" modes and configurable hover/enter/leave delays.
+- Enable optional-key support for disclosure and top-link disclosure menus.
+- Choose whether the accessible-menu assets load from the jsDelivr CDN or unpkg.
+- Pin the library to a specific semantic version, or track "latest".
+- Serve the library from a local /libraries install instead of a CDN for offline or CSP-restricted sites.
+- Provide your own theme CSS to style the accessible markup to match your design.
+- Override the menu Twig templates via the module's theme suggestions (per menu machine name, type, or both).
+- Apply Bootstrap 5 navbar markup and behaviour to a menu using the accessible_menu_bootstrap_5 submodule.
+- Set the responsive breakpoint (`xs`–`xl`) at which a Bootstrap 5 collapsible menu expands.
+- Automatically clean up a menu's accessible-menu configuration when the menu entity is deleted.
+- Extend the system with a custom library by implementing a new `AccessibleMenuLibrary` plugin.

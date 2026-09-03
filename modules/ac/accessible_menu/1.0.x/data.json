@@ -1,22 +1,24 @@
 {
   "name": "Accessible Menu",
   "data_name": "accessible_menu",
-  "description": "Provides a JavaScript library for creating WCAG-compliant, accessible menus.",
+  "description": "Attaches the accessible-menu JavaScript library to core menu blocks to produce WCAG/WAI-ARIA keyboard-navigable menus, configured per menu.",
   "version": "1.0.x",
   "package": "Other",
   "composer_namespace": "drupal/accessible_menu",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:menu_ui"
+    "menu_ui"
   ],
-  "configure": null,
-  "core_version_requirement": "^10||^11",
+  "configure": "accessible_menu.settings",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/accessible_menu",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "accessible-menu (NickDJM/accessible-menu, ISC) — loaded from a CDN (jsDelivr/unpkg) or a local /libraries copy"
+  ],
   "suggests": {},
   "submodules": [
     "accessible_menu_bootstrap_5"
@@ -24,21 +26,30 @@
   "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "accessible_menu_library"
+  ],
   "categories": [
-    "Accessibility"
+    "Accessibility",
+    "Site structure"
   ],
   "subcategories": [
-    "ARIA / semantic markup"
+    "ARIA / semantic markup",
+    "Navigation menus"
   ],
   "keywords": [
     "accessibility",
     "menu",
     "wcag",
+    "wai-aria",
+    "aria",
     "a11y",
-    "navigation"
+    "navigation",
+    "menubar",
+    "disclosure menu",
+    "treeview"
   ],
-  "project_description": "A Drupal module that provides a JavaScript library to help you effortlessly create WCAG-compliant menus in the DOM.\n\n Back to top \n\n Supported Menu Types \n \n Disclosure Menus \n Menubars \n Top Link Disclosure Menus \n Treeviews \n \n Back to top \n\n Usage \n \n Install the module. \n Go to Structure > Menus. \n Edit a menu you'd like to make accessible. \n Select your desired menu type from the Accessible Menu \"Menu Type\" dropdown. \n Configure your settings. \n Save the menu. \n \n You are now using Accessible Menu!\n\n For more information on the available options, see the official documentation \n\n Back to top \n\n Important Information \n Please note that Accessible Menu does not provide any CSS. Accessible Menu is responsible for adding the appropriate aria-properties, keybindings, and toggling of classes. You are responsible for providing the CSS to make it fit the look and feel of your application.\n\n Back to top",
+  "project_description": "Accessible Menu wires Drupal's core menu blocks up to the accessible-menu JavaScript library (NickDJM/accessible-menu) so that rendered menus gain WAI-ARIA roles, keyboard navigation, and focus management without hand-writing any JS. It defines a plugin type for menu libraries, ships one library plugin plus four menu types (Disclosure Menu, Menubar, Top Link Disclosure Menu, Treeview), and adds per-menu configuration to the core menu edit form (menu type, collapsible toggle, open/close/transition classes and durations, hover behaviour). A site settings form chooses whether each library loads from a CDN (jsDelivr/unpkg, a configurable version) or from a local /libraries copy. The module supplies the behaviour and ARIA wiring only; it deliberately provides no CSS, so themers style the markup themselves. A Bootstrap 5 submodule adds a Bootstrap-flavoured library variant and navbar templates.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

@@ -1,27 +1,28 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-ACCESS Job Reporting posts completed TAPIS job metadata to the ACCESS-CI Allocations API so gateway usage is credited against allocations.
----
-The module targets science-gateway sites that run compute jobs through the TAPIS `tapis_job`/`tapis_system` modules. When a job completes it assembles a metadata record (resource name, agent, job attributes) and POSTs it to the ACCESS-CI Allocations endpoint (default `https://allocations-api.access-ci.org/acdb/gateway/v2/job_attributes`). `AccessResourceFetcher` calls the API to suggest valid `xsederesourcename` values and falls back to a built-in list when the API is unreachable.
+ACCESS Job Reporting reports TAPIS HPC job metadata from a Drupal science gateway to the ACCESS-CI Allocations API so gateway jobs are attributed against ACCESS resource allocations.
 
-Configuration lives at `/admin/config/access/job-reporting` (`administer site configuration`). The API key can be stored either directly in module config or, preferably, referenced from a Key entity when the Key module is installed (`AccessResourceFetcher::fetch()` prefers the Key value). Outbound calls use the core Guzzle `http_client` with default TLS verification and a 10s timeout; the key is sent in the `XA-API-KEY` header and the agent name in `XA-AGENT`.
 ---
-- Install to credit science-gateway compute jobs against ACCESS-CI allocations.
-- Configure the Allocations API endpoint URL on the settings form.
-- Store the ACCESS API key in module configuration.
-- Reference the API key from a Key entity instead of plaintext config.
-- Set the reporting agent name sent as the `XA-AGENT` header.
-- Fetch the list of valid ACCESS resource names from the API.
-- Fall back to built-in resource names when the API is offline.
-- Report job attributes for a completed TAPIS job automatically.
-- Integrate a Drupal-based science gateway with ACCESS-CI accounting.
-- Override the default allocations endpoint for staging environments.
-- Inspect the log channel `access_job_reporting` for failed submissions.
-- Map local TAPIS systems to ACCESS resource identifiers.
-- Verify connectivity to the allocations API before go-live.
-- Send POST job_attributes records with `xsederesourcename`.
-- Restrict configuration access to site administrators.
-- Test key/agent header setup with a manual fetch.
-- Diagnose why suggested resources return empty.
-- Keep the API key out of exported configuration via Key module.
-- Audit which jobs were reported to ACCESS-CI.
-- Adjust the request timeout expectations for slow allocations responses.
+
+The module hooks TAPIS job creation on a Drupal site built with the TAPIS suite (tapis_job, tapis_system). When a `tapis_job` entity is inserted, it looks up the job's execution system, resolves the job's TAPIS logical queue to an ACCESS resource name using a per-system resource map, gathers the reporting fields (gateway user's display name, submit time, software name and version, remote scheduler job id, allocation account), and enqueues a report item on the reliable Drupal queue `access_job_reporting.job_queue`. A cron-driven queue worker then POSTs each item to the ACCESS `job_attributes` endpoint using `XA-API-KEY` and `XA-AGENT` request headers, with configurable retry interval, maximum attempt count, and a debug dry-run mode that logs the payload instead of sending it. Reporting is opt-in per TAPIS system and enabled through a small fieldset added to the `tapis_system` node edit form; a site-wide settings page holds the API credentials and delivery options and can fetch a suggested list of valid ACCESS resource names from the API.
+
+---
+
+- Report TAPIS-submitted HPC jobs from a Drupal science gateway to ACCESS-CI for allocation accounting.
+- Automatically enqueue an ACCESS report whenever a `tapis_job` entity is created, with no manual step per job.
+- Map each TAPIS system's scheduler queues (e.g. `normal`, `gpu`) to named ACCESS resources (e.g. `expanse.sdsc.xsede.org`).
+- Enable or disable ACCESS reporting individually per TAPIS system node rather than globally.
+- Attribute gateway jobs to the correct ACCESS allocation by parsing the job's `--account` scheduler option.
+- Send the gateway user's real name (or username) as the ACCESS `gatewayuser` value for per-user usage tracking.
+- Record job submit time, software name and version, and the remote scheduler job id in each ACCESS report.
+- Deliver reports reliably in the background via the Drupal queue and cron rather than blocking job submission.
+- Retry failed deliveries automatically with a configurable retry interval (default one day) and max attempt cap (default 15).
+- Poll TAPIS on later cron runs to fill in a remote job id or submit time that was not yet available at submission.
+- Run in debug/dry-run mode to log exactly what would be reported without contacting ACCESS, for staging or QA.
+- Store the ACCESS API key securely as a Key entity when the Key module is installed, keeping the secret out of module config.
+- Fall back to a plain config-stored API key on sites that do not use the Key module.
+- Point the reporter at an alternate endpoint URL for testing against a non-production ACCESS environment.
+- Fetch and display a suggested list of valid ACCESS resource names directly from the API while configuring the mapping.
+- Validate the resource-map syntax on save so a queue is never ambiguously mapped to two ACCESS resources within one system.
+- Set a custom `XA-AGENT` header value to identify the reporting gateway to ACCESS.
+- Give ACCESS allocation administrators standardized, per-job usage data from a Tapis/Drupal gateway.
+- Operate unattended once configured, requiring only that Drupal cron runs regularly to drain the report queue.
+- Keep job submission fast by deferring all outbound HTTP calls to the background worker.

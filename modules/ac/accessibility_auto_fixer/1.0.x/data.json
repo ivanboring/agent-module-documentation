@@ -1,15 +1,15 @@
 {
   "name": "Accessibility Auto Fixer",
   "data_name": "accessibility_auto_fixer",
-  "description": "Scans site content for WCAG accessibility issues and reports them through a UI dashboard with batch scanning and CI support.",
+  "description": "WCAG accessibility scanner with an admin dashboard, client- and server-side scanning, one-click DOM auto-fixes, and Drush/CI commands.",
   "version": "1.0.x",
   "package": "Content",
   "composer_namespace": "drupal/accessibility_auto_fixer",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:node"
+    "node"
   ],
-  "configure": null,
+  "configure": "accessibility_auto_fixer.settings",
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -20,29 +20,23 @@
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
-  "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Accessibility"
   ],
   "subcategories": [
-    "Accessibility widget / toolbar",
-    "ARIA / semantic markup"
+    "ARIA / semantic markup",
+    "Asset inventory / audit"
   ],
   "keywords": [
     "accessibility",
     "wcag",
-    "audit",
     "a11y",
-    "scanner"
+    "scanner",
+    "audit",
+    "dashboard"
   ],
-  "project_description": "The Accessibility Auto Fixer module helps Drupal sites identify and improve accessibility issues based on WCAG guidelines.\n\nIt integrates automated scanning using axe-core, provides detailed reports, and offers developer-friendly tools to fix common accessibility problems.\n\n \n 🚀 Module Overview \n \nAccessibility is a critical requirement for modern websites. This module enables site builders, developers, and content editors to:\n\n \n Scan pages for accessibility violations \n View detailed reports in the Drupal admin dashboard \n Identify issues such as missing alt text, low contrast, and ARIA problems \n Improve content quality with editor-level validation \n \n \nThe module leverages axe-core , an industry-standard accessibility engine, to ensure accurate and reliable results.\n\n \n ✨ Features \n 🔍 Automated Accessibility Scanning \n \n Scans pages automatically on load \n Detects WCAG violations using axe-core \n Captures severity levels (critical, serious, moderate, minor) \n \n 📊 Admin Dashboard \n \n Centralized report page at /admin/reports/a11y-dashboard \n Displays scanned pages with violation counts \n Tracks scan history with timestamps \n \n 🔎 Detailed Violations View \n \n Drill-down into individual scan results \n View:\n \n Rule ID (e.g., image-alt ) \n Impact level \n Description of the issue \n Affected elements (CSS selectors) \n \n \n \n 🛠 Auto-Fix Suggestions \n \n Highlights common issues like:\n \n Missing alt attributes \n Empty buttons or links \n Low contrast text \n \n \n Provides actionable recommendations for developers \n \n 📝 Content Editor Validation \n \n Validates node content during creation/editing \n Prevents saving content with major accessibility issues \n Encourages best practices at content level \n \n ⚙️ Configuration Options \n \n Enable/disable scanning \n Set violation threshold \n Control access via permissions \n \n 🔐 Secure & Drupal-Compliant \n \n Uses Drupal services and dependency injection \n CSRF-protected endpoints \n Role-based access control \n \n ⚡ Drush & CI Integration \n \n Run scans via Drush:\n\n drush a11y:scan-all --format=json \n Integrate with CI/CD pipelines \n Export results in machine-readable format \n \n 🎯 Developer-Friendly UI \n \n Interactive dashboard \n Highlight affected elements in the browser \n Quick navigation between issues \n \n \n 📍 Usage \n \n Visit any page to trigger scanning \n Go to:\n\n /admin/reports/a11y-dashboard \n Click \"View\" to explore detailed violations \n Back to top",
-  "maintenance_status": "Actively maintained",
-  "development_status": "Under active development",
-  "security_advisory_coverage": "covered",
-  "project_created": "2026-04-27",
-  "project_changed": "2026-08-11",
-  "core_semver_minimum": 10000000,
-  "core_semver_maximum": 12000000
+  "project_description": "Accessibility Auto Fixer scans Drupal pages for WCAG AA accessibility violations, presents them in an interactive admin dashboard, and applies one-click DOM auto-fixes that persist across page reloads.\n\nIt ships two complementary scanners implemented from scratch (no external accessibility engine): a client-side JavaScript scanner (js/scanner.js) that inspects the live DOM and computed styles for missing alt text, unlabelled buttons/links/form fields, and colour-contrast failures; and a server-side PHP scanner (A11yScannerService) that fetches a URL over HTTP and parses the returned HTML with DOMDocument to flag the same classes of issue on inline styles and markup. Results are stored in two custom database tables (a11y_results, a11y_fixes) and surfaced through the admin dashboard at /admin/reports/a11y-dashboard, a full scan log, and a per-scan details page with impact/type filters and per-page history.\n\nEach page receives an accessibility score from 0 to 100, computed by deducting points per violation impact (critical -10, serious -5, moderate -2, minor -1). Every node page gains an 'Accessibility Scan' local task tab that runs the client scanner and opens a slide-in panel listing violations with highlight, single-fix, and fix-all actions; applied fixes are recorded so they no longer resurface on later scans. A 'Scan All' action re-scans previously scanned pages or auto-discovers site routes (up to 500, expanding canonical entity paths) and scans them server-side. Drush commands (a11y:scan, a11y:scan-all) scan one URL or a file of URLs with table or JSON output and a non-zero exit code when violations are found, for CI pipelines. A settings form controls enablement, auto-scan, score threshold, excluded roles, enabled node types, per-check toggles, and CI/report options."
 }

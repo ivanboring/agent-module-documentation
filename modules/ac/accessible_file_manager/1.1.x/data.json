@@ -1,24 +1,29 @@
 {
   "name": "Accessible File Manager",
   "data_name": "accessible_file_manager",
-  "description": "A permission-gated file inventory/usage manager with download-count tracking and a private-directory .htaccess security guard.",
+  "description": "Provides accessible file inventory, exploration, access rules, download analytics, and secure file lifecycle management for Drupal.",
   "version": "1.1.x",
   "package": "Media",
   "composer_namespace": "drupal/accessible_file_manager",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/token": "^1.0",
+    "drupal/views_bulk_operations": "^4.0"
+  },
   "dependent_modules": [
-    "drupal:file",
-    "drupal:media",
-    "drupal:views",
-    "views_bulk_operations:views_bulk_operations"
+    "file",
+    "field",
+    "media",
+    "views",
+    "token",
+    "views_bulk_operations"
   ],
-  "configure": null,
-  "core_version_requirement": "^10||^11",
+  "configure": "accessible_file_manager.settings",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/accessible_file_manager",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
@@ -27,19 +32,27 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Media"
+    "Media",
+    "Accessibility"
   ],
   "subcategories": [
-    "File management"
+    "File browser / management",
+    "File uploads",
+    "File cleanup / deletion",
+    "ARIA / semantic markup"
   ],
   "keywords": [
     "file manager",
-    "inventory",
-    "usage",
-    "download tracking",
-    "private files"
+    "file explorer",
+    "accessible upload",
+    "WAI-ARIA",
+    "download analytics",
+    "private files",
+    "file access rules",
+    "orphan cleanup",
+    "filename template"
   ],
-  "project_description": "Back to top \n\n Accessible File Manager (accessible_file_manager) \n An accessibility-first file management, security, upload, and analytics toolkit for Drupal. \n\n The Accessible File Manager module connects Drupal-managed File entities with files stored in the public:// and private:// file systems. It provides an accessible File Explorer, enhanced file inventory, usage analytics, configurable access rules, automated naming, guarded cleanup workflows, and accessible file and image upload widgets.\n\n Version 1.1.0 adds a Drupal 10 Toolbar and Drupal 11 Navigation-compatible administration dashboard, semantic multiple-file lists, keyboard-accessible file ordering, predictable AJAX focus management, screen-reader announcements, and image descriptions of up to 2048 characters.\n\n \n Back to top \n\n Key Features \n 📁 Accessible File Explorer (WAI-ARIA Compliant) \n \n Direct Directory Navigation: Browse the configured physical public:// and private:// file systems from Drupal’s administration interface. \n Managed and Unmanaged File Inspection: Inspect physical files and directories whether or not they are registered as Drupal File entities. \n Keyboard and Screen Reader Support: Implements the WAI-ARIA Grid pattern ( grid → rowgroup → row → gridcell ) with Arrow keys, Home/End, Enter, Backspace, and Shift+F10 support. \n Live Status Announcements: Uses throttled aria-live=\"polite\" regions to announce directory state, row details, upload progress, and completed operations without overwhelming screen-reader users. \n Keyboard-Accessible Context Menu: Provides contextual actions such as Download, Copy Link, File Properties, and ZIP Download through an accessible role=\"menu\" interface. \n Protected File Operations: Resolves requested paths inside their configured stream-wrapper roots and prevents operations from escaping those boundaries. \n \n ⬆️ Accessible File and Image Upload Widgets \n \n Native Drupal Integration: Retains Drupal Core’s managed-file validation, upload processing, and no-JavaScript fallback. \n Accessible Upload Progress: Announces upload percentage, transferred and total size, smoothed transfer speed, cancellation, failure, and completion. \n Semantic Multiple-File Lists: Replaces Core’s layout-oriented multiple-file table with a clear semantic list containing the filename, MIME type, file size, related fields, and removal action. \n Accessible File Ordering: Provides keyboard-operable “Move up” and “Move down” controls while preserving Drupal’s submitted field-item order. \n Predictable AJAX Focus: Moves focus to the newly uploaded file, a remaining file, or the file picker after upload and removal operations. \n Filename-Specific Labels: Associates image descriptions, link text, ordering controls, and removal actions with the relevant filename. \n Extended Image Descriptions: Presents image alternative text as a textarea and supports descriptions of up to 2048 characters in both current and revision field storage. \n \n 📊 Entity and Views File Inventory \n \n Runtime Views Integration: Enhances Drupal’s existing files View at runtime without permanently replacing its exported configuration. \n Entity and Field Usage Inspection: Uses expandable <details> sections to show parent entity relationships, current and revision references, and field information. \n File Type and Download Information: Adds file type, registered usage, effective permissions, and download\n\n Back to top",
+  "project_description": "Accessible File Manager (accessible_file_manager) is an accessibility-first file management, security, upload, and analytics toolkit for Drupal 10 and 11. It connects Drupal-managed File entities with files stored under the public:// and private:// stream wrappers and adds a WAI-ARIA File Explorer, an enhanced files inventory built on the core files View, download analytics, configurable render- and download-time access rules, token-based automatic filenaming, guarded orphan-cleanup workflows, and accessible file and image upload widgets. Every physical file operation is bounded to its stream-wrapper root, and a private-directory .htaccess security guard self-heals the protection file on cron and on every admin request. Version 1.1.0 adds a toolbar/navigation dashboard, semantic multiple-file lists, keyboard-accessible ordering, predictable AJAX focus, screen-reader announcements, and image descriptions of up to 2048 characters.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

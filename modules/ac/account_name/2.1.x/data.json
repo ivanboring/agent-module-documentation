@@ -1,13 +1,13 @@
 {
   "name": "Account Name",
   "data_name": "account_name",
-  "description": "Changes the My Account menu link to show the user's name and picture.",
+  "description": "My account menu change by user name and picture",
   "version": "2.1.x",
   "package": null,
   "composer_namespace": "drupal/account_name",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "account_name.settings_form",
   "core_version_requirement": "^8.9 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -17,25 +17,26 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "User engagement",
-    "Theming"
+    "Site structure",
+    "User engagement"
   ],
   "subcategories": [
-    "Block enhancements"
+    "Navigation menus",
+    "User display names"
   ],
   "keywords": [
     "account",
     "menu",
     "user name",
-    "avatar",
-    "ui"
+    "user picture",
+    "avatar"
   ],
-  "project_description": "You can change my account link and show the user profile picture.\n\n CONFIGURATION \n\n Goto: /admin/config/user-interface/account-name\n\n INSTALLATION \n\n - Install via /admin/modules\n\n- drush en account_name -y\n\n- composer require drupal/account_name",
+  "project_description": "Account Name rewrites the core \"My account\" menu link so that, instead of the static text, it shows a configurable greeting label plus the current user's username and (optionally) their user picture rendered through a chosen image style. A single admin settings form controls whether the feature is on, the greeting label, the image style, and whether the picture appears before or after the name. It is a small display-only enhancement with no dependencies beyond Drupal core.",
   "maintenance_status": "Actively maintained",
   "development_status": "No further development",
   "security_advisory_coverage": "not-covered",

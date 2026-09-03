@@ -1,14 +1,14 @@
 {
   "name": "Accessible Back To Top",
   "data_name": "accessible_back_to_top",
-  "description": "Adds an accessible 'back to top' button to pages.",
+  "description": "Adds an accessible 'back to top' button",
   "version": "1.1.x",
   "package": "Custom",
   "composer_namespace": "drupal/accessible_back_to_top",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^8||^9||^10||^11",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/accessible_back_to_top",
@@ -19,22 +19,24 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
+    "Content display",
     "Accessibility"
   ],
   "subcategories": [
-    "Accessibility widgets"
+    "Scroll to top button",
+    "ARIA / semantic markup"
   ],
   "keywords": [
     "back to top",
+    "scroll to top",
     "accessible",
-    "scroll",
-    "button",
-    "accessibility"
+    "block",
+    "keyboard navigation"
   ],
-  "project_description": "Provides a 'back to top' button that is fully accessible as a block to add to your Drupal website.\n\n Features \n Once you install the module, go to Block Layout and place the block called 'Accessible Back to Top block' in any region. The arrow should display on the page when you scroll down a bit.\n\n Post-Installation \n The button should work out of the box once the block is placed in a Region from the Block Layout page. \n\n Customize the button styles in your CSS by using the 'class back-to-top'.\n\n Accessibility Features \n \n Keyboard navigation \n Screen Reader Support \n Aria labels \n Back to top",
+  "project_description": "Provides a lightweight 'back to top' button as a placeable Drupal block. The button is hidden until the visitor scrolls down past 800px, then reappears fixed in the lower-right of the viewport; clicking it (or pressing Enter/Space when focused) smooth-scrolls the window back to the top. The markup is keyboard-focusable (tabindex=0, role=button) and the button ships its own CSS and vanilla-JS behavior with no external dependencies. There is no configuration UI: enable the module, place the 'Back to top block' in a theme region, and optionally restyle it via the '.back-to-top' CSS class.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
