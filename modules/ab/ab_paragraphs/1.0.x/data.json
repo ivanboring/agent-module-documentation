@@ -1,14 +1,16 @@
 {
-  "name": "A/B Paragraphs",
+  "name": "AB Paragraphs",
   "data_name": "ab_paragraphs",
-  "description": "Provides an A/B-test paragraph type with front-end, session-based variant selection.",
+  "description": "Provides an A/B test paragraph type with frontend session-based variant selection.",
   "version": "1.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/ab_paragraphs",
   "composer_requirements": {},
-  "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^10||^11",
+  "dependent_modules": [
+    "paragraphs"
+  ],
+  "configure": "ab_paragraphs.settings.form",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ab_paragraphs",
@@ -22,19 +24,23 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
+    "Integrations",
     "Content editing experience"
   ],
   "subcategories": [
-    "A/B testing"
+    "A/B testing",
+    "Analytics & tracking",
+    "Structured content / page building"
   ],
   "keywords": [
     "paragraphs",
     "a/b test",
     "variant",
     "session",
-    "experimentation"
+    "analytics",
+    "matomo"
   ],
-  "project_description": "A/B Paragraphs is a lightweight module for running basic A/B tests using the Drupal Paragraphs system. Editors can test two content variants, track user interaction, and send simple analytics events.\n\n Features \n \n A/B Paragraphs adds a new Paragraph type called A/B Test that allows editors to run basic A/B tests within Drupal content. Each test consists of Variant A and Variant B, with configurable display ratios (e.g., 50/50, 90/10).\n\n \n Only one variant is shown to a user per session, and the rendering is handled on the frontend using JavaScript. The module suggests tracking code for each variant based on links found in the content. Editors are free to edit or replace these suggestions.\n\n \n The module does not perform analytics or reporting itself but allows you to send click events to your analytics tool (e.g., Google Analytics or Matomo).\n\n \n A/B Test Paragraph type with two content variants \n Session-based rendering: one variant per user per session \n Unique ID and configurable distribution ratio \n Separate tracking code fields for each variant \n Tracking code suggestions based on link analysis \n Show event tracking on pageload when a variant is shown \n Click event tracking via onclick attributes \n \n Post-Installation \n After installation, the module automatically creates a new Paragraph type called ab_test and adds the following fields:\n\n \n field_variant_a \n field_variant_b \n field_tracking_code_a \n field_tracking_code_b \n field_unique_id \n field_distribution \n \n \n Manual configuration is required to enable and arrange the fields:\n\n \n Go to: /admin/structure/paragraphs_type/ab_test/form-display \n Then to: /admin/structure/paragraphs_type/ab_test/display \n \n \n Ensure that the tracking code fields use the Plain text (multiple lines) widget and that all necessary fields are enabled, visible, and editable.\n\n Additional Requirements \n \n This module requires the Paragraphs module .\n\n Recommended modules/libraries \n \n This module is compatible with any analytics solution that accepts custom events. Common choices include:\n\n \n Matomo \n Google Analytics \n Piwik Pro \n \n Similar projects \n \n For more advanced A/B testing functionality—including multivariate testing, targeting, personalization, and analytics dashboards—consider:\n\n \n VWO – Full-featured testing, heatmaps, and audience segmentation \n Optimizely – Robust experimentation platform with strong Drupal integration \n \n \n Unlike those platforms, A/B Paragraphs is minimal and does not require external services.\n\n Supporting this Module \n \n If you find this module useful and want to support future development, feel free to reach out via the issue queue or contribute code and feedback.\n\n Community Documentation \n \n Documentation, usage guides, and examples will be added as the module evolves. Contributions are welcome.\n\n Known issues / to do: \n \n It should not be possible to nest an A/B Test paragraph inside another A/B Test paragraph. \n Unclear whether tracking code suggestions work for all link types (e.g., entity references). \n Tracking code suggestions are currently tailored to Matomo only. When another analytics provider (such as Google Analytics) is selected, the suggestions should adjust accordingly. \n Tracking code suggestions may not work correctly when multiple A/B Test paragraphs are used on the same page. It might not be desirable to support more than one A/B test per page. \n The module contains some temporary logging code, which should be removed in a future release. \n Back to top",
+  "project_description": "A/B Paragraphs adds a Paragraphs bundle called ab_test that lets editors place two content variants (Variant A and Variant B) side by side inside any paragraph-enabled field. On installation the module creates the ab_test paragraph type and six fields (field_variant_a, field_variant_b, field_tracking_code_a, field_tracking_code_b, field_unique_id, field_distribution). At render time both variants are output into a cacheable wrapper and a small JavaScript behavior picks one variant per browser session (sessionStorage), respecting the configured distribution ratio (50/50, 90/10, 10/90, 70/30, 30/70). Because selection is client-side, the page stays fully cacheable. The module does not do analytics itself: it fires Show/Click events into whatever analytics library is present on the page (Matomo/Piwik Pro via _paq, Google Analytics via gtag, GTM via dataLayer) and only when analytics consent is detected (Cookiebot, Klaro, Osano/CookieConsent, or a custom flag). A settings form at /admin/config/content/ab-paragraphs selects the analytics provider, and an editor helper suggests tracking-code snippets from links found in each variant. Two display modes must be enabled manually on the ab_test paragraph type after install.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

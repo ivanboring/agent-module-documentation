@@ -1,7 +1,7 @@
 {
   "name": "Accessible Autocomplete Element/Widget",
   "data_name": "a11y_autocomplete_element",
-  "description": "Provides an accessible autocomplete form element and widget to replace select elements.",
+  "description": "Provides an accessible autocomplete form element and field widget to replace select elements.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/a11y_autocomplete_element",
@@ -10,13 +10,15 @@
     "options"
   ],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/a11y_autocomplete_element",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "@drupal/autocomplete (a11y_autocomplete JS library, loaded from libraries/ or node_modules)"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
@@ -24,17 +26,22 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
+    "Accessibility",
     "Content editing experience"
   ],
   "subcategories": [
-    "Form widgets / select UI"
+    "Form widgets / select UI",
+    "Accessibility widget / toolbar"
   ],
   "keywords": [
     "autocomplete",
     "accessibility",
+    "a11y",
     "select",
+    "combobox",
     "widget",
-    "a11y"
+    "form element",
+    "wai-aria"
   ],
   "project_description": "Summary \n Provides a Render element that extends from a Select field and automatically converts it to use the Accessible Autocomplete library.\n\n Installation \n \n Download as per normal \n Install Accessible Autocomplete either:\n \n Using npm into the folder above your Drupal installation. npm i -S @drupal/autocomplete . The library should exist at /path/to/drupal/../node_modules/@drupal/autocomplete \n Manually, and extracting to /libraries/a11y_autocomplete inside your Drupal installation. \n \n \n Enable the module as usual \n Select it as a widget for field UI fields, or if you're a developer, use the new '#type' => 'a11y_autocomplete' anywhere you'd use '#type' => 'select' \n \n Known issues \n Please use the issue queue to report any issues.\n\n Credits \n Written by Lee Rowlands for a client of PreviousNext\n\n Back to top",
   "maintenance_status": "Actively maintained",

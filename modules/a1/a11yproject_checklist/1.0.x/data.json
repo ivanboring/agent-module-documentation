@@ -1,13 +1,15 @@
 {
   "name": "A11Y Project Checklist",
   "data_name": "a11yproject_checklist",
-  "description": "Provides a Checklist API checklist of A11Y Project accessibility best practices to track.",
+  "description": "Allows the documentation of accessibility best practices using A11Y standards.",
   "version": "1.0.x",
   "package": "Accessibility",
   "composer_namespace": "drupal/a11yproject_checklist",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/checklistapi": "*"
+  },
   "dependent_modules": [
-    "checklistapi:checklistapi"
+    "checklistapi"
   ],
   "configure": "checklistapi.checklists.a11yproject_checklist",
   "core_version_requirement": "^9 || ^10 || ^11",
@@ -21,7 +23,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Accessibility"
@@ -38,7 +40,7 @@
     "best practices",
     "compliance"
   ],
-  "project_description": "This checklist is provided by The A11Y Project , APLv2 . Please visit their site and check out the awesome resources they provide to help make the web more accessible to all.\n\n This checklist uses The Web Content Accessibility Guidelines (WCAG) as a reference point. The WCAG is a shared standard for web content accessibility for individuals, organizations, and governments.\n\n To view the checklist in its original form, and check out some of the great work the A11Y Project is doing, please visit https://www.a11yproject.com/checklist/ .\n\n The benefit of having the checklist inside of Drupal, using the Checklist API module, is that the list ships with the project, and the date, time, and user that checks and saves the item can be saved to the database, and exported to configuration. That way you can re-review in the future.",
+  "project_description": "A11Y Project Checklist ports the volunteer-maintained A11Y Project accessibility checklist into Drupal as a Checklist API checklist. It defines a checklist at /admin/config/development/a11y-project-checklist whose items are fetched at build time from the A11Y Project's public checklists.json data file, each carrying a title, description, WCAG success-criterion reference and a link to more guidance. Because it builds on the Checklist API module, the date, time and username of whoever checks and saves each item are recorded to the database and can be exported to configuration, so an accessibility review can be repeated and audited over time. The module ships only item definitions, a form template override, and a Tour; access is governed by Checklist API's own permission on the admin config path.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

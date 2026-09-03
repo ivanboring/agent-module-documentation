@@ -6,6 +6,9 @@ customise screen becomes a draggable, indentable tree. No routes, no config form
 no schema, no Drush of its own — it reuses core `shortcut` entirely. Requires core `shortcut`.
 Installed release **3.0.0-beta8** — beta, schema may still change.
 
+- **Full nesting mechanism** (base fields, customize form swap, lazy-builder decorator, update
+  path, how to operate it) → [api/nesting.md](api/nesting.md)
+
 How it works (whole module is ~4 files):
 - `hook_entity_base_field_info()` adds two base fields to the `shortcut` entity — **`parent`**
   (string, stores the parent shortcut's **UUID**, so a set exports cleanly) and **`depth`**

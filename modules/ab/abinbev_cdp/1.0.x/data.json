@@ -1,12 +1,14 @@
 {
   "name": "AbInBev CDP",
   "data_name": "abinbev_cdp",
-  "description": "Integrates Drupal with the AB InBev Customer Data Platform, supporting multiple configurations.",
+  "description": "Webform handler that maps webform submissions to AB InBev CDP (Treasure Data) fields and posts them to the CDP postback API. Supports multiple per-webform configurations.",
   "version": "1.0.x",
-  "package": null,
+  "package": "AbInBev",
   "composer_namespace": "drupal/abinbev_cdp",
   "composer_requirements": {},
-  "dependent_modules": [],
+  "dependent_modules": [
+    "webform"
+  ],
   "configure": null,
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
@@ -17,24 +19,27 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Integrations"
+    "Integrations",
+    "Forms and surveys"
   ],
   "subcategories": [
-    "CRM integration"
+    "CRM integration",
+    "Submission handling"
   ],
   "keywords": [
     "abinbev",
     "cdp",
+    "treasure data",
+    "webform handler",
     "customer data",
-    "marketing",
-    "integration"
+    "marketing"
   ],
-  "project_description": "Back to top \n\n AbInBev CDP integration. \n This module provides integration feature for integration webform to CDP database ( https://treasuredata.com ).\n\n It provides Webform Handler for data processing. \n\n Install as usual drupal module.\n\n Back to top \n\n Module Settings. \n - Add Handler to your webform.\n\n- Configure Handler - make mapping of webform fields to CDP fields.\n\n- For additional validation - please create new custom handler and put it before this and write custom validation there.\n\n- Mapping of additional fields is in 'additional fields' field. Please use format cdp_field_machine_name|webform_field_machine_name\n\n Back to top \n\n Setting sections \n User Settings \n This section contains settings for fields that are required by CDP.\n\nFirst name, last name, email or phone.\n\n Birthday is not required, but if it is enabled additional validation will be enabled.\n\n Back to top",
+  "project_description": "AbInBev CDP integration for Drupal. Provides a single Webform submission handler (\"CDP Settings Handler\") that maps webform fields to AB InBev Customer Data Platform attributes and POSTs each submission to the Treasure Data postback API (in.treasuredata.com). Field mappings, consent/purpose flags, campaign metadata, country/zone, dev-vs-prod switch and the CDP write keys are all configured per handler instance, so multiple webforms can each target the CDP with their own configuration. Includes an optional 18+ age-gate driven by a mapped birthday field.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

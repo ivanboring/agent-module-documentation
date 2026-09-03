@@ -1,13 +1,13 @@
 {
   "name": "Abstract API Email Validator",
   "data_name": "abstract_email_validation",
-  "description": "Validates email fields using the Abstract API email-validation service.",
+  "description": "Validates email-field input via the Abstract API email-verification service, with a local email/domain blacklist.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Email",
   "composer_namespace": "drupal/abstract_email_validation",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "abstract_email_validation.settings_form",
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -17,7 +17,7 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
@@ -26,6 +26,7 @@
     "Security"
   ],
   "subcategories": [
+    "Address autocomplete / verification",
     "Spam control"
   ],
   "keywords": [
@@ -33,9 +34,10 @@
     "validation",
     "abstract api",
     "deliverability",
+    "blacklist",
     "spam"
   ],
-  "project_description": "Introduction \n Abstract API Email Validator module provides a robust\n\n solution for email validation in Drupal. By integrating with the Abstract API,\n\n this module ensures that email addresses entered in your forms are valid and\n\n active. This module helps in maintaining clean and valid email lists,\n\n improving email deliverability and reducing bounce rates.\n\n Features \n Basic Functionality :\n\n \n Validates email addresses using the Abstract API during form submission.\n \n \n Unique Features :\n\n \n Provides an option in field setting form of email type of fields. \n Ensuring valid email addresses in user registrations. \n Adds validation options to custom forms and webforms. \n Includes a blacklist configuration to bypass specific email addresses and\n\n domain emails. \n We are providing end users to choose validation based on different parameters i.e SMTP, MX_FOUND, QUALITY_SCORE, Deliverability \n \n Use Cases :\n\n \n Preventing spam by blocking known invalid or unwanted email addresses and\n\n domains. \n \n Post-Installation \n Configuration :\n\n \n Navigate to the module configuration page at\n\n /admin/config/system/abstract-email-validation . \n Enter your Abstract API key and configure other settings such as custom\n\n error messages and blacklist email addresses or domains. \n Choose your email validation option on your desired email fields. \n And you can add it to your webforms and custom forms. \n \n NOTE: You can add the following line to settings.php: \n\n $config['abstract_email_validation.settings']['api_key'] = 'YOUR API KEY'; \n\nThis will also make sure that your API key is secure.\n\n Additional Requirements \n Dependencies :\n\n \n Abstract API key (sign up at Abstract API ). \n \n Recommended modules/libraries\n\n \n Enhancements :\n\n \n Webform : Integrate email validation with webforms.",
+  "project_description": "Abstract API Email Validator integrates the third-party Abstract email-verification/validation API into Drupal email fields and forms. Once you supply an Abstract base URL and API key, the module can validate the value of any email-type field (on node, user, paragraph, taxonomy, menu and media entities), the user registration/edit form's mail field, webform email elements, and any custom-form email element flagged with '#abstract_email_validation'. Validation is opt-in per field via a third-party-settings checkbox on the field-config edit form (which adds an 'AbstractEmailValidation' validation constraint) or per element via the '#abstract_email_validation' property. On submit the module calls Abstract with the entered address and accepts or rejects it based on the response: by default it requires is_smtp_valid, a DELIVERABLE deliverability status and quality_score >= 0.8, but a detailed-settings mode lets an administrator choose exactly which of SMTP, MX-found, deliverability and a custom quality-score threshold must hold. A local blacklist can also block specific email addresses or whole domains before the API is ever called, returning a site-admin contact message. All settings live in the abstract_email_validation.settings config object, editable at /admin/config/system/abstract-email-validation.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

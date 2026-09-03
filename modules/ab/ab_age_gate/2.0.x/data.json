@@ -1,17 +1,22 @@
 {
   "name": "AB Age Gate",
   "data_name": "ab_age_gate",
-  "description": "An age-gate splash that asks visitors to confirm their age (cookie-based compliance gate — bypassable by design, not real access control).",
+  "description": "Age-gate module for AbInbev.",
   "version": "2.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/ab_age_gate",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/csv_serialization": "^4.0",
+    "drupal/views_data_export": "^1.4"
+  },
   "dependent_modules": [
-    "drupal:rest",
-    "drupal:serialization"
+    "csv_serialization",
+    "views_data_export",
+    "rest",
+    "serialization"
   ],
-  "configure": null,
-  "core_version_requirement": "^10||^11",
+  "configure": "ab_age_gate.settings",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ab_age_gate",
@@ -22,22 +27,23 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "User engagement"
+    "Access control"
   ],
   "subcategories": [
-    "Age gate / compliance"
+    "Legal compliance / terms acceptance"
   ],
   "keywords": [
     "age gate",
+    "age verification",
     "compliance",
-    "splash",
+    "splash overlay",
     "cookie",
-    "restriction"
+    "alcohol"
   ],
-  "project_description": "AB Age Gate Drupal module.\n\nIt prevents showing of the site content before user confirm his age.",
+  "project_description": "AB Age Gate is a JavaScript/cookie age-verification splash overlay for age-restricted sites (e.g. alcohol brands under AB InBev). On every front-end page a full-screen overlay asks the visitor to confirm their age (full date of birth, yes/no, or a dynamic year prompt) before revealing the site; the choice is stored in an 'agegate' cookie so the gate does not reappear. It ships localized prompt text for many European locales, configurable branding (logo, background image/gradient, colors, font), an ignore-pages list, optional GTM dataLayer events, and a small per-day statistics table surfaced through a bundled View.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
