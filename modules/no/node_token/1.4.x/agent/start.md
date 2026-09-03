@@ -30,7 +30,10 @@ Bullet facts:
   schema: **none**. Plugin types: **none**. Services: **none**.
 
 ## What you'd do → where
-Trivial module — no topic files. Everything is above and in the snippets below.
+- **Use / resolve per-bundle tokens, the data-key contract, reference-field nesting** →
+  [api/tokens.md](api/tokens.md)
+
+Trivial module — everything is also summarised above and in the snippets below.
 
 ## Key facts (real machine names)
 - File: `node_token.tokens.inc`. Hooks: `hook_token_info_alter`, `hook_tokens`.

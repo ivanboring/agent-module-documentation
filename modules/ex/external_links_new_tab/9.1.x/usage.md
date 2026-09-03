@@ -1,5 +1,5 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-External Links In New Tab makes every external link render with `target="_blank"` and `rel="noopener"` automatically, so links to other sites open in a new browser tab. Enable the module and you are done — there is no configuration.
+External Links In New Tab automatically makes every external link render with `target="_blank"` and `rel="noopener"` so links to other sites open in a new browser tab, with no configuration required.
 
 ---
 

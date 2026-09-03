@@ -1,29 +1,31 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-NovaPoshta API integrates Nova Poshta — Ukraine's main parcel carrier — with the Basket online-store module: address and warehouse lookup, shipping options at checkout, and admin screens for managing the integration.
+NovaPoshta API integrates Nova Poshta — Ukraine's dominant parcel carrier — with the Basket online-store module: warehouse and address selection at checkout, delivery-cost calculation, express-waybill creation and shipment tracking against the Nova Poshta REST API.
 
 ---
 
-The project is `basket_novaposhta` but the module machine name is **`novaposhta`**, which matters when enabling it or writing config. It depends on the `basket` store module and core `views`, and exposes its settings at `/admin/config/development/novaposhta` (`novaposhta.settings`). The source is organised around a small set of service classes — `NovaPoshta` for the API client, `NovaPoshtaEN` for the English-language surface, `NovaPoshtaView` and `ViewsAlter` for injecting carrier data into Views listings, and `AdminPages` for the administrative screens — alongside `API`, `Controller`, `Form`, `Hook`, `Plugin` and `Commands` directories, so it ships console commands as well as UI. Because Nova Poshta's model is warehouse-based (customers pick a branch rather than giving a street address), the integration's main job is keeping the city/warehouse reference data available for selection at checkout and attaching the chosen warehouse to the order. Interface translations are shipped per the `interface translation server pattern` in its info file, reflecting a primarily Ukrainian-language audience.
+The drupal.org project is packaged as `basket_novaposhta` but the module machine name is **`novaposhta`**, which matters when enabling it or writing config. It depends on the `basket` store module and core `views`, targets PHP 8.1 and core `^10 || ^11 || ^12`, and stores its API key and behaviour options in the `novaposhta.settings` form at `/admin/config/development/novaposhta`. Its work splits into two layers: a raw transport client (`NovaPoshtaApi2`) that POSTs to the Nova Poshta API v2.0 (`api.novaposhta.ua/v2.0/json/`), and a higher-level facade (`NovaPoshtaAPI`) that adds file-based caching, database reference tables and the store-specific helpers. Because Nova Poshta is warehouse-based, checkout exposes Region -> City -> Warehouse (branch) selectors (the `novaposhta` Basket delivery plugin), with alternative courier-to-address delivery (`novaposhta_address`) and public settlement/street autocomplete endpoints. Area and city reference lists plus the store's waybill list are refreshed on cron (`hook_cron`) or via the shipped drush commands, shipments are recorded in `novaposhta_en` / `novaposhta_lists` tables and surfaced through a bundled View, and interface translations ship for a primarily Ukrainian-language audience.
 
 ---
 
-- Offer Nova Poshta delivery in a Basket store.
-- Let customers choose a Nova Poshta warehouse at checkout.
-- Look up Ukrainian cities and branches from the carrier API.
-- Attach the selected warehouse to an order.
-- Show carrier data in Views listings of orders.
-- Manage the integration from dedicated admin screens.
-- Keep warehouse reference data current via console commands.
-- Calculate delivery options for Ukrainian addresses.
-- Support Ukrainian-language checkout with shipped translations.
-- Reduce address entry errors by using branch selection.
-- Provide tracking references for dispatched orders.
-- Configure API credentials in one settings form.
-- Integrate a Ukrainian store with its dominant carrier.
-- Filter orders by delivery branch in an admin view.
-- Automate carrier data refresh.
-- Support both Ukrainian and English interfaces.
-- Keep shipping logic in a dedicated module.
-- Extend the Basket checkout with carrier-specific fields.
-- Report on deliveries by region.
-- Migrate a store to Nova Poshta without custom code.
+- Offer Nova Poshta delivery inside a Basket store checkout.
+- Let customers pick a Nova Poshta branch (warehouse) rather than typing a street address.
+- Provide Region -> City -> Warehouse cascading selectors at checkout.
+- Offer courier-to-address delivery via the `novaposhta_address` plugin.
+- Autocomplete Ukrainian settlements and streets from the carrier API.
+- Calculate delivery cost through the Nova Poshta API (`getDocumentPrice`).
+- Compute and display cash-on-delivery (redelivery) fees for selected payment methods.
+- Store city/warehouse reference data locally for fast selection.
+- Create express waybills (internet documents) for orders.
+- Update and delete existing waybills from the admin surface.
+- Track shipment status and estimated delivery dates.
+- Generate Nova Poshta print/marking PDF links for dispatched parcels.
+- Manage sender counterparties and contact persons.
+- Auto-create a recipient counterparty from order data using tokens.
+- Refresh area/city reference lists on cron.
+- Run scheduled status updates via `drush novaposhta:status_update`.
+- Rebuild area or city lists on demand via `drush novaposhta:list <type>`.
+- Surface waybill number, cost, weight and address columns in an admin View.
+- Configure parcel seat sizes (height/width/length) for shipments.
+- Choose the checkout select-widget style (Chosen or Select2).
+- Support Ukrainian-language checkout via shipped translations.
+- Keep all Nova Poshta shipping logic in one dedicated module.
+- Migrate a Ukrainian store onto its main carrier without custom code.

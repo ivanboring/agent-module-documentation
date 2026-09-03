@@ -5,6 +5,9 @@ One text filter that replaces `{block:PLUGIN_ID}` with a rendered block. No conf
 the filter on a text format, no permissions, no schema, no Drush. Requires core `filter`.
 Installed release **8.x-1.0-alpha4**.
 
+- **The filter plugin, syntax, per-format enable, and how `process()` works** →
+  [plugins/filter.md](plugins/filter.md)
+
 Key facts:
 - Filter plugin `@Filter(id = "embed_block", title = "Embed Block")` —
   `EmbedBlockFilter extends FilterBase`, injecting `plugin.manager.block`, `renderer`,

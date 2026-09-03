@@ -1,29 +1,30 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Civic Cookie Control integrates the commercial Civic Cookie Control consent banner with Drupal: cookie categories, necessary-cookie declarations, IAB TCF vendor configuration and multi-language consent text, all managed from Drupal admin screens.
+Civic Cookie Control integrates the CivicUK Cookie Control consent widget into Drupal so your site can present a cookie-consent banner and comply with UK PECR and EU GDPR cookie law.
 
 ---
 
-Cookie-consent compliance under UK/EU law needs more than a banner: you must categorise cookies, let visitors accept or reject each category, record consent, and — if you serve programmatic advertising — participate in the IAB Transparency and Consent Framework. This module wires Civic's hosted plugin into Drupal and gives you the Drupal-side configuration for it. Config objects ship for the main settings plus IAB and IAB2 vendor lists (`civiccookiecontrol.settings`, `.iab`, `.iab2`), and the module's classes model the pieces you configure: cookie categories (`CookieCategoryInterface`), necessary cookies (`NecessaryCookieInterface`), alternative-language consent text (`AltLanguageInterface`) and vendor handling (`CCC9Vendors`), with `CCCConfigNames` centralising the config object names. Administration lives under `cookiecontrol.admin_overview` (the `configure` route) behind the `administer civiccookiecontrol` permission, and the front-end libraries are declared in the module's info file so the banner loads sitewide. Note the naming: the project is `civicccookiecontrol` (with the triple c) while the module machine name is `civiccookiecontrol`.
+The module is a configuration and asset-loading layer around Civic's hosted Cookie Control JavaScript (served from `cc.cdn.civiccomputing.com`). You supply a Civic API key (a public, domain-locked site key) and licence type on the settings wizard at `/admin/config/system/cookiecontrol`, then customise the widget's text, branding, accessibility, statement, CCPA notice and — for supported licences — IAB TCF v2 vendor configuration. Optional-cookie categories, strictly-necessary cookies, excluded countries and per-language translations are managed as config entities and merged into the JSON configuration object that the module builds server-side (`CCC8Config` / `CCC9Config`) and attaches to every front-end page via `hook_page_attachments`. A client-side behaviour reads that JSON from `drupalSettings` and calls `CookieControl.load(config)`. An optional submodule, `civic_govuk_cookiecontrol`, ships a GOV.UK Design System styled banner block for public-sector (DWP) services instead of the Civic widget. All configuration screens are gated by the single `administer civiccookiecontrol` permission, and several also require a validated API key.
 
 ---
 
-- Show a cookie consent banner that satisfies UK and EU law.
-- Let visitors accept or reject cookie categories individually.
-- Declare strictly necessary cookies that cannot be rejected.
-- Configure IAB TCF vendors for programmatic advertising.
-- Provide consent text in several languages.
-- Block analytics scripts until consent is given.
-- Record and re-prompt for consent after a policy change.
-- Categorise marketing, analytics and functional cookies.
-- Meet accessibility expectations with Civic's hosted widget.
-- Manage consent configuration from Drupal rather than Civic's dashboard.
-- Support IAB2 vendor lists for ad tech.
-- Give each category its own description shown to visitors.
-- Align consent categories with a privacy policy.
-- Apply consent settings across a multilingual site.
-- Reduce legal risk from untracked third-party cookies.
-- Configure the banner's appearance and behaviour.
-- Restrict consent configuration to a compliance role.
-- Keep consent config exportable with the site.
-- Document which cookies the site sets and why.
-- Update vendor lists as ad-tech partners change.
+- Show a GDPR/PECR cookie-consent banner on a Drupal site without writing any JavaScript.
+- Enter a Civic Cookie Control API key and select the licence tier (Community, PRO, PRO Multisite, Enterprise/Custom).
+- Choose Cookie Control widget version 8 or version 9 to match the API key you obtained from Civic.
+- Define optional-cookie categories (analytics, marketing, etc.) that visitors can toggle on or off.
+- Attach `onAccept` / `onRevoke` JavaScript callbacks to each cookie category so scripts run only after consent.
+- List strictly-necessary cookies that are always allowed and cannot be rejected by the visitor.
+- Declare per-category third-party cookies and vendor entries for transparency in the widget.
+- Set the widget's initial state, layout (slide-out/pop-up), position, theme (light/dark) and branding colours.
+- Customise every piece of banner text: title, intro, accept/reject labels, notify text, necessary/third-party descriptions.
+- Configure accessibility options such as access key, focus highlighting, overlay, outline and disabling site scrolling.
+- Link the banner's privacy statement to an existing Drupal node (privacy policy page) by node ID.
+- Add a separate CCPA "Do Not Sell" statement and reject-button label for US visitors.
+- Enable IAB TCF v2 (CMP) mode and configure the full set of TCF panel/vendor text strings.
+- Restrict or exclude specific countries from being shown the consent widget via Excluded Country entities.
+- Provide alternative-language consent text through Alternative Language config entities, in browser-locale or Drupal-language mode.
+- Control cookie behaviour: consent cookie expiry, same-site value, secure cookie flag, custom cookie name, sub-domain sharing.
+- Log consent decisions (where the Civic licence supports server-side consent logging).
+- Add an on-load JavaScript callback that runs when the widget initialises.
+- Exclude the consent script from Drupal's JS aggregation so the hosted widget always loads fresh.
+- Install a ready-made "Cookie Control HTML" text format/editor for rich statement descriptions.
+- Deploy a GOV.UK Design System compliant cookie banner block for DWP / public-sector services via the submodule.
+- Provide translated banner text per language for the GOV.UK banner using the alternative-language entities and locale strings.

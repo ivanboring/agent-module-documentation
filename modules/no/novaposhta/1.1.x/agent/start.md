@@ -1,30 +1,59 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-# NovaPoshta API (project `basket_novaposhta`, module `novaposhta`) — agent index
+# NovaPoshta API (novaposhta) — agent index
 
-Nova Poshta carrier integration for the **Basket** online-store module. PHP **8.1**, core
-`^10 || ^11 || ^12`. Config at `/admin/config/development/novaposhta`
-(`novaposhta.settings`, `configure` in info.yml).
+Nova Poshta (Ukrainian parcel carrier) delivery integration for the **Basket** online-store
+module. Package `Online store`. PHP **8.1**, core `^10 || ^11 || ^12`. License GPL-2.0-or-later.
+Version dir `1.1.x` (packaged `1.1.10`).
 
-> **Naming:** the drupal.org project is **`basket_novaposhta`**; the module machine name is
-> **`novaposhta`**. `composer require drupal/basket_novaposhta`, then `drush en novaposhta`.
+> **Naming:** the drupal.org project is packaged **`basket_novaposhta`**; the module machine name
+> is **`novaposhta`** (composer `drupal/novaposhta`). Enable with `drush en novaposhta`.
 
-Key facts:
-- Depends on **`basket`** (the store module) and core `views`. It is not a Drupal Commerce module.
-- Source layout: `NovaPoshta.php` (API client), `NovaPoshtaEN.php` (English surface),
-  `NovaPoshtaView.php` + `ViewsAlter.php` (carrier data in Views), `AdminPages.php` (admin
-  screens), plus `API/`, `Controller/`, `Form/`, `Hook/`, `Plugin/` and **`Commands/`** (console
-  commands, typically used to refresh city/warehouse reference data).
-- Nova Poshta is **warehouse-based**: customers select a branch rather than entering a street
-  address, so the integration's core job is city/warehouse lookup at checkout and storing the
-  chosen branch on the order.
-- Ships interface translations (`interface translation project: novaposhta`, server pattern
-  `modules/basket/%project/translations/…`), so the UI is available in Ukrainian.
+- **Settings form, config objects, schema, cron, drush** → [config/settings.md](config/settings.md)
+- **The API clients (transport + facade), routes, tables** → [api/client.md](api/client.md)
+- **Basket delivery + Views plugins** → [plugins/delivery.md](plugins/delivery.md)
+
+## What it actually is
+
+- Depends on **`basket`** and core **`views`** (info.yml `dependencies`). Not Drupal Commerce.
+- Two API layers in `src/API/`: **`NovaPoshtaApi2`** (raw POST client to
+  `https://api.novaposhta.ua/v2.0/json/`, ported from the lis-dev library) and
+  **`NovaPoshtaAPI`** (store-facing facade adding file cache + DB reference tables). English-order
+  surface in `NovaPoshtaEN` / `NovaPoshtaENForm`; admin screens in `AdminPages`; Views output in
+  `NovaPoshtaView` + `ViewsAlter`.
+- **Service** `NovaPoshta` (`Drupal\novaposhta\NovaPoshta`, id `NovaPoshta`) holds cron, reference
+  list updates (`runUpdate`), file cache (`variableGet/variableSet`) and helpers. Hook services
+  `NovaposhtaHooks` and `NovaposhtaViewsHooks` (both `autowire: true`).
+- **Delivery plugins** (`@BasketDelivery`): `novaposhta` (warehouse), `novaposhta2`,
+  `novaposhta_address` (courier-to-address). **Views plugins**: fields `novaposhta_en_num`,
+  `novaposhta_en_cost`, `novaposhta_en_weight`, `novaposhta_en_address`, `novaposhta_en_settings`;
+  filter `novaposhta_en_date`; wizard `novaposhta_en`. Bundled View `views.view.novaposhta`.
+
+## Routes (`novaposhta.routing.yml`)
+
+- `novaposhta.settings` — `/admin/config/development/novaposhta`, `_form NovaPoshtaSettingsForm`,
+  permission **`access novaposhta settings`**.
+- `novaposhta.autocomplete_cities` — `/basket/novaposhta/autocomplete/cities`, GET,
+  `_access: 'TRUE'` (public checkout autocomplete), `AutocompleteController::cities`.
+- `novaposhta.autocomplete_streets` — `/basket/novaposhta/autocomplete/streets/{ref}`, GET,
+  `_access: 'TRUE'`, `AutocompleteController::streets`.
+
+## Permissions, drush, tables
+
+- Permissions (`novaposhta.permissions.yml`, both `restrict access: true`):
+  **`access novaposhta settings`**, **`access novaposhta en`**.
+- Drush (`drush.services.yml` → `NovaPoshtaCommands`): **`novaposhta:status_update`** (runs the cron
+  routine) and **`novaposhta:list <type>`** (rebuild `area`/`city` lists).
+- Tables (`novaposhta.install`): `novaposhta` (per-order chosen branch), `novaposhta_en`
+  (waybills), `novaposhta_en_orders` (order↔waybill), `novaposhta_lists` (area/city reference).
+- Config objects: `novaposhta.settings` (has schema), `novaposhta.en.settings`,
+  `novaposhta.en.template`, `novaposhta.OptionsSeat`.
 
 ```bash
 drush en novaposhta -y
 drush cget novaposhta.settings
-drush list | grep -i novaposhta      # the shipped console commands
+drush novaposhta:status_update       # refresh waybill statuses (also on cron)
+drush novaposhta:list city           # rebuild the city reference table
 ```
 
-Credentials: the carrier API key belongs in an environment variable rather than exported config —
-check what `NovaPoshtaSettingsForm` stores before committing configuration.
+Credentials: the carrier API key is stored in `novaposhta.settings:config.api_key`
+(`NovaPoshtaSettingsForm`). Set/track it deliberately before exporting config.
