@@ -1,43 +1,48 @@
 {
   "name": "Entity Version",
   "data_name": "entity_version",
-  "description": "Provides a way to store and keep track of the version of entities.",
+  "description": "Provides a way to store and keep track of the version of content entities as a major.minor.patch number.",
   "version": "8.x-1.x",
   "package": null,
   "composer_namespace": "drupal/entity_version",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "entity_version.settings",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/entity_version",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [
     "entity_version_history",
-    "entity_version_workflows"
+    "entity_version_workflows",
+    "entity_version_workflows_example"
   ],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Workflow"
+    "Content editing experience",
+    "Automation"
   ],
   "subcategories": [
-    "Versioning"
+    "Fields",
+    "Revision management",
+    "Workflow / state management"
   ],
   "keywords": [
     "entity version",
     "versioning",
     "major minor patch",
-    "workflow",
-    "history"
+    "field type",
+    "revision history",
+    "content moderation"
   ],
-  "project_description": "The Entity Version module attaches a version number to content entity revisions that helps content editors to understand the evolution of the content item. Versions are composed of major, minor and patch numbers and can be changed manually or by third party modules.\n\n The module includes the \"Entity version workflows\" sub-module which allows configuration and control of version numbers through workflow state transitions.\n\n Usage \n Add the field type 'entity_version' to a content entity you wish to have versioned. Enabling the entity_version_workflows submodule allows each transition to either Increase/Decrease or do nothing with any of the version numbers.",
+  "project_description": "Entity Version provides an 'entity_version' field type that stores a structured version number (major, minor and patch as three unsigned-integer columns) on content entities. Editors set the numbers with a simple three-part number widget and display them with a formatter that joins them down to a configurable minimum category (major / major.minor / major.minor.patch). A per entity-type-and-bundle 'entity_version_settings' config entity marks one version field as the 'main' field so sub-modules know which field to act on; the settings form lives at /admin/config/entity-version/settings behind the 'administer entity version' permission. An EntityVersionInstaller service can attach the field programmatically. The field item exposes increase(), decrease() and reset() methods per category that third-party code and the 'entity_version_workflows' sub-module use to change the numbers, and the 'entity_version_history' sub-module adds a per-entity History tab listing the distinct versions across revisions.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

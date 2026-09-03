@@ -1,13 +1,14 @@
 {
   "name": "Entity Version Workflows",
   "data_name": "entity_version_workflows",
-  "description": "Entity version workflow allows to configure and control version numbers through workflow state transitions.",
+  "description": "Bumps, decreases or resets entity version numbers automatically on Content Moderation workflow state transitions.",
   "version": "8.x-1.x",
   "package": null,
   "composer_namespace": "drupal/entity_version",
   "composer_requirements": {},
   "dependent_modules": [
-    "entity_version:entity_version"
+    "entity_version",
+    "content_moderation"
   ],
   "configure": null,
   "core_version_requirement": "^10 || ^11",
@@ -15,7 +16,7 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/entity_version",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
@@ -24,23 +25,25 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Workflow"
+    "Automation"
   ],
   "subcategories": [
-    "Versioning"
+    "Workflow / state management"
   ],
   "keywords": [
-    "entity",
+    "entity version",
+    "content moderation",
     "workflows",
+    "transitions",
     "submodule"
   ],
   "part_of": "entity_version",
-  "project_description": "The Entity Version module attaches a version number to content entity revisions that helps content editors to understand the evolution of the content item. Versions are composed of major, minor and patch numbers and can be changed manually or by third party modules.\n\n The module includes the \"Entity version workflows\" sub-module which allows configuration and control of version numbers through workflow state transitions.\n\n Usage \n Add the field type 'entity_version' to a content entity you wish to have versioned. Enabling the entity_version_workflows submodule allows each transition to either Increase/Decrease or do nothing with any of the version numbers.",
-  "maintenance_status": "Actively maintained",
-  "development_status": "Under active development",
-  "security_advisory_coverage": "not-covered",
-  "project_created": "2019-08-02",
-  "project_changed": "2026-08-11",
-  "core_semver_minimum": 8000000,
-  "core_semver_maximum": 12000000
+  "project_description": "Sub-module of Entity Version. Integrates with core Content Moderation / Workflows so that each workflow transition can be configured to increase, decrease, reset or leave unchanged each of the major/minor/patch numbers of a bundle's main version field. Per-transition rules are stored as workflow third-party settings (added via a form_alter on the transition add/edit forms) and applied in hook_entity_presave by EntityVersionWorkflowManager, which resolves the transition being used and optionally applies the rules only when the entity's field values changed. Entities can opt out per save with the entity_version_no_update flag; reverting a node revision keeps the version unchanged.",
+  "maintenance_status": null,
+  "development_status": null,
+  "security_advisory_coverage": null,
+  "project_created": null,
+  "project_changed": null,
+  "core_semver_minimum": null,
+  "core_semver_maximum": null
 }

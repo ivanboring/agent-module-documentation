@@ -5,11 +5,13 @@
   "version": "1.x",
   "package": null,
   "composer_namespace": "drupal/json_ld_schema_ui",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/entity": "^1.0"
+  },
   "dependent_modules": [
-    "entity:entity"
+    "entity"
   ],
-  "configure": null,
+  "configure": "json_ld_schema_ui.settings",
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -17,17 +19,21 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/token": "Adds a token browser to the schema default-value and per-entity override fields.",
+    "drupal/select2": "Optionally enables a Select2-based schema type picker instead of the hierarchical Ajax one."
+  },
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "SEO"
+    "Search engine optimization (SEO)"
   ],
   "subcategories": [
-    "Structured data"
+    "Structured data / Schema.org",
+    "Meta tags / structured metadata"
   ],
   "keywords": [
     "json-ld",
