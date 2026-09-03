@@ -3,9 +3,11 @@
   "data_name": "pf_email",
   "description": "Email push notification channel for the Push Framework.",
   "version": "2.x",
-  "package": null,
+  "package": "Push",
   "composer_namespace": "drupal/pf_email",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/push_framework": "^2.3"
+  },
   "dependent_modules": [
     "push_framework:push_framework"
   ],
@@ -15,19 +17,21 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/pf_email",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Administration"
+    "Integrations",
+    "User engagement"
   ],
   "subcategories": [
-    "Notifications"
+    "Email / mail delivery",
+    "Messaging framework"
   ],
   "keywords": [
     "push framework",
@@ -35,7 +39,7 @@
     "notifications",
     "channel"
   ],
-  "project_description": "This module extends the Push Framework and pushes notifications to users via email.",
+  "project_description": "This module extends the Push Framework and pushes notifications to users via email. It registers an 'email' channel plugin that sends each notification with Drupal's mail manager to the recipient user's own email address, supporting plain-text and HTML messages.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

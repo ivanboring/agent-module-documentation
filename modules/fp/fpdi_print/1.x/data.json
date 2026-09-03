@@ -1,20 +1,28 @@
 {
-  "name": "FPDI Print",
+  "name": "FPDI - PDF printing with template",
   "data_name": "fpdi_print",
-  "description": "Allows any views can print from existing PDF",
+  "description": "Print any View onto an existing PDF template using the FPDI/TCPDF libraries.",
   "version": "1.x",
-  "package": null,
+  "package": "Views",
   "composer_namespace": "drupal/fpdi_print",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "tecnickcom/tcpdf": "^6.11",
+    "setasign/fpdi": "^2.6",
+    "tmw/fpdm": "^2.9"
+  },
   "dependent_modules": [],
-  "configure": null,
+  "configure": "fpdi_print.settings",
   "core_version_requirement": "^9.3 || ^10 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/fpdi_print",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "tecnickcom/tcpdf",
+    "setasign/fpdi",
+    "tmw/fpdm"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
@@ -25,16 +33,19 @@
     "Content display"
   ],
   "subcategories": [
-    "PDF generation"
+    "PDF generation",
+    "Data export"
   ],
   "keywords": [
     "fpdi",
+    "tcpdf",
     "pdf",
     "print",
     "views",
+    "template",
     "document"
   ],
-  "project_description": "This module uses library FPDI Generate a PDF file for printing based on a template.\n\nYou can import pages from existing PDF documents.\n\n How to use:\n\n \n install module fpdi_print with composer require drupal/fpdi_print. It'll add libraries tcpdf & fpdi to vendor \n Create view page node with contextual filter (nid) \n Add Pdf Print (global) to Header or Footer Views page\n \n Fill all the configuration \n Path to pdf source file - version 1.4 . /!\\ Check your version pdf before upload, it doesn't work with version 1.5 or 1.6 Path asbolute /var/www/drupal/sites/default/files/template.pdf or relative sites/default/files/template.pdf \n Add position x,y, text (format array yaml) /!\\check validation yaml or /fpdi-print/validate before paste \n \n \n \n If you leave the position configuration empty. It'll print contents of the view. You can set pdf header footer with global area custom text from views header footer\n\nExample:\n\n \n\nIf your fpdf is Form filling and compatible ( FPDM )\n\nyou can set configuration like this (you don't need position x,y)\n\n \n\n- form: \"address\"\n\n text: \"My city\"\n\n- form: \"address\"\n\n text: \"My phone number\"\n\n \n\nYou can goto page /fpdi-print/validate to check pdf and yaml format\n\n \n\n for developper \n There is hook fpdi_print_views for alter data positions before generate.\n\nyou can call service fpdi_print.print_builder \n\nFormat of positions : page number => [ x , y , (text|html|image), height , width]\n\nthe page number must start with 1 (NOT BEGIN WITH 0)\n\n<?php\n\n/*\n\n$positions = [\n\n '1' => [\n\n [ 'x'=> 10, 'y'=>20, 'text'=>'Show text in page 1'],\n\n [ 'x'=> 15, 'y'=>40, 'height'=>50 , 'width'=>50, 'image'=>101 //you can add fid for image],\n\n [ 'x'=> 15, 'y'=>50, 'image'=>'/path/to/image' // add image path],\n\n [ 'x'=> 15, 'y'=>60, 'image'=>' '// add html multi images],\n\n],\n\n '2' => [\n\n [ 'x'=> 10, 'y'=>20, 'height'=> 10, 'html'=>'Show html \\n in page 2' ],\n\n]\n\n '3' => [\n\n [ 'pdf'=>'/path/to/merge/file.pdf' ],\n\n]\n\n]\n\n*/\n\n $pdf = \\Drupal::service('fpdi_print.print_builder')->getPDF($positions, $filePdfTemplate);\n\n //you can save pdf to file with $pdf->Output('I','yourFileName.pdf');\n\n//or show in directly to browser\n\n $response = new StreamedResponse();\n\n return $response->setCallback(function () use ($pdf) {\n\n ob_clean();\n\n $handle = fopen('php://output', 'w+');\n\n $pdf->Output();\n\n fclose($handle);\n\n });\n\n?>\n\nHook avaible before render pdf\n\n<?php\n\n /**\n\n * Implements hook_fpdi_print_views_alter().\n\n */\n\nfunction myModule_fpdi_print_views_alter($dataPositions, $view, $filePdfTemplate){\n\n $view_id = $view->id();\n\n...\n\n}\n\n ?>\n\n Do you like this module? Show your appreciation by buying me ☕ .",
+  "project_description": "FPDI Print generates a PDF from a Drupal View, optionally overlaying the view's field data onto an existing PDF template (\"stamping\"). It ships a Views area handler that renders a download link; following the link streams a PDF built by the TCPDF+FPDI stack. A YAML \"position\" configuration places text, HTML, images and even whole merged PDF pages at x/y coordinates on the template; leaving it empty prints the rendered view HTML instead. It can import PDF 1.4 form templates and fill AcroForm fields via FPDM. Global settings control page format, orientation, a print CSS file and footer height. A developer service (fpdi_print.print_builder) and a hook_fpdi_print_views_alter let code drive PDF generation directly.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

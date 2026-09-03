@@ -1,11 +1,13 @@
 {
-  "name": "Strip Filter",
+  "name": "Strip HTML tags - custom text format filter",
   "data_name": "strippfilter",
   "description": "Text filter for stripping specific HTML tags from text output",
   "version": "1.x",
-  "package": null,
+  "package": "SK",
   "composer_namespace": "drupal/strippfilter",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "ext-dom": "*"
+  },
   "dependent_modules": [
     "drupal:filter"
   ],
@@ -15,28 +17,30 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/strippfilter",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=7.4",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content authoring"
+    "Content editing experience"
   ],
   "subcategories": [
-    "Text filters"
+    "Text format filters"
   ],
   "keywords": [
-    "filter",
     "strip",
-    "html tags",
     "paragraph",
-    "cleanup"
+    "tags",
+    "html",
+    "filter",
+    "format",
+    "DOM"
   ],
-  "project_description": "Strip paragraph tags from a text format that otherwise requires them.\n\n Features \n This module provides an input filter that strips opening and closing paragraph tags ( \n \n\n and \n\n ) so that you can designate a text format for producing inline WYSIWYG -edited output.\n\n For instance, you can make a three-part caption that will be rigidly formatted as a bold title followed by a caption that allows interior bold or italics but no paragraph breaks flowing into a credit that is always italicized and muted. The content editor can edit each part with CKEditor 5, but rather than being stuck with the paragraph tags for each section \n\n Installation \n Works with Drupal 8, 9, 10, and 11.\n\n composer require 'drupal/strippfilter:^1' \n\n Post-Installation \n Go to Administration » Configuration » Content authoring » Text formats and editors ( /admin/config/content/formats ) and create or edit the format you want to make always-inline by enabling the Strip paragraph tags filter. Make certain this filter runs last.\n\n Then for fields that should use this format, set allowed formats only to this format and in form display set the textarea to be only one or two lines.\n\n Additional Requirements \n No non-core requirements. Makes most sense with core CKEditor (CKEditor5), as the main use case is working around their stubborn insistence on forcing paragraph tags. (See github.com/ckeditor/ckeditor5/issues/762 for the stalled progress and alternate approaches.)\n\n Recommended modules/libraries \n Pairs well with Textarea widget for text fields .\n\n Similar projects \n Probably plenty and they probably have more functionality.\n\n Whether it is a bug or not Strip HTML tags filter cannot do this because the content between the tags gets removed too. So if you set it to strip p tags you get blank text, empty strings, back.\n\n Supporting this Module \n You can support Agaric's overall contributions to Drupal and a bit beyond by supporting Drutopia at opencollective.com/drutopia . Thanks!!\n\n Community Documentation \n Contributions welcome, the issue queue is always a good place to start.\n\n Back to top",
+  "project_description": "A single text-format @Filter plugin (id 'strippfilter', 'Strip paragraph tags') that unwraps HTML paragraph tags: it keeps the inner content of every <p> element and discards the <p> wrapper (and its attributes), so an HTML/CKEditor 5 format can produce inline output with no paragraph breaks. The main use case is fields (titles, captions, credits) that should be edited in CKEditor 5 but rendered on one line, working around CKEditor 5's insistence on wrapping content in paragraph tags. Implemented with Drupal's DOM-based Html::load()/Html::serialize() (the HTML5-PHP support added in Drupal 10.2) rather than str_replace/regex, precisely because CKEditor 5 leaves stray dir/title attributes on pasted paragraph tags that a naive string replace would miss. Note: if the input contains any <p> element, only content inside <p> elements is returned (content outside paragraphs is dropped); text with no <p> is returned unchanged. Depends only on core filter. No settings form, no config, no routes, no permissions.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

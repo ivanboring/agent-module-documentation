@@ -5,10 +5,12 @@
   "version": "2.x",
   "package": null,
   "composer_namespace": "drupal/flag_block",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/flag": "*"
+  },
   "dependent_modules": [
-    "drupal:block",
-    "drupal:flag"
+    "block",
+    "flag"
   ],
   "configure": null,
   "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
@@ -22,19 +24,22 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content"
+    "User engagement",
+    "Site structure"
   ],
   "subcategories": [
-    "Flagging / bookmarking"
+    "Flagging / bookmarking",
+    "Block enhancements"
   ],
   "keywords": [
     "flag",
     "block",
     "bookmark",
-    "favourite"
+    "favourite",
+    "flag link"
   ],
   "project_description": "This is a very simple module makes available Flag link in a block.\n\n Requirements \n\n \n Block module (core) \n Flag module \n \n Install \n\n If your site is managed via Composer, use Composer to download the module.\n\n composer require 'drupal/flag_block:^2.0' \n\n Or\n\n Install the module as any other module.\n\n Usage \n\n Enable the module in 'Extend' page ( /admin/modules ).\n\n Or\n\n use Drush: drush en flag_block \n\n Configuration \n\n Visit the Block layout page and click Place block .\n\nOn the block settings you will see Flag field.\n\nSelect one from the your Flag types list ( /admin/structure/flags ).\n\nClick Save block .",
   "maintenance_status": "Minimally maintained",

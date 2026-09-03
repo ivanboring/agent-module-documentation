@@ -3,21 +3,25 @@
   "data_name": "doccheck_basic",
   "description": "DocCheck Basic Login page and block",
   "version": "2.x",
-  "package": "Access control",
+  "package": "Web services",
   "composer_namespace": "drupal/doccheck_basic",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "doccheck/oauth2-doccheck": "^2@beta"
+  },
   "dependent_modules": [
     "drupal:node",
     "drupal:block"
   ],
-  "configure": null,
+  "configure": "doccheck_basic.settings",
   "core_version_requirement": "^10.2 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/doccheck_basic",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "doccheck/oauth2-doccheck"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
@@ -35,9 +39,10 @@
     "medical",
     "hcp",
     "authentication",
-    "pharma"
+    "pharma",
+    "login-wall"
   ],
-  "project_description": "This module allows to authenticate multiple Drupal nodes through the DocCheck login (basic license https://access.doccheck.com/ ) mechanism \n\n Block (DocCheck Basic) and page (/doccheck-login) are available.\n\n The module does only add a login mechanism for one user.\n\nIt does not set any permission or blocks access.\n\n Read README.txt for more information.",
+  "project_description": "DocCheck Basic integrates the DocCheck login (basic license, https://access.doccheck.com/ ) so a site can gate pharmaceutical/medical content behind the DocCheck identity system for verified healthcare professionals. It provides a DocCheck login button as both a block (\"DocCheck Basic\") and a page (/doccheck-login), plus a callback route (/_dc_callback) that DocCheck redirects visitors back to. On successful return the module logs the visitor into a single pre-configured Drupal user account (the \"Login as User\"); that account's role must be granted view access to the protected content. The module itself sets no permissions and blocks no content — gating is done with ordinary Drupal role/permission and block-visibility configuration on that one shared account. An optional OAuth2 client secret enables server-side verification of the DocCheck authorization code, and an optional IP-based auto-login lets the DocCheck search crawler index protected pages.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
