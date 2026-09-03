@@ -1,16 +1,16 @@
 {
-  "name": "Analog Digital Clock Block",
+  "name": "Analog Digital Clock",
   "data_name": "adc_block",
-  "description": "Highly configurable SVG/CSS analog and digital clock blocks.",
+  "description": "Highly configurable SVG and CSS-based clock blocks. Includes multiple layouts for real-time Analog and Digital displays with custom timezones, colors, and font settings.",
   "version": "1.0.x",
   "package": "Analog Digital Clock",
   "composer_namespace": "drupal/adc_block",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:block"
+    "block"
   ],
   "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/adc_block",
@@ -27,16 +27,18 @@
     "Content display"
   ],
   "subcategories": [
-    "Blocks"
+    "Block enhancements",
+    "SVG / vector images"
   ],
   "keywords": [
     "clock",
     "analog",
     "digital",
     "block",
-    "svg"
+    "svg",
+    "timezone"
   ],
-  "project_description": "The Analog Digital Clock (ADC Block) module provides a highly flexible time display solution for Drupal. It allows site builders to place configurable analog and digital clock blocks across various regions with robust timezone support and deep customization options. By leveraging both HTML5 Canvas and SVG technologies, it ensures high-performance, real-time updates that are responsive and visually consistent across all modern devices.\n\n Features \n \n Analog Clock Block: A canvas-based implementation with customizable hands, colors, and shadow effects. \n Digital Clock Block: A real-time digital interface featuring versatile date display and formatting options. \n SVG Variants: High-fidelity SVG-based implementations for both analog and digital clocks, perfect for high-density displays. \n Pre-built Layouts: Seven professionally designed presets for rapid deployment, plus a \"Custom\" mode for full creative control. \n Advanced Timezone Support: Display time based on the System timezone, the visitor's Local browser timezone, or a specific global region. \n Responsive Design: Built-in styling that ensures clocks scale seamlessly across smartphones, tablets, and desktops. \n \n Installation \n \n Install as you would any standard contributed Drupal module. For best results, use Composer to manage dependencies.\n\n composer require drupal/adc_block Enable the module using Drush:\n\n drush en adc_block Configuration & Usage \n \n Once enabled, clocks are managed through the standard Drupal block system:\n\n \n Navigate to Structure » Block layout . \n Click Place block in your desired region (e.g., Sidebar or Header). \n Search for \"Analog Clock\" or \"Digital Clock\" and click Place block. \n In the configuration modal, define your Regional Settings (Timezone) and Layout Settings . \n If using the Analog clock, choose from one of the pre-built layouts or select Custom to unlock individual hand, border, and tick mark colors. \n Save the block to initialize the real-time JavaScript updates. \n \n Theming & API \n \n Developers can override the look and feel by copying the provided Twig templates into their theme:\n\n \n analog-clock.html.twig \n digital-clock.html.twig \n svg-clock-analog-dynamic.html.twig \n svg-clock-digital-dynamic.html.twig \n \n \n To add custom layout options programmatically, you can utilize the provided alter hook: hook_adc_block_layout_options_alter() .\n\n Requirements \n \n This module requires Drupal Core 10 or 11 and the core Block module. No external third-party JavaScript libraries are required, as all clock logic is handled by native browser APIs.\n\n Troubleshooting \n \n If the clock is not appearing or updating:\n\n \n Clear your Drupal cache using drush cr . \n Ensure your browser console is free of JavaScript conflicts from other modules. \n Check that CSS/JS Aggregation is configured correctly under Configuration » Performance . \n \n Maintainers \n \n Maintained by Sujan Shrestha .\n\n Support \n \n If you find this module useful, please consider reporting bugs or submitting feature requests in the Issue Queue .\n\n Back to top",
+  "project_description": "The Analog Digital Clock (ADC Block) module provides real-time analog and digital clock blocks for Drupal, placed and configured through the core Block system. It ships four Block plugins: a Canvas-based analog clock (adc_block_block), a CSS/HTML digital clock (adc_block_digital_block), and two SVG-rendered variants (svg_clock_analog_dynamic and svg_clock_digital_dynamic). Each block exposes extensive per-instance styling: colors for the face, hands, ticks, numbers and text; hand/tick widths and lengths; borders, shadows and glow effects; font family, size and weight; and (for the digital blocks) date and day display with selectable or custom PHP date formats. Time is resolved and updated entirely client-side by attached JavaScript, so the blocks declare getCacheMaxAge() 0 (uncacheable). Timezone can follow the site/system timezone, the visitor's local browser timezone, or a specific named timezone. The two legacy blocks offer numbered preset layouts (layout1..layout10 for analog) plus a Custom mode; the two SVG blocks are fully custom with grouped detail forms. Templates (analog-clock.html.twig, digital-clock.html.twig, svg-clock-analog-dynamic.html.twig, svg-clock-digital-dynamic.html.twig) are overridable in a theme. The module has no routes, permissions, services, or external dependencies; all clock logic uses native browser APIs. It requires Drupal core 9, 10 or 11 and the core Block module. Maintained by Sujan Shrestha; project security_advisory_coverage is not-covered.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

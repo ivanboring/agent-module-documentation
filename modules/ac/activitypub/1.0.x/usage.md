@@ -1,47 +1,31 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-ActivityPub connects your site with the Fediverse, letting it federate content via the ActivityPub protocol.
+ActivityPub turns a Drupal site into a Fediverse server, letting local users and content be followed, replied to, liked and boosted from Mastodon, Pixelfed, Pleroma and other ActivityPub platforms.
 
 ---
 
-ActivityPub connects a Drupal site with the Fediverse — implementing the ActivityPub protocol so the
-site can publish activities to and receive activities from other servers (Mastodon etc.), with actors,
-inboxes/outboxes, followers and a reader/timeline. It depends on core Image, ships many submodules (api,
-comment, mastodon_api, reader, scheduler), is configured at `activitypub.settings`, provides Drush commands
-and its own permissions, in the ActivityPub package.
-
-Use it to federate a Drupal site into the Fediverse. **Security caveat for this alpha (1.0.0-alpha26):
-inbound HTTP-signature verification is incomplete.** ActivityPub relies on HTTP signatures to prove an
-incoming activity genuinely came from the claimed remote actor. In this version, when signature verification
-**fails** (including a missing or invalid signature — `verifySignature()` returns false rather than
-rejecting), the inbox controller falls back for "timeline" activity types to publishing the activity anyway
-**if the claimed actor is followed by any local user**. The module's own settings UI documents this
-("signature verification is not 100% done yet … we allow posts … in case the actor is a followee"). The
-consequence is that an attacker can post unsigned/forged activities to the inbox impersonating a followed
-actor, and they may be published to the local timeline as genuine (fediverse content spoofing / impersonation
-/ malicious-link injection). Until upstream requires a valid signature, treat the incoming-timeline content
-as **not authenticated**: be cautious about trusting/displaying federated content as verified, keep the
-module updated, and prefer the "require follow" and blocked-domains settings. It is a federation/integration
-feature. Configure the ActivityPub actors and settings.
+ActivityPub (`activitypub`) implements the W3C ActivityPub protocol together with WebFinger and NodeInfo so a Drupal site can federate with the Fediverse. Each participating Drupal user gets one or more ActivityPub *actors* (Person) with a public/private RSA key pair, an inbox, an outbox, and followers/following collections. Content is mapped to ActivityStreams objects through configurable *ActivityPub type* config entities (dynamic types map an entity bundle such as `node:article` to a `Note`; static types cover Follow/Accept/Undo/Delete). Outgoing activities are built and delivered to remote inboxes through queues (cron or manual), signed with HTTP Signatures; incoming activities arrive on per-user and shared inboxes and are stored as `activitypub_activity` entities and surfaced as `activitypub_timeline_item` entities. Bundled submodules add a generic OAuth API layer, a Mastodon-compatible client API, comment federation, a Personal Reader timeline UI, and Scheduler integration. It ships views, blocks (Follow), a search plugin, and Drush commands to operate the queues.
 
 ---
 
-- Federate the site into the Fediverse.
-- Implement the ActivityPub protocol.
-- Publish/receive activities.
-- Support actors, inboxes, followers.
-- Provide a reader/timeline.
-- Ship api/comment/mastodon/reader submodules.
-- KNOW inbound signature verification is incomplete (alpha).
-- Understand failed signatures can still publish (followee fallback).
-- Treat incoming timeline content as NOT authenticated.
-- Be cautious displaying federated content as verified.
-- Keep the module updated.
-- Use require-follow and blocked-domains settings.
-- Provide Drush commands and permissions.
-- Configure at activitypub.settings.
-- Connect to Mastodon etc.
-- Depend on core Image.
-- Handle federation.
-- Configure ActivityPub actors.
-- Publish to the Fediverse.
-- Receive federated activities.
+- Let external Fediverse users follow a Drupal author and receive their posts in Mastodon/Pleroma.
+- Publish nodes (articles, blog posts) automatically as ActivityPub `Note` objects to followers.
+- Give each user a federated actor at `/user/{uid}/activitypub/{actor}` discoverable via WebFinger (`@user@yoursite`).
+- Expose a per-user inbox and outbox so remote servers can deliver and read activities.
+- Run a shared inbox (`/activitypub/inbox`) to reduce per-user delivery load from large instances.
+- Receive and display Likes, Announces (boosts) and replies from remote actors as timeline items.
+- Follow remote actors from Drupal and build a home timeline of their posts.
+- Send Follow/Accept/Undo/Delete activities so relationships stay in sync across the Fediverse.
+- Optionally back-fill a remote actor's recent posts into the timeline when a local user follows them.
+- Block unwanted domains site-wide or per-user for inbound activities.
+- Post with Mastodon-style visibility levels: Public, Unlisted, Followers-only, and Private (direct).
+- Configure a site-wide actor so users without their own actor can still publish.
+- Add profile metadata fields (PropertyValue attachments) to an actor's Fediverse profile.
+- Cache remote avatars, header images, attachment images and videos locally via image styles.
+- Serve NodeInfo statistics (`localPosts`, active users) so the instance appears in Fediverse crawlers.
+- Process outbox delivery and inbox handling either on cron or via Drush (`drush activitypub:*`).
+- Delete old inbound activities and timeline items automatically after N days.
+- Provide a Follow block and an ActivityPub search plugin for discovering remote actors/objects.
+- Map any entity type/bundle to an ActivityPub object with a field-to-property mapping (dynamic types).
+- Send an Update activity to followers when a federated node is edited, and a Delete when it is removed.
+- Support account migration: handle inbound Move activities to re-point followers to a new actor.
+- Localize actor endpoints on multilingual sites (WebFinger and route handling are language-aware).
+- Interact with remote content from node pages (Favourite / Announce interaction forms).

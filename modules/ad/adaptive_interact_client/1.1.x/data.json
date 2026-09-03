@@ -1,36 +1,37 @@
 {
   "name": "Interact client (Adaptive Interact)",
   "data_name": "adaptive_interact_client",
-  "description": "Client integration for the Adaptive Interact engagement/personalization platform.",
+  "description": "Embeds the Adaptive Interact conversational AI search/chat widget on a Drupal site via a block, render element and admin-configured server URL.",
   "version": "1.1.x",
   "package": "Adaptive Interact",
   "composer_namespace": "drupal/adaptive_interact_client",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^10||^11||^12",
+  "configure": "adaptive_interact_client.settings",
+  "core_version_requirement": "^10 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/adaptive_interact_client",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Integrations"
   ],
   "subcategories": [
-    "Analytics & tracking"
+    "Chat / messaging"
   ],
   "keywords": [
     "adaptive interact",
-    "personalization",
-    "engagement",
+    "conversational ai",
+    "chat widget",
+    "ai search",
     "integration",
     "client"
   ],

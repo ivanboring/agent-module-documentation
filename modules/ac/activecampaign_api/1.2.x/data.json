@@ -1,11 +1,13 @@
 {
   "name": "ActiveCampaign API",
   "data_name": "activecampaign_api",
-  "description": "Provides an ActiveCampaign API integration/client for Drupal.",
+  "description": "ActiveCampaign API implementation module.",
   "version": "1.2.x",
   "package": null,
   "composer_namespace": "drupal/activecampaign_api",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "ext-json": "*"
+  },
   "dependent_modules": [],
   "configure": null,
   "core_version_requirement": "^9 || ^10 || ^11",
@@ -16,7 +18,9 @@
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [],
+  "submodules": [
+    "activecampaign_api_raven_context"
+  ],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
@@ -32,9 +36,10 @@
     "api",
     "crm",
     "email marketing",
-    "integration"
+    "contacts",
+    "event tracking"
   ],
-  "project_description": "The activecampaign_api modules contains an integration to the Activecampaign API as used by the contact_activecampaign module.",
+  "project_description": "A low-level PHP client library for the ActiveCampaign v3 marketing/CRM REST API, packaged as a Drupal module. It stores per-account credentials (base URL + API token) in a config entity and exposes typed endpoint and resource classes for contacts, lists, tags, fields and account-contact data, plus an event-tracking service. It is primarily a dependency of higher-level integrations such as contact_activecampaign and provides no end-user UI beyond an admin account manager and diagnostic test forms.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "not-covered",
