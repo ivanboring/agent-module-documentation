@@ -1,24 +1,29 @@
 {
   "name": "AI Penpot",
   "data_name": "ai_penpot",
-  "description": "Reads live Penpot design context via the Penpot API and exposes it to AI agents.",
+  "description": "Reads live Penpot design context via the Penpot RPC API and exposes it to Drupal AI Agent tools, so the Canvas AI assistant can build from a real design.",
   "version": "1.0.x",
-  "package": null,
+  "package": "AI",
   "composer_namespace": "drupal/ai_penpot",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1",
+    "drupal/ai_agents": "^1",
+    "drupal/key": "^1",
+    "drupal/easy_encryption": "^1"
+  },
   "dependent_modules": [
     "ai:ai",
     "ai_agents:ai_agents",
     "key:key",
     "easy_encryption:easy_encryption"
   ],
-  "configure": null,
+  "configure": "ai_penpot.settings",
   "core_version_requirement": "^11.2",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_penpot",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.3",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
@@ -34,12 +39,13 @@
   ],
   "keywords": [
     "ai",
+    "ai agents",
     "penpot",
     "design",
-    "agents",
-    "api"
+    "design to code",
+    "drupal canvas"
   ],
-  "project_description": "Read a Penpot design's context from server-side PHP and hand it to Drupal's AI Agent tools, so the Drupal Canvas AI assistant can work from the real design — its colours, typography, structure, and text — instead of a screenshot. Paste a Penpot link and the assistant reads it.\n\n It is the Penpot counterpart of AI Figma , and works with Drupal Core and Drupal CMS alike — config-driven and theme-agnostic.\n\n What it provides \n \n the Penpot connection — a stored, read-only access token and a settings page, and \n two AI Agent tools — Penpot: List Design Pages and Penpot: Read Design Context — that list a file's pages and read one page's colours, typography and verbatim text. \n \n Under the hood it talks to the Penpot API ( penpot.example.com/api/rpc/command/… ) directly from PHP — the same design data the Penpot MCP server surfaces — using a stored access token, with no interactive login. The token lives in the Key module, encrypted at rest via Easy Encryption .\n\n Quick start \n \n composer require drupal/ai_penpot and enable the module. \n Create a Penpot access token ( Your account → Access tokens ). Self-hosted instances must enable the enable-access-tokens flag. \n At Configuration → AI → AI Penpot , set your Penpot instance URL, paste the token into the Penpot Key, and click Test Penpot connection . \n Add the two tools to your Canvas AI agent, open the Canvas editor's AI panel, and paste a Penpot link. \n \n Documentation \n https://project.pages.drupalcode.org/ai_penpot/ — Installation, Configuration, and the AI Agent tools reference.\n\n Requirements \n \n Drupal ^11.2 \n AI (Drupal AI) and AI Agents \n Key and Easy Encryption \n A Penpot instance (Penpot Cloud or self-hosted) and a Penpot access token \n \n Related \n Works with any AI Agent on any AI Assistance page — the Drupal Canvas AI Agents and any other AI Agent.\n\n \n AI Figma — the same, for Figma designs. \n Drupal Canvas \n Display Builder AI \n Back to top",
+  "project_description": "AI Penpot connects a Penpot design to Drupal's AI Agent tooling. It talks to the Penpot RPC API (<base>/api/rpc/command/<command>) from server-side PHP using a stored access token, and exposes two AI Agent function-call tools so the Drupal Canvas AI assistant can build pages and components from the real design rather than a screenshot: Penpot: List Design Pages returns every page id of a file in order, and Penpot: Read Design Context returns one page's colours, typography, verbatim text content and a shape outline.\n\nThe module is config-driven and theme-agnostic. Configuration lives at Configuration -> AI -> AI Penpot: the Penpot instance base URL (Penpot Cloud https://design.penpot.app or a self-hosted instance), the access token (selected from a Key entity, kept encrypted at rest via easy_encryption), and an optional default file id. A Test Penpot connection button probes the API with the saved settings. On install the module provisions a `penpot` Key (empty value, admin pastes the token) and, when the ai_context module is present, seeds three editable AI Context items (Penpot Build Rules, Penpot Accessibility Rules, and an optional Penpot Component Mapping Governance) that guide how designs are built.\n\nWhat it provides: two AI function-call plugins (ai_penpot:list_design_pages, ai_penpot:design_context), a PenpotContextClient service that fetches and summarizes design tokens, a settings form, two permissions, and config schema. It is the Penpot counterpart of AI Figma. Requirements: Drupal ^11.2, AI (drupal/ai), AI Agents, Key and Easy Encryption, plus a Penpot instance and an access token.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

@@ -1,17 +1,22 @@
 {
-  "name": "AI Provider: DXPR",
+  "name": "DXPR AI Provider",
   "data_name": "ai_provider_dxpr",
   "description": "This enables the use of DXPR AI for the AI module.",
   "version": "1.x",
-  "package": "AI",
+  "package": "AI Providers",
   "composer_namespace": "drupal/ai_provider_dxpr",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.4.0",
+    "drupal/key": "^1.18",
+    "drupal/dxpr_builder": ">=2.7.5",
+    "openai-php/client": ">=v0.10.1"
+  },
   "dependent_modules": [
     "ai:ai",
     "key:key",
-    "dxpr_builder:dxpr_builder (>=2.7.5)"
+    "dxpr_builder:dxpr_builder"
   ],
-  "configure": null,
+  "configure": "ai_provider_dxpr.settings_form",
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -26,18 +31,20 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Artificial Intelligence"
+    "Artificial Intelligence (AI)"
   ],
   "subcategories": [
-    "AI providers"
+    "AI provider abstraction / LLM gateway"
   ],
   "keywords": [
     "ai",
     "dxpr",
     "provider",
-    "llm"
+    "llm",
+    "kavya",
+    "translation"
   ],
-  "project_description": "Back to top \n\n Multilingual by design \n Never Hit AI Limits Again - Write 10,000+ Word Content with Zero Downtime! \n Write comprehensive content without hitting AI limits or dealing with service outages. DXPR AI Provider connects Drupal to the DXAI Kavya platform, which automatically switches between multiple AI providers (OpenAI, Claude, Gemini, XAI, MistralAI) and includes web research capabilities to reduce hallucinations and support extensive content creation.\n\n \n Back to top \n\n Key Features \n \n \n No Downtime \n Automatic failover across OpenAI, Claude, Gemini, XAI, and MistralAI. When one provider fails, the next takes over instantly.\n\n \n \n Em-Dash Killer \n AI models overuse em-dashes: the most recognisable tell of AI-generated text. DXAI's real-time post-processing engine detects and replaces em-dashes with natural punctuation, so your content never reads like AI slop. Four intensity levels (Off / Low / Medium / High) with per-language overrides give you full control.\n\n \n \n Unlimited Length \n Write 10,000+ words in a single request. No more hitting AI limits mid-content.\n\n \n \n Auto Research \n Built-in web search via Perplexity AI reduces hallucinations and improves accuracy automatically.\n\n \n \n EU Compliance \n kavya-m1-eu keeps data within European boundaries using MistralAI (servers in Netherlands).\n\n \n \n Image Vision \n AI can process and understand images alongside text input for comprehensive analysis.\n\n \n \n Structured Output \n Generate complex JSON and formatted responses for advanced integrations and data processing.\n\n \n \n Free Access \n Enterprise-grade AI capabilities included with free DXPR account. No multiple subscriptions needed.\n\n \n \n Your content now has access to the combined GPU power equivalent to 2 million NVIDIA H100 cards! With automatic provider switching across OpenAI, Claude, Gemini, XAI, and MistralAI, you're tapping into the vast inference capabilities and collective knowledge of the world's most advanced AI models, all through a single Drupal module.\n\n \n Back to top \n\n Installation \n \n Get free API key: dxpr.com/user/free-registration \n composer require drupal/ai_provider_dxpr \n drush en ai_provider_dxpr \n Create Key entity with your DXPR API key \n Configure at /admin/config/ai/providers/dxpr \n \n \n Prefer a turnkey demo site? \n Spin up DXPR CMS : Drupal pre-configured with DXPR Builder, DXPR Theme, DXPR AI Provider module, and security best practices.\n\n Get DXPR CMS » \n\n \n Back to top \n\n Technical Highlights \n \n Three DXAI Kavya Models: kavya-m1 (global failover), kavya-m1-eu (EU-only), and kavya-m1-fast (the other two are not slow ;)) \n Configurable Failover: Control provider priority and failover sequences (kavya-m1 only) \n Planning & Reasoning: Automatic planning and reasoning layers for intelligent responses \n Drupal Integration: Works with Drupal AI ecosystem, DXPR Builder, CKEditor AI Agent module \n \n Back to top \n\n Translation Features \n DXPR AI Provider implements the translate_text operation natively, bypassing the generic ai_translate chat-based fallback with a content-aware prompt engine.\n\n \n \n \n Feature \n DXPR Provider \n ai_translate default \n \n \n \n \n Prompt style \n Dynamic, content-aware \n Static Twig template \n \n \n HTML detection \n Only adds HTML rules when tags are present \n Always included \n \n \n Prompt injection protection \n Yes \n Yes \n \n \n Translatable attributes \n alt , title , placeholder , aria-label , aria-description , aria-describedby , data-tooltip , data-title , value (buttons) \n alt , title , placeholder , value (buttons) \n \n \n Element content \n label , fieldset , option , optgroup , abbr , iframe \n label , fieldset (title only) \n \n \n RTL handling \n Explicit detection (ar, he, fa, ur, yi, ku, ps) \n Generic suggestion \n \n \n Cultural adaptation \n Built-in tone and idiom adaptation \n Mentioned once \n \n \n Source language \n Auto-detect when not provided \n Conditional Twig logic \n \n \n Configurable \n No (optimized in code) \n Yes (admin UI, per-language) \n \n \n \n Back to top \n\n …",
+  "project_description": "Registers DXPR AI (the DXAI Kavya platform) as an AI provider plugin for the drupal/ai framework, giving Drupal chat, text-to-image, image-to-image and native text-translation operations against an OpenAI-compatible endpoint. The Kavya gateway fronts multiple upstream models (OpenAI, Claude, Gemini, xAI, MistralAI) with automatic failover, optional web research, EU-resident routing (kavya-m1-eu) and long-form generation. The module builds an openai-php client on Drupal's HTTP client (base URI defaults to kavya.dxpr.com/v1, overridable), authenticates with a Bearer token resolved from a Key entity, and adds DXPR-specific request fields (provider priority, allowed HTML tags/classes, web_search, structured JSON schema). It ships a content-aware translate_text prompt engine (HTML-aware, RTL detection, prompt-injection guarding) and an em-dash post-processing mode (0-3, with per-language overrides) applied to generated text. The settings form (gated by the 'administer ai providers' permission) shows account credit usage, lets operators order providers, and validates the key against the live API. Requires the AI, Key and DXPR Builder modules.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

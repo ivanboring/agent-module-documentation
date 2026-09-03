@@ -1,15 +1,18 @@
 {
   "name": "AI Provider ByteDance",
   "data_name": "ai_provider_bytedance",
-  "description": "A ByteDance ModelArk provider for the Drupal AI module.",
+  "description": "ByteDance ModelArk provider for the AI module.",
   "version": "1.0.x",
-  "package": "AI Providers",
+  "package": "AI",
   "composer_namespace": "drupal/ai_provider_bytedance",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.2.0",
+    "drupal/key": "^1.18"
+  },
   "dependent_modules": [
     "ai:ai"
   ],
-  "configure": null,
+  "configure": "ai_provider_bytedance.settings_form",
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -19,7 +22,7 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
@@ -34,9 +37,11 @@
     "provider",
     "llm",
     "bytedance",
-    "gateway"
+    "modelark",
+    "seedream",
+    "skylark"
   ],
-  "project_description": "Provides integration between Drupal's AI ecosystem and Bytedance's ModelArk (Seedream/Skylark) AI services. This module allows site builders to use Bytedance models for text-to-image generation, image-to-image generation and chat through the AI module.\n\n Features \n This module brings Bytedance (Seedream 4.0) support to Drupal via the AI module.\n\nIt exposes Bytedance’s API models—text, chat, and image capabilities—to any Drupal subsystem that uses the AI plugin system.\n\n Key features include:\n\n \n Native integration with Bytedance’s Seedream AI APIs. \n Support for Image generation and chat. \n Configurable provider settings (API key, model selection). \n \n This modules let's you use ByteDance's chat and image generation models inside AI-powered Field UIs, Actions, or custom integrations without writing boilerplate client code.\n\n Post-Installation \n After installation:\n\n \n Create a Key entity that stores your ByteDance API key ( Configuration » System » Keys ). \n Visit Configuration » AI » Providers » ByteDance Authentication ( /admin/config/ai/providers/bytedance ). \n Choose the Key entry, optionally override the default endpoint ( https://ark.ap-southeast.bytepluses.com/api/v3 ), and save. The form validates the key/host by fetching the available models. \n The module automatically seeds sensible default models ( skylark-pro-250415 for chat and seedream-4-0-250828 for both image operations). You can override them per AI operation type if needed. \n \n Additional Requirements \n This module requires:\n\n \n The AI module (ai). \n A valid Bytedance API key . \n PHP 8.1+ recommended for best performance. \n \n No external libraries are required; all API communication uses Drupal’s HTTP client.\n\n Back to top",
+  "project_description": "Registers ByteDance ModelArk (Volcengine/BytePlus) as an AI provider plugin for the drupal/ai framework. It exposes ByteDance's OpenAI-compatible chat, text-to-image and image-to-image endpoints to any Drupal subsystem that consumes the AI plugin system (Field UI, Actions, Views, custom code), reusing the AI module's OpenAI-style transport so no bespoke client code is needed. The provider ships model listings for Skylark, DeepSeek V3, Kimi K2, GPT-OSS and Seedream image models, maps ByteDance-specific parameters (thinking mode, reasoning effort, seed, watermark, sequential generation, prompt optimization) into the request payload, and translates ModelArk API errors into the AI module's exception types. The API key is stored through the Key module and the configuration form is gated behind the 'administer ai providers' permission.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

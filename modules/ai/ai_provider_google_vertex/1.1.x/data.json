@@ -1,17 +1,21 @@
 {
-  "name": "Google Vertex (AI provider)",
+  "name": "Google Vertex",
   "data_name": "ai_provider_google_vertex",
-  "description": "Google Vertex AI provider plugin for the Drupal AI module, with keys managed via the Key module.",
+  "description": "This enables the use of Google Vertex Studio for the AI module.",
   "version": "1.1.x",
   "package": "AI Providers",
   "composer_namespace": "drupal/ai_provider_google_vertex",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.1.0",
+    "drupal/key": "^1.18",
+    "google/cloud-ai-platform": ">=v1.9.0"
+  },
   "dependent_modules": [
-    "ai:ai",
-    "key:key"
+    "ai",
+    "key"
   ],
   "configure": "ai_provider_google_vertex.settings_form",
-  "core_version_requirement": "^10.3||^11",
+  "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_provider_google_vertex",
@@ -33,12 +37,13 @@
   "keywords": [
     "ai",
     "google vertex",
+    "gemini",
     "llm",
     "provider",
-    "key",
-    "embeddings"
+    "embeddings",
+    "translation"
   ],
-  "project_description": "Google Vertex provider is an AI provider for the AI module that lets you use chat models from the Vertex AI Model Garden (for example Gemini). Gemini also supports richer inputs such as documents and video.\n\n Back to top \n\n Features\n \n \n Use Gemini models from Vertex AI in your own Google Cloud project. \n High token limits compared to many other providers. \n Supports image, document, and video inputs (model dependent). \n \n Back to top \n\n Post-installation\n \n Google Cloud setup guide\n \n Project setup\n \n \n Go to https://console.cloud.google.com and sign in. \n Create a new project or select an existing one. \n Link a Billing account to the project (required for many Vertex AI capabilities). \n Enable the Vertex AI API ( aiplatform.googleapis.com ) for the project. \n \n Create a dedicated service account\n \n \n Go to APIs & Services ->  Credentials . \n Click Create credentials ->  Service account . \n Enter a name (for example: drupal-vertex-ai ) and an optional description. \n Click Create and continue . \n \n Grant IAM permissions (secure baseline)\n \n \n Add the role Vertex AI User ( roles/aiplatform.user ) to the service account. Predefined roles can be broader than needed, but this role is a good baseline to get the integration working. \n Click Continue . \n Leave Principals with access empty (unless your team needs additional admins for this service account). \n Click Done . \n \n Optional: tighten to least privilege later\n \n \n Vertex AI recommends using custom roles if you want least-privilege access, because predefined roles often include more permissions than a workload requires. \n Once you know exactly which Vertex AI features you use (chat only, embeddings, image generation, and so on), replace roles/aiplatform.user with a custom role that includes only the required permissions. \n \n Create and download credentials (JSON key)\n \n \n Open the service account you just created ( [account-name]@[project].iam.gserviceaccount.com ). \n Open the Keys tab. \n Click Add key -> Create new key . \n Select JSON , then click Create . \n Store the downloaded JSON file securely. If someone obtains the private key, they can authenticate as the service account, which is similar to obtaining a password. \n Rotate keys periodically and delete unused keys to reduce the risk from credential leakage. \n \n Module installation\n \n \n Install: composer require drupal/ai_provider_google_vertex \n \n Enable: drush en ai_provider_google_vertex \n \n \n Module configuration\n \n \n Create a new Key entity for storing Vertex AI credentials: Configuration -> System -> Keys ( /admin/config/system/keys ).\n \n Choose a secure key provider by following Drupal key management best practices . \n If you use the File provider, set the file path to the downloaded service account JSON. \n For other providers (for example environment variables), use the JSON content. Some providers require the JSON to be minified first (for example with jq -c ). \n \n \n Go to Configuration -> AI -> Provider settings -> Google vertex provider ( /admin/config/ai/providers/google_vertex ). \n Set General Google Credentials to the Key you created. \n Click Add and choose the type of model to create. \n Enter:\n \n \n Project ID (Google Cloud project id from the JSON file). \n \n Location (for example europe-west4 ). \n \n Model ID (for example a Gemini model id from Model Garden ). \n \n \n Click Create model . \n \n Back to top \n\n Getting streaming working\n \n \n Install and enable gRPC for PHP by following: https://cloud.google.com/php/grpc \n \n Your web server must support streaming responses (chunked output). (For DDEV, see the AI module docs: https://project.pages.drupalcode.org/ai/latest/developers/ddev/ ) \n \n Back to top \n\n Similar modules\n \n If you want to call Gemini using Google AI Studio instead of Vertex AI, check out the Gemini Provider .\n\n Back to top",
+  "project_description": "Google Vertex is an AI provider plugin for the Drupal AI module that lets a site use chat, embeddings and text-translation models from the Google Vertex AI Model Garden (for example Gemini). Gemini models support richer inputs such as images, documents and video (model dependent). The provider authenticates to Google Cloud with a service-account credential JSON stored in a Key entity (via the drupal/key module); at runtime it mints a short-lived OAuth2 bearer token from that service account and calls the regional Vertex AI REST endpoints. Models are added dynamically at the provider settings page by entering a Project ID, Location (region) and Vertex model id, so the provider is not limited to a fixed model list. It requires the ai and key modules plus the google/cloud-ai-platform Composer library.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

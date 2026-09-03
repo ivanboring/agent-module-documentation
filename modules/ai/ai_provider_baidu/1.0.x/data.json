@@ -1,7 +1,7 @@
 {
   "name": "Baidu Provider",
   "data_name": "ai_provider_baidu",
-  "description": "Adds Baidu as an LLM provider for the AI module.",
+  "description": "Adds Baidu's Qianfan LLM API (ERNIE and other models) as a chat provider for the Drupal AI module.",
   "version": "1.0.x",
   "package": "AI Providers",
   "composer_namespace": "drupal/ai_provider_baidu",
@@ -20,9 +20,9 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Artificial Intelligence (AI)"
@@ -33,6 +33,8 @@
   "keywords": [
     "ai",
     "baidu",
+    "qianfan",
+    "ernie",
     "llm",
     "provider",
     "chat"
