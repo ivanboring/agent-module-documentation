@@ -1,16 +1,16 @@
 {
   "name": "AGROVOC Field",
   "data_name": "agrovocfield",
-  "description": "Suggests AGROVOC taxonomy tags for content via a self-hosted AGROVOC service.",
+  "description": "Auto-suggests AGROVOC taxonomy tags for content on save by calling a self-hosted AgroTagger service.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Fields",
   "composer_namespace": "drupal/agrovocfield",
   "composer_requirements": {},
   "dependent_modules": [
     "drupal:taxonomy",
     "drupal:field"
   ],
-  "configure": null,
+  "configure": "agrovocfield.settings",
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -20,7 +20,7 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
@@ -29,7 +29,8 @@
     "Integrations"
   ],
   "subcategories": [
-    "Field formatters"
+    "Fields",
+    "Semantic metadata"
   ],
   "keywords": [
     "agrovoc",
@@ -38,7 +39,7 @@
     "tags",
     "fao"
   ],
-  "project_description": "Suggests AGROVOC taxonomy tags for content by calling a self-hosted AgroTagger service. Drupal 11 port of the legacy Drupal 7 agrovocfield_automatic sub-module, renamed to agrovocfield for this site.\n\n Back to top \n\n What it does\n \n When editing content, this module can automatically suggest AGROVOC concept tags for a taxonomy reference field, based on the text in another field on the same content (e.g. the body). It only fills the field when the editor has left it empty â it never overwrites tags an editor picked or already-saved tags.\n\n On save, if automatic indexing is enabled for a field:\n\n \n The module reads the just-submitted value of the configured \"source\" field. \n It calls the self-hosted AgroTagger HTTP service ( POST /tag ) with that text. \n For each AGROVOC concept returned, it looks up or creates a matching taxonomy term in the field's target vocabulary. Newly created terms get their canonical AGROVOC URI stored in a field_agrovoc_uri link field, if the vocabulary has one. \n It populates the field with those terms before the entity is saved. \n \n This all happens inside an #element_validate callback, so it only runs during interactive form submission â never during programmatic saves, migrations, or content imports.\n\n AGROVOC URI linking\n \n If the target vocabulary has a field_agrovoc_uri link field (as the \"Tags\" vocabulary on this site does), the module:\n\n \n Normalizes the legacy AIMS URI the AgroTagger service returns ( http://aims.fao.org/aos/agrovoc/c_XXXX ) to the canonical URL it redirects to today ( https://aims.fao.org/aos/agrovoc/c_XXXX.html ), avoiding a multi-hop redirect chain on every click. \n Stores it on the term, so it renders as a normal clickable link wherever the term's own fields are displayed (e.g. the term's own page, if field_agrovoc_uri is enabled in its \"Manage display\" settings). \n \n Separately, the Tagify widget's own built-in \"Include info label\" setting can show this URI directly inside each tag pill while editing â set the widget's \"Info label content\" to the token [term:field_agrovoc_uri] . This is a standard Tagify feature, not something this module adds; it just needs field_agrovoc_uri to exist and be populated, which this module handles.\n\n Terms without this field are unaffected. For terms created before field_agrovoc_uri existed (or matched by name to a pre-existing term rather than auto-created), the URI isn't set automatically â but it can be backfilled after the fact using the AgroTagger service's GET /lookup?label= endpoint (a direct dictionary lookup against the same labelâURI mapping used for tagging, added specifically for this). There's no UI for this yet; it's a one-time drush php:script that loads every term in a bundle with field_agrovoc_uri , skips any that already have a value, calls /lookup for the rest, and saves the normalized URI for whatever matches. Not run automatically â re-run it manually if more untagged legacy terms show up later.\n\n Back to top \n\n Requirements\n \n \n \n A running AgroTagger service reachable from this Drupal installation over HTTP. This module only speaks the service's POST /tag / GET /lookup JSON API â it doesn't care how or where that service is hosted, as long as the URL configured below can reach it. In this deployment, that service is a self-hosted Java HTTP wrapper around the MAUI keyphrase-extraction library, running as a K3s Deployment/Service in this cluster and reached internally at http://agrotagger:8080 . Full instructions for building, configuring, and running that self-hosted service (Docker/Kubernetes deployment, standalone Docker Compose, its HTTP API, and its data sources) live in github.com/asanchez75/agrotagger . This module doesn't duplicate that documentation, it just consumes the API it exposes.\n\n \n \n A taxonomy reference field using one of the two supported widgets:\n\n \n Core's Autocomplete (Tags style) widget ( entity_reference_autocomplete_tags ) \n The Tagify contrib module's widget ( …",
+  "project_description": "Suggests AGROVOC concept tags for a taxonomy reference field from the text of another field on the same content, by calling a self-hosted AgroTagger HTTP service (POST /tag). It is a Drupal 11 port of the legacy Drupal 7 agrovocfield_automatic sub-module. Automatic indexing is a per-widget third-party setting (added to core's Autocomplete tags widget and the Tagify contrib widget): when enabled, an #element_validate callback reads the just-submitted source-field text, calls the service, and looks up or creates matching taxonomy terms in the field's target vocabulary, filling the field only when the editor left it empty. Newly created terms get their canonical AGROVOC URI stored in a field_agrovoc_uri link field when the vocabulary has one. Because it runs only as a form #element_validate callback, it never fires on programmatic saves, migrations or imports. The AgroTagger service (a self-hosted wrapper around the MAUI keyphrase-extraction library) is configured by an administrator; the module only speaks its POST /tag and GET /lookup JSON API.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

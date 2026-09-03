@@ -11,9 +11,10 @@ you interact with directly. Once installed, multi‑step agent workflows become
 stateful: an agent can reference the output of a tool it called two turns ago,
 carry context forward, and behave more consistently across a longer exchange.
 
-The stored memory can contain whatever the conversation surfaced — including data
-returned by tools — so treat it as **sensitive**. It should be scoped per user
-and per session so one person's agent history is never visible to another.
+The stored memory holds whatever the conversation surfaced — the agent's
+tool‑call history and intermediate results — and is kept in Drupal's private
+temp store, which the framework namespaces to the individual user or session
+that created it.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

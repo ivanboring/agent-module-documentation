@@ -1,16 +1,20 @@
 {
   "name": "AI Answers",
   "data_name": "ai_answers",
-  "description": "A RAG answer engine that grounds cited answers in an AI Agent with its own retrieval configuration.",
+  "description": "RAG answer engine that grounds cited answers in an AI Agent, with its own retrieval configuration.",
   "version": "1.0.x",
   "package": "AI",
   "composer_namespace": "drupal/ai_answers",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.4",
+    "drupal/ai_agents": "^1.3",
+    "drupal/ai_search": "^1.3@alpha"
+  },
   "dependent_modules": [
     "ai_agents:ai_agents",
     "ai_search:ai_search"
   ],
-  "configure": null,
+  "configure": "ai_answers.agents",
   "core_version_requirement": "^11.2",
   "active_installs": null,
   "list_position": null,
@@ -18,7 +22,10 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/ai_logging": "Persist answers and feedback as queryable ai_log entities.",
+    "drupal/langfuse": "Observability and feedback trace scoring for answers."
+  },
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,

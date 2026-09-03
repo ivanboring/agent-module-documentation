@@ -5,12 +5,16 @@
   "version": "1.0.x",
   "package": "AI",
   "composer_namespace": "drupal/ai_agent_memory",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.3",
+    "drupal/ai_agents": "^1.2",
+    "drupal/ai_assistant_api": "^1.3"
+  },
   "dependent_modules": [
-    "ai_agents:ai_agents",
-    "ai:ai_assistant_api"
+    "ai_agents",
+    "ai_assistant_api"
   ],
-  "configure": null,
+  "configure": "ai_agent_memory.settings",
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -20,7 +24,7 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
@@ -35,9 +39,10 @@
     "agents",
     "memory",
     "state",
-    "conversation"
+    "conversation",
+    "tool-calling"
   ],
-  "project_description": "Makes the drupal/ai harness more like Claude Code for the + Suite page builder .\n\n \n Back to top \n\n Overview \n The default AI module's AgentRunner deletes agent state when an agent finishes a turn. This means every new user message starts a completely fresh agent run — the LLM has no memory of previous tool calls, tool results, or reasoning from earlier in the conversation.\n\n AI Agent Memory fixes this by decorating the AgentRunner to persist agent state across conversation turns in a separate temp store bin. Agents retain full awareness of their previous actions within a chat session, enabling coherent multi-turn workflows where each step builds on the last.\n\n Back to top \n\n Features \n \n Cross-turn agent continuity — Agent state persists after completion so the next user message resumes with full context, not a blank slate. \n Turn-aware history trimming — Keeps the context window bounded by dropping middle turns while preserving the first turn (initial context) and recent turns. Never splits tool call/result pairs. \n Configurable per-agent opt-in — Only agents listed in the module's settings get persistent state. All others pass through to the default AgentRunner unchanged. \n Stale data detection — Automatically discards persisted state when the agent has finished and no new messages have arrived, preventing replay of outdated context. \n File binary stripping — Removes binary file data from chat messages before persistence, working around a serialization issue in the upstream ChatMessage class. \n \n Back to top \n\n Requirements \n \n AI module (ai_agents and ai_assistant_api sub-modules) \n \n Back to top \n\n Configuration \n \n Install the module. \n Navigate to /admin/config/ai/agent-memory . \n Select which agents should have persistent state. \n Optionally adjust history trimming settings (max messages, recent turns to keep). \n Back to top",
+  "project_description": "AI Agent Memory makes AI agents built on the Drupal AI stack retain their state across the turns of a chat conversation. By default the AI Assistant API's AgentRunner discards a serialized agent's state once the agent finishes a turn, so every new user message starts a completely fresh run with no memory of previous tool calls, tool results, or reasoning. This module decorates the AgentRunner and, for a configurable allow-list of agents, keeps the agent's state in a dedicated private temp-store bin that survives between turns. The next user message then resumes the agent with full context instead of a blank slate, enabling coherent multi-step workflows where each step builds on the last. The context window is kept bounded by a turn-aware history trimmer that drops middle turns while preserving the first turn and the most recent turns, and binary file data is stripped from messages before persistence to work around an upstream serialization limitation. It requires the ai, ai_agents, and ai_assistant_api projects and is configured at /admin/config/ai/agent-memory.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

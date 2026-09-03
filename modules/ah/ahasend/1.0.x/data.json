@@ -1,15 +1,18 @@
 {
   "name": "AhaSend",
   "data_name": "ahasend",
-  "description": "Sends email through the AhaSend delivery service via Mail System.",
+  "description": "Sends Drupal's outbound email through the AhaSend delivery service via a Mail System plugin.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Mail",
   "composer_namespace": "drupal/ahasend",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "pear/mail": "*",
+    "html2text/html2text": "^4.3"
+  },
   "dependent_modules": [
     "mailsystem:mailsystem"
   ],
-  "configure": null,
+  "configure": "ahasend.settings",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -21,7 +24,7 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Integrations"
@@ -34,7 +37,8 @@
     "email",
     "mail delivery",
     "mailsystem",
-    "smtp"
+    "transactional email",
+    "mail plugin"
   ],
   "project_description": "The AhaSend module allows site administrators using the Mail System to send emails using the AhaSend API .\n\n Features \n In addition to the default html / plaintext email messages, the module supports sending attachments (including support for embedded attachments and images using Content-ID)\n\n Requirements \n \n You need to have an account on AhaSend to be able to use this module. \n You need to add your domain to AhaSend (under the Domains page), and have added the necessary DNS records to authenticate the domain before you can send emails \n This module requires an API key to work (you can create one under the Credentials page in your dashboard). If you want to use SMTP instead, use the Symfony Mailer module. \n Back to top",
   "maintenance_status": "Actively maintained",

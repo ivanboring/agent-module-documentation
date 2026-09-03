@@ -1,43 +1,52 @@
 {
   "name": "AI Auto-reference",
   "data_name": "ai_auto_reference",
-  "description": "Automatically sets or suggests entity references to related content using AI.",
+  "description": "Automatically sets or suggests references to other content entities in the site.",
   "version": "1.0.x",
   "package": "AI Auto-reference",
   "composer_namespace": "drupal/ai_auto_reference",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.0.4"
+  },
   "dependent_modules": [
     "ai:ai",
     "drupal:node"
   ],
-  "configure": null,
-  "core_version_requirement": "^10||^11",
+  "configure": "ai_auto_reference.ai_auto_reference_settings_form",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_auto_reference",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/field_widget_actions": "Enables AI suggestion buttons directly within entity reference field widgets on the node edit form."
+  },
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Artificial Intelligence (AI)"
+    "Artificial Intelligence (AI)",
+    "Content editing experience"
   ],
   "subcategories": [
-    "AI content tools"
+    "LLM content discovery",
+    "Entity selection"
   ],
   "keywords": [
     "ai",
-    "reference",
+    "entity reference",
     "related content",
-    "auto",
-    "suggest"
+    "auto-tag",
+    "taxonomy",
+    "suggestion",
+    "node",
+    "field widget action"
   ],
-  "project_description": "This module is intended to use AI to automatically suggest relationships to other content within the same website. As a site builder, you choose whether to auto-accept vs have a review step. Typically this would be automatically tagging/categorising content. \n\n This module integrates with AI core to allow you to use any model.\n\n This can be done one of two routes:\n\n \n Using Field Widget Actions \nThis places a button below each applicable reference field. Clicking the button generates suggestions from available targets and opens them in a modal window to insert (or modify then insert). \n Using a 'Generate references with AI' button \nThis adds a button next to the default 'Save' button, generating references and presenting them back at the top of the page ready to be accepted (or modified then accepted). \n \n Using Field Widget Actions \n \n\n Clicking then opens a modal window:\n\n \n\n This route depends on field widget support for the target field. Most common fields are handled (including non-Core like Tagify). Entity Reference with 'Add another' however is not.\n\n Using a 'Generate references with AI' button \n \n\n This route works for any reference field.\n\n Features \n \n Set up automatic references for any entity reference field (whether it be to taxonomy terms, or other nodes) \n Automatically first shortens the content if needed in order to fit within token limits of the API \n Adjust your token limit (eg, if you have been accepted for a higher token limit) \n Decide whether you wish to review suggestions from the AI before saving the relationships to your content, or whether to auto-apply. \n Choose different versions of OpenAI models or other models all via the AI Core module. \n \n Setup \n \n Configure the settings page, choosing your OpenAI (or other) version and setting your token limit \n Optionally edit the default prompts, or create your own \n Edit the content type, go to the 'AI Auto-reference' tab, and decide which fields to automatically generate suggestions for \n \n Post-Installation \n \n Configure the AI module to have a Chat provider set up, for example OpenAI \n Use the settings form to configure your preferences (e.g. review step vs auto-apply). \n Determine per node bundle which entity reference fields you would like to have the AI suggest results for. \n \n Similar projects \n The excellent OpenAI module automatically suggests tags; however, it does not suggest them from the existing taxonomy terms or content entities within a site. For an organisation that has a curated set of categories that they wish to maintain, this module may be more suitable than that particular feature (which is just one of many features OpenAI offers).\n\n \n\n Back to top",
+  "project_description": "AI Auto-reference uses a Large Language Model (through the drupal/ai module's provider abstraction) to suggest or automatically fill entity-reference fields on node forms, pointing content at related nodes or taxonomy terms drawn from the site's own existing content. Per node bundle, a site builder maps an entity-reference field to a rendered view mode (the content sent to the model) and an ai_prompt entity (the instruction). At edit time content editors get suggestions two ways: a 'Generate references with AI' button next to Save that runs a Batch and shows an apply/review form, or an inline Field Widget Action button on the reference widget itself (requires the optional field_widget_actions module) that opens a modal of checkboxes/radios to insert. Candidate targets are restricted to the values the current user is actually allowed to reference. It ships two default prompts (single- and multiple-suggestion) and an auto_reference prompt type, and can auto-apply high/medium relevance suggestions without a review step. The AI provider and model are configured through AI core, so any supported chat model can be used.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
