@@ -1,7 +1,7 @@
 {
   "name": "AI Semantic Expansion",
   "data_name": "ai_semantic_expansion",
-  "description": "Enriches search indexes with AI-generated semantic synonyms and search intents for database-agnostic semantic search.",
+  "description": "Enriches Search API indexes with AI-generated semantic synonyms and search intents, enabling database-agnostic semantic search without a vector store.",
   "version": "1.0.x",
   "package": "Artificial Intelligence",
   "composer_namespace": "drupal/ai_semantic_expansion",
@@ -16,20 +16,21 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_semantic_expansion",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
-  "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Artificial Intelligence (AI)",
     "Site search"
   ],
   "subcategories": [
-    "AI tooling / function calling"
+    "Synonyms / alternate labels",
+    "Content indexing"
   ],
   "keywords": [
     "ai",
@@ -38,7 +39,7 @@
     "semantic",
     "search_api"
   ],
-  "project_description": "The AI Semantic Expansion module enriches your Search API indexes with AI-generated synonyms and search intent phrases, enabling semantic search on standard relational databases (MySQL, MariaDB, PostgreSQL) — no vector database required.\n\n When a node is saved, the module queues it for processing. A background queue worker sends the node's content to your configured LLM provider (via the Drupal AI module ) and stores the generated synonym text in a local cache table. During Search API indexing, the processor injects that cached text into a virtual field ( ai_semantic_synonyms ), which can be mapped and boosted like any other fulltext field.\n\n Key features \n \n Zero live HTTP calls during indexing. All AI generation happens in the background queue worker; the Search API processor only reads from the local cache. \n Hash-based deduplication. The cache row is only regenerated when the source content actually changes, preventing redundant API calls. \n Provider-agnostic. Works with any chat-capable provider configured in the Drupal AI module (OpenAI, Anthropic, Ollama, and others). \n Configurable per index. Source fields, character limit, system prompt, and AI provider are all set on the Search API processor configuration form. \n Bulk pre-warm command. Run drush ai-expand:batch to pre-populate the cache for all existing nodes before the first indexing run. \n Cache management. A “Flush AI cache” button on the processor form lets administrators clear and regenerate all entries. Changing the LLM prompt automatically invalidates the cache and notifies administrators to re-run the batch command. \n \n Requirements \n \n Drupal 10.4 or 11 \n Drupal AI module with at least one chat-capable provider configured \n Search API module with an active index \n \n Installation \n \n Enable the module: drush en ai_semantic_expansion \n Run database updates: drush updb \n Go to your Search API index → Processors and enable AI Semantic Expansion . \n Go to Fields and add the AI Semantic Synonyms virtual field; set its type to Fulltext and apply a boost weight. \n Pre-warm the cache for existing content: drush ai-expand:batch \n Re-index: drush search-api-index \n Back to top",
+  "project_description": "AI Semantic Expansion enriches Drupal Search API indexes with AI-generated synonyms and likely search-intent phrases so semantically related content ranks on ordinary keyword backends (Database, Solr, Elasticsearch) with no vector database or embeddings infrastructure.\n\nThe module ships one Search API processor (AiIntentExpander, id ai_intent_expander) that exposes a virtual index property, ai_semantic_synonyms, which you map as a Fulltext field and boost. Crucially, that processor makes NO live AI calls at index time: it only reads pre-generated text from a local cache table {ai_semantic_cache}. Generation is asynchronous. On node insert/update the module's hooks queue the node (only when some index has the processor enabled); the ai_semantic_expansion_queue QueueWorker runs on cron, builds source text from the configured fields (title/body/summary/tags, HTML stripped, length-limited), and calls the configured LLM through the drupal/ai provider abstraction to produce a comma-separated synonym/intent list. Results are cached and re-generated only when an MD5 content hash of the source text changes, so unchanged nodes never re-hit the API.\n\nAll AI text generation and cache management lives in AiSemanticExpansionService, which resolves the provider/model from config, sends a ChatInput with a configurable system prompt, and returns an empty string on any provider failure so indexing is never blocked. A Drush command, ai-expand:batch (alias aieb), pre-warms the cache for existing content by exporting source-text payloads to a private:// JSONL file then processing each line, keeping memory flat at tens of thousands of nodes. Changing the LLM prompt in the processor form clears the cache and re-queues all nodes; a \"Flush AI cache now\" button truncates the cache on demand. Requires Drupal 10.4+/11, drupal/ai with at least one chat provider, drupal/search_api, and a configured private files directory for the batch export.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

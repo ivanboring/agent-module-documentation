@@ -1,31 +1,32 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-AI Single Page Importer fetches a URL and uses AI to map the page into article fields.
+AI Single Page Importer adds an "AI Content Import" panel to node edit forms that fetches an external URL and uses an AI provider to populate the content type's fields.
 
 ---
 
-AI Single Page Importer lets an editor supply an external URL; the module fetches that page and uses AI to extract and populate the fields of a new article node (title, body, and other mapped fields). It's a quick way to import a single web page into structured Drupal content.
+AI Single Page Importer hooks into every node add/edit form (`hook_form_node_form_alter`) and, for users holding the `use ai single page importer` permission, shows a collapsible "AI Content Import" fieldset with a Source URL field and an "Import Content with AI" button. When clicked, the module fetches the page server-side with the Guzzle HTTP client, strips it to readable text, and asks the site's configured `drupal/ai` chat provider to map that text onto the fields that exist on the current content type (title, long-text body, short-text summaries, taxonomy terms, dates, links). The AI's JSON response is passed back over AJAX and filled into the form fields client-side (CKEditor 5 aware), for the editor to review and adjust before saving. It never saves the node itself — normal node create/edit access still applies.
 
-Because the server fetches an editor-supplied URL, treat the URL as an SSRF-relevant input and restrict the feature to trusted editors (`use ai single page importer` / `administer ai single page importer settings`). AI extraction sends page content to the provider (cost). Depends on core `node` and `ai`; supports Drupal 10, 11, and 12.
+Operationally: the feature is gated by two permissions — `use ai single page importer` (run an import) and `administer ai single page importer settings` (configure the module at `/admin/config/ai/ai-single-page-importer`). Because each import makes the server fetch an editor-supplied URL and then sends the page text to the AI provider (a billable external call), grant the use permission only to editors you trust and only import from sources you trust. Built-in controls include per-user flood limiting (default 5 imports/hour), a configurable domain blacklist, a scheme allowlist (http/https), a literal-IP private-range check, a maximum content length sent to the AI, and an HTTP request timeout. Requires core `node` and the `ai` module with a configured provider; supports Drupal 10, 11, and 12.
 
 ---
 
-- Import a single web page as content.
-- Fetch an external URL server-side.
-- Use AI to map page into fields.
-- Populate title/body/other fields.
-- Create an article node from a page.
-- Treat the URL as SSRF-relevant.
-- Restrict to trusted editors.
-- Gate use with `use ai single page importer`.
-- Gate settings with the admin permission.
-- Send page content to the AI provider.
-- Incur AI provider cost.
-- Depend on core `node` and `ai`.
-- Support Drupal 10, 11, and 12.
-- Speed up single-page import.
-- Map content into structured fields.
-- Review imported content before publish.
-- Configure field mappings.
-- Import from trusted sources only.
-- Complement bulk migration tools.
-- Extract structured data with AI.
+- Import a single web page into a new or existing node.
+- Populate the title, body, and other mapped fields from a URL.
+- Speed up editorial migration of articles and blog posts.
+- Republish curated external content into structured Drupal fields.
+- Auto-format extracted body content as clean HTML for CKEditor 5.
+- Suggest taxonomy terms (tags/categories) from page content.
+- Extract dates into ISO 8601 for date fields.
+- Extract link fields from page content.
+- Let non-technical editors import without hand-copying markup.
+- Restrict the importer to specific content types via settings.
+- Gate the import panel with `use ai single page importer`.
+- Gate settings with `administer ai single page importer settings`.
+- Limit imports per user with flood control (default 5/hour).
+- Block unwanted source domains with a wildcard blacklist.
+- Cap the amount of page text sent to the AI provider.
+- Choose the AI provider/model via the site's `drupal/ai` configuration.
+- Review AI-populated fields before saving the node.
+- Extend supported field types with `hook_ai_single_page_importer_field_map_alter()`.
+- Log every import to the `ai_single_page_importer` channel for auditing.
+- Complement bulk migration tools for one-off single-page imports.
+- Curate a content library from across the web.

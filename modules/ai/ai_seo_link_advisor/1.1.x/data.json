@@ -1,16 +1,18 @@
 {
   "name": "AI SEO Link Advisor",
   "data_name": "ai_seo_link_advisor",
-  "description": "Checks seo metrics for a url and provides ai-powered suggestions.",
+  "description": "Analyzes an internal URL for SEO metrics and returns AI-generated, per-issue recommendations using the drupal/ai provider abstraction.",
   "version": "1.1.x",
   "package": "SEO",
   "composer_namespace": "drupal/ai_seo_link_advisor",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.0"
+  },
   "dependent_modules": [
     "ai:ai"
   ],
   "configure": null,
-  "core_version_requirement": "^10.1||^11",
+  "core_version_requirement": "^10.1 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_seo_link_advisor",
@@ -21,13 +23,13 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Search engine optimization (SEO)"
   ],
   "subcategories": [
-    "SEO analysis"
+    "SEO analysis / audit"
   ],
   "keywords": [
     "ai",
@@ -36,7 +38,7 @@
     "advisor",
     "metrics"
   ],
-  "project_description": "The AI SEO Link Advisor module integrates Drupal with the AI (Artificial Intelligence) contributed module to provide SEO analysis and intelligent recommendations using AI providers supported by the AI ecosystem.\n\n It allows you to configure AI services and analyze URLs directly from your Drupal site to receive content-level insights and SEO-focused metrics.\n\n Features \n \n Uses AI (Artificial Intelligence) module and its supported providers. \n Analyze any Internal URL for SEO purposes using the /ai-seo-link-advisor-form page. \n Provides content-level metrics, general SEO insights, and AI-generated recommendations. \n Validates user-entered URLs to ensure correctness. \n \n Post-Installation \n \n Enable the AI (Artificial Intelligence) module. \n Choose and enable an AI Provider module. \n Download the AI Provider, install and configure, according to its instructions. \n Configure the AI provider for the Chat operation type. \n \n Additional Requirements \n \n Contributed module - AI (Artificial Intelligence) \n At least one AI provider plugin installed and configured. \n \n Back to top",
+  "project_description": "AI SEO Link Advisor lets a permitted user submit an internal site URL and get an SEO report of that page combined with AI-generated recommendations. It integrates with the drupal/ai contributed module and uses whichever chat provider/model is configured as the site default.\n\nThe module exposes one form at /ai-seo-link-advisor-form (permission: access seo analyzer). On submit it validates the URL (valid format, http/https only, host must match the site's trusted_host_patterns, path must resolve to a routable non-admin Drupal page the current user may access), fetches that page over HTTP with a Guzzle client (redirects disabled), and runs a battery of SEO metrics against the parsed HTML. Metrics are organized under src/Analyzer (a Page + Parser + Metric/MetricFactory pipeline) covering meta tags, heading structure, content-to-code ratio, image alt text, URL length, SSL, redirects, content size, page load time, and the presence of robots.txt and sitemap.xml. Keyword-density and keyword-position metrics (title, description, headers, URL, path) also exist for keyword-based analysis. Stopword lists are bundled for English, Dutch, and Polish.\n\nFor each metric with a negative impact, the AiSeoLinkAdvisor service builds a prompt from the metric's analysis plus the offending value and asks the AI provider's chat operation for a concrete SEO fix, using a built-in SEO-expert system prompt. Results render as two collapsible tables (content analytics and general analytics) via the module's own theme hooks and Twig templates, with status icons (checked/warning/action). The form output is returned through an AJAX callback. There is no stored configuration entity; the AI provider/model comes from the AI module's site-wide chat default, and the trusted_host_patterns gate comes from settings.php. Requires drupal/ai 1.0+ with at least one chat provider installed and configured.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

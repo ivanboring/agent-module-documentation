@@ -1,15 +1,15 @@
 {
-  "name": "Ai Search Block Log",
+  "name": "AI Search Block Log",
   "data_name": "ai_search_block_log",
-  "description": "Provides logging for the AI search block.",
+  "description": "Logs AI Search Block questions, answers and prompts, with visitor scoring and admin analytics.",
   "version": "1.x",
-  "package": null,
+  "package": "AI",
   "composer_namespace": "drupal/ai_search_block",
   "composer_requirements": {},
   "dependent_modules": [
-    "ai_search_block:ai_search_block"
+    "ai_search_block"
   ],
-  "configure": null,
+  "configure": "entity.ai_search_block_log.settings",
   "core_version_requirement": "^10.2 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
@@ -19,23 +19,28 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Artificial Intelligence"
+    "Artificial Intelligence (AI)",
+    "Site search"
   ],
   "subcategories": [
-    "AI search"
+    "LLM content discovery",
+    "Search analytics / reporting"
   ],
   "keywords": [
     "ai",
+    "search",
     "log",
+    "analytics",
+    "feedback",
     "submodule"
   ],
   "part_of": "ai_search_block",
-  "project_description": "AI Powered Search Block answers the questions your visitors type, with content from your own site. An LLM writes the answer from the pages you indexed. Every answer links to the sources it used. You configure it. You do not code it.\n\n \n The feature needs two blocks: an input block and a response block. Both point at a Search API index that stores your content as vectors. This is RAG search in Drupal. The module retrieves your content, the model writes the answer, and the sources sit under it.\n\n Back to top \n\n Trusted answers, not invented ones \n \n The model only sees content from your index. It does not answer from general knowledge. \n Every answer links to the pages it used. You choose the view mode that renders those pages. \n A score threshold and a minimum result count decide when there is enough content for an answer. With less content than that, the block shows your own message instead of a guess. \n You can select a guardrail set from the AI module. You can also block the queries that contain words you list. \n The log submodule stores the prompt and the sources of every answer. Nothing about an answer stays hidden. \n \n Back to top \n\n What you get \n \n AI Search block: the question input. \n AI Search Response block: it shows the answer word by word, while the model writes it. This is a separate block, so you decide where the answer appears on the page. \n Settings for the RAG prompt, the retrieval (score threshold, result count, optional reranking), the chat model, and the view mode for the sources. \n \n \n\n Back to top \n\n Submodules \n AI Search Block Log \n \n The log stores every question, the answer the visitor received, the prompt behind it, and the sources it used. Visitors can rate an answer and leave feedback. The module keeps that feedback with the log entry.\n\n \n Reports show searches per day, per block and per user, plus the scoring statistics. An AI analysis groups the questions and tells you what people ask most.\n\n \n\n AI Search Block Log Tag \n \n The module classifies the logged questions with your own tags. It uses a fast model and a prompt you control. Each block gets its own tag list, so a professional block and a consumer block can use different vocabularies. The prompt supports three tokens:\n\n [user_question] , [user_answer] and\n\n [configuration_tags] .\n\n \n Tagging runs in a queue on cron, so a search never waits for it. You can tag the existing logs in bulk. You can repeat that safely, because the module replaces the tags of a log instead of adding duplicates.\n\n \n The statistics page shows the number of questions, how many of them carry tags, and how often the module applied each tag. A tag that never matches is easy to spot. Each block then has its own page with three charts: searches per day by tag, searches per tag, and the share per tag.\n\n \n\n AI Search Block Content Gaps \n \n Content gaps are the questions your site did not answer. The submodule collects them, newest first. Each question links to its log entry, so you can read the answer and the sources it found.\n\n \n Detection is tag-driven. The tagging prompt marks a failed answer with a tag, NO_RELEVANT_CONTENT_FOUND by default. You tick the tags that count as a gap. A question also counts when the search used no content at all. This submodule reads those tags, so it needs AI Search Block Log Tag . A question appears in the list after cron tags it.\n\n \n One button asks the AI to group the questions into topics. That turns a list of failures into a short content plan: what to write next, in the words your visitors already used.\n\n \n\n AI Search Block Contact Centre \n \n The contact centre is a second front end for your support agents, on the same index. An agent pastes an incoming email or question and picks a response type. The draft answer arrives word by word in an editor, with its sources. The agent edits it before they send it.\n\n \n Response types are plugins, so another module can add one with a single class. Agents need their own permission, so you can …",
+  "project_description": "AI Search Block Log records every AI Search Block interaction as an ai_search_block_log content entity: the visitor's question, the answer returned, the exact prompt sent to the model, a JSON detailed_output of the sources, plus a created/expiry timestamp and the acting user. Visitors can rate an answer (a thumbs score) and leave free-text feedback, posted to the /ai-search-block-log/score endpoint and stored on the log row. Admins get a logging config form (retention period) and a set of analytics dashboards under /admin/config/ai/ai_search_block_log: a graphs overview, per-day/per-block/per-user search charts, scoring statistics, and an 'AI analysis' page that asks the default chat model to summarise recurring themes in low-rated searches and feedback. A cron job deletes log rows older than the configured retention window (day/week/month/year).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

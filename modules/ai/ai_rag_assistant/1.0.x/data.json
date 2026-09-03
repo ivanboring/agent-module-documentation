@@ -1,7 +1,7 @@
 {
-  "name": "AI RAG Assistant",
+  "name": "RAG AI Assistant",
   "data_name": "ai_rag_assistant",
-  "description": "Provides an ai chatbot using retrieval-augmented generation over site content.",
+  "description": "AI chatbot that answers from your Drupal node content using Retrieval-Augmented Generation over database-stored vector embeddings, with Gemini/OpenAI/Anthropic generation.",
   "version": "1.0.x",
   "package": "AI",
   "composer_namespace": "drupal/ai_rag_assistant",
@@ -9,8 +9,8 @@
   "dependent_modules": [
     "drupal:node"
   ],
-  "configure": null,
-  "core_version_requirement": "^10.3||^11",
+  "configure": "ai_rag_assistant.settings",
+  "core_version_requirement": "^10.3 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_rag_assistant",
@@ -27,7 +27,7 @@
     "Artificial Intelligence (AI)"
   ],
   "subcategories": [
-    "Chatbots"
+    "Vector database / embeddings storage"
   ],
   "keywords": [
     "ai",

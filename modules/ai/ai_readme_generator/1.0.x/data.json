@@ -1,40 +1,44 @@
 {
-  "name": "AI README Generator",
+  "name": "AI Readme Generator",
   "data_name": "ai_readme_generator",
-  "description": "Generates readme.md files for drupal modules using ai.",
+  "description": "Generates a README.md for an installed contrib/custom module by scanning its code and summarising it with an AI provider (OpenAI or Groq).",
   "version": "1.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/ai_readme_generator",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "innoraft/ai-readme-generator": "^1.1.0"
+  },
   "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^10||^11",
+  "configure": "ai_readme_generator.config_form",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_readme_generator",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "innoraft/ai-readme-generator"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
-  "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
   ],
   "subcategories": [
-    "Documentation"
+    "Code generation / scaffolding"
   ],
   "keywords": [
     "ai",
     "readme",
     "generator",
     "documentation",
-    "module"
+    "drush"
   ],
-  "project_description": "The AI README Generator module allows you to automatically generate a README.md file for any installed contrib or custom Drupal module. It extracts relevant metadata from the module’s codebase and sends it to an AI service to create a structured, professional README file. \n\n \n\n \n\n Features \n One-click README generation using AI.\n\n Integrates with your own AI provider via a configurable form.\n\n Automatically scans the selected module’s .info.yml, PHP classes, hooks, and more.\n\n Supports custom module discovery and simple file creation.\n\n Why and when to use: \n\nIf you’re building custom modules or maintaining multiple contrib modules and want consistent, high-quality README documentation without manually writing it, this module saves you time and effort. It’s advantageous during early development, module publishing, or codebase cleanup.\n\n Use cases: \n\n Developers are preparing modules for contribution on Drupal.org.\n\n Teams are documenting internal custom modules.\n\n Anyone wanting fast, AI-assisted documentation with minimal manual effort.\n\n Additional Requirements \n A valid API key and AI Provider.\n\n PHP package: innoraft/ai-readme-generator, installed via Composer.\n\n PHP >= 8.1 recommended.\n\n Recommended modules/libraries \n Admin Toolbar (for easier navigation to the configuration forms).\n\n Similar projects \n There are no widely known Drupal modules that generate README files using AI. Some tools, like Drupal Code Generator or Module Builder, help scaffold code but do not focus on documentation.\n\n What makes this different:\n\n Focused on documentation, not code scaffolding.\n\n Uses AI to generate content based on real module code.\n\n Designed to be hands-off: one form, one click, one README.\n\n Back to top",
+  "project_description": "The AI README Generator module automatically generates a README.md file for any installed contrib or custom Drupal module. It scans the selected module's code (via the innoraft/ai-readme-generator PHP package's CodebaseScanner) and sends the collected metadata to an AI service (OpenAI or Groq) to produce a structured README, which it writes into the module's directory. It ships two admin forms — an AI configuration form (provider, API key, model) and a Generate-README form (pick a module, click Generate) — plus a Drush command 'readme-generate <module>'. Useful when preparing modules for contribution on Drupal.org, documenting internal custom modules, or doing codebase cleanup, without hand-writing README files. Requires a valid API key and the PHP package innoraft/ai-readme-generator (installed via Composer).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

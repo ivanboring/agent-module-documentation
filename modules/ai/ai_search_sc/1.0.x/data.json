@@ -5,7 +5,10 @@
   "version": "1.0.x",
   "package": "AI",
   "composer_namespace": "drupal/ai_search_sc",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.3@RC",
+    "drupal/ai_search": "^1.3@alpha"
+  },
   "dependent_modules": [
     "ai:ai",
     "ai_search:ai_search"
@@ -20,7 +23,7 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
@@ -29,7 +32,8 @@
     "Site search"
   ],
   "subcategories": [
-    "Vector database / embeddings storage"
+    "Vector database / embeddings storage",
+    "Content indexing"
   ],
   "keywords": [
     "ai",
@@ -38,7 +42,7 @@
     "embeddings",
     "rag"
   ],
-  "project_description": "The AI Search - Semantic Chunking module adds a Semantic Embedding Strategy to AI Search as a drop-in alternative to the built-in token-based chunkers. Chunks are split at embedding-similarity breakpoints instead of fixed token windows, which tends to keep topically related sentences together.\n\n When to use it. Prefer this strategy when:\n\n \n Content is long-form prose (docs, articles, guides) where topic shifts are a better chunk boundary than a fixed token count. \n You accept a higher indexing-time embedding cost in exchange for more coherent retrieval chunks. \n \n Stay on the token-based strategy when:\n\n \n Documents are short, structured, or highly uniform (product catalogs, short FAQ entries). \n Embedding-call cost is a constraint and documents are very large. \n \n How it works. Per document:\n\n \n Markdown clean-up ( MarkdownAwareSentenceSplitter , enabled by default as a service decorator around SentenceSplitterInterface ): strips setext underlines, ATX # markers, horizontal rules, and emphasis markers ( ** , __ , * , _ ); rewrites numbered list markers from 1. to 1) so they do not fragment sentences; then re-merges short un-terminated fragments (table cells, section headings) with the following sentence so they stay as one semantic unit. \n Split main content into sentences (paragraph breaks = hard boundaries; abbreviation-aware). \n Embed each unique sentence once. \n Compute cosine distance between consecutive sentences. \n Take the configured percentile of those distances as the split threshold. \n Start a new chunk whenever the inter-sentence distance exceeds the threshold and the current chunk has at least min_sentences_per_chunk sentences, or whenever appending the next sentence would exceed max_chunk_chars (hard cap, measured in Unicode characters). \n Prepend title + contextual content to each chunk and re-embed the assembled chunk (same shape as the Enriched strategy). \n \n If the embedder fails, returns an unusable shape, or the document has more than max_sentences_for_semantic sentences, the strategy falls back to character-based chunking and skips the per-sentence embedding pass.\n\n Cost model. For a document with N distinct sentences producing M chunks, expect N + M embedding calls per document at indexing time. Duplicate sentences (headings, boilerplate) are deduped inside the embedder. The max_sentences_for_semantic cap is the primary cost-containment knob.\n\n Requirements \n This submodule requires the following modules:\n\n \n AI (Artificial Intelligence) \n AI Search \n \n An AI embedding provider must be configured for AI Search; the strategy delegates sentence and chunk embedding to whichever provider AI Search is wired to use.\n\n Recommended modules \n \n RAG Search — the parent project this submodule ships inside. The Semantic Embedding Strategy works against any AI Search index, but if you want end-to-end retrieval-augmented question answering on top of it, enable the parent module as well. \n \n \n\n Installation \n Enable the submodule the same way as any other Drupal module:\n\n drush en ai_search_sc For further information, see Installing Drupal Modules .\n\n Configuration \n Once enabled, the strategy appears as Semantic Embedding Strategy in the AI Search index configuration. Select it on the relevant index at Search API and configure the fields below.\n\n \n \n \n Setting \n Default \n Notes \n \n \n \n \n breakpoint_percentile \n 0.95 \n Higher = fewer, larger chunks. Range 0.5–0.99. \n \n \n min_sentences_per_chunk \n 2 \n Upper-bounded at 20 in the UI; larger values effectively disable semantic splitting. \n \n \n max_chunk_chars \n 4000 \n Hard cap on assembled chunk size, in Unicode characters. \n \n \n max_sentences_for_semantic \n 500 \n Above this, skip embeddings and use character-based fallback. \n \n \n chunk_size , chunk_min_overlap \n — \n Only used by the fallback path. Blank values use model-default / 100 tokens respectively. \n \n \n \n When max_chunk_chars is a soft cap \n Two cases intentionally exceed the configured max_chunk_chars :\n\n \n A …",
+  "project_description": "AI Search - Semantic Chunking adds one Search API EmbeddingStrategy plugin (id semantic_chunks, label \"Semantic Embedding Strategy\") to the AI Search module. It behaves like AI Search's built-in Enriched (contextual_chunks) strategy — one embedding per chunk, with title and contextual content prepended — but replaces the fixed token-window chunker with a cosine-distance breakpoint chunker so chunk boundaries fall where the topic actually shifts.\n\nPer document the plugin: cleans Markdown noise (MarkdownAwareSentenceSplitter decorator), splits main content into sentences (SentenceSplitter, abbreviation-aware, paragraph breaks are hard boundaries), embeds each distinct sentence once through the provider AI Search is wired to (via the drupal/ai provider abstraction, deduping identical sentences), computes cosine distance between consecutive sentences, uses the configured percentile of those distances as the split threshold, then walks the sentences starting a new chunk when a boundary distance exceeds the threshold and the current chunk has at least min_sentences_per_chunk sentences, or when appending the next sentence would exceed max_chunk_chars. Each assembled chunk is re-embedded with the title and contextual content prepended.\n\nIf the embedder throws, returns an unusable vector shape, or the document exceeds max_sentences_for_semantic sentences, the chunker falls back to plain character-based size chunking; if main content is empty or the semantic chunker returns nothing usable, the plugin defers to the parent token-based getChunks(). Cost model: roughly N + M embedding calls per document (N distinct sentences, M chunks); max_sentences_for_semantic is the main cost-containment knob. The strategy is selected per Search API index at /admin/config/search/search-api and requires an AI embedding provider already configured for AI Search.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

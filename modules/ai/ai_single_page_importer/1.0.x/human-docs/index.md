@@ -7,12 +7,11 @@ any other fields you have mapped. It is a fast way to turn a single web page
 into structured Drupal content instead of copying and pasting by hand.
 
 Two things are worth understanding before you use it. First, the site's server
-fetches a URL that an editor supplies. A URL is therefore an **SSRF-relevant
-input** — a hostile or careless value could point the server at an internal
-address it should not reach — so restrict this feature to **trusted editors**
-only, using the module's permissions. Second, the fetched page content is sent
-to the configured AI provider to be mapped into fields, which is an external
-call that **costs money** per use and means the content leaves your site.
+makes an outbound HTTP request to the URL an editor supplies, so grant the
+import permission only to **trusted editors** and import only from **sources you
+trust**. Second, the fetched page content is sent to the configured AI provider
+to be mapped into fields, which is an external call that **costs money** per use
+and means the content leaves your site.
 
 The module depends on core's **Node** module and the **AI** module, and it
 supports Drupal 10, 11, and 12. The provider API key is stored as a secret in
@@ -44,8 +43,8 @@ An AI **provider** must also be configured under **Configuration → AI**
 ## How to use it
 
 An editor with the use permission supplies the URL of a web page. The module
-fetches the page server-side, sends its content to the AI provider, and creates
-an article node with the mapped fields filled in. Always **review the imported
-node before publishing** — the mapping is produced by a language model and may
+fetches the page server-side, sends its content to the AI provider, and fills in
+the mapped fields for the editor to review. Always **review the imported content
+before publishing** — the mapping is produced by a language model and may
 misread or misplace content — and only import from sources you trust, since the
 URL is fetched by your server.

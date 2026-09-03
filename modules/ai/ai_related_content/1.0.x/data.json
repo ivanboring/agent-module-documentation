@@ -1,36 +1,44 @@
 {
   "name": "AI Related Content",
   "data_name": "ai_related_content",
-  "description": "A Views block that surfaces related content via AI Search (semantic similarity).",
+  "description": "Provides a Views Block integration with AI Search to surface related content by semantic (vector) similarity to the current node.",
   "version": "1.0.x",
   "package": "AI Related Content",
   "composer_namespace": "drupal/ai_related_content",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.2",
+    "drupal/search_api": "^1.0"
+  },
   "dependent_modules": [
     "drupal:views",
     "drupal:block",
     "search_api:search_api",
     "ai:ai_search"
   ],
-  "configure": null,
-  "core_version_requirement": "^10||^11",
+  "configure": "ai_related_content.create_related_content_form",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_related_content",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "league/commonmark": "Provides more representative text version of content to get better related content results."
+  },
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Artificial Intelligence (AI)"
+    "Artificial Intelligence (AI)",
+    "Content display",
+    "Site search"
   ],
   "subcategories": [
-    "AI content tools"
+    "Related content",
+    "Vector database / embeddings storage"
   ],
   "keywords": [
     "ai",
@@ -39,7 +47,7 @@
     "semantic",
     "views"
   ],
-  "project_description": "This module leverages the AI Search sub-module of the AI module to find related content. This is sometimes referred to as content recommendations or suggested content.\n\n Features \n This module provides a Views Block that allows the site builder to configure the content used to do the automated search in the AI Search (Vector database) and suggest related content. \n\n The View itself is editable to control things like:\n\n \n How many related content items to show \n What View Mode to show related content in \n How should the related content be cached* \n \n * This should not be underestimated, leveraging LLMs to do a vector search has a cost, caching the related content is important to avoid Denial of Wallet (DOW) attacks.\n\n Post-Installation \n Setting up your Vector Database \n \n Get set up \nConfigure the AI Search sub-module with a Search API Vector Database. Read the docs on that here .\n  \n Prevent the current item from being a result \nEnsure you have an 'nid' field set in the Search API Vector Database of choice as a Filterable Attribute - this is needed to exclude the current ID. The AI Related Content View edit screen will show a warning if you are missing this.\n  \n Setup access control \nEnsure you a processor like 'Content access' enabled on your Search Index.\n  \n Efficiently retrieve relevant results \nIdeally use a Vector Database that supports grouping (e.g. Postgres, MariaDb, Milvus). If not, if multiple chunks are returned from the same content item, the AI Search module will run more queries on the Vector Database to retrieve the desired number of results (if available). This is still fast, so is optional.\n  \n Ensure relevance \nEnable the score threshold processor plugin in the Search API index and decide on a minimum relevance.\n  \n \n Setting up the AI Related Content View \n \n Automatically set it up using the helper form \nGo to /admin/config/ai/ai-related-content-setup to install the AI Related Content View with your Search API Vector Database of choice. This creates a new View at Admin > Structure > Views > AI Related Content for you (or updates the existing View if you have it already).\n  \n Prevent on-demand token usage (optional) \nEnsure you choose the index to find existing Vectors from for the item being viewed, and do not enable on-demand generating of Vectors if you do not want to incur token usage via e.g. OpenAI. If you do want on-demand usage (e.g. for content not in an index) see the caching advice below.\n  \n Decide how to visually display \nOptionally modify your desired View Mode (defaults to Teaser)\n  \n Ensure good caching \nOptionally modify your caching (defaults to time based). Ensure you are not stopping the AI Search's built--in caching for vectors (available from AI Search 2.0+ only).\n  \n Add to your content item \nConfigure the AI Related Content block to use a non-default View Mode to curate the portion of the contents used to search for related content, or use Twig Tweak using the snippets shown in the setup form.\n  \n \n Once configured you can edit your View, editing the AI Related Content Node Filter to change settings as desired. You can test your related content by entering a source Node ID to show related content for in the View Preview arguments. E.g. to show related content for Node 3, enter \"3\" in the arguments.\n\n * Important: If you choose a View Mode that also renders the related content, you can hit an infinite loop!\n\n Version to use \n \n \n 1.x \n Works with the AI core and AI Search 1.x branches \n \n \n 2.x \n Works with the AI core and AI Search 2.x branches \n \n \n Similar projects \n AI Based Recommendations uses OpenAI module instead AI so is locked in to that. It also does not leverage Views and so does not provide the flexibility about how related content is display and how it is cached (see note above on importance of caching).\n\n AI More Like This came later and is roughly a duplicate functionality, but relies on Postgres as the Vector Database, doesn't support adding related content to …",
+  "project_description": "AI Related Content surfaces related/recommended content by semantic similarity using the AI Search submodule of the drupal/ai project. It ships three Search API Views plugins that attach to any AI-Search-backed index and a helper form that scaffolds a ready-to-use \"AI Related Content\" view (block display) from a bundled template.\n\nThe core piece is a Views filter plugin (AIRelatedContentNodeFilter, extending Search API's SearchApiFulltext) that, given the current node as a contextual argument, finds content most similar to it. It can either reuse an already-indexed embedding vector for that node (retrieved from a chosen vector-database index, average-pooled across chunks) or, in the default \"always generate\" mode, render the node in a chosen view mode and generate a fresh embedding on demand through the drupal/ai provider abstraction. It excludes the current node from its own results (nid NOT IN), and relies on Search API's own post-query per-result node access check so unpublished or access-restricted nodes never leak. A companion argument plugin (AIRelatedContentNodeArgument) loads and access-checks (node view) the source node, and a custom results-cache plugin (ai_related_content_results) stores only the entity id per cached row so raw embedding vectors are never serialized into the results cache.\n\nBecause vector search via an LLM has a per-call cost, the project emphasizes caching: the generated view uses time+tag caching keyed with node-grant and per-node cache contexts, and views_pre_render ties cached output to the source node's cache tags. Site builders select a view mode, a source-vector index (or on-demand generation), and an opt-in on-demand fallback per filter. The setup form at /admin/config/ai/ai-related-content-setup (permission: administer ai related content, restrict access) creates or resets the view for a chosen compatible index; hook_form_view_edit_form_alter surfaces misconfiguration warnings (missing indexed nid Filterable Attribute, missing contextual filter, source index without raw embedding vectors) on the Views edit page. Requires Views, Block, Search API, and AI Search 1.2+ with a configured Search API vector database.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
