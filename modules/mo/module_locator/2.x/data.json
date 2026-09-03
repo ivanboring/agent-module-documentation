@@ -3,7 +3,7 @@
   "data_name": "module_locator",
   "description": "Locate modules in filesystem.",
   "version": "2.x",
-  "package": null,
+  "package": "Custom",
   "composer_namespace": "drupal/module_locator",
   "composer_requirements": {},
   "dependent_modules": [],
@@ -19,22 +19,22 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
   ],
   "subcategories": [
-    "Diagnostics"
+    "Debugging & inspection"
   ],
   "keywords": [
     "module locator",
     "filesystem",
-    "modules",
+    "module path",
     "developer",
-    "diagnostics"
+    "admin modules"
   ],
-  "project_description": "This simple module allow to see module path (location) on module list page. It is useful for developers who maintain old (legacy) projects with wrong module locations, and for multisite installations.",
+  "project_description": "This simple module lets you see each module's filesystem path (location) on the module list page at /admin/modules. It is useful for developers maintaining legacy projects with modules in unexpected locations, and for multisite installations, distributions/profiles, and similar setups where a module can live in several places. It has no configuration and adds no routes, permissions, or services of its own; it simply alters the core modules-list form and its theme output to append a Location line to each module's details.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

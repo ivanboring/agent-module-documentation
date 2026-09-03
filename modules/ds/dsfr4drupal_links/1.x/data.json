@@ -1,9 +1,9 @@
 {
-  "name": "DSFR for Drupal Links",
+  "name": "DSFR for Drupal - Links",
   "data_name": "dsfr4drupal_links",
   "description": "Applies DSFR recommendations on external links.",
   "version": "1.x",
-  "package": null,
+  "package": "DSFR for Drupal",
   "composer_namespace": "drupal/dsfr4drupal_links",
   "composer_requirements": {},
   "dependent_modules": [],
@@ -19,22 +19,28 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content display"
+    "Accessibility",
+    "Security",
+    "Content editing experience"
   ],
   "subcategories": [
-    "Accessibility"
+    "ARIA / semantic markup",
+    "Outbound link privacy",
+    "Text format filters"
   ],
   "keywords": [
     "dsfr",
     "french government",
     "external links",
     "accessibility",
-    "gov.fr"
+    "noopener",
+    "target blank",
+    "gouv.fr"
   ],
-  "project_description": "Module relating to \"Design Système de l'État\" ( DSFR (in French) ) recommendations.\n\n Allows the automatic addition of a target=\"_blank\" on all links considered external based on Drupal link generation.\n\nThe addition of this attribute is therefore carried out in the backend and not on the client side (in Javascript).\n\n It also adds a rel=\"noopener external\" attribute on external links, as recommended by the \"Design Système de l'État\" ( DSFR (in French) ).\n\n It also allows the management of the target attribute on links in CKEditor with the provision of a dedicated filter.\n\n Back to top \n\n Suite of modules \n This module is part of a set of projects to implement DSFR (in French) in Drupal.\n\n It is strongly recommended to use this module in addition to the base DSFR for Drupal theme.\n\n Back to top \n\n Useful links \n \n Link component documentation (in French) \n \n \n Sponsors \n \n \n\nDélégation à l'information et la communication (DICOM)\n \n Back to top",
+  "project_description": "Module relating to \"Design Système de l'État\" (DSFR) recommendations for external links. It automatically adds target=\"_blank\" to every link Drupal considers external (server-side, via hook_link_alter, not client-side JavaScript), and adds rel=\"noopener external\" plus a translatable \"@label - new window\" title attribute on links opened in a new window. It also ships a text-format filter (dsfr4drupal_external_links) that applies the same treatment to links inside CKEditor/WYSIWYG content. The module is part of a suite implementing DSFR in Drupal and is intended to be used alongside the base DSFR for Drupal theme.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

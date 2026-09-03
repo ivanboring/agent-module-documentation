@@ -1,13 +1,15 @@
 {
-  "name": "Flmngr File Manager",
+  "name": "Flmngr",
   "data_name": "flmngr",
   "description": "Flmngr file manager. https://flmngr.com",
   "version": "8.x-2.x",
-  "package": null,
+  "package": "CKEditor",
   "composer_namespace": "drupal/flmngr",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/n1ed": "*"
+  },
   "dependent_modules": [
-    "drupal:n1ed"
+    "n1ed"
   ],
   "configure": null,
   "core_version_requirement": "^8 || ^9 || ^10 | ^11",
@@ -21,22 +23,26 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content authoring"
+    "Content editing experience",
+    "Media"
   ],
   "subcategories": [
-    "File management"
+    "CKEditor plugins",
+    "File uploads",
+    "Media embedding"
   ],
   "keywords": [
     "flmngr",
     "file manager",
     "ckeditor",
+    "image editor",
     "upload",
-    "external"
+    "n1ed"
   ],
-  "project_description": "Flmngr is a module for Drupal which has deep integration into the CMS. It will automatically attach the file manager to all your file choose fields, and place its buttons onto the CKEditor toolbar (configurable individually on each text format).\n\n Flmngr file manager adds to your CKEditor 4 and CKEditor 5 an ability to upload files and images, manage them, and many other functions you expect to find in a file manager. \n\n For CKEditor 5 users: do not forget to add the Flmngr buttons to the toolbar inside the \"Full HTML\" text format.\n\n Drupal 10.2 notice: update Flmngr and all its dependencies to the latest versions. Otherwise file browsing won't work.\n\n \n\n Flmngr also has a built-in image editor with crop, resize, and transform tools and search over 30K free stock photos from Unsplash.\n\n \n\n Flmngr works with your own server storage (for free) but has also an optional paid feature to work with Amazon S3 bucket or Azure Blob container.\n\n Flmngr is built for excellent Drupal 10, Drupal 9 and Drupal 8 integration: it does not need any configuration; it deploys its server part automatically and links it to CKEditor; it also checks user permissions to prevent unauthorized access (by default it denies access to modify files to website visitors except administrators). Wherever you use CKEditor 4/CKEditor 5 to edit content, you will be able to upload files and manage them there too.",
+  "project_description": "Flmngr is a thin bootstrap/integration module that pairs the Flmngr file manager and image editor with CKEditor in Drupal. It ships no controllers, routes, permissions, services, or config schema of its own: its entire codebase is flmngr.info.yml, flmngr.module (a hook_help() implementation), and flmngr.install. All file-manager functionality — the /flmngr and /flmngr-legacy backend routes, the FlmngrServer request handler, the local filesystem drivers, the CKEditor 4/5 plugins, and the config form — lives in its hard dependency drupal/n1ed. On install, flmngr_install() edits the n1ed.settings config object: if N1ED is freshly installed with its default demo key it switches the API key to the Flmngr key (FLMN24RR) and integrationType to 'flmngr', auto-adds the Flmngr buttons (Upload, Flmngr, Image, ImagePreview2, ImageGallery2) to CKEditor 4 toolbars via flmngr_set_ckeditor_toolbar(), enables Flmngr on file/image fields (useFlmngrOnFileFields), refreshes text-format info, and flushes caches. Flmngr acts as a standard CKEditor Drupal add-on: it is enabled in text formats that use CKEditor and where Flmngr is not disabled, configurable per text format from the Text formats admin page. The bundled backend stores files under public://flmngr, public://flmngr-tmp and public://flmngr-cache, and its routes are gated by the n1ed 'administer flmngr files' permission plus a CSRF request-header token. Flmngr also offers an optional paid cloud tier for Amazon S3 / Azure Blob storage and Unsplash stock-photo search.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

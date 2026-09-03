@@ -1,14 +1,12 @@
 {
-  "name": "Sector Utils",
+  "name": "Sector Utilities",
   "data_name": "sector_utils",
   "description": "Provides utilities, UX, and UI improvements for Sector.",
   "version": "1.x",
-  "package": null,
+  "package": "Sector",
   "composer_namespace": "drupal/sector_legacy",
   "composer_requirements": {},
-  "dependent_modules": [
-    "sector_legacy:sector_legacy"
-  ],
+  "dependent_modules": [],
   "configure": null,
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
@@ -17,25 +15,27 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/entity_usage": "Adds media-usage helper text on the media delete form.",
+    "drupal/ds": "Enables the unpublished view-mode CSS-class hook (hook_ds_pre_render_alter)."
+  },
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Administration"
+    "Content editing experience"
   ],
-  "subcategories": [
-    "Distribution"
-  ],
+  "subcategories": [],
   "keywords": [
     "sector",
-    "sector utils",
-    "submodule"
+    "editor experience",
+    "form alter",
+    "claro",
+    "media"
   ],
-  "part_of": "sector_legacy",
-  "project_description": "This project exists to bridge the gap between Sector 9 and Sector 10 to allow for continued support for features that newer Sector builds no longer support.\n\n It does not aid in the upgrade process itself and is incompatible for use with Drupal 9.\n\n In the future it will be updated to continue long-term support for Sector legacy sites as they age.\n\n Related modules:\n\n \n Sector Radix Starter (for legacy sites that sub-theme the D8/9 Radix starter theme)",
+  "project_description": "Submodule of Sector Legacy. Provides editor-experience and admin UI improvements for the Sector distribution: node/media form tweaks under Claro, nicer file-size and MIME-type field output, an unpublished-content view-mode class, optional entity_usage helper text on the media delete form, and a permission to gate the contextual 'Configure block' link.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

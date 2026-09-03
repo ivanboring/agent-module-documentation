@@ -3,12 +3,12 @@
   "data_name": "simple_social_share",
   "description": "Provides comprehensive social media sharing buttons and link copy functionality for multiple platforms",
   "version": "1.x",
-  "package": null,
+  "package": "Custom",
   "composer_namespace": "drupal/simple_social_share",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:block",
-    "drupal:config"
+    "block",
+    "config"
   ],
   "configure": null,
   "core_version_requirement": "^10 | ^11",
@@ -17,26 +17,31 @@
   "project_url": "https://www.drupal.org/project/simple_social_share",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "core/drupal",
+    "core/once"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "User interface"
+    "Content display",
+    "User engagement"
   ],
   "subcategories": [
-    "Social / sharing"
+    "Social sharing buttons"
   ],
   "keywords": [
     "social share",
     "share buttons",
     "social",
-    "sharing"
+    "sharing",
+    "copy link"
   ],
-  "project_description": "Back to top \n\n Simple Social Share Module \n Back to top \n\n Overview \n The Simple Social Share module provides a configurable block that allows users to share the current page on various social media platforms. The block includes options for enabling or disabling specific platforms and a \"Copy Link\" button.\n\n Back to top \n\n Features \n Supports multiple social media platforms:\n\n \n Facebook \n Twitter \n LinkedIn \n WhatsApp \n Telegram \n Pinterest \n Reddit \n Tumblr \n Email \n \n Configurable settings to enable/disable each platform.\n\n Option to display a \"Copy Link\" button for easy URL sharing.\n\n Back to top \n\n Installation \n Download and extract the module into your Drupal installation under modules/custom/simple_social_share.\n\nEnable the module via the Drupal admin UI or using Drush:\n\n drush en simple_social_share -y\n\nNavigate to Structure > Block layout and place the Simple Social Share Block in the desired region.\n\nConfigure the block to enable the social media platforms you want.\n\n Back to top \n\n Usage \n Once the module is enabled and the block is placed, users will see social media sharing buttons.\n\nClicking a button opens a sharing URL specific to that platform.\n\nThe \"Copy Link\" button allows users to copy the page URL to the clipboard.\n\n Back to top \n\n Privacy Policy \n The Simple Social Share module does not collect, store, or share any user data. All sharing actions occur through external social media platforms without storing user interactions on the website. This ensures user privacy and security.\n\n Back to top",
+  "project_description": "Simple Social Share provides a configurable Drupal block that renders social-media sharing buttons for the current page across nine platforms (Facebook, Twitter/X, LinkedIn, WhatsApp, Telegram, Pinterest, Reddit, Tumblr, Email) plus an optional client-side Copy Link button. Each platform can be toggled per block instance. On node and taxonomy-term pages the shared URL is a short redirect link (/n/{node}, /t/{taxonomy_term}); elsewhere it shares the current page URL. It ships icon SVG templates, a small CSS/JS library, and requires only core block and config.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

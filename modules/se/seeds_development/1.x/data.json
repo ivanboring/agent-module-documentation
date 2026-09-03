@@ -1,9 +1,9 @@
 {
-  "name": "Seeds Development",
+  "name": "Seeds Developer Helper",
   "data_name": "seeds_development",
   "description": "Provides helpful functionalities for developers",
   "version": "1.x",
-  "package": null,
+  "package": "Seeds",
   "composer_namespace": "drupal/seeds_development",
   "composer_requirements": {},
   "dependent_modules": [],
@@ -17,23 +17,26 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
   ],
   "subcategories": [
-    "Development"
+    "Debugging & inspection",
+    "Code generation / scaffolding"
   ],
   "keywords": [
     "seeds",
     "development",
     "developer",
-    "tools"
+    "image style",
+    "field group",
+    "responsive image"
   ],
-  "project_description": "Overview \n \n The Seeds Development Helper module provides developers and site administrators with essential utilities to optimize and streamline Drupal development. It focuses on enhancing image style usage and content type form management by offering the following features:\n \n\n \n Image Style Checker : Identify unused image styles across the site, helping developers clean up unused assets. \n Field Group Generator : Automatically generate field groups for content type forms, improving the usability and organization of administrative interfaces. \n \n \n Image Style Checker \n \n Navigate to Media > Image Styles in the admin panel. \n Click on Unused Images to view all unused image styles. \n Alternatively, click on Operations next to a specific image style to inspect its usage. \n \n \n Field Group Generator \n \n Go to Structure > Content types in the admin panel. \n Select a content type and click on Manage Form Display . \n Click on the Generate Field Groups button. \n \n The module will automatically create field groups based on your form fields. Review the generated field groups, adjust as needed, and save the form display.\n\n Sponsored and developed by: \n \n\n Back to top",
+  "project_description": "Seeds Developer Helper is a small developer-productivity module from the Seeds distribution ecosystem. It adds admin utilities that make image-style and form-display work faster: an image-style usage inspector that finds where each image style is referenced (responsive image styles, entity view displays, and exported config files) and lists unused styles; a one-click field-group generator that scaffolds a set of tabs/field groups on a content-type form display; a responsive-image test page that renders every responsive image style against a sample image; and a per-bundle field-label translation form. All of its routes live under the admin area and are gated by a single 'access seeds development' permission. It ships no dependencies of its own, but its features rely on core image/responsive_image and the contrib field_group module being present at runtime. Intended for development and staging environments rather than production.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

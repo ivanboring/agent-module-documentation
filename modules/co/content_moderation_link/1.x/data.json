@@ -1,15 +1,15 @@
 {
   "name": "Content Moderation Link",
   "data_name": "content_moderation_link",
-  "description": "Provides a permissions-aware link that can used to moderation content using outside sources like email.",
+  "description": "Provides a permissions-aware link that can be used to moderate content using outside sources like email.",
   "version": "1.x",
-  "package": null,
+  "package": "Other",
   "composer_namespace": "drupal/content_moderation_link",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:content_moderation"
+    "content_moderation"
   ],
-  "configure": null,
+  "configure": "content_moderation_link.settings_form",
   "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -24,19 +24,22 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Workflow"
+    "Automation"
   ],
   "subcategories": [
-    "Content moderation"
+    "Workflow / state management",
+    "Token / placeholder replacement"
   ],
   "keywords": [
     "content moderation",
-    "link",
+    "workflow",
+    "moderation state",
     "transition",
-    "permissions",
-    "workflow"
+    "link",
+    "token",
+    "editorial"
   ],
-  "project_description": "This module allows editors to move content to a different workflow state by\n\naccessing a specially crafted URL, for example:\n\n https://mydomain.com/content-moderation-link/process/in_review/node/108,109\n\n \n\nNote that the last three parts of the URL are meant to provide:\n\n- the machine name of the target workflow state (e.g. draft or published)\n\n- the machine name of entity type (e.g. node)\n\n- one or more IDs that should be processed\n\n Note that this module currently uses existing permissions, so to use the link a\n\nuser must be authenticated (they will be redirected to the login page if not)\n\nand have permission to use the transition needed from the content's current\n\nstate to the target state.\n\n A possible use case for this functionality is providing administrators with \"one click\" moderation links to publish (or otherwise move in a workflow) one or more pieces of content, from within another system, for example an email or Slack message.\n\n With the 1.1.x branch, you can now easily generate the necessary URLs using a token such as:\n\n [node:moderation-link:published]",
+  "project_description": "Content Moderation Link lets editors move a moderated entity into a different workflow state by visiting a specially crafted URL of the form /content-moderation-link/process/{state}/{type}/{id} (for example /content-moderation-link/process/published/node/108, or a comma-separated list of IDs when multiple processing is enabled). It builds on the Drupal core Content Moderation module and is permissions-aware: the target transition is only performed if the acting user is authenticated and the core state-transition validator reports the transition as one they are allowed to make. Anonymous requests are redirected to the login page. Site builders can restrict which entity types and which workflow states the links may target from an admin settings form, and a token ([node:moderation-link:<state>]) generates the URL for use in emails, notifications, or other outbound channels. A common use case is giving editors or administrators one-click moderation links inside an email or chat message so they can publish or otherwise advance content without first navigating into the site's edit UI.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
