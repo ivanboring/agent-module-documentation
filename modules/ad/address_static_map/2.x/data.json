@@ -3,7 +3,7 @@
   "data_name": "address_static_map",
   "description": "Provides Google Static Map based on entity address fields.",
   "version": "2.x",
-  "package": null,
+  "package": "Fields",
   "composer_namespace": "drupal/address_static_map",
   "composer_requirements": {},
   "dependent_modules": [
@@ -29,16 +29,19 @@
     "Content display"
   ],
   "subcategories": [
-    "Geospatial"
+    "Field formatters",
+    "Geospatial / location"
   ],
   "keywords": [
     "address",
     "static map",
     "google maps",
+    "google static maps",
+    "field formatter",
     "location",
-    "field"
+    "geocoding"
   ],
-  "project_description": "Provides a formatter for the address field that renders it as a Google static map .\n\n This module is a Drupal 8-9 implementation of the Address Field Static Map module. Unlike its predecessor, it uses only the new (in D8) address field.\n\n This first version only provides a Google static map, it doesn't provide yet:\n\n \n a regular JS Google map that defaults to the static map if JavaScript is disabled \n a Mapquest static map \n \n Back to top \n\n Usage \n Get an API key from your map provider (note that as of June 2018, Google no longer allows the use of maps without an API key).\n\n Go to /admin/config/system/address_static_map and set the key to access the Google API.\n\n Since version 2 the Key module is required, to create either the secret key or the premium crypto key.\n\n Back to top \n\n Dependencies \n \n Address \n Key (since version 2) \n Back to top",
+  "project_description": "Address Static Map adds a single field formatter, 'Address Static Map' (plugin id address_static_map), for the contrib Address field. When set on an address field's Manage display, it renders each address value as a Google Static Maps image (an <img> pointing at maps.googleapis.com/maps/api/staticmap) centred on that address with a marker. It is the Drupal 8+ successor to the older addressfield_staticmap module and works only with the modern Address field. A site-wide settings form at /admin/config/system/address_static_map holds the Google API credentials: either a standard API key plus a URL-signing secret, or Google Maps Premier client ID plus crypto key. The signing secret and premium crypto key are stored as Key module entities (the module depends on Key) and used to HMAC-SHA1 sign each generated map URL. Per-display formatter settings control zoom level, image size, map style (roadmap/satellite/terrain/hybrid), retina scale, an optional custom marker icon URL and free-form extra Static Maps URL parameters. The map image is fetched by the visitor's browser, not by the Drupal server.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

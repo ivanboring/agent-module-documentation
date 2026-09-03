@@ -1,7 +1,7 @@
 {
   "name": "Admin Language t() function Override",
   "data_name": "admin_language_t_function_override",
-  "description": "Forces the English interface language on admin and configured paths regardless of the URL language prefix by decorating the string_translation service.",
+  "description": "Forces the interface (t()) language to English (or a per-user choice) on admin and configured wildcard paths regardless of the URL language prefix, by decorating the string_translation service.",
   "version": "1.0.x",
   "package": "HCLTech",
   "composer_namespace": "drupal/admin_language_t_function_override",
@@ -21,7 +21,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Multilingual"
@@ -35,10 +35,10 @@
     "admin language",
     "interface language",
     "t function",
-    "language override",
-    "english"
+    "string translation decorator",
+    "language override"
   ],
-  "project_description": "Forces a specific interface language layout (e.g., English or a custom user-defined preference) on designated administrative paths and node translation edit forms, while leaving underlying content dataset values entirely untouched.\n\n Back to top \n\n Overview \n Managing multilingual environments in Drupal often poses a distinct workflow issue for content editors and administrators. When working on a localized node edit path (such as /fr-ca/node/123/edit ), Drupal's core routing architecture naturally translates the entire administrative interface layout, including the primary toolbar, sidebar settings blocks, buttons, and summary wrappers, into that translation's language.\n\n The Admin Language t() function Override module resolves this by decorating Drupal's low-level string translation manager ( string_translation ). By targeting string rendering operations directly instead of disrupting routing stacks or the global language environment state, this extension enforces your desired translation language layout strictly on specified admin tools. Most importantly, it completely preserves the true content language context, ensuring your multilingual field datasets load, display, and save in their correct language.\n\n \n Back to top \n\n Key Features \n \n Safe Architecture Isolation: Decorates the string translation engine directly instead of the global Language Manager service. This keeps your configuration fields, paragraphs, and translation forms safe from accidental data conversion side effects. \n Individual Account Preferences: Automatically appends an \"Administration Language Preference\" selection card onto user profile editing views ( /user/{uid}/edit ). This lets individual back-end administrators choose their own custom dashboard interface translation setting. \n Granular Wildcard Overrides: Configure precisely which paths undergo interface string modification using a clean wildcard management textarea (e.g., /*/edit , /*/delete , /admin/* ). \n Smart Fallback Matching: Gracefully defaults layout text to English if an active path matches your structural wildcard criteria but the user has left their profile preference set to \"Use site default language.\" \n Clean Footprint: Zero heavy hook alterations or theme-layer requirements, keeping container bootstrap speeds exceptionally high. \n \n \n Back to top \n\n Configuration & Usage \n \n Install and enable the extension like any standard Drupal module. \n Navigate to Configuration » Regional and language » Admin Language Override Settings ( /admin/config/regional/admin-language-t-function-override ). \n Turn on the master configuration switch and input your targeted layout path rules (one per line). \n (Optional) Instruct your translation team or site managers to visit their user profile configuration forms to choose an explicit interface language preference that suits their editing workflows. \n Back to top",
+  "project_description": "Forces a specific interface language layout (e.g., English or a custom user-defined preference) on designated administrative paths and node translation edit forms, while leaving underlying content dataset values entirely untouched.\n\nManaging multilingual environments in Drupal often poses a distinct workflow issue for content editors and administrators. When working on a localized node edit path (such as /fr-ca/node/123/edit), Drupal's core routing naturally translates the entire administrative interface layout into that translation's language. The Admin Language t() function Override module resolves this by decorating Drupal's low-level string translation manager (string_translation). By targeting string rendering directly instead of disrupting routing stacks or the global language environment, it enforces the desired interface language on specified admin tools while completely preserving the true content language context, so multilingual field datasets load, display, and save in their correct language.\n\nThe module decorates the string_translation service with AdminStringTranslationDecorator, appends an \"Administration Language Preference\" selector to the user edit form (stored in per-user user.data), and exposes a settings form at /admin/config/regional/admin-language-t-function-override where an administrator toggles the override and lists the wildcard path patterns (default: /admin/*, /*/edit, /*/delete, /*/revisions, /*/layout, /*/translations) on which the interface language is forced.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

@@ -1,28 +1,28 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Extends the Address module with a predefined list of Indonesian provinces and cities plus a matching address format.
+Address Indonesia extends the Address module with Indonesian provinces, regencies/cities and districts plus a matching multi-level address format.
 
 ---
 
-The core Address module relies on the commerceguys/addressing library, which does not ship city-level subdivisions for Indonesia (ID) because they are not required for postal addressing. This module fills that gap. A single event subscriber (`IndonesiaEventSubscriber`) listens on the Address module's `ADDRESS_FORMAT` and `SUBDIVISIONS` events: for country code `ID` it sets `subdivision_depth` to 3 and supplies the province → city hierarchy so an Indonesian address widget shows province and city selects.
-
-There is no configuration UI, no routes, no permissions and no services beyond the tagged subscriber — enabling the module is the entire setup task. It only alters address data for the `ID` country; all other countries are untouched. Operationally it is a pure data/format contribution with no external calls or user-facing endpoints, so it carries no security surface.
+Address Indonesia (`address_id`) registers a single event subscriber, `IndonesiaEventSubscriber`, that listens to the Address module's `AddressEvents::ADDRESS_FORMAT` and `AddressEvents::SUBDIVISIONS` events and only acts when the country code is `ID`. For the address format it sets `subdivision_depth` to 3, defines a custom format string (name, address lines, administrative area, locality, dependent locality + postal code) and marks locality and dependentLocality as required. For subdivisions it ships a large, hard-coded three-level hierarchy — provinces (with ISO codes such as `ID-BA`, `ID-JK`), then regencies/cities, then districts (kecamatan) — returned directly from PHP arrays. This gives Indonesian address forms proper cascading province → city/regency → district dropdowns, which are commonly used with Drupal Commerce shipping-cost integrations (for example Commerce RajaOngkir). There is no configuration, no routes, no permissions and no external service; enabling the module is the entire setup.
 
 ---
-- Enable the module to add Indonesian subdivisions to Address fields
-- Provide province selects on an Indonesian address form
-- Provide city selects nested under each province
-- Set the ID address format to 3-level subdivision depth
-- Localize checkout billing/shipping address for Indonesian stores
-- Populate a customer profile address with Indonesian provinces
-- Use with Commerce for ID-based tax/shipping zones
-- Store structured province/city values rather than free text
-- Standardize Indonesian address data entry across content
-- Add ID subdivisions without patching the addressing library
-- Combine with the Address field on any entity (node, user, profile)
-- Drive conditional address widgets by administrative area
-- Support Indonesian address validation in forms
-- Feed consistent province data into Views filters
-- Provide predefined options for import/migration mapping
-- Avoid manual free-text province entry errors
-- Extend only ID addresses while leaving other countries default
-- Use the subscriber pattern as a template for other countries
+
+- Provide cascading province → regency/city → district selects on Indonesian address fields.
+- Give Indonesian addresses the correct field order and format for display and entry.
+- Require locality and dependent-locality entry for `ID` addresses.
+- Populate the administrative-area dropdown with all Indonesian provinces and their ISO codes.
+- Feed accurate Indonesian subdivisions to Drupal Commerce checkout addresses.
+- Support shipping-cost calculators (e.g. Commerce RajaOngkir) that key on province/city/district.
+- Standardise Indonesian address data captured across a site.
+- Let editors pick a regency/city scoped to the chosen province.
+- Let editors pick a district (kecamatan) scoped to the chosen regency/city.
+- Collect Indonesian customer or member addresses for a directory or CRM sync.
+- Validate that Indonesian addresses include the required locality levels.
+- Localise the address widget for Indonesian storefronts without custom code.
+- Improve address data quality by constraining entry to known subdivisions.
+- Render Indonesian addresses in a locally-conventional layout on entity displays.
+- Provide subdivision data offline (bundled in code) with no API dependency.
+- Support multi-country sites where Indonesia needs richer subdivisions than the core library.
+- Back address autocomplete or filtering UIs that rely on structured subdivisions.
+- Seed test/demo content with realistic Indonesian addresses.
+- Enable region-based reporting on Indonesian orders by province/city/district.
+- Serve as a reference implementation for a country-specific Address subdivision subscriber.

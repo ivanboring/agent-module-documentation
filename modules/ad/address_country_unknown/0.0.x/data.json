@@ -1,9 +1,9 @@
 {
   "name": "Address Country Unknown",
   "data_name": "address_country_unknown",
-  "description": "Provides Address widgets/formatters that allow an empty/unknown country.",
+  "description": "Provides Address widget and formatters that allow entering/displaying an address with an empty/unknown country.",
   "version": "0.0.x",
-  "package": null,
+  "package": "Field types",
   "composer_namespace": "drupal/address_country_unknown",
   "composer_requirements": {},
   "dependent_modules": [
@@ -19,15 +19,16 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"
   ],
   "subcategories": [
-    "Field formatters"
+    "Field formatters",
+    "Fields"
   ],
   "keywords": [
     "address",

@@ -1,9 +1,9 @@
 {
   "name": "Admin List Filter",
   "data_name": "admin_list_filter",
-  "description": "Adds client-side filtering to admin listing pages.",
+  "description": "Adds a client-side 'filter by name' search box (the same one Drupal core ships on /admin/modules) to many admin config-entity listing pages, by swapping in filterable list-builder classes.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Administration",
   "composer_namespace": "drupal/admin_list_filter",
   "composer_requirements": {},
   "dependent_modules": [],
@@ -15,11 +15,14 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/pathauto": "Adds the filter to /admin/config/search/path/patterns (Pathauto patterns).",
+    "drupal/metatag": "Adds the filter to /admin/config/search/metatag (Metatag defaults)."
+  },
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools"
@@ -31,10 +34,11 @@
     "admin",
     "filter",
     "listing",
+    "list builder",
     "client-side",
     "ux"
   ],
-  "project_description": "Back to top \n\n Overview \n Drupal core provides a helpful filter input on the Extend page ( /admin/modules ) that lets administrators quickly find modules by typing part of the name. This module brings that same filtering capability to other admin listing pages like Content types, Vocabularies, Menus, and more.\n\n Zero configuration required — just install and filtering is automatically available on supported admin pages.\n\n Back to top \n\n Features \n \n Instant client-side filtering as you type \n No custom JavaScript — reuses Drupal core's proven system/drupal.system.modules library \n Zero configuration — works immediately after installation \n Supports both standard and draggable (weighted) entity lists \n Lightweight — minimal code footprint \n \n Back to top \n\n How It Works \n The module uses hook_entity_type_alter() to replace the default list builder class for each supported entity type with a custom class that adds filtering capability.\n\n Each custom list builder:\n\n \n Extends the original core list builder — preserving all existing functionality \n Uses a trait to add the filter input and required markup:\n \n FilterableListBuilderTrait for standard list builders \n FilterableDraggableListBuilderTrait for draggable (weighted) list builders \n \n \n Adds a search input above the table with the table-filter-text class \n Adds the table-filter-text-source class to searchable table cells \n Attaches the system/drupal.system.modules library which provides the filtering JavaScript \n \n The filtering happens entirely client-side using core's existing JavaScript — no AJAX requests, no server load.\n\n Back to top \n\n Supported Entity Types \n Core Entity Types (17) \n \n \n \n Entity Type \n Admin Path \n List Builder Type \n \n \n \n \n block_content_type \n /admin/structure/block-content \n Standard \n \n \n comment_type \n /admin/structure/comment \n Standard \n \n \n configurable_language \n /admin/config/regional/language \n Draggable \n \n \n contact_form \n /admin/structure/contact \n Standard \n \n \n date_format \n /admin/config/regional/date-time \n Standard \n \n \n field_storage_config \n /admin/reports/fields \n Standard \n \n \n filter_format \n /admin/config/content/formats \n Draggable \n \n \n image_style \n /admin/config/media/image-styles \n Standard \n \n \n media_type \n /admin/structure/media \n Standard \n \n \n menu \n /admin/structure/menu \n Standard \n \n \n node_type \n /admin/structure/types \n Standard \n \n \n responsive_image_style \n /admin/config/media/responsive-image-style \n Standard \n \n \n search_page \n /admin/config/search/pages \n Draggable \n \n \n shortcut_set \n /admin/config/user-interface/shortcut \n Standard \n \n \n taxonomy_vocabulary \n /admin/structure/taxonomy \n Draggable \n \n \n user_role \n /admin/people/roles \n Draggable \n \n \n workflow \n /admin/config/workflow/workflows \n Standard \n \n \n \n Contrib Entity Types (2) \n These are only enabled if the respective module is installed:\n\n \n \n \n Entity Type \n Admin Path \n Module Required \n \n \n \n \n pathauto_pattern \n /admin/config/search/path/patterns \n Pathauto \n \n \n metatag_defaults \n /admin/config/search/metatag \n Metatag \n \n \n \n Back to top \n\n Not Supported \n The following admin pages are not supported due to incompatible rendering structures:\n\n \n \n \n Admin Path \n Reason \n \n \n \n \n /admin/structure/display-modes/form \n Grouped tables by entity type — filter cannot hide section headers \n \n \n /admin/structure/display-modes/view \n Grouped tables by entity type — filter cannot hide section headers \n \n \n /admin/structure/block \n Complex region-based layout with drag-and-drop \n \n \n \n Back to top \n\n Requirements \n \n Drupal 10.3+ or Drupal 11 \n \n Back to top \n\n Installation \n Install as you would any Drupal module:\n\n composer require drupal/admin_list_filter\ndrush en admin_list_filter\ndrush cr\n Back to top",
+  "project_description": "Drupal core provides a helpful filter input on the Extend page (/admin/modules) that lets administrators quickly find modules by typing part of the name. Admin List Filter brings that same filtering capability to other admin listing pages like Content types, Vocabularies, Menus, and more. Zero configuration is required: install and the filter is automatically available on supported admin pages.\n\nThe module implements hook_entity_type_alter() to replace the default list-builder handler class of each supported entity type with a subclass that mixes in one of two traits. FilterableListBuilderTrait targets standard (EntityListBuilder-style) lists and adds a #type=search input plus the table-filter-text / table-filter-text-source CSS classes in render()/buildRow(); FilterableDraggableListBuilderTrait does the same for draggable (weighted, form-based) lists in buildForm(). Both attach core's system/drupal.system.modules library, so filtering happens entirely client-side in the browser with no AJAX and no server load. Supported core entity types include content types, comment types, block types, contact forms, date formats, field storage, text formats, image styles, responsive image styles, media types, menus, search pages, shortcut sets, taxonomy vocabularies, user roles, languages, and workflows; pathauto_pattern and metatag_defaults are also handled when those contrib modules are installed.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

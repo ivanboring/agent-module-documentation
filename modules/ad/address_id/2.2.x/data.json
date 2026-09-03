@@ -1,11 +1,13 @@
 {
   "name": "Address Indonesia",
   "data_name": "address_id",
-  "description": "Adds Indonesian provinces, cities and a 3-level subdivision format to the Address field.",
+  "description": "Adds Indonesian provinces, cities and a 3-level subdivision format to the Address field via an event subscriber.",
   "version": "2.2.x",
   "package": "Custom",
   "composer_namespace": "drupal/address_id",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/address": "^2.0"
+  },
   "dependent_modules": [
     "address:address"
   ],
@@ -21,7 +23,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"

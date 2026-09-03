@@ -1,11 +1,13 @@
 {
   "name": "Address for Luxembourg",
   "data_name": "address_lu",
-  "description": "Adds a city field and a predefined list of cantons for Luxembourg addresses.",
+  "description": "Adds a canton administrative-area level and a predefined 2-level list of cantons/localities for Luxembourg addresses.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/address_lu",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/address": "^1.7 || ^2.0"
+  },
   "dependent_modules": [
     "address:address"
   ],
@@ -15,19 +17,19 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/address_lu",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "^7.3 || ^8.0 || ^8.1 || ^8.2 || ^8.3",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"
   ],
   "subcategories": [
-    "Field formatters"
+    "Fields"
   ],
   "keywords": [
     "address",

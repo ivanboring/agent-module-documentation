@@ -1,14 +1,14 @@
 {
   "name": "Admin Local Tasks",
   "data_name": "admin_local_tasks",
-  "description": "Overrides core local-task (tabs) styling to a fixed style.",
+  "description": "Restyles Drupal's local-task (tabs) block into a fixed, minimalistic icon menu pinned to the left or right for logged-in users on non-admin (front-end) routes, with optional tooltips.",
   "version": "1.1.x",
   "package": "Navigation",
   "composer_namespace": "drupal/admin_local_tasks",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": "admin_local_tasks.settings",
-  "core_version_requirement": "^8.8||^9||^10||^11",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/admin_local_tasks",
@@ -19,7 +19,7 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools"
@@ -31,10 +31,11 @@
     "local tasks",
     "tabs",
     "admin",
-    "styling",
-    "navigation"
+    "icons",
+    "navigation",
+    "tooltips"
   ],
-  "project_description": "This module make Drupal (Admin) Local Task links fancier and more accessible for content editors on non-admin routes (front pages) - with minimalistic design and fixed position on left or right side.\n\n Installation \n \n Enable Admin Local Tasks module \n Make sure you have Primary Tabs block enabled \n \n Related Modules \n Better Local Tasks \n\nThis module source code was used as initial point when start working on own version.\n\n Back to top",
+  "project_description": "Admin Local Tasks makes Drupal's (admin) Local Task links fancier and more accessible for content editors on non-admin routes (front pages), giving them a minimalistic design and a fixed position on the left or right of the screen. It targets the local-tasks (primary/secondary tabs) block: for authenticated users viewing a front-end (non-admin) route, it attaches a CSS/JS library and overrides the menu-local-tasks template so the tabs render as a compact icon menu; on admin routes the standard core tabs are left in place.\n\nA settings form at /admin/config/user-interface/admin-local-tasks (permission 'administer admin_local_tasks') controls the appearance: screen side (left/right) and whether link titles are shown as hover tooltips (via the bundled Tippy.js). Each local task is mapped to an icon class by route name (view/edit/delete/revisions/translate/clone/etc.), and the hook_local_tasks_mapping_alter() hook lets other modules extend or change those mappings for custom icons. The module ships icon SVGs, a base stylesheet, and a Tippy tooltip behavior. It was started from the Better Local Tasks module as an initial reference.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

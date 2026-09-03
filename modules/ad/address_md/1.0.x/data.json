@@ -1,33 +1,35 @@
 {
   "name": "Address for Rep. of Moldova",
   "data_name": "address_md",
-  "description": "Adds a city field and predefined districts for the Republic of Moldova to the Address module.",
+  "description": "Adds a district administrative-area level and predefined districts/localities for the Republic of Moldova to the Address module, loaded from bundled JSON.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/address_md",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/address": ">=1.0"
+  },
   "dependent_modules": [
     "drupal:address"
   ],
   "configure": null,
-  "core_version_requirement": "^8.8||^9||^10||^11",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/address_md",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=7.4",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"
   ],
   "subcategories": [
-    "Address / postal fields"
+    "Fields"
   ],
   "keywords": [
     "address",

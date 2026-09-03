@@ -1,17 +1,19 @@
 {
   "name": "Address Decoupled",
   "data_name": "address_decoupled",
-  "description": "Provides decoupled (REST) functionality for the Address module.",
+  "description": "Provides the decoupled functionality for the address module.",
   "version": "1.0.x",
   "package": "Decoupled",
   "composer_namespace": "drupal/address_decoupled",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/address": "^1.12 || ^2.0"
+  },
   "dependent_modules": [
-    "drupal:address",
-    "drupal:rest"
+    "address",
+    "rest"
   ],
   "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/address_decoupled",
@@ -24,7 +26,7 @@
   ],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Decoupled"
@@ -37,9 +39,11 @@
     "decoupled",
     "rest",
     "headless",
-    "api"
+    "api",
+    "country",
+    "subdivision"
   ],
-  "project_description": "The Address decoupled module is an API expose for the Address module.\n\n The module consists of a service that connects to the address services for building an address format via API, validating any address, listing all the available countries, and saving an address to any entity.\n\n The module has several API endpoints that work with the address logic. As a note, there is no support yet for the zone or country field types, but only for the address because it's a common usage in most of the cases.\n\n Features \n There are 5 rest resources for:\n\n \n Listing all the countries or those filtered by the country codes \n Getting the country data like subdivisions, fields (required, optional), postal code pattern, etc. to build the address format form via decoupled \n The address validation \n Address save for a particular entity into a particular field \n Get the commerce store supported countries information \n \n Post-Installation \n Once the module gets installed make sure to configure the user permissions for the corresponding user roles to access the new REST resources from this module. The permissions can be found under the RESTful Web Services . Here are the permissions:\n\n \n Access GET on Address decoupled - Countries list resource \n Access GET on Address decoupled - Country data resource \n Access GET on Address decoupled - Validate address resource \n Access POST on Address decoupled - Save address resource \n Access GET on Address decoupled - Store Supported Countries resource \n \n Additional Requirements \n The module requires the module Address and the core module Rest .\n\n Community Documentation \n The usage documentation can be found here .\n\n Back to top",
+  "project_description": "The Address decoupled module is an API expose for the Address module.\n\nThe module consists of a service (address_decoupled) that connects to the CommerceGuys addressing repositories for building an address format via API, validating any address, listing all the available countries, and saving an address to an entity. It ships five REST resource plugins (rest module resources) under the base path /address-decoupled/api/*, each returning JSON and, by default config, protected by cookie authentication and the auto-generated per-resource 'restful <method> <id>' permission.\n\nThere is no support yet for the zone or country field types, only for the address field, since that is the common case. The optional address_decoupled_commerce submodule adds a Commerce-aware variant that returns the current store's shipping/billing supported countries with no store id in the path.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
