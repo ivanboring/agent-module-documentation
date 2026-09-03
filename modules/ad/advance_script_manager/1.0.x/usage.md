@@ -1,44 +1,31 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Advance Script Manager lets administrators manage custom script snippets that are included on the website's pages, with per-script visibility and enable/disable.
+Advance Script Manager lets administrators register named JavaScript/CSS snippets and inject them into a site's header, body, or footer with per-path, role, and content-type visibility rules.
 
 ---
 
-Advance Script Manager lets administrators add and manage custom script snippets that are injected into
-the site's pages — typically third-party tracking/analytics/marketing tags — with per-script visibility
-rules and an enable/disable toggle (scripts are disabled by default so they aren't accidentally made
-live). It injects the snippets into the page head via `hook_page_attachments_alter`. The capability is
-gated by the `advance_script_manager_settings` permission, which is correctly marked
-`restrict access: TRUE`. It is configured at `advance_script_manager.advance_script_controller_build`.
-
-Use it to manage tracking/marketing scripts without editing theme templates. **Security caveat — this is a
-highly privileged, dangerous-by-design capability.** The snippets are arbitrary code injected into every
-matching page, so anyone with the `advance_script_manager_settings` permission can run arbitrary JavaScript
-in every visitor's browser — effectively equivalent to full site compromise (steal session cookies/
-credentials, deface, exfiltrate). The module does this correctly by marking the permission
-`restrict access: TRUE` (the permissions UI warns) and defaulting scripts to disabled — but the permission
-must still be granted **only to fully trusted administrators**, never to content editors. Privacy/consent
-also applies to any tracking scripts added (pair with cookie-consent). Treat it like js_editor / PHP-eval
-class capabilities.
+Advance Script Manager gives site administrators a UI to create, name, enable, order, and place arbitrary JavaScript and CSS snippets across the site without editing theme templates. Each snippet is assigned to one of three regions (Header, Body, or Footer), toggled active/disabled (disabled by default so nothing goes live accidentally), and constrained to specific pages by an allow/deny path list — much like the core Block module's visibility settings. Snippets are stored in a dedicated `advance_script_manager` database table, listed in a filterable/pageable admin table, ordered by draggable weight, and can be bulk-activated, disabled, moved between regions, or deleted. Header snippets are emitted with `hook_page_attachments_alter()`, body snippets with `hook_page_top()`, and footer snippets with `hook_page_bottom()`. The module has no dependencies beyond Drupal core and is a general replacement for ad-hoc tracking-code modules.
 
 ---
 
-- Manage custom script snippets.
-- Inject tracking/marketing tags.
-- Add scripts without editing templates.
-- Set per-script visibility.
-- Disable scripts by default.
-- Gate by the restricted permission.
-- Understand the permission is restrict access: TRUE.
-- Grant only to fully trusted admins.
-- Know it can run arbitrary JS for all visitors.
-- Treat it as site-takeover-equivalent.
-- Never grant to content editors.
-- Inject via page attachments.
-- Pair tracking with cookie-consent.
-- Handle privacy/consent.
-- Manage third-party tags.
-- Enable scripts deliberately.
-- Configure the script manager.
-- Compare to js_editor/PHP class.
-- Add analytics snippets.
-- Control the dangerous permission.
+- Add a Google Analytics / GA4 gtag snippet to the header across the whole site.
+- Inject a Google Tag Manager container snippet in the header and its noscript fallback in the body.
+- Add a Facebook/Meta Pixel tracking snippet site-wide.
+- Drop a LinkedIn Insight, Hotjar, or Microsoft Clarity tag without touching the theme.
+- Register a marketing chat/support widget (e.g. Intercom, Drift) that loads before the closing footer.
+- Load a third-party JS library from a CDN via a `<script src>` tag only on selected pages.
+- Add custom inline CSS overrides scoped to the front page only.
+- Inject a cookie-consent banner script in the header before other trackers fire.
+- Add verification `<meta>` tags (Google Search Console, Bing) to the page head.
+- Place a schema.org / JSON-LD structured-data snippet in the header.
+- Add an A/B testing or personalization vendor snippet at the top of the body.
+- Load a font or icon stylesheet via a `<link rel="stylesheet">` tag in the header.
+- Show a promotional banner script only on a set of campaign landing pages using the allow-list path mode.
+- Exclude a script from admin pages by using the deny-list ("all pages except those listed") mode.
+- Add a conversion-tracking pixel that fires only on a checkout/thank-you path.
+- Temporarily disable a tracking snippet during maintenance without deleting it, then re-activate it later.
+- Bulk-move several snippets from the footer to the header in one action from the manage-scripts table.
+- Reorder competing header scripts with the drag-and-drop weight form so a consent script runs first.
+- Filter the snippet list by region (Header/Footer/Body) or status (Active/Disabled) to audit what is live.
+- Bulk-activate or bulk-disable a group of snippets after a site launch or rollback.
+- Add a custom `<style>` block to tweak theme presentation without a full theme deployment.
+- Inject a live-chat or feedback-widget loader on content pages but not on the login page.
+- Manage all site tracking tags centrally so editors/marketers' requests can be fulfilled from one admin screen.

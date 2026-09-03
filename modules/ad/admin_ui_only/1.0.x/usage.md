@@ -1,39 +1,41 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Admin UI Only prevents people from accessing the non-admin site, useful for anonymous access to an API like JSON:API or GraphQL.
+Admin UI Only stops a Drupal site from serving its themed front-end: non-admin HTML pages return 403/404, so the site is usable as an admin UI plus a machine API (JSON:API, GraphQL, REST).
 
 ---
 
-Admin UI Only restricts the Drupal front end to admin pages only — a request-event subscriber denies
-(403 or 404) front-end HTML access to routes that aren't admin routes (or on a configurable whitelist), so a
-site used purely as an API/CMS backend (JSON:API, GraphQL) doesn't serve its themed front-end pages to
-visitors. It requires PHP 8.0, in the Web services package.
-
-Use it to lock down a decoupled/API-only Drupal to the admin UI. This is a **security-positive hardening**
-feature: it reduces the front-end attack/exposure surface for a headless backend (only the admin UI + the
-API remain reachable). When adopting, ensure the allowed-routes whitelist is complete for what must stay
-public (the API routes, login, etc.) — a needed route not whitelisted gets blocked, and conversely verify
-nothing sensitive is inadvertently left reachable. It complements, not replaces, per-route access control.
-Configure the allowed routes and the error code.
+Admin UI Only limits a Drupal site to its administration UI over HTML. A single event subscriber
+(`Drupal\admin_ui_only\EventSubscriber`) inspects each main request's response: if it is a `200`
+response with a `text/html` content type on a route that is not an admin route (and not the front
+page), the subscriber throws a `403` (Access denied) or `404` (Not found) instead. Requests whose
+format is not `html` — JSON:API, GraphQL, REST, and other serialized responses — are left untouched,
+which is the point: it lets a decoupled/headless backend expose its API while not serving themed
+front-end pages. Admin routes (anything flagged `_admin_route`), a built-in list of user
+account/login/logout/password-reset routes, the front page (`/`), and any route names you add on the
+settings form all stay reachable as HTML. It provides a settings form at
+`/admin/config/admin_ui_only` (permission `administer site configuration`) to choose the error code
+(403 vs 404) and to promote extra route names to admin routes. On install, if `node` is enabled it
+sets `node.settings:use_admin_theme` to TRUE so content editing keeps working. Requires PHP 8.0;
+package Web services; no dependencies beyond core.
 
 ---
 
-- Block front-end access to non-admin pages.
-- Serve only admin routes + whitelist.
-- Lock down an API-only/decoupled backend.
-- Deny with 403 or 404 (configurable).
-- Require PHP 8.0.
-- Reduce the front-end exposure surface.
-- Keep API routes (JSON:API/GraphQL) reachable.
-- Ensure the whitelist is complete.
-- Verify nothing sensitive stays reachable.
-- Complement per-route access control.
-- Configure the allowed routes.
-- Handle the lockdown.
-- Restrict the front end.
-- Configure the error code.
-- Harden a headless backend.
-- Block themed pages.
-- Configure the whitelist.
-- Restrict access.
-- Lock down the site.
-- Serve admin only.
+- Run a decoupled/headless Drupal that serves only JSON:API or GraphQL to visitors.
+- Keep the Drupal admin UI usable while hiding the public themed site.
+- Return `404` on blocked front-end routes to disclose less about the site.
+- Return `403` on blocked front-end routes for clearer "access denied" feedback.
+- Let anonymous API traffic (JSON:API/GraphQL/REST) through untouched.
+- Stop themed node/taxonomy/view pages from rendering to end users.
+- Keep `/user/login`, `/user/logout`, and password-reset flows reachable.
+- Keep the user registration page reachable for account signup.
+- Add a custom route to the allow-list so a specific HTML page stays public.
+- Set the front page to `/user/login` for the cleanest editor entry point.
+- Serve a media oEmbed iframe endpoint that must stay reachable.
+- Preserve the batch API HTML page so long-running admin batches still run.
+- Convert an app-specific route to an admin route without editing code.
+- Redirect editors to the content list after saving a node.
+- Ensure node editing uses the admin theme automatically on install.
+- Toggle the blocked-request error code without a deployment.
+- Reduce the number of themed pages a headless site exposes.
+- Pair with JSON:API/GraphQL modules to build an API-first Drupal.
+- Validate that added route names exist before saving the settings form.
+- Rebuild the router automatically when the allow-list changes.

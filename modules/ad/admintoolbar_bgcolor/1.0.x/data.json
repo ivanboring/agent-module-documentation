@@ -1,7 +1,7 @@
 {
   "name": "Admin Toolbar Background Color",
   "data_name": "admintoolbar_bgcolor",
-  "description": "Changes the admin toolbar background color (e.g. as a per-environment indicator).",
+  "description": "Sets the background color of the classic Admin Toolbar bar (#toolbar-bar) from a single color-picker setting, applied per page load via a small drupalSettings-driven JS behavior.",
   "version": "1.0.x",
   "package": "Administration",
   "composer_namespace": "drupal/admintoolbar_bgcolor",
@@ -9,8 +9,8 @@
   "dependent_modules": [
     "drupal:color_field"
   ],
-  "configure": null,
-  "core_version_requirement": "^10||^11",
+  "configure": "admintoolbar_bgcolor.settings",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/admintoolbar_bgcolor",
@@ -27,16 +27,17 @@
     "Administration tools"
   ],
   "subcategories": [
-    "Environment"
+    "Environment indicator"
   ],
   "keywords": [
     "admin toolbar",
+    "toolbar",
+    "background color",
     "color",
-    "environment",
-    "indicator",
+    "environment indicator",
     "ux"
   ],
-  "project_description": "The \"Admin Toolbar BG Color\" module allows administrators to easily customise the background color of the Drupal Admin Toolbar through a simple configuration interface. This module provides a color picker to select the desired background color, ensuring a more personalised and visually cohesive admin experience.\n\n Features \n The \"Admin Toolbar BG Color\" module allows administrators to easily customize the background color of the Drupal Admin Toolbar through a simple configuration interface. This module provides a color picker to select the desired background color, ensuring a more personalized and visually cohesive admin experience.\n\n Post-Installation \n To configure go to admin/config/administration/at-bgcolor\n\n Additional Requirements \n Utilises the color_field module for the color picker functionality.\n\n Recommended modules/libraries \n https://www.drupal.org/project/color_field \n\n Back to top",
+  "project_description": "The Admin Toolbar BG Color module lets administrators customize the background color of the Drupal Admin Toolbar through a simple configuration form. It provides a color picker to select the desired background color, which is then applied to the toolbar bar so operators get a more personalized (and, in practice, often per-environment) administrative experience. Configure it at admin/config/administration/at-bgcolor. It declares a dependency on the color_field module.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "not-covered",

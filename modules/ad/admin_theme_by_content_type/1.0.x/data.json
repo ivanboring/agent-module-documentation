@@ -1,7 +1,7 @@
 {
-  "name": "Admin Theme by Content Type",
+  "name": "Administration Theme by Content Type",
   "data_name": "admin_theme_by_content_type",
-  "description": "Chooses whether to use the admin theme for node edit forms per content type.",
+  "description": "Force the administration theme when creating or editing nodes of chosen content types.",
   "version": "1.0.x",
   "package": "Administration",
   "composer_namespace": "drupal/admin_theme_by_content_type",
@@ -9,8 +9,8 @@
   "dependent_modules": [
     "drupal:node"
   ],
-  "configure": null,
-  "core_version_requirement": "^9||^10||^11||^12",
+  "configure": "system.themes_page",
+  "core_version_requirement": "^9 || ^10 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/admin_theme_by_content_type",
@@ -24,17 +24,17 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Administration tools"
+    "Theming"
   ],
   "subcategories": [
-    "Theming"
+    "Admin theme integration"
   ],
   "keywords": [
     "admin theme",
     "content type",
-    "edit form",
-    "theming",
-    "node"
+    "node edit form",
+    "theme negotiation",
+    "node add"
   ],
   "project_description": "Set whether to use the administration theme when editing or creating content per node type. That is, use the admin theme for adding and updating content, but for only specific types of nodes.\n\n Features \n Have some node bundles where the content creation and updating forms should use the front-end theme, and others where they should use the administrative theme? This may be the case when both staff and visitor roles should be able to use either theme for content editing, but based on which type of content they are creating or editing not their own choice or their role.\n\n Post-Installation \n Go to /admin/appearance and below \"Use the administration theme when editing or creating content\" select which content types should use the administration theme.\n\n Additional Requirements \n No additional requirements.\n\n Recommended modules/libraries \n Nothing else is needed to get the full benefit of this module.\n\n Similar projects \n Admin Theme module allows setting the administration theme by path, but that is not sufficient for choosing the admin theme for node/123/edit based on whether node 123 is a page, or a blog, or whatever.\n\n Simple Admin Theme by Route module lets you set the admin theme by route names, but again different content types use the same route so not suited for this use case . Thanks to Pedro Pelaez for the support and the initial code used in this module!\n\n Supporting this Module \n You can support Agaric's overall contributions to Drupal and a bit beyond by supporting Drutopia at opencollective.com/drutopia . Thanks!!\n\n Community Documentation \n Documentation and other contributions always welcome!\n\n Back to top",
   "maintenance_status": "Actively maintained",

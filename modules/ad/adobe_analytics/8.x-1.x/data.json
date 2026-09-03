@@ -1,14 +1,19 @@
 {
   "name": "Adobe Analytics",
   "data_name": "adobe_analytics",
-  "description": "Adds the Adobe Analytics (Omniture) JavaScript tracking to the site.",
+  "description": "Adds Adobe Analytics javascript tracking code to your site's pages.",
   "version": "8.x-1.x",
   "package": null,
   "composer_namespace": "drupal/adobe_analytics",
-  "composer_requirements": {},
-  "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^10||^11",
+  "composer_requirements": {
+    "drupal/token": "^1.0"
+  },
+  "dependent_modules": [
+    "field",
+    "token"
+  ],
+  "configure": "adobe_analytics.settings",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/adobe_analytics",
@@ -22,19 +27,21 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Search engine optimization (SEO)"
+    "Integrations"
   ],
   "subcategories": [
-    "Analytics"
+    "Analytics & tracking",
+    "Analytics / tag management"
   ],
   "keywords": [
     "adobe",
     "analytics",
     "tracking",
     "omniture",
-    "script"
+    "sitecatalyst",
+    "javascript"
   ],
-  "project_description": "This module integrates the Site Catalyst analytics software into a Drupal site. All future development of what used to be the siteCatalyst module will happen here because it is now owned by Adobe and renamed to AdobeAnalytics Module.\n\n Installation \n To install the AdobeAnalytics module, you should first make sure that you have a SiteCatalyst account. Assuming you have your account information, simply install and enable this module as usual and then visit the settings page at admin/config/system/adobeanalytics.\n\n Custom Variables \n There are two methods available for adding custom tracking variables (aka props) to your site:\n\n In the GUI \n\n The settings page allows you to use tokens to create custom variables. Additionally, you can use the Context module to set these custom variables only on certain pages or for certain users (etc...)\n\n hook_adobeanalytics_variables() \n\n If you are developing your own module, you can create custom variables by taking advantage of hook_adobeanalytics_variables(). This hook expects you to return an associative array where the key is the name of the variable and the value is variable's value. For an example, see the README.txt that comes with this module or look at the adobeanalytics_adobeanalytics_variables() function in adobeanalytics.module.",
+  "project_description": "Adobe Analytics (formerly Omniture SiteCatalyst) integration for Drupal. The module injects the Adobe Analytics / AppMeasurement tracking script and its variable payload into the bottom of every non-administration page via hook_page_bottom() and a cache-context-aware lazy builder. Configuration lives at /admin/config/search/adobeanalytics: the path to the AppMeasurement JS file, the reporting version string, an optional no-JavaScript tracking image, a token cache lifetime, role-based tracking rules (inclusive/exclusive role lists), an arbitrary list of custom tracking variables (props/eVars) whose values accept Drupal tokens, and a free-form custom JavaScript snippet. Tokens in variable values and the snippet are replaced per request (node/term/user/menu plus global tokens). Other modules can contribute variables via hook_adobe_analytics_variables() (header/variables/footer sections). A per-entity override is available by attaching the provided 'adobe_analytics' field type to a bundle, letting an entity include or exclude the global variables and main snippet and supply its own snippet. Tracking is suppressed on admin routes and for non-matching roles through pluggable tracking matchers tagged 'adobe_analytics_tracking_matcher'.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

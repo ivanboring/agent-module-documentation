@@ -1,17 +1,20 @@
 {
   "name": "Administration Toolbar - Content languages",
   "data_name": "admin_toolbar_content_languages",
-  "description": "Adds a language dropdown to the admin toolbar for creating content in available languages.",
+  "description": "Adds per-language 'Add content' links to the Admin Toolbar for content types that default to the current interface language.",
   "version": "2.0.x",
   "package": "Administration",
   "composer_namespace": "drupal/admin_toolbar_content_languages",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/admin_toolbar": "^2.0 || ^3.0"
+  },
   "dependent_modules": [
     "admin_toolbar:admin_toolbar",
-    "admin_toolbar:admin_toolbar_tools"
+    "admin_toolbar:admin_toolbar_tools",
+    "drupal:language"
   ],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/admin_toolbar_content_languages",
@@ -22,20 +25,22 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Administration tools"
+    "Administration tools",
+    "Multilingual"
   ],
   "subcategories": [
-    "Admin toolbar / navigation"
+    "Admin toolbar / navigation",
+    "Language negotiation"
   ],
   "keywords": [
     "admin toolbar",
     "languages",
     "multilingual",
-    "content",
-    "toolbar"
+    "add content",
+    "menu links"
   ],
   "project_description": "This is the port of Administration menu - Content languages , to be used with Administration Toolbar .\n\n Provides a dropdown menu with available languages when adding content for all content types that default to the current language in the Administration toolbar.\n\n This can be useful when the \"Interface text language selected for page\" language setting is checked for a content type.\n\n Requires the following modules:\n\n \n Administration Toolbar",
   "maintenance_status": "Actively maintained",

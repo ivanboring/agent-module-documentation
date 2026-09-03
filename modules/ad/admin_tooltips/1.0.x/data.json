@@ -1,14 +1,14 @@
 {
   "name": "Admin Tooltips",
   "data_name": "admin_tooltips",
-  "description": "Adds a configurable tooltip text to fields, shown to editors in the field config.",
+  "description": "Adds a per-field 'Tooltip settings' text box to the Manage form display, and renders that text as a hover tooltip next to the field widget on entry forms to guide editors.",
   "version": "1.0.x",
   "package": "Fields",
   "composer_namespace": "drupal/admin_tooltips",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^8||^9||^10||^11",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/admin_tooltips",
@@ -25,16 +25,19 @@
     "Content editing experience"
   ],
   "subcategories": [
-    "Editorial UX / messages"
+    "Fields"
   ],
   "keywords": [
     "tooltip",
     "fields",
+    "form display",
+    "widget",
+    "third party settings",
     "help",
     "editors",
     "guidance"
   ],
-  "project_description": "Admin Tooltips \n The module provides a way to add a tooltip to fields in drupal forms from the form display settings which can be found at /admin/structure/types/manage/article/form-display for the article content type.\n\n Installation \n If your site is managed through composer, you can install this module with composer require drupal/admin_tooltips . Make sure to enable the module at /admin/modules or with drush drush pm:enable admin_tooltips .\n\n To add a tooltip to a field : \n \n Go to the form display where we need add tooltips, e.g. admin/structure/types/manage/article/form-display. \n Click on the field setting configuration icon. Usually on the far right. \n Use TOOL INFO SETTINGS to configure the text that will be displayed as tooltips. \n Click on update button. \n Click on save button. \n \n To customize the styling : \n The tooltip uses a template that could be overridden from the site theme.\n\nThe CSS can also be overwritten the same way.",
+  "project_description": "Admin Tooltips provides a way to attach a tooltip text to fields in Drupal forms from the Manage form display settings (e.g. /admin/structure/types/manage/article/form-display). Open a field's widget settings, enter the text under Tooltip settings, update and save; the text then appears as a hover tooltip (an info icon and pop-out) next to that widget on the entity add/edit form. The tooltip markup uses a template and CSS that can be overridden from the site theme.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

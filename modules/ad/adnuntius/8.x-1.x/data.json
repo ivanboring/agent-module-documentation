@@ -1,7 +1,7 @@
 {
   "name": "Adnuntius",
   "data_name": "adnuntius",
-  "description": "Displays Adnuntius.com advertisements in Drupal via configurable ad blocks.",
+  "description": "Renders Adnuntius.com ad units in Drupal as a block or as an entity field, using admin-defined ad units and a client-side ad script.",
   "version": "8.x-1.x",
   "package": null,
   "composer_namespace": "drupal/adnuntius",
@@ -34,10 +34,11 @@
     "ads",
     "adnuntius",
     "advertising",
+    "ad units",
     "blocks",
-    "monetization"
+    "field"
   ],
-  "project_description": "The Adnuntius module provides a block and field, that render Adnuntius ads.\n\n Back to top \n\n Features \n \n Add Adnuntius ads using a Drupal block plugin \n Attach Adnuntius to any fieldable entity using a Drupal Field \n Choose between the following ads delivery methods\n \n Div \n iFrame \n \n \n Make the delivery method configurable on per entity base (optional) \n \n Back to top \n\n Installation \n \n Download the module as usual. \n Enable the module. \n \n Back to top \n\n Configuration \n \n Configure the module at /admin/structure/services/adnuntius . \n \n Block \n Add a block and set configure the to-be-rendered zone and delivery method.\n\n Field \n Add a field to your designated content entity. Choose the delivery method in the field display configuration.\n\n If you like to let your content editors choose the invocation method on per entity base you can enable the checkbox in the field's configuration. You can limit the available methods in the \"Manage fields\" configuration.\n\n Back to top \n\n Requirements \n \n Block (Drupal core) \n Field (Drupal core) \n Back to top",
+  "project_description": "The Adnuntius module renders Adnuntius.com ad units on a Drupal site. An administrator defines a catalog of ad units (label, Adnuntius auId, width, height, weight) at /admin/config/services/adnuntius, then places them either through the 'Adnuntius Block' block plugin or through an 'Adnuntius' field attached to any fieldable entity. Each placement renders a themed inline snippet that loads Adnuntius' client-side adn.js from cdn.adnuntius.com and requests the chosen ad unit, using one of two delivery (invocation) methods: 'div' or 'iframe'. The module makes no server-side call to Adnuntius; all ad delivery happens in the visitor's browser. Depends only on Drupal core Block and Field.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

@@ -1,36 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Adnuntius provides plugins/blocks for displaying Adnuntius.com ads in Drupal.
+Renders Adnuntius.com ad units in Drupal as a block or an entity field, driven by an admin-defined catalog of ad units.
 
 ---
 
-Adnuntius provides plugins and blocks for displaying advertisements from the Adnuntius.com ad
-platform in Drupal — placing ad units on the site as configurable blocks. It depends on core Block and
-Field, is configured at `adnuntius.settings`, and provides its own permissions.
-
-Use it to serve Adnuntius ads on a Drupal site. It embeds the ad platform's delivery (client-side ad
-JavaScript/units), so consider the usual advertising trade-offs: third-party ad scripts, privacy/consent
-for ad tracking, and content-security-policy implications. It is an integration/advertising feature;
-configure the Adnuntius account/ad units and place the ad blocks where ads should appear.
+Adnuntius integrates the Adnuntius.com ad server. An administrator defines a catalog of ad units at `/admin/config/services/adnuntius` — each with a human label, the Adnuntius ad-unit id (`auId`), a default width and height, and a sort weight. Those ad units can then be placed on the site in two ways: through the `Adnuntius Block` block plugin, or through an `Adnuntius` field attached to any fieldable entity (node, taxonomy term, user, etc.). Each placement renders a small themed snippet that loads Adnuntius' client-side `adn.js` script from `cdn.adnuntius.com` and requests the selected ad unit, using one of two delivery ("invocation") methods — `div` or `iframe`. All ad delivery happens in the visitor's browser; the module itself makes no server-side HTTP call to Adnuntius and stores no API key. It depends only on Drupal core Block and Field.
 
 ---
 
-- Display Adnuntius.com ads.
-- Place ad blocks on the site.
-- Configure Adnuntius ad units.
-- Depend on core Block and Field.
-- Configure at adnuntius.settings.
-- Provide its own permissions.
-- Serve programmatic ads.
-- Embed ad-platform delivery.
-- Mind third-party ad scripts.
-- Handle ad-tracking consent.
-- Consider CSP for ad scripts.
-- Place ads in regions.
-- Integrate the Adnuntius platform.
-- Configure the ad account.
-- Monetize with ads.
-- Show ad units as blocks.
-- Manage ad placement.
-- Deliver ads client-side.
-- Configure ad blocks.
-- Integrate advertising.
+- Serve Adnuntius.com display ads on a Drupal site.
+- Maintain a central catalog of ad units (label, `auId`, width, height, weight) in one config form.
+- Place an ad unit in any theme region with the `Adnuntius Block` block plugin.
+- Pick which ad unit a block shows from a select of configured units.
+- Choose the delivery method (`div` or `iframe`) per block.
+- Attach an `Adnuntius` field to nodes, terms, users, or any fieldable entity.
+- Let an ad unit be selected per entity via the field widget.
+- Restrict which ad units are selectable on a given field (per-field whitelist).
+- Let content editors choose the invocation method per entity (optional field setting).
+- Restrict which invocation methods are offered per field.
+- Set a default/fallback invocation method on the field formatter.
+- Reorder ad units with drag-and-drop weights in the settings form.
+- Reuse the same ad unit across many blocks and fields.
+- Gate ad-unit administration behind the `administer adnuntius` permission.
+- Gate use of the field behind the `use adnuntius field` permission.
+- Theme individual ad units with template suggestions per invocation method or per `auId`.
+- Render ads client-side without any server-to-server API integration.
+- Programmatically render an ad via the `adnuntius.manager` service.
+- Deliver responsive/fixed-size banners using the unit's configured width and height.
+- Monetize content pages with ad placements managed entirely from Drupal config.
