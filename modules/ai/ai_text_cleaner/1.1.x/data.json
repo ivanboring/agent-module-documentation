@@ -1,14 +1,14 @@
 {
   "name": "AI Text Cleaner",
   "data_name": "ai_text_cleaner",
-  "description": "Cleans/normalizes text using ai (fix formatting, encoding, boilerplate).",
+  "description": "Deterministically cleans formatting quirks (hidden characters, smart quotes, dashes, ellipses, markdown) out of text on save.",
   "version": "1.1.x",
   "package": "AI Tools",
   "composer_namespace": "drupal/ai_text_cleaner",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^10||^11",
+  "configure": "ai_text_cleaner.settings",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_text_cleaner",
@@ -18,23 +18,24 @@
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
-  "provides_drush_commands": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"
   ],
   "subcategories": [
-    "Content processing"
+    "Text format filters",
+    "Data transformation"
   ],
   "keywords": [
-    "ai",
     "text",
     "cleaner",
     "normalize",
+    "filter",
     "formatting"
   ],
-  "project_description": "AI Text Cleaner \n \nAI Text Cleaner is a small Drupal module that provides a text filter and a Drush command to clean formatting quirks from ChatGPT or other LLM outputs.\n\nIt removes hidden or problematic characters, converts non-breaking spaces, normalizes dashes and quotes, converts ellipses, and strips Markdown-style headings and stray asterisks.\n\n Features \n \n Text filter plugin that can be enabled on input formats to clean content on save. \n Options supported:\n \n Remove hidden/control characters \n Convert non-breaking spaces to regular spaces \n Normalize dashes (hyphen/en dash/em dash) to a standard hyphen \n Normalize quotes (curly “smart” quotes → straight quotes) \n Convert ellipses (…) to three periods (...) \n Remove trailing whitespace \n Remove stray asterisks and stray list artifacts \n Strip Markdown-style headings (leading # characters) \n \n \n Drush command ai:text-clean (alias ai-text-clean ) to run the cleaner across nodes in bulk. \n Per-option statistics exported for reporting or CSV-like table output. \n Analysis mode (dry run) that reports what would change without saving. \n Ability to limit by content type (bundle), language, and maximum node count. \n \n Dependencies \n \n Drupal core (module developed for Drupal 11) \n PHP 8.1 or newer \n Optional: Drush (to use the ai:text-clean command) \n Filter system: integrates with Drupal's core filter subsystem (ensure input formats are configured). \n \n Installation \n \n Place the module in web/modules/custom/ai_text_cleaner . \n Enable the module (example using Drush): \n \n drush en ai_text_cleaner -y \nTo automatically apply the filter, go to Configuration → Text formats and editors , edit the target input format, and enable the \"AI Text Cleaner\" filter at the desired weight.\n\n Plain-text field cleaning (since v1.1) \n \nA new configuration option allows the module to clean simple text fields (fields without an assigned Text Format) when content is saved. To enable and configure this:\n\n \n Go to Administration → Configuration → Content → AI Text Cleaner settings (or visit /admin/config/content/ai-text-cleaner). \n Enable \"Clean plain text fields\" and choose which cleaning options to apply to plain text fields. \n \n \nWhen enabled, the same cleaning rules that the filter uses for formatted text (remove hidden characters, normalize dashes/quotes/guillemets, convert ellipses, etc.) will be applied to fields that don't have a text format set.\n\n Usage with Drush \n Analyze (dry run) all nodes of type article :\n\n drush ai:text-clean --types=article --analysis=TRUE Apply cleaning and save changes for up to 50 nodes across all languages:\n\n drush ai:text-clean --limit=50 --analysis=FALSE You can supply multiple content types or languages as comma-separated lists, for example --types=article,page or --languages=en,de .",
+  "project_description": "AI Text Cleaner is a small Drupal module that cleans the formatting quirks commonly left behind by ChatGPT/LLM output — but it does the cleaning locally and deterministically with PCRE regular expressions; it makes no AI provider call and has no external dependencies. It ships a text-format filter plugin (ai_text_cleaner_filter) whose per-format settings record which cleanups to apply, a hook_entity_presave that actually rewrites content-entity text fields on save, an admin settings form for cleaning plain (format-less) text fields, and a Drush command (ai:text-clean) for bulk/dry-run processing of nodes. Cleanups include removing zero-width/hidden characters, converting non-breaking spaces, normalizing en/em dashes to hyphens, normalizing curly quotes and guillemets to straight quotes (with per-language opt-outs), converting the ellipsis character to three periods, trimming trailing whitespace, and stripping stray asterisks and markdown heading markers. It reports per-option replacement statistics for messaging and CSV-style tables.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

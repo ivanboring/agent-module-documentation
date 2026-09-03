@@ -5,12 +5,17 @@
   "version": "1.2.x",
   "package": "AI",
   "composer_namespace": "drupal/ai_translate_paragraph_asymetric",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/paragraphs_asymmetric_translation_widgets": "^1.4",
+    "drupal/ai": "^1.0"
+  },
   "dependent_modules": [
-    "ai:ai_translate"
+    "ai:ai_translate",
+    "drupal:content_translation",
+    "drupal:paragraphs_asymmetric_translation_widgets"
   ],
   "configure": null,
-  "core_version_requirement": "^10.2||^11",
+  "core_version_requirement": "^10.2 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_translate_paragraph_asymetric",
@@ -21,10 +26,11 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Multilingual"
+    "Multilingual",
+    "Artificial Intelligence (AI)"
   ],
   "subcategories": [
     "Machine translation"

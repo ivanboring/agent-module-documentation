@@ -1,19 +1,22 @@
 {
   "name": "Azure AI Search VDB Provider",
   "data_name": "ai_vdb_provider_azure_ai_search",
-  "description": "Enables Azure AI Search as a vector-database provider for the Drupal AI module.",
+  "description": "This enables the use of Azure AI Search VDB in the AI module.",
   "version": "1.1.x",
   "package": "AI Vector Database Providers (Experimental)",
   "composer_namespace": "drupal/ai_vdb_provider_azure_ai_search",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.1",
+    "drupal/key": "^1.18"
+  },
   "dependent_modules": [
     "ai:ai",
     "ai:ai_search",
     "key:key",
     "search_api:search_api"
   ],
-  "configure": null,
-  "core_version_requirement": "^10.2||^11",
+  "configure": "ai_vdb_provider_azure_ai_search.settings_form",
+  "core_version_requirement": "^10.2 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_vdb_provider_azure_ai_search",
@@ -30,7 +33,7 @@
     "Artificial Intelligence (AI)"
   ],
   "subcategories": [
-    "Vector database provider"
+    "Vector database / embeddings storage"
   ],
   "keywords": [
     "ai",
@@ -39,7 +42,7 @@
     "search api",
     "rag"
   ],
-  "project_description": "The Azure AI Search VDB Provider works with the AI module, allowing you to do vector searches with AI Search.\n\n Features \n It provides a Vector Database provider for the AI module, allowing you to use it to connect to Azure AI Search services.\n\n This allows you to use the AI Search features from the AI module.\n\n Pre-Installation \n - Ensure you have an index created already in Azure AI Search\n\n- Add the following fields to the index:\n\n \n\n(these fields are automatically populated by the search API)\n\n Post-Installation \n - Install this module\n\n- Add the API Key in the Keys configuration page\n\n- Create a new Search Server.\n\n- Select the \"Azure AI Search DB\" option under the \"Vector Database\" field.\n\n- Then add the index name, URL, API version and select the API key.\n\n Additional Requirements \n - AI Module \n\n Back to top",
+  "project_description": "The Azure AI Search VDB Provider works with the AI module, allowing you to do vector searches with AI Search. It registers a Vector Database provider (plugin id azure_ai_search, label \"Azure AI Search DB\") so the AI Search submodule can store and query embeddings in an Azure AI Search index instead of a self-hosted vector database. Pre-installation you create an index in the Azure AI Search UI with the fields the Search API populates; post-installation you add the Azure API key as a Key entity, create a Search API server backed by AI Search, pick \"Azure AI Search DB\" as the Vector Database, and enter the index name, service URL, API version and key. This is an experimental module in the AI Vector Database Providers package.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

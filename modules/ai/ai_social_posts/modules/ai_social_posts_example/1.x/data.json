@@ -1,12 +1,13 @@
 {
-  "name": "Ai Social Posts Example",
+  "name": "AI Social Posts - Example",
   "data_name": "ai_social_posts_example",
   "description": "Example implementation of a custom social network for AI Social Posts",
   "version": "1.x",
-  "package": null,
+  "package": "AI Social Posts",
   "composer_namespace": "drupal/ai_social_posts",
   "composer_requirements": {},
   "dependent_modules": [
+    "maxlength:maxlength",
     "ai_social_posts:ai_social_posts"
   ],
   "configure": null,
@@ -21,13 +22,14 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Artificial Intelligence"
+    "Artificial Intelligence (AI)",
+    "Content editing experience"
   ],
   "subcategories": [
-    "Social publishing"
+    "Content scheduling / publishing"
   ],
   "keywords": [
     "ai",
@@ -35,7 +37,7 @@
     "submodule"
   ],
   "part_of": "ai_social_posts",
-  "project_description": "This module is part of the AI module ecosystem and included in DXPR CMS .\n\n AI Social Posts provides a flexible framework for creating and managing AI-assisted social media content across multiple platforms.\n\n \n You need AI Social Posts if \n \n You manage social media across multiple platforms and need content variations \n You want AI assistance for creating platform-specific social content \n You need to repurpose existing content into social media posts \n You want interactive AI editing tools for refining social content \n \n Features \n \n Flexible Content Creation Paths :\n \n Create posts directly from any content item via the \"AI Social Posts\" tab \n Generate multiple platform variations from a single piece of content \n Create standalone social posts from the central dashboard \n Batch create posts across multiple platforms \n \n \n Interactive AI Content Refinement :\n \n Real-time AI editing commands directly in the editor \n Quick actions like \"Make Longer\", \"Make Shorter\", \"Simplify Language\" \n Context-aware content improvements \n Generate new content from selections \n One-click summarization \n \"Continue writing\" functionality \n Edit or review existing content \n \n \n Platform Integrations :\n \n X (Twitter) - 280 character microblogging \n LinkedIn - Professional networking posts \n LinkedIn Articles - Professional networking articles \n Facebook - Social engagement posts \n Medium - Long-form articles with formatting, with topical vibe check \n Substack - Newsletter content with titles \n Reddit - Subreddit-specific posts, with topical vibe check \n Bluesky - 300 character social posts \n YouTube - Video descriptions and metadata \n Hacker News - HN posts, with topical vibe check \n \n \n Extensible Architecture :\n \n Easy addition of new social platforms through submodules \n Fully fieldable post types for custom requirements \n Customizable AI prompts per platform \n Flexible validation and character limit rules \n \n \n \n Post-Installation \n \n Install the base module and desired platform modules:\n\n composer require drupal/ai_social_posts\n drush en ai_social_posts ai_social_posts_x ai_social_posts_linkedin \n Two ways to create social posts:\n \n Primary: Navigate to any content item and use the \"AI Social Posts\" tab to create platform-specific variations \n Alternative: Create standalone posts via /admin/content/ai-social-posts \n \n \n Customize AI generation prompts per platform to match your content strategy \n Optionally enable analysis tools for content optimization \n \n \n Prefer a turnkey demo site? \n Spin up DXPR CMS , Drupal pre-configured with DXPR Builder, DXPR Theme, AI Social Posts module, and security best practices.\n\n Get DXPR CMS » \n\n \n Additional Requirements \n \n CKEditor AI Agent module \n Maxlength module \n \n Recommended modules/libraries \n \n AI Brand Voice Analyzer - Get instant feedback on brand voice consistency \n AI Sentiment Analyzer - Optimize engagement through sentiment analysis \n \n Related Modules \n \n CKEditor AI Agent - Required. Powers the interactive AI editing commands inside each post editor \n Maxlength - Required. Enforces platform-specific character limits (e.g., 300 for Bluesky, 280 for X) \n Analyze - Recommended. Content analysis framework that provides a unified Analyze tab \n AI Brand Voice Analyzer - Recommended. Scores brand voice consistency across your social posts \n AI Sentiment Analyzer - Recommended. Multi-dimensional tone analysis for content optimization \n AI Content Strategy - Plan what content to create, then use AI Social Posts to promote it \n \n AI Social Posts is part of the DXPR marketing CMS toolkit, enabling content teams to repurpose site content into platform-optimized social media posts.\n\n Back to top",
+  "project_description": "Submodule of AI Social Posts. Example implementation of a custom social network for AI Social Posts. Installs the `example_post` (\"Example Post\") bundle of the `ai_social_post` content entity with a platform-tuned prompt default and field set (`post`, `title`), so editors can draft Example Post copy with the CKEditor AI Agent. It stores content only and does not call the platform's API.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

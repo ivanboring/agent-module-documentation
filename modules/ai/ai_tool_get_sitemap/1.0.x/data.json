@@ -1,41 +1,46 @@
 {
   "name": "AI Tool: Get Sitemap",
   "data_name": "ai_tool_get_sitemap",
-  "description": "Provides an ai agents tool that fetches the site's sitemap for agent use.",
+  "description": "Provides an AI Agents tool plugin that returns the site's locally generated XML sitemap for agent use.",
   "version": "1.0.x",
   "package": "AI Tools",
   "composer_namespace": "drupal/ai_tool_get_sitemap",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/tool": ">=1.0.0-alpha10",
+    "drupal/simple_sitemap": "^4"
+  },
   "dependent_modules": [
     "ai:ai",
     "tool:tool"
   ],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_tool_get_sitemap",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.2",
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/simple_sitemap": "Supplies the XML sitemap this tool reads; without it the tool cannot return a sitemap (drupal/simple_sitemap ^4)."
+  },
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Artificial Intelligence (AI)"
   ],
   "subcategories": [
-    "Agents"
+    "AI tooling / function calling"
   ],
   "keywords": [
     "ai",
     "tool",
     "sitemap",
     "agents",
-    "fetch"
+    "function calling"
   ],
   "project_description": "This is a tool to use with Drupal AI Agents in order to obtain the sitemap for further processing.\n\n Initially supporting the sitemap generated with the Simple XML sitemap module.",
   "maintenance_status": "Actively maintained",

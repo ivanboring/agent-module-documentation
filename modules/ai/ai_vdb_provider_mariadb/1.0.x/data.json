@@ -1,33 +1,40 @@
 {
   "name": "MariaDB VDB Provider",
   "data_name": "ai_vdb_provider_mariadb",
-  "description": "Enables MariaDB Vector as a vector database (VDB) provider for the AI module.",
+  "description": "This enables the use of MariaDB Vector as a VDB in the AI module.",
   "version": "1.0.x",
   "package": "AI Vector Database Providers",
   "composer_namespace": "drupal/ai_vdb_provider_mariadb",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "ext-mysqli": "*",
+    "drupal/ai": "^1.0"
+  },
   "dependent_modules": [
     "ai:ai"
   ],
   "configure": null,
-  "core_version_requirement": "^10.2||^11",
+  "core_version_requirement": "^10.2 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_vdb_provider_mariadb",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
-  "library_dependencies": [],
-  "suggests": {},
+  "php_requirement": ">=8.1",
+  "library_dependencies": [
+    "ext-mysqli"
+  ],
+  "suggests": {
+    "mariadb-server": "MariaDB 11.7+ with Vector support"
+  },
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": true,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Integrations"
+    "Artificial Intelligence (AI)"
   ],
   "subcategories": [
-    "Vector database / embeddings"
+    "Vector database / embeddings storage"
   ],
   "keywords": [
     "ai",
@@ -36,7 +43,7 @@
     "embeddings",
     "vdb"
   ],
-  "project_description": "Native vector search for Drupal using MariaDB — no external services required.\n\n This module enables MariaDB’s native VECTOR data type and indexing capabilities (available in MariaDB 11.7+) as a Vector Database (VDB) provider for the Drupal AI module. Since MariaDB is a drop-in replacement for MySQL and is widely used as Drupal’s primary database, vector embeddings can be stored and queried directly within the same database with full transactional support.\n\n If your Drupal site already uses MariaDB, you can store your AI vectors in it by upgrading MariaDB to version 11.7 or later. If your site uses MySQL, you can replace it with MariaDB to enjoy the benefits of this module.\n\n Features \n \n Native MariaDB Vector Support : Utilizes MariaDB's built-in VECTOR data type and specialized VECTOR indexes \n Multiple Distance Metrics : Support for Euclidean distance and Cosine similarity \n Optimized Performance : Leverages MariaDB's modified HNSW (Hierarchical Navigable Small Worlds) algorithm \n Seamless Integration : Works with the Drupal AI module and Search API \n No External Dependencies : No need for separate vector database services \n Operational Simplicity : No additional services, containers, or infrastructure layers \n \n Post-Installation \n \n Create a Search API server using the AI Search backend \n Select \"MariaDB vector DB\" as the VDB provider \n Configure your embedding strategy and vector dimensions \n Create an index and add fields to the index \n Index your content \n \n Your vector index is then ready for use with Drupal AI-powered features such as semantic search and RAG-based systems.\n\n Additional Requirements \n \n Drupal 10.2+ or Drupal 11+ \n MariaDB 11.7 or later (11.8 LTS recommended for GA support) \n PHP 8.1+ \n PHP mysqli extension \n Drupal AI module \n \n Similar projects \n Other AI Search VDB providers:\n\n \n Pinecone VDB Provider \n Milvus VDB Provider \n Postgres VDB Provider \n \n Commercial Support \n This module is developed and maintained by Juan Martinez .\n\n The module maintainer is available for professional consulting and architectural guidance related to production AI systems and enterprise Drupal implementations.\n\n \n https://goingdrupal.com \n drupal.org/u/jcmartinez \n Back to top",
+  "project_description": "Native vector search for Drupal using MariaDB — no external services required. This module registers a 'MariaDB vector DB' provider (plugin id 'mariadb') for the Drupal AI module and its AI Search submodule, using MariaDB's native VECTOR data type and VECTOR indexes (available in MariaDB 11.7+, 11.8 LTS recommended). Because MariaDB is a drop-in replacement for MySQL and is commonly Drupal's primary database, embeddings can be stored and queried in the same database with full transactional support and no additional infrastructure. By default it reuses Drupal's active database connection; a separate MariaDB instance can be pointed to via a settings.php config override. It supports Euclidean and cosine distance metrics via MariaDB's modified HNSW index, integrates with Search API, ships Drush test commands for OpenAI rate-limit diagnostics, and throttles embedding API calls during indexing. Requires PHP 8.1+ and the mysqli extension.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

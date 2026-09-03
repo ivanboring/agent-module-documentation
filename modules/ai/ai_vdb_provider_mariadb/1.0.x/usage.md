@@ -1,37 +1,38 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-MariaDB VDB Provider enables the use of MariaDB Vector as a vector database in the Drupal AI module.
+Registers MariaDB's native VECTOR type as a vector-database provider for the Drupal AI module.
 
 ---
 
-MariaDB VDB Provider lets the Drupal AI module use MariaDB Vector as its vector database (VDB) — storing
-and querying embeddings in MariaDB for AI features like retrieval-augmented generation (RAG) and semantic
-search, without a separate vector-database service. It depends on the AI module, provides Drush commands, in
-the AI Vector Database Providers package.
-
-Use it to keep AI embeddings in MariaDB. It is an integration/AI-infrastructure feature; it stores/queries
-vector data (embeddings derived from your content) and has no access-control role. Note that indexed
-embeddings represent your content, so ensure any AI search built on it respects content access (don't surface
-restricted content via semantic search). Configure the MariaDB vector store.
+MariaDB VDB Provider lets the Drupal AI module and its AI Search submodule use MariaDB's native `VECTOR`
+column type and VECTOR index (MariaDB 11.7+) as a vector-database backend — so embeddings are stored and
+queried inside a MariaDB database instead of an external vector service. By default it reuses Drupal's own
+active database connection (giving full transactional roll-back with entity changes and zero extra
+infrastructure); a dedicated MariaDB instance can instead be configured through a `settings.php` config
+override. It creates a table per collection with an `embedding VECTOR(n)` column and a distance index
+(cosine or Euclidean), maps Search API fields to columns (multi-value fields get their own relation tables),
+and runs similarity queries with MariaDB's `VEC_DISTANCE_*` functions. It also throttles embedding API calls
+during indexing to respect the embedding provider's rate limits, and ships Drush commands for testing OpenAI
+rate limits. It provides a single admin info page and no permissions of its own.
 
 ---
 
-- Use MariaDB Vector as a VDB.
-- Store/query embeddings in MariaDB.
-- Support RAG and semantic search.
-- Depend on the AI module.
-- Provide Drush commands.
-- Avoid a separate vector service.
-- Ensure AI search respects content access.
-- Not surface restricted content via search.
-- Have no access-control role.
-- Configure the MariaDB vector store.
-- Store embeddings.
-- Query vectors.
-- Handle AI embeddings.
-- Configure the VDB.
-- Support semantic search.
-- Keep vectors in MariaDB.
-- Handle vector storage.
-- Configure vectors.
-- Provide a VDB.
-- Store AI vectors.
+- Store AI embeddings natively in MariaDB (11.7+) with the `VECTOR` column type.
+- Register the "MariaDB vector DB" provider (plugin id `mariadb`) for AI Search.
+- Run semantic / vector similarity search without an external vector database.
+- Reuse Drupal's existing MariaDB connection for transactional vector writes.
+- Point at a separate MariaDB instance via a `settings.php` config override.
+- Choose cosine or Euclidean distance for the VECTOR index.
+- Create one table per collection with an HNSW-style VECTOR index.
+- Map single-value Search API fields to columns and multi-value fields to relation tables.
+- Scope every query to its Search API index via a mandatory `index_id` filter.
+- Support retrieval-augmented generation (RAG) over content in MariaDB.
+- Throttle embedding API calls during indexing to avoid provider rate limits.
+- Compute a per-call delay from configured RPM / TPM / average-tokens values.
+- Retry indexing with exponential backoff when a provider rate limit is hit.
+- Log per-call embedding timing and token usage when debug mode is enabled.
+- Diagnose OpenAI rate limits with the `ai-vdb:test-rate-limits` Drush command.
+- Simulate batch indexing load with the `ai-vdb:test-batch-indexing` Drush command.
+- Auto-create/alter the collection table when a Search API index is updated.
+- Pre-fill sensible MariaDB defaults on the Search API server form.
+- Surface a MariaDB version / vector-support check on the status report.
+- Swap MariaDB in for another VDB provider without changing your Views.

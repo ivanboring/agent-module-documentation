@@ -1,18 +1,20 @@
 {
-  "name": "AI Translate LB Asymmetric",
+  "name": "AI Translate Layout builder Asymmetric",
   "data_name": "ai_translate_lb_asymmetric",
   "description": "Adds one-click AI translation support for asymmetric Layout Builder translations.",
   "version": "1.0.x",
   "package": "AI",
   "composer_namespace": "drupal/ai_translate_lb_asymmetric",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.0@beta"
+  },
   "dependent_modules": [
     "ai:ai_translate",
     "drupal:content_translation",
     "drupal:layout_builder_at"
   ],
   "configure": null,
-  "core_version_requirement": "^10.3||^11",
+  "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_translate_lb_asymmetric",
@@ -23,13 +25,14 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
+    "Multilingual",
     "Artificial Intelligence (AI)"
   ],
   "subcategories": [
-    "Translation"
+    "Machine translation"
   ],
   "keywords": [
     "ai translate",

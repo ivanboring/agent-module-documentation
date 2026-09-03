@@ -1,7 +1,7 @@
 {
   "name": "AI Sorting",
   "data_name": "ai_sorting",
-  "description": "provides an AI/reinforcement-learning sort plugin for Views.",
+  "description": "Views sort plugin that reorders results by learned engagement (Thompson Sampling A/B testing) via the RL module.",
   "version": "1.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/ai_sorting",
@@ -11,7 +11,7 @@
     "rl:rl"
   ],
   "configure": null,
-  "core_version_requirement": "^10.3||^11",
+  "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_sorting",
@@ -22,22 +22,24 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Site search"
+    "Content display",
+    "Integrations"
   ],
   "subcategories": [
-    "Search result sorting"
+    "Views query enhancements",
+    "A/B testing"
   ],
   "keywords": [
-    "ai",
     "sorting",
     "reinforcement learning",
     "views",
-    "relevance"
+    "a/b testing",
+    "thompson sampling"
   ],
-  "project_description": "This project has moved to rl_sorting . Existing installs migrate automatically when you enable rl_sorting — see the 1.0.0-beta1 release notes .",
+  "project_description": "AI Sorting adds a single Views sort plugin (\"AI Sorting\") that continuously A/B tests the items in a view and reorders them by learned engagement, using the Thompson Sampling algorithm provided by the contributed RL (Reinforcement Learning) module. It works with any Views-compatible entity type (nodes, users, taxonomy terms, media, custom entities): a deterministic experiment id is derived per view+display, the plugin asks the RL experiment manager for arm scores and rewrites the query's ORDER BY with a CASE expression, and a small JavaScript library records impressions (arms becoming visible) and rewards (link clicks) back to the RL module's endpoint via sendBeacon. It registers each experiment and decorates RL report rows with entity labels, adds a contextual \"View experiment\" link, and can automatically align the view's cache lifetime to the sort's refresh rate. All learning data is stored locally by the RL module; the module itself makes no external-service calls. Note: on drupal.org the project is superseded by rl_sorting and marked unsupported/obsolete.",
   "maintenance_status": "Unsupported",
   "development_status": "Obsolete",
   "security_advisory_coverage": "covered",

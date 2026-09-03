@@ -1,31 +1,38 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-OpenAI VDB Provider registers OpenAI as a vector-database backend for AI Search.
+Registers OpenAI's hosted Vector Store as a vector-database backend for Drupal AI Search.
 
 ---
 
-OpenAI VDB Provider (experimental) lets the AI module use OpenAI as a vector database provider — storing and querying embeddings via OpenAI for AI Search/RAG workflows. It plugs into the AI module's vector-database abstraction so embedding storage and similarity search route through OpenAI.
-
-It requires the OpenAI provider (`ai_provider_openai`) and AI Search, with the API key stored via the Key module (env-backed). Embedding storage/query sends vectors and text to OpenAI (cost + data egress). Marked experimental. Depends on `ai`, `ai:ai_search` (^1.2), `key`, and `ai_provider_openai`; supports Drupal 10.4+ and 11.
+OpenAI VDB Provider integrates OpenAI's hosted Vector Store API with the Drupal AI module's AI Search /
+Search API stack, giving semantic search without running a vector database. Instead of storing embeddings
+locally, it uploads each Search API item to OpenAI as a Markdown file and lets OpenAI perform the chunking,
+embedding and vector storage; searches are then run with a plain-text query (OpenAI embeds it server-side,
+so the backend skips its own embedding call). The module keeps an item-to-file mapping table, deduplicates
+re-uploads with a content checksum, polls each file until OpenAI reports it processed, and on cron reconciles
+drift — retrying remote deletions that failed and re-queuing items whose files disappeared. Search API
+"Filterable Attributes" map to OpenAI attribute filters (up to 16 per file, one reserved for the index
+scope). It requires the OpenAI AI provider (`ai_provider_openai`) and AI Search, with the API key stored via
+the Key module. It is experimental / alpha and explicitly not production-ready.
 
 ---
 
-- Use OpenAI as a vector database.
-- Store embeddings via OpenAI.
-- Query embeddings for similarity.
-- Support AI Search/RAG workflows.
-- Plug into the VDB abstraction.
-- Require the OpenAI provider.
-- Require AI Search (^1.2).
-- Store the API key via the Key module.
-- Back the key with an environment variable.
-- Send vectors/text to OpenAI (egress + cost).
-- Be marked experimental.
-- Depend on `ai`, `key`, `ai_provider_openai`.
-- Support Drupal 10.4+ and 11.
-- Route similarity search to OpenAI.
-- Integrate embeddings storage.
-- Keep secrets in env/Key.
-- Complement other VDB providers.
-- Support semantic retrieval.
-- Configure the vector index.
-- Enable RAG over OpenAI embeddings.
+- Use OpenAI's hosted Vector Store as an AI Search backend (plugin id `openai_vector_store`).
+- Get semantic search without operating your own vector database.
+- Upload each Search API item to OpenAI as a Markdown file.
+- Let OpenAI handle chunking, embedding and vector storage server-side.
+- Search with a natural-language text query rather than a pre-computed vector.
+- Skip the redundant local embedding call at query time.
+- Map Search API "Filterable Attributes" to OpenAI attribute filters.
+- Scope every search to its index via a reserved `index_id` attribute.
+- Warn when more than 15 filterable attributes are configured (OpenAI's 16 cap minus one).
+- Track item-to-file mappings in a local database table.
+- Deduplicate uploads with an SHA-256 content+attributes checksum.
+- Poll each uploaded file until it reaches a terminal (completed/failed) status.
+- Re-poll a still-processing file on the next run instead of re-uploading it.
+- Retry failed remote deletions on cron via the reconciler.
+- Reconcile drift daily between the mapping table and OpenAI, re-queuing vanished files.
+- Configure a per-server OpenAI Vector Store ID (e.g. `vs_...`).
+- Pass an OpenAI chunking strategy derived from the embedding strategy config.
+- Apply an "AI Search Score Threshold" as OpenAI's search score threshold.
+- Optionally enable OpenAI's query rewriting via the `openai_rewrite_query` processor.
+- Store the OpenAI API key via the Key module and the OpenAI AI provider.

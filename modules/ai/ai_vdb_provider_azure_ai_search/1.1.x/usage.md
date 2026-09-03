@@ -1,38 +1,36 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Azure AI Search VDB Provider enables the use of Azure AI Search VDB in the AI module.
+Registers Azure AI Search as a vector-database provider for the Drupal AI module's AI Search submodule.
 
 ---
 
-Azure AI Search VDB Provider adds **Azure AI Search** as a **vector-database (VDB) provider** for the
-Drupal AI module — so AI features (RAG / semantic search over embeddings) can store and query vectors in Azure
-AI Search. It depends on the AI module, its AI Search submodule, the Key module and Search API, in the AI
-Vector Database Providers (Experimental) package.
-
-Use it to back AI vector search with Azure AI Search. It is an AI/integration feature. Security handling: it
-talks to **Azure AI Search over the network** with an **API key** — the module integrates with the **Key
-module**, so store the Azure credential as a Key (env/secret), not in plain config, and use the HTTPS Azure
-endpoint. Indexed embeddings/content are sent to Azure (data egress) — confirm that is acceptable for your
-data. It has no access-control role. Configure the Azure endpoint and key.
+Azure AI Search VDB Provider adds an "Azure AI Search DB" vector-database (VDB) provider plugin to the
+Drupal AI module, so the AI Search / Search API stack can store document embeddings in — and run similarity
+(kNN) queries against — an Azure AI Search index instead of a self-managed vector store. You create the index
+in Azure first, then point a Search API server (AI Search backend) at it by choosing the provider and
+supplying the Azure service URL, API version, index name and an API key held in a Key entity. It talks to the
+Azure REST Search Service API over HTTPS and normalizes results back into the shape the AI Search module
+expects. It is an experimental module in the AI Vector Database Providers package and provides no routes or
+permissions of its own beyond a single admin settings form.
 
 ---
 
-- Add Azure AI Search as a vector DB provider.
-- Back AI RAG/semantic search with Azure.
-- Store/query vectors in Azure.
-- Depend on AI, AI Search, Key, Search API.
-- Talk to Azure over the network.
-- Use an API key via the Key module.
-- Store the Azure credential as a Key/secret.
-- Send embeddings/content to Azure (data egress).
-- Confirm the egress is acceptable.
-- Use the HTTPS Azure endpoint.
-- Have no access-control role.
-- Configure the endpoint and key.
-- Handle Azure vector search.
-- Provide a VDB provider.
-- Configure Azure.
-- Handle embeddings.
-- Query vectors.
-- Configure credentials.
-- Handle the integration.
-- Provide vector storage.
+- Use Azure AI Search as the vector store behind Drupal AI Search / RAG.
+- Register the "Azure AI Search DB" VDB provider (plugin id `azure_ai_search`).
+- Store and update embeddings in an existing Azure AI Search index.
+- Run vector (kNN) similarity queries against Azure from Search API.
+- Run metadata-only (filter) queries with no vector input.
+- Map Search API condition groups to Azure filter expressions.
+- Reuse an Azure AI Search service you already operate.
+- Keep the Azure API key in a Key entity rather than plain config.
+- Configure the Azure service URL and REST API version per site.
+- Select which Azure index a Search API server writes to.
+- Delete indexed documents by Drupal entity ID.
+- Fetch stored documents by Drupal entity ID.
+- View index storage size and document count on the server status page.
+- Ping the Azure service to validate connectivity and credentials.
+- Swap Azure in for another VDB provider without changing your Views.
+- Back an AI Assistant / chatbot with Azure-hosted semantic search.
+- Build retrieval-augmented generation (RAG) over content indexed to Azure.
+- Restrict configuration to users with the "administer ai providers" permission.
+- Let Search API handle chunking/embedding while Azure handles storage/retrieval.
+- Support Drupal 10.2+ and Drupal 11.

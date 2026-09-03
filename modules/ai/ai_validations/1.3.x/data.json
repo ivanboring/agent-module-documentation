@@ -1,18 +1,21 @@
 {
   "name": "AI Validations",
   "data_name": "ai_validations",
-  "description": "adds AI support to the Field Validation module.",
+  "description": "Adds AI-backed validation rules to the Field Validation module.",
   "version": "1.3.x",
-  "package": null,
+  "package": "AI",
   "composer_namespace": "drupal/ai_validations",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.3",
+    "drupal/field_validation": "^3.0@beta"
+  },
   "dependent_modules": [
     "ai:ai",
     "field_validation:field_validation",
     "drupal:image"
   ],
   "configure": null,
-  "core_version_requirement": "^10.4||^11",
+  "core_version_requirement": "^10.4 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_validations",
@@ -23,22 +26,24 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Artificial Intelligence (AI)"
+    "Artificial Intelligence (AI)",
+    "Content editing experience"
   ],
   "subcategories": [
-    "LLM / AI provider"
+    "AI content risk analysis",
+    "Field validation"
   ],
   "keywords": [
     "ai",
     "validation",
     "field validation",
-    "forms",
-    "ai"
+    "moderation",
+    "classification"
   ],
-  "project_description": "Back to top \n\n Overview \n AI Validations adds AI-powered validation rules to the Field Validation module. Attach any of the seven built-in rules to a text, image, or audio field, point it at an AI provider configured in AI Core , and it will pass or fail the field value automatically.\n\n Back to top \n\n Features \n \n AI text prompt validation. Send a custom prompt with a text field value. The prompt must instruct the model to return XTRUE when the value passes or XFALSE when it fails. \n AI moderation validation. Validate text fields using the AI module's native moderation operation. Content flagged by the provider fails validation. You can restrict failure to specific categories (e.g. hate,violence,sexual ); if left blank, any flagged category causes failure. \n AI text classification validation. Send a text field value to your AI provider for classification. Validation fails when the text is classified as the category you configure. You can set the tag, finder type (exact, contains, or case-insensitive), and a minimum confidence threshold. \n AI image classification validation. Send uploaded images to your AI provider for classification. Validation fails when the image is classified into a disallowed category. You can set the tag, finder type, and minimum confidence. An image style can be applied first to reduce token usage. \n AI image prompt validation. Send an uploaded image with a custom prompt. The prompt must instruct the model to return XTRUE or XFALSE (e.g. \"contains no explicit content\", \"shows a person wearing safety equipment\"). Accepts an optional image style to reduce token usage. \n AI object detection validation. Validate images using the AI module's object detection operation. Require or forbid specific object names, use AND or OR logic for multiple keywords, and configure whether the rule passes or fails on a match. Accepts an optional image style to reduce token usage. \n AI audio validation. Validate audio file fields. A speech-to-text provider transcribes the uploaded file, then a chat provider evaluates the transcript against your custom prompt. The prompt must instruct the model to return XTRUE if the value passes or XFALSE if it fails. \n \n Back to top \n\n Requirements \n \n AI Core module and at least one configured AI provider \n Field Validation module \n \n Back to top \n\n Use cases \n \n Block user-submitted text that fails an AI moderation check (e.g. hate speech, violent content) \n Reject submissions your AI provider classifies as spam or off-topic \n Enforce content policies on text fields with a custom XTRUE/XFALSE prompt \n Reject uploaded images that match a disallowed classification (e.g. NSFW or off-brand imagery) \n Require uploaded photos to contain specific elements (e.g. a logo, safety equipment, a product shot) \n Require or block named objects in images (e.g. \"must contain person\", \"must not contain weapon\") \n Validate audio uploads by transcribing them and evaluating the transcript against a custom prompt \n \n Back to top \n\n How it works \n Each rule is a Field Validation plugin. You attach it to a field, choose your AI provider and model through AI Core, and configure the match criteria. On form save the rule calls the provider, interprets the response, and returns pass or fail to Field Validation. All six rules sit alongside your existing validation rules in the same admin UI.\n\n Back to top",
+  "project_description": "AI Validations plugs AI-powered validation rules into the contributed Field Validation module. Attach one of seven built-in rules to a text, image, or audio field, point it at an AI provider configured in AI Core, and the field value is passed or failed automatically when the entity is validated. The rules cover custom XTRUE/XFALSE prompt checks on text, images and audio transcripts, native provider moderation, text and image classification with confidence thresholds, and object detection with AND/OR keyword logic. Each rule is a field_validation FieldValidationRule plugin backed by a Symfony Validator constraint/validator pair, so the rules sit alongside your other validation rules in the same admin UI. It provides no routes, permissions, or config forms of its own; all provider/model selection is delegated to AI Core's ai_provider_configuration form element and credentials are handled by the AI module.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

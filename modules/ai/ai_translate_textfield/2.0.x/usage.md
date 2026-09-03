@@ -1,38 +1,38 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-AI Textfield Translation adds AI-powered translation of text field values, backed by the Drupal AI module.
+AI Textfield Translation adds a per-field "Request automatic translation" button to text field widgets on entity edit forms, filling the field with an AI translation via the Drupal AI module.
 
 ---
 
-AI Textfield Translation provides AI-powered translation for text field values — letting editors
-translate a field's content into another language using an AI model via the Drupal AI module. It depends
-on the `ai` module and is configured at `ai_translate_textfield.settings_form`; it provides its own
-permissions.
+AI Textfield Translation extends Drupal's text/string field **widgets** so a content editor can, from
+the entity edit form, translate a single field's value into the entity's language with one button.
+It supports any translator that implements the Drupal AI module's `translate_text` operation (e.g.
+DeepL via a provider module) and also works with `chat` providers (e.g. OpenAI) using a configurable
+prompt. The feature is turned on **per field** in the form-mode (Manage form display) third-party
+settings, and only shown to users holding the `use ai translation` permission. An optional warning
+modal makes editors acknowledge that machine translation must be reviewed before saving — the module
+is explicitly designed to assist, not replace, human review. Site-wide options (per-language model
+and prompt, button text, and the warning dialog copy) live in `ai_translate_textfield.settings`. The
+translate action runs as a Form API AJAX callback on the edit form; the field text is sent to the
+configured AI provider.
 
-Use it to speed up translating field content with AI in the editing flow. The security/privacy-relevant
-point is that content sent for translation is transmitted to the configured AI provider — store the
-provider credentials as secrets (via the AI module / Key) and treat field content as leaving the site
-(a data-handling consideration for sensitive content). It is a multilingual/content feature; configure
-the AI provider and which fields can be translated.
+Use it to:
 
----
-
-- Translate text fields with AI.
-- Use the Drupal AI module.
-- Translate field content in the editor.
-- Depend on the ai module.
-- Configure at the settings form.
-- Provide its own permissions.
-- Store AI provider credentials as secrets.
-- Treat content as leaving the site.
-- Mind sensitive content sent to AI.
-- Speed up field translation.
-- Choose the AI provider.
-- Translate into another language.
-- Configure translatable fields.
-- Handle credentials via Key.
-- Assist multilingual content.
-- Send field text to the AI model.
-- Translate on demand.
-- Support editorial translation.
-- Add AI translation.
-- Translate field values.
+- Let editors translate one text field at a time from the edit form.
+- Add AI translation without changing the site's translation workflow.
+- Support DeepL (via `translate_text` operation) translator providers.
+- Support chat AI providers (e.g. OpenAI) with a custom translation prompt.
+- Enable the feature only on selected fields via Manage form display.
+- Restrict who can translate with the `use ai translation` permission.
+- Show a warning modal that editors must accept before translating.
+- Pick a different AI model per target language.
+- Customize the translate button label.
+- Strip HTML before translation on a per-field basis.
+- Preserve HTML markup when a provider supports HTML tag handling.
+- Keep the original text visible in a status message after translating.
+- Only replace the field value when a non-empty, changed translation returns.
+- Translate `string_textfield`, `string_textarea`, `text_textfield`, `text_textarea` and
+  `text_textarea_with_summary` widgets.
+- Translate the pre-configured UI copy of the module itself (config translation).
+- Remind editors that third-party machine output needs review.
+- Help multilingual teams speed up first-pass translations.
+- Work on any content entity type that has text fields.

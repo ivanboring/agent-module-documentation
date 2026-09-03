@@ -1,36 +1,47 @@
 {
-  "name": "AI Vector DB: Elasticsearch",
+  "name": "Elasticsearch VDB Provider",
   "data_name": "ai_vdb_provider_elasticsearch",
-  "description": "An Elasticsearch vector-database backend for the AI (RAG/search) module. Uses the Key module for credentials.",
+  "description": "Provides an Elasticsearch backend for the AI Search module using native dense_vector mappings and HNSW algorithms.",
   "version": "1.0.x",
-  "package": "AI Vector Database Providers",
+  "package": "AI Vector Database Providers (Experimental)",
   "composer_namespace": "drupal/ai_vdb_provider_elasticsearch",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.2",
+    "drupal/key": "^1.0",
+    "drupal/search_api": "^1.0",
+    "elasticsearch/elasticsearch": "^8.0",
+    "smalot/pdfparser": "^2.12"
+  },
   "dependent_modules": [
     "ai:ai",
     "ai:ai_search",
     "key:key",
     "search_api:search_api"
   ],
-  "configure": null,
-  "core_version_requirement": "^10.3||^11",
+  "configure": "ai_vdb_provider_elasticsearch.settings_form",
+  "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_vdb_provider_elasticsearch",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
-  "suggests": {},
+  "library_dependencies": [
+    "elasticsearch/elasticsearch",
+    "smalot/pdfparser"
+  ],
+  "suggests": {
+    "drupal/search_api_attachments": "Required only if you want to use the bundled pure-PHP PDF text extractor (php_pdfparser_extractor)."
+  },
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Site search"
+    "Artificial Intelligence (AI)"
   ],
   "subcategories": [
-    "AI / vector search"
+    "Vector database / embeddings storage"
   ],
   "keywords": [
     "ai",
@@ -39,7 +50,7 @@
     "rag",
     "embeddings"
   ],
-  "project_description": "Elasticsearch AI VDB Provider\n An Elasticsearch backend for the Drupal AI module and its AI Search submodule. Stores and retrieves embeddings using Elasticsearch's native dense_vector field with HNSW kNN, so semantic search and RAG work directly against your existing Elastic Stack — no separate vector database to operate.\n\n Back to top \n\n Why this module \n As of April 2026, this is the only Drupal AI VDB provider that runs hybrid search (kNN + BM25) in a single Elasticsearch request, merged with Reciprocal Rank Fusion (RRF) .\n\n \n \n \n Capability \n This module \n Other VDB providers \n \n \n \n \n Approximate kNN (HNSW) \n Yes \n Yes \n \n \n Access-control pre-filtering \n Yes \n Yes \n \n \n Hybrid search (kNN + BM25 + RRF) \n Yes \n No \n \n \n Reuses an existing Elastic Stack \n Yes \n No \n \n \n \n Back to top \n\n Requirements \n \n Drupal 10.3 or 11 \n AI module (includes the AI Search submodule) \n Key module for credential storage \n An Elasticsearch 8.x cluster with dense_vector support — 8.8+ for hybrid search (RRF) \n An AI Provider module for embeddings (OpenAI, Anthropic, Ollama, etc.) \n \n Back to top \n\n Install \n composer require drupal/ai_vdb_provider_elasticsearch\ndrush en ai_vdb_provider_elasticsearch Back to top \n\n Configure \n \n Store credentials. At /admin/config/system/keys , create a Key entity holding either an Elasticsearch API key (recommended) or a Basic Auth password. Skip for unauthenticated local clusters. \n Configure the provider. At /admin/config/ai/vdb_providers/elasticsearch , set the host URL, point at your Key entity, choose an Index Prefix (e.g. drupal_ ) and a Similarity Metric ( cosine for normalized embeddings from commercial LLMs — the safe default). \n Wire up Search API. At /admin/config/search/search-api , add a Server with AI Search (VDB) as the backend, select Elasticsearch as the VDB Provider, attach your AI Provider for embeddings, then add an Index and run it. \n \n The Elasticsearch index is created automatically on first use. The similarity metric and embedding dimensions are baked into the mapping at creation time — changing either requires dropping and re-indexing.\n\n Back to top \n\n Hybrid search (kNN + BM25) \n Pure vector search is excellent at conceptual matching but fails on exact lexical lookups — product SKUs, acronyms, proper names. With hybrid search enabled, every query runs both a kNN vector search and a BM25 keyword match in one Elasticsearch request, then merges the two ranked lists with RRF. No manual weight tuning needed.\n\n \n \n \n Content profile \n Recommendation \n \n \n \n \n Mostly narrative prose, queried by concept \n Pure kNN (hybrid off) \n \n \n Codes, acronyms, proper names mixed in \n Hybrid on \n \n \n RAG agent over a mixed knowledge base \n Hybrid on \n \n \n Elasticsearch < 8.8 \n Hybrid not available \n \n \n \n License note. RRF is a commercial Elastic feature on 8.x. The basic (free) license returns 403 license non-compliant for [Reciprocal Rank Fusion (RRF)] ; either start a Platinum trial or leave the toggle off. Pure kNN works on the basic license.\n\n Back to top \n\n Documentation \n Detailed walkthroughs live in the project repository:\n\n \n Indexing PDFs, DOCX and Markdown — the Search API Attachments + bundled php_pdfparser_extractor pipeline. \n Building a RAG chatbot — AI Assistant + AI Chatbot wired to this module. \n Local development with DDEV — Elasticsearch + Kibana sidecars, smoke tests. \n Troubleshooting — common errors and fixes. \n \n Back to top \n\n Index field mapping \n The module maps these fields explicitly at index creation; everything else ai_search sends through is accepted via dynamic: true .\n\n \n \n \n Field \n Type \n Purpose \n \n \n \n \n vector \n dense_vector \n Embedding (HNSW-indexed) \n \n \n entity_id \n keyword \n Drupal entity ID \n \n \n entity_type \n keyword \n Pre-filter (e.g. node ) \n \n \n bundle \n keyword \n Bundle pre-filter \n \n \n langcode \n keyword \n Language pre-filter \n \n \n chunk_id \n keyword \n Chunk identifier within an entity \n \n \n content \n text \n Plain text used by BM25 in hybrid mode \n \n \n …",
+  "project_description": "An Elasticsearch backend for the Drupal AI module and its AI Search submodule. Stores and retrieves embeddings using Elasticsearch's native dense_vector field with HNSW-accelerated approximate kNN, so semantic search and RAG run directly against your existing Elastic Stack with no separate vector database to operate. It registers the VDB provider plugin 'elasticsearch' (label \"Elasticsearch (Native kNN)\") and uniquely supports hybrid search (kNN + BM25 merged with Reciprocal Rank Fusion) in a single Elasticsearch request on ES 8.8+. Credentials (an API key, or Basic Auth password) are held in Key module entities; the cluster host, index prefix and similarity metric are set on the provider settings form. It also ships an optional pure-PHP PDF text extractor plugin for Search API Attachments and an event subscriber that registers extra text/document MIME types for indexing. Experimental module in the AI Vector Database Providers package.",
   "maintenance_status": "Seeking co-maintainer(s)",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

@@ -5,12 +5,13 @@
 - **Drupal 10.3 or 11** (`core_version_requirement: ^10.3 || ^11.0`).
 - Core's **Filter** and **CKEditor 5** modules (enabled by default on standard
   sites).
-- Several contributed dependencies that Composer pulls in: **Maxlength**
-  (`maxlength`), **CKEditor AI Agent** (`ckeditor_ai_agent`), **Analyze**
-  (`analyze`), **Analyze AI Brand Voice** (`analyze_ai_brand_voice`), and
-  **Analyze AI Sentiment** (`analyze_ai_sentiment`).
-- For AI-assisted content and for each platform you publish to: a configured AI
-  provider (key stored as a secret) and that platform's API credentials/tokens.
+- Two contributed dependencies that Composer pulls in: **CKEditor AI Agent**
+  (`ckeditor_ai_agent`) and **Maxlength** (`maxlength`). The **Analyze**,
+  **Analyze AI Brand Voice**, and **Analyze AI Sentiment** modules are optional
+  (suggested) add-ons for content scoring, not required.
+- For the AI-assisted editing: a configured AI provider with a key (stored as a
+  secret) in the CKEditor AI Agent module. No per-platform API keys or tokens are
+  needed — the module drafts copy, it does not post to any network.
 
 There are no additional third-party PHP library requirements.
 
@@ -38,7 +39,7 @@ drush en ai_social_posts -y
 ## Submodules — enable only the platforms you use
 
 AI Social Posts ships sixteen per-platform submodules. Enable only the ones you
-intend to publish to, each with `drush en`:
+write for, each with `drush en`:
 
 | Platform | Machine name |
 |----------|--------------|
@@ -59,7 +60,7 @@ intend to publish to, each with `drush en`:
 | Newsletter | `ai_social_posts_newsletter` |
 | Example (reference) | `ai_social_posts_example` |
 
-For example, to publish to X and LinkedIn:
+For example, to draft for X and LinkedIn:
 
 ```bash
 drush en ai_social_posts_x ai_social_posts_linkedin -y
@@ -70,8 +71,9 @@ present once you have installed it above.
 
 ## After enabling
 
-For every platform submodule you turn on, obtain that platform's API
-credentials/tokens and store them securely (a **Key** entity or environment
-variables — never plain configuration), then enter them in that submodule's
-settings. Confirm what will auto-post and to which accounts before publishing
-for real.
+Each platform submodule you turn on adds its bundle automatically — there are no
+per-platform credentials to enter. Configure the **CKEditor AI Agent** module
+with your AI provider and key (stored as a secret) so the in-editor AI button
+works, then start drafting from a node's **Socials** tab or at **Content › Social
+Posts › Add**. Finished drafts stay in Drupal; copy them to each platform
+yourself when ready.
