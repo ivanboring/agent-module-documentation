@@ -1,16 +1,19 @@
 {
   "name": "AI Content Advisor",
   "data_name": "ai_content_advisor",
-  "description": "Analyzes content with AI and returns improvement recommendations (SEO, readability, etc.).",
+  "description": "Analyze your content and receive AI-powered recommendations on how to improve it.",
   "version": "1.0.x",
   "package": "AI",
   "composer_namespace": "drupal/ai_content_advisor",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1",
+    "league/commonmark": "^2.5"
+  },
   "dependent_modules": [
     "ai:ai"
   ],
-  "configure": null,
-  "core_version_requirement": "^10.3||^11",
+  "configure": "ai_content_advisor.settings",
+  "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_content_advisor",
@@ -24,10 +27,12 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Artificial Intelligence (AI)"
+    "Artificial Intelligence (AI)",
+    "Search engine optimization (SEO)",
+    "Content editing experience"
   ],
   "subcategories": [
-    "Content analysis"
+    "SEO analysis / audit"
   ],
   "keywords": [
     "ai",
@@ -36,7 +41,7 @@
     "seo",
     "recommendations"
   ],
-  "project_description": "The AI Content Advisor is a flexible Drupal module that extends and enhances the capabilities of the AI SEO Analyzer project. Built on the foundation of AI SEO, this module provides a comprehensive content analysis framework that goes far beyond SEO optimization to support diverse content evaluation needs across your Drupal site.\n\n Back to top \n\n Overview \n This module integrates seamlessly with Drupal's AI ecosystem to deliver intelligent, AI-powered content analysis directly within your content management workflow. While it includes several pre-configured SEO analysis templates based on the original AI SEO project, the AI Content Advisor is designed as a versatile platform for any type of content analysis and advisory services.\n\n Back to top \n\n Key Features \n Configurable Analysis Types \n \n Multiple Report Configurations : Unlike the original AI SEO module, AI Content Advisor supports configurable report types, allowing you to create custom analysis templates for different content evaluation purposes \n Pre-built SEO Templates : Includes ready-to-use SEO analysis configurations covering all areas from the original AI SEO project \n Custom Analysis Creation : Build your own content analysis workflows for accessibility audits, content quality reviews, brand compliance checks, readability assessments, and more \n \n Enhanced Content Analysis \n \n Comprehensive SEO Analysis : All original AI SEO features including Topic Authority, Meta Tags, Headings Structure, Content Analysis, Image Optimization, Link Analysis, and more \n Extended Use Cases : Perfect for content quality assurance, editorial reviews, compliance checking, accessibility auditing, and brand guideline validation \n Historical Reporting : All generated reports are stored for future reference and comparison \n \n Flexible Configuration \n \n Customizable Prompts : Modify analysis prompts to match your specific content requirements \n Targeted Analysis Areas : Focus on specific aspects of your content with detailed, configurable analysis zones \n Content Moderation Integration : Analyze draft revisions alongside published content \n Permission Controls : Granular access control for different user roles \n \n Back to top \n\n Installation & Setup \n Requirements \n \n Drupal 10.3+ or 11.x \n AI module (required dependency) \n Configured AI provider (OpenAI, Claude, etc.) \n \n Post-Installation Configuration \n \n Configure your AI provider at /admin/config/ai/providers \n Set up AI Content Advisor at /admin/config/ai/content-advisor \n Configure AI Content Advisor report types at /admin/config/ai-content-advisor/report-types \n Set appropriate user permissions at /admin/people/permissions/module/ai_content_advisor \n Access content analysis from the node view tabs or content management interfaces \n \n Back to top \n\n Use Cases \n SEO Optimization \n \n Complete SEO analysis with all features from the original AI SEO project \n Technical SEO auditing and recommendations \n Content optimization suggestions \n \n Content Quality Assurance \n \n Editorial review assistance \n Content structure and readability analysis \n Brand voice and tone compliance checking \n \n Accessibility & Compliance \n \n Accessibility audit workflows \n Regulatory compliance content review \n Industry-specific content standards validation \n \n Editorial Workflows \n \n Content performance analysis \n Multi-language content consistency checks \n Publication readiness assessments \n \n Back to top \n\n Relationship to AI SEO \n This project is built upon the solid foundation of the AI SEO Analyzer module, incorporating all of its core SEO analysis capabilities while expanding the framework to support broader content analysis needs. Users migrating from AI SEO will find familiar functionality plus enhanced configurability and extended use cases.\n\n We strongly encourage all current users of AI SEO Analyzer to switch to AI Content Advisor. This module provides everything that AI SEO offers plus:\n\n \n Configurable report types and analysis templates \n …",
+  "project_description": "AI Content Advisor renders a node's HTML, sends it to a configured drupal/ai chat model with an analysis prompt, and stores an AI-generated report of improvement recommendations. It grew out of the AI SEO Analyzer project and ships several SEO-oriented report templates, but its report types are configurable so it can drive any kind of content analysis (readability, editorial review, accessibility, brand compliance).\n\nReports are reached from a per-node \"Analyze Content with AI\" tab (route entity.node.content_analyzer, /node/{node}/content-advisor), from entity operations/contextual links, or from a provided block. The AnalyzeNodeForm shows previous reports and a form to generate a new one for the current (or a chosen moderated) revision. Reports are stored in the module's own ai_content_advisor database table and can be regenerated and compared over time.\n\nReport prompts are managed as AiContentAdvisorReportType config entities (config-installed defaults: full, topic_authority, natural_language, link_analysis, headings_and_structure) at /admin/config/ai-content-advisor/report-types. The provider/model and an optional custom system prompt are set at /admin/config/ai/content-advisor.\n\nKey features:\n- Per-node AI content analysis with stored, comparable reports.\n- Configurable report types (prompts) as config entities, with SEO defaults.\n- Analyze the published node or a specific moderated revision.\n- Optional 'analyze as an anonymous visitor' rendering to respect access restrictions.\n- Granular permissions for viewing, creating, and administering.\n- A context-aware block for embedding the latest report on a node.\n\nRequirements: the AI module (ai) with a configured chat provider, and the league/commonmark library (pulled via Composer). Generating reports calls the AI provider and incurs usage cost.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

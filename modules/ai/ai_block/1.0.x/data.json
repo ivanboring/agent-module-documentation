@@ -1,7 +1,7 @@
 {
   "name": "AI Block",
   "data_name": "ai_block",
-  "description": "Provides a configurable block with simple AI features.",
+  "description": "Provides a block with simple AI features.",
   "version": "1.0.x",
   "package": "AI",
   "composer_namespace": "drupal/ai_block",
@@ -21,26 +21,25 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Artificial Intelligence (AI)",
     "Content display"
   ],
   "subcategories": [
-    "AI tooling / function calling",
     "Block enhancements"
   ],
   "keywords": [
     "ai",
     "block",
-    "layout",
-    "generation",
+    "prompt",
+    "token",
     "content"
   ],
-  "project_description": "AI block \n Ai block gives you a block where you can configure a prompt.\n\nYou can provide data (programmatically) and the output will be the output of the prompt. \n\n Usage \n Similar to Strava's athlete intelligence (where it summarises data for you).\n\nYou could use it to summarise the views data on the page or other similar things. \n\n Inspiration \n \n\n Pre \n \n Make sure you have the AI module enabled. \n Make sure you have at least one ai provider module enabled. \n \n Configuration \n Step 1 Add the block to the page.\n\nStep 2 Configure the block\n\n \n\n Output \n Output is just rendered (not streamed yet) to the frontpage\n\n \n\n Hooks: \n <?php\n\nfunction hook_ai_block_prompt_alter(&$prompt, $blockId) {\n\n?>\n\nThis hook allows you to alter the prompt (if you want to create your own replacement tokens [view-data] or [my-whatever-data], you can then replace it in the alter function with the actual data. \n\n <?php\n\nfunction hook_ai_block_response_alter(&$aiResponse, $blockId) {\n\n?>\n\nIf you would want to alter the response, this is the place to be.\n\nFor example if the ai returns markdown and you want to turn it into something else.",
+  "project_description": "AI Block adds a single configurable Drupal block plugin (id ai_block, admin label \"AI Block\") whose body is the text response of an AI chat prompt. An editor places the block, types a prompt, and optionally picks which AI provider/model to use; on render the module runs the prompt through the AI module's chat abstraction and prints the returned text through a Twig template. The prompt supports core token replacement (node and user tokens) and two alter hooks let other modules rewrite the prompt or the response. It depends on core block and config and on the contrib AI module (drupal/ai) for provider access; a default chat provider must be configured in the AI module. Supports Drupal 10 and 11.",
   "maintenance_status": "Seeking co-maintainer(s)",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

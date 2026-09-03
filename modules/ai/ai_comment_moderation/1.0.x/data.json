@@ -1,19 +1,21 @@
 {
   "name": "AI Comment Moderation",
   "data_name": "ai_comment_moderation",
-  "description": "Moderates user comments using openai (flags/filters spam/abuse).",
+  "description": "Moderates Drupal comments with OpenAI's Moderation API — unpublishes comments the API flags as inappropriate.",
   "version": "1.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/ai_comment_moderation",
   "composer_requirements": {},
-  "dependent_modules": [],
+  "dependent_modules": [
+    "comment"
+  ],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_comment_moderation",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=7.4",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
@@ -22,19 +24,22 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
+    "Artificial Intelligence (AI)",
     "Security"
   ],
   "subcategories": [
-    "Spam / abuse prevention"
+    "AI content risk analysis",
+    "Spam control"
   ],
   "keywords": [
     "ai",
+    "openai",
     "comment",
     "moderation",
-    "openai",
-    "spam"
+    "spam",
+    "abuse"
   ],
-  "project_description": "Automatically moderate user comments in Drupal using OpenAI's Moderation API. Helps flag or unpublish inappropriate content before it's published.\n\n Features \n Automatically analyzes and moderates user-submitted comments using OpenAI's Moderation API.\n\n Flags comments containing hate speech, violence, sexual content, or profanity.\n\n Prevents publishing of flagged comments.\n\n Provides a configuration page for storing your OpenAI API key.\n\n Seamless integration with Drupal’s core Comment module.\n\n Why use this module?\n\n If you're running a community-driven site, blog, forum, or news portal where user comments are critical but require moderation, this module automates that task using AI. It reduces human workload and helps ensure safer, more respectful conversations on your site.\n\n Use cases include:\n\n News/media websites\n\n Educational or knowledge-sharing platforms\n\n Forums and social communities\n\n Any site accepting public comments\n\n Post-Installation \n Enable the module using the UI or Drush:\n\n drush en ai_comment_moderation\n\n Go to Configuration > Content Authoring > AI Comment Moderation\n\nor directly at:\n\n/admin/config/content/ai-comment-moderation\n\n Enter your OpenAI API key.\n\n That’s it — any new comment posted will now be analyzed in real-time before saving.\n\n Flagged comments will automatically be unpublished, and users will be warned.\n\n Additional Requirements \n A valid OpenAI API key is required.\n\n Internet access on your server to reach https://api.openai.com .\n\n Back to top",
+  "project_description": "AI Comment Moderation sends each comment's body to OpenAI's Moderation API (https://api.openai.com/v1/moderations) on comment presave; if the API flags the text as inappropriate the comment is set unpublished and the author sees a warning message. It ships a single admin settings form for the OpenAI API key and a service that wraps the API call. Requires the core comment module and an OpenAI API key. Comment text is sent to OpenAI for classification.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

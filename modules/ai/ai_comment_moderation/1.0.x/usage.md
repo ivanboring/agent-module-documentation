@@ -1,33 +1,25 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-AI Comment Moderation moderates user comments using OpenAI (flags/filters spam/abuse).
+AI Comment Moderation sends each new comment to OpenAI's Moderation API and unpublishes any comment the API flags as inappropriate.
 
 ---
 
-AI Comment Moderation moderates user comments using OpenAI (flags/filters spam/abuse). It builds on Drupal's AI module, in the Custom package.
-
-Use it for AI-assisted spam / abuse prevention. It is an AI/integration feature. Security/data handling: it **sends
-comment text to the configured AI provider** (external egress — confirm acceptable for the content), the provider **API key** is stored via the AI module's Key config (secret),
-over HTTPS and AI output should be **reviewed** before use/publishing. It has no access-control role. Configure the AI
-provider.
+AI Comment Moderation is a small module that wires Drupal's core comment save cycle to OpenAI's Moderation endpoint. On comment presave it passes the comment body to a service that POSTs the text to `https://api.openai.com/v1/moderations`; if OpenAI returns `flagged: true` (hate, violence, sexual, or harassment categories) the module calls `setUnpublished()` on the comment and shows the author a warning that it was held. Configuration is a single admin form (`/admin/config/content/ai-comment-moderation`, gated by `administer site configuration`) where you store the OpenAI API key. The only dependency is the core comment module plus a valid OpenAI API key. Comment text is sent to OpenAI for classification, which has cost and data-egress implications you should confirm are acceptable for your content.
 
 ---
 
-- Moderates user comments using openai (flags/filters spam/abuse).
-- Use Drupal's AI module.
-- Assist spam / abuse prevention.
-- Send comment text to the AI provider (egress).
-- Confirm the egress is acceptable.
-- Store the API key as a secret.
-- Use HTTPS. Review AI output.
-- Have no access-control role.
-- Configure the AI provider.
-- Handle the AI feature.
-- Run the AI task.
-- Configure it.
-- Process content.
-- Handle the integration.
-- Assist users.
-- Automate with AI.
-- Generate output.
-- Secure the key.
-- Provide AI spam / abuse prevention.
+- Auto-classify new comments with OpenAI's Moderation API.
+- Unpublish comments the API flags as inappropriate.
+- Warn the author when their comment is held.
+- Screen hate, violence, sexual, and harassment content.
+- Keep public comment sections cleaner on blogs and forums.
+- Reduce manual moderation on community and news sites.
+- Store the OpenAI API key on a dedicated settings form.
+- Integrate with the core Comment module without extra fields.
+- Run moderation in real time at comment save.
+- Apply moderation to any bundle that uses core comments.
+- Operate on Drupal 10 and 11.
+- Use OpenAI's classification-only Moderation endpoint (not a chat model).
+- Configure with a single API key and no other options.
+- Add a lightweight moderation gate to educational or forum sites.
+- Complement human review rather than replace it.
+- Provide a minimal starting point for OpenAI comment moderation.

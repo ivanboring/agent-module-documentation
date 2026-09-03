@@ -1,16 +1,16 @@
 {
   "name": "AI AutoEvals",
   "data_name": "ai_autoevals",
-  "description": "Automated factuality evaluation of AI responses using a two-step LLM evaluation.",
+  "description": "Automated two-step LLM factuality evaluation of AI responses: extract expected criteria from the user input, then grade the AI response against them via a queued evaluation worker.",
   "version": "1.0.x",
-  "package": null,
+  "package": "AI",
   "composer_namespace": "drupal/ai_autoevals",
   "composer_requirements": {},
   "dependent_modules": [
     "ai:ai",
     "key:key"
   ],
-  "configure": null,
+  "configure": "ai_autoevals.settings_form",
   "core_version_requirement": "^10.2 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -23,12 +23,14 @@
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "FactExtractor"
+  ],
   "categories": [
     "Artificial Intelligence (AI)"
   ],
   "subcategories": [
-    "AI tooling / function calling"
+    "AI content risk analysis"
   ],
   "keywords": [
     "ai",

@@ -1,14 +1,16 @@
 {
   "name": "AI Content Assistant",
   "data_name": "ai_content_assistant",
-  "description": "Provides ai-powered content generation using reusable prompt patterns.",
+  "description": "AI-powered content generation using paragraphs",
   "version": "1.0.x",
   "package": "AI",
   "composer_namespace": "drupal/ai_content_assistant",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.0"
+  },
   "dependent_modules": [
-    "drupal:node",
-    "ai:ai"
+    "node",
+    "ai"
   ],
   "configure": null,
   "core_version_requirement": "^11",
@@ -19,25 +21,34 @@
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [],
+  "submodules": [
+    "ai_content_assistant_mcp"
+  ],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Artificial Intelligence (AI)"
+    "Artificial Intelligence (AI)",
+    "Content editing experience"
   ],
   "subcategories": [
-    "Content generation"
+    "AI image & video generation",
+    "AI tooling / function calling",
+    "Structured content / page building",
+    "Entity creation links"
   ],
   "keywords": [
     "ai",
-    "content",
-    "assistant",
-    "generation",
-    "prompts"
+    "content generation",
+    "paragraphs",
+    "node",
+    "llm",
+    "text-to-image",
+    "structured content",
+    "content authoring"
   ],
-  "project_description": "Write content faster using AI. This module lets editors generate structured Drupal content from simple prompts, directly inside the editing experience.\n\n You can also try it on Drupal Starter , where it's already integrated.",
+  "project_description": "AI Content Assistant generates complete, unpublished Drupal nodes from a short text prompt. It inspects the target content type's field schema — node fields plus any Paragraphs reference fields and their sub-paragraphs — builds a schema-aware system prompt, asks the configured AI (drupal/ai) chat provider to return structured JSON, and maps that JSON back onto real entity values: node fields, nested paragraphs, entity references (validated against the field's selection handler), links (URI-scheme filtered), formatted text (basic_html/plain_text), and images generated on the fly via a text_to_image provider. A \"Generate with AI\" link is added to /node/add and a form lives at /node/add/ai-generate. Administrators can annotate each content type with a free-form description that is fed to the AI for better results. An optional submodule (ai_content_assistant_mcp) exposes the same capability as Model Context Protocol tools so AI clients such as Claude can plan and create draft content directly.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

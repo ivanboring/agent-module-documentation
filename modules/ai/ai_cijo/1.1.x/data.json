@@ -1,16 +1,16 @@
 {
   "name": "AI Content Intent & Journey Orchestrator",
   "data_name": "ai_cijo",
-  "description": "AI-driven intent detection and journey-based orchestration of blocks and content.",
+  "description": "Pluggable visitor-intent detection with journey-mapping orchestration of blocks, view filters, layout variant, and CTA; includes an admin explainability/simulation tool.",
   "version": "1.1.x",
-  "package": null,
+  "package": "AI",
   "composer_namespace": "drupal/ai_cijo",
   "composer_requirements": {},
   "dependent_modules": [
     "drupal:block",
     "drupal:views"
   ],
-  "configure": null,
+  "configure": "ai_cijo.settings",
   "core_version_requirement": "^11",
   "active_installs": null,
   "list_position": null,
@@ -23,12 +23,15 @@
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "IntentDetector"
+  ],
   "categories": [
-    "Artificial Intelligence (AI)"
+    "Artificial Intelligence (AI)",
+    "Content display"
   ],
   "subcategories": [
-    "AI agents / taskable AI"
+    "Visibility conditions"
   ],
   "keywords": [
     "ai",

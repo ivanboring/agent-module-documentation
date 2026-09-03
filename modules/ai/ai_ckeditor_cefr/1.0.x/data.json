@@ -1,9 +1,9 @@
 {
   "name": "AI CKEditor CEFR",
   "data_name": "ai_ckeditor_cefr",
-  "description": "Adds a CEFR-level rewrite plugin to the AI CKEditor integration.",
+  "description": "Adds a CEFR rewrite plugin for AI CKEditor.",
   "version": "1.0.x",
-  "package": null,
+  "package": "AI",
   "composer_namespace": "drupal/ai_ckeditor_cefr",
   "composer_requirements": {},
   "dependent_modules": [
@@ -20,7 +20,7 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
@@ -29,7 +29,7 @@
     "Content editing experience"
   ],
   "subcategories": [
-    "AI tooling / function calling"
+    "CKEditor plugins"
   ],
   "keywords": [
     "ai",
@@ -38,7 +38,7 @@
     "rewrite",
     "language level"
   ],
-  "project_description": "AI CKEditor CEFR adds a CEFR rewrite action to AI CKEditor in Drupal.\n\n Editors can select text in CKEditor 5, choose a target CEFR level (A1–C2), generate a rewritten version with AI, and save it back into the editor. The module is designed for readability adaptation while keeping the original meaning.\n\n Key features \n\n \n CEFR level selector in the AI dialog (A1, A2, B1, B2, C1, C2). \n Configurable default CEFR level. \n Configurable rewrite prompt per text format/plugin configuration. \n Optional taxonomy vocabulary for protected words/phrases that must remain unchanged. \n Works with AI CKEditor provider/model configuration. \n \n Use cases \n\n \n Simplifying public content for broader audiences. \n Adjusting complexity for education or accessibility needs. \n Creating consistent language-level variants during editorial workflows. \n \n Requirements \n\n \n AI module with ai_ckeditor \n Taxonomy (for optional protected words vocabulary)",
+  "project_description": "AI CKEditor CEFR adds a single AI CKEditor action plugin that rewrites the selected editor text to a chosen CEFR language level (A1-C2). It plugs into the ai_ckeditor dialog flow: the editor selects text, opens the AI Assistant, picks a target CEFR level, clicks Rewrite, and the suggested rewrite is streamed back into a response field that can be saved into CKEditor 5.\n\nThe plugin (Drupal\\ai_ckeditor_cefr\\Plugin\\AiCKEditor\\CefrLevel) builds a prompt from a configurable template with {{ level }}, {{ level_style_target }} and {{ protected_words_instruction }} placeholders, then hands it to the parent ai_ckeditor request pipeline, which calls the configured drupal/ai chat provider. An optional taxonomy vocabulary supplies protected terms that must be kept unchanged in the rewrite.\n\nKey features:\n- CEFR level selector in the AI dialog (A1 Beginner through C2 Proficient).\n- Configurable default CEFR level per text-format plugin configuration.\n- Editable rewrite prompt template with per-level style targets built in.\n- Optional taxonomy vocabulary for protected words/phrases.\n- Per-plugin AI provider/model selection (or the AI module chat default).\n\nRequirements: the AI module's ai_ckeditor submodule and core taxonomy. Rewrites run through the configured AI provider and incur provider usage cost.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

@@ -5,12 +5,14 @@
   "version": "2.0.x",
   "package": "AI",
   "composer_namespace": "drupal/ai_content_chat",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.0"
+  },
   "dependent_modules": [
     "drupal:block",
     "ai:ai"
   ],
-  "configure": null,
+  "configure": "ai_content_chat.settings",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -18,7 +20,10 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "smalot/pdfparser": "Required for extracting text from PDF files (^2.0)",
+    "phpoffice/phpword": "Required for extracting text from DOCX files (^1.0)"
+  },
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
@@ -28,7 +33,7 @@
     "Artificial Intelligence (AI)"
   ],
   "subcategories": [
-    "AI agents / taskable AI"
+    "LLM content discovery"
   ],
   "keywords": [
     "ai",
