@@ -1,13 +1,13 @@
 {
   "name": "Bothive Chatbot",
   "data_name": "bothive",
-  "description": "Integrates the Bothive (bothive.be) chatbot into Drupal.",
+  "description": "Chatbot integration for Drupal using bothive.be",
   "version": "1.0.x",
-  "package": null,
+  "package": "Chatbot",
   "composer_namespace": "drupal/bothive",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "bothive.configuration",
   "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -19,7 +19,7 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Integrations"
@@ -34,7 +34,7 @@
     "integration",
     "support"
   ],
-  "project_description": "The Bothive chatbot module embeds the chatbot widget from https://bothive.be and allows you to configure it.\n\n In order for you to use this module you'll need to have a valid API key and have your website whitelisted as an allowed domain to be able to embed the chatbot.\n\n Features \n \n Specify on which pages the chatbot is displayed. \n Load the bot in a hidden state so you can decide when it's displayed or not with JavaScript. \n \n Resources \n \n Full documentation is available: Bothive chatbot \n For a complete list of features and functionalities visit: https://bothive.be \n \n Notes / Known Issues \n \n You can sign up for a free account on https://bothive.be but you'll be limited in the amount of configuration options and features available to you. \n This module is not developed nor maintained by anyone from Bothive. \n \n Credits \n Initial development and currently maintained by Bram Driesen.\n\n Back to top",
+  "project_description": "The Bothive Chatbot module embeds the third-party chatbot widget from https://bothive.be into a Drupal site and lets an administrator configure it. It loads the external widget script (https://widget.bothive.be) and initialises it with an API key, obtained from the Bothive dashboard. A valid API key and a Bothive account with the site's domain whitelisted are required for the widget to appear. The module adds an admin configuration form (Administration » Configuration » System » Bothive) where you set the API key, toggle browser-console logging, load the bot in a hidden state (to open it later with your own JavaScript), and restrict the pages it appears on using the Drupal core request_path visibility condition. This module is not developed nor maintained by Bothive itself; it is a community integration by Bram Driesen, sponsored by Tobania.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

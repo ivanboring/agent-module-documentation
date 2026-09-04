@@ -3,10 +3,14 @@
   "data_name": "br_address_field",
   "description": "Brazillian Address Field with postal code consult",
   "version": "2.x",
-  "package": null,
+  "package": "7Links",
   "composer_namespace": "drupal/br_address_field",
-  "composer_requirements": {},
-  "dependent_modules": [],
+  "composer_requirements": {
+    "drupal/mask": "^2.0@alpha"
+  },
+  "dependent_modules": [
+    "mask"
+  ],
   "configure": null,
   "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
@@ -19,22 +23,26 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content"
+    "Content display"
   ],
   "subcategories": [
-    "Fields"
+    "Fields",
+    "Field formatters",
+    "Form widgets / select UI"
   ],
   "keywords": [
     "address",
     "brazil",
     "cep",
     "postal code",
+    "correios",
+    "viacep",
     "field"
   ],
-  "project_description": "This defines a new field type to store brazilian postal adresses according to\n\nrecommendations of the brazilian postal service company, Correios. The address\n\nconsists of the following fields:\n\n * Thoroughfare (Logradouro): type and name of the thoroughfare\n\n * Number (Número): the number of thoroughfare\n\n * Complement (Complemento): apartment number and/or another info\n\n * Neighborhood (Bairro)\n\n * City (Cidade)\n\n * State (Estado)\n\n * Postal code (CEP)\n\n Sponsored by 7Links Web Solutions \n\n Additional feature \n It fill automatically the address fields through postal code consuming the webservice viacep.com.br",
+  "project_description": "Defines a single-value Brazilian postal-address field type (br_address_field_type) storing seven columns (postal_code/CEP, thoroughfare/logradouro, number, street_complement, neighborhood/bairro, city, and a two-letter state/UF). Its widget (br_address_widget_type) renders one textfield per part plus a 27-option state select, and optionally auto-fills thoroughfare, neighborhood, city and state from the entered CEP by querying the public ViaCEP web service over an AJAX change event. Nine field formatters output either the whole address (br_address_plain_formatter, via the br_address_field theme/Twig template) or a single part (postal code, thoroughfare, number, complement, neighborhood, city, state initials, or full state name). Widget settings toggle CEP auto-fill, an optional details container, and per-part required flags; the plain formatter can show the state as initials or full name. Sponsored by 7Links Web Solutions.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

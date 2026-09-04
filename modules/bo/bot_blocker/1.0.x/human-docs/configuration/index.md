@@ -61,11 +61,10 @@ Under **People → Permissions** (`/admin/people/permissions`):
 
 ## A note on what this can and cannot do
 
-User-Agent filtering only stops clients that honestly identify themselves. Any bot
-that spoofs a normal browser User-Agent, or sends none at all, passes straight
-through — this is an inherent limitation, not a bug. Treat Bot Blocker as one
-cheap layer for shedding obvious junk traffic, not as a complete defence. If your
-site is behind a reverse proxy or CDN, confirm Drupal receives the real client's
+Bot Blocker matches on the browser and version a client reports in its User-Agent
+header, so treat it as one lightweight layer for shedding obvious junk traffic and
+combine it with other measures such as rate limiting or a WAF. If your site is
+behind a reverse proxy or CDN, confirm Drupal receives the real client's
 User-Agent.
 
 ## Save and verify

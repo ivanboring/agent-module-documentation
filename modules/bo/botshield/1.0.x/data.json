@@ -1,20 +1,27 @@
 {
   "name": "BotShield",
   "data_name": "botshield",
-  "description": "Bot classification, rate limiting, blocking, geo enrichment and reporting.",
+  "description": "Bot classification, rate limiting, blocking, geo enrichment and reporting via an HTTP middleware.",
   "version": "1.0.x",
   "package": "Security",
   "composer_namespace": "drupal/botshield",
-  "composer_requirements": {},
-  "dependent_modules": [],
+  "composer_requirements": {
+    "geoip2/geoip2": "^3.3"
+  },
+  "dependent_modules": [
+    "file",
+    "system"
+  ],
   "configure": "botshield.settings",
-  "core_version_requirement": "^10.3||^11",
+  "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/botshield",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "geoip2/geoip2"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
@@ -25,16 +32,19 @@
     "Security"
   ],
   "subcategories": [
-    "Spam / bot protection"
+    "Rate limiting / throttling",
+    "CAPTCHA / bot protection"
   ],
   "keywords": [
     "bot",
     "rate limiting",
     "blocking",
+    "flood control",
+    "geoip",
     "botshield",
     "security"
   ],
-  "project_description": "BotShield helps Drupal sites detect bot traffic, apply per-bot/IP rate limits or blocks, enrich events with geo data, and provide reports to safely tune crawler access.\n\n BotShield is a Drupal module that gives site administrators visibility and control over automated traffic. It classifies bots, enforces configurable policies, and provides reports for safe tuning.\n\n Features \n \n Classifies known and custom bots using User-Agent rules. \n Supports per-bot actions: allow , rate_limit , and block . \n Supports IP/CIDR rules and override file support for always-allow IPs. \n Adds path-group rules and per-group thresholds. \n Includes flood safety-net controls, including stricter unknown-bot handling. \n Enriches events with geo data from headers, GeoLite2 MMDB, and optional free API fallback. \n Provides report pages: dashboard, status, log, map, and alerts. \n Supports customizable 429 response messaging. \n Includes retention cleanup via cron. \n \n Use cases \n \n High-traffic sites needing crawler control without blocking all bots. \n Editorial/operations teams needing visibility into bot behavior and origin. \n Sites that want Drupal-native bot controls and reporting. \n \n Post-Installation \n \n Grant permissions at /admin/people/permissions :\n \n administer botshield for settings managers. \n view botshield reports for report viewers. \n \n \n Configure BotShield at /admin/config/system/botshield . \n Start with Traffic scope = anonymous while tuning. \n Set thresholds, flood controls, and bot policies. \n If using MMDB upload, configure $settings['file_private_path'] and upload GeoLite2-City.mmdb . \n Verify dependencies and health at /admin/reports/botshield/status . \n Tune behavior with /admin/reports/botshield/log and /admin/reports/botshield/map . \n Review setup guidance at /admin/reports/botshield/help . \n Ensure cron runs for retention cleanup. \n \n Additional Requirements \n \n Drupal core 10/11. \n Required core modules: file , system . \n Composer dependency for local GeoLite2 lookups: geoip2/geoip2 . \n Private files configured for MMDB and override-file uploads. \n Optional outbound HTTP access if free API geo fallback is enabled. \n Mail transport configured if alert email is enabled. \n \n Recommended modules/libraries \n \n Redis module (plus cache-bin mapping) for better performance at scale. \n An SMTP/mail module for reliable alert delivery. \n Drush for cache clear and cron operations. \n GeoLite2 City MMDB for improved geo coverage. \n \n Similar projects \n \n CAPTCHA/Honeypot modules focus on form spam; BotShield focuses on request-level bot traffic across routes. \n Manual IP ban tools are static/manual; BotShield adds automated per-bot and per-group enforcement. \n Edge/CDN bot controls are external; BotShield provides Drupal-native policy logic and reporting. \n \n Community Documentation \n \n Project README (installation, settings, dependencies). \n In-module guide: /admin/reports/botshield/help . \n Back to top",
+  "project_description": "BotShield is a request-level bot mitigation module for Drupal 10.3+/11. A single stack middleware (priority 250) classifies each request's User-Agent against configurable regex rules, applies per-bot and per-IP/CIDR policies (allow / rate_limit / block), enforces path-group and site-wide flood-control safety nets via the core Flood API, and temporarily blocks abusive client IPs with a customizable HTTP 429 response. Events are logged to dedicated database tables and enriched with geolocation from CDN headers, a local GeoLite2 MMDB (geoip2/geoip2), or an optional throttled free geo API. Admin report pages provide a dashboard, status/health check, filterable event log, a Leaflet map, and flood-alert history (watchdog/email/Slack). Configuration lives in botshield.settings and is gated by the 'administer botshield' permission; report pages require 'view botshield reports'. Retention cleanup runs on cron. Intended for high-traffic sites that need Drupal-native visibility and control over crawlers and automated traffic without blocking all bots.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

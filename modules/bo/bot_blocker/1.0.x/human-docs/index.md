@@ -16,14 +16,15 @@ Opera, and Internet Explorer, and blocks the request if that version is at or
 below the minimum you set for that browser family. Blocked requests get a
 configurable HTML page returned as either **403 Forbidden** or **410 Gone**.
 
-Be honest with yourself about the limits of User-Agent filtering. It is trivially
-bypassed by any client that spoofs or omits its User-Agent, so it stops lazy,
-honest bots — not determined ones. It does **not** look at IP addresses, do
-reverse DNS, or download any remote bad-bot list (it makes no outbound
-connections). If your site sits behind a reverse proxy or CDN, make sure Drupal
-sees the real client's User-Agent header, and remember that blocking here happens
-in PHP, after the request reaches Drupal. Also mind the version floors: set them
-too high and you will block legitimate visitors on slightly old browsers.
+Bot Blocker matches on the browser and version a client reports in its
+User-Agent header. It does **not** look at IP addresses, do reverse DNS, or
+download any remote bad-bot list (it makes no outbound connections), so treat it
+as one lightweight layer for shedding obvious junk traffic and combine it with
+other measures such as rate limiting or a WAF. If your site sits behind a
+reverse proxy or CDN, make sure Drupal sees the real client's User-Agent header,
+and remember that blocking here happens in PHP, after the request reaches
+Drupal. Also mind the version floors: set them too high and you will block
+legitimate visitors on slightly old browsers.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token-cheap references for an AI coding agent, read the sibling

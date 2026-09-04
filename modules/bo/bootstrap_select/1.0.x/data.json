@@ -1,25 +1,27 @@
 {
   "name": "Bootstrap select picker",
   "data_name": "bootstrap_select",
-  "description": "Renders option/select fields with the bootstrap-select JavaScript widget.",
+  "description": "Field widget that renders option/entity-reference fields with the third-party bootstrap-select jQuery dropdown.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/bootstrap_select",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^8.8||^9||^10||^11",
+  "core_version_requirement": "^8.8.0 || ^9.0 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/bootstrap_select",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "bootstrap-select 1.13.18 (external, snapappointments/bootstrap-select; loaded via jsDelivr CDN or /libraries/bootstrap-select)"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"
@@ -29,12 +31,13 @@
   ],
   "keywords": [
     "bootstrap-select",
-    "select",
-    "widget",
+    "selectpicker",
+    "field widget",
     "dropdown",
-    "options"
+    "options",
+    "entity_reference"
   ],
-  "project_description": "3rd party js selectpicker bootstrap-select form widget for Bootstrap themed sites. Library will be loaded by default via CDN.\n\nBut the module will check if you have a local copy in web/libraries/bootstrap-select and use it instead.\n\n This module implements the js package bootstrap-select a jQuery plugin for bootstrap sites. The widget is suitable for most option fields like (list_integer, list_float, list_string, entity_reference)\n\n Implemented Options \n \n Live search \n Actions box \n Placeholder \n Header \n Selected text format \n \n If you need another option just add a feature request.\n\n Dependencies: \n Bootstrap v4's requirements \n\n I want to use my local bootstrap-select files \n You can download the library manually via Github or use asset packagist https://asset-packagist.org/ in your composer.json\n\nAdd the following to your project composer.json in the \"repositories\" section.\n\n \n\n\"repositories\": [\n\n {\n\n \"type\": \"composer\",\n\n \"url\": \"https://asset-packagist.org\"\n\n }\n\n]\n\n \n\nMake sure you have required the oomphinc/composer-installers-extender package.\n\nAdd the following to your project composer.json in the \"extra\" section.\n\n \"installer-types\": [\n\n \"bower-asset\",\n\n \"npm-asset\"\n\n ],\n\n \"installer-paths\": {\n\n \"web/libraries/{$name}\": [\"type:drupal-library\", \"type:npm-asset\"],\n\n } \n\nNow you can composer require npm-asset/bootstrap-select \n\n Back to top",
+  "project_description": "3rd party js selectpicker bootstrap-select form widget for Bootstrap themed sites. The bootstrap-select library is loaded by default via the jsDelivr CDN, but the module checks for a local copy at web/libraries/bootstrap-select and uses that instead when present.\n\nThe module ships a single field widget (bootstrap_select_widget) suitable for most option fields: list_integer, list_float, list_string and entity_reference. It exposes the widget's common options through the Manage form display UI: Live search, Actions box (Select All / Deselect All), Placeholder, Header, and Selected text format (value vs count with a count template). It has no menu, no permissions and no site-wide settings; configuration is per-field on the form-display. Depends on Bootstrap v4 being present in the active theme.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

@@ -3,7 +3,7 @@
   "data_name": "branch_menu",
   "description": "Renders a Drupal menu as a visual branching tree graph.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Custom",
   "composer_namespace": "drupal/branch_menu",
   "composer_requirements": {},
   "dependent_modules": [],
@@ -14,27 +14,30 @@
   "project_url": "https://www.drupal.org/project/branch_menu",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": ["d3 (v7, loaded external via jsDelivr CDN)"],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"
   ],
   "subcategories": [
-    "Charts / data visualization"
+    "Charts / data visualization",
+    "Navigation menus"
   ],
   "keywords": [
     "menu",
     "tree",
     "graph",
     "visualization",
-    "navigation"
+    "navigation",
+    "d3",
+    "block"
   ],
-  "project_description": "A custom Drupal 11 module that renders standard menus as polygonal tree graph using D3.js. \n\n Technical Overview \n\n The Branch Menu module provides a custom block that recursively extracts up to 6 levels of menu links and injects them into a frontend JavaScript environment. The frontend utilizes D3.js to dynamically draw a geometric, downward-flowing tree graph without overlapping nodes.\n\n Features \n\n* **Dynamic Block Configuration:** Select which Drupal menu to render directly from the block layout UI.\n\n* **Polygonal Path Generation:** Overrides standard D3 curves with strict algorithmic rules to create architectural, angular branches (40% to 60% mid-point elbows).\n\n* **Anti-Overlap Logic:** Employs a cascading Y-axis coordinate calculation, ensuring child nodes strictly flow downward and siblings never overlap.\n\n* **Dynamic Typography Placement:** Text anchors automatically flip (left/right) based on the branch direction to prevent intersecting lines.\n\n* **SVG Animations:** Includes hardware-accelerated SVG scaling (`transform-box: fill-box`) and stroke-width transitions on hover.\n\n Architecture \n\n The module is structured as follows:\n\n * `branch_menu.info.yml`: Module declaration and core requirements.\n\n* `branch_menu.libraries.yml`: Dependency management (loads D3.js v7 via CDN and local assets).\n\n* `src/Plugin/Block/BranchMenuBlock.php`: Backend logic to load `MenuLinkTreeInterface`, extract hierarchy, and pass variables to `drupalSettings`.\n\n* `js/branch_menu.js`: Core D3.js logic calculating layout, Bounding Box (viewBox), and SVG paths.\n\n* `js/branch_animations.js`: Event listeners handling non-destructive `mouseenter` and `mouseleave` CSS transitions.\n\n* `css/branch_menu.css`: Base visual styles, crisp-edge rendering, and animation curves.\n\n branch_menu/\n\n├── branch_menu.info.yml\n\n├── branch_menu.libraries.yml\n\n├── branch_menu.module\n\n├── README.md\n\n├── css/\n\n│ └── branch_menu.css\n\n├── js/\n\n│ ├── branch_menu.js\n\n│ └── branch_animations.js\n\n└── src/\n\n └── Plugin/\n\n └── Block/\n\n └── BranchMenuBlock.php\n\n Installation \n\n 1. Place the `branch_menu` folder in your project's `web/modules/custom/` directory.\n\n2. Enable the module via Drush (`drush en branch_menu`) or the Extend interface.\n\n3. Navigate to **Structure > Block layout**.\n\n4. Place the **\"Branch Menu Graph\"** block in your desired region.\n\n5. In the block configuration, select the menu you wish to render.\n\n6. Ensure your selected menu has its parent links set to **\"Show as expanded\"** to allow deep rendering.\n\n Dependencies \n\n * Drupal Core ^11\n\n* D3.js v7 (Loaded externally via jsDelivr CDN by default)",
+  "project_description": "Branch Menu is a single-block Drupal 11 module that renders any site menu as a downward-flowing, polygonal tree graph drawn with D3.js (v7, loaded from the jsDelivr CDN). The block plugin (id branch_menu_block, admin label 'Branch Menu Graph', category 'Custom') loads the selected menu's link tree up to 6 levels deep via core's menu.link_tree service, flattens it into a nested title/url/children array, and passes it to the browser through drupalSettings.branchMenu.treeData. The frontend JavaScript (js/branch_menu.js) computes an anti-overlap layout, draws angular SVG branch paths and per-node anchors/labels, while js/branch_animations.js adds hover scale/stroke transitions. Configuration is per block instance: a single 'Select Menu' dropdown chosen in Block layout. The module ships no routes, permissions, config schema, services, or install hooks of its own; it only implements hook_help.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
