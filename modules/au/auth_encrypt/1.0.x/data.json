@@ -1,40 +1,43 @@
 {
   "name": "Auth Encrypt",
   "data_name": "auth_encrypt",
-  "description": "Encrypts and decrypts authentication credentials to protect them in transmission/storage. Verify the key management is sound.",
+  "description": "Client-side AES-256 encryption of password (and login username) fields on Drupal's login, register, and user-edit forms, decrypted server-side via OpenSSL. Zero configuration; no admin route or permission.",
   "version": "1.0.x",
   "package": "Security",
   "composer_namespace": "drupal/auth_encrypt",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/auth_encrypt",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "crypto-js"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Security"
   ],
   "subcategories": [
-    "Encryption"
+    "Login page protection"
   ],
   "keywords": [
     "auth",
     "encrypt",
     "credentials",
-    "encryption",
-    "security"
+    "aes",
+    "cryptojs",
+    "login"
   ],
-  "project_description": "Adds AES-256 client-side encryption to authentication forms (login, registration, user edit) with automatic server-side decryption. Uses per-form session keys for enhanced security and includes detailed logging for security auditing.\n\n Features \n \n Zero configuration - works out of the box \n Encrypts passwords and usernames before transmission \n Per-form, per-session encryption keys with server validation \n Security event logging (key mismatches, decryption failures) \n Supports CDN or local CryptoJS installation \n Compatible with standard Drupal forms \n \n Requirements \n \n PHP OpenSSL extension \n CryptoJS library (auto-loaded from CDN or place in /libraries/crypto-js ) \n \n Installation \n \n Install module as usual \n Module automatically attaches to login, registration, and user edit forms \n Optional: Place CryptoJS in /libraries/crypto-js to avoid CDN dependency \n Back to top",
+  "project_description": "Auth Encrypt encrypts authentication credentials in the browser before they leave the form and decrypts them on the server. It attaches to the core login, registration, and user-edit forms, encrypting the password fields (and the username on login) with CryptoJS AES-256-CBC using a per-form, per-session key that Drupal generates server-side and embeds in the form as a hidden field. On submit, a validation callback re-derives the key, decrypts the fields with OpenSSL, and passes plaintext to core's normal authentication. Key mismatches and decryption failures are logged. The module is zero-configuration (no settings form, no permission, no dependencies) and loads CryptoJS from a CDN or from a local /libraries/crypto-js copy.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "not-covered",

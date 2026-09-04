@@ -1,21 +1,21 @@
 {
-  "name": "Authenticate by Mail",
+  "name": "Authenticate by mail",
   "data_name": "authenticate_by_mail",
-  "description": "Replaces password login with a mailed one-time login link. Uses core's user_pass_rehash + hash_equals + expiry (secure).",
+  "description": "Replaces the standard Drupal user login flow with one that requires users to log in with a link that is mailed to them.",
   "version": "1.1.x",
   "package": null,
   "composer_namespace": "drupal/authenticate_by_mail",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:user"
+    "user"
   ],
-  "configure": null,
-  "core_version_requirement": "^10.1||^11",
+  "configure": "authenticate_by_mail.settings",
+  "core_version_requirement": "^10.1 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/authenticate_by_mail",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
@@ -27,14 +27,15 @@
     "Access control"
   ],
   "subcategories": [
-    "Authentication"
+    "External authentication"
   ],
   "keywords": [
     "authenticate",
     "email",
     "passwordless",
     "login",
-    "magic link"
+    "magic link",
+    "one-time login"
   ],
   "project_description": "Back to top \n\n Introduction \n This module aims to allow users to log in using a one-time login link sent to their account's registered e-mail address. In doing so, this module effectively moves the burden of Drupal account security to each user's mailbox provider.\n\n Back to top \n\n Compatibility notice \n This module is incompatible with any project that alters, or otherwise depends on, Drupal's password-based authentication, user login form, or password reset form. As an example, the HTTP Basic Authentication module provided by Drupal core is incompatible with this module.\n\n When installed alongside an incompatible project, the behavior of this module is undefined.\n\n Back to top \n\n Configuration \n This module can be configured at Configuration → People → Authenticate by mail.\n\n Back to top",
   "maintenance_status": "Actively maintained",

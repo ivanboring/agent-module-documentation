@@ -1,25 +1,29 @@
 {
   "name": "Authorise.Net CIM Manager",
   "data_name": "authnet_cim_manager",
-  "description": "Creates and updates Authorize.Net Customer Information Manager (CIM) payment profiles.",
+  "description": "Provides a block form that creates Authorize.Net Customer Information Manager (CIM) customer payment profiles from entered card and billing details.",
   "version": "1.0.x",
   "package": "Other",
   "composer_namespace": "drupal/authnet_cim_manager",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "authorizenet/authorizenet": "^2.0"
+  },
   "dependent_modules": [],
-  "configure": null,
+  "configure": "authnet_cim_manager.settings",
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/authnet_cim_manager",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "authorizenet/authorizenet"
+  ],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "E-commerce"
@@ -31,10 +35,10 @@
     "authorize.net",
     "cim",
     "payment",
-    "commerce",
-    "profiles"
+    "customer profile",
+    "credit card"
   ],
-  "project_description": "The AuthNet CIM Manager module simplifies the creation and management of Customer Information Manager (CIM) profiles on Authorize.Net for Drupal websites. Easily capture and manage customer details to streamline payment processing and enhance security.\n\n Features \n \n Basic Functionality : Capture and store customer details directly on Authorize.Net. \n Unique Features : Seamless integration with Drupal, efficient creation of CIM profiles, enhanced security for payment processing. \n Use Cases : Perfect for businesses needing to securely manage customer information and streamline payment processing on Drupal websites. \n \n Post-Installation \n After installing the module, follow these steps to configure it and start using it effectively:\n\n \n Access Configuration Page : Go to the modules configuration page in your Drupal administration interface. \n Set Authorize.Net API Key : Enter your Authorize.Net API key in the designated field to establish the connection with Authorize.Net. \n Place CIM Creation Form : The module provides a CIM creation form as a block. Place this block anywhere on your website to allow users to fill in customer details and create CIM profiles effortlessly \n \n Additional Requirements \n This project requires the Authorize.Net PHP SDK, which is automatically installed via Composer during setup.\n\n Recommended modules/libraries \n No additional modules or libraries are needed for this project.\n\n Back to top",
+  "project_description": "The AuthNet CIM Manager module facilitates smooth integration with the Authorize.Net Customer Information Manager (CIM) for Drupal websites. It ships a single front-end form (exposed as a block and a route) that collects a customer's credit-card and billing details and, on submit, calls the Authorize.Net PHP SDK to create a CustomerProfile with an attached CustomerPaymentProfile on the merchant's Authorize.Net account. A newly created payment profile is validated with the SDK's ValidateCustomerPaymentProfile call and, if validation fails, the just-created profile is deleted again. A settings form stores the Authorize.Net API login ID, transaction key and the target environment (development/sandbox or production). The module does not store the created profile IDs in Drupal, provides no listing/charge/delete UI, and depends on the authorizenet/authorizenet Composer package (installed automatically via Composer). Requires no additional Drupal modules.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

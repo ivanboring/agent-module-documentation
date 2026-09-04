@@ -1,7 +1,7 @@
 {
   "name": "Auto entity form mode",
   "data_name": "auto_entity_form_mode",
-  "description": "Automatically registers entity form modes so they can be used in custom code.",
+  "description": "Automatically registers custom entity form modes as usable form handler classes, so custom code can build them without a hook.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/auto_entity_form_mode",
@@ -19,13 +19,13 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
   ],
   "subcategories": [
-    "Entity API utilities"
+    "Entity API"
   ],
   "keywords": [
     "form mode",

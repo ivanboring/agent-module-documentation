@@ -1,16 +1,16 @@
 {
-  "name": "Auto Link",
+  "name": "Auto Link Field Formatter",
   "data_name": "auto_link",
-  "description": "A field formatter that automatically turns URLs/text into links.",
+  "description": "A field formatter that converts plain-text URLs in string/text fields into clickable links on the entity display.",
   "version": "1.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/auto_link",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:filter"
+    "filter"
   ],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/auto_link",
@@ -21,7 +21,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"
@@ -34,9 +34,10 @@
     "url",
     "formatter",
     "links",
-    "filter"
+    "field formatter",
+    "layout builder"
   ],
-  "project_description": "Auto Link Formatter for Drupal Layout Builder \n \n This module provides a Field Formatter for the core Drupal Layout Builder ,\n\n allowing plain text fields to automatically convert URLs into clickable hyperlinks.\n\n The formatter, called \"Auto Link\" , includes an option to set the target for the links\n\n (e.g., open in a new tab).\n\n \n The module detects and replaces URLs that start with http* or www.* ,\n\n while preserving new lines in plain text fields.\n\n Features \n \n Automatically converts URLs in plain text fields into hyperlinks. \n Optionally set links to open in a new tab. \n \n Installation & Usage \n \n Navigate to the content type where you want to use the formatter. \n Click Manage Display → Manage Layout . \n Select the block containing the plain text field. \n Click Configure and choose \"Auto Link\" from the Field Formatter list (likely set to \"Plain Text\" by default). \n \n Additional Requirements \n None.\n\n Support & Contributions \n \n If you’d like to contribute, report an issue, or request a feature,\n\n please create an issue in the module’s repository.",
+  "project_description": "Auto Link Field Formatter provides a single core Field Formatter plugin, 'auto_link_formatter' (label 'Auto Link (Convert URLs to Links)'), that renders string and text fields with their plain-text URLs turned into clickable anchor tags. It scans each field value for substrings beginning with http://, https:// or www. and wraps them in <a> tags (bare www. links are prefixed with http://), preserving line breaks via nl2br(). The formatter has one setting, 'Open links in new tab' (default on), which adds target=\"_blank\" and always emits rel=\"noopener noreferrer\". It targets the string, string_long, text and text_long field types and is selectable per view-display on Manage display and inside Layout Builder. The module declares a dependency on core Filter but ships no filter plugin, no permissions, no routes, no services, no Drush commands and no config schema of its own.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

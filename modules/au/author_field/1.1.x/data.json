@@ -1,13 +1,17 @@
 {
   "name": "Author Field",
   "data_name": "author_field",
-  "description": "Provides fields that store author information associated with an ORCID identifier.",
+  "description": "Provides an 'author_field' field type storing researcher metadata (given/family name, email, organization, ORCID ID) with ORCID public-API autocomplete and configurable display formatters.",
   "version": "1.1.x",
   "package": "general",
   "composer_namespace": "drupal/author_field",
-  "composer_requirements": {},
-  "dependent_modules": [],
-  "configure": null,
+  "composer_requirements": {
+    "drupal/jquery_ui_tooltip": "^2.1"
+  },
+  "dependent_modules": [
+    "jquery_ui_tooltip"
+  ],
+  "configure": "author_field.admin_settings",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -19,14 +23,16 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience",
     "Integrations"
   ],
   "subcategories": [
-    "Field formatters"
+    "Fields",
+    "Field formatters",
+    "Semantic metadata"
   ],
   "keywords": [
     "orcid",

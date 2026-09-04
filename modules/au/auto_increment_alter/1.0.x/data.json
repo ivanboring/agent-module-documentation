@@ -1,16 +1,16 @@
 {
   "name": "AUTO_INCREMENT Alter",
   "data_name": "auto_increment_alter",
-  "description": "Lets administrators alter the AUTO_INCREMENT value of database tables (MySQL).",
+  "description": "Alter the AUTO_INCREMENT value of MySQL database tables, via an admin UI, a service and Drush commands.",
   "version": "1.0.x",
   "package": "Other",
   "composer_namespace": "drupal/auto_increment_alter",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:mysql"
+    "mysql"
   ],
   "configure": "auto_increment_alter.list_tables",
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/auto_increment_alter",
@@ -21,7 +21,7 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": true,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
@@ -34,9 +34,10 @@
     "database",
     "mysql",
     "alter",
-    "id"
+    "id",
+    "upgrade"
   ],
-  "project_description": "This module allows altering the AUTO_INCREMENT value of database tables.\n\n One use case is to prevent entity ID conflicts when performing Drupal upgrades.\n\n See https://www.udrupal.com/auto-increment-alter-documentation \n\n REQUIREMENTS \n At the moment the module only works with the MySQL driver. The core drupal:mysql module must be enabled.\n\n CONFIGURATION / USAGE \n The module provides a auto_increment_alter.mysql service , an admin interface (since alpha 5), and Drush commands offering the following functionality:\n\n * Alter the AUTO_INCREMENT value for a single table. \n\n drush auto-increment-alter:table node 500 \n\n * Alter the AUTO_INCREMENT value of multiple tables based on the auto_increment_alter_tables setting. \n\n drush auto-increment-alter:tables \n\n This expects an auto_increment_alter_tables setting containing an associative array of table and value pairs. The keys should be the name of the table to alter. The array values should be integers containing the new AUTO_INCREMENT value. For example:\n\n <?php\n\n$settings['auto_increment_alter_tables'] = [\n\n 'node' => 500,\n\n 'node_revision' => 1000,\n\n 'users' => 100,\n\n 'taxonomy_term_data' => 200,\n\n 'taxonomy_term_revision' => 200,\n\n 'file_managed' => 300,\n\n 'media' => 700,\n\n 'media_revision' => 700,\n\n];\n\n?>\n\n * Alter the AUTO_INCREMENT value for a single content entity \n\n drush auto-increment-alter:content-entity node 500 1000\n\ndrush auto-increment-alter:content-entity user 100\n\ndrush auto-increment-alter:content-entity taxonomy_term 200 \n\n The first parameter is the machine name content entity. The second parameter is\n\nthe AUTO_INCREMENT value for the base table. The third parameter is the\n\n AUTO_INCREMENT value for the revision table.\n\nIf the content entity uses a revision table, but the parameter is not set, the\n\nsame value from the base table shall be used. Some content entities do not\n\nmake use of revision tables. In those cases, the revision value is ignored even\n\nif set.\n\n * Alter the AUTO_INCREMENT value of content entity tables based on the auto_increment_alter_content_entities setting. \n\n drush auto-increment-alter:content-entities \n\n This expects an auto_increment_alter_content_entities setting containing an associative array of table and value pairs. If a content entity is set, but it does not exist in the current installation it will be filtered out before calling the alter operation. The base and revision tables for the content entity are identified using the entity_type.manager service.\n\n The setting's keys should be the machine name of the content entities. The array values can be set in three ways:\n\n \n An array with two integer values. The first is used for the base table and the second is used for the revision table. \n An array with one integer value. It is used for both the base and revisions tables. \n An integer value. It is used for both the base and revisions tables. \n \n Some content entities do not make use of revision tables. In those cases, the revision value is ignored even if set.\n\n <?php\n\n$settings['auto_increment_alter_content_entities'] = [\n\n 'node' => [500, 1000],\n\n 'user' => [100],\n\n 'taxonomy_term' => [200],\n\n 'file' => 300,\n\n 'media' => 700,\n\n];\n\n?>\n\n * Get the list of entities, optionally filtered by group. \n\n drush auto-increment-alter:entity-list\n\ndrush auto-increment-alter:entity-list --group=content\n\ndrush auto-increment-alter:entity-list --group=configuration \n\n * Get the list of tables. \n\n drush auto-increment-alter:table-list \n\n * Get the AUTO_INCREMENT value for a single table. \n\n drush auto-increment-alter:value node \n\n * Get the AUTO_INCREMENT value for all tables. \n\n drush auto-increment-alter:values\n\ndrush auto-increment-alter:values --all \n\n This returns table names and their corresponding AUTO_INCREMENT value. If the --all option is provided, the output will include tables that do not\n\nhave the AUTO_INCREMENT value set.\n\n See example.settings.auto_increment_alter.php for an example on how to configure the variables used by this …",
+  "project_description": "This module allows altering the AUTO_INCREMENT value of database tables. One common use case is to prevent entity ID conflicts when performing Drupal upgrades (see the core known-issues documentation on ID conflicts). At the moment the module only works with the MySQL driver, so the core drupal:mysql module must be enabled. It provides an admin interface at /admin/config/development/auto-increment-alter (added in alpha5), an auto_increment_alter.mysql service implementing AutoIncrementAlterInterface, and a set of Drush commands (auto-increment-alter:table, :tables, :content-entity, :content-entities, :value, :values, :table-list, :entity-list). Single-table and single-content-entity operations take a table/entity name and an integer value; bulk operations read the $settings['auto_increment_alter_tables'] and $settings['auto_increment_alter_content_entities'] arrays from settings.php. Content-entity operations resolve base and revision tables through the entity_type.manager service. All admin routes are gated by the 'administer auto_increment table values' permission (restrict access: true).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

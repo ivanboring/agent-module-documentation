@@ -1,42 +1,50 @@
 {
-  "name": "Augmentor: NLP Cloud",
+  "name": "NLP Cloud Augmentor",
   "data_name": "augmentor_nlpcloud",
-  "description": "integrates NLP Cloud as an Augmentor provider (NLP tasks: summarize, classify, generate).",
+  "description": "Provides integration of Augmentor with the NLP Cloud API, exposing eight NLP Cloud tasks as Augmentor plugins.",
   "version": "1.0.x",
   "package": "Augmentor",
   "composer_namespace": "drupal/augmentor_nlpcloud",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "nlpcloud/nlpcloud-client": "^1.0",
+    "drupal/augmentor": "^1.0"
+  },
   "dependent_modules": [
     "augmentor:augmentor"
   ],
   "configure": null,
-  "core_version_requirement": "^10.2||^11",
+  "core_version_requirement": "^10.2 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/augmentor_nlpcloud",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "nlpcloud/nlpcloud-client"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Artificial Intelligence (AI)"
   ],
   "subcategories": [
-    "LLM / AI provider"
+    "AI provider abstraction / LLM gateway"
   ],
   "keywords": [
     "augmentor",
     "nlp cloud",
     "nlp",
     "ai",
-    "text"
+    "text generation",
+    "summarization",
+    "classification",
+    "translation"
   ],
-  "project_description": "NLP Cloud provides cloud-based AI tools which can be used for generating and classifying content. \n\n NLP Cloud offers advantages over other well-known AI generative services:\n\n \n SaaS or on-prem solutions available \n GDPR compliant with European servers \n No retention of user data, not even for 30 days, as with other services \n Wide range of models available \n Cost-effective \n \n NLP Cloud Augmentor plugins for integrating with NLP Cloud to improve the editor experience.\n\n Augmentors provided by this module \n \n NLP Cloud Blog Post Generation \n NLP Cloud Classification \n NLP Cloud Headline generation \n NLP Cloud Keywords and keyphrases extraction \n NLP Cloud Summarization \n NLP CLoud Text generation \n NLP Cloud Translation \n \n You can check the following examples https://docs.nlpcloud.com/#endpoints and use the playground on NLP Cloud https://nlpcloud.com/home/playground/ .\n\n Installation \n Install as you would typically install a contributed Drupal module. Visit https://www.drupal.org/node/1897420 for further information.\n\n Configuration \n Configure the user permissions in Administration » People » Permissions:\n\n Administer augmentors \n\n Users with this permission will see the webservices > augmentors configuration list page. From here they can add, configure, delete, enable and disabled augmentors.\n\n Requirements \n \n Augmentor . \n \n Back to top \n\n Slack Channel 💬 \n Join #augmentor and discuss the future of Augmentor with us.\n\n Maintainers \n \n\nThis module is maintained by developers at Morpht . For more information on the company and our offerings, see morpht.com .\n\n Current maintainers: \n\n \n Eleo Basili (eleonel) - https://www.drupal.org/u/eleonel \n Naveen Valecha (naveenvalecha) - https://www.drupal.org/u/naveenvalecha \n Back to top",
+  "project_description": "NLP Cloud Augmentor provides an implementation of Augmentor plugins that let Augmentor interface with NLP Cloud's REST API. NLP Cloud serves high-performance pre-trained and custom models for NER, sentiment analysis, classification, summarization, keywords and keyphrases extraction, headline generation, text generation, blog post generation, and machine translation in 200 languages. The module ships eight Augmentor plugins (entities/NER, classification, summarization, headline generation, keywords & keyphrases extraction, text generation, blog post generation, translation) that all extend a shared NPLCloudBase and call the nlpcloud/nlpcloud-client PHP SDK. The NLP Cloud API key is stored and read through a Key entity via the Augmentor base framework, and requests go to the fixed https://api.nlpcloud.io endpoint. It depends on the Augmentor module and does not define its own routes or permissions; augmentor administration is gated by Augmentor's 'administer augmentors' permission. Maintained by developers at Morpht.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

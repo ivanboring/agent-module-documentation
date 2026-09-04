@@ -1,36 +1,39 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Auto heading ids provides a filter that automatically applies id attributes to headings in content, enabling anchor links to headings.
+Auto heading ids provides a text-format filter that automatically adds `id` attributes to h2–h6 headings in rendered content, so headings become anchor targets.
 
 ---
 
-Auto heading ids provides a text-format filter that automatically adds `id` attributes to headings
-(h2–h6) in rendered content — derived from the heading text — so headings become anchor targets (enabling
-in-page "jump to section" links, tables of contents, and deep links to sections). It is in the Custom
-package.
-
-Use it on text formats where content has headings that should be linkable. It is a content-display/filter
-feature adding IDs to output; the stored value is unchanged and it has no access-control role. Add the
-filter to the relevant text format(s).
+Auto heading ids ships a single text-format filter plugin (`heading_id_filter`,
+`HeadingIdFilter`) that parses the rendered HTML of a field, finds every `h2`–`h6` heading, and
+sets an `id` attribute derived from the heading's text (transliterated to ASCII, reduced to
+lowercase dash-separated tokens, deduplicated per fragment, truncated to 128 chars). This turns
+each heading into an in-page anchor target, enabling "jump to section" links, tables of contents,
+and deep links to specific sections. The filter is a `TYPE_TRANSFORM_IRREVERSIBLE` display filter:
+it changes only the rendered output, never the stored value, and plays no role in access control.
+It has no configuration UI, no settings, no permissions, no routes, and no dependencies beyond
+Drupal core's `filter` module. Enable it per text format on the Text formats and editors admin
+page (`/admin/config/content/formats`).
 
 ---
 
-- Add id attributes to headings.
-- Make headings anchor targets.
-- Enable jump-to-section links.
-- Derive IDs from heading text.
-- Support tables of contents.
-- Enable deep links to sections.
-- Not change stored values.
-- Have no access-control role.
-- Add to a text format.
-- Apply to h2-h6 headings.
-- Make headings linkable.
-- Auto-generate heading IDs.
-- Support in-page navigation.
-- Add anchors to headings.
-- Configure the filter.
-- Enable section anchors.
-- Link to headings.
-- Add heading identifiers.
-- Apply to text formats.
-- Generate heading anchors.
+- Add `id` attributes to h2–h6 headings automatically.
+- Make every heading in a body field an anchor target.
+- Enable in-page "jump to section" links without manual anchors.
+- Support automatically generated tables of contents that link to headings.
+- Provide deep links (URL fragments) to specific sections of a page.
+- Derive readable, slug-style IDs from the heading text.
+- Transliterate accented and non-ASCII heading text to ASCII IDs (e.g. "Ä Ö Ü" → `a-o-u`).
+- Guarantee unique IDs within a rendered fragment (duplicate headings get `-2`, `-3`, … suffixes).
+- Truncate very long heading IDs to 128 characters.
+- Leave the stored field value unchanged (display-only transformation).
+- Apply the filter to a specific text format such as Full HTML or Basic HTML.
+- Skip `h1` headings (only h2–h6 are processed).
+- Let JavaScript or CSS target headings by their generated IDs.
+- Support anchor-link/scrollspy widgets that need heading IDs to function.
+- Improve accessibility and shareability of long-form content sections.
+- Add heading anchors to node bodies, custom blocks, and any filtered text field.
+- Combine with other filters in a format (it runs at filter weight 10).
+- Provide stable anchors for documentation-style content.
+- Avoid hand-authoring `<h2 id="...">` markup in the editor.
+- Work with WYSIWYG-authored content where editors cannot set IDs.
+- Enable "copy link to this section" affordances built on the generated IDs.

@@ -1,40 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Authenticate by Mail requires users to log in with a mailed link.
+Authenticate by mail replaces Drupal's password login with a one-time login link mailed to the user's registered address.
 
 ---
 
-Authenticate by Mail **replaces the standard password login with a mailed one-time login link** — the user
-enters their email and receives a link that logs them in (passwordless), removing passwords from the login flow.
-It depends on core User.
-
-Use it for passwordless email-link login. It is an **authentication** feature and it is implemented **correctly**:
-it reuses **Drupal core's one-time-login mechanism** — the link hash is validated with `hash_equals($hash,
-user_pass_rehash($user, $timestamp))` (core's CSPRNG-derived, per-user hash), the link **expires**, and it is
-effectively **single-use** (the check rejects timestamps before the user's last-login time, so a used link stops
-working). This is the same well-tested path as core's password-reset link. Operational notes: the login link is
-a **capability** (anyone who receives it can log in as that user), so it must go only over your secure mail path;
-and removing passwords means **email deliverability/security becomes your auth security** — protect the mailbox/
-mail channel accordingly. It layers on core authentication. Configure the mailed-login flow.
+Authenticate by mail turns the standard Drupal login into a passwordless, magic-link flow: the user enters a username or email on the login page, and the module mails a one-time login link to that account's registered address; clicking the link finalizes the login. It swaps core's `user.auth` service for one that always fails, so password-based authentication is disabled site-wide, and it disables the password-reset route since passwords are no longer used. The mailed link reuses Drupal core's one-time-login token mechanism (`user_pass_rehash`) and is time-limited and effectively single-use. Requests are rate-limited by both IP address and target user through core's flood service. The link subject/body, the link timeout, and both flood limits are configurable at Configuration → People → Authenticate by mail (`/admin/config/people/authenticate-by-mail`). Depends only on core User; because it removes passwords entirely, it is incompatible with modules that alter or depend on password login (e.g. HTTP Basic Auth).
 
 ---
 
-- Replace password login with a mailed link.
-- Log in passwordlessly.
-- Remove passwords from login.
-- Depend on core User.
-- REUSE core's one-time-login mechanism.
-- Validate with hash_equals + user_pass_rehash.
-- Expire the link + make it single-use (last-login check).
-- Be the same secure path as core password reset.
-- TREAT the login link as a capability (secure mail only).
-- Know email security becomes auth security.
-- Layer on core authentication.
-- Configure the mailed-login flow.
-- Handle mail login.
-- Log users in.
-- Configure the flow.
-- Authenticate by mail.
-- Handle the link.
-- Email login links.
-- Secure the mail channel.
-- Provide mailed-link login.
+- Replace Drupal password login with a mailed one-time login link.
+- Offer passwordless / magic-link authentication to your users.
+- Let users log in by entering a username or an email address.
+- Mail a one-time login link to the account's registered email.
+- Remove passwords from the login flow site-wide.
+- Move account-security burden onto each user's mailbox provider.
+- Disable password-based authentication for all users (`user.auth` replaced).
+- Disable the core password-reset form (no longer needed without passwords).
+- Time-limit each login link via the configurable `timeout` (default 3600s).
+- Skip time-expiry for brand-new users who have never logged in.
+- Rate-limit login requests per IP address (default 50 per hour).
+- Rate-limit login requests per target user (default 5 per 6 hours).
+- Customize the login email subject and body with tokens.
+- Insert the login URL in mail via the `[user:one-time-login-url]` token.
+- Translate the login email per language (config translation supported).
+- Give admins one settings form at Configuration → People → Authenticate by mail.
+- Keep the flow safe against username/email enumeration (constant response).
+- Log each mailed link and each unknown-account attempt to the logger channel.
+- Layer on top of core User authentication without a database schema.
+- Run on Drupal 10.1+ or 11 with PHP 8.1+.
