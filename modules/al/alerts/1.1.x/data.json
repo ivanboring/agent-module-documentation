@@ -5,7 +5,10 @@
   "version": "1.1.x",
   "package": "Configuration Kits",
   "composer_namespace": "drupal/alerts",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/add_content_by_bundle": "^1.2",
+    "drupal/color_field": "^3.0"
+  },
   "dependent_modules": [
     "drupal:link",
     "drupal:taxonomy",
@@ -27,7 +30,7 @@
   ],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"

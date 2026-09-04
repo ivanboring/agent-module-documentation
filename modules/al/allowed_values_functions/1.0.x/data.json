@@ -1,7 +1,7 @@
 {
   "name": "Allowed Values Functions",
   "data_name": "allowed_values_functions",
-  "description": "Lets you set a PHP method as the allowed-values function for list fields.",
+  "description": "Bind a PHP static method to a field as its allowed-values function via a #[AllowedValuesFunction] attribute, instead of editing field storage config or writing a hook.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/allowed_values_functions",
@@ -17,24 +17,26 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
   ],
   "subcategories": [
-    "Computed / derived fields"
+    "Computed / derived fields",
+    "Fields"
   ],
   "keywords": [
     "allowed values",
     "field",
     "options",
     "dynamic",
+    "attribute",
     "developer"
   ],
-  "project_description": "This module simplifies the process of using a method for a field's allowed values.\n\n Normally, you have to set the method directly in the field’s StorageConfig — either in the configuration file or via hook_entity_field_storage_info_alter() .\n\nAfter installing this module, you can simply add the AllowedValuesFunction attribute to the corresponding method and don’t have to worry about anything else.\n\n Example:\n\n \n\n #[AllowedValuesFunction('node', 'field_headline_alignment')]\n\n #[AllowedValuesFunction('paragraph', 'field_subheadline_alignment')]\n\n public static function subheadlineAlignmentAllowedValues(FieldStorageDefinitionInterface $definition, ?FieldableEntityInterface $entity = NULL): array {\n\n return [\n\n 'left' => t('Left'),\n\n 'center' => t('Center'),\n\n 'right' => t('Right'),\n\n ];\n\n }\n\n \n\n Post-Installation \n After installation create a class in one of your custom modules and add the method that provides the allowed values for a field. Add the attribute AllowedValuesFunction to the method.",
+  "project_description": "Allowed Values Functions lets a developer designate a class method as the allowed-values callback for a list/options field simply by adding a #[AllowedValuesFunction(entityTypeId, fieldName)] PHP attribute to a public static method. Without this module you would set the callback directly in the field's storage config (in a config file or via hook_entity_field_storage_info_alter()); with it, the module discovers attributed methods at container-compile time and wires the field storage setting 'allowed_values_function' to your method automatically. Attributes are repeatable so one method can serve several entity-type/field pairs, and an admin report at /admin/reports/fields/allowed-values-functions lists every field-to-callable binding. Requires Drupal 11; no configuration UI, permissions, or dependencies.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

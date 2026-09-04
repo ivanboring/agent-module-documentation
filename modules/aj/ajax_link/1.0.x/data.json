@@ -5,10 +5,12 @@
   "version": "1.0.x",
   "package": "User interface",
   "composer_namespace": "drupal/ajax_link",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "symfony/css-selector": "^3.4|^4.0|^5.0|^6.0|^7.0"
+  },
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^8||^9||^10||^11||^12",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ajax_link",
@@ -19,7 +21,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"

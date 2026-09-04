@@ -1,14 +1,14 @@
 {
   "name": "Ajax Dependency",
   "data_name": "ajax_dependency",
-  "description": "A helper service for building AJAX dependencies between form elements.",
+  "description": "Provides a helper service for easy ajax dependencies.",
   "version": "2.0.x",
   "package": null,
   "composer_namespace": "drupal/ajax_dependency",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ajax_dependency",
@@ -21,7 +21,7 @@
   ],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
@@ -33,10 +33,12 @@
     "ajax",
     "dependency",
     "forms",
+    "form-api",
     "helper",
-    "developer"
+    "developer",
+    "conditional-fields"
   ],
-  "project_description": "This module is like Conditional Fields (respecively the JS Field States System) in that it allows the rendering of fields (enabled, required, other properties) to be dependent of the values of other fields. Contrary to the other, it relies on Ajax.\n\n This module does not have a UI yet (though patches are welcome). See API and example for how to create dependencies programatically.",
+  "project_description": "This module is like Conditional Fields (respectively the JS Field States System) in that it allows the rendering of fields (access, value, other properties) to be dependent on the values of other fields. Contrary to the others, it relies on Ajax rather than client-side #states, so the dependent element is re-rendered server-side and its access is re-evaluated on each change. It provides a small static API (AjaxDependency::dependsOn/accessIf/contentIf) invoked from a form or hook_form_alter; there is no admin UI. It ships an ajax_dependency_example submodule with a demo form.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

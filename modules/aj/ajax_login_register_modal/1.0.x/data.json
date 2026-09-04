@@ -1,40 +1,52 @@
 {
   "name": "Ajax Login and Register Modal",
   "data_name": "ajax_login_register_modal",
-  "description": "Renders login, registration and password-reset forms in an AJAX modal.",
+  "description": "Renders core's user login, registration and password-reset forms inside an AJAX modal / off-canvas dialog, plus a block of dialog-opening links for anonymous visitors.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Login",
   "composer_namespace": "drupal/ajax_login_register_modal",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "ajax_login_register_modal.block_config",
   "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ajax_login_register_modal",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "core/drupal.ajax",
+    "core/drupal.dialog",
+    "core/drupal.dialog.ajax",
+    "core/jquery",
+    "core/drupal",
+    "core/drupalSettings",
+    "core/tabbable"
+  ],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "User engagement"
+    "Content display",
+    "Access control"
   ],
   "subcategories": [
-    "Form builder"
+    "Lightbox / modal display",
+    "User registration"
   ],
   "keywords": [
     "login",
     "register",
+    "password reset",
     "modal",
     "ajax",
-    "authentication"
+    "dialog",
+    "off-canvas"
   ],
-  "project_description": "This module is provided an ability to login and register and rest password with AJAX in Modal dialogs or Non-modal dialogs or off canvas dialogs. This module provides a block with links to whatever you enabled from settings for the anonymous user.\n\nAfter clicking on one of these links' user will be able to see a requested form in Ajax modal window or off canvas, whatever selected from settings. Submission and validation are being made with AJAX.\n\nAlso, there is available special configuration for this block and modal window for this module.\n\nYou can specify a kind of redirection or choose size parameters for current modal window, etc.\n\n Features \n \n Need to work on it",
+  "project_description": "Ajax Login and Register Modal presents Drupal core's user login (user_login_form), registration (user_register_form) and password-reset (user_pass) forms inside an AJAX modal, non-modal, or off-canvas dialog instead of on a full page. It works entirely through hook_form_alter: it wraps the three core forms, adds an inline status-messages region, attaches an #ajax submit callback, and shows an admin-configured success dialog (or redirect/reload) when submission succeeds. A companion block ('ajax_login_register_modal_block') renders a set of dialog-opening links (login / register / reset) for anonymous users only. All authentication itself is still performed by core's own form validators and submit handlers; this module only changes how those forms are presented and where the user lands afterwards. Four admin forms under Configuration expose per-form modal titles, dimensions, button text, success titles/messages, extra in-modal links, and redirect behaviour.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "not-covered",

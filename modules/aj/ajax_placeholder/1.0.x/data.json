@@ -1,40 +1,47 @@
 {
   "name": "AJAX Placeholder",
   "data_name": "ajax_placeholder",
-  "description": "A render element that replaces itself via an AJAX callback after initial render.",
+  "description": "Provides an 'ajax_placeholder' render element that renders a lightweight placeholder first, then replaces itself with the real content via a follow-up AJAX request.",
   "version": "1.0.x",
   "package": "AJAX Placeholder",
   "composer_namespace": "drupal/ajax_placeholder",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ajax_placeholder",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "core/drupal.ajax",
+    "core/once"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
+    "Performance",
     "Developer tools"
   ],
   "subcategories": [
-    "AJAX / rendering"
+    "Lazy loading",
+    "Page cache control"
   ],
   "keywords": [
     "ajax",
     "placeholder",
     "render element",
-    "lazy",
-    "performance"
+    "lazy builder",
+    "bigpipe",
+    "performance",
+    "async"
   ],
-  "project_description": "The AJAX Placeholder module provides a render element that will defer loading the content to an AJAX request, similar to how lazy builders work. This can greatly improve the performance and caching of pages. The main benefit over lazy builders and Bigpipe, is that the AJAX request will load asynchronously which will significantly improve the user experience when lots of render elements are placed on the same page.\n\n Features \n The module provides a new render element to load content via AJAX:\n\n \n\n $build['awesome'] = [\n\n '#type' => 'ajax_placeholder',\n\n '#callback' => ['mymodule.service:callback', [$arg1, $arg2]],\n\n ];\n\n \n\n The module requires no configuration, and can be used by developers to improve the performance of pages that show lots of different content that can be hard to cache (like dashboards).",
+  "project_description": "The AJAX Placeholder module provides a render element that defers loading its content to a follow-up AJAX request, similar to how lazy builders and BigPipe work. A developer places an 'ajax_placeholder' element with a '#callback' in any render array; the initial page render only emits a small placeholder (a container showing optional '#markup', default 'Loading...'), and a JavaScript behaviour then fetches the real content from '/ajax/placeholder/{hash}' and swaps it in. Because the expensive/uncacheable content is excluded from the initial render, page caching and perceived performance improve. Unlike BigPipe, the placeholder requests load in parallel and asynchronously, which helps pages that render many independent, hard-to-cache fragments such as dashboards. The module requires no configuration and is aimed at developers who build custom render arrays.",
   "maintenance_status": "Seeking co-maintainer(s)",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
