@@ -1,16 +1,18 @@
 {
   "name": "BEF HTML5 Date plugin",
   "data_name": "bef_html5_date",
-  "description": "A Better Exposed Filters plugin enabling HTML5 date inputs in Views exposed filters.",
+  "description": "A Better Exposed Filters widget plugin that renders Views exposed date filters as native HTML5 date inputs.",
   "version": "1.1.x",
   "package": "Views",
   "composer_namespace": "drupal/bef_html5_date",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/better_exposed_filters": "^6 || ^7"
+  },
   "dependent_modules": [
-    "better_exposed_filters:better_exposed_filters"
+    "better_exposed_filters"
   ],
   "configure": null,
-  "core_version_requirement": "^9.3||^10||^11",
+  "core_version_requirement": "^9.3 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/bef_html5_date",
@@ -21,9 +23,10 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
+    "Content display",
     "Site search"
   ],
   "subcategories": [
@@ -34,9 +37,11 @@
     "bef",
     "date",
     "html5",
-    "views"
+    "views",
+    "exposed filter",
+    "date picker"
   ],
-  "project_description": "BEF plugin allowing to use HTML5 date fields in views exposed filters.\n\n Issue credits will only be granted for significant contributions.",
+  "project_description": "BEF plugin allowing to use HTML5 date fields in views exposed filters. It registers a Better Exposed Filters filter-widget plugin (id bef_html5_date, label \"HTML5 Date\") that switches an exposed Views date filter to a native HTML5 date input (#type date) so the browser's built-in date picker is used instead of a plain text field. The plugin applies to Views date filters and filters that declare a date_handler, and is selected per-filter in the Better Exposed Filters settings. The module has no routes, permissions, services, config, or settings of its own.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

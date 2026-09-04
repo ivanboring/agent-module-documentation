@@ -1,25 +1,44 @@
 {
-  "name": "BEE Hotel",
+  "name": "Bee Hotel",
   "data_name": "bee_hotel",
-  "description": "A hotel/B&B booking suite built on BAT and Drupal Commerce (rooms, availability, pricing, orders).",
+  "description": "Hotel/B&B booking suite for Drupal built on BAT and Drupal Commerce: bookable unit nodes, availability, dynamic per-night pricing via a Price Alterator plugin chain, cart/checkout, guest messaging, a vertical availability calendar and iCal export.",
   "version": "2.26.x",
   "package": "BEE Hotel",
   "composer_namespace": "drupal/bee_hotel",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/bat": "^11.1",
+    "drupal/bat_api": "^11.1",
+    "drupal/bee": "^11.1",
+    "drupal/commerce": "^2.0 || ^3.0",
+    "drupal/commerce_account_balance": "^1.0",
+    "drupal/commerce_invoice": "^2.0",
+    "drupal/beehotel_pricealterator": "*",
+    "drupal/beehotel_pricealterators": "*",
+    "drupal/beehotel_vertical": "*",
+    "drupal/currencyapi": "^1.0"
+  },
   "dependent_modules": [
-    "drupal:bat",
-    "drupal:bee",
-    "drupal:commerce_product",
-    "drupal:commerce_store"
+    "bat",
+    "bat_api",
+    "bee",
+    "beehotel_pricealterator",
+    "beehotel_utils",
+    "commerce_account_balance",
+    "commerce_product",
+    "commerce_store",
+    "currencyapi",
+    "core_event_dispatcher"
   ],
-  "configure": null,
-  "core_version_requirement": "^9.4||^10.2||^11",
+  "configure": "beehotel.admin_settings",
+  "core_version_requirement": "^9.4 || ^10.2 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/bee_hotel",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "litepicker"
+  ],
   "suggests": {},
   "submodules": [
     "beehotel_addtocart",
@@ -42,16 +61,19 @@
     "E-commerce"
   ],
   "subcategories": [
-    "Booking / reservations"
+    "Booking / scheduling",
+    "Availability management"
   ],
   "keywords": [
     "hotel",
     "booking",
+    "reservations",
     "bat",
     "commerce",
-    "reservations"
+    "availability",
+    "dynamic pricing"
   ],
-  "project_description": "BEE Hotel — The Drupal platform for hotels, B&Bs, and lodging.\n\n • Direct booking engine\n\n• Dynamic rates & availability\n\n• Daily planner & operations\n\n• Guest messaging tools\n\n• Integrated PMS (BAT) & Commerce\n\n Key advantages include:\n\n Direct Guest Engagement: \n Grow exclusive relationships with your guests, enhancing customer loyalty.\n\n Cost-Effective Operations: \n Eliminate third-party fees and gain greater control over your operational costs.\n\n Simplified Setup: \n Launch your customized reservation system quickly and efficiently using our detailed installation guide and the pre-configured Sample Hotel script.\n\n Features: \n Flexible Unit Management: \n Manage diverse unit types, including rooms, apartments, and more, with ease.\n\n Dynamic Price Calculation: \n Automate price generation with granular control via the Price Alterators submodule, leveraging Drupal's Plugin API for customization.\n\n Weekly Base Price Management: \n Establish and maintain weekly base price tables for each unit, ensuring accurate and consistent pricing.\n\n Guest Post-Sale Pages: \n Provide dedicated post-sale pages for guests (e.g., \"/your-checkin\"), enhancing the customer experience.\n\n * User Query Statistics:\n\n * Gain valuable insights into user search behavior, including:\n\n * Daily room search counts.\n\n * Peak search days.\n\n * Opportunities for rate optimization.\n\n * Availability Synchronization:\n\n * Seamlessly share availability information with popular platforms like Google Calendar, Airbnb, and Booking.com.\n\n Submodules \n BeeHotel Price Alterator: \n Define and manage your pricing algorithms through a user-friendly web interface.\n\nComprehensive front-end documentation for end-users is available. Front end documentation BeeHotel Price Alterator\n\n BeeHotel Vertical: \n Provides a vertical calendar view for enhanced daily business management.\n\n Happening today: \n Generates and sends daily hotel activity reports. It provides staff with a comprehensive overview of daily operations including:\n\n \n Today's Arrivals - Guests checking in \n Today's Departures - Guests checking out \n In-Progress Reservations - Ongoing bookings \n Room Status - Cleaning and maintenance needs \n \n \n Provides a vertical calendar view for enhanced daily business management.\n\n BeeHotel Searched: \n Collects and analyzes guest search data to generate valuable insights for revenue optimization.\n\n BeeHotel Ical: \n Enables seamless synchronization of availability with external calendars.\n\n BeeHotel Export: \n Facilitates the export of availability, rate, and information data to external services, including Google Hotels. Google Hotels API\n\n BeeHotel SampleHotel: \n Offers a drush command to quickly deploy a complete demo hotel within your Drupal instance.\n\n Suggested modules \n Find in the Module Documentation a list of Drupal related modules\n\n Use Cases \n Guest Reservations: \n Enable guests to book rooms for single or multiple occupants, with dynamic price adjustments based on occupancy.\n\n Dynamic Pricing: \n Implement custom pricing algorithms based on factors like guest count, seasonal demand, and booking lead time. Utilise Bee Hotel's built-in price alterators or develop custom alterators via Drupal's plugin system.\n\n Daily Reservation Management: \n Easily view and manage daily check-ins and check-outs.\n\n Personalised Guest Stay Pages: \n Provide guests with dedicated stay pages containing:\n\n * Directions to the property.\n\n * House rules and guidelines.\n\n * Payment information.\n\n * Access codes (for home automation).\n\n * Other relevant stay information.\n\n * These pages are accessible exclusively during the guest's stay.\n\n * Revenue Optimisation: Analyse booking trends to identify peak demand periods and optimise pricing strategies.\n\n * Channel Management: Export availability data to online travel agencies and platforms, including Google Hotels.\n\nGoogle Hotels API\n\n Dependencies \n \n Litepicker library [ https://litepicker.com ]\n \n Suggested modules \n \n Commerce Account Balance \n \n …",
+  "project_description": "BEE Hotel is the Drupal platform for hotels, B&Bs and lodging: a direct booking engine with dynamic rates and availability, a daily operations planner, guest-messaging tools and an integrated PMS (BAT) plus Drupal Commerce. It lets a property take direct reservations (single or multiple occupants), calculate per-night prices with granular control via the Price Alterator plugin system, maintain weekly base-price tables per unit, run a vertical availability calendar for daily management, generate a daily arrivals/departures report, export availability as iCal to Google Calendar / Airbnb / Booking.com, and provide personalised guest post-sale stay pages. The suite ships eleven submodules covering utilities, the price-alterator base and concrete alterators, the vertical calendar, add-to-cart, iCal export, daily-report emails, a sample-hotel installer and upgrade helpers.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

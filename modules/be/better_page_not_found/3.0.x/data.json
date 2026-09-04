@@ -1,14 +1,14 @@
 {
   "name": "Better Page Not Found",
   "data_name": "better_page_not_found",
-  "description": "Improved styling for the 404, 403 and error pages.",
+  "description": "Replaces the content region of core 401/403/404 error pages with a themed message and a homepage/login button.",
   "version": "3.0.x",
   "package": null,
   "composer_namespace": "drupal/better_page_not_found",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^8||^9||^10||^11",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/better_page_not_found",
@@ -19,22 +19,24 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools"
   ],
   "subcategories": [
-    "Error pages"
+    "Custom error pages"
   ],
   "keywords": [
     "404",
     "403",
+    "401",
     "error page",
     "not found",
+    "access denied",
     "styling"
   ],
-  "project_description": "This module automatically improves the layout of 404 (page not found)\n\nand 401 and 402 (not authorized) pages. If the current page is an 404\n\n(or 401 or 402) page then it replaces the page content with a themed\n\nmessage.\n\nIt does not replace other page items, so the error page will\n\nstill show your header and footer, and thus have your site styling intact.\n\n The 404 (page not found) page will show following message:\n\n'The requested page could not be found.' (this is translatable)\n\n The 401 and 402 (not authorized) pages will show following message:\n\n'Sorry, you are not authorized to access this page.' (this is translatable)\n\n Under each message, a button 'Go to homepage' is added automatically.\n\n If you want you can further style these messages by targeting following\n\nclasses in your css:\n\n- .c-system-message (wrapper around the message)\n\n- .c-system-message__text (text itself)\n\n- .c-system-message__button (the button to the homepage)",
+  "project_description": "Better Page Not Found improves the presentation of Drupal's core error pages (401 unauthorized, 403 access denied and 404 not found). On those routes it replaces the page content region with a small themed template that shows a fixed, translatable message and a call-to-action button, while leaving the surrounding theme (header, footer, styling) intact. The 404 page shows 'The requested page could not be found.'; the 401 and 403 pages show 'Sorry, you are not authorized to access this page.'. A button beneath the message links to the homepage by default; a settings form lets an administrator make the access-denied (401/403) button link to the user login page instead. Styling is provided by a single CSS library targeting the .c-system-message, .c-system-message__text and .c-system-message__button classes, which site builders can override. The module has no dependencies beyond Drupal core.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

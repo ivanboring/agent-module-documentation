@@ -1,9 +1,9 @@
 {
   "name": "Better Entity Reference",
   "data_name": "better_entity_reference",
-  "description": "An entity-reference widget showing selections as tags with an add/remove popover.",
+  "description": "Entity reference, options, file, image and media widgets that show selections as tags or thumbnail tiles with a search/upload/browse popover, plus a matching Better Tags formatter.",
   "version": "1.0.x",
-  "package": "Field types",
+  "package": "User interface",
   "composer_namespace": "drupal/better_entity_reference",
   "composer_requirements": {},
   "dependent_modules": [],
@@ -16,8 +16,11 @@
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [],
-  "provides_permissions": true,
+  "submodules": [
+    "better_entity_reference_demo",
+    "better_entity_reference_simplytest"
+  ],
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
@@ -25,6 +28,8 @@
     "Content editing experience"
   ],
   "subcategories": [
+    "Form widgets / select UI",
+    "Entity selection",
     "Field formatters"
   ],
   "keywords": [
@@ -32,9 +37,12 @@
     "widget",
     "tags",
     "popover",
-    "editing"
+    "media",
+    "file upload",
+    "options",
+    "formatter"
   ],
-  "project_description": "Better Entity Reference replaces Drupal's default widgets for entity reference, list, media, file and image fields with a tag- and tile-based interface. Selected items show as removable, reorderable tags or thumbnail tiles, and a round \"+\" opens a popover to search, browse, upload and pick. The reference widgets store values through core's own input, so they fall back to the standard autocomplete when JavaScript is unavailable.\n\n Back to top \n\n Key features \n \n Five widgets : Better Entity Reference (entity reference fields, any selection handler including views), Better Options (list text/integer/float fields), Better Media (media fields), and Better File / Better Image (file and image fields). \n Popover toolbar : search (contains or starts with), sort by name or date, a Filter by type and publication status, Glossary letter grouping and a Parent terms first toggle - collected in a collapsible toolbar beside the search box and remembered per browser. \n Upload inside the widget : the file, image and media widgets chunk-upload files through the module's own endpoint, honoring the field's extensions and size limits with a progress bar per file. Media auto-detects the type from the file and also accepts remote/oEmbed video. \n File Browser : instead of uploading, pick from existing files, images or media with search, sorting, a type filter, list or grid view and paging - with an Upload view one click away, and an option to show only the current user's own files. \n Folder browsing & live search : drill hierarchical vocabularies level by level with a breadcrumb and per-folder counts (loaded on demand); other and views-driven fields search through the field's own selection handler. \n Reorder & quick create : drag or use the arrow keys to reorder (the order is saved); auto-create fields show a \"+ New\" row that creates and picks in one step, with a type chooser when several bundles are allowed. \n Tag colors : stable per-entity colors - Random, Shades of a main color, or One color - drawn as a Stroke or a Fill with readable text, overridable via an entity color field or hook_better_entity_reference_option_alter() . \n Tooltips, formatter, validation : rich tooltips (name, type, id, size, usage, publication status); the Better Tags formatter inheriting the widget colors; and visible validation - required warnings, red marks on refused values, and cardinality limits that disable the \"+\". \n Custom forms & accessibility : better_entity_reference and better_options form elements for your own forms, plus full keyboard support, ARIA roles and screen reader announcements. \n \n Back to top \n\n Screenshots \n \n\n \n\n \n\n \n\n \n\n \n\n \n\n Back to top \n\n Configuration \n \n On the field's Manage form display , choose the widget for its type: Better Entity Reference , Better Options , Better Media , Better File or Better Image . \n Open the widget settings to configure the popover toolbar (search, sort, filter, glossary), display (colors or thumbnails, tooltips, confirm before removing) and - for file/image/media - whether the \"+\" opens Upload or the File Browser, and the page size. \n Optionally pick the Better Tags formatter on Manage display to render saved values as the same tags on the page. \n \n Built with AI assistance \n\n Back to top",
+  "project_description": "Better Entity Reference replaces Drupal's default field widgets for entity reference, list (options), media, file and image fields with a tag- and tile-based interface. Selected items show as removable, reorderable tags or thumbnail tiles; a round \"+\" opens a popover to search, sort, filter, browse folders, upload and pick. It ships five widgets (Better Entity Reference, Better Options, Better Media, Better File, Better Image), a Better Tags formatter for both entity-reference and list fields, and two reusable Drupal form elements (better_entity_reference, better_options) for custom forms. The reference widgets store their value through core's own input so they fall back to the standard autocomplete without JavaScript. File/image/media uploads are chunked through the module's own endpoints, honoring the field's own validators and destination, and every endpoint is guarded by a session CSRF token plus a field-bound HMAC and per-result access filtering. Depends only on Drupal core (media, image, file and taxonomy features engage only when those modules and field types are present).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
