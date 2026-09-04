@@ -1,38 +1,40 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-APCu Diagnostics integrates the APCu tools (krakjoe/apcu) into Drupal, surfacing APCu cache diagnostics.
+APCu Diagnostics surfaces the bundled `apc.php` diagnostics UI from the `krakjoe/apcu` package as an admin report inside Drupal at `/admin/reports/apcu`.
 
 ---
 
-APCu Diagnostics brings the diagnostic tools from the APCu extension (krakjoe/apcu) into Drupal,
-letting administrators inspect the state of the APCu in-memory cache — usage, hit/miss statistics and
-entries — from within the site. APCu is often used as a fast cache backend or for the class/metadata
-cache, and this module makes its runtime state visible for tuning and troubleshooting. It provides its
-own permissions.
-
-Use it to monitor and diagnose APCu on servers where it backs caching. It is an administration/developer
-diagnostic tool that reads APCu state; access is gated by its permission (grant it only to trusted
-administrators, since cache internals can reveal operational detail). It has no effect on content or
-site access.
+APCu Diagnostics is a very thin integration layer: it registers a single admin report route and a
+single controller that `require`s the `apc.php` script shipped in the `krakjoe/apcu` Composer
+package (`vendor/krakjoe/apcu/apc.php`) and renders its output inside a Drupal page. That script is
+the same APCu monitoring dashboard familiar from the APCu extension — memory usage, fragmentation,
+hit/miss ratios, per-entry cache listings and refresh controls. The module does not implement any of
+that itself; it only bridges apc.php into Drupal by overriding `$_SERVER['PHP_SELF']`, disabling
+apc.php's own login (Drupal's route permission gates access instead) and including the script. It
+ships one permission (`access apcu diagnostics`, marked `restrict access: true`), one route, one
+menu link under *Reports*, and a functional access test. It has no config, no services, no schema,
+no dependencies beyond Drupal core, and no submodules. The `krakjoe/apcu` package must be installed
+via Composer for the page to render; if apc.php is missing the page shows a "file is missing"
+message.
 
 ---
 
-- Inspect APCu cache state in Drupal.
-- View APCu usage statistics.
-- See APCu hit/miss rates.
-- Diagnose APCu caching.
-- Integrate krakjoe/apcu tools.
-- Tune APCu-backed caches.
-- Provide its own permissions.
-- Grant diagnostics to trusted admins.
-- Troubleshoot cache performance.
-- Monitor in-memory cache entries.
-- Read APCu runtime state.
-- Support cache tuning.
-- Surface APCu diagnostics.
-- Have no content/access effect.
-- Inspect the metadata cache.
-- Check APCu memory use.
-- Aid performance troubleshooting.
-- View cache internals (restrict access).
-- Diagnose an APCu backend.
-- Monitor caching health.
+- View the APCu monitoring dashboard from within Drupal at `/admin/reports/apcu`.
+- Inspect APCu shared-memory usage and free/used segments.
+- Check APCu cache hit and miss counts and ratios.
+- Monitor memory fragmentation of the APCu store.
+- List cached APCu user-cache entries and their metadata.
+- Diagnose whether APCu is enabled and sized correctly for the site.
+- Tune `apc.shm_size` and related php.ini settings using live numbers.
+- Troubleshoot APCu-backed cache backends (e.g. APCu as a fast cache bin).
+- Give a diagnostics view to trusted administrators without giving them shell/CLI access.
+- Reach the report through the *Administration → Reports → APCu diagnostics report* menu link.
+- Grant the `access apcu diagnostics` permission to specific admin roles.
+- Restrict the diagnostics page to trusted operators (permission is `restrict access: true`).
+- Confirm APCu is actually serving cache before load testing.
+- Watch APCu fill/eviction behaviour during traffic.
+- Verify a Composer-installed `krakjoe/apcu` package is wired up correctly.
+- Use apc.php's refresh/clear controls to reset APCu counters while investigating.
+- Provide an in-browser alternative to CLI `apcu_cache_info()` calls.
+- Support Drupal 9, 10 and 11 sites.
+- Diagnose per-request opcode/user cache behaviour on a single web node.
+- Keep the diagnostics behind Drupal's access system rather than apc.php's built-in password.

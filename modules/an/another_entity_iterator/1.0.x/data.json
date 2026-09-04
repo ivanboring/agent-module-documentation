@@ -1,14 +1,14 @@
 {
-  "name": "Another Entity Iterator",
+  "name": "Yet Another Entity Iterator",
   "data_name": "another_entity_iterator",
-  "description": "A developer utility for iterating over entities efficiently in batches.",
+  "description": "A developer service that loads and iterates entities in memory-efficient chunks.",
   "version": "1.0.x",
   "package": "Utility",
   "composer_namespace": "drupal/another_entity_iterator",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": ">=10.2||^11",
+  "core_version_requirement": ">=10.2 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/another_entity_iterator",
@@ -19,7 +19,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
@@ -30,11 +30,12 @@
   "keywords": [
     "entity",
     "iterator",
+    "chunked",
     "batch",
-    "bulk",
+    "memory",
     "developer"
   ],
-  "project_description": "Yet another entity iterator project\n\n Hopefully to be replaced by [#2577417]",
+  "project_description": "Yet Another Entity Iterator is a small developer utility that exposes a single autowireable factory service (another_entity_iterator.factory) for loading and iterating large sets of entities in memory-efficient chunks. Instead of calling loadMultiple() on thousands of IDs at once, callers pass an entity type class and an iterable of IDs and receive a lazy ChunkedIterator that loads a fixed number of entities at a time and clears the entity memory cache between chunks. It provides no routes, permissions, controllers, forms, config schema, or Drush commands — it is purely an API for custom code, controllers, and services.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

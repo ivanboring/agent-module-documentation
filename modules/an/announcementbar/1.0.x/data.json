@@ -1,13 +1,13 @@
 {
   "name": "Announcement Bar",
   "data_name": "announcementbar",
-  "description": "Displays a configurable announcement bar/banner on the site.",
+  "description": "Provides an 'Announcementbar' block that shows a dismissible site announcement banner with configurable message, CTA button, position and colors.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/announcementbar",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:block"
+    "block"
   ],
   "configure": null,
   "core_version_requirement": "^9 || ^10 || ^11",
@@ -19,9 +19,9 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"
@@ -34,9 +34,11 @@
     "banner",
     "bar",
     "notice",
-    "block"
+    "block",
+    "cookie",
+    "dismissible"
   ],
-  "project_description": "The Announcement Bar provides a block named \"Announcementbar\" that can be shown on your site.\n\n How to use: \n \n Download and extract files in module folder. \n Enable module from module list \n Go to Home » Administration » Structure » Configuration » Announcementbar \n Add your message, button text, button link, background color and text color. \n Clear drupal cache",
+  "project_description": "Announcement Bar provides a single Drupal block plugin (id 'announcementbar', admin label 'Announcementbar') that renders a site announcement banner. The block form lets an administrator set the message, a CTA button label, the fixed position (top/bottom), background and text colors, and a cookie interval/period controlling how long the bar stays dismissed after a visitor closes it. Rendering is handled by the 'announcementbar_template' theme hook; a small jQuery behavior (js/announcementbar.js) shows/hides the bar and sets a dismissal cookie. The module ships no routes, no permissions, and no config schema of its own; configuration is stored on the block config entity and it depends only on core Block.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

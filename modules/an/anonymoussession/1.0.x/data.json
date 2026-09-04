@@ -1,14 +1,14 @@
 {
   "name": "Anonymous session toolkit",
   "data_name": "anonymoussession",
-  "description": "Provides consistent session handling for anonymous users, for use by custom code.",
+  "description": "Provides a service that forces/ensures a session for anonymous users so custom code can reliably read and write per-visitor session data.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/anonymoussession",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^8||^9||^10||^11",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/anonymoussession",
@@ -19,7 +19,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
@@ -32,9 +32,9 @@
     "anonymous",
     "toolkit",
     "developer",
-    "state"
+    "tempstore"
   ],
-  "project_description": "Add a consistent way to the website to ensure a session for anonymous users for reliable session related functionality.\n\n Include the service in your application where the session is important, and call the 'apply' method before using the session\n\n <?php\n\n $anonymousSession = \\Drupal::service('anonymoussession');\n\n $anonymousSession->apply();\n\n // Use session variables:\n\n //$_SESSION[...]\n\n ?>\n\n Use cases include:\n\n \n PrivateTempStore \n Functionality that depends on Drupal::currentRequest()->getSession()",
+  "project_description": "Add a consistent way to the website to ensure a session for anonymous users for reliable session related functionality. Include the 'anonymoussession' service in your application where the session is important, and call the apply() method before using the session (e.g. $_SESSION[...] or a PrivateTempStore). Use cases include PrivateTempStore for anonymous users and any functionality that depends on Drupal::currentRequest()->getSession().",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "not-covered",

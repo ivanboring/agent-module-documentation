@@ -1,36 +1,32 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Anti-Duplicates helps you avoid duplicate content on your website by detecting and preventing duplicate node submissions.
+Anti-Duplicates warns node authors about likely duplicate content by live-searching existing node titles as they type in the title field, and can optionally block form submission until the author confirms the content is unique.
 
 ---
 
-Anti-Duplicates helps prevent duplicate content — detecting when a node being created duplicates
-existing content (by title or other configured criteria) and warning or blocking the submission. It
-reduces accidental duplicate pages from double-submits or re-entry. It depends on core Node, is configured
-at `anti_duplicates.admin_page`, and provides its own permissions.
+Anti-Duplicates hooks into every node add/edit form (`hook_form_node_form_alter`) and attaches an AJAX callback to the title field that fires on debounced keyup. As the author types, it runs an entity query against existing nodes of the same content type and lists up to five matching titles (as links) plus a total count, so the author can spot content they may be re-creating. Matching uses one of three configurable search modes: a wildcard sequence of the keywords, the exact title as a substring, or an OR of any single word from the title. The module optionally disables automatic form submission (via `drupalSettings` + its JS library) until the author clicks a "Not a duplicate" link, and the results panel can be placed in the right sidebar or directly under the title. It is a soft, author-facing content-integrity aid — it never hard-enforces uniqueness at save time and adds no database constraint.
 
-Use it on content types where duplicates are a problem (listings, submissions, imported content). It is a
-content-integrity feature operating at node submission; it enforces uniqueness rules you configure and has
-no access-control role. Configure which fields/criteria define a duplicate and whether to warn or block.
+Configuration lives at `admin/config/anti-duplicates` (route `anti_duplicates.admin_page`, permission `administer anti_duplicates`): choose the notice message, which content types are checked, the search type, the placement, whether to disable submission, and whether to show the panel only when at least one result is found. The only dependency is core `node`.
 
 ---
 
-- Prevent duplicate content.
-- Detect duplicate node submissions.
-- Warn or block duplicates.
-- Avoid accidental duplicate pages.
-- Depend on core Node.
-- Configure at anti_duplicates.admin_page.
-- Provide its own permissions.
-- Enforce content uniqueness.
-- Reduce double-submits.
-- Check by title or criteria.
-- Have no access-control role.
-- Configure duplicate criteria.
-- Choose warn vs block.
-- Keep content unique.
-- Detect re-entered content.
-- Apply to specific content types.
-- Improve content integrity.
-- Prevent repeat submissions.
-- Flag duplicate titles.
-- Manage content duplication.
+- Warn content authors when a node title matches existing content on your site.
+- Live-search existing titles as the author types (debounced keyup AJAX).
+- Reduce accidental duplicate pages from double-submits or re-entry.
+- Show up to five matching nodes as clickable links plus a total count.
+- Require authors to click "Not a duplicate" before the form can submit.
+- Restrict duplicate checking to specific content types (e.g. only article + page).
+- Check all content types by selecting none (no type restriction).
+- Match on a wildcard sequence of the title keywords (search type 0).
+- Match on the exact title as a substring (search type 1).
+- Match on any single word from the title (search type 2, the default).
+- Place the results panel in the right sidebar of the node form.
+- Place the results panel directly under the title field instead.
+- Show the results panel only when one or more duplicates are found.
+- Customize the notice message shown above the results (text-format field).
+- Exclude the node currently being edited from its own duplicate results.
+- Help editorial teams avoid publishing near-identical listings or articles.
+- Catch re-imported or re-entered content during manual data entry.
+- Nudge authors toward reusing an existing page rather than creating a new one.
+- Provide a lightweight, save-time-free uniqueness hint (no DB constraint added).
+- Gate the settings form behind a dedicated `administer anti_duplicates` permission.
+- Integrate with node forms only, leaving other entity types untouched.

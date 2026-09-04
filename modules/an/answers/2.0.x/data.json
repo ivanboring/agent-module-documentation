@@ -1,9 +1,9 @@
 {
   "name": "Answers",
   "data_name": "answers",
-  "description": "A Question & Answer (Q&A) system for Drupal.",
+  "description": "A Stack-Overflow-style Question & Answer (Q&A) system for Drupal, built on core node, comment and taxonomy entities.",
   "version": "2.0.x",
-  "package": null,
+  "package": "Answers",
   "composer_namespace": "drupal/answers",
   "composer_requirements": {},
   "dependent_modules": [
@@ -18,10 +18,12 @@
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [],
-  "provides_permissions": true,
+  "submodules": [
+    "answers_core"
+  ],
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "User engagement"
@@ -33,10 +35,11 @@
     "q&a",
     "questions",
     "answers",
+    "stack overflow",
     "community",
-    "voting"
+    "comments"
   ],
-  "project_description": "Overview \n Answers enables the implementation of a Question & Answer system in a Drupal site. Users can post questions and other users can answer them. To see it at work (based on the most recent 7.x-4.x-dev version), head over to its Demo site and have a look at the Questions there.\n\n New version now available for testing (7.x-4.0-rc3) \n Please note: this version is not yet compatible with prior versions.\n\n The most important changes include:\n\n \n Replaces the references module with entityreference (references was at one point likely to be deprecated) \n Integrates supporting modules into this module (Best Answer, etc...) \n Improves the interface including better layout and putting comment forms and new answers form on question pages \n Improves code quality \n Automated Tests \n \n Summary of Functionality \n What the module does:\n\n \n Users can ask new questions\n \n Directly ('node/add/answers-question') \n \n \n Users can review questions\n \n All questions: 'questions' \n Unanswered questions: unanswered' \n \n \n When viewing lists of questions, users can sort by title, post date, and number of answers \n Users can post answers to questions \n When displaying a question, the system shows the answers to that question. \n \n For more detail and configuration options, see the file \"answers.readme.txt\" in the module. \n\n Supporting Modules \n There are some supporting modules:\n\n \n Best Answer: Enables question authors to select a best answer. Depending on a setting, this will lock the question \n Answers Voting: Enables users to vote answers and questions up/down \n Answers Userpoints: Adds user reputations to Answers (using integration with UserPoints ) following a point system like that on StackExchange \n Expire Questions: Automatically expire questions after a set amount of time has past \n Relevant Answers: Provide blocks which can be placed on pages to capture and display questions specific to each page \n Answers Taxonomy: Adds tags to questions. \n \n These modules relate to the 7.x-3.x version, and have been transformed to sub-modules of the Answers module in the 7.x-4.x version.\n\n Module Dependencies \n Drupal 7 \n\n \n Entity Views Attachment \n Features \n References \n Nodereference Count \n Node Reference URL Widget \n Strongarm \n Views \n Back to top",
+  "project_description": "Answers is a Question & Answer (Q&A) system for Drupal that aims to reproduce the core Stack Overflow experience: users post questions, other users post answers, and both questions and answers can be commented on. In the 2.x line the project is a thin umbrella module that simply depends on and enables its single shipped submodule, answers_core, which contains all of the actual functionality. The implementation is built entirely on Drupal core primitives rather than custom entities: a 'Question' is an answers_question node type, an 'Answer' is a comment of bundle answers_answer attached to the question via the node's 'answers' comment field, questions carry a free-tagging 'answers_tags' taxonomy reference (Tags vocabulary), and threaded comments on questions and answers use additional comment bundles (answers_question_comment, answers_comment). answers_core adds a custom AnswersFormatter comment field formatter, a set of Twig template overrides and a small CSS/JS library that reveal inline comment forms. Older 7.x supporting features such as voting, best-answer selection and UserPoints reputation are NOT part of this shipped codebase. There are no custom routes, permissions, services or database queries; access control, posting and moderation are governed entirely by Drupal core's node and comment permissions and access handlers.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

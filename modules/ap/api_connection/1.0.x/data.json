@@ -1,14 +1,14 @@
 {
   "name": "API Connection",
   "data_name": "api_connection",
-  "description": "A helper module providing generic, reusable API connection functionality for other modules.",
+  "description": "Helper module that provides generic API connection functionality.",
   "version": "1.0.x",
   "package": "Web services",
   "composer_namespace": "drupal/api_connection",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": "api_connection.settings_form",
-  "core_version_requirement": "^10.2||^11",
+  "core_version_requirement": "^10.2 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/api_connection",
@@ -16,25 +16,32 @@
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [],
+  "submodules": [
+    "api_connection_example"
+  ],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "rest_api_connection"
+  ],
   "categories": [
     "Developer tools"
   ],
   "subcategories": [
-    "REST / web services"
+    "REST / web services",
+    "Plugin system"
   ],
   "keywords": [
     "api",
     "connection",
     "integration",
+    "rest",
     "http client",
-    "web services"
+    "web services",
+    "guzzle"
   ],
-  "project_description": "Back to top \n\n API Connection module \n This is a helper module to let your Drupal website connect to external APIs.\n\n This module uses a Plugin architecture, that allows you to define a plugin in\n\nyour custom Drupal module, for each REST API / web service you want to integrate\n\nwith.\n\n Back to top \n\n Features \n \n Provides a RestApiConnection plugin type to use in your modules for connecting to an external REST API. \n Ability to log REST API requests and responses in Drupal logger / watchdog. \n Ability to differentiate between dev / test / live environments. \n Back to top",
+  "project_description": "API Connection is a developer helper module that lets a Drupal site connect to external REST APIs / web services through a plugin architecture. Each API integration is declared as a RestApiConnection plugin (annotation or PHP attribute) in a custom module, with per-environment base URLs (dev / test / live) and an activated flag. The RestApiConnectionBase base class wraps Drupal's Guzzle http_client_factory and exposes a single sendRequest() method that resolves the base URL for the current environment, JSON-encodes the body, sets default headers, sends the request, and decodes the response. A site-wide settings form selects the active environment and toggles request/response logging to the Drupal logger. It provides no end-user feature on its own; it is infrastructure consumed by other modules, and ships an api_connection_example submodule demonstrating a ReqRes.in integration.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
