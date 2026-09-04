@@ -1,19 +1,24 @@
 {
   "name": "Audit Trail",
   "data_name": "audit_trail",
-  "description": "A tamper-evident (HMAC-chained) audit trail with an event write API, indexed storage, viewer and chain verifier.",
+  "description": "Tamper-evident (HMAC-chained) audit trail: a canonical event() write API, a chained PSR-3 logger any module reaches via 'chain: TRUE', audit-shaped indexed storage, an admin viewer with side-by-side before/after diff, a chain integrity verifier, secret rotation, and a cron retention lifecycle with NDJSON archiving.",
   "version": "1.0.x",
   "package": "Logging",
   "composer_namespace": "drupal/audit_trail",
-  "composer_requirements": {},
-  "dependent_modules": [],
+  "composer_requirements": {
+    "drupal/key": "^1.18"
+  },
+  "dependent_modules": [
+    "file",
+    "key"
+  ],
   "configure": "audit_trail.settings_form",
-  "core_version_requirement": "^11",
+  "core_version_requirement": "^11.3 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/audit_trail",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.2",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [
@@ -26,21 +31,27 @@
   "provides_permissions": true,
   "provides_drush_commands": true,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "audit_trail context contributor (ContextContributorManager, #[ContextContributor] attribute)",
+    "audit_trail filter (AuditTrailFilterManager, #[AuditTrailFilter] attribute)"
+  ],
   "categories": [
     "Administration tools"
   ],
   "subcategories": [
-    "Audit logging / activity"
+    "Audit trail / activity logging"
   ],
   "keywords": [
     "audit trail",
     "hmac",
     "tamper-evident",
     "logging",
-    "compliance"
+    "compliance",
+    "forensics",
+    "rfc-3161"
   ],
-  "project_description": "Tamper-evident database logging for Drupal 11+. \n\n Every entry that lands in the chain embeds an HMAC of its own payload plus the SHA-256 hash of the previous entry in the same chain. Insert, modify or delete a record after the fact and the chain breaks at every entry downstream; verification pinpoints the first broken row, and the alteration is provably detectable.\n\n Why \n Drupal's dblog module records every event you tell it to, but the rows are plain database writes. Anyone with database write access (a sysadmin, a compromised app account, an attacker who escalated through some other vulnerability) can edit a row, drop a row, or insert a fake row without a trace. For most sites that is acceptable. For audit-worthy applications such as anything subject to regulated retention (notarial acts, financial transactions, medical records), or any system that needs a defensible answer to \"who did what, when, with what content\", it is not.\n\n audit_trail adds a cryptographic chain on top of selected log entries. It does not stop tampering (no logging mechanism can do that without external storage) but it makes tampering provably detectable , which is the property regulators and auditors care about.\n\n What it does \n \n Plugs into Drupal's standard logger pipeline (PSR-3 + the logger service tag), so any module that calls \\Drupal::logger($channel)->info(...) can land in the chain without code changes. \n Chains entries selectively based on either a per-call 'chain' => TRUE flag in the PSR-3 context, or mode: auto chains that capture every entry on their claimed channels automatically. \n Stores each chained entry in a dedicated audit_trail table with a publicly-verifiable SHA-256 hash chain plus an operator HMAC layer. \n Groups entries by chain id (defaults to channel; can map multiple channels into one chain via an audit_trail_chain config entity) so verification is independent per chain. \n Exposes an AuditTrailVerifier service to walk a chain in id order and report every contiguous broken range in a single pass. \n Submodules add tamper-evident logging for entity CRUD, file operations, user-authentication events, paragraph entities, and RFC-3161 timestamping for external trust anchoring. A sibling audit_trail_webdav module bridges the WebDAV contrib module's events into the chain. \n \n Two-tier retention and lifecycle \n Each row carries context in two separately-retained tiers. Permanent context (operator-attested, PII-free metadata: action verbs, resource ids, structural flags) is signed raw and kept for the chain's full retention. Transient context (operational payload: before/after diffs, IP addresses, request URIs) is hash-signed so the bytes themselves can be NULLed at short retention without breaking chain verification: the GDPR-respectful \"purge-the-bytes, keep-the-hash\" pattern.\n\n A cron-driven lifecycle then moves rows through four stages. First live ; then archived , exported to an NDJSON file under a three-layered HMAC plus a file SHA-256; then live-purged , with the live row deleted and the archive file remaining for queryability and restore; finally file-purged , with the NDJSON unlinked and segment bookkeeping retained alongside anchor hashes so the verifier still bridges across the now-empty range. Transient-purge runs ahead of archive on the same tick, so the archive file never seals expired transient bytes into long retention.\n\n What it does not do \n \n It is tamper-evident, not tamper-proof. Anyone with the HMAC secret plus database write access can forge a fresh chain from scratch, but they cannot rewrite the existing chain retroactively without breaking it. Pair with external WORM storage (S3 Object Lock, Vault transit) and qualified RFC-3161 timestamps on batch boundaries for legally opposable archival. \n It is not at-rest encryption. The chain provides integrity, not confidentiality; layer DB-side encryption if sensitive data lands in audit rows. \n It is not a completeness guarantee. The chain protects what reaches it; …",
+  "project_description": "Tamper-evident database logging for Drupal 11.3+ and 12. Each chained entry embeds a public SHA-256 hash of its own payload plus the hash of the previous entry in the same chain, and an operator HMAC signs that hash; inserting, editing or deleting a row after the fact breaks the chain at every downstream entry and the AuditTrailVerifier pinpoints the first broken range in a single walk. It plugs into Drupal's PSR-3 logger pipeline (any \\Drupal::logger($channel) call can land in a chain via 'chain: TRUE' in context, or via a chain whose mode is 'auto'), and adds a structured AuditTrail::event() write API that bypasses the PSR-3 round-trip. Rows carry two separately-retained context tiers: a permanent (operator-attested, PII-free) bucket signed raw, and a transient bucket signed by hash so its bytes can be NULLed at a short GDPR retention window without breaking verification. HMAC secrets are audit_trail_secret config entities backed by drupal/key, so byte material stays out of config exports and DB dumps and one chain can span rotations. A five-stage cron lifecycle (transient-purge, archive to NDJSON, live-purge, file-purge, compaction) with per-chain overrides keeps purged ranges verifiable via segment attestations. Bundled submodules bridge entity CRUD, paragraph ancestry, managed-file activity, user-authentication events, and RFC-3161 TSA timestamping into the chain."
+  ,
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

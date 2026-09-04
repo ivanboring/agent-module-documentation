@@ -3,9 +3,11 @@
   "data_name": "augmentor_azure_openai",
   "description": "Provides Augmentor integration with the Azure OpenAI API.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Augmentor",
   "composer_namespace": "drupal/augmentor_azure_openai",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "openai-php/client": "^0.10"
+  },
   "dependent_modules": [
     "augmentor:augmentor"
   ],
@@ -16,12 +18,14 @@
   "project_url": "https://www.drupal.org/project/augmentor_azure_openai",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "openai-php/client"
+  ],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Artificial Intelligence (AI)"
@@ -34,9 +38,11 @@
     "azure",
     "openai",
     "ai",
-    "provider"
+    "provider",
+    "completions",
+    "chat"
   ],
-  "project_description": "The Azure OpenAI Augmentor is a dedicated submodule for Augmentor that connects your application to the Azure OpenAI API, leveraging the latest model capabilities (such as those in GPT‑4o) for both conversational and text completion tasks. This module provides two main functionalities:\n\n Augmentors provided by this module \n \n Chat Completion : Processes a chat conversation and generates an appropriate chat completion response. \n Completion : Accepts a text prompt and returns a corresponding text completion. \n \n Installation \n Install as you would normally install a contributed Drupal module. Visit https://www.drupal.org/node/1897420 for further information.\n\n Configuration \n Configure the user permissions in Administration » People » Permissions:\n\n Administer augmentors \n\n Users with this permission will see the webservices > augmentors configuration list page. From here they can add, configure, delete, enable and disabled augmentors.\n\n Requirements \n \n Augmentor \n \n Slack Channel \n Join #augmentor and discuss the future of Augmentor with us.\n\n Back to top",
+  "project_description": "The Azure OpenAI Augmentor is a plugin provider for the Augmentor framework that connects a Drupal site to the Azure OpenAI API. It ships two Augmentor plugins — Azure OpenAI Chat (azure_openai_chat) and Azure OpenAI Completions (azure_openai_completions) — built on the openai-php/client library. Each plugin is configured through Augmentor's own admin UI (webservices > augmentors), where you supply a Key-module API key, an Azure resource/deployment base URL, an API version, and a prompt template. It has no routes, permissions, config schema, or services of its own; all of that is inherited from the augmentor base module. Requires the Augmentor module.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

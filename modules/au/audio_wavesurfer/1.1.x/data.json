@@ -1,44 +1,49 @@
 {
   "name": "Audio Wavesurfer",
   "data_name": "audio_wavesurfer",
-  "description": "Provides audio waveform visualization/playback using wavesurfer.js.",
+  "description": "Provides audio waveform visualization and playback via a field formatter using the wavesurfer.js library.",
   "version": "1.1.x",
   "package": "Audio",
   "composer_namespace": "drupal/audio_wavesurfer",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:media"
+    "media"
   ],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/audio_wavesurfer",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "wavesurfer.js"
+  ],
   "suggests": {},
   "submodules": [
     "audio_wavesurfer_clips"
   ],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Media"
   ],
   "subcategories": [
-    "Audio"
+    "Audio embedding",
+    "Field formatters"
   ],
   "keywords": [
     "audio",
     "waveform",
     "wavesurfer",
     "visualization",
-    "media"
+    "media",
+    "field formatter",
+    "ffmpeg"
   ],
-  "project_description": "Audio Wavesurfer module provide a field formatter to display audio with waveform. This module contains also a sub module Audio Wavesurfer Clips that for clipping audio file.\n\n Features \n Display audio files with waveforms using the wavesurfer library : Wavesurfer library .\n\n This module also have a waveform storage option that generates waveforms on the back side, so that the front side doesn't have to calculate points, allowing instantaneous waveform rendering.\n\n Audio Wavesurfer Clips (sub-modules) \n Provides an UI for clipping audio files using regions of the wavesurfer library. This sub-module uses the Audio Clips API module, which manages clipping and clip type definition.\n\n Post-Installation \n WaveSurfer Library \n You don't need to install WaveSurfer library to use this module because library is downloaded with CDN. However, we recommend that you download it. You can specify on /admin/config/audio_wavesurfer/settings whether you want to use the downloaded library or the cdn.\n\n If you want to install WaveSurfer library you can use Node : WaveSurfer library .\n\n Configurations \n Color and bar are customizable on /admin/config/audio_wavesurfer/settings. \n\n It's also possible on this settings to activate Waveform Storage. IMPORTANT: to use Waveform Storage it is necessary to have FFMpeg library.\n\n Go on audio media configuration /admin/structure/media/manage/audio/display and select Audio Wavesurfer Formatter as Format.\n\n Audio Wavesurfer Clips (sub-modules) \n On the audio media /admin/structure/media/manage/audio/form-display set Audio Wavesurfer Clip Widget on audio field. On settings you can specify which clip type you want to enable.\n\n Additional Requirements \n \n FFMpeg : If you want to use waveform storage options. \n \n Audio Wavesurfer Clips (sub-modules) \n \n Audio Clips API : To create audio clips type and clipping audio. \n Back to top",
+  "project_description": "Audio Wavesurfer provides a field formatter that renders a Drupal media audio file as an interactive waveform player using the wavesurfer.js JavaScript library. The library is loaded from a CDN (jsDelivr) by default, or from a locally installed path configured at /admin/config/audio_wavesurfer/settings, where waveform/progress/cursor colors and bar geometry are also configurable. An optional 'Waveform Storage' feature uses FFmpeg (ffprobe) to pre-compute waveform peak data server-side on media save, storing a JSON peaks file and a 'waveform' content entity so the front end skips per-load peak calculation (useful for long audio). The bundled sub-module audio_wavesurfer_clips adds a widget/UI to define audio clip regions on top of the waveform, backed by the separate Audio Clips API module.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

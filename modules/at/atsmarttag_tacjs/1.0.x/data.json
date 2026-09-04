@@ -1,7 +1,7 @@
 {
   "name": "AT Internet SmartTag for TacJS",
   "data_name": "atsmarttag_tacjs",
-  "description": "Registers the AT Internet SmartTag analytics service under the TacJS consent manager.",
+  "description": "Registers the AT Internet (Piano) SmartTag analytics service as a consent-gated tag inside the TacJS consent manager.",
   "version": "1.0.x",
   "package": "Statistics",
   "composer_namespace": "drupal/atsmarttag_tacjs",
@@ -17,12 +17,15 @@
   "project_url": "https://www.drupal.org/project/atsmarttag_tacjs",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "atsmarttag/atsmarttag",
+    "tacjs/tacjs"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Integrations"
@@ -34,6 +37,7 @@
     "at internet",
     "smarttag",
     "tacjs",
+    "tarteaucitron",
     "consent",
     "analytics",
     "tag management",

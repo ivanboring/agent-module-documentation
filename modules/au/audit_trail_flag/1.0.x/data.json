@@ -1,11 +1,14 @@
 {
   "name": "Audit Trail Flag",
   "data_name": "audit_trail_flag",
-  "description": "Logs flag/unflag operations to the admin_audit_trail module.",
+  "description": "Logs flag/unflag operations as entries in the admin_audit_trail log.",
   "version": "1.0.x",
   "package": "Administration",
   "composer_namespace": "drupal/audit_trail_flag",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/admin_audit_trail": "^1.0",
+    "drupal/flag": "^5.0"
+  },
   "dependent_modules": [
     "admin_audit_trail:admin_audit_trail",
     "flag:flag"
@@ -22,7 +25,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools"

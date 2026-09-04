@@ -1,13 +1,13 @@
 {
   "name": "Atomic Content-Addressable Storage",
   "data_name": "atomic_cas",
-  "description": "Deduplicated content-addressable file storage with cas-public:// and cas-private:// stream wrappers.",
+  "description": "Deduplicated content-addressable file storage with cas-public:// and cas-private:// stream wrappers, preserving full Drupal file entity semantics.",
   "version": "1.0.x",
   "package": "Storage",
   "composer_namespace": "drupal/atomic_cas",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:file"
+    "file"
   ],
   "configure": null,
   "core_version_requirement": "^10.2 || ^11",
@@ -15,20 +15,22 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/atomic_cas",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
-  "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Media",
     "Access control"
   ],
   "subcategories": [
+    "Duplicate detection",
     "File uploads",
+    "File downloads",
     "Private file access"
   ],
   "keywords": [
@@ -36,9 +38,10 @@
     "deduplication",
     "content-addressable",
     "stream wrapper",
-    "cas"
+    "cas",
+    "sha-256"
   ],
-  "project_description": "Atomic CAS provides content-addressable storage for Drupal file entities. Instead of storing every uploaded file as a separate physical copy, the module hashes file contents and stores the source bytes once per unique hash. Multiple file entities can reference the same underlying blob while preserving normal Drupal file semantics such as filenames, file entity IDs, and access control.\n\n Features \n \n Deduplicates uploaded source files by SHA-256 content hash. \n Provides cas-public:// and cas-private:// stream wrappers. \n Preserves Drupal file entity behavior with logical per-file URIs like cas-public://{fid}/{filename} . \n Serves public files through versioned URLs and private files through Drupal-controlled access checks. \n Deduplicates identical image style derivatives for CAS-backed images. \n Provides Drush commands for migration, garbage collection, and blob auditing. \n \n This module is useful for media-heavy Drupal sites where the same file is uploaded multiple times, such as editorial, local government, publishing, and document-heavy platforms.\n\n Post-Installation \n After enabling the module, configure protected blob storage roots in settings.php . Atomic CAS stores physical blobs outside normal public file handling and expects these directories to be writable by Drupal.\n\n Typical setup:\n\n \n Enable the module. \n Add atomic_cas_public_root and atomic_cas_private_root to settings.php . \n Choose or configure file fields that should use CAS-backed storage. \n Use the provided Drush commands to migrate existing files if needed. \n Use manual garbage collection after validating file references. \n \n Public files are exposed through routed URLs. Private files remain protected by Drupal access control.\n\n Additional Requirements \n \n Drupal 10.3 or Drupal 11. \n Writable filesystem locations for CAS public and private blob roots. \n Drush is recommended for migration, audit, and garbage collection workflows. \n \n Recommended modules/libraries \n \n Drush, for migration, auditing, and garbage collection commands. \n \n Similar projects \n Atomic CAS focuses specifically on deduplication via content-addressable storage while preserving Drupal file entity semantics. It is designed for sites that want to reduce duplicate file storage without replacing Drupal's file and media model with a remote-object-only workflow.\n\n Supporting this Module \n Issues, testing, documentation improvements, and real-world implementation feedback are all valuable contributions during the alpha stage.\n\n Community Documentation \n Project documentation should cover installation, required settings.php configuration, migration, rollback, image derivative behavior, and garbage collection workflow.\n\n Status: This project is currently alpha. It is intended for early adopters and further validation before stable production use.\n\n Back to top",
+  "project_description": "Atomic CAS provides content-addressable storage for Drupal file entities. Instead of storing every uploaded file as a separate physical copy, the module hashes file contents with SHA-256 and stores the source bytes once per unique (hash, scheme) pair. Multiple file entities can reference the same underlying blob while preserving normal Drupal file semantics such as filenames, file entity IDs, and access control.\n\nFeatures:\n\n- Deduplicates source files by SHA-256 content hash; physical bytes are stored once.\n- Provides cas-public:// and cas-private:// read-only virtual stream wrappers.\n- Preserves Drupal file entity behavior with logical per-file URIs like cas-public://{fid}/{filename}.\n- Serves public files through versioned, immutably cacheable URLs (/files/cas/{fid}/{short_hash}/{filename}); serves private files through the same route with hook_file_download() access control and no-cache headers.\n- Optional Nginx X-Accel-Redirect and Apache X-Sendfile server acceleration.\n- Deduplicates identical image-style derivatives for CAS-backed images via a shared hash-keyed derivative plus per-file symlink aliases.\n- Provides Drush commands for migration, garbage collection, and blob auditing (with optional re-hash integrity check).\n\nBlob storage roots are configured in settings.php (atomic_cas_public_root and atomic_cas_private_root), not in Drupal config. Both must be writable directories outside the document root. A hook_requirements() check surfaces missing or non-writable roots on the Status Report. An admin dashboard at /admin/reports/atomic-cas shows blob counts, deduplication ratio, space saved, and orphan counts.\n\nThis module is useful for media-heavy Drupal sites where the same file is uploaded multiple times, such as editorial, local government, publishing, and document-heavy platforms. Status: this project is currently a beta release intended for early adopters.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

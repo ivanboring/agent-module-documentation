@@ -1,24 +1,26 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Audit Trail Flag records every flag and unflag operation as an entry in the admin_audit_trail log.
+Audit Trail Flag records every flag and unflag action from the Flag module as an entry in the Admin Audit Trail log.
 
-It is a small bridge module: an event subscriber (`AuditTrailFlagSubscriber`) listens for the Flag module's `ENTITY_FLAGGED` and `ENTITY_UNFLAGGED` events and writes a structured audit-trail row (flag label, entity type, entity id/label) via `admin_audit_trail_insert()`. Bulk unflag operations log one entry per flagging. There is no UI, route, or permission of its own — it simply augments the existing admin_audit_trail report.
+---
 
-Use it when you already run Flag and admin_audit_trail and need an accountability record of who flagged/unflagged what and when.
+Audit Trail Flag is a small bridge module: it registers a `flag` handler with Admin Audit Trail and subscribes to the Flag module's flagging/unflagging events. Whenever an entity is flagged or unflagged, an event subscriber writes an audit-trail row capturing the operation (`flagged`/`unflagged`), the flag label and machine id, and the affected entity's type, label, and id. There is nothing to configure — enabling the module (with `admin_audit_trail` and `flag`) is enough; log entries appear immediately under the Admin Audit Trail report, where they can be filtered by the `flag` type. It provides no routes, permissions, config, or Drush commands of its own; viewing and clearing the log is handled entirely by Admin Audit Trail.
+
 ---
-Logs flag and unflag operations as entries in the admin_audit_trail module.
----
-- Record an audit entry whenever content is flagged
-- Record an audit entry whenever content is unflagged
-- Track bookmarking / moderation flag activity for accountability
-- Log one entry per flagging during bulk unflag operations
-- See flag activity alongside other admin_audit_trail events
-- Capture the flag label and target entity in each log row
-- Audit editorial flags (e.g. "needs review") over time
-- Provide a compliance trail for flag-based workflows
-- Correlate flag events with other logged admin actions
-- Review flag history in the admin audit report
-- Attribute flag/unflag actions to users via the audit log
-- Monitor spam/report flags being set and cleared
-- Add no extra UI while extending existing audit logging
-- Keep flag telemetry in the central audit_trail store
-- Support incident review by inspecting flag timelines
+
+- Record who flagged or unflagged content for accountability and compliance auditing.
+- Track moderation activity when flags are used to mark content as "reported", "spam", or "reviewed".
+- Keep a history of "bookmark", "favorite", or "interested" flags applied to nodes, users, or other entities.
+- Audit bulk unflag operations — each affected flagging is logged as its own entry.
+- Filter the Admin Audit Trail report by the `flag` log type to see only flag activity.
+- Correlate flag events with other logged actions (node, user, comment, etc.) in one central audit trail.
+- See the human-readable description of each event, e.g. `Interested in: node Basic Page`.
+- Identify the exact entity involved via the numeric reference (entity id) stored on each entry.
+- Identify the exact flag involved via the char reference (flag machine id) stored on each entry.
+- Monitor use of custom flags across any flaggable entity type (nodes, users, comments, taxonomy terms, media, etc.).
+- Provide an evidence trail for content-governance workflows that rely on flags.
+- Detect unusual flagging patterns (spikes in flag/unflag activity) from the audit log.
+- Support incident review by reconstructing when a flag was set or removed.
+- Add flag visibility to sites that already standardize on Admin Audit Trail for logging.
+- Integrate flag logging without writing custom code — the module wires itself up on enable.
+- Export or report on flag activity using any tooling that reads Admin Audit Trail entries.
+- Confirm that automated or programmatic flagging (via the Flag API) is being logged the same as UI actions.
+- Retain a record of flag removals even after the flagging entity itself is deleted.
