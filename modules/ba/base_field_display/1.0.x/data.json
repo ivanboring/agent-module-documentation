@@ -1,16 +1,16 @@
 {
-  "name": "Base Field Display",
+  "name": "BaseField Display",
   "data_name": "base_field_display",
-  "description": "Exposes entity base fields (created, author, etc.) in Manage Display view modes.",
+  "description": "Exposes entity base fields (title, uuid, created, author, path...) in the Manage Display UI and view modes.",
   "version": "1.0.x",
   "package": "Fields",
   "composer_namespace": "drupal/base_field_display",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:path"
+    "path"
   ],
-  "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "configure": "base_field_display.settings_form",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/base_field_display",
@@ -27,14 +27,15 @@
     "Content display"
   ],
   "subcategories": [
-    "View modes"
+    "Fields",
+    "Field formatters"
   ],
   "keywords": [
     "base field",
     "display",
     "view mode",
-    "fields",
-    "formatter"
+    "manage display",
+    "field formatter"
   ],
   "project_description": "This module does a very simple thing: it exposes entity base fields in view modes.\n\n It can expose base fields for any core or custom content entities, like Content (node), Media, File, Paragraph, Taxonomy term, User...\n\n Example of BaseFields provided by node entity type:\n\n \n ID (nid) \n UUID (uuid) \n Content Type (type) \n Title (title) \n Authored by (uid) \n Authored on (created) \n ... \n \n This module adds them in view modes with their original available field formatters depending on their type. It also provides very simple string formatters for some core field types that did not have any (uuid, password and path).\n\n Configuration \n After installing the module as usual, you need to activate some base fields in Configuration > Content authoring > BaseField Display.",
   "maintenance_status": "Actively maintained",

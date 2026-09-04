@@ -1,17 +1,18 @@
 {
   "name": "Badge Notification",
   "data_name": "badge_notification",
-  "description": "Displays dynamic, asynchronously-loaded badges (unread counts) on menu items.",
+  "description": "Handle dynamic badges loaded asynchronously.",
   "version": "1.0.x",
   "package": "User Interface",
   "composer_namespace": "drupal/badge_notification",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:views",
-    "drupal:menu_ui"
+    "history",
+    "views",
+    "menu_ui"
   ],
-  "configure": null,
-  "core_version_requirement": "^8||^9||^10||^11",
+  "configure": "badge_notification.admin.settings",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/badge_notification",
@@ -22,22 +23,27 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "badge_notification"
+  ],
   "categories": [
     "User engagement"
   ],
   "subcategories": [
-    "Notifications"
+    "Recent content tracking",
+    "Activity / notification messages"
   ],
   "keywords": [
     "badge",
     "notification",
-    "count",
+    "unread",
+    "new content",
     "menu",
-    "async"
+    "async",
+    "history"
   ],
-  "project_description": "Back to top \n\n Overview \n Only for logged-in users:\n\nDisplay unread statuts on node view: new or updated \n\nDisplay the amount of unread node on a menu item.\n\n Back to top \n\n How it work \n Data are based on the Drupal core history table.\n\nIt just add an extra field on every content type to display the status.\n\nThe extra field display a placeholder. A javascript is launch after the page load and get unread status badge trough ajax and insert it in each placeholders.\n\nNo page load performance loss. Works with every kind of cache\n\n After each node page display drupal core save the timestamp in history table.\n\nSo the status are updated on every node page load.\n\n Back to top \n\n Configuration \n Simple and fast :\n\nExemple : A page display one or multiples views : \n\n \n Install and configure the module \n Edit the menu link -> select the displayed views on the notifications handler field. \n Add the Content Notification Status on the node view mode \n Done !\n \n Back to top \n\n Extend \n This module could be extended with custom plugins.\n\n Back to top",
+  "project_description": "Badge Notification shows small dynamic status/count badges to logged-in users for new or updated content, computed from Drupal core's history table and loaded asynchronously so page caching is unaffected. It adds a hidden 'Content status' extra field to every content type that renders a 'New'/'Updated' marker on the node, and lets you attach unread-count badges to menu links driven by a chosen View. A JavaScript behavior collects the placeholders on the page and posts them to a single JSON controller, which runs the matching BadgeNotification plugin and returns the rendered badge markup for each placeholder. It ships three plugins (node_is_new, views_count_new, views_has_new) and can be extended with custom plugins via the badge_notification annotation plugin type.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

@@ -7,7 +7,9 @@
   "composer_namespace": "drupal/backstop_generator",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:breakpoint"
+    "drupal:breakpoint",
+    "drupal:node",
+    "drupal:path_alias"
   ],
   "configure": "backstop_generator.settings_form",
   "core_version_requirement": "^10||^11",
@@ -26,9 +28,7 @@
   "categories": [
     "Developer tools"
   ],
-  "subcategories": [
-    "Testing / QA tooling"
-  ],
+  "subcategories": [],
   "keywords": [
     "backstop",
     "visual regression",
