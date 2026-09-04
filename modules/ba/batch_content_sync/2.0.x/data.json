@@ -1,14 +1,19 @@
 {
   "name": "Batch Content Sync",
   "data_name": "batch_content_sync",
-  "description": "Pushes and receives full content entities (nodes/media/paragraphs) between environments.",
+  "description": "Pushes and receives full content entities (nodes with nested media, paragraphs, taxonomy and files) between Drupal environments over custom REST endpoints, driven by a Batch API run and a shared access token.",
   "version": "2.0.x",
-  "package": null,
+  "package": "Custom",
   "composer_namespace": "drupal/batch_content_sync",
   "composer_requirements": {},
-  "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^10||^11",
+  "dependent_modules": [
+    "rest",
+    "serialization",
+    "node",
+    "file"
+  ],
+  "configure": "batch_content_sync.settings",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/batch_content_sync",
@@ -19,22 +24,25 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Migration"
+    "Import and export"
   ],
   "subcategories": [
-    "Content staging / deployment"
+    "Content migration / import",
+    "Data export"
   ],
   "keywords": [
     "content sync",
+    "content staging",
     "push",
     "environments",
-    "staging",
-    "deployment"
+    "deployment",
+    "REST",
+    "base64 media"
   ],
-  "project_description": "🌀 Batch Content Sync \n Push and sync content across Drupal environments with ease. \n\nBatch Content Sync helps editors send content to QA, Stage, or Prod using a streamlined interface and REST endpoints.\n\n \n 🚀 Features \n Batch Content Sync provides a lightweight, editor-friendly solution for synchronizing content between Drupal environments such as QA, Stage, and Production.\n\n Key Features: \n\n \n Push content (nodes) to QA, Stage, or Production from the content overview page. \n Custom REST endpoints for receiving structured content payloads. \n Automatically includes referenced media, taxonomy terms, and paragraph items. \n Built-in access token authentication—no need for external contrib modules. \n Clean JSON logging of push attempts for troubleshooting or audit history. \n Minimal dependencies—ideal for lean, CI/CD-friendly deployments. \n \n Use Cases: \n\n \n Editorial teams staging content before production release. \n Development workflows requiring content parity across environments. \n Automating deployments of updated or newly published content. \n Reducing manual duplication effort and copy-paste errors. \n \n \n ⚙️ Post-Installation \n After installing the module, visit the configuration page at:\n\n /admin/config/content/batch-content-sync There you can define the target environment URLs (e.g., QA, Stage, Prod) and set the access token for secured communication.\n\n To use the module:\n\n \n Navigate to Content overview at /admin/content . \n Select one or more content items (nodes). \n From the Action dropdown, choose:\n \n Push to QA \n Push to Stage \n Push to Prod \n \n \n \n Your content will be pushed via custom REST calls to the configured target.\n\n \n 📦 Additional Requirements \n No contrib dependencies required. Works with Drupal Core only.\n\n Make sure:\n\n \n The target site also has Batch Content Sync installed. \n REST endpoints are accessible. \n Access tokens match between environments. \n \n \n 🔧 Recommended Modules / Libraries \n Optional but useful enhancements:\n\n \n Diff – for comparing content before and after sync. \n Paragraphs – supported out-of-the-box. \n Media – also supported for embedded assets. \n \n \n 💸 Supporting this Module \n If this module saves you time or budget, you can support development here:\n\n \n 🧉 Buy me a coffee \n 🤝 Sponsor feature requests via GitHub or issue queue \n \n \n 📚 Community Documentation \n \n Basic docs available in the module’s README.md . \n More coming soon — including video walkthroughs and tutorials. \n Want to contribute? PRs and edits are welcome!",
+  "project_description": "Batch Content Sync is a lightweight Drupal 10/11 module for pushing content — nodes together with their referenced media, paragraphs, taxonomy terms and files — from one environment to another (QA, Stage, Prod) using custom REST endpoints. Editors select nodes on the content overview page and run one of three VBO-style actions (Push to QA/Stage/Prod); each pushed node is normalized (recursively, including base64-encoded file/image/media bytes and Layout Builder sections) and POSTed by a Batch API run to the configured target site, which runs the same module and re-creates or overrides the entity by UUID. Authentication is a single shared access token compared on the receiving controller; there are no contrib dependencies beyond core rest/serialization/node/file. Push and receive payloads are logged (with base64 truncated) to a custom database table viewable at an admin sync-log page.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

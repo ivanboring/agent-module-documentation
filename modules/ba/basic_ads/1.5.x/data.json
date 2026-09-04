@@ -1,24 +1,34 @@
 {
   "name": "Basic Ads",
   "data_name": "basic_ads",
-  "description": "provides simple ad management with placements, scheduling and image/link ads.",
+  "description": "Provides ad management with placements, scheduling, weighted rotation, display blocks, and impression/click tracking.",
   "version": "1.5.x",
   "package": "Advertisement",
   "composer_namespace": "drupal/basic_ads",
   "composer_requirements": {},
   "dependent_modules": [
     "drupal:node",
+    "drupal:taxonomy",
+    "drupal:datetime",
+    "drupal:image",
+    "drupal:text",
+    "drupal:link",
     "drupal:views",
     "drupal:block"
   ],
-  "configure": null,
-  "core_version_requirement": "^10.3||^11",
+  "configure": "basic_ads.settings",
+  "core_version_requirement": "^10.3 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/basic_ads",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "core/jquery",
+    "core/drupal",
+    "core/once",
+    "core/drupalSettings"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
@@ -26,19 +36,23 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
+    "Content display",
     "User engagement"
   ],
   "subcategories": [
-    "Advertising"
+    "Advertising / ad units",
+    "Analytics & tracking"
   ],
   "keywords": [
     "ads",
     "advertising",
     "placement",
     "banner",
-    "marketing"
+    "marketing",
+    "impressions",
+    "click tracking"
   ],
-  "project_description": "Basic Ads \n This module was developed with the help of Claude AI (from Anthropic).\n\n Provides ad management with placements, scheduling, and display blocks. Includes impression and click tracking with a statistics dashboard, and automatically unpublishes expired ads via cron.\n\n Submit bug reports and feature suggestions, or track changes in the issue queue .\n\n Requirements \n This module requires no modules outside of Drupal core.\n\n It depends on the following core modules: Node, Taxonomy, Datetime, Image, Text, Link, Views, and Block.\n\n Installation \n Install as you would normally install a contributed Drupal module. For further information, see Installing Drupal Modules .\n\n On installation the module will automatically create:\n\n \n A \"Basic Ad Placement\" taxonomy vocabulary with default terms (Header, Sidebar, Footer, Content Top, Content Bottom) \n A \"Basic Ad\" content type with image, link, placement, scheduling, and weight fields \n A \"Basic Ads\" View with a block display for placement-based rendering \n Database tables for impression and click tracking \n \n Configuration \n \n Go to Administration > Structure > Taxonomy > Basic Ad Placement to add, edit, or delete placement terms. \n Go to Administration > Content > Add Content > Basic Ad to create an advertisement. Assign one or more placement terms. \n Go to Structure > Block Layout and place a \"Basic Ad block (by placement)\" block in the region of your choice. Select a placement term to filter which ads display, and choose how many ads to show in the \"Number of ads to display\" field (1–50, default 1). The placed block's admin label is auto-set to Basic Ad: {placement name} so you can tell placements apart at a glance on the Block Layout page. \n Go to Administration > Configuration > System > Basic Ads Settings to exclude roles from ad tracking. \n Go to Administration > Reports > Basic Ad Reporting to view ad statistics including impressions, clicks, and CTR. \n \n Weighting and rotation \n Each ad has a Weight field (range −50 to +50, default 0). Lower weight means higher priority — standard Drupal weight semantics. Each 10 units of weight roughly halves or doubles an ad's relative odds of being picked when there are more eligible ads than the block's \"Number of ads to display\" setting. Equal weights give a uniform random selection. The selection is cached for 60 seconds and rotates to a new random subset in the next minute, so different ads surface over time without breaking page caches.\n\n Scheduling \n \n Leave Start Date empty for immediate display, or set a future date. \n Leave End Date empty for no expiration, or set an end date. \n Expired ads are automatically unpublished by cron. \n \n Tracking and privacy \n \n Impressions are tracked client-side via JavaScript when ads render in a placement block. \n Clicks are tracked server-side through a redirect endpoint. \n IP addresses are automatically anonymized (IPv4 last octet zeroed, IPv6 truncated to 48 bits). \n Old tracking data (older than 1 year) is automatically purged via cron. \n You can exclude specific roles (e.g. authenticated editors) from impression and click tracking via Configuration > System > Basic Ads Settings . \n \n Troubleshooting \n Ads not displaying: \n\n \n Check that ads are published. \n Verify the ad placement term matches the block configuration. \n Check start/end dates are correct. \n Ensure the block is placed in a visible region. \n Clear Drupal cache. \n \n Impressions not tracking: \n\n \n Check the browser network tab for /ad/view/ requests to verify the tracking library is loading. \n Ensure the ad has a placement (tracking only fires when a placement is present). \n Check that the current user's role is not excluded in Configuration > System > Basic Ads Settings . \n \n Schedule not working: \n\n \n Ensure cron is running regularly for expired ad cleanup. \n Check your site's timezone settings. \n Clear cache after changing dates. \n \n Maintainers \n \n charlie59 - charlie59",
+  "project_description": "Basic Ads provides lightweight advertisement management for Drupal built entirely on core node/taxonomy/views. On install it creates a 'Basic Ad' content type (image + link + placement + start/end date + weight fields), a 'Basic Ad Placement' taxonomy vocabulary with default terms (Header, Sidebar, Footer, Content Top, Content Bottom), a 'Basic Ads' View, and two custom database tables for impression and click tracking. Ads are shown via the 'Basic Ad block (by placement)' block, which emits a cacheable placeholder and loads the actual ad client-side from an uncacheable /ad/fragment endpoint so the host page stays fully cached while ads rotate per view. Selection uses weighted random sampling (Efraimidis-Spirakis) driven by each ad's weight field. Impressions are tracked client-side, clicks server-side through a redirect endpoint; IP addresses are anonymized and tracking data older than one year is pruned via cron. Cron also unpublishes expired ads. A statistics dashboard reports impressions, clicks, and CTR overall and by placement. Configured roles can be excluded from tracking.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

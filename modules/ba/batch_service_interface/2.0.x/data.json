@@ -1,14 +1,14 @@
 {
   "name": "Batch Service Interface",
   "data_name": "batch_service_interface",
-  "description": "Provides a batch helper service and interface for defining batches as services.",
+  "description": "Provides a batch helper service and abstract class to support it.",
   "version": "2.0.x",
   "package": "Developer",
   "composer_namespace": "drupal/batch_service_interface",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^10.3||^11",
+  "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/batch_service_interface",
@@ -21,22 +21,22 @@
   ],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
   ],
   "subcategories": [
-    "APIs / frameworks"
+    "Queue / background processing"
   ],
   "keywords": [
     "batch",
     "service",
     "interface",
-    "api",
+    "abstract class",
     "developer"
   ],
-  "project_description": "This module provides an abstract class and interface and design pattern to make\n\nit easier to write batch processing for Drupal 8 that leverage the service\n\ninjection system provided by Symfony.\n\n Developers can create a service that can be used to generate and execute a\n\nbatch process that has easy access to translation, logging, and any other\n\nservices from the service container as needed.\n\n It is meant both to be useful, and to encourage discussion of better ways to\n\nsupport batches in Drupal 8 and beyond.",
+  "project_description": "Provides an abstract class, an interface, and a design pattern that make it easier to write Drupal Batch API processing as dependency-injected services. A developer extends AbstractBatchService (or implements BatchServiceInterface) to define a batch as a service that has clean access to translation, logging, and any other container services, instead of writing procedural batch operation arrays with global function callbacks. It ships a hidden batch_example submodule demonstrating the pattern.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

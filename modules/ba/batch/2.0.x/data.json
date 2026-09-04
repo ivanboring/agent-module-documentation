@@ -1,16 +1,18 @@
 {
   "name": "Batch API (developer tools)",
   "data_name": "batch",
-  "description": "provides developer tools for using Drupal's Batch API.",
+  "description": "Developer tools for utilizing Drupal's Batch API: OO operation base classes, a batch builder, a finish-operation class, and Drush code generators.",
   "version": "2.0.x",
   "package": null,
   "composer_namespace": "drupal/batch",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/awareness": "^2.0"
+  },
   "dependent_modules": [
     "awareness:awareness"
   ],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/batch",
@@ -21,22 +23,25 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
   ],
   "subcategories": [
-    "Queue / background processing"
+    "Queue / background processing",
+    "Code generation / scaffolding"
   ],
   "keywords": [
     "batch",
     "batch api",
-    "developer",
-    "tools",
-    "framework"
+    "operation",
+    "highwater",
+    "batch builder",
+    "drush generate",
+    "developer"
   ],
-  "project_description": "Developer tools for creating batch operations.\n\n Usage \n This module does not provide any user-facing functionality. The functionality\n\nallows developers to more easily create batch functionality, with better\n\norganization and usability.\n\n Includes:\n\n \n Base classes for creating operations \n Default/base class for finished operations \n Batch builder to create batch array definitions \n Drush generate commands to quickly whip-up new operations and finished operations \n \n See the README for examples and further information.\n\n Breaking change \n Note that the 2.0.0-alpha5 release includes a breaking change to highwater type batch operations. If you're extending the highwater base class, you will need to update your code to conform to the new `::getItems` method.\n\n Back to top",
+  "project_description": "Batch API provides developer tooling around Drupal's core Batch API. It offers object-oriented operation base classes (EnumeratedOperationBase for a fixed list of items, HighwaterOperationBase for progressively loaded/very large sets), a BatchBuilder that extends core's builder to accept operation objects, a FinishDefault class that can redirect on completion, and two Drush code generators (batch:operation, batch:finish) to scaffold new classes. It has no routes, forms, permissions, or configuration; developers use its classes in their own code. Depends on the Awareness module for entity-type-manager and memory-cache awareness traits.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

@@ -1,13 +1,13 @@
 {
   "name": "Base Field Display Configurability Override",
   "data_name": "base_field_display_override",
-  "description": "Makes base fields available in Field UI for display/form configuration regardless of the entity type's declaration.",
+  "description": "Base fields may now be available in Field UI for configuration whatever the entity type has declared.",
   "version": "2.1.x",
   "package": "Fields",
   "composer_namespace": "drupal/base_field_display_override",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "base_field_display_override.base_field_display_override_form",
   "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -17,16 +17,17 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools",
     "Content editing experience"
   ],
   "subcategories": [
-    "Configuration management"
+    "Fields",
+    "Display mode governance"
   ],
   "keywords": [
     "base fields",
@@ -35,7 +36,7 @@
     "override",
     "site builder"
   ],
-  "project_description": "Base Field Display Override lets the site builder enforce entity base field visibility in field UI.\n\n For any entity, the hidden fields (ID, created date, author...) become accessible in the displays and you can use formatters to use them.",
+  "project_description": "Base Field Display Configurability Override lets a site builder flip the display-configurability flag on an entity type's base fields, so normally-locked base fields (created, changed, uid, langcode, and other entity-type-declared base fields) can be surfaced in the Field UI 'Manage display' screens and assigned formatters. It provides a single admin form that writes a config map (visible / hidden / no-override per entity type and field) and a hook_entity_base_field_info_alter() implementation that applies that map by calling BaseFieldDefinition::setDisplayConfigurable('view', ...) at field-definition build time.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
