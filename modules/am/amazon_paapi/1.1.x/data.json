@@ -1,25 +1,29 @@
 {
-  "name": "Amazon PA-API",
+  "name": "Amazon Product Advertising API",
   "data_name": "amazon_paapi",
-  "description": "A helper for using the Amazon Product Advertising API (PA-API 5) from Drupal.",
+  "description": "Drupal helper for using the Amazon Product Advertising API 5 SDK.",
   "version": "1.1.x",
   "package": "Amazon",
   "composer_namespace": "drupal/amazon_paapi",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "thewirecutter/paapi5-php-sdk": "^1.3"
+  },
   "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^10.1||^11",
+  "configure": "amazon_paapi.settings_form",
+  "core_version_requirement": "^10.1 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/amazon_paapi",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "thewirecutter/paapi5-php-sdk"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Integrations"
@@ -32,9 +36,10 @@
     "paapi",
     "product advertising",
     "affiliate",
-    "api"
+    "api",
+    "sdk"
   ],
-  "project_description": "This module adds Amazons PA API SDK 5.0 as a library with minimal configuration in the Drupal backend. It is meant for developers who want to utilize the SDK in Drupal to create their own features.\n\n Back to top \n\n Features \n \n provides a service to get & initialize the PA API SDK client \n manage credentials via admin backend form (or read from environment variables) \n a test page to query for ASIN & inspect responses \n error handling & logging \n \n Back to top \n\n Permissions \n administer amazon paapi - can administer credentials & run ASIN test queries\n\n Back to top \n\n How is this different to the amazon contrib module? \n amazon_paapi is more like a factory for the amazon PA API SDK and has no features build with it whatsoever, the amazon module has a feature set like media integration, search and other things.\n\n Back to top",
+  "project_description": "A lean developer helper that wires the Amazon Product Advertising API 5.0 (PA-API 5) PHP SDK (thewirecutter/paapi5-php-sdk) into Drupal. It exposes a single service (amazon_paapi.amazon_paapi) that builds and returns a ready-to-use, credential-configured SDK DefaultApi client, plus a settings form for the AWS access key, secret, host, region and partner/associate tag. Credentials can alternatively be supplied via environment variables, which override the stored config. The module ships no product-display features of its own: developers assemble GetItems / SearchItems / GetVariations / GetBrowseNodes requests directly with the SDK classes. A Test ASIN admin page runs a live GetItems request so integrators can inspect a real response. Unlike the amazon contrib module (media integration, search, etc.), amazon_paapi is purely a factory/wrapper for the SDK client.",
   "maintenance_status": "Seeking co-maintainer(s)",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "not-covered",

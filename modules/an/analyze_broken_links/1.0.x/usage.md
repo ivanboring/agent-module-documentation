@@ -1,37 +1,32 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Analyze Broken Links checks content for broken internal and external links.
+Analyze Broken Links extracts the links from your content and verifies each one's HTTP status, surfacing dead and redirected links per page and site-wide.
 
 ---
 
-Analyze Broken Links **checks content for broken internal and external links** — crawling links found in
-content and reporting which return errors (404/timeouts), integrated with the Analyze module's reporting. It
-depends on the Analyze module, provides its own permissions, in the Analyze package.
-
-Use it to find dead links across your content. It is an admin/content-QA tool: the settings/run route requires
-**`administer analyze settings`**, and the checker makes outbound HTTP requests to the URLs that appear in your
-content (an admin-gated crawl — the request targets come from existing content links, and only admins can
-trigger it, so the server-side-request surface is limited to trusted operators). It has no access-control role
-beyond its permission. Run the broken-link analysis.
+Analyze Broken Links is an add-on for the Analyze module that turns broken-link detection into a first-class content-quality signal. It registers an Analyze plugin (`analyze_broken_links_checker`) that renders each entity, parses out the URLs it contains (`<a href>`, `<img src>`, `<iframe src>`, `<script src>`, and other media `src` attributes), and issues concurrent server-side HTTP requests (HEAD first, GET fallback) to determine each link's status code, final redirect target, and response time. Results are cached in two dedicated database tables and shared across every entity that references the same URL, so a popular URL is checked only once. Content authors see a per-page "Broken Links" health gauge in the Analyze tab; administrators get a filterable site-wide Views report, a Drupal status-report warning when broken links exist, and three Drush commands. Cron keeps the data fresh by rechecking stale URLs and auto-scanning newly published entities of the content types you enabled. A settings form lets you tune request timeout, concurrency, recheck interval, check scope (internal/external/both), URL exclusion patterns, User-Agent, and which HTTP status codes count as "broken". The module needs no API keys or external services — checking runs entirely on your server via core's Guzzle HTTP client.
 
 ---
 
-- Check content for broken links.
-- Crawl internal + external links.
-- Report 404s/timeouts.
-- Depend on the Analyze module.
-- Provide its own permissions.
-- Integrate Analyze reporting.
-- Require 'administer analyze settings'.
-- Make outbound requests to content links.
-- Limit the crawl to trusted admins.
-- Have no access-control role beyond permission.
-- Run the analysis.
-- Handle broken-link checks.
-- Find dead links.
-- Configure the check.
-- Check links.
-- Handle the crawl.
-- Report links.
-- Scan links.
-- Restrict the permission.
-- Provide broken-link analysis.
+- Detect dead outbound links (404/410/5xx) in article bodies before visitors and search engines hit them.
+- Give content editors an at-a-glance link-health gauge on each node's Analyze tab.
+- Run a site-wide broken-links report at `/admin/config/analyze/broken-links` → Results tab, filtered by status, scope, or content type.
+- Surface a warning on the Drupal status report page (`/admin/reports/status`) whenever broken links are present.
+- Check links from the command line in CI: `drush analyze:broken-links:check node/123`.
+- Emit machine-readable JSON for pipelines: `drush analyze:broken-links:report --format=json`.
+- Show only broken links for a single node: `drush analyze:broken-links:check node/123 --status=broken`.
+- Limit checking to external links only during an SEO audit: `--scope=external`.
+- Recheck stale URLs on demand after a maintenance window: `drush analyze:broken-links:recheck --limit=200`.
+- Auto-scan freshly published content on cron without manual batch runs.
+- Batch-scan a whole content type via Analyze's UI/CLI: `drush analyze:batch --analyzers=analyze_broken_links_checker`.
+- Find internal links left dangling after deleting or restructuring pages.
+- Exclude noisy or intentionally non-HTTP links (`mailto:*`, `tel:*`, `javascript:*`, `#*`) from checks.
+- Skip staging or third-party hosts by adding wildcard exclusion patterns such as `*://staging.example.com/*`.
+- Tune the recheck interval (6h–7d) so external links are re-verified on a cadence that suits your site.
+- Cap request timeout (1–60s) and concurrency (1–20) to stay within your server's outbound-request budget.
+- Treat additional status codes as broken (e.g. add 403 or 521–523) for stricter link-quality gates.
+- Restrict which roles can see link-health data via the `access broken links reports` permission.
+- Track redirect chains and see the final destination URL for links returning 3xx.
+- Feed broken-link counts into content-audit and site-health dashboards.
+- Identify images and embedded media (`img`, `iframe`, `video`, `audio`, `source`) that no longer load.
+- Measure per-link response time to spot slow external dependencies.
+- Automatically invalidate a page's cached link data when the content is edited or deleted.
+- Report the number of analyzed entities per content type for coverage tracking.

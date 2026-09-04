@@ -1,16 +1,16 @@
 {
   "name": "Analyze PostHog",
   "data_name": "analyze_posthog",
-  "description": "Displays PostHog analytics (pageviews, visitors, sessions) inside Drupal.",
+  "description": "Displays PostHog analytics data (pageviews, visitors, sessions, bounce rate, conversions) for entities with URL paths, plus a sitewide report and Drush commands.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Analyze",
   "composer_namespace": "drupal/analyze_posthog",
   "composer_requirements": {},
   "dependent_modules": [
-    "analyze:analyze",
-    "key:key"
+    "analyze",
+    "key"
   ],
-  "configure": null,
+  "configure": "analyze_posthog.settings",
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -18,10 +18,12 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drush/drush": "^12 || ^13 for Drush command support"
+  },
   "submodules": [],
   "provides_permissions": true,
-  "provides_drush_commands": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
@@ -35,9 +37,11 @@
     "analytics",
     "analyze",
     "metrics",
+    "hogql",
+    "conversions",
     "tracking"
   ],
-  "project_description": "This module is part of the Analyze module ecosystem and included in DXPR CMS .\n\n Back to top \n\n Your Analytics Data Belongs Next to Your Content, Not in Another Tab \n You're editing a page. How many visitors did it get this month? Is traffic growing or declining? Which countries and devices are your audience using? Right now you'd switch to PostHog, find the URL, set the date range, and read a dashboard. With this module, that data is right there on the Analyze tab: every entity, every metric, zero context switching.\n\n \n You need Analyze PostHog if \n \n You use PostHog for product analytics (cloud or self-hosted) and want to see traffic data per page inside Drupal \n Your content team needs pageview, visitor, and session counts without leaving the CMS \n You want to compare this period to the previous one and spot trends at a glance, not just static numbers \n You need to break down traffic by referrer, country, device, or browser for targeted content decisions \n You are building a marketing CMS and need analytics data integrated directly into the editorial workflow \n \n Back to top \n\n How It Works \n Install the module, store your PostHog API key using the Key module, enter your PostHog host and project ID in the settings, and you're connected. Every content entity with a URL path gets analytics data in its Analyze tab, pulled live from PostHog's HogQL API. A sitewide report surfaces traffic patterns across your entire site.\n\n Back to top \n\n What You Get \n \n \n Pageviews, visitors, sessions, and bounce rate per page \n Every content entity shows its PostHog performance in the Analyze tab, with change vs the previous period (e.g., \"397 pageviews (+12.3%)\") so you see trends, not just numbers.\n\n \n \n Dimension breakdowns \n Drill into the full report to see where your traffic comes from and how it behaves:\n\n \n Referrer : which sites and campaigns send visitors to this page \n Country : geographic distribution of your audience \n Device : desktop vs mobile vs tablet breakdown \n Browser : Chrome, Firefox, Safari, and others \n Page : top pages across your site (sitewide report) \n \n \n \n Sitewide and entity-level reports \n The sitewide report at /admin/reports/posthog shows KPIs and dimension tables for your entire site. Entity reports show the same data scoped to a single page. Both include previous period comparison.\n\n \n \n Filters for focused analysis \n Filter reports by country, status (new, up, down, lost), and text search to zero in on the data that matters. Filters work on both sitewide and entity reports.\n\n \n \n Session replay link \n Jump directly from the Analyze tab to PostHog's session replay, pre-filtered to the current page, and watch real users interact with your content.\n\n \n \n Conversion attribution (coming soon) \n Connect page visits to business outcomes. Define conversion goals (signups, purchases, form submissions) and see which pages drive the most conversions, using PostHog's session-based attribution.\n\n \n \n Drush commands \n Query analytics for any URL, view sitewide reports, check connection status, and clear the cache from the command line. Useful for scripted reporting, CI pipelines, and DevOps workflows.\n\n \n \n Back to top \n\n Getting Started \n \n Install with Composer: composer require drupal/analyze_posthog \n Enable the module and the Key module \n Create a PostHog personal API key with read access \n Store the API key at /admin/config/system/keys (Key module) and configure your PostHog host and project ID at /admin/config/analyze/posthog \n Enable the analyzer per content type at /admin/config/content/analyze-settings \n \n \n Prefer a turnkey demo site? \n Spin up DXPR CMS : Drupal pre-configured with DXPR Builder, DXPR Theme, the full Analyze suite including PostHog integration, and security best practices out of the box.\n\n Get DXPR CMS » \n\n \n Additional requirements \n \n This module requires:\n\n \n Analyze module (>=1.1.0) \n Key module for secure API key storage \n A PostHog account (cloud or self-hosted) with a personal API key …",
+  "project_description": "This module is part of the Analyze module ecosystem and included in DXPR CMS .\n\n Back to top \n\n Your Analytics Data Belongs Next to Your Content, Not in Another Tab \n You're editing a page. How many visitors did it get this month? Is traffic growing or declining? Which countries and devices are your audience using? Right now you'd switch to PostHog, find the URL, set the date range, and read a dashboard. With this module, that data is right there on the Analyze tab: every entity, every metric, zero context switching.\n\n \n You need Analyze PostHog if \n \n You use PostHog for product analytics (cloud or self-hosted) and want to see traffic data per page inside Drupal \n Your content team needs pageview, visitor, and session counts without leaving the CMS \n You want to compare this period to the previous one and spot trends at a glance, not just static numbers \n You need to break down traffic by referrer, country, device, or browser for targeted content decisions \n You are building a marketing CMS and need analytics data integrated directly into the editorial workflow \n \n Back to top \n\n How It Works \n Install the module, store your PostHog personal API key using the Key module, enter your PostHog host and project ID in the settings, and you're connected. Every content entity with a URL path gets analytics data in its Analyze tab, pulled live from PostHog's HogQL query API. A sitewide report surfaces traffic patterns across your entire site.\n\n Back to top \n\n What You Get \n Pageviews, visitors, sessions, and bounce rate per page, each with change vs the previous period. Dimension breakdowns by referrer, country, device, browser, and (sitewide) page. Sitewide and entity-level reports with previous-period comparison, status/country/text filters, and pagination. A session replay deep-link pre-filtered to the current page. Optional conversion-goal attribution mapping PostHog events to business outcomes and revenue. Drush commands to query analytics, run reports, check status, list goals, and clear cache.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

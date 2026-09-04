@@ -10,4 +10,7 @@
 - **Config key:** `analog_digital_clock.settings:analog_digital_clock_skin` (1-4).
 - **Library:** analog skin needs `snap.svg` at `libraries/snap.svg/snap.svg-min.js`.
 
-**Security:** Single admin config route gated by `administer site configuration`; no anonymous, mutating, or data endpoints. Declares an `administer analog_digital_clock` permission (restrict access) that the routing does not actually use.
+**Solution docs**
+- **Block, settings form, config object/schema, theme hook, libraries, how to operate it** → [config/settings.md](config/settings.md)
+
+**Notes:** Single admin config route gated by `administer site configuration` (a `ConfigFormBase`, so CSRF-protected); no anonymous, mutating, or data endpoints. The skin value is used only in numeric Twig comparisons, never printed into markup. Declares an `administer analog_digital_clock` permission (restrict access) that the routing does not actually use.

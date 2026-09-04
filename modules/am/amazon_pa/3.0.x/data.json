@@ -1,20 +1,22 @@
 {
   "name": "Amazon PAAPI5",
   "data_name": "amazon_pa",
-  "description": "Integrates with the Amazon Product Advertising API V5 (product data / affiliate).",
+  "description": "Integrates the Amazon Product Advertising API (v5 / Creators API) to fetch, cache and display product data, prices, images and affiliate links.",
   "version": "3.0.x",
   "package": "Amazon",
   "composer_namespace": "drupal/amazon_pa",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": "amazon_pa.admin_settings",
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/amazon_pa",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "Amazon Creators/PA-API PHP SDK (installed manually to /libraries/creatorsapi-php-sdk, see INSTALL.txt)"
+  ],
   "suggests": {},
   "submodules": [
     "amazon_pa_filter",
@@ -25,19 +27,23 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Integrations"
+    "Integrations",
+    "E-commerce"
   ],
   "subcategories": [
-    "Third-party API"
+    "Advertising / ad networks",
+    "Pricing / price lists"
   ],
   "keywords": [
     "amazon",
     "product advertising",
     "paapi",
+    "creators api",
     "affiliate",
-    "products"
+    "products",
+    "asin"
   ],
-  "project_description": "Amazon drops support for the PAAPI at the end of January 2026. \n The new API is the Creator API: https://affiliate-program.amazon.com/creatorsapi \n Old credentials will not wo0rk, you need to generate new for the Creator API \n I updated the module to use the new api with branch 3.x \n All other versions will not work no more! \n \n I myself, marcoka, use the 3.0.0 in production now.\n\nAttention: The current 3.x version will lead to WSOD on some admin pages.\n\nI am investigating right now, but i still use it in production because it has no effect on the frontend.\n\n \n\n \n There is no repository for the amazon SDK \n You need to install it manually, see install.txt \n \n Legacy information and docs \n Upgrade Drupal 9 to 10 \n Read this: https://www.drupal.org/forum/support/module-development-and-code-questi… \n\nTo update i needed to remove the module with composer. Not uninstall just remove or your data is gone!\n\nFrom Drupal 10 we use a new repository. See composer.json inside the module folder.\n\nRemove any SDKs you manually put inside the module or the libraries folder.\n\n Install the Amazon SDK \n This module uses the official amazon php SDK that can be found here : https://webservices.amazon.com/paapi5/documentation/quick-start/using-s… \n\nIt uses libraries support, READ the INSTALL.txt! \n\n It turns out there is a guzzle dependecy problem and if we update to the latest sdk we get dependecy war BUT can not update because drupal core D9 doesnt use the latest guzzle. So you HAVE TO USE THE REPOSITORY DWW SET UP! \n\n Manual install of the SDK \n THIS DOES NOT APPLY no more cince beta16 \n\n Is required for the latest dev i will publish in a few days but will also work in general.\n\nThats how i marcoka, use it currently.\n\n Download the SDK 1.1 and delete everything expect the src and vendor folder!\n\nInside the vendor folder you can delete everything but not the composer folder and not the autoload.php\n\n Templates EU and US \n EU forces us now to show prices in a special ways. The new templates reflect that. As far in the US you do not need that and the attrubutes are also not avaliable there as far as i know.\n\n[#3282278]\n\nFor US users you can use own templates. You can use the ones from beta 11 as a starting point: https://www.drupal.org/project/amazon_pa/releases/2.1.0-beta11 \n\nCopy them over to your theme and modify them as\n\nyou like\n\n Updating! \n After an update the sdk folder you copied over is gone! Remember to copy it back. Longterm plan is to use librari\n\n \n\n Install the SDK \n This module uses the official amazon php SDK that can be found here : https://webservices.amazon.com/paapi5/documentation/quick-start/using-s… \n\nIt uses libraries support, READ the INSTALL.txt!\n\n It turns out there is a guzzle dependecy problem and if we update to the latest sdk we get dependecy war BUT can not update becasue drupal core D9 doesnt use the latest guzzle. So you HAVE TO USE THE REPOSITORY DWW SET UP! \n\n Delete everything expect the src and vendor folder! es but i couldnt figure that out by now. Samples welcome, se issue queue.New version uses libraries folder\n\n Update from the amazon module \n Read this about the db updates.\n\n https://www.drupal.org/project/amazon_pa/issues/3277715 \n\n IMPORTANT Info D8 1.5, move the sdk from module folder to /libraries \" \n\n Info Update from 1.4 to 1.5 for D7 \n\n Be sure to redownload the sdk into the library folder, see install txt!\n\n My motivation for maintaining this is, that i use the amazon module actively on multiple sites. \n\n Drupal 9 \n Drupal 9 development will be done ONLY in 2.0.x. Currently that is a development version. I run it on a site i port to D9. When i put it live i will do a stable release because i tested it on my site.\n\n Drupal 8 \n The D8 is a close port of the D7 version. Media integration and the participants views handler,autocomplete field is not ported yet. Any co-maintainers welcome.\n\n Current Features D8 \n \n Normal field and field formatters \n Textfilter \n Views integration for basic fields. Field …",
+  "project_description": "Amazon PAAPI5 is a Drupal wrapper and caching layer around the Amazon Product Advertising API (branch 3.x targets Amazon's newer Creators API). Given an ASIN it fetches product data (title, brand, prices, savings, images, contributors, sales rank) through Amazon's official PHP SDK, cleans it into a set of local tables and exposes it for display. The base module provides the admin settings, credential storage, cron-based refresh and the theming/templating layer; the bundled submodules add the [amazon:ASIN:selector] text filter (amazon_pa_filter) and an ASIN field type with field formatters and Views integration (asin). The Amazon SDK is not shipped and must be installed manually into /libraries as described in INSTALL.txt.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

@@ -3,16 +3,20 @@
   "data_name": "analyze_ai_content_marketing_audit",
   "description": "AI-powered content marketing audit analyzing usability, knowledge level, actionability, accuracy, business value, messaging, and brand voice fit.",
   "version": "1.x",
-  "package": "AI",
+  "package": "Analyze",
   "composer_namespace": "drupal/analyze_ai_content_marketing_audit",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/analyze": "^1.2",
+    "drupal/ai": "^1.0",
+    "drupal/views_color_scales": "^1.0"
+  },
   "dependent_modules": [
-    "drupal:views",
-    "analyze:analyze (>=1.3.0)",
-    "views_color_scales:views_color_scales (>=1.1.0)",
-    "ai:ai"
+    "views",
+    "analyze",
+    "views_color_scales",
+    "ai"
   ],
-  "configure": null,
+  "configure": "analyze_ai_content_marketing_audit.settings",
   "core_version_requirement": "^10.2 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -27,19 +31,19 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Artificial Intelligence"
+    "Artificial Intelligence (AI)"
   ],
   "subcategories": [
-    "AI analysis"
+    "AI content risk analysis"
   ],
   "keywords": [
     "ai",
     "marketing audit",
     "analyze",
-    "content",
+    "content scoring",
     "llm"
   ],
-  "project_description": "This module is part of the AI module ecosystem and included in DXPR CMS .\n\n Back to top \n\n Find Out Why Some Content Converts and Some Doesn't \n You published 200 blog posts. Some drive signups, most don't, and nobody knows why. This module scores every piece of content against seven proven marketing factors - usability, actionability, business value, and more - so you stop guessing and start optimizing.\n\n \n You need AI Content Marketing Audit if \n \n Your content performs inconsistently and you can't pinpoint what separates winners from duds \n You have a large content library that's never been systematically evaluated \n Your marketing team makes content decisions based on gut feeling rather than measurable criteria \n You want to benchmark new content against proven marketing principles before publishing \n \n Back to top \n\n What You Get \n \n \n Seven marketing factors scored per page \n Each content entity is evaluated on Usability, Knowledge Level, Actionability, Accuracy, Business Value, Messaging, and Brand Voice Fit - with scores from -1.0 (poor) to +1.0 (excellent).\n\n \n \n Quantitative and qualitative analysis \n Numeric scoring for measurable factors plus categorical classification for subjective ones - giving you both the numbers and the narrative.\n\n \n \n Fully customizable factors \n Add your own marketing factors, remove ones that don't apply, reorder by priority, and define custom options for qualitative dimensions.\n\n \n \n Batch analysis for content audits \n Score your entire content library to identify low-performing content that needs rewriting, high performers worth promoting, and patterns across content types.\n\n \n \n AI Coding Assistant Integration \n Marketing audit analysis is available to AI coding\n\n assistants through the Analyze module's built-in\n\n Agent\n\n Skills file. Run\n\n drush analyze:setup-ai to enable, then ask\n\n naturally:\n\n \n \"Audit content marketing quality on all\n\n articles\" \n \"Check the usability score for landing\n\n pages\" \n \"Run a marketing audit on all published\n\n content\" \n \n Compatible with Claude Code, Codex CLI, Gemini CLI,\n\n GitHub Copilot, Cursor, and other tools supporting the\n\n standard.\n\n \n \n Back to top \n\n Getting Started \n \n Set up an AI provider at /admin/config/ai/providers \n Review and customize audit factors at /admin/config/analyze/content-marketing-audit \n Enable the analyzer per content type at /admin/config/content/analyze-settings \n Open any content entity's Analyze tab to see the scores \n \n \n Prefer a turnkey demo site? \n Spin up DXPR CMS - Drupal pre-configured with DXPR Builder, DXPR Theme, the full Analyze suite including AI Marketing Audit, and security best practices out of the box.\n\n Get DXPR CMS » \n\n \n Additional requirements \n \n This module requires:\n\n \n Analyze module (>=1.1.0) \n AI module with a configured chat provider \n Views Color Scales module \n \n\n Related Modules \n \n Analyze - Required. Provides the plugin framework and Analyze tab this module extends \n AI - Required. Supplies the LLM provider used for scoring content against marketing factors \n Views Color Scales - Required. Renders color-coded score columns in the marketing audit Views report \n AI Content Security Audit - Sibling Analyze plugin that detects PII and credential leaks \n AI Sentiments Analysis - Sibling Analyze plugin that measures tone, trust, and reading level \n Analyze Broken Links - Sibling Analyze plugin that checks link health without AI \n \n AI Content Marketing Audit is part of the Analyze suite included in DXPR CMS , a turnkey marketing CMS for Drupal that combines content analysis, a premium Drupal theme , and a drag-and-drop layout builder . See getting started or explore pricing .\n\n Back to top",
+  "project_description": "This module is part of the AI module ecosystem and included in DXPR CMS .\n\n Back to top \n\n Find Out Why Some Content Converts and Some Doesn't \n You published 200 blog posts. Some drive signups, most don't, and nobody knows why. This module scores every piece of content against seven proven marketing factors - usability, actionability, business value, and more - so you stop guessing and start optimizing.\n\n \n You need AI Content Marketing Audit if \n \n Your content performs inconsistently and you can't pinpoint what separates winners from duds \n You have a large content library that's never been systematically evaluated \n Your marketing team makes content decisions based on gut feeling rather than measurable criteria \n You want to benchmark new content against proven marketing principles before publishing \n \n Back to top \n\n What You Get \n \n \n Seven marketing factors scored per page \n Each content entity is evaluated on Usability, Knowledge Level, Actionability, Accuracy, Business Value, Messaging, and Brand Voice Fit - with scores from -1.0 (poor) to +1.0 (excellent).\n\n \n \n Quantitative and qualitative analysis \n Numeric scoring for measurable factors plus categorical classification for subjective ones - giving you both the numbers and the narrative.\n\n \n \n Fully customizable factors \n Add your own marketing factors, remove ones that don't apply, reorder by priority, and define custom options for qualitative dimensions.\n\n \n \n Batch analysis for content audits \n Score your entire content library to identify low-performing content that needs rewriting, high performers worth promoting, and patterns across content types.\n\n \n \n AI Coding Assistant Integration \n Marketing audit analysis is available to AI coding assistants through the Analyze module's built-in Agent Skills file. Run drush analyze:setup-ai to enable, then ask naturally.\n\n \n \n Back to top \n\n Getting Started \n \n Set up an AI provider at /admin/config/ai/providers \n Review and customize audit factors at /admin/config/analyze/content-marketing-audit \n Enable the analyzer per content type at /admin/config/content/analyze-settings \n Open any content entity's Analyze tab to see the scores \n \n \n Additional requirements \n \n This module requires:\n\n \n Analyze module (>=1.3.0) \n AI module with a configured chat provider \n Views Color Scales module \n \n\n AI Content Marketing Audit is part of the Analyze suite included in DXPR CMS , a turnkey marketing CMS for Drupal that combines content analysis, a premium Drupal theme , and a drag-and-drop layout builder .\n\n Back to top",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
