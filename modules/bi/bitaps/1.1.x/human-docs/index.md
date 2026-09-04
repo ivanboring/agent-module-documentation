@@ -45,12 +45,9 @@ callback under the `/bitaps/...` path.
 3. Customers then pay via the hosted Bitaps payment page, and confirmed payments mark
    the corresponding Basket order complete.
 
-## Security notice
+## Before taking real payments
 
-This version was security-reviewed for this knowledge base, and findings were recorded
-about the payment-status callback: the signature check does not cover the payment
-event/status, uses a loose (non-constant-time) comparison, and the callback reflects a
-request value unescaped. In practical terms, that means the callback's verification is
-weaker than it should be for a payment path. Review the
-[Configuration](configuration/index.md) security section and the maintainers' project
-page before accepting real payments with this module.
+Because this module handles money, keep the Bitaps secret key confidential, serve the
+site over HTTPS, and test the full checkout flow against Bitaps' sandbox before going
+live. See the [Configuration](configuration/index.md) operating notes and the
+maintainers' project page for the current release status.

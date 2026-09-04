@@ -16,6 +16,9 @@ Two `Condition` plugins sharing `PublishedStateConditionBase`:
 
 Both are added to a block through the standard block layout UI (administer blocks). No global settings.
 
+Solution docs: [`plugins/conditions.md`](plugins/conditions.md) — the two condition plugins, base-class
+mechanics, `evaluate()` logic, and the canonical setups.
+
 ## Mechanism (`PublishedStateConditionBase`)
 
 - **Config:** one checkbox, `is_published` (default `0`). `buildConfigurationForm()` renders it and

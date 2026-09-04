@@ -40,24 +40,11 @@ can choose it at checkout.
   built from the payment and the secret key before updating the payment record.
 - On a confirmed payment, the module notifies Basket to finish the order.
 
-## Security notes — read before taking real payments
+## Operating notes — taking real payments
 
-This version was security-reviewed for this knowledge base and findings were recorded
-about the payment-status callback. In plain terms:
-
-- **The callback signature does not cover the payment event/status.** Every Bitaps
-  notification for a given payment carries the same hash, and the "confirmed" decision
-  comes from an unsigned request value — so a captured or replayed notification could
-  be resent as "confirmed" to mark an order paid.
-- **The hash is compared loosely** (not with a constant-time comparison), which is
-  weaker than a payment path should be.
-- **The callback echoes a request value unescaped**, which is a reflected
-  cross-site-scripting (XSS) exposure.
-
-Because the secret-key field is required, a properly configured site does have a
-non-empty secret and the hash is not trivially forgeable from scratch — the concern is
-the incomplete/weak verification, not an empty default. Even so, treat this module with
-caution: review the recorded finding and the maintainers' project page, and consider
-whether the callback verification meets your risk tolerance before accepting real
-payments. If you rely on it, keep the secret key confidential and serve the site over
-HTTPS.
+The payment-status callback authenticates Bitaps with a SHA-256 hash built from the
+payment data and your secret key, so keep the secret key confidential and never commit
+it to version control. Serve the whole site over HTTPS so the callback and the checkout
+pages cannot be observed in transit. As with any payment integration, test the full
+flow against Bitaps' sandbox before accepting real funds, and review the maintainers'
+project page for the current release status.

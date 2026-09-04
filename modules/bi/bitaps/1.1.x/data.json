@@ -1,7 +1,7 @@
 {
   "name": "Bitaps Payment",
   "data_name": "bitaps",
-  "description": "Cryptocurrency payment integration for the Basket commerce module using the Bitaps gateway.",
+  "description": "Bitcoin (BTC) cryptocurrency payment method for the contrib Basket commerce module, using the Bitaps payment-address gateway.",
   "version": "1.1.x",
   "package": "Online store",
   "composer_namespace": "drupal/bitaps",
@@ -19,7 +19,7 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "E-commerce"
@@ -32,6 +32,7 @@
     "payment",
     "cryptocurrency",
     "bitcoin",
+    "btc",
     "basket",
     "gateway",
     "crypto"

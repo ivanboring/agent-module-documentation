@@ -1,16 +1,17 @@
 {
   "name": "Block Breakpoint",
   "data_name": "block_breakpoint",
-  "description": "Conditionally loads blocks based on responsive breakpoints (screen size).",
+  "description": "Adds a per-block third-party setting that shows or hides a block by responsive breakpoint, enforced client-side via a media-query check that removes non-matching blocks from the DOM.",
   "version": "1.0.x",
   "package": "User interface",
   "composer_namespace": "drupal/block_breakpoint",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:breakpoint"
+    "drupal:breakpoint",
+    "drupal:block"
   ],
   "configure": null,
-  "core_version_requirement": "^8||^9||^10||^11",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/block_breakpoint",
@@ -27,16 +28,19 @@
     "Content display"
   ],
   "subcategories": [
-    "Block enhancements"
+    "Block enhancements",
+    "Visibility conditions"
   ],
   "keywords": [
     "block",
     "breakpoint",
     "responsive",
+    "media query",
     "visibility",
-    "screen size"
+    "third party settings",
+    "layout builder"
   ],
-  "project_description": "The Block Breakpoint module makes it possible select one or more breakpoints that will apply as a block condition.\n\n On the rendering of the page an inline script will remove the block, if the selected\n\nbreakpoint media query does not match the current browser window dimensions. The\n\nJavascript MutationObserver ensures, that this also apply on all dynamically added\n\nelements, like AJAX or BigPipe.\n\n Back to top \n\n Installation \n Install the Block Breakpoint module as you would normally install a contributed Drupal module. Visit https://www.drupal.org/node/1897420 for further information.\n\n Back to top \n\n Configuration \n \n Open the block configuration for your designated block. \n Check the checkbox \"Enable Block Breakpoint\" \n Select a breakpoint group (usually your Frontend theme) \n Select the breakpoint for which the block should be shown. \n Save the block. \n \n Back to top \n\n Use case: External scripts like advertisement \n Usually you can achieve conditional display of blocks simply with hiding or showing them by CSS. For external scripts like having an embed script for displaying mobile and desktop ads and using CSS for the visibility will lead to wrong impression statistics. The mobile banner script might be even loaded, when it is rendered on desktop and so doubling the impressions in your ad system.\n\n With the inline script and MutationObserver you ensure, that a block, that does not meet the breakpoint's media query will never be processed further and the DOM and never drawn by the browser.\n\nSo you will only see the desktop banner impressions in your statistics.\n\n You have another use-case. Share it with the community and let us know how you're using the module.\n\n Back to top \n\n Layout Builder Support \n Layout Builder components (at the time of writing) do not support third party settings, which this module is based on. You can use the patch of of this issue . This will make the module work with Layout Builder components.\n\n Back to top \n\n IE Support \n The inline script handling is not working for Internet Explorer <= 11. You will need\n\nto add polyfill for document.currentScript support or implement a different\n\nlogic. The block will be removed also in older Internet Explorer, but external\n\ncontents might have been loaded before the removal.\n\n Back to top \n\n Manual usage \n You can also use the feature completely independent from the Block UI in your Twig files. Simply attach the block_breakpoint library and wrap your conditional content with the block_breakpoint classes.\n\n <?php\n\n{{ attach_library('block_breakpoint/block_breakpoint') }}\n\n \n {% include '@block_breakpoint/block-breakpoint-inline-match.html.twig' %}\n My conditional content, that should only show on mobile.\n\n \n ?>\n\n Back to top \n\n Requirements \n \n Block, Breakpoint ( Drupal core ) \n Back to top",
+  "project_description": "The Block Breakpoint module makes it possible to select one or more breakpoints that will apply as a block condition.\n\n On the rendering of the page an inline script will remove the block, if the selected breakpoint media query does not match the current browser window dimensions. The Javascript MutationObserver ensures, that this also apply on all dynamically added elements, like AJAX or BigPipe.\n\nIt adds an \"Enable Block Breakpoint\" checkbox, a breakpoint-group select and a multi-select of breakpoints to the block configuration form (and Layout Builder component form), stored as third-party settings on the block. At render time the module attaches a media query built from the selected breakpoints and a small JS library that removes the block from the DOM when the query does not match, so external scripts inside a hidden block are never executed. The primary use case is conditional advertisement/embed scripts where CSS hide/show would produce wrong impression statistics.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
