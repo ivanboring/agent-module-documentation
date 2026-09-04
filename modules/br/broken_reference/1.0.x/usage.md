@@ -1,35 +1,26 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Broken reference lets you easily detect broken entity references across content — references pointing to entities that no longer exist.
+Broken reference is an admin diagnostic tool that scans all entity-reference and entity-reference-revisions fields on a Drupal site and reports which stored references point at entities that no longer exist.
 
 ---
 
-Broken reference helps detect broken entity references — finding reference fields that point to
-entities which have been deleted or no longer exist, so editors/admins can fix dangling references that
-would otherwise cause errors or empty output. It provides its own permissions.
-
-Use it to audit content integrity, especially after deletions or migrations. It is an administration/
-content-audit tool that reads references to report broken ones; it is informational and has no
-access-control role. Run the detection to find and then fix broken references.
+The module adds a single admin report at `/admin/config/development/broken_reference` (also linked under Reports as "Broken entity references"). On load it runs a fast entity-query sampling pass to tell you whether any broken references likely exist; pressing "Build report" launches a Batch API job that loads every referencing entity in chunks of 30, checks each reference item's target, and stores the dangling ones in the private tempstore. The result is a table grouped by entity type, bundle and field, showing how many source entities hold broken references and how many target references are missing. It is purely diagnostic: it does NOT delete or repair anything. It only reads; the operator uses the findings to decide where to add cleanup hooks (`hook_ENTITY_TYPE_delete`) or to manually fix data. Nothing is scanned by external services and no content labels are exposed — the report shows only machine names and counts. Requires only Drupal core; supports entity_reference and, when present, entity_reference_revisions fields (e.g. Paragraphs).
 
 ---
 
-- Detect broken entity references.
-- Find references to deleted entities.
-- Fix dangling references.
-- Audit content integrity.
-- Provide its own permissions.
-- Find references after deletions.
-- Report broken references.
-- Read references for the report.
-- Have no access-control role.
-- Check reference validity.
-- Find empty-target references.
-- Audit after migrations.
-- Locate broken references.
-- Fix reference errors.
-- Report dangling refs.
-- Support content integrity.
-- Detect missing targets.
-- Run reference detection.
-- Find invalid references.
-- Clean up references.
+- Audit an existing site for dangling entity references before a migration or upgrade.
+- Diagnose intermittent "Call to a member function getCacheTags() on null" or similar fatal errors caused by references to deleted entities.
+- Find nodes that still reference a taxonomy term, media item, or other node that was deleted.
+- Detect Paragraphs (`entity_reference_revisions`) whose referenced revision no longer exists.
+- Get a quick yes/no on whether broken references exist without running a full scan (the page's initial estimate).
+- Produce a full grouped report of every broken reference by entity type, bundle and field.
+- Quantify data-integrity debt: see total broken references and how many distinct type/bundle/field combinations are affected.
+- Decide which entity types are missing `hook_ENTITY_delete` / `hook_ENTITY_TYPE_delete` cleanup logic.
+- Validate that a custom delete hook is actually cleaning up references, by re-running the report after content changes.
+- Spot fields where one source entity references multiple removed targets (source count vs. target count mismatch).
+- Include a broken-reference check in a periodic content-QA routine.
+- Confirm a bulk delete of taxonomy terms or media did not leave orphaned references behind.
+- Sanity-check a site after importing content via Feeds or Migrate.
+- Give a site owner a concrete list of fields to remediate before launch.
+- Scope cleanup work by seeing exactly which bundles and fields are affected rather than guessing.
+- Re-scan after a repair to confirm the broken reference count has dropped to zero.
+- Restrict who can run the scan by granting the "Search broken entity references" permission only to trusted administrators.
+- Use the report as evidence when arguing for adding referential-integrity safeguards to a content model.

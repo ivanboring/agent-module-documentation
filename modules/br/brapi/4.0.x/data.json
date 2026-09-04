@@ -1,13 +1,15 @@
 {
   "name": "Plant Breeding API",
   "data_name": "brapi",
-  "description": "A BrAPI (Plant Breeding API) server implementation for Drupal.",
+  "description": "Plant Breeding API (BrAPI) server implementation for Drupal, exposing plant-breeding data over a REST API mapped to Drupal entities.",
   "version": "4.0.x",
-  "package": null,
+  "package": "Tripal",
   "composer_namespace": "drupal/brapi",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "galbar/jsonpath": "^2.0||^3.0"
+  },
   "dependent_modules": [
-    "drupal:datetime"
+    "datetime"
   ],
   "configure": null,
   "core_version_requirement": "^9 || ^10 || ^11",
@@ -16,7 +18,9 @@
   "project_url": "https://www.drupal.org/project/brapi",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "galbar/jsonpath"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,

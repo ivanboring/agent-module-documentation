@@ -1,14 +1,14 @@
 {
   "name": "Breakpoint Field",
   "data_name": "breakpoint_field",
-  "description": "A field type for selecting a breakpoint group and exposing its breakpoints for selection.",
+  "description": "Defines a field type that lets an editor select a breakpoint group and then choose one of that group's breakpoints as the stored value.",
   "version": "1.1.x",
   "package": "Field types",
   "composer_namespace": "drupal/breakpoint_field",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:field",
-    "drupal:field_ui"
+    "field",
+    "field_ui"
   ],
   "configure": null,
   "core_version_requirement": "^10 || ^11 || ^12",
@@ -20,23 +20,24 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Content display",
-    "Media"
+    "Content display"
   ],
   "subcategories": [
+    "Fields",
     "Responsive images"
   ],
   "keywords": [
     "breakpoint",
     "responsive",
     "field",
-    "site builder",
-    "theming"
+    "field type",
+    "theming",
+    "site builder"
   ],
   "project_description": "Defines a field type that allows the user to select a breakpoint group and then makes those breakpoints available to be selected.\n\n Community Documentation \n - Create a content type.\n\n- Create a field and select the Breakpoint Field as the field Type.\n\n- Go to Manage Form Display link, click the gear icon next to the field you created and save the theme as the breakpoint group.\n\n- Create content and the field will show the list of breakpoints defined in the theme.breakpoint.yml",
   "maintenance_status": "Actively maintained",

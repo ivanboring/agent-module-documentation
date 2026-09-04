@@ -1,33 +1,32 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Browser Development gives a developer an in-browser code editor to write CSS/SCSS and JavaScript that is compiled and attached to the current theme, for quick front-end tweaking without a local toolchain.
+Browser Development gives a developer an in-browser code editor to author SCSS (and a JS-library reference), live-compile it to CSS, and both attach it to the current theme and persist it as portable configuration — front-end iteration without a local build toolchain.
 
-It ships a home page, an editor page, a settings form, and a POST `api` endpoint that dispatches to SCSS compilation (`ScssCompiler` / `LiveScssCompiler`) and to a storage layer (`Processing/Storage`, `FormsStorage`, `SavingCssToDisk`) that persists compiled CSS to disk and manages a custom config-entity (`BrowserDevelopmentStorage`). The editor talks to the API by POSTing JSON commands (`live`, `compiled`, `open`). This is a development/QA convenience tool, not something to run on production.
+It ships a home landing page, a React/ACE editor page, a settings form, and a POST `api` endpoint. The API decodes a posted JSON command and dispatches to `LiveScssCompiler` (`live` → compressed CSS for the live preview), `ScssCompiler` + `Processing\Storage` (`compiled` → writes `.scss` files under `public://browser-development/scss/`, compiles them via the scssphp/scssphp library, writes the CSS to `sites/*/files/browser-development/css/`, and serialises the SCSS payload into a `browser_development_storage` config entity), or `Storage::getStorage` (`open` → returns the most recently saved snippet). The optional `browser_development_assist` submodule re-attaches the generated CSS file so the editor module can be uninstalled on production while the stylesheet keeps loading. This is a development/QA convenience, not a production feature.
 
-Typical setup (dev only): enable the module, open `/admin/browser-development`, use the editor to author styles/scripts, and save/compile them into the active theme.
-
----
-
-Short summary: an in-browser CSS/SCSS + JS editor that compiles and applies code to the current theme.
-
-It solves the need to iterate on theme CSS/JS from the browser (live SCSS compile, save-to-disk) without editing files locally, useful in prototyping and QA environments.
-
-Operationally this module writes compiled CSS to the filesystem and defines a config entity for stored snippets — a powerful, dev-oriented surface. **All four routes are declared with `_permission: 'TRUE'`, which requires a permission literally named “TRUE”; no role holds it, so every route (including the POST `api` that compiles SCSS and writes CSS to disk) fails closed and is inaccessible to all users** as shipped. Treat this as a local development module; do not deploy it to production.
+Typical setup (dev only): `composer require drupal/browser_development`, enable it, sign in as the superuser, open `/admin/browser-development`, author SCSS in the editor, and compile/save it into the active theme.
 
 ---
 
-- Write CSS/SCSS for the current theme from the browser (dev environments).
-- Author JavaScript snippets applied to the current theme.
-- Live-compile SCSS to CSS while editing.
-- Save compiled CSS to disk for the active theme.
-- Store code snippets as `BrowserDevelopmentStorage` config entities.
-- Reopen previously saved snippets via the editor's `open` command.
-- Prototype front-end changes without a local build toolchain.
-- Iterate on styles quickly during QA or design review.
-- Use the editor page at `/admin/browser-development/editor`.
-- Adjust module behaviour on the settings page.
-- Compile SCSS through the POST `api` endpoint (JSON commands).
-- Manage a list of stored development snippets.
-- Delete a stored snippet via its delete form.
-- Keep experimental CSS/JS scoped to the current theme.
-- Use as a throwaway developer aid on non-production sites.
-- Note: as shipped, routes fail closed (`_permission: 'TRUE'`) — grant is impossible without a code change.
+Short summary: an in-browser SCSS editor that live-compiles to CSS, applies it to the current theme, and stores the SCSS as portable Drupal configuration.
+
+It solves the need to iterate on theme CSS from the browser — live SCSS compile, save compiled CSS to disk, and version-control the source as config entities — useful in prototyping and QA environments. A companion submodule (`browser_development_assist`) keeps the compiled CSS attached to the front-end theme after the editor itself is removed, so the styling ships to production without the editor's surface. Note that as shipped every route is gated by `_permission: 'TRUE'`, a permission no role can hold, so only the superuser can reach the editor and API; treat this strictly as a local development module.
+
+---
+
+- Write SCSS for the current theme from the browser in a development environment.
+- Live-compile SCSS to compressed CSS while editing (the `live` API command).
+- Compile a full set of SCSS files and save the resulting CSS to disk (the `compiled` command).
+- Persist the authored SCSS as a `browser_development_storage` config entity for version control.
+- Reopen the most recently saved snippet via the editor's `open` command.
+- Reference a JS library path to load alongside the editor via the settings form.
+- Prototype front-end changes without a local Sass/build toolchain.
+- Iterate quickly on styles during QA or design review.
+- Author component-style SCSS that is portable across multiple projects.
+- Pair with `layout_builder_styles` so editors can attach generated classes to blocks/sections.
+- Uninstall the editor on production but keep the compiled CSS via `browser_development_assist`.
+- Manage the list of stored development snippets at `/admin/browser-development/storage`.
+- Add, edit or delete stored snippets through the config-entity forms.
+- Inspect editor asset paths and settings on the settings page.
+- Use the module with any theme; the compiled CSS is a static file you can later fold into a custom theme.
+- Keep experimental CSS scoped to a throwaway developer aid on non-production sites.
+- Note: as shipped, all routes fail closed (`_permission: 'TRUE'`) — only the superuser (uid 1) reaches them without a code change.
