@@ -1,7 +1,7 @@
 {
   "name": "Block Title HTML Element",
   "data_name": "block_title_html_element",
-  "description": "Lets admins pick the HTML element (h2–h6, span, p, em, b, i) used to wrap a block's title, from a safe allowlist.",
+  "description": "Lets admins pick, per block, the HTML element (h2-h6, span, p, em, b, i) that wraps the block's title, from a fixed allowlist; defaults to strong.",
   "version": "1.0.x",
   "package": "Other",
   "composer_namespace": "drupal/block_title_html_element",
@@ -39,7 +39,7 @@
     "allowlist",
     "third party setting"
   ],
-  "project_description": "Block title HTML element allows users to choose the HTML element used by block titles through the block's configuration interface.",
+  "project_description": "Block title HTML element allows users to choose the HTML element used by block titles through the block's configuration interface. A per-block third-party setting exposes a title_element Twig variable (h2-h6, span, p, em, b, i, or the strong default) after the theme's block.html.twig is updated to render it; a small validator service enforces a strict tag allowlist at form-submit, presave, and render time.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

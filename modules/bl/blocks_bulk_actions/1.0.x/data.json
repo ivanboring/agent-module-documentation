@@ -1,9 +1,9 @@
 {
   "name": "Blocks Bulk Actions",
   "data_name": "blocks_bulk_actions",
-  "description": "Adds bulk actions (delete, enable/disable) to the block layout page.",
+  "description": "Enhance blocks layout with bulk actions functionality like Delete, Enable and Disable multiple blocks instances.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Blocks",
   "composer_namespace": "drupal/blocks_bulk_actions",
   "composer_requirements": {},
   "dependent_modules": [],
@@ -14,28 +14,33 @@
   "project_url": "https://www.drupal.org/project/blocks_bulk_actions",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": ["core/jquery"],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_config_schema": false,
+  "provides_plugin_types": ["blocks_bulk_actions"],
   "categories": [
     "Administration tools",
-    "Content display"
+    "Content display",
+    "Automation"
   ],
   "subcategories": [
-    "Block enhancements"
+    "Block enhancements",
+    "Bulk operations"
   ],
   "keywords": [
     "blocks",
     "bulk actions",
-    "layout",
-    "admin",
-    "delete"
+    "block layout",
+    "batch",
+    "enable",
+    "disable",
+    "delete",
+    "plugin"
   ],
-  "project_description": "Blocks Bulk Actions (BBA) enhances Drupal’s default Block layout administration page with a powerful and extensible bulk action system, based on the new BlocksBulkActionsManager plugin type.\n\n This allows site administrators to perform operations on multiple block instances at once, directly from the Block layout interface.\n\n Features \n \n Bulk enable or disable block instances. \n Bulk delete block instances from regions. \n Extensible plugin system for developers to add custom bulk actions. \n \n How it Works \n When the module is enabled, a Bulk actions dropdown will appear in the Block layout page for each theme.\n\nAdministrators can select multiple blocks, choose an action, and apply it in one operation — saving time compared to editing each block individually.\n\n Default Provided Actions \n Out of the box, the module provides:\n\n \n Enable selected blocks \n Disable selected blocks \n Delete selected blocks \n Back to top",
+  "project_description": "Blocks Bulk Actions (BBA) enhances Drupal's default Block layout administration page (Structure → Block layout) with a bulk action system built on a custom BlocksBulkActions plugin type. When enabled it alters the core block_admin_display_form to add a per-row checkbox column, a select/deselect-all toggle, an action dropdown and an Apply button, letting an administrator run one operation over many block instances at once instead of editing each block individually. Out of the box it ships three actions — Enable selected blocks, Disable selected blocks and Delete selected blocks — each applied through Drupal's Batch API. Developers can add their own actions by declaring a plugin annotated with @BlocksBulkActions (id + description, optional bids) that implements execute() and access(); the module discovers them via the plugin.manager.blocks_bulk_actions manager. The module has no routes, permissions or configuration of its own — it reuses the core Block layout page and its administer blocks access control.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

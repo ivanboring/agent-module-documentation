@@ -1,7 +1,7 @@
 {
   "name": "Block Content Type Visibility",
   "data_name": "block_content_type_visibility",
-  "description": "Adds a block-visibility condition based on the current node's content type.",
+  "description": "Adds Show/Hide radio buttons to Drupal core's node content-type block-visibility condition, replacing the confusing \"Negate the condition\" checkbox.",
   "version": "1.0.x",
   "package": "Block",
   "composer_namespace": "drupal/block_content_type_visibility",
@@ -22,22 +22,24 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"
   ],
   "subcategories": [
-    "Block visibility / conditions"
+    "Visibility conditions"
   ],
   "keywords": [
     "block",
     "visibility",
     "content type",
     "condition",
-    "node"
+    "node",
+    "negate",
+    "show hide"
   ],
-  "project_description": "Back to top \n\n Overview \n The Block Content Type Visibility module enhances Drupal's block visibility system by providing an improved user interface for content type-based visibility conditions. It replaces the confusing \"Negate the condition\" checkbox with intuitive \"Show/Hide\" radio buttons, making it easier for site builders to control where blocks appear.\n\n Back to top \n\n Key Features \n \n User-Friendly Interface : Clear \"Show for selected content types\" or \"Hide for selected content types\" options replace the technical \"negate\" checkbox \n Enhanced Core Functionality : Extends Drupal's native content type visibility condition without replacing it \n Modern Architecture : Uses OOP Hook classes (Drupal 11.1+) for better maintainability \n Backward Compatible : Works with both Drupal 10 and Drupal 11 \n Performance Optimized : Properly implements cache contexts for optimal performance \n Standards Compliant : Follows Drupal coding standards and best practices \n \n Back to top \n\n Use Cases \n \n Display promotional blocks only on Article pages \n Hide sidebar navigation on Landing Page content types \n Show related content blocks only for specific content types \n Control block visibility across different content types without custom code \n Simplify block configuration for non-technical site builders \n \n Back to top \n\n How It Works \n The module provides a custom condition plugin that extends Drupal core's NodeType condition. When you configure a block's visibility settings:\n\n \n Navigate to Structure → Block Layout \n Configure any block's visibility settings \n Under the \"Visibility\" section, expand Content type \n Choose your visibility mode with clear radio buttons:\n \n Show for the selected content types - Block appears only on selected content types \n Hide for the selected content types - Block appears everywhere except selected content types \n \n \n Select one or more content types \n Save the block configuration \n \n Back to top \n\n Installation \n Install as you would normally install a contributed Drupal module. See the Installing Drupal Modules documentation for further information.\n\n Via Composer (recommended) \n composer require drupal/block_content_type_visibility\ndrush en block_content_type_visibility Manual Installation \n \n Download and extract the module to your /modules/contrib directory \n Enable the module at /admin/modules or via Drush: drush en block_content_type_visibility \n \n Back to top \n\n Why This Module? \n While Drupal core provides content type visibility conditions for blocks, the \"Negate the condition\" checkbox can be confusing for site builders. This module improves the user experience by presenting the same functionality in a more intuitive way, making it immediately clear whether blocks will be shown or hidden for selected content types.\n\n Back to top",
+  "project_description": "Block Content Type Visibility is a small UX-improvement module for Drupal core's block placement UI. It does NOT add a new condition plugin of its own: it relies on core Node's built-in \"Content types\" (entity_bundle:node) block-visibility condition, and only alters the block configuration form to add a friendly \"Visibility mode\" radio set (Show for the selected content types / Hide for the selected content types) that maps onto the condition's existing negate boolean. A custom submit handler converts the chosen radio back to negate (show=0, hide=1) and hides core's raw \"Negate the condition\" checkbox. Logic lives in the OOP Hook class src/Hook/BlockContentTypeVisibilityHooks.php (via #[Hook('form_block_form_alter')]), with the legacy .module procedural hook delegating to it on Drupal < 11.1. It affects only which blocks render on a page (presentation); it is not access control and does not protect the underlying block content.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

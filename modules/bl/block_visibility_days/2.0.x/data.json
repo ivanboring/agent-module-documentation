@@ -1,7 +1,7 @@
 {
   "name": "Block Visibility Days",
   "data_name": "block_visibility_days",
-  "description": "Adds day-of-week/date conditions to block visibility settings.",
+  "description": "Adds a day-of-week condition to core block visibility settings.",
   "version": "2.0.x",
   "package": null,
   "composer_namespace": "drupal/block_visibility_days",
@@ -14,12 +14,15 @@
   "project_url": "https://www.drupal.org/project/block_visibility_days",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "core/jquery",
+    "core/drupal"
+  ],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"
@@ -31,10 +34,10 @@
     "block",
     "visibility",
     "days",
-    "date",
-    "schedule"
+    "day of week",
+    "condition"
   ],
-  "project_description": "Block Visibility Days module is used to display block according to the days condition. The module provides the Visibility Days tab in the configuration section of Block from where you can select days on which you want to display the block.\n\n CONTENTS OF THIS FILE \n\n * Introduction\n\n * Installation\n\n * Configuration\n\n INTRODUCTION \n\nBlock Visibility Days module Enhances the visibility settings by adding a condition of days.\n\n INSTALLATION \n\nSimply enable the module by drush command or by admin panel extend tab.\n\n CONFIGURATION \n\nTo add days to a block, simply visit that block's configuration page visibility settings at\n\nAdministration > Structure > Blocks",
+  "project_description": "Block Visibility Days enhances core block visibility settings by adding a 'Days Visibility' condition. On each block's Configure > Visibility settings you tick the days of the week (Sunday through Saturday) on which the block should appear; the block is shown only on the checked days and hidden on the rest. Implemented as a single core Condition plugin (id block_visibility_days), it needs no configuration page, no dependencies, and no permissions of its own. Despite older descriptions mentioning date ranges, the on-disk 2.0.0 source evaluates day-of-week only via PHP date('D').",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

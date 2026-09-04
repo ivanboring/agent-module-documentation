@@ -1,26 +1,31 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Block Title HTML Element lets administrators choose which HTML element wraps a block's title, selected from a safe allowlist.
+Block Title HTML Element lets an administrator choose, per block, which HTML tag wraps that block's title (from a fixed allowlist such as h2–h6, span, p, em, b, i), defaulting to `strong`.
 
 ---
 
-The module adds a "Block Title HTML Element" selector to the block configuration form (only for users with `administer block title element`) and stores the choice as a block third-party setting `title_element`. An `ElementValidator` service enforces a fixed allowlist — `h2, h3, h4, h5, h6, span, p, em, b, i` (h1 is intentionally excluded for document hierarchy/SEO) — that other modules may extend via `hook_block_title_html_element_allowed_elements_alter`. On `hook_block_presave`, an invalid or empty value is unset (falling back to the theme default), so unsafe or arbitrary element names cannot be persisted.
-
-To render the chosen element, a theme's `block.html.twig` uses the `title_element` variable (defaulting to `strong`). Because the value is validated against a server-side allowlist at save time and only trusted admins can set it, there is no XSS/markup-injection surface — custom elements and scripts are rejected. It is a small, single-purpose display enhancement with one permission and no routes of its own.
+The module adds a "Block Title HTML Element" section to the core block configuration form (visible only to users with the `administer block title element` permission) where an admin picks the wrapper tag for the block's title from a dropdown. The choice is saved as a block third-party setting (`block_title_html_element.title_element`) and exposed to the theme layer as a `title_element` Twig variable via `hook_preprocess_block`. To actually change the rendered markup, the theme's `block.html.twig` must output the title inside `<{{ title_element | default('strong') }}>` (an example template ships in `examples/block.html.twig`). A small service, `ElementValidator`, holds the allowed-tag list and a strict membership check that is applied when the form is submitted, when the block is saved, and again at render time; any tag not on the list falls back to the default `strong`. Other modules can extend the offered tags with `hook_block_title_html_element_allowed_elements_alter()`. The module has no routes, config forms, entities, plugins, or Drush commands, and depends only on core `block`.
 
 ---
-- Grant `administer block title element` to site builders
-- Configure a block and open the Block Title HTML Element section
-- Choose an `h2`–`h6` heading for a block title
-- Use `span` or `p` for non-heading block titles
-- Emphasise a title with `em`, `b` or `i`
-- Keep block titles semantically correct for accessibility
-- Avoid `h1` in blocks to preserve document hierarchy
-- Update `block.html.twig` to honour the `title_element` variable
-- Fall back to the default `strong` element when none is chosen
-- Extend the allowed element list via the alter hook
-- Rely on server-side validation to reject unsafe elements
-- Apply per-block title elements across any block type
-- Store the choice as the `title_element` block third-party setting
-- Reset invalid saved values automatically on block presave
-- Restrict the selector to holders of `administer block title element`
-- Improve SEO by using correct heading levels in blocks
+
+- Render a specific block's title as an `h2` for correct heading hierarchy on a landing page.
+- Demote a sidebar block's title to `h3` or `h4` so it sits below the main page heading.
+- Use `span` for a block title that should look like a heading but not appear in the document outline.
+- Wrap a promotional block's title in `p` when it is descriptive text rather than a heading.
+- Emphasize a call-to-action block title with `em`, `b`, or `i` without adding heading semantics.
+- Keep the site-wide default (`strong`) for all blocks except the few that need a specific tag.
+- Improve accessibility by giving screen-reader users a meaningful heading level per region.
+- Fix an SEO audit finding of skipped or duplicated heading levels caused by themed block titles.
+- Standardize heading levels across blocks placed in different regions of the same page.
+- Let content editors (granted the permission) adjust a block title tag without touching Twig.
+- Differentiate visually-identical block titles by semantic role (heading vs. inline emphasis).
+- Avoid multiple `h1`s on a page — the module deliberately omits `h1` from the choices.
+- Apply a heading tag to custom/content blocks as well as system blocks, uniformly.
+- Provide a per-block override while the theme's global block title tag stays as the fallback.
+- Add project-specific tags (e.g. `article`, `header`) to the dropdown via the alter hook.
+- Restrict who can change block title tags by granting `administer block title element` narrowly.
+- Ensure an invalid or removed tag safely reverts to `strong` instead of breaking the block.
+- Migrate a theme away from hard-coded `<h2>` block titles to admin-configurable tags.
+- Set `h5`/`h6` on footer or utility blocks that should be low in the heading hierarchy.
+- Give marketing blocks inline-emphasis titles (`b`/`i`) that read as body copy, not headings.
+- Support multilingual sites where a block's semantic role is consistent regardless of language.
+- Audit stored choices in exported block config (`third_party_settings.block_title_html_element`).
+- Roll the feature out gradually by copying the example Twig only into the themes that need it.

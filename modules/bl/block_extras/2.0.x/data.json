@@ -3,7 +3,7 @@
   "data_name": "block_extras",
   "description": "Provides extra functionality for blocks.",
   "version": "2.0.x",
-  "package": null,
+  "package": "Custom",
   "composer_namespace": "drupal/block_extras",
   "composer_requirements": {},
   "dependent_modules": [],
@@ -17,9 +17,9 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"
@@ -29,12 +29,13 @@
   ],
   "keywords": [
     "block",
-    "extras",
-    "enhancements",
-    "options",
+    "block_content",
+    "block placement",
+    "edit link",
+    "preview",
     "site builder"
   ],
-  "project_description": "Provides an extra functionality not found in core related to content blocks and plugin blocks.\n\n Current features: \n\n \n Provides an edit button and a preview on '/admin/structure/block/manage/BLOCK_ID'.",
+  "project_description": "Provides extra functionality not found in core related to content blocks and plugin blocks. In the 2.0.x release the single feature is a form enhancement on the block placement form ('/admin/structure/block/manage/{block}'): for a placed content block it adds a 'Block Extras' fieldset containing an 'Edit this block content' link (with a destination back to the current path) and a live rendered preview of that block's content.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

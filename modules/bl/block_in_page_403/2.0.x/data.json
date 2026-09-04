@@ -1,16 +1,16 @@
 {
   "name": "Block In Page 403",
   "data_name": "block_in_page_403",
-  "description": "Lets you place a block on the 403 (access denied) page.",
+  "description": "Provides a block-visibility condition that shows a block on the 403 (access denied) page.",
   "version": "2.0.x",
   "package": "Administration",
   "composer_namespace": "drupal/block_in_page_403",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:block"
+    "block"
   ],
   "configure": null,
-  "core_version_requirement": "^8||^9||^10||^11",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/block_in_page_403",
@@ -27,12 +27,14 @@
     "Administration tools"
   ],
   "subcategories": [
-    "Custom error pages"
+    "Custom error pages",
+    "Block enhancements"
   ],
   "keywords": [
     "403",
     "access denied",
     "block",
+    "block visibility condition",
     "error page",
     "admin"
   ],
