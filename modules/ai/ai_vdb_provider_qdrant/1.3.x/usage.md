@@ -1,38 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Qdrant VDB Provider enables the use of a Qdrant vector database in the AI module.
+Qdrant VDB Provider adds Qdrant as a vector-database provider for the Drupal AI module, letting AI Search store and query embeddings in a Qdrant instance.
 
 ---
 
-Qdrant VDB Provider adds **Qdrant** as a **vector-database (VDB) provider** for the Drupal AI module — so
-AI features (RAG / semantic search over embeddings) can store and query vectors in a Qdrant instance. It
-depends on the AI module, its AI Search submodule and the Key module, in the AI Vector Database Providers
-(Experimental) package.
-
-Use it to back AI vector search with Qdrant. It is an AI/integration feature. Security handling: it talks to
-**Qdrant over the network** with an **API key** and integrates with the **Key module** — store the credential
-as a Key (env/secret), point it at your **trusted** Qdrant endpoint over HTTPS, and note indexed embeddings/
-content are sent to Qdrant (data egress; self-hosting Qdrant keeps it on your infrastructure). It has no
-access-control role. Configure the Qdrant endpoint and key.
+Qdrant VDB Provider registers a single `AiVdbProvider` plugin (`qdrant`) that the AI module's AI Search backend can select as its vector store. It talks to a Qdrant server over the HTTP REST API through a thin `QdrantClient` service (built on Guzzle via `http_client_factory`), handling collection creation/drop, point upsert/delete, scroll (`querySearch`) and vector similarity search (`vectorSearch`). Search API query condition groups are translated into Qdrant's `must` / `should` / `must_not` filter structure by the provider plugin. Connection settings (host, port, optional API key referenced through the Key module) live in the `ai_vdb_provider_qdrant.settings` config object and are edited at `/admin/config/ai/vdb_providers/qdrant` (permission `administer ai providers`). It is an experimental integration module with no content-facing features of its own.
 
 ---
 
-- Add Qdrant as a vector DB provider.
-- Back AI RAG/semantic search with Qdrant.
-- Store/query vectors in Qdrant.
-- Depend on AI, AI Search, Key.
-- Talk to Qdrant over the network.
-- Use an API key via the Key module.
-- Store the Qdrant credential as a Key/secret.
-- Point at a trusted HTTPS endpoint.
-- Note embeddings are sent to Qdrant (egress).
-- Self-host to keep data in-house.
-- Have no access-control role.
-- Configure the endpoint and key.
-- Handle Qdrant vector search.
-- Provide a VDB provider.
-- Configure Qdrant.
-- Query vectors.
-- Handle embeddings.
-- Configure credentials.
-- Handle the integration.
-- Provide vector storage.
+- Add Qdrant as a vector-database provider for AI Search.
+- Back Drupal RAG / semantic search with a Qdrant instance.
+- Store Search API index embeddings as Qdrant points.
+- Run vector similarity search over indexed content.
+- Run filtered scroll queries against a Qdrant collection.
+- Auto-create a Qdrant collection when an index is first populated.
+- Drop a Qdrant collection when an index/server is cleared.
+- Upsert points keyed by an MD5 of the Drupal long id.
+- Delete points for specific Drupal entity ids on re-index.
+- Translate Search API `=`, `<>`, `<`, `>`, `IN`, `NOT IN`, `BETWEEN` conditions into Qdrant filters.
+- Map AND/OR condition groups to Qdrant `must` / `should` / `must_not`.
+- Filter on multi-value fields via Qdrant `match.any`.
+- Connect to a local Qdrant (default port 6333) for development.
+- Connect to a remote or cloud Qdrant endpoint over HTTPS.
+- Authenticate to Qdrant with an API key stored as a Key entity.
+- Run Qdrant without an API key for an open local instance.
+- Choose cosine, dot-product or Euclidean similarity via the AI Search server config.
+- Test the connection from the config form (ping) before saving.
+- Provide config schema so settings are exportable via CMI.
+- Serve embeddings for AI assistants / chatbots that query indexed site content.
+- Keep vector data on your own infrastructure by self-hosting Qdrant.
+- Use the docker-compose example under `docs/` to spin up a local Qdrant.

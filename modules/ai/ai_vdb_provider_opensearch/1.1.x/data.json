@@ -1,19 +1,23 @@
 {
   "name": "AI Vector DB: OpenSearch",
   "data_name": "ai_vdb_provider_opensearch",
-  "description": "An OpenSearch vector-database backend for the AI (RAG/search) module. Uses the Key module for credentials.",
+  "description": "OpenSearch vector-database provider plugin for the AI module's AI Search submodule. Delegates the HTTP client and credentials to Search API OpenSearch connectors (Key module).",
   "version": "1.1.x",
-  "package": "AI Vector Database Providers",
+  "package": "AI Vector Database Providers (Experimental)",
   "composer_namespace": "drupal/ai_vdb_provider_opensearch",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.2",
+    "drupal/key": "^1.20",
+    "drupal/search_api_opensearch": "2.x-dev"
+  },
   "dependent_modules": [
     "ai:ai",
     "ai:ai_search",
     "key:key",
     "search_api_opensearch:search_api_opensearch"
   ],
-  "configure": null,
-  "core_version_requirement": "^10.2||^11",
+  "configure": "ai_vdb_provider_opensearch.settings_form",
+  "core_version_requirement": "^10.2 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_vdb_provider_opensearch",
@@ -27,19 +31,22 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
+    "Artificial Intelligence (AI)",
     "Site search"
   ],
   "subcategories": [
-    "AI / vector search"
+    "Vector database / embeddings storage",
+    "Search backend"
   ],
   "keywords": [
     "ai",
     "vector database",
     "opensearch",
+    "knn",
     "rag",
     "embeddings"
   ],
-  "project_description": "The Opensearch VDB Provider is module that provides a Vector Database provider for the AI module, allowing you to use it to connect to OpenSearch Vector Databases.\n\n Requirements:\n\n- AI module \n\n- AI Search module \n\n- Search API OpenSearch",
+  "project_description": "The OpenSearch VDB Provider supplies a Vector Database provider plugin for the AI module, letting the AI Search submodule store and query vector embeddings in an OpenSearch cluster via its k-NN (approximate nearest neighbour) support. It reuses Search API OpenSearch's connector plugins for the OpenSearch PHP client, endpoint and authentication (via the Key module), and its FilterBuilder for translating Search API conditions into OpenSearch query DSL. Requirements: AI module, AI Search submodule, Key, and Search API OpenSearch.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

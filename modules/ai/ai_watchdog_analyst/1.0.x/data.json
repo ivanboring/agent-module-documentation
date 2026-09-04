@@ -1,44 +1,49 @@
 {
   "name": "AI Watchdog Analyst",
   "data_name": "ai_watchdog_analyst",
-  "description": "Analyzes Drupal logs (Watchdog/dblog) using AI to suggest solutions.",
+  "description": "Analyzes Drupal logs (Watchdog) using AI to suggest solutions.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Custom",
   "composer_namespace": "drupal/ai_watchdog_analyst",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.0"
+  },
   "dependent_modules": [
-    "drupal:dblog",
-    "ai:ai"
+    "dblog",
+    "ai"
   ],
-  "configure": null,
+  "configure": "ai_watchdog_analyst.settings",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_watchdog_analyst",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
-  "library_dependencies": [],
+  "php_requirement": "8.1",
+  "library_dependencies": [
+    "league/commonmark"
+  ],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
     "Artificial Intelligence (AI)",
-    "Administration tools"
+    "Developer tools"
   ],
   "subcategories": [
+    "Debugging & inspection",
     "AI tooling / function calling"
   ],
   "keywords": [
     "ai",
     "watchdog",
-    "logs",
     "dblog",
+    "log",
     "debugging"
   ],
-  "project_description": "Tired of spending hours debugging Drupal errors? AI Watchdog Analyst connects your\n\nWatchdog log list to an AI chat provider and delivers instant, detailed solutions —\n\nincluding root cause analysis, code examples, and automatic issue queue lookups for\n\ncontrib modules — directly in your Drupal admin.\n\n Features \n \n One-click analysis : An \"🤖 Analyze\" button appears on Warning\n\n and Error entries in the Watchdog log list ( /admin/reports/dblog ).\n\n Click it to open a modal dialog with an AI-generated solution. \n Detail page integration : An \"Analyze with AI\" button is also\n\n available on individual log event pages. \n Contrib module detection : Automatically detects if the error\n\n originates from a contrib module and enriches the AI prompt with drupal.org issue\n\n queue context — including links to known issues, available patches, and fixed\n\n versions. \n Markdown rendering : AI responses are rendered with full\n\n formatting — headers, code blocks, and lists. \n Multilingual : The AI responds in the current Drupal site\n\n language. \n Caching : Analysis results are cached for 24 hours to avoid\n\n redundant API calls. \n Configurable system prompt : Customize the AI expert persona\n\n and instructions via the admin UI. \n \n Post-Installation \n \n Install and configure the AI\n\n module with at least one chat provider (e.g. OpenAI, Azure OpenAI, Ollama). \n Go to /admin/config/ai/watchdog-analyst to optionally select\n\n a specific provider/model and customize the system prompt. \n Navigate to /admin/reports/dblog . Warning and Error entries\n\n will now have an \"🤖 Analyze\" button in the \"AI Solution\" column. \n Click the button to open a modal with the AI-generated analysis. \n \n No content types, text formats, or additional configuration are required beyond\n\nsetting up an AI provider.\n\n Additional Requirements \n \n AI module (^1.0) — provides\n\n the provider plugin system. At least one chat-capable provider must be configured. \n league/commonmark \n\n — for rendering markdown AI responses as HTML. Installed automatically via\n\n Composer. \n Drupal core Database Logging module (dblog) must be\n\n enabled. \n \n Recommended modules/libraries \n \n Any AI provider sub-module compatible with the AI module\n\n (e.g. ai_provider_openai , ai_provider_azure ,\n\n ai_provider_ollama ) — choose based on your infrastructure and\n\n privacy requirements. \n \n Supporting this Module \n This module is maintained on a volunteer basis. If you find it useful, the best\n\nways to support it are:\n\n \n Report bugs and contribute patches in the\n\n issue queue . \n Leave a review on the project page. \n \n Community Documentation \n Documentation and usage examples are available in the\n\n README.md \n\nfile included with the module.\n\n Back to top",
+  "project_description": "AI Watchdog Analyst adds an AI-powered \"Analyze\" action to Drupal's Watchdog (dblog) log viewer. On the log overview (/admin/reports/dblog) each Warning-or-worse entry gains a \"🤖 Analyze\" button that opens a modal with an AI-generated solution; individual log-event pages get an \"Analyze with AI\" button that renders the analysis beneath the log-details table. The module builds a prompt from the selected watchdog row (type, severity, message with variables substituted, location and referer), detects whether the log type maps to a contrib module and enriches the prompt with a drupal.org project URL, then calls a chat model through the AI module's provider plugin system. Responses are markdown, converted to HTML via league/commonmark, and cached for 24 hours per log type+message. Provider, model and the system prompt are configurable at /admin/config/ai/watchdog-analyst. Requires core dblog and the AI module (^1.0) with at least one configured chat provider. Supports Drupal 10 and 11.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

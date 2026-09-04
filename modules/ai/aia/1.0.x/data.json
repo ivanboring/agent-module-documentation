@@ -1,49 +1,57 @@
 {
   "name": "AI Assistant (AIA)",
   "data_name": "aia",
-  "description": "An AI-powered Drupal configuration generator (content types, fields, views, etc.).",
+  "description": "AI-powered Drupal site-building automation: generate content types, fields, taxonomies, blocks, views, menus, and paragraph types from natural-language prompts, with a mandatory dry-run preview and full rollback.",
   "version": "1.0.x",
-  "package": null,
+  "package": "AI",
   "composer_namespace": "drupal/aia",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.2"
+  },
   "dependent_modules": [
-    "drupal:node",
-    "drupal:field",
-    "drupal:taxonomy",
-    "drupal:block_content",
-    "drupal:views",
-    "ai:ai",
-    "drupal:menu_link_content"
+    "node",
+    "field",
+    "taxonomy",
+    "block_content",
+    "views",
+    "ai",
+    "menu_link_content"
   ],
-  "configure": null,
+  "configure": "aia.settings",
   "core_version_requirement": "^10.2 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/aia",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.4",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
-  "provides_drush_commands": false,
-  "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "AiaAction"
+  ],
   "categories": [
     "Artificial Intelligence (AI)",
     "Developer tools"
   ],
   "subcategories": [
-    "AI agents / taskable AI"
+    "AI agents / taskable AI",
+    "Code generation / scaffolding",
+    "Configuration management"
   ],
   "keywords": [
     "ai",
+    "architecture",
+    "automation",
     "configuration",
     "generator",
     "site building",
     "scaffold"
   ],
-  "project_description": "AI-Powered Drupal Configuration Generator \n Generate Drupal configurations using natural language prompts. \n\n The AI Architect (AIA) module enables site builders to create complex Drupal\n\nconfigurations by simply describing what they need in plain English. Powered by\n\nleading AI providers (Anthropic Claude, Google Gemini, and more via the\n\n AI module ), AIA translates your\n\nintent into production-ready Drupal configurations — with a mandatory dry-run\n\npreview and full rollback on every operation.\n\n Key Features \n \n Content Type Generation : Create complete content types with all fields defined in one prompt \n Field Creation : Add custom fields to any existing content type \n Taxonomy Building : Generate vocabularies with pre-populated terms \n Block Creation : Create custom blocks with content and settings \n View Generation : Build views with multiple displays, fields, and filters \n Menu Generation : Generate menus with nested navigation links \n Paragraph Type Generation : Create Paragraphs paragraph types with fields and display configuration (requires Paragraphs module) \n Natural Language Routing : Type a free-form goal and let the AI pick the right action — or select manually \n Pipeline Execution : Multi-step requests are planned and executed as a single session with shared rollback \n Natural Language Prompts : Describe what you want in plain English via --prompt flag or the web UI \n Dry-Run Mode : Preview all changes with a structured diff before applying \n Conflict Resolution : When a name already exists, choose to stop or auto-increment to the next available name \n Full Rollback : Undo any AI-generated configuration by task ID \n Audit Trail : Complete task history with timestamps, session grouping, and rollback links \n Drush Integration : Full CLI interface with --prompt flag and --auto-approve \n Web UI : Admin form with intent textarea, AI routing, pipeline preview, and apply button \n Categorised Error Messages : Errors are classified (provider, schema, validation, conflict) with actionable suggestions \n \n Example Usage \n # Let the AI choose — type a free-form goal in the web UI or use the router\ndrush aia:execute generate_content_type \\\n --prompt=\"A product catalog type with title, SKU, price, and product images\"\n\n# Create a taxonomy\ndrush aia:execute generate_taxonomy \\\n --prompt=\"Categories with terms: News, Reviews, Tutorials, How-To Guides\"\n\n# Build a view\ndrush aia:execute generate_view \\\n --prompt=\"Recent blog posts with a page at /blog and sidebar block showing 5 latest\"\n\n# Generate a menu\ndrush aia:execute generate_menu \\\n --prompt=\"Footer menu with Privacy Policy, Terms of Service, and Accessibility links\"\n\n# Generate a paragraph type (requires drupal/paragraphs)\ndrush aia:execute generate_paragraph_type \\\n --prompt=\"A card paragraph with heading, body text, and an image\"\n\n# Preview without applying\ndrush aia:dry-run generate_menu \\\n --prompt=\"Main navigation with Home, About, and Contact\"\n Safety First \n \n Dry-Run Always First : See exactly what will change before anything is written to Drupal \n Strict Validation : All AI responses validated against schemas and business rules before application \n Conflict Detection : Naming conflicts are surfaced clearly — you choose to stop or proceed with an incremented name \n Full Rollback : Every applied change is reversible via task ID \n Audit Trail : Complete history of all AI-generated changes with user, timestamp, and pipeline session grouping \n Permission Control : Granular Drupal permissions for each action type \n \n Quality & Testing \n AIA is built to enterprise standards:\n\n \n 199 automated tests with 865 assertions \n 100% PHPCS compliant with Drupal and DrupalPractice coding standards \n Zero PHPStan errors at level 6 \n Unit + Kernel test coverage across all 7 action plugins, all validators, all services, and the router/pipeline layer \n \n Requirements \n \n Drupal 10.2+ or Drupal 11 \n AI module 1.2.8+ with a configured provider \n PHP 8.1+ \n menu_link_content Drupal …",
+  "project_description": "AIA (AI Architect / AI Assistant) turns natural-language prompts into real Drupal configuration. Through a Drush CLI or an admin web form, a site builder describes a goal in plain English (\"a product catalog type with title, SKU, price, and images\") and AIA plans, previews, and applies the matching structural changes. It ships seven AiaAction plugins: generate_content_type, add_field, generate_taxonomy, generate_view, generate_block, generate_menu, and generate_paragraph_type (Paragraphs optional). A free-form router (AiaActionRouter) picks the right action, or plans a multi-step pipeline executed under one session ID. Every operation is a two-phase dry-run then apply: the AI response is JSON-schema and business-rule validated, a colour-coded diff is shown, and only an explicit confirm/apply writes to the site. Each applied change is logged as an aia_task content entity with a rollback link and task-history report. The AI backend is pluggable via the ai module (AIRequestService), and a keyword-driven MockAIRequestService is wired as the default service for cost-free, deterministic development and testing.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

@@ -1,17 +1,19 @@
 {
   "name": "AI Workspace",
   "data_name": "ai_workspace",
-  "description": "A per-user AI chat workspace with persistence, streaming, and provider-agnostic model selection.",
+  "description": "Enterprise-grade, per-user AI chat workspace with full persistence, streaming (SSE), and provider-agnostic model selection via the Drupal AI module.",
   "version": "1.0.x",
   "package": "AI",
   "composer_namespace": "drupal/ai_workspace",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.2"
+  },
   "dependent_modules": [
     "drupal:user",
     "drupal:system",
     "ai:ai"
   ],
-  "configure": null,
+  "configure": "ai_workspace.settings",
   "core_version_requirement": "^10.4 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -19,12 +21,16 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/ai_assistant_api": "Enables assistant-backed threads (assistant__<id> model keys) that run through the AI Assistant API runner with its own system prompt, tools and history."
+  },
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "ai_workspace_tool"
+  ],
   "categories": [
     "Artificial Intelligence (AI)"
   ],
@@ -36,9 +42,11 @@
     "chat",
     "workspace",
     "streaming",
-    "assistant"
+    "sse",
+    "assistant",
+    "copilot"
   ],
-  "project_description": "You could call this Chat GPT in Drupal, or Drupal Copilot. We went with something Ai vendor agnostic: Drupal AI workspace.\n\nIt's essentially a chat GPT like interface but inside Drupal.\n\n Warning \n this module works, but is not finished yet. So only use it on production after careful consideration.\n\n Features \n AI Workspace gives every authenticated user on your Drupal site a private, persistent AI chat environment, think ChatGPT-style conversations, but self-hosted and fully integrated into your Drupal back-end. Users can open multiple named conversation threads, switch between any AI provider and model already configured in your Drupal installation, and stream responses token by token directly in the browser. \n\n Everything is stored in Drupal entities, meaning conversations survive page reloads, are owned by the user who created them, and can be managed or deleted at any time.\n\n \n Per-user persistent threads. Each authenticated user gets their own set of conversation threads stored as Drupal entities. Threads are private and inaccessible to other users. \n Streaming responses. Answers are streamed token by token via Server-Sent Events (SSE), so users see the AI typing in real time — no waiting for the full response. \n Provider and model agnostic. Works with any AI provider configured in the Drupal AI module (OpenAI, Anthropic, Mistral, Ollama, and more). Users can switch models per thread. \n Auto-generated thread titles. After the first exchange, the AI automatically generates a short descriptive title for the conversation so users can identify threads at a glance. \n Configurable starter suggestions. Show clickable prompt suggestions on the empty-state screen to help new users get started. Fully configurable from the admin UI. \n Fully configurable appearance. The workspace name, welcome title, welcome subtitle, and page path ( /ai_workspace by default) are all editable from a single settings form — no code changes required. \n React-powered SPA. The front-end is built with assistant-ui and React. It mounts into a single Drupal page and handles all interaction client-side for a fast, app-like feel. \n Clean admin integration. Appears under Administration → AI alongside other AI module settings. \n \n When to use this module: Use AI Workspace when you want to give Drupal site users (staff, clients, members) a polished, private AI chat interface without running a separate application. Good use cases include internal knowledge assistants, customer support tooling, content drafting environments, and developer-facing Drupal helper tools.\n\n Post-Installation \n \n Enable the module alongside the Drupal AI module and at least one configured AI provider. \n Visit the settings page at Administration → AI → AI Workspace ( /admin/ai/ai_workspace ) to:\n \n Set the default AI model offered to users. \n Restrict which providers users may access. \n Write a global system prompt that shapes the AI's behaviour across all conversations. \n Customise the workspace name, welcome screen text, and starter suggestions. \n Change the page path if /ai_workspace conflicts with an existing route (takes effect immediately on save, no manual cache clear needed). \n \n \n Grant permissions. Go to Administration → People → Permissions and grant the Use AI Workspace permission to the roles that should have access. \n Build the front-end bundle (for developers installing from source). The compiled React bundle is included in official releases. If you are working from the Git repository, run bash build_js.sh inside the module directory to produce js/dist/ai_workspace.js and js/dist/ai_workspace.css . \n Direct users to the workspace page (default: /ai_workspace ). They can immediately create threads and start chatting. \n \n Additional Requirements \n \n Drupal AI module ( drupal/ai ^1.2 ) required. Provides the provider plugin system, model abstraction, and streaming infrastructure that AI Workspace builds on. \n At least one configured AI provider required. Without a …",
+  "project_description": "AI Workspace is a per-user, persistent, ChatGPT-style chat interface built inside Drupal on top of the Drupal AI module. Each authenticated user gets a private workspace with multiple named conversation threads, stored as Drupal content entities (ai_workspace_thread + ai_workspace_message) owned by the creating user. Responses stream token-by-token to the browser over Server-Sent Events, model/provider selection is agnostic (any chat-capable provider configured in the AI module), and thread titles are auto-generated by the AI after the first exchange. The front-end is a React (assistant-ui) single-page app mounted on one Drupal route (/ai_workspace by default, configurable) that talks to a JSON+SSE REST API under /api/ai-workspace. Optional integration with ai_assistant_api lets a thread run an AI Assistant (assistant__<id> keys) through that module's runner. A settings form (/admin/ai/workspace, permission 'administer ai workspace') configures the default model, an allow-list of providers, a global system prompt, starter suggestions, appearance strings, per-user thread caps, tool calling and audit logging. A pluggable tool-calling scaffold (AiWorkspaceTool plugin type) is present but ships no active tools in this release. Marked not-covered by the Drupal security advisory policy and described upstream as under active development.",
   "maintenance_status": "Seeking co-maintainer(s)",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

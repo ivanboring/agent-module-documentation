@@ -1,13 +1,15 @@
 {
   "name": "AI RAG Search",
   "data_name": "airagsearch",
-  "description": "RAG search integrating an AI chat model with Search API for contextual answers.",
+  "description": "Integrates ChatGPT (OpenAI) with Search API to return contextual, retrieval-augmented answers alongside search results.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Custom",
   "composer_namespace": "drupal/airagsearch",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/search_api": "^1.0"
+  },
   "dependent_modules": [
-    "search_api:search_api"
+    "search_api"
   ],
   "configure": null,
   "core_version_requirement": "^10 || ^11",
@@ -15,7 +17,7 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/airagsearch",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
@@ -28,16 +30,19 @@
     "Site search"
   ],
   "subcategories": [
-    "Vector database / embeddings storage"
+    "LLM content discovery",
+    "Search analytics / reporting",
+    "Search form block"
   ],
   "keywords": [
     "ai",
     "rag",
     "search",
     "chatgpt",
+    "openai",
     "search api"
   ],
-  "project_description": "Introduction \n\n AI Search integrates Drupal's Search API with OpenAI (ChatGPT) to deliver intelligent, contextual answers alongside traditional search results. Instead of just showing a list of links, the module generates a concise AI-written answer grounded strictly in your site's own indexed content — no hallucinations, no off-site information. Editors get an analytics dashboard to monitor popular and zero-result queries. Whether you run a government portal, knowledge base, or content-heavy site, AI Search gives your visitors a smarter way to find answers.\n\n Features \n AI Search bridges two powerful systems — Drupal's Search API and OpenAI's language models — to give your site a question-answering layer on top of traditional keyword search.\n\n Core capabilities include:\n\n - Contextual AI answers generated from the top search results (default: 3 documents), with the model strictly instructed to use only your site's content as its source.\n\n- Multi-document AI summaries at `/ai-search/summary`, drawing from up to 20 results to produce a comprehensive overview of a topic across your content.\n\n- Search API integration with any supported backend — the database backend works out of the box for small and mid-size sites, with Solr or Elasticsearch supported for larger deployments.\n\n- Configurable model selection — choose from GPT-4o, GPT-4 Turbo, GPT-3.5, and others; tune temperature and max token limits to match your use case.\n\n- Markdown → HTML conversion for AI responses, rendered cleanly in the browser.\n\n- Analytics dashboard at `/admin/reports/ai-search-analytics` tracking query frequency, zero-result rates, and usage trends — with configurable retention limits and automatic pruning.\n\n- Granular context controls — administrators can configure how many results feed into AI responses, how much content per result, and total response length, giving full control over quality vs. cost tradeoffs.\n\n- Clear error logging — if the API key or index is missing, the module logs a clear diagnostic and gracefully degrades without breaking the search page.\n\n Use this module when you want your site's search to answer *questions*, not just return a list of links — ideal for documentation sites, intranets, knowledge bases, and government or institutional portals where users need direct answers from authoritative content.\n\n Post-Installation \n After enabling the module (`drush en ai_search -y` or via Extend → AI Search), follow these steps:\n\n 1. Create or select a Search API index. Go to `/admin/config/search/search-api`, create an index backed by the database (or your existing Solr/Elasticsearch server), and add at minimum the title and body fields. Index your content.\n\n2. Configure the module. Visit `/admin/config/search/ai-search`. Enter your OpenAI API key (starts with `sk-`), select the index you created, and choose a GPT model (`gpt-4o-mini` is recommended for cost/quality balance).\n\n3. Tune optional settings. Adjust results per page, context document count, content length per result, temperature, and max response tokens to balance answer quality against OpenAI API costs.\n\n4. Test the search page at `/ai-search`. Enter a query and confirm both traditional results and the AI answer appear.\n\n5. Review the analytics dashboard at `/admin/reports/ai-search-analytics` to monitor query patterns over time.\n\n No new content types are created. The module adds one settings page, one search page, one summary page, and one analytics report. Check Reports → Recent log messages (filter by channel `ai_search`) if AI responses are not appearing.\n\n Additional Requirements \n - Drupal 10.0+ (PHP 8.1+)\n\n- [Search API]( https://www.drupal.org/project/search_api ) — must be installed with at least one configured, populated index\n\n- A Search API backend — the database backend (included with Search API) is sufficient; [Search API Solr]( https://www.drupal.org/project/search_api_solr ) or [Elasticsearch Connector]( …",
+  "project_description": "AI RAG Search (machine name: airagsearch) integrates Drupal's Search API with OpenAI's chat models (ChatGPT) to add a retrieval-augmented question-answering layer on top of keyword search. On a search page at /airagsearch, it runs the query against a configured Search API index, feeds the top-ranked result bodies to the OpenAI Chat Completions API as context, and returns a concise AI-written answer grounded in that content, together with the traditional result list. A separate summary view at /airagsearch/summary composes an overview across up to 20 results. An analytics dashboard at /admin/reports/airagsearch-analytics tracks query frequency and zero-result rates with automatic pruning. The module provides a settings form (API key, index selection, model choice, temperature, token limits, context sizing), a Test Connection form, a block plugin, and a set of JSON REST endpoints under /api/airagsearch gated by a dedicated permission. It depends on the Search API module and works with any Search API backend (database, Solr, Elasticsearch). Requires Drupal 10 or 11 and PHP 8.1+.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

@@ -1,12 +1,14 @@
 {
   "name": "Ajax Callbacks Field Formatter",
   "data_name": "ajax_callback_field_formatter",
-  "description": "A Link field formatter that renders links as AJAX-callback triggers.",
+  "description": "A Link field formatter that renders each link as a client-side AJAX-callback trigger: the URL part becomes the AJAX callback endpoint and the text part the placeholder/fallback text.",
   "version": "1.1.x",
-  "package": null,
+  "package": "Custom",
   "composer_namespace": "drupal/ajax_callback_field_formatter",
   "composer_requirements": {},
-  "dependent_modules": [],
+  "dependent_modules": [
+    "link"
+  ],
   "configure": null,
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
@@ -14,12 +16,16 @@
   "project_url": "https://www.drupal.org/project/ajax_callback_field_formatter",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "core/drupal",
+    "core/drupal.ajax",
+    "core/once"
+  ],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"

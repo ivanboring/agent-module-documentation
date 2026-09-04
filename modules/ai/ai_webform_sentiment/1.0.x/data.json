@@ -1,18 +1,21 @@
 {
-  "name": "AI Webform Sentiment",
+  "name": "AI webform submission sentiment detection",
   "data_name": "ai_webform_sentiment",
-  "description": "Analyzes webform submissions for sentiment using ai (with chart.js visualization).",
+  "description": "Analyzes webform submissions for sentiment using AI, storing a numeric score per submission and charting the trend with Chart.js.",
   "version": "1.0.x",
   "package": "AI",
   "composer_namespace": "drupal/ai_webform_sentiment",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1",
+    "drupal/webform": "^6.2"
+  },
   "dependent_modules": [
-    "ai:ai",
-    "webform:webform",
-    "chartjs_api:chartjs_api"
+    "ai",
+    "webform",
+    "chartjs_api"
   ],
-  "configure": null,
-  "core_version_requirement": "^10.2||^11",
+  "configure": "ai_webform_sentiment.settings_form",
+  "core_version_requirement": "^10.2 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ai_webform_sentiment",
@@ -22,23 +25,26 @@
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
-  "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Forms and surveys"
+    "Forms and surveys",
+    "Artificial Intelligence (AI)"
   ],
   "subcategories": [
-    "AI analysis"
+    "Submission handling",
+    "AI content risk analysis"
   ],
   "keywords": [
     "ai",
     "webform",
     "sentiment",
     "analysis",
-    "chart"
+    "chart",
+    "llm"
   ],
-  "project_description": "AI sentiment analysis on webform submissions \n This module gives you the possibility to \n\n \n Use AI to score webform submissions on positive/negative. \n Use AI to visualise the clusters of themes in the webform submissions \n \n We leverage the AI module LLM capability to calculate a sentiment score for each submission.\n\nThis allows you to track the average submission emotion and the sentiment trend in Drupal. \n\n Configuration \n \n Add a handler to the webform \n Configure the sentiment handler (choose a PROMPT and a Large Language Model). \n (optional) Change the prompt to use more granular or less granular scoring. you can make it score from 0-5 or from 5-10 or ... (currently only supporting numeric). \n Make sure cron runs \n \n Usage \n Go to the webform results page, click on Sentiment. See the scores.\n\nThey will be updated per cron run.\n\n Requirements \n \n Cron configured and running \n chartjs_api \n \n Warning 1 \n The dashboard uses some heavy queries (avg/sum/) with grouping.\n\nIt might be that the module needs some more production testing and load testing. happy to accept suggestions. Be careful installing this on production.\n\n Warning 2 \n If you have many webform submissions. For every LLM evaluation we will do a call which may cost you money. You should be aware.\n\n Similar modules \n Similar but not the same: analyze_ai_sentiment \n\n Back to top",
+  "project_description": "AI Webform Sentiment adds a Webform handler plugin that queues every non-draft submission for AI sentiment analysis. On cron, a queue worker sends each submission's data to a configurable LLM (via the AI module's chat operation) with a prompt that asks for a single numeric score (default 0-5). The integer result is stored in a dedicated ai_webform_sentiment database table, and a per-webform 'Sentiment' results tab renders average, daily-trend, and distribution charts with Chart.js (via chartjs_api). Scoring granularity is controlled entirely by the editable prompt. Requires cron to be running; each submission costs one LLM call.",
   "maintenance_status": "Seeking co-maintainer(s)",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

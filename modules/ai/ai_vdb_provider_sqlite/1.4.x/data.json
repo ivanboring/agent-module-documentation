@@ -5,9 +5,12 @@
   "version": "1.4.x",
   "package": "AI Vector Database Providers (Experimental)",
   "composer_namespace": "drupal/ai_vdb_provider_sqlite",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.4"
+  },
   "dependent_modules": [
-    "ai:ai"
+    "ai:ai",
+    "key:key"
   ],
   "configure": "ai_vdb_provider_sqlite.settings_form",
   "core_version_requirement": "^10.2||^11",
@@ -27,7 +30,7 @@
     "Integrations"
   ],
   "subcategories": [
-    "Vector database / embeddings"
+    "Vector database / embeddings storage"
   ],
   "keywords": [
     "ai",
