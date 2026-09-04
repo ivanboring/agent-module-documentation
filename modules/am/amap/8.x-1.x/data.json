@@ -1,14 +1,14 @@
 {
   "name": "aMap",
   "data_name": "amap",
-  "description": "Adds an AJAX map as a block.",
+  "description": "Add an ajax map as a block.",
   "version": "8.x-1.x",
-  "package": null,
+  "package": "aMap",
   "composer_namespace": "drupal/amap",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:node",
-    "drupal:block"
+    "node",
+    "block"
   ],
   "configure": null,
   "core_version_requirement": "^10.1 || ^11",
@@ -17,28 +17,36 @@
   "project_url": "https://www.drupal.org/project/amap",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "core/jquery",
+    "core/drupal.ajax",
+    "core/drupal",
+    "core/drupalSettings"
+  ],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Media",
-    "Content display"
+    "Content display",
+    "Media"
   ],
   "subcategories": [
-    "Geospatial / location"
+    "Geospatial / location",
+    "Block enhancements",
+    "SVG / vector images"
   ],
   "keywords": [
     "map",
+    "svg",
     "ajax",
     "block",
-    "location",
-    "geospatial"
+    "usa",
+    "location"
   ],
-  "project_description": "Ajax Map (aMap) \n Map of USA will change colors based on json data / CSS",
+  "project_description": "aMap (Ajax Map) provides a single block plugin that embeds an inline SVG map (a bundled map of the USA) and, via a small client-side jQuery behavior, fetches JSON from an administrator-configured URL and recolors, styles, and links the SVG's regions from that data. It is a display-only site-builder tool: it ships no entities, permissions, routes, services, or config schema, and depends only on core node and block.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

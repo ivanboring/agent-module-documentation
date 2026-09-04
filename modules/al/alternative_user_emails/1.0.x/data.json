@@ -1,43 +1,44 @@
 {
-  "name": "Alternative User Emails",
+  "name": "Alternative user email addresses",
   "data_name": "alternative_user_emails",
-  "description": "Stores additional (alternative) email addresses for user accounts.",
+  "description": "Store alternative email addresses for users, in addition to the primary mail field.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/alternative_user_emails",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:user",
-    "drupal:field"
+    "user",
+    "field"
   ],
   "configure": null,
-  "core_version_requirement": "^10.3||^11",
+  "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/alternative_user_emails",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "^8.3",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Access control"
   ],
   "subcategories": [
-    "User accounts / identity"
+    "Email as username"
   ],
   "keywords": [
     "user",
     "email",
     "alternative",
     "identity",
-    "accounts"
+    "duplicate accounts",
+    "mail"
   ],
-  "project_description": "This module stores alternative email addresses for users, in addition to the single primary email address stored in the user's mail field.\n\n This can be useful for preventing duplicate users being created for people who have multiple email addresses, as most of us do.\n\n Back to top \n\n What it does \n \n A multi-value field called 'alternative_user_emails' is added to the user entity type. \n When the primary email is changed, the old email is automatically added to the alternatives. \n User entity queries are altered so that queries that filter by the mail field also filter by the alternatives. \n Validation ensures that mails and alternatives are unique to a user. \n \n Back to top \n\n Recommended modules \n \n Read-only widget is useful if you wish to show the alternative emails on a user form, but not allow them to be edited. \n \n Back to top \n\n Related modules \n \n Multiple E-mail Addresses is a much more ambitious and feature-rich approach to allowing multiple email addresses for users. It is now available for Drupal 8+. However, it does not modify user queries in the way this module does.\n \n Back to top \n\n Contributing \n All contributions are welcome. Please submit MRs, not patches, so that the CI tests are run. Please add tests if possible.\n\n If you post an issue and do not receive a response, feel free to contact me by private message in the Drupal Slack (ptmkenny) or via my Drupal.org contact form .\n\n Back to top \n\n Sponsors \n Initial development: Awakened Heart Sangha \n\n Back to top",
+  "project_description": "This module stores alternative email addresses for users, in addition to the single primary email address stored in the user's mail field.\n\nThis can be useful for preventing duplicate users being created for people who have multiple email addresses, as most of us do.\n\nWhat it does: an unlimited-cardinality base field 'alternative_user_emails' is added to the user entity type; when the primary email is changed, the old email is automatically moved into the alternatives; user entity queries are altered so that any condition on the mail field also matches the alternatives; and validation ensures that every primary and alternative email is unique across all users. No configuration is needed or available.\n\nInitial development sponsored by Awakened Heart Sangha. Maintained by Jonathan Shaw (jonathanshaw) and Patrick Kenny (ptmkenny).",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

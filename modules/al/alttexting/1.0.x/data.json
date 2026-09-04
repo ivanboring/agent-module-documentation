@@ -1,16 +1,16 @@
 {
-  "name": "AltTexting",
+  "name": "Alttext.ing",
   "data_name": "alttexting",
-  "description": "Adds AI-generated alt text to media images (accessibility assist).",
+  "description": "Adds AI generated text to media alt field.",
   "version": "1.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/alttexting",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:media"
+    "media"
   ],
-  "configure": null,
-  "core_version_requirement": "^10.1||^11||^12",
+  "configure": "alttexting.settings",
+  "core_version_requirement": "^10.1 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/alttexting",
@@ -24,10 +24,11 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Accessibility"
+    "Accessibility",
+    "Artificial Intelligence (AI)"
   ],
   "subcategories": [
-    "AI assistance"
+    "AI image & video generation"
   ],
   "keywords": [
     "alt text",
@@ -36,7 +37,7 @@
     "media",
     "images"
   ],
-  "project_description": "ALTtext.ing helps site builders and content editors ensure that all images on a Drupal website include meaningful alternative text. The module makes it easier to comply with accessibility standards and provide a better user experience for everyone.\n\n Features \n - Detects images without alternative text.\n\n- Provides editors with simple tools to add or update alt text during content creation or on media entity edit.\n\n- Improves SEO by encouraging consistent use of descriptive alt attributes.\n\n- Useful for any Drupal site that manages lots of media or editorial contributors.\n\n \n\n Additional Requirements \n you need a license key for the alttext.ing service from acolono GmbH\n\n Recommended modules/libraries \n We recommend the Module Entity Reference Media to also support overwriting the alt text wherever you use it.\n\nWith that also the surrounding context of the Media item is passed over and therefore also the quality of the alt text is getting significantly better. \n\n Similar projects \n tbd\n\n Supporting this Module \n ❤️ \n\n Community Documentation \n TBD\n\n Back to top",
+  "project_description": "Alttext.ing automatically generates descriptive alternative text for images using the external api.alttext.ing AI vision service (by acolono GmbH). It integrates with Drupal's core Media system: editors get a \"Generate Alt Text With AI\" button on image media widgets, and the module can optionally auto-generate alt text whenever an image media entity is saved (synchronously via a webhook callback, or in the background through a queue worker processed on cron). Requires a paid API key for the alttext.ing service; supports multiple languages and can base64-encode images for local development where the service cannot reach the site.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

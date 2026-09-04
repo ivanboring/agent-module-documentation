@@ -1,7 +1,7 @@
 {
   "name": "Alt Text Generator",
   "data_name": "alt_text_generator",
-  "description": "Generates alt text for images using AI.",
+  "description": "Adds a button to image-field widgets that generates alt text for the uploaded image via the external Alt Text Generator AI service.",
   "version": "1.0.x",
   "package": "Content",
   "composer_namespace": "drupal/alt_text_generator",
@@ -9,17 +9,17 @@
   "dependent_modules": [
     "drupal:image"
   ],
-  "configure": null,
+  "configure": "alt_text_generator.settings",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/alt_text_generator",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
@@ -30,16 +30,17 @@
   ],
   "subcategories": [
     "AI tooling / function calling",
-    "Text-to-speech"
+    "ARIA / semantic markup",
+    "File & media metadata"
   ],
   "keywords": [
     "ai",
     "alt text",
     "accessibility",
     "images",
-    "vision"
+    "seo"
   ],
-  "project_description": "Alt Text Generator module automatically generates descriptive alt text for your Drupal images using AI to help you rank faster on Google and other search engines. This module integrates with the image widget by adding a button to generate alt text for images.\n\n Features \n Customizable: Update and edit the AI generated alt text. You can also click on the Generate Alt Text button to generate alt text for each image.\n\n Extensive Image Support: Supports the following image types: JPEG, JPG, PNG, SVG, AVIF, GIF, and WEBP.\n\n SEO and Accessibility: Alt text generated is highly optimized to rank higher and improve SEO.\n\n Post-Installation \n Access the settings page at /admin/config/content/alt-text-generator to choose the language for alt text and add the API key for alt text generation. A button will then appear on image fields for generating alt texts.\n\n Additional Requirements \n This module requires an API key to work. You can get a free API key at Alt Text Generator Dashboard \n\n Similar projects \n The AI Image Alt Text module offers similar functionality by leveraging AI to generate alt text.\n\n Supporting this Module \n This module is supported by Alt Text Generator Company .\n\n Community Documentation \n Youtube Tutorial \n\n Drupal Tutorial \n\n You may continue to put additional information below here, if there are other things you think people need to know about your module!\n\n Back to top",
+  "project_description": "Alt Text Generator adds AI-powered alt-text generation to Drupal image fields. When an image field widget renders and an image is present, the module attaches a \"Generate Alt Text\" button; clicking it POSTs the file id to a module route, which sends the image (base64-encoded) plus the site's API key to the external Alt Text Generator service (alttextgeneratorai.com) and writes the returned description into the field's alt input. A settings form at /admin/config/content/alt-text-generator stores the API key and a default language (34 languages supported) and displays the remaining credit balance reported by the service. The module requires a (free-tier) API key from the vendor and depends on core Image. It ships no permissions of its own, one config object (alt_text_generator.settings), one hook (hook_field_widget_single_element_form_alter), a settings form, and a controller route.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

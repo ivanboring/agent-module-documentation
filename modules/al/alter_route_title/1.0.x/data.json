@@ -1,14 +1,14 @@
 {
   "name": "Alter Route Title",
   "data_name": "alter_route_title",
-  "description": "Lets you alter the page (route) title for specific routes.",
+  "description": "Admin UI to override the static _title of existing contrib/custom module routes via a route-alteration event subscriber.",
   "version": "1.0.x",
   "package": "Utility",
   "composer_namespace": "drupal/alter_route_title",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^8.8||^9||^10||^11",
+  "configure": "alter_route_title.configuration_form",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/alter_route_title",
@@ -19,22 +19,23 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools"
   ],
   "subcategories": [
-    "Utility"
+    "Entity page behavior & redirects"
   ],
   "keywords": [
     "route title",
+    "page title",
     "title",
     "alter",
-    "page title",
+    "route",
     "utility"
   ],
-  "project_description": "Alter Route Title \n\n The Alter Route Title module enables you to modify the titles of existing routes in Drupal. This module specifically handles routes provided by contributed and custom modules. It seamlessly integrates with Drupal's `_title_callback` functionality, ensuring that the core title callback logic for dynamic titles remains intact. Additionally, the module supports the export and import of Alter Route Title configurations, allowing easy transfer of settings.\n\n Installation \n\n Follow the official [Drupal Module Installation Guide]( https://www.drupal.org/docs/extending-drupal/installing-modules ) for step-by-step instructions.\n\n Usage \n\n 1. Navigate to:\n\n Administration >> Configuration >> System >> Alter Route Title\n\n 2. In the displayed table, you will find a list of available routes along with their current titles.\n\n 3. Add or update custom titles directly in the table to modify route titles as needed.\n\n Visual Example \n\n \n\n Similar projects \n\n \n https://www.drupal.org/project/metatag_page_heading : - This module is typically useful, if the visible page title should differ from the entity label. \n https://www.drupal.org/project/node_title_ps :- Node title prefix & suffix",
+  "project_description": "The Alter Route Title module provides an admin form that lists the routes defined by enabled contributed and custom modules (core modules are excluded) together with their statically-defined titles, and lets an administrator type a replacement title for any of them. A route event subscriber then rewrites the matching route's static `_title` default at route-build time. It deliberately leaves each route's `_title_callback` untouched, so routes that compute a dynamic title in code keep doing so. Overrides are stored in a single config object and can be exported/imported like any other Drupal configuration.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

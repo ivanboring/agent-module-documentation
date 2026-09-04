@@ -1,11 +1,13 @@
 {
   "name": "Amazon Image ID Scan",
   "data_name": "amazon_image_id_scan",
-  "description": "Scans/loads images from Amazon S3 by ID.",
+  "description": "Validates uploaded ID/document images with AWS Rekognition (DetectLabels + DetectText) during image-field widget validation.",
   "version": "1.1.x",
   "package": null,
   "composer_namespace": "drupal/amazon_image_id_scan",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "aws/aws-sdk-php": "^3.294"
+  },
   "dependent_modules": [],
   "configure": null,
   "core_version_requirement": "^8.8.0 || ^9 || ^10 || ^11",
@@ -19,23 +21,28 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Media",
-    "Integrations"
+    "Integrations",
+    "Content editing experience",
+    "Media"
   ],
   "subcategories": [
-    "Remote file storage"
+    "Cloud services (AWS)",
+    "Field validation",
+    "File uploads"
   ],
   "keywords": [
     "amazon",
-    "s3",
+    "rekognition",
+    "aws",
     "image",
-    "scan",
-    "cloud"
+    "document",
+    "id-verification",
+    "ocr"
   ],
-  "project_description": "This module integrates the Amazon Rekognition API to validate documents uploaded by users. Through advanced image analysis, the module verifies that the uploaded document is authentic and matches the expected document type. Additionally, it aims to validate that the document data is correct, providing an extra layer of security and reliability in the file upload processes on your Drupal site. Ideal for applications where identity verification or document authenticity is critical.\n\n Install the Amazon Rekognition dependency using this link.\n\n https://www.drupal.org/docs/contributed-modules/webform/webform-cookboo… \n\n \"merge-plugin\": {\n\n \"include\": [\n\n \"web/modules/contrib/amazon_image_id_scan/composer.json\"\n\n ]\n\n },\n\n Some example uses: \n\n Identity verification in a registration portal: In financial, insurance, or educational service platforms, users must upload identification documents such as passports or driver’s licenses. The module validates that the document is authentic and matches the requested type, ensuring that the verification process is safe and reliable.\n\n Document validation in hiring processes: In employment portals, companies may require applicants to upload documents such as academic degrees or certifications. The module verifies that the documents are authentic and the data matches what was requested, helping companies avoid fraud in the selection process.\n\n Management of online procedures: In government or public service portals where users must submit official documents for procedures (such as permits or applications), the module ensures that the uploaded documents are correct and in compliance, speeding up processes and enhancing security.\n\n Background check platforms: In systems where background checks are performed (such as property rentals or visa applications), the module can ensure that the submitted documents, such as police reports or court records, are valid and meet the required standards.\n\n Document validation in e-commerce systems: In online stores that require identity or authenticity verification for purchasing restricted products (such as luxury items or medications), the module can validate uploaded documents, such as IDs or prescriptions, ensuring that customers meet legal requirements.",
+  "project_description": "Amazon Image ID Scan integrates the AWS Rekognition API to validate images uploaded through a Drupal image field. It ships a replacement image-field widget (ImageScanWidget, plugin id image_widget) that, when a file is uploaded, sends the raw image bytes to Rekognition's DetectLabels and DetectText operations and checks the result against an admin-defined validation profile: required (\"positive\") labels with a minimum confidence percentage, forbidden (\"negative\") labels, and regular expressions the OCR-detected text must match. If a check fails, the widget sets a form-validation error with the configured message, so the upload is rejected. Validation profiles and the AWS Rekognition credentials (access key and secret) are managed on the settings form at /admin/config/amazon_image_id_scan/configuration. Typical use is identity/document verification on registration, onboarding, KYC, hiring and government-procedure forms where a user must upload an ID card, passport or certificate and the site needs automated confirmation that the image is the expected kind of document and contains the expected text pattern.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

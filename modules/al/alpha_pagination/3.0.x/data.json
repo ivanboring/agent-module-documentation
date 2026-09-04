@@ -1,21 +1,21 @@
 {
   "name": "Alpha Pagination",
   "data_name": "alpha_pagination",
-  "description": "Provides an alphabetic (A-Z) paginator in the global area of a View.",
+  "description": "Provides an alphabetic (A-Z) paginator in the global (header/footer) area of a View.",
   "version": "3.0.x",
   "package": "Views",
   "composer_namespace": "drupal/alpha_pagination",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:views"
+    "views"
   ],
   "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^9 || ^10 | ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/alpha_pagination",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=7.4",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [
@@ -23,22 +23,23 @@
   ],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"
   ],
   "subcategories": [
-    "Pagers"
+    "Pagers & lazy loading"
   ],
   "keywords": [
     "pagination",
     "alphabetic",
     "views",
     "a-z",
+    "glossary",
     "navigation"
   ],
-  "project_description": "The Alpha Pagination for Views module enables you to add an alphabetical menu in the header or footer of a views display. \n\n Drupal 7 Support \n\nYou can download the current Drupal 7.x-2.0 version of Alpha Pagination at our GitHub repository . You can make issues there. This support is current as of March 25, 2026.\n\n Install \n\nInstall the Alpha Pagination module.\n\n \n For Drupal 9+, use the composer mechanism listed in the version section below \n \n Views Integration and Configuration \n\n \n Build a new view of either users, content (nodes), or comments. \n Add whatever field you want to use as the basis for the alphabetic grouping (e.g. title, body). You can optionally exclude this field from display if you don't want it to appear in the results shown on the page for some reason. You can only choose a field that is a textfield, textarea or a textarea with a summary. \n Add either a header or a footer to your view. Select the new item available in the menu of options for Global: Alpha Pagination. \n Configure how you want alpha_pagination to work and specify where it should appear:\n\n \n set the path to the results view page. \n select the field you want to use as the basis for the alphabetic grouping from the options presented in the select list (note: if the field you want to use does not appear, go back and add it to your view and then return to this configuration page to select the field). \n add a context that is the same as the field you wish to use as the basis for alphabetic sorting. Be sure to enable Glossary mode and set the character limit to 1. The transform case option on the URL should be set to Upper Case. \n by default the alpha pagination will apply to all displays; if you only want the alpha pagination to appear on the current display, use the drop-down menu at the top of the administrative interface to change the setting from \"All displays\" to \"This page (override)\". \n \n \n An optional sample view is included and can be enabled via the alpha_pagination_example view. The sample relies on the 'article' default content type. You can create sample content using the devel module or rely on your own data. \n \n This module exists thanks to the support of Highwire Press, Inc. and the Institute for the Arts and Humanities and UNC and was created as part of the Symposiac Conference Platform.",
+  "project_description": "The Alpha Pagination for Views module enables you to add an alphabetical (A-Z) menu in the header or footer area of a Views display, so a listing can be jumped to by the first character of a chosen field. It provides a Views global area handler (Global: Alpha Pagination) and a companion Views field handler (Alpha Pagination group), plus a shared AlphaPagination helper service. It works with any base entity (nodes, users, comments, taxonomy terms, media) by driving the paginator off a text/string field and a single-character glossary contextual filter. Numeric items, an \"All\" item, empty-letter toggling, per-element CSS classes and token-driven link paths/attributes are all configurable on the area handler. An optional alpha_pagination_sample_view submodule ships a ready-made example view against the article content type. This module exists thanks to the support of Highwire Press, Inc. and the Institute for the Arts and Humanities at UNC and was created as part of the Symposiac Conference Platform.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
