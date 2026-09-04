@@ -1,15 +1,15 @@
 {
   "name": "Azure AI FAQ Bot",
   "data_name": "azure_ai_faq_bot",
-  "description": "An FAQ chatbot powered by Azure Cognitive Services.",
+  "description": "A FAQ chatbot block that embeds the Microsoft Bot Framework Web Chat widget and mints a Direct Line token server-side.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/azure_ai_faq_bot",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:block"
+    "block"
   ],
-  "configure": null,
+  "configure": "azure_ai_faq_bot.azure_ai_faq_bot_config_form",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -33,10 +33,12 @@
     "azure",
     "faq",
     "chatbot",
-    "cognitive services",
-    "ai"
+    "bot framework",
+    "direct line",
+    "web chat",
+    "cognitive services"
   ],
-  "project_description": "The Azure AI FAQ Bot module integrates Azure's AI capabilities to provide an intelligent FAQ bot for Drupal websites. It creates a custom block that automates the handling of frequently asked questions, delivering accurate and efficient responses to enhance user interaction and support. \n\n Features \n Azure Integration: Seamlessly integrates with Azure's QnA Maker and Direct Line API to provide intelligent responses.\n\n Post-Installation \n \n Azure AI QnA service quickstart guide \n Publish the Azure FAQ Bot \n Get Azure Bot Secret Key \n Back to top",
+  "project_description": "Azure AI FAQ Bot embeds a Microsoft Bot Framework Web Chat widget on a Drupal site as a block. It ships one settings form for a Direct Line secret, one controller route that exchanges that secret for a short-lived Direct Line token, a block that renders an empty container plus attached JS, and a small behavior that fetches the token and boots the Web Chat widget (loaded from cdn.botframework.com) against the Direct Line service. The bot itself (QnA Maker / Language Studio question-answering) is built and hosted on Azure; this module only wires the Drupal page to it. The Direct Line secret stays server-side and only the minted token is returned to the browser.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

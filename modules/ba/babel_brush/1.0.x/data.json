@@ -1,13 +1,13 @@
 {
   "name": "Babel Brush",
   "data_name": "babel_brush",
-  "description": "Manages and cleans up multilingual content/translations.",
+  "description": "Admin form to search core Locale source strings by keyword and bulk-delete selected strings from locales_source and locales_target.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Custom",
   "composer_namespace": "drupal/babel_brush",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:locale"
+    "locale"
   ],
   "configure": null,
   "core_version_requirement": "^10 || ^11",
@@ -16,12 +16,16 @@
   "project_url": "https://www.drupal.org/project/babel_brush",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "core/jquery",
+    "core/drupal",
+    "core/drupalSettings"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Multilingual"
@@ -33,10 +37,11 @@
     "babel brush",
     "translation",
     "cleanup",
-    "multilingual",
-    "locale"
+    "locale",
+    "source strings",
+    "multilingual"
   ],
-  "project_description": "The Babel Brush module for Drupal 10 provides functionalities for searching and deleting source strings. This module includes a form where users can enter a keyword to search for source strings and then delete selected strings from the search results.\n\n Features \n \n Search source strings by keyword \n Bulk selection/deselection of strings \n Context-aware string display \n \n Post-Installation \n \n Go to Admin > People > Permissions to grant the \"administer babel brush search form\" permission to appropriate roles. \n Access the module at Admin > Configuration > Regional and language > Babel Brush. \n Back to top",
+  "project_description": "Babel Brush is a small maintenance utility for Drupal's core Locale (interface translation) system. It adds a single admin form under Configuration → Regional and language that searches translatable source strings by keyword (a LIKE match against locales_source.source) and lets an administrator tick individual results (or use Select all / Deselect all) and delete them. Deleting removes the matching rows from both the locales_source and locales_target tables, so it clears the source string together with all its translations. It is aimed at cleaning out stale, obsolete, or unwanted translatable strings. Version 1.0.0-alpha1; alpha, minimally maintained, no coverage by the security advisory policy.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "not-covered",

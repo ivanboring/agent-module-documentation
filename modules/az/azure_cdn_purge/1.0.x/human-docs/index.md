@@ -11,10 +11,9 @@ Purge's normal queue and processor, and this module becomes one of the "purgers"
 Purge drives. It runs on Drupal 10 and 11 and is meant for sites hosted behind Azure
 CDN.
 
-To reach Azure's purge API the module uses Azure credentials. Store those as secrets
-rather than in plaintext configuration, and scope the credential to just the CDN‑purge
-operation (least privilege). The connection to Azure uses TLS, and the module does not
-disable certificate verification. See [Configuration](configuration/index.md).
+To reach Azure's purge API the module uses Azure service-principal credentials
+(tenant id, client id, client secret) entered on its settings form, and calls the
+Azure management API over TLS. See [Configuration](configuration/index.md).
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

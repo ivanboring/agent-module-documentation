@@ -1,19 +1,23 @@
 {
   "name": "b24",
   "data_name": "b24",
-  "description": "Provides tools for integrating Drupal with Bitrix24 CRM.",
+  "description": "Provides an API and tooling for integrating Drupal entities with Bitrix24 CRM (leads, deals, contacts, products).",
   "version": "2.1.x",
   "package": "bitrix24",
   "composer_namespace": "drupal/b24",
-  "composer_requirements": {},
-  "dependent_modules": [],
+  "composer_requirements": {
+    "drupal/token": "^1.7"
+  },
+  "dependent_modules": [
+    "token"
+  ],
   "configure": "b24.credentials",
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/b24",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "^8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [
@@ -31,7 +35,7 @@
     "Integrations"
   ],
   "subcategories": [
-    "Marketing / CRM"
+    "CRM integration"
   ],
   "keywords": [
     "bitrix24",
@@ -40,7 +44,7 @@
     "leads",
     "b24"
   ],
-  "project_description": "This module package provides a basic API and functionality for integration with 1C-Bitrix24 CRM, allowing export from various Drupal entities to Bitrix24 leads, deals and contacts entities.\n\n Note, that since April 2025 access to the Bitrix24 REST API is a paid option .",
+  "project_description": "This module package provides a basic API and functionality for integration with 1C-Bitrix24 CRM, allowing export from various Drupal entities to Bitrix24 leads, deals and contacts entities. Authentication uses the Bitrix24 local-application OAuth2 flow; a RestManager service wraps the crm.* REST methods and maps Drupal entities to Bitrix24 records via a reference table. Submodules add integrations for Commerce orders/products, core contact forms, Drupal users, UTM marks and Webform submissions.\n\nNote that since April 2025 access to the Bitrix24 REST API is a paid option.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

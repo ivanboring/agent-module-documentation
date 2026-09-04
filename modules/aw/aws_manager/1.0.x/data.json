@@ -1,11 +1,13 @@
 {
   "name": "AWS Manager",
   "data_name": "aws_manager",
-  "description": "Manages AWS credentials and clients with S3 access and organization-account support.",
+  "description": "Admin UI to store per-user AWS credentials and manage S3 buckets/files and AWS Organization accounts via the AWS PHP SDK.",
   "version": "1.0.x",
-  "package": null,
+  "package": "AWS Custom Org Account and s3 client Bucket",
   "composer_namespace": "drupal/aws_manager",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "aws/aws-sdk-php": "^3.0"
+  },
   "dependent_modules": [],
   "configure": null,
   "core_version_requirement": "^10 || ^11 || ^12",
@@ -19,28 +21,21 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Integrations",
-    "Security"
+    "Integrations"
   ],
   "subcategories": [
     "Cloud services (AWS)"
   ],
   "keywords": [
     "aws",
-    "credentials",
     "s3",
+    "credentials",
+    "organizations",
     "cloud",
-    "clients"
+    "bucket"
   ],
-  "project_description": "Summary: AWS Manager is a powerful no-code control panel for Drupal 10 that lets site administrators securely connect to AWS, manage S3 buckets and files, and browse AWS Organization accounts—all from inside the Drupal UI. It transforms your admin interface into a cloud operations dashboard.\n\n 🌟 Key Features \n \n 🔐 Per-user AWS credentials : Each user securely stores their own Access Key and Secret, enabling multi-admin setups with individual IAM scopes. \n 🏢 AWS Organization integration : Instantly fetch and list all accounts from your AWS Organization using the OrganizationsClient . \n 🪣 Full S3 bucket management : Create, view, delete, and browse S3 buckets using a clean, modern Drupal admin UI. \n 📁 AJAX file upload + metadata : Upload files into S3 directly via Drupal, with progress bars, previews, and metadata stored in the DB. \n 🗂 Tabbed file explorer : Automatically classifies files into Documents, Images, and Others based on MIME type—just like a file manager. \n 🧩 Modal-based UX : Every action—Upload, Edit, Delete, View—uses AJAX modals for fast, frictionless interaction. \n 🧠 Developer ready : Alter file metadata before saving with hook_aws_manager_upload_file_alter() . \n 🔐 Single permission control : All admin tools are locked behind access aws manager —granular and secure. \n \n 🚀 Quick Start After Installation \n \n Enable the module using UI or Drush: drush en aws_manager \n Add credentials: Navigate to Configuration → AWS Manager → AWS Credentials to enter your AWS keys. \n Optional: Sync AWS Organization accounts via the Manage Clients screen. \n Use the Live Dashboard: Visit Live AWS Accounts & Buckets to see a full control panel for managing your S3 setup. \n Upload & explore: Start uploading files, browsing buckets, and editing metadata—all inside modals. \n \n 📦 Additional Requirements \n \n AWS SDK for PHP: Install via Composer: composer require aws/aws-sdk-php \n IAM Permissions: You’ll need access to:\n \n s3:PutObject , s3:DeleteObject , s3:ListBucket \n organizations:ListAccounts (only if using Organization view) \n \n \n PHP 8.1+ and Drupal 10.x \n \n 🔧 Recommended Companion Modules \n \n Key – Store credentials in Drupal’s secure Key system instead of the default table. \n Shield – Password-protect /admin/aws/* routes on staging/test environments. \n Queue UI – Debug any background copy/move/delete jobs (future support). \n \n 📚 Community Documentation \n \n Video walkthrough: Coming soon — a full YouTube demo from install to upload. \n Try it in Gitpod: Launch demo now \n \n 💼 About This Project \n Developed and maintained by Anandaakrishnan GA (Drupal.org: anandaakrishnan-ga ) as part of the effort to simplify cloud integrations inside Drupal sites.\n\n Back to top",
-  "maintenance_status": "Actively maintained",
-  "development_status": "Maintenance fixes only",
-  "security_advisory_coverage": "not-covered",
-  "project_created": "2025-06-26",
-  "project_changed": "2025-12-22",
-  "core_semver_minimum": 10000000,
-  "core_semver_maximum": 13000000
+  "project_description": "AWS Manager adds a Drupal admin section (Configuration → AWS Manager) for connecting a Drupal site to Amazon Web Services through the official aws/aws-sdk-php library. Each Drupal user saves their own AWS Access Key ID and Secret Access Key, which the module persists in custom database tables (created by hook_schema) rather than as configuration. Using those credentials it drives three AWS services from Drupal forms: S3 (list buckets, create/delete buckets, list/upload/replace/delete objects, presigned download URLs, with files grouped into Images/Documents/Others tabs and metadata tracked in an aws_files table), AWS Organizations (list, view, create and remove/leave member accounts via OrganizationsClient), and STS (getCallerIdentity to decide leaveOrganization vs removeAccountFromOrganization on delete). All routes live under /admin/aws/* and are gated by a single restricted permission, 'access aws manager'. The module ships no config entities, no plugins and no Drush commands; it is entirely a set of FormBase/ConfirmFormBase forms plus a small CSS/JS (aws_ui) library for the AJAX-modal UI. Region is hard-coded to us-east-1 for the AWS clients (the file browser re-resolves the region from an AuthorizationHeaderMalformed error). A single alter hook, hook_aws_manager_upload_file_alter(), is documented for adjusting upload metadata."
 }

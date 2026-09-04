@@ -1,14 +1,18 @@
 {
   "name": "Azure Key Vault",
   "data_name": "azure_key_vault",
-  "description": "Integrates Azure Key Vault with Drupal, including a Key module provider for fetching secrets.",
+  "description": "Azure Key Vault integration with Drupal.",
   "version": "1.0.x",
   "package": "Security",
   "composer_namespace": "drupal/azure_key_vault",
-  "composer_requirements": {},
-  "dependent_modules": [],
+  "composer_requirements": {
+    "drupal/key": "*"
+  },
+  "dependent_modules": [
+    "key"
+  ],
   "configure": "azvault.admin",
-  "core_version_requirement": "^10.3||^11",
+  "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/azure_key_vault",
@@ -27,16 +31,17 @@
     "Security"
   ],
   "subcategories": [
-    "Secrets / key management"
+    "Secrets & key management"
   ],
   "keywords": [
     "azure",
     "key vault",
     "secrets",
     "key management",
-    "security"
+    "aad",
+    "oauth"
   ],
-  "project_description": "Azure Key Vault REST API Integration \n BEFORE INSTALLING \n For a sovereign vault we suggest you use Vault instead of azure_key_vault \n This module is providing the REST API integration between Drupal 10/11 and 'Azure Key Vault' using the 'Azure Active Directory' (AAD) token authentication ( https://docs.microsoft.com/en-us/azure/key-vault/general/authentication ).\n\n Additionally, this module provides another sub module to use 'Azure Key Vault' as a provider in 'Key' module ( https://www.drupal.org/project/key ), so that it'll provide the lacking GUI in the meantime. Please refer to the documentation of 'Key' module for further details ( https://www.drupal.org/docs/contributed-modules/key ). Only working with the \"Key type: Authentication\", \"Key type: Encryption\" (via Azure Key Vault - Secrets) and \"Key type: Azure Encryption\" (new key type created for Azure Key Vault - Keys) for now.\n\n Azure Key Vault module developed as a requirement of Bayside City Council ( https://www.bayside.vic.gov.au ).\n\n Available methods: \n Create Secret\n\nMethod: PUT\n\nEndpoint: https://{vaultBaseUrl}/secrets/{secret-name}?api-version=7.4 \n\nDocumentation: Set Secret - REST API (Azure Key Vault) \n\n Get Secret\n\nMethod: GET\n\nEndpoint: https://{vaultBaseUrl}/secrets/{secret-name}/{secret-version}?api-version=7.4 \n\nDocumentation: Get Secret - REST API (Azure Key Vault) \n\n Get Secrets\n\nMethod: GET\n\nEndpoint: https://{vaultBaseUrl}/secrets?api-version=7.4 \n\nDocumentation: List Secrets - REST API (Azure Key Vault) \n\n Delete Secret\n\nMethod: DELETE\n\nEndpoint: https://{vaultBaseUrl}/secrets/{secret-name}?api-version=7.4 \n\nDocumentation: Delete Secret - REST API (Azure Key Vault) \n\n Purge Secret\n\nMethod: DELETE\n\nEndpoint: https://{vaultBaseUrl}/deletedsecrets/{secret-name}?api-version=7.4 \n\nDocumentation: Purge Deleted Secret - REST API (Azure Key Vault) \n\n Get Data (Vault Information)\n\nMethod: GET\n\nEndpoint: https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{vault-name}?api-version=7.4 \n\nDocumentation: Vaults - Create Or Update - REST API (Azure Key Vault) \n\n Encrypt Key\n\nMethod: POST\n\nEndpoint: https://{vaultBaseUrl}/keys/{key-name}/encrypt?api-version=7.4 \n\nDocumentation: Encrypt - REST API (Azure Key Vault) \n\n Decrypt Key\n\nMethod: POST\n\nEndpoint: https://{vaultBaseUrl}/keys/{key-name}/decrypt?api-version=7.4 \n\nDocumentation: Decrypt - REST API (Azure Key Vault) \n\n Get Key\n\nMethod: GET\n\nEndpoint: https://{vaultBaseUrl}/keys/{key-name}/{key-version}?api-version=7.4 \n\nDocumentation: Get Key - REST API (Azure Key Vault) \n\n Delete Key\n\nMethod: DELETE\n\nEndpoint: https://{vaultBaseUrl}/keys/{key-name}?api-version=7.4 \n\nDocumentation: Delete Key - REST API (Azure Key Vault) \n\n Generate Key\n\nMethod: POST\n\nEndpoint: https://{vaultBaseUrl}/keys/{key-name}/create?api-version=7.4 \n\nDocumentation: Create Key - REST API (Azure Key Vault) \n\n Example of use: \n Install the 'azure_key_vault' module. (For more information on installing modules, visit:\n\n https://www.drupal.org/node/1897420 for further information.)\n\n Navigate the configuration section 'site/admin/config/system/az_key_vault_config' and configure with your Azure Key Vault URL, Token OAuth URL, client ID and client secret.\n\n If you need the secret or key inside a module or theme file (or anywhere you can't use injection),\n\n<?php\n\n$secret = \\Drupal::service('azure_key_vault.http_client')->getSecret(\"your_secret_name\");\n\n?>\n\n If you need the secret or key inside a class where you can use injection, then you'll need below code snippets added in different places of your class.\n\n For references,\n\n<?php\n\nuse Drupal\\azure_key_vault\\AzureKeyVaultRequestHandlerInterface;\n\n?>\n\n For class properties,\n\n<?php\n\n/**\n\n * Azure Key Vault Request Handler.\n\n *\n\n * @var \\Drupal\\azure_key_vault\\AzureKeyVaultRequestHandlerInterface\n\n */\n\nprotected $azkvHandler;\n\n?>\n\n For '__construct' function,\n\n<?php\n\n/**\n\n * Constructs a new instance.\n\n *\n\n * @param …",
+  "project_description": "Azure Key Vault integrates a subset of the Azure Key Vault REST API with Drupal, authenticating with an Azure Active Directory (AAD) OAuth2 client-credentials token. It exposes a single injectable service (azure_key_vault.http_client / AzureKeyVaultRequestHandler) whose methods create, read, list, delete and purge secrets and create, read, encrypt, decrypt and delete RSA keys in a configured vault. Connection settings (vault URL, AAD token URL, client id, client-secret Key reference and API version) are managed on an admin form. The optional azure_key_vault_key_provider submodule wires the service into the Key module as a KeyProvider plus an 'Azure Encryption' KeyType, so secrets and RSA keys can be managed through the Key module's UI.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
