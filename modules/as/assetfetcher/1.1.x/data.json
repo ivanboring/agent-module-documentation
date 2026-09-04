@@ -1,13 +1,13 @@
 {
   "name": "Asset Fetcher",
   "data_name": "assetfetcher",
-  "description": "Fetches external library files and hosts them locally, with SRI checking.",
+  "description": "Downloads external CSS/JS library assets declared by modules and themes and serves them locally, verifying any declared Sub-Resource Integrity (SRI) hash.",
   "version": "1.1.x",
   "package": null,
   "composer_namespace": "drupal/assetfetcher",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "system.performance_settings",
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -17,23 +17,25 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Developer tools",
-    "Performance"
+    "Performance",
+    "Developer tools"
   ],
   "subcategories": [
-    "Asset attachment / libraries"
+    "CDN integration",
+    "External library management"
   ],
   "keywords": [
     "assets",
     "libraries",
     "sri",
     "cdn",
-    "privacy"
+    "privacy",
+    "gdpr"
   ],
   "project_description": "This module downloads all external CSS & JS assets (e.g. from a CDN) and serves them from the site.\n\n Benefits \n \n Comply to GDPR \n Contrib module authors can just add CDN link, no download and local library detection needed \n The downloaded library benefits from core or advagg aggregation \n \n Note: This module plugs into the libraries system. So we can't help modules or themes that bypass this. They shouldn't anyway.",
   "maintenance_status": "Minimally maintained",

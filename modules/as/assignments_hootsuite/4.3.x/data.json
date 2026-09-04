@@ -1,28 +1,31 @@
 {
   "name": "Assignments Hootsuite",
   "data_name": "assignments_hootsuite",
-  "description": "A Hootsuite integration extension for the Assignments module.",
+  "description": "Hootsuite extension for assignments.",
   "version": "4.3.x",
   "package": "assignments",
   "composer_namespace": "drupal/assignments_hootsuite",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/assignments": "^4.1",
+    "drupal/oauth2_client": "^4.1"
+  },
   "dependent_modules": [
     "assignments:assignments",
     "oauth2_client:oauth2_client"
   ],
-  "configure": null,
+  "configure": "assignments_hootsuite.settings",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/assignments_hootsuite",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "^8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Integrations"
@@ -35,9 +38,10 @@
     "social",
     "assignments",
     "oauth2",
+    "scheduling",
     "integration"
   ],
-  "project_description": "Extending assignments base module to integrate assignments with HootSuite to enable a publishing workflow to SOME.",
+  "project_description": "Extends the Assignments module with a Hootsuite integration: each enabled Hootsuite social profile becomes an assignment bundle, and scheduling an assignment on a node publishes (or deletes) a scheduled Hootsuite post to that profile through the Hootsuite REST API over OAuth2.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

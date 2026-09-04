@@ -1,15 +1,18 @@
 {
   "name": "Entity Association",
   "data_name": "association",
-  "description": "Associates entities together with definable behaviors, landing pages and contexts.",
+  "description": "Associate entities together with definable behaviors, landing pages and contexts.",
   "version": "2.0.x",
   "package": "Content Building",
   "composer_namespace": "drupal/association",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/token": "*",
+    "drupal/toolshed": "^2.0.0@alpha || 2.0.x-dev"
+  },
   "dependent_modules": [
-    "drupal:node",
-    "token:token",
-    "toolshed:toolshed"
+    "node",
+    "token",
+    "toolshed"
   ],
   "configure": null,
   "core_version_requirement": "^10.2 || ^11",
@@ -19,27 +22,43 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
-  "submodules": [],
+  "suggests": {
+    "drupal/pathauto": "Generate and maintain path aliases for associations and their content."
+  },
+  "submodules": [
+    "association_autogen",
+    "association_menu",
+    "association_page"
+  ],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "Association behavior (plugin.manager.association.behavior; @AssociationBehavior attribute/annotation)",
+    "Association landing page handler (plugin.manager.association.landing_page; @AssociationLandingPage attribute/annotation)",
+    "Entity adapter (YAML-defined via *.association.entity_adapter.yml; strategy.manager.association.entity_adapter)"
+  ],
   "categories": [
-    "Content editing experience",
-    "Site structure"
+    "Site structure",
+    "Content editing experience"
   ],
   "subcategories": [
-    "Entity API"
+    "Structured content / page building",
+    "Entity API",
+    "Related content",
+    "Navigation menus"
   ],
   "keywords": [
     "entity",
     "association",
     "relationships",
     "landing pages",
-    "content"
+    "behaviors",
+    "contexts",
+    "content grouping",
+    "menu"
   ],
-  "project_description": "Entity association module provides an entity for associating other entities\n\ntogether into groups of content which are governed by the entity association\n\nbehaviors. The controlling association rules are facilitated by behavior plugins,\n\nwhich can provide enforce the number and types of entities that can be part of\n\nthe association.\n\n Content in the association can share banners, menus and other common components.\n\n Extending \n Entity associations supports adding new behaviors, content updating and additional association detection services. See README.md for more information.",
+  "project_description": "Entity Association provides a content entity ('association') that groups other content entities together and governs them with pluggable behavior rules. A behavior plugin decides which entity types/bundles may be added to an association, their cardinality and ordering, and builds the content-management admin UI. Entities joined to an association gain a shared context so blocks, banners and menus can react to the active association. Associations can also run entity updaters over their members (e.g. maintain a pathauto alias, propagate active/published status, or reindex in Search API). The project is extensible through behavior plugins, landing-page handler plugins, YAML-declared entity adapters, tagged association negotiators, and several events. Three optional submodules add auto-generation of member entities (association_autogen), per-association menus and breadcrumbs (association_menu), and a revisionable dedicated landing-page entity (association_page).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

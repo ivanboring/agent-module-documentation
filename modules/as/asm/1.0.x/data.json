@@ -1,13 +1,13 @@
 {
   "name": "Avoid sending mail",
   "data_name": "asm",
-  "description": "Blocks outgoing emails to a configured list of addresses.",
+  "description": "Suppresses outgoing email to a configured blocklist of addresses via hook_mail_alter().",
   "version": "1.0.x",
-  "package": null,
+  "package": "Other",
   "composer_namespace": "drupal/asm",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:text"
+    "text"
   ],
   "configure": null,
   "core_version_requirement": "^10 || ^11",
@@ -18,10 +18,12 @@
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [],
+  "submodules": [
+    "asm_ui"
+  ],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
@@ -32,11 +34,13 @@
   "keywords": [
     "email",
     "block",
+    "blocklist",
     "staging",
     "suppress",
-    "mail"
+    "mail",
+    "hook_mail_alter"
   ],
-  "project_description": "Block sending mail based on an email list.",
+  "project_description": "Avoid sending mail (asm) suppresses outbound email addressed to a configured list of blocked addresses. It defines an 'asm_email_blocked' content entity holding the blocked addresses, and implements hook_mail_alter() to strip those addresses from a message's To/Cc/Bcc headers (cancelling the send entirely when every To recipient is blocked). A hook_asm_send_mail_email_blocked_alter() alter hook lets other modules force-send to an otherwise-blocked address. The optional asm_ui submodule adds the admin listing and add/edit/delete forms for the blocklist.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

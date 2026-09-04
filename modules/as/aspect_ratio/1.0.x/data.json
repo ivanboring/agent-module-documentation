@@ -1,14 +1,16 @@
 {
   "name": "Image Aspect Ratio Tagging",
   "data_name": "aspect_ratio",
-  "description": "Tags images with their aspect ratio (for responsive layout/CSS handling).",
+  "description": "Adds a decimal field to the image media type that auto-populates with each image's aspect ratio (width/height) on save.",
   "version": "1.0.x",
   "package": "Media",
   "composer_namespace": "drupal/aspect_ratio",
   "composer_requirements": {},
-  "dependent_modules": [],
+  "dependent_modules": [
+    "media"
+  ],
   "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/aspect_ratio",
@@ -19,22 +21,24 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Media"
   ],
   "subcategories": [
+    "File & media metadata",
     "Responsive images"
   ],
   "keywords": [
     "aspect ratio",
     "image",
+    "media",
     "responsive",
-    "layout",
-    "tagging"
+    "layout shift",
+    "getimagesize"
   ],
-  "project_description": "This module adds a field to the \"image\" media type that automatically populates with the aspect ratio of the image. This allows for faster searching of image by aspect ratio. \n\n If there is interest in this project, we will consider expanding the scope to be used across other bundles and field names.\n\n Related Modules \n \n Media Image Metadata",
+  "project_description": "This module adds a decimal field (field_aspect_ratio) to the core \"image\" media type that is automatically populated with the aspect ratio (width divided by height) of the underlying image file whenever a media entity is saved. Storing the ratio as data enables faster searching/filtering of images by aspect ratio and lets themes reserve layout space. A batch admin route recalculates the ratio for all existing image media. If there is interest, the maintainers may expand the scope to other bundles and field names. Related: Media Image Metadata.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

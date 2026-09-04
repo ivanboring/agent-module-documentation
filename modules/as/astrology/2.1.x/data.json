@@ -1,14 +1,14 @@
 {
   "name": "Astrology",
   "data_name": "astrology",
-  "description": "provides daily/weekly/monthly/yearly horoscope content.",
+  "description": "Provides daily, weekly, monthly, and yearly astrology (horoscope) text for star signs, authored on-site and shown in a block and on public pages.",
   "version": "2.1.x",
   "package": null,
   "composer_namespace": "drupal/astrology",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^10||^11",
+  "configure": "astrology.admin_index",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/astrology",
@@ -25,16 +25,16 @@
     "Content display"
   ],
   "subcategories": [
-    "Blocks"
+    "Block enhancements"
   ],
   "keywords": [
     "astrology",
     "horoscope",
     "zodiac",
-    "content",
+    "star signs",
     "block"
   ],
-  "project_description": "This module creates a default astrology named Zodiac , which consists 12 astrological signs, namely Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius and Pisces.\n\n In order to use this module functionality, site administrator needs to add text for each sign and for each format.\n\n It also creates a block to display astrological signs & data, named \"Astrology\".\n\n Default format can be selected from the settings page.\n\n New astrology can be added if the default (Zodiac) doesn't fit to the requirement, from Add astrology page.\n\n Default format \n \n Day \n \n Default astrology \n \n Zodiac \n \n Available format \n \n Day \n Week \n Month \n Year \n \n Available astrology \n \n Zodiac \n While more can be created \n \n \n There is pre-installed information for each sign belonging to zodiac astrology. \n Default format is 'day, zodiac', while this can be changed from\n\n \"Site wide settings\". \n Provides astrological data for day, week, month, and year. \n Users can find their astrological star sign by providing their date of birth. \n Back to top",
+  "project_description": "Astrology lets site editors publish horoscope text for zodiac (or custom) star signs and display it to visitors. On install it seeds a default astrology named \"Zodiac\" with the 12 signs (Aries through Pisces), each with date ranges, an icon and an \"about\" description, stored in three custom database tables (astrology, astrology_signs, astrology_text). Administrators then add horoscope text for each sign per period format: day, week, month or year. A block plugin (id \"astrology\") lists the signs, public pages render the text for the selected format with previous/next navigation, and a date-of-birth form maps a visitor's birthday to their sun sign. All authoring and configuration routes require the core 'administer site configuration' permission; the visitor-facing pages require 'access content'. The module defines no external API calls and stores all content locally.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

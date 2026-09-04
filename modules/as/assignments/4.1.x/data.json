@@ -1,7 +1,7 @@
 {
   "name": "Assignments",
   "data_name": "assignments",
-  "description": "Provides a configurable Assignment content entity type with bundles and CRUD permissions.",
+  "description": "Defines an 'assignment' content entity type with configurable bundles, Views data, and standard CRUD permissions; a base module for extensions.",
   "version": "4.1.x",
   "package": "assignments",
   "composer_namespace": "drupal/assignments",
@@ -13,7 +13,7 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/assignments",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "^8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
@@ -31,11 +31,11 @@
   "keywords": [
     "assignments",
     "entity",
-    "content type",
+    "content entity",
     "bundles",
     "crud"
   ],
-  "project_description": "A base module providing custom entity type “assignment” to manage content visibility.",
+  "project_description": "Assignments is a scaffold-generated base module that declares a custom fieldable content entity type ('assignment') plus a config-entity bundle type ('assignment_type'). Each assignment carries an author reference, a required string field (labelled 'Channel'), and created/changed timestamps, and is managed entirely under Drupal's admin UI at /admin/content/assignment with Field UI and Views integration. Access to view/add/edit/delete assignments is gated by six dedicated permissions plus an admin permission. It ships no external integrations, services, or Drush commands of its own; it is intended as the entity foundation that extension projects (for example assignments_hootsuite) build on. Some form/template code references a 'node' field and helper methods that are not defined by this module's own entity, reflecting its origin as a generated scaffold.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
