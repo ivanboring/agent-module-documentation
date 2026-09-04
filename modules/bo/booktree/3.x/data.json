@@ -1,13 +1,15 @@
 {
-  "name": "Book Tree",
+  "name": "Booktree",
   "data_name": "booktree",
   "description": "A tree representation of one or more books.",
   "version": "3.x",
-  "package": null,
+  "package": "Views",
   "composer_namespace": "drupal/booktree",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/book": "^2.0 || ^3.0"
+  },
   "dependent_modules": [
-    "book:book"
+    "book"
   ],
   "configure": null,
   "core_version_requirement": "^10.3 || ^11 || ^12",
@@ -27,7 +29,7 @@
     "Content display"
   ],
   "subcategories": [
-    "Books / navigation"
+    "HTML sitemap / navigation"
   ],
   "keywords": [
     "book",

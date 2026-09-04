@@ -1,14 +1,14 @@
 {
-  "name": "BOL (Bill of Lading)",
+  "name": "Bill of Lading",
   "data_name": "bol",
-  "description": "produces a bill of lading (inventory/shipping document) from content.",
+  "description": "Produces a bill of lading (inventory) of entities and other site structures.",
   "version": "1.2.x",
   "package": "Custom",
   "composer_namespace": "drupal/bol",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/bol",
@@ -18,23 +18,29 @@
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
-  "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
+    "Developer tools",
     "Administration tools"
   ],
   "subcategories": [
-    "Documents"
+    "Debugging & inspection",
+    "Dashboard / reporting"
   ],
   "keywords": [
     "bill of lading",
     "bol",
-    "shipping",
-    "logistics",
-    "document"
+    "site inventory",
+    "site audit",
+    "drush command",
+    "entity types",
+    "bundles",
+    "fields",
+    "architecture"
   ],
-  "project_description": "Bill of Lading provides a custom drush command, bol , which generates a list of Drupal structures present on the site, such as:\n\n \n blocks \n block types \n content types \n content type fields \n filter formats \n group relationship \n group role \n group type \n image styles \n media types \n paragraphs \n user roles \n views \n vocabularies \n webforms \n workflows \n \n Features \n All of the information in the bill of lading is discoverable at various places in Drupal's admin UI. This module brings the information together in one place, and is particularly useful when doing a site inventory to determine the site's architecture. \n\n A bill of lading can be produced for the D10 site on which it is run, as well as for a D7 database configured as a migration source.\n\n The output is available in all supported drush output formats using the --format switch ( drush help bol for a list).\n\n Enabling the module in the usual way will add a drush command, bol . The command\n\n drush help bol \n\n will provide syntax and option information. The module will analyze the configuration yaml files, so ensure that the site configuration has been exported (drush cex).\n\n To run against a D7 db be sure to have the db configured in the settings file as the default migration db, and when issuing the drush command add --d7 as an option.\n\n Additional Requirements \n Drush version 12 or higher is required.\n\n Similar projects \n Fox Drush Console - provides entity data via an extensible drush command\n\n Back to top",
+  "project_description": "Bill of Lading provides a custom drush command, bol , which generates a list of Drupal structures present on the site, such as:\n\n \n blocks \n block types \n content types \n content type fields \n filter formats \n group relationship \n group role \n group type \n image styles \n media types \n paragraphs \n user roles \n views \n vocabularies \n webforms \n workflows \n \n Features \n All of the information in the bill of lading is discoverable at various places in Drupal's admin UI. This module brings the information together in one place, and is particularly useful when doing a site inventory to determine the site's architecture. \n\n The output is available in all supported drush output formats using the --format switch ( drush help bol for a list).\n\n Enabling the module in the usual way will add a drush command, bol . The command\n\n drush help bol \n\n will provide syntax and option information.\n\n Additional Requirements \n Drush version 12 or higher is required.\n\n Back to top",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

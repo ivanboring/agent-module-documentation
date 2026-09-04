@@ -1,14 +1,14 @@
 {
   "name": "Book Visibility",
   "data_name": "book_visibility",
-  "description": "Adds block-visibility conditions based on the current book (show/hide blocks per book). Controls block visibility, not book access.",
+  "description": "Adds a block-visibility condition plugin (id \"book\") that shows/hides blocks based on which core Book the current node belongs to. Controls block visibility only, not book-page access.",
   "version": "1.1.x",
   "package": "Book",
   "composer_namespace": "drupal/book_visibility",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^8||^9||^10||^11",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/book_visibility",
@@ -19,13 +19,15 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
+    "Content display",
     "Site structure"
   ],
   "subcategories": [
-    "Conditions / visibility"
+    "Visibility conditions",
+    "Block enhancements"
   ],
   "keywords": [
     "book",
@@ -34,7 +36,7 @@
     "condition",
     "navigation"
   ],
-  "project_description": "This module enhances the book module by creating a per book block visibility configuration.\n\n It uses a plugin which extends ConditionPluginBase to add a new \"Book\" tab on the block configuration page .\n\n Use contrib book module instead \n The functionality covered by the book_visibility module is included with the contrib book module. The core book module has been deprecated in Drupal 10.3. Only use this module if you are on an older core version.",
+  "project_description": "Book Visibility enhances the core Book module by providing a per-book block-visibility condition. It ships a single Condition plugin (id \"book\") extending ConditionPluginBase that adds a \"Book\" tab to the core block configuration form, letting site builders restrict a block to render only on pages belonging to selected books. It affects block presentation only and does not restrict who can view book content. Note: the core Book module was deprecated in Drupal 10.3 and its functionality moved to the contrib Book module; use this module only on older setups still relying on core Book.",
   "maintenance_status": "Actively maintained",
   "development_status": "No further development",
   "security_advisory_coverage": "covered",

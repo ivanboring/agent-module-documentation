@@ -5,12 +5,20 @@
   "version": "1.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/booking_scheduler",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/scheduler": "^2.2"
+  },
   "dependent_modules": [
     "drupal:content_moderation",
     "drupal:datetime",
+    "drupal:field",
+    "drupal:menu_ui",
     "drupal:node",
+    "drupal:options",
+    "drupal:path",
     "scheduler:scheduler",
+    "drupal:taxonomy",
+    "drupal:text",
     "drupal:workflows"
   ],
   "configure": null,
@@ -20,12 +28,19 @@
   "project_url": "https://www.drupal.org/project/booking_scheduler",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
-  "suggests": {},
+  "library_dependencies": [
+    "fullcalendar",
+    "moment",
+    "rrule",
+    "dompurify"
+  ],
+  "suggests": {
+    "zodiacmedia/drupal-libraries-installer": "Composer plugin that installs the front-end Drupal libraries (FullCalendar, moment, rrule, DOMPurify) locally."
+  },
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "E-commerce",

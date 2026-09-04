@@ -1,7 +1,7 @@
 {
   "name": "Bootstrap Theme Toggler",
   "data_name": "bootstrap_color_modes_toggler",
-  "description": "Adds a Bootstrap switch block to toggle light/dark theme.",
+  "description": "Adds a Bootstrap 5 block that toggles the page between light, dark and auto color modes.",
   "version": "1.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/bootstrap_color_modes_toggler",
@@ -14,12 +14,14 @@
   "project_url": "https://www.drupal.org/project/bootstrap_color_modes_toggler",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "bootstrap-icons"
+  ],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Theming"
@@ -32,9 +34,10 @@
     "dark mode",
     "color modes",
     "toggle",
-    "theming"
+    "theming",
+    "block"
   ],
-  "project_description": "The Bootstrap Color Modes Toggler module provides a simple, plug-and-play solution to add a theme switcher to your Drupal site. It allows users to toggle between light and dark modes when using a Bootstrap-based theme, improving accessibility and user experience without any configuration.\n\n Features \n \n Provides a ready-to-use \"Bootstrap Color Modes Toggler\" block \n Allows users to toggle between light and dark themes \n Seamless integration with Bootstrap-based themes (e.g. Bootstrap 5) \n Persists user preference using local storage or session \n No configuration required \n Lightweight and no external dependencies \n \n \nThis module is ideal for site builders who want to quickly add a modern dark mode toggle without writing custom JavaScript or complex theming logic.\n\n Post-Installation \n \nAfter enabling the module, go to the Block Layout page and place the \"Bootstrap Color Modes Toggler\" block in any region of your site.\n\n \nOnce the block is placed, the theme switcher is immediately available to users. No additional configuration is required.\n\n Additional Requirements \n \n Drupal 9, 10 or higher \n A Bootstrap-based theme (e.g. Bootstrap Barrio or a custom Bootstrap theme) \n \n Recommended modules/libraries \n \nNo additional modules or libraries are required.\n\n Similar projects \n \nOther theme switcher modules may offer advanced configuration options or support multiple themes.\n\n Bootstrap Color Modes Toggler focuses on simplicity and ease of use, with a zero-configuration approach and tight integration with Bootstrap.\n\n Supporting this Module \n \nIf you find this module useful, consider supporting its development by contributing code, reporting issues, or sharing feedback on Drupal.org.\n\n Community Documentation \n \nAdditional documentation, demos, or tutorials may be added here in the future.\n\n \nThis module is designed to be simple, efficient, and easy to integrate into any modern Drupal project using Bootstrap.\n\n Back to top",
+  "project_description": "The Bootstrap Color Modes Toggler module provides a simple, plug-and-play solution to add a color-mode switcher to a Bootstrap 5 Drupal theme. It ships one block, \"Bootstrap Theme Toggler\", that renders a dropdown letting the visitor choose Light, Dark or Auto. The choice sets Bootstrap's `data-bs-theme` attribute on the `<html>` element and is persisted client-side in localStorage (`theme-mode`); Auto follows the operating-system `prefers-color-scheme`. The toggle is entirely front-end: there is no settings form, no permission, and no server-side configuration. Place the block in any region on the Block Layout page and the switcher is immediately available. It requires a Bootstrap 5-based theme (the toggle only affects themes that honor `data-bs-theme`) and the Bootstrap Icons webfont installed under `/libraries/bootstrap-icons` for the sun/moon/auto glyphs.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

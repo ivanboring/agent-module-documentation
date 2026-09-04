@@ -3,14 +3,16 @@
   "data_name": "book_moderation_sync",
   "description": "Synchronizes content-moderation states between book pages and their children.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Content Moderation",
   "composer_namespace": "drupal/book_moderation_sync",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/book": "^2.0"
+  },
   "dependent_modules": [
-    "drupal:content_moderation",
-    "drupal:book"
+    "content_moderation",
+    "book"
   ],
-  "configure": null,
+  "configure": "book_moderation_sync.settings",
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -20,7 +22,7 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],

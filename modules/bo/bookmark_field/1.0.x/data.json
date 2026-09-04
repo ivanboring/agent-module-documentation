@@ -1,7 +1,7 @@
 {
   "name": "Bookmark Field",
   "data_name": "bookmark_field",
-  "description": "Provides a bookmark field/block giving each entity a shareable bookmark URL.",
+  "description": "Access an entity by its bookmark",
   "version": "1.0.x",
   "package": "Other",
   "composer_namespace": "drupal/bookmark_field",
@@ -11,7 +11,7 @@
     "drupal:block"
   ],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/bookmark_field",
@@ -25,19 +25,25 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Content display"
+    "Content display",
+    "Site structure"
   ],
   "subcategories": [
-    "Bookmarks / navigation"
+    "Fields",
+    "Entity page behavior & redirects"
   ],
   "keywords": [
     "bookmark",
     "field",
-    "url",
-    "navigation",
-    "share"
+    "slug",
+    "stable identifier",
+    "redirect",
+    "canonical url",
+    "block",
+    "views argument",
+    "token"
   ],
-  "project_description": "Bookmark Field lets editors assign a stable, human-readable identifier to any piece of content — like private_consent or contact_form — so that content can be reliably referenced, embedded, and linked to without depending on Drupal's internal numeric\n\n IDs.\n\n In Drupal, every node has a numeric ID (e.g. /node/42 ) that can differ between environments such as development, staging, and production. Bookmark Field solves this by letting you give content a meaningful name that stays consistent everywhere, making it ideal for content that needs to appear in fixed places — hero banners, promotional blocks, legal notices — regardless of where or how the site is deployed.\n\n Features \n \n Bookmark field type : A new field type you can add to any content type or entity. Editors assign a unique identifier to content through the standard node edit form. \n Redirect route : The path /bookmark/redirect/{entity_type}/{bookmark} always redirects to the canonical URL of the bookmarked entity. Query parameters are preserved through the redirect. \n Block plugin : A Bookmark Block can be placed anywhere in your layout to render a specific node or entity by its bookmark value, with configurable entity type, field name, and view mode. \n Twig function : Render bookmarked content directly in theme templates using {{ bookmarkFieldRender('node', 'my_bookmark') }} . \n Views integration : Two argument default plugins allow Views to be driven by a bookmark — either a statically configured value or one extracted dynamically from the current URL path. \n Token support : Use [bookmark:bookmark_name] tokens in text fields and path patterns to generate URLs pointing to bookmarked content. \n Access-aware rendering : All rendering paths respect entity access permissions, published status, and translation context before outputting anything. \n \n When and why would you use this module? \n\n \n You have a \"Homepage Hero\" node that must be embedded the same way across dev, staging, and production — regardless of its node ID in each environment. \n You want editors to be able to swap which node appears in a fixed layout region without requiring a developer to update configuration. \n You need a stable, shareable URL like /bookmark/redirect/node/privacy_policy that always resolves to the correct page. \n You are building a decoupled or headless front-end and want to fetch content by a human-readable key rather than an environment-specific numeric ID. \n \n Post-Installation \n After enabling the module, no global configuration page is required. Follow these steps to start using it:\n\n \n Go to Structure → Content types and choose Manage fields for the content type you want to bookmark. \n Add a new field of type Bookmark . A common machine name is field_bookmark . \n Edit a node of that content type and fill in the Bookmark field with a unique identifier, for example homepage_hero . \n That node is now accessible via /bookmark/redirect/node/homepage_hero , embeddable via the Bookmark Block , renderable in Twig templates, and usable as a Views argument default. \n \n Field storage settings (maximum length, case sensitivity, ASCII-only) are configurable per field instance. To allow editors to set bookmark values, grant the bookmark_field edit bookmark permission to the appropriate roles under People →\n\n Permissions .\n\n Additional Requirements \n \n Core modules: Field and Block — both are included in Drupal core and require no separate installation \n \n No third-party libraries or additional contributed modules are required.\n\n Recommended modules/libraries \n \n Token — Adds a token browser UI that makes it easy to discover and insert [bookmark:*] tokens when editing text fields or path patterns. \n Pathauto — Use alongside Token to generate automatic URL aliases that reference bookmarked content. \n \n Similar projects \n \n UUID Extra — Allows entities to be referenced by their UUID, which is environment-independent by design. UUIDs are automatically assigned and guaranteed unique, but are not …",
+  "project_description": "Bookmark Field lets editors assign a stable, human-readable identifier (a \"bookmark\") to any entity so it can be referenced by that name instead of its environment-specific numeric ID. It adds a 'bookmark' field type, a redirect route (/bookmark/redirect/{entity_type}/{bookmark}) that forwards to the target entity's canonical URL preserving query parameters, a Bookmark block that renders an entity by its bookmark value, a bookmarkFieldRender() Twig function, two Views argument-default plugins (a static bookmark and one taken from a URL path component), and a [bookmark:*] token that resolves to a node's URL. Rendering via the service, block and Twig respects the entity's published status and view access; the redirect controller forwards to the canonical route (which enforces its own access). Depends only on core Field and Block.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
