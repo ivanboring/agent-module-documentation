@@ -1,17 +1,19 @@
 {
-  "name": "Bibcite Crossref",
+  "name": "Bibliography & Citation - Crossref",
   "data_name": "bibcite_crossref",
-  "description": "Provides DOI lookup via Crossref for the Bibliography & Citation (Bibcite) module.",
+  "description": "Provides DOI lookup and import functionality for the Bibliography & Citation (Bibcite) module.",
   "version": "2.0.x",
-  "package": null,
+  "package": "Bibliography & Citation - Formats",
   "composer_namespace": "drupal/bibcite_crossref",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/bibcite": "^2.0|^3.0"
+  },
   "dependent_modules": [
     "bibcite:bibcite",
     "bibcite:bibcite_entity"
   ],
-  "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "configure": "bibcite_crossref.settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/bibcite_crossref",
@@ -25,7 +27,8 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Content editing experience"
+    "Content editing experience",
+    "Import and export"
   ],
   "subcategories": [
     "Bibliography / citations"
@@ -35,7 +38,8 @@
     "crossref",
     "doi",
     "citation",
-    "bibliography"
+    "bibliography",
+    "reference import"
   ],
   "project_description": "Provides DOI lookup and import functionality for the Bibliography & Citation module.\n\n Stay tuned on Twitter to learn more about the Crossref module: twitter.com/BibCite . Find out about major and minor changes and resolved issues in time.",
   "maintenance_status": "Actively maintained",

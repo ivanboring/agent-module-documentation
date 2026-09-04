@@ -1,11 +1,15 @@
 {
   "name": "Bibliocommons Book List",
   "data_name": "bibliocommons",
-  "description": "Renders book lists from the BiblioCommons library platform.",
+  "description": "Render book lists and single titles from the BiblioCommons library platform via wsdata-backed field formatters.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Web services",
   "composer_namespace": "drupal/bibliocommons",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/key": "^1.19",
+    "drupal/wsdata": "^3.0",
+    "drupal/ui_patterns": "^1.0 || ^2.0@beta"
+  },
   "dependent_modules": [
     "drupal:key",
     "drupal:field",
@@ -31,6 +35,7 @@
     "Content display"
   ],
   "subcategories": [
+    "Field formatters",
     "View embedding"
   ],
   "keywords": [

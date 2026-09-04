@@ -1,16 +1,16 @@
 {
-  "name": "Bible Reference",
+  "name": "Bible reference",
   "data_name": "bibleref",
-  "description": "Provides a Bible-reference field/handling (scripture citations), taxonomy-backed.",
+  "description": "Provides two structured field types (simple and complex) for storing and displaying Bible verse citations, backed by a preinstalled taxonomy of Bible books.",
   "version": "3.0.x",
   "package": null,
   "composer_namespace": "drupal/bibleref",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:taxonomy"
+    "taxonomy"
   ],
   "configure": null,
-  "core_version_requirement": "^10.1||^11||^12",
+  "core_version_requirement": "^10.1 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/bibleref",
@@ -27,16 +27,21 @@
     "Content editing experience"
   ],
   "subcategories": [
-    "Field types"
+    "Fields",
+    "Field formatters",
+    "Form widgets / select UI",
+    "Bibliography / citations"
   ],
   "keywords": [
     "bible",
-    "reference",
     "scripture",
+    "verse",
+    "reference",
     "citation",
+    "field type",
     "taxonomy"
   ],
-  "project_description": "Field for referencing Bible verses.",
+  "project_description": "Bible reference adds field types for referencing Bible verses (book, chapter, verse-from, verse-to, and free-text additional verses), with a cascading select/number widget driven by a book/chapter/verse tree and a formatter that renders human-readable citations like \"Genesis 1.1\".",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

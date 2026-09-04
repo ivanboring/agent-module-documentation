@@ -1,13 +1,13 @@
 {
   "name": "Better Select",
   "data_name": "betterselect",
-  "description": "Renders multiple-select fields as stylized checkboxes.",
+  "description": "Use stylized checkboxes instead of the default multiple select HTML element in forms.",
   "version": "2.0.x",
-  "package": null,
+  "package": "Form",
   "composer_namespace": "drupal/betterselect",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "betterselect.settings",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -17,7 +17,7 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
@@ -25,16 +25,18 @@
     "Content editing experience"
   ],
   "subcategories": [
-    "Form builder"
+    "Form widgets / select UI"
   ],
   "keywords": [
     "select",
     "checkboxes",
     "multi-select",
     "widget",
-    "ux"
+    "form",
+    "ux",
+    "taxonomy"
   ],
-  "project_description": "Multiselect HTML select elements are hard for users. Selecting more than one requires Ctrl+clicking (or Cmd+clicking on Mac), and explaining this to users who sometimes have trouble even clicking the mouse at all is no one's idea of fun.\n\n Better Select module overrides all multiselect HTML elements in Drupal and replaces them with checkboxes, in an auto-scrolling div so they don't take up much room on the page.\n\n The first beta was released for Drupal 5.x and 6.x.\n\n Drupal 6.x and 7.x are currently supported.",
+  "project_description": "Better Select converts multiple-select HTML elements into stylized checkbox lists. Native multi-selects are awkward: choosing more than one option requires Ctrl/Cmd-clicking, which many users struggle with. This module implements hook_element_info_alter() to add a #process callback to every 'select' render element; when the element is #multiple (and not restricted by the explicit-only setting) it is rewritten to a 'checkboxes' element, wrapped in a container div, optionally placed in a scrollable box, and given a check-all control. Options include a scrollable div, auto-scroll to the first checked item, per-option depth classes for hierarchical taxonomy lists, and an explicit opt-in mode that only converts elements flagged with #betterselect = TRUE. Settings live at /admin/config/content/betterselect.",
   "maintenance_status": "Unsupported",
   "development_status": "Obsolete",
   "security_advisory_coverage": "covered",
