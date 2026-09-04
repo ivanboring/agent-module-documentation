@@ -1,31 +1,34 @@
 {
   "name": "Automated Testing Kit",
   "data_name": "automated_testing_kit",
-  "description": "Provides tests and helper functions for automated testing with Cypress and Playwright.",
+  "description": "Provides tests and functions useful for automated testing with Cypress and Playwright.",
   "version": "2.0.x",
   "package": "Automated Testing Kit",
   "composer_namespace": "drupal/automated_testing_kit",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": ">=11.0<12",
+  "core_version_requirement": ">=11.0 <12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/automated_testing_kit",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.3",
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [],
+  "submodules": [
+    "automated_testing_kit_demo"
+  ],
   "provides_permissions": false,
   "provides_drush_commands": true,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
   ],
   "subcategories": [
-    "Test content generation"
+    "Test content generation",
+    "Test user accounts"
   ],
   "keywords": [
     "testing",
@@ -33,9 +36,11 @@
     "playwright",
     "e2e",
     "qa",
-    "automation"
+    "automation",
+    "accessibility",
+    "lighthouse"
   ],
-  "project_description": "Almost 3-dozen useful tests, two-dozen useful utility functions, pre-flight checks, accessibility test support and performance test support for Cypress.io and Playwright . \n\n Quick Start \n \n Install a local demo with the Automated Testing Kit Demonstration Recipe written instructions \n Install a local demo with the Automated Testing Kit Demonstration Recipe video tutorial \n Watch an Introduction (42 min) \n \n Introducing Automated Testing Kit \n Version 2.0 is ready! The module and tests have been upgraded for Drupal 11. Use version 1.3 if you want to add testing to a Drupal 10 site.\n\n Version 2.1 is being prepared. 2.1 will have the first FedRAMP tests, Feed tests and more.\n\n See this blog post for an introduction and the philosophy of the kit.\n\n Join the #automated_testing_kit channel in the Drupal Slack workspace to get support.\n\n Get a demo running quickly on your own machine with the Demo Recipe .\n\n Some tests you'll find are:\n\n \n logging in, logging out and registering new users \n reset password \n Contact Us form \n 404, 403 tests \n Caching \n Entity creation, update and deletion tests (node, media, taxonomy, user) \n Sitemap testing (using the XML Sitemap module) \n Menus and \n Search \n FedRAMP compliance \n \n You'll also find:\n\n \n loads of convenience functions (i.e. getting usernames, Drupal UIDs, etc.) \n integration with the QA Accounts module \n executing Drush commands via aliases or to Pantheon via Terminus \n pre-flight verification (checking that the target site is ready for testing) \n multi-level debugging \n accessibility testing support with the AXE library \n performance testing support with Google Lighthouse \n and hooks that make specifying selectors easy. \n \n NOTE: We don’t recommend running Cypress or Playwright in a container, as accessing their GUIs is challenging. Instead, install them on the host OS, while using tools like DDEV, Lando, or Docksal for your Drupal installation. The demo recipe shows a typical installation.\n\n We're always adding more tests; consider contributing if you have a great test others will find useful. The goal is to get a standard test for each key part of Drupal so that:\n\n \n lots of the basics are already done for you \n testers have examples they can modify quickly. \n \n Bugs and New Features \n Have you discovered a bug? Do you have a test or utility you can contribute? First check if there is already an issue; if there isn't, create one . \n\n Check back for planned, new FedRAMP tests.\n\n Getting Started with Automated Testing \n Are you about to start a testing program on Drupal? Check out this 54-minute overview and best practices video from Stanford Web Camp 2023 called Setting up a Comprehensive Automated Testing Regime for Drupal using Cypress and Playwright (André Angelantoni, May, 2023).\n\n Or watch Kickstarting End-to-End Testing at Stanford Neuroscience with Automated Testing Kit .\n\n Unsure whether to use Cypress or Playwright? Watch Should I Choose Cypress or Playwright? from BADCamp 2024. \n\n Additional videos:\n\nH/t to these Drupalists from whom I got some functions for the module:\n\n \n Cypress Testing for Drupal Websites (Jordan Graham, June, 2022) \n End to end testing with Playwright (Petar Basic, DrupalCon 2022) \n Test-driven development with Drupal and Cypress.io (Philipp Melab, DrupalCon Global 2020) \n Make the Robots Do It! Practical Continuous Integration and Automated Testing (Shawn DeArmond, Mark Miller, BADCamp 2019) \n \n Ready to start your testing program? \n We can help you set up your testing program with mentoring, test-writing and ongoing test maintenance for you in Cypress or Playwright. Learn what we offer. \n\n Tools We Use \n Thanks to the following companies:\n\n \n Diffy for providing a free account of their Visual Regression tool (an excellent complement to your end-to-end user-journey/functional tests in Cypress or Playwright) \n Testery.io for providing a free account of their capable test grid (for fast parallel testing) \n Testiny.io for providing a free account of …",
+  "project_description": "Automated Testing Kit (ATK) is a library of ready-made end-to-end tests and helper functions for Cypress.io and Playwright, aimed at Drupal sites. It ships roughly three dozen example specs (login/logout/register, password reset, Contact Us, 404/403, caching, entity CRUD for node/media/taxonomy/user, XML sitemap, menus, search, FedRAMP compliance) plus two dozen convenience commands that drive Drush from the test runner (create/delete users, log in via one-time-login link, get UID/username by email, read/write Drupal config, delete nodes). It integrates with the QA Accounts module, supports executing Drush locally, over SSH, or to Pantheon via Terminus, includes pre-flight verification, multi-level debugging, AXE accessibility testing and Google Lighthouse performance testing. Version 2.0 targets Drupal 11 (use 1.3.x for Drupal 10). The bundled automated_testing_kit_demo submodule and Demonstration Recipe scaffold a working local test project. This is developer/CI tooling and is intended for local, QA and CI environments, not production.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

@@ -1,16 +1,16 @@
 {
   "name": "Automatic Site Icon Picker",
   "data_name": "automatic_site_icon_picker",
-  "description": "provides an automatic site-icon (favicon) picker/formatter for link fields.",
+  "description": "Automatic site icon picker (formatter)",
   "version": "2.0.x",
   "package": "Link",
   "composer_namespace": "drupal/automatic_site_icon_picker",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:field"
+    "field"
   ],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/automatic_site_icon_picker",
@@ -21,22 +21,23 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"
   ],
   "subcategories": [
-    "Field formatters"
+    "Field formatters",
+    "Link fields"
   ],
   "keywords": [
     "favicon",
     "site icon",
     "link",
-    "picker",
+    "formatter",
     "field"
   ],
-  "project_description": "This module provides a simple integration with the Vemetric Favicon API . It retrieves and downloads a website’s favicon automatically, based on a provided URL.\n\n Send request and download image if exists (if url is right).\n\n \n\n \n\n Advantages: \n \n\n Easy to use\n\n \n Small size\n\n \n If image was downloaded already, it will not send request once more\n\n \n Draws only icon, text and icon, link and icon",
+  "project_description": "Provides a single field formatter (id \"automatic_site_icon_picker_link\", label \"Link (favicon)\") for core link fields. When a link field is rendered with this formatter, the module extracts the host from each URL, requests a PNG favicon for that host from the external Vemetric Favicon API (https://favicon.vemetric.com), caches the downloaded image under public://social-media-icons/, and renders it as an <img> next to the link. Display can be configured as icon only, icon + URL, or icon + title, at 16px/32px/64px, with an optional open-in-new-window (target=_blank) option. Depends only on core field; no custom routes, services, permissions, entities or config objects are provided.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

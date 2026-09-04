@@ -1,13 +1,13 @@
 {
   "name": "Autocomplete Extras",
   "data_name": "autocomplete_extras",
-  "description": "Enhances Drupal's autocomplete widget with per-instance settings.",
+  "description": "Enhances Drupal's autocomplete widget with per-instance settings for minimum input length and maximum number of results.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Fields",
   "composer_namespace": "drupal/autocomplete_extras",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "autocomplete_extras.settings",
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -17,7 +17,7 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
@@ -25,16 +25,18 @@
     "Content editing experience"
   ],
   "subcategories": [
-    "Field formatters"
+    "Form widgets / select UI"
   ],
   "keywords": [
     "autocomplete",
     "widget",
-    "settings",
-    "field",
+    "entity reference",
+    "link field",
+    "min length",
+    "match limit",
     "ux"
   ],
-  "project_description": "Enhances Drupal's autocomplete widget by allowing per-instance configuration of the minimum input length to trigger suggestions and the maximum number of results displayed when not available (links). \n\n Provides finer control over autocomplete behavior directly within form element settings.\n\n These features are also available for Menu Link contents.",
+  "project_description": "Autocomplete Extras adds per-instance configuration to Drupal's core autocomplete widgets. On an entity-reference autocomplete or link-field widget it exposes two extra widget settings: the minimum number of characters a user must type before autocomplete fires, and the maximum number of suggestions returned. The same two controls can be applied site-wide to the Menu Link Content form's link field via an admin settings page. It ships no new autocomplete endpoint, no field type, no permissions and no plugins - it only alters existing core widgets and forms, reusing core's own autocomplete route, selection handlers and access checks.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

@@ -1,42 +1,48 @@
 {
-  "name": "AutoShortQR",
+  "name": "Auto short qr",
   "data_name": "autoshortqr",
-  "description": "Auto-generates a self-referencing QR code (and short link) for pages, using drupal/barcode.",
+  "description": "Adds computed self-referencing short-URL and QR/barcode fields (with UTM tagging) to node, user, taxonomy term and redirect entities, using drupal/barcodes.",
   "version": "4.1.x",
   "package": null,
   "composer_namespace": "drupal/autoshortqr",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/barcodes": "^2.1"
+  },
   "dependent_modules": [
-    "barcodes:barcodes"
+    "barcodes"
   ],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/autoshortqr",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "^8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "User engagement"
+    "Content display",
+    "Integrations"
   ],
   "subcategories": [
-    "QR codes"
+    "QR codes / barcodes",
+    "URL shortening"
   ],
   "keywords": [
     "qr code",
     "barcode",
     "short link",
+    "short url",
+    "utm",
     "autoshortqr",
-    "page"
+    "redirect"
   ],
-  "project_description": "This modules adds autocomputed short url and QR code fields to nodes and terms.\n\n Installation \n Install the module using composer: composer require drupal/autoshortqr \n\nEnable the module using drush: drush en autoshortqr \n\n Dependencies \n The module requires drupal/barcodes and tecnickcom/tc-lib-barcode . For tecnickcom/tc-lib-barcode, the general packagist repo may be necessary.\n\n Setup \n Navigate to the content type ( /admin/structure/types/manage/TYPE ) or vocabulary ( /admin/structure/taxonomy/manage/TYPE ).\n\nIn the section Autocode, activate the desired functions.\n\n Back to top",
+  "project_description": "Auto short qr adds two computed link fields — a self-referencing short URL and a self-referencing QR/barcode — to node, user, taxonomy term and (optionally) redirect entities. Enable per bundle from a third-party 'Autocode' section injected into the type/settings forms. The module registers short routes (/ns, /nc, /uc, /tc, /rc, etc.) that decode a base36 entity id and redirect to the entity's canonical URL, plus /autoshortqr/* download routes that stream the QR as an SVG. Per-type UTM parameters (source/medium/campaign/content/term, token-aware) are appended to the resolved URL. Requires drupal/barcodes (and the tecnickcom/tc-lib-barcode library) for QR/barcode rendering.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

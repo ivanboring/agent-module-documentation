@@ -1,21 +1,26 @@
 {
   "name": "Auto Retina",
   "data_name": "auto_retina",
-  "description": "Automatically generates high-magnification (retina) derivatives for image styles.",
+  "description": "Automatically generates high-magnification (retina) derivatives for any image style by appending a suffix (e.g. @2x) to the filename.",
   "version": "2.0.x",
   "package": "Media",
   "composer_namespace": "drupal/auto_retina",
   "composer_requirements": {},
-  "dependent_modules": [],
+  "dependent_modules": [
+    "image"
+  ],
   "configure": "auto_retina.admin_settings",
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/auto_retina",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "8.1",
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/image_style_quality": "Adds finer control over the JPEG quality of retina output.",
+    "drupal/imageapi_optimize": "When present, retina styles run through an Image Optimize pipeline."
+  },
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
@@ -25,16 +30,17 @@
     "Media"
   ],
   "subcategories": [
-    "Image styles / responsive images"
+    "Responsive images",
+    "Media derivatives / transcoding"
   ],
   "keywords": [
     "retina",
     "image style",
     "high-dpi",
     "derivatives",
-    "media"
+    "2x"
   ],
-  "project_description": "Extends core image styles/effects by providing retina versions of any defined style, by simply adding @2x before the file extension, e.g. some-great-file@2x.png . The resulting image is double as wide as the width defined in the image style effect. Can be configured to allow for more than one magnifier, e.g. @1.5x @2x . \n\n This module can't do magic , so be aware that all source image widths should be at least double the width of your image style effect (for a 2x magnification). See the section \"How Wide?\" and \"Maximizing Quality\" below for more info. \n\n Back to top \n\n What this module is not \n \n This module will not detect retina devices. \n This module will not output html tags for your images. \n This module does not handle the front end of retina image handling. \n \n Back to top \n\n What this module is \n It simply provides the retina version of every image style you define, with not extra work on your part. Supports more than one multiplier, so you can have @.75x , @1.5x , @2x , etc, on any given image style.\n\n Back to top \n\n Requirements \n \n Depends on the Drupal 7 core image module. \n The image style quality module adds better control of the retina output and is highly suggested. \n \n Back to top \n\n Installation \n \n Install as usual, see http://drupal.org/node/70151 for further information. \n \n Back to top \n\n Configuration \n \n This module leverages the administer image styles permission for making configuration changes. \n The suffix can be changed from the default @2x by visiting the configuration page. \n You can add more than one suffix, if you want to have various levels of magnification, e.g. @.75x @1.5x @2x . \n You can make these settings available to Javascript files by enabling the option in the advanced settings. This will provide a Drupal.settings.autoRetina object, and can be handy for exposing configuration to your js files that deal with retina images. \n \n Back to top \n\n Suggested Use \n Once enabled, visit the image url of any derivate image, modify the url by prepending the extension with '@2x', and you should see the image double in width (so long as your original image is large enough).\n\n As an example, if the following produced a derivate image at 100px wide:\n\n sites/default/files/styles/thumbnail/public/images/my-great-photo.jpg?itok=hpMKPMBm\n You would change the url to this, and see an image at 200px wide:\n\n sites/default/files/styles/thumbnail/public/images/my-great-photo@2x.jpg?itok=hpMKPMBm\n Please note that you must include the itok param when visiting a derivate url for the first time. This is a requirement of the image module. See image_style_deliver() for more info, reading about image_allow_insecure_derivatives . \n\n Back to top \n\n How Wide Will the 2x Retina Image Be? \n The retina image will not always be twice the width of the standard derivative. Use this flowchart to understand the logic.\n\n \n \n \n ↓ \n \n \n \n \n \n \n Was the standard image style derivative upscaled? ↓→ \n YES → \n Same width as the standard derivative. \n \n \n      NO ↓ \n \n \n \n \n Is the original image wider than 2x the standard derivative?? ↓→ \n YES → \n Twice as wide as the standard derivative. \n \n \n      NO ↓ \n \n \n \n \n The width of the original image. \n \n \n \n \n \n Back to top \n\n Maximizing Quality \n You can locate which original images need to be bigger by reviewing the logs. Check Reports > recent log messages to look for retina images of poor quality; filter by module = auto_retina and you may see entries indicating which images are too small to be optimum quality.\n\n When a retina image is generated and the quality could be better with a larger source image, an entry will be made in the message log. In this way you can identify which images need larger originals to provide the best retina quality. To disable this feature add the following to settings.php .\n\n $conf['auto_retina_log'] = FALSE;\n Back to top \n\n Image Style Quality Module \n Though not required, this module dovetails with the Image Style Quality Module module nicely in two …",
+  "project_description": "Auto Retina extends core image styles by delivering a high-magnification (retina) derivative of any defined image style on demand. A visitor requests the retina version simply by appending a configured suffix (default @2x) before the file extension of an existing image-style derivative URL, e.g. my-photo@2x.jpg. The module intercepts core's image-style delivery routes (image.style_public and image.style_private) with its own RetinaImageStyleDownloadController, resolves the base image, applies the style effects scaled by the magnification multiplier, and generates the enlarged derivative (upscaling capped when the source image is too small to reach optimum quality). Multiple multipliers can be configured (e.g. @.75x @1.5x @2x @3x), a JPEG quality multiplier trims file size on magnified images, and a low-quality event/log entry flags source images that are too small. It does not detect retina devices or emit HTML/srcset markup; it only produces the derivative files, leaving front-end selection to the theme or other modules.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

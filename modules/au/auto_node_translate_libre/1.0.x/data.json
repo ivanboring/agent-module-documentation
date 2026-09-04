@@ -1,16 +1,18 @@
 {
   "name": "Auto Node Translate Libre",
   "data_name": "auto_node_translate_libre",
-  "description": "A LibreTranslate provider for the Auto Node Translate module (machine translation of nodes).",
+  "description": "A LibreTranslate translation provider plugin for the Auto Node Translate module (machine translation of node content).",
   "version": "1.0.x",
   "package": "Multilingual",
   "composer_namespace": "drupal/auto_node_translate_libre",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/auto_node_translate": "^3.0"
+  },
   "dependent_modules": [
     "auto_node_translate:auto_node_translate"
   ],
   "configure": "auto_node_translate_libre.settings",
-  "core_version_requirement": "^10.2||^11",
+  "core_version_requirement": "^10.2 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/auto_node_translate_libre",
@@ -21,7 +23,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Multilingual"
@@ -34,9 +36,10 @@
     "libretranslate",
     "machine translation",
     "multilingual",
-    "auto translate"
+    "auto node translate",
+    "translation provider"
   ],
-  "project_description": "This is a provider for Auto Node Translate . \n \n \n This module provides the Libre translation Api support for Auto Node Translate .",
+  "project_description": "Adds LibreTranslate as a translation provider for the Auto Node Translate module. It contributes a single AutoNodeTranslateProvider plugin ('auto_node_translate_libre') that sends node field text to a configurable LibreTranslate server (endpoint URL and API key set at admin/config/regional/libre) and returns the translated string. LibreTranslate is a free, open-source, self-hostable machine-translation engine, so this provider is attractive for keeping content off commercial APIs.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

@@ -1,11 +1,16 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Auto Rotate Lite (auto_rotate_lite) — agent index
 
-**An image-style effect that rotates JPEG/TIFF derivatives per their EXIF `Orientation` flag; originals are left unchanged.**
+An image-style effect that auto-rotates JPEG/TIFF derivatives from their EXIF `Orientation` flag. Non-destructive: only the style derivative is rotated, never the original upload. Core + GD + PHP `exif` extension only.
 
-- **Version:** 1.0.x
-- **Core:** ^10 || ^11 (no contrib deps; needs PHP `exif` + GD)
-- **Plugin:** `#[ImageEffect(id: "auto_rotate_lite")]` `AutoRotateLiteImageEffect` — `applyEffect()` rotates 180/90/270 for EXIF orientation 3/6/8; `transformDimensions()` swaps W/H for orientation 5-8.
-- **Setup:** add the effect to an image style at `/admin/config/media/image-styles`.
+## Facts
+- Core: `^10 || ^11`. Package `Custom`. License GPL-2.0-or-later.
+- Dependency: Drupal core `image` module (provides the ImageEffect plugin type). No contrib deps; `composer.json` `require` is empty.
+- No routes, no permissions, no services, no hooks, no config schema, no settings form, no submodules, no Drush commands.
+- Requires PHP's `exif` extension (`exif_read_data()`); degrades silently if absent.
 
-**Security:** Pure image-derivative processing; no routes, permissions, services, or user-controlled input beyond the image file. `exif_read_data()` is called on the local file path with an error-suppressed read; no network or SQL. No security findings.
+## What it provides
+- One image effect plugin: `AutoRotateLiteImageEffect` (id `auto_rotate_lite`), extends `ImageEffectBase`. Registered via the `#[ImageEffect]` attribute.
+
+## Solution docs
+- [Plugin: auto-rotate image effect](plugins/auto_rotate_effect.md) — how the effect works, install/enable, adding it to an image style, and its EXIF/rotation/dimension logic.
