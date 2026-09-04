@@ -1,14 +1,22 @@
 {
-  "name": "API Sync",
+  "name": "Api Sync module",
   "data_name": "apisync",
-  "description": "A framework to integrate Drupal with a REST / OData API (sync entities to/from an external system).",
+  "description": "Framework to integrate Drupal with a REST / OData API (Microsoft Navision / Business Central), syncing entities to and from the external system. Fork of the Salesforce Suite.",
   "version": "1.0.x",
   "package": "liip",
   "composer_namespace": "drupal/apisync",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "consolidation/output-formatters": "^3.2.0 || ^4.1",
+    "ext-json": "*",
+    "ext-mbstring": "*",
+    "drupal/address": "^1.8 || ^2.0",
+    "drupal/key": "^1.14",
+    "drupal/dynamic_entity_reference": "^3.1 || ^4.0",
+    "drupal/typed_data": "^1.0 || ^2.0"
+  },
   "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^10||^11",
+  "configure": "apisync.admin_config_apisync",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/apisync",
@@ -16,21 +24,34 @@
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [],
+  "submodules": [
+    "apisync_basicauth",
+    "apisync_logger",
+    "apisync_mapping",
+    "apisync_mapping_ui",
+    "apisync_oauth",
+    "apisync_pull",
+    "apisync_push"
+  ],
   "provides_permissions": true,
-  "provides_drush_commands": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "apisync_auth_provider"
+  ],
   "categories": [
     "Integrations"
   ],
   "subcategories": [
-    "Sync / ETL"
+    "CRM integration",
+    "Content migration / import"
   ],
   "keywords": [
     "apisync",
     "rest",
     "odata",
+    "navision",
+    "business central",
     "sync",
     "integration"
   ],

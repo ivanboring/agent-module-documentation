@@ -1,16 +1,18 @@
 {
   "name": "Apigee Extras",
   "data_name": "apigee_extras",
-  "description": "Provides extended functionality for the Apigee Edge (API management/developer portal) integration.",
+  "description": "Umbrella project that extends the Apigee Edge integration with a Views bridge for developer apps and Bootstrap 5 theming for Apigee portal elements.",
   "version": "1.0.x",
   "package": "Apigee",
   "composer_namespace": "drupal/apigee_extras",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/apigee_edge": "*"
+  },
   "dependent_modules": [
     "apigee_edge:apigee_edge"
   ],
   "configure": null,
-  "core_version_requirement": "^10.3||^11.1",
+  "core_version_requirement": "^10.3 || ^11.1",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/apigee_extras",
@@ -18,25 +20,31 @@
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [],
+  "submodules": [
+    "apigee_extras_bootstrap",
+    "apigee_extras_views"
+  ],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Integrations"
+    "Integrations",
+    "Developer tools"
   ],
   "subcategories": [
-    "API management"
+    "Google APIs / OAuth",
+    "Views query enhancements"
   ],
   "keywords": [
     "apigee",
+    "apigee edge",
     "api management",
     "developer portal",
-    "edge",
-    "google"
+    "views",
+    "bootstrap"
   ],
-  "project_description": "Enhances the Apigee integration by providing extended developer portal utilities. Works with Apigee X and Apige Edge.\n\n Modules \n Views integration , allowing site builders to create complex, filtered lists of Apigee Applications, API Products, and Developer metadata directly through the Drupal UI.\n\n Bootstrap 5 library integration making it out of the box bootstrap compatible with themes like bootstrap5 .",
+  "project_description": "Apigee Extras is a small umbrella project that adds convenience features on top of the Apigee Edge module (Google's API management platform / developer portal). The base module ships no code of its own; it exists to declare the dependency on apigee_edge and to group two optional submodules: Apigee Extras Views, which exposes Apigee developer apps as a Views base table with field/query handlers, and Apigee Extras Bootstrap, which re-skins the Apigee status_property theme element as Bootstrap 5 badges.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

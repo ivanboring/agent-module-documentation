@@ -1,11 +1,17 @@
 {
   "name": "Arch dashboard",
   "data_name": "arch",
-  "description": "A store/e-commerce dashboard for the Arch commerce platform.",
+  "description": "Store dashboard",
   "version": "8.x-1.x",
-  "package": null,
+  "package": "Arch",
   "composer_namespace": "drupal/arch",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "ext-bcmath": "*",
+    "ext-intl": "*",
+    "ext-json": "*",
+    "drupal/address": "^1.4 | ^2",
+    "drupal/currency": "^3.3"
+  },
   "dependent_modules": [
     "drupal:entity",
     "arch:arch_product",
@@ -20,11 +26,38 @@
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [],
+  "submodules": [
+    "arch_addressbook",
+    "arch_cart",
+    "arch_checkout",
+    "arch_compare",
+    "arch_discount",
+    "arch_downloadable_product",
+    "arch_logger",
+    "arch_onepage",
+    "arch_order",
+    "arch_order_invoice",
+    "arch_order_statistics",
+    "arch_payment",
+    "arch_payment_cod",
+    "arch_payment_saferpay",
+    "arch_payment_transfer",
+    "arch_price",
+    "arch_price_search_api",
+    "arch_product",
+    "arch_product_group",
+    "arch_product_statistics",
+    "arch_shipping",
+    "arch_shipping_instore",
+    "arch_stock",
+    "arch_stock_search_api"
+  ],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "store_dashboard_panel"
+  ],
   "categories": [
     "E-commerce"
   ],
@@ -36,9 +69,10 @@
     "commerce",
     "store",
     "dashboard",
-    "products"
+    "products",
+    "orders"
   ],
-  "project_description": "Arch is an e-commerce Drupal module.\n\n We would like to keep the list of core features of Arch as short as possible. \n\n Arch manages Products in Product types . \n\n Merchants can define multiple Prices to Products with defined Price categories .\n\n Price access control managed via Roles and Permissions based on Price types.\n\n If product has multiple prices Price negotiator selects the price for customer based on permissions and price availability date range.\n\n Customers can create an Order.\n\n When stock management is enabled you can define multiple Warehouses. You can manage which customer access which warehouses via Roles and Permissions. Stocks automatically reduced when a customer place a new Order.",
+  "project_description": "Arch is an e-commerce Drupal module suite. The base `arch` module is the store dashboard and admin umbrella: it registers the /admin/store dashboard (a plugin-driven panel page), the 'administer store' permission, store content settings (Terms & Conditions / Privacy Policy links on checkout), and an admin-theme toggle for store administration. The commerce feature set is delivered by 24 submodules covering products, prices, cart, checkout, orders, payment (incl. Saferpay), shipping, stock, discounts and statistics.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

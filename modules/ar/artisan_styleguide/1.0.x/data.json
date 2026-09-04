@@ -1,15 +1,17 @@
 {
   "name": "Artisan Styleguide",
   "data_name": "artisan_styleguide",
-  "description": "Provides a living style guide / component showcase for a theme.",
+  "description": "Renders a living style guide at /artisan-styleguide that auto-previews every Single Directory Component (SDC) registered on the site using each component's own example props and slots.",
   "version": "1.0.x",
   "package": "Artisan",
   "composer_namespace": "drupal/artisan_styleguide",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/artisan": "^1.1"
+  },
   "dependent_modules": [
-    "drupal:serialization"
+    "serialization"
   ],
-  "configure": null,
+  "configure": "artisan_styleguide.preview",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -19,25 +21,27 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Theming",
     "Developer tools"
   ],
   "subcategories": [
-    "Theme development tools"
+    "Theme development tools",
+    "Twig / component libraries"
   ],
   "keywords": [
     "styleguide",
+    "sdc",
+    "single directory components",
+    "component preview",
     "theming",
-    "components",
-    "design system",
-    "frontend"
+    "artisan"
   ],
-  "project_description": "Artisan Styleguide for Artisan theme\n\n Access to \"/artisan-styleguide\" to preview styleguide (it requires \"administer themes\" permission).\n\n Use module provided SDC as a reference \"artisan_styleguide:artisan-styleguide-sdc-model\", read notes on its files to check details about how to define properly.\n\n Also note styleguide builder is an overridable service just in case you would like to use an adjusted builder.",
+  "project_description": "Artisan Styleguide is a companion to the Artisan theme that produces a living style guide. Visiting /artisan-styleguide (permission: administer themes) enumerates every Single Directory Component (SDC) definition registered on the site via the core SDC plugin manager and renders a preview of each one using the example prop/slot values declared in that component's *.component.yml. Each component is shown with an OK/KO status and clarification notes explaining why a preview could not be rendered (missing examples, empty output, render exceptions). The module ships one reference component, artisan-styleguide-sdc-model, whose YAML and Twig demonstrate every supported prop type (string, uri, regex, boolean, integer, number, object, arrays, enums, attributes) and slot kind. The rendering is done by an overridable service, artisan_styleguide.builder (ArtisanStyleguideBuilder), so a site can substitute its own builder.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

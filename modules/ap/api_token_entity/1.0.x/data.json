@@ -1,13 +1,13 @@
 {
   "name": "API Token Entity",
   "data_name": "api_token_entity",
-  "description": "Create, manage, and consume API tokens as entities.",
+  "description": "Create, manage, and consume API tokens as content entities to authenticate API requests.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Web services",
   "composer_namespace": "drupal/api_token_entity",
   "composer_requirements": {},
   "dependent_modules": [
-    "core:datetime"
+    "datetime"
   ],
   "configure": null,
   "core_version_requirement": "^11.3",
@@ -15,19 +15,21 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/api_token_entity",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.4",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Security",
-    "Developer tools"
+    "Access control",
+    "Security"
   ],
   "subcategories": [
+    "Token-based access control",
+    "REST / web services",
     "Secrets & key management"
   ],
   "keywords": [
@@ -35,7 +37,8 @@
     "authentication",
     "credentials",
     "entity",
-    "api"
+    "api key",
+    "web services"
   ],
   "project_description": "Back to top \n\n Overview \n The API Token Entity module provides a comprehensive back-office interface for managing API tokens in your Drupal site. It enables site administrators to create, rotate, and delete API tokens, along with a validation service to authenticate issued tokens.\n\n Back to top \n\n Features \n \n Token Management Interface - Full CRUD operations for API tokens through an intuitive admin interface \n Token Types - Define different types of API tokens with unique identifiers \n Secure Tokens - Tokens are hashed with MD5 and stored securely in the database. The plain-text token is only visible once at creation time and cannot be retrieved later \n Token Rotation - Built-in support for token rotation and expiration \n Permissions - Granular permission system to control who can manage tokens \n Validation Service - Programmatic service to validate tokens in your custom code \n Back to top",
   "maintenance_status": "Actively maintained",

@@ -1,13 +1,15 @@
 {
   "name": "API Data Connector",
   "data_name": "api_data_connector",
-  "description": "Connects APIs to fields with autocomplete features.",
+  "description": "Provides a field type, widgets and formatter that autocomplete/populate a field from an external JSON API, storing the picked id and name on the entity.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Custom",
   "composer_namespace": "drupal/api_data_connector",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/select2": "^2.0"
+  },
   "dependent_modules": [
-    "drupal:select2"
+    "select2"
   ],
   "configure": null,
   "core_version_requirement": "^11",
@@ -19,9 +21,9 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Integrations"
@@ -36,7 +38,7 @@
     "fields",
     "data"
   ],
-  "project_description": "The External API Autocomplete Field module enhances the user experience in Drupal by providing a dynamic autocomplete feature for fields that fetch data from an external API. This module allows site builders and developers to easily integrate external data sources into their forms, enabling users to find and select options as they type quickly.\n\n Features \n Customizable API Integration: Administrators can configure the API endpoint, request parameters, and response handling to suit their specific needs.\n\n Post-Installation \n Navigate to the field settings where you want to use the API Data Connector widget.\n\nSelect API Data Connector Widget as the field widget.\n\nConfigure the widget settings to specify the API URL and other parameters. \n\n Back to top",
+  "project_description": "API Data Connector adds a Drupal field type whose form widgets fetch their options from an external JSON API instead of from local entities. A site builder configures, per field, the API URL, the query-parameter name, and which response keys map to the stored id and the displayed name (with optional nested dotted paths and extra mapped values). Editors then get a text autocomplete, a tags-style autocomplete, or a Select2 dropdown populated from the remote API, and the chosen id + name (and, for the Select2 widget, the serialized response row) are saved on the entity. A companion formatter renders the stored name. The module ships no admin settings form and no config schema; all configuration lives in the field's own storage/instance settings. Requires the Select2 module and Drupal 11.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

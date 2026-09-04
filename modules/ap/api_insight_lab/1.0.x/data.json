@@ -1,15 +1,15 @@
 {
   "name": "API Insight Lab",
   "data_name": "api_insight_lab",
-  "description": "A comprehensive API testing suite with load testing, request chaining and more.",
+  "description": "A comprehensive API testing suite with load testing, request chaining, environment management, snapshots, and detailed analytics.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Development",
   "composer_namespace": "drupal/api_insight_lab",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:rest"
+    "rest"
   ],
-  "configure": null,
+  "configure": "api_insight_lab.dashboard",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -19,29 +19,24 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
   ],
   "subcategories": [
-    "API documentation / OpenAPI"
+    "REST / web services",
+    "Debugging & inspection"
   ],
   "keywords": [
     "api",
     "testing",
     "load testing",
+    "performance",
     "rest",
-    "developer"
+    "request chaining"
   ],
-  "project_description": "API Insight Lab provides API performance testing and load testing for Drupal. Test endpoints, validate responses, chain requests, compare snapshots, and manage multiple environments—all in one UI.\n\n Features \n Load Testing \n The Load Tester provides comprehensive API performance testing capabilities:\n\n \n Virtual Users (VUs) : Configure concurrent users from 1 to 100 \n Iterations : Set the number of requests per VU (1 to 1000) \n HTTP Methods : Support for GET, POST, PUT, DELETE, and PATCH \n Request Body : JSON, form-data, and raw body formats \n Authentication : Basic Auth, Bearer Token, and API Key support \n Headers : Add custom request headers \n Query Parameters : Configure URL query parameters \n Timeout : Configurable request timeout (1-120 seconds) \n \n Phased Load Testing \n Enable sophisticated load patterns with phase configuration:\n\n \n Warmup Phase : Start with a percentage of max VUs to warm up the system \n Ramp-up Phase : Gradually increase VUs to maximum over specified duration \n Sustain Phase : Maintain peak load for testing stability \n Ramp-down Phase : Gradually decrease VUs to simulate traffic reduction \n \n Presets available: Standard Load, Stress Test, Spike Test\n\n Performance Metrics \n After running a test, view comprehensive metrics:\n\n \n Dashboard Cards : VUs, Average RPS, Peak RPS, Error Rate \n Load Summary Chart : Interactive chart showing VUs vs RPS with phase markers \n Response Time Distribution : Min, Max, Mean, Median, Standard Deviation \n Percentiles : P50, P75, P90, P95, P99 latency values \n Bottleneck Analysis : DNS, TCP, TLS, Server Processing, Download timing \n Cache Analytics : Track Drupal cache hits/misses via X-Drupal-Cache header \n Performance Grades : Automatic grading (Excellent, Good, Acceptable, Slow) \n \n Snapshots \n Save and compare API response snapshots to track changes over time:\n\n \n Save snapshots after running tests with URL, method, headers, response body, and metrics \n Snapshots are grouped by API endpoint (URL + method) \n Enable Compare Mode to select two snapshots for side-by-side comparison \n View performance metrics differences and response body visual diff \n Export snapshots via the Config Manager \n \n Environments \n Manage multiple environment profiles for testing across different servers:\n\n \n Create environments with Name, Base URL, and Color (green, yellow, red, blue, gray) \n Define variables like API keys, auth tokens, and user IDs \n Use {{VARIABLE_NAME}} syntax in URLs, headers, and body \n Switch environments via dropdown in Load Tester header \n Relative URLs automatically use the environment's base URL \n \n Request Chaining \n Create multi-step API workflows with variable passing:\n\n \n Add steps with URL, method, headers, and body for each API request \n Extract values from responses using JSONPath (e.g., $.data.user.id ) \n Use extracted variables in subsequent steps with {{variableName}} \n Run chains to execute all steps sequentially with step-by-step results \n \n Config Manager \n Centralized management for all configurations:\n\n \n View presets, chains, and environments in one place \n Search & filter by name, URL, or HTTP method \n Bulk select, delete, and export configurations \n Export as JSON with option to include/exclude sensitive auth data \n Import with URL mapping for environment migration \n \n Assertions \n Validate API responses automatically:\n\n \n Status Code : Validate HTTP status (equals, not equals) \n Response Time : Check latency thresholds (less than, greater than) \n Body Contains : Verify response contains specific text \n JSONPath Match : Validate specific JSON values \n Header Check : Verify response headers exist or match values \n \n API Discovery \n Automatically discover available REST resources in your Drupal site. Click on a resource to populate the Load Tester. Useful for testing Drupal's JSON:API and REST endpoints.\n\n Post-Installation \n \n Navigate to Administration » Configuration » Development » API Insight Lab ( /admin/config/development/api-insight-lab ) \n The …",
-  "maintenance_status": "Actively maintained",
-  "development_status": "Under active development",
-  "security_advisory_coverage": "not-covered",
-  "project_created": "2025-12-25",
-  "project_changed": "2026-01-13",
-  "core_semver_minimum": 10000000,
-  "core_semver_maximum": 12000000
+  "project_description": "API Insight Lab is a React-based admin dashboard for load-testing and inspecting HTTP/REST APIs from inside Drupal. It ships a single admin page at /admin/config/development/api-insight-lab (gated by the core 'administer site configuration' permission) that mounts a bundled React SPA; the SPA drives a large set of JSON controller endpoints under /api/perf-test/*. The Load Tester fires concurrent Guzzle requests (1-100 virtual users x 1-1000 iterations, k6-style, with optional warmup/ramp-up/sustain/ramp-down phases) against a target URL and reports RPS, latency percentiles (p50-p99), standard deviation, a DNS/TCP/TLS/server/download bottleneck breakdown, cache hit/miss counts (from X-Drupal-Cache), and pass/warn/fail grades. Results and configurations are stored in seven bespoke content entities: presets (api_test_config), assertions (api_assertion), snapshots (api_snapshot), environment profiles (environment_profile), request chains (request_chain), plus legacy api_perf_result and api_perf_setting. Additional features: response assertions (status code, response time, body-contains, JSONPath, header checks), request chaining with JSONPath variable extraction and {{variable}} substitution, environment profiles with base-URL and variable templating, snapshot save/compare/diff, config import/export with URL remapping, and REST/JSON:API endpoint auto-discovery. The module also registers a set of intentionally public dummy test endpoints under /api/test/* (health, echo, delay, status, users, login, protected, orders, random) that return static or randomised mock data for exercising the tool. Depends only on core's REST module."
 }
