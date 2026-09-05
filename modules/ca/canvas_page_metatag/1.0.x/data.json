@@ -1,17 +1,23 @@
 {
   "name": "Canvas Page Metatag",
   "data_name": "canvas_page_metatag",
-  "description": "exposes the full Metatag SEO tag set to the Canvas (Experience Builder) page builder.",
+  "description": "Re-exposes the full set of Metatag SEO tag groups (Basic, Advanced, Open Graph, Facebook, Twitter Cards) on Drupal Canvas (Experience Builder) page edit forms.",
   "version": "1.0.x",
   "package": "SEO",
   "composer_namespace": "drupal/canvas_page_metatag",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/canvas": "^1.8",
+    "drupal/metatag": "^2.2"
+  },
   "dependent_modules": [
-    "canvas:canvas",
-    "metatag:metatag"
+    "canvas",
+    "metatag",
+    "metatag_open_graph",
+    "metatag_facebook",
+    "metatag_twitter_cards"
   ],
-  "configure": null,
-  "core_version_requirement": "^10.3||^11.1",
+  "configure": "canvas_page_metatag.settings",
+  "core_version_requirement": "^10.3 || ^11.1",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/canvas_page_metatag",
@@ -28,7 +34,7 @@
     "Search engine optimization (SEO)"
   ],
   "subcategories": [
-    "Metatag"
+    "Meta tags / structured metadata"
   ],
   "keywords": [
     "canvas",
@@ -37,7 +43,7 @@
     "experience builder",
     "open graph"
   ],
-  "project_description": "Introduction \n \nCanvas Page Metatag is a Drupal 11 module that gives Drupal Canvas \n\npages the same full Metatag editing experience that ordinary\n\nfieldable entities (nodes, taxonomy terms, and so on) already have. Canvas's own page edit form hides almost every\n\nMetatag field down to a single SEO title — this module re-exposes Basic tags, Advanced, Open Graph, Facebook,\n\nand Twitter Cards, each independently toggleable.\n\n \nNo AI is involved. This is a Form API integration module, not a content-generation feature.\n\n Project Summary \n\n \nExpose the full Metatag tag groups — Basic tags, Advanced, Open Graph, Facebook, and Twitter Cards — on\n\nDrupal Canvas pages, and fix a real Canvas/Metatag Robots-field submission bug along the way.\n\n \n Features \n \n Re-exposes Metatag's Basic tags (description, abstract, keywords), Advanced (Robots, referrer, etc.), Open Graph, Facebook, and Twitter Cards groups on the canvas_page entity edit form. \n Each tag group is independently toggleable from a settings page — nothing is hardcoded on or off. \n Declares Metatag, Metatag: Open Graph, Metatag: Facebook, and Metatag: Twitter Cards as dependencies, so enabling this module installs everything it needs automatically. \n No custom rendering code: because Canvas pages are normal routed, fieldable content entities, Metatag's own mechanisms already render the configured tags into the page <head> once the required submodules are present. \n Fixes a genuine compatibility bug between Canvas's React-based builder UI and Metatag's Robots checkboxes field (see below). \n \n Post-Installation \n After installing the module:\n\n \n Its dependencies (Metatag, and the Open Graph/Facebook/Twitter Cards submodules) are installed automatically. \n \n Go to Configuration → Search and metadata → Canvas Page Metatag \n\n ( /admin/config/search/canvas-page-metatag ).\n \n Toggle which tag groups should appear on the Canvas page edit form: Basic tags, Advanced, Open Graph, Facebook, Twitter Cards. All five are enabled by default. \n Open any Canvas page in the builder and edit its metatags — the enabled groups now appear as their own collapsible sections alongside Canvas's existing SEO title field. \n \n Site-wide or per-bundle defaults for these tags can still be set the normal Metatag way, at\n\n Configuration → Search and metadata → Metatag — Canvas pages appear there like any other fieldable entity type.\n \n \n \n Additional Requirements \n \n Drupal 11 \n Drupal Canvas \n Metatag , with the Open Graph, Facebook, and Twitter Cards submodules \n \n \n Similar projects \n \nMetatag already supports any fieldable entity type generically. Canvas Page Metatag doesn't duplicate that —\n\nit specifically restores the parts of the Metatag editing experience that Drupal Canvas's own page edit form hides, and fixes a Canvas-specific form submission bug in Metatag's Robots field. It is not a general-purpose Metatag replacement or an AI content generator.\n\n \n Supporting this Module \n \nBug reports, feature requests, patches, and documentation improvements are welcome through the Drupal.org issue queue.\n\n \n Community Documentation \n \nDocumentation is available in the project repository's README.md\n\n \n Permissions \n \nThis module does not define any custom permissions. The settings form is gated by Drupal core's\n\n Administer site configuration permission; editing a Canvas page's metatag values is governed by that page's own normal edit permission.\n\n \n Architecture \n \n CanvasPageMetatagFormHooks – Implements hook_form_canvas_page_form_alter() . Restores #access on the tag groups/fields Canvas hides, per this module's settings, and attaches the Robots checkboxes repair callback. \n SettingsForm – The settings page toggling which tag groups are exposed, backed by canvas_page_metatag.settings config. \n \n \nThe module is fully compatible with Drupal 11 and Drupal Canvas 1.8+.\n\n Back to top",
+  "project_description": "Canvas Page Metatag gives Drupal Canvas pages (canvas_page entities) the same full Metatag editing experience that ordinary fieldable entities already have. By default Canvas's own page edit form hides almost every Metatag field down to a single SEO title; this module re-exposes the Basic (description, abstract, keywords), Advanced (robots, referrer, etc.), Open Graph, Facebook, and Twitter Cards groups, each independently toggleable from a settings page. It works purely through Form API: hook_form_canvas_page_form_alter() restores #access on the elements Canvas hides. It also fixes a genuine compatibility bug where Canvas's React builder UI submits Metatag's Robots checkboxes as the generic boolean 1 instead of the option key, by repairing the value in a targeted #after_build callback. No custom rendering is added — Metatag's own page-attachment mechanisms emit the configured tags into the page <head> once the required submodules are installed.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

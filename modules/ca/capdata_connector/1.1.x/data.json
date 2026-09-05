@@ -1,13 +1,15 @@
 {
   "name": "CapData connector",
   "data_name": "capdata_connector",
-  "description": "Exports Drupal site data as an RDF file (e.g. for open-data/CapData).",
+  "description": "Maps Drupal content types and taxonomies to the CapDataCulture ontology and exports the site's published data as an RDF/XML file for open-data sharing (CapData Opéra / France 2030).",
   "version": "1.1.x",
-  "package": null,
+  "package": "CapData Opéra",
   "composer_namespace": "drupal/capdata_connector",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "capdataopera/php-sdk": "0.7.0"
+  },
   "dependent_modules": [],
-  "configure": null,
+  "configure": "capdata_connector.admin_settings",
   "core_version_requirement": "^10.2 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -17,9 +19,9 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
-  "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Import and export"
@@ -32,9 +34,11 @@
     "rdf",
     "export",
     "open data",
-    "linked data"
+    "linked data",
+    "semantic web",
+    "ontology"
   ],
-  "project_description": "CapData RDF est un composant clé du projet CapData Opéra - France 2030, porté par la Réunion des Opéras de France dans le cadre du programme France 2030. Ce module vise à faciliter l'alignement et l'exposition des données au format RDF, essentiel pour l'interopérabilité et le partage des données culturelles.\n\n Fonctionnalités du module CapData RDF \n 1. Gestion Simplifiée des Alignements :\n\n Interface utilisateur intuitive pour gérer facilement les alignements de modèle.\n\nPermet aux utilisateurs d'aligner leur modèle de données sans nécessiter de compétences techniques approfondies.\n\n 2. Module Avancé pour Alignements Complexes :\n\n - Outils pour gérer des alignements de données plus complexes.\n\n - Supporte des scénarios d'intégration de données sophistiqués et personnalisés.\n\n Ressources Utiles \n - Site du projet : CapData Opéra \n\n- Guide pratique pour la publication des données : Guide Pratique \n\n- Documentation pour exposer les données : Exposer ses données avec CapData Opéra \n\n- Ontologie CapDataCulture : Ontologie CapDataCulture v1 \n\n Soutien et Financement \n Cette opération est soutenue par l'État dans le cadre du dispositif « Expérience augmentée du spectacle vivant » de France 2030 et est opérée par la Caisse des Dépôts.\n\n Objectifs du Projet \n - Interopérabilité : Faciliter le partage et l'exploitation des données culturelles entre différentes institutions.\n\n- Accessibilité : Rendre les données culturelles plus accessibles et utilisables via des formats standards comme RDF.\n\n- Innovation : Promouvoir l'innovation dans le secteur culturel en permettant une meilleure exploitation des données grâce aux technologies du Web sémantique.\n\n Ce projet représente une avancée significative pour la gestion et l'utilisation des données culturelles en France, en mettant à disposition des outils robustes pour l'alignement et l'exposition des données au format RDF.\n\n Processus de Mise en Œuvre \n 1. Sélection des jeux de données exposés et choix de la licence appliquée pour leur réutilisation.\n\n 2. Téléchargement et intégration du module prêt à l’emploi.\n\n 3. Paramétrage des alignements opéré par le personnel en charge du site Web, sans nécessiter de connaissances en développement informatique.\n\n 4. Inscription au service CapData et sélection des traitements, enrichissements et expositions des données.\n\n Exemples d'Utilisation \n - Communication : Le service de communication d'une maison d'opéra peut enrichir et diffuser les données sur le site internet de l’établissement ou d’un office de tourisme.\n\n- Collectivités Territoriales : Peuvent collecter et diffuser la programmation d’une maison d’opéra via différents supports sans saisie supplémentaire.\n\n- Artistes : Accès à la liste des contenus et médias auxquels ils ont participé, et aux audiences liées.\n\n Modèle de données CapData Opéra \n Le modèle de données couvre des éléments comme l'œuvre, la personne, le lieu, la production (spectacle), et les événements, assurant ainsi une gestion et une exposition cohérentes et complètes des données culturelles.\n\n Conclusion \n Le module CapDataRDF est conçu pour répondre aux besoins des établissements culturels en matière de gestion et de valorisation des données, offrant une solution agile et interopérable, soutenue par une gouvernance collaborative et une approche écoresponsable.\n\n Pour plus de détails, visitez la page projet CapData Opéra .\n\n Mentions :\n\nConception et pilotage Réunion des Opéras de France,\n\nDéveloppement : Bluedrop\n\nAccompagnement et architecture : Logilab\n\nCette opération est soutenue par l'État français dans le cadre du dispositif « Expérience augmentée du spectacle vivant » de France 2030 et est opérée par la Caisse des Dépôts.\n\n Back to top",
+  "project_description": "CapData RDF est un composant clé du projet CapData Opéra - France 2030, porté par la Réunion des Opéras de France dans le cadre du programme France 2030. Ce module vise à faciliter l'alignement et l'exposition des données au format RDF, essentiel pour l'interopérabilité et le partage des données culturelles.\n\n Fonctionnalités du module CapData RDF \n 1. Gestion Simplifiée des Alignements :\n\n Interface utilisateur intuitive pour gérer facilement les alignements de modèle.\n\nPermet aux utilisateurs d'aligner leur modèle de données sans nécessiter de compétences techniques approfondies.\n\n 2. Module Avancé pour Alignements Complexes :\n\n - Outils pour gérer des alignements de données plus complexes.\n\n - Supporte des scénarios d'intégration de données sophistiqués et personnalisés.\n\n Ressources Utiles \n - Site du projet : CapData Opéra \n\n- Guide pratique pour la publication des données : Guide Pratique \n\n- Documentation pour exposer les données : Exposer ses données avec CapData Opéra \n\n- Ontologie CapDataCulture : Ontologie CapDataCulture v1 \n\n Soutien et Financement \n Cette opération est soutenue par l'État dans le cadre du dispositif « Expérience augmentée du spectacle vivant » de France 2030 et est opérée par la Caisse des Dépôts.\n\n Objectifs du Projet \n - Interopérabilité : Faciliter le partage et l'exploitation des données culturelles entre différentes institutions.\n\n- Accessibilité : Rendre les données culturelles plus accessibles et utilisables via des formats standards comme RDF.\n\n- Innovation : Promouvoir l'innovation dans le secteur culturel en permettant une meilleure exploitation des données grâce aux technologies du Web sémantique.\n\n Le modèle de données couvre des éléments comme l'œuvre, la personne, le lieu, la production (spectacle), et les événements. Développement : Bluedrop ; Accompagnement et architecture : Logilab.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

@@ -25,12 +25,11 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 
 ## How to use it
 
-Once the module is enabled, send users to `/camera-capture`. Anyone with the
-**access content** permission (which anonymous and authenticated users usually have
-by default) can open the form, grant the browser camera permission when prompted,
-and capture a photo or a short video. Each capture is saved as a managed file in
-the `public://` directory, so it becomes a normal Drupal file you can reference
-elsewhere.
+Once the module is enabled, send users to `/camera-capture`. Users with the
+**access content** permission can open the form, grant the browser camera
+permission when prompted, and capture a photo or a short video. Each capture is
+saved as a managed file in the `public://` directory, so it becomes a normal
+Drupal file you can reference elsewhere.
 
-Because the form is reachable by anyone with **access content**, review that
-permission for your site if you don't want captures to be open to all visitors.
+Configure the **access content** permission and where you link the form to match
+which users you intend to let capture media on your site.

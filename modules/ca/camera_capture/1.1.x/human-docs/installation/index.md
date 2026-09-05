@@ -30,5 +30,5 @@ drush en camera_capture -y
 ```
 
 That's all the setup there is — there is no configuration form. The capture form is
-immediately available at `/camera-capture` to anyone with the **access content**
-permission. Review that permission if you want to limit who can use it.
+available at `/camera-capture` to users with the **access content** permission;
+configure that permission to match who should be able to capture media.

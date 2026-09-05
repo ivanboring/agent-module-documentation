@@ -1,17 +1,17 @@
 {
   "name": "Canvas API",
   "data_name": "canvas_api",
-  "description": "integrates the Canvas LMS API with Drupal.",
+  "description": "Integrates Instructure's Canvas LMS REST API with Drupal via a chainable service (method + path + params).",
   "version": "2.0.x",
   "package": "Canvas LMS",
   "composer_namespace": "drupal/canvas_api",
   "composer_requirements": {},
   "dependent_modules": [
-    "canvas_lms:canvas_lms",
-    "key:key"
+    "canvas_lms",
+    "key"
   ],
-  "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "configure": "canvas_api.settings",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/canvas_api",
@@ -22,22 +22,21 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Integrations"
   ],
-  "subcategories": [
-    "APIs / frameworks"
-  ],
+  "subcategories": [],
   "keywords": [
     "canvas",
     "lms",
+    "instructure",
     "api",
     "education",
     "key"
   ],
-  "project_description": "7.x-1.x \n\nThis is a simple module that helps implement the Canvas LMS API where it makes sense. Right now this provides:\n\n \n A js function that will automatically resize the parent window if Drupal is iframed into Canvas LMS \n \n This is not for LTI integration, if you are looking for that, check out https://drupal.org/project/lti_tool_provider . If your looking for something more future looking that utilizes both of these, check out https://www.elmsln.org/ \n\n Thanks to Tim Bracken for writing the snippet this is based off.\n\n 7.x-2.x \n\nThe 7.x-2.x branch is a backport of the 8.x-1.x branch and provides a single function, canvas_api(), that can be used to interface with Instructure's Canvas API set .\n\n 8.x-1.x \n\nThe 8.x-1.x branch of the Canvas API module provides classes to interact with Instructure's Canvas API set . For example, if you wanted to update a user's Canvas email based on a change in the Student Information System, this api would allow you to do that programmatically.\n\n 2.x \n\nThis branch pares down the module, so that rather than trying to build wrapper classes for all of Canvas' APIs, it instead takes in an HTTP method, a path, and parameters. So if, for example, you wanted to get all of the users in ART 101 (where the SIS ID is 3456), you could do to the following:\n\n \n\n$users = \\Drupal::service('canvas_api')->setMethod('GET')\n\n ->setPath('courses/sis_course_id:3456/users')\n\n ->request()\n\n \n\n Also includes a tester page for testing API calls.",
+  "project_description": "Canvas API integrates Instructure's Canvas LMS REST API with Drupal. The 2.x branch pares the module down to a single chainable service, canvas_api, that takes an HTTP method, a relative API path, and parameters, then performs the authenticated request and returns the decoded JSON. It depends on the canvas_lms module (which supplies the institution subdomain and environment: production, test, or beta) and on the Key module (which supplies the Canvas access token). The base URL is assembled as https://<institution>[.test|.beta].instructure.com/api/v1/. GET requests are auto-paginated by following the rel=\"next\" Link header up to a fail-safe of 50 pages. An admin-only tester form at /admin/reports/canvas_api lets you issue ad-hoc calls. Example: \\Drupal::service('canvas_api')->setMethod('GET')->setPath('courses/sis_course_id:3456/users')->request().",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
