@@ -1,38 +1,27 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-CacheAlter adds a cookie-based cache context and removes utm_* parameters from the page cache key.
+CacheAlter changes how Drupal's anonymous page cache is keyed: it strips UTM/click-id query parameters so ad-referral URLs share one cache entry, and it appends a `cache_context` cookie value to the cache id so a site can serve different anonymous static caches per cookie.
 
 ---
 
-CacheAlter adjusts Drupal's page caching in two ways: it adds a cookie-based cache context (so cached
-output can vary by a cookie), and it strips `utm_*` (campaign-tracking) query parameters from the cache key —
-so URLs that differ only by UTM parameters share a cache entry instead of fragmenting the cache (UTM params
-don't change page content, only tracking). It is in the Performance and scalability package.
-
-Use it to improve cache hit rates on UTM-tagged URLs and to vary cache by a cookie. It is a performance/
-caching feature. Note: adding a cookie cache context can fragment the cache by that cookie's values (so use
-a low-cardinality cookie), and stripping UTM from the cache key is safe only if UTM params genuinely don't
-affect output on your site (confirm nothing renders differently based on UTM). It has no access-control
-role. Configure the cache behaviour.
+The module ships two HTTP stack middlewares and a service provider — no admin UI, routes, permissions, config, or database. `ClearRequest` (an `http_middleware` at priority 450, so it runs before core's page cache at priority 200) removes the marketing query keys `utm_source`, `utm_medium`, `utm_campaign`, `utm_term`, `utm_content`, `gclid`, `yclid`, `ysclid` from both `$request->query` and the rebuilt `REQUEST_URI`/`QUERY_STRING`; because this happens at the very start of the request, the cleaned query flows through the whole render pipeline (including `dynamic_page_cache`). `CacheAlterServiceProvider` swaps core's `http_middleware.page_cache` class for `CacheAlter`, which overrides `getCacheId()` to build the anonymous page-cache id from scheme+host+`REQUEST_URI`, the request format, and the value of a `cache_context` cookie. The net effect: better cache hit-rate for campaign traffic, plus a lightweight per-cookie cache-variation mechanism (for example, "selected city"). It only affects the anonymous page cache (`page_cache`); authenticated users, who bypass that cache, are unaffected. Note the module declares no `dependencies` in its info.yml even though `CacheAlter` extends `page_cache`'s `PageCache` class, so the cookie-key feature is only active when the core Internal Page Cache module is enabled.
 
 ---
 
-- Strip UTM params from the cache key.
-- Add a cookie cache context.
-- Improve cache hit rates on UTM URLs.
-- Share cache across UTM variants.
-- Vary cache by a cookie.
-- Avoid cache fragmentation from UTM.
-- Use a low-cardinality cookie.
-- Confirm UTM doesn't affect output.
-- Have no access-control role.
-- Improve caching performance.
-- Handle campaign-tagged URLs.
-- Configure the cache behaviour.
-- Remove utm_* from cache key.
-- Vary output by cookie.
-- Reduce cache fragmentation.
-- Optimize page cache.
-- Handle UTM parameters.
-- Improve cache efficiency.
-- Configure cache context.
-- Optimize caching.
+- Serve one shared `page_cache` entry for a page reached via many different UTM-tagged ad links.
+- Improve anonymous cache hit-rate for landing pages linked from Google/Yandex ads.
+- Strip `gclid` (Google click id) from the URL used as the cache key.
+- Strip `yclid` / `ysclid` (Yandex click ids) from the cache key.
+- Prevent campaign-parameter URL fragmentation from bloating the page-cache backend.
+- Keep `dynamic_page_cache` from varying on tracking parameters by cleaning the query early.
+- Vary the anonymous static cache by a `cache_context` cookie value (e.g. a chosen city/region).
+- Serve region-specific anonymous pages from cache by setting `cache_context=paris` vs `=berlin`.
+- Give an anonymous "store locator" or "current city" banner distinct cached variants per cookie.
+- Reduce origin render load for high-traffic anonymous marketing campaigns.
+- Normalize referral URLs so analytics-tagged and untagged visits hit the same cached HTML.
+- Deploy a UTM-stripping cache layer without writing custom middleware.
+- Add a cookie-based cache dimension without registering a custom Drupal cache context and render-cache plumbing.
+- Consolidate cache entries for newsletter links that append `utm_*` parameters.
+- Reduce cache-key cardinality caused by paid-search and social-share query strings.
+- Pair with a CDN by having Drupal's own page cache ignore tracking params.
+- Run as a drop-in performance module on Drupal 10 or 11 with no configuration step.
+- Understand or audit how an inherited site rewrote its anonymous page-cache key.
+- Decide whether to keep the module: it is only useful when the core Internal Page Cache (page_cache) module is enabled and the site relies on cookie-based anonymous variation.

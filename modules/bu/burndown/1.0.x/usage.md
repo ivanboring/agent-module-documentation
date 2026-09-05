@@ -1,37 +1,33 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Burndown provides project-management functionality — tasks, sprints and burndown charts — within Drupal, with a time-tracker submodule.
+Burndown is a native Drupal agile/Kanban project-management tool providing projects, fieldable tasks, sprints, drag-and-drop swimlane boards, a backlog, work logs, and burndown charts.
 
 ---
 
-Burndown provides project-management functionality in Drupal — managing tasks, sprints/boards and
-generating burndown charts to track progress over time, agile-style. It ships a `burndown_time_tracker`
-submodule for logging time, depends on core Datetime, Field, Image, Link, Options and Taxonomy, provides
-its own permissions and Drush commands.
-
-Use it to run lightweight project/task management inside Drupal. It is a productivity/administration
-feature; tasks and time entries are content that may include internal project detail and (via time
-tracking) who did what, so gate access with its permissions so project data is visible only to the
-appropriate team. Configure boards, tasks and the time tracker.
+Burndown models software-style project management directly on Drupal entities. A Project (content entity `burndown_project`, identified by a short "shortcode" like `PROJ`) owns Tasks (`burndown_task`), Columns/swimlanes (`burndown_swimlane`), and optionally Sprints (`burndown_sprint`). Each project is either a Kanban board or a Sprint board. Tasks flow across per-project columns via drag-and-drop, can be sent to/from the backlog, moved between sprints, closed with a resolution, reopened, and related to one another (blocked by, blocks, related to, follows up). Tasks carry a work log and comment thread, an assignee, a watchlist, estimates (T-shirt / geometric / dot sizing), tags, links and images. Projects and Tasks are fieldable bundles, so you can add fields like any Drupal content type. Burndown ships a per-project permission model, event subscribers that send email notifications on task changes, two navigation blocks, and a large set of Drush commands for headless/scripted management. The optional `burndown_time_tracker` submodule adds per-user start/stop task timers and an hours report. It depends only on core modules (datetime, field, image, link, options, taxonomy, views).
 
 ---
 
-- Manage projects and tasks.
-- Generate burndown charts.
-- Track sprints and boards.
-- Log time with the time tracker.
-- Depend on Datetime, Field, Taxonomy.
-- Provide Drush commands.
-- Provide its own permissions.
-- Run agile task management.
-- Track progress over time.
-- Gate project data by permission.
-- Keep internal detail visible to the team.
-- Configure boards and tasks.
-- Use the burndown_time_tracker submodule.
-- Manage a backlog.
-- Track task status.
-- Report progress.
-- Support team collaboration.
-- Log who did what.
-- Run lightweight PM in Drupal.
-- Chart remaining work.
+- Run an agile board for a software or content team entirely inside Drupal, no external SaaS.
+- Track work as Tasks that move across customizable columns (To Do, In Progress, Testing, Done, etc.).
+- Choose Kanban (continuous flow) or Sprint (time-boxed) methodology per project.
+- Maintain a prioritized backlog and drag items onto the active board when ready.
+- Plan and open/close sprints, pulling backlog tasks into a sprint and burning them down.
+- Give each project a short code (e.g. `WEB`) so tasks read like `WEB-42`.
+- Estimate task size with T-shirt sizes, geometric (Fibonacci-like) points, or dot voting.
+- Record work against a task via its work log, accumulating logged time/effort.
+- Discuss a task inline with a comment thread stored on the task.
+- Link related tasks: mark one "blocked by" or "blocks" another, or "related to"/"follows up".
+- Assign tasks to users and filter a board by assignee.
+- Let users watch tasks and receive email when watched tasks change.
+- Send email notifications to assignees/watchers on task create, comment, work, change, close.
+- Extend Tasks with custom fields (due date, customer, severity) since they are fieldable bundles.
+- Create multiple Task types (bug, feature, chore) as separate bundles with their own fields.
+- Add the "Projects" cloud block and "Burndown Sidebar" navigation block to a sidebar region.
+- Review completed tasks per project on the Completed board.
+- Reorder backlog and board columns via drag-and-drop.
+- Reorder the swimlane columns themselves for a project.
+- Keep an audit trail through entity revisions on Projects, Tasks and Sprints.
+- Script project/task management headlessly with Drush (list, add, edit, close, reopen, move tasks).
+- Bulk-create or migrate tasks via `drush burndown:add_task` and related commands.
+- Track billable/spent hours per task with the Time Tracker submodule's start/stop timer.
+- Give managers an hours report across users with the Time Tracker submodule.
+- Configure global defaults (estimate scales, resolution statuses, relationship types) centrally.

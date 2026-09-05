@@ -1,37 +1,29 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Bunny Optimizer renders Drupal images through Bunny Optimizer.
+Serve Drupal image-style derivatives through Bunny.net's real-time image optimizer by rewriting derivative URLs with edge query parameters instead of processing image files on the server.
 
 ---
 
-Bunny Optimizer renders **Drupal images through Bunny Optimizer** — Bunny.net's CDN image-optimization
-service — so images are served optimized/resized from Bunny's edge instead of processed locally. It requires
-PHP 7.4, depends on core File/Image and File MDM, in the Media package.
-
-Use it to offload image optimization to Bunny.net. It is a performance/media/CDN feature. Notes: images are
-served via **Bunny.net** (a third-party CDN — image requests go to Bunny's edge), so image delivery depends on
-that service and its terms; handle any Bunny **API/CDN credentials** as secrets and use HTTPS. It has no
-access-control role. Note that public-image delivery through a CDN doesn't add access control (images served
-via the CDN are as public as their source). Configure the Bunny Optimizer settings.
+Bunny Optimizer registers a Drupal **image toolkit** (`bunny_optimizer`) that you select at *Configuration > Media > Image toolkit*. Once it is the default toolkit, image styles no longer generate files on disk: `BunnyOptimizerImageStyle::buildUrl()` returns the original file URL (optionally re-pointed at a configured **CDN hostname**) with a query string built from the style's effects — `?width=…&height=…&quality=…&class=…` — which Bunny's optimizer applies at the edge and caches. The standard Crop, Desaturate, Resize, Scale and Scale-and-crop effects are re-implemented as toolkit **operations** that merely set query parameters, and the module adds Bunny-specific effects (Automatically optimize, Blur, Brightness, Contrast, Flip, Flop, Hue, Quality, Saturation, Sepia, Sharpen, Smart Face Crop) plus an *Apply a Bunny Optimizer image class* preset effect. It requires a Bunny CDN account with a pull zone that serves your images; the only site configuration is the CDN hostname, and the module makes no server-side calls to Bunny and stores no API credentials. Depends on core File and Image plus the File MDM module (used to read source image dimensions/mime).
 
 ---
 
-- Render images through Bunny Optimizer.
-- Serve optimized images from Bunny.net.
-- Offload image processing to the CDN.
-- Require PHP 7.4.
-- Depend on core File/Image and File MDM.
-- Serve images from Bunny's edge.
-- Note images are served via a third-party CDN.
-- Handle Bunny credentials as secrets (HTTPS).
-- Know CDN delivery adds no access control.
-- Have no access-control role.
-- Configure the Bunny settings.
-- Handle image optimization.
-- Optimize images.
-- Configure the CDN.
-- Serve via Bunny.
-- Handle the integration.
-- Deliver images.
-- Optimize via CDN.
-- Secure the credentials.
-- Provide Bunny optimization.
+- Offload image-derivative generation from your web server to Bunny.net's edge optimizer.
+- Keep your existing Drupal image styles unchanged while serving them through the CDN.
+- Select Bunny Optimizer as the default image toolkit at Configuration > Media > Image toolkit.
+- Serve resized images by adding the core Resize/Scale effects, which become `width`/`height` query params.
+- Crop images at the edge using the Crop / Scale-and-crop effects.
+- Convert image format on the fly (WebP, etc.) via the Convert operation, handled entirely by Bunny.
+- Desaturate images through the CDN instead of GD/ImageMagick.
+- Automatically optimize images (low/medium/high) with the Automatically optimize effect.
+- Apply a Gaussian blur to derivatives with the Blur effect.
+- Adjust brightness, contrast, hue, saturation of served images with the matching effects.
+- Flip (vertical) or flop (horizontal) images at the edge.
+- Apply sepia or sharpen filters via query parameters.
+- Use Bunny's Smart Face Crop to crop around detected faces.
+- Bundle many parameters into a single reusable preset with the *Apply a Bunny Optimizer image class* effect.
+- Point derivative URLs at a dedicated Bunny pull-zone hostname via the CDN hostname setting.
+- Leave the CDN hostname empty when the site's own hostname is already fronted by Bunny CDN for full-page caching.
+- Reduce origin CPU and disk usage by never writing derivative files locally.
+- Serve modern formats and responsive image variants without local toolkit binaries.
+- Combine with the Bunny CDN module when the pull zone caches full page responses.
+- Support JPG, JPEG, WebP, GIF, PNG, TGA, BMP, PBM, TIFF, HEIC and HEIF source images.
+- Avoid storing image derivatives, so flushing an image style leaves the original untouched.

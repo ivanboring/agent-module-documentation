@@ -1,14 +1,14 @@
 {
   "name": "CacheAlter",
   "data_name": "cache_alter",
-  "description": "Adds a cookie cache context and strips UTM parameters from the cache key.",
+  "description": "Rewrites the anonymous page-cache key: strips UTM/click-id query params and mixes in a 'cache_context' cookie value.",
   "version": "8.x-2.x",
   "package": "Performance and scalability",
   "composer_namespace": "drupal/cache_alter",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/cache_alter",
@@ -19,7 +19,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Performance"
@@ -29,12 +29,13 @@
   ],
   "keywords": [
     "cache",
+    "page cache",
     "utm",
     "cookie",
-    "cache context",
-    "performance"
+    "cache key",
+    "http middleware"
   ],
-  "project_description": "RU: \n Всё ради того, чтобы на каждый запрос по переходу из рекламы не формировался свой отдельный page_cage а юзался существующий\n\n # В самом начале загрузки друпала чистит из $request->query ключи\n\n - utm_source\n\n - utm_medium\n\n - utm_campaign\n\n - utm_term\n\n - utm_content\n\n - gclid\n\n - yclid\n\n# Везде далее, в том числе и в dynamic_page_cache - кэш формируется без этих значений\n\n# При формировании `page_cage` берётся очищенный `$request->query`\n\n# При формировании `page_cage` к ключу добавляется значение куки `cache_context`, которая позволяет формировать разный статик кэш в зависимости от значения в этой куке, например положить туда выбранный город.\n\n EN: \n At the very beginning of loading Drupal cleans keys from `$request->query`\n\n - utm_source\n\n - utm_medium\n\n - utm_campaign\n\n - utm_term\n\n - utm_content\n\n - gclid\n\n - yclid\n\n# Everywhere further, including in dynamic_page_cache - is formed without these values\n\n# On the forming `page_cage`, a cleared `$request->query` is taken\n\n# On the forming `page_cage`, the cookie value `cache_context` is added to the key, which allows you to create different static cache depending on the value in this cookie, for example, put the selected city there.\n\n Back to top",
+  "project_description": "Two HTTP stack middlewares that change how Drupal's anonymous page cache is keyed. One middleware strips marketing query parameters (utm_source, utm_medium, utm_campaign, utm_term, utm_content, gclid, yclid, ysclid) from the incoming request's query and rebuilt REQUEST_URI/QUERY_STRING so that ad-referral URLs differing only by those params share a single page_cache entry instead of fragmenting it. The other middleware replaces core's PageCache class and appends the value of a 'cache_context' cookie to the cache id, letting a site serve different anonymous static caches per cookie value (for example a selected city or region). The module has no admin UI, routes, permissions, config, database access, external calls, or output rendering.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

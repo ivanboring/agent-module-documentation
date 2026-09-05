@@ -1,14 +1,14 @@
 {
   "name": "Bundle name in tabs",
   "data_name": "bundle_tabs",
-  "description": "Adds the bundle name to admin tab (local task) titles.",
+  "description": "Change the title of the admin tabs to include bundle name.",
   "version": "1.0.x",
   "package": "Administration",
   "composer_namespace": "drupal/bundle_tabs",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^8||^9||^10||^11",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/bundle_tabs",
@@ -19,7 +19,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools"
@@ -30,9 +30,10 @@
   "keywords": [
     "tabs",
     "bundle",
-    "admin",
     "local tasks",
-    "ui"
+    "admin",
+    "node",
+    "taxonomy"
   ],
   "project_description": "Show bundle/vocabulary name in administrative view , edit and delete tabs.\n\n Installation \n composer require drupal/bundle_tabs \n\n Installation \n Other than enabling the module, no additional steps are required.\n\n Translation \n Use interface translation /admin/config/regional/translate and search for 'View @label' , 'Edit @label' and 'Delete @label' .\n\n Back to top",
   "maintenance_status": "Actively maintained",

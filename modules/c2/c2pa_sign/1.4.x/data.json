@@ -1,14 +1,16 @@
 {
   "name": "C2PA Sign",
   "data_name": "c2pa_sign",
-  "description": "Signs compatible media assets with C2PA content-provenance metadata on upload/publish (proves authenticity/origin). Secure the signing key.",
+  "description": "Signs compatible media assets with C2PA Content Credentials (content-provenance manifests) when files are uploaded, when content is published, and when image derivatives are generated, by shelling out to the c2patool binary with a configured certificate/key pair.",
   "version": "1.4.x",
   "package": "C2PA",
   "composer_namespace": "drupal/c2pa_sign",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "jrglasgow/c2patool": "^0.5.1"
+  },
   "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^10||^11",
+  "configure": "c2pa_sign.settings",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/c2pa_sign",
@@ -29,12 +31,16 @@
   ],
   "keywords": [
     "c2pa",
+    "content credentials",
     "content provenance",
+    "content authenticity",
     "signing",
-    "authenticity",
-    "media"
+    "manifest",
+    "media",
+    "images",
+    "c2patool"
   ],
-  "project_description": "Signing module to work in conjunction with the c2patool command line utility to sign media files. \n\n Content Credentials is a concept created by the Coalition for Content Provenance and Authenticity (C2PA) to help authenticate media assets. \n\n Features \n \n Signing of media files upon upload (integrated with the file widget). \n Signing of media files upon content publication. \n Signing of image derivatives (image styles) upon creation. \n \n Currently c2patool doesn't support using outside signers (KMS or HSM services) the tool will only sign/embed manifest data if the cert/key are available to the tool. When the tool gains the ability to package a manifest and output the data for a third party tool to sign, then incorporate that manifest that feature will be added.\n\n Post-Installation \n Go to /admin/config/media/c2pa_sign and enter in the location of cert/key pair compatible with the tool and the location of the c2patool command line utility .\n\n Additional Requirements \n Certificate/Key pair for signing and the tool - see \"PostInstallation\" \n\n Recommended modules/libraries \n \n The Content Authenticity Initiative has created a reference Drupal module which provides an image formatter to show provenance of images, if available. \n C2PA Sign AWS KMS allows you to use Amazon's AWS Key Management Service (KMS) to sign manifests. \n \n Similar projects \n None of which I am aware.\n\n Supporting this Module \n Contribute ideas, bugs, patches.\n\n Community Documentation \n Not yet.\n\n Back to top",
+  "project_description": "C2PA Sign digitally signs media assets with C2PA (Coalition for Content Provenance and Authenticity) Content Credentials so their origin and edit history can later be authenticated. It integrates with the jrglasgow/c2patool PHP wrapper library, which in turn drives the contentauth c2patool command-line utility. The module signs media files upon upload (via the file widget/hook_entity_presave on file entities), signs files attached to content entities upon publication (hook_entity_insert/update on nodes and other content entities), and signs image-style derivatives as they are generated (kernel RESPONSE subscriber). Signing requires a configured certificate/private-key pair (a directory of matching .pem/.key files, or the C2PA_SIGN_CERT / C2PA_PRIVATE_KEY environment variables) and a c2patool binary path. Manifests are assembled as PHP arrays (title, claim_generator, actions such as c2pa.created/c2pa.published/c2pa.resized, and custom drupal.c2pa_sign.* assertions), dispatched through alterable events, written to a temp file, and passed to c2patool. Certificate usage is counted per public-key fingerprint in the c2pa_sign_certificate_uses table, and admins are warned when the active certificate is near expiry. Configuration lives at /admin/config/media/c2pa_sign (permission: administer site configuration).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

@@ -1,13 +1,13 @@
 {
   "name": "Burger Menu",
   "data_name": "burger",
-  "description": "A hamburger menu with fullscreen navigation, based on the Burger JS plugin.",
+  "description": "Hamburger menu with fullscreen navigation, based on the Burger plugin by Matthew Blode.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Custom",
   "composer_namespace": "drupal/burger",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:block"
+    "block"
   ],
   "configure": null,
   "core_version_requirement": "^11",
@@ -19,14 +19,15 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"
   ],
   "subcategories": [
+    "Navigation menus",
     "Block enhancements"
   ],
   "keywords": [
@@ -34,9 +35,10 @@
     "hamburger",
     "menu",
     "navigation",
-    "fullscreen"
+    "fullscreen",
+    "block"
   ],
-  "project_description": "Burger is a minimal hamburger menu with fullscreen navigation. \n\n https://github.com/mblode/burger",
+  "project_description": "Burger Menu is a minimal hamburger-menu block that renders a chosen Drupal menu as fullscreen slide-in navigation. It provides a single 'Burger Menu' block plugin (id burger_menu_block) with per-block settings for the source menu, brand label/URL and two theme colours, plus a small CSS/JS library and a Twig template. Ported from the Burger JS plugin by Matthew Blode. https://github.com/mblode/burger",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

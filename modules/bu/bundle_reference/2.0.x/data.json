@@ -1,14 +1,14 @@
 {
   "name": "Bundle Reference",
   "data_name": "bundle_reference",
-  "description": "A field type for referencing entity bundles (types) rather than entities.",
+  "description": "Defines a field type (plus widget and formatter) that stores a reference to an entity bundle (content type / vocabulary / paragraph type) rather than to an entity.",
   "version": "2.0.x",
   "package": "Field types",
   "composer_namespace": "drupal/bundle_reference",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^8||^9||^10||^11",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/bundle_reference",
@@ -19,22 +19,24 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Site structure"
   ],
   "subcategories": [
-    "Field types"
+    "Fields"
   ],
   "keywords": [
     "bundle",
     "reference",
     "field type",
+    "field widget",
+    "field formatter",
     "entity type",
     "site building"
   ],
-  "project_description": "Adds a new bundle reference field type, widget and formatter.",
+  "project_description": "Bundle Reference adds a 'bundle_reference' field type with a matching widget and formatter. Instead of pointing at a specific entity, a field value stores an entity type ID plus a bundle machine name (e.g. node:article), letting editors pick a bundle. The field settings let the site builder restrict which entity-type/bundle pairs are selectable. Core-only, no dependencies, no routes, no permissions.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "not-covered",
