@@ -1,14 +1,16 @@
 {
   "name": "Calendar Links Tokens",
   "data_name": "calendar_links_token",
-  "description": "Generates 'add to calendar' links (Google, iCal, etc.) using tokens.",
+  "description": "Provides a dynamic token that renders 'add to calendar' links (Google, Yahoo, Outlook.com) plus a downloadable .ics file for an event.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/calendar_links_token",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "spatie/calendar-links": "^1.4"
+  },
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^10.2||^11",
+  "core_version_requirement": "^10.2 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/calendar_links_token",
@@ -19,7 +21,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"

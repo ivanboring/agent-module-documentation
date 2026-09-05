@@ -1,14 +1,16 @@
 {
   "name": "Cache Tools",
   "data_name": "cache_tools",
-  "description": "Provides caching-related tools and utilities for developers.",
+  "description": "Caching enhancements: sanitize block/view cache tags and contexts, and place precise published-entity cache tags with automatic invalidation.",
   "version": "8.x-1.x",
   "package": "Cache",
   "composer_namespace": "drupal/cache_tools",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drunomics/service-utils": "*"
+  },
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^8.8||^9||^10||^11",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/cache_tools",
@@ -19,22 +21,24 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Performance"
   ],
   "subcategories": [
-    "Cache invalidation / purging"
+    "Cache invalidation",
+    "Block-level cache control"
   ],
   "keywords": [
     "cache",
-    "tools",
+    "cache tags",
+    "cache contexts",
     "invalidation",
-    "tags",
-    "developer"
+    "views cache",
+    "block cache"
   ],
-  "project_description": "Drupal already does very good job regarding caching and invalidating the content. But sometimes you may want to make couple of adjustments to cache behavior. For instance, you may want to sanitize (strip) particular cache tags and cache contexts which are too generic and place some more specific ones instead.\n\n This module introduces couple of such caching improvements.\n\n Its main feature is to sanitize cache tags and cache contexts for listed blocks. So if you want to get rid off too generic cache tags ( node_list , taxonomy_term_list , etc) and cache contexts ( route , url , url.query_args , etc), it does the job. \n\n It introduces also custom cache tag for the views so it's placing more specific tags for the views. Namely, it places {entity}_{bundle}_pub (like node_article_pub or node_recipe_pub ) instead of too general node_list . Placing them out of the box based on the configured filters and contexts in particular view.\n\n Contribute \n \n Reach out at #drunomics-contribute @ the Drupal Slack !",
+  "project_description": "Cache Tools adds targeted improvements on top of Drupal's default cache behavior. Its first feature sanitizes (strips) overly generic cache tags and contexts from listed blocks by swapping in a custom block view builder, so blocks stop varying by route/url/query args or busting on node_list/taxonomy_term_list. Its second feature adds precise published-entity cache tags of the form entitytype_entitybundle_pub (e.g. node_article_pub) and optional field-value tags entitytype_entitybundle_pub:field_name:value, placed automatically on views via two ViewsCache plugins and invalidated automatically on entity insert/update/delete via entity hooks. Configuration is entirely through the cache_tools service-container parameter (overridden in a site services.yml), not through the admin UI. Requires the drunomics/service-utils composer library and, at runtime, the core block and views modules.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

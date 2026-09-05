@@ -1,14 +1,14 @@
 {
   "name": "Cache Tags CDN Optimizer",
   "data_name": "cache_tags_cdn_optimizer",
-  "description": "Replaces core cache tags for referenced entities so CDN purging clears content only when necessary.",
+  "description": "Reshapes Drupal core cache tags for referenced entities into custom 'reference' tags and invalidates them only when configured fields change, so CDN/purge clears cached pages only when necessary.",
   "version": "1.1.x",
   "package": null,
   "composer_namespace": "drupal/cache_tags_cdn_optimizer",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^10||^11",
+  "configure": "cache_tags_cdn_optimizer.settings",
+  "core_version_requirement": "^10 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/cache_tags_cdn_optimizer",
@@ -25,16 +25,18 @@
     "Performance"
   ],
   "subcategories": [
-    "Cache invalidation / purging"
+    "Cache invalidation",
+    "CDN integration"
   ],
   "keywords": [
     "cache tags",
     "cdn",
     "purge",
     "invalidation",
+    "referenced entities",
     "performance"
   ],
-  "project_description": "## INTRODUCTION\n\n The Cache Tags CDN Optimizer module optimizes Drupal's cache invalidation by replacing standard entity cache tags with custom reference tags. This prevents unnecessary cache invalidation when referenced entities are updated, improving performance by only invalidating caches when specific tracked fields change.\n\n The primary use cases for this module are:\n\n - Improve performance by reducing unnecessary cache invalidation for referenced entities\n\n- Selectively invalidate caches only when specific fields of referenced entities change\n\n- Maintain fine-grained control over which cache tags are included in responses\n\n- Provide path-based cache tags to help with managing cached 404 pages\n\n ## REQUIREMENTS\n\n This module has no dependencies beyond Drupal core.\n\n ## INSTALLATION\n\n Install as you would normally install a contributed Drupal module.\n\nSee: https://www.drupal.org/node/895232 for further information.\n\n ## CONFIGURATION\n\n 1. Navigate to Administration > Configuration > Web services > Cache Tags CDN Optimizer\n\n2. Configure which fields to track for each content type and taxonomy vocabulary:\n\n - Expand the Node or Taxonomy section\n\n - Select a content type or vocabulary\n\n - Check the fields that should trigger cache invalidation when changed\n\n3. Configure additional features:\n\n - **Path Cache Tag**: Enable to add a cache tag for the current path to responses (useful for managing cached 404 pages)\n\n - **Cache Tag Replacement**: Enable for nodes and/or taxonomy terms to replace standard entity cache tags with custom reference tags\n\n - **Blocklist**: Add cache tags to prevent them from being included in responses (supports wildcard matching with * at the end)\n\n - **Debug Mode**: Enable to log detailed information about field changes during entity updates\n\n4. Save the configuration\n\n ### Cache Tag Invalidation\n\n The configuration page also provides a utility to manually invalidate specific cache tags:\n\n 1. Enter a cache tag (or space-separated list of tags) in the \"Cache tag to invalidate\" field\n\n2. Click \"Invalidate Cache Tag\" button\n\n3. The system will confirm the invalidation\n\n ## HOW IT WORKS\n\n The module works in several parts:\n\n 1. **Response Modification**: When a page is rendered, the module:\n\n - Replaces standard entity cache tags (e.g., `node:123`) with custom reference tags (e.g., `node:reference:123`), except for the entity being directly viewed\n\n - Adds a bundle-specific purge tag (e.g., `node:article:purge_all`) to allow purging all entities of a specific bundle\n\n - Optionally adds a path-based cache tag (e.g., `url/my-page`) to help manage cached pages, especially 404s\n\n - Filters out any cache tags that match the configured blocklist\n\n 2. **Selective Invalidation**: When an entity is updated, the module:\n\n - Checks if any of the configured fields have changed\n\n - If they have, invalidates the corresponding custom reference tag\n\n - Optionally logs detailed information about field changes when debug mode is enabled\n\n 3. **Entity Deletion**: When an entity is deleted, the module:\n\n - Invalidates both the standard entity cache tag and the custom reference tag\n\n This approach ensures that cached pages containing references to entities are only invalidated when relevant fields of those entities change, not on every entity update.\n\n ## TODOs\n\n- Support further entity types?\n\n ## MAINTAINERS\n\n Current maintainers:\n\n - dseven GmbH",
+  "project_description": "The Cache Tags CDN Optimizer module optimizes Drupal's cache invalidation by rewriting standard entity cache tags for *referenced* entities into custom 'reference' tags (e.g. node:123 becomes node:reference:123), then invalidating those reference tags only when specific configured fields of the referenced entity actually change. This prevents unnecessary cache invalidation and CDN purges when a referenced entity is edited but nothing that appears on the referencing pages changed. It works entirely through Drupal core's cache-tag system: an onKernelResponse event subscriber rewrites the response's cache-tags header, and entity insert/update/delete hooks call Cache::invalidateTags(). It also optionally adds a per-path cache tag (useful for evicting cached 404s) and a bundle-level purge_all tag. The module talks to no external service itself; it shapes tags for whatever purge/CDN integration the site already runs. Configure it at Administration > Configuration > Services > Cache Tags CDN Optimizer, where you pick which fields per content type and vocabulary should trigger invalidation, toggle node/taxonomy replacement, set a blocklist, and optionally enable debug logging. Maintained by dseven GmbH.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

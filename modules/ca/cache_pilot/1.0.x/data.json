@@ -1,40 +1,45 @@
 {
   "name": "Cache Pilot",
   "data_name": "cache_pilot",
-  "description": "Simple tools to manage the APCu (PHP opcode/user) cache from Drupal.",
+  "description": "Simple tools to manage the APCu and OPcache caches.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/cache_pilot",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "hollodotme/fast-cgi-client": "^3.1"
+  },
   "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^10.3||^11",
+  "configure": "cache_pilot.settings",
+  "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/cache_pilot",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
-  "library_dependencies": [],
+  "php_requirement": ">=8.3",
+  "library_dependencies": [
+    "hollodotme/fast-cgi-client"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
-  "provides_drush_commands": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
     "Performance"
   ],
   "subcategories": [
-    "Cache"
+    "Cache invalidation"
   ],
   "keywords": [
     "apcu",
+    "opcache",
     "cache",
     "performance",
-    "management",
-    "opcode"
+    "fastcgi",
+    "deployment"
   ],
-  "project_description": "Cache Pilot provides command-line tools to clear APCu and OPcache caches via FastCGI, essential for deployments using PHP-FPM. This module ensures reliable cache management without relying on web requests, making it ideal for CLI workflows.\n\n Features \n \n Cache Clearing : Clear APCu and Zend OPcache caches via Drush commands ( cache-pilot:apcu:clear and cache-pilot:opcache:clear ), UI, or programmatically using a dedicated service. \n Deployment-Friendly : Designed for use in deployment scripts where PHP-FPM runs separately from CLI. \n Flexible Connections : Configure FastCGI via TCP (e.g., tcp://127.0.0.1:9000 ) or Unix domain sockets (e.g., unix:///var/run/php/php-fpm.sock ). \n Cache Statistics Report : Provides a new Report page with APCu and/or Zend OPcache statistics. \n \n Use this module to ensure PHP opcode caches are reliably reset during deployments, avoiding stale code or cached data issues.\n\n Post-Installation \n \n Navigate to Configuration > Performance > Cache Pilot Settings . \n Configure the Connection DSN :\n \n TCP : Connects using the '[host]:[port]' information, for example: tcp://127.0.0.1:9000 or tcp://php:9000 . \n Unix Domain Socket : Connects using a unix socket to which you provide a path, for example: unix:///var/run/php/php-fpm.sock \n \n \n Use Drush commands in deployment scripts (recommended before drush deploy ). \n \n To disable in specific environments, override the configuration in settings.php :\n\n $config['cache_pilot.settings']['connection_dsn'] = NULL; Back to top",
+  "project_description": "Cache Pilot provides tools to clear and inspect the APCu and Zend OPcache opcode/user caches from within Drupal. Because those caches live in the PHP-FPM worker processes and cannot be reset from a CLI (Drush) process, the module talks to PHP-FPM over a FastCGI socket (TCP or Unix domain socket) and runs a small bundled script (cache-pilot.php) inside the FPM pool to perform apcu_clear_cache() / opcache_reset() and read apcu_cache_info() / opcache_get_status(). It exposes a settings form (Configuration > Development > Performance > Cache Pilot) to configure the FastCGI DSN, an admin reports dashboard rendering APCu and OPcache statistics, two Drush/console commands for deployment scripts, and a hook_cache_flush() integration that clears APCu on a Drupal cache rebuild. All routes and actions require the 'cache_pilot.administer' permission.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "not-covered",

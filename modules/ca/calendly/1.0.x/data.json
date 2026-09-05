@@ -1,14 +1,14 @@
 {
-  "name": "Calendly",
+  "name": "Embed Calendly",
   "data_name": "calendly",
-  "description": "Embeds Calendly scheduling pages on the site.",
+  "description": "Easy and simple way to embed Calendly scheduling pages on Drupal.",
   "version": "1.0.x",
   "package": "Calendly",
   "composer_namespace": "drupal/calendly",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "configure": "calendly.admin_settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/calendly",
@@ -19,22 +19,24 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
+    "E-commerce",
     "Integrations"
   ],
   "subcategories": [
-    "Scheduling / embeds"
+    "Booking / scheduling"
   ],
   "keywords": [
     "calendly",
     "scheduling",
     "embed",
     "booking",
-    "appointments"
+    "appointments",
+    "widget"
   ],
-  "project_description": "Embed Calendly helps you add Calendly scheduling pages to your Drupal website in an easy and simple way.\n\n Allows visitors to easily schedule meetings anywhere on your Drupal website, through Calendly.",
+  "project_description": "Embed Calendly helps you add Calendly scheduling pages to your Drupal website in an easy and simple way. It stores a Calendly API key and organization id, pulls your Calendly event types via the Calendly API, lists them in the admin UI, and one-click generates a full_html custom block containing the Calendly inline-widget embed snippet (assets.calendly.com/external/widget.js) for a chosen event's scheduling URL, which you then place like any other block.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
