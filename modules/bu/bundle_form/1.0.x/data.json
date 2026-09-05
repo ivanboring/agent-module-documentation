@@ -1,7 +1,7 @@
 {
   "name": "Bundle form",
   "data_name": "bundle_form",
-  "description": "Overrides an entity's add/edit form on a per-bundle basis via plugins, so each bundle can have its own form class.",
+  "description": "Overrides a content entity's add/edit form on a per-bundle basis via a plugin type, so each bundle can get its own form customizations without a monolithic hook_form_alter.",
   "version": "1.0.x",
   "package": "AB",
   "composer_namespace": "drupal/bundle_form",
@@ -21,13 +21,17 @@
   ],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "bundle_form"
+  ],
   "categories": [
-    "Content editing experience"
+    "Content editing experience",
+    "Developer tools"
   ],
   "subcategories": [
-    "Form mode switching"
+    "Form builder",
+    "Plugin system"
   ],
   "keywords": [
     "form",
@@ -36,6 +40,7 @@
     "plugin",
     "node",
     "taxonomy",
+    "paragraph",
     "entity form"
   ],
   "project_description": "Actually, to override an entity form, you have to define a form_alter to trigger the right form id (which change if you create or edit an entity).\n\n The idea behind this module is simple : implements a way to override an entity form simplier than hook_form_alter.\n\n To do that, it's quite simple : \n\n \n Install the module \n Create a bundle form that matching your entity type / bundle \n Override your form \n \n Entity types supported are :\n\n- node\n\n- taxonomy_term\n\n- paragraph\n\n Add support for others entity types is quite simple (check bundle_form.module and BundleFormTrait).\n\nYou can do it yourself or create a ticket.",

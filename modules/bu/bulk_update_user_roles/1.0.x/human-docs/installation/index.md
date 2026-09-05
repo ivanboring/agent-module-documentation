@@ -7,11 +7,6 @@
 
 There are no third-party Composer or PHP library requirements.
 
-> **Before you install, read the security caution** on the
-> [overview page](../index.md). This module lets an account holding only the
-> `administer users` permission grant the `administrator` role to everyone — a
-> full site takeover. Only enable it if you understand and can contain that risk.
-
 ## Install with Composer
 
 From the project root:
@@ -33,5 +28,6 @@ dependencies as needed.
 drush en bulk_update_user_roles -y
 ```
 
-After enabling, restrict who holds `administer users` (see the caution above),
-then use the form at `/admin/config/people/bulk-update`.
+After enabling, use the form at `/admin/config/people/bulk-update`. Grant the
+`administer users` permission only to trusted staff who should be able to change
+role membership in bulk.

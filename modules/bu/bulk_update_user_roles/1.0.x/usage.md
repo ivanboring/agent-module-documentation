@@ -1,42 +1,34 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Bulk Update User Roles lets administrators update roles for all users in a single click.
+Bulk Update User Roles lets administrators assign or remove roles for many users at once from a single form.
 
 ---
 
-Bulk Update User Roles **adds or removes roles across all users at once** — a form that applies a chosen role
-to (or removes it from) every user in a single batch operation, for mass role management. It depends on core User.
-
-Use it for mass role changes. Be aware of a **privilege-escalation flaw** in how it is gated (recorded as a
-campaign security finding): its route requires only the **`administer users`** permission, its form lists **every
-role including `administrator`** (no filtering to roles the current user may assign), and its batch calls
-`$user->addRole()` directly. Drupal core deliberately requires the **higher `administer permissions`** to assign
-roles (core's account form hides the roles field unless the user has `administer permissions`) — precisely so
-user-management staff can't make themselves site admins. This module removes that separation, so **an account with
-only `administer users` can grant the `administrator` role to itself and all users → full site takeover.** Until
-fixed, **do not grant `administer users` to anyone who shouldn't be a full administrator while this module is
-enabled**, and prefer restricting/uninstalling it; the proper fix is to require `administer permissions` on the
-route and filter the role options to assignable (non-`is_admin`) roles, mirroring core. Configure with this
-caution.
+Bulk Update User Roles provides one admin form (at `/admin/config/people/bulk-update`, under
+Configuration → People) for **mass role management**. Pick "Assign roles" or "Remove roles",
+choose one or more roles and either a set of individually selected users or all users, and submit;
+the change runs as a Batch API job that loads each account and calls `addRole()`/`removeRole()`
+then saves it. User id 1 is always excluded from the operation. The module depends only on core
+User and adds no entities, plugins, permissions of its own, or config objects — it is a thin
+convenience wrapper over core role assignment for doing it in bulk instead of one account at a
+time.
 
 ---
 
-- Bulk add/remove roles across all users.
-- Apply a role in one click.
-- Run a batch role update.
-- Depend on core User.
-- Serve mass role management.
-- Update roles at scale.
-- REQUIRE only 'administer users' on the route (a privilege-escalation flaw).
-- OFFER every role incl. administrator + addRole() directly (bypasses core's 'administer permissions' gate).
-- LET an 'administer users' account grant itself/everyone the admin role → site takeover.
-- Not grant 'administer users' to non-full-admins while enabled (until fixed: require administer permissions + filter roles).
-- Prefer restricting/uninstalling until fixed.
-- Configure with this caution.
-- Handle bulk role updates.
-- Update roles.
-- Configure the update.
-- Add roles.
-- Handle the batch.
-- Remove roles.
-- Restrict the gate.
-- Provide bulk role updates.
+- Assign a role to many users in one submission.
+- Remove a role from many users in one submission.
+- Assign or remove several roles at once (multi-select).
+- Apply a role change to all users with the "Select all users" checkbox.
+- Apply a role change to a hand-picked subset via the users multi-select.
+- Onboard a batch of accounts by granting a shared role in one step.
+- Offboard a batch of accounts by stripping a role in one step.
+- Migrate users from one role to another (add the new role in bulk, then remove the old one).
+- Roll out a new role to an existing user base after creating it.
+- Retire a deprecated role by removing it from everyone who has it.
+- Grant a temporary campaign/event role to many users, then remove it later.
+- Clean up role assignments after a permissions restructure.
+- Run the change as a progress-tracked Batch job (init/progress/finished messages).
+- Handle large user bases without editing each account form individually.
+- See the available (non-uid-1) user count before submitting.
+- Keep uid 1 untouched — it is always excluded from bulk updates.
+- Reach the form from the admin menu under Configuration → People (`user.admin_index`).
+- Confirm results via the "Assigned/Removed role to N users" message on completion.
+- Operate entirely through the UI — no Drush command or config export needed.

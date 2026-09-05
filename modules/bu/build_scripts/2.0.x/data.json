@@ -1,13 +1,13 @@
 {
   "name": "Build scripts",
   "data_name": "build_scripts",
-  "description": "Runs configured build programs/scripts from within Drupal.",
+  "description": "Trigger admin-configured build programs (e.g. static-site builds) on an external build daemon from the Drupal UI and stream their logs.",
   "version": "2.0.x",
   "package": "OE",
   "composer_namespace": "drupal/build_scripts",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "build_scripts.settings_form",
   "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -19,22 +19,24 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
   ],
   "subcategories": [
+    "Deployment / release management",
     "Code generation / scaffolding"
   ],
   "keywords": [
     "build",
     "scripts",
+    "static site",
+    "gatsby",
     "deployment",
-    "operations",
-    "ci"
+    "operations"
   ],
-  "project_description": "Build scripts is a module that adds functionality to run scripts from within Drupal user interface (for example to build a static site). This module is built for running Gatsby builds, but is very customizable and can be adapted to many different purposes. The module communicates with external build daemon and does nothing without it.\n\n Our motivation for this project is that we want a button to our site that runs a script which builds a static Gatsby site from our Drupal data. Additionally we want it to support separate testing environment that our editors can use to check how their work looks on the Gatsby site.\n\n This module has configurable environments that are passed to a shell script with current Drupal language as arguments. The shell script does most of the work.\n\n Installation (for Gatsby) \n \n Install build daemon to you server according to README. \n Create a shell script that is responsible for the build (see README on build daemon):\n\n \n\n#!/usr/bin/env bash\n if [ ! $# -eq 2 ]; then\n\n printf \"Invalid arguments\\n\" >&2\n\n exit 1\n\nfi\n\n ENVIRONMENT=\"$1\"\n\nLANGUAGE=\"$2\"\n\nLOCKFILE=\"/tmp/build-$LANGUAGE.lock\" # Only one build per language is allowed\n\nGATSBY_DIR=\"/var/www/gatsby/$LANGUAGE/\"\n\nWWW_DIR=\"/var/www/frontend/$LANGUAGE/$ENVIRONMENT/\"\n\n echo \"starting build for $ENVIRONMENT environment\"\n\ncd \"$GATSBY_DIR\"\n\n # Better format for loggin Gatsby commands:\n\nexport CI='true'\n\n # Prevent building multiple environments simultaneously.\n\nif ! mkdir \"$LOCKFILE\"; then\n\n printf \"Failed to acquire lock.\\n\" >&2\n\n exit 1\n\nfi\n\ntrap \"rm -rf $LOCKFILE\" EXIT # remove the lockdir on exit\n\nif npx gatsby build && rsync -a --delete \"$GATSBY_DIR/public/\" \"$WWW_DIR\"; then\n\n echo \"Build succeeded\"\n\nelse\n\n echo \"Build failed :(\"\n\n exit 1\n\nfi",
+  "project_description": "Build scripts adds a UI (toolbar button plus admin pages) that lets an authorized operator kick off named build \"stages\" and watch the streamed output. It does not run any shell command itself: the Drupal module is a thin HTTP client that POSTs the selected stage and current language to an external build daemon (https://github.com/oikeuttaelaimille/builder), which owns the OS permissions and actually runs the shell script. This separation is deliberate so the web-server process never needs build/deploy privileges. It was written to run Gatsby static-site builds from Drupal content, with support for separate testing/live environments, but the stage list is free-form so it can drive any script the daemon exposes. Configuration is a daemon address plus a list of stage names; the module is inert without the daemon running.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

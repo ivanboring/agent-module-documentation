@@ -1,16 +1,16 @@
 {
   "name": "Bulk Term Delete",
   "data_name": "bulk_term_delete",
-  "description": "Allows deleting multiple taxonomy terms at once from the terms list page.",
+  "description": "Allows users to delete multiple taxonomy terms at once from the terms list page.",
   "version": "1.0.x",
   "package": "Taxonomy",
   "composer_namespace": "drupal/bulk_term_delete",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:taxonomy"
+    "taxonomy"
   ],
   "configure": null,
-  "core_version_requirement": "^10.3||^11",
+  "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/bulk_term_delete",
@@ -21,7 +21,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"
