@@ -2,8 +2,11 @@
 
 Cloudflare AI has no single settings form. Instead you set up a **credential
 set** (in the Cloudflare SDK) and then add one or more **resources** — an AI
-Gateway, a Vectorize index, an AI Search instance — as configuration entities.
-Each resource references the credential set that supplies its token.
+Gateway or a Vectorize index — as configuration entities. Each resource references
+the credential set that supplies its token.
+
+> This release (1.0.0‑alpha3) provides the **AI Gateway** and **Vectorize**
+> resources only; there is no AI Search resource in this version.
 
 ## Step 1 — Add a credential set
 
@@ -20,8 +23,8 @@ Credential sets are provided by the Cloudflare SDK module:
    ];
    ```
 
-   Give the token the permissions for the resources you plan to use (AI Gateway,
-   Vectorize, AI Search). The account ID is resolved from the credential set, so
+   Give the token the permissions for the resources you plan to use (AI Gateway
+   and Vectorize). The account ID is resolved from the credential set, so
    nothing account‑specific ends up in exported configuration.
 
 > **Keep the token a secret.** Prefer an environment variable over a literal in
@@ -50,13 +53,6 @@ entity captures the index **name**, its **vector dimensions**, the **distance
 metric**, and the **credential set**. The module's data‑plane client can then
 create, describe and delete indexes and upsert, query, fetch and delete vectors
 over the Vectorize v2 REST API — useful for building semantic search.
-
-## Step 4 — Add an AI Search instance (optional)
-
-Under **Configuration → Web services → Cloudflare AI Search**, add an instance.
-The entity captures its **data source**, the **embedding** and **generation**
-models, **chunking** settings, and a **sync interval**. Its client runs retrieval
-and OpenAI‑compatible generation, can trigger a re‑sync, and reads index stats.
 
 ## Save
 

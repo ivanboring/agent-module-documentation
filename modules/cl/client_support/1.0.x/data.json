@@ -1,13 +1,13 @@
 {
   "name": "Client Support",
   "data_name": "client_support",
-  "description": "Lets users contact support through the site.",
+  "description": "Adds a 'Support' item to the admin toolbar that redirects to a support destination chosen from pluggable SupportIntegration plugins; ships a core Contact Form integration as an optional submodule.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Support",
   "composer_namespace": "drupal/client_support",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "client_support.settings_form",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -16,11 +16,15 @@
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [],
+  "submodules": [
+    "client_support_contact_form"
+  ],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "SupportIntegration"
+  ],
   "categories": [
     "User engagement"
   ],

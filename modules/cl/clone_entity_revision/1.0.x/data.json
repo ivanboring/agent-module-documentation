@@ -1,7 +1,7 @@
 {
   "name": "Clone Entity Revision",
   "data_name": "clone_entity_revision",
-  "description": "Clones a specific node revision into a new node.",
+  "description": "Adds a Clone operation to each node revision that deep-duplicates that revision into a brand-new node, recursively cloning referenced paragraphs and making independent copies of file/image fields. Module machine name is clone_entity_revision; the drupal.org project and Composer package are the misspelled drupal/clone_enity_revision (drupal/clone_entity_revision is only a metapackage alias).",
   "version": "1.0.x",
   "package": "Entity Revision",
   "composer_namespace": "drupal/clone_enity_revision",
@@ -22,7 +22,7 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"

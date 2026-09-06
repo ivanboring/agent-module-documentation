@@ -5,7 +5,9 @@
   "version": "1.0.x",
   "package": "Cloudflare",
   "composer_namespace": "drupal/cloudflare_sdk",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/cloudflare_api": "^1.0@alpha"
+  },
   "dependent_modules": [
     "cloudflare_api:cloudflare_api"
   ],
@@ -15,14 +17,20 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/cloudflare_sdk",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.3",
   "library_dependencies": [],
-  "suggests": {},
-  "submodules": [],
+  "suggests": {
+    "drupal/key": "To resolve credential tokens from the Key module (enable the Cloudflare SDK Key submodule)."
+  },
+  "submodules": [
+    "cloudflare_sdk_key"
+  ],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "cloudflare_capability"
+  ],
   "categories": [
     "Integrations"
   ],

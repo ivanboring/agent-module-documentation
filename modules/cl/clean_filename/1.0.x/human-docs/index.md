@@ -1,11 +1,13 @@
 # Clean Filename — manual setup guide
 
-**Clean Filename** (`clean_filename`) makes sure your file uploads keep clean,
-tidy names. It has two related jobs. First, it sanitises upload names — removing
-special characters, spaces and diacritics and transliterating to safe, consistent
-values — so files don't end up with awkward or URL-unfriendly names. Second, and
-more distinctively, it reverses Drupal's default behaviour when a file collides
-with an existing one of the same name.
+**Clean Filename** (`clean_filename`) makes sure your *newest* file upload always
+keeps the clean, unsuffixed name. It does this by reversing Drupal's default
+behaviour when a file collides with an existing one of the same name.
+
+Note that despite the name, this module does **not** rewrite the characters in a
+filename — it does not strip spaces, remove diacritics, or transliterate. That
+sanitising is still handled by Drupal core. What this module changes is *which*
+file ends up with the clean name after a collision.
 
 By default, when you upload `document.pdf` and one already exists, Drupal renames
 the *new* file to `document_0.pdf` and leaves the old one holding the clean name.
@@ -32,20 +34,28 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 1. [Installation](installation/index.md) — install with Composer and enable the
    module.
 
-There is no separate site-wide settings page — Clean Filename is turned on
-per field, described under "How to use it" below.
+There is a settings page at **Configuration → Media → Clean Filename**, but it is
+mostly informational: it holds a couple of global options (logging and a maximum
+rename-attempts number) and read-only lists of which fields and text formats
+currently have the feature switched on. The actual on/off switches live on each
+field and each text format, described under "How to use it" below.
 
 ## How to use it
 
 Because the module works per field, you switch it on where you need it:
 
-1. Go to the field settings for a file or image field — **Structure → Content types
-   → *(your type)* → Manage fields**, then edit the relevant field (or the
-   equivalent for any other fieldable entity).
+1. Go to the field settings for a file, image, or media field — **Structure →
+   Content types → *(your type)* → Manage fields**, then edit the relevant field
+   (or the equivalent for any other fieldable entity).
 2. Enable Clean Filename's option for that field and save.
 3. Grant the `administer clean filename` permission to the roles that should manage
    this behaviour (**People → Permissions**).
 
-From then on, uploads to that field get the clean-name treatment: new files keep
+To apply the same behaviour to images uploaded through CKEditor 5, go to
+**Configuration → Content authoring → Text formats and editors**, edit a text
+format, enable the **"Clean Filename for CKEditor"** filter, and tick its checkbox.
+CKEditor uploads are controlled independently of the field settings.
+
+From then on, uploads in those places get the clean-name treatment: new files keep
 the original clean name and any conflicting existing file is moved to the next
 suffix.

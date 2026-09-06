@@ -1,8 +1,8 @@
 # Configuration
 
-Cloudflare Purger is configured through the **Purge** module's pipeline, plus a
-couple of container parameters in your site's settings for hardening. There is no
-standalone settings page.
+Cloudflare Purger has a small settings page of its own (Zone ID + token Key) and
+is then wired into the **Purge** module's pipeline, plus a couple of container
+parameters in your site's settings for hardening.
 
 ## Step 1 — Store the Cloudflare token in a Key
 
@@ -20,19 +20,30 @@ The purger reads its API token from a **Key** entity:
 > `ddev dotenv set .ddev/.env --cloudflare-token=<value>` then `ddev restart` — and
 > point the Key's provider at it.
 
-## Step 2 — Add the purger in Purge
+## Step 2 — Enter the Zone ID and token on the settings page
+
+Go to **Configuration → Web services → Cloudflare Purger**
+(`/admin/config/services/cloudflare-purger`) and set:
+
+- **Zone ID** — the 32‑character hexadecimal ID of your Cloudflare zone.
+- **API token key** — select the **Key** you created in Step 1.
+
+A validation constraint requires the Zone ID to be exactly 32 hex characters and
+the selected Key to exist, so a typo is caught on save.
+
+## Step 3 — Add the purger in Purge
 
 1. Go to **Configuration → Development → Performance → Purge**
    (`/admin/config/development/performance/purge`).
 2. Under **Purgers**, add the **Cloudflare** purger.
-3. In its settings, select the **Key** that holds your token and provide the
-   Cloudflare zone details it needs.
+3. Check the status/diagnostics — the *Cloudflare Purger Configuration* check goes
+   green once the Zone ID and token Key are set.
 
 With that in place, Drupal adds a hashed `Cache-Tag` header to cacheable
 responses, and invalidating cache tags triggers a purge‑by‑tags request to
 Cloudflare.
 
-## Step 3 — Guard against oversized headers (recommended)
+## Step 4 — Guard against oversized headers (recommended)
 
 On pages with many cache tags the `Cache-Tag` header can grow large, and some
 hosts cap header sizes. The module exposes a container parameter,
@@ -48,7 +59,7 @@ parameters:
   cloudflare_purger.max_response_header_length: 8181
 ```
 
-## Step 4 — Separate environments that share a zone (if needed)
+## Step 5 — Separate environments that share a zone (if needed)
 
 If dev, test and prod share one Cloudflare zone (and a common `hash_salt`), they
 could otherwise purge each other's cache. Give each its own cache‑tag prefix via

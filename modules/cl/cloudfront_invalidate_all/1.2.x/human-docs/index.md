@@ -35,10 +35,13 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 1. [Installation](installation/index.md) — install the module with Composer and
    enable it.
 2. [Configuration](configuration/index.md) — set the distribution ID, provide AWS
-   credentials via your environment, and tune the tag black list.
+   credentials via your environment, tune the cache-tag whitelist, and switch the
+   module on (it ships disabled).
 
 ## Where it lives in the admin menu
 
-The module works automatically once configured. Its distribution ID is set in
-`settings.php` (or config), AWS credentials come from your environment/IAM role,
-and the cache‑tag **black list** can be edited on the module's settings form.
+The module works automatically once configured **and un-disabled** (it ships with
+invalidations switched off). Its distribution ID is set in `settings.php` (or on the
+settings form), AWS credentials come from your environment/IAM role, and the
+cache‑tag **whitelist** — the list of tag prefixes allowed to trigger a clear — can
+be edited on the module's settings form.

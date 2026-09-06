@@ -5,16 +5,20 @@
   "version": "1.2.x",
   "package": "Purge",
   "composer_namespace": "drupal/cloudfront_invalidate_all",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "aws/aws-sdk-php": "^3.0"
+  },
   "dependent_modules": [],
-  "configure": null,
+  "configure": "cloudfront_invalidate_all.settings",
   "core_version_requirement": "^10||^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/cloudfront_invalidate_all",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "aws/aws-sdk-php"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,

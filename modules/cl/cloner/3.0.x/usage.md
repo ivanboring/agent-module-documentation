@@ -1,37 +1,24 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Cloner is an entity clone plugin system.
+A developer framework for cloning Drupal entities: you write plugins describing exactly how each entity type/bundle is duplicated, optionally exposed as clone forms and entity-operation links. Ships nothing ready-made and has no config UI.
 
 ---
 
-Cloner provides a pluggable entity-clone system — duplicating entities (nodes, and other entity types)
-with configurable, plugin-driven handling of how fields/references are cloned, for a flexible clone/duplicate
-workflow. It requires PHP 8.1, provides its own permissions, ships a `cloner_examples` submodule, in the
-Development package.
-
-Use it to clone entities via a plugin system. It is a content-editing feature that creates new entities from
-existing ones; cloning creates content, so it is governed by normal **create access** plus its permission —
-gate who can clone (the resulting content respects the user's create permissions). It has no access-control
-role beyond that. Configure the clone plugins.
+Cloner is a plugin-driven entity duplication system aimed at developers. Unlike Entity Clone, which duplicates entities with zero configuration, Cloner does nothing until you write code: it gives you full, code-level control over how a given entity type and bundle is cloned, which is what you want for genuinely complex entities (for example Commerce products whose variations must be cloned alongside the parent). It defines three annotation-based plugin types — `@ClonerContentEntity` and `@ClonerConfigEntity` describe *how* an entity is cloned (you receive the original and a `createDuplicate()` copy and mutate the copy; the module saves it), while `@ClonerForm` provides the *UI*, deciding which entities it applies to, building the clone form, and naming the cloner plugin to run on submit. The module auto-generates a `cloner-form` route for every entity type; the form renders only when an applicable `@ClonerForm` plugin exists (otherwise 404), and an entity-operation "Clone" link appears when that plugin declares an `entity_operation_label`. You can also invoke the content/config cloner plugins directly from your own code, without any form or route. Access is gated by an `access all entity cloner` permission plus one dynamically generated `access {entity_type} cloner` permission per entity type. The optional `cloner_examples` submodule ships worked node-article and image-style examples. Requires PHP 8.1 and nothing outside Drupal core; no config schema, install hooks, or Drush commands.
 
 ---
 
-- Clone entities via a plugin system.
-- Duplicate nodes/entities.
-- Handle field/reference cloning via plugins.
-- Require PHP 8.1.
-- Provide its own permissions.
-- Ship an examples submodule.
-- Govern by normal create access + permission.
-- Gate who can clone.
-- Have no access-control role beyond that.
-- Configure the clone plugins.
-- Handle entity cloning.
-- Clone content.
-- Duplicate entities.
-- Configure cloning.
-- Handle duplication.
-- Clone entities.
-- Configure the plugins.
-- Clone with plugins.
-- Restrict cloning.
-- Duplicate content.
+- Clone content entities (nodes, media, etc.) with per-project control over exactly which fields and references are copied.
+- Clone configuration entities (image styles, view modes, etc.), setting a new unique machine name for the copy.
+- Write several clone plugins for the same entity type and bundle, selecting between them by weight.
+- Duplicate complex entities where a naive copy is insufficient (e.g. Commerce products with variations).
+- Add a "Clone" operation link to matching entities' operations lists by declaring an `entity_operation_label`.
+- Build a custom clone form (extra fields, validation) that runs before the duplicate is saved.
+- Pass submitted form values into the clone logic via the `$context['form_state']` array.
+- Restrict a clone plugin to specific entity types/bundles by overriding `isApplicable()`.
+- Temporarily disable a clone form while keeping it in the codebase (`enabled = FALSE`).
+- Invoke a cloner plugin programmatically from any code path (another plugin, a form submit handler, a Drush command) without the generated UI.
+- Gate who may clone via the `access all entity cloner` permission or the per-entity-type `access {type} cloner` permissions.
+- Inject services into clone and form plugins using standard dependency injection.
+- Alter discovered cloner plugin definitions via `hook_cloner_plugin_ContentEntity_alter` / `ConfigEntity` / `Form`.
+- Learn the pattern from the `cloner_examples` submodule (node article clone form + cloner, image style clone form + cloner, programmatic clone button).
+- Build cloning workflows without depending on any module outside Drupal core.

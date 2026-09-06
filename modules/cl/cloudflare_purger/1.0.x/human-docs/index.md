@@ -11,9 +11,9 @@ cache stays in sync with your content without over‑purging.
 It's the modern, Purge‑integrated way to keep Cloudflare fresh. (The older
 `cloudflare` module's own purge submodule is, by the maintainers' account, no
 longer compatible with Cloudflare's 2026 header and account limits and duplicates
-this functionality.) You configure it through the Purge module's pipeline rather
-than a settings page of its own, and your Cloudflare API token is kept in a
-**Key** entity — never hard‑coded or committed.
+this functionality.) You point it at your Cloudflare zone and token on its own
+settings page, then enable it as a purger inside the Purge pipeline; your
+Cloudflare API token is kept in a **Key** entity — never hard‑coded or committed.
 
 Because it depends on the **Purge** and **Key** modules, it slots into an existing
 Purge setup. There are a couple of things worth planning for: pages with many
@@ -36,8 +36,10 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 
 ## Where it lives in the admin menu
 
-Cloudflare Purger has no settings page of its own. You add and manage it as a
-purger inside the **Purge** module at **Configuration → Development →
-Performance → Purge** (`/admin/config/development/performance/purge`). Its
+Cloudflare Purger has its own settings page at **Configuration → Web services →
+Cloudflare Purger** (`/admin/config/services/cloudflare-purger`), where you set
+the **Zone ID** and pick the **Key** holding your API token. You then add and
+enable it as a purger inside the **Purge** module at **Configuration → Development
+→ Performance → Purge** (`/admin/config/development/performance/purge`). Its
 header‑size and cache‑tag‑prefix options are set in your site's `settings.php` /
 `services.yml`.

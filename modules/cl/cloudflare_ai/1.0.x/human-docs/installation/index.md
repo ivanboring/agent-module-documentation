@@ -8,7 +8,7 @@
   provides the credential framework and shared HTTP client; the API module is the
   Cloudflare v4 client this module calls.
 - A **Cloudflare account**, and an API token scoped for the resources you use (AI
-  Gateway, Vectorize and/or AI Search).
+  Gateway and/or Vectorize).
 
 This 1.0.x branch is a pre‑stable alpha, so require it accordingly (see below).
 
@@ -51,7 +51,7 @@ the **Cloudflare AI Gateway Provider**.
 ## Verify it worked
 
 Log in as an administrator and go to **Configuration → Web services**. You should
-see the new *Cloudflare AI Gateways*, *Cloudflare Vectorize* and *Cloudflare AI
-Search* entries. The module has no AI features of its own until you add a
+see the new *Cloudflare AI Gateways* and *Cloudflare Vectorize* entries. The
+module has no AI features of its own until you add a
 credential set and at least one resource — see
 [Configuration](../configuration/index.md).

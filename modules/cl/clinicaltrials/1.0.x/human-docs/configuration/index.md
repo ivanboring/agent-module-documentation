@@ -8,8 +8,10 @@ permission.
 ## Open the settings form
 
 1. Log in as a user with the **`administer clinical trials config`** permission.
-2. Open the module's settings page from its entry on the **Extend** page (use the
-   *Configure* link), or from the site's configuration area.
+2. Go to **`/admin/config/clinical-trials`** (it is also linked from the site's
+   **Configuration** page as *Clinicaltrials*). Note: the *Configure* link on the
+   Extend page does not work in this release — the module points it at a route name
+   that does not exist — so use the URL above.
 
 ## What you configure
 

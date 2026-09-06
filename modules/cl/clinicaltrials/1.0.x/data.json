@@ -1,15 +1,15 @@
 {
   "name": "Clinical Trials",
   "data_name": "clinicaltrials",
-  "description": "Integrates the ClinicalTrials API into Drupal.",
+  "description": "Imports public studies from the ClinicalTrials.gov REST API v2 into Drupal as nodes of a dedicated content type, driven by Drush commands.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Clinical Trial",
   "composer_namespace": "drupal/clinicaltrials",
   "composer_requirements": {},
   "dependent_modules": [
     "language"
   ],
-  "configure": null,
+  "configure": "clinicaltrials.settings_form",
   "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -20,8 +20,8 @@
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
-  "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Integrations"

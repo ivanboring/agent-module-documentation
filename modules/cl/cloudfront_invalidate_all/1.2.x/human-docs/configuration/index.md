@@ -1,8 +1,14 @@
 # Configuration
 
-There are three parts: tell the module which CloudFront distribution to clear,
-make sure AWS credentials are available from your environment, and (optionally)
-adjust which cache tags are ignored.
+There are four parts: tell the module which CloudFront distribution to clear,
+make sure AWS credentials are available from your environment, choose which cache
+tags are *allowed* to trigger a clear, and finally switch the module on (it ships
+switched off).
+
+> **It ships disabled.** The default configuration sets *"Temporarily disable
+> CloudFront invalidations"* to **on**, so nothing is ever sent to CloudFront until
+> you uncheck that box on the settings form. Set your distribution ID first, confirm
+> AWS credentials work, then un-disable it.
 
 ## Set the distribution ID
 
@@ -33,19 +39,32 @@ has AWS access through one of the standard mechanisms:
 > blast radius if it is ever exposed. Store any AWS access key/secret as secrets
 > (environment/IAM/Key), never in code or config.
 
-## Tune the cache‑tag black list
+## Tune the cache‑tag whitelist (allow‑list)
 
-Many of Drupal's cache‑invalidation tags are irrelevant to CloudFront and should
-*not* trigger a full CDN clear. The module ships with a comprehensive
-pre‑configured **black list** of such tags, and you can adjust it on the module's
-**settings form** to add or remove tags for your site. This is your main lever for
-controlling how often the wildcard invalidation actually fires.
+Despite the README calling it a "black list," the field on the settings form is a
+**whitelist** — an *allow*-list. Only cache tags whose name **starts with** one of
+the prefixes you list will trigger a CloudFront clear; every other tag is ignored.
+An empty whitelist therefore means *nothing* ever fires.
+
+The module ships with a short default list of just two prefixes:
+
+- `node_list`
+- `node:` (matches `node:1`, `node:2`, and so on)
+
+So out of the box only node-related invalidations reach CloudFront. Edit the
+**Cache Tag Whitelist** textarea on the settings form (one prefix per line) to add
+or remove prefixes for your site. This is your main lever for controlling how often
+the wildcard invalidation actually fires.
 
 ## How it behaves
 
-Once the distribution ID is set and AWS credentials are available, the module
-issues a wildcard `/*` invalidation against the distribution whenever Drupal
-invalidates its cache (except for tags on the black list). Because a wildcard
-invalidation clears everything and carries an AWS cost at high frequency, keep the
-black list tuned — and remember this approach only suits small sites. For anything
-larger, move to the Purge module with `cloudfront_purger`.
+Once the distribution ID is set, AWS credentials are available, and you have
+un-disabled the module, it issues a wildcard `/*` invalidation against the
+distribution whenever Drupal invalidates a cache tag that matches the whitelist. A
+failed CloudFront call is logged but never breaks Drupal's own cache clear. Because
+a wildcard invalidation clears everything and carries an AWS cost at high frequency,
+keep the whitelist tight — and remember this approach only suits small sites. For
+anything larger, move to the Purge module with `cloudfront_purger`.
+
+Turn on **Enable debug logging** temporarily if you want to see, in the log, which
+tags are being processed and why an invalidation was or wasn't sent.

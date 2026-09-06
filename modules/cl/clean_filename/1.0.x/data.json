@@ -1,9 +1,9 @@
 {
   "name": "Clean Filename",
   "data_name": "clean_filename",
-  "description": "Ensures uploaded files get clean filenames (renaming existing/new uploads).",
+  "description": "Reverses Drupal's file-conflict naming so the newest upload keeps the clean, unsuffixed name and the pre-existing file is renamed with a numeric suffix. Does not sanitize/transliterate names.",
   "version": "1.0.x",
-  "package": null,
+  "package": "File Management",
   "composer_namespace": "drupal/clean_filename",
   "composer_requirements": {},
   "dependent_modules": [
@@ -11,7 +11,7 @@
     "drupal:field",
     "drupal:system"
   ],
-  "configure": null,
+  "configure": "clean_filename.admin_settings",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -33,8 +33,10 @@
   ],
   "keywords": [
     "filename",
-    "clean",
-    "sanitize",
+    "clean url",
+    "conflict",
+    "rename",
+    "suffix",
     "upload",
     "file"
   ],

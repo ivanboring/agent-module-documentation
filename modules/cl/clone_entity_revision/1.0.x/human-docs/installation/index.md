@@ -46,5 +46,5 @@ node. Assign it to the appropriate editor roles under **People → Permissions**
 
 Open a node with more than one revision, go to its **Revisions** tab, and confirm
 the clone action is available for a chosen revision. Using it should create a new
-node from that revision's content — starting in an appropriate moderation state if
-Content Moderation is applied to that content type.
+node from that revision's content (with referenced paragraphs deep-cloned and
+file/image fields copied independently).

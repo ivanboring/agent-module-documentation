@@ -8,10 +8,12 @@ exactly that version. That's handy for reverting-by-copy, branching content off 
 earlier draft, or recovering an older version as a new page without disturbing the
 original.
 
-It's aware of **Content Moderation**: the new node it creates starts in an
-appropriate moderation state rather than being force-published, so it fits into an
-editorial workflow. It depends on core's **Node** and **Content Moderation**
-modules, and supports Drupal 10 and 11.
+It declares core's **Content Moderation** module as a dependency (alongside **Node**),
+so both must be enabled. Note, however, that the module itself contains **no
+moderation-specific code**: the clone is a straight duplicate of the revision, so the
+new node simply carries over whatever moderation state the revision's field held (any
+further defaulting is core's normal handling for a new node, not something this module
+sets). It supports Drupal 10 and 11.
 
 A small but important detail for installation: the project's machine name is
 `clone_entity_revision`, but its Composer package name is spelled
@@ -38,9 +40,10 @@ use it" below.
    listed.
 2. Choose the revision you want to start from and use the module's clone action for
    that revision.
-3. A new node is created from that revision's content. With Content Moderation in
-   use, the new node starts in an appropriate moderation state, ready for you to
-   continue editing or move through your workflow.
+3. A new node is created from that revision's content (referenced paragraphs are
+   deep-cloned and file/image fields become independent copies). It opens ready for
+   you to continue editing. Note the new node keeps the *original* revision's author,
+   not you.
 
 Make sure the roles that should be able to do this have the module's cloning
 permission granted (see [Installation](installation/index.md)).

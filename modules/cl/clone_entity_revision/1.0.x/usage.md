@@ -5,7 +5,7 @@ Clone Entity Revision lets editors duplicate a chosen node revision into a brand
 
 Clone Entity Revision allows you to clone a specific node revision into a new node — so instead of only duplicating a node's current state, an editor can pick any historical revision and create a fresh node from it, useful for reverting-by-copy, branching content, or recovering an older version as a new page.
 
-It integrates with Content Moderation (the new node starts in an appropriate moderation state). Depends on core `node` and `content_moderation`; supports Drupal 10 and 11.
+The clone deep-copies referenced paragraphs and makes independent copies of file/image fields. It declares core `node` and `content_moderation` as dependencies (both must be enabled), though the module itself contains no moderation-specific code — the new node simply carries over the revision's field values. Supports Drupal 10 and 11.
 
 ---
 
