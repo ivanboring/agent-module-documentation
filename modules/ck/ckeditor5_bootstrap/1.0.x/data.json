@@ -1,17 +1,17 @@
 {
   "name": "CKEditor5 Bootstrap Integration",
   "data_name": "ckeditor5_bootstrap",
-  "description": "Adds CKEditor 5 widgets for Bootstrap 5 (Bootstrap Div and Bootstrap Table).",
+  "description": "CKEditor 5 widgets for Bootstrap 5: Bootstrap Div (class/id/attributes/background image), Bootstrap Table (caption + table classes), and Bootstrap Components (accordion, card, carousel, modal, tabs, etc.).",
   "version": "1.0.x",
   "package": "CKEditor 5",
   "composer_namespace": "drupal/ckeditor5_bootstrap",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:ckeditor5",
-    "drupal:editor"
+    "ckeditor5",
+    "editor"
   ],
   "configure": null,
-  "core_version_requirement": "^11||^12",
+  "core_version_requirement": "^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ckeditor5_bootstrap",
@@ -35,9 +35,10 @@
     "bootstrap",
     "widgets",
     "div",
-    "table"
+    "table",
+    "components"
   ],
-  "project_description": "Provide widget CKEditor 5 for Bootstrap 5. best use with bootstrap 5 admin theme.\n\nConfiguration / Text formats and editors and active 3 buttons\n\n 🟦 Button : Bootstrap Div\n\n \n \n Insert the div tag into the content.\n \n \n Popup dialog with the following features:\n \n \n Add custm class Bootstrap 5 or select option for (container, row, col-*, d-flex, p-3, bg-light …)\n \n \n Background image: URL, position (center/top/bottom…), size (cover/contain…).\n \n \n AOS (Animate On Scroll): select animation (fade-up, zoom-in …), duration, delay, anchor-placement.\n \n \n Custom attributes: add/remove attribute (data-, aria-, …).\n \n \n \n \n Double-click to div for mode editor.\n \n \n Div highlight with blue border in editing view.\n \n \n Move div block to up/down\n \n \n Insert div before/after block\n \n \n 🟩 Button Bootstrap Table\n\n \n \n Balloon toolbar on table.\n \n \n Balloon smaller features:\n \n \n Field Caption — add/remove .\n \n \n Checkboxes Bootstrap table classes:\n \n \n Base: table\n \n \n Style: table-striped, table-bordered, table-hover, table-sm …\n \n \n Color: table-primary, table-dark …\n \n \n Responsive: table-responsive, table-responsive-md …\n \n \n Caption: caption-top\n \n \n \n \n \n \n 🟩 Button Bootstrap Components\n\n \n \n Accordion \n \n \n Card \n \n \n Carousel \n \n \n Collapse \n \n \n Listgroup \n \n \n Modal \n \n \n Offcanvas \n \n \n Toast \n \n \n Tooltip \n \n \n Popover \n \n \n Badge \n \n \n Alert \n \n \n Tabs \n \n \n If you appreciate my work :) you can buy me coffee ☕",
+  "project_description": "Provides three CKEditor 5 plugins that let editors author Bootstrap 5 markup from a rich-text toolbar: a Bootstrap Div widget (choose utility/layout classes, an id, a background image, AOS animation attributes, and arbitrary data-*/aria-* attributes), a Bootstrap Table widget (a balloon toolbar to add a caption and toggle table-* classes such as table-striped/bordered/hover/responsive), and a Bootstrap Components widget (insert prebuilt Accordion, Alert, Badge, Card, Carousel, Collapse, List group, Modal, Offcanvas, Toast, Tooltip, Popover, and Tabs snippets). The button lists and component templates are driven by bundled JSON config files (components_config.json, bootstrap-config.json, table_options.json) that site builders can override per plugin with a custom JSON path; no PHP changes are needed to add classes or components. Best paired with a Bootstrap 5 theme. Depends on core CKEditor 5 and Editor; adds no routes, permissions, services, or Drush commands.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

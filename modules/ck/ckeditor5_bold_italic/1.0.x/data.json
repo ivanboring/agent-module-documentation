@@ -16,12 +16,14 @@
   "project_url": "https://www.drupal.org/project/ckeditor5_bold_italic",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "ckeditor5/ckeditor5"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"
@@ -38,7 +40,7 @@
     "i tag",
     "plugin alter"
   ],
-  "project_description": "This module converts and tag to and respectively.",
+  "project_description": "Alters the core CKEditor 5 Bold and Italic plugins via hook_ckeditor5_plugin_info_alter() so the existing toolbar buttons write presentational <b> and <i> tags instead of the semantic <strong> and <em> tags. No routes, permissions, or configuration.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

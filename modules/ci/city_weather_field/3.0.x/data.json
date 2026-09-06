@@ -1,7 +1,7 @@
 {
   "name": "City Weather Field",
   "data_name": "city_weather_field",
-  "description": "A field that returns and displays the current weather for a configured city.",
+  "description": "Provides a 'City - weather' field whose formatter shows live OpenWeatherMap weather for a selected US city.",
   "version": "3.0.x",
   "package": "weather",
   "composer_namespace": "drupal/city_weather_field",
@@ -9,7 +9,7 @@
   "dependent_modules": [
     "drupal:field"
   ],
-  "configure": null,
+  "configure": "city_weather_field.weather_settings_form",
   "core_version_requirement": "^9.3 || ^10.1 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -19,25 +19,29 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
+    "Content display",
     "Content editing experience",
     "Integrations"
   ],
   "subcategories": [
-    "Field formatters"
+    "Field formatters",
+    "Fields",
+    "Geospatial / location"
   ],
   "keywords": [
     "weather",
     "field",
     "city",
+    "openweathermap",
     "api",
-    "forecast"
+    "formatter"
   ],
-  "project_description": "City Weather field? \n City Weather field allows returning the weather of the US city selected in the select list field.\n\n INSTALLATION \n composer require drupal/city_weather_field \n\n CONFIGURATION \n After the installation,\n\n 1- Before using the module, you need to set up the api key from https://home.openweathermap.org/api_keys in YOUR_DRUPAL_SITE/admin/config/city_weather_field/settings\n\n 2- Create a new field 'City - weather' and select the US city, the weather information will be shown depends on the US city selected.\n\n Loving this module? 🌟 Show your appreciation by buying me ☕ .Your support means the world and fuels more Drupal magic. Cheers!\n\n Back to top",
+  "project_description": "City Weather Field adds a custom field type ('City - weather') that lets an editor pick one of 1000 bundled US cities from a select list, and a matching formatter that fetches and displays that city's current weather from the OpenWeatherMap API (temperature, description, humidity, wind and a weather icon). It ships a field type, widget and formatter plus a settings form for storing the OpenWeatherMap API key. Install with 'composer require drupal/city_weather_field', set the API key at /admin/config/city_weather_field/settings, then add a 'City - weather' field to a bundle.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

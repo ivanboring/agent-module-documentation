@@ -1,16 +1,16 @@
 {
   "name": "CKEditor 5 Aside",
   "data_name": "ckeditor5_aside",
-  "description": "Adds an <aside> option to the CKEditor 5 headings/block list.",
+  "description": "Updates CKEditor 5 to add an <aside> option to the headings list, letting editors mark a block as a semantic <aside>.",
   "version": "1.0.x",
-  "package": null,
+  "package": "CKEditor 5",
   "composer_namespace": "drupal/ckeditor5_aside",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:ckeditor5"
+    "ckeditor5"
   ],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ckeditor5_aside",
@@ -21,7 +21,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"
@@ -36,7 +36,7 @@
     "headings",
     "editor"
   ],
-  "project_description": "CKEditor 5 Aside \n The CKEditor has paragraphs and headings but no aside, this module adds an aside to the top of the list. When the aside is added to a paragraph there are some styles added into the editor (float, border and shadow) to show the aside. These are not added to the frontend theme. This mod will only add the tag around the text like:\n\n <aside>This is an aside</aside>\n\n You will need to format the aside yourself\n\n This is a very simple project that does 1 thing only. There will be other modules to add other tags.\n\n This woks as long as there are no tags inside i.e. swap for <h3> or <p> works as expected. However, if you are looking to surround multiple tags this will fail - I'd like to add this change if anyone would like to help.",
+  "project_description": "CKEditor 5 Aside is a very small module that adds an <aside> entry to the top of the CKEditor 5 heading dropdown. Selecting it wraps the current block in an <aside> tag (for example swapping an <h3> or <p> for <aside>This is an aside</aside>). While editing, the module ships a small admin stylesheet that floats and borders the aside so it is visible inside the editor; no styling is applied to the front-end theme, so you format the tag yourself. It works only for a single block with no nested tags, and does the one thing only. It provides no configuration UI, routes, permissions, PHP, or JavaScript of its own — it is purely a CKEditor 5 plugin definition (YAML) plus one CSS file.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

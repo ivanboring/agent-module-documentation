@@ -1,13 +1,13 @@
 {
   "name": "CKEditor5 Alignment Buttons",
   "data_name": "ckeditor5_alignment",
-  "description": "Exposes text-alignment as individual CKEditor 5 buttons instead of a dropdown.",
+  "description": "Exposes CKEditor 5 text alignment (left/center/right/justify) as four separate toolbar buttons instead of core's single alignment dropdown.",
   "version": "1.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/ckeditor5_alignment",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:ckeditor5"
+    "ckeditor5"
   ],
   "configure": null,
   "core_version_requirement": "^10 || ^11",
@@ -16,28 +16,31 @@
   "project_url": "https://www.drupal.org/project/ckeditor5_alignment",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "core/ckeditor5.alignment (core CKEditor 5 alignment library)",
+    "ckeditor5/internal.admin.alignment (core admin library)"
+  ],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content editing experience",
-    "Theming"
+    "Content editing experience"
   ],
   "subcategories": [
-    "CKEditor plugins"
+    "CKEditor plugins",
+    "WYSIWYG / rich text editor"
   ],
   "keywords": [
     "ckeditor5",
     "alignment",
     "wysiwyg",
     "toolbar",
-    "editor"
+    "text align"
   ],
-  "project_description": "A simple module that provides the alignment buttons as standalone, without the need to use a dropdown button that Core provides.\n\n Post-Installation \n Edit your text format and add the buttons as you need.",
+  "project_description": "A simple module that provides the alignment buttons as standalone, without the need to use a dropdown button that Core provides. It defines a single CKEditor 5 plugin (ckeditor5_alignment_alignment) that reuses CKEditor 5's built-in alignment.Alignment plugin and surfaces four independent toolbar items - Align Left, Align Center, Align Right, Justify - each writing the corresponding core text-align-* CSS class. Post-installation you edit a text format/editor and add the buttons you want to the CKEditor 5 toolbar.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "not-covered",

@@ -1,13 +1,13 @@
 {
   "name": "CKEditor 5 CSV to Table",
   "data_name": "ck5_csv_to_table",
-  "description": "Imports CSV files into CKEditor 5 and generates clean, editable HTML tables.",
+  "description": "Import CSV files into CKEditor 5 and generate clean, editable HTML tables.",
   "version": "1.0.x",
-  "package": null,
+  "package": "CKEditor 5",
   "composer_namespace": "drupal/ck5_csv_to_table",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:ckeditor5"
+    "ckeditor5"
   ],
   "configure": null,
   "core_version_requirement": "^10 || ^11",
@@ -16,12 +16,15 @@
   "project_url": "https://www.drupal.org/project/ck5_csv_to_table",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "core/ckeditor5",
+    "core/drupalSettings"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"
@@ -34,9 +37,10 @@
     "plugin",
     "wysiwyg",
     "editor",
-    "table"
+    "table",
+    "csv"
   ],
-  "project_description": "Transform CSV files into editable HTML tables instantly within CKEditor 5. This module adds a dedicated toolbar button that allows content editors to upload CSV files and automatically generate clean, fully editable tables without touching any HTML code. Perfect for managing data-heavy content like pricing tables, reports, comparisons, and schedules. Handles large files up to 50MB with enterprise-grade security including XSS protection and CSV injection prevention.\n\n Features \n The CKEditor 5 CSV to Table module provides a smooth solution for importing structured data into your Drupal content. Instead of manually creating tables cell-by-cell or writing HTML, content editors can upload a CSV file and instantly generate a formatted table that remains fully editable.\n\n Core Functionality \n \n One-Click CSV Import: Dedicated toolbar button with CSV icon appears in the CKEditor 5 toolbar. Click it, select your CSV file, and watch the table appear instantly. \n Fully Editable Output: Generated tables are standard CKEditor tables that can be edited, styled, and modified using all native CKEditor table tools after insertion. \n Smart File Processing: Handles CSV files up to 50MB with advanced chunked processing that keeps your browser responsive even with thousands of rows. \n Real-Time Progress Tracking: Visual progress bar (0-100%) displays during import, showing exactly how much of your file has been processed. \n First Row as Header: Automatically converts the first row of your CSV into table headers with proper HTML table heading markup. \n Permission-Based Access: Only users with the \"Use CSV Importer\" permission can see and use the import button, giving you full control over who can upload files. \n \n Enterprise Security Features \n \n XSS Protection: Multi-layer filtering removes script tags, iframes, objects, embeds, event handlers, and dangerous protocols (javascript:, data:, vbscript:). \n CSV Injection Prevention: Scans and blocks malicious formulas, executable content, and suspicious patterns before they reach your database. \n Content Sanitization: All cell content is sanitized to remove HTML tags, escape sequences, null bytes, and obfuscation techniques. \n File Validation: Validates both MIME types and file extensions to ensure only legitimate CSV files are processed. \n DoS Protection: Enforces safety limits (6,000 rows, 100 columns, 10,000 characters per cell) with user confirmation before processing oversized files. \n User Control: When files exceed limits, users receive a clear dialog explaining what will be imported and can choose to proceed or cancel. \n \n Performance Optimizations \n \n Chunked Parsing: Processes 500 CSV rows at a time to prevent browser freezing on large datasets. \n Chunked Insertion: Inserts 25 table rows per batch into CKEditor's model for optimal performance. \n Async Processing: Uses setTimeout and requestAnimationFrame to maintain browser responsiveness throughout the import. \n Throttled Updates: Progress bar updates every 100-150ms instead of every chunk to reduce DOM manipulation overhead. \n Memory Efficient: Optimized string processing and garbage collection-friendly code prevents memory issues. \n \n When to Use This Module \n This module excels in scenarios where you need to manage structured tabular data efficiently:\n\n \n Data-Heavy Content: Articles, blog posts, and documentation containing comparison tables, statistics, research data, or technical specifications. \n Frequently Updated Tables: Pricing tables, financial reports, event schedules, sports scoreboards, inventory lists, or any content that changes regularly. \n Spreadsheet Integration: When your team maintains data in Excel, Google Sheets, or other spreadsheet tools and needs to publish it to Drupal. \n E-commerce Sites: Product comparison tables, feature matrices, pricing grids, and specification sheets that need frequent updates. \n Non-Technical Editors: Enabling content editors who aren't comfortable with HTML to manage complex tables …",
+  "project_description": "Adds a toolbar button to CKEditor 5 that lets content editors upload a .csv file and have it converted, entirely in the browser, into a standard editable CKEditor table. The first CSV row becomes the table heading row; remaining rows become body cells. Parsing and insertion are chunked (500 rows parsed per tick, 25 rows inserted per model change) with a progress overlay so large files up to 50MB do not freeze the editor. The button is gated behind the 'use csv importer' permission, surfaced to the client via drupalSettings. There is no server-side CSV parsing route, no configuration form, and no custom text-format filter: the module relies on CKEditor's model API and the text format's own HTML filtering for the stored markup. Best suited to editors who regularly paste tabular data (pricing tables, comparisons, schedules, reports) exported from spreadsheets and want it as a native, further-editable Drupal table rather than hand-written HTML.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
