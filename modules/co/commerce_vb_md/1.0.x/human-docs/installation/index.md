@@ -2,7 +2,8 @@
 
 ## Requirements
 
-- **Drupal 10 or 11** (`core_version_requirement: ^10 || ^11`).
+- **Drupal 10 or 11** in practice (the `.info.yml` declares
+  `core_version_requirement: ^8 || ^9 || ^10 || ^11`, but 8/9 are end-of-life).
 - **Drupal Commerce** with the **Commerce Payment** submodule
   (`commerce_payment`) — the only module dependency. Requires Drupal Commerce Core
   3.x.

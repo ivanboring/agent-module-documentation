@@ -13,10 +13,11 @@ server‑side** and derives the outcome from the API response's **`ResultCode`**
 from the authenticated API call, not from any client‑supplied field, so the browser
 is never trusted for payment status.
 
-Handling card data on‑site brings **PCI responsibilities**: serve the site over
-HTTPS, and consider tokenization so the raw card number (PAN) never touches your
-server. Store your USAePay **API credentials** (the source key and PIN) as secrets.
-The module has no access‑control role of its own.
+Because it is on‑site, card details are entered on your own checkout form and sent
+**server‑side** to USAePay's SOAP API. Serve the site over **HTTPS** and meet the
+**PCI responsibilities** that apply to your store. Store your USAePay **API
+credentials** (the WSDL key, source key, and PIN) as secrets. The module has no
+access‑control role of its own.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

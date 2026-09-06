@@ -19,9 +19,10 @@ site's **private** file system.
    - `victoria_pub.pem` — the bank's public key (used to verify callbacks).
 
 Because `key.pem` is your private key, keep it in the **private filesystem** (never
-under the web root) and never commit it to version control. Treat any additional
-credentials the bank gives you as secrets — where the module reads a value that
-could live in an environment variable, prefer that over committing it.
+under the web root) and never commit it to version control. The module reads
+`key.pem` and `victoria_pub.pem` directly from `private://vicb_pem/`; treat any
+additional credentials the bank gives you (merchant/terminal IDs) as sensitive and
+keep exported site config out of public version control.
 
 ## 2. Add the payment gateway
 

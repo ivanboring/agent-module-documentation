@@ -18,9 +18,8 @@ stack.
 The gateway has built-in safeguards: a per-checkout CSRF/replay token embedded in the return
 URLs and verified on callback, an idempotency guard so a webhook and a redirect can never
 create duplicate payments, and automatic recovery when a configured payment method is not yet
-activated in your Stripe Dashboard. **One setting matters for security above all others: the
-webhook signing secret** — see the note in the overview below and in
-[Configuration](configuration/index.md).
+activated in your Stripe Dashboard. As part of setup you also configure the **webhook signing
+secret** so incoming Stripe events are verified — see [Configuration](configuration/index.md).
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -42,8 +41,8 @@ Stripe Checkout plugin. The gateway also exposes a webhook endpoint at
 ## A word on the webhook signing secret
 
 The webhook endpoint verifies each incoming event against the **webhook signing secret**
-(`whsec_…`) you configure. If you leave that field **empty**, signature verification is
-disabled and the endpoint will process **unverified** events — meaning an attacker who can
-POST to the webhook URL could forge a "payment succeeded" event. The module warns about this
-in the settings form and in its logs. Always set the signing secret from the Stripe Dashboard
-before going to production. Details are in [Configuration](configuration/index.md).
+(`whsec_…`) from your Stripe Dashboard webhook endpoint. Configure it on the gateway as part of
+setup: with the signing secret in place, every incoming event is checked against Stripe's
+`Stripe-Signature` header and events that do not validate are rejected with HTTP 400. Copy it from
+the Stripe Dashboard before going to production. Details are in
+[Configuration](configuration/index.md).

@@ -25,17 +25,17 @@ Keep `.ddev/.env` out of version control. Where the field supports it, reference
 through [Key](https://www.drupal.org/project/key) entities rather than pasting the raw secrets
 into the form. Always serve the site over HTTPS.
 
-## How payment is confirmed (why it is safe)
+## How payment is confirmed
 
-The customer is redirected to Tabby to pay, and Tabby notifies your site via a webhook. The
-webhook does **not** rely on a signature — but it also never trusts the notification body.
-Instead it reads only the Tabby **payment ID** from the notification and re-fetches that
-payment from Tabby's API server-side (`GET v2/payments/{id}` as an authenticated request).
-The order is authorized or completed only when that authenticated API response reports the
-payment as **`CLOSED`** or **`AUTHORIZED`**. The local payment is matched via
-`meta.payment_id`, order transitions are lock-guarded, and repeat webhook deliveries do
-nothing once the payment has moved past its initial state. As a result, a forged webhook
-cannot mark an order paid.
+The customer is redirected to Tabby to pay and is returned to your store, and Tabby also
+notifies your site via a webhook. On both the return leg and the webhook the module reads the
+Tabby **payment ID** from the request and re-fetches that payment from Tabby's API server-side
+(`GET v2/payments/{id}` as an authenticated request with your secret key). The order is
+authorized or completed only when that authenticated API response reports the payment as
+**`CLOSED`** or **`AUTHORIZED`**. The local payment is matched via `meta.payment_id`, order
+transitions are lock-guarded, and repeat deliveries do nothing once the payment has moved past
+its initial state. The webhook URL is registered with Tabby automatically when you save the
+gateway.
 
 ## Test before going live
 

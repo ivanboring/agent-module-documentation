@@ -1,14 +1,19 @@
 {
   "name": "Commerce TaxJar",
   "data_name": "commerce_taxjar",
-  "description": "A Drupal Commerce connector for TaxJar sales-tax calculation.",
+  "description": "Integrates TaxJar SmartCalcs into Drupal Commerce as a remote tax type: real-time US sales-tax calculation via TaxJar's REST API using an API token, plus optional order-transaction reporting/filing. Provides the 'taxjar' commerce_tax plugin, a store origin-address field, a per-variation TaxJar product-tax-code field, and a taxjar_categories taxonomy synced from TaxJar.",
   "version": "2.0.x",
   "package": null,
   "composer_namespace": "drupal/commerce_taxjar",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^2.8 || ^3"
+  },
   "dependent_modules": [
+    "commerce:commerce",
+    "commerce:commerce_order",
+    "commerce:commerce_store",
     "commerce:commerce_tax",
-    "commerce:commerce_order"
+    "commerce:commerce_payment"
   ],
   "configure": null,
   "core_version_requirement": "^8.8||^9||^10||^11",

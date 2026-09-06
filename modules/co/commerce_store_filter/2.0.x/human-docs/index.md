@@ -25,15 +25,19 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 1. [Installation](installation/index.md) — install with Composer and enable the module and
    its dependencies.
 
-There is **no dedicated settings page** for this module — you use it by placing its block
-and by adding its contextual filter to your views, described below.
+The module has a small settings page with a single field — the message shown to a user when
+they switch store — but most of the work is done by placing its block and adding its
+contextual filter to your views, described below.
 
 ## Where it lives in the admin menu
 
 The store-switch **block** appears in **Structure → Block layout**
 (`/admin/structure/block`) once the module is enabled — place it in a region like any other
 block. The **store contextual filter** becomes available when you edit a View at
-**Structure → Views** (`/admin/structure/views`).
+**Structure → Views** (`/admin/structure/views`). The **settings page** lives at
+**Configuration → System → Commerce Store Filter Settings**
+(`/admin/commerce/commerce_store_filter/config`) and needs the *Administer commerce_store_filter
+configuration* permission.
 
 ## How to use it
 
@@ -42,7 +46,9 @@ block. The **store contextual filter** becomes available when you edit a View at
 2. **Add the contextual filter to a view.** Edit a View (for example the Cart or Order
    summary view) at **Structure → Views**, and add the store contextual filter so the
    listing is scoped to the selected/current store.
-3. **Review permissions.** Grant the module's permissions to the roles that should be able
-   to use the store filtering, at **People → Permissions** (`/admin/people/permissions`).
-   Remember this only affects filtering — it does not grant or restrict access to the stores
-   themselves.
+3. **(Optional) Set the switch message and permissions.** The module's one permission,
+   *Administer commerce_store_filter configuration* (**People → Permissions**,
+   `/admin/people/permissions`), controls who can open the settings page and edit the
+   "store switched" confirmation message. Switching store itself is available to any visitor
+   who can see the block or follow a `?commerce_store_filter=<id>` link — it changes which
+   store's catalog/prices are shown, not which stores a user is allowed to access.

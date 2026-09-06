@@ -1,11 +1,13 @@
 {
   "name": "Commerce Viva Wallet",
   "data_name": "commerce_vivawallet",
-  "description": "A Viva Wallet payment gateway for Drupal Commerce. Re-fetches the authoritative transaction from Viva's API.",
+  "description": "Off-site Drupal Commerce payment gateway for Viva Wallet / Viva.com (Greek/EU PSP). Redirects to Viva Smart Checkout, then confirms payment by re-fetching the transaction from Viva's authenticated OAuth2 API (never trusting the return query or webhook body). Provides the 'vivawallet' gateway plugin, a matching payment method type, success/cancel/webhook routes, and a layered Guzzle service stack (OAuth2 token, create-order, get-transaction, webhook-verification).",
   "version": "1.1.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_vivawallet",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^2.30 || ^3.0"
+  },
   "dependent_modules": [
     "commerce:commerce",
     "commerce:commerce_payment"
@@ -33,9 +35,13 @@
   "keywords": [
     "commerce",
     "viva wallet",
+    "viva.com",
     "payment",
     "gateway",
-    "vivapayments"
+    "vivapayments",
+    "smart checkout",
+    "offsite payment",
+    "psp"
   ],
   "project_description": "Provides a Viva Wallet payment gateway for Drupal Commerce.",
   "maintenance_status": "Minimally maintained",

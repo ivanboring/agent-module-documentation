@@ -7,9 +7,11 @@ Commerce Tax Washington calculates **Washington State (US) sales tax** for Drupa
 destination-based rate (WA uses destination sourcing with many local rates) for an order's address. It depends
 on Commerce Tax, in the Commerce package.
 
-Use it to apply correct WA sales tax. It is an e-commerce/tax feature. If it looks up rates via an **external
-rate service/API**, handle any credentials as secrets and use HTTPS; tax is applied server-side via Commerce
-Tax (authoritative). It has no access-control role. Configure the WA tax settings.
+Use it to apply correct WA sales tax. It is an e-commerce/tax feature. It looks the rate up per order address
+from the **Washington State Department of Revenue's public HTTPS web service** (a fixed host, no API key) and
+falls back to an admin-configured default rate if that service errors. Tax is resolved and applied
+server-side via Commerce Tax (authoritative), from the order's address — not a client-supplied rate. It has no
+access-control role. Configure the WA tax type at Admin → Commerce → Configuration → Tax types.
 
 ---
 

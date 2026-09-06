@@ -9,8 +9,11 @@ Tax and Payment.
 
 Use it to calculate sales tax via TaxJar. It is an e-commerce/tax feature. Security/data handling: it **sends
 order data (addresses, amounts) to TaxJar** to calculate tax (external egress — inherent to the service) and
-authenticates with a **TaxJar API token** — store it as a **secret** (env/Key) over HTTPS. It has no
-access-control role. Configure the TaxJar credentials and nexus.
+authenticates with a **TaxJar API token** entered on the tax-type form and kept in Commerce tax-type
+configuration; keep that configuration confidential and serve the site over HTTPS. It has no
+access-control role. The API host is fixed to TaxJar (production or sandbox); the tax rate and amount are
+resolved server-side from the TaxJar response. Configure the TaxJar tax type in Commerce; nexus/jurisdictions
+are managed in your TaxJar account.
 
 ---
 
@@ -20,10 +23,10 @@ access-control role. Configure the TaxJar credentials and nexus.
 - Depend on Commerce Tax/Order/Store.
 - Send order data to TaxJar (egress).
 - Serve e-commerce tax.
-- Store the TaxJar API token as a secret.
+- Keep the tax-type configuration (API token) confidential.
 - Use HTTPS.
 - Have no access-control role.
-- Configure the credentials and nexus.
+- Configure the TaxJar tax type in Commerce (nexus in the TaxJar account).
 - Handle TaxJar tax.
 - Calculate tax.
 - Configure the connector.

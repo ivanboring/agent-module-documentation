@@ -4,44 +4,40 @@ Commerce Viva Wallet is configured as a standard Drupal Commerce payment gateway
 
 ## Store your Viva credentials as secrets
 
-Your Viva Wallet **client secret** (and API/merchant keys) are credentials. Keep
-them out of committed configuration. On a DDEV project, store them in environment
-variables and expose them through Key entities:
+Your Viva Wallet **client ID/secret**, **merchant ID**, and **API key** are
+credentials. This gateway stores them directly in its **payment-gateway
+configuration** as plain text fields — it does **not** integrate with the Key
+module, so there is no Key selector on the form and no `getenv()` hook into the
+gateway settings. Because Drupal exports payment-gateway config, those credentials
+land in exported/committed config by default.
 
-1. Save the credential into DDEV's environment file (never commit `.ddev/.env`):
+The module's README recommends keeping them out of version control by **excluding
+the gateway config from export** with
+[Config Ignore](https://www.drupal.org/project/config_ignore) (or a similar
+module):
 
-   ```bash
-   ddev dotenv set .ddev/.env --viva-client-secret=YOUR_SECRET_HERE
-   ddev restart
-   ```
-
-2. Confirm it is set **without printing its value**:
-
-   ```bash
-   ddev exec 'test -n "$VIVA_CLIENT_SECRET"'   # exit 0 means set
-   ```
-
-3. Install **Key** if needed and create a Key that reads the variable:
+1. Install and enable Config Ignore:
 
    ```bash
-   ddev composer require drupal/key
-   ddev drush en key -y
-   ddev drush key:save viva_client_secret --label='Viva Wallet Client Secret' \
-     --key-type=authentication --key-provider=env \
-     --key-provider-settings='{"env_variable":"VIVA_CLIENT_SECRET","base64_encoded":false,"strip_line_breaks":true}' \
-     --key-input=none -y
+   ddev composer require drupal/config_ignore
+   ddev drush en config_ignore -y
    ```
 
-If the gateway form only offers a plain text field, reference the variable from
-`settings.php` via `getenv('VIVA_CLIENT_SECRET')` rather than committing it.
+2. Add the gateway config entity to its ignore list, e.g.
+   `commerce_payment.commerce_payment_gateway.<your gateway id>`, so its credential
+   values are not overwritten or exported on config import/export.
+
+3. Enter the live credentials **only in the environment that uses them** and keep
+   the exported config free of real secrets.
 
 ## Add the Viva Wallet payment gateway
 
 1. Go to **Commerce → Configuration → Payment gateways**
    (`/admin/commerce/config/payment-gateways`) and click **Add payment gateway**.
 2. Choose the **Viva Wallet** plugin.
-3. Enter your Viva **client ID**, **client secret**, and any merchant/API key the
-   form asks for (use the Keys you created where the form allows it).
+3. Enter your Viva **merchant ID**, **API key**, **client ID**, **client secret**,
+   and **source code** for each mode (test and live) as the form asks. All are
+   plain text fields.
 4. Set the gateway **mode** — Viva's demo/sandbox while you set up, live for
    production.
 5. Save.
@@ -72,7 +68,7 @@ mode.
 - The webhook is **authoritative by re‑fetch**: it carries only a transaction id,
   and the module fetches the real transaction from Viva's API before setting the
   payment state — so a forged webhook cannot mark an order paid.
-- The **`verify_hook`** endpoint returning Viva's verification key is standard Viva
-  setup, not a leak.
-- Keep the **client credentials** in environment variables / Keys, never in
-  committed config, and serve the site over HTTPS.
+- The **`verify_hook`** GET endpoint implements Viva's standard webhook-registration
+  handshake so Viva can confirm the callback URL.
+- Keep the **client credentials** out of committed/exported config (use Config
+  Ignore, as the README recommends), and serve the site over HTTPS.

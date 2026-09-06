@@ -59,11 +59,13 @@ live mode.
 
 ## Security recap
 
-- The gateway is **server‑authoritative**: `onReturn()` re‑fetches the payment from
-  the Unzer API (`fetchPayment()`) and `onNotify()` handles webhooks, so payment
-  status comes from Unzer's authenticated API, not from forgeable request
-  parameters.
-- Keep the **Unzer keys** in an environment variable / Key, never in committed
-  config, and serve the site over HTTPS.
+- The gateway is **server‑authoritative**: on the off‑site return `onReturn()`
+  re‑fetches the paypage and payment from the Unzer API
+  (`fetchPaypageV2()` → `fetchPayment()`) and records the payment only when Unzer
+  reports it completed; on‑site charges run server‑side and complete only on
+  success. Payment status comes from Unzer's authenticated API, not from forgeable
+  request parameters.
+- Keep the **Unzer private key** in an environment variable / Key, never in
+  committed config, and serve the site over HTTPS.
 - Remember to set `serialize_precision = -1` (see
   [Installation](../installation/index.md)) to avoid rounding‑error exceptions.

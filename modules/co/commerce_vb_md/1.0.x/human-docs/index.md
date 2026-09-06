@@ -17,9 +17,10 @@ manager for the integration instructions and to exchange keys.
 signature by RSA — it runs `openssl_public_decrypt()` with the **bank's public
 key** and compares the decrypted MAC. Because only the bank holds the matching
 private key, the signature cannot be forged, so a fake callback cannot mark an order
-paid. This is a correct, defensive pattern. Store your VictoriaBank credentials and
-keys securely (env‑backed, in the private filesystem) and never commit them. Note
-this module is currently **not covered by Drupal's security advisory policy**.
+paid. This is a correct, defensive pattern. The module reads the RSA key pair from
+your site's **private filesystem** (`private://vicb_pem/`) — keep those PEM files
+there, outside the web root, and never commit them to version control. Note this
+module is currently **not covered by Drupal's security advisory policy**.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

@@ -1,25 +1,28 @@
 {
   "name": "Commerce VictoriaBank Moldova",
   "data_name": "commerce_vb_md",
-  "description": "Commerce VictoriaBank Moldova integrates the VictoriaBank payment gateway (Moldova) with Drupal Commerce.",
+  "description": "Off-site Drupal Commerce payment gateway for VictoriaBank (Moldova): redirects the shopper to VictoriaBank's hosted card page and verifies the bank's RSA-signed callback before creating/advancing the Commerce payment. Amounts are in MDL.",
   "version": "1.0.x",
   "package": "Commerce",
   "composer_namespace": "drupal/commerce_vb_md",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "php": "^8",
+    "drupal/commerce": "^3"
+  },
   "dependent_modules": [
     "commerce:commerce_payment"
   ],
   "configure": null,
-  "core_version_requirement": "^10 || ^11",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/commerce_vb_md",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "^8",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],

@@ -1,7 +1,7 @@
 {
   "name": "Commerce Swiss Post",
   "data_name": "commerce_swiss_post",
-  "description": "Provides a Swiss Post shipping method for Drupal Commerce.",
+  "description": "Integrates Swiss Post with Drupal Commerce Shipping: a flat-rate swiss_post shipping method, Swiss Post Barcode API label (PDF) generation with tracking codes, and CH/LI address verification via Swiss Post Address Web Services (address widget + Webform handler).",
   "version": "1.1.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_swiss_post",
@@ -14,7 +14,11 @@
   "project_url": "https://www.drupal.org/project/commerce_swiss_post",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "league/oauth2-client",
+    "setasign/fpdf",
+    "setasign/fpdi"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,

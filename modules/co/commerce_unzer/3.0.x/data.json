@@ -1,11 +1,15 @@
 {
   "name": "Commerce Unzer",
   "data_name": "commerce_unzer",
-  "description": "Unzer off-site payment gateway for Drupal Commerce. onReturn re-fetches the payment from the Unzer API server-side (fetchPayment) to determine the result, rather than trusting request data. Store the Unzer keys as secrets.",
+  "description": "Adds Unzer (formerly Heidelpay, a German/EU PSP) payment gateways to Drupal Commerce: an on-site tokenised credit-card gateway and an off-site hosted-checkout (Paypage V2) gateway, both built on the official unzerdev/php-sdk. On the off-site return the module re-fetches the paypage and payment from Unzer's authenticated API (private key) and records the payment only when Unzer reports the state COMPLETED; on-site charges run server-side and complete only on success. Depends on commerce_payment. Keep the Unzer private key out of committed config.",
   "version": "3.0.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_unzer",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "php": ">=8.1",
+    "drupal/commerce": "^3.0",
+    "unzerdev/php-sdk": "^3.3"
+  },
   "dependent_modules": [
     "commerce:commerce_payment"
   ],
@@ -15,8 +19,10 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/commerce_unzer",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
-  "library_dependencies": [],
+  "php_requirement": ">=8.1",
+  "library_dependencies": [
+    "unzerdev/php-sdk"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,

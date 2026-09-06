@@ -16,10 +16,10 @@ required.
 Because tax is calculated by an external service, two things matter for security.
 First, the module **sends order data — addresses and amounts — to TaxJar** to
 compute tax; that egress is inherent to the service. Second, it authenticates with
-a **TaxJar API token**, which is a secret: store it in an environment variable and
-a Key entity rather than pasting it into configuration that gets exported or
-committed. See [Configuration](configuration/index.md) for the recommended
-approach.
+a **TaxJar API token**, which is a credential: you enter it on the TaxJar tax-type
+form and it is kept in that tax type's Commerce configuration, so treat any
+configuration export of the site as sensitive and serve the site over HTTPS. See
+[Configuration](configuration/index.md) for the setup steps.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

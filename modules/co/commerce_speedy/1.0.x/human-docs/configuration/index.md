@@ -6,21 +6,15 @@ Speedy, then create and configure the shipping method in Commerce.
 ## 1. Register with Speedy and get API credentials
 
 Create a Speedy account at [myspeedy.speedy.bg/signup](https://myspeedy.speedy.bg/signup)
-and obtain your API credentials from Speedy. You will enter these when you configure the
-shipping method.
+and obtain your API credentials (username and password) from Speedy. You enter these directly
+on the Speedy shipping method in the Commerce admin, and they are saved as part of that shipping
+method's configuration.
 
-### Keep the credentials out of your codebase
+### A note on exported configuration
 
-Your Speedy API credentials are secrets. The recommended approach is to store the values in
-environment variables rather than committing them to exported configuration. With DDEV:
-
-```bash
-ddev dotenv set .ddev/.env --speedy-api-user=<user> --speedy-api-password=<password>
-ddev restart
-```
-
-Keep `.ddev/.env` out of version control. If you enter the credentials directly into the
-shipping-method form, make sure that configuration is not committed to a public repository.
+Because the credentials are saved with the shipping method's configuration, they become part of
+your site's exported config. As with any secret that ends up in exported configuration, don't
+commit that export to a public repository.
 
 ## 2. Create the Speedy shipping method
 

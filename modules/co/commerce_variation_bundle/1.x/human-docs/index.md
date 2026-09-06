@@ -24,7 +24,7 @@ Its main features:
   (`commerce_variation_bundle_attributes`) can use attributes dynamically from the
   referenced bundle items. It is experimental — use at your own risk.
 
-It depends on **Commerce** and **Commerce Product**, and works on Drupal 10 and 11.
+It depends on **Commerce** and **Commerce Product**, and works on Drupal 10.3+ and 11.
 It is a product‑modelling feature with no unusual security surface; the main thing
 to confirm is that a bundle's **pricing and stock** behave as you intend, since a
 bundle's availability depends on its component variations.

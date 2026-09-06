@@ -12,12 +12,14 @@ beyond cards. It depends on **Commerce Payment** and is configured as a standard
 Commerce payment gateway.
 
 **On the security of payment confirmation (good news):** the module does not trust
-the browser for the payment result. Its `onReturn()` handler **re‑fetches the
-payment from the Unzer API server‑side** (`fetchPayment()`) to determine the
-outcome, and it also implements `onNotify()` for Unzer webhooks — so the payment
-status always comes from Unzer's authenticated API, never from forgeable request
-parameters. Your part is to keep the Unzer **private and public keys** as secrets
-and to serve the site over HTTPS.
+the browser for the payment result. On the off‑site return its `onReturn()` handler
+**re‑fetches the paypage and payment from the Unzer API server‑side**
+(`fetchPaypageV2()` → `fetchPayment()`, using your private key) and records the
+payment only when Unzer reports its state as **completed** — so the payment status
+always comes from Unzer's authenticated API, never from forgeable request
+parameters. On‑site card charges likewise run server‑side and are recorded only on
+success. Your part is to keep the Unzer **private key** out of committed
+configuration and to serve the site over HTTPS.
 
 One important environment note: Unzer's SDK can throw rounding‑error exceptions for
 some amounts unless PHP's `serialize_precision` is set to `-1`. Set that in your PHP
