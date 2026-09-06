@@ -60,8 +60,10 @@ checkout flow your store uses, so shoppers see Payrexx as a payment option.
 When a shopper pays, Payrexx redirects them back to your site and also calls the
 module's webhook. The module does **not** trust the data in that webhook at face
 value — it re-fetches the transaction from Payrexx's authenticated API (using your
-instance name and secret) and uses Payrexx's `SignatureCheck` on the redirect
-return. This means a forged or replayed webhook cannot mark an order as paid; the
-authoritative status always comes from Payrexx. You do not need to configure this
+instance name and secret), and the browser return path is confirmed the same way.
+(When you first save the gateway, the module also verifies your credentials against
+Payrexx with a `SignatureCheck` call.) This means a forged or replayed webhook
+cannot mark an order as paid; the authoritative status always comes from Payrexx.
+You do not need to configure this
 — it is how the module behaves — but it is worth knowing your fulfilment is based
 on a verified result.

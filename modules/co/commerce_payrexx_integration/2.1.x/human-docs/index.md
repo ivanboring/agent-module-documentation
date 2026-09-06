@@ -17,8 +17,9 @@ configuring before it can take a payment. You add a Payrexx gateway and enter
 your Payrexx instance name and API secret. One reassuring detail worth calling
 out: the module handles payment results safely. When Payrexx calls its webhook,
 the module treats the posted data as untrusted and **re-fetches the transaction
-from Payrexx's authenticated API** before marking anything paid, and the redirect
-checkout uses Payrexx's `SignatureCheck`. A forged webhook therefore cannot mark
+from Payrexx's authenticated API** before marking anything paid; the browser
+return path is confirmed the same way, and the credentials you enter are checked
+against Payrexx when you save the gateway. A forged webhook therefore cannot mark
 an order paid — the authoritative status always comes from Payrexx.
 
 This guide is written for a **human** clicking through the admin UI. If you want

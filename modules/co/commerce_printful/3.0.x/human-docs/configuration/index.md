@@ -2,8 +2,8 @@
 
 Setting up Commerce Printful has three parts: connect your Printful account,
 choose how orders are sent for fulfillment, and import the products you want to
-sell. It also exposes a fulfillment webhook you should be aware of (see the
-security note at the end).
+sell. It also registers a fulfillment webhook so Printful can report shipment
+updates back to your site (covered at the end).
 
 ## Connect your Printful account
 
@@ -58,21 +58,15 @@ automatic fulfillment, per your setting). Printful then produces and ships the
 items and bills your card on file; your own payment gateway collects payment from
 the customer.
 
-## ⚠️ Security note — the fulfillment webhook (version 3.0.1)
+## The fulfillment webhook
 
-Printful reports fulfillment updates (such as shipment and tracking) to a webhook
-on your site at `/commerce-printful/webhooks`. **In this version that webhook is
-not authenticated** — it performs no signature, secret, or store validation, and
-for a `package_shipped` event it writes the shipped time, tracking code, and
-shipping service directly from the request payload without re-fetching from
-Printful's API.
+When you save a Printful store with webhook events enabled, the module registers a
+webhook with Printful pointing at `/commerce-printful/webhooks` on your site.
+Printful then calls it to report fulfillment updates: for a `package_shipped` event
+the module records the shipment's tracking code, carrier, and shipped time so the
+information is available to your customers.
 
-The practical risk: an unauthenticated attacker who knows or guesses a shipment's
-`external_id` could POST a forged `package_shipped` event to mark orders shipped
-and inject arbitrary (customer-visible) tracking numbers. This is
-fulfillment-status / order-data spoofing — **not** a payment bypass, since payment
-is handled by a separate gateway — but it is still worth mitigating. Consider
-protecting the webhook path with a front-controller secret or IP allow-list, keep
-the site on HTTPS, and watch the project for an upstream fix. (Printful does not
-HMAC-sign its webhooks, so the robust mitigations are store validation and/or
-re-fetching the order — neither of which this version does.)
+Because this is a machine-to-machine callback, run your site over **HTTPS** and
+keep the Printful API key stored as a secret (an environment variable exposed
+through a Key entity). For an extra operational layer you can front the webhook
+path with a web-server secret or IP allow-list.

@@ -3,8 +3,9 @@
 ## Requirements
 
 - **Drupal 10 or 11** (`core_version_requirement: ^10||^11`).
-- Drupal **Commerce** with the **Payment** module (`commerce_payment`) enabled —
-  this is the module dependency.
+- The **Commerce PayPal** module (`commerce_paypal`) — this is the declared
+  dependency; it in turn requires Drupal **Commerce** with the **Payment** module
+  (`commerce_payment`). Composer pulls `drupal/commerce_paypal` in for you.
 - A **PayPal business account** with API credentials (**client ID** and **client
   secret**). For the modern subscriptions API you'll also have (or auto-generate) a
   PayPal product and subscription plan.

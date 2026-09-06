@@ -1,29 +1,28 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Commerce Product Alternative lets shoppers switch between alternative product variations via AJAX.
+Commerce Product Alternative lets shoppers swap a variation already in their cart for an admin-designated alternative, in place, via an AJAX modal.
 
 ---
 
-Commerce Product Alternative adds a Commerce entity trait and an AJAX switch flow so a product page can offer alternative variations (e.g. different sizes/finishes) that the shopper swaps between without a full page reload. It streamlines choosing among related variations at the point of add-to-cart.
+Commerce Product Alternative adds a Commerce entity trait and an AJAX switch flow so a shopper can replace a cart line item with an alternative product variation (e.g. a different size, format, or configuration) without removing and re-adding it. Store managers assign the valid alternatives on each variation; swap links appear in the cart (via a dedicated Views field) and clicking one opens a confirmation modal that shows the current and target price, then replaces the underlying order item — preserving quantity and custom fields and resolving the new price.
 
-It's a Commerce storefront-UX feature with no access role of its own. Depends on Commerce `commerce`, `commerce_product`, `commerce_order`, `commerce_cart`, and `commerce_log`; requires Drupal 11.
+It is a Commerce storefront-UX feature. Access is validated per switch (the cart must be the shopper's own draft cart and the target must be a published, available, listed alternative); there is no role permission or settings form. Depends on Commerce `commerce`, `commerce_product`, `commerce_order`, `commerce_cart`, and `commerce_log`; requires Drupal 11.
 
 ---
 
-- Offer alternative product variations.
-- Switch variations via AJAX.
+- Offer admin-designated alternative variations per variation.
+- Swap a cart line item to an alternative via AJAX.
+- Replace the order item in place, no manual remove/re-add.
+- Preserve quantity and copy shared custom fields.
+- Resolve the alternative's price on switch.
+- Show a confirmation modal with current vs. target price.
 - Avoid full page reloads.
-- Provide a Commerce entity trait.
-- Streamline add-to-cart choices.
-- Swap related variations.
-- Depend on Commerce product/order/cart.
-- Depend on `commerce_log`.
+- Provide a Commerce entity trait for variation types.
+- Expose swap links through a Views field on order items.
+- Log each switch to the order via commerce_log.
+- Restrict switches to published, available alternatives.
+- Validate cart ownership before switching.
+- Prevent a variation referencing itself as an alternative.
+- Support an optional per-item CTA link label.
+- Depend on Commerce product/order/cart/log.
 - Require Drupal 11.
-- Carry no access role.
-- Enhance the product page.
-- Improve storefront UX.
-- Present variation alternatives.
-- Configure the switch flow.
-- Integrate with add-to-cart.
-- Support size/finish choices.
-- Reload variation data via AJAX.
-- Complement Commerce.
+- Improve storefront cart UX.

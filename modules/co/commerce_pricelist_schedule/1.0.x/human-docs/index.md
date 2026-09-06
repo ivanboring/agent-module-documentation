@@ -40,8 +40,9 @@ Commerce Pricelist Schedule adds a **Scheduled Imports** tab on price-list pages
    run at or after that time).
 4. You can **cancel** a scheduled import from the same tab if plans change.
 
-> **Data-handling tip:** If your price-list source is remote, treat the source URL
-> and any credentials as configuration to keep secure.
+> **Data-handling tip:** The import CSV you upload is stored in a private (or, if no
+> private file system is configured, temporary) directory and is downloadable only by
+> administrators. Scheduling requires the *administer commerce_pricelist* permission.
 
 > **Note:** This release is a beta (1.0.0-beta1) and the module is *minimally
 > maintained*. Test the scheduled-import flow before relying on it for critical

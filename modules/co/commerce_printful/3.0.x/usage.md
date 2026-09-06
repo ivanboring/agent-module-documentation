@@ -3,43 +3,38 @@ Commerce Printful integrates Drupal Commerce with Printful for print-on-demand p
 
 ---
 
-Commerce Printful integrates Drupal Commerce with Printful — the print-on-demand service — syncing
-products and sending orders to Printful for fulfillment, and receiving fulfillment updates (e.g. shipment/
-tracking) via a webhook. It depends on Drupal Commerce, provides Drush commands and its own permissions, in
-the Commerce (contrib) package.
+Commerce Printful integrates Drupal Commerce with Printful — the print-on-demand drop-shipping and
+fulfillment service. It syncs Printful sync products and their variants into Commerce products, gets
+live shipping rates through a `printful_shipping` shipping method, sends paid orders to Printful for
+fulfillment (per shipment, as drafts or confirmed), and receives Printful `package_shipped`
+fulfillment updates on a webhook that records the shipment's tracking code, carrier, and shipped
+time. It depends on Drupal Commerce (plus `commerce_shipping` and `commerce_currency_resolver`),
+provides Drush commands (`printful:test`, `printful:sync-products`) and its own permissions, in the
+Commerce (contrib) package. Version 3.0.1 targets Commerce 3.x and Drupal 11.
 
-Use it to fulfill Commerce orders through Printful. **Security caveat for this version (3.0.1): the
-fulfillment webhook is not authenticated.** The public route `/commerce-printful/webhooks`
-(`PrintfulController::webhooks`) does no signature/secret/store validation — it decodes the POST JSON and,
-for a `package_shipped` event, loads the `commerce_shipment` by the payload's `external_id` and writes the
-shipped time, **tracking code and shipping service straight from the payload**, without re-fetching from
-Printful's authenticated API. (Printful doesn't HMAC-sign webhooks, so the right mitigation is to validate
-the store and/or re-fetch the order — this does neither.) So an unauthenticated attacker who knows/guesses a
-shipment's external_id could POST a forged `package_shipped` event to mark orders shipped and inject
-arbitrary tracking numbers (fulfillment-status spoofing / customer-visible fake tracking) — it is **not** a
-payment bypass (payment is a separate gateway), but it is order-data tampering. Store the Printful **API key
-as a secret**, operate over HTTPS, and mitigate the webhook (a front-controller secret/allow-list, or track
-upstream for a fix). See the local security.md. Configure the Printful connection.
+Use it to fulfill Commerce orders through Printful without holding stock. Create a `printful_store`
+config entity with your Printful API key, the Commerce store, the product type, and the color/size/
+image attribute mapping; sync products from `/admin/commerce/config/printful/synchronization` (or
+`drush psp`); add the "Printful dropshipping" shipping method to your shippable variation type; and
+enable order synchronization (optionally as drafts for review). Store the Printful **API key as a
+secret** — an environment variable exposed through a Key entity rather than raw exportable config —
+and run the site over **HTTPS**. Payment is handled by your own Commerce payment gateway; Printful
+bills the card on file per order.
 
 ---
 
-- Integrate Commerce with Printful.
-- Sync print-on-demand products.
-- Send orders to Printful for fulfillment.
-- Receive fulfillment updates via webhook.
-- Depend on Drupal Commerce.
-- Provide Drush commands and permissions.
-- KNOW the fulfillment webhook is unauthenticated (this version).
-- Understand it writes payload tracking data without re-fetch.
-- Know an attacker can spoof shipped status/tracking.
-- Mitigate the webhook (secret/allow-list).
-- Store the Printful API key as a secret.
-- Operate over HTTPS.
-- Not treat the webhook as trusted.
-- Track upstream for a fix.
-- Configure the Printful connection.
-- Handle print-on-demand fulfillment.
-- Sync products.
-- Fulfill orders via Printful.
-- Handle credentials securely.
-- Configure fulfillment.
+- Integrate Commerce with Printful for print-on-demand.
+- Sync Printful products and variants into Commerce.
+- Map color / size / image attributes to Commerce fields.
+- Get live Printful shipping rates via `printful_shipping`.
+- Send paid orders to Printful per shipment (drafts or confirmed).
+- Receive `package_shipped` webhook updates (tracking, carrier, shipped time).
+- Depend on Commerce, commerce_shipping, commerce_currency_resolver.
+- Provide Drush commands (`printful:test`, `printful:sync-products`).
+- Provide the `administer commerce printful` permission.
+- Configure per store via the `printful_store` config entity.
+- Store the Printful API key as a secret (env var + Key entity).
+- Operate the site over HTTPS.
+- Choose draft export while testing fulfillment.
+- Add a Commerce payment gateway to collect from customers.
+- Note: Printful `external_id` is the shipment id, not the order id.

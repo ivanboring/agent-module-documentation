@@ -37,14 +37,17 @@ You can also enable it from **Extend** (`/admin/modules`).
 
 ## Grant the permissions
 
-This module adds its own permissions governing who may view and generate order
-documents. Go to **People → Permissions** (`/admin/people/permissions`), find the
-Commerce Order Document rows, and assign them carefully — remember that documents
-contain customers' personal and financial details, so a customer should only ever
-reach their own documents while broader access stays limited to trusted staff.
+This module adds the **administer order documents**
+(`administer commerce_order document`) permission, which governs who may create and
+edit the document configurations. The per-order **view / download / email** actions
+are governed by the Commerce core **administer commerce_order** permission. Go to
+**People → Permissions** (`/admin/people/permissions`), find these rows, and assign
+them to trusted staff roles only — documents contain customers' personal and
+financial details.
 
 ## Verify it worked
 
-Open an existing order in the admin UI and confirm that the option to view,
-download, or send an order document is available. Then check that a customer
-account can reach only its own documents and not anyone else's.
+Open an existing order in the admin UI and confirm that the **Documents** tab (or
+operation) is available, letting you view, download, or send an order document. To
+configure document types, go to **Commerce → Configuration → Order documents**
+(`/admin/commerce/config/order-documents`) and add one.

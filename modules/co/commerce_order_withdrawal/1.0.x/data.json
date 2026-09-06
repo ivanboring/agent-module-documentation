@@ -1,11 +1,14 @@
 {
   "name": "Commerce Order Withdrawal",
   "data_name": "commerce_order_withdrawal",
-  "description": "Public order-withdrawal (droit de rétractation) form so customers can request cancellation, with a confirmation email and order log.",
+  "description": "Customer-facing order-withdrawal form (the EU right of withdrawal / droit de rétractation) for Drupal Commerce. A customer identifies a placed order by number and email (or one-click from their own account), and the module records the request on the order, writes a Commerce Log entry, and emails an acknowledgement (optional merchant BCC). Eligibility is gated by a per-order-type opt-in, order state, a 14-day window (working-day-extended via Yasumi holiday calendars), and a deny-only subscriber event. It deliberately records and notifies only — it does not cancel or refund; that is left to staff or to a downstream WithdrawalEvents::REQUEST subscriber. Provides three developer events (request, eligibility, window), a withdrawn base field on orders, and a withdrawal link as a Views field and order-display pseudo-field.",
   "version": "1.0.x",
   "package": "Commerce (custom)",
   "composer_namespace": "drupal/commerce_order_withdrawal",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^3.0",
+    "azuyalabs/yasumi": "^2.5"
+  },
   "dependent_modules": [
     "commerce:commerce_order",
     "commerce:commerce_log"

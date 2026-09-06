@@ -1,11 +1,14 @@
 {
   "name": "Commerce Order Data Formatter",
   "data_name": "commerce_order_data_formatter",
-  "description": "A field formatter for the Commerce order 'data' field that displays a particular key's value.",
+  "description": "Field formatter that renders selected keys from the map-type 'data' field on Commerce orders and order items (single value or an item_list of keys), with an optional key-name label. Restricted to commerce_order and commerce_order_item; no routes, permissions, or config entities.",
   "version": "1.0.x",
   "package": "Commerce",
   "composer_namespace": "drupal/commerce_order_data_formatter",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "php": ">=7.2",
+    "drupal/commerce": "^2 || ^3"
+  },
   "dependent_modules": [
     "commerce:commerce_order"
   ],
@@ -15,7 +18,7 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/commerce_order_data_formatter",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=7.2",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],

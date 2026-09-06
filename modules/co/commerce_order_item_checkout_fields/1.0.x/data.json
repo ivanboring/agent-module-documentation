@@ -1,11 +1,14 @@
 {
   "name": "Commerce Order Item Fields",
   "data_name": "commerce_order_item_checkout_fields",
-  "description": "A checkout pane to collect per-product field data for Commerce order items.",
+  "description": "Provides a Drupal Commerce checkout pane that collects extra field data per order item and per unit of quantity (for example attendee name and email for each ticket in the cart), storing the values in real fields on the order item so they are queryable via Views, JSON:API and REST. One pane derivative is generated per order item type that has at least one qualifying user-added field; the editable set is an admin-configured allow-list (fields on the chosen form display mode, limited to configurable non-excluded fields with per-field edit access). No settings form, permissions, or shipped config schema of its own.",
   "version": "1.0.x",
   "package": "Commerce",
   "composer_namespace": "drupal/commerce_order_item_checkout_fields",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^3",
+    "drupal/core": "^11"
+  },
   "dependent_modules": [
     "drupal:field",
     "commerce:commerce_checkout",
@@ -22,9 +25,9 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "E-commerce"

@@ -42,12 +42,16 @@ View.
 
 ## A note on the public form
 
-Because the withdrawal form is customer-facing and acts on a specific order, treat
-it like any public order action: make sure the form only lets a requester withdraw
-an order they are actually entitled to (matched by order email/customer or a
-tokenized link), so one customer can't trigger a withdrawal on someone else's order.
-Consider restricting anonymous access on non-guest-checkout sites and applying
-anti-abuse/rate-limiting to the public endpoint. Reassuringly, the module only
-**logs and notifies** — it does not auto-refund — so a stray request doesn't move
-money on its own; staff still review it. The [Configuration](configuration/index.md)
-page covers the permission and per-order-type opt-in that control access.
+The withdrawal form is customer-facing and acts on a specific order, and the module
+scopes it accordingly. The public form at `/order_withdrawal` verifies the request
+against the order itself: the submitted order number **and** the email must both match
+before anything is recorded, and the not-found message is deliberately generic so the
+form never reveals whether an order number exists. The per-customer form at
+`/user/{user}/order_withdrawal/{commerce_order}` is limited to the order's own owner
+(or staff with *administer commerce_order*), so a logged-in customer only ever confirms
+their own orders. On sites that do not use guest checkout you can additionally withhold
+the form permission from the anonymous role. Because the module only **logs and
+notifies** — it does not auto-refund — a request doesn't move money on its own; staff
+(or your own event subscriber) decide what happens next. The
+[Configuration](configuration/index.md) page covers the permission and per-order-type
+opt-in that control access.

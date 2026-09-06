@@ -15,25 +15,16 @@ can choose to send orders as **drafts** for review or **fully automate**
 fulfillment. Printful bills your card on file for each order; your payment gateway
 collects from the customer and you keep the difference.
 
-It depends on **Drupal Commerce**, provides its own **Drush commands** and
-**permissions**, and is compatible with Drupal 11 and Commerce 3.x. It does
-**not** work on enable alone — you must connect it with your Printful API key and
-import products before it does anything.
+It depends on **Drupal Commerce** (plus **Commerce Shipping** and **Commerce
+Currency Resolver**), provides its own **Drush commands** and **permissions**, and
+is compatible with Drupal 11 and Commerce 3.x. It does **not** work on enable alone
+— you must connect it with your Printful API key and import products before it does
+anything.
 
-> ## ⚠️ Security caveat for this version (3.0.1)
->
-> The fulfillment **webhook is not authenticated** in this release. The public
-> route `/commerce-printful/webhooks` performs no signature, secret, or store
-> check: for a `package_shipped` event it loads the shipment by the payload's
-> `external_id` and writes the shipped time, tracking code, and shipping service
-> straight from the payload, without re-fetching from Printful's API. An
-> unauthenticated attacker who knows or guesses a shipment's external id could POST
-> a forged event to mark orders shipped and inject arbitrary tracking numbers.
-> This is **order-data / fulfillment-status spoofing**, not a payment bypass
-> (payment is handled by a separate gateway), but it is worth mitigating — for
-> example with a front-controller secret or IP allow-list on the webhook path — and
-> tracking the project for an upstream fix. This is surfaced from the module's
-> public documentation.
+> **Keep credentials safe.** The Printful API key is a live billing credential.
+> Store it as a secret — an environment variable exposed through a **Key** entity
+> rather than raw config — and run your site over **HTTPS**. See
+> [Configuration](configuration/index.md).
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -44,7 +35,7 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 1. [Installation](installation/index.md) — install the module with Composer and
    enable it.
 2. [Configuration](configuration/index.md) — connect your Printful account, choose
-   the fulfillment behavior, and import products — plus the webhook caveat above.
+   the fulfillment behavior, and import products.
 
 ## How to use it
 

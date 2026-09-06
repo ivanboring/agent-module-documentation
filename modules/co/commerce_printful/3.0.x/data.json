@@ -1,13 +1,21 @@
 {
   "name": "Commerce Printful",
   "data_name": "commerce_printful",
-  "description": "Integrates Drupal Commerce with Printful print-on-demand fulfillment. NOTE: the fulfillment webhook is unauthenticated in this version.",
+  "description": "Integrates Drupal Commerce with Printful print-on-demand drop-shipping and fulfillment: syncs Printful sync products and variants into Commerce, provides a printful_shipping method for live rates, pushes paid orders (per shipment, as drafts or confirmed) to Printful, and receives package_shipped webhook updates that record shipment tracking/carrier/shipped time.",
   "version": "3.0.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_printful",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^3.1"
+  },
   "dependent_modules": [
-    "commerce:commerce"
+    "commerce:commerce",
+    "commerce:commerce_price",
+    "commerce:commerce_product",
+    "commerce:commerce_order",
+    "commerce:commerce_tax",
+    "commerce_currency_resolver:commerce_currency_resolver",
+    "commerce_shipping:commerce_shipping"
   ],
   "configure": null,
   "core_version_requirement": "^10.1||^11",

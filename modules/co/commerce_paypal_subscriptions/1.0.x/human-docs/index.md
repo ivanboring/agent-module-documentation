@@ -19,13 +19,15 @@ auto-generated (select *Dynamic plans* and tick *Autogenerate product*) or a pla
 reference in *Default subscription plan*.
 
 **Security notes:** store the PayPal **client ID / client secret as secrets** and
-operate over HTTPS. Importantly, if you rely on PayPal **webhooks** to learn about
-subscription/payment events, **verify the PayPal webhook signature** (PayPal signs
-its webhooks) so forged subscription/payment events are rejected, and/or **re-fetch
-the subscription status** from PayPal's authenticated API before acting on it. Always
-confirm whether you're pointed at **sandbox or live**.
+operate over HTTPS. When a shopper approves the subscription, the module confirms it
+by **re-fetching the subscription from PayPal's authenticated API server-side** and
+matching its plan to the order before recording payment (using the server-side order
+total as the amount). Restrict who may **administer payment gateways**, protect your
+configuration exports, and always confirm whether you're pointed at **sandbox or
+live**.
 
-It depends on Drupal **Commerce** (Commerce Payment).
+It depends on Drupal **Commerce** and the **Commerce PayPal** (`commerce_paypal`)
+module, whose Checkout gateway and PayPal REST SDK this module extends.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

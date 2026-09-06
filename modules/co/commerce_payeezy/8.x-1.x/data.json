@@ -1,11 +1,13 @@
 {
   "name": "Commerce Payeezy",
   "data_name": "commerce_payeezy",
-  "description": "A Drupal Commerce Payeezy (First Data) payment gateway. NOTE: the hosted return does not throw on a failed signature.",
+  "description": "Payeezy (First Data / Global Gateway e4) payment gateway plugins for Drupal Commerce, providing a hosted (off-site) gateway and an on-site (tokenized card) gateway that supports purchase, capture, void and refund.",
   "version": "8.x-1.x",
   "package": null,
   "composer_namespace": "drupal/commerce_payeezy",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^2.19 || ^3"
+  },
   "dependent_modules": [
     "drupal:commerce",
     "commerce:commerce_payment",

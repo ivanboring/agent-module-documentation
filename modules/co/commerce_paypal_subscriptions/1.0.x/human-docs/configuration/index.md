@@ -30,13 +30,15 @@ environment (production vs sandbox), change the credentials in the UI, **clear t
 product ID field**, and press **Save**. Using the **Config Split** module is strongly
 recommended to keep sandbox and live settings separate.
 
-## Security: verify webhooks and confirm the environment
+## Security: protect credentials and confirm the environment
 
 - Store the PayPal **client ID / client secret as secrets** and operate over HTTPS.
-- If you rely on PayPal **webhooks** for subscription/payment events, **verify the
-  PayPal webhook signature** — PayPal signs its webhooks, so verifying lets you
-  reject forged subscription/payment events — and/or **re-fetch the subscription
-  status** from PayPal's authenticated API before acting on an event.
+- When a shopper approves the subscription, the module confirms it by **re-fetching
+  the subscription from PayPal's authenticated API server-side** and matching its
+  plan to the order before recording a completed payment (the amount is the
+  server-side order total, not client input).
+- Restrict the **administer commerce payment gateway** permission — the credentials
+  are entered on the gateway form.
 - Always confirm whether the gateway is pointed at **sandbox** or **live** before
   going into production.
 

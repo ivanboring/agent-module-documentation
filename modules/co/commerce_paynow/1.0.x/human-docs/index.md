@@ -16,8 +16,9 @@ Configuration is short: add a Paynow gateway, enter your Paynow **API Key** and
 **Signature Key**, and optionally enable logging for debugging. Store those
 credentials securely (env-backed) and never commit them.
 
-It depends on Commerce's **Payment** module and requires **Drupal Commerce 3**. The
-module provides its own permission(s).
+It depends on Commerce's **Payment** module and requires **Drupal Commerce 3**. Access to
+add and configure the gateway is governed by Commerce's own *Administer commerce_payment_gateway*
+permission — this module does not define permissions of its own.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

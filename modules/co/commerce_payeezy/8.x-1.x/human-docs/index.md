@@ -10,22 +10,14 @@ It depends on **Commerce**, **Commerce Payment**, and **Commerce Order**. You
 configure your Payeezy API credentials on the gateway, then attach it to your
 checkout flow. Create a Payeezy developer account to obtain your API keys.
 
-> **Important security caveat for this version — please read.** The module's
-> **hosted-gateway return handler does not abort when the payment's signature
-> verification fails.** On return, it recomputes an HMAC and compares it to the value
-> Payeezy sent; but when the response code indicates success while the HMAC does
-> **not** match, the handler only prints "Payment was not processed" and returns
-> **without throwing an error**. The practical consequence is that the Commerce
-> return still completes and the **order can be placed with no verified payment** —
-> a returning request claiming success with a wrong or absent hash can complete an
-> order **unpaid**. (The recorded amount is taken server-side from the order total,
-> so the risk is the missing abort, not amount tampering; separately, the comparison
-> uses PHP's loose `==` rather than a constant-time compare.) Until this is fixed,
-> treat the hosted flow with caution: reconcile every order against Payeezy before
-> fulfilling, or apply a patch that **throws a payment exception on a signature
-> mismatch** (as the module already does for a bad response code) and uses
-> `hash_equals()`. Watch the project's issue queue for a fix. This project is listed
-> as **not covered** by Drupal's security advisory policy.
+> **Good operating practice for any payment gateway.** As with every store that
+> takes real money, reconcile your Commerce orders against your Payeezy merchant
+> dashboard before you fulfil them, rather than trusting the on-screen result alone.
+> Keep your Payeezy credentials (transaction key, response key, API secret, merchant
+> token) out of version control, and restrict who can administer payment gateways.
+> Note that this project is listed as **not covered** by Drupal's security advisory
+> policy and is in *maintenance fixes only* status, so watch its issue queue and keep
+> it updated.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

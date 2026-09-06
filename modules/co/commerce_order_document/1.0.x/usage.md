@@ -4,36 +4,41 @@ Commerce Order Document provides order-document functionality for Drupal Commerc
 ---
 
 Commerce Order Document adds order-document functionality to Drupal Commerce — generating documents
-(invoices, order confirmations, packing-style documents) associated with orders, so stores can produce
-and provide formal order paperwork. It depends on Commerce and Commerce Order and provides its own
+(invoices, order confirmations, packing slips, pro forma, credit memos) associated with orders, so
+stores can produce and provide formal order paperwork. Unlike the heavier Commerce Invoice module it
+does not store the documents; each is rendered on the fly from a Twig template and can be viewed,
+downloaded as PDF, or emailed. It depends on Commerce and Commerce Order and provides its own
 permissions.
 
-Use it to generate and manage per-order documents in a Commerce store. The security-relevant point is
-access: order documents typically contain personal and financial data (customer details, addresses,
-line items, totals), so ensure the document routes/downloads are properly access-controlled — a
-customer should see only their own documents, and staff access should be permission-gated. Verify the
-document access checks match your privacy requirements before exposing document links. Configure the
-document types/templates as needed.
+You define reusable document configs (config entities) bound to an order type and optional conditions.
+From an order's admin pages, staff view, download, or email a document; a Receipt document can also
+auto-email the customer when an order is placed. Access is staff-scoped by design: the per-order
+view/download/email routes require the Commerce `administer commerce_order` permission, and managing the
+document configs requires `administer commerce_order document`. There is no customer-facing document
+URL — customers receive documents by email sent to the order's own address — and downloaded PDFs are
+streamed to the browser rather than written to a stored file. Configure the document types/templates as
+needed (Twig templates control the rendered layout).
 
 ---
 
 - Generate order documents for Commerce.
 - Produce invoices for orders.
 - Create order confirmation documents.
+- Produce packing slips, pro forma, and credit memos.
 - Depend on Commerce and Commerce Order.
 - Provide its own permissions.
 - Manage per-order documents.
-- Access-control document downloads.
-- Let customers see only their documents.
-- Permission-gate staff access.
-- Protect personal/financial document data.
-- Verify document access checks.
+- Define reusable document configs per order type.
+- Gate per-order actions behind `administer commerce_order`.
+- Gate document config behind `administer commerce_order document`.
+- Stream downloaded PDFs without storing files.
+- Email documents to the order's own address.
+- Auto-email a receipt when an order is placed.
+- Render documents from overridable Twig templates.
+- Extend via the order-document plugin type.
+- Filter documents per order with conditions.
 - Produce order paperwork.
 - Configure document types/templates.
-- Handle invoices securely.
 - Generate formal order docs.
-- Mind PII in documents.
-- Provide order document links.
 - Create billing documents.
-- Restrict document access appropriately.
 - Support store paperwork.

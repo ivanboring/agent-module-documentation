@@ -53,10 +53,14 @@ Commerce order configuration under **Commerce → Configuration**.
 
 ### A word on access and privacy
 
-Order documents typically contain **personal and financial data** — customer
-names, addresses, line items, and totals. This module provides permissions for
-exactly that reason. Before you expose any document link, confirm that the access
-rules match your privacy requirements: a customer should be able to see **only
-their own** documents, and staff access should be gated behind the appropriate
-permission. Review the document routes and download links after setup to be sure
-they are not reachable by people who shouldn't see them.
+Order documents contain **personal and financial data** — customer names,
+addresses, line items, and totals — so the module keeps document access
+staff-scoped. The per-order **view / download / email** actions require the
+Commerce **administer commerce_order** permission (the same permission that already
+grants access to orders themselves), and creating or editing the document
+configurations requires **administer order documents**
+(`administer commerce_order document`). There is no customer-facing document URL:
+customers receive documents by **email**, sent to the order's own contact address,
+and a downloaded PDF is streamed straight to the staff member's browser rather than
+saved as a file. When you assign the permissions on **People → Permissions**, keep
+both permissions limited to trusted staff roles.

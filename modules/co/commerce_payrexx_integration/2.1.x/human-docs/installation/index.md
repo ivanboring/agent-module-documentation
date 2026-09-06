@@ -10,7 +10,9 @@
   is the first part of the URL you log in at — for example the `instancename` in
   `https://instancename.payrexx.com/`.)
 
-There are no additional Composer or PHP library requirements.
+The module also uses the official **Payrexx PHP SDK** (`payrexx/payrexx ^1.7`) and
+requires **PHP 8.1+**; Composer pulls the SDK in for you automatically. Drupal
+Commerce itself is required as `drupal/commerce ^3.0`.
 
 ## Install with Composer
 

@@ -13,8 +13,8 @@ There are no third‑party Composer libraries required for the Drupal 10/11 setu
 not apply to the modern versions this guide covers.)
 
 > **Note:** this project is listed as **not covered** by Drupal's security advisory
-> policy and is in *maintenance fixes only* status. Read the security caveat on the
-> [overview page](../index.md) before using the hosted flow in production.
+> policy and is in *maintenance fixes only* status. See the operating notes on the
+> [overview page](../index.md) before going live.
 
 ## Install with Composer
 

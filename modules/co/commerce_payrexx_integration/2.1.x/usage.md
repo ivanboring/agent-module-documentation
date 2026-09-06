@@ -11,10 +11,11 @@ Use it to accept payments through Payrexx. Its security handling is **correct**:
 the posted transaction as **untrusted and re-fetches the transaction from Payrexx's authenticated API**
 (using the gateway's instance name + secret) before acting — the controller literally notes *"The transaction
 data is untrusted to this point. Reload the transaction data from the remote server to ensure the data can be
-trusted."* — and the redirect checkout uses Payrexx's `SignatureCheck`. So a forged webhook cannot mark an
-order paid (the authoritative status comes from Payrexx). When adopting: store the Payrexx **API secret as a
-secret** (not in exported config), operate over HTTPS, and confirm the gateway is in the correct (test vs
-live) mode. Configure the Payrexx credentials.
+trusted."* The browser return/cancel paths take the same authoritative re-fetch route, and the entered API
+credentials are verified against Payrexx (via a `SignatureCheck` API call) when the gateway config is saved.
+So a forged webhook cannot mark an order paid — the authoritative status comes from Payrexx. When adopting:
+store the Payrexx **API secret as a secret** (not in exported config), operate over HTTPS, and confirm the
+gateway is in the correct (test vs live) mode. Configure the Payrexx credentials.
 
 ---
 

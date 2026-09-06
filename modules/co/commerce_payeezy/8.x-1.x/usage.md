@@ -1,42 +1,51 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Commerce Payeezy provides a Payeezy payment gateway for Drupal Commerce.
+Commerce Payeezy provides Payeezy (First Data) payment gateway plugins for Drupal Commerce.
 
 ---
 
-Commerce Payeezy provides a **Payeezy (First Data) payment gateway** for Drupal Commerce — with a hosted
-(redirect) gateway and an on-site gateway. It depends on Commerce, Commerce Payment and Commerce Order.
+Commerce Payeezy integrates **Payeezy (First Data / Global Gateway e4)** with Drupal Commerce,
+supplying two `commerce_payment_gateway` plugins: a **hosted (off-site) gateway**
+(`commerce_payeezy_hosted_gateway`), where the shopper is redirected to Payeezy's hosted pay page and
+POSTed back, and an **on-site gateway** (`commerce_payeezy_onsite_gateway`), where the card is entered
+on your own checkout and tokenized against Payeezy (TransArmor) so only a token plus the card's
+`last4`/type/expiry are stored locally. It depends on Commerce, Commerce Payment and Commerce Order.
 
-Use it to accept Payeezy payments. **Security caveat (this version): the hosted-gateway return handler does
-not abort when the payment signature verification fails.** `HostedGateway::onReturn()` recomputes an HMAC
-(`hash(md5|sha1, response_key . x_login . x_trans_id . x_amount)`) and compares it to the request's
-`x_MD5_Hash`/`x_SHA1_Hash`. When the response code is 1 but the HMAC does **not** match, the `else` branch only
-prints "Payment was not processed" and **returns without throwing** — so the Commerce return completes and the
-order is **placed with no verified payment** (a returning request with `x_response_code=1` and a wrong/absent
-hash completes an order **unpaid**). The recorded amount uses `$order->getTotalPrice()` (server-side, good), so
-the vector is the missing throw, not amount tampering. Secondary: the compare is PHP `==` (non-constant-time +
-type-juggling; should be `hash_equals()`). Until patched, **throw a `PaymentGatewayException` on signature
-mismatch** (as the module already does for a bad response code) and use `hash_equals()`. Store the Payeezy
-`response_key`/credentials as secrets. See the local security.md.
+Each gateway is configured as a payment-gateway config entity holding its credentials and Commerce
+`mode` (`test`/`live`). The **hosted** gateway takes `x_login`, `transaction_key`, `x_response_key`,
+`transaction_url` and an `hmac_calculation` choice (MD5 or SHA-1); its checkout form builds a
+signed POST redirect (`x_fp_hash = hash_hmac(algo, x_login^x_fp_sequence^x_fp_timestamp^x_amount^x_currency_code, transaction_key)`)
+and its return handler recomputes the response hash from `x_response_key`/`x_login`/`x_trans_id`/`x_amount`
+and, on a match, records an authorization payment for the **server-side order total**
+(`$order->getTotalPrice()`), so the recorded amount is never taken from the shopper. The **on-site**
+gateway takes `api_key`, `api_secret_key`, `merchant_token`, `transaction_url`, `ta_token`, `token_type`
+and `security_token_url`; it tokenizes the card, then supports purchase, capture, void and refund via
+Payeezy's transactions API using HMAC-SHA256 request authentication over Drupal's HTTP client. There are
+no custom routes, permissions, Drush commands or services — all configuration lives in the
+`commerce_payment_gateway` config entity.
+
+Use it to accept Payeezy card payments. Add a gateway at
+`/admin/commerce/config/payment-gateways`, choose the hosted or on-site Payeezy plugin, enter your
+Payeezy developer-account credentials and `transaction_url`, pick Test or Live mode, and attach it to
+your checkout flow. Keep the credentials (`transaction_key`, `x_response_key`, `api_secret_key`,
+`merchant_token`) out of version control — store them via your environment and restrict who can
+administer payment gateways.
 
 ---
 
-- Provide a Payeezy (First Data) gateway.
-- Offer hosted and on-site gateways.
-- Recompute the return HMAC.
-- KNOW a failed signature does NOT abort the return.
-- Understand an order can complete unpaid.
-- Patch onReturn to throw on HMAC mismatch.
-- Use hash_equals() instead of ==.
-- Know the amount is server-side (getTotalPrice).
-- Store response_key/credentials as secrets.
-- Depend on Commerce Payment/Order.
-- Have no access-control role.
-- Configure the Payeezy credentials.
-- Handle Payeezy payments.
-- Verify the return.
-- Configure the gateway.
-- Secure the callback.
-- Guard against unpaid completion.
-- Process payments.
-- Patch the gateway.
-- Provide Payeezy payments.
+- Provide Payeezy (First Data) payment gateway plugins for Drupal Commerce.
+- Offer a hosted (off-site) gateway and an on-site gateway.
+- Configure each gateway as a `commerce_payment_gateway` config entity.
+- Enter Payeezy credentials from a developer account.
+- Tokenize cards on the on-site gateway (store only a token + last4/type/expiry).
+- Support purchase, capture, void and refund on the on-site gateway.
+- Sign the hosted redirect with an HMAC of the server-side amount.
+- Record the hosted payment amount from the server-side order total.
+- Authenticate on-site API requests with HMAC-SHA256 over Drupal's HTTP client.
+- Depend on Commerce, Commerce Payment and Commerce Order.
+- Have no custom routes, permissions, Drush or services.
+- Store credentials as secrets, out of version control.
+- Restrict who can administer payment gateways.
+- Add the gateway at /admin/commerce/config/payment-gateways.
+- Set Test or Live mode.
+- Attach the gateway to a checkout flow.
+- Process Payeezy card payments.

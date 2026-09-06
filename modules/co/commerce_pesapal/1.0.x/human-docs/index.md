@@ -15,11 +15,11 @@ PHP 8.3+).
 
 It does **not** work on enable alone — you must add a Pesapal gateway with your
 consumer key and secret before it can take a payment. On the security side the
-module behaves correctly: the IPN handler does **not** trust the status in the
-request. Instead it re-fetches the real transaction status from Pesapal's API
-(OAuth HMAC-SHA1 signed), fulfils only on a re-fetched `COMPLETED`, uses the
-server-side order total rather than any amount in the request, and de-duplicates
-by the remote transaction id — so a forged IPN cannot mark an order paid.
+module verifies results server-side: the IPN handler does **not** trust the
+status in the request. Instead it re-fetches the real transaction status from
+Pesapal's API (OAuth HMAC-SHA1 signed), fulfils only on a re-fetched `COMPLETED`,
+records the server-side order total rather than any amount in the request, and
+de-duplicates by the remote transaction id.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

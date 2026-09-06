@@ -1,11 +1,15 @@
 {
   "name": "Commerce Payrexx integration",
   "data_name": "commerce_payrexx_integration",
-  "description": "Provides a Drupal Commerce payment gateway for Payrexx (verifies transactions against Payrexx's API).",
+  "description": "Off-site (redirect) Drupal Commerce payment gateway for Payrexx, the Swiss payment service provider. The shopper pays on a Payrexx-hosted page; the module confirms the result on the browser return/cancel and via an asynchronous webhook, re-fetching the authoritative transaction from Payrexx's authenticated API in every case. Includes an optional checkout pane for pre-selecting a payment method.",
   "version": "2.1.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_payrexx_integration",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "php": "^8.1",
+    "payrexx/payrexx": "^1.7",
+    "drupal/commerce": "^3.0"
+  },
   "dependent_modules": [
     "commerce:commerce"
   ],
@@ -15,7 +19,7 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/commerce_payrexx_integration",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "^8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],

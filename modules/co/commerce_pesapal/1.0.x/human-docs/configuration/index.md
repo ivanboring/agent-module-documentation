@@ -52,5 +52,5 @@ After the shopper pays, Pesapal calls your site's IPN endpoint
 status from Pesapal's API (calls signed with OAuth HMAC-SHA1), fulfils the order
 only when the re-fetched status is `COMPLETED`, records the server-side order
 total rather than any amount from the request, and de-duplicates by the remote
-transaction id. This means a forged or replayed IPN cannot mark an order as paid —
-the authoritative status always comes from Pesapal.
+transaction id — the authoritative status always comes from Pesapal, not from the
+callback request.

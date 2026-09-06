@@ -8,8 +8,9 @@
 - A **Paytrail merchant account**, which gives you the merchant credentials
   (including the merchant secret used to sign and verify callbacks).
 
-There are no additional PHP library requirements listed for the module itself;
-Composer resolves what it needs when you require it.
+The module requires **PHP 8.1+** and pulls in the official **Paytrail PHP SDK**
+(`paytrail/paytrail-php-sdk ^2.0`) and Drupal Commerce (`drupal/commerce ^2 || ^3`).
+Composer resolves these for you when you require the module.
 
 ## Install with Composer
 

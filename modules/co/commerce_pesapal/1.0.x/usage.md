@@ -5,7 +5,7 @@ Commerce Pesapal adds a Pesapal payment gateway that verifies IPN status server-
 
 Commerce Pesapal integrates the Pesapal payment gateway (popular in East Africa) with Drupal Commerce as an off-site redirect gateway. After payment, Pesapal calls an IPN endpoint (`/payment/pesapal/ipn`) and the customer is returned to the site.
 
-The IPN handler is implemented correctly: it does **not** trust the request's status but re-fetches the real transaction status from Pesapal's API server-side (OAuth HMAC-SHA1 signed) via `queryPaymentStatus()`, fulfils only on a re-fetched `COMPLETED`, uses the server-side order total (not a request amount), and dedups by remote transaction id — so forged IPNs cannot mark an order paid (a security positive). Depends on Commerce `commerce_payment`, `commerce_order`, and `commerce_price`; supports Drupal 10 and 11.
+The IPN handler does **not** trust the request's status: it re-fetches the real transaction status from Pesapal's API server-side (OAuth HMAC-SHA1 signed) via `queryPaymentStatus()`, fulfils only on a re-fetched `COMPLETED`, records the server-side order total (not a request amount), and de-duplicates by remote transaction id. Depends on Commerce `commerce_payment`, `commerce_order`, and `commerce_price`; supports Drupal 10 and 11.
 
 ---
 
@@ -17,7 +17,6 @@ The IPN handler is implemented correctly: it does **not** trust the request's st
 - Fulfil only on re-fetched COMPLETED.
 - Use the server-side order total.
 - Dedup by remote transaction id.
-- Reject forged IPNs.
 - Depend on Commerce payment/order/price.
 - Support Drupal 10 and 11.
 - Return customers after payment.

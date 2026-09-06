@@ -1,16 +1,18 @@
 {
   "name": "Commerce Order Item SKU",
   "data_name": "commerce_order_item_sku",
-  "description": "stores each purchased entity's SKU on the order item.",
+  "description": "Persists the purchased entity's SKU onto Commerce order items (via an opt-in order-item-type trait) so order history keeps the SKU even after the product variation's SKU changes or is deleted; ships a settings form with five sync strategies and a display formatter.",
   "version": "1.0.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_order_item_sku",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^2.40 || ^3"
+  },
   "dependent_modules": [
     "commerce:commerce",
     "commerce:commerce_order"
   ],
-  "configure": null,
+  "configure": "commerce_order_item_sku.settings_form",
   "core_version_requirement": "^10.3||^11",
   "active_installs": null,
   "list_position": null,

@@ -1,38 +1,44 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Commerce Paypal Subscriptions allows doing recurring payments through the PayPal API.
+Commerce Paypal Subscriptions turns a Drupal Commerce order into a recurring PayPal subscription
+using PayPal's modern REST Subscriptions API.
 
 ---
 
-Commerce Paypal Subscriptions enables recurring payments (subscriptions) via the PayPal API for Drupal
-Commerce — so customers can subscribe and be billed recurringly through PayPal, with PayPal managing the
-subscription lifecycle. It depends on Drupal Commerce, in the Commerce package.
+Commerce Paypal Subscriptions adds an off-site Drupal Commerce payment gateway
+(`paypal_checkout_subscriptions`, "PayPal Checkout Subscriptions") that lets a customer approve a
+recurring subscription with PayPal's Smart Payment Buttons at checkout — PayPal then manages the
+subscription lifecycle. It extends the `commerce_paypal` module (its Checkout gateway, REST SDK,
+controller and off-site form), so it depends on Drupal Commerce and commerce_paypal, in the
+Commerce package.
 
-Use it for PayPal-based recurring billing. Security notes: store the PayPal **API credentials (client ID/
-secret) as secrets**, operate over HTTPS, and — importantly — if PayPal webhooks notify subscription/payment
-events, **verify the PayPal webhook signature** (PayPal signs webhooks; verify so forged subscription/payment
-events are rejected) and/or re-fetch the subscription status from PayPal's authenticated API before acting.
-Confirm the environment (sandbox vs live). It is an e-commerce/subscriptions feature. Configure the PayPal
-credentials.
+Use it for PayPal-based recurring billing. PayPal products and plans can be generated dynamically
+(the plan price is derived from the Commerce order total), or you can point the gateway at a
+pre-created default subscription plan. At approval the module re-fetches the subscription from
+PayPal's merchant-authenticated API server-side and binds its plan id to the order before recording
+a completed Commerce payment, using the server-side order total as the amount. Store the PayPal
+**client id / client secret as secrets**, operate over HTTPS, restrict who may administer payment
+gateways, and confirm whether the gateway points at **sandbox** or **live** before go-live. It is an
+e-commerce / subscriptions feature configured as a Commerce payment gateway.
 
 ---
 
-- Enable PayPal recurring payments.
-- Support subscriptions via PayPal.
-- Bill customers recurringly.
-- Depend on Drupal Commerce.
-- Store PayPal client ID/secret as secrets.
+- Enable PayPal recurring payments (subscriptions).
+- Add the `paypal_checkout_subscriptions` Commerce payment gateway.
+- Approve subscriptions via PayPal Smart Payment Buttons at checkout.
+- Generate PayPal products and plans dynamically from the order total.
+- Or reference a pre-created default subscription plan.
+- Bind the subscription plan id to the order at approval.
+- Re-fetch the subscription from PayPal's authenticated API server-side.
+- Record a completed Commerce payment using the server-side order total.
+- Depend on Drupal Commerce and commerce_paypal.
+- Store PayPal client id / secret as secrets.
 - Operate over HTTPS.
-- Verify the PayPal webhook signature.
-- Reject forged subscription/payment events.
-- Re-fetch subscription status from PayPal.
+- Restrict who may administer payment gateways.
 - Confirm sandbox vs live.
-- Have no access-control role.
-- Configure the PayPal credentials.
-- Handle recurring billing.
-- Configure subscriptions.
-- Handle credentials securely.
-- Verify webhooks.
+- Set the billing frequency (day / week / month / year).
+- Extend plan selection via the SUBSCRIPTION_CREATE event.
+- Configure the gateway under Commerce payment gateways.
+- Have no permissions of its own beyond the gateway plugin.
+- Handle PayPal credentials securely.
 - Integrate PayPal subscriptions.
-- Configure the gateway.
-- Handle PayPal API.
-- Process subscriptions.
+- Process recurring billing.

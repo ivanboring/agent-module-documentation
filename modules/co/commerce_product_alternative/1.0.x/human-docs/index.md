@@ -1,11 +1,12 @@
 # Commerce Product Alternative — manual setup guide
 
 **Commerce Product Alternative** (`commerce_product_alternative`) lets shoppers
-swap a product variation in their cart for a different one — **without removing and
-re-adding items**. Store managers define which variations count as valid
-alternatives for each other, then expose "swap" links in any cart view; clicking a
-link replaces the underlying order item in place, so the shopper keeps their spot
-in checkout.
+swap a product variation **already in their cart** for an admin-designated
+alternative — **without removing and re-adding items**. Store managers define
+which variations count as valid alternatives for each other, then expose "swap"
+links in a cart view; clicking a link opens a confirmation modal (showing the
+current and new price) and replaces the underlying order item in place —
+preserving quantity — so the shopper keeps their spot in checkout.
 
 The problem it solves shows up whenever you sell products with meaningfully
 different variations — formats, bundles, sizes, or configurations — and want a
@@ -15,9 +16,11 @@ of deleting the line and starting over. Under the hood it adds a Commerce
 field for the swap links.
 
 It depends on Commerce's **Commerce**, **Product**, **Order**, **Cart**, and
-**Log** modules and requires **Drupal 11**. It provides its own permissions but
-has no central settings form — setup is done on the variation type, on individual
-variations, and in your cart View (see "How to use it").
+**Log** modules and requires **Drupal 11**. It has no central settings form and
+no role permissions — a shopper may only switch their own cart's items to a
+published, available alternative you have configured. Setup is done on the
+variation type, on individual variations, and in your cart View (see "How to use
+it").
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -50,5 +53,7 @@ alternatives) and from your cart **View** (to add the swap-links field).
    between the alternatives via AJAX — no full page reload, no manual
    remove/re-add.
 
-Grant the module's permissions to the appropriate roles at **People → Permissions**
-so the right users can manage alternatives.
+There are no module permissions to grant: a shopper can only switch their own
+draft cart's items, and only to a published, available alternative you
+configured on the source variation. Configuring alternatives is done by users
+who can already edit product variations.

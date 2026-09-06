@@ -1,11 +1,14 @@
 {
   "name": "Commerce Payment Extra",
   "data_name": "commerce_payment_extra",
-  "description": "Provides an expanded payment API for Drupal Commerce.",
+  "description": "Adds a capture/void automation layer on Drupal Commerce payments: a PaymentManager service that resolves an order's capturable/voidable payments (with override events), Advanced Queue job types that capture/void via the gateway plugin, and a commerce_payment_extra_order submodule that captures on order completion, voids on cancellation, and cron-auto-places fully-authorized abandoned draft orders.",
   "version": "8.x-1.x",
   "package": "Commerce",
   "composer_namespace": "drupal/commerce_payment_extra",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^2.19 || ^3",
+    "drupal/advancedqueue": "^1.0@beta"
+  },
   "dependent_modules": [
     "commerce:commerce_payment"
   ],
@@ -22,7 +25,7 @@
     "commerce_payment_extra_order"
   ],
   "provides_permissions": false,
-  "provides_drush_commands": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [

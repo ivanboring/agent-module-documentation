@@ -5,13 +5,15 @@
 - **Drupal 10.1 or 11** (`core_version_requirement: ^10.1 || ^11`). Note that
   version 3.x targets **Commerce 3.x** and Drupal 11; the older Drupal 10 /
   Commerce 2.x line is no longer supported from 3.0.0.
-- **Drupal Commerce** (`commerce`) — the module's dependency. You will also want a
-  working **payment gateway** of your choice so you can collect payment from
-  customers.
+- **Drupal Commerce** (`commerce`, 3.x) — the core dependency. The module also
+  depends on **Commerce Shipping** (`commerce_shipping`) and **Commerce Currency
+  Resolver** (`commerce_currency_resolver`), which are separate contrib projects, so
+  require them alongside it. You will also want a working **payment gateway** of your
+  choice so you can collect payment from customers.
 - A **Printful account** with an **API key**, and a card on file with Printful
   (Printful bills you per order).
 
-There are no additional Composer or PHP library requirements.
+There are no additional PHP library requirements beyond those contrib modules.
 
 ## Install with Composer
 

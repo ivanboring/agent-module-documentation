@@ -6,8 +6,12 @@
 - **Commerce Order** (`commerce_order`) and **Commerce Log** (`commerce_log`)
   enabled — these are the module dependencies. Commerce Log is what records the
   withdrawal request against the order.
+- **Drupal Commerce 3** (`drupal/commerce ^3.0`) and the **Yasumi** library
+  (`azuyalabs/yasumi ^2.5`) — both are declared in the module's `composer.json` and
+  pulled in automatically by Composer. Yasumi supplies the public-holiday calendars used
+  to roll a withdrawal deadline forward past weekends and holidays.
 
-There are no third‑party Composer libraries or special PHP extensions required.
+No special PHP extensions are required.
 
 > **Stability:** this is a **1.0.0-alpha1** release — "not stable yet, use with
 > caution." Test the whole withdrawal flow in a non-production environment first.
