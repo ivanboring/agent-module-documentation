@@ -5,7 +5,10 @@
   "version": "1.0.x",
   "package": "Webform",
   "composer_namespace": "drupal/complete_webform_exporter",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "phpoffice/phpspreadsheet": "^1.30 || ^2.1.12 || ^3.10 || ^5",
+    "drupal/webform": "^6"
+  },
   "dependent_modules": [
     "webform:webform"
   ],
@@ -16,7 +19,9 @@
   "project_url": "https://www.drupal.org/project/complete_webform_exporter",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "phpoffice/phpspreadsheet"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,

@@ -5,7 +5,7 @@ commercetools is the base module integrating the commercetools headless platform
 
 commercetools provides the base integration of the commercetools (a headless/API-first commerce platform) with Drupal — it's ONLY the base module and provides no UI, so you also install one of the UI modules: commercetools Content (renders commercetools content on the Drupal side) or commercetools Decoupled (renders it on the frontend as decoupled Web Components).
 
-It connects Drupal to a commercetools project via its API; store the commercetools API client credentials securely (env-backed), never committed. Supports Drupal 10 and 11.
+It connects Drupal to a commercetools project via its API using OAuth2 client credentials (Client ID, Client secret, Project key, API scope, hosted region), entered on the settings page and stored in Drupal configuration. Products, customers and orders stay on the commercetools side; Drupal only caches catalog data. Supports Drupal 10 and 11.
 
 ---
 
@@ -15,15 +15,16 @@ It connects Drupal to a commercetools project via its API; store the commercetoo
 - Require a UI submodule.
 - Offer Content or Decoupled UIs.
 - Connect via the commercetools API.
+- Authenticate with OAuth2 client credentials.
 - Serve headless commerce.
-- Store API credentials securely (env-backed).
-- Never commit credentials.
+- Cache catalog data locally.
+- Keep PII on the commercetools side.
 - Support Drupal 10 and 11.
-- Configure the connection.
+- Configure the connection on the settings page.
 - Underpin the UI modules.
-- Integrate a headless platform
-- Handle commercetools
+- Integrate a headless platform.
+- Handle commercetools.
 - Support decoupled commerce.
 - Connect to a project.
 - Provide a base.
-- Keep credentials secure
+- Invalidate caches via cron or Subscriptions.

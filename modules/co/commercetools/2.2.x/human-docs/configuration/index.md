@@ -39,16 +39,31 @@ placed on any page using native Drupal **Blocks** and **Layout Builder**.
 
 ## Handle the credentials safely
 
-The **Client secret** is a secret. Never commit it to code. On DDEV, store it in
-an environment variable and reference it through a **Key** entity (or from
-settings via `getenv()`), rather than pasting it into exported configuration:
+The **Client secret** is a sensitive credential. You enter it on the settings
+page and the module stores it in Drupal **configuration** (the `commercetools.api`
+config object). The module does not read the secret from an environment variable
+or a Key entity on its own, so the important thing is to keep that value out of
+any configuration you commit or export.
+
+The standard Drupal way to do that is a **configuration override** in
+`settings.php` (or `settings.local.php`), which the module honours because it
+reads the value through Drupal's config factory. Put the real secret in an
+environment variable and reference it:
+
+```php
+// settings.php
+$config['commercetools.api']['client_secret'] = getenv('COMMERCETOOLS_CLIENT_SECRET');
+```
+
+On DDEV you can supply that variable without committing it:
 
 ```bash
 ddev dotenv set .ddev/.env --commercetools-client-secret=<value>
 ddev restart
 ```
 
-Always serve the site over **HTTPS**.
+If you do keep credentials in configuration, exclude `commercetools.api` from any
+config export you commit. Always serve the site over **HTTPS**.
 
 ## Save and test
 

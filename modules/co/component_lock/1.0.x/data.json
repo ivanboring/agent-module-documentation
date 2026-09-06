@@ -1,7 +1,7 @@
 {
   "name": "Component Lock",
   "data_name": "component_lock",
-  "description": "lets Layout Builder components be locked by locking their settings.",
+  "description": "hides Layout Builder block/component configuration-form fields (all or specific ones) from editors without the 'administer blocks' permission, locking a component's settings.",
   "version": "1.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/component_lock",
@@ -22,7 +22,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"

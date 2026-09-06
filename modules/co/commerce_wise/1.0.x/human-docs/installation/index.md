@@ -35,5 +35,5 @@ drush en commerce_wise -y
 
 Go to **Commerce → Configuration → Payment gateways**
 (`/admin/commerce/config/payment-gateways`), click **Add payment gateway**, and
-confirm **Wise** appears as a plugin. Continue with
+confirm **Wise Quick Pay** appears as a plugin. Continue with
 [Configuration](../configuration/index.md).

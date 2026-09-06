@@ -1,7 +1,7 @@
 {
   "name": "Component Library",
   "data_name": "component_library",
-  "description": "Build a library of reusable UI components (with CodeMirror editing, Layout Builder and Workspaces integration).",
+  "description": "Site-building component library: component markup lives in config-entity Twig templates (patterns + variants), authored in-browser with CodeMirror, plus an Override Mode to rewrite theme templates and attach CSS/JS. Integrates with UI Patterns, Layout Builder, Workspaces and Group.",
   "version": "1.0.x",
   "package": "User interface",
   "composer_namespace": "drupal/component_library",
@@ -22,12 +22,15 @@
   "suggests": {},
   "submodules": [
     "component_library_engine",
-    "component_library_workspaces"
+    "component_library_workspaces",
+    "gcomponent_library"
   ],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "component_override"
+  ],
   "categories": [
     "Theming"
   ],
@@ -37,7 +40,12 @@
   "keywords": [
     "component library",
     "components",
+    "patterns",
+    "variants",
+    "twig",
+    "override mode",
     "codemirror",
+    "ui patterns",
     "layout builder",
     "ui"
   ],

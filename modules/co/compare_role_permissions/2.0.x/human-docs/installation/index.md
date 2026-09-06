@@ -31,6 +31,6 @@ drush en compare_role_permissions -y
 ## Verify it worked
 
 Under **People → Permissions**, grant the **compare role permissions** permission
-to a trusted role, then visit **`/admin/people/permissions/crp`**, pick two roles,
-and click **Submit** — you should see a side‑by‑side comparison of their
+to a trusted role, then visit **`/admin/people/permissions/compare`**, pick two
+roles, and click **Compare** — you should see a side‑by‑side comparison of their
 permissions. See the [overview](../index.md) for how to use the report.

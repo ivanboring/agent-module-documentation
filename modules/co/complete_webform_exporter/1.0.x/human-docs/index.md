@@ -47,14 +47,9 @@ and a **bulk export** action you can run from a Views listing of submissions.
 3. To export several at once, use the bulk **Export webform submissions** action
    on a Views listing of submissions, then download the resulting ZIP.
 
-> **A word on access — read this before granting the permission.** The download
-> permission is site-wide: it is a single **Download any webform submission
-> managed files** grant with no per-form option, so anyone who holds it can
-> export **every** submission on the site, attachments included — the feature
-> cannot be delegated to a team for just their own forms. The download route
-> also loads the webform and submission independently and does not verify that
-> the submission actually belongs to the webform named in the URL, nor does it
-> apply Webform's normal per-form "view submissions" access. If your uploads are
-> stored in a private filesystem, the server-side zipping reads those files
-> directly, bypassing Drupal's usual private-file download checks. Treat the
-> permission as "trusted staff only" and audit who holds it.
+> **About the permission.** The per-submission download is controlled by a single
+> permission, **Download any webform submission managed files**, which Drupal
+> marks as security-sensitive (`restrict access`). Grant it only to the roles
+> that should be able to export submissions — the exported ZIP contains the
+> submitters' personal data and their uploaded files. The bulk **Export
+> submission** action instead follows each submission's own update access.

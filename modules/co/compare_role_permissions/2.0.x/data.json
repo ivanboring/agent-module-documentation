@@ -1,7 +1,7 @@
 {
   "name": "Compare role permissions",
   "data_name": "compare_role_permissions",
-  "description": "Compares the permissions granted to different roles side by side.",
+  "description": "Admin form that compares the permissions of two user roles side by side, listing only the permissions that differ. Read-only audit aid; does not grant or revoke permissions.",
   "version": "2.0.x",
   "package": "Administration",
   "composer_namespace": "drupal/compare_role_permissions",
@@ -9,7 +9,7 @@
   "dependent_modules": [
     "drupal:user"
   ],
-  "configure": null,
+  "configure": "compare_role_permissions.compare_form",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -21,7 +21,7 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools",

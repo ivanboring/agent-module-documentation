@@ -38,8 +38,8 @@ Enabling it also enables Webform if it is not already on.
 
 At **People → Permissions** (`/admin/people/permissions`), give the roles that
 should be able to export the **Download any webform submission managed files**
-permission. This is a site-wide grant — see the access note in the
-[overview](../index.md#how-to-use-it) before handing it out.
+permission. Drupal marks it security-sensitive, so grant it only to trusted
+roles — see the [access note](../index.md#how-to-use-it) in the overview.
 
 ## Verify it worked
 

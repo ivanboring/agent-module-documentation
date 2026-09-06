@@ -28,7 +28,10 @@ drush en component_connector -y
 
 ## Verify it worked
 
-The module is a developer framework, so there is nothing user-visible to check.
-Add a component definition YAML file in your theme or module, clear the cache
-(`drush cr`), and confirm your component's theme hook and libraries are picked up
-when you render it.
+The module is a developer framework, so there is little user-visible to check.
+Visit **Configuration → System → Components settings**
+(`/admin/config/system/component_connector_settings`) and confirm the **Theme**
+select appears — set it to the theme that holds your components. Then add a
+component definition YAML file in that theme, clear the cache (`drush cr`), and
+confirm your component's theme hook and libraries are picked up when you render
+it.

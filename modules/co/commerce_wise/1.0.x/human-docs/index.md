@@ -12,18 +12,15 @@ yourself. It depends on Commerce **Payment** (`commerce_payment`) and Commerce
 **Order** (`commerce_order`) — there are no other requirements beyond Commerce
 Core 3.
 
-Its webhook handling is sound: `onNotify()` **verifies the webhook signature
-before doing anything** — it reads the `X-Signature-SHA256` header and validates
-the RSA‑SHA256 signature against **Wise's public key**, rejecting the request if it
-does not validate. Only a notification actually signed by Wise is accepted; the
-module then matches the transfer reference to a local order and records the
-payment. (A minor hardening note: the verify helper treats any truthy result as
-valid rather than strictly `=== 1`, but with a fixed valid key and SHA256 this is
-not a practical bypass.)
+When Wise sends a deposit notification, `onNotify()` reads the `X-Signature-SHA256`
+header and runs `openssl_verify` against **Wise's public key**, then matches the
+transfer reference to a local order and records the payment, transitioning the order
+to placed.
 
-The gateway does **not** work on enable — you must add and configure a Wise
-gateway, providing your **Wise API token** and **Wise's webhook public key**, and
-you need a Wise business account.
+The gateway does **not** work on enable — you must add and configure a Wise Quick Pay
+gateway, providing your **Wise @tag** and **Wise's webhook public key** and choosing
+the test/live mode, and you need a Wise business account. There is no API token to
+enter.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -33,8 +30,8 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 
 1. [Installation](installation/index.md) — install with Composer and enable the
    module.
-2. [Configuration](configuration/index.md) — add the Wise gateway, enter the API
-   token and public key, and set up the webhook.
+2. [Configuration](configuration/index.md) — add the Wise gateway, enter the Wise
+   @tag and public key, and set up the webhook.
 
 ## Where it lives in the admin menu
 

@@ -28,10 +28,12 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 There is **no configuration page** — the module just adds a comparison report; see
 *How to use it* below.
 
-## Where it lives in the admin menu
+## Where it lives
 
-The comparison tool lives under the permissions area at **People → Permissions →
-Compare role permissions** (`/admin/people/permissions/crp`).
+The comparison tool is served at **`/admin/people/permissions/compare`**. The
+module does **not** add a menu tab or link, so reach it either by that URL
+directly or via the **Configure** link next to the module on the Extend page
+(`/admin/modules`).
 
 ## How to use it
 
@@ -39,7 +41,8 @@ Compare role permissions** (`/admin/people/permissions/crp`).
 2. Under **People → Permissions**, grant the **compare role permissions**
    permission to the roles that should be able to use the tool (keep this to
    trusted administrators).
-3. Go to `/admin/people/permissions/crp`, select **two different roles**, and
-   click **Submit**.
-4. Review the side‑by‑side comparison to see exactly which permissions differ
-   between the two roles.
+3. Go to `/admin/people/permissions/compare`, select **two different roles**, and
+   click **Compare**.
+4. Review the side‑by‑side comparison — it lists only the permissions that
+   **differ** between the two roles (with a Yes/No column per role). If the two
+   roles have identical permissions, you'll see a message saying so.

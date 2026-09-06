@@ -1,25 +1,29 @@
 {
   "name": "Commit History",
   "data_name": "commit_history",
-  "description": "Provides an admin page listing repository commit history.",
+  "description": "Admin report page that lists the commit history of a GitLab or GitHub repository, fetched over HTTP via the spiriitlabs/commit-history library and filterable by year.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/commit_history",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "spiriitlabs/commit-history": "1.*"
+  },
   "dependent_modules": [],
-  "configure": null,
+  "configure": "commit_history.settings",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/commit_history",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "spiriitlabs/commit-history"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"

@@ -25,8 +25,8 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 1. [Installation](installation/index.md) — install the module and its Entity API
    and Inline Entity Form dependencies, and enable the toolbar submodule.
 
-There is **no single settings form** for this module. You set it up by
-activating the component types you want (an admin listing), then adding Component
+The module's **Settings** page (Structure → Component → Settings) is where you
+**activate the component types** you want to make available; you then add Component
 Builder fields to a content type — described under "How to use it" below.
 
 ## Where it lives in the admin menu

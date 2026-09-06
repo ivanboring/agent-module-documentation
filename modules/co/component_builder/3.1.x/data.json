@@ -1,7 +1,7 @@
 {
   "name": "Component Builder",
   "data_name": "component_builder",
-  "description": "Lets site builders create and manage reusable content components.",
+  "description": "Page-building tool: compose pages from a library of reusable component plugins, stored as component_wrapper/component_item content entities and rendered through module-provided Twig templates; assembled with Inline Entity Form and an optional drag-and-drop toolbar.",
   "version": "3.1.x",
   "package": "Component Builder",
   "composer_namespace": "drupal/component_builder",
@@ -10,7 +10,7 @@
     "entity:entity",
     "inline_entity_form:inline_entity_form"
   ],
-  "configure": null,
+  "configure": "component_builder.settings",
   "core_version_requirement": "^10||^11",
   "active_installs": null,
   "list_position": null,

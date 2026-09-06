@@ -10,9 +10,10 @@ integration for embedding component variants inside CKEditor 5 content.
 
 It depends on the **Entity API** (`entity`), the **CodeMirror Editor**
 (`codemirror_editor`), and core **Layout Builder** (`layout_builder`). It
-provides its own permissions and ships two optional submodules — an engine
-submodule and a Workspaces submodule for publishing component changes alongside a
-workspace.
+provides its own permissions and ships optional submodules — an engine
+submodule, a Workspaces submodule for publishing component changes alongside a
+workspace, and a Group submodule (requires the Group module) for per-group
+component/variant selection.
 
 **A security note worth reading before you enable it:** components can contain
 markup and template code, which means whoever can create or edit them holds a

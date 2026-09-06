@@ -21,13 +21,21 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 1. [Installation](installation/index.md) — install with Composer and enable the
    module.
 
-There is **no configuration page** for this module — components are defined in
-YAML files in your theme or module, not through an admin form.
+## Configuration
+
+There is one small settings page, at **Configuration → System → Components
+settings** (`/admin/config/system/component_connector_settings`, permission
+*Administer site configuration*). It has a single **Theme** select: choose the
+theme whose folder holds your component definitions. The module only scans that
+one theme for `*.theme.yml` / `*.suggestion.yml` files. The install default is
+the **Claro** admin theme, so in most projects you will point this at your
+front-end theme.
 
 ## Where it lives in the admin menu
 
-Component Connector adds no admin settings page. You work with it entirely in
-code: declare your component definitions in YAML files, add the CSS/JS libraries
-they reference, and render the components through your templates. Clearing the
-cache (`drush cr`) after adding or changing a definition ensures Drupal picks up
-the new theme hooks and libraries.
+Apart from that one Theme select, you work with Component Connector entirely in
+code: declare your component definitions in YAML files inside the configured
+theme, add the CSS/JS the components reference (a `name.css` / `name.js` next to
+the definition is picked up automatically), and render the components through
+your templates. Clearing the cache (`drush cr`) after adding or changing a
+definition ensures Drupal picks up the new theme hooks and libraries.

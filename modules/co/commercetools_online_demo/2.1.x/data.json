@@ -1,7 +1,7 @@
 {
   "name": "commercetools Online Demo",
   "data_name": "commercetools_online_demo",
-  "description": "Zero-click commercetools demo with a pre-configured B2C Lifestyle store.",
+  "description": "Install-only orchestrator that turns a Drupal site into a pre-configured commercetools B2C Lifestyle demo store; all behaviour is in a single hook_install, no routes/controllers/forms.",
   "version": "2.1.x",
   "package": "Commerce",
   "composer_namespace": "drupal/commercetools_online_demo",
@@ -24,9 +24,9 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "E-commerce"

@@ -3,13 +3,24 @@ Complete Webform Exporter packages a webform submission as a ZIP containing a sp
 
 ---
 
-Webform's own exporters produce the submission data; the attachments are a separate problem, and on forms that collect documents — applications, claims, tenders, HR intake — the attachments are usually the point. This module closes that gap: `ExporterService` builds the spreadsheet, collects the file ids and signature paths referenced by the submission, and zips everything together. A `WebformSubmissionsExporterAction` gives the same thing in bulk from a Views listing.
+Webform's own exporters produce the submission data; the attachments are a separate problem, and on forms that collect documents — applications, claims, tenders, HR intake — the attachments are usually the point. This module closes that gap: `ExporterService` builds the spreadsheet, collects the file ids and signature images the submission references, and zips everything together. A `WebformSubmissionsExporterAction` gives the same thing in bulk from a Views listing.
 
-Two things to weigh before enabling it.
+## How it works
 
-**The route does not check that the submission belongs to the webform in the URL, and applies no entity access.** `downloadDownload()` loads `Webform::load($webform_id)` and `WebformSubmission::load($submission_id)` independently, checks only that both exist, and proceeds. Webform's per-form `view_any` / `view_own` submission access is bypassed entirely, replaced by one site-wide permission. That permission is `restrict access: TRUE` and its description is honest — *"Allows downloading **any** submissions managed files"* — but there is no narrower option, so the feature cannot be delegated to a team without giving them every submission on the site, attachments included. If uploads live in `private://`, the server-side zipping also bypasses core's file-download access hooks. (Read from source; the route could not be exercised here because of the next point.)
+- The per-submission download is a route,
+  `/admin/structure/webform/manage/{webform_id}/submission/{submission_id}/files_download`, exposed
+  as an **Export submission** operation link on each submission row. It requires the module's
+  **Download any webform submission managed files** permission, which is defined `restrict access: TRUE`.
+- The bulk **Export submission** action is registered into Webform's submission bulk-operations list
+  at install. It acts on the submissions you select and requires **update access** to those
+  submissions.
+- Either way you get a single ZIP: one `.xlsx` sheet (fixed columns for serial, submission id,
+  created date, user, language and IP address, then a column per form element) together with the
+  submission's uploaded files and any signature images.
 
-**The service type-hints concrete classes rather than interfaces**, and that breaks it outright on some sites. `ExporterService::__construct()` takes `FileUrlGenerator` and `StreamWrapperManager` — the implementations, not `FileUrlGeneratorInterface` / `StreamWrapperManagerInterface`. `file_url_generator` is a service decoupled and CDN modules routinely replace. **Verified:** with `lupus_decoupled_ce_api` installed, which provides its own `FileUrlGenerator implements FileUrlGeneratorInterface`, the route returns HTTP 500 with a `TypeError` and the feature is dead.
+## Worth knowing before you rely on it
+
+**The service type-hints concrete classes rather than interfaces**, and that breaks the download on some sites. `ExporterService::__construct()` takes `FileUrlGenerator` and `StreamWrapperManager` — the implementations, not `FileUrlGeneratorInterface` / `StreamWrapperManagerInterface`. `file_url_generator` is a service that decoupled and CDN modules routinely replace. **Verified:** with `lupus_decoupled_ce_api` installed, which provides its own `FileUrlGenerator implements FileUrlGeneratorInterface`, the route returns HTTP 500 with a `TypeError`. Check whether your site swaps `file_url_generator` before depending on this feature.
 
 ---
 
@@ -24,7 +35,5 @@ Two things to weigh before enabling it.
 - Export tender responses with their documents.
 - Move submissions out of Drupal for offline processing.
 - Satisfy a records request with the original uploads.
-- Restrict submission export to trusted staff.
+- Grant the export permission only to the roles that should hold it.
 - Check whether the site replaces `file_url_generator` before relying on it.
-- Audit who holds the export permission.
-- Decide whether site-wide submission access is acceptable.

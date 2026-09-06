@@ -18,7 +18,5 @@ commercetools Online Demo spins up a zero-click commercetools demo — a pre-con
 - Require `content_translation` and `locale`.
 - Support Drupal 9, 10, and 11.
 - Demo headless commerce.
-- Aid evaluation.
-- Support Drupal.
-- Support Drupal.
-- Support Drupal.
+- Configure everything from a single `hook_install` (themes, site name, logo/favicon, demo credentials, front page).
+- Deploy the shared `demo1_b2c_lifestyle` account via the commercetools_demo deployer.

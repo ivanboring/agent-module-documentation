@@ -45,6 +45,9 @@ Enable these only if you need them:
 - **Component Library Workspaces** (`component_library_workspaces`) — integrates
   with core Workspaces so you can publish component changes together with a
   workspace.
+- **Group Component Library** (`gcomponent_library`) — integrates with the
+  contributed **Group** module (which it requires) so each group can select its
+  own component styles/variants. Only relevant on sites using Group.
 
 For example:
 

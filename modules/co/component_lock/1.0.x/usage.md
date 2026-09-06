@@ -3,13 +3,16 @@ Component Lock lets Layout Builder components be locked by locking their setting
 
 ---
 
-Component Lock **lets Layout Builder components be locked** — locking a placed component's settings so it
-can't be edited/moved/removed by other editors, protecting a curated layout. It depends on core Layout Builder and
-the Form Decorator module.
+Component Lock **lets Layout Builder component settings be locked** — hiding a placed component's
+configuration-form fields (all of them, or specific ones) from editors who lack the core **Administer blocks**
+permission, so a curated component's settings can't be changed by other editors. It does not stop a component from
+being moved or removed, or the layout otherwise re-arranged — it locks the settings *form*, not the placement. It
+depends on core Layout Builder and the Form Decorator module.
 
-Use it to protect components in Layout Builder. It is a content-editing/layout-governance feature; it constrains
-what editors can change in a layout and has no broad access-control role (it complements, not replaces, Layout
-Builder permissions). Lock the components you want protected.
+Use it to protect a component's settings in Layout Builder. It is a content-editing/layout-governance feature; it
+constrains what settings editors can change and has no broad access-control role (it complements, not replaces,
+Layout Builder permissions). Administrators with **Administer blocks** always see and edit every setting. Lock the
+component settings you want protected.
 
 ---
 

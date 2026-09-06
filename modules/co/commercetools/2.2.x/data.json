@@ -1,13 +1,19 @@
 {
   "name": "commercetools",
   "data_name": "commercetools",
-  "description": "Base integration of the commercetools headless commerce platform with Drupal.",
+  "description": "Base integration of the commercetools headless/API-first commerce platform with Drupal: connects to a commercetools project over the REST/GraphQL API using OAuth2 client credentials, caches catalog data locally, and provides the framework for the UI submodules (Content, Decoupled). Ships no UI itself.",
   "version": "2.2.x",
   "package": "Commerce",
   "composer_namespace": "drupal/commercetools",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "commercetools/commercetools-sdk": "^10.14.0",
+    "cfpinto/graphql": "^2.0",
+    "symfony/intl": "~6.4 || ^7.0",
+    "webonyx/graphql-php": "^14.11",
+    "punic/punic": "^3.8.1"
+  },
   "dependent_modules": [],
-  "configure": null,
+  "configure": "commercetools.settings",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -16,11 +22,18 @@
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [],
+  "submodules": [
+    "commercetools_content",
+    "commercetools_decoupled",
+    "commercetools_demo",
+    "commercetools_entity"
+  ],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "commercetools_subscriptions_destination"
+  ],
   "categories": [
     "E-commerce",
     "Decoupled"

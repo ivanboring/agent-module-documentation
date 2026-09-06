@@ -1,7 +1,7 @@
 {
   "name": "Commerce Zero-Out Tax Promotion",
   "data_name": "commerce_zero_out_tax",
-  "description": "adds a promotion offer that zeroes out tax by removing tax adjustments from the order.",
+  "description": "Provides a Commerce promotion offer (\"Zero out tax\", id zero_out_tax_offer) that resets an order's tax to zero: when the promotion applies it flags the order, and an order processor replaces the selected tax adjustments (included and/or non-included) with 0-amount adjustments on the order and its items.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/commerce_zero_out_tax",
@@ -19,7 +19,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "E-commerce"

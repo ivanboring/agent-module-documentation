@@ -1,7 +1,7 @@
 {
   "name": "Commerce Wise",
   "data_name": "commerce_wise",
-  "description": "Wise (TransferWise) off-site payment gateway for Drupal Commerce. The webhook (onNotify) verifies Wise's RSA-SHA256 signature (X-Signature-SHA256) against Wise's public key before processing, rejecting unsigned/invalid notifications.",
+  "description": "Drupal Commerce offsite payment gateway for Wise Quick Pay. At checkout the shopper is redirected (GET) to a Wise Quick Pay payment link; Wise notifies the store via a webhook (onNotify), which maps the transfer reference to the order and records a completed payment. Configures a Wise @tag, Wise's webhook public key, account type, and test/live mode.",
   "version": "1.0.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_wise",
@@ -22,7 +22,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "E-commerce"

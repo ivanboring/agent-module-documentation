@@ -9,8 +9,9 @@ to organize and recognize volunteer contributions.
 The problem it solves: coordinating "who is doing what" among volunteers usually
 means spreadsheets or ad‑hoc pages. Community Tasks gives you a purpose‑built
 content type with a simple three‑stage workflow — the module creates a task
-**node type** and uses the node's author (uid) and the promote flag to move a task
-through *open → committed → completed*. It comes with **full Views integration**,
+**node type** with a dedicated *task state* field that moves each task through
+*open → committed → completed*, while the node's author (uid) records the
+"responsible person" who committed to it. It comes with **full Views integration**,
 so you can build task lists and volunteer‑history displays.
 
 It builds on core modules only — **Comment**, **Datetime**, **Options**, **Text**,
