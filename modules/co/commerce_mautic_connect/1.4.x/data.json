@@ -1,29 +1,39 @@
 {
   "name": "Commerce Mautic Connect",
   "data_name": "commerce_mautic_connect",
-  "description": "Connects Drupal Commerce with Mautic for marketing automation (abandoned carts, magic links, RFM).",
-  "version": "1.3.x",
+  "description": "Connects Drupal Commerce to Mautic marketing automation: syncs abandoned-cart HTML with magic-link recovery, coupon-code tags, RFM customer metrics, and billing-profile customer details to Mautic contacts. All Mautic API traffic is delegated to the advanced_mautic_integration wrapper; every feature is opt-in and off by default. Extensible via the MauticFeature plugin type.",
+  "version": "1.4.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_mautic_connect",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "php": "^8.1",
+    "drupal/core": "^10 || ^11",
+    "drupal/commerce": "^2.0 || ^3.0",
+    "drupal/advanced_mautic_integration": "^1.0"
+  },
   "dependent_modules": [
     "commerce:commerce_cart",
     "advanced_mautic_integration:advanced_mautic_integration"
   ],
-  "configure": null,
+  "configure": "commerce_mautic_connect.settings",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/commerce_mautic_connect",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "^8.1",
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/commerce_exchanger": "Automatic currency conversion for customer-metric (RFM) totals in multi-currency stores.",
+    "drupal/mautic_audiences": "Render-time companion: turns the segments and tags this module pushes into block/Layout Builder visibility conditions, a Views filter, Twig functions, tokens, and a JS API."
+  },
   "submodules": [],
-  "provides_permissions": true,
-  "provides_drush_commands": false,
+  "provides_permissions": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "mautic_feature (plugin.manager.commerce_mautic_connect.mautic_feature, #[MauticFeature])"
+  ],
   "categories": [
     "E-commerce",
     "Integrations"

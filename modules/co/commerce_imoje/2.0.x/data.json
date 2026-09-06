@@ -1,11 +1,13 @@
 {
   "name": "Commerce Imoje",
   "data_name": "commerce_imoje",
-  "description": "Commerce Imoje integrates the imoje payment gateway (Poland) with Drupal Commerce.",
+  "description": "Commerce integration for the imoje payment gateway (ING, Poland). Adds two Drupal Commerce payment gateway plugins — imoje (off-site paywall redirect) and imoje Blik (on-site BLIK code entry via AJAX) — with admin-issued refunds. Orders are confirmed by imoje's asynchronous IPN, whose X-Imoje-Signature is verified against the configured service key before a payment is recorded.",
   "version": "2.0.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_imoje",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^3"
+  },
   "dependent_modules": [
     "commerce:commerce_payment"
   ],

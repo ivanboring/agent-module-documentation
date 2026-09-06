@@ -36,24 +36,25 @@ confirmed automatically.
 
 ## Store your ifthenpay keys securely
 
-The MB key, anti-phishing key and credit-card key are secrets — keep them out of
-version control. Store each value in an environment variable and reference it
-through a **Key** entity where the module supports one:
+The MB key, anti-phishing keys and credit-card key are secrets. They are entered
+directly on each payment gateway and stored in that gateway's configuration (the
+standard Drupal Commerce gateway pattern — the module does not use the Key module
+for these values). To keep them safe:
 
-```bash
-ddev dotenv set .ddev/.env --ifthenpay-mb-key=<your-key>
-ddev restart
-```
-
-If the [Key module](https://www.drupal.org/project/key) is not enabled yet, add it
-with `ddev composer require drupal/key && ddev drush en key -y`, then create a Key
-that reads the environment variable. Always run ifthenpay over HTTPS.
+- Restrict the **Administer payment gateways** permission to trusted staff — anyone
+  with it can read the keys on the gateway edit form.
+- If you export configuration, keep those config files out of any public
+  repository, since the keys are stored in plain text.
+- Always run ifthenpay over **HTTPS** so the callbacks and card return are
+  encrypted in transit.
 
 ## How payments are confirmed (why this is safe)
 
-- **Multibanco** confirmation is done by the module **polling ifthenpay's API
-  server-side** — the API's status is authoritative, so there is nothing in the
-  browser a shopper could forge.
+- **Multibanco (and MB WAY)** confirmation arrives via an **authenticated ifthenpay
+  callback**: the callback carries your anti-phishing key (validated with a strict
+  comparison), the Multibanco entity is validated per payment, and the callback
+  amount is matched against the pending order before it is marked paid — so a
+  forged or under-reported callback is rejected.
 - **Credit card** returns are verified: the module recomputes ifthenpay's security
   key `SK = SHA-256(orderId + amount + requestId + card key)` and compares it with
   a strict check, and it re-verifies the charged amount against the order amount.

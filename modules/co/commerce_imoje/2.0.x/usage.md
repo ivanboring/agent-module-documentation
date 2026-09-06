@@ -1,29 +1,25 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Commerce Imoje integrates the imoje payment gateway (Poland) with Drupal Commerce.
+Commerce Imoje integrates the imoje payment gateway (ING, Poland) with Drupal Commerce.
 
 ---
 
-Commerce Imoje provides Commerce integration for imoje — a payment gateway for Poland — the shopper is redirected to imoje (ING) to pay and the order is completed on notification.
+Commerce Imoje provides two Drupal Commerce payment gateway plugins for imoje: **imoje** (off-site paywall redirect — the shopper pays on imoje's ING page) and **imoje Blik** (on-site BLIK code entry driven by AJAX). Refunds can be issued from the Drupal order/payment admin. The order is confirmed by imoje's asynchronous notification (IPN).
 
-Security: the IPN handler (`IPNHandler::process`) validates the `X-Imoje-Signature` header (sha256 of the payload + service key) FIRST and throws on mismatch before completing — a correct, defensive pattern. Store the imoje API credentials securely (env-backed), never committed. Depends on `commerce_payment`; supports Drupal per ^10 || ^11.
+Payment confirmation: when imoje posts its IPN to `/payment/notify/{payment_gateway_id}`, the handler (`IPNHandler::process`) verifies imoje's `X-Imoje-Signature` header — a keyed hash of the request payload with your gateway service key — FIRST, and rejects the request on a mismatch before any payment is recorded. Outbound calls to imoje use the core HTTP client (TLS verification on) against fixed imoje API hosts chosen by the gateway mode; the amount is computed server-side from the order. Store the imoje service key and API token as gateway configuration and keep exported config out of public version control. Depends on `commerce_payment`; supports Drupal per `^10.3 || ^11`.
 
 ---
 
-- Integrate the imoje gateway.
-- Serve Poland.
-- Redirect/charge via the provider.
-- Complete the order after payment.
-- the IPN handler (`IPNHandler::process`) validates the `X-Imoje-Signature` header (sha256 of the payload + service key) FIRST and throws on mismatch before completing — a correct, defensive pattern.
-- Use Drupal Commerce payment.
-- Store credentials securely (env-backed).
-- Never commit credentials.
-- Depend on `commerce_payment`.
-- Support ^10 || ^11.
-- Handle checkout.
-- Process payments.
-- Confirm the payment.
-- Handle notifications.
-- Support Commerce.
-- Integrate imoje.
-- Charge customers.
-- Reconcile orders.
+- Integrate the imoje (ING, Poland) gateway with Drupal Commerce.
+- Offer an off-site paywall redirect (`imoje_redirect`) and on-site BLIK (`imoje_blik`).
+- Redirect the shopper to imoje, or take a BLIK code on-site and poll for the result.
+- Complete the order after imoje's signed notification confirms the payment.
+- Verify the `X-Imoje-Signature` on the IPN against the gateway service key before recording a payment.
+- Compute the charged amount server-side from the order/payment.
+- Call imoje's REST API with a Bearer token over TLS to fixed imoje hosts by mode.
+- Issue full and partial refunds from the Drupal admin (from a completed payment).
+- Restrict the BLIK create/status routes to users with order-update access.
+- Dispatch `ImojePaymentEvent` (received / updated) so other modules can react.
+- Keep the imoje service key and API token in gateway configuration; keep exported config out of public version control.
+- Register the notification URL `<site>/payment/notify/{gateway_id}` in the imoje panel.
+- Depend on `commerce_payment`; support Drupal `^10.3 || ^11`.
+- Handle checkout, process payments, reconcile order state via the IPN.

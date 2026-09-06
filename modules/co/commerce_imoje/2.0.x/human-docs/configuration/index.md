@@ -26,18 +26,18 @@ configured, payments will not be confirmed.
 
 ## Store credentials securely
 
-Your imoje API credentials and service key are secrets — keep them out of version
-control. Store each value in an environment variable and reference it through a
-**Key** entity where the module supports one:
+Your imoje **service key** and **API token** are secrets. The module stores them in the
+payment gateway's configuration (the standard Drupal Commerce pattern), so editing them
+requires the **administer commerce payment gateways** permission and they are never sent to
+the browser. Keep them out of public version control:
 
-```bash
-ddev dotenv set .ddev/.env --imoje-api-key=<your-key>
-ddev restart
-```
-
-If the [Key module](https://www.drupal.org/project/key) is not enabled yet, add it
-with `ddev composer require drupal/key && ddev drush en key -y`, then create a Key
-that reads the environment variable.
+- If you export configuration (`drush config:export`), the gateway config includes these
+  values — keep the exported `commerce_payment.commerce_payment_gateway.*` files out of any
+  public repository, or override the secret values per environment via `settings.php`
+  (`$config['commerce_payment.commerce_payment_gateway.<id>']['configuration']['token'] = getenv('IMOJE_TOKEN');`)
+  so the real secrets live only in an environment variable on each server.
+- Use the **live** credentials only in production and the **sandbox** credentials in the
+  test mode.
 
 ## How payments are confirmed (why this is safe)
 

@@ -1,11 +1,14 @@
 {
   "name": "Commerce Measurement",
   "data_name": "commerce_measurement",
-  "description": "Provides a Commerce condition based on physical measurements (weight/dimensions) of an order.",
+  "description": "Provides two Drupal Commerce condition plugins that evaluate the physical measurement fields (weight, volume, area, etc.) of purchased product variations: a per-order-item condition and an order-total condition. Conditions return a boolean only and never modify price. Does not support the physical_dimensions field type.",
   "version": "1.0.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_measurement",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^2.4 || ^3",
+    "drupal/physical": "^1.5"
+  },
   "dependent_modules": [
     "commerce:commerce",
     "physical:physical"
@@ -22,7 +25,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "E-commerce"
@@ -35,6 +38,7 @@
     "measurement",
     "physical",
     "weight",
+    "volume",
     "condition"
   ],
   "project_description": "Commerce Core condition from physical measurement fields such as physical weight and volume.\n\n Features \n This module enables you to use conditions on Commerce Core per product variation measurement fields (weight, volume, etc...) and their values. Additionally, there is a condition based on total measurement values for the entire order.\n\n Post-Installation \n Use conditions on promotions, shipping methods, payment gateways, or any other entity type which have support for Commerce Core condition.\n\n Additional Requirements \n \n Commerce Core \n Physical Fields \n \n Similar projects \n Unknown.\n\n Supporting this Module \n If you need customization please contact us here .\n\n Back to top",

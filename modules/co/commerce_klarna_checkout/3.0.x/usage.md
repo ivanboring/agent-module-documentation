@@ -4,9 +4,11 @@ Commerce Klarna Checkout provides Commerce integration for Klarna Checkout, conf
 ---
 
 Commerce Klarna Checkout provides a Drupal Commerce integration for Klarna Checkout — Klarna's hosted
-checkout experience embedded in the store. Payment status is confirmed by querying Klarna's API
-(`KlarnaManager::getOrder()`) rather than trusting client-side or notification data, and `onNotify`
-processes the authoritative order state. It depends on Commerce Payment.
+checkout experience embedded in the store (rebranded Kustom Checkout on the 3.x branch). On the push
+callback the module re-fetches the Klarna order over Klarna's authenticated API and creates the Commerce
+payment from Klarna's own order amount and currency, binding it to the Commerce order via Klarna's
+merchant reference. `onNotify` acts on that authoritative order state, and acknowledgement is idempotent.
+It depends on Commerce Payment.
 
 This API-verification model is the correct posture for a checkout/payment integration: order status comes
 from an authenticated call to Klarna, so forged callbacks cannot mark an order paid. When adopting, store
@@ -18,7 +20,7 @@ concepts (orders, payments) apply.
 - Integrate Klarna Checkout with Commerce.
 - Embed Klarna's hosted checkout.
 - Confirm order status via Klarna's API.
-- Query getOrder for authoritative state.
+- Re-fetch the Klarna order for authoritative state.
 - Process onNotify with real state.
 - Reject forged callbacks (API-verified).
 - Depend on Commerce Payment.

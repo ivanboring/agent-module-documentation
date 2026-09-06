@@ -1,11 +1,13 @@
 {
   "name": "Commerce Konnect",
   "data_name": "commerce_konnect",
-  "description": "Commerce Konnect integrates the Konnect payment gateway (Tunisia) with Drupal Commerce.",
+  "description": "Commerce Konnect is an off-site Drupal Commerce payment gateway for Konnect (konnect.network), a Tunisian PSP. Shoppers pay on Konnect's hosted page (bank cards, E-Dinar, Flouci) and the order is completed after an authenticated server-side re-fetch of the transaction.",
   "version": "1.1.x",
   "package": "Commerce (Tunisia)",
   "composer_namespace": "drupal/commerce_konnect",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^2 || ^3"
+  },
   "dependent_modules": [
     "commerce:commerce_payment"
   ],
@@ -19,9 +21,9 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "E-commerce"

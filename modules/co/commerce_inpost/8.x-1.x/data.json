@@ -1,11 +1,14 @@
 {
   "name": "Commerce InPost",
   "data_name": "commerce_inpost",
-  "description": "Provides an InPost shipping provider (parcel lockers) for Drupal Commerce.",
+  "description": "Adds InPost parcel-locker (Paczkomat) delivery to Drupal Commerce: a fixed-price shipping method plus a checkout pane where the shopper picks a locker via InPost's client-side easyPack geowidget; the chosen locker is stored on the order and shown at review and on the order view. No server-side InPost API integration and no credentials.",
   "version": "8.x-1.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_inpost",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^2 || ^3",
+    "drupal/commerce_shipping": "^2 || ^3"
+  },
   "dependent_modules": [
     "commerce:commerce",
     "commerce_shipping:commerce_shipping"

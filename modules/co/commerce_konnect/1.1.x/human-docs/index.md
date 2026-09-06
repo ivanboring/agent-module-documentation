@@ -18,12 +18,13 @@ The verification model is the strongest of its kind. When the shopper returns,
 `onReturn()` **re‑fetches the transaction server‑side from Konnect's API** (using
 Basic authentication) by its payment ID, **rejects order‑ID switching** (the
 transaction's order ID must match the order being completed), completes the payment
-**only when the API status is `CAPTURED`**, and records it using the order's own
-total. On top of that, Konnect supports **asynchronous webhooks**, so orders are
-updated even if the customer closes their browser after paying. A forged return or
-callback cannot mark an order paid, because the truth always comes from Konnect's
-authenticated API. Your job is to store the **Konnect API credentials** securely —
-environment‑backed, never committed.
+**only when the API status is `CAPTURED`**, records it using the order's own
+total, and is **idempotent** (a repeated return does not create a second payment,
+because it dedups on the Konnect transaction ID). The completion decision therefore
+always comes from Konnect's authenticated API rather than from anything in the
+returning request, so a forged return cannot mark an order paid. Your job is to
+store the **Konnect API credentials** securely — environment‑backed, never
+committed.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -34,7 +35,7 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 1. [Installation](installation/index.md) — install with Composer and enable the
    module.
 2. [Configuration](configuration/index.md) — add the Konnect payment gateway,
-   enter your credentials, choose sandbox versus live, and register the webhook.
+   enter your credentials, and choose sandbox versus live.
 
 ## Where it lives in the admin menu
 

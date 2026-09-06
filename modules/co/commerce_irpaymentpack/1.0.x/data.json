@@ -1,7 +1,7 @@
 {
   "name": "Commerce Iranian Payment Pack",
   "data_name": "commerce_irpaymentpack",
-  "description": "A collection of Iranian bank payment gateways for Drupal Commerce (server-side transaction verification).",
+  "description": "Bundle of seven Iranian bank / PSP off-site redirect payment gateways for Drupal Commerce (Zarinpal, Zibal, Mellat, Melli/Sadad, Saman/SEP, Pasargad, Saderat) that verify each transaction server-side against the bank's API before completing the payment.",
   "version": "1.0.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_irpaymentpack",
@@ -17,8 +17,12 @@
   "project_url": "https://www.drupal.org/project/commerce_irpaymentpack",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
-  "suggests": {},
+  "library_dependencies": [
+    "pepco-api/php-rest-sdk (optional; required only for the Pasargad gateway)"
+  ],
+  "suggests": {
+    "pepco-api/php-rest-sdk": "PHP SDK required to use the Pasargad Bank gateway (provides \\Pasargad\\Pasargad)."
+  },
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
@@ -35,7 +39,13 @@
     "iran",
     "payment",
     "gateway",
-    "saman"
+    "saman",
+    "zarinpal",
+    "zibal",
+    "mellat",
+    "melli",
+    "pasargad",
+    "saderat"
   ],
   "project_description": "This module provides some payment gateways for Iranian Banks.\n\n Back to top \n\n Supported Banks / Gateways: \n Currently the following Banks are supported:\n\n \n MellatBank \n Melli Bank \n ZarinPal \n Zibal \n Pasargad \n Saman Bank \n Saderat Bank \n \n Back to top \n\n Project sponsors \n \nThe following individuals and companies have collaborated in the development of this module.\n\n \n LinoWeb \n milaniz \n Mohsen Molaie \n IranDrupal \n Back to top",
   "maintenance_status": "Actively maintained",

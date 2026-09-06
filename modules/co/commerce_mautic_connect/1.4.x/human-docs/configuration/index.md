@@ -43,13 +43,14 @@ you use, you can set:
 The module creates the custom fields it needs inside Mautic automatically, so you
 do not have to define recency/frequency/monetary fields by hand.
 
-## Permissions
+## Access to the settings
 
-The module provides its own permissions — grant them at
-**People → Permissions** (`/admin/people/permissions`). Give access to the
-Mautic-connection and feature settings only to trusted marketing/administrator
-roles, since those settings govern what customer data is sent to an external
-service.
+The module does not define its own permissions. Its settings page
+(`/admin/commerce/config/mautic-connect`) and the template-preview tool are
+governed by the core **Administer site configuration** permission
+(`administer site configuration`). Because these settings decide what customer
+data is sent to an external service, grant that permission only to trusted
+administrator roles.
 
 ## A note on privacy
 

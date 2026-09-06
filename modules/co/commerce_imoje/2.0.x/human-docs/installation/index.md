@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- **Drupal 10 or 11** (`core_version_requirement: ^10 || ^11`).
+- **Drupal 10.3 or 11** (`core_version_requirement: ^10.3 || ^11`).
 - **Drupal Commerce** (Commerce 2) with the **Payment** module
   (`commerce_payment`) enabled — this is the only dependency, and there are no
   additional PHP libraries.

@@ -18,15 +18,18 @@ separate submodule you enable only if you need it:
 - **Credit card** (`commerce_ifthenpay_cc`) — redirect-based card payments through
   ifthenpay.
 
-The payment confirmations are implemented correctly. Multibanco confirms by
-**polling ifthenpay's API server-side** (the server's status is authoritative, so
-there is nothing a shopper can forge), and the credit-card return handler
-**recomputes and verifies ifthenpay's security key** (a SHA-256 of the order ID,
-amount, request ID and your card key) with a strict comparison **and** re-checks
-that the charged amount equals the order amount — throwing an exception on any
-mismatch, so forged or tampered returns are rejected. Handle your ifthenpay keys
-(MB key, anti-phishing key, credit-card key) as secrets, over HTTPS. It depends on
-Commerce Payment and runs on Drupal 10 and 11.
+The payment confirmations are implemented correctly. Multibanco confirms through
+an **authenticated ifthenpay callback** — the callback carries your anti-phishing
+key (checked with a strict comparison), the Multibanco entity is validated per
+payment, and the callback amount is matched against the pending order before it is
+marked paid, so a forged or under-reported callback cannot force cheap or free
+fulfilment. The credit-card return handler **recomputes and verifies ifthenpay's
+security key** (a SHA-256 of the order ID, amount, request ID and your card key)
+with a strict comparison **and** re-checks that the charged amount equals the
+order amount — throwing an exception on any mismatch, so tampered returns are
+rejected. Handle your ifthenpay keys (MB key, anti-phishing keys, credit-card key)
+as secrets, over HTTPS. It depends on Commerce Payment and runs on Drupal 10 and
+11.
 
 > **Use the 3.0.x branch.** The 2.x branch is no longer supported; it predates the
 > reference-collision mitigation for high order IDs, which the 3.0.x API mode

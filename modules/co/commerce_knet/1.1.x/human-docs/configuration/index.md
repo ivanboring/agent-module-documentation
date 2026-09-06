@@ -6,9 +6,9 @@ global settings page. You add one gateway and configure it there.
 ## Before you start: store your KNET credentials safely
 
 KNET issues a **terminal ID** and a **terminal resource key**. The resource key in
-particular is a secret — it is what the module uses to decrypt and verify the KNET
-response, and anyone with it could forge a valid‑looking return. Never paste these
-into committed code or a configuration export that lands in version control.
+particular is a secret — it is what the module uses to decrypt the KNET response —
+so keep it protected. Never paste these into committed code or a configuration
+export that lands in version control.
 
 On a DDEV site, keep the value in an environment variable and expose it to Drupal
 through a **Key** entity:
@@ -46,8 +46,8 @@ through a **Key** entity:
 
 - **Terminal ID** — the identifier KNET issued for your terminal.
 - **Terminal resource key** — the AES key used to decrypt the `trandata` response
-  from KNET. Enter this (or reference the Key you created above). This is the value
-  that makes forged returns impossible, so protect it accordingly.
+  from KNET. Enter this (or reference the Key you created above). Treat it as a
+  secret and protect it accordingly.
 - **Mode (test vs live)** — start in **test** while you set things up and switch to
   **live** only after confirming a real end‑to‑end payment. Using the wrong mode
   either fails against the live service or produces orders that were never really
@@ -56,8 +56,12 @@ through a **Key** entity:
 ## Save and test end to end
 
 Click **Save**, then place a test order. Choose KNET at checkout; you should be
-redirected to KNET to pay, and on returning the module should **decrypt and verify
-the response** — requiring a `CAPTURED` result and matching the returned amount
-against the order total — before marking the order paid. These checks are what stop
-a tampered return from completing an unpaid order, so confirm the whole flow works
-in **test** before switching to **live**.
+redirected to KNET to pay, and on returning the module **decrypts the response and
+checks it server‑side** — requiring a `CAPTURED` result, a matching order id, and a
+returned amount equal to the order total — before marking the order paid. Confirm
+the whole flow works in **test** before switching to **live**.
+
+> Because of the PHP 8 compatibility caveat noted in the
+> [overview](../index.md), verify that the redirect to KNET and the return both
+> work on your Drupal 10/11 site (patching `src/Helper/SecureText.php` if needed)
+> before going live.

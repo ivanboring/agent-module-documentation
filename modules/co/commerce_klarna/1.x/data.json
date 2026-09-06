@@ -1,11 +1,13 @@
 {
   "name": "Commerce Klarna",
   "data_name": "commerce_klarna",
-  "description": "Commerce Klarna integrates the Klarna payment gateway with Drupal Commerce.",
-  "version": "1.x",
+  "description": "Integrates Klarna (Klarna Payments, Express Checkout, On-site Messaging and Merchant Card Service) with Drupal Commerce as an on-site payment gateway.",
+  "version": null,
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_klarna",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^2.4 || ^3"
+  },
   "dependent_modules": [
     "commerce:commerce_payment"
   ],
@@ -18,10 +20,12 @@
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [],
-  "provides_permissions": true,
+  "submodules": [
+    "commerce_klarna_shipping"
+  ],
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "E-commerce"

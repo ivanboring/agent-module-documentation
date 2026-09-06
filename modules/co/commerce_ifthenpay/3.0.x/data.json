@@ -1,11 +1,13 @@
 {
   "name": "Commerce Ifthenpay",
   "data_name": "commerce_ifthenpay",
-  "description": "Drupal Commerce payment gateways for ifthenpay (Multibanco, MBWay, credit card). Payment verification is correct.",
+  "description": "Drupal Commerce payment gateways for the Portuguese provider ifthenpay: Multibanco references (dynamic via the ifthenpay REST API, or offline entity/sub-entity), plus MB WAY (commerce_ifthenpay_mbway) and redirect-based credit card (commerce_ifthenpay_cc) submodules. Confirmations are anti-phishing-keyed callbacks (Multibanco/MB WAY) and a SHA-256 security-key-verified return (credit card), with amounts bound server-side.",
   "version": "3.0.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_ifthenpay",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^2.0 || ^3.0"
+  },
   "dependent_modules": [
     "commerce:commerce_payment"
   ],
@@ -15,7 +17,7 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/commerce_ifthenpay",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1 (uses readonly promoted constructor properties; no explicit constraint declared, inherited from Drupal 10/11)",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [

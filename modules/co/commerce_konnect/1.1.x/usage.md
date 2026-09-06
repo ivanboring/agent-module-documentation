@@ -13,7 +13,7 @@ Security: `onReturn()` re-fetches the transaction SERVER-SIDE from Konnect's API
 - Serve Tunisia.
 - Redirect/charge via the provider.
 - Complete the order after payment.
-- `onReturn()` re-fetches the transaction SERVER-SIDE from Konnect's API (Basic auth) by `payment_id`, rejects id-switching (`response.
+- `onReturn()` re-fetches the transaction SERVER-SIDE from Konnect's API (Basic auth) by `payment_id`, rejects id-switching (`response.orderId` must equal the order id), and completes only when the API status is `CAPTURED`.
 - Use Drupal Commerce payment.
 - Store credentials securely (env-backed).
 - Never commit credentials.

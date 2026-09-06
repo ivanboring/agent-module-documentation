@@ -1,11 +1,17 @@
 {
   "name": "Commerce Klarna Payments",
   "data_name": "commerce_klarna_payments",
-  "description": "Klarna Payments gateway for Drupal Commerce, verifying push notifications by re-fetching the order from Klarna's API.",
+  "description": "Off-site Drupal Commerce payment gateway for Klarna Payments (single plugin `klarna_payments`). The Klarna JS widget yields an authorization token; the module creates the Klarna order server-side (amounts built from the Commerce order) and reconciles status by re-fetching the order from Klarna's authenticated Order Management API. The async push, browser return, and fraud-notify webhook are each bound to the Commerce order via the Klarna-generated klarna_order_id, so an order is marked paid only on API-verified AUTHORIZED/PART_CAPTURED/CAPTURED status. Distinct from commerce_klarna and commerce_klarna_checkout.",
   "version": "3.0.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_klarna_payments",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "php": ">=8.0",
+    "tuutti/php-klarna-payments": "^3.0",
+    "tuutti/php-klarna-ordermanagement": "^2.0",
+    "webmozart/assert": "*",
+    "drupal/commerce": "^2 || ^3"
+  },
   "dependent_modules": [
     "commerce:commerce_payment",
     "commerce:commerce_price",
@@ -17,8 +23,12 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/commerce_klarna_payments",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
-  "library_dependencies": [],
+  "php_requirement": ">=8.0",
+  "library_dependencies": [
+    "tuutti/php-klarna-payments",
+    "tuutti/php-klarna-ordermanagement",
+    "webmozart/assert"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,

@@ -1,8 +1,7 @@
 # Configuration
 
 Konnect is set up as a Drupal Commerce **payment gateway** — there is no separate
-global settings page. You add one gateway and configure it there, then register a
-webhook in your Konnect portal.
+global settings page. You add one gateway and configure it there.
 
 ## Before you start: store your Konnect credentials safely
 
@@ -53,25 +52,24 @@ through a **Key** entity:
   up and switch to **live** only after confirming a real end‑to‑end payment. Using
   the wrong environment either fails against the live service or produces orders
   that were never really charged.
+- **Send payment confirmation email** — when checked, Konnect sends the payment
+  receipt to the customer.
+- **Webhook URL** — optional. If you supply a URL here, the module forwards it to
+  Konnect (as `webhookUrl`) when it creates each payment. Leave it empty unless
+  Konnect has told you exactly what to enter.
 
-## Register the webhook with Konnect
+## How an order is confirmed
 
-Konnect can notify your store asynchronously so that an order is updated even if the
-customer closes their browser after paying. The gateway settings display a
-**Webhook URL** for this site — **copy it and paste it into your Konnect merchant
-portal** to enable real‑time status updates.
-
-You do not need to add your own signature check on this webhook: when Konnect calls
-back, the module **re‑fetches the transaction from Konnect's authenticated API**,
-confirms the transaction's order ID matches, and completes the order only when the
-API reports `CAPTURED`. A forged webhook or return therefore cannot mark an order
-paid — authenticity comes from the authenticated API lookup, not from the incoming
-request.
+You do not need to add your own signature check. When the shopper returns from
+Konnect, the module **re‑fetches the transaction from Konnect's authenticated API**,
+confirms the transaction's order ID matches this order, and completes the order only
+when the API reports `CAPTURED` — and it does so idempotently. Authenticity comes
+from the authenticated API lookup, not from the returning request, so a forged
+return cannot mark an order paid.
 
 ## Save and test end to end
 
 Click **Save**, then place a test order. Choose Konnect at checkout; you should be
 redirected to Konnect's hosted page to pay, and on returning the order should be
 completed only after the module confirms a `CAPTURED` status server‑side. Confirm
-the whole flow — including a webhook‑driven update — works in **sandbox** before
-switching to **live**.
+the whole flow works in **sandbox** before switching to **live**.

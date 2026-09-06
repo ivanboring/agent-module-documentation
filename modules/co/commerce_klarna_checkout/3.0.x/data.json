@@ -1,11 +1,14 @@
 {
   "name": "Commerce Klarna Checkout",
   "data_name": "commerce_klarna_checkout",
-  "description": "Klarna Checkout payment integration for Drupal Commerce, verifying orders via Klarna's API.",
+  "description": "Integrates Klarna Checkout (the hosted checkout, rebranded Kustom Checkout on 3.x) with Drupal Commerce as an offsite payment gateway plugin. Payment/order state is bound to the Klarna order re-fetched from Klarna's authenticated API. Distinct from commerce_klarna and commerce_klarna_payments.",
   "version": "3.0.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_klarna_checkout",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^2.37 || ^3",
+    "centarro/kco_rest": "^5"
+  },
   "dependent_modules": [
     "commerce:commerce_payment"
   ],

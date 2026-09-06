@@ -1,11 +1,14 @@
 {
   "name": "Commerce License Entity Field",
   "data_name": "commerce_license_entity_field",
-  "description": "Provides a Commerce License type that, when granted, sets a value on a field of one of the purchasing user's entities.",
+  "description": "Provides a single Commerce License type (`entity_field`) that, while a license is active, writes an admin-configured value onto a configured field of a buyer-selected target entity (via a dynamic_entity_reference). Grant sets the field and saves the entity; revoke resets the field to its default and saves. A form_alter hook hides the delete action on any entity whose field is controlled by an active license. The module is declared incomplete: the buyer-facing cart-form entity-selection widget is unfinished. No routes, permissions, services, or config schema of its own.",
   "version": "8.x-2.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_license_entity_field",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce_license": "*",
+    "drupal/dynamic_entity_reference": "*"
+  },
   "dependent_modules": [
     "commerce_license:commerce_license",
     "dynamic_entity_reference:dynamic_entity_reference"
@@ -16,7 +19,7 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/commerce_license_entity_field",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1 (inherited from Drupal core; ^10.1 needs PHP 8.1+, ^11 needs PHP 8.3+; the module declares no PHP constraint of its own and ships no composer.json)",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
