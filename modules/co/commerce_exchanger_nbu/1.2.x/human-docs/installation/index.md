@@ -6,6 +6,10 @@
 - **Commerce Exchanger** (`commerce_exchanger`) — the module depends on it, and
   Drupal enables it automatically as a dependency. Commerce Exchanger in turn
   builds on Drupal Commerce.
+- **UAH currency must be enabled.** Installation is blocked with an error unless
+  the Ukrainian hryvnia (UAH) currency exists in Commerce, because UAH is the
+  base currency for NBU rates. Add UAH under Commerce's currency settings first
+  if it is not already present.
 
 No API key or credentials are required — NBU exchange rates are fetched from a
 public endpoint. There are no additional PHP libraries or Composer requirements.

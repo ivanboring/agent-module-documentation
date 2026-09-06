@@ -2,11 +2,14 @@
 
 ## Requirements
 
-- **Drupal 9, 10, or 11** (`core_version_requirement: ^9 || ^10 || ^11`).
-- **Drupal Commerce** (`commerce`) enabled — this is the module dependency.
-- A configured Commerce **payment gateway** for whichever provider your front end
-  will use (the module has been used with PayPal, Stripe, Global Payments, and
-  Direct Debits).
+- **Drupal 8, 9, 10, or 11** (`core_version_requirement: ^8 || ^9 || ^10 || ^11`).
+- **Drupal Commerce** with the **Payment** (`commerce_payment`) and **Checkout**
+  (`commerce_checkout`) modules enabled — these are the module's dependencies.
+- A configured Commerce **on-site payment gateway** for whichever provider your
+  front end will use (the module has been used with PayPal, Stripe, Global Payments,
+  and Direct Debits).
+- The core **RESTful Web Services** module (and, most conveniently, the contributed
+  **REST UI** module) to enable and configure the endpoints.
 
 There are no third‑party Composer or PHP library requirements.
 
@@ -31,10 +34,10 @@ dependencies as needed.
 drush en commerce_decoupled_checkout -y
 ```
 
-## Verify it worked
+## Verify and configure
 
-Once enabled, the REST endpoints (for example `POST /commerce/order/create`) are
-available. Before pointing a real front end at them, review the **security**
-guidance in the [overview](../index.md) — particularly keeping prices
-server‑authoritative and scoping each caller to their own order — since the module
-does not enforce those for you.
+Enabling the module only registers the REST resources; it does not switch them on.
+Before a front end can call them, enable each resource, pick its request format and
+**authentication provider**, and grant its `restful post …` permission to the
+appropriate roles — see the [overview](../index.md) for the step‑by‑step. Serve the
+API over HTTPS.

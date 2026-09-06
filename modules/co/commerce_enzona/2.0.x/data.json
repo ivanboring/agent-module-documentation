@@ -1,11 +1,13 @@
 {
   "name": "Commerce Enzona",
   "data_name": "commerce_enzona",
-  "description": "A Drupal Commerce payment gateway integrating Enzona (Cuba). WARNING: ships an unauthenticated payment-completion webhook.",
+  "description": "A Drupal Commerce off-site payment gateway integrating EnZona, the Cuban payment platform, via its OAuth2 REST API with a redirect-and-return checkout flow.",
   "version": "2.0.x",
   "package": "Commerce (Payment)",
   "composer_namespace": "drupal/commerce_enzona",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^3.3"
+  },
   "dependent_modules": [
     "commerce:commerce",
     "commerce:commerce_payment",
@@ -13,17 +15,17 @@
     "commerce:commerce_checkout"
   ],
   "configure": null,
-  "core_version_requirement": "^10 || ^11",
+  "core_version_requirement": "^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/commerce_enzona",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.3",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
-  "provides_drush_commands": false,
+  "provides_permissions": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
@@ -37,7 +39,7 @@
     "payment",
     "commerce",
     "cuba",
-    "webhook"
+    "gateway"
   ],
   "project_description": "Integrates Enzona payment gateway with Drupal Commerce for processing payments in Cuba.",
   "maintenance_status": "Actively maintained",

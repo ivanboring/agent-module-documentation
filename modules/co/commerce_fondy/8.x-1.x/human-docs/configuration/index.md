@@ -33,11 +33,15 @@ confirm the order is marked paid when you return from Fondy.
 ## Keep your secret key out of the codebase
 
 The Fondy **secret key** is a credential: anyone who has it can forge valid-looking
-payment notifications. Never commit it to Git or paste it into a configuration
-file that is tracked in version control.
+payment notifications. The module stores it as an ordinary field on the payment
+gateway configuration entity (it does **not** integrate with the
+[Key module](https://www.drupal.org/project/key)), so the value ends up in your
+exported site configuration. Do not commit that value to Git or paste it into a
+tracked configuration file.
 
-The recommended pattern on this project is to store the value in an environment
-variable and reference it through a **Key** entity:
+A clean pattern is to keep the real secret in an environment variable and inject
+it with a configuration override in `settings.php`, so the exported config can
+hold a placeholder:
 
 1. Save the secret into DDEV's env file (this does *not* get committed):
 
@@ -46,16 +50,15 @@ variable and reference it through a **Key** entity:
    ddev restart
    ```
 
-2. If the [Key module](https://www.drupal.org/project/key) is not already
-   enabled, add it:
+2. Override the gateway's secret from the environment in `settings.php`
+   (replace `<gateway_id>` with your payment gateway's machine name):
 
-   ```bash
-   ddev composer require drupal/key
-   ddev drush en key -y
+   ```php
+   $config['commerce_payment.commerce_payment_gateway.<gateway_id>']['configuration']['secret_key'] = getenv('FONDY_SECRET_KEY');
    ```
 
-3. Create a Key that reads the environment variable, then reference that Key from
-   the gateway configuration where the module supports it.
+If you do commit the gateway config, use a config-split or config-ignore workflow
+so the secret is excluded from version control.
 
 ## How the payment is confirmed (why this gateway is safe)
 

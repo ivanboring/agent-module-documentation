@@ -18,8 +18,7 @@ calculation of its own — it simply prevents the mismatch. (If you need actual
 currency conversion and customer‑preferred pricing, that is
 `commerce_currency_resolver`'s job, not this module's.) It depends on **Drupal
 Commerce** (`commerce`), **Commerce Cart** (`commerce_cart`), and **Commerce
-Order** (`commerce_order`), requires **Drupal Commerce 3**, and supports Drupal 10
-and 11.
+Order** (`commerce_order`), requires **Drupal Commerce 3**, and runs on **Drupal 11**.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

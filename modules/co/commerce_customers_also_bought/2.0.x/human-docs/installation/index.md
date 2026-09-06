@@ -3,12 +3,17 @@
 ## Requirements
 
 - **Drupal 9.5, 10, or 11** (`core_version_requirement: ^9.5 || ^10 || ^11`).
-- Core **Block** (`block`) enabled — this is the only module dependency, and
-  Drupal enables it automatically as a dependency.
+- Core **Block** (`block`) enabled — Drupal enables it automatically as a
+  dependency.
+- **Drupal Commerce** (`commerce`) — a required module dependency declared in the
+  module's `.info.yml`. Note the module's `composer.json` does *not* list
+  `drupal/commerce`, so Commerce must already be installed in your project;
+  otherwise Drupal will not let you enable this module.
 - A Drupal Commerce store with order history (the recommendations are computed
   from past orders).
 
-There are no third‑party Composer or PHP library requirements.
+There are no third‑party Composer or PHP library requirements beyond Drupal
+Commerce itself.
 
 ## Install with Composer
 

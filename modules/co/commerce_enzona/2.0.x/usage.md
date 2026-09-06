@@ -1,31 +1,23 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Commerce Enzona integrates the Enzona payment gateway (Cuba) — but its public webhook is unauthenticated.
+Commerce Enzona is a Drupal Commerce off-site payment gateway for EnZona, the Cuban payment platform.
 
 ---
 
-Commerce Enzona integrates the Enzona payment gateway with Drupal Commerce for processing payments in Cuba — redirecting the shopper to Enzona and reconciling the order on return.
-
-**Security warning (as shipped, 2.0.4):** the notify route `/commerce_enzona/webhook` is `_access: 'TRUE'` (public) and `EnzonaPaymentController::webhookAction()` marks a payment **completed** and places the order based solely on a `status` field in the request body — no signature/HMAC, no `Authorization`, and no server-side re-fetch of the real status from Enzona. A shopper who knows their own `transaction_uuid` can POST `{"transaction_uuid":"…","status":"completed"}` and have the order fulfilled without paying. It also exposes public debug routes (`/commerce_enzona/debug`, `/test-direct`, `/full-debug`, all `_access: 'TRUE'`) that trigger authenticated Enzona API calls, leak the OAuth token prefix, and can create a live payment on the merchant account. **Do not use in production without verifying the webhook (signature + server-side status re-fetch) and removing/gating the debug routes.** Depends on `commerce`, `commerce_payment`, `commerce_order`, `commerce_checkout`; supports Drupal 10 and 11.
+Commerce Enzona integrates the EnZona payment gateway with Drupal Commerce so a store operating in Cuba can accept online payments. It adds an off-site gateway plugin ("Enzona Redirect Checkout"): at the checkout payment step the module authenticates to EnZona's REST API with OAuth2 (client-credentials or password grant), creates a payment order, and redirects the shopper to EnZona's hosted checkout to pay. When the shopper returns, the module re-fetches the transaction status from EnZona's API by its transaction UUID, and when EnZona reports the transaction confirmed/completed it records a `commerce_payment` and places the order. The gateway supports test (sandbox) and live modes, a configurable API base URL, merchant id/UUID and terminal id, and the credit-card brands Visa, Mastercard and American Express. It depends on Drupal Commerce's core, payment, order and checkout modules, targets Drupal 11 and PHP 8.3+, and is maintained by Carlos Z (cz9dev).
 
 ---
 
-- Integrate the Enzona gateway (Cuba).
-- Redirect the shopper to Enzona.
-- Reconcile the order on return.
-- Process payments in Cuba.
-- WARNING: public unauthenticated webhook.
-- Complete payment from a request `status`.
-- Lack signature/HMAC verification.
-- Lack server-side status re-fetch.
-- Expose public debug/test routes.
-- Leak the OAuth token prefix (debug).
-- Require hardening before production.
-- Depend on `commerce`/`commerce_payment`/`commerce_order`/`commerce_checkout`.
-- Support Drupal 10 and 11.
-- Verify the webhook before use.
-- Remove/gate debug routes.
-- Handle checkout.
-- Process payments
-- Integrate Enzona
-- Support Commerce.
-- Reconcile orders.
+- Accept EnZona payments in a Drupal Commerce store (Cuban payment platform).
+- Add an off-site "Enzona Redirect Checkout" gateway under Commerce payment gateways.
+- Authenticate to EnZona's REST API over OAuth2 (client-credentials or password grant).
+- Create a payment order at EnZona from the Commerce order (amount, items, currency, invoice number).
+- Redirect the shopper to EnZona's hosted checkout page to complete payment.
+- Re-fetch the transaction status from EnZona on return before recording payment.
+- Complete a confirmed EnZona transaction and place the Commerce order.
+- Configure sandbox vs. live via the API base URL and a test-mode toggle.
+- Set merchant id, merchant UUID and terminal id per gateway.
+- Store gateway credentials (consumer key/secret) in the payment-gateway configuration.
+- Support Visa, Mastercard and American Express card brands.
+- Cancel a checkout and return the shopper to the payment step.
+- Look up an EnZona transaction's details by its UUID.
+- Run on Drupal 11 with Drupal Commerce 3.x and PHP 8.3+.

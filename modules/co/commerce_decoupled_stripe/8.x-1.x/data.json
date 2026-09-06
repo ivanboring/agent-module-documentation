@@ -5,7 +5,9 @@
   "version": "8.x-1.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_decoupled_stripe",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "stripe/stripe-php": "^7.40"
+  },
   "dependent_modules": [
     "commerce:commerce_payment"
   ],
@@ -21,7 +23,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "E-commerce"

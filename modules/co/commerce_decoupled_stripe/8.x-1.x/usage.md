@@ -9,11 +9,11 @@ with standard and recurring (SetupIntent) gateways. It depends on Commerce Payme
 package.
 
 Use it for headless Stripe checkout on Drupal Commerce. Its payment trust boundary is **implemented correctly**
-(verified): the gateway does **not** trust a client-supplied "paid" status — `createPayment()` calls
+(verified): the gateway does **not** trust a client-supplied "paid" status — `capturePayment()` calls
 **`PaymentIntent::retrieve()`** (authenticated with the Stripe **secret key**) to read the intent's real status
 from Stripe's API server-side, and only sets the payment to `completed`/`authorization` based on that
 authoritative status (canceled/requires-payment-method → voided). Because the PaymentIntent amount is set
-server-side at creation, amount tampering isn't a vector either. Handle the Stripe **secret key** as a secret
+server-side at creation (`createPayment()` uses the order's own amount), amount tampering isn't a vector either. Handle the Stripe **secret key** as a secret
 (env/Key), use HTTPS. It has no access-control role. Configure the Stripe keys.
 
 ---

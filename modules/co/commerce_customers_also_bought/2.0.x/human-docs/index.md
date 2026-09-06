@@ -12,8 +12,8 @@ order history**, not from any individual customer's personal data, and the modul
 has no access‑control role.
 
 It is delivered as a **block**, so you place and configure it through Drupal's
-Block layout. It depends only on core **Block** (`block`) and supports Drupal 9.5,
-10, and 11.
+Block layout. It requires core **Block** (`block`) and **Drupal Commerce**
+(`commerce`), and supports Drupal 9.5, 10, and 11.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

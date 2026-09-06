@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- **Drupal 10 or 11** (`core_version_requirement: ^10 || ^11`).
+- **Drupal 11** (`core_version_requirement: ^11`).
 - **Drupal Commerce 3**, with **Commerce** (`commerce`), **Commerce Cart**
   (`commerce_cart`), and **Commerce Order** (`commerce_order`) enabled — these are
   the module dependencies.

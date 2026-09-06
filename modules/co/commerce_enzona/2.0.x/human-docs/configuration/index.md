@@ -1,52 +1,47 @@
 # Configuration
 
-> **⚠️ Read this first.** The hardening steps at the bottom of this page are not
-> optional extras — as shipped, this module can be used to fulfil orders without
-> payment and exposes public debug routes. Do not go live until you have
-> addressed them.
-
-Commerce Enzona is configured on the payment‑gateway form — there is no separate
-settings page.
+Commerce Enzona is configured on the Commerce payment-gateway form — there is no
+separate settings page.
 
 ## Add the gateway
 
 1. Log in as a user who can administer Commerce.
 2. Go to **Administration → Commerce → Configuration → Payment gateways**
    (`/admin/commerce/config/payment-gateways`) and click **Add payment gateway**.
-3. Choose the **Enzona** plugin.
-4. Enter your **Enzona API credentials** and set the **mode** (test vs live).
-5. Save.
+3. Give it a name and choose the **Enzona Redirect Checkout** plugin.
+4. Fill in the plugin settings (below) and **Save**.
 
-## Handle credentials as secrets
+## Gateway settings
 
-Your Enzona API credentials are secrets. Store them in an environment variable and
-reference them through a **Key** entity rather than exported configuration:
+| Field | What to enter |
+|-------|----------------|
+| **Consumer Key** | Your EnZona API consumer key. |
+| **Consumer Secret** | Your EnZona API consumer secret. |
+| **Merchant ID** | Your numeric EnZona merchant id. |
+| **Merchant UUID** | Your EnZona merchant UUID, if your account requires one. |
+| **Grant Type** | `Client Credentials` (recommended) or `Password`. |
+| **Username / Password** | Only shown and required when grant type is `Password`. |
+| **API Base URL** | Production: `https://api.enzona.net/payment/v1.0.0`. Sandbox: `https://sandbox.enzona.net/payment/v1.0.0`. |
+| **Test mode** | Enable while testing against the sandbox. |
+| **Terminal ID** | Your EnZona terminal id (default `12121`). |
 
-```bash
-ddev dotenv set .ddev/.env --enzona-api-key=<value>
-ddev restart
-```
+Point the **API Base URL** at the sandbox and turn on **Test mode** while you are
+setting up, then switch both to your production values when you go live. Use
+separate credentials for your test and live environments, and always operate over
+HTTPS.
 
-Always operate over **HTTPS** and use separate test and live credentials for your
-environments.
+## How checkout works
 
-## Required hardening before production
+Once the gateway is enabled and configured, EnZona appears as a payment option at
+checkout. When the shopper chooses it and continues, the module creates a payment
+order at EnZona and redirects them to EnZona's hosted checkout to pay. After paying
+they are returned to your site, the module confirms the transaction's status with
+EnZona, and — when EnZona reports it paid — records the payment and places the
+order. A cancelled payment returns the shopper to the checkout payment step.
 
-These are not tuning options — they are fixes you must make (or have made) before
-this gateway is safe on a live store:
+## Credentials are secrets
 
-- **Secure the webhook.** The notify route `/commerce_enzona/webhook` is public
-  and, as shipped, completes a payment and places the order based only on a
-  `status` value in the request body — no signature and no server‑side status
-  check. A shopper who knows their own transaction id can forge a "completed"
-  payment and get fulfilled **without paying**. Before production, the webhook
-  must (a) **verify a signature/HMAC** on the request and (b) **re‑fetch the
-  authoritative payment status from Enzona server‑side** and only complete the
-  order if Enzona confirms payment.
-- **Remove or gate the debug routes.** `/commerce_enzona/debug`, `/test-direct`
-  and `/full-debug` are public, trigger authenticated Enzona API calls, leak the
-  OAuth token prefix, and can create a live payment on your merchant account.
-  Remove them, or restrict them behind an admin permission, before the site is
-  reachable from the internet.
-
-Until both are done, keep this gateway on an isolated test environment only.
+Your EnZona consumer key and secret are sensitive. Restrict who can administer
+payment gateways, avoid committing exported gateway configuration that contains
+live credentials to version control, and keep production credentials out of your
+test environments.

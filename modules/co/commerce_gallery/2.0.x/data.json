@@ -1,11 +1,16 @@
 {
   "name": "Commerce Gallery",
   "data_name": "commerce_gallery",
-  "description": "An advanced masonry image-gallery block for Drupal Commerce products.",
+  "description": "Provides two blocks that render Drupal Commerce product-variation images as a gallery: an advanced masonry/grid/metro block with lightbox, filter bar and per-block theming, and a simpler legacy grid block.",
   "version": "2.0.x",
   "package": "Commerce",
   "composer_namespace": "drupal/commerce_gallery",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "php": ">=8.1",
+    "drupal/core": "^10 || ^11",
+    "drupal/commerce": "^2.40 || ^3.0",
+    "drupal/address": "^1.12 || ^2.0"
+  },
   "dependent_modules": [
     "drupal:file",
     "drupal:image",
@@ -18,7 +23,7 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/commerce_gallery",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],

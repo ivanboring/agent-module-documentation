@@ -6,7 +6,7 @@ Commerce Customers Also Bought displays products that customers often purchase a
 Commerce Customers Also Bought displays "customers also bought" recommendations — products that
 customers frequently purchase together with the product currently being viewed, computed from order history,
 shown as a block. This is a cross-sell/recommendation feature to increase basket size. It depends on core
-Block.
+Block and on Drupal Commerce.
 
 Use it to surface related-purchase recommendations on product pages. It is an e-commerce/content-display
 feature computing recommendations from purchase data; the recommendations reflect aggregate order history
@@ -19,7 +19,7 @@ product displays.
 - Display frequently-bought-together items.
 - Compute from order history.
 - Increase basket size.
-- Depend on core Block.
+- Depend on core Block and Drupal Commerce.
 - Show cross-sell recommendations.
 - Surface related purchases.
 - Reflect aggregate order history.

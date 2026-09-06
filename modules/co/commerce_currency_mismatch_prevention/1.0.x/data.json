@@ -1,11 +1,14 @@
 {
   "name": "Commerce Currency Mismatch Prevention",
   "data_name": "commerce_currency_mismatch_prevention",
-  "description": "Automatically handles mixed-currency conflicts in the cart.",
+  "description": "Decorates the Commerce cart manager to detect and resolve mixed-currency cart conflicts (empty cart, reject the new product, or disable), preventing the CurrencyMismatchException. Currency is read server-side from item prices.",
   "version": "1.0.x",
   "package": "Commerce",
   "composer_namespace": "drupal/commerce_currency_mismatch_prevention",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^3.0",
+    "drupal/core": "^11"
+  },
   "dependent_modules": [
     "drupal:commerce",
     "drupal:commerce_cart",
@@ -21,7 +24,7 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],

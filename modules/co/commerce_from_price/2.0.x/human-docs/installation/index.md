@@ -3,8 +3,10 @@
 ## Requirements
 
 - **Drupal 10 or 11** (`core_version_requirement: ^10 || ^11`).
-- **Drupal Commerce** with the **Product** module (`commerce_product`) enabled —
-  this is the only dependency.
+- **Drupal Commerce** — the module's only declared dependency is Commerce's
+  **Price** module (`commerce_price`). In practice you also want the **Product**
+  module (`commerce_product`) enabled, since the formatters attach to a product's
+  Variations field.
 
 There are no additional PHP libraries to install.
 

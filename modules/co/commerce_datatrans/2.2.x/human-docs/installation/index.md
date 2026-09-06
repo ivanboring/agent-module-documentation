@@ -5,9 +5,9 @@
 - **Drupal 10.1 or 11** (`core_version_requirement: ^10.1 || ^11`).
 - **Commerce Payment** (`commerce_payment`) enabled — this is the module
   dependency. It ships with Drupal Commerce.
-- A **Datatrans contract / account** with a merchant ID and the signing keys
-  (including the `sign2` HMAC key used to verify webhooks). Datatrans provides
-  test credentials for integration testing.
+- A **Datatrans contract / account** with a merchant ID, the API password, and the
+  `sign2` HMAC key used to verify webhooks. Datatrans provides test credentials for
+  integration testing.
 
 There are no third‑party Composer or PHP library requirements.
 
@@ -37,5 +37,6 @@ drush en commerce_datatrans -y
 Go to **Commerce → Configuration → Payment gateways**
 (`/admin/commerce/config/payment-gateways`) and click **Add payment gateway** —
 Datatrans should be available as a gateway type. Then follow
-[Configuration](../configuration/index.md) to enter your merchant ID and signing
-keys. Make sure a payment method exists in Commerce before testing checkout.
+[Configuration](../configuration/index.md) to enter your merchant ID, API password,
+and `sign2` webhook key. Make sure a payment method exists in Commerce before
+testing checkout.

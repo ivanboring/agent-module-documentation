@@ -8,6 +8,8 @@
   "composer_requirements": {},
   "dependent_modules": [
     "commerce:commerce_payment",
+    "commerce:commerce_product",
+    "commerce:commerce_cart",
     "commerce:commerce_checkout"
   ],
   "configure": null,
@@ -23,7 +25,9 @@
   "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "commerce_gc_client_recurrence_rules"
+  ],
   "categories": [
     "E-commerce"
   ],
