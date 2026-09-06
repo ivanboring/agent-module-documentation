@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- **Drupal 10.4 or 11** (`core_version_requirement: ^10.4 || ^11`).
+- **Drupal 10.4, 11, or 12** (`core_version_requirement: ^10.4 || ^11 || ^12`).
 - **CKEditor 5 Plugin Pack Templates**
   (`ckeditor5_plugin_pack:ckeditor5_plugin_pack_templates`) — this module is built
   to work with it and declares it as a dependency. Composer pulls it in for you.

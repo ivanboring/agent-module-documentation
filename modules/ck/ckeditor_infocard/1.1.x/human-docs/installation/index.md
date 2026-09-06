@@ -33,9 +33,9 @@ drush en ckeditor_infocard -y
 - **Turn the button on per text format.** The InfoCard button does not appear
   until you add it to a CKEditor 5 format's toolbar — see "How to use it" in the
   [overview](../index.md).
-- **Grant the permission.** This module provides its own permission for using the
-  InfoCard feature. Visit **People → Permissions** and grant it to the appropriate
-  roles.
+- **No permission to grant.** This module defines no permission of its own; who can
+  use the button follows from core's existing text‑format permissions on
+  **People → Permissions**.
 
 ## Verify it worked
 

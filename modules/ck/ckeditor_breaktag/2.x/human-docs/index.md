@@ -6,7 +6,7 @@ paragraph to break onto a new line *without* starting a whole new paragraph — 
 address block, a short verse, a signature line. Pressing Enter in the editor
 normally creates a new paragraph; this module gives editors a deliberate way to
 add a soft line break instead, either by clicking the button or with the keyboard
-shortcut **Ctrl + Enter**.
+shortcut **Shift + Enter** (CKEditor 5's built-in soft-break keystroke).
 
 It is a lightweight authoring convenience. It depends only on Drupal core's
 CKEditor 5, works on Drupal 10, 11, and 12, and has no settings page of its own.
@@ -43,4 +43,4 @@ want it:
 5. Click **Save configuration**.
 
 When editing content in that format, click the BreakTag button (or press
-**Ctrl + Enter**) to drop a line break at the cursor.
+**Shift + Enter**) to drop a line break at the cursor.

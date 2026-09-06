@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- **Drupal 10 or 11** (`core_version_requirement: ^10||^11`).
+- **Drupal 10, 11, or 12** (`core_version_requirement: ^10 || ^11 || ^12`).
 - Core's **CKEditor 5** module (`ckeditor5`), which Drupal enables automatically
   as a dependency.
 

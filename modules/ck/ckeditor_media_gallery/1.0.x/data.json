@@ -1,13 +1,15 @@
 {
   "name": "CKEditor Media Gallery",
   "data_name": "ckeditor_media_gallery",
-  "description": "Adds an image-gallery widget to CKEditor 5 (pick images from Media Library).",
+  "description": "Adds an image-gallery widget to CKEditor 5: editors multi-select images from the Media Library and insert a gallery (four display types + fullscreen lightbox) as a single <drupal-gallery> element rendered by a text filter.",
   "version": "1.0.x",
-  "package": null,
+  "package": "CKEditor 5",
   "composer_namespace": "drupal/ckeditor_media_gallery",
   "composer_requirements": {},
   "dependent_modules": [
     "drupal:ckeditor5",
+    "drupal:editor",
+    "drupal:filter",
     "drupal:media",
     "drupal:media_library"
   ],
@@ -21,10 +23,13 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "ckeditor_media_gallery_types (YAML-discovered gallery display types)",
+    "ckeditor_media_gallery_lightboxes (YAML-discovered lightbox integrations)"
+  ],
   "categories": [
     "Content editing experience",
     "Media"

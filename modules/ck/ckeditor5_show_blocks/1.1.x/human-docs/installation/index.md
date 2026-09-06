@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- **Drupal 10 or 11** (`core_version_requirement: ^10 || ^11`).
+- **Drupal 9, 10 or 11** (`core_version_requirement: ^9 || ^10 || ^11`; Drupal 9 is end-of-life, so 10 or 11 in practice).
 - Core's **CKEditor 5** editor, which ships with Drupal core and provides the
   text-editing framework this plugin extends.
 

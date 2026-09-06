@@ -34,5 +34,5 @@ drush en ckeditor_breaktag -y
 Go to **Configuration → Content authoring → Text formats and editors**, configure
 a CKEditor 5 format, and confirm a **BreakTag** button is available in the
 toolbar‑configuration tray. Drag it into the active toolbar, save, then edit a
-piece of content in that format — clicking the button (or pressing **Ctrl +
+piece of content in that format — clicking the button (or pressing **Shift +
 Enter**) should insert a line break.

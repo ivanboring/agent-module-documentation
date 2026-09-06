@@ -1,7 +1,7 @@
 {
   "name": "CKEditor Div as Block",
   "data_name": "ckeditor_div_as_block",
-  "description": "treats all divs in CKEditor 5 as block containers.",
+  "description": "JS-only CKEditor 5 plugin that renders div.ckeditor-template elements as selectable block widgets, round-tripping their class/id/style; workaround for CKEditor issue 6462, paired with CKEditor 5 Plugin Pack Templates.",
   "version": "1.0.x",
   "package": "CKEditor",
   "composer_namespace": "drupal/ckeditor_div_as_block",
@@ -10,7 +10,7 @@
     "ckeditor5_plugin_pack:ckeditor5_plugin_pack_templates"
   ],
   "configure": null,
-  "core_version_requirement": "^10.4||^11",
+  "core_version_requirement": "^10.4 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ckeditor_div_as_block",
@@ -21,7 +21,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"

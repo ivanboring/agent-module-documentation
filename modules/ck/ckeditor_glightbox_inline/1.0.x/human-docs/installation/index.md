@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- **Drupal 10.1 or 11** (`core_version_requirement: ^10.1 || ^11`).
+- **Drupal 10.1, 11, or 12** (`core_version_requirement: ^10.1 || ^11 || ^12`).
 - The **GLightbox** module (`glightbox`), which provides the GLightbox library
   integration this filter relies on. Composer pulls it in for you.
 

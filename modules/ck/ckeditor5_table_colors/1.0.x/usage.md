@@ -13,23 +13,13 @@ the styling. It has no access-control role. Configure the color palettes.
 
 ---
 
-- Add table color palettes to CKEditor 5.
-- Set table/cell background colors.
-- Set table/cell border colors.
-- Use a configured palette.
-- Give editors color controls.
-- Style tables in the editor.
-- Ensure the format allows the styling.
-- Have no access-control role.
-- Configure the palettes.
-- Handle table colors.
-- Color tables.
-- Configure colors.
-- Style table cells.
-- Handle CKEditor tables.
-- Add color controls.
-- Configure table styling.
-- Color cells.
-- Handle table styling.
-- Configure the palette.
-- Style tables.
+- Give editors a curated palette of background and border colors in the CKEditor 5 table and table-cell "Properties" dialogs.
+- Define your own named colors (each with a descriptive label like "Brand blue" or "Warning red") so editors pick recognizable swatches instead of typing hex codes.
+- Mark each custom color as a background color, a border color, or both, controlling where it appears.
+- Keep CKEditor 5's built-in default color set alongside your custom colors, or turn it off to restrict editors to an approved brand palette.
+- Enable or disable the free-form hex color picker per text format, so you can lock editors to the predefined swatches only.
+- Control how many columns the swatch grid uses in the dropdown for consistent layout.
+- Show (or hide) recently used "document colors" so editors can quickly reuse a color already applied in the current content.
+- Configure all of the above independently per text format, so different formats can offer different palettes.
+- Enforce a consistent, on-brand look for data tables, color-coded documentation, and structured content without hand-editing markup.
+- Add table color styling without installing any JavaScript, custom filter, route, or permission — it only feeds palettes into Drupal core's existing CKEditor 5 table plugins.
