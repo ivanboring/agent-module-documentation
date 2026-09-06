@@ -1,7 +1,7 @@
 {
   "name": "Cludo Search",
   "data_name": "cludo_search",
-  "description": "Integrates the Cludo hosted (SaaS) search service into Drupal as a search interface.",
+  "description": "Client-side integration of the Cludo hosted (SaaS) site-search widget: renders a search form and result containers while Cludo's browser JavaScript queries the Cludo API and renders results.",
   "version": "2.0.x",
   "package": "Cludo Search",
   "composer_namespace": "drupal/cludo_search",
@@ -19,7 +19,7 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Site search"

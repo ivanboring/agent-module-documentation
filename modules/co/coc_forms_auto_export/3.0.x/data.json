@@ -1,11 +1,14 @@
 {
   "name": "Webform Auto Exports",
   "data_name": "coc_forms_auto_export",
-  "description": "Automatically exports Drupal Webform submission results.",
+  "description": "Automatically exports Drupal Webform submission results to CSV on a schedule and delivers them by email and/or SFTP, configured per form.",
   "version": "3.0.x",
   "package": "Webform",
   "composer_namespace": "drupal/coc_forms_auto_export",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/webform": "^6.0",
+    "phpseclib/phpseclib": "~3"
+  },
   "dependent_modules": [
     "webform:webform",
     "webform:webform_ui"
@@ -17,12 +20,14 @@
   "project_url": "https://www.drupal.org/project/coc_forms_auto_export",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "phpseclib/phpseclib"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Import and export"

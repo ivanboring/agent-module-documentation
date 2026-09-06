@@ -16,8 +16,8 @@ through a plugin, so one install can compose a guide from several sources (a
 shared "Drupal basics" pack, a site-specific pack, per-client overrides).
 
 Guide pages are a custom entity type available through the admin toolbar, with
-Pathauto-generated URLs, structured sub-sections with anchor-based sidebar
-navigation, and an editor-notes comments field. Markdown is converted to HTML at
+Pathauto-generated URLs and structured sub-sections that render inline with
+anchor-based sidebar navigation. Markdown is converted to HTML at
 import time (using the CommonMark library), and an `{{image_path}}` placeholder
 lets each content pack reference its own screenshots. Re-running the importer
 reconciles stored entries with the current files on disk — updating existing

@@ -1,19 +1,19 @@
 {
   "name": "Sirdata CMP",
   "data_name": "cmp_sirdata",
-  "description": "Integrates the Sirdata Consent Management Platform (cookie/consent banner).",
+  "description": "Loads the Sirdata Consent Management Platform (CMP) consent-banner scripts on the front end from two admin-entered keys.",
   "version": "1.1.x",
   "package": "Custom",
   "composer_namespace": "drupal/cmp_sirdata",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "configure": "cmp_sirdata.settings_form",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/cmp_sirdata",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=7.2.5",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
@@ -25,7 +25,7 @@
     "Security"
   ],
   "subcategories": [
-    "Consent / GDPR"
+    "Cookie consent / GDPR"
   ],
   "keywords": [
     "sirdata",

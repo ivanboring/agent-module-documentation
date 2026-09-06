@@ -34,7 +34,7 @@ described in "How to use it" below.
 ## Where it lives in the admin menu
 
 The dashboard sits at **Configuration → Development → Code benchmarker**
-(`/admin/config/development/code_benchmarker`), reachable by users with the
+(`/admin/config/development/code-benchmarker`), reachable by users with the
 **Administer site configuration** permission.
 
 ## How to use it

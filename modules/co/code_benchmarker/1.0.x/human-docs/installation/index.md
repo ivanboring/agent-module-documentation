@@ -36,7 +36,7 @@ drush en code_benchmarker -y
 ## Verify it worked
 
 Log in as a user with **Administer site configuration** and open **Configuration
-→ Development → Code benchmarker** (`/admin/config/development/code_benchmarker`).
+→ Development → Code benchmarker** (`/admin/config/development/code-benchmarker`).
 The dashboard should list the bundled example scenario. Clicking a scenario runs
 it — see the "How to use it" section of the [guide](../index.md). When you are
 done measuring, disable the module so the benchmark route is not left exposed.

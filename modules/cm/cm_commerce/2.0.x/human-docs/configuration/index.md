@@ -13,21 +13,21 @@ a payment gateway to your store, not through a dedicated settings page.
 
 ## Fill in the gateway settings
 
-On the gateway form you'll enter the credentials CM.com issued for your account —
-your **merchant key / API credentials** — which the module uses both to send the
-shopper to CM.com and, on their return, to verify the order status server‑side. Set
-the gateway **mode** to **Test** while you're integrating and switch it to **Live**
-for production.
+On the gateway form you'll enter the three credentials CM.com issued for your
+account — **Merchant name**, **Password** and **Merchant key** — which the module
+uses both to send the shopper to CM.com and, on their return, to verify the order
+status server‑side. (An optional **Debug** checkbox adds request/response detail to
+the Drupal log; leave it off in production.) Set the gateway **mode** to **Test**
+while you're integrating and switch it to **Live** for production.
 
-### Keep the merchant key secure
+### Keep the credentials restricted
 
-The merchant/API credentials are secrets. Rather than typing them straight into the
-form (where they'd live in configuration), prefer supplying them from an environment
-variable.
-
-> **Using DDEV?** Store the value without committing it:
-> `ddev dotenv set .ddev/.env --cm-merchant-key=<value>`, then `ddev restart`. Keep
-> `.ddev/.env` out of version control.
+The merchant name, password and merchant key are secrets that CM.com issued for your
+account. They are stored in the payment‑gateway configuration, so restrict who can
+reach the Payment gateways admin pages to trusted administrators, and be careful when
+exporting/committing configuration. If you prefer to keep the values out of exported
+config, you can supply them through a settings.php config override rather than typing
+them into the form.
 
 ## How the payment flow works
 

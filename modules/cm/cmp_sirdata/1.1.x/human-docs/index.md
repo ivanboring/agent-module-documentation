@@ -9,8 +9,9 @@ advertising and eCommerce partners.
 
 The appeal is that it's a **turnkey integration**: you don't touch any source code.
 You set up your CMP in your Sirdata account (or use a pre‑configured one), then paste
-two IDs — your **partner ID** and **config ID** — into this module's settings form,
-and the banner appears on your site. Sirdata handles the rest, including 16
+two identifiers — your **Customer Key** and **App Key** (Sirdata's project page calls
+these your "partner" and "config" IDs) — into this module's settings form, tick
+**Enable**, and the banner appears on your site's front end. Sirdata handles the rest, including 16
 languages (auto‑detected from the browser), design personalization, Google AMP
 compatibility, and the TCF consent signal that partners read.
 
@@ -39,6 +40,6 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 
 ## Where it lives in the admin menu
 
-After enabling, open the Sirdata CMP settings form (under **Configuration**) to enter
-your partner and config IDs. Administering it is controlled by the module's own
-permission.
+After enabling, open the Sirdata CMP settings form (under **Configuration → System**)
+to enter your Customer Key and App Key. Administering it is controlled by the module's
+own restricted permission.

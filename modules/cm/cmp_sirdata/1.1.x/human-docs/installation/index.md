@@ -5,7 +5,7 @@
 - **Drupal 9, 10, or 11** (`core_version_requirement: ^9 || ^10 || ^11`).
 - A **Sirdata CMP account** — create or log in at
   [sirdata.com](https://www.sirdata.com/), where you set up your CMP and obtain your
-  partner and config IDs.
+  Customer Key and App Key.
 
 There are no other Drupal module dependencies and no third‑party PHP library
 requirements.
@@ -34,5 +34,5 @@ drush en cmp_sirdata -y
 ## Verify it worked
 
 After enabling, open the Sirdata CMP settings form and confirm you can enter your
-partner and config IDs (see [Configuration](../configuration/index.md)). The consent
-banner appears on the front end only once those IDs are saved.
+Customer Key and App Key (see [Configuration](../configuration/index.md)). The consent
+banner appears on the front end only once the module is enabled and both keys are saved.

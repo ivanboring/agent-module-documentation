@@ -13,10 +13,13 @@ with companion modules — most often [CML Migrations](https://www.drupal.org/pr
 for the import side, and optionally [cmlexchange](https://www.drupal.org/project/cmlexchange)
 for file exchange. It belongs to the `cml` package and provides its own permissions.
 
-**Security matters here** because the exchange endpoint authenticates the 1C client
-and moves commerce data between systems. Serve the exchange over **HTTPS**, protect
-the exchange credentials, and restrict the exchange permission to the accounts that
-genuinely need it.
+**A note on scope:** cmlapi itself does *not* expose the inbound HTTP endpoint that
+1C connects to — that lives in the companion **cmlexchange** module — and it does not
+create commerce products (that's **cmlmigrations**). cmlapi is the storage entity plus
+the XML parser in the middle. Its own pages are admin-only inspection screens behind
+the "view published cml entity entities" permission. When you build the full stack,
+serve the 1C exchange (provided by cmlexchange) over **HTTPS**, protect the exchange
+credentials, and grant the cml view/edit permissions only to accounts that need them.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

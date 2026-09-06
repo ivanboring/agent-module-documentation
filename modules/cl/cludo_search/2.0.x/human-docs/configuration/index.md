@@ -8,33 +8,31 @@ Open the module's settings page (linked from the modules list under
 
 From your Cludo dashboard, gather and enter:
 
-- **Customer ID** — the identifier for your Cludo account.
-- **Engine ID** — the search engine (index) within your account that Cludo should
-  query.
-- **API credentials** — the API key/authentication details Cludo issues for making
-  search requests.
-- **Search page path** — the path on your site where the Cludo results are
-  rendered, so the search form knows where to send visitors.
+- **Customer ID** — the (public) identifier for your Cludo account.
+- **Engine ID** — the (public) search engine (index) within your account that Cludo
+  should query.
+- **Search page path** — the path on your site where the Cludo results are rendered
+  (default `csearch`), so the search form knows where to send visitors.
 
-The settings page also exposes additional customisation options; see Cludo's own
-documentation for the full list of appearance and template settings.
+The settings page also exposes four display toggles — disable autocomplete, hide the
+results count, hide the "did you mean…" suggestions, and hide the search filters
+(overlay implementation only). See Cludo's own documentation for what each affects.
 
-## Keep the API key secret
+## About the customer and engine IDs
 
-The Cludo API credentials authenticate your site to an external service, so treat
-the API key like a password — don't commit it to version control, and prefer
-supplying it from an environment variable where possible.
+These are **public** widget identifiers, not secrets. The module writes them into the
+page so Cludo's browser JavaScript can run the search, so they are visible in your
+page source by design — there is nothing here to store in an environment variable or
+keep out of version control. (This module has no private API key or server-side
+credential.)
 
-> **Using DDEV?** Store the key without committing it:
-> `ddev dotenv set .ddev/.env --cludo-api-key=<value>`, then `ddev restart`. Keep
-> `.ddev/.env` out of version control.
+## Place the search block
 
-## Place the search blocks
-
-The module provides two blocks — one for the **search form** and one for the
-**results page**. Go to **Structure → Block layout**, place the search‑form block
-in a region where visitors can reach it (for example the header), and ensure the
-results block appears on your configured search page.
+The module provides a **Cludo Search block** containing the search form. Go to
+**Structure → Block layout** and place it in a region where visitors can reach it
+(for example the header). Submitting it redirects the visitor to your configured
+search page, where the results render. You can also send visitors straight to that
+search page (default `/csearch`), which carries its own search form.
 
 ## A note on privacy and availability
 

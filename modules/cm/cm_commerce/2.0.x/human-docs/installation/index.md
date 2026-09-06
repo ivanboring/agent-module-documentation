@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- **Drupal 10 or 11** (`core_version_requirement: ^10 || ^11`).
+- **Drupal 10.3 or 11** (`core_version_requirement: ^10.3 || ^11`).
 - **Drupal Commerce** with the **`commerce_payment`** module — this is a hard
   dependency (installing Commerce brings it along).
 - A **CM.com account** with merchant/API credentials.

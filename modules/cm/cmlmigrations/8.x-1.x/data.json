@@ -1,13 +1,17 @@
 {
   "name": "CML Migrations",
   "data_name": "cmlmigrations",
-  "description": "Provides migrations for importing CommerceML (1C) data into Drupal.",
+  "description": "Import side of a CommerceML (1C) exchange: consumes cmlapi's parsed data through Migrate to create Commerce products, variations and catalog taxonomy; run via a drush-driven pipeline.",
   "version": "8.x-1.x",
   "package": "cml",
   "composer_namespace": "drupal/cmlmigrations",
   "composer_requirements": {},
   "dependent_modules": [
-    "migrate_tools:migrate_tools"
+    "migrate_tools:migrate_tools",
+    "migrate_plus:migrate_plus",
+    "commerce:commerce_product",
+    "cmlapi:cmlapi",
+    "yaml_editor:yaml_editor"
   ],
   "configure": "cmlmigrations.settings",
   "core_version_requirement": "^9||^10||^11",
@@ -21,7 +25,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": true,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Import and export"

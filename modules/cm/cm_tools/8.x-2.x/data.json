@@ -1,7 +1,7 @@
 {
   "name": "ComputerMinds tools",
   "data_name": "cm_tools",
-  "description": "A collection of developer tools and helpers by ComputerMinds.",
+  "description": "A grab-bag of ComputerMinds site-builder and developer tools: a token-gated uptime-monitoring endpoint, a Paragraphs-as-table field formatter and widget, a Webform page-level validation handler, a session cache context, an update-report security sort, and static array/translation helpers.",
   "version": "8.x-2.x",
   "package": null,
   "composer_namespace": "drupal/cm_tools",
@@ -13,9 +13,13 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/cm_tools",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.0",
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/paragraphs": "Required for the Paragraphs table field formatter and widget.",
+    "drupal/webform": "Required for the Page level validation webform handler.",
+    "drupal:locale": "Required for TranslationHelper::ensureTranslationsOfSimpleStrings()."
+  },
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
@@ -25,6 +29,9 @@
     "Developer tools"
   ],
   "subcategories": [
+    "Application performance monitoring",
+    "Field formatters",
+    "Webform elements",
     "Utility / helper API"
   ],
   "keywords": [
@@ -32,7 +39,12 @@
     "helpers",
     "developer",
     "utility",
-    "computerminds"
+    "computerminds",
+    "monitoring",
+    "uptime",
+    "paragraphs",
+    "webform",
+    "cache context"
   ],
   "project_description": "A collection of tools, written by the folks at ComputerMinds.\n\n About the Developers \n This project is currently maintained by developers at ComputerMinds - visit us at http://www.computerminds.co.uk . We at ComputerMinds pride ourselves on offering quality Drupal training , Drupal development and Drupal consulting . Go Drupal!",
   "maintenance_status": "Actively maintained",

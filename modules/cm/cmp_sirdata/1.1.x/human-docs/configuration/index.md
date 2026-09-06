@@ -15,11 +15,15 @@ options live in Sirdata, not in Drupal.
 
 On the module's settings form, enter the two identifiers from your Sirdata account:
 
-- **Partner ID** — your Sirdata partner identifier.
-- **Config ID** — the identifier of the specific CMP configuration you set up.
+- **CMP Sirdata Customer Key** — your Sirdata customer key.
+- **CMP Sirdata App Key** — your Sirdata application key.
 
-Save the form. The module then loads Sirdata's CMP script on your site and the banner
-appears.
+Both fields are required. Tick **Enable CMP Sirdata** as well, then save. The module
+then loads Sirdata's CMP scripts on your site's front end and the banner appears.
+
+> **Naming note:** Sirdata's own project page refers to these as your "partner" and
+> "config" IDs. In this Drupal module the two fields are labelled **Customer Key** and
+> **App Key** — they are the same two identifiers from your Sirdata account.
 
 ## 3. Wire your tags to the consent signal
 

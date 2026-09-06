@@ -1,11 +1,14 @@
 {
   "name": "CiviMRF Form Processor",
   "data_name": "cmrf_form_processor",
-  "description": "Submit Webform actions to the CiviCRM forms_processor with CiviMFR",
+  "description": "Submit Webform actions to the CiviCRM Form Processor with CiviMRF",
   "version": "2.x",
-  "package": null,
+  "package": "CiviCRM",
   "composer_namespace": "drupal/cmrf_form_processor",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/cmrf_core": "^2.1",
+    "drupal/webform": "^6.0"
+  },
   "dependent_modules": [
     "cmrf_core:cmrf_core",
     "webform:webform"
@@ -25,7 +28,7 @@
   ],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Forms and surveys"
@@ -40,7 +43,7 @@
     "webform",
     "mollie"
   ],
-  "project_description": "Use the CiviCRM form processor in combination with Drupal Webforms",
+  "project_description": "Use the CiviCRM Form Processor in combination with Drupal Webforms",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

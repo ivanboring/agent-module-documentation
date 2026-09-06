@@ -16,9 +16,10 @@ A reassuring detail on the security side: on the return/notify path the gateway
 `GET` on the order) using your merchant key, and only marks the payment complete
 when CM.com's own API reports success. It does not trust a status value handed back
 by the shopper's browser, which closes off a common class of payment‑spoofing
-attacks. Store your CM.com merchant/API credentials securely (env‑backed).
+attacks. Keep your CM.com merchant credentials (merchant name, password, merchant
+key) restricted to trusted administrators.
 
-The module depends on Drupal Commerce's `commerce_payment` and supports Drupal 10
+The module depends on Drupal Commerce's `commerce_payment` and supports Drupal 10.3
 and 11. This release is a beta (`2.0.0-beta1`).
 
 This guide is written for a **human** clicking through the admin UI. If you want
