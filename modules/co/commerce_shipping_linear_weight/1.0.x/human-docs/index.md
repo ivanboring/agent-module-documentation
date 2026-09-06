@@ -27,5 +27,5 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 
 You configure it as a shipping method under **Administration → Commerce →
 Configuration → Shipping methods** (`/admin/commerce/shipping-methods`): add a
-shipping method that uses the **Linear weight** plugin. See
+shipping method that uses the **Linear Weight Shipping** plugin. See
 [Configuration](configuration/index.md).

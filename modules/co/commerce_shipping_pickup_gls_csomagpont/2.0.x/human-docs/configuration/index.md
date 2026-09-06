@@ -30,10 +30,9 @@ in the Google Cloud console by **HTTP referrer (your site's domain)** and by API
 so it can only be used from your store. This is normal for browser Maps keys; the
 restriction, not secrecy, is what protects it.
 
-If the GLS integration also requires server‑side API credentials for its own
-services, store those as **secrets** (an environment variable and, where
-supported, a Key entity) rather than committing them, and keep all provider
-traffic over HTTPS.
+The Google Maps key is the only credential this module uses — GLS's pickup‑point
+data feed and map widget are public and need no GLS API key. The module fetches
+the pickup catalogue server‑side over HTTPS from GLS's public feed.
 
 ## Save
 

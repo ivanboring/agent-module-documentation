@@ -6,7 +6,9 @@ Commerce. On its own it does not add any real carrier — instead it provides th
 shared plumbing that individual pickup providers build on: a checkout pane that
 can collect a pickup location, the shipping-method scaffolding for pickup plugins,
 and the mechanism that writes the customer's chosen pickup point into the order's
-shipping address. It depends only on Drupal Commerce (`commerce`).
+shipping address. It depends on Drupal Commerce (`commerce`), Commerce Checkout
+(`commerce_checkout`), Commerce Shipping (`commerce_shipping`) and Profile
+(`profile`).
 
 Think of it as a base layer. To actually offer pickup delivery you install this
 module *and* at least one provider submodule/project on top of it — for example

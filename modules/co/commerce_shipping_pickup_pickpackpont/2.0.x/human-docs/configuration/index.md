@@ -9,28 +9,26 @@ shipping method that uses its plugin, then filling in that method's options.
 2. Go to **Commerce → Configuration → Shipping methods** and click **Add
    shipping method**.
 3. Give it a name customers will recognise (for example "Pick Pack Pont pickup").
-4. Choose the Pick Pack Pont pickup plugin.
-5. Configure the standard Commerce shipping‑method fields — the stores it applies
-   to, the rate/price, and any conditions.
-6. Fill in any Pick Pack Pont‑specific options the plugin form presents.
+4. Choose the plugin **Pickup shipping – Pick Pack Pont**
+   (`pickup_hu_pickpackpont`).
+5. Configure the standard Commerce shipping‑method fields as usual — the stores
+   it applies to and any conditions.
 
-## Credentials and secrets
+## The rate fields
 
-The Pick Pack Pont integration communicates with the carrier's service to obtain
-pickup points and pass along delivery data. If its configuration form asks for
-**API credentials** (a key, token, or account identifier):
+The only options specific to the pickup plugin are the rate fields it inherits
+from the pickup framework:
 
-- Store them as **secrets**, not in committed configuration. With DDEV, save the
-  value into `.ddev/.env` (for example
-  `ddev dotenv set .ddev/.env --pickpackpont-api-key=<value>`, which becomes the
-  `PICKPACKPONT_API_KEY` environment variable), keep `.ddev/.env` out of version
-  control, and `ddev restart`. Where the module supports it, reference the value
-  through a **Key** entity (Key module) using the environment provider; otherwise
-  read it from `getenv()` in settings.
-- Keep all carrier traffic over **HTTPS**, and rotate credentials if they leak.
+- **Rate label** (required) — shown to customers when they select the rate.
+- **Rate description** (optional) — extra detail about the rate.
+- **Rate amount** (required) — the shipping price and currency. The price is
+  taken from this configuration on the server; it is never read from the
+  customer's browser.
 
-Because parcel and delivery details are shared with the carrier, only send what
-the integration needs.
+There are no Pick Pack Pont‑specific credentials to enter. The point picker is a
+public map widget loaded in the customer's browser from Pick Pack Pont's own
+site (`https://online.sprinter.hu/terkep/#/`) over HTTPS — there is no API key,
+token, or account identifier for this provider.
 
 ## Save
 

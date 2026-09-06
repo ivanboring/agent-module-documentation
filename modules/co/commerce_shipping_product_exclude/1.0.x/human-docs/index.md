@@ -48,10 +48,12 @@ choose exclusions per product:
    in the exclusion field you added, select the shipping method(s) that must not
    be offered when this product is in the cart.
 
-**How product vs. variation is resolved:** the condition checks the variation's
-exclusion field first. If that field is empty (or not set), it falls back to the
-parent product's field. So a value set on the variation overrides the value set on
-the product.
+**How product and variation exclusions combine:** the condition looks at both the
+variation's exclusion field and the parent product's exclusion field. If *either*
+one lists the shipping method, that method is excluded — so exclusions set on the
+product and on the variation add together rather than one overriding the other.
+(The module's README describes the product field as a fallback used only when the
+variation field is empty, but the current code checks both regardless.)
 
 Once configured, whenever a customer's cart contains a product that excludes a
 method, that method is not shown at checkout.

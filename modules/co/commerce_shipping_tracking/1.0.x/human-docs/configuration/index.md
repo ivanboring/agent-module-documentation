@@ -7,28 +7,27 @@ shows, place the lookup block, and review who is allowed to use it.
 ## Open the settings form
 
 1. Log in as a user who can administer Commerce configuration.
-2. Go to **Commerce → Configuration → Shipping → Shipping Tracking**, or navigate
-   directly to `/admin/commerce/config/shipping_tracking`.
+2. Go to **Commerce → Configuration → Shipping → Order Tracking Settings**, or
+   navigate directly to `/admin/commerce/config/shipping_tracking`.
 
 ## Map shipment states to labels
 
 The core of the configuration is mapping the **machine names** of your shipping
-workflow states to the **labels** you want customers to see. For each state in the
-shipment workflow (for example a "shipped" or "ready for delivery" state), enter
-the friendly text that should be displayed when an order is in that state. States
-you don't map won't be shown with a custom label, so cover the ones customers care
-about.
+workflow states to the **labels** you want customers to see. Enter one mapping per
+line in the form `machine_name|Label` — for example `draft|Preparing...` or
+`shipped|On its way`. For each state in the shipment workflow (for example a
+"shipped" or "ready for delivery" state), give the friendly text that should be
+displayed when an order is in that state, so cover the states customers care about.
 
 ## Success and error messages
 
 Configure the two messages the lookup form uses:
 
-- **Success message** — shown when an order is found and its status can be
-  reported.
-- **Error message** — shown when no matching order is found (or the lookup can't
-  return a status).
-
-Keep the error message deliberately generic — see the security note below.
+- **Success message** — shown when a matching order is found and its shipment
+  status can be reported.
+- **Error message** — shown when the lookup does not return a status (no order with
+  that number, the submitted email does not match the order's email, or the order
+  has no shipment yet). The same message covers all of these cases.
 
 Click **Save configuration** when done.
 
@@ -43,19 +42,23 @@ The customer‑facing lookup form is provided as a **block**. To show it:
 
 ## Permissions
 
-The module provides its own permission(s). Review them at **People → Permissions**
-and grant the ability to use the tracking form only to the roles that should have
-it. If the form is meant for logged‑in customers, do not grant it to the anonymous
-role unless you intend the lookup to be public.
+The module provides one permission, **Access Commerce Shipping Tracking Settings
+Page** (`access commerce shipping tracking settings`), which controls access to the
+configuration page you are reading about here. Review it at **People →
+Permissions** and grant it only to the administrative roles that should manage the
+tracking settings.
 
-## Security note — avoid order enumeration
+The customer-facing lookup form (the block and its standalone page) is not gated
+by this permission — it is meant to be reachable by the customers who need to check
+their orders. Its access control is built into the lookup itself: a status is
+returned only when the visitor supplies both a valid **order number** and the
+**email address that was used on that order**, and only a mapped shipment-state
+label is shown — never the order's contents.
 
-An order‑status lookup can leak information if it lets someone check arbitrary
-orders. To keep it safe:
+## How the lookup identifies a customer
 
-- Require **enough identifying information** in the lookup (not just an
-  easy‑to‑guess order number) so a stranger can't fish for other people's orders.
-- Where possible, scope the form so a customer only sees **their own** orders.
-- Keep the **error message generic** ("No order found") so responses don't reveal
-  whether a given order number exists.
-- Use the module's **permission** to restrict who can access the form.
+When a visitor submits the form, the module looks up the order by its number and
+returns a status only if the submitted email matches that order's own email and the
+order has a shipment. The single configurable error message is returned for every
+unsuccessful case (unknown order number, mismatched email, or no shipment yet), so
+the form behaves the same way whichever condition applies.

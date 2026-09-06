@@ -35,5 +35,5 @@ Go to **Commerce → Configuration → Shipping → Shipping Tracking**
 (`/admin/commerce/config/shipping_tracking`) — you should reach the module's
 settings form. The order‑tracking form itself is provided as a block; place it
 via **Structure → Block layout**. See [Configuration](../configuration/index.md)
-for how to map your shipment states, set the messages, and review permissions
-before exposing the form to customers.
+for how to map your shipment states, set the success and error messages, and place
+the block before exposing the form to customers.

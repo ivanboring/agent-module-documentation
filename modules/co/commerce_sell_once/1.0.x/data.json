@@ -1,11 +1,13 @@
 {
   "name": "Commerce Sell Once",
   "data_name": "commerce_sell_once",
-  "description": "A Commerce Stock service that lets a product be sold only one time.",
+  "description": "A Commerce Stock service (tagged commerce_stock.stock_service) that caps a purchasable entity to a single sale. It adds a boolean base field commerce_sell_once_sold to every product-variation type; the stock checker reports 1 unit while the flag is FALSE and 0 once it is TRUE, and a stock-decrement transaction flips the flag to sold (a positive/restock transaction clears it). Actual add-to-cart/checkout blocking is performed by Commerce Stock's availability layer and requires the Commerce Stock Enforcement submodule. Ships no settings form, permission, or Drush; provides a transaction event and an uninstall-cleanup form.",
   "version": "1.0.x",
   "package": "Commerce Stock",
   "composer_namespace": "drupal/commerce_sell_once",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce_stock": "^1.0 || ^3.0"
+  },
   "dependent_modules": [
     "commerce_stock:commerce_stock"
   ],
@@ -19,9 +21,9 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "E-commerce"

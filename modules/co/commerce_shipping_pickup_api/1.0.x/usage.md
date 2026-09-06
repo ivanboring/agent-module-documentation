@@ -5,8 +5,9 @@ Commerce Shipping Pickup API provides a shipping method API for pickup points an
 
 Commerce Shipping Pickup API provides a framework/API for pickup-point and parcel-machine shipping
 methods in Drupal Commerce — so carriers offering locker/pickup delivery can be integrated, letting customers
-choose a pickup location at checkout. It ships demo and store submodules and depends on Drupal Commerce, in
-the Commerce (contrib) package.
+choose a pickup location at checkout. It ships demo and in-store submodules and depends on Drupal Commerce
+(`commerce`, `commerce_checkout`, `commerce_shipping`) and Profile (`profile`), in the Commerce (contrib)
+package.
 
 Use it as the base for pickup-point shipping integrations. It is an e-commerce/shipping API. Where a specific
 carrier's pickup API is used, store any **carrier credentials as secrets** and operate over HTTPS; the chosen

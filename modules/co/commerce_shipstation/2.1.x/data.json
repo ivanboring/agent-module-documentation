@@ -1,13 +1,20 @@
 {
   "name": "Commerce ShipStation",
   "data_name": "commerce_shipstation",
-  "description": "Integrates Drupal Commerce with ShipStation for multi-channel order fulfillment.",
+  "description": "Integrates Drupal Commerce with ShipStation for multi-channel order fulfillment via ShipStation's Custom Store XML API: exposes an endpoint that exports orders to ShipStation and imports shipment/tracking updates back.",
   "version": "2.1.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_shipstation",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^2.40 || ^3",
+    "drupal/commerce_shipping": "^2.11",
+    "ext-dom": "*",
+    "ext-simplexml": "*"
+  },
   "dependent_modules": [
-    "drupal:image"
+    "drupal:image",
+    "commerce:commerce",
+    "commerce_shipping:commerce_shipping"
   ],
   "configure": "commerce_shipstation.shipstation_admin_form",
   "core_version_requirement": "^9.1||^10||^11",
@@ -21,7 +28,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "E-commerce"

@@ -8,19 +8,21 @@ fulfillment/shipping platform. It exposes an endpoint that ShipStation calls to 
 fulfillment and post shipment/tracking updates back, so orders flow between the store and ShipStation. It
 depends on core Image and is configured at `commerce_shipstation.shipstation_admin_form`.
 
-The endpoint is authenticated: it requires HTTP Basic auth with a dedicated username/password configured in
-the module (explicitly "NOT your ShipStation account username"), plus a custom access check — so ShipStation
-authenticates to the endpoint before reading/writing order data. The security-relevant points: store the
-endpoint username/password (and any ShipStation API key) as secrets, **serve the endpoint only over HTTPS**
-(Basic-auth credentials and order data — customer names/addresses — traverse it), and rotate the credentials
-if leaked. It is an e-commerce integration; configure the ShipStation credentials and the endpoint.
+The endpoint is authenticated: each ShipStation request is checked against a dedicated store username and
+password you configure in the module (explicitly "NOT your ShipStation account username") — ShipStation sends
+them as request parameters (`SS-UserName`/`SS-Password`), and an optional alternate `auth_key` is also
+supported. A signed-in Drupal user with the `view any commerce_order` permission is likewise allowed. The
+operational points: store the endpoint username/password (and any alternate key) as secrets, **serve the
+endpoint only over HTTPS** (ShipStation transmits the store credentials with each call and the endpoint
+carries order data — customer names/addresses), and rotate the credentials if leaked. It is an e-commerce
+integration; configure the ShipStation credentials and the endpoint.
 
 ---
 
 - Integrate Commerce with ShipStation.
 - Sync orders for fulfillment.
 - Expose an authenticated ShipStation endpoint.
-- Require Basic auth with a dedicated username/password.
+- Authenticate each request with a dedicated username/password (or alternate key).
 - Post shipment/tracking updates back.
 - Depend on core Image.
 - Configure at the shipstation admin form.

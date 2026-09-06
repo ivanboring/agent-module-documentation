@@ -13,12 +13,13 @@ map your shipment workflow's machine names to the labels customers should see, a
 decide what the form says on success and on error. That's all done on its settings
 page.
 
-**A word on security.** An order‑status lookup form is, by nature, an information
-endpoint — so it must not become a way for anyone to enumerate orders or view
-other people's shipment details by guessing an order number. Make sure the lookup
-requires enough identifying information (and, ideally, that a customer can only see
-their own orders), and gate it with the module's permission as appropriate for
-your store.
+**How the lookup identifies a customer.** The form asks for two things: the
+**order number** and the **email address used on the order**. It returns a status
+only when an order with that number exists, the submitted email matches that
+order's own email, and the order has a shipment. What it shows is a single
+status label (mapped from the shipment's workflow state) plus your configured
+message — not the order's contents. The configuration page itself is protected by
+the module's own permission.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -33,6 +34,6 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 
 ## Where it lives in the admin menu
 
-The settings page is at **Commerce → Configuration → Shipping → Shipping
-Tracking** (`/admin/commerce/config/shipping_tracking`). The customer‑facing
+The settings page is at **Commerce → Configuration → Shipping → Order
+Tracking Settings** (`/admin/commerce/config/shipping_tracking`). The customer‑facing
 lookup form is a **block** you position via **Structure → Block layout**.

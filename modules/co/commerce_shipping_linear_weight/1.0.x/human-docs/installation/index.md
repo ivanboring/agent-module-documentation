@@ -34,5 +34,5 @@ drush en commerce_shipping_linear_weight -y
 
 Go to **Commerce → Configuration → Shipping methods**
 (`/admin/commerce/shipping-methods`), click **Add shipping method**, and confirm
-the **Linear weight** plugin appears in the list. Then continue to
+the **Linear Weight Shipping** plugin appears in the list. Then continue to
 [Configuration](../configuration/index.md).

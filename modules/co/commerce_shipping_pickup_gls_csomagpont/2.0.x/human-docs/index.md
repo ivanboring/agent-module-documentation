@@ -13,11 +13,13 @@ nearby point visually. Because of that, the map needs a **Google Maps JavaScript
 API key** to work — without a key the map cannot render. The module ships with
 full Hungarian localization, installed automatically.
 
-This provider registers a GLS pickup shipping method plugin under Commerce
-Shipping. It has no access‑control role of its own. Any credentials the
-integration needs (the Google Maps key, and any GLS API credentials) should be
-treated as secrets and kept out of version control, and provider traffic should
-run over HTTPS.
+This provider registers GLS pickup shipping‑method plugins under Commerce
+Shipping (a dropdown selector and a map selector). It has no access‑control role
+of its own. The only credential it uses is the **Google Maps JavaScript API
+key** — a browser (client‑side) key that is printed into the page, so protect it
+with HTTP‑referrer and API restrictions in the Google Cloud console rather than
+by keeping it secret. Its server‑side fetch of pickup‑point data runs over HTTPS
+to GLS's public data feed.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

@@ -1,11 +1,13 @@
 {
   "name": "Commerce Shipping Best Rate",
   "data_name": "commerce_shipping_best_rate",
-  "description": "Filters the shipping rates shown to the customer (e.g. only the cheapest per service).",
+  "description": "Adds a Commerce 'best_rate' shipping method plugin that groups configured shipping services into one checkout option priced at the server-computed cheapest of them; supports per-role exclusion.",
   "version": "1.1.x",
   "package": "Commerce",
   "composer_namespace": "drupal/commerce_shipping_best_rate",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce_shipping": "^2.5 || ^3"
+  },
   "dependent_modules": [
     "commerce_shipping:commerce_shipping"
   ],

@@ -2,9 +2,11 @@
 
 ## Requirements
 
-- **Drupal 9, 10, or 11** (`core_version_requirement: ^9||^10||^11`).
-- **Drupal Commerce** (`commerce`) — the only hard dependency, installed
-  automatically as a Composer dependency.
+- **Drupal 8.7.7+, 9, 10, or 11**
+  (`core_version_requirement: ^8.7.7 || ^9 || ^10 || ^11`).
+- **Drupal Commerce** — hard dependencies are `commerce`, `commerce_checkout`,
+  `commerce_shipping` and `profile`, installed automatically as Composer
+  dependencies.
 - No third‑party PHP libraries are required.
 
 Remember that this is only the framework. To offer pickup delivery for real you
@@ -41,7 +43,7 @@ The project ships two optional submodules — enable them individually with
 | Submodule | Machine name | What it adds |
 |-----------|--------------|--------------|
 | **Pickup demo** | `commerce_shipping_pickup_demo` | A very simple sample provider with two hard‑coded pickup points, so you can wire up the checkout pane and a shipping method and watch the pickup flow work before installing a real carrier. Great for learning the setup. |
-| **Pickup store** | `commerce_shipping_pickup_store` | Additional store‑oriented functionality on top of the framework. |
+| **Pickup In-store** | `commerce_shipping_pickup_store` | A basic provider offering pickup at a single preset address (for example, in‑store pickup). The pickup address is configured on the shipping method. |
 
 For example, to try the demo provider:
 

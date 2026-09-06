@@ -1,7 +1,7 @@
 {
   "name": "Commerce Shipping same as billing",
   "data_name": "commerce_shipping_same_as_billing",
-  "description": "Adds a 'shipping same as billing' option to Commerce checkout.",
+  "description": "Adds a 'shipping information is the same as billing' checkbox to Drupal Commerce checkout, copying the order's billing address onto the shipping profile (billing to shipping). Flips Commerce Shipping's built-in shipping-to-billing behaviour and disables it. One service (subclass of commerce_shipping.profile_field_copy) plus checkout-pane overrides; no routes, permissions, or config UI. Version 1.0.0-alpha3 (pre-stable).",
   "version": "1.0.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_shipping_same_as_billing",
@@ -21,7 +21,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "E-commerce"

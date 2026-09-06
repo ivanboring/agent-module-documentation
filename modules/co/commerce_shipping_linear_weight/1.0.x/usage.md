@@ -4,9 +4,8 @@ Commerce Shipping Linear Weight provides a shipping method that increases the pr
 ---
 
 Commerce Shipping Linear Weight provides a Drupal Commerce shipping method that prices shipping
-**linearly by order weight** — the shipping cost increases proportionally with the total weight of the order
-(a base rate plus per-unit-weight), for weight-based shipping pricing. It depends on Commerce Shipping, in
-the Commerce (contrib) package.
+**linearly by order weight** — the shipping cost is a per-kilogram rate multiplied by the total weight of the
+order, for weight-based shipping pricing. It depends on Commerce Shipping, in the Commerce (contrib) package.
 
 Use it for weight-proportional shipping rates. It is an e-commerce/shipping feature computing a shipping
 rate; the rate goes through Commerce's order handling and it has no access-control role. Configure the
@@ -18,7 +17,7 @@ weight-based rate.
 - Increase cost with order weight.
 - Provide weight-based shipping.
 - Depend on Commerce Shipping.
-- Use a base + per-weight rate.
+- Use a per-kilogram rate.
 - Compute shipping by weight.
 - Go through Commerce's order handling.
 - Have no access-control role.

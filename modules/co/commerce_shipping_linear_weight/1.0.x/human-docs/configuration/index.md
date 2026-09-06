@@ -7,13 +7,16 @@ plugin.
 
 1. Go to **Commerce → Configuration → Shipping methods**
    (`/admin/commerce/shipping-methods`) and click **Add shipping method**.
-2. Choose the **Linear weight** plugin.
+2. Choose the **Linear Weight Shipping** plugin.
 3. Set the fields:
-   - **Rate label** — the text the customer sees for this option (for example
-     "Weight-based shipping").
-   - **Rate per kilogram** — the amount charged per kg of order weight. The
+   - **Rate label** (required) — the text the customer sees for this option (for
+     example "Weight-based shipping").
+   - **Rate description** (optional) — extra detail shown alongside the rate.
+   - **Rate amount** (required) — the amount charged per kg of order weight. The
      shipping cost is this rate multiplied by the order's total weight, so at
-     2 €/kg a 2 kg order costs 4 €. Remember weights are treated as kilograms.
+     2 €/kg a 2 kg order costs 4 €. Remember weights are treated as kilograms,
+     and the charge is purely proportional — there is no fixed base fee or
+     minimum, so a 0 kg order (or products with no weight set) ships free.
 
 ## Save and test
 

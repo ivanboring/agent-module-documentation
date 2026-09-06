@@ -10,8 +10,8 @@ overselling must be impossible.
 It plugs into the **Commerce Stock** framework and does its work through that
 framework's stock checks — there is nothing bespoke happening at checkout beyond
 Commerce Stock deciding the product is no longer available. The module depends on
-`commerce_stock` and supports **Drupal 10.2+ and 11**. It provides a permission
-of its own but has no configuration form and no admin settings page.
+`commerce_stock` and supports **Drupal 10.2+ and 11**. It has no permission,
+configuration form, or admin settings page of its own.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

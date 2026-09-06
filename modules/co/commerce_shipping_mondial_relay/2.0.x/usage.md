@@ -3,14 +3,20 @@ Commerce Shipping Mondial Relay provides Mondial relay pick up shipping function
 
 ---
 
-Commerce Shipping Mondial Relay adds **Mondial Relay pick-up-point shipping** to Drupal Commerce — letting
-customers choose a Mondial Relay parcel-shop as the delivery point at checkout (common in France/Europe). It
-depends on Commerce Shipping, in the Commerce (contrib) package.
+Commerce Shipping Mondial Relay adds **Mondial Relay pick-up-point ("Point Relais") shipping** to
+Drupal Commerce — letting customers choose a Mondial Relay parcel-shop as the delivery point at
+checkout (common in France and much of Europe). It depends on Commerce Shipping and is in the
+Commerce (contrib) package.
 
-Use it to offer Mondial Relay delivery. It is an e-commerce/shipping feature. Security handling: it integrates
-with the **Mondial Relay API** (pick-up-point lookup, rates) — handle any **API credentials** as secrets
-(env/Key), use HTTPS. Customer address/pick-up choices are shipping data. It has no access-control role.
-Configure the Mondial Relay credentials.
+Use it to offer Mondial Relay delivery. It adds a **Mondial Relay shipping method** (a flat rate you
+set in config) and a **checkout pane** that embeds **Mondial Relay's own hosted browser widget** so
+the customer can search a map for a nearby parcel shop; the chosen relay point and its address are
+carried into the order's shipment (stored on a `mondial_relay` profile). The pickup-point search runs
+in the browser against Mondial Relay's servers via the hosted widget script — the module makes no
+server-side carrier API call and stores no API secret. The widget's **Brand** ("Enseigne") code is a
+public identifier the browser widget needs. The Mondial Relay pane requires the Shipping information
+pane (from `commerce_shipping`) to be present. Serve checkout over HTTPS. It has no access-control
+role or permission of its own.
 
 ---
 
@@ -18,19 +24,19 @@ Configure the Mondial Relay credentials.
 - Let customers pick a parcel-shop.
 - Serve France/Europe delivery.
 - Depend on Commerce Shipping.
-- Look up pick-up points.
-- Integrate the Mondial Relay API.
-- Handle API credentials as secrets.
-- Use HTTPS.
+- Add a Mondial Relay shipping method.
+- Set a flat shipping rate in config.
+- Embed the Mondial Relay pickup widget.
+- Search pick-up points in the browser.
+- Carry the chosen relay point into the shipment.
+- Store the pickup point on a mondial_relay profile.
+- Configure the Brand (Enseigne) code.
+- Configure widget display options.
+- Add the Mondial Relay checkout pane.
+- Require the Shipping information pane.
+- Use HTTPS at checkout.
 - Have no access-control role.
-- Configure the credentials.
+- Provide Mondial Relay shipping.
 - Handle Mondial Relay.
-- Add pick-up shipping.
-- Configure shipping.
-- Handle the integration.
 - Offer parcel-shops.
 - Configure Commerce shipping.
-- Handle delivery.
-- Add relay shipping.
-- Secure the credentials.
-- Provide Mondial Relay shipping.

@@ -16,9 +16,11 @@ issue to be aware of: with multiple shipping methods, the widget may not
 show/hide or refresh correctly via AJAX — see the project's issue queue for the
 current workaround.
 
-Because the integration talks to the **Mondial Relay widget/API**, treat any
-account credentials it needs as secrets (see Configuration) and serve checkout
-over HTTPS; the customer's chosen pick-up point and address are shipping data.
+The pickup-point search is Mondial Relay's own hosted widget, loaded in the
+customer's browser; the module makes no server-side carrier API call and stores
+no API secret (the **Brand / "Enseigne"** code it needs is a public widget
+identifier). Serve checkout over HTTPS; the customer's chosen pick-up point and
+address are shipping data.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

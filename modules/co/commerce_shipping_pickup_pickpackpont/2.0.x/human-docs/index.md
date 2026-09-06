@@ -8,14 +8,16 @@ shipping address. It is a provider that builds on the
 [Commerce Shipping Pickup API](../../commerce_shipping_pickup_api/1.0.x/human-docs/index.md)
 framework, which it requires.
 
-Pick Pack Pont uses an **embedded online selector** so shoppers can find and pick
-a nearby point during checkout. The module obtains pickup‑point data from the
-PickPackPont service. Full Hungarian localization is installed automatically.
+Pick Pack Pont uses an **embedded online map selector** so shoppers can find and
+pick a nearby point during checkout. The selector is Pick Pack Pont's own map
+page, loaded in the customer's browser inside an iframe over HTTPS; the chosen
+point's name and address are copied into the order's shipping profile. Full
+Hungarian localization is installed automatically.
 
 This provider registers a Pick Pack Pont pickup shipping method plugin under
-Commerce Shipping. It has no access‑control role of its own. Because the
-integration talks to the carrier and shares parcel/delivery data with it, treat
-any API credentials it needs as **secrets** and keep provider traffic over HTTPS.
+Commerce Shipping. It has no access‑control role of its own, and there are no API
+keys or carrier credentials to enter for this provider — the map is a public
+browser widget.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -26,7 +28,7 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 1. [Installation](installation/index.md) — install with Composer, enable it, and
    add the checkout pane.
 2. [Configuration](configuration/index.md) — add the Pick Pack Pont shipping
-   method and enter any credentials it requires.
+   method and set its rate.
 
 ## Where it lives in the admin menu
 

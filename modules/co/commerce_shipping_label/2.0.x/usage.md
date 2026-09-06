@@ -8,9 +8,12 @@ a framework for producing printable shipping labels for orders (including a `com
 submodule for Zebra label printers). It depends on Commerce Shipping, in the Commerce (shipping) package.
 
 Use it to generate shipping labels for Commerce orders. It is an e-commerce/fulfillment feature. Where label
-generation involves a carrier's API (rates/labels), store any **carrier API credentials as secrets** and
-operate over HTTPS; generated labels contain customer addresses (personal data), so handle/store them
-appropriately. It has no access-control role. Configure the label generation and printer integration.
+generation involves a carrier's API (rates/labels), the carrier plugin holds those **API credentials** and
+makes the HTTPS calls — this module itself only orchestrates and stores results. Its label/pickup routes
+require **`commerce_shipment` update access** on the specific shipment, and generated label files are stored
+in Drupal's **private** file stream (served through the access-checked private-file download path). The module
+defines no permissions of its own and has no configuration page; label behaviour is configured on the carrier
+module you pair it with, plus the optional Zebra printer submodule.
 
 ---
 
@@ -19,10 +22,9 @@ appropriately. It has no access-control role. Configure the label generation and
 - Support Zebra label printers.
 - Depend on Commerce Shipping.
 - Produce printable labels for orders.
-- Store carrier API credentials as secrets.
-- Operate over HTTPS.
-- Handle labels' address PII appropriately.
-- Have no access-control role.
+- Gate label/pickup routes by commerce_shipment update access.
+- Store label files in the private file stream.
+- Define no permissions of its own.
 - Configure label generation.
 - Print shipping labels.
 - Handle fulfillment labels.

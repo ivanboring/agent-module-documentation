@@ -7,6 +7,10 @@
   "composer_namespace": "drupal/commerce_shipping_linear_weight",
   "composer_requirements": {},
   "dependent_modules": [
+    "commerce:commerce",
+    "commerce:commerce_order",
+    "commerce:commerce_price",
+    "physical:physical",
     "commerce_shipping:commerce_shipping"
   ],
   "configure": null,
@@ -21,7 +25,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "E-commerce"

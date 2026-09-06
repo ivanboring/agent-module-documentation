@@ -6,8 +6,8 @@
 - Drupal **Commerce** and **Commerce Shipping** (`commerce_shipping`) enabled,
   with the **Shipping information** pane present in your checkout flow (the
   Mondial Relay pane depends on it).
-- A **Mondial Relay account** and the widget settings/credentials from their
-  documentation.
+- A **Mondial Relay account** and its widget settings — chiefly your **Brand
+  ("Enseigne") code** — from Mondial Relay's documentation.
 
 There are no additional Composer library or PHP requirements.
 

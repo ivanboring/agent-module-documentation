@@ -6,8 +6,12 @@
 - Drupal **Commerce** with the **Payment** module (`commerce_payment`) enabled.
 - A store operating in the euro area with a **SEPA creditor identifier** so you
   can raise valid direct-debit mandates.
+- The **`globalcitizen/php-iban`** library (`^2.6`), used to validate IBANs.
+  Installing the module with Composer pulls it in automatically; sites that do
+  not use Composer can install it via
+  [Ludwig](https://www.drupal.org/project/ludwig) instead.
 
-There are no additional Composer library or PHP requirements.
+There is no additional PHP version requirement beyond what Drupal core needs.
 
 ## Install with Composer
 

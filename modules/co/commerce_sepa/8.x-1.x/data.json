@@ -1,11 +1,14 @@
 {
   "name": "Commerce SEPA",
   "data_name": "commerce_sepa",
-  "description": "An on-site SEPA (Single Euro Payments Area) direct-debit payment gateway for Drupal Commerce.",
+  "description": "An on-site, manual SEPA (Single Euro Payments Area) direct-debit payment gateway for Drupal Commerce. Collects and validates the customer's IBAN (plus optional BIC / account holder) at checkout using the globalcitizen/php-iban library, stores it on a bank_account payment method, and can email a SEPA Direct Debit Mandate for the customer to sign and return. It performs no bank API call and moves no money (payment_type payment_manual); settlement is reconciled out of band.",
   "version": "8.x-1.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_sepa",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^2.0 || ^3.0",
+    "globalcitizen/php-iban": "^2.6"
+  },
   "dependent_modules": [
     "commerce:commerce_payment"
   ],
