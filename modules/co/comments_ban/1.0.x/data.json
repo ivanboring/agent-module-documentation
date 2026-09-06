@@ -1,7 +1,7 @@
 {
   "name": "Comments Ban",
   "data_name": "comments_ban",
-  "description": "Lets admins ban specific users from commenting.",
+  "description": "Bans specific user accounts from posting comments (server-side comment validation constraint), while keeping the accounts otherwise active.",
   "version": "1.0.x",
   "package": "Spam control",
   "composer_namespace": "drupal/comments_ban",
@@ -21,7 +21,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "User engagement"

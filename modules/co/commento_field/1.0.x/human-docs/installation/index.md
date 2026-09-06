@@ -5,8 +5,10 @@
 - **Drupal 9, 10, or 11** (`core_version_requirement: ^9 || ^10 || ^11`).
 - Core's **Field** module (standard in any Drupal site), since this provides a
   field type.
-- A **Commento instance** (hosted at commento.io or self‑hosted) to which the
-  embedded widget will connect.
+- A **commento.io account** with your site's domain registered. The embedded
+  widget always loads from Commento's CDN
+  (`https://cdn.commento.io/js/commento.js`); the module has no setting for a
+  self‑hosted Commento server.
 
 There are no third‑party Composer or PHP library requirements. This release is a
 beta and is marked *not covered* by Drupal's security advisory policy.
@@ -38,14 +40,15 @@ Commento Field has no central settings form — you configure it by adding the f
 and setting permissions, as described in "How to use it" on the
 [overview page](../index.md):
 
-- Add a **Commento** field to the relevant content type and point it at your
-  Commento instance.
+- Add a **Commento** field to the relevant content type and, optionally, adjust
+  the display options on *Manage display*.
 - Grant the **`view commento comments`** and **`toggle commento comments`**
   permissions at **People → Permissions** (`/admin/people/permissions`).
+- Register your site's domain in your **commento.io** account.
 
 ## Verify it worked
 
 View a piece of content that has the Commento field configured. The Commento
-comment widget should load in place, connected to your Commento instance. Because
-this loads third‑party JavaScript and sends comment data to that instance, review
-the privacy/data‑flow implications before exposing it to the public.
+comment widget should load in place from Commento's CDN. Because this loads
+third‑party JavaScript and sends comment data (including the page URL) to Commento,
+review the privacy/data‑flow implications before exposing it to the public.

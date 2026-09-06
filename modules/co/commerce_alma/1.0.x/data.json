@@ -5,7 +5,10 @@
   "version": "1.0.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_alma",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "~2.3 || ~3.0",
+    "alma/alma-php-client": "~1.11.2"
+  },
   "dependent_modules": [
     "commerce:commerce_payment"
   ],
@@ -16,7 +19,9 @@
   "project_url": "https://www.drupal.org/project/commerce_alma",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "alma/alma-php-client"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,

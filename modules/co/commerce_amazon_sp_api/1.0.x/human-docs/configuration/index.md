@@ -8,8 +8,9 @@ integration.
 
 In Amazon Seller Central, create an **SP‑API type app** (choose **Sellers** under
 Business entities), then **self‑authorize** your app and copy the **refresh
-token**. You'll also have your LWA client id/secret and IAM details. Keep all of
-these as secrets (see [Installation](../installation/index.md)).
+token**. You'll also have your **LWA client ID and client secret** and your
+**Seller (merchant) ID**. Keep the client secret and refresh token as secrets (see
+[Installation](../installation/index.md)).
 
 ## 2. Create an Amazon App in Drupal
 
@@ -37,15 +38,19 @@ Amazon merchant account.
 Run **cron** to perform the initial inventory sync. This links Amazon items to your
 Drupal product variations (as **Amazon Item** entities under the marketplace).
 
-## 5. General settings and order integration
+## 5. Marketplace integration settings and order workflow
 
-Go to **Commerce → Configuration → Amazon SP-API settings**
-(`/admin/commerce/config/amazon-sp-api/settings`) and configure:
+Open the **Settings** operation on your marketplace
+(`/admin/commerce/amazon/marketplace/{id}/integration`) and configure:
 
-- **Sync period** — how often inventory syncs, from **10 to 60 minutes**.
-- **Order integration** — enable it and **map states** so your Commerce order
-  workflow transitions automatically based on the fulfillment status reported by
-  Amazon.
+- **Sync period** — how often inventory syncs: **10, 15, 30 or 60 minutes**.
+- **Fulfillment policy** (FillOrKill / FillAll / FillAllAvailable) and **shipping
+  speed** (Standard / Expedited / Priority) used when creating Amazon orders.
+- **Low inventory threshold** — below which orders are no longer sent to Amazon.
+- **Order‑type workflow integration** — per order type, enable automatic workflow
+  integration and **map each Amazon fulfillment transition to a Commerce order
+  transition**, so your order state advances automatically as Amazon reports
+  progress.
 
 ## 6. Place a test order
 
@@ -55,7 +60,8 @@ state transitions as Amazon reports progress.
 
 ## A note on data and security
 
-The module calls the Amazon SP‑API using your LWA/IAM credentials — keep them
-secret and serve over HTTPS. Order data sent to Amazon for fulfillment includes
+The module calls the Amazon SP‑API using your LWA credentials (client secret and
+refresh token) — keep them secret and connect over HTTPS. Order data sent to Amazon
+for fulfillment includes
 **customer PII**, so make sure this transfer is consistent with your privacy policy
 and obligations.

@@ -1,18 +1,21 @@
 {
   "name": "Commerce BAT",
   "data_name": "commerce_bat",
-  "description": "Provides configurable date-range/availability (booking) products for Drupal Commerce, using BAT.",
+  "description": "Adds a bookable-inventory layer to Drupal Commerce via BAT: sell rentals (date ranges) or lessons (timeslots) with live availability calendars on the add-to-cart form, capacity presets, availability profiles, and admin blockouts.",
   "version": "2.0.x",
-  "package": "Commerce (contrib)",
+  "package": "Commerce",
   "composer_namespace": "drupal/commerce_bat",
   "composer_requirements": {},
   "dependent_modules": [
     "drupal:commerce",
-    "bat:bat",
-    "bat:bat_event"
+    "drupal:commerce_cart",
+    "drupal:commerce_order",
+    "drupal:bat",
+    "drupal:bat_unit",
+    "drupal:bat_event"
   ],
-  "configure": null,
-  "core_version_requirement": "^10||^11",
+  "configure": "commerce_bat.settings_overview",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/commerce_bat",
@@ -22,9 +25,11 @@
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
-  "provides_drush_commands": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "commerce_bat_calendar"
+  ],
   "categories": [
     "E-commerce"
   ],

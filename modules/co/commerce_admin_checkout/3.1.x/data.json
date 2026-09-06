@@ -1,7 +1,7 @@
 {
   "name": "Commerce: Admin Checkout",
   "data_name": "commerce_admin_checkout",
-  "description": "Lets Commerce administrators use the checkout form to create orders on behalf of customers (permission-gated).",
+  "description": "Lets Commerce administrators run the customer-facing checkout form to create/complete orders on behalf of customers (assign to a customer, edit cart items, override prices), all permission-gated.",
   "version": "3.1.x",
   "package": "Commerce",
   "composer_namespace": "drupal/commerce_admin_checkout",
@@ -10,8 +10,8 @@
     "commerce:commerce_checkout",
     "commerce:commerce_order"
   ],
-  "configure": null,
-  "core_version_requirement": "^10.1||^11",
+  "configure": "commerce_admin_checkout.settings",
+  "core_version_requirement": "^10.1 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/commerce_admin_checkout",
@@ -37,7 +37,8 @@
     "admin checkout",
     "orders",
     "checkout",
-    "customers"
+    "customers",
+    "assisted sales"
   ],
   "project_description": "This module allows a site administrators to use Drupal Commerce checkout to create orders for customers. This is useful if you have customizations to your checkout workflow (custom panes, etc) that you don't want to recreate on the admin side of Commerce.\n\n This module includes 2 checkout panes:\n\n \n Assign Order to Customer: This allows administrators to assign an order to a specific customer during the checkout process. \n Order Items: This allows administrators to add order items to an order during checkout. \n \n This module requires the following patch to Commerce core. Apply the most recent patch from this issue:\n\n \n [#3204694] \n \n This module includes a sub-module: Commerce Admin Payment. This sub-module requires Commerce Multiple Payments module, it allows you to define \"admin payments\" which site administrators can add to an order to reduce the price paid. (possibly up to the total of the order) This is useful if you want to allow administrators to use payments in a way similar to discounts. The client using this originally uses this to account for employee discounts as payments, among other things. This module adds 1 checkout pane:\n\n \n Apply Manual Payments",
   "maintenance_status": "Actively maintained",

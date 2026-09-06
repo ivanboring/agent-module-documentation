@@ -6,9 +6,11 @@
 - **Drupal Commerce** with the **Payment** module enabled (`commerce`,
   `commerce_payment`). Drupal enables these dependencies for you when you turn on
   this module.
-- A **Barion merchant account** with your API key and POS key.
-
-There are no third‑party Composer or PHP library requirements.
+- A **Barion merchant account** with your Barion e‑mail and Secret key (POSKey).
+- The **`barion/barion-web-php` `^2.0`** PHP library. Installing the module with
+  Composer pulls this in automatically; the module's install check
+  (`hook_requirements`) refuses to install if the `Barion\BarionClient` class is
+  not found.
 
 ## Install with Composer
 

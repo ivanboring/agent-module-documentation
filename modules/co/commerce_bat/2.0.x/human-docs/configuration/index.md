@@ -5,8 +5,8 @@ area plus your product‑variation form displays. Here is the recommended order.
 
 ## 1. Open the settings overview
 
-Go to **Administration → Commerce → Commerce BAT**
-(`/admin/commerce/commerce-bat`). This overview is where you connect your
+Go to **Administration → Commerce → Configuration → BAT / Availability**
+(`/admin/commerce/config/commerce-bat`). This overview is where you connect your
 variation types to BAT booking behaviour.
 
 ## 2. Map variation types to a booking mode
@@ -33,7 +33,7 @@ defaults:
 ## 4. Configure capacity defaults and presets
 
 Set your capacity defaults here, and create reusable **capacity presets** at
-**Commerce BAT → Capacity presets** (`/admin/commerce/commerce-bat/capacity-presets`).
+**Configuration → BAT / Availability → Capacity Presets** (`/admin/commerce/config/commerce-bat/capacity-presets`).
 Presets let you define how much inventory a bookable product has and whether
 capacity is **shared** across variations (a shared pool) or **separate** per
 variation. Getting capacity right is what keeps availability accurate.
@@ -47,7 +47,7 @@ availability calendar when choosing dates or slots.
 ## 6. Manage blockouts
 
 Use the admin **blockout calendar** at
-`/admin/commerce/commerce-bat/blockout` to reserve inventory (for maintenance,
+`/admin/commerce/config/commerce-bat/blockout` to reserve inventory (for maintenance,
 holidays, private use, etc.) and to see orders against your bookable inventory.
 
 ## 7. (Optional) Bulk‑sync existing orders

@@ -2,8 +2,9 @@
 
 ## Requirements
 
-- **Drupal 10.1, 11 (or newer)** (`core_version_requirement: ^10.1||^11`).
-- **Drupal Commerce** (`commerce`) — this is the only module dependency.
+- **Drupal 10.1, 11 or 12** (`core_version_requirement: ^10.1 || ^11 || ^12`).
+- **Drupal Commerce** — the `commerce` and `commerce_cart` modules (the only
+  module dependencies).
 
 There are no extra PHP or third‑party library requirements.
 
@@ -37,4 +38,6 @@ container is not the default `.status-messages`, set the correct selector — se
 On your storefront, add a product to the cart. The page should **not** reload — you
 should see a brief loading animation, a status message appear in your theme's
 messages area, and the cart block update with the new item. If the status message
-doesn't show, adjust the selector on the settings form.
+doesn't show, adjust the selector on the settings form. (Note: the AJAX cart
+refresh replaces a visible **Cart** block, so place one in a region if your theme
+doesn't already show it.)

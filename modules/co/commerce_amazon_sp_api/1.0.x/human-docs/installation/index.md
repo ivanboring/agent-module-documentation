@@ -17,8 +17,9 @@ From the project root:
 composer require drupal/commerce_amazon_sp_api -W
 ```
 
-The `-W` (`--with-all-dependencies`) flag lets Composer resolve and install shared
-dependencies, including the SP‑API client library the module relies on.
+The `-W` (`--with-all-dependencies`) flag lets Composer resolve and upgrade shared
+dependencies (Drupal Commerce and Commerce Shipping). The module has no external
+SP‑API SDK — it calls the SP‑API directly over Drupal's HTTP client.
 
 > **Using DDEV?** Prefix Composer and Drush with `ddev` when you run from your
 > host machine — `ddev composer require drupal/commerce_amazon_sp_api -W`,
@@ -32,8 +33,9 @@ drush en commerce_amazon_sp_api -y
 
 ## Store your SP-API credentials as secrets
 
-Your **LWA/IAM credentials** and **refresh token** are secrets and must never be
-committed to version control. With DDEV, save them as environment variables:
+Your **LWA credentials** (client ID and client secret) and **refresh token** are
+secrets and must never be committed to version control. With DDEV, you can keep them
+out of the repo as environment variables:
 
 ```bash
 ddev dotenv set .ddev/.env --amazon-lwa-client-id=<value> --amazon-lwa-client-secret=<value> --amazon-refresh-token=<value>

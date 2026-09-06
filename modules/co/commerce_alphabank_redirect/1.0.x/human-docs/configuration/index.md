@@ -18,9 +18,15 @@ Commerce and entering the credentials Alpha Bank gave you.
   then switch to live once verified.
 - **Merchant ID** — your Alpha Bank merchant identifier.
 - **Shared secret** — the secret Alpha Bank issued for signing/verifying the
-  callback digest. Reference the Key entity you created in
-  [Installation](../installation/index.md) rather than pasting the raw value, and
-  make sure it exactly matches the value configured on the bank's side.
+  callback digest. You enter it directly in this gateway field (the module stores
+  it in the gateway configuration; it is used server-side and is never sent to the
+  customer's browser). Make sure it exactly matches the value configured on the
+  bank's side, and treat your Commerce config export as sensitive since the value
+  lives there.
+- **Post URL** — the bank's VPOS endpoint (a Cardlink test endpoint by default);
+  switch it to the production endpoint the bank gives you when going live.
+- **Confirm / Cancel URLs** — the success and failure return URLs (they default to
+  this module's callback path).
 
 Save the gateway. Alpha Bank now appears as a payment option, and customers are
 redirected to the bank's hosted page to pay.

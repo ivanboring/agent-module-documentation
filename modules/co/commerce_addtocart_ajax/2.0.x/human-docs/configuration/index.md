@@ -15,7 +15,8 @@ anything.
 
 - **Selector for status messages** — the CSS selector for the container where
   Drupal's status messages are rendered in your theme. The default is
-  **`.status-messages`**, which matches the standard markup used by many themes.
+  **`[data-drupal-messages],[data-drupal-messages-fallback]`**, which matches the
+  data attributes core's status-messages markup uses in most modern themes.
 
   If your custom or contributed theme wraps messages in a different element (for
   example a region with its own class or id), enter that selector here so the

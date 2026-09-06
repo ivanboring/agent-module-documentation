@@ -7,9 +7,13 @@
   (`commerce_order`, `commerce_payment`). Drupal enables these dependencies for
   you when you turn on this module.
 - A **Banca Intesa Serbia (NestPay/Payten) merchant account** — you'll need your
-  merchant ID and the shared **store key** the bank issues.
+  merchant ID, API username/password and the shared **store key** the bank
+  issues.
 
-There are no third‑party Composer or PHP library requirements.
+The module also depends on the **`gnikolovski/gnikolovski_payment_log`** package
+(used for request/response logging and the cron reconciliation of pending
+orders). Composer installs it automatically as part of the require step below,
+so there is nothing extra to download by hand.
 
 ## Install with Composer
 

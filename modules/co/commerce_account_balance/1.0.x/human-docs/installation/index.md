@@ -39,12 +39,18 @@ rely on the feature. Go to **People → Permissions**
   roles only.
 - **`view any account balance`** — see other customers' balances. Staff/admin
   roles only.
-- **`view account balance`** — see one's own balance. Safe to grant to
-  authenticated customers if you want them to view their credit.
+- **`view account balance`** — controls the (currently unfinished) own‑balance
+  block. Grant it only if you intend to experiment with that block.
 
 ## Verify it worked
 
-Log in as an administrator, open an order under **Commerce → Orders**, and
-confirm balance information is shown. If you placed the balance block via
-**Structure → Block layout**, a logged‑in customer with `view account balance`
-should see their current balance where you positioned it.
+Log in as an administrator and open an order under **Commerce → Orders** for a
+customer whose email has an outstanding balance (order total greater than the
+amount paid). Confirm the **Account Balance** link/section appears and that the
+`/account/balance/{order}` summary table lists that customer's orders and the
+balance owed on each.
+
+> **Note.** The *Account Balance* block, the *AccountBalance* entity, and the
+> balance‑adjustment form are incomplete on the current release and should not be
+> relied on. The working feature is the "amount owed across orders" display on the
+> order page.

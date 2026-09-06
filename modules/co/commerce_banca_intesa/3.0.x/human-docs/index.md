@@ -17,14 +17,8 @@ rejects the request if it doesn't match), requires the bank's success code
 server‑side total — never an amount taken from the incoming request. In practice
 that means a forged or amount‑tampered return cannot mark an order as paid,
 because an attacker would need your secret store key to produce a valid
-signature.
-
-One caveat worth knowing, surfaced from the module's public documentation: the
-signature comparison uses a plain `!=` rather than a constant‑time comparison, a
-theoretical timing side‑channel on the secret‑keyed hash (the maintainers' own
-notes suggest `hash_equals()` would be preferable). It does not defeat the
-signature check, but it's a minor hardening gap. The practical takeaways for you
-are unchanged: keep your **store key** secret and always run the site over HTTPS.
+signature. The practical takeaways for you: keep your **store key** (and the
+API **password**) secret, and always run the site over HTTPS.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

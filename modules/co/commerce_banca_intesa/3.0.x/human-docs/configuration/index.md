@@ -61,9 +61,5 @@ of version control.
   (`ProcReturnCode == 00`), and records the payment for the order's own
   server‑side total — so a forged or amount‑tampered return cannot mark an order
   paid.
-- Public documentation notes one minor hardening gap: the signature comparison
-  uses a plain `!=` instead of a constant‑time check (a theoretical timing
-  side‑channel). It does not bypass the signature verification, but it's worth
-  being aware of.
-- Always run the site over **HTTPS**, and keep the **store key** secret as
-  described above.
+- Always run the site over **HTTPS**, and keep the **store key** (and the API
+  **password**) secret as described above.

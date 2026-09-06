@@ -5,7 +5,9 @@
   "version": "2.1.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_barion_payment",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "barion/barion-web-php": "^2.0"
+  },
   "dependent_modules": [
     "commerce:commerce",
     "commerce:commerce_payment"
@@ -17,7 +19,9 @@
   "project_url": "https://www.drupal.org/project/commerce_barion_payment",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "barion/barion-web-php"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,

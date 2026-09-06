@@ -13,8 +13,8 @@ inside the add‑to‑cart form. Customers pick an available date, choose a spec
 start time, optionally enter booking details, and add the scheduled service to their
 cart. When they do, the module validates the slot **on the server** — checking
 capacity against existing non‑draft, non‑cancelled orders — before the item is
-added, so double‑bookings are prevented. There's also a non‑JavaScript fallback
-using Commerce's underlying select element.
+added to the cart. There's also a non‑JavaScript fallback using Commerce's
+underlying select element.
 
 It's highly configurable. There's a global default booking policy, and each product
 variation can either use those defaults or define its own duration, slot capacity,

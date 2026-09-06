@@ -1,38 +1,24 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Commerce Alma provides Commerce integration for Alma.
+Adds an Alma installment / buy-now-pay-later payment gateway to Drupal Commerce, using an offsite redirect and confirming every payment by fetching its authoritative state back from Alma's API.
 
 ---
 
-Commerce Alma provides an **Alma payment gateway for Drupal Commerce** — offering Alma's installment / buy-
-now-pay-later payments through an offsite-redirect flow (popular in France/EU). It depends on Commerce Payment,
-in the Commerce (contrib) package.
+Commerce Alma provides a Drupal Commerce **payment gateway** for **Alma**, the French/EU installment (buy-now-pay-later) provider. It adds an offsite-redirect gateway (`alma`): at checkout the shopper is sent to Alma to arrange an installment plan, then returned to the store. Each gateway you configure offers one Alma **fee plan** (e.g. "pay in 3"), entered together with the merchant API key and a test/live mode. The gateway is only shown for orders it can actually serve — an event subscriber removes it for non-EUR or zero-total orders and for orders Alma reports ineligible for the configured plan.
 
-Use it to offer Alma installment payments. It is an e-commerce/payment feature and its verification follows the
-**authoritative pattern**: after the offsite flow, a queue worker (`PaymentUpdater`) **fetches the payment from
-Alma's API** (`getApi()->payments->fetch($remoteId)` via the Alma SDK with the merchant API key) and updates the
-order only based on the **authoritative remote state** (`STATE_PAID`) — it does not trust an IPN payload's status.
-Store the Alma **API key** as a secret over HTTPS. Beta release — verify the flow for your version. It has no
-access-control role. Configure the Alma credentials.
+The payment lifecycle is deliberately server-authoritative. After the redirect, both the browser return and Alma's IPN callback are handled by fetching the payment straight from Alma's authenticated API (via the `alma/alma-php-client` SDK, keyed by your merchant API key) and verifying the remote state and amount against the local order before the order is authorized or captured — the module never trusts a status or amount carried in the return/callback request. Because installment payments settle over time, a cron job plus a queue worker (`PaymentUpdater`) periodically re-fetch in-progress payments from Alma and capture them once Alma reports them paid. Refunds (full and partial) are supported and are pushed to Alma through the same SDK. It depends on Commerce Payment and requires the Alma SDK via Composer; it is a beta release (`1.0.0-beta1`), so verify the flow for your version before production.
 
 ---
 
-- Offer Alma BNPL/installment payments.
-- Use the offsite-redirect flow.
-- Serve French/EU payments.
-- Depend on Commerce Payment.
-- FETCH the payment from Alma's API (authoritative).
-- Update on the remote STATE_PAID.
-- Not trust an IPN payload status.
-- Store the Alma API key as a secret over HTTPS.
-- Verify the flow for your (beta) version.
-- Have no access-control role.
-- Configure the Alma credentials.
-- Handle Alma payments.
-- Verify payments.
-- Configure the gateway.
-- Process payments.
-- Fetch remote state.
-- Handle the integration.
-- Take payments.
-- Secure the key.
-- Provide Alma payment.
+- Offer Alma installment / buy-now-pay-later payments as a Drupal Commerce checkout option.
+- Redirect shoppers offsite to Alma and bring them back via the standard Commerce offsite flow.
+- Present one Alma fee plan per configured gateway (add several gateways for several plans).
+- Restrict Alma to EUR, non-zero, Alma-eligible orders automatically at checkout.
+- Confirm each payment by fetching its authoritative state from Alma's API rather than trusting the return/IPN payload.
+- Authorize in-progress payments and capture paid ones, comparing the remote amount to the order.
+- Reconcile installment payments over time with a cron job and queue worker that re-fetch and capture.
+- Issue full and partial refunds back through Alma.
+- Pull the list of available Alma fee plans into the gateway settings form (with an AJAX refresh).
+- Let other modules alter the parameters sent to Alma via the `commerce_alma.create_payment` event.
+- Validate the merchant API key when saving the gateway configuration.
+- Run in test or live mode against the matching Alma environment.
+- Serve French/EU stores that want to add Alma alongside their other Commerce payment gateways.

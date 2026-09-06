@@ -41,6 +41,6 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 ## Where it lives in the admin menu
 
 Commerce BAT adds a settings area under Commerce. The overview lives at
-**Administration → Commerce → Commerce BAT** (`/admin/commerce/commerce-bat`),
-with capacity presets at `/admin/commerce/commerce-bat/capacity-presets` and the
-admin blockout calendar at `/admin/commerce/commerce-bat/blockout`.
+**Administration → Commerce → Configuration → BAT / Availability** (`/admin/commerce/config/commerce-bat`),
+with capacity presets at `/admin/commerce/config/commerce-bat/capacity-presets` and the
+admin blockout calendar at `/admin/commerce/config/commerce-bat/blockout`.

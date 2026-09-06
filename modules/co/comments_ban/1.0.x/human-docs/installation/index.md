@@ -2,8 +2,7 @@
 
 ## Requirements
 
-- **Drupal 8.8, 9, 10, or 11** (`core_version_requirement: ^9||^10||^11`, with
-  support back to 8.8).
+- **Drupal 9, 10, or 11** (`core_version_requirement: ^9 || ^10 || ^11`).
 - Core's **Comment** module (`comment`) enabled.
 
 There are no third‑party Composer or PHP library requirements.
@@ -32,8 +31,10 @@ drush en comments_ban -y
 ## Set permissions
 
 Grant core's **`administer users`** permission (at **People → Permissions**,
-`/admin/people/permissions`) to the roles that should be able to ban and unban
-commenters. That single permission governs the whole feature.
+`/admin/people/permissions`) to the roles that should manage bans through the
+profile checkbox and the management view. To let a role use the *Remove comment and
+ban user* / *Unban user from the comments* bulk actions, also grant core's
+**`administer comments`** permission.
 
 ## Expose the ban field on the user form
 

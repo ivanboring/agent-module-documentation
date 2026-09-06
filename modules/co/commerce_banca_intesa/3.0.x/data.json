@@ -5,8 +5,12 @@
   "version": "3.0.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_banca_intesa",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^2.20 || ^3.0@beta",
+    "gnikolovski/gnikolovski_payment_log": "^1.0"
+  },
   "dependent_modules": [
+    "commerce",
     "commerce:commerce_order",
     "commerce:commerce_payment"
   ],

@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- **Drupal 9, 10, or 11** (`core_version_requirement: ^9||^10||^11`).
+- **Drupal 8.9, 9, 10, or 11** (`core_version_requirement: ^8.9 || ^9 || ^10 || ^11`).
 - **Drupal Commerce** (`commerce`) and **Commerce Payment**
   (`commerce_payment`).
 - An **Alpha Bank (Greece) merchant account** providing a merchant ID and a shared
@@ -33,20 +33,16 @@ as needed.
 drush en commerce_alphabank_redirect -y
 ```
 
-## Store your shared secret as a secret
+## About the shared secret
 
 The Alpha Bank **shared secret** is the whole basis of trust for verifying
-callbacks, so treat it as a secret and keep it out of version control. With DDEV,
-save it as an environment variable and expose it through a Key entity:
-
-```bash
-ddev dotenv set .ddev/.env --alphabank-shared-secret=<value>
-ddev restart
-```
-
-Then create a Key entity (install the Key module first if needed with
-`ddev composer require drupal/key && ddev drush en key -y`) using the env provider
-and reference it from the gateway configuration.
+callbacks. This module does not integrate with the Key module — you enter the
+secret directly into the gateway's **Shared secret** field during
+[Configuration](../configuration/index.md), and it is stored in the gateway
+configuration. Because of that, treat your Commerce configuration export as
+sensitive (keep it out of public version control) and restrict who can administer
+payment gateways. The secret is used only server-side to verify the bank's callback
+digest; it is never sent to the customer's browser.
 
 ## Verify it worked
 

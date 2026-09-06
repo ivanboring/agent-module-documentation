@@ -46,7 +46,7 @@ An appointment‑enabled product shows an interactive calendar in the add‑to�
 form. The customer clicks an available date, picks a start time, optionally adds
 details, and adds it to the cart. On submission the module **validates the slot on
 the server**, checking capacity against existing non‑draft, non‑cancelled Commerce
-orders, so a slot can't be overbooked. The chosen appointment (start, end,
+orders before adding it to the cart. The chosen appointment (start, end,
 timezone, location, notes) is stored on the order item, and different appointments
 stay as separate cart lines rather than merging. A non‑JavaScript fallback uses the
 underlying Commerce select element.
@@ -60,5 +60,6 @@ appointment bookings` permission.
 ## Test it
 
 Enable appointments on a variation, set a small weekly schedule, then book a slot on
-the storefront. Confirm the slot's capacity is respected (try to overbook it) and
-that the appointment details appear on the order item and in the bookings report.
+the storefront. Confirm that the configured schedule, duration, buffer and lead-time
+rules apply and that the appointment details appear on the order item and in the
+bookings report.

@@ -13,33 +13,41 @@ separate settings page.
 
 ## Fields to fill in
 
-- **POS key** — the Barion POS (point‑of‑sale) identifier for your shop, from
-  your Barion account. This ties transactions to your POS.
-- **API key** — the secret key the module uses to call Barion's authenticated
-  API (`GetPaymentState`) when confirming a payment. Treat it as a secret (see
-  below).
-- **Mode / environment (Test / Live)** — Barion provides a sandbox test
-  environment and a live one. Start in **Test** while validating, then switch to
-  **Live** for real payments. Make sure the keys you enter match the environment
-  you select.
+These are the exact fields the gateway form presents (from
+`BarionPaymentGateway::buildConfigurationForm()`):
 
-Set any remaining fields (funding sources, currency, redirect/return options,
-depending on the release) to the values that suit your Barion account.
+- **Barion email address** — the e‑mail (Payee) of your Barion account. Required.
+- **Secret key (POSKey)** — the secret key issued by Barion. The module uses this
+  to authenticate every server‑to‑server API call (including `GetPaymentState`).
+  Treat it as a payment secret (see below). Required.
+- **API version number** — the Barion API version to call. Defaults to `2`.
+- **Payment Window (HMS)** — how long the customer has to complete the payment,
+  entered as three two‑digit boxes (hours : minutes : seconds). Defaults to
+  `00:05:00`. Each box must be exactly two digits (pad with a leading zero).
+- **Barion locale (language also)** — the language/locale Barion shows on its
+  hosted payment page. Defaults to English.
+- **Reservation period** — for authorize‑only (reservation) checkouts, how long
+  the reservation is held, in `d.hh:mm:ss` format (between 1 minute and 1 year).
+  Defaults to `0.00:30:00` (30 minutes). Ignored when the checkout captures
+  immediately.
+- **Mode (Test / Live)** — the standard Commerce gateway mode selector. Barion
+  provides a sandbox test environment and a live one; the module maps the mode to
+  Barion's `Test` / `Prod` environment. Start in **Test** while validating, then
+  switch to **Live** for real payments. Make sure the Secret key you enter matches
+  the environment you select.
 
-## Storing the API and POS keys securely
+Whether Barion is asked to capture immediately or only reserve funds is not a
+field here — it follows your checkout flow's **payment_process → capture**
+setting. When capture is off the payment is created as a reservation and can be
+captured or voided later from the order's payments tab.
 
-The API key is a payment secret and must not be committed to code or exported in
-plain text. On DDEV, store it as an environment variable and reference it through
-a **Key** entity where the gateway supports one:
+## Keeping the Secret key safe
 
-```bash
-ddev dotenv set .ddev/.env --barion-api-key='<your-api-key>'
-ddev restart
-```
-
-Then create a Key that reads that variable and reference it from the gateway
-rather than pasting the raw value into the form. Keep `.ddev/.env` out of version
-control.
+The Secret key (POSKey) is a payment secret. This gateway stores it in its own
+payment‑gateway configuration entity (it does not integrate the Key module), so
+the value lives in configuration: keep configuration exports out of any public
+repository, restrict who holds the *administer payment gateways* permission, and
+always serve the admin over HTTPS.
 
 ## Save and test
 
@@ -51,8 +59,8 @@ control.
 ## Security notes
 
 - Payment confirmation is **API‑verified**: on notification the module fetches
-  the authoritative state from Barion (`GetPaymentState`) using your API key
+  the authoritative state from Barion (`GetPaymentState`) using your Secret key
   rather than trusting the notification payload, so a forged notification cannot
   mark an order paid.
-- Keep the **API key** and **POS key** secret, and always run the site over
+- Keep the **Secret key (POSKey)** secret, and always run the site over
   **HTTPS**.

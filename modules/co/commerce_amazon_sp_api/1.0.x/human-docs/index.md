@@ -22,11 +22,11 @@ app, holding your fulfillment conditions), **Amazon Items** (Amazon inventory
 linked to your Drupal variations), and **Amazon Fulfillment** records (orders
 created on Amazon, linked back to your Commerce orders).
 
-On security: the module calls the Amazon SP‑API using **LWA/IAM credentials** and a
-refresh token — treat all of these as **secrets** (store them in environment
-variables / Key entities, never commit them, and connect over HTTPS). Order data
-flowing to Amazon includes **customer PII**, so handle it according to your privacy
-obligations.
+On security: the module authenticates to the Amazon SP‑API with **Login‑with‑Amazon
+(LWA) credentials** — a client ID, a client secret and a refresh token (there is no
+AWS IAM/SigV4 signing) — treat all of these as **secrets** (never commit them, and
+connect over HTTPS). Order data flowing to Amazon includes **customer PII**, so
+handle it according to your privacy obligations.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -43,7 +43,9 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 
 - **Amazon Apps:** `/admin/commerce/amazon/apps`
 - **Amazon Marketplaces:** `/admin/commerce/amazon/marketplace`
-- **General settings:** **Commerce → Configuration → Amazon SP-API settings**
-  (`/admin/commerce/config/amazon-sp-api/settings`)
-- **Upcoming/booked fulfillment overview** and order state mapping are driven from
-  these settings and entities.
+- **Per‑marketplace integration settings:** the **Settings** operation on a
+  marketplace (`/admin/commerce/amazon/marketplace/{id}/integration`) — this is where
+  the inventory sync period and the fulfillment‑to‑order workflow mapping live.
+- **Config menu:** **Commerce → Configuration → Amazon SP-API**
+  (`/admin/commerce/config/amazon-sp-api`) collects the per‑entity settings/Field‑UI
+  pages.

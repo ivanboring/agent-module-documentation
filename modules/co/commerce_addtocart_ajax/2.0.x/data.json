@@ -5,12 +5,15 @@
   "version": "2.0.x",
   "package": "Commerce",
   "composer_namespace": "drupal/commerce_addtocart_ajax",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^2.0 || ^3.0"
+  },
   "dependent_modules": [
-    "commerce:commerce"
+    "commerce",
+    "commerce_cart"
   ],
   "configure": null,
-  "core_version_requirement": "^10.1||^11",
+  "core_version_requirement": "^10.1 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/commerce_addtocart_ajax",

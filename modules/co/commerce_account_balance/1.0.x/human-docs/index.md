@@ -1,25 +1,33 @@
 # Commerce Account Balance — manual setup guide
 
-**Commerce Account Balance** (`commerce_account_balance`) gives each customer a
-per‑user account balance — think store credit or a simple wallet — inside a
-Drupal Commerce store. It adds an *AccountBalance* entity to track how much
-credit a customer holds, a balance block you can place on a page, and its own set
-of permissions so you decide exactly who may see or change a balance.
+**Commerce Account Balance** (`commerce_account_balance`) shows, on a Drupal
+Commerce order page, how much a customer still **owes** across all of their
+orders. It reads Commerce core's per‑order *balance* (order total minus the
+amount paid), finds every order tied to the same customer email, and adds those
+balances together. In other words it is an "amount owed" / accounts‑receivable
+view to help you collect money — not a spendable store‑credit wallet.
 
-The typical reason to reach for it is to collect money owed across several orders,
-or to hand customers a credit they can draw down. It works by surfacing balance
-information on the Commerce order view page — handy when a single customer account
-is tied to multiple orders — and it plays into order/customer email as well. It
-depends on Drupal Commerce, Commerce Price, and core User, and sits in the
-Commerce package.
+The typical reason to reach for it is to see, at a glance, the total a customer
+owes when one email is attached to several unpaid or partly‑paid orders. It works
+by adding an *Account Balance* link and a summary table to the order view, and it
+can optionally show the owed amount converted into other currencies if the
+`currencyapi` module is installed. It depends on Drupal Commerce, Commerce Price,
+and core User, and sits in the Commerce package.
 
-A balance is money‑like: adjusting it has a real financial effect. Because of
-that the module is strictly **permission‑gated** through a dedicated access‑control
-handler. Three permissions govern it — `view account balance` (see your own
-balance), `view any account balance` (see other people's), and `administer
-account balances` (create and adjust balances). Grant the last two only to trusted
-staff. There is no separate settings form to fill in; setup is really about
-enabling the module and assigning those permissions.
+> **Maturity note.** The module also ships an *Account Balance* block, an
+> *AccountBalance* entity, and a balance‑adjustment form, but on the current
+> release these are incomplete or inactive (the block and entity are unfinished,
+> the adjustment form is commented out, and a large body of Drupal 7 code in the
+> module does not run on Drupal 10/11). Treat the working feature as the
+> "amount owed across orders" display described above.
+
+Because the figures are financial, the module is **permission‑gated**. Three
+permissions govern it — `view account balance` (the own‑balance block),
+`view any account balance` (used when deciding whether to show the balance link),
+and `administer account balances` (the balance summary route at
+`/account/balance/{order}`). Grant the last two only to trusted staff. There is
+no separate settings form; setup is really about enabling the module and
+assigning those permissions.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -39,18 +47,13 @@ permission assignment, covered at the end of Installation.
 Commerce Account Balance adds no top‑level settings page of its own. You manage
 who can use it from **People → Permissions**
 (`/admin/people/permissions`), and its balance information appears on Commerce
-order view pages under **Commerce → Orders**. If you want the balance block
-visible somewhere, place it from **Structure → Block layout**
-(`/admin/structure/block`).
+order view pages under **Commerce → Orders**.
 
 ## How to use it
 
 1. Enable the module (see [Installation](installation/index.md)).
 2. On **People → Permissions**, grant `administer account balances` and
-   `view any account balance` to your staff/administrator roles only, and decide
-   whether customers should be able to see their own balance with `view account
-   balance`.
-3. Optionally place the **balance block** via **Structure → Block layout** so a
-   logged‑in customer can see their current credit.
-4. Balance details then appear on the relevant Commerce order pages, helping you
-   reconcile what a customer owes across multiple orders.
+   `view any account balance` to your staff/administrator roles only.
+3. Open an order under **Commerce → Orders** for a customer whose email has an
+   outstanding balance; an **Account Balance** section/link appears, and the
+   balance route shows a table of that customer's orders and what each still owes.

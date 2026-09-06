@@ -45,7 +45,7 @@ This also enables its Commerce and BAT dependencies.
 
 ## Verify it worked
 
-Go to **Administration → Commerce → Commerce BAT**
-(`/admin/commerce/commerce-bat`). You should see the settings overview where you
+Go to **Administration → Commerce → Configuration → BAT / Availability**
+(`/admin/commerce/config/commerce-bat`). You should see the settings overview where you
 map variation types to booking modes. From there, continue to
 [Configuration](../configuration/index.md).

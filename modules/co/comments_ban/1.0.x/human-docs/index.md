@@ -12,11 +12,15 @@ comment and ban user* action you can add to a comments view, an *Unban user from
 the comments* action for user views, and a **Users banned from comments** admin
 view at `/admin/config/people/banned-from-comments` for seeing and managing who's
 banned. It depends on core's Comment module, sits in the Spam control package, and
-works on Drupal 8.8, 9, 10, and 11.
+works on Drupal 9, 10, and 11.
 
-Access is governed by core's **`administer users`** permission — anyone you trust to
-manage user accounts can ban and unban commenters. Beyond blocking comment posting
-for the listed users, the module plays no broader access‑control role.
+Access is governed by two core permissions: **`administer users`** lets a person
+edit the ban checkbox on a profile and see the management view, and
+**`administer comments`** lets a person run the *Remove comment and ban user* and
+*Unban user from the comments* bulk actions. Both are trusted admin permissions.
+Beyond blocking comment posting for the banned accounts, the module plays no
+broader access‑control role. Note that the ban targets **authenticated** accounts;
+anonymous commenters are unaffected.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -41,8 +45,10 @@ each user's edit form, and permissions are managed at **People → Permissions**
 
 **Initial setup (one time):**
 
-1. Grant the core **`administer users`** permission to the roles that should be
-   allowed to ban commenters (**People → Permissions**).
+1. Grant the core **`administer users`** permission (to manage bans via the profile
+   field and the management view) and/or **`administer comments`** (to use the
+   ban/unban bulk actions) to the roles that should be allowed to ban commenters
+   (**People → Permissions**).
 2. Enable the **"User banned from comments"** field on the user account form —
    under **Configuration → People → Account settings → Manage form display**
    (`/admin/config/people/accounts/form-display`) — so the checkbox appears when
