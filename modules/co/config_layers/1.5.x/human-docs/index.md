@@ -59,7 +59,7 @@ drush config-layers:export <layer_id>
 drush config-layers:synchronize
 
 # Reverse: synchronize active config back into the layers
-drush config-layers:revsync
+drush config-layers:reverse-synchronize   # alias: clrevsync
 ```
 
 Additional commands mirror core config tooling for layers:

@@ -4,9 +4,11 @@
 
 - **Drupal 9, 10, or 11** (`core_version_requirement: ^9 || ^10 || ^11`).
 
-There are no module dependencies. The module bundles the
-[canvas-confetti](https://github.com/catdad/canvas-confetti) JavaScript library,
-so there is nothing extra to download.
+There are no module dependencies. The
+[canvas-confetti](https://github.com/catdad/canvas-confetti) JavaScript library
+is loaded from a public CDN (jsDelivr) at runtime, so there is nothing extra to
+download — but the effect does require visitors' browsers to be able to reach
+that CDN.
 
 ## Install with Composer
 

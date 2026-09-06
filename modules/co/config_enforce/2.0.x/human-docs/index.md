@@ -35,16 +35,22 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 1. [Installation](installation/index.md) — enable Composer patching, install the
    module (plus the dev companion in development), and enable it.
 
-There is **no standalone settings form** in this module — you decide which config
-is enforced during development (typically with the Config Enforce Devel UI), and
-the enforcement then travels with your config YAML in the codebase. The workflow
-is described below.
+**You do not pick which config to enforce on this module's own settings page** —
+that is decided during development (typically with the Config Enforce Devel UI),
+and the enforcement then travels with your config YAML in the codebase. The
+workflow is described below.
 
 ## Where it lives in the admin menu
 
-Config Enforce adds no configuration page of its own. Enforcement is defined in
-your config files, and its visible effect appears wherever an enforced config
-object is edited — for example, an enforced settings form renders read-only.
+Config Enforce adds one small settings page at **Administration → Configuration →
+Development → Config enforcement**
+(`/admin/config/development/config_enforce`), available to users with the
+*Administer site configuration* permission. It does **not** list or choose config
+objects; it only lets you pick which events trigger a re-import of enforced config
+(today the single option is **Cache rebuild**, which is on by default). Which
+config is enforced, and how strictly, is defined entirely in your config files.
+Enforcement's visible effect appears wherever an enforced config object is edited —
+for example, an enforced settings form renders read-only.
 
 ## How to use it
 

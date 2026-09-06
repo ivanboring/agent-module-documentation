@@ -1,16 +1,18 @@
 # Confetti — manual setup guide
 
 **Confetti** (`confetti`) adds a celebratory confetti animation to your site — a
-cheerful on-screen burst you can show on chosen pages, for example after a
-successful form submission or when a visitor reaches a milestone. It is a small,
-purely front-end touch built on the well-known
+cheerful on-screen burst shown on the pages you choose. The burst plays
+automatically when a visitor **loads** one of those pages (about half a second
+after it appears, for roughly six seconds); there is no form-submission or event
+to configure. It is a small, purely front-end touch built on the well-known
 [canvas-confetti](https://github.com/catdad/canvas-confetti) JavaScript library,
-which ships with the module.
+which the module loads from a public CDN at runtime.
 
 The module has no other modules as dependencies and works once enabled and
 pointed at a page. A small settings form lets you specify the URL sub-path(s)
-where the confetti effect should appear; the module bundles one example so you
-can see how the customisation works. Customisation is optional — the effect is
+where the confetti effect should appear. The colours and timing are set in the
+module's JavaScript file (`js/confetti.js`) and can be changed by editing it —
+that is what the project means by optional "customisation". The effect is
 decorative and has no content or access-control role beyond its own permission.
 
 This guide is written for a **human** clicking through the admin UI. If you want

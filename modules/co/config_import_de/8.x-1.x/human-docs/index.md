@@ -33,16 +33,20 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 
 1. [Installation](installation/index.md) — install with Composer and enable it.
 
-There is **no configuration page** — the two behaviours are toggled independently
-(see below) and the module then acts during normal config import.
+The two behaviours are toggled on a small settings page at
+**Configuration → Development → Configuration Import - Delete Entities**
+(`/admin/config/development/config_import_de`), which has just two checkboxes —
+**Delete detected entities** and **Debug mode** — that can be turned on or off
+independently. The module then acts automatically during a normal config import.
+Note that **Delete detected entities is on by default** once the module is enabled.
 
 ## How to use it
 
 1. Install and enable the module (see [Installation](installation/index.md)).
-2. Before relying on automatic deletion, use the **debug/listing** behaviour to see
-   which entities a given import would delete — they're reported as
-   entity-type/id pairs.
-3. Once you're confident, enable the **automatic deletion** behaviour so that
+2. Open the settings page (above). Before relying on automatic deletion, turn on
+   **Debug mode** so you can see which entities a given import would delete — they're
+   reported as entity-type/id pairs.
+3. Once you're confident, keep (or enable) **Delete detected entities** so that
    `drush config:import` (or a UI import) removes the orphaned content and completes
    without manual intervention.
 4. Because deletion is irreversible, take a database backup before importing config

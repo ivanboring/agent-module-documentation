@@ -1,7 +1,7 @@
 {
   "name": "Config Enforce - Devel",
   "data_name": "config_enforce_devel",
-  "description": "Development helper for Config Enforce: make some configuration read-only.",
+  "description": "Development-only UI for Config Enforce: mark config objects as enforced (read-only), bulk-generate enforcement settings, create target modules, and write config YAML into the codebase.",
   "version": "2.0.x",
   "package": "Configuration",
   "composer_namespace": "drupal/config_enforce_devel",
@@ -11,7 +11,7 @@
     "config_enforce:config_enforce",
     "multiselect:multiselect"
   ],
-  "configure": null,
+  "configure": "config_enforce_devel.settings",
   "core_version_requirement": "^10.1 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -21,8 +21,8 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
-  "provides_drush_commands": false,
+  "provides_permissions": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [

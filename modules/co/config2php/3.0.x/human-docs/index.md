@@ -29,15 +29,26 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 1. [Installation](installation/index.md) — install with Composer and enable the
    module.
 
-There is no settings form to configure — Config2PHP is a one-screen tool,
-described below.
+## Where things live
+
+- **Export tool** — a **Single item to PHP** tab on the core single-export page,
+  at *Administration → Configuration → Development → Configuration synchronization
+  → Export → Single item to PHP*. This is where you pick a config item and copy
+  its PHP array. It is gated by the core *Export configuration* permission.
+- **Settings** — *Administration → Configuration → Development → Config Export to
+  PHP array* (gated by the *Administer Config Export to PHP array* permission).
+  Two options: **Replace the default tab** (when enabled, the core **Export**
+  menu link/tab opens this module's PHP export page instead of the YAML archive
+  page) and **Excluded keys** (one key per line; these top-level configuration
+  keys are stripped from the generated output — defaults: `_core`,
+  `dependencies`, `langcode`, `status`, `uuid`).
 
 ## How to use it
 
 1. Enable the module (see [Installation](installation/index.md)) and grant its
    export permission to trusted developers.
-2. Open the Config2PHP tool page (from the site's admin/configuration area, for
-   users who hold the module's permission).
+2. Open the **Single item to PHP** tab (see above) as a user who holds the
+   *Export configuration* permission.
 3. **Select the configuration type** and then the **specific element** you want.
 4. Config2PHP generates the equivalent PHP array. Copy it into your install/update
    hook or module code.

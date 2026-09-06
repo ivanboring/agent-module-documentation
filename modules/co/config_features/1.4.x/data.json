@@ -1,7 +1,7 @@
 {
   "name": "Config Features",
   "data_name": "config_features",
-  "description": "allows sharing/bundling configuration from one site to another.",
+  "description": "Packages selected configuration into a per-feature folder so it can be exported from one Drupal site and imported into another, reconciling UUID differences so matching config is updated rather than duplicated. A Config Split-derived split/merge engine branded for cross-site config sharing.",
   "version": "1.4.x",
   "package": "Config",
   "composer_namespace": "drupal/config_features",
@@ -32,7 +32,10 @@
     "features",
     "share",
     "export",
-    "configuration"
+    "import",
+    "configuration",
+    "config split",
+    "uuid"
   ],
   "project_description": "Config Features modules helps to share set of selected configurations (called as a Feature here) with any other Drupal sites. This module will take care UUID differences of same configuration being imported to a site. In other words, it will simply update the same configuration though it coming from a different site.",
   "maintenance_status": "Actively maintained",

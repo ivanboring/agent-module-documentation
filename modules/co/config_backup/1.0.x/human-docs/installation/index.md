@@ -29,15 +29,18 @@ dependencies as needed.
 drush en config_backup -y
 ```
 
-After enabling, review the module's permissions under **People → Permissions** and
-grant backup/restore rights only to trusted administrators — backups can contain
-sensitive values.
+After enabling, set the backup directory in `settings.php` and review the module's
+permission under **People → Permissions** — grant **Backup configuration** only to
+trusted administrators, since backups can contain sensitive values. See
+[Configuration](../configuration/index.md) for the `$settings['config_backup_directory']`
+setting you must add before backups will work.
 
 ## Verify it worked
 
-Open the Config Backup admin area (see [Configuration](../configuration/index.md))
-and create a test backup, or run the module's Drush command. Confirm a
-configuration snapshot is produced.
+Once the backup directory is configured, open the Backup page (see
+[Configuration](../configuration/index.md)) and create a test backup, or run
+`drush config:backup`. Confirm a `configs-<date>_<time>.tar.gz` snapshot appears in
+your configured directory.
 
 > **Tip:** The module ships a `README.md` with the most complete, up-to-date
 > documentation — worth a look for any additional details.

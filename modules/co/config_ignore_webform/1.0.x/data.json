@@ -1,11 +1,14 @@
 {
   "name": "Config Ignore Webform",
   "data_name": "config_ignore_webform",
-  "description": "ignores webform config on config import (except templates/exclusions).",
+  "description": "Extends Config Ignore to ignore all webform.webform.* and webform.webform_options.* config during config import/export, except webforms marked as templates and items allowlisted on its settings form.",
   "version": "1.0.x",
   "package": "Webform",
   "composer_namespace": "drupal/config_ignore_webform",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/config_ignore": "^3",
+    "drupal/webform": "^6"
+  },
   "dependent_modules": [
     "config_ignore:config_ignore",
     "webform:webform"
@@ -16,7 +19,7 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/config_ignore_webform",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],

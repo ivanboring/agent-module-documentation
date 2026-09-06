@@ -1,13 +1,13 @@
 {
   "name": "Confetti",
   "data_name": "confetti",
-  "description": "Adds a celebratory confetti animation effect (triggered on events like form submission).",
+  "description": "Plays a client-side confetti animation on page load for admin-configured URL paths, using the external canvas-confetti library.",
   "version": "2.0.x",
   "package": "confetti",
   "composer_namespace": "drupal/confetti",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "confetti.settings",
   "core_version_requirement": "^9||^10||^11",
   "active_installs": null,
   "list_position": null,
@@ -19,7 +19,7 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "User engagement"
@@ -30,9 +30,10 @@
   "keywords": [
     "confetti",
     "animation",
-    "celebration",
+    "canvas-confetti",
     "effect",
-    "ux"
+    "ux",
+    "page-load"
   ],
   "project_description": "This module provides confetti effect on any page. In the configuration form, you can add the URL sub-path for any page.\n\nIt is based on https://github.com/catdad/canvas-confetti , uses its as an external JS library.\n\n Customization is optional, one example is given in the module.",
   "maintenance_status": "Actively maintained",

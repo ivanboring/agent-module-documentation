@@ -7,7 +7,8 @@
   Canvas.
 - The **Key** module (`key`) — used to store the Conductor API credentials
   securely.
-- A **Conductor account and API key**. You can obtain a key from
+- A **Conductor account and API credentials** (an `api_key` and a `shared_secret`).
+  You can obtain these from
   <https://www.conductor.com/lp/content-insights-drupal/>.
 
 Composer pulls in Canvas and Key as dependencies. There are no third‑party PHP
@@ -38,6 +39,7 @@ This also ensures **Canvas** and **Key** are enabled.
 
 ## Verify it worked
 
-Open the module's configuration page and confirm it prompts for a Conductor API
-key. Once you've stored the key (see [Configuration](../configuration/index.md)),
-Conductor's writing/SEO guidance should appear while authoring in Canvas.
+Open the module's settings page at `/admin/config/services/conductor` and confirm it
+prompts for a Conductor credentials Key. Once you've stored the credentials (see
+[Configuration](../configuration/index.md)), Conductor's writing/SEO guidance should
+appear via the **Writing Assistant** extension while authoring in Canvas.

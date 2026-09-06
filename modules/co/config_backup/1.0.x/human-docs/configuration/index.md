@@ -1,36 +1,56 @@
 # Configuration
 
-Config Backup doesn't need much setup — the main things to get right are
-permissions and where you keep the backups. You then create and restore snapshots
-either from the admin UI or with `drush`.
+Config Backup doesn't need much setup — the two things to get right are the
+**backup directory** and the **permission**. You then create snapshots either from
+the admin UI or with `drush`.
 
-## Grant permissions carefully
+## Set the backup directory (required)
 
-Under **People → Permissions**, grant the module's backup and restore permissions
-**only to trusted administrators**. Because a configuration backup can include
-sensitive values (API keys, credentials, and other settings), anyone who can
-create or download a backup can potentially read those values.
+The module has **no default directory**. Add a setting to the end of `settings.php`
+telling it where to write archives, for example:
+
+```php
+$settings['config_backup_directory'] = '../config/back';
+```
+
+Choose a path **outside the webroot** (as the README recommends) so the archives
+are not web-accessible, and add it to `.gitignore` if it sits inside your repo. If
+this setting is missing, the Backup page and the Drush command show an error and
+write nothing. The directory must be writable — the form warns you if it is not.
+
+## Grant the permission carefully
+
+Under **People → Permissions**, grant **Backup configuration** **only to trusted
+administrators**. Because a configuration backup can include sensitive values (API
+keys, credentials, and other settings), anyone who can create a backup can
+potentially read those values. This is the module's only permission (there is no
+separate restore or download permission — the module does not offer those
+features).
 
 ## Create a backup
 
-- **From the admin UI** — open the Config Backup admin area and create a snapshot
-  of the active configuration. You can create backups before risky changes so you
-  have something to restore to.
-- **From Drush** — run the module's config-backup command on the command line
-  (handy for scripting or scheduling). Inside DDEV, prefix with `ddev` from the
+- **From the admin UI** — open **Configuration → Development → Configuration
+  synchronization → Backup**
+  (`/admin/config/development/configuration/backup`) and click **Backup**. It writes
+  a `configs-<date>_<time>.tar.gz` archive into your configured directory and shows
+  the saved path.
+- **From Drush** — run `drush config:backup` (alias `drush cbkp`) on the command
+  line (handy for scripting or scheduling). Inside DDEV, prefix with `ddev` from the
   host (`ddev drush …`); run `drush` directly inside `ddev ssh`.
 
-## Restore or compare
+## Restoring from a snapshot (manual)
 
-Use a stored snapshot to restore configuration, or to diff against the current
-state so you can see what changed. Treat a restore as a deliberate action — it
-overwrites active configuration.
+The module only *creates* archives — it does not restore them. To roll back, extract
+the archive's YAML files into a configuration sync directory and run
+`drush config:import`. Treat that as a deliberate action — it overwrites active
+configuration.
 
-## Store backups securely
+## Handle backups securely
 
-Keep the backups somewhere **not publicly accessible** and protect them like any
-other sensitive artifact. Don't leave configuration snapshots in a web-reachable
-directory, and don't commit ones containing secrets to a shared repository.
+Keep the backup directory somewhere **not publicly accessible** and protect the
+archives like any other sensitive artifact. Don't point the directory at a
+web-reachable path, and don't commit archives containing secrets to a shared
+repository.
 
 > The module's bundled `README.md` carries the most complete and current
 > documentation for exact routes, options, and Drush command names.

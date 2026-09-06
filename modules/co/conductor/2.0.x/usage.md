@@ -1,19 +1,24 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Writing Assistant integrates Conductor (a writing/SEO optimization service) with the Canvas experience builder, storing credentials via the Key module.
+Writing Assistant embeds the hosted Conductor SEO/AI writing assistant as a Canvas extension, reaching the Conductor API through a credentialed Drupal-side proxy and storing credentials via the Key module.
 
 ---
 
-Writing Assistant (module machine name `conductor`) integrates Conductor — a content-writing and
-SEO optimization platform — with Canvas, bringing writing/SEO guidance into the content-authoring
-experience. It depends on the `canvas` module and the `key` module, using Key to store the Conductor
-API credentials securely. It provides its own permissions.
+Writing Assistant (module machine name `conductor`, info.yml name "Writing Assistant") integrates
+Conductor — a content-writing and SEO optimization platform (Acquia SEO Content Insights) — with
+Canvas, bringing writing/SEO guidance into the content-authoring experience. It depends on the `canvas`
+module and the `key` module. It ships a front-end Canvas extension plus a Drupal-side proxy
+(`/conductor/proxy/**`) that relays requests to the Conductor API (`api.conductor.com`) with the site's
+Conductor credentials attached, an entity-to-draft mapping API and a small local table that links
+Canvas entities to Conductor draft UUIDs (with a per-year draft quota), a drafts dashboard at
+`/admin/reports/conductor`, and an opt-in cron cleanup of orphaned Conductor-side drafts.
 
 Use it where content teams use Conductor for SEO-driven writing guidance and want that surfaced while
-authoring in Canvas. The security-relevant point is credential handling: because it integrates the Key
-module, store the Conductor API credentials as a Key (environment or another secure provider), never in
-plaintext config. Content or topic data may be sent to Conductor's service for analysis — a
-data-handling consideration. It is an authoring/SEO integration with no access-control role beyond its
-admin permission.
+authoring in Canvas. The Conductor credentials are an `api_key` and `shared_secret` pair supplied as a
+JSON value; because the module integrates the Key module, store them as a Key (environment or another
+secure provider), never in plaintext config. Content or topic data is sent to Conductor's service for
+analysis — a data-handling consideration. The module defines two permissions: `use conductor` (gates
+the Canvas-extension proxy, the draft/settings API endpoints and the drafts dashboard, for content
+editors) and `administer conductor` (restricted; gates the settings form only).
 
 ---
 

@@ -16,7 +16,8 @@ Because it is purely a development helper, it builds on a small stack of related
 modules: **Config Enforce** (the runtime enforcement it configures), **Config
 Devel** (`config_devel`, which handles writing active config back out to files),
 and **Multiselect** (`multiselect`, used for its selection UI). It supports Drupal
-10.1+ and 11 and provides its own permission for access to the development UI.
+10.1+ and 11. Its admin screens are gated by the core **Administer site
+configuration** permission (it does not define a permission of its own).
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -27,15 +28,20 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 1. [Installation](installation/index.md) — install (in development only) with
    Composer and enable it alongside its dependencies.
 
-There is **no dedicated settings form** for this module in the classic sense — its
-role is to add enforcement controls for config objects and to write the YAML into
-your codebase. The workflow is described below.
+Its screens live under **Configuration → Development → Config Enforce**
+(`/admin/config/development/config_enforce`), added as tabs alongside Config
+Enforce. The main pages are a **Config Enforce Devel settings** form (defaults for
+enforcement, the list of available target modules, and an ignore list) and an
+**Enforced configs** page (review what is enforced, generate settings in bulk, and
+add a new target module). Individual config forms across the site also gain an
+enforcement indicator with a **Manage settings** button. The workflow is described
+below.
 
 ## Where it lives in the admin menu
 
-This module adds development-only controls for marking config as enforced. Because
-it is meant strictly for development environments, treat any UI it exposes as a
-build-time tool, not a production admin page.
+This module adds development-only controls under **Configuration → Development →
+Config Enforce**. Because it is meant strictly for development environments, treat
+its UI as a build-time tool, not a production admin page.
 
 ## How to use it
 

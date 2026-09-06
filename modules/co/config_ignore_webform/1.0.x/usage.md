@@ -1,5 +1,5 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Config Ignore Webform ignores webform config on config import (except templates/exclusions).
+Config Ignore Webform ignores webform config during config import/export (except templates/exclusions).
 
 ---
 
@@ -13,7 +13,7 @@ version control — accept that trade-off for the editor-managed forms. Configur
 
 ---
 
-- Ignore webform config on import.
+- Ignore webform config on import/export.
 - Protect editor webforms from overwrite.
 - Keep templates/exclusions tracked.
 - Depend on Config Ignore + Webform.

@@ -46,3 +46,8 @@ Confirm the module and its dependencies are enabled (`drush pm:list --status=ena
 should list `config_enforce_devel`, `config_enforce`, `config_devel`, and
 `multiselect`). You can then start marking config objects for enforcement, as
 described in the [overview](../index.md).
+
+> **Heads-up:** the first time it runs, the module auto-creates and enables a
+> default *target module* named `config_enforce_default` under `modules/custom/`
+> (this is where enforced config YAML is written by default). You can create your
+> own target modules later and delete this one once it is no longer the default.

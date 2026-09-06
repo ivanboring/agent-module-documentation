@@ -1,7 +1,7 @@
 {
   "name": "Config Backup",
   "data_name": "config_backup",
-  "description": "Creates and manages backups of the site's configuration.",
+  "description": "Exports the site's active configuration to a timestamped .tar.gz archive, from the admin UI or via Drush (config:backup / cbkp). Backup creation only; no download, restore, or delete in-module.",
   "version": "1.0.x",
   "package": "Config",
   "composer_namespace": "drupal/config_backup",
@@ -9,7 +9,7 @@
   "dependent_modules": [
     "drupal:config"
   ],
-  "configure": null,
+  "configure": "config_backup.admin",
   "core_version_requirement": "^8||^9||^10||^11",
   "active_installs": null,
   "list_position": null,
@@ -20,21 +20,24 @@
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
-  "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools"
   ],
   "subcategories": [
-    "Configuration backup"
+    "Backup & restore",
+    "Configuration management"
   ],
   "keywords": [
     "config",
     "backup",
     "configuration",
+    "export",
     "snapshot",
-    "restore"
+    "drush",
+    "tar.gz"
   ],
   "project_description": "Synopsis \n Config Backup allows easy make backups of the site configurations via Drupal UI or via `drush`.\n\n Documentation \n The most complete and up to date documentation is included with the module, in the README.md file.\n\n Back to top",
   "maintenance_status": "Actively maintained",
