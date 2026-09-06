@@ -1,14 +1,20 @@
 {
-  "name": "Change Requests",
+  "name": "Change requests",
   "data_name": "change_requests",
-  "description": "Provides field-by-field change requests (proposed edits) for nodes.",
+  "description": "Provides change requests (proposed edits) for nodes, stored field-by-field in a separate 'patch' entity independent of the node revision history.",
   "version": "2.1.x",
-  "package": "Argue",
+  "package": "RulesFinder",
   "composer_namespace": "drupal/change_requests",
-  "composer_requirements": {},
-  "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^9.3||^10||^11",
+  "composer_requirements": {
+    "drupal/changed_fields": "^3.4",
+    "yetanotherape/diff-match-patch": "^1.1"
+  },
+  "dependent_modules": [
+    "node",
+    "changed_fields"
+  ],
+  "configure": "change_requests.change_requests_config",
+  "core_version_requirement": "^9.3 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/change_requests",
@@ -20,21 +26,28 @@
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "FieldPatchPlugin"
+  ],
   "categories": [
     "Content editing experience"
   ],
   "subcategories": [
-    "Editorial workflow / moderation"
+    "Revision management",
+    "Revision comparison",
+    "Workflow / business rules"
   ],
   "keywords": [
     "change requests",
-    "proposals",
-    "review",
-    "editorial",
-    "nodes"
+    "proposed edits",
+    "pull request",
+    "diff",
+    "merge",
+    "moderation",
+    "nodes",
+    "field patch"
   ],
-  "project_description": "Change Requests is a community tool that allows to work together on Drupal content (nodes) without edit-wars (see Wikipedia - Edit-Warring ) similar to open source code developers working together on a code. All (authorized) users can use the form to edit content, but their changes wouldn’t be stored in the node but in a separate entity: a so-called „patch entity“. This patch can be evaluated in a variety of ways (i.e. by the user-community) and taken over to the node at a later date.\n\n The approach is inspired by the Git workflow called „pull request“. The most important difference is that the basis of change requests are Drupal nodes instead of code files.\n\n The changes are stored field-by-field completely independent of the contents revision history. The changes are not saved as full content, but as programmatically change statements. I.e. \"In field_tag remove item with target_id 23 and add target_id 45; In the field_body find the words \"Peter and Mary\" and replace it with \"Peter or Mary\". The patch results are always visible in a diff view, with the changes proposed by the patch author highlighted (similar representation diff modules).\n\n When accepting change requests, so-called \"merge conflicts\" can occur because the contents may have changed in the meantime between creation and acceptance of the change request. Therefore, the user who performs the merge is offered an interface in which the diff view is displayed on the left and the result of the automated merge process as an editable form element on the right. If there were any conflicts in taking over the changes, they can be fixed in this view before saving.\n\n If a change request has been accepted, a new revision of the node is created in each case and the name of the patch author, creation date, link and title of the patch are entered as the log message. Thus, any changes to the node (using the Diff module) remain transparent at all times.\n\n Almost all field types from the Drupal core are supported. For custom field types, a documented plugin interface is available to retrofit support for change requests for these fields.\n\n Dependencies \n The module uses the Changed Field API \n\nText changes will use Google's 3rd-party-lib „diff match patch“ , ported to PHP by\n\n yetanotherape .",
+  "project_description": "Change Requests lets multiple users collaborate on Drupal node content without edit-wars, in a workflow inspired by the git \"pull request\". Authorized users edit a node through the normal node form, but their changes are not written to the node; instead they are captured field-by-field as programmatic change statements (\"patch\") in a separate 'patch' content entity, completely independent of the node's revision history. A patch stores diffs such as \"in field_body replace 'Peter and Mary' with 'Peter or Mary'\" and \"in field_tags remove target_id 23 and add 45\". Patches are shown as a highlighted diff view, reviewed by the community or editors, and later applied to the node. Applying a change request produces a new node revision whose log message records the patch author, date, link and title, so all changes remain transparent (e.g. via the Diff module). Because content may change between creation and acceptance, applying uses a merge interface: the diff on the left and the auto-merged result as editable widgets on the right, so merge conflicts can be resolved before saving. Almost all Drupal core field types are supported through a FieldPatchPlugin plugin type; custom field types can add support via the documented plugin interface. Text diffs use Google's diff-match-patch library ported to PHP by yetanotherape. Depends on the Changed Field API (changed_fields) module.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

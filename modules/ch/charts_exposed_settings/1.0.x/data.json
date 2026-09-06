@@ -1,11 +1,13 @@
 {
   "name": "Charts Exposed Settings",
   "data_name": "charts_exposed_settings",
-  "description": "Views field and filter plugins that expose chart title and axis-label inputs to site visitors.",
+  "description": "Views field and filter plugins that expose chart title, subtitle, and X/Y axis-label inputs to site visitors.",
   "version": "1.0.x",
   "package": "Charts",
   "composer_namespace": "drupal/charts_exposed_settings",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/charts": "^5.0"
+  },
   "dependent_modules": [
     "charts:charts"
   ],
@@ -27,7 +29,9 @@
     "Content display"
   ],
   "subcategories": [
-    "Charts / data visualization"
+    "Charts / data visualization",
+    "Views exposed filters",
+    "Views field handlers"
   ],
   "keywords": [
     "charts",

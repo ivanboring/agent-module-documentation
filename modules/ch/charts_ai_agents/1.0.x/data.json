@@ -1,14 +1,17 @@
 {
   "name": "Charts AI Agents",
   "data_name": "charts_ai_agents",
-  "description": "Provides AI agents that help build charts using the Charts module.",
+  "description": "AI agents for helping to build charts within Drupal using the Charts module.",
   "version": "1.0.x",
   "package": "Charts",
   "composer_namespace": "drupal/charts_ai_agents",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai_agents": "^1.0",
+    "drupal/charts": "^5.1"
+  },
   "dependent_modules": [
-    "ai_agents:ai_agents",
-    "charts:charts"
+    "ai_agents",
+    "charts"
   ],
   "configure": null,
   "core_version_requirement": "^10.3 || ^11",
@@ -20,9 +23,9 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Artificial Intelligence (AI)",
@@ -36,10 +39,10 @@
     "ai",
     "charts",
     "agents",
-    "data visualization",
-    "charts module"
+    "views",
+    "data visualization"
   ],
-  "project_description": "The Charts AI Agents module provides a plugin (with hopes to include more) that can send information about your Drupal site to a chosen AI provider to have it help you create charts.\n\n Back to top \n\n \nDependencies \n \n The AI Core module, with at least one AI Provider to be installed and configured \n The AI Agents module, which includes the Views Agent plugin that this module extends \n The Charts module, which is needed to display a chart using Views. \n A charting submodule, such as Charts Highcharts, which is needed to display a chart using Views. \n \n Back to top \n\n \nDocumentation \n Please start by using the documentation provided by the AI Agents module, available here: https://project.pages.drupalcode.org/ai_agents/ , and the Charts module, available here: https://www.drupal.org/docs/contributed-modules/charts .\n\n Once you have the AI Agents module installed and configured, you can create your Charts AI Agent, following the same instructions for the Views Agent.\n\n To create a chart, you either need to use the Explore page provided by the AI Agents module, which will be available at /admin/config/ai/agents/explore?agent_id=charts_views_agent (although the) ID referenced in that link will be the machine name of your agent), or you can use the AI Chatbot, accessible as a Block you will need to place on your site.\n\n Here's an example prompt you can provide to the AI Chatbot to create a new chart:\n\n Please create a view of Chart Usage Statistics nodes using the chart style plugin. Use the title field as the label and the 7.x field as data provider. Make the chart a line chart using the Highcharts library.\n \n\n Back to top",
+  "project_description": "The Charts AI Agents module provides an AI Agent plugin that extends the Views Agent from the AI Agents module so a chosen AI provider can generate Drupal Views rendered with the Charts module's chart style. Given a natural-language prompt, the agent decides whether to create, edit, delete or answer questions about a view, picks the entity type/bundle, fields, filters and chart settings (library, chart type, axes, data providers, colors), and saves the resulting View entity. It runs through the AI Agents Explore page or the AI Chatbot block, and requires the AI Agents framework (with a configured AI provider) plus the Charts module and one Charts rendering sub-module such as Charts Highcharts.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

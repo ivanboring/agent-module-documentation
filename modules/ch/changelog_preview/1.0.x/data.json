@@ -1,25 +1,30 @@
 {
   "name": "Changelog Preview",
   "data_name": "changelog_preview",
-  "description": "provides an admin viewer to preview a project/module CHANGELOG.",
+  "description": "Renders one or more admin-configured Markdown CHANGELOG files as HTML pages inside a Drupal site.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/changelog_preview",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "michelf/php-markdown": "^2.0",
+    "symfony/routing": "^7.1"
+  },
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/changelog_preview",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "michelf/php-markdown"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
@@ -30,11 +35,11 @@
   "keywords": [
     "changelog",
     "release notes",
+    "markdown",
     "preview",
-    "admin",
     "viewer"
   ],
-  "project_description": "The changelog preview module aims to give Drupal users a view of which areas have changed. This allows editors, for example, to see which new functionalities have been added. The changelog must be a Markdown file which is read via a specified path.\n\n Features \n Several changelogs can be entered via a form, which can be viewed later via the changelog button.\n\n- Code blocks are highlighted in grey.\n\n- View one or more changelog files in markdown format directly in Drupal.\n\n Post-Installation \n 1. You can set the changelog settings as an administrator under /admin/changelog_manage \n\n2. The path must be relative to the current Drupal root folder\n\n3. Roles can be given the view changelog permission so that they can view the changelog.\n\n4. The browser path is the path to be called up later for users to view the changelog.\n\n Additional Requirements \n The project requires the michelf/php-markdown library, which converts the markdown file into an HTML view for the Drupal page. But the dependency is also installed by the module!\n\n -> michelf/php-markdown \n\n Supporting this Module \n The module is supported and maintained by the organisation Landwitschaftsverlag GmbH.\n\n Back to top",
+  "project_description": "Changelog Preview displays one or more Markdown changelog files as HTML pages inside a Drupal site. An administrator configures, at /admin/changelog_manage, a repeatable list of changelog items; each item pairs a server-relative file path with a display name and a browser path (URL). The module registers a dynamic route for each configured item, reads the file from disk on request, converts it from Markdown to HTML with the michelf/php-markdown library, and renders it. A toolbar tab and dynamic local tasks link to the configured changelogs, and an index page at /changelog/base lists them. Pages are gated by a single 'view changelog' permission that the maintainer suggests can be granted to any role, including anonymous. The module ships a small CSS library to style code blocks. It is authored and supported by Landwirtschaftsverlag GmbH.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

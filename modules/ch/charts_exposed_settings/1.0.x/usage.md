@@ -1,26 +1,28 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Charts Exposed Settings adds Views field and filter plugins that let visitors set a chart's title, subtitle, and X/Y axis labels through the exposed form.
----
-The module targets Views-based charts built with the Charts module. Normally the chart title and axis labels are fixed in the Views style configuration. This module registers global Views field and filter handlers (`field_exposed_title`, `field_exposed_subtitle`, `field_exposed_xaxis_title`, `field_exposed_yaxis_title`) that render as exposed textfields, so an end user can type the title/labels when viewing the chart.
+Charts Exposed Settings adds Views field and filter handlers that let a Views chart's title, subtitle, and X/Y axis labels be set from exposed form input (or matching URL query parameters) at view time.
 
-It works via `hook_views_pre_view()`: for a Charts style display it reads the `chart_title`, `chart_subtitle`, `y_axis_title`, and `x_axis_title` query parameters from the request and writes them into the chart style's settings (`display/title`, `display/subtitle`, `yaxis/title`, `xaxis/title`). Each incoming value is passed through `Xss::filter()` before being applied and a `url` cache context is added, so reflected values are sanitized. There is no configuration UI and no stored data — the exposed inputs simply drive the chart labels for that request.
-
-Typical setup: build a chart in Views, add one of the exposed chart fields or filters to the display, expose it, and give it the expected identifier so its query parameter maps onto the chart setting.
 ---
-- Let visitors set a chart's main title via an exposed form input.
-- Let visitors set a chart subtitle at view time.
-- Expose an editable X-axis label on a Views chart.
-- Expose an editable Y-axis label on a Views chart.
-- Drive chart titles from URL query parameters (`?chart_title=...`).
-- Add exposed chart labels as Views fields.
-- Add exposed chart labels as Views filters (InOperator-based).
-- Build a dashboard where users rename the chart before exporting/screenshotting.
-- Pre-fill chart labels via a shareable URL with query parameters.
-- Combine several exposed label inputs on one chart display.
-- Sanitize user-supplied chart text automatically with Xss::filter.
-- Keep chart output cache-varied per URL for exposed values.
-- Provide report titles that reflect the current filter selection.
-- Hide operator/value UI on the exposed filter so only the label field shows.
-- Set the exposed identifier (e.g. `chart_title`) so the parameter maps correctly.
-- Give non-technical users control over chart presentation without editing the View.
-- Support any Charts render library that reads title/subtitle/axis settings.
+
+The module is a small add-on for the Charts module. It registers four global Views handlers — `field_exposed_title`, `field_exposed_subtitle`, `field_exposed_xaxis_title`, and `field_exposed_yaxis_title` — each available as both a field and a filter, so a site builder can drop them onto any View and expose them. At render time an implementation of `hook_views_pre_view()` inspects the request for the query parameters `chart_title`, `chart_subtitle`, `x_axis_title`, and `y_axis_title`; for any that are present, it overrides the corresponding key in the Charts style plugin's `chart_settings` (paths `display/title`, `display/subtitle`, `xaxis/title`, `yaxis/title`) after passing the value through `Xss::filter()`, and adds the `url` cache context so the result varies per query string. It only acts when the view's style plugin is `ChartsPluginStyleChart`. There is no configuration UI, no permissions, no routes, no stored config beyond the per-view handler options, and no database query work (the handlers' `query()` methods are intentionally empty).
+
+---
+
+- Let end users retitle a Views chart on the fly by typing into an exposed form field.
+- Expose a chart subtitle input so visitors can annotate a rendered chart.
+- Let visitors relabel the X-axis of a chart without a new View or config change.
+- Let visitors relabel the Y-axis of a chart from the exposed form.
+- Drive chart titles from URL query parameters (e.g. `?chart_title=Sales`) for shareable/deep-linkable chart pages.
+- Pre-populate a dashboard chart's labels via links that carry `chart_title`/`x_axis_title`/`y_axis_title` query strings.
+- Build a single reusable chart View whose captions are customized per embedding page through query params.
+- Add the exposed inputs as filters when you want them to appear in the standard exposed filters block.
+- Add the exposed inputs as fields when you prefer field-style placement/handling in the View.
+- Combine with the exposed filters block placed in a region to give a chart a "customize labels" control panel.
+- Allow report builders to label the same data chart differently for different audiences via one URL each.
+- Provide localizable-by-link chart captions where the query param supplies a translated string.
+- Let editors preview alternative chart titles quickly without editing the View.
+- Support A/B-style caption experiments by varying the title query parameter.
+- Give an embedded chart (iframe/AJAX) its captions from the parent page's parameters.
+- Use exposed axis-title inputs to clarify units (e.g. "Revenue (USD)") on demand.
+- Keep chart markup identical across pages while varying only the human-readable labels.
+- Attach the handlers to any chart View regardless of its base table (they are registered under the Global group).
+- Override only the labels you need — unset parameters leave the View's configured defaults intact.
+- Serve per-request chart captions safely, since supplied values are run through Drupal's XSS filter before display.

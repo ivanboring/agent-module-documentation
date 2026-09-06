@@ -1,27 +1,29 @@
 {
   "name": "Kendo UI Charts",
   "data_name": "charts_kendo_ui",
-  "description": "adds Kendo UI as a rendering library for the Charts module.",
+  "description": "Adds Kendo UI as a rendering backend (Library plugin) for the Charts module.",
   "version": "1.0.x",
   "package": "Charts",
   "composer_namespace": "drupal/charts_kendo_ui",
   "composer_requirements": {},
   "dependent_modules": [
-    "charts:charts"
+    "charts"
   ],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/charts_kendo_ui",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "Kendo UI (kendo.all.min.js + default-main.css, Telerik/Progress — commercial, GPL-incompatible)"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"
@@ -36,7 +38,7 @@
     "graphs",
     "library"
   ],
-  "project_description": "This module extends the functionality of the Charts module by integrating the Kendo UI , a powerful jQuery-based JavaScript library. Kendo UI provides a wide range of UI components and features that can enhance the user experience of your Drupal site. You must buy a license to use Kendo UI, though a 30-day trial is available.\n\n Back to top \n\n Requirements \n This module requires the Charts module.\n\n Back to top \n\n Installation \n Install as you would normally install a contributed Drupal module. \n\n To install the Kendo UI library, create a directory\n\n`/libraries/kendo-ui` in your web directory (or root if you are not using the\n\nweb directory) and add the following files:\n\n- `kendo.all.min.js` (copy from https://kendo.cdn.telerik.com/2025.1.227/js/kendo.all.min.js )\n\n- `default-main.css` (copy from https://kendo.cdn.telerik.com/themes/10.2.0/default/default-main.css )\n\n- `telerik-license.js` (paste your license in this file)\n\n Clear you caches after adding these files.\n\n Back to top \n\n Configuration \n Please refer to the Charts module documentation for information on how to configure the Charts module. The Kendo UI library is automatically integrated into the Charts module, so you do not need to configure anything specific to the Kendo UI library.\n\n Back to top",
+  "project_description": "Kendo UI Charts is a backend plugin for the contrib Charts module. It provides a single Charts 'Library' plugin (id kendo_ui) that renders charts/graphs defined through Charts (from Views, fields, or the Charts render API) using Progress Telerik's Kendo UI jQuery charting widgets. It supports area, arearange, bar, boxplot, bubble, candlestick, column, donut, gauge, heatmap, line, pie, radar, scatter and spline chart types. The Kendo UI JavaScript library itself is not bundled: it is loaded from the Telerik CDN or from a locally installed copy under /libraries/kendo_ui, and a telerik-license.js file holds the (commercial) license. Kendo UI is a commercial product and is not GPL-compatible; a valid license (or the 30-day trial) is required to use it in production. The module has no routes, no permissions, no forms, no services and no config of its own; all chart configuration lives in the Charts module.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

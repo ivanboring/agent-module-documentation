@@ -1,9 +1,9 @@
 {
   "name": "Change Mail Page",
   "data_name": "change_mail_page",
-  "description": "A dedicated page for users to change their email address, with access control and password verification.",
+  "description": "Provides a separate page for users to change their email address.",
   "version": "1.0.x",
-  "package": null,
+  "package": "User Management",
   "composer_namespace": "drupal/change_mail_page",
   "composer_requirements": {},
   "dependent_modules": [],
@@ -17,25 +17,24 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Access control",
-    "User engagement"
+    "Access control"
   ],
   "subcategories": [
-    "Email as username"
+    "Field-level access control"
   ],
   "keywords": [
     "email",
-    "change",
+    "mail",
+    "user",
     "account",
-    "password",
-    "user"
+    "change"
   ],
-  "project_description": "Provides a separate page for users to change their email address.\n\n Features \n - Adds a \"Change Email\" tab on user profile pages\n\n- Requires current password to change email\n\n- Removes email field from main user edit form (for non-admins)\n\n- Admins can still edit email on the main user form\n\n- Provides /user/change-mail shortcut that redirects to the current user's form\n\n Usage \n After enabling the module:\n\n 1. Users will see a new \"Change Email\" tab on their profile\n\n2. Navigate to /user/{uid}/change-mail or /user/change-mail (redirects to current user)\n\n3. Enter new email and current password\n\n4. Submit to change email\n\n Permissions \n Uses Drupal's built-in user.update entity access. Users can change their own email, admins can change any user's email.\n\n Related Modules \n - Password Separate Form - Similar module for password changes\n\n Back to top",
+  "project_description": "Change Mail Page provides a dedicated page for users to change their email address, separate from the full account-edit form. It adds a 'Change Email' local task (tab) to user profiles, hides the email field from the default user edit form for non-administrators, and drives all email changes through a small standalone form that requires the account's current password. Two routes are provided: /user/change-mail (redirects the logged-in user to their own form) and /user/{user}/change-mail (the form itself, gated by core's user.update entity access). Administrators keep the ability to edit email on the standard user form. Works on Drupal 10 and 11 and has no dependencies beyond core.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
