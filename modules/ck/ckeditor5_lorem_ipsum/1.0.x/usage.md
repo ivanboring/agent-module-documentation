@@ -1,34 +1,28 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-CKEditor 5 Lorem Ipsum provides a plugin that generates Lorem Ipsum placeholder text.
+Adds a CKEditor 5 toolbar dropdown that inserts one or more paragraphs of Lorem Ipsum placeholder text into the editor.
 
 ---
 
-CKEditor 5 Lorem Ipsum adds a CKEditor 5 button that **inserts Lorem Ipsum placeholder text** — so
-editors and site builders can quickly drop dummy paragraphs into content while designing/testing layouts. It
-depends on core CKEditor 5.
-
-Use it to insert placeholder text while authoring. It is a content-editing convenience; it inserts plain
-placeholder text and has no content or access role. Enable it in the CKEditor 5 toolbar.
+CKEditor5 Lorem Ipsum Plugin registers a client-side CKEditor 5 plugin (`loremIpsum`) that appears as a toolbar dropdown. Choosing an item runs the `loremIpsum` command, which builds placeholder text from a fixed word list bundled in the plugin's JavaScript and inserts it as plain paragraph elements at the cursor. There is no server component beyond the module wiring: no routes, permissions, config forms, config schema, or Drush commands, and text is generated entirely in the browser (no external service is contacted). It depends only on core's `ckeditor5` module and is enabled per text format by adding the "Lorem Ipsum" button to that format's CKEditor 5 toolbar under Text formats and editors.
 
 ---
 
-- Insert Lorem Ipsum placeholder text.
-- Add a CKEditor 5 button.
-- Drop dummy paragraphs.
-- Depend on core CKEditor 5.
-- Help design/test layouts.
-- Insert plain placeholder text.
-- Have no content/access role.
-- Enable it in the toolbar.
-- Handle placeholder text.
-- Generate lorem ipsum.
-- Configure the plugin.
-- Insert dummy text.
-- Add placeholder content.
-- Handle the plugin.
-- Insert lorem.
-- Configure CKEditor 5.
-- Handle placeholders.
-- Add dummy text.
-- Enable the button.
-- Provide placeholder text.
+- Quickly fill a body/rich-text field with placeholder paragraphs while building a page layout.
+- Insert dummy copy so a theme or component can be previewed with realistic text length.
+- Give content editors a one-click way to add Lorem Ipsum without pasting from an external site.
+- Populate a new content type's demo nodes for design review.
+- Generate placeholder text for teaser/summary areas during content modeling.
+- Fill card, hero, or callout components in a page builder to test spacing and wrapping.
+- Produce filler paragraphs for print/PDF export mockups generated from CKEditor content.
+- Stress-test responsive typography by inserting multiple paragraphs at once.
+- Seed example content in a training or documentation environment.
+- Add placeholder text to email-template body fields edited with CKEditor 5.
+- Let designers evaluate line-height and measure without waiting for real copy.
+- Insert filler around embedded media to check float/wrap behavior.
+- Create quick before/after content for accessibility or contrast testing.
+- Fill multilingual placeholder slots during translation workflow setup.
+- Demonstrate CKEditor 5 plugin integration in a proof-of-concept or tutorial.
+- Provide throwaway text for QA when reproducing editor bugs.
+- Populate a landing page draft so stakeholders can react to structure, not wording.
+- Add placeholder paragraphs to a knowledge-base article template.
+- Generate filler for comment or discussion body fields that use CKEditor 5.
+- Insert varying paragraph counts (via the dropdown options) to match a target content length.

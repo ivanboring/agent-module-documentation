@@ -2,15 +2,15 @@
   "name": "CKEditor 5 Pre",
   "data_name": "ckeditor5_pre",
   "description": "Adds a <pre> (preformatted) option to the CKEditor 5 headings dropdown.",
-  "version": "1.0.x",
+  "version": "1.1.x",
   "package": "CKEditor 5",
   "composer_namespace": "drupal/ckeditor5_pre",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:ckeditor5"
+    "ckeditor5"
   ],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ckeditor5_pre",
@@ -21,7 +21,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"
@@ -36,7 +36,7 @@
     "headings",
     "editor"
   ],
-  "project_description": "This module adds support for the \n\n tag and makes it available in the editor's Heading list. \n\nWhen you apply to text, basic visual styling such as a monospace font and a background is displayed in the editor to indicate preformatted content\n\n Configuration: \nAfter enabling the module, is automatically added to the Heading section of the editor.\n\nHowever, if your text format has \"Limit allowed HTML tags and correct faulty HTML\" enabled (for example, Basic HTML), you need to re-save the text format settings. This ensures that is automatically added to the Allowed HTML tags list.\n\n Limitations: \nThe module works reliably as long as the tag does not contain nested elements. Wrapping plain text or single-level tags (such as \n\n or ) behaves as expected. However, wrapping multiple block-level elements or deeply nested tags may produce unexpected results.\n\n Documentation: \n https://www.drupal.org/docs/extending-drupal/contributed-modules/contri… Back to top",
+  "project_description": "CKEditor 5 Pre extends the core CKEditor 5 editor by adding a <pre> (preformatted text) option to the block-format / Headings dropdown. It ships no PHP, no JavaScript and no routes: it is a declarative CKEditor 5 plugin definition (ckeditor5_pre.ckeditor5.yml) that reuses core's built-in ckeditor5_heading plugin to register an extra heading option with model 'pre', view element 'pre' and the editor-only label class ck-heading_pre, plus a small admin CSS file that renders the toolbar label in a monospace font. Editors can then mark a block as preformatted directly from the format menu. Because the plugin declares the <pre> element, Drupal auto-adds <pre> to the text format's Allowed HTML tags when the format is (re-)saved. It works reliably for plain text and single-level tags inside the block; wrapping multiple nested block-level elements may produce unexpected results.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

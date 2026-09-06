@@ -1,27 +1,29 @@
 {
   "name": "CKEditor 5 - Dark Mode plugin",
   "data_name": "ckeditor5_dark_mode",
-  "description": "Adds a button to CKEditor 5 to switch the editor between light and dark theme.",
+  "description": "Adds a toolbar button to CKEditor 5 that toggles the editing area between light and dark theme.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/ckeditor5_dark_mode",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:ckeditor5"
+    "ckeditor5"
   ],
   "configure": null,
-  "core_version_requirement": "^8.8||^9||^10||^11",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ckeditor5_dark_mode",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "core/ckeditor5"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"
@@ -34,9 +36,10 @@
     "dark mode",
     "theme",
     "editor",
-    "toggle"
+    "toggle",
+    "toolbar button"
   ],
-  "project_description": "Features \n This module is a plugin in addition to CKEditor5, simply allowing to set up a Dark Mode button to switch between light theme and dark theme.\n\n This plugin could be necessary if you're also using CKEditor 5 - Font Plugin (Text Color, Background Color) or CKEditor Font Size and Family with a white text color available, to make them visible avoiding the white background.\n\n \n\n Post-Installation \n In /admin/config/content/formats, add the Dark Mode button to your CKEditor 5 text formats to make it available in rich text editors.\n\n Back to top",
+  "project_description": "This module is a plugin in addition to CKEditor 5, simply allowing to set up a Dark Mode button to switch the editing area between light theme and dark theme. It is useful alongside CKEditor 5 Font (Text Color / Background Color) or Font Size and Family when white text is available, making that text visible against a dark background instead of a white one. Some CSS is included to work around a few color issues with the Gin admin theme. After installing, add the Dark Mode button to your CKEditor 5 text formats at /admin/config/content/formats.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "not-covered",

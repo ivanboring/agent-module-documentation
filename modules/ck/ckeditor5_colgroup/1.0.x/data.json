@@ -1,27 +1,29 @@
 {
   "name": "CKEditor5 colgroup",
   "data_name": "ckeditor5_colgroup",
-  "description": "Adds colgroup/col element support to CKEditor 5 tables (for when table resize isn't enabled).",
+  "description": "Provides colgroup and col elements to CKEditor5 for when the table resize plugin is not enabled",
   "version": "1.0.x",
-  "package": null,
+  "package": "CKEditor 5",
   "composer_namespace": "drupal/ckeditor5_colgroup",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:ckeditor5"
+    "ckeditor5"
   ],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ckeditor5_colgroup",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "core/ckeditor5"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"
@@ -32,11 +34,12 @@
   "keywords": [
     "ckeditor5",
     "colgroup",
+    "col",
     "table",
     "columns",
     "editor"
   ],
-  "project_description": "This project provides a CKEditor5 plugin that defines a schema and converter for colgroup and col to allow them to be manually added (via source editing) to tables.\n\n This is to work around a CKEditor bug that prevents the elements from being added to source editing when the table plugin used - see [#3397556]. If that issue is resolved this module will be obsolete. This module's use case test will fail if this module becomes obsolete.",
+  "project_description": "This project provides a CKEditor 5 plugin that defines a model schema and upcast/downcast converters for the colgroup and col table elements. It exists so that these elements survive editing (rather than being stripped) when the core table.TableColumnResize plugin is not enabled. The plugin is purely client-side: it registers tableColumnGroup and tableColumn model elements and maps them to colgroup and col view elements, plus their span attribute. It provides no admin UI, routes, permissions, services or PHP code. Whether colgroup/col actually persist in saved content is governed entirely by the text format's filter_html allowed_html and the editor's Source Editing allowed_tags.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",
