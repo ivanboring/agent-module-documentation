@@ -27,6 +27,8 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 
 ## Where it lives in the admin menu
 
-The module adds a permission you'll find at **People → Permissions**
-(`/admin/people/permissions`) and lets you set limits per comment type. See
+There's no separate settings page. You set the limits **per comment type** by
+editing a comment type under **Structure → Comment types**
+(`/admin/structure/comment/manage/{comment_type}`), in the **Comment Limit
+Settings** section the module adds to that form. See
 [Configuration](configuration/index.md) for how to define the limits.

@@ -1,23 +1,31 @@
 {
   "name": "Collabora Online",
   "data_name": "collabora_online",
-  "description": "Integrates Collabora Online (LibreOffice-based) for in-browser document viewing and editing (WOPI).",
-  "version": "1.0.x",
+  "description": "Integrates the Collabora Online / CODE office suite so office documents attached to media entities can be viewed and edited in the browser via the WOPI protocol, with Drupal acting as the WOPI host and driving access via its own permissions.",
+  "version": "0.9.x",
   "package": "Collabora Online",
   "composer_namespace": "drupal/collabora_online",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/key": "^1.19",
+    "firebase/php-jwt": "^6.10 || ^7",
+    "phpseclib/phpseclib": "^3.0",
+    "symfony/error-handler": "^6.4 || ^7.1"
+  },
   "dependent_modules": [
     "drupal:media",
     "key:key"
   ],
-  "configure": null,
+  "configure": "collabora-online.settings",
   "core_version_requirement": "^10||^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/collabora_online",
-  "license": "GPL-2.0-or-later",
-  "php_requirement": null,
-  "library_dependencies": [],
+  "license": "MPL-2.0",
+  "php_requirement": ">=8.1",
+  "library_dependencies": [
+    "firebase/php-jwt",
+    "phpseclib/phpseclib"
+  ],
   "suggests": {},
   "submodules": [
     "collabora_online_group"

@@ -1,7 +1,7 @@
 {
   "name": "Collector Systems",
   "data_name": "collector_systems",
-  "description": "Integrates Drupal with the Collector Systems API (collections management).",
+  "description": "Mirrors a Collector Systems collections-management account (Objects, Artists, Collections, Groups, Exhibitions and images) into local Drupal tables via the vendor's OData public API, and renders public browse/detail pages, list blocks, an A-Z artist index and an advanced per-field search from that local copy.",
   "version": "1.0.x",
   "package": "Collector Systems",
   "composer_namespace": "drupal/collector_systems",
@@ -17,7 +17,7 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
@@ -25,14 +25,18 @@
     "Integrations"
   ],
   "subcategories": [
-    "CRM integration"
+    "Content migration / import"
   ],
   "keywords": [
     "collector systems",
-    "collections",
+    "collections management",
     "museum",
+    "gallery",
+    "art",
+    "odata",
     "api",
-    "integration"
+    "integration",
+    "sync"
   ],
   "project_description": "Integrate Collector Systems database with your Drupal site and share your art collection publicly.",
   "maintenance_status": "Actively maintained",

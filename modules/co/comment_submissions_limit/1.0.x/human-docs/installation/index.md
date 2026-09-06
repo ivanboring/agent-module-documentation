@@ -32,7 +32,7 @@ drush en comment_submissions_limit -y
 ## Verify it worked
 
 After enabling, head to [Configuration](../configuration/index.md) to define your
-submission limits and review the permission the module adds. To test, set a low
+submission limits on a comment type. To test, set a low
 limit over a short interval, then submit comments quickly as a non‑privileged user
 — once you exceed the rate, further submissions should be blocked until the window
 passes.

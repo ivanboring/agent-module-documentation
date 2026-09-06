@@ -13,9 +13,8 @@ override the default template (`color-element.html.twig`) in your own theme if y
 want to present it differently.
 
 The module has no dependencies beyond Drupal core and no content or access role of
-its own — it simply stores a color. One thing to keep in mind: if you emit the
-stored color into inline CSS in a template, output it safely (validate that it really
-is a color value), as you would with any field value.
+its own — it simply stores a color. The bundled Color formatter HTML-escapes the
+stored value before placing it into the swatch's inline `background-color` style.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

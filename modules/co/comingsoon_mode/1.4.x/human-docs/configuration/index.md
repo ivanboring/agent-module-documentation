@@ -19,18 +19,20 @@ behaves normally. This is the switch you flip on launch day.
 
 ## Choose who may bypass the gate
 
-Two things decide who still sees the real site:
+Who still sees the real site is decided entirely by one permission:
 
 - The **`access website in comingsoon mode`** permission — grant it (at
-  **People → Permissions**) to the roles that should never be redirected, such as
-  your build team. Make sure this is set *before* you enable the mode so you don't
-  lock yourself out.
-- **Role‑based access** in the form — the module can restrict or allow access
-  based on the roles you choose, and logged‑in users can be let through per your
-  configuration.
+  **People → Permissions**, or via the *Set Permissions* link in the settings
+  form) to the roles that should never be redirected, such as your build team.
+  Make sure this is set *before* you enable the mode so you don't lock yourself
+  out. Any visitor who is anonymous or whose roles lack this permission is
+  redirected to the landing page; everyone who holds it browses the site
+  normally. The form itself has no separate role selector.
 
 Login and password‑reset routes (and, optionally, registration) always remain
 reachable, along with static assets, so people can still sign in to gain access.
+While the mode is on, note that a user who lacks the bypass permission is also
+prevented from *logging in* — so grant the permission first.
 
 ## Design the landing page
 
@@ -40,9 +42,11 @@ options include:
 - **Title** and **message** — the headline and body text on the page.
 - **Countdown timer** — a launch date (in `Y/m/d` format) that drives a dynamic
   JavaScript countdown, plus a toggle to show or hide the counter.
-- **Logo** — upload/point to your site logo, with a toggle to display it.
-- **Image** and **background** — a main image, a background colour, and an option
-  to use a background image instead.
+- **Logo** — a toggle to display your active theme's logo (the logo itself comes
+  from your theme settings, not this form).
+- **Background** — a background colour (entered as a hex value such as `#ffffff`),
+  and an uploaded background image with a toggle to use the image instead of the
+  colour.
 - **Social media and contact links** — a toggle to show them, plus fields for
   Twitter, Facebook, Instagram, LinkedIn, an email address, and a phone number.
 
@@ -61,5 +65,6 @@ still reach the real site.
 Developers can fully restyle the page by adding a `comingsoon.html.twig` template
 to their theme's `templates` folder. The template receives variables for every
 field above — for example `data.title`, `data.message`, `data.countDownDate`,
-`data.image`, `data.logo`, `data.backgroundColor`, the various display toggles,
-and the social/contact values — so you can build a completely custom layout.
+`data.ImageBg` (background image URL), `data.logo`, `data.backgroundColor`, the
+various display toggles, and the social/contact values — so you can build a
+completely custom layout.

@@ -5,7 +5,9 @@
   "version": "1.0.x",
   "package": "Fields",
   "composer_namespace": "drupal/color_field_from_image",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "ksubileau/color-thief-php": "^2.0"
+  },
   "dependent_modules": [
     "drupal:image",
     "color_field:color_field"
@@ -17,12 +19,14 @@
   "project_url": "https://www.drupal.org/project/color_field_from_image",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "ksubileau/color-thief-php"
+  ],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience",

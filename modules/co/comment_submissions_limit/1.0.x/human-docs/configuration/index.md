@@ -14,13 +14,16 @@ within this interval." Set the limits to match your site's traffic: tight enough
 blunt bursts of spam and flooding, but loose enough that genuine, active commenters
 aren't blocked.
 
-## Review the permission
+## Where you set it
 
-The module provides its own permission, managed at **People → Permissions**
-(`/admin/people/permissions`). Review it and grant it to the roles that should be
-exempt from (or subject to) the limit — typically you'd let trusted or
-administrative roles post without being throttled while ordinary users remain
-rate‑limited.
+The limits live on each **comment type**, not on a dedicated settings page. Go to
+**Structure → Comment types** and edit a comment type
+(`/admin/structure/comment/manage/{comment_type}`) — a **Comment Limit Settings**
+section there lets you set the *Limit*, *Interval Number*, *Interval Unit*
+(hour/day/week/month), and the *Fields* whose values scope the limit. Editing a
+comment type requires the core **Administer comment types**
+(`administer comment types`) permission; the module does **not** add a permission of
+its own.
 
 ## Tips
 

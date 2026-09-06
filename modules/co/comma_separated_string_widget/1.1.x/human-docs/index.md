@@ -39,8 +39,8 @@ display for any other fieldable entity.
    or other entity — set the field's *Allowed number of values* to more than one
    (or Unlimited), since that is what makes the comma‑separated entry useful.
 2. Go to that bundle's **Manage form display**.
-3. For your multi‑value string field, change the **Widget** to **Comma separated
-   string widget** and save.
+3. For your multi‑value string field, change the **Widget** to **Textfield
+   (comma separated values)** and save.
 
 Editors will now see a single text box for that field. They type values separated
 by commas — for example `red, green, blue` — and on save the module stores three

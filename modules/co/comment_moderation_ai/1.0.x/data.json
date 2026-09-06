@@ -1,7 +1,7 @@
 {
   "name": "Comment Moderation AI",
   "data_name": "comment_moderation_ai",
-  "description": "AI-powered comment moderation using custom policies to validate comments and flag inappropriate content.",
+  "description": "Moderates Drupal comments with OpenAI's Moderation API plus local keyword/regex custom policies; flags, records and optionally auto-unpublishes violating content for moderator review. OpenAI key stored as a Key entity.",
   "version": "1.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/comment_moderation_ai",
@@ -13,7 +13,7 @@
     "drupal:field",
     "key:key"
   ],
-  "configure": null,
+  "configure": "comment_moderation_ai.settings",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,

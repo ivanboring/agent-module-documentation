@@ -9,11 +9,10 @@ style. It was built to pair with modules such as
 pick a colour visually in the admin interface while your front end outputs a tidy,
 predictable CSS class rather than an inline colour.
 
-This is a developer/theming tool, not a content or access feature. It adds no
-admin page and has no runtime effect until you actually use the filter in a
-template. Because the output becomes a CSS class, the module is designed to emit
-safe, valid class names. It works on Drupal 9, 10, and 11 and has no other module
-or library dependencies.
+This is a developer/theming tool, not a content or access feature. It has no
+runtime effect until you actually use the filter in a template. It ships one small
+settings page where you define the mappings from stored values to class names. It
+works on Drupal 9, 10, and 11 and has no other module or library dependencies.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -24,13 +23,24 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 1. [Installation](installation/index.md) — install the module with Composer and
    enable it.
 
-There is **no configuration page** for this module — it is a Twig filter you use
-in your theme, described in "How to use it" below.
-
 ## Where it lives in the admin menu
 
-Colorizer Classes adds no admin page and no settings form. Everything happens in
-your theme's Twig templates.
+Colorizer Classes adds one settings page at **Configuration › Media › Colorizer
+Classes Settings** (`/admin/config/media/colorizer_classes`), which requires the
+*Administer site configuration* permission. It holds a single **Color Classes
+Mapping** textarea where you list the mappings, one per line, in `KEY|VALUE`
+form — the stored value on the left, the CSS class to output on the right, for
+example:
+
+```
+#000000|color-black
+#FFFFFF|color-white
+```
+
+(Those two lines are the shipped default.) Matching is case-insensitive, and any
+spaces or line breaks in the value you pass to the filter are ignored. If a value
+has no matching line, the filter returns it unchanged. The actual styling still
+happens in your theme's Twig templates using the filter below.
 
 ## How to use it
 

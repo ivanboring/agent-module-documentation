@@ -1,7 +1,7 @@
 {
   "name": "Color Scheme Field",
   "data_name": "color_scheme_field",
-  "description": "provides a field type for storing a color scheme.",
+  "description": "Provides a 'Color Scheme' field type that stores the machine name of one scheme chosen from options a theme declares in its .info.yml; ships a select widget and no formatter, exposing the choice to themes via hook_entity_view.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/color_scheme_field",
@@ -13,13 +13,13 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/color_scheme_field",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"

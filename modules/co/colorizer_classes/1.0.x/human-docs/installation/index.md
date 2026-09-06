@@ -33,7 +33,11 @@ drush en colorizer_classes -y
 
 ## Verify it worked
 
-There is nothing to click — the module simply makes the `colorizer` Twig filter
-available. To confirm it is working, add `{{ '#FFFFFF'|colorizer }}` to a template
-and rebuild caches (`drush cr`); it should render `color-white`. See the "How to
-use it" section on the [overview page](../index.md) for the filter in context.
+The module makes the `colorizer` Twig filter available and adds a settings page at
+**Configuration › Media › Colorizer Classes Settings**
+(`/admin/config/media/colorizer_classes`), where you define the value-to-class
+mappings. It ships with `#000000|color-black` and `#FFFFFF|color-white` already
+filled in, so you can test straight away: add `{{ '#FFFFFF'|colorizer }}` to a
+template and rebuild caches (`drush cr`); it should render `color-white`. See the
+"How to use it" section on the [overview page](../index.md) for the filter in
+context.
