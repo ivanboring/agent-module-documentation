@@ -1,16 +1,16 @@
 {
-  "name": "Checkbox/Radio Multi-Columns",
+  "name": "Checkbox/Radio button Multi Columns",
   "data_name": "checkbox_radio_buttons_multi_columns",
-  "description": "Lets checkbox/radio options be displayed across multiple columns.",
+  "description": "Makes it possible to spread checkboxes and radio buttons in multiple columns.",
   "version": "2.1.x",
   "package": "Fields",
   "composer_namespace": "drupal/checkbox_radio_buttons_multi_columns",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:options"
+    "options"
   ],
   "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/checkbox_radio_buttons_multi_columns",
@@ -27,7 +27,7 @@
     "Content editing experience"
   ],
   "subcategories": [
-    "Form elements"
+    "Form widgets / select UI"
   ],
   "keywords": [
     "checkbox",
@@ -36,7 +36,7 @@
     "options",
     "widget"
   ],
-  "project_description": "Provides a field form display making it possible to spread checkboxes / radio buttons across multiple columns.",
+  "project_description": "Provides a field form-display widget that lays out an options field's checkboxes or radio buttons across multiple columns using the CSS column-count property, for tidier long option lists. Extends core's Options Buttons widget and adds a single 'columns' setting.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

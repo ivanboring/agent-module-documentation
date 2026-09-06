@@ -1,29 +1,29 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Chromium Tool exposes a headless Chromium service for tasks like URL screenshots.
+Chromium Tool wraps a headless Chrome/Chromium browser as a Drupal screenshotter service and as an AI function-call tool that captures a PNG screenshot of a given URL.
 
 ---
 
-Chromium Tool allows you to use Chrome/Chromium as a tool — providing a service layer (browser factory, screenshotter) so other modules/code can drive a headless Chromium to render pages, take screenshots, and perform browser-based tasks. It's a base service, integrating with the AI module.
-
-The screenshot service takes a URL from its caller (the calling code is responsible for restricting URLs — a headless browser fetching arbitrary URLs is SSRF-relevant), and the Chrome executable path is admin-configured (`administer site configuration`). Keep the runner environment trusted. Depends on `ai` and core `image`; supports Drupal 10 and 11.
+Chromium Tool integrates the `chrome-php/chrome` library so that Drupal can drive a real headless Chromium browser on the server. It ships a `ChromiumScreenshotter` service with two capture modes — above-the-fold (viewport only) and full-page (measures the rendered document and clips to its full width/height) — that return raw PNG bytes. On top of that it registers an AI function call (`chromium_tool:screenshot_webpage`, from `drupal/ai`) so an AI agent or assistant can take a screenshot of a URL and receive a base64-encoded PNG plus metadata. A settings form lets a site administrator set the absolute path to the Chromium binary and optionally pick an image style to post-process every screenshot; the module also installs a ready-made "Chromium Tool Max 1500" image style that scales captures down to a 1500px bound. The module depends on `drupal/ai` and core `image`.
 
 ---
 
-- Provide a headless Chromium service.
-- Render pages / take screenshots.
-- Serve as a base tool for other modules.
-- Drive Chrome/Chromium.
-- Integrate with the AI module.
-- Take a caller-supplied URL (SSRF-relevant).
-- Make callers restrict URLs.
-- Configure the Chrome path (admin).
-- Keep the runner environment trusted.
-- Depend on `ai` and core `image`.
-- Support Drupal 10 and 11.
-- Support browser tasks.
-- Screenshot pages
-- Configure the executable
-- Provide browser services.
-- Support automation.
-- Handle Chromium.
-- Aid rendering
+- Give an AI agent the ability to "look at" a live webpage by taking a screenshot of a URL.
+- Capture an above-the-fold (viewport-sized) PNG of a public web page for an assistant to describe.
+- Capture a full-page PNG (entire scroll height and width) of a page for archival or review.
+- Let an AI chatbot fetch a visual of a competitor or reference site during a conversation.
+- Generate marketing/QA screenshots of your own site's pages on demand from an agent workflow.
+- Feed a rendered screenshot into a multimodal LLM for visual question answering.
+- Produce thumbnails of external landing pages, downscaled through the bundled 1500px image style.
+- Standardize screenshot dimensions by applying any site image style to every capture.
+- Set a custom viewport width/height so responsive layouts are captured at a chosen breakpoint.
+- Add an extra wait after page load so late-loading JS/images are present before the shot.
+- Call the `ChromiumScreenshotter` service from custom code to embed screenshots in reports.
+- Build a scheduled job that screenshots key pages and stores the PNG bytes returned by the service.
+- Point the module at a distro-specific Chromium path (e.g. `/usr/bin/chromium`) via the settings form.
+- Run the browser with `noSandbox` enabled so it works inside typical container/CI environments.
+- Integrate visual page capture into an AI agent's "browsing tools" group of function calls.
+- Provide an assistant a tool to verify that a deployed page renders correctly.
+- Capture a PNG for documentation screenshots without a manual browser step.
+- Return screenshot output as a compact JSON payload (`mime`, `encoding`, `data`, dimensions, `mode`, `url`).
+- Post-process captures (scale, crop) by selecting an existing Drupal image style in configuration.
+- Let editors preview how an external URL looks by exposing the tool through an AI assistant.
+- Compare above-the-fold vs. full-page renders of the same URL by switching the `mode` argument.

@@ -1,44 +1,51 @@
 {
   "name": "Chromium Tool",
   "data_name": "chromium_tool",
-  "description": "Provides a Chrome/Chromium headless-browser service (e.g. screenshots) for other modules.",
+  "description": "Wraps headless Chrome/Chromium (chrome-php/chrome) as a screenshotter service and an AI function-call tool that captures a screenshot of a URL.",
   "version": "1.0.x",
-  "package": null,
+  "package": "AI Tools",
   "composer_namespace": "drupal/chromium_tool",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "chrome-php/chrome": "^1.14",
+    "drupal/ai": "^1.1"
+  },
   "dependent_modules": [
     "ai:ai",
     "drupal:image"
   ],
-  "configure": null,
+  "configure": "chromium_tool.chrome_executable_path_config",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/chromium_tool",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "chrome-php/chrome"
+  ],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Developer tools",
+    "Artificial Intelligence (AI)",
     "Media"
   ],
   "subcategories": [
+    "AI tooling / function calling",
     "Image toolkit / processing"
   ],
   "keywords": [
     "chromium",
+    "chrome",
     "headless",
     "screenshot",
-    "browser",
-    "tool"
+    "ai tool",
+    "function call"
   ],
-  "project_description": "This module allows you to use Chrome or Chromium as a tool. It provides a function call for the AI Agent to capture a screenshot of a specified URL.",
+  "project_description": "This module allows you to use Chrome or Chromium as a tool. It wraps the chrome-php/chrome headless-browser library in a ChromiumScreenshotter service (above-the-fold and full-page PNG capture) and exposes an AI function-call plugin (chromium_tool:screenshot_webpage) so an AI agent can screenshot a given URL, optionally post-processed through a Drupal image style.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

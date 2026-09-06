@@ -1,40 +1,42 @@
 {
   "name": "Chromeless",
   "data_name": "chromeless",
-  "description": "renders only the main content when a chromeless query parameter is present.",
+  "description": "Adds a \"chromeless\" query parameter which, when present, makes Drupal render only the main content of a page.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/chromeless",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^10.5||^11",
+  "core_version_requirement": "^10.5 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/chromeless",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.3",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"
   ],
   "subcategories": [
-    "Rendering"
+    "Visibility conditions"
   ],
   "keywords": [
     "chromeless",
     "query parameter",
     "main content",
+    "page display variant",
     "iframe",
-    "rendering"
+    "print",
+    "embedding"
   ],
-  "project_description": "Back to top \n\n Introduction \n This project allows you to render only the main content of pages by adding chromeless=1 to the URL query parameters. All other blocks in the block layout will be hidden while chromeless mode is active.\n\n Back to top \n\n Features \n This project provides two new query parameters:\n\n \n chromeless : If present, the value of this parameter determines whether to enable or disable chromeless mode. \n title : If present, the value of this parameter determines whether to show or hide the page title while chromeless mode is active. \n \n Visiting a URL with either of the query parameters will store the expressed preference for the current session. The value of each parameter will be converted to an integer, and this module will treat any non-zero value as TRUE .\n\n Back to top \n\n Post-Installation \n This module has no mandatory configuration or post-installation steps.\n\n If you wish to customize the names of the query parameters, you can do so by overriding these container parameters in your site-wide services.yml file:\n\n \n chromeless.query.active \n chromeless.query.title \n \n Each user's preferences will be stored for 1 week by default. You may wish to shorten the validity period of items created by Drupal's private temp store mechanism if your chromeless pages will be accessed by a large number of distinct user agents.\n\n Back to top",
+  "project_description": "Chromeless lets you render only the main content of a page by adding chromeless=1 to the URL query parameters; all blocks in the block layout (header, footer, sidebars, etc.) are hidden while chromeless mode is active. It provides two query parameters: 'chromeless' (any non-zero integer enables the mode, 0 disables it) and 'title' (controls whether the page title shows while chromeless mode is active). Visiting a URL with either parameter stores that preference in the visitor's private temp store for the current session (retained for one week by default), so it persists across subsequent requests without needing the parameter each time. The module has no mandatory configuration or post-installation steps. The two query-parameter names can be customized by overriding the 'chromeless.query.active' and 'chromeless.query.title' container parameters in a site-wide services.yml. Useful for embedding Drupal pages in iframes, generating print/PDF-friendly views, or kiosk/display contexts.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

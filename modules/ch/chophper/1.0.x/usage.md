@@ -1,24 +1,27 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Chophper provides two text field formatters that truncate formatted (HTML) text without breaking tags, backed by the `code-atlantic/chophper` PHP library.
+Chophper provides two field formatters that truncate formatted (rich-text) fields while keeping their HTML markup balanced, using the code-atlantic/chophper PHP library.
 
-**Trimmed (Chophper)** is a drop-in alternative to core's Trimmed formatter (for `text`, `text_long`, `text_with_summary`) that truncates by words, characters, sentences or blocks and appends a configurable ellipsis; when truncating by characters it can optionally avoid splitting mid-word. **Summary or trimmed (Chophper)** (for `text_with_summary`) renders the field's summary when one exists, otherwise falls back to Chophper truncation. Both extend core's `TextTrimmedFormatter`, so they slot into Manage Display like any formatter.
+---
 
-There is no admin page, permission, route or service — configuration is entirely per-field-display formatter settings (trim limit, truncate-by unit, ellipsis, preserve-words). Install the Composer library, then pick the formatter on a field's display and tune its settings.
+Chophper is a small display-only module for Drupal 10 and 11. It ships two field formatters that extend core's Text formatters but delegate truncation to the `code-atlantic/chophper` library, which parses the field's HTML with a DOM/HTML5 parser and cuts it without leaving unclosed tags. `chophper_trimmed` ("Trimmed (Chophper)") is a drop-in alternative to core's Trimmed formatter for `text`, `text_long` and `text_with_summary` fields; `chophper_summary_or_trimmed` ("Summary or trimmed (Chophper)") renders a field's manual summary when one exists and otherwise truncates the value, for `text_with_summary` fields. Both add three settings on top of the core trim length — the unit to truncate by (words, characters, sentences or blocks), the ellipsis string, and an optional preserve-words flag for character truncation. The module has no routes, permissions, services, config objects, Drush commands or hooks; it is configured entirely on each entity's Manage display page.
+
 ---
-Choose a Chophper formatter on a formatted-text field's display to truncate it cleanly, HTML-aware.
----
-- Truncate a body field to N words without breaking HTML tags
-- Truncate by character count instead of words
-- Truncate by number of sentences
-- Truncate by number of block elements
-- Show a teaser that preserves inline markup
-- Append a custom ellipsis string to truncated text
-- Avoid cutting a word in half when trimming by characters
-- Use a field's summary when present, else truncate the body
-- Replace core's Trimmed formatter with an HTML-aware one
-- Apply different trim limits per view mode (teaser vs full)
-- Format a `text_with_summary` field for a listing page
-- Format a `text_long` field in a card/grid display
-- Keep valid HTML in RSS/search-result excerpts
-- Configure trim settings per entity display
-- Standardize teaser length across content types
+
+- Show a teaser/summary of a body field on a node listing without breaking mid-tag HTML.
+- Replace core's Trimmed formatter with an HTML-aware equivalent that never emits unbalanced markup.
+- Truncate a rich-text body to a word count (e.g. 40 words) for card layouts.
+- Truncate to a fixed number of characters for tight, uniform-length previews.
+- Truncate to a number of sentences (e.g. first 2 sentences) for lead paragraphs.
+- Truncate to a number of top-level blocks (e.g. first 2 paragraphs) for excerpts.
+- Add a custom ellipsis (e.g. " …read more" or "—") to truncated previews.
+- Preserve whole words when truncating by characters so previews never cut a word in half.
+- Render a hand-written summary on text_with_summary fields, falling back to auto-truncation when the author left the summary blank.
+- Configure different truncation lengths per view mode (teaser vs. search index vs. full).
+- Apply the formatter to a custom bundle's long-text field on its Manage display page.
+- Set truncation per entity type — nodes, taxonomy terms, media, users, custom entities.
+- Export the chosen formatter and settings as entity view display config for deployment.
+- Provide consistent excerpt lengths across a site that mixes plain and formatted text fields.
+- Use the block unit to keep intact list or heading structures in a preview.
+- Trim CKEditor-authored content in a Views field display while keeping valid HTML.
+- Generate short previews for RSS or teaser blocks without a separate summary field.
+- Swap in Chophper on an existing display by changing only the formatter, keeping the field data untouched.
+- Standardize excerpt behavior for a multi-author site where summaries are inconsistently filled in.

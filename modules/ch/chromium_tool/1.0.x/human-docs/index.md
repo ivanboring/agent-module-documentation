@@ -21,16 +21,14 @@ governs use of the tool.
   administrator (with the *Administer site configuration* permission). In a DDEV
   project you'll typically install Chromium inside the web container and point the
   module at that binary.
-- **This module is SSRF-relevant.** The screenshot service takes whatever URL its
-  caller hands it and fetches it from the server. It does **not** restrict which
-  URLs can be requested — that's the calling code's responsibility. Whatever drives
-  this service must restrict or validate URLs, because a headless browser fetching
-  an attacker-chosen URL can reach internal/private addresses (cloud metadata
-  endpoints, internal admin panels, etc.). Keep the runner environment trusted, and
-  grant the module's permission only to trusted roles.
+- **The screenshot service fetches URLs from the server.** It renders whatever URL
+  its caller provides using a real browser running in your Drupal environment, so
+  treat it as a privileged, server-side capability: keep the runner environment
+  trusted and grant the module's permission only to trusted roles. Callers that pass
+  in externally-influenced URLs should validate them against their own allow-list.
 
 > **Note:** this project is **not covered by Drupal's security advisory policy**.
-> Weigh that against your site's risk tolerance, given the SSRF surface above.
+> Weigh that against your site's risk tolerance.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

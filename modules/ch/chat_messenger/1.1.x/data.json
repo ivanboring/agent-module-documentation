@@ -1,25 +1,30 @@
 {
   "name": "Chat Messenger",
   "data_name": "chat_messenger",
-  "description": "provides 1:1 and group chat between site users via AJAX long-polling.",
+  "description": "Real-time 1:1 and group chat between site users via AJAX long-polling, with emoji reactions, presence, typing indicators, read receipts, profile-picture avatars, contacts/blocking and private file attachments.",
   "version": "1.1.x",
   "package": "Communication",
   "composer_namespace": "drupal/chat_messenger",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/flag": "^5.0"
+  },
   "dependent_modules": [
     "drupal:user",
     "drupal:file",
+    "drupal:image",
     "flag:flag"
   ],
-  "configure": null,
-  "core_version_requirement": "^10.3||^11",
+  "configure": "chat_messenger.settings",
+  "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/chat_messenger",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/ai": "^1.4, to generate quick-reply suggestions with an AI provider instead of the built-in rule-based ones"
+  },
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
@@ -29,16 +34,19 @@
     "User engagement"
   ],
   "subcategories": [
-    "Chat / messaging"
+    "Messaging framework"
   ],
   "keywords": [
     "chat",
     "messenger",
     "messaging",
     "long-polling",
-    "users"
+    "presence",
+    "group chat",
+    "reactions",
+    "attachments"
   ],
-  "project_description": "Back to top \n\n Introduction \n \n Chat Messenger is a Drupal module that adds a complete real-time messaging\n\n system to your website. Instead of providing only a basic private messaging\n\n form, it delivers a modern chat experience with one-to-one conversations,\n\n group chats, live message delivery, typing indicators, emoji reactions,\n\n presence status, profile pictures, and file sharing—all built directly on\n\n Drupal core.\n\n \n The module requires no separate chat server, WebSocket service, or Node.js\n\n installation. Everything runs on a standard Drupal stack, making it easy to\n\n install and deploy while providing a fast and familiar messaging experience\n\n for your users.\n\n Back to top \n\n Project Summary \n \n Add a complete real-time chat system to Drupal with private and group\n\n messaging, live updates, emoji reactions, presence status, attachments, and\n\n read receipts.\n\n Back to top \n\n Features \n \n Chat Messenger brings a modern real-time messaging experience directly into\n\n your Drupal website.\n\n \n One-to-one private conversations between site users. \n Create and manage group conversations. \n Floating chat button available throughout the website. \n Live message delivery without refreshing the page. \n Typing indicators while another user is composing a message. \n Delivered and read receipts. \n Unread message badges that update automatically. \n Emoji picker for composing messages. \n Emoji reactions on individual messages. \n Presence status with Available, Busy, and Away options. \n Uses Drupal user profile pictures as chat avatars. \n Supports image and file attachments with configurable limits. \n Clear chat option that hides conversation history only for the current user. \n \n Real-time Messaging \n \n Messages appear automatically while conversations are open without requiring\n\n users to refresh the page.\n\n \n Instant message updates. \n Typing indicators. \n Delivered and read receipts. \n Live unread message counts. \n Real-time emoji reactions. \n \n User Presence \n \n Users can see each other's availability while chatting.\n\n \n Automatic online/offline detection. \n \n Custom presence status:\n \n Available \n Busy \n Away \n \n \n \n Profile Pictures and Attachments \n \n Uses Drupal's existing user picture field. \n Automatically generates initial-based avatars when no profile picture exists. \n Supports image and file attachments. \n Configurable upload size and allowed file types. \n Private file storage for uploaded attachments. \n \n Back to top \n\n Typical Use Cases \n \n Community websites. \n Membership portals. \n Educational platforms. \n Corporate intranets. \n Customer collaboration portals. \n Volunteer organizations. \n Social networking websites. \n \n Back to top \n\n Post-Installation \n After installing the module:\n\n \n Enable the Chat Messenger module. \n Grant the appropriate chat permissions to user roles. \n Users will automatically see the floating chat button while browsing the website. \n Clicking the chat button displays available users and existing conversations. \n Start a private conversation or create a new group chat. \n \n \n No additional services, WebSocket servers, or external messaging\n\n infrastructure are required.\n\n Back to top \n\n Additional Requirements \n \n Drupal core User module. \n Drupal core File module. \n Drupal core Image module. \n \n AI — only required if\n\n AI-generated quick-reply suggestions are enabled; unused otherwise.\n\n Chat Messenger routes generation through whatever chat-capable provider is\n\n configured in the AI module (for example,\n\n AI Provider OpenAI ).\n \n \n \n No external chat server, WebSocket server, Node.js service, Redis, or\n\n third-party messaging platform is required.\n\n Back to top \n\n Recommended Modules/Libraries \n \n No additional modules or third-party libraries are required for the core\n\n messaging experience.\n\n \n For the best experience, configure user profile pictures and the private\n\n file system for secure attachment storage. If you want AI-generated\n\n quick-reply suggestions instead of the built-in …",
+  "project_description": "Chat Messenger adds a complete real-time messaging system to a Drupal site: one-to-one and group conversations, live message delivery, typing indicators, emoji reactions, presence status, profile-picture avatars, read/delivered receipts and file attachments — all built on a standard Drupal stack. It requires no separate chat server, WebSocket service, Node.js, or Redis: live updates are delivered by a bounded AJAX long-poll endpoint served by ordinary PHP-FPM workers, with a DB-backed concurrency guard to cap how many workers pollers can occupy at once. A floating launcher button is added site-wide for discoverability. Attachments are stored under private:// and gated to conversation members via hook_file_download(). Optional quick-reply suggestions are rule-based out of the box, or AI-generated through the suggested (not required) drupal/ai module. Typical use cases include community sites, membership portals, educational platforms, corporate intranets and social networks.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

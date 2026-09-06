@@ -1,9 +1,9 @@
 {
   "name": "Cincopa Multimedia Platform",
   "data_name": "cincopa",
-  "description": "Integrates the Cincopa multimedia (video/gallery) hosting platform.",
+  "description": "Text-format filter and editor buttons that embed Cincopa-hosted video/photo/audio galleries via a [cincopa <id>] tag.",
   "version": "8.x-1.x",
-  "package": null,
+  "package": "Input filters",
   "composer_namespace": "drupal/cincopa",
   "composer_requirements": {},
   "dependent_modules": [],
@@ -17,23 +17,26 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Media",
     "Integrations"
   ],
   "subcategories": [
-    "Media sources"
+    "Media embedding",
+    "Media sources",
+    "Video embedding"
   ],
   "keywords": [
     "cincopa",
     "multimedia",
     "video",
     "gallery",
-    "hosting"
+    "text filter",
+    "embed"
   ],
   "project_description": "Cincopa is The only module you need for all your video hosting platform and media needs.\n\nUse Cincopa to easily add videos, photo galleries, slideshows, music and playlists and much more.\n\nEnjoy more than 100 designed templates for slideshows, video players, Cooliris, Lightbox and many more.\n\n https://www.cincopa.com/media-platform/skins \n\n You can find the full and updated list of available options here:\n\n https://www.cincopa.com \n\n If you want to display rich, dynamic content, without fuddling with endless display modules (lightboxes, various galleries, audio players, etc.) - This module is for you\n\n ** Start now with 30 day free trial \n\n Fop more info or help contact us at : 1 (800) 515-0359 or support@cincopa.com",
   "maintenance_status": "Actively maintained",

@@ -44,9 +44,9 @@ sets the executable path in the module's admin configuration (requires the
 ## Grant the permission
 
 Chromium Tool defines a permission that governs use of the screenshot tool. On
-**People → Permissions**, grant it only to trusted roles — a headless browser that
-fetches arbitrary URLs is a server-side-request-forgery (SSRF) surface, so treat
-access as privileged.
+**People → Permissions**, grant it only to trusted roles — the tool drives a
+server-side headless browser that fetches the URLs it is given, so treat access as
+a privileged capability.
 
 ## Verify it worked
 

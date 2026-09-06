@@ -1,15 +1,17 @@
 {
   "name": "City Timezones",
   "data_name": "city_timezones",
-  "description": "Replaces the timezone select on the user form with a city search (GeoNames data) that auto-sets the matching IANA timezone.",
+  "description": "Replaces the default timezone select on the user account form with a GeoNames city search that auto-sets the matching IANA timezone.",
   "version": "1.0.x",
   "package": "User interface",
   "composer_namespace": "drupal/city_timezones",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/chosen": "^5.0"
+  },
   "dependent_modules": [
-    "drupal:datetime",
-    "drupal:user",
-    "chosen:chosen"
+    "datetime",
+    "user",
+    "chosen"
   ],
   "configure": null,
   "core_version_requirement": "^10 || ^11",
