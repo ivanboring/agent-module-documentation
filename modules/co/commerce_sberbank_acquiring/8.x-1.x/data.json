@@ -1,12 +1,16 @@
 {
   "name": "Sberbank Acquiring",
   "data_name": "commerce_sberbank_acquiring",
-  "description": "A Drupal Commerce payment gateway for Sberbank Acquiring.",
+  "description": "Off-site Drupal Commerce payment gateway for Sberbank Acquiring (Sberbank's card-acquiring service). At checkout the module registers the order with Sberbank's REST API and redirects the shopper to Sberbank's hosted payment form; on the browser return it re-fetches the order status server-side from Sberbank's authenticated REST API (getOrderStatusExtended) and records the payment. Wraps the voronkovich/sberbank-acquiring-client PHP library. Supports maestro/mastercard/visa/mir cards, test and live modes, and an optional order-id prefix/suffix; also declares a 'sberbank_acquiring_fee' order-adjustment type.",
   "version": "8.x-1.x",
   "package": "Commerce",
   "composer_namespace": "drupal/commerce_sberbank_acquiring",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "voronkovich/sberbank-acquiring-client": "^1.1",
+    "drupal/core": "^8.7.7 || ^9 || ^10 || ^11"
+  },
   "dependent_modules": [
+    "commerce:commerce",
     "commerce:commerce_payment"
   ],
   "configure": null,
@@ -16,7 +20,9 @@
   "project_url": "https://www.drupal.org/project/commerce_sberbank_acquiring",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "voronkovich/sberbank-acquiring-client"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,

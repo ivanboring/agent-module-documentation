@@ -1,11 +1,13 @@
 {
   "name": "Commerce Product Variations Table",
   "data_name": "commerce_pvt",
-  "description": "Displays a Commerce product's variations as a configurable table with add-to-cart.",
+  "description": "Renders all of a Commerce product's variations as one Views table with per-row quantity fields and a bulk add-to-cart/update, for wholesale-style ordering; prices go through Commerce server-side. Requires the Commerce #3017662 order-item-type-resolver patch. Provides Views field/area handlers, a summary block, and an optional AJAX enhanced +/- quantity widget.",
   "version": "3.0.x",
   "package": "Commerce",
   "composer_namespace": "drupal/commerce_pvt",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^3"
+  },
   "dependent_modules": [
     "drupal:views",
     "commerce:commerce_product",

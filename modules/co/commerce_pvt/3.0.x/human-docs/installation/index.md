@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- **Drupal 10.3 or 11** (`core_version_requirement: ^10.3 || ^11`).
+- **Drupal 10.3, 11, or 12** (`core_version_requirement: ^10.3 || ^11 || ^12`).
 - **Drupal Commerce** — specifically core **Views** (`views`) plus Commerce
   **Product** (`commerce_product`), **Order** (`commerce_order`), and **Cart**
   (`commerce_cart`).

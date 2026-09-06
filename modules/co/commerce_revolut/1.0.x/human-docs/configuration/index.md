@@ -26,13 +26,25 @@ gateway form rather than pasting the raw secret.
 
 ## Add the payment gateway
 
+The module offers **three** Revolut gateway plugins — pick the one that matches how
+you want customers to pay:
+
+- **Revolut Checkout** (`revolut_checkout`) — onsite credit-card fields embedded in
+  Commerce checkout (card data goes straight to Revolut's widget).
+- **Revolut Pay** (`revolut_pay`) — an onsite Revolut Pay button in checkout.
+- **Revolut Payment Link** (`revolut_payment_link`) — sends the customer to a hosted
+  Revolut checkout page and back.
+
+You can add more than one gateway if you want to offer several methods.
+
 1. Log in as a user who can administer Commerce configuration.
 2. Go to **Commerce → Configuration → Payment gateways**
    (`/admin/commerce/config/payment-gateways`) and click **Add payment gateway**.
-3. Give it a **name** and choose the **Revolut** plugin.
-4. Enter your **Revolut API key / secret** (prefer a Key entity over a raw value).
-5. Choose whether to use **hosted checkout pages** or **embedded** checkout within
-   Commerce core checkout.
+3. Give it a **name** and choose one of the three **Revolut** plugins above.
+4. Enter your **Revolut Public Key** and **Secret Key** (prefer a Key entity /
+   settings override over pasting raw live secrets).
+5. Optionally tick **Log API calls** only for debugging (leave it off in
+   production).
 6. Choose the **mode** — **Test** while integrating, **Live** only after a
    confirmed test payment.
 7. Save the gateway.

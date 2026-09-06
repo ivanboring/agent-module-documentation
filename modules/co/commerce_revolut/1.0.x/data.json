@@ -1,11 +1,13 @@
 {
   "name": "Commerce Revolut",
   "data_name": "commerce_revolut",
-  "description": "Revolut payment-link gateway for Drupal Commerce. onReturn re-fetches the Revolut order from the API server-side to set payment state (not from request params); onNotify is a no-op.",
+  "description": "Drupal Commerce integration for Revolut payments. Provides three payment gateway plugins: revolut_checkout (onsite credit-card fields via the Revolut Checkout widget), revolut_pay (onsite Revolut Pay button), and revolut_payment_link (offsite redirect to a hosted Revolut checkout URL). Supports authorize/capture, void, refund, and reusable stored payment methods via Revolut's Merchant Orders REST API; state is set from an authenticated server-side API fetch keyed by the local order id. Card data is entered in Revolut's hosted widget and never posted to Drupal.",
   "version": "1.0.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_revolut",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^3"
+  },
   "dependent_modules": [
     "commerce:commerce_payment",
     "commerce:commerce_order"
@@ -22,7 +24,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "E-commerce"

@@ -38,5 +38,6 @@ configuration.
 
 ## Verify it worked
 
-Open a subscription's **edit page** and confirm a log section is present. Once a
-subscription event occurs (for example a renewal), it should be recorded there.
+Open a subscription's **admin page** and confirm a **Subscription activity**
+section is present. Once a subscription event occurs (for example a state change
+or price change), it should be recorded there.

@@ -34,14 +34,14 @@ drush en commerce_profile_inline_form_radios -y
 
 ## Submodules
 
-The project ships two optional submodules that reuse the parent module's inline form
-to provide alternative checkout panes. Enable only the ones matching your checkout
-integrations:
+The project ships three optional submodules that reuse the parent module's inline
+form. Enable only the ones matching your checkout integrations:
 
-| Submodule | Provides |
-|-----------|----------|
-| **Shipping** | An alternative Commerce Shipping checkout pane built on the radio-button inline form. Requires Commerce Shipping. |
-| **Payment** | An alternative Commerce Payment checkout pane built on the radio-button inline form. Requires Commerce Payment. |
+| Submodule (machine name) | Provides |
+|--------------------------|----------|
+| **Shipping** (`commerce_profile_inline_form_radios_shipping`) | Overrides the `shipping_information` checkout pane to use the radio-button inline form. Requires Commerce Shipping. |
+| **Payment** (`commerce_profile_inline_form_radios_payment`) | Overrides the `payment_information` checkout pane to use the radio-button inline form. Requires Commerce Payment. |
+| **PayPal** (`commerce_profile_inline_form_radios_paypal`) | Overrides the PayPal Checkout add-payment-method form's billing profile to use the radio-button inline form. Requires Commerce Payment and Commerce PayPal. Supports Drupal 9 and 10 only (not 11). |
 
 Enable one with `drush en`, for example:
 

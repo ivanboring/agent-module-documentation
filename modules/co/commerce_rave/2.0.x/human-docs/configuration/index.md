@@ -10,18 +10,14 @@ Flutterwave gives you a **public key** and a **secret key**. The secret key in
 particular must be protected like a password — **never commit it to Git or paste
 it into configuration you export**.
 
-On a DDEV site the recommended pattern is an environment variable referenced
-through a Key entity:
-
-```bash
-# Store the secret key in DDEV's env file (never commit .ddev/.env)
-ddev dotenv set .ddev/.env --rave-secret-key=<value>
-ddev restart
-```
-
-With the [Key](https://www.drupal.org/project/key) module enabled, create a Key
-that reads the `RAVE_SECRET_KEY` environment variable and select it on the gateway
-form instead of pasting the raw secret.
+Note that this module stores the keys as plain gateway configuration fields (it
+does **not** integrate the [Key](https://www.drupal.org/project/key) module — the
+secret key is entered directly in a text field on the gateway form). Protect it by
+restricting who holds the *Administer payment gateways* permission and by keeping
+your exported payment-gateway configuration out of version control. If you manage
+configuration in Git, exclude the gateway config or override the secret at runtime
+(for example from an environment variable in `settings.php`) rather than exporting
+the raw key.
 
 ## Add the payment gateway
 

@@ -1,11 +1,14 @@
 {
   "name": "Commerce Recurring Shipping",
   "data_name": "commerce_recurring_shipping",
-  "description": "Adds shipping to Commerce Recurring subscriptions (charge shipping on recurring orders).",
+  "description": "Bridges Commerce Recurring and Commerce Shipping: adds shipping_profile and shipping_method fields to shippable subscription types (via the shippable_subscription entity trait) and, through an event subscriber, packs shipments and adds a server-computed shipping adjustment to the recurring orders generated for those subscriptions. The shipping amount is recalculated from the shipping method plugin on each recurring order, not carried as a stored price.",
   "version": "8.x-1.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_recurring_shipping",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce_shipping": "^2.0 || 2.x-dev",
+    "drupal/commerce_recurring": "^1.0 || 1.x-dev"
+  },
   "dependent_modules": [
     "commerce_recurring:commerce_recurring",
     "commerce_shipping:commerce_shipping"

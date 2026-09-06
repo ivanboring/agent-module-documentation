@@ -8,9 +8,10 @@ Commerce Recruiting provides referral/recruitment marketing for Drupal Commerce 
 (e.g. for a reward/bonus). It depends on Commerce Cart, in the Commerce package.
 
 Use it for referral/affiliate-style recruiting on a Commerce store. It is an e-commerce/marketing feature.
-Security-relevant points: the recruiting codes/links attribute credit, so ensure the codes are
-sufficiently unguessable and that attribution can't be trivially gamed (self-referral, forged attribution);
-and any reward payout logic should validate the purchase genuinely completed. It has no access-control role.
+By design the recruiting codes are unguessable (CSPRNG-generated and unique), bonuses are computed
+server-side from the campaign-option configuration and re-resolved when the order is placed, self-referral
+is blocked unless a campaign explicitly opts in, rewards are scoped to the owning recruiter, and a
+recruitment is only accepted once its order reaches the completed state. It has no access-control role.
 Configure the recruiting campaigns and rewards.
 
 ---
@@ -20,9 +21,11 @@ Configure the recruiting campaigns and rewards.
 - Credit recruiters for purchases.
 - Depend on Commerce Cart.
 - Reward recruited purchases.
-- Ensure codes are unguessable.
-- Prevent gamed attribution (self-referral/forgery).
-- Validate purchases before rewarding.
+- Generate unguessable, unique referral codes (CSPRNG).
+- Compute bonuses server-side from campaign config.
+- Accept recruitments only after the order completes.
+- Block self-referral unless a campaign opts in.
+- Scope rewards to the owning recruiter.
 - Have no access-control role.
 - Configure recruiting campaigns.
 - Handle referrals.

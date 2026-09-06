@@ -1,11 +1,15 @@
 {
   "name": "Commerce Referral",
   "data_name": "commerce_referral",
-  "description": "A referral system integrating with Commerce promotions (reward referrers via promotions/discounts).",
+  "description": "Refer-a-friend rewards for Drupal Commerce, built on Commerce promotions and coupons: each user gets a single-use referral coupon to share; when a friend redeems it and the order is placed (or paid), the referrer is automatically awarded a single-use kickback coupon. Reward value comes from admin-configured promotions; supports multiple referral types, condition-gated code generation, self-use prevention, and admin reporting.",
   "version": "1.0.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_referral",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "php": "^8.3",
+    "drupal/core": "^11",
+    "drupal/commerce": "^3.0"
+  },
   "dependent_modules": [
     "drupal:commerce",
     "drupal:commerce_promotion"
@@ -16,7 +20,7 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/commerce_referral",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "^8.3",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],

@@ -1,11 +1,13 @@
 {
   "name": "Commerce Rave (Flutterwave)",
   "data_name": "commerce_rave",
-  "description": "A Drupal Commerce payment gateway for Flutterwave Rave, with server-side transaction verification.",
+  "description": "Off-site Drupal Commerce payment gateway for Flutterwave Rave (card and mobile-money payments, popular across Africa). Provides a single 'rave' gateway plugin supporting the iFrame (inline) and Hosted Payment Page flows; on return it verifies the transaction server-side against Rave's authenticated API and compares the charged amount to the order total before recording payment.",
   "version": "2.0.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_rave",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce_payment": "^3"
+  },
   "dependent_modules": [
     "commerce:commerce_payment"
   ],

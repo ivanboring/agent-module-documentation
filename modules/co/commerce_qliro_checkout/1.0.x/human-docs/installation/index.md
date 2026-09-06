@@ -10,7 +10,10 @@
 - A **Qliro merchant account** with API credentials. You will not be able to
   finish configuration without them.
 
-There are no additional PHP library requirements declared by the module.
+The module also pulls in the **Qliro PHP SDK** (`iqv/qliro_php_sdk`) and the full
+**Drupal Commerce** package (`drupal/commerce`) as Composer dependencies. Composer
+installs these automatically when you require the module (below), so there is
+nothing extra to download by hand.
 
 ## Install with Composer
 

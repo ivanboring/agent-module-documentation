@@ -12,10 +12,12 @@ an existing profile. It carries no access-control role of its own, needs no API 
 and depends only on **Commerce Order** (`commerce_order`). It supports Drupal 9, 10,
 and 11.
 
-The project also ships two optional submodules that reuse this inline form to
-provide alternative checkout panes: a **shipping** pane for Commerce Shipping and a
-**payment** pane for Commerce Payment. Enable whichever matches the checkout
-integrations you use.
+On its own the base module only *defines* this inline form — it has no visible
+checkout effect until something puts it to use. The project ships three optional
+submodules that do exactly that, each swapping in the radio-button form for one
+integration: a **shipping** pane for Commerce Shipping, a **payment** pane for
+Commerce Payment, and a **paypal** override for the Commerce PayPal
+add-payment-method form. Enable whichever match the checkout integrations you use.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

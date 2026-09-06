@@ -17,10 +17,12 @@ recruitments on future orders. It ships blocks for sharing links and for showing
 user their own campaigns and links, and it supports product bundles. It depends on
 Commerce **Cart** (`commerce_cart`).
 
-Because rewards have real monetary value, treat this as security-sensitive: the
-recruiting codes attribute credit, so make sure they are hard to guess, that
-attribution can't be trivially gamed (self-referral or forged attribution), and
-that reward payouts only fire once a purchase genuinely completes.
+Because rewards have real monetary value, the module handles attribution
+server-side: recruiting codes are generated with a cryptographically secure random
+generator and kept unique, bonuses are calculated from the campaign configuration
+(not from the request) and re-checked when the order is placed, self-referral is
+blocked unless a campaign explicitly allows it, and a recruitment only becomes
+redeemable once its order has completed.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

@@ -7,10 +7,14 @@
 - A **Sberbank acquiring** contract, with the username and password for the
   test and live REST APIs (these are different per mode).
 
-There are no additional Composer library or PHP requirements.
+The module wraps a third-party PHP library, **`voronkovich/sberbank-acquiring-client`**
+(`^1.1`), which Composer pulls in automatically when you require the module. The
+module's install check refuses to install if that library's `Client` class is
+missing, so **install with Composer** rather than dropping the archive in by hand.
 
 > The project states it **should only be installed via Composer** — the archives
-> on drupal.org are for reference only.
+> on drupal.org are for reference only, precisely because the archive does not
+> carry the required library.
 
 ## Install with Composer
 

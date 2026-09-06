@@ -46,7 +46,13 @@ Where the gateway form has no Key selector, override the secret from
 - **Username** — the Sberbank API username for the selected mode.
 - **Password** — the Sberbank API password for the selected mode. Supply this
   from the Key/secret you created above rather than pasting a production secret
-  into the form.
+  into the form. On a later edit, leave the Password field **empty** to keep the
+  currently saved password unchanged.
+- **Order ID prefix / suffix** (under *Order ID prefix and suffix*) — optional.
+  Leave both empty in normal use. They only change the order identifier sent to
+  Sberbank (the Drupal order id is unaffected) and exist to keep that identifier
+  unique if you have previously used the same ids — for example across several
+  development environments.
 
 ## Save and test
 

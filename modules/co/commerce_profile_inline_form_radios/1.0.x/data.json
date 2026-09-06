@@ -1,11 +1,13 @@
 {
   "name": "Commerce Profile Inline Form Radios",
   "data_name": "commerce_profile_inline_form_radios",
-  "description": "Renders Commerce customer profiles as radio buttons in an inline form.",
+  "description": "Alternative Drupal Commerce customer-profile inline form that renders the customer's own saved address-book profiles as radio buttons (instead of the default select dropdown) so returning customers pick an existing billing/shipping address with one click. Ships shipping, payment and paypal submodules that override the matching checkout panes/forms to use it. Selectable options are scoped to the current customer's own profiles.",
   "version": "1.0.x",
   "package": "commerce_profile_inline_form_radios",
   "composer_namespace": "drupal/commerce_profile_inline_form_radios",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^2.28 || ^3"
+  },
   "dependent_modules": [
     "commerce:commerce_order"
   ],
@@ -18,10 +20,14 @@
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [],
-  "provides_permissions": true,
+  "submodules": [
+    "commerce_profile_inline_form_radios_shipping",
+    "commerce_profile_inline_form_radios_payment",
+    "commerce_profile_inline_form_radios_paypal"
+  ],
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "E-commerce"

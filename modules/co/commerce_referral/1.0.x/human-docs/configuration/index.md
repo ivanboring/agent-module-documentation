@@ -26,8 +26,8 @@ Working under **Commerce**, set up:
 - **The kickback reward** — the promotion/coupon issued to the referrer, and the
   reward's value.
 - **When the kickback is awarded** — choose whether the referrer's reward is
-  created on **order placement** or on **payment**. Awarding on payment is the
-  safer choice, because it ties the reward to money actually received.
+  created on **order placement** or on **payment**. Choosing **payment** ties each
+  kickback to confirmed payment, which is the recommended setting for most stores.
 - **Who may generate referral codes** — use the configurable **conditions** to
   control which users can participate (for example, only authenticated customers).
 

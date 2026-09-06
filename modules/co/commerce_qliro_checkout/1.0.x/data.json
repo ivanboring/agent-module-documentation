@@ -1,11 +1,14 @@
 {
   "name": "Commerce Qliro Checkout",
   "data_name": "commerce_qliro_checkout",
-  "description": "Provides Drupal Commerce integration for Qliro Checkout (off-site payment).",
+  "description": "Provides Drupal Commerce integration for Qliro One / Qliro Checkout, the Nordic hosted-checkout payment provider, as an off-site payment gateway. Renders Qliro's embedded checkout HTML snippet (fetched from Qliro's authenticated Merchant API), acknowledges/completes orders from Qliro's server-side API on the checkout-status push and browser return, and supports manual capture, void (cancel) and refunds via Qliro's Admin API. Built on the iqv/qliro_php_sdk PHP SDK.",
   "version": "1.0.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_qliro_checkout",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "iqv/qliro_php_sdk": "^1.0",
+    "drupal/commerce": "^2.37 || ^3"
+  },
   "dependent_modules": [
     "commerce:commerce_payment"
   ],
@@ -19,7 +22,7 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],

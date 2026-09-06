@@ -1,11 +1,13 @@
 {
   "name": "Commerce Product Availability",
   "data_name": "commerce_product_availability",
-  "description": "Provides product-variation availability logic for Drupal Commerce.",
+  "description": "Adds a Product Availability field to Drupal Commerce product variations (orderable flag, availability status, available-from date, min/max delivery period) and enforces purchasability server-side via a Commerce availability checker and order processor. Ships a default and a simple widget, a themeable formatter with a colored availability indicator, global delivery-period settings, tokens, a schema.org status mapping, and an optional Webform Request submodule for an 'Order request' button.",
   "version": "1.0.x",
   "package": "Commerce",
   "composer_namespace": "drupal/commerce_product_availability",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^2 || ^3"
+  },
   "dependent_modules": [],
   "configure": "commerce_product_availability.settings",
   "core_version_requirement": "^10||^11",

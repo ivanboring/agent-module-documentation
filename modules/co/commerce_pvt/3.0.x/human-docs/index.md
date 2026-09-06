@@ -40,9 +40,10 @@ behaviour there. The rendering is powered by a **View**.
 ## How to use it
 
 1. Make sure the required Commerce patch is applied (see Installation).
-2. Edit the product type's **Manage display** and switch the variations field so it
-   renders through Commerce Product Variations Table's formatter / View, showing
-   each variation as a table row with an add-to-cart control.
+2. Edit the product type's **Manage display** and enable the **Product Variations
+   Table** display component that this module adds. It renders the shipped
+   `commerce_pvt_form` View, showing each variation as a table row with a quantity
+   field and add-to-cart control.
 3. Choose between the **simple** widget (quantity fields with a single submit
    button) and the **enhanced** widget (Plus / Minus buttons with AJAX updates,
    optionally debounced).

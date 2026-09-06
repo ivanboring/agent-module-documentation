@@ -39,5 +39,5 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 Saferpay does not add a settings page of its own. Like every Commerce gateway,
 you configure it by adding a payment gateway under **Administration → Commerce →
 Configuration → Payment gateways** (`/admin/commerce/config/payment-gateways`)
-and choosing the Saferpay (JSON API) plugin. See
+and choosing the **Saferpay PaymentPage** plugin (the current JSON API gateway). See
 [Configuration](configuration/index.md) for the walkthrough.

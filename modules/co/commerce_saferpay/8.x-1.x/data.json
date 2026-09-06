@@ -1,11 +1,13 @@
 {
   "name": "Commerce Saferpay",
   "data_name": "commerce_saferpay",
-  "description": "Saferpay (Six Payment Services) payment gateway for Drupal Commerce.",
+  "description": "Drupal Commerce off-site payment gateway for Saferpay (Six Payment Services / Worldline), using the Saferpay JSON API PaymentPage hosted-redirect flow with server-to-server transaction assertion, capture, void and refund support.",
   "version": "8.x-1.x",
   "package": "Commerce",
   "composer_namespace": "drupal/commerce_saferpay",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^2.11 || ^3"
+  },
   "dependent_modules": [
     "commerce:commerce_payment"
   ],

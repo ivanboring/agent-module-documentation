@@ -4,25 +4,22 @@ Commerce Qliro Checkout is configured the way every Commerce payment method is:
 by adding a **payment gateway**. Until you do this and enter valid Qliro
 credentials, the module does nothing.
 
-## Store your Qliro API credentials safely first
+## Handle your Qliro API credentials carefully
 
-Qliro gives you API credentials (an API key / secret) that let your site talk to
-its Merchant API. Treat these like passwords — **never paste them into code or
-commit them to Git**, and avoid exporting them in plain configuration.
+Qliro gives you API credentials (an API key and secret) that let your site talk
+to its Merchant API. Treat these like passwords.
 
-The recommended pattern on a DDEV site is to keep the secret in an environment
-variable and reference it through a Key entity:
+In this release the payment-gateway form takes the API key and secret as plain
+text fields — it does **not** offer a Key-module selector — so the values are
+saved into the payment-gateway configuration entity. Because of that:
 
-```bash
-# Store the secret in DDEV's env file (never commit .ddev/.env)
-ddev dotenv set .ddev/.env --qliro-api-secret=<value>
-ddev restart
-```
-
-Then, with the [Key](https://www.drupal.org/project/key) module enabled, create a
-Key that reads from the `QLIRO_API_SECRET` environment variable and select that
-Key wherever the gateway form asks for the secret. This keeps the credential out
-of your configuration export.
+- Restrict who can reach the gateway form: only trusted administrators should
+  hold the *administer payment gateways* permission.
+- Keep the gateway configuration out of any publicly shared or committed
+  configuration export. If you export site config to Git, exclude this gateway's
+  settings (or store the export privately) so the secret is not committed.
+- Use **Test** credentials while integrating and only enter the **Live**
+  credentials once you are ready to go live.
 
 ## Add the payment gateway
 
@@ -31,21 +28,23 @@ of your configuration export.
    (`/admin/commerce/config/payment-gateways`) and click **Add payment gateway**.
 3. Give it a **name** customers won't necessarily see (for example "Qliro
    Checkout") and choose the **Qliro Checkout** plugin.
-4. Enter your **Qliro API credentials** (merchant API key / secret). Use the Key
-   entity you created above rather than pasting the raw secret.
-5. Choose the **mode** — **Test** while you are integrating, **Live** only once
-   you have confirmed end-to-end payments in test.
-6. Save the gateway.
+4. Enter your **Qliro API credentials** (merchant API key and secret) in the
+   provided fields.
+5. Set the other options as needed: **transaction mode** (authorize-and-capture
+   vs. authorize-only), **purchase country**, **locale**, and the **path to your
+   terms** (required) and integrity policy.
+6. Choose the gateway **mode** — **Test** while you are integrating, **Live** only
+   once you have confirmed end-to-end payments in test.
+7. Save the gateway.
 
-## How completion works (and why it's safe)
+## How completion works
 
 When a shopper pays through Qliro, they are sent to Qliro's embedded checkout and
-then returned to your site. The module does **not** trust the browser redirect or
-the anonymous validation callback to decide whether an order was paid — in this
-release that callback handler is intentionally a no-op. Instead, order state is
-confirmed by calling Qliro's **server-side Merchant API**. This is the correct,
-tamper-resistant design: a customer cannot mark their own order as paid by
-replaying or forging a callback.
+then returned to your site. To decide whether an order was paid, the module calls
+Qliro's **server-side Merchant API** and reads the order's status and amount from
+that authenticated response; in this release the anonymous validation callback
+handler is a no-op. The captured amount recorded against the order comes from the
+Merchant API response rather than from the browser redirect.
 
 ## Test before going live
 

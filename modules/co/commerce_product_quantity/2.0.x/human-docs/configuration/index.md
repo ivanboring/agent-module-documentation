@@ -1,9 +1,11 @@
 # Configuration
 
 Commerce Product Quantity is configured from two small forms under
-**Commerce → Configuration → Product**. Both live behind the module's configuration
-route (`commerce_product_quantity.configuration`). You need the permission to
-administer Commerce configuration to reach them.
+**Commerce → Configuration → Product** — one at
+`/admin/config/system/commerce_product_quantity` (per product) and one at
+`/admin/config/system/commerce_product_type_quantity` (per product type). Both
+pages require the **`administer commerce_product_quantity configuration`**
+permission, so reach them as an administrator.
 
 ## Product Quantity (per individual product)
 

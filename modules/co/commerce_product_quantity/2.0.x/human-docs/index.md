@@ -2,9 +2,10 @@
 
 **Commerce Product Quantity** (`commerce_product_quantity`) lets you set purchase
 quantity limits for Commerce products — both for individual products and for whole
-product types — so customers cannot order more (or, where configured, fewer) than
-you allow. It is the module to reach for when a product is limited stock, sold in
-fixed batches, or capped per order for fairness during a sale.
+product types — so customers cannot order more than you allow. It sets a maximum
+per order only (there is no minimum and no step); reach for it when a product is
+limited stock or you want to cap how many of something a customer can buy in one
+order, for example for fairness during a sale.
 
 You configure it from a small settings area under Commerce: one form for
 per-product limits and one for per-product-type limits. When a customer adds an
@@ -31,6 +32,7 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 ## Where it lives in the admin menu
 
 The module's settings sit under **Commerce → Configuration → Product** — one page
-for **Product Quantity** (per individual product) and one for **Product Type
-Quantity** (per product type). Its configuration route is
-`commerce_product_quantity.configuration`.
+for **Product Quantity** (per individual product, at
+`/admin/config/system/commerce_product_quantity`) and one for **Product Type
+Quantity** (per product type, at
+`/admin/config/system/commerce_product_type_quantity`).

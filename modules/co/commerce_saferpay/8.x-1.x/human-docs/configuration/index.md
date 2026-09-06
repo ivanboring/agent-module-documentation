@@ -38,7 +38,8 @@ exported config by overriding it from `settings.php` instead.
    (`/admin/commerce/config/payment-gateways`) and click **Add payment gateway**.
 2. Give it a **Name** customers-facing staff will recognise (for example
    "Credit card (Saferpay)").
-3. Choose the **Saferpay (JSON API)** plugin.
+3. Choose the **Saferpay PaymentPage** plugin (this is the current JSON API
+   gateway — it lives in the main module).
 
 ## Gateway settings, field by field
 
@@ -52,11 +53,22 @@ exported config by overriding it from `settings.php` instead.
   issued for the selected mode. Enter the password from the Key/secret you set up
   above rather than pasting a production secret directly. Remember test and live
   have *different* credentials.
-- **Transaction type / capture behaviour** — choose whether to **settle
-  (capture) immediately** or **authorize only** and capture later from the
-  order's Payments tab.
+- **Order identifier** *(required)* — the reference sent to Saferpay as the
+  `OrderId`. If the Token module is installed you can use `commerce_order`
+  tokens (for example the order number); when left blank at runtime the module
+  falls back to the internal order id.
+- **Order description** *(required)* — the text shown to the customer on
+  Saferpay's payment page. Supports the same tokens.
+- **Auto finalize payment by capture of transaction** — when ticked, an
+  authorized transaction is captured (settled) immediately; untick it to
+  **authorize only** and capture later from the order's Payments tab.
+- **Auto assert refunds** — when ticked, a refund is captured automatically
+  after it is created.
 - **Allowed payment methods** — optionally limit which Saferpay payment means
-  (card brands, Twint, etc.) are offered.
+  (card brands, Twint, etc.) are offered. Selecting none means all are allowed.
+- **Request alias**, **debug logging**, and **webhook wait time** are optional
+  advanced settings; leave them at their defaults unless you have a specific
+  reason (webhook wait is a *blocking* delay and should normally stay 0).
 
 Saferpay uses an **external (hosted) payment page** — customers always enter card
 details on Saferpay, so there is no card form on your site to configure.

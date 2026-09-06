@@ -17,12 +17,12 @@ Merchant API. Its only hard dependency is Commerce's Payment module
 
 This is not a "works on enable" module — like every payment gateway it does
 nothing until you add and configure a Qliro gateway with your API credentials.
-One security detail worth knowing: the module's validation callback
+One detail worth knowing: the module's validation callback
 (`/commerce_qliro_checkout/validate/{gateway}`) is reachable anonymously, but in
-this release its handler is a deliberate no-op — the module never trusts the
-callback body to mark an order paid. Completion always goes through Qliro's
-server-side Merchant API, which is the safe design. Keep your Qliro API
-credentials out of code and configuration exports (see the configuration guide).
+this release its handler is a no-op. Order completion is driven by calls to
+Qliro's server-side Merchant API, and the amount recorded against the order is
+read from that authenticated response. Keep your Qliro API credentials out of
+code and configuration exports (see the configuration guide).
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
