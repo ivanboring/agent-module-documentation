@@ -19,14 +19,15 @@ instead.
 
 ## 2. Manage your styles
 
-Go to **Configuration → Content authoring → CKEditor Standalone Styles**
-(`/admin/config/content/ckeditor-standalone-styles`). Here you can **add, edit,
-and delete** individual styles. Each style is a configuration entity, typically
-defining:
+Go to **Configuration → Content authoring → CKEditor styles**
+(`/admin/config/content/ckeditor_style`). Here you can **add, edit, delete and
+drag-reorder** individual styles. Each style is a configuration entity that
+defines:
 
-- a **label** — the human-readable name that appears in the Styles dropdown, and
-- the **element and CSS class(es)** the style applies to the selected content
-  (for example a `<p>` with a `highlight` class).
+- a **label** — the human-readable name that appears in the Styles dropdown,
+- one **HTML element** the style applies to (for example `p`, `h2`, or `span`), and
+- one or more **CSS classes** (enter one per line) added to that element when the
+  style is chosen (for example a `<p>` with a `highlight` class).
 
 When you save a style, the module automatically registers the CSS classes it uses
 with the format's allowed-HTML filter, so the markup survives filtering and the

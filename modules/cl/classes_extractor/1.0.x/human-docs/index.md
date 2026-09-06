@@ -1,59 +1,65 @@
 # Classes Extractor — manual setup guide
 
 **Classes Extractor** (`classes_extractor`) is a developer and build tool. It
-collects the CSS classes actually used across your site — via a pluggable
-extraction system — and exports them to a file, which is exactly what you need when
-you run a CSS optimiser such as **Tailwind** or **PurgeCSS** and want a safelist of
-classes that must never be stripped. It can also expose the collected list to
-external tooling.
+collects the CSS class names that are already stored in your Drupal
+**configuration** — the classes set on Views, on entity view displays (including
+Display Suite and Layout Builder settings), and inside a text format's allowed
+HTML — and exports the combined, de-duplicated list. That list is exactly what a
+CSS optimiser such as **Tailwind** or **PurgeCSS** needs as a safelist so those
+CMS-configured classes are never stripped from your compiled stylesheet.
 
-Practically, the module does two things. It ships a **Drush command** (`drush cec`)
-that scans the specified modules for backend CSS classes and writes the list to a
-file for your build pipeline to consume. And it exposes an **API endpoint**
-(`GET /api/extracted-classes`) that returns the extracted classes as JSON, so an
-external system or another module can fetch them programmatically.
+It is important to know what the module does **not** do: it does not scan CSS
+files, Twig templates, or module source code, and it has no "pick the modules to
+scan" option. The only setting is the output **file path**. The set of places it
+looks is fixed by its built-in extractor plugins, and developers can add their own
+plugin to cover more sources.
 
-The extraction logic itself is built on Drupal's plugin system, so you can add your
-own extractor plugin (implementing the module's extractor interface) to cover
-class sources the defaults don't, without patching the module. Classes Extractor
-renders nothing on the page and has no content or access-control role of its own —
-it is a utility that gathers class names. It supports Drupal 10 and 11.
+There are two ways to get the collected classes out:
+
+- A **Drush command** (`drush cec`) that runs the extraction and writes the
+  space-separated list of classes to the file path you configured.
+- A **JSON route** (`GET /api/v1/classes-extractor`) that returns the collected
+  classes as `{"classes": "…"}`. This route requires the *Administer site
+  configuration* permission — it is not a public endpoint.
+
+Classes Extractor renders nothing on the page and has no content or access-control
+role of its own. It supports Drupal 10 and 11.
 
 This guide is written for a **human** clicking through the admin UI. If you want
-terse, token‑cheap references for an AI coding agent, read the sibling
+terse, token-cheap references for an AI coding agent, read the sibling
 [`agent/`](../agent/start.md) docs instead.
 
 ## Contents
 
 1. [Installation](installation/index.md) — install with Composer and enable the
    module.
-2. [Configuration](configuration/index.md) — the settings form and how to run the
+2. [Configuration](configuration/index.md) — set the output file path and run the
    extraction.
 
 ## Where it lives in the admin menu
 
-The module provides a settings form (config `classes_extractor.settings`) where you
-choose which modules to scan and how the export behaves. See
-[Configuration](configuration/index.md) for the details.
+The module adds a settings form at **`/admin/config/classes-extractor`**
+(*Configuration*), reachable via the **Configure** link on the Extend page. See
+[Configuration](configuration/index.md).
 
 ## How to use it
 
 The typical workflow is:
 
-1. Configure the extractor on the settings form (which modules to scan, export
-   options).
+1. On the settings form, set the **file path** where the class list should be
+   written.
 2. Run the extraction from the command line:
 
    ```bash
    drush cec
    ```
 
-   This scans the configured modules for their backend CSS classes and writes the
-   list to a file.
+   This collects the CSS classes from your configuration and writes the list to
+   that file.
 
-3. Feed that file into your CSS build (for example a Tailwind or PurgeCSS
-   safelist), or fetch the list from another system via the JSON endpoint:
+3. Feed that file into your CSS build (for example as a Tailwind or PurgeCSS
+   safelist), or fetch the current list as JSON (with the admin permission) from:
 
    ```
-   GET /api/extracted-classes
+   GET /api/v1/classes-extractor
    ```

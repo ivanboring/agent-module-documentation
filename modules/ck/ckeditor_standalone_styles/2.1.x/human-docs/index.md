@@ -36,7 +36,7 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 ## Where it lives in the admin menu
 
 Styles are managed at **Administration → Configuration → Content authoring →
-CKEditor Standalone Styles**
-(`/admin/config/content/ckeditor-standalone-styles`). The Styles *button* itself
-is still added per text format at **Configuration → Content authoring → Text
-formats and editors**.
+CKEditor styles** (`/admin/config/content/ckeditor_style`) — a list where you add,
+edit, delete and drag-reorder individual styles. The Styles *button* itself is
+still added per text format at **Configuration → Content authoring → Text formats
+and editors**.

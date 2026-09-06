@@ -34,8 +34,8 @@ drush en ckeditor_standalone_styles -y
 
 ## Verify it worked
 
-Visit **Configuration → Content authoring → CKEditor Standalone Styles**
-(`/admin/config/content/ckeditor-standalone-styles`). If the page loads and lets
-you add a style, the module is active. Next, follow
+Visit **Configuration → Content authoring → CKEditor styles**
+(`/admin/config/content/ckeditor_style`). If the page loads and lets you add a
+style, the module is active. Next, follow
 [Configuration](../configuration/index.md) to make sure the **Styles** button is
 on your format's toolbar and to grant the management permission.

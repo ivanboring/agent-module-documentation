@@ -1,7 +1,7 @@
 {
   "name": "Classes Extractor",
   "data_name": "classes_extractor",
-  "description": "Dynamically collects/exports the CSS classes used on the site via a plugin system.",
+  "description": "Collects CSS class names already stored in Drupal configuration/config entities (Views, entity view displays, Display Suite, a text format's allowed_html) via a plugin system, and exports the deduplicated list to a file (Drush) or as JSON (admin API route).",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/classes_extractor",
@@ -19,8 +19,10 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": true,
-  "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "classes_extractor (Plugin/ClassesExtractor)"
+  ],
   "categories": [
     "Developer tools"
   ],

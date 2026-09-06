@@ -3,12 +3,13 @@
 ## Requirements
 
 - **Drupal 10.1 or 11** (`core_version_requirement: ^10.1 || ^11`).
-- Core's **CKEditor 5** editor (it enhances CKEditor 5's built‑in Remove Format
-  plugin).
-- No other module dependencies, and no third‑party Composer or PHP library
+- A text format (this module's filter attaches to text formats). No CKEditor 5 editor
+  is actually required — the filter runs on rendered output regardless of which editor
+  the format uses.
+- No other module dependencies, and no third-party Composer or PHP library
   requirements.
 
-> **Heads‑up:** This project is maintained for fixes only and is **not covered by
+> **Heads-up:** This project is maintained for fixes only and is **not covered by
 > the Drupal security advisory policy**. Weigh that for production use.
 
 ## Install with Composer
@@ -32,18 +33,21 @@ dependencies as needed.
 drush en ckeditor_remove_format -y
 ```
 
-## Add the button and, optionally, the filter
+## Turn on the Remove Format Filter
 
 1. Go to **Configuration → Content authoring → Text formats and editors**
-   (`/admin/config/content/formats`) and edit a format that uses **CKEditor 5**.
-2. In the CKEditor 5 toolbar configuration, add the **Remove Format** button to
-   the toolbar so editors can clear formatting from a selection.
-3. If you want formatting stripped automatically whenever content is saved, enable
-   the **Remove Format Filter** on the same format's **Filters** list.
+   (`/admin/config/content/formats`) and edit the text format you want.
+2. In the **Filters** section, enable **Remove Format Filter**.
+3. Optionally adjust the **filter processing order** — this filter strips all tags, so
+   its position relative to other filters affects the result.
 4. Save the text format.
+
+There are **no filter settings** to configure.
 
 ## Verify it worked
 
-Edit a content field using that format, apply some inline formatting to a
-selection, click **Remove Format**, and confirm it is stripped. If you enabled the
-filter, save content containing formatting and confirm the saved result is cleaned.
+Create or edit content that uses that text format, include some HTML markup (for
+example bold text or a link), and view the rendered output. The markup should be gone,
+leaving only plain text — confirming the filter is stripping tags on render. Because it
+removes **all** tags, enable it only on formats whose output you want reduced to plain
+text.

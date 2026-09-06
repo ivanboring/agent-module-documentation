@@ -1,35 +1,17 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-CKEditor Media Title adds the ability to override the title attribute of embedded media.
+CKEditor Media Title adds the ability to override the title attribute of embedded media in CKEditor 5.
 
 ---
 
-CKEditor Media Title lets editors **override the `title` attribute of media embedded in CKEditor 5** — so
-an embedded image/media item can carry a custom title (tooltip/accessibility) set in the editor. It depends on
-core CKEditor 5 and Media, in the CKEditor 5 package.
+CKEditor Media Title lets editors **override the `title` attribute of media embedded in CKEditor 5** —
+so an embedded image/media item can carry a custom tooltip/accessibility title set in the editor,
+without changing the underlying media entity. It depends only on core CKEditor 5 and Media, and sits
+in the CKEditor 5 package.
 
-Use it to set titles on embedded media. It is a content-editing feature; the title is authored text output via
-core's media embed (which sanitizes), and it has no content or access role. Use the media title control in the
-editor.
-
----
-
-- Override embedded media's title attribute.
-- Set a custom media title.
-- Aid tooltips/accessibility.
-- Depend on core CKEditor 5 and Media.
-- Serve content editing.
-- Author media titles.
-- Rely on core media embed sanitization.
-- Have no content/access role.
-- Use the title control.
-- Handle media titles.
-- Set titles.
-- Configure the editor.
-- Override titles.
-- Handle the embed.
-- Add media titles.
-- Configure CKEditor.
-- Handle the editor.
-- Set embed titles.
-- Use the control.
-- Provide media titles.
+Enable the feature per text format: at `/admin/config/content/formats`, edit a CKEditor 5 format that
+uses the Media Embed filter and tick **Enable media image title override**. Editing content, select an
+embedded media item and click the **T** button in its inline toolbar to open a small balloon form;
+type a title (or leave it blank to fall back to the media entity's default) and Save. The override is
+stored on that one embed as `<drupal-media title="...">` and rendered through core's Media Embed
+filter and standard render pipeline (which escape output). The module has no routes, services,
+permissions, or PHP output path of its own — just a single per-format checkbox and client-side JS.

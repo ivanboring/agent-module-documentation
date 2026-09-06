@@ -1,11 +1,14 @@
 {
   "name": "CKEditor Text Selection",
   "data_name": "ckeditor_textselection",
-  "description": "A CKEditor 5 plugin providing text-selection functionality.",
+  "description": "A CKEditor 5 plugin that preserves the text selection and cursor position when toggling Source Editing mode, and scrolls the selection into view. Purely client-side; no server component or configuration.",
   "version": "1.0.x",
   "package": "CKEditor",
   "composer_namespace": "drupal/ckeditor_textselection",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "levmyshkin/ckeditor5-textselection": "^1.0",
+    "drupal/core": "^10 || ^11 || ^12"
+  },
   "dependent_modules": [
     "drupal:ckeditor5"
   ],
@@ -16,12 +19,14 @@
   "project_url": "https://www.drupal.org/project/ckeditor_textselection",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "levmyshkin/ckeditor5-textselection"
+  ],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"
