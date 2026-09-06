@@ -3,7 +3,8 @@
 **Commerce Order Auto-validation** (`commerce_order_autovalidate`) automatically
 moves Drupal Commerce orders that are **paid in full** from the `validation` state
 to `validated`, so staff don't have to click through that transition by hand. It
-depends only on Commerce **Order** (`commerce_order`).
+depends on the Commerce **Order** (`commerce_order`) and Commerce **Payment**
+(`commerce_payment`) submodules.
 
 The problem it solves is the manual step of validating orders once payment has
 cleared. On each cron run the module finds orders sitting in the `validation` state

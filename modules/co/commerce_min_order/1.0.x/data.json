@@ -5,7 +5,10 @@
   "version": "1.0.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_min_order",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^2 || ^3",
+    "drupal/core": "^9 || ^10 || ^11"
+  },
   "dependent_modules": [
     "commerce:commerce",
     "commerce:commerce_cart",
@@ -17,13 +20,13 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/commerce_min_order",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "^8.0",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "E-commerce"

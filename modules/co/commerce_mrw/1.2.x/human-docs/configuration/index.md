@@ -4,20 +4,19 @@ Commerce MRW is configured as a **shipping method**. You create one shipping
 method that uses the MRW plugin, enter your SAGEC credentials, choose a service and
 set a rate. There is no separate global settings page.
 
-## Store your SAGEC credentials securely
+## Your SAGEC credentials
 
 MRW gives you a username and password for the PRE (test) and PRO (production)
-environments. Treat these as secrets: never hard‑code or commit them. With DDEV
-you can keep each value in an environment variable and load it through a Key
-entity:
+environments, alongside your franchise code, client code and optional department
+code. You enter these directly on the MRW shipping method's form: the PRE and PRO
+credentials are kept as separate fields, and the **test mode** toggle decides which
+set is used. The two password fields are masked; leave a password blank when
+editing the method to keep the value already saved.
 
-```bash
-ddev dotenv set .ddev/.env --mrw-pro-password=<value>
-ddev restart
-```
-
-Then reference the variable from a Key entity (install the Key module first if it
-isn't enabled) so the credential never lives in exported configuration.
+Treat these credentials as secrets. Limit who holds the *administer commerce
+shipment* permission (the only role that can view or edit the shipping method), and
+handle the method's exported configuration the way you handle any other config that
+contains credentials.
 
 ## Create the MRW shipping method
 
@@ -45,11 +44,18 @@ isn't enabled) so the credential never lives in exported configuration.
 Save the shipping method. Place a test order that uses it, then open the resulting
 shipment in the back office:
 
-- Use **Transmit** (*TransmEnvio*) to send the shipment to MRW; the returned MRW
-  shipment number is stored as the tracking code.
-- **Download label** streams the transport label PDF from SAGEC on demand.
-- **Track** queries MRW's TrackingServices for the latest status or full history.
-- **Cancel** withdraws a transmitted shipment.
+- Use **Transmit to MRW** (*TransmEnvio*) to send the shipment to MRW; the returned
+  MRW shipment number is stored as the tracking code.
+- **MRW label** / **Download the MRW label (PDF)** streams the transport label PDF
+  from SAGEC on demand.
+- **Cancel MRW shipment** withdraws a transmitted shipment and clears the tracking
+  code.
+
+Status tracking is available too, but as a programmatic service rather than a
+button: the module ships a tracking client (`commerce_mrw.tracking_client`) that
+queries MRW's TrackingServices for the latest status or the full history. Wiring it
+into a workflow (for example a cron job that marks delivered shipments) is left to
+your site's code.
 
 You can also transmit shipments whose shipping method is *not* MRW: eligible
 methods get a "Transmit as" selector, and the method that actually executed is

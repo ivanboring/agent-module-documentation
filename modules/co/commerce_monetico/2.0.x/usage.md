@@ -13,10 +13,8 @@ Security handling is correct: the callback controller (`CommerceMoneticoRoutingC
 transition **inside** the `computeHmac(...) == posted MAC` check; a mismatching MAC returns MAC-NOT-OK and
 does not process the payment. So the public callback route (`/commerce_monetico/response`) is safe because
 forged callbacks fail the HMAC check. When adopting: store the Monetico **security key** (and TPE number) as
-secrets, operate over HTTPS, and keep the merchant key confidential (the HMAC's security rests on it). One
-minor hardening note: the MAC comparison uses `==` rather than `hash_equals()` (non-constant-time; a
-practical timing/forgery attack is infeasible since the compared value is secret-key-derived). Configure the
-Monetico credentials.
+secrets, operate over HTTPS, and keep the merchant key confidential (the HMAC's security rests on it).
+Configure the Monetico credentials.
 
 ---
 
@@ -31,7 +29,6 @@ Monetico credentials.
 - Store the Monetico security key as a secret.
 - Operate over HTTPS.
 - Keep the merchant key confidential.
-- Note == vs hash_equals (minor).
 - Handle Cybermut/CIC payments.
 - Configure the Monetico credentials.
 - Process payments securely.

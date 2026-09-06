@@ -1,11 +1,14 @@
 {
   "name": "Commerce Mercado Pago",
   "data_name": "commerce_mercado_pago",
-  "description": "Mercado Pago payment gateway for Drupal Commerce (Checkout Pro). Payment result handling is API-verified: onReturn verifies the payment with the Mercado Pago API before trusting the return query params, and onNotify handles the IPN webhook. Store the Mercado Pago access token as a secret.",
+  "description": "Adds a Mercado Pago Checkout Pro payment gateway (offsite redirect/popup) to Drupal Commerce for Latin America (AR, BR, CL, CO, MX, PE, UY), with installments, per-country payment-method/type exclusions, refunds, and test/stage/live modes. Ships the mercado_pago_checkout_pro gateway + payment-method-type plugins and uses the Mercado Pago PHP SDK (mercadopago/dx-php ^3). Payment result handling is API-verified: both onReturn and the onNotify IPN webhook re-fetch the payment from Mercado Pago's authenticated API by id and bind it to the order via external_reference rather than trusting request parameters. Store the access token/client secret as secrets.",
   "version": "3.0.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_mercado_pago",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^2.0 || ^3.0",
+    "mercadopago/dx-php": "^3"
+  },
   "dependent_modules": [
     "commerce:commerce_payment"
   ],

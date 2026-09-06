@@ -1,11 +1,14 @@
 {
   "name": "Commerce Moneris Checkout",
   "data_name": "commerce_moneris_checkout",
-  "description": "A Drupal Commerce payment gateway for Moneris Checkout (server-side receipt verification).",
+  "description": "Drupal Commerce offsite payment gateway for Moneris Checkout (MCO) — embeds the Moneris hosted card iframe on the Payment step and confirms each payment against Moneris's server-side receipt API (Canada/US).",
   "version": "1.0.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_moneris_checkout",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "~2.0 || ^3.0",
+    "smmccabe/moneris": "*"
+  },
   "dependent_modules": [
     "commerce:commerce_payment"
   ],
@@ -16,7 +19,10 @@
   "project_url": "https://www.drupal.org/project/commerce_moneris_checkout",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "smmccabe/moneris (Composer PHP library)",
+    "Moneris Checkout JS (chkt_v2.00.js, loaded remotely from gateway(t).moneris.com)"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,

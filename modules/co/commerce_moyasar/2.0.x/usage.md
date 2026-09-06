@@ -3,27 +3,22 @@ Commerce Moyasar integrates the Moyasar payment gateway (Saudi Arabia) with Drup
 
 ---
 
-Commerce Moyasar provides Commerce integration for Moyasar — a payment gateway for Saudi Arabia — the shopper pays via Moyasar and returns with a payment id.
+Commerce Moyasar provides Commerce integration for Moyasar — a payment gateway for Saudi Arabia. The shopper pays through Moyasar's embedded payment form (credit card, Apple Pay, STC Pay) and returns to the site with a payment id.
 
-Security: `onReturn()` re-fetches the payment SERVER-SIDE from Moyasar's API (Basic auth) by id and completes only on the API status (`paid`/`authorized`/`captured`) — safe against forged-callback completion. Note (defense-in-depth): it does NOT bind the fetched payment's `metadata.order_id` to the order and trusts the API-returned amount rather than the order total, so a payment-id-switch/amount-mismatch is theoretically possible (still requires a genuine paid transaction). Store the Moyasar API credentials securely (env-backed), never committed. Depends on `commerce_payment`; supports Drupal per ^10 || ^11.
+Confirmation is server-side: `onReturn()` re-fetches the payment from Moyasar's API (HTTP Basic auth with the secret key) by id and completes the order only when Moyasar's API reports a `paid`, `authorized`, or `captured` status. This 2.0.x branch adds reusing saved payment methods (tokenized cards). Store the Moyasar secret API key securely (environment variable / settings override), never committed to version control. Depends on `commerce_payment`; supports Drupal `^9.3 || ^10 || ^11`, PHP `>=8.0`.
 
 ---
 
-- Integrate the Moyasar gateway.
-- Serve Saudi Arabia.
-- Redirect/charge via the provider.
+- Integrate the Moyasar gateway into Drupal Commerce.
+- Serve Saudi Arabia (SAR); accept credit card, Apple Pay, STC Pay.
+- Render Moyasar's embedded payment form on the checkout page.
 - Complete the order after payment.
-- `onReturn()` re-fetches the payment SERVER-SIDE from Moyasar's API (Basic auth) by id and completes only on the API status (`paid`/`authorized`/`captured`) — safe against forged-callback completion.
-- Use Drupal Commerce payment.
-- Store credentials securely (env-backed).
+- `onReturn()` re-fetches the payment server-side from Moyasar's API (Basic auth) by id and completes only on the API status (`paid`/`authorized`/`captured`).
+- Charge the order total (server-side) for saved-token payments.
+- Capture, void, and refund payments from the payment terminal.
+- Reuse saved payment methods (tokenized cards) when enabled.
+- Register the Mada card type.
+- Store the secret API key securely (env / settings override).
 - Never commit credentials.
 - Depend on `commerce_payment`.
-- Support ^10 || ^11.
-- Handle checkout.
-- Process payments.
-- Confirm the payment.
-- Handle notifications.
-- Support Commerce.
-- Integrate Moyasar.
-- Charge customers.
-- Reconcile orders.
+- Support `^9.3 || ^10 || ^11`, PHP `>=8.0`.

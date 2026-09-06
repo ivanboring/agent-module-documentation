@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- **Drupal 10 or 11** (`core_version_requirement: ^10 || ^11`).
+- **Drupal 9, 10, or 11** (`core_version_requirement: ^9 || ^10 || ^11`).
 - Drupal Commerce with **Tax** (`commerce_tax`) enabled — the only module
   dependency, enabled automatically.
 

@@ -9,7 +9,9 @@
   payment page. Google Pay and Apple Pay need to be activated and tested with your
   merchant account separately.
 
-There are no additional third‑party Composer or PHP library requirements.
+The module depends on the official **GlobalPayments PHP SDK**
+(`globalpayments/php-sdk ^14.0.4`), which Composer installs automatically when you
+require the module — no manual step needed.
 
 ## Install with Composer
 

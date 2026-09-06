@@ -9,10 +9,10 @@ Mercado Pago (Checkout Pro / popup), and the module records the payment. It depe
 Use it to accept Mercado Pago payments (Latin America). It is a **payment gateway**, and its result handling is
 sound: the `onReturn()` handler **verifies the payment with the Mercado Pago API before trusting the return query
 parameters** (its own comment notes this "prevents" trusting client-supplied status), and it also implements an
-`onNotify()` IPN webhook — so the payment outcome is derived from Mercado Pago's authenticated API, not from
-forgeable request data. Security essentials: store the Mercado Pago **access token/credentials as secrets**
-(env/Key), serve over HTTPS, and (for the IPN webhook) confirm it likewise validates against the MP API. It has no
-access-control role. Configure the Mercado Pago credentials.
+`onNotify()` IPN webhook that likewise **re-fetches the payment from the Mercado Pago API by id and binds it to
+the order via `external_reference`** — so the payment outcome is derived from Mercado Pago's authenticated API,
+not from forgeable request data. Security essentials: store the Mercado Pago **access token/client secret as
+secrets** (env/Key), serve over HTTPS. It has no access-control role. Configure the Mercado Pago credentials.
 
 ---
 

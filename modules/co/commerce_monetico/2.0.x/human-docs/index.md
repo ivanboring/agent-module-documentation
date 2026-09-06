@@ -10,9 +10,8 @@ Its confirmation handling is done correctly. The callback controller **verifies
 the Monetico HMAC-SHA1 seal** — it recomputes the MAC over the returned fields and
 only marks the payment successful (and advances the order) when the recomputed MAC
 matches the one Monetico posted. A mismatching seal is rejected as "MAC-NOT-OK"
-and is not processed, so the public callback route is safe against forged
-callbacks. The security of this rests entirely on your Monetico **security key**
-staying secret.
+and is not processed. The security of this verification rests entirely on your
+Monetico **security key** staying secret.
 
 The module depends on Drupal Commerce's Payment module and targets **Drupal 9, 10,
 and 11**. It is in **maintenance-fixes-only** status and is **seeking a

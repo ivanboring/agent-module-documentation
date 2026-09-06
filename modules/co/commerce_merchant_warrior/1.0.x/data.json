@@ -1,11 +1,13 @@
 {
   "name": "Commerce Merchant Warrior",
   "data_name": "commerce_merchant_warrior",
-  "description": "Merchant Warrior payment gateway for Drupal Commerce (Payframe / Direct API). Requests are HMAC-SHA256 signed with the API passphrase and card verification is server-side via the Direct API.",
+  "description": "On-site Merchant Warrior payment gateway for Drupal Commerce (Australia). Cards are tokenized client-side in the Payframe iframe and charged server-side via the Merchant Warrior Direct and Token APIs; requests are signed per Merchant Warrior's protocol (md5 transaction hash, plus an HMAC-SHA256 message hash for card verification) and outcomes come from authenticated API responses. Also ships two core-REST endpoints for a decoupled Payframe flow.",
   "version": "1.0.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_merchant_warrior",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": ">=2.39"
+  },
   "dependent_modules": [
     "drupal:commerce",
     "drupal:commerce_payment",

@@ -8,10 +8,12 @@ card payments via Merchant Warrior's Payframe (tokenized card capture) and Direc
 Commerce Payment and core REST.
 
 Use it to accept Merchant Warrior card payments. It is a **payment gateway** with a server-to-server (Direct API)
-design, and its verification is sound: outbound API requests are **signed with HMAC-SHA256 over the query string
-using the API passphrase** (`hash_hmac('sha256', $query_string, $api_passphrase)`), and payment methods/cards are
-**verified server-side via the Direct API `verifyCard` call** rather than trusting client-supplied status — so
-payment outcomes come from authenticated API responses, not a forgeable browser callback. Security essentials:
+design, and its verification is sound: outbound API requests are **signed per Merchant Warrior's protocol using
+the API passphrase** — an md5 transaction hash over the passphrase, merchant UUID, amount and currency for
+transaction operations, plus an **HMAC-SHA256 message hash** (`hash_hmac('sha256', $query_string,
+$api_passphrase)`) for card verification — and payment methods/cards are **verified server-side via the Direct
+API `verifyCard` call** rather than trusting client-supplied status — so payment outcomes come from
+authenticated API responses, not a forgeable browser callback. Security essentials:
 store the Merchant Warrior **merchant UUID / API key / passphrase as secrets** (env/Key), serve over HTTPS, and
 (with Payframe) card data is tokenized so raw PAN doesn't hit your server. It has no access-control role.
 Configure the Merchant Warrior credentials.
@@ -22,7 +24,7 @@ Configure the Merchant Warrior credentials.
 - Process card payments (Payframe + Direct API).
 - Tokenize card capture via Payframe.
 - Depend on Commerce, Commerce Payment, REST.
-- Sign API requests with HMAC-SHA256 (API passphrase).
+- Sign API requests with the API passphrase (md5 transaction hash; HMAC-SHA256 message hash for card verification).
 - Verify cards server-side via the Direct API verifyCard call.
 - Derive outcomes from authenticated API responses (not a browser callback).
 - Store the merchant UUID/API key/passphrase as secrets (env/Key).

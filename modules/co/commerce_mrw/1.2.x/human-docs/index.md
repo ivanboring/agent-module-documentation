@@ -5,7 +5,8 @@ courier operating in Spain, Portugal, Andorra and Gibraltar, through MRW's
 **SAGEC** web service. It adds MRW as a Commerce Shipping method so your store can
 offer an MRW rate at checkout, and it wires the back office up to MRW's API for the
 work that happens after an order is placed — transmitting shipments, downloading
-transport labels, tracking parcels and cancelling shipments.
+transport labels and cancelling shipments, plus a tracking client your site can
+call to query parcel status.
 
 The problem it solves is the manual back-and-forth of fulfilling with MRW. Once a
 shipment exists in Commerce, staff can transmit it to MRW (a *TransmEnvio*
@@ -38,6 +39,6 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 
 MRW is a shipping method, so you set it up under **Commerce → Configuration →
 Shipping methods** (`/admin/commerce/shipping-methods/add`) — choose the **MRW**
-plugin. Day-to-day fulfilment actions (transmit, download label, track, cancel)
+plugin. Day-to-day fulfilment actions (transmit, download label, cancel)
 appear on individual shipments from the order's shipment page and on the shipments
-list.
+list; status tracking is a programmatic client rather than a button.

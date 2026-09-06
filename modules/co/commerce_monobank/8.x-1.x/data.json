@@ -1,7 +1,7 @@
 {
   "name": "Commerce Monobank",
   "data_name": "commerce_monobank",
-  "description": "A Monobank payment gateway for Drupal Commerce. Confirms payment via Monobank's server-side status API (authoritative).",
+  "description": "Off-site redirect payment gateway that adds Monobank acquiring (Ukraine, UAH/currency 980) to Drupal Commerce. Creates a Monobank invoice via the merchant X-Token API, stores the invoiceId against the order, and confirms payment by re-fetching Monobank's authenticated server-side status API (api/merchant/invoice/status) rather than trusting the return request; the charged amount is computed server-side from the order total. Also emails the Monobank fiscal receipt on success.",
   "version": "8.x-1.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_monobank",

@@ -15,9 +15,10 @@ the credentials from your Merchant Warrior merchant account.
 
 - **Merchant UUID** — your Merchant Warrior merchant identifier.
 - **API key** — your Merchant Warrior API key.
-- **API passphrase** — the passphrase used to **HMAC-SHA256 sign** every request
-  to Merchant Warrior. This is the value that proves requests come from you, so
-  guard it carefully.
+- **API passphrase** — the passphrase used to **sign** every request to Merchant
+  Warrior (an md5 transaction hash for transaction operations, and an HMAC-SHA256
+  message hash for card verification). This is the value that proves requests come
+  from you, so guard it carefully.
 - **Mode** — choose **test** while integrating and **live** for real payments.
 - **Transaction type** — depending on your setup, the gateway can **authorize**
   only, or **authorize and capture** the order total in one step.
@@ -45,8 +46,9 @@ them like passwords:
 
 ## How the payment is confirmed (why it's safe)
 
-Every outbound request to Merchant Warrior is **signed with HMAC-SHA256** using
-your API passphrase, and cards/payment methods are **verified server-side** via
+Every outbound request to Merchant Warrior is **signed** using your API passphrase
+(an md5 transaction hash for transaction operations, and an HMAC-SHA256 message
+hash for card verification), and cards/payment methods are **verified server-side** via
 the Direct API (`verifyCard`) rather than trusting a browser-supplied status. Card
 data is tokenized by the Payframe iframe and never reaches your server. As a
 result, payment outcomes are derived from authenticated Merchant Warrior API

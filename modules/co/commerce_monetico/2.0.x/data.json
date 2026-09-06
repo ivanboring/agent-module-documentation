@@ -1,7 +1,7 @@
 {
   "name": "Commerce Monetico",
   "data_name": "commerce_monetico",
-  "description": "Drupal Commerce payment gateway for Monetico (CIC/Crédit Mutuel — Cybermut). Verifies the return HMAC.",
+  "description": "Off-site Drupal Commerce payment gateway for Monetico / Cybermut (CM-CIC) — the French banks Crédit Mutuel, CIC, OBC and Monetico. Redirects checkout to the bank's payment kit and processes a server callback whose HMAC-SHA1 seal is recomputed server-side with the merchant security key before the order is placed. Bundles the bank PHP payment kit; depends on Commerce Payment.",
   "version": "2.0.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_monetico",

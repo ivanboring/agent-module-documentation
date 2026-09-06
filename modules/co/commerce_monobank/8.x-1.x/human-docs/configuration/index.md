@@ -14,7 +14,15 @@ gateway with your merchant token.
 ## The settings, field by field
 
 - **X-Token** — your Monobank merchant token, obtained when you register for
-  acquiring. The module sends this token when querying Monobank's status API.
+  acquiring. The module sends this token when creating invoices and querying
+  Monobank's status API.
+- **Validity time** — how long a created invoice stays valid, in seconds
+  (minimum 60; Monobank defaults to 24 hours). For example, `3600` for one hour.
+- **Payment Type** — `debit` (immediate charge) or `hold` (authorise now, capture
+  later).
+- **Action url** — the Monobank API base URL used in **Live** mode, normally
+  `https://api.monobank.ua/`. (In **Test** mode the module uses
+  `https://api.monobank.ua/` automatically.)
 - **Test / Live** — flip this switch to choose the environment; it works
   automatically. Use **Test** while integrating and **Live** for real payments.
 

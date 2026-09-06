@@ -6,8 +6,9 @@
 - Drupal **Commerce** (`commerce`) and **Commerce Cart** (`commerce_cart`) enabled
   — these are the module dependencies.
 - A **buyer procurement system** that speaks OCI (SAP SRM, ORDIGES, Microsoft
-  Dynamics AX, SAP Ariba, etc.) and the shared credentials to authenticate the
-  punch-out exchange with it.
+  Dynamics AX, SAP Ariba, etc.), plus a Drupal user account (with the
+  `use commerce_oci_checkout` permission) whose login you give the procurement
+  system to authenticate the punch-out session.
 
 There are no additional third‑party Composer or PHP library requirements.
 
@@ -37,8 +38,8 @@ Commerce and Commerce Cart are enabled automatically as dependencies.
 ## Verify it worked
 
 After enabling, review the module's permissions at **People → Permissions**
-(`/admin/people/permissions`) and grant the OCI permissions to the roles that will
-operate the integration. Then coordinate the punch-out credentials and catalog
-mapping with the buyer's procurement system, and test a punch-out session end to
-end — the cart should be handed back to the procurement system rather than proceeding
-to payment on your site.
+(`/admin/people/permissions`) and grant `use commerce_oci_checkout` to the roles that
+will operate the integration. Create a buyer account with that permission, give the
+procurement system its login and your `/oci/logon` endpoint, and test a punch-out
+session end to end — the cart should be handed back to the procurement system (posted
+to the buyer's HOOK_URL) rather than proceeding to payment on your site.

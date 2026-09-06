@@ -3,8 +3,8 @@
 ## Requirements
 
 - **Drupal 9.5, 10, or 11** (`core_version_requirement: ^9.5 || ^10 || ^11`).
-- Drupal Commerce with **Order** (`commerce_order`) enabled — the only module
-  dependency, enabled automatically.
+- Drupal Commerce with **Order** (`commerce_order`) and **Payment**
+  (`commerce_payment`) enabled — the two module dependencies, enabled automatically.
 - An **order workflow that includes a `validation` state and a `validate`
   transition** — the module only does anything for orders using such a workflow.
 - **Cron running regularly** — validation happens on cron.
@@ -32,7 +32,7 @@ dependencies as needed.
 drush en commerce_order_autovalidate -y
 ```
 
-Commerce Order is enabled automatically as a dependency.
+Commerce Order and Commerce Payment are enabled automatically as dependencies.
 
 ## Verify it worked
 

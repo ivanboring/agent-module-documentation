@@ -1,11 +1,13 @@
 {
   "name": "Commerce Order Amend",
   "data_name": "commerce_order_amend",
-  "description": "provides admin forms to edit placed Commerce orders (swap/add/remove items, coupons) with audit logging.",
+  "description": "Adds an 'Amend Order' tab to placed Drupal Commerce orders: back-office staff swap an item's variation, add/remove items, and add/remove coupons after checkout. Each change forces a server-side order refresh with all item prices locked (preserving original checkout pricing), reports the balance delta with collect-payment/refund guidance, warns about refresh side effects, writes a Commerce Log audit entry, tags the order via an amendment_types field for Views, and dispatches an OrderAmendEvent. Optional Commerce Stock validation. Two item/coupon permissions plus a settings admin permission; configurable editable order states.",
   "version": "1.0.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_order_amend",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^2 || ^3"
+  },
   "dependent_modules": [
     "commerce:commerce_order",
     "commerce:commerce_promotion"
@@ -16,7 +18,7 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/commerce_order_amend",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],

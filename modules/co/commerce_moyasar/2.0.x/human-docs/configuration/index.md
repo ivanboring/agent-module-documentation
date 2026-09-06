@@ -39,26 +39,15 @@ Your Moyasar **secret key** is a secret — treat it like a password:
   Keep `.ddev/.env` out of version control.
 - Always serve checkout over **HTTPS**.
 
-## How the payment is confirmed, and a security note
+## How the payment is confirmed
 
 When the customer returns, the module **re-fetches the payment server-side from
 Moyasar's API** by its id and completes the order only when Moyasar reports a
-`paid`, `authorized`, or `captured` status. Because this comes from Moyasar's
-authenticated API rather than the returning request, a forged return cannot
-complete an order.
+`paid`, `authorized`, or `captured` status. The payment status therefore comes
+from Moyasar's authenticated API rather than from the returning request.
 
-As a **defense-in-depth caveat**, this release does not bind the fetched payment
-to the order as tightly as it could:
-
-- It does **not** compare the payment's `metadata.order_id` against the order being
-  completed.
-- It trusts the **amount** returned by the Moyasar API rather than re-checking it
-  against the order total.
-
-In theory this leaves room for a payment-id-switch or amount-mismatch scenario —
-though any such case still requires a genuine, paid Moyasar transaction. If this
-matters for your store, consider reconciling Moyasar payments against expected
-order amounts, or applying a fix that verifies the returned `order_id` and amount.
+As a matter of good store hygiene, reconcile your Moyasar dashboard against your
+Commerce orders periodically so that recorded payments and order totals line up.
 
 ## Test before going live
 

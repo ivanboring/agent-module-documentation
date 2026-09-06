@@ -14,8 +14,9 @@ future payments from the Drupal backend without handling sensitive card data
 directly. Behind the scenes it talks to Merchant Warrior's Direct API.
 
 The integration is built on sound server-to-server verification: outbound API
-requests are **signed with HMAC-SHA256** using your API passphrase, and cards are
-**verified server-side** through the Direct API rather than trusting anything the
+requests are **signed with your API passphrase** (an md5 transaction hash for
+transaction operations, and an HMAC-SHA256 message hash for card verification),
+and cards are **verified server-side** through the Direct API rather than trusting anything the
 browser reports — so payment outcomes come from authenticated API responses, not
 a forgeable callback. It depends on Drupal Commerce, Commerce Payment, and core
 **REST** (which powers the decoupled endpoints), and targets **Drupal 9.5, 10,

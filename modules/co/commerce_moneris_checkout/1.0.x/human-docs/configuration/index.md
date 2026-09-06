@@ -22,12 +22,22 @@ this produces; you'll need it in Drupal.
 
 ## The settings, field by field
 
-- **Mode** — choose **test** while integrating (using the shared test
-  environment) and **live** for real payments.
+- **Environment** — choose **Testing** while integrating (using the shared test
+  environment) and **Production** for real payments. (Internally these are the
+  `qa` and `prod` modes.)
 - **Store ID** — your Moneris store identifier.
-- **API token** — your Moneris API token.
-- **Checkout ID / profile** — the identifier of the Moneris Checkout profile you
-  created above, which drives the embedded iframe.
+- **API Token** — your Moneris API token.
+- **Checkout ID** — the identifier of the Moneris Checkout profile you created
+  above, which drives the embedded iframe.
+- **Country** — **Canada** (default) or **US**.
+- **Moneris Checkout order number strategy** — how the order number sent to
+  Moneris is chosen: **Use the order ID** (default), **Use the order ID with
+  timestamp appended** (recommended during testing, since Moneris rejects a
+  repeated order number), or **Generate the order number early** (may leave gaps
+  in your Commerce order numbers).
+- **Log the following messages for debugging** — optional API request/response
+  logging. Leave these off in production once integration works; the log entries
+  are only needed while troubleshooting.
 
 Save the gateway.
 

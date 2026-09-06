@@ -47,15 +47,12 @@ like a password:
   Keep `.ddev/.env` out of version control.
 - Always serve checkout over **HTTPS**.
 
-## How the payment is confirmed (why it's safe)
+## How the payment is confirmed
 
-The public callback route recomputes the **HMAC-SHA1 seal** over the returned
-fields and only accepts the payment when its computed MAC matches the one Monetico
-posted; a mismatch is rejected as "MAC-NOT-OK" and never processed. So a forged
-callback cannot mark an order paid, provided your security key stays secret. (A
-minor hardening note for developers: the comparison uses `==` rather than a
-constant-time comparison such as `hash_equals()`; a practical timing attack is
-infeasible because the compared value is derived from your secret key.)
+The `/commerce_monetico/response` callback recomputes the **HMAC-SHA1 seal** over
+the returned fields and only accepts the payment when its computed MAC matches the
+one Monetico posted; a mismatch is rejected as "MAC-NOT-OK" and never processed.
+This verification depends on your Monetico security key staying secret.
 
 ## Test before going live
 

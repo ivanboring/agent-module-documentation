@@ -1,28 +1,33 @@
 {
   "name": "Commerce Open Payment Platform",
   "data_name": "commerce_opp",
-  "description": "A Drupal Commerce gateway for the Open Payment Platform (OPPWA). Server-authoritative + AES-256-GCM-verified webhooks.",
+  "description": "Drupal Commerce payment gateway for the Open Payment Platform / OPPWA (ACI PAY.ON) COPYandPAY widget, with card, bank-transfer, virtual-account (PayPal, MB WAY, SIBS Multibanco, SOFORT) plugins and an optional AES-256-GCM webhooks submodule.",
   "version": "2.0.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_opp",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^2.39 || ^3",
+    "ext-openssl": "*"
+  },
   "dependent_modules": [
     "commerce:commerce_payment"
   ],
-  "configure": null,
-  "core_version_requirement": "^10||^11",
+  "configure": "commerce_opp.settings",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/commerce_opp",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/advancedqueue": "Needed if you want to use the commerce_opp_webhooks sub module"
+  },
   "submodules": [
     "commerce_opp_webhooks"
   ],
   "provides_permissions": false,
-  "provides_drush_commands": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [

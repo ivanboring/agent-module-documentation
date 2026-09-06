@@ -1,11 +1,13 @@
 {
   "name": "Commerce OCI Checkout",
   "data_name": "commerce_oci_checkout",
-  "description": "Enables Open Catalog Interface (OCI) punch-out checkout for B2B procurement.",
+  "description": "Turns a Drupal Commerce store into an Open Catalog Interface (OCI) punch-out supplier for B2B procurement: a buyer's procurement/ERP system opens an authenticated session (/oci/logon, credential-authenticated via core user.auth), the buyer builds a cart isolated in the session, and on checkout the cart is POSTed back to the buyer's HOOK_URL as an OCI NEW_ITEM form (/oci-cart) with server-authoritative prices, instead of being paid on the store. Gated by the 'use commerce_oci_checkout' permission; no admin config form.",
   "version": "8.x-1.x",
   "package": null,
   "composer_namespace": "drupal/commerce_oci_checkout",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^2.0 || ^3.0"
+  },
   "dependent_modules": [
     "commerce:commerce",
     "commerce:commerce_cart"
@@ -16,13 +18,13 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/commerce_oci_checkout",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "Inherited from Drupal core (10.1+/11 require PHP 8.1+); composer.json declares no explicit PHP constraint.",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "E-commerce"
