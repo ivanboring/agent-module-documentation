@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- **Drupal 9, 10, or 11** (`core_version_requirement: ^9 || ^10 || ^11`).
+- **Drupal 8, 9, 10, or 11** (`core_version_requirement: ^8 || ^9 || ^10 || ^11`).
 - **Drupal Commerce** with **Commerce Payment** (and **Commerce Order**)
   enabled.
 - The **Token** module (`token`).

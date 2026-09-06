@@ -4,8 +4,8 @@
 redirect** payment gateway for the **BeGateway** platform (used by a range of
 payment service providers). The shopper is redirected to BeGateway to pay, then
 returned to your site, and the order is completed on the return/notification. It
-depends on Commerce Payment and the **Token** module, and works on Drupal 9, 10,
-and 11.
+depends on Commerce Payment and the **Token** module, and declares support for
+Drupal 8, 9, 10, and 11 (`core_version_requirement: ^8 || ^9 || ^10 || ^11`).
 
 The gateway confirms payments safely. Its notification handler (`onNotify`) uses
 the BeGateway SDK's `Webhook` object and checks `$webhook->isAuthorized()` — a
@@ -27,7 +27,7 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 1. [Installation](installation/index.md) — install with Composer and enable the
    module and its dependencies.
 2. [Configuration](configuration/index.md) — add the BeGateway gateway and enter
-   your shop id, key, and secret.
+   your shop id and secret key.
 
 ## Where it lives in the admin menu
 

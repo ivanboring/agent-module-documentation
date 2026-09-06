@@ -1,16 +1,19 @@
 {
   "name": "Commerce CardPointe",
   "data_name": "commerce_cardpointe",
-  "description": "A Drupal Commerce payment gateway for CardPointe (CardConnect / Fiserv) payments.",
+  "description": "A Drupal Commerce on-site payment gateway for CardPointe (CardConnect / Fiserv) using the hosted iframe tokenizer, with optional Clover Flex integrated-terminal (card-present) support.",
   "version": "2.0.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_cardpointe",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "php": "^8.1",
+    "drupal/commerce": "^3"
+  },
   "dependent_modules": [
     "commerce:commerce_payment"
   ],
   "configure": null,
-  "core_version_requirement": "^10.3||^11",
+  "core_version_requirement": "^10.3 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/commerce_cardpointe",

@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- **Drupal 10 or 11** (`core_version_requirement: ^10 || ^11`).
+- **Drupal 11** (`core_version_requirement: ^11`).
 - **Drupal Commerce** (`commerce`) enabled — this is the only module dependency.
 
 There are no third‑party Composer or PHP library requirements.

@@ -8,22 +8,25 @@ third‑party intermediary, through an off‑site redirect flow. It depends on
 Commerce Checkout and Commerce Payment (`commerce_checkout`,
 `commerce_payment`).
 
-Payment confirmation is handled correctly. On both the return leg and the
-notification (`onNotify`), the module **re‑fetches the current invoice status
+Payment confirmation is handled correctly. The webhook (IPN) handler verifies the
+`BTCPay-Sig` **HMAC signature** over the raw request body, and on both the return
+leg and the notification the module **re‑fetches the current invoice status
 directly from your BTCPay Server** (`getInvoice()`) and records the payment based
-on that verified status — the code explicitly notes it does not trust the return
-URL. The notification route is public (`_access: TRUE`, standard for a Commerce
-IPN), but it is safe precisely because the module always re‑checks the
-authoritative status with BTCPay rather than believing the incoming request. That
-means a forged return or notification cannot mark an order paid.
+on that verified status — the posted event type and the return URL are never
+trusted to decide the outcome. Each update also cross‑checks the invoice against
+the right payment, order, store, and amount/currency. The notification route is
+public (`_access: TRUE`, standard for a Commerce IPN), but it is safe precisely
+because of the signature check and the authoritative re‑fetch. That means a forged
+or replayed notification cannot mark an order paid.
 
 Version 3.x uses BTCPay Server's **Greenfield API** and is a breaking change from
-1.x/2.x — uninstall older versions before installing 3.x. Pairing is smooth: you
-enter your BTCPay Server URL and click **Generate API Key**, which redirects you to
-BTCPay to authorize the app, then stores the store id, API key, and webhook back
-in Drupal. Keep the API key secret and run everything over HTTPS. This release is
-marked alpha (reported stable by the maintainers), so validate it for your
-version.
+1.x/2.x — uninstall older versions before installing 3.x. Pairing: save a
+**disabled** gateway with your HTTPS BTCPay Server URL, click **Generate API Key**
+to authorize a least‑privilege key on BTCPay, confirm on return, then explicitly
+enable the verified gateway. The API key and webhook secret are stored encrypted in
+Drupal's non‑exportable key/value storage (never in exported config), so you
+re‑authorize per environment. Run everything over HTTPS. This release is marked
+alpha (reported stable by the maintainers), so validate it for your version.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

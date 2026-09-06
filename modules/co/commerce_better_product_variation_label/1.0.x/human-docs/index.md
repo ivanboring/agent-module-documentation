@@ -15,9 +15,13 @@ you build strings with tokens. It changes only how variation titles are
 presented; it has no effect on content access or permissions.
 
 This is a small, presentation‑only helper. There is **no central settings page** —
-the behaviour is applied per variation type (the module targets "selected product
-variation types"), so you turn it on for the variation types where you want the
-improved label rather than site‑wide from one form.
+the behaviour is applied per variation type, so you turn it on for the variation
+types where you want the improved label rather than site‑wide from one form. Each
+product‑variation type's edit form gains a **"Commerce Better Product Variation
+Label settings"** section with a checkbox ("Use parent product label as prefix")
+and a **prefix separator** field (default: a single space, e.g. change it to
+`" - "` or `":"`). The prefix is only applied when the parent product's label and
+the variation's own label differ.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

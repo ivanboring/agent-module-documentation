@@ -1,23 +1,29 @@
 {
   "name": "Commerce BTCPay",
   "data_name": "commerce_btcpay",
-  "description": "A Drupal Commerce payment gateway for BTCPay Server (Bitcoin/crypto). Verifies invoice status server-side (does not trust the return URL).",
+  "description": "A Drupal Commerce off-site payment gateway for BTCPay Server (Bitcoin/Lightning/altcoins, Greenfield API). Verifies the webhook HMAC signature and always re-fetches the authoritative invoice status server-side; API key and webhook secret are AES-256-GCM encrypted in non-exportable key/value storage.",
   "version": "3.0.x",
   "package": "Commerce (contrib)",
   "composer_namespace": "drupal/commerce_btcpay",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "btcpayserver/btcpayserver-greenfield-php": "^2.8",
+    "ext-bcmath": "*",
+    "ext-openssl": "*"
+  },
   "dependent_modules": [
     "commerce:commerce_checkout",
     "commerce:commerce_payment"
   ],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/commerce_btcpay",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "btcpayserver/btcpayserver-greenfield-php"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,

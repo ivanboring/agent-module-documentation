@@ -3,19 +3,15 @@
 CoinsPaid is configured like any Commerce payment gateway: add a gateway and enter
 your CoinsPaid public and secret keys.
 
-## Store your keys securely
+## About your keys
 
-The gateway needs a CoinsPaid **public key** and **secret key**. Keep the secret
-key out of version control — on a DDEV site, store it in an environment variable:
-
-```bash
-ddev dotenv set .ddev/.env --coinspaid-secret-key=<value>
-ddev restart
-```
-
-(`.ddev/.env` must stay out of version control.) Reference it through a **Key**
-entity where practical. The **secret key is what keys the callback signature
-verification**, so protecting it is what keeps forged callbacks out.
+The gateway needs a CoinsPaid **public key** and **secret key**, both entered
+directly in the payment-gateway configuration form (they are saved with the
+gateway's Commerce configuration). The **secret key is what keys the callback
+signature verification**, so protecting it is what keeps forged callbacks out:
+keep it confidential, and treat any exported configuration containing the gateway
+as sensitive (do not commit it to a public repository, and restrict who has the
+payment-gateway administration permission). Always serve the site over HTTPS.
 
 ## Add the gateway
 

@@ -17,14 +17,15 @@
 From the project root:
 
 ```bash
-composer require drupal/commerce_btcpay -W
+composer require drupal/commerce_btcpay
 ```
 
-The `-W` (`--with-all-dependencies`) flag lets Composer update any shared
-dependencies as needed.
+Composer pulls in the required `btcpayserver/btcpayserver-greenfield-php` library
+automatically. The module also needs the PHP `bcmath` and `openssl` extensions —
+its install check will block enabling if the Greenfield library is missing.
 
 > **Using DDEV?** Prefix Composer and Drush with `ddev` when you run from your
-> host machine — `ddev composer require drupal/commerce_btcpay -W`,
+> host machine — `ddev composer require drupal/commerce_btcpay`,
 > `ddev drush …`. Inside the container (`ddev ssh`) run them without the prefix.
 
 ## Enable the module

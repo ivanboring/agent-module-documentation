@@ -2,7 +2,9 @@
 
 ## Requirements
 
-- **Drupal 10 or 11** (`core_version_requirement: ^10 || ^11`).
+- **Drupal 8, 9, 10, or 11** (`.info.yml` declares
+  `core_version_requirement: ^8 || ^9 || ^10 || ^11`); in practice use a
+  Drupal Commerce-supported release (Drupal 10 or 11).
 - **Commerce Payment** (`commerce_payment`) enabled — it ships with Drupal
   Commerce.
 - A **CoinsPaid merchant account**, which provides the public and secret keys the

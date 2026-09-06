@@ -10,9 +10,9 @@ again.
 
 The emails are built from a template you control, with a rich‑text editor and
 token support (for example `[user:name]`, `[user:mail]`, and a secure
-`[cart:link]`). For anonymous shoppers, clicking the restore link prompts them for
-their contact details before restoring the cart, so you capture information for
-future engagement; for logged‑in users, the cart is restored automatically. Beyond
+`[cart:link]`). Clicking the restore link validates the link's per‑cart token and
+then restores the cart into the visitor's session — whether they are logged in or
+anonymous — merging its items with any cart they already have. Beyond
 the automated reminders, admins can generate a **secure referral link from any
 past order** — share it with a customer (or let a customer share it with a friend)
 and clicking it pre‑fills a cart with that order's items, which is handy for

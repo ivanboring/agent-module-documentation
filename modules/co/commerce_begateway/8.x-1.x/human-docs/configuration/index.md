@@ -13,33 +13,41 @@ separate settings page.
 
 ## Fields to fill in
 
-Enter the credentials from your BeGateway account:
+Enter the values from your BeGateway account:
 
-- **Shop ID** — your BeGateway shop identifier.
-- **Shop key / public key** — the shop key used to build the payment request.
-- **Secret key** — the secret used together with the SDK to authorize incoming
-  webhooks (`isAuthorized()`). This is the sensitive value; treat it as a secret
-  (see below).
+- **Shop Id** — your BeGateway shop identifier.
+- **Shop secret key** — the shop's secret key. It is used both to build the
+  payment request and to authorize the incoming webhook (`isAuthorized()`), so it
+  is the sensitive value; treat it as a secret (see below).
+- **Action** — **Payment** (charge immediately) or **Authorization** (reserve
+  funds for later capture).
+- **Payment page domain** — the checkout domain of your provider, e.g.
+  `checkout.begateway.com`. The module adds `https://` automatically.
+- **Payment description** — text shown in the provider interface; you can use
+  `commerce_order` token replacement patterns (order number, site name, etc.).
+- **Timeout** — the number of minutes the customer has to complete the payment.
+- **Enable bankcard / Enable ERIP / Enable HALVA bankcard** — turn on the payment
+  methods you want to offer on the checkout page.
 - **Mode (Test / Live)** — start in **Test** while you validate the redirect and
   notification flow, then switch to **Live** for real payments. Make sure your
   credentials match the mode.
 
-Set any remaining fields (gateway/domain URL, currency, language, depending on
-the release) to the values BeGateway provides.
+If you have not set up a BeGateway account yet, the module ships with beGateway's
+public **test** credentials (Shop Id `361`, checkout domain
+`checkout.begateway.com`) so you can try the flow with a test card.
 
 ## Storing credentials securely
 
-The shop key and secret are payment credentials and should be backed by
-environment variables, not committed to code or exported config. On DDEV:
+The shop secret key is a payment credential and should be backed by an
+environment variable, not committed to code or exported config. On DDEV:
 
 ```bash
 ddev dotenv set .ddev/.env --begateway-secret='<your-secret-key>'
 ddev restart
 ```
 
-Reference the value through a **Key** entity where the gateway supports one,
-rather than pasting the raw secret into the form. Keep `.ddev/.env` out of version
-control.
+Keep `.ddev/.env` out of version control, and prefer excluding the gateway's
+credentials from any exported configuration you commit.
 
 ## Save and test
 
@@ -54,5 +62,5 @@ control.
   `$webhook->isAuthorized()` (shop‑id/secret credential check) before acting, and
   the return path compares the transaction amount to the order amount — so a
   forged or amount‑mismatched callback cannot complete an order.
-- Keep the **secret key** (and shop key) out of version control, backed by
-  environment variables, and always run the site over **HTTPS**.
+- Keep the **shop secret key** out of version control, backed by an environment
+  variable, and always run the site over **HTTPS**.

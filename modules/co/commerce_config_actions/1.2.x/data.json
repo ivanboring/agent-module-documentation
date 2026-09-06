@@ -1,11 +1,14 @@
 {
   "name": "Commerce Config Actions",
   "data_name": "commerce_config_actions",
-  "description": "Experimental config actions to facilitate testing custom config actions in Drupal Commerce recipes.",
-  "version": "1.1.x",
+  "description": "Experimental collection of custom config actions for use in Drupal Commerce recipes: enable entity traits on a bundle, import a currency, grant existing permissions to a role, reorder an array config property, and set properties by default theme.",
+  "version": "1.2.x",
   "package": "Commerce (Contrib)",
   "composer_namespace": "drupal/commerce_config_actions",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^2.40 || ^3",
+    "drupal/core": "^11"
+  },
   "dependent_modules": [
     "commerce:commerce_price"
   ],
@@ -19,9 +22,9 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "E-commerce",

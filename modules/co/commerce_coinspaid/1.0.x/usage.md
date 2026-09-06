@@ -5,7 +5,7 @@ CoinsPaid Commerce adds a CoinsPaid crypto off-site gateway with signature-verif
 
 CoinsPaid Commerce (module `commerce_coinspaid`, project `coinspaid`) is a Drupal Commerce off-site payment gateway for CoinsPaid — letting customers pay in cryptocurrency by redirecting to CoinsPaid and completing the order on callback.
 
-Security: the callback (`onNotify`) verifies an **HMAC-SHA512 signature** (`X-Processing-Signature`) of the callback body against the configured secret key and throws on mismatch (no payment on an invalid signature), and it records the payment using the **order's own total** rather than a callback-supplied amount — the correct, defensive pattern. Store the public/secret keys securely (env-backed). Depends on `commerce_payment`; supports Drupal 10 and 11.
+Security: the callback (`onNotify`) verifies an **HMAC-SHA512 signature** (`X-Processing-Signature`) of the callback body against the configured secret key and throws on mismatch (no payment on an invalid signature), and it records the payment using the **order's own total** rather than a callback-supplied amount — the correct, defensive pattern. The public and secret keys are entered in the payment gateway configuration form; keep the secret key confidential (it is what keys signature verification). Depends on `commerce_payment` (and `commerce`); the module declares `core_version_requirement: ^8 || ^9 || ^10 || ^11`.
 
 ---
 
@@ -17,9 +17,9 @@ Security: the callback (`onNotify`) verifies an **HMAC-SHA512 signature** (`X-Pr
 - Throw on signature mismatch.
 - Record payment using the order total.
 - Not trust a callback-supplied amount.
-- Store keys securely (env-backed).
-- Depend on `commerce_payment`.
-- Support Drupal 10 and 11.
+- Enter public/secret keys in the gateway config; keep the secret confidential.
+- Depend on `commerce_payment` and `commerce`.
+- Support Drupal 8, 9, 10, and 11.
 - Handle crypto checkout.
 - Process payments
 - Verify callbacks

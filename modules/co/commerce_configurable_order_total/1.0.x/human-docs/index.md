@@ -15,7 +15,7 @@ can override in your theme.
 
 It is purely a display enhancement. It has no payment role, adds no access
 control, and does nothing until you add its area handler to a View. It depends
-only on **Drupal Commerce** (`commerce`) and runs on Drupal 10 and 11.
+only on **Drupal Commerce** (`commerce`) and requires Drupal 11.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
