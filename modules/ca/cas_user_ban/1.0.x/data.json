@@ -1,16 +1,18 @@
 {
   "name": "CAS User Ban",
   "data_name": "cas_user_ban",
-  "description": "prevents account creation for banned CAS usernames.",
+  "description": "Prevents creation of Drupal accounts for banned CAS usernames.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/cas_user_ban",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/cas": "^3.0@beta"
+  },
   "dependent_modules": [
-    "cas:cas"
+    "cas"
   ],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/cas_user_ban",
@@ -18,25 +20,29 @@
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [],
+  "submodules": [
+    "cas_user_ban_vbo"
+  ],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Access control"
   ],
   "subcategories": [
-    "External authentication"
+    "External authentication",
+    "User registration"
   ],
   "keywords": [
     "cas",
     "user ban",
     "sso",
     "authentication",
-    "deny-list"
+    "deny-list",
+    "account creation"
   ],
-  "project_description": "The CAS User Ban module prevents the creation of users based on their CAS username.\n\n When you delete a user, the module adds an option to ban the account, blocking future account regeneration.\n\n Why this is useful? \n\n CAS module can be configured to automatically create Drupal accounts on first-time CAS logins.\n\n If a user has produced unwanted content (e.g., spam) and you delete both the user and their content, the account can be recreated on the next login.\n\n This module lets you delete + ban in one step, so the user cannot log in again because the account won’t be recreated.\n\n Note: The module does not prevent user login for existing users with a related banned CAS username.\n\n \n Requirements \n \n CAS",
+  "project_description": "The CAS User Ban module prevents the creation of Drupal user accounts based on their CAS (Central Authentication Service) username. When you delete a user account managed by CAS, the module offers an option to add the CAS username to a ban list, which blocks the account from being auto-provisioned again on the next CAS login. This is useful because CAS can be configured to automatically create Drupal accounts on first login: if a user produces unwanted content (spam) and you delete the account, it would normally be recreated on their next login. This module lets you delete and ban in one step. Bans are enforced by subscribing to the CAS pre-register event and cancelling automatic registration for banned usernames. Administration is done at /admin/people/cas/banned-users-list (requires the 'administer users' permission). An optional submodule, cas_user_ban_vbo, integrates the ban option into a Views Bulk Operations user-cancel action. Note: the module does not prevent login for existing accounts whose CAS username is banned; it only blocks re-creation of accounts.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

@@ -1,14 +1,14 @@
 {
-  "name": "CAPTCHA Questions",
+  "name": "Captcha questions",
   "data_name": "captcha_questions",
-  "description": "A question-and-answer CAPTCHA that requires users to answer a configurable question.",
+  "description": "Require users to answer a configurable question",
   "version": "2.0.x",
   "package": "Spam control",
   "composer_namespace": "drupal/captcha_questions",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^8||^9||^10||^11",
+  "configure": "captcha_questions_settings",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/captcha_questions",
@@ -21,7 +21,7 @@
   ],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Security"
@@ -34,9 +34,10 @@
     "questions",
     "spam",
     "bot",
-    "challenge"
+    "challenge",
+    "form protection"
   ],
-  "project_description": "Captcha questions is a light-weight module that employs a very simple captcha-mechanism to stop unwanted form submissions be they comment spam or account registrations.\n\n It has no dependancies. It is not affiliated with the CAPTCHA module.\n\n Permission settings, help and configure is available from module list after installation is completed.\n\n You create a question/answer-pair and attach this to selected forms. If the user fails to answer the question correctly, the form will not be submitted. \n\n Logging to database is handled in a submodule and is entirely optional.\n\n It is similar in nature to Trick Question and Captcha Riddler , but will be actively maintained.\n\n Image captchas can be hard also for humans. Captcha questions was made after realising most spam can be blocked by a simple question that is easy for humans but very difficult for automated scripts.\n\n It is recommended to make the questions as simple as possible, perhaps even include the answer in the question like this: \n\n 'What is Mickeys last name?. It's Mouse'. \n\n You could also do simply 'What is 1+1?'. You are encouraged to experiment and find the simplest question you can imagine while still blocking automated form submissions.\n\n Recent changes \n Captcha questions 7.x-1.0, 2013-06-10\n\n-----------------------------------------\n\nNo changes since the dev version from today.\n\n Captcha questions 7.x-1.x-dev, 2013-06-10\n\n-----------------------------------------\n\n#1987020 Answers are now case insensitive\n\n#1996342 Show Captcha Questions for anonymous users only\n\n Captcha questions 7.x-1.x-dev, 2013-02-17\n\n-----------------------------------------\n\n- Added automatic discovery of webforms\n\n- Added support for custom form_id\n\n- Added support for multi-page forms\n\n Captcha questions 7.x-1.x-dev, 2013-02-09\n\n-----------------------------------------\n\n#1889688 Allow multiple answers\n\n Wishlist \n - Tests!\n\n- Translations\n\n Suggestions are welcome!\n\n Back to top",
+  "project_description": "Captcha questions is a light-weight module that employs a very simple captcha mechanism to stop unwanted form submissions, be they comment spam or account registrations. It has no dependencies and is not affiliated with the CAPTCHA module. The administrator defines one question and one or more accepted answers, then chooses which forms (by form_id) should be protected. When an anonymous user submits a protected form, a required text field asks the question; if the lowercased answer is not among the accepted answers the form fails validation with an 'Invalid answer' error. Answers are case-insensitive. The recommended pattern is a question so easy that a human can answer it instantly (often with the answer embedded in the question, e.g. 'What is Mickeys last name? Its Mouse.'), while automated scripts cannot. The challenge is shown to anonymous users only. Optional logging of failed submissions is available to the Drupal log (watchdog) and, via the captcha_questions_dblog submodule, to a dedicated database table with an admin report.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

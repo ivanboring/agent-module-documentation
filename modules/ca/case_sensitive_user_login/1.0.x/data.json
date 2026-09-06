@@ -1,16 +1,16 @@
 {
   "name": "Case Sensitive User Login",
   "data_name": "case_sensitive_user_login",
-  "description": "Adds a login validator requiring the entered username to match the stored username's case exactly. Purely restrictive; effectiveness depends on the DB collation being case-sensitive.",
+  "description": "Adds an extra validate handler to the core user login form that requires the entered username to match a stored username with an exact-case '=' DB lookup. Purely additive/restrictive; whether it actually enforces case depends on the users_field_data column collation.",
   "version": "1.0.x",
-  "package": null,
+  "package": "User Login",
   "composer_namespace": "drupal/case_sensitive_user_login",
   "composer_requirements": {},
   "dependent_modules": [
     "drupal:user"
   ],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/case_sensitive_user_login",
@@ -21,7 +21,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Security"
@@ -36,7 +36,7 @@
     "user",
     "authentication"
   ],
-  "project_description": "This module change drupal login username to case-sensitive.\n\n Drupal 10 login is case in-sensitive. Means you can login to drupal using user name 'admin' ,'Admin', 'ADMIN' etc.\n\n This module make username is case sensitive. So if your username is 'admin' then you can not login with 'Admin'\n\n This module only affects the login form and does not change other core functionality of Drupal, including password reset, API logins, etc\n\n Just install this module. No other configuration required.",
+  "project_description": "This module changes the Drupal login username comparison to be case-sensitive. Core Drupal login is case-insensitive: with a username 'admin' you can normally log in as 'admin', 'Admin', 'ADMIN', etc. This module adds a validate handler to the user login form that looks up the entered name with an exact-case match and rejects the attempt when no case-exact user exists, so 'Admin' no longer works for account 'admin'. It affects only the login form; it does not change registration, password reset, programmatic/API logins, or any other core functionality, and it has no configuration.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

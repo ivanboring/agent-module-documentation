@@ -1,12 +1,23 @@
 {
   "name": "Castorcito",
   "data_name": "castorcito",
-  "description": "Lets you assemble reusable components for building content.",
+  "description": "Build and reuse configurable UI components (banners, cards, tabs, accordions, galleries) stored in a JSON field and rendered through Single Directory Components.",
   "version": "1.2.x",
   "package": "Castorcito",
   "composer_namespace": "drupal/castorcito",
-  "composer_requirements": {},
-  "dependent_modules": [],
+  "composer_requirements": {
+    "drupal/json_field": "^1.4",
+    "drupal/twig_tweak": "^3.3",
+    "enshrined/svg-sanitize": ">=0.22 <1.0"
+  },
+  "dependent_modules": [
+    "json_field",
+    "rest",
+    "twig_tweak",
+    "file",
+    "image",
+    "help"
+  ],
   "configure": "entity.castorcito_component.collection",
   "core_version_requirement": "^10.2||^11",
   "active_installs": null,
@@ -14,13 +25,25 @@
   "project_url": "https://www.drupal.org/project/castorcito",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "enshrined/svg-sanitize",
+    "Vue 3 (loaded from unpkg CDN)",
+    "Swiper (bundled in castorcito_advancedpack)"
+  ],
   "suggests": {},
-  "submodules": [],
+  "submodules": [
+    "castorcito_advancedpack",
+    "castorcito_basepack",
+    "castorcito_date",
+    "castorcito_sync",
+    "castorcito_webform"
+  ],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "CastorcitoComponentField"
+  ],
   "categories": [
     "Content editing experience"
   ],
@@ -32,9 +55,12 @@
     "components",
     "page building",
     "content assembly",
-    "site building"
+    "site building",
+    "single directory components",
+    "sdc",
+    "json field"
   ],
-  "project_description": "The Castorcito module allows you to build components through a user interface. It’s highly customizable and makes it easy to achieve the desired visual presentation, using SDC. Castorcito can be used with any type of content entity, such as nodes, users, or taxonomy terms, since it uses a JSON field type.\n\n The best way to understand how to use the Castorcito module is by visiting the project website . Here you will find in detail how to use the module, detailed descriptions and examples of the components, and more.\n\n Back to top \n\n Sub-modules \n Castorcito has 4 sub-modules:\n\n \n Castorcito base pack. This sub-module lets you install several ready to use basic components. \n Castorcito advanced pack. This sub-module lets you install components (one for now more will be added in the future) with advanced functionalities. \n Castorcito webform. This sub-module adds a new type of field (c-field short for castorcito field) that lets you embed a webform inside a component. \n Castorcito sync. This sub-module adds the functionality for exporting and importing components. \n \n Back to top \n\n Features \n \n Accelerates site building by offering ready-to-use components. \n Minimizes manual coding by using SDC (for styling, code is not necessary for building the components). \n Reduces duplication of effort by reusing tested, prebuilt components. \n Easily modify components to match branding or functionality needs. \n \n Back to top \n\n Core Components \n We also have two sub-modules with ready to use components.\n\n Base pack components \n \n Accordion \n Banner \n Bar \n Card \n Carousel \n Content in columns \n Data number card \n Icons in columns \n Image gallery \n Image \n Placed block \n Quote \n Slideshow \n Tabs \n Text \n Video \n \n Advanced pack components \n Timeline\n\n Back to top \n\n Themes \n There are 3 contributed themes that support the Castorcito components from the base and advanced pack, this are:\n\n \n Mockup \n Lodge \n Alice \n Back to top",
+  "project_description": "Castorcito lets site builders assemble reusable, configurable UI components through an administrative interface, without writing code. Each component is a `castorcito_component` config entity built from typed \"cfields\" (plain/formatted text, image, link, boolean, number, list, iframe/video, entity reference, block reference, and layout containers). A component's authored values are stored in a Drupal JSON field on any content entity via the Castorcito Component widget, and rendered on display via the Castorcito Component formatter, which delegates markup to a Single Directory Component (SDC) that can be overridden from a theme. Castorcito ships five sub-modules: castorcito_basepack (ready-made components such as banner, card, tabs, accordion, carousel, gallery, quote, video), castorcito_advancedpack (advanced components such as a Swiper slider and timeline), castorcito_date (a date cfield), castorcito_webform (a cfield that embeds a Webform), and castorcito_sync (export/import of component configuration as a tarball). The module also exposes two REST resources used by its Vue-based widget: an AJAX image upload endpoint and a block-list endpoint.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

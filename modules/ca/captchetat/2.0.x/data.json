@@ -1,16 +1,18 @@
 {
   "name": "CaptchEtat",
   "data_name": "captchetat",
-  "description": "Provides a CAPTCHA challenge by connecting to the French government CaptchEtat API.",
+  "description": "Provides a CAPTCHA challenge type that connects to the French government CaptchEtat API (PISTE / api.gouv.fr).",
   "version": "2.0.x",
   "package": "Spam control",
   "composer_namespace": "drupal/captchetat",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/captcha": "^2"
+  },
   "dependent_modules": [
-    "captcha:captcha"
+    "captcha"
   ],
   "configure": "captchetat.settings",
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/captchetat",
@@ -27,6 +29,7 @@
     "Security"
   ],
   "subcategories": [
+    "CAPTCHA / bot protection",
     "Spam prevention / CAPTCHA"
   ],
   "keywords": [
@@ -34,9 +37,12 @@
     "captchetat",
     "spam",
     "bot protection",
-    "france"
+    "france",
+    "government",
+    "dsfr",
+    "piste"
   ],
-  "project_description": "This module seamlessly integrates the CaptchEtat API into Drupal, empowering government websites adhering to DSFR standards with enhanced security measures. CaptchEtat, a robust solution available through Piste Gouv , it provides a distorted CAPTCHA string for the user to copy and serves as a pivotal tool in safeguarding online interactions against automated threats. \n\n Key Features: \n \n Effortless Integration: With this module, Drupal administrators can effortlessly integrate CaptchEtat into their websites, bolstering security without extensive technical expertise. \n Webform Compatibility with [1.0.x]: Designed to seamlessly integrate with the Webform module, this extension enables the inclusion of CaptchEtat challenges within web forms, ensuring reliable protection against spam and unauthorized access. \n \n Captcha Compatibility with [2.0.x]: Designed to seamlessly integrate CaptchEtat captcha to forms using the Captcha\n\n points configuration page of the Captcha module.\n \n \n Requirements: \n To leverage the functionalities of this module, ensure you have both the (Webform module with 1.0.x or Captcha module with 2.0.x) and Drupal core installed. Additionally, obtain a pair of authentication keys from Piste Gouv — a secret key and a client key — to authenticate your integration securely.\n\n Installation and Configuration: \n \n Installation: Simply download and enable the module in your Drupal environment. \n Configuration: Navigate to the module settings and input the obtained authentication keys. This enables the seamless introduction of CaptchEtat elements within forms and webforms, enhancing your website's security posture effectively. \n \n Legal Considerations: \n Before integrating this module, ensure compliance with legal requirements and obtain necessary authorization from relevant authorities. Adherence to regulatory standards is paramount to safeguarding user privacy and data integrity.\n\n Additional Links: \n \n CaptchEtat API Documentation : Explore detailed documentation to understand the capabilities and integration methods of the CaptchEtat API. \n Piste Gouv : Visit the official website to create an application and obtain authentication keys required for integrating CaptchEtat into your Drupal website. \n \n Documentation and Support: \n For detailed installation instructions, configuration guidelines, and troubleshooting assistance, refer to the comprehensive documentation provided with the module. Additionally, for any inquiries or support requests, feel free to reach out to the module maintainers or consult the Drupal community forums.\n\n Enhance your website's security and user experience today with the CaptchEtat integration module for Drupal.\n\n Back to top",
+  "project_description": "This module integrates the CaptchEtat API into Drupal, providing a distorted-text CAPTCHA (with an audio alternative) for French public-sector sites aligning with DSFR standards. CaptchEtat is delivered through the French government PISTE platform (api.gouv.fr); the module registers a 'CaptchEtat' challenge type with the contrib Captcha module, so administrators add it to forms from the Captcha points configuration page. The image and audio challenges are served through a Drupal proxy route that authenticates to the PISTE API with OAuth client-credentials, and the user's answer is validated back against the API. Requirements: the Captcha module (^2), Drupal core, and a Client ID / Client Secret obtained from PISTE (a sandbox environment is available and is the default). The 2.0.x branch integrates with the Captcha module; the older 1.0.x branch integrated with Webform. Before deploying, ensure you have registered an application on PISTE and obtained authentication credentials.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

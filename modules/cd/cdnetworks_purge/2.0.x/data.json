@@ -5,12 +5,15 @@
   "version": "2.0.x",
   "package": "Performance and scalability",
   "composer_namespace": "drupal/cdnetworks_purge",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/key": "^1.0",
+    "drupal/purge": "^3.0"
+  },
   "dependent_modules": [
     "key:key",
     "purge:purge"
   ],
-  "configure": null,
+  "configure": "cdnetworks_purge.settings",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,

@@ -1,38 +1,28 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-CaptchaFox protects your website from spam and abuse while letting real people through.
+CaptchaFox adds the privacy-focused, hosted CaptchaFox challenge as a CAPTCHA type for Drupal's CAPTCHA module, verifying submissions server-side against the CaptchaFox API.
 
 ---
 
-CaptchaFox **provides a privacy-focused CAPTCHA** for the CAPTCHA module — presenting a CaptchaFox challenge to
-deter spam/bots. It depends on the CAPTCHA module, provides its own permissions, in the Spam control package.
-
-Use it as a GDPR-friendly CAPTCHA. It is a spam-control feature, implemented correctly on the crucial point: the
-challenge is **verified server-side** — Drupal sends the user's CaptchaFox response together with the **secret
-key** to `https://api.captchafox.com/siteverify` (over HTTPS) and only accepts the form when CaptchaFox confirms
-success (the client can't self-assert passing). Security essentials: store the CaptchaFox **secret key as a
-secret** (env/Key, never commit), keep the site key/secret key distinct, and ensure the verify step **fails closed**
-if the CaptchaFox service is unreachable. It has no access-control role beyond its permission. Configure the
-CaptchaFox keys.
+CaptchaFox is a thin integration between Drupal's CAPTCHA module and the hosted CaptchaFox anti-bot service (captchafox.com). Once enabled it registers a `CaptchaFox` challenge type via `hook_captcha()`; you assign it to any form on the CAPTCHA administration page (admin/config/people/captcha). The rendered form gets a `<div class="captchafox" data-sitekey="…">` widget and loads the CaptchaFox script from cdn.captchafox.com, which draws the challenge in the visitor's browser. On submit, the returned response token is validated server-side: Drupal POSTs the token plus the configured secret key to https://api.captchafox.com/siteverify over HTTPS and only allows the form to proceed when the API returns `success: true`. Configuration is minimal — a site key and a secret key entered at admin/config/people/captcha/captchafox — and the only permission provided is "administer captchafox". If either key is unset the module falls back to the CAPTCHA module's built-in Math challenge. It requires the CAPTCHA module (`captcha:captcha`, `^1.15 || ^2.0`) and core `^10 || ^11`.
 
 ---
 
-- Provide a privacy-focused CAPTCHA.
-- Deter spam/bots.
-- Integrate with the CAPTCHA module.
-- Provide its own permissions.
-- Serve spam control.
-- Present a CaptchaFox challenge.
-- VERIFY the challenge server-side (POST response + secret to /siteverify over HTTPS).
-- Accept the form only on CaptchaFox success (client can't self-assert).
-- Store the CaptchaFox secret key as a secret (env/Key, never commit).
-- Ensure the verify step fails closed if the service is unreachable.
-- Have no access-control role beyond permission.
-- Configure the CaptchaFox keys.
-- Handle CAPTCHA.
-- Challenge users.
-- Configure the keys.
-- Verify challenges.
-- Handle the challenge.
-- Block bots.
-- Fail closed.
-- Provide a CaptchaFox CAPTCHA.
+- Add a privacy-friendly, GDPR-compliant CAPTCHA to Drupal forms without reCAPTCHA/Google.
+- Protect the user login form from credential-stuffing and brute-force bots.
+- Protect the user registration form from automated spam-account creation.
+- Protect the password-reset (user password) form from abuse.
+- Protect the contact form (site-wide and personal) from spam submissions.
+- Protect comment forms from spam comments.
+- Protect Webform submissions with a hosted CAPTCHA challenge (via CAPTCHA points).
+- Gate anonymous node/entity creation forms behind a bot challenge.
+- Gate newsletter/subscription signup forms against bot signups.
+- Apply a CAPTCHA to search forms to deter scraping bots.
+- Replace an existing reCAPTCHA/hCaptcha/Turnstile integration with a privacy-first alternative.
+- Centrally choose which forms get the challenge from admin/config/people/captcha.
+- Serve the challenge in the visitor's language automatically (the widget's `hl`/`data-lang` follows the current interface language).
+- Verify challenges server-side so a forged or replayed client token cannot bypass validation.
+- Fall back to the Math CAPTCHA automatically when the site/secret keys are not yet configured.
+- Restrict who can configure the integration using the "administer captchafox" permission.
+- Show the challenge on cached pages (the challenge type is marked cacheable).
+- Log verification errors returned by the CaptchaFox API to the Drupal logger for troubleshooting.
+- Comply with data-protection requirements by using a European, privacy-focused CAPTCHA vendor.
+- Reduce spam on any custom or contrib form that integrates with the CAPTCHA module.
