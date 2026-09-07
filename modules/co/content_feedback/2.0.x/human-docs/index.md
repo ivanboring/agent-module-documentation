@@ -16,12 +16,13 @@ The module works once enabled, but you need to visit its settings form to pick t
 content types it applies to and to hand out the relevant permissions, so treat it
 as a **needs‑config** module. It has no dependencies beyond Drupal core.
 
-A word on safety, because feedback is **user‑submitted input**: display it to
-admins with the usual care against stored cross‑site scripting, consider spam if
-you expose the form to anonymous visitors (pairing it with flood control or a
-CAPTCHA is wise), and remember submissions may contain personal data. The module's
-permission controls who can *view* collected feedback — it grants no other access
-to your content.
+Each submission is stored with the page URL, the submitter's IP address, and a
+timestamp, so the collected list can contain personal data. Access is governed by
+the module's own permissions: one permission controls who can see and submit the
+form, and a separate permission controls who can view, edit, and resolve the
+collected feedback — grant the latter only to the people who should read
+submissions. Submitted text is escaped when it is stored and again when it is shown
+in the admin list.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

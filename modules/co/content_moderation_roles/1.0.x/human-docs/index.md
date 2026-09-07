@@ -46,4 +46,4 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 
 After enabling, the settings page sits at **Configuration → Workflow → Content
 Moderation Roles** (`/admin/config/workflow/content-moderation-roles`). Reaching
-it requires the **Administer content moderation roles** permission.
+it requires the core **Administer workflows** permission (`administer workflows`).

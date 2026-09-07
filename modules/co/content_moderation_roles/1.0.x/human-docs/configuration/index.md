@@ -6,7 +6,7 @@ deploy like any other Drupal config.
 
 ## Open the settings form
 
-1. Log in as a user with the **Administer content moderation roles** permission.
+1. Log in as a user with the core **Administer workflows** permission.
 2. Go to **Configuration → Workflow → Content Moderation Roles**, or navigate
    directly to `/admin/config/workflow/content-moderation-roles`.
 

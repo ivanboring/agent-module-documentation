@@ -6,8 +6,8 @@ type's display.
 
 ## Open the settings form
 
-1. Log in as a user with the **Administer site configuration** permission (an
-   administrator by default).
+1. Log in as a user with the **Administer Content Freshness Indicator**
+   permission (`administer content freshness`; an administrator by default).
 2. Go to **Administration → Configuration → Content → Content Freshness
    Indicator**.
 

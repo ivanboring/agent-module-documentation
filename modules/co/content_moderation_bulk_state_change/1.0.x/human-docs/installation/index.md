@@ -36,8 +36,9 @@ After installation, a bulk action is enabled on content views automatically.
 
 ## Verify it worked
 
-Open your content admin listing as an editor. In the bulk-operations dropdown you
-should now see an action to change the moderation state. Select a couple of items,
-choose the action, and apply — the selected content should move to the target state
-(as long as the transition is one you're permitted to make). To tune the action and
-its permissions, see [Configuration](../configuration/index.md).
+Open your content admin listing as an editor with the **"Update entity moderation
+states in bulk"** permission. In the bulk-operations dropdown you should now see the
+**"Change workflow stage"** action. Select a couple of nodes, choose the action, then
+on the confirm form pick a target state and confirm — the selected content moves to
+that state. To tune the action and its permissions, see
+[Configuration](../configuration/index.md).

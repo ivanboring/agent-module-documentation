@@ -36,8 +36,8 @@ isn't already on.
 
 ## Verify it worked
 
-Make sure you have a menu whose links reference the content you want to browse (build
-or review one at **Structure → Menus**, `/admin/structure/menu`). Then open the
-content tree and confirm it renders your content in the same hierarchy as that menu.
-Because the tree respects access, log in as a less‑privileged user to confirm it only
-shows content that user can see.
+Edit a menu at **Structure → Menus** (`/admin/structure/menu`), tick **"Include in
+Content tree"**, and save. (On install, the site's **main** menu is opted in
+automatically.) Then, as a user with the **"administer menu"** permission, open
+**Admin → Content** and confirm a **"Content tree"** tab appears and renders the
+menu's linked nodes in the same hierarchy as that menu.

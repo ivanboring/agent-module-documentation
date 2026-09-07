@@ -1,35 +1,37 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Content Hub Tree provides a custom content tree based on menu structure, for browsing/organizing content hierarchically.
+Content Hub Tree adds an admin content-overview screen that lists nodes in a menu-tree structure instead of the flat core Content view.
 
 ---
 
-Content Hub Tree provides a content tree built from a menu — presenting content in a hierarchical tree
-based on menu structure, so editors/users can browse or navigate content as an organized tree (a content
-hub). It depends on core Menu Link Content. It uses the menu hierarchy to structure a content overview.
+Content Hub Tree provides an alternative content administration screen. Where the core Content
+list (Admin → Content) is a flat table, this module renders a "Content tree" that follows the
+parent-child shape of a chosen menu: each menu link that points at a node becomes a row showing
+that node's title, content type, published status, author and updated date, nested under its
+parent link. It depends on core Menu Link Content, which supplies the menu links it reads.
 
-Use it to offer a tree-based content hub/navigation driven by menus. It is a site-structure/navigation
-feature reflecting menu-based hierarchy; the tree reflects content the viewer can access (respecting access)
-and it has no access-control role of its own. Configure the menu the tree is based on.
+You opt a menu in with an "Include in Content tree" checkbox on the menu's edit form. Each
+opted-in menu then gets a "Content tree" tab under Admin → Content. The screen is reached at
+`/admin/content/content-tree/{menu}` and requires the "administer menu" permission. From it you
+can jump between opted-in menus, edit or delete the referenced nodes via each row's operations,
+and run node bulk operations (the same node actions available on the core content view) against
+selected rows. Menu links that do not resolve to a node still appear in the tree but are shown
+as plain menu links.
 
 ---
 
-- Show a content tree from a menu.
-- Browse content hierarchically.
-- Build a content hub.
+- Show content as a tree that mirrors a menu's hierarchy.
+- Offer an alternative to the flat Admin → Content list.
+- Opt a menu in with an "Include in Content tree" checkbox.
+- Add a "Content tree" tab under Admin → Content per opted-in menu.
+- Require the "administer menu" permission to open the screen.
+- Map menu links that point at nodes to node rows.
+- Show node title, type, status, author and updated columns.
+- Reuse the "content" view's field settings when that view exists.
+- Provide node bulk operations on selected rows.
+- Offer per-row edit/delete operations for referenced nodes.
+- Collapse and expand branches of the tree.
+- Switch between opted-in menus with a select dropdown.
+- Display non-node menu links as plain menu links.
 - Depend on core Menu Link Content.
-- Use menu structure for the tree.
-- Navigate content as a tree.
-- Reflect menu-based hierarchy.
-- Respect the viewer's access.
-- Have no access-control role.
-- Configure the source menu.
-- Organize content by menu.
-- Present a hierarchical overview.
-- Provide tree navigation.
-- Structure a content hub.
-- Browse by hierarchy.
-- Show content organized by menu.
-- Navigate a content tree.
-- Build hierarchical navigation.
-- Configure the tree menu.
-- Present content as a tree.
+- Add no dedicated settings form.
+- Base the tree structure on the chosen menu.

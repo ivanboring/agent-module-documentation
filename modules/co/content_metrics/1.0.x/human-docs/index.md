@@ -30,7 +30,11 @@ opening its charts and adjusting the exposed filters shown on the page.
 
 ## How to use it
 
-Once enabled, visit the content-metrics charts to see content-creation activity
-over time. Use the exposed filters on each chart to focus on a particular content
-type or time span. The views that power these charts can be adjusted in the
-**Views UI** like any other view if you want to change what's displayed.
+Once enabled, open **Content metrics** at `/admin/content-metrics/dashboard`
+(you need the *Access administration pages* permission) to see content-creation
+activity over time. The page shows a set of tabbed charts — node counts by type,
+content and comments created per period, cumulative composition, and keyword /
+reference lookups. Use the exposed filters at the top of the page (content type,
+number of periods, months vs. years) to focus on a particular content type or time
+span, then press **Filter**. The charts are drawn by custom code in the module (not
+by a View), so there is nothing to configure in the Views UI.

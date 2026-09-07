@@ -1,35 +1,28 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Content Moderation Tabs adds moderation tabs to content for the Content Moderation workflow.
+Content Moderation Tabs adds per-state tabs to the Content admin page for the Content Moderation workflow.
 
 ---
 
-Content Moderation Tabs **adds moderation tabs to content** — surfacing content-moderation actions/state
-(e.g. draft/published, latest revision) as convenient tabs on the entity, improving the editorial moderation UX.
-It depends on core Content Moderation.
+Content Moderation Tabs lets you add **local-task tabs to the Content administration page**
+(`/admin/content`), one per Content Moderation workflow **state** — for example an "In progress" tab for
+drafts and a "Needs signoff" tab for content in review — sitting alongside the core Overview and
+Moderated content tabs. Each tab opens a **View** (page display) you choose, giving editors a dedicated,
+filtered listing per moderation state instead of one combined list.
 
-Use it to make moderation states easier to reach. It is a content-editing/workflow-UX feature; moderation access
-follows core Content Moderation permissions and it has no access-control role of its own. Enable it for moderation
-tabs.
+You configure it directly on each workflow state's edit form (Configuration → Workflow → Workflows):
+tick *Enable tab*, set the tab title, weight, and the View the tab should open. It is a purely editorial
+UX feature — moderation access still follows core Content Moderation's own permissions and the module
+adds no access control of its own. It depends on core Content Moderation.
 
 ---
 
-- Add moderation tabs to content.
-- Surface moderation state/actions.
-- Improve editorial UX.
+- Add a per-state tab to `/admin/content`.
+- Point each tab at a chosen View page display.
+- Configure tabs on the workflow-state edit form.
+- Set tab title, weight, and enabled per state.
+- Group content by moderation state for editors.
+- Complement core's single "Moderated content" list.
 - Depend on core Content Moderation.
-- Serve workflow UX.
-- Ease reaching moderation states.
 - Follow core Content Moderation permissions.
-- Have no access-control role of its own.
-- Enable it for tabs.
-- Handle moderation tabs.
-- Show tabs.
-- Configure nothing (UX).
-- Add tabs.
-- Handle the workflow.
-- Surface moderation.
-- Configure moderation.
-- Handle the UI.
-- Ease moderation.
-- Enable it.
-- Provide moderation tabs.
+- Add no access control of its own.
+- Serve editorial workflow UX.

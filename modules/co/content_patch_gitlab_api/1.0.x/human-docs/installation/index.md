@@ -36,8 +36,9 @@ drush en content_patch_gitlab_api -y
 
 After enabling, open the module's settings page (see
 [Configuration](../configuration/index.md)) and confirm you can enter a GitLab
-repository, token, and export path. Then, on **Content** (`/admin/content`),
-check that a content-export option appears in the **Action** / Bulk Operations
+URL, project ID, and export path (the token goes in `settings.php`, not on this
+form). Then, on **Content** (`/admin/content`),
+check that an **Export to GitLab** option appears in a content row's operations
 dropdown. Once both are present, continue to
 [Configuration](../configuration/index.md) to connect GitLab and store your token
 securely.

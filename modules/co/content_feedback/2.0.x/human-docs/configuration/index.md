@@ -28,11 +28,8 @@ Permissions** (`/admin/people/permissions`):
   that should review submissions in the admin list.
 
 Decide these deliberately — the view permission is what keeps the collected
-feedback (which may include personal data) restricted to the right people.
-
-> **If you allow anonymous feedback:** because the form would then accept input
-> from anyone, protect it against spam and abuse — pairing it with core flood
-> control or a CAPTCHA module is strongly recommended.
+feedback (which stores each submitter's name, email, and IP address) restricted to
+the right people.
 
 ## Review and resolve feedback
 

@@ -1,7 +1,7 @@
 {
   "name": "Content Hub Tree",
   "data_name": "content_hub_tree",
-  "description": "Provides a custom content tree based on a menu.",
+  "description": "Admin content-overview screen that lists nodes in a menu-tree structure as an alternative to the flat core Content view. Menus are opted in via an 'Include in Content tree' checkbox, exposing a 'Content tree' tab under Admin > Content (permission: administer menu); rows map menu links to their nodes and support node bulk operations.",
   "version": "1.0.x",
   "package": "Content",
   "composer_namespace": "drupal/content_hub_tree",
@@ -24,17 +24,20 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Site structure"
+    "Administration tools",
+    "Content editing experience"
   ],
   "subcategories": [
-    "HTML sitemap / navigation"
+    "Local tasks / tabs",
+    "Navigation menus"
   ],
   "keywords": [
     "content tree",
+    "content overview",
     "menu",
-    "navigation",
-    "hierarchy",
-    "content hub"
+    "admin content",
+    "bulk operations",
+    "hierarchy"
   ],
   "project_description": "Visualize node/content using the underlying content menu structure.",
   "maintenance_status": "Actively maintained",

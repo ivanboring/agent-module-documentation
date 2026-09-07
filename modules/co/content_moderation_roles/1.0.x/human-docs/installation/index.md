@@ -41,7 +41,7 @@ drush en content_moderation_roles -y
 ## Verify it worked
 
 You need a Content Moderation workflow applied to at least one content type.
-Then, as a user with the **Administer content moderation roles** permission, go
+Then, as a user with the core **Administer workflows** permission, go
 to **Configuration → Workflow → Content Moderation Roles**
 (`/admin/config/workflow/content-moderation-roles`). If the settings page loads
 with your roles and states listed, the module is working. Continue to

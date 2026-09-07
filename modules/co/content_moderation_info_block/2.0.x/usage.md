@@ -8,9 +8,12 @@ current entity — such as its current moderation state and available transition
 at-a-glance view of where content sits in the editorial workflow. It depends on core Content Moderation.
 
 Use it to surface moderation state to editors on content pages (a "this is a draft" indicator, current
-state, etc.). It is a content-display/editorial feature reflecting moderation data; it shows information
-and respects the viewer's access (moderation permissions govern what's shown), with no access-control role
-of its own. Place the block where the moderation info should appear.
+state, etc.). It is a content-display/editorial feature reflecting moderation data. The block is derived
+per moderated entity type and reads the entity from its block context; each piece of information is toggled
+by a checkbox on the block's configuration. When the optional state-change form is enabled for a moderated
+entity, the moderation options offered are the transitions core Content Moderation permits for the current
+user. Block visibility is controlled by the standard block visibility settings. Place the block where the
+moderation info should appear.
 
 ---
 
@@ -21,8 +24,8 @@ of its own. Place the block where the moderation info should appear.
 - Depend on core Content Moderation.
 - Indicate draft/published state.
 - Reflect moderation data.
-- Respect the viewer's access.
-- Have no access-control role.
+- Derive a block per moderated entity type.
+- Toggle each info item via block config.
 - Place the info block.
 - Surface workflow state.
 - Show editorial status.

@@ -12,10 +12,13 @@ Placed on a page, the block can display: the entity's **changed date**, its
 (complete with a revision log message field). Each of these is a checkbox on the
 block's own configuration, so you show only the pieces you want.
 
-Because it surfaces moderation data and offers a state-change form, it respects the
-viewer's access: what's shown, and whether the state can be changed, is governed by
-the viewer's moderation permissions. The block itself has no access-control role of
-its own. Its only dependency is core **Content Moderation**.
+The block is derived per moderated entity type and reads the entity from its block
+context; each piece of information is a checkbox you turn on or off. When the
+state-change form is enabled for a moderated entity, the moderation options it offers
+are the transitions core Content Moderation permits for the current user. Which
+viewers see the block at all is controlled by the block's standard visibility
+settings, so place it in a region and with visibility conditions appropriate for your
+editors. Its only dependency is core **Content Moderation**.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -40,6 +43,7 @@ the standard block configuration described below.
    state-change form — and set the usual block visibility conditions.
 5. Save the block.
 
-Now, when a viewer with the appropriate moderation permissions looks at a moderated
-entity, the block displays that entity's moderation details and (if enabled) lets
-them change its state without opening the edit form.
+Now, when a viewer looks at a moderated entity where the block is placed, the block
+displays that entity's moderation details and (if enabled) offers a state-change form
+whose options are the transitions core Content Moderation allows that user, without
+opening the edit form.

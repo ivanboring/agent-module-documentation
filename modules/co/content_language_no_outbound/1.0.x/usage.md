@@ -3,7 +3,7 @@ Content language (no outbound) reads the content-language query param but never 
 
 ---
 
-Content language detection (no outbound) is a replacement for Drupal's core content-language negotiator: it determines the content language from the `language_content_entity` query parameter but, unlike core, does not add that parameter to outbound/generated URLs. This keeps content-language switching working while producing cleaner links.
+Content language detection (no outbound) is a replacement for Drupal's core content-language negotiator: it determines the content language from the `language_content_entity` query parameter but, unlike core, by default does not add that parameter to outbound/generated URLs (an optional config textarea can re-enable appending it for named entity link-template paths). This keeps content-language switching working while producing cleaner links.
 
 It's a language-negotiation utility with no content or access role of its own. Supports Drupal 10 and 11.
 

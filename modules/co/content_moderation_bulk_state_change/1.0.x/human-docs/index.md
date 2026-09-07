@@ -4,14 +4,16 @@
 adds a **bulk action** for moving many pieces of content through their editorial
 workflow at once. On a site using core **Content Moderation** and **Workflows**,
 editors normally transition each item through its states one at a time. This module
-lets an editor select multiple entities — for example in the content admin listing —
-and apply a moderation transition to all of them in a single operation, which makes
+lets an editor select multiple **nodes** — for example in the content admin listing —
+and move them to one target moderation state in a single operation, which makes
 publishing or archiving a batch of content far quicker.
 
-The action is not a blunt override. It is designed to **respect moderation
-permissions and allowed workflow transitions**, so a user cannot use the bulk
-action to reach a state they could not reach one item at a time. The module
-provides its own permissions and a settings form to govern how the action behaves.
+Access to the operation is controlled by the module's own **"Update entity moderation
+states in bulk"** permission, and the action is offered per node according to that
+node's edit (update) access. On the confirm form the selected nodes must all share the
+same workflow and current state, and the target-state dropdown lists the transitions
+defined from that current state. A settings form toggles whether each change creates a
+new revision.
 
 It builds directly on core **Workflows** and **Content Moderation**, which are its
 only dependencies.
@@ -30,6 +32,6 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 ## How to use it
 
 After installation, a bulk action is available on content views. Open your content
-admin listing (or another view with bulk operations), tick the entities you want to
-move, choose the bulk action to change the moderation state, pick the target state,
-and apply. Only transitions your account is allowed to make will be carried out.
+admin listing, tick the nodes you want to move, choose the "Change workflow stage"
+bulk action, then on the confirm form pick the target state and confirm. The dropdown
+offers the states reachable by a transition from the selected content's current state.

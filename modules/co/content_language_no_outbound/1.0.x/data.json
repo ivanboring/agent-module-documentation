@@ -1,7 +1,7 @@
 {
   "name": "Content language detection (no outbound)",
   "data_name": "content_language_no_outbound",
-  "description": "Detects content language via the language_content_entity query parameter without emitting it on outbound URLs.",
+  "description": "Content-language negotiator (subclass of core's LanguageNegotiationContentEntity) that reads the language_content_entity query parameter but, by default, does not append it to outbound URLs; a config textarea can re-enable appending it for named entity link-template paths only.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/content_language_no_outbound",
@@ -17,9 +17,9 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Multilingual"

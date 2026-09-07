@@ -3,70 +3,60 @@
 Before you can export content, you need to tell the module which GitLab
 repository to target, give it an access token, and decide which roles may trigger
 exports. The token is a secret — the sections below cover both the settings form
-and how to keep that token out of your codebase.
+and how the module expects that token to be stored.
 
 ## Open the settings form
 
 Log in as a user with the **Administer site configuration** permission and open
-the module's settings page from the admin area. There you configure:
+the module's settings page at
+**Administration → Configuration → Web services → Content Patch GitLab API
+Settings** (`/admin/config/services/content-patch-gitlab-api`). There you
+configure:
 
-- **GitLab repository** — the target GitLab project the merge requests are opened
-  against (typically the project URL or ID, per your GitLab setup).
-- **API token** — a GitLab personal or project access token with rights to create
-  branches and merge requests in that repository.
-- **Export path** — the path within the repository where the exported content
-  packages should be written.
+- **Recipe Directory** — the top-level directory name for the generated recipe
+  (default `demo_content`).
+- **GitLab URL** — your GitLab instance, e.g. `https://gitlab.com` for
+  GitLab.com or your self-hosted URL.
+- **Project ID** — the numeric project ID or the URL-encoded path
+  (e.g. `12345` or `namespace/project`). The module URL-encodes it for you.
+- **Export Path** — the path inside the repository where the exported recipe is
+  written (e.g. `recipes/exported-content`).
+- **Default Branch** — the branch to branch off from and target the merge request
+  against (e.g. `main` or `master`).
+
+The **GitLab Private Token** is **not** entered on this form (see the next
+section).
 
 Two permissions govern the module: **Administer site configuration** (core) gates
 the settings page, and **Export content to GitLab API**
-(`export content to gitlab api`) controls who may run the export action from the
-content overview. Grant the export permission to the editor/administrator roles
-that should be allowed to contribute content, under **People → Permissions**.
+(`export content to gitlab api`) controls who may run the export from the content
+overview. Grant the export permission to the editor/administrator roles that
+should be allowed to contribute content, under **People → Permissions**.
 
-## Store the GitLab token securely
+## Store the GitLab token in settings.php
 
-A GitLab access token grants write access to your repository, so never hard-code
-it or commit it to version control. Store it in an environment variable and, where
-the module accepts one, reference it through a **Key** entity.
+This module reads the GitLab access token **only** from your site's
+`settings.php` file — it is intentionally never stored in Drupal's configuration
+or database, so it stays out of config exports and version control. Add this line
+to `settings.php` (or, better, to an untracked `settings.local.php`):
 
-1. **Save the token as a DDEV environment variable** (from the host):
+```php
+$settings['content_patch_gitlab_api.gitlab_token'] = 'your-private-token';
+```
 
-   ```bash
-   ddev dotenv set .ddev/.env --gitlab-api-token=<your-token>
-   ddev restart
-   ```
+The settings form will show a warning until this value is present.
 
-   The flag `--gitlab-api-token` becomes the variable `GITLAB_API_TOKEN`. Keep
-   `.ddev/.env` out of version control.
+The token must be a GitLab **personal or project access token** with the scopes
+`api` and `write_repository`. Per the module's README, the token's **Role** should
+be **Maintainer** — Developer may work in some setups, but Maintainer is usually
+required to create branches and push commits when branch protection is active.
 
-2. **Confirm it's present in the container without printing its value:**
-
-   ```bash
-   ddev exec 'test -n "$GITLAB_API_TOKEN"'
-   ```
-
-   An exit status of `0` means it is set.
-
-3. **Create a Key entity backed by that variable** (install the Key module first
-   if it isn't enabled — `ddev composer require drupal/key` and
-   `ddev drush en key -y`):
-
-   ```bash
-   ddev drush key:save gitlab_api_token \
-     --label='GitLab API Token' \
-     --key-type=authentication \
-     --key-provider=env \
-     --key-provider-settings='{"env_variable":"GITLAB_API_TOKEN","base64_encoded":false,"strip_line_breaks":true}' \
-     --key-input=none -y
-   ```
-
-   Then select that Key on the module's settings form if it offers a Key field. If
-   this release only accepts the token pasted directly into the form, still keep
-   the master copy in the environment variable / your secrets manager rather than
-   in any committed config, and rotate it in GitLab if it is ever exposed.
+Because this token grants write access to your repository, treat it as a secret:
+keep it in an environment-specific `settings.php`/`settings.local.php` that is not
+committed, and rotate it in GitLab if it is ever exposed.
 
 ## Save
 
 Save the settings form. You can now run the export from **Content**
-(`/admin/content`) via the Bulk Operations / Actions dropdown, as described in the
-main guide's [How to use it](../index.md#how-to-use-it) section.
+(`/admin/content`) using the per-row **Export to GitLab** operation, as described
+in the main guide's [How to use it](../index.md#how-to-use-it) section.

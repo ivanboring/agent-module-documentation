@@ -20,9 +20,10 @@ other modules.
 
 This is a small, focused **language‑negotiation utility** with no content or
 access role of its own. It has no dependencies beyond Drupal core and runs on Drupal
-10 and 11. It has no settings form — you enable it from the core language detection
-settings, as described below. Note this release is a release candidate
-(1.0.0‑rc2).
+10 and 11. You activate it from the core language detection settings; it *also* ships a
+small configuration page of its own (linked as "configure" next to the negotiator)
+where you can optionally re‑enable appending the parameter for specific entity paths —
+see "How to use it" below. Note this release is a release candidate (1.0.0‑rc2).
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -33,8 +34,10 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 1. [Installation](installation/index.md) — install the module with Composer and
    enable it.
 
-This module has **no configuration form of its own**. You activate it from Drupal's
-core language detection and selection settings, described in "How to use it" below.
+You activate this module from Drupal's core language detection and selection settings.
+It additionally provides its own small configuration page (**Outbound entity path
+names**) reached via the negotiator's "configure" link — optional, and empty by
+default. Both are described in "How to use it" below.
 
 ## How to use it
 
@@ -50,3 +53,9 @@ core language detection and selection settings, described in "How to use it" bel
 4. Save. Content language will now be detected from the `language_content_entity`
    query parameter without that parameter being appended to any generated links,
    keeping your language switcher's behavior clean and predictable.
+5. *(Optional.)* If you actually want the parameter appended to certain links, open the
+   negotiator's own **configure** page
+   (`/admin/config/regional/language/detection/content-entity-no-outbound`, requires the
+   *Administer languages* permission) and enter the relevant entity link‑template names
+   (one per line, e.g. `edit-form`) in **Outbound entity path names**. Leave it empty to
+   keep the default "never append" behavior.

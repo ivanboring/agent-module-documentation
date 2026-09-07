@@ -10,10 +10,14 @@ content admin View) and move them to a target moderation state in a single actio
 publishing or archiving batches of content.
 
 Use it where editorial teams work with content-moderation workflows and need to process content in
-bulk. The important consideration is that the bulk action must respect moderation permissions and
-allowed workflow transitions, so that a user cannot use it to reach states they could not reach
-individually; it provides its own permissions and a settings form (`content_moderation_bulk_state_change.settings`)
-to govern the action. It depends on core `workflows` and `content_moderation`.
+bulk. It targets **nodes**: an editor selects nodes in the content admin View, runs the "Change
+workflow stage" action, and confirms one target moderation state on a dedicated confirm form. The
+target-state dropdown lists the transitions defined from the selected content's current state, and
+the selected nodes must all share the same workflow and current state. The bulk operation is gated
+by the module's own `update entity moderation states in bulk` permission and is offered per node
+according to that node's update access; a settings form
+(`content_moderation_bulk_state_change.settings`) toggles whether each change creates a new
+revision. It depends on core `workflows` and `content_moderation`.
 
 ---
 
@@ -23,8 +27,8 @@ to govern the action. It depends on core `workflows` and `content_moderation`.
 - Add a bulk action for moderation states.
 - Select entities and move them to a state.
 - Work with content-moderation workflows in bulk.
-- Respect moderation permissions in the action.
-- Honor allowed workflow transitions.
+- List transitions available from the current state.
+- Require selected nodes to share workflow and state.
 - Configure at content_moderation_bulk_state_change.settings.
 - Provide permissions for the bulk action.
 - Depend on workflows and content_moderation.
@@ -33,7 +37,7 @@ to govern the action. It depends on core `workflows` and `content_moderation`.
 - Move drafts to published in bulk.
 - Avoid per-item state changes.
 - Govern the action via settings.
-- Prevent reaching disallowed states via bulk.
+- Optionally create a new revision per change.
 - Integrate with the content admin View.
 - Update moderation state for selected nodes.
 - Batch editorial state changes.

@@ -17,17 +17,18 @@ dependencies, pulling in referenced entities such as Media, Taxonomy Terms, and
 Drupal's Site Template workflow.
 
 You export content from the standard content overview (`/admin/content`) using
-**Bulk Operations** (Actions), after configuring the GitLab connection once. It
-depends on core's **Serialization** module and supports Drupal 10.5+ and 11.2+.
+the per-row **Export to GitLab** operation, after configuring the GitLab
+connection once. It depends on core's **Serialization** module and supports
+Drupal 10.5+ and 11.2+.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
 [`agent/`](../agent/start.md) docs instead.
 
 > **Note:** This is an early release (1.0.0-alpha4) and the project is not covered
-> by Drupal's security advisory policy. It also stores a GitLab access token — see
-> [Configuration](configuration/index.md) for how to keep that token out of your
-> codebase.
+> by Drupal's security advisory policy. It reads a GitLab access token from
+> `settings.php` — see [Configuration](configuration/index.md) for exactly where
+> to put it.
 
 ## Contents
 
@@ -38,20 +39,23 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 
 ## Where it lives in the admin menu
 
-There's a settings page where you configure the target GitLab repository, API
-token, and export path, plus permissions that control which roles may trigger
-exports. The export action itself is run from the content overview
-(`/admin/content`) via the Bulk Operations / Actions dropdown once a node or
-entity is selected.
+There's a settings page (**Configuration → Web services → Content Patch GitLab
+API Settings**) where you configure the target GitLab URL, project ID, export
+path and default branch (the API token lives in `settings.php`, not on this
+form), plus permissions that control which roles may trigger exports. The export
+action itself is run from the content overview (`/admin/content`) via the
+per-row **Export to GitLab** operation on a node, media item, or taxonomy term.
 
 ## How to use it
 
 1. Configure the GitLab connection and token, and grant the export permission —
    see [Configuration](configuration/index.md).
-2. Go to **Content** (`/admin/content`).
-3. Tick the nodes (or other supported entities) you want to export.
-4. Choose the export action from the **Action** / Bulk Operations dropdown and
-   apply it. The module serialises the selected content — plus its referenced
-   Media, Terms, and Canvas Pages — and opens a Merge Request in your configured
-   GitLab repository.
+2. Go to **Content** (`/admin/content`) (or the media / taxonomy-term listing).
+3. On the row for the item you want to export, open the operations dropdown and
+   choose **Export to GitLab**.
+4. On the export form, adjust the branch name, commit message, and merge-request
+   title, then submit. The module serialises the selected content — plus its
+   referenced entities such as media, files, and taxonomy terms — commits it to a
+   new branch, and opens a Merge Request in your configured GitLab repository. A
+   link to the created MR is shown on success.
 5. Review and merge the MR in GitLab as you would any other change.
