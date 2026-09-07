@@ -1,7 +1,7 @@
 {
   "name": "Config Pages Viewer",
   "data_name": "config_pages_viewer",
-  "description": "Provides a controller/path to view Config Pages content on the front end.",
+  "description": "Adds a front-end view route and controller so a Config Pages entity's field values can be rendered at /config_pages_viewer/{type}; access gated by the config_pages 'view' permission. Companion to the config_pages module.",
   "version": "1.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/config_pages_viewer",
@@ -21,7 +21,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Site structure"

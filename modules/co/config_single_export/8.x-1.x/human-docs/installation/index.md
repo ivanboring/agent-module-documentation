@@ -7,11 +7,9 @@
 
 There are no third‑party PHP library requirements. This is the 8.x‑1.4 release.
 
-Before enabling, please read the security caveat on the [overview
-page](../index.md): the module's file-download hook returns headers for any file in
-the server's temporary directory, so the `export configuration` permission
-effectively becomes a limited read of that directory. Take that into account when
-deciding whether to install it and who holds that permission.
+The download the module adds is gated by core's `export configuration` permission —
+a permission marked *restricted* in core. Grant it only to trusted administrators,
+as you would for core's own configuration export and import screens.
 
 ## Install with Composer
 

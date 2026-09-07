@@ -1,7 +1,7 @@
 {
   "name": "Config Plus",
   "data_name": "config_plus",
-  "description": "Installs new configuration and checks for incorrectly-created configuration during development.",
+  "description": "Developer helpers for Drupal config entities: a service to install a module's shipped config from a hook_update_N(), a save-time check that flags config entities created without a UUID, and an install-time fix that adds missing UUIDs.",
   "version": "1.0.x",
   "package": "Config",
   "composer_namespace": "drupal/config_plus",
@@ -19,7 +19,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools"

@@ -1,13 +1,14 @@
 {
   "name": "Configuration Share",
   "data_name": "config_share",
-  "description": "Enables sharing configuration between multiple extensions/distributions.",
+  "description": "Lets extensions/distributions share config items via a config/shared directory; shared config is installed only on demand when another config item depends on it. Provides a config_provider ConfigProvider plugin plus an optional Features assignment plugin. No routes/UI/permissions.",
   "version": "8.x-1.x",
   "package": null,
   "composer_namespace": "drupal/config_share",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:config"
+    "drupal:config",
+    "config_provider:config_provider"
   ],
   "configure": null,
   "core_version_requirement": "^10.1||^11",
@@ -21,7 +22,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Configuration management"

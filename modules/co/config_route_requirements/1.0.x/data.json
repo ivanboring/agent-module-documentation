@@ -1,7 +1,7 @@
 {
   "name": "Config Route Requirements",
   "data_name": "config_route_requirements",
-  "description": "Adds a `_config` route requirement that toggles routes on/off from config values.",
+  "description": "Adds a `_config` route requirement; a route subscriber removes any route whose referenced config value(s) evaluate false at route-build time (404), toggling routes on/off from config.",
   "version": "1.0.x",
   "package": "Menu",
   "composer_namespace": "drupal/config_route_requirements",
@@ -19,7 +19,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"

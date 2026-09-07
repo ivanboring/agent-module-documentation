@@ -1,7 +1,7 @@
 {
   "name": "Config Translation Sync",
   "data_name": "config_translation_sync",
-  "description": "Automatically synchronizes configuration translations during config import/deploy.",
+  "description": "Copies translated configuration overrides from the config sync directory into active config, via the drush crst command (a config-import event subscriber is shipped but is not registered as a service in 1.0.2).",
   "version": "1.0.x",
   "package": "Config",
   "composer_namespace": "drupal/config_translation_sync",
@@ -9,8 +9,8 @@
   "dependent_modules": [
     "drupal:config_translation"
   ],
-  "configure": null,
-  "core_version_requirement": "^10||^11",
+  "configure": "config_translation_sync.settings",
+  "core_version_requirement": "^10 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/config_translation_sync",
@@ -19,8 +19,8 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
-  "provides_drush_commands": false,
+  "provides_permissions": true,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [

@@ -57,5 +57,5 @@ separate configuration page.
    drush cpv --fix -y
    ```
 
-Access to administering policies is governed by the permission the module provides, so grant
-it only to the people responsible for configuration governance.
+Access to administering policies is governed by the core **Administer site configuration**
+permission, so it is available to the people who already administer site configuration.

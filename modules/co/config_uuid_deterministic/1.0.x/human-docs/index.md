@@ -52,6 +52,23 @@ enabled, so there is no configuration page.
    that configuration across environments without UUID-mismatch conflicts, and your
    version-control diffs stop showing pointless UUID changes.
 
+### Existing sites: normalize once
+
+New configuration created after enabling gets deterministic UUIDs automatically, but
+configuration that already exists keeps its original random UUIDs until you convert it.
+The module ships a Drush command for that one-time backfill:
+
+```bash
+drush cud:normalize --dry-run   # preview what would change
+drush cud:normalize             # rewrite existing config UUIDs (active storage)
+drush cud:normalize --include-sync   # also rewrite the config/sync files
+```
+
+The command is idempotent (running it again changes nothing) and deliberately never
+touches `system.site` or field-storage configs whose database tables would break.
+Export and commit your config first, then re-export and review the diff afterwards —
+it should show only UUID changes.
+
 Advanced users can customize the namespace UUID (the module ships with a default of
 `00000000-0000-0000-0000-000000000000`) by changing the `NAMESPACE` constant in the
 module's classes for a project-specific implementation. It pairs well with

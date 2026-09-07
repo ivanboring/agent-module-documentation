@@ -15,9 +15,9 @@ available even when configuration editing is locked, and this module re‑enable
 It does so **narrowly**: it whitelists the `taxonomy.vocabulary.*` configuration pattern so
 the reorder form works again, while still preventing genuine configuration changes — editing
 the vocabulary settings is kept disabled by disabling the form, and deletion is blocked
-through access control. It depends on **Config Read-only** and core **Taxonomy**, provides its
-own permission, and requires Drupal **11.1+**. The current release is an **alpha
-(1.0.0‑alpha1)**.
+through access control. It depends on **Config Read-only** and core **Taxonomy**, adds no
+settings form or permission of its own, and requires Drupal **11.1+**. The current release is
+an **alpha (1.0.0‑alpha1)**.
 
 As with any exception to a configuration lock, weigh it against your governance policy: it
 re‑opens one specific operation (reordering terms) on a site you otherwise chose to lock down.

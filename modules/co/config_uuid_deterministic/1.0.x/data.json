@@ -1,11 +1,13 @@
 {
   "name": "Config UUID Deterministic",
   "data_name": "config_uuid_deterministic",
-  "description": "Makes Drupal configuration UUIDs deterministic (stable across environments).",
+  "description": "Makes Drupal configuration UUIDs deterministic using UUIDv5 (derived from the config name and a fixed namespace), enabling reliable configuration-as-code workflows and idempotent config export/import.",
   "version": "1.0.x",
   "package": "Configuration",
   "composer_namespace": "drupal/config_uuid_deterministic",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "ramsey/uuid": "^4.7"
+  },
   "dependent_modules": [
     "drupal:system"
   ],
@@ -15,13 +17,13 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/config_uuid_deterministic",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
-  "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"

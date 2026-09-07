@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- **Drupal 10 or 11** (`core_version_requirement: ^10 || ^11`).
+- **Drupal 10, 11, or 12** (`core_version_requirement: ^10 || ^11 || ^12`).
 - Core's **Configuration Translation** module (`config_translation`) must be
   enabled.
 - **Drush** to use the manual `drush crst` synchronization command.
@@ -40,7 +40,12 @@ Run a manual synchronization and confirm it completes:
 drush crst
 ```
 
-You can also confirm the automatic behaviour by importing configuration (`drush
-cim`) on a multilingual site and checking that your configuration translations remain
-in place afterwards. The module logs the changes it makes, so review the logs if a
-translation does not update as expected.
+On a multilingual site you can check that your `language.*` configuration
+translations are copied from the sync directory into active config after the command
+runs. The module logs the changes it makes, so review the logs if a translation does
+not update as expected.
+
+> In the 1.0.2 release, run `drush crst` explicitly (for example in your deployment
+> script); the shipped config-import subscriber that was meant to trigger the sync
+> automatically is not registered as a service in this release, so it does not run on
+> its own.

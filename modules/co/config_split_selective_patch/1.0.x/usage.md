@@ -3,7 +3,7 @@ Adds selective config patching to Configuration Split when 'Do not patch depende
 
 ---
 
-Config Split Selective Patch adds selective config patching to Configuration Split when the "Do not patch dependents" option is enabled — refining how Config Split applies partial configuration so that only the intended config is patched and dependent config is left alone, avoiding unintended config changes during split import/export. It extends Config Split. Depends on `config_split`; supports Drupal 10.3+ and 11.
+Config Split Selective Patch adds selective config patching to Configuration Split when the "Do not patch dependents" option is enabled. Config Split 2.x normally exports a config's active↔sync diff as a compact `config_split.patch.*` file, but with "Do not patch dependents" on, partial-split items are instead stored as full config copies when they differ. This module adds a per-split **Partial Split (Patch)** list: the config you name there is still exported as patch files even under that mode, letting a team adopt patch-based splitting on a chosen subset only. Import behaviour is unchanged. It extends Config Split. Depends on `config_split`; supports Drupal 10.3+ and 11.
 
 ---
 

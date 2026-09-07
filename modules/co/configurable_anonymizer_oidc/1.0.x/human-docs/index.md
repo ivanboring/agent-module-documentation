@@ -38,15 +38,18 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 1. [Installation](installation/index.md) — install the module with Composer and
    enable it alongside its dependencies.
 
-The module adds realm-exclusion settings to the anonymization workflow rather than a
-standalone settings form documented here, so there is no separate configuration page —
-see "How to use it" below, and read the parent module's guide for the core setup.
+The module adds its own settings page at **Configuration → Development → Anonymizer →
+Configurable Anonymizer OIDC** (`/admin/config/development/anonymizer/oidc`, also shown
+as a tab under the parent Configurable Anonymizer settings). It offers a single
+**Disabled realms** checkbox list of the OIDC realms configured on your site — see
+"How to use it" below, and read the parent module's guide for the core field setup.
 
 ## How to use it
 
 1. Make sure Configurable Anonymizer and the OIDC module are installed and working,
    then enable this add-on (see [Installation](installation/index.md)).
-2. Select the OIDC realm(s) whose users should be **excluded** from anonymization.
+2. Go to `/admin/config/development/anonymizer/oidc` and tick the OIDC realm(s) under
+   **Disabled realms** whose users should be **excluded** from anonymization.
    Users in those realms will be skipped when the anonymizer runs.
 3. Run the anonymizer as usual with `drush anonymizer:run`. Users in the excluded
    realms keep their real data; all other configured PII is anonymized.

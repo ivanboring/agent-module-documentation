@@ -39,5 +39,6 @@ machine name of one of your Config Pages types. If the page renders that config 
 values, the module is working. If you have not created a Config Pages type yet, do that
 first under **Structure → Config pages types**.
 
-Remember to check access on that URL before relying on it in production — see
-[the main guide](../index.md) for the note on what config pages may expose.
+The route is gated by the Config Pages `view` permission — see
+[the main guide](../index.md) under "How access works" for which permission controls each
+page and where to grant it.

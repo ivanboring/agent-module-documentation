@@ -14,14 +14,14 @@ silently reverted on the next deployment when configuration is automatically imp
 Notably, you do **not** need a local Git clone on the live or staging server: the module
 pushes to the repository directly through the host's API.
 
-Config PR supports **GitHub**, **GitLab**, and **Bitbucket** (Bitbucket support is newer)
-through provider **submodules** — you enable the one matching your host. It depends on core's
-**Configuration Manager** and **Field** modules, provides its own permission for who may
-issue pull requests, and works across Drupal `>=8`. The current release is a **beta
-(8.x‑2.0‑beta3)**.
+Config PR supports **GitHub** and **GitLab** through provider **submodules** — you enable the
+one matching your host. (A **Bitbucket** submodule ships but is a placeholder that is not yet
+functional.) It depends on core's **Configuration Manager** and **Field** modules, provides its
+own permission for who may issue pull requests, and requires Drupal `^10 || ^11 || ^12`. This is
+the **3.0.0** release.
 
 Because it authenticates to your Git host with an **API token** and pushes your
-configuration there, there are real security considerations — token handling and what your
+configuration there, there are real considerations — where the token is entered and what your
 exported configuration might contain. Those are covered on the
 [Configuration](configuration/index.md) page; read it before connecting a live repository.
 

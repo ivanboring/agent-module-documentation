@@ -16,10 +16,12 @@ It depends on the **Config Pages** module and works across Drupal `^8 || ^9 || ^
 It is **minimally maintained** (maintenance fixes only), so treat it as a small utility
 rather than an actively growing feature.
 
-A word of caution worth keeping in mind: Config Pages often hold *site settings*, and this
-module renders those field values on a URL. Be deliberate about **what you expose and to
-whom** — review the fields on any type before you render it publicly, and set up access on
-the route to match the sensitivity of the data.
+How access works: each viewer route carries the `_entity_access: config_pages.view`
+requirement, which delegates to the Config Pages module. A visitor needs the
+**`view config_pages entity`** permission (all types) or the per-type
+**`view {type} config page entity`** permission to reach a page. This module adds no
+permission of its own — you control who sees each config page's values by granting those
+Config Pages permissions to the appropriate roles at **People → Permissions**.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -40,6 +42,6 @@ purely through the viewer route, described below.
 2. Visit `/config_pages_viewer/{config_page_type}`, substituting the machine name of your
    Config Pages type. The controller renders that config page's fields.
 3. To customise the markup, override the theme hook suggestion the module provides in your
-   theme.
-4. Review who can reach that URL and lock it down if the config page holds anything
-   sensitive — the module renders whatever fields the type contains.
+   theme (`config_pages__{type}`, `config_pages__{view_mode}`, or the combined form).
+4. Grant the matching Config Pages `view` permission to whichever roles should see that
+   config page's values (see "How access works" above).

@@ -8,9 +8,11 @@ entity (from the Config Pages module) at a route so its field values can be disp
 edited in admin. It depends on the Config Pages module, in the Custom package.
 
 Use it to render Config Pages content on a page. It is a site-building feature; the displayed values are the
-config-page's fields (admin-managed) — mind what you expose, since config pages can hold site settings, and
-configure the route/access appropriately. It has no independent access-control role. Configure the viewer
-route.
+config-page's fields (admin-managed), rendered through Drupal's standard entity view pipeline. Each viewer
+route carries the `_entity_access: config_pages.view` requirement, so a visitor needs the Config Pages module's
+`view config_pages entity` permission (or the per-type `view {type} config page entity` permission) to reach a
+given config page. The module defines no permission of its own; grant the config_pages view permission to the
+roles that should see each type's values.
 
 ---
 
@@ -20,9 +22,9 @@ route.
 - Depend on the Config Pages module.
 - Serve site building.
 - Display config-page values.
-- Mind what config-page data you expose.
-- Configure the route/access.
-- Have no independent access-control role.
+- Gate each route with `_entity_access: config_pages.view`.
+- Grant the config_pages view permission to the roles that should see each type.
+- Define no permission of its own.
 - Configure the viewer route.
 - Handle config-page viewing.
 - Show config pages.

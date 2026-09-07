@@ -1,17 +1,20 @@
 {
-  "name": "Config PR",
+  "name": "Config Pull Request",
   "data_name": "config_pr",
-  "description": "Lets admins open pull requests of configuration changes to a Git host (GitHub/GitLab/Bitbucket).",
-  "version": "8.x-2.x",
+  "description": "Turns configuration changes made in the Drupal UI into a pull/merge request on a Git host (GitHub or GitLab via provider submodules), pushed directly through the host's REST API with no local Git clone on the server.",
+  "version": "3.0.x",
   "package": "Administration",
   "composer_namespace": "drupal/config_pr",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "php-http/discovery": "^1.20",
+    "knplabs/github-api": "^3.13"
+  },
   "dependent_modules": [
     "drupal:config",
     "drupal:field"
   ],
-  "configure": null,
-  "core_version_requirement": ">=8",
+  "configure": "config_pr.settings",
+  "core_version_requirement": "^10 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/config_pr",
@@ -47,6 +50,6 @@
   "security_advisory_coverage": "covered",
   "project_created": "2018-09-29",
   "project_changed": "2026-08-18",
-  "core_semver_minimum": 8000000,
+  "core_semver_minimum": 10000000,
   "core_semver_maximum": 12999999
 }

@@ -2,11 +2,12 @@
 
 ## Requirements
 
-- **Drupal 8 or newer** (`core_version_requirement: >=8`).
+- **Drupal 10, 11, or 12** (`core_version_requirement: ^10 || ^11 || ^12`).
 - Core's **Configuration Manager** (`config`) and **Field** (`field`) modules — enabled
   automatically as dependencies.
-- An account and repository on your Git host (**GitHub**, **GitLab**, or **Bitbucket**), and
-  an **API token** for it — see [Configuration](../configuration/index.md).
+- An account and repository on your Git host (**GitHub** or **GitLab**; the Bitbucket
+  submodule is a not-yet-functional placeholder), and an **API token** for it — see
+  [Configuration](../configuration/index.md).
 - The provider submodule for your host, plus its own Composer library dependencies. Each
   submodule's `README` lists the exact libraries it needs (for example, the GitHub and GitLab
   API client libraries), so require those with Composer when you enable that submodule.
@@ -42,9 +43,9 @@ repository lives:
 
 | Submodule | Machine name | For |
 |-----------|--------------|-----|
-| **Config PR GitHub** | `config_pr_github` | GitHub repositories |
-| **Config PR GitLab** | `config_pr_gitlab` | GitLab repositories |
-| **Config PR Bitbucket** | `config_pr_bitbucket` | Bitbucket repositories (newer support) |
+| **Config PR GitHub** | `config_pr_github` | GitHub repositories (also GitHub Enterprise / self-hosted) |
+| **Config PR GitLab** | `config_pr_gitlab` | GitLab repositories (also GitLab self-managed) |
+| **Config PR Bitbucket** | `config_pr_bitbucket` | Bitbucket — placeholder, not yet functional |
 
 For example, for GitHub:
 
