@@ -7,18 +7,8 @@ Consumers Token provides a token `[consumers:current-name]` for consumers name r
 
 ---
 
-- Provide a `[consumers:current-name]` token.
-- Resolve to the requesting consumer's name.
-- Vary text by API consumer.
-- Support per-consumer messaging.
-- Serve decoupled/headless setups.
-- Integrate with the Token system.
-- Depend on `consumers`.
-- Support Drupal 8 through 11.
-- Configure token use.
-- Aid decoupled sites.
-- Replace consumer names.
-- Handle consumer tokens
-- Support Consumers
-- Resolve tokens
-- Support Drupal.
+- Provides one token: `[consumers:current-name]`.
+- Resolves to the label of the Consumer that made the current request, via the `consumer.negotiator` service (`negotiateFromRequest()`), or an empty string when no Consumer is negotiated.
+- Use it anywhere Drupal tokens are accepted (e.g. a Metatag pattern) to vary output per front-end application.
+- No configuration, routes, permissions, or settings form — it works once enabled.
+- Depends only on the `consumers` module; supports Drupal 8 through 11.

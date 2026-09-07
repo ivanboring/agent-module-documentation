@@ -27,9 +27,15 @@ dependencies as needed.
 drush en contact_mail -y
 ```
 
+> **Expect a warning.** Enabling prints `Route synmail.config does not exist`.
+> This is a stale **Configure** link left in the module's `info.yml` from an old
+> project name; the module still installs and works. It only means the Configure
+> link on the Extend page won't work — see [Configuration](../configuration/index.md)
+> for how to reach the settings form.
+
 ## Verify it worked
 
-After enabling, open the module's settings form (from **Extend** →
-`/admin/modules`, follow the **Configure** link on **Contact Mail**) and confirm
-you can set common recipients and the mail formatting. See
+After enabling, open the settings form at **Configuration › System › Contact Mail
+Settings** (`/admin/config/system/contact-mail`) and confirm you can set common
+recipients and the mail formatting. See
 [Configuration](../configuration/index.md).

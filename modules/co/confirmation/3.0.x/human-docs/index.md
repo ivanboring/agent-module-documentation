@@ -16,16 +16,10 @@ class and its fields that an integrating module supplies. The distribution ships
 `confirmation_example` submodule and tests to show the pattern. It supports Drupal
 10 and 11 and depends only on core.
 
-**A security note for developers, taken from the module's public documentation.**
-As shipped (3.0.1), the response route is publicly accessible (`_access: TRUE`) and
-the `{hash}` token in the URL is **not validated anywhere**, while confirmation IDs
-are sequential integers. In practice this means someone could enumerate
-`/confirmation/<n>/anything` and confirm or disconfirm arbitrary confirmations
-without knowing the real hash. Before you rely on this in production, add a check
-that compares the supplied hash against the entity's stored hash (for example a
-`hash_equals()` comparison in a route `_custom_access` handler or in the response
-form's access logic). Treat the built‑in behaviour as a starting point, not a
-finished access control.
+When a confirmation is answered, the module dispatches a `state_settled` event so your
+integrating code can act on the result — the bundled `confirmation_example` subscriber, for
+instance, publishes the linked node when a confirmation is confirmed and deletes it when it is
+disconfirmed. What each confirmation does is entirely up to the bundle you write.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

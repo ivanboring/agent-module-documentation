@@ -20,9 +20,10 @@ console rather than in Drupal — the module is the connector.
 requires a ConsentX account and an internet connection so the site can talk to
 ConsentX services, and consent data flows through that third‑party platform — a
 point to note in your own privacy documentation and vendor assessments. Second,
-your ConsentX **account credentials / site key are secrets**: store them in an
-environment variable (or a Key entity) and never commit them to version control.
-Note the project is **not covered by Drupal's security advisory policy**.
+the connection is set up entirely from the module's settings screen (a 1‑click
+handshake, or a **Site key** you paste in): the site key and token it records are
+saved in the module's `consentx.settings` configuration. Note the project is
+**not covered by Drupal's security advisory policy**.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

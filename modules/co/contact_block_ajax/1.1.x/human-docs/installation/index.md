@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- **Drupal 10.3+ or 11.0+** (`core_version_requirement: ^10 || ^11`).
+- **Drupal 10 or 11** (`core_version_requirement: ^10 || ^11`).
 - **PHP 8.1 or newer.**
 - Core's **Block** module (`block`) and **Contact** module (`contact`) — both are
   dependencies and Drupal enables them automatically.

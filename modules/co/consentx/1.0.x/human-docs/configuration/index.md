@@ -6,23 +6,44 @@ ConsentX platform.
 
 ## Connect your ConsentX account
 
-1. Sign in as a user with the permission ConsentX provides for its configuration
-   (an administrator by default; check **People → Permissions** to delegate it).
-2. Open the ConsentX module settings.
-3. Enter your **ConsentX account** connection details to link the site. On
-   connecting, your website is **registered with ConsentX automatically** and the
-   cookie consent banner becomes active straight away.
+1. Sign in as a user with the **Administer ConsentX** permission (an administrator
+   by default; check **People → Permissions** to delegate the
+   `administer consentx` permission — it is marked as security‑sensitive).
+2. Open the ConsentX module settings at
+   **Administration → Configuration → System → ConsentX**
+   (`/admin/config/system/consentx`).
+3. Link the site in one of two ways:
+   - **1‑click Connect (recommended).** Click **Connect to ConsentX**. You are
+     redirected to `app.consentx.io` to log in and approve; ConsentX registers your
+     domain, mints a site key and token, and redirects back. The banner goes live
+     immediately.
+   - **Manual site key.** Paste a **Site key** copied from the ConsentX dashboard
+     (Websites → your site) into the **Site key** field and save. Make sure your
+     domain is on that site's allowlist in the dashboard.
 
-## Handle credentials safely
+To stop the banner, click **Disconnect** on the settings screen (this clears the
+key and token from the site; revoke the token itself from the ConsentX dashboard
+under **API Tokens**).
 
-Your ConsentX account credentials / site key are **secrets**. Do not paste them
-into configuration that gets committed to version control. Instead:
+## Where the connection is stored
 
-- Store the value in an **environment variable** and reference it from the site
-  (for example via `getenv()` in `settings.php`), or
-- Use the **Key** module and reference a Key entity.
+The site key and token are saved in the module's `consentx.settings`
+configuration. If you export configuration, be aware they travel with it; the
+banner reads them from config on every front‑end page render.
 
-Keep the secret out of exported configuration and out of your repository.
+## Options on the Drupal settings screen
+
+Below the connection, the settings form has a small **Widget behaviour** section:
+
+- **Google Consent Mode v2 defaults** (on by default) — prints a denied‑by‑default
+  `gtag('consent','default',…)` state in `<head>` before any analytics tag fires;
+  the ConsentX widget sends the update signals once the visitor chooses.
+- **Pre‑consent script blocking** — passes a hint so your own tagged scripts are
+  held until consent (the widget auto‑blocks common third‑party trackers regardless).
+- **Advanced → ConsentX app host** — override `https://app.consentx.io` only for a
+  staging or self‑hosted ConsentX instance.
+
+Everything else about the banner is managed in the ConsentX console.
 
 ## What you configure in the ConsentX console
 

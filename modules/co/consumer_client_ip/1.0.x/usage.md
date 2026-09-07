@@ -1,41 +1,40 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Consumer Client IP maps a different HTTP client-IP header to the X-Forwarded-For header.
+Consumer Client IP maps a configurable HTTP client-IP header to the X-Forwarded-For header, per consumer.
 
 ---
 
-Consumer Client IP **remaps a configurable HTTP header into `X-Forwarded-For`** — on each request a kernel
-event reads the value of an admin-chosen header (e.g. a CDN/proxy header like `CF-Connecting-IP` or
-`True-Client-IP`) and writes it into the `X-Forwarded-For` header, so Drupal's normal reverse-proxy client-IP
-resolution then reports that value as the client IP. It depends on the Consumers module.
+Consumer Client IP **remaps a configurable HTTP header into `X-Forwarded-For`**, on a
+per-consumer basis. On each request a kernel event subscriber negotiates the request's
+consumer (through the Consumers module) and, if header mapping is enabled for that
+consumer, reads the value of an admin-chosen source header (default `X-Client-IP`, or
+another your edge uses such as `CF-Connecting-IP` or `True-Client-IP`) and writes it
+into the request's `X-Forwarded-For` header. Drupal's normal reverse-proxy client-IP
+resolution then reports that value as the client IP (from `$request->getClientIp()`).
+It depends on the Consumers module.
 
-Use it where a proxy/CDN carries the real client IP in a non-standard header. It is an authentication/networking
-integration and it has an important **security precondition**: the header it maps must be one that a **trusted
-upstream proxy sets and strips from inbound client input** — because the module trusts whatever value is in that
-header. If the mapped header is client-settable (an attacker sends it directly) and Drupal is configured to trust
-`X-Forwarded-For` (`reverse_proxy` + `reverse_proxy_addresses` in settings.php), then a client can **spoof their
-apparent IP**, defeating IP-based access rules, flood/rate limiting, geolocation and logging integrity. So: only
-map a header your edge injects, ensure the edge overwrites/removes any client-supplied copy, and pair this with
-correct `reverse_proxy` trust settings. It has no access-control role of its own. Configure the source header.
+Use it in decoupled deployments where the real client does not connect to Drupal
+directly — the front end (a serverless function, a Next.js app, a CDN) connects
+instead and forwards the real visitor IP in a non-standard header. Mapping that header
+into `X-Forwarded-For` lets IP-dependent features such as core flood control operate on
+the visitor's IP rather than the front end's. For the rewrite to take effect, the mapped
+header should be one your proxy/CDN sets, and the site's reverse-proxy trust settings
+(`reverse_proxy` and `reverse_proxy_addresses` in `settings.php`) must be configured so
+Drupal reads the client IP from `X-Forwarded-For`. Configuration is done in the consumer
+settings form (Configuration → Web services → Consumers): the mapping toggle and the
+source header name. The module adds no page or permission of its own.
 
 ---
 
-- Remap a chosen header into X-Forwarded-For.
-- Read an admin-chosen header per request.
+- Remap a chosen HTTP header into `X-Forwarded-For`.
+- Read an admin-chosen source header per request.
+- Operate per consumer, via the Consumers module's negotiation.
 - Feed Drupal's reverse-proxy client-IP resolution.
+- Default the source header to `X-Client-IP`.
+- Skip the rewrite when mapping is disabled or the header is absent.
+- Log a critical message and skip when the header value is exactly `0.0.0.0`.
+- Require the source header name when mapping is enabled (form validation).
 - Depend on the Consumers module.
-- Serve proxy/CDN IP integration.
-- Trust whatever value is in that header.
-- REQUIRE the source header be set by a trusted proxy + stripped from client input.
-- Enable client-IP SPOOFING if the header is client-settable under reverse_proxy trust.
-- Undermine IP access rules / flood control / geo / logging if spoofed.
-- Be paired with correct reverse_proxy + reverse_proxy_addresses settings.
-- Have no access-control role of its own.
-- Configure the source header.
-- Handle client-IP mapping.
-- Map the header.
-- Configure the header.
-- Set X-Forwarded-For.
-- Handle the request.
-- Resolve client IP.
-- Trust the edge only.
-- Provide client-IP header mapping.
+- Serve decoupled / proxy / CDN client-IP integration.
+- Rely on `reverse_proxy` + `reverse_proxy_addresses` trust settings to take effect.
+- Configure through the consumer settings form.
+- Add no page or permission of its own.

@@ -11,22 +11,34 @@ contextual link stays visible, exactly as core provides it.
    navigate directly to
    `/admin/config/user-interface/configure-contextual-links`.
 
-## Choose which links to disable
+The form has two tabs: **Disable Contextual Links** and **Relabel Contextual
+Links**. Both list the contextual link **plugins** registered on your site —
+entries such as "Block configure", "Menu edit", or "Media delete", shown as
+`group: title`.
 
-The form lists the contextual link **plugins** registered on your site — entries
-such as "Block configure", "Menu edit", or "Media delete". Each one has a
-checkbox. Tick a plugin to **disable** that contextual link, and it will stop
-appearing everywhere it would normally show. Leave a checkbox unticked to keep the
-link as it is.
+## Disable links
+
+On the **Disable Contextual Links** tab each plugin has a checkbox. Tick a plugin
+to **disable** that contextual link, and it will stop appearing everywhere it would
+normally show. Leave a checkbox unticked to keep the link as it is.
 
 Because the module works at the plugin level, disabling (for example) the block
 delete link removes it from every block's contextual menu at once — you do not
 configure this block by block.
 
+## Relabel links
+
+On the **Relabel Contextual Links** tab each plugin has a text field. Type a new
+title to rename that contextual link everywhere it appears; leave a field blank to
+keep the default label.
+
 ## Save
 
-Click **Save configuration**. The change takes effect immediately: reload a page
-that had the link and the pencil menu will no longer offer it.
+Click **Save configuration**. The change takes effect immediately, but note the
+on-screen reminder: contextual links are cached in your browser's session data, so
+you may need to reload, clear session data, or restart the browser before a hidden
+or renamed link updates. Reload a page that had the link and the pencil menu will
+reflect your changes.
 
 ## A note on what this does and doesn't do
 

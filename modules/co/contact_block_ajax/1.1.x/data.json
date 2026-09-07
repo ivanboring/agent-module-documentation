@@ -1,7 +1,7 @@
 {
   "name": "Contact Block AJAX",
   "data_name": "contact_block_ajax",
-  "description": "provides blocks that load Contact forms via AJAX (lazy loading).",
+  "description": "Block that lazy-loads a core Contact form via AJAX (Intersection Observer), with AJAX submit and optional IP-based flood rate limiting on the load endpoint.",
   "version": "1.1.x",
   "package": null,
   "composer_namespace": "drupal/contact_block_ajax",
@@ -10,7 +10,7 @@
     "drupal:block",
     "drupal:contact"
   ],
-  "configure": null,
+  "configure": "contact_block_ajax.rate_limit",
   "core_version_requirement": "^10||^11",
   "active_installs": null,
   "list_position": null,

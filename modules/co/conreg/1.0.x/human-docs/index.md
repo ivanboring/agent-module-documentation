@@ -9,13 +9,14 @@ and taking **add‑on payments** for extra charges or optional items. It provide
 own permissions for the management side.
 
 It is worth being honest about the project's maturity: ConReg is an early
-release (currently `1.0.0-alpha4`) that is being migrated from its original GitHub
-home to Drupal.org and modernised over time. Some setup is still rough around the
-edges — most notably, after installing you currently have to add a convention
-record **manually** to the module's `conreg_events` database table (the
-maintainer notes this will be fixed), and payments require **Stripe** keys and the
-Stripe PHP library. It depends only on core and supports Drupal 10.1 and 11. Note
-the project is **not covered by Drupal's security advisory policy**.
+release (currently `1.0.0-beta2`) that is being migrated from its original GitHub
+home to Drupal.org and modernised over time. Installing now auto‑creates a default
+open event for you, and events are managed from an admin UI
+(**Configuration → ConReg → Events**). Payments require **Stripe** keys and the
+Stripe PHP library. It requires Drupal **11.2+** (or 12) and depends on three
+contrib modules — **Key**, **Token** and **Easy Email** — plus the
+`stripe/stripe-php` library, all pulled in by Composer. Note the project is **not
+covered by Drupal's security advisory policy**.
 
 **Data‑handling note.** ConReg collects **attendee personal data**, and — once you
 enable payments — is a financial flow. Expose registration data only to the

@@ -1,7 +1,7 @@
 {
   "name": "ConfQ CFP",
   "data_name": "confq_cfp",
-  "description": "Call for papers (CFP) for a conference, built on Webform.",
+  "description": "Configuration-only module (no PHP) that ships a Webform template for a conference call for papers plus an empty 'Track chair' reviewer role. Depends on Webform.",
   "version": "3.0.x",
   "package": null,
   "composer_namespace": "drupal/confq_cfp",
@@ -20,9 +20,9 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Forms and surveys"

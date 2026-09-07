@@ -32,7 +32,15 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 
 ## Where it lives in the admin menu
 
-The module provides its own settings form (route `synmail.config`). The most
-reliable way to reach it is from the modules list at **Extend**
-(`/admin/modules`): find **Contact Mail** and follow its **Configure** link. See
-[Configuration](configuration/index.md).
+The module provides its own settings form at **Administration › Configuration ›
+System › Contact Mail Settings** (`/admin/config/system/contact-mail`, route
+`contact_mail.settings`).
+
+One quirk to know about: the module's `info.yml` still points its **Configure**
+link at an old route name (`synmail.config`) that no longer exists — a leftover
+from when the project was renamed. Because of that, the **Configure** link on the
+**Extend** (`/admin/modules`) page is broken and you may see a "Route
+synmail.config does not exist" warning when you enable the module. That's harmless:
+the module installs and works fine. Just reach the settings form from the
+**Configuration › System** menu (or the `/admin/config/system/contact-mail` path)
+instead of the Extend link. See [Configuration](configuration/index.md).

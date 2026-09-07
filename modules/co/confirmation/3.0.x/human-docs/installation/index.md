@@ -43,9 +43,3 @@ After enabling, the confirmation entity type and its API are available to code. 
 clearest way to confirm everything is wired up is to enable the
 `confirmation_example` submodule and follow its flow, or run the module's tests.
 There is no admin UI to visit.
-
-## A reminder before production
-
-As shipped, the response route does not validate the URL hash (see the
-[overview](../index.md)). If you build on this module, add a hash comparison in the
-response route's access logic before exposing it to real users.

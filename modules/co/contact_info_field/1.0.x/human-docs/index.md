@@ -12,9 +12,9 @@ configurable, and the collected entries can then be shown as a **list or table**
 or exported individually. It's a content-modeling / field-type module in the Custom
 package, with no other module dependencies.
 
-Values entered into the field follow Drupal's normal field sanitization on display,
-and the module adds no permissions or access-control behavior of its own — access
-to the field follows the access of the entity it lives on.
+The module adds no permissions or access-control behavior of its own — access to
+the field follows the access of the entity it lives on. Editing a Contact Info
+field, like any field, is governed by who can edit that entity.
 
 There's no central settings page. You set it up like any other field: add a
 Contact Info field to an entity and configure how it collects and displays data,

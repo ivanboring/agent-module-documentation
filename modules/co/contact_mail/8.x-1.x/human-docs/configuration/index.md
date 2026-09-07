@@ -1,36 +1,50 @@
 # Configuration
 
-Contact Mail adds a settings form for controlling common recipients and the
-formatting of contact-form emails.
+Contact Mail adds a single settings form that controls common recipients and how
+core Contact-form emails are formatted. The settings apply to the **site-wide
+contact form** mail (and the sender's "send yourself a copy" mail).
 
 ## Open the settings form
 
-1. Log in as a user with permission to administer site configuration (an
-   administrator by default).
-2. Go to **Extend** (`/admin/modules`), find **Contact Mail** in the list, and
-   follow its **Configure** link. (Internally this is the `synmail.config` route.)
+1. Log in as a user with the **Administer contact forms** permission (an
+   administrator by default). This is the same permission that guards the form's
+   route.
+2. Go to **Administration › Configuration › System › Contact Mail Settings**, or
+   visit `/admin/config/system/contact-mail` directly.
 
-## Set common recipients
+> Don't use the **Configure** link on the Extend page — it points at an old route
+> (`synmail.config`) that no longer exists and is broken. The
+> Configuration › System menu link works.
 
-The core purpose of the form is to let you set **common recipients** for contact
-forms — the email addresses that should receive contact submissions — in one place,
-rather than configuring them separately on each contact form. Enter the recipient
-address(es) you want to apply and save.
+## The settings
 
-## Shape the email formatting
+The form (under a "Contact Form" section) has four fields:
 
-The form also lets you adjust how contact-form emails are **formatted** — the
-structure of the outgoing message. Configure the formatting to suit how you want
-those notifications to read.
+- **Contact form Recipients** (`emails`) — one email address per line. Each valid
+  address is **added** to the recipient list of every contact-form email the site
+  sends, on top of the form's own configured recipients. Use this to send a copy of
+  all contact submissions to a shared inbox without editing each form. (Addresses
+  are accepted only if they contain both an `@` and a `.`.)
+- **Rewrite submission template** (`tpl`, on by default) — when enabled, the module
+  re-renders the submitted fields into a tidy, labelled block and prepends the
+  "extra information" header (below) to the email body.
+- **Send html instead txt** (`html`, on by default) — sends the email with a
+  `text/html` Content-Type instead of plain text, so the formatted output and any
+  HTML in the header render as HTML in the recipient's mail client.
+- **Mail extra information** (`header`) — an HTML block added to the top of the
+  email body (only when "Rewrite submission template" is on). The default is a
+  short "Do not reply / find the customer's email in the message" notice. Edit it
+  to suit your team.
 
 ## A note on submitter data
 
 Contact-form emails carry the submitter's message and, frequently, their email
-address. When you set recipients and formatting, keep in mind who will receive that
-information and make sure it's routed only to the people who should see it.
+address. Because the **Recipients** field routes a copy of *every* contact
+submission to the addresses you list, double-check that list so submissions only
+reach people who should see them.
 
 ## Save
 
-Click **Save configuration**. Your changes apply to contact-form mail sent from
-then on — submit a test contact form to confirm the recipients and formatting
-behave as you expect.
+Click **Save configuration**. Changes apply to contact-form mail sent from then on
+— submit a test contact form to confirm the recipients and formatting behave as you
+expect.

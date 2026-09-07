@@ -1,17 +1,16 @@
 # Configuration
 
 ConReg needs a few post‑install steps before it can take registrations. Because the
-project is at an early alpha stage, some of these are rougher than a typical
+project is at an early beta stage, some of these are rougher than a typical
 contrib module — the maintainer has flagged them as things being improved.
 
-## 1. Create the convention (event) record
+## 1. Your convention (event) record
 
-Right now, ConReg does not yet provide a UI to create your first convention. After
-installing, you currently need to add a record **manually** to the module's
-`conreg_events` database table. The maintainer has stated this will be fixed in a
-future release, so check the project page for a UI‑based way to create an event as
-newer versions land. Until then, this manual step is what makes a convention exist
-for ConReg to register people against.
+Installing ConReg automatically creates one open **"Default event"** for you, so a
+convention already exists to register people against. Manage events — rename the
+default one, add more, or clone an existing event's settings — from
+**Configuration → ConReg → Events** (`/admin/config/conreg/events`). Each event's
+detailed settings are edited at **Configuration → ConReg → Event Configuration**.
 
 ## 2. Configure Stripe for payments
 
@@ -20,10 +19,13 @@ you must:
 
 - Have the **Stripe PHP library** installed (it comes in via Composer — see
   [Installation](../installation/index.md)).
-- Set your **Stripe API keys** in the site's settings, as described on the project
-  page. Keep secret keys out of version control — store them in an environment
-  variable and reference them from `settings.php`, or use the Key module, rather
-  than committing them.
+- Store your **Stripe API keys as Key entities** using the **Key** module (a
+  dependency), then select them in each event's **Event Configuration → Payments**
+  section (public key, secret key, currency and payment mode). Because keys are held
+  by the Key module rather than in ConReg's own config, you can back them with an
+  environment variable or file provider and keep the secrets out of exported config.
+  The payment settings form can validate the secret key against Stripe and check
+  that both keys are in the same test/live mode.
 
 Because this is a real financial flow, treat the keys as secrets and restrict who
 can reach the registration management screens.
@@ -52,6 +54,6 @@ away from roles that do not need it.
 
 ConReg is being actively modernised: its roadmap moves it from custom database
 tables toward Drupal entities and, later, integration with the Member Platform /
-CRM ecosystem. Expect the setup steps above (especially the manual event record) to
-become smoother in later releases — check the project's documentation for the
-current state before running a live event.
+CRM ecosystem. Expect the setup steps above to keep getting smoother in later
+releases — check the project's documentation for the current state before running a
+live event.

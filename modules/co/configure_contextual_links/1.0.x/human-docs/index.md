@@ -28,7 +28,7 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 1. [Installation](installation/index.md) — install with Composer and enable the
    module and its core Contextual dependency.
 2. [Configuration](configuration/index.md) — choose which contextual links to
-   disable.
+   disable or relabel.
 
 ## Where it lives in the admin menu
 

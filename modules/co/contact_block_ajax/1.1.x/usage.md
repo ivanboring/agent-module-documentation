@@ -13,23 +13,13 @@ block.
 
 ---
 
-- Load contact forms via AJAX.
-- Place them in blocks.
-- Lazy-load for performance.
-- Depend on core Block + Contact.
-- Provide its own permissions.
-- Serve content display.
-- Follow core Contact access/spam handling.
-- Have no access-control role beyond permission.
-- Place the AJAX contact block.
-- Handle AJAX contact blocks.
-- Load forms.
-- Configure the block.
-- Show contact forms.
-- Handle the block.
-- Lazy-load forms.
-- Configure Contact.
-- Handle the AJAX.
-- Add contact blocks.
-- Set the block.
-- Provide AJAX contact blocks.
+- Defer a contact form until it scrolls into view (Intersection Observer) to cut initial page weight.
+- Place one or more Contact Block AJAX blocks, each bound to a chosen contact form and form-display mode.
+- Submit the form via AJAX (no full page reload); errors re-render the form in place.
+- Support both site-wide and personal (`/user/*`) contact forms, with access checked per form on load.
+- Optionally rate-limit the AJAX load endpoint by client IP via the Flood API (Configuration → People →
+  Form load rate limit; default 30 loads / 5 minutes, disabled out of the box).
+- Integrate with anti-spam modules (CAPTCHA, reCAPTCHA, Honeypot) and, with limitations, the
+  contact_ajax module.
+- Override the `contact-block-ajax.html.twig` template or tune `drupalSettings.contactBlockAjax`
+  (threshold, rootMargin) to customise loading behaviour.

@@ -5,41 +5,26 @@ credentials (through the ActiveCampaign API module), then map the fields on your
 contact form to the fields in your ActiveCampaign account. Until both are done,
 submissions are not sent anywhere.
 
-## Step 1 — store your API credentials securely
+## Step 1 — connect your ActiveCampaign account
 
-Your ActiveCampaign **API URL** and **API key** are secrets. Do not paste the key
-directly into configuration that could be exported or committed to version
-control. The recommended pattern is to keep it in an environment variable and
-reference it through a **Key** entity.
+The connection details live in the **ActiveCampaign API** module
+(`activecampaign_api`), not in this module. Go to **Configuration → Web services →
+ActiveCampaign API** (`/admin/config/services/activecampaign-api/account`) and add
+an account. The account form asks for:
 
-Using DDEV, save the value into the project's dotenv file and restart so the
-container picks it up:
+- **ActiveCampaign API base URL** — your account's API URL, e.g.
+  `https://<your-account>.api-us1.com/api/3`.
+- **ActiveCampaign API token** — the API key from your ActiveCampaign account
+  (Settings → Developer). This is a required field.
 
-```bash
-ddev dotenv set .ddev/.env --activecampaign-api-key=<your-key>
-ddev restart
-```
+There are also optional fields for event tracking and an error-reporting webhook
+URL; leave them empty unless you use those features.
 
-The flag `--activecampaign-api-key` becomes the environment variable
-`ACTIVECAMPAIGN_API_KEY`. Never commit `.ddev/.env`.
+Save the account. You can add more than one account and target different ones from
+different contact forms.
 
-Then, if the Key module isn't already enabled, add it and create a Key that reads
-from that environment variable:
-
-```bash
-ddev composer require drupal/key
-ddev drush en key -y
-ddev drush key:save activecampaign_api_key \
-  --label='ActiveCampaign API Key' \
-  --key-type=authentication --key-provider=env \
-  --key-provider-settings='{"env_variable":"ACTIVECAMPAIGN_API_KEY","base64_encoded":false,"strip_line_breaks":true}' \
-  --key-input=none -y
-```
-
-Now open the **ActiveCampaign API** module's settings and point it at your
-account URL and, where it supports a Key, at the `activecampaign_api_key` Key you
-just created. If that module only accepts a plain value, at minimum keep the key
-out of committed configuration.
+Because the API token is a secret entered here, restrict the
+`manage activecampaign_api settings` permission to trusted administrators.
 
 ## Step 2 — map contact-form fields to ActiveCampaign
 

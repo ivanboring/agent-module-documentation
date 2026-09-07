@@ -13,19 +13,26 @@ policies and view consent — this data is sensitive.
 
 ## Create your data policies
 
-The core task is to create one or more **data policies** — the documents users are
-asked to consent to (a privacy policy, terms of use, a specific data‑processing
-notice, and so on). For each policy you define its content and it carries a
-**version**, so that when you update the policy the module can tell existing
-consent apart from consent to the new version.
+The core task is to create one or more **policies** at **Administration → People →
+Policies** (`/admin/config/people/cm-policy`). A policy is a container; the actual
+policy text lives on a **policy version** you add underneath it. Each policy can be
+marked **required**, limited to selected **user roles**, and given a **consent
+formula** — the checkbox label shown on the agreement page, where the token
+`[policy:link]` is replaced by a link that opens the policy text in a modal
+dialog (the default is `I agree to [policy:link]`). Because the text lives on the
+version, updating the policy means adding a new version, and the module can then
+tell consent to the old version apart from consent to the new one.
 
-## Show the consent prompt
+## How the consent prompt is shown
 
-Because the module depends on core **Block**, the consent prompt is surfaced
-through Drupal's block system and Path Alias. Place and target the consent prompt
-where users need to see it — for example site‑wide, or on particular paths — using
-the normal **Structure → Block layout** tools, so visitors are asked to agree at
-the right point.
+You do **not** place a block. When an **authenticated** user who has not yet agreed
+to a current required policy visits any page, the module automatically redirects
+them to the agreement page at **`/policy-agreement`**, which lists a checkbox for
+each active policy version. Anonymous visitors are never prompted, and users with
+the **Bypass any consent** permission are exempt. For non‑required new versions the
+module shows a status message linking to the agreement page instead of forcing a
+redirect. (The module's `block` and `path_alias` dependencies are declared for
+core plumbing — you do not have to configure a block for the prompt to appear.)
 
 ## Re‑prompting on policy changes
 
