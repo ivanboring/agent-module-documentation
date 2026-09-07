@@ -34,6 +34,6 @@ drush en content_connected -y
 
 Grant the module's permission (under **People → Permissions**) to the roles that
 need it, then open any node and look for the **Content Connected** sub‑tab. Opening
-it should show a table of any content connected to that node — through entity
-reference fields or long‑text fields. On a node that nothing references, the table
-will simply be empty.
+it should show a table of any published content connected to that node — through
+entity reference fields, link fields, or long‑text fields. On a node that nothing
+references, the table will simply be empty.

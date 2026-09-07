@@ -3,10 +3,10 @@
 **Content Dashboard** (`content_dashboard`) gives editors a single "My Dashboard"
 landing screen for day‑to‑day content work. Instead of hunting through the admin
 menu for the right content list, editors open one page that gathers the most
-common editorial tasks in one place — links to each content type's listing (with
-an "add content" shortcut for each), each media type's listing, and quick links
-to configuration and administration pages such as the users list, webforms,
-taxonomies, and site settings.
+common editorial tasks in one place — links to each content type's filtered
+content list, each media type's listing, and quick links to configuration and
+administration pages such as the users list, webforms, taxonomies, and site
+settings.
 
 The dashboard is personalized by role: each section only appears to users whose
 role has access to it, so the page an editor sees reflects exactly what they are

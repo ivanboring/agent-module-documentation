@@ -24,8 +24,8 @@ The dashboard is personalized: its sections appear according to what each role c
 access, so you do not configure the page contents directly — you configure them
 indirectly through your existing roles and permissions.
 
-- **Content section** — lists the content types the user can work with, each with
-  a link to that type's filtered content list and a shortcut to add new content.
+- **Content section** — lists the content types the user can create, each with a
+  link to that type's filtered content list.
 - **Media section** — lists the media types the user can work with (audio,
   documents, images, video, and so on), each linking to that type's media list.
 - **Configuration section** — shows administrative links (users list, webforms,

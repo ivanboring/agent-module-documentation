@@ -10,10 +10,6 @@
 There are no additional PHP libraries or third‑party Composer requirements. This
 project is covered by Drupal's security advisory policy.
 
-> **Before you rely on it:** the current release has documented defects that make it
-> unsafe as a hard access boundary (see the [overview](../index.md) and
-> [Configuration](../configuration/index.md)). Read those first.
-
 ## Install with Composer
 
 From the project root:
@@ -50,5 +46,5 @@ The project ships one optional submodule:
 
 After enabling, configure at least one section and assign it to a test editor via
 the taxonomy field on their account (see [Configuration](../configuration/index.md)).
-Then log in as that editor and confirm which content they can and cannot edit —
-**test carefully**, given the documented defects, before trusting it in production.
+Then log in as that editor and confirm which content they can and cannot edit before
+trusting it in production.

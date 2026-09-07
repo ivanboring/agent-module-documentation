@@ -6,7 +6,9 @@
 - Core modules **Node**, **Taxonomy**, and **Media** enabled — these are the entity
   types the graph traverses.
 - No third‑party Composer or PHP library requirements. (The visualization uses the
-  vis‑network library, which ships with the module.)
+  vis‑network JavaScript library, which the module loads at runtime from an external
+  CDN — `https://unpkg.com/vis-network/…` — so the browser needs internet access to
+  that host for the graph to render.)
 
 ## Install with Composer
 

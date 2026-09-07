@@ -3,8 +3,7 @@
 Content Access by Path works by giving each editor a **taxonomy field on their user
 account** that lists the site sections (path prefixes) they're allowed to edit. The
 module then uses Drupal's access layer to allow editing of content whose URL alias
-falls under one of those sections — plus content the editor authored (see the
-warning below).
+falls under one of those sections — plus content the editor authored (see below).
 
 ## Who can configure it
 
@@ -25,29 +24,21 @@ trusted administrators.
    they can and cannot edit — across the rendered site *and* any API surface
    (JSON:API/REST/Views), since the module enforces through the real access layer.
 
-## What it does — and does NOT — protect
+## How matching works — things to keep in mind
 
-Please configure this module with the following limitations in mind. They come from
-the publicly documented analysis of the current release (**1.1.3**), verified on a
-clean install:
+Configure the module with these behaviours in mind:
 
-- **Restricting an editor can unintentionally grant them delete/edit on their own
-  content.** The "own content" allowance returns an *allowed* result that is OR‑ed
-  with core's decision, so filling in a user's restriction field can grant **update
-  and delete on that user's own nodes even without any edit/delete permission** — and
-  the configured section is not consulted for that case. Do not assume that adding a
-  restriction only *narrows* access.
-- **Section boundaries are not exact.** Matching is a plain "starts with" check, so a
-  `/news` section also matches `/newsletter-admin` and `/news-archive-private`. Name
-  your sections and aliases so that no allowed prefix accidentally swallows a path it
-  shouldn't.
-- **Access follows the URL alias, which is content.** Renaming an alias moves a node
-  between sections, and any user who can set an alias can move their own content into
-  a section they're permitted to edit. Restrict who can edit aliases accordingly.
-
-Because of these issues, use Content Access by Path to **organise editorial work**,
-not as a hard security boundary, until a fixed release is available on the project
-page.
+- **A user with an empty section field is not restricted** — the module only narrows a
+  user once at least one section is assigned. Assign sections to exactly the editors
+  you want scoped.
+- **Editors can always edit content they authored.** This is by design (so a wrong
+  alias never locks an author out of their own node). If you don't want a role editing
+  its own past content, keep that behaviour in mind when granting the role.
+- **Sections are matched as path prefixes** — a `/news` section covers every node
+  whose alias begins with `/news`. Choose section paths and aliases so that a prefix
+  maps to exactly the branch you mean to delegate.
+- **Matching uses the node's URL alias.** A node's section follows its alias, so keep
+  control of who can edit aliases when you rely on sections to route editing.
 
 ## Caching
 

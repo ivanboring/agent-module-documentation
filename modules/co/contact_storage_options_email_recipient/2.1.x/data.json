@@ -1,7 +1,7 @@
 {
   "name": "Contact Storage Options Email Recipient",
   "data_name": "contact_storage_options_email_recipient",
-  "description": "Maps a contact-form options field to email recipients (route submissions by a selected option).",
+  "description": "Admin-UX helper for contact_storage's 'Options email' field: removes the redundant recipient field from the contact-form edit page when a required Options email field determines the recipient.",
   "version": "2.1.x",
   "package": null,
   "composer_namespace": "drupal/contact_storage_options_email_recipient",
@@ -21,7 +21,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Forms and surveys"

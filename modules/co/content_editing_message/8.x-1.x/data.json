@@ -1,7 +1,7 @@
 {
   "name": "Content Editing Messages",
   "data_name": "content_editing_message",
-  "description": "Shows a configurable message to content editors when they edit an entity.",
+  "description": "Adds admin-authored, configurable messages (info/warning/error/plain) to node and media add/edit forms, targeted by bundle and optionally by user role, with configurable placement and optional Field Group integration.",
   "version": "8.x-1.x",
   "package": null,
   "composer_namespace": "drupal/content_editing_message",
@@ -32,7 +32,10 @@
     "message",
     "editors",
     "guidance",
-    "ux"
+    "ux",
+    "node",
+    "media",
+    "field_group"
   ],
   "project_description": "The Content Editing Message (content_editing_message) module allows you to add multiple messages to content and media forms with multiple displays options. \n\n The module has a configuration page in which this functionality can be applied to one (or more) content and media types. Addicionally you can configure:\n\n \n Title (translatable) \n Message and format (translatable) \n Style: info, warning, error or plain \n Weight: top, bottom or custom \n \n The configuration page can be found in /admin/config/content/messages .\n\n This module is compatible with Field Group module. Therefore if installed it will appear an extra option where you can input your field_group machine name (example: group_mytab ).",
   "maintenance_status": "Actively maintained",

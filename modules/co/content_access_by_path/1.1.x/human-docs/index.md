@@ -10,33 +10,25 @@ The idea is a genuinely useful one. Delegating editing "by section" is a common 
 on large sites, and core has no native answer: permissions are per content type and
 per ownership, neither of which expresses "this team owns this branch of the site".
 Content Access by Path keys on the path alias — which already mirrors the site's
-structure — and, importantly, enforces its decisions through Drupal's **real access
-layer** (`hook_node_access()` and `hook_entity_field_access()`), so they apply to
-JSON:API, REST, and Views, not just the rendered page. An editor's allowed sections
-are driven by a taxonomy field on their user account.
+structure — and enforces its update/delete decisions through Drupal's entity access
+layer (`hook_node_access()` and `hook_entity_field_access()`), so they apply to the
+edit form and to JSON:API/REST writes, not just the rendered page. An editor's allowed
+sections are driven by a taxonomy field on their user account.
 
-**Please read this before deploying it as a security boundary.** The publicly
-documented analysis of version **1.1.3** found three defects — verified on a clean
-install — that make this release **unsafe to rely on as a restriction**:
+A couple of behaviours are worth understanding before you configure it:
 
-1. **Restricting an editor can accidentally *widen* their access.** The
-   "own content" escape hatch returns an *allowed* access result instead of a
-   *neutral* one. Because an allowed result from `hook_node_access()` is OR‑ed with
-   core's decision, **populating a user's restriction field can grant update and
-   delete on that user's own nodes even to someone who holds no edit or delete
-   permission at all** — and the configured section isn't even consulted. The very
-   act of restricting an editor is what can broaden them.
-2. **Section matching is a bare prefix check.** It uses an unbounded "starts with"
-   test, so a section of `/news` **also matches** `/newsletter-admin` or
-   `/news-archive-private` — paths you never intended to include.
-3. **Access is keyed on the URL alias, which is content.** Renaming an alias moves a
-   node between sections, and anyone who can set an alias can move their own content
-   into a section they're allowed to edit.
+- **A user with no sections assigned is unaffected** — they keep whatever edit/delete
+  access Drupal would otherwise give them. The module only starts to narrow a user
+  once their section field is populated.
+- **Editors can always edit content they authored**, by design: this is so that a
+  wrong alias on their own node never locks them out of it. Scope your roles with that
+  in mind.
+- **Sections are matched as path prefixes**, so a section of `/news` covers everything
+  whose alias begins with `/news`. Choose section paths and aliases so a prefix maps to
+  exactly the branch you intend.
 
-In short: treat this module as a **convenience for organising editorial work, not a
-hard security boundary**, until these issues are resolved upstream. This project is
-covered by Drupal's security advisory policy — check the project page for a fixed
-release before using it to protect anything sensitive.
+This project is covered by Drupal's security advisory policy; check the project page
+for the current release before deploying it.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

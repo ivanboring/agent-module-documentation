@@ -22,8 +22,8 @@ link on an existing row to change it.
   **translatable**, so on a multilingual site you can provide per‑language
   wording.
 - **Message** and **text format** — the body of the message, also
-  **translatable**. Pick a text format appropriate to who is authoring the
-  message; the body is rendered through that format.
+  **translatable**. It is a rich-text field with a text-format selector, so you
+  can author formatted content such as headings, lists, and links.
 - **Style** — how the message is visually presented on the form. Choose from:
   - **Info** — a neutral, informational note.
   - **Warning** — a cautionary note that stands out more.

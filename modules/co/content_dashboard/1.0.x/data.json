@@ -1,7 +1,7 @@
 {
   "name": "Content Dashboard",
   "data_name": "content_dashboard",
-  "description": "Offers a dashboard to help editors manage content.",
+  "description": "Adds a role-personalized dashboard at /admin/content-dashboard (and a 'My Dashboard' toolbar tab) listing permission-filtered links to each content type's content list, each media type's list, and admin pages (users, webforms, taxonomies, site settings). Links only — no counts, data or charts. No settings form; defines the 'access content dashboard' permission.",
   "version": "1.0.x",
   "package": "Other",
   "composer_namespace": "drupal/content_dashboard",
@@ -19,7 +19,7 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools"
@@ -30,8 +30,11 @@
   "keywords": [
     "content dashboard",
     "editorial",
-    "overview",
-    "management",
+    "navigation",
+    "admin links",
+    "toolbar",
+    "personalized",
+    "roles",
     "admin"
   ],
   "project_description": "The Personalized Content Dashboard module offers a dashboard to facilitate access and management of different content according to roles. This dashboard is accessible through an item \"My Dashboard\" in the main administration menu.\n\n Features \n The dashboard lists the following sections, depending on our role access:\n\n Content Section: \n\nLists the different content types available on your site. Each content type comes with a link that takes you to the list of contents of that type, with a filter applied. For each content type, you can also add content directly from this page.\n\n Media Section: \n\nLists the different media types available on your site, such as audio, documents, images, videos, etc. Each media type comes with a link that takes you to the list of media of that type.\n\n Configuration Section: \n\nThis section lists links to different configuration and administration pages of your site, such as:\n\n \n List of users: Access the list of registered users on your site. \n List of webforms: Access the list of forms and their submissions. \n List of taxonomies: Access the list of taxonomies \n Site settings: Access Configuration page. \n \n Post-Installation \n Grant the \"access content dashboard\" user permissions to desired roles.\n\n Back to top",

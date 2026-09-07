@@ -15,8 +15,7 @@ entirely. It's a small, focused contact-form tweak that depends only on core's
 
 There's no central settings page. Once enabled, the recipient field simply becomes
 optional on the contact-form edit screen — leave it empty for the forms that
-shouldn't send mail, as described below. The module also provides its own
-permission, so you can review it at the permissions page.
+shouldn't send mail, as described below.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -34,8 +33,8 @@ recipient field optional on contact forms, as described below.
 
 The module adds no settings page of its own. You work on each contact form at
 **Structure → Contact forms → *(your form)* → Edit** (`/admin/structure/contact`),
-where the **Recipients** field is now optional. Its permission (if you need to
-review it) is at **People → Permissions** (`/admin/people/permissions`).
+where the **Recipients** field is now optional. Editing contact forms is
+controlled by core's own **Administer contact forms** permission.
 
 ## How to use it
 

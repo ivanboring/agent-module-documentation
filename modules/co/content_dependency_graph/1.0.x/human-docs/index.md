@@ -7,8 +7,8 @@ read‑only reporting and visualization tool: nothing on the screen changes your
 content, it just helps you *see* the web of references before you act on it.
 
 The graph is a force‑directed diagram (powered by the vis‑network library) with
-nodes color‑coded by entity type — **Node** blue, **Paragraph** purple, **Media**
-orange, **Taxonomy term** green, **File** yellow — each with an SVG icon. You can
+nodes color‑coded by entity type — **Node** blue, **Paragraph** green, **Media**
+purple, **Taxonomy term** orange, **File** red — each with an SVG icon. You can
 zoom, fit‑to‑view, go fullscreen, drag to pan, and filter by entity type while the
 root node always stays visible. Click any node in the graph and a sidebar shows
 that entity's details and relationships. The graph traverses entity reference and

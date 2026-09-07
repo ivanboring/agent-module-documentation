@@ -1,7 +1,7 @@
 {
   "name": "Content Dependency Graph",
   "data_name": "content_dependency_graph",
-  "description": "Visualizes reference relationships between nodes, media, taxonomy, and paragraphs.",
+  "description": "Admin tool that renders a node and its recursively-referenced entities (media, taxonomy terms, paragraphs, files, nodes) as an interactive vis-network dependency graph.",
   "version": "1.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/content_dependency_graph",
@@ -23,7 +23,7 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools"

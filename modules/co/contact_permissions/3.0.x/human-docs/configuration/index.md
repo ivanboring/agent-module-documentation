@@ -9,8 +9,12 @@ right *is* the configuration, so work through it carefully.
 1. Log in as a user who can administer permissions (an administrator by default).
 2. Go to **People → Permissions** (`/admin/people/permissions`).
 3. Find the module's **Have a personal contact form** permission and tick it for
-   each role that should be allowed to have a personal contact form.
-4. Save permissions.
+   each role that should be allowed to have a personal contact form (this controls
+   who can be *contacted* through a personal form).
+4. Optionally tick a **Use ROLE's personal contact forms** permission (the module
+   adds one per role) for any role that should be able to *reach* the personal
+   contact forms of recipients holding that role.
+5. Save permissions.
 
 For any role you leave **unticked**, the module:
 
@@ -21,11 +25,17 @@ For any role you leave **unticked**, the module:
 
 ## How it interacts with core's permission
 
-This module works alongside core's own **access user contact forms** permission —
-it tightens rather than replaces it. Core's access check runs first; only if core
-would grant access does this module apply its role-based rules. So a user needs the
-appropriate core access to reach personal contact forms in the first place, and this
-module then narrows *whose* forms are reachable based on role.
+This module works alongside core's own **access user contact forms** permission.
+Core's access check runs first. A recipient must always have **Have a personal
+contact form** for their form to be reachable at all — this is an added requirement
+on top of core.
+
+Whose forms a sender can reach is then decided as follows: a sender who has core's
+site-wide **access user contact forms** can reach any (permitted) recipient, exactly
+as in core. A sender who does *not* have that core permission can still reach a
+recipient if the sender holds the matching **Use ROLE's personal contact forms**
+permission for one of that recipient's roles. This lets you grant narrow,
+role-scoped contact access without handing out the broad core permission.
 
 ## Verify the assignment
 

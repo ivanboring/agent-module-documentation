@@ -18,12 +18,12 @@ page: "The recipient of this form is determined by the '[field name]' field." Wh
 the "Options email" field is optional, it instead notes that the field determines
 an *additional* recipient.
 
-There is no central settings screen. You configure the behavior entirely by adding
-and arranging an "Options email" field on your contact form and mapping each option
-to an address — the mapping is **administrator-defined**, which is the safe design:
-visitors pick from your fixed list of options, they never type an arbitrary
-address, so your site can't be turned into an open mail relay. The module has no
-access-control role of its own.
+There is no central settings screen. You configure the behavior entirely on Contact
+Storage's side — by adding an "Options email" field to your contact form and mapping
+each option to an address. Visitors pick from that administrator-defined list of
+options; the option→address mapping is handled by Contact Storage, not by this
+module. This module only removes the now-redundant recipient field on the edit page
+and shows the notice. It adds no routes, permissions, or configuration of its own.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

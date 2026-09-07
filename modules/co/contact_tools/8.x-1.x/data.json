@@ -1,7 +1,7 @@
 {
   "name": "Contact Tools",
   "data_name": "contact_tools",
-  "description": "Helpers for the core Contact module, including AJAX blueprints for contact forms.",
+  "description": "Developer toolkit for core Contact forms: a service, Twig functions, a text filter, and alter hooks to render/embed contact forms with on-demand AJAX (e.g. in a modal). No admin UI or permissions of its own; the AJAX render route is gated by core contact_form.view access.",
   "version": "8.x-1.x",
   "package": null,
   "composer_namespace": "drupal/contact_tools",
@@ -21,7 +21,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Forms and surveys"
