@@ -34,5 +34,4 @@ Custom Paragraphs is a developer library, so there is nothing visible in the adm
 UI to check. Confirm success by wiring the library into one of your own custom
 forms (see ["How to use it"](../index.md#how-to-use-it)) and loading that form —
 the repeatable "add another item" controls should appear and let you add and
-remove groups. Remember the caution about the file-upload endpoints noted on the
-overview page before using the file widget on any public form.
+remove groups.

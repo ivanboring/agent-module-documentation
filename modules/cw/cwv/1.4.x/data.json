@@ -1,13 +1,13 @@
 {
   "name": "CWV",
   "data_name": "cwv",
-  "description": "Self-hosted real-user Core Web Vitals tracking (LCP, INP, CLS, FCP, TTFB) with Drupal-side signal correlation.",
+  "description": "Self-hosted real-user Core Web Vitals tracking (LCP, INP, CLS, FCP, TTFB) that correlates each measurement with Drupal-side signal (route, role, cache state, query count, render-tree size) via an extensible tagged-service collector contract.",
   "version": "1.4.x",
   "package": "Performance and scalability",
   "composer_namespace": "drupal/cwv",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "cwv.settings",
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -15,7 +15,10 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/lscache": "Adds an LSCache hit/miss + tag-list collector for the cwv_lscache submodule.",
+    "drupal/jelastic_info": "Adds a Jelastic environment-state collector for the cwv_jelastic submodule."
+  },
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
@@ -34,7 +37,7 @@
     "monitoring",
     "lcp"
   ],
-  "project_description": "Real-user Core Web Vitals for Drupal.\n\n Captures LCP, CLS, INP, FCP, and TTFB from real visitor browsers using the standard web-vitals JS. Stores them in two tables: cwv_beacons for real-user data, cwv_probes for cron-driven synthetic observations. Renders correlation panels at /admin/reports/cwv that join each metric to backend signals.\n\n What you can answer out of the box:\n\n \n Does Drupal's page cache hit rate predict LCP on this route? \n Are slow INP outliers concentrated on logged-in pages? \n Did the count of \"poor\" beacons shift after the deploy on Tuesday? \n Which routes have the worst p75 TTFB? \n \n No third-party service. No JS calls to external endpoints. Data stays in your database.\n\n Privacy and hardening. Capture is off after install. Sampling defaults to 0.1. Per-IP flood protection and a configurable table-size guard defend the endpoint. Three URL-storage policies (hash, path-only, full) cover the GDPR / CCPA exposure the site can tolerate. Outlier filtering is on by default for new installs and drops obvious non-RUM noise (backgrounded-tab artefacts, broken-page beacons) before storage. SECURITY.md and PERFORMANCE.md in the repo cover the full posture and sizing tables.\n\n Built as a substrate. A frozen, security-advisory-covered collector contract with four shapes (synchronous, async-decoration, probe, panel-contribution) lets sibling modules add their own context fields and report panels via a single tagged service. Built-in collectors ship the Drupal cache state, render-tree size, backend cache hit/miss, database query count, OPcache and APCu runtime health, edge-cache state across the major CDN vendors, and upstream / CDN request-ID correlation.\n\n Roadmap in ROADMAP.md . Contract design in docs/collector-contract.md .",
+  "project_description": "CWV is a self-hosted Real User Monitoring tool for Core Web Vitals. The bundled beacon JS captures LCP, INP, CLS, FCP, and TTFB from real visitor browsers and POSTs them to an in-Drupal endpoint (/cwv/beacon); nothing is sent to any third-party service. Measurements land in the cwv_beacons table, and cron-driven synthetic observations land in cwv_probes. A report at /admin/reports/cwv renders correlation panels that join each metric to backend signals: page/dynamic cache HIT vs MISS, backend cache miss count, render-tree (cache-tag) size, database query count, plus per-route p50/p75/p95 percentiles and daily counts with operator-recorded deploy-event markers. Capture is off after install; sampling defaults to 0.1; per-IP flood protection, a max_rows table-size guard, and outlier filtering defend the endpoint; three URL-storage policies (hash / path / full) bound PII exposure. The module is built as a substrate: a tagged-service collector contract with four shapes (synchronous, async-decoration, probe, panel-contribution) lets sibling modules add their own context fields and report panels. Built-in collectors cover Drupal cache state, user auth state, backend cache hit/miss, render-tree size, database query counts, OPcache and APCu runtime health, edge-cache state across major CDN vendors, and upstream/CDN request-ID correlation.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

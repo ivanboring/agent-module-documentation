@@ -1,13 +1,15 @@
 {
   "name": "Drupal Atomic Builder",
   "data_name": "dab",
-  "description": "Helps developers build components using the Component Design Pattern and Single Directory Components (SDC).",
+  "description": "Build, preview and scaffold Single Directory Components (SDC) from the Drupal admin following the Atomic Design pattern.",
   "version": "1.1.x",
   "package": "Development",
   "composer_namespace": "drupal/dab",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "league/commonmark": "^2.4"
+  },
   "dependent_modules": [
-    "drupal:sdc"
+    "sdc"
   ],
   "configure": null,
   "core_version_requirement": "^10.3 || ^11",
@@ -21,14 +23,15 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools",
     "Theming"
   ],
   "subcategories": [
-    "Code generation / scaffolding"
+    "Code generation / scaffolding",
+    "Twig / component libraries"
   ],
   "keywords": [
     "sdc",
@@ -37,7 +40,7 @@
     "builder",
     "frontend"
   ],
-  "project_description": "The Drupal Atomic Builder (DAB) module is designed for front-end developers, offering functionalities for both visualizing and creating components through the Single Directory Component (SDC). It integrates smoothly with Drupal's admin interface for ease of use. The module allows developers to code their components without having to create full content. Despite its capabilities, it is strongly advised not to use this module in production environments.\n\n Features \n Provides in-admin lists and previews of your components.\n\n Installation \n composer require --dev drupal/dab:^1.x \n\n Additional Requirements \n \n Single Directory Component \n CommonMark - Markdown library \n Back to top",
+  "project_description": "Drupal Atomic Builder (DAB) gives front-end developers an in-admin workbench for Single Directory Components (SDC). It lists every SDC discovered across core, contrib and custom modules and themes, groups them by Atomic Design type (atoms, molecules, organisms, templates, pages) and renders each one in a live, responsive iframe preview driven by the component's own prop and slot examples. From the same UI developers can scaffold new components (generating the .component.yml, Twig, README and optional JS/CSS files) and edit, duplicate or delete the components they own, without hand-creating content or files. Create/edit/delete operations are restricted to custom modules and themes so core and contrib components stay read-only. The module ships a Markdown-rendered documentation tab (league/commonmark), a cache/asset-reload button, and toolbar/navigation integration. It is a developer aid and its maintainers strongly advise against enabling it in production environments.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

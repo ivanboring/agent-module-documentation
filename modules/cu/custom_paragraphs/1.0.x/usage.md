@@ -1,39 +1,42 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Custom Paragraphs provides a generic, repeatable custom paragraph field-group library,
-including an AJAX-driven "repeatable file upload" widget for adding multiple files to a
-paragraph-style field group.
+Custom Paragraphs is a developer library for building dynamic, repeatable "add another item"
+field groups in custom Drupal forms, storing the collected rows as JSON in a hidden field.
 
 ---
 
-Its front-end controller (`RepeatableFileUploadController`) exposes two POST endpoints —
-`/custom-paragraphs/repeatable-file-upload` and `/custom-paragraphs/repeatable-file-restore` —
-that receive uploaded files (or file ids) over AJAX and return JSON describing the saved
-managed files (fid, filename, uri, url). The upload handler takes an `upload_location`,
-optional `multiple` flag and an `accept` list from the request, saves each file as a permanent
-managed `file` entity, and returns its metadata; the restore handler re-hydrates previously
-uploaded files by fid.
-
-Both routes are gated only by the core **"access content"** permission (granted to anonymous
-users by default). Note the upload endpoint takes the destination directory (`upload_location`)
-and the accepted file types (`accept`) from the client request, and only enforces type rules
-when an `accept` value is supplied — review the operational security notes below before exposing
-it on a public site. Use the module to build repeatable paragraph groups with attached file
-uploads in content-editing forms.
+The module ships a front-end JavaScript class, `RepeatableFieldGroup` (exposed on the global
+`window.RepeatableFieldGroup`, in `js/components/repeatable-field-group.js`), plus a small CSS
+theme and a Drupal library `custom_paragraphs/custom_paragraphs`. A developer attaches the
+library, adds a hidden data element and a wrapper container to their own form, and instantiates
+the class in JavaScript with a field definition (text, textarea, select, checkbox, and file
+fields, with optional CKEditor 5 rich-text on textareas). The widget renders the add/remove UI,
+runs client-side validation, optionally rich-texts textareas via `Drupal.editors.ckeditor5`, and
+serializes every row back into the hidden input as JSON on change. File fields are backed by two
+AJAX endpoints served by `RepeatableFileUploadController`
+(`/custom-paragraphs/repeatable-file-upload` and `/custom-paragraphs/repeatable-file-restore`)
+that save uploads as permanent managed `file` entities and return their metadata (fid, filename,
+uri, url) as JSON, and re-hydrate previously saved files by fid. The module has no admin settings
+form, no config entities, and no permissions of its own; it is wired into forms in code.
 
 ---
 
-- Build repeatable custom paragraph field groups.
-- Attach an AJAX repeatable file-upload widget to a field group.
-- Upload multiple files to a paragraph group over AJAX.
-- Return saved-file metadata (fid/uri/url) as JSON.
-- Restore previously uploaded files by fid.
-- Restrict a widget to a single file via the multiple flag.
-- Constrain accepted types with an accept list.
-- Save uploads as permanent managed file entities.
-- Reuse a generic paragraph library across content types.
-- Add repeatable structured content blocks to forms.
-- Let editors add several files to one paragraph group.
-- Return uploaded-file URLs to the editing UI over AJAX.
-- Rehydrate a form's files after a validation error.
-- Cap a widget to a single file when needed.
-- Reuse the paragraph library across multiple content types.
+- Build a repeatable "add another item" field group in a custom form.
+- Collect several sets of similar inputs (addresses, team members, documents) as one JSON value.
+- Store the whole group as JSON in a single hidden form field.
+- Offer text, textarea, select, checkbox and file field types per row.
+- Add CKEditor 5 rich-text editing to a textarea field in a repeatable row.
+- Attach an AJAX file-upload widget to a repeatable row with a preview list.
+- Upload one or many files per file field over AJAX and get managed-file metadata back.
+- Cap a file field to a single file with the `multiple` flag.
+- Restrict a file field to given extensions/MIME types with an `accept` list.
+- Enforce minimum and maximum item counts (`minItems`, `maxItems`).
+- Pre-populate the group from existing data (`fieldGroupDefaultValue`) when editing.
+- Re-hydrate previously uploaded files by fid when re-rendering a saved form.
+- Mark fields required and show per-field client-side validation messages.
+- Customize labels, button text, CSS classes and wrapper ids for the generated markup.
+- Number and re-number repeated item titles automatically as rows are added/removed.
+- Reuse one generic field-group library across many custom forms and content types.
+- Avoid the entity overhead of core Paragraphs for lightweight, form-local repeatable data.
+- Return uploaded-file URLs to the editing UI so editors can open the files.
+- Prefix/suffix a field with custom HTML fragments in the generated markup.
+- Drive the widget entirely client-side and read the JSON value on form submit.

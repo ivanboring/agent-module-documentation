@@ -1,7 +1,7 @@
 {
   "name": "Custom Twig Formatter",
   "data_name": "custom_twig_formatter",
-  "description": "A field formatter that renders fields using admin-written custom Twig code (powerful — trusted admins only).",
+  "description": "A field formatter that renders a field by evaluating admin-written Twig code, with every field on the entity exposed as a Twig variable.",
   "version": "2.1.x",
   "package": "Fields",
   "composer_namespace": "drupal/custom_twig_formatter",
@@ -10,7 +10,7 @@
     "drupal:field"
   ],
   "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/custom_twig_formatter",

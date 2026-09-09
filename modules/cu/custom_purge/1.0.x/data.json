@@ -1,16 +1,18 @@
 {
   "name": "Custom Purge",
   "data_name": "custom_purge",
-  "description": "provides lightweight, queueable, customizable cache purging.",
+  "description": "Lightweight, queueable and customizable cache purging.",
   "version": "1.0.x",
   "package": "Other",
   "composer_namespace": "drupal/custom_purge",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "ext-curl": "*"
+  },
   "dependent_modules": [
-    "drupal:page_cache"
+    "page_cache"
   ],
   "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^8.9 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/custom_purge",
@@ -20,23 +22,28 @@
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
-  "provides_drush_commands": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "PurgePlugin"
+  ],
   "categories": [
     "Performance"
   ],
   "subcategories": [
-    "Cache invalidation"
+    "Cache invalidation",
+    "CDN integration"
   ],
   "keywords": [
     "purge",
     "cache",
     "invalidation",
     "queue",
+    "varnish",
+    "cloudflare",
     "cdn"
   ],
-  "project_description": "Adds a form to purge Urls from configured caching instances. Also provides Drush commands to enqueue purges of the whole cache.\n\n This is a major refactor (might be called a fork) of https://github.com/BurdaMagazinOrg/module-custom_purge . The config schema of this refactor is not backwards-compatible, i.e. if you want to migrate to this refactor, you'd need to adjust the configuration accordingly. Also, Drush commands have changed due to the introduction of a new queue-based approach.\n\n This refactor introduces the concept of queued purge operations, mainly when purging everything from your beloved caching instances. When a purge operation is to be run is mainly set via the delay_complete_purge configuration key (more details see example below).\n\n The module is built with a plugin system, so additional caching instances that need to be purged can be added that way. Included purge plugins:\n\n \n Drupal's internal page cache \n Varnish (might be too custom / specific, you might need to write your own Varnish plugin) \n Cloudflare \n \n Requirements:\n\n \n Drush 9 or 10 \n A working and regular Cron run or... \n ...alternatively, schedule a cron job that requlary runs drush queue:run custom_purge_urls --items-limit=100 and drush queue:run custom_purge_everything --items-limit=100 . One queue item is supposed to take approximately one second of processing time. \n \n If you are using the queue:run command and ask yourself why so many items were processed: In case an item did not reach the configured delay_complete_purge yet, it re-throws itself into the queue (with additional wait time of one second). It does only perform a purge request when that delay is reached. \n\n Since this module does not come with a form for the custom_purge.settings configuration, you'd need to manually edit that yml file.\n\nExample configuration of custom_purge.settings.yml:\n\n \n\nprofile: production\n\nprofiles:\n\n production:\n\n max_url_per_request: 25\n\n flood_interval: 24\n\n flood_limit: 100\n\n cache_instances:\n\n -\n\n cache_type: drupal_page_cache\n\n cache_name: internal_page_cache\n\n allow_url_purge: true\n\n allow_purge_everything: true\n\n delay_complete_purge: 0\n\n cid_extensions:\n\n - ':'\n\n - ':html'\n\n - ':json'\n\n - ':xml'\n\n - ':xhtml'\n\n -\n\n cache_type: varnish\n\n cache_name: my_varnish\n\n allow_url_purge: true\n\n allow_purge_everything: true\n\n delay_complete_purge: 1800\n\n ip: 127.0.0.1\n\n port: 443\n\n verifyhost: false\n\n verifypeer: false\n\n single:\n\n http_method: DELETE\n\n http_headers: { }\n\n everything:\n\n http_method: BAN\n\n http_headers: { }\n\n url: '/ban-url'\n\n -\n\n cache_type: cloudflare\n\n cache_name: my_cloudflare\n\n allow_url_purge: true\n\n allow_purge_everything: true\n\n delay_complete_purge: 3600\n\n use_cf_settings: false\n\n email: cloudflaremail@localhost\n\n zone_id: '123456'\n\n apikey: fdghg5435sdfg\n\n domains:\n\n -\n\n is_default: true\n\n default_protocol: https\n\n domain: mydrupalsite.local\n\n assigned_cache_instances:\n\n - internal_page_cache\n\n - my_varnish\n\n - my_cloudflare\n\n -\n\n is_default: false\n\n default_protocol: https\n\n domain: anotherdomainofmydrupalsite.local\n\n assigned_cache_instances:\n\n - internal_page_cache\n\n - my_varnish_cache\n\n - my_varnish\n\n \n\n When you're done, import that config with drush cim .\n\n This module tries to be relatively small. If you need more extensibility and support of more third party providers, use the Purge module .",
+  "project_description": "Custom Purge is a lightweight, plugin-based cache purging module for Drupal. It adds an admin form to purge individual URLs from configured caching instances and Drush commands to enqueue purges of whole caches. It is a major refactor (fork) of BurdaMagazinOrg/module-custom_purge with a new, non-backwards-compatible config schema and a queue-based approach controlled by the delay_complete_purge config key. Purge targets are modeled as PurgePlugin plugins; the module ships three: Drupal's internal page cache, Varnish and Cloudflare. Configuration is keyed by named profiles (one active per environment) and per-domain settings; there is no settings UI, so custom_purge.settings must be edited/imported as YAML. Requires Drush 9/10/11 and a regular cron run (or scheduled drush queue:run calls) to process the custom_purge_urls and custom_purge_everything queues.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

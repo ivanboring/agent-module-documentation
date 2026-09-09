@@ -1,39 +1,30 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Custom Twig Formatter makes it possible to format fields using custom Twig code.
+Custom Twig Formatter adds a field formatter that renders a field by evaluating Twig code you write in the Manage-display UI, exposing every field on the entity as a Twig variable.
 
 ---
 
-Custom Twig Formatter provides a field formatter that renders a field using **custom Twig code** entered
-in the formatter settings — so site builders can format a field's output with arbitrary Twig (markup, logic,
-tokens) without writing template files. It depends on core Field, in the Fields package.
-
-Use it for flexible, code-free field formatting. **Security-relevant note:** it evaluates **admin-authored
-Twig** as the field formatter — Twig is powerful, so this is a **trusted-administrator capability**. Drupal
-renders Twig through its **sandbox** (which restricts dangerous functions/filters), which mitigates the risk,
-but the Twig configurer can still craft output/markup, so: restrict who can configure field displays (the
-formatter settings) to trusted users, and never expose the formatter configuration to untrusted users. It has
-no content-access role (rendered field content respects its own access). Configure the Twig on the field
-formatter.
+The module ships a single field formatter plugin, `custom_twig_markup` ("Custom Twig markup"), that applies to a broad set of core field types (boolean, string/text, integer/decimal/float, list_*, datetime/daterange, timestamp/created/changed, email, telephone, uri, link, file, image, entity_reference, language, comment). When you select it on a field in *Manage display*, a **Twig code** textarea appears in the formatter settings. At view time the formatter builds a render context in which each of the entity's field items is available as a variable named after the field's machine name, plus a `label` variable (the current field's label, honoring `field_display_label` when that module is installed), then compiles and renders your stored Twig string against that context and outputs the result as `#markup`. Because the template can read any field on the entity, one field's display can combine or reformat values from several fields. The Twig snippet is part of the view-display configuration entity, so setting it requires the entity type's "administer display" permission and it travels with configuration export/import. There are no routes, permissions, services, Drush commands, or submodules of the module's own; the only dependency is core `field`.
 
 ---
 
-- Format fields with custom Twig.
-- Render a field via admin Twig code.
-- Avoid writing template files.
-- Depend on core Field.
-- Add markup/logic/tokens in the formatter.
-- TREAT it as a trusted-admin capability.
-- Rely on Drupal's Twig sandbox to mitigate.
-- Restrict who configures field displays.
-- Never expose the formatter config to untrusted users.
-- Have no content-access role.
-- Configure the Twig on the formatter.
-- Handle Twig formatting.
-- Format flexibly.
-- Configure the formatter.
-- Render with Twig.
-- Restrict Twig config.
-- Handle field Twig.
-- Format with code.
-- Configure the field.
-- Format via Twig.
+- Render a field's output from a custom Twig template written directly in *Manage display*, no theme or preprocess code needed.
+- Combine several fields of one entity into a single field's markup (e.g. show `field_first_name` and `field_last_name` together).
+- Reformat a date field with Twig's `date` filter into a project-specific format.
+- Wrap a value in custom HTML/CSS classes without adding a template file to the theme.
+- Conditionally show or hide output with `{% if %}` based on another field's value.
+- Concatenate a link's URL and title into a bespoke anchor layout.
+- Compute a derived string (e.g. a full name, a formatted price, a status badge) from multiple fields.
+- Display the field's label inline using the `label` variable, respecting `field_display_label` overrides.
+- Build a small summary line from an entity_reference field's referenced values.
+- Format numbers with Twig filters (`number_format`, `round`) for currency or measurements.
+- Apply Twig `default` / `trim` / `upper` / `lower` filters to normalize text output.
+- Emit different markup per bundle by selecting the formatter only on specific view displays.
+- Produce microdata / schema.org attributes around a field value via inline Twig.
+- Show a fallback message when a field is empty using `{{ field_x|default('—') }}`.
+- Turn a boolean or list value into a human-readable badge or icon.
+- Build a `tel:` or `mailto:` link from a telephone or email field with custom text.
+- Assemble an image field's URI into a custom `<img>` or `<picture>` snippet.
+- Add a computed CSS class to a field wrapper based on another field's value.
+- Reuse the same Twig display logic across environments by exporting the view-display config.
+- Prototype display formatting quickly in the UI before moving stable logic into a theme template.
+- Localize or pluralize output with Twig's translation and `format` helpers.
+- Render a compact one-line representation of a complex multi-value field.

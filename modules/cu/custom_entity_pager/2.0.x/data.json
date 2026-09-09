@@ -1,14 +1,14 @@
 {
   "name": "Custom Entity Pager",
   "data_name": "custom_entity_pager",
-  "description": "Adds previous/next navigation between entities based on a configurable source (e.g. a View).",
+  "description": "Provides a Twig function that renders a lightweight previous/next pager between published nodes of a given content type, ordered by node id, created time, or a chosen field.",
   "version": "2.0.x",
   "package": null,
   "composer_namespace": "drupal/custom_entity_pager",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/custom_entity_pager",
@@ -19,22 +19,22 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"
   ],
   "subcategories": [
-    "Pagers / navigation"
+    "Pagers & lazy loading"
   ],
   "keywords": [
     "pager",
     "previous next",
-    "entity",
+    "node",
     "navigation",
-    "views"
+    "twig"
   ],
-  "project_description": "The Custom Entity Pager module provides a custom Twig function that creates a pager for nodes. The main goal of this module is performance, not complexity. This modules has no GUI, it is meant for developers.\n\n Similar modules \n \n Entity Pager : This module relies on views to render the pager and our module avoids the usage of views for improved performance. \n Flippy : This module is very similar to Custom Entity Pager but it uses a block to let page builders render the pager. \n Previous/Next API : This module also uses a block to render the pager and seems to be very feature complete because it also handles node inserts, updates, etc",
+  "project_description": "The Custom Entity Pager module provides a custom Twig function that creates a previous/next pager for nodes. The main goal of this module is performance, not complexity: instead of relying on Views it runs a single direct query against node_field_data and derives the neighbouring nodes in PHP. It has no configuration UI or blocks and is meant for developers who call the Twig function from a theme template. It depends only on Drupal core (node module). Similar modules include Entity Pager (which relies on Views), Flippy and Previous/Next API (which render the pager via a block).",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

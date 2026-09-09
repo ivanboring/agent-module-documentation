@@ -1,13 +1,13 @@
 {
   "name": "Custom Status Report",
   "data_name": "custom_status_report",
-  "description": "Allows customization of the core Status Report page.",
+  "description": "Allows the customization of the core Status Report page.",
   "version": "1.0.x",
   "package": "Administration",
   "composer_namespace": "drupal/custom_status_report",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "custom_status_report.settings",
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -17,9 +17,9 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools"
@@ -34,7 +34,7 @@
     "reporting",
     "dashboard"
   ],
-  "project_description": "By default the Status Report page (/admin/reports/status) doesn't allow any customization, but sometimes you just want to show some more information here. This module allows the customization of the Status Report page: hide information you don't need, or add status cards from other modules to keep track of statuses all in one place.\n\n Features \n \n Hide any of the default cards from the General System Information section. \n Add a custom card from your own module (or any other module that supports this) to the General System Information section to display other relevant statuses. \n \n Post-Installation \n Once installed there will be a configuration page at admin/config/system/custom-status-report that will allow you to show or hide any available cards.\n\n \n\n Back to top",
+  "project_description": "By default the Status Report page (/admin/reports/status) doesn't allow any customization, but sometimes you just want to show some more information here. This module allows the customization of the Status Report page: hide information you don't need, or add status cards from other modules to keep track of statuses all in one place.\n\nFeatures\n\nHide any of the default cards from the General System Information section.\nAdd a custom card from your own module (or any other module that supports this) to the General System Information section to display other relevant statuses.\n\nPost-Installation\nOnce installed there will be a configuration page at admin/config/system/custom-status-report that will allow you to show or hide any available cards, and drag to reorder them.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

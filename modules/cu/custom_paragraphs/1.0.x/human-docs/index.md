@@ -52,14 +52,13 @@ The integration has four moving parts:
 From there the module handles the add/remove UI, per-field validation, file
 uploads, and gathering the values back into the hidden field on submit.
 
-### A note on the file-upload endpoints
+### The file-upload widget
 
-The file-upload widget is backed by two AJAX routes
+File fields in the group are backed by two AJAX routes
 (`/custom-paragraphs/repeatable-file-upload` and
 `/custom-paragraphs/repeatable-file-restore`) that accept uploads and return
-metadata about the saved files. These routes are only gated by the core **"access
-content"** permission, which anonymous visitors have by default, and the upload
-handler takes the destination directory and accepted file types from the incoming
-request. **Do not expose this widget on public/anonymous-facing forms** without
-adding your own access control and validation — keep it behind authenticated,
-trusted editing screens.
+metadata about the saved files. Each file field declares its own
+`upload_location`, and uploaded files are stored as permanent managed file
+entities. Because this is a developer library you wire into your own forms, use it
+within your site's normal authenticated editing screens and reconcile the saved
+files in your form's submit handling.
