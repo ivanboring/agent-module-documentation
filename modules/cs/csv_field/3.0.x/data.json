@@ -1,23 +1,30 @@
 {
   "name": "CSV Field",
   "data_name": "csv_field",
-  "description": "A field type that stores CSV data and renders it as an HTML table.",
+  "description": "Provides a file field that stores an uploaded CSV file and renders it as an interactive HTML table.",
   "version": "3.0.x",
   "package": "Field types",
   "composer_namespace": "drupal/csv_field",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/papaparse": "^1.0"
+  },
   "dependent_modules": [
-    "drupal:file",
-    "papaparse:papaparse"
+    "file",
+    "papaparse"
   ],
   "configure": null,
-  "core_version_requirement": "^9.3||^10||^11",
+  "core_version_requirement": "^9.3 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/csv_field",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "papaparse",
+    "datatables",
+    "datatables-responsive",
+    "autolinker"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
@@ -28,16 +35,18 @@
     "Content display"
   ],
   "subcategories": [
-    "Field formatters"
+    "Field formatters",
+    "Fields"
   ],
   "keywords": [
     "csv",
     "field",
     "table",
-    "data",
-    "formatter"
+    "datatables",
+    "papaparse",
+    "file"
   ],
-  "project_description": "This module provides a CSV text field that displays data as a table.\n\n The default formatter offers two options:\n\n \n Display using the Datatables plugin \n Render CSV as table on the client : This option reduces bandwidth by not sending the table HTML over the network. The CSV data is parsed by the PapaParse library.",
+  "project_description": "CSV Field provides a dedicated file field type (csv_file) whose default formatter renders the uploaded CSV as an HTML table. The table is built on the client from the CSV file: PapaParse downloads and parses the file and the DataTables library turns it into an interactive, paginated, searchable, responsive table. Per-item display options (page length, searching, responsive mode, download link, autolinking of URL columns, first-column-as-row-header, accessibility labels) are configured on the field widget and encoded into a data-settings attribute consumed by the JavaScript. Rendering client-side reduces the HTML sent over the network. External libraries (PapaParse, DataTables, DataTables Responsive, Autolinker) load from CDN.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

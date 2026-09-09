@@ -1,13 +1,13 @@
 {
   "name": "Curated entity block",
   "data_name": "curated_entity_block",
-  "description": "Blocks where an editor hand-picks and orders existing entities, rendered in one view mode.",
+  "description": "Blocks where an editor hand-picks and orders existing entities, rendered in one view mode. A View defines the selectable pool and the allowed view modes.",
   "version": "1.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/curated_entity_block",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:views"
+    "views"
   ],
   "configure": null,
   "core_version_requirement": "^10.3 || ^11",
@@ -17,9 +17,12 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/canvas": "Place curated blocks per page in the Canvas page builder.",
+    "drupal/custom_elements": "Render the curated entities into Custom Elements for a decoupled frontend."
+  },
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
@@ -27,16 +30,19 @@
     "Content display"
   ],
   "subcategories": [
-    "Block enhancements"
+    "Block enhancements",
+    "Manual content ordering",
+    "Entity selection"
   ],
   "keywords": [
     "block",
     "curated",
     "entities",
     "views",
-    "featured"
+    "featured",
+    "canvas"
   ],
-  "project_description": "Provides blocks where an editor hand-picks and orders existing content\n\nentities and renders them in one chosen view mode (typically a teaser\n\nvariant). A site builder defines the selectable pool and the allowed view\n\nmodes through a View, so it's nicely configurable. \n\n Features: \n \n The same block type can be reused for many curation scenarios: \"featured articles\", \"editor's picks\", a hand-sorted spotlight, and so on. \n Define multiple curated blocky by configuring multiple Views. \n Restrict selectable view-modes, min-max limits and allowed-steps (e.g. 3-6-9) in the Views-configuration. \n If the custom elements module is installed, it allows rendering picked entities via the module. \n Generated blocks work nicely with Drupal Canvas. That way the module brings flexible entity-reference selection to Canvas pages. \n \n Post-Installation \n Please refer to the \"Site-builder setup\" section in the README.\n\n Additional Requirements \n \n Views module \n \n Recommended modules/libraries \n The module integrates well with:\n\n \n Drupal Canvas \n Lupus Decoupled / Custom Elements \n Back to top",
+  "project_description": "Provides blocks where an editor hand-picks and orders existing content entities and renders them in one chosen view mode (typically a teaser variant). A site builder defines the selectable pool and the allowed view modes through a View, so the same block type can be reused for many curation scenarios such as featured articles, editor's picks or a hand-sorted spotlight. The blocks are placeable anywhere blocks are supported, including Drupal Canvas and Block Layout. Optionally, when the custom_elements module is installed, each picked entity can be emitted as a Custom Element for a decoupled Lupus Decoupled frontend.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

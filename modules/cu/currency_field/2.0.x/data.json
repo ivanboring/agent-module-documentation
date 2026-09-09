@@ -17,16 +17,16 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content editing experience",
-    "E-commerce"
+    "Content editing experience"
   ],
   "subcategories": [
-    "Currency conversion / exchange rates"
+    "Fields",
+    "Form widgets / select UI"
   ],
   "keywords": [
     "currency",
@@ -35,7 +35,7 @@
     "finance",
     "money"
   ],
-  "project_description": "A field type for currencies, following ISO 4217 . Add it to any entity and editors pick a currency from a list of every code in the standard, rather than typing one into a plain text field and hoping.\n\n The module is small and feature-complete. It does one thing, has no dependencies beyond Drupal core, and is maintained for fixes rather than new features.\n\n Back to top \n\n Features \n \n A currency_field field type, with a select widget and a formatter, available on any fieldable entity. \n The complete ISO 4217 list bundled as data — alphabetic code, numeric code, currency name, issuing entity, and minor unit — so there is no API call and no external service to depend on. \n Withdrawn currencies carry their withdrawal date, so historical records stay valid instead of failing validation. \n Options can be keyed and labelled by any pair of those columns, so a field can store alphabetic codes while showing full currency names, or store numeric codes for a system that expects them. \n \n Back to top \n\n Requirements \n Drupal 8, 9, 10 or 11. Nothing else.\n\n Back to top \n\n Installation \n composer require drupal/currency_field , then enable the module. See Installing modules for the longer version.\n\n Back to top \n\n Usage \n Add a field of type Currency to any entity bundle through Manage fields . Choose the select widget on Manage form display , and set the label format on Manage display .\n\n Back to top \n\n For developers \n Two helpers are available if you need the currency data outside a field:\n\n \n currency_field_currencies() returns the full decoded list. \n currency_field_currency_options() returns an options array, keyed and labelled by whichever columns you ask for — AlphabeticCode , NumericCode , Currency , Entity , MinorUnit or WithdrawalDate . \n \n The source data comes from the currency-codes dataset and lives in currencies.yml . Issues and merge requests for data corrections are welcome.\n\n Back to top \n\n Used by \n GTFS Utilities uses it in its GTFS Fares submodule to store fare product prices. It is not specific to that use — it is a general-purpose field.\n\n Back to top \n\n Maintainers \n Maintained by tbcs , supported by FivePaths .\n\n Back to top",
+  "project_description": "A field type for currencies, following ISO 4217. Add it to any fieldable entity and editors pick a currency from a select list built from every code in the standard, instead of typing one into a plain text field and hoping.\n\nThe module is small and feature-complete. It does one thing, has no dependencies beyond Drupal core, and is maintained for fixes rather than new features. The complete ISO 4217 list is bundled as data in currencies.yml (alphabetic code, numeric code, currency name, issuing entity, minor unit, and any withdrawal date), so there is no API call and no external service to depend on.\n\nThe field stores a single string value in a varchar(255) column. A storage setting chooses which column labels and keys the select options, so a field can store alphabetic codes while showing full currency names, or store numeric codes for a system that expects them. Two procedural helpers, currency_field_currencies() and currency_field_currency_options(), expose the same data to other code. The data comes from the currency-codes dataset. Maintained by tbcs, supported by FivePaths.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

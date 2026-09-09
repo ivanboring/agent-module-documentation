@@ -1,25 +1,27 @@
 {
   "name": "Custom Checkboxes",
   "data_name": "custom_checkboxes",
-  "description": "Provides custom styling for checkbox form elements.",
+  "description": "Custom checkboxes styling",
   "version": "2.1.x",
   "package": null,
   "composer_namespace": "drupal/custom_checkboxes",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^8.7.7||^9||^10||^11",
+  "core_version_requirement": "^8.7.7 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/custom_checkboxes",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "core/jquery"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Theming"
@@ -30,11 +32,11 @@
   "keywords": [
     "checkbox",
     "styling",
-    "form",
-    "theming",
-    "ui"
+    "css",
+    "form theming",
+    "jquery"
   ],
-  "project_description": "This module allows you fastly style the checkboxes of your site. You will only have to adapt the CSS code to your needs.\n\n To use this module, simply enable it and insert the following code on twig templates where you have checkboxes:\n\n {{ attach_library('custom_checkboxes/custom_checkboxes') }}",
+  "project_description": "Custom Checkboxes replaces the default browser rendering of checkbox form elements with a CSS-styled checkbox. It ships an asset library (custom_checkboxes/custom_checkboxes) consisting of one CSS file and one jQuery behavior. The behavior hides each native checkbox (opacity:0) and inserts a styled span.checkmark next to it so the visible box, border, and checkmark tick are drawn entirely in CSS. It provides no configuration UI, routes, permissions, or PHP services; you attach its library to the templates that contain checkboxes and adapt the CSS to your design.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

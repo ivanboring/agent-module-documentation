@@ -1,14 +1,14 @@
 {
   "name": "Currency API",
   "data_name": "currencyapi",
-  "description": "Fetches and displays currency exchange rates from an external currency API.",
+  "description": "Fetches currency exchange rates from CurrencyAPI.com on cron and displays them with optional per-currency buy/sell markup.",
   "version": "1.10.x",
   "package": "Custom",
   "composer_namespace": "drupal/currencyapi",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": "currencyapi.settings",
-  "core_version_requirement": "^10.2||^11",
+  "core_version_requirement": "^10.2 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/currencyapi",
@@ -19,22 +19,24 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
+    "E-commerce",
     "Integrations"
   ],
   "subcategories": [
-    "Currency / exchange rates"
+    "Currency conversion / exchange rates"
   ],
   "keywords": [
     "currency",
     "exchange rate",
-    "api",
+    "currencyapi.com",
     "conversion",
+    "fx markup",
     "integration"
   ],
-  "project_description": "Back to top \n\n CurrencyAPI Module for Drupal \n Real-Time Exchange Rates with Custom Markup Capabilities\n\n The CurrencyAPI module seamlessly integrates Drupal with currencyapi.com, providing real-time currency exchange rate data with a unique business advantage: the ability to expose custom exchange rate markups to customers (e.g., for FX fees or profit margins). Ideal for financial services, e-commerce, and multi-currency platforms.\n\n Back to top \n\n Key Features \n \n Earnings via Dynamic Exchange Rate Tables with Custom Markup \n \n Apply fixed fees, percentage-based markups, or blended rates to buy/sell prices. \n Display customer-facing rate tables with your adjusted values (via Views, blocks, or templates). \n \n Enterprise-Grade API Integration \n \n Fetch real-time or historical rates via currencyapi.com’s REST API (JSON). \n Supports 150+ currencies with optional crypto/fiat pairs. \n \n Automated & Efficient \n \n Scheduled rate updates (cron-driven) with configurable intervals. \n Smart caching to reduce API calls and ensure performance. \n \n Flexible Display Options \n \n Embed rates anywhere: product pages, checkout flows, or financial dashboards. \n Customize formatting (decimals, rounding) and currency groupings. \n \n No Dependencies \n \n Lightweight standalone module, though compatible with Commerce modules. \n \n \n Back to top \n\n Use Cases \n \n Financial Platforms: Show buy/sell rates with transparent fee structures. \n E-Commerce: Dynamic pricing with wholesale/retail exchange margins. \n Travel/Ticketing: Display customer rates inclusive of service fees. \n \n Back to top \n\n Setup in Minutes \n \n Add your currencyapi.com key (free tier available). \n Configure markup rules (flat fees, percentages, or tiered rates). \n Select currencies and refresh intervals. \n \n Back to top \n\n Comparison to Alternatives \n \n \n Feature\n CurrencyAPI (this)\n Currency\n Commerce Exchanger\n\n \n \n Custom Rate Markup\n ✅ Yes\n ❌ No\n ❌ No\n \n Real-Time API\n ✅ Yes\n ⚠️ Limited\n ✅ Yes\n \n \n Commerce 2.x Support\n ✅ Manual\n ✅ Native\n ✅ Native\n \n Unique selling point : This module empowers businesses to transparently apply and display exchange rate adjustments—perfect for FX brokers, import/export sites, or multi-currency marketplaces.\n\n Back to top \n\n Contribute & Sponsor \n This project welcomes collaboration! Developers, designers, and financial service providers are encouraged to:\n\n \n Submit PRs for new markup calculation models (e.g., spread-based pricing). \n Sponsor priority features like Commerce 2.x native integration. \n \n Let’s build the most flexible currency tool for Drupal.\n\n \n\n Back to top \n\n Why Choose This Module? \n Unlike alternatives, CurrencyAPI puts you in control of how rates are presented to customers—whether adding a 2% margin for services or flat fees for conversions.\n\n Back to top",
+  "project_description": "Currency API integrates a Drupal 10.2+/11 site with the CurrencyAPI.com REST service. A cron job fetches the latest exchange rates for a configured, comma-separated list of currency codes and stores them in the expirable key/value store. A service (currencyapi.service) exposes helpers to read all rates, convert an amount between currencies, and compute a sell price after applying a per-currency percentage buy markup entered on the settings form. Three content routes render the stored rates: an exchange-rates page, a Buy 100 page, and a JSON endpoint. The project's distinguishing intent is customer-facing FX markup tables for financial, e-commerce, and multi-currency sites, but the shipped 1.10.x code is early and partial: several service methods are stubs, the settings-installed config object name does not match the object the code reads, a Currency Rates block references a service and client class that are not present in the module, and the page controller unconditionally calls the Drupal Commerce current-store service, so the content routes require Commerce even though it is not a declared dependency.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
