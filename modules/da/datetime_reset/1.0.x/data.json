@@ -1,16 +1,16 @@
 {
   "name": "DateTime Reset",
   "data_name": "datetime_reset",
-  "description": "Adds an optional reset button to datetime field widgets.",
+  "description": "Provides the option to display a reset button in datetime fields.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/datetime_reset",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:datetime"
+    "datetime"
   ],
   "configure": null,
-  "core_version_requirement": "^9.5||^10||^11",
+  "core_version_requirement": "^9.5 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/datetime_reset",
@@ -34,9 +34,10 @@
     "reset",
     "clear",
     "widget",
-    "date"
+    "date",
+    "form display"
   ],
-  "project_description": "This module provides a feature which allows admin user to display a \"Reset\"\n\nbutton in a datetime field widgets by providing a toggle for it.\n\n Works with Date, Date/Time and Date range core fields.\n\n Some display tweaks are required for SmartDate fields ( related issue ).\n\n Usage \n \n Enable the module \n Go to Structure - Content type - (one of your content types with a date field) - Manage form display and make the date field display the reset button.",
+  "project_description": "DateTime Reset adds a per-widget \"Reset\" button to core Datetime field widgets. The button is enabled through a third-party widget setting on the Manage form display screen, and when clicked it clears the date and time inputs of that field on the client side. It works with Date, Date/Time and Date range core fields, and includes handling for SmartDate's time_wrapper markup. The module ships only hook implementations, a small JS behavior, config schema for the widget setting, and an asset library; it defines no routes, permissions, services, or plugins.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

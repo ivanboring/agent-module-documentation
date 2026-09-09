@@ -1,13 +1,13 @@
 {
   "name": "Database Text Searcher",
   "data_name": "db_text_searcher",
-  "description": "Drush commands to search for text across the database.",
+  "description": "Drush command to search for a text string across all database tables and columns, with CSV export.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/db_text_searcher",
   "composer_requirements": {},
   "dependent_modules": [
-    "embed:embed"
+    "embed"
   ],
   "configure": null,
   "core_version_requirement": "^10 || ^11",
@@ -19,9 +19,9 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
-  "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
@@ -34,7 +34,9 @@
     "search",
     "drush",
     "text",
-    "developer"
+    "developer",
+    "audit",
+    "csv"
   ],
   "project_description": "The Database Text Searcher module was developed to meet the need for efficient text searches across all tables in a Drupal database. Typically, this task would require either custom module development or direct SQL queries. This module simplifies the process, offering a powerful tool that enhances the search capabilities of Drupal sites. It enables developers to locate specific information within their site's data comprehensively and efficiently.\n\n Features \n \n Performs partial text matches across most database tables, automatically excluding system and cache-related tables for optimized performance. \n Results include table name, column name, primary key, and the matched value. \n Search results can be printed in the console for immediate review and saved to a timestamped CSV file. \n Handles various character sets and encoding, ensuring accurate search results across different textual data types. \n Resolves some entity URLs based on table names, providing direct links for quick access to the Drupal entity. \n \n Similar projects \n Find Text \n\n Back to top",
   "maintenance_status": "Minimally maintained",

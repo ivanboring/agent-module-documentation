@@ -29,10 +29,8 @@ only to trusted administrators.
 
 ## Handle the exported file safely
 
-- A dump can contain personal and confidential data **even after sanitization**.
-  Store it somewhere private and delete it when you no longer need it.
-- Make sure exports are **not written to a web-accessible directory** — anyone who
-  can reach the file's URL could download your database. Keep them outside the
-  webroot.
+- A dump contains the site's data and should be treated as confidential. Store it
+  in a secure location and delete it once you no longer need it.
+- Grant the **`administer db exports`** permission only to trusted administrators.
 - This module does not provide restore, scheduling, or remote destinations. For
   production backup needs, use **Backup and Migrate** instead.

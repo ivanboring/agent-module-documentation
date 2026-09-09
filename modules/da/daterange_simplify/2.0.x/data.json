@@ -1,42 +1,50 @@
 {
   "name": "Date Range Simplify",
   "data_name": "daterange_simplify",
-  "description": "A field formatter that simplifies date-range output (e.g. collapsing shared parts of start/end).",
+  "description": "Field formatters (and Twig helpers) that render daterange/datetime fields as simplified, locale-aware date phrases via the flack/ranger library.",
   "version": "2.0.x",
   "package": null,
   "composer_namespace": "drupal/daterange_simplify",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "openpsa/ranger": "^0.5"
+  },
   "dependent_modules": [
-    "drupal:datetime"
+    "datetime"
   ],
   "configure": null,
-  "core_version_requirement": "^10.1||^11",
+  "core_version_requirement": "^10.1 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/daterange_simplify",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "openpsa/ranger"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"
   ],
   "subcategories": [
-    "Field formatters"
+    "Field formatters",
+    "Date/time fields"
   ],
   "keywords": [
     "daterange",
     "date",
     "formatter",
     "date range",
-    "display"
+    "display",
+    "intl",
+    "twig",
+    "locale"
   ],
-  "project_description": "Provides a field formatter to simplify daterange field output. Easily create simplified date and time range phrases like \"October 5, 2013, 10:00 AM to 1:30 PM.\"\n\n This formatter wraps https://github.com/flack/ranger (which is based on the range formatter in fullCalendar ) to provide a simplified set of date range output options outside of the standard Drupal date format configuration. Format options for date and time are enumerated by the PHP IntlDateFormatter class:\n\n \n\nIntlDateFormatter::NONE (integer)\n\n Do not include this element\n\nIntlDateFormatter::FULL (integer)\n\n Completely specified style (Tuesday, April 12, 1952 AD or 3:30:42pm PST)\n\nIntlDateFormatter::LONG (integer)\n\n Long style (January 12, 1952 or 3:30:32pm)\n\nIntlDateFormatter::MEDIUM (integer)\n\n Medium style (Jan 12, 1952)\n\nIntlDateFormatter::SHORT (integer)\n\n Most abbreviated style, only essential data (12/13/52 or 3:30pm)\n\n \n\n See https://github.com/flack/ranger/blob/master/README.md for more details. For non 'en' locales, the PHP extension php-intl is required.\n\n Similar modules:\n\n \n Daterange Compact",
+  "project_description": "Provides field formatters to simplify daterange field output, collapsing the shared parts of a start/end range into a compact phrase such as \"October 5, 2013, 10:00 AM to 1:30 PM\". A companion Intl formatter renders single date/datetime fields, and a Twig extension exposes the same formatting to templates.\n\nThe formatters wrap https://github.com/flack/ranger (based on the range formatter in fullCalendar) to offer a simplified set of output options outside of Drupal's standard date-format configuration. Date and time styles are the ones enumerated by the PHP IntlDateFormatter class: NONE, FULL, LONG, MEDIUM and SHORT. For non-'en' locales the PHP php-intl extension is required. See https://github.com/flack/ranger/blob/master/README.md for details. Similar module: Daterange Compact.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

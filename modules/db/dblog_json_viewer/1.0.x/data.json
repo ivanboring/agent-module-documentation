@@ -1,15 +1,15 @@
 {
   "name": "Dblog JSON Viewer",
   "data_name": "dblog_json_viewer",
-  "description": "An enhanced JSON viewer for Drupal dblog messages.",
+  "description": "Enhanced JSON viewer for Drupal dblog messages with search, fullscreen and more features.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Administration",
   "composer_namespace": "drupal/dblog_json_viewer",
   "composer_requirements": {},
   "dependent_modules": [
     "dblog"
   ],
-  "configure": null,
+  "configure": "dblog_json_viewer.admin_settings",
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -19,7 +19,7 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
@@ -31,12 +31,13 @@
   ],
   "keywords": [
     "dblog",
+    "watchdog",
     "json",
     "log viewer",
-    "logging",
+    "debugging",
     "admin"
   ],
-  "project_description": "JSON Viewer for Drupal Admin Logs \n Introduction \n The JSON Viewer module transforms complex, unreadable JSON data in Drupal admin log entries into an interactive, searchable, and visually organized interface. Instead of struggling with raw JSON text dumps in your watchdog logs, administrators can now explore API responses, debug information, and structured data with syntax highlighting, collapsible sections, and powerful search capabilities. This module automatically detects JSON content in dblog event details and replaces the plain text display with a modern, user-friendly JSON viewer that makes debugging and log analysis significantly more efficient.\n\n Features \n Basic Functionality:\n\n - Automatically detects and parses JSON content within Drupal database log entries\n\n- Replaces plain text JSON with an interactive, syntax-highlighted viewer\n\n- Supports both Gin admin theme light and dark modes with seamless integration\n\n Unique Features:\n\n - Smart JSON Detection: Dynamically identifies the most relevant JSON object using complexity scoring algorithms\n\n- Advanced Search: Real-time search with 500ms debouncing (configurable), regex support, and result navigation with Previous/Next buttons\n\n- Interactive Navigation: Expand/collapse all sections, auto-expand when navigating search results\n\n- Dual View Modes: Toggle between formatted JSON view and raw data view\n\n- Copy Functionality: One-click copy for both formatted JSON and raw content\n\n- Mobile Responsive: Fully functional on tablets and mobile devices\n\n Use Cases:\n\n - API Debugging: Examine API request/response data from external services\n\n- Error Analysis: Investigate detailed error contexts and stack traces\n\n- Development Workflow: Review complex configuration objects and data structures\n\n- Site Monitoring: Analyze logged events with structured data payloads\n\n- Third-party Integration: Debug webhook payloads and service communications\n\n Post-Installation \n Immediate Functionality:\n\nOnce installed and enabled, the module works automatically with no configuration required. Simply navigate to any database log entry (admin/reports/dblog/event/*) that contains JSON data, and you'll see the enhanced JSON viewer interface instead of plain text.\n\n Configuration (Optional):\n\nVisit Administration → Configuration → Development → Database Log JSON Viewer (`/admin/config/development/dblog-json-viewer`) to customize module settings.\n\n How It Works:\n\n 1. Visit Administration → Reports → Recent log messages\n\n2. Click on any log entry that contains JSON data\n\n3. The module automatically detects and renders JSON content in the \"Messages\" field\n\n4. Use the search box to find specific keys or values\n\n5. Toggle between JSON and raw views using the interface buttons\n\n6. Copy formatted JSON or raw content with one click\n\n No Configuration Needed:\n\nThe module integrates seamlessly with Drupal's existing dblog system and works out-of-the-box, though optional configuration is available for advanced customization.\n\n Additional Requirements \n Core Requirements:\n\n - Drupal 9.x, 10.x or 11.x\n\n- Database Logging (dblog) module enabled (part of Drupal core)\n\n JavaScript Dependencies:\n\n - jsonview.js library (included) https://github.com/pgrabovets/json-view \n\n- Modern browser with ES6+ support\n\n Recommended:\n\n - Gin admin theme for optimal visual integration (works with any admin theme)\n\n Recommended modules/libraries \n Enhanced Experience:\n\n - Gin Admin Theme: Provides optimal visual integration and dark mode support\n\n- Admin Toolbar: Improves navigation to log entries\n\n This module is unique in providing automatic JSON detection and parsing specifically for Drupal's database log system, with no equivalent functionality available in the current module ecosystem.\n\n Community Documentation \n Getting Started:\n\n 1. Install via Composer: `composer require drupal/json_viewer`\n\n2. Enable the module: `drush en json_viewer`\n\n3. Generate test data with APIs or error logging\n\n4. Visit admin/reports/dblog to see …",
+  "project_description": "Dblog JSON Viewer is a client-side enhancement for Drupal's core Database Logging (dblog) event page. On any '/admin/reports/dblog/event/*' page it detects JSON content in the log message cell and replaces the plain-text dump with an interactive, syntax-highlighted, collapsible tree using the bundled json-view library, plus real-time search with previous/next navigation, expand/collapse-all controls, a formatted-vs-raw toggle, copy-to-clipboard, and a fullscreen mode. Detection is heuristic: the JavaScript strips the cell's HTML back to text, extracts one or more JSON objects (including multi-section 'Options:'/'Response:'/'Headers:' style API logs and nested JSON-in-string values), and scores candidates by complexity and by configurable 'API key' patterns to pick the most relevant object. Everything is rendered in the browser; the module ships no entities, services, plugins, or Drush commands. A single settings form at Administration > Configuration > Development > Dblog JSON Viewer lets administrators customise every button/label string, the search debounce delay, a debug-logging toggle, and the API-key and section pattern lists. The library is attached only on the dblog event route and only for users holding 'access site reports' or 'administer site configuration'.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

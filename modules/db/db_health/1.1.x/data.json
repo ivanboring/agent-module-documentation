@@ -1,40 +1,47 @@
 {
   "name": "DB Health",
   "data_name": "db_health",
-  "description": "Reports database health information such as table sizes.",
+  "description": "Provides database health information like table sizes.",
   "version": "1.1.x",
   "package": "Custom",
   "composer_namespace": "drupal/db_health",
   "composer_requirements": {},
-  "dependent_modules": [],
+  "dependent_modules": [
+    "system"
+  ],
   "configure": "db_health.settings",
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/db_health",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "chart.js"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": true,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools"
   ],
   "subcategories": [
-    "Dashboard / reporting"
+    "Dashboard / reporting",
+    "Database maintenance / optimization"
   ],
   "keywords": [
     "database",
     "health",
     "table sizes",
+    "row counts",
     "monitoring",
-    "admin"
+    "growth tracking",
+    "admin reporting"
   ],
-  "project_description": "DB Health \n Monitor your Drupal database size and table growth over time, with interactive visualizations and automated logging.\n\n The db_health module provides site administrators with a clear and actionable overview of their Drupal database. It monitors the total size of the database and each individual table, as well as the number of rows per table. This information is displayed in an easy-to-use interactive graph, helping site maintainers identify tables that are growing unexpectedly and take corrective action before performance issues arise.\n\n Key features \n \n ✅ Database size monitoring: View the total database size and the size of each table. \n ✅ Table row counts: Monitor the number of rows for every table in your database. \n ✅ Interactive graphs: Analyze your data visually with interactive, filterable graphs. \n ✅ Automated logging: Periodic cron runs log database and table size information, providing a historical record of growth over time. \n ✅ Growth tracking: Quickly identify which tables are increasing in size and might need optimization. \n ✅ Developer & administrator friendly: Useful insights for site optimization, scaling decisions, and troubleshooting. \n \n Use cases \n \n Keep track of database growth trends. \n Detect bloated tables that might indicate bugs, logging issues, or inefficient data storage. \n Support data-driven maintenance and scaling plans for your Drupal site. \n Help plan for database optimization or archiving. \n \n How it works \n \n A cron job runs periodically to collect database and table size statistics. \n This data is logged and can be reviewed over time to understand trends. \n An admin interface shows the current state of the database, with sortable tables and interactive graphs. \n \n Installation & Usage \n Use Composer (recommended):\n\n composer require drupal/db_health \n\n Enable the module:\n\n drush en db_health \n\n Run a manual database check:\n\n drush db-health:run \n\n View database health metrics \n Navigate to Administration > Reports > Database Health (/admin/reports/db-health).\n\n Review table sizes and row counts.\n\n Explore historical trends with interactive graphs.\n\n Automated monitoring \n The module includes a cron task that runs periodically, collecting and logging database statistics. Ensure your site's cron is configured properly to keep your metrics up to date.\n\n \n Donation Support \n This project took significant time to develop. If it has helped you save time in your work or business, feel free to contribute any amount you consider fair to support its continued development",
+  "project_description": "DB Health monitors the size and row counts of every table in the Drupal database and records them over time so administrators can spot bloated or fast-growing tables before they cause performance problems. On each cron run (at a configurable interval) the module's size checker queries the current size and row count of every table, plus the total database size as a pseudo-table named \"db\", and stores each measurement with a timestamp in its own history tables. A report page at /admin/reports/db-health renders the collected history as an interactive Chart.js chart, sorting tables by size so the largest offenders are obvious. A settings form lets you pick the collection interval (from every 5 minutes up to monthly), a logs form lets you review and delete stored measurement snapshots by timestamp, and a Drush command (db-health:run, alias dh:run) forces an immediate collection. The module supports MySQL/MariaDB and PostgreSQL, and its report, settings, and logs pages are all restricted to the 'administer site configuration' permission.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

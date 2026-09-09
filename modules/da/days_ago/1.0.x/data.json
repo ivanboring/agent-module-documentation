@@ -1,14 +1,14 @@
 {
-  "name": "Days Ago",
+  "name": "Days ago",
   "data_name": "days_ago",
-  "description": "A field formatter that shows dates as a \"days ago\" relative time.",
+  "description": "Field formatter that renders a datetime or timestamp field as the whole number of days between that date and now.",
   "version": "1.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/days_ago",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/days_ago",
@@ -19,20 +19,22 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"
   ],
   "subcategories": [
-    "Field formatters"
+    "Field formatters",
+    "Date/time fields"
   ],
   "keywords": [
     "days ago",
     "date",
     "relative time",
     "formatter",
-    "datetime"
+    "datetime",
+    "timestamp"
   ],
   "project_description": "The module allows you to show the dates field in \"Days Ago\" format.\n\n Installation \n \n Install the module as usual: Install contrib modules \n Enable the module. \n \n Show dates as days agon \n \n Go to manage display for any entity type. \n Select the Days agon format .. Cheers. \n \n \n \n\n Sponsored and developed by: \n \n\n Back to top",
   "maintenance_status": "Actively maintained",

@@ -21,12 +21,11 @@ scheduled backups, multiple destinations, restore, and selective exports — is 
 better choice; Database Export UI is a lightweight alternative for simple cases and
 local/dev use.
 
-> **Handle exports as sensitive data.** A database dump can contain personal and
-> confidential information even after sanitization (which here is intentionally
-> basic). Access to the export page is gated by a dedicated **`administer db
-> exports`** permission — restrict it tightly — and keep the generated dump files
-> out of any web-accessible directory so they cannot be downloaded by anyone who
-> guesses the path.
+> **Handle exports as sensitive data.** A database dump contains the site's
+> data and should be treated as confidential. Access to the export page is gated
+> by a dedicated **`administer db exports`** permission — grant it only to trusted
+> administrators — and store or move the generated dump files to a secure location,
+> deleting them once you are done with them.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
