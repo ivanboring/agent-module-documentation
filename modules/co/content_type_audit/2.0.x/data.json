@@ -1,14 +1,14 @@
 {
   "name": "Content Type Audit",
   "data_name": "content_type_audit",
-  "description": "Reports the number of nodes for each content type.",
+  "description": "Admin report of the node count per content type, with published-status and created-date filters.",
   "version": "2.0.x",
   "package": null,
   "composer_namespace": "drupal/content_type_audit",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": "content_type_audit.content_report",
-  "core_version_requirement": "^8||^9||^10||^11",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/content_type_audit",
@@ -19,13 +19,13 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools"
   ],
   "subcategories": [
-    "Content auditing / cleanup"
+    "Dashboard / reporting"
   ],
   "keywords": [
     "content type",
@@ -34,7 +34,7 @@
     "node count",
     "cleanup"
   ],
-  "project_description": "The Content Type Audit module provides a simple report of the number of nodes for each content type in your Drupal site.\n\n Features \n - Filters : It allows filtering by published & unpublished nodes and by date created to fetch the count of nodes.\n\n - Easy Access : It offers a link to the Content Overview Page for each content type.\n\n - Quick Insights : Easily identify which content types are most frequently used. Also includes unused content types with a count of 0.\n\n - Simple Interface : User-friendly interface designed for quick access and easy understanding.\n\n Usage \n Navigate to Reports -> Content Type Audit using the Admin Toolbar.\n\nAlternatively, you can also use this link: /admin/reports/content-type .\n\n Use Cases \n - #1 Audit : Helps understand the distribution and status of content across different types.\n\n- #2 Cleanup : Identify unused content types to cleanup and improve content editing experience.\n\n- #3 Migration : Facilitate migration efforts by providing a clear overview of content type usage.\n\n Similar projects \n Content Type Report , Content Reports \n\n Versions \n - 1.2.x : Can filter by published/unpublished nodes.\n\n - 2.x : Added extra date filter to fetch the count of nodes created between any two dates.\n\n Back to top",
+  "project_description": "The Content Type Audit module provides a simple report of the number of nodes for each content type in your Drupal site. The report lives under Reports at /admin/reports/content-type and is a single AJAX form: pick a published status (Any / Published / Unpublished) and an optional created-date range, then Apply Filters to see a table of every content type with its node count, a grand total, and a \"View All Pages\" link into the core content overview (filtered by that type and status). Content types with no matching nodes still appear with a count of 0, which makes it easy to spot unused types for cleanup or migration planning. Access is gated by the core 'administer content types' permission.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

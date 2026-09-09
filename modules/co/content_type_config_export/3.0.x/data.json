@@ -1,14 +1,14 @@
 {
-  "name": "Content Type Config Export",
+  "name": "Entity Type Config Export",
   "data_name": "content_type_config_export",
-  "description": "Exports content type, block type, paragraph type and vocabulary configuration.",
+  "description": "Export content type, block type, paragraph type, vocabulary, and role configuration with selectable modes.",
   "version": "3.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/content_type_config_export",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/content_type_config_export",
@@ -19,22 +19,26 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
+    "Import and export",
     "Administration tools"
   ],
   "subcategories": [
-    "Configuration management"
+    "Configuration management",
+    "Data export"
   ],
   "keywords": [
     "config",
     "export",
     "content type",
+    "block type",
     "paragraph",
-    "vocabulary"
+    "vocabulary",
+    "role"
   ],
-  "project_description": "Provides a simple way to export Drupal content, including field data and references, for reuse, migration, or sharing across Drupal sites.\n\n Features \n The Content Export module allows site builders and developers to export content entities in a structured format.\n\n Functionality \n • Exports nodes with all configured field values\n\n • Supports taxonomy term and entity references\n\n • Preserves content structure during export\n\n • Produces consistent export output for reuse\n\n When to use this module \n • Exporting content between Drupal environments\n\n • Preparing content for migration to another site\n\n • Creating reusable content sets\n\n • Sharing content across multiple Drupal installations\n\n Post-Installation \n After enabling the module:\n\n 1. Navigate to the Content Export configuration page.\n\n 2. Select the content types to export.\n\n 3. Configure included fields and references.\n\n 4. Run the export to generate the output.\n\n The module does not create new content types or modify existing content.\n\nNo text format or permission changes are required.\n\n Additional Requirements \n Does this project need anything beyond Drupal core? Include any dependent modules, libraries, APIs, etc., that are required for this project to work.\n\n Back to top",
+  "project_description": "Entity Type Config Export adds an admin-UI \"Export\" action to individual content types, block types, paragraph types and vocabularies, plus a page that exports all user roles. Each export gathers the bundle's own configuration (the bundle definition, field instances, field storage, and optionally form/view displays) into per-object YAML files and returns them as a downloadable ZIP, without pulling in unrelated site configuration the way a full `drush cex` would. It offers two modes per bundle: \"Selected fields only\" (chosen fields plus their storage) and \"Full\" (all fields, storage and displays). Paragraph reference fields have their referenced paragraph types exported recursively. It is scoped to structural configuration transfer between environments or projects and does not export content, create bundles, or modify existing configuration.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

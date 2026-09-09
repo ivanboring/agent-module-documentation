@@ -1,7 +1,7 @@
 {
-  "name": "Content Translation Access",
+  "name": "Content translation access",
   "data_name": "content_translation_access",
-  "description": "Adds per-language, per-bundle permissions controlling who may translate content.",
+  "description": "Grants content-translation operations (create/translate/delete translation) per entity type + bundle, gated by the languages assigned to the current user.",
   "version": "2.0.x",
   "package": null,
   "composer_namespace": "drupal/content_translation_access",
@@ -10,7 +10,7 @@
     "drupal:content_translation"
   ],
   "configure": null,
-  "core_version_requirement": "^10.5||^11",
+  "core_version_requirement": "^10.5 || ^11.0",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/content_translation_access",
@@ -23,8 +23,10 @@
   ],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "LanguageProvider"
+  ],
   "categories": [
     "Access control"
   ],

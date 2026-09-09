@@ -1,17 +1,19 @@
 {
   "name": "Contextual Image Widget Crop",
   "data_name": "contextual_image_widget_crop",
-  "description": "Shows contextual image cropping for Media images in the media library widget.",
+  "description": "Shows contextual image cropping for Media images",
   "version": "1.0.x",
   "package": "Media",
   "composer_namespace": "drupal/contextual_image_widget_crop",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/image_widget_crop": "^2.4 || ^3.0"
+  },
   "dependent_modules": [
-    "drupal:media_library",
-    "image_widget_crop:image_widget_crop"
+    "media_library",
+    "image_widget_crop"
   ],
   "configure": null,
-  "core_version_requirement": "^10.2||^11||^12",
+  "core_version_requirement": "^10.2 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/contextual_image_widget_crop",
@@ -22,18 +24,20 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Media"
   ],
   "subcategories": [
-    "Image cropping"
+    "Image cropping",
+    "Fields"
   ],
   "keywords": [
     "image",
     "crop",
     "media",
+    "media library",
     "widget",
     "image widget crop"
   ],

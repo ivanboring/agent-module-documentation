@@ -1,16 +1,16 @@
 {
   "name": "Content Reviewed Date",
   "data_name": "content_reviewed_date",
-  "description": "tracks when content was last reviewed and surfaces stale content.",
+  "description": "Tracks when content was last reviewed by an editor and surfaces stale content that needs attention.",
   "version": "1.1.x",
-  "package": null,
+  "package": "Content",
   "composer_namespace": "drupal/content_reviewed_date",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:node",
-    "drupal:datetime"
+    "node",
+    "datetime"
   ],
-  "configure": null,
+  "configure": "content_reviewed_date.settings",
   "core_version_requirement": "^11",
   "active_installs": null,
   "list_position": null,
@@ -20,15 +20,17 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Content editing experience"
+    "Content editing experience",
+    "Administration tools"
   ],
   "subcategories": [
-    "Content scheduling / publishing"
+    "Editorial notes / annotations",
+    "Dashboard / reporting"
   ],
   "keywords": [
     "reviewed date",

@@ -1,14 +1,14 @@
 {
-  "name": "Control Admin Access",
+  "name": "Control access to administration and privative pages",
   "data_name": "control_admin_access",
-  "description": "A form to allow/deny access to admin pages by IP address. Hardening layer; IP is spoofable and misconfig can lock you out.",
+  "description": "HTTP middleware plus a config form that blocks configured URL patterns (e.g. /admin) with a 401 unless the client IP is in an allowlist. Additive hardening layer on top of Drupal's own access control.",
   "version": "8.x-1.x",
-  "package": "Custom",
+  "package": "Custom control access",
   "composer_namespace": "drupal/control_admin_access",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "configure": "control_admin_access.form",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/control_admin_access",
@@ -19,22 +19,25 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Security"
+    "Access control"
   ],
   "subcategories": [
-    "Access hardening"
+    "IP address restriction",
+    "Path / URL access restriction"
   ],
   "keywords": [
     "admin",
     "ip",
+    "allowlist",
+    "middleware",
     "access",
-    "hardening",
-    "restrict"
+    "restrict",
+    "401"
   ],
-  "project_description": "This module allows block URLs in Drupal to avoid unexpected access. Returning a 401 error.\n\n This module can be useful to allow access to the admin part only for selected IPs.\n\n Requirements \n This module requires no modules outside of Drupal core.\n\n Similar projects \n If there are modules providing similar functionality, please describe what differentiates them.\n\n Configuration \n Navigate to Config → System → Control admin access ( /admin/config/system/control-admin-access )\n\n Fill out the following two fields:\n\n \n \n Field 1 - Enter IPs or IP ranges (Whitelist): Input the IP addresses or ranges of the computers to be granted access to the specified URL or URLs.\n\n \n \n Field 2 - Enter URLs to block except for Whitelist: Specify the URLs of the pages to be blocked, excluding users specified in the first field.\n\n \n \n For example: \n\n In Field 1 \n\n192.168.1.10 (a single IP)\n\n10.0.0.0/24 (an IP range)\n\n In Field 2 \n\n/admin/settings\n\n/user/1/edit\n\n \n\n Users connecting from the specified IP addresses (whitelisted) will have unrestricted access to the entire site, including the specified URLs.\n\n Users connecting from IPs outside the whitelist will be blocked from accessing the specified URLs, even if they are administrators or have other privileged roles.\n\n This way, you can control and restrict access to certain parts of your Drupal site based on IP addresses. Adjust the IPs and URLs according to your specific needs and security requirements.\n\n Back to top",
+  "project_description": "Control Admin Access ships a single HTTP kernel middleware (CaaMiddleware, http_middleware priority 250) and one config form. The middleware matches the incoming request URI against a configured list of blocked URL glob patterns; when a request matches AND an IP allowlist is configured, a client IP outside the allowlist receives a bare HTTP 401 response and the request never reaches routing. Whitelisted IPs pass through unrestricted. The form lives at /admin/config/system/control-admin-access (permission 'administration access vpn') with two textareas: Whitelist (IPs / CIDR ranges, one per line) and Blocked URLs (glob patterns, one per line). It requires no modules outside Drupal core and stores its settings in the config object control_admin_access.adminsettings. It is a defense-in-depth layer, not a replacement for Drupal's permission system: the middleware only ADDS a 401 gate in front of matching paths.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

@@ -1,19 +1,27 @@
 {
   "name": "Content Workflow (by Bynder)",
   "data_name": "content_workflow_bynder",
-  "description": "Imports items from Content Workflow (by Bynder, formerly GatherContent) into Drupal.",
+  "description": "Imports items from Content Workflow (by Bynder) to your Drupal CMS.",
   "version": "1.2.x",
   "package": "Content Workflow (Bynder)",
   "composer_namespace": "drupal/content_workflow_bynder",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "gathercontent/client": "^1.2",
+    "drupal/migrate_tools": "^4 || ^5 || ^6"
+  },
   "dependent_modules": [
     "drupal:node",
     "drupal:taxonomy",
-    "drupal:media",
+    "drupal:menu_link_content",
+    "drupal:image",
+    "drupal:file",
+    "drupal:field",
+    "drupal:menu_ui",
+    "drupal:migrate",
     "migrate_plus:migrate_plus",
     "migrate_tools:migrate_tools"
   ],
-  "configure": null,
+  "configure": "content_workflow_bynder.admin_content_workflow_bynder",
   "core_version_requirement": "^9.2 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -21,10 +29,16 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/paragraphs": "Repeatable component groups map to Paragraphs.",
+    "drupal/entity_reference_revisions": "Referenced-revision process plugin for Paragraphs.",
+    "drupal/metatag": "Import Content Workflow fields into meta tags.",
+    "drupal/token": "Token replacement in file destination directories.",
+    "tablesorter-mottie": "Optional JS library for sortable admin tables."
+  },
   "submodules": [],
   "provides_permissions": true,
-  "provides_drush_commands": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
@@ -32,7 +46,8 @@
     "Import and export"
   ],
   "subcategories": [
-    "Content migration / import"
+    "Content migration / import",
+    "Migration tooling"
   ],
   "keywords": [
     "bynder",

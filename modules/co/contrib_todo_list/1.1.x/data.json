@@ -1,14 +1,14 @@
 {
   "name": "Contribution Todo list",
   "data_name": "contrib_todo_list",
-  "description": "Adds a contribution todo-list to nodes for tracking Drupal contribution tasks.",
+  "description": "Adds a per-node contribution todo-list: users create, share, pin, and state-track todos attached to nodes via a block.",
   "version": "1.1.x",
   "package": "Custom",
   "composer_namespace": "drupal/contrib_todo_list",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:options",
-    "drupal:history"
+    "options",
+    "history"
   ],
   "configure": null,
   "core_version_requirement": "^10 || ^11",
@@ -28,6 +28,7 @@
     "Content editing experience"
   ],
   "subcategories": [
+    "Editorial notes / annotations",
     "Workflow / business rules"
   ],
   "keywords": [

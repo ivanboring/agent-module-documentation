@@ -1,7 +1,7 @@
 {
   "name": "Contentish Config",
   "data_name": "contentishconfig",
-  "description": "Mark configuration to be ignored during config sync.",
+  "description": "Mark config to be ignored for config-sync.",
   "version": "2.0.x",
   "package": null,
   "composer_namespace": "drupal/contentishconfig",
@@ -17,7 +17,7 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
@@ -25,16 +25,18 @@
     "Administration tools"
   ],
   "subcategories": [
-    "Configuration management"
+    "Configuration management",
+    "Deployment / release management"
   ],
   "keywords": [
     "config",
-    "ignore",
     "config sync",
+    "config ignore",
     "content-ish",
-    "configuration"
+    "deployment",
+    "third party setting"
   ],
-  "project_description": "Allows to mark config entities as contentish , excluding them from deployment.",
+  "project_description": "Contentish Config lets you flag individual config entities as \"contentish\" (site-specific, treated more like content) via a per-entity third-party setting, so they are excluded from configuration import/export. It hooks the core config-sync transform events (config.transform.export/import): on export, contentish config names are removed from the export storage; on import, their current active values are written back into the incoming storage so a deployment neither exports nor overwrites them. Config whose machine id starts with \"_content_\" is treated as contentish by default. This documents the 2.0.x development branch.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "not-covered",

@@ -1,16 +1,16 @@
 {
   "name": "Content Title Links to Edition",
   "data_name": "content_title_links_to_edition",
-  "description": "Out-of-the-box option to link a content view title to the entity edit form.",
+  "description": "Wraps a node title field in a Views listing in a link to that node's edit form, configurable per view and per content type.",
   "version": "2.0.x",
   "package": "Content",
   "composer_namespace": "drupal/content_title_links_to_edition",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:node",
-    "drupal:views"
+    "node",
+    "views"
   ],
-  "configure": null,
+  "configure": "content_title_links_to_edition.content_title_links_to_edition_settings_form",
   "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -25,10 +25,12 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Administration tools"
+    "Content display",
+    "Content editing experience"
   ],
   "subcategories": [
-    "Local tasks / tabs"
+    "Views field handlers",
+    "Admin toolbar / navigation"
   ],
   "keywords": [
     "title",

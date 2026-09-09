@@ -39,6 +39,11 @@ this as *"I can't reorder the menu on the live site."*
    config links of equal weight (Drupal's integer-weight model). Space config-link weights out, or
    keep menus single-kind.
 
+## Solution docs
+- [`agent/config/readonly-menu.md`](config/readonly-menu.md) — install/enable, the
+  `settings.php` `config_readonly` flag that turns the behavior on, what the menu edit form
+  does in read-only mode, the `system.menu.*` whitelist hook, and operating notes.
+
 ## Files
 - `data.json` — metadata.
 - `usage.md` — orientation + use cases.
