@@ -5,6 +5,9 @@ Adds one permission, **`create new menu`**, so a role can reach the "Add menu" f
 holding core's all-or-nothing **`administer menu`**. Version **1.1.0**, core `^10 || ^11`,
 depends only on core **`menu_ui`**. No configuration UI, no config schema, no Drush commands.
 
+- **Install/enable, the permission, the access hook, and the full route→permission map** →
+  [permissions/create-new-menu.md](permissions/create-new-menu.md)
+
 ## Exactly what it does (whole module)
 
 Two files carry all the behavior:

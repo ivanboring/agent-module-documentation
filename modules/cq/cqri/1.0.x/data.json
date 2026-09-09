@@ -1,22 +1,26 @@
 {
-  "name": "CQRI (Container Query Responsive Image)",
+  "name": "Container Queries Responsive Images",
   "data_name": "cqri",
-  "description": "Extends responsive images to support CSS container queries (size images by container, not viewport).",
+  "description": "Extends Core's Responsive Image Style to react to the size of the container (DOM element) in which the image is displayed, rather than the size of the viewport.",
   "version": "1.0.x",
   "package": "Media",
   "composer_namespace": "drupal/cqri",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "npm-asset/container-picture-element": "^0.1.0"
+  },
   "dependent_modules": [
-    "drupal:responsive_image"
+    "responsive_image"
   ],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/cqri",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "container-picture-element"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
@@ -24,19 +28,22 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Media"
+    "Media",
+    "Content display"
   ],
   "subcategories": [
-    "Responsive images"
+    "Responsive images",
+    "Field formatters"
   ],
   "keywords": [
     "responsive image",
     "container query",
     "cqri",
-    "image",
-    "media"
+    "picture element",
+    "field formatter",
+    "layout builder"
   ],
-  "project_description": "This module extends the capabilities of the Core's Responsive Image by adding the ability to react to the size of the container (DOM element) in which the image is displayed, rather than the size of the view-port.\n\nThis approach is best suited to page construction based on the Layout Builder like in Sobki or Drupal \"starshot\" CMS , because it is the structuring of the section that determines the size of the containers.\n\n Features \n The module provides:\n\n \n a breakpoint group \"Container Queries Responsive Images\", based on Core's \"Responsive Image\" \n a \"Container Queries Responsive Images\" formatter for image fields which is designed to use only the responsive image styles using the provided breakpoint. \n \n These elements are to be used in the same way as the classic responsive image style, with the exception that we only focus on the size of the container and no longer on the size of the window (view-port/media).\n\n Installation requirements \n See installation instructions .\n\n Configuration \n You can now use the \"Container Queries Responsive Images\" breakpoint in your responsive image styles.\n\n Configure this breakpoint like with the \"Responsive Image\" breakpoint from Core.\n\n Then on your image fields, use the new \"Container queries responsive image\" formatter and select one responsive image style using the new breakpoint.\n\n Technical Notes \n This module is based on a JavaScript script (in active development too) that attempts to enable \"picture\" tags to be used not in \"media\" mode but with a \"container\" mode.\n\n How picture element work:\n\n \n\n \n media=\"(min-width: 1000px)\"\n\n type=\"image/png\" width=\"300\" height=\"300\">\n\n \n media=\"(min-width: 500px)\"\n\n type=\"image/png\" width=\"100\" height=\"100\">\n\n \n width=\"300\" height=\"300\" alt=\"default_image\">\n\n In this case, the image is selected according to the view-port (page width) and not the block containing the image.\n\n What we are trying to make:\n\n \n\n \n container=\"(min-width: 300px)\"\n\n type=\"image/png\" width=\"300\" height=\"300\">\n\n \n container=\"(min-width: 100px)\"\n\n type=\"image/png\" width=\"100\" height=\"100\">\n\n \n width=\"300\" height=\"300\" alt=\"default_image\">\n\n In this approach, it is no longer the size of the view-port that defines the size of the image, but rather the block that restricts it.\n\n The mechanism is reversed: it's the size of the frame that selects the image to be displayed.\n\n Back to top",
+  "project_description": "This module extends the capabilities of the Core's Responsive Image by adding the ability to react to the size of the container (DOM element) in which the image is displayed, rather than the size of the view-port.\n\nThis approach is best suited to page construction based on the Layout Builder like in Sobki or Drupal \"starshot\" CMS , because it is the structuring of the section that determines the size of the containers.\n\n Features \n The module provides:\n\n \n a breakpoint group \"Container Queries Responsive Images\", based on Core's \"Responsive Image\" \n a \"Container Queries Responsive Images\" formatter for image fields which is designed to use only the responsive image styles using the provided breakpoint. \n \n These elements are to be used in the same way as the classic responsive image style, with the exception that we only focus on the size of the container and no longer on the size of the window (view-port/media).\n\n Installation requirements \n See installation instructions .\n\n Configuration \n You can now use the \"Container Queries Responsive Images\" breakpoint in your responsive image styles.\n\n Configure this breakpoint like with the \"Responsive Image\" breakpoint from Core.\n\n Then on your image fields, use the new \"Container queries responsive image\" formatter and select one responsive image style using the new breakpoint.\n\n Technical Notes \n This module is based on a JavaScript script (in active development too) that attempts to enable \"picture\" tags to be used not in \"media\" mode but with a \"container\" mode.\n\n The mechanism is reversed: it's the size of the frame that selects the image to be displayed.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

@@ -1,14 +1,14 @@
 {
   "name": "Credential Mask",
   "data_name": "credential_mask",
-  "description": "Prevents credentials and secret keys from being written into exported (config-sync) configuration.",
+  "description": "Prevent credentials and secret keys from being exported via config-sync processes.",
   "version": "1.0.x",
   "package": "Config",
   "composer_namespace": "drupal/credential_mask",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^8.8||^9||^10||^11",
+  "core_version_requirement": "^8.8.0 || ^9.0 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/credential_mask",
@@ -18,23 +18,27 @@
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
-  "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Security"
+    "Security",
+    "Administration tools"
   ],
   "subcategories": [
-    "Secrets / config protection"
+    "Secrets & key management",
+    "Configuration management"
   ],
   "keywords": [
     "credentials",
     "secrets",
     "config export",
+    "config-sync",
     "masking",
-    "config-sync"
+    "storage transform",
+    "drush"
   ],
-  "project_description": "Security lead \n\n Whatever you do, don't let this API key get committed!\n\n \n Developer \n\n \n\n drush config:export\n\n \n\n Developer \n\n Uh-oh…\n\n \n Back to top \n\n Description \n Best practice is to export your configuration and commit it to your source-code repository.\n\nBest practice is also to avoid committing API keys, secrets, etc.\n\n The credential mask module integrates with the configuration management API and ensures that the configuration keys marked as \"sensitive\" are not exported, and when configuration is imported, the unmasked configuration is not overridden.\n\n Back to top \n\n Operation \n Sensitive items can be managed either:\n\n \n via Drush \n via /admin/config/development/configuration/credential_mask (for users with the \"import configuration\" permission \n \n Drush Commands \n \n credential_mask:add\n\nMark a config key as sensitive. \n credential_mask:del\n\nRemove a config key from the list of masked credentials. \n credential_mask:list\n\nList all active configuration properties identified as sensitive. \n credential_mask:show-configuration\n\nShow the configuration names and properties currently marked as sensitive.\n \n \n Back to top \n\n Version requirements \n \n Drupal core 8.8 or greater \n Drush 10 or greater. \n \n Back to top \n\n Similar modules \n Other modules in the configuration-management ecosystem, such as Config split and Config filter may provide similar behaviour, or tools to achieve a similar outcome.\n\n Back to top",
+  "project_description": "Credential Mask hooks into Drupal's configuration-management storage-transform events so that configuration keys you mark as sensitive (API keys, secret keys, passwords, tokens) are replaced with a static placeholder in the exported config-sync YAML, keeping them out of files committed to version control. On import, the placeholder is transparently swapped back for the real value read from active storage, so importing masked config never overwrites the live secret. Which config names and keys are treated as sensitive is a list you maintain — via the settings form at /admin/config/development/configuration/credential_mask (gated by the core 'import configuration' permission) or via Drush commands (credential_mask:add, :del, :list, :show-configuration). Wildcards ('*') are supported in config names. The module does not encrypt or relocate secrets: values remain in Drupal's active (database) config as before; it only controls what appears in the exported YAML. Requires Drush 10+ for the CLI/config-sync integration; conflicts with drupal/config_filter <2 and drush/drush <10.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

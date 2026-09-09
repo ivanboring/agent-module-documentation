@@ -1,14 +1,14 @@
 {
-  "name": "Critique and Review Content",
+  "name": "Critique And Review Content",
   "data_name": "critique_and_review",
-  "description": "lets users review/critique other users' content for collaboration.",
+  "description": "Allows users to review or critique the content of other users. Useful for collaboration and to enrich content workflow.",
   "version": "1.1.x",
   "package": null,
   "composer_namespace": "drupal/critique_and_review",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/critique_and_review",
@@ -22,19 +22,22 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
+    "Content editing experience",
     "User engagement"
   ],
   "subcategories": [
-    "Rating / voting"
+    "Editorial notes / annotations",
+    "Workflow / business rules",
+    "Submission handling"
   ],
   "keywords": [
     "critique",
     "review",
     "collaboration",
     "feedback",
-    "workflow"
+    "editorial workflow"
   ],
-  "project_description": "Critique or Review content. Users with the appropriate role (Reviewers) can review the content of another user. \n\n You can create a list of pre-defined points (Review Items) to provide a critique/review structure for reviewers to provide feedback and/or notes on the content. These Review Items are configurable by the Administrator. If the Administrator has permitted it, the Reviewer can also add their own 'ad hoc' Review Items.\n\n Features \n Useful for peer reviews, critiquing, or any case where draft or published content requires feedback. \n\n Use cases: Editorial workflow where supervisors/editors/subeditors need to review, proofread, and/or fact-check work before it is published. Educational content that needs to be reviewed before it can be used. Estate Agent’s property descriptions that need to be reviewed by senior staff. Any other case where others need to review, critique, or otherwise offer feedback on a piece of content.\n\n Post-Installation \n \n\n Settings Form \n \n\nGo to\n\nHome >> Administration >> Configuration >> Content authoring >> Critique and Review Module Settings\n\n \n\nSelect for which Content Types reviews are enabled (this can be overridden in the block settings).\n\nIf you are going to place the Review Form block in the Sidebar then select “Add css from this module”, unless you intend to theme the display yourself.\n\nCheck: “Allow users to add more Review Items” if you want Reviewers to be able to create extra Review Item sections, or delete existing Review Items. They will be able to build their review on an ad hoc basis, as best fits their review. If you wish to restrict Reviewers to a specific structure, leave the box unchecked. Reviewers will only be able to use the Review Items you set up below.\n\n Use the Review Help text box to provide instructions to Reviewers. \n\n Add Review Items \n\n Add one or more Review Items. You can set some default Review Items here. eg. Intro, Body, Conclusion.\n\nIf you have checked the “allow users to add more Review Items” checkbox, users can add their own Review Items on the fly as they write a review. The less items you set up, the more freedom users have to customise their review.\n\nHowever, if you leave it unchecked, only Review Items you set up here will be available to Reviewers.\n\nEven if Reviewers are able to add their own Review Items, it can be useful to provide some default items to guide reviewers where to start, provide a standard form of review, or even determine exactly which Review Items are available. By default, all review items can be deleted by the reviewer.\n\nIn all cases, you might use the first block to have reviewers say hello and maybe outline their approach. So an “Intro” Review Item should be included.\n\ne.g. Intro to review/reviewer/form review will take - if this title doesn't suit your needs then change it to what makes sense for your users.\n\nEach review item created by Admin at configuration, should have instructions or guidelines for completion.\n\n \n\n Add the review form to the content \n\nGo to\n\nHome >> Administration >> Structure >> Block layout\n\n \n\nAdd the block to the desired region, the Sidebar would be a good choice so the Critique and Review block can appear to the right of the content to be reviewed. If you place the block in the Sidebar, ensure you have checked the “Add css from this module” checkbox in the module configuration, or provided custom CSS. Content Below can also be a good choice if you need a wider review form.\n\nClick the Place Block button and choose the \"Critique and Review Block\".\n\n Restrict by role \n \n\nIn Configure Block you can restrict which roles can see the block, a good choice might be to give only the \"Content Editor\" the rights to see\n\nthis block or, even better, create a Reviewer role eg. Sub-editor.\n\n \n\n Restrict by page type \n \n\nThis block only makes sense on the node body page, so restrict its appearance\n\nelsewhere. Go to the Pages tab and select \"Show for the listed pages\" and\n\nenter /node/* in the Pages text area.\n\n \n\n …",
+  "project_description": "Critique and Review Content adds a structured peer-review workflow to node content. A reviewer (any authenticated user who can see the review block on a node page and is not the node's author) fills in a template of predefined Review Items -- each a titled section with a basic_html rich-text body -- and saves them as a draft or finalises them. Reviews are stored per user, per node, and per node revision (vid) in a dedicated critique_and_review_reviews database table (defined in hook_schema, not as a Drupal entity). Finished reviews are surfaced back to the content author on the node edit form via hook_form_alter, grouped under vertical tabs by reviewer. An administrator configures which content types are reviewable, the default Review Item titles and instructions, an optional intro/help text, whether reviewers may add their own ad hoc Review Items, and whether the module CSS is attached, via a settings form at /admin/config/content/critique_and_review. The review UI is delivered as a block plugin (Critique And Review Block) placed via the block layout; block visibility (role, page, content type) is the main mechanism for restricting who can review. Useful for editorial workflows, proofreading, fact-checking, educational content sign-off, and any case where drafts need peer feedback before publication.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

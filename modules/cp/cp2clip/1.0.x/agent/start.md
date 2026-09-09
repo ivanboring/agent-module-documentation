@@ -40,5 +40,6 @@ No server-side rendering of user/config input, no admin form, no stored settings
 client-side `textContent`. No XSS/CSRF surface introduced by the module. Clean.
 
 ## Docs in this set
+- `usage/markup.md` — install/enable, applying the `cp-to-clip` class (raw HTML or WYSIWYG styles), runtime behaviour, operational caveats, tests.
 - `../data.json` — metadata.
 - `../usage.md` — short / dense / use-case bullets.

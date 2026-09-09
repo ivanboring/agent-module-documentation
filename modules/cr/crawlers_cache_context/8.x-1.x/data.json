@@ -1,30 +1,35 @@
 {
   "name": "Crawlers cache context",
   "data_name": "crawlers_cache_context",
-  "description": "Provides a cache context that varies output for detected crawlers/bots.",
+  "description": "Provides a calculated cache context that varies rendered output for detected crawlers/bots.",
   "version": "8.x-1.x",
   "package": null,
   "composer_namespace": "drupal/crawlers_cache_context",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "jaybizzle/crawler-detect": "^1.2"
+  },
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^8||^9||^10||^11",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/crawlers_cache_context",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "jaybizzle/crawler-detect"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Performance"
   ],
   "subcategories": [
+    "Block-level cache control",
     "Page cache control"
   ],
   "keywords": [

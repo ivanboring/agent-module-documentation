@@ -5,9 +5,7 @@ Create Content with Category renders a menu-like block of links, one per taxonom
 
 You configure target "node type + reference field" combinations at `/admin/config/content/createcontentwithcategory` (stored in `createcontentwithcategory.settings:target_nodes_fields` as `content_type__field_name` ids). For each target the `Ccwc` class loads the referenced vocabularies' terms and builds a themed menu (`menu__…`) whose links point to `node.add` for the content type with a Prepopulate query key (`edit[<field>][widget]`) carrying the term id — so clicking a category link opens a new node form with that category pre-filled. A block plugin with a deriver exposes one block per configured target; block access is granted to users who can create that content type (`create <content_type>`). Depends on the Prepopulate module to seed the field value from the URL.
 
-Configuration requires `administer taxonomy`. There are no custom endpoints; created nodes still go through the normal node-add access checks.
-
-Note: the block's `blockAccess()` has a bug — it computes the permission but passes an undefined `$permission` variable to `allowedIfHasPermission()`, so access does not evaluate the intended `create <type>` permission as written.
+Configuration requires `administer taxonomy`. There are no custom content-creation endpoints; the links target core's `node.add` route, so created nodes still go through the normal node-add access checks. The block is intended to be shown to users who can create the target content type (`create <content_type>`).
 
 ---
 - Show a block of "create X in category Y" links
