@@ -1,7 +1,7 @@
 {
   "name": "Date/Time Format Help",
   "data_name": "date_format_help",
-  "description": "Shows a friendly copy of PHP's date() format options on the date-format settings page.",
+  "description": "A friendly copy of the date() options from the PHP manual on the date-format add form.",
   "version": "2.0.x",
   "package": "Date/Time",
   "composer_namespace": "drupal/date_format_help",
@@ -17,13 +17,14 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Developer tools",
-    "Content editing experience"
+    "Administration tools",
+    "Content editing experience",
+    "Developer tools"
   ],
   "subcategories": [
     "Date/time fields"

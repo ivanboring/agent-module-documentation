@@ -1,38 +1,29 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Data Pipelines SFTP adds SFTP as a source to data pipelines.
+Adds an SFTP file server as a source resource for Data Pipelines datasets, fetching a remote file (e.g. JSON) into the pipeline over SSH/SFTP.
 
 ---
 
-Data Pipelines SFTP **adds SFTP as a source for the Data Pipelines module** — pulling data files from an
-SFTP server into a data pipeline for processing/import. It depends on the Data Pipelines and Key modules, in the
-Data Pipelines package.
-
-Use it to ingest data over SFTP in a pipeline. It is an integration/import feature and it handles secrets
-**correctly**: the SFTP **credentials are stored via the Key module** (a `user_password` Key entity — the widget
-references a Key, not plain config), and the connection uses those Key values (`keyRepository->getKey(...)->
-getKeyValue()`), so the password isn't in exported config. Data-handling: it connects to a **remote SFTP server**
-(encrypted in transit) and imports **remote files** (treat as untrusted content in the pipeline; use a
-least-privilege SFTP account). It has no access-control role. Configure the SFTP source with a Key.
+Data Pipelines - SFTP extends the Data Pipelines framework with a new source resource plugin so a dataset can read its input file from a remote SFTP server instead of a local upload or HTTP URL. When the module is installed it adds an `sftp` base field (one per registered Data Pipelines source, named `<source>_sftp`) to the `data_pipelines` dataset entity. Editors configure the remote path, host, port and a credentials Key on the dataset form; at pipeline run time the module opens an authenticated SFTP connection with `phpseclib3\Net\SFTP`, downloads the file contents, and hands a stream to the pipeline. An optional "Local copy" toggle mirrors the downloaded file to a private-filesystem cache (`private://data_pipelines_sftp/cache`) so the pipeline can fall back to the last-known-good copy if the server is unreachable. Username/password credentials are never stored on the dataset itself — they are read at runtime from a `user_password` Key entity selected through the Key module's `key_select` element.
 
 ---
 
-- Add SFTP as a data-pipeline source.
-- Pull data files over SFTP.
-- Feed a data pipeline.
-- Depend on Data Pipelines and Key.
-- Serve integration/import.
-- Ingest remote data.
-- Store SFTP credentials via the Key module (correct).
-- Reference a user_password Key, not plain config.
-- Connect over SSH/SFTP (encrypted).
-- Treat imported remote files as untrusted.
-- Use a least-privilege SFTP account.
-- Configure the SFTP source with a Key.
-- Handle SFTP ingestion.
-- Import over SFTP.
-- Configure the source.
-- Pull data.
-- Handle the integration.
-- Connect via SFTP.
-- Secure the credentials (Key).
-- Provide SFTP data ingestion.
+- Import a JSON dataset into Data Pipelines from a file hosted on a remote SFTP server.
+- Point a dataset at a file server path such as `/exports/products.json` instead of uploading the file by hand.
+- Reuse an existing Key entity (username/password) as the SFTP login for one or many datasets.
+- Keep SFTP credentials out of the dataset configuration and out of exported config by referencing a Key.
+- Connect to a non-standard SFTP port by setting the port field (defaults to 22 when left blank).
+- Automatically create a local cached copy of the remote file for resilience when "Local copy" is enabled.
+- Fall back to the cached local copy automatically when the SFTP server or file is temporarily unavailable, with a log message on the dataset.
+- Refresh a dataset on cron/queue runs so the latest remote file is pulled each pipeline execution.
+- Centralize feed ingestion for partner data drops delivered to an SFTP inbox.
+- Ingest catalog, pricing or inventory feeds that a supplier publishes over SFTP.
+- Load nightly export files produced by an external ERP/CRM onto a shared SFTP host.
+- Serve the same remote file to multiple datasets, each with its own path and credentials Key.
+- Disable the local copy on a dataset to force a fresh fetch and remove any previously cached file (handled on save).
+- Provide a resilient JSON source for downstream Data Pipelines transforms and destinations (e.g. OpenSearch).
+- Store connection metadata (host, port, path) on the dataset while delegating secret storage to Key.
+- Support environments where the source system only exposes files via SFTP rather than an API.
+- Let site builders add a remote file source without writing a custom source plugin.
+- Retrieve a file over SFTP into an in-memory stream when no local caching is desired.
+- Log SFTP retrieval errors against the dataset so failures are visible to editors.
+- Migrate content or configuration data that is delivered as files to an SFTP landing zone.
+- Combine with other Data Pipelines source resources on the same dataset entity type.

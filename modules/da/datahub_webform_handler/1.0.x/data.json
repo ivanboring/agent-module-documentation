@@ -1,13 +1,15 @@
 {
   "name": "Webform Datahub module",
   "data_name": "datahub_webform_handler",
-  "description": "Webform handler that POSTs submissions to an external Datahub registration API.",
+  "description": "Webform handler plugin that POSTs mapped submission values to an external Datahub registration REST API.",
   "version": "1.0.x",
   "package": "Webform",
   "composer_namespace": "drupal/datahub_webform_handler",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/webform": "^6.0"
+  },
   "dependent_modules": [
-    "webform:webform"
+    "webform"
   ],
   "configure": null,
   "core_version_requirement": "^9 || ^10 || ^11",
@@ -21,13 +23,15 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Integrations"
+    "Integrations",
+    "Forms and surveys"
   ],
   "subcategories": [
-    "Submission handling"
+    "Submission handling",
+    "CRM integration"
   ],
   "keywords": [
     "webform",
@@ -36,9 +40,10 @@
     "api",
     "registration",
     "token",
+    "utm",
     "integration"
   ],
-  "project_description": "Created a webform handler to send the data to the datahub api to store the response. Created configuration form to store the client api and client secret key and endpoint api key.\n\n Link To Webform Datahub Configuration Page: \n\n Table of contents\n\n \n Requirements \n Recommended modules \n Installation \n Configuration \n \n Requirements\n\nThis module requires the following modules:\n\nWebform",
+  "project_description": "Provides a Webform handler plugin (id webform_datahub) that, on each submission, authenticates against an external \"Datahub\" REST API with a stored username/password to obtain an access token, builds a nested AttendeeRegistration JSON payload from the webform-to-field mapping plus UTM query parameters, and POSTs it to the Datahub /api/attendee/registration endpoint. A site-wide settings form stores the endpoint base URI and credentials, and an optional hook records UTM parameters against submissions when a 'utm' entity type is present. Endpoint and credentials are administrator-configured, not request-supplied.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

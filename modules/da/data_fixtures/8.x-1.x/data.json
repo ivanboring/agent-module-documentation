@@ -1,40 +1,45 @@
 {
   "name": "Data Fixtures",
   "data_name": "data_fixtures",
-  "description": "Generates data fixtures (sample/test content and configuration).",
+  "description": "Generates dummy content via developer-defined, service-tagged fixture generators, driven by Drush.",
   "version": "8.x-1.x",
   "package": "Development",
   "composer_namespace": "drupal/data_fixtures",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "ext-json": "*",
+    "fakerphp/faker": "^1.15"
+  },
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^8.9.0 || ^9.0 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/data_fixtures",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=7.2",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": true,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
   ],
   "subcategories": [
-    "Testing / QA tooling"
+    "Test content generation"
   ],
   "keywords": [
     "fixtures",
     "test data",
+    "dummy content",
+    "faker",
+    "drush",
     "development",
-    "sample",
-    "drush"
+    "seed data"
   ],
-  "project_description": "Drupal Data Fixtures module \n The fixtures module allows you to easily create dummy content.\n\n Requirements :\n\n \n drush \n \n Installation \n\n \n Install and enable the module \n Implement a Generator interface (see Basic concepts for more info) \n run drush fixtures-load inside a working drupal installation \n \n Road Map \n\n \n User interface for all available commands \n Run only a certain set of generators \n \n Disclaimer \n This module was built with a certain workflow in mind. It might work well for you. It might not. Feel free to open any issues if you feel it missing features.\n\n This module **is not** production ready. It will never be this. It is intended for **local development only**. Optionally, you can use it to create working test-environments on the fly with dummy content.\n\n Basic concepts \n Each module defining an Entity, ConfigEntity, custom structure, ... that relies on Content to be testable (e.g. an entity bundle, menu items, ...) can also define Generators.\n\nThese generators will run by this module to automatically create a working Drupal environment from scratch.\n\n This is epscially useful if your CI/CD workflow includes creating entirely new environments on the fly without any existing content.\n\nThis can be due to contract limitations, privacy-related data like e.g. user accounts or the fact that it is still under development.\n\n We also found it is useful when having a team consisting of \"Drupal developers\" working together with Front-end developers.\n\nWhen defining content types, user profiles, custom entities, ... we also provide Generators that generate content for these structures.\n\nThis way, a front-end developer does not have to manually create content every time he works on a new feature.\n\n When not to use it \n Moving content between environments: Data fixtures is based on the idea we can simply Truncate the db if needed.\n\nDeploying real content to production: Data fixtures is based on random data. Let's keep it that way\n\n Generators \n Each Generators needs to implement the Drupal\\data_fixtures\\Interfaces\\Generator interface.\n\nIt has 2 methods: load and unload .\n\n To register a Generator, add it to your services.yml file and tag it with \"data_fixtures\"\n\n \n\ntags:\n\n - { name: data_fixtures }\n\n \n\n Available commands: \n \n drush fixtures-load -> runs the load method on all Generators. \n drush fixtures-unload -> runs the unload method on all Generators. \n drush fixtures-reload -> runs fixtures-unload and fixtures-load, in that order.",
+  "project_description": "Data Fixtures is a developer tool for populating a Drupal site with dummy content for local development and test environments. It defines no content of its own: instead, other modules register PHP \"generator\" classes (services tagged `data_fixtures`, each implementing `Drupal\\data_fixtures\\Interfaces\\Generator` with `load()` and `unLoad()` methods) that create and later remove sample entities, menu items, media, users and other structures. A `FixturesManager` service collects all tagged generators, sorts them by priority, and Drush commands (`fixtures:list`, `fixtures:load`, `fixtures:unload`, `fixtures:reload`) run them in order (or in reverse on unload). An optional `AbstractGenerator` base class wraps fakerphp/faker and offers helpers for links, formatted text, random entity lookup, media-by-filename lookup, and bulk entity deletion. The module ships no routes, permissions, or config; it is explicitly intended for local development and building disposable test/CI environments, never production.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

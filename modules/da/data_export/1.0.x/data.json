@@ -1,25 +1,29 @@
 {
   "name": "Data Export",
   "data_name": "data_export",
-  "description": "Exports data in various formats (PDF, DOCX, CSV, XLS).",
+  "description": "Exports data in various formats like PDF, DOCX, CSV, and XLSX.",
   "version": "1.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/data_export",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/data_export",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "phpoffice/phpspreadsheet",
+    "phpoffice/phpword",
+    "tecnickcom/tcpdf"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Import and export"
@@ -30,11 +34,11 @@
   "keywords": [
     "export",
     "pdf",
+    "docx",
     "csv",
-    "xls",
-    "data"
+    "xlsx"
   ],
-  "project_description": "Data Export Module\n Back to top \n\n Table of Contents \n \n Introduction \n Installation and Setup \n Main Features \n How to Use the Data Export Module \n \n Export Using Table Name \n Export Using Code \n Developer Hooks \n \n \n Additional Notes \n Conclusion \n \n Back to top \n\n 1. Introduction \n \n The Data Export Module provides a robust solution for exporting data in various formats such as CSV, XLSX, PDF, and DOCX. This module is designed to offer flexible and dynamic export capabilities, allowing administrators and developers to export data from specific database tables or custom queries. It offers dynamic header and data configuration, which ensures that exported files are tailored to meet your needs.\n \n\n Back to top \n\n 2. Installation and Setup \n To install and configure the Data Export Module:\n\n \n Download the Module: Download the Data Export Module from the Drupal module repository. \n Enable the Module: Go to Admin Menu > Extend and enable the Data Export module. \n Configure Permissions: Ensure that appropriate user roles have permission to access export functionalities. Navigate to People > Permissions to assign these. \n Install Required Libraries: Install the following libraries using Composer: \n \n PhpSpreadsheet (for XLSX export): \n composer require phpoffice/phpspreadsheet PhpWord (for DOCX export): \n composer require phpoffice/phpword TCPDF (for PDF export): \n composer require tecnickcom/tcpdf \n \n Back to top \n\n 3. Main Features \n \n Export Formats Supported: CSV, XLSX, PDF, DOCX. \n Dynamic Data Export: Export data from any database table or through custom SQL queries. \n Simple Interface: Select tables and columns easily. \n Validation and Error Handling: Automatically checks for matching headers and data columns. \n Developer-friendly: Hooks are available for customizing the export process programmatically. \n \n Back to top \n\n 4. How to Use the Data Export Module \n a. Export Using Table Name \n \n Navigate to Export Interface: Go to Admin Menu > Export Data > Export Using Table Name. \n Enter Table Name: Input the name of the table from which to export data. \n Select Columns: Choose the columns to export. If none are selected, all columns will be included. \n Select Format: Choose between CSV, XLSX, DOCX, or PDF formats. \n Export: Click Export to download the file in your chosen format. \n \n b. Export Using Code \n \n Navigate to Custom SQL Export: Go to Admin Menu > Export Data > Export Using Code. \n Enter SQL Query: Input a valid SQL query for the data you want to export. \n Preview Data: Click Show Records to preview the query result. \n Select Format: Choose your export format (CSV, XLSX, DOCX, PDF). \n Export: Click Export to generate and download the file. \n \n c. Developer Hooks \n The Data Export Module provides several hooks to programmatically manage and customize exports. These hooks allow developers to pass dynamic headers and data arrays:\n\n \n exportPdf($headers, $data): Exports data in PDF format using TCPDF. \n exportDocx($headers, $data): Exports data in DOCX format with a table structure. \n exportCsv($headers, $data): Generates a CSV file. \n exportXlsx($headers, $data): Exports data in XLSX format. \n \n Validation and Error Handling: The functions validate that the number of columns in the headers matches the number of columns in the data. If not, an error message is returned: \"Error: The number of columns in headers and data does not match.\"\n\n Back to top \n\n 5. Additional Notes \n Passing Headers and Data \n The $headers array contains the column titles, and the $data array is multi-dimensional with each sub-array representing a row of data.\n\n \n$headers = ['ID', 'Name', 'Email'];\n$data = [\n ['1', 'John Doe', 'john.doe@example.com'],\n ['2', 'Jane Smith', 'jane.smith@example.com'],\n];\n Headers: 'ID', 'Name', and 'Email' will be the column titles. \n\n Data: Values populate under each header as records.\n \n\n Back to top \n\n 6. Conclusion \n \n The Data Export Module streamlines data export processes for Drupal administrators and …",
+  "project_description": "Data Export is a small admin utility that lets a site administrator dump rows from the site's database into a downloadable PDF, DOCX, CSV, or XLSX file. It exposes two admin forms under Admin > Content: 'Export Using Table Name', which lists the columns of a named database table (read from information_schema.columns) as checkboxes and exports the selected columns, and 'Export Using Code', which runs a hand-written SQL query and exports the result set. A third route renders a listing of the two export options. All export work runs through a single DataExportService plus a set of procedural helper functions in data_export.module that build the file with TCPDF (PDF), PhpOffice\\PhpWord (DOCX), PhpOffice\\PhpSpreadsheet (XLSX), or fputcsv (CSV) and stream it to the browser. The module ships no config, no config schema, no permissions of its own, and no Drush commands; every route is gated by the core 'administer site configuration' permission. The three PHP writer libraries (phpoffice/phpspreadsheet, phpoffice/phpword, tecnickcom/tcpdf) are hard runtime requirements but are not declared in a composer.json, so they must be required manually. Front-end assets (DataTables, Bootstrap, Font Awesome) are loaded from public CDNs.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

@@ -1,40 +1,44 @@
 {
   "name": "Data Structures",
   "data_name": "data_structures",
-  "description": "Provides Drush generators and default classes to replace most uses of arrays in code.",
+  "description": "Provides Drush/DrupalCodeGenerator generators and default classes to replace most uses of arrays in code with typed objects.",
   "version": "1.0.x",
   "package": "Development",
   "composer_namespace": "drupal/data_structures",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drush/drush": "^13"
+  },
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/data_structures",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.3",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": true,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
   ],
   "subcategories": [
-    "Code generation / scaffolding"
+    "Code generation / scaffolding",
+    "Data transformation"
   ],
   "keywords": [
     "data structures",
-    "drush",
-    "generators",
-    "typed",
-    "developer"
+    "typed collections",
+    "drush generators",
+    "value objects",
+    "immutable sequence",
+    "set"
   ],
-  "project_description": "The Data Structures module is a developer utility module. It provides two sets of tools to developers: drush generators for value objects, and classes for typed sequences on the most common base types.\n\n Toolset \n \n Drush generator commands provide an easy way to create classes to replace associative and indexed arrays with type safe objects. \n Data structure classes that instantiate typed sequences using the most common base types. \n Classes and interfaces for set operations \n \n Background \n After bumping into an archived presentation by Crell we conducted a performance evaluation using 1,000,000 instances of data structures with two items, one integer and one string. Averaging 300 iterations of instantiating and executing with the given data structure clearly shows that properly structured objects are faster and more memory efficient than associative arrays.\n\n \n \n \n Sorting \n Runtime \n Delta \n Memory \n Delta \n \n \n \n \n Assoc. Array \n 4.92563 \n \n 499.547 MB \n \n \n \n Object (public) \n 4.59630 \n -6.7% \n 211.928 MB \n -57.6% \n \n \n Object (readonly) \n 4.15491 \n -15.6% \n 211.928 MB \n -57.6% \n \n \n Object (private) \n 6.33438 \n +28.6% \n 211.930 MB \n -57.6% \n \n \n \n \n \n \n Serialization \n Runtime \n Delta \n Memory \n Delta \n \n \n \n \n Assoc. Array \n 1.07523 \n \n 1032.741 MB \n \n \n \n Object (public) \n 1.09756 \n +2.1% \n 849.519 MB \n -17.7% \n \n \n Object (readonly) \n 1.35624 \n +27.0% \n 934.409 MB \n -9.5% \n \n \n Object (private) \n 1.09738 \n +2.1% \n 856.520 MB \n -17.7% \n \n \n \n Efficiency should increase with larger data sets. Typed sequences need to use an indexed array as an internal data structure, so there are not equivalent efficiencies, however they do enforce a reliable type. If Adopt php-ds for data structures were ever adopted, we could use a more efficient data structure and this penalty would likely evaporate.\n\n Usage \n Install as you would normally install a contributed Drupal module: composer require drupal/data_structures . See Add a module with Composer for further information.\n\n Drush Commands \n \n drush gen data-structures:map : Generates a typed key-value class with public or readonly properties \n data-structures:typed-sequence : Generates a typed sequence class with utility methods. \n \n Sequences \n Classes that can be used or extended in custom code to enforce and manage typed sequences.\n\n \n CallableImmutableSequence \n FloatImmutableSequence \n IntImmutableSequence \n ObjectImmutableSequence \n StringImmutableSequence \n \n Sets \n A Set class and interface, which can be extended to provide typed data, that ensures data elements added to an instance are unique and has methods for performing set operations between instances.\n\n Additional Requirements \n Requires Drush version 13 or higher.\n\n Back to top",
+  "project_description": "Data Structures is a developer utility module (no routes, permissions, config, or entities) that helps replace ad-hoc PHP arrays with type-safe objects. It ships two things: (1) two DrupalCodeGenerator generators, invoked through Drush 13's `drush generate` command, that scaffold value-map classes (`data-structures:map`) and typed immutable sequence classes (`data-structures:typed-sequence`) into a target module's `src/DataStructure/` directory; and (2) a small library of ready-to-use collection classes under the `Drupal\\data_structures\\DataStructure` namespace: five immutable typed sequences (Callable, Float, Int, Object, String) that enforce their element type in the constructor and reject mutation via ArrayAccess, plus a `Set`/`SetInterface` implementation providing uniqueness and set algebra (union, intersect, difference, symmetric difference) with an `EqualityInterface` for custom equality. The module is motivated by a performance study showing structured objects use substantially less memory than associative arrays. Requires PHP 8.3+ and Drush 13+.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

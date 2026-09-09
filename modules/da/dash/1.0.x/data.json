@@ -1,16 +1,16 @@
 {
-  "name": "Dash",
+  "name": "Modern Drupal Dashboard (Dash)",
   "data_name": "dash",
-  "description": "A modern, React-powered administrative dashboard with key site metrics.",
+  "description": "Provides a modern, React-powered administrative dashboard with key site insights and health indicators.",
   "version": "1.0.x",
   "package": "Administration",
   "composer_namespace": "drupal/dash",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:system"
+    "system"
   ],
   "configure": null,
-  "core_version_requirement": "^10.3||^11",
+  "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/dash",
@@ -21,22 +21,23 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools"
   ],
   "subcategories": [
-    "Dashboards / portlets"
+    "Dashboard / reporting"
   ],
   "keywords": [
     "dashboard",
     "react",
     "admin",
     "metrics",
+    "health",
     "administration"
   ],
-  "project_description": "Back to top \n\n Modern Drupal Dashboard (dash) \n \nModern Drupal Dashboard provides a clean, React-powered administrative dashboard for Drupal. It replaces the traditional admin landing experience with a fast, widget-based interface that surfaces key site metrics,\n\nsystem health, and operational insights all in one place.\n\n Back to top \n\n Key Features \n \n Content overview : total content count, published vs unpublished, and per content type breakdown. \n Users overview : user count per role (users with multiple roles are counted in each role), plus pie chart visualization. \n Additional Content (Entity overview) : lists all entity types (content + configuration), shows counts, and provides direct “Manage” links. \n Modules overview : installed modules summary, including enabled/disabled and core/contrib breakdown. \n System & status : key environment details such as Drupal core version, PHP version, and database information. \n Health checks : displays Drupal requirement checks grouped by status (pass/warning/error) with a dedicated detail view. \n \n Back to top \n\n Dashboards and Detail Pages \n \nEach widget is designed to be clickable and open a dedicated view with extended data.\n\n \n Content : totals and per-type breakdown with published/unpublished split. \n Users : per-role table, pie chart, and role counting disclaimer. \n Additional Content : full entity inventory (content + config) with counts and management links. \n Modules : module statistics and detailed listing view. \n Health : full list of checks with passed items and failing items separated and clearly labeled. \n Back to top",
+  "project_description": "Modern Drupal Dashboard (dash) provides a clean, React-powered administrative dashboard for Drupal 10.3+ and Drupal 11. It replaces the default admin landing experience with a fast, widget-based single-page interface served at /admin/dashboard that surfaces content statistics, user and role breakdowns, an entity inventory, module insights, system/status information, and category health scores (SEO, performance, accessibility, security) with dedicated detail pages. All data is computed server-side by isolated PHP services and delivered as cacheable JSON to the React app; each widget is gated behind the restricted 'access modern dashboard' permission. No configuration is required.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

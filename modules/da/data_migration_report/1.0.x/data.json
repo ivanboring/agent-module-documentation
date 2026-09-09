@@ -1,15 +1,15 @@
 {
   "name": "Data Migration Report",
   "data_name": "data_migration_report",
-  "description": "A Drush command to verify migrated data.",
+  "description": "Drush commands that generate content-mapping YAML and verify migrated Drupal 7 data against the Drupal 10/11 destination, producing HTML reports.",
   "version": "1.0.x",
   "package": "Migration",
   "composer_namespace": "drupal/data_migration_report",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:migrate_drupal"
+    "migrate_drupal"
   ],
-  "configure": null,
+  "configure": "data_migration_report.migrate_database_credentials",
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -19,24 +19,27 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
-  "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Import and export"
   ],
   "subcategories": [
-    "Migration tooling"
+    "Migration tooling",
+    "Content migration / import"
   ],
   "keywords": [
     "migration",
+    "migrate_drupal",
+    "drupal 7",
     "report",
     "drush",
     "verify",
-    "data"
+    "data integrity"
   ],
-  "project_description": "The Data Migration Report module is created to simplify and improve the data migration process from Drupal 7 to Drupal 10 and later versions. By using this module, developers and administrators can ensure data integrity, trace mapping issues, and gain insights into the migration process, ultimately leading to smoother transitions and better data management.\n\n Supported Entity Types: \n \n User \n Node \n Taxonomy \n Content block \n Comment \n Menu links \n URL alias \n File \n Field Collection \n Paragraphs \n \n Features \n This module provides two powerful Drush commands that facilitate the generation of comprehensive content mapping YAML files and enable detailed testing and reporting of migration data.\n\n \n \n Generate Content Mapping YAML: \n \n Command: drush generate:content-mapping \n Description: This command creates a YAML file that maps source data fields to Drupal content fields. It helps in visualizing how data from the source system corresponds to Drupal’s fields and is essential for configuring migration processes. \n \n \n \n Test Data and Generate Report: \n \n Command: drush migration:test \n Description: This command runs a test migration based on the provided mapping and generates a detailed report. The report includes data validation results, any issues encountered, and a summary of successfully migrated data. This helps in identifying and addressing potential problems before executing a full migration. \n \n Arguments: \n \n entity_type - The type of the content entity being migrated. \n bundle - The bundle of the content entity. \n \n \n \n Options: \n \n --limit - Number of items to process. \n --ids - List of source content ids to process. \n \n \n \n \n \n Configuration \n Define the source database connection with the key ' migrate ' in addition to the 'default' database connection in settings.php.\n\n OR \n\n Configure the source database connection at /admin/config/system/migrate-database-credentials .\n\n Back to top",
+  "project_description": "The Data Migration Report module helps developers and administrators validate a Drupal 7 to Drupal 10/11 migration. It ships two Drush commands: generate:content-mapping (gcm) inspects the Drupal 7 source database and writes per-entity/bundle YAML mapping files that pair each D7 field/column with its destination D10 field, and migration:test (mt) replays that mapping to compare source rows against migrated destination rows and produce a per-bundle console summary plus an HTML diff report. It supports user, node, taxonomy_term, block_custom, comment, menu_links, url_alias, file, file_private, field_collection_item and paragraphs_item source types, relying on the migrate_drupal migrate_map_* tables to correlate source and destination IDs. The source (Drupal 7) database connection is taken either from a 'migrate' database key in settings.php or from credentials entered at /admin/config/system/data-migration-report-database-credentials (stored in State).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

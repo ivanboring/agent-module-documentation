@@ -1,7 +1,7 @@
 {
   "name": "Data hover Filter",
   "data_name": "data_hover_filter",
-  "description": "A text filter that adds a data-hover attribute to links.",
+  "description": "A text-format filter that copies each link's text into a data-hover attribute on the <a> tag.",
   "version": "2.1.x",
   "package": "custom",
   "composer_namespace": "drupal/data_hover_filter",
@@ -17,9 +17,9 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"
@@ -34,7 +34,7 @@
     "text format",
     "hover"
   ],
-  "project_description": "Adds a textfilter which adds a data-hover attribute with the value of the link-text to links.\n\n So:\n\n Link to Drupal \n\nBecomes:\n\n Link to Drupal \n\n This is useful if you want to make fancy CSS links as seen here for instance.",
+  "project_description": "Data hover Filter ships a single text-format filter (plugin id filter_attribute) that, when enabled on a text format, walks the rendered HTML and adds a data-hover attribute to every <a> tag whose value is the link's own text. This lets themes and CSS build hover/tooltip effects driven by the link label (for example duplicating the label in a ::before pseudo-element) without editors having to add the attribute by hand. The module has no configuration, no permissions of its own, and no dependencies beyond core's Filter module.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

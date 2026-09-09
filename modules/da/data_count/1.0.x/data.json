@@ -1,14 +1,17 @@
 {
   "name": "Data Count",
   "data_name": "data_count",
-  "description": "Counts existing nodes and users on the site for administrators.",
+  "description": "Admin report that counts published/unpublished nodes per content type and active/inactive users per role.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/data_count",
   "composer_requirements": {},
-  "dependent_modules": [],
+  "dependent_modules": [
+    "node",
+    "user"
+  ],
   "configure": null,
-  "core_version_requirement": "^8.8||^9||^10||^11",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/data_count",
@@ -19,7 +22,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools"
@@ -32,9 +35,10 @@
     "nodes",
     "users",
     "statistics",
-    "reporting"
+    "reporting",
+    "content audit"
   ],
-  "project_description": "A statistical module, it helps admin to count all existing nodes and users data on the website. Admin can easily monitor the status of published/unpublished nodes and active/inactive users through given links respectively.\n\n Further, it provides the number of published/unpublished nodes in each content type and the number of valued active/inactive users based on assigned roles so such details can be useful in content audits.\n\n Features \n This module is for stats which gives a detailed count overview of web content and user data.\n\n Reasons to use \n \n Quick content audits \n Clean admin interface \n Lightweight and fast \n No configuration or Views required \n Useful for small and large websites \n \n Steps to use \n \n Install & enable the module as usual. \n Go to the admin page \"Reports >> Data Count\" to view results. \n The page shows the content type wise count under \"Node Count Details\" tab. \n Similarly, there is the user role wise count under \"User Count Details\" tab. \n \n Additional requirements \n This module requires no modules outside of Drupal core.\n\n Similar projects \n You can check Node Type Count for Drupal 7 projects.\n\n Back to top",
+  "project_description": "Data Count is a lightweight statistical report for site administrators. It adds a single page under Reports (/admin/reports/data-count) that counts every node and user on the site. The node view breaks down published and unpublished counts for each content type, with grand totals; the user view breaks down active and inactive user counts for each custom role. Every figure links straight to the matching filtered admin/content or admin/people listing, so the report doubles as a jumping-off point for content and account audits. It requires no configuration, no Views, and no non-core dependencies — only the node and user modules — and reads counts directly from the database at page load.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

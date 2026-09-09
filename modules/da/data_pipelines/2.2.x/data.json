@@ -1,45 +1,56 @@
 {
   "name": "Data Pipelines",
   "data_name": "data_pipelines",
-  "description": "Manage datasets with configurable source/transform/destination pipelines (ETL).",
+  "description": "Ingest, validate, transform and output arbitrary datasets via configurable source/pipeline/destination (ETL).",
   "version": "2.2.x",
   "package": "Data Pipelines",
   "composer_namespace": "drupal/data_pipelines",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/entity": "^1.0",
+    "softcreatr/jsonpath": "^0.9"
+  },
   "dependent_modules": [
-    "drupal:link",
-    "drupal:file",
-    "entity:entity",
-    "drupal:options"
+    "link",
+    "file",
+    "entity",
+    "options"
   ],
   "configure": null,
-  "core_version_requirement": "^10.3||^11",
+  "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/data_pipelines",
   "license": "GPL-2.0-or-later",
-  "php_requirement": "8.0",
+  "php_requirement": "8.3",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
-  "provides_drush_commands": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "data_pipelines_source",
+    "data_pipelines_pipeline",
+    "data_pipelines_transform",
+    "data_pipelines_destination"
+  ],
   "categories": [
     "Import and export"
   ],
   "subcategories": [
-    "ETL / data pipelines"
+    "Data transformation",
+    "Content migration / import"
   ],
   "keywords": [
     "data",
     "pipeline",
     "etl",
     "dataset",
-    "transform"
+    "transform",
+    "csv",
+    "json"
   ],
-  "project_description": "Back to top \n\n Overview \n Provides the ability to ingest, validate, transform and index (ElasticSearch) arbitrary datasets.\n\n Back to top \n\n Features \n \n Give content editors a place to update datasets \n Support for CSV and JSON files \n Support for CSV and JSON URLs \n Developers can declare a pipeline which is a series of transforms and validation rules \n Data is then transformed, validated and output to a destination \n Default output destinations include JSON and CSV files \n \n Back to top \n\n Configuration/Installation \n \n Download and install the module like normal \n Follow the readme to define a pipeline in YML \n Visit /admin/content/datasets to add and manage datasets \n \n Back to top \n\n Requirements \n Requires the following modules:\n\n \n Entity module \n \n Back to top \n\n Ecosystem \n Destination plugins \n https://www.drupal.org/project/data_pipelines_elasticsearch \n\n https://www.drupal.org/project/data_pipelines_opensearch \n\n Source plugins \n https://www.drupal.org/project/data_pipelines_sftp \n\n Back to top \n\n Known problems \n Please use the issue queue to report issues.\n\n Back to top",
+  "project_description": "Data Pipelines provides an ETL framework built around a 'dataset' content entity. Each dataset pairs a source plugin (CSV or JSON drawn from an uploaded file, a remote URL, or pasted text) with a code-defined pipeline of validation and transform plugins, and one or more configured destinations (a JSON or CSV file by default; contributed sub-projects add Elasticsearch, OpenSearch and SFTP). Content editors add and manage datasets at /admin/content/datasets; developers declare pipelines in a {module}.data_pipelines.yml file. Processing is deferred to the Batch and Queue APIs so large datasets can be validated and written to destinations outside the normal save request.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
