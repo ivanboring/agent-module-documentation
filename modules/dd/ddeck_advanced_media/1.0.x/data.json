@@ -1,9 +1,9 @@
 {
   "name": "DDECK Plyr & Advanced Media",
   "data_name": "ddeck_advanced_media",
-  "description": "A Plyr player field formatter and a CKEditor 5 media gallery.",
+  "description": "Add Plyr player field formatter and a CKEditor 5 gallery using the Media Library and PhotoSwipe.",
   "version": "1.0.x",
-  "package": null,
+  "package": "ddeck",
   "composer_namespace": "drupal/ddeck_advanced_media",
   "composer_requirements": {},
   "dependent_modules": [
@@ -19,18 +19,23 @@
   "project_url": "https://www.drupal.org/project/ddeck_advanced_media",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "plyr",
+    "photoswipe"
+  ],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"
   ],
   "subcategories": [
-    "Media embedding"
+    "Field formatters",
+    "Media embedding",
+    "Lightbox / modal display"
   ],
   "keywords": [
     "plyr",

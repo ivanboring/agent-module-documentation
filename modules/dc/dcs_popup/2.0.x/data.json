@@ -1,25 +1,27 @@
 {
   "name": "Digital Climate Strike Popup",
   "data_name": "dcs_popup",
-  "description": "A Digital Climate Strike popup/banner.",
+  "description": "Attaches the Digital Climate Strike participation widget (bottom banner or full-page popup) to the front page.",
   "version": "2.0.x",
-  "package": null,
+  "package": "Other",
   "composer_namespace": "drupal/dcs_popup",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "dcs_popup.settings_form",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/dcs_popup",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "https://assets.digitalclimatestrike.net/widget.js"
+  ],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"
@@ -34,7 +36,7 @@
     "awareness",
     "campaign"
   ],
-  "project_description": "Digital Climate Strike Popup Module \n Introduction \n This module adds a \"Digital Climate Strike\" participation popup.\n\nMore info: https://digital.globalclimatestrike.net \n\n Installation \n Install via Drupal Administration or with the following composer commands\n\nin project root folder: $ composer require drupal/dcs_popup and enable the module in your web folder: $ drush en dcs_popup \n\n Configuration \n To add 'Digital Climate Strike' popup you can go to: Configuration -> System -> Digital Climate Strike Popup Settings (admin/config/dcs_popup/settings) and choose the widget to use.\n\n Changelog \n The first D8/D9 stable release is under the track.",
+  "project_description": "Digital Climate Strike Popup adds the third-party Digital Climate Strike participation widget to a Drupal site. An administrator picks one of three widget modes (None, Bottom banner, Page popup) at Configuration > System > Digital Climate Strike Popup Settings. The module ships a single simple config form (SettingsForm) writing the dcs_popup.settings config object, a libraries.yml entry that loads the remote widget script from assets.digitalclimatestrike.net, and a hook_preprocess_page() implementation intended to attach the library on the default theme's front page. More info: https://digital.globalclimatestrike.net",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

@@ -1,14 +1,14 @@
 {
   "name": "Debug Cacheability Headers Split",
   "data_name": "debug_cacheability_headers_split",
-  "description": "Splits oversized debug cacheability headers into multiple headers to avoid server limits.",
+  "description": "Detects when Drupal core's debug cacheability headers exceed a server's per-header size limit and splits the value across multiple numbered headers.",
   "version": "1.0.x",
   "package": "Development",
   "composer_namespace": "drupal/debug_cacheability_headers_split",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": "debug_cacheability_headers_split.settings",
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/debug_cacheability_headers_split",
@@ -19,7 +19,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
@@ -32,9 +32,10 @@
     "headers",
     "debug",
     "cache tags",
+    "cache contexts",
     "development"
   ],
-  "project_description": "Most webservers have a maximum header size limit . Most common limit is 8K per header, which may be configurable or not, as is (at the time of writing) the case of Apache2 with mod_proxy_fcgi .\n\n For complex sites, the number of cache tags may be large, so when http.response.debug_cacheability_headers is enabled, the respective headers' size may exceed the server limit, resulting in server errors (WSOD, 502 Bad Gateway etc).\n\n Related issues with more details and discussion:\n\n \n https://www.drupal.org/project/drupal/issues/2954339 \n https://www.drupal.org/project/drupal/issues/2844620 \n \n The proposed approach is to split the large cacheability header(s) into multiple ones within the limit (e.g. ' X-Drupal-Cache-Tags ', ' X-Drupal-Cache-Tags-1 ', ' X-Drupal-Cache-Tags-2 ' etc).\n\n Features \n When http.response.debug_cacheability_headers is enabled and if one of the cacheability headers exceeds the configured size limit, the header is automatically split into chunks.\n\n Post-Installation \n The default applicable configuration for the header limits is:\n\n- 8192 (8KB) for the size limit per header\n\n- 8000 (< 8KB) for the header chunk size when split\n\n You may configure these at /admin/config/development/settings/cacheability .\n\n Alternatively, you may override them via `settings.local.php` file as follows: \n\n <?php\n\n$config['debug_cacheability_headers_split.settings']['header_size_limit'] = 5120;\n\n$config['debug_cacheability_headers_split.settings']['header_chunk_size'] = 5000;\n\n?>\n\n Additional Requirements \n None.\n\n Similar projects \n \n Core patch for Drupal 9 and 10 \n Core Drupal 11 fix (merge request active) \n \n I do not believe that this is a core bug nor that it should be addressed by Drupal core. See detailed explanation here .\n\n Back to top",
+  "project_description": "Most web servers enforce a maximum size per HTTP header; a common limit is 8KB. When Drupal core's http.response.debug_cacheability_headers setting is enabled, the X-Drupal-Cache-Tags and X-Drupal-Cache-Contexts headers are emitted, and on complex pages the list of cache tags/contexts can be large enough that a single header exceeds the server limit, producing errors such as a white screen of death or a 502 Bad Gateway. This module registers a response event subscriber that inspects those two headers on cacheable main responses and, when a header's byte length exceeds a configurable size limit, word-wraps the value into chunks and re-emits it across numbered headers (e.g. X-Drupal-Cache-Tags, X-Drupal-Cache-Tags-1, X-Drupal-Cache-Tags-2). Two thresholds are configurable at /admin/config/development/settings/cacheability or via settings.local.php: the size limit above which a header is split (default 8192, minimum 1024) and the maximum chunk size for each split header (default 8000, minimum 512). The module is a development/debugging aid and takes no action unless core's debug cacheability headers are enabled.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "not-covered",

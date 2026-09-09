@@ -1,11 +1,13 @@
 {
   "name": "DCAT-AP",
   "data_name": "dcat_ap",
-  "description": "Adds DCAT-AP 2.1.0 profile fields and mandatory/recommended cardinality constraints on top of the base dcat entities.",
+  "description": "Extends the dcat module with the DCAT-AP 2.1.0 application profile: adds profile-specific base fields and enforces mandatory/recommended cardinality constraints on the dcat entities via DcatFieldProvider plugins.",
   "version": "1.0.x",
   "package": "DCAT",
   "composer_namespace": "drupal/dcat_ap",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/dcat": "*"
+  },
   "dependent_modules": [
     "dcat:dcat"
   ],
@@ -21,7 +23,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Integrations"
@@ -39,7 +41,7 @@
     "semantic",
     "eu"
   ],
-  "project_description": "DCAT-AP extends the dcat module with support for the DCAT-AP 2.1.0 application profile.\n\n It reuses the core DCAT entities and adds the fields, constraints, and field adjustments needed for DCAT-AP compliant metadata management in Drupal.\n\n The module does not introduce new entity types. Instead, it extends datasets, distributions, and agents through field provider plugins that build on top of the base dcat definitions.\n\n Features \n \n Adds DCAT-AP 2.1.0 support on top of dcat . \n Adds extra dataset fields such as version information, source, provenance, and sample distribution. \n Marks key DCAT-AP fields as required, including dataset description and publisher. \n Adjusts distribution and agent fields to align with DCAT-AP vocabularies and requirements. \n \n Use case \n Use this module when the base DCAT model is not enough and the catalog must follow the DCAT-AP profile.\n\n Back to top",
+  "project_description": "DCAT-AP extends the dcat module with support for the DCAT-AP 2.1.0 application profile (https://github.com/SEMICeu/DCAT-AP/tree/2.1.0-draft/releases/2.1.0).\n\nIt does not define any new entity types, routes, permissions, or services. Instead it hooks into the base dcat module's `dcat_field_provider` plugin system with three provider plugins (for dcat_dataset, dcat_distribution and dcat_agent) that contribute additional DCAT-AP base fields and alter existing base fields to apply the profile's mandatory/recommended constraints and vocabulary guidance.\n\nDataset gains version info, is-version-of, has-version, source, provenance and sample-distribution fields; Distribution gains checksum and representation-technique fields. The plugins mark DCAT-AP mandatory properties (dataset description and publisher, distribution title/access URL, agent name) as required and rewrite recommended-field descriptions to point at the relevant EU controlled vocabularies. An install hook calls dcat's schema-sync helper so the new/altered fields are written to the entity tables. Optional display config is shipped under config/optional/ and applied only when the matching base displays and the link/text modules are present.\n\nUse this module when the base DCAT model is not enough and the catalog must be published as DCAT-AP compliant metadata.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

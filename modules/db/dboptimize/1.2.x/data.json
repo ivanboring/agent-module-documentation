@@ -1,14 +1,14 @@
 {
   "name": "DB Optimize",
   "data_name": "dboptimize",
-  "description": "Optimizes database tables via an admin interface (and Drush).",
+  "description": "Optimize, analyze, check, repair and back up database tables from an admin UI, cron or Drush.",
   "version": "1.2.x",
   "package": "System",
   "composer_namespace": "drupal/dboptimize",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": "dboptimize.optimize_form",
-  "core_version_requirement": "^9||^10||^11||^12",
+  "core_version_requirement": "^9 || ^10 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/dboptimize",
@@ -19,7 +19,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": true,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools"
@@ -30,11 +30,16 @@
   "keywords": [
     "database",
     "optimize",
+    "analyze",
+    "repair",
+    "check",
+    "backup",
     "maintenance",
-    "tables",
-    "admin"
+    "cron",
+    "drush",
+    "mysql"
   ],
-  "project_description": "DB Optimize \n DbOptimize is a lightweight utility module that helps Drupal site administrators and developers keep their database tables optimized for better performance. It provides a simple UI and Cron integration to run SQL OPTIMIZE TABLE operations, along with a Drush command for quick CLI usage.\n\n Key Features \n \n ✅ Simple admin UI to configure and run database table optimizations. \n ✅ Supports manual optimization through the admin interface. \n ✅ Supports automatic optimization via Drupal Cron. \n ✅ Supports CLI optimization via a Drush command. \n ✅ Specify exactly which tables to optimize, or leave blank to optimize all tables. \n ✅ Logs optimization actions in Drupal's system log (dblog). \n ✅ Safe error handling with clear reporting. \n ✅ Built following Drupal's coding standards and best practices. \n \n Use Cases \n \n Improve database performance on busy sites where tables like cache_*, watchdog, and sessions grow quickly. \n Automate database maintenance on production and staging environments. \n Perform quick table optimizations via Drush without accessing the database directly. \n Keep your site's database healthy as part of regular maintenance workflows. \n \n Installation & Usage \n Install the module using Composer or place it in your contrib directory:\n\n composer require drupal/dboptimize \n\n Enable the module:\n\n drush en dboptimize \n\n Go to Configuration → System→ DB Optimize (/admin/config/system/dboptimize) to:\n\n Add the tables you want to optimize (leave blank to optimize all).\n\n Manually trigger the optimization.\n\n View optimization results in the Recent Log Messages (/admin/reports/dblog).\n\n Configure Cron to run optimizations automatically as needed.\n\n Cron Integration \n During Cron runs:\n\n \n If table names are configured, only those tables will be optimized. \n If no tables are configured, all database tables will be optimized. \n \n Drush Command \n Optimize your database directly from the CLI:\n\n drush dboptimize:optimize \n\n drush dboptimize:optimize --tables=cache_data,watchdog \n\n drush dboptimize:analyze \n\n drush dboptimize:analyze --tables=cache_data,watchdog \n\n drush dboptimize:check \n\n drush dboptimize:check --tables=cache_data,watchdog \n\n drush dbo-repair \n\n drush dbo-repair --tables=cache_data,watchdog \n\n Compatibility \n \n ✅ Fully compatible with Drupal 9 ,10 and 11. \n ✅ Tested on MySQL and MariaDB. \n ❌ PostgreSQL support is not implemented yet (pull requests welcome!). \n \n \n Donation Support \n This project took significant time to develop. If it has helped you save time in your work or business, feel free to contribute any amount you consider fair to support its continued development",
+  "project_description": "DB Optimize is a lightweight utility module that helps Drupal site administrators keep their MySQL/MariaDB database tables healthy. It exposes the four MySQL maintenance statements — OPTIMIZE TABLE, ANALYZE TABLE, CHECK TABLE and REPAIR TABLE — through an admin interface, scheduled cron jobs (run directly or via queue workers), and a set of Drush commands. It also offers a database overview page that groups table sizes by content type and lists the largest tables, and a mysqldump-based full-database backup download. Each operation can be limited to specific tables or applied to all tables. Cron scheduling is per-operation with configurable frequency, and per-operation run/duration/error metrics are stored in state. Compatible with MySQL and MariaDB; PostgreSQL is not supported.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

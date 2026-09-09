@@ -1,14 +1,14 @@
 {
   "name": "Deconfig",
   "data_name": "deconfig",
-  "description": "A developer module for excluding (\"de-configuring\") some configuration from config export/import.",
+  "description": "Developer module for excluding some configuration from import/export.",
   "version": "1.0.x",
   "package": "Configuration",
   "composer_namespace": "drupal/deconfig",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^8.8||^9||^10||^11",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/deconfig",
@@ -18,23 +18,26 @@
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
-  "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
   ],
   "subcategories": [
-    "Configuration"
+    "Configuration management",
+    "Deployment / release management"
   ],
   "keywords": [
     "deconfig",
     "config",
     "exclude",
     "export",
+    "import",
+    "config sync",
     "environment"
   ],
-  "project_description": "Allow site administrators to control some configuration settings when using the configuration management system.\n\n Drupal 8's configuration management is great for controlling site\n\nconfiguration, but sometimes a developer wants to loosen the shackles\n\non certain configuration items and let the site administrator change\n\nthe setting without it being overwritten by the configuration\n\nmanagement system on the next configuration sync.\n\n Deconfig allows for marking some configuration entries as exempt from import/export directly in the YAML files. This means that the fact that a configuration is excluded is documented right where it was supposed to be, and is obvious in code reviews. As a precaution, the configuration system will error on import/export if the item somehow ends up in the YAML file anyway. Alternatively, items can be \"soft\" deconfiged, which allows for a default value that will only be used if the site doesn't have the configuration item, for those items that needs a default value in order to not break things.\n\n See the readme for usage details.",
+  "project_description": "Deconfig lets a developer exempt selected configuration keys (or whole config objects) from Drupal's configuration import/export, so a site administrator can change those settings without them being overwritten on the next config sync. Exemptions are declared inline in the sync-storage YAML via a `_deconfig` entry that mirrors the config hierarchy, keeping the exclusion visible in code review and next to the setting it affects. It works by decorating the `config.storage.sync` service with a storage wrapper (Drupal\\deconfig\\DeconfigStorage) that reads deconfig'ed items from active storage instead of sync, so they always appear up to date and are never rewritten on export. As a safety measure the hidden item must not be present in sync storage; if it is, import/export throws so the drift is obvious, and a soft mode (an `@` prefix on the key) lets a default value stay in sync but be used only when active storage has no value. A Drush command, `deconfig-remove-hidden` (alias `drh`), cleans stray hidden config out of sync storage.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

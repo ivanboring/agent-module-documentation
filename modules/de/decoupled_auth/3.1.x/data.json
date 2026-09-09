@@ -1,14 +1,20 @@
 {
   "name": "Decoupled User Authentication",
   "data_name": "decoupled_auth",
-  "description": "Allows Drupal user records to exist without authentication (login-less users, e.g. CRM contacts).",
+  "description": "Allow decoupling of Drupal Authentication from Drupal Users.",
   "version": "3.1.x",
   "package": "Tool",
   "composer_namespace": "drupal/decoupled_auth",
-  "composer_requirements": {},
-  "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^10||^11",
+  "composer_requirements": {
+    "cweagans/composer-patches": "~1.0",
+    "drupal/profile": "~1.0",
+    "drupal/address": "~1.0 || ^2.0"
+  },
+  "dependent_modules": [
+    "user"
+  ],
+  "configure": "decoupled_auth.settings",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/decoupled_auth",
@@ -24,17 +30,19 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Access control"
+    "Access control",
+    "Integrations"
   ],
   "subcategories": [
-    "User management"
+    "User registration",
+    "CRM integration"
   ],
   "keywords": [
     "users",
     "authentication",
     "decoupled",
     "crm",
-    "login"
+    "acquisition"
   ],
   "project_description": "Description \n This module aims to provide a simple API for storing information about users\n\nwho visit your site whether they register or not. By extending the base user\n\nentity the module allows you to store users that do not have a name and\n\npassword.\n\n Why bother? \n Drupal has thousands of useful contributed modules and many of these work with\n\nusers really well (e.g. Simplenews, OG and Profile). These modules would be\n\neven more effective if they could be used with users that are not registered.\n\n For example, storing profiles for unregistered users opens up whole new\n\npossibilities for using Drupal as a CRM framework.\n\n Drupal Commerce could also benefit from this by allowing users to give an email\n\naddress but not register before going through the checkout process.",
   "maintenance_status": "Actively maintained",

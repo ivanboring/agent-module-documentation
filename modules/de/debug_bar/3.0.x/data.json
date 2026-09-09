@@ -1,20 +1,27 @@
 {
   "name": "Debug Bar",
   "data_name": "debug_bar",
-  "description": "A floating toolbar showing debug information (keep gated to trusted users).",
+  "description": "A simple floating toolbar with debug information.",
   "version": "3.0.x",
   "package": "Development",
   "composer_namespace": "drupal/debug_bar",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "symfony/event-dispatcher": "^6.4 || ^7.1",
+    "symfony/http-foundation": "^6.4 || ^7.1",
+    "symfony/http-kernel": "^6.4 || ^7.1"
+  },
   "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^10||^11",
+  "configure": "debug_bar.settings",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/debug_bar",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
-  "library_dependencies": [],
+  "php_requirement": ">=8.3",
+  "library_dependencies": [
+    "core/drupal",
+    "core/once"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
@@ -25,7 +32,7 @@
     "Developer tools"
   ],
   "subcategories": [
-    "Debugging / inspection"
+    "Debugging & inspection"
   ],
   "keywords": [
     "debug",
@@ -34,7 +41,7 @@
     "debug bar",
     "runtime"
   ],
-  "project_description": "A simple toolbar with debug information and links.",
+  "project_description": "Debug Bar adds a small floating toolbar to the front end that surfaces at-a-glance runtime information for a page request: Drupal and PHP versions, execution time, peak memory usage, database query count, page/dynamic cache status, the last cron run, the current Git branch, and quick links to the status report, log and the current user. Admins can trigger a cron run or a full cache clear directly from the bar. Everything is gated behind the module's own permissions and rendered via a middleware plus a kernel event subscriber so the metrics stay accurate even for cached responses.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",
