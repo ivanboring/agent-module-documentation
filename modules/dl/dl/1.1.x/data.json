@@ -1,19 +1,20 @@
 {
-  "name": "DL (Document Library)",
+  "name": "Document Library",
   "data_name": "dl",
-  "description": "A comprehensive document-management/library system (upload, organize, browse documents).",
+  "description": "A document-management system built on a custom \"document\" content entity with hierarchical folders, per-document version history, favorites, download tracking, search, and a granular permission set.",
   "version": "1.1.x",
   "package": "Content",
   "composer_namespace": "drupal/dl",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:node",
-    "drupal:file",
-    "drupal:views",
-    "drupal:taxonomy"
+    "node",
+    "file",
+    "user",
+    "views",
+    "taxonomy"
   ],
-  "configure": null,
-  "core_version_requirement": "^10||^11",
+  "configure": "dl.admin_settings",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/dl",
@@ -24,22 +25,26 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content editing experience"
+    "Media"
   ],
   "subcategories": [
-    "Document management"
+    "Digital asset management (DAM)",
+    "File browser / management",
+    "File downloads"
   ],
   "keywords": [
     "document",
     "library",
     "dms",
     "files",
-    "management"
+    "folders",
+    "version control",
+    "downloads"
   ],
-  "project_description": "Document Library \n\n \n A comprehensive document management system with modern UI, hierarchical folders, version control, search, and download tracking.\n\n Back to top \n\n \n Features \n \n \n Core Features \n \n \n \n Document Upload & Management - Upload and organize documents with ease\n \n \n Hierarchical Folder Structure - Organize documents in nested folders with slug-based URLs\n \n \n Version Control - Track document versions with a changelog and file history\n \n \n Search & Filter - Advanced search by title, description, and tags with sorting options\n \n \n Download Tracking - Monitor document downloads with detailed analytics (user, IP, timestamp)\n \n \n User Permissions - Granular permission system with 12 distinct permissions\n \n \n Favorites - Users can mark documents as favorites for quick access\n \n \n Admin Interface - Dedicated admin page at /admin/content/documents with filtering and bulk actions\n \n \n \n Modern UI Features \n \n \n \n Responsive Design - Works perfectly on desktop, tablet, and mobile\n \n \n Clean Interface - Modern, card-based layout with intuitive navigation\n \n \n Drag & Drop Upload - Enhanced file upload experience\n \n \n Keyboard Shortcuts - Quick access with Ctrl+K (search) and Ctrl+U (upload)\n \n \n Smooth Animations - Polished user experience with subtle animations\n \n \n File Type Icons - Visual indicators for different file types (PDF, Word, Excel, etc.)\n \n \n Real-time Search - Client-side filtering with debounced input\n \n \n \n Enhanced Features \n \n \n \n Statistics Dashboard - Overview of total documents, published/unpublished counts, and downloads\n \n \n Version History - Complete version tracking with notes and file preservation\n \n \n Bulk Operations - Select multiple documents for batch publish/unpublish/delete\n \n \n Activity Logs - Track who downloaded what and when with IP addresses\n \n \n Auto-hide Messages - Clean UI with auto-dismissing status messages\n \n \n Empty States - Helpful guidance when no content exists\n \n \n Breadcrumb Navigation - Easy navigation through folder hierarchy\n \n \n Folder Management - Create, edit, and delete folders with move/delete content options\n \n \n \n Security Features \n \n \n \n SQL Injection Protection - All queries use parameterized statements and proper escaping\n \n \n XSS Prevention - Template auto-escaping and safe DOM manipulation\n \n \n CSRF Protection - Token validation on sensitive operations\n \n \n Access Control - Owner-based permissions with \"manage all\" override\n \n \n File Upload Validation - Extension and size restrictions\n \n \n Input Sanitization - All user input is properly validated and sanitized\n \n \n Back to top \n\n \n Usage \n \n \n Uploading Documents \n \n \n \n Navigate to /documents \n \n \n Click the \"Upload Document\" button\n \n \n Fill in the form:\n \n \n Document Title (required)\n \n \n Description (optional)\n \n \n Select Folder (dropdown with hierarchical options)\n \n \n Choose File (required, drag-and-drop supported)\n \n \n Version number (default: 1.0)\n \n \n Tags (comma-separated, optional)\n \n \n Published status (checkbox)\n \n \n \n \n Click \"Upload Document\"\n \n \n \n Managing Documents \n \n \n Viewing Documents: \n\n \n \n Browse the main library at /documents \n \n \n Navigate folders by clicking folder names\n \n \n Use the search at /documents/search \n \n \n View favorites at /documents/favorites \n \n \n Admin view at /admin/content/documents \n \n \n \n Editing Documents: \n\n \n \n Click on a document to view details\n \n \n Click the \"Edit\" button\n \n \n Update metadata or upload a new version\n \n \n Add version notes when uploading a new file\n \n \n Change folder assignment\n \n \n \n Deleting Documents: \n\n \n \n Click the \"Delete\" button on the document page\n \n \n Confirm deletion (this removes all versions and related data)\n \n \n Requires 'delete documents' permission or ownership\n \n \n \n Version Control: \n\n \n \n When uploading a new file during edit, a new version is created\n \n \n All previous versions are preserved with separate file storage\n \n \n Version history visible on the document detail page\n \n \n Each version tracks: file, version …",
+  "project_description": "Document Library (dl) provides a self-contained document-management system for Drupal 10/11. It defines a custom \"document\" content entity (base table `document`) with a required file field, an owner, a published flag and a download counter, and organizes documents into a hierarchical folder tree stored in the custom `dl_folders` table with slug-based nested URLs under /documents. It ships a front-end library UI (browse, folder pages, search, favorites, per-document view with version history), an admin listing at /admin/content/documents with bulk publish/unpublish/delete, per-document version history (`dl_versions`), download logging with user/IP/timestamp (`dl_downloads`), user favorites (`dl_favorites`), and a 12-permission access model with owner-plus-\"manage all\" overrides. Configuration lives in the `dl.settings` config object (items per page, feature toggles, theme); file constraints (extensions, 50 MB max, storage scheme) are governed by the standard File field on the entity via Field UI.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

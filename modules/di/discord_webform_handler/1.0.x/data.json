@@ -1,9 +1,9 @@
 {
   "name": "Discord Webform Handler",
   "data_name": "discord_webform_handler",
-  "description": "A Webform handler that posts submissions to a Discord webhook.",
+  "description": "A Webform handler plugin that posts each submission to a configured Discord webhook.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Webform",
   "composer_namespace": "drupal/discord_webform_handler",
   "composer_requirements": {},
   "dependent_modules": [
@@ -19,9 +19,9 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Forms and surveys"

@@ -1,9 +1,9 @@
 {
-  "name": "Display Builder Page Layout",
+  "name": "Display Builder for page layout",
   "data_name": "display_builder_page_layout",
   "description": "Provide integration of Display Builder to the page layout system.",
   "version": "1.x",
-  "package": null,
+  "package": "User interface",
   "composer_namespace": "drupal/display_builder",
   "composer_requirements": {},
   "dependent_modules": [
@@ -15,27 +15,31 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/display_builder",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.3",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Content display"
+    "Content display",
+    "Site structure"
   ],
   "subcategories": [
-    "Display building"
+    "Layout Builder",
+    "Structured content / page building"
   ],
   "keywords": [
-    "display",
+    "display builder",
     "page layout",
+    "page variant",
+    "regions",
     "submodule"
   ],
   "part_of": "display_builder",
-  "project_description": "A display building tool for ambitious site builders:\n\n \n Design system native : fully use your design system (components, style utilities, icons, themes/modes, CSS variables...) directly in Drupal \n Unified : replace Layout Builder for entity view displays, Block Layout for page displays, and as a replacement of the Views' display building feature. \n Modern : with powerful features: dynamic previews, presets, deep integration with Drupal APIs... \n \n \n 🧪 Try our Bootstrap recipe \n\n \n 🗎 Read our documentation \n\n \n ▶ Watch our videos for Drupal Display Builder \n\n Back to top \n\n Design system native \n UI Suite provides a cohesive set of modules to implement full design systems in Drupal. See the initiative page for more information. \n\n Back to top \n\n Recommended themes \n \n UI Suite Bootsrap (5.2.x) with a full Boostrap recipe to start your site \n UI Suite DaisyUI - Tailwind css (5.0.x) \n UI Suite DSFR (French Gov) with a full Boostrap recipe to start your site \n UI Suite USWDS (4.1.x) \n ...Your own theme with SDC components! \n \n \nHelp us speed the development, contact us for sponsoring.\n\n \n\n The Display Builder maintainers \n \n Jean Valverde (mogtofu33) - Lead tech \n Pierre Dureau (pdureau) - Project manager \n Mikael Meulle (just_like_good_vibes) - maintainer \n Back to top",
+  "project_description": "Display Builder for page layout adds a page_layout config entity and a display variant so whole pages can be laid out with Display Builder, as an alternative to placing blocks in theme regions. It provides the page layout admin routes, a builder screen per page layout, and sources for page-level content (page title, main content, regions).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

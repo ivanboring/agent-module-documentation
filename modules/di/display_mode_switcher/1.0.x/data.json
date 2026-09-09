@@ -1,7 +1,7 @@
 {
   "name": "Display Mode Switcher",
   "data_name": "display_mode_switcher",
-  "description": "provides rule-based entity display-mode switching via pluggable condition plugins.",
+  "description": "Rule-based entity display-mode switching at render time via pluggable condition plugins, with correct cache metadata propagation.",
   "version": "1.0.x",
   "package": "Contrib",
   "composer_namespace": "drupal/display_mode_switcher",
@@ -20,21 +20,24 @@
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "display_mode_switcher_condition"
+  ],
   "categories": [
     "Content display"
   ],
   "subcategories": [
-    "Rendering"
+    "Display mode governance"
   ],
   "keywords": [
     "display mode",
     "view mode",
     "switcher",
     "conditions",
+    "paywall",
     "render"
   ],
-  "project_description": "Display Mode Switcher lets you show different field layouts to different audiences - no templates, no custom code, just configuration.\n \n\n \n The classic use case is a paywall: anonymous visitors see a teaser or locked version of content, while subscribers see the full article. But the module works for any scenario where different users (or different contexts) should see a different arrangement of fields.\n \n\n \n You define rules that specify: which entity and display mode you are starting from, which display mode to switch to, and what conditions must be true for the switch to happen. At render time the module evaluates your rules in order, picks the first match, and swaps the display mode transparently. If no rule matches, the original display mode is used unchanged.\n \n\n \n Drupal's render cache is fully respected: cache metadata from every evaluated condition is propagated to the rendered output automatically.\n \n\n Features \n \n Switch any entity's view mode at render time based on configurable rules - no template overrides needed. \n Rule-based evaluation with weight-ordered priority : the first matching rule wins, making it easy to build subscriber/anonymous/admin hierarchies. \n Ships with a User has role condition out of the box. All standard Drupal core condition plugins (node type, language, request path, current theme) work automatically. \n Any contrib module that provides condition plugins is supported automatically - no extra wiring. \n Custom condition plugins can be added by any module via a simple PHP class and a config schema entry. \n Conditions receive the entity being rendered directly, so field-level checks (e.g. \"is this node marked as paywalled?\") require no Context API setup. \n Cache tags, cache contexts, and max-age from all evaluated conditions are merged into the render array automatically. \n Rules are standard configuration entities : fully exportable, deployable via drush config:export/import , and version-controllable. \n A single permission ( administer display mode switcher ) controls access to rule management. \n \n Post-Installation \n After enabling the module:\n\n \n \n Create the view mode you want to switch to. Go to Structure → Display modes → View modes , add a new view mode for your\n\n entity type (e.g. paywall ), then go to the entity type's Manage display page, enable the new view mode under Custom display\n\n settings , and configure which fields it shows.\n \n \n Create a rule. Go to Structure → Display modes → View modes → Switcher rules \n\n ( /admin/structure/display-modes/view/switcher ) and click Add rule . Choose the entity type and (optionally) bundle, set the source\n\n display mode that triggers evaluation (e.g. full ), set the target display mode to switch to (e.g. paywall ), and add one or\n\n more conditions. A rule with no conditions always matches — useful as a catch-all fallback at a high weight.\n \n \n Test. Render the entity in the source display mode as a user who meets the conditions and verify the correct display mode appears.\n\n Then test as a user who does not meet the conditions.\n \n \n No database updates are needed. All configuration lives in YAML files and can be managed with Config Management ( drush config:export ).\n\n Additional Requirements \n \n Drupal 11.3 or later \n No additional module dependencies beyond Drupal core. \n \n Similar projects \n \n View Mode Page - serves an entity under a custom URL using a specific view mode,\n\n rather than switching modes conditionally at render time. \n Display Suite - powerful field layout builder that works well alongside this module; it does not provide rule-based mode switching. \n Content Access / \n href=\" https://www.drupal.org/project/permissions_by_term \">Permissions by Term - restrict access entirely rather than showing a degraded view to unauthorised users. Use Display Mode Switcher when you want a teaser or locked layout instead of an access denied page. \n Back to top",
+  "project_description": "Display Mode Switcher swaps an entity's display (view) mode at render time based on configurable rules and condition plugins, without template overrides or custom code. You define rules that name a target entity type (and optionally bundle), a source display mode that triggers evaluation, a target display mode to switch to, a weight for ordering, and zero or more condition plugins. At render time the module evaluates matching rules in ascending weight order; the first rule whose conditions all pass wins and its target mode is used, otherwise the source mode is kept. The classic use case is a paywall (anonymous visitors see a teaser mode, subscribers see the full mode), but any audience- or context-dependent field layout fits. Rules are configuration entities (fully exportable). Cache tags, contexts, and max-age from every evaluated condition are merged into the render array so Drupal's render cache stays correct. A custom condition plugin manager exposes the full standard Drupal condition library plus module-specific plugins placed in Plugin/DisplayModeSwitcherCondition/.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

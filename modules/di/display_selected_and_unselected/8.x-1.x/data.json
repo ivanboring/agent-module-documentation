@@ -1,7 +1,7 @@
 {
   "name": "Display Selected and Unselected",
   "data_name": "display_selected_and_unselected",
-  "description": "Field formatters that render all allowed options of a list field, marking which are selected and which are not (as radios or checkboxes).",
+  "description": "Field formatters that render every allowed option of a List field, marking which are selected and which are not, as disabled radios (single-value) or checkboxes (multi-value).",
   "version": "8.x-1.x",
   "package": "Fields",
   "composer_namespace": "drupal/display_selected_and_unselected",
@@ -19,7 +19,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"

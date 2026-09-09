@@ -3,9 +3,11 @@
   "data_name": "display_builder",
   "description": "An advanced Display Builder for Drupal, require to have a sub module enable to build Entity view, Page or Views.",
   "version": "1.x",
-  "package": null,
+  "package": "User interface",
   "composer_namespace": "drupal/display_builder",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ui_patterns": "^2.0.21"
+  },
   "dependent_modules": [
     "ui_patterns:ui_patterns_field",
     "ui_patterns:ui_patterns_library"
@@ -16,33 +18,46 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/display_builder",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.3",
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/ui_styles": "Provide Styles features in Display Builder",
+    "drupal/ui_icons": "Provide Icons feature in Display Builder",
+    "drupal/ui_skins": "Provide CSS tokens features in Display Builder"
+  },
   "submodules": [
-    "display_builder_page_layout",
     "display_builder_ui",
-    "display_builder_views",
-    "display_builder_entity_view"
+    "display_builder_entity_view",
+    "display_builder_page_layout",
+    "display_builder_views"
   ],
-  "provides_permissions": false,
+  "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "display_buildable",
+    "db_island"
+  ],
   "categories": [
-    "Content display"
+    "Content display",
+    "Site structure"
   ],
   "subcategories": [
-    "Display building"
+    "Layout Builder",
+    "Structured content / page building"
   ],
   "keywords": [
     "display builder",
     "layout",
     "view modes",
     "views",
+    "components",
+    "SDC",
+    "ui patterns",
+    "drag and drop",
     "visual"
   ],
-  "project_description": "A display building tool for ambitious site builders:\n\n \n Design system native : fully use your design system (components, style utilities, icons, themes/modes, CSS variables...) directly in Drupal \n Unified : replace Layout Builder for entity view displays, Block Layout for page displays, and as a replacement of the Views' display building feature. \n Modern : with powerful features: dynamic previews, presets, deep integration with Drupal APIs... \n \n \n 🧪 Try our Bootstrap recipe \n\n \n 🗎 Read our documentation \n\n \n ▶ Watch our videos for Drupal Display Builder \n\n Back to top \n\n Design system native \n UI Suite provides a cohesive set of modules to implement full design systems in Drupal. See the initiative page for more information. \n\n Back to top \n\n Recommended themes \n \n UI Suite Bootsrap (5.2.x) with a full Boostrap recipe to start your site \n UI Suite DaisyUI - Tailwind css (5.0.x) \n UI Suite DSFR (French Gov) with a full Boostrap recipe to start your site \n UI Suite USWDS (4.1.x) \n ...Your own theme with SDC components! \n \n \nHelp us speed the development, contact us for sponsoring.\n\n \n\n The Display Builder maintainers \n \n Jean Valverde (mogtofu33) - Lead tech \n Pierre Dureau (pdureau) - Project manager \n Mikael Meulle (just_like_good_vibes) - maintainer \n Back to top",
+  "project_description": "Display Builder is a UI Suite tool that provides a unified, drag-and-drop visual builder for Drupal displays. It replaces Layout Builder for entity view displays, the Block layout for page displays, and the Views display-building UI, letting site builders assemble displays from Single Directory Components (SDC), blocks, fields and pattern presets, with a live in-iframe preview, undo/redo history, publishing/draft workflow and optional real-time collaboration. It is built on UI Patterns 2 sources and integrates with the wider UI Suite (ui_styles, ui_icons, ui_skins) to bring a full design system into Drupal.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

@@ -1,17 +1,17 @@
 {
   "name": "Display Layout",
   "data_name": "display_layout",
-  "description": "Allows custom (Layout API) layouts to be used when configuring entity display view modes.",
+  "description": "Allows custom Layout API layouts to be used when configuring entity display view modes in Manage display.",
   "version": "1.0.x",
   "package": "Display",
   "composer_namespace": "drupal/display_layout",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:layout_discovery",
-    "drupal:field_ui"
+    "layout_discovery",
+    "field_ui"
   ],
   "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/display_layout",
@@ -22,20 +22,23 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"
   ],
   "subcategories": [
-    "Layouts"
+    "Layout Builder",
+    "View mode switching"
   ],
   "keywords": [
     "display",
     "layout",
     "view mode",
-    "fields",
-    "manage display"
+    "manage display",
+    "layout api",
+    "regions",
+    "entity view display"
   ],
   "project_description": "Display Layout allows users to leverage Drupal's Layout API to configure entity displays. Rather than simply choosing between \"Content\" and \"Disabled\", users can define layouts with custom regions to sort fields without requiring field groups.\n\n Features \n \n Configure a content entity display mode to use a layout \n \n Post-Installation \n After installing, go to the \"Manage Display\" form for a content entity and see the \"Display layout settings\" option at the bottom. Here you can select which layout the display mode should use. Hit save and the corresponding regions for that layout will appear as options to sort the fields.\n\n Similar projects \n \n Display Suite \n \n Display Layout is a minimalist version of Display Suite with a fresh implementation. The configuration does not map between the modules and a site should not use both. \n \n \n Back to top",
   "maintenance_status": "Minimally maintained",

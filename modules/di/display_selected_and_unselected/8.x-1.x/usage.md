@@ -1,27 +1,28 @@
-<!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Display Selected and Unselected provides two field formatters that render every allowed value of a list field — not just the chosen ones — visually indicating which options are selected and which are not.
+Two field formatters that render the full allowed-values list of a List field, marking each option as selected or unselected using disabled radios or checkboxes.
 
 ---
 
-It supports List (text), List (float) and List (integer) fields. When the field's "Allowed number of values" is 1 the options render as radio elements; otherwise they render as checkboxes. Two formatters are offered: "Display selected and unselected values" (outputs the option labels) and "Display selected and unselected keys" (outputs the option keys). Rendering is driven by four theme hooks (`display_selected_and_unselected_{values,keys}_{checkbox,radio}`) with Twig templates you can override for custom markup.
+Display Selected and Unselected is a small, presentational-only module in the "Fields" package. It adds two view-display field formatters for core List fields (`list_string`, `list_integer`, `list_float`) that, instead of printing only the values a user chose, render *every* option defined in the field's allowed-values list and mark which ones are selected. The "values" formatter renders each option's label (value), and the "keys" formatter renders each option's key. Output shape follows the field's cardinality: a single-value field (Allowed number of values = 1) renders as disabled `radio` inputs, any other cardinality renders as disabled `checkbox` inputs. Rendering is done through four `hook_theme()`-registered theme hooks with overridable Twig templates, so the HTML can be themed per site. The module has no settings form, no configuration objects, no routes, no permissions, no services, and no dependencies beyond Drupal core — you enable it and pick a formatter on Manage display.
 
-The module is purely presentational: it has no routes, permissions, services, configuration UI or settings — you simply pick one of its formatters on a content type's Manage display tab and save. Use it where you want to show a reader the full set of options with the current selection highlighted (survey-style read-only display), rather than only the selected values.
 ---
-- Show all options of a checkbox list with selected ones ticked.
-- Display an unselected/selected overview of a List (text) field.
-- Render a single-value list field as read-only radios.
-- Render a multi-value list field as read-only checkboxes.
-- Output the option labels via the "values" formatter.
-- Output the option keys via the "keys" formatter.
-- Present survey answers showing every choice and what was picked.
-- Highlight remaining (unselected) options to a reader.
-- Override the Twig templates to customize the HTML output.
-- Style selected vs unselected states with your own CSS.
-- Use on List (integer) fields for numeric option sets.
-- Use on List (float) fields for decimal option sets.
-- Configure the formatter per view mode on Manage display.
-- Show a feature matrix where each allowed value is a feature.
-- Display eligibility criteria with met/unmet options.
-- Avoid custom preprocess code for "show all options" displays.
-- Present a checklist-style read-only field on a node.
-- Reuse the same field with different formatters across view modes.
+
+- Show a "survey answer sheet" view where all possible answers appear and the respondent's picks are ticked.
+- Display a multi-select "features" or "amenities" list on a node so viewers see both included and not-included items at a glance.
+- Render a single-choice List field as a read-only radio group showing all options with the chosen one selected.
+- Present a checklist of options (e.g. dietary tags, accessibility features) with unchosen items visibly greyed out rather than hidden.
+- Output the machine keys of a list field (keys formatter) for debugging or integration displays where the stored key matters.
+- Output the human labels of a list field (values formatter) for normal end-user display.
+- Give editors a print-friendly "complete options with selection" view of a taxonomy-like list field.
+- Show a product's option matrix (sizes, colors) with the selected variant marked and the rest shown as available-but-unselected.
+- Display quiz/exam questions where all answer choices must remain visible alongside the marked answer.
+- Render eligibility criteria where both met and unmet criteria should be shown.
+- Present compliance/consent checkboxes as a read-only summary of what was and wasn't agreed to.
+- Show a feature-comparison cell that lists every possible tier and highlights the active one.
+- Customize the markup by overriding `display-selected-and-unselected-values-checkbox.html.twig` (and its radio/keys siblings) in your theme.
+- Add CSS hooks via the wrapper classes (`display_selected_and_unselected_values_checkbox`, etc.) emitted by the templates.
+- Use on `list_integer` fields (e.g. rating scales 1–5) to show the full scale with the selected number marked.
+- Use on `list_float` fields where allowed values are decimal options.
+- Provide a non-editable "form-like" preview of a list field on a node's default or teaser view mode.
+- Combine both formatters across two view modes: keys for an admin/data view mode, values for the public view mode.
+- Show unselected options deliberately (e.g. "not included") for transparency in service or plan descriptions.
+- Replace a plain comma-separated list output with a structured, checkbox-style presentation.

@@ -1,13 +1,15 @@
 {
   "name": "DKAN extra fields",
   "data_name": "dkan_extra_fields",
-  "description": "Surfaces DKAN JSON Schema property values as extra fields in the Drupal field-display UI.",
+  "description": "Surfaces DKAN JSON Schema property values as extra (pseudo) fields in the Drupal field-display UI.",
   "version": "4.0.x",
   "package": "DKAN",
   "composer_namespace": "drupal/dkan_extra_fields",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/dkan": "^4"
+  },
   "dependent_modules": [
-    "dkan:dkan_metastore_search"
+    "dkan_metastore_search"
   ],
   "configure": null,
   "core_version_requirement": "^10 || ^11",
@@ -21,24 +23,26 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"
   ],
   "subcategories": [
+    "Computed / derived fields",
     "Field formatters"
   ],
   "keywords": [
     "dkan",
     "extra-fields",
+    "pseudo-fields",
     "display",
     "json-schema",
     "metadata",
     "open-data",
     "theming"
   ],
-  "project_description": "Back to top \n\n \nINTRODUCTION \n The DKAN extra fields module provides JSON Schema property values in extra fields in Drupal field display UI.\n\n Back to top \n\n \nREQUIREMENTS \n DKAN and apply patch 4310-plus.patch that is given with this module.\n\n Back to top \n\n \nINSTALLATION \n Install as you would normally install a contributed Drupal module. See: https://www.drupal.org/node/895232 for further information. DKAN module needs to be enabled (specifically (dkan_)metastore_search module).\n\n only for version 1.x \n\nThis needs to be done manually due to this issue \n\n Back to top \n\n \nCONFIGURATION \n Put the desired extra fields in the output of your node view admin/structure/types/manage/data/display for example\n\n Back to top \n\n \nCUSTOMIZATION \n \ndkan_extra_field_item - Outputs Items that have multiple properties in one extra field \n You can use hook_preprocess_HOOK() for dkan_extra_field_item to control the output of labels and values for the extra field items. Check the output of $variables in the hook and see that there is an array keys that contains the property key names. You can hide key and value or change the key label. Also dkan_extra_field_item has a lot of theme_suggestions to vary on.\n\n Back to top \n\n \nMAINTAINERS \n Current maintainers:\n\n \n Stefan Korn - https://www.drupal.org/u/stefankorn \n \n \n Back to top",
+  "project_description": "The DKAN extra fields module exposes the individual JSON Schema property values of DKAN dataset metadata as extra (pseudo) fields in the Drupal field-display UI. DKAN stores dataset metadata as JSON validated against a schema; those properties are not normally individual Drupal fields, so they cannot be placed, ordered, hidden or themed on the node display. This module registers an extra field per schema property (via hook_entity_extra_field_info) on the DKAN 'data' node bundle and renders each one on node view (hook_node_view), including enum values and multi-property list items. It ships three theme hooks (dkan_extra_field, dkan_extra_field_enum, dkan_extra_field_item) with generated per-property, per-data-type and per-view-mode theme suggestions, and a bundled patch (4310-plus.patch) that must be applied to DKAN. It is display-only: no routes, permissions or writes. Maintained by Stefan Korn.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

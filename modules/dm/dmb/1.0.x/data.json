@@ -1,9 +1,9 @@
 {
   "name": "Dark Mode Button",
   "data_name": "dmb",
-  "description": "A block with an icon button to switch to dark mode.",
+  "description": "Provides a block with an icon button to switch to dark mode.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Other",
   "composer_namespace": "drupal/dmb",
   "composer_requirements": {},
   "dependent_modules": [
@@ -16,12 +16,14 @@
   "project_url": "https://www.drupal.org/project/dmb",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "bootstrap-icons (loaded from cdn.jsdelivr.net as an external CSS asset)"
+  ],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Theming"
@@ -36,7 +38,7 @@
     "block",
     "theming"
   ],
-  "project_description": "Provides a block with an icon button to switch to dark mode.",
+  "project_description": "Dark Mode Button (dmb) is a small front-end module that exposes a single block containing an icon button which toggles a client-side dark theme. Clicking the button toggles a 'dark-mode' CSS class on the page body and persists the choice in the browser's localStorage, swapping a Bootstrap Icons moon/sun glyph to reflect the current state. All styling and state handling is client-side JavaScript and CSS; the module ships no routes, permissions, configuration, or server-side logic beyond a block plugin and a theme hook.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

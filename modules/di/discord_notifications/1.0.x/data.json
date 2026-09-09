@@ -1,16 +1,16 @@
 {
   "name": "Discord Notifications",
   "data_name": "discord_notifications",
-  "description": "Sends notifications to Discord for Drupal events and content changes.",
+  "description": "Sends notifications to a Discord channel via webhook for Drupal content, user, system, and security events.",
   "version": "1.0.x",
   "package": "Administration",
   "composer_namespace": "drupal/discord_notifications",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:node",
-    "drupal:user"
+    "node",
+    "user"
   ],
-  "configure": null,
+  "configure": "discord_notifications.settings",
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -20,7 +20,7 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
@@ -37,7 +37,7 @@
     "chat",
     "integration"
   ],
-  "project_description": "The Discord Notifications module seamlessly integrates Drupal with Discord, providing real-time notifications for various site events. It keeps site administrators informed about content changes, user activities, system updates, and security alerts, all within their Discord server.\n\n Features \n \n Content Notifications: Instant alerts for new content creation, updates, and deletions. \n User Activity Tracking: Notifications for new user registrations, logins, and when users are blocked. \n System Monitoring: Alerts for available Drupal core or module updates and completed cron runs. \n Security Alerts: Immediate notifications for failed login attempts and password reset requests. \n Customizable Settings: Flexible configuration to choose which types of notifications to send. \n Discord Integration: Option to use @here or @everyone mentions in notifications. \n Visual Distinction: Color-coded embeds for different types of notifications in Discord. \n \n Post-Installation \n After installing the Discord Notifications module:\n\n \n Navigate to Admin » Configuration » System » Discord Notifications . \n Enter your Discord webhook URL (see below for instructions on creating a webhook). \n Select which types of notifications you want to enable. \n Optionally, enable @here or @everyone mentions. \n Save the configuration. \n \n To create a Discord webhook:\n\n \n In your Discord server, go to Server Settings » Integrations » Webhooks. \n Click \"New Webhook\" and choose a channel for the notifications. \n Copy the webhook URL and paste it into the module's configuration page. \n \n Additional Requirements \n \n Drupal 9, 10, or 11 \n A Discord server with permissions to create webhooks \n \n Want to support the development of this project? \n \n Buy me a coffee ☕️    Buy me a Pizza 🍕 \n\n For the latest updates and community discussions, follow the project page on Drupal.org .\n\n Back to top",
+  "project_description": "The Discord Notifications module posts messages to a Discord channel through an incoming webhook whenever selected Drupal events occur. It wires core entity and user hooks (node insert/update/delete, user login/insert/update, cron, failed login, password reset) to a single notification service that builds a color-coded Discord embed and POSTs it to the configured webhook URL using Drupal's HTTP client. An administrator configures a webhook URL and ticks which of four event groups (content, user, system, security) should fire, plus optional @here or @everyone mentions. The module has no entities, plugins, permissions of its own, or Drush commands; its entire surface is one settings form, one config object, and one service.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

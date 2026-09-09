@@ -1,42 +1,52 @@
 {
   "name": "DLF AIM 3D Viewer",
   "data_name": "dlf_aim_3d_viewer",
-  "description": "Integrates the DLF AIM 3D model viewer to display 3D models on the site.",
+  "description": "Drupal integration for the DLF AIM 3D Viewer JavaScript library (three.js) to display and convert 3D models on file fields.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/dlf_aim_3d_viewer",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:field"
+    "field"
   ],
-  "configure": null,
-  "core_version_requirement": "^10||^11",
+  "configure": "dlf_aim_3d_viewer.config_menu",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/dlf_aim_3d_viewer",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "wisski_core": "Provides the wisski_individual entity used by the bundled savePreview/manifest route and WissKI repository integration.",
+    "image": "Core Image module, used for image styles when generating and displaying model preview thumbnails.",
+    "colorbox": "Optional; the viewer formatter references Colorbox/Image formatter base classes for gallery lightbox display."
+  },
   "submodules": [],
   "provides_permissions": true,
-  "provides_drush_commands": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
     "Media"
   ],
   "subcategories": [
-    "3D / interactive"
+    "Field formatters",
+    "Media derivatives / transcoding"
   ],
   "keywords": [
     "3d",
     "viewer",
-    "dlf",
-    "models",
-    "media"
+    "three.js",
+    "gltf",
+    "glb",
+    "model",
+    "wisski",
+    "formatter",
+    "conversion",
+    "blender"
   ],
-  "project_description": "DLF AIM 3D Viewer\n\nThe module was primarily created for viewing 3D data as a Drupal extension for a WissKI based repository. During development it became also possible to use as a standalone version to be integrated with more environments. The Viewer is written in JavaScript, based on the three.js library for viewing 3D models and uses PHP/bash scripts for server-side operations. Supported 3D file formats: OBJ, DAE, FBX, PLY, IFC, STL, XYZ, JSON, 3DS, glTF. There is also a pre-configured complete workflow to handle more file formats and allow to render thumbnails for entries. If an uploaded file is saved in one of the compression-supported formats (obj, fbx, ply, dae, abc, blend, stl, wrl, x3d, glb, gltf), it is compressed on-the-fly and converted into GLB format and triggers automatic rendering (based on Blender utility).",
+  "project_description": "DLF AIM 3D Viewer integrates the three.js-based DLF AIM 3D Viewer JavaScript library (installed separately to web/libraries/dlf_aim_3d_viewer/) into Drupal so 3D models attached to a core file field can be viewed interactively on entity displays. It was primarily built as a Drupal extension for a WissKI-based repository, but can also run standalone. Supported input formats include OBJ, DAE, FBX, PLY, IFC, STL, XYZ, JSON, 3DS and glTF, with a bundled server-side pipeline (bash + Python + Blender/IfcConvert utilities driven by a Drupal queue worker) that uncompresses archived uploads and converts a wide range of formats (obj, fbx, ply, dae, abc, blend, stl, wrl, x3d, glb, gltf) on-the-fly to GLB and renders thumbnail previews. The module ships a field formatter, a settings form and config object, a Drush configuration command, a queue worker with an entity-save-triggered background conversion runner, and several JSON/XML editor API endpoints (metadata save, thumbnail upload, METS/MODS XML export) used by the viewer's in-browser editor.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

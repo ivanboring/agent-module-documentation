@@ -1,7 +1,7 @@
 {
   "name": "Discourse comments (+)",
   "data_name": "discourse_comments_plus",
-  "description": "Integrates Discourse comments into Drupal content.",
+  "description": "Integrates a Discourse forum with Drupal: publishes nodes as Discourse topics, embeds their replies as comments, and lets visitors comment via Discourse SSO.",
   "version": "1.4.x",
   "package": null,
   "composer_namespace": "drupal/discourse_comments_plus",
@@ -9,8 +9,8 @@
   "dependent_modules": [
     "drupal:field"
   ],
-  "configure": null,
-  "core_version_requirement": "^10.3 || ^11",
+  "configure": "discourse_comments_plus.discourse_comments_settings_form",
+  "core_version_requirement": "^10.3 || ^11.0",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/discourse_comments_plus",
@@ -19,9 +19,9 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
-  "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "User engagement"
@@ -33,10 +33,11 @@
     "discourse",
     "comments",
     "forum",
+    "sso",
     "integration",
     "discussion"
   ],
-  "project_description": "Discourse Comments (+) module provides integration with Discourse. Discourse is the 100% open source discussion platform.\n\n Features: \n \n Publishes Drupal Nodes as topics on Discourse \n Retrieves posts from Discourse and shows them as comments on corresponding Drupal node \n (+) Let visitors login Discourse with SSO and able to add comments directly from Drupal \n \n Usage Instructions: \n \n Enable the module \n Provide the Discourse API keys etc at admin/config/discourse_comments/discourse_comments_settings \n (+) Provide the Discourse SSO secret key at admin/config/discourse_comments/discourse_comments_settings \n While publishing a node for the first time, enable the \"Publish to Discourse\" checkbox on node edit page \n Place the \"Discourse comments\" block on any Drupal node page where you want the associated Discourse comments to be fetched and displayed \n Back to top",
+  "project_description": "Discourse Comments (+) integrates a Drupal site with a Discourse discussion platform. When a node is first published with the \"Push to Discourse\" flag set, the module creates a matching Discourse topic through the Discourse REST API and stores the returned topic id/url/count on a per-node base field (discourse_plus_field). A block then fetches that topic's posts and renders them as comments underneath the node, and a second block lists the latest comments across topics. The (+) additions over the original discourse_comments module are: a DiscourseConnect (Discourse SSO) login flow so visitors can authenticate against Discourse and post replies directly from the Drupal page, per-content-type default categories with overrides, a token-driven footer template appended to each pushed post, optional separate internal/public Discourse base URLs (for reverse-proxied/dockerised Discourse), and a Drush command to warm the latest-comments cache. Configuration lives at /admin/config/discourse_comments_plus/discourse_comments_settings and requires the 'administer site configuration' permission.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

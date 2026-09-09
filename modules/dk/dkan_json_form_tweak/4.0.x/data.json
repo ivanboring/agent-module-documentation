@@ -1,11 +1,14 @@
 {
   "name": "DKAN JSON Form Tweaks",
   "data_name": "dkan_json_form_tweak",
-  "description": "Improves DKAN's JSON-schema-generated forms with navigation, close buttons and per-value removal for large schemas.",
+  "description": "Tweaks DKAN's JSON-schema-generated metadata forms with a property navigation dropdown, collapse/close buttons and per-value removal for large schemas.",
   "version": "4.0.x",
   "package": "DKAN",
   "composer_namespace": "drupal/dkan_json_form_tweak",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/dkan": "^4",
+    "drupal/json_form_widget": "*"
+  },
   "dependent_modules": [
     "dkan:dkan",
     "json_form_widget:json_form_widget"
@@ -33,7 +36,8 @@
   "keywords": [
     "dkan",
     "json-form",
-    "schema",
+    "json-schema",
+    "json_form_widget",
     "navigation",
     "usability",
     "form",
