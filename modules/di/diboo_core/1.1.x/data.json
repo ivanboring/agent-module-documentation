@@ -3,44 +3,55 @@
   "data_name": "diboo_core",
   "description": "Base functionality for a Diboo installation.",
   "version": "1.1.x",
-  "package": null,
+  "package": "Diboo",
   "composer_namespace": "drupal/diboo_core",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/entity": "^1.5",
+    "drupal/entity_link_formatter": "^1.0",
+    "drupal/token": "^1.15",
+    "drupal/change_labels": "^1"
+  },
   "dependent_modules": [
-    "drupal:views",
-    "entity:entity",
-    "entity_link_formatter:entity_link_formatter",
-    "token:token",
-    "change_labels:change_labels"
+    "views",
+    "entity",
+    "entity_link_formatter",
+    "token",
+    "change_labels"
   ],
-  "configure": null,
+  "configure": "diboo_core.settings",
   "core_version_requirement": "^11.2",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/diboo_core",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "^8.3",
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/diboo_signature_pad": "Basic drawing tool for image chain links",
+    "drupal/uploaded_file_filename_randomizer": "Make image files not predictable in the filesystem"
+  },
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Administration tools"
+    "User engagement",
+    "Site structure"
   ],
   "subcategories": [
-    "Configuration management"
+    "Entity API",
+    "Structured content / page building"
   ],
   "keywords": [
     "diboo",
-    "base",
-    "framework",
-    "distribution",
-    "core"
+    "game",
+    "chinese whispers",
+    "telephone game",
+    "drawing",
+    "collaborative"
   ],
-  "project_description": "Base functionality for a diboo installation.\n\n Diboo is like a game of telephone, or Chinese whispers but using written sentences and drawings.\n\n Back to top \n\n Rules \n Typically a chain is started with a phrase. The next contributor of the chain will see the initial phrase and will have to describe it with a drawing. Then another contributor adding will only see the previous drawing and will describe what they see in the image, adding that contribution to the chain . The cycle is repeated many times\n\n When a chain is finished all the chain links will be published and can be viewed in chronological order for everyone's joy.\n\n A chain can be automatically published when it reaches a number of chain links.\n\n Back to top \n\n Setup \n There is three basic functions a node type can act as:\n\n \n Room: Group of chains, open to participation or closed (public). Holds the rules for each chain. \n Chain: Set of chain links. \n Chain link: A phrase or image contribution to a chain. \n \n At least the following is required:\n\n \n One room content type \n One chain content type \n Two chain link types of a different chain link each \n A drawing tool, for example: Signature pad \n \n \n The module Diboo kickstart will prepare basic setup when installed.\n\n Back to top \n\n Features \n Chain locking \n When a user starts drawing or describing a drawing that chain will be unavailable for other contributors until they are finished.\n\n A time limit can be set at the room so chains are unlocked automatically when certain minutes have passed. Cron needs to run at least as often as the number of minutes configured for a room, 100 minutes by default.\n\n Open chains limits \n Each room can have room limits for how many chains can be open at the same time. A per-user limit can also be set.\n\n Back to top \n\n Roadmap \n \n Ability to have rooms for groups of users \n Different drawing tools \n More chain link types, for example, emojis. \n Adding chain links as anonymous. \n Publish chains automatically on a dates or after some period of being opened. \n Comments/reactions on chains or chain links \n Notifications to all participants of a chain when is published. \n Moderation: ability to revert drawings or descriptions that derail the chain on purpose. \n \n Back to top \n\n Similar apps \n Doodle or die \n Non-free software, English. Many UI differences, e.g. Prompts users to play on the next chain immediately. Big user base.\n\n Drawception \n Non-free software, English. Features can be unlocked by paying like new color palettes. Big user base.\n\n \nEat poop you cat Android \n Offline game that works by passing the phone to the next participant. Free software. Community translations. Get it on F-Droid \n\n Back to top \n\n Differences with similar apps \n The aim of diboo is to be a game with input and collaboration from the community that is released as free software and therefore can be self-hosted.\n\n Back to top \n\n Offline playing \n Gather with your friends, grab a piece of paper and some pens and follow the same rules by folding the paper. Examples \n\n Back to top",
+  "project_description": "Diboo core provides the base functionality for a Diboo installation: a self-hostable, free-software implementation of the \"telephone\" / \"Chinese whispers\" game played with written phrases and drawings. A chain is started with a phrase; the next contributor sees only that phrase and draws it; the next sees only the drawing and describes it in words; the cycle repeats. When a chain reaches a configured number of links it is published and all its links become visible in chronological order. The module ships four node content types (Room, Chain, Phrase image chain-link types) with bundle classes and code-defined base fields, an admin settings form for default game rules (open-chain limits, links between contributions, links to publish, lock timeout), routes and access logic for starting chains and adding links, chain locking with automatic cron unlocking, and a public front page. It is intended as the base of a suite; the Diboo kickstart module can prepare a basic setup and a drawing tool such as Signature pad supplies the image widget.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

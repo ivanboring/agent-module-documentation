@@ -1,7 +1,7 @@
 {
   "name": "DevUtils",
   "data_name": "devutils",
-  "description": "Development utility helpers for Drupal developers.",
+  "description": "Develop utils: Drush commands to list entity UUIDs and clear unused files, plus a service to import specific module configuration.",
   "version": "2.0.x",
   "package": "DP",
   "composer_namespace": "drupal/devutils",
@@ -18,23 +18,25 @@
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
-  "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
   ],
   "subcategories": [
-    "Utility"
+    "Debugging & inspection",
+    "Configuration management"
   ],
   "keywords": [
     "devutils",
     "development",
     "utilities",
-    "helpers",
-    "debug"
+    "drush",
+    "uuid",
+    "config import"
   ],
-  "project_description": "Tool with several utilities to facilitate development:\n\n Features: \n\n \n List the UUIDs of the entities with various filters. \n Clean unused files. \n Provides a service that allows importing specific module configurations. This can be useful for importing configurations from updates hooks. \n \n Read the README.md in module to use it.",
+  "project_description": "Tool with several utilities to facilitate development. Features: list the UUIDs of entities (node, media, file, term, block_content, menu_link_content, paragraph) with optional bundle filters and labels via the drush devutils:uuid command; delete files that have no recorded usage via drush devutils:clear-files; and a devutils.update_import service that imports specific configuration objects from a module's config/install or config/optional directory, typically from update hooks. Drush and PHP-service oriented; no admin UI, routes, or permissions.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

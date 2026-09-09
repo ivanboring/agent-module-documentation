@@ -1,11 +1,13 @@
 {
   "name": "Developer console",
   "data_name": "developer_console",
-  "description": "An on-site developer console with history, timing, and Kint integration.",
+  "description": "On-site developer console for running PHP code and DB queries, with history, execution timing, and Kint dump helpers.",
   "version": "2.x",
-  "package": null,
+  "package": "Development",
   "composer_namespace": "drupal/developer_console",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "kint-php/kint": ">=5.0"
+  },
   "dependent_modules": [],
   "configure": null,
   "core_version_requirement": "^9 || ^10 || ^11",
@@ -14,12 +16,14 @@
   "project_url": "https://www.drupal.org/project/developer_console",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "kint-php/kint"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
@@ -32,6 +36,7 @@
     "kint",
     "debug",
     "development",
+    "eval",
     "console"
   ],
   "project_description": "My replacement for huge and clumsy Devel ;)\n\n Allows to execute PHP code and database queries, provides dumper function with Kint library integration and output type parameters for Drupal 7 & 8, execution time information and much more.\n\n Usefull for development, testing and optimisation.\n\n Very lightweight and totally sufficient for skilled developers.\n\n Minimally documented, so if something's unclear, just create an issue, so far looks like I'm the only one using it anyway.",

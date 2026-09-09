@@ -1,14 +1,16 @@
 {
-  "name": "Did This Help",
+  "name": "Did this help?",
   "data_name": "did_this_help",
-  "description": "A \"was this helpful?\" (Yes/No) feedback block. NOTE: no flood control on the vote.",
+  "description": "Displays a block with a \"Did this help?\" (Yes/No) question, collects reasons and a free-text message for \"No\", and reports the answers via a Views page.",
   "version": "2.0.x",
   "package": "Technocrat",
   "composer_namespace": "drupal/did_this_help",
   "composer_requirements": {},
-  "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^10.1||^11",
+  "dependent_modules": [
+    "views"
+  ],
+  "configure": "did_this_help.settings",
+  "core_version_requirement": "^10.1 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/did_this_help",
@@ -25,16 +27,18 @@
     "User engagement"
   ],
   "subcategories": [
-    "Feedback / surveys"
+    "Rating / voting",
+    "Survey / data collection"
   ],
   "keywords": [
     "feedback",
     "helpful",
     "did this help",
     "block",
-    "vote"
+    "vote",
+    "views"
   ],
-  "project_description": "Displays block with \"Did this help\" (is useful) question and Yes/No options. For \"No\" options are available list of ready answers and text field for custom answer. Answers report is available on /admin/reports/did-this-help\n\nModule features:\n\n \n Views integration \n Configuration form for answers and titles (Drupal 8+ only) \n For Drupal 7 version you can see results on \"Did this help?\" tab for each node separately or you can see all result on common \"Did this help?\" views page.",
+  "project_description": "Displays a block with a \"Did this help?\" (is useful) question and Yes/No options. Choosing \"No\" reveals a configurable list of ready-made answers plus an \"Other\" option and a short free-text message field. Every response is stored with the page URL, page title, the answering user, and the visitor IP, and results are reported on a Views page at /admin/reports/did-this-help. The question text and the list of \"No\" answers are configurable at /admin/config/did_this_help/settings. Ships Views integration (custom table, fields, filters, and a Yes/No filter plugin).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

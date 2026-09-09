@@ -1,14 +1,25 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Deployment identifier status (dis) — agent index
 
-One `hook_requirements()` check: warns on `/admin/reports/status` when
-`$settings['deployment_identifier']` is not set. Version **1.1.0**.
-Core `^9 || ^10 || ^11`. **No `src/`**, no routes, no permissions, no config.
+A tiny utility module that adds one **status-report warning** when Drupal's `deployment_identifier`
+setting is not configured. Package `Utility`. **No dependencies** beyond Drupal core. Core
+requirement `^9 || ^10 || ^11`. License GPL-2.0-or-later. Version 1.1.0.
 
-Why it matters: the deployment identifier is part of the **container cache key**. Changing it per
-release guarantees the service container and plugin definitions are rebuilt for the new code.
-Unset, a deploy can leave a stale container and produce symptoms that look random — "service does
-not exist", "plugin not found", behaviour that reverts after a cache clear.
+- **The requirements hook, what triggers the warning, and how to set the identifier** →
+  [operations/status-report.md](operations/status-report.md)
 
-Fix the warning by setting it in `settings.php` from something that changes per release (git SHA,
-build number, pipeline timestamp).
+## What it actually is
+
+- A single file, `dis.install` — no `src/`, no routes, no services, no permissions, no config, no
+  schema, no Drush, no submodules, no libraries.
+- `dis_requirements($phase)` — in the `runtime` phase, reads `Settings::get('deployment_identifier')`.
+  When it is `NULL`, returns a `REQUIREMENT_WARNING` row (title "Deployment identifier", value
+  "Not set") on `/admin/reports/status`. Any non-null value → no warning.
+- `dis_install()` / `dis_uninstall()` — each add one `messenger()` status message; the install
+  message links to `system.status`.
+
+## Operate it
+
+- The module has no settings. To clear the warning, set `$settings['deployment_identifier']` in
+  `settings.php` (or via deployment tooling) to any non-null value. See
+  [operations/status-report.md](operations/status-report.md).

@@ -1,40 +1,55 @@
 {
   "name": "Dify",
   "data_name": "dify",
-  "description": "Integrates the Dify LLM-application platform with Drupal (AI apps/agents/chat).",
+  "description": "Base module for integrating the Dify LLM-application platform with Drupal; provides a shared API client, markdown renderer, and server-side SSE chat/workflow proxy used by its submodules.",
   "version": "2.0.x",
   "package": "Dify",
   "composer_namespace": "drupal/dify",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/dify",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
-  "suggests": {},
-  "submodules": [],
+  "suggests": {
+    "drupal/search_api": "^1.40 — Required by the Dify Search API submodule for knowledge base indexing.",
+    "league/commonmark": "^2.8 — Required by Dify Augmented Search and Dify Widget Vanilla for Markdown rendering.",
+    "league/html-to-markdown": "^5.1 — Required by Dify Search API for converting HTML field content to Markdown."
+  },
+  "submodules": [
+    "dify_search_api",
+    "dify_widget_vanilla",
+    "dify_widget_official",
+    "dify_augmented_search"
+  ],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Artificial Intelligence (AI)"
+    "Artificial Intelligence (AI)",
+    "Site search"
   ],
   "subcategories": [
-    "LLM platform"
+    "AI provider abstraction / LLM gateway",
+    "Content indexing",
+    "Search backend"
   ],
   "keywords": [
     "dify",
     "llm",
     "ai",
-    "chat",
+    "chatbot",
+    "knowledge base",
+    "rag",
+    "search api",
     "integration"
   ],
-  "project_description": "Official Drupal integration for the Dify AI platform. Index your Drupal content into a Dify knowledge base, embed AI-powered chatbot widgets, and augment your search results with intelligent responses, all with credentials kept server-side.\n\n Back to top \n\n Architecture \n The base module provides shared services (API client, markdown rendering, SSE streaming proxy). You enable only the submodules you need:\n\n \n \n Submodule \n Purpose \n Extra dependencies \n \n \n dify_search_api \n Search API backend → Dify knowledge base \n composer require drupal/search_api:^1.40 league/html-to-markdown:^5.1 \n \n \n dify_widget_vanilla \n Custom chatbot widget (block) \n composer require league/commonmark:^2.8 \n \n \n dify_widget_official \n Official Dify embed widget (block) \n — \n \n \n dify_augmented_search \n AI answers alongside search results (block) \n composer require league/commonmark:^2.8 \n \n \n Back to top \n\n Key Features \n Security first \n \n All API calls go through a server-side proxy — tokens never reach the browser. \n Credentials stored in Drupal State (database-only, never exported with configuration). \n CSRF protection on all POST proxy routes. \n SSL verification on all outgoing requests. \n \n Content indexing (dify_search_api) \n \n Search API backend that pushes Drupal content to a Dify knowledge base. \n Three chunking modes: automatic , custom , and hierarchical (parent/child). \n Per-field priority weights for fine-grained relevance control. \n Contextual Field mode: one segment per field, tracked in a dedicated mapping table. \n File extraction : extract content from PDF, DOCX, and other file fields via a Dify Workflow. \n Automatic metadata with source URL for attribution in chatbot answers. \n \n Vanilla chatbot widget (dify_widget_vanilla) \n \n Placed as a Drupal block — all settings in the block configuration form. \n Real-time streaming responses (Server-Sent Events via native curl). \n Conversation history persisted in localStorage across page loads. \n Feedback system : thumbs up/down on bot messages, sent to the Dify API. \n Suggested questions displayed after each bot response. \n Overridable avatars : bot and user avatars defined in Twig — themes can override with images, SVGs, or any markup. \n 20 configurable CSS color variables for full theming control. \n Markdown rendering (dark and light themes). \n Resizable, minimizable floating window. \n RGAA / WCAG accessible: skip link, ARIA attributes, keyboard navigation, screen reader support. \n \n Official Dify widget (dify_widget_official) \n \n Drops Dify's own embed.min.js chatbot onto your site. \n Placed as a Drupal block — base URL and token in block settings. \n Zero custom code — uses Dify's hosted widget as-is. \n \n Augmented search (dify_augmented_search) \n \n Block that detects search queries and shows AI-generated answers from a Dify Workflow alongside normal search results. \n Uses the Workflow API ( /workflows/run ) — not the Chat API. \n Streaming responses with markdown rendering. \n Configurable colors and theming. \n \n Back to top \n\n Requirements \n \n Drupal 10 or 11 \n PHP 8.1+ \n A running Dify instance ( cloud or self-hosted) \n \n Composer pulls in library dependencies automatically.\n\n Back to top \n\n Installation \n composer require drupal/dify\ndrush en dify\ndrush en dify_search_api dify_widget_vanilla # enable what you need\n Back to top \n\n Configuration \n Base module \n Go to Configuration → Search and metadata → Dify ( /admin/config/search/dify ) to enter your Dify knowledge base credentials (used by dify_search_api ).\n\n Chatbot widgets \n Both widgets are placed via Structure → Block Layout . Each block has its own base URL and API token fields. No global configuration form — everything lives in the block.\n\n Search API indexing \n \n Go to Configuration → Search and metadata → Search API . \n Create a server with the Dify backend. \n Create an index, add fields, and configure field priorities. \n Index your content — it is pushed to the Dify knowledge base automatically. \n \n Augmented search \n …",
+  "project_description": "Official Drupal integration for the Dify AI platform. The base dify module ships no user-facing UI of its own: it provides a Guzzle-based DifyClient for the Dify Knowledge (Dataset) API, a CommonMark-backed MarkdownService with a shared render controller, and a DifyChatProxyService that streams Server-Sent-Events chat and workflow responses from Dify while keeping API tokens server-side. Feature work lives in four optional submodules: dify_search_api (a Search API backend that pushes Drupal content into a Dify knowledge base with automatic/parent-child/contextual-field chunking and optional Dify-Workflow file extraction), dify_widget_vanilla (a custom, fully themeable floating chatbot block that proxies the Dify Chat API), dify_widget_official (a block that embeds Dify's own hosted embed.min.js widget), and dify_augmented_search (a block that shows AI answers from a Dify Workflow next to normal search results). Credentials are stored in Drupal State (never exported with configuration), all outbound calls use TLS verification, and chat/workflow calls are proxied through the server so tokens are not exposed to the browser. Requires a running Dify instance (cloud or self-hosted), Drupal 10/11, and PHP 8.1+. There is no automated 1.x-to-2.x upgrade path.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

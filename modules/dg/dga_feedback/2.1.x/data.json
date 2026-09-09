@@ -1,7 +1,7 @@
 {
   "name": "DGA Feedback",
   "data_name": "dga_feedback",
-  "description": "An accessible Yes/No feedback widget with reasons, optional text, demographics, and an admin dashboard.",
+  "description": "Accessible feedback widget with Yes/No options, reasons, optional feedback text, and demographic data. Features UI-based translations (English & Arabic), inline validation, auto-refresh, and comprehensive admin dashboard. Fully compliant with DGA Design System guidelines.",
   "version": "2.1.x",
   "package": "Custom",
   "composer_namespace": "drupal/dga_feedback",
@@ -13,7 +13,7 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/dga_feedback",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
@@ -26,7 +26,9 @@
     "Forms and surveys"
   ],
   "subcategories": [
-    "Form builder"
+    "Survey / data collection",
+    "Submission handling",
+    "Rating / voting"
   ],
   "keywords": [
     "feedback",
@@ -35,7 +37,7 @@
     "government",
     "dga"
   ],
-  "project_description": "DGA Feedback Module \n\n \n The feedback page is designed to gather user insights. It includes a brief introduction encouraging feedback, followed by sections for rating, comments, and suggestions. Clear prompts guide users to share their opinions, making the process simple and inviting.\n\n Back to top \n\n \n Features \n \n \n \n Yes/No Feedback Widget : Simple binary feedback system (Was this page useful?)\n \n \n Reason Selection : Dedicated reason lists for both Yes and No responses (multi-select)\n \n \n Optional Feedback Text : Free-form textarea for additional comments\n \n \n Demographic Data : Optional gender selection (Male, Female, or Prefer not to say)\n \n \n Live Statistics : Real-time display of feedback (percentage + total count)\n \n \n UI-Based Translations : Manage all English & Arabic strings via the admin UI (no .po files)\n \n \n Inline Validation : Friendly inline error messages for each required field\n \n \n Auto Refresh : Widget resets automatically after submission (configurable delay)\n \n \n Custom Admin Navigation : DGA Feedback → Feedback Dashboard, Settings, Translations (SVG icon in toolbar)\n \n \n Admin Dashboard : Full submissions dashboard with filters, bulk actions, and statistics\n \n \n Role-Based Access Control : Separate permissions for viewing the dashboard, moderating submissions, and managing settings\n \n \n DGA Design System Compliant & Accessible \n \n \n Back to top \n\n \n Installation \n \n \n \n Place the module in web/modules/custom/dga_feedback/\n \n \n Enable the module via Drush: drush en dga_feedback\n \n \n Or enable via the Drupal admin interface: Extend > Custom > DGA Feedback\n \n \n Back to top \n\n \n Configuration \n \n \n Menu Structure \n \n \n \n DGA Feedback (main menu with custom SVG icon)\n \n \n Feedback Dashboard – View submissions and statistics\n \n \n Settings – Configure widget behavior, rate limiting, and refresh delay\n \n \n Translations – Manage English & Arabic text for the widget, validation, and menu items\n \n \n \n \n \n Configure Translations \n \n \n \n Navigate to DGA Feedback > Translations (/admin/content/dga-feedback/translations)\n \n \n Each section provides bilingual (EN/AR) fields displayed side-by-side:\n \n \n Closed State : Question text, Yes/No buttons, statistics template\n \n \n Feedback Form : Close button, reasons title, reasons instruction, reason lists (multi-line input for Yes / No), feedback label/placeholder, gender labels (Male, Female, Prefer not to say)\n \n \n Submitted State : Success message\n \n \n Validation Messages : All error messages (Yes/No required, reason required, feedback required, submission failed, unknown error)\n \n \n API & Backend Messages : Method not allowed, invalid JSON, rate limit, save failed, success message\n \n \n Menu Items : DGA Feedback, Feedback Dashboard, Settings, Translations titles\n \n \n \n \n Note : Reasons instruction field should not include parentheses (they are added automatically by the template)\n \n \n Save to apply instantly (no cache clear required)\n \n \n \n Configure Widget Behavior \n \n \n \n Navigate to DGA Feedback > Settings (/admin/config/dga-feedback/settings)\n \n \n Configure:\n \n \n Widget refresh delay (seconds) after successful submission\n \n \n Rate limiting (maximum submissions per IP + time window)\n \n \n Feedback length constraints and reason length/count limits\n \n \n \n \n Save configuration\n \n \n \n Permissions \n \n \n \n Navigate to People → Roles → Edit for the relevant role\n \n \n Under DGA Feedback , assign the desired capability:\n \n \n view dga feedback dashboard – view statistics and submissions without edit/delete access\n \n \n manage dga feedback submissions – edit, delete, or bulk delete submissions\n \n \n administer dga feedback settings – change widget configuration and translations\n \n \n \n \n Save the role to apply the permission changes\n \n \n \n Block Placement \n \n \n \n Go to Structure > Block layout \n \n \n Add the \"DGA Feedback Widget\" block to your desired region\n \n \n Use the block's Visibility settings to choose where it appears:\n \n \n Content types : limit the widget to specific node …",
+  "project_description": "DGA Feedback Module \n\n \n The feedback page is designed to gather user insights. It includes a brief introduction encouraging feedback, followed by sections for rating, comments, and suggestions. Clear prompts guide users to share their opinions, making the process simple and inviting.\n\n Back to top \n\n \n Features \n \n \n \n Yes/No Feedback Widget : Simple binary feedback system (Was this page useful?)\n \n \n Reason Selection : Dedicated reason lists for both Yes and No responses (multi-select)\n \n \n Optional Feedback Text : Free-form textarea for additional comments\n \n \n Demographic Data : Optional gender selection (Male, Female, or Prefer not to say)\n \n \n Live Statistics : Real-time display of feedback (percentage + total count)\n \n \n UI-Based Translations : Manage all English & Arabic strings via the admin UI (no .po files)\n \n \n Inline Validation : Friendly inline error messages for each required field\n \n \n Auto Refresh : Widget resets automatically after submission (configurable delay)\n \n \n Custom Admin Navigation : DGA Feedback → Feedback Dashboard, Settings, Translations (SVG icon in toolbar)\n \n \n Admin Dashboard : Full submissions dashboard with filters, bulk actions, and statistics\n \n \n Role-Based Access Control : Separate permissions for viewing the dashboard, moderating submissions, and managing settings\n \n \n DGA Design System Compliant & Accessible \n \n \n Back to top \n\n \n Installation \n \n \n \n Place the module in web/modules/custom/dga_feedback/\n \n \n Enable the module via Drush: drush en dga_feedback\n \n \n Or enable via the Drupal admin interface: Extend > Custom > DGA Feedback\n \n \n Back to top \n\n \n Configuration \n \n \n Menu Structure \n \n \n \n DGA Feedback (main menu with custom SVG icon)\n \n \n Feedback Dashboard – View submissions and statistics\n \n \n Settings – Configure widget behavior, rate limiting, and refresh delay\n \n \n Translations – Manage English & Arabic text for the widget, validation, and menu items\n \n \n Back to top",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

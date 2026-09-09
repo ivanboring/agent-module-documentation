@@ -1,9 +1,9 @@
 {
   "name": "Development Assistant",
   "data_name": "development_assistant",
-  "description": "Assists with browser development functionality.",
+  "description": "Assists with Browser Development functionality",
   "version": "2.0.x",
-  "package": null,
+  "package": "Browser Development",
   "composer_namespace": "drupal/development_assistant",
   "composer_requirements": {},
   "dependent_modules": [],
@@ -17,24 +17,25 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
   ],
   "subcategories": [
+    "CSS / JS injection",
     "Debugging & inspection"
   ],
   "keywords": [
     "development",
     "assistant",
-    "browser",
-    "developer",
-    "tools"
+    "browser development",
+    "stylesheet",
+    "frontend"
   ],
-  "project_description": "This module compliments Browser Development it uses the configuration created\n\nby Browser Development so it can be uninstalled on production mitigating\n\nany security and performance issues. \n\n REQUIREMENTS \n Drupal 8 or 9.\n\n INSTALLATION \n Install using composer then using Drush or the Drupal UI enable the module.\n\n CONFIGURATION \n There is no configuration.\n\n Back to top",
+  "project_description": "Development Assistant is a lightweight companion to the Browser Development project. Browser Development lets developers author front-end CSS and settings through the admin UI; Development Assistant re-attaches the resulting compiled stylesheet on the front end so the site keeps rendering correctly after the heavier Browser Development module is uninstalled. Because it carries no editor, no routes and no external calls, it can stay enabled on production while Browser Development is removed there, reducing the production attack surface and performance overhead. The module ships an unrouted Settings form scaffold and a small config-storage helper, but its only active behaviour is a page attachment that links /sites/default/files/browser-development/css/browser-development.css into pages rendered by the default (front-end) theme.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

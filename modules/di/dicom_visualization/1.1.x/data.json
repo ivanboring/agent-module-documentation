@@ -1,42 +1,50 @@
 {
-  "name": "DICOM Visualization",
+  "name": "Dicom visualization",
   "data_name": "dicom_visualization",
-  "description": "provides a file formatter/widget to display DICOM (.dcm) medical imaging files.",
+  "description": "Provides a field widget and two file-field formatters that render DICOM (.dcm) medical imaging files in an interactive Cornerstone.js viewer.",
   "version": "1.1.x",
-  "package": null,
+  "package": "Dicom",
   "composer_namespace": "drupal/dicom_visualization",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:file"
+    "file"
   ],
-  "configure": null,
-  "core_version_requirement": "^9.3||^10||^11",
+  "configure": "dicom_visualization.configuration",
+  "core_version_requirement": "^9.3 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/dicom_visualization",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "cornerstone-core",
+    "cornerstone-math",
+    "cornerstone-tools",
+    "cornerstone-wado-image-loader",
+    "dicom-parser",
+    "hammerjs"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Media"
   ],
   "subcategories": [
-    "Field formatters"
+    "Field formatters",
+    "File & media metadata"
   ],
   "keywords": [
     "dicom",
     "medical imaging",
     "dcm",
-    "file formatter",
-    "phi"
+    "cornerstone",
+    "file formatter"
   ],
-  "project_description": "The DICOM Visualization module transforms your Drupal 10/11 site into a professional medical imaging platform by rendering standard file fields as high-performance, interactive DICOM viewers . By leveraging the industry-standard Cornerstone.js engine, it provides clinical-grade visualization tools directly within your content types, allowing researchers, educators, and healthcare professionals to view medical imaging data without the need for external software or heavy custom entities.\n\n Key Features \n \n Precision Metadata Overlays: Support for over 45 DICOM tags including Patient ID, Modality, and Study Date. Effortlessly map metadata to any of the four viewport quadrants (Top-Left, Top-Right, Bottom-Left, Bottom-Right). \n Interactive Diagnostics: Equipped with advanced viewport controls including mouse-scroll zoom, window leveling (brightness/contrast adjustment), and fluid panning for detailed image inspection. \n Pre-designed Medical Themes: Choose from 15+ professionally curated visual themes such as Midnight Blue , Neon Cyberpunk , and Medical Bone to match your application's aesthetic. \n Flexible Display Modes: Render multiple DICOM files as a vertical stack, a scrollable gallery, or individual standalone viewers based on your specific use case. \n Performance Optimized: Utilizes drupal_static caching and conditional library loading to ensure that high-resolution imaging data doesn't compromise your site's PageSpeed scores. \n Zero-Custom Fields: Works seamlessly with Drupal's core File field. Simply allow the .dcm extension and the module handles the rest via a custom field formatter. \n \n Installation \n \nInstall the module via Composer to ensure that the internal class structures and namespace mappings are correctly initialized.\n\n composer require drupal/dicom_visualization Enable the module using Drush:\n\n drush en dicom_visualization Configuration & Usage \n \nThe DICOM Visualization system is split between global configuration and per-field display settings:\n\n \n Configure Field Settings: Navigate to Structure » Content types » [Your Type] » Manage fields . Edit your File field and add dcm to the Allowed file extensions list. This ensures the system recognizes medical imaging files. \n Set the Formatter: Go to the Manage display tab. Locate your File field and change the formatter to DICOM File Formatter (for standard viewing) or DICOM Advanced File Formatter (for enhanced controls). \n Adjust UI Settings: Click the Gear icon (⚙) on the right. Here you can select your preferred UI theme and determine how multiple DICOM files should stack in the viewer. \n Global Configuration: To manage global tag mappings, quadrant placement, and overlay text colors, visit the /admin/dicom-configuration page. \n \n Technical Standards \n \nThis module utilizes a modern JavaScript stack to ensure medical accuracy and cross-browser compatibility:\n\n \n Cornerstone.js: The core engine for high-performance medical image rendering. \n DICOM Parser: For secure, client-side metadata extraction directly from binary files. \n Hammer.js: Provides native touch and gesture support, making the viewer fully responsive on tablets and mobile devices. \n \n Requirements \n \nThis module requires Drupal 10.3+ or 11 and PHP 8.1+ . It requires the core File module and is compatible with all modern evergreen browsers supporting WebGL.\n\n Similar Projects \n \n DICOM \n Orthanc Integration \n \n Supporting this Module \n \nThe DICOM Visualization module is an open-source project maintained to bridge the gap between web technology and medical imaging. Your contributions help keep the viewer accurate and secure:\n\n \n Report Bugs: If you find issues with specific DICOM modalities or tag rendering, please report them in the Issue Queue . \n Feature Requests: We are always looking to add new viewport tools, such as measurement rulers, angle calculations, or 3D volume rendering. \n Translations: Help medical professionals worldwide by contributing translations for the admin interface via …",
+  "project_description": "DICOM Visualization renders medical imaging files (DICOM, .dcm extension) directly inside Drupal content by attaching field formatters to the core File field — no custom entity or media type is required. The client-side viewer is built on the Cornerstone.js stack (cornerstone-core, cornerstone-tools, cornerstone-wado-image-loader, dicom-parser and hammerjs, loaded from a CDN) and supports mouse-wheel zoom, window leveling (brightness/contrast) and panning. A standard 'DICOM File Formatter (Legacy)' overlays admin-selected DICOM metadata tags (Patient ID, Modality, Study Date and 45+ others) in the four viewport quadrants, configured globally at /admin/dicom-configuration. An 'Dicom Advanced File Formatter' adds 15+ colour themes and a per-display choice between individual viewers and a combined stack/gallery for multi-value fields. A companion 'Dicom File Widget' extends the core file widget on the edit form. The module requires only the core File module.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

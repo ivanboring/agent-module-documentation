@@ -1,14 +1,14 @@
 {
   "name": "Diboo signature pad",
   "data_name": "diboo_signature_pad",
-  "description": "A signature-pad drawing widget for the Diboo ecosystem.",
+  "description": "Allows for signature pad to be used as a drawing tool.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Diboo",
   "composer_namespace": "drupal/diboo_signature_pad",
   "composer_requirements": {},
   "dependent_modules": [
-    "diboo_core:diboo_core",
-    "signature_pad:signature_pad"
+    "diboo_core",
+    "signature_pad"
   ],
   "configure": null,
   "core_version_requirement": "^10 || ^11",
@@ -20,9 +20,9 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"
@@ -35,9 +35,10 @@
     "signature pad",
     "drawing",
     "widget",
-    "diboo"
+    "diboo",
+    "form display"
   ],
-  "project_description": "The Diboo signature pad module is an addon for the diboo core module\n\nthat configures a signature pad widget to draw a picture for a chain.\n\n First module for Diboo that enables drawing.\n\n Back to top \n\n REQUIREMENTS \n Signature pad \n\n Back to top \n\n INSTALLATION \n Install as you would normally install a contributed Drupal module.\n\nSee: https://www.drupal.org/node/895232 for further information.\n\n Back to top \n\n CONFIGURATION \n \n None, image chain links will use the signature pad widget. \n \n Back to top \n\n ROADMAP \n \n Make this module optional when there is more modules to draw pictures. \n \n Back to top \n\n MAINTAINERS \n Current maintainers for Drupal 10:\n\n \n Rodrigo Aguilera (rodrigoaguilera) - https://www.drupal.org/u/rodrigoaguilera \n \n Back to top",
+  "project_description": "Diboo signature pad is a small addon for the Diboo ecosystem (built on diboo_core). It carries no configuration UI, entities, routes, services, permissions, or config schema of its own. Its entire behaviour is a single hook_entity_form_display_alter() implementation that swaps the widget for the diboo_image field on the diboo_chain_link form mode to the signature_pad widget (supplied by the separate signature_pad contrib module), with a fixed set of pre-tuned widget settings so chain links are captured as a hand-drawn PNG rather than an uploaded file. It is the first Diboo module that enables drawing.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
