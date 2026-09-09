@@ -1,11 +1,14 @@
 {
   "name": "CRM Membership Commerce",
   "data_name": "crm_membership_commerce",
-  "description": "Creates or renews CRM memberships when membership products are purchased in Commerce.",
+  "description": "Provides Commerce integration for CRM Membership. Creates or renews memberships when membership products are purchased.",
   "version": "1.0.x",
   "package": "CRM",
   "composer_namespace": "drupal/crm_membership_commerce",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/crm_membership": "^1.0.x-dev",
+    "drupal/commerce": "^3.0"
+  },
   "dependent_modules": [
     "crm_membership:crm_membership",
     "commerce:commerce_product",
@@ -23,13 +26,15 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Integrations"
+    "Integrations",
+    "E-commerce"
   ],
   "subcategories": [
-    "CRM integration"
+    "CRM integration",
+    "Subscriptions / recurring billing"
   ],
   "keywords": [
     "crm",

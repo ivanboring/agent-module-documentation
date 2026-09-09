@@ -1,11 +1,16 @@
 {
   "name": "CRM",
   "data_name": "crm",
-  "description": "A contact-relationship-management system storing contacts and related data in Drupal.",
+  "description": "Contact Relationship Management: native Drupal 11 contact, contact-method and relationship entities with per-contact access grants.",
   "version": "1.0.x",
   "package": "CRM",
   "composer_namespace": "drupal/crm",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/address": "^2.0",
+    "drupal/inline_entity_form": "^3.0",
+    "drupal/name": "^1.1",
+    "drupal/primary_entity_reference": "^1.0.0@beta"
+  },
   "dependent_modules": [
     "address:address",
     "drupal:datetime",
@@ -28,7 +33,9 @@
   "provides_permissions": true,
   "provides_drush_commands": true,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "crm_user_field_access"
+  ],
   "categories": [
     "Integrations"
   ],
@@ -42,7 +49,7 @@
     "pii",
     "contact management"
   ],
-  "project_description": "Drupal CRM is the modern community-first platform for building rich Drupal applications involving contacts and their relationships. Built on Drupal best practices, you'll wonder how you built without it!\n\n Back to top \n\n Overview \n \n Managing contacts, relationships, and complex organizational structures in Drupal often requires cobbling together various contributed modules or integrating external CRM systems. Contact Relationship Management (CRM) is the modern solution. Drupal CRM is built as a set of core-first extensions that fully adopt Drupal's entity architecture, configuration system, and development standards. Instead of relying on heavy integrations or legacy data models, Drupal CRM is designed to be lightweight, extensible, and ready to integrate seamlessly with the rest of the Drupal ecosystem. Whether you're managing contacts, memberships, households, or complex organizational structures, Drupal CRM brings modern best practices into a familiar Drupal workflow.\n\n What does CRM stand for? \n \nCRM often stands for Customer Relationship Management or Constituent Relationship Management. For Drupal CRM, we chose the name Contact Relationship Management because we are not focused on just customers or constituents, but rather any type of contact.\n\n Community-Oriented 👥 \n Drupal CRM is taking a community-first approach to project development and maintenance.\n\n \nBy bringing many contributors into the fold early on and by promoting independent creation of CRM ecosystem components (i.e. please extend CRM in contrib!), the project can cater to diverse needs, avoid architectural pitfalls, avoid being controlled by a commercial enterprise, and thrive long-term.\n\n The following projects are adopting and/or actively contributing to CRM:\n\n \n Open Knowledge \n Member Platform \n ConReg \n \n Have a project to be added to this list? Please create an issue!\n\n \n Back to top \n\n Try Drupal CRM \n Install on an existing Drupal 11 site \n composer require drupal/crm\n\ndrush en crm \n\n Install with Simpsons demo content 👧 \n Install DDEV then run the following commands to demo locally:\n\n \nmkdir mycrm && cd mycrm\nddev config --project-type=drupal --docroot=web --project-name=mycrm\nddev start\nddev composer create-project \"drupal/recommended-project:^11\"\nddev composer config minimum-stability beta\nddev composer require drupal/crm drush/drush\nddev drush site:install -y\nddev drush recipe modules/contrib/crm/recipes/crm_simpsons\nddev launch $(ddev drush uli)\n Simplytest.me Demo \n Try the latest 1.0.x (unstable)\n\n What to Look For \n After installing, you can quickly discover most of CRM's functionality at these paths:\n\n \n /admin/config/crm \n /admin/structure/crm \n /crm/contact \n \n \n \n Back to top \n\n Architecture 🔧 \n These are highlights. Much more in the Developer Documentation .\n\n Entity Types \n Three content entity types: Contact, Contact Method, and Relationship.\n\n Contact \n Three Contact bundles (out of the box):\n\n \n Person \n Household \n Organization \n \n Contact Method \n Structured, fieldable contact information such as:\n\n \n Address \n Email \n Telephone \n \n Relationship \n Maps one Contact to another Contact with a configurable, fieldable Relationship Type.\n\n Example Relationship Types:\n\n \n Head of household \n Spouse \n Employee \n Member \n \n Dependencies \n \n Address \n Datetime \n Image \n Inline Entity Form \n Name field \n Primary Entity Reference \n Telephone \n \n Integrations \n \n Comment \n Group \n Navigation \n ReST \n Search\n \n Search API \n \n \n Serialization \n User \n Views \n \n Planned Integrations \n \n Commerce \n Media \n Workflow \n Workspace \n \n \n \n Back to top \n\n Documentation & Resources \n Many of your questions can be answered by browsing the extensive Developer Documentation or the documentation page .\n\n Drupal CRM Ecosystem \n See projects that extend Drupal CRM .\n\n Similar Projects \n See Comparison of CRM modules .\n\n News / Events / Mentions \n \n MidCamp 2026: Drupal CRM: Architecture, Migration, and Data Interoperability \n Stanford Webcamp 2026: Drupal …",
+  "project_description": "Drupal CRM is the modern community-first platform for building rich Drupal applications involving contacts and their relationships. Built on Drupal best practices, you'll wonder how you built without it!\n\n Back to top \n\n Overview \n \n Managing contacts, relationships, and complex organizational structures in Drupal often requires cobbling together various contributed modules or integrating external CRM systems. Contact Relationship Management (CRM) is the modern solution. Drupal CRM is built as a set of core-first extensions that fully adopt Drupal's entity architecture, configuration system, and development standards. Instead of relying on heavy integrations or legacy data models, Drupal CRM is designed to be lightweight, extensible, and ready to integrate seamlessly with the rest of the Drupal ecosystem. Whether you're managing contacts, memberships, households, or complex organizational structures, Drupal CRM brings modern best practices into a familiar Drupal workflow.\n\n What does CRM stand for? \n \nCRM often stands for Customer Relationship Management or Constituent Relationship Management. For Drupal CRM, we chose the name Contact Relationship Management because we are not focused on just customers or constituents, but rather any type of contact.\n\n Entity Types \n Three content entity types: Contact, Contact Method, and Relationship. Contact ships with three bundles out of the box: Person, Household, and Organization. Contact Method is structured, fieldable contact information such as Address, Email, and Telephone. Relationship maps one Contact to another Contact with a configurable, fieldable Relationship Type (e.g. Head of household, Spouse, Employee, Member).\n\n Dependencies: Address, Datetime, Image, Inline Entity Form, Name, Primary Entity Reference, Telephone. Integrations: Comment, Group, Navigation, ReST, Search (Search API), Serialization, User, Views.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

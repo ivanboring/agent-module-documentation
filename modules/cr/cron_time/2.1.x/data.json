@@ -1,14 +1,14 @@
 {
   "name": "Cron Time",
   "data_name": "cron_time",
-  "description": "lets admins set a manual/custom cron run interval.",
+  "description": "adds a custom interval option to core's cron settings form.",
   "version": "2.1.x",
   "package": null,
   "composer_namespace": "drupal/cron_time",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/cron_time",
@@ -22,7 +22,7 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Content editing experience"
+    "Administration tools"
   ],
   "subcategories": [
     "Cron / task scheduling"
@@ -34,7 +34,7 @@
     "timing",
     "automation"
   ],
-  "project_description": "The manual time cron handling for drupal. This simple Drupal 8 module using for custom Cron Time set.\n\n CONFIGURATION \n\n Goto: /admin/config/system/cron\n\n - Cron Time\n\n INSTALLATION \n\n - Install via /admin/modules\n\n- drush en cron_time -y\n\n- composer require drupal/cron_time",
+  "project_description": "The manual time cron handling for drupal. This simple Drupal module is used to set a custom Cron Time.\n\n CONFIGURATION \n\n Goto: /admin/config/system/cron\n\n - Cron Time\n\n INSTALLATION \n\n - Install via /admin/modules\n\n- drush en cron_time -y\n\n- composer require drupal/cron_time",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

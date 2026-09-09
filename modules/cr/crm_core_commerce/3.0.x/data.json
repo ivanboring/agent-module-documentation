@@ -1,17 +1,21 @@
 {
   "name": "CRM Core Commerce",
   "data_name": "crm_core_commerce",
-  "description": "Creates CRM Core contacts from Drupal Commerce orders.",
+  "description": "Handling the creation of contacts after the order was placed.",
   "version": "3.0.x",
   "package": "CRM Core",
   "composer_namespace": "drupal/crm_core_commerce",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/commerce": "^2 || ^3",
+    "drupal/crm_core": "~3.0 || 3.x-dev"
+  },
   "dependent_modules": [
     "crm_core:crm_core",
     "crm_core:crm_core_contact",
+    "crm_core:crm_core_user_sync",
     "commerce:commerce_order"
   ],
-  "configure": null,
+  "configure": "crm_core_commerce.settings",
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -21,7 +25,7 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
@@ -30,16 +34,17 @@
     "E-commerce"
   ],
   "subcategories": [
-    "CRM integration"
+    "CRM integration",
+    "Order management"
   ],
   "keywords": [
     "crm core",
     "commerce",
     "contacts",
-    "crm",
+    "individuals",
     "integration"
   ],
-  "project_description": "This module creates and updates crm_core individuals after the users has placed an order. commerce_order.place.post_transition Event is used.\n\n Back to top \n\n Installation \n After enabling the module go to Config > CRM Core > Commerce Settings (/admin/config/crm-core/commerce/settings) and select your prefered crm_core_individual bundle.\n\n Back to top \n\n Customization \n Implement hook_crm_core_individual_data_alter(array &$data, OrderInterface $order) to alter the data which will be saved on the individual.\n\n Or you can extend the mapper service crm_core_commerce.individual_mapper .\n\n Back to top",
+  "project_description": "This module creates and updates crm_core individuals after a user has placed a Drupal Commerce order. It subscribes to the order 'place' workflow transition and maps the order's billing profile and email onto a CRM Core Individual. After enabling the module go to Config > CRM Core > Commerce Settings (/admin/config/crm-core/commerce/settings) and select which crm_core_individual bundle new/updated individuals should use. To customise the mapped data, implement hook_crm_core_individual_data_alter(array &$data, OrderInterface $order), or extend the mapper service crm_core_commerce.individual_mapper (Drupal\\crm_core_commerce\\Mapper\\CrmCoreIndividualMapper).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

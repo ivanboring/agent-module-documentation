@@ -1,42 +1,48 @@
 {
   "name": "Crop Usage Report",
   "data_name": "crop_usage_report",
-  "description": "Reports media image entities missing manually-applied crop types, with an admin UI and Drush command.",
+  "description": "Reports media image entities that are missing manually-applied crop types, with an admin report page, CSV export, cache refresh, and a Drush command.",
   "version": "1.0.x",
   "package": "Media",
   "composer_namespace": "drupal/crop_usage_report",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/crop": "*"
+  },
   "dependent_modules": [
-    "drupal:media",
-    "drupal:file",
-    "crop:crop"
+    "media",
+    "file",
+    "crop"
   ],
-  "configure": null,
+  "configure": "crop_usage_report.settings",
   "core_version_requirement": "^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/crop_usage_report",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.3",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
-  "provides_drush_commands": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Media"
+    "Media",
+    "Administration tools"
   ],
   "subcategories": [
-    "Image cropping"
+    "Image cropping",
+    "Dashboard / reporting",
+    "File & media metadata"
   ],
   "keywords": [
     "crop",
     "media",
     "report",
     "images",
-    "audit"
+    "audit",
+    "drush"
   ],
   "project_description": "While you can edit a media image's crop types manually, it can become unwieldily to complete a large editing project out of it since Image Widget Crop does not provide a usage report out-of-the-box.\n\n Features \n This module aims to provide an admin page that reports all media images with provisioned image crops. Furthermore, this report allows an editor to filter by images missing multiple or specific crop types.\n\n Post-Installation \n Once installed, you'll be provided with a path to the report at /admin/reports/crop-usage where editors can filter by crop types as well as export a CSV of results ( /admin/reports/crop-usage/export ).\n\n Report configuration can be accessed at /admin/config/media/crop-report .\n\n Additional Requirements \n You'll need the Image Widget Crop installed, enabled, and configured for your media images.\n\n Back to top",
   "maintenance_status": "Actively maintained",

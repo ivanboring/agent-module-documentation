@@ -1,22 +1,25 @@
 {
   "name": "Atlassian Crowd",
   "data_name": "crowd",
-  "description": "User login/registration integration with Atlassian Crowd.",
+  "description": "Provides user login/registration integration with Atlassian Crowd.",
   "version": "3.x",
   "package": null,
   "composer_namespace": "drupal/crowd",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/externalauth": "^2",
+    "drupal/key": "^1"
+  },
   "dependent_modules": [
-    "externalauth:externalauth",
-    "key:key"
+    "externalauth",
+    "key"
   ],
-  "configure": null,
+  "configure": "crowd.settings",
   "core_version_requirement": "~9.0 || ~10.0 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/crowd",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],

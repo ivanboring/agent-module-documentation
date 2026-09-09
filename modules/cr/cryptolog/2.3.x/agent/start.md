@@ -1,30 +1,49 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-# Cryptolog — agent index
+# Cryptolog (cryptolog) — agent index
 
-**Privacy:** an HTTP middleware replaces the client **IP address with an ephemeral, non-reversible
-identifier** (128-bit keyed hash in IPv6 notation) before Drupal reads it — raw IPs stay out of logs
-and DB (GDPR data minimization) while the salt's lifetime keeps short-term per-visitor correlation
-(unique-IP stats, IP-based flood control). Config at `cryptolog.settings`
-(`/admin/config/people/cryptolog`, needs `administer site configuration`). Version **2.3.0**.
-Core `^11.2 || ^12`.
+An HTTP stack **middleware** replaces the client **IP address with an ephemeral, non-reversible
+identifier** (128-bit keyed hash in IPv6 notation) before Drupal reads it — raw IPs stay out of
+logs and DB (GDPR data minimization) while the salt's lifetime keeps short-term per-visitor
+correlation (unique-IP stats, IP-based flood control). Package none. **No module dependencies**,
+no libraries. Core `^11.2 || ^12`. License GPL-2.0-or-later. Version 2.3.0.
 
-Positive privacy control. **Trade-off:** features needing the true client IP (precise geolocation, IP
-allow-lists, forensics) won't see it — tune the salt TTL to match your needs.
+- **Settings form, config object + schema, salt storage/TTL, diagnostics** →
+  [config/settings.md](config/settings.md)
+- **The middleware, salt lifecycle, hashing, service provider, reverse-proxy handling** →
+  [architecture/middleware.md](architecture/middleware.md)
 
-## Configure (`cryptolog.settings` config object)
-- `single_webhead` (bool, default `FALSE`) — if TRUE and APCu is available, store the salt solely in
-  APCu (never on disk). Leave FALSE on multi-node sites so the salt is shared via the default cache
-  backend (use Memcache/Redis to keep it off disk).
-- `ttl` (int seconds, default `86400`) — salt lifetime; on expiry the salt regenerates and every IP
-  maps to a new pseudonym. Keep it larger than your flood-control window; the form enforces a min from
-  `user.flood` (`ip_window` or `user_window`).
-- Settings form also: shows storage backend + time-to-expiry, a "Regenerate salt now" checkbox
-  (invalidates cache key `cryptolog`), and reverse-proxy diagnostics (original IP, trusted-proxy status,
-  restored HTTP host/scheme).
+## What it actually is
 
-## Notes
-- No custom permissions, Drush commands, plugin types, or module dependencies.
-- Requires PHP compiled with IPv6 support (install requirement); APCu recommended for performance.
-- Hashing: Sodium `sodium_crypto_generichash` when available, else `hash_hmac('md5', …)` with a random
-  32-byte salt.
-- Changing `single_webhead` or `ttl` invalidates the service container (ConfigSubscriber).
+- One `http_middleware` service `cryptolog.middleware` (`src/CryptologMiddleware.php`, priority
+  **222**) implementing `HttpKernelInterface` + `CryptologMiddlewareInterface`. On the MAIN request
+  it rewrites `$_SERVER['REMOTE_ADDR']` to `inet_ntop(hash)` so
+  `\Drupal::request()->getClientIp()` returns the pseudonym.
+- One settings route `cryptolog.settings` → `/admin/config/people/cryptolog`
+  (`src/ConfigForm.php`, `ConfigFormBase`), permission **`administer site configuration`**; menu
+  link under *People* (`cryptolog.links.menu.yml`, parent `user.admin_index`).
+- One config object **`cryptolog.settings`** with `single_webhead` (bool) and `ttl` (int),
+  schema in `config/schema/cryptolog.schema.yml`, install defaults in `config/install/`.
+- `ConfigSubscriber` (`src/ConfigSubscriber.php`) invalidates the service container when
+  `single_webhead` or `ttl` changes (so `CryptologServiceProvider` re-wires the backend/TTL).
+- `CryptologServiceProvider` (`src/CryptologServiceProvider.php`) injects the APCu cache backend
+  and TTL argument into the middleware at container-build time, reading bootstrap config.
+- Requirements: `Install/Requirements/CryptologRequirements` (IPv6 support check) plus hook
+  classes `Hook/RuntimeRequirements` (middleware active? hash function? TTL vs flood window) and
+  `Hook/UpdateRequirements`.
+
+## Provides
+
+- **No** custom permissions, **no** Drush commands, **no** plugin types, **no** entities, **no**
+  content dependencies. Config schema: yes. Empty `cryptolog.post_update.php` stubs only.
+
+## Key facts (from source)
+
+- Salt: `random_bytes(32)`, cached under key `cryptolog` (`CryptologMiddlewareInterface::KEY`),
+  expiry = request time + TTL. Default TTL 86400s (`::TTL`).
+- Hash: `sodium_crypto_generichash($ip, $salt, 16)` (BLAKE2b, 16 bytes → IPv6) when the Sodium
+  extension is present, else `hash_hmac('md5', $ip, $salt, TRUE)`.
+- Reverse proxy: because REMOTE_ADDR changes, a request stops matching a trusted proxy; the
+  middleware saves and restores scheme (`HTTPS`) and HTTP host so downstream extraction still
+  works, and records what it restored for the diagnostics panel.
+- Requires PHP compiled with IPv6 support (install requirement); APCu recommended for
+  performance; nothing is added to `settings.php` (unlike the D7 version).
