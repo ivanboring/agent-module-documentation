@@ -1,17 +1,20 @@
 {
   "name": "Deepgram",
   "data_name": "deepgram",
-  "description": "A Deepgram AI provider (Speech-to-Text and Text-to-Speech) for the AI module. Uses the Key module for credentials.",
+  "description": "Deepgram provider plugin for the AI module: speech-to-text (transcription) and text-to-speech. API credentials are stored via the Key module.",
   "version": "1.0.x",
   "package": "AI Providers",
   "composer_namespace": "drupal/deepgram",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ai": "^1.0.0-beta8",
+    "drupal/key": "^1.18"
+  },
   "dependent_modules": [
     "ai:ai",
     "key:key"
   ],
-  "configure": null,
-  "core_version_requirement": "^10.2||^11",
+  "configure": "deepgram.settings",
+  "core_version_requirement": "^10.2 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/deepgram",
@@ -28,16 +31,17 @@
     "Artificial Intelligence (AI)"
   ],
   "subcategories": [
-    "LLM / AI provider"
+    "AI provider abstraction / LLM gateway"
   ],
   "keywords": [
     "deepgram",
     "speech to text",
     "text to speech",
-    "ai",
+    "transcription",
+    "ai provider",
     "key"
   ],
-  "project_description": "Deepgram is a superior speech to text/transcript service that takes audio and transcribes it. The module works as a provider for the AI module making it possible to create transcripts from audio files and also do speech to text in a very natural way for the English language.\n\n This means that any third party library utilizing the AI module for speech-to-text or text-to-speech will make the Deepgram module available.\n\n For the AI Interpolator this replaces the Deepgram transcribe rules and makes them generically available for the new AI Automator.\n\n For more information on how to use the AI Automator (previously AI Interpolator), check https://workflows-of-ai.com .\n\n Back to top \n\n Features \n \n It can do simple text to speech. \n It can do advanced transcriptions with exact timestamp, diarization, smart wording and more. \n It can generate very realistic speech from text in the English language. \n \n Back to top \n\n Requirements \n \n Requires an account at Deepgram . They have free trials. \n Requires the AI module. \n \n Back to top \n\n How to use as AI Automator type \n \n Install the AI module . \n Install this module. \n Visit /admin/config/google_places/settings and add your api keys from your Google Places account. \n Create some entity or node type with a simple text field. \n Create an file field and set mp3. \n Enable AI Automator checkbox and configure it. \n Create an entity of the type you generated, fill in some text and save. \n The audio file be filled out. \n \n Back to top \n\n Sponsors \n This module was supported by FreelyGive ( https://freelygive.io/ ), your partner in Drupal AI.\n\n Back to top",
+  "project_description": "Deepgram registers the Deepgram speech service as a provider plugin for the Drupal AI module (drupal/ai). It exposes two operation types: speech_to_text (transcribing audio files, with options such as language detection, punctuation, diarization and smart formatting) and text_to_speech (generating realistic English speech from text using Deepgram's Aura voices). Because it plugs into the AI module's provider abstraction, any code or module that requests speech-to-text or text-to-speech through the AI module can use Deepgram without knowing about it directly, and it can be selected as an AI Automator step. A Deepgram account and API key are required; the key is held through the Key module. Sponsored by FreelyGive.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

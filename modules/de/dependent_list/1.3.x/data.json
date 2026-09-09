@@ -1,17 +1,17 @@
 {
   "name": "Dependent List",
   "data_name": "dependent_list",
-  "description": "Defines conditional list fields where field B's options depend on field A's value.",
+  "description": "Define conditional list fields where the options in field B depend on the value selected in field A on the same entity.",
   "version": "1.3.x",
   "package": "Fields",
   "composer_namespace": "drupal/dependent_list",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:options",
-    "drupal:field_ui"
+    "options",
+    "field_ui"
   ],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/dependent_list",
@@ -28,16 +28,17 @@
     "Content editing experience"
   ],
   "subcategories": [
-    "Conditional fields / states"
+    "Form widgets / select UI",
+    "Fields"
   ],
   "keywords": [
     "dependent",
-    "list",
-    "conditional",
     "cascading",
-    "fields"
+    "conditional",
+    "list field",
+    "select"
   ],
-  "project_description": "Back to top \n\n What This Module Does\n \n Screenshots below show how the child field options change when a different parent value is selected.\n\n Figure 1: Acquisition selected \n\n \n\n Figure 2: Appropriation selected \n\n \n\n When editing an entity (e.g. a node or paragraph), a dependent list field shows different options based on the value chosen in a \"parent\" list field. For example:\n\n \n \n Parent field: \"Event main type\" (Acquisition, Appropriation, Archaeology & fieldwork, etc.) \n \n Child field: \"Event subtype\" -> shows Auction, Bequest, Purchase, etc. when Acquisition is selected; Colonial appropriation, Confiscation, Destruction, etc. when Appropriation is selected; etc. \n \n The module works with list fields ( list_string , list_integer , list_float ) and supports both select dropdowns and radio/checkbox widgets. Options are filtered in real time via AJAX when the parent value changes.\n\n Back to top \n\n How to Use\n \n \n \n Create two list fields on your content type (or other entity type):\n\n \n A parent field (e.g. \"Country\") with its allowed values. \n A child field (e.g. \"City\") with all possible values. \n \n \n \n Configure the child field as dependent: \n\n \n Go to Structure -> Content types -> [Your type] -> Manage fields . \n Edit the child field (e.g. \"City\"). \n Open the Dependent list configuration section. \n Choose the Dependency field (e.g. \"Country\"). \n In the table, for each parent value, check which child options should be shown. \n Save the field. \n \n \n \n Use the form: \n\n \n When creating/editing content, select a value in the parent field first. \n The child field options will update automatically based on your configuration. \n \n \n \n Back to top \n\n Requirements\n \n \n Drupal 10 or 11 \n \n options and field_ui modules \n \n Back to top \n\n Testing Note\n \n Testing has been done primarily with dropdown (select) lists . Radio buttons and checkboxes may not be fully tested; use with those widgets at your own discretion.\n\n Back to top \n\n Spell Checking (CSpell)\n \n Run CSpell locally before pushing:\n\n ./scripts/cspell.sh\n Or with npx: npx cspell . (from the module directory).\n\n Project-specific words are in .cspell-project-words.txt . Add new valid terms there as needed.\n\n Back to top",
+  "project_description": "Dependent List makes a list field's options depend on the value chosen in another list field on the same entity. On an entity edit form the child field's options are filtered in real time via AJAX when the parent value changes. It works with list_string, list_integer and list_float fields, with select, radios and checkboxes widgets, and functions inside paragraphs and nested inline entity forms. Configuration is a per-field third-party setting (a parent field plus a parent-value -> allowed-child-keys map) edited in the field settings form; no separate admin page. Requires the core options and field_ui modules.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

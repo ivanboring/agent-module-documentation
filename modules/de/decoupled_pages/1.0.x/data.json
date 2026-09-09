@@ -1,14 +1,14 @@
 {
   "name": "Decoupled Pages",
   "data_name": "decoupled_pages",
-  "description": "Provides a quick way to create routes that serve single-page applications (SPAs).",
+  "description": "Provides a quick & easy way to create routes serving SPAs.",
   "version": "1.0.x",
   "package": "Decoupled",
   "composer_namespace": "drupal/decoupled_pages",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^8||^9||^10||^11",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/decoupled_pages",
@@ -21,7 +21,7 @@
   ],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Decoupled"
@@ -34,9 +34,12 @@
     "spa",
     "routes",
     "single-page app",
-    "progressive"
+    "progressive",
+    "javascript",
+    "react",
+    "vue"
   ],
-  "project_description": "The Decoupled Pages module provides a quick and simple way to define new Drupal routes which can be overtaken by a single page application, often written in Javascript using React, Vue.js, or Ember (to name a few common frameworks).\n\n How to create a decoupled page\n 1. Defining a route \n To define a new decoupled page, you define a new route in your module's routing file . The basic structure of your route definition remains unchanged. You can add route requirements, route defaults and route options pretty much as normal. The only caveat is that you must not define a _controller or _form route requirement. \n\n Instead, you'll define a _decoupled_page_main route requirement. The value of this key is the name of an asset library containing your single page application and its dependencies. It should take the form your_module/name . You can define this asset library in a your_module.libraries.yml file , but any module can provide an asset library.\n\n Here is an example of a decoupled page route definition:\n\n \n\nyour_module_name.foo:\n\n path: /some/path/of/your-choosing\n\n defaults:\n\n _decoupled_page_main: decoupled_pages/route_test\n\n requirements:\n\n _access: 'TRUE'\n\n \n\n Once your route definition has been created, a new route will be available after you've rebuilt Drupal's cache (make sure to enable your module too 😉).\n\n The decoupled_pages/route_test asset library is pre-defined by this module. You can use it to test your route without first registering your own library. If your route works, you should be able to visit the path you defined. Check the browser console for a message saying that your route worked.\n\n \n Warning : _access: 'TRUE' will make your route accessible to everyone.\n\n \n 2. Adding your single page application \n This module will place an empty \n \n\n into the main content region of your active theme. It will have the HTML ID decoupled-page-root , like so:\n \n\n \n \n\n Your JavaScript can attach to that element.\n\n Once you've defined an asset library of your own. Go ahead and point your route's _decoupled_page_main to that library.\n\n 3. Customize for your needs \n Paths routed in JavaScript \n If your single page application defines its own routes, you'll want to make sure that your users can link directly to them. In order to do that, Drupal needs to know about those paths. You can add additional paths for Drupal to serve your application code by setting the _decoupled_page_paths route option, like so:\n\n \n\n options:\n\n _decoupled_page_paths:\n\n foo: /some/path/of/your-choosing/foo\n\n bar: /some/path/of/your-choosing/bar\n\n foobaz: /some/path/of/your-choosing/foo/baz\n\n \n\n Adding additional CSS and JavaScript libraries \n You may also need the ability to attach additional JavaScript or CSS to your decoupled pages that can't be included in your main asset library. You can tell Drupal about those assets by defining the _decoupled_page_assets route option, like so:\n\n \n\n options:\n\n _decoupled_page_assets:\n\n - your_module/some_extra_css\n\n \n\n Passing configuration to your JavaScript application \n In order to keep your JavaScript application from hardcoding certain assumptions (e.g. API URLs), you may want to pass configuration to your JavaScript via the root data element. Custom data attributes are an excellent way to pass information from the backend to your JavaScript application. To do that, you can specify a _decoupled_page_data route default, like so:\n\n \n\n defaults:\n\n _decoupled_page_data:\n\n api-base-path: /my/api/v1\n\n \n\n Your data attribute names must be strings containing only the lower-case letters a-z and dashes and must not begin or end with a dash. You data attribute values must also be strings. You can access these data attributes from JavaScript, like so:\n\n \n\nconst root = document.getElementById('decoupled-page-root');\n\nroot.dataset.apiBasePath === '/my/api/v1'; // true\n\n \n\n Notice that the dasherized key name that you defined in YAML is lower-camel-cased in JavaScript. This is a browser behavior, not a feature of this …",
+  "project_description": "Decoupled Pages provides a quick and simple way to define new Drupal routes which can be overtaken by a single-page application (SPA), commonly written in JavaScript with React, Vue.js, Ember, or similar frameworks. Rather than writing a controller, a developer declares a normal route in a module's *.routing.yml and adds a `_decoupled_page_main` route default whose value is an asset library ID (e.g. `your_module/app`). The module's routing event subscriber validates the definition and swaps in its own internal controller, which renders an empty `<div id=\"decoupled-page-root\">` inside the active theme's main content region and attaches the named library so the SPA can mount onto that element. Additional CSS/JS libraries can be attached with the `_decoupled_page_assets` route option, additional in-app deep-link paths can be registered with `_decoupled_page_paths` (each cloned into its own route that serves the same shell), and backend-to-frontend configuration can be passed as HTML `data-*` attributes on the root element via the `_decoupled_page_data` route default (static values) or a custom data provider service (dynamic values, e.g. derived from the request). Data attribute names are validated to lower-case letters and dashes; attribute values are rendered through Drupal's attribute system. The module intentionally does not manage route access: access is whatever the route's own `requirements` declare, and the SPA's data access (typically JSON:API or REST) is governed separately. It ships a `decoupled_pages_test` example/test submodule demonstrating static data, extra assets, additional paths, and a dynamic data provider.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

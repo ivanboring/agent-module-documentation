@@ -1,13 +1,13 @@
 {
   "name": "Default Content Tools",
   "data_name": "default_content_tools",
-  "description": "Suppress or delete default content from the Default Content API.",
+  "description": "Suppress Default Content import, or delete content that the Default Content API / recipes already imported.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Content",
   "composer_namespace": "drupal/default_content_tools",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "default_content_tools.settings",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -15,9 +15,12 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/default_content": "Enhances functionality by providing additional default content export/import.",
+    "drupal/recipe_tracker": "Enables the RecipeTrackerCatchup pass so recipes applied before this module was installed can still be cleaned up, and adds a per-recipe-log delete operation."
+  },
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
@@ -25,16 +28,18 @@
     "Developer tools"
   ],
   "subcategories": [
-    "Content migration / import"
+    "Content migration / import",
+    "Configuration management"
   ],
   "keywords": [
     "default content",
-    "import",
-    "delete",
-    "content",
-    "developer"
+    "recipe",
+    "suppress import",
+    "delete content",
+    "config action",
+    "site building"
   ],
-  "project_description": "The Default Content Tools module enhances Drupal's default content management capabilities by integrating seamlessly with Drupal Core's Default Content API and the contributed Default Content module. It empowers site administrators to easily suppress importing default content or delete previously imported default content after module installations or recipe applications, providing greater flexibility and control over site setup and content management.\n\n Features \n \n Integration with Drupal Core and contributed Default Content APIs. \n Option to suppress automatic import of default content during installation or recipe execution. \n Ability to delete default content imported by modules/recipes post-installation/-application. \n Useful for developers or site administrators aiming for precise control over site content setup. \n \n Post-Installation \n Upon installation, Default Content Tools provides configuration settings accessible from Configuration > Content Authoring > Default Content Tools . There, administrators can configure whether to suppress default content imports globally. From the corresponding extension page, administrators can manage the deletion of existing default content previously imported via modules or recipes.\n\n Additional Requirements \n \n Default Content (optional, enhances functionality) \n Drupal Core Default Content API (included in core) \n \n Recommended modules/libraries \n \n Recipe Tracker for advanced log of all applied recipes. \n \n Similar projects \n \n Default Content Deploy : Focuses on deployment scenarios. Default Content Tools differs by focusing explicitly on content suppression and deletion post-import. \n \n Supporting this Module \n Your support is greatly appreciated! Contributions can be made via the Drupal Association or directly supporting development initiatives.\n\n Community Documentation \n \n Documentation coming soon. Contributions welcome! \n Back to top",
+  "project_description": "Default Content Tools adds two operator controls on top of Drupal core's Default Content API and recipe system. First, it can globally suppress the import of all default content (a PreImportEvent subscriber skips every discovered item by UUID when the suppress_import flag is on). Second, it can delete content that has already been imported: a confirm form reachable from the module list and from Reports > Recipes deletes the shipped content of a chosen module or Composer package by loading each entity by UUID and deleting it, and a RecipeAppliedEvent subscriber automatically deletes a recipe's content once that recipe finishes applying when the recipe's machine name is listed in delete_recipes. Two config actions (markRecipeContentForDeletion / unmarkRecipeContentForDeletion) let a composing recipe additively opt another recipe's content into or out of that automatic deletion without clobbering entries added by other recipe layers. When the recipe_tracker module is also installed, a catch-up subscriber sweeps the persisted recipe log so content can be deleted even when the recipe that requested the deletion was applied after the recipe that provided the content.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

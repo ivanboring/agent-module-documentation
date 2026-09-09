@@ -7,7 +7,7 @@
   "composer_namespace": "drupal/denormalizer",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "denormalizer.settings",
   "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -15,7 +15,10 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/webform": "Adds webform_submission source support, flattening webform elements (including multi-value and likert) into denormalized columns.",
+    "drupal/duration_field": "Renders the cron 'Run every' / 'Reload every' settings as duration widgets instead of raw seconds."
+  },
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
@@ -25,16 +28,19 @@
     "Developer tools"
   ],
   "subcategories": [
-    "Data transformation"
+    "Data transformation",
+    "External database tables"
   ],
   "keywords": [
     "denormalize",
     "entity",
     "data",
     "transformation",
-    "export"
+    "star schema",
+    "business intelligence",
+    "webform"
   ],
-  "project_description": "This module denormalizes entities using database views or tables. Also known as star schema, snowflake schema, snowflaking, etc.\n\n This is a tool used to assist business intelligence tools in consuming Drupal data without knowing Drupal internals (like how to join fields).\n\n Inspired by http://drupal.org/project/etl with a different approach. Denormalizer does not use entity_load and also does not perform the \"Load\" part of ETL.\n\n Warning: as this module creates databases and performs destructive operations on tables and views, take extra caution when using this module. There are sanity checks to prevent you from overwriting your own tables, but you've been warned!\n\n To use, enable the module.\n\n Add a hook to your custom module to define the data you want to denormalize. See hook_denormalizer_info():\n\n <?php\n\n/**\n\n * Implements hook_denormalizer_info().\n\n *\n\n * Provide a list of plain tables and entities that should be denormalized.\n\n */\n\nfunction hook_denormalizer_info() {\n\n return array(\n\n // Plain Drupal table\n\n 'location' => array(\n\n 'base table' => 'location',\n\n ),\n\n // Typical entity\n\n 'denormalized_table' => array(\n\n 'entity_type' => 'node',\n\n 'bundles' => array('page', 'story'),\n\n 'changed_key' => 'changed',\n\n ),\n\n // Some external table\n\n 'ScormActivity' => array(\n\n 'base table' => 'ScormActivity',\n\n 'external' => TRUE,\n\n 'changed_key' => 'update_dt',\n\n ),\n\n );\n\n}\n\n?>\n\n Visit admin/config/development/denormalizer\n\n Set prefixes and where you want your views or tables to be.\n\n - View mode will create database views.\n\n- Table mode will create tables and SELECT data into them. On the next run, they will incrementally update based on the primary key and the \"changed\" field.\n\n- DB determines where these views or tables live. This is useful if you want to restrict access to a BI or ETL tool by putting denormalized data in a new database.\n\n Use the \"Create\" tab to create/update views or tables.\n\n Use the \"Export\" tab to see the SQL that will be used.\n\n Related modules\n\n \n Views fast field - build Views without entity_load() \n Singer - export denormalizer info as a singer catalog file",
+  "project_description": "Denormalizer flattens Drupal content entities (and webform submissions) into plain, denormalized SQL tables so business-intelligence and ETL tools can consume Drupal data without knowing Drupal internals such as how fields are joined. Admins define 'Denormalizer table' config entities that pick an entity type, bundle, and the base/bundle fields to include; the module then creates a dedicated 'denormalizer_<id>' table, populates it in a batch, and keeps it in sync on entity insert/update/delete through a queue worker and on cron. It is a developer/BI data-transformation tool inspired by the ETL module but taking a different, load-free approach.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

@@ -1,38 +1,28 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Decoupled Pages provides a quick and easy way to create Drupal routes that serve single-page applications (SPAs).
+Decoupled Pages lets you declare a Drupal route that serves an empty page shell for a JavaScript single-page application (SPA) to mount onto, without writing a controller.
 
 ---
 
-Decoupled Pages provides a quick, easy way to create Drupal routes that serve single-page applications
-(SPAs) — so a JavaScript app (React, Vue, etc.) can be mounted at a Drupal path, with Drupal handling the
-route/page shell and the SPA taking over rendering client-side. It ships a `decoupled_pages_test` submodule.
-This suits progressively-decoupled setups where certain pages are full SPAs within an otherwise
-Drupal-rendered site.
-
-Use it to embed SPAs at Drupal routes. It is a decoupled/developer feature; the route serves the SPA shell
-and access to the route is governed by normal route access (define the route's access requirements as
-needed), while the SPA's own data access (typically via JSON:API/REST) is governed separately. Define the
-decoupled page routes and their SPA assets.
+Decoupled Pages turns any module route into an SPA host by adding a `_decoupled_page_main` route default whose value is an asset library ID. A routing event subscriber validates the definition and installs the module's internal controller, which renders `<div id="decoupled-page-root">` in the active theme's main content region and attaches the named library. You can attach extra CSS/JS with the `_decoupled_page_assets` option, register in-app deep-link paths with `_decoupled_page_paths` (each cloned into its own route serving the same shell), and pass backend configuration to the frontend as HTML `data-*` attributes via the `_decoupled_page_data` route default or a custom data provider service. It is a progressive-decoupling / developer tool: it does not manage access (the route's own `requirements` do), and the SPA's data access (JSON:API/REST) is handled separately. A `decoupled_pages_test` example submodule demonstrates every feature.
 
 ---
 
-- Serve SPAs at Drupal routes.
-- Mount a JS app at a path.
-- Support progressive decoupling.
-- Provide the page shell for a SPA.
-- Ship a test submodule.
-- Embed React/Vue apps.
-- Govern route access normally.
-- Define route access requirements.
-- Handle SPA data access separately.
-- Define decoupled page routes.
-- Serve SPA assets.
-- Create SPA routes quickly.
-- Progressively decouple pages.
-- Mount client-side apps.
-- Configure SPA routes.
-- Serve app shells.
-- Embed single-page apps.
-- Handle decoupled routes.
-- Support hybrid sites.
-- Create SPA pages.
+- Mount a React, Vue, Ember, or vanilla-JS SPA at a chosen Drupal path.
+- Progressively decouple a Drupal site — full SPAs on some routes, Drupal rendering elsewhere.
+- Define an SPA host route with only YAML, no PHP controller.
+- Point a route at an existing asset library with `_decoupled_page_main: your_module/app`.
+- Use the built-in `decoupled_pages/route_test` library to smoke-test a route before writing your own.
+- Attach extra stylesheets/scripts to a page with the `_decoupled_page_assets` route option.
+- Register client-side deep links (e.g. `/app/settings`) as extra Drupal-served paths via `_decoupled_page_paths`.
+- Pass an API base path or feature flags to the SPA as static `data-*` attributes with `_decoupled_page_data`.
+- Compute per-request `data-*` attributes (e.g. from a query parameter) with a custom data provider service.
+- Read backend config in JS from `document.getElementById('decoupled-page-root').dataset`.
+- Keep an SPA inside the site theme's page shell (header/footer/regions) rather than a bare HTML document.
+- Gate SPA host routes with normal Drupal route access requirements (`_permission`, `_role`, `_access`, etc.).
+- Serve the same SPA shell from several URLs so client-side routes are directly linkable/bookmarkable.
+- Add proper cacheability to dynamic data via `Dataset::cacheVariable()` with cache contexts/tags.
+- Prototype a decoupled feature quickly, then swap the placeholder library for your real build output.
+- Reuse one SPA library across multiple routes with different injected data attributes.
+- Provide a data provider service shared by many decoupled routes through the `decoupled_pages_data_provider` service tag.
+- Learn the full API from the shipped `decoupled_pages_test` example module.
+- Enforce GET-only handling on SPA host routes (the module defaults to `GET` when no methods are declared).

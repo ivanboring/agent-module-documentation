@@ -1,14 +1,14 @@
 {
   "name": "Default Value",
   "data_name": "default_value",
-  "description": "Provides a default value for fields on existing entities at load time.",
+  "description": "Provide default value for existing entities on load.",
   "version": "1.0.x",
   "package": "Fields",
   "composer_namespace": "drupal/default_value",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": "default_value.config",
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/default_value",
@@ -19,22 +19,23 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"
   ],
   "subcategories": [
-    "Default field values"
+    "Fields"
   ],
   "keywords": [
     "default value",
     "fields",
-    "fallback",
     "existing entities",
-    "load"
+    "entity load",
+    "field config",
+    "fallback"
   ],
-  "project_description": "Introduction \n Installation \n Configuration \n \n Back to top \n\n INTRODUCTION \n This module provides a default value for existing entities upon load.\n\n Back to top \n\n INSTALLATION \n The installation of this module is similar to other Drupal modules.\n\n \n Copy/upload the default_value module to the modules directory. \n Enable the 'default_value' module and desired sub-modules in 'Extend'.\n\n ( /admin/modules )\n \n \n Back to top \n\n CONFIGURATION \n \n Configure your default value supported entities on the configuration page below: \n Go to the default value settings page.\n\n Note: Admin -> Configuration -> System -> Default Value Settings\n\n \n \n Back to top",
+  "project_description": "Default Value fills empty fields on already-existing content entities with the default value declared in each field's configuration, at the moment the entity is loaded. Where a normal Drupal field default only applies to new entities at creation time, this module retroactively supplies the configured default to entities that were saved before the field (or its default) existed, or that were left empty. An administrator opts specific entity-type bundles into this behaviour on a settings form; on every load of a matching entity, any fieldable field left empty is populated in memory from its FieldConfig default value literal, with entity_reference and image field UUID references resolved to local target IDs. Nothing is written back to storage — the defaults are applied only on the loaded object.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
