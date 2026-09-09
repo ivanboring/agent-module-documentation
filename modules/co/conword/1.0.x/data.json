@@ -1,13 +1,13 @@
 {
   "name": "Conword",
   "data_name": "conword",
-  "description": "Provides integration for the Conword content/translation service.",
+  "description": "Integrates the DeepL-based Conword translation widget from Conword GmbH into a Drupal site.",
   "version": "1.0.x",
   "package": "Content",
   "composer_namespace": "drupal/conword",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "conword.settings",
   "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -15,27 +15,32 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/csp": "Allows strict Content-Security-Policy support"
+  },
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Content editing experience",
+    "Multilingual",
     "Integrations"
   ],
   "subcategories": [
+    "Machine translation",
+    "Language switcher",
     "Translation / multilingual"
   ],
   "keywords": [
     "conword",
     "translation",
-    "integration",
-    "content",
-    "collaboration"
+    "deepl",
+    "machine translation",
+    "language switcher",
+    "integration"
   ],
-  "project_description": "This module provides product integrations for the DeepL based translation tool from Conword GmbH \n\n Features \n \n conword integration \n \n Post-Installation \n Go to /admin/config/services/conword to configure your valid customer ID and set up your individual display settings.\n\n Additional Requirements \n To get a customer ID, wich is required to run the conword integration, you need a valid contract with Conword GmbH \n\n Back to top",
+  "project_description": "Conword is a thin front-end integration for the DeepL-based on-page translation widget operated by Conword GmbH (a proprietary SaaS that requires a customer contract). The module attaches the vendor's external JavaScript (loaded from static.conword.io using an admin-supplied customer ID) to front-end pages, forwards two widget display options to it via drupalSettings, and gates where the widget appears using standard Drupal condition plugins (visibility rules). It also ships an optional custom language-selection UI: a block plugin plus a Twig template and CSS/JS that render a popover language picker driven by the vendor's JavaScript API. Configuration lives at /admin/config/services/conword behind the 'administer conword' permission; the only stored settings are the customer ID, two boolean widget flags, and the visibility condition configuration.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

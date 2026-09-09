@@ -1,12 +1,14 @@
 {
   "name": "Copy field machine name",
   "data_name": "copy_field",
-  "description": "Adds a button to copy a field's machine name.",
+  "description": "Adds a per-content-type admin tab that lists a bundle's fields with a one-click copy-to-clipboard button for each field machine name.",
   "version": "1.1.x",
   "package": null,
   "composer_namespace": "drupal/copy_field",
   "composer_requirements": {},
-  "dependent_modules": [],
+  "dependent_modules": [
+    "node"
+  ],
   "configure": null,
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
@@ -17,11 +19,12 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
+    "Developer tools",
     "Content editing experience"
   ],
   "subcategories": [
@@ -31,6 +34,7 @@
     "copy",
     "field",
     "machine name",
+    "clipboard",
     "dx",
     "admin"
   ],

@@ -1,40 +1,53 @@
 {
   "name": "Convivial Profiler",
   "data_name": "convivial_profiler",
-  "description": "Provides visitor personalization/profiling (builds a behavioral profile to personalize content).",
+  "description": "Client-side visitor personalization and data-collection engine: an admin-configured source/processor/destination pipeline run by an external JS SDK that stores a behavioural profile in the browser (cookies/localStorage) and pushes events to the dataLayer.",
   "version": "1.0.x",
   "package": "Convivial",
   "composer_namespace": "drupal/convivial_profiler",
   "composer_requirements": {},
   "dependent_modules": [
-    "convivial_core:convivial_core"
+    "convivial_core"
   ],
-  "configure": null,
-  "core_version_requirement": "^10.2||^11||^12",
+  "configure": "convivial_profiler.settings",
+  "core_version_requirement": "^10.2 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/convivial_profiler",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "morpht/convivial-profiler (external JS bundle loaded from cdn.jsdelivr.net at runtime)"
+  ],
   "suggests": {},
-  "submodules": [],
+  "submodules": [
+    "convivial_profiler_sync"
+  ],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "profiler_source",
+    "profiler_processor",
+    "profiler_destination"
+  ],
   "categories": [
-    "User engagement"
+    "User engagement",
+    "Integrations"
   ],
   "subcategories": [
-    "Personalization"
+    "Analytics & tracking",
+    "Analytics / tag management"
   ],
   "keywords": [
     "personalization",
     "profiler",
-    "profiling",
+    "visitor tracking",
+    "behavioral profiling",
+    "dataLayer",
+    "geoip",
     "convivial",
-    "behavioral"
+    "morpht"
   ],
   "project_description": "Provides ability for personalization and visitor data collection.\n\n Requirements \n \n Convivial Core \n \n Installation \n The module can be installed via the standard Drupal installation process. \n\n Configuration \n Go to /admin/config/convivial/profiler and set all the configuration options.\n\n Maintainers \n \n\nThis module is maintained by developers at Morpht . For more information on the company and our offerings, see morpht.com .\n\n Back to top",
   "maintenance_status": "Actively maintained",

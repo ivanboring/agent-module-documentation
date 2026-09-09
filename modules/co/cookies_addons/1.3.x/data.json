@@ -1,7 +1,7 @@
 {
   "name": "Cookies Addons",
   "data_name": "cookies_addons",
-  "description": "Additional features for the COOKiES consent-management module (consent-gated embeds, blocks, fields).",
+  "description": "Add-on submodules for the COOKiES consent framework that gate blocks, paragraphs, views, entity fields and text-format iframe/YouTube embeds behind cookie consent, loading them on consent via AJAX.",
   "version": "1.3.x",
   "package": "COOKiES",
   "composer_namespace": "drupal/cookies_addons",
@@ -10,7 +10,7 @@
     "cookies:cookies"
   ],
   "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/cookies_addons",
@@ -31,19 +31,19 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Privacy and compliance"
+    "Security"
   ],
   "subcategories": [
-    "Cookie / consent management"
+    "Cookie consent / GDPR"
   ],
   "keywords": [
     "cookies",
     "consent",
     "gdpr",
-    "embeds",
-    "privacy"
+    "eprivacy",
+    "embeds"
   ],
-  "project_description": "Cookies Addons extends the COOKiES Consent Management module. It blocks parts of your site that load third-party content or set cookies, such as blocks, paragraphs, views, fields and embedded media, until the visitor has given consent for the matching service.\n\n Instead of the blocked content, visitors see a placeholder with a consent overlay. Once consent is given, the content is loaded. This helps you meet the GDPR and ePrivacy requirement by loading third-party content which processes personal data only after consent. As with the COOKiES module itself, no liability is assumed regarding legal compliance.\n\n Submodules \n \n Cookies Addons Blocks - Blocks Drupal blocks by block ID and loads them on consent. Useful for blocks that embed external services, for example maps or social feeds.\n\nConfigure at: /admin/config/system/cookies-addons-blocks \n \n\n Cookies Addons Chatbot - Blocks the chatbot of the AI module until consent is given. Requires the AI Chatbot submodule. Available from 2.0.0-beta1.\n\nConfigure at: /admin/config/system/cookies-addons-chatbot \n \n\n Cookies Addons Embed Iframe - Provides a plugin for text formats that blocks iframes in formatted text until consent is given.\n\n Enable the plugin in the settings of your text format. \n \n\n Cookies Addons Embed Video - Provides a plugin for text formats that blocks video iframes such as YouTube and Vimeo.\n\n Enable the plugin in the settings of your text format. \n \n\n Cookies Addons Fields - Blocks individual fields of any entity until consent is given, for example a map field or an external widget.\n\n Configure per field in the display settings of the entity. \n \n\n Cookies Addons Paragraphs - Blocks Drupal paragraphs by paragraph ID and loads them on consent.\n\n Configure at: /admin/config/system/cookies-addons-paragraphs \n \n\n Cookies Addons Social Media - Blocks social media embeds (currently Facebook, Instagram, LinkedIn, TikTok and X) in formatted text until the matching service has been consented to. You can configure it in your text format. Also make sure to configure the services for the social networks in the module settings. \n \n\n Cookies Addons Views - Blocks views by view ID and display ID until consent is given.\n\n Configure at: /admin/config/system/cookies-addons-views \n \n \n\n Requirements \n The COOKiES module is required. The 2.0.x branch of Cookies Addons requires COOKiES 2.0.\n\n Back to top",
+  "project_description": "Cookies Addons extends the COOKiES Consent Management module. It blocks parts of your site that load third-party content or set cookies, such as blocks, paragraphs, views, fields and embedded media, until the visitor has given consent for the matching service.\n\n Instead of the blocked content, visitors see a placeholder with a consent overlay. Once consent is given, the content is loaded. This helps you meet the GDPR and ePrivacy requirement by loading third-party content which processes personal data only after consent. As with the COOKiES module itself, no liability is assumed regarding legal compliance.\n\n Submodules \n \n Cookies Addons Blocks - Blocks Drupal blocks by block ID and loads them on consent. Useful for blocks that embed external services, for example maps or social feeds.\n\nConfigure at: /admin/config/system/cookies-addons-blocks \n \n\n Cookies Addons Embed Iframe - Provides a plugin for text formats that blocks iframes in formatted text until consent is given.\n\n Enable the plugin in the settings of your text format. \n \n\n Cookies Addons Embed Video - Provides a plugin for text formats that blocks video iframes such as YouTube.\n\n Enable the plugin in the settings of your text format. \n \n\n Cookies Addons Fields - Blocks individual fields of any entity until consent is given, for example a map field or an external widget.\n\n Configure per field in the display settings of the entity. \n \n\n Cookies Addons Paragraphs - Blocks Drupal paragraphs by paragraph ID and loads them on consent.\n\n Configure at: /admin/config/system/cookies-addons-paragraphs \n \n\n Cookies Addons Views - Blocks views by view ID and display ID until consent is given.\n\n Configure at: /admin/config/system/cookies-addons-views \n \n \n\n Requirements \n The COOKiES module is required.\n\n Back to top",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

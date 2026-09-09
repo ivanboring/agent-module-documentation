@@ -1,7 +1,7 @@
 {
   "name": "Color Scheme Switcher",
   "data_name": "cosesi",
-  "description": "A frontend API to switch between Light/Auto/Dark color schemes.",
+  "description": "Provides a frontend API to switch between Light/Auto/Dark color schemes.",
   "version": "1.0.x",
   "package": "cosesi",
   "composer_namespace": "drupal/cosesi",
@@ -9,25 +9,28 @@
   "dependent_modules": [
     "drupal:config"
   ],
-  "configure": null,
+  "configure": "cosesi.theme_settings.edit",
   "core_version_requirement": "^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/cosesi",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.4",
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drush/drush": "^13.7"
+  },
   "submodules": [],
-  "provides_permissions": true,
-  "provides_drush_commands": false,
+  "provides_permissions": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
     "Theming"
   ],
   "subcategories": [
-    "Color schemes"
+    "Color schemes",
+    "CSS classes / body classes"
   ],
   "keywords": [
     "dark mode",
@@ -36,7 +39,7 @@
     "auto",
     "theming"
   ],
-  "project_description": "The Color Scheme Switcher module provides a frontend API and a ready-made block to let visitors switch between Light , System (Auto) , and Dark color schemes on a Drupal 11 site — without a page reload.\n\n Features \n \n Injects an inline \n\n tag early in to set the CSS color-scheme property on :root , minimising flash-of-unstyled-content. \n Adds a configurable CSS class to the element (e.g. color-scheme-dark ) so themes can target the active scheme with plain CSS selectors. \n Persists the visitor's choice in localStorage so it survives page loads and hard refreshes. \n Optionally hides elements with a \"hide class\" (e.g. color-scheme-only-dark ) when the opposite scheme is active — useful for scheme-specific images or banners. \n Ships a placeable block with two widget types: Buttons (one per state) and Dropdown . \n All CSS variable names and HTML classes are configurable per active frontend theme. \n \n\nUse this module when you want visitors to manually override the system color-scheme\npreference and the active theme applies styles via the CSS color-scheme \nproperty or HTML classes on .\n\n Post-Installation \n \n Go to Administration → Configuration → Color Scheme Switcher ( /admin/config/cosesi/theme-settings ) and configure the CSS variable name and the HTML classes for each active frontend theme. \n Go to Administration → Structure → Block layout and place the Color Scheme Switcher block in a region of the active theme. In the block settings choose the widget type (Buttons or Dropdown) and the per-state labels and icon sizes. \n Export the new cosesi.theme_settings config with the rest of the site config. \n \n\n Additional Requirements \n \n PHP >=8.4 \n Drupal ^11.3 \n A frontend theme that applies styles based on the color-scheme CSS property or the HTML classes configured in the module settings. \n \n\n Recommended modules/libraries \nNo additional modules are required.\n\n Similar projects \n \n Dark Mode Switch — provides a toggle for dark/light mode but does not expose a three-state (Light / System / Dark) API or per-theme CSS class configuration. \n \n\n Known issues and limitations \n \n Batch process pages: The switcher block is not rendered on batch process pages (e.g. /batch ) by default, because Drupal's batch system uses a minimal page that does not invoke the normal block-placement layer. \n [#3500895] \n [#3402885] \n Back to top",
+  "project_description": "The Color Scheme Switcher (cosesi) module provides a frontend API and a placeable block to let visitors switch between Light, System (Auto), and Dark color schemes on a Drupal 11 site without a page reload. It injects an inline <style> and <script> early in <head> to set the CSS color-scheme property on :root and toggle a configurable CSS class on the <html> element (e.g. color-scheme-dark), minimising flash-of-unstyled-content. The visitor's choice is persisted in localStorage. Optionally, elements carrying a configurable \"hide class\" (e.g. color-scheme-only-dark) are hidden when the opposite scheme is active. The switcher block ships two widget types: Buttons (one button per state) and Dropdown (a popover). CSS variable name and the HTML classes for each state are configurable per active frontend theme via an admin form at /admin/appearance/cosesi-theme-settings (guarded by the 'administer themes' permission). Requires PHP >= 8.4 and Drupal core ^11.3; depends on the core config module. Not covered by the drupal.org security advisory policy (1.0.0-alpha1).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

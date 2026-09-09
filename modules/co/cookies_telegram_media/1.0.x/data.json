@@ -1,14 +1,16 @@
 {
   "name": "COOKiES Telegram Media",
   "data_name": "cookies_telegram_media",
-  "description": "Manage Telegram media items inside COOKiES consent management.",
+  "description": "Gate Telegram media embeds (from telegram_media_type) behind COOKiES consent management.",
   "version": "1.0.x",
   "package": "COOKiES",
   "composer_namespace": "drupal/cookies_telegram_media",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/telegram_media_type": "^1.0"
+  },
   "dependent_modules": [
-    "cookies:cookies",
-    "telegram_media_type:telegram_media_type"
+    "cookies",
+    "telegram_media_type"
   ],
   "configure": null,
   "core_version_requirement": "^9.3 || ^10 || ^11",
@@ -20,9 +22,9 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Security"
@@ -37,7 +39,7 @@
     "media",
     "gdpr"
   ],
-  "project_description": "Cookie consent integration for https://www.drupal.org/project/cookies module for the https://www.drupal.org/project/telegram_media_type module.",
+  "project_description": "A COOKiES bridge submodule that registers a 'telegram' consent service and neutralizes Telegram media embeds provided by the telegram_media_type module until the visitor consents via the COOKiES banner, then re-activates them client-side. Contains no PHP classes, routes, permissions, or config schema of its own; it wires three hooks and one JS behavior into the COOKiES knock-out mechanism.",
   "maintenance_status": "Seeking new maintainer",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

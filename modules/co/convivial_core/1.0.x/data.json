@@ -1,14 +1,14 @@
 {
   "name": "Convivial Core",
   "data_name": "convivial_core",
-  "description": "Shared functionality for the Convivial distribution/toolkit.",
+  "description": "Shared functionality for the Convivial profile.",
   "version": "1.0.x",
   "package": "Convivial",
   "composer_namespace": "drupal/convivial_core",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^9.5||^10||^11||^12",
+  "core_version_requirement": "^9.5 || ^10 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/convivial_core",
@@ -19,22 +19,23 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
   ],
   "subcategories": [
-    "Frameworks"
+    "Admin toolbar / navigation"
   ],
   "keywords": [
     "convivial",
     "core",
     "shared",
     "distribution",
-    "framework"
+    "base module",
+    "morpht"
   ],
-  "project_description": "Convivial Core provides shared base functionality and APIs for the Convivial CXP . You probably won't have a reason to install it unless another module requires this one.\n\n Convivial Components \n \n Convivial Enricher \n Convivial Profiler \n \n Introduction \n Shared functionality for Convivial CXP.\n\n Requirements \n This module requires no modules outside of Drupal core.\n\n Installation \n The module can be installed via the standard Drupal installation process. \n\n Configuration \n Go to /admin/config/convivial and set all the configuration options.\n\n Maintainers \n \n\nThis module is maintained by developers at Morpht . For more information on the company and our offerings, see morpht.com .\n\n Back to top",
+  "project_description": "Convivial Core provides shared base functionality for the Convivial CXP distribution/toolkit by Morpht. On disk it is a very small module: it registers a single admin section landing page at /admin/config/convivial (the 'Convivial CXP' page rendered by Drupal core's SystemController), a matching admin menu link under Configuration, and one access permission ('access convivial administration pages'). It ships no services, no config schema, no controllers of its own, and no external service integrations. It exists so that other Convivial modules have a common admin home and permission to hang their settings on; you normally install it only because another Convivial module depends on it. Maintained by developers at Morpht (morpht.com).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

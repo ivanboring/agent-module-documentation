@@ -1,14 +1,14 @@
 {
   "name": "Cookie Block",
   "data_name": "cookie_block",
-  "description": "Adds a block-visibility condition based on the presence/value of a cookie.",
+  "description": "Adds a block-visibility condition based on the presence/value of a browser cookie.",
   "version": "2.0.x",
-  "package": null,
+  "package": "Other",
   "composer_namespace": "drupal/cookie_block",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^8||^9||^10||^11",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/cookie_block",
@@ -19,13 +19,13 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"
   ],
   "subcategories": [
-    "Block visibility / conditions"
+    "Visibility conditions"
   ],
   "keywords": [
     "cookie",
@@ -34,7 +34,7 @@
     "condition",
     "site building"
   ],
-  "project_description": "Functionality: This module can be useful when we need to set up a block, based on a cookie value. This module will automatically create a plugin-based condition in block form.",
+  "project_description": "Cookie Block provides a single core Condition plugin (id \"cookie\") that lets a block be shown or hidden based on whether a named browser cookie is present and matches a configured value. It ships one class, no routes, no permissions, no config schema, and no dependencies beyond Drupal core.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

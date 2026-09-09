@@ -1,16 +1,18 @@
 {
   "name": "Convivial Enricher",
   "data_name": "convivial_enricher",
-  "description": "enriches user profiles with data from external sources.",
+  "description": "Enrich user profiles with data from external sources.",
   "version": "1.0.x",
   "package": "Convivial",
   "composer_namespace": "drupal/convivial_enricher",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/convivial_core": "^1.0"
+  },
   "dependent_modules": [
     "convivial_core:convivial_core"
   ],
-  "configure": null,
-  "core_version_requirement": "^10.2||^11",
+  "configure": "entity.enricher.collection",
+  "core_version_requirement": "^10.2 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/convivial_enricher",
@@ -18,11 +20,17 @@
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [],
+  "submodules": [
+    "convivial_enricher_active_campaign",
+    "convivial_enricher_mailchimp",
+    "convivial_enricher_recombee"
+  ],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "EnricherDatasource"
+  ],
   "categories": [
     "Integrations"
   ],
@@ -32,11 +40,15 @@
   "keywords": [
     "convivial",
     "enrich",
-    "profiles",
+    "progressive profiling",
     "external data",
+    "activecampaign",
+    "mailchimp",
+    "recombee",
+    "cookie",
     "pii"
   ],
-  "project_description": "The Enricher module provides automatic progressive profiling by enabling the enrichment of the user's profile from varied backend data sources.\n\n Good marketing hinges on communicating the usefulness of your product. That means knowing who your customers are and how they'll use your product.\n\n With profile enrichment from the enricher module, you can increase the visibility of your audience and differentiate your customers. your customers to differentiate them. By knowing who your customers are, you are empowered to target your marketing approaches by adapting to how they want to use your product.\n\n Let's take an active campaign email campaign as an example:\n\n You send out an email to your mailing list which includes a call-to-action link and a unique identifier for the active campaign user and a landing page as slugs or parameters to the URL.\n\n When a customer clicks the link in the email, the enricher module, along with the active campaign Datasource plugin reads the unique identifier and reaches back into the active campaign to retrieve more user data and stores this in a temporary cookie for retrieval by profile tools such as the basil module.\n\n Requirements \n \n Convivial Core \n \n Installation \n \n Install as you would normally install a contributed Drupal module. Visit https://www.drupal.org/node/1897420 for further information. \n The Enricher ActiveCampaign submodule is packaged with the enricher module. You can enable this to allow the configuration of enrichment from an active campaign. \n There is a dummy data source plugin available for your testing purposes. To query real data you will need to enable and configure the Enricher Active campaign module or you can write a new plugin of your own. \n \n Configuration \n \n Configure the user permissions in Administration » People » Permissions : \n Administer enrichers Users with this permission will see the web services > enrichers configuration list page. From here they can add, configure, delete, enable, and disabled enrichers. Warning: Give this permission to trusted users only; this is the most powerful permission. \n \n Troubleshooting \n \n If you are not receiving data back from your user. Check the recent log messages report for exception messages. \n If you are stuck in a redirect loop. The issue appears in using this module together with the redirect module. See the redirect module issue https://www.drupal.org/project/redirect/issues/3037259 \n \n Maintainers \n \n\nThis module is maintained by developers at Morpht . For more information on the company and our offerings, see morpht.com .\n\n Back to top",
+  "project_description": "The Enricher module provides automatic progressive profiling by enabling enrichment of a visitor's profile from varied backend datasources. It defines an 'enricher' config entity that publishes a public endpoint path; when a visitor arrives on that path carrying a token (for example the unique identifier embedded in an email campaign link), the module hands the token to each configured datasource plugin, which reaches back into an external service (ActiveCampaign, Mailchimp, Recombee, or a custom plugin), retrieves data for that contact, and writes the allow-listed values into browser cookies (prefixed 'convivial_enricher_') before redirecting the visitor to the requested return-to URL. Downstream profile tools such as Basil then read those cookies client-side to personalise the experience. Datasource plugins are pluggable via the EnricherDatasource plugin type; a Dummy datasource ships for testing and three integration submodules (ActiveCampaign, Mailchimp, Recombee) are packaged with the project. Maintained by Morpht.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

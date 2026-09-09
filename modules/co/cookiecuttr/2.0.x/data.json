@@ -1,7 +1,7 @@
 {
   "name": "CookieCuttr",
   "data_name": "cookiecuttr",
-  "description": "Displays an EU cookie-policy consent notice using the CookieCuttr jQuery library.",
+  "description": "Adds an EU cookie-policy consent notice/banner to every page by wiring Drupal config into the CookieCuttr jQuery plugin.",
   "version": "2.0.x",
   "package": null,
   "composer_namespace": "drupal/cookiecuttr",
@@ -16,7 +16,10 @@
   "project_url": "https://www.drupal.org/project/cookiecuttr",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "jquery.cookieCuttr (bundled jQuery CookieCuttr plugin, js/jquery.cookiecuttr.js)",
+    "js-cookie (provided by the js_cookie module)"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,

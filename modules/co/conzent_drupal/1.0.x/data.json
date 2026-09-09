@@ -1,7 +1,7 @@
 {
   "name": "Conzent CMP",
   "data_name": "conzent_drupal",
-  "description": "GDPR/CCPA/ePrivacy cookie-consent banner (IAB TCF v2.2) with optional GTM integration.",
+  "description": "GDPR/CCPA/ePrivacy cookie-consent banner (IAB TCF v2.2) that injects the Conzent CMP script, with optional Google Tag Manager integration.",
   "version": "1.0.x",
   "package": "Conzent",
   "composer_namespace": "drupal/conzent_drupal",
@@ -37,7 +37,7 @@
     "gtm",
     "privacy"
   ],
-  "project_description": "GDPR, CCPA & ePrivacy compliant cookie consent banner for Drupal. IAB TCF v2.2 and Google CMP Certified (CMP #446).\n\n Features:\n\n- Google Consent Mode v2\n\n- Google Tag Manager integration\n\n- Automatic cookie blocking\n\n- 30+ language auto-translation\n\n- Preference center with revisit consent\n\n- Supports both Conzent Cloud and self-hosted (OCI) deployments\n\n Configure at Administration > Configuration > System > Conzent CMP.\n\n Requires Drupal 10 or 11, PHP 8.1+.",
+  "project_description": "GDPR, CCPA & ePrivacy compliant cookie consent banner for Drupal. IAB TCF v2.2 and Google CMP Certified.\n\n Features:\n\n- Injects the Conzent consent banner script into the page head once a website key is verified\n\n- Optional Google Tag Manager container injection with a configurable data-layer name\n\n- Supports both Conzent Cloud and self-hosted (OCI) server URLs\n\n- Single admin settings form; no content entities, plugins, or public endpoints\n\n Configure at Administration > Configuration > System > Conzent CMP.\n\n Requires Drupal 10 or 11, PHP 8.1+.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
