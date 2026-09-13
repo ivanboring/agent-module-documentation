@@ -1,6 +1,8 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Domain Early Negotiation (domain_early_negotiation) 3.0.x
 
+![Domain Early Negotiation settings form (/admin/config/domain/early-negotiation)](../../../../../../../../screenshots/domain_early_negotiation/3.0.x/settings.png)
+
 Runs Domain's active-domain negotiation as an early HTTP middleware so domain_config
 overrides are resolved before other middlewares (and, by default, the page cache) read config.
 Part of **domain_extras**; depends on **domain**.

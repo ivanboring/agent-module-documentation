@@ -1,5 +1,7 @@
 # Domain Alias Extras (domain_alias_extras) 3.0.x
 
+![Domain Alias Extras settings form (/admin/config/domain/domain_alias_extras)](../../../../../../../../screenshots/domain_alias_extras/3.0.x/settings.png)
+
 Utility add-on for Domain Alias: an admin form to edit the named environments (e.g. local, staging, production) used when defining domain aliases.
 
 ## Facts

@@ -1,5 +1,7 @@
 # Domain Configuration Entity UI (domain_config_entity_ui) 3.0.x
 
+![Domain Config Entity Types settings form (/admin/config/domain/config-entity-ui)](../../../../../../../../screenshots/domain_config_entity_ui/3.0.x/settings.png)
+
 Extends domain_config_ui to config **entity** admin pages so list builders and edit forms honor the active domain's per-domain overrides. **Lifecycle: experimental** (`lifecycle: experimental` in info.yml; issue [#3588091](https://www.drupal.org/project/domain_extras/issues/3588091)).
 
 ## Facts
