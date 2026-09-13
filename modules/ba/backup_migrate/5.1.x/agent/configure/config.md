@@ -1,5 +1,7 @@
 # Configuration
 
+![Backup and Migrate — Backup tab](../../../../../../../screenshots/backup_migrate/5.1.x/backup.png)
+
 UI at `/admin/config/development/backup_migrate`. Backups are driven by four config entity
 types (schema `config/schema/backup_migrate.schema.yml`), exportable like any config:
 

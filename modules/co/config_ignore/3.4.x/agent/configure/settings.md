@@ -1,5 +1,7 @@
 # Configure — ignore patterns & modes
 
+![Config Ignore settings form](../../../../../../../screenshots/config_ignore/3.4.x/settings.png)
+
 UI: `/admin/config/development/configuration/ignore` (route `config_ignore.settings`, permission
 `import configuration`). Config object: `config_ignore.settings` (schema
 `config/schema/config_ignore.schema.yml`). Two keys: `mode` (`simple`|`intermediate`|`advanced`)

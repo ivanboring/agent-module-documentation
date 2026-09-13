@@ -1,5 +1,7 @@
 # Configure SMTP
 
+![SMTP settings form](../../../../../../../screenshots/smtp/1.4.x/settings.png)
+
 Settings form at `/admin/config/system/smtp` (route `smtp.config`, permission
 `administer smtp module`). Config object `smtp.settings`:
 

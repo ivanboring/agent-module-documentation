@@ -1,5 +1,7 @@
 # Configure reCAPTCHA
 
+![reCAPTCHA settings form](../../../../../../../screenshots/recaptcha/3.4.x/settings.png)
+
 UI: `/admin/config/people/captcha/recaptcha` (route `recaptcha.admin_settings_form`, form
 `ReCaptchaAdminSettingsForm`). Config object: `recaptcha.settings`.
 

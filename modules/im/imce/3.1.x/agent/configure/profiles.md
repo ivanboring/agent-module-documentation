@@ -1,5 +1,7 @@
 # Configure Imce (profiles, settings, folders)
 
+![Imce File Manager admin page](../../../../../../../screenshots/imce/3.1.x/profiles.png)
+
 Manage at `/admin/config/media/imce` (route `imce.admin`). Permission: `administer imce`.
 Two config objects:
 

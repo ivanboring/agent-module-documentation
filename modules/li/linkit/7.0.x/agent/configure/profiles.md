@@ -1,5 +1,7 @@
 # Configure Linkit profiles
 
+![Linkit profiles list](../../../../../../../screenshots/linkit/7.0.x/profiles.png)
+
 Profiles are config entities (`linkit.linkit_profile.*`). A default profile ships in
 `config/optional/linkit.linkit_profile.default.yml`.
 
