@@ -4893,3 +4893,17 @@ minifyjs
 # aria_current 2.0.0: info.yml declares lifecycle: obsolete (aria-current handling is in core
 # now), so Drupal refuses to enable it ("module is obsolete") — not documentable (wave u4).
 aria_current
+# content_snapshot 4.0.0-beta1: PasswordFieldItemNormalizer::normalize() declares a return type
+# (ArrayObject|array|string|int|float|bool|null) incompatible with the parent
+# serialization ComplexDataNormalizer::normalize(): array — PHP fatals on every request once the
+# module is on disk, taking down drush/site bootstrap (wave u7, 2026-09-13).
+content_snapshot
+# migrate_wizard 3.0.11: MWDrushToolsCommands::create() return type is incompatible with the parent
+# migrate_tools MigrateToolsCommands::create(): static — PHP fatals drush bootstrap on every call once
+# the module is on disk (its drush command service loads on boot). Site-breaker (wave u7, 2026-09-13).
+migrate_wizard
+# flag_limits 1.0.1: FlagLimitsService swaps the core `flag` service but its __construct() signature
+# no longer matches core's flag service definition on D11.4 — the container passes EventDispatcher as
+# arg #1 (AccountInterface expected), a TypeError that fatals container rebuild (drush cr) and the site
+# once the module is enabled. Site-breaker (wave u7, 2026-09-13). Docs were source-accurate but pulled.
+flag_limits
