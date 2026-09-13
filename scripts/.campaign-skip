@@ -4885,3 +4885,8 @@ zurb_foundation_6_paragraphs
 zurb_foundation_companion
 zurb_twentytwenty
 cryptolog	# 2.2.x superseded stub; installed+documented at 2.3.x (Wave 149)
+# minifyjs 3.0.3: MinifyJs service constructor arg #7 ($mime_type_guesser) type-hints the
+# ProxyClass MimeTypeGuesser but core passes the real Drupal\Core\File\MimeType\MimeTypeGuesser,
+# a TypeError that fatals container/drush bootstrap on every call (its drush command service
+# instantiates on boot). Mere presence on disk breaks the site on D11.4 (wave u1, 2026-09-13).
+minifyjs
