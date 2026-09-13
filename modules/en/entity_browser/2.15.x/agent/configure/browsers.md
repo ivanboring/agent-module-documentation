@@ -1,5 +1,7 @@
 # Configure an entity browser
 
+![Entity Browsers list](../../../../../../../screenshots/entity_browser/2.15.x/browsers.png)
+
 A browser is the config entity `entity_browser.browser.{name}`. Manage at
 `/admin/config/content/entity_browser` (route `entity.entity_browser.collection`,
 permission `administer entity browsers`). The edit form is a wizard: general →

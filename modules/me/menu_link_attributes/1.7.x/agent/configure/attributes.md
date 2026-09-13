@@ -1,5 +1,7 @@
 # Configure available attributes
 
+![Menu link attributes config form](../../../../../../../screenshots/menu_link_attributes/1.7.x/attributes.png)
+
 Single config object `menu_link_attributes.config` (key `attributes`). Edit at
 `/admin/config/menu_link_attributes/config` (route `menu_link_attributes.config`, task tab
 "Available attributes" under Structure → Menus). Permission: `administer menu link attributes`.

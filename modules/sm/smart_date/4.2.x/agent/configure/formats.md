@@ -1,5 +1,7 @@
 # Field type, widgets, formatters & date formats
 
+![Smart date formats list](../../../../../../../screenshots/smart_date/4.2.x/formats.png)
+
 ## Field type
 `smartdate` (`Plugin/Field/FieldType/SmartDateItem`) stores per value: `value` (start
 timestamp), `end_value` (end timestamp), `duration` (minutes), `rrule`/`rrule_index` (when
