@@ -1,8 +1,13 @@
 # Display settings
 
+Admin Toolbar turns core's classic Toolbar into fully expandable drop-down menus — hovering a
+top-level item reveals the whole admin tree without a page load (here **Structure** expanded):
+![Admin Toolbar drop-down menu](../../../../../../../screenshots/admin_toolbar/3.6.x/toolbar-dropdown.png)
+
 Config object `admin_toolbar.settings` (schema `config/schema/admin_toolbar.schema.yml`).
 UI at `/admin/config/user-interface/admin-toolbar` (route `admin_toolbar.settings`, form
-`AdminToolbarSettingsForm`, permission `administer site configuration`).
+`AdminToolbarSettingsForm`, permission `administer site configuration`):
+![Admin Toolbar settings form](../../../../../../../screenshots/admin_toolbar/3.6.x/settings-form.png)
 
 | Key | Type | Default | Meaning |
 |---|---|---|---|

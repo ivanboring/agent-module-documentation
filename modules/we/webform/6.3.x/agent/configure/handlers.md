@@ -4,6 +4,9 @@
 per form at `/admin/structure/webform/manage/<id>/handlers`. Stored under the webform's
 `handlers:` config key.
 
+The Handlers tab (Contact form shows the default email handler); "Add handler" lists the plugins below:
+![Webform handlers](../../../../../../../screenshots/webform/6.3.x/handlers.png)
+
 ## Built-in handlers (`src/Plugin/WebformHandler/`)
 - **EmailWebformHandler** (`email`) — send notification/confirmation email. Configure To/From/
   Reply-to (tokens allowed, e.g. `[webform_submission:values:email:raw]`), subject, body

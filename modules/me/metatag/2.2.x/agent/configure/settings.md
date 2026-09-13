@@ -15,6 +15,14 @@ Two layers: **defaults** (config entities) and **per-entity overrides** (a field
 - Read/write with drush: `drush config:get metatag.metatag_defaults.node`,
   `drush config:set metatag.metatag_defaults.global tags.title '[current-page:title] | [site:name]' -y`.
 
+The defaults collection at `/admin/config/search/metatag` — each row is a config entity in the
+inheritance chain, Edit/Revert/Delete under Operations:
+![Metatag defaults collection](../../../../../../../screenshots/metatag/2.2.x/defaults-collection.png)
+
+Editing a default (here **Global**) shows the grouped tag fields (Basic tags, Open Graph, etc.);
+every value field accepts tokens via the "Browse available tokens" link:
+![Edit the Global metatag default](../../../../../../../screenshots/metatag/2.2.x/global-defaults-edit.png)
+
 ## Global settings
 Form at `/admin/config/search/metatag/settings` (route `metatag.settings`), stored in
 `metatag.settings`: control which entity types expose the Metatag field, tag output on

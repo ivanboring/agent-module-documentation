@@ -5,6 +5,12 @@ A **Paragraphs type** is a config entity (`paragraphs.paragraphs_type.<id>`, cla
 Manage at **Admin → Structure → Paragraphs types** (`/admin/structure/paragraphs_type`,
 route `entity.paragraphs_type.collection`, permission `administer paragraphs types`).
 
+![Paragraphs types collection](../../../../../../../screenshots/paragraphs/1.21.x/types-list.png)
+
+The add-type form (`/admin/structure/paragraphs_type/add`) — label, machine id, description,
+optional icon, and the behavior-plugin checkboxes:
+![Add a paragraphs type](../../../../../../../screenshots/paragraphs/1.21.x/type-add-form.png)
+
 ## Create and field a type
 1. Add a type (`/admin/structure/paragraphs_type/add`): label, machine id, optional
    description and icon (`icon_uuid` / `icon_default` stored on the config entity).

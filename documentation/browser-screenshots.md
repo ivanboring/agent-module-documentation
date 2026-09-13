@@ -70,8 +70,10 @@ agent-browser screenshot --full "$S/<shot>.png"   # path MUST be absolute
 Some fields appear only after interaction (e.g. Pathauto's token browser shows after
 picking a Pattern type — `agent-browser select @eN "Content"` then re-snapshot). Screenshots
 live at `<project-root>/screenshots/{name}/{version}/` (a sibling of the repo, not tracked
-by git). Reference them from a solution doc — which sits six levels below the project root
-at `modules/{name}/{version}/agent/{type}/` — with
-`![alt](../../../../../../screenshots/<name>/<version>/<shot>.png)`.
+by git). Reference them from a solution doc — which sits **seven** levels below the project
+root at `modules/{ab}/{name}/{version}/agent/{type}/` (note the two-letter `{ab}` shard) —
+with `![alt](../../../../../../../screenshots/<name>/<version>/<shot>.png)` (seven `../`).
+See [file-formats.md](file-formats.md#screenshotsnameversion-optional-outside-the-repo) for the
+canonical rule; earlier docs used six `../`, which does not resolve under the sharded layout.
 
 Close when done: `agent-browser close --all`.

@@ -9,6 +9,10 @@ Revisions field. Two widgets ship:
 - **`entity_reference_paragraphs`** (Legacy/Classic) — stable but frozen, limited features.
   Class `InlineParagraphsWidget`.
 
+The stable widget on a node form (`edit_mode: open`) — a nested paragraph subform with
+Collapse/drag handles and the "Add <type>" button below:
+![Paragraphs widget on a node form](../../../../../../../screenshots/paragraphs/1.21.x/widget-in-node-form.png)
+
 ## Stable widget settings (`field.widget.settings.paragraphs`)
 Defaults from `ParagraphsWidget::defaultSettings()`:
 

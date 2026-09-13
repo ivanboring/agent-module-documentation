@@ -12,6 +12,17 @@ stored as a nested YAML tree under the `elements` key, each keyed by machine nam
 - **Settings** tab: form open/close dates, submission limits, confirmation message/URL, draft
   saving, wizard/pages behavior, CSS/JS assets, third-party settings.
 
+The webform collection at `/admin/structure/webform` (here with the example forms installed):
+![Webforms list](../../../../../../../screenshots/webform/6.3.x/webform-list.png)
+
+The **Build → Elements** tab (webform_ui): each row is an element with its Title, machine Key,
+`#type`, Required flag, and drag handle; Add element / Add page / Add layout above, Save/Reset below:
+![Webform build elements](../../../../../../../screenshots/webform/6.3.x/build-elements.png)
+
+The **Settings** tab (General shown) — title, description, page/path, and the categories of
+behavior listed above down the form:
+![Webform form settings](../../../../../../../screenshots/webform/6.3.x/form-settings.png)
+
 ## Elements (YAML)
 ```yaml
 elements:

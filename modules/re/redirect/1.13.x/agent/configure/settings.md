@@ -16,10 +16,21 @@ Routes (all `/admin/config/search/redirect/...`):
 A redirect record holds a **source path** (+ optional query), a **destination URL**, an
 **HTTP status code**, and a language.
 
+The list at `/admin/config/search/redirect` (empty on a fresh install) with the filter and
+"Add redirect" action:
+![Redirect list](../../../../../../../screenshots/redirect/1.13.x/redirect-list.png)
+
+The add form (`/add`): **Path** (source, relative to the site root), **To** (destination — a
+content autocomplete, internal path, external URL, or `<front>`/`<nolink>`/`<button>`),
+**Enabled**, and **Redirect status** (defaults to 301):
+![Add URL redirect](../../../../../../../screenshots/redirect/1.13.x/redirect-add-form.png)
+
 ## Global settings — `redirect.settings`
 
 Edit at `/admin/config/search/redirect/settings` or via `drush cset redirect.settings <key>`.
 Defaults shown:
+
+![Redirect settings form](../../../../../../../screenshots/redirect/1.13.x/redirect-settings.png)
 
 | Key | Default | Meaning |
 |---|---|---|
