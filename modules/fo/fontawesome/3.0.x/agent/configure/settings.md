@@ -1,5 +1,7 @@
 # Configure Font Awesome loading
 
+![Font Awesome settings form](../../../../../../../screenshots/fontawesome/3.0.x/settings.png)
+
 Settings form `\Drupal\fontawesome\Form\SettingsForm` at `/admin/config/content/fontawesome`
 (route `fontawesome.admin_settings`, permission `administer site configuration`). Stored in
 `fontawesome.settings` (config schema `fontawesome.settings`).

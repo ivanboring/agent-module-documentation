@@ -1,5 +1,7 @@
 # Settings
 
+![Chosen settings form](../../../../../../../screenshots/chosen/5.0.x/settings.png)
+
 Config object `chosen.settings` (schema `config/schema/chosen.schema.yml`). UI at
 `/admin/config/user-interface/chosen` (route `chosen.admin`, form
 `Drupal\chosen\Form\ChosenConfigForm`). Read/write with `drush config:get chosen.settings` /
