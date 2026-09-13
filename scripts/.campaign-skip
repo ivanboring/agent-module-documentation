@@ -4890,3 +4890,6 @@ cryptolog	# 2.2.x superseded stub; installed+documented at 2.3.x (Wave 149)
 # a TypeError that fatals container/drush bootstrap on every call (its drush command service
 # instantiates on boot). Mere presence on disk breaks the site on D11.4 (wave u1, 2026-09-13).
 minifyjs
+# aria_current 2.0.0: info.yml declares lifecycle: obsolete (aria-current handling is in core
+# now), so Drupal refuses to enable it ("module is obsolete") — not documentable (wave u4).
+aria_current
