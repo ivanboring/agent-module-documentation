@@ -1,5 +1,8 @@
 # Configure splits
 
+The split collection at `/admin/config/development/configuration/config-split`:
+![Configuration Split list](../../../../../../../screenshots/config_split/2.0.x/list.png)
+
 Each split is a `config_split` config entity (`config_split.config_split.<id>`, schema
 `config/schema/config_split.schema.yml`). Manage at
 `/admin/config/development/configuration/config-split` (collection route

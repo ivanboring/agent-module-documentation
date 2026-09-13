@@ -1,5 +1,9 @@
 # CAPTCHA points — attach a challenge to a form
 
+The CAPTCHA points list at `/admin/config/people/captcha/captcha-points` (shipped points for the
+login, register, password and personal-contact forms):
+![CAPTCHA points list](../../../../../../../screenshots/captcha/2.0.x/captcha-points.png)
+
 A **CAPTCHA point** maps a form ID to a challenge type. It is a config entity
 `captcha_point` (`src/Entity/CaptchaPoint.php`, schema `captcha.captcha_point.*`),
 exportable as `captcha.captcha_point.<form_id>.yml`.

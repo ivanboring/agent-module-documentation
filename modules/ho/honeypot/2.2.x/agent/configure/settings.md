@@ -1,5 +1,7 @@
 # Configure Honeypot
 
+![Honeypot settings form](../../../../../../../screenshots/honeypot/2.2.x/settings.png)
+
 Settings form at `/admin/config/content/honeypot` (route `honeypot.config`, permission
 `administer honeypot`). Config object `honeypot.settings`:
 

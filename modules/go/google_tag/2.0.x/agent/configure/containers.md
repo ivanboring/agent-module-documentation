@@ -1,5 +1,11 @@
 # Configure tags & containers
 
+The default container form at `/admin/config/services/google-tag` (Measurement/Container IDs):
+![Google Tag default tag settings](../../../../../../../screenshots/google_tag/2.0.x/default-tag-settings.png)
+
+Global settings (`/admin/config/services/google-tag/settings`):
+![Google Tag global settings](../../../../../../../screenshots/google_tag/2.0.x/global-settings.png)
+
 Global settings UI: `/admin/config/services/google-tag/settings` (route
 `google_tag.settings_form`). Container list: `/admin/config/services/google-tag/containers`.
 

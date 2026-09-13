@@ -1,5 +1,7 @@
 # Global settings
 
+![CAPTCHA settings form](../../../../../../../screenshots/captcha/2.0.x/settings.png)
+
 Config object `captcha.settings` (schema `config/schema/captcha.schema.yml`), form
 `Drupal\captcha\Form\CaptchaSettingsForm` at `/admin/config/people/captcha` (route
 `captcha_settings`). Read/write with `drush config:get captcha.settings` /

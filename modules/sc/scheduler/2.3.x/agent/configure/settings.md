@@ -1,5 +1,9 @@
 # Global settings & lightweight cron
 
+The lightweight cron page (`/admin/config/content/scheduler/cron`) — a URL cron can hit to run
+only Scheduler, with its access key:
+![Scheduler lightweight cron](../../../../../../../screenshots/scheduler/2.3.x/cron.png)
+
 Site-wide config lives in `scheduler.settings` (schema `config/schema/scheduler.schema.yml`).
 Form: `\Drupal\scheduler\Form\SchedulerAdminForm` at `/admin/config/content/scheduler`
 (route `scheduler.admin_form`, permission `administer scheduler`).

@@ -1,5 +1,8 @@
 # Enable scheduling per entity type / bundle
 
+The **Scheduler** vertical tab on a content type's edit form (Publishing / Unpublishing toggles):
+![Scheduler per-content-type settings](../../../../../../../screenshots/scheduler/2.3.x/content-type-scheduler.png)
+
 Scheduling is opt-in per bundle. Settings are stored as **third-party settings** under the
 `scheduler` namespace on the bundle config entity (schema type
 `scheduler_third_party_settings`). Enable via the bundle edit form's **Scheduler** vertical tab,

@@ -1,5 +1,11 @@
 # Configure sitemaps, bundles and variants
 
+The status/overview screen at `/admin/config/search/simplesitemap`:
+![Simple XML Sitemap status](../../../../../../../screenshots/simple_sitemap/4.2.x/status.png)
+
+The settings screen (`/settings`):
+![Simple XML Sitemap settings](../../../../../../../screenshots/simple_sitemap/4.2.x/settings.png)
+
 Config UI at `/admin/config/search/simplesitemap` (route `entity.simple_sitemap.collection`).
 Permission: `administer sitemap settings`.
 
