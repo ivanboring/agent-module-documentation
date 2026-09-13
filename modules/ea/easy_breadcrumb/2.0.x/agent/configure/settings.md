@@ -1,5 +1,7 @@
 # Settings
 
+![Easy Breadcrumb settings form](../../../../../../../screenshots/easy_breadcrumb/2.0.x/settings.png)
+
 Config object `easy_breadcrumb.settings` (schema `config/schema/easy_breadcrumb.schema.yml`,
 defaults in `config/install/easy_breadcrumb.settings.yml`, config-translation enabled).
 UI: `/admin/config/user-interface/easy-breadcrumb` (route

@@ -1,5 +1,7 @@
 # Configure queues
 
+![Entityqueues list](../../../../../../../screenshots/entityqueue/1.10.x/queues.png)
+
 Queues are `entity_queue` config entities managed at `/admin/structure/entityqueue`
 (add form route `entity.entity_queue.add_form`). Config schema in
 `config/schema/entityqueue.schema.yml`. Each queue references a target entity type and is

@@ -1,5 +1,7 @@
 # Configure
 
+![Node Revision Delete configuration](../../../../../../../screenshots/node_revision_delete/2.1.x/settings.png)
+
 Main settings form `AdminSettingsForm` at `/admin/config/content/node_revision_delete` (route
 `node_revision_delete.admin_settings`), config object `node_revision_delete.settings` (schema
 `config/schema/node_revision_delete.schema.yml`). Per-content-type plugin config uses schemas

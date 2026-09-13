@@ -1,5 +1,7 @@
 # Configure — content_lock
 
+![Content lock settings form](../../../../../../../screenshots/content_lock/3.0.x/settings.png)
+
 Settings form route `content_lock.settings` at `/admin/config/content/content_lock`
 (**Admin → Configuration → Content authoring → Content lock**), gated by the
 `administer content lock` permission. All settings live in the config object
