@@ -1,5 +1,7 @@
 # Settings
 
+![External Links settings form](../../../../../../../screenshots/extlink/3.0.x/settings.png)
+
 Single config object `extlink.settings` (schema `config/schema/extlink.schema.yml`, defaults
 `config/install/extlink.settings.yml`). UI at `/admin/config/user-interface/extlink`
 (route `extlink_admin.settings`, form `ExtlinkAdminSettingsForm`, permission

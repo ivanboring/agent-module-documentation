@@ -1,5 +1,7 @@
 # Configure Login Security
 
+![Login Security settings form](../../../../../../../screenshots/login_security/2.0.x/login_security.png)
+
 Single settings form; no config entities. Route `login_security.settings` at
 `/admin/config/people/login_security`, gated by core permission `administer site configuration`.
 All values live in the `login_security.settings` config object

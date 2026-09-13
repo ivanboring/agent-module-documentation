@@ -1,5 +1,7 @@
 # Configure link checking
 
+![Link checker settings form](../../../../../../../screenshots/linkchecker/2.1.x/linkchecker.png)
+
 ## Which fields / entities are scanned
 
 Link checker does not scan everything by default — you opt fields in.

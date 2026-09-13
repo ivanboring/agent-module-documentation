@@ -1,5 +1,7 @@
 # Configure autologout
 
+![Automated logout settings form](../../../../../../../screenshots/autologout/2.0.x/settings.png)
+
 One settings form at `/admin/config/people/autologout` (route `autologout.set_admin`,
 permission `administer autologout`). Stored in the `autologout.settings` config object;
 per-role overrides in `autologout.role.<role_id>`.

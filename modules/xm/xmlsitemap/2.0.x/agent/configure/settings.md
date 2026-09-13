@@ -1,5 +1,7 @@
 # Configure XML Sitemap
 
+![XML Sitemap settings](../../../../../../../screenshots/xmlsitemap/2.0.x/settings.png)
+
 Landing page lists the site's sitemaps (config entity `xmlsitemap`, `_entity_list` at
 `/admin/config/search/xmlsitemap`, route `xmlsitemap.admin_search`). Permission:
 `administer xmlsitemap`.
