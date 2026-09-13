@@ -1,6 +1,8 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Global settings & permissions
 
+![Rate settings form](../../../../../../../screenshots/rate/3.3.x/settings.png)
+
 ## Global settings (`rate.settings`)
 
 Form route `rate.admin_settings` at `/admin/config/search/votingapi/rate` (permission

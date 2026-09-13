@@ -1,5 +1,7 @@
 # Configure REST resources
 
+![REST resources list (REST UI)](../../../../../../../screenshots/restui/1.22.x/resources.png)
+
 REST UI adds no config of its own — it edits core's `rest.settings` /
 `rest.resource_config.*` entities through a UI. Permission: `administer rest resources`.
 

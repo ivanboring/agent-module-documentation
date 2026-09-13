@@ -1,5 +1,7 @@
 # Configure Voting API
 
+![Voting API settings form](../../../../../../../screenshots/votingapi/4.0.x/settings.png)
+
 ## Settings form
 
 - **Route:** `votingapi.admin_settings` — `/admin/config/search/votingapi`

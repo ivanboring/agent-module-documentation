@@ -1,6 +1,8 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Configure message
 
+![Message templates list](../../../../../../../screenshots/message/1.8.x/message.png)
+
 ## Two entity types
 
 | Entity type id | Kind | Storage | Purpose |

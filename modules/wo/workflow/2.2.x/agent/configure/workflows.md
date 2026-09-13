@@ -1,6 +1,8 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Create a Workflow, its states, transitions, and attach it to content
 
+![Workflows list](../../../../../../../screenshots/workflow/2.2.x/workflows.png)
+
 ## The three config entities
 
 | Entity type | Config prefix | Holds |
