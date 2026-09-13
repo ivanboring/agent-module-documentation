@@ -1,5 +1,7 @@
 # Block Class — settings
 
+![Block Class settings form](../../../../../../../screenshots/block_class/4.0.x/settings.png)
+
 Form: `Drupal\block_class\Form\BlockClassSettingsForm` at
 `/admin/config/content/block-class/settings` (route `block_class.settings`).
 Config object: `block_class.settings` (schema in `config/schema/block_class.schema.yml`).

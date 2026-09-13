@@ -1,5 +1,7 @@
 # Configure facets
 
+![Facets list](../../../../../../../screenshots/facets/3.0.x/facets.png)
+
 Manage at `/admin/config/search/facets` (route `entity.facets_facet.collection`). Each facet
 is a `facets.facet.*` config entity — exportable and deployable like any config.
 

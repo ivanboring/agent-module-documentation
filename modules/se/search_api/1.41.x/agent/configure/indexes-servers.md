@@ -1,5 +1,7 @@
 # Configure indexes & servers
 
+![Search API overview — servers & indexes](../../../../../../../screenshots/search_api/1.41.x/indexes-servers.png)
+
 Two config entities drive everything (exportable, deployable):
 
 - **Server** (`search_api.server.*`, entity type `search_api_server`) — chooses a **backend**

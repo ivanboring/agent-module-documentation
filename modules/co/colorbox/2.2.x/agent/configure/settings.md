@@ -1,5 +1,7 @@
 # Configure Colorbox
 
+![Colorbox settings form](../../../../../../../screenshots/colorbox/2.2.x/settings.png)
+
 Single config object `colorbox.settings` (schema `config_object`). UI at
 `/admin/config/media/colorbox` (route `colorbox.admin_settings`, form
 `Drupal\colorbox\Form\ColorboxSettingsForm`, permission `administer site configuration`).

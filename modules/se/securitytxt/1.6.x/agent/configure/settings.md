@@ -1,6 +1,8 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # securitytxt — configure
 
+![Security.txt configuration form](../../../../../../../screenshots/securitytxt/1.6.x/settings.png)
+
 Everything lives in the config object **`securitytxt.settings`**. Edit it via the form or
 `drush config:set`. Form: **Admin → Configuration → System → Security.txt**
 (route `securitytxt.configure`, path `/admin/config/system/securitytxt`, permission

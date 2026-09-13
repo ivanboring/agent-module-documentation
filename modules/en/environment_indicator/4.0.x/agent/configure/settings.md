@@ -1,5 +1,7 @@
 # Configure environments
 
+![Environment Indicator settings](../../../../../../../screenshots/environment_indicator/4.0.x/settings.png)
+
 Two layers: global **settings** (form + `settings.php`) and **Environment Switcher**
 config entities.
 
