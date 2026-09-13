@@ -1,6 +1,8 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Settings, forms and where grants live
 
+![Permissions by Term settings form](../../../../../../../screenshots/permissions_by_term/3.1.x/settings.png)
+
 ## Settings (`permissions_by_term.settings`)
 
 Form: `/admin/permissions-by-term/settings` (route `permissions_by_term.settings`, permission

@@ -1,5 +1,7 @@
 # Configure flags
 
+![Flags list](../../../../../../../screenshots/flag/5.0.x/flags.png)
+
 Flags are config entities `flag.flag.*` (schema `config/schema/flag.schema.yml`). Manage at
 `/admin/structure/flags` (route `entity.flag.collection`; add form
 `entity.flag.add_form`). Requires `administer flags`.
