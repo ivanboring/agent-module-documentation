@@ -1,5 +1,7 @@
 # Configure Diff
 
+![Diff general settings form](../../../../../../../screenshots/diff/2.1.x/settings.png)
+
 Two config forms; all state lives in `diff.settings` (config object, schema in
 `config/schema/diff.schema.yml`).
 
