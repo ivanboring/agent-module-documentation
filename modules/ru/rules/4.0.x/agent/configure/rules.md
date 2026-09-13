@@ -1,5 +1,7 @@
 # Configure Rules — reaction rules, components, settings
 
+![Reaction Rules list](../../../../../../../screenshots/rules/4.0.x/rules.png)
+
 All UI lives under **Admin → Configuration → Workflow → Rules** (`/admin/config/workflow/rules`).
 Config entities export/deploy with `drush config:export`.
 

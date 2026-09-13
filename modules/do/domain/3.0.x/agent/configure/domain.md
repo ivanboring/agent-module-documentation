@@ -1,6 +1,8 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Configure Domain
 
+![Domains list](../../../../../../../screenshots/domain/3.0.x/domain.png)
+
 ## Domain records (the `domain` config entity)
 
 Entity type id `domain`, config prefix `domain.record.<id>`. Exported fields:

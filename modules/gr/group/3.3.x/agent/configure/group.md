@@ -1,5 +1,7 @@
 # Configure group types, roles & content
 
+![Group types list](../../../../../../../screenshots/group/3.3.x/group-types.png)
+
 ## Entities you configure
 
 | Config entity | Purpose |

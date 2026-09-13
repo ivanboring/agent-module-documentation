@@ -1,5 +1,7 @@
 # Configure field dependencies
 
+![Conditional fields dependency list](../../../../../../../screenshots/conditional_fields/4.0.x/dependencies.png)
+
 Manage at `/admin/structure/conditional_fields` (route `conditional_fields`) → pick entity type →
 bundle, or use the **Manage Dependencies** local task on a bundle's config page
 (`.../conditionals`, e.g. `/admin/structure/types/manage/{node_type}/conditionals`).
