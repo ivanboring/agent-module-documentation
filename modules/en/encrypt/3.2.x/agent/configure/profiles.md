@@ -1,5 +1,7 @@
 # Encryption profiles
 
+![Encryption profiles list](../../../../../../../screenshots/encrypt/3.2.x/profiles.png)
+
 Config entity `encryption_profile` (config prefix `encrypt.profile.*`), managed at
 `/admin/config/system/encryption/profiles` (route `entity.encryption_profile.collection`,
 permission `administer encrypt`).

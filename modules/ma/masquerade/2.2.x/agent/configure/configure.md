@@ -1,5 +1,7 @@
 # Configure
 
+![Masquerade — "Masquerade as" form](../../../../../../../screenshots/masquerade/2.2.x/masquerade-form.png)
+
 Masquerade has **no dedicated admin settings form**. Configuration is limited to a block
 and one settings flag.
 

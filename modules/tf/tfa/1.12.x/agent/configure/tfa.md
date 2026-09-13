@@ -1,5 +1,7 @@
 # Configure TFA
 
+![TFA settings form](../../../../../../../screenshots/tfa/1.12.x/tfa.png)
+
 ## Prerequisites — encryption profile (required)
 
 TFA stores secrets encrypted and **will not enable** until an encryption profile is selected.

@@ -1,5 +1,7 @@
 # Policies (config entity)
 
+![Password Policies list](../../../../../../../screenshots/password_policy/4.0.x/policies.png)
+
 Policies are `password_policy` config entities (`config_prefix: password_policy`,
 schema `password_policy.password_policy.*`). Managed at
 `/admin/config/security/password-policy` (list, add, edit, delete). Requires

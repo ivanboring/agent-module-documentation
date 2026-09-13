@@ -1,5 +1,7 @@
 # Configure keys
 
+![Keys list](../../../../../../../screenshots/key/1.22.x/keys.png)
+
 A **Key** is a config entity (`key.key.*`, schema `config/schema/key.schema.yml`) built from
 three plugin choices. Manage at `/admin/config/system/keys` (route `entity.key.collection`).
 

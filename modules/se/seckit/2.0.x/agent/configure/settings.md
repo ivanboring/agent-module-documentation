@@ -1,5 +1,7 @@
 # Configure Security Kit
 
+![Security Kit settings form](../../../../../../../screenshots/seckit/2.0.x/settings.png)
+
 One form `SecKitSettingsForm` at `/admin/config/system/seckit` (route `seckit.settings`,
 permission `administer seckit`). Headers are emitted by `SecKitEventSubscriber` on each
 response. Config object: `seckit.settings`. Groups and keys:
