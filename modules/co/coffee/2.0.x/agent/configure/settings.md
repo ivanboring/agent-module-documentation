@@ -1,5 +1,7 @@
 # Configure Coffee
 
+![Coffee configuration form](../../../../../../../screenshots/coffee/2.0.x/settings.png)
+
 Settings form at `/admin/config/user-interface/coffee` (route `coffee.configuration`,
 permission `administer coffee`). Stored in the `coffee.configuration` config object.
 

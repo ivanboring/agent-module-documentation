@@ -1,5 +1,7 @@
 # Configure Focal Point
 
+![Focal Point Scale and Crop image-style effect](../../../../../../../screenshots/focal_point/2.1.x/effect.png)
+
 No dedicated settings page. Configuration is done on **image styles** and the **field widget**.
 
 ## 1. Enable the focal-point widget on an image field

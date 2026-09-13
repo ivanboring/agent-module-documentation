@@ -1,5 +1,7 @@
 # Configure field permissions
 
+![Field visibility and permissions section on a field's settings form](../../../../../../../screenshots/field_permissions/1.5.x/field-settings.png)
+
 Set per field, on the **field settings** form (Manage fields → *field* → edit). Requires
 the `administer field permissions` permission (and normally `administer <entity> fields`).
 

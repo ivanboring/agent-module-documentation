@@ -1,5 +1,7 @@
 # Settings
 
+![Entity Usage settings form](../../../../../../../screenshots/entity_usage/2.1.x/settings.png)
+
 Config object `entity_usage.settings` (schema `config/schema/entity_usage.schema.yml`). UI at
 `/admin/config/entity-usage/settings` (route `entity_usage.settings.form`, form
 `EntityUsageSettingsForm`). Read/write with `drush config:get entity_usage.settings`.

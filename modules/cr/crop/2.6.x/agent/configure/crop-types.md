@@ -1,5 +1,7 @@
 # Crop types & settings
 
+![Crop types list](../../../../../../../screenshots/crop/2.6.x/crop-types.png)
+
 **Crop types** are config entities (`crop.type.*`) — reusable crop presets. Manage at
 `/admin/config/media/crop` (route `crop.overview_types`, add: `crop.type_add`). Requires the
 `administer crop types` permission.
