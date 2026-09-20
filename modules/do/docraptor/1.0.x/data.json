@@ -1,22 +1,27 @@
 {
   "name": "DocRaptor",
   "data_name": "docraptor",
-  "description": "integrates the DocRaptor HTML-to-PDF API (Prince-based) for PDF generation.",
+  "description": "Integrates the DocRaptor HTML-to-PDF SaaS API (Prince-based) so code can turn HTML into a PDF (or other document type) via a service class.",
   "version": "1.0.x",
   "package": "PDF",
   "composer_namespace": "drupal/docraptor",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "docraptor/docraptor": "^3.0 || ^4.0",
+    "drupal/key": "^1.19"
+  },
   "dependent_modules": [
     "key:key"
   ],
-  "configure": null,
-  "core_version_requirement": "^10.2||^11",
+  "configure": "docraptor.settings",
+  "core_version_requirement": "^10.2 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/docraptor",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "docraptor/docraptor"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
@@ -24,10 +29,11 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
+    "Content display",
     "Integrations"
   ],
   "subcategories": [
-    "CRM"
+    "PDF generation"
   ],
   "keywords": [
     "docraptor",
@@ -36,7 +42,7 @@
     "prince",
     "key"
   ],
-  "project_description": "Drupal 10+ version \n DocRaptor is the only HTML to PDF API that uses the Prince PDF generator.\n\n Note, while DocRaptor appreciates the collaborative spirit behind this contribution, please note that DocRaptor does not officially maintain or provide technical support for this library. \n\n Links \n \n DocRaptor API documentation \n DocRaptor PHP api github repository \n \n Drupal 7 version \n \n https://www.drupal.org/project/print_pdf_docraptor \n https://docraptor.com/documentation/article/1067564-making-pdf-document… \n Back to top",
+  "project_description": "DocRaptor integrates the DocRaptor HTML-to-PDF SaaS API, which renders documents with the commercial Prince engine, into Drupal 10.2+/11. The module ships one service (docraptor.manager / DocraptorManager) that wraps the docraptor/docraptor PHP SDK: given a block of HTML and a filename it builds a DocRaptor Doc, applies the site's configured Prince options (document type, PDF profile, colour conversion, PDF forms, ICC profile, test mode) and writes the returned bytes to a file. The DocRaptor account credential (used as the API basic-auth username) is not stored in plain config; it is supplied through a Key entity selected on the settings form. The module provides only a settings form and this service, leaving it to custom code to call the service and decide what HTML to render and where to store the result. Note the module is a community contribution and is not officially supported by DocRaptor.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
