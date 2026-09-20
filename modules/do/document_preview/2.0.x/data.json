@@ -1,17 +1,17 @@
 {
   "name": "Document Preview",
   "data_name": "document_preview",
-  "description": "Previews office/PDF documents in the browser using the Google Docs viewer.",
+  "description": "Previews office and PDF documents in the browser by embedding the Google Docs viewer. Ships a file-field formatter with Simplebox (inline iframe) and Modal window display styles.",
   "version": "2.0.x",
   "package": "Media",
   "composer_namespace": "drupal/document_preview",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:field",
-    "drupal:file"
+    "field",
+    "file"
   ],
   "configure": null,
-  "core_version_requirement": "^11.1||^12",
+  "core_version_requirement": "^11.1 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/document_preview",
@@ -22,13 +22,16 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content display"
+    "Content display",
+    "Media"
   ],
   "subcategories": [
-    "PDF viewer"
+    "PDF viewer",
+    "Field formatters",
+    "Lightbox / modal display"
   ],
   "keywords": [
     "document",
@@ -36,9 +39,10 @@
     "pdf",
     "google docs",
     "office",
-    "viewer"
+    "viewer",
+    "field formatter"
   ],
-  "project_description": "Module for preview documents in different formats: pdf, doc, docx, xls, xlsx, ppt, pptx, txt.\n\n Based on Google Docs API. Provides custom field formatter with 2 view types:\n\n - Simplebox\n\n - Modal window\n\n TUTORIAL: \n 1. Install this module\n\n2. Create a new media type (for example \"File\")\n\n3. Set \"Document Preview Formatter\" for File field\n\n4. Create a custom block type, add filed of your media media type\n\n5. Add formats for your field: pdf, doc, docx, xls, xlsx, ppt, pptx, txt\n\n6. Done. Add your block to the page or Layout Builder\n\n Important! Google Docs API doesn't work on local environments!",
+  "project_description": "Document Preview renders office and PDF documents (pdf, doc, docx, xls, xlsx, ppt, pptx, txt) inline in the browser by embedding the Google Docs viewer, so visitors can read a file without downloading it. It provides one core-file-field formatter, 'Document Preview Formatter' (id document_preview_formatter, extending FileFormatterBase), selectable per view display with two view types: 'Simplebox' (an inline iframe pointing at https://docs.google.com/viewer) and 'Modal window' (a use-ajax link that opens the document in a jQuery UI dialog via the document_preview.modal route, embedding https://docs.google.com/gview). The formatter only previews files stored on the public:// stream (Google must be able to reach the file); non-public files trigger an error message. Because rendering is delegated to Google's viewer, previews require publicly reachable file URLs and do not work on local-only environments. Depends only on Drupal core's Field and File modules.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

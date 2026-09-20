@@ -1,39 +1,30 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Document Preview lets users upload and preview .pdf/.doc/.docx/.xls/.xlsx/.ppt/.pptx/.txt files using the Google Docs viewer, with a custom 'Document' block type.
+Document Preview renders office and PDF files inline in the browser through the Google Docs viewer, via a file-field formatter with inline (Simplebox) and modal display styles.
 
 ---
 
-Document Preview enables in-browser preview of office and PDF documents — .pdf, .doc(x), .xls(x),
-.ppt(x) and .txt — by embedding the Google Docs viewer, and provides a custom "Document" block type for
-placing document previews. It depends on core Field and File. It saves visitors downloading a file just to
-view it.
-
-Use it to show document previews inline on a site. **Privacy caveat: preview uses the Google Docs viewer,
-which means the document's URL is handed to Google to render it** — so the document must be reachable by
-Google (i.e. effectively public), and its content is processed by Google's viewer. Do **not** use it for
-confidential/private documents (they would be exposed to Google and require public accessibility). It is a
-media/display feature; for private documents use a self-hosted viewer instead. Configure the document
-field/block.
+Document Preview lets a site show the contents of an uploaded document (pdf, doc, docx, xls, xlsx, ppt, pptx, txt) directly on the page instead of forcing a download. It adds a single core-file-field formatter, "Document Preview Formatter" (`document_preview_formatter`, extending `FileFormatterBase`), which you select on a file field's Manage display. The formatter offers two view types: "Simplebox" embeds the document inline in an `<iframe>` pointing at the Google Docs viewer, while "Modal window" renders the filename as an AJAX link that opens the document in a jQuery UI dialog (served by the `document_preview.modal` route). Rendering is delegated to Google's hosted viewer (`docs.google.com/viewer` and `docs.google.com/gview`), so the module only previews files on the public:// stream — files Google can actually download — and non-public files produce an error message instead of a preview. It depends only on core's Field and File modules, ships no settings form, and provides a `document_preview_field` theme hook (with template `document-preview-field.html.twig` and entity/bundle/field-based theme suggestions) for overriding the markup.
 
 ---
 
-- Preview PDF/office documents inline.
-- Use the Google Docs viewer.
-- Preview .doc/.xls/.ppt/.txt.
-- Provide a Document block type.
-- Depend on core Field and File.
-- Avoid downloading to view.
-- Know the doc URL is sent to Google.
-- Require documents to be public.
-- Not use for confidential documents.
-- Understand Google processes the content.
-- Use a self-hosted viewer for private docs.
-- Embed document previews.
-- Show documents on the site.
-- Configure the document field.
-- Preview uploaded files.
-- Display office documents.
-- Place preview blocks.
-- Handle public documents only.
-- Avoid exposing private docs to Google.
-- Preview in the browser.
+- Preview an uploaded PDF inline on a node page without making visitors download it first.
+- Show Word documents (.doc, .docx) rendered in the browser on a content type's display.
+- Display Excel spreadsheets (.xls, .xlsx) inline for quick review.
+- Preview PowerPoint decks (.ppt, .pptx) directly in the page.
+- Render plain-text (.txt) files inline.
+- Add a "Document Preview Formatter" to any core file field on Manage display.
+- Choose between an inline "Simplebox" iframe preview and a click-to-open "Modal window" preview per display.
+- Build a document library page where each file opens in a modal dialog on click.
+- Provide a "Download" link alongside each inline or modal preview so users can still grab the original file.
+- Place document previews inside custom blocks and position them with Layout Builder.
+- Attach a file field to a custom block type and format it as a document preview for reusable placement.
+- Present product spec sheets or datasheets inline on commerce or catalog pages.
+- Show contracts, policies, or terms documents inline on a legal/compliance page.
+- Let editors preview course handouts or lesson materials inline in an LMS-style site.
+- Preview report or whitepaper PDFs inline in a resources section.
+- Display multiple documents in one field, each with its own inline preview or modal link (per-delta rendering).
+- Override preview markup per entity type, bundle, field, or delta using the module's theme suggestions.
+- Customize the modal dialog appearance with the module's CSS (`css/document_preview.css`) and dialog options.
+- Offer an inline preview of publicly hosted meeting minutes or agendas.
+- Show scanned forms or brochures (as PDFs) inline for visitors.
+- Give site builders a no-code way to add in-browser document viewing using only core Field/File plus this module.
