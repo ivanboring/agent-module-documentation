@@ -1,42 +1,53 @@
 {
   "name": "Document Loader: PDF Parser",
   "data_name": "document_loader_pdfparser",
-  "description": "extracts text/content from PDFs for Document Loader using the PdfParser PHP library.",
+  "description": "Extract content from PDFs with Document Loader, using the PDF Parser PHP library.",
   "version": "1.2.x",
   "package": "Web services",
   "composer_namespace": "drupal/document_loader_pdfparser",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "ahmaadkhader/pdf-to-html": "^1.0",
+    "league/html-to-markdown": "^5.1",
+    "smalot/pdfparser": "^2.12",
+    "drupal/document_loader": "^2.0"
+  },
   "dependent_modules": [
     "document_loader:document_loader"
   ],
-  "configure": null,
-  "core_version_requirement": "^10.4||^11",
+  "configure": "document_loader.settings_form",
+  "core_version_requirement": "^10.4 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/document_loader_pdfparser",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "ahmaadkhader/pdf-to-html",
+    "league/html-to-markdown",
+    "smalot/pdfparser"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Import and export"
   ],
   "subcategories": [
-    "Content migration / import"
+    "Data transformation"
   ],
   "keywords": [
     "pdf",
     "parser",
     "document loader",
-    "extract",
-    "text"
+    "text extraction",
+    "html",
+    "markdown",
+    "smalot"
   ],
-  "project_description": "Enables extracting Text from PDFs through a Document Loader plugin with the PDF Parser PHP library. It enables Drupal modules to register and use PDF parsing in their document processing workflows.\n\n Features \n \n Extracts the text from PDFs to be used through Document Loader \n Minimal dependencies using straight PHP, without any additional web service requirements \n Retrieve MetaData from the PDF (page count, author, etc) \n \n Available Inputs \n \n PDF: A document from a File URI \n \n Available Outputs \n \n Text: Plain text content from the PDF \n HTML: Semantic HTML extraction \n Markdown: HTML output converted to Markdown \n \n Post-Installation \n Visit the Document Loader configuration page to see PDF Parser available.\n\n Additional Requirements \n Install with Composer to ensure you have all the required dependencies:\n\n \n Document Loader \n smalot/pdfparser \n \n \n\ncomposer require drupal/document_loader_pdfparser\n\n \n\n Recommended modules/libraries \n None.\n\n Similar projects \n \n AI File To Text \n Back to top",
+  "project_description": "A single DocumentLoader plugin for the Document Loader framework that extracts content from PDF files. Text is pulled with the local smalot/pdfparser PHP library, semantic HTML with ahmaadkhader/pdf-to-html, and Markdown by converting that HTML through league/html-to-markdown. PDF metadata (page count, author, title, etc.) is returned alongside every output. The plugin registers for the framework's built-in 'pdf' document type and advertises text, html and markdown output formats, so any module or AI tool that drives Document Loader can convert a PDF file URI without a separate web service. It ships no routes, permissions, config objects or Drush commands of its own; it is discovered automatically on the Document Loader settings page once enabled. Requires Document Loader 2.x and the three vendored PHP libraries (install via Composer).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
