@@ -12,15 +12,10 @@ web-services / developer feature with **no admin form and no permissions of its
 own** — it is configured through Document Loader and driven in code, and it depends
 on the **Document Loader** module (supports Drupal 10.3+ and 11).
 
-**Read this before pointing it at anything: this plugin has an SSRF
-consideration.** Because it fetches the given URL **from your server**, a
-user-controllable URL can make the server reach **internal or private endpoints** —
-localhost services, cloud metadata addresses such as `169.254.169.254`, or internal
-APIs — which is a classic Server-Side Request Forgery (SSRF) vector. If the URL is
-always set by an administrator or a fixed pipeline, the risk is limited. If any
-untrusted user can supply the URL, you must mitigate it: restrict who can configure
-the URL, and validate or allowlist the targets (block private and link-local IP
-ranges), ideally reinforced with an egress firewall or forward proxy.
+Because it fetches the given URL **from your server** rather than from the visitor's
+browser, point it only at trusted, expected pages. In typical use the URL comes from
+an administrator or a fixed ingestion pipeline; keep control of which URLs the loader
+is allowed to fetch and who can set them.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -40,5 +35,5 @@ loader is invoked, not through a per-plugin form.
 
 The plugin is listed in the Document Loader configuration at **Configuration → Media
 → Document Loader** as an available loader. It adds no settings page of its own —
-crucially, keep control of *who can set the URL it fetches* (see the SSRF note
-above).
+keep control of *which URLs it is allowed to fetch and who can set them* (see the
+overview above).

@@ -1,39 +1,30 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Document Loader Plugin - Webpage scrapes and converts web pages for Document Loader.
+Fetches a web page over HTTP/HTTPS and returns its cleaned content as HTML, plain text, or Markdown, as a Document Loader plugin.
 
 ---
 
-Document Loader Plugin - Webpage **scrapes and converts web pages** — a Document Loader plugin that fetches a
-given URL server-side (Guzzle `GET`), cleans the HTML and returns the content for ingestion into content/AI
-pipelines. It depends on the Document Loader module.
-
-Use it to pull web-page content into Drupal. It is a web-services/developer feature with an **SSRF consideration**:
-the module makes an **outbound HTTP request from your server to the URL it's given** (`httpClient->request('GET',
-$input->getUrl())`). If the target URL is admin/pipeline-configured, risk is limited; but if an end user can supply
-an arbitrary URL, they can make the server fetch **internal/private endpoints** (localhost services, cloud
-metadata like `169.254.169.254`, internal APIs) — a classic Server-Side Request Forgery vector. Mitigate by
-restricting who can configure the URL and validating/allowlisting targets (block private/link-local ranges). It
-has no access-control role. Configure the webpage loader (and restrict the URL source).
+Document Loader Plugin - Webpage adds one `DocumentLoader` plugin (`document_loader:webpage`) to the `document_loader` framework. Given a `WebsiteUrlInput` (a URL plus optional request options), it issues a Guzzle HTTP GET, extracts the main article content with fivefilters/readability.php (falling back to the raw `<body>` when Readability finds nothing), strips `<script>`/`<style>` (and optionally `<nav>`/`<footer>`/`<aside>`), and returns the result in the requested output format: `html`, `text`, or `markdown` (Markdown via league/html-to-markdown, and the default when no format is given). Each result carries metadata (source URL, HTTP status, content type, fetch timestamp, and Readability-derived title/author/excerpt/site name). The plugin ships no routes, forms, permissions, config, or Drush of its own; it is invoked through the parent `document_loader` framework's surfaces (the Explorer admin form, the Tool API submodule for AI agents, the Field Widget Action submodule, the MDX editor dialog submodule, and the `document-loader:load` Drush command) or programmatically via `plugin.manager.document_loader` / `document_loader.manager`.
 
 ---
 
-- Fetch and convert a web page.
-- Make a server-side Guzzle GET.
-- Clean the HTML for ingestion.
-- Depend on the Document Loader module.
-- Serve web services.
-- Pull web-page content.
-- FETCH the given URL from the server (SSRF consideration).
-- Let a user-controllable URL reach internal/private endpoints (localhost/cloud-metadata).
-- Restrict who can set the URL + allowlist targets (block private/link-local).
-- Have no access-control role.
-- Configure the webpage loader.
-- Handle web scraping.
-- Scrape pages.
-- Configure the loader.
-- Fetch pages.
-- Handle the request.
-- Convert HTML.
-- Ingest web content.
-- Validate the URL.
-- Provide webpage loading.
+- Import an article or blog post from a public URL and store it as Markdown in a content field.
+- Populate an MDX/rich-text editor with the cleaned text of a source web page.
+- Give an AI agent a "load from website" tool so it can read and summarise a page at a given URL (via the `document_loader_tool` submodule).
+- Convert a marketing landing page into plain text for further processing or indexing.
+- Scrape the readable body of a documentation page and drop navigation, headers, footers, and ad/aside blocks.
+- Pull a competitor's page content into a migration or content-audit workflow.
+- Fetch a page and hand its Markdown to an LLM automator field (via the `document_loader_automator` submodule of the parent framework).
+- Extract the title, author, and excerpt of a URL for building a link preview or citation.
+- Batch-load a list of URLs from Drush (`drush document-loader:load --input url=…`) and pipe the text to a file or another command.
+- Normalise HTML from arbitrary sites into a single Markdown format for a knowledge base.
+- Convert a page to HTML output (scripts/styles removed) for safe re-display after your own sanitisation.
+- Feed cleaned page text into a search index or embedding pipeline.
+- Retrieve a page with a custom User-Agent and timeout to match a target site's expectations.
+- Follow (or disable following of) HTTP redirects up to a configurable maximum when loading a URL.
+- Strip navigation and advertisement chrome from a page before quoting or archiving it.
+- Load a URL that points to a document file (e.g. a `.pdf`); the MDX dialog re-routes such URLs to the file loader instead of scraping.
+- Build an editorial "import from URL" button that fills a field with a page's readable content.
+- Compare the text of two URLs by loading each as plain text.
+- Produce a Markdown snapshot of a page as part of a scheduled content-sync job.
+- Extract just the main content of a paywalled-free article for offline reading in your app.
+- Provide a reusable page-fetching step for any custom module that needs webpage-to-text conversion without reimplementing Guzzle + Readability.

@@ -32,13 +32,11 @@ drush en document_loader_webpage -y
 
 This also enables **Document Loader** if it is not already on.
 
-## Before you expose it — SSRF
+## Point it at trusted URLs
 
-This plugin fetches URLs **from your server**. Before allowing any untrusted input to
-determine the URL, review the SSRF caveat in the
-[overview](../index.md): restrict who can set the URL, and validate/allowlist targets
-(block private and link-local ranges). For admin-only or fixed-pipeline use the risk
-is limited.
+This plugin fetches URLs **from your server**. In typical use the URL is set by an
+administrator or a fixed pipeline; keep control of which URLs it may fetch and who can
+set them, and point it at trusted, expected pages (see the [overview](../index.md)).
 
 ## Verify it worked
 

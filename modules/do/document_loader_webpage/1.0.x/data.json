@@ -1,16 +1,20 @@
 {
   "name": "Document Loader Plugin - Webpage",
   "data_name": "document_loader_webpage",
-  "description": "A Document Loader plugin that server-side fetches and converts a given web page (Guzzle GET). Because it fetches the configured URL from the server, restrict/allowlist who can set the URL — a user-controllable URL is an SSRF vector.",
+  "description": "A Document Loader plugin that fetches a web page over HTTP/HTTPS (Guzzle GET), cleans the HTML with Readability.php, and returns the page content as HTML, plain text, or Markdown. Registers for the document_loader 'website' type and plugs into the Document Loader pipeline (Explorer form, Tool API, Field Widget Action, Drush).",
   "version": "1.0.x",
   "package": "Document Loader Plugins",
   "composer_namespace": "drupal/document_loader_webpage",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/document_loader": "^2.0@beta",
+    "league/html-to-markdown": "^5.1",
+    "fivefilters/readability.php": "^3.3"
+  },
   "dependent_modules": [
-    "document_loader:document_loader"
+    "document_loader"
   ],
   "configure": null,
-  "core_version_requirement": "^10.3||^11",
+  "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/document_loader_webpage",
@@ -21,22 +25,26 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Import and export"
   ],
   "subcategories": [
-    "Content migration / import"
+    "Content migration / import",
+    "Content syndication"
   ],
   "keywords": [
     "webpage",
-    "scraper",
+    "web scraping",
     "document loader",
-    "ssrf",
-    "fetch"
+    "html",
+    "markdown",
+    "readability",
+    "fetch",
+    "url"
   ],
-  "project_description": "Provides a Document Loader plugin that fetches web pages over HTTP/HTTPS\n\nand converts the content into multiple output formats.",
+  "project_description": "Provides a Document Loader plugin that fetches web pages over HTTP/HTTPS and converts the content into multiple output formats (HTML, plain text, Markdown).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

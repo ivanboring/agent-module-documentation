@@ -14,9 +14,8 @@ securely (backed by an environment variable rather than committed config). It
 depends on the **Document Loader** module and supports Drupal 10.3+ and 11.
 
 Because the plugin makes an **outbound request from your server** to whatever
-endpoint it is pointed at, restrict who can configure that endpoint — a
-server-side fetch of a user-controllable URL is a Server-Side Request Forgery (SSRF)
-consideration, the same as with any server-side fetcher.
+endpoint it is pointed at, keep it pointed at trusted APIs and restrict who can
+configure that endpoint.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
