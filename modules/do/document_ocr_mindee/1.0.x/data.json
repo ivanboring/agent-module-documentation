@@ -1,11 +1,13 @@
 {
   "name": "Document OCR Mindee",
   "data_name": "document_ocr_mindee",
-  "description": "Document OCR integration with the Mindee document-parsing API.",
+  "description": "Document OCR integration with Mindee. Mindee - Accurate and lightning-fast document parsing API.",
   "version": "1.0.x",
-  "package": null,
+  "package": "AI",
   "composer_namespace": "drupal/document_ocr_mindee",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/document_ocr": "^1.0"
+  },
   "dependent_modules": [
     "drupal:document_ocr"
   ],
@@ -19,11 +21,12 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
+    "Integrations",
     "Developer tools"
   ],
   "subcategories": [
@@ -34,9 +37,11 @@
     "mindee",
     "document",
     "parsing",
+    "receipt",
+    "invoice",
     "api"
   ],
-  "project_description": "Document OCR integration with Mindee. Mindee - Accurate and lightning-fast document parsing API.\n\n Supports the following APIs:\n\n \n\n Configuration \n Configure the Document OCR Mindee at ( /admin/config/structure/document-ocr ). Requires Document OCR module.\n\n 1. Create API Key here \n\n2. Get API key and create JSON file and store your credentials as follows:\n\n {\n\n \"apikey\": \"[API-KEY]\"\n\n} \n\n 4. Upload it to the private directory `private://document-ocr/mindee-credentials.json`\n\n5. Point to the credentials file when adding Mindee processor\n\n6. You should be all set to use Mindee integration\n\n Supporting the Project \n Please consider supporting this project with a donation .\n\n Back to top",
+  "project_description": "Document OCR Mindee is an OCR provider plugin for the Document OCR framework (document_ocr). It registers a single `mindee` processor plugin that uploads a document image or PDF to the Mindee document-parsing SaaS API (api.mindee.net) and maps the returned prediction fields back into the Document OCR mapping so they can be extracted and stored. The processor exposes a chooser for the Mindee product API (expense receipts, invoices, financial documents, passports, proof of address, bank checks, ID cards, license plates and more) and the product version, and reads its API key from a JSON credentials file referenced when the processor is configured. It provides no standalone routes, permissions or config of its own; all setup happens through the Document OCR admin UI at /admin/config/structure/document-ocr.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
