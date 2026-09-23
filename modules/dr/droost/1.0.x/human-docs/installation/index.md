@@ -7,7 +7,7 @@
 
 ## Requirements
 
-- **Drupal 10.3 or 11** (`core_version_requirement: ^10.3 || ^11`).
+- **Drupal 10.3, 11, or 12** (`core_version_requirement: ^10.3 || ^11 || ^12`).
 - The **MCP Server** module (`mcp_server`) — Droost is built on it and cannot work
   without it.
 - An AI coding agent / harness you want to wire up (Claude, Codex, Gemini, Qwen,
@@ -18,7 +18,7 @@
 From the project root, install Droost **and** MCP Server as dev requirements:
 
 ```bash
-composer require --dev 'drupal/droost:^2.0@alpha' 'drupal/mcp_server:^2.0@alpha'
+composer require --dev 'drupal/droost:^1.0@rc' 'drupal/mcp_server:^2.0@alpha'
 ```
 
 Using `--dev` keeps these tools out of your production dependencies — which is

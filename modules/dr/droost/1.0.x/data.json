@@ -1,42 +1,65 @@
 {
   "name": "Droost",
   "data_name": "droost",
-  "description": "Developer-acceleration toolkit that exposes Drupal codebase/application introspection AND tiered, gated WRITE tools to AI coding agents over MCP. Explicitly LOCAL-DEVELOPMENT-ONLY — never install/run in production.",
+  "description": "Developer-acceleration toolkit for AI coding agents working on Drupal: exposes application/codebase introspection plus tiered, gated write/exec tools over MCP (Model Context Protocol). A Drupal analog of Laravel Boost. LOCAL DEVELOPMENT ONLY (install with require-dev); not for production.",
   "version": "1.0.x",
   "package": "Droost",
   "composer_namespace": "drupal/droost",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/mcp_server": "^2.0@alpha",
+    "drush/drush": "^12 || ^13"
+  },
   "dependent_modules": [
-    "mcp_server:mcp_server"
+    "mcp_server"
   ],
-  "configure": null,
-  "core_version_requirement": "^10.3||^11",
+  "configure": "droost.settings",
+  "core_version_requirement": "^10.3 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/droost",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "^8.3",
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [],
+  "submodules": [
+    "droost_ai",
+    "droost_brain",
+    "droost_canvas",
+    "droost_devel",
+    "droost_display",
+    "droost_examples",
+    "droost_help",
+    "droost_knowledge",
+    "droost_playbook",
+    "droost_profiler",
+    "droost_search",
+    "droost_views",
+    "droost_wiki"
+  ],
   "provides_permissions": true,
-  "provides_drush_commands": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Developer tools"
+    "Developer tools",
+    "Artificial Intelligence (AI)"
   ],
   "subcategories": [
-    "Plugin system"
+    "Debugging & inspection",
+    "Code generation / scaffolding",
+    "Model Context Protocol (MCP) server",
+    "AI tooling / function calling"
   ],
   "keywords": [
     "mcp",
+    "model context protocol",
     "ai agent",
     "introspection",
-    "developer",
+    "developer experience",
+    "scaffolding",
     "laravel boost"
   ],
-  "project_description": "What it is \n Droost is a local development toolkit that lets an AI coding agent ask your Drupal site about itself, and then build on it deterministically.\n\n It is the Drupal analog of Laravel Boost. Agents writing Drupal code normally work blind: they do not know which modules and versions are installed, what entity types and fields exist, which service to inject instead of calling \\Drupal:: , or whether the last request errored. So they guess, and their guesses age badly.\n\n The usual workaround is to have the agent shell out to Drush and parse the text. Droost exposes the same information as schema-described MCP tools returning structured JSON — reliable, version-correct answers about the real site, with each capability individually gateable instead of hidden behind a shell.\n\n Built entirely on MCP Server and the official mcp/sdk : MCP Server provides the runtime and the #[Tool] plugin system, Droost provides the tools.\n\n ⚠️ Local development only \n Droost is in the same class as devel , devel_php and webprofiler . It deliberately exposes your application, can run raw SQL, and — when you opt in — arbitrary PHP.\n\n composer require --dev 'drupal/droost:^2.0@alpha' 'drupal/mcp_server:^2.0@alpha' Enable it on local and trusted development environments only. The gates described below reduce footguns; they are not a security boundary against an untrusted caller. Running Droost on a production or internet-reachable site means accepting that.\n\n Two minutes to a wired agent \n composer require --dev 'drupal/droost:^2.0@alpha' 'drupal/mcp_server:^2.0@alpha'\ndrush en droost -y\ndrush droost:install --harness=claude # or codex, gemini, qwen, opencode, all droost:install registers the MCP server and writes an AGENTS.md block pointing your agent at this site. It is reversible. (If Composer refuses on an mcp/sdk security advisory, KNOWN_LIMITATIONS.md #6 has the one-command workaround until the next mcp_server release.)\n\n Then ask your agent: \"Ask Droost what this site knows about itself.\" \n\n Or let the agent drive the setup : droost:install also ships three guided slash commands — /droost-init (first wiring, knowledge layer, verification), /droost-configure (profiles, write gates, embedding backend, workflow levers, each shown before and after) and /droost-upgrade (walks the shipped upgrade bulletins in order, confirming every irreversible step).\n\n A work pipeline, not just tools \n Droost also installs the Droost Workflow pack ( droost/workflow , a framework-free PHP library): /droost-work walks every change through plan → code → test → document → complete , gated by real quality tools.\n\n \n Levers live in one repo-root file, droost.workflow.yml — a file rather than Drupal config on purpose, so the agent can read it while the site is mid-build, the CLI reads it with no site at all, and loosening a gate shows up in review as a diff. droost:install writes it measured to your layout. \n Presets factory (everything, strict, full EARS spec), light (same phases, lighter artifacts), custom (spelled out per gate) — plus your own commands as first-class gates (semgrep, behat, anything that exits zero). \n enforcement: hard | soft | off — harness hooks hold the phase discipline while a run is active, and are silent outside one. \n The reports never round up: a gate that could not run is recorded skipped with its reason , never as passed — \"nothing failed\" and \"three things were never checked\" are different sentences. \n \n What the tools cover \n Know the site — droost_app_info , droost_entities , droost_routes , droost_services , droost_permissions , droost_config_* , droost_db_schema , droost_logs , droost_last_error . Give droost_services an id and it answers the question that actually blocks an agent mid-edit: which interface do I type-hint to autowire this, and what did it used to be called? \n\n Know the codebase — droost_search (lexical, symbol and semantic), droost_symbol and droost_graph over a real code graph — who calls this, what depends on that …",
+  "project_description": "Droost is a local-development toolkit that lets an AI coding agent ask a Drupal site about itself and then build on it deterministically. It is the Drupal analog of Laravel Boost. Agents writing Drupal code normally work blind: they do not know which modules and versions are installed, what entity types and fields exist, which service to type-hint instead of calling \\Drupal::, or whether the last request errored. Droost exposes that information as schema-described MCP tools returning structured JSON, and adds tiered, individually gated write, database, entity, configuration, scaffold and code-evaluation tools. It is built entirely on the MCP Server module (drupal/mcp_server), which supplies the MCP runtime and the #[Tool] plugin system; Droost supplies the tools. The base module ships the read-only introspection tools plus the gated write/exec surface (config set, raw SQL create/update/delete, entity CRUD, module install/uninstall, cron, cache rebuild, scaffold, structure create, and PHP eval); a family of submodules add semantic/code-graph search, an AI-provider bridge, devel_generate content, Drupal Canvas support, Views composition, a codebase wiki, and more. Every state-changing tool is disabled by default and only acts when the operator opts in through per-category droost.settings flags, and the most dangerous tools additionally refuse to run over anything but the local CLI/STDIO transport. The gates reduce footguns; the module states plainly that they are not a security boundary against an untrusted caller. Install it with require-dev and enable it only on local and trusted development environments; never on a production or internet-reachable site. This documents the 1.0.0-rc1 pre-release.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
