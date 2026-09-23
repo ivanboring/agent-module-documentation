@@ -1,17 +1,17 @@
 {
   "name": "Dynamic Menu Item",
   "data_name": "dynamic_menu_item",
-  "description": "Creates dynamic menu items whose target/label can vary by context.",
+  "description": "Creates a dynamic menu item whose target node is set by ticking a checkbox on the node edit form.",
   "version": "2.0.x",
   "package": "Menu",
   "composer_namespace": "drupal/dynamic_menu_item",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:menu_ui",
-    "drupal:menu_link_content"
+    "menu_ui",
+    "menu_link_content"
   ],
-  "configure": null,
-  "core_version_requirement": "^10.3||^11",
+  "configure": "dynamic_menu_item.settings",
+  "core_version_requirement": "^10.3 || ^11.0",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/dynamic_menu_item",
@@ -22,22 +22,23 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Site structure"
   ],
   "subcategories": [
-    "Menus"
+    "Navigation menus"
   ],
   "keywords": [
     "menu",
     "dynamic",
     "menu item",
-    "context",
-    "navigation"
+    "menu link",
+    "navigation",
+    "node"
   ],
-  "project_description": "Dynamic menu item \n Allows to create custom menu item and then assign nodes\n\nto it via node editing interface.\n\n Configuration \n After installing module head to /admin/structure/menu/dynamic_menu_item \n\nand create menu.\n\nEdit user permission Edit dynamic menu item to allow users to see menu\n\nwhen they are editing any node.\n\nOnce use tick the box and save the node, the menu link will change to\n\nthe current node.\n\n Back to top",
+  "project_description": "Dynamic Menu Item lets a site create a single, admin-configured menu link (title, description, parent, weight) that is repointed to whichever node an editor selects. After installing, an administrator visits /admin/structure/menu/dynamic_menu_item, sets the menu link's title/description/parent/weight and chooses which content types expose the option. On the node edit form of an enabled content type a checkbox appears (labelled by the configured option title); when an editor ticks it and saves the node, the module creates or updates a menu_link_content link so it points at internal:/node/<nid>. The result is a menu link that always tracks the most recently flagged node.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
