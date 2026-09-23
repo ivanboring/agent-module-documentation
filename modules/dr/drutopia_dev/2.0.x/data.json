@@ -1,15 +1,37 @@
 {
   "name": "Drutopia Dev",
   "data_name": "drutopia_dev",
-  "description": "A Drutopia meta-module for developers and feature builders that pulls in Devel, Entity Clone and the Drutopia feature set.",
+  "description": "Drutopia developer/feature-builder helper: declares the Devel + Entity Clone + full Drutopia feature-set dependency chain and ships a Features bundle plus a cloneable 'Dev node' Search API index.",
   "version": "2.0.x",
   "package": "Drutopia",
   "composer_namespace": "drupal/drutopia_dev",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/drutopia_core": "^2",
+    "drupal/devel": "^5",
+    "drupal/drutopia_search": "^2",
+    "drupal/entity_clone": "^2"
+  },
   "dependent_modules": [
     "devel",
+    "drutopia_article",
+    "drutopia_blog",
+    "drutopia_campaign",
+    "drutopia_comment",
     "drutopia_core",
+    "drutopia_event",
+    "drutopia_group",
+    "drutopia_home_page",
+    "drutopia_landing_page",
+    "drutopia_page",
+    "drutopia_people",
+    "drutopia_related_content",
+    "drutopia_resource",
     "drutopia_search",
+    "drutopia_seo",
+    "drutopia_site",
+    "drutopia_social",
+    "drutopia_storyline",
+    "drutopia_user",
     "entity_clone",
     "node",
     "search_api",
@@ -24,16 +46,19 @@
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [],
+  "submodules": [
+    "drutopia_dev_findit"
+  ],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
   ],
   "subcategories": [
-    "Configuration management"
+    "Configuration management",
+    "Content indexing"
   ],
   "keywords": [
     "drutopia",
@@ -41,6 +66,7 @@
     "development",
     "features",
     "entity-clone",
+    "search-api",
     "meta-module",
     "distribution"
   ],
