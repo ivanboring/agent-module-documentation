@@ -1,16 +1,19 @@
 {
   "name": "Extra Block Types (EBT): Image",
   "data_name": "ebt_image",
-  "description": "Adds an Image block type with a Media field, image-style control, and GLightbox popup.",
+  "description": "Adds an 'EBT Image' custom block type: a single Media image with caption and link fields, on-the-fly image style, greyscale/hover effects, and an optional GLightbox popup.",
   "version": "2.0.x",
   "package": "Extra Block Types",
   "composer_namespace": "drupal/ebt_image",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ebt_core": "^2.0",
+    "drupal/glightbox": "^1.0"
+  },
   "dependent_modules": [
-    "ebt_core:ebt_core",
-    "drupal:media",
-    "drupal:link",
-    "glightbox:glightbox"
+    "ebt_core",
+    "media",
+    "link",
+    "glightbox"
   ],
   "configure": null,
   "core_version_requirement": "^10.1 || ^11 || ^12",
@@ -19,18 +22,23 @@
   "project_url": "https://www.drupal.org/project/ebt_image",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "GLightbox (provided by the drupal/glightbox contrib module; loaded only when the block's 'Enable Image Lightbox' setting is on)"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content display"
+    "Content display",
+    "Media"
   ],
   "subcategories": [
-    "Block enhancements"
+    "Block enhancements",
+    "Lightbox / modal display",
+    "Layout Builder"
   ],
   "keywords": [
     "ebt",

@@ -3,11 +3,16 @@
 ## Requirements
 
 - **Drupal 10.1, 11, or 12** (`core_version_requirement: ^10.1||^11||^12`).
-- **EBT Core** (`ebt_core`) — the shared base for the Extra Block Types family; it
-  is the only dependency, and Composer installs it for you.
+- **EBT Core** (`ebt_core`) — the shared base for the Extra Block Types family;
+  Composer installs it for you.
+- **Micromodal.js** — the module loads this front‑end library from
+  `/libraries/micromodal/dist/micromodal.min.js`. It is declared as the Composer
+  package `levmyshkin/micromodal`, so a Composer install with the standard
+  `installer-paths` setup places it under `libraries/` automatically; otherwise
+  download it into that path manually.
 
-There are no third‑party PHP or JavaScript library requirements to install
-separately — the Micromodal assets ship with the module.
+Without the Micromodal.js library present the block still renders, but clicking the
+button will not open the modal.
 
 ## Install with Composer
 
