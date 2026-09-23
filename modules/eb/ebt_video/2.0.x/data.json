@@ -1,11 +1,16 @@
 {
   "name": "Extra Block Types (EBT): Video",
   "data_name": "ebt_video",
-  "description": "Adds a Video block type for a single remote or local Media video with a GLightbox popup.",
+  "description": "Adds a Video block type for a single remote or local Media video, rendered inline or in a GLightbox popup.",
   "version": "2.0.x",
   "package": "Extra Block Types",
   "composer_namespace": "drupal/ebt_video",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ebt_core": "^2.0",
+    "drupal/glightbox": "^1.0",
+    "drupal/glightbox_media_video": "^1.0",
+    "drupal/paragraphs": "^1.0"
+  },
   "dependent_modules": [
     "drupal:media",
     "ebt_core:ebt_core",
@@ -25,7 +30,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"
