@@ -3,9 +3,12 @@
   "data_name": "drowl_layouts_bs",
   "description": "Provides DROWL's default Bootstrap layouts.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Layout",
   "composer_namespace": "drupal/drowl_layouts_bs",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/twig_real_content": "^1",
+    "drupal/layout_options": "^1"
+  },
   "dependent_modules": [
     "drupal:layout_discovery",
     "twig_real_content:twig_real_content",
@@ -19,26 +22,33 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/radix": "*",
+    "drupal/layout_disable": "*"
+  },
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Content editing experience"
+    "Site structure"
   ],
   "subcategories": [
-    "Structured content / page building"
+    "Layout Builder",
+    "Grid layout"
   ],
   "keywords": [
     "bootstrap",
     "layout",
     "drowl",
     "grid",
+    "layout builder",
+    "layout paragraphs",
+    "responsive",
     "page building"
   ],
-  "project_description": "TDO\n\n Features \n TODO\n\n Post-Installation \n TODO\n\n Additional Requirements \n TODO\n\n Recommended modules/libraries \n TODO\n\n Similar projects \n TODO\n\n Supporting this Module \n TODO\n\n Community Documentation \n TODO\n\n Back to top \n\n Supporting this module \n Support DROWL's ♥ FOSS work on this module on OpenCollective! \n Drupal and this module are FOSS. However, it takes dedicated people to develop and maintain. And they need YOU to give back! \n\n We're committed to building and maintaining Drupal modules that benefit the entire community.\n\n Supporting us on OpenCollective helps us continue to improve, innovate and contribute to Drupal's future. Every pledge makes a difference!\n\n If this module has helped you, we would be very grateful for your donation to support its further development and maintenance .\n\n Support our FOSS development ♥️ \n\n You can also speed up the development of features or bugfixes you'd love to see, by sponsoring and giving back!\n\n Sponsor a feature or bugfix 🚀 \n\n Let's make Drupal even better, together! \n\n \n Back to top \n\n Development proudly sponsored by German Drupal Friends & Companies: \n webks: websolutions kept simple ( https://www.webks.de )\n\nand\n\n DROWL: Drupalbasierte Lösungen aus Ostwestfalen-Lippe (OWL), Germany ( https://www.drowl.de )\n\n Back to top",
+  "project_description": "DROWL Layouts for Bootstrap ships a set of Bootstrap-5-grid section layouts as Layout Discovery layout plugins, for use with Layout Builder and Layout Paragraphs. It is the Bootstrap-based sibling of the older Foundation-based DROWL Layouts and is the module DROWL recommends for new sites. It defines column layouts (1-6 columns, plain and stacked variants), component layouts (Card and Media object), a node-detail page layout, a multi-row Row Layout and a CSS-grid Dynamic Content Grid. Per-section controls (container width, Bootstrap gutter classes, flex alignment, per-region responsive column widths and free custom classes) are supplied through the Layout Options module, which most layouts delegate to via the LayoutOptions plugin class. It depends on core Layout Discovery, Twig Real Content (for accurate empty-region detection in previews) and Layout Options. The module ships only Twig templates, CSS libraries and admin styling; it contains no PHP classes, routes or services of its own, and works best with a Bootstrap 5 theme (e.g. Radix).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
