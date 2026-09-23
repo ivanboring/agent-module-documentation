@@ -31,6 +31,7 @@ drush en drush_dialog -y
 
 ## Verify it worked
 
-After enabling, launch the interactive dialog and confirm that it presents a menu
-of administrative operations. See the [main guide](../index.md) for how to use it.
-Keep access limited to trusted administrators.
+After enabling, open the overlay, type a simple Drush command (for example
+`core:status`) into its input field, and confirm the output is shown back. See the
+[main guide](../index.md) for how to use it. Keep access limited to trusted
+administrators.

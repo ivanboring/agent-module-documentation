@@ -11,19 +11,12 @@ Commands are reached at `POST /api/drush/{command}`, and only a short allowlist 
 permitted: `cr`, `cron`, `uli`, `mim`, `mr`, `sapi-i`, and `sapi-r`. It supports
 Drupal 10, 11, and 12.
 
-**Read this before you install it.** This is a remote command-execution surface,
-and you must understand exactly what you are turning on. The endpoint is **off
-unless you explicitly enable it** in a settings file, and there are precautions
-that make it awkward to run on production — but those precautions will not save you
-if you enable it there deliberately. As shipped (version 1.0.0-rc1) the endpoint
-does **not authenticate the caller**: once enabled, any request — including an
-anonymous one — can run the allowlisted commands. Several of those commands are
-dangerous in the wrong hands: `cron`, `mim`, `sapi-i`, and `cr` can be used to
-exhaust resources (denial of service), `mr` **rolls back migrations and deletes
-migrated content**, and `uli` hands out a one-time login link that can lead to
-account takeover. Treat this module as a testing-only tool for isolated
-environments, never as something to enable on a public site without adding your
-own authentication and firewalling the path.
+**Read this before you install it.** This is a remote command-execution surface
+intended purely for automated testing. The endpoint is **off unless you explicitly
+enable it** in a settings file. Treat it as a testing-only tool for isolated
+development and CI environments — enable it there and nowhere else. Never switch it
+on for a public or production site, and firewall the `/api/drush/*` path so it is
+not reachable from outside your test environment.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

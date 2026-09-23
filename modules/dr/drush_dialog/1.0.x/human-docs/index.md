@@ -1,16 +1,16 @@
 # Drush dialog — manual setup guide
 
-**Drush dialog** (`drush_dialog`) provides an interactive dialog for running Drush
-commands, aimed at site administrators. Instead of remembering the exact syntax
-of every command, you get a guided, menu-driven interface for running common
-administrative Drush operations.
+**Drush dialog** (`drush_dialog`) provides an on-screen overlay for running Drush
+commands, aimed at site administrators. It puts a single command input in the
+browser so you can run a Drush command without switching to a terminal.
 
-It is a developer and administrator convenience tool. Think of it as a friendlier
-front door to Drush: you pick from the offered operations rather than typing each
-command from memory. The module supports Drupal 9.2 and up, 10, and 11.
+It is a developer and administrator convenience tool. You type a Drush command
+into the overlay's text field and press Enter; the command runs on the server and
+its output is shown back in the overlay, with a short history of the commands you
+have run. The module supports Drupal 9.2 and up, 10, and 11.
 
-Because the tool runs Drush operations, keep it to trusted operators — anyone able
-to use it can run the administrative commands it exposes.
+Because the tool runs whatever Drush command you type, keep it to trusted
+operators — anyone able to use it can run any Drush command available on the site.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -21,13 +21,12 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 1. [Installation](installation/index.md) — install with Composer and enable the
    module.
 
-There is **no configuration page** for this module — it is an interactive tool you
-launch rather than a settings form.
+There is **no configuration page** for this module — it is an on-screen tool you
+open rather than a settings form.
 
 ## How to use it
 
-Once the module is enabled, launch the interactive dialog and follow its prompts
-to pick and run a Drush operation. It is designed so administrators can run common
-maintenance tasks through a guided menu instead of typing individual commands.
-Restrict its use to trusted administrators, since the operations it can trigger
-are the same powerful Drush commands you would otherwise run by hand.
+Once the module is enabled, open the overlay, type a Drush command into its input
+field, and press Enter to run it; the output appears in the overlay. Restrict its
+use to trusted administrators, since the commands it runs are the same powerful
+Drush commands you would otherwise run by hand.

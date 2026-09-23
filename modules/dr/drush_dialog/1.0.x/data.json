@@ -1,7 +1,7 @@
 {
   "name": "Drush dialog",
   "data_name": "drush_dialog",
-  "description": "Provides an interactive Drush dialog for site administrators.",
+  "description": "Provides a drush dialog for the site administrator.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/drush_dialog",
@@ -17,9 +17,9 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
@@ -30,11 +30,11 @@
   "keywords": [
     "drush",
     "dialog",
-    "cli",
+    "command",
     "admin",
-    "interactive"
+    "web ui"
   ],
-  "project_description": "Features \n This module allows you to run drush commands from the site UI.",
+  "project_description": "Drush dialog adds an in-page overlay, opened with the Ctrl+D keyboard shortcut, that lets a user holding the core 'administer site configuration' permission type a Drush command and run it directly from the browser. The typed string is sent by AJAX to a controller (DrushDialogController::run) that invokes the drush binary via Symfony Process, returns the command output as a JSON string, and stores each command plus its output in a per-user database log table (drush_dialog_log). The stored commands feed an up/down-arrow history in the dialog. The module ships no settings form, no permissions of its own, and no Drush commands of its own; it depends only on Drupal core and on a working Drush install on the server.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

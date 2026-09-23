@@ -1,11 +1,13 @@
 {
   "name": "Drush Endpoint",
   "data_name": "drush_endpoint",
-  "description": "An HTTP endpoint for executing (allowlisted) Drush commands during testing.",
+  "description": "An HTTP endpoint (POST /api/drush/{command}) that runs a small allowlist of Drush commands during automated testing. Pre-release: 1.0.0-rc1.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Testing",
   "composer_namespace": "drupal/drush_endpoint",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drush/drush": "^12 || ^13"
+  },
   "dependent_modules": [],
   "configure": null,
   "core_version_requirement": "^10 || ^11 || ^12",
@@ -17,9 +19,9 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
@@ -32,9 +34,10 @@
     "http",
     "endpoint",
     "testing",
-    "ci"
+    "ci",
+    "cypress"
   ],
-  "project_description": "Exposes drush commands so that they can be called with POST.\n\n To be used in automated testing (ie Cypress) when you can't run drush commands, for example when your testing suite runs on a different container than your web server.\n\n Back to top \n\n \nUsage \n In your Cypress test do a POST request:\n\n cy.request({\n method: 'POST', // Make sure this is POST\n url: '/api/drush/cron'\n});\n \n\n You can also use cURL from command line for testing:\n\n curl -X POST https://SITENAME.ddev.site/api/drush/cron\n \n\n \nLogin to a site in a Cypress test \n describe('I can login using Drush', () => {\n it('Logs me in', () => {\n // Login\n cy.request({\n method: 'POST',\n url: '/api/drush/uli',\n }).then((response) => {\n expect(response.status).to.eq(200);\n expect(response.body).to.have.property('success', true);\n\n const uli = response.body.output.trim();\n\n cy.visit(uli);\n // You are logged in!\n })\n })\n})\n Back to top \n\n \nRequirements \n It is assumed that you have a complete understanding of what you are enabling on your site!\n\n There are precautions that make it difficult to run this modules on production, but they will not save you if you intentionally enable it there. So be very careful.\n\n Back to top \n\n \nInstallation \n \n Install as you would normally install a contributed Drupal module. See: https://www.drupal.org/node/895232 for further information. \n There are no permissions, this is a module oriented to automated testing only. Everything is allowed by default. \n Allow the module to run, by enabling it in your settings.local.php file:\n\n // Enable drush_endpoint\n$settings['drush_endpoint_enabled'] = TRUE;\n$settings['drush_endpoint_allow_uli'] = TRUE;\n \n \n NOTE \n\n As you see above, uli commands need that extra line to be enabled.\n\n \n WARNING \n\n Do not put the above lines in production!\n\n \n Back to top \n\n \nMaintainers \n \n Bill Seremetis (bserem) - https://www.drupal.org/u/bserem \n \n \n Back to top",
+  "project_description": "Drush Endpoint exposes a short allowlist of Drush commands over an HTTP POST endpoint (`/api/drush/{command}`) so an automated test suite (for example Cypress) can trigger them when the test runner cannot call Drush directly — e.g. the test container is separate from the web container. It is a testing-only tool: the endpoint stays inert until a settings flag is set, the module ships no admin UI and no permissions, and the maintainer's own documentation states it must never be enabled on production. This version dir documents the pre-release 1.0.0-rc1. Maintained by Bill Seremetis (bserem).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

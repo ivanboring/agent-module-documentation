@@ -49,12 +49,10 @@ $settings['drush_endpoint_allow_uli'] = TRUE;
 
 The `uli` command needs that second flag before it will work.
 
-> **WARNING — do not enable this on production.** Once the endpoint is enabled it
-> does not authenticate the caller, so anyone (including anonymous visitors) who
-> can reach the URL can run the allowlisted commands — several of which can cause
-> denial of service, delete migrated content (`mr`), or hand out a login link
-> (`uli`). Only enable it in isolated test environments, and firewall the
-> `/api/drush/*` path so it is not publicly reachable.
+> **WARNING — do not enable this on production.** This is a remote
+> command-execution surface meant only for automated testing. Only enable it in
+> isolated development or CI environments, never on a public or production site,
+> and firewall the `/api/drush/*` path so it is not publicly reachable.
 
 ## Verify it worked
 
