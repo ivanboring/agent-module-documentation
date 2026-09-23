@@ -1,20 +1,22 @@
 {
   "name": "Duet Date Picker",
   "data_name": "duet_date_picker",
-  "description": "Provides a date-picker field widget using the accessible Duet Date Picker component.",
+  "description": "Integrates the accessible Duet Date Picker web component as Drupal field widgets (datetime and daterange) and Views date filters.",
   "version": "1.0.x",
   "package": "Duet Date Picker",
   "composer_namespace": "drupal/duet_date_picker",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/duet_date_picker",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "npm-asset/duetds--date-picker (Duet Date Picker web component, >= 1.4; installed locally at /libraries/duetds--date-picker)"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
@@ -22,19 +24,24 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Content editing experience"
+    "Content editing experience",
+    "Content display"
   ],
   "subcategories": [
-    "Date/time fields"
+    "Date/time fields",
+    "Form widgets / select UI",
+    "Views exposed filters"
   ],
   "keywords": [
     "date picker",
     "duet",
-    "widget",
+    "field widget",
+    "daterange",
+    "views filter",
     "accessibility",
     "date"
   ],
-  "project_description": "Offers a custom widget for datetime fields that implements the Duet Date Picker widget. See https://github.com/duetds/date-picker",
+  "project_description": "Duet Date Picker integrates the framework-agnostic, accessibility-focused Duet Date Picker web component (duetds/date-picker) into Drupal. It ships two field widgets that replace core's date input on datetime and daterange fields, three Views filter handlers (date, datetime, and Search API date) that add an optional Duet picker to exposed date filters, and a NoPastDates validation constraint. The picker component itself is loaded from a locally-installed asset library. The installed release is a pre-release beta (1.0.0-beta5).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
