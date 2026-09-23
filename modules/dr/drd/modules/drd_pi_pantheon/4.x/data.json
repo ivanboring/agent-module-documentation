@@ -1,15 +1,15 @@
 {
-  "name": "Drd Pi Pantheon",
+  "name": "DRD Platform Integration: Pantheon",
   "data_name": "drd_pi_pantheon",
   "description": "Import and update Pantheon inventory into DRD",
   "version": "4.x",
-  "package": null,
+  "package": "DRD",
   "composer_namespace": "drupal/drd",
   "composer_requirements": {},
   "dependent_modules": [
-    "drd:drd"
+    "drd_pi"
   ],
-  "configure": null,
+  "configure": "drd_pi_pantheon.drd_pi_pantheon_settings",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -24,14 +24,17 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Administration"
+    "Administration tools",
+    "Integrations"
   ],
   "subcategories": [
-    "Remote management"
+    "Deployment / release management"
   ],
   "keywords": [
     "drd",
-    "pi pantheon",
+    "pantheon",
+    "terminus",
+    "hosting",
     "submodule"
   ],
   "part_of": "drd",

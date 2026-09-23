@@ -1,13 +1,13 @@
 {
-  "name": "Drd Pi",
+  "name": "DRD Platform Integration",
   "data_name": "drd_pi",
   "description": "An abstract module that provides services for other modules to integrate with hosting platforms",
   "version": "4.x",
-  "package": null,
+  "package": "DRD",
   "composer_namespace": "drupal/drd",
   "composer_requirements": {},
   "dependent_modules": [
-    "drd:drd"
+    "drd"
   ],
   "configure": null,
   "core_version_requirement": "^10 || ^11",
@@ -16,22 +16,27 @@
   "project_url": "https://www.drupal.org/project/drd",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "mikehaertl/php-shellcommand"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
-  "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Administration"
+    "Administration tools",
+    "Developer tools"
   ],
   "subcategories": [
-    "Remote management"
+    "Deployment / release management"
   ],
   "keywords": [
     "drd",
-    "pi",
+    "platform integration",
+    "hosting",
+    "inventory",
     "submodule"
   ],
   "part_of": "drd",

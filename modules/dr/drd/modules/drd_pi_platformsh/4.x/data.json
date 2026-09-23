@@ -1,22 +1,24 @@
 {
-  "name": "Drd Pi Platformsh",
+  "name": "DRD Platform Integration: Platform.sh",
   "data_name": "drd_pi_platformsh",
   "description": "Import and update PlatformSH inventory into DRD",
   "version": "4.x",
-  "package": null,
+  "package": "DRD",
   "composer_namespace": "drupal/drd",
   "composer_requirements": {},
   "dependent_modules": [
-    "drd:drd"
+    "drd_pi"
   ],
-  "configure": null,
+  "configure": "drd_pi_platformsh.drd_pi_platformsh_settings",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/drd",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "platformsh/client"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
@@ -24,14 +26,17 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Administration"
+    "Administration tools",
+    "Integrations"
   ],
   "subcategories": [
-    "Remote management"
+    "Deployment / release management"
   ],
   "keywords": [
     "drd",
-    "pi platformsh",
+    "platform.sh",
+    "platformsh",
+    "hosting",
     "submodule"
   ],
   "part_of": "drd",
