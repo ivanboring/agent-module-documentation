@@ -1,7 +1,7 @@
 {
   "name": "Domain Microsite by Path",
   "data_name": "domain_microsite",
-  "description": "Creates microsites using Domain records at subpaths of existing domains.",
+  "description": "Makes microsites using Domain records at subpaths of existing domains.",
   "version": "2.x",
   "package": "Domain",
   "composer_namespace": "drupal/domain_microsite",
@@ -10,7 +10,7 @@
     "domain:domain"
   ],
   "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/domain_microsite",
@@ -21,7 +21,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Site structure"
@@ -36,7 +36,7 @@
     "multi-domain",
     "path"
   ],
-  "project_description": "Domain Microsite allows creating \"microsites\" at sub-paths using the Domain module/ecosystem.\n\n Every domain microsite is just a domain entity with extra configuration for a microsite base path and parent domain. \n\n Management of a domain microsite is the same as a regular domain.\n\n Domain Microsite essentially does this:\n\n \n Determines if a domain microsite is requested based on the incoming path and sets it as the active domain. \n Uses path processing to remove microsite base path for the incoming path (the page requested) and prepend microsite base path for outgoing paths (generated urls on a page).\n \n For other modules and forms with path settings, use a path value \"relative\" to the domain microsite regardless of the label.\n\nSome form fields have labels that display a site url before the field.\n\nTo prevent this module from being bloated, it does not make form alterations to change any labels to match the actual domain microsite url.\n\n(The only exception is the Domain records page.)\n\n Back to top \n\n Installation \n \n Enable module as usual. \n Then go to [admin/config/domain] to add a domain record. \n At least one regular domain record must already exist. If it doesn't, create one first then return to add another new domain. \n Ignore hostname and machine_name because they will be overridden with auto-generated identifiers by this module. \n Check \"Make domain microsite\" and enter values for \"Parent domain\" and \"Base path\". \n Save to add a domain microsite by path. \n \n Back to top \n\n Caching issue \n Domain currently caches routes a certain way that doesn't work well with Domain Microsite.\n\nSee https://www.drupal.org/project/domain/issues/3359253 and use patch #2 to make route caches work.\n\n Back to top",
+  "project_description": "Domain Microsite by Path builds \"microsites\" at sub-paths of an existing hostname (for example example.com/marketing) on top of the contrib Domain module. A microsite is an ordinary Domain config entity carrying three third-party settings (is_domain_microsite, parent_domain_id, base_path). The module implements hook_domain_request_alter() to recognise a microsite by the incoming request path and set it as the active domain, and a path processor (DomainMicrositePathProcessor) that strips the base path from inbound paths and prepends it to outbound URLs, so a microsite behaves like a Domain-negotiated site without needing its own hostname. Content scoping, theming and other per-domain behaviour come from the wider Domain ecosystem (Domain Access, Domain Source, Domain Config, etc.); this module only handles the path-based negotiation and URL rewriting. This is the 2.x development branch: no stable release is tagged and the info.yml carries no version. The project page lists it as seeking a new maintainer with no further development planned.",
   "maintenance_status": "Seeking new maintainer",
   "development_status": "No further development",
   "security_advisory_coverage": "covered",
