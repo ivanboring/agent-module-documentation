@@ -1,16 +1,16 @@
 {
   "name": "Domain Twig",
   "data_name": "domain_twig",
-  "description": "Provides a Twig function to get the current domain (Domain module).",
+  "description": "Provides a Twig function to get the current active domain (Domain module) inside templates.",
   "version": "1.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/domain_twig",
   "composer_requirements": {},
   "dependent_modules": [
-    "domain:domain"
+    "domain"
   ],
   "configure": null,
-  "core_version_requirement": "^8||^10||^11",
+  "core_version_requirement": "^8 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/domain_twig",
@@ -21,22 +21,22 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
   ],
   "subcategories": [
-    "Twig extensions"
+    "Twig / component libraries"
   ],
   "keywords": [
     "domain",
     "twig",
-    "function",
     "template",
-    "multi-domain"
+    "multi-domain",
+    "domain negotiator"
   ],
-  "project_description": "Provides Twig Function to get current domain\n\n \n\n{% set domain_id = domain().id %} \n\n {% if domain_id == 'example' %}\n\n Cool stuff, huh! \n {% endif %}",
+  "project_description": "Domain Twig registers a single Twig function, domain(), that returns the current active domain entity from the drupal/domain module's domain negotiator, or NULL when no domain is active. Templates can read the active domain's id, hostname, label, URL and other properties and branch on them without a preprocess hook. The module has no configuration, permissions, routes, or schema; it exposes one twig.extension service (DomainTwigExtension) wired to the domain.negotiator service.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "not-covered",

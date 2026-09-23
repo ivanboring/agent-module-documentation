@@ -1,17 +1,19 @@
 {
   "name": "Domain Views Display",
   "data_name": "domain_views_display",
-  "description": "Lets Views displays be configured per domain (Domain module multi-domain).",
+  "description": "Allows views to be configured to use different displays based on domain.",
   "version": "1.0.x",
   "package": "Domain",
   "composer_namespace": "drupal/domain_views_display",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/domain": "^2 || ^3"
+  },
   "dependent_modules": [
-    "drupal:views",
-    "domain:domain"
+    "views",
+    "domain"
   ],
   "configure": null,
-  "core_version_requirement": "^10.3||^11",
+  "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/domain_views_display",
@@ -25,19 +27,22 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Content display"
+    "Content display",
+    "Site structure"
   ],
   "subcategories": [
-    "Views"
+    "Multi-domain / affiliate sites",
+    "View mode switching"
   ],
   "keywords": [
     "views",
     "domain",
+    "display extender",
     "per-domain",
-    "display",
-    "multi-domain"
+    "multi-domain",
+    "domain access"
   ],
-  "project_description": "The Domain Views Display module works with Domain Access to allow the administrator to override a Views display with another on specific domains. For example if you have an RSS listing page for a.example.com and b.example.com and you want to modify the listing on b.example.com you can create a new display tailored to b.example.com and configure the old display to use the new one on b.example.com .\n\n It's an alternative to using domain-specific config overrides and was created to provide a simple user interface for site builders to configure everything within one view. Currently it's not possible to use Domain Config UI with Views; if that changes, this module will be largely obsolete.\n\n Back to top \n\n \nRequirements \n \n Views (core) \n Domain Access \n \n Back to top \n\n \nInstallation \n Install as you would normally install a contributed Drupal module. See: https://www.drupal.org/node/895232 for further information.\n\n Back to top \n\n \nConfiguration \n \n When configuring the view, there should be a new field group in the center column Domain overrides . \n Click the link next to Override display . \n You should be able to choose which display to use for every configured domain. \n \n Back to top \n\n \nKnown issues \n \n It's possible to set up loops where display A redirects to display B which redirects to display A. \n If you rename a display that overrides another, you'll need to reconfigure the override. \n Views configured to have domain-specific overrides don't add the domains as config dependencies of the view (possibly related to [#2426607]). \n \n Back to top",
+  "project_description": "Domain Views Display makes a Views display domain-aware by letting a display hand off to a different display of the same view on specific domains of a Domain (Domain Access) multi-site. It provides one Views display-extender plugin (DomainViewsDisplayExtender, id domain_views_display_display_extender) that adds a 'Domain overrides' section to every display in the Views UI, where a site builder maps each configured domain to the display that should render instead. At runtime a helper (Drupal\\domain_views_display\\DomainViewsDisplay) reads the active domain from the Domain negotiator and swaps in the mapped display for page routes (by decorating the core ViewPageController via a route subscriber), for pre-rendered view elements, and via hook_views_pre_view for embedded views. It is offered as a simpler, in-view alternative to domain-specific config overrides, since Domain Config UI does not currently work with Views. It requires core Views and the contributed Domain module (>= 2.0) and is not covered by Drupal's security advisory policy.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
