@@ -1,17 +1,20 @@
 {
   "name": "Extra Block Types (EBT): Block",
   "data_name": "ebt_block",
-  "description": "An Extra Block Types block that embeds another block, with EBT styling.",
+  "description": "Config-only EBT block type that embeds any Drupal block (Views, content block, programmatic) via Block Field, wrapped with the shared EBT design settings.",
   "version": "2.0.x",
   "package": "Extra Block Types",
   "composer_namespace": "drupal/ebt_block",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/block_field": "^1.0",
+    "drupal/ebt_core": "^2.0"
+  },
   "dependent_modules": [
     "ebt_core:ebt_core",
     "block_field:block_field"
   ],
   "configure": null,
-  "core_version_requirement": "^10.1||^11||^12",
+  "core_version_requirement": "^10.1 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ebt_block",
@@ -22,22 +25,24 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"
   ],
   "subcategories": [
-    "Block enhancements"
+    "Block enhancements",
+    "Structured content / page building"
   ],
   "keywords": [
     "ebt",
     "block",
+    "block field",
     "embed",
-    "styling",
-    "block field"
+    "layout builder",
+    "styling"
   ],
-  "project_description": "EBT Block module provides ability to insert any Drupal Block: Views, custom content block, programmatically created blocks.\n\n Demo: EBT Block \n\n EBT modules provide ability to add different blocks in Layout Builder in few clicks. You can install separate block types from this bunch of EBT modules:\n\n \n EBT Accordion / FAQ \n EBT Basic Button \n EBT Block \n EBT Bootstrap Button \n EBT Call to Action \n EBT Carousel \n EBT Columns \n EBT Countdown \n EBT Counter \n EBT Hero \n EBT Image \n EBT Image Gallery \n EBT Micromodal \n EBT Quote \n EBT Slick Slider \n EBT Slideshow \n EBT Stats \n EBT Tabs \n EBT Text \n EBT Tiles \n EBT Timeline \n EBT Video \n EBT Video and Image Gallery \n EBT Views \n EBT Webform \n EBT Webform Popup \n \n All EBT block types contain default widget for EBT blocks, which has Design options for:\n\n \n CSS Box (margins, paddings, borders) \n Background using color, image (including parallax and cover), video (Youtube) \n Edge to edge, Container width \n \n More about EBT blocks read on EBT Core module page:\n\n https://www.drupal.org/project/ebt_core \n\n \n Demo \n \n \n EBT Demo site \n \n\n This is a demo site with EBT modules. Feel free to log in to create or edit pages:\n\n \n https://ebt.drupalbook.org/user \nUsername: editor \nPassword: editor \n \n\n \n You can also download EBT Demo distribution and install it locally:\n\n Download EBT Demo distribution \n \n\n \n \n If you are looking for Extra Paragraph Types , you can use these modules:\n\n \n Extra Paragraph Types (EPT) Modules \n \n \n EPT Accordion / FAQ \n EPT Basic Button \n EPT Block \n EPT Bootstrap Button \n EPT Call to Action \n EPT Carousel \n EPT Columns / Container \n EPT Countdown \n EPT Counter \n EPT Hero \n EPT Image \n EPT Image Gallery \n EPT Micromodal \n EPT Quote \n EPT Slick Slider \n EPT Slideshow \n EPT Stats \n EPT Sticky Menu \n EPT Tabs \n EPT Text \n EPT Tiles \n EPT Timeline \n EPT Video \n EPT Video and Image gallery \n EPT Views \n EPT Webform \n EPT Webform Popup \n \n \n \n \n \n \n \n \n \n Need another Extra Block Type? \n Contact Us \n\n \n \n\n \n \n \n \n \n Back to top",
+  "project_description": "EBT Block ships a single config-only block_content type (ebt_block) that embeds any Drupal block — a View, a custom content block, or a programmatically defined block — through the Block Field module, and wraps it in the Extra Block Types (EBT) design layer. It provides no PHP of its own: it installs a block type with a Body field, a field_ebt_block_block (block_field) field for selecting the embedded block, and a field_ebt_settings (ebt_settings) field contributed by the base ebt_core module for margin/padding/border/background/container design options, plus form and view displays and two Twig block templates. It is one member of the larger EBT family of standalone styled block types and is intended to be placed with Layout Builder.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
