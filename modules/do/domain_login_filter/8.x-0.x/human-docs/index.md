@@ -7,13 +7,13 @@ multi-domain site — one Drupal installation serving several hostnames — it l
 scope *interactive login* so that a user can only sign in on the domains they
 belong to.
 
-The mechanism is precise and it fails safe. The module adds a validation handler to
-the login form that compares the **active domain** against the **user's Domain
-Access values**. If the current domain is not among the user's assigned domains,
-the handler sets a form error ("The username *name* has not been activated or is
-blocked on this domain.") and authentication simply does not complete. Because the
-block happens as login-form validation, there is no partial sign-in — it is
-fail-closed for any domain the user is not assigned to.
+The module adds a validation handler to the sign-in form (and to the password-reset
+request form) that compares the **active domain** against the **user's Domain Access
+values**. If the current domain is not among the user's assigned domains, the handler
+sets a form error ("The username *name* has not been activated or is blocked on this
+domain.") and that form submission does not complete. Because the check runs as
+validation on those forms, treat it as one layer of a multi-domain setup rather than
+your only access control (see scope below).
 
 It is important to understand the exact scope. This module gates **who can log in on
 which domain**; it is not a replacement for per-domain *content* access. Domain

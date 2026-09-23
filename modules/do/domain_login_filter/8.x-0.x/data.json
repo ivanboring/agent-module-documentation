@@ -1,7 +1,7 @@
 {
   "name": "Domain Login Filter",
   "data_name": "domain_login_filter",
-  "description": "Prevents users from logging in on a domain they are not assigned to (Domain Access).",
+  "description": "Blocks users from logging in on a Domain (Domain Access) they are not assigned to, via a validator added to the login and password-reset-request forms.",
   "version": "8.x-0.x",
   "package": "Domain",
   "composer_namespace": "drupal/domain_login_filter",
@@ -10,7 +10,7 @@
     "domain:domain"
   ],
   "configure": null,
-  "core_version_requirement": "^8||^9||^10||^11",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/domain_login_filter",
@@ -21,13 +21,13 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Access control"
   ],
   "subcategories": [
-    "Login access restrictions"
+    "Multi-domain / affiliate sites"
   ],
   "keywords": [
     "domain",
@@ -36,7 +36,7 @@
     "domain access",
     "multi-domain"
   ],
-  "project_description": "Prevents users from logging in to not assigned domain.",
+  "project_description": "Domain Login Filter restricts interactive login on a multi-domain (Domain / Domain Access) site so a user may only sign in on the domains they are assigned to. It adds a form validation handler to the core login and password-reset-request forms that compares the active domain against the account's Domain Access assignments and blocks the login form submission with an error when the user is not assigned to the current domain. It has no settings form: the behaviour is entirely driven by each user's Domain Access assignments. User 1 (the superuser) is always exempt.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
