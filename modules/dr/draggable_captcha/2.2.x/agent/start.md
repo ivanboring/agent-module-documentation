@@ -7,6 +7,9 @@ form-protection module. It registers two types via `hook_captcha()`:
 CAPTCHA's admin UI (`/admin/config/people/captcha`); `configure` points at
 `captcha_settings` — the module has **no settings form or config schema of its own**.
 
+- **Install/enable, the two `hook_captcha` types, challenge generation, server-side
+  validation, routes and libraries** → [captcha/challenge-type.md](captcha/challenge-type.md)
+
 - **Version:** 2.2.0-beta4 (beta). Core `^10 || ^11`. GPL-2.0-or-later.
 - **Dependencies:** `captcha` and `jquery_ui_droppable` (the contrib jQuery UI backport;
   jQuery UI was removed from Drupal core).
