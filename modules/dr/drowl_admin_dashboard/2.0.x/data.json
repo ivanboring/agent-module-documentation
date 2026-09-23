@@ -1,25 +1,39 @@
 {
   "name": "DROWL Admin Dashboard",
   "data_name": "drowl_admin_dashboard",
-  "description": "Provides an administrative dashboard as an overview and entry point for site maintainers.",
+  "description": "Provides an administrative dashboard as helpful overview and entry point for site maintainers.",
   "version": "2.0.x",
   "package": "Administration",
   "composer_namespace": "drupal/drowl_admin_dashboard",
   "composer_requirements": {},
-  "dependent_modules": [],
+  "dependent_modules": [
+    "layout_builder",
+    "node",
+    "system",
+    "user",
+    "views",
+    "drowl_admin",
+    "menu_block",
+    "page_manager",
+    "user_permission_condition"
+  ],
   "configure": null,
-  "core_version_requirement": "^8.9||^9||^10||^11",
+  "core_version_requirement": "^8.9 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/drowl_admin_dashboard",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
-  "suggests": {},
+  "library_dependencies": [
+    "npm-asset/drowl-admin-iconset"
+  ],
+  "suggests": {
+    "npm-asset/drowl-admin-iconset": "Required to use drupal/drowl_admin_dashboard. Expected version: ^1.0"
+  },
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools"

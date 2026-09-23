@@ -1,35 +1,28 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-DROWL Admin provides a bunch of modifications to the Drupal backend plus admin toolbar fixes.
+A CSS-only support module that attaches admin-theme, toolbar, Layout Builder and CKEditor styling fixes to Drupal administration pages, meant to sit under the other DROWL (`drowl_*`) modules.
 
 ---
 
-DROWL Admin bundles a set of backend/admin improvements — modifications to the Drupal admin backend and
-fixes for the admin toolbar, aimed at a nicer editorial/admin experience (from the DROWL agency's admin
-tweaks). It depends on core Layout Builder, in the User interface package.
-
-Use it to apply the DROWL admin/backend tweaks. It is an administration/UI feature affecting the admin
-experience; it does not change content or access and has no access-control role. Enable it to apply the
-modifications.
+DROWL Admin is a small, configuration-free helper from the German agency DROWL. On admin routes it attaches a set of minified CSS libraries that polish the backend: CKEditor tweaks, admin-theme overrides for Gin and Adminimal, Layout Builder overrides for Claro and Gin, and fixes for the admin toolbar and contextual links. It also strips `h1` from the `full_html` CKEditor toolbar's format dropdown and, when the optional `project_wiki_markdown_content` module is present, contributes bundled editorial Markdown documentation through a `ProjectWikiContent` plugin. Its only hard dependency is core Layout Builder; it expects the front-end iconset library `npm-asset/drowl-admin-iconset` to be installed at `/libraries/drowl-admin-iconset/` (a runtime requirements check warns if missing). The module ships no routes, permissions, settings form, config, services or Drush commands — it is essentially declarative CSS attachment driven by three hooks, and is not useful on its own without the other `drowl_*` modules.
 
 ---
 
-- Modify the Drupal admin backend.
-- Fix the admin toolbar.
-- Improve the editorial/admin experience.
-- Depend on core Layout Builder.
-- Apply DROWL admin tweaks.
-- Not change content or access.
-- Have no access-control role.
-- Enable the modifications.
-- Improve the backend UI.
-- Handle admin tweaks.
-- Apply backend fixes.
-- Improve admin toolbar.
-- Enhance the admin.
-- Configure admin UI.
-- Apply the tweaks.
-- Improve admin UX.
-- Handle backend UI.
-- Fix admin UI.
-- Enhance backend.
-- Apply admin modifications.
+- Apply DROWL's admin CSS polish across the Drupal administration backend.
+- Attach CKEditor styling tweaks (`admin_ckeditor_tweaks`) on every admin route.
+- Load Gin admin-theme CSS overrides when the admin theme is Gin.
+- Load Adminimal admin-theme CSS overrides when the admin theme is Adminimal.
+- Apply Layout Builder CSS overrides for the Claro admin theme on Layout Builder routes.
+- Apply Layout Builder CSS overrides for the Gin admin theme on Layout Builder routes.
+- Fix admin toolbar styling via `admin_toolbar_fixes` attached in `hook_toolbar_alter()`.
+- Fix contextual-links styling via the `contextual_links` library.
+- Remove the `h1` option from the `full_html` CKEditor format-tags dropdown (leaves `p;h2;h3;h4;h5;h6;pre`) to keep editors from using page-level H1s.
+- Provide a shared CSS variables base (`drowl_admin/admin`) that other DROWL admin styling builds on.
+- Serve the DROWL admin iconset stylesheet from `/libraries/drowl-admin-iconset/style.css`.
+- Surface a Status Report requirement warning when the iconset library is not installed.
+- Underpin the admin UI of sibling modules such as `drowl_layouts` and `drowl_paragraphs`.
+- Contribute bundled editorial Markdown docs to a project wiki when `project_wiki_markdown_content` is enabled.
+- Document field-display class conventions (`field__label--colon`, `field-items--inline`, `field--label-column`) for editors via that wiki content.
+- Enable a consistent backend look-and-feel across a multi-module DROWL install.
+- Keep all styling changes scoped to admin routes so the public/front-end theme is untouched.
+- Deploy as a low-risk, no-configuration dependency (enable and forget).
+- Standardize Layout Builder editing chrome across Claro and Gin.
