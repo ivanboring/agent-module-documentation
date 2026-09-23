@@ -37,8 +37,8 @@ drush en drutopia_page -y
 ```
 
 This imports the `page` content type, its fields, displays, RDF mapping and
-Pathauto pattern, and grants page create/edit/delete permissions to the Drutopia
-contributor, editor and manager roles.
+Pathauto pattern, and grants page create and edit permissions to the Drutopia
+contributor (own pages), editor and manager (any page) roles.
 
 ## Verify it worked
 

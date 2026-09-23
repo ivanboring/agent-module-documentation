@@ -8,10 +8,10 @@ with a body field, a separate summary field, a paragraph body field
 (`field_body_paragraph`), a meta tags field, Display Suite form and view
 displays (default, full, teaser), an RDF mapping and a Pathauto URL pattern.
 
-Alongside the content model, the feature grants create/edit/delete permissions
-on pages to the Drutopia editorial roles — **contributor**, **editor** and
-**manager** — through its config actions, so an editorial team can start managing
-pages immediately. Everything ships as configuration; there is no custom code,
+Alongside the content model, the feature grants page create and edit permissions
+to the Drutopia editorial roles — **contributor** (create and edit own pages),
+**editor** and **manager** (create and edit any page) — through its config
+actions, so an editorial team can start managing pages immediately. Everything ships as configuration; there is no custom code,
 and security posture is entirely that of the standard node and permissions
 system plus the role grants above.
 

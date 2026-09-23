@@ -1,25 +1,30 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Drutopia Page is a Drutopia base feature that installs a Basic "page" content type and its related fields, displays, path pattern and roles for static content such as an About-us page.
----
-The module is a configuration-only Feature (no PHP): enabling it imports a `node.type.page`, body and summary text fields, a `field_body_paragraph` (entity-reference-revisions to Paragraphs) field, a `field_meta_tags` metatag field, form/view displays (default, full, teaser) built with Display Suite, an RDF mapping, and a `pathauto.pattern.node_page` URL pattern. It also ships `config/actions` that grant page create/edit/delete permissions to the Drutopia `contributor`, `editor`, and `manager` roles.
+Drutopia Page ships a ready-made Basic "Page" content type plus its fields, Paragraphs body builder, Display Suite displays, URL pattern, RDF mapping, and role permission grants as installable configuration.
 
-It depends on the wider Drutopia stack (`drutopia_core`, `drutopia_seo`) plus Paragraphs, Display Suite, Metatag, Pathauto, and Token. Because it is delivered as default config, the typical task is simply to install it and then extend the page type (add fields, tune displays, adjust the pathauto pattern). There are no routes, services, forms, or permissions defined in code beyond the imported config; security posture is entirely that of the standard node/permissions system.
 ---
-- Add a ready-made Basic "page" content type for static content.
-- Give editors a body field plus a separate summary field on pages.
-- Attach Paragraphs to pages via the `field_body_paragraph` field.
-- Add per-page meta tags through the bundled Metatag field.
-- Auto-generate page URL aliases from the bundled pathauto pattern.
-- Grant page create/edit/delete to Drutopia contributor/editor/manager roles.
-- Provide default, full, and teaser view displays via Display Suite.
-- Build an About-us or other static page out of the box.
-- Use as the page foundation for a Drutopia-based site.
-- Extend the page type with additional fields after install.
-- Adjust the node_page pathauto pattern to match your URL scheme.
-- Customize the Display Suite layouts for full and teaser views.
-- Rely on the RDF mapping for structured page metadata.
-- Combine with drutopia_storyline to add timeline paragraphs to pages.
-- Reuse the summary field for teaser listings and search snippets.
-- Manage page SEO via the drutopia_seo dependency.
-- Import the feature as part of a repeatable Drutopia site build.
-- Remove the module to uninstall the page type config (with content caveats).
+
+Drutopia Page is a config-only Features module (bundle `drutopia`) from the Drutopia distribution, and is the recommended replacement for the deprecated `drutopia_landing_page`. It contains no PHP code, routes, services, hooks, or permission definitions of its own. Enabling it imports a `page` node type intended for static content (an "About us" page, a policy page, or any standalone page) together with a small field set: a required `field_summary` (Summary), a `field_body_paragraph` Paragraphs body builder (labelled "Description", targeting the text/image/file/video/slide/update/faq paragraph types), a `field_meta_tags` Metatag field, and a core `body` field that is shipped but hidden in every display. It also imports a Display Suite (`ds_1col`) form display and default/full/teaser view displays, a `promote` base-field override that defaults pages off the front page, a pathauto pattern that aliases pages to `[node:title]`, and an RDF `schema:WebPage` mapping. Config actions grant page create/edit permissions to the Drutopia `contributor`, `editor`, and `manager` roles. It is installed here as a dev checkout tracking the 2.0.x branch and pulls in the Drutopia dependency chain (drutopia_core, drutopia_seo, ds, paragraphs, entity_reference_revisions, metatag, pathauto, menu_ui, rdf, text), so it is normally deployed through the distribution rather than on its own.
+
+---
+
+- Add a fully structured Basic "Page" content type to a site without hand-building fields.
+- Publish static, non-time-sensitive content such as an "About us", contact, or policy page.
+- Replace the deprecated `drutopia_landing_page` module with the current Drutopia page feature.
+- Give editors a required Summary field (`field_summary`) that drives the teaser display and search results.
+- Build page bodies from Paragraphs (text, image, file, video, slide, update, FAQ) via `field_body_paragraph`.
+- Compose long-form pages by stacking reusable paragraph components instead of one WYSIWYG blob.
+- Manage per-page SEO metadata through the Metatag `field_meta_tags` field.
+- Generate clean page URLs automatically (`[node:title]`) via the shipped pathauto pattern.
+- Keep pages off the front page by default through the `promote` base-field override.
+- Add pages to the `main` or `footer` menu directly from the node form (menu_ui, parent `main:`).
+- Present pages consistently using the shipped Display Suite `full` and `teaser` view modes.
+- Render the paragraph body on the full page view through the DS one-column layout.
+- Show a linked title plus summary on page teasers and listings.
+- Track page revisions automatically (`new_revision: true`) for editorial history.
+- Offer optional content preview before saving (`preview_mode: 1`).
+- Expose per-page RDF `schema:WebPage` metadata for structured-data consumers.
+- Grant contributors the ability to create pages and edit their own pages.
+- Grant editors and managers the ability to create and edit any page.
+- Onboard an editorial team with page permissions out of the box, no manual permission setup.
+- Serve as the base "page" feature that other Drutopia site builds and features extend.
+- Provide the page content type that `drutopia_storyline` and similar features build on.
