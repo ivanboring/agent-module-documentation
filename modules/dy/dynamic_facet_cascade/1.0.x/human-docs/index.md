@@ -18,8 +18,8 @@ a **Views page display whose base table is a Search API index**, and the facets 
 block pre‑fills must use that display as their facet source. Because of this, setup
 has a specific order: you create the facets first, then build a "preset" (which
 becomes the block) that chains those facets into an ordered cascade. It depends on
-core **Views**, plus **Search API** and **Facets**, provides its own **permission**,
-and supports Drupal 10 and 11.
+core **Views**, plus **Search API** and **Facets**; its administration is gated by
+the core **Administer site configuration** permission, and it supports Drupal 10 and 11.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

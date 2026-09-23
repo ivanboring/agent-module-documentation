@@ -5,8 +5,7 @@
 - **Drupal 10.4 or 11** (`core_version_requirement: ^10.4 || ^11`).
 - No hard Drupal module dependencies are declared, and no separate PHP or
   third‑party Composer library is required by the module itself.
-- Access credentials for the external **DXP assistant** service you are connecting
-  to. Store these as a secret (see below) — do not paste them into version control.
+- The **script URL** of the DXP assistant service you want to load.
 
 ## Install with Composer
 
@@ -29,23 +28,19 @@ dependencies as needed.
 drush en dxp_assistant -y
 ```
 
-## Store the API credentials securely
+## Set the assistant script URL
 
-If your DXP assistant needs an API key or token, keep it out of code and config. On
-DDEV, save it as an environment variable and restart so the container picks it up:
-
-```bash
-ddev dotenv set .ddev/.env --dxp-api-key=<value>
-ddev restart
-```
-
-Never commit `.ddev/.env`. Where the integration supports it, reference the value
-through a **Key** entity (install `drupal/key` if needed) rather than storing the raw
-secret in configuration.
+Go to **Configuration → User interface → DXP Assistant**
+(`/admin/config/user-interface/dxp-assistant`, permission *administer dxp assistant*)
+and enter the assistant's **script URL**. That URL is stored in the module's
+configuration and loaded on the page for permitted users — the module does not store
+or require any API key or secret of its own. Point it only at a provider you trust,
+since the script runs in your visitors' browsers.
 
 ## Verify it worked
 
 Confirm the module is enabled (`drush pm:list --status=enabled | grep dxp_assistant`),
-then grant its permission to the appropriate roles under **People → Permissions**.
-Because this is an early work‑in‑progress release, check the project page for the
-current steps to confirm the assistant is connecting to your DXP service.
+set the script URL as above, then grant *access dxp assistant* to the roles that should
+load the assistant under **People → Permissions**. Because this is an early
+work‑in‑progress release, check the project page for the current steps to confirm the
+assistant is connecting to your DXP service.

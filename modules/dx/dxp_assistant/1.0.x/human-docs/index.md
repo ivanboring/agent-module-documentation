@@ -1,24 +1,20 @@
 # DXP Assistant — manual setup guide
 
-**DXP Assistant** (`dxp_assistant`) connects your Drupal site to a suite of DXP
-(Digital Experience Platform) products by wiring an on‑site AI/help **assistant** into
-Drupal — loading the assistant's scripts and exposing the endpoints and information
-the assistant needs to function. In practice, it's the integration glue between your
-Drupal site and an external DXP assistant service.
+**DXP Assistant** (`dxp_assistant`) wires an on‑site AI/help **assistant** into
+Drupal by loading the assistant's front‑end script on your pages. In this alpha
+release that is all it does: an administrator enters the assistant **script URL** on
+the module's settings form, and the module adds that `<script>` to the page for the
+users you allow.
 
-The module provides its own **permission** to control access, and it targets **Drupal
+The module provides two **permissions** to control access, and it targets **Drupal
 10.4+ and 11**. It is an early‑stage project: the maintainers describe it as **work in
 progress** (an alpha release), so expect the feature set and configuration to evolve.
 
-Because this is an AI integration that talks to an external service, the important
-operational concern is **credentials and egress**. Any DXP or assistant API key must
-be stored securely as a secret — never hard‑coded or committed. On DDEV, save it as an
-environment variable (`ddev dotenv set .ddev/.env --dxp-api-key=<value>` then `ddev
-restart`) and, where the integration supports it, reference it through a **Key**
-entity rather than pasting the value into a form. Be aware, too, that using a hosted
-AI assistant means site and visitor interactions may be sent to a third‑party
-service, which has both **privacy** and **cost** implications worth confirming before
-you go live.
+The main operational concern is **egress and privacy**: the assistant script is loaded
+straight from the URL you configure and runs in your visitors' browsers, so it can see
+page content and may send interactions to that third‑party service — confirm the
+privacy and cost implications, and only point the script URL at a provider you trust.
+The module itself stores no API key or secret; the only setting is that script URL.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -29,15 +25,15 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 1. [Installation](installation/index.md) — install with Composer and enable the
    module.
 
-This module does not document a dedicated settings form (it is an early
-work‑in‑progress release). Provide the assistant's credentials securely via an
-environment variable / Key as described above, and grant the module's permission to
-the roles that should use the assistant. Consult the project page for the current
-configuration steps for your release.
+The module adds a settings form at **/admin/config/user-interface/dxp-assistant**
+(permission *administer dxp assistant*) with a single **script URL** field, plus a
+second permission, *access dxp assistant*, that decides which users get the assistant
+script on their pages. Set the URL, grant the permissions, and consult the project
+page for the current steps for your release.
 
 ## Where it lives
 
-DXP Assistant integrates an external assistant rather than adding a conventional
-admin settings screen. Its access is governed by the **permission** it provides —
-grant it under **People → Permissions** to the roles that should interact with the
-assistant.
+Configure the assistant at **Configuration → User interface → DXP Assistant**
+(`/admin/config/user-interface/dxp-assistant`). Grant *administer dxp assistant* and
+*access dxp assistant* under **People → Permissions** to the roles that should manage
+and see the assistant.
