@@ -15,8 +15,10 @@ you want the navigation to appear, using the menu whose links you manage in the
 usual place.
 
 The module provides its own permission(s); review them at **People → Permissions**
-after enabling. There is no dedicated settings form — configuration is placing the
-menu block(s) and managing menu links through Drupal's standard menu UI.
+after enabling. Its one dedicated screen is an **Import menus** form at
+**/admin/dsfr/import/menus**, which creates a set of ready-made DSFR menus (and
+optionally their blocks) for you; from there you place the menu block(s) and
+manage menu links through Drupal's standard menu UI.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -27,12 +29,13 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 1. [Installation](installation/index.md) — install the module with Composer and
    enable it (it requires DSFR Core).
 
-There is **no dedicated configuration page**. You set menus up through Drupal's
+Its only dedicated screen is the **Import menus** form at
+**/admin/dsfr/import/menus**; the rest of the work is done through Drupal's
 standard **Menus** and **Block layout** screens, described below.
 
 ## Where it lives in the admin menu
 
-DSFR Menus adds no settings page of its own. You work with it through the core
+Apart from the Import menus form, DSFR Menus works through the core
 tools: manage menu links at **Structure → Menus** (`/admin/structure/menu`), and
 place the DSFR‑styled menu block(s) at **Structure → Block layout**
 (`/admin/structure/block`). Review its permissions at **People → Permissions**

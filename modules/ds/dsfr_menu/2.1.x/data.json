@@ -1,9 +1,9 @@
 {
   "name": "DSFR Menus",
   "data_name": "dsfr_menu",
-  "description": "Creation and management of DSFR-styled menus.",
+  "description": "Creation and management of menus (also works with DSFR child themes).",
   "version": "2.1.x",
-  "package": null,
+  "package": "DSFR",
   "composer_namespace": "drupal/dsfr_menu",
   "composer_requirements": {},
   "dependent_modules": [
@@ -12,7 +12,7 @@
     "drupal:text",
     "dsfr_core"
   ],
-  "configure": null,
+  "configure": "dsfr_menu.import",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -24,22 +24,26 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Site structure"
+    "Site structure",
+    "Theming"
   ],
   "subcategories": [
-    "Navigation menus"
+    "Navigation menus",
+    "Block enhancements"
   ],
   "keywords": [
     "dsfr",
     "menu",
     "navigation",
     "french",
-    "design system"
+    "design system",
+    "footer",
+    "block"
   ],
-  "project_description": "This module has been created to generate standard menus in the DSFR theme. directly in the assigned regions.\n\n Back to top \n\n Dependencies \n \n dsfr_core \n form_options_attributes \n \n Back to top \n\n Install with Drush \n drush en dsfr_menu -y\n Back to top",
+  "project_description": "DSFR Menus is part of the DSFR suite that brings the French State Design System (Systeme de Design de l'Etat) to Drupal. It provides a single admin form that generates a set of standard, DSFR-styled menus (a social-links menu, up to six footer-top column menus, an institutional menu, and a mandatory legal/last footer menu) as real Drupal menu and menu_link_content entities, pre-filled with placeholder or officially-supplied links. Optionally it also creates the matching system_menu_block block instances and places each menu into its expected DSFR theme region, so a French government site obtains compliant footer navigation without hand-building menus and blocks. It builds on dsfr_core and works with DSFR child themes.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
