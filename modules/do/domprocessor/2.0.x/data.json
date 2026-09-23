@@ -1,11 +1,13 @@
 {
   "name": "DOM Processor API",
   "data_name": "domprocessor",
-  "description": "Provides an API for DOM processors that transform rendered HTML.",
+  "description": "Provides an API for other modules to transform the rendered response DOM and rewrite outgoing URLs.",
   "version": "2.0.x",
   "package": null,
   "composer_namespace": "drupal/domprocessor",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "ext-dom": "*"
+  },
   "dependent_modules": [],
   "configure": null,
   "core_version_requirement": "^9 || ^10 || ^11",
@@ -17,9 +19,9 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
@@ -32,9 +34,11 @@
     "html",
     "processor",
     "api",
-    "transformation"
+    "transformation",
+    "response",
+    "url-rewrite"
   ],
-  "project_description": "An API that helps other modules manipulate the response DOM.",
+  "project_description": "A developer API that lets other modules post-process the final rendered HTML of a page and rewrite outgoing link/form URLs, by registering tagged services against a global response event subscriber. It ships no UI, routes, permissions or config; extension is done purely in code via service tags.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",
