@@ -5,11 +5,14 @@
   "version": "0.0.x",
   "package": null,
   "composer_namespace": "drupal/drupalforge_deploy",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/backup_migrate_aws_s3": "*"
+  },
   "dependent_modules": [
-    "backup_migrate_aws_s3:backup_migrate_aws_s3"
+    "backup_migrate_aws_s3",
+    "backup_migrate"
   ],
-  "configure": null,
+  "configure": "drupalforge_deploy.deploy",
   "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -24,7 +27,8 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Administration tools"
+    "Administration tools",
+    "Developer tools"
   ],
   "subcategories": [
     "Deployment / release management"
@@ -34,9 +38,10 @@
     "deploy",
     "launch",
     "backup",
+    "git",
     "hosting"
   ],
-  "project_description": "Drupal Forge Deployment integrates with Drupal Forge to help you launch a copy of your Drupal site. The module handles database export, Git repository detection, and generates a launch URL with all required parameters.\n\n Back to top \n\n Requirements \n Your Drupal site must have:\n\n \n Drupal 8 or higher \n A Git repository with a GitHub or GitLab remote \n Backup and Migrate module with AWS S3 destination configured \n \n Back to top \n\n Getting started \n \n Enable the module \n Configure your Backup and Migrate AWS S3 destination \n Open the Deploy page at /admin/config/development/drupalforge-deploy \n Follow the readiness steps to verify your configuration \n Select a Git branch and backup, then click Deploy \n \n For detailed setup instructions and troubleshooting, see the module documentation .\n\n \n AI disclosure \n This module was developed with assistance from GitHub Copilot.\n\n \n Back to top \n\n About Drupal Forge \n Drupal Forge is a community project that supports Drupal adoption and contribution. Support us on Open Collective .\n\n Back to top",
+  "project_description": "Drupal Forge Deployment is an experimental (0.0.x pre-release) module that assembles a Drupal Forge \"DrupalPod\" launch URL from your existing site context. It inspects the local Git repository (via shell-out git commands) to find a supported GitHub or GitLab remote and its branches, discovers database backups stored in a Backup and Migrate AWS S3 destination, resolves a deployment container image from the running PHP version, and combines these into an https://www.drupalforge.org/drupalpod/new# fragment URL with DP_REPO_BRANCH, DP_IMAGE and S3/AWS environment parameters. The admin UI is a single four-step readiness wizard at /admin/config/development/drupalforge-deploy, gated by the module's own 'administer drupalforge deploy' permission. It hard-depends on backup_migrate_aws_s3 (which in turn requires backup_migrate) and requires a public GitHub or GitLab remote; private repositories are not yet supported.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
