@@ -1,40 +1,48 @@
 {
   "name": "Easepick",
   "data_name": "easepick",
-  "description": "Adds the easepick JavaScript date-picker interface to Drupal date inputs.",
+  "description": "Attaches the easepick JavaScript date/range picker to Drupal forms via a form flag and hook_form_alter.",
   "version": "1.1.x",
   "package": "Custom",
   "composer_namespace": "drupal/easepick",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^9.4||^10||^11",
+  "core_version_requirement": "^9.4 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/easepick",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "@easepick/bundle 1.2.1 (loaded from cdn.jsdelivr.net)",
+    "@easepick/core 1.2.1 (loaded from cdn.jsdelivr.net)",
+    "@easepick/datetime 1.2.1 (loaded from cdn.jsdelivr.net)",
+    "@easepick/amp-plugin / kbd-plugin / lock-plugin / range-plugin / preset-plugin / time-plugin 1.2.1 (loaded from cdn.jsdelivr.net)"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
+    "Developer tools",
     "Content editing experience"
   ],
   "subcategories": [
-    "Form elements"
+    "JavaScript library",
+    "Date/time fields"
   ],
   "keywords": [
     "easepick",
     "date picker",
-    "date",
+    "date range",
     "calendar",
-    "widget"
+    "form",
+    "javascript library"
   ],
-  "project_description": "Easepick is a date picker. Tiny size, no dependencies. This module allows integration of easepick into Drupal Forms.\n\n No configuration setting at the current stage. With this module you can implement the easepick interface with your date fields.\n\n Features \n * No dependencies\n\n * Uses Shadow DOM(opens new window)\n\n * Supports plugins\n\n Community Documentation \n * Module issues queue\n\n * Doc at https://easepick.com/ \n\n Usage \n Add the \"easepick\" to your forms via code\n\n \n\n....\n\n // Give easepick features to this form.\n\n $form['easepick'] = [\n\n '#value' => TRUE,\n\n '#type' => 'value',\n\n ];\n\n....\n\n \n\n Back to top",
+  "project_description": "Easepick is a lightweight, dependency-free JavaScript date picker. This Drupal module wraps the easepick library so it can be attached to Drupal forms. It ships Drupal asset libraries for the easepick bundle, core, datetime, and each easepick plugin (amp, kbd, lock, range, preset, time), all sourced from the jsDelivr CDN, plus a small initializer (assets/js/easepick.js) and a demo route (/easepick/example). Integration is code-driven: an implementing developer adds a value element $form['easepick']['#value'] = TRUE to a form, and easepick_form_alter() attaches the easepick.core and drupal.easepick libraries. The bundled initializer instantiates easepick against the field whose HTML id is edit-checkin. The module has no admin UI, no configuration, no permissions, no services and no config schema.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

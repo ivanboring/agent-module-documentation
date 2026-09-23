@@ -2,7 +2,7 @@
 
 Setting up Easy Google Analytics Counter has a Google side and a Drupal side: create
 API access in Google, enter the details in Drupal, let cron pull the numbers, then
-use the resulting `pageview` data in Views.
+use the resulting `page_views` data in Views.
 
 ## 1. Set up access in Google
 
@@ -29,7 +29,7 @@ aggregated page‑view data from Google Analytics and updates the stored counts.
 
 ## 4. Use the counts in Views
 
-Once cron has populated the data, the **`pageview`** column on `node_field_data` is
+Once cron has populated the data, the **`page_views`** column on `node_field_data` is
 available in Views. Build or update a View to:
 
 - **show** the page‑view count as a field on a listing,

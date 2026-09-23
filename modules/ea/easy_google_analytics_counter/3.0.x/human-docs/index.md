@@ -9,7 +9,7 @@ free and exposes it through an API, so this module simply fetches those numbers 
 schedule and stores them where Views can use them. The **3.x** branch is **GA4
 compatible**.
 
-Once installed and configured, the module adds a **`pageview` column to the
+Once installed and configured, the module adds a **`page_views` column to the
 `node_field_data` table**. That column is immediately usable in **Views** as a
 field, a filter, and a sort — so building a "Top 10 most‑read articles" block, for
 example, is just a matter of adding a View that sorts on it. A **cron** run keeps the
@@ -38,5 +38,5 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 
 The settings form is at `/admin/config/easy_google_analytics_counter/admin`
 (route `easy_google_analytics_counter.admin_form`). After configuring it and letting
-cron run, the fetched counts appear as the **`pageview`** field on nodes, ready to
+cron run, the fetched counts appear as the **`page_views`** field on nodes, ready to
 use in Views.
