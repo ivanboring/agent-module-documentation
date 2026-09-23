@@ -1,7 +1,7 @@
 {
   "name": "Dripyard Simple Login",
   "data_name": "dripyard_simple_login",
-  "description": "Replaces the login form with magic-link (passwordless) authentication by repurposing core's password-reset flow. Uses core's secure reset token (user_pass_rehash + hash_equals + expiry) and core's password-reset flood control.",
+  "description": "Replaces the login form with magic-link (passwordless) authentication by repurposing Drupal core's password-reset flow. The login route is swapped for an email-entry form that triggers core's password_reset mail; clicking the one-time link runs core's resetPassLogin() (secure one-time-login HMAC token, active-user + timeout checks). Reuses core's password-reset flood control and redirects the standard password-reset request form to the login form.",
   "version": "1.0.x",
   "package": "Dripyard",
   "composer_namespace": "drupal/dripyard_simple_login",
@@ -21,13 +21,13 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Access control"
   ],
   "subcategories": [
-    "Authentication"
+    "Password reset"
   ],
   "keywords": [
     "magic link",

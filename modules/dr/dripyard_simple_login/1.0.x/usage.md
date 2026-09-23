@@ -1,41 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Dripyard Simple Login replaces default login routes with magic link authentication.
+Dripyard Simple Login replaces Drupal's password login with magic-link (passwordless) authentication by repurposing core's password-reset flow.
 
 ---
 
-Dripyard Simple Login **replaces the login form with magic-link (passwordless) authentication** — instead of
-a username/password form, users enter their email/username and receive a one-time login link; clicking it logs
-them in. It does this by **repurposing core's password-reset functionality**. It depends on core User.
-
-Use it for passwordless login. It is an **authentication** feature, and it is built on the right foundation: the
-magic link uses core's password-reset route (`user.reset.login`), and the module's controller **delegates to
-core's `resetPassLogin()`** — so the link is validated by core's secure one-time-login token mechanism
-(`user_pass_rehash()` HMAC over uid/timestamp/last-login/password-hash, `hash_equals` comparison, time-limited
-expiry, single-use). It also **reuses core's password-reset flood protection** (`user.password_reset_ip` limits)
-to rate-limit link requests. Security notes inherent to magic-link auth: account security becomes **email-account
-security + link delivery** — anyone who can read the user's inbox or intercept the link can log in — so ensure TLS
-on mail delivery, an appropriately short reset-link timeout, and consider it alongside (not as a downgrade from)
-other factors for privileged accounts. Enable it to switch to magic-link login.
+Dripyard Simple Login is a small Drupal 11 module that turns the standard username/password login into passwordless, magic-link authentication without introducing a new token system. It moves the login form to `/login` and shows an email-entry form (`MagicLinkLoginForm`); on submit it triggers core's `password_reset` mail through `_user_mail_notify()`, so the user receives core's ordinary one-time-login link. Clicking that link hits core's `user.reset.login` route, which the module points at its own `UserResetController` — a thin subclass of core's `UserController` that calls `parent::resetPassLogin()` and only swaps in a friendlier "You're logged in!" message. Because the whole flow rides on core's password-reset mechanism, the link is validated by core's own one-time-login HMAC token (checked with a constant-time comparison, gated on an active account and the `password_reset_timeout` window, single-use) and requests are rate-limited by core's password-reset flood settings. The module also keeps a password fallback (a "Use password" button routes to `/login-password`, which renders core's `UserLoginForm`), redirects the standard "request new password" form (`user.pass`) back to `/login`, removes the "Request new password" local task, and adds optional Gin Login theming for the password page. It depends only on core's User module and requires one manual step: rewording the "Password recovery" email template so it reads as a login link. It ships no config, no permissions, no Drush commands, and no plugins.
 
 ---
 
-- Replace login with magic links.
-- Send a one-time login link by email.
-- Repurpose core password-reset.
-- Depend on core User.
-- Delegate to core resetPassLogin() (secure token).
-- Validate via user_pass_rehash HMAC + hash_equals + expiry (single-use).
-- Reuse core's password-reset flood control (user.password_reset_ip).
-- REDUCE account security to email + link delivery (inherent to magic-link).
-- Ensure TLS mail delivery + a short reset-link timeout.
-- Consider other factors for privileged accounts.
-- Enable it for magic-link login.
-- Handle passwordless login.
-- Send login links.
-- Log users in.
-- Configure the login.
-- Authenticate users.
-- Handle the link.
-- Rate-limit requests.
-- Deliver links securely.
-- Provide magic-link login.
+- Switch a Drupal 11 site to passwordless, magic-link login without adding a custom token/authentication system.
+- Let users log in by entering only their email address and clicking a one-time link.
+- Reuse Drupal core's proven password-reset/one-time-login mechanism instead of a bespoke magic-link implementation.
+- Move the login form to `/login` (core `user.login` route repurposed via `RouteSubscriber`).
+- Keep a traditional password login available as a fallback at `/login-password` (core `UserLoginForm`).
+- Give users a one-click "Use password" escape hatch on the magic-link form.
+- Deliver login links through the existing site mail system (no new mail integration to configure).
+- Rate-limit login-link requests using core's existing flood control (`user.password_reset_ip` limits).
+- Show the same neutral confirmation message whether or not the email matches an account.
+- Redirect anyone hitting `/user/password` (`user.pass`) to the login form with a helpful message.
+- Remove the "Request new password" tab so the login page presents a single, consistent path.
+- Simplify the post-login message shown after a link is clicked ("You're logged in!").
+- Let users optionally set a password after logging in (via core's one-time-login edit flow).
+- Onboard new or infrequent users who never set a password.
+- Reduce password-reset support tickets by making "reset" and "login" the same action.
+- Apply consistent Gin Login theming to both `/login` and `/login-password` when the Gin Login module is active.
+- Prototype a lean passwordless UX to build on, since the maintainer positions it as inspiration/reference code.
+- Pair with a TLS-secured mail transport so login links are delivered securely.
+- Tune link lifetime and abuse limits from core's Account settings page (`/admin/config/people/accounts`).
+- Serve as a drop-in alternative to heavier magic-link/passwordless contrib modules when you only need core behavior.

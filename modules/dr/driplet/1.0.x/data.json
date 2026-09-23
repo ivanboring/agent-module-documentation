@@ -1,13 +1,15 @@
 {
   "name": "Driplet",
   "data_name": "driplet",
-  "description": "A WebSocket-based real-time notifications system.",
+  "description": "Provides WebSocket-based real-time notifications system.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Driplet",
   "composer_namespace": "drupal/driplet",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "make0x20/driplet": "^0.1"
+  },
   "dependent_modules": [],
-  "configure": null,
+  "configure": "driplet.settings",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -16,16 +18,20 @@
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [],
+  "submodules": [
+    "driplet_log",
+    "driplet_notify"
+  ],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "User engagement"
   ],
   "subcategories": [
-    "Activity / notification messages"
+    "Activity / notification messages",
+    "Toast notifications"
   ],
   "keywords": [
     "websocket",

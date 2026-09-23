@@ -20,10 +20,10 @@ page they're on.
 Two optional submodules ship as worked examples: **`driplet_log`** for viewing
 logs in real time, and **`driplet_notify`** for real‑time push notifications.
 
-Because the JWT signing secret is what stops anyone from forging a token and
-impersonating another user, treat it as a real secret — store it in an
-environment variable rather than in committed configuration (see
-[Configuration](configuration/index.md)). Note that much of Driplet's real power
+The JWT signing secret ties Drupal to the microservice, so set it to a strong,
+unique value of your own and use the same value on both sides (see
+[Configuration](configuration/index.md)); don't ship the placeholder that comes
+in the default configuration. Note that much of Driplet's real power
 is exposed through a PHP service (`driplet.service`) and a JavaScript client, so
 building notifications into your site involves some developer work beyond the
 admin UI.
@@ -36,8 +36,8 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 
 1. [Installation](installation/index.md) — install with Composer, enable the
    module and its example submodules, and run the Driplet microservice.
-2. [Configuration](configuration/index.md) — set the JWT signing secret securely
-   and point Drupal at your running Driplet microservice.
+2. [Configuration](configuration/index.md) — set the JWT signing secret and
+   point Drupal at your running Driplet microservice.
 
 ## Where it lives in the admin menu
 
