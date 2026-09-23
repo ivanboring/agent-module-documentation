@@ -1,43 +1,51 @@
 {
   "name": "DROWL Layouts",
   "data_name": "drowl_layouts",
-  "description": "Provides ZURB Foundation-based layouts for Layout Builder / Layout Discovery.",
+  "description": "Provides DROWL's default ZURB Foundation layouts.",
   "version": "4.2.x",
   "package": "Layout",
   "composer_namespace": "drupal/drowl_layouts",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/twig_real_content": ">=1"
+  },
   "dependent_modules": [
+    "drupal:layout_discovery",
     "drupal:layout_builder",
-    "drupal:layout_discovery"
+    "twig_real_content:twig_real_content"
   ],
-  "configure": null,
-  "core_version_requirement": "^9.3||^10||^11",
+  "configure": "drowl_layouts_settings",
+  "core_version_requirement": "^9.3 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/drowl_layouts",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/foundation_sites": "*"
+  },
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Site structure"
   ],
   "subcategories": [
-    "Layout Builder"
+    "Layout Builder",
+    "Grid layout"
   ],
   "keywords": [
     "layout",
     "foundation",
     "zurb",
     "layout builder",
-    "responsive"
+    "layout paragraphs",
+    "responsive",
+    "grid"
   ],
-  "project_description": "Provides DROWL 's default ZURB Foundation layout builder layouts. Shared with the community for other ZURB Foundation Drupal users.\n\n Important: Because Foundation is basically dead, we switched over to Bootstrap. So the successor of this module is DROWL Layouts BS .\n\n This module is heavily based on the core issue [#2904550] which breaks config import / export when using custom layouts in theme because the theme is handled like a (missing) module. So you will need the patch applied until this is FIXED.\n\n Back to top \n\n Versions \n 4.x: \n \n Uses layout_paragraphs (assuming layout_paragraphs:^2 from 4.2 on) \n Foundation XY-Grid classes \n Drupal ^8.8 / 9 Support \n \n 3.x : \n Skipped. Using 4.x to be equal to other compatible drowl_* modules.\n\n 8.x-2.x : \n \n Written with & for layout_builder (& entity_reference_layouts) in mind. \n Drupal ^8.8 / 9 Support \n No further development \n \n 8.x-1.x : \n \n Before layout_builder! \n NO Drupal ^8.8 / 9 Support \n \n The default templates files are written for Zurb Foundation, but all classes are set inside the template files. So you can modify this easily for Bootstrap or whatever you like.\n\n Various layout options available, like:\n\n \n Column width (equal to core layouts) - some width variants for the coloumns \n Horizontal & vertical alignment of columns (Foundations .align-X classes) \n Section width (Viewport width, Page width, ...) \n Collapsing grid gutter per device size \n Extra classes \n \n Theme the entity reference layout widget \n You can simply add a library to your custom theme called:\n\n \n 2.x - 3.x: \"YOURTHEME/drowl_layouts_erl_additions\" \n 4.x: \"YOURTHEME/drowl_layouts_layout_paragraphs_additions\" \n \n DROWL Layouts module will search for this library in the current default theme and attach it. This way you are able to add CSS & JS files to improve the ERL widget and archive more realistic preview styles for your paragraphs.\n\n Back to top \n\n Helpful Modules to extend the functionality of DROWL Layouts \n \n https://www.drupal.org/project/layout_section_classes \n \n Back to top \n\n Supporting this module \n Support DROWL's ♥ FOSS work on this module on OpenCollective! \n Drupal and this module are FOSS. However, it takes dedicated people to develop and maintain. And they need YOU to give back! \n\n We're committed to building and maintaining Drupal modules that benefit the entire community.\n\n Supporting us on OpenCollective helps us continue to improve, innovate and contribute to Drupal's future. Every pledge makes a difference!\n\n If this module has helped you, we would be very grateful for your donation to support its further development and maintenance .\n\n Support our FOSS development ♥️ \n\n You can also speed up the development of features or bugfixes you'd love to see, by sponsoring and giving back!\n\n Sponsor a feature or bugfix 🚀 \n\n Let's make Drupal even better, together! \n\n \n Back to top \n\n Development proudly sponsored by German Drupal Friends & Companies: \n webks: websolutions kept simple ( https://www.webks.de )\n\nand\n\n DROWL: Drupalbasierte Lösungen aus Ostwestfalen-Lippe (OWL), Germany ( https://www.drowl.de )\n\n Back to top",
+  "project_description": "DROWL Layouts ships DROWL's set of ZURB Foundation (XY-Grid) based section layouts as Layout API / Layout Discovery plugins, usable in Layout Builder and Layout Paragraphs. It provides one-through-six-column layouts (stacked and unstacked variants), page/component layouts (Node Detail Default, Card, Media Object) and a CSS-grid based Dynamic Content Grid. Each configurable layout exposes per-section options: column widths, horizontal and vertical cell alignment (Foundation .align-* classes), section width (page/viewport width), collapsing grid gutters per device size, and free-text extra classes. All Foundation grid classes live in the Twig templates so the markup can be adapted to Bootstrap or another framework. The module depends on core Layout Discovery + Layout Builder and on Twig Real Content (used for realistic empty-region detection in previews). Because Foundation is effectively end-of-life the maintainers now recommend the successor project DROWL Layouts BS (Bootstrap).",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",
