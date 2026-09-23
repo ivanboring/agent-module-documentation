@@ -1,14 +1,14 @@
 {
   "name": "DOI Publications",
   "data_name": "doi_search",
-  "description": "Provides a search and service for DOI (Digital Object Identifier) publications.",
+  "description": "Provides a search and service for DOI publications.",
   "version": "2.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/doi_search",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^8.8||^9||^10||^11",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/doi_search",
@@ -19,22 +19,26 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
+    "Content display",
     "Site search"
   ],
   "subcategories": [
-    "Search backends"
+    "Bibliography / citations"
   ],
   "keywords": [
     "doi",
+    "crossref",
     "publications",
-    "search",
+    "bibliography",
+    "citations",
     "academic",
-    "metadata"
+    "metadata",
+    "scholarly"
   ],
-  "project_description": "Features: \n\n This module provides a service (doi_search.manager) that allows retrieving information publications using DOI ( https://www.doi.org/ ).\n\nUsage example: $data = \\Drupal::service('doi_search.manager')->getData({DOI})\n\n It also provides a search page in /doi-search were you can search for the publications.\n\n The API used can be consulted here http://api.crossref.org/swagger-ui \n\n Configuration: \n\n Configure the permissions in /admin/people/permissions/module/doi_search",
+  "project_description": "DOI Publications looks up scholarly publication metadata by DOI (Digital Object Identifier) from the Crossref API. It provides a search page at /doi-search where a permitted user enters a DOI and sees the resolved title, authors, date, abstract, journal/container, links and cited references, plus a reusable service (doi_search.manager) whose getData($doi) method returns the Crossref record for use by other code (the companion doi_field module depends on it). It targets academic and library sites that reference works by DOI. There is no settings form; the only configuration is granting the 'access doi search' permission at /admin/people/permissions/module/doi_search.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
