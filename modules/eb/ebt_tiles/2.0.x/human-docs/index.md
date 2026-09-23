@@ -8,9 +8,8 @@ Tiles block type is ready to place.
 It is part of the **Extra Block Types (EBT)** family, sharing the **EBT Core**
 (`ebt_core`) base for common design options — spacing, background, borders, and
 container width — and it also depends on **Paragraphs** (each tile is a Paragraph
-item). It is a display block; because the tile content is edited with a WYSIWYG
-editor, its output is subject to the text format you allow, so use a restricted
-format for untrusted editors, as always.
+item). It is a display block: tile text is edited with the WYSIWYG editor and
+rendered through the text format you assign to the block's fields.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
