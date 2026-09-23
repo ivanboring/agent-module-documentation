@@ -10,7 +10,7 @@ inline in rich text. It adds two field types (`dsfr4drupal_picker_icon`, `dsfr4d
 matching widgets, formatters and text-format filters (`<dsfr-icon>`, `<dsfr-pictogram>`), plus two CKEditor 5
 toolbar buttons. Icon and pictogram sets are detected automatically from the installed DSFR library, so nothing
 extra is needed when you update it. It ships example/link/media submodules and is configured at
-`dsfr4drupal_picker.settings`, in the DSFR for Drupal package. Version 1.2.0 (branch 1.2.x), core
+`dsfr4drupal_picker.settings`, in the DSFR for Drupal package. Version 1.2.1 (branch 1.2.x), core
 `^10.3 || ^11 || ^12`, depends on core `field`.
 
 Use it on DSFR-based French government sites. It needs two webroot libraries — the DSFR library at

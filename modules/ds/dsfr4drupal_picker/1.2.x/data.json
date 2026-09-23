@@ -5,8 +5,12 @@
   "version": "1.2.x",
   "package": "DSFR for Drupal",
   "composer_namespace": "drupal/dsfr4drupal_picker",
-  "composer_requirements": {},
-  "dependent_modules": [],
+  "composer_requirements": {
+    "ext-iconv": "*"
+  },
+  "dependent_modules": [
+    "field"
+  ],
   "configure": "dsfr4drupal_picker.settings",
   "core_version_requirement": "^10.3 || ^11 || ^12",
   "active_installs": null,
@@ -28,14 +32,16 @@
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [
-    "dsfr4drupal_picker (Plugin/Dsfr4DrupalPicker)"
+    "Dsfr4DrupalPicker"
   ],
   "categories": [
     "Content editing experience"
   ],
   "subcategories": [
     "Form widgets / select UI",
-    "CKEditor plugins"
+    "CKEditor plugins",
+    "Text format filters",
+    "Icon management"
   ],
   "keywords": [
     "dsfr",
