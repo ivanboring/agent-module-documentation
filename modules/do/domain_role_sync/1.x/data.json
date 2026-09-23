@@ -1,9 +1,9 @@
 {
   "name": "Domain role synchronization",
   "data_name": "domain_role_sync",
-  "description": "Sync users to domains when they get a role, and vice versa.",
+  "description": "Automatically grants configured roles to a user, on save, based on the Domain Access domains they are affiliated with (per-domain role mapping stored as third-party settings).",
   "version": "1.x",
-  "package": null,
+  "package": "Domain",
   "composer_namespace": "drupal/domain_role_sync",
   "composer_requirements": {},
   "dependent_modules": [
@@ -19,7 +19,7 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
@@ -27,7 +27,8 @@
     "Access control"
   ],
   "subcategories": [
-    "User roles & permissions"
+    "User roles & permissions",
+    "Multi-domain / affiliate sites"
   ],
   "keywords": [
     "domain",
@@ -36,7 +37,7 @@
     "access",
     "multisite"
   ],
-  "project_description": "Simple module that allows to associate a Domain\n\nwith one or more roles so when a new user is\n\ncreated or saved it will also get the roles\n\nassociated with the domain if they are affiliated with it.\n\n Back to top \n\n Motivation \n Some Drupal modules provide functionality based on granular roles\n\nbut they don't care about domains so this module can serve as\n\nbridge for functionality that only works with permissions/roles.\n\nIt usually requires that you have create a role per domain.\n\n For example Menu admin per menu \n\nallows you to create a different menu per domain and give permissions to edit each menu to\n\nthe editors the role associated with each domain.\n\n Back to top \n\n Roadmap \n \n Remove role when the affiliation with the domain ends. \n Two way synchronyzation: Enable the affiliation to a domain when a user gets a certain role. \n \n Back to top \n\n Similar modules \n \n https://www.drupal.org/project/domain_role_access \n Back to top",
+  "project_description": "Domain role synchronization is a small bridge between the Domain (Domain Access) ecosystem and Drupal's role system. An administrator associates a domain with one or more roles; whenever a user affiliated with that domain (via the field_domain_access field) is created or saved, the module adds the domain's mapped roles to that user. The mapping is stored as third-party settings on each Domain config entity and edited from a fieldset added to the Domain edit form. It is useful for wiring role-only tools (for example Menu admin per menu) into a per-domain structure by keeping a role-per-domain assignment in step with domain affiliation. In this 1.x dev branch the sync is one-directional and additive only: it grants roles from domain affiliation on user presave; it does not remove roles when an affiliation ends, and the reverse direction (adding a domain affiliation when a user gains a role) is on the roadmap and not implemented.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
