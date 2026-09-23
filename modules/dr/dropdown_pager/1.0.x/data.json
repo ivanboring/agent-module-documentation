@@ -21,13 +21,13 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"
   ],
   "subcategories": [
-    "Pagers"
+    "Pagers & lazy loading"
   ],
   "keywords": [
     "pager",
@@ -36,7 +36,7 @@
     "accessible",
     "pagination"
   ],
-  "project_description": "Provides an accessible dropdown-based pager option for Drupal Views. Replaces the standard full pager with a compact dropdown button that saves space while maintaining all core pager functionality.\n\n Features \n Basic Functionality: \n\n- Dropdown-based pagination interface replacing the standard full pager\n\n- Compact button showing current page (e.g., \"5 / 6\")\n\n- Full navigation: First, Previous, Next, Last buttons\n\n Unique Features: \n\n- WCAG 2.1 AA compliant with ARIA labels and keyboard navigation\n\n- Optional search field to quickly jump to specific pages\n\n- Customizable text templates for button and page links\n\n Post-Installation \n No separate configuration page. Configure directly in Views:\n\n 1. Edit a View (Structure → Views)\n\n2. Go to Pager settings\n\n3. Select \"Paged output, dropdown pager\"\n\n4. Configure options (items per page, templates, search, etc.)\n\n5. Save the View\n\n The dropdown pager appears automatically on the frontend. Fully themeable via `views-dropdown-pager.html.twig` template.\n\n Additional Requirements \n - Drupal 10.3+ or Drupal 11+\n\n- Views module (core)\n\n No additional dependencies required.\n\n Back to top",
+  "project_description": "Provides an accessible dropdown-based pager option for Drupal Views. Replaces the standard full pager with a compact dropdown button that saves space while keeping full navigation (First, Previous, Next, Last). The plugin exposes a Views pager (id \"dropdown\", label \"Paged output, dropdown pager\") built on core's SqlBase, rendered through the themeable views-dropdown-pager.html.twig template and an accessible JS/CSS library. Features an optional numeric search field to jump to a page, customizable text templates for the button/page links, ARIA labelling and full keyboard navigation (WCAG-oriented). No configuration page of its own: select it per View under Pager settings. Requires Drupal 10.3+ or 11 and core Views; no other dependencies.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

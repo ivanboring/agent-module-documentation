@@ -33,22 +33,15 @@ Click **Save configuration** when you're done.
 
 ## Handling the API key securely
 
-The API key lets anyone act on your Dropbox Sign account, so protect it. The
-module already stores it encrypted through the Encryption module — make sure that
-module's encryption profile and key are properly set up, and keep the encryption
-key itself out of version control.
+The API key lets anyone act on your Dropbox Sign account, so protect it. You
+enter it on the settings form, and the module stores it **encrypted** through the
+**Encryption** module rather than as plain text — so set up Encryption's
+encryption profile and key first (that is a dependency of this module). Keep the
+encryption key itself out of version control, and keep exported configuration out
+of any location you would not want the (encrypted) value to travel to.
 
-If you prefer to keep the raw key entirely out of the database and out of exported
-configuration, store it in an environment variable and reference it from
-`settings.php` via `getenv()`, or through a **Key** entity. With DDEV:
-
-```bash
-ddev dotenv set .ddev/.env --dropbox-sign-api-key=<your-key>
-ddev restart
-ddev exec 'test -n "$DROPBOX_SIGN_API_KEY"'   # exit status 0 means it is set
-```
-
-(never commit `.ddev/.env`).
+The module reads the key only from this encrypted configuration; it does not read
+it from an environment variable or a Key entity.
 
 ## Security notes
 
