@@ -1,17 +1,18 @@
 {
   "name": "Domain Role Access",
   "data_name": "domain_role_access",
-  "description": "Grants domain access based on user roles (per-role domain access, built on Domain Access).",
+  "description": "Adds per-role domain access to Domain Access: assign roles to a domain and members of those roles gain that domain's access (OR-combined with the per-user domain_access field).",
   "version": "2.1.x",
   "package": null,
   "composer_namespace": "drupal/domain_role_access",
   "composer_requirements": {},
   "dependent_modules": [
     "domain:domain",
-    "domain:domain_config"
+    "domain:domain_config",
+    "domain:domain_access"
   ],
   "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/domain_role_access",
@@ -22,13 +23,13 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Access control"
   ],
   "subcategories": [
-    "Domain access"
+    "Multi-domain / affiliate sites"
   ],
   "keywords": [
     "domain",
