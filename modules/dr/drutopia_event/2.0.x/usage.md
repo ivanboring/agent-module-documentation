@@ -1,33 +1,30 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Installs a ready-made Event content type and its supporting configuration (date/date-range field, event type vocabulary, media image, paragraphs body, views listing, facets, pathauto and metatag) as a Drutopia feature.
+Drutopia Event installs a ready-made Event content type with a date-range field, an event-type taxonomy, a faceted /events listing, and role permission grants — all as shipped configuration.
 
 ---
 
-Drutopia Event is a configuration bundle (a Features-managed base feature, `bundle: drutopia`, `required: true`) rather than a code-heavy module: it ships almost entirely as `config/install` YAML. Enabling it creates the `event` node type with an event date field (`field_event_date`, datetime range), an `event_type` taxonomy vocabulary and reference, tags/topics references, a media/focal-point image, a summary and a paragraphs body, plus multiple view displays (card, teaser, full, micro, simple_card, search_index). It also provisions a Search API index, facets (event type, topics), a Views listing (`view.event.page_listing`) with an "Add event" action link, pathauto URL patterns, metatag defaults and a block visibility group for event listings.
-
-Because it is a feature, its behavior depends on a large stack of contrib modules (Drutopia core/SEO, Display Suite, Paragraphs, Facets, Search API, Focal Point, Media Library modify, Field Group, Metatag, Pathauto, Entity Reference Revisions). `config/actions` grants event create/edit/delete-style permissions to the Drutopia `contributor`, `editor` and `manager` roles via config actions. There is no custom PHP, route, service or permission defined by the module itself — access to events follows the standard node access system and the roles configured by the actions. Typical setup is simply enabling the module within a Drutopia site and then authoring events.
+Drutopia Event is a config-only "base feature" from the Drutopia distribution. It ships no PHP, routes, services, or permissions of its own; everything is YAML config imported at install time. It creates an `event` node type whose defining field is `field_event_date`, a required datetime **range** (start/end) field, plus an `event_type` taxonomy reference for categorization. Around that it provides summary, body, a paragraph body, a media image (and a deprecated legacy image field), tags, topics, and meta-tag fields, a form display and seven view displays (default, full, teaser, card, simple_card, micro, search_index). A Search API index (`event`, database server) feeds a Views listing that publishes an `/events` page (in the main menu), an "Upcoming events" block filtered to events dated now-or-later, and exposes "Event type" and "Event Topics" facets. Two pathauto patterns give clean URLs (`events/[node:title]` for events, `[term:vocabulary]/[term:name]` for event-type terms). Config actions grant event-editing permissions to the existing Drutopia contributor, editor, and manager roles. It is normally installed with the full Drutopia distribution rather than standalone; on a plain site its long dependency chain must be present first.
 
 ---
 
-- Install a complete Event content type in one step.
-- Capture event start/end via a datetime range field.
-- Categorize events with an event type taxonomy.
-- Tag events with topics and tags references.
-- Add a focal-point media image to events.
-- Compose event bodies with Paragraphs.
-- List events through the bundled Views page (`view.event.page_listing`).
-- Provide an "Add event" action link on the listing.
-- Let visitors filter events with facets (type, topics).
-- Index events in Search API for search/facets.
-- Generate SEO-friendly event URLs via Pathauto.
-- Apply Metatag defaults to event pages.
-- Render events in card/teaser/full/micro view modes.
-- Control event listing blocks with block visibility groups.
-- Grant event authoring to Drutopia contributor/editor/manager roles.
-- Provide a search index view display for events.
-- Use as the events building block of a Drutopia site.
-- Extend the shipped config to your needs after install.
-- Export/override the event type and fields via configuration.
-- Combine with other Drutopia features for a full site.
-- Add responsive image styles to event media.
-- Build an events calendar/listing landing page.
+- Add an out-of-the-box Event content type to a Drutopia site without building fields by hand.
+- Capture event start and end times with the required `field_event_date` datetime-range field.
+- Default a new event's date to "now" and its end to "+3 hours", so editors mostly adjust rather than enter from scratch.
+- Categorize events with the `event_type` taxonomy vocabulary and let visitors filter by it.
+- Publish a public events listing at `/events` (added to the main menu as "Events").
+- Show an "Upcoming events" block that lists only events dated now-or-later, sorted soonest-first.
+- Let site visitors narrow the events listing with checkbox facets for Event type and Event Topics.
+- Provide clean, token-based URLs for events (`events/<title>`) and event-type terms via pathauto.
+- Index events in Search API for keyword search and faceted browsing.
+- Attach a summary field shown on event teasers and cards across the site.
+- Use Paragraphs (text/image/file) for rich event body content via `field_body_paragraph`.
+- Attach a responsive, focal-point-aware media image to events (`field_media_image`).
+- Tag events with free-tagging Tags and structured Topics vocabularies shared across Drutopia.
+- Add per-event meta tags for SEO through the metatag field.
+- Grant contributors permission to create events and edit their own.
+- Grant editors and managers permission to create events and edit any event.
+- Offer an "Add event" action button on the events listing page for quick content creation.
+- Drive block placement on the events page through the `event_listing` block visibility group.
+- Provide multiple render contexts (full page, teaser, card, simple card, micro, search index) for reuse across the theme.
+- Serve as the standard event feature within a Drutopia distribution build.
+- Extend or override the shipped config (fields, displays, view, facets) to fit a specific site's event needs.
