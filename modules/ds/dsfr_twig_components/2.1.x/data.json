@@ -1,9 +1,9 @@
 {
   "name": "DSFR Twig Components",
   "data_name": "dsfr_twig_components",
-  "description": "Twig components implementing the DSFR (French State Design System).",
+  "description": "Registers a Twig extension exposing DSFR (French State Design System) component functions plus HTML-markup and helper Twig functions, and an admin demo/reference page.",
   "version": "2.1.x",
-  "package": null,
+  "package": "DSFR",
   "composer_namespace": "drupal/dsfr_twig_components",
   "composer_requirements": {},
   "dependent_modules": [
@@ -21,9 +21,9 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Theming"
@@ -38,7 +38,7 @@
     "french",
     "design system"
   ],
-  "project_description": "Here, write an introduction that summarizes the purpose and function of this project with a focus on users brand new to Drupal. Answer the question: What solution does this module provide? The first 200 characters of this will be shown when browsing projects. Alternatively, you can click “Edit summary” above and enter the exact summary you want (it should be 200 characters or less).\n\n Features \n Here, answer the following questions: What is the basic functionality? What unique features does enabling this project add? When and why would someone use this module? What use cases are there?\n\n Post-Installation \n How does this module actually work once I install it? Should I go to a config page? Should I look for a new content type? Should I go and manage my text formats? Provide an overview of the configuration process and any other special considerations for the module.\n\n Additional Requirements \n Does this project need anything beyond Drupal core? Include any dependent modules, libraries, APIs, etc., that are required for this project to work.\n\n Recommended modules/libraries \n Are there any projects that enhance or improve the functionality of this project?\n\n Similar projects \n If there are modules providing similar functionality, please describe what differentiates them.\n\n Supporting this Module \n If you have a Patreon, OpenCollective, etc. you can put links here to describe how people can support development. \n\n Community Documentation \n A great place to add links to YouTube walkthroughs, external documentation, or a demo site (use DrupalPod!).\n\n You may continue to put additional information below here, if there are other things you think people need to know about your module!\n\n Back to top",
+  "project_description": "DSFR Twig Components registers a Twig extension that adds a family of Twig functions for building markup of the DSFR (Systeme de Design de l'Etat, the French State Design System) directly from templates. Functions prefixed dsfr_ (dsfr_alert, dsfr_card, dsfr_button, dsfr_title, ...) emit ready-made DSFR components; c_ / m_ helpers and a set of plain helpers (limit_string, convert_bytes, get_media_info, calc_image_ratio, uniq_id, ...) round out the toolkit. It is a building block for the DSFR module suite (DSFR Core and siblings depend on it) rather than something you configure: enable it and the functions become available in Twig. It ships an admin-only demo/reference page at /dsfr/twig/{slug} listing the available component functions, a Prism-based code library for the documentation, and an icon/pictogram catalog (Resources) that sibling modules use to generate JSON lists. Depends on core Media, Media Library and Text.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
