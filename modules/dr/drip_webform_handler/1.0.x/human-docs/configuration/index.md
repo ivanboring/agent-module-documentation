@@ -2,48 +2,15 @@
 
 Drip webform handler is configured **per webform**, not on a global admin page.
 You add the Drip handler to each form you want to connect and set its options
-there. The one thing to sort out first is where your Drip API key lives.
+there. You will need your Drip **API key** and **account ID** ready before you
+start.
 
-## Store the Drip API key as a secret
+## Where the credentials live
 
-Your Drip API key is a credential — anyone holding it can read and write your Drip
-account — so keep it out of exported configuration and out of version control.
-The recommended pattern is an environment variable surfaced through a **Key**
-entity:
-
-1. Save the key as an environment variable with DDEV's dotenv command (never
-   commit `.ddev/.env`):
-
-   ```bash
-   ddev dotenv set .ddev/.env --drip-api-key=<your-key>
-   ddev restart
-   ```
-
-   The flag `--drip-api-key` becomes the variable `DRIP_API_KEY` inside the web
-   container.
-
-2. Confirm the variable is present **without printing its value**:
-
-   ```bash
-   ddev exec 'test -n "$DRIP_API_KEY"'   # exit status 0 means it is set
-   ```
-
-3. If the **Key** module isn't already enabled, add it, then create a Key backed
-   by that environment variable:
-
-   ```bash
-   ddev composer require drupal/key
-   ddev drush en key -y
-   ddev drush key:save drip_api_key --label='Drip API Key' \
-     --key-type=authentication --key-provider=env \
-     --key-provider-settings='{"env_variable":"DRIP_API_KEY","base64_encoded":false,"strip_line_breaks":true}' \
-     --key-input=none -y
-   ```
-
-You can then reference the `drip_api_key` Key from the handler settings instead of
-pasting the raw value. (If the handler only accepts a plain text field for the
-key, at minimum keep the value out of committed/exported config and rotate it if
-it ever leaks.)
+The handler stores the Drip API key and account ID in its own settings, which are
+part of the webform's exported configuration. Treat that configuration the way you
+treat any config that carries a credential: control who can edit webform handlers,
+and keep exported config out of any location you would not want the key to appear.
 
 ## Add the Drip handler to a webform
 

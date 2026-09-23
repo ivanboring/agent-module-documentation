@@ -39,5 +39,5 @@ Drush enables the Webform module automatically as a dependency.
 2. Click **Add handler** and confirm **Drip** appears in the list of available
    handlers.
 
-Next, store your Drip API key securely and configure the handler — see
+Next, add the handler to a webform and supply your Drip credentials — see
 [Configuration](../configuration/index.md).

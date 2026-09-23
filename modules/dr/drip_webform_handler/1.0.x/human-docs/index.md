@@ -26,7 +26,7 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 1. [Installation](installation/index.md) — install with Composer and enable the
    module.
 2. [Configuration](configuration/index.md) — add the handler to a webform, supply
-   your Drip API credentials securely, and map fields.
+   your Drip API credentials, and map fields.
 
 ## Where it lives in the admin menu
 
