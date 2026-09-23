@@ -1,7 +1,7 @@
 {
   "name": "DOCX to HTML Converter",
   "data_name": "docx_to_html",
-  "description": "Admin page that converts an uploaded .docx to HTML entirely in the browser using Mammoth.js.",
+  "description": "Admin tool page that converts a user-selected .docx file to HTML entirely in the browser using the bundled Mammoth.js; nothing is uploaded to or processed on the server.",
   "version": "1.0.x",
   "package": "Content authoring tool",
   "composer_namespace": "drupal/docx_to_html",
@@ -19,7 +19,7 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"

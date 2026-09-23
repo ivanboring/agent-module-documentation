@@ -1,26 +1,30 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-DOCX to HTML Converter provides an admin utility page where a user picks a Word `.docx` file and gets its HTML markup, produced client-side by the bundled Mammoth.js library.
+A one-page admin tool that converts a Word `.docx` file into HTML in the browser (via bundled Mammoth.js) so content authors can copy the result and paste it into a rich-text field.
 
 ---
 
-The controller (`DocxToHtmlController::content`) simply returns a render array attaching the `docx_to_html/docx_to_html` library and a small template with a file input, an output `<div>` and a "Copy the HTML" button. All the work happens in the browser: `docx_to_html.js` validates the MIME type, reads the file as an ArrayBuffer via FileReader, calls `mammoth.convertToHtml()`, and writes the result into the output div with `innerHTML`; a copy button selects the output and runs `document.execCommand('copy')`. Nothing is uploaded, parsed, or stored server-side.
-
-The page lives at `/docx-to-html` (also linked under Configuration › Content authoring and as an admin shortcut) and is gated by the `access docx to html converter` permission. Because conversion and rendering are entirely local to the requesting user's browser, the converted HTML is injected unsanitised into that same user's DOM only — there is no persistence and no cross-user exposure. Editors typically use it to turn a Word document into HTML they can paste into a WYSIWYG field.
+DOCX to HTML Converter adds a single permission-gated page at `/docx-to-html` (linked from *Administration → Configuration → Content authoring*). The page is a thin Drupal controller that renders a file input, an output area and a "Copy the HTML" button, and attaches one asset library containing the vendored `mammoth.browser.min.js` plus a small behavior script. All work happens client-side: when the author picks a `.docx`, the JavaScript reads it as an ArrayBuffer with `FileReader`, calls `mammoth.convertToHtml()` in the browser, injects the returned HTML into the preview `#output` element, and lets the author copy it to the clipboard. No file is ever uploaded to, stored on, or parsed by the server, and the module ships no config form, entities, plugins, services, or Drush commands — just the route, a controller, a theme hook/template, a permission, two menu links, and the front-end library. It exists to work around CKEditor 5's limited free "Paste from Word" feature, preserving headings, lists, tables, footnotes/endnotes, images (as data URIs), links, and character formatting as far as Mammoth supports.
 
 ---
 
-- Convert a `.docx` file to HTML markup in the browser.
-- Copy the generated HTML to the clipboard for pasting into a WYSIWYG field.
-- Give content authors a self-service Word-to-HTML tool.
-- Reach the tool at `/docx-to-html` or via its Configuration menu link.
-- Restrict access with the `access docx to html converter` permission.
-- Avoid server-side upload/storage of source documents (all client-side).
-- Preview the converted markup before copying.
-- Reject non-DOCX files (MIME-type check in JS).
-- Use Mammoth.js's clean semantic-HTML output rather than Word's bloated markup.
-- Migrate legacy Word content into Drupal nodes.
-- Bootstrap body copy for a new page from an existing Word doc.
-- Provide the tool as an admin shortcut for frequent use.
-- Keep conversion local so sensitive documents never leave the browser.
-- Sanitise/clean the pasted result afterward via the WYSIWYG's own filters.
-- Extend or restyle the tool via the module's small CSS/JS library.
+- Give trusted content editors a self-service tool to turn a Word document into paste-ready HTML.
+- Work around CKEditor 5's paywalled "Paste from Word (Office)" feature without a paid plugin.
+- Convert a `.docx` to HTML without installing any external library — Mammoth.js is bundled.
+- Convert documents without sending them to a server or third-party service (privacy-friendly, fully local in the browser).
+- Preserve heading structure (H1–H6) when migrating Word content into Drupal.
+- Bring ordered and unordered lists across from Word into a text field.
+- Carry tables from a `.docx` into HTML markup.
+- Move footnotes and endnotes from a Word document into the converted output.
+- Embed images from the document inline as data-URI `<img>` tags.
+- Keep bold, italic, underline, strikethrough, superscript and subscript formatting.
+- Preserve hyperlinks from the source document.
+- Retain line breaks and text boxes where Mammoth supports them.
+- Bulk-migrate legacy Word content into Drupal body fields during a content-entry project.
+- Let authors preview the converted HTML rendered with the current theme before copying it.
+- Copy the full converted HTML to the clipboard with one click for pasting elsewhere.
+- Gate access to the tool behind a dedicated permission so only chosen roles can reach it.
+- Reach the tool quickly from the admin toolbar shortcut or the Configuration → Content authoring menu.
+- Provide a lightweight editor aid on sites where a full document-import pipeline is overkill.
+- Standardize how a team converts Word documents so everyone produces consistent markup.
+- Feed the copied HTML into any long-text field/format (subject to that format's own tag filtering).
+- Prototype or spot-check how a Word document will look as HTML.
