@@ -1,14 +1,14 @@
 {
   "name": "Drupal Forge Token",
   "data_name": "drupalforge_token",
-  "description": "Tokens for embedding Drupal Forge launch widgets.",
+  "description": "Provides tokens for embedding Drupal Forge launch widgets.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/drupalforge_token",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
+  "core_version_requirement": "8 - 11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/drupalforge_token",
@@ -17,22 +17,24 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
+    "Content editing experience",
     "Developer tools"
   ],
   "subcategories": [
-    "Token / placeholder replacement"
+    "Token / placeholder replacement",
+    "Rich text embedding"
   ],
   "keywords": [
     "drupal forge",
     "token",
-    "launch",
-    "widget",
-    "embed"
+    "launch widget",
+    "embed",
+    "webform-component"
   ],
   "project_description": "Provides tokens for embedding Drupal Forge launch widgets. This was created so that users can launch demos directly from any site instead of going to Drupal Forge first.\n\n Example: https://darren.oh.name/node/73 \n\n [#3490328]",
   "maintenance_status": "Actively maintained",
