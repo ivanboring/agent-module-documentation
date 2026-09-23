@@ -13,30 +13,24 @@ can report update information there.
 ## Settings
 
 - **Dropfort connection / credentials** — the details that authenticate this site
-  to your Dropfort account (the API key or token, and any endpoint or site
-  identifier Dropfort provides). These identify the site to the dashboard and
-  authorize it to report data. Get them from your Dropfort account after
-  registering the site there.
+  to your Dropfort account: a **site key**, a **site token**, and the **Dropfort
+  URL** to report to. The site key identifies the site to the dashboard and the
+  site token authorizes it to report data; get both from your Dropfort account
+  after registering the site there. (The token field is masked; leaving it blank
+  on a later save keeps the previously stored token.)
 - **Reporting options** — any options the form offers for what is sent or when. By
   default the module reports the site's status report (installed modules/themes,
   their versions, and available updates) collected via core's Update module.
 
 Click **Save configuration** when you're done.
 
-## Store the credentials securely
+## Handling the credentials
 
-The Dropfort credential authorizes reporting on this site's behalf, so keep it out
-of committed and exported configuration. Store it in an environment variable and
-reference it (for example via a **Key** entity or from `settings.php` with
-`getenv()`). With DDEV:
-
-```bash
-ddev dotenv set .ddev/.env --dropfort-api-key=<your-key>
-ddev restart
-ddev exec 'test -n "$DROPFORT_API_KEY"'   # exit status 0 means it is set
-```
-
-(never commit `.ddev/.env`).
+The site key and site token are saved in the module's own configuration
+(`dropfort_update.settings`) and travel with a configuration export. The token is
+entered through a masked field. Because these values authorize reporting on this
+site's behalf, control who can edit this form and keep exported configuration out
+of any location you would not want the token to appear.
 
 ## What gets sent, and why it's sensitive
 

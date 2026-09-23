@@ -47,16 +47,15 @@ DropWatch app itself once your account is set up.
 2. Install and enable this module (see [Installation](installation/index.md)).
 3. Connect the site to DropWatch using the credential/token from your account,
    following the setup instructions the app provides.
-4. **Store the DropWatch token as a secret** — put it in an environment variable
-   rather than in committed configuration. With DDEV, for example:
+4. **Add the DropWatch token to `settings.php`.** The module reads the token from
+   Drupal's `$settings` array — the key is `dropwatch_api_token` — not from the
+   database, so the value never enters exported configuration:
 
-   ```bash
-   ddev dotenv set .ddev/.env --dropwatch-token=<your-token>
-   ddev restart
-   ddev exec 'test -n "$DROPWATCH_TOKEN"'   # exit status 0 means it is set
+   ```php
+   $settings['dropwatch_api_token'] = '<your-token>';
    ```
 
-   (never commit `.ddev/.env`), then reference it via a **Key** entity or from
-   `settings.php` with `getenv('DROPWATCH_TOKEN')`.
+   The module's settings form displays this exact snippet for you to copy. Keep
+   `settings.php` (and any secret it holds) out of version control.
 5. Confirm the site appears in your DropWatch dashboard and is reporting its
    status. Keep the connection on HTTPS and avoid sending sensitive data.
