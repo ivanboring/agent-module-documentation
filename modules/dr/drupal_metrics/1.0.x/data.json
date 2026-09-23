@@ -1,14 +1,14 @@
 {
   "name": "Drupal Metrics",
   "data_name": "drupal_metrics",
-  "description": "provides database metrics in the Reports section.",
+  "description": "Provides database metrics in the Reports section.",
   "version": "1.0.x",
   "package": "Statistics",
   "composer_namespace": "drupal/drupal_metrics",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/drupal_metrics",
@@ -19,12 +19,15 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
+    "Administration tools",
     "Developer tools"
   ],
   "subcategories": [
+    "Dashboard / reporting",
+    "Database maintenance / optimization",
     "Debugging & inspection"
   ],
   "keywords": [
@@ -32,9 +35,11 @@
     "database",
     "reports",
     "statistics",
-    "monitoring"
+    "table size",
+    "entity",
+    "fields"
   ],
-  "project_description": "This Drupal module provides a comprehensive overview of website structure, catering to both business stakeholders and developers. Its primary goal is to present clear insights into the size of individual database tables, distribution of pages across the site, based on content types and available language versions.\n\n \n\n \n\n Key Features: \n\n \n Database Size Analysis\n \n Displays the size of individual database tables and the total database footprint. \n Helps identify large tables that may affect performance and require optimization. \n \n \n Content Type Analysis\n \n Displays the total number of pages grouped under each content type. \n Offers detailed statistics to help identify how content is structured. \n \n \n Multilingual Support Overview\n \n TODO: Shows the availability of language versions for pages. \n TODO: Highlights gaps in multilingual content, aiding in localization efforts. \n \n \n User-Friendly Interface\n \n Presents the data in an intuitive, easily accessible format for both technical and non-technical users. \n \n \n \n Benefits: \n\n \n For Business Stakeholders\n \n Enables better understanding of content distribution. \n Assists in identifying opportunities to expand content in specific areas or languages. \n \n \n For Developers\n \n Streamlines the audit of content management systems. \n Provides a clear framework for maintaining multilingual content consistency. \n \n \n \n This module is ideal for organizations managing large, complex websites with diverse content and multilingual requirements. It bridges the gap between business needs and technical insights, ensuring a streamlined content architecture/management strategy.",
+  "project_description": "Drupal Metrics adds a read-only report under Administration > Reports > Metrics that surfaces the physical and structural size of a site. Its Database tab lists every table in the site's schema with its on-disk size (data + index length, formatted as a human-readable byte size) and shows the total database footprint, helping administrators spot large tables worth optimizing. Its Entities tab lists every content entity type with its bundle count, and drilling into an entity type shows each bundle's base-field and additional-field counts, then a per-bundle field report with entity counts, translation counts, field names, labels, types and cardinality. The module has no settings form and no dependencies beyond Drupal core; it exposes a single 'view metrics' permission and hangs its pages off the core Reports menu with Database/Entities local-task tabs.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

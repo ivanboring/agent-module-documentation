@@ -1,7 +1,7 @@
 {
   "name": "Drupal Planet Feeds Block",
   "data_name": "drupal_planet_feeds_block",
-  "description": "Shows the latest posts from the Drupal Planet feed in a block.",
+  "description": "Provides a block that fetches the Drupal Planet RSS feed from drupal.org and renders its latest item titles as links.",
   "version": "2.0.x",
   "package": null,
   "composer_namespace": "drupal/drupal_planet_feeds_block",
@@ -19,25 +19,27 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display",
-    "Integrations"
+    "Import and export"
   ],
   "subcategories": [
-    "Block enhancements"
+    "Block enhancements",
+    "Feed aggregation"
   ],
   "keywords": [
     "drupal planet",
     "feed",
     "block",
-    "news",
-    "aggregator"
+    "rss",
+    "aggregator",
+    "news"
   ],
-  "project_description": "This module provides a block which will show the latest feeds from the drupal planet ( https://www.drupal.org/planet ).\n\n Installation \n Install as you would normally install a contributed Drupal module. For further information, see Installing Drupal Modules .\n\n Configuration \n \n After enabling the module, navigate to Block layout page /admin/structure/block . \n Choose the Region where you want to place the block and Click on the Place Block . \n Filter by Planet Drupal and Click on Place Block . \n You can add the Title , Number of feeds to display and Visibility , then click on Save Block . \n Navigate to the page where you have placed the block, you can see the Drupal Planet Feeds Block. \n Back to top",
+  "project_description": "Drupal Planet Feeds Block provides a single block plugin (admin label \"Planet Drupal\", id drupal_planet_feeds_block) that fetches the official Drupal Planet RSS feed from https://www.drupal.org/planet/rss.xml on every render and lists the latest item titles as links to the original posts, followed by a 'more' link to https://www.drupal.org/planet. Editors configure two per-block-instance options on the block placement form: how many feed items to display (1-30) and which HTML tag wraps each item (chosen from Views' field_rewrite_elements list). The feed URL is hardcoded and not configurable. The module depends on core Views (only to reuse its field_rewrite_elements tag list), ships no settings page, permissions, config schema or Drush commands, and disables render caching so each view refetches the feed.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
