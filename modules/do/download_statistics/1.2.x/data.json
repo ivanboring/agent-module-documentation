@@ -1,7 +1,7 @@
 {
   "name": "Download Statistics",
   "data_name": "download_statistics",
-  "description": "Logs file-download statistics for the site.",
+  "description": "Logs file download statistics for your site.",
   "version": "1.2.x",
   "package": "Administration",
   "composer_namespace": "drupal/download_statistics",
@@ -12,7 +12,7 @@
     "drupal:file"
   ],
   "configure": "download_statistics.settings",
-  "core_version_requirement": "^10.3||^11||^12",
+  "core_version_requirement": "^10.3 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/download_statistics",
@@ -26,19 +26,25 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Administration tools"
+    "Administration tools",
+    "Media"
   ],
   "subcategories": [
-    "Dashboard / reporting"
+    "Dashboard / reporting",
+    "File downloads",
+    "Popularity / hotness tracking"
   ],
   "keywords": [
     "downloads",
     "statistics",
     "files",
+    "file downloads",
+    "download count",
     "analytics",
-    "reporting"
+    "reporting",
+    "popular downloads"
   ],
-  "project_description": "The Download Statistics module extends functionality of the core Statistics module and provides for Drupal 8/9 some file download statistics functionality that was available in Drupal 7 through Download Count module.\n\n The file download statistics are useful in determining which files visitors most often download from your site. It provides a customisable \"Popular file downloads\" block that displays the most downloaded files today and for all time, and the last files downloaded. The block can be added to any region of your theme and it allows to configure the number of most recent downloaded files to display, the number of all time downloads to display and the number of day's top downloads to display.\n\n The module provides extensive Views support: the views fields for Total File Downloads count, File Downloads Today count and Most Recent File Download timestamp.\n\n The important configuration step for this module to be able to count downloads - as for any other module that controls or monitors files access - is to setup the \"private\" directory for the uploaded files. In the \"Field settings\" tab of the file upload field definition, make sure you select Upload destination: Private files . The private directory has to be configured in settings.php. If the upload destination is \"Public files\", the web server sends the file to client browser directly, bypassing Drupal code, and counting downloads is impossible.\n\n Once you setup your files to go to a private directory, you can use the block from the module or you can build your own block with the views to show the attachments and their downloads right on a node page.\n\n To enable/disable the file downloads count, navigate to Download Statistics Settings page at /admin/config/system/download-statistics. On the same settings page you can clear the file downloads table if desired. \n\n To use the enabled download counter on a particular Views page or block display, select File URI with Download Count as URI Formatter type in Views UI.\n\nTo count downloads of an attachment from node or media page, select File with Download Statistics recorded as Format in Manage Display tab for a particular entity type.\n\n Finally, set the necessary permissions so that the counter is visible to the users.",
+  "project_description": "Download Statistics extends the idea of core's Statistics module to files: it counts how many times each managed file is downloaded, giving you a total count, a daily count, the timestamp of the most recent download and the UID of the last downloader. It works only for files served through Drupal (the private file system): when counting is enabled, a route subscriber (FileDownloadAlterRouteSubscriber) swaps the controllers for the core system.files and system.private_file_download routes to DownloadStatisticsFileController, which records a download (via a MERGE into the download_statistics table) after core's hook_file_download access checks pass. Files are marked for counting by selecting one of the module's field formatters ('File with Download Statistics recorded' for file fields, 'File URI with Download Count' for the file URI) or by placing the Popular file downloads block. Counts surface through that block (top today, top all-time, most recently downloaded), through Views (Total file downloads, File downloads today, Most recent file download, gated by the 'view file download statistics' permission), and through file tokens (total-count, day-count, last-view, last-user). Counting is toggled and the counts table cleared at /admin/config/system/download-statistics ('administer download statistics'). Hook_cron resets the daily counter every 24 hours and hook_ranking feeds download popularity into core search scoring.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

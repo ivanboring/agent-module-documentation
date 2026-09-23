@@ -1,15 +1,15 @@
 {
   "name": "Drupal.org project link filter",
   "data_name": "dopl",
-  "description": "A text filter for easy linking to Drupal.org projects and nodes.",
+  "description": "A filter to facilitate linking to Drupal.org projects and nodes.",
   "version": "4.0.x",
-  "package": null,
+  "package": "Input filters",
   "composer_namespace": "drupal/dopl",
   "composer_requirements": {},
   "dependent_modules": [
     "drupal:filter"
   ],
-  "configure": null,
+  "configure": "filter.admin_overview",
   "core_version_requirement": "^9.3 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -19,9 +19,9 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"
@@ -34,9 +34,11 @@
     "link",
     "filter",
     "projects",
+    "issue",
+    "node",
     "text format"
   ],
-  "project_description": "This is a tiny, yet useful module, which adds a filter, to facilitate linking to Drupal.org projects.\n\n Lots of us blog about Drupal projects, or mention them in our forum discussions. Linking to a Drupal project, each time it is mentioned is a bit of a pain. This filter lets you write something like \"views.module\", and it generates a link to views module page ( http://drupal.org/project/views ).\n\n The following formats are all the same, and are provided for ease of read/write: name.module, name.theme, name.translation, name.installprofile and name.project\n\n Demo \n Video : http://www.youtube.com/watch?v=xx1-sPE8d1s \n\n New in the 6.x-2.x branch: \n This version now uses update.module, if it is activated, to fetch real project names, so instead of having a link like this:\n\n dopl.module \n\nyou will now have a link like this:\n\n Drupal.org project link filter \n\n If a such a project does not exist, it simply ignores it.\n\n If update.module is disabled, the filter will turn all the usable patterns it finds, and turns them into links, regardless of whether a project of that name really exists.\n\n Back to top",
+  "project_description": "Drupal.org project link filter (dopl) is a tiny single-plugin module that adds a text-format filter converting short shorthand tokens in body text into links to Drupal.org projects, nodes, issues, groups.drupal.org nodes and users. Authors write tokens such as \"views.module\", \"pathauto.project\", \"345196.issue\", \"345196.do\", \"345196.gdo\" or \"48488.user\"; the filter matches them, calls the Drupal.org api-d7 endpoints (or scrapes the groups.drupal.org page title) to resolve the real title and canonical URL, and renders an anchor. Results are cached permanently per token. Depends only on core filter; enabled per text format at /admin/config/content/formats. It is a 4.x dev branch with no tagged stable release, in maintenance-fixes-only status and not covered by Drupal's security advisory policy.",
   "maintenance_status": "Seeking co-maintainer(s)",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "not-covered",
