@@ -1,11 +1,15 @@
 {
   "name": "Extra Block Types (EBT): Counter",
   "data_name": "ebt_counter",
-  "description": "Adds a Counter block type with animated number counters and WYSIWYG text.",
+  "description": "Adds Number Counter and Text with WYSIWYG editor.",
   "version": "2.0.x",
   "package": "Extra Block Types",
   "composer_namespace": "drupal/ebt_counter",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ebt_core": "^2.0",
+    "drupal/paragraphs": "^1.0",
+    "levmyshkin/count-up.js": "^2.8"
+  },
   "dependent_modules": [
     "ebt_core:ebt_core",
     "paragraphs:paragraphs"
@@ -17,7 +21,9 @@
   "project_url": "https://www.drupal.org/project/ebt_counter",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "levmyshkin/count-up.js"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
