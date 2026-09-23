@@ -1,14 +1,14 @@
 {
   "name": "Dynatrace Transactions",
   "data_name": "dynatrace_transactions",
-  "description": "names Dynatrace transactions by route, bundle and highest-weight role.",
+  "description": "names Dynatrace transactions/traces by route path, entity bundle and highest-weight user role, exposing the name through a service method Dynatrace captures as a request attribute.",
   "version": "1.0.x",
   "package": "Dynatrace",
   "composer_namespace": "drupal/dynatrace_transactions",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "configure": "dynatrace_transactions.config",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/dynatrace_transactions",
@@ -22,7 +22,7 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Developer tools"
+    "Integrations"
   ],
   "subcategories": [
     "Application performance monitoring"
@@ -31,10 +31,11 @@
     "dynatrace",
     "apm",
     "transactions",
+    "traces",
     "monitoring",
-    "naming"
+    "request attribute"
   ],
-  "project_description": "Drupal module for naming transactions in Dynatrace according to route, bundle, and role.\n\n Why \n I wanted to keep the naming of transactions from the wonderful Newrelic Transactions module , but I also wanted to use Dynatrace for monitoring my Drupal sites. This module is a port of the New Relic Transactions module, adapted to work with Dynatrace.\n\n Dynatrace does not have a PHP extension, but if you call a method on a PHP class, then you can capture that value and use it as a request attribute.\n\nYou can then name a trace using that request attribute.\n\n Additional Requirements \n Once this module is installed and working you will need to configure Dynatrace to capture the name of the transaction as a request attribute.\n\n Back to top",
+  "project_description": "A port of the New Relic Transactions module adapted for Dynatrace. It renames each request's transaction/trace using the route path template (with entity-type route parameters replaced by the entity bundle) plus the current user's highest-weight role, e.g. \"node/{article} (editor)\". Dynatrace has no PHP extension, so instead of calling an extension function the module hands the computed name to a plain PHP method (TransactionNamer::setTransactionName). Dynatrace's OneAgent is configured (on the Dynatrace side) to capture that method argument as a request attribute, which can then be used to name the trace. The only release published is 1.0.0-rc2, a pre-release on the 1.0.x branch; there is no stable release and the project is not covered by Drupal's security advisory policy.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "not-covered",
