@@ -1,9 +1,9 @@
 {
   "name": "Drush Firewall",
   "data_name": "drush_firewall",
-  "description": "Environment-based protection against running Drush commands.",
+  "description": "Environment-based protection that blocks or restricts Drush commands per environment, on production targets, or during maintenance mode.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Administration",
   "composer_namespace": "drupal/drush_firewall",
   "composer_requirements": {},
   "dependent_modules": [],
@@ -17,24 +17,27 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
-  "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_permissions": false,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
+    "Administration tools",
     "Security"
   ],
   "subcategories": [
-    "Intrusion prevention"
+    "Deployment / release management",
+    "Read-only / maintenance mode"
   ],
   "keywords": [
     "drush",
     "firewall",
     "protection",
     "environment",
-    "ops"
+    "ops",
+    "deployment"
   ],
-  "project_description": "Drush Firewall helps you protect your environments against unwanted alterations or running specific commands. It can also prevent running commands when an environment is in maintenance mode (like when deploying new code). For example, Drupal's core cron task still runs when a site is in maintenance [#3318964]\n\n Back to top \n\n Configuration \n Install the module, and then configure your settings. Generally this is best used per environment-included settings; however, globals can work here as well. The following are available:\n\n \n $settings['drush_firewall_denied'] = []; \n \n These commands will never be allowed to run. \n \n \n $settings['drush_firewall_production_denied'] = []; \n \n These commands will be denied if the target alias is \"prod\" \n \n \n $settings['drush_firewall_maintenance_allowed'] = []; \n \n These commands will be allowed while the site is in maintenance mode, all other commands (With the exception of necessary - see code) will be denied. \n \n \n \n Back to top \n\n No Bootstrap Commands \n Some commands unfortunately do not bootstrap Drupal (See Bootstrap Process ) and therefore cannot be run from the module. There is a special file here for things like sql:sync protection or disabling the firewall in some core commands. For this to work, you need to add the module to drush/drush.yml , for example if your docroot was at /var/www/:\n\n drush:\n\n include:\n\n - '/var/www/docroot/modules/contrib/drush_firewall' \n\n Back to top \n\n Disable Firewall \n In the off chance you need to allow a command that has otherwise been disabled, you can pass along --disable-firewall to the command which will disable all checks.\n\n Back to top",
+  "project_description": "Drush Firewall is a defensive operations guardrail that prevents unwanted Drush commands from running in the wrong environment or at the wrong time. It provides three independent policies, all configured entirely through settings.php (no admin UI, no config entities, no permissions): a hard blocklist that never runs given commands in this environment, a production blocklist that denies destructive commands when the Drush target alias name contains \"prod\", and a maintenance-mode allowlist that denies everything except an approved (and a small built-in essential) set while the site is in maintenance mode (useful during deploys, since core cron and other commands can still fire otherwise). Policies are enforced by a Drush pre-command hook on bootstrapped commands, with a separate no-bootstrap command file that must be registered in drush.yml to also protect commands such as sql:sync that do not bootstrap Drupal. A --disable-firewall flag bypasses all checks for a single run.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

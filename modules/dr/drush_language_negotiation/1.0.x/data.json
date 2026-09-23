@@ -1,7 +1,7 @@
 {
   "name": "Drush language negotiation",
   "data_name": "drush_language_negotiation",
-  "description": "Language negotiation plugin that forces the site default language under Drush (CLI).",
+  "description": "When enabled this reset the language that Drush is using to the default language of the website.",
   "version": "1.0.x",
   "package": "Drush",
   "composer_namespace": "drupal/drush_language_negotiation",
@@ -19,7 +19,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Multilingual"

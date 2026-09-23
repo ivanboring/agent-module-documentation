@@ -1,26 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Drush language negotiation works around a Drush bug where CLI runs resolve the wrong language, by forcing the site's default language whenever code runs under the CLI.
+Adds one language-negotiation method that forces the site's default language whenever code runs under the command line (Drush/CLI), so Drush operations stop resolving to English on non-English sites.
 
 ---
 
-It ships a single `LanguageNegotiation` plugin (`language-drush`, weight -99) whose `getLangcode()` returns the default language id when `PHP_SAPI === 'cli'`, and NULL otherwise (so web requests are unaffected). After enabling, add and prioritise the "Drush Language Switching" method on the language detection/selection settings so it wins for CLI. This makes Drush operations (imports, cron, content generation, translations) use the intended default language instead of falling back to English.
-
-No routes, permissions, services or config of its own — purely a negotiation plugin. No security surface.
+On multilingual sites Drush can resolve the wrong interface/content language during CLI runs (the classic symptom: `drush config:import` treating a Dutch-default site as English). This module ships a single core language-negotiation plugin, `LanguageNegotiationDrush` (id `language-drush`), whose `getLangcode()` returns the site default language id when `PHP_SAPI === 'cli'` and `NULL` otherwise. Because it returns `NULL` for every non-CLI request, ordinary web/browser traffic is completely unaffected and keeps its normal negotiation. The plugin is defined with a very high priority (`weight = -99`), and you activate and order it on Drupal core's existing detection page at `/admin/config/regional/language/detection` — the module has no settings form, routes, permissions, services, config, hooks, or Drush commands of its own. It targets the `@LanguageNegotiation` plugin type provided by core's Language module (so that module must be enabled for the method to appear), and supports Drupal 8, 9, 10, and 11.
 
 ---
-- Force the site default language during Drush commands
-- Fix wrong-language output in Drush cron
-- Ensure content generated via Drush uses the default language
-- Keep web requests unaffected by the CLI override
-- Prioritise the Drush negotiation method in language settings
-- Avoid English fallback in multilingual CLI operations
-- Run migrations under the correct default language
-- Stabilise translation-related Drush tasks
-- Give the negotiation method a very high priority (weight -99)
-- Leave HTTP/browser requests using their normal negotiation
-- Return NULL for non-CLI so it never affects the front end
-- Correct wrong-language string translations in CLI output
-- Ensure scheduled Drush jobs use the default language
-- Apply the default language to programmatic content builds
-- Avoid per-command --uri/language workarounds
-- Keep multilingual CLI behaviour predictable
+
+- Fix `drush config:import` importing config in the wrong language on a non-English-default site.
+- Ensure `drush config:export` writes config against the intended default language.
+- Make Webform (or other config-heavy) config imports respect the site default language under Drush.
+- Force the correct language for content generated via `drush` (e.g. Devel Generate, custom generation scripts).
+- Keep cron-triggered work run through `drush cron` using the site default language.
+- Correct language context for custom Drush commands that create or update translatable entities.
+- Stabilise language for migration runs (`drush migrate:import`) that would otherwise default to English.
+- Ensure scripted content updates (`drush php:eval`, `drush php:script`) resolve to the default language.
+- Guarantee CLI batch/queue processing uses the default language rather than English fallback.
+- Prevent translation tasks executed via Drush from being attributed to the wrong source language.
+- Provide deterministic language selection in CI pipelines that run Drush commands.
+- Avoid mismatched language during automated deployment steps that import configuration.
+- Make `drush locale:*` and string-import workflows operate under the intended default language.
+- Ensure entity CRUD performed in CLI hooks/scripts stores values against the correct langcode.
+- Normalise language for scheduled maintenance scripts executed on the command line.
+- Keep default-language behavior consistent across `ddev drush` invocations on local/dev sites.
+- Serve as a lightweight alternative to hard-coding a language switch in custom Drush command code.
+- Leave front-end language negotiation untouched while only correcting the CLI context.
+- Give agents/tooling a predictable language when driving the site through Drush.
+- Support long-lived Drupal 8/9/10/11 sites that need the same CLI-language fix across upgrades.
