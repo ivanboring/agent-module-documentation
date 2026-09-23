@@ -1,23 +1,21 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Drutopia Social is a tiny base feature that wires up a social media links block for the Drutopia distribution.
+Drutopia Social is a Drutopia base feature (an aggregator module) whose only job is to depend on core `block` and the contrib `social_media_links` module so a site gains a ready-to-place social media links block.
 ---
-The module contains no PHP code and (in this checkout) no exported config beyond its features manifest; its sole job is to declare a dependency on core `block` and the contrib `social_media_links` module so a Drutopia site gets a ready-to-place "social media links" block. All actual behaviour — which networks appear, their icons, and ordering — is configured in the `social_media_links` block instance once placed.
-
-Because it ships no routes, services, or permissions, there is nothing to secure in the module itself. Setup is: enable the module, then place and configure the Social Media Links block through the normal Block Layout UI.
+The module ships no PHP, no routes, no services, no permissions and no exported configuration of its own — just an info.yml declaring its dependencies and a `drutopia_social.features.yml` marker (`required: true`) identifying it as a required Drutopia feature. Enabling it therefore pulls in `social_media_links` (and core `block`) and nothing more; all real behaviour — which networks appear, their icons, sizing and order — is configured on the `social_media_links` block once you place it via the standard Block Layout UI at `/admin/structure/block`. It exists so that Drutopia distribution sites get a consistent, opinionated social-links building block out of the box without each site re-selecting the same dependency. Because it contributes no code or config, its security and functional posture are entirely those of its dependencies. This copy was documented from a dev checkout (no tagged release / no `version:` in info.yml).
 ---
-- Add a social media links block to a Drutopia site.
-- Ensure the social_media_links dependency is present on install.
-- Place the social block in a footer or header region.
-- Configure which networks (Facebook, X, Instagram, etc.) appear.
-- Set icon style/size for social links via social_media_links.
-- Reorder social platforms shown in the block.
-- Keep social-link config consistent across Drutopia sites.
-- Use as an optional add-on feature alongside drutopia_site.
-- Theme the social block with the active theme's block templates.
-- Restrict block visibility by path/role via core block conditions.
-- Remove the block by disabling the module.
-- Bootstrap social presence for a new community site.
-- Add multiple social blocks in different regions.
-- Update social URLs centrally in the block config.
-- Pair social icons with a matching icon library/font.
-- Audit which social platforms a site links out to.
+- Add a social media links capability to a Drutopia site by enabling one feature module.
+- Guarantee `social_media_links` and core `block` are present on install via the dependency list.
+- Provide a ready-to-place "Social media links" block for the Block Layout UI.
+- Place the social links block in a footer or header region.
+- Choose which networks (Facebook, X/Twitter, Instagram, LinkedIn, etc.) appear — configured on the block.
+- Set icon style and size for the social links via the `social_media_links` block settings.
+- Reorder the social platforms shown in the block.
+- Restrict the block's visibility by path, role or content type using core block conditions.
+- Place multiple social blocks in different regions of the same site.
+- Keep the social-links building block consistent across many Drutopia sites.
+- Use it as an optional/required feature alongside other Drutopia features (e.g. drutopia_core, drutopia_site).
+- Theme the block with the active theme's block templates.
+- Bootstrap a social presence for a new community or nonprofit site quickly.
+- Remove the social links by disabling the module or deleting the block placement.
+- Audit which social platforms a site links out to by inspecting the placed block.
+- Serve as a template for a "features-style" aggregator module that only carries a dependency set.
