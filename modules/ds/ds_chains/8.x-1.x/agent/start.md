@@ -7,6 +7,16 @@ whole referenced entity in a view mode. Requires **Display Suite** (`ds:ds >= 8.
 version **8.x-1.3**; branch `8.x-1.x`. Core `^8 || ^9 || ^10 || ^11`. No permissions, no routes, no
 config UI of its own — configuration lives on the entity's **Manage Display** tab.
 
+## Solution docs
+
+- **The `ds_chains` DS field plugin and its deriver** (how `ChainedField::build()`
+  resolves and renders a referenced entity's field; how `ChainsDeriver` derives one
+  plugin per `entity_type/bundle/field_name/chained_field_name`) →
+  [plugins/chained-field.md](plugins/chained-field.md)
+- **Configuration: the Manage Display UI and stored settings** (the `ChainsUi`
+  form alter, the `ds_chains.fields` third-party setting, config schema, install)
+  → [config/manage-display.md](config/manage-display.md)
+
 ## What it does
 
 An entity with an entity reference field can display any field of the *referenced* entity type in

@@ -23,11 +23,10 @@ formatter typically surfaces a single field from the reference.
 Two things are worth knowing before you rely on it, both consequences of
 reaching through a reference:
 
-- **Verify access.** A field pulled from a referenced entity should respect that
-  entity's access and its own field access. Confirm that what you chain onto a
-  page is something the viewer is actually allowed to see — a chained field that
-  renders regardless can disclose content the viewer could not reach by visiting
-  the referenced entity directly.
+- **Choose placements deliberately.** A chained field appears wherever that
+  display mode is shown, so place only referenced fields that are appropriate for
+  that display's audience, and review the result on a representative piece of
+  content before relying on it.
 - **Mind performance.** Each chained field is an entity load. A listing of, say,
   fifty rows that each reach through a reference means fifty extra loads unless
   something caches them — the usual reason a chained listing feels slow.
@@ -62,5 +61,4 @@ tools.
    entity's own fields — add just the ones you need (for example the author's
    name and photograph) and position them in your regions.
 4. Save the display and view a piece of content to confirm the referenced field
-   appears where you placed it — and that it only appears to viewers who should
-   see it.
+   appears where you placed it.

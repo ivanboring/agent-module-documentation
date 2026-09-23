@@ -1,14 +1,14 @@
 {
-  "name": "Date Range Validation Widget",
+  "name": "Date Range Widget",
   "data_name": "drw",
-  "description": "A date-range field widget with configurable validation (e.g. min/max span, ordering).",
+  "description": "Date range validation widget with configurable min/max dates and relative date support.",
   "version": "1.1.x",
   "package": "Field",
   "composer_namespace": "drupal/drw",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/drw",
@@ -25,16 +25,21 @@
     "Content editing experience"
   ],
   "subcategories": [
-    "Field widgets"
+    "Form widgets / select UI",
+    "Field validation",
+    "Date/time fields"
   ],
   "keywords": [
     "date range",
-    "validation",
+    "date validation",
     "widget",
-    "dates",
-    "field"
+    "datetime",
+    "relative dates",
+    "min date",
+    "max date",
+    "age verification"
   ],
-  "project_description": "Date Range Widget (drw) provides a simple date field widget with min/max validation and support for relative dates like \"today\" or \"-18 years\".\n\n Perfect for age verification, event registration, appointment booking, and any form requiring date restrictions.\n\n Key Features: \n\n \n Relative dates: Use -18 years , today , +90 days , etc. \n Easy configuration: Set restrictions directly in field widget settings: no code needed \n Custom error messages: Optional personalized validation messages with dynamic placeholders \n \n Common Use Cases: \n\n \n Age verification: Min: -18 years \n Future dates only: Min: today \n Event period: Min: 2024-01-01 , Max: 2024-12-31 \n Booking window: Min: today , Max: +90 days \n \n Quick Setup: \n\n \n Go to Manage form display for your content type \n Change date field widget to \"Date Range Widget\" \n Click ⚙️ to configure:\n \n Set min/max dates (absolute or relative) \n Check \"Enable custom error messages\" to personalize validation feedback \n Use @min and @max placeholders in custom messages \n \n \n \n Lightweight & Dependency-Free: No external dependencies, no JavaScript!",
+  "project_description": "Date Range Widget (drw) is a lightweight field widget for core single-value datetime fields that enforces a minimum and/or maximum allowed date. Bounds can be absolute (2000-01-01) or relative expressions parsed by DrupalDateTime such as \"today\", \"-18 years\", \"+90 days\" or \"+1 year\". The widget forces date-only entry (no time component), emits HTML5 min/max attributes for client-side hints, and its bounds are enforced server-side by a dynamically added DateRange validation constraint. Custom, translatable error messages with @min/@max placeholders are optional. Typical uses are age verification, future-only dates, event periods and booking windows. The module ships no routes, no permissions, no Drush commands and no external dependencies or JavaScript; all configuration lives in the widget settings on Manage form display.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
