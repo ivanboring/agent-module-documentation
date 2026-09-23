@@ -1,9 +1,9 @@
 {
   "name": "Drupal.org Links",
   "data_name": "drupalorg_links",
-  "description": "Field formatters that output links to Drupal.org.",
+  "description": "Various field formatters to output links to Drupal.org.",
   "version": "8.x-1.x",
-  "package": null,
+  "package": "fields",
   "composer_namespace": "drupal/drupalorg_links",
   "composer_requirements": {},
   "dependent_modules": [],
@@ -17,9 +17,9 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"
@@ -34,7 +34,7 @@
     "projects",
     "display"
   ],
-  "project_description": "A list of field formatters for turning various fields into links to drupal.org.\n\n Current formatters \n \n Comment link - converts a number to a link in the format https://www.drupal.org/comment/[VALUE] . \n Node link - converts a number to a link in the format https://www.drupal.org/node/[VALUE] . \n User link - converts a number to a link in the format https://www.drupal.org/user/[VALUE] . \n \n All formatters support integer, decimal and string values, they take the integer value of the number.",
+  "project_description": "A collection of field formatters that turn a numeric field value into a link to a page on drupal.org.\n\nCurrent formatters:\n\nDrupal.org user link (drupal_uid_link) - converts a number to a link in the format https://www.drupal.org/user/[VALUE].\nDrupal.org node link (drupal_nid_link) - converts a number to a link in the format https://www.drupal.org/node/[VALUE].\nDrupal.org comment link (drupal_cid_link) - converts a number to a link in the format https://www.drupal.org/comment/[VALUE].\n\nAll three formatters apply to integer, decimal and string fields; the stored value is cast to an integer before the URL is built. The formatters have no settings, no permissions, no config schema and no dependencies beyond Drupal core.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
