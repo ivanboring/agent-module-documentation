@@ -22,27 +22,16 @@ databases.
 Once a connection exists, copy its short‑code and use it in your PHP/module code
 to run queries against that Oracle database through the OCI8 functions.
 
-## Handle credentials safely
+## Where the connection details are stored
 
-Oracle connection details include a password, which is a **secret**. Do not commit
-credentials to exported configuration or version control. Instead:
+Drupacle saves each connection — host, port, service name / SID, username, and
+password — in that connection's own configuration. Because the password is held
+there, restrict the Drupacle permissions to trusted users, and be mindful of where
+your site's configuration is exported or copied to.
 
-- Store the host/user/password in **environment variables**, a **Key** entity, or
-  `settings.php`, and reference them rather than hard‑coding them.
-- With DDEV, save a secret into DDEV's dotenv file and restart so it is available
-  in the container:
+## Running queries
 
-  ```bash
-  ddev dotenv set .ddev/.env --oracle-password=<value>
-  ddev restart
-  ```
-
-  Keep `.ddev/.env` out of version control. If the Key module fits your workflow,
-  create a Key that reads the value from the environment and reference that.
-
-## Query safely
-
-When you build queries against Oracle, always use **parameterized queries** (bind
-variables) and never concatenate user‑supplied input directly into SQL. This
-avoids SQL injection into the Oracle database. Restrict the Drupacle permission so
-only trusted users can create connections and run queries.
+You run queries against the Oracle database yourself, from your own PHP/module
+code, using the connection's short‑code and PHP's OCI8 functions. Follow normal
+database practice — use bind variables rather than concatenating input into SQL —
+just as you would for any hand‑written query.

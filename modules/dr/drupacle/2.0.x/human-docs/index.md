@@ -13,14 +13,13 @@ Oracle driver on the server; create a Drupacle connection under
 **/admin/drupacle/connections**; then copy the generated short‑code and use it in
 your code to run queries against Oracle.
 
-Because it stores database credentials and executes queries, treat Drupacle with
-care. It provides its own permission to gate who can manage connections and run
-queries — keep that restricted to trusted users. Store the Oracle credentials as
-**secrets** (via environment variables / a Key entity / `settings.php`) rather than
-committing them to exported configuration, and always build queries with
-**parameterized queries** — never concatenate user input into SQL — to avoid SQL
-injection into the Oracle side. It has no Drupal access‑control role beyond its own
-permission.
+Drupacle provides its own permissions to gate who can create and manage
+connections — keep those restricted to trusted users. The connection details you
+enter (including the Oracle password) are saved in the connection's
+configuration, so control who can manage connections and be mindful of where that
+configuration is exported. You write the OCI8 queries yourself in your own code
+using the short‑code; follow normal Drupal/PHP database practice (bind variables)
+when you do.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
