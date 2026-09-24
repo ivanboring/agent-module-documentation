@@ -1,40 +1,47 @@
 {
   "name": "Elevate Image Zoom",
   "data_name": "elevate_image_zoom",
-  "description": "Adds an image-zoom JavaScript effect to images on node pages.",
+  "description": "Image field formatter that adds an Elevate Zoom hover/lens/inner magnify effect (and a multi-image gallery) to image fields.",
   "version": "11.0.x",
   "package": "Media",
   "composer_namespace": "drupal/elevate_image_zoom",
   "composer_requirements": {},
-  "dependent_modules": [],
+  "dependent_modules": [
+    "image"
+  ],
   "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/elevate_image_zoom",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "elevatezoom (jquery.elevatezoom.js) — third-party JS, manually installed to /libraries/elevatezoom/"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content display"
+    "Content display",
+    "Media"
   ],
   "subcategories": [
+    "Field formatters",
     "Lightbox / modal display"
   ],
   "keywords": [
     "image zoom",
     "zoom",
-    "images",
-    "media",
-    "elevate zoom"
+    "elevate zoom",
+    "magnify",
+    "image gallery",
+    "field formatter"
   ],
-  "project_description": "Elevate image zoom provides a field formatter that allows you to apply it to your image field. If multiple images will be uploaded then field will rendered as Image Gallery. This will provide different types of image zoom features.\n\n Zoom types are as follow \n\n 1. Basic zoom\n\n2. Tint zoom\n\n3. Inner zoom\n\n4. Lens zoom\n\n5. Mouse wheel zoom\n\n gallery Images zoom \n\nFor gallery images you have to change field settings to multi-fields and add multiple images to same field , Field will be rendered as gallery format.\n\n Installation \n\n1. Elevate image zoom Depends upon elevate zoom library so you have to Download the elevate zoom library and save it to /libraries/elevatezoom\n\n2. after saving it download and enable the Elevate image zoom module.\n\n Examples \n\n See list of available Elevate zoom Examples here .",
+  "project_description": "Elevate Image Zoom provides a single image field formatter (plugin id elevate_image_zoom_formatter) that applies the third-party ElevateZoom jQuery plugin to core image fields. It offers five zoom types (basic, tint, inner, lens, mousewheel) and automatically renders a multi-value image field as a thumbnail gallery with a zoomable main image. Per-display settings control the display/zoom/thumbnail image styles, zoom type, tint overlay colour, zoom-window position and size, and lens size. The module depends on the ElevateZoom JavaScript library, which must be downloaded manually to /libraries/elevatezoom/jquery.elevatezoom.js; hook_requirements() reports an error until that file is present. It defines no routes, permissions, services or config entities.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
