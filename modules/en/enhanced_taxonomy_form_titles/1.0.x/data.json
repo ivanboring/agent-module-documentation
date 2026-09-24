@@ -1,12 +1,14 @@
 {
   "name": "Enhanced taxonomy form titles",
   "data_name": "enhanced_taxonomy_form_titles",
-  "description": "Adds the vocabulary name to taxonomy term form titles.",
+  "description": "Adds the vocabulary name to the page title of the taxonomy term add, edit and delete forms.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/enhanced_taxonomy_form_titles",
   "composer_requirements": {},
-  "dependent_modules": [],
+  "dependent_modules": [
+    "taxonomy"
+  ],
   "configure": null,
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
@@ -17,9 +19,9 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"
