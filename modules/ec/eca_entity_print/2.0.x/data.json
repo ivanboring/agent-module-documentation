@@ -1,21 +1,25 @@
 {
   "name": "ECA Entity Print",
   "data_name": "eca_entity_print",
-  "description": "ECA actions to print an entity or View to a PDF/document file and save it as a file entity.",
+  "description": "Integrates ECA with Entity Print: two ECA action plugins that render a chosen entity or a View to a PDF/document via Entity Print and save the result as a permanent file entity, exposed to the model through a token.",
   "version": "2.0.x",
   "package": "ECA",
   "composer_namespace": "drupal/eca_entity_print",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/eca": "^2.0 || ^3.0",
+    "drupal/entity_print": "^2.0"
+  },
   "dependent_modules": [
-    "eca:eca"
+    "eca",
+    "entity_print"
   ],
   "configure": null,
-  "core_version_requirement": "^10.4||^11",
+  "core_version_requirement": "^10.4 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/eca_entity_print",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
@@ -24,9 +28,11 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
+    "Automation",
     "Content display"
   ],
   "subcategories": [
+    "Workflow / business rules",
     "PDF generation"
   ],
   "keywords": [
@@ -34,7 +40,8 @@
     "entity print",
     "pdf",
     "document",
-    "automation"
+    "automation",
+    "file entity"
   ],
   "project_description": "ECA action plugins to print file document from a chosen entity or a view and saves it as a file entity.\n\n Additional Requirements \n You will need to have ECA , Entity Print modules installed and configured.\n\n Recommended modules \n \n BPMN.iO : JavaScript-based implementation for building models as two-dimensional diagrams, integrated into the Drupal admin UI \n Camunda : user-friendly desktop client for designing and deploying automated processes \n ECA Classic Modeller : \"low-level\" modelling tool using Drupal core's form API \n Back to top",
   "maintenance_status": "Actively maintained",
