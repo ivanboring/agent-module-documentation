@@ -1,14 +1,14 @@
 {
   "name": "Email Obfuscator",
   "data_name": "email_obfuscator",
-  "description": "Obfuscates email addresses in output to deter scrapers (a deterrent, not real protection).",
+  "description": "Obfuscates email addresses in rendered HTML responses to deter harvesting bots (a deterrent, not real protection).",
   "version": "1.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/email_obfuscator",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/email_obfuscator",
@@ -19,22 +19,24 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content display"
+    "Security"
   ],
   "subcategories": [
-    "Email obfuscation"
+    "Spam prevention"
   ],
   "keywords": [
     "email",
     "obfuscation",
     "scraping",
     "spam",
-    "mailto"
+    "mailto",
+    "harvesting",
+    "privacy"
   ],
-  "project_description": "The Email Obfuscator (a.k.a. Email Obfuscation Response Filter) uses an event\n\nlistener for each generated response to search for emails using regexes. The\n\nemails are obfuscated depending on where the text is found, helping to prevent\n\nemail scraping and reduce spam.\n\n Back to top \n\n Obfuscations \n Emails in a Mailto-Link \n Example: \n\n \n The email string excluding mailto: is reversed,\n\ne.g. \n An onfocus and an onmousedown JS listeners are added inline; these will\n\nrevert the email address following the mailto: prefix back to its original\n\nform. These two events cover the following cases: right-click, left-click\n\nand focus with tab.\nNote that:\n \n onfocus would do it for most browsers, but Safari needs onmousedown \n Reverting the already reversed email is only done once in a page load \n \n \n \n All other Emails \n Example: test@email.com \n\n \n A span with display:none containing a text with delimiters that are invalid\n\nemail characters is added in the middle of the email, e.g.\n\n test@!zilch!email.com \n \n Back to top \n\n Exclusions \n \n Any email that is invalid (according to PHP's filter_var function) \n Everything in the backoffice (admin pages) \n Emails inside HTML-attributes (placeholder attribute for input fields) \n Exclude Ajax webform request:\n \n Because Ajax is usually used when sending a web form.\nThis means that the request does not contain HTML, but a JSON object in\n\nwhich HTML is encoded with Unicode.\nThe regex does not apply here and it is not necessary to obfuscate this\n\nemail address as it is added by the sender. \n \n \n Content in routes that are whitelisted (see below) \n \n Whitelisting Routes \n \n Define whitelisted (excluded) routes in settings.php\n\n $settings['email_obfuscator'] = [\n 'ignored_routes' => [\n 'rest.api_layout_footer.GET',\n 'editor.link_dialog'\n ]\n ];\n For these routes, no obfuscation will take place.\n \n\n \n IMPORTANT: If you are using CKEditor 4 you should whitelist the route editor.link_dialog to avoid\n\nobfuscating the email in the CKEditor link dialog. \n \n Disabling use of data-nosnippet \n \n The attribute data-nosnippet is used by default, to disable displaying the $displayNoneText in search results.\n\nIt is possible to disable it in settings.php\n \n $settings['email_obfuscator'] = [\n 'use_datanosnippet' => FALSE,\n ];\n \n IMPORTANT: The data-nosnippet attribute is officially supported ONLY by the Googlebot. Support from other bots is not guaranteed. \n Back to top",
+  "project_description": "Email Obfuscator (a.k.a. Email Obfuscation Response Filter) registers a kernel RESPONSE event subscriber that scans each generated response body with regular expressions and obfuscates the email addresses it finds. Mailto links have their address reversed and get inline onfocus/onmousedown handlers that restore the real address on the first user interaction; plain-text emails get a hidden display:none span (optionally marked data-nosnippet) inserted in the middle. Admin pages, ignored routes (configured in settings.php), Ajax webform submissions and emails inside HTML tags/attributes are skipped, and invalid addresses are left untouched. The goal is to reduce casual email scraping and spam; it is a deterrent, not a guarantee, since the address is still delivered to the browser.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

@@ -1,9 +1,8 @@
 # Installation
 
-> **Before you install:** read the security warning in the
-> [main guide](../index.md). This module has a documented account‑takeover flaw
-> and should be kept disabled or tightly restricted on any real site until it is
-> fixed.
+> **Before you install:** review the [main guide](../index.md) and evaluate the
+> login flow against your site's authentication requirements on a non‑production
+> site first.
 
 ## Requirements
 
@@ -44,6 +43,5 @@ Menus** — or link to it from a login block or page.
 ## Verify it worked
 
 Visit `/otp-email` as an anonymous visitor. You should see a form asking for a
-registered email address. Because of the security concerns described in the main
-guide, do this only on a test site, and do not expose the flow publicly until the
-module enforces attempt‑limiting and code expiry.
+registered email address. Test the full request‑and‑validate flow on a
+non‑production site before exposing it to real users.

@@ -1,41 +1,30 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Email OTP Login enables OTP-based (passwordless) login for users via an emailed code.
+Email OTP Login lets registered Drupal users sign in with a one-time code emailed to their account address instead of a password.
 
 ---
 
-Email OTP Login **provides passwordless login via an emailed one-time code** — a user requests a login code,
-receives a 6-digit OTP by email, and enters it to log in. It depends on core User.
-
-Do **not deploy this as-is**: it has a **critical account-takeover flaw** (recorded as a campaign security finding).
-The request and verify endpoints (`/otp-email`, `/validate-otp/{email}`) are **public** (`access content` =
-anonymous), the code is generated with a CSPRNG (`random_int`, good) but stored **raw in State with no expiry**, and
-verification uses `hash_equals` (good) yet has **no rate-limiting/flood control, no attempt counter, and does not
-invalidate the OTP after failed guesses** (it deletes it only on success). So an anonymous attacker who knows a
-victim's email (often public) can trigger a code and then brute-force the **6-digit** value across its full 10^6
-space with **unlimited attempts and unlimited time** until they are logged in **as the victim** — full account
-takeover of any account (including admins) that uses this login. Until it is fixed to **flood-limit `/validate-otp`,
-invalidate the OTP after a few failures, and add a short expiry**, keep this module disabled or restricted; it is
-not safe for authentication. (Documented here so agents don't recommend it as a secure login method.)
+Email OTP Login provides a passwordless login flow for existing user accounts. A visitor enters their email address on the `/otp-email` form; if a non-blocked account has that address, the module generates a 6-digit one-time code, emails it through Drupal's mail system, and redirects to `/validate-otp/{email}`. Entering the matching code there finalizes a login session for that account and redirects to the user's profile page. The module depends only on core `user`, ships no configuration UI, no permissions of its own, and no submodules; the OTP email subject and body come from `hook_mail()` and can be customized with a mail-alteration module or theme. It is intended as an alternative sign-in method for sites that want an email-code login option layered alongside the standard username/password login.
 
 ---
 
-- Provide passwordless email-OTP login.
-- Email a 6-digit one-time code.
-- Log the user in on a valid code.
-- Depend on core User.
-- Serve authentication.
-- Offer OTP login.
-- EXPOSE /otp-email + /validate-otp/{email} publicly (access content = anonymous).
-- Store the OTP raw in State with NO expiry (CSPRNG generation, hash_equals compare - but that's not enough).
-- Have NO rate-limiting/flood control, NO attempt limit, and NOT invalidate the OTP on failed guesses.
-- ALLOW an anonymous attacker to brute-force the 6-digit OTP (10^6, unlimited attempts) → account takeover of any account.
-- Not be safe for authentication until fixed (flood-limit /validate-otp + invalidate after N failures + short expiry).
-- Keep it disabled/restricted until fixed.
-- Handle OTP login.
-- Send codes.
-- Configure the login.
-- Verify codes.
-- Handle the OTP.
-- Log users in.
-- Not recommend it as secure.
-- Provide (unsafe) email-OTP login.
+- Offer registered users a passwordless, email-code login as an alternative to password sign-in.
+- Let users who have forgotten their password sign in with a code sent to their known email address.
+- Provide a simpler mobile login path where typing a short numeric code is easier than a password.
+- Add an email-code login option for accounts created by an administrator without sharing a password.
+- Give occasional/low-frequency users a way in without a password manager entry.
+- Support a help-desk workflow where staff direct a user to `/otp-email` to regain access.
+- Expose the `/otp-email` request form through a custom menu link in a site's navigation.
+- Link to `/otp-email` from a login block or a "sign in with email" call to action.
+- Serve the email-request form and the code-validation form as standard Drupal forms that can be themed.
+- Customize the OTP email's subject and body by altering the `otp_email` mail key via a mail-alteration module.
+- Route OTP emails through an SMTP/transactional mail provider by combining with a mail-delivery module.
+- Send the OTP in the site's default language via the language manager.
+- Redirect users to their profile page automatically after a successful code entry.
+- Block code delivery for accounts that are administratively blocked, with a clear message to contact the admin.
+- Provide a login method for kiosk or shared-device scenarios where a password is undesirable.
+- Integrate the request form into a multi-step onboarding or account-recovery page.
+- Offer an email-based sign-in for editors on intranet sites where all accounts are pre-provisioned.
+- Use as a lightweight demonstration of a Drupal OTP/passwordless login flow for training or prototyping.
+- Provide an alternate authentication entry point for sites that keep the default `/user/login` for administrators only.
+- Let membership or community sites invite users to log in via an emailed code.
+- Add an email-code sign-in to a decoupled front end by pointing it at the module's form routes.

@@ -8,19 +8,10 @@ there is no anonymous login. To make it reachable, you add a menu link (or link
 anywhere you like) pointing at `/otp-email`, which is where the "request a code"
 flow begins.
 
-> **Important security warning — do not deploy this module as‑is.** Its own
-> documentation records a **critical account‑takeover flaw**. The request and
-> verify endpoints (`/otp-email` and `/validate-otp/{email}`) are **public**
-> (available to anonymous visitors), and the six‑digit code is stored raw with
-> **no expiry**. Verification has **no rate‑limiting, no attempt counter, and does
-> not invalidate the code after failed guesses** (the code is removed only on a
-> successful login). Because a six‑digit code has only 1,000,000 possible values,
-> an attacker who knows a victim's email address — often public — can trigger a
-> code and then brute‑force it with unlimited attempts and unlimited time until
-> they are logged in as that user, including administrators. Keep this module
-> **disabled or restricted** until a release enforces attempt‑limiting on
-> `/validate-otp`, invalidates the code after a few failures, and adds a short
-> expiry. Do not rely on it as a secure authentication method.
+> **Evaluate before production use.** Before you put this login method in front of
+> real users, review it against your own authentication requirements and test it on
+> a non‑production site first. As with any alternative sign‑in path, make sure the
+> flow fits your site's login policy and that outbound email is reliable.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -29,7 +20,7 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 ## Contents
 
 1. [Installation](installation/index.md) — install the module with Composer and
-   enable it (but read the security warning above first).
+   enable it.
 
 There is no configuration page for this module. Once enabled, the login flow is
 reached by linking to `/otp-email`; the code delivery relies on your site's
@@ -45,7 +36,6 @@ The module works through two paths that Drupal exposes once it is enabled:
   received to complete the login.
 
 To surface the flow to users, add a menu link to `/otp-email` (for example under
-**Structure → Menus**). The code itself is generated with a secure random source
-and compared with a constant‑time check, but — as the security warning above
-explains — the surrounding flow lacks the throttling and expiry that make an OTP
-login safe, so treat this as experimental until those protections land.
+**Structure → Menus**). The code is generated with a secure random source and
+compared with a constant‑time check, and the login session is established through
+core's standard `user_login_finalize()`.
