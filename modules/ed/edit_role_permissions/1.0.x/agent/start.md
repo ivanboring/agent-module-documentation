@@ -1,8 +1,14 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-# Edit Role Permissions — agent index
+# Edit Permissions by Default (edit_role_permissions) — agent index
 
-Changes a role's **default operation link from "edit" to "edit permissions"** (jump to the role's permissions
-page). Depends on core `user`. Version **1.0.x** (dev). Core `^8||^9||^10||^11`.
+Reweights the **"Edit permissions"** operation on `user_role` entities so it sorts ahead of **"Edit"**, making it the
+default/primary action on the People > Roles admin list (`/admin/people/roles`). Pure admin-UX.
 
-Admin-UX — **access-neutral**: only alters an operation link via `hook_entity_operation_alter`; the permissions
-page stays gated by core's `administer permissions`. No access role.
+- **Depends on:** core `user`. No composer requirements, no config, no schema, no permissions, no routes, no services.
+- **Core:** `^8 || ^9 || ^10 || ^11`. Package `Other`. Version **1.0.x** (dev branch).
+- **Mechanism:** one hook — `edit_role_permissions_entity_operation_alter()` in `edit_role_permissions.module`.
+- **Access-neutral:** only changes an operation link's `weight`; the linked permissions form stays gated by core's
+  `administer permissions`. Grants no new capability.
+
+## Solution docs
+- [Operation link reweighting](api/operation-link.md) — the single hook, what it alters, and why it is access-neutral.

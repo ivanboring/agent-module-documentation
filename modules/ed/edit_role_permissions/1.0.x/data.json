@@ -1,7 +1,7 @@
 {
-  "name": "Edit Role Permissions",
+  "name": "Edit Permissions by Default",
   "data_name": "edit_role_permissions",
-  "description": "Changes a role's default operation link from \"edit\" to \"edit permissions\" (admin UX; adds no access).",
+  "description": "Changes the default entity operation on roles to be \"edit permissions\" instead of just \"edit\".",
   "version": "1.0.x",
   "package": "Other",
   "composer_namespace": "drupal/edit_role_permissions",
@@ -10,7 +10,7 @@
     "drupal:user"
   ],
   "configure": null,
-  "core_version_requirement": "^8||^9||^10||^11",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/edit_role_permissions",
@@ -21,13 +21,13 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools"
   ],
   "subcategories": [
-    "User roles"
+    "User roles & permissions"
   ],
   "keywords": [
     "role",
@@ -36,7 +36,7 @@
     "admin",
     "link"
   ],
-  "project_description": "When editing roles the default operation is normally \"edit\" which just lets you change the label or name of a role. Under most circumstances you're probably looking to edit the permissions of a role rather than the name of it.\n\n This module changes the default action to \"Edit Permissions\".",
+  "project_description": "When editing roles the default operation is normally \"edit\", which only lets you change the label or machine name of a role. In most cases an administrator on the roles list actually wants to edit the permissions of a role rather than rename it. This module reweights the role's \"Edit permissions\" operation so it sorts ahead of \"Edit\" and becomes the primary/default action on the People > Roles admin list. It is a pure admin-UX convenience implemented with a single hook_entity_operation_alter() and grants no new access.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",
