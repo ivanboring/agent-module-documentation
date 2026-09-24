@@ -1,31 +1,37 @@
 {
-  "name": "Embera",
+  "name": "Embera (Library)",
   "data_name": "embera",
-  "description": "Provides a service wrapping the Embera PHP oEmbed library.",
+  "description": "Provides a Drupal service that wraps the mpratt/embera PHP oEmbed library.",
   "version": "1.0.x",
   "package": "Libraries",
   "composer_namespace": "drupal/embera",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "mpratt/embera": "^2.0"
+  },
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/embera",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "mpratt/embera"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
+    "Developer tools",
     "Media"
   ],
   "subcategories": [
-    "Embeds"
+    "External library management",
+    "Media embedding"
   ],
   "keywords": [
     "embera",

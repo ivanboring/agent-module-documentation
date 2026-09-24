@@ -1,35 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Embera provides a service for the Embera PHP library.
+Embera bundles the mpratt/embera PHP oEmbed library and exposes it to Drupal through a single service, `embera.manager`.
 
 ---
 
-Embera provides a **Drupal service wrapping the Embera PHP library** — Embera turns URLs (YouTube, Vimeo,
-Twitter, etc.) into their oEmbed embed markup, so other modules can convert a pasted media URL into a rich
-embed. It is in the Libraries package.
-
-Use it as a dependency to get oEmbed conversion. It is a developer/library-integration feature exposing the
-Embera service; the embeds it produces come from **third-party providers** (embedding third-party content), and
-it has no content or access role. Depend on it and use the Embera service.
+Embera (Library) is a thin, developer-facing wrapper: installing it pulls the mpratt/embera PHP library into `/vendor/` and registers one Drupal service, `embera.manager` (class `Drupal\embera\EmberaServiceManager`). That service turns a supported media URL (YouTube, Vimeo, Twitter and the other providers the library knows) into oEmbed data — full embed HTML, a thumbnail URL, or a title — and caches provider responses both on disk (Embera's filesystem HTTP cache, in the temp directory) and statically within a single request. It ships no content types, fields, blocks, routes, permissions, or admin form; its behaviour is tuned only through `Settings` values (`embera.class.configuration`, `embera.file_cache.duration`, `embera.file.cache.disabled`). It is meant to be used by other modules that need oEmbed conversion, not installed on its own by site builders.
 
 ---
 
-- Wrap the Embera PHP library.
-- Convert URLs to oEmbed markup.
-- Support YouTube/Vimeo/etc.
-- Expose an Embera service.
-- Serve other modules.
-- Produce rich embeds.
-- Embed third-party content.
-- Have no content/access role.
-- Use the Embera service.
-- Handle oEmbed.
-- Convert URLs.
-- Configure nothing (service).
-- Provide embeds.
-- Handle the library.
-- Embed media URLs.
-- Depend on it.
-- Handle the service.
-- Produce embeds.
-- Use Embera.
-- Provide oEmbed conversion.
+- Add oEmbed support to a custom module by depending on `embera` and calling `embera.manager`.
+- Convert a pasted YouTube URL into its responsive embed HTML with `getEmbedCode()`.
+- Convert a Vimeo URL into embed markup for a custom render array.
+- Fetch a video's thumbnail image URL with `getThumbnailUrl()` to build a poster/preview.
+- Retrieve a media item's title with `getTitle()` for automatic labelling.
+- Pull the full oEmbed response array with `getEmbedInformation()` for custom rendering.
+- Back a custom field formatter that renders embeds from a stored link value.
+- Back a custom media source or field widget that previews an entered media URL.
+- Provide the library dependency another contrib module declares as a requirement.
+- Cache provider oEmbed responses on disk to avoid repeated HTTP calls across requests.
+- Tune how long provider responses are cached by setting `embera.file_cache.duration`.
+- Disable disk caching entirely for debugging by setting `embera.file.cache.disabled` to TRUE.
+- Pass advanced library options (responsive/offline/provider settings) via `embera.class.configuration`.
+- Deduplicate repeated lookups of the same URL within one request via the built-in static cache.
+- Generate embed markup during a migration or import that ingests media URLs.
+- Populate a computed field with a video title or thumbnail derived from a URL.
+- Build a Twig-facing service call that renders an embed inside a custom template.
+- Enrich search-index data with a media title fetched from its oEmbed metadata.
+- Confirm the library is present via the `hook_requirements()` status report entry.
+- Serve as the shared oEmbed layer so several site-specific modules reuse one cache.
