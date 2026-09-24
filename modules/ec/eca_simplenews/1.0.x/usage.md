@@ -1,36 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-ECA Simplenews integrates ECA with the Simplenews newsletter module and its plugins.
+ECA Simplenews adds Simplenews newsletter subscribe/unsubscribe actions and subscription-state conditions to the ECA (Event-Condition-Action) rules engine.
 
 ---
 
-ECA Simplenews **integrates ECA with the Simplenews newsletter module** — providing ECA events/actions for
-Simplenews (subscriptions, newsletter sending, etc.) so newsletter workflows can be automated with no-code
-Event-Condition-Action models. It depends on the ECA module and Simplenews.
-
-Use it to automate newsletter workflows via ECA. It is an automation add-on. Data-handling note: newsletter
-workflows touch **subscriber data (emails/PII)** and can trigger sending — handle subscriber PII per your privacy
-policy and take care that automated sends respect consent/opt-in. It has no access-control role. Use its
-integration in ECA models.
+ECA Simplenews is a lightweight bridge between the ECA rules engine and the Simplenews newsletter module. Once installed alongside `eca` and `simplenews`, it makes newsletter subscription operations available as building blocks inside no-code ECA models: two actions ("Subscribe to newsletter" and "Unsubscribe from newsletter") and three conditions ("User is currently subscribed", "User has ever subscribed" and "Check for self-unsubscribes"). Each action and condition works against a newsletter identified by its machine name and resolves the affected person from the `[user:mail]` token, delegating to Simplenews' own `simplenews.subscription_manager` service and `Subscriber` entity. There is no settings page, no route and no permission of its own - you compose everything through ECA's model editor. A typical model is an "entity presave" event on the User entity wired to the Subscribe action, optionally gated by conditions such as an ECA role check, so users are subscribed automatically when their account is created or updated.
 
 ---
 
-- Integrate ECA with Simplenews.
-- Provide ECA events/actions for newsletters.
-- Automate subscription/sending workflows.
-- Depend on ECA + Simplenews.
-- Serve automation.
-- Extend ECA for newsletters.
-- Touch subscriber PII (emails) + trigger sends.
-- Handle PII per policy + respect consent/opt-in.
-- Have no access-control role.
-- Use it in ECA models.
-- Handle newsletter automation.
-- Automate newsletters.
-- Configure ECA.
-- Drive Simplenews.
-- Handle the workflow.
-- Trigger sends.
-- Configure the integration.
-- Handle subscribers.
-- Automate sending.
-- Provide ECA Simplenews integration.
+- Subscribe a user to a named newsletter automatically when their account is created.
+- Subscribe a user to a newsletter when their account is updated (presave User event).
+- Unsubscribe a user from a newsletter as part of an ECA workflow.
+- Drive newsletter opt-in from an ECA model instead of custom code.
+- Branch an ECA model on whether the user is currently subscribed to a newsletter.
+- Branch an ECA model on whether the user has ever subscribed to a newsletter.
+- Skip re-subscribing users who previously unsubscribed themselves ("Check for self-unsubscribes").
+- Send an admin notification (via ECA's Send email action) when the self-unsubscribe check flags a possible false positive.
+- Add a newsletter subscription step to an existing content-workflow model.
+- Combine a subscription action with ECA role/permission conditions to limit who gets subscribed.
+- Automatically subscribe members of a given role to an internal newsletter.
+- Keep a "members" newsletter in sync with account lifecycle events.
+- Trigger a subscribe/unsubscribe from any ECA-supported event, not just user events.
+- Use the `[user:mail]` token so the acting user's own address is the subscription target.
+- Reference the newsletter by its machine name (for example `default`) in the plugin form.
+- Prototype newsletter automations without writing a custom module.
+- Gate a welcome-newsletter subscription behind a condition that checks current subscription state.
+- Prevent duplicate subscriptions by checking "User is currently subscribed" before subscribing.
+- Build a re-engagement model that only targets users who have subscribed in the past.
+- Integrate newsletter subscription into a multi-step ECA business process.
+- Respect subscriber intent by consulting subscription history before automated resubscribes.
+- Automate opt-out handling as part of an account-deactivation ECA model.

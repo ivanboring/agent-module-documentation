@@ -1,16 +1,16 @@
 {
   "name": "ECA Telegram",
   "data_name": "eca_tg",
-  "description": "An ECA action to send messages to Telegram.",
+  "description": "Send message to telegram",
   "version": "1.0.x",
   "package": "ECA",
   "composer_namespace": "drupal/eca_tg",
   "composer_requirements": {},
   "dependent_modules": [
-    "eca:eca"
+    "eca"
   ],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/eca_tg",
@@ -21,13 +21,15 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Automation"
+    "Automation",
+    "Integrations"
   ],
   "subcategories": [
-    "Workflow / ECA"
+    "Workflow / business rules",
+    "Chat / messaging"
   ],
   "keywords": [
     "eca",
@@ -36,7 +38,7 @@
     "message",
     "bot"
   ],
-  "project_description": "Provide functionally for ECA to send messages via Telegram.",
+  "project_description": "Provides a single ECA action plugin, TelegramMessageAction (id eca_telegram_send_message), that sends a message (optionally with a photo and inline keyboard buttons) to a Telegram chat via the Telegram Bot HTTP API. Depends on the ECA module; configured per-action inside an ECA model.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",
