@@ -1,14 +1,18 @@
 {
   "name": "Entity Browser Block Layout",
   "data_name": "entity_browser_block_layout",
-  "description": "Makes Entity Browser blocks easier to use in Layout Builder.",
+  "description": "Adjustments to make it easier to use Entity Browser blocks in Layout Builder.",
   "version": "1.1.x",
   "package": null,
   "composer_namespace": "drupal/entity_browser_block_layout",
-  "composer_requirements": {},
-  "dependent_modules": [],
+  "composer_requirements": {
+    "drupal/entity_browser_block": "^1.0 || ^2.0"
+  },
+  "dependent_modules": [
+    "entity_browser_block"
+  ],
   "configure": null,
-  "core_version_requirement": "^10.3||^11",
+  "core_version_requirement": "^10.3 || ^11.0",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/entity_browser_block_layout",
@@ -25,16 +29,18 @@
     "Content editing experience"
   ],
   "subcategories": [
-    "Media library / browser"
+    "Layout Builder",
+    "Entity selection"
   ],
   "keywords": [
     "entity browser",
     "layout builder",
-    "blocks",
-    "placement",
+    "entity browser block",
+    "block placement",
+    "view modes",
     "ux"
   ],
-  "project_description": "UX and CSS improvements to make it easier to use Entity Browser blocks in Layout Builder.\n\n This is based on a sandbox project and a GitHub project .",
+  "project_description": "UX and CSS improvements that make Entity Browser Block blocks easier to use in Layout Builder. It tidies the selected-items table in the Layout Builder sidebar, adds an Edit button beside each selected item, lets you restrict which view modes are offered per content type when placing referenced content, auto-opens the entity browser modal when adding a new block, and decorates entity browser views so a whole table row is clickable to select it.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",
