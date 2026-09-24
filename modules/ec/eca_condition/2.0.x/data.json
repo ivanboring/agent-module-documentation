@@ -1,7 +1,7 @@
 {
   "name": "ECA Condition",
   "data_name": "eca_condition",
-  "description": "Adds Condition-plugin integration to ECA (use Drupal condition plugins in ECA models).",
+  "description": "Provides a core Condition plugin (id 'eca_condition') whose TRUE/FALSE result is decided by an ECA model, letting you build reusable Drupal conditions visually in ECA.",
   "version": "2.0.x",
   "package": "ECA",
   "composer_namespace": "drupal/eca_condition",
@@ -10,7 +10,7 @@
     "eca:eca"
   ],
   "configure": null,
-  "core_version_requirement": "^10.3||^11",
+  "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/eca_condition",
@@ -21,22 +21,22 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Automation"
   ],
   "subcategories": [
-    "ECA / workflow"
+    "Workflow / business rules"
   ],
   "keywords": [
     "eca",
     "condition",
     "automation",
     "workflow",
-    "plugins"
+    "bpmn"
   ],
-  "project_description": "Drupal Condition plugin with ECA",
+  "project_description": "Bridges Drupal's Condition plugin system and ECA: exposes a core Condition plugin whose result is computed by an ECA model, so condition logic authored in ECA can be reused anywhere Drupal evaluates conditions.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
