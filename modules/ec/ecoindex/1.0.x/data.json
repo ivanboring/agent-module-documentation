@@ -1,14 +1,16 @@
 {
   "name": "EcoIndex",
   "data_name": "ecoindex",
-  "description": "Implements the EcoIndex service to measure/report a page's environmental impact.",
+  "description": "Provides an 'ecoindex' field type plus a browser-side preview that measures a page's EcoIndex score/grade (from the GreenIT-Analysis library) and stores it on content.",
   "version": "1.0.x",
   "package": "EcoIndex",
   "composer_namespace": "drupal/ecoindex",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/diff": "^1.7"
+  },
   "dependent_modules": [],
   "configure": "ecoindex.settings",
-  "core_version_requirement": "^9.4||^10||^11",
+  "core_version_requirement": "^9.4 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ecoindex",
@@ -22,15 +24,20 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Administration tools"
+    "Content editing experience",
+    "Content display"
   ],
   "subcategories": [
-    "Sustainability / eco"
+    "Fields",
+    "Field formatters",
+    "Content preview",
+    "Field validation"
   ],
   "keywords": [
     "ecoindex",
     "sustainability",
     "environment",
+    "green it",
     "carbon",
     "eco"
   ],
