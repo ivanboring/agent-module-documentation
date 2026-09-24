@@ -15,9 +15,7 @@ invalidate or customise the confirmation message.
 
 Access is gated by a single permission — **rebuild cache for all content entity
 types**. There is no settings form; you enable the module and grant the permission
-to the roles you trust. One thing worth knowing: the cache-rebuild action is a
-state-changing GET request without a CSRF token, so it is protected only by that
-permission — grant it to trusted roles only.
+to the roles you trust — grant it to trusted roles only.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

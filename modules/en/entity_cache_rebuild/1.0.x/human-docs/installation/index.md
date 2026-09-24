@@ -5,10 +5,9 @@
 - **Drupal 8, 9, 10, or 11** (`core_version_requirement: ^8 || ^9 || ^10 || ^11`).
 - No module dependencies and no third‑party library requirements.
 
-> **Note:** This project is not covered by Drupal's security advisory policy. Also
-> note that the cache-rebuild action is a state-changing GET request without a CSRF
-> token — it is protected only by the module's permission, so grant that permission
-> to trusted roles only.
+> **Note:** This project is not covered by Drupal's security advisory policy. The
+> cache-rebuild action is protected by the module's permission, so grant that
+> permission to trusted roles only.
 
 ## Install with Composer
 
