@@ -1,22 +1,27 @@
 {
   "name": "Ecomail",
   "data_name": "ecomail",
-  "description": "provides API integration with the Ecomail email-marketing platform.",
+  "description": "Provides API integration with Ecomail marketing platform.",
   "version": "1.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/ecomail",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "ecomailcz/ecomail": "dev-master",
+    "drupal/key": "^1.19"
+  },
   "dependent_modules": [
     "key:key"
   ],
-  "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "configure": "ecomail.settings",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/ecomail",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "ecomailcz/ecomail"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
@@ -27,16 +32,18 @@
     "Integrations"
   ],
   "subcategories": [
-    "CRM"
+    "CRM integration"
   ],
   "keywords": [
     "ecomail",
     "email marketing",
+    "newsletter",
     "api",
     "subscribers",
+    "campaigns",
     "key"
   ],
-  "project_description": "Provides API integration with Ecomail marketing platform. It's meant to be extended by other modules providing user-facing features.",
+  "project_description": "Ecomail provides a low-level API integration between Drupal and the Ecomail (ecomail.cz) email-marketing platform. It ships a single service, ecomail.client, that wraps the ecomailcz/ecomail PHP SDK and exposes the Ecomail REST API v2 (lists, subscribers, campaigns, automations, templates, domains, transactional emails, transactions, product/data feeds, events, contact search and discount coupons). The API key is stored as a Key entity via the Key module and selected on a small settings form. The module provides no user-facing subscribe forms, blocks, fields or hooks of its own; it is a building block meant to be consumed by other custom or contrib modules.",
   "maintenance_status": "Seeking co-maintainer(s)",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
