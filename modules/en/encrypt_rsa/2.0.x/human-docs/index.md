@@ -59,9 +59,14 @@ Everything is configured under the **Key** and **Encrypt** admin sections:
    Webform submissions, custom code, and so on).
 
 > **Secret handling.** The private key is the only thing standing between an
-> attacker and your plaintext — protect it as a secret. With DDEV, keep it out of
-> the repository (store the passphrase or key material via
-> `ddev dotenv set .ddev/.env …` and a Key env provider). Where possible use OAEP
-> padding for confidentiality, and consult the module's README for
-> platform‑specific guidance, since the achievable security depends on the
-> underlying OpenSSL/phpseclib build.
+> attacker and your plaintext — protect it as a secret. The module stores PEM key
+> material through whichever Key provider you choose for the Key entity (file,
+> configuration, or environment), so pick a provider that keeps the private key
+> out of version control. Note that this module cannot generate keys for you —
+> create the RSA key pair with the `openssl` CLI (see the README) and paste the
+> PEM in. The *Private OpenSSL Seal* method has no admin field for a private-key
+> passphrase, so most setups either use a passphrase-free private key or use a
+> `Public *` (encrypt-only) method and keep the private key in a separate,
+> better-protected environment. Consult the module's README for platform-specific
+> guidance, since the achievable security depends on the underlying
+> OpenSSL/phpseclib build.

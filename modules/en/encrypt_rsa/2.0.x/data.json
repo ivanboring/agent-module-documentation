@@ -1,23 +1,30 @@
 {
   "name": "Encrypt RSA",
   "data_name": "encrypt_rsa",
-  "description": "An RSA encryption method for the Encrypt module, using phpseclib and Key-managed asymmetric keys.",
-  "version": "1.0.x",
-  "package": null,
+  "description": "Encrypt your data using RSA cryptosystem",
+  "version": "2.0.x",
+  "package": "Encryption",
   "composer_namespace": "drupal/encrypt_rsa",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "ext-openssl": "*",
+    "phpseclib/phpseclib": "^3",
+    "drupal/key_asymmetric": "^1.2"
+  },
   "dependent_modules": [
     "encrypt:encrypt",
     "key_asymmetric:key_asymmetric"
   ],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/encrypt_rsa",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "phpseclib/phpseclib",
+    "ext-openssl"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
@@ -28,12 +35,16 @@
     "Security"
   ],
   "subcategories": [
-    "Encryption"
+    "Field encryption",
+    "Secrets & key management"
   ],
   "keywords": [
     "rsa",
     "encryption",
     "phpseclib",
+    "openssl",
+    "asymmetric",
+    "envelope",
     "key",
     "encrypt"
   ],

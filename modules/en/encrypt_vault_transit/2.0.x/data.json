@@ -1,15 +1,19 @@
 {
   "name": "Encrypt - Vault Transit",
   "data_name": "encrypt_vault_transit",
-  "description": "A Vault Transit (encryption-as-a-service) encryption method for Encrypt.",
+  "description": "Adds HashiCorp Vault's Transit secrets engine (encryption-as-a-service) as an encryption method for the Encrypt module.",
   "version": "2.0.x",
-  "package": null,
+  "package": "Security",
   "composer_namespace": "drupal/encrypt_vault_transit",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/encrypt": "^3.0",
+    "drupal/key": "^1",
+    "drupal/vault": "^2 || ^3"
+  },
   "dependent_modules": [
-    "encrypt:encrypt",
-    "key:key",
-    "vault:vault"
+    "encrypt",
+    "key",
+    "vault"
   ],
   "configure": null,
   "core_version_requirement": "^9.3 || ^10 || ^11",
@@ -17,28 +21,30 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/encrypt_vault_transit",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "^8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Security"
   ],
   "subcategories": [
-    "Secrets & key management"
+    "Secrets & key management",
+    "Field encryption"
   ],
   "keywords": [
     "vault",
     "encryption",
     "transit",
     "encrypt",
+    "key",
     "secrets"
   ],
-  "project_description": "Provides the ability for the Encrypt module to use the Vault API Transit Secret engine, part of Vault for Drupal suite.\n\n Project introduction and documentation to come.",
+  "project_description": "Encrypt - Vault Transit plugs the Encrypt module into HashiCorp Vault's Transit secrets engine, providing an \"encryption-as-a-service\" encryption method. Instead of holding an encryption key on the Drupal server, the module sends data to Vault's /transit/encrypt and /transit/decrypt endpoints so the key material never leaves Vault. It ships one Encrypt EncryptionMethod plugin (vault_transit) plus a Key module KeyType and KeyInput that let an Encryption Profile reference a named Vault transit key. The Vault server address, TLS settings, and authentication token are supplied by the separate Vault module (with the token stored via the Key module); this module contributes no admin form, route, permission, or config object of its own. Part of the Vault for Drupal suite; requires the Encrypt, Key, and Vault modules.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
