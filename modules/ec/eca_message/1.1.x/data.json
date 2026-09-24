@@ -1,7 +1,7 @@
 {
   "name": "ECA Message",
   "data_name": "eca_message",
-  "description": "Lets ECA models create Message entities (Message module) as actions.",
+  "description": "Plug-and-play bridge that swaps the Message entity's access handler so ECA models can create Message entities via ECA's generic entity actions.",
   "version": "1.1.x",
   "package": "Custom",
   "composer_namespace": "drupal/eca_message",
@@ -11,7 +11,7 @@
     "message:message"
   ],
   "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/eca_message",
@@ -22,20 +22,22 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Automation"
   ],
   "subcategories": [
-    "ECA / workflow"
+    "Workflow / business rules"
   ],
   "keywords": [
     "eca",
     "message",
     "automation",
     "workflow",
-    "actions"
+    "notification",
+    "activity stream",
+    "access handler"
   ],
   "project_description": "Plug & Play solution to make it possible to create message entities with the ECA module.\n\n Features \n Temporary solution till https://www.drupal.org/project/eca/issues/3375899 is resolved.\n\n A brief documentation of how to use Message with ECA can be found here https://www.drupal.org/project/eca_message/issues/3458495 Thx to DamienMcKenna \n\n Additional Requirements \n \n ECA: Event - Condition - Action\n\n \n Back to top",
   "maintenance_status": "Minimally maintained",
