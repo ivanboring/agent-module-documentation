@@ -1,13 +1,15 @@
 {
   "name": "Entity change default language UI",
   "data_name": "entity_change_default_language_ui",
-  "description": "Provides UI (per-node form + batch form) to change the default/original language of content entities and prune translations.",
+  "description": "Back-office UI (per-node entity operation form + site-wide batch form) to change the default/original language of nodes and prune their translations, built on the entity_change_default_language API.",
   "version": "1.0.x",
   "package": "Multilingual",
   "composer_namespace": "drupal/entity_change_default_language_ui",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/entity_change_default_language": "^1"
+  },
   "dependent_modules": [
-    "drupal:entity_change_default_language"
+    "entity_change_default_language"
   ],
   "configure": null,
   "core_version_requirement": "^9.1 || ^10 || ^11",
@@ -15,13 +17,13 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/entity_change_default_language_ui",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "^8.0",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Multilingual"

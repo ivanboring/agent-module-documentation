@@ -20,12 +20,11 @@ the content list), and a site-wide batch form at
 (`/admin/config/regional/change-default-language`). It depends on the
 `entity_change_default_language` API module, which must be enabled first.
 
-> **Important — this is a destructive operation.** Both forms are gated only by the
-> broad **access administration pages** permission, which is *not* the same as node
-> edit access. A user who has that permission but no edit rights on a given node can
-> still switch its original language and delete its non-preserved translations.
-> Restrict the **access administration pages** permission to trusted roles, and
-> audit who can reach these routes.
+> **Important — this is a destructive operation.** Switching a node's original
+> language removes every translation you do not explicitly choose to keep, and the
+> bulk form applies this across many nodes at once. Treat these forms as
+> administrative tooling: grant access only to trusted roles and double-check the
+> "translations to preserve" selection before submitting.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

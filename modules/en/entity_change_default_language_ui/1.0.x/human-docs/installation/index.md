@@ -9,8 +9,8 @@
   feature to be meaningful.
 
 > **Note:** This project is not covered by Drupal's security advisory policy, and its
-> forms perform destructive changes gated only by the broad **access administration
-> pages** permission. Restrict that permission to trusted roles before use.
+> forms perform destructive changes (switching a node's original language deletes its
+> non-preserved translations). Limit access to trusted administrative roles before use.
 
 ## Install with Composer
 
