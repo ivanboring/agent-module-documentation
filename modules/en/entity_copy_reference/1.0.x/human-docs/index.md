@@ -17,8 +17,8 @@ accidentally change the original.
 The module works only after you configure it: you first choose which content types
 should be copyable, then set the per‑reference behavior for each of those types.
 It currently supports **nodes only** (taxonomy support is planned). Cloning creates
-real content, so it respects normal create permissions plus the module's own
-permission — gate who is allowed to clone. There are no third‑party dependencies.
+real content, so grant the module's copy permission only to roles you trust to
+create and manage content. There are no third‑party dependencies.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

@@ -28,7 +28,6 @@ drush en entity_confirmation -y
 
 ## Verify it worked
 
-Configure a custom confirmation message and redirect on an entity's form mode for one
+Configure a custom confirmation message on an entity's form mode for one
 operation (for example editing an Article), then perform that operation. You should
-see your custom message instead of the default, and be redirected to the destination
-you chose.
+see your custom message instead of the default.
