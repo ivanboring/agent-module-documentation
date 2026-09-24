@@ -1,21 +1,21 @@
 {
   "name": "Editor Advanced Table",
   "data_name": "editor_advanced_table",
-  "description": "adds ID, direction and CSS classes to CKEditor 5 tables.",
+  "description": "Adds ID, Language Direction, and CSS classes to CKEditor 5 tables.",
   "version": "1.0.x",
-  "package": null,
+  "package": "CKEditor 5",
   "composer_namespace": "drupal/editor_advanced_table",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:ckeditor5"
+    "ckeditor5"
   ],
-  "configure": null,
-  "core_version_requirement": "^10||^11",
+  "configure": "editor.config_filter",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/editor_advanced_table",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
@@ -36,7 +36,7 @@
     "css",
     "wysiwyg"
   ],
-  "project_description": "Inspired by Editor Advanced Link, this module enhances the Table Properties dialog in CKEditor.\n\nAllows to define the following attributes on tables:\n\n - class\n\n- id\n\n- dir\n\n Installation and configuration \n CKEditor 5 (Drupal 10 / Drupal 11)\n\n Install as usual, then:\n\n 1. Go to the \"Text formats and editors\" admin page (`admin/config/content/formats`)\n\n2. Configure your text format\n\n3. Enable the additional attributes you want for this format in the \"Advanced table\" tab of the \"CKEditor 5 plugin settings\"\n\n4. Save your configuration",
+  "project_description": "Inspired by Editor Advanced Link, this module enhances the Table Properties experience in CKEditor 5 by letting editors set extra HTML attributes on tables: a CSS class list, an id, and a text-direction (dir) value. It recreates the CKEditor 4 \"Advanced\" tab for tables. It ships a single CKEditor 5 plugin (machine id editor_advanced_table_table_advanced) that adds a toolbar button and a balloon form to the table content toolbar. Which of the three attributes are offered to editors is configurable per text format on the CKEditor 5 plugin settings tab. Requires Drupal 10 or 11 and PHP 8.1+, and depends only on core's ckeditor5 module.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "not-covered",
