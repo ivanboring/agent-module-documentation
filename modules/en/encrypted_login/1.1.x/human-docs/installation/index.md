@@ -4,15 +4,14 @@
 
 - **Drupal 10 or 11** (`core_version_requirement: ^10 || ^11`).
 - **PHP 8.1 or newer**, with the **OpenSSL** extension.
-- **HTTPS enabled** — required for the module to be meaningful (and you must never
-  serve login over plain HTTP).
+- **HTTPS enabled** — listed as a requirement by the module; keep TLS enforced as
+  usual.
 - A **modern browser** with Web Crypto API support for the client-side
   encryption.
 - Core's **User** module (always present).
 
 > **Heads up:** this project is not covered by Drupal's security advisory policy.
-> As explained on the front page, client-side credential encryption does not
-> replace TLS — weigh that before deploying it.
+> Keep HTTPS/TLS enforced on your site as usual when deploying it.
 
 ## Install with Composer
 

@@ -1,42 +1,46 @@
 {
   "name": "Encrypted Login",
   "data_name": "encrypted_login",
-  "description": "Encrypts login credentials client-side (RSA/AES) before submission. NOTE: not a substitute for HTTPS.",
+  "description": "Encrypts the user login password in the browser (hybrid RSA-2048 key exchange + AES-256-CBC) before the form is submitted, then decrypts it server-side during login validation so standard Drupal authentication proceeds.",
   "version": "1.1.x",
   "package": "Security",
   "composer_namespace": "drupal/encrypted_login",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:user"
+    "user"
   ],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/encrypted_login",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "crypto-js 4.1.1 (loaded from cdnjs at login-form render)",
+    "jsencrypt 2.3.1 (loaded from cdnjs at login-form render)"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Security"
   ],
   "subcategories": [
-    "Login / authentication"
+    "Login page protection"
   ],
   "keywords": [
     "login",
     "encryption",
     "rsa",
+    "aes",
     "credentials",
-    "tls"
+    "password"
   ],
-  "project_description": "In standard Drupal login forms, passwords are transmitted from the browser to the server as plaintext (only protected by HTTPS). This creates potential security vulnerabilitie\n\n Encrypted Login module implements a robust hybrid encryption system that combines the security benefits of both RSA and AES encryption to protect login credentials in your Drupal site. This approach ensures maximum security by using asymmetric encryption for key exchange and symmetric encryption for credential transmission.\n\n Back to top \n\n Key Features \n \n Hybrid Encryption System : Combines RSA-2048 for key exchange and AES-256-CBC for credential encryption \n Client-Generated AES Keys : Each login attempt uses a unique AES key generated in the browser using Web Crypto API \n Asymmetric Key Security : RSA public/private key pair ensures secure key exchange \n Zero Server Storage : No encryption keys are stored in the database \n Perfect Forward Secrecy : Each session uses a new encryption key \n Seamless Integration : Works with Drupal's standard login form \n Fallback Security : Maintains HTTPS security as a backup layer \n \n Back to top \n\n Technical Implementation \n 1. Initial Setup \n \n Module generates RSA-2048 key pair during installation \n Private key stored securely in Drupal's state system \n Public key made available through secure endpoint \n \n 2. Login Process Flow \n \n Key Exchange :\n \n Client requests RSA public key from /encrypted_login/get_public_key \n Server provides RSA-2048 public key \n \n \n Client-Side Encryption :\n \n Generates random AES-256 key using Web Crypto API \n Encrypts password using AES-256-CBC with random IV \n Encrypts AES key using RSA public key \n \n \n Data Transmission :\n \n Sends encrypted AES key \n Sends IV + encrypted password \n Original password field cleared \n \n \n Server-Side Processing :\n \n Decrypts AES key using RSA private key \n Uses AES key to decrypt password \n Processes normal Drupal authentication \n \n \n \n Back to top \n\n Security Benefits \n \n Multiple Encryption Layers : Two independent encryption systems protect data \n No Stored Keys : AES keys are ephemeral and never stored \n Forward Secrecy : Compromised sessions don't affect past or future logins \n Defense in Depth : Security maintained even if HTTPS is compromised \n Protection Against: \n \n Man-in-the-middle attacks \n Network packet sniffing \n Replay attacks \n Transport layer compromises \n \n \n \n Back to top \n\n Technical Requirements \n \n Drupal 10.x or 11.x \n HTTPS enabled (required for security) \n Modern browser with Web Crypto API support \n PHP with OpenSSL extension \n Minimum PHP version: 8.1 \n \n Back to top \n\n Installation \n \n Install via Composer:\n\n composer require drupal/encrypted_login \n Enable the module:\n\n drush en encrypted_login \n Verify RSA key generation in status report \n Configure any optional settings \n \n Back to top \n\n Best Practices \n \n Key Management :\n \n Rotate RSA keys every 6 months \n Secure backup of private keys \n Monitor key usage and errors \n \n \n Security Monitoring :\n \n Regular log review \n Decryption failure alerts \n System performance monitoring \n \n \n General Security :\n \n Keep Drupal core updated \n Implement brute force protection \n Regular security audits \n \n \n \n Back to top \n\n Troubleshooting \n \n Common Issues :\n \n RSA key generation failures \n Browser compatibility issues \n Decryption errors \n \n \n \n Back to top \n\n Support and Contribution \n This module is actively maintained and welcomes community contributions. For issues, feature requests, or contributions, please visit our project page on Drupal.org.\n\n Back to top \n\n Future Enhancements \n \n Automated key rotation \n Additional encryption algorithms \n Enhanced monitoring tools \n Performance optimizations \n \n Back to top \n\n Get Started \n Enhance your Drupal site's security today with the Encrypted Login module's hybrid RSA/AES encryption system!\n\n \n Note: While this module significantly enhances login security, it should be part of a comprehensive security strategy including strong …",
+  "project_description": "Encrypted Login alters the standard Drupal user login form so the password is encrypted in the browser before submission. On the login page a JavaScript behavior fetches an RSA-2048 public key from the module's endpoint, generates a fresh random AES-256 key and IV per attempt, encrypts the password with AES-256-CBC (crypto-js), and encrypts that AES key with the RSA public key (jsencrypt); the ciphertext pair is placed in two hidden fields and the plain password field is cleared. A first login-form validation handler on the server RSA-decrypts the AES key with the private key, AES-decrypts the password, restores it as the 'pass' value, and lets Drupal's normal authentication and flood control run. The RSA key pair is generated during module install and kept in Drupal's State API; the module adds no configuration form, permissions, or config schema.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
