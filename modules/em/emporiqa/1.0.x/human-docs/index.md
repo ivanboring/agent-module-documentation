@@ -22,9 +22,8 @@ and it provides its own permissions. It needs configuration before it works: you
 create an Emporiqa account, set a strong signing secret, and sync your catalog.
 
 > **Set the signing secret strongly.** The user‑identity token is HMAC‑signed with
-> an admin‑configured `webhook_secret`. Use a long, high‑entropy value and back it
-> with an environment variable rather than committing it. Until the secret is set,
-> the token endpoint returns nothing.
+> an admin‑configured `webhook_secret`, entered on the module's settings form. Use a
+> long, high‑entropy value. Until the secret is set, the token endpoint returns nothing.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

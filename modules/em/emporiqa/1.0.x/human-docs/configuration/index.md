@@ -19,14 +19,11 @@ logged‑in shopper. That token is HMAC‑signed with an admin‑configured
 **`webhook_secret`**.
 
 - **Set a strong secret.** Use a long, high‑entropy value.
-- **Back it with an environment variable** rather than committing it to
-  configuration or version control.
+- Enter it on the module's settings form (**Configuration → Web services →
+  Emporiqa**, the *Connection Secret* field). Copy it from your Emporiqa dashboard's
+  Store Settings → Integration tab.
 - If the secret is unset, the token endpoint returns nothing — so the widget can't
   identify users until you configure it.
-
-> **Using DDEV?** Store the value out of version control with DDEV's dotenv helper,
-> for example `ddev dotenv set .ddev/.env --emporiqa-webhook-secret='…'`, then
-> `ddev restart`, and reference it from the module's setting.
 
 ## 3. Sync your catalog and content
 

@@ -1,31 +1,33 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Encrypt: AWS KMS provides an AWS KMS-based encryption method for the Encrypt module, delegating encryption/decryption to AWS Key Management Service.
+Encrypt KMS adds an "Amazon KMS" encryption method (plus matching Key module key type, key input, and key provider plugins) to the Encrypt framework, delegating encrypt/decrypt operations to AWS Key Management Service through the AWS SDK for PHP.
 
 ---
 
-The Encrypt module provides a pluggable encryption framework; encrypt_kms adds AWS KMS as an encryption method, so encryption keys are managed by AWS KMS rather than stored on the site. This is a strong approach: the encryption key never leaves KMS (envelope encryption / KMS encrypt/decrypt calls), so a database or filesystem compromise does not expose the key — the site holds only KMS-encrypted data and needs AWS credentials to decrypt. The security therefore rests on the AWS credentials and KMS key policy: the IAM credentials that let the site call KMS must be protected (out of plain config, minimally scoped to the specific KMS key and encrypt/decrypt actions), and the KMS key policy should restrict who/what can use it. Used correctly it is a robust way to encrypt data at rest with managed keys. Confirm the AWS credentials are secured and the KMS key/IAM policy is least-privilege.
+Encrypt KMS extends the Encrypt and Key modules so a Drupal site can use AWS KMS as its encryption backend. It ships an `EncryptionMethod` plugin (`aws_kms`) whose `encrypt()`/`decrypt()` call the KMS `Encrypt`/`Decrypt` API, a `KeyType` (`aws_kms`) that holds a KMS key ARN entered through a dedicated `KeyInput` (`aws_kms_arn`), a `KeyType` (`aws_kms_data`) that generates an AES data key via KMS `GenerateDataKey`, and a `KeyProvider` (`aws_kms`) that stores a KMS-wrapped secret locally as an `aws_kms_secret` config entity. The AWS KMS client is built by `KmsClientFactory` and shared as the `encrypt_kms.kms_client` service; it reads region and (optional) access key/secret from the `encrypt_kms.settings` config object edited at `admin/config/system/encrypt_kms` (`administer encrypt` permission). If no key/secret is set in config, the AWS SDK's default credential chain applies (IAM instance profile, environment variables, `~/.aws/credentials`). The recommended pattern for sensitive data is envelope encryption: use a KMS-backed profile to wrap a locally generated AES data key (with Real AES) so only the wrapped key, never plaintext content, is sent to AWS.
 
 ---
 
-- Encrypt via AWS KMS.
-- Use managed keys for encryption.
-- Keep keys in KMS not on the site.
-- Encrypt data at rest.
-- Protect data against DB compromise.
-- Secure the AWS credentials.
-- Scope IAM to the KMS key.
-- Least-privilege the KMS policy.
-- Use envelope encryption.
-- Delegate crypto to KMS.
-- Encrypt with the Encrypt module.
-- Confirm the key policy.
-- Enable when needed.
-- Keep disabled otherwise.
-- Restrict administration.
-- Confirm on your site.
-- Test before production.
-- Review configuration.
-- Pair with related modules.
-- Verify theme fit.
-- Match your use case.
-- Confirm compatibility.
+- Encrypt Drupal field data using AWS KMS-managed keys.
+- Add "Amazon KMS" as a selectable encryption method on an Encryption Profile.
+- Register a KMS key by its ARN as a Key entity (KMS Key type).
+- Enter a KMS key ARN through the ARN-specific key input field.
+- Configure the AWS region that contains your KMS key(s).
+- Provide AWS access key and secret through the module's settings form.
+- Supply AWS credentials via `settings.php` config overrides instead of the form.
+- Rely on an IAM instance profile so no static credentials live in Drupal.
+- Fall back to environment-variable AWS credentials via the SDK default chain.
+- Fall back to a `~/.aws/credentials` profile via the SDK default chain.
+- Generate an AES data key from a KMS customer master key (GenerateDataKey).
+- Build an envelope-encryption setup with Real AES for PII/PHI data.
+- Keep plaintext content on-site while sending only wrapped keys to AWS.
+- Choose a 128- or 256-bit AES data key, or a custom byte length.
+- Store an arbitrary secret in KMS using the AWS KMS key provider.
+- Encrypt Webform submission values via a KMS encryption profile.
+- Encrypt entity/field values through the Field Encryption ecosystem.
+- Verify AWS SDK availability and credentials via the module's status report.
+- Confirm the caller identity (STS GetCallerIdentity) at the Status report page.
+- Centralize key management in AWS rather than on the Drupal server.
+- Rotate or restrict access by managing the KMS key policy in AWS.
+- Restrict who can administer the integration with the `administer encrypt` permission.
+- Reuse an existing Encryption Profile as a "client master profile" for data keys.
+- Migrate an on-server encryption key to a KMS-managed workflow.
