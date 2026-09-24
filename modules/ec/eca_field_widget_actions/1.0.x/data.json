@@ -1,22 +1,25 @@
 {
   "name": "ECA Field Widget Actions",
   "data_name": "eca_field_widget_actions",
-  "description": "integrates ECA with the Field Widget Actions module.",
+  "description": "Integrate ECA with the Field Widget Actions module.",
   "version": "1.0.x",
   "package": "ECA",
   "composer_namespace": "drupal/eca_field_widget_actions",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/eca": "^2.0 || ^3.0",
+    "drupal/field_widget_actions": "^1.0"
+  },
   "dependent_modules": [
-    "eca:eca",
-    "field_widget_actions:field_widget_actions"
+    "eca",
+    "field_widget_actions"
   ],
   "configure": null,
-  "core_version_requirement": "^11",
+  "core_version_requirement": "^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/eca_field_widget_actions",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
@@ -33,11 +36,14 @@
   "keywords": [
     "eca",
     "field widget",
-    "actions",
+    "field widget actions",
     "automation",
-    "forms"
+    "forms",
+    "suggestions",
+    "ajax",
+    "no-code"
   ],
-  "project_description": "ECA Field Widget Actions \n\n Integrates ECA with the Field Widget Actions module, allowing you to build custom field widget action buttons powered by ECA models.\n\n How it works \n\n \n The Field Widget Actions module attaches action buttons to form fields -- for example a \"Suggest\" button next to a text field. This module bridges those buttons to ECA so you can define what happens when a button is clicked using an ECA model instead of custom code.\n\n \n Create an ECA model with the ECA Field Widget event. \n The module automatically registers a Field Widget Action plugin for that model. It appears in the list of available actions for any field widget. \n When a user clicks the action button on a form, the ECA event fires with the current entity, field name, and field index as context. \n Your ECA model evaluates conditions and executes actions -- for example calling an external API or processing the entity's existing field values. \n Use the Set field widget value action to return a list of suggestions to the field widget. \n \n This is useful for content suggestions, AI-powered field filling, data lookups, or any scenario where a field value should be computed on demand.",
+  "project_description": "ECA Field Widget Actions bridges the ECA (Events, Conditions, Actions) engine to the Field Widget Actions module. Field Widget Actions attaches buttons to field widgets on entity forms; this module turns a button click into an ECA event (the 'ECA Field Widget' event), so a site builder defines what the button does with an ECA model rather than custom code. The model receives the entity being edited, the field name and the field index (delta) as event context, and returns a value through the 'Set field widget value' action. That value is either offered in the Field Widget Actions suggestions dialog or, when 'Fill the field directly' is enabled, written straight into the widget: text/CKEditor widgets get a string, select lists and checkbox/radio groups get a value list, and compound fields (Address, Link, Smart Date, Custom Field) get a mapping of property names, applied by rebuilding the widget from the entity. Typical uses are content suggestions, AI-assisted field filling, and on-demand data lookups.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
