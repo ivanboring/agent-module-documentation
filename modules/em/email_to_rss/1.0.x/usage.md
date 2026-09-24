@@ -1,41 +1,33 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Email to RSS pulls email messages from an IMAP folder and exposes them as an RSS feed.
+Email to RSS fetches messages from an IMAP mailbox folder and publishes them as a private, token-gated RSS 2.0 feed.
 
 ---
 
-Email to RSS **pulls messages from an IMAP mailbox and publishes them as an RSS feed** — polling an IMAP
-folder and exposing the emails as feed items/detail pages, so a mailbox can be consumed as a feed. Admin
-configuration is gated by `administer site configuration`; the feed itself lives at
-`/feeds/email-to-rss/{feed_id}/{token}`.
-
-Use it to turn a mailbox into a feed. It is a web-services feature with two security considerations. (1)
-**Feed exposure**: the feed route is public (`_access: TRUE`) but protected by an unguessable **`{token}` in the
-URL** — so the token URL is effectively a **bearer secret**: anyone who has the link can read the email content
-(and the link can leak via browser history, `Referer`, proxy logs, or sharing). Use a high-entropy token, treat
-the URL as sensitive, don't point it at a mailbox with confidential mail, and prefer HTTPS. (2) **IMAP
-credentials**: it stores mailbox credentials — keep them as secrets (env/Key/secure config) and use TLS/IMAPS to
-the mail server. It has no role-based access-control on the feed (the token is the only gate). Configure the IMAP
-connection and feed.
+Email to RSS is an email-to-feed bridge: you configure one IMAP account and one or more mailbox folders, and the module mirrors each folder's messages into a local database table and exposes them as an RSS 2.0 feed. Fetching happens automatically on Drupal cron (`hook_cron` calls `EmailSync::run()`) or on demand from the settings form's "Sync all now" button. Each configured feed is reachable at `/feeds/email-to-rss/{feed_id}/{token}`, where `{token}` is a high-entropy per-feed secret generated with `random_bytes()`; the token is the access gate for the feed (there is no separate role permission on the feed route). Admin configuration lives at `/admin/config/services/email-to-rss` behind the `administer site configuration` permission. Messages are deduplicated by Message-ID, pruned to a configurable per-feed limit, and HTML bodies are preserved and delivered through the feed's `content:encoded` element plus a per-item HTML detail page. The IMAP host, port, encryption, username and folder are stored in configuration; the mailbox password is read only from the `EMAIL_TO_RSS_IMAP_PASSWORD` environment variable and never written to Drupal config. It is the reverse of core Aggregator (which consumes feeds) and needs only the `webklex/php-imap` library, Drupal 10/11, and PHP 8.2+.
 
 ---
 
-- Pull email from an IMAP folder.
-- Publish it as an RSS feed.
-- Serve items at a token URL.
-- Gate admin config by 'administer site configuration'.
-- Serve web services.
-- Consume a mailbox as a feed.
-- EXPOSE the feed at a public route gated only by an unguessable {token} (a bearer secret).
-- Leak email content to anyone with the link (history/Referer/logs/sharing).
-- Use a high-entropy token + treat the URL as sensitive + HTTPS.
-- Store IMAP credentials as secrets + use TLS/IMAPS.
-- Have no role-based access on the feed (token is the only gate).
-- Configure the IMAP connection and feed.
-- Handle email-to-RSS.
-- Pull email.
-- Configure the feed.
-- Expose emails.
-- Handle the mailbox.
-- Publish feeds.
-- Secure the token + credentials.
-- Provide email-to-RSS.
+- Read a newsletter that only arrives by email in your normal RSS/Atom feed reader.
+- Turn a shared mailbox folder into a team-readable feed without giving out mailbox credentials.
+- Self-host an alternative to hosted "email-to-feed" services (Kill the Newsletter) on your own Drupal site.
+- Archive selected emails as a durable, dated feed of items.
+- Follow a vendor's email-only release announcements as a feed.
+- Aggregate several newsletters by filtering them into one IMAP folder and exposing that folder as one feed.
+- Publish one feed per topic by filtering mail into separate folders and adding one feed per folder.
+- Pull marketing or transactional emails into a monitoring feed reader for review.
+- Give each subscriber a distinct secret feed URL and revoke access by regenerating that feed's token.
+- Bridge a support or alias inbox into a feed dashboard.
+- Keep an inbox-zero workflow by moving reading of email-only content out of the mail client.
+- Feed email content into another system that ingests RSS (aggregators, chat bridges, IFTTT-style tools).
+- Consume mailing-list traffic as a chronological feed instead of threaded mail.
+- Mirror an IMAP folder's recent messages so they survive server-side mailbox cleanup.
+- Preserve HTML-formatted newsletters (via `content:encoded`) so they render richly in a reader.
+- Limit each feed to the most recent N messages to keep the feed lightweight (`feed_limit`).
+- Run the fetch entirely on cron so feeds stay current with no manual action.
+- Trigger an immediate fetch after configuration with the "Sync all now" button to verify the connection.
+- Clear a feed's locally mirrored messages with the "Delete feed items" action, then re-sync from the mailbox.
+- Remove a whole feed (config plus mirrored messages) with the "Delete feed" confirm form.
+- Rotate a leaked or shared feed URL by choosing "Regenerate token" for that feed.
+- Enable or disable an individual feed without deleting it.
+- Read email bodies at a per-message detail page linked from each feed item.
+- Keep the IMAP password out of exported configuration by supplying it through an environment variable.
