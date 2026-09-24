@@ -1,14 +1,14 @@
 {
-  "name": "Extra Field API",
+  "name": "Extra Field as Plugin",
   "data_name": "efap",
-  "description": "Defines a plugin type for building extra (pseudo) fields on entity displays.",
+  "description": "Defines a Plugin type for extra fields.",
   "version": "8.x-2.x",
   "package": "Code",
-  "composer_namespace": "drupal/efap",
+  "composer_namespace": "drupal/extra_field_as_plugin",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^8||^9||^10||^11",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/efap",
@@ -19,20 +19,24 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "extra_field"
+  ],
   "categories": [
     "Developer tools"
   ],
   "subcategories": [
-    "Field API"
+    "Fields",
+    "Computed / derived fields",
+    "Plugin system"
   ],
   "keywords": [
     "extra field",
-    "plugin",
     "pseudo-field",
-    "display",
-    "api"
+    "plugin type",
+    "entity display",
+    "developer"
   ],
   "project_description": "Exposes extra fields as a Plugin.",
   "maintenance_status": "Seeking co-maintainer(s)",
