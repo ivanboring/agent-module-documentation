@@ -1,9 +1,9 @@
 {
   "name": "Email Messages",
   "data_name": "email_messages",
-  "description": "Create and manage messages to be sent as notifications.",
+  "description": "Provides a config entity for storing/translating reusable email message templates, a manager service that replaces variables and sends them, and optional per-message logging.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Custom",
   "composer_namespace": "drupal/email_messages",
   "composer_requirements": {},
   "dependent_modules": [
@@ -24,17 +24,21 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "User engagement"
+    "User engagement",
+    "Developer tools"
   ],
   "subcategories": [
-    "Email / mail delivery"
+    "Email / mail delivery",
+    "Activity / notification messages",
+    "Messaging framework"
   ],
   "keywords": [
     "email",
     "messages",
     "notifications",
     "templates",
-    "mail"
+    "mail",
+    "logging"
   ],
   "project_description": "This module provides a configuration entity used for storing and translating messages to be used for emails.\n\n It can also log to another entity the sent out emails.\n\n There is a manager that loads the email config, replaces variables and sends out the emails.\n\n It is a utility module for developers.",
   "maintenance_status": "Minimally maintained",

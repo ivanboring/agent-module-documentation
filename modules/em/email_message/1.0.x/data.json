@@ -1,13 +1,14 @@
 {
   "name": "Email Message field",
   "data_name": "email_message",
-  "description": "Provides an 'email_message' field type storing an email subject plus a formatted body, with matching widget and formatter.",
+  "description": "Provides an 'email_message' field type that stores an email subject plus a formatted (text_long) body, with a matching default widget and formatter. Extends core text field plugins; stores data only — it does not send mail.",
   "version": "1.0.x",
   "package": "Field types",
   "composer_namespace": "drupal/email_message",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:field"
+    "drupal:field",
+    "drupal:text"
   ],
   "configure": null,
   "core_version_requirement": "^10.2 || ^11 || ^12",
@@ -27,7 +28,9 @@
     "Content editing experience"
   ],
   "subcategories": [
-    "Fields"
+    "Fields",
+    "Field formatters",
+    "Form widgets / select UI"
   ],
   "keywords": [
     "field",
