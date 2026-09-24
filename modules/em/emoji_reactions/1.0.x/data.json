@@ -1,18 +1,19 @@
 {
   "name": "Emoji Reactions",
   "data_name": "emoji_reactions",
-  "description": "provides an emoji reaction system with analytics, a REST API, Views integration and a reaction log.",
+  "description": "Fieldable per-entity emoji reaction system with AJAX toggling, user analytics, a reaction log, 23 display layouts, a REST API and Views integration.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Content",
   "composer_namespace": "drupal/emoji_reactions",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:user",
-    "drupal:field",
-    "drupal:rest"
+    "user",
+    "field",
+    "serialization",
+    "rest"
   ],
-  "configure": null,
-  "core_version_requirement": "^10||^11",
+  "configure": "emoji_reactions.settings",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/emoji_reactions",
@@ -22,7 +23,7 @@
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
-  "provides_drush_commands": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
@@ -36,9 +37,10 @@
     "reactions",
     "rest api",
     "analytics",
-    "engagement"
+    "engagement",
+    "views"
   ],
-  "project_description": "Emoji Reactions adds a fully-featured, per-entity emoji reaction system to any Drupal 10 or 11 site. Drop a field onto any content type — nodes, comments, taxonomy terms, users, paragraphs, and more — and editors and visitors can instantly express how they feel with a single click. Reactions are stored, counted, and displayed live without a page reload, with 23 ready-to-use display layouts that range from simple pills and cards to social-media-inspired styles modelled after Facebook, Reddit, Slack, and Discord. Whether you are building a community news site, a corporate intranet, a learning platform, or a fully decoupled React or Vue application, Emoji Reactions gives you the engagement layer your content needs — with enterprise-grade analytics, a REST API, Views integration, and a comprehensive hook system for custom integrations.\n\n Features \n Reactions & Interaction \n \n Custom field type — The emoji_reaction field type attaches to any fieldable entity via Drupal's standard Manage Fields UI. No special entity type is required. \n Toggle reactions with a single click — Users add or remove a reaction instantly. Counts update via AJAX without a page reload. \n Single or multiple reaction mode — Configure whether a user can hold one reaction per entity or react with several emojis simultaneously. \n Reaction-change support — Let users swap their reaction instead of having to remove it first. \n Anonymous user reactions — Grant the React as anonymous permission and unauthenticated visitors can react, tracked by IP, session, or both with a configurable expiry window. \n Flood protection — Drupal's native flood API limits reactions per IP per hour (default: 30), preventing abuse without any extra infrastructure. \n Real-time count polling — An optional JavaScript polling loop refreshes counts across all open sessions at a configurable interval (default: 15 seconds). \n CSS animations — A configurable bounce animation fires on click to give immediate visual feedback. \n Tooltips — Hover text is rendered from each emoji's description or accessibility label. \n \n Display Layouts (23 total) \n \n Core layouts — Pills, Bubbles, Grid, Compact, Minimal, Toolbar, Floating, Card, Inline, Ribbon. \n Stylised / themed layouts — Neon, Glassmorphic, Retro, Magazine, Timeline. \n Social-media-inspired layouts — Facebook (animated pop-up bar), Twitter/X (icon-only row), Reddit (upvote-style pills), Instagram (dominant heart), LinkedIn (stacked summary), Slack (picker tiles), WhatsApp (floating bubbles), Discord (blurple accent pills). \n \n Every layout is configured per view mode in Manage Display , so a Teaser can show compact pills while a Full page shows the Facebook-style animated bar — all from the same field.\n\n Emoji Management \n \n Six default emojis — Thumbs Up 👍, Heart ❤️, Celebrate 🎉, Sad 😢, Wow 😮, Angry 😡 — installed and ready to use. \n Three emoji types — Unicode characters, external image URLs, and raw SVG markup are each supported per emoji. \n Drag-and-drop ordering — Reorder emojis on the admin list; the order is reflected in every widget site-wide. \n Enable / disable without deleting — Toggle individual emojis on or off globally; existing reaction counts are preserved. \n Per view-mode emoji selection — The formatter settings let you whitelist exactly which emojis appear in each view mode. \n Accessibility labels — Each emoji carries a configurable aria-label read aloud by screen readers. \n \n Analytics & Reporting \n \n Reaction log — Every reaction event is recorded with timestamp, user, entity, emoji, browser, operating system, device type, anonymised IP, and language. \n Filterable admin log — Filter by user (autocomplete), emoji (dropdown), entity, date range, browser, OS, and device type. Sort by any column. Bulk-delete selected rows. \n Per-entity statistics — A dedicated report page shows reaction breakdowns for a single content item. \n Site-wide statistics — An aggregate report at Reports → Emoji Reactions Statistics shows overall engagement …",
+  "project_description": "Emoji Reactions adds a fully-featured, per-entity emoji reaction system to any Drupal 10 or 11 site. It ships an emoji_reaction field type that attaches to any fieldable entity through the standard Manage Fields UI; editors and visitors then toggle reactions with a single click and counts update live over AJAX. It provides six default emoji config entities (thumbs up, heart, celebrate, sad, wow, angry), each of which may be a Unicode character, an image URL or raw SVG markup, with drag-and-drop ordering, per-emoji enable/disable and accessibility labels. Display is configured per view-mode on the field formatter (23 layouts including social-media-inspired styles) or via an Emoji Reactions block. Every reaction event is recorded in a reaction log with timestamp, user, entity, emoji, browser, OS, device type, masked IP and language, exposed through a filterable admin log, per-entity and site-wide statistics reports, and Views integration. A REST API (submit/toggle and read-data endpoints) supports decoupled front-ends, and a hook system (react_alter, display_alter, access, log_fields, log_insert, count_alter) allows custom integrations. Anonymous reactions are supported and deduplicated via HMAC-hashed IP and/or session identifiers, with a configurable expiry window, and Drupal's flood API throttles reaction abuse.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

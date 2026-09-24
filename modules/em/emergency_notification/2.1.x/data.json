@@ -1,14 +1,14 @@
 {
   "name": "Emergency Notification",
   "data_name": "emergency_notification",
-  "description": "Adds site-wide emergency notification functionality (alert banner).",
+  "description": "Adds Emergency Notification functionality",
   "version": "2.1.x",
   "package": null,
   "composer_namespace": "drupal/emergency_notification",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": "emergency_notification.admin_settings",
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/emergency_notification",
@@ -22,19 +22,20 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "User engagement"
+    "Content display"
   ],
   "subcategories": [
-    "Activity / notification messages"
+    "Announcement / notification banner"
   ],
   "keywords": [
     "emergency",
     "notification",
     "alert",
     "banner",
-    "announcement"
+    "announcement",
+    "popup"
   ],
-  "project_description": "Back to top \n\n Introduction \n Provides the ability to display a customizable emergency notification on all pages, exempt the pages that are being excluded in the configuration. Once the is dismissed the emergency notification is still accessible through a button that is fixed to the bottom of the page.\n\n Back to top \n\n Requirements \n This module requires no modules outside of Drupal core.\n\n Back to top \n\n Installation \n \n Install as you would normally install a contributed Drupal module. Visit https://www.drupal.org/node/1897420 for further information. \n \n Back to top \n\n Configuration \n Navigate to Configuration > System > Emergency Notification settings.\n\n \n Configure settings, check \"Emergency notification enabled\" and save. \n Done!!! An emergency notification will now be visible on your site. \n \n Back to top \n\n Maintainers \n Current maintainers:\n\n \n CbStuart \n Back to top",
+  "project_description": "Provides the ability to display a customisable emergency notification on all pages, except pages excluded in configuration. Once dismissed, the emergency notification remains accessible through a button fixed to the bottom of the page. Configured at Configuration > System > Emergency Notification settings: set a title and rich-text notice, optional custom overlay/background/foreground colors, a path exclusion list, and an enable toggle. Requires no modules outside Drupal core.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
