@@ -1,7 +1,7 @@
 {
-  "name": "Elasticsearch Connector Ngram Analyzer",
+  "name": "Elasticsearch Connector Ngram analyzer",
   "data_name": "elasticsearch_connector_ngram_analyzer",
-  "description": "Implements an Ngram analyzer for the Elasticsearch Connector (partial/substring matching).",
+  "description": "Adds an n-gram analyzer and a 'Text Ngram' Search API data type to Elasticsearch Connector indexes for partial/substring matching.",
   "version": "1.0.x",
   "package": "Elasticsearch",
   "composer_namespace": "drupal/elasticsearch_connector_ngram_analyzer",
@@ -10,7 +10,7 @@
     "elasticsearch_connector:elasticsearch_connector"
   ],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/elasticsearch_connector_ngram_analyzer",
@@ -21,22 +21,25 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Site search"
   ],
   "subcategories": [
-    "Elasticsearch"
+    "Content indexing",
+    "Autocomplete / typeahead"
   ],
   "keywords": [
     "elasticsearch",
     "ngram",
     "analyzer",
-    "search",
-    "substring"
+    "search_api",
+    "substring",
+    "partial match",
+    "autocomplete"
   ],
-  "project_description": "This module enhances the Elasticsearch connector by adding support for NGram tokenization in text fields. It enables efficient partial text matching, making it ideal for applications requiring flexible search capabilities.\n\n Installation \n Install as you would normally install a contributed Drupal module.\n\nSee: https://www.drupal.org/node/895232 for further information.\n\n Additional Requirements \n \n Search Api \n Elasticsearch Connector \n \n Configuration \n Apply the Analyzer to Text Fields In your Drupal site, configure the Search API index to use the NGram analyzer for specific fields:\n\n \n Go to Configuration > Search and Metadata > Search API. \n Edit the desired Search API index. \n Navigate to the Fields tab. \n For the text fields where you want to enable NGram tokenization, select the NGram type from the field settings. \n Save field data. \n \n Reindex Your Data After applying the NGram analyzer, reindex your data to ensure the new tokenization settings are applied:\n\n \n Go to Configuration > Search and Metadata > Search API. \n Click on the Index now button for the relevant index. \n Back to top",
+  "project_description": "Extends the Elasticsearch Connector module with an n-gram (3-gram) analyzer so Search API indexes can match partial words and substrings. It registers an ElasticSearchAnalyser plugin ('ngram_analyzer') and a Search API data type ('Text Ngram', id text_ngram). Event subscribers inject the analyzer/tokenizer into the index settings, map any text_ngram field to an Elasticsearch text field using the ngram analyzer (with a keyword sub-field), and normalise search query strings. No config forms, routes, permissions, or Drush commands are provided; you enable it per field by selecting the Text Ngram type in the Search API index Fields tab and reindexing.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

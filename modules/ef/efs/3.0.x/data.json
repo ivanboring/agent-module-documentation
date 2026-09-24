@@ -1,18 +1,18 @@
 {
-  "name": "Extra Field Settings (efs)",
+  "name": "Extra Field Suite",
   "data_name": "efs",
-  "description": "A plugin type for extra fields that look like real fields but store no data.",
+  "description": "Provides a plugin type for extra fields that look like real fields, but do not store data.",
   "version": "3.0.x",
   "package": "Fields",
   "composer_namespace": "drupal/efs",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/efs",
-  "license": "GPL-2.0-or-later",
+  "license": "GPL-3.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
@@ -20,21 +20,29 @@
   "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "extra_field_formatter"
+  ],
   "categories": [
-    "Developer tools"
+    "Developer tools",
+    "Content display"
   ],
   "subcategories": [
-    "Field API"
+    "Plugin system",
+    "Computed / derived fields",
+    "Fields",
+    "Field formatters"
   ],
   "keywords": [
     "extra field",
-    "plugin",
     "pseudo-field",
-    "display",
-    "fields"
+    "plugin type",
+    "view display",
+    "form display",
+    "field ui",
+    "manage display"
   ],
-  "project_description": "Synopsis \n This module leverages the power of extra fields through the plugin system allowing developers to implement any kind of extra field in the form of plugins. This plugins can be placed on the view or form display of any given entity-type through the Field UI. Also each plugin has it own instance that can be configured different per display or even different entity types (as long the implementation allows it).\n\n Requirements \n None\n\n Roadmap \n So far, keep adding more useful plugins to the stock.\n\n Known problems \n Currently we don't fully support layouts. Check the following issues:\n\n \n [#3046144] \n [#3045802] \n \n Credits \n \n Alex Arnau ( aarnau ) \n Dennis A. Torres ( d70rr3s ) \n \n Similar projects and how they are different \n \n Extra Field : Offers a similar functionality but only allows plugins to be set on view displays. Ca be extended with the Extra Field Plus module to allow plugin instances to be configured storing the configuration as third-party settings. \n \n Restrictions \n This module should NOT be used along with the Extra Field as it may cause unnexpected behaviors.\n\n Back to top",
+  "project_description": "Extra Field Suite (efs) is a developer framework that turns Drupal's extra pseudo-fields into a discoverable plugin type. Each 'Extra field formatter' plugin (annotation @ExtraFieldFormatter, discovery directory Plugin/efs/Formatter, service plugin.manager.efs.formatters) renders a display-only or form-only element that behaves like a real field on the Manage display / Manage form display screens but stores no field data. Placements are stored as 'extra_field' config entities and injected via hook_entity_extra_field_info(), hook_entity_view_alter() and hook_form_alter(). The module ships stock plugins (Entity label, Field mirror, Entity reference field, View, Tokenizer Wysiwyg, Entity form display) and supports per-display, per-mode and per-entity-type configuration through the Field UI, including a Layout Builder override block. It conflicts with and must not be used alongside the Extra Field module.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
