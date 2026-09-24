@@ -1,19 +1,26 @@
 {
   "name": "ECA Entity Share",
   "data_name": "eca_entity_share",
-  "description": "Integrates ECA with the Entity Share module (client/server) for automated content syndication.",
+  "description": "Integrate ECA with the Entity Share module and its plugins.",
   "version": "2.0.x",
   "package": "ECA",
   "composer_namespace": "drupal/eca_entity_share",
-  "composer_requirements": {},
-  "dependent_modules": [],
+  "composer_requirements": {
+    "drupal/eca": "^2.0 || ^3.0",
+    "drupal/entity_share": "^3.0 || ^4.0"
+  },
+  "dependent_modules": [
+    "eca",
+    "entity_share_client",
+    "entity_share_server"
+  ],
   "configure": null,
-  "core_version_requirement": "^10.4||^11",
+  "core_version_requirement": "^10.4 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/eca_entity_share",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [
@@ -25,19 +32,21 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Automation"
+    "Automation",
+    "Import and export"
   ],
   "subcategories": [
-    "ECA / workflow"
+    "Workflow / business rules",
+    "Content syndication"
   ],
   "keywords": [
     "eca",
     "entity share",
     "syndication",
-    "automation",
-    "sync"
+    "content sync",
+    "automation"
   ],
-  "project_description": "Integrates ECA with Entity Share . \n\n \n On the entity share server, it makes the Channel list prepared event available to ECA models. \n On the entity share client, it makes the Relationship Field Value event available to ECA models.",
+  "project_description": "ECA Entity Share bridges the ECA (Events-Conditions-Actions) rules engine to the Entity Share content-syndication module. It ships two hidden submodules that each register one Entity Share Symfony event as an ECA event plugin, so site builders can react to those points of the Entity Share sync lifecycle from an ECA model without writing PHP. The client submodule exposes the 'Relationship Field Value' event fired while a client imports remote entities; the server submodule exposes the 'Channel list prepared' event fired while a server assembles its list of shareable channels. The top-level module is a hidden package holder and provides no code of its own.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
