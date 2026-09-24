@@ -1,43 +1,46 @@
 {
   "name": "ECA Webprofiler",
   "data_name": "eca_webprofiler",
-  "description": "Integrates ECA (Event-Condition-Action) with the Webprofiler module for debugging ECA execution.",
+  "description": "Integrate ECA with the Webprofiler module: adds an 'ECA' data collector, toolbar item and profiler panel that show the ECA logger messages and the token/data values available during a request.",
   "version": "2.0.x",
   "package": "ECA",
   "composer_namespace": "drupal/eca_webprofiler",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/eca": "^2.0 || ^3.0",
+    "drupal/webprofiler": "^10.1 || ^11.0"
+  },
   "dependent_modules": [
-    "eca:eca",
-    "webprofiler:webprofiler"
+    "eca",
+    "webprofiler"
   ],
   "configure": null,
-  "core_version_requirement": "^10.4||^11",
+  "core_version_requirement": "^10.4 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/eca_webprofiler",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
   ],
   "subcategories": [
-    "Debugging"
+    "Debugging & inspection"
   ],
   "keywords": [
     "eca",
     "webprofiler",
     "debug",
-    "automation",
-    "profiler"
+    "profiler",
+    "tokens"
   ],
-  "project_description": "Integrates ECA with Webprofiler .",
+  "project_description": "ECA Webprofiler integrates the ECA (Event-Condition-Action) module with the Webprofiler developer toolbar. It registers an 'ECA' Symfony data collector and decorates ECA's logger channel so that, during each request, the ECA log messages and the token/data values ECA had available are captured and displayed in a dedicated Webprofiler toolbar item and profiler panel. It ships no routes, permissions, config or Drush commands of its own — it is a pure developer/debugging aid reachable through Webprofiler's own gated profiler UI.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
