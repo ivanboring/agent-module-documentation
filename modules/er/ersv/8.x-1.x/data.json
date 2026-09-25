@@ -1,13 +1,15 @@
 {
   "name": "EntityReference Separate Selection and Validation",
   "data_name": "ersv",
-  "description": "An entity reference selection plugin that lets you use one handler to build the selectable options and a different handler to validate submitted values.",
+  "description": "An entity reference selection plugin that lets you configure one handler to build the selectable options and a separate handler to validate submitted values.",
   "version": "8.x-1.x",
   "package": null,
   "composer_namespace": "drupal/ersv",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/ajax_dependency": "^2.0"
+  },
   "dependent_modules": [
-    "ajax_dependency:ajax_dependency"
+    "ajax_dependency"
   ],
   "configure": null,
   "core_version_requirement": "^8.7.7 || ^9 || ^10 || ^11",
@@ -21,23 +23,24 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"
   ],
   "subcategories": [
-    "Entity selection"
+    "Entity selection",
+    "Field validation"
   ],
   "keywords": [
     "entity reference",
     "selection plugin",
-    "validation",
-    "handler",
+    "validation handler",
     "autocreate",
-    "field widget"
+    "ajax_dependency",
+    "field settings"
   ],
-  "project_description": "This module adds an entityreference selection plugin that allows to select different selection plugins for selection and validation.\n\n Example use cases:\n\n \n Reference only future events. With this module you can have only future events (view) for selection and all events (default) for validation \n Add and reference non-reusable foo entities (e.g. media) via Inline Entity Form. With this module you can have only reusable foo entities (view) for selection and all foo entities (default) for validation \n \n Without this module, you'd be able to reference those entities in the first place, but editing would remove them. With the module you can have a broader validation than selection plugin.\n\n Known issues:\n\n* [#3176278]",
+  "project_description": "ERSV adds a single EntityReference selection plugin (id \"ersv\", group \"ersv\") that decouples the two jobs a normal selection handler performs: presenting the choosable options and validating a submitted reference. On an entity reference field you pick a separate selection handler and validation handler; the selection handler narrows what the widget offers (optionally reacting to sibling form values via the required ajax_dependency module), while the validation handler decides what is ultimately acceptable and, when it supports autocreate, which entities can be created. Typical use is a narrower selection than validation, e.g. offering only future events for selection while validating against all events. The plugin provides no routes, permissions, services or config schema of its own; all behaviour is driven by the reference field's settings.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

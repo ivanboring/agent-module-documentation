@@ -1,27 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-ERSV provides an EntityReference selection plugin (`ersv`) that decouples the two jobs a normal selection handler does: presenting the list of choosable entities and validating what was actually submitted.
+ERSV provides one EntityReference selection plugin (`ersv`) that decouples the two jobs a normal selection handler does: building the list of choosable entities and validating the reference that was actually submitted.
 
 ---
 
-In core, one selection handler both narrows the options offered in a widget and validates the saved reference against the same criteria. ERSV lets you configure a separate *selection* handler and *validation* handler on a reference field: the selection plugin controls what the user can pick (e.g. a filtered, AJAX-dependent subset), while the validation plugin decides what is ultimately acceptable (e.g. a broader or different rule). It implements `SelectionWithAutocreateInterface`, so autocreate is delegated as well, and it integrates with the `ajax_dependency` module (a hard dependency) so the offered options can react to other form values.
+In core, a single selection handler both narrows the options a reference widget offers and validates the saved value against the same criteria. ERSV lets you configure a separate *selection* handler and *validation* handler on one entity reference field: the selection handler controls what a user can pick (optionally a filtered, AJAX-dependent subset), while the validation handler decides what is ultimately acceptable — usually a broader or different rule. Because it implements `SelectionWithAutocreateInterface`, autocreate is delegated to the validation handler too, and because it wires its nested handler-settings subforms with the required `ajax_dependency` module, the offered options can rebuild in reaction to the chosen handler. It is a pure field-configuration tool: set it as the reference method on a field, choose the two handlers, and all behaviour is evaluated at form-build and validation time. It exposes no routes, permissions, services or config schema of its own.
 
-This is a field-configuration tool: you set it as the reference method on an entity reference field's settings, then configure the nested selection and validation handlers there. It exposes no routes, permissions or services and stores no separate data — all behaviour is driven by the field's configuration and evaluated at form-build and validation time. Use it when the set of options a user should *see* legitimately differs from the set a value is *validated* against.
 ---
-- Offer a filtered subset of entities while validating against a wider set.
-- Separate the "what can be picked" rule from the "what is valid" rule.
-- Make selectable options depend on another field via ajax_dependency.
-- Use different selection vs validation handlers on one reference field.
-- Configure ERSV as the reference method in field settings.
-- Allow autocreate through a decoupled selection handler.
-- Restrict visible options without changing validation constraints.
-- Build cascading/dependent entity reference dropdowns.
-- Validate submitted references with a custom or broader handler.
-- Reuse core selection handlers as the underlying selection plugin.
-- Reuse core selection handlers as the underlying validation plugin.
-- Apply distinct handler settings to selection and validation.
-- Prevent invalid picks even when options are dynamically filtered.
-- Support entity reference fields whose options change per form state.
-- Configure target bundles independently for display vs validation.
-- Combine with ajax_dependency to react to sibling form inputs.
-- Avoid custom selection-plugin code for split select/validate needs.
-- Test the plugin via the bundled functional AdminPageTest.
+- Offer a filtered subset of entities for selection while validating against a wider set.
+- Reference only future events for selection but accept any event on validation.
+- Separate the "what can be picked" rule from the "what counts as valid" rule.
+- Allow a broader validation than selection so editing does not strip valid references.
+- Add and reference non-reusable entities via Inline Entity Form while keeping a stricter selection list.
+- Use different selection and validation handlers on a single reference field.
+- Configure ERSV as the reference method in an entity reference field's settings.
+- Delegate autocreate to the validation handler (via SelectionWithAutocreateInterface).
+- Reuse core `default` / `views` selection handlers as the underlying selection plugin.
+- Reuse core `default` / `views` selection handlers as the underlying validation plugin.
+- Apply distinct handler settings (bundles, filters, views) to selection vs validation.
+- Restrict the visible options without changing the validation constraints.
+- Prevent invalid picks even when the offered options are dynamically filtered.
+- Support reference fields whose selectable set legitimately differs from the acceptable set.
+- Configure target bundles independently for the display side and the validation side.
+- Build widgets where the choosable list is narrower than what the field can hold.
+- Combine with a `views`-based selection handler for a curated pick list plus a permissive validator.
+- Avoid writing a bespoke selection-plugin class just to split select from validate.
+- Keep config export accurate — dependencies of both child handlers are calculated.
+- Let the selection handler and validation handler target the same entity type with different scopes.
+- Migrate an existing reference field to split selection/validation by switching its reference method.
+- Support inline-entity-form widgets that create entities the selection list never shows.
+- Provide a narrow autocomplete while still validating references created elsewhere.

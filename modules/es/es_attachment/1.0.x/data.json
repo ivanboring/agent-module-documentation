@@ -1,17 +1,21 @@
 {
   "name": "ES Attachment",
   "data_name": "es_attachment",
-  "description": "uses the Elasticsearch ingest pipeline to index document contents (PDF etc.).",
+  "description": "Uses the Elasticsearch 'pipeline' to index the content of documents (PDF & co).",
   "version": "1.0.x",
   "package": "Search",
   "composer_namespace": "drupal/es_attachment",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/elasticsearch_connector": "^8.0 || ^9.0",
+    "drupal/search_api_attachments": "^10.0"
+  },
   "dependent_modules": [
     "search_api:search_api",
-    "elasticsearch_connector:elasticsearch_connector"
+    "elasticsearch_connector:elasticsearch_connector",
+    "search_api_attachments:search_api_attachments"
   ],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/es_attachment",
@@ -22,7 +26,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Site search"
@@ -35,7 +39,8 @@
     "attachments",
     "pdf",
     "indexing",
-    "search"
+    "search",
+    "ingest pipeline"
   ],
   "project_description": "Try to fork/rewrite search_api_elasticsearch_attachments in order to support ElasticSearch_connector 8.x (for ElasticSearch 8.x) and using search_api_attachments.\n\n [to be continued]\n\n Features \n The module allows you to use the ElasticSearch ‘pipeline’ to index the content of documents (pdf & co) present in the content. The content extracted in this way can be used in search.\n\n Post-Installation \n Additional Requirements \n Need patch from https://www.drupal.org/project/search_api_attachments/issues/3008580 to use nested document (as media)\n\n Similar projects \n It's a fork/rewrite of search_api_elasticsearch_attachments\n\n Back to top",
   "maintenance_status": "Minimally maintained",
