@@ -1,7 +1,7 @@
 {
-  "name": "External Link a11y",
+  "name": "Accessible external link formatter and filter",
   "data_name": "external_link_a11y",
-  "description": "Adds target=_blank to external links accessibly (with rel and screen-reader cues).",
+  "description": "Adds target blank attribute on external links in an accessible way.",
   "version": "1.2.x",
   "package": null,
   "composer_namespace": "drupal/external_link_a11y",
@@ -10,7 +10,7 @@
     "drupal:link"
   ],
   "configure": null,
-  "core_version_requirement": "^10.3||^11",
+  "core_version_requirement": "^10.3 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/external_link_a11y",
@@ -24,19 +24,22 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Accessibility"
+    "Accessibility",
+    "Content display"
   ],
   "subcategories": [
-    "Links"
+    "ARIA / semantic markup",
+    "Field formatters"
   ],
   "keywords": [
     "external link",
     "target blank",
     "accessibility",
     "a11y",
-    "noopener"
+    "link field formatter",
+    "text format filter"
   ],
-  "project_description": "This rather low-level module is only used to add some accessibility extra data behind the hood like an \"Open in new window\" visually hidden text, some extra CSS classes or even HTML suffix to external links based on URL pattern or target _blank attribute. The module's formatter and WYSIWYG filter can automatically add a target _blank attribute to external URLs.\n\n The module can also add noopener and noreferrer rel attributes to external links.\n\n Similar projects \n The following modules are more display-oriented and end-user friendly and could be of some interest for people landing here:\n\n \n External links \n Link Purpose Icons This one is also focused on accessibility.",
+  "project_description": "This rather low-level module is only used to add some accessibility extra data behind the hood like an \"Open in new window\" visually hidden text, some extra CSS classes or even an HTML suffix to external links based on URL pattern or target _blank attribute. The module ships a link-field formatter and a WYSIWYG text-format filter that can automatically add a target _blank attribute to external URLs, add rel attribute values, apply CSS classes and append an HTML suffix. It has no settings page, routes, permissions or entities of its own; behaviour is configured per view-display (formatter) and per text format (filter).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

@@ -11,10 +11,9 @@ external link doesn't quietly disorient assistive-technology users.
 It's a low-level module. It provides a **field formatter** and a **WYSIWYG/text
 filter** that can automatically add the `target="_blank"` attribute to external
 URLs, deciding what counts as "external" by URL pattern (or by an existing
-`target="_blank"`). It can also add **`noopener`** and **`noreferrer`** `rel`
-attributes — the safe pattern that prevents reverse-tabnabbing, where a newly
-opened page could otherwise reach back into the page that launched it. It depends
-on core **Link** and has no access-control role.
+`target="_blank"`). It can optionally add values to the link's **`rel`** attribute
+(`noopener`, `noreferrer`) and, for the filter, extra CSS classes or an HTML
+suffix. It depends on core **Link** and has no access-control role.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -61,6 +60,7 @@ fits where your links come from.
 3. Save the format. External links in content using that format now get the
    accessible treatment automatically.
 
-> **Good practice this encodes:** whenever you open a link in a new tab, pair
-> `target="_blank"` with `rel="noopener"` and an announced "opens in a new window"
-> cue. This module does both for you.
+> **Tip:** when links open in a new tab, an announced "opens in a new window" cue
+> helps assistive-technology users. This module adds that cue for new-tab links, and
+> the `rel` values (`noopener`, `noreferrer`) are available as opt-in checkboxes on
+> both the formatter and the filter.
