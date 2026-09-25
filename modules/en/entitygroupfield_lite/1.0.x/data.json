@@ -1,17 +1,20 @@
 {
   "name": "Entity Group Field lite",
   "data_name": "entitygroupfield_lite",
-  "description": "links content entities to Group entities via a field.",
+  "description": "Attaches a computed group-reference field (one per group type) to content entities and ships a select/checkbox widget to join or leave those groups from the entity's own edit form.",
   "version": "1.0.x",
   "package": "Group",
   "composer_namespace": "drupal/entitygroupfield_lite",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/group": "^3.0",
+    "drupal/form_options_attributes": "^2.1"
+  },
   "dependent_modules": [
-    "group:group",
-    "form_options_attributes:form_options_attributes"
+    "group",
+    "form_options_attributes"
   ],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/entitygroupfield_lite",
@@ -22,22 +25,25 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Access control"
+    "Access control",
+    "Content editing experience"
   ],
   "subcategories": [
-    "Groups & memberships"
+    "Groups & memberships",
+    "Form widgets / select UI",
+    "Computed / derived fields"
   ],
   "keywords": [
     "group",
-    "entity",
-    "field",
-    "membership",
-    "link"
+    "group membership",
+    "entity reference",
+    "computed field",
+    "select widget"
   ],
-  "project_description": "Entity Group Field (lite) \n Introduction \n This module does the same thing as Entity Group Field, of which it is heavily inspired, but follows a slightly different approach.\n\n Features \n This module provides a field for each defined \"group - content\" relationship.\n\nFor example if a user can be a member of two group types A and B you can have two fields in the user edit form, one for each group type.\n\n \n You can separately enable any of those two fields in the entity edit form. \n This module ships with a widget \"Group select list\" which is a simple select list. \n You can customize the displayed label of the widget for better usability and understanding. \n The select widget will automatically transform into a single checkbox if only one group is selectable. \n The widget supports multiple relationships. \n etc... \n \n When to use this module \n \n You want to have a simple select widget (with no ajax) to select the group to attach your content to. \n You have too many defined group types and/or you want to have a different field for each group type. \n You want to use a simple on/off checkbox to attach your content to a group that is unique on your project (say a private section) \n \n When NOT to use this module \n \n Your group relationships has fields that have to be set when adding your content to a group. \n \n Configuration \n \n On your entity form display enable the computed group field you want to expose. \n Choose the included widget \"Group select list\". \n \n Requirements \n The only requirements are :\n\n \n Group (v3) \n Form Options Attributes used to disable non selectable options.",
+  "project_description": "Entity Group Field lite links content entities to Group (drupal/group v3) entities through per-group-type computed entity-reference fields. For every group type on the site it exposes a read-only computed base field (group_<group_type_id>) on the host entity types/bundles that a group relation plugin targets; enabling that field on the entity's Manage form display and assigning the shipped 'Group select list' widget lets editors attach or detach the entity to groups directly from its own edit form. The widget is a plain no-AJAX select that collapses to a single checkbox when only one group is selectable, supports customizing the field label, disables options the user may not use (via Form Options Attributes), and supports multiple relationships. It is a lighter-weight alternative to the Entity Group Field module and is not meant for relationships whose group-content has its own fields to fill in.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "not-covered",
