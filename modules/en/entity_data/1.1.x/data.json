@@ -1,14 +1,14 @@
 {
-  "name": "Entity Data",
+  "name": "Entity data",
   "data_name": "entity_data",
-  "description": "Provides an API to store arbitrary custom data per entity.",
+  "description": "Allows to store custom data per entity.",
   "version": "1.1.x",
   "package": "Entity",
   "composer_namespace": "drupal/entity_data",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^10||^11",
+  "configure": "entity_data.settings",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/entity_data",
@@ -25,7 +25,7 @@
     "Developer tools"
   ],
   "subcategories": [
-    "Data storage API"
+    "Entity API"
   ],
   "keywords": [
     "entity",
@@ -34,7 +34,7 @@
     "storage",
     "api"
   ],
-  "project_description": "Entity data provides a simple API to add data to any entity. \n\n Drupal 10, 11 \n Entity data service works similar to core's 'user.data' service. Except the we don't restrict it only to user entity. You can set data for any content entities.\n\n The primary usage involves the getter/setter methods:\n\n \n\n// Set custom data to entity.\n\n\\Drupal::service('entity.data')->set($module_name, $entity_id, $custom_data_name, $entity_type, $value); \n\n // Get custom data for entity.\n\n\\Drupal::service('entity.data')->get($module_name, $entity_id, $custom_data_name, $entity_type);\n\n // Delete custom data for entity\n\n\\Drupal::service('entity.data')->delete($module_name, $entity_id, $custom_data_name, $entity_type);\n\n \n\n Drupal 7 \n It works similar to core's variable_set/get/del system. Except the data is associated with a entity and only loaded when that entity is loaded. \n\n The primary usage involves the getter/setter methods:\n\n \n\nentity_data_set($entity_type, $entity_id, $name, $value, $revision_id = 0, $language = LANGUAGE_NONE); \n\n entity_data_get($entity_type, $entity_id, $name, $default = NULL, $revision_id = 0, $language = LANGUAGE_NONE);\n\n entity_data_del($entity_type, $entity_id, $name, $revision_id = 0, $language = LANGUAGE_NONE);\n\n \n\n In addition to using the getter/setter methods, entity_data is automatically attached on entity_load and saved on entity_insert/entity_update. The data can be accessed using following the format:\n\n $entity->entity_data[$name] \n\n This also means that entity data will export and import with the entity.\n\n Sponsors \n \n European Commission (Drupal 9, 10) \n LevelTen Interactive (Drupal 7) \n Back to top",
+  "project_description": "Entity data provides a simple developer API to store arbitrary custom data per content entity, similar to core's user.data service but not restricted to users. A single service (entity.data) offers get()/set()/delete() methods that persist scalar values or serialized arrays/objects in a dedicated entity_data database table keyed by module, entity type, entity id and a name. Data is automatically removed when its entity is deleted, and a Views field handler exposes stored values. An admin settings form controls which PHP classes may be unserialized.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

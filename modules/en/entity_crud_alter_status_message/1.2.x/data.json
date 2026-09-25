@@ -1,16 +1,16 @@
 {
   "name": "Entity CRUD Alter Status Message",
   "data_name": "entity_crud_alter_status_message",
-  "description": "Lets you customize the status message shown after entity create/update/delete.",
+  "description": "Customizes the status message shown after create/update/delete of node, taxonomy term and media entities, using per entity-type/bundle/action config entities with token support.",
   "version": "1.2.x",
   "package": "Other",
   "composer_namespace": "drupal/entity_crud_alter_status_message",
   "composer_requirements": {},
   "dependent_modules": [
-    "token:token"
+    "token"
   ],
-  "configure": null,
-  "core_version_requirement": "^10||^11",
+  "configure": "entity.entity_crud_alter_status_message.collection",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/entity_crud_alter_status_message",
@@ -24,10 +24,11 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Administration tools"
+    "Administration tools",
+    "Content editing experience"
   ],
   "subcategories": [
-    "UX"
+    "Token / placeholder replacement"
   ],
   "keywords": [
     "entity",
