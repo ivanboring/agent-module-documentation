@@ -1,40 +1,33 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Entity Language Access denies access to canonical view of translatable content entities outside their original or translated language.
+Entity Language Access denies the canonical view of a translatable content entity when the current content language is neither the entity's original language nor an available translation.
 
 ---
 
-Entity Language Access **denies the canonical view of a translatable content entity when the current
-interface language is neither the entity's original language nor an available translation** — so a node that only
-exists in English/French returns forbidden when viewed in a language it has no translation for, instead of falling
-back. It depends on core Language and provides its own permissions.
-
-Use it to stop untranslated content showing under the wrong language. It is an **access-control** feature: it
-implements an entity access check that returns `AccessResult::forbidden()` for the canonical view when
-`current_language !== entity language` and no matching translation exists (with a permission to bypass). Because
-it's an entity-access result, it is honored by the canonical route and by per-entity access checks (Views/JSON:API
-that call entity access). Scope notes: it governs the **canonical view** based on language (a display/access rule),
-so verify it composes as intended with your multilingual setup, language fallback, and any listing/API paths you
-rely on. It has this specific access role and no broader one. Enable it to enforce language-scoped view access.
+Entity Language Access adds one extra access check to the canonical route (`entity.<type>.canonical`) of every content entity type that is translatable and has a canonical link template. On such a route it compares the current content language against the language of the entity that the route loaded: if they differ (i.e. the entity has no translation in the requested language, so core loaded its original/fallback translation instead), the check returns forbidden, producing a 403 instead of showing the untranslated content under the wrong language. It only guards the canonical *view* — edit, delete and other routes, and any listing (Views, EntityQuery, JSON:API collections), are untouched, so untranslated entities are hidden only on their canonical page. A `bypass entity_language_access` permission lets chosen roles see every language regardless. Optionally, instead of a plain 403 page you can point the module at a node to render as fallback content for the missing translation. The module depends only on core `language`, requires no external services, and works out of the box once enabled — no per-entity or per-bundle configuration is needed.
 
 ---
 
-- Forbid canonical view in a non-matching language.
-- Return forbidden when no translation exists.
-- Stop untranslated content showing.
-- Depend on core Language + provide a bypass permission.
-- Serve access control.
-- Implement an entity access check.
-- Return AccessResult::forbidden() when current_language !== entity language.
-- Be honored by the canonical route + per-entity access checks (Views/JSON:API).
-- Govern the canonical VIEW based on language (display/access rule).
-- Compose with your multilingual setup + language fallback (verify).
-- Enable it to enforce language-scoped view access.
-- Configure the bypass permission.
-- Handle language access.
-- Gate by language.
-- Configure the access.
-- Deny views.
-- Handle translations.
-- Restrict by language.
-- Check entity access.
-- Provide language-scoped view access.
+- Hide a node on its canonical URL in any language it has not yet been translated into, returning a 403.
+- Prevent untranslated content from appearing in its original language when a visitor browses in another language.
+- Roll out a multilingual site incrementally without exposing half-translated content.
+- Keep an English-only article invisible under the `/fr/` or `/de/` prefix until a translation is published.
+- Automatically cover every translatable content entity type (nodes, custom content entities, media, taxonomy terms if translatable, etc.) with one module, no per-type setup.
+- Only affect entity types that are actually marked translatable — non-translatable types stay fully accessible in every language.
+- Only affect canonical routes that follow the `entity.<type>.canonical` naming convention.
+- Leave edit/delete/other entity operations working normally regardless of language.
+- Grant a `bypass entity_language_access` permission to translators or editors so they can view any entity in any language while working.
+- Grant the bypass permission to administrators so back-office access is never blocked by language rules.
+- Show a friendly "content not available in your language" page by pointing the module at a fallback node instead of the default 403 page.
+- Route missing-translation 403s to a single, fully translated fallback node accessible to all users.
+- Combine with the Language module's content language negotiation to enforce per-language visibility.
+- Add a language filter to Views listings alongside this module so untranslated rows are also hidden in lists.
+- Enforce that anonymous visitors only ever see canonical pages that exist in their current language.
+- Support editorial workflows where translations are published one language at a time.
+- Turn a missing translation into a 403 rather than silently serving stale original-language content.
+- Configure fallback content once at Configuration > Regional and language > Entity Language Access.
+- Disable fallback content to fall back to Drupal's standard 403 access-denied page.
+- Provide an `administer entity_language_access` permission to control who can change the module's settings.
+- Apply the same language rule uniformly across all translatable content entity types without writing code.
+- Use with content_translation to complement translation management with language-scoped canonical access.
+- Keep untranslated content reachable to editors (via the bypass permission) while hidden from the public.
+- Serve as a lightweight alternative to custom hook_entity_access code for language-based canonical visibility.

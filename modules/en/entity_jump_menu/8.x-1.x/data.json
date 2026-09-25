@@ -1,7 +1,7 @@
 {
   "name": "Entity Jump Menu",
   "data_name": "entity_jump_menu",
-  "description": "adds a toolbar jump menu to view the current page's entity and jump to another entity.",
+  "description": "Adds a jump menu to the admin toolbar (and an optional block) to view the current page's entity and jump to another entity by type and ID.",
   "version": "8.x-1.x",
   "package": "Utility",
   "composer_namespace": "drupal/entity_jump_menu",
@@ -19,10 +19,10 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content editing experience"
+    "Administration tools"
   ],
   "subcategories": [
     "Admin toolbar / navigation"
