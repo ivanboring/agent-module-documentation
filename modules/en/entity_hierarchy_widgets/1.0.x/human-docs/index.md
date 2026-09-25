@@ -13,9 +13,8 @@ taxonomy terms, and a **block** that displays the hierarchy of the entity curren
 being viewed.
 
 This is a content‑editing and site‑building helper. It follows Entity Hierarchy's
-own data model and permissions and has no access‑control role of its own beyond the
-permission it adds for using the hierarchy management form. It depends on the
-Entity Hierarchy module (5.x).
+own data model and adds one permission for using the hierarchy management form. It
+depends on the Entity Hierarchy module (5.x).
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
