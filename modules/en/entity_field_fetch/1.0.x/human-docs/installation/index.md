@@ -32,5 +32,4 @@ drush en entity_field_fetch -y
 There is no admin settings page. To confirm the module is active, edit any content
 type under **Structure → Content types → (type) → Manage fields → Add field** and
 check that **Entity Field Fetch field** appears in the field-type list. From there,
-follow the "How to use it" steps in the parent [guide](../index.md) — and mind the
-security note about source access before you point a field at restricted content.
+follow the "How to use it" steps in the parent [guide](../index.md).

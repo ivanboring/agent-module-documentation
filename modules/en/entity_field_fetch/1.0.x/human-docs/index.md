@@ -20,9 +20,10 @@ It works as soon as you enable it — there is no global settings page. Everythi
 configured **per field**, on the field's settings. It supports Drupal 8 through 11
 and has no dependencies.
 
-> **Two caveats worth knowing up front.** First, if the source content is deleted,
-> a destination that fetches it breaks — keep the source in place for as long as
-> anything mirrors it. Second, and more importantly, see the security note below.
+> **A caveat worth knowing up front.** If the source content is deleted, a
+> destination that fetches it breaks — keep the source in place for as long as
+> anything mirrors it. (The module actively warns you and blocks deleting a node
+> or term while it is still in use as a fetch source.)
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -50,12 +51,9 @@ configuration. See "How to use it" below.
 4. View or edit any entity that has the field — you'll see the source content
    pulled in. Update the source and the cache refreshes automatically.
 
-## Important security note
+## Choosing a good source
 
-The fetch **does not check the source entity's view access or the field's access**
-before showing the value. Whoever can view the **host** (destination) entity sees
-the mirrored value, regardless of whether they could view the **source**. So do
-**not** mirror fields from access-restricted or unpublished entities onto a
-more-public host — that restricted data would leak through the host. Only mirror
-fields whose visibility already matches, or is broader than, the host's. The
-module has no access-control role of its own.
+Pick a source entity whose content is meant to be shared wherever the field is
+placed — the field's job is to surface the source's value on the host. Keep the
+source published and in place for as long as anything mirrors it; the module warns
+you and blocks deleting a node or term while it is still in use as a fetch source.

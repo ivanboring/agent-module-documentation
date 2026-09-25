@@ -1,39 +1,33 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Entity Field Fetch creates a field that references fields on other entities.
+Entity Field Fetch adds a field type that mirrors (fetches) a field value from another node, term, or paragraph onto the entity it is placed on.
 
 ---
 
-Entity Field Fetch provides a **field that fetches/mirrors field values from other entities** — an entity
-can display a field value pulled from a different (configured) entity, e.g. mirror a value from a referenced
-node or paragraph. It is in the Field types package.
-
-Use it to surface another entity's field value on a host entity. It is a fields/content-display feature, and it
-carries an **important access caveat**: the fetch loads the source entity and returns its field value **without
-checking the source entity's view access or the field's access** — so the mirrored value is shown to anyone who
-can view the **host** entity, regardless of whether they could view the **source**. Do **not** use it to mirror
-fields from **access-restricted or unpublished** entities onto a more-public host, or that restricted data will
-leak through the host; only mirror fields whose visibility matches (or is broader than) the host's. It has no
-access-control role of its own. Configure the fetch source/field.
+Entity Field Fetch lets you designate one node or term as the source of centralized content and then display that content anywhere. You add an "Entity Field Fetch field" to a content type, vocabulary, or paragraph type, and in the field settings point it at a target entity type (node or term), a target entity id (nid or tid), and the machine name of the field to pull — or, optionally, a specific paragraph on that source. The field then fetches the source value and renders it on both the view and edit displays of the host entity, keeping shared content edited in one place. Because the fetched data is exposed as computed properties on the field item, it rides along with the host entity through normal entity loads and data APIs (including JSON serialization and an optional GraphQL field), much like an entity reference. Output is cached against the source entity, so updating the source refreshes every place it is mirrored. It requires no other modules and works on Drupal 8 through 11.
 
 ---
 
-- Mirror a field value from another entity.
-- Fetch fields cross-entity.
-- Surface a source entity's field.
-- Serve content display.
-- Reference other entities' fields.
-- Configure the fetch source.
-- NOT check the source entity's view/field access.
-- Show the value to whoever can view the HOST.
-- Not mirror restricted/unpublished fields onto public hosts.
-- Only mirror fields whose visibility matches the host.
-- Have no access-control role of its own.
-- Configure the source/field.
-- Handle field fetching.
-- Fetch fields.
-- Configure the field.
-- Mirror values.
-- Handle the field.
-- Pull values.
-- Avoid leaking restricted data.
-- Provide cross-entity field fetch.
+- Show the same "top of page" notice on every article by mirroring one source node's field.
+- Centralize a promotional banner edited in a single place and displayed sitewide.
+- Reuse a shared disclaimer or legal blurb across many content types.
+- Pull a taxonomy term's description field onto nodes that reference the topic.
+- Mirror a paragraph (by id or UUID) from a source node onto other entities.
+- Fetch a single field from a source node into a destination content type.
+- Fetch a field from a source term into a destination vocabulary.
+- Keep editorial workflow and revisions on shared content (unlike a markup field).
+- Provide shared content that belongs to the entity for decoupled/headless setups.
+- Surface fetched values through data APIs and entity loads like a reference.
+- Expose fetched content over GraphQL via the bundled "fetched" field plugin.
+- Display fetched WYSIWYG/text-format fields with their filters applied.
+- Convert link/URI fields on the source into resolved URLs in the fetched data.
+- Include referenced (entity_reference_revisions) sub-entities in the fetched payload.
+- Add a "link to source" affordance on the edit form via the widget settings.
+- Show the source's last-updated date on the edit form.
+- Toggle whether the field label is shown on the edit form.
+- Cache mirrored output against the source so edits propagate automatically.
+- Mark mirrored output from an unpublished source with an unpublished CSS wrapper.
+- Warn editors when a source node/term is still in use before it is deleted.
+- Prevent accidental deletion of a node/term that is a fetch source.
+- Build a light content-syndication pattern within a single Drupal site.
+- Replace fragile shared blocks with entity-owned shared field content.
+- Standardize repeated field content across bundles without duplicating data.
