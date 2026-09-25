@@ -1,7 +1,7 @@
 {
   "name": "Entity Reference Deck",
   "data_name": "entity_reference_deck",
-  "description": "provides a card/deck-style widget for managing entity-reference values.",
+  "description": "Pluggable toolbar actions and erdeck-card chrome for entity reference fields (Entity Browser, Paragraphs).",
   "version": "1.0.x",
   "package": "Entity Reference Deck",
   "composer_namespace": "drupal/entity_reference_deck",
@@ -9,34 +9,62 @@
   "dependent_modules": [
     "drupal:field"
   ],
-  "configure": null,
-  "core_version_requirement": "^11.4",
+  "configure": "entity_reference_deck.settings",
+  "core_version_requirement": "^11.4 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/entity_reference_deck",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.3",
   "library_dependencies": [],
-  "suggests": {},
-  "submodules": [],
+  "suggests": {
+    "drupal/content_moderation": "Required to enable entity_reference_deck_moderation (CM-aware card styling).",
+    "drupal/diff": "Required to enable entity_reference_deck_diff (revision compare action + modal).",
+    "drupal/entity_browser": "Required to enable the entity_reference_deck_eb host submodule.",
+    "drupal/entity_browser_multi": "Optional with entity_reference_deck_eb: multi-launcher widget also gets deck chrome when enabled.",
+    "drupal/entity_usage": "Required to enable entity_reference_deck_usage (usage action / count surfaces).",
+    "drupal/gin": "Recommended with entity_reference_deck_gin for admin theme token remaps.",
+    "drupal/libraries": "Optional with entity_reference_deck_preview: Libraries API paths for iframe-resizer.",
+    "drupal/responsive_preview": "Optional with entity_reference_deck_preview: device presets for the responsive toolbar.",
+    "drupal/paragraphs": "Required to enable the entity_reference_deck_paragraphs host submodule.",
+    "drupal/paragraphs_library": "Required to enable entity_reference_deck_paragraphs_library."
+  },
+  "submodules": [
+    "entity_reference_deck_diff",
+    "entity_reference_deck_eb",
+    "entity_reference_deck_gin",
+    "entity_reference_deck_moderation",
+    "entity_reference_deck_paragraphs",
+    "entity_reference_deck_paragraphs_library",
+    "entity_reference_deck_preview",
+    "entity_reference_deck_usage"
+  ],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "EntityReferenceDeckAction",
+    "EntityReferenceDeckGroup",
+    "EntityReferenceDeckMetaItem"
+  ],
   "categories": [
     "Content editing experience"
   ],
   "subcategories": [
-    "Form widgets / select UI"
+    "Form widgets / select UI",
+    "Entity selection"
   ],
   "keywords": [
     "entity reference",
     "deck",
-    "widget",
     "cards",
-    "field"
+    "toolbar actions",
+    "entity browser",
+    "paragraphs",
+    "widget chrome",
+    "SDC"
   ],
-  "project_description": "Entity Reference Deck adds pluggable toolbar actions and erdeck-card chrome to entity reference fields. Editors get moderation, usage, diff, and other actions on reference cards without a custom widget per site.\n\n It ships host submodules for Entity Browser and Paragraphs , feature submodules for Diff, Entity Usage, Content Moderation styling, and Paragraphs Library, an optional live Preview submodule, plus an optional Gin admin theme skin.\n\n Features \n \n Core module — action / meta / group plugin managers, card builder, global settings form, SDC components ( erdeck-card , status tags, usage badges, …). Core works without Diff / Entity Usage / Content Moderation / Paragraphs Library installed. \n Host submodule Entity Reference Deck EB — Entity Browser field widgets (optional multi-launcher with Entity Browser Multi ). \n Host submodule Entity Reference Deck Paragraphs — Paragraphs field widget and closed-row chrome (icons via ParagraphsType::getIconUrl() ). \n Feature submodule Entity Reference Deck Diff — revision compare action and modal ( entity_reference_deck_diff ; requires Diff ). \n Feature submodule Entity Reference Deck Usage — usage surfaces ( entity_reference_deck_usage ; requires Entity Usage ). \n Feature submodule Entity Reference Deck Moderation — Content Moderation–aware card styling ( entity_reference_deck_moderation ). \n Feature submodule Entity Reference Deck Paragraphs Library — library item theme + type presentation ( entity_reference_deck_paragraphs_library ; requires the Paragraphs host and Paragraphs Library ). \n Soft-dep submodule Entity Reference Deck Preview — live front-end preview of referenced entities in cards ( entity_reference_deck_preview ). Does not ship iframe-resizer; install it on the site (see Additional Requirements). \n Skin submodule Entity Reference Deck Gin — remaps --erdeck-* tokens when Gin is active. \n \n When to use it: you want a consistent card + toolbar UX on entity reference fields (browse / reorder / edit referenced entities) with site-extensible actions, without rewriting Entity Browser or Paragraphs widgets from scratch.\n\n Post-Installation \n \n Enable Entity Reference Deck ( entity_reference_deck ). \n Enable the host you need: entity_reference_deck_eb and/or entity_reference_deck_paragraphs (after composer require of their packages). \n Enable feature submodules as needed: entity_reference_deck_diff , entity_reference_deck_usage , entity_reference_deck_moderation , entity_reference_deck_paragraphs_library . \n Optionally enable entity_reference_deck_preview , then install iframe-resizer on the site (see Additional Requirements). \n Optionally enable entity_reference_deck_gin when using the Gin admin theme. \n Go to Configuration → Content authoring → Entity Reference Deck for global action groups, meta items, and card defaults. \n On Structure → Content types → [type] → Manage form display , set the entity reference field widget to an ER Deck host widget. \n \n There is no new content type. Configuration is the module settings form plus field form-display widget settings.\n\n Additional Requirements \n \n Drupal core ^11.4 \n PHP 8.3+ \n For the EB host: Entity Browser \n For the Paragraphs host: Paragraphs and Entity Reference Revisions \n For Preview only: install iframe-resizer v5 on the site (not shipped with the module): composer require npm-asset/iframe-resizer--parent:^5 npm-asset/iframe-resizer--child:^5 via Asset Packagist , with npm-asset packages under web/libraries/{$name} . Expected files: /libraries/iframe-resizer--parent/index.umd.js and /libraries/iframe-resizer--child/index.umd.js . \n \n Core only requires drupal:field . Host and feature packages are required only when you enable the matching submodule.\n\n Recommended modules \n \n Gin — with entity_reference_deck_gin for admin token remaps. \n Entity Browser Multi — optional with entity_reference_deck_eb ; multi-launcher fields get the same deck FieldWidgetDisplay. \n Diff — with entity_reference_deck_diff for revision compare in …",
+  "project_description": "Entity Reference Deck adds pluggable toolbar actions and erdeck-card chrome to entity reference fields. Rather than shipping a new field widget, it layers a shared card builder and a discoverable action/group/meta-item plugin system onto existing host widgets, so editors get moderation status, usage counts, revision diff, live preview and other card actions consistently, regardless of whether the reference is edited through Entity Browser or Paragraphs. The core module (entity_reference_deck) provides three plugin managers (action, group, card meta item), the EntityReferenceDeckCardBuilder / EntityReferenceDeckBuilder services that render the erdeck-card Single Directory Components, a global admin settings form for enabling and re-ordering actions/groups/meta items, and the base classes/attributes/DTOs for the PreviewProvider API. It works standalone (depends only on core Field) and degrades gracefully when the optional feature packages are absent. Host submodules bind the card builder to concrete widgets: Entity Reference Deck EB (Entity Browser FieldWidgetDisplay) and Entity Reference Deck Paragraphs (Paragraphs widget + closed-row chrome). Feature submodules add specific actions/surfaces: Diff (revision compare AJAX modal, requires Diff), Usage (Entity Usage counts, requires Entity Usage), Moderation (Content Moderation-aware card styling) and Paragraphs Library (library-item theme + presentation). The optional Preview submodule renders a live front-end preview of the referenced entity inside each card via a sandboxed iframe and a Lit shell, with hardened persisted/draft-token routes; it does not ship iframe-resizer (install it on the site). The Gin submodule remaps --erdeck-* CSS tokens when the Gin admin theme is active. Configuration is the global settings form plus each field's form-display widget settings; there is no new content type.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
