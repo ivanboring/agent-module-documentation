@@ -1,50 +1,46 @@
 # Configuration
 
-Configuring Etsy API means giving it the OAuth2 credentials for your Etsy developer
-app and authorizing access to your shop. Because these are sensitive credentials,
-the important part of this page is **how to store them safely**.
+Configuring Etsy API is two steps: enter your Etsy app's OAuth2 credentials in the
+**OAuth2 Client** module and authorize access to your shop, then set your **shop id**
+(and a cache lifetime) in the Etsy API settings form.
 
 ## Before you start
 
-Create an **Etsy developer app** in your Etsy account to obtain an **API
-key/keystring** and configure a redirect URL. You'll enter these on your site so it
-can authenticate to the Etsy API via OAuth2.
+Create an **Etsy developer app** in your Etsy account to obtain your **keystring**
+(the API key / OAuth2 Client ID) and **shared secret** (the OAuth2 Client Secret),
+and configure a redirect URL. You'll enter these on your site so it can authenticate
+to the Etsy API via OAuth2.
 
-## Open the settings
+## Step 1 — enter credentials in OAuth2 Client
 
-Access to the Etsy API settings is gated by the **Administer Etsy settings**
-permission (`administer etsy settings`). Grant it only to trusted administrators
-(under **People → Permissions**), then open the Etsy API settings form as that user
-to enter the connection details.
+The Etsy keystring and shared secret are stored and managed by the required
+**OAuth2 Client** module, not by Etsy API itself. Go to
+**/admin/config/system/oauth2-client**, find the OAuth2 Client labelled **etsy**,
+and edit it:
 
-## The settings
+- Check **Enabled**.
+- Under *Client Settings: Etsy*, put your Etsy **keystring** in **Client ID** and
+  your Etsy **shared secret** in **Client Secret**.
+- Click **Save and request token** to run the OAuth2 authorization and obtain an
+  access token.
 
-- **Etsy API credentials (OAuth2 key/keystring)** — the key(s) from your Etsy
-  developer app, used to authenticate requests.
-- **OAuth2 authorization** — the module uses the **OAuth2 Client** flow to authorize
-  access to your shop; complete the authorization so the site can obtain and refresh
-  access tokens.
+The credentials are saved as part of the OAuth2 Client configuration; the access
+token the site receives is kept in Drupal's state store, and a scheduled ping keeps
+it alive. Grant the OAuth2 Client and Etsy admin permissions only to trusted
+administrators.
 
-Since Etsy API integrates a **single** Etsy shop, you configure one shop's
-connection here.
+## Step 2 — the Etsy API settings
 
-## Storing the API credentials safely
+Access to the Etsy API settings form (`/admin/config/services/etsy`) is gated by the
+**Administer Etsy settings** permission (`administer etsy settings`). Grant it only to
+trusted administrators (under **People → Permissions**), then open the form and set:
 
-The Etsy API keystring is a secret. Keep it in an environment variable rather than
-pasting it into configuration that could be exported or committed.
+- **Etsy shop id** — the id of the single Etsy shop this site integrates (required).
+- **Cache lifetime** — how long to cache API responses (Disabled, 1/2/6/12/24 hours)
+  to stay within Etsy's rate limits.
 
-With DDEV, save it into the project's dotenv file (never commit `.ddev/.env`) and
-restart so the container picks it up:
-
-```bash
-ddev dotenv set .ddev/.env --etsy-api-key=<your-etsy-keystring>
-ddev restart
-```
-
-The flag `--etsy-api-key` becomes the environment variable `ETSY_API_KEY` inside
-the web container. Reference that variable when configuring the connection — for
-example through a **Key** entity using the env provider — so the raw secret stays out
-of exported configuration.
+This form does **not** hold your keystring or secret — those live in OAuth2 Client
+(Step 1).
 
 ## A note on data and egress
 
@@ -54,6 +50,8 @@ environment where outbound HTTP is restricted, and always talk to Etsy over HTTP
 
 ## Save and test
 
-Save the settings and complete the OAuth2 authorization. A successful connection
-means your custom integration (or the companion *Etsy Shop* module) can then fetch
-data from your Etsy shop.
+Save the shop id and complete the OAuth2 authorization (Step 1). The Etsy API
+settings form is accompanied by a **Testing** tab (`/admin/config/services/etsy/testing-form`)
+where you can run calls such as *Ping* to confirm the connection works. A successful
+connection means your custom integration (or the companion *Etsy Shop* module) can
+then fetch data from your Etsy shop.

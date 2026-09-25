@@ -12,10 +12,12 @@ implementation) build shop features on top of it by depending on this module. If
 just want the plumbing to talk to Etsy, this is the module you need.
 
 Because it authenticates against a third‑party API, it involves **egress** (your
-site calls Etsy's servers) and **credentials** (OAuth2 API keys). Those credentials
-are sensitive and should be stored securely — kept in an environment variable rather
-than pasted into exported configuration. Access to its settings is gated by the
-**Administer Etsy settings** permission (`administer etsy settings`).
+site calls Etsy's servers) and **credentials** (an Etsy keystring and shared secret).
+Those credentials are entered and stored through the required **OAuth2 Client** module
+(at `/admin/config/system/oauth2-client`), and the resulting access token is kept in
+Drupal's state store; the Etsy API settings form itself only holds the shop id and a
+cache lifetime. Access to those settings is gated by the **Administer Etsy settings**
+permission (`administer etsy settings`).
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
