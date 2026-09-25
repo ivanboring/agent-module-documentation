@@ -1,17 +1,21 @@
 {
-  "name": "Entity Hierarchy Group Support",
-  "data_name": "entity_hierarchy_group",
-  "description": "Group support for entity_hierarchy",
+  "name": "Entity Hierarchy Widgets Group Support",
+  "data_name": "entity_hierarchy_widgets_group",
+  "description": "Group support for entity_hierarchy_widgets",
   "version": "1.0.x",
   "package": "Entity Hierarchy",
-  "composer_namespace": "drupal/entity_hierarchy_group",
+  "composer_namespace": "drupal/entity_hierarchy_widgets_group",
   "composer_requirements": {
     "drupal/group": "^3.0",
-    "drupal/entity_hierarchy": "^5.0"
+    "drupal/entity_hierarchy": "^5.0",
+    "drupal/entity_hierarchy_widgets": "^1.0",
+    "drupal/entity_hierarchy_group": "^1.0"
   },
   "dependent_modules": [
+    "group:group",
     "entity_hierarchy:entity_hierarchy",
-    "group:group"
+    "entity_hierarchy_widgets:entity_hierarchy_widgets",
+    "entity_hierarchy_widgets:entity_hierarchy_group"
   ],
   "configure": null,
   "core_version_requirement": "^10.5 || ^11.2",
@@ -22,12 +26,10 @@
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [
-    "entity_hierarchy_widgets_group"
-  ],
+  "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools",
@@ -39,13 +41,12 @@
   ],
   "keywords": [
     "entity_hierarchy",
+    "entity_hierarchy_widgets",
     "group",
     "hierarchy",
-    "tree",
-    "parent selection",
-    "integration"
+    "tree widget"
   ],
-  "project_description": "Add Group support for Entity Reference Hierarchy.\n\n Features \n Adds support for group module to Entity Reference Hierarchy.\n\n- Adds option to restrict the selection of parent entities to the current group context.\n\n- Adds option to restrict selection of parent entities outside of group context if not in group context.\n\n- Adds option to only allow one similar hierarchy for each group.\n\n Post-Installation \n Adjust Entity hierarchy group settings. \n\n Additional Requirements \n Requires Group 3.x and Entity Reference Hierarchy 5.x\n\n Back to top",
+  "project_description": "Submodule of Entity Hierarchy Group Support. Extends the group-context parent filtering to the nested tree entity-reference-selection handler provided by the entity_hierarchy_widgets module.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

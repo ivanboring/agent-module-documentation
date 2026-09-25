@@ -1,14 +1,16 @@
 {
   "name": "Entity Hierarchy Trash Support",
   "data_name": "entity_hierarchy_trash",
-  "description": "Trash (soft-delete) support for Entity Hierarchy.",
+  "description": "Trash (soft-delete) support for Entity Hierarchy: reparents children when a hierarchy parent is trashed.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Entity Hierarchy",
   "composer_namespace": "drupal/entity_hierarchy_trash",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/entity_hierarchy": "^5.0"
+  },
   "dependent_modules": [
-    "entity_hierarchy:entity_hierarchy",
-    "trash:trash"
+    "entity_hierarchy",
+    "trash"
   ],
   "configure": null,
   "core_version_requirement": "^10.5 || ^11.2",
@@ -20,9 +22,9 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools"
@@ -35,9 +37,10 @@
     "trash",
     "soft delete",
     "hierarchy",
+    "reparent",
     "restore"
   ],
-  "project_description": "Adds Trash support to Entity hierarchy.\n\n Features \n Adds support for Trash to Entity hierarchy module.\n\nWhen moving entities to trash (soft-delete) the delete-hooks in other modules are not triggered by default.\n\nThis module triggers all post-delete actions in Entity hierarchy, like moving its children.\n\nThe hierarchy information remains, so the entity can get restored.\n\n Post-Installation \n No further steps necessary.\n\n Additional Requirements \n Entity hierarchy 5.x and Trash modules are required.\n\n Back to top",
+  "project_description": "Extends Entity Reference Hierarchy (entity_hierarchy) to work with the Trash module's soft-delete model. When an entity is moved to trash the delete hooks other modules rely on are not fired, so entity_hierarchy's tree-maintenance would normally be skipped. This module hooks entity_update, detects a trash operation (a content entity whose 'deleted' field is set) and runs entity_hierarchy's tree-maintenance so the trashed parent's children are moved up to their grandparent (or to root). The trashed entity keeps its own parent reference so the hierarchy can be reconstructed on restore. No configuration, routes, permissions or plugins are provided; installing the module and its dependencies (entity_hierarchy 5.x and Trash) is all that is required.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
