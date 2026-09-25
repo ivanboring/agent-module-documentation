@@ -29,19 +29,18 @@ composer require --dev drupal/factory_lollipop
 drush en factory_lollipop -y
 ```
 
-## Submodules — optional examples
+## Submodule — optional
 
-Two submodules provide worked examples you can enable to learn the framework:
+One submodule ships with the project:
 
 | Submodule | Machine name | What it adds |
 |-----------|--------------|--------------|
-| **Factory Lollipop Example** | `factory_lollipop_example` | A carefully documented implementation walking through the basic concepts of the factory test framework. |
-| **Factory Lollipop Example (Advanced)** | `factory_lollipop_example_advanced` | Examples of more advanced techniques for building Drupal factories. |
+| **Factory Lollipop - Paragraphs** | `factory_lollipop_paragraphs` | Adds `paragraph` and `paragraph type` factory types for building Paragraphs entities/bundles in tests. Requires the contrib **Paragraphs** module. |
 
-Enable one to study its source, for example:
+Enable it only if you need paragraph factories:
 
 ```bash
-drush en factory_lollipop_example -y
+drush en factory_lollipop_paragraphs -y
 ```
 
 ## Verify it worked

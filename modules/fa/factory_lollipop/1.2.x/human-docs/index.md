@@ -36,21 +36,19 @@ and development code, not from the admin UI.
 ## Where it lives in the admin menu
 
 Factory Lollipop adds no admin page. It is a code‑level tool: you use its factories
-from PHP in your tests and setup routines. It does add its own permission and defines
-config schema, but there is no settings form to visit.
+from PHP in your tests and setup routines. It defines no permissions, no settings form
+and no configuration — everything is driven from your test and development code.
 
 ## How to use it
 
-Factory Lollipop ships two example submodules that walk through implementing
-factories:
+Factory Lollipop ships one optional submodule:
 
-- **factory_lollipop_example** — a documented, beginner‑oriented set of factory
-  scenarios.
-- **factory_lollipop_example_advanced** — examples of more advanced factory
-  techniques.
+- **factory_lollipop_paragraphs** — adds `paragraph` and `paragraph type` factory
+  types so you can build Paragraphs entities and bundles in tests (requires the
+  contrib Paragraphs module).
 
-Enable an example submodule to study its code, then write your own factory blueprints
-for the entities your tests need. The module's own test suite and the project's
-official documentation (linked from the
+Enable it if you need paragraph factories, then write your own factory blueprints for
+the entities your tests need. The module's own test suite (under `tests/`) and the
+project's official documentation (linked from the
 [project page](https://www.drupal.org/project/factory_lollipop)) are the best
 references for the API and the Chain Resolver.
