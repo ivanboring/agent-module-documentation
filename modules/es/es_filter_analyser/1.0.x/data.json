@@ -1,11 +1,13 @@
 {
   "name": "ElasticSearch Filter-Analyser Management",
   "data_name": "es_filter_analyser",
-  "description": "Declare and integrate ElasticSearch filters/analysers into Search API and Elasticsearch Connector.",
+  "description": "Declare ElasticSearch token filters and analysers as config entities and inject them into Search API / Elasticsearch Connector indexes, field mappings and queries.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Search",
   "composer_namespace": "drupal/es_filter_analyser",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/elasticsearch_connector": "^8.0 || ^9.0"
+  },
   "dependent_modules": [
     "elasticsearch_connector:elasticsearch_connector",
     "search_api:search_api"
@@ -22,13 +24,17 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "filter_type"
+  ],
   "categories": [
     "Site search"
   ],
   "subcategories": [
-    "Search backend"
+    "Search backend",
+    "Stemming / linguistics",
+    "Synonyms / alternate labels"
   ],
   "keywords": [
     "elasticsearch",
