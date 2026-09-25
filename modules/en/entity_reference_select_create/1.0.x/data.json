@@ -1,9 +1,9 @@
 {
   "name": "Entity Reference Select Create",
   "data_name": "entity_reference_select_create",
-  "description": "A select-list entity-reference widget with a modal button to create a new referenced entity.",
+  "description": "Select list widget with a modal create button for entity reference fields.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Custom",
   "composer_namespace": "drupal/entity_reference_select_create",
   "composer_requirements": {},
   "dependent_modules": [],
@@ -17,15 +17,17 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"
   ],
   "subcategories": [
-    "Field formatters"
+    "Form widgets / select UI",
+    "Entity selection",
+    "Entity creation links"
   ],
   "keywords": [
     "entity reference",
