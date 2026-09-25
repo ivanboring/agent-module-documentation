@@ -1,44 +1,21 @@
 # Configuration
 
-Configuring Ephoto DAM has two parts: connecting Drupal to your Ephoto DAM account
-with API credentials (stored safely), and enabling the asset‑insertion tools for
-editors.
+Configuring Ephoto DAM has two parts: telling Drupal the URL of your Ephoto server,
+and enabling the asset‑insertion tools for editors.
 
-## Store the API credentials as secrets (do this first)
+## Enter the Server URL (do this first)
 
-The Ephoto DAM API credentials are secrets. Do not commit them to the repository or
-place them in exported configuration. Store them in an environment variable and
-reference them through a Key entity.
+The only Drupal‑side setting is the URL of your Ephoto Dam software. There is **no
+API key or secret to enter in Drupal** — when an editor opens the asset chooser,
+sign‑in with Ephoto happens in their browser against that server.
 
-With DDEV, save the value and restart:
-
-```bash
-ddev dotenv set .ddev/.env --ephoto-dam-api-key=<your-key>
-ddev restart
-```
-
-The flag `--ephoto-dam-api-key` becomes the environment variable
-`EPHOTO_DAM_API_KEY`. Keep `.ddev/.env` out of version control.
-
-Confirm the variable is present *without printing its value*, then create a Key
-entity backed by it (install the [Key](https://www.drupal.org/project/key) module
-first if it isn't already enabled):
-
-```bash
-ddev exec 'test -n "$EPHOTO_DAM_API_KEY"'   # exit status 0 means it is set
-ddev drush key:save ephoto_dam_api_key \
-  --label='Ephoto DAM API Key' --key-type=authentication --key-provider=env \
-  --key-provider-settings='{"env_variable":"EPHOTO_DAM_API_KEY","base64_encoded":false,"strip_line_breaks":true}' \
-  --key-input=none -y
-```
-
-## Enter the connection details
-
-Open the Ephoto DAM settings under **Configuration** and supply the connection
-details for your account — the API endpoint/URL and credentials. Where the form
-supports it, reference the **Key** you created rather than typing the raw
-credential into a text field. Use HTTPS for the endpoint so credentials and asset
-requests are encrypted in transit.
+1. Go to the Ephoto DAM settings under **Configuration** (`/admin/config/ephoto_dam`).
+   This form requires the *administer site configuration* permission.
+2. In **Server URL**, enter the address of your Ephoto Dam server, for example
+   `https://ephoto.mycompany.com/`. Use an **HTTPS** URL so the chooser and asset
+   requests are encrypted in transit.
+3. Save. (Drupal validates that the value is a well‑formed URL and appends a trailing
+   slash if you omit it.)
 
 ## Enable asset insertion for editors
 

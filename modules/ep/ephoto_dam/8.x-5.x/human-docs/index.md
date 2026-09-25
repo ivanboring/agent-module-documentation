@@ -12,8 +12,9 @@ A companion submodule, **Ephoto DAM Field** (`ephoto_dam_field`), adds a field t
 so you can attach Ephoto assets to entities as structured field data rather than
 only embedding them in body text.
 
-Two things shape how you set it up. First, the module **authenticates to the Ephoto
-DAM API with credentials** — treat those as secrets and store them accordingly.
+Two things shape how you set it up. First, the only Drupal-side setting is the
+**URL of your Ephoto server** — there is no API key or secret to enter in Drupal;
+the sign-in with Ephoto happens in the editor's browser against that server.
 Second, assets are **hosted and served by Ephoto** (a third party): Drupal
 references them rather than necessarily copying them locally, so availability and
 delivery depend on Ephoto, and asset requests involve that external service.
@@ -26,13 +27,13 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 
 1. [Installation](installation/index.md) — install the module with Composer, enable
    it, and add the field submodule if you need it.
-2. [Configuration](configuration/index.md) — supplying and safely storing the
-   Ephoto DAM API credentials, plus the CKEditor 5 and egress notes.
+2. [Configuration](configuration/index.md) — setting the Ephoto DAM Server URL,
+   plus the CKEditor 5 and egress notes.
 
 ## Where it lives in the admin menu
 
-Ephoto DAM is configured under **Configuration**, where you enter the connection
-details (API credentials / endpoint) for your Ephoto DAM account. To let editors
+Ephoto DAM is configured under **Configuration**, where you enter the **Server URL**
+of your Ephoto DAM software. To let editors
 insert assets while writing, you enable the Ephoto DAM button on a text format's
 **CKEditor 5** toolbar at **Configuration → Content authoring → Text formats and
 editors**. If you enable the field submodule, the Ephoto DAM field type becomes

@@ -12,14 +12,12 @@ them where you need — for example a default set for Commerce gateways that can
 overridden per store, which lets individual sellers use their own ePayco accounts.
 Payments are typically handled off‑site (redirect) or "on‑page" through an iframe.
 
-The important thing to know about its security posture is reassuring:
-**payment confirmation is server‑authoritative.** The Commerce gateway does *not*
-mark an order paid based on whatever the customer's browser sends back on return
-from ePayco. Instead it **fetches the transaction status directly from ePayco's
-API** and only completes the payment when ePayco's own response says the transaction
-succeeded — and the outbound checkout request is signed. A forged or replayed
-"return" from a customer therefore cannot complete an order. (See the note in
-[Configuration](configuration/index.md) for how to keep it that way.)
+When the Commerce ePayco submodule is enabled, payments run through ePayco's own
+hosted checkout: the store sends the order to ePayco, the customer pays there, and a
+Commerce payment is recorded for the order on return. Do your setup and testing in
+ePayco's **test mode** first, and always run a full end‑to‑end test transaction
+before switching a settings entity to live processing. Treat your ePayco account
+credentials as secrets and serve the site over HTTPS.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -30,7 +28,7 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 1. [Installation](installation/index.md) — install the module with Composer, choose
    the submodules you need, and enable them.
 2. [Configuration](configuration/index.md) — creating ePayco settings entities,
-   storing the API keys safely, and the test‑vs‑live / confirmation notes.
+   entering the API keys, attaching the Commerce gateway, and test‑vs‑live mode.
 
 ## Where it lives in the admin menu
 

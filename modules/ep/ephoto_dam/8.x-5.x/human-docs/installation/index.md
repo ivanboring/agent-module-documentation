@@ -5,8 +5,7 @@
 - **Drupal 10 or 11** (`core_version_requirement: ^10 || ^11`).
 - Core **CKEditor 5** (`ckeditor5`) — a dependency, enabled automatically with the
   module. (Core System is also required.)
-- An **Ephoto DAM account** with API access, so you have the credentials to connect
-  with.
+- An **Ephoto DAM server** you can reach, so you have its URL to connect to.
 - No third‑party Composer or PHP library requirements are declared.
 
 ## Install with Composer
@@ -45,6 +44,6 @@ drush en ephoto_dam_field -y
 ## Verify it worked
 
 After enabling, go to [Configuration](../configuration/index.md) and enter your
-Ephoto DAM API credentials. Then add the Ephoto DAM button to a text format's
+Ephoto DAM **Server URL**. Then add the Ephoto DAM button to a text format's
 CKEditor 5 toolbar and confirm that, while editing content, you can search your
 Ephoto library and insert an asset.

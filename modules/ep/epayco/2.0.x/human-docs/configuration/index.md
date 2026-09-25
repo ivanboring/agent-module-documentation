@@ -1,39 +1,21 @@
 # Configuration
 
 Configuring ePayco has three parts: creating one or more ePayco **settings
-entities** that hold your account credentials, storing those credentials safely,
-and (if you use Commerce) attaching ePayco as a payment gateway. Throughout, keep
-the confirmation posture in mind — it is what makes the integration safe.
+entities** that hold your account credentials, keeping those credentials out of
+public version control, and (if you use Commerce) attaching ePayco as a payment
+gateway.
 
-## Store the API keys as secrets (do this first)
+## Where the API keys are stored
 
-Your ePayco keys (public key, private key, and related identifiers) are
-credentials. Do not commit them to the repository or bake them into exported
-configuration. Store them in environment variables and reference them through Key
-entities.
+You enter your ePayco keys (client id, key, public key, private key) directly into
+the settings‑entity form (see below). The module stores them as part of its Drupal
+**configuration** — it does not have a built‑in Key‑module or environment‑variable
+integration, so the values live in config. Because of that:
 
-With DDEV, save each value and restart:
-
-```bash
-ddev dotenv set .ddev/.env --epayco-private-key=<your-private-key>
-ddev restart
-```
-
-The flag `--epayco-private-key` becomes the environment variable
-`EPAYCO_PRIVATE_KEY`. Keep `.ddev/.env` out of version control. Repeat for the
-other credential(s) ePayco issues.
-
-Confirm the variable is present *without printing its value*, then create a Key
-entity backed by it (install the [Key](https://www.drupal.org/project/key) module
-first if it isn't already enabled):
-
-```bash
-ddev exec 'test -n "$EPAYCO_PRIVATE_KEY"'   # exit status 0 means it is set
-ddev drush key:save epayco_private_key \
-  --label='ePayco Private Key' --key-type=authentication --key-provider=env \
-  --key-provider-settings='{"env_variable":"EPAYCO_PRIVATE_KEY","base64_encoded":false,"strip_line_breaks":true}' \
-  --key-input=none -y
-```
+- Do **not** commit exported configuration that contains these values to a public
+  repository, and restrict access to config exports.
+- Grant the ePayco administration permission only to trusted roles.
+- Serve the site over **HTTPS** so credentials and payment traffic are encrypted.
 
 ## Create an ePayco settings entity
 
@@ -41,8 +23,8 @@ Go to **Configuration** and create an ePayco **settings** configuration entity.
 Each entity is a named set of ePayco account settings — its credentials, test/live
 mode, and options — and you can create several. This is what lets you keep, say, a
 default set for the site and per‑store overrides so different sellers can use their
-own ePayco accounts. Reference the Key you created rather than typing raw keys into
-the form.
+own ePayco accounts. Enter the credential values ePayco issued you into the form
+fields.
 
 ## Test mode vs. live mode
 
@@ -56,28 +38,14 @@ mode will not charge real money, and one switched to live too early will.
 
 With the **Commerce ePayco** submodule enabled, add a payment gateway at
 **Commerce → Configuration → Payment gateways → Add payment gateway**, choose the
-ePayco gateway, and point it at your settings entity. You can override the
-pre‑defined settings per store where you want individual stores to use their own
-ePayco account.
+ePayco gateway (Standard checkout or One page checkout), and point it at your
+settings entity. You can override the pre‑defined settings per store where you want
+individual stores to use their own ePayco account.
 
-## How payment confirmation works — and keeping it safe
-
-This is the reassuring part, and it is worth understanding so you don't accidentally
-undermine it. When a customer returns from ePayco, the Commerce gateway does **not**
-trust the browser's return data to mark the order paid. It **queries ePayco's API
-for the transaction status** using the remote transaction id and only sets the
-payment to *completed* when ePayco's own API response reports success — and the
-outbound checkout request it sent was **signed**. Because the decision is made
-against ePayco's server rather than the customer's request, a **forged or replayed
-return cannot complete an order**.
-
-To keep that guarantee intact:
-
-- Never modify the gateway to complete orders directly from the return/callback
-  request data instead of the API status check.
-- Make sure the private key / signature credentials are configured correctly (via
-  the Key above) so signing and the API status lookup actually work.
-- Serve the site over **HTTPS** so credentials and payment traffic are encrypted.
+Make sure the credentials in the settings entity are correct so the outbound
+checkout request signs and the pending‑payment reconciliation (cron / the
+`drush commerce_epayco:check_pending_payments` command) can look transactions up on
+ePayco. Serve the site over **HTTPS**.
 
 ## Control who can administer it
 
@@ -87,5 +55,5 @@ The module provides its own permissions. At **People → Permissions**
 ## Save
 
 Save each settings entity (and the Commerce gateway, if used). Run a full test
-transaction in test mode and confirm the order is marked paid only after ePayco's
-API reports success before switching to live.
+transaction in test mode and confirm the order and its payment are recorded as you
+expect before switching to live.
