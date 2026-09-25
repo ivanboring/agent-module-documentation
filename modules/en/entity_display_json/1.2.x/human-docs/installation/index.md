@@ -33,14 +33,14 @@ dependencies as needed.
 drush en entity_display_json -y
 ```
 
-## Grant the endpoint permission — carefully
+## Grant the endpoint permission
 
 All three `/ejson` endpoints are gated by the single **"Access Entity Display JSON
-endpoints"** permission. Under **People → Permissions**, grant it only to fully
-trusted consumers: as noted in the [overview](../index.md), this version does not
-perform an entity‑level access check, so the permission should be treated as
-effectively *read‑any‑entity* (it can expose unpublished or node‑access‑restricted
-content whose individual fields aren't restricted).
+endpoints"** permission. Under **People → Permissions**, grant it to the roles or API
+consumers that should reach the API. As noted in the [overview](../index.md), the
+endpoints still enforce Drupal's normal view access on top of this permission — per-entity,
+per-view-display and per-field — so callers see only content and fields they are otherwise
+allowed to view.
 
 ## Verify it worked
 

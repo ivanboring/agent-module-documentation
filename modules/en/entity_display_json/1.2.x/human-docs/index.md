@@ -26,18 +26,11 @@ when present (Views, Field Group, Block Field, Paragraphs). It's also extensible
 without forking, via field‑value‑extractor plugins and several alter hooks. It
 requires **Drupal 10.2+ or 11**.
 
-**Important access consideration.** In this version the endpoint enforces **per‑field**
-view access (fields the current user can't see are omitted) but does **not** perform
-an **entity‑level** access check: the controller loads the entity by UUID via a
-storage load (which bypasses access) and serializes it without an
-`$entity->access('view')` check. Because core field‑view access doesn't take a node's
-published status or node‑access grants into account, a holder of the endpoint
-permission can read the display fields (title, body, and so on) of entities they
-couldn't otherwise view — including **unpublished nodes** and content hidden by
-node‑access modules — as long as those individual fields aren't restricted. Treat the
-**"Access Entity Display JSON endpoints"** permission as effectively **read‑any‑entity**:
-grant it only to fully trusted consumers. If you can, add an `$entity->access('view')`
-check in the controller (returning 403/404 on deny) before exposing it more widely.
+**Access model.** The endpoints enforce Drupal's normal view access on top of the
+**"Access Entity Display JSON endpoints"** permission: per-entity view access (a denied
+entity yields no field data), the view display's own access plugin for view/`views_block:*`
+serialization, and per-field view access (fields the current user can't see are omitted).
+Grant the permission to the roles or API consumers that should be able to reach the API.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -56,8 +49,7 @@ permission.
 ## Where it lives / how to use it
 
 1. Enable the module and grant **"Access Entity Display JSON endpoints"** (under
-   **People → Permissions**) to the roles or API consumers that should reach the
-   API — remembering the access consideration above.
+   **People → Permissions**) to the roles or API consumers that should reach the API.
 2. Configure how your content should appear under **Structure → (entity type) →
    Manage display** for the view mode you intend to serve. Whatever you show or hide
    there is what appears in the JSON.
