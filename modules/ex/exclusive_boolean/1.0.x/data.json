@@ -1,16 +1,17 @@
 {
   "name": "Exclusive Boolean",
   "data_name": "exclusive_boolean",
-  "description": "Ensures only one node of a type can have a given boolean field checked at a time (e.g. a single 'featured').",
+  "description": "Adds a per-field option to boolean fields so that only one node of a content type can have that field checked at a time (auto-unchecks the others on save).",
   "version": "1.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/exclusive_boolean",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:field"
+    "field",
+    "node"
   ],
   "configure": null,
-  "core_version_requirement": "^10.2||^11",
+  "core_version_requirement": "^10.2 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/exclusive_boolean",
@@ -21,13 +22,14 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"
   ],
   "subcategories": [
-    "Field validation"
+    "Field validation",
+    "Fields"
   ],
   "keywords": [
     "boolean",

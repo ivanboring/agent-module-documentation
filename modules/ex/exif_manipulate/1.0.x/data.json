@@ -1,25 +1,29 @@
 {
   "name": "Exif Manipulate",
   "data_name": "exif_manipulate",
-  "description": "Cleans EXIF data from uploaded images (privacy hardening).",
+  "description": "Clean EXIF data from uploaded images.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/exif_manipulate",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "fileeye/pel": "^0.10.0"
+  },
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/exif_manipulate",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "fileeye/pel"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Media"
@@ -35,7 +39,7 @@
     "metadata",
     "upload"
   ],
-  "project_description": "This module strips out EXIF metadata from images upon upload. Modern cameras and phones include data in the images that they produce that may be privacy-sensitive, like location. It is a common requirement to strip out such information. It is intended to extend this module with extension points so that it is possible to not only strip out unwanted data,\n\nbut also insert new data.\n\n Note that the orientation information used by EXIF Orientation is left unaffected.\n\n Submit bug reports and feature suggestions, or track changes in the issue queue .\n\n Back to top \n\n Requirements \n This module requires the fileeye/pel PHP library. When installing the module using Composer (recommended), this will be installed automatically.\n\n Back to top \n\n Recommended modules \n It is recommended to install EXIF orientation , which will rotate uploaded files according to the rotation information.\n\n Back to top \n\n Installation \n Install as you would normally install a contributed Drupal module. For further information, see Installing Drupal Modules .\n\n Back to top \n\n Configuration \n \n Enable the module at Administration > Extend. \n Optionally, visit the conversion form at /admin/config/media/exif_manipulate; this will allow you to retroactively apply the module's logic on certain file system locations. \n \n Back to top \n\n Maintainers \n \n Ahmet Burkan - ahmetburkan \n Eelke Blok - eelkeblok \n Jaap Jan Koster - jaapjan \n Back to top",
+  "project_description": "Exif Manipulate strips EXIF metadata from images on upload, using the pure-PHP fileeye/pel library. Modern cameras and phones embed privacy-sensitive data (notably GPS coordinates, camera model and timestamps) in image files; this module removes that data automatically for every uploaded JPEG and TIFF via a hook_file_insert() implementation, while deliberately preserving the EXIF orientation tag so images still display the right way up (leaving the companion exif_orientation module unaffected). An optional confirm form at /admin/config/media/exif_manipulate queues already-stored files in a public-files location for the same cleaning via cron. The module is built with extension points in mind so it can grow beyond stripping data toward inserting new data. It requires the fileeye/pel PHP library (installed automatically with Composer) and has no other Drupal module dependencies.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
