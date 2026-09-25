@@ -1,14 +1,14 @@
 {
   "name": "Entity Reference Labels",
   "data_name": "entity_reference_labels",
-  "description": "Provides more descriptive labels for entity-reference field values.",
+  "description": "Provides more descriptive labels for entity reference fields.",
   "version": "8.x-2.x",
   "package": null,
   "composer_namespace": "drupal/entity_reference_labels",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^8.8||^9||^10||^11",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/entity_reference_labels",
@@ -19,20 +19,21 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"
   ],
   "subcategories": [
-    "Autocomplete / reference widgets"
+    "Entity selection",
+    "Form widgets / select UI"
   ],
   "keywords": [
     "entity reference",
-    "labels",
-    "descriptive",
-    "fields",
-    "display"
+    "selection handler",
+    "reference method",
+    "autocomplete",
+    "descriptive labels"
   ],
   "project_description": "Tired of the non-descriptive entity reference autocomplete labels? This module enhances the core labels with the entity's machine name, which is especially useful if a referenced entity has the same name as another one being referenced.\n\n Requirements \n You must have the entity_reference core module installed.\n\n Install \n \n Install as usual as per http://drupal.org/node/895232 . \n \n Usage \n \n Create an entity reference field that references block configuration, however this could be another entity type. \n On the field's edit page, select \"Default (Descriptive)\" as the reference method. \n Make sure the field uses an autocomplete widget on the form display settings. \n On your edit page, you can search via typeahead like a normal autocomplete field, but the format will be \"Entity Label [machine_name]\" instead of just \"Entity Label\". \n Back to top",
   "maintenance_status": "Actively maintained",
