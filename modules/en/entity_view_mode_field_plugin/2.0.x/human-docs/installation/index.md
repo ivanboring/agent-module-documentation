@@ -28,11 +28,12 @@ dependencies as needed.
 drush en entity_view_mode_field_plugin -y
 ```
 
-There is no configuration step and no settings page — the module simply makes the
-view-mode field plugin available.
+There is no configuration step and no settings page — enabling the module
+registers its pseudo-field plugins automatically.
 
 ## Verify it worked
 
 Confirm the module is enabled with `drush pm:list --status=enabled | grep
-entity_view_mode_field_plugin`. The entity's view mode is then available as a
-field where you configure entity fields, displays, or serialized output.
+entity_view_mode_field_plugin`. The shipped plugins (bundle, ID, UUID, URL alias)
+then appear as extra-field rows on the *Manage display* screen, and their computed
+values are attached to loaded entities for use in serialized output.

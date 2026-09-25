@@ -1,45 +1,37 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Entity Webhook provides webhook ingestion and entity upsert functionality for Drupal content entities.
+Entity Webhook ingests inbound JSON webhooks and upserts Drupal content entities through a configuration-driven admin UI, with optional outbound-broadcast and scheduled-polling submodules.
 
 ---
 
-Entity Webhook **ingests inbound webhooks and upserts content entities** — it exposes receiver endpoints at
-`/webhook/{endpoint_name}/{source_type}` (POST) that parse a JSON payload and, via configurable field mappings,
-create or update Drupal content entities; submodules add outbound broadcast and polling. It provides its own
-permissions, in the Services package.
-
-Use it to sync external data into Drupal entities. It is a **web-services** feature with an important security
-property you must configure correctly: **the receiver route is public (`_access: 'TRUE'`) and payload
-verification is optional and fail-open.** `WebhookController::receive()` gates processing on `runVerification()`,
-which **returns TRUE (accept) whenever the source type's verification plugin is empty** — and that field
-**defaults to empty**, with the config form offering "- None -" ("Leave empty for no verification"). So a webhook
-source type created **without** choosing a verifier will accept **unauthenticated** POSTs whose attacker-controlled
-JSON is written into created/updated content entities (content injection / overwrite, and worse depending on the
-mapped entity type and fields). The module ships **HMAC**, **API-key** and **domain-whitelist** verifier plugins —
-**always configure one** on every source type; treat "- None -" as unsafe. Store any HMAC/API-key secret via the
-Key module or env, serve over HTTPS, and scope field mappings to the minimum needed. (This fail-open default is
-recorded as a campaign security finding; the safe fix upstream would be to fail closed when no verifier is set.)
-Configure the endpoint, source type **and a verification plugin**.
+Entity Webhook turns external HTTP events into Drupal content. External services POST a JSON body to a receiver URL (`/webhook/{endpoint_name}/{source_type}`); the module extracts values from the payload using JSONPath expressions, optionally transforms each value with a mutation plugin, and then creates, updates, or deletes a target content entity. Existing entities are matched with one or more identifier field mappings (a composite key), giving true upsert behaviour. Configuration is a three-tier hierarchy of config entities — Webhook Endpoint (the target entity type and optional bundle), Webhook Source Type (request verification and the create/delete operation), and Webhook Field Mapping (which payload value maps to which entity field). Incoming requests are verified with a pluggable verification plugin (HMAC signature, API key, or IP/domain whitelist), then queued and processed asynchronously during cron for resilience — or handled synchronously when an endpoint opts in. Pre-save, post-save, and batch-complete events let custom code react to or veto each upsert. Two optional submodules extend it in the other directions: **Entity Webhook Broadcast** watches entity create/update/delete events and sends outbound, HMAC-signed webhooks with condition filtering, exponential-backoff retries, and delivery logging; **Entity Webhook Polling** pulls data from external APIs on a cron schedule and feeds it through the same inbound pipeline. The module is fully pluggable — verification, value resolution, field mutation, payload processing, outbound value resolution, and polling providers are all plugin types — and requires PHP 8.3, Drupal 10.3+ or 11, and the softcreatr/jsonpath and dragonmantank/cron-expression libraries.
 
 ---
 
-- Ingest inbound webhooks + upsert entities.
-- Expose POST receivers at /webhook/{endpoint}/{source_type}.
-- Map JSON payloads into content entities.
-- Provide its own permissions + outbound/polling submodules.
-- Serve web services.
-- Sync external data into Drupal.
-- EXPOSE the receiver as public (_access: TRUE) with FAIL-OPEN verification.
-- Accept unauthenticated POSTs when no verifier is set (default empty / '- None -').
-- Let attacker JSON create/update entities (content injection/overwrite) in that case.
-- SHIP HMAC/API-key/domain-whitelist verifiers — ALWAYS configure one (never '- None -').
-- Store the HMAC/API-key secret via Key/env + serve over HTTPS + scope field mappings.
-- Configure the endpoint, source type AND a verification plugin.
-- Handle webhook ingestion.
-- Upsert entities.
-- Configure the verifier.
-- Receive webhooks.
-- Map payloads.
-- Verify requests.
-- Fail closed by configuring a verifier.
-- Provide entity webhook ingestion.
+- Sync records from an external CRM into Drupal nodes or custom entities via webhook.
+- Create or update user accounts from an identity provider's outbound webhooks.
+- Ingest e-commerce orders posted by an external storefront and upsert them as Commerce orders.
+- Keep taxonomy terms in step with an external product catalog feed.
+- Upsert entities keyed by an external system's ID using a composite-key identifier mapping.
+- Delete Drupal entities when the source system reports a record was removed (delete operation).
+- Extract nested payload values with JSONPath expressions like `$.order.customer.email`.
+- Map several payload fields to entity fields, each with its own resolver and mutation.
+- Convert Unix timestamps or date strings into Drupal date fields with the timestamp_format mutation.
+- Translate external status codes to Drupal values with the map_values lookup mutation.
+- Convert integer cents to a decimal price with the price_cents_to_decimal mutation.
+- Clean or reformat incoming strings with the string_replace or regex_replace mutations.
+- Authenticate incoming requests with an HMAC signature shared secret.
+- Authenticate incoming requests with an API key sent in a header or query parameter.
+- Restrict a source type to trusted sender IPs or domains with the whitelist verifier.
+- Split a batch payload (an array of records) into one upsert per record with a payload processor.
+- Reconcile a full incoming record set after batch processing using the batch-complete event.
+- Process webhooks asynchronously through the queue during cron for high-volume ingestion.
+- Handle low-volume webhooks synchronously and return the upsert result in the HTTP response.
+- Broadcast entity create/update/delete events to an external system as outbound webhooks.
+- Send only qualifying events outbound by attaching Condition API plugins (e.g. published nodes only).
+- HMAC-sign outbound payloads so the receiving system can verify their integrity.
+- Retry failed outbound deliveries automatically with exponential backoff and a max-attempts cap.
+- Audit and debug outbound deliveries through per-subscription delivery logs.
+- Send a test outbound webhook from the admin UI before going live.
+- Poll an external API on a cron schedule (e.g. every 15 minutes) and ingest changed records.
+- Skip unchanged polled records automatically using SHA-256 hash change detection.
+- Add custom verification, value-resolver, mutation, payload-processor, outbound-resolver, or polling-provider plugins for bespoke integrations.

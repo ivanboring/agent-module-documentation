@@ -4,27 +4,27 @@ Entity Webhook is configured entirely through the admin UI. Inbound receiving is
 handled by the core module; outbound broadcasting and scheduled polling each live
 in their own submodule and appear only when enabled.
 
-> **The single most important step:** every inbound **Source Type** must have a
-> **verification plugin** selected. If you leave verification empty ("- None -"),
-> the endpoint accepts unauthenticated POSTs from anyone and writes their JSON
-> into your content. Configure HMAC, API key, or IP/domain whitelist on **every**
-> Source Type before it goes live.
+> **Recommended first step:** select a **verification plugin** on every inbound
+> **Source Type** — HMAC signature, API key, or IP/domain whitelist — so that the
+> endpoint authenticates its sender before processing a payload. Use a strong
+> shared secret and bring each Source Type's verification online before it starts
+> receiving real traffic.
 
 ## Inbound webhooks
 
-Go to **Configuration → Web services → Webhooks**
-(`/admin/config/services/webhooks`). Inbound configuration is a three-level
-hierarchy:
+Go to **Configuration → Services → Entity Webhook**
+(`/admin/config/services/entity-webhook/endpoints`). Inbound configuration is a
+three-level hierarchy:
 
 1. **Create a Webhook Endpoint.** Choose the target **entity type** (for example
    Node) and an optional **bundle**. The endpoint is the "what should this create
    or update?" layer.
 
-2. **Add a Source Type** under the endpoint. This is where the security and
+2. **Add a Source Type** under the endpoint. This is where verification and
    mapping live:
    - **Verification** — choose **HMAC signature validation**, **API key
-     authentication**, or **IP/domain whitelist**. Do **not** leave this as
-     "- None -". Store any secret via the Key module or an environment variable.
+     authentication**, or **IP/domain whitelist** so the sender is authenticated.
+     Use a strong shared secret and serve the endpoint over HTTPS.
    - **Field mappings** — map incoming payload values into entity fields using
      **JSONPath** expressions (for example `$.order.customer.email`). Optionally
      transform values with mutation plugins: timestamp formatting, string/regex
@@ -43,8 +43,8 @@ running (or use a queue runner for near-real-time processing).
 
 ## Outbound webhooks (Broadcast submodule)
 
-Go to `/admin/config/services/outbound-endpoints` (available when the
-**Broadcast** submodule is enabled):
+Go to `/admin/config/services/entity-webhook/broadcast/endpoints` (available when
+the **Broadcast** submodule is enabled):
 
 1. **Create an Outbound Endpoint.** Select the **entity type**, **bundle**, and
    which **CRUD events** (create, update, delete) to watch. Optionally add
@@ -62,12 +62,12 @@ URL as trusted.
 
 ## Scheduled polling (Polling submodule)
 
-Go to `/admin/config/services/entity-webhook-polling` (available when the
+Go to `/admin/config/services/entity-webhook/polling` (available when the
 **Polling** submodule is enabled):
 
 1. **Create a polling configuration** that references an existing inbound
    **Webhook Endpoint** and **Source Type** — polled data flows through the same
-   mapping and verification pipeline as inbound webhooks.
+   mapping pipeline as inbound webhooks.
 2. **Set a cron expression** for the schedule and choose a **polling provider**
    plugin. SHA-256 hash-based change detection skips records that have not
    changed since the last poll.

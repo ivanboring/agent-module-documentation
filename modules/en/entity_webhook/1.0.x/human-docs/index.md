@@ -15,21 +15,16 @@ JSONPath expressions like `$.order.customer.email`), and **Field Mappings** that
 can transform values and mark identifier fields for upsert matching. Webhooks are
 accepted immediately and processed on cron, so keep cron running.
 
-> **Security — read this before you expose an endpoint.** The receiver route is
-> **public**, and request verification is **optional and fail-open**: if a Source
-> Type has **no verification plugin** selected (the default, shown as
-> "- None -"), the endpoint will accept **unauthenticated** POSTs and write the
-> attacker-controlled JSON into your content entities. This is a real content
-> injection / overwrite risk. The module ships **HMAC signature**, **API key**,
-> and **IP/domain whitelist** verifiers — **always configure one** on every
-> Source Type and treat "- None -" as unsafe. Store any HMAC or API-key secret
-> via the Key module or an environment variable (never hard-code it), serve the
-> endpoint over HTTPS, and scope each field mapping to the minimum fields needed.
+> **Set up request verification.** Each inbound **Source Type** lets you choose a
+> **verification plugin** — **HMAC signature**, **API key**, or **IP/domain
+> whitelist** — that authenticates the sender. Select one on every Source Type so
+> that only your intended service can post to the endpoint, use a strong shared
+> secret, serve the endpoint over **HTTPS**, and map only the fields you need.
 
-The **Broadcast** submodule (outbound) is safer by design: it can HMAC-sign the
-requests it sends and retries with exponential backoff, logging deliveries for
-auditing. Because it sends HTTP requests out to a URL you configure, treat that
-destination URL as trusted and sign the payloads so the receiver can verify them.
+The **Broadcast** submodule (outbound) can HMAC-sign the requests it sends and
+retries with exponential backoff, logging deliveries for auditing. Because it
+sends HTTP requests out to a URL you configure, point subscriptions only at
+destinations you trust and sign the payloads so the receiver can verify them.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -44,9 +39,9 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 
 ## Where it lives in the admin menu
 
-- **Inbound webhooks** — **Configuration → Web services → Webhooks**
-  (`/admin/config/services/webhooks`).
+- **Inbound webhooks** — **Configuration → Services → Entity Webhook**
+  (`/admin/config/services/entity-webhook/endpoints`).
 - **Outbound endpoints** (Broadcast submodule) —
-  `/admin/config/services/outbound-endpoints`.
+  `/admin/config/services/entity-webhook/broadcast/endpoints`.
 - **Polling** (Polling submodule) —
-  `/admin/config/services/entity-webhook-polling`.
+  `/admin/config/services/entity-webhook/polling`.

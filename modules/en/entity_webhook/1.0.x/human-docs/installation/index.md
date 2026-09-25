@@ -49,13 +49,13 @@ drush en entity_webhook_broadcast -y
 ## Secrets
 
 If you use HMAC or API-key verification (inbound) or HMAC signing (outbound),
-**never hard-code the secret**. Store it in an environment variable and reference
-it through the **Key** module. Always serve webhook endpoints over **HTTPS**.
+choose a strong, random shared secret and keep it out of version-controlled
+configuration exports. Always serve webhook endpoints over **HTTPS**.
 
 ## Verify it worked
 
-Visit **Configuration → Web services → Webhooks**
-(`/admin/config/services/webhooks`). If the endpoint listing loads, the core
-module is active. Before sending any real traffic, follow
-[Configuration](../configuration/index.md) — and make sure every Source Type has
-a verification plugin selected.
+Visit **Configuration → Services → Entity Webhook**
+(`/admin/config/services/entity-webhook/endpoints`). If the endpoint listing
+loads, the core module is active. Before sending any real traffic, follow
+[Configuration](../configuration/index.md) — and select a verification plugin on
+every Source Type.
