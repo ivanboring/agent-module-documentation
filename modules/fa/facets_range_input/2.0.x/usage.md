@@ -1,37 +1,29 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Facets Range Input provides a range-input widget for the Facets module, letting users filter by a min/max range.
+Facets Range Input adds a min/max range-input widget (and companion processor) to the Facets module so visitors filter a numeric facet by entering a lower and upper bound.
 
 ---
 
-Facets Range Input adds a range-input widget to the Facets module: instead of picking discrete
-facet values, users enter (or slide) a minimum and maximum to filter results by a range — the natural
-UI for price, date or numeric facets. It depends on the Facets module and works with facet sources
-(Search API, etc.).
-
-Use it on faceted search where a numeric/date field should be filtered by range rather than
-individual values. It is a search-UI feature; it shapes how a facet is presented and queried, not
-access — results still respect the underlying index and entity access. Configure it as the widget on
-the relevant facet.
+Facets Range Input extends the Facets module with a range-input widget and a matching processor for numeric facets. Instead of ticking discrete facet values, the visitor sees two HTML5 number fields — a minimum and a maximum — and an Apply button; submitting them filters the search results to that range. The widget (plugin `range_input`, `RangeInputWidget`) renders a small AJAX form (`RangeInputForm`) with configurable field titles and placeholders, and declares the Facets query type `range` so the actual filtering is handled by the Facets range query type. The companion processor (plugin `range_input`, `RangeInputProcessor`) builds the range URLs, parses the submitted bounds back out (numeric-only), and synthesises the intermediate step results. It depends only on the Facets module and works with any Facets source (typically a Search API index). It is a pure search-UI feature: it shapes how a facet is presented and queried, not access — results still respect the underlying index and entity access. You enable it per facet by choosing the range-input widget on that facet's edit form; there is no site-wide settings page.
 
 ---
 
-- Filter facets by a min/max range.
-- Add a range-input facet widget.
-- Filter by price range.
-- Filter by date range.
-- Depend on the Facets module.
-- Use range instead of discrete values.
-- Configure as a facet widget.
-- Work with Search API facets.
-- Enter min and max to filter.
-- Provide numeric range filtering.
-- Shape facet presentation.
-- Respect index and entity access.
-- Improve faceted search UX.
-- Filter numeric fields by range.
-- Slide to set a range.
-- Apply to a range facet.
-- Query by range.
-- Add to faceted listings.
-- Refine results by bounds.
-- Support range facets.
+- Let visitors filter a numeric facet by a min/max range instead of discrete values.
+- Add a range-input facet widget to a Search API faceted search.
+- Filter a product listing by price range (e.g. between 20 and 80).
+- Filter content by a numeric rating range.
+- Filter by any indexed numeric field using lower and upper bounds.
+- Provide two number inputs plus an Apply button as the facet UI.
+- Configure the minimum and maximum field titles per facet.
+- Configure the minimum and maximum field placeholders per facet.
+- Apply the range filter over AJAX without a full page reload.
+- Delegate the range filtering to the Facets `range` query type.
+- Show the currently active min/max back in the inputs after filtering.
+- Generate intermediate step results between the discovered min and max.
+- Restrict submitted bounds to numeric values before they reach the query.
+- Combine a range facet with other active facets on the same search.
+- Improve faceted-search UX where a list of individual values is impractical.
+- Style the range form via the module's `css/range-input.css` layout library.
+- Override the `facets-range-input.html.twig` / `facets-range-input-form.html.twig` templates in a theme.
+- Reuse the widget across multiple facets and multiple search pages.
+- Enable range filtering without writing any custom JavaScript.
+- Present a "between X and Y" filter for admin-defined numeric facets.
