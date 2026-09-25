@@ -36,11 +36,11 @@ on.
 
 ## A note on the API key
 
-The OpenAI API key is a credential — keep it out of committed configuration and
-store it securely, backed by an environment variable. With DDEV you can store the
-value with `ddev dotenv set .ddev/.env --openai-api-key=<value>` (keep `.ddev/.env`
-out of version control) and `ddev restart` so DDEV loads it into the container.
-Then reference it when you configure the module.
+The OpenAI API key is a credential. You enter it on the module's settings form
+after enabling the module, and it is saved to Drupal configuration
+(`feedback_openai.settings`). Treat it like any other secret: grant the module's
+admin permission only to trusted roles, and take care when exporting or sharing
+site configuration.
 
 ## Next steps
 

@@ -1,14 +1,17 @@
 {
   "name": "Feeds Conditional Tamper",
   "data_name": "feeds_conditional_tamper",
-  "description": "Feeds Tamper plugins that conditionally skip items or field values based on a source condition.",
+  "description": "Feeds Tamper plugins that skip a whole feed item or clear a single field value when a configurable source-field condition matches.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Custom",
   "composer_namespace": "drupal/feeds_conditional_tamper",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/tamper": "*",
+    "drupal/feeds_tamper": "^2.0"
+  },
   "dependent_modules": [
-    "tamper:tamper",
-    "feeds_tamper:feeds_tamper"
+    "tamper",
+    "feeds_tamper"
   ],
   "configure": null,
   "core_version_requirement": "^10.2 || ^11",
@@ -20,24 +23,27 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Import and export"
   ],
   "subcategories": [
-    "Migration tooling"
+    "Data transformation"
   ],
   "keywords": [
     "feeds",
     "tamper",
+    "feeds_tamper",
     "conditional",
+    "skip",
+    "filter",
     "import",
-    "skip"
+    "data transformation"
   ],
-  "project_description": "FEEDS CONDITIONAL TAMPER \n\n Extends the Feeds Tamper module with two plugins that conditionally skip a feed item or a field value based on a configurable condition. The condition is evaluated against any source field in the feed row, or against the field value being tampered itself.\n\n Back to top \n\n REQUIREMENTS\n \n \n Drupal 10.2 or 11 \n tamper (drupal/tamper) \n feeds_tamper (drupal/feeds_tamper ^2.0) \n \n Back to top \n\n INSTALLATION\n \n \n Place the module at docroot/modules/custom/feeds_conditional_tamper/. \n Enable it: ddev drush en feeds_conditional_tamper -y \n Rebuild the cache: ddev drush cr \n \n Back to top \n\n PLUGINS PROVIDED\n \n Skip item on condition (skip_item_on_condition) When the condition is TRUE, the entire feed row is dropped â the node (or other entity) is not created or updated for that row. Equivalent to the built-in \"Required\" plugin, but driven by a flexible comparison rather than a simple empty/not-empty check.\n\n Skip value on condition (skip_value_on_condition) When the condition is TRUE, only the current field value is cleared (set to NULL). The rest of the feed row continues to be processed normally â the node is saved, but that particular field is left empty.\n\n Back to top",
+  "project_description": "Feeds Conditional Tamper extends the Feeds Tamper module with two Tamper plugins that conditionally drop data during a Feeds import based on a configurable condition. \"Skip item on condition\" (skip_item_on_condition) removes the entire feed row from the import batch when the condition is TRUE; \"Skip value on condition\" (skip_value_on_condition) clears only the current field value (sets it to NULL) while the rest of the row imports normally. Both plugins share one condition form implemented by ConditionalTamperBase: choose a condition source (any source field in the feed row, or the current field value being tampered), an operator (equals, does not equal, contains, does not contain, matches regular expression, does not match regular expression, is empty, is not empty), a comparison value, and a case-sensitivity flag. Regex operators use a full PHP pattern including delimiters, and the pattern is validated on save. It is a flexible alternative to the built-in \"Required\" plugin, which only checks empty/not-empty. Requires Drupal 10.2 or 11 plus tamper and feeds_tamper (^2.0).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

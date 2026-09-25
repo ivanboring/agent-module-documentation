@@ -7,11 +7,11 @@ configuration** permission, or the module's own admin permission).
 
 ## Connect to OpenAI
 
-- **OpenAI API key** — paste (or reference) your OpenAI API secret key here. This
-  is what authorises the module's calls to OpenAI's Chat Completions API, and
-  without it no sentiment analysis can run. Treat the key as a secret: prefer
-  sourcing it from an environment variable rather than typing a literal value into
-  a shared environment (see the note in [Installation](../installation/index.md)).
+- **OpenAI API key** — enter your OpenAI API secret key here. This is what
+  authorises the module's calls to OpenAI's Chat Completions API, and without it no
+  sentiment analysis can run. The key is saved to the module's configuration when
+  you submit the form; treat it as a secret and restrict who can administer the
+  module (see the note in [Installation](../installation/index.md)).
 - **Model** — the module works with OpenAI chat models such as **GPT‑4**, **GPT‑4
   Turbo**, and **GPT‑3.5 Turbo**. Choose the model that suits your balance of cost
   and quality — the smaller/faster models are cheaper per call, the larger models

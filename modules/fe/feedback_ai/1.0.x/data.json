@@ -1,15 +1,17 @@
 {
   "name": "Feedback AI",
   "data_name": "feedback_ai",
-  "description": "Analyzes the sentiment of feedback submissions using the OpenAI API.",
+  "description": "Collects user feedback through a form and classifies each submission as Positive, Negative, or Neutral via the OpenAI Chat Completions API.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Feedback AI",
   "composer_namespace": "drupal/feedback_ai",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/views_data_export": "*"
+  },
   "dependent_modules": [
     "views_data_export:views_data_export"
   ],
-  "configure": null,
+  "configure": "feedback_ai.feedback_api_settings",
   "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -21,22 +23,26 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
+    "Forms and surveys",
     "Artificial Intelligence (AI)"
   ],
   "subcategories": [
-    "AI tooling / function calling"
+    "Contact forms",
+    "Submission handling"
   ],
   "keywords": [
     "feedback",
-    "ai",
-    "sentiment",
+    "sentiment analysis",
     "openai",
-    "analysis"
+    "gpt",
+    "ai",
+    "views",
+    "csv export"
   ],
-  "project_description": "The Feedback AI module is designed to perform sentiment analysis on user feedback submitted on a Drupal website. Using the AI-powered sentiment analysis, the Feedback AI tool further classifies user sentiments as Positive, Negative, or Neutral. This classification helps website administrators gain insights into the overall sentiment of user responses, enabling them to make data-driven decisions.\n\n The module uses OpenAI's “Chat Completions” API to conduct sentiment analysis. To use models like GPT-4, GPT-4 Turbo, and GPT-3.5 Turbo, you need to register on the OpenAI platform and generate an API secret key. This key is essential for interacting with OpenAI services, please log in to the OpenAI platform .\n\n Dependency: \n Views Data Export module \n\n Features \n Provides an Sentiment analysis for user feedback submitted on a Drupal website.\n\n Additional Requirements: \n You need an OpenAI API subscription \n\n Recommended modules/libraries \n Views data export module (required)\n\n Back to top",
+  "project_description": "Feedback AI adds a public feedback form (name, email, message) to a Drupal site and, on submission, sends the message text to the OpenAI Chat Completions API to classify its sentiment as Positive, Negative, or Neutral. Each submission is stored in a dedicated database table (feedback_ai) together with its sentiment result. Administrators review results through a shipped View (Feedback AI Submissions) with exposed filters for sentiment and submission date, a CSV export display (backed by the Views Data Export module), and a CanvasJS pie chart block that summarizes the sentiment mix of the most recent submissions. The OpenAI credentials, endpoint, model, and max-token limit are configured on a settings form under Administration. The module ships two blocks (the feedback form and the sentiment chart), two Views date filter plugins, a Guzzle-based OpenAI client service, and an admin permission (administer feedback ai) that gates configuration and the submissions View.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
