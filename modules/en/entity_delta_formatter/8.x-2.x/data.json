@@ -1,14 +1,14 @@
 {
   "name": "Entity Delta Formatter",
   "data_name": "entity_delta_formatter",
-  "description": "A field formatter that displays a specified delta (item index) of a multi-value field.",
+  "description": "A field formatter for entity_reference fields that renders only a chosen subset of the referenced entities, selected by delta (single positions, negative positions from the end, and ranges).",
   "version": "8.x-2.x",
   "package": "Fields",
   "composer_namespace": "drupal/entity_delta_formatter",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^8||^9||^10||^11",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/entity_delta_formatter",
@@ -28,13 +28,13 @@
     "Field formatters"
   ],
   "keywords": [
+    "entity reference",
+    "field formatter",
     "delta",
-    "formatter",
-    "multi-value",
-    "field",
-    "display"
+    "range",
+    "rendered entity"
   ],
-  "project_description": "The Entity Delta Formatter module provides a field formatter for entity\n\nreference fields that displays a selected set of items from a field with\n\nmultiple items.\n\n Install \n \n Install as you would normally install a contributed Drupal module. Visit:\n\n https://www.drupal.org/docs/8/extending-drupal-8/installing-drupal-8-mo… \n\n for further information.\n \n \n Usage \n \n \n Set the field formatter for an entity reference field to\n\n \"Rendered entities by delta\".\n \n \n In the configuration menu, specify deltas.\n \n \n Select an item by entering its position in the list starting with 1.\n \n \n Select an item from the end of the list by entering its position from the\n\n end as a negative number. E.g. \"-2\" to get the second to last item.\n \n \n Select ranges of items by specifying the inclusive start and end separated\n\n by \"_\". E.g. \"1_3\" to get the first, second and third items or \"2_-1\" to get\n\n all items but the first.\n \n \n Multiple selections may be combined using commas. E.g \"1_3, -1\" to get the\n\n first, second, third, and last items.\n \n \n \n Back to top",
+  "project_description": "The Entity Delta Formatter module provides a single field formatter for entity_reference fields, \"Rendered entities by delta\" (plugin id entity_reference_delta_formatter). It extends core's Rendered entity (EntityReferenceEntityFormatter) formatter and adds a \"Deltas\" setting that limits which referenced items are rendered. Positions are 1-based; a negative number counts from the end (e.g. -2 is the second-to-last item), an underscore selects an inclusive range (e.g. 1_3), and commas combine several selections (e.g. \"1_3, -1\"). Selected items are still rendered through core entity_view(), so entity view access and field sanitization are unchanged.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
