@@ -33,6 +33,10 @@ Version **1.2.0**, core `^10.0 || ^11.0`. No UI, no routes, no settings.
 - **Enable order.** Enable `features` (and `features_ui`) first; enabling `features_permissions` against a
   bare `features` fails with *Route "features.assignment_alter" does not exist*.
 
+## Solution docs
+- [api/sync-model.md](api/sync-model.md) — the `user_permission` config entity, `PermissionManager`
+  (`syncRoleToPermissions` / `syncPermissionToRoles` and the key↔machine-name helpers), the
+  `ConfigEventsSubscriber` import/revert flow, and how the pieces fit Features export.
+
 ## Files
 - `data.json` — metadata. `usage.md` — 3-block overview + use cases.
-- No `agent/{solution_type}/` subdirs: single-mechanism devops/config tool, fully covered here.

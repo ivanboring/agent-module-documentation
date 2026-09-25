@@ -1,11 +1,13 @@
 {
   "name": "Feature Flags Extensions",
   "data_name": "featureflags_extensions",
-  "description": "Adds extensions/extra functionality to the Feature Flags module.",
+  "description": "Extends the Feature Flags module so a feature flag can gate routes and permissions, plus a Twig function to test a flag's state in templates.",
   "version": "2.0.x",
   "package": null,
   "composer_namespace": "drupal/featureflags_extensions",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/featureflags": "^2.0"
+  },
   "dependent_modules": [
     "drupal:featureflags"
   ],
@@ -27,16 +29,17 @@
     "Developer tools"
   ],
   "subcategories": [
-    "Feature flags"
+    "Feature flags / toggles"
   ],
   "keywords": [
     "feature flags",
-    "toggle",
     "featureflags",
-    "extension",
-    "rollout"
+    "toggle",
+    "route access",
+    "permissions",
+    "twig"
   ],
-  "project_description": "Back to top \n\n Overview \n Provides some new functionality for the featureflags module:\n\n \n Enable/disable routes depending on featureflag \n Enable/disable permissions depending on featureflag \n Check featureflag status with a twig function \n \n Back to top \n\n Usage \n Routes and permissions can be set in the feature flag settings and will be exported as config.\n\n Featureflag checking in twig works like this:\n\n \n\n{% if featureflag_active(\"demoflag\") %}\n\nFlag is active!\n\n{% endif %}\n\n \n\n \n About the versions \n For Drupal 10+ install Featureflags extensions version >= 1.1.3\n\n For Drupal 11+ install Featureflags extensions version ^2.0.0\n\n Back to top",
+  "project_description": "Add-on for the Feature Flags (featureflags) module (requires drupal/featureflags ^2.0, Drupal 11). It lets each feature flag control two additional things and exposes a template helper. (1) Route gating: two adjacent-tab forms are added to every feature flag (RoutesForm at /admin/structure/feature-flags/manage/{featureflag}/routes and PermissionsForm at .../permissions, both gated by the base module's 'administer featureflag entities' permission). The Routes form saves a newline-separated list of route machine names into a 'featureflags_routes' config entity keyed by the flag id; a route event subscriber (RouteSubscriber) reads those entities and, for every flag whose state is OFF, sets requirement _access = FALSE on each listed route so the route becomes unavailable while the flag is off. (2) Permission gating: the Permissions form saves a set of selected permission ids into a 'featureflags_permissions' config entity; a decorator of core's permission_checker service (PermissionChecker) returns FALSE for any of those permissions while the owning flag is OFF. (3) A Twig extension registers a featureflag_active(flag_id) function returning FeatureFlag::isActive(). Two config entity types (featureflags_permissions, featureflags_routes) provide standard admin CRUD (collection/add/edit/delete) gated by 'administer featureflags_extensions_permissions' / 'administer featureflags_extensions_routes'; both entities export to config so bindings travel through the normal deployment workflow. The module ships no settings form of its own (configure is null); flag bindings are edited on each flag. It has no external HTTP, credentials or Drush commands.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
