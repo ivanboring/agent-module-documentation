@@ -3,10 +3,12 @@
 ## Requirements
 
 - **Drupal 10 or 11** (`core_version_requirement: ^10 || ^11`).
-- The **Key** module (`key`) — used to store the IP2Location API key securely.
-  Composer installs it automatically when you require Entity Metrics.
-- An **IP2Location** API key, if you want the geolocation features.
-- No third-party PHP or JavaScript libraries.
+- The **GeoIP Autoupdate** module (`geoip_autoupdate`) — downloads and refreshes the
+  local MaxMind GeoLite2 database that the geolocation features read. Composer
+  installs it automatically when you require Entity Metrics.
+- Core **Node**.
+- Composer also pulls the `maxmind-db/reader` PHP library for reading the local
+  database. The map block uses Leaflet from a CDN.
 
 > **Heads-up:** this is a **beta** release.
 
@@ -18,8 +20,8 @@ From the project root:
 composer require drupal/entity_metrics -W
 ```
 
-The `-W` (`--with-all-dependencies`) flag lets Composer install Key and update any
-shared dependencies as needed.
+The `-W` (`--with-all-dependencies`) flag lets Composer install `geoip_autoupdate`
+and update any shared dependencies as needed.
 
 > **Using DDEV?** Prefix Composer and Drush with `ddev` when you run from your host
 > machine — `ddev composer require drupal/entity_metrics -W`, `ddev drush …`. Inside
@@ -29,32 +31,27 @@ shared dependencies as needed.
 
 ```bash
 drush en entity_metrics -y
+drush updb -y
+drush cr
 ```
 
-Drupal enables the Key module at the same time if it isn't already on.
+Drupal enables `geoip_autoupdate` at the same time if it isn't already on. The
+install step creates the module's `entity_metrics_data` and `entity_metrics_regions`
+database tables.
 
-## Post-installation: create the IP2Location key
+## Set up geolocation (optional)
 
-Entity Metrics expects a Key named **`ip2location`** that holds your IP2Location
-API key. Rather than pasting the key into configuration, store it as an environment
-variable and back the Key with the environment provider — the same pattern this
-project uses for other API credentials.
-
-At a high level:
-
-1. Store the API key in an environment variable (for example via DDEV:
-   `ddev dotenv set .ddev/.env --ip2location-api-key=<value>`, then `ddev restart`
-   — never commit `.ddev/.env`).
-2. Create the Key entity named `ip2location`, using Key's environment provider so
-   Drupal reads the value from that variable. You can do this in the UI at
-   **Configuration → System → Keys → Add key**, or with `drush key:save`.
+The map and region features read a **local** MaxMind GeoLite2-**City** database — no
+visitor IP is sent to a remote service, and Entity Metrics holds no geolocation
+credential of its own. Configure the **GeoIP Autoupdate** module to download a
+GeoLite2-City database (its own settings page holds any MaxMind account details).
+Once that database is present, Entity Metrics reads it locally.
 
 If you don't need the geolocation features, view/download counting still works
-without the key.
+without the database.
 
 ## Verify it worked
 
-Confirm the module is enabled (`drush pml --status=enabled | grep entity_metrics`)
-and that a Key named `ip2location` exists at **Configuration → System → Keys**.
-View some content and confirm view/download counts begin accumulating for entities,
-visible to users who hold the module's view permission.
+Confirm the module is enabled (`drush pml --status=enabled | grep entity_metrics`).
+View some content and download a file, then check that view/download counts begin
+accumulating for those entities (for example through the module's view-count block).
