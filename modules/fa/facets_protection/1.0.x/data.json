@@ -1,16 +1,18 @@
 {
   "name": "Facets Protection",
   "data_name": "facets_protection",
-  "description": "protects facet requests with an additional token.",
+  "description": "Protects faceted pages from crawler/bot abuse by appending a short-lived token to facet links and serving a lightweight blocking page (HTTP 410) when the token is missing or invalid.",
   "version": "1.0.x",
   "package": "Search",
   "composer_namespace": "drupal/facets_protection",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/facets": "~2.0.0"
+  },
   "dependent_modules": [
     "facets:facets"
   ],
-  "configure": null,
-  "core_version_requirement": "^10.3||^11",
+  "configure": "facets_protection.settings",
+  "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/facets_protection",

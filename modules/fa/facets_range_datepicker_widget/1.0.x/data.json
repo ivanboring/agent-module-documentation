@@ -24,19 +24,20 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Search"
+    "Site search"
   ],
   "subcategories": [
-    "Search UI"
+    "Faceted search UI"
   ],
   "keywords": [
     "facets",
     "datepicker",
-    "range",
+    "date range",
     "date",
+    "calendar",
     "search"
   ],
-  "project_description": "This module provides date range facets similar to major search engines. The UI is provided as a Facet widget called \"Datepicker\" and \"Range Datepicker\".\n\n Usage \n After installing this module, you will have two new facet widgets \"Datepicker\" to select documents in a single day, and Range Datepicker for multiple dates.",
+  "project_description": "Adds two Facets widgets that render a date facet as an HTML5 date picker instead of a list of individual date links. The 'datepicker' widget (Drupal\\facets_range_datepicker_widget\\Plugin\\facets\\widget\\DatepickerWidget) shows a single date input to filter to one day; the 'range_datepicker' widget (RangeDatepickerWidget, which extends it) shows a from/to pair of date inputs to filter to a span. Each widget requires a companion Facets processor of the same id ('datepicker' and 'range_datepicker', in src/Plugin/facets/processor/) which is enforced via isPropertyRequired(); both widgets use the 'range' query type. The processor's build() stage writes one generic filter URL containing placeholder tokens ('(min:__datepicker_min__)' or '(min:__range_datepicker_min__,max:__range_datepicker_max__)') into the facet result URL, and the shipped js/datepicker.js (library 'facets_range_datepicker_widget/datepicker') replaces those placeholders with the picked date(s) as UNIX timestamps and navigates the browser to the resulting URL. On the return request the processor's preQuery() stage parses the min/max timestamps back out of the active facet item with a strict numeric regex and rewrites the active items into a min/max range for the query. Widget labels and a 'visually-hidden' toggle are configurable per facet; settings are stored via the facet widget config schema (facet.widget.config.datepicker / facet.widget.config.range_datepicker). Supports Facets sources whose field storage type is datetime/created/changed (single) or datetime/created/updated (range). The module owns no routes, permissions, controllers, services, config objects, entities or Drush commands.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
