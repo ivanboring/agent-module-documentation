@@ -18,24 +18,22 @@ can enable or disable the module's effect on a per-page basis — for example, a
 it across the site but exclude a particular section, or restrict it to specific
 paths. Set this to match your editorial policy for outbound links.
 
-## The attributes it adds
+## How the behaviour works
 
-External Links adds the `target` behaviour via JavaScript (so your stored markup
-stays valid) along with the `rel` attributes appropriate for opening a link
-elsewhere. Two of these are essential rather than cosmetic, and you should confirm
-they are in place:
+External Links does not change your stored markup or add any attributes to your
+links. Its JavaScript intercepts clicks on qualifying links and opens them in a new
+tab, which is why the page's HTML still validates.
 
-- **`rel="noopener"`** — prevents the newly opened page from reaching back into
-  your page through `window.opener`. Do not open links in a new tab without it.
-- **A visible and announced "opens in a new window" indication** — so that
-  sighted and screen-reader users alike know the context is about to change. An
-  icon on its own is not sufficient; the cue needs to reach assistive technology
-  through the link's accessible name.
+Because nothing is added to the link itself, there is no visible icon and no
+screen-reader announcement that a link opens in a new tab. If your editorial or
+accessibility policy needs that cue, add it in your theme or content — an icon on
+its own is not sufficient; the cue needs to reach assistive technology through the
+link's accessible name.
 
 ## Save
 
 Click **Save configuration**. Changes take effect on the next page load.
 
 > **A reminder before you finish:** "open in new tab" removes the back button and
-> changes context, so keep its scope as narrow as your requirement genuinely needs
-> — and never ship it without `rel="noopener"` and an announced new-window cue.
+> changes context, so keep its scope as narrow as your requirement genuinely needs,
+> and give users a clear cue that a link opens elsewhere.

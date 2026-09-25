@@ -37,9 +37,7 @@ behaviour applies to, visit the settings page.
 ## Verify it worked
 
 Visit a page on your site that contains a link to an external website. Clicking it
-should open the target in a new browser tab. Then confirm the outbound links carry
-`rel="noopener"` and an accessible "opens in a new window" cue — see
-[Configuration](../configuration/index.md).
+should open the target in a new browser tab.
 
 Next, see [Configuration](../configuration/index.md) to scope the behaviour by page
-and review the accessibility/security attributes.
+and review the accessibility guidance.

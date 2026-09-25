@@ -2,21 +2,21 @@
 
 **Filename extension sanitization** (`extension_sanitization`) removes **duplicated
 file extensions** from uploaded filenames. It collapses names like
-`image.jpeg.jpeg` or `file.php.jpg` so a filename can't carry an extra, redundant
-extension. There are two reasons that matters. The practical one: duplicated
-extensions confuse derivative generators — a tool that produces
-`example.jpeg.webp` from `example.jpeg` can end up chasing mismatched names when
-the original is `example.jpeg.jpeg`. The security one: a doubled or extra extension
-is the shape of a classic **double-extension upload bypass**, where an attacker
-uploads `shell.php.jpg` hoping the server ends up treating it as executable PHP.
+`image.jpeg.jpeg` (→ `image.jpeg`) or `file.jpg.png.gif` (→ `file.gif`): for each
+`.`-separated segment between the base name and the final extension, if that segment
+is itself one of the field's **allowed extensions** it is dropped, so the name keeps
+just its base and its real trailing extension. The main reason that matters is
+practical: duplicated extensions confuse derivative generators — a tool that produces
+`example.jpeg.webp` from `example.jpeg` can end up chasing mismatched names when the
+original is `example.jpeg.jpeg`.
 
-This is a positive, defense-in-depth hardening measure and it works quietly in the
-background once enabled — there is nothing to configure. Keep the usual framing in
-mind, though: it hardens against **one specific class** of problem (duplicated or
-extra extensions) and **complements, it does not replace**, Drupal core's own
-upload protections. You still want a correct allowed-extensions list on your file
-fields, core's filename munging, and uploads served from a location that never
-executes code. It has no content-access role.
+This is a small, defense-in-depth hygiene measure and it works quietly in the
+background once enabled — there is nothing to configure. Keep the framing in mind,
+though: it cleans up one specific shape (repeated allowed extensions) and
+**complements, it does not replace**, Drupal core's own upload protections. You still
+want a correct allowed-extensions list on your file fields, core's filename munging,
+and uploads served from a location that never executes code. It has no
+content-access role.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

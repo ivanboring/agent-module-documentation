@@ -1,14 +1,14 @@
 {
   "name": "Filename extension sanitization",
   "data_name": "extension_sanitization",
-  "description": "Removes duplicated file extensions from uploaded filenames (upload-security hardening).",
+  "description": "Removes duplicated file extensions from uploaded filenames.",
   "version": "1.0.x",
   "package": "Media",
   "composer_namespace": "drupal/extension_sanitization",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^8||^9||^10||^11",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/extension_sanitization",
@@ -19,7 +19,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Media"
@@ -31,8 +31,8 @@
     "file upload",
     "extension",
     "sanitization",
-    "security",
-    "double extension"
+    "double extension",
+    "filename"
   ],
   "project_description": "File extension sanitization module cleans a problematic filename that may look like example.jpeg.jpeg . Such filenames can cause issues when creating derivatives for example imageapi_optimize_webp would create link to a file example.jpeg.webp.jpeg.webp but in the filesystem the file is example.jpeg.jpeg.webp .\n\n Contribute \n \n Reach out at #drunomics-contribute @ the Drupal Slack !",
   "maintenance_status": "Minimally maintained",

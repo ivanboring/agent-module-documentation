@@ -1,8 +1,8 @@
 # External Links — manual setup guide
 
 **External Links** (`external`) opens links that point off your site — to other
-websites, or to PDF documents — in a **new tab**, adding the attributes that
-implies. It's deliberately lean: it does this one thing, and it uses JavaScript
+websites, or to PDF documents — in a **new tab**.
+It's deliberately lean: it does this one thing, and it uses JavaScript
 (jQuery) rather than writing `target="_blank"` into your markup, so the page's HTML
 still validates. You can also configure which pages the behaviour applies to.
 
@@ -21,9 +21,9 @@ behaviours on any site:
   wants a new tab can middle-click or ctrl-click; nobody can undo the reverse.
 
 The genuine case for it is narrow — a part-completed form, a part-watched video, a
-long document being read. If you do use it, two things are **not optional**:
-`rel="noopener"` (so the opened page can't reach back through `window.opener`), and
-a **visible and announced** indication that the link opens elsewhere.
+long document being read. If you do use it, pair it with a **visible and
+announced** indication that the link opens elsewhere — this module adds neither an
+icon nor an announcement, so that cue has to come from your theme or content.
 
 > **Version note:** this is release **2.0.0-alpha5**, an **alpha**. Treat it
 > accordingly.
