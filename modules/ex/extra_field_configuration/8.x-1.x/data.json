@@ -1,17 +1,19 @@
 {
   "name": "Extra Field Configuration",
   "data_name": "extra_field_configuration",
-  "description": "A configuration manager for attaching Extra Field (pseudo-field) plugins to entity types.",
+  "description": "Provides a configuration manager to attach extra fields to entity types.",
   "version": "8.x-1.x",
   "package": null,
   "composer_namespace": "drupal/extra_field_configuration",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/extra_field": "^2.0 || ^3.0"
+  },
   "dependent_modules": [
     "drupal:field",
     "extra_field:extra_field"
   ],
   "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/extra_field_configuration",
@@ -25,21 +27,26 @@
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "ExtraField/Display (managed by plugin.manager.extra_field_configuration_display, discovered via ExtraFieldConfigurationDeriver; reuses extra_field's @ExtraFieldDisplay annotation)"
+  ],
   "categories": [
-    "Content display"
+    "Content display",
+    "Developer tools"
   ],
   "subcategories": [
-    "Extra fields / pseudo-fields"
+    "Fields",
+    "Plugin system"
   ],
   "keywords": [
     "extra field",
     "pseudo-field",
-    "configuration",
-    "display",
-    "entity"
+    "config entity",
+    "entity view display",
+    "deriver",
+    "plugin"
   ],
-  "project_description": "This module provides a configuration layer for Extra Field to allow developers to manage the placement of extra fields via configuration rather than in annotation properties. The module also allows for the usage of multiple instances of the same extra field plugin on an entity, without having to define multiple instances of the plugin in code.\n\n Back to top \n\n Instructions \n Requirements \n Extra Field \n\n Installation \n \n Add the module to your project with composer require drupal/extra_field_configuration or manually download the source and place it in modules/contrib . \n Enable the module. \n \n Configuration \n Create extra field instances from extra field plugins and manage entity assignments at /admin/structure/extra-field .\n\n Plugin Changes \n To enable an extra field plugin to be configured by this module, the deriver property must be present on the annotation. It is also recommended to omit bundles property, to ensure the extra field is not managed in two different ways.\n\n A complete Extra Field Configuration plugin annotation would look like:\n\n \n* @ExtraFieldDisplay(\n* id = \"plugin_id\",\n* label = @Translation(\"Field name\"),\n* deriver = \"Drupal\\extra_field_configuration\\Plugin\\Derivative\\ExtraFieldConfigurationDeriver\",\n* weight = 10,\n* visible = false,\n* )\n The class definitions of the extra field plugins remains unchanged with this module, and Extra Field Plus plugins can also be used. The location of plugins class files also remains the same.\n\n Printing in Templates \n Field names for printing in templates can be found on the admin screen at /admin/structure/extra-field . The field name is generated from the machine name defined when creating the extra field instance.\n\n Back to top \n\n Examples \n The included extra_field_configuration_examples module provides example extra field plugins in both simple and formatted flavors.\n\n Back to top \n\n Maintainers \n \n Benjamin Baird \n Back to top",
+  "project_description": "Configuration layer for the Extra Field contrib module. Instead of declaring an extra field's entity/bundle placement in the plugin annotation's 'bundles' property (as plain Extra Field requires), site builders create ExtraFieldConfiguration config entities (config_prefix 'display') at /admin/structure/extra-field that bind an @ExtraFieldDisplay plugin to any fieldable entity type/bundle displays. A single plugin can back many named instances, so the same extra field can be reused multiple times on one entity without defining duplicate plugin classes. A plugin opts in by adding deriver = ExtraFieldConfigurationDeriver to its annotation (and omitting 'bundles'); ExtraFieldConfigurationDisplayManager (a subclass of extra_field's ExtraFieldDisplayManager) then discovers only those plugins, and the deriver turns each saved config entity into a derived plugin definition carrying the configured bundles. hook_entity_extra_field_info() exposes the derived fields to Manage display; hook_entity_view() renders them, renaming the internal 'extra_field_{plugin}:{id}' build key to 'extra_field_{id}' for Twig. All CRUD (list/add/edit/delete) is gated by the 'administer extra fields' permission. An optional extra_field_configuration_examples submodule ships ExampleField and ExampleFormattedField sample plugins. Extra Field Plus plugins also work.",
   "maintenance_status": "Seeking co-maintainer(s)",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

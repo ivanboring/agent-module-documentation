@@ -3,7 +3,7 @@
   "data_name": "extra_pagination",
   "description": "Adds a new set of pager items between the last visible pager link and the maximum pager number.",
   "version": "3.x",
-  "package": null,
+  "package": "User Interface",
   "composer_namespace": "drupal/extra_pagination",
   "composer_requirements": {},
   "dependent_modules": [],
@@ -19,21 +19,22 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Views"
+    "Content display"
   ],
   "subcategories": [
-    "Pagers"
+    "Pagers & lazy loading"
   ],
   "keywords": [
     "pagination",
     "pager",
-    "views",
-    "navigation"
+    "seo",
+    "navigation",
+    "deep pagination"
   ],
-  "project_description": "Extra Pagination is a very simple module that provides a new set of pager items between the last visible pager link and the maximum pager number. This is mainly done for SEO reasons and make us reach any page in 3-4 clicks maximum. Suggestions and feature requests are welcome.\n\n Installation and requirements \n No setup required. Once you install the module, the extra pager items will appear.",
+  "project_description": "Extra Pagination is a very simple module that provides a new set of pager items between the last visible pager link and the maximum pager number. This is mainly done for SEO reasons to make us reach any page in 3-4 clicks maximum. It works with no configuration: on enable it overrides Drupal's core pager template and preprocess, inserting extra jump links so deep pages in a long listing stay reachable in a few clicks. Suggestions and feature requests are welcome.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",
