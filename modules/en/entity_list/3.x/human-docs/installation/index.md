@@ -37,5 +37,4 @@ Drupal enables Layout Discovery at the same time if it isn't already on.
 
 Log in as an administrator and confirm you can create a new **Entity List** from
 the admin UI. Build a small test list — pick an entity type and bundle, set the
-results per page, save it — and view the result to confirm the listing renders and
-respects entity access.
+results per page, save it — and view the result to confirm the listing renders.
