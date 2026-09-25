@@ -26,9 +26,8 @@ screen:
    that should have it.
 3. Save permissions.
 
-Remember that this permission only controls access to the side‑by‑side interface.
-The underlying right to translate content is still governed by Drupal core's
-content‑translation permissions, so make sure your translators also have those.
+Grant this permission to the roles responsible for translating your site's
+content.
 
 ## Using it
 

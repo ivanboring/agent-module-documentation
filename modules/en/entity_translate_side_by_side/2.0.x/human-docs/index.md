@@ -16,9 +16,8 @@ the operations dropdown that routes you to the translation screen.
 
 The module needs a little configuration after enabling — you pick the languages to
 load by default at its settings page. Access is controlled by a dedicated **Access
-Entity Translate Side by Side** permission; this is a UX improvement over the core
-translation form and relies on Drupal's normal content‑translation permissions for
-the actual right to translate.
+Entity Translate Side by Side** permission, which you assign to the roles that
+should use the interface.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

@@ -1,14 +1,14 @@
 {
   "name": "Entity Tracer",
   "data_name": "entity_tracer",
-  "description": "Traces and visualizes entity relationships (references).",
+  "description": "Admin UI that maps entity-reference relationships between entity types and bundles.",
   "version": "1.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/entity_tracer",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^8||^9||^10||^11",
+  "configure": "entity_tracer.entity_tracer_settings",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/entity_tracer",
@@ -25,14 +25,15 @@
     "Developer tools"
   ],
   "subcategories": [
-    "Debugging / inspection"
+    "Entity reference tracking",
+    "Debugging & inspection"
   ],
   "keywords": [
     "entity",
     "relationships",
     "references",
     "trace",
-    "debug"
+    "reference chain"
   ],
   "project_description": "The entity tracer module provides a UI to easily track entity references across entity types. \n\n \n\n Features \n - A UI to generate a diagram showing all of the requested entity relationships.\n\n- Diagram is nested and will recursively find and list reference fields and their related entities\n\n- To make finding and updating values easier, the fields are bolded and the entities being referenced will link to said entity's field page.\n\n- Works with D8 and D9 as well to help with migration.\n\n Post-Installation \n - Go to /admin/config/development/entity-tracer-settings and select the entity types you want to track\n\n- Set the maximum depth (defaults to 10)\n\n Back to top",
   "maintenance_status": "Actively maintained",
