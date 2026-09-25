@@ -1,14 +1,14 @@
 {
   "name": "Entity Tasks",
   "data_name": "entity_tasks",
-  "description": "A block that displays the available local tasks (tabs) for the current page.",
+  "description": "Exposes a block that displays the available local tasks (tabs) for the current page, plus optional admin-toolbar integration.",
   "version": "3.0.x",
   "package": "Utility",
   "composer_namespace": "drupal/entity_tasks",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": "entity_tasks.config",
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/entity_tasks",
@@ -19,7 +19,7 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools"
@@ -32,9 +32,9 @@
     "local tasks",
     "tabs",
     "block",
-    "entity"
+    "toolbar"
   ],
-  "project_description": "This module exposes a block that can be used to displayed the tasks available for the current page.\n\nIt also provides integration in the toolbar where you can choose between 3 different styles which best suits your needs.\n\n Back to top \n\n Block setttings \n To add the block go to /admin/structure/block and place a new block in the content region.\n\n \n\nIn the settings it is possible to place the block at the lefthand side of the screen, right is the default location.\n\n \n\nWhen saved the tasks will be displayed at a fixed position on the page.\n\n \n\n Back to top \n\n Toolbar integration \n In order to change the way the tasks are displayed in the toolbar you need to go to admin/config/entity-tasks.\n\nHere it's possible to choose the display mode of the tasks (default is disabled).\n\n \n\n Classic \n The classic display mode displays the tasks as the default items in the toolbar.\n\n \n\n Expanded \n The expanded display mode displays all tasks next to each other in the toolbar\n\n \n\n Dropdown \n The dropdown display mode displays the tasks when hovering over the tasks button in the toolbar.\n\n \n\n Back to top",
+  "project_description": "Entity Tasks exposes a block that displays the local tasks (the View / Edit / Delete / Revisions / Translate tabs) available for the current page, so the current route's operation tabs can be placed anywhere in the layout instead of only in the default local-tasks region. It also provides an admin-toolbar integration with three display modes (classic, expanded, dropdown) selectable at /admin/config/entity-tasks, and per-block placement of the tabs on the left- or right-hand side of the screen. The tabs shown are Drupal core's own local tasks for the matched route, filtered to those the current user may access; the module adds display and placement only, not new operations or access.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

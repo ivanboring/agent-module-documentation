@@ -1,13 +1,13 @@
 {
   "name": "Entity Stretched Link",
   "data_name": "entity_stretched_link",
-  "description": "Add a stretched (whole-card) link to an entity via Manage Display.",
+  "description": "Adds a disabled-by-default 'Stretched Link' display pseudo-field to every entity type/bundle; when enabled on Manage Display it renders an empty core link to the entity with the 'stretched-link' class, making the whole rendered card/teaser clickable.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Custom",
   "composer_namespace": "drupal/entity_stretched_link",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:field"
+    "field"
   ],
   "configure": null,
   "core_version_requirement": "^10 || ^11",
@@ -19,24 +19,25 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"
   ],
   "subcategories": [
-    "Field formatters"
+    "Fields"
   ],
   "keywords": [
     "stretched link",
     "card",
-    "display",
-    "link",
+    "teaser",
+    "manage display",
+    "pseudo-field",
     "bootstrap"
   ],
-  "project_description": "Back to top \n\n Overview \n A very lightweight module to display link to entity.\n\nUseful on card, teaser or search result to make all the rendering area clickable.\n\n Back to top \n\n How it work \n The module add an extrafield to all entities (disabled by default)\n\nSet the extrafield to display the streched link \n\n Back to top \n\n Warning : no CSS included \n If you don't have a .streched-link class your could ad this css in your project\n\n \n\n.stretched-link::after {\n\n position: absolute;\n\n top: 0;\n\n right: 0;\n\n bottom: 0;\n\n left: 0;\n\n z-index: 1;\n\n content: \"\";\n\n}\n\n \n\n Back to top",
+  "project_description": "A very lightweight module that makes an entire rendered entity (card, teaser, or search result) clickable using the 'stretched link' CSS pattern. It adds an extra display pseudo-field named 'Stretched Link' to every entity type and bundle, disabled by default, which is enabled per view-display on the Manage Display screen. When enabled, the module renders an empty core link element pointing to the entity's canonical URL with the CSS class 'stretched-link' (plus rel=tag and a 'Read more about <title>' title attribute for accessibility). The module ships NO CSS of its own; the site theme must provide a .stretched-link::after absolute-overlay rule (the classic Bootstrap stretched-link definition) for the effect to work.",
   "maintenance_status": "Minimally maintained",
   "development_status": "No further development",
   "security_advisory_coverage": "not-covered",
