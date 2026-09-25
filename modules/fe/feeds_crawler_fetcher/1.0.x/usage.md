@@ -1,37 +1,30 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Feeds Crawler Fetcher creates a new fetcher for Feeds to crawl a set of URLs.
+Feeds Crawler Fetcher adds a Feeds fetcher that downloads a whole list of URLs as a single import.
 
 ---
 
-Feeds Crawler Fetcher **adds a Feeds fetcher that crawls a set of URLs** — for the Feeds import framework, it
-fetches multiple URLs (crawling a list) server-side so their content can be parsed and imported. It integrates
-with Feeds.
-
-Use it to import from multiple crawled URLs. It is an import/integration feature. Security note (SSRF): like any
-server-side fetcher, it makes **outbound HTTP requests from your server to the configured URLs** — Feeds sources
-are normally **admin-configured** (limited risk), but if any URL is user-influenced, a crawler can be pointed at
-**internal/private endpoints** (localhost, cloud metadata, internal APIs). Keep the URL list admin-controlled and,
-where relevant, validate/allowlist targets. It has no access-control role. Configure the crawl URLs.
+Feeds Crawler Fetcher provides one extra fetcher plugin, **"Crawl a set of url"** (id `crawler`), for the Feeds import framework. Rather than a single feed source URL, the feed's source becomes a textarea in which you enter one URL per line; on import the fetcher requests every listed URL server-side using Drupal's core HTTP client and combines the responses into one result file that your chosen parser then processes. An optional **paged** mode lets a URL contain a `<page>` token that is substituted with a sequence of page numbers (0 up to the configured total), so a paginated source can be pulled without listing every page URL by hand. Responses are combined as JSON (json-decoded and array-merged) or as HTML (concatenated), depending on the fetcher's "Type of information" option. Despite the name, it does not discover or follow links inside fetched content — it only fetches the static list of URLs you configure. It needs the Feeds module.
 
 ---
 
-- Add a URL-crawling Feeds fetcher.
-- Fetch a set of URLs server-side.
-- Feed content to the import parser.
-- Integrate with Feeds.
-- Serve import/integration.
-- Crawl multiple URLs.
-- Make outbound HTTP requests from the server (SSRF consideration).
-- Keep the URL list admin-controlled (Feeds sources normally are).
-- Allowlist/validate targets if any URL is user-influenced (block internal/metadata).
-- Have no access-control role.
-- Configure the crawl URLs.
-- Handle URL crawling.
-- Crawl URLs.
-- Configure the fetcher.
-- Fetch pages.
-- Handle the import.
-- Gather content.
-- Import feeds.
-- Trust the URL list.
-- Provide a crawling fetcher.
+- Import from several source URLs in a single Feeds import instead of one feed per URL.
+- Point one feed at a newline-separated list of URLs.
+- Fetch a paginated source by adding a `<page>` placeholder and a page count.
+- Aggregate multiple JSON endpoints into one merged JSON result for the parser.
+- Aggregate multiple HTML/XML pages into one concatenated result for the parser.
+- Add a "Crawl a set of url" fetcher option to a Feeds feed type.
+- Pair the fetcher with an HTML/XML or JSON parser (for example Feeds Extensible Parsers) to map fields.
+- Pull page 0..N of a listing endpoint by templating the page number into the URL.
+- Consolidate content spread across multiple pages of the same site.
+- Import product/catalog listings that are split across paged URLs.
+- Import article or news listings that expose one URL per page.
+- Collect data from multiple regional or per-category endpoints into one feed.
+- Reuse the standard Feeds mapping and processor with a multi-URL source.
+- Set a per-request timeout for the outbound fetches.
+- Enable download caching of response headers per feed (default) or force re-download.
+- Keep all fetched content in a single temp file handed to the parser as the fetch result.
+- Clear cached fetch metadata automatically when a feed is deleted.
+- Schedule the multi-URL import on Feeds' normal cron/import runs.
+- Migrate a set of static pages into Drupal entities via Feeds.
+- Replace several single-URL feeds with one consolidated crawling feed.
+- Batch-import from an API that paginates results by a numeric page parameter.

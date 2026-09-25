@@ -1,14 +1,18 @@
 {
   "name": "Feeds Crawler Fetcher",
   "data_name": "feeds_crawler_fetcher",
-  "description": "Adds a Feeds fetcher that crawls a set of URLs (server-side HTTP). Feed sources are admin-configured, but because it fetches URLs from the server, treat the URL list as trusted and be aware of SSRF if any URL is user-influenced.",
+  "description": "Adds a Feeds fetcher plugin (id 'crawler', 'Crawl a set of url') that downloads a newline-separated list of URLs as one import, with optional simple page substitution via a <page> placeholder.",
   "version": "1.0.x",
-  "package": "Custom",
+  "package": "Import and export",
   "composer_namespace": "drupal/feeds_crawler_fetcher",
-  "composer_requirements": {},
-  "dependent_modules": [],
+  "composer_requirements": {
+    "drupal/feeds": "*"
+  },
+  "dependent_modules": [
+    "feeds"
+  ],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/feeds_crawler_fetcher",
@@ -19,7 +23,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Import and export"
@@ -29,12 +33,14 @@
   ],
   "keywords": [
     "feeds",
-    "crawler",
     "fetcher",
-    "ssrf",
-    "import"
+    "crawler",
+    "import",
+    "url-list",
+    "pagination",
+    "http"
   ],
-  "project_description": "This module will create an additional Feeds Fetcher that crawls and fetch a set of URL, allowing the Feeds to import from more than one source. This is helpful if you want to import a paged source. \n\n Post-Installation \n After install, create a new Feeds Type and select \"Crawl a set of url\" Fetcher type.\n\nConfigure the Feeds mapping as usual.\n\nAfter configuration, add a new Feeds, and add one or several URL's to the textarea, one in each line.\n\nImport the Feeds\n\n Atention \n\nThis module is in development! Currently, it only works with XML/HTML sources. (see https://www.drupal.org/project/feeds_ex )",
+  "project_description": "Feeds Crawler Fetcher provides one extra fetcher plugin for the Feeds import framework: 'Crawl a set of url' (plugin id 'crawler'). Instead of a single feed source URL, the feed's source is a textarea holding one URL per line; on import the fetcher downloads every listed URL server-side with the core HTTP client and combines the responses into a single result file that the configured parser then processes. It can optionally expand a simple page range: when 'Paged Fetcher' is enabled and a URL contains the literal '<page>' token, the token is replaced with 0..(Total Pages - 1) and each page is fetched in turn. Responses are combined either as JSON (successive responses are json-decoded and array-merged) or as HTML (responses are concatenated with FILE_APPEND), selected by the 'Type of information' fetcher option. Despite the 'crawl' name it does not discover or follow links found in the fetched content; it only requests the static, admin-configured URL list. It requires the Feeds module (dependency not declared in the .info.yml).",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

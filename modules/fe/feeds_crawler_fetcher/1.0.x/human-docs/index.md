@@ -13,13 +13,9 @@ you've chosen. Note that the module is still in development and currently works
 with **XML/HTML sources** (pair it with a parser such as the one from
 [Feeds Extensible Parsers / `feeds_ex`](https://www.drupal.org/project/feeds_ex)).
 
-> **A note on outbound requests (SSRF).** Like any server‑side fetcher, this one
-> makes HTTP requests **from your server** to the URLs you list. In normal use the
-> URL list is entered by an administrator, so the risk is limited. But if you ever
-> let a less‑trusted user influence those URLs, a crawler can be pointed at
-> internal or private endpoints (localhost, cloud metadata services, internal
-> APIs). Keep the URL list admin‑controlled, and validate or allowlist targets if
-> any URL could come from an untrusted source.
+The URL list is part of a feed's configuration, so it is entered and maintained
+by the people who administer feeds — the same trust boundary as any other Feeds
+source URL.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

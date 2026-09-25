@@ -12,10 +12,10 @@ Based on the Feeds HTTP Auth Fetcher, it provides a new fetcher type,
 endpoint URL and the key on the feed itself. On import the fetcher sends the key in
 the request header so the endpoint accepts the GET.
 
-> **The fetch key is a credential.** Store and configure it as a secret rather
-> than committing it to configuration, and make sure the feed URL uses **HTTPS** so
-> the key isn't sent in cleartext. Requests use Drupal's HTTP client, which has TLS
-> verification on by default.
+The key is entered per feed and stored with that feed's Feeds configuration. There
+is no site-wide settings page and no separate key store — you type the value into
+the **Authorization X API Key** field on each feed. Requests use Drupal's built-in
+HTTP client.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

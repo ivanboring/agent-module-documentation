@@ -1,14 +1,18 @@
 {
-  "name": "Feeds HTTP Key Fetcher",
+  "name": "Feeds HTTP API key Fetcher",
   "data_name": "feeds_http_key_fetcher",
-  "description": "A Feeds fetcher that adds an API key / auth header when fetching a remote feed over HTTP.",
+  "description": "Adds a Feeds fetcher plugin (id 'httpkey', \"Download from URL with X API Key\") that extends core Feeds' HttpFetcher and injects an 'x-api-key' HTTP header, read from a per-feed configured key, so Feeds can import from endpoints that require an API-key header.",
   "version": "1.0.x",
   "package": "Feeds",
   "composer_namespace": "drupal/feeds_http_key_fetcher",
-  "composer_requirements": {},
-  "dependent_modules": [],
+  "composer_requirements": {
+    "drupal/feeds": "*"
+  },
+  "dependent_modules": [
+    "feeds"
+  ],
   "configure": null,
-  "core_version_requirement": "^8||^9||^10||^11",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/feeds_http_key_fetcher",
@@ -19,22 +23,23 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Import and export"
   ],
   "subcategories": [
-    "Feeds fetchers"
+    "Feed aggregation"
   ],
   "keywords": [
     "feeds",
     "http",
     "fetcher",
+    "x-api-key",
     "api key",
-    "authentication"
+    "import"
   ],
-  "project_description": "This simple module is based on Feeds HTTP Auth Fetcher and adds a new Fetcher type plugin for use in Feeds. If you need to fetch an HTTP endpoint (JSON/XML) but must specify an X API Key to get a successful response on your GET request then this is what you're looking for to make it work with Feeds imports.\n\n To use:\n\n \n Add the module to your project. Hopefully using composer. \n Create or edit an existing Structure > Feed Type to use the newly provided Download From URL with X API Key option. \n Create or edit an existing Content > Feed to specify an X API Key for the Header below the URL.",
+  "project_description": "Feeds HTTP API key Fetcher is a small add-on for the Feeds module (based on Feeds HTTP Auth Fetcher). It registers a new Feeds fetcher plugin, \"Download from URL with X API Key\", that behaves like the core Feeds HTTP fetcher but adds an 'x-api-key' header to the outgoing GET request. The header value comes from an API key entered per feed, alongside the feed URL, on the feed edit form. Use it when the JSON/XML endpoint you want to import from requires an API-key header to return a successful response, which the plain HTTP fetcher cannot supply. To use it: add the module (via Composer) and enable it with Feeds; create or edit a Feed type at Structure > Feed types and choose the \"Download from URL with X API Key\" fetcher; then on each Feed enter the endpoint URL and the API key value below it. It does not add any settings page, route, permission, service, or Drush command of its own.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

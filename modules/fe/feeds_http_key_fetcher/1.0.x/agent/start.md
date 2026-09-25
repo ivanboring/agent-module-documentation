@@ -1,8 +1,19 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-# Feeds HTTP Key Fetcher — agent index
+# Feeds HTTP API key Fetcher (feeds_http_key_fetcher) — agent index
 
-A **Feeds fetcher that sends an API key / auth header** when fetching a remote feed over HTTP (import from
-key-protected endpoints). Used with `feeds`. Version **1.0.2**. Core `^8||^9||^10||^11`.
+Adds one Feeds **fetcher plugin**, `httpkey` ("Download from URL with X API Key"), that extends
+core Feeds' `HttpFetcher` and sends an `x-api-key` HTTP header (value = a per-feed configured key)
+when downloading the feed URL. Use it to import from JSON/XML endpoints that require an API-key header.
 
-The fetch key is a **credential** — store as a secret, use **HTTPS** so it isn't sent cleartext (Drupal HTTP
-client, TLS on by default). No access role.
+- **Version:** 1.0.2 (version dir `1.0.x`). Core `^8 || ^9 || ^10 || ^11`. License GPL-2.0-or-later. Package "Feeds".
+- **Dependency:** hard runtime dependency on the `feeds` module (extends its `HttpFetcher`); note it is
+  **not declared** in `feeds_http_key_fetcher.info.yml` — Feeds must be enabled or the plugin cannot load.
+- **Provides:** a `@FeedsFetcher` plugin (`src/Feeds/Fetcher/HttpKeyFetcher.php`) and its per-feed form
+  (`src/Feeds/Fetcher/Form/HttpKeyFetcherFeedForm.php`). No routes, permissions, services, config schema,
+  Drush commands, settings page, or install/update hooks.
+- **Config location:** the key is stored in **per-feed Feeds configuration** (`$feed->getConfigurationFor($this)['key']`),
+  not the Key module and not an environment variable.
+
+Solution docs:
+
+- [Fetcher plugin, key field, and header injection](fetcher/http-key-fetcher.md)

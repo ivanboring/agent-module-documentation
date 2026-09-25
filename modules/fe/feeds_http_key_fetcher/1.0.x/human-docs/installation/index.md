@@ -34,14 +34,11 @@ If you don't already have Feeds enabled, add it too:
 drush en feeds -y
 ```
 
-## A note on the key
+## Where the key is entered
 
-The API key you enter is a credential. Keep it out of committed configuration, and
-always point the feed at an **HTTPS** URL so the key isn't transmitted in
-cleartext. Where you can, source the value from an environment variable rather than
-typing a literal secret into a shared environment. With DDEV you can store a
-variable with `ddev dotenv set .ddev/.env --my-api-key=<value>` (keep `.ddev/.env`
-out of version control) and `ddev restart`.
+There is no site-wide settings page. The API key is entered per feed, in the
+**Authorization X API Key** field beneath the feed URL, and is saved with that
+feed's Feeds configuration. Each feed can use its own key.
 
 ## Verify it worked
 
