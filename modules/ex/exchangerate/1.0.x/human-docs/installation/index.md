@@ -33,20 +33,25 @@ drush en exchangerate -y
 
 ## Keep your API key out of version control
 
-Treat the ExchangeRate‑API key as a secret. Rather than typing it directly into
-committed configuration, store it in an environment variable so it never lands in
-your repository. With DDEV you can set one like this:
+Treat the ExchangeRate‑API key as a secret. The module reads the key from its own
+configuration (`exchangerate.settings`), which you set on the settings form — it
+does not read the key from an environment variable or any external secret store.
+Because the value lives in configuration, it will appear in an exported
+configuration (`drush cex`) unless you take steps to keep it out:
 
-```bash
-ddev dotenv set .ddev/.env --exchangerate-api-key=<your-key>
-ddev restart
-```
+- Enter the key on the settings form per environment and **exclude it from export**
+  — for example with the [Config Ignore](https://www.drupal.org/project/config_ignore)
+  or [Config Split](https://www.drupal.org/project/config_split) module so
+  `exchangerate.settings:api_key` is not written to your sync directory.
+- Or set the value per environment straight from the CLI instead of committing it:
 
-That makes the value available as `EXCHANGERATE_API_KEY` inside the container
-(keep `.ddev/.env` out of Git). You then enter the key on the settings form
-described in [Configuration](../configuration/index.md); if you manage this key in
-several environments, keep the value in each environment's secret store rather
-than in exported configuration.
+  ```bash
+  drush cset exchangerate.settings api_key '<your-key>' -y
+  drush cr
+  ```
+
+You still enter or set the key on each environment; see
+[Configuration](../configuration/index.md) for the settings form.
 
 ## Verify it worked
 
