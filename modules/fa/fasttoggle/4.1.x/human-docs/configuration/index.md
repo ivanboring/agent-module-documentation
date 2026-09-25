@@ -1,38 +1,49 @@
 # Configuration
 
-Fasttoggle has two parts to set up: a small **settings form** (at the
-`fasttoggle.settings` route) that controls which toggles are offered, and the
-**permissions** that decide who sees them. Because each toggle is permission‑gated,
-the permissions are really where the behaviour lives.
+Fasttoggle has three parts to set up: a small **settings form** that chooses the
+link label style, the **per‑bundle toggles** that decide which links are offered,
+and the **permissions** that decide who sees them.
 
 ## The settings form
 
-Open the Fasttoggle settings form (route `fasttoggle.settings`, reachable from the
-module's entry on the **Extend** page or under **Configuration**). Here you enable
-the toggles you want to expose across the site's entity types:
+Open the Fasttoggle settings form at **Configuration → System → Fasttoggle**
+(route `fasttoggle.settings`). It has a single option, **Label style**, which
+controls the wording of the toggle links:
 
-- **Node toggles** — *published* status, *promoted to front page*, and *sticky*.
-- **Comment toggles** — comment *status* (published/unpublished).
-- **User toggles** — user *status* (active/blocked).
+- **Status** — the label reflects the current state (e.g. *Published*, *Sticky*).
+- **Action** — the label shows what a click will do (e.g. *Unpublish*, *Promote*).
+  This is the default.
 
-Turn on only the toggles that fit your editorial workflow, then save. The toggles
-you enable here still only appear to users who also hold the matching permission.
+Choose a style and save.
+
+## Enabling toggles per bundle
+
+Which toggles are offered is set on each content type and comment type, not on the
+settings form:
+
+- **Content types** — go to **Structure → Content types → [type] → Edit** and open
+  the **Fasttoggle** section. Enable any of *Status (published/unpublished)*,
+  *Promoted to frontpage*, and *Sticky at top of lists*, then save.
+- **Comment types** — edit the comment type and enable the *Status
+  (published/unpublished)* toggle in its **Fasttoggle** section.
+
+Only the toggles you enable here appear as links, and only on the bundles where you
+enabled them.
 
 ## Permissions
 
-Fasttoggle provides its own permissions, managed at **People → Permissions**
-(`/admin/people/permissions`) — search for "fasttoggle" to find them. Assign each
-toggle permission to the roles that should be able to use it.
+Fasttoggle provides two permissions, managed at **People → Permissions**
+(`/admin/people/permissions`) — search for "fasttoggle":
 
-The key principle: a permission here lets a role use the *fast* one‑click version of
-an action they can **already perform**. Fasttoggle does not grant the underlying
-ability — a role that cannot unpublish a node through the normal edit form will not
-be able to unpublish it via a toggle either. So align these permissions with your
-existing moderation model: give editors the toggles for the statuses they already
-manage, and nothing more.
+- **Administer Fasttoggle** — access the settings form. Keep this for site
+  administrators.
+- **Use Fasttoggle** — see and use the toggle links. Grant this to the trusted
+  content‑moderation roles that should be able to change published/promoted/sticky
+  state on the bundles where fasttoggle is enabled.
 
 ## Save
 
-Save the settings form, and save the permissions page after assigning roles. The
-toggle links appear immediately for users whose roles have both the toggle enabled
-and the permission granted.
+Save the settings form, the content‑type / comment‑type edit forms, and the
+permissions page after assigning roles. The toggle links appear for users whose
+roles have the **Use Fasttoggle** permission, on the bundles where the toggle is
+enabled.

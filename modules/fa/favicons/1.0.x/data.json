@@ -1,14 +1,14 @@
 {
   "name": "Favicons",
   "data_name": "favicons",
-  "description": "generates and manages favicons/app icons for the site.",
+  "description": "Generates favicon and app-icon variants plus a web app manifest from one uploaded PNG and injects the icon/manifest markup into the page head.",
   "version": "1.0.x",
   "package": "SEO",
   "composer_namespace": "drupal/favicons",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^10||^11",
+  "configure": "favicons.settings.form",
+  "core_version_requirement": "^10 || ^11.1",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/favicons",
@@ -22,19 +22,24 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Theming"
+    "Theming",
+    "Content display"
   ],
   "subcategories": [
-    "Icons"
+    "Icon management",
+    "Progressive Web App"
   ],
   "keywords": [
     "favicon",
-    "icons",
     "app icons",
-    "seo",
-    "manifest"
+    "apple-touch-icon",
+    "web manifest",
+    "site.webmanifest",
+    "PWA",
+    "icons",
+    "SEO"
   ],
-  "project_description": "This module allows you to upload 1 file that generates different types to be used as favicon. \n\n Features \n It'll generate:\n\n \n 180x180 icon (apple-touch-icon) \n favicon.svg \n 96.x96 icon \n site.webmanifest \n \n The module will automatically add the icons and manifest to the head of the website.\n\n Post-Installation \n First, clear the cache. The module is installed and set to be on of the last for the hook-order (in Drupal 10). But that doesn't take effect until you clear the cache.\n\n After, you can upload your PNG favicon in the settings form and the rest is done automatically. \n\n Back to top",
+  "project_description": "Favicons lets a site administrator upload a single source PNG and automatically derive the favicon and app-icon set a modern site needs: a 96x96 icon, a 180x180 apple-touch-icon, a base64-embedded /favicon.svg endpoint, and a /site.webmanifest describing the icons, site name, theme colour and background colour. Derivatives are produced through core Image styles (96x96, 180x180). The module implements hook_page_attachments() to inject the icon <link> tags and the manifest reference into the <head> of every page, and it installs itself with a very high module weight so those tags override any theme-provided favicon markup. Configuration lives in the favicons.settings config object and is edited on a single settings form at /admin/config/search/favicons, gated by the 'administer favicons' permission. Two lightweight public routes (/favicon.svg and /site.webmanifest) render the SVG wrapper and the JSON manifest on demand. The module has no external dependencies, no submodules and no third-party libraries.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
