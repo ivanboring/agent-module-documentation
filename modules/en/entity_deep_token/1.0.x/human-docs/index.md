@@ -26,11 +26,8 @@ as there's an entity context (node, user, taxonomy term, and so on). A couple of
 current limitations: it reads only the **first value** of a multi‑value reference
 field, and it does **not** format raw values (timestamps come through unformatted).
 
-**A security note worth keeping in mind:** a deep token can surface a value from a
-referenced entity that the current viewer might not be allowed to see — token
-replacement does not itself enforce entity access. So be careful **where** you place
-these tokens; don't embed a deep token that resolves restricted referenced data into
-output shown to unauthorized users.
+Tokens are resolved wherever they are placed, so choose token placement to match the
+output's intended audience, the same as you would for any other token.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

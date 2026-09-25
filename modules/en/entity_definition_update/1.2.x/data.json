@@ -1,7 +1,7 @@
 {
   "name": "Entity Definition Update",
   "data_name": "entity_definition_update",
-  "description": "Applies entity type/field definition updates safely via regular update hooks.",
+  "description": "Developer service to apply pending entity-type/field storage definition (schema) updates from regular hook_update_N()/hook_install() code.",
   "version": "1.2.x",
   "package": null,
   "composer_namespace": "drupal/entity_definition_update",
@@ -11,7 +11,7 @@
     "drupal:field"
   ],
   "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/entity_definition_update",
@@ -22,23 +22,25 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
   ],
   "subcategories": [
-    "Entity API"
+    "Entity API",
+    "Deployment / release management"
   ],
   "keywords": [
     "entity",
     "definition",
     "update",
     "schema",
-    "developer",
-    "hook_update_n"
+    "hook_update_N",
+    "deployment",
+    "developer"
   ],
-  "project_description": "Provides the ability to update entity type definitions in your database in a safe way via regular update hooks. This module is an alternative to the Entity Type Definition Update Manager from Drupal core .\n\n Back to top \n\n Let's keep entity definition updates fairly easy \n If you don't have any existing fields in your entity type, which you like to update, but you have just new fields which you want to install:\n\n<?php\n\n<?php\n\ndeclare(strict_types=1);\n\n /**\n\n * Implements hook_install().\n\n */\n\nfunction my_easy_module_install($is_syncing) {\n\n /**\n\n * @var EntityDefinitionUpdateManager $entityDefinitionUpdate\n\n */\n\n $entityDefinitionUpdate = \\Drupal::service('entity_definition_update.entity_definition_update_manager');\n\n $entityDefinitionUpdate->applyUpdates();\n\n}\n\n?>\n\n Et voilà! Your entity definitions from code are in sync with the ones in your database.\n\n Back to top \n\n Complex example usage within a example_module.install file \n This approach can be followed, if you have already data for existing fields, which you want to update. Then you must migrate data for preserving it. The entity definition update process is split into five steps:\n\n \n Backing up the date into a temporary database table \n Truncating the old database table \n Updating the entity definition \n Restoring the data into the database table, with the updated entity definition \n Deleting the temporary created database table with the old structure, for backing up the data \n \n <?php\n\n<?php declare(strict_types=1);\n\n use Drupal\\Core\\Database\\Database;\n\nuse Drupal\\entity_definition_update\\EntityDefinitionUpdateManager;\n\n /**\n\n * Update entity type definitions in your database, to reflect the definitions in the entity type code.\n\n */\n\nfunction example_module_update_9001(): void {\n\n $database = \\Drupal::database();\n\n $tables = [\n\n 'announcement' => 'announcement__temp',\n\n ];\n\n // Create a full copy of source tables.\n\n foreach ($tables as $originalTableName => $tempTableName) {\n\n $database->query(\"CREATE TABLE $tempTableName LIKE $originalTableName\");\n\n $database->query(\"INSERT INTO $tempTableName SELECT * FROM $originalTableName\");\n\n $database->truncate($originalTableName)->execute();\n\n }\n\n /**\n\n * @var EntityDefinitionUpdateManager $entityDefinitionUpdate\n\n */\n\n $entityDefinitionUpdate = \\Drupal::service('entity_definition_update.entity_definition_update_manager');\n\n $entityDefinitionUpdate->applyUpdates();\n\n $schema = Database::getConnection()->schema();\n\n $schema->changeField('announcement', 'contracted_company_other_information__value', 'contracted_company_other_information__value', [\n\n 'not null' => FALSE,\n\n 'type' => 'text',\n\n ]);\n\n \\Drupal::logger('entity_definition_update')->notice('Updated field storage config.');\n\n foreach ($tables as $originalTableName => $tempTableName) {\n\n // Method 1: copy back everything into a table with \"changed\" database columns\n\n $database->query(\"INSERT INTO $originalTableName (\n\n id,\n\n langcode,\n\n uid,\n\n contracted_company_other_information__value\n\n )\n\n SELECT\n\n id,\n\n langcode,\n\n uid,\n\n contracted_company_other_information\n\n FROM $tempTableName\");\n\n if ($originalTableName === 'table_with_same_structure')\n\n // Method 2: copy back everything into a table with \"same\" database columns\n\n $database->query(\"INSERT INTO $originalTableName SELECT * FROM $tempTableName\");\n\n }\n\n $database->query(\"DROP TABLE $tempTableName\");\n\n \\Drupal::logger('entity_definition_update')->notice(\"Dropped table $tempTableName\");\n\n }\n\n}\n\n ?>\n\n Back to top \n\n Using the Entity Definition Update Manager from Drupal core \n For applying field updates for an existing entity type definition, the Entity Definition Update Manager from Drupal core can be also an option. See an example below:\n\n<?php\n\nfunction your_module_update_8001() {\n\n // First we need to get update manager.\n\n $definition_update_manager = \\Drupal::entityDefinitionUpdateManager();\n\n // Load the storage definition of the field.\n\n $field_storage = …",
+  "project_description": "Entity Definition Update provides a single developer-facing service that applies pending entity-type and field storage definition (schema) changes to the database, intended to be called from a module's own hook_install() or hook_update_N() implementations. It is an alternative to relying on Drupal core's Entity Definition Update Manager, which no longer applies definition updates automatically. The service (entity_definition_update.entity_definition_update_manager, class Drupal\\entity_definition_update\\EntityDefinitionUpdateManager) exposes applyUpdates(), which reads core's complete change list, clears cached entity type and field definitions when changes exist, then applies entity-type creates/updates and field storage definition creates/updates/deletes through core's entity type listener and field storage definition listener. Updates that would require an entity data migration are rejected with an exception, so developers back up and restore data themselves as part of the update hook. The module ships no routes, forms, permissions, config, or Drush commands; it is used purely from update/deployment code that runs via drush updatedb or update.php. Depends on core System and Field.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",
