@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- **Drupal 9.3, 10, or 11** (`core_version_requirement: ^9.3 || ^10 || ^11`).
+- **Drupal 9.3, 10, 11, or 12** (`core_version_requirement: ^9.3 || ^10 || ^11 || ^12`).
 - The **Environment Indicator** module (`environment_indicator`) — this is a hard
   dependency. Composer pulls it in automatically with the command below, and Drupal
   enables it as a dependency when you turn this module on.
@@ -35,14 +35,18 @@ Drupal will enable Environment Indicator too if it isn't already on.
 
 ## Verify it worked
 
-First confirm Environment Indicator is set up (its coloured bar appears in the admin
-toolbar). Then request any page and inspect the **response HTTP headers** — for
-example:
+First set the release value for this environment:
 
 ```bash
-curl -sI https://your-site.example | grep -i environment
+drush state:set environment_indicator.current_release v1.2.44
 ```
 
-You should see the current environment reflected in the headers. If nothing
-appears, check that Environment Indicator has an environment name configured for
-this environment.
+Then request any page and inspect the **response HTTP headers** — for example:
+
+```bash
+curl -sI https://your-site.example | grep -i '^Release:'
+```
+
+You should see a `Release` header carrying the value you set. If nothing appears,
+confirm the `environment_indicator.current_release` state value is not empty
+(`drush state:get environment_indicator.current_release`).

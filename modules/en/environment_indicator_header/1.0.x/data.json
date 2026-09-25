@@ -1,16 +1,16 @@
 {
   "name": "Environment Indicator Header",
   "data_name": "environment_indicator_header",
-  "description": "displays the environment indicator version in a header.",
+  "description": "Display environment indicator version in header.",
   "version": "1.0.x",
   "package": "Development",
   "composer_namespace": "drupal/environment_indicator_header",
   "composer_requirements": {},
   "dependent_modules": [
-    "environment_indicator:environment_indicator"
+    "environment_indicator"
   ],
   "configure": null,
-  "core_version_requirement": "^9.3||^10||^11",
+  "core_version_requirement": "^9.3 || ^10 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/environment_indicator_header",
@@ -21,22 +21,24 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Developer tools"
+    "Developer tools",
+    "Administration tools"
   ],
   "subcategories": [
-    "Debugging & inspection"
+    "Deployment / release management",
+    "Environment indicator"
   ],
   "keywords": [
     "environment indicator",
-    "header",
-    "development",
+    "http header",
+    "release",
     "version",
-    "indicator"
+    "development"
   ],
-  "project_description": "This module add a missing feature to Environment indicator module.\n\n Thanks to Environment Indicator Header, you can display the current release in the http header.\n\n Depends of Environment indicator module.\n\n How to install and configure ? \n Install the Environment Indicator Header module as you would normally install a\n\ncontributed Drupal module. Visit https://www.drupal.org/node/1897420 for further\n\ninformation.",
+  "project_description": "Environment Indicator Header adds a missing feature to the Environment Indicator module: it emits the current release string in an HTTP response header. A response event subscriber sets a 'Release' header on every response whose value is read from the 'environment_indicator.current_release' Drupal state key (populated by Environment Indicator, e.g. via 'drush state:set environment_indicator.current_release v1.2.44'). The module has no configuration UI, routes, permissions or config objects; it depends on the environment_indicator module.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

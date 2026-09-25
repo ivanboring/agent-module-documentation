@@ -1,40 +1,49 @@
 {
   "name": "Environment Context",
   "data_name": "environment_context",
-  "description": "Provides a context plugin for the current environment (dev/stage/prod) for conditional behaviour.",
+  "description": "Provides a context for the current runtime environment (dev, stage, prod) with pluggable, event-based detection and metadata.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Environment",
   "composer_namespace": "drupal/environment_context",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/environment_context",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [],
+  "submodules": [
+    "environment_context_config_split",
+    "environment_context_environment_indicator"
+  ],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Developer tools"
+    "Developer tools",
+    "Administration tools"
   ],
   "subcategories": [
-    "Environment"
+    "Plugin context providers",
+    "Environment indicator",
+    "Deployment / release management"
   ],
   "keywords": [
     "environment",
     "context",
     "dev",
+    "stage",
     "prod",
-    "condition"
+    "condition",
+    "cache context",
+    "config split"
   ],
-  "project_description": "Environment Context provides a robust way to detect and act on the current runtime environment (e.g. development, staging, production) in Drupal. It integrates deeply with Drupal’s context, condition, and caching systems.\n\n ✅ Features \n \n Detects the current environment via:\n \n settings.php \n Environment variables ( DRUPAL_ENVIRONMENT ) \n Pluggable event-based detection \n \n \n Provides a Context Provider for environment \n Adds a Condition Plugin to use environment in:\n \n Block visibility \n Layout Builder \n Other context-aware systems \n \n \n Defines an environment Typed Data plugin for strong typing \n Adds an environment Cache Context to vary content by environment \n Easily extendable: other modules can register environments or override detection \n \n ⚙️ How it works \n The module dispatches events to determine the current environment and all known environments. This makes detection and registration extensible without hardcoding logic in one place.\n\n It provides:\n\n \n A context provider plugin: EnvironmentContext \n A condition plugin: EnvironmentCondition \n A typed data plugin: Environment \n A cache context plugin: environment \n \n You can use these in block visibility, service injections, or even configuration splits.\n\n 📦 Installation \n composer require drupal/environment_context\ndrush en environment_context\n This module has no UI — it works behind the scenes and via developer APIs.\n\n 🚀 Example Usage \n Get the current environment in a service: \n\n $env = \\Drupal::service('environment_context.context.environment')->getCurrentEnvironment(); React to specific environments: \n\n if ($env === 'production') {\n // Do something only on production\n} Define environments via event listener: \n\n $event->addEnvironment('production', ['label' => 'Production']); Add an environment condition to a block: \n\n \n Use the \"Current environment\" condition in block visibility settings \n Select one or more matching environments \n \n 📎 Requirements \n \n Drupal 10 or 11 \n No external dependencies \n \n 🧩 Related Projects \n \n Config Split — often used alongside to manage config per environment \n Environment Indicator — UI decoration for environments \n Sites — Supports environment based site settings \n \n 💬 Feedback & Contributions \n Contributions, feature requests, and bug reports are welcome via the issue queue .\n\n Back to top",
+  "project_description": "Environment Context makes the current runtime environment (for example development, staging or production) available to Drupal as a first-class value. It detects the active environment at runtime through an event, exposes it as a Drupal Context (usable in Block visibility, Layout Builder and other context-aware plugins), defines an 'environment' cache context so render caching varies correctly per environment, and ships a 'Current environment' condition plugin and an 'environment' typed-data plugin. Detection is pluggable via events with no hardcoded logic: the bundled detector reads Settings::get('environment') from settings.php or the DRUPAL_ENVIRONMENT environment variable, and other modules can register environments or override detection by subscribing to the module's events. Two optional submodules auto-register environments from other projects: environment_context_config_split adds every Config Split as an available environment, and environment_context_environment_indicator adds every Environment Indicator entity.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
