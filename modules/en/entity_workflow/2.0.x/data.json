@@ -1,7 +1,7 @@
 {
   "name": "Entity Workflow",
   "data_name": "entity_workflow",
-  "description": "Provides configurable workflows for entities, integrating Workflows and Workspaces.",
+  "description": "Attaches a configurable state-transition workflow to each content entity inside a Workspace, built on core Workflows; ships default Content and Workspace workflows as submodules.",
   "version": "2.0.x",
   "package": null,
   "composer_namespace": "drupal/entity_workflow",
@@ -11,7 +11,7 @@
     "drupal:workspaces"
   ],
   "configure": null,
-  "core_version_requirement": "^11.3||^12",
+  "core_version_requirement": "^11.3 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/entity_workflow",
@@ -38,7 +38,9 @@
     "entities",
     "workspaces",
     "states",
-    "editorial"
+    "transitions",
+    "editorial",
+    "moderation"
   ],
   "project_description": "The Entity Workflow module integrates with the Workspaces module in Drupal 10+ (and CPS in D7) to create an individual workflow for each entity within a workspace (site version in D7). This provides the ability for a workspace to allow each piece of content to go through a workflow.\n\n The Drupal 10+ version includes two sub-modules that provide basic workflows for content and workspaces.\n\n The Drupal 7 version of the module is primarily API, and does not set up a default workflow for you, so using this module will require a bit of work to set up a workflow.",
   "maintenance_status": "Minimally maintained",
