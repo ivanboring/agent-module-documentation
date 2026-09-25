@@ -14,7 +14,7 @@ handlers and validation; this module only handles the button-and-popup
 presentation and has no access-control role of its own.
 
 It depends on the EPT **basic button** module (`ept_basic_button`), Paragraphs and
-Webform, and it targets Drupal 10.1, 11 and 12.
+Webform, and it targets Drupal 9.3, 10 and 11.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

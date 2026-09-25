@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- **Drupal 10.1, 11, or 12** (`core_version_requirement: ^10.1 || ^11 || ^12`).
+- **Drupal 9.3, 10, or 11** (`core_version_requirement: ^9.3 || ^10 || ^11`).
 - The **EPT Basic Button** module (`ept_basic_button`) — this paragraph builds on
   the EPT button, which in turn brings in EPT Core.
 - The **Paragraphs** module (`paragraphs`).
