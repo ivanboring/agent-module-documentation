@@ -13,38 +13,23 @@ store the secret as a Key in the next step.
 
 ## 2. Store the credentials as a Key (do not hard‑code secrets)
 
-Credentials are consumed through the **Key** module, so the secret never lives in
-configuration or code. The safest pattern is to keep the value in an environment
-variable and reference it from a Key entity.
+Authentication is handled entirely by the **MS Graph API** module, which stores the
+tenant credentials as a **Key** entity — the secret never lives in EntraSync's own
+configuration or code. EntraSync's sync form only *references* an existing key: its
+key selector is filtered to keys of type **"MS Graph API Key"** (`ms_graph_api`), so
+you must create a key of that type, not a generic key.
 
-With **DDEV**, save the secret into the container's environment and restart so
-DDEV loads it:
+Create the key through the **Key** module (Configuration » System » Keys, or the
+"create a new key" link on the sync form), choosing the **MS Graph API Key** type and
+entering the tenant ID, client ID, and client secret from your Azure app as the MS
+Graph API module documents. Follow that module's guidance at Administration »
+Configuration » Web Services » Microsoft Graph API to complete the connection.
 
-```bash
-ddev dotenv set .ddev/.env --entra-client-secret=<value>
-ddev restart
-```
-
-This creates the environment variable `ENTRA_CLIENT_SECRET`. **Never commit
-`.ddev/.env`.** Confirm the variable is present *without* printing it:
-
-```bash
-ddev exec 'test -n "$ENTRA_CLIENT_SECRET"'   # exit status 0 means it is set
-```
-
-Then create a Key that reads from that environment variable:
-
-```bash
-ddev drush key:save entra_client_secret \
-  --label='Entra client secret' \
-  --key-type=authentication \
-  --key-provider=env \
-  --key-provider-settings='{"env_variable":"ENTRA_CLIENT_SECRET","base64_encoded":false,"strip_line_breaks":true}' \
-  --key-input=none -y
-```
-
-Add a Key for each tenant you sync. Keep these keys tightly secured — an Entra app
-credential can read your whole directory.
+As with any secret, prefer a key provider that keeps the value out of exported
+configuration and version control (for example an environment-variable or file
+provider) rather than storing it directly in the database, and give the key a tightly
+restricted set of editors. Add one key per tenant you sync. Keep these keys tightly
+secured — an Entra app credential can read your whole directory.
 
 ## 3. Create synchronisations
 
