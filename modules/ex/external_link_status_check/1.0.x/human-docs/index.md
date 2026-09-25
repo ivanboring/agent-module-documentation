@@ -28,15 +28,16 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 
 1. [Installation](installation/index.md) — install the module with Composer and
    enable it.
-2. [Configuration](configuration/index.md) — set up scan behavior and read the
+2. [Configuration](configuration/index.md) — run a manual scan and read the
    broken-link report.
 
 ## Where it lives in the admin menu
 
 There are two places to look once the module is enabled:
 
-- **Scan settings** at **Configuration → System → External Link Scan**
-  (`/admin/config/system/external-link-scan`) — control how scanning behaves.
+- **Link scanner** at **Configuration → System → External Link Scan**
+  (`/admin/config/system/external-link-scan`) — a page with a single **Start Full Scan**
+  button that scans all supported content on demand (there are no tunable options here).
 - **The report** at **Reports → External Links**
   (`/admin/reports/external-links`) — see the tracked links, their status, and an
   export option.

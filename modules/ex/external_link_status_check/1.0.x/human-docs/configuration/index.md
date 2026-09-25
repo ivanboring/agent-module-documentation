@@ -1,19 +1,21 @@
 # Configuration
 
-External Link Status Check has two halves: a **scan settings** page where you
-decide how and when links are checked, and a **report** where the results show
-up. This page walks through both.
+External Link Status Check has two halves: a **link scanner** page where you can
+trigger a full scan on demand, and a **report** where the results show up. This
+page walks through both. There are no configurable scan options — behavior such as
+which content types are scanned and the request timeout is fixed by the module.
 
-## Open the scan settings
+## Run a manual scan
 
-1. Log in as a user with permission to administer the module.
+1. Log in as a user with permission to administer site configuration.
 2. Go to **Configuration → System → External Link Scan**, or navigate directly to
    `/admin/config/system/external-link-scan`.
+3. Click **Start Full Scan**. The module walks all supported content in a batch and
+   updates the report as it goes.
 
-This is where you control the module's scanning behavior. The module scans
-content in three situations — when an entity is created, when it is updated, and
-during cron runs — and this form governs how that scanning proceeds. Save the
-form after any change.
+You do not have to scan manually to get results: the module also scans content
+automatically when an entity is created or updated and during cron runs. Use the
+manual scan when you want to refresh everything immediately.
 
 ## How scanning and checking work
 

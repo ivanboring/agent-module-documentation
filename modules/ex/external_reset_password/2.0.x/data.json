@@ -1,33 +1,34 @@
 {
   "name": "External reset password",
   "data_name": "external_reset_password",
-  "description": "Allows setting an external URL for the user password-reset flow.",
+  "description": "Redirects the Drupal user password-reset request form to an administrator-configured external URL.",
   "version": "2.0.x",
-  "package": null,
+  "package": "User interface",
   "composer_namespace": "drupal/external_reset_password",
   "composer_requirements": {},
   "dependent_modules": [
     "drupal:user"
   ],
-  "configure": null,
+  "configure": "external_reset_password.settings_form",
   "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/external_reset_password",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=7.2.5",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Security",
-    "Access control"
+    "Access control",
+    "Security"
   ],
   "subcategories": [
+    "Password reset",
     "Login page protection"
   ],
   "keywords": [
@@ -35,9 +36,10 @@
     "external",
     "authentication",
     "url",
+    "redirect",
     "user"
   ],
-  "project_description": "The External Reset Password module provides administrators with the flexibility to configure an external path for the user reset password page in Drupal. When users initiate a password reset, they will be redirected to the specified external resource, enhancing customization and control over the password recovery process.\n\n Configuration \n 1. Install and enable the \" External Reset Password \" module ( Follow the standard Drupal module installation procedure ).\n\n2. Navigate to \" Configuration \" > \" People \" > \" External Reset Password \".\n\n3. Enter the URL of your preferred external password reset resource.\n\n4. Clear your cache for the changes to take effect.",
+  "project_description": "The External Reset Password module lets an administrator configure an external URL that the Drupal user password-reset request page redirects to. When a visitor opens the built-in \"Request new password\" form (route user.pass at /user/password), a kernel-request event subscriber (ExternalRedirectSubscriber) issues a redirect to the configured URL instead of rendering Drupal's own form. This suits sites whose authentication or password management lives in an external system (identity provider, SSO portal, or a custom reset page). The whole module is a single settings form (ErpSettingsForm, route external_reset_password.settings_form under /admin/config/people, gated by the core 'administer site configuration' permission) that stores one value, the 'url' key of the external_reset_password.settings config object, plus the event subscriber that acts on it. It ships config schema but no permissions, entities, plugins, services beyond the subscriber, or Drush commands, and depends only on core's User module.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",
