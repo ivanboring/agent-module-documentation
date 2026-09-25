@@ -14,13 +14,10 @@ that mapped account, via the External Authentication (`externalauth`) module thi
 one builds on; GitLab handles *who you are*, Drupal still decides *what you can
 do*.
 
-On the security side, the good news is that the OAuth flow is implemented
-correctly: the module stores the OAuth `state` value in Drupal's private tempstore
-when the login starts and, on return, rejects the request unless the returned
-state strictly matches — with no fail-open shortcut — which is exactly what
-protects against login-CSRF. Your job is to hold up the other end: keep the GitLab
-**client secret** secret, serve everything over **HTTPS**, and point the module at
-a GitLab instance you trust.
+On the operations side, look after the parts you control: keep the GitLab
+**client secret** confidential, serve the whole login flow over **HTTPS**,
+restrict the settings form to trusted administrators, and point the module at a
+GitLab instance you trust — it is the authority that decides who may sign in.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
