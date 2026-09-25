@@ -1,7 +1,7 @@
 {
   "name": "Facets Max Facets",
   "data_name": "facets_max_facets",
-  "description": "Enforces a global maximum number of active facets in Search API Facets.",
+  "description": "Enforces a global maximum number of active facets with per-facet opt-in.",
   "version": "1.0.x",
   "package": "Search",
   "composer_namespace": "drupal/facets_max_facets",
@@ -9,8 +9,8 @@
   "dependent_modules": [
     "facets:facets"
   ],
-  "configure": null,
-  "core_version_requirement": "^10||^11",
+  "configure": "facets_max_facets.settings",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/facets_max_facets",
@@ -27,7 +27,7 @@
     "Site search"
   ],
   "subcategories": [
-    "Facets"
+    "Faceted search"
   ],
   "keywords": [
     "facets",

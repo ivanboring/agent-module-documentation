@@ -10,9 +10,8 @@ URLs.
 
 The key plugin is **TranslateEntityInLinkProcessor**, which resolves entity links
 in the facet results back to their labels. It is a display/readability
-enhancement: it only relabels values that already appear in search results the
-visitor is permitted to see, adds no access bypass, and the results continue to
-respect the underlying index and View access rules.
+enhancement that relabels the facet values produced for the current facet, using
+the referenced entity's translated label in the visitor's current language.
 
 The module has **no central settings form** — you enable the processor on each
 facet where you want it.
