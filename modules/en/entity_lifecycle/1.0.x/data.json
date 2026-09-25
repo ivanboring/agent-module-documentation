@@ -1,43 +1,62 @@
 {
   "name": "Entity Lifecycle",
   "data_name": "entity_lifecycle",
-  "description": "manages entity lifecycle including outdated-content detection and review status.",
+  "description": "Tracks content freshness for content entities: stamps a lifecycle status on save, scans on cron against configurable condition plugins, and surfaces content that needs review.",
   "version": "1.0.x",
   "package": "Entity Lifecycle",
   "composer_namespace": "drupal/entity_lifecycle",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:node",
-    "drupal:views"
+    "node",
+    "views"
   ],
-  "configure": null,
-  "core_version_requirement": "^10.3||^11",
+  "configure": "entity_lifecycle.settings",
+  "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/entity_lifecycle",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
-  "suggests": {},
-  "submodules": [],
+  "suggests": {
+    "drupal/eca": "Enables the entity_lifecycle_eca submodule with workflow automation for lifecycle transitions.",
+    "drupal/entity_usage": "Enables the Entity Usage condition plugin to detect content referenced by other entities.",
+    "drupal/linkchecker": "Enables the Link Checker condition plugin to detect content with broken links.",
+    "drupal/radioactivity": "Enables the Radioactivity condition plugin to detect content based on visitor engagement metrics."
+  },
+  "submodules": [
+    "entity_lifecycle_eca",
+    "entity_lifecycle_user",
+    "entity_lifecycle_entity_usage",
+    "entity_lifecycle_linkchecker",
+    "entity_lifecycle_radioactivity"
+  ],
   "provides_permissions": true,
-  "provides_drush_commands": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "LifecycleCondition"
+  ],
   "categories": [
-    "Content editing experience"
+    "Content editing experience",
+    "Automation"
   ],
   "subcategories": [
-    "Content scheduling / publishing"
+    "Workflow / state management",
+    "Content scheduling / publishing",
+    "Cron / task scheduling",
+    "Dashboard / reporting"
   ],
   "keywords": [
     "lifecycle",
     "outdated content",
-    "review",
+    "content review",
+    "freshness",
     "governance",
-    "freshness"
+    "cron scan",
+    "condition plugin"
   ],
-  "project_description": "Summary \n Entity Lifecycle automatically tracks content freshness for nodes, media, and user entities, ensuring sites stay accurate and credible. New to Drupal? This module provides a systematic review cycle to flag outdated pages—like past events or policies—and identify inactive user accounts, preventing manual tracking hassles and misleading visitors.\n\n Features \n Basic functionality: Entity Lifecycle solves content staleness by automatically tracking freshness for nodes, media, and users. It implements an automated review cycle: When content is created or edited, it's marked as \"Current\" with a timestamp. A cron-based scanner evaluates content against configurable conditions (age, usage, login activity, etc.). Content matching these conditions is assigned a status like \"Needs Review\" or \"Outdated\". Editors see a banner when viewing content that needs attention. Editing the content resets it to \"Current\", restarting the cycle. This creates a continuous feedback loop that surfaces stale content without requiring manual tracking.\n\n Unique features: \n\n \n Automatic lifecycle status on every save \n Configurable statuses with colors and review flags \n Extensible condition plugin system with groups \n Per-bundle configuration (enable scanning only for specific content types) \n Review validity period per content type \n Banner notification for content needing review \n Configurable scan intervals (every cron run, 6h, 12h, daily, 2 days, weekly) \n Views integration for editorial dashboards \n Drush commands for manual scanning \n \n When and why would someone use this module? Websites accumulate content over time, but not all of it stays accurate or relevant. Pages about past events, outdated policies, or deprecated features can mislead visitors and damage credibility. Inactive user accounts pose security risks. Manual tracking of content freshness doesn't scale – editors and administrators need a systematic way to identify what needs attention.\n\n What use cases are there? Keep your content fresh and relevant on content-heavy sites like news portals, event calendars, or policy hubs. Identify unused media files cluttering your library. Find inactive user accounts for cleanup or security review.\n\n Post-Installation \n How does this module actually work once I install it? Inspired by the timeless \"Circle of Life,\" this module guides your content through a natural, cyclical journey—ensuring nothing valuable fades into obscurity without a gentle nudge. Here's the elegant rhythm in five stages:\n\n \n The Dawn of Creation (Birth & Vitality): When content is created or edited, it's marked as \"Current\" with a timestamp—like a story stepping into the spotlight, full of promise and relevance. \n The Quiet Vigil (The Scan Awakens): A cron-based scanner evaluates content against configurable conditions (age, usage, login activity, etc.), acting as the wise observer in the circle, attuned to the subtle shifts of time. \n The Twilight Call (Awakening Awareness): Content matching these conditions is assigned a status like \"Needs Review\" or \"Outdated\"—a soft echo reminding us that even the mightiest tales need renewal to endure. \n The Editor's Touch (The Renewal Rite): Editors see a banner when viewing content that needs attention, inviting a simple intervention to breathe new life into the narrative. \n The Eternal Loop (Rebirth & Harmony): Editing the content resets it to \"Current,\" restarting the cycle. This creates a continuous feedback loop that surfaces stale content without requiring manual tracking—like the savanna's rhythm, where endings seamlessly feed new beginnings. \n \n Visit Configuration > Content authoring > Entity Lifecycle to enable per-bundle scanning, define statuses, set conditions, configure scan intervals, and tune validity periods. For user lifecycle management, enable the User submodule and configure at Configuration > People > Account settings.\n\n Supported Entity Types \n The module supports the following entity types:\n\n \n Nodes: Full …",
+  "project_description": "Entity Lifecycle tracks the freshness of content entities and surfaces material that has gone stale. It adds five base fields (lifecycle_status, lifecycle_last_reviewed, lifecycle_exclude, lifecycle_override_days, lifecycle_condition_details) to enabled entity types. Statuses are configurable 'lifecycle_status' config entities (default install ships current/needs_review/outdated) with a color, weight, is_default and requires_review flag. On every entity save the module re-stamps the entity to the default status with a fresh timestamp, so editing counts as a review. A cron scan (throttled by an interval setting) and Drush commands (entity-lifecycle:scan / :rebuild / :stats / :config) evaluate each enabled bundle's configured LifecycleCondition plugins (age, published status, catch-all default, plus optional entity-usage, broken-links, radioactivity and user-account conditions from submodules) and write a new status directly to the entity data table. Content whose status requires review shows an editor-facing banner via hook_page_top, and Views dashboards under Content, Media and People list items needing review. Configuration lives at /admin/config/content/entity-lifecycle and per-bundle via content-type/media-type forms; the LifecycleCondition plugin type and a set of hooks let other modules extend conditions, bundleless entity-type support and summary rendering.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
