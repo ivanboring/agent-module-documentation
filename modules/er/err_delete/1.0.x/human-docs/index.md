@@ -21,8 +21,8 @@ Drupal 10 and 11.
 > **This operation is destructive.** Deletions here are permanent, and ticking a
 > referenced item's checkbox removes it from the whole system — including anywhere
 > else it's used. Review the connected-items list carefully before confirming, and
-> keep a backup. Deletion is gated by this module's permission plus normal node
-> delete access, so grant that permission only to trusted roles.
+> keep a backup. Deletion is gated by this module's permission, so grant it only to
+> trusted roles.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

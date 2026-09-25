@@ -1,14 +1,14 @@
 {
-  "name": "Entity Reference Auto",
+  "name": "Entity Reference Automation",
   "data_name": "er_auto",
-  "description": "Automates entity-reference field input based on entity conditions.",
+  "description": "Automation of field input elements based on entity references.",
   "version": "2.1.x",
   "package": "Field types",
   "composer_namespace": "drupal/er_auto",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/er_auto",
@@ -19,13 +19,15 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content editing experience"
+    "Content editing experience",
+    "Automation"
   ],
   "subcategories": [
-    "Field widgets"
+    "Form widgets / select UI",
+    "Entity selection"
   ],
   "keywords": [
     "entity reference",
