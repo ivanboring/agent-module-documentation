@@ -13,18 +13,25 @@ production site reports.
 
 ## Store the API key securely
 
-The API key is a credential — do not commit it to version control. With DDEV, store it
-as an environment variable:
+The API key is a credential — do not commit it to version control. Rather than saving it
+in the settings form (where it becomes part of exported configuration), Evercurrent lets
+you supply the key from `settings.php`. The module reads it with
+`Settings::get('evercurrent_environment_token')`, so add this on the **production** site
+only:
 
-```bash
-ddev dotenv set .ddev/.env --evercurrent-api-key=<your-api-key>
-ddev restart
+```php
+$settings['evercurrent_environment_token'] = 'your-api-key';
 ```
 
-That exposes it inside the web container as `EVERCURRENT_API_KEY` (keep `.ddev/.env`
-out of version control). Reference it from `settings.php` with
-`getenv('EVERCURRENT_API_KEY')` so the key lives only on the production environment and
-is not carried in exported configuration.
+Leave the settings-form **API key** field empty on all environments and the production
+`settings.php` value is used automatically. (If you check *Override API key stored in
+settings.php* on the form, the form's key value takes precedence instead.)
+
+If you keep secrets in environment variables, you can still source the value there —
+assign it to the setting Evercurrent actually reads, e.g.
+`$settings['evercurrent_environment_token'] = getenv('EVERCURRENT_API_KEY');` — but the
+module itself only ever looks at `evercurrent_environment_token`, not at any environment
+variable directly.
 
 ## Enter the settings
 
@@ -44,9 +51,8 @@ Save the form.
 Evercurrent expects **one API key per environment**. If you copy your site to
 development or staging, you do not want those copies reporting updates under the
 production key. The recommended approach (per the module's README) is to set the API
-key in **`settings.php` on the production site only**, so development environments have
-no key and therefore do not report. Using the environment-variable approach above
-naturally achieves this, since the variable is only set on production.
+key in **`settings.php` on the production site only** (`$settings['evercurrent_environment_token']`),
+so development environments have no key and therefore do not report.
 
 ## Verify
 
