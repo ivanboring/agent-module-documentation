@@ -1,19 +1,19 @@
 {
   "name": "Entity Reference Delete Check",
   "data_name": "entity_reference_delete_check",
-  "description": "Warns/prevents deleting an entity that is still referenced by entity-reference fields.",
+  "description": "Checks all entity reference fields for usages of the content entity about to be deleted and informs the user on the delete confirm form.",
   "version": "1.1.x",
   "package": null,
   "composer_namespace": "drupal/entity_reference_delete_check",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^10.3||^11",
+  "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/entity_reference_delete_check",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": "^8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [
@@ -21,20 +21,22 @@
   ],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Site structure"
+    "Administration tools",
+    "Content editing experience"
   ],
   "subcategories": [
-    "Referential integrity"
+    "Entity reference tracking"
   ],
   "keywords": [
     "entity reference",
     "delete",
-    "integrity",
+    "referential integrity",
     "usage",
-    "references"
+    "references",
+    "delete form"
   ],
   "project_description": "Synopsis \n This module alters the `\\Drupal\\Core\\Entity\\ContentEntityDeleteForm` to add information about existing references to the entity.\n\n Known problems \n \n The module does not include translations. \n \n Similar projects and how they are different \n \n Entity Reference Delete : Automatically deletes referenced entities. \n Entity Usage : Tracks and displays more usages on an independent page viewable at any time. \n Track Usages : Similar to Entity Usage but with ideas from #3060802 . \n \n Dependencies \n The sub-module entity_reference_delete_check_paragraph_url depends on Paragraphs and is used to provide the URL of the page where a paragraph is used. this is useful for entities which are referenced inside a paragraph.\n\n Back to top",
   "maintenance_status": "Minimally maintained",

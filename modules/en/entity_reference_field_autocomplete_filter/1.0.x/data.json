@@ -1,14 +1,14 @@
 {
   "name": "Entity Reference Field Autocomplete Filter",
   "data_name": "entity_reference_field_autocomplete_filter",
-  "description": "An entity-reference widget that filters autocomplete results by another field's value.",
+  "description": "Create a field widget for entity reference fields that allows filtering by bundle.",
   "version": "1.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/entity_reference_field_autocomplete_filter",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^10||^11",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/entity_reference_field_autocomplete_filter",
@@ -22,19 +22,20 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Developer tools"
+    "Content editing experience"
   ],
   "subcategories": [
-    "Fields"
+    "Form widgets / select UI",
+    "Entity selection"
   ],
   "keywords": [
     "entity reference",
     "autocomplete",
-    "filter",
-    "widget",
+    "bundle filter",
+    "field widget",
     "selection"
   ],
-  "project_description": "This module creates a field widget for entity_reference fields with a select field to choose a bundle used to restrict\n\nthe results from the autocomplete field.\n\n Features \n This module creates a new filterable by bundle entity reference autocomplete field widget.\n\n Post-Installation \n Once the module is installed navigate to the Manage form display page and select the \"Filterable Autocomplete\" widget next to your entity reference field.\n\n Additional Requirements \n This module has no additional requirements.\n\n Similar projects \n I was not able to find anything similar, which is why I wrote this.\n\n Back to top",
+  "project_description": "Provides a single entity-reference field widget, 'Filterable Autocomplete' (plugin id entity_reference_filterable_autocomplete), that extends core's EntityReferenceAutocompleteWidget. When the reference field allows more than one target bundle, the widget adds a 'Search within' bundle select above the autocomplete textfield; picking a bundle restricts the autocomplete suggestions to that single bundle via an AJAX rebuild of the field's selection settings. With one or zero allowed bundles it behaves exactly like the core autocomplete widget. Set it per field on Manage form display. No dependencies beyond Drupal core, no permissions, no configuration form, no routes of its own.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",
