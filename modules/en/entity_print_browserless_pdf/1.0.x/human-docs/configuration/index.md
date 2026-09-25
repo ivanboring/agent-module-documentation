@@ -25,11 +25,10 @@ Once Browserless is selected, its connection fields appear:
   Entity Print will POST the print HTML to. Use the full URL for your
   self‑hosted server or the hosted Browserless service.
 - **Token** — the access token your Browserless instance requires (the hosted,
-  paid service uses one). This is a **secret**: do not paste a production token
-  into a form that gets committed to configuration in plain text. Prefer storing
-  the value in an environment variable and referencing it (for example via the
-  [Key](https://www.drupal.org/project/key) module) so the secret never lands in
-  exported config or version control.
+  paid service uses one). The module stores this value as a plain plugin
+  configuration value within Entity Print's engine settings; it does not read it
+  from an environment variable or a Key entity. Treat the resulting configuration
+  as sensitive and restrict who can view or export it.
 
 Requests are sent over Drupal's Guzzle HTTP client with TLS by default; keep the
 endpoint on `https://` so the token and your content are encrypted in transit.
@@ -39,14 +38,11 @@ endpoint on `https://` so the token and your content are encrypted in transit.
 Click **Save configuration**. Then generate a PDF from any Entity Print print
 link to confirm Browserless is producing the document.
 
-## Security note — server‑side requests to a configured URL
+## Operational note — outbound requests to a configured URL
 
-This engine makes your web server send an HTTP request to the URL configured
-above, carrying your rendered content and the token. That is an outbound
-(egress) request to an **administrator‑controlled address**. Because the target
-URL is configurable, restrict who can reach this settings form to trusted
-administrators only, and point it exclusively at a Browserless endpoint you
-control or trust. A misconfigured or attacker‑influenced endpoint would receive
-your print HTML and could be abused to reach internal network locations from the
-server. Locking the settings form down to trusted admins and using an
-explicit, known `https://` endpoint keeps this safe.
+This engine makes your web server send an HTTP request to the endpoint configured
+above, carrying your rendered print HTML and the token. Because the endpoint is
+set on the settings form, keep that form restricted to trusted administrators and
+point it at a Browserless instance you operate or trust, using an explicit
+`https://` URL. That keeps generation reliable and your content and token in
+transit encrypted.

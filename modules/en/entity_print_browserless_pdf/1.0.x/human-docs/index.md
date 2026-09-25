@@ -16,9 +16,8 @@ Browserless.
 
 The module needs configuration before it will do anything: you must point it at a
 Browserless endpoint and (for hosted/paid Browserless) provide an access token.
-It depends on **Entity Print** and supports Drupal 10 and 11. Because it sends
-requests to an administrator‑configured URL and carries a secret token, treat
-those settings as trusted‑admin‑only — see the security note in
+It depends on **Entity Print** and supports Drupal 10 and 11. The endpoint and
+token are set on Entity Print's settings form — see
 [Configuration](configuration/index.md).
 
 This guide is written for a **human** clicking through the admin UI. If you want

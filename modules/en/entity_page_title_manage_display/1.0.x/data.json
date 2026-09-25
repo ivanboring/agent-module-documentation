@@ -1,9 +1,9 @@
 {
   "name": "Entity Page Title Manage Display",
   "data_name": "entity_page_title_manage_display",
-  "description": "A dedicated view mode to manage the entity page title display.",
+  "description": "For complex entity page title on full page display this module add a dedicated view mode to manage the title display.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Custom",
   "composer_namespace": "drupal/entity_page_title_manage_display",
   "composer_requirements": {},
   "dependent_modules": [],
@@ -17,24 +17,26 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content editing experience"
+    "Content editing experience",
+    "Content display"
   ],
   "subcategories": [
-    "Display mode governance"
+    "Display mode governance",
+    "View mode switching"
   ],
   "keywords": [
     "title",
-    "view mode",
-    "display",
     "page title",
+    "view mode",
+    "manage display",
     "entity"
   ],
-  "project_description": "This module allow site builder to create and customise an entity page title view mode.\n\nWhen this view mode is customised and configured it will replace the core page title block.\n\nThis is useful for display more information than the title in the page title section, exemple : a cover, a section or the orther in the same area than the default page title\n\n Post-Installation \n After the installation go to any entity manage display and customise the \"Page Title\" view mode.\n\nAdd the title and other desired field trough the manage display.\n\nWhen done the page title of the entity full page will be replaced by the configured view mode.",
+  "project_description": "Entity Page Title Manage Display adds a dedicated \"Page Title\" view mode to every entity type that has a view builder. When a site builder configures that view mode for a bundle on its Manage display page, the module renders the entity in that view mode and uses it to replace the output of the core \"Page title\" block on the entity's canonical, preview and revision pages. This lets site builders control how the page title (H1 area) is composed and formatted — for example changing the title field formatter, or adding extra fields such as a cover image or subtitle alongside the title — without a custom module or theme override. It provides no configuration form of its own; all customisation happens through core's Manage display UI.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "not-covered",
