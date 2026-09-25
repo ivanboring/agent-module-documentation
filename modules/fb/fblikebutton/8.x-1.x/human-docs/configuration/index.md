@@ -15,9 +15,9 @@ The form lets you decide where the button appears and how it looks:
   view; you can also enable it on **teasers**.
 - **Button type** — a **dynamic** button that likes the current page's URL, and/or a
   **static** button that always likes one fixed URL (for example your homepage).
-- **Appearance** — size, position, weight (order relative to other content),
-  verbiage (the "Like"/"Recommend" wording), colour scheme, font, and language are
-  all adjustable.
+- **Appearance** — layout style (standard, box count, button count, button), size
+  (small/large), the verb ("Like"/"Recommend"), colour scheme (light/dark), language
+  (a Facebook locale code such as `fr_FR`), and width are all adjustable.
 
 Set these to taste and save.
 

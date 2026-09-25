@@ -7,9 +7,9 @@ the visitor is currently on, a **static** button that likes a fixed URL (such as
 your homepage), and an optional **block** with a Facebook Like box you can place
 site‑wide.
 
-Almost everything about the button is customisable by administrators: size,
-position, weight, verbiage, colour scheme, font, and language. You control which
-content type(s) show the button and which user role(s) may see it, and by default
+The button's appearance is customisable by administrators: layout style, size, the
+verb shown ("Like" or "Recommend"), colour scheme, language, and width. You control
+which content type(s) show the button and which user role(s) may see it, and by default
 the button appears only on a node's full page view — though you can extend it to
 teasers too. Users do not need any extra text‑format permission for the button to be
 added to their content.

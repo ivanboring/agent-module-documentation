@@ -1,14 +1,14 @@
 {
   "name": "Facebook Like Button",
   "data_name": "fblikebutton",
-  "description": "Adds a configurable Facebook Like button to selected content types and a Like-box block.",
+  "description": "Adds a configurable Like button for Facebook to each selected node type as well as a configurable block with a Like box in it.",
   "version": "8.x-1.x",
-  "package": null,
+  "package": "Social",
   "composer_namespace": "drupal/fblikebutton",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": "fblikebutton.settings",
-  "core_version_requirement": "^8.8||^9||^10||^11",
+  "core_version_requirement": "^8.8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/fblikebutton",
@@ -22,10 +22,12 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
+    "Content display",
     "Integrations"
   ],
   "subcategories": [
-    "Social sharing buttons"
+    "Social sharing buttons",
+    "Social network integration"
   ],
   "keywords": [
     "facebook",
