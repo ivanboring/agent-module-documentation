@@ -1,14 +1,14 @@
 {
   "name": "Entity References Finder",
   "data_name": "entity_reference_finder",
-  "description": "Searches for all references to a given entity across the site.",
+  "description": "Admin report that lists which entity_reference / entity_reference_revisions field configurations target a selected content entity type and bundle.",
   "version": "1.0.x",
   "package": "Administration",
   "composer_namespace": "drupal/entity_reference_finder",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^8||^9||^10||^11",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/entity_reference_finder",
@@ -19,7 +19,7 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools"
@@ -29,12 +29,12 @@
   ],
   "keywords": [
     "entity reference",
+    "field configuration",
     "usage",
     "audit",
-    "references",
     "finder"
   ],
-  "project_description": "This module makes it easy to find the places where the entity type are used like entity reference. For example you can find all types of entity related to image media. (Exemple in the picture)\n\n You can find the page on your site on this path : admin/reports/entity_reference_finder",
+  "project_description": "This module makes it easy to find where a given entity type and bundle are targeted by entity reference fields. Select a content entity type and bundle and the report lists every entity_reference and entity_reference_revisions field configured to point at that bundle, showing the field name, the entity type that owns the field, and the owning bundle. Available at admin/reports/entity_reference_finder.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

@@ -2,20 +2,20 @@
 
 **Entity References Finder** (`entity_reference_finder`) makes it easy to find
 where an entity is used as an entity reference across your site. Point it at an
-entity type — for example image media — and it reports all the content that
-references it, so you can see what depends on an item before you change or delete
-it.
+entity type and bundle — for example an image media bundle — and it reports
+which entity-reference fields (and the content types those fields live on) are
+configured to point at it, so you can see what could reference an item before you
+change or delete it.
 
 The problem it solves is impact assessment. Drupal will let you edit or delete
-an entity that other content references, and you often only discover the fallout
-afterwards, as broken references. This tool turns that into a lookup you can run
-first: it builds a reference report you visit on demand, so restructuring,
-cleanups, and deletions become informed decisions.
+an entity type that other fields are configured to reference, and you often only
+discover the fallout afterwards. This tool turns that into a lookup you can run
+first: it reads your field configuration and lists the reference fields targeting
+the chosen type/bundle, so restructuring and cleanups become informed decisions.
 
-It provides its own permissions and lives in the Administration package. The
-report reads content to find references and is purely informational — it
-surfaces the references the viewer is entitled to see and has no access-control
-role of its own. There is no settings form; you simply grant the permission and
+It provides its own permission and lives in the Administration package. The
+report reads only field-configuration entities (not stored content) and is purely
+informational. There is no settings form; you simply grant the permission and
 visit the report page.
 
 This guide is written for a **human** clicking through the admin UI. If you want

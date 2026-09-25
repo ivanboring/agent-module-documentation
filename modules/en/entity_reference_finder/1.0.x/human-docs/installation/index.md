@@ -36,5 +36,5 @@ run the reference report.
 
 Visit **Reports → Entity Reference Finder**
 (`/admin/reports/entity_reference_finder`). You should reach a page where you can
-choose an entity type and see all the content that references it — for example,
-everything related to image media.
+choose an entity type and bundle and see which reference fields — and the content
+types they live on — are configured to point at it.
