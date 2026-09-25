@@ -1,14 +1,14 @@
 {
   "name": "Error Level Permission",
   "data_name": "errorlevelpermission",
-  "description": "Shows PHP errors/warnings/notices only to users who have permission to see them (info-disclosure hardening).",
+  "description": "Overrides Drupal's on-screen error-display level per user, based on permission: shows errors, warnings, notices and backtraces only to users who hold a restrict-access permission.",
   "version": "8.x-1.x",
   "package": null,
   "composer_namespace": "drupal/errorlevelpermission",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^8.7.7||^9||^10||^11",
+  "core_version_requirement": "^8.7.7 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/errorlevelpermission",
@@ -19,20 +19,24 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Developer tools"
+    "Developer tools",
+    "Security"
   ],
   "subcategories": [
-    "Error handling / logging"
+    "Debugging & inspection",
+    "User roles & permissions"
   ],
   "keywords": [
     "errors",
+    "error_level",
     "permission",
+    "config override",
     "information disclosure",
-    "hardening",
-    "debug"
+    "debug",
+    "backtrace"
   ],
   "project_description": "This module overrides the error level setting with a permission.\n\n So you can\n\n* have a sitebuilder role (or even a special debugger role) see errors and notices\n\n* have others not see errors and notices.\n\n You may also like Role toggle with this.",
   "maintenance_status": "Minimally maintained",
