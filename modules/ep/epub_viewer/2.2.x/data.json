@@ -1,7 +1,7 @@
 {
   "name": "Epub Viewer",
-  "data_name": "epub_viewer",
-  "description": "Field formatter that turns EPUB file fields into an in-browser e-book reader link, plus a viewer page.",
+  "data_name": "epub_module",
+  "description": "Field formatter that turns an EPUB (application/epub+zip) file-field value into a link that opens the file in a bundled in-browser e-book reader.",
   "version": "2.2.x",
   "package": "Other",
   "composer_namespace": "drupal/epub_viewer",
@@ -15,17 +15,20 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "color_field": "When the color_field module is enabled, the settings form's colour fields render as HTML5 colour pickers instead of plain text fields."
+  },
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content display"
   ],
   "subcategories": [
-    "Field formatters"
+    "Field formatters",
+    "Media embedding"
   ],
   "keywords": [
     "epub",
@@ -36,7 +39,7 @@
     "file",
     "browser"
   ],
-  "project_description": "Description \n\n1. This module mainly designed for Drupal 8 enables users to view ebooks(.epub files) in the browser.\n\n2. This module creates a field formatter for epub files and generates a link for the epub file that redirects to the ebook viewer. You will need to select field formatter(EPUBFormatter) for the epub file upload field from the field settings.\n\n3. For customization of the epub viewer settings will be available at URL /admin/config/epub/epubsettings.\n\n4. All the files required for handling epub files are in this module so there is no need to download an external library for it.\n\n5. Let us know if you want any additional setting/feature.\n\n Installation \n\n-Enable the module from Extend menu.\n\n-Create file upload field for uploading epub files.\n\n-Select Epub Formatter from the field settings.\n\n-Upload epub files and view the node created.\n\n-Go to admin section, select settings for customization of epub viewer. If jQuery colorpicker module is enabled then colour settings fields will appear otherwise textbox will appear in the settings.\n\n-Click on the link generated for the epub files.\n\n-Redirect to the epub viewer which will open your epub file.",
+  "project_description": "Epub Viewer (project epub_viewer, machine name epub_module) adds a single field formatter, 'Epub Formatter' (id epub_field_formatter), that applies to core file fields. For a file whose MIME type is application/epub+zip it renders a link that opens the file in an in-browser e-book reader served from the route /view-ebook/{fid}; non-EPUB files fall back to the standard file link. The reader and all of its assets (a bundled epub.js/JSZip based reader, jQuery UI, icon fonts and CSS) ship inside the module, so no external library must be installed. A small admin settings form at /admin/config/epub/epubsettings lets you set the reader's background, icon and font colours and toggle a download icon. It requires no other contrib modules and supports Drupal 9.3, 10 and 11.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

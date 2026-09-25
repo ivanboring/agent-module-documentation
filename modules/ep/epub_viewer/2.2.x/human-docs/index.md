@@ -18,13 +18,10 @@ This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
 [`agent/`](../agent/start.md) docs instead.
 
-> **A note on access.** The in-browser viewer route (`/view-ebook/{fid}`) is open
-> to anyone who can *access content*, and it will surface the generated URL of any
-> file id passed to it. For files stored in the public scheme that URL was already
-> public, so the practical exposure is limited; if you need genuinely
-> access-controlled ebooks, store them in a **private file scheme** (downloads are
-> still access-checked there) and consider restricting the viewer route to a
-> stronger permission.
+> **Choosing a file scheme.** As with any file field, decide where the uploaded
+> `.epub` files live. Public-scheme files are served directly by the web server;
+> if you need ebooks whose downloads are permission-checked, store them in a
+> **private file scheme** so Drupal enforces access on each download.
 
 ## Contents
 
