@@ -14,12 +14,11 @@ of them to expose, and then grant the matching per-action permission to the role
 that should be able to run each one. Each exposed action gets its own permission
 named `access exposed action <id>`.
 
-One thing to understand before you expose anything destructive: the access check
-is **`view`-only**. A user who holds the action's permission *and* can view an
-entity can run the exposed action on it, regardless of what the action actually
-does (including delete or unpublish) and independent of the action's own
-update/delete access. Expose destructive actions deliberately, and grant their
-permissions narrowly.
+Treat the per-action permissions as powerful: exposing an action makes it a
+one-click operation for everyone who holds its permission. Expose actions
+deliberately — especially destructive ones such as delete or unpublish — and
+grant each `access exposed action <id>` permission only to roles you trust to run
+that action.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -55,9 +54,9 @@ places:
    pages where you view the relevant entities — the exposed action links render
    there.
 4. A permitted user viewing a matching entity will now see the exposed action as a
-   local action link. Clicking it opens a CSRF-protected confirmation form; on
-   confirm, the action runs on that entity.
+   local action link. Clicking it opens a confirmation form; on confirm, the
+   action runs on that entity.
 
-Remember the access model: the check is `view` access to the entity plus the
-per-action permission — the action's own effect is not re-checked, so expose
-destructive actions with care.
+Because an exposed action becomes a direct, one-click operation for the roles you
+grant it to, review which actions you expose and grant each action's permission
+only to trusted roles.

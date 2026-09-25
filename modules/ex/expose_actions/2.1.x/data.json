@@ -1,7 +1,7 @@
 {
   "name": "Expose actions as local actions",
   "data_name": "expose_actions",
-  "description": "Exposes Drupal core action entities as local actions on the menu router, executed via a confirm form.",
+  "description": "Exposes enabled Drupal core Action config entities as local actions on entity canonical pages, triggered per-entity through a confirm form.",
   "version": "2.1.x",
   "package": null,
   "composer_namespace": "drupal/expose_actions",
@@ -15,13 +15,13 @@
   "list_position": null,
   "project_url": "https://www.drupal.org/project/expose_actions",
   "license": "GPL-2.0-or-later",
-  "php_requirement": null,
+  "php_requirement": ">=8.1",
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools"
@@ -33,8 +33,9 @@
     "actions",
     "local actions",
     "vbo",
-    "confirm",
-    "admin"
+    "rules",
+    "confirm form",
+    "menu router"
   ],
   "project_description": "Drupal core and quite a few contrib modules come with Action plugins. They are handy tools to provide functionality in certain context, of which the most popular one are\n\n \n Rules \n Views Bulk Operations \n \n Actions can also be triggered programatically - done so by many modules too.\n\n However, there is no way to expose those actions to the UI for permitted users to directly trigger those actions where they make most sense: when viewing an entity of a certain type.\n\n This is where this modules jumps in. It is very lightweight and does exactly that: expose actions as local task menu items such that they appear in the UI where they make sense. The 3 screenshots show the simple setup in a row:\n\n \n Review your list of actions and probably create and configure new ones \n Configure user permissions and define which role gets access to which action through the UI \n The permitted users will then see local actions for those exposed actions when ever they view an entity and the local actions block is being configured for that view \n \n It's as simple as that.",
   "maintenance_status": "Actively maintained",
