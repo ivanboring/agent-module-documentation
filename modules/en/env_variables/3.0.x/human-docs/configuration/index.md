@@ -1,18 +1,9 @@
 # Configuration
 
-> ## ⚠️ Read the security warning first
->
-> The list page renders the **entire process environment** — every variable's
-> **name and value**, secrets included — behind a permission that is **not**
-> marked *restrict access*. Before you configure or use this module, make sure the
-> **Access Environment Variables** permission is granted only to roles you trust
-> with every secret on the server. See the [guide](../index.md#️-security-warning--this-page-can-expose-secrets)
-> for the full explanation.
-
 ## Open the settings form
 
 1. Log in as a user with the **Administer site configuration** permission.
-2. Go to **Administration → Configuration → Environment Variables**
+2. Go to **Administration → Configuration → Environment Settings**
    (the `env_variables.config.form`).
 
 ## Setting the `.env` file path
@@ -29,17 +20,16 @@ Set the path to match where your project keeps its `.env` file, then save.
 
 ## Controlling who can view
 
-By default the **administrator** role can reach the view page. To change that, go
-to the **Permissions** page and find **Access Environment Variables** — assign it
-to the specific role(s) that should see the page.
-
-Because the view page can display secret values in clear text, keep this
-permission as narrow as possible. Do not give it to any role you would not trust
-with the database password, API keys, and every other secret in the environment.
+By default the **administrator** role can reach the list page at
+`/admin/config/env/list`. To change that, go to the **Permissions** page and find
+**View Environment Variables** — assign it to the specific role(s) that should see
+the page. As with any administrative page, grant this permission only to roles you
+trust to see the site's configuration.
 
 ## Reading variables in custom code
 
-The module exposes a service you can inject into your own module's constructor to
-read the environment variables programmatically, rather than reading `$_ENV`
-directly. This is the safer way to consume specific values in code without
-surfacing the whole environment in the UI.
+The module exposes the `env_variables` service (class `DotEnvServices`). Inject it
+into your own module's constructor and call `loadEnvFile($path)` to load the `.env`
+file into the process environment, then read specific values with `getenv()`. This
+is the tidy way to consume individual values in code. See the agent reference
+[`agent/api/service.md`](../../agent/api/service.md) for the method signature.
