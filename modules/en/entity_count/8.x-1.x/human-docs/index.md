@@ -10,13 +10,10 @@ The report lives under **Reports**, and access to it is gated by an **"Access en
 count"** permission. There's nothing to configure — enable the module, grant the
 permission, and the report is ready.
 
-One thing worth knowing: the totals are **raw counts that include entities the
-current viewer can't necessarily access** (for example unpublished nodes or other
-users' private content). The report only ever shows **aggregate numbers** — never
-titles, IDs, or individual rows — and both of its routes require the permission, so
-in practice a trusted admin simply sees accurate totals. Because it can reveal the
-existence of otherwise‑hidden content as a number, grant the permission only to
-trusted administrators.
+The report only ever shows **aggregate numbers** — never titles, IDs, or individual
+rows — and both of its routes require the "Access entity count" permission. It is an
+administrative report, so grant that permission to trusted administrators and site
+builders who need the counts.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling

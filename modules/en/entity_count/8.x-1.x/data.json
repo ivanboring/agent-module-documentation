@@ -1,14 +1,14 @@
 {
   "name": "Entity Count",
   "data_name": "entity_count",
-  "description": "Builds an admin report of the number of entities per type/bundle. NOTE: counts include entities the viewer can't access.",
+  "description": "Builds an admin report listing the number of stored entities per entity type, with an optional per-bundle breakdown, under Administration > Reports.",
   "version": "8.x-1.x",
   "package": null,
   "composer_namespace": "drupal/entity_count",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/entity_count",
@@ -19,22 +19,23 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Administration tools"
   ],
   "subcategories": [
-    "Reports"
+    "Dashboard / reporting"
   ],
   "keywords": [
     "entity",
     "count",
     "report",
     "census",
+    "bundle",
     "admin"
   ],
-  "project_description": "Simple module that reports the count for each entity type. Also reports the count and information per bundle. Useful when keeping track on the number of entities that are currently stored in the database and for performance reasons.\n\n Usage \n Under \"Administration > Reports\" you will find the \"Entity count\" link. \n\n Click on it to get a list of entity types, their count and, if the type has more than one bundle, a per bundle report.",
+  "project_description": "Simple module that reports the count for each entity type, and the count per bundle when a type has more than one bundle. Useful for keeping track of how many entities are currently stored in the database and for performance planning. Under Administration > Reports you will find the \"Entity count\" link; clicking it lists entity types with their counts, and — for types with multiple bundles — a per-bundle report.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

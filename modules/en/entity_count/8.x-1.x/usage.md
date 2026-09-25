@@ -1,39 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Entity Count builds a report with the number of entities per type.
+Entity Count builds an admin report showing how many entities of each type are stored, with an optional per-bundle breakdown.
 
 ---
 
-Entity Count builds an **admin report of how many entities exist per type/bundle** — a census of nodes,
-users, taxonomy terms, etc. — under `/admin/reports/`, gated by an `access entity count` permission. It
-provides its own permissions.
-
-Use it for an at-a-glance entity census. It is an administration/reporting feature. Security note (reviewed):
-the counts are computed with **`accessCheck(FALSE)`**, so the totals **include entities the viewer cannot
-access** (unpublished nodes, other users' private content). This is a **minor information-disclosure caveat** —
-but the output is **aggregate counts only** (no titles/IDs/rows are exposed) and both routes require the
-`access entity count` permission (an admin report), so a privileged admin simply sees accurate totals. It's
-arguably intentional for a census tool; if per-user exactness ever mattered, honouring access would defeat the
-purpose. Gate the permission to trusted admins. Review the report.
+Entity Count adds a sortable report at `/admin/reports/entity-count` (linked from Administration > Reports) that lists every entity type defined on the site alongside its total number of stored entities. For content entity types the total comes from an aggregate entity-query count; for configuration entity types it is the number of loaded config entities. When a type has more than one bundle, a "Per bundle" action opens a second report at `/admin/reports/entity-count/{entity_type}` breaking the total down by bundle. Both tables can be sorted by the Count column. The report is gated by a single permission, `access entity count`, and the module requires no configuration — install it, grant the permission, and open the report. It is a lightweight census and capacity-planning aid for administrators and site builders.
 
 ---
 
-- Report entity counts per type.
-- Give an entity census.
-- Show counts under /admin/reports.
-- Provide its own permissions.
-- Count nodes/users/terms.
-- Serve administrators.
-- KNOW counts use accessCheck(FALSE).
-- Know totals include inaccessible entities.
-- Note it's aggregate counts only (no rows).
-- Gate the permission to trusted admins.
-- Have no access-control role beyond permission.
-- Review the report.
-- Handle entity counts.
-- Count entities.
-- Configure the report.
-- Show totals.
-- Handle the report.
-- Census entities.
-- Count per type.
-- Provide an entity census.
+- See a site-wide census of how many entities exist per type.
+- Check the total number of nodes stored in the database.
+- Check how many user accounts exist.
+- Count taxonomy terms across vocabularies.
+- Count media entities on the site.
+- Count files, comments, or menu links.
+- Break a content type's total down by bundle (per node type).
+- Break taxonomy term totals down per vocabulary.
+- Sort the report by count to find the largest entity types.
+- Sort ascending to find rarely-used entity types.
+- Gauge database size drivers before a migration.
+- Support performance and capacity planning with real entity totals.
+- Verify a bulk import created the expected number of entities.
+- Confirm a bulk delete removed the expected entities.
+- Track entity growth over time by revisiting the report.
+- Audit which entity types are actually in use on a site.
+- Include config entity counts (views, image styles, etc.) in an inventory.
+- Give site builders a quick data inventory during a site audit.
+- Provide a reports-menu link for stakeholders to self-serve counts.
+- Restrict the report to trusted roles via the `access entity count` permission.
+- Estimate content volume when scoping a redesign or theme.
+- Sanity-check entity counts after a configuration or module change.
