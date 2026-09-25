@@ -1,16 +1,16 @@
 {
   "name": "Entity Type Permissions",
   "data_name": "entity_type_permissions",
-  "description": "Provides type-specific (per-bundle) permissions for content entities.",
+  "description": "Generates per-entity-type / per-bundle access permissions for content entities and enforces them through hook_entity_access(), with an admin form to choose which entity types are governed.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/entity_type_permissions",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:user"
+    "user"
   ],
   "configure": "entity_type_permissions.settings_form",
-  "core_version_requirement": "^8||^9||^10||^11",
+  "core_version_requirement": "^8 || ^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/entity_type_permissions",
@@ -21,22 +21,24 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Access control"
   ],
   "subcategories": [
+    "Entity access control API",
     "User roles & permissions"
   ],
   "keywords": [
     "entity permissions",
+    "per-bundle",
     "per-type",
-    "bundle",
     "access control",
-    "permissions"
+    "hook_entity_access",
+    "dynamic permissions"
   ],
-  "project_description": "Hello to all! This simple module forked from Entity Bundle Permissions but much more useful. It allows to set up access permission for any content-based entity type. Differences from original module:\n\n \n You can (and should, after installation) configure permission scopes for different types of entities using settings. Now the permissions page looks simpler. \n You can easily clear unnecessary permissions via module settings. You don't need to use the \"reverse permissions\" model to remove all the unnecessary permissions, as in the original module. \n Permissions sorted by base entity type (Content, Comment, Media) first, and then by entity type (article, etc). \n Permissions model differs from original module. For example, users will only need to \"View published content\" to be able to view content, but also have \"Access content items \"Basic page\"\" to use operations. \n Unlike the original module, it works on both PHP7 (tested with PHP 7.4) and PHP 8.",
+  "project_description": "Entity Type Permissions is a fork of Entity Bundle Permissions that lets a site set up access permissions for any content-based entity type. After installation you choose, on the module's settings form, which entity types should have permissions generated; for each selected entity type it creates one \"Access\" permission per bundle. The permissions page stays compact because unselected entity types generate nothing, and clearing an entity type's checkbox revokes and removes its permissions from all roles (no \"reverse permissions\" model required). Permissions are grouped by base entity type (Content, Comment, Media, etc.) and then by bundle. Access is enforced through hook_entity_access(), which grants access to holders of the matching per-bundle permission and stays neutral otherwise. Works on PHP 7.4 and PHP 8.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",
