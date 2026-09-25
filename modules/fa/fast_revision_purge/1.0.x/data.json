@@ -1,7 +1,7 @@
 {
   "name": "Fast Revision Purge",
   "data_name": "fast_revision_purge",
-  "description": "plans and purges node/paragraph revisions in bulk.",
+  "description": "Ultra-fast dry-run planner and chunked purger for old node, paragraph, and Layout Builder revisions, with an admin UI and Drush commands.",
   "version": "1.0.x",
   "package": "Administration",
   "composer_namespace": "drupal/fast_revision_purge",
@@ -9,8 +9,8 @@
   "dependent_modules": [
     "drupal:node"
   ],
-  "configure": null,
-  "core_version_requirement": "^10||^11",
+  "configure": "fast_revision_purge.settings",
+  "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/fast_revision_purge",
@@ -20,23 +20,25 @@
   "suggests": {},
   "submodules": [],
   "provides_permissions": false,
-  "provides_drush_commands": false,
+  "provides_drush_commands": true,
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Content editing experience"
+    "Performance",
+    "Administration tools"
   ],
   "subcategories": [
-    "Revision management"
+    "Database maintenance / optimization"
   ],
   "keywords": [
     "revisions",
     "purge",
     "cleanup",
     "node",
-    "paragraphs"
+    "paragraphs",
+    "layout builder"
   ],
-  "project_description": "Fast Revision Purge keeps Drupal fast by safely deleting old revisions in resumable batches. Preview with dry‑run, run via cron or Drush, and protect live drafts and moderated content.\n\n Features \n \n Blazing-fast, safe purging via batches and queues that prevent timeouts and memory spikes. \n Supports Layout Builder and Paragraph revision purges \n Retention rules you control: keep the latest N revisions, keep revisions newer than X days, or combine both per entity type and per bundle. \n Guards that never touch the default revision, in-use drafts, or moderated content. \n Paragraphs and Media aware to avoid breaking references when cleaning related revision data. \n Dry-run preview to review exact counts before deletion. \n Multilingual friendly behavior across translations. \n Simple Administration UI for configuring and running purges. \n Production-safe defaults that start conservatively. \n \n Highlights \n \n A ton of safeguard features with sanity check SQL queries and drush commands to show exactly what will be purged \n Uses latest datastructure techniques like BFS to search thru the revisions \n Chunked, resumable batches so long purges complete without timeouts. \n Creates indexes if they don't exist for faster purging \n You control what to purge, Just nodes, nodes with paragraphs or layoutbuilder \n Drush commands designed for automation and CI use. \n A clean Administration package grouping and a distinctive logo to make the project easy to spot. \n \n Post-Installation \n \n Enable the module in Extend. \n Open Configuration → Development → Fast Revision Purge. \n Choose a policy per entity or bundle: keep the latest N revisions, keep newer than X days, or both. \n Save and run a dry‑run to preview counts. \n \n Drush usage examples:\n\n drush frp:dry-run\ndrush frp:purge\ndrush frp:purge node.article\ndrush frp:status Additional Requirements \n \n Drupal core 10 or newer. Compatible with 9.5 when the stack supports it. \n No external libraries required. \n Optional awareness for Content Moderation, Media, and Paragraphs when those modules are enabled. \n \n Recommended modules or libraries \n \n Admin Toolbar for quicker navigation to the configuration page. \n Queue UI or Ultimate Cron to monitor queues and scheduled runs on busy sites. \n Syslog or Database Logging for detailed purge logs and audits. \n \n Supporting this Module \n If this module saves you time and disk space, consider sponsoring development. Buy Me a Coffee \n\n Module Documentation \n \n Before/After Screenshot attached \n Indepth README.md inside the module \n \n Back to top",
+  "project_description": "Fast Revision Purge is an Administration-package tool that reclaims database space by deleting old node and paragraph revisions (and Layout Builder field-revision rows) in a two-step, dry-run-then-purge workflow. A Planner service (fast_revision_purge.planner) populates working tables (fastrev_node_keep/fastrev_node_delete, fastrev_par_in_use/fastrev_par_delete, and optional fastrev_lb_keep/fastrev_lb_delete) according to a retention policy: keep the latest N non-default node revisions (optionally per (nid, langcode)), keep revisions since a YYYY-MM-DD date, protect the latest published revision per node, and keep the last M paragraph revisions per paragraph entity. Paragraphs currently in use are found by walking entity_reference_revisions edges from kept node revisions with a bounded BFS (max 50 passes). A Purger service (fast_revision_purge.purger) then deletes staged revisions in configurable chunks (with optional inter-chunk sleep), removing field-revision rows before core revision rows and paragraphs before nodes. Table and column discovery is handled by RevisionTableMap using entity/field-storage definitions and information_schema, supporting both D10 and D11 Paragraphs schema variants; IndexManager can create helpful indexes; TableStats reports DB and top-table sizes; StatsStorage persists a singleton fastrev_stats row (cumulative deletions, estimated bytes freed, potential reclaimable space, and last dry-run/purge timestamps). The admin settings form at /admin/config/development/fast-revision-purge (permission 'administer site configuration') exposes the policy, execution tuning, a Danger-zone confirmation, optional dedicated Paragraph and Layout Builder truncators, a copy/paste sanity-query helper, and post-purge ANALYZE/OPTIMIZE SQL, running plan and purge through the Batch API. Drush commands fastrev:report, fastrev:purge, and fastrev:reindex (aliases fr:report, fr:purge, fr:reindex) drive the same flow from the CLI. Estimates are byte approximations from information_schema average row sizes; actual on-disk reclamation may require OPTIMIZE TABLE.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

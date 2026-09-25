@@ -1,14 +1,14 @@
 {
   "name": "FAPI Validation",
   "data_name": "fapi_validation",
-  "description": "Provides a declarative validation layer for Form API forms.",
+  "description": "Declarative Form API validation and filtering framework: attach reusable validator and filter rules to form elements by name via #validators and #filters instead of hand-writing #element_validate callbacks.",
   "version": "3.0.x",
   "package": "Development",
   "composer_namespace": "drupal/fapi_validation",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^10.3||^11",
+  "configure": "fapi_validation.settings",
+  "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/fapi_validation",
@@ -16,25 +16,32 @@
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [],
+  "submodules": [
+    "fapiv_example"
+  ],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "FapiValidationValidator",
+    "FapiValidationFilter"
+  ],
   "categories": [
     "Developer tools"
   ],
   "subcategories": [
-    "Forms API"
+    "Field validation",
+    "Plugin system"
   ],
   "keywords": [
     "form api",
+    "fapi",
     "validation",
     "validators",
-    "forms",
-    "developer"
+    "filters",
+    "forms"
   ],
-  "project_description": "This module extends the form API to include convenient access to common for submission filters and validation checks. The core form API has no built in validators available to you, nor filters, and all have to be manually placed in a validation function. With this module you simply add the basic filers and/or validators you want to have in your form render area.\n\n You can use the existent filters and rules or create your own. This module is fully extensible using hooks, allowing you to easily add your own and reuse them throughout the site. Abstraction at it's finest!\n\n Current state of Development \n Please note that the Drupal 8 version of this module is in early alpha and is under active development. While the functionality to integrate validators and filters is in place and many are working, many do not work and will need to be updated. The module however is at a point where you can easily wrap up any of the broken validators/filters and contribute it back, or simply just create and use your own.\n\n There are currently no plans to continue with work on the Drupal 7 version of this module. Patches with significant testing and work done on them will be considered, in which case please reach out to me regarding them.\n\n IMPORTANT DIFFERENCE BETWEEN D7 AND D8 VERSIONS: \n\nValidation function was previously called \"rules\" in D7. For those familiar with Drupal, a large contingent of functionality exists with the name Rules, and is semantically confusing. This has all been renamed \"validators\" for D8 to ensure that the naming conventions are separate. If you are using D7, the examples below use #validators. D7 users will need to use #rules instead.\n\n \n Available Validators (Formerly in D7: Rules) \n \n \n Rule \n Usage \n Description \n \n \n numeric \n numeric \n Must contains only numbers. \n \n \n alpha \n alpha \n Must contains only alpha characters. \n \n \n length \n length[] \n length[, ] \n length[, *] \n \n \n \n chars \n chars[, , ..., ] \n Accept only specified characters. \n \n \n email \n email \n Valid email \n \n \n url \n url \n url[absolute] \n Valid URL. If absolute parameter is specified, the field value must have to be a full URL. \n \n \n ipv4 \n ipv4 \n Valid IPv4 \n \n \n alpha_numeric \n alpha_numeric \n Accept only Alpha Numeric characters \n \n \n alpha_dash \n alpha_dash \n Accept only Alpha characters and Dash ( - ) \n \n \n digit \n digit \n Checks wheter a string consists of digits only (no dots or dashes). \n \n \n decimal \n decimal \n decimal[,] \n \n \n \n regexp \n regexp[/^regular expression$/] \n PCRE Regular Expression \n \n \n match_field \n match_field[otherfield] \n Check if the field has same value of otherfield . \n \n \n range \n range[, ] \n Check if the field value is in defined range. \n \n \n Available Filters \n \n \n Filter \n Description \n \n \n numeric \n Remove all non numeric characters. \n \n \n trim \n Remove all spaces before and after value. \n \n \n uppercase \n Transform all characters to upper case. \n \n \n lowercase \n Transform all characters to lower case. \n \n \n strip_tags \n Strips out ALL html tags. \n \n \n html_entities \n Decodes all previously encoded entities, and then encodes all entities. \n \n \n Usage \n Example:\n\n \n\n<?php\n\n//... \n\n $form['myfield'] = array(\n\n '#type' => 'textfield',\n\n '#title' => 'My Field',\n\n '#required' => TRUE,\n\n '#validators' => array(\n\n 'email',\n\n 'length[10, 50]',\n\n array('rule' => 'alpha_numeric', 'error' => 'Please, use only alpha numeric characters at %field.'),\n\n array('rule' => 'match_field[otherfield]', 'error callback' => 'mymodule_validation_error_msg'),\n\n ),\n\n '#filters' => array('trim', 'uppercase')\n\n);\n\n //...\n\n function mymodule_validation_error_msg($rule, $params, $element, $form_state) {\n\n return t(\"My custom error message for %field\", array(\"%field\" => $element['#title']));\n\n}\n\n?>\n\n Developer \n If you wish to create your own Validators or Filters, you can add them with hook_fapi_validation_validators or hook_fapi_validation_filters .\n\n <?php\n\n/**\n\n * Implementation of hook_fapi_validation_rules\n\n */\n\nfunction …",
+  "project_description": "FAPI Validation extends Drupal's Form API with a declarative validation and input-filtering layer, so developers attach reusable checks and transforms to a form element by name instead of writing bespoke #element_validate callbacks. hook_element_info_alter registers FapiValidationService::process on every input element; at render time that process callback appends FapiValidationService::filter and FapiValidationService::validate to the element's #element_validate when the element declares #filters or #validators. Two Drupal plugin types drive it: FapiValidationValidator plugins (bundled: numeric, alpha, alpha_numeric, alpha_dash, digit, decimal, limit_decimals, length, chars, email, url, ipv4, regexp, match_field, range) return a boolean pass/fail and carry a default error_message or error_callback in their attribute; FapiValidationFilter plugins (bundled: numeric, trim, ltrim, rtrim, machine_name, ucfirst, ucwords, uppercase, lowercase, strip_tags, html_entities) transform the submitted value before validation. Rules are written as a plain id ('email'), an id with bracketed parameters ('length[10, 50]', 'range[0, 100]', 'regexp[/^.../]'), or an array with 'rule' plus a per-rule 'error' message or 'error callback'. The Validator value object parses each rule into a name and parameter list. An admin settings form (route fapi_validation.settings at /admin/config/system/fapi, permission 'manage fapi validation settings') exposes a single 'bypass' flag stored in fapi_validation.settings config; when enabled it lets users holding the 'bypass fapi validations' permission (or a per-validator 'bypass <id> fapi validation' permission generated by FapiValidationPermissions) skip validation. Two read-only controller routes list the registered validator and filter plugins. Custom validator/filter plugins are added by any module by dropping a class under Plugin/FapiValidationValidator or Plugin/FapiValidationFilter. Ships an example submodule, fapiv_example.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

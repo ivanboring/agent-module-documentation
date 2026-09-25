@@ -36,11 +36,11 @@ The project ships an example submodule that demonstrates attaching validators an
 filters. Enable it if you want a worked reference to study:
 
 ```bash
-drush en fapi_validation_example -y
+drush en fapiv_example -y
 ```
 
-(Confirm the exact machine name in the module list after installing — the example
-lives inside the same project.)
+(The example submodule's machine name is `fapiv_example`; it lives inside the same
+project and depends on `fapi_validation`.)
 
 ## Verify it worked
 
