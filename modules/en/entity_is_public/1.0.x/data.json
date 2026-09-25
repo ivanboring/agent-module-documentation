@@ -1,15 +1,17 @@
 {
   "name": "Entity Is Public",
   "data_name": "entity_is_public",
-  "description": "An API for determining which entities are publicly accessible.",
+  "description": "Provides an API for determining which entities are publicly accessible.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/entity_is_public",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/helper": ">= 1.50"
+  },
   "dependent_modules": [
     "helper:helper"
   ],
-  "configure": null,
+  "configure": "entity_is_public.settings",
   "core_version_requirement": "^10.2 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
@@ -19,7 +21,7 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
   "provides_plugin_types": [],
@@ -33,10 +35,12 @@
     "entity",
     "public",
     "access",
+    "anonymous",
+    "visibility",
     "api",
-    "visibility"
+    "sitemap"
   ],
-  "project_description": "Adds a simple API to determine if an Entity is publicly accessible or not.\n\n <?php\n\n/**\n\n * Determine if an entity is publicly visible.\n\n *\n\n * @param string $entity_type\n\n * An entity type of $entity.\n\n * @param object $entity\n\n * The entity object.\n\n * @param array $options\n\n * An optional array of options to use when determining publicity.\n\n * @param array $data\n\n * An optional array of additional data to use when determining publicity.\n\n *\n\n * @return bool\n\n * TRUE if the entity is publicly visible, or FALSE otherwise.\n\n */\n\nfunction entity_is_public($entity_type, $entity, array $options = array(), array $data = array())\n\n?>\n\n This goes beyond simply checking entity_access() as an anonymous user, but also checks other conditions like the following:\n\n \n Does the entity actually have a URI? Is the URI the frontpage path or a non-administrative path? \n An optional check for requiring the entity to have a URL alias. \n Is the entity going to be processed with the Rabbit hole module ? \n \n The module additionally provides an API for other modules to help determine if an entity is publicly accessible or not.",
+  "project_description": "Entity Is Public provides a service and hook API for determining whether a content entity (or an entire entity type) is publicly accessible, meaning visible to anonymous users. The entity_is_public service centralises the logic other features need: it checks whether the entity type is public (content entity, not internal, has a canonical URL and view builder, not opted out via config), whether the entity is published, and whether an anonymous session has 'view' access to it, then lets modules veto the result through hook_entity_is_public() and hook_entity_is_public_alter(). It ships integrations for Field Redirection, Metatag (noindex), Micronode, Path (require alias), Rabbit Hole, System 403/404 pages, Trash and XML Sitemap so that non-public entities are excluded from sitemaps and marked noindex. The module reports accessibility for consumers such as sitemaps, search indexing and feeds; it does not itself grant or restrict access.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

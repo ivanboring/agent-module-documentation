@@ -1,20 +1,20 @@
 {
   "name": "Entity IO",
   "data_name": "entity_io",
-  "description": "Export and import entity data as JSON files.",
+  "description": "Export/Import entity data as JSON file.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Entity IO",
   "composer_namespace": "drupal/entity_io",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:media",
-    "drupal:user",
-    "drupal:node",
-    "drupal:taxonomy",
-    "drupal:block",
-    "drupal:comment"
+    "media",
+    "user",
+    "node",
+    "taxonomy",
+    "block",
+    "comment"
   ],
-  "configure": null,
+  "configure": "entity_io.node_fields",
   "core_version_requirement": "^10 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
@@ -23,25 +23,32 @@
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [],
+  "submodules": [
+    "entity_io_queue",
+    "entity_io_webhooks",
+    "entity_io_push",
+    "entity_io_purge"
+  ],
   "provides_permissions": true,
-  "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_drush_commands": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Import and export"
   ],
   "subcategories": [
-    "Data export"
+    "Data export",
+    "Content migration / import"
   ],
   "keywords": [
     "entity",
     "export",
     "import",
     "json",
-    "migration"
+    "migration",
+    "revisions"
   ],
-  "project_description": "Entity I/O is a powerful Drupal module that allows you to export and import entities as JSON files, making it easier than ever to migrate or synchronize content between environments or websites.\n\n When exporting an entity, the process will go as deep as possible, including all fields and related entities.\n\nUpon import, all associated data will also be restored — including referenced entities such as users, taxonomy terms, paragraphs, and other content.\n\n You can fully customize which fields are exported and how deeply related entities are included — from simple field values to deeply nested entity references. For example, when exporting an article with comments, Entity I/O ensures that all related entities (comments, referenced nodes, taxonomy terms, and media) are also included, preserving relationships and data integrity on import.\n\n Each entity type includes a dedicated tab that provides quick access to export operations.\n\nFor entities that support revisions, an additional export option is also available in the revision overview dropdown, allowing you to export specific revisions directly from the revision list.\n\n Entity I/O supports Drush commands for quick CLI-based exports and imports and lets you choose between public or private file storage for your JSON exports. Every export generates a structured, portable JSON file that can be easily versioned, shared, or imported into another Drupal instance.\n\n Core Features \n \n Export and import any Drupal entity ( Node , Taxonomy , User , Block , Comment , Paragraph ) as JSON. \n Control field-level export depth and related entity inclusion. \n Support for both manual and automated (via Drush or Webhooks) workflows. \n Public or private file system integration. \n Fully extensible architecture with multiple submodules. \n Visual Diff on Import : When importing an entity that already exists, Entity I/O displays a side-by-side diff screen showing the differences between the existing data and the new imported version — allowing you to review and confirm changes before applying them \n Export multiple entities at once directly through the administrative interface. \n Configuration to generate new revisions when importing and set a user as the author of the change. \n \n Drush Commands \n \n Export sample entities or all entities and save JSON files \n \n drush entity-io:export \n drush entity-io:export --all \n drush entity-io:export --entity-type=node --all \n drush entity-io:export --entity-type=node --id=123 \n \n \n Import all exported JSON entities \n \n drush entity-io:import \n drush entity-io:import --user=1 \n drush entity-io:import --user=username \n drush entity-io:import --entity-type=node \n \n \n Lists the exported files \n \n drush entity-io:list \n drush entity-io:list --entity-type=node \n \n \n \n Import JSON files from a folder \n \n drush entity-io:import-folder [/path/to/json or public://entity_io_exports] \n \n \n \n Clear exported JSON files \n \n drush entity-io:clear-exports \n drush entity-io:clear-exports --entity-type=node \n \n \n \n Submodules \n \n Entity I/O Queue (entity_io_queue) – Enables queued entity export/import, ideal for large-scale data operations.\n Includes an authenticated endpoint ( /entity-io/queue/import/add-item ) that allows adding import tasks programmatically using Basic Auth.\n\nThis makes it possible for external systems or scripts to push new import jobs directly into the Drupal queue securely.\n\n \n Entity I/O Webhooks (entity_io_webhooks) – Adds automation through webhooks triggered by\n \n create, update, delete, or content moderation events: \n Send the exported JSON via HTTP POST to an external endpoint. \n Send the exported JSON as an email attachment (requires SMTP module). \n Upload the exported JSON file via FTP. \n \n \n Entity I/O Push (entity_io_push) – Adds a “Push to Server” tab on entity pages, allowing you to push content and all related entities to another configured Drupal site. Perfect for multi-environment synchronization. \n Entity I/O Purge (entity_io_purge) – Provides …",
+  "project_description": "Entity IO exports and imports Drupal content entities (node, taxonomy_term, user, media, block_content, comment, paragraph and referenced files) as portable JSON files. Export walks each entity's fields and recursively serializes referenced entities (with files embedded as base64), so a single export carries the entity plus its related content. Import re-creates or updates entities from that JSON, mapping UUIDs to local entities via a custom entity_io_storage table, showing a side-by-side diff before overwriting an existing entity, and optionally creating new revisions or attributing the change to a chosen user. Operation is via per-entity 'Export JSON' tabs/operations, revision-list export links, batch export forms, an admin import form, JSON API routes, and a set of Drush commands (entity-io:export, :import, :list, :import-folder, :clear-exports). Storage can be the public or private file scheme. Four optional submodules extend it: entity_io_queue (queued import/export), entity_io_webhooks (send exports on entity events via HTTP, email or FTP), entity_io_push (deploy entities to another configured Drupal site over Basic Auth) and entity_io_purge (clean up the export storage directory).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

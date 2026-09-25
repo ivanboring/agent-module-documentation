@@ -50,10 +50,10 @@ For example:
 drush en entity_io_queue -y
 ```
 
-> **Security note:** the Queue submodule's import endpoint accepts jobs over Basic
-> Auth, and the Push/Webhooks submodules send content to other systems. Only enable
-> these when you need them, protect the credentials involved, and point them at
-> trusted destinations.
+> **Before you enable these:** the Queue submodule exposes an authenticated import
+> endpoint, and the Push/Webhooks submodules send content to other systems. Enable
+> them only when you need them, keep the credentials they use safe, and point them at
+> destinations you trust.
 
 ## Verify it worked
 
