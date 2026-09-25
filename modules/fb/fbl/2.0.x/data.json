@@ -1,14 +1,16 @@
 {
   "name": "Field Based Login",
   "data_name": "fbl",
-  "description": "Lets users log in with alternative fields (email, custom fields); the password is still verified by core.",
+  "description": "Lets users log in with an alternative identifier (a configured unique account field and/or email) instead of the username; the password is still verified by core.",
   "version": "2.0.x",
-  "package": null,
+  "package": "User",
   "composer_namespace": "drupal/fbl",
   "composer_requirements": {},
-  "dependent_modules": [],
+  "dependent_modules": [
+    "drupal:user"
+  ],
   "configure": "fbl.configuration",
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/fbl",

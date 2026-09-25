@@ -1,14 +1,16 @@
 {
   "name": "Facebook Filter",
   "data_name": "fb_filter",
-  "description": "A text-format filter that processes Facebook embeds/content for display.",
+  "description": "A text-format filter that converts Facebook #hashtags in content into links to facebook.com/hashtag pages.",
   "version": "2.0.x",
   "package": "Other",
   "composer_namespace": "drupal/fb_filter",
   "composer_requirements": {},
-  "dependent_modules": [],
+  "dependent_modules": [
+    "filter"
+  ],
   "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/fb_filter",
@@ -22,19 +24,20 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Content display"
+    "Content editing experience"
   ],
   "subcategories": [
     "Text format filters"
   ],
   "keywords": [
     "facebook",
+    "hashtag",
     "filter",
-    "embed",
     "text format",
+    "link",
     "social"
   ],
-  "project_description": "The module provides a text filter to automatically convert Facebook #hashtags into links.",
+  "project_description": "Facebook Filter ships a single text-format filter plugin (id fb_filter, \"Facebook filter\") that scans content at display time and turns Facebook-style #hashtags into anchor tags pointing at https://www.facebook.com/hashtag/<tag>. It has one setting controlling whether those links open in a new tab. The module depends only on core's Filter system, provides no routes, permissions, services or Drush commands, and leaves the stored content unchanged (it is a display-time TYPE_TRANSFORM_IRREVERSIBLE filter).",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

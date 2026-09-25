@@ -33,7 +33,7 @@ a text format.
 ## Verify it worked
 
 Go to **Configuration → Content authoring → Text formats and editors**, configure a
-format, and confirm the **Facebook Filter** filter is listed under *Enabled
+format, and confirm the **Facebook filter** filter is listed under *Enabled
 filters*. Enable it there (see the "How to use it" section of the
-[overview](../index.md)), save, then create test content with a Facebook hashtag or
-embed and view it — the filter should transform it on output.
+[overview](../index.md)), save, then create test content containing a Facebook
+`#hashtag` and view it — the filter should turn the hashtag into a link on output.
