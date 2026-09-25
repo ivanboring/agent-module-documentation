@@ -20,8 +20,11 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 1. [Installation](installation/index.md) — install with Composer and enable the
    module.
 
-There is **no configuration page** — the module works as soon as it's enabled, with
-nothing to set up.
+The module works as soon as it's enabled. There is a small settings page at
+**Configuration → System → Error Reporting Settings**
+(`/admin/config/system/error-reporting`) with a single **Enable custom error
+reporting** checkbox — turn it off (and clear the cache) to fall back to Drupal's
+default error handling, for example on production.
 
 ## A word on where to run it
 

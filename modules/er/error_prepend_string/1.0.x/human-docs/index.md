@@ -10,9 +10,8 @@ output that Drupal serves.
 The headline use is dressing up error pages — for example a small CSS snippet with a
 `prefers-color-scheme` media query that gives errors a dark background and light red
 monospaced text, so error output is easier to read (and matches how you've styled it
-elsewhere). Because the wrapping strings come from **server configuration**, not
-from any request input, there's no user-controlled injection: the content added is
-exactly whatever the server operator set.
+elsewhere). The wrapping strings come from **server configuration** — the values a
+site operator sets in PHP — and nothing else feeds them.
 
 There's no module settings form — the strings themselves are set in PHP
 configuration (see below). It supports Drupal 8, 9, 10 and 11.
@@ -43,12 +42,12 @@ Two limits are worth knowing:
   Drupal core's own error handler, so covering those as well requires a core patch
   (there's a known issue with patches for Drupal 10.x and 11.x, applied via
   `cweagans/composer-patches`).
-- The current release applies the wrapping quite broadly rather than only to error
-  responses, because of a status-code guard bug in the subscriber. **Verify the
-  behaviour against your intent before relying on it in production** — and be
-  careful not to expose verbose or styled error detail to anonymous visitors, which
-  is an information-disclosure risk. On production, keep Drupal's error display set
-  to hide messages from the public and reserve verbose output for development.
+- The current release (1.0.1) does not actually wrap responses, because of an
+  operator-precedence mistake in the subscriber's status-code guard
+  (`!$statusCode == 500` is parsed as `(!$statusCode) == 500`, which is never true
+  for a real HTTP status). **Verify the behaviour against your intent before relying
+  on it in production**; the guard condition has to be corrected for any wrapping to
+  take effect.
 
 If you want a more elaborate, fully themed approach to error pages instead, look at
 the *Error custom pages* module.
