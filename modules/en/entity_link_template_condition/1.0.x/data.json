@@ -5,9 +5,11 @@
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/entity_link_template_condition",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/entity_route_context": "*"
+  },
   "dependent_modules": [
-    "entity_route_context:entity_route_context"
+    "entity_route_context"
   ],
   "configure": null,
   "core_version_requirement": "^10.3 || ^11",
