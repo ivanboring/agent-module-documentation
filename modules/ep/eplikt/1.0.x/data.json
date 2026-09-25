@@ -1,16 +1,16 @@
 {
   "name": "e-Plikt",
   "data_name": "eplikt",
-  "description": "provides RSS export for entities affected by mandatory (legal) delivery.",
+  "description": "Exposes published node and media entities as an RSS 2.0 feed formatted for legal-deposit (mandatory delivery) to the National Library of Sweden, via pluggable source plugins.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/eplikt",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:media",
-    "media_entity_download:media_entity_download"
+    "media",
+    "media_entity_download"
   ],
-  "configure": null,
+  "configure": "eplikt.settings",
   "core_version_requirement": "^11",
   "active_installs": null,
   "list_position": null,
@@ -22,8 +22,10 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_config_schema": false,
+  "provides_plugin_types": [
+    "eplikt_source"
+  ],
   "categories": [
     "Import and export"
   ],
@@ -33,11 +35,13 @@
   "keywords": [
     "eplikt",
     "legal deposit",
+    "mandatory delivery",
     "rss",
-    "export",
-    "media"
+    "feed",
+    "media",
+    "national library of sweden"
   ],
-  "project_description": "The e-Plikt module provides a streamlined solution for managing legal deposit requirements within digital publishing workflows. It enables organizations to comply with legal deposit mandates by integrating seamlessly with existing Drupal-based systems.\n\n Read more about e-Plikt at National Library of Sweden .\n\n Back to top \n\n Requirements \n \n The core Media module \n The Media entity download module \n \n Back to top \n\n Installation \n Install as you would normally install a contributed Drupal module. For further information, see Installing Drupal Modules .\n\n Back to top \n\n Configuration \n Configure the e-Plikt module on the e-Plikt configuration page (/admin/config/services/eplikt).\n\n \n Enter your Publisher unique identifier in the form http://id.kb.se/organisations/SE+ev.[-suffix] \n Enter the default value for Access rights \n Select witch Sources you want to enable \n \n When the above steps are completed click Save . After you have saved the configuration form and have selected at least one source you will be presented with additional configuration options for the selected sources.\n\n Back to top \n\n Source plugins \n The module ships with two source plugins, Node and Media . For most use cases these will be enough. If you have complex content structure or embedded content that needs to be included in the e-Plikt delivery you can make your own plugin.\n\n For inspiration look at the included plugins at Drupal\\eplikt\\Plugin\\eplikt and the base class at Drupal\\eplikt\\EpliktSourceBase .\n\n Back to top",
+  "project_description": "e-Plikt provides an RSS export tailored to Swedish legal-deposit (e-plikt / mandatory delivery) requirements. It publishes two feeds, /eplikt/all and /eplikt/weekly, that list published entities collected by enabled source plugins. Two source plugins ship out of the box: Node and Media. The feed emits Dublin Core metadata (publisher, access rights, format) and, for media items, a media:content download link resolved through the Media entity download module, following the National Library of Sweden RSS delivery specification. Site builders configure a publisher identifier, default access rights and the set of source plugins (with per-source bundle selection) at /admin/config/services/eplikt. Developers can add their own source plugins by extending EpliktSourceBase and implementing the EpliktSource plugin type.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

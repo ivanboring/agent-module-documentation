@@ -7,7 +7,7 @@
   "composer_namespace": "drupal/epsilon_harmony",
   "composer_requirements": {},
   "dependent_modules": [
-    "drupal:views"
+    "views"
   ],
   "configure": null,
   "core_version_requirement": "^8 || ^9 || ^10 || ^11",
@@ -21,7 +21,7 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Integrations"
@@ -33,10 +33,11 @@
     "epsilon",
     "harmony",
     "marketing",
+    "crm",
     "api",
     "integration"
   ],
-  "project_description": "Developers Only \n Integration for https://www.epsilon.com/gb/agility-harmony/ \n\n This module will help you integrate with the Epsilon Harmony API's by calling pre-defined methods. For debugging purpose all the requests/responses from the API are logged in the database which are available in views.\n\n Currently there is integration with 3 Epsilon API's:\n\n \n Create a Profile Record \n Update a Profile Record \n Send a Real Time Message (RTM) \n \n For any further API requests kindly raise a issue and will add them ASAP.\n\n D8 Project has integration with extra two API's: \n\n \n Delete a Profile Record \n Retrieve a Profile Record \n Create List Record \n Update List Record \n \n See the D7 documentation at: https://www.drupal.org/docs/7/modules/epsilon-harmony-connector \n\nSee the D8 documentation at: https://www.drupal.org/docs/8/modules/epsilon-harmony-connector",
+  "project_description": "Developers-only client for the Epsilon Agility Harmony marketing/customer-data platform. It exposes a single Drupal service (epsilon_harmony.api_service) with pre-defined methods that call the Harmony REST APIs over OAuth2: create/update/delete/retrieve a profile record, create/update a list record, and send a real-time message (RTM). Connection credentials (client ID, secret key, username, password, X-OUID) and the API region are entered on admin config forms; list and message identifiers are mapped to Epsilon IDs on companion forms. Every API request/response is written to a custom epsilon_harmony_log content entity for debugging, viewable and clearable in the admin UI. Depends on core Views. Supports Drupal 8 through 11.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

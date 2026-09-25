@@ -1,68 +1,61 @@
 # Configuration
 
-Configuring Epsilon Harmony is chiefly about giving Drupal the Harmony **API
-credentials** so it can authenticate — stored so they stay out of your codebase —
-and knowing where the debug logs live.
-
-## Store the API credentials as secrets (do this first)
-
-The Epsilon Harmony API credentials are secrets. Do not commit them to the
-repository or place them in exported configuration. Store them in environment
-variables and reference them through a Key entity — the module's own guidance is
-that credentials should be environment‑backed and never committed.
-
-With DDEV, save the value and restart:
-
-```bash
-ddev dotenv set .ddev/.env --epsilon-harmony-api-key=<your-key>
-ddev restart
-```
-
-The flag `--epsilon-harmony-api-key` becomes the environment variable
-`EPSILON_HARMONY_API_KEY`. Keep `.ddev/.env` out of version control.
-
-Confirm the variable is present *without printing its value*, then create a Key
-entity backed by it (install the [Key](https://www.drupal.org/project/key) module
-first if it isn't already enabled):
-
-```bash
-ddev exec 'test -n "$EPSILON_HARMONY_API_KEY"'   # exit status 0 means it is set
-ddev drush key:save epsilon_harmony_api_key \
-  --label='Epsilon Harmony API Key' --key-type=authentication --key-provider=env \
-  --key-provider-settings='{"env_variable":"EPSILON_HARMONY_API_KEY","base64_encoded":false,"strip_line_breaks":true}' \
-  --key-input=none -y
-```
+Configuring Epsilon Harmony is chiefly about giving Drupal your Harmony **API account
+credentials** so it can authenticate, mapping your Epsilon list and message IDs to friendly
+names, and knowing where the debug logs live. All admin pages sit under **Configuration →
+Epsilon Harmony** (`/admin/config/epsilon_harmony`).
 
 ## Enter the connection details
 
-Open the Epsilon Harmony settings under **Configuration** and supply the Harmony API
-connection details — the endpoint(s) and credentials Epsilon issued you. Where the
-form supports it, reference the **Key** you created rather than typing the raw
-credential into a text field. Use HTTPS for the endpoint so credentials and data are
-encrypted in transit.
+Open **Configurations** (`/admin/config/epsilon_harmony/configurations`) and fill in the account
+credentials Epsilon issued you:
 
-## The debug log (Views)
+- **Client ID**
+- **Secret Key**
+- **Username**
+- **Password**
+- **X-OUID**
+- **Region** — choose **US** or **Canada**; this selects which Epsilon API base URLs the module
+  talks to.
 
-Every request the module sends to Harmony and every response it receives is
-**logged to the database**, and those records are surfaced through a **Views**
-listing. Use it to troubleshoot — you can see exactly what was sent and what Epsilon
-returned. Because these logs can contain the profile/message data that was
-exchanged, treat access to the log view as sensitive and prune it appropriately over
-time.
+All fields are required — the module will not make an API call until every connection field is
+set. The values are saved into the module's own configuration (`epsilon_harmony.settings`).
+Because they are stored in configuration, keep the site's exported configuration out of any
+public repository, and grant the *Administer Epsilon Harmony* permission only to trusted roles.
 
-## Data‑handling note
+## Map your list and message IDs
 
-The data you push through this module — profile records and real‑time messages —
-**leaves your site for Epsilon's platform**. Disclose this egress in your privacy
-policy and make sure your data‑processing agreements cover it.
+- **List configurations** (`/admin/config/epsilon_harmony/list_configuration`) — add one or more
+  rows pairing a friendly **List Identifier** with the **List ID** Epsilon gave you. Your
+  integration code then refers to the list by its friendly identifier. Use **Add another list
+  ID** to add more rows before saving.
+- **Message configurations** (`/admin/config/epsilon_harmony/message_configuration`) — same idea
+  for real-time messages: pair a **Message Identifier** with the **Message ID** from the Epsilon
+  team. `sendMessage()` uses these identifiers.
+
+## Test the connection
+
+Use the **Test** link (`/admin/config/epsilon_harmony/test`). It performs a live token request
+with your credentials and redirects you to the log listing, where you can confirm the call
+succeeded before relying on the integration.
+
+## The debug log
+
+Every request the module sends to Harmony and every response it receives is **logged to the
+database** and listed at **Logs** (`/admin/config/epsilon_harmony/logs`); open any row to see the
+full detail. Because these records capture what was exchanged with Epsilon, treat access to the
+log pages as sensitive: grant *View epsilon logs* only to roles that need it, and clear old logs
+with the **Clear logs** action (`/admin/config/epsilon_harmony/logs/clear`) as part of routine
+housekeeping.
+
+## Data-handling note
+
+The data you push through this module — profile records and real-time messages — **leaves your
+site for Epsilon's platform**. Disclose this egress in your privacy policy and make sure your
+data-processing agreements cover it.
 
 ## Control who can use it
 
-The module provides its own permission. At **People → Permissions**
-(`/admin/people/permissions`), grant it only to the roles that should administer the
-integration or view its logs.
-
-## Save
-
-Save the settings form, then run a test API call from your integration and confirm
-in the log view that it succeeded before relying on it in production.
+At **People → Permissions** (`/admin/people/permissions`) the module provides two permissions:
+**Administer Epsilon Harmony** (configure the integration, clear logs) and **View epsilon logs**.
+Grant them only to the roles that should manage the integration or inspect its logs.
