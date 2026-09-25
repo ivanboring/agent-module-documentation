@@ -1,18 +1,20 @@
 {
   "name": "Rocketship EU Cookie Compliance",
   "data_name": "eu_cookie_compliance_rocketship",
-  "description": "Adjusts the EU Cookie Compliance module to match the Rocketship theme/distribution's expectations.",
+  "description": "Alters the EU Cookie Compliance module slightly to match Rocketship expectations",
   "version": "2.1.x",
   "package": "Rocketship",
   "composer_namespace": "drupal/eu_cookie_compliance_rocketship",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/cookie_content_blocker": "^2.3.0"
+  },
   "dependent_modules": [
-    "eu_cookie_compliance:eu_cookie_compliance",
-    "cookie_content_blocker:cookie_content_blocker",
-    "eu_cookie_compliance_gtm:eu_cookie_compliance_gtm"
+    "eu_cookie_compliance",
+    "cookie_content_blocker",
+    "eu_cookie_compliance_gtm"
   ],
   "configure": null,
-  "core_version_requirement": "^10.3||^11",
+  "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/eu_cookie_compliance_rocketship",

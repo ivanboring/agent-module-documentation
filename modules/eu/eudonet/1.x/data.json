@@ -1,14 +1,14 @@
 {
   "name": "Eudonet",
   "data_name": "eudonet",
-  "description": "provides an API client for the Eudonet CRM.",
+  "description": "PHP client/service layer for making requests to the Eudonet CRM REST API from Drupal.",
   "version": "1.x",
   "package": "Eudonet",
   "composer_namespace": "drupal/eudonet",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^10.1||^11",
+  "configure": "eudonet.eudonet_config_form",
+  "core_version_requirement": "^10.1 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/eudonet",
@@ -20,7 +20,11 @@
   "provides_permissions": false,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "eudonet_query",
+    "eudonet_query_result",
+    "eudonet_mapping"
+  ],
   "categories": [
     "Integrations"
   ],
@@ -31,10 +35,10 @@
     "eudonet",
     "crm",
     "api",
-    "integration",
-    "client"
+    "client",
+    "integration"
   ],
-  "project_description": "",
+  "project_description": "Eudonet provides a PHP client, exposed as the 'eudonet' Drupal service, for building and executing requests against the Eudonet CRM REST API. Requests are modelled as EudonetQuery plugins (Authentication, Catalog, MetaInfos, Search, Attachments, Create/Update/Delete) whose responses are wrapped by matching EudonetQueryResult plugins. A field-mapping plugin type (eudonet_mapping, discovered from *.eudonet.mapping.yml files) lets developers refer to CRM columns by human names instead of numeric DescIds. Authentication credentials and the returned session token are held in the eudonet.eudonetconfig configuration object, editable through an admin form at /admin/config/services/eudonet. The module ships no entities, permissions, Drush commands, or public data routes; it is a developer-facing integration foundation used from custom code.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",

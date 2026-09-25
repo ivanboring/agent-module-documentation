@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- **Drupal 10.1 or 11** (`core_version_requirement: ^10.1||^11`).
+- **Drupal 10.1 or 11** (`core_version_requirement: ^10.1 || ^11`).
 - Eudonet CRM **API access and credentials** (obtained from your Eudonet
   environment).
 
@@ -14,14 +14,11 @@ requirements.
 From the project root:
 
 ```bash
-composer require drupal/eudonet -W
+composer require drupal/eudonet
 ```
 
-The `-W` (`--with-all-dependencies`) flag lets Composer update any shared
-dependencies as needed.
-
 > **Using DDEV?** Prefix Composer and Drush with `ddev` when you run from your host
-> machine — `ddev composer require drupal/eudonet -W`, `ddev drush …`. Inside the
+> machine — `ddev composer require drupal/eudonet`, `ddev drush …`. Inside the
 > container (`ddev ssh`) run them without the prefix.
 
 ## Enable the module
@@ -30,15 +27,17 @@ dependencies as needed.
 drush en eudonet -y
 ```
 
-## Provide credentials as secrets
+## Configure the connection
 
-Before your integration can talk to Eudonet, supply the API credentials as
-environment‑backed secrets rather than in configuration — see the "How to use it"
-section of the [overview](../index.md) for the DDEV dotenv + Key approach.
+Before your integration can talk to Eudonet, enter the API base URL and login
+parameters on the settings form at **Configuration → Services → Eudonet API
+configuration** (`/admin/config/services/eudonet`), then use **Try auth request** to
+verify them. See the "How to use it" section of the [overview](../index.md) for the
+details.
 
 ## Verify it worked
 
 Confirm the module is enabled (**Extend**, or `drush pml | grep eudonet`). Since it
-is a client library, the real test is whether your integration code (or a dependent
-module) can successfully authenticate and make a call against the Eudonet API using
-the credentials you provided.
+is a client library, the real test is whether **Try auth request** succeeds on the
+settings form — and then whether your integration code (or a dependent module) can
+make a call against the Eudonet API using the credentials you provided.
