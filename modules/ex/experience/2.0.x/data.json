@@ -1,7 +1,7 @@
 {
   "name": "Experience",
   "data_name": "experience",
-  "description": "Defines an 'experience' field type storing years+months of experience, with widget, formatters and a Views filter; supports a 'Fresher' option and configurable year range.",
+  "description": "Defines an 'experience' field type that stores a duration of work experience as a single integer number of months, with a year+month select widget, two display formatters, a 'Fresher' option, a configurable year range, and a Views numeric filter.",
   "version": "2.0.x",
   "package": "Field types",
   "composer_namespace": "drupal/experience",
@@ -27,17 +27,21 @@
     "Content editing experience"
   ],
   "subcategories": [
-    "Fields"
+    "Fields",
+    "Field formatters",
+    "Duration / time fields"
   ],
   "keywords": [
     "field",
     "experience",
     "years",
     "months",
+    "duration",
     "field type",
-    "views",
-    "widget",
-    "formatter"
+    "field widget",
+    "field formatter",
+    "views filter",
+    "fresher"
   ],
   "project_description": "Overview \n A experience field type to save the user experience by year with month select list and display like 02 Year(s) 07 Month(s).\n\n This experience field type is possible to use in job portals, application forms (capture the total year of experience, relevant field experience ) and user registration.\n\n Features \n \n Position of experience part labels in Advanced settings \n Experience field with Fresher option \n Configure the select list of year (start and end year) \n Integrated with views module (views filter) \n \n Documentation \n Check the README .\n\n Dependencies \n None\n\n Back to top",
   "maintenance_status": "Actively maintained",

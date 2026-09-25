@@ -1,14 +1,14 @@
 {
   "name": "Expirable Content",
   "data_name": "expirable_content",
-  "description": "lets any content entity type be configured for expiration.",
+  "description": "lets any content entity bundle be configured with computed expiration and warning dates; it records the dates but takes no action of its own.",
   "version": "2.0.x",
   "package": "Custom",
   "composer_namespace": "drupal/expirable_content",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^10.1||^11",
+  "core_version_requirement": "^10.1 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/expirable_content",
@@ -25,14 +25,16 @@
     "Content editing experience"
   ],
   "subcategories": [
-    "Content scheduling / publishing"
+    "Content scheduling / publishing",
+    "Computed / derived fields"
   ],
   "keywords": [
     "expiration",
-    "content",
-    "scheduling",
-    "unpublish",
-    "cron"
+    "warning date",
+    "computed field",
+    "content entity",
+    "views",
+    "scheduling"
   ],
   "project_description": "Configure any content to have a calculated expiration date.\n\n Features \n \n Expiration configuration per bundle \n Seamless and invisible to the target entity type \n Views integration \n \n Installation \n Install as you would normally install a contributed Drupal module.\n\nSee: https://www.drupal.org/node/895232 for further information.\n\n Similar projects \n This module is similar in concept to Node Auto Expire. However Node Auto Expire only works with Nodes, and assumes an email is the desired action to take for warning and expiration dates. Expirable Content doesn't take any action when the expiration or warning dates arrive. This allows for leveraging rules-based frameworks like Rules, ECA, or the Message module suite, etc.\n\n Back to top",
   "maintenance_status": "Actively maintained",
