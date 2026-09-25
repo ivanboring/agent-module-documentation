@@ -1,20 +1,24 @@
 {
   "name": "Entity to Text",
   "data_name": "entity_to_text",
-  "description": "Utility/helper APIs to convert entities to plain text (for AI, indexing, embeddings), with Tika and Paragraphs submodules.",
+  "description": "Provides a number of utility and helper APIs for developers to transform content into plain text.",
   "version": "1.3.x",
   "package": "Search",
   "composer_namespace": "drupal/entity_to_text",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "ezyang/htmlpurifier": "^4.14"
+  },
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^10.4||^11||^12",
+  "core_version_requirement": "^10.4 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/entity_to_text",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "ezyang/htmlpurifier"
+  ],
   "suggests": {},
   "submodules": [
     "entity_to_text_paragraphs",
@@ -22,18 +26,23 @@
   ],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
+    "Developer tools",
     "Site search"
   ],
   "subcategories": [
-    "APIs / indexing"
+    "Data transformation",
+    "Content indexing"
   ],
   "keywords": [
     "entity to text",
-    "ai",
+    "plain text",
+    "html purifier",
     "tika",
+    "ocr",
+    "paragraphs",
     "indexing",
     "embeddings"
   ],

@@ -35,7 +35,5 @@ After enabling, define a builder and a template blueprint through the module's
 admin UI (see [Configuration](../configuration/index.md)), then walk the build flow
 to create an entity from the template.
 
-> **Before you expose this to real users**, read the security warning in the
-> [overview](../index.md) and [Configuration](../configuration/index.md): the build
-> routes are open to anonymous users as shipped and must be gated with a real
-> permission before use on a public site.
+This is a pre‑release module and is not covered by Drupal's security advisory
+policy — review it against your own requirements before using it in production.

@@ -12,15 +12,10 @@ tokens for the bits that vary, and produce new entities from it on demand rather
 than copying an existing one by hand each time. It depends on the contributed
 **Typed Data** (`typed_data`) module and supports Drupal 9.1+, 10 and 11.
 
-> **Security warning — do not use this on a public site until you harden it.** As
-> shipped (version 1.0.0‑alpha15), all of the build routes under
-> `/entity_template/build/*` are declared with `_access: 'TRUE'`, meaning they are
-> reachable by **anyone, including anonymous visitors**, and the final edit step
-> renders a normal entity form **without a create‑access check**. In practice, once
-> any builder is configured, an anonymous visitor could create entities of the
-> configured type without permission. Before exposing this module on a public or
-> production site, gate the build routes with a real permission or an
-> `_entity_create_access` requirement.
+This is a pre‑release module (`1.0.0‑alphaNN`) and is not covered by Drupal's
+security advisory policy. Review it against your own requirements before relying on
+it in production, and decide deliberately which users should be able to configure
+templates and run the build flow.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
@@ -30,12 +25,11 @@ terse, token‑cheap references for an AI coding agent, read the sibling
 
 1. [Installation](installation/index.md) — install with Composer, enable the
    module and its Typed Data dependency.
-2. [Configuration](configuration/index.md) — defining builders and blueprints, and
-   the essential hardening step.
+2. [Configuration](configuration/index.md) — defining builders and blueprints and
+   running the build flow.
 
 ## Where it lives in the admin menu
 
 Builders and their template blueprints are defined through the module's admin UI.
 The build flow that creates entities from a template lives under
-`/entity_template/build/*` — the routes you must lock down before going live (see
-[Configuration](configuration/index.md)).
+`/entity_template/build/*` (see [Configuration](configuration/index.md)).

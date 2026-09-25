@@ -1,13 +1,13 @@
 {
   "name": "Entity Template",
   "data_name": "entity_template",
-  "description": "Create entities from reusable templates via a builder UI.",
+  "description": "Store reusable templates of entities (with tokenised/Twig field values) and create new entities from them through a builder flow.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/entity_template",
   "composer_requirements": {},
   "dependent_modules": [
-    "typed_data:typed_data"
+    "typed_data"
   ],
   "configure": null,
   "core_version_requirement": "^9.1 || ^10 || ^11",
@@ -18,25 +18,36 @@
   "php_requirement": null,
   "library_dependencies": [],
   "suggests": {},
-  "submodules": [],
+  "submodules": [
+    "entity_template_ui"
+  ],
   "provides_permissions": true,
   "provides_drush_commands": false,
   "provides_config_schema": true,
-  "provides_plugin_types": [],
+  "provides_plugin_types": [
+    "entity_template_builder",
+    "entity_template_template",
+    "entity_template_component",
+    "entity_template_blueprint_provider"
+  ],
   "categories": [
     "Content editing experience"
   ],
   "subcategories": [
-    "Content cloning"
+    "Entity API",
+    "Token / placeholder replacement"
   ],
   "keywords": [
     "entity",
     "template",
     "builder",
-    "create",
-    "blueprint"
+    "blueprint",
+    "component",
+    "typed_data",
+    "twig",
+    "token"
   ],
-  "project_description": "Entity Template allows you to store templates of entities included tokenized values from parameters. Entities can be created from templates using rules.",
+  "project_description": "Entity Template stores reusable templates of entities. A template is a set of components that populate a target entity's fields; component values can be static input or tokenised/Twig strings resolved from typed-data contexts and builder parameters. Templates are grouped into blueprints under a builder, and a multi-step build flow (parameters -> select blueprint -> entity edit form) produces a new pre-filled entity. Plugin types (builder, template, component, blueprint provider) make the system extensible; the optional Entity Template UI submodule provides the admin configuration UI. Depends on the contributed Typed Data module.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
