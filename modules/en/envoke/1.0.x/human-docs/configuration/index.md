@@ -1,61 +1,55 @@
 # Configuration
 
-Configuring Envoke comes down to one essential thing — giving Drupal your Envoke
-**API key** so it can authenticate — done in a way that keeps that key out of your
-codebase.
+Configuring Envoke comes down to giving Drupal your Envoke API credentials so it can
+authenticate, choosing which of your site's mail should go through Envoke, and
+setting the sender defaults for outgoing messages.
 
-## Store the API key as a secret (do this first)
+## Open the settings form
 
-The Envoke API key is a credential. Never paste it directly into settings that get
-exported to configuration, and never commit it to the repository. Store it in an
-environment variable and reference it through a Key entity.
+Go to **Configuration → Services → Envoke**
+(`/admin/config/services/envoke`). The form is provided by the module and is
+protected by the **Administer Envoke** permission, so only roles you grant that
+permission can reach it.
 
-With DDEV, save the value into the container's environment and restart:
+## Enter the credentials
 
-```bash
-ddev dotenv set .ddev/.env --envoke-api-key=<your-key>
-ddev restart
-```
+The form has these fields (all filled in from your Envoke account):
 
-The flag `--envoke-api-key` becomes the environment variable `ENVOKE_API_KEY`.
-Keep `.ddev/.env` out of version control.
+- **Envoke API ID** and **Envoke API KEY** — the credential pair used for sending
+  mail and for the default contact operations.
+- **Envoke API ID for Subscription** and **Envoke API KEY for Subscription** — an
+  optional second credential pair used for newsletter/subscription operations. Leave
+  these blank if you only send transactional mail.
 
-Then confirm the variable is present *without printing its value*, and create a Key
-entity backed by it (install the [Key](https://www.drupal.org/project/key) module
-first if it isn't already enabled):
+Get these values from your Envoke account (see the
+[Envoke API documentation](https://support.envoke.com/en/collections/545624-api)).
 
-```bash
-ddev exec 'test -n "$ENVOKE_API_KEY"'   # exit status 0 means it is set
-ddev drush key:save envoke_api_key \
-  --label='Envoke API Key' --key-type=authentication --key-provider=env \
-  --key-provider-settings='{"env_variable":"ENVOKE_API_KEY","base64_encoded":false,"strip_line_breaks":true}' \
-  --key-input=none -y
-```
+## Set the sender defaults
 
-## Enter the credentials on the settings form
+- **Campaign name** — the Envoke campaign to tag mail with. If left blank, the site
+  name is used.
+- **From email** and **From name** — the default sender for outgoing mail. Individual
+  messages can still override these.
+- **Reply to email** — the default reply-to address.
+- **Input format** — an optional Drupal text format applied to the message body
+  before it is sent.
 
-Open the Envoke settings form under **Configuration** (in the Mail area) and supply
-the API credentials. Where the form offers a choice, select the **Key** you created
-above rather than typing the raw key into a text field, so the secret stays in the
-environment and out of exported configuration.
+## Route mail through Envoke
 
-## Data‑handling caveats
-
-- **Personal data leaves your site.** When Drupal sends mail or manages subscribers
-  through Envoke, recipient and subscriber details (email addresses and any other
-  personal data) plus the message content are transmitted to Envoke's API. Disclose
-  this egress in your privacy policy and make sure your data‑processing agreements
-  cover it.
-- **Use HTTPS.** Traffic to the Envoke API should always go over HTTPS so
-  credentials and recipient data are encrypted in transit.
+Entering credentials does not by itself change how Drupal sends mail. To actually
+send through Envoke, select the **Envoke mailer** as the mail backend using Drupal's
+mail-system configuration (for example via the
+[Mail System](https://www.drupal.org/project/mailsystem) module, or by setting the
+`system.mail` interface). You can route all mail through it, or only specific
+modules/keys.
 
 ## Control who can use it
 
-The module provides its own permission. At **People → Permissions**
+The module provides the **Administer Envoke** permission. At **People → Permissions**
 (`/admin/people/permissions`), grant it only to the roles that should be allowed to
-send through Envoke or manage subscribers.
+configure the integration.
 
-## Save
+## Save and test
 
-Save the settings form. Then send a test message and confirm it is delivered
-through Envoke before routing production mail through the module.
+Save the settings form, then send a test message and confirm it is delivered through
+Envoke before routing production mail through the module.

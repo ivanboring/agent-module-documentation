@@ -1,14 +1,14 @@
 {
   "name": "Envoke",
   "data_name": "envoke",
-  "description": "provides a mail/mailing-system integration with the Envoke platform.",
+  "description": "Routes Drupal mail through the Envoke email-marketing platform's API and manages Envoke contacts/subscriptions.",
   "version": "1.0.x",
   "package": "Mail",
   "composer_namespace": "drupal/envoke",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "configure": "envoke.admin",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/envoke",
@@ -19,7 +19,7 @@
   "submodules": [],
   "provides_permissions": true,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Integrations"
@@ -30,11 +30,13 @@
   "keywords": [
     "envoke",
     "email",
-    "mailing",
+    "mail",
+    "mailer",
+    "newsletter",
     "marketing",
     "api"
   ],
-  "project_description": "A Drupal connector module that allows Drupal to use https://envoke.com/ as it's email provider. Currently, it has pretty basic functionality and documentation, but looking for contributions of code and/or documentation.",
+  "project_description": "A Drupal mail integration for the Envoke (https://envoke.com/) email-marketing platform. It supplies a Mail plugin (envoke_mail) that sends site mail through the Envoke v4legacy send API, plus a service (EnvokeService) that creates/updates Envoke contacts and reads their subscription interests via the Envoke v1 contacts API. Credentials and sender defaults are set on a single admin settings form. Basic functionality; a beta pre-release.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
