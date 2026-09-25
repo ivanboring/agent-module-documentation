@@ -1,14 +1,14 @@
 {
   "name": "Extension Reference Field",
   "data_name": "extension_reference_field",
-  "description": "Defines a field type for referencing extensions (modules/themes).",
+  "description": "Define a field type for extensions (modules/themes/profiles).",
   "version": "1.2.x",
   "package": "Field types",
   "composer_namespace": "drupal/extension_reference_field",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^9.5||^10||^11",
+  "core_version_requirement": "^9.5 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/extension_reference_field",
@@ -25,16 +25,19 @@
     "Content editing experience"
   ],
   "subcategories": [
-    "Fields"
+    "Fields",
+    "Form widgets / select UI",
+    "Field formatters"
   ],
   "keywords": [
     "extension",
     "reference",
     "module",
     "theme",
+    "profile",
     "field"
   ],
-  "project_description": "This Drupal module provides an extension reference field type. It allows you to create fields that reference other extensions in your Drupal site. All extension types are supported, including modules, themes, and profiles.\n\n Post-Installation \n After installing the module, you can create an extension reference field by following these steps:\n\n1. Navigate to the Manage Fields page of the content type you want to add the field to (`/admin/structure/types/manage/[content-type]/fields`).\n\n2. Click the Add field button.\n\n3. Select Extension from the list of field types.\n\n4. Select the extension type you want to reference from the Extension type dropdown.\n\n5. Save the field settings.\n\n Similar projects \n Extension reference \n\n Back to top",
+  "project_description": "Extension Reference Field provides a single new field type, 'extension_reference' (label \"Extension\"), that stores a reference to a Drupal extension by its machine name. Every extension type is supported: modules, themes and installation profiles. A storage-level setting picks which extension type the field targets and which status (enabled, disabled, or all) the selectable options are drawn from. The field ships a select widget (extending core's OptionsSelectWidget, multi-value capable) and a label formatter that renders the extension's human-readable name, optionally linked to its drupal.org project page when the extension carries drupal.org packaging metadata. A computed 'extension' property resolves the stored machine name to a core Extension object on read. There is no settings form, route, permission, or install step of its own; add the field on any fieldable entity via Manage fields.",
   "maintenance_status": "Actively maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "covered",
