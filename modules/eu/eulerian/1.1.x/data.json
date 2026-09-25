@@ -1,16 +1,18 @@
 {
   "name": "Eulerian",
   "data_name": "eulerian",
-  "description": "Integrates Eulerian analytics/tracking, including Commerce e-commerce tracking.",
+  "description": "Allows your website analytics to be managed using Eulerian.",
   "version": "1.1.x",
   "package": "Statistics",
   "composer_namespace": "drupal/eulerian",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "ext-mbstring": "*"
+  },
   "dependent_modules": [
     "drupal:path_alias"
   ],
   "configure": "eulerian.settings_form",
-  "core_version_requirement": "^10.3||^11",
+  "core_version_requirement": "^10.3 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/eulerian",
@@ -31,16 +33,18 @@
     "Integrations"
   ],
   "subcategories": [
-    "Analytics & tracking"
+    "Analytics & tracking",
+    "Analytics / tag management"
   ],
   "keywords": [
     "eulerian",
     "analytics",
     "tracking",
-    "commerce",
+    "datalayer",
+    "tag manager",
     "attribution"
   ],
-  "project_description": "Adds the Eulerian tracking system to your website.\n\n The module allows you to add the following statistics features to your site:\n\n \n Single domain tracking \n Selectively track/exclude certain pages \n Custom variables support with tokens \n Site Search \n Modal dialog tracking ( Colorbox ) \n Access denied (403) and Page not found (404) tracking \n User ID tracking across devices \n Asynchronous tracking \n A data cleaning system (using Eulerian's recommendations) \n Eulerian Tag Manager \n \n Back to top \n\n Requirements \n \n PHP >=7.3 \n An Eulerian website domain \n \n For more information about the features of the Eulerian module, you can refer to the module's README .\n\n Back to top \n\n Related modules \n Consent management with \"Tarte au Citron\" is available in separate modules:\n\n \n For Tarte au Citron (tarte_au_citron) : Eulerian Tarte au Citron \n For TacJS (tacjs) : Eulerian TacJS \n \n \n Sponsors \n \n \n \n \n \n \n\nDélégation à l'information et la communication (DICOM)\n \n \n \n \n \n\n Agence du Numérique en Santé (ANS) \n \n \n \n \n \n Back to top",
+  "project_description": "Adds the Eulerian tracking system to your website. It injects the Eulerian analytics JavaScript tag on the pages you choose and builds a JavaScript datalayer (drupalSettings.eulerian.datalayer) that is pushed to Eulerian with EA_push(). Features include single-domain tracking, per-page visibility rules (all-except / listed-only / optional PHP), token-driven custom parameters, internal site-search tracking, Views search-key reporting via a display extender, Colorbox modal tracking, 403/404 status-code filtering, cross-device hashed User ID, translation-set unification, asynchronous loading, and an optional data-cleaning step following Eulerian's recommendations. Commerce cart, checkout and product datalayers are supplied by the bundled eulerian_commerce_* submodules.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

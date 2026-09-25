@@ -1,17 +1,20 @@
 {
   "name": "Eulerian TacJS",
   "data_name": "eulerian_tacjs",
-  "description": "adds the Eulerian analytics service to the TacJS consent-managed tag loader.",
+  "description": "Registers the Eulerian analytics service with the TacJS (Tarte au Citron) consent manager so the Eulerian tag loads according to visitor consent.",
   "version": "1.1.x",
   "package": "Statistics",
   "composer_namespace": "drupal/eulerian_tacjs",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/eulerian": "^1.0",
+    "drupal/tacjs": "^6.3"
+  },
   "dependent_modules": [
     "eulerian:eulerian",
     "tacjs:tacjs"
   ],
-  "configure": null,
-  "core_version_requirement": "^10.1||^11",
+  "configure": "eulerian.settings_form",
+  "core_version_requirement": "^10.1 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/eulerian_tacjs",
@@ -22,22 +25,25 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Integrations"
   ],
   "subcategories": [
-    "Analytics / tag management"
+    "Analytics / tag management",
+    "Cookie consent / GDPR"
   ],
   "keywords": [
     "eulerian",
     "tacjs",
+    "tarte au citron",
     "analytics",
     "consent",
-    "tracking"
+    "gdpr",
+    "tag management"
   ],
-  "project_description": "Allows to add Eulerian service to TacJS module.\n\n Related modules \n \n Eulerian \n TacJS",
+  "project_description": "Eulerian TacJS is a small bridge module that registers the Eulerian analytics/marketing tag as a service inside the TacJS (Tarte au Citron) consent manager. It declares the Eulerian service definition through hook_tacjs_content_alter() and, in hook_page_attachments_alter(), swaps the Eulerian module's default init library for a consent-aware loader so the Eulerian tag fires either after the visitor consents (mandatory-consent mode, via tarteaucitron.js) or immediately (consent-exempt mode). It has no routes, permissions, forms or settings of its own; the Eulerian account/collect domain and datalayer are configured in the Eulerian module and consent behaviour is toggled on the TacJS service configuration page. Requires the Eulerian and TacJS contrib modules.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

@@ -14,8 +14,8 @@ Tag Manager support. It depends on core's **Path Alias** module.
 
 Because it sends visitor (and, for Commerce, purchase/behaviour) data to a
 third‑party platform, it carries privacy and consent obligations: obtain
-appropriate consent, integrate it with your cookie‑consent mechanism, disclose the
-tracking, and keep any Eulerian credentials as secrets. Eulerian publishes separate
+appropriate consent, integrate it with your cookie‑consent mechanism, and disclose
+the tracking. Eulerian publishes separate
 companion modules for consent managers — **Eulerian Tarte au Citron** (for Tarte au
 Citron) and **Eulerian TacJS** (for TacJS) — which you can add to gate the tracker
 behind consent. The module has no access‑control role.

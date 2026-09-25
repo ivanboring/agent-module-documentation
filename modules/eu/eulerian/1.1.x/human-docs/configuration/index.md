@@ -13,10 +13,9 @@ controls which pages and events are tracked and how the tracking behaves.
 ## The essential setting
 
 - **Eulerian website domain** — the domain associated with your Eulerian account.
-  Enter it and save; the tracking code is then added to your pages. A domain
-  identifier like this is configuration, not a password — but keep any actual
-  Eulerian API credentials as secrets (in an environment variable / **Key** entity)
-  rather than in exported configuration.
+  Enter it and save; the tracking code is then added to your pages. This domain is
+  a public tracking identifier (it appears in the client-side tag), not a password;
+  the module stores it as ordinary configuration and needs no API key or secret.
 
 ## What and how to track
 
@@ -47,7 +46,6 @@ so treat consent as part of setup:
   the companion **Eulerian Tarte au Citron** or **Eulerian TacJS** modules make the
   tracker load only after consent.
 - Disclose the tracking in your privacy policy per GDPR / applicable law.
-- Store any Eulerian credentials as secrets.
 
 ## Save
 
