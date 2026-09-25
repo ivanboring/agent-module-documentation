@@ -1,7 +1,7 @@
 {
   "name": "Entity Reference Field Create Link",
   "data_name": "entity_reference_field_create_link",
-  "description": "Adds a \"create new\" link to entity-reference fields (create a referenced entity inline).",
+  "description": "Entity-reference autocomplete widget that adds \"Create @bundle\" links (node, taxonomy term, media) so editors can jump to the entity add form.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/entity_reference_field_create_link",
@@ -10,7 +10,7 @@
     "drupal:field"
   ],
   "configure": null,
-  "core_version_requirement": "^9||^10||^11||^12",
+  "core_version_requirement": "^9 || ^10 || ^11 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/entity_reference_field_create_link",
@@ -21,19 +21,23 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"
   ],
   "subcategories": [
-    "Field widgets"
+    "Entity creation links",
+    "Entity selection"
   ],
   "keywords": [
     "entity reference",
     "create link",
-    "field",
-    "inline",
+    "field widget",
+    "autocomplete",
+    "node",
+    "taxonomy",
+    "media",
     "authoring"
   ],
   "project_description": "This module adds a new widget for entity reference fields that extends the autocomplete widget to display a link to the entity creation page for the type of entity used in this field.\n\nIt allows users to more easily create an entity that they can then reference in the field.\n\n For now, it only supports node, taxonomy terms and media reference fields.",
