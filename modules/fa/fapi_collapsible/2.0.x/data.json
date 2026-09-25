@@ -1,7 +1,7 @@
 {
   "name": "FAPI Collapsible",
   "data_name": "fapi_collapsible",
-  "description": "Provides a themeable collapsible container render element (a fieldset-like element that can expand/collapse).",
+  "description": "Provides a themeable 'collapsible' Form API render element — a fieldset-like container whose body can be expanded or collapsed, driven by a Twig template and jQuery behavior instead of core's details element.",
   "version": "2.0.x",
   "package": "Fields",
   "composer_namespace": "drupal/fapi_collapsible",
@@ -15,27 +15,32 @@
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
   "library_dependencies": [],
-  "suggests": {},
+  "suggests": {
+    "drupal/entity_list": "Render Entity List filters as collapsible sections (recommended companion module)."
+  },
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content editing experience"
+    "Developer tools"
   ],
   "subcategories": [
-    "Form widgets / select UI"
+    "Form theming",
+    "Twig / component libraries"
   ],
   "keywords": [
     "form api",
+    "fapi",
     "collapsible",
-    "fieldset",
     "render element",
-    "theme",
-    "expand"
+    "fieldset",
+    "accordion",
+    "expand collapse",
+    "theme"
   ],
-  "project_description": "Synopsis \n The FAPI collapsible provides new FAPI element for render form element as collapsible.\n\n Recommended modules \n You can use this module in Entity List for render filter as collapsible\n\n This project is sponsored by : \n\n \n\n Restrictions \n No restrictions.\n\n Back to top",
+  "project_description": "FAPI Collapsible adds a single custom Form API render element, '#type => collapsible', for developers who want a fieldset-like wrapper whose contents can be expanded and collapsed without the semantics or default markup of core's 'details' element. The element class Drupal\\fapi_collapsible\\Element\\Collapsible extends core's Fieldset render element, adds a 'collapsible' theme wrapper, a process callback that attaches the fapi_collapsible/collapsible library, and extra properties (#expanded, #name, #id_collapsible, #description, #description_attributes). hook_theme() registers the 'collapsible' theme hook and hook_preprocess_collapsible() maps the element's #children/#name/#title/#id_collapsible/#expanded/#description/#description_attributes into template variables (including a computed 'close' flag). The shipped Twig template (templates/collapsible.html.twig) renders an accessible toggle button (aria-controls / aria-expanded) plus a collapsible content region, and js/collapsible.js (a Drupal behavior over jQuery) toggles the region on click, supports mutually-exclusive groups via a data-collapsible-rel attribute, and optionally auto-closes on outside click via data-collapsible-close. The module has no routes, permissions, forms, services, config objects or config schema; it is used purely from PHP/Twig code. It can be paired with Entity List to render filters as collapsible sections.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "not-covered",

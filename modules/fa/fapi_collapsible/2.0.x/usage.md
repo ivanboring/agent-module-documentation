@@ -1,22 +1,27 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-FAPI Collapsible provides a lightweight collapsible container for the Form API — a fieldset-like wrapper whose contents can be expanded or collapsed, driven by a theme template rather than core's `details` element.
+FAPI Collapsible provides a themeable `collapsible` Form API render element — a fieldset-like container whose body expands and collapses, driven by a Twig template and jQuery behavior rather than core's `details` element.
 ---
-The module registers a `collapsible` theme hook (`hook_theme`) and a preprocess function that maps the render element's properties (`#children`, `#name`, `#title`, `#id_collapsible`, `#expanded`, `#description`, `#description_attributes`) into template variables, computing a `close` flag from `#expanded`. Form/render-array authors add a collapsible region by using the element and supplying those keys; the accompanying template renders the header/title and the collapsible body with the appropriate attributes.
-
-It is a small presentational helper for building custom forms and render output where you want independently toggleable sections without the semantics of core `details`. There are no routes, permissions, services or external calls, so it is safe to enable anywhere; its footprint is purely the theme hook and preprocessing.
+The module registers one custom render element, `#type => 'collapsible'` (class `Drupal\fapi_collapsible\Element\Collapsible`, which extends core's `Fieldset`). Its `getInfo()` adds a `collapsible` theme wrapper, a process callback that attaches the `fapi_collapsible/collapsible` asset library, and extra properties: `#expanded`, `#name`, `#id_collapsible`, `#description` and `#description_attributes`. `hook_theme()` declares the `collapsible` theme hook and `hook_preprocess_collapsible()` maps the element's `#children`, `#name`, `#title`, `#id_collapsible`, `#expanded`, `#description` and `#description_attributes` into template variables, computing a `close` flag from `#expanded`. The shipped template (`templates/collapsible.html.twig`) renders an accessible toggle `<button>` (with `aria-controls` / `aria-expanded`) plus a collapsible content region, and `js/collapsible.js` (a Drupal behavior over jQuery) toggles the region on click. It has no routes, permissions, forms, services, config objects or config schema — it is used purely from PHP/Twig by module and theme developers, so it is a small presentational building block rather than a point-and-click feature. The template supports mutually-exclusive "accordion" groups (via a `data-collapsible-rel` attribute) and optional auto-close when the visitor clicks outside the element (via `data-collapsible-close`), and it can be paired with the Entity List module to render filters as collapsible sections.
 ---
-- Add a collapsible section to a custom form.
-- Give the section a title via `#title`.
-- Start a section expanded with `#expanded` = TRUE.
-- Start a section collapsed with `#expanded` = FALSE.
-- Attach a description under the collapsible header.
-- Set custom attributes on the description via `#description_attributes`.
-- Assign a DOM id with `#id_collapsible` for JS/CSS targeting.
-- Name a collapsible region with `#name`.
-- Group unrelated form controls into toggleable blocks.
-- Render collapsible output outside of forms via the render array.
-- Override the `collapsible` template in a theme for custom markup.
-- Preprocess additional variables by extending the theme hook.
-- Build accordion-like UIs from multiple collapsible elements.
-- Use as a fieldset alternative when `details` semantics are unwanted.
-- Keep long configuration forms manageable with collapsible groups.
+- Add a collapsible section to a custom form with `#type => 'collapsible'`.
+- Give the section a header via `#title` (rendered inside the toggle button).
+- Start a section open with `#expanded => TRUE`.
+- Start a section collapsed with `#expanded => FALSE` (the default).
+- Nest ordinary Form API elements (textfields, selects, etc.) inside a collapsible.
+- Group unrelated form controls into independently toggleable blocks.
+- Add an optional description under the header via `#description`.
+- Attach custom attributes to that description via `#description_attributes`.
+- Assign a stable DOM id fragment with `#id_collapsible` for JS/CSS targeting.
+- Name a collapsible region with `#name` to get predictable `collapsible-<name>-*` CSS classes.
+- Build accordion-like UIs by giving several collapsibles the same `data-collapsible-rel` so opening one closes the others.
+- Auto-close a collapsible when the visitor clicks elsewhere via `data-collapsible-close="true"`.
+- React to open/close in custom JS by listening for the `collapsible-open` / `collapsible-close` jQuery events.
+- Render collapsible output outside of forms, in any render array, by using the element and its `#children`.
+- Use it as an alternative to core `details`/`fieldset` when you do not want that element's semantics or default markup.
+- Override the `collapsible` template in a theme to fully control the markup.
+- Add theme-level template suggestions or preprocessing for per-context collapsible variants.
+- Keep long configuration or settings forms manageable by collapsing rarely-used groups.
+- Render Entity List filters as collapsible sections (recommended companion use).
+- Provide accessible expand/collapse widgets (button with `aria-controls`/`aria-expanded`) without writing custom JS.
+- Style collapsibles per region using the generated `collapsible-<name>` / `is-expanded` classes.
+- Reuse a single collapsible pattern consistently across multiple custom forms and modules.
