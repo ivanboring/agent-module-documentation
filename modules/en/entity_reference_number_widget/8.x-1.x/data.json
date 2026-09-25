@@ -3,7 +3,7 @@
   "data_name": "entity_reference_number_widget",
   "description": "An entity-reference field widget that takes the referenced entity ID directly as a number.",
   "version": "8.x-1.x",
-  "package": null,
+  "package": "Fields",
   "composer_namespace": "drupal/entity_reference_number_widget",
   "composer_requirements": {},
   "dependent_modules": [],
@@ -17,15 +17,16 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"
   ],
   "subcategories": [
-    "Field formatters"
+    "Form widgets / select UI",
+    "Entity selection"
   ],
   "keywords": [
     "entity reference",

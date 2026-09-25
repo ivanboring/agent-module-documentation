@@ -1,14 +1,14 @@
 {
   "name": "Entity Reference Overflow",
   "data_name": "entity_reference_overflow",
-  "description": "Allows entity-reference fields to display an \"overflow\" (e.g. show N items then a +more indicator).",
+  "description": "A field formatter that tops up an entity-reference field's display with dynamically queried related content when fewer items are referenced than a configured minimum.",
   "version": "1.0.x",
   "package": "Field types",
   "composer_namespace": "drupal/entity_reference_overflow",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^8.8||^9||^10||^11",
+  "core_version_requirement": "^8.8.0 || ^9.0 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/entity_reference_overflow",
@@ -25,14 +25,15 @@
     "Content display"
   ],
   "subcategories": [
+    "Related content",
     "Field formatters"
   ],
   "keywords": [
     "entity reference",
-    "overflow",
-    "formatter",
-    "display",
-    "truncate"
+    "related content",
+    "field formatter",
+    "dynamic fallback",
+    "entity query"
   ],
   "project_description": "This module inserts entities into the output of an Entity Reference Field, in addition to the values that are set in the field. This can be helpful with creating \"Related Content\" sections that need to allow for both manual selection as well as a dynamic fallback.\n\n This module uses the configuration of the Entity Reference Field to determine where to pull additional content from.",
   "maintenance_status": "Actively maintained",
