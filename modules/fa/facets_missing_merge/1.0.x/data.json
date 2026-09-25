@@ -1,7 +1,7 @@
 {
   "name": "Facets Missing Merge",
   "data_name": "facets_missing_merge",
-  "description": "A Facets processor that merges the 'missing' facet item into another facet item.",
+  "description": "A Facets build-stage processor that merges the 'missing' (no-value) facet item into an existing facet item, folding its count and filters and relabelling the target as 'Target (or None)'.",
   "version": "1.0.x",
   "package": "Search",
   "composer_namespace": "drupal/facets_missing_merge",
@@ -10,7 +10,7 @@
     "facets:facets"
   ],
   "configure": null,
-  "core_version_requirement": "^9||^10||^11",
+  "core_version_requirement": "^9 || ^10 || ^11",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/facets_missing_merge",
@@ -27,16 +27,16 @@
     "Site search"
   ],
   "subcategories": [
-    "Facets / faceted search"
+    "Faceted search"
   ],
   "keywords": [
     "facets",
     "missing",
     "merge",
-    "search",
-    "processor"
+    "processor",
+    "search"
   ],
-  "project_description": "Provides a facet processor that allows the missing facet item to be merged into another item.\n\n Allows you to merge the missing facet item onto an actual facet item.\n\n Back to top \n\n Example \n If you have a facet with the following items:\n\n \n Cat \n Dog \n Lizard \n \n With the facet \"missing\" option enabled, an extra item with a configurable title is added for items that do not have any of those values and your list becomes.\n\n \n Cat \n Dog \n Lizard \n None \n \n With this processor enabled, you can merge the missing facet item (None) onto an\n\nexisting item (in this example, Cat is the target).\n\n \n Cat (or None) \n Dog \n Lizard \n \n Back to top \n\n Configuration \n When enabling the processor for a facet ensure that it is ordered to execute before the URL processor in the build phase. This is because the processor modifies the missing filters on a facet item.\n\n Back to top",
+  "project_description": "Facets Missing Merge provides a single Facets processor (plugin id 'missing_item_merge', class Drupal\\facets_missing_merge\\Plugin\\facets\\processor\\MissingItemMergeProcessor) that runs in the Facets 'build' stage (weight 5). When a facet has its 'missing' option enabled, Facets adds an extra 'missing' item collecting all results that have no value for the faceted field. This processor merges that missing item onto a configured target facet item: it adds the missing item's count to the target's count, removes the target's raw value from the missing item's list of missing filters, and relabels the merged item as 'Target (or None)'. The target is chosen by a single 'Target item' textfield that matches against a result's raw value OR display value. It must be ordered before the URL processor in the build phase because it modifies the missing filter parameters. The module ships only the processor plugin plus its config schema; it declares no routes, permissions, services, forms, entities or Drush commands.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
