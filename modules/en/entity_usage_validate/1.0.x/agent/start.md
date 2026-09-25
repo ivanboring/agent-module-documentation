@@ -1,12 +1,25 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
 # Entity Usage Validate (entity_usage_validate) — agent index
 
-**Adds a warning message when a published node references media that is still unpublished.**
+Adds a `messenger` **warning** when an already-published node is re-saved while it references
+**unpublished media**, using Entity Usage's relationship data. Advisory only — it never blocks
+the save. Package `Other`. Version 1.0.x (release 1.0.0-alpha5, pre-release).
 
-- **Version:** 1.0.x (1.0.0-alpha5)
-- **Core:** ^8.9 || ^9 || ^10 || ^11
-- **Dependency:** entity_usage
-- **How:** `hook_entity_update()` (reordered after entity_usage via `hook_module_implements_alter`) → for published nodes, `entity_usage.usage::listTargets()` → load media → `messenger` warning per unpublished item.
-- **Config / routes / permissions:** none.
+- **Core:** `^8.9 || ^9 || ^10 || ^11`. **License:** GPL-2.0-or-later.
+- **Dependency:** `entity_usage` (`drupal/entity_usage ^2.0`).
+- **No** routes, config, schema, permissions, services, plugins, or Drush commands.
 
-**Security:** advisory hook only — no routes, no mutation, no anonymous surface; the warning (media label+ID) is shown to the editor already editing the node. No access-check leak.
+## What it actually is
+
+- The whole module is `entity_usage_validate.module` — two hooks, no `src/`.
+- `hook_module_implements_alter()` reorders this module's `entity_update` implementation to run
+  **after** `entity_usage_entity_update()`.
+- `hook_entity_update()` → for published **nodes** only → `entity_usage.usage::listTargets($node, $revisionId)`
+  → `Media::loadMultiple()` on the `media` targets → `messenger` warning (title + ID) for each
+  unpublished item.
+- Fires on `hook_entity_update()` (re-save of an existing node), **not** on initial insert.
+
+## Solution docs
+
+- **The full hook mechanism, filters, and how to operate/verify it** →
+  [mechanism/warning.md](mechanism/warning.md)

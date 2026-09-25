@@ -1,13 +1,15 @@
 {
   "name": "Entity Usage Validate",
   "data_name": "entity_usage_validate",
-  "description": "Warns authors when they publish a node that references unpublished media.",
+  "description": "Warns authors on saving a published node that references unpublished media, per Entity Usage data.",
   "version": "1.0.x",
   "package": "Other",
   "composer_namespace": "drupal/entity_usage_validate",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/entity_usage": "^2.0"
+  },
   "dependent_modules": [
-    "entity_usage:entity_usage"
+    "entity_usage"
   ],
   "configure": null,
   "core_version_requirement": "^8.9 || ^9 || ^10 || ^11",
@@ -21,7 +23,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Content editing experience"
@@ -33,11 +35,11 @@
     "entity usage",
     "media",
     "unpublished",
-    "validation",
     "warning",
-    "references"
+    "references",
+    "editorial"
   ],
-  "project_description": "This module provides a warning message to authors when nodes are saved that\n\nreference unublished media according to the Entity Usage module.",
+  "project_description": "Provides a warning message to authors when a published node is saved that references unpublished media, according to the Entity Usage module. Advisory only: it never blocks the save. Implemented purely as a hook_entity_update() implementation reordered to run after Entity Usage; no routes, config, permissions, plugins, or services of its own.",
   "maintenance_status": "Seeking co-maintainer(s)",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

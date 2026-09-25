@@ -1,14 +1,14 @@
 {
   "name": "Entity View Display Template Suggestions",
   "data_name": "entity_vdts",
-  "description": "Lets you configure Twig template suggestions based on entity view displays.",
+  "description": "Adds Twig template suggestions to an entity's render, toggled per entity view display via a third-party setting. Currently provides a single \"bare\" suggestion.",
   "version": "1.0.x",
   "package": "User interface",
   "composer_namespace": "drupal/entity_vdts",
   "composer_requirements": {},
   "dependent_modules": [],
   "configure": null,
-  "core_version_requirement": "^11.2||^12",
+  "core_version_requirement": "^11.2 || ^12",
   "active_installs": null,
   "list_position": null,
   "project_url": "https://www.drupal.org/project/entity_vdts",
@@ -22,19 +22,19 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Content display"
+    "Theming"
   ],
   "subcategories": [
-    "Theme suggestions / template hooks"
+    "Template suggestions"
   ],
   "keywords": [
     "template suggestions",
-    "view display",
+    "entity view display",
     "theming",
     "twig",
-    "entity"
+    "theme hook"
   ],
-  "project_description": "This module aims to allow entity templates to get suggestions from the entity view display configuration. The goal is to allow to have generic templates not related to a view mode and to be able to configure if the view mode should use it or not.\n\n \n \n Features \n Currently the module only allows to have a bare template suggestion.\n\n \n \n Post-Installation \n After enabling the module, go on a view display configuration like \"admin/structure/types/manage/page/display\" and you will see a new configuration option.\n\n \n \n Maintainers \n \n Florent Torregrosa (Grimreaper) \n \n Back to top",
+  "project_description": "This module aims to allow entity templates to get suggestions from the entity view display configuration. The goal is to allow to have generic templates not related to a view mode and to be able to configure if the view mode should use it or not.\n\nFeatures: currently the module only allows to have a \"bare\" template suggestion.\n\nPost-installation: after enabling the module, go on a view display configuration like \"admin/structure/types/manage/page/display\" and you will see a new \"Template suggestions\" configuration option.\n\nMaintainer: Florent Torregrosa (Grimreaper).",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",
