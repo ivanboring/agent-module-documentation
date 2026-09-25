@@ -5,28 +5,22 @@ credentials** so it can reach the cloud, and deciding **who** is allowed to oper
 devices. Because the module can trigger physical actions, the access side deserves as
 much attention as the connection side.
 
-## Store your eWeLink credentials securely
-
-Your eWeLink credentials are secrets — never hardcode them in code or commit them to
-version control. With DDEV, store each value as an environment variable, for example:
-
-```bash
-ddev dotenv set .ddev/.env --ewelink-email=<account-email> --ewelink-password=<account-password>
-ddev restart
-```
-
-That exposes them inside the web container (here as `EWELINK_EMAIL` and
-`EWELINK_PASSWORD`; keep `.ddev/.env` out of version control). Reference them from your
-settings or the module's configuration via `getenv()` rather than typing the secrets
-into a form that gets exported with your site config.
-
 ## Connect the account
 
-On the module's settings form, provide the eWeLink account details it needs to
-authenticate to the eWeLink cloud (account credentials and any region/endpoint the
-library requires), drawing the secret values from the environment variables above. Save
-the form. From then on the module can reach your devices to trigger actions and read
-status.
+Go to **Configuration → Web Services → eWeLink Settings**
+(`/admin/config/ewelink/settings`). Provide the eWeLink OAuth application and account
+details the module needs to authenticate to the eWeLink cloud:
+
+- **Region** — the region your eWeLink account is registered in (United States, Europe,
+  Asia or China), which selects the correct eWeLink API gateway.
+- **App ID** and **App Secret** — the credentials for your eWeLink developer
+  application.
+- **Redirect URL** — the OAuth redirect URL registered for that application.
+- **Email** (and optional **Password**) — your eWeLink account details.
+
+Your eWeLink credentials are secrets: treat the App Secret and account password with
+care and only grant the settings form to trusted administrators. Save the form. From
+then on the module can reach your devices to trigger actions and read status.
 
 ## Gate who can operate devices
 
