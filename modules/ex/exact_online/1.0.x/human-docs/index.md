@@ -47,12 +47,6 @@ dashboard and log view under the same **Exact Online** section.
 4. Build your own module/code on top of the connection to sync the specific data
    (invoices, customers, etc.) your business needs.
 
-> **Security note.** This project is a young release (1.0.0-alpha1) and is **not covered
-> by Drupal's security advisory policy**. As shipped, the reset route
-> `/admin/config/services/exact-online/reset` is publicly accessible and deletes all
-> stored OAuth tokens on a simple GET request with `?confirm=1` — with no permission
-> check and no CSRF protection. That means an anonymous request (or an admin lured into
-> loading a crafted link or image) can wipe your connection and break the sync until you
-> re-authenticate. Before using this on a production site, gate that reset route behind
-> an administrative permission and a POST confirmation form, and store your OAuth
-> credentials securely (see [Configuration](configuration/index.md)).
+> **Release status.** This project is a young pre-release (1.0.0-alpha1) and is **not
+> covered by Drupal's security advisory policy**. Evaluate it accordingly before relying
+> on it for a production site.

@@ -10,19 +10,13 @@ In your Exact Online account, create an application. Exact Online gives you a **
 ID** and a **Client Secret** for it. You will also configure the app's redirect URI to
 point back at your Drupal site (the module's OAuth callback).
 
-## 2. Store the credentials securely
+## 2. How the module stores the credentials
 
-The Client Secret is a credential — do not commit it to version control. With DDEV,
-store it (and the Client ID, if you prefer) as environment variables:
-
-```bash
-ddev dotenv set .ddev/.env --exact-online-client-secret=<your-client-secret>
-ddev restart
-```
-
-That exposes it inside the web container as `EXACT_ONLINE_CLIENT_SECRET` (keep
-`.ddev/.env` out of version control). Where possible, reference it via `getenv()` rather
-than storing the raw secret in exported configuration.
+You enter the Client ID and Client Secret on the settings form (next step). The module
+saves the **Client ID** into its configuration object (`exact_online.settings`) and keeps
+the **Client Secret** in Drupal's State store (the State key `exact_online.client_secret`),
+which is not part of exported configuration. There is no separate environment-variable
+setup step — the settings form is where these values live.
 
 ## 3. Enter the settings
 
@@ -30,8 +24,7 @@ Go to **Configuration → Web services → Exact Online → Settings**
 (`/admin/config/services/exact-online/settings`) and provide:
 
 - **Client ID** — the identifier from your Exact Online application.
-- **Client Secret** — the secret from your Exact Online application (drawn from the
-  environment variable above).
+- **Client Secret** — the secret from your Exact Online application.
 
 Save the form.
 
@@ -40,15 +33,6 @@ Save the form.
 Complete the OAuth authorization so Drupal receives and stores its access/refresh
 tokens. Once connected, the **dashboard** shows the connection status, and the **log
 view** records connection-related entries you can check if anything goes wrong.
-
-## 5. Harden the reset route before production
-
-As shipped, the reset route `/admin/config/services/exact-online/reset` deletes all
-stored OAuth tokens on a GET request with `?confirm=1`, with **no permission check and
-no CSRF protection** — so an anonymous request, or an administrator tricked into loading
-a crafted link or image, can wipe the connection. Before this module goes near a
-production site, gate that route behind an administrative permission and require a POST
-confirmation form. See the security note on the [overview page](../index.md).
 
 ## Building the actual sync
 

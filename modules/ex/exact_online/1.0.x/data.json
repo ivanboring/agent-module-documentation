@@ -1,11 +1,13 @@
 {
   "name": "Exact Online",
   "data_name": "exact_online",
-  "description": "Integrates the Exact Online accounting/ERP service (picqer/exact-php-client).",
+  "description": "Integrates Exact Online services using the picqer/exact-php-client library.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Custom",
   "composer_namespace": "drupal/exact_online",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "picqer/exact-php-client": "^4.4"
+  },
   "dependent_modules": [],
   "configure": null,
   "core_version_requirement": "^10 || ^11",
@@ -14,7 +16,9 @@
   "project_url": "https://www.drupal.org/project/exact_online",
   "license": "GPL-2.0-or-later",
   "php_requirement": null,
-  "library_dependencies": [],
+  "library_dependencies": [
+    "picqer/exact-php-client"
+  ],
   "suggests": {},
   "submodules": [],
   "provides_permissions": true,
@@ -22,9 +26,11 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
+    "Integrations",
     "E-commerce"
   ],
   "subcategories": [
+    "CRM integration",
     "Invoicing / billing"
   ],
   "keywords": [

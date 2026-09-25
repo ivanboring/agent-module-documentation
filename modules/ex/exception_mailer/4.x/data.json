@@ -1,13 +1,13 @@
 {
-  "name": "Exception Mailer",
+  "name": "Error & Exception Mailer",
   "data_name": "exception_mailer",
   "description": "A basic module to send email when an error/exception occurs.",
   "version": "4.x",
-  "package": null,
+  "package": "Custom",
   "composer_namespace": "drupal/exception_mailer",
   "composer_requirements": {},
   "dependent_modules": [],
-  "configure": null,
+  "configure": "exception_mailer.exception_mailer_config_form",
   "core_version_requirement": "^10 || ^11",
   "active_installs": null,
   "list_position": null,
@@ -22,19 +22,21 @@
   "provides_config_schema": true,
   "provides_plugin_types": [],
   "categories": [
-    "Administration"
+    "Developer tools"
   ],
   "subcategories": [
-    "Error handling"
+    "Error tracking & monitoring"
   ],
   "keywords": [
     "exception",
     "error",
     "email",
     "notification",
-    "monitoring"
+    "monitoring",
+    "alert",
+    "flood control"
   ],
-  "project_description": "INTRODUCTION \n The Error & Exception Mailer module sends an email when error/exception occurs.\n\n FEATURES \n Flood protection : Comes with email flood control out-of-the-box. Your inbox won't get full of the same repeated error messages.\n\n Filters : you can exclude certain errors you decide to ignore.\n\n CONFIGURATION \n Administration » Development » Exception mailer config:\n\n \n Enable/disable sending emails \n Customize which role(s) (users assigned to role(s)) should get email or add specific email recipients. \n Set on which Error level type (critical, error, warning, etc) should be email sent \n Excludes - add exclude definitions to don't send email in specific cases \n Flood protection - customize the default flood control if you want \n Back to top",
+  "project_description": "Error & Exception Mailer sends an email whenever an uncaught exception is thrown or a log message at a selected RFC severity level is recorded. It registers a kernel EXCEPTION event subscriber and a PSR-3 logger backend that build a report (site name, date, current user, request URI, referrer, client IP, exception class, message and stack trace) and queue it to configured recipients via the mail system. Recipients are chosen by role and/or by an explicit comma-separated address list on the settings form. Built-in flood control uses PHP's similar_text() to suppress repeated near-identical alerts across escalating time windows, and configurable 'Exclude' config entities let you filter which errors/exceptions do (or do not) trigger mail based on exception class, error type, severity, message text, hostname, or the current user's roles, with per-exclude recipients, custom body and resend interval. Emails can be enabled/disabled permanently in config or temporarily via the exception_mailer.enabled state key.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

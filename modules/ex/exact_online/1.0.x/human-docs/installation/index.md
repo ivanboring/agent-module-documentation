@@ -11,8 +11,7 @@
 - Outbound HTTPS access from your web server to the Exact Online API.
 
 This project is an early release (1.0.0-alpha1) and is **not covered by Drupal's
-security advisory policy** — review the security note on the
-[overview page](../index.md) before using it in production.
+security advisory policy** — evaluate it accordingly before using it in production.
 
 ## Install with Composer
 
