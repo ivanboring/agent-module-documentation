@@ -3,9 +3,11 @@
   "data_name": "extra_project_browser",
   "description": "Exposes extra_* recipes to Project Browser.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Project Browser",
   "composer_namespace": "drupal/extra_project_browser",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/project_browser": "^2.1"
+  },
   "dependent_modules": [
     "drupal:project_browser"
   ],
@@ -19,24 +21,24 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Developer tools"
   ],
   "subcategories": [
-    "Code generation / scaffolding"
+    "Configuration management"
   ],
   "keywords": [
     "project browser",
     "recipes",
+    "recipe source",
     "site building",
-    "extra",
-    "catalog"
+    "extra"
   ],
-  "project_description": "Project Browser Extra Recipes makes your site's own extra_* recipes show up in the Project Browser UI, so site builders can discover and apply them like any other recipe.\n\n \n\n Features \n - Scans recipe locations for directories starting with extra_.\n\n- Adds those recipes as a Project Browser source.\n\n- Reads name/description from recipe.yml and package metadata from composer.json when present.\n\n- Useful for teams managing private or site-specific recipes in their codebase.\n\n Post-Installation \n Enable the module, then visit the Project Browser page. The \"Extra recipes\" source is automatically enabled and its recipes appear in the list. No additional configuration is required.\n\n Additional Requirements \n - Drupal core 10 or 11\n\n- Project Browser module\n\n Recommended modules/libraries \n None.\n\n Similar projects \n This module complements Project Browser by adding a local source for custom recipes. It does not replace Project Browser or its core recipes source.\n\n Supporting this Module \n TODO: Add your support links here (Patreon, OpenCollective, GitHub Sponsors).\n\n Community Documentation \n TODO: Add links to documentation, demos, or walkthroughs here.\n\n Back to top",
+  "project_description": "Project Browser Extra Recipes adds a single Project Browser source plugin (id 'extra_recipes', class Drupal\\extra_project_browser\\Plugin\\ProjectBrowserSource\\ExtraRecipes) that surfaces the site's own recipes whose directory name starts with 'extra_' inside core's Project Browser UI. It performs no remote fetch: on each getProjects() call it scans local disk with a Symfony Finder (depth 1, name recipe.yml) across the core Recipes source's configured recipes path and the project-root ../recipes directory, keeps only directories prefixed 'extra_', and drops a hardcoded exclusion list (extra_view_modes, extra_paragraphs). For each recipe it reads the title/description from recipe.yml and the Composer package name plus homepage from an adjacent composer.json (defaulting to 'extra/unknown' when absent), marks every entry isCompatible, and returns them as ProjectType::Recipe results sorted case-insensitively by title, with in-memory search/machine_name filtering and array_chunk paging. Results are cached in the cache.project_browser bin keyed by the plugin id. A hook_install auto-enables the 'extra_recipes' source in project_browser.admin_settings (enabled_sources); hook_uninstall removes it. The module ships no routes, controllers, permissions, forms, config objects, config schema, entities, services or Drush commands, and defines no plugin type of its own — it implements Project Browser's existing ProjectBrowserSource plugin type.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "covered",

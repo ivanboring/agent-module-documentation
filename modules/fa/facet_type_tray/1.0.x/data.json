@@ -1,11 +1,15 @@
 {
   "name": "Facet Type Tray",
   "data_name": "facet_type_tray",
-  "description": "Provides Type Tray content-type groupings as a Search API facet.",
+  "description": "Exposes Type Tray content-type category groupings as a hierarchical Search API facet, with plugins to index, label, order and nest the categories.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Custom",
   "composer_namespace": "drupal/facet_type_tray",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/facets": "^3.0",
+    "drupal/search_api": "^1.40",
+    "drupal/type_tray": "^1.3"
+  },
   "dependent_modules": [
     "search_api:search_api",
     "facets:facets",
@@ -21,24 +25,26 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "Content display"
+    "Site search"
   ],
   "subcategories": [
-    "Faceted search UI"
+    "Faceted search UI",
+    "Search result sorting"
   ],
   "keywords": [
     "facet",
     "type tray",
     "search api",
     "facets",
-    "filter"
+    "hierarchy",
+    "content type"
   ],
-  "project_description": "Integrates the Type Tray content type organizer with the Facets module, so that content type categories defined in Type Tray can be used as a hierarchical facet in Search API views.\n\n Requirements \n \n Search API \n Facets \n Type Tray \n \n Content types must have a Type Tray category assigned for them to appear grouped in the facet. Types without a category are indexed under their own machine name.\n\n How it works \n The module provides three plugins:\n\n \n Search API processor: Type Tray ( type_tray ): Indexes each node with its Type Tray category as a separate field. Both the category key (parent level, e.g. resources ) and a compound category.bundle value (child level, e.g. resources.page ) are stored, enabling two-level hierarchy in the facet widget. \n Facets build processor: Type Tray - Merge node types ( type_tray ): Resolves the indexed category and compound values back to human-readable labels for display in the facet widget. \n Facets sort processor: Sort by Type Tray categories ( type_tray_category ): Orders facet results according to the category order defined in the Type Tray configuration. \n \n Setup \n \n Add the Type Tray Search API processor to your search index under Configuration > Search API > [your index] > Processors , then re-index. \n Add a facet for the new Type Tray category field on your Search API view. \n On the facet, enable the Type Tray: Merge node types build processor and optionally the Sort by Type Tray categories sort processor. \n To get the two-level category/bundle hierarchy, also enable the Type Tray hierarchy plugin on the facet and choose a widget that supports hierarchy (e.g. the core checkbox widget with the hierarchy option enabled). \n Back to top",
+  "project_description": "Integrates the Type Tray content type organizer with the Facets and Search API modules, so the content-type categories defined in Type Tray can be used as a hierarchical facet in Search API views. Content types must have a Type Tray category assigned to appear grouped in the facet; types without a category are indexed under their own machine name. The module ships four plugins: a Search API processor (id 'type_tray') that indexes each node's category as a string field, storing both the parent category key (e.g. 'resources') and a compound 'category.bundle' value (e.g. 'resources.page'); a Facets build processor (id 'type_tray', 'Type Tray: Merge node types') that resolves those indexed raw values back to human-readable labels for display; a Facets sort processor (id 'type_tray_category', 'Sort by Type Tray categories') that orders facet results by the category order defined in type_tray.settings; and a Facets hierarchy plugin (id 'type_tray', 'Type Tray hierarchy') that treats categories as parents and content types (bundles) as children for a two-level widget. The module declares no routes, permissions, forms, config objects, config schema, entities or Drush commands; its plugins read Type Tray configuration and node-type third-party settings.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",
