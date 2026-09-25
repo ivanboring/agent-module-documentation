@@ -33,6 +33,6 @@ This enables the module (and Social Link Field if it was not already on).
 ## Verify it worked
 
 Add or edit a **Social Link Field** on an entity (for example a user profile), then
-check the field's platform options — the Fediverse networks (Mastodon, PeerTube,
-Lemmy, and so on) should now be listed. Add a Fediverse account link and confirm it
-displays via the field's formatter on the entity.
+check the field's platform options — the Fediverse networks (a generic Fediverse
+option, Mastodon, Lemmy, and Hubzilla) should now be listed. Add a Fediverse account
+link and confirm it displays via the field's formatter on the entity.

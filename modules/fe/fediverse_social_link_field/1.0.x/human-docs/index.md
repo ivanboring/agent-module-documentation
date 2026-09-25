@@ -2,11 +2,13 @@
 
 **Fediverse Social Link Field** (`fediverse_social_link_field`) extends the
 [Social Link Field](https://www.drupal.org/project/social_link_field) module with
-support for **Fediverse** networks — Mastodon, PeerTube, Lemmy, and similar
-projects. With it, a Social Link Field on any entity can store and display links to
-Fediverse accounts, so profiles and content can point at someone's Mastodon or
-PeerTube presence just as they already can for the mainstream networks Social Link
-Field ships with.
+support for **Fediverse** networks. It adds four platform options: a generic
+**Fediverse** option plus **Mastodon**, **Lemmy**, and **Hubzilla**. With it, a
+Social Link Field on any entity can store and display links to Fediverse accounts, so
+profiles and content can point at someone's Mastodon, Lemmy, or Hubzilla presence
+just as they already can for the mainstream networks Social Link Field ships with.
+The generic Fediverse option covers other ActivityPub services (such as PeerTube)
+that do not have a dedicated platform.
 
 It is a small add‑on: it simply adds the Fediverse platform options to Social Link
 Field, which does the actual field, widget, and display work. There is no settings
@@ -32,7 +34,8 @@ available on Social Link Fields, which you configure per field as described belo
 2. Add or edit a **Social Link Field** on the entity you want (for example a user
    profile or a content type) at that bundle's **Manage fields**.
 3. In the field's settings and on the entity edit form, the Fediverse networks
-   (Mastodon, PeerTube, Lemmy, etc.) now appear among the platform choices — add the
+   (a generic Fediverse option, Mastodon, Lemmy, and Hubzilla) now appear among the
+   platform choices — add the
    account links you need.
 4. Configure how the links show on the entity's **Manage display**, using Social
    Link Field's formatter as usual.

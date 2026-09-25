@@ -1,13 +1,15 @@
 {
   "name": "Fediverse Social Link Field",
   "data_name": "fediverse_social_link_field",
-  "description": "Add Fediverse (Mastodon etc.) social link fields to entities.",
+  "description": "Adds Fediverse platforms (Mastodon, Lemmy, Hubzilla, generic Fediverse) to Social Link Field's social link fields.",
   "version": "1.0.x",
-  "package": null,
+  "package": "Field types",
   "composer_namespace": "drupal/fediverse_social_link_field",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/social_link_field": "*"
+  },
   "dependent_modules": [
-    "social_link_field:social_link_field"
+    "social_link_field"
   ],
   "configure": null,
   "core_version_requirement": "^10.3 || ^11",
@@ -19,24 +21,27 @@
   "library_dependencies": [],
   "suggests": {},
   "submodules": [],
-  "provides_permissions": true,
+  "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
-    "User engagement"
+    "Site structure"
   ],
   "subcategories": [
+    "Fields",
     "Social sharing buttons"
   ],
   "keywords": [
     "fediverse",
     "mastodon",
-    "social link",
-    "field",
-    "profile"
+    "lemmy",
+    "hubzilla",
+    "social link field",
+    "activitypub",
+    "social profile"
   ],
-  "project_description": "This module extends Social Link Field adding Fediverse social media projects like Mastodon, Peertube, Lemmy, etc.\n\n Supporting this Module \n Support my work on Liberapay \n\n Or using social crypto G1 : fnjD1EuHFeJ5V8TTqKXXxPrvBPP2R7gRWfqR2FtrKB8:3RJ",
+  "project_description": "Extends the Social Link Field module by adding Fediverse social media platforms as selectable social networks. It ships four SocialLinkFieldPlatform plugins - a generic Fediverse platform plus Mastodon, Lemmy and Hubzilla - so editors can add profile links for these networks to any Social Link Field. It provides only platform definitions (id, label, Font Awesome icon and URL prefix); the field type, widget, formatters and rendering are all supplied by the required Social Link Field parent module. No configuration is required.",
   "maintenance_status": "Actively maintained",
   "development_status": "Under active development",
   "security_advisory_coverage": "not-covered",

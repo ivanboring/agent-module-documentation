@@ -1,23 +1,31 @@
 <!-- SPDX-License-Identifier: GPL-2.0-or-later -->
-Feed Tamper Read Time is a Tamper plugin (for Feeds Tamper pipelines) that converts an HTML value into an estimated reading time in whole minutes.
----
-During a feed import you add the "Read Time Calculator" tamper to a source. It strips the HTML to text — loading it into DOMDocument, removing `<script>`/`<style>`, and collecting text nodes via XPath — counts the words, divides by a configurable words-per-minute setting (default 200, range 50–1000), and rounds up, returning the minute count as a string. This lets you populate a "X min read" field automatically from imported body content.
+Feed Tamper Read Time is a Tamper plugin for Feeds/Tamper import pipelines that turns an HTML value into an estimated reading time expressed in whole minutes.
 
-It is a pure transformation plugin with no routes, permissions, or services; configuration is just the WPM number on the tamper instance. The HTML is parsed for word-counting only (text is extracted and discarded), so it is a read-only computation over the imported value.
 ---
-- Auto-calculate "X min read" during a feed import
-- Derive reading time from an imported HTML body
-- Populate a read-time field from RSS/CSV/XML content
-- Set a custom words-per-minute rate per source
-- Strip HTML to plain text before counting words
-- Exclude script/style content from the word count
-- Round reading time up to whole minutes
-- Use 200 WPM as a sensible default
-- Tune WPM between 50 and 1000 for audience
-- Add reading-time metadata to imported articles
-- Chain after other tampers in a Feeds pipeline
-- Compute read time for migrated blog posts
-- Show estimated effort on imported documentation
-- Normalise reading estimates across sources
-- Feed the minute count into a numeric or text field
-- Keep read-time in sync on re-import
+
+Add the "Read Time Calculator" tamper to a field in a Feeds source (or any Tamper-driven pipeline) and it converts the incoming HTML into a minute count. The plugin loads the value into `DOMDocument`, removes `<script>` and `<style>` elements, collects the visible text nodes with `DOMXPath`, and normalises the whitespace. It then counts the words (`preg_split` on whitespace), divides by the configured Words Per Minute rate, rounds the result up with `ceil()`, and returns the number of minutes as a string.
+
+Configuration is a single field: **Words Per Minute (WPM)**, a number input with a default of 200 and an allowed range of 50–1000 (step 10). At compute time the plugin also falls back to 200 if the effective WPM is less than 1. The plugin only reads the value to count words — nothing is rendered as markup and the output is a numeric string only — so it is a read-only transformation you can drop anywhere in a tamper chain to populate a "X min read" field from imported body content.
+
+---
+
+- Auto-calculate an "X min read" value during a Feeds import
+- Derive reading time from an imported HTML body field
+- Populate a read-time field from RSS, CSV, or XML source content
+- Set a custom words-per-minute rate per import source
+- Strip HTML down to plain text before counting words
+- Exclude `<script>` and `<style>` content from the word count
+- Round reading estimates up to whole minutes
+- Use the sensible 200 WPM default without extra configuration
+- Tune WPM between 50 and 1000 to match your audience's reading speed
+- Add reading-time metadata to imported articles or blog posts
+- Chain the tamper after other tampers in a Feeds pipeline
+- Compute read time for migrated documentation pages
+- Show estimated effort/length on imported long-form content
+- Normalise reading estimates across multiple feeds with the same WPM
+- Feed the resulting minute count into a numeric or text field
+- Keep the read-time value in sync on every re-import
+- Convert a scraped HTML article into a plain minute count
+- Provide a lightweight alternative to client-side read-time widgets
+- Populate a field editors can display as "5 min read"
+- Reuse one WPM setting consistently across many source items

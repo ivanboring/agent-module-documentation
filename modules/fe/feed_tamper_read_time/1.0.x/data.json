@@ -1,13 +1,15 @@
 {
   "name": "Feed Tamper Read Time",
   "data_name": "feed_tamper_read_time",
-  "description": "A Feeds Tamper plugin that computes estimated reading time (in minutes) from HTML content using a configurable words-per-minute rate.",
+  "description": "A Tamper plugin for Feeds/Tamper pipelines that estimates reading time (whole minutes) from an HTML value using a configurable words-per-minute rate.",
   "version": "1.0.x",
   "package": null,
   "composer_namespace": "drupal/feed_tamper_read_time",
-  "composer_requirements": {},
+  "composer_requirements": {
+    "drupal/tamper": "*"
+  },
   "dependent_modules": [
-    "tamper:tamper"
+    "tamper"
   ],
   "configure": null,
   "core_version_requirement": "^9 || ^10 || ^11",
@@ -21,7 +23,7 @@
   "submodules": [],
   "provides_permissions": false,
   "provides_drush_commands": false,
-  "provides_config_schema": true,
+  "provides_config_schema": false,
   "provides_plugin_types": [],
   "categories": [
     "Import and export"
@@ -30,15 +32,17 @@
     "Data transformation"
   ],
   "keywords": [
-    "feeds",
     "tamper",
+    "feeds",
     "reading time",
+    "read time",
     "wpm",
+    "words per minute",
     "html",
     "import",
     "transform"
   ],
-  "project_description": "Provides a Tamper plugin to calculate reading time from HTML content with configurable WPM.",
+  "project_description": "Provides a single Tamper plugin (\"Read Time Calculator\") that computes an estimated reading time from an HTML value: it extracts the text (via DOMDocument/XPath, dropping script and style), counts words, divides by a configurable words-per-minute rate, rounds up, and returns the whole-minute count as a string. It plugs into any Feeds/Tamper import pipeline so a read-time field can be populated automatically from imported content.",
   "maintenance_status": "Minimally maintained",
   "development_status": "Maintenance fixes only",
   "security_advisory_coverage": "not-covered",
