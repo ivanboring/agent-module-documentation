@@ -16,9 +16,8 @@ You define fallback chains through a **plugin API** — chains are structured,
 reusable PHP plugins rather than a settings screen. Once a chain exists, the
 resolved value is available in two convenient ways: as a **token** (so it works
 anywhere tokens are supported) and via a **Twig method** (so you can pull it
-straight into your templates). It resolves values from your existing fields,
-respecting their storage, and has no access-control role of its own. It works on
-Drupal 8 through 11 with no module dependencies.
+straight into your templates). It resolves values from your existing fields. It
+works on Drupal 8 through 11 with no module dependencies.
 
 This guide is written for a **human** clicking through the admin UI. If you want
 terse, token‑cheap references for an AI coding agent, read the sibling
